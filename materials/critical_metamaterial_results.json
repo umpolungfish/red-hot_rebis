@@ -1,0 +1,14 @@
+{
+  "simulation": "Self-Critical Metamaterial Sensor",
+  "params": {
+    "N": 16,
+    "kappa_c": 0.02,
+    "target_chi": 20000.0
+  },
+  "results": {
+    "mean_chi": 13605.22,
+    "peak_chi": 20000.0,
+    "final_kappa": 0.0929,
+    "criticality_achieved": false
+  }
+}

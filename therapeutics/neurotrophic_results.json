@@ -1,0 +1,12 @@
+{
+  "simulation": "Bidirectional Neurotrophic Factor (alzheimer)",
+  "structural_type": "\u27e8\ud801\udc66\u00b7\ud801\udc65\u00b7\ud801\udc7e\u00b7\ud801\udc6c\u00b7\ud801\udc50\u00b7\ud801\udc67\u00b7\ud801\udc54\u00b7\ud801\udc5c\u00b7\u2299\u00b7\ud801\udc56\u00b7\ud801\udc59\u00b7\ud801\udc77\u27e9",
+  "bnf_active": false,
+  "final_state": {
+    "synaptic_density": 0.4,
+    "neurodegeneration": 0.5599999999999963,
+    "oxidative_stress": 0.1,
+    "inflammation": 0.5,
+    "acetylcholine": 0.26644878615914164
+  }
+}
