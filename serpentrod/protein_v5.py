@@ -24,6 +24,60 @@ from serpentrod.stratified_predictor import (
 from typing import List, Tuple, Optional, Dict
 from dataclasses import dataclass, field
 
+
+# ── classify_module_rich ──
+# Replaces the string-returning classify_module from stratified_predictor.
+# Returns a dict compatible with v5's dict-based classification expectations.
+def classify_module_rich(seq: str) -> dict:
+    """Classify a sequence module returning a rich dict with profile, type, dominant primitive.
+
+    Dict keys:
+      'type'        — 'ground_layer' if sparse activations, else 'structured'
+      'profile'     — dict with 'promoted_count', 'dominant_primitive', and per-primitive counts
+      'dominant'    — the most frequent primitive glyph (or '—')
+      'description' — human-readable classification string (compatible with string-only consumers)
+    """
+    if not seq:
+        return {'type': 'unstructured', 'profile': {'promoted_count': 0}, 'dominant': '—', 'description': 'unknown'}
+    
+    # Count primitive activations
+    prim_counts = {}
+    for aa in seq.upper():
+        if aa in PRIMITIVE_MAP:
+            prim = PRIMITIVE_MAP[aa][0].split('_')[0]
+            prim_counts[prim] = prim_counts.get(prim, 0) + 1
+    
+    if not prim_counts:
+        return {'type': 'unstructured', 'profile': {'promoted_count': 0}, 'dominant': '—', 'description': 'unstructured'}
+    
+    total_promoted = sum(prim_counts.values())
+    dominant = max(prim_counts, key=prim_counts.get)
+    
+    # Determine type
+    is_ground = (total_promoted <= 1) or (total_promoted / max(len(seq), 1) <= 0.10)
+    region_type = 'ground_layer' if is_ground else 'structured'
+    
+    # Build profile dict
+    profile = {
+        'promoted_count': total_promoted,
+        'dominant_primitive': dominant,
+        'description': f'{dominant}-dominant ({total_promoted}/{len(seq)} residues)',
+    }
+    profile.update(prim_counts)
+    
+    description = f'{dominant}-dominant ({total_promoted}/{len(seq)} residues)'
+    
+    return {
+        'type': region_type,
+        'profile': profile,
+        'dominant': dominant,
+        'description': description,
+    }
+
+
+# Override the imported classify_module with the rich version
+classify_module = classify_module_rich
+
 # ══════════════════════════════════════════════════════════════════
 # 1. KNOWN BIOLOGICAL FRAGMENT FINGERPRINTS
 # ══════════════════════════════════════════════════════════════════
@@ -473,6 +527,19 @@ class EnhancedPredictorV5:
         # Base prediction
         result = predict_processing(seq, name)
         
+        # Re-classify initial products with rich classifier
+        # (predict_processing uses the string-only classify_module)
+        reclassified = []
+        for prod in result.mature_products:
+            rich_cls = classify_module(prod.sequence)
+            reclassified.append(MatureProduct(
+                name=prod.name, start=prod.start, end=prod.end,
+                sequence=prod.sequence, classification=rich_cls,
+                is_connecting=prod.is_connecting
+            ))
+        result.mature_products = reclassified
+        result.full_profile = RollingProfile(seq)
+        
         # ── Step 1: Monobasic detection ──
         if enable_monobasic:
             mono_sites = detect_monobasic_sites(
@@ -515,6 +582,7 @@ class EnhancedPredictorV5:
         prev_motifs = [s.motif for s in result.cleavage_sites]
         next_motifs = prev_motifs[1:] + [None]
         
+        named_products = []
         for i, prod in enumerate(result.mature_products):
             pm = prev_motifs[i-1] if i > 0 and i-1 < len(prev_motifs) else None
             nm = next_motifs[i-1] if i > 0 and i-1 < len(next_motifs) else None
@@ -523,7 +591,12 @@ class EnhancedPredictorV5:
                 idx=i, total=len(result.mature_products),
                 profile=prod.classification.get('profile')
             )
-            prod.name = bio_name
+            named_products.append(MatureProduct(
+                name=bio_name, start=prod.start, end=prod.end,
+                sequence=prod.sequence, classification=prod.classification,
+                is_connecting=prod.is_connecting
+            ))
+        result.mature_products = named_products
         
         # ── Step 3: Context-aware merging ──
         result.mature_products = should_merge_fragments(

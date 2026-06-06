@@ -375,7 +375,7 @@ class ProteinStratifiedPredictor:
             'label': label,
             'vector': vec,
             'densities': densities,
-            'dominant_primitives': dominant_primitives,
+            'dominant_primitives': dominant_prims,
             'total_primitive_activations': total,
             'amidation': amidation,
         }
@@ -922,11 +922,45 @@ class RollingProfile:
     def __len__(self):
         return self.length
 
+    def summary(self) -> dict:
+        """Compute primitive activation summary for narrative output."""
+        from collections import Counter
+        prim_counts = Counter()
+        for aa in self.sequence.upper():
+            if aa in PRIMITIVE_MAP:
+                prim = PRIMITIVE_MAP[aa][0].split('_')[0]
+                prim_counts[prim] += 1
+        total_promoted = sum(prim_counts.values())
+        dominant = max(prim_counts, key=prim_counts.get) if prim_counts else '—'
+        return {
+            'length': self.length,
+            'primitive_counts': dict(prim_counts),
+            'promoted_density': total_promoted / max(self.length, 1),
+            'dominant_primitive': dominant,
+        }
+
 # ── CleavageSite ───────────────────────────────────────────────────────
 
-class CleavageSite(NamedTuple):
-    position: int
-    motif: str
+class CleavageSite:
+    """Cleavage site with enzyme family and confidence metadata."""
+    def __init__(self, position: int, motif: str,
+                 enzyme_family: str = 'unknown',
+                 structural_delta: float = 0.3,
+                 confidence: float = 0.5):
+        self.position = position
+        self.motif = motif
+        self.enzyme_family = enzyme_family
+        self.structural_delta = structural_delta
+        self.confidence = confidence
+
+    def __repr__(self):
+        return f"<CleavageSite pos={self.position} motif={self.motif} family={self.enzyme_family}>"
+
+    def __eq__(self, other):
+        if not isinstance(other, CleavageSite):
+            return NotImplemented
+        return (self.position == other.position and self.motif == other.motif
+                and self.enzyme_family == other.enzyme_family)
 
 # ── MatureProduct ──────────────────────────────────────────────────────
 
@@ -944,14 +978,16 @@ class ProcessingPrediction:
     """Full processing prediction result."""
     def __init__(self, name: str = "", sequence: str = ""):
         self.name = name
+        self.input_name = name
         self.sequence = sequence
         self.signal_peptide: Optional[MatureProduct] = None
         self.cleavage_sites: List[CleavageSite] = []
-        self.products: List[MatureProduct] = []
+        self.mature_products: List[MatureProduct] = []
         self.classifications: List[str] = []
+        self.connecting_peptides: List[MatureProduct] = []
 
     def __repr__(self):
-        return f"<ProcessingPrediction {self.name}: {len(self.products)} products>"
+        return f"<ProcessingPrediction {self.name}: {len(self.mature_products)} products>"
 
 # ── classify_module ────────────────────────────────────────────────────
 
@@ -992,7 +1028,7 @@ def predict_processing(seq: str, name: str = "protein") -> ProcessingPrediction:
     for site in result.cleavage_sites:
         frag = seq[start:site.position]
         if frag:
-            result.products.append(MatureProduct(
+            result.mature_products.append(MatureProduct(
                 name=f"fragment_{start+1}-{site.position}",
                 start=start, end=site.position,
                 sequence=frag, classification=classify_module(frag),
@@ -1003,7 +1039,7 @@ def predict_processing(seq: str, name: str = "protein") -> ProcessingPrediction:
     # Final fragment
     if start < len(seq):
         frag = seq[start:]
-        result.products.append(MatureProduct(
+        result.mature_products.append(MatureProduct(
             name=f"fragment_{start+1}-{len(seq)}",
             start=start, end=len(seq),
             sequence=frag, classification=classify_module(frag),
