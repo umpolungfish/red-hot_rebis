@@ -1,0 +1,29 @@
+{
+  "composite_healing": {
+    "cycle": 7,
+    "crack_length_mm": 8.0,
+    "damage_volume_fraction": 0.000275,
+    "capsules_remaining": 0.9945,
+    "healing_efficiency": 0.621391552442578,
+    "structural_recovery": 0.06213915524425786,
+    "cumulative_damage": 1.0,
+    "fatigue_life_pct": 0.0
+  },
+  "composite_fatigue": {
+    "cycle": 1000,
+    "modulus_GPa": 108.6,
+    "retention_pct": 90.5
+  },
+  "memory_polymer": {
+    "test_data": "REBIS_DESIGNS_CONCRETE_EVERYWHERE",
+    "monomers": 264,
+    "encoded_length": 264,
+    "decoded_correctly": true,
+    "original_bytes": 33,
+    "decoded_bytes": 33,
+    "quality_control_passed": true,
+    "longevity_at_300K_years": 1000000.0,
+    "density_bits_per_g": 1000000000000000.0,
+    "fix_applied": "monomers_increased_256_to_264"
+  }
+}

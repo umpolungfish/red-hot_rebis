@@ -1,0 +1,432 @@
+{
+  "library_diversity": 1200000000000.0,
+  "sample_clones": 100000,
+  "fixes_applied": [
+    "100x sample increase",
+    "multi-target panning",
+    "negative selection",
+    "copy-number weighting"
+  ],
+  "toxin_coverage": {
+    "botulinum_A": 2736,
+    "tetanus": 3487,
+    "ricin": 4942,
+    "saxitoxin": 3085,
+    "alpha_amanitin": 2889,
+    "VX": 2571,
+    "sarin": 4221,
+    "cyanide": 6372
+  },
+  "challenge_sweep": [
+    {
+      "conc_nM": 0.1,
+      "toxins_neutralized": 8,
+      "total_toxins": 8,
+      "fraction_neutralized": 1.0,
+      "per_toxin": {
+        "botulinum_A": {
+          "bound_molecules": 180660000000000.06,
+          "total_molecules": 180660000000000.06,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 3.2901403336790536e-14,
+          "clones_available": 2736,
+          "total_copies": 3745498626048
+        },
+        "tetanus": {
+          "bound_molecules": 180660000000000.06,
+          "total_molecules": 180660000000000.06,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 6.450232386399796e-14,
+          "clones_available": 3487,
+          "total_copies": 274229001168640
+        },
+        "ricin": {
+          "bound_molecules": 180660000000000.06,
+          "total_molecules": 180660000000000.06,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 6.449253960317755e-14,
+          "clones_available": 4942,
+          "total_copies": 272872908136448
+        },
+        "saxitoxin": {
+          "bound_molecules": 180660000000000.06,
+          "total_molecules": 180660000000000.06,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 2.6907195333655585e-14,
+          "clones_available": 3085,
+          "total_copies": 837669085696
+        },
+        "alpha_amanitin": {
+          "bound_molecules": 180660000000000.06,
+          "total_molecules": 180660000000000.06,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 6.470693157599082e-14,
+          "clones_available": 2889,
+          "total_copies": 271491410310400
+        },
+        "VX": {
+          "bound_molecules": 180660000000000.06,
+          "total_molecules": 180660000000000.06,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 6.436593925634323e-14,
+          "clones_available": 2571,
+          "total_copies": 273622495207168
+        },
+        "sarin": {
+          "bound_molecules": 180660000000000.06,
+          "total_molecules": 180660000000000.06,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 4.4824720324738354e-14,
+          "clones_available": 4221,
+          "total_copies": 2791977838080
+        },
+        "cyanide": {
+          "bound_molecules": 180660000000000.06,
+          "total_molecules": 180660000000000.06,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 4.247287081515255e-14,
+          "clones_available": 6372,
+          "total_copies": 1228264269824
+        }
+      }
+    },
+    {
+      "conc_nM": 1.0,
+      "toxins_neutralized": 8,
+      "total_toxins": 8,
+      "fraction_neutralized": 1.0,
+      "per_toxin": {
+        "botulinum_A": {
+          "bound_molecules": 1806600000000000.5,
+          "total_molecules": 1806600000000000.5,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 3.2901403336790536e-14,
+          "clones_available": 2736,
+          "total_copies": 3745498626048
+        },
+        "tetanus": {
+          "bound_molecules": 1806600000000000.5,
+          "total_molecules": 1806600000000000.5,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 6.450232386399796e-14,
+          "clones_available": 3487,
+          "total_copies": 274229001168640
+        },
+        "ricin": {
+          "bound_molecules": 1806600000000000.5,
+          "total_molecules": 1806600000000000.5,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 6.449253960317755e-14,
+          "clones_available": 4942,
+          "total_copies": 272872908136448
+        },
+        "saxitoxin": {
+          "bound_molecules": 1806600000000000.5,
+          "total_molecules": 1806600000000000.5,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 2.6907195333655585e-14,
+          "clones_available": 3085,
+          "total_copies": 837669085696
+        },
+        "alpha_amanitin": {
+          "bound_molecules": 1806600000000000.5,
+          "total_molecules": 1806600000000000.5,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 6.470693157599082e-14,
+          "clones_available": 2889,
+          "total_copies": 271491410310400
+        },
+        "VX": {
+          "bound_molecules": 1806600000000000.5,
+          "total_molecules": 1806600000000000.5,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 6.436593925634323e-14,
+          "clones_available": 2571,
+          "total_copies": 273622495207168
+        },
+        "sarin": {
+          "bound_molecules": 1806600000000000.5,
+          "total_molecules": 1806600000000000.5,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 4.4824720324738354e-14,
+          "clones_available": 4221,
+          "total_copies": 2791977838080
+        },
+        "cyanide": {
+          "bound_molecules": 1806600000000000.5,
+          "total_molecules": 1806600000000000.5,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 4.247287081515255e-14,
+          "clones_available": 6372,
+          "total_copies": 1228264269824
+        }
+      }
+    },
+    {
+      "conc_nM": 10.0,
+      "toxins_neutralized": 8,
+      "total_toxins": 8,
+      "fraction_neutralized": 1.0,
+      "per_toxin": {
+        "botulinum_A": {
+          "bound_molecules": 1.8066e+16,
+          "total_molecules": 1.8066e+16,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 3.2901403336790536e-14,
+          "clones_available": 2736,
+          "total_copies": 3745498626048
+        },
+        "tetanus": {
+          "bound_molecules": 1.8066e+16,
+          "total_molecules": 1.8066e+16,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 6.450232386399796e-14,
+          "clones_available": 3487,
+          "total_copies": 274229001168640
+        },
+        "ricin": {
+          "bound_molecules": 1.8066e+16,
+          "total_molecules": 1.8066e+16,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 6.449253960317755e-14,
+          "clones_available": 4942,
+          "total_copies": 272872908136448
+        },
+        "saxitoxin": {
+          "bound_molecules": 1.8066e+16,
+          "total_molecules": 1.8066e+16,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 2.6907195333655585e-14,
+          "clones_available": 3085,
+          "total_copies": 837669085696
+        },
+        "alpha_amanitin": {
+          "bound_molecules": 1.8066e+16,
+          "total_molecules": 1.8066e+16,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 6.470693157599082e-14,
+          "clones_available": 2889,
+          "total_copies": 271491410310400
+        },
+        "VX": {
+          "bound_molecules": 1.8066e+16,
+          "total_molecules": 1.8066e+16,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 6.436593925634323e-14,
+          "clones_available": 2571,
+          "total_copies": 273622495207168
+        },
+        "sarin": {
+          "bound_molecules": 1.8066e+16,
+          "total_molecules": 1.8066e+16,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 4.4824720324738354e-14,
+          "clones_available": 4221,
+          "total_copies": 2791977838080
+        },
+        "cyanide": {
+          "bound_molecules": 1.8066e+16,
+          "total_molecules": 1.8066e+16,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 4.247287081515255e-14,
+          "clones_available": 6372,
+          "total_copies": 1228264269824
+        }
+      }
+    },
+    {
+      "conc_nM": 100.0,
+      "toxins_neutralized": 8,
+      "total_toxins": 8,
+      "fraction_neutralized": 1.0,
+      "per_toxin": {
+        "botulinum_A": {
+          "bound_molecules": 1.8066000000000003e+17,
+          "total_molecules": 1.8066000000000003e+17,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 3.2901403336790536e-14,
+          "clones_available": 2736,
+          "total_copies": 3745498626048
+        },
+        "tetanus": {
+          "bound_molecules": 1.8066000000000003e+17,
+          "total_molecules": 1.8066000000000003e+17,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 6.450232386399796e-14,
+          "clones_available": 3487,
+          "total_copies": 274229001168640
+        },
+        "ricin": {
+          "bound_molecules": 1.8066000000000003e+17,
+          "total_molecules": 1.8066000000000003e+17,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 6.449253960317755e-14,
+          "clones_available": 4942,
+          "total_copies": 272872908136448
+        },
+        "saxitoxin": {
+          "bound_molecules": 1.8066000000000003e+17,
+          "total_molecules": 1.8066000000000003e+17,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 2.6907195333655585e-14,
+          "clones_available": 3085,
+          "total_copies": 837669085696
+        },
+        "alpha_amanitin": {
+          "bound_molecules": 1.8066000000000003e+17,
+          "total_molecules": 1.8066000000000003e+17,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 6.470693157599082e-14,
+          "clones_available": 2889,
+          "total_copies": 271491410310400
+        },
+        "VX": {
+          "bound_molecules": 1.8066000000000003e+17,
+          "total_molecules": 1.8066000000000003e+17,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 6.436593925634323e-14,
+          "clones_available": 2571,
+          "total_copies": 273622495207168
+        },
+        "sarin": {
+          "bound_molecules": 1.8066000000000003e+17,
+          "total_molecules": 1.8066000000000003e+17,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 4.4824720324738354e-14,
+          "clones_available": 4221,
+          "total_copies": 2791977838080
+        },
+        "cyanide": {
+          "bound_molecules": 1.8066000000000003e+17,
+          "total_molecules": 1.8066000000000003e+17,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 4.247287081515255e-14,
+          "clones_available": 6372,
+          "total_copies": 1228264269824
+        }
+      }
+    },
+    {
+      "conc_nM": 1000.0,
+      "toxins_neutralized": 8,
+      "total_toxins": 8,
+      "fraction_neutralized": 1.0,
+      "per_toxin": {
+        "botulinum_A": {
+          "bound_molecules": 1.8066000000000005e+18,
+          "total_molecules": 1.8066000000000005e+18,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 3.2901403336790536e-14,
+          "clones_available": 2736,
+          "total_copies": 3745498626048
+        },
+        "tetanus": {
+          "bound_molecules": 1.8066000000000005e+18,
+          "total_molecules": 1.8066000000000005e+18,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 6.450232386399796e-14,
+          "clones_available": 3487,
+          "total_copies": 274229001168640
+        },
+        "ricin": {
+          "bound_molecules": 1.8066000000000005e+18,
+          "total_molecules": 1.8066000000000005e+18,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 6.449253960317755e-14,
+          "clones_available": 4942,
+          "total_copies": 272872908136448
+        },
+        "saxitoxin": {
+          "bound_molecules": 1.8066000000000005e+18,
+          "total_molecules": 1.8066000000000005e+18,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 2.6907195333655585e-14,
+          "clones_available": 3085,
+          "total_copies": 837669085696
+        },
+        "alpha_amanitin": {
+          "bound_molecules": 1.8066000000000005e+18,
+          "total_molecules": 1.8066000000000005e+18,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 6.470693157599082e-14,
+          "clones_available": 2889,
+          "total_copies": 271491410310400
+        },
+        "VX": {
+          "bound_molecules": 1.8066000000000005e+18,
+          "total_molecules": 1.8066000000000005e+18,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 6.436593925634323e-14,
+          "clones_available": 2571,
+          "total_copies": 273622495207168
+        },
+        "sarin": {
+          "bound_molecules": 1.8066000000000005e+18,
+          "total_molecules": 1.8066000000000005e+18,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 4.4824720324738354e-14,
+          "clones_available": 4221,
+          "total_copies": 2791977838080
+        },
+        "cyanide": {
+          "bound_molecules": 1.8066000000000005e+18,
+          "total_molecules": 1.8066000000000005e+18,
+          "fraction_neutralized": 1.0,
+          "neutralized": true,
+          "effective_Kd_M": 4.247287081515255e-14,
+          "clones_available": 6372,
+          "total_copies": 1228264269824
+        }
+      }
+    }
+  ],
+  "toxin_library": [
+    "botulinum_A",
+    "tetanus",
+    "ricin",
+    "saxitoxin",
+    "alpha_amanitin",
+    "VX",
+    "sarin",
+    "cyanide"
+  ]
+}

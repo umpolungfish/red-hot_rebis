@@ -1,0 +1,39 @@
+{
+  "total_weeks": 24,
+  "sessions": 6,
+  "edits_performed": 18,
+  "frobenius_closure_rate": 100.0,
+  "final_methylation": {
+    "BDNF": 0.2000328882325354,
+    "MECP2": 0.7999792939528337,
+    "FMR1": 0.30002437077375327,
+    "SNCA": 0.5541980764081149,
+    "APP": 0.6555468281629587
+  },
+  "final_expression": {
+    "BDNF": 0.7008707185474993,
+    "MECP2": 0.16859359693547352,
+    "FMR1": 0.5865836683835987,
+    "SNCA": 0.434774259534612,
+    "APP": 0.416524323886433
+  },
+  "target_methylation": {
+    "BDNF": 0.2,
+    "MECP2": 0.8,
+    "FMR1": 0.3,
+    "SNCA": 0.7,
+    "APP": 0.8
+  },
+  "mean_absolute_error": 0.05806661209647627,
+  "supervenience_coupling_active": true,
+  "coherence_maintained": true,
+  "coherence_history": [
+    0.7,
+    0.7397338661590122,
+    0.7778836684617301,
+    0.8129284946790071,
+    0.8434712181799046,
+    0.8682941969615793
+  ],
+  "therapy_efficacy_pct": 94.19333879035237
+}

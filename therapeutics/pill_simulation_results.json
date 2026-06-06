@@ -1,0 +1,24 @@
+{
+  "steps": 200,
+  "frobenius_mean_error": 0.010666258933999275,
+  "frobenius_max_error": 0.014010192303194929,
+  "frobenius_condition": "\u03bc\u2218\u03b4\u2248id",
+  "final_drug_levels": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "drug_consumed_pct": 100.0,
+  "avg_sensor_activity": {
+    "IL-6": 0.5486990994535927,
+    "TNF-alpha": 0.5284038475705846,
+    "IFN-gamma": 0.31823732361697393,
+    "VEGF": 0.8660234461346499,
+    "cMyc": 0.5250841277610634
+  },
+  "avg_decisions": {
+    "Dexamethasone": 0.6056445304042399,
+    "Tocilizumab_mimetic": 0.5716729710526715,
+    "Anti_TNF_Fab": 0.45080109214669095
+  }
+}

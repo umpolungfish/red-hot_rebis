@@ -1,0 +1,164 @@
+[
+  {
+    "week": 0,
+    "gene": "BDNF",
+    "locus": 0,
+    "before": 0.6917160337190315,
+    "after": 0.34751481011570945,
+    "target": 0.2,
+    "frobenius_ok": true
+  },
+  {
+    "week": 0,
+    "gene": "MECP2",
+    "locus": 1,
+    "before": 0.4904213269690375,
+    "after": 0.7071263980907112,
+    "target": 0.8,
+    "frobenius_ok": true
+  },
+  {
+    "week": 0,
+    "gene": "FMR1",
+    "locus": 2,
+    "before": 0.6643704536488841,
+    "after": 0.40931113609466524,
+    "target": 0.3,
+    "frobenius_ok": true
+  },
+  {
+    "week": 4,
+    "gene": "BDNF",
+    "locus": 0,
+    "before": 0.34751481011570945,
+    "after": 0.23839310931310315,
+    "target": 0.2,
+    "frobenius_ok": true
+  },
+  {
+    "week": 4,
+    "gene": "MECP2",
+    "locus": 1,
+    "before": 0.7071263980907112,
+    "after": 0.7758281466951824,
+    "target": 0.8,
+    "frobenius_ok": true
+  },
+  {
+    "week": 4,
+    "gene": "FMR1",
+    "locus": 2,
+    "before": 0.40931113609466524,
+    "after": 0.32844998677712456,
+    "target": 0.3,
+    "frobenius_ok": true
+  },
+  {
+    "week": 8,
+    "gene": "BDNF",
+    "locus": 0,
+    "before": 0.23839310931310315,
+    "after": 0.20852773659697427,
+    "target": 0.2,
+    "frobenius_ok": true
+  },
+  {
+    "week": 8,
+    "gene": "MECP2",
+    "locus": 1,
+    "before": 0.7758281466951824,
+    "after": 0.7946310366174527,
+    "target": 0.8,
+    "frobenius_ok": true
+  },
+  {
+    "week": 8,
+    "gene": "FMR1",
+    "locus": 2,
+    "before": 0.32844998677712456,
+    "after": 0.3063192066952472,
+    "target": 0.3,
+    "frobenius_ok": true
+  },
+  {
+    "week": 12,
+    "gene": "BDNF",
+    "locus": 0,
+    "before": 0.20852773659697427,
+    "after": 0.20159529652217692,
+    "target": 0.2,
+    "frobenius_ok": true
+  },
+  {
+    "week": 12,
+    "gene": "MECP2",
+    "locus": 1,
+    "before": 0.7946310366174527,
+    "after": 0.7989956199380136,
+    "target": 0.8,
+    "frobenius_ok": true
+  },
+  {
+    "week": 12,
+    "gene": "FMR1",
+    "locus": 2,
+    "before": 0.3063192066952472,
+    "after": 0.30118214350891437,
+    "target": 0.3,
+    "frobenius_ok": true
+  },
+  {
+    "week": 16,
+    "gene": "BDNF",
+    "locus": 0,
+    "before": 0.20159529652217692,
+    "after": 0.2002497098212582,
+    "target": 0.2,
+    "frobenius_ok": true
+  },
+  {
+    "week": 16,
+    "gene": "MECP2",
+    "locus": 1,
+    "before": 0.7989956199380136,
+    "after": 0.799842785612413,
+    "target": 0.8,
+    "frobenius_ok": true
+  },
+  {
+    "week": 16,
+    "gene": "FMR1",
+    "locus": 2,
+    "before": 0.30118214350891437,
+    "after": 0.3001850394833869,
+    "target": 0.3,
+    "frobenius_ok": true
+  },
+  {
+    "week": 20,
+    "gene": "BDNF",
+    "locus": 0,
+    "before": 0.2002497098212582,
+    "after": 0.2000328882325354,
+    "target": 0.2,
+    "frobenius_ok": true
+  },
+  {
+    "week": 20,
+    "gene": "MECP2",
+    "locus": 1,
+    "before": 0.799842785612413,
+    "after": 0.7999792939528337,
+    "target": 0.8,
+    "frobenius_ok": true
+  },
+  {
+    "week": 20,
+    "gene": "FMR1",
+    "locus": 2,
+    "before": 0.3001850394833869,
+    "after": 0.30002437077375327,
+    "target": 0.3,
+    "frobenius_ok": true
+  }
+]

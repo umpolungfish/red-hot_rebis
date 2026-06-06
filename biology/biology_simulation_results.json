@@ -1,0 +1,28 @@
+{
+  "ouroboric_cell": {
+    "generations": 200,
+    "initial_fitness": 0.9981963711301542,
+    "final_fitness": 0.9984004737715061,
+    "fitness_improvement_pct": 0.020447143192953113,
+    "genome_edited_final_pct": 40.0,
+    "total_edits": 155,
+    "adaptive_loci": 20,
+    "frobenius_closure_verified": true,
+    "self_writing_active": true
+  },
+  "topological_morphogenesis": {
+    "max_density": 0.9799467573056658,
+    "mean_density": 0.2846426889909859,
+    "filled_fraction_pct": 30.3955078125,
+    "tissue_formed": true,
+    "steps": 500,
+    "fixes_applied": [
+      "seed_radius_5_to_20",
+      "initial_density_0.3_to_0.5",
+      "diffusion_boost_2x_to_4x",
+      "steps_300_to_500",
+      "SDF1_chemotaxis_added",
+      "PDGF_survival_gradient_added"
+    ]
+  }
+}
