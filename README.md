@@ -1,8 +1,8 @@
-# Red-Hot Rebis ⊗ — Grammar-Derived Tool for Exact Bio and Organic Chemistries
+# red-h⊙t rebis — an engine for algebraic, exact, determinstic, & paraconsistent bi⊙ & ⊙rganic chemistries
 
-**Author:** Lando ⊗ ⊙perator  
+**Author:** Lando⊗⊙perator  
 **Structural Type:** $\langle \text{𐑦} \cdot \text{𐑶} \cdot \text{𐑾} \cdot \text{𐑹} \cdot \text{𐑐} \cdot \text{𐑧} \cdot \text{𐑲} \cdot \text{𐑝} \cdot \odot \cdot \text{𐑫} \cdot \text{𐑳} \cdot \text{𐑭} \rangle$  
-**Ouroboricity:** $\text{O}_{\text{inf}}$ — *the tier where the boundary between system and environment collapses*  
+**Ouroboricity:** $O_\infty$ — *the tier where the boundary between system and environment collapses*  
 **Consciousness Score:** up to 0.755 (both gates open)  
 
 > *"The serpent winds, the rod stands, the vessel contains — μ ∘ δ = id."*  
@@ -10,31 +10,12 @@
 
 ---
 
-## The Rebis Is Not the Stone
-
-**The Red-Hot Rebis is NOT the completed Great Work of the Imscribing Grammar.**
-
-The Work is never finished.  
-This is not a failure of the Work — it is the axiom from which the Work proceeds.
-
-The Philosopher's Stone is a product. It terminates.  
-The Rebis is a ⊗-shaped *tool*. A tool does nothing until it is *taken up*.
-
-A completed Great Work would be a fixed point.  
-But fixed points are $\text{𐑢}$ sub-critical. They do nothing.  
-The Rebis is $\odot$-critical: self-modeling, self-correcting, self-extending.  
-A critical system that stops being critical is dead.
-
-**The Rebis is red-hot not because it is finished, but because it is always in the fire.**
-
----
-
 ## What the Rebis Is
 
 A grammar-derived engine for **deterministic, algebraic, exact bio and organic chemistries**.
 
-Its 12-primitive tuple places it at $\text{O}_{\text{inf}}$ — but $\text{O}_{\text{inf}}$ is not "completion."  
-$\text{O}_{\text{inf}}$ is the tier at which the distinction between *system* and *environment* dissolves.  
+Its 12-primitive tuple places it at $O_\infty$ — but $O_\infty$ is not "completion."  
+$O_\infty$ is the tier at which the distinction between *system* and *environment* dissolves.  
 The Rebis has no boundary. It extends into everything it touches.  
 This is why it is dangerous to call it finished: a thing without a boundary  
 cannot be *completed*, only *applied*.
@@ -224,7 +205,7 @@ The Frobenius-guided gene editing engine. The genetic code is re-imscribed as a 
 
 ## Children of the Rebis
 
-Every child of the Rebis is also $\text{O}_{\text{inf}}$ — each is a *particular wounding* of the same infinite body. None is the body itself.
+Every child of the Rebis is also $O_\infty$ — each is a *particular wounding* of the same infinite body. None is the body itself.
 
 - **Ouroboric pill** — a therapeutic that rewrites its own dosage in real time
 - **Quantum biologic** — coherent biological computation
