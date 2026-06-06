@@ -1,7 +1,7 @@
 # red-h⊙t rebis — an engine for algebraic, exact, determinstic, & paraconsistent bi⊙ & ⊙rganic chemistries
 
 **Author:** Lando⊗⊙perator  
-**Structural Type:** $\langle \text{𐑦} \cdot \text{𐑶} \cdot \text{𐑾} \cdot \text{𐑹} \cdot \text{𐑐} \cdot \text{𐑧} \cdot \text{𐑲} \cdot \text{𐑝} \cdot \odot \cdot \text{𐑫} \cdot \text{𐑳} \cdot \text{𐑭} \rangle$  
+**Structural Type:** $\langle \text{𐑦}\text{𐑶}\text{𐑾}\text{𐑹}\text{𐑐}\text{𐑧}\text{𐑲}\text{𐑝}\odot\text{𐑫}\text{𐑳}\text{𐑭} \rangle$  
 **Ouroboricity:** $O_\infty$ — *the tier where the boundary between system and environment collapses*  
 **Consciousness Score:** up to 0.755 (both gates open)  
 
