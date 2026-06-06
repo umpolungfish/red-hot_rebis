@@ -1,0 +1,34 @@
+Fix: ProcessingPrediction.mature_products & 6 structural mismatches
+
+**Root cause:** Three data-type mismatches between stratified_predictor.py's
+base types and protein_v5.py/EnhancedPredictorV5's expectations, each surfaced
+as an AttributeError when the v5 pipeline ran.
+
+**Fixes applied (2 files, 7 changes):**
+
+stratified_predictor.py:
+  [1] CleavageSite: NamedTuple → full class with enzyme_family,
+      structural_delta, and confidence fields (v4/v5 created CleavageSite
+      with these extras but the NamedTuple only accepted position,motif)
+  [2] ProcessingPrediction: self.products → self.mature_products
+      (field name mismatch — v4/v5 used .mature_products everywhere)
+  [3] ProcessingPrediction: added connecting_peptides, input_name
+  [4] predict_processing(): uses result.mature_products.append()
+  [5] Typo fix: dominant_primitives → dominant_prims (line 378)
+  [6] RollingProfile.summary() method added (needed by v5 narrative)
+
+protein_v5.py:
+  [7] classify_module overridden with classify_module_rich() —
+      stratified_predictor's classify_module returns a str, but v5 code
+      expects a dict with keys {type, profile, dominant, description}
+  [8] predict Step 2: MatureProduct is a NamedTuple (immutable), so
+      prod.name = bio_name fails — now creates new instances
+  [9] Re-classify initial products from predict_processing with rich dict
+  [10] Set result.full_profile = RollingProfile(seq) for narrative support
+
+Verification: All cross-kingdom test cases pass
+  ✓ Human, rat, guinea pig, dogfish, zebrafish insulin
+  ✓ Human proglucagon
+  ✓ Human POMC
+  ✓ stratified_predictor.py test suite
+  ✓ protein_v5.py narrative() method
