@@ -26,7 +26,7 @@ A `platonic protein` is the **structural imscription of a folded protein**: its 
 RNA sequence → [serpentrod] → ⟨structural type, tier, Frobenius certificate⟩
 ```
 
-The `platonic protein` tells you: which primitives are active, whether the fold reaches $O_\infty$, whether $μ∘δ=id$ holds across the fold transition. It does not tell you where atom 437 is at 100K in space group $P2₁2₁2₁$. That is not a limitation. That is the point.
+The `platonic protein` tells you: which primitives are active, whether the fold reaches $O_\infty$, whether $μ∘δ=id$ holds across the fold transition. It does not tell you where atom 437 is at 100K in space group $P2_{1}2_{1}2_{1}$. That is not a limitation. That is the point.
 
 ### Platonic Disconnections — `ch3mpiler/`
 
