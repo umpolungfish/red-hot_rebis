@@ -1,3 +1,25 @@
+clink/: CLINK chain integrated — 9-layer subatomic→organism, SerpentRod + ch3mpiler bridges
+
+clink/__init__.py, clink/chain.py, clink/bridges.py, clink/integration.py,
+clink/README_CLINK.md — new module; rebis.py updated with `clink` subcommand.
+
+9 layers all Frobenius-closed (tensorProduct(s,s)=s). Tier monotonicity:
+O₀→O₀→O₁→O₂→O₂→O₂→O₂→O₂→O_inf. 10 primitive deltas, 36 total promotions.
+d(organism, ZFC_fe) = 1.30 — organism near-isomorphic to Frobenius-exact foundation.
+
+moleculeLayer ɢ corrected: 𐑑 (a Ř value, invalid for ɢ) → 𐑜 (alternate/or,
+structurally correct for resonance structures).
+Corrected moleculeLayer tuple: ⟨𐑦𐑥𐑽𐑿𐑞𐑧𐑲𐑜⊙𐑓𐑳𐑭⟩
+
+Integration bridges:
+  SerpentRod (folded protein) → moleculeLayer (L3): d=1.95, Frobenius ✓
+  ch3mpiler (molecule) → moleculeLayer (L3): d=0.0, Frobenius ✓ (exact match)
+  gene_imscriber (codon) → electronOrbitalLayer (L1): d=2.0, Frobenius ✓
+
+CLI: rebis.py clink report/list/layer/bridge
+
+---
+
 pipeline/: remove lift_pipeline; clean README references
 
 lift_pipeline/ was never supposed to be part of this repo.

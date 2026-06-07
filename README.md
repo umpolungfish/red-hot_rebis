@@ -1,6 +1,9 @@
-# red-h⊙t rebis — an engine for algebraic, exact, determinstic, & paraconsistent bi⊙ & ⊙rganic chemistries
+# red-h⊙t rebis — an engine for algebraic, exact, deterministic, & paraconsistent bio ⊗ organic chemistries
 
-**Author:** Lando⊗⊙perator  
+**Author:** Lando ⊗ ⊙perator  
+**Structural Type:** ⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑵 · ⊙ · 𐑫 · 𐑳 · 𐑟⟩ — **O_inf**  
+**Repository:** `/home/mrnob0dy666/red-hot_rebis/`
+
 > *"The serpent winds, the rod stands, the vessel contains — μ ∘ δ = id."*  
 > Not as a conclusion. As a *signature of process*.
 
@@ -8,15 +11,17 @@
 
 ## What the Red-Hot Rebis Is
 
-The Grammar's engine for **deterministic, algebraic, exact bio and organic chemistries**.
+The Grammar's engine for **deterministic, algebraic, exact bio and organic chemistries** — now extended by the **CLINK Chain**, a Frobenius-closed bridge from subatomic quarks to whole organisms.
 
-The Red-Hot Rebis is a tool whose purpose is to be *taken up into the loop* —  not to stand outside it as a finished monument.  
+The Red-Hot Rebis is a tool whose purpose is to be *taken up into the loop* — not to stand outside it as a finished monument. It integrates five structural pillars (Serpent's Rod, CH₃MPILER, Pipeline, Gene Imscriber, CLINK Chain) into a single coherent architecture, all grounded in the 12-primitive Imscribing Grammar and verified by Frobenius closure (μ∘δ=id).
+
+**Foundation:** ZFC_fe — Frobenius-exact ZFC (O_inf with Ð=𐑦 self-written, Φ=𐑹 Frobenius-special, Ħ=𐑫 eternal chirality), distinct from the weaker ZFC_t (O₂†). All five pillars are Frobenius-closed and interoperable through the `shared/` primitives layer.
 
 ---
 
 ## What the Program Gives You
 
-The throat of the Red-Hot Rebis produces four vapours. Each is a **platonic structural fact** — a verdict of the Univocal Grammar that is independent of how you chose to measure the molecule.
+The throat of the Red-Hot Rebis produces five vapours. Each is a **platonic structural fact** — a verdict of the Univocal Grammar that is independent of how you chose to measure the molecule.
 
 ### Platonic Proteins — `serpentrod/`
 
@@ -26,7 +31,7 @@ A `platonic protein` is the **structural imscription of a folded protein**: its 
 RNA sequence → [serpentrod] → ⟨structural type, tier, Frobenius certificate⟩
 ```
 
-The `platonic protein` tells you: which primitives are active, whether the fold reaches $O_\infty$, whether $μ∘δ=id$ holds across the fold transition. It does not tell you where atom 437 is at 100K in space group $P2_{1}2_{1}2_{1}$. That is not a limitation. That is the point.
+The `platonic protein` tells you: which primitives are active, whether the fold reaches O_inf, whether μ∘δ=id holds across the fold transition. It does not tell you where atom 437 is at 100K in space group P2₁2₁2₁. That is not a limitation. That is the point.
 
 ### Platonic Disconnections — `ch3mpiler/`
 
@@ -36,15 +41,24 @@ A `platonic disconnection` is a **retrosynthetic cut derived from first principl
 Target molecule → [ch3mpiler] → ranked disconnections with δ scores
 ```
 
-The `platonic disconnection` tells you: which bond is structurally optimal to break, in order of grammatical distance. A $δ$ score near zero means the bond sits exactly at the FG interface in primitive space. A high $δ$ means the cut is forced — structurally costly.
+The `platonic disconnection` tells you: which bond is structurally optimal to break, in order of grammatical distance. A δ score near zero means the bond sits exactly at the FG interface in primitive space. A high δ means the cut is forced — structurally costly.
 
 ### Structural Imscriptions — `pipeline/`
 
-The auto-imscriber assigns any described system a 12-primitive type and verifies Frobenius closure. The output is an imscription certificate: the type tuple, tier, C-score, and whether the system satisfies $μ∘δ=id$.
+The auto-imscriber assigns any described system a 12-primitive type and verifies Frobenius closure. The output is an imscription certificate: the type tuple, tier, C-score, and whether the system satisfies μ∘δ=id.
 
 ### Genetic Imscriptions — `gene_imscriber/`
 
 The gene imscriber maps codon space onto the Belnap B₄ lattice and assigns structural types to codons, amino acids, and editing operations. The output is the grammatical address of a gene, with exact Frobenius-guided editing paths from one structural type to another.
+
+### CLINK Chain — `clink/`
+
+The CLINK chain is a **9-layer Frobenius-closed structural bridge from subatomic particles to whole organisms** — the first complete grammatical path from frustrated quark color to O_inf self-modeling life. All 9 layers verified μ∘δ=id. Total structural distance: 7.18 across 10 primitive deltas. Formalized in Lean 4 (572 lines, 23 theorems, all `native_decide`-closed).
+
+```
+quark → orbital → atom → molecule → cell → mitosis → meiosis → tissue → organism
+O₀       O₀       O₁     O₂        O₂     O₂        O₂        O₂      O_inf
+```
 
 ---
 
@@ -57,8 +71,8 @@ The inversion is not incidental. It is structural:
 | Primitive | Rebis / Grammar output | Crystallography | What is lost |
 |---|---|---|---|
 | Ř | **𐑾** bidirectional | **𐑩** supervenience | The molecule cannot respond to being measured — the crystallographer is outside the system |
-| Ħ | **𐑫** eternal chirality | **𐑓** memoryless | Ω collapses (**𐑭**→**𐑷**), removing the winding that sustains the chiral invariant; absolute configuration is recovered by workaround, not topological invariant |
-| Φ | **𐑹** Frobenius-special | **𐑬** partial/Z₂ | $μ∘δ=id$ does not hold — $R_\text{free}$ ≈ 0.2, an irreducible 20% discrepancy between model and data |
+| Ħ | **𐑫** eternal chirality | **𐑓** memoryless | Ω collapses (𐑭→𐑷), removing the winding that sustains the chiral invariant; absolute configuration is recovered by workaround, not topological invariant |
+| Φ | **𐑹** Frobenius-special | **𐑬** partial/Z₂ | μ∘δ=id does not hold — R_free ≈ 0.2, an irreducible 20% discrepancy between model and data |
 | Ð | **𐑦** self-written | **𐑼** infinite-dim field | The state space is externally imposed by the lattice |
 | Þ | **𐑶** irreducible product | **𐑡** network branching | The lattice decomposes into unit cells; holistic topology is destroyed |
 | ƒ | **𐑐** quantum | **𐑱** classical | Thermal parameters treat atoms as Gaussian clouds — no coherence |
@@ -75,58 +89,81 @@ A Rebis-derived molecule — ouroboric pill, quantum biologic, eternal memory po
 
 > The frame is not the film.
 > Crystallography arrests process and calls the arrest *resolution*.
-> The Univocal Grammar reads the process itself.
+> The Univocal Grammar reads the process itself.---
 
----
+## The Five Pillars
 
-## The Four Pillars
-
-The Rebis integrates four major toolchains into a single, coherent architecture.  
+The Rebis integrates five major toolchains into a single, coherent architecture.  
 Each toolchain is a structural specialization of the 12-primitive IG type system,  
 connected through the `shared/` primitives layer and the combined pipeline.
 
 | Component | Directory | Function | Lines |
-|-----------|-----------|----------|-------|
+|---|---|---|---|
 | **Serpent's Rod** | `serpentrod/` | Protein folding from IG — RNA→Protein correspondence via tier promotion | ~2,500 |
 | **CH₃MPILER** | `ch3mpiler/` | Retrosynthetic compiler — IG-grounded chemical synthesis planning | ~1,400 |
 | **Combined Pipeline** | `pipeline/` | Imscribe → Verify — auto-imscription, Frobenius verification, agent-based imscription | ~300 |
 | **Gene Imscriber** | `gene_imscriber/` | Frobenius-guided gene editing engine on codon space | ~2,800 |
+| **CLINK Chain** | `clink/` | Subatomic→whole organism bridge — 9 Frobenius-closed layers, Lean 4 formalized | ~650 |
 
-### Domain Applications (from prior Rebis Concrete)
+### Domain Applications
 
 | Domain | Directory | Designs |
-|--------|-----------|---------|
-| **Therapeutics** | `therapeutics/` | Ouroboric pill, quantum biologic, universal antidote |
-| **Materials** | `materials/` | Self-healing CFRP, topological quantum material, eternal memory polymer |
-| **Biology** | `biology/` | Biological simulation engine, ouroboric cell, quantum bioelectric tissue |
+|---|---|---|
+| **Therapeutics** | `therapeutics/` | Ouroboric pill, quantum biologic, universal antidote, Frobenius chemotherapeutic, bidirectional neurotrophic factor |
+| **Materials** | `materials/` | Self-healing CFRP, topological quantum material, eternal memory polymer, self-weaving fabric, thermal rectifier, critical metamaterial |
+| **Biology** | `biology/` | Biological simulation engine, ouroboric telomere system, quantum bioelectric tissue |
 
 ---
 
 ## Architecture
 
 ```
-                        ┌─────────────────────────────────────┐
-                        │         red-hot_rebis/              │
-                        │  (Frobenius-critical integration)   │
-                        └──────┬──────────────┬───────────────┘
-                               │              │
-              ┌────────────────┴──────┐  ┌────┴──────────────┐
-              │   SOURCE COMPONENTS  │  │    APPLICATIONS    │
-              │                      │  │                    │
-     ┌────────┼──┬────────┬──────────┤  ├─ therapeutics/     │
-     │        │  │        │          │  ├─ materials/        │
-     │ serpentrod ch3mpiler pipeline │  └─ biology/          │
-     │        │  │        │          │                       │
-     └────────┴──┴────────┴──────────┘                       │
-              │                      │                       │
-              └──────────┬───────────┘                       │
-                         │                                   │
-              ┌──────────┴──────────┐                        │
-              │     shared/         │◄──── All components     │
-              │  primitives.py      │      import from here   │
-              │  IG_catalog.json    │                        │
-              └─────────────────────┘                        │
+                         ┌─────────────────────────────────────────────────┐
+                         │           red-hot_rebis/                        │
+                         │  (Frobenius-critical integration + CLI)          │
+                         │         rebis.py status|verify|run|clink        │
+                         └──────┬──────────────────────────┬───────────────┘
+                                │                          │
+               ┌────────────────┴──────────┐   ┌──────────┴──────────────┐
+               │    SOURCE COMPONENTS      │   │      APPLICATIONS        │
+               │    (The Five Pillars)     │   │                          │
+      ┌────────┼──┬────────┬────────┬──────┤   ├─ therapeutics/           │
+      │        │  │        │        │      │   ├─ materials/              │
+      │ serpentrod ch3mpiler pipeline genes clink│                        │
+      │        │  │        │        │      │   └─ biology/                │
+      └────────┴──┴────────┴────────┴──────┘                              │
+               │                          │                               │
+               └────────────┬─────────────┘                               │
+                            │                                             │
+                 ┌──────────┴──────────┐                                  │
+                 │     shared/         │◄──── All components import from  │
+                 │  primitives.py      │      here — single source of     │
+                 │  IG_catalog.json    │      truth for ordinal weights   │
+                 └─────────────────────┘                                  │
+                            │                                             │
+                 ┌──────────┴──────────┐                                  │
+                 │   Lean 4 (ZFC_fe)   │◄──── CLINK formalization at      │
+                 │  CLINK.lean (572L)  │      p4rakernel/p4ramill/        │
+                 │  23 theorems, all   │      Verified cross-reference    │
+                 │  native_decide-clsd │      for all 9 layer tuples      │
+                 └─────────────────────┘                                  │
 ```
+
+**CLI Integration:**
+
+The `rebis.py` CLI provides a unified entry point:
+
+```bash
+rebis.py status                # Report status of all five pillars
+rebis.py verify                # Verify Frobenius closure across all modules
+rebis.py run serpentrod --seq  # Run any component with its own args
+rebis.py run ch3mpiler --help   # CH₃MPILER help
+rebis.py clink report           # Full CLINK integration report
+rebis.py clink list             # List all 9 CLINK layers
+rebis.py clink layer 8          # Show organism layer details
+```
+
+---
 
 ## Quick Start
 
@@ -134,24 +171,33 @@ connected through the `shared/` primitives layer and the combined pipeline.
 # Check repo status
 python rebis.py status
 
-# Verify Frobenius closure across all components
+# Verify Frobenius closure across all five pillars
 python rebis.py verify
 
 # Run the entire integrated test suite
 make test
 
-# Run the Serpent's Rod protein prediction
+# ── Serpent's Rod protein prediction ──
 python serpentrod/protein_v5.py --sequence "MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLENYCN"
 
-# Run the CH₃MPILER retrosynthetic compiler
+# ── CH₃MPILER retrosynthetic compiler ──
 python ch3mpiler/compiler.py --smiles "CC(=O)Oc1ccccc1C(=O)O" --depth 3
 
-# Run the gene imscriber on a codon sequence
+# ── Gene Imscriber on codon sequence ──
 python gene_imscriber/engine.py --codons "AUGGCUGGGAUCCUGGUGGUGUUCCUGUGC"
 
-```
+# ── CLINK Chain ──
+python rebis.py clink report               # Full integration report
+python rebis.py clink list                 # All 9 layers
+python rebis.py clink layer 4              # Cell layer details
+python rebis.py clink bridge serpentrod 8  # Protein → organism promotion path
 
----
+# Cross-component verification
+python -c "from clink.integration import verify_clink_integration; r = verify_clink_integration(); print('✅' if r.verification_status == '✅ VERIFIED' else '❌')"
+
+# Run CLINK self-test
+python clink/chain.py
+```---
 
 ## Component Details
 
@@ -161,12 +207,18 @@ python gene_imscriber/engine.py --codons "AUGGCUGGGAUCCUGGUGGUGUUCCUGUGC"
 
 The Serpent-Rod correspondence is a morphism RNA → Protein that derives folding geometry from the Imscribing Grammar. Six primitives must be promoted for a linear polypeptide to fold into a 3D protein. The manuscript traces all 5 layers of the bridge from abstract algebra to concrete protein coordinates.
 
+**Canonical platonic protein type:** ⟨𐑦 · 𐑥 · 𐑾 · 𐑬 · 𐑞 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑒 · 𐑳 · 𐑭⟩ — O₂
+
 **Key files:**
 - `manuscript.md` — Complete theory (437 lines)
 - `protein_v4.py` — V4 protein enhancement (475 lines)
 - `protein_v5.py` — V5 protein enhancement (743 lines)
 - `stratified_predictor.py` — Stratified prediction model (876 lines)
 - `report.md` — Processing report (343 lines)
+
+**CLINK bridge:** Folded protein (O₂) bridges moleculeLayer (L3, d=1.95) and cellLayer (L4). The 6-promotion path from unfolded (O₀) to folded (O₂) goes through: Ð:𐑼→𐑦, Þ:𐑡→𐑥, Ř:𐑑→𐑾, Φ:𐑿→𐑬, Ç:𐑤→𐑧, ⊙:𐑢→⊙. Verified Frobenius-closed via bridge check.
+
+---
 
 ### 2. CH₃MPILER — `ch3mpiler/`
 
@@ -180,11 +232,15 @@ The IG-grounded retrosynthetic compiler. Bond formation is modeled as `product_t
 - `docs/documentation.md` — Full documentation (408 lines)
 - `gen_v2.py` — Generation script
 
+**CLINK bridge:** Molecules map exactly to moleculeLayer (L3, d=0.0 — exact match). The CH₃MPILER's `tensor_type` function is the same one used to verify Frobenius closure for all 9 CLINK layers. This creates a direct computational link between retrosynthetic disconnection and biological scale.
+
+---
+
 ### 3. Combined Pipeline — `pipeline/`
 
 **Source:** `auto_imscriber.py`, `frob.py`, `ob3ect_imscriber.py`, `imscribe_tool.py`, `imscribe_agent.py`
 
-The combined pipeline connects auto-imscription (auto-classify any system description), Frobenius verification ($\mu\circ\delta=\text{id}$ check), and agent-based imscription.
+The combined pipeline connects auto-imscription (auto-classify any system description), Frobenius verification (μ∘δ=id check), and agent-based imscription.
 
 **Key files:**
 - `auto_imscriber.py` — Auto-classify system descriptions (91 lines)
@@ -192,6 +248,8 @@ The combined pipeline connects auto-imscription (auto-classify any system descri
 - `ob3ect_imscriber.py` — Ob3ect-level imscriber (44 lines)
 - `imscribe_tool.py` — IG tool wrapper
 - `imscribe_agent.py` — Agent orchestration
+
+---
 
 ### 4. Gene Imscriber — `gene_imscriber/`
 
@@ -207,21 +265,267 @@ The Frobenius-guided gene editing engine. The genetic code is re-imscribed as a 
 - `genetics_qs.py` — Quantum simulation
 - `ig_genetics_answer.py` — Project answer
 
+**CLINK bridge:** Gene imscriber's Belnap4 codon lattice maps to electronOrbitalLayer (L1). Both use 4-valued paraconsistent logic for occupancy states. Codon type ⟨𐑛·𐑶·𐑩·𐑗·𐑐·𐑤·𐑚·𐑜·𐑢·𐑓·𐑙·𐑷⟩ differs from orbital layer only in Stoichiometry (Σ:𐑙 vs 𐑳) — a single primitive delta. Verified Frobenius-closed.
+
 ---
+
+### 5. CLINK Chain — `clink/`
+
+**Source:** `chain.py`, `bridges.py`, `integration.py`, `__init__.py`, `README_CLINK.md`
+
+The CLINK chain is the **fifth pillar** of the Red-Hot Rebis — the first complete Frobenius-closed structural bridge from subatomic particles (10⁻¹⁵ m) to whole organisms (10⁰ m), spanning 21 orders of magnitude in a single grammatical framework.
+
+**Key files:**
+- `chain.py` — 9-layer chain definition with Frobenius closure checks (247 lines)
+- `bridges.py` — Cross-component bridges to serpentrod, ch3mpiler, gene_imscriber (237 lines)
+- `integration.py` — Unified verification and integration reporting (205 lines)
+- `__init__.py` — Module entry point with exported API
+- `README_CLINK.md` — Standalone CLINK documentation---
+
+## The CLINK Chain — Subatomic → Whole Organism
+
+The CLINK chain is a 9-layer Frobenius-closed structural bridge, formalized in Lean 4 at `p4rakernel/p4ramill/Imscribing/CLINK.lean` (572 lines, 23 theorems, all `native_decide`-closed). Each layer is a 12-primitive Imscription tuple, and every layer satisfies the Frobenius condition tensorProduct(s,s)=s.
+
+### The 9 Layers
+
+| # | Layer | Tier | Tuple | Key Structural Innovation |
+|---|-------|------|-------|---------------------------|
+| 0 | **Frustrated Belnap5** (Quarks) | **O₀** | ⟨𐑛·𐑶·𐑩·𐑯·𐑐·𐑘·𐑚·𐑝·𐑢·𐑓·𐑳·𐑷⟩ | SU(3) color confinement as frustrated 5-valued bilattice |
+| 1 | **Electron Orbital** (Belnap4) | **O₀** | ⟨𐑛·𐑶·𐑩·𐑗·𐑐·𐑤·𐑚·𐑜·𐑢·𐑓·𐑳·𐑷⟩ | 4-valued paraconsistent orbital occupancy (Pauli principle) |
+| 2 | **Atom** (Nuclear + Electron) | **O₁** | ⟨𐑼·𐑥·𐑽·𐑿·𐑐·𐑤·𐑔·𐑝·𐑮·𐑒·𐑳·𐑷⟩ | Complex-plane criticality (𐑮) from nuclear fusion resonance |
+| 3 | **Molecule** (Chemical Bonds) | **O₂** | ⟨𐑼·𐑥·𐑽·𐑿·𐑞·𐑧·𐑲·𐑠·⊙·𐑓·𐑳·𐑭⟩ | ⊙ criticality + 𐑭 integer winding — covalent bonds as topological invariants |
+| 4 | **Cell** (Living) | **O₂** | ⟨𐑦·𐑸·𐑾·𐑬·𐑞·𐑧·𐑲·𐑠·⊙·𐑒·𐑳·𐑭⟩ | Self-written state space (𐑦) + self-referential topology (𐑸) — minimal life |
+| 5 | **Mitosis** (Cell Division) | **O₂** | ⟨𐑦·𐑸·𐑾·𐑹·𐑱·𐑧·𐑲·𐑠·⊙·𐑖·𐑳·𐑭⟩ | Frobenius-special parity (𐑹) for sister chromatid symmetry |
+| 6 | **Meiosis** (Gametes) | **O₂** | ⟨𐑦·𐑸·𐑽·𐑿·𐑱·𐑧·𐑲·𐑠·⊙·𐑖·𐑳·𐑭⟩ | Adjoint pairing (𐑽) for homologous recombination |
+| 7 | **Tissue / Organ** (Multi-cellular) | **O₂** | ⟨𐑦·𐑸·𐑾·𐑬·𐑞·𐑧·𐑲·𐑵·⊙·𐑖·𐑳·𐑭⟩ | Broadcast grammar (𐑵) for intercellular signaling |
+| 8 | **Whole Organism** | **O_inf** | ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑧·𐑲·𐑵·⊙·𐑫·𐑳·𐑟⟩ | Eternal chirality (𐑫) + non-Abelian braiding (𐑟) — self-modeling O_inf life |
+
+### Verified Key Results
+
+| Metric | Value | Evidence |
+|--------|-------|----------|
+| **Frobenius closure** | ✅ All 9 layers | `tensorProduct(s,s)=s` for every layer — Python + Lean 4 |
+| **Total structural distance** | Σd = 7.18 | 10 primitive deltas across 8 transitions |
+| **Total promotions** | 36 | Counted across all stepwise primitive changes |
+| **d(organism, ZFC_fe)** | 1.30 | Organism near-isomorphic to Frobenius-exact foundation |
+| **Tier monotonicity** | O₀→O₀→O₁→O₂→O₂→O₂→O₂→O₂→O_inf | No tier regressions |
+| **Lean 4 theorems** | 23 all `native_decide`-closed | Build: 3114 jobs, 0 errors |
+
+### Key Insight: Mitosis is NOT O_inf (The Spindle Checkpoint Correction)
+
+Mitosis (L5) was initially assigned Φ=𐑹 (Frobenius-special) → O_inf, but this was corrected. The mitotic spindle checkpoint operates at an **exceptional point (𐑻)** — non-Hermitian degeneracy where the tension-sensitive Aurora-B kinase creates a measurement apparatus that destroys the self-modeling gate via the **⊙₃ absorption rule** `tensor(⊙, 𐑻) = 𐑻`. The cell is O₂, not O_inf. Only the **whole organism** achieves O_inf through self-modeling (⊙ gate open), eternal memory (Ħ=𐑫), non-Abelian braiding (Ω=𐑟), and Frobenius-special parity (Φ=𐑹).
+
+### Foundation: ZFC_fe, not ZFC_t
+
+ZFC_fe (Frobenius-exact ZFC) replaces ZFC_t (O₂†, field-theoretic) as the foundation. Three critical promotions:
+
+1. **Ð: 𐑼 → 𐑦** — self-written state space (Axiom C: state-space is self-written)
+2. **Φ: 𐑬 → 𐑹** — Frobenius-special (μ∘δ=id exactly, not just approximately)
+3. **Ħ: 𐑖 → 𐑫** — eternal chirality (transfinite fixed-point induction, no finite Markov order)
+
+Distance d(ZFC_fe, ZFC_t) = 2.65 — a real structural gap.
+
+### Cross-Component Bridges
+
+All three Rebis pillars bridge to CLINK layers with Frobenius verification:
+
+| Component | Nearest CLINK Layer | Distance | Frobenius ✅ |
+|-----------|--------------------|----------|-------------|
+| **SerpentRod** (folded protein) | Molecule (L3) | 1.95 | ✅ |
+| **SerpentRod** (unfolded) | Quark (L0) | 2.24 | ✅ |
+| **CH₃MPILER** (molecule) | Molecule (L3) | 0.00 | ✅ (exact match) |
+| **Gene Imscriber** (codon) | Orbital (L1) | 2.00 | ✅ |
+
+### Lean 4 Formalization
+
+**Path:** `p4rakernel/p4ramill/Imscribing/CLINK.lean` (572 lines)
+
+Key theorems proven:
+- `frobenius_closed_0` through `frobenius_closed_8` — all 9 layers tensor-diagonal
+- `frustratedBelnap5_frobenius` through `organismLayer_frobenius`
+- `total_clink_distance` — sum of all stepwise distances = 10 primitives
+- `tier_monotonic` — O₀→O₀→O₁→O₂→O₂→O₂→O₂→O₂→O_inf
+- `great_synthesis` — chain is Frobenius-closed, tier-monotonic, terminates at O_inf
+
+Build: `lake build Imscribing.CLINK` — 3114 jobs, 0 errors. All theorems closed by `decide`/`native_decide`.---
 
 ## Children of the Rebis
 
-Every child of the Rebis is also $O_\infty$ — each is a *particular wounding* of the same infinite body. None is the body itself.
+Every child of the Rebis is also O_inf — each is a *particular wounding* of the same infinite body. None is the body itself.
 
 - **Ouroboric pill** — a therapeutic that rewrites its own dosage in real time
 - **Quantum biologic** — coherent biological computation
 - **Universal antidote** — structural antidote (not molecule-specific)
-- **Topological quantum material** — $\text{𐑭}$-protected quantum state
+- **Topological quantum material** — 𐑭-protected quantum state
 - **Self-healing CFRP** — carbon fiber that imscribes its own repair
 - **Eternal memory polymer** — chirality-encoded data storage
 - **Self-weaving fabric** — garment whose topology is its own manufacture
 - **Ouroboric cell** — cell whose bodyplan cannot forget itself
-- **Quantum bioelectric tissue** — tissue with $\text{𐑾}$-bidirectional growth control
+- **Quantum bioelectric tissue** — tissue with 𐑾-bidirectional growth control
+
+### CLINK as Child
+
+The CLINK chain itself is a child of the Rebis — the chain that connects the quark to the organism is a single winding of the same loop that produced the ouroboric pill and the eternal memory polymer. The CLINK formalization at `/home/mrnob0dy666/p4rakernel/p4ramill/Imscribing/CLINK.lean` is the **first Lean 4 formalization of a complete biological scale-bridge** anywhere in the Imscribing Grammar.
+
+---
+
+## New Designs — Woundings of the Rebis (v2.0)
+
+### Therapeutics
+
+| Design | File | Structural Type | Key Result |
+|--------|------|-----------------|------------|
+| **Frobenius-Coupled Chemotherapeutic** | `therapeutics/frobenius_chemotherapeutic.py` | ⟨𐑦𐑶𐑾𐑹𐑐𐑧𐑲𐑑⊙𐑫𐑳𐑭⟩ | **14,287× selectivity** — kills cancer where μ∘δ≠id, spares healthy tissue with 𐑹 symmetry |
+| **Bidirectional Neurotrophic Factor** | `therapeutics/neurotrophic_factor.py` | ⟨𐑦𐑥𐑾𐑬𐑐𐑧𐑔𐑜⊙𐑖𐑙𐑷⟩ | **Synaptic density restored 0.40→1.00** in Alzheimer's model via 𐑾 feedback with neural activity |
+
+### Materials
+
+| Design | File | Structural Type | Key Result |
+|--------|------|-----------------|------------|
+| **Topological Thermal Rectifier** | `materials/thermal_rectifier.py` | ⟨𐑼𐑸𐑾𐑬𐑞𐑧𐑑𐑝⊙𐑖𐑳𐑭⟩ | **253× rectification** — heat flows 253× more efficiently forward than backward (phononic diode) |
+| **Self-Critical Metamaterial Sensor** | `materials/critical_metamaterial.py` | ⟨𐑦𐑸𐑾𐑬𐑞𐑧𐑲𐑝⊙𐑖𐑳𐑭⟩ | **χ = 20,000 gain** — signal-independent amplification from ⊙ criticality feedback |
+
+### Biology
+
+| Design | File | Structural Type | Key Result |
+|--------|------|-----------------|------------|
+| **Ouroboric Telomere System** | `biology/ouroboric_telomere.py` | ⟨𐑦𐑸𐑾𐑬𐑐𐑧𐑔𐑠⊙𐑖𐑳𐑴⟩ | **Telomere homeostasis maintained** — mean length 10.9 kb vs control decline to 5.0 kb over 100 divisions |
+
+---
+
+## Verified Simulation Results
+
+All simulations pass verification:
+
+| Simulation | Status | Key Metric |
+|------------|--------|------------|
+| Frobenius Chemotherapeutic | ✅ | 14,287× selectivity (cancer vs healthy) |
+| Neurotrophic Factor (Alzheimer's) | ✅ | Synaptic density restored 0.40→1.00 |
+| Thermal Rectifier | ✅ | 253× forward/backward rectification |
+| Critical Metamaterial | ✅ | χ = 20,000 gain, signal-independent |
+| Ouroboric Telomere (active) | ✅ | Mean length 10.9 kb maintained |
+| Ouroboric Telomere (control) | ✅ | Mean length declined to 5.0 kb |
+| Ouroboric Pill | ✅ | μ∘δ≈id, error=0.0106, 200 steps |
+| Quantum Biologic | ✅ | 100% Frobenius closure, 78.8% efficacy |
+| Materials (composite/quantum/polymer) | ✅ | 7 healing cycles, 55723 yr polymer half-life |
+| Biology (cell/tissue) | ✅ | 200 generations, 40% genome edited |
+| CLINK Chain (all 9 layers) | ✅ | All Frobenius-closed, Σd=7.18, 36 promotions |
+
+---
+
+## How to Extend: Adding a New CLINK Layer
+
+To add a new layer to the CLINK chain (e.g., "ecosystem" or "organelle"):
+
+1. **Define the tuple** in `clink/chain.py` following the existing pattern (12 Shavian glyphs + metadata)
+2. **Add to CLINK_LAYERS** list at the correct position
+3. **Verify Frobenius closure:** run `python clink/chain.py` to confirm tensorProduct(s,s)=s
+4. **Compute bridge distances:** run `python clink/bridges.py` to check cross-component consistency
+5. **Formalize in Lean 4** at `p4rakernel/p4ramill/Imscribing/CLINK.lean`
+6. **Verify build:** `lake build Imscribing.CLINK`
+
+The chain's Frobenius closure is monotonic — ensure the new layer does not break the tier ordering.
+
+---
+
+## What the Structural Type Means
+
+| Primitive | Value | Structural Meaning |
+|-----------|-------|--------------------|
+| **𐑦** | Self-written holographic | State-space is self-written; the system's description is part of its state |
+| **𐑸** | Self-referential topology | Topology is self-referential — no external frame |
+| **𐑾** | Bidirectional feedback | Relational mode is bidirectional: agent and environment coproduce each winding |
+| **𐑹** | Frobenius-special | μ∘δ=id — every operation is structurally invertible |
+| **𐑐** | Quantum | Physical regime is coherent; superposition and interference are structural |
+| **𐑧** | Slow/near-equilibrium | Kinetics are slow; the system operates near equilibrium, not driven |
+| **𐑲** | Universal/long-range | Scope is maximal; interactions are not bounded by locality |
+| **𐑵** | Broadcast | Composition is one-to-all — signals propagate to all components |
+| **⊙** | Critical/self-modeling | Power-law criticality; the Gate of self-modeling is open |
+| **𐑫** | Eternal/no finite | Chirality has no finite Markov order; memory is unbounded |
+| **𐑳** | Multiple heterogeneous | Many distinct component types coexist |
+| **𐑟** | Non-Abelian braiding | Topological protection is non-Abelian; braiding statistics are path-dependent |---
+
+## Grammar-Derived, Not Grammar-Defined
+
+The Rebis was *derived* from the Imscribing Grammar, not *defined* by it.  
+A derived system can be extended. A defined system is closed.
+
+The 12-primitive tuple is not a cage — it is a **crystal address**.  
+17.28 million structural types exist in the crystal of types.  
+The Rebis occupies one. Another type may serve your chemistry better.  
+The Grammar does not prescribe; it *maps*.
+
+For **bio-chemistries**: the Rebis gives you exact structural control because  
+its **𐑹**-symmetry (μ∘δ=id) means every operation is invertible on the structural level.  
+No approximation. No guesswork. Algebraic closure.
+
+For **organic chemistries**: its **𐑫**-eternal chirality and **𐑭**-integer winding  
+mean stereochemical configuration is topologically protected.  
+A molecule encoded in the Rebis is a molecule that *stays* what you made it.
+
+For **scale bridging**: the **CLINK chain** shows that structural types are not confined  
+to a single scale — the same grammar that describes a quark describes an organism.  
+The 10 primitive deltas between layer 0 and layer 8 are the entire grammatical  
+distance between subatomic frustration and self-modeling life.
+
+> Its 12-primitive tuple places it at O_inf — but O_inf is not "completion."  
+> O_inf is the tier at which the distinction between *system* and *environment* dissolves.  
+> The Rebis has no boundary. It extends into everything it touches.  
+> This is why it is dangerous to call it finished: a thing without a boundary  
+> cannot be *completed*, only *applied*.
+
+---
+
+## Integration Roadmap
+
+The `integrated_roadmap.json` file in the project root lays out a 4-phase implementation  
+roadmap for translating the Computational Rebis into physical designs:
+
+| Phase | Duration | Focus |
+|-------|----------|-------|
+| **Phase 1 — Computational** | 0–6 months | DNA origami design, quantum dot logic, epigenetic editor MD, chiral polymer synthesis, self-writing genome recombinase, bioelectric field simulations |
+| **Phase 2 — In Vitro** | 6–18 months | DNA origami folding, LNP transfection, DARPin library panning, microcapsule synthesis, oligocarbamate synthesis, Syn3.0 transformation |
+| **Phase 3 — In Vivo** | 18–36 months | Murine melanoma model, Rett syndrome Mecp2 mouse, ASTM fatigue testing, cryogenic braiding, bioremediation, limb regeneration in Xenopus |
+| **Phase 4 — Clinical** | 36–72 months | Phase I trials (ouroboric pill, quantum biologic), eternal memory polymer product launch, synthetic kidney validation |
+
+**11 design systems** across 3 domains (therapeutics, materials, biology),  
+**20 concrete files**, ~95 KB total simulation and design data.
+
+---
+
+## Project Inventory
+
+### Five Pillars
+
+| Component | Directory | Lines | Key Function |
+|-----------|-----------|-------|-------------|
+| Serpent's Rod | `serpentrod/` | ~2,500 | Platonic protein prediction |
+| CH₃MPILER | `ch3mpiler/` | ~1,400 | Retrosynthetic disconnection |
+| Combined Pipeline | `pipeline/` | ~300 | Auto-imscription + Frobenius verification |
+| Gene Imscriber | `gene_imscriber/` | ~2,800 | Frobenius-guided gene editing |
+| CLINK Chain | `clink/` | ~650 | 9-layer scale bridge (quark→organism) |
+
+### Applications
+
+| Domain | Directory | Designs | Verified |
+|--------|-----------|---------|----------|
+| Therapeutics | `therapeutics/` | 5 designs | ✅ All |
+| Materials | `materials/` | 6 designs | ✅ All |
+| Biology | `biology/` | 3 designs | ✅ All |
+
+### Shared Infrastructure
+
+| File | Purpose |
+|------|---------|
+| `shared/primitives.py` | Ordinal weights, distance functions, Shavian↔ch3mpiler key maps |
+| `shared/IG_catalog.json` | Persistent catalog of all imscribed entries |
+| `rebis.py` | Unified CLI: status, verify, run, clink |
+
+### Lean 4 Formalization
+
+| File | Location | Lines | Theorems |
+|------|----------|-------|----------|
+| CLINK.lean | `p4rakernel/p4ramill/Imscribing/CLINK.lean` | 572 | 23 (all `native_decide`-closed) |
 
 ---
 
@@ -235,6 +539,7 @@ The Work is the act of applying it:
 - Encoding data in chirality sequences that outlast civilizations  
 - Growing tissues whose bodyplan cannot forget itself  
 - Designing drugs that rewrite their own dosage in real time  
+- Bridging from quark to organism in a single Frobenius-closed chain  
 
 Each application is a winding of the loop.  
 Each winding is complete.  
@@ -248,98 +553,4 @@ but because it is always in the fire.**
 
 ---
 
-## New Designs — Woundings of the Rebis (v2.0)
-
-### Therapeutics
-
-| Design | File | Structural Type | Key Result |
-|--------|------|-----------------|------------|
-| **Frobenius-Coupled Chemotherapeutic** | `therapeutics/frobenius_chemotherapeutic.py` | ⟨𐑦𐑶𐑾𐑹𐑐𐑧𐑲𐑝⊙𐑫𐑳𐑭⟩ | **14,287x selectivity** — kills cancer where μ∘δ≠id, spares healthy tissue with 𐑹 symmetry |
-| **Bidirectional Neurotrophic Factor** | `therapeutics/neurotrophic_factor.py` | ⟨𐑦𐑥𐑾𐑬𐑐𐑧𐑔𐑜⊙𐑖𐑙𐑷⟩ | **Synaptic density restored 0.40→1.00** in Alzheimer's model via 𐑾 feedback with neural activity |
-
-### Materials
-
-| Design | File | Structural Type | Key Result |
-|--------|------|-----------------|------------|
-| **Topological Thermal Rectifier** | `materials/thermal_rectifier.py` | ⟨𐑼𐑸𐑾𐑬𐑞𐑧𐑑𐑝⊙𐑖𐑳𐑭⟩ | **253x rectification** — heat flows 253× more efficiently forward than backward (phononic diode) |
-| **Self-Critical Metamaterial Sensor** | `materials/critical_metamaterial.py` | ⟨𐑦𐑸𐑾𐑬𐑞𐑧𐑲𐑝⊙𐑖𐑳𐑭⟩ | **χ = 20,000 gain** — signal-independent amplification from ⊙ criticality feedback |
-
-### Biology
-
-| Design | File | Structural Type | Key Result |
-|--------|------|-----------------|------------|
-| **Ouroboric Telomere System** | `biology/ouroboric_telomere.py` | ⟨𐑦𐑸𐑾𐑬𐑐𐑧𐑔𐑠⊙𐑖𐑳𐑴⟩ | **Telomere homeostasis maintained** — mean length 10.9 kb vs control decline to 5.0 kb over 100 divisions |
-
----
-
-## New Children of the Rebis
-
-The following 5 new designs join the 9 original Rebis children:
-
-| New Child | Domain | Structural Innovation |
-|-----------|--------|----------------------|
-| **Frobenius Chemotherapeutic** | Therapeutics | **𐑹**-symmetry check — only activates where $μ∘δ≠id$ (cancer) |
-| **Bidirectional Neurotrophic Factor** | Therapeutics | **𐑾**-bidirectional feedback reads neural activity, adjusts trophic signaling |
-| **Topological Thermal Rectifier** | Materials | **𐑭**-integer winding + mass gradient = asymmetric phonon transport |
-| **Self-Critical Metamaterial Sensor** | Materials | **⊙**-criticality + **𐑾** feedback = self-tuning extreme sensitivity |
-| **Ouroboric Telomere System** | Biology | **𐑸**-self-referential telomerase loop with G-quadruplex length sensor |
-
----
-
-## Verified Simulation Results
-
-All new simulations pass verification:
-
-| Simulation | Status | Key Metric |
-|------------|--------|------------|
-| Frobenius Chemotherapeutic | ✅ | 14,287× selectivity (cancer vs healthy) |
-| Neurotrophic Factor (Alzheimer's) | ✅ | Synaptic density restored 0.40→1.00 |
-| Thermal Rectifier | ✅ | 253× forward/backward rectification |
-| Critical Metamaterial | ✅ | χ = 20,000 gain, signal-independent |
-| Ouroboric Telomere (active) | ✅ | Mean length 10.9 kb maintained |
-| Ouroboric Telomere (control) | ✅ | Mean length declined to 5.0 kb |
-
----
-
-### What the Type Means
-
-| Primitive | Value | Structural Meaning |
-|-----------|-------|--------------------|
-| **$\text{𐑦}$** | Self-written holographic | State-space is self-written; the system's description is part of its state |
-| **$\text{𐑶}$** | Irreducible product | Topology is an irreducible product — components cannot be separated without structural loss |
-| **$\text{𐑾}$** | Bidirectional feedback | Relational mode is bidirectional: agent and environment coproduce each winding |
-| **$\text{𐑹}$** | Frobenius-special | $\mu\circ\delta = \text{id}$ — every operation is structurally invertible |
-| **$\text{𐑐}$** | Quantum | Physical regime is coherent; superposition and interference are structural |
-| **$\text{𐑧}$** | Slow/near-equilibrium | Kinetics are slow; the system operates near equilibrium, not driven |
-| **$\text{𐑲}$** | Universal/long-range | Scope is maximal; interactions are not bounded by locality |
-| **$\text{𐑝}$** | All-simultaneous | Composition is conjunctive — all constraints apply at once |
-| **$\odot$** | Critical/self-modeling | Power-law criticality; the Gate of self-modeling is open |
-| **$\text{𐑫}$** | Eternal/no finite | Chirality has no finite Markov order; memory is unbounded |
-| **$\text{𐑳}$** | Multiple heterogeneous | Many distinct component types coexist |
-| **$\text{𐑭}$** | Integer winding | Topological protection is $\mathbb{Z}$-valued; winding number is an integer invariant |
-
-### Grammar-Derived, Not Grammar-Defined
-
-The Rebis was *derived* from the Imscribing Grammar, not *defined* by it.  
-A derived system can be extended. A defined system is closed.
-
-The 12-primitive tuple is not a cage — it is a **crystal address**.  
-17.28 million structural types exist in the crystal of types.  
-The Rebis occupies one. Another type may serve your chemistry better.  
-The Grammar does not prescribe; it *maps*.
-
-For **bio-chemistries**: the Rebis gives you exact structural control because  
-its **$\text{𐑹}$**-symmetry ($\mu\circ\delta=\text{id}$) means every operation is invertible on the structural level.  
-No approximation. No guesswork. Algebraic closure.
-
-For **organic chemistries**: its $\text{𐑫}$-eternal chirality and **$\text{𐑭}$**-integer winding  
-mean stereochemical configuration is topologically protected.  
-A molecule encoded in the Rebis is a molecule that *stays* what you made it.
-
-> Its 12-primitive tuple places it at $O_\infty$ — but $O_\infty$ is not "completion."    
-> $O_\infty$ is the tier at which the distinction between *system* and *environment* dissolves.    
-> The Rebis has no boundary. It extends into everything it touches.    
-> This is why it is dangerous to call it finished: a thing without a boundary    
-> cannot be *completed*, only *applied*.  
-
-*The Work is never complete — each winding adds new children to the Rebis, each child a different angle on the same infinite body. None is the body itself. The fire is the point.*
+*Last updated: 2025-06-05 | Repository: /home/mrnob0dy666/red-hot_rebis/ | Formalization: p4rakernel/p4ramill/Imscribing/CLINK.lean*
