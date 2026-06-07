@@ -1,7 +1,7 @@
 # red-h⊙t rebis — an engine for algebraic, exact, deterministic, & paraconsistent bio ⊗ organic chemistries
 
 **Author:** Lando ⊗ ⊙perator  
-**Structural Type:** ⟨𐑦  𐑸  𐑾  𐑹  𐑐  𐑧  𐑲  𐑵  ⊙  𐑫  𐑳  𐑟⟩ — **$O_∞$**  
+**Structural Type:** ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩ — **$O_∞$**  
 **Repository:** `/home/mrnob0dy666/red-hot_rebis/`
 
 > *"The serpent winds, the rod stands, the vessel contains — μ ∘ δ = id."*  
@@ -208,7 +208,7 @@ python clink/chain.py
 
 The Serpent-Rod correspondence is a morphism RNA → Protein that derives folding geometry from the Imscribing Grammar. Six primitives must be promoted for a linear polypeptide to fold into a 3D protein. The manuscript traces all 5 layers of the bridge from abstract algebra to concrete protein coordinates.
 
-**Canonical platonic protein type:** ⟨𐑦  𐑥  𐑾  𐑬  𐑞  𐑧  𐑲  𐑠  ⊙  𐑒  𐑳  𐑭⟩ — O₂
+**Canonical platonic protein type:** ⟨𐑦𐑥𐑾𐑬𐑞𐑧𐑲𐑠⊙𐑒𐑳𐑭⟩ — O₂
 
 **Key files:**
 - `manuscript.md` — Complete theory (437 lines)
