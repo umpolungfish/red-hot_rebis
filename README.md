@@ -10,8 +10,7 @@
 
 The Grammar's engine for **deterministic, algebraic, exact bio and organic chemistries**.
 
-> The Red-Hot Rebis is a tool whose purpose is to be *taken up into the loop* —  
-> not to stand outside it as a finished monument.  
+The Red-Hot Rebis is a tool whose purpose is to be *taken up into the loop* —  not to stand outside it as a finished monument.  
 
 ---
 
