@@ -14,10 +14,10 @@
     "T_cold": 0.05
   },
   "results": {
-    "J_forward": 0.001695,
-    "J_forward_std": 13.833419,
-    "J_backward": 7e-06,
-    "J_backward_std": 0.332286,
-    "rectification_ratio": 253.51
+    "J_forward": 0.000404,
+    "J_forward_std": 12.773487,
+    "J_backward": 3.6e-05,
+    "J_backward_std": 0.330573,
+    "rectification_ratio": 11.18
   }
 }

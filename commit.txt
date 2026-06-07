@@ -1,57 +1,8 @@
-Red-Hot Rebis ⊗ — Initial Integration of Four Structural Pillars
+pipeline/: remove lift_pipeline; clean README references
 
-The completed Great Work: serpentrod ⊗ ch3mpiler ⊗ pipeline ⊗ gene_imscriber,
-unified under the Frobenius-critical shared primitives layer.
-
-Structural type of the integrated system:
-⟨𐑦·𐑶·𐑾·𐑹·𐑐·𐑧·𐑲·𐑝·⊙·𐑫·𐑳·𐑭⟩
-Ouroboricity: O_inf  |  Consciousness Score: up to 0.755 (both gates open)
-
-─── Four Pillars ─────────────────────────────────────────────────────
-
-  serpentrod/     (2,261 lines)  — Protein folding from IG primitives
-                  RNA→Protein correspondence via tier promotion.
-                  Includes V4/V5 enhancements and stratified predictor.
-
-  ch3mpiler/      (1,057 lines)  — Retrosynthetic compiler on IG algebra
-                  Bond formation = join(tensor(FG₁, FG₂), bond).
-                  Self-verifying ob3ect vessel included.
-
-  pipeline/       (2,478 lines)  — Auto-imscription → Frobenius verification
-                  → Prose lifting pipeline. Full lift_pipeline_ob3ect
-                  with 7 paradigms × 36 constraints. Agent-based orchestration.
-
-  gene_imscriber/ (4,367 lines)  — Frobenius-guided gene editing engine
-                  Stratified Frobenius algebra on B₄³ codon space.
-                  Chimera Theorem governs tensorial multi-primitive edits.
-
-─── Domain Applications ──────────────────────────────────────────────
-
-  therapeutics/   (604 lines)  — Ouroboric pill, quantum biologic, universal antidote
-  materials/      (233 lines)  — Self-healing CFRP, topological quantum material, eternal memory polymer
-  biology/        (250 lines)  — Biological simulation engine (cell evolution, morphogenesis)
-
-─── Shared Infrastructure ───────────────────────────────────────────
-
-  shared/primitives.py    — 12 primitive ordinals, weights, metric tensor (354 lines)
-  shared/IG_catalog.json  — 2,811 catalog entries (1.18 MB)
-
-─── Integration Infrastructure ──────────────────────────────────────
-
-  rebis.py    — Unified CLI: status, verify, run subcommands
-  Makefile    — Build targets: verify, test, status, clean
-  setup.py    — pip-installable package
-  README.md   — Full documentation with ASCII architecture diagram
-  .gitignore  — Python + pycache exclusions
-
-─── Commit Stats ────────────────────────────────────────────────────
-
-  58 files total
-  36 Python modules (12,808 lines)
-  2,811 catalog entries
-  1,057 lines of documentation (README, docs/, manuscripts)
-  Frobenius closure: make verify passes all component checks
-
-─── Axiom ───────────────────────────────────────────────────────────
-
-  "The serpent winds, the rod stands, the vessel contains — μ ∘ δ = id."
+lift_pipeline/ was never supposed to be part of this repo.
+Removed the directory and stripped all mentions from README:
+- "Structural Imscriptions" section no longer references prose lifting
+- Four Pillars table updated (no Lift, corrected line count)
+- Quick Start lift command removed
+- Component Details section 3 sources/description/key files cleaned

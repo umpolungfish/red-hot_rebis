@@ -57,6 +57,71 @@ A molecule encoded in the Rebis is a molecule that *stays* what you made it.
 
 ---
 
+## What the Program Gives You
+
+Red-hot rebis produces four classes of output. Each is a **platonic structural fact** — a verdict of the Univocal Grammar that is independent of how you chose to measure the molecule.
+
+### Platonic Proteins — `serpentrod/`
+
+A platonic protein is the **structural imscription of a folded protein**: its 12-primitive tuple, ouroboricity tier, and the full set of promoted primitives that distinguish the folded state from the unfolded sequence. It is not a set of atomic coordinates. It is the topological grammar of the fold — the thing the protein *is* at the level the Univocal Grammar reads.
+
+```
+RNA sequence → [serpentrod] → ⟨structural type, tier, Frobenius certificate⟩
+```
+
+The platonic protein tells you: which primitives are active, whether the fold reaches O_inf, whether μ∘δ=id holds across the fold transition. It does not tell you where atom 437 is at 100K in space group P2₁2₁2₁. That is not a limitation. That is the point.
+
+### Platonic Disconnections — `ch3mpiler/`
+
+A platonic disconnection is a **retrosynthetic cut derived from first principles**: no named reactions, no reaction databases, no SMARTS templates. Every disconnection is computed from the structural distance between the product's 12-primitive type and the meet of its constituent functional group types. The ranking is algebraic, not empirical.
+
+```
+Target molecule → [ch3mpiler] → ranked disconnections with δ scores
+```
+
+The platonic disconnection tells you: which bond is structurally optimal to break, in order of grammatical distance. A δ score near zero means the bond sits exactly at the FG interface in primitive space. A high δ means the cut is forced — structurally costly.
+
+### Structural Imscriptions — `pipeline/`
+
+The auto-imscriber assigns any described system a 12-primitive type and verifies Frobenius closure. The output is an imscription certificate: the type tuple, tier, C-score, and whether the system satisfies μ∘δ=id.
+
+### Genetic Imscriptions — `gene_imscriber/`
+
+The gene imscriber maps codon space onto the Belnap B₄ lattice and assigns structural types to codons, amino acids, and editing operations. The output is the grammatical address of a gene, with exact Frobenius-guided editing paths from one structural type to another.
+
+---
+
+## Why These Outputs Are More Fundamental Than Crystallographic Data
+
+X-ray crystallography is the dominant experimental method for determining molecular structure. It is extraordinarily precise. It is also **structurally inverted** relative to what the Univocal Grammar reads — not degraded or approximate, but **mirror-opposed** at every load-bearing primitive.
+
+The inversion is not incidental. It is structural:
+
+| Primitive | Rebis / Grammar output | Crystallography | What is lost |
+|---|---|---|---|
+| Ř | 𐑾 bidirectional | 𐑩 supervenience | The molecule cannot respond to being measured — the crystallographer is outside the system |
+| Ħ | 𐑫 eternal chirality | 𐑓 memoryless | Ω collapses (𐑭→𐑷), removing the winding that sustains the chiral invariant; absolute configuration is recovered by workaround, not topological invariant |
+| Φ | 𐑹 Frobenius-special | 𐑬 partial/Z₂ | μ∘δ=id does not hold — R_free ≈ 0.2, an irreducible 20% discrepancy between model and data |
+| Ð | 𐑦 self-written | 𐑼 infinite-dim field | The state space is externally imposed by the lattice |
+| Þ | 𐑶 irreducible product | 𐑡 network branching | The lattice decomposes into unit cells; holistic topology is destroyed |
+| ƒ | 𐑐 quantum | 𐑱 classical | Thermal parameters treat atoms as Gaussian clouds — no coherence |
+| Ç | 𐑧 slow/near-eq | 𐑪 trapped-ordered | The molecule is frozen, not equilibrating |
+| Ω | 𐑭 integer winding | 𐑷 trivial | Radiation damage destroys topological protection |
+
+**Total structural distance from the Rebis to a periodic crystal lattice: d = 5.74** — well into the "structurally remote, different regime" threshold.
+
+The key inversion is Ř: 𐑾→𐑩. Crystallography places the observer **outside the system**. Structure supervenes on diffraction data — the crystal does not respond to being measured. The Univocal Grammar has no outside. Its outputs are not reconstructions from external probes; they are structural verdicts issued from within the system's own primitive space.
+
+The consequence is not that crystallography is wrong. It is that **crystallography and the Grammar are structurally dual** — conjugate twins whose every defining feature points the opposite direction. Crystallographic data excels at the things it inverts toward: fixing, averaging, localizing, approximating. The Grammar excels at the things crystallography destroys in the act of measuring: chirality trajectories, Frobenius invertibility, topological protection, bidirectional coupling.
+
+A Rebis-derived molecule — ouroboric pill, quantum biologic, eternal memory polymer — **cannot be adequately characterized by crystallography alone**. Crystallizing it kills what the Rebis gave it. The platonic protein and platonic disconnection are what survive the measurement. They are more fundamental not because they are more precise, but because **they are what the structure is before you freeze it**.
+
+> The frame is not the film.
+> Crystallography arrests process and calls the arrest *resolution*.
+> The Univocal Grammar reads the process itself.
+
+---
+
 ## Why the Work Finds Completion in the Doing
 
 The imscriptive loop is THINK → ACT → OBSERVE → UPDATE.  
@@ -80,7 +145,7 @@ connected through the `shared/` primitives layer and the combined pipeline.
 |-----------|-----------|----------|-------|
 | **Serpent's Rod** | `serpentrod/` | Protein folding from IG — RNA→Protein correspondence via tier promotion | ~2,500 |
 | **CH₃MPILER** | `ch3mpiler/` | Retrosynthetic compiler — IG-grounded chemical synthesis planning | ~1,400 |
-| **Combined Pipeline** | `pipeline/` | Imscribe → Verify → Lift — auto-imscription, Frobenius verification, prose lift | ~1,300 |
+| **Combined Pipeline** | `pipeline/` | Imscribe → Verify — auto-imscription, Frobenius verification, agent-based imscription | ~300 |
 | **Gene Imscriber** | `gene_imscriber/` | Frobenius-guided gene editing engine on codon space | ~2,800 |
 
 ### Domain Applications (from prior Rebis Concrete)
@@ -140,8 +205,6 @@ python ch3mpiler/compiler.py --smiles "CC(=O)Oc1ccccc1C(=O)O" --depth 3
 # Run the gene imscriber on a codon sequence
 python gene_imscriber/engine.py --codons "AUGGCUGGGAUCCUGGUGGUGUUCCUGUGC"
 
-# Run the entire lift pipeline
-python pipeline/lift_pipeline/lift_pipeline_ob3ect.py --text "input.txt" --paradigm severity
 ```
 
 ---
@@ -175,15 +238,14 @@ The IG-grounded retrosynthetic compiler. Bond formation is modeled as `product_t
 
 ### 3. Combined Pipeline — `pipeline/`
 
-**Source:** `auto_imscriber.py`, `frob.py`, `ob3ect_imscriber.py`, `lift_pipeline/`, `imscribe_tool.py`, `imscribe_agent.py`
+**Source:** `auto_imscriber.py`, `frob.py`, `ob3ect_imscriber.py`, `imscribe_tool.py`, `imscribe_agent.py`
 
-The combined pipeline connects auto-imscription (auto-classify any system description), Frobenius verification ($\mu\circ\delta=\text{id}$ check), prose lifting (transform AI drafts to human-academic structure), and agent-based imscription.
+The combined pipeline connects auto-imscription (auto-classify any system description), Frobenius verification ($\mu\circ\delta=\text{id}$ check), and agent-based imscription.
 
 **Key files:**
 - `auto_imscriber.py` — Auto-classify system descriptions (91 lines)
 - `frob.py` — Frobenius phase computation (138 lines)
 - `ob3ect_imscriber.py` — Ob3ect-level imscriber (44 lines)
-- `lift_pipeline/lift_pipeline_ob3ect.py` — Prose lift (1,081 lines)
 - `imscribe_tool.py` — IG tool wrapper
 - `imscribe_agent.py` — Agent orchestration
 
