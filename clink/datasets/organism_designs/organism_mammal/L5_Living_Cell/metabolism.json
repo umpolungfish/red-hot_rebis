@@ -1,0 +1,13 @@
+{
+  "central_carbon": {
+    "glycolysis": true,
+    "tca_cycle": true,
+    "pentose_phosphate": true
+  },
+  "atp_yield_per_glucose": {
+    "anaerobic": 2,
+    "aerobic": 36
+  },
+  "biomass_equation": "0.5G6P+0.2AA+0.1NT+0.05FA+0.05COF+0.1H2O -> biomass",
+  "growth_rate_h": 0.03
+}

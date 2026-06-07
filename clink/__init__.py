@@ -42,3 +42,23 @@ __all__ = [
     "clink_to_serpentrod", "clink_to_ch3mpiler", "clink_to_gene",
     "full_report", "IntegratedCLINKResult",
 ]
+
+
+# Pipeline integration (v2.0)
+from .designers.pipeline_orchestrator import PipelineEngine, PipelineResult
+from .designers.layer_designers import (
+    Layer0Designer, Layer1Designer, Layer2Designer,
+    Layer3Designer, Layer4Designer, Layer5Designer,
+    Layer6Designer, Layer7Designer, Layer8Designer,
+    DESIGNER_REGISTRY, get_designer, list_available_bridges,
+)
+from .designers.designer_base import DesignSpec, TransitionResult
+
+__all__.extend([
+    "PipelineEngine", "PipelineResult",
+    "Layer0Designer", "Layer1Designer", "Layer2Designer",
+    "Layer3Designer", "Layer4Designer", "Layer5Designer",
+    "Layer6Designer", "Layer7Designer", "Layer8Designer",
+    "DESIGNER_REGISTRY", "get_designer", "list_available_bridges",
+    "DesignSpec", "TransitionResult",
+])

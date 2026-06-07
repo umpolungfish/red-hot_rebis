@@ -1,0 +1,28 @@
+{
+  "organism_type": "mammal",
+  "layers": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "total_files": 33,
+  "total_bytes": 59698,
+  "tool_bridges": [
+    "biology_sim",
+    "ch3mpiler",
+    "materials_sim",
+    "serpentrod",
+    "gene_imscriber",
+    "ouroboric_telomere"
+  ],
+  "frobenius_verified": true,
+  "output_directory": "/home/mrnob0dy666/red-hot_rebis/clink/datasets/organism_designs/organism_mammal",
+  "generation_time_seconds": 0.04,
+  "generated_at": "2026-06-07T14:21:56.892181"
+}

@@ -1,0 +1,12 @@
+{
+  "primitive_spectrum": {
+    "\u00d0_\u03c9": 1,
+    "\u0126_A": 2,
+    "\u0158_=": 1,
+    "\u03a6_\u03c5": 1,
+    "\u03a3_S": 2,
+    "\u00c7_@": 1,
+    "\u2299_\u00ff": 1
+  },
+  "classification": "{'type': 'structured', 'profile': {'promoted_count': 9, 'dominant_primitive': '\u0126', 'description': '\u0126-dominant (9/26 residues)', '\u00d0': 1, '\u0126': 2, '\u0158': 1, '\u03a6': 1, '\u03a3': 2, '\u00c7': 1, '\u2299': 1}, 'dominant': '\u0126', 'description': '\u0126-dominant (9/26 residues)'}"
+}

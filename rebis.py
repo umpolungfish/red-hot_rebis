@@ -20,21 +20,22 @@ from pathlib import Path
 REBIS_ROOT = Path(__file__).parent.absolute()
 sys.path.insert(0, str(REBIS_ROOT))
 
-VERSION = "1.1.0"
-
+VERSION = "2.0.0"  # CLINK Pipeline Edition
 
 def cmd_status(args):
-    """Report the structural status of all five pillars (including CLINK)."""
+    """Report the structural status of all six pillars (including CLINK pipeline)."""
     print("=" * 60)
-    print("RED-HOT REBIS — INTEGRATED STATUS")
+    print("RED-HOT REBIS v2.0 — CLINK PIPELINE EDITION")
     print("=" * 60)
 
     components = {
         "serpentrod":   ("Serpent's Rod",       "serpentrod/manuscript.md"),
-        "ch3mpiler":    ("CH₃MPILER",           "ch3mpiler/compiler.py"),
+        "ch3mpiler":    ("CH3MPILER",           "ch3mpiler/compiler.py"),
         "pipeline":     ("Combined Pipeline",    "pipeline/frob.py"),
         "gene_imscriber": ("Gene Imscriber",    "gene_imscriber/engine.py"),
         "clink":        ("CLINK Chain",         "clink/chain.py"),
+        "clink_designers": ("CLINK Designers",   "clink/designers/layer_designers.py"),
+        "clink_pipeline": ("CLINK Pipeline",    "clink/designers/pipeline_orchestrator.py"),
     }
 
     for key, (name, path) in components.items():
@@ -42,14 +43,13 @@ def cmd_status(args):
         exists = p.exists()
         size = p.stat().st_size if exists else 0
         status = "✅" if exists else "❌"
-        print(f"  {status} {name:20s} ({key}) — {size:>8,d} bytes")
+        print(f"  {status} {name:20s} ({key}) {size:>8,d} bytes")
 
     # Shared primitives
     prim_path = REBIS_ROOT / "shared/primitives.py"
     cat_path = REBIS_ROOT / "shared/IG_catalog.json"
-    print(f"  {'':20s}  primitives: {'✅' if prim_path.exists() else '❌'}")
-    print(f"  {'':20s}  IG catalog: {'✅' if cat_path.exists() else '❌'} ({cat_path.stat().st_size:,d} bytes)")
-
+    print(f"  {"":20s}  primitives: {'✅' if prim_path.exists() else '❌'}")
+    print(f"  {"":20s}  IG catalog: {'✅' if cat_path.exists() else '❌'} ({cat_path.stat().st_size:,d} bytes)")
     print("=" * 60)
     return 0
 
@@ -67,16 +67,16 @@ def cmd_verify(args):
         print("❌ Catalog error: %s" % e)
         return 1
 
-    # Verify each component module loads
     modules = [
         ("serpentrod.protein_v5", "Serpent's Rod v5"),
-        ("ch3mpiler.compiler", "CH₃MPILER"),
+        ("ch3mpiler.compiler", "CH3MPILER"),
         ("pipeline.frob", "Pipeline Frobenius"),
-        ("pipeline.auto_imscriber", "Auto Imscriber"),
         ("gene_imscriber.engine", "Gene Imscriber"),
         ("clink.chain", "CLINK Chain"),
         ("clink.bridges", "CLINK Bridges"),
         ("clink.integration", "CLINK Integration"),
+        ("clink.designers.layer_designers", "CLINK Layer Designers"),
+        ("clink.designers.pipeline_orchestrator", "CLINK Pipeline Orchestrator"),
     ]
 
     all_ok = True
@@ -89,6 +89,45 @@ def cmd_verify(args):
             all_ok = False
 
     return 0 if all_ok else 1
+
+
+def cmd_pipeline(args):
+    """CLINK Design Pipeline: whole-organism design from any starting point."""
+    from clink.designers.pipeline_orchestrator import PipelineEngine
+    from clink.designers.layer_designers import list_available_bridges
+
+    engine = PipelineEngine()
+
+    if args.pipeline_subcommand == "bridges":
+        bridges = list_available_bridges()
+        print("Available Tool Bridges:")
+        for name, avail in sorted(bridges.items()):
+            print(f"  {'✅' if avail else '❌'} {name}")
+        return 0
+
+    elif args.pipeline_subcommand == "ground-up":
+        print("=" * 65)
+        print("CLINK PIPELINE — GROUND-UP WHOLE ORGANISM DESIGN")
+        print("=" * 65)
+        result = engine.ground_up_design()
+        print(engine.generate_report(result))
+        return 0 if result.success else 1
+
+    elif args.pipeline_subcommand == "from-layer":
+        start = args.start_layer if args.start_layer is not None else 5
+        target = args.target_layer if args.target_layer is not None else 8
+        print(f"CLINK Pipeline: L{start} → L{target}")
+        result = engine.from_layer_design(start_layer=start)
+        print(engine.generate_report(result))
+        if result.success and result.final_design:
+            export_path = f"clink_design_L{start}_to_L{target}.json"
+            if engine.export_design_json(result, export_path):
+                print(f"\nDesign exported to {export_path}")
+        return 0 if result.success else 1
+
+    else:
+        print("Unknown pipeline subcommand. Use: bridges, ground-up, from-layer")
+        return 1
 
 
 def cmd_clink(args):
@@ -124,7 +163,6 @@ def cmd_clink(args):
         print(f"  Tier: {CLINK_TIERS[idx]}")
         print(f"  Tuple: {format_tuple_glyphs(tup)}")
         print(f"  Description: {tup['_desc']}")
-        # Show cross-mappings
         sr = clink_to_serpentrod(idx)
         cm = clink_to_ch3mpiler(idx)
         ge = clink_to_gene(idx)
@@ -175,7 +213,6 @@ def cmd_run(args):
         sys.argv = [mod_path] + rest
         return module.main()
     else:
-        import inspect
         doc = module.__doc__ or ""
         first_line = doc.split("\n")[0] if doc else "No docstring"
         print("%s — %s" % (mod_path, first_line))
@@ -186,20 +223,24 @@ def cmd_run(args):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Red-Hot Rebis — Integrated Imscribing Grammar Toolchain",
+        description="Red-Hot Rebis v2.0 — CLINK Pipeline Whole-Organism Design",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
   rebis.py status                    # Show all component status
   rebis.py verify                    # Verify Frobenius closure
-  rebis.py run serpentrod --seq KAL  # Run protein prediction
-  rebis.py run ch3mpiler --help      # CH3MPILER help
-  rebis.py run gene --help           # Gene engine help
+  rebis.py pipeline bridges          # List available tool bridges
+  rebis.py pipeline ground-up        # Design whole organism from quarks
+  rebis.py pipeline from-layer 5 8   # Design organism starting from cell layer
+
   rebis.py clink report              # Full CLINK integration report
   rebis.py clink list                # List all 9 CLINK layers
   rebis.py clink layer 3             # Show layer details
   rebis.py clink bridge serpentrod 8 # Promotion path to organism
-        """
+
+  rebis.py run serpentrod --seq KAL  # Run protein prediction
+  rebis.py run ch3mpiler --help      # CH3MPILER help
+"""
     )
     parser.add_argument("--version", action="version", version="%(prog)s " + VERSION)
 
@@ -211,8 +252,18 @@ Examples:
     # verify
     subparsers.add_parser("verify", help="Verify Frobenius closure across components")
 
+    # pipeline (NEW)
+    p_pipe = subparsers.add_parser("pipeline", help="CLINK Design Pipeline")
+    p_pipe.add_argument("pipeline_subcommand",
+                        choices=["bridges", "ground-up", "from-layer"],
+                        help="Pipeline subcommand")
+    p_pipe.add_argument("start_layer", nargs="?", type=int, default=None,
+                        help="Start layer index for from-layer mode")
+    p_pipe.add_argument("target_layer", nargs="?", type=int, default=None,
+                        help="Target layer index for from-layer mode")
+
     # clink
-    p_clink = subparsers.add_parser("clink", help="CLINK chain: subatomic → whole organism")
+    p_clink = subparsers.add_parser("clink", help="CLINK chain: subatomic to whole organism")
     p_clink.add_argument("clink_subcommand",
                          choices=["report", "list", "layer", "bridge"],
                          help="CLINK subcommand")
@@ -237,6 +288,8 @@ Examples:
         return cmd_status(args)
     elif args.command == "verify":
         return cmd_verify(args)
+    elif args.command == "pipeline":
+        return cmd_pipeline(args)
     elif args.command == "clink":
         return cmd_clink(args)
     elif args.command == "run":

@@ -1,0 +1,32 @@
+{
+  "thermoregulation": {
+    "setpoint_C": 37,
+    "range_C": "36.5-37.5",
+    "sensor": "hypothalamus"
+  },
+  "glucose_regulation": {
+    "setpoint_mM": 5,
+    "range_mM": "4-7",
+    "hormones": [
+      "insulin",
+      "glucagon"
+    ]
+  },
+  "calcium_homeostasis": {
+    "setpoint_mM": 2.5,
+    "hormones": [
+      "PTH",
+      "calcitonin",
+      "vitamin_D"
+    ]
+  },
+  "osmoregulation": {
+    "setpoint_mOsm": 300,
+    "organ": "kidney",
+    "hormone": "ADH"
+  },
+  "blood_pressure": {
+    "setpoint_MAP_mmHg": 95,
+    "reflex": "baroreflex"
+  }
+}
