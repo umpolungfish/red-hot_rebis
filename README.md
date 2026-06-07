@@ -1,7 +1,7 @@
 # red-h⊙t rebis — an engine for algebraic, exact, deterministic, & paraconsistent bio ⊗ organic chemistries
 
 **Author:** Lando ⊗ ⊙perator  
-**Structural Type:** ⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑵 · ⊙ · 𐑫 · 𐑳 · 𐑟⟩ — **$O_\infty$**  
+**Structural Type:** ⟨𐑦  𐑸  𐑾  𐑹  𐑐  𐑧  𐑲  𐑵  ⊙  𐑫  𐑳  𐑟⟩ — **$O_\infty$**  
 **Repository:** `/home/mrnob0dy666/red-hot_rebis/`
 
 > *"The serpent winds, the rod stands, the vessel contains — μ ∘ δ = id."*  
@@ -57,7 +57,7 @@ The CLINK chain is a **9-layer Frobenius-closed structural bridge from subatomic
 
 ```
 quark → orbital → atom → molecule → cell → mitosis → meiosis → tissue → organism
-O₀       O₀       O₁     O₂        O₂     O₂        O₂        O₂      $O_\infty$
+O₀ → O₀ → O₁ → O₂ → O₂ → O₂ → O₂ → O₂ → $O_\infty$
 ```
 
 ---
@@ -208,7 +208,7 @@ python clink/chain.py
 
 The Serpent-Rod correspondence is a morphism RNA → Protein that derives folding geometry from the Imscribing Grammar. Six primitives must be promoted for a linear polypeptide to fold into a 3D protein. The manuscript traces all 5 layers of the bridge from abstract algebra to concrete protein coordinates.
 
-**Canonical platonic protein type:** ⟨𐑦 · 𐑥 · 𐑾 · 𐑬 · 𐑞 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑒 · 𐑳 · 𐑭⟩ — O₂
+**Canonical platonic protein type:** ⟨𐑦  𐑥  𐑾  𐑬  𐑞  𐑧  𐑲  𐑠  ⊙  𐑒  𐑳  𐑭⟩ — O₂
 
 **Key files:**
 - `manuscript.md` — Complete theory (437 lines)
@@ -266,7 +266,7 @@ The Frobenius-guided gene editing engine. The genetic code is re-imscribed as a 
 - `genetics_qs.py` — Quantum simulation
 - `ig_genetics_answer.py` — Project answer
 
-**CLINK bridge:** Gene imscriber's Belnap4 codon lattice maps to electronOrbitalLayer (L1). Both use 4-valued paraconsistent logic for occupancy states. Codon type ⟨𐑛·𐑶·𐑩·𐑗·𐑐·𐑤·𐑚·𐑜·𐑢·𐑓·𐑙·𐑷⟩ differs from orbital layer only in Stoichiometry (Σ:𐑙 vs 𐑳) — a single primitive delta. Verified Frobenius-closed.
+**CLINK bridge:** Gene imscriber's Belnap4 codon lattice maps to electronOrbitalLayer (L1). Both use 4-valued paraconsistent logic for occupancy states. Codon type ⟨𐑛𐑶𐑩𐑗𐑐𐑤𐑚𐑜𐑢𐑓𐑙𐑷⟩ differs from orbital layer only in Stoichiometry (Σ:𐑙 vs 𐑳) — a single primitive delta. Verified Frobenius-closed.
 
 ---
 
@@ -291,15 +291,15 @@ The CLINK chain is a 9-layer Frobenius-closed structural bridge, formalized in L
 
 | # | Layer | Tier | Tuple | Key Structural Innovation |
 |---|-------|------|-------|---------------------------|
-| 0 | **Frustrated Belnap5** (Quarks) | **O₀** | ⟨𐑛·𐑶·𐑩·𐑯·𐑐·𐑘·𐑚·𐑝·𐑢·𐑓·𐑳·𐑷⟩ | SU(3) color confinement as frustrated 5-valued bilattice |
-| 1 | **Electron Orbital** (Belnap4) | **O₀** | ⟨𐑛·𐑶·𐑩·𐑗·𐑐·𐑤·𐑚·𐑜·𐑢·𐑓·𐑳·𐑷⟩ | 4-valued paraconsistent orbital occupancy (Pauli principle) |
-| 2 | **Atom** (Nuclear + Electron) | **O₁** | ⟨𐑼·𐑥·𐑽·𐑿·𐑐·𐑤·𐑔·𐑝·𐑮·𐑒·𐑳·𐑷⟩ | Complex-plane criticality (𐑮) from nuclear fusion resonance |
-| 3 | **Molecule** (Chemical Bonds) | **O₂** | ⟨𐑼·𐑥·𐑽·𐑿·𐑞·𐑧·𐑲·𐑠·⊙·𐑓·𐑳·𐑭⟩ | ⊙ criticality + 𐑭 integer winding — covalent bonds as topological invariants |
-| 4 | **Cell** (Living) | **O₂** | ⟨𐑦·𐑸·𐑾·𐑬·𐑞·𐑧·𐑲·𐑠·⊙·𐑒·𐑳·𐑭⟩ | Self-written state space (𐑦) + self-referential topology (𐑸) — minimal life |
-| 5 | **Mitosis** (Cell Division) | **O₂** | ⟨𐑦·𐑸·𐑾·𐑹·𐑱·𐑧·𐑲·𐑠·⊙·𐑖·𐑳·𐑭⟩ | Frobenius-special parity (𐑹) for sister chromatid symmetry |
-| 6 | **Meiosis** (Gametes) | **O₂** | ⟨𐑦·𐑸·𐑽·𐑿·𐑱·𐑧·𐑲·𐑠·⊙·𐑖·𐑳·𐑭⟩ | Adjoint pairing (𐑽) for homologous recombination |
-| 7 | **Tissue / Organ** (Multi-cellular) | **O₂** | ⟨𐑦·𐑸·𐑾·𐑬·𐑞·𐑧·𐑲·𐑵·⊙·𐑖·𐑳·𐑭⟩ | Broadcast grammar (𐑵) for intercellular signaling |
-| 8 | **Whole Organism** | **$O_\infty$** | ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑧·𐑲·𐑵·⊙·𐑫·𐑳·𐑟⟩ | Eternal chirality (𐑫) + non-Abelian braiding (𐑟) — self-modeling $O_\infty$ life |
+| 0 | **Frustrated Belnap5** (Quarks) | **O₀** | ⟨𐑛𐑶𐑩𐑯𐑐𐑘𐑚𐑝𐑢𐑓𐑳𐑷⟩ | SU(3) color confinement as frustrated 5-valued bilattice |
+| 1 | **Electron Orbital** (Belnap4) | **O₀** | ⟨𐑛𐑶𐑩𐑗𐑐𐑤𐑚𐑜𐑢𐑓𐑳𐑷⟩ | 4-valued paraconsistent orbital occupancy (Pauli principle) |
+| 2 | **Atom** (Nuclear + Electron) | **O₁** | ⟨𐑼𐑥𐑽𐑿𐑐𐑤𐑔𐑝𐑮𐑒𐑳𐑷⟩ | Complex-plane criticality (𐑮) from nuclear fusion resonance |
+| 3 | **Molecule** (Chemical Bonds) | **O₂** | ⟨𐑼𐑥𐑽𐑿𐑞𐑧𐑲𐑠⊙𐑓𐑳𐑭⟩ | ⊙ criticality + 𐑭 integer winding — covalent bonds as topological invariants |
+| 4 | **Cell** (Living) | **O₂** | ⟨𐑦𐑸𐑾𐑬𐑞𐑧𐑲𐑠⊙𐑒𐑳𐑭⟩ | Self-written state space (𐑦) + self-referential topology (𐑸) — minimal life |
+| 5 | **Mitosis** (Cell Division) | **O₂** | ⟨𐑦𐑸𐑾𐑹𐑱𐑧𐑲𐑠⊙𐑖𐑳𐑭⟩ | Frobenius-special parity (𐑹) for sister chromatid symmetry |
+| 6 | **Meiosis** (Gametes) | **O₂** | ⟨𐑦𐑸𐑽𐑿𐑱𐑧𐑲𐑠⊙𐑖𐑳𐑭⟩ | Adjoint pairing (𐑽) for homologous recombination |
+| 7 | **Tissue / Organ** (Multi-cellular) | **O₂** | ⟨𐑦𐑸𐑾𐑬𐑞𐑧𐑲𐑵⊙𐑖𐑳𐑭⟩ | Broadcast grammar (𐑵) for intercellular signaling |
+| 8 | **Whole Organism** | **$O_\infty$** | ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩ | Eternal chirality (𐑫) + non-Abelian braiding (𐑟) — self-modeling $O_\infty$ life |
 
 ### Verified Key Results
 
