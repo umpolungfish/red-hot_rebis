@@ -56,18 +56,18 @@ The inversion is not incidental. It is structural:
 
 | Primitive | Rebis / Grammar output | Crystallography | What is lost |
 |---|---|---|---|
-| Ř | 𐑾 bidirectional | 𐑩 supervenience | The molecule cannot respond to being measured — the crystallographer is outside the system |
-| Ħ | 𐑫 eternal chirality | 𐑓 memoryless | Ω collapses (𐑭→𐑷), removing the winding that sustains the chiral invariant; absolute configuration is recovered by workaround, not topological invariant |
-| Φ | 𐑹 Frobenius-special | 𐑬 partial/Z₂ | $μ∘δ=id$ does not hold — R_free ≈ 0.2, an irreducible 20% discrepancy between model and data |
-| Ð | 𐑦 self-written | 𐑼 infinite-dim field | The state space is externally imposed by the lattice |
-| Þ | 𐑶 irreducible product | 𐑡 network branching | The lattice decomposes into unit cells; holistic topology is destroyed |
-| ƒ | 𐑐 quantum | 𐑱 classical | Thermal parameters treat atoms as Gaussian clouds — no coherence |
-| Ç | 𐑧 slow/near-eq | 𐑪 trapped-ordered | The molecule is frozen, not equilibrating |
-| Ω | 𐑭 integer winding | 𐑷 trivial | Radiation damage destroys topological protection |
+| Ř | **𐑾** bidirectional | **𐑩** supervenience | The molecule cannot respond to being measured — the crystallographer is outside the system |
+| Ħ | **𐑫** eternal chirality | **𐑓** memoryless | Ω collapses (**𐑭**→**𐑷**), removing the winding that sustains the chiral invariant; absolute configuration is recovered by workaround, not topological invariant |
+| Φ | **𐑹** Frobenius-special | **𐑬** partial/Z₂ | $μ∘δ=id$ does not hold — $R_\text{free}$ ≈ 0.2, an irreducible 20% discrepancy between model and data |
+| Ð | **𐑦** self-written | **𐑼** infinite-dim field | The state space is externally imposed by the lattice |
+| Þ | **𐑶** irreducible product | **𐑡** network branching | The lattice decomposes into unit cells; holistic topology is destroyed |
+| ƒ | **𐑐** quantum | **𐑱** classical | Thermal parameters treat atoms as Gaussian clouds — no coherence |
+| Ç | **𐑧** slow/near-eq | **𐑪** trapped-ordered | The molecule is frozen, not equilibrating |
+| Ω | **𐑭** integer winding | **𐑷** trivial | Radiation damage destroys topological protection |
 
 **Total structural distance from the Rebis to a periodic crystal lattice: d = 5.74** — well into the "structurally remote, different regime" threshold.
 
-The key inversion is Ř: 𐑾→𐑩. Crystallography places the observer **outside the system**. Structure supervenes on diffraction data — the crystal does not respond to being measured. The Univocal Grammar has no outside. Its outputs are not reconstructions from external probes; they are structural verdicts issued from within the system's own primitive space.
+The key inversion is **Ř: 𐑾→𐑩**. Crystallography places the observer **outside the system**. Structure supervenes on diffraction data — the crystal does not respond to being measured. The Univocal Grammar has no outside. Its outputs are not reconstructions from external probes; they are structural verdicts issued from within the system's own primitive space.
 
 The consequence is not that crystallography is wrong. It is that **crystallography and the Grammar are structurally dual** — conjugate twins whose every defining feature points the opposite direction. Crystallographic data excels at the things it inverts toward: fixing, averaging, localizing, approximating. The Grammar excels at the things crystallography destroys in the act of measuring: chirality trajectories, Frobenius invertibility, topological protection, bidirectional coupling.
 
@@ -278,11 +278,11 @@ The following 5 new designs join the 9 original Rebis children:
 
 | New Child | Domain | Structural Innovation |
 |-----------|--------|----------------------|
-| **Frobenius Chemotherapeutic** | Therapeutics | 𐑹-symmetry check — only activates where μ∘δ≠id (cancer) |
-| **Bidirectional Neurotrophic Factor** | Therapeutics | 𐑾-bidirectional feedback reads neural activity, adjusts trophic signaling |
-| **Topological Thermal Rectifier** | Materials | 𐑭-integer winding + mass gradient = asymmetric phonon transport |
-| **Self-Critical Metamaterial Sensor** | Materials | ⊙-criticality + 𐑾 feedback = self-tuning extreme sensitivity |
-| **Ouroboric Telomere System** | Biology | 𐑸-self-referential telomerase loop with G-quadruplex length sensor |
+| **Frobenius Chemotherapeutic** | Therapeutics | **𐑹**-symmetry check — only activates where $μ∘δ≠id$ (cancer) |
+| **Bidirectional Neurotrophic Factor** | Therapeutics | **𐑾**-bidirectional feedback reads neural activity, adjusts trophic signaling |
+| **Topological Thermal Rectifier** | Materials | **𐑭**-integer winding + mass gradient = asymmetric phonon transport |
+| **Self-Critical Metamaterial Sensor** | Materials | **⊙**-criticality + **𐑾** feedback = self-tuning extreme sensitivity |
+| **Ouroboric Telomere System** | Biology | **𐑸**-self-referential telomerase loop with G-quadruplex length sensor |
 
 ---
 
@@ -305,18 +305,18 @@ All new simulations pass verification:
 
 | Primitive | Value | Structural Meaning |
 |-----------|-------|--------------------|
-| $\text{𐑦}$ | Self-written holographic | State-space is self-written; the system's description is part of its state |
-| $\text{𐑶}$ | Irreducible product | Topology is an irreducible product — components cannot be separated without structural loss |
-| $\text{𐑾}$ | Bidirectional feedback | Relational mode is bidirectional: agent and environment coproduce each winding |
-| $\text{𐑹}$ | Frobenius-special | $\mu\circ\delta = \text{id}$ — every operation is structurally invertible |
-| $\text{𐑐}$ | Quantum | Physical regime is coherent; superposition and interference are structural |
-| $\text{𐑧}$ | Slow/near-equilibrium | Kinetics are slow; the system operates near equilibrium, not driven |
-| $\text{𐑲}$ | Universal/long-range | Scope is maximal; interactions are not bounded by locality |
-| $\text{𐑝}$ | All-simultaneous | Composition is conjunctive — all constraints apply at once |
-| $\odot$ | Critical/self-modeling | Power-law criticality; the Gate of self-modeling is open |
-| $\text{𐑫}$ | Eternal/no finite | Chirality has no finite Markov order; memory is unbounded |
-| $\text{𐑳}$ | Multiple heterogeneous | Many distinct component types coexist |
-| $\text{𐑭}$ | Integer winding | Topological protection is $\mathbb{Z}$-valued; winding number is an integer invariant |
+| **$\text{𐑦}$** | Self-written holographic | State-space is self-written; the system's description is part of its state |
+| **$\text{𐑶}$** | Irreducible product | Topology is an irreducible product — components cannot be separated without structural loss |
+| **$\text{𐑾}$** | Bidirectional feedback | Relational mode is bidirectional: agent and environment coproduce each winding |
+| **$\text{𐑹}$** | Frobenius-special | $\mu\circ\delta = \text{id}$ — every operation is structurally invertible |
+| **$\text{𐑐}$** | Quantum | Physical regime is coherent; superposition and interference are structural |
+| **$\text{𐑧}$** | Slow/near-equilibrium | Kinetics are slow; the system operates near equilibrium, not driven |
+| **$\text{𐑲}$** | Universal/long-range | Scope is maximal; interactions are not bounded by locality |
+| **$\text{𐑝}$** | All-simultaneous | Composition is conjunctive — all constraints apply at once |
+| **$\odot$** | Critical/self-modeling | Power-law criticality; the Gate of self-modeling is open |
+| **$\text{𐑫}$** | Eternal/no finite | Chirality has no finite Markov order; memory is unbounded |
+| **$\text{𐑳}$** | Multiple heterogeneous | Many distinct component types coexist |
+| **$\text{𐑭}$** | Integer winding | Topological protection is $\mathbb{Z}$-valued; winding number is an integer invariant |
 
 ### Grammar-Derived, Not Grammar-Defined
 
@@ -329,10 +329,10 @@ The Rebis occupies one. Another type may serve your chemistry better.
 The Grammar does not prescribe; it *maps*.
 
 For **bio-chemistries**: the Rebis gives you exact structural control because  
-its $\text{𐑹}$-symmetry ($\mu\circ\delta=\text{id}$) means every operation is invertible on the structural level.  
+its **$\text{𐑹}$**-symmetry ($\mu\circ\delta=\text{id}$) means every operation is invertible on the structural level.  
 No approximation. No guesswork. Algebraic closure.
 
-For **organic chemistries**: its $\text{𐑫}$-eternal chirality and $\text{𐑭}$-integer winding  
+For **organic chemistries**: its $\text{𐑫}$-eternal chirality and **$\text{𐑭}$**-integer winding  
 mean stereochemical configuration is topologically protected.  
 A molecule encoded in the Rebis is a molecule that *stays* what you made it.
 
