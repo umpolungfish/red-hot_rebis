@@ -1,0 +1,186 @@
+{
+  "name": "Universal Detox Gland (Panacea) — v2 In-Situ",
+  "version": "2.0.0",
+  "design_principle": "Zero-incision in-situ assembly via percutaneous injection",
+  "structural_type": "⟨𐑼 · 𐑸 · 𐑾 · 𐑬 · 𐑞 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑖 · 𐑳 · 𐑴⟩",
+  "ouroboricity_tier": "O_2",
+  "consciousness_score": 0.45,
+  "delivery_method": {
+    "type": "ultrasound_guided_percutaneous_injection",
+    "needle_gauge": "22G",
+    "volume_mL": 2.5,
+    "target_anatomy": "greater_omentum",
+    "guidance": "ultrasound (7.5-12 MHz linear array)",
+    "anesthesia": "local lidocaine 1% (5 mL)",
+    "incisions_required": 0,
+    "procedure_time_min": 15,
+    "recovery": "immediate outpatient"
+  },
+  "physical_specs": {
+    "final_volume_cm3": 3.0,
+    "shape": "ellipsoid",
+    "dimensions_mm": [
+      18,
+      15,
+      12
+    ],
+    "cell_count": 1000000000.0,
+    "cell_types": {
+      "sensor": {
+        "count": 50000000.0,
+        "pct": 5
+      },
+      "producer": {
+        "count": 850000000.0,
+        "pct": 85
+      },
+      "vascular_support": {
+        "count": 50000000.0,
+        "pct": 5
+      },
+      "endothelial_progenitor": {
+        "count": 50000000.0,
+        "pct": 5
+      }
+    },
+    "vascularization": {
+      "method": "in_situ_angiogenesis",
+      "preformed_channels": false,
+      "driver": "VEGF_bFGF_Ang1_from_support_cells",
+      "host_recruitment": "SDF1alpha_CXCR4",
+      "time_to_full_vascularization_days": 21
+    }
+  },
+  "injectable_formulation": {
+    "thermogel": "Pluronic_F127_20pct",
+    "secondary_crosslinker": "HA_tyramine_HRP_H2O2",
+    "fibrin_stabilizer": "fibrinogen_10mg_thrombin_50U",
+    "cell_protection": "alginate_PEG_microcapsules_100um",
+    "growth_factors": [
+      "VEGF",
+      "bFGF",
+      "Ang1",
+      "SDF1a",
+      "IGF1"
+    ],
+    "immune_modulators": [
+      "CCL22",
+      "TGFb1",
+      "IL10"
+    ],
+    "storage": "4C_liquid_use_within_2h"
+  },
+  "in_situ_assembly_timeline_days": {
+    "gel_formation": 0,
+    "first_capillary_sprouts": 2,
+    "sensors_active": 3,
+    "vascular_penetration_50pct": 7,
+    "full_vascularization": 14,
+    "stable_steady_state": 21
+  },
+  "sensor_systems": {
+    "AhR_enhanced": {
+      "target": "PAHs_dioxins",
+      "sensitivity_uM": [
+        0.01,
+        100
+      ]
+    },
+    "PXR_CAR_hybrid": {
+      "target": "organophosphates",
+      "sensitivity_uM": [
+        0.1,
+        500
+      ]
+    },
+    "TLR4_MD2_hybrid": {
+      "target": "endotoxins",
+      "sensitivity_uM": [
+        0.001,
+        10
+      ]
+    },
+    "MTF1_metal_sensor": {
+      "target": "heavy_metals",
+      "sensitivity_uM": [
+        0.5,
+        200
+      ]
+    },
+    "KEAP1_NRF2_sensor": {
+      "target": "electrophiles",
+      "sensitivity_uM": [
+        1,
+        500
+      ]
+    }
+  },
+  "antidote_arms": {
+    "CYP3A4_enhanced": {
+      "target": "PAHs_drugs",
+      "mechanism": "oxidative",
+      "Km_uM": 15
+    },
+    "PON1_enhanced": {
+      "target": "organophosphates",
+      "mechanism": "hydrolysis",
+      "Km_uM": 50
+    },
+    "MT3_enhanced": {
+      "target": "heavy_metals",
+      "mechanism": "chelation",
+      "Kd_uM": 0.1
+    },
+    "DARPin_neutralizer": {
+      "target": "protein_toxins",
+      "mechanism": "binding",
+      "Kd_uM": 0.01
+    },
+    "Rhodanese_enhanced": {
+      "target": "cyanide",
+      "mechanism": "thiocyanate",
+      "Km_uM": 100
+    },
+    "GST_TXNRD1_enhanced": {
+      "target": "electrophiles",
+      "mechanism": "conjugation",
+      "Km_uM": 30
+    }
+  },
+  "kinetics": {
+    "induction_delay_min": 30,
+    "peak_production_h": 6,
+    "secretion_rate_ng_per_10e6_per_h": 50,
+    "baseline_ng_per_mL": "10_50_at_steady_state",
+    "dynamic_range_log": 3,
+    "maturation_days": 21
+  },
+  "toxin_classes": [
+    "organophosphate",
+    "heavy_metal",
+    "biological_toxin",
+    "PAH_dioxin",
+    "cyanide_sulfide",
+    "electrophile_oxidant"
+  ],
+  "immunoprotection": {
+    "method": "alginate_PEG_microencapsulation_100kDa",
+    "systemic_immunosuppression": false,
+    "local_Treg_induction": "CCL22"
+  },
+  "v2_output_files": [
+    "sensor_receptors.fasta",
+    "antidote_fusion.fasta",
+    "antidote_fusion.pdb",
+    "sensor_cell_genome.gb",
+    "producer_cell_genome.gb",
+    "support_cell_genome.gb",
+    "epc_genome.gb",
+    "gland_organoid_protocol_v2.md",
+    "gland_specification_v2.json",
+    "in_situ_assembly_protocol.md",
+    "injectable_formulation.md",
+    "metabolic_model_v2.xml",
+    "angiogenesis_model.xml"
+  ]
+}

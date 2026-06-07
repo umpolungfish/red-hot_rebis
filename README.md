@@ -197,7 +197,8 @@ python -c "from clink.integration import verify_clink_integration; r = verify_cl
 
 # Run CLINK self-test
 python clink/chain.py
-```---
+```
+---
 
 ## Component Details
 

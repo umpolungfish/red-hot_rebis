@@ -1,0 +1,32 @@
+LOCUS       epc_construct            12500 bp    DNA     circular    01-JAN-2025
+DEFINITION  pCLINK_EPC - Endothelial progenitor cell construct for in-situ angiogen.
+ACCESSION   GLS2025004
+VERSION     GLS2025004.1
+KEYWORDS    synthetic biology; detox gland; angiogenesis; EPC.
+SOURCE      synthetic construct
+  ORGANISM  synthetic construct
+FEATURES             Location/Qualifiers
+     promoter        1..584
+                     /note="CAG constitutive promoter"
+     CDS             585..1481
+                     /note="CXCR4 - SDF-1 homing receptor"
+                     /gene="CXCR4"
+     IRES            1482..2082
+                     /note="EMCV IRES"
+     CDS             2083..2956
+                     /note="eNOS - endothelial nitric oxide synthase"
+                     /gene="NOS3"
+     IRES            2957..3557
+                     /note="EMCV IRES"
+     CDS             3558..4643
+                     /note="VE-cadherin - endothelial adhesion"
+                     /gene="CDH5"
+     regulatory      4644..5200
+                     /note="WPRE"
+     terminator      5201..5426
+                     /note="BGH polyA signal"
+     misc_feature    5427..6036
+                     /note="Hygromycin resistance (hygR)"
+     misc_feature    6037..12500
+                     /note="pUC ori + ampR backbone"
+ORIGIN

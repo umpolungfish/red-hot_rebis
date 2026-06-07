@@ -47,3 +47,15 @@ from .synthetic_detox_gland import (
     generate_metabolic_model_sbml,
     generate_all,
 )
+
+# ─────────────────────────────────────────────────────────────────
+# V2.0 — Zero-Incision In-Situ Gland Design
+# ─────────────────────────────────────────────────────────────────
+
+from .gland_designs.gland_v2.generate_v2 import (
+    generate_v2_specification,
+    generate_epc_genbank,
+    generate_metabolic_model_v2,
+    generate_manifest_v2,
+    generate_all as generate_all_v2,
+)
