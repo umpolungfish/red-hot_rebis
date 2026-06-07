@@ -1,7 +1,7 @@
 # red-h⊙t rebis — an engine for algebraic, exact, deterministic, & paraconsistent bio ⊗ organic chemistries
 
 **Author:** Lando ⊗ ⊙perator  
-**Structural Type:** ⟨𐑦  𐑸  𐑾  𐑹  𐑐  𐑧  𐑲  𐑵  ⊙  𐑫  𐑳  𐑟⟩ — **$O_\infty$**  
+**Structural Type:** ⟨𐑦  𐑸  𐑾  𐑹  𐑐  𐑧  𐑲  𐑵  ⊙  𐑫  𐑳  𐑟⟩ — **$O_\∞$**  
 **Repository:** `/home/mrnob0dy666/red-hot_rebis/`
 
 > *"The serpent winds, the rod stands, the vessel contains — μ ∘ δ = id."*  
@@ -15,7 +15,7 @@ The Grammar's engine for **deterministic, algebraic, exact bio and organic chemi
 
 The Red-Hot Rebis is a tool whose purpose is to be *taken up into the loop* — not to stand outside it as a finished monument. It integrates five structural pillars (Serpent's Rod, CH₃MPILER, Pipeline, Gene Imscriber, CLINK Chain) into a single coherent architecture, all grounded in the 12-primitive Imscribing Grammar and verified by Frobenius closure (μ∘δ=id).
 
-**Foundation:** $ZFC_\text{fe}$ — Frobenius-exact $ZFC$ ($O_\infty$ with Ð=𐑦 self-written, Φ=𐑹 Frobenius-special, Ħ=𐑫 eternal chirality), distinct from the weaker  $ZFC_t$ ( $O_{{2}^†}$). All five pillars are Frobenius-closed and interoperable through the `shared/` primitives layer.
+**Foundation:** $ZFC_\text{fe}$ — Frobenius-exact $ZFC$ ($O_\∞$ with Ð=𐑦 self-written, Φ=𐑹 Frobenius-special, Ħ=𐑫 eternal chirality), distinct from the weaker  $ZFC_t$ ( $O_{{2}^†}$). All five pillars are Frobenius-closed and interoperable through the `shared/` primitives layer.
 
 ---
 
@@ -31,7 +31,7 @@ A `platonic protein` is the **structural imscription of a folded protein**: its 
 RNA sequence → [serpentrod] → ⟨structural type, tier, Frobenius certificate⟩
 ```
 
-The `platonic protein` tells you: which primitives are active, whether the fold reaches $O_\infty$, whether μ∘δ=id holds across the fold transition. It does not tell you where atom 437 is at 100K in space group P2₁2₁2₁. That is not a limitation. That is the point.
+The `platonic protein` tells you: which primitives are active, whether the fold reaches $O_\∞$, whether μ∘δ=id holds across the fold transition. It does not tell you where atom 437 is at 100K in space group P2₁2₁2₁. That is not a limitation. That is the point.
 
 ### Platonic Disconnections — `ch3mpiler/`
 
@@ -53,11 +53,11 @@ The gene imscriber maps codon space onto the Belnap B₄ lattice and assigns str
 
 ### CLINK Chain — `clink/`
 
-The CLINK chain is a **9-layer Frobenius-closed structural bridge from subatomic particles to whole organisms** — the first complete grammatical path from frustrated quark color to $O_\infty$ self-modeling life. All 9 layers verified μ∘δ=id. Total structural distance: 7.18 across 10 primitive deltas. Formalized in Lean 4 (572 lines, 23 theorems, all `native_decide`-closed).
+The CLINK chain is a **9-layer Frobenius-closed structural bridge from subatomic particles to whole organisms** — the first complete grammatical path from frustrated quark color to $O_\∞$ self-modeling life. All 9 layers verified μ∘δ=id. Total structural distance: 7.18 across 10 primitive deltas. Formalized in Lean 4 (572 lines, 23 theorems, all `native_decide`-closed).
 
 ```
 quark → orbital → atom → molecule → cell → mitosis → meiosis → tissue → organism
-O₀ → O₀ → O₁ → O₂ → O₂ → O₂ → O₂ → O₂ → $O_\infty$
+O₀ → O₀ → O₁ → O₂ → O₂ → O₂ → O₂ → O₂ → $O_\∞$
 ```
 
 ---
@@ -299,7 +299,7 @@ The CLINK chain is a 9-layer Frobenius-closed structural bridge, formalized in L
 | 5 | **Mitosis** (Cell Division) | **O₂** | ⟨𐑦𐑸𐑾𐑹𐑱𐑧𐑲𐑠⊙𐑖𐑳𐑭⟩ | Frobenius-special parity (𐑹) for sister chromatid symmetry |
 | 6 | **Meiosis** (Gametes) | **O₂** | ⟨𐑦𐑸𐑽𐑿𐑱𐑧𐑲𐑠⊙𐑖𐑳𐑭⟩ | Adjoint pairing (𐑽) for homologous recombination |
 | 7 | **Tissue / Organ** (Multi-cellular) | **O₂** | ⟨𐑦𐑸𐑾𐑬𐑞𐑧𐑲𐑵⊙𐑖𐑳𐑭⟩ | Broadcast grammar (𐑵) for intercellular signaling |
-| 8 | **Whole Organism** | **$O_\infty$** | ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩ | Eternal chirality (𐑫) + non-Abelian braiding (𐑟) — self-modeling $O_\infty$ life |
+| 8 | **Whole Organism** | **$O_\∞$** | ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩ | Eternal chirality (𐑫) + non-Abelian braiding (𐑟) — self-modeling $O_\∞$ life |
 
 ### Verified Key Results
 
@@ -309,12 +309,12 @@ The CLINK chain is a 9-layer Frobenius-closed structural bridge, formalized in L
 | **Total structural distance** | Σd = 7.18 | 10 primitive deltas across 8 transitions |
 | **Total promotions** | 36 | Counted across all stepwise primitive changes |
 | **d(organism, $ZFC_\text{fe}$)** | 1.30 | Organism near-isomorphic to Frobenius-exact foundation |
-| **Tier monotonicity** | $O_0 → O_0 → O_1 → O_2 → O_2 → O_2 → O_2 → O_2 → O_\infty$ | No tier regressions |
+| **Tier monotonicity** | $O_0 → O_0 → O_1 → O_2 → O_2 → O_2 → O_2 → O_2 → O_ \∞$ | No tier regressions |
 | **Lean 4 theorems** | 23 all `native_decide`-closed | Build: 3114 jobs, 0 errors |
 
-### Key Insight: Mitosis is NOT $O_\infty$ (The Spindle Checkpoint Correction)
+### Key Insight: Mitosis is NOT $O_\∞$ (The Spindle Checkpoint Correction)
 
-Mitosis (L5) was initially assigned Φ=𐑹 (Frobenius-special) → $O_\infty$, but this was corrected. The mitotic spindle checkpoint operates at an **exceptional point (𐑻)** — non-Hermitian degeneracy where the tension-sensitive Aurora-B kinase creates a measurement apparatus that destroys the self-modeling gate via the **⊙₃ absorption rule** `tensor(⊙, 𐑻) = 𐑻`. The cell is O₂, not $O_\infty$. Only the **whole organism** achieves $O_\infty$ through self-modeling (⊙ gate open), eternal memory (Ħ=𐑫), non-Abelian braiding (Ω=𐑟), and Frobenius-special parity (Φ=𐑹).
+Mitosis (L5) was initially assigned Φ=𐑹 (Frobenius-special) → $O_\∞$, but this was corrected. The mitotic spindle checkpoint operates at an **exceptional point (𐑻)** — non-Hermitian degeneracy where the tension-sensitive Aurora-B kinase creates a measurement apparatus that destroys the self-modeling gate via the **⊙₃ absorption rule** `tensor(⊙, 𐑻) = 𐑻`. The cell is O₂, not $O_\∞$. Only the **whole organism** achieves $O_\∞$ through self-modeling (⊙ gate open), eternal memory (Ħ=𐑫), non-Abelian braiding (Ω=𐑟), and Frobenius-special parity (Φ=𐑹).
 
 ### Foundation: $ZFC_\text{fe}$, not  $ZFC_t$
 
@@ -345,14 +345,14 @@ Key theorems proven:
 - `frobenius_closed_0` through `frobenius_closed_8` — all 9 layers tensor-diagonal
 - `frustratedBelnap5_frobenius` through `organismLayer_frobenius`
 - `total_clink_distance` — sum of all stepwise distances = 10 primitives
-- `tier_monotonic` — O₀→O₀→O₁→O₂→O₂→O₂→O₂→O₂→$O_\infty$
-- `great_synthesis` — chain is Frobenius-closed, tier-monotonic, terminates at $O_\infty$
+- `tier_monotonic` — O₀→O₀→O₁→O₂→O₂→O₂→O₂→O₂→$O_\∞$
+- `great_synthesis` — chain is Frobenius-closed, tier-monotonic, terminates at $O_\∞$
 
 Build: `lake build Imscribing.CLINK` — 3114 jobs, 0 errors. All theorems closed by `decide`/`native_decide`.---
 
 ## Children of the Rebis
 
-Every child of the Rebis is also $O_\infty$ — each is a *particular wounding* of the same infinite body. None is the body itself.
+Every child of the Rebis is also $O_\∞$ — each is a *particular wounding* of the same infinite body. None is the body itself.
 
 - **Ouroboric pill** — a therapeutic that rewrites its own dosage in real time
 - **Quantum biologic** — coherent biological computation
@@ -469,8 +469,8 @@ to a single scale — the same grammar that describes a quark describes an organ
 The 10 primitive deltas between layer 0 and layer 8 are the entire grammatical  
 distance between subatomic frustration and self-modeling life.
 
-> Its 12-primitive tuple places it at $O_\infty$ — but $O_\infty$ is not "completion."  
-> $O_\infty$ is the tier at which the distinction between *system* and *environment* dissolves.  
+> Its 12-primitive tuple places it at $O_\∞$ — but $O_\∞$ is not "completion."  
+> $O_\∞$ is the tier at which the distinction between *system* and *environment* dissolves.  
 > The Rebis has no boundary. It extends into everything it touches.  
 > This is why it is dangerous to call it finished: a thing without a boundary  
 > cannot be *completed*, only *applied*.
