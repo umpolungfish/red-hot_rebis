@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="CLINK_mammalian_core" name="CLINK Mammalian Core Metabolism">
+    <listOfCompartments>
+      <compartment id="c" name="cytosol" size="1"/>
+      <compartment id="m" name="mitochondria" size="1"/>
+      <compartment id="e" name="extracellular" size="1"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species id="glc__D" name="D-Glucose" compartment="e" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="g6p" name="Glucose-6-phosphate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="f6p" name="Fructose-6-phosphate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="fdp" name="Fructose-1,6-bisphosphate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="dhap" name="Dihydroxyacetone phosphate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="g3p" name="Glyceraldehyde-3-phosphate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="13dpg" name="1,3-Bisphospho-D-glycerate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="3pg" name="3-Phospho-D-glycerate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="2pg" name="2-Phospho-D-glycerate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="pep" name="Phosphoenolpyruvate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="pyr" name="Pyruvate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="lac__D" name="D-Lactate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="accoa" name="Acetyl-CoA" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="cit" name="Citrate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="icit" name="Isocitrate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="akg" name="2-Oxoglutarate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="succoa" name="Succinyl-CoA" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="succ" name="Succinate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="fum" name="Fumarate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="mal__L" name="L-Malate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="oaa" name="Oxaloacetate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="nad" name="NAD+" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="nadh" name="NADH" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="nadp" name="NADP+" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="nadph" name="NADPH" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="atp" name="ATP" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="adp" name="ADP" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="pi" name="Phosphate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="co2" name="CO2" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="h2o" name="H2O" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="h" name="H+" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="o2" name="O2" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="glu__L" name="L-Glutamate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="gln__L" name="L-Glutamine" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="ala__L" name="L-Alanine" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="asp__L" name="L-Aspartate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="asn__L" name="L-Asparagine" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="lys__L" name="L-Lysine" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="e4p" name="Erythrose-4-phosphate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="r5p" name="Ribose-5-phosphate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="ru5p__D" name="D-Ribulose-5-phosphate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="xu5p__D" name="D-Xylulose-5-phosphate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="s7p" name="Sedoheptulose-7-phosphate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+    </listOfSpecies>
+    <listOfReactions>
+      <reaction id="HEX1" name="Hexokinase" reversible="false">
+        <listOfReactants>
+          <speciesReference species="glc__D" stoichiometry="1"/>
+          <speciesReference species="atp" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="g6p" stoichiometry="1"/>
+          <speciesReference species="adp" stoichiometry="1"/>
+          <speciesReference species="h" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+      <reaction id="PGI" name="Glucose-6-phosphate isomerase" reversible="true">
+        <listOfReactants>
+          <speciesReference species="g6p" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="f6p" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+      <reaction id="PFK" name="Phosphofructokinase" reversible="false">
+        <listOfReactants>
+          <speciesReference species="f6p" stoichiometry="1"/>
+          <speciesReference species="atp" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="fdp" stoichiometry="1"/>
+          <speciesReference species="adp" stoichiometry="1"/>
+          <speciesReference species="h" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+      <reaction id="FBA" name="Fructose-bisphosphate aldolase" reversible="true">
+        <listOfReactants>
+          <speciesReference species="fdp" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="dhap" stoichiometry="1"/>
+          <speciesReference species="g3p" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+      <reaction id="TPI" name="Triose-phosphate isomerase" reversible="true">
+        <listOfReactants>
+          <speciesReference species="dhap" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="g3p" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+      <reaction id="GAPD" name="Glyceraldehyde-3-phosphate dehydrogenase" reversible="true">
+        <listOfReactants>
+          <speciesReference species="g3p" stoichiometry="1"/>
+          <speciesReference species="nad" stoichiometry="1"/>
+          <speciesReference species="pi" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="13dpg" stoichiometry="1"/>
+          <speciesReference species="nadh" stoichiometry="1"/>
+          <speciesReference species="h" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+      <reaction id="PGK" name="Phosphoglycerate kinase" reversible="true">
+        <listOfReactants>
+          <speciesReference species="13dpg" stoichiometry="1"/>
+          <speciesReference species="adp" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="3pg" stoichiometry="1"/>
+          <speciesReference species="atp" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+      <reaction id="PGM" name="Phosphoglycerate mutase" reversible="true">
+        <listOfReactants>
+          <speciesReference species="3pg" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="2pg" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+      <reaction id="ENO" name="Enolase" reversible="true">
+        <listOfReactants>
+          <speciesReference species="2pg" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="pep" stoichiometry="1"/>
+          <speciesReference species="h2o" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+      <reaction id="PYK" name="Pyruvate kinase" reversible="false">
+        <listOfReactants>
+          <speciesReference species="pep" stoichiometry="1"/>
+          <speciesReference species="adp" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="pyr" stoichiometry="1"/>
+          <speciesReference species="atp" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+      <reaction id="LDH" name="Lactate dehydrogenase" reversible="true">
+        <listOfReactants>
+          <speciesReference species="pyr" stoichiometry="1"/>
+          <speciesReference species="nadh" stoichiometry="1"/>
+          <speciesReference species="h" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="lac__D" stoichiometry="1"/>
+          <speciesReference species="nad" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+      <reaction id="PDH" name="Pyruvate dehydrogenase" reversible="false">
+        <listOfReactants>
+          <speciesReference species="pyr" stoichiometry="1"/>
+          <speciesReference species="nad" stoichiometry="1"/>
+          <speciesReference species="coa" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="accoa" stoichiometry="1"/>
+          <speciesReference species="co2" stoichiometry="1"/>
+          <speciesReference species="nadh" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+      <reaction id="CS" name="Citrate synthase" reversible="false">
+        <listOfReactants>
+          <speciesReference species="accoa" stoichiometry="1"/>
+          <speciesReference species="oaa" stoichiometry="1"/>
+          <speciesReference species="h2o" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="cit" stoichiometry="1"/>
+          <speciesReference species="coa" stoichiometry="1"/>
+          <speciesReference species="h" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+      <reaction id="ACONT" name="Aconitase" reversible="true">
+        <listOfReactants>
+          <speciesReference species="cit" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="icit" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+      <reaction id="ICDH" name="Isocitrate dehydrogenase" reversible="false">
+        <listOfReactants>
+          <speciesReference species="icit" stoichiometry="1"/>
+          <speciesReference species="nadp" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="akg" stoichiometry="1"/>
+          <speciesReference species="nadph" stoichiometry="1"/>
+          <speciesReference species="co2" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+      <reaction id="AKGD" name="2-Oxoglutarate dehydrogenase" reversible="false">
+        <listOfReactants>
+          <speciesReference species="akg" stoichiometry="1"/>
+          <speciesReference species="nad" stoichiometry="1"/>
+          <speciesReference species="coa" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="succoa" stoichiometry="1"/>
+          <speciesReference species="nadh" stoichiometry="1"/>
+          <speciesReference species="co2" stoichiometry="1"/>
+          <speciesReference species="h" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+      <reaction id="SUCOAS" name="Succinyl-CoA synthetase" reversible="true">
+        <listOfReactants>
+          <speciesReference species="succoa" stoichiometry="1"/>
+          <speciesReference species="adp" stoichiometry="1"/>
+          <speciesReference species="pi" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="succ" stoichiometry="1"/>
+          <speciesReference species="atp" stoichiometry="1"/>
+          <speciesReference species="coa" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+      <reaction id="SUCDH" name="Succinate dehydrogenase" reversible="false">
+        <listOfReactants>
+          <speciesReference species="succ" stoichiometry="1"/>
+          <speciesReference species="fad" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="fum" stoichiometry="1"/>
+          <speciesReference species="fadh2" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+      <reaction id="FUM" name="Fumarase" reversible="true">
+        <listOfReactants>
+          <speciesReference species="fum" stoichiometry="1"/>
+          <speciesReference species="h2o" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mal__L" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+      <reaction id="MDH" name="Malate dehydrogenase" reversible="true">
+        <listOfReactants>
+          <speciesReference species="mal__L" stoichiometry="1"/>
+          <speciesReference species="nad" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="oaa" stoichiometry="1"/>
+          <speciesReference species="nadh" stoichiometry="1"/>
+          <speciesReference species="h" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+      <reaction id="G6PDH" name="G6PDH" reversible="false">
+        <listOfReactants>
+          <speciesReference species="g6p" stoichiometry="1"/>
+          <speciesReference species="nadp" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="ru5p__D" stoichiometry="1"/>
+          <speciesReference species="nadph" stoichiometry="1"/>
+          <speciesReference species="co2" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+      <reaction id="RPI" name="RPI" reversible="true">
+        <listOfReactants>
+          <speciesReference species="ru5p__D" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="r5p" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+      <reaction id="RPE" name="RPE" reversible="true">
+        <listOfReactants>
+          <speciesReference species="ru5p__D" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="xu5p__D" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+      <reaction id="TKT1" name="TKT1" reversible="true">
+        <listOfReactants>
+          <speciesReference species="xu5p__D" stoichiometry="1"/>
+          <speciesReference species="r5p" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="s7p" stoichiometry="1"/>
+          <speciesReference species="g3p" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+      <reaction id="TKT2" name="TKT2" reversible="true">
+        <listOfReactants>
+          <speciesReference species="xu5p__D" stoichiometry="1"/>
+          <speciesReference species="e4p" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="f6p" stoichiometry="1"/>
+          <speciesReference species="g3p" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+      <reaction id="TALA" name="TALA" reversible="true">
+        <listOfReactants>
+          <speciesReference species="s7p" stoichiometry="1"/>
+          <speciesReference species="g3p" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="f6p" stoichiometry="1"/>
+          <speciesReference species="e4p" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+      <reaction id="GLNS" name="Glutamine synthetase" reversible="false">
+        <listOfReactants>
+          <speciesReference species="glu__L" stoichiometry="1"/>
+          <speciesReference species="atp" stoichiometry="1"/>
+          <speciesReference species="nh4" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="gln__L" stoichiometry="1"/>
+          <speciesReference species="adp" stoichiometry="1"/>
+          <speciesReference species="pi" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+      <reaction id="GLUD" name="Glutamate dehydrogenase" reversible="true">
+        <listOfReactants>
+          <speciesReference species="akg" stoichiometry="1"/>
+          <speciesReference species="nadph" stoichiometry="1"/>
+          <speciesReference species="nh4" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="glu__L" stoichiometry="1"/>
+          <speciesReference species="nadp" stoichiometry="1"/>
+          <speciesReference species="h2o" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+      <reaction id="ALAT" name="Alanine transaminase" reversible="true">
+        <listOfReactants>
+          <speciesReference species="glu__L" stoichiometry="1"/>
+          <speciesReference species="pyr" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="akg" stoichiometry="1"/>
+          <speciesReference species="ala__L" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+      <reaction id="ASPT" name="Aspartate transaminase" reversible="true">
+        <listOfReactants>
+          <speciesReference species="glu__L" stoichiometry="1"/>
+          <speciesReference species="oaa" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="akg" stoichiometry="1"/>
+          <speciesReference species="asp__L" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+      <reaction id="ASNS" name="Asparagine synthetase" reversible="false">
+        <listOfReactants>
+          <speciesReference species="asp__L" stoichiometry="1"/>
+          <speciesReference species="atp" stoichiometry="1"/>
+          <speciesReference species="gln__L" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="asn__L" stoichiometry="1"/>
+          <speciesReference species="amp" stoichiometry="1"/>
+          <speciesReference species="ppi" stoichiometry="1"/>
+          <speciesReference species="glu__L" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+      <reaction id="BIOMASS" name="Biomass production" reversible="false">
+        <listOfReactants>
+          <speciesReference species="atp" stoichiometry="65.0"/>
+          <speciesReference species="glu__L" stoichiometry="0.4"/>
+          <speciesReference species="gln__L" stoichiometry="0.2"/>
+          <speciesReference species="ala__L" stoichiometry="0.1"/>
+          <speciesReference species="asp__L" stoichiometry="0.1"/>
+          <speciesReference species="asn__L" stoichiometry="0.05"/>
+          <speciesReference species="lys__L" stoichiometry="0.08"/>
+          <speciesReference species="g6p" stoichiometry="0.2"/>
+          <speciesReference species="f6p" stoichiometry="0.05"/>
+          <speciesReference species="r5p" stoichiometry="0.1"/>
+          <speciesReference species="accoa" stoichiometry="0.3"/>
+          <speciesReference species="nadph" stoichiometry="10.0"/>
+          <speciesReference species="oaa" stoichiometry="0.1"/>
+          <speciesReference species="pep" stoichiometry="0.05"/>
+          <speciesReference species="pyr" stoichiometry="0.1"/>
+          <speciesReference species="h2o" stoichiometry="1.0"/>
+          <speciesReference species="h" stoichiometry="1.0"/>
+        </listOfReactants>
+        <listOfProducts>
+        </listOfProducts>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

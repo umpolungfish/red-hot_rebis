@@ -1,0 +1,14 @@
+LOCUS       CLINK_GENOME  3000000000 bp  DNA  linear
+DEFINITION  CLINK-designed eukaryote genome.
+ACCESSION   CLK000001
+FEATURES             Location/Qualifiers
+     source          1..3000000000
+                     /organism="eukaryote (CLINK design)
+                     /mol_type="genomic DNA
+     CDS             join(1..300,500..800)
+                     /gene="CLK_001
+                     /product="hypothetical protein
+
+ORIGIN
+        1 acgtacgtac gtacgtacgt acgtacgtac gtacgtacgt
+//

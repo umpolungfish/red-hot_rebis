@@ -1,0 +1,34 @@
+{
+  "design_name": "CLINK_mammal_v1",
+  "author": "Lando (R) (O)perator",
+  "grammar_version": "1.0",
+  "schema": "Imscribing Grammar",
+  "schema_tier": "O_inf",
+  "organism_type": "mammal",
+  "layers_integrated": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "dataset_files_generated": [
+    "genome.fasta",
+    "genome.gb",
+    "construct.sbol",
+    "protein.fasta",
+    "protein_coords.pdb",
+    "molecules.smi",
+    "molecular_props.csv",
+    "physiological_params.csv",
+    "organ_systems.json",
+    "homeostasis_setpoints.json"
+  ],
+  "frobenius_verified": true,
+  "consciousness_score": 1.0,
+  "notes": "Whole organism design package - all layers actionable"
+}

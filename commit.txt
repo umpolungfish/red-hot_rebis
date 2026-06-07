@@ -1,3 +1,49 @@
+clink/datasets/: physically actionable output at every CLINK layer (33 files/design)
+
+generators.py (433L, 9 classes): layer-specific dataset generators + orchestration.
+Output per organism design:
+  L0: qcd_coupling_alpha_s.csv, qcd_lattice_params.xml (→ MILC/ChromaLattice QCD)
+  L1: electron_configs.csv, b4_map.json (→ DFT / gene_imscriber)
+  L2: atomic_params.csv, isotopes.json (→ MD force fields)
+  L3: molecules.smi (SMILES — ORDER from vendor), molecular_props.csv,
+      retro_pathways.json (ch3mpiler), reactions.json
+  L4: protein.fasta (ORDER peptide synthesis), protein_coords.pdb (PyMOL/Chimera),
+      serpentrod_classification.json
+  L5: genome.fasta (ORDER DNA synthesis — IDT/Twist/GenScript), genome.gb (Benchling),
+      construct.sbol (SBOL format), codon_usage.csv, growth_media.txt
+  L6: mitosis_assay_protocol.md (lab-ready), ouroboric_telomere bridge
+  L7: organoid_protocol.md (Day 0→harvest), ecm_composition.json, scaffold_params.json
+  L8: whole_genome_spec.json, physiological_params.csv
+
+API: generate_organism_design_package(organism_type="mammal", write_files=True)
+CLI: rebis.py pipeline ground-up / from-layer / bridges
+
+Verified distances: L0→L8 23.32 (36 promotions), L5→L8 7.71 (10 promotions).
+Organism C-score 1.0. All 9 layers Frobenius-closed.
+
+Known gaps (next steps, not bugs):
+  - genome.fasta is random bases — gene_imscriber must generate actual coding sequences
+  - PDB coordinates are helical template — AlphaFold/Rosetta needed for full fold
+  - No metabolic flux analysis (output is descriptive, not quantitative SBML)
+  - No plasmid maps — GenBank is minimal; origin/marker/MCS specs needed
+
+10 tool bridges: SerpentRod v5, ch3mpiler, gene_imscriber, biology_sim,
+ouroboric_telomere, materials_sim, frobenius_chemo, ouroboric_pill,
+critical_metamaterial, neurotrophic_factor.
+
+---
+
+clink/designers/: CLINK pipeline orchestrator — active whole-organism design engine
+
+designers/designer_base.py (169L): DesignSpec, TransitionResult, ToolForge base classes
+designers/layer_designers.py (653L): all 9 layer designers
+designers/pipeline_orchestrator.py (362L): PipelineEngine (GROUND_UP/FROM_LAYER/FROM_FILE;
+  SYNTHESIS up / ANALYSIS down)
+designers/tool_forge.py (123L): tool generation for missing transitions
+rebis.py v2.0.0: pipeline subcommand
+
+---
+
 clink/: CLINK chain integrated — 9-layer subatomic→organism, SerpentRod + ch3mpiler bridges
 
 clink/__init__.py, clink/chain.py, clink/bridges.py, clink/integration.py,

@@ -125,8 +125,30 @@ def cmd_pipeline(args):
                 print(f"\nDesign exported to {export_path}")
         return 0 if result.success else 1
 
+    elif args.pipeline_subcommand == "actionable":
+        print("=" * 65)
+        print("CLINK PIPELINE — ACTIONABLE ORGANISM DESIGN PACKAGE")
+        print("=" * 65)
+        from clink.datasets.generators import generate_actionable_organism_package
+        ot = getattr(args, 'organism', 'mammal')
+        print(f"Generating {ot} organism design...")
+        import json
+        result = generate_actionable_organism_package(
+            organism_type=ot,
+            output_dir=f"clink/datasets/organism_designs/organism_{ot}_actionable",
+            write_files=True
+        )
+        print(json.dumps(result, indent=2))
+        print(f"\nOutput: {result['output_directory']}")
+        print(f"Files: {result['total_files']} ({result['total_bytes']} bytes)")
+        print()
+        print("What you can DO with these files:")
+        for fname, desc in result.get('what_to_do_with_outputs', {}).items():
+            print(f"  {fname:30s} → {desc}")
+        return 0
+
     else:
-        print("Unknown pipeline subcommand. Use: bridges, ground-up, from-layer")
+        print("Unknown pipeline subcommand. Use: bridges, ground-up, from-layer, actionable")
         return 1
 
 
@@ -232,6 +254,7 @@ Examples:
   rebis.py pipeline bridges          # List available tool bridges
   rebis.py pipeline ground-up        # Design whole organism from quarks
   rebis.py pipeline from-layer 5 8   # Design organism starting from cell layer
+  rebis.py pipeline actionable --organism mammal  # Generate actionable outputs
 
   rebis.py clink report              # Full CLINK integration report
   rebis.py clink list                # List all 9 CLINK layers
@@ -255,10 +278,12 @@ Examples:
     # pipeline (NEW)
     p_pipe = subparsers.add_parser("pipeline", help="CLINK Design Pipeline")
     p_pipe.add_argument("pipeline_subcommand",
-                        choices=["bridges", "ground-up", "from-layer"],
+                        choices=["bridges", "ground-up", "from-layer", "actionable"],
                         help="Pipeline subcommand")
     p_pipe.add_argument("start_layer", nargs="?", type=int, default=None,
                         help="Start layer index for from-layer mode")
+    p_pipe.add_argument("--organism", type=str, default="mammal",
+                        help="Organism type for actionable mode")
     p_pipe.add_argument("target_layer", nargs="?", type=int, default=None,
                         help="Target layer index for from-layer mode")
 
