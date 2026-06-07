@@ -26,7 +26,7 @@ A `platonic protein` is the **structural imscription of a folded protein**: its 
 RNA sequence → [serpentrod] → ⟨structural type, tier, Frobenius certificate⟩
 ```
 
-The `platonic protein` tells you: which primitives are active, whether the fold reaches O_inf, whether μ∘δ=id holds across the fold transition. It does not tell you where atom 437 is at 100K in space group P2₁2₁2₁. That is not a limitation. That is the point.
+The `platonic protein` tells you: which primitives are active, whether the fold reaches $O_\infty$, whether $μ∘δ=id$ holds across the fold transition. It does not tell you where atom 437 is at 100K in space group $P2₁2₁2₁$. That is not a limitation. That is the point.
 
 ### Platonic Disconnections — `ch3mpiler/`
 
@@ -36,11 +36,11 @@ A `platonic disconnection` is a **retrosynthetic cut derived from first principl
 Target molecule → [ch3mpiler] → ranked disconnections with δ scores
 ```
 
-The `platonic disconnection` tells you: which bond is structurally optimal to break, in order of grammatical distance. A δ score near zero means the bond sits exactly at the FG interface in primitive space. A high δ means the cut is forced — structurally costly.
+The `platonic disconnection` tells you: which bond is structurally optimal to break, in order of grammatical distance. A $δ$ score near zero means the bond sits exactly at the FG interface in primitive space. A high $δ$ means the cut is forced — structurally costly.
 
 ### Structural Imscriptions — `pipeline/`
 
-The auto-imscriber assigns any described system a 12-primitive type and verifies Frobenius closure. The output is an imscription certificate: the type tuple, tier, C-score, and whether the system satisfies μ∘δ=id.
+The auto-imscriber assigns any described system a 12-primitive type and verifies Frobenius closure. The output is an imscription certificate: the type tuple, tier, C-score, and whether the system satisfies $μ∘δ=id$.
 
 ### Genetic Imscriptions — `gene_imscriber/`
 
@@ -58,7 +58,7 @@ The inversion is not incidental. It is structural:
 |---|---|---|---|
 | Ř | 𐑾 bidirectional | 𐑩 supervenience | The molecule cannot respond to being measured — the crystallographer is outside the system |
 | Ħ | 𐑫 eternal chirality | 𐑓 memoryless | Ω collapses (𐑭→𐑷), removing the winding that sustains the chiral invariant; absolute configuration is recovered by workaround, not topological invariant |
-| Φ | 𐑹 Frobenius-special | 𐑬 partial/Z₂ | μ∘δ=id does not hold — R_free ≈ 0.2, an irreducible 20% discrepancy between model and data |
+| Φ | 𐑹 Frobenius-special | 𐑬 partial/Z₂ | $μ∘δ=id$ does not hold — R_free ≈ 0.2, an irreducible 20% discrepancy between model and data |
 | Ð | 𐑦 self-written | 𐑼 infinite-dim field | The state space is externally imposed by the lattice |
 | Þ | 𐑶 irreducible product | 𐑡 network branching | The lattice decomposes into unit cells; holistic topology is destroyed |
 | ƒ | 𐑐 quantum | 𐑱 classical | Thermal parameters treat atoms as Gaussian clouds — no coherence |
