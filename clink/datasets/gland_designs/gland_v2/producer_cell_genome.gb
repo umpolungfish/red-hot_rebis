@@ -1,0 +1,36 @@
+LOCUS       producer_construct        16500 bp    DNA     circular    01-JAN-2025
+DEFINITION  pCLINK_PRODUCER - Universal antidote fusion protein under NF-κB inducible control.
+ACCESSION   GLS2025002
+VERSION     GLS2025002.1
+KEYWORDS    synthetic biology; detox gland; universal antidote.
+SOURCE      synthetic construct
+  ORGANISM  synthetic construct
+            .
+FEATURES             Location/Qualifiers
+     regulatory      1..298
+                     /note="6x NF-kB response elements (GGGACTTTCC) - inducible"
+     promoter        299..523
+                     /note="CMV minimal promoter"
+     CDS             524..4405
+                     /note="universal_antidote_fusion - 6-arm detox platform"
+                     /gene="UAD-6"
+                     /product="Universal Antidote Fusion Protein"
+                     /codon_start=1
+                     /note="Signal peptide (IL-2) + CYP3A4_enhanced + PON1_enhanced
+                            + MT3_enhanced + DARPin_toxin_neutralizer 
+                            + Rhodanese_enhanced + GST_TXNRD1_enhanced"
+     regulatory      4406..4962
+                     /note="WPRE element"
+     terminator      4963..5188
+                     /note="BGH polyA signal"
+     misc_feature    5189..7450
+                     /note="EF1a promoter - neomycin resistance for selection"
+     misc_feature    7451..8245
+                     /note="Neomycin phosphotransferase (G418 resistance)"
+     misc_feature    8246..9100
+                     /note="SV40 origin"
+     misc_feature    9101..10900
+                     /note="Ampicillin resistance"
+     misc_feature    10901..11700
+                     /note="pUC origin"
+ORIGIN
