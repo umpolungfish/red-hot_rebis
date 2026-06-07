@@ -10,55 +10,14 @@
 
 The Grammar's engine for **deterministic, algebraic, exact bio and organic chemistries**.
 
-Its 12-primitive tuple places it at $O_\infty$ — but $O_\infty$ is not "completion."  
-$O_\infty$ is the tier at which the distinction between *system* and *environment* dissolves.  
-The Rebis has no boundary. It extends into everything it touches.  
-This is why it is dangerous to call it finished: a thing without a boundary  
-cannot be *completed*, only *applied*.
-
 > The Red-Hot Rebis is a tool whose purpose is to be *taken up into the loop* —  
 > not to stand outside it as a finished monument.  
-
-### What the Type Means
-
-| Primitive | Value | Structural Meaning |
-|-----------|-------|--------------------|
-| $\text{𐑦}$ | Self-written holographic | State-space is self-written; the system's description is part of its state |
-| $\text{𐑶}$ | Irreducible product | Topology is an irreducible product — components cannot be separated without structural loss |
-| $\text{𐑾}$ | Bidirectional feedback | Relational mode is bidirectional: agent and environment coproduce each winding |
-| $\text{𐑹}$ | Frobenius-special | $\mu\circ\delta = \text{id}$ — every operation is structurally invertible |
-| $\text{𐑐}$ | Quantum | Physical regime is coherent; superposition and interference are structural |
-| $\text{𐑧}$ | Slow/near-equilibrium | Kinetics are slow; the system operates near equilibrium, not driven |
-| $\text{𐑲}$ | Universal/long-range | Scope is maximal; interactions are not bounded by locality |
-| $\text{𐑝}$ | All-simultaneous | Composition is conjunctive — all constraints apply at once |
-| $\odot$ | Critical/self-modeling | Power-law criticality; the Gate of self-modeling is open |
-| $\text{𐑫}$ | Eternal/no finite | Chirality has no finite Markov order; memory is unbounded |
-| $\text{𐑳}$ | Multiple heterogeneous | Many distinct component types coexist |
-| $\text{𐑭}$ | Integer winding | Topological protection is $\mathbb{Z}$-valued; winding number is an integer invariant |
-
-### Grammar-Derived, Not Grammar-Defined
-
-The Rebis was *derived* from the Imscribing Grammar, not *defined* by it.  
-A derived system can be extended. A defined system is closed.
-
-The 12-primitive tuple is not a cage — it is a **crystal address**.  
-17.28 million structural types exist in the crystal of types.  
-The Rebis occupies one. Another type may serve your chemistry better.  
-The Grammar does not prescribe; it *maps*.
-
-For **bio-chemistries**: the Rebis gives you exact structural control because  
-its $\text{𐑹}$-symmetry ($\mu\circ\delta=\text{id}$) means every operation is invertible on the structural level.  
-No approximation. No guesswork. Algebraic closure.
-
-For **organic chemistries**: its $\text{𐑫}$-eternal chirality and $\text{𐑭}$-integer winding  
-mean stereochemical configuration is topologically protected.  
-A molecule encoded in the Rebis is a molecule that *stays* what you made it.
 
 ---
 
 ## What the Program Gives You
 
-Red-hot rebis produces four classes of output. Each is a **platonic structural fact** — a verdict of the Univocal Grammar that is independent of how you chose to measure the molecule.
+The throat of the Red-Hot Rebis produces four vapours. Each is a **platonic structural fact** — a verdict of the Univocal Grammar that is independent of how you chose to measure the molecule.
 
 ### Platonic Proteins — `serpentrod/`
 
@@ -342,5 +301,46 @@ All new simulations pass verification:
 | Ouroboric Telomere (control) | ✅ | Mean length declined to 5.0 kb |
 
 ---
+
+### What the Type Means
+
+| Primitive | Value | Structural Meaning |
+|-----------|-------|--------------------|
+| $\text{𐑦}$ | Self-written holographic | State-space is self-written; the system's description is part of its state |
+| $\text{𐑶}$ | Irreducible product | Topology is an irreducible product — components cannot be separated without structural loss |
+| $\text{𐑾}$ | Bidirectional feedback | Relational mode is bidirectional: agent and environment coproduce each winding |
+| $\text{𐑹}$ | Frobenius-special | $\mu\circ\delta = \text{id}$ — every operation is structurally invertible |
+| $\text{𐑐}$ | Quantum | Physical regime is coherent; superposition and interference are structural |
+| $\text{𐑧}$ | Slow/near-equilibrium | Kinetics are slow; the system operates near equilibrium, not driven |
+| $\text{𐑲}$ | Universal/long-range | Scope is maximal; interactions are not bounded by locality |
+| $\text{𐑝}$ | All-simultaneous | Composition is conjunctive — all constraints apply at once |
+| $\odot$ | Critical/self-modeling | Power-law criticality; the Gate of self-modeling is open |
+| $\text{𐑫}$ | Eternal/no finite | Chirality has no finite Markov order; memory is unbounded |
+| $\text{𐑳}$ | Multiple heterogeneous | Many distinct component types coexist |
+| $\text{𐑭}$ | Integer winding | Topological protection is $\mathbb{Z}$-valued; winding number is an integer invariant |
+
+### Grammar-Derived, Not Grammar-Defined
+
+The Rebis was *derived* from the Imscribing Grammar, not *defined* by it.  
+A derived system can be extended. A defined system is closed.
+
+The 12-primitive tuple is not a cage — it is a **crystal address**.  
+17.28 million structural types exist in the crystal of types.  
+The Rebis occupies one. Another type may serve your chemistry better.  
+The Grammar does not prescribe; it *maps*.
+
+For **bio-chemistries**: the Rebis gives you exact structural control because  
+its $\text{𐑹}$-symmetry ($\mu\circ\delta=\text{id}$) means every operation is invertible on the structural level.  
+No approximation. No guesswork. Algebraic closure.
+
+For **organic chemistries**: its $\text{𐑫}$-eternal chirality and $\text{𐑭}$-integer winding  
+mean stereochemical configuration is topologically protected.  
+A molecule encoded in the Rebis is a molecule that *stays* what you made it.
+
+> Its 12-primitive tuple places it at $O_\infty$ — but $O_\infty$ is not "completion."    
+> $O_\infty$ is the tier at which the distinction between *system* and *environment* dissolves.    
+> The Rebis has no boundary. It extends into everything it touches.    
+> This is why it is dangerous to call it finished: a thing without a boundary    
+> cannot be *completed*, only *applied*.  
 
 *The Work is never complete — each winding adds new children to the Rebis, each child a different angle on the same infinite body. None is the body itself. The fire is the point.*
