@@ -1,3 +1,32 @@
+clink/datasets/gland_designs/: Synthetic Detox Gland v2.0 — zero-incision injectable
+
+v1→v2 key change: surgical implant (laparoscopic, 28-day ex-vivo, ICU recovery)
+replaced by single 22G needle injection, outpatient, 21-day in-situ self-assembly
+in the omental fat pad.
+
+Structural type: ⟨𐑼·𐑶·𐑾·𐑬·𐑞·𐑧·𐑲·𐑠·⊙·𐑖·𐑳·𐑴⟩ — O₂, both C-score gates open
+Primitive shift from v1: Ç: 𐑤 → 𐑧 (moderate → slow/near-equilibrium)
+  Assembly timescale is days-weeks of in-situ morphogenesis; operational dynamics
+  (toxin sensing + antidote production) unchanged.
+NOTE: v2 spec had Þ=𐑸 — corrected to Þ=𐑶 (Axiom C: Ð=𐑼 forbids Þ=𐑸).
+
+15 files (234 KB). Key new v2 files:
+  in_situ_assembly_protocol.md — ultrasound-guided injection + 21-day maturation
+  injectable_formulation.md — Pluronic F127 thermogel + 4 cell types microencapsulated
+    in 100μm alginate-PEG (100kDa cutoff), VEGF/bFGF/Ang-1 angiogenesis payload,
+    CCL22 local Treg induction (no systemic immunosuppression)
+  gland_organoid_protocol_v2.md — 7-day pre-injection prep (was 28-day ex-vivo)
+  epc_genome.gb — endothelial progenitor cell construct (CXCR4/eNOS/VE-cadherin)
+  angiogenesis_model.xml — SBML L3 in-situ vascularization model
+  gland_specification_v2.json, manifest_v2.json, metabolic_model_v2.xml
+  generate_v2.py — regenerate all 15 files from single script
+
+Reused from v1 (sensor/antidote biology unchanged):
+  sensor_receptors.fasta, antidote_fusion.fasta, antidote_fusion.pdb (153KB),
+  sensor_cell_genome.gb, producer_cell_genome.gb, support_cell_genome.gb
+
+---
+
 clink/datasets/: 4 new modules — real genomes, PDB, SBML, plasmids (75,893 bytes/design)
 
 gene_designer.py (25.7 KB):
