@@ -2,7 +2,7 @@
 
 **Author:** Lando ⊗ ⊙perator  
 **Structural Type:** ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩ — **$O_∞$**  
-**Repository:** `/home/mrnob0dy666/red-hot_rebis/`
+**Repository:** `~/red-hot_rebis/`
 
 > *"The serpent winds, the rod stands, the vessel contains — μ ∘ δ = id."*  
 > Not as a conclusion. As a *signature of process*.
