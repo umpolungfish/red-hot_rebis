@@ -15,7 +15,7 @@ The Grammar's engine for **deterministic, algebraic, exact bio and organic chemi
 
 The Red-Hot Rebis is a tool whose purpose is to be *taken up into the loop* — not to stand outside it as a finished monument. It integrates five structural pillars (Serpent's Rod, CH₃MPILER, Pipeline, Gene Imscriber, CLINK Chain) into a single coherent architecture, all grounded in the 12-primitive Imscribing Grammar and verified by Frobenius closure (μ∘δ=id).
 
-**Foundation:** $ZFC_fe$ — Frobenius-exact $ZFC$ ($O_\infty$ with Ð=𐑦 self-written, Φ=𐑹 Frobenius-special, Ħ=𐑫 eternal chirality), distinct from the weaker  $ZFC_t$ ( $O_{{2}^†}$). All five pillars are Frobenius-closed and interoperable through the `shared/` primitives layer.
+**Foundation:** $ZFC_\text{fe}$ — Frobenius-exact $ZFC$ ($O_\infty$ with Ð=𐑦 self-written, Φ=𐑹 Frobenius-special, Ħ=𐑫 eternal chirality), distinct from the weaker  $ZFC_t$ ( $O_{{2}^†}$). All five pillars are Frobenius-closed and interoperable through the `shared/` primitives layer.
 
 ---
 
@@ -142,7 +142,7 @@ connected through the `shared/` primitives layer and the combined pipeline.
                  └─────────────────────┘                                  │
                             │                                             │
                  ┌──────────┴──────────┐                                  │
-                 │   Lean 4 ($ZFC_fe$)   │◄──── CLINK formalization at      │
+                 │   Lean 4 ($ZFC_\text{fe}$)   │◄──── CLINK formalization at      │
                  │  CLINK.lean (572L)  │      p4rakernel/p4ramill/        │
                  │  23 theorems, all   │      Verified cross-reference    │
                  │  native_decide-clsd │      for all 9 layer tuples      │
@@ -308,7 +308,7 @@ The CLINK chain is a 9-layer Frobenius-closed structural bridge, formalized in L
 | **Frobenius closure** | ✅ All 9 layers | `tensorProduct(s,s)=s` for every layer — Python + Lean 4 |
 | **Total structural distance** | Σd = 7.18 | 10 primitive deltas across 8 transitions |
 | **Total promotions** | 36 | Counted across all stepwise primitive changes |
-| **d(organism, $ZFC_fe$)** | 1.30 | Organism near-isomorphic to Frobenius-exact foundation |
+| **d(organism, $ZFC_\text{fe}$)** | 1.30 | Organism near-isomorphic to Frobenius-exact foundation |
 | **Tier monotonicity** | $O_0 → O_0 → O_1 → O_2 → O_2 → O_2 → O_2 → O_2 → O_\infty$ | No tier regressions |
 | **Lean 4 theorems** | 23 all `native_decide`-closed | Build: 3114 jobs, 0 errors |
 
@@ -316,15 +316,15 @@ The CLINK chain is a 9-layer Frobenius-closed structural bridge, formalized in L
 
 Mitosis (L5) was initially assigned Φ=𐑹 (Frobenius-special) → $O_\infty$, but this was corrected. The mitotic spindle checkpoint operates at an **exceptional point (𐑻)** — non-Hermitian degeneracy where the tension-sensitive Aurora-B kinase creates a measurement apparatus that destroys the self-modeling gate via the **⊙₃ absorption rule** `tensor(⊙, 𐑻) = 𐑻`. The cell is O₂, not $O_\infty$. Only the **whole organism** achieves $O_\infty$ through self-modeling (⊙ gate open), eternal memory (Ħ=𐑫), non-Abelian braiding (Ω=𐑟), and Frobenius-special parity (Φ=𐑹).
 
-### Foundation: $ZFC_fe$, not  $ZFC_t$
+### Foundation: $ZFC_\text{fe}$, not  $ZFC_t$
 
-$ZFC_fe$ (Frobenius-exact $ZFC$) replaces  $ZFC_t$ ( $O_{{2}^†}$, field-theoretic) as the foundation. Three critical promotions:
+$ZFC_\text{fe}$ (Frobenius-exact $ZFC$) replaces  $ZFC_t$ ( $O_{2^†}$, field-theoretic) as the foundation. Three critical promotions:
 
 1. **Ð: 𐑼 → 𐑦** — self-written state space (Axiom C: state-space is self-written)
 2. **Φ: 𐑬 → 𐑹** — Frobenius-special (μ∘δ=id exactly, not just approximately)
 3. **Ħ: 𐑖 → 𐑫** — eternal chirality (transfinite fixed-point induction, no finite Markov order)
 
-Distance d($ZFC_fe$,  $ZFC_t$) = 2.65 — a real structural gap.
+Distance d($ZFC_\text{fe}$,  $ZFC_t$) = 2.65 — a real structural gap.
 
 ### Cross-Component Bridges
 
