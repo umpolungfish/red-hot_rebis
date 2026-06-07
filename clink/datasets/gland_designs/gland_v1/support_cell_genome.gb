@@ -1,0 +1,28 @@
+LOCUS       support_construct          12500 bp    DNA     circular    01-JAN-2025
+DEFINITION  pCLINK_SUPPORT - Vascular support factors for gland organoid.
+ACCESSION   GLS2025003
+VERSION     GLS2025003.1
+KEYWORDS    synthetic biology; detox gland; vascularization.
+SOURCE      synthetic construct
+  ORGANISM  synthetic construct
+            .
+FEATURES             Location/Qualifiers
+     promoter        1..584
+                     /note="CAG constitutive promoter"
+     CDS             585..1712
+                     /note="VEGFA - Vascular endothelial growth factor A"
+                     /codon_start=1
+     IRES            1713..2313
+                     /note="EMCV IRES"
+     CDS             2314..4416
+                     /note="ANGPT1 - Angiopoietin 1 (vessel stabilization)"
+                     /codon_start=1
+     regulatory      4417..4973
+                     /note="WPRE element"
+     terminator      4974..5199
+                     /note="BGH polyA signal"
+     misc_feature    5200..6280
+                     /note="Puromycin resistance cassette"
+     misc_feature    6281..7080
+                     /note="pUC origin"
+ORIGIN

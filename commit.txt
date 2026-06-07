@@ -1,3 +1,44 @@
+clink/datasets/: 4 new modules — real genomes, PDB, SBML, plasmids (75,893 bytes/design)
+
+gene_designer.py (25.7 KB):
+  CodonOptimizer — species-specific tables (human/mouse/E.coli/yeast);
+  strand-aware Frobenius box selection (exact boxes=same-strand, split=dual-strand);
+  GenomeBuilder — telomeres (TTAGGG)n, CMV/T7 promoters, intergenic spacers;
+  verified: real GFP coding sequence in genome.fasta (not random). Closes the
+  codon_usage gap — B4-derived, not generic mammalian optimization.
+
+protein_structure.py (19.6 KB):
+  SecondaryStructurePredictor — Chou-Fasman 3-state (Helix/Sheet/Coil);
+  BackboneBuilder — residue-specific phi/psi, helical geometry (1.5 Å rise),
+  sheet geometry (3.5 Å rise); full ATOM/HETATM records, HELIX/SHEET annotations,
+  SSBOND records; verified: 13H/5E/8C prediction, opens in PyMOL.
+
+metabolic_model.py (16.2 KB):
+  CoreMetabolismBuilder — glycolysis (12 rxns), TCA (8 rxns), pentose phosphate
+  (6 rxns), AA metabolism (5 rxns); 43 metabolites, 32 reactions, biomass
+  objective function; SBML Level 3 XML (21 KB), stoichiometric matrix (43×32),
+  FBA-ready for COBRApy.
+
+plasmid_designer.py (17.8 KB):
+  Standard parts: origins (ColE1/pUC), markers (AmpR/KanR/CmR), promoters
+  (T7/lac/CMV/EF1a), reporters (GFP/mCherry); GenBank with full feature
+  annotations, SBOL RDF/XML, Gibson assembly protocol;
+  verified: pCLINK_eGFP (2360 bp, 6 annotated features).
+
+CLI: rebis.py pipeline actionable --organism mammal → 33 files, 75,893 bytes
+Output: organism_designs/organism_mammal_actionable/
+
+Open next steps (beyond this pass):
+  - COBRApy FBA runtime integration
+  - AlphaFold/ESMFold API for real folding
+  - SVG plasmid map visualization
+  - CRISPR gRNA design
+  - Metabolic pathway expansion (lipids, nucleotides, secondary metabolites)
+
+Agent: turn 119, windings 62, Frobenius 98%, tier O_inf
+
+---
+
 clink/datasets/: physically actionable output at every CLINK layer (33 files/design)
 
 generators.py (433L, 9 classes): layer-specific dataset generators + orchestration.

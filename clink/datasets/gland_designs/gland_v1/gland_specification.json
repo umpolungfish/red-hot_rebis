@@ -1,0 +1,153 @@
+{
+  "name": "Universal Detox Gland (Panacea)",
+  "version": "1.0.0",
+  "structural_type": "\u27e8\ud801\udc7c \u00b7 \ud801\udc78 \u00b7 \ud801\udc7e \u00b7 \ud801\udc6c \u00b7 \ud801\udc5e \u00b7 \ud801\udc64 \u00b7 \ud801\udc72 \u00b7 \ud801\udc60 \u00b7 \u2299 \u00b7 \ud801\udc56 \u00b7 \ud801\udc73 \u00b7 \ud801\udc74\u27e9",
+  "ouroboricity_tier": "O_2",
+  "consciousness_score": 0.45,
+  "gate_1_phi_c": true,
+  "gate_2_k_slow": false,
+  "physical_specs": {
+    "volume_cm3": 3.0,
+    "shape": "ellipsoid",
+    "dimensions_mm": [
+      18,
+      15,
+      12
+    ],
+    "weight_g": 3.2,
+    "cell_count": 1000000000.0,
+    "cell_types": {
+      "sensor": {
+        "count": 50000000.0,
+        "percentage": 5
+      },
+      "producer": {
+        "count": 900000000.0,
+        "percentage": 90
+      },
+      "support": {
+        "count": 50000000.0,
+        "percentage": 5
+      }
+    },
+    "vascular_network": {
+      "type": "microchannel_array",
+      "channel_count": 24,
+      "channel_diameter_um": 200,
+      "flow_rate_uL_min": 50,
+      "anastomosis": "gastroepiploic_AV"
+    },
+    "scaffold": {
+      "material": "HA-collagen-PEG4MAL-alginate",
+      "pore_size_um": [
+        50,
+        200
+      ],
+      "mechanical_modulus_kPa": 5,
+      "degradation_time_weeks": 24
+    }
+  },
+  "sensor_systems": {
+    "AhR_enhanced": {
+      "target": "PAHs_dioxins",
+      "sensitivity_uM": [
+        0.01,
+        100
+      ],
+      "response_time_min": 15
+    },
+    "PXR_CAR_hybrid": {
+      "target": "organophosphates_drugs",
+      "sensitivity_uM": [
+        0.1,
+        500
+      ],
+      "response_time_min": 10
+    },
+    "TLR4_MD2_hybrid": {
+      "target": "bacterial_endotoxins",
+      "sensitivity_uM": [
+        0.001,
+        10
+      ],
+      "response_time_min": 5
+    },
+    "MTF1_metal_sensor": {
+      "target": "heavy_metals",
+      "sensitivity_uM": [
+        0.5,
+        200
+      ],
+      "response_time_min": 30
+    },
+    "KEAP1_NRF2_sensor": {
+      "target": "electrophiles_oxidants",
+      "sensitivity_uM": [
+        1,
+        500
+      ],
+      "response_time_min": 20
+    }
+  },
+  "antidote_arms": {
+    "CYP3A4_enhanced": {
+      "target": "PAHs_drugs_xenobiotics",
+      "mechanism": "oxidative_metabolism",
+      "Km_uM": 15
+    },
+    "PON1_enhanced": {
+      "target": "organophosphates",
+      "mechanism": "hydrolysis",
+      "Km_uM": 50
+    },
+    "MT3_enhanced": {
+      "target": "heavy_metals",
+      "mechanism": "chelation",
+      "Kd_uM": 0.1
+    },
+    "DARPin_neutralizer": {
+      "target": "protein_toxins",
+      "mechanism": "binding",
+      "Kd_uM": 0.01
+    },
+    "Rhodanese_enhanced": {
+      "target": "cyanide_sulfide",
+      "mechanism": "thiocyanate_conversion",
+      "Km_uM": 100
+    },
+    "GST_TXNRD1_enhanced": {
+      "target": "electrophiles_ROS",
+      "mechanism": "conjugation_reduction",
+      "Km_uM": 30
+    }
+  },
+  "kinetics": {
+    "induction_delay_min": 30,
+    "peak_production_h": 6,
+    "secretion_rate_ng_per_10e6_per_h": 50,
+    "baseline_secretion_ng_per_10e6_per_h": 0.05,
+    "dynamic_range_log": 3,
+    "clearance_halflife_h": 24,
+    "refractory_period_h": 4
+  },
+  "toxin_classes_detected": [
+    "organophosphate",
+    "heavy_metal",
+    "biological_toxin",
+    "PAH_dioxin",
+    "cyanide_sulfide",
+    "electrophile_oxidant"
+  ],
+  "output_files": [
+    "sensor_receptors.fasta",
+    "antidote_fusion.fasta",
+    "antidote_fusion.pdb",
+    "sensor_cell_genome.gb",
+    "producer_cell_genome.gb",
+    "support_cell_genome.gb",
+    "gland_organoid_protocol.md",
+    "gland_specification.json",
+    "implantation_protocol.md",
+    "metabolic_model.xml"
+  ]
+}

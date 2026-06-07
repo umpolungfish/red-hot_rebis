@@ -1,0 +1,45 @@
+LOCUS       sensor_construct          28500 bp    DNA     circular    01-JAN-2025
+DEFINITION  pCLINK_SENSOR - Synthetic toxin receptor array for detox gland sensor cells.
+ACCESSION   GLS2025001
+VERSION     GLS2025001.1
+KEYWORDS    synthetic biology; detox gland; toxin sensing.
+SOURCE      synthetic construct
+  ORGANISM  synthetic construct
+            .
+FEATURES             Location/Qualifiers
+     promoter        1..584
+                     /note="CAG constitutive promoter"
+     CDS             585..2936
+                     /note="AhR_enhanced - Aryl hydrocarbon receptor (PAH/dioxin sensor)"
+                     /codon_start=1
+     IRES            2937..3537
+                     /note="EMCV IRES for bicistronic expression"
+     CDS             3538..6232
+                     /note="PXR_CAR_hybrid - Xenobiotic sensor (organophosphate/drug)"
+                     /codon_start=1
+     IRES            6233..6833
+                     /note="EMCV IRES"
+     CDS             6834..8715
+                     /note="TLR4_MD2_hybrid - Bacterial endotoxin sensor (LPS)"
+                     /codon_start=1
+     IRES            8716..9316
+                     /note="EMCV IRES"
+     CDS             9317..11528
+                     /note="MTF1_metal_sensor - Heavy metal transcription factor"
+                     /codon_start=1
+     IRES            11529..12129
+                     /note="EMCV IRES"
+     CDS             12130..14532
+                     /note="KEAP1_NRF2_pathway - Electrophile/oxidant sensor"
+                     /codon_start=1
+     regulatory      14533..15089
+                     /note="WPRE - Woodchuck hepatitis posttranscriptional regulatory element"
+     terminator      15090..15315
+                     /note="BGH polyA signal"
+     misc_feature    15316..15900
+                     /note="SV40 origin of replication"
+     misc_feature    15901..17700
+                     /note="Ampicillin resistance cassette (beta-lactamase)"
+     misc_feature    17701..18500
+                     /note="pUC origin of replication"
+ORIGIN
