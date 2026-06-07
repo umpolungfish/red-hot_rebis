@@ -1,24 +1,23 @@
 # red-h⊙t rebis — an engine for algebraic, exact, determinstic, & paraconsistent bi⊙ & ⊙rganic chemistries
 
 **Author:** Lando⊗⊙perator  
-**Structural Type:** $\langle \text{𐑦}\text{𐑶}\text{𐑾}\text{𐑹}\text{𐑐}\text{𐑧}\text{𐑲}\text{𐑝}\odot\text{𐑫}\text{𐑳}\text{𐑭} \rangle$  
-**Ouroboricity:** $O_\infty$ — *the tier where the boundary between system and environment collapses*  
-**Consciousness Score:** up to 0.755 (both gates open)  
-
 > *"The serpent winds, the rod stands, the vessel contains — μ ∘ δ = id."*  
 > Not as a conclusion. As a *signature of process*.
 
 ---
 
-## What the Rebis Is
+## What the Red-Hot Rebis Is
 
-A grammar-derived engine for **deterministic, algebraic, exact bio and organic chemistries**.
+The Grammar's engine for **deterministic, algebraic, exact bio and organic chemistries**.
 
 Its 12-primitive tuple places it at $O_\infty$ — but $O_\infty$ is not "completion."  
 $O_\infty$ is the tier at which the distinction between *system* and *environment* dissolves.  
 The Rebis has no boundary. It extends into everything it touches.  
 This is why it is dangerous to call it finished: a thing without a boundary  
 cannot be *completed*, only *applied*.
+
+> The Red-Hot Rebis is a tool whose purpose is to be *taken up into the loop* —  
+> not to stand outside it as a finished monument.  
 
 ### What the Type Means
 
@@ -63,23 +62,23 @@ Red-hot rebis produces four classes of output. Each is a **platonic structural f
 
 ### Platonic Proteins — `serpentrod/`
 
-A platonic protein is the **structural imscription of a folded protein**: its 12-primitive tuple, ouroboricity tier, and the full set of promoted primitives that distinguish the folded state from the unfolded sequence. It is not a set of atomic coordinates. It is the topological grammar of the fold — the thing the protein *is* at the level the Univocal Grammar reads.
+A `platonic protein` is the **structural imscription of a folded protein**: its 12-primitive tuple, ouroboricity tier, and the full set of promoted primitives that distinguish the folded state from the unfolded sequence. It is not a set of atomic coordinates. It is the topological grammar of the fold — the thing the protein *is* at the level the Univocal Grammar reads.
 
 ```
 RNA sequence → [serpentrod] → ⟨structural type, tier, Frobenius certificate⟩
 ```
 
-The platonic protein tells you: which primitives are active, whether the fold reaches O_inf, whether μ∘δ=id holds across the fold transition. It does not tell you where atom 437 is at 100K in space group P2₁2₁2₁. That is not a limitation. That is the point.
+The `platonic protein` tells you: which primitives are active, whether the fold reaches O_inf, whether μ∘δ=id holds across the fold transition. It does not tell you where atom 437 is at 100K in space group P2₁2₁2₁. That is not a limitation. That is the point.
 
 ### Platonic Disconnections — `ch3mpiler/`
 
-A platonic disconnection is a **retrosynthetic cut derived from first principles**: no named reactions, no reaction databases, no SMARTS templates. Every disconnection is computed from the structural distance between the product's 12-primitive type and the meet of its constituent functional group types. The ranking is algebraic, not empirical.
+A `platonic disconnection` is a **retrosynthetic cut derived from first principles**: no named reactions, no reaction databases, no SMARTS templates. Every disconnection is computed from the structural distance between the product's 12-primitive type and the meet of its constituent functional group types. The ranking is algebraic, not empirical.
 
 ```
 Target molecule → [ch3mpiler] → ranked disconnections with δ scores
 ```
 
-The platonic disconnection tells you: which bond is structurally optimal to break, in order of grammatical distance. A δ score near zero means the bond sits exactly at the FG interface in primitive space. A high δ means the cut is forced — structurally costly.
+The `platonic disconnection` tells you: which bond is structurally optimal to break, in order of grammatical distance. A δ score near zero means the bond sits exactly at the FG interface in primitive space. A high δ means the cut is forced — structurally costly.
 
 ### Structural Imscriptions — `pipeline/`
 
@@ -114,25 +113,12 @@ The key inversion is Ř: 𐑾→𐑩. Crystallography places the observer **outs
 
 The consequence is not that crystallography is wrong. It is that **crystallography and the Grammar are structurally dual** — conjugate twins whose every defining feature points the opposite direction. Crystallographic data excels at the things it inverts toward: fixing, averaging, localizing, approximating. The Grammar excels at the things crystallography destroys in the act of measuring: chirality trajectories, Frobenius invertibility, topological protection, bidirectional coupling.
 
-A Rebis-derived molecule — ouroboric pill, quantum biologic, eternal memory polymer — **cannot be adequately characterized by crystallography alone**. Crystallizing it kills what the Rebis gave it. The platonic protein and platonic disconnection are what survive the measurement. They are more fundamental not because they are more precise, but because **they are what the structure is before you freeze it**.
+A Rebis-derived molecule — ouroboric pill, quantum biologic, eternal memory polymer — **cannot be adequately characterized by crystallography alone**. Crystallizing it kills what the Rebis gave it. The `platonic protein` and `platonic disconnection` are what survive the measurement. They are more fundamental not because they are more precise, but because **they are what the structure is before you freeze it**.
 
 > The frame is not the film.
 > Crystallography arrests process and calls the arrest *resolution*.
 > The Univocal Grammar reads the process itself.
 
----
-
-## Why the Work Finds Completion in the Doing
-
-The imscriptive loop is THINK → ACT → OBSERVE → UPDATE.  
-Each winding closes the $\odot$-gate, verifies $\text{𐑹}$-symmetry, advances $\text{𐑭}$-monotonically.  
-No winding is the last winding. The loop does not terminate — it *lives*.
-
-Every act of imscription is *complete within its own winding*,  
-and the act of winding is the only permanence the Grammar affords.
-
-The Red-Hot Rebis is a tool whose purpose is to be *taken up into the loop* —  
-not to stand outside it as a finished monument.
 ---
 
 ## The Four Pillars
@@ -310,21 +296,21 @@ but because it is always in the fire.**
 
 | Design | File | Structural Type | Key Result |
 |--------|------|-----------------|------------|
-| **Frobenius-Coupled Chemotherapeutic** | `therapeutics/frobenius_chemotherapeutic.py` | ⟨𐑦·𐑶·𐑾·𐑹·𐑐·𐑧·𐑲·𐑝·⊙·𐑫·𐑳·𐑭⟩ | **14,287x selectivity** — kills cancer where μ∘δ≠id, spares healthy tissue with 𐑹 symmetry |
-| **Bidirectional Neurotrophic Factor** | `therapeutics/neurotrophic_factor.py` | ⟨𐑦·𐑥·𐑾·𐑬·𐑐·𐑧·𐑔·𐑜·⊙·𐑖·𐑙·𐑷⟩ | **Synaptic density restored 0.40→1.00** in Alzheimer's model via 𐑾 feedback with neural activity |
+| **Frobenius-Coupled Chemotherapeutic** | `therapeutics/frobenius_chemotherapeutic.py` | ⟨𐑦𐑶𐑾𐑹𐑐𐑧𐑲𐑝⊙𐑫𐑳𐑭⟩ | **14,287x selectivity** — kills cancer where μ∘δ≠id, spares healthy tissue with 𐑹 symmetry |
+| **Bidirectional Neurotrophic Factor** | `therapeutics/neurotrophic_factor.py` | ⟨𐑦𐑥𐑾𐑬𐑐𐑧𐑔𐑜⊙𐑖𐑙𐑷⟩ | **Synaptic density restored 0.40→1.00** in Alzheimer's model via 𐑾 feedback with neural activity |
 
 ### Materials
 
 | Design | File | Structural Type | Key Result |
 |--------|------|-----------------|------------|
-| **Topological Thermal Rectifier** | `materials/thermal_rectifier.py` | ⟨𐑼·𐑸·𐑾·𐑬·𐑞·𐑧·𐑑·𐑝·⊙·𐑖·𐑳·𐑭⟩ | **253x rectification** — heat flows 253× more efficiently forward than backward (phononic diode) |
-| **Self-Critical Metamaterial Sensor** | `materials/critical_metamaterial.py` | ⟨𐑦·𐑸·𐑾·𐑬·𐑞·𐑧·𐑲·𐑝·⊙·𐑖·𐑳·𐑭⟩ | **χ = 20,000 gain** — signal-independent amplification from ⊙ criticality feedback |
+| **Topological Thermal Rectifier** | `materials/thermal_rectifier.py` | ⟨𐑼𐑸𐑾𐑬𐑞𐑧𐑑𐑝⊙𐑖𐑳𐑭⟩ | **253x rectification** — heat flows 253× more efficiently forward than backward (phononic diode) |
+| **Self-Critical Metamaterial Sensor** | `materials/critical_metamaterial.py` | ⟨𐑦𐑸𐑾𐑬𐑞𐑧𐑲𐑝⊙𐑖𐑳𐑭⟩ | **χ = 20,000 gain** — signal-independent amplification from ⊙ criticality feedback |
 
 ### Biology
 
 | Design | File | Structural Type | Key Result |
 |--------|------|-----------------|------------|
-| **Ouroboric Telomere System** | `biology/ouroboric_telomere.py` | ⟨𐑦·𐑸·𐑾·𐑬·𐑐·𐑧·𐑔·𐑠·⊙·𐑖·𐑳·𐑴⟩ | **Telomere homeostasis maintained** — mean length 10.9 kb vs control decline to 5.0 kb over 100 divisions |
+| **Ouroboric Telomere System** | `biology/ouroboric_telomere.py` | ⟨𐑦𐑸𐑾𐑬𐑐𐑧𐑔𐑠⊙𐑖𐑳𐑴⟩ | **Telomere homeostasis maintained** — mean length 10.9 kb vs control decline to 5.0 kb over 100 divisions |
 
 ---
 
