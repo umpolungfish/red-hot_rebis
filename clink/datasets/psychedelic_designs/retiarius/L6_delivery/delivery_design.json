@@ -1,0 +1,34 @@
+{
+  "layer": "L6 — Delivery System",
+  "route": "Inhalation for rapid onset/offset; peripheral restriction for local-only scope",
+  "formulation": {
+    "type": "standard oral capsule",
+    "excipients": [
+      "microcrystalline cellulose",
+      "magnesium stearate"
+    ]
+  },
+  "pharmacokinetics": {
+    "absorption": "slow/erratic (MBL)",
+    "distribution": "limited",
+    "profile": "prolonged low-level"
+  },
+  "bioavailability": {
+    "predicted_oral_F": "40%",
+    "first_pass_risk": "moderate"
+  },
+  "half_life_prediction": "12–24 hours (MBL trapping)",
+  "volume_of_distribution": "1–3 L/kg",
+  "clearance": "moderate (hepatic + renal)",
+  "BBB_penetration": {
+    "penetration": "low",
+    "mechanism": "peripheral restriction",
+    "predicted_BB_ratio": "<0.3"
+  },
+  "metabolism": {
+    "primary_CYP": "CYP2D6",
+    "secondary_CYP": "CYP3A4",
+    "phase_II": "glucuronidation",
+    "chirality_impact": "stable stereochemistry"
+  }
+}

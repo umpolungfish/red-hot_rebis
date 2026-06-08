@@ -1,0 +1,13 @@
+{
+  "mechanism": "cambium-like growth zone in cortical bone periosteum + bark skin",
+  "growth_cycle": "annual (photoperiod-driven via phytochrome-B homolog)",
+  "ring_layers": {
+    "earlywood_analog": "large-vessel high-conductance zone (spring growth spurt)",
+    "latewood_analog": "dense small-vessel lignified zone (summer/autumn consolidation)",
+    "dormancy_ring": "thin dark band of arrested growth (winter \u2014 triggered by short day)"
+  },
+  "readout": "cross-section of nail (fingernail = compressed bark-analog; annual rings visible)",
+  "WOX4_expression": "high in spring/summer, low in autumn, off in winter",
+  "WOX4_regulation": "CONSTANS \u2192 FT \u2192 CIB1 \u2192 WOX4 (photoperiod gate)",
+  "ig_Gamma_note": "\u0393=\ud801\udc6b preserved \u2014 organism-level granularity unchanged; annual ring is a temporal sub-granularity within \u0393, not a new \u0393 class"
+}

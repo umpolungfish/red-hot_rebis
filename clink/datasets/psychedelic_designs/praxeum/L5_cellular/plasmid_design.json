@@ -1,0 +1,32 @@
+{
+  "name": "pCLINK_praxeum",
+  "size_bp": 8300,
+  "backbone": "pET-28a(+)",
+  "resistance": "Kanamycin",
+  "copy_number": "pBR322 (medium, 15-20)",
+  "features": [
+    {
+      "type": "promoter",
+      "name": "T7-lac",
+      "strength": "inducible"
+    },
+    {
+      "type": "RBS",
+      "name": "BBa_B0034",
+      "strength": "medium"
+    },
+    {
+      "type": "CDS",
+      "name": "praxeum_synthase",
+      "description": "Key biosynthetic enzyme"
+    },
+    {
+      "type": "terminator",
+      "name": "T7 terminator"
+    },
+    {
+      "type": "selection",
+      "name": "KanR"
+    }
+  ]
+}

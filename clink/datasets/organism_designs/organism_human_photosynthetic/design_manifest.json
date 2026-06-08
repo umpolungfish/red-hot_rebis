@@ -1,0 +1,63 @@
+{
+  "organism_type": "human_photosynthetic",
+  "structural_type": "\u27e8\ud801\udc66\ud801\udc71\ud801\udc70\ud801\udc79\ud801\udc53\ud801\udc68\ud801\udc72\ud801\udc75\u2299\ud801\udc6b\ud801\udc73\ud801\udc5f\u27e9",
+  "base_human_type": "\u27e8\ud801\udc66\ud801\udc78\ud801\udc7e\ud801\udc79\ud801\udc50\ud801\udc67\ud801\udc72\ud801\udc75\u2299\ud801\udc6b\ud801\udc73\ud801\udc5f\u27e9",
+  "primitive_deltas": {
+    "\u0126_Chirality": {
+      "base": "\ud801\udc78",
+      "photo": "\ud801\udc71",
+      "reason": "Fibonacci-L spiral pattern has preferred handedness (L > R)"
+    },
+    "\u03a9_Winding": {
+      "base": "\ud801\udc7e",
+      "photo": "\ud801\udc70",
+      "reason": "thylakoid grana stacking \u2014 highest \u03a9 membrane in biology; ~80 membrane discs per granum, stacked and wound"
+    },
+    "\u03a3_Stoichiometry": {
+      "base": "\ud801\udc50",
+      "photo": "\ud801\udc53",
+      "reason": "new channel: 6CO\u2082+6H\u2082O+h\u03bd \u2192 C\u2086H\u2081\u2082O\u2086+6O\u2082; carbon fixation adds entirely new stoichiometric class"
+    },
+    "\u03a6_Parity": {
+      "base": "\ud801\udc67",
+      "photo": "\ud801\udc68",
+      "reason": "photosynthesis = exact parity inverse of respiration; NADPH produced (not consumed); O\u2082 product (not reactant); the Calvin cycle runs the Krebs cycle backward"
+    }
+  },
+  "generation_mode": "actionable",
+  "generation_time_seconds": 3.53,
+  "total_files": 46,
+  "total_bytes": 308502,
+  "output_directory": "/home/mrnob0dy666/red-hot_rebis/clink/datasets/organism_designs/organism_human_photosynthetic",
+  "frobenius_verified": true,
+  "tier": "O_inf",
+  "c_score": 1.0,
+  "foundation": "ZFC_fe",
+  "biological_basis": "Elysia chlorotica HGT model",
+  "key_hgt_gene": "psbO",
+  "photosynthetic_genes": [
+    "psbA",
+    "psbD",
+    "psbO",
+    "psbB",
+    "psaA",
+    "psaB",
+    "petA",
+    "petC",
+    "atpB",
+    "rbcL",
+    "rbcS",
+    "Lhcb1",
+    "CHLH",
+    "CAO",
+    "TOC75",
+    "TIC110",
+    "YABBY1"
+  ],
+  "turing_coverage_percent": 9.6,
+  "turing_chirality": "L-handed Fibonacci",
+  "glucose_supplement_g_per_day_full_sun": 12.5,
+  "caloric_supplement_kcal_per_day_full_sun": 50,
+  "cassette_count": 3,
+  "parity_note": "\u03a6=\ud801\udc68: photosynthesis is the metabolic parity-conjugate of respiration"
+}

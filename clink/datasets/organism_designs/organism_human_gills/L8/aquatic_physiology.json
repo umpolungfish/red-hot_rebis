@@ -1,0 +1,49 @@
+{
+  "respiratory_medium": "water",
+  "O2_extraction_efficiency": 0.8,
+  "dissolved_O2_mg_per_L": 8.5,
+  "ventilation_volume_L_per_min": 14.0,
+  "cardiac_output_L_per_min": 5.0,
+  "blood_O2_carrying_capacity_mL_per_dL": 20.0,
+  "gill_surface_area_cm2": 5760,
+  "diffusion_distance_um": 2.5,
+  "ion_regulation": {
+    "mechanism": "active NKA + NHE3 uptake (freshwater) / CFTR secretion (marine)",
+    "Na_plasma_mM": 145,
+    "Cl_plasma_mM": 103,
+    "osmoregulation": "hyper-osmoregulatory in freshwater; iso-osmoregulatory in marine"
+  },
+  "pH_regulation": "CA2-mediated HCO\u2083\u207b/H\u207a buffering at gill epithelium",
+  "lung_status": "retained (air-breathing capable; bimodal respiration)",
+  "structural_type": "\u27e8\ud801\udc66\ud801\udc7c\ud801\udc7f\ud801\udc79\ud801\udc52\ud801\udc67\ud801\udc74\ud801\udc75\u2299\ud801\udc6b\ud801\udc69\ud801\udc5f\u27e9",
+  "tier": "O_inf",
+  "c_score": 1.0,
+  "ig_primitive_deltas": {
+    "\u0126_Chirality": {
+      "base": "\ud801\udc78",
+      "gill": "\ud801\udc7c",
+      "reason": "Na\u207a apical extrusion \u2014 active pump directionality"
+    },
+    "\u03a9_Winding": {
+      "base": "\ud801\udc7e",
+      "gill": "\ud801\udc7f",
+      "reason": "counter-current antiparallel flow adds \u03a9"
+    },
+    "\u03a3_Stoichiometry": {
+      "base": "\ud801\udc50",
+      "gill": "\ud801\udc52",
+      "reason": "dissolved-O\u2082 stoichiometry ~30\u00d7 lower than aerial"
+    },
+    "\u00c7_Kinetics": {
+      "base": "\ud801\udc72",
+      "gill": "\ud801\udc74",
+      "reason": "NKA+NHE3 active transport kinetics"
+    },
+    "\u00de_Topology": {
+      "base": "\ud801\udc73",
+      "gill": "\ud801\udc69",
+      "reason": "lamellar plate topology \u2260 alveolar sacculi"
+    }
+  },
+  "frobenius": "\u03bc\u2218\u03b4=id \u2014 gill lamellar folding recovers every ion gradient losslessly"
+}

@@ -1,0 +1,17 @@
+##gff-version 3
+##species Homo sapiens (gill variant)
+##IG-type ⟨𐑦𐑼𐑿𐑹𐑒𐑧𐑴𐑵⊙𐑫𐑩𐑟⟩
+#Þ=𐑩 lamellar topology  Ω=𐑿 counter-current  ZFC_fe μ∘δ=id
+gill_arch_1	CLINK	gill_arch	1	500000	.	+	.	ID=arch1;name=Gill_Arch_1;note=pharyngeal_arch_3_derived
+gill_arch_1	CLINK	gill_filament	1	4000	.	+	.	ID=fil1;Parent=arch1;note=primary_filament_1
+gill_arch_1	CLINK	secondary_lamella	1	800	.	+	.	ID=lam1;Parent=fil1;note=secondary_lamella_1
+gill_arch_1	CLINK	ionocyte	1	200	.	+	.	ID=ic1;Parent=lam1;gene=ATP1A1,SLC9A3,CA2;note=MRC_ionocyte
+gill_arch_1	CLINK	pavement_cell	200	800	.	+	.	ID=pv1;Parent=lam1;gene=AQP1;note=PVC_gas_exchange
+gill_arch_1	CLINK	pillar_cell	400	600	.	+	.	ID=pc1;Parent=lam1;note=lamellar_support_blood_channel
+gill_arch_1	CLINK	gene	1	4060	.	+	0	ID=ATP1A1;Name=ATP1A1;Dbxref=UniProt:P05023
+gill_arch_1	CLINK	gene	4061	4840	.	+	0	ID=CA2;Name=CA2;Dbxref=UniProt:P00918
+gill_arch_1	CLINK	gene	4841	5648	.	+	0	ID=AQP1;Name=AQP1;Dbxref=UniProt:P29972
+gill_arch_1	CLINK	gene	5649	8133	.	+	0	ID=SLC9A3;Name=SLC9A3;Dbxref=UniProt:P48764
+gill_arch_1	CLINK	gene	8134	12510	.	+	0	ID=FOXA2;Name=FOXA2;Dbxref=UniProt:Q9Y261
+gill_arch_1	CLINK	gene	12511	13761	.	+	0	ID=PAX2;Name=PAX2;Dbxref=UniProt:P37812
+gill_arch_1	CLINK	gene	13762	15537	.	+	0	ID=EYA1;Name=EYA1;Dbxref=UniProt:Q99502

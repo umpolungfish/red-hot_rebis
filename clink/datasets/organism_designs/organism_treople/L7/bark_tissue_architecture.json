@@ -1,0 +1,29 @@
+{
+  "layers_outer_to_inner": [
+    {
+      "name": "periderm (bark)",
+      "cells": "suberized cork cells; LAC17 lignified; waterproof; light-transmitting for chloroplasts beneath"
+    },
+    {
+      "name": "photosynthetic cortex",
+      "cells": "chloroplast-rich parenchyma; Lhcb1/Lhcb2 high; major photosynthetic zone; venation pattern here"
+    },
+    {
+      "name": "stomatal epidermis",
+      "cells": "guard cell pairs (FAMA+); stomatal density 100/mm\u00b2 on adaxial (dorsal) surfaces"
+    },
+    {
+      "name": "cambium ring",
+      "cells": "WOX4+ stem cells; divides outward\u2192cortex, inward\u2192xylem-analog reinforcement"
+    },
+    {
+      "name": "xylem-analog",
+      "cells": "CesA4/7/8 secondary wall; water conduction; mechanical support; annual rings"
+    }
+  ],
+  "ig_topology": "\u00de=\ud801\udc6a \u2014 bark layers wrap the body in concentric cylinders; branching at extremities adds fractal dimension; topologically distinct from bilateral skin",
+  "ig_winding": "\u03a9=\ud801\udc7d \u2014 cellulose microfibrils wound at 15-20\u00b0 to cell axis; stacked grana above; crystalline winding throughout",
+  "stomata_density_per_mm2": 100,
+  "chloroplasts_per_photosynthetic_cell": 40,
+  "bark_thickness_mm": 2.5
+}

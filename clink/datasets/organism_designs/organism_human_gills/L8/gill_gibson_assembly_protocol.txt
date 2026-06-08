@@ -1,0 +1,47 @@
+GIBSON ASSEMBLY PROTOCOL — Gill Gene Cassette
+IG type: Ç=𐑴 Ħ=𐑼 Þ=𐑩  ZFC_fe  μ∘δ=id
+=============================================
+
+Vector backbone: pAAV2-MCS (NEB #M0491)
+Insert fragments (4 total, synthesized by Twist Bioscience):
+
+  Fragment 1: CMV-ATP1A1-AQP1  (~4.9 kb)
+    5' overlap: ITR_5prime 20 nt
+    3' overlap: EF1a-promoter 20 nt
+
+  Fragment 2: EF1a-CA2-SLC9A3  (~4.3 kb)
+    5' overlap: CMV-AQP1_3end 20 nt
+    3' overlap: WPRE 20 nt
+
+  Fragment 3: WPRE-bGH_polyA-ITR_3prime  (~0.8 kb)
+    5' overlap: SLC9A3_3end 20 nt
+    3' overlap: pUC_ori 20 nt
+
+  Fragment 4: pUC_ori-AmpR  (~1.8 kb, from vector)
+
+Gibson reaction (NEB HiFi Assembly, E2621):
+  - 10 µL HiFi Assembly Master Mix
+  - 0.02–0.5 pmol each fragment (equimolar)
+  - Nuclease-free H2O to 20 µL total
+  - 50°C, 60 min
+
+Transformation: NEB 5-alpha (C2987H), 42°C heat shock 30s
+Selection: LB-Amp (100 µg/mL), 37°C overnight
+Screening: colony PCR with ATP1A1-F / SLC9A3-R spanning all inserts
+
+Delivery:
+  AAV9 capsid production (HEK293T triple transfection):
+    pHelper + pAAV2-RC + pAAV_GILL_CASSETTE
+  Titer target: ≥1×10¹³ vg/mL
+  Injection: intravenous (systemic) targeting pharyngeal arch precursors
+             at embryonic window d20–d28 (pharyngeal arch patterning)
+
+Developmental lentiviral component (FOXA2 + PAX2 + EYA1):
+  VSV-G pseudotyped lentivirus; ex vivo transduction of iPSC-derived
+  pharyngeal arch progenitors; reintroduced at d18–d20
+
+Expected outcome:
+  Pharyngeal arch 3–6 → gill primordium → holobranch gill arches (4×)
+  Lung retained (bimodal respiration)
+  Ion regulation: NKA+NHE3 freshwater mode (default)
+                  CFTR marine mode available via separate vector

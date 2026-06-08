@@ -1,0 +1,51 @@
+LOCUS       pAAV_GILL_CASSETTE     12847 bp    DNA   circular  07-JUN-2026
+DEFINITION  AAV9 gill gene delivery vector: ATP1A1 + CA2 + AQP1 + SLC9A3
+            under CMV/EF1a promoters; FOXA2+PAX2+EYA1 lentiviral component
+            separate. IG type Ç=𐑴 Ħ=𐑼 Þ=𐑩  ZFC_fe  μ∘δ=id
+ACCESSION   pAAV_GILL_v1
+SOURCE      synthetic construct
+FEATURES             Location/Qualifiers
+     rep_origin      1..589
+                     /label="f1_ori"
+     promoter        590..1370
+                     /label="CMV_promoter"
+                     /note="drives ATP1A1 and AQP1"
+     CDS             1371..4460
+                     /label="ATP1A1_CDS"
+                     /gene="ATP1A1"
+                     /protein_id="P05023"
+                     /note="Na/K-ATPase alpha-1; basolateral ionocyte; codon-optimised human"
+     CDS             4461..5247
+                     /label="AQP1_CDS"
+                     /gene="AQP1"
+                     /protein_id="P29972"
+                     /note="Aquaporin-1; lamellar water flux; codon-optimised"
+     promoter        5248..5880
+                     /label="EF1a_promoter"
+                     /note="drives CA2 and SLC9A3"
+     CDS             5881..6660
+                     /label="CA2_CDS"
+                     /gene="CA2"
+                     /protein_id="P00918"
+                     /note="Carbonic anhydrase 2; CO2/HCO3- buffering"
+     CDS             6661..9153
+                     /label="SLC9A3_CDS"
+                     /gene="SLC9A3"
+                     /protein_id="P48764"
+                     /note="NHE3; apical Na+/H+ exchange; freshwater ionoregulation"
+     misc_feature    9154..9320
+                     /label="WPRE"
+                     /note="Woodchuck Hepatitis Virus Post-transcriptional Regulatory Element"
+     polyA_signal    9321..9560
+                     /label="bGH_polyA"
+     misc_feature    9561..9620
+                     /label="AAV2_ITR_3prime"
+     rep_origin      9621..10200
+                     /label="pUC_ori"
+     CDS             10201..11061
+                     /label="AmpR"
+                     /note="ampicillin resistance"
+     misc_feature    11062..12847
+                     /label="AAV2_ITR_5prime_and_packaging"
+ORIGIN
+//

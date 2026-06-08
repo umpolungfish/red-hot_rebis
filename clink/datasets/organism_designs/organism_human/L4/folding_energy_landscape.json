@@ -1,0 +1,19 @@
+{
+  "model": "Minimally frustrated funnel",
+  "KRAS_folding": {
+    "deltaG_folding_kJ_per_mol": -35.2,
+    "Tm_C": 52.5,
+    "folding_rate_s-1": 1200,
+    "two_state": true
+  },
+  "chaperone_dependence": {
+    "Hsp70": "nascent chain folding",
+    "Hsp90": "kinase maturation (including KRAS)",
+    "GroEL/TRiC": "obligate substrates (~10% of proteome)"
+  },
+  "misfolding_disease_links": {
+    "Alzheimer": "A\u03b2 aggregation",
+    "Parkinson": "\u03b1-synuclein aggregation",
+    "prion": "PrP^Sc propagation"
+  }
+}

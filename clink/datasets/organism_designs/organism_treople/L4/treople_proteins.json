@@ -1,0 +1,197 @@
+{
+  "CesA1": {
+    "uniprot": "O48946",
+    "name": "Cellulose synthase A1 (primary wall)",
+    "function": "UDP-glucose \u2192 \u03b2-1,4-glucan chain; primary cell wall cellulose; rosette complex with CesA3/CesA6. Provides structural rigidity to skin cells. In treople: expressed in bark-forming keratinocytes.",
+    "aa_count": 1082,
+    "targeting": "plasma membrane (no CTP needed; PM-intrinsic)",
+    "delivery": "lentiviral (stable, skin stem cells)",
+    "codon_opt_fragment": "ATGGGCAAGGGCATCGAGAAGCAGCTGCAGCAGCTGCAGCAGCTGCAGCAGCTGCAGCAGCTGCAGCAGCTGCAGCAGCTGCAGCAGCTG",
+    "ig_note": "\u0126=\ud801\udc7b: \u03b2-1,4-glycosidic product; opposite chirality to animal \u03b1-1,4-glycogen"
+  },
+  "CesA4": {
+    "uniprot": "Q9M7Q7",
+    "name": "Cellulose synthase A4 (secondary wall / wood)",
+    "function": "Secondary wall cellulose synthesis; rosette with CesA7/CesA8. Higher crystallinity than primary wall. In treople: structural wood-analog in long bone periosteum reinforcement and bark cortex.",
+    "aa_count": 985,
+    "targeting": "plasma membrane",
+    "delivery": "AAV9 (periosteum-tropic)",
+    "codon_opt_fragment": "ATGGGCAAGGGCATCGAGAAGCAGCTGCAGCAGCTGCAGCAGCTGCAGCAGCTGCAGCAGCTGCAGCAGCTGCAGCAGCTGCAGCAGCTG"
+  },
+  "COBRA": {
+    "uniprot": "Q9LHA2",
+    "name": "COBRA GPI-anchored protein",
+    "function": "Cell elongation direction control; cellulose microfibril orientation. In treople: orients cellulose deposition along growth axis of leaf-finger extensions.",
+    "aa_count": 337,
+    "targeting": "outer leaflet PM via GPI anchor",
+    "delivery": "AAV9",
+    "codon_opt_fragment": "ATGGGCAAGGGCATCGAGAAGCAGCTGCAGCAGCTGCAGCAGCTG"
+  },
+  "PAL1": {
+    "uniprot": "P35510",
+    "name": "Phenylalanine ammonia lyase 1",
+    "function": "Phe \u2192 trans-cinnamic acid; entry into phenylpropanoid pathway; rate-limiting step for lignin biosynthesis. In treople: expressed in cambium-like zones for bark hardening.",
+    "aa_count": 716,
+    "targeting": "cytoplasm (soluble)",
+    "delivery": "lentiviral",
+    "codon_opt_fragment": "ATGGGCAAGGGCATCGAGAAGCAGCTGCAGCAGCTGCAGCAGCTG"
+  },
+  "C4H": {
+    "uniprot": "Q96484",
+    "name": "Cinnamate-4-hydroxylase (CYP73A5)",
+    "function": "trans-cinnamic acid \u2192 p-coumaric acid; CYP450; ER-membrane",
+    "aa_count": 504,
+    "targeting": "ER membrane (N-terminal signal)",
+    "delivery": "lentiviral",
+    "codon_opt_fragment": "ATGGGCAAGGGCATCGAGAAGCAGCTGCAGCAGCTGCAGCAGCTG"
+  },
+  "CAD": {
+    "uniprot": "O80832",
+    "name": "Cinnamoyl-CoA reductase / Cinnamyl alcohol dehydrogenase",
+    "function": "Final steps of monolignol biosynthesis; converts aldehydes to alcohols (coniferyl, sinapyl, p-coumaryl alcohols) for lignin polymerization",
+    "aa_count": 357,
+    "targeting": "cytoplasm",
+    "delivery": "lentiviral",
+    "codon_opt_fragment": "ATGGGCAAGGGCATCGAGAAGCAGCTGCAGCAGCTGCAGCAGCTG"
+  },
+  "LAC17": {
+    "uniprot": "Q9FKJ5",
+    "name": "Laccase 17 (monolignol polymerization)",
+    "function": "Oxidative polymerization of monolignols \u2192 lignin polymer in apoplast. Requires Cu\u00b2\u207a cofactor. In treople: expressed in bark apoplast; creates structural lignified layer.",
+    "aa_count": 570,
+    "targeting": "apoplast (secreted)",
+    "delivery": "AAV9 (skin-tropic)",
+    "codon_opt_fragment": "ATGGGCAAGGGCATCGAGAAGCAGCTGCAGCAGCTGCAGCAGCTG",
+    "ig_note": "\u03a9=\ud801\udc7d: lignin is a cross-linked polymer with complex winding; combined with cellulose microfibril crystalline winding gives maximum \u03a9"
+  },
+  "WOX4": {
+    "uniprot": "Q9M7Y9",
+    "name": "WUSCHEL-related homeobox 4",
+    "function": "Vascular cambium maintenance TF; stem cell identity in lateral meristem. In treople: expressed in extremity growth zones (fingertip meristems, elbow/knee cambium rings); enables indefinite slow arboreal extension.",
+    "aa_count": 256,
+    "targeting": "nucleus",
+    "delivery": "lentiviral (meristem stem cells, extremity periosteum)",
+    "codon_opt_fragment": "ATGGGCAAGGGCATCGAGAAGCAGCTGCAGCAGCTGCAGCAGCTG",
+    "ig_note": "\u00d0=\ud801\udc7a: WOX4 enables indefinite branching growth; animal centralization \u2192 arboreal expansion; \u00d0 shift"
+  },
+  "MP_ARF5": {
+    "uniprot": "Q38826",
+    "name": "MONOPTEROS / ARF5 (auxin response factor)",
+    "function": "Master regulator of vascular and embryo axis formation; auxin signal \u2192 branching architecture; controls leaf-finger extension patterning",
+    "aa_count": 900,
+    "targeting": "nucleus",
+    "delivery": "lentiviral",
+    "codon_opt_fragment": "ATGGGCAAGGGCATCGAGAAGCAGCTGCAGCAGCTGCAGCAGCTG"
+  },
+  "PXY": {
+    "uniprot": "Q9LT47",
+    "name": "PHLOEM INTERCALATED WITH XYLEM receptor kinase",
+    "function": "CLE41/44 receptor; controls oriented cell division in cambium; maintains xylem/phloem polarity in secondary growth zone",
+    "aa_count": 810,
+    "targeting": "plasma membrane (LRR-RLK)",
+    "delivery": "AAV9 (periosteum/skin cambium)",
+    "codon_opt_fragment": "ATGGGCAAGGGCATCGAGAAGCAGCTGCAGCAGCTGCAGCAGCTG"
+  },
+  "SPEECHLESS": {
+    "uniprot": "Q9LPR1",
+    "name": "SPEECHLESS bHLH TF (stomatal lineage initiation)",
+    "function": "Master TF for stomatal cell lineage; asymmetric entry division; expressed in meristemoid mother cells. In treople: expressed in skin basal layer to initiate stomatal lineage alongside epidermal cells.",
+    "aa_count": 390,
+    "targeting": "nucleus",
+    "delivery": "lentiviral (skin stem cells)",
+    "codon_opt_fragment": "ATGGGCAAGGGCATCGAGAAGCAGCTGCAGCAGCTGCAGCAGCTG",
+    "ig_note": "\u03a3=\ud801\udc55: stomata enable direct CO2 uptake from air for Calvin cycle; massive increase in carbon fixation stoichiometry"
+  },
+  "MUTE": {
+    "uniprot": "Q9LZ02",
+    "name": "MUTE bHLH TF (guard mother cell fate)",
+    "function": "Symmetrical division \u2192 guard mother cell; required for guard cell pair formation",
+    "aa_count": 225,
+    "targeting": "nucleus",
+    "delivery": "lentiviral",
+    "codon_opt_fragment": "ATGGGCAAGGGCATCGAGAAGCAGCTGCAGCAGCTGCAGCAGCTG"
+  },
+  "FAMA": {
+    "uniprot": "Q9M7Q6",
+    "name": "FAMA bHLH TF (guard cell differentiation)",
+    "function": "Guard cell terminal differentiation; stomatal pore formation; KAT1 K+ channel expression (turgor-driven opening mechanism)",
+    "aa_count": 343,
+    "targeting": "nucleus",
+    "delivery": "lentiviral",
+    "codon_opt_fragment": "ATGGGCAAGGGCATCGAGAAGCAGCTGCAGCAGCTGCAGCAGCTG"
+  },
+  "KAT1": {
+    "uniprot": "Q39172",
+    "name": "K+ channel KAT1 (guard cell turgor)",
+    "function": "Inward-rectifying K+ channel; guard cell turgor control for stomatal opening/closing; light-activated via phototropin\u2192H+-ATPase cascade",
+    "aa_count": 682,
+    "targeting": "guard cell plasma membrane",
+    "delivery": "AAV9 (epidermis)",
+    "codon_opt_fragment": "ATGGGCAAGGGCATCGAGAAGCAGCTGCAGCAGCTGCAGCAGCTG"
+  },
+  "SymRK": {
+    "uniprot": "Q8VYG2",
+    "name": "Symbiosis Receptor Kinase (SymRK)",
+    "function": "LRR-RLK; receptor for mycorrhizal Myc-LCOs and rhizobial Nod factors; Ca\u00b2+ spiking initiation in symbiosis; In treople: expressed in foot sole keratinocytes/fibroblasts to enable arbuscular mycorrhizal (AM) symbiosis with soil fungi (Rhizophagus irregularis)",
+    "aa_count": 1058,
+    "targeting": "plasma membrane",
+    "delivery": "AAV9 (foot-tropic modified)",
+    "codon_opt_fragment": "ATGGGCAAGGGCATCGAGAAGCAGCTGCAGCAGCTGCAGCAGCTG",
+    "ig_note": "\u0262=\u2299 preserved: mycorrhizal coupling = O_inf coupling (unchanged; AM symbiosis is already O_inf \u2014 the oldest terrestrial symbiosis)"
+  },
+  "CCaMK": {
+    "uniprot": "Q7X8R3",
+    "name": "Calcium/calmodulin-dependent protein kinase (CCaMK/DMI3)",
+    "function": "Decodes nuclear Ca\u00b2+ oscillations from SymRK; phosphorylates CYCLOPS; required for arbuscule formation",
+    "aa_count": 523,
+    "targeting": "nucleus",
+    "delivery": "AAV9 (foot)",
+    "codon_opt_fragment": "ATGGGCAAGGGCATCGAGAAGCAGCTGCAGCAGCTGCAGCAGCTG"
+  },
+  "RAM1": {
+    "uniprot": "I3S8Z1",
+    "name": "GRAS TF RAM1 (arbuscule development)",
+    "function": "GRAS domain TF; master regulator of arbuscule development; required for phosphate and lipid transfer from fungal partner; In treople: expressed in foot sole to receive P + fatty acids from Rhizophagus irregularis mycorrhiza",
+    "aa_count": 431,
+    "targeting": "nucleus",
+    "delivery": "AAV9 (foot)",
+    "codon_opt_fragment": "ATGGGCAAGGGCATCGAGAAGCAGCTGCAGCAGCTGCAGCAGCTG"
+  },
+  "PT4": {
+    "uniprot": "Q5PMT7",
+    "name": "Phosphate transporter 4 (PT4/MtPT4)",
+    "function": "Periarbuscular membrane H+/Pi symporter; receives phosphate from fungus; complement to carbon sent to fungus (as Glc/lipid). In treople: closes the mycorrhizal Frobenius loop \u2014 C exported to fungus, Pi imported from soil. \u03bc\u2218\u03b4=id.",
+    "aa_count": 588,
+    "targeting": "periarbuscular membrane",
+    "delivery": "AAV9 (foot)",
+    "codon_opt_fragment": "ATGGGCAAGGGCATCGAGAAGCAGCTGCAGCAGCTGCAGCAGCTG",
+    "ig_note": "PT4 closes the mycorrhizal Frobenius: C out \u2297 Pi in = identity; the oldest terrestrial \u03bc\u2218\u03b4=id (~400 Mya)"
+  },
+  "Lhcb2": {
+    "uniprot": "P27524",
+    "name": "LHCII type-II (Lhcb2) \u2014 canopy-scale",
+    "function": "Additional LHCII trimer component; expanded light harvesting for canopy-density chloroplast populations in leaf-finger structures",
+    "aa_count": 265,
+    "targeting": "CTP",
+    "delivery": "AAV9 (leaf-finger epidermis)",
+    "codon_opt_fragment": "ATGGGCAAGGGCATCGAGAAGCAGCTGCAGCAGCTGCAGCAGCTG"
+  },
+  "FBPase": {
+    "uniprot": "P46283",
+    "name": "Chloroplast fructose-1,6-bisphosphatase",
+    "function": "Calvin cycle regeneration; Fru-1,6-P2 \u2192 Fru-6-P + Pi; regulated by ferredoxin/thioredoxin system; rate-limiting step in carbon fixation export",
+    "aa_count": 397,
+    "targeting": "CTP (stroma)",
+    "delivery": "lentiviral",
+    "codon_opt_fragment": "ATGGGCAAGGGCATCGAGAAGCAGCTGCAGCAGCTGCAGCAGCTG"
+  },
+  "PRK": {
+    "uniprot": "P25697",
+    "name": "Phosphoribulokinase (PRK)",
+    "function": "Ribulose-5-P + ATP \u2192 RuBP; regenerates RuBisCO substrate; critical for Calvin cycle flux at canopy-scale carbon fixation",
+    "aa_count": 396,
+    "targeting": "CTP (stroma)",
+    "delivery": "lentiviral",
+    "codon_opt_fragment": "ATGGGCAAGGGCATCGAGAAGCAGCTGCAGCAGCTGCAGCAGCTG"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "name": "pCLINK_retiarius",
+  "size_bp": 6800,
+  "backbone": "pET-28a(+)",
+  "resistance": "Kanamycin",
+  "copy_number": "pUC (high, 500-700)",
+  "features": [
+    {
+      "type": "promoter",
+      "name": "pBAD",
+      "strength": "inducible"
+    },
+    {
+      "type": "RBS",
+      "name": "BBa_B0034",
+      "strength": "medium"
+    },
+    {
+      "type": "CDS",
+      "name": "retiarius_synthase",
+      "description": "Key biosynthetic enzyme"
+    },
+    {
+      "type": "terminator",
+      "name": "T7 terminator"
+    },
+    {
+      "type": "selection",
+      "name": "KanR"
+    }
+  ]
+}

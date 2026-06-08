@@ -1,0 +1,27 @@
+{
+  "sp3": {
+    "angle": 109.5,
+    "example": "CH4, H2O",
+    "biological": "water, alcohols"
+  },
+  "sp2": {
+    "angle": 120,
+    "example": "C=C, C=O",
+    "biological": "peptide bonds, aromatics"
+  },
+  "sp": {
+    "angle": 180,
+    "example": "C\u2261C, C\u2261N",
+    "biological": "cyanide, nitriles"
+  },
+  "d2sp3": {
+    "angle": 90,
+    "example": "Fe in heme",
+    "biological": "hemoglobin, cytochromes"
+  },
+  "dsp2": {
+    "angle": 90,
+    "example": "Pt, Ni complexes",
+    "biological": "rare in biology"
+  }
+}

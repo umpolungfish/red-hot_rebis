@@ -1,0 +1,20 @@
+{
+  "layer": "L7 — Tissue Distribution",
+  "brain_regions": {
+    "prefrontal_cortex": "low (peripheral restriction)",
+    "claustrum": "trace only"
+  },
+  "peripheral_distribution": {
+    "liver": "high (first pass)",
+    "lung": "moderate",
+    "heart": "low"
+  },
+  "protein_binding": "85–95%",
+  "tissue_half_life": "12–24h",
+  "toxicity_risk": {
+    "hepatotoxicity": "low-moderate",
+    "cardiotoxicity": "moderate (MBL → accumulation risk)",
+    "neurotoxicity": "low at therapeutic doses",
+    "genotoxicity": "negative (Ames test prediction)"
+  }
+}

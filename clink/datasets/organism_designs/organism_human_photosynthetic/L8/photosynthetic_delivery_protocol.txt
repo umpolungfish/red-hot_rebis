@@ -1,0 +1,56 @@
+GIBSON ASSEMBLY + DELIVERY PROTOCOL — Human Photosynthetic Gene Cassettes
+IG type: Ħ=𐑱 Ω=𐑰 Σ=𐑓 Φ=𐑨  ZFC_fe  μ∘δ=id
+========================================================================
+
+DELIVERY STRATEGY: 3-cassette sequential approach
+─────────────────────────────────────────────────
+CASSETTE 1 (AAV2/9-skin-tropic): Import machinery + PSII core
+  TOC75 + TIC110 + psbA(D1-CTP) + psbD(D2-CTP) + psbO(HGT-MSP)
+  Admin: intradermal injection day 0
+  Rationale: TOC75/TIC110 expressed first (CMV); enables all subsequent
+             CTP-tagged protein import on days 3-14
+
+CASSETTE 2 (VSV-G lentiviral, ex vivo): Chlorophyll + Calvin + Pattern TF
+  CHLH + CAO + rbcL-CTP + rbcS-CTP + YABBY1-VP16
+  Admin: ex vivo transduction of keratinocyte stem cells,
+         grafted back to skin day 7
+  Rationale: stable integration required for lifelong chlorophyll production
+
+CASSETTE 3 (AAV2/9, intradermal day 14): Light harvesting + electron transport
+  Lhcb1 + psaA-CTP + psaB-CTP + petA-CTP + petC-CTP + atpB-CTP
+  Admin: after Cassette 1+2 confirmed expressing (chloroplast import working)
+
+TIMING PROTOCOL
+───────────────
+  Day  0: Cassette 1 (AAV2/9 intradermal, dorsal forearm test patch)
+  Day  3: Biopsy to confirm TOC75/TIC110 expression (IF staining anti-TOC75)
+  Day  7: Cassette 2 delivery (keratinocyte stem cell graft, ex vivo lentiviral)
+  Day 10: Monitor for YABBY1-VP16 expression + early Turing pattern formation
+  Day 14: Cassette 3 (AAV2/9 intradermal, same patch)
+  Day 21: Assess chlorophyll autofluorescence (680nm emission under 440nm excitation)
+  Day 28: Turing spot pattern visible; measure O2 evolution (Clark electrode, illuminated)
+  Day 60: Full pattern matured; assess caloric contribution by indirect calorimetry
+
+DETECTION + QC
+──────────────
+  - Chlorophyll autofluorescence: 440nm excitation → 680nm/740nm emission (Chl a/b)
+  - O2 evolution: Clark electrode chamber, 1000 µmol/m²/s PAR illumination
+  - Pattern quantification: RGB image analysis, green channel threshold
+  - RuBisCO activity: 14CO2 fixation assay on skin punch biopsy
+
+SAFETY CONSIDERATIONS
+─────────────────────
+  - Mn4CaO5 cluster: Mn is a known neurotoxin at high doses; monitor serum Mn
+  - O2 evolution in hypoxic microenvironments: negligible; skin is normoxic
+  - Chlorophyll metabolites: pheophytin, pyropheophytin (photodegradation products)
+    are known dietary components; no novel toxicology expected
+  - AAV immunogenicity: standard pre-screening for anti-AAV2/9 antibodies
+  - Pattern self-limiting: Turing inhibitor (WNT3a) prevents total skin coverage
+
+EXPECTED OUTCOME
+────────────────
+  Fibonacci-spiral green-gold spot pattern covering ~25-40% of skin surface
+  Chlorophyll a/b fluorescence visible under UV
+  Net O2 evolution: ~2.8 µmol/cm²/h (active area, full sun)
+  Glucose supplement: ~12.5 g/day full sun (50 kcal) — caloric but not autonomous
+  Subjective: green-dappled appearance in sunlight (melanin baseline retained)

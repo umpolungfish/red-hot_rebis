@@ -1,0 +1,29 @@
+{
+  "covalent": {
+    "C-C": 348,
+    "C=C": 614,
+    "C\u2261C": 839,
+    "C-H": 413,
+    "C-O": 358,
+    "C=O": 799,
+    "C-N": 305,
+    "O-H": 463,
+    "N-H": 391,
+    "P-O": 360,
+    "S-S": 226
+  },
+  "ionic": {
+    "Na-Cl_lattice": 787,
+    "Ca-O_lattice": 3400
+  },
+  "hydrogen_bonds": {
+    "O-H\u00b7\u00b7\u00b7O": "12-30",
+    "N-H\u00b7\u00b7\u00b7O": "8-21",
+    "range_unit": "kJ/mol"
+  },
+  "van_der_Waals": {
+    "range_kJ_per_mol": "0.5-5",
+    "per_atom_contact": true
+  },
+  "unit": "kJ/mol"
+}

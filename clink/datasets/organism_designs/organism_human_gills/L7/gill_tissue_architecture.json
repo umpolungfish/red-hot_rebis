@@ -1,0 +1,25 @@
+{
+  "structure": "teleost-type holobranch bilateral gill arches",
+  "arch_count": 4,
+  "filaments_per_arch": 120,
+  "secondary_lamellae_per_filament": 80,
+  "lamellar_dimensions_um": {
+    "length": 120,
+    "width": 30,
+    "blood_space_um": 8
+  },
+  "surface_area_cm2": 5760,
+  "cell_types": {
+    "pavement_cell": "squamous epithelium; gas diffusion surface; tight junctions",
+    "ionocyte": "mitochondria-rich; NKA+NHE3 ionoregulation; apical crypts",
+    "mucous_cell": "glycoprotein secretion; surface lubrication",
+    "pillar_cell": "lamellar support; lacunar blood channels",
+    "chloride_cell": "CFTR-mediated Cl\u207b secretion (marine variant)"
+  },
+  "blood_flow": "venous (deoxygenated) from ventral aorta, counter-current to water",
+  "water_flow": "buccal \u2192 opercular chamber, posterior-to-anterior across lamellae",
+  "gas_exchange_efficiency": 0.8,
+  "topology": "lamellar plates (\u00de=\ud801\udc69): branched tree of planar sheets, NOT saccular",
+  "ig_topology_class": "\ud801\udc69",
+  "winding": "counter-current antiparallel (\u03a9=\ud801\udc7f): blood\u2194water antiparallel flow"
+}

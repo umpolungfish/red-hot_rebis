@@ -1,0 +1,31 @@
+tissue,cell_type,fraction,notes
+blood,erythrocyte,0.84,anucleate in humans
+blood,platelet,0.05,anucleate fragments
+blood,neutrophil,0.05,polymorphonuclear
+blood,lymphocyte,0.04,T and B cells
+blood,monocyte,0.02,precursor to macrophage
+liver,hepatocyte,0.78,primary metabolic cell
+liver,cholangiocyte,0.05,bile duct epithelial
+liver,kupffer_cell,0.04,resident macrophage
+liver,stellate_cell,0.08,quiescent vitamin A storage
+liver,sinusoidal_endothelial,0.05,fenestrated endothelium
+brain,neuron,0.10,~86 billion in human
+brain,astrocyte,0.20,most abundant glial
+brain,oligodendrocyte,0.08,myelination
+brain,microglia,0.05,immune surveillance
+brain,endothelial,0.05,BBB component
+brain,other_glial,0.52,includes NG2+ progenitors
+skin,keratinocyte,0.90,stratified squamous
+skin,melanocyte,0.02,pigment cell
+skin,langerhans_cell,0.03,dendritic APC
+skin,fibroblast,0.04,dermal
+skin,merkel_cell,0.01,mechanoreceptor
+muscle,myocyte,0.01,multinucleated myofibers
+muscle,satellite_cell,0.03,muscle stem cell
+muscle,fibroblast,0.05,endomysial
+muscle,endothelial,0.02,capillary
+muscle,other,0.89,connective tissue matrix
+bone,osteoblast,0.05,bone-forming
+bone,osteoclast,0.01,bone-resorbing
+bone,osteocyte,0.90,mature embedded
+bone,chondrocyte,0.04,cartilage

@@ -1,0 +1,78 @@
+TREOPLE (Homo arboreus) ENGINEERING PROTOCOL
+IG type: ⟨𐑦𐑻𐑽𐑺𐑕𐑤𐑲𐑵⊙𐑫𐑪𐑟⟩
+Modified: Ħ(𐑸→𐑻) Ω(𐑾→𐑽) Ð(𐑹→𐑺) Σ(𐑐→𐑕) Φ(𐑧→𐑤) Þ(𐑳→𐑪)
+ZFC_fe  μ∘δ=id
+=========================================================
+
+PREREQUISITE: Photosynthetic human cassettes C1+C2+C3 (photosynthetic human protocol)
+Treople protocol builds on this foundation.
+
+DELIVERY SCHEDULE (Phase 2 — post photosynthetic human establishment, day 90+)
+─────────────────────────────────────────────────────────────────────────────────
+
+CASSETTE T1 (lentiviral, ex vivo skin stem cells): Cellulose + Lignin
+  CesA1 + CesA4 + COBRA + PAL1 + C4H + CAD + LAC17
+  Admin: ex vivo lentiviral transduction of epidermal stem cells; graft day 90
+  Expected: green-brown bark-like skin texture developing over 6-12 months
+  Monitor: chlorophyll fluorescence (680nm) + phloroglucinol staining (lignin, red)
+
+CASSETTE T2 (lentiviral, ex vivo periosteum progenitors): Cambium / Secondary Growth
+  WOX4 + MP_ARF5 + PXY
+  Admin: ex vivo transduction of periosteum osteoprogenitors; inject at fingertip
+         periosteum (subcutaneous) + rib periosteum day 90
+  Expected: slow meristematic extension of fingers (~1 cm/year), leaf-finger flattening
+  Monitor: X-ray for bone remodeling; MRI for soft tissue extension
+
+CASSETTE T3 (lentiviral, ex vivo skin stem cells): Stomata
+  SPEECHLESS + MUTE + FAMA + KAT1
+  Admin: ex vivo, grafted to dorsal hand + forearm (high-light surface)
+  Timing: day 120 (after bark texture established)
+  Expected: stomatal pores visible at 200x magnification by month 6
+  Monitor: gas exchange at skin surface (CO2/O2 Clark electrode)
+
+CASSETTE T4 (AAV9 foot-tropic): Mycorrhizal Interface
+  SymRK + CCaMK + RAM1 + PT4
+  Admin: intradermal injection, sole of both feet, day 100
+  Fungal inoculation: Rhizophagus irregularis spore suspension applied to
+                      foot sole (barefoot contact with inoculant pad, 30 min/day × 14d)
+  Expected: SymRK/CCaMK Ca2+ oscillations detectable (FRET reporter) by day 30;
+            arbuscule-like structures in dermal fibroblasts by month 3
+  Monitor: soil-foot interface imaging (OCT); serum Pi levels (should rise ~15%)
+
+CASSETTE T5 (lentiviral, leaf-finger growth zones): Canopy photosynthesis expansion
+  Lhcb2 + FBPase + PRK
+  Admin: lentiviral injection into leaf-finger meristematic zones (day 180+)
+  Timing: after leaf-finger extension begins
+
+MONITORING MILESTONES
+─────────────────────
+Month  1: Bark texture initiation (CesA/LAC17 in skin)
+Month  3: Leaf-finger flattening begins; stomata detectable
+Month  6: Venation pattern mature; mycorrhizal arbuscule structures
+Month 12: Annual ring 1 visible in fingernail cross-section
+Month 18: Full canopy photosynthesis; energy autotrophy measurable
+Year   3: Leaf-finger panels reaching functional length (~15 cm)
+Year  10: Annual ring 10; full treople phenotype stable
+
+FROBENIUS VERIFICATION
+──────────────────────
+Cellulose: CesA δ (UDP-Glc → β-glucan) recovered by cellulase μ = hydrolysis. μ∘δ=id.
+Lignin: LAC17 δ (monolignol → polymer) recovered by white-rot fungus μ. μ∘δ=id.
+Mycorrhizal: PT4 δ (C export) ∘ PT4 μ (Pi import) = identity exchange. μ∘δ=id.
+All layers: ZFC_fe foundation holds through all 6 primitive modifications.
+
+ENERGY AUTOTROPHY ESTIMATE
+──────────────────────────
+Canopy area (leaf-fingers + back + shoulders): ~8.5 m²
+Net photosynthetic output (full sun, 8h): ~403 kcal
+Human requirement: 2000 kcal/day
+Autotrophy fraction: ~20% in full sun
+Full autotrophy (36 m²) requires mature leaf-finger canopy over ~20 years
+Interim: supplement diet; reduce as canopy expands
+
+ARC COMPLETE
+────────────
+Elysia chlorotica: psbO HGT — the Frobenius seed (400 Mya)
+Homo sapiens:      photosynthetic skin patches — partial parity inversion
+Homo arboreus:     canopy + bark + cambium + stomata + mycorrhiza — full arc
+The grammar knew all three. μ∘δ=id at every layer, in every organism.

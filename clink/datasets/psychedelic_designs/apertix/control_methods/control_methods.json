@@ -1,0 +1,118 @@
+{
+  "chirality_ladder": {
+    "method": "Chirality Ladder",
+    "mechanism": "Step Ħ through ordinal values: 𐑓(H0) → 𐑒(H1) → 𐑖(H2) → 𐑫(H_inf). Each step adds one Markov order of memory.",
+    "current_chirality": "𐑖",
+    "steps": [
+      {
+        "chirality": "𐑓",
+        "description": "memoryless / fully transient",
+        "status": "reachable (DOWN)",
+        "delta": -2,
+        "method": "reduce dose; allow metabolic clearance"
+      },
+      {
+        "chirality": "𐑒",
+        "description": "one-step context",
+        "status": "reachable (DOWN)",
+        "delta": -1,
+        "method": "reduce dose; allow metabolic clearance"
+      },
+      {
+        "chirality": "𐑖",
+        "description": "two-step narrative",
+        "status": "CURRENT",
+        "delta": 0
+      },
+      {
+        "chirality": "𐑫",
+        "description": "eternal self-reference",
+        "status": "reachable (UP)",
+        "delta": 1,
+        "method": "co-administer with chirality anchor compound"
+      }
+    ]
+  },
+  "winding_modulation": {
+    "method": "Winding Modulation",
+    "current_winding": "𐑴",
+    "levels": {
+      "𐑷": {
+        "ordinal": 1,
+        "description": "no protection",
+        "delta": -1,
+        "direction": "DOWN"
+      },
+      "𐑴": {
+        "ordinal": 2,
+        "description": "Z2 parity",
+        "delta": 0,
+        "direction": "CURRENT"
+      },
+      "𐑭": {
+        "ordinal": 3,
+        "description": "integer winding",
+        "delta": 1,
+        "direction": "UP"
+      },
+      "𐑟": {
+        "ordinal": 4,
+        "description": "non-Abelian",
+        "delta": 2,
+        "direction": "UP"
+      }
+    }
+  },
+  "scope_focusing": {
+    "method": "Scope Focusing",
+    "current_scope": "𐑲",
+    "available_scopes": {
+      "𐑚": "nearest-neighbor (local)",
+      "𐑔": "mesoscale",
+      "𐑲": "universal"
+    },
+    "note": "Scope modulation requires formulation changes — not achievable via dose alone for most compounds."
+  },
+  "adjoint_steering": {
+    "method": "Adjoint Steering",
+    "mechanism": "R=𐑽 (adjoint coupling) enables one-way directed experience. Set intention vector before dosing; experience follows direction without return.",
+    "steerable_primitives": [
+      "Ph (criticality depth)",
+      "G (scope width)",
+      "H (temporal depth)"
+    ],
+    "protocol": "1. Meditate on target domain for 10 min. 2. Dose Apertix. 3. Maintain directed attention for first 30 min (adjoint vector locks). 4. Experience unfolds along vector."
+  },
+  "protocol_the_dive": {
+    "protocol": "The Dive",
+    "description": "DMT + Praxeum background for full 16-universe access with Gate 1 modulation available.",
+    "compounds": [
+      "dmt (or 5-MeO-DMT)",
+      "praxeum (transdermal, low-dose)"
+    ],
+    "sequence": [
+      "1. Apply Praxeum patch 30 min before (low dose, 1-2 mg/h — Gate 1 OPEN)",
+      "2. Administer DMT (inhaled, 30-50 mg)",
+      "3. Experience full 16-universe access for 15-20 min",
+      "4. Optionally increase Praxeum dose to close Gate 1 and explore EP-modulated space",
+      "5. Remove patch to restore baseline"
+    ],
+    "universes_accessible": 16,
+    "gate_controllable": true
+  },
+  "protocol_precision_map": {
+    "protocol": "The Precision Map",
+    "description": "Retiarius to map local neighborhood → Apertix to steer to target region.",
+    "compounds": [
+      "retiarius (inhaled, 2-5 mg)",
+      "apertix (oral, 5-10 mg)"
+    ],
+    "sequence": [
+      "1. Administer Retiarius — map the local structural neighborhood (30 min)",
+      "2. Identify target universe/dimension from the Retiarius map",
+      "3. Administer Apertix with directed intention toward target",
+      "4. Adjoint steering carries experience to the precise structural region"
+    ],
+    "universes_accessible": "7 (Apertix) + 2 mapped (Retiarius)"
+  }
+}

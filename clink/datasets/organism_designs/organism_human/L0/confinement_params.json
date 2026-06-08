@@ -1,0 +1,8 @@
+{
+  "string_tension_GeV_per_fm": 1.0,
+  "confinement_radius_fm": 0.8,
+  "deconfinement_temperature_MeV": 155,
+  "phase": "confined",
+  "hadron_resonance_gas": true,
+  "quark_gluon_plasma_temperature_MeV": 170
+}

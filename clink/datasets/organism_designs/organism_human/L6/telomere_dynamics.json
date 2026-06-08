@@ -1,0 +1,53 @@
+{
+  "repeat_sequence": "TTAGGG",
+  "human_repeats_per_telomere": "500-3000 (3-20 kb)",
+  "shortening_per_division_bp": 50,
+  "shelterin_complex": {
+    "TRF1": {
+      "function": "double-strand telomeric DNA binding",
+      "type": "Myb-domain"
+    },
+    "TRF2": {
+      "function": "T-loop formation, ATM suppression",
+      "type": "Myb-domain"
+    },
+    "POT1": {
+      "function": "single-strand overhang protection",
+      "type": "OB-fold"
+    },
+    "TPP1": {
+      "function": "bridges POT1 to TIN2",
+      "type": "OB-fold"
+    },
+    "TIN2": {
+      "function": "scaffold, connects TRF1/TRF2 to TPP1",
+      "type": "scaffold"
+    },
+    "RAP1": {
+      "function": "TRF2 partner, non-telomeric gene regulation",
+      "type": "adaptor"
+    }
+  },
+  "telomerase": {
+    "components": [
+      "hTERT (catalytic)",
+      "hTR/TERC (RNA template)"
+    ],
+    "active_cell_types": [
+      "germline",
+      "embryonic_stem_cells",
+      "iPSC",
+      ">85% cancers"
+    ],
+    "inactive_cell_types": [
+      "somatic",
+      "differentiated"
+    ],
+    "ALT_pathway": "Alternative Lengthening of Telomeres \u2014 recombination-based, 10-15% cancers"
+  },
+  "ouroboric_telomere_theory": {
+    "mechanism": "Telomere loop closure as topological protection (\u03a9=\ud801\udc5f)",
+    "hayflick_escape": "hTERT expression or ALT activation \u2192 O_inf tier",
+    "structural_type": "\u27e8\ud801\udc66\ud801\udc78\ud801\udc7e\ud801\udc79\ud801\udc50\ud801\udc67\ud801\udc72\ud801\udc60\u2299\ud801\udc6b\ud801\udc73\ud801\udc5f\u27e9"
+  }
+}

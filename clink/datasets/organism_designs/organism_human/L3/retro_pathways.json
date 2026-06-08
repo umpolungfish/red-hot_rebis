@@ -1,0 +1,88 @@
+{
+  "alanine": {
+    "from": [
+      "pyruvate",
+      "NH3",
+      "NADPH"
+    ],
+    "enzymes": [
+      "ALT",
+      "GDH"
+    ],
+    "pathway": "transamination"
+  },
+  "glucose": {
+    "from": [
+      "CO2",
+      "H2O"
+    ],
+    "pathway": "gluconeogenesis",
+    "enzymes": [
+      "PC",
+      "PEPCK",
+      "FBPase",
+      "G6Pase"
+    ]
+  },
+  "atp": {
+    "from": [
+      "ADP",
+      "Pi"
+    ],
+    "enzyme": "ATP synthase",
+    "location": "mitochondrial_matrix"
+  },
+  "dopamine": {
+    "from": [
+      "tyrosine",
+      "O2"
+    ],
+    "enzymes": [
+      "TH",
+      "AADC"
+    ],
+    "pathway": "catecholamine"
+  },
+  "serotonin": {
+    "from": [
+      "tryptophan",
+      "O2"
+    ],
+    "enzymes": [
+      "TPH",
+      "AADC"
+    ],
+    "pathway": "serotonergic"
+  },
+  "cortisol": {
+    "from": [
+      "cholesterol"
+    ],
+    "enzymes": [
+      "CYP11A1",
+      "CYP17A1",
+      "CYP21A2",
+      "CYP11B1"
+    ],
+    "organ": "adrenal_cortex"
+  },
+  "acetylcholine": {
+    "from": [
+      "acetyl-CoA",
+      "choline"
+    ],
+    "enzyme": "ChAT"
+  },
+  "heme": {
+    "from": [
+      "succinyl-CoA",
+      "glycine"
+    ],
+    "pathway": "porphyrin",
+    "enzymes": [
+      "ALAS",
+      "ALAD",
+      "PBGD"
+    ]
+  }
+}

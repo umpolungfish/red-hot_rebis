@@ -1,0 +1,32 @@
+{
+  "B (True)": {
+    "nucleotide": "Guanine",
+    "symbol": "G",
+    "pair": "C",
+    "bond_strength": "strong (3 H-bonds)"
+  },
+  "T (False)": {
+    "nucleotide": "Cytosine",
+    "symbol": "C",
+    "pair": "G",
+    "bond_strength": "strong (3 H-bonds)"
+  },
+  "F (Both)": {
+    "nucleotide": "Adenine",
+    "symbol": "A",
+    "pair": "T/U",
+    "bond_strength": "medium (2 H-bonds)"
+  },
+  "N (Neither)": {
+    "nucleotide": "Thymine/Uracil",
+    "symbol": "T/U",
+    "pair": "A",
+    "bond_strength": "medium (2 H-bonds)"
+  },
+  "Belnap4_logic": {
+    "B \u2227 T = F": "G\u00b7C \u2192 A (transition mutation)",
+    "B \u2228 T = B": "Purine conservation",
+    "B \u2192 T = T": "G\u2192C transversion"
+  },
+  "complementarity": "B\u2194T (G\u2194C), F\u2194N (A\u2194T/U)"
+}

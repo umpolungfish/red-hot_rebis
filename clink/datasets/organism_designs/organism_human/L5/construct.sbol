@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:sbol="http://sbols.org/v2#"
+         xmlns:dcterms="http://purl.org/dc/terms/">
+  <sbol:ComponentDefinition rdf:about="https://clink.org/design/pCLINK_eGFP">
+    <sbol:displayName>pCLINK_eGFP — Human codon-optimized eGFP expression plasmid</sbol:displayName>
+    <sbol:description>Mammalian expression vector for enhanced GFP. CMV promoter, bGH polyA, NeoR selection.</sbol:description>
+    <sbol:type rdf:resource="http://identifiers.org/so/SO:0002210"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000804"/>
+    <sbol:sequence rdf:resource="https://clink.org/design/pCLINK_eGFP/sequence"/>
+  </sbol:ComponentDefinition>
+  <sbol:ComponentDefinition rdf:about="https://clink.org/design/CLINK_Human_Cell_Line">
+    <sbol:displayName>CLINK Human Cell Line v1.0</sbol:displayName>
+    <sbol:description>Genome-integrated human cell line with 23 chromosome pairs, codon-optimized proteome.</sbol:description>
+    <sbol:type rdf:resource="http://identifiers.org/so/SO:0000140"/>
+  </sbol:ComponentDefinition>
+</rdf:RDF>

@@ -1,0 +1,53 @@
+{
+  "organism_type": "human_gills",
+  "structural_type": "\u27e8\ud801\udc66\ud801\udc7c\ud801\udc7f\ud801\udc79\ud801\udc52\ud801\udc67\ud801\udc74\ud801\udc75\u2299\ud801\udc6b\ud801\udc69\ud801\udc5f\u27e9",
+  "base_human_type": "\u27e8\ud801\udc66\ud801\udc78\ud801\udc7e\ud801\udc79\ud801\udc50\ud801\udc67\ud801\udc72\ud801\udc75\u2299\ud801\udc6b\ud801\udc73\ud801\udc5f\u27e9",
+  "primitive_deltas": {
+    "\u0126_Chirality": {
+      "base": "\ud801\udc78",
+      "gill": "\ud801\udc7c",
+      "reason": "Na\u207a apical extrusion \u2014 active pump directionality"
+    },
+    "\u03a9_Winding": {
+      "base": "\ud801\udc7e",
+      "gill": "\ud801\udc7f",
+      "reason": "counter-current antiparallel flow adds \u03a9"
+    },
+    "\u03a3_Stoichiometry": {
+      "base": "\ud801\udc50",
+      "gill": "\ud801\udc52",
+      "reason": "dissolved-O\u2082 stoichiometry ~30\u00d7 lower than aerial"
+    },
+    "\u00c7_Kinetics": {
+      "base": "\ud801\udc72",
+      "gill": "\ud801\udc74",
+      "reason": "NKA+NHE3 active transport kinetics"
+    },
+    "\u00de_Topology": {
+      "base": "\ud801\udc73",
+      "gill": "\ud801\udc69",
+      "reason": "lamellar plate topology \u2260 alveolar sacculi"
+    }
+  },
+  "generation_mode": "actionable",
+  "generation_time_seconds": 0.28,
+  "total_files": 43,
+  "total_bytes": 102819,
+  "output_directory": "/home/mrnob0dy666/red-hot_rebis/clink/datasets/organism_designs/organism_human_gills",
+  "frobenius_verified": true,
+  "tier": "O_inf",
+  "c_score": 1.0,
+  "foundation": "ZFC_fe",
+  "gill_genes": [
+    "ATP1A1",
+    "CA2",
+    "AQP1",
+    "SLC9A3",
+    "FOXA2",
+    "PAX2",
+    "EYA1"
+  ],
+  "gill_surface_area_cm2": 5760,
+  "gas_exchange_efficiency": 0.8,
+  "respiration": "bimodal (gill primary, lung retained)"
+}

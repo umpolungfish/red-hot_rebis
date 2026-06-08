@@ -1,0 +1,59 @@
+{
+  "layer": "L5 — Cellular Design",
+  "gene_expression_cassette": {
+    "cassette_name": "pCLINK_praxeum",
+    "elements": [
+      {
+        "type": "promoter",
+        "name": "T7-lac",
+        "strength": "inducible"
+      },
+      {
+        "type": "RBS",
+        "name": "BBa_B0034",
+        "strength": "medium"
+      },
+      {
+        "type": "CDS",
+        "name": "praxeum_synthase",
+        "description": "Key biosynthetic enzyme"
+      },
+      {
+        "type": "terminator",
+        "name": "T7 terminator"
+      },
+      {
+        "type": "selection",
+        "name": "KanR"
+      }
+    ]
+  },
+  "promoter_design": {
+    "type": "T7-lac",
+    "induction": "IPTG",
+    "leakiness": "low",
+    "rationale": "slow kinetics → tight control needed"
+  },
+  "codon_optimization": {
+    "strategy": "divergent operon (heterogeneous)",
+    "host": "S. cerevisiae"
+  },
+  "metabolic_burden": "high — multiple distinct enzymes; may need fed-batch",
+  "biosynthesis_pathway": {
+    "type": "tryptophan-derived",
+    "key_enzyme": "aromatic L-amino acid decarboxylase (AADC) + indole N-methyltransferase",
+    "precursor": "L-tryptophan",
+    "steps": 4,
+    "cofactors": [
+      "PLP",
+      "SAM"
+    ]
+  },
+  "host_organism": "Saccharomyces cerevisiae (heterogeneous pathway)",
+  "fermentation_parameters": {
+    "mode": "fed-batch",
+    "temperature": "30°C",
+    "duration": "48–96 hours",
+    "induction_OD600": 0.6
+  }
+}

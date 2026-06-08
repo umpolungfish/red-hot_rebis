@@ -1,0 +1,401 @@
+{
+  "L0": {
+    "layer": "Frustrated Belnap5 (Quarks)",
+    "distance": 7.1414,
+    "deltas": [
+      {
+        "primitive": "D",
+        "from": "𐑦",
+        "to": "𐑛",
+        "delta": -3
+      },
+      {
+        "primitive": "T",
+        "from": "𐑥",
+        "to": "𐑶",
+        "delta": 1
+      },
+      {
+        "primitive": "R",
+        "from": "𐑾",
+        "to": "𐑩",
+        "delta": -3
+      },
+      {
+        "primitive": "P",
+        "from": "𐑹",
+        "to": "𐑯",
+        "delta": -1
+      },
+      {
+        "primitive": "K",
+        "from": "𐑧",
+        "to": "𐑘",
+        "delta": -2
+      },
+      {
+        "primitive": "G",
+        "from": "𐑲",
+        "to": "𐑚",
+        "delta": -2
+      },
+      {
+        "primitive": "Gm",
+        "from": "𐑠",
+        "to": "𐑝",
+        "delta": -2
+      },
+      {
+        "primitive": "Ph",
+        "from": "⊙",
+        "to": "𐑢",
+        "delta": -1
+      },
+      {
+        "primitive": "H",
+        "from": "𐑫",
+        "to": "𐑓",
+        "delta": -3
+      },
+      {
+        "primitive": "W",
+        "from": "𐑟",
+        "to": "𐑷",
+        "delta": -3
+      }
+    ],
+    "tier": "O_0"
+  },
+  "L1": {
+    "layer": "Electron Orbital (Belnap4)",
+    "distance": 7.746,
+    "deltas": [
+      {
+        "primitive": "D",
+        "from": "𐑦",
+        "to": "𐑛",
+        "delta": -3
+      },
+      {
+        "primitive": "T",
+        "from": "𐑥",
+        "to": "𐑶",
+        "delta": 1
+      },
+      {
+        "primitive": "R",
+        "from": "𐑾",
+        "to": "𐑩",
+        "delta": -3
+      },
+      {
+        "primitive": "P",
+        "from": "𐑹",
+        "to": "𐑗",
+        "delta": -4
+      },
+      {
+        "primitive": "K",
+        "from": "𐑧",
+        "to": "𐑤",
+        "delta": -1
+      },
+      {
+        "primitive": "G",
+        "from": "𐑲",
+        "to": "𐑚",
+        "delta": -2
+      },
+      {
+        "primitive": "Gm",
+        "from": "𐑠",
+        "to": "𐑜",
+        "delta": -1
+      },
+      {
+        "primitive": "Ph",
+        "from": "⊙",
+        "to": "𐑢",
+        "delta": -1
+      },
+      {
+        "primitive": "H",
+        "from": "𐑫",
+        "to": "𐑓",
+        "delta": -3
+      },
+      {
+        "primitive": "W",
+        "from": "𐑟",
+        "to": "𐑷",
+        "delta": -3
+      }
+    ],
+    "tier": "O_0"
+  },
+  "L2": {
+    "layer": "Atom (Nuclear + Electron)",
+    "distance": 5.4872,
+    "deltas": [
+      {
+        "primitive": "D",
+        "from": "𐑦",
+        "to": "𐑼",
+        "delta": -1
+      },
+      {
+        "primitive": "R",
+        "from": "𐑾",
+        "to": "𐑽",
+        "delta": -1
+      },
+      {
+        "primitive": "P",
+        "from": "𐑹",
+        "to": "𐑿",
+        "delta": -3
+      },
+      {
+        "primitive": "K",
+        "from": "𐑧",
+        "to": "𐑤",
+        "delta": -1
+      },
+      {
+        "primitive": "G",
+        "from": "𐑲",
+        "to": "𐑔",
+        "delta": -1
+      },
+      {
+        "primitive": "Gm",
+        "from": "𐑠",
+        "to": "𐑝",
+        "delta": -2
+      },
+      {
+        "primitive": "Ph",
+        "from": "⊙",
+        "to": "𐑮",
+        "delta": 0.33000000000000007
+      },
+      {
+        "primitive": "H",
+        "from": "𐑫",
+        "to": "𐑒",
+        "delta": -2
+      },
+      {
+        "primitive": "W",
+        "from": "𐑟",
+        "to": "𐑷",
+        "delta": -3
+      }
+    ],
+    "tier": "O_1"
+  },
+  "L3": {
+    "layer": "Molecule (Chemical Bonds)",
+    "distance": 4.6904,
+    "deltas": [
+      {
+        "primitive": "D",
+        "from": "𐑦",
+        "to": "𐑼",
+        "delta": -1
+      },
+      {
+        "primitive": "R",
+        "from": "𐑾",
+        "to": "𐑽",
+        "delta": -1
+      },
+      {
+        "primitive": "P",
+        "from": "𐑹",
+        "to": "𐑿",
+        "delta": -3
+      },
+      {
+        "primitive": "F",
+        "from": "𐑐",
+        "to": "𐑞",
+        "delta": -1
+      },
+      {
+        "primitive": "H",
+        "from": "𐑫",
+        "to": "𐑓",
+        "delta": -3
+      },
+      {
+        "primitive": "W",
+        "from": "𐑟",
+        "to": "𐑭",
+        "delta": -1
+      }
+    ],
+    "tier": "O_2"
+  },
+  "L4": {
+    "layer": "Folded Protein",
+    "distance": 3.1623,
+    "deltas": [
+      {
+        "primitive": "P",
+        "from": "𐑹",
+        "to": "𐑬",
+        "delta": -2
+      },
+      {
+        "primitive": "F",
+        "from": "𐑐",
+        "to": "𐑞",
+        "delta": -1
+      },
+      {
+        "primitive": "H",
+        "from": "𐑫",
+        "to": "𐑒",
+        "delta": -2
+      },
+      {
+        "primitive": "W",
+        "from": "𐑟",
+        "to": "𐑭",
+        "delta": -1
+      }
+    ],
+    "tier": "O_2"
+  },
+  "L5": {
+    "layer": "Living Cell",
+    "distance": 3.7417,
+    "deltas": [
+      {
+        "primitive": "T",
+        "from": "𐑥",
+        "to": "𐑸",
+        "delta": 2
+      },
+      {
+        "primitive": "P",
+        "from": "𐑹",
+        "to": "𐑬",
+        "delta": -2
+      },
+      {
+        "primitive": "F",
+        "from": "𐑐",
+        "to": "𐑞",
+        "delta": -1
+      },
+      {
+        "primitive": "H",
+        "from": "𐑫",
+        "to": "𐑒",
+        "delta": -2
+      },
+      {
+        "primitive": "W",
+        "from": "𐑟",
+        "to": "𐑭",
+        "delta": -1
+      }
+    ],
+    "tier": "O_2"
+  },
+  "L6": {
+    "layer": "Mitosis (Cell Division)",
+    "distance": 3.1623,
+    "deltas": [
+      {
+        "primitive": "T",
+        "from": "𐑥",
+        "to": "𐑸",
+        "delta": 2
+      },
+      {
+        "primitive": "F",
+        "from": "𐑐",
+        "to": "𐑱",
+        "delta": -2
+      },
+      {
+        "primitive": "H",
+        "from": "𐑫",
+        "to": "𐑖",
+        "delta": -1
+      },
+      {
+        "primitive": "W",
+        "from": "𐑟",
+        "to": "𐑭",
+        "delta": -1
+      }
+    ],
+    "tier": "O_2"
+  },
+  "L7": {
+    "layer": "Tissue / Organ",
+    "distance": 3.4641,
+    "deltas": [
+      {
+        "primitive": "T",
+        "from": "𐑥",
+        "to": "𐑸",
+        "delta": 2
+      },
+      {
+        "primitive": "P",
+        "from": "𐑹",
+        "to": "𐑬",
+        "delta": -2
+      },
+      {
+        "primitive": "F",
+        "from": "𐑐",
+        "to": "𐑞",
+        "delta": -1
+      },
+      {
+        "primitive": "Gm",
+        "from": "𐑠",
+        "to": "𐑵",
+        "delta": 1
+      },
+      {
+        "primitive": "H",
+        "from": "𐑫",
+        "to": "𐑖",
+        "delta": -1
+      },
+      {
+        "primitive": "W",
+        "from": "𐑟",
+        "to": "𐑭",
+        "delta": -1
+      }
+    ],
+    "tier": "O_2"
+  },
+  "L8": {
+    "layer": "Whole Organism",
+    "distance": 2.2361,
+    "deltas": [
+      {
+        "primitive": "T",
+        "from": "𐑥",
+        "to": "𐑸",
+        "delta": 2
+      },
+      {
+        "primitive": "Gm",
+        "from": "𐑠",
+        "to": "𐑵",
+        "delta": 1
+      }
+    ],
+    "tier": "O_inf"
+  }
+}

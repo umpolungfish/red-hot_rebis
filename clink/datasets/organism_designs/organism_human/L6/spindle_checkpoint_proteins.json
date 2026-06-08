@@ -1,0 +1,36 @@
+{
+  "SAC_core": {
+    "MAD1": {
+      "recruitment": "unattached kinetochore",
+      "binding": "MAD2"
+    },
+    "MAD2": {
+      "closed_form": "C-MAD2 (active, binds CDC20)",
+      "open_form": "O-MAD2 (inactive)"
+    },
+    "BUB1": {
+      "kinase": true,
+      "recruitment": "phosphorylates histone H2A-T120"
+    },
+    "BUB3": {
+      "adaptor": "constitutively bound to BUB1/BUBR1"
+    },
+    "BUBR1": {
+      "pseudokinase": "scaffold for CDC20 inhibition"
+    },
+    "MPS1": {
+      "kinase": "master SAC kinase, recruited to unattached kinetochores"
+    }
+  },
+  "effector": {
+    "MCC": "Mitotic Checkpoint Complex = MAD2-CDC20-BUBR1-BUB3",
+    "target": "APC/C (Anaphase Promoting Complex) \u2014 inhibited until all kinetochores attached"
+  },
+  "aurora_B_gradient": {
+    "mechanism": "Spatial phosphorylation gradient from inner centromere",
+    "high_activity": "inner centromere (between sister kinetochores)",
+    "low_activity": "outer kinetochore",
+    "readout": "NDC80 phosphorylation state \u2192 microtubule affinity",
+    "IG_primitive": "\u2299=\ud801\udc7b \u2014 exceptional point coupling of kinase gradient"
+  }
+}

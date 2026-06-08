@@ -1,0 +1,75 @@
+{
+  "cell_types": {
+    "HeLa": {
+      "origin": "cervical adenocarcinoma (Henrietta Lacks, 1951)",
+      "karyotype": "hypertriploid (76-80 chr)",
+      "doubling_time_h": 23,
+      "HPV_status": "HPV-18 positive"
+    },
+    "HEK293": {
+      "origin": "embryonic kidney (1973)",
+      "karyotype": "hypotriploid (64 chr)",
+      "doubling_time_h": 24,
+      "SV40_T_antigen": true
+    },
+    "RPE1": {
+      "origin": "retinal pigment epithelium",
+      "karyotype": "diploid (46 chr)",
+      "doubling_time_h": 24,
+      "telomerase": "hTERT-immortalized"
+    },
+    "IMR90": {
+      "origin": "fetal lung fibroblast",
+      "karyotype": "diploid (46 chr)",
+      "doubling_time_h": 36,
+      "senescence": "Hayflick-limited (~50 PD)"
+    },
+    "iPSC": {
+      "origin": "reprogrammed somatic cells",
+      "karyotype": "diploid (46 chr)",
+      "doubling_time_h": 18,
+      "pluripotency_markers": [
+        "OCT4",
+        "SOX2",
+        "NANOG"
+      ]
+    }
+  },
+  "organelles": {
+    "nucleus": {
+      "diameter_um": 6,
+      "pores_per_um2": 11,
+      "genome_compartments": [
+        "chromosome_territories",
+        "nucleoli",
+        "speckles"
+      ]
+    },
+    "mitochondria": {
+      "count_per_cell": "500-2000",
+      "genome_size_bp": 16569,
+      "maternal_inheritance": true
+    },
+    "ER": {
+      "rough_surface_area_um2_per_cell": 500,
+      "smooth_surface_area": "variable"
+    },
+    "golgi": {
+      "cisternae": "4-8",
+      "functions": [
+        "glycosylation",
+        "sorting",
+        "secretion"
+      ]
+    },
+    "ribosomes": {
+      "count_per_cell": "~10 million",
+      "rRNA_types": [
+        "28S",
+        "18S",
+        "5.8S",
+        "5S"
+      ]
+    }
+  }
+}

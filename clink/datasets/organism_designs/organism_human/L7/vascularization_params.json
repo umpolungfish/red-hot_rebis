@@ -1,0 +1,48 @@
+{
+  "angiogenesis_factors": [
+    "VEGF-A",
+    "FGF2",
+    "Angiopoietin-1",
+    "PDGF-BB",
+    "TGF-\u03b21"
+  ],
+  "vessel_hierarchy": {
+    "artery": {
+      "diameter_mm": "1-25",
+      "wall_thickness_um": 1000,
+      "smooth_muscle": "thick",
+      "elastin": "abundant"
+    },
+    "arteriole": {
+      "diameter_um": "10-100",
+      "wall_thickness_um": 20,
+      "smooth_muscle": "1-2 layers"
+    },
+    "capillary": {
+      "diameter_um": "5-10",
+      "wall_thickness_um": 1,
+      "pericytes": true,
+      "no_smooth_muscle": true
+    },
+    "venule": {
+      "diameter_um": "10-100",
+      "wall_thickness_um": 10,
+      "smooth_muscle": "thin"
+    },
+    "vein": {
+      "diameter_mm": "1-25",
+      "wall_thickness_um": 500,
+      "valves": true
+    }
+  },
+  "endothelial_barrier": {
+    "continuous": "muscle, lung, skin, brain (BBB tight junctions)",
+    "fenestrated": "kidney glomerulus, endocrine glands",
+    "sinusoidal": "liver, spleen, bone marrow (discontinuous)"
+  },
+  "perfusion_requirements": {
+    "cardiac_output_L_per_min": 5,
+    "capillary_density_per_mm3": "200-2000 (tissue-dependent)",
+    "oxygen_diffusion_limit_um": 200
+  }
+}

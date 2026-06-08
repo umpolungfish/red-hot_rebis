@@ -1,0 +1,24 @@
+{
+  "layer": "L7 — Tissue Distribution",
+  "brain_regions": {
+    "prefrontal_cortex": "high (5-HT2A rich)",
+    "thalamus": "high (gating modulation)",
+    "claustrum": "very high (proposed consciousness orchestration)",
+    "default_mode_network": "high suppression",
+    "visual_cortex": "moderate-high"
+  },
+  "peripheral_distribution": {
+    "liver": "high",
+    "kidney": "high",
+    "lung": "moderate",
+    "spleen": "moderate"
+  },
+  "protein_binding": "90–98%",
+  "tissue_half_life": "12–24h",
+  "toxicity_risk": {
+    "hepatotoxicity": "low-moderate",
+    "cardiotoxicity": "low (no significant hERG)",
+    "neurotoxicity": "low at therapeutic doses",
+    "genotoxicity": "negative (Ames test prediction)"
+  }
+}

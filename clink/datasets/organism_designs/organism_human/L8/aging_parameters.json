@@ -1,0 +1,44 @@
+{
+  "hallmarks_of_aging": [
+    "genomic_instability",
+    "telomere_attrition",
+    "epigenetic_alterations",
+    "loss_of_proteostasis",
+    "deregulated_nutrient_sensing",
+    "mitochondrial_dysfunction",
+    "cellular_senescence",
+    "stem_cell_exhaustion",
+    "altered_intercellular_communication"
+  ],
+  "human_longevity": {
+    "maximum_lifespan_years": 122,
+    "average_lifespan_years": 73,
+    "healthy_lifespan_years": 63
+  },
+  "senescence_markers": {
+    "SA_\u03b2_gal": true,
+    "p16_INK4a": true,
+    "p21_CIP1": true,
+    "SASP": [
+      "IL-6",
+      "IL-8",
+      "MCP-1",
+      "MMP3"
+    ],
+    "telomere_dysfunction_foci": true
+  },
+  "rejuvenation_strategies": {
+    "Yamanaka_factors_partial": "OSKM pulsed expression",
+    "senolytics": [
+      "dasatinib+quercetin",
+      "fisetin",
+      "navitoclax"
+    ],
+    "NAD_boosters": [
+      "NMN",
+      "NR"
+    ],
+    "metformin": "mTOR inhibition via AMPK",
+    "rapamycin": "direct mTORC1 inhibition"
+  }
+}

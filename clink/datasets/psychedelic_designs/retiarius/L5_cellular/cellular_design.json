@@ -1,0 +1,60 @@
+{
+  "layer": "L5 — Cellular Design",
+  "gene_expression_cassette": {
+    "cassette_name": "pCLINK_retiarius",
+    "elements": [
+      {
+        "type": "promoter",
+        "name": "pBAD",
+        "strength": "inducible"
+      },
+      {
+        "type": "RBS",
+        "name": "BBa_B0034",
+        "strength": "medium"
+      },
+      {
+        "type": "CDS",
+        "name": "retiarius_synthase",
+        "description": "Key biosynthetic enzyme"
+      },
+      {
+        "type": "terminator",
+        "name": "T7 terminator"
+      },
+      {
+        "type": "selection",
+        "name": "KanR"
+      }
+    ]
+  },
+  "promoter_design": {
+    "type": "pBAD",
+    "induction": "arabinose",
+    "leakiness": "very low",
+    "rationale": "MBL → ultra-tight control"
+  },
+  "codon_optimization": {
+    "strategy": "operon (multiple identical)",
+    "host": "E. coli BL21(DE3)"
+  },
+  "metabolic_burden": "moderate — parallel identical enzymes",
+  "biosynthesis_pathway": {
+    "type": "phenylalanine/tyrosine-derived",
+    "key_enzyme": "tyrosine hydroxylase + decarboxylase + O-methyltransferase",
+    "precursor": "L-tyrosine",
+    "steps": 5,
+    "cofactors": [
+      "THB",
+      "PLP",
+      "SAM"
+    ]
+  },
+  "host_organism": "Escherichia coli BL21(DE3)",
+  "fermentation_parameters": {
+    "mode": "batch",
+    "temperature": "37°C",
+    "duration": "24–48 hours",
+    "induction_OD600": 0.4
+  }
+}

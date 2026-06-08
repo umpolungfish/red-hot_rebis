@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "design_principle": "zero_incision_in_situ_assembly",
   "delivery": "ultrasound_guided_percutaneous_injection",
-  "structural_type": "⟨𐑼 · 𐑸 · 𐑾 · 𐑬 · 𐑞 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑖 · 𐑳 · 𐑴⟩",
+  "structural_type": "⟨𐑼 · 𐑶 · 𐑾 · 𐑬 · 𐑞 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑖 · 𐑳 · 𐑴⟩",
   "tier": "O_2",
   "cell_types": 4,
   "sensors": 5,

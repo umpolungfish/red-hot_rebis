@@ -1,0 +1,16 @@
+##gff-version 3
+##sequence-region chr17 1 83257441
+##species Homo sapiens
+##genome-build GRCh38.p14
+chr17	.	gene	7661779	7687538	.	+	.	ID=TP53;Name=TP53;biotype=protein_coding
+chr17	.	mRNA	7661779	7687538	.	+	.	ID=TP53-201;Parent=TP53
+chr17	.	exon	7661779	7661902	.	+	.	Parent=TP53-201
+chr17	.	CDS	7661821	7661902	.	+	0	Parent=TP53-201
+chr17	.	exon	7674854	7674988	.	+	.	Parent=TP53-201
+chr17	.	CDS	7674854	7674988	.	+	0	Parent=TP53-201
+chr17	.	exon	7675054	7675236	.	+	.	Parent=TP53-201
+chr17	.	CDS	7675054	7675236	.	+	2	Parent=TP53-201
+chr17	.	exon	7684479	7687538	.	+	.	Parent=TP53-201
+chr17	.	CDS	7684479	7687538	.	+	0	Parent=TP53-201
+chr17	.	gene	25195680	25255136	.	-	.	ID=BRCA1;Name=BRCA1;biotype=protein_coding
+chr17	.	gene	38528884	38617025	.	+	.	ID=ERBB2;Name=ERBB2;biotype=protein_coding

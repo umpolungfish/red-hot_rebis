@@ -1,0 +1,33 @@
+{
+  "protein": "KRAS_G_domain",
+  "length": 166,
+  "composition": {
+    "H": 87,
+    "E": 32,
+    "C": 47
+  },
+  "helices": [
+    "2-9",
+    "16-25",
+    "37-46",
+    "53-58",
+    "65-74",
+    "87-104",
+    "126-137",
+    "151-163"
+  ],
+  "strands": [
+    "11-15",
+    "49-52",
+    "60-64",
+    "76-80",
+    "107-114",
+    "142-146"
+  ],
+  "domain_architecture": "G-domain (Rossmann fold)",
+  "motifs": [
+    "P-loop (GXXXXGKS)",
+    "switch_I",
+    "switch_II"
+  ]
+}

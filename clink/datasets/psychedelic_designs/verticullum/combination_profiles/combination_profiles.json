@@ -1,0 +1,356 @@
+{
+  "verticullum_plus_dmt": {
+    "combination": "Verticullum (EP-Lever) + dmt",
+    "composite_type": "⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑵 · ⊙ · 𐑫 · 𐑳 · 𐑟⟩",
+    "composite_tier": "O_inf",
+    "parent_1": {
+      "name": "Verticullum (EP-Lever)",
+      "tier": "O_inf"
+    },
+    "parent_2": {
+      "name": "dmt",
+      "tier": "O_inf"
+    },
+    "deltas_from_parent_1": [
+      {
+        "primitive": "T",
+        "from": "𐑥",
+        "to": "𐑸",
+        "delta": 2
+      },
+      {
+        "primitive": "Gm",
+        "from": "𐑠",
+        "to": "𐑵",
+        "delta": 1
+      }
+    ],
+    "deltas_from_parent_2": [
+      {
+        "primitive": "W",
+        "from": "𐑭",
+        "to": "𐑟",
+        "delta": 1
+      }
+    ],
+    "key_changes": [],
+    "synergy_prediction": "low synergy — composite is structurally distant from both parents",
+    "warning": "No special warnings — standard psychedelic safety protocols apply."
+  },
+  "verticullum_plus_psilocybin": {
+    "combination": "Verticullum (EP-Lever) + psilocybin",
+    "composite_type": "⟨𐑦 · 𐑥 · 𐑾 · 𐑬 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑟⟩",
+    "composite_tier": "O_2",
+    "parent_1": {
+      "name": "Verticullum (EP-Lever)",
+      "tier": "O_inf"
+    },
+    "parent_2": {
+      "name": "psilocybin",
+      "tier": "O_2"
+    },
+    "deltas_from_parent_1": [
+      {
+        "primitive": "P",
+        "from": "𐑹",
+        "to": "𐑬",
+        "delta": -2
+      }
+    ],
+    "deltas_from_parent_2": [
+      {
+        "primitive": "D",
+        "from": "𐑼",
+        "to": "𐑦",
+        "delta": 1
+      },
+      {
+        "primitive": "H",
+        "from": "𐑖",
+        "to": "𐑫",
+        "delta": 1
+      },
+      {
+        "primitive": "W",
+        "from": "𐑭",
+        "to": "𐑟",
+        "delta": 1
+      }
+    ],
+    "key_changes": [],
+    "synergy_prediction": "low synergy — composite is structurally distant from both parents",
+    "warning": "No special warnings — standard psychedelic safety protocols apply."
+  },
+  "verticullum_plus_lsd": {
+    "combination": "Verticullum (EP-Lever) + lsd",
+    "composite_type": "⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑵 · ⊙ · 𐑫 · 𐑳 · 𐑟⟩",
+    "composite_tier": "O_inf",
+    "parent_1": {
+      "name": "Verticullum (EP-Lever)",
+      "tier": "O_inf"
+    },
+    "parent_2": {
+      "name": "lsd",
+      "tier": "O_inf"
+    },
+    "deltas_from_parent_1": [
+      {
+        "primitive": "T",
+        "from": "𐑥",
+        "to": "𐑸",
+        "delta": 2
+      },
+      {
+        "primitive": "Gm",
+        "from": "𐑠",
+        "to": "𐑵",
+        "delta": 1
+      }
+    ],
+    "deltas_from_parent_2": [
+      {
+        "primitive": "H",
+        "from": "𐑖",
+        "to": "𐑫",
+        "delta": 1
+      },
+      {
+        "primitive": "W",
+        "from": "𐑭",
+        "to": "𐑟",
+        "delta": 1
+      }
+    ],
+    "key_changes": [],
+    "synergy_prediction": "low synergy — composite is structurally distant from both parents",
+    "warning": "No special warnings — standard psychedelic safety protocols apply."
+  },
+  "verticullum_plus_ketamine": {
+    "combination": "Verticullum (EP-Lever) + ketamine",
+    "composite_type": "⟨𐑦 · 𐑥 · 𐑾 · 𐑿 · 𐑱 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑟⟩",
+    "composite_tier": "O_2",
+    "parent_1": {
+      "name": "Verticullum (EP-Lever)",
+      "tier": "O_inf"
+    },
+    "parent_2": {
+      "name": "ketamine",
+      "tier": "O_1"
+    },
+    "deltas_from_parent_1": [
+      {
+        "primitive": "P",
+        "from": "𐑹",
+        "to": "𐑿",
+        "delta": -3
+      },
+      {
+        "primitive": "F",
+        "from": "𐑐",
+        "to": "𐑱",
+        "delta": -2
+      }
+    ],
+    "deltas_from_parent_2": [
+      {
+        "primitive": "D",
+        "from": "𐑼",
+        "to": "𐑦",
+        "delta": 1
+      },
+      {
+        "primitive": "K",
+        "from": "𐑤",
+        "to": "𐑧",
+        "delta": 1
+      },
+      {
+        "primitive": "G",
+        "from": "𐑔",
+        "to": "𐑲",
+        "delta": 1
+      },
+      {
+        "primitive": "Ph",
+        "from": "𐑢",
+        "to": "⊙",
+        "delta": 1
+      },
+      {
+        "primitive": "H",
+        "from": "𐑒",
+        "to": "𐑫",
+        "delta": 2
+      },
+      {
+        "primitive": "S",
+        "from": "𐑕",
+        "to": "𐑳",
+        "delta": 1
+      },
+      {
+        "primitive": "W",
+        "from": "𐑷",
+        "to": "𐑟",
+        "delta": 3
+      }
+    ],
+    "key_changes": [],
+    "synergy_prediction": "low synergy — composite is structurally distant from both parents",
+    "warning": "No special warnings — standard psychedelic safety protocols apply."
+  },
+  "verticullum_plus_mdma": {
+    "combination": "Verticullum (EP-Lever) + mdma",
+    "composite_type": "⟨𐑦 · 𐑥 · 𐑾 · 𐑿 · 𐑞 · 𐑧 · 𐑲 · 𐑠 · 𐑮 · 𐑫 · 𐑳 · 𐑟⟩",
+    "composite_tier": "O_1",
+    "parent_1": {
+      "name": "Verticullum (EP-Lever)",
+      "tier": "O_inf"
+    },
+    "parent_2": {
+      "name": "mdma",
+      "tier": "O_1"
+    },
+    "deltas_from_parent_1": [
+      {
+        "primitive": "P",
+        "from": "𐑹",
+        "to": "𐑿",
+        "delta": -3
+      },
+      {
+        "primitive": "F",
+        "from": "𐑐",
+        "to": "𐑞",
+        "delta": -1
+      },
+      {
+        "primitive": "Ph",
+        "from": "⊙",
+        "to": "𐑮",
+        "delta": 0.33000000000000007
+      }
+    ],
+    "deltas_from_parent_2": [
+      {
+        "primitive": "D",
+        "from": "𐑼",
+        "to": "𐑦",
+        "delta": 1
+      },
+      {
+        "primitive": "T",
+        "from": "𐑡",
+        "to": "𐑥",
+        "delta": 2
+      },
+      {
+        "primitive": "K",
+        "from": "𐑤",
+        "to": "𐑧",
+        "delta": 1
+      },
+      {
+        "primitive": "H",
+        "from": "𐑒",
+        "to": "𐑫",
+        "delta": 2
+      },
+      {
+        "primitive": "W",
+        "from": "𐑷",
+        "to": "𐑟",
+        "delta": 3
+      }
+    ],
+    "key_changes": [],
+    "synergy_prediction": "low synergy — composite is structurally distant from both parents",
+    "warning": "No special warnings — standard psychedelic safety protocols apply."
+  },
+  "verticullum_plus_mescaline": {
+    "combination": "Verticullum (EP-Lever) + mescaline",
+    "composite_type": "⟨𐑦 · 𐑥 · 𐑾 · 𐑗 · 𐑱 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑟⟩",
+    "composite_tier": "O_2",
+    "parent_1": {
+      "name": "Verticullum (EP-Lever)",
+      "tier": "O_inf"
+    },
+    "parent_2": {
+      "name": "mescaline",
+      "tier": "O_0"
+    },
+    "deltas_from_parent_1": [
+      {
+        "primitive": "P",
+        "from": "𐑹",
+        "to": "𐑗",
+        "delta": -4
+      },
+      {
+        "primitive": "F",
+        "from": "𐑐",
+        "to": "𐑱",
+        "delta": -2
+      }
+    ],
+    "deltas_from_parent_2": [
+      {
+        "primitive": "D",
+        "from": "𐑼",
+        "to": "𐑦",
+        "delta": 1
+      },
+      {
+        "primitive": "T",
+        "from": "𐑡",
+        "to": "𐑥",
+        "delta": 2
+      },
+      {
+        "primitive": "R",
+        "from": "𐑩",
+        "to": "𐑾",
+        "delta": 3
+      },
+      {
+        "primitive": "G",
+        "from": "𐑔",
+        "to": "𐑲",
+        "delta": 1
+      },
+      {
+        "primitive": "Gm",
+        "from": "𐑜",
+        "to": "𐑠",
+        "delta": 1
+      },
+      {
+        "primitive": "Ph",
+        "from": "𐑢",
+        "to": "⊙",
+        "delta": 1
+      },
+      {
+        "primitive": "H",
+        "from": "𐑒",
+        "to": "𐑫",
+        "delta": 2
+      },
+      {
+        "primitive": "S",
+        "from": "𐑙",
+        "to": "𐑳",
+        "delta": 2
+      },
+      {
+        "primitive": "W",
+        "from": "𐑷",
+        "to": "𐑟",
+        "delta": 3
+      }
+    ],
+    "key_changes": [],
+    "synergy_prediction": "low synergy — composite is structurally distant from both parents",
+    "warning": "No special warnings — standard psychedelic safety protocols apply."
+  }
+}

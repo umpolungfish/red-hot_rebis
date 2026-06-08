@@ -1,0 +1,30 @@
+{
+  "organism_type": "treople (Homo arboreus)",
+  "structural_type": "\u27e8\ud801\udc66\ud801\udc7b\ud801\udc7d\ud801\udc7a\ud801\udc55\ud801\udc64\ud801\udc72\ud801\udc75\u2299\ud801\udc6b\ud801\udc6a\ud801\udc5f\u27e9",
+  "base_human_type": "\u27e8\ud801\udc66\ud801\udc78\ud801\udc7e\ud801\udc79\ud801\udc50\ud801\udc67\ud801\udc72\ud801\udc75\u2299\ud801\udc6b\ud801\udc73\ud801\udc5f\u27e9",
+  "primitive_deltas": [
+    "\u0126_Chirality",
+    "\u03a9_Winding",
+    "\u00d0_Dimensionality",
+    "\u03a3_Stoichiometry",
+    "\u03a6_Parity",
+    "\u00de_Topology"
+  ],
+  "delta_count": 6,
+  "generation_mode": "actionable",
+  "generation_time_seconds": 23.41,
+  "total_files": 47,
+  "total_bytes": 551334,
+  "output_directory": "/home/mrnob0dy666/red-hot_rebis/clink/datasets/organism_designs/organism_treople",
+  "frobenius_verified": true,
+  "tier": "O_inf",
+  "c_score": 1.0,
+  "foundation": "ZFC_fe",
+  "arc": "Elysia chlorotica \u2192 Homo sapiens (photo) \u2192 Homo arboreus",
+  "gene_count": 21,
+  "cassette_count": 5,
+  "venation_coverage_percent": 31.1,
+  "energy_autotrophy_percent_full_sun": 20.0,
+  "mycorrhizal_partner": "Rhizophagus irregularis",
+  "oldest_frobenius_on_earth": "PT4 mycorrhizal exchange \u2014 400 million years"
+}

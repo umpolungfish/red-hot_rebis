@@ -1,0 +1,95 @@
+{
+  "structural_type": "\u27e8\ud801\udc66\ud801\udc7b\ud801\udc7d\ud801\udc7a\ud801\udc55\ud801\udc64\ud801\udc72\ud801\udc75\u2299\ud801\udc6b\ud801\udc6a\ud801\udc5f\u27e9",
+  "base_human_type": "\u27e8\ud801\udc66\ud801\udc78\ud801\udc7e\ud801\udc79\ud801\udc50\ud801\udc67\ud801\udc72\ud801\udc75\u2299\ud801\udc6b\ud801\udc73\ud801\udc5f\u27e9",
+  "arc_position": "3rd / terminal: Elysia \u2192 photosynthetic human \u2192 Homo arboreus",
+  "tier": "O_inf",
+  "c_score": 1.0,
+  "primitive_deltas": {
+    "\u0126_Chirality": {
+      "base": "\ud801\udc78",
+      "treople": "\ud801\udc7b",
+      "reason": "\u03b2-1,4-glycosidic cellulose; opposite chirality to \u03b1-1,4 glycogen/starch; deepest chirality change in series"
+    },
+    "\u03a9_Winding": {
+      "base": "\ud801\udc7e",
+      "treople": "\ud801\udc7d",
+      "reason": "cellulose crystalline microfibril winding (parallel chains) PLUS thylakoid grana stacking = maximum \u03a9 in this series"
+    },
+    "\u00d0_Dimensionality": {
+      "base": "\ud801\udc79",
+      "treople": "\ud801\udc7a",
+      "reason": "fractal branching architecture (WOX4/ARF5 lateral meristem); trees expand 3D indefinitely; animals centralize \u2014 dimensional architecture changes"
+    },
+    "\u03a3_Stoichiometry": {
+      "base": "\ud801\udc50",
+      "treople": "\ud801\udc55",
+      "reason": "canopy-scale carbon fixation dominant; stomata enable direct CO2 uptake; mycorrhizal Pi import; new dominant stoichiometric class"
+    },
+    "\u03a6_Parity": {
+      "base": "\ud801\udc67",
+      "treople": "\ud801\udc64",
+      "reason": "photosynthesis now PRIMARY metabolic mode (not supplement); full parity inversion \u2014 the organism is metabolically a plant more than an animal"
+    },
+    "\u00de_Topology": {
+      "base": "\ud801\udc73",
+      "treople": "\ud801\udc6a",
+      "reason": "fractal branching topology (branching trees = dendritic/fractal topology class); fundamentally distinct from bilateral animal body plan topology"
+    }
+  },
+  "mycorrhizal_frobenius": {
+    "note": "PT4 closes the Frobenius loop: G3P exported to Rhizophagus \u2192 Pi imported. C out \u2297 Pi in = identity. The mycorrhizal symbiosis is 400 million years old \u2014 it is the oldest \u03bc\u2218\u03b4=id in terrestrial biology.",
+    "fungal_partner": "Rhizophagus irregularis (default; 80% of land plants use AM fungi)",
+    "key_genes": "SymRK \u2192 CCaMK \u2192 CYCLOPS \u2192 RAM1 \u2192 PT4"
+  },
+  "energy": {
+    "canopy_leaf_area_m2": 8.5,
+    "photosynthetic_rate_umol_CO2_m2_s": 18.0,
+    "daily_sun_hours": 8,
+    "gross_C_fixed_mol_per_day": 4.406,
+    "glucose_equivalent_g_per_day": 132.2,
+    "caloric_gross_kcal_per_day": 504.0,
+    "mycorrhizal_C_cost_fraction": 0.2,
+    "net_kcal_per_day_full_sun": 403.0,
+    "human_daily_requirement_kcal": 2000,
+    "autotrophy_fraction": 0.2,
+    "note": "With 8.5 m\u00b2 of leaf-finger canopy area: ~20% energy autotrophy in full sun. Supplement from food for remaining fraction + cloudy days. Full autotrophy requires ~36 m\u00b2 (large tree) \u2014 leaf-finger extensions are the architectural solution."
+  },
+  "genes": [
+    "CesA1",
+    "CesA4",
+    "COBRA",
+    "PAL1",
+    "C4H",
+    "CAD",
+    "LAC17",
+    "WOX4",
+    "MP_ARF5",
+    "PXY",
+    "SPEECHLESS",
+    "MUTE",
+    "FAMA",
+    "KAT1",
+    "SymRK",
+    "CCaMK",
+    "RAM1",
+    "PT4",
+    "Lhcb2",
+    "FBPase",
+    "PRK"
+  ],
+  "gene_count": 21,
+  "cassettes": 5,
+  "venation_pattern": {
+    "coverage_percent": 31.1,
+    "topology": "branching (\u00de=\ud801\udc6a)",
+    "chirality": "L-Fibonacci"
+  },
+  "appearance": {
+    "skin": "bark-brown with green photosynthetic cortex visible through epidermis; branching venation pattern (leaf venation Turing)",
+    "fingers": "elongated, flattened, deep green \u2014 leaf-finger panels",
+    "hair": "replaced by light-gathering tendrils (Lhcb-expressing trichome-like structures)",
+    "eyes": "retained; standard",
+    "stature": "taller (WOX4 lateral meristem adds slow height); very slow aging"
+  },
+  "frobenius_note": "Every layer closes: cellulose (CesA \u03b4 / cellulase \u03bc), lignin (LAC17 \u03b4 / white-rot \u03bc), mycorrhiza (C export \u03b4 / Pi import \u03bc). The treople is not a fantasy. It is a grammar reading."
+}

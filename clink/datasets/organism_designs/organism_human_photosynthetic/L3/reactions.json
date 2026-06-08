@@ -1,0 +1,12 @@
+{
+  "glycolysis": {
+    "reactants": "Glucose+2NAD+2ADP",
+    "products": "2Pyruvate+2NADH+2ATP",
+    "deltaG_kJ": -74.5
+  },
+  "tca": {
+    "reactants": "Acetyl-CoA+3NAD+FAD",
+    "products": "2CO2+3NADH+FADH2+GTP",
+    "deltaG_kJ": -40.0
+  }
+}

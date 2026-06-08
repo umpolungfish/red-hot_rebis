@@ -1,0 +1,68 @@
+# CLINK Human Cell Growth Medium — v2.0
+# Designed for: human cell lines (HeLa, HEK293, RPE1, IMR90, iPSC-derived)
+
+# ── Basal Medium ──
+Base Medium: DMEM/F-12 (1:1) or RPMI-1640 (for suspension)
+Supplier: ThermoFisher / Sigma-Aldrich
+
+# ── Serum ──
+Fetal Bovine Serum (FBS): 10% v/v
+  - Heat-inactivated: 56°C, 30 min
+  - South American origin preferred (lower endotoxin)
+
+# ── Essential Supplements ──
+L-Glutamine: 2 mM (or GlutaMAX™ 1x)
+Non-Essential Amino Acids (NEAA): 1x (100x stock)
+Sodium Pyruvate: 1 mM
+HEPES: 10 mM (pH buffer, optional)
+Sodium Bicarbonate: 3.7 g/L
+D-Glucose: 25 mM (standard) or 5 mM (physiological)
+
+# ── Antibiotics ──
+Penicillin-Streptomycin: 100 U/mL + 100 μg/mL (standard culture)
+  - Omit for transfection experiments
+  - Alternative: Normocin™ 100 μg/mL (broad-spectrum)
+
+# ── Cell-Type Specific Supplements ──
+## Epithelial (HeLa, A549, MDCK):
+  EGF: 10 ng/mL
+  Hydrocortisone: 0.5 μg/mL
+  Insulin: 5 μg/mL
+
+## Neural (SH-SY5Y, iPSC-neurons):
+  B-27™ Supplement: 1x
+  N-2 Supplement: 1x
+  BDNF: 20 ng/mL
+  GDNF: 10 ng/mL
+
+## Stem Cell (iPSC, ESC):
+  bFGF: 10 ng/mL (daily)
+  TGF-β1: 2 ng/mL
+  ROCK Inhibitor (Y-27632): 10 μM (first 24h post-passage)
+
+# ── Physical Parameters ──
+Temperature: 37.0 ± 0.5°C
+CO₂: 5.0% (maintains pH 7.4 with bicarbonate buffer)
+Humidity: >95% (saturated)
+Osmolarity: 290-310 mOsm/kg
+
+# ── Quality Control ──
+Sterility: Filter through 0.22 μm PES membrane
+Storage: 4°C, protected from light, use within 4 weeks
+Mycoplasma testing: Monthly (PCR or Hoechst stain)
+Endotoxin: <0.5 EU/mL
+
+# ── Protocol ──
+1. Warm medium to 37°C in water bath (15-20 min)
+2. Spray bottle with 70% ethanol before entering hood
+3. Aspirate old medium from flask
+4. Wash monolayer with sterile PBS (Ca²⁺/Mg²⁺-free)
+5. Add 0.25% Trypsin-EDTA (2 mL per T75)
+6. Incubate 2-5 min at 37°C until cells detach
+7. Neutralize with 2x volume complete medium
+8. Centrifuge 300×g, 5 min
+9. Resuspend in fresh medium, count with Trypan Blue
+10. Seed at desired density: 
+    - HeLa: 5×10⁴ cells/cm²
+    - HEK293: 2×10⁴ cells/cm²
+    - iPSC: 2×10⁴ cells/cm² (on Matrigel-coated plates)

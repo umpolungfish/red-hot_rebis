@@ -1,0 +1,46 @@
+{
+  "materials": {
+    "PLGA_75_25": {
+      "degradation_weeks": 12,
+      "porosity_percent": 85,
+      "pore_size_um": 200,
+      "modulus_kPa": 50,
+      "notes": "FDA-approved, tunable degradation"
+    },
+    "Matrigel": {
+      "type": "GFR (Growth Factor Reduced)",
+      "source": "Engelbreth-Holm-Swarm mouse sarcoma",
+      "polymerization": "37\u00b0C, 30 min",
+      "notes": "Gold standard for organoids"
+    },
+    "Collagen_I": {
+      "concentration_mg_per_mL": 2.5,
+      "source": "rat tail tendon",
+      "pH_neutralization": "NaOH + HEPES",
+      "stiffness_kPa": "0.5-5 (concentration-dependent)"
+    },
+    "GelMA": {
+      "methacrylation_pct": 60,
+      "photoinitiator": "LAP 0.1%",
+      "crosslinking": "405 nm, 60s",
+      "stiffness_kPa": "1-30 (light-dose-dependent)"
+    },
+    "PEG_diacrylate": {
+      "MW_kDa": 10,
+      "crosslinking": "UV 365 nm + Irgacure 2959",
+      "notes": "Bioinert, requires RGD functionalization"
+    },
+    "Decellularized_ECM": {
+      "source": "porcine/human tissue",
+      "process": "SDS/Triton X-100",
+      "notes": "Retains native ECM architecture"
+    }
+  },
+  "bioprinting_params": {
+    "nozzle_diameter_um": 200,
+    "extrusion_pressure_kPa": 30,
+    "printing_speed_mm_per_s": 10,
+    "bioink_viscosity_Pa_s": "0.5-5",
+    "cell_density_per_mL": "1-10 million"
+  }
+}

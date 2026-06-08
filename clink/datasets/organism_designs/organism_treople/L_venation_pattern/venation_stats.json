@@ -1,0 +1,25 @@
+{
+  "algorithm": "Gray-Scott branching/coral regime",
+  "parameters": {
+    "Du": 0.16,
+    "Dv": 0.08,
+    "F": 0.022,
+    "k": 0.059,
+    "steps": 8000
+  },
+  "seed": "midrib axis + Fibonacci-L lateral veins",
+  "regime": "branching (vs spot regime for photosynthetic human)",
+  "golden_angle_deg": 137.5078,
+  "grid": {
+    "width": 80,
+    "height": 40
+  },
+  "threshold": 0.12,
+  "coverage_fraction": 0.3106,
+  "coverage_percent": 31.1,
+  "total_cells": 3200,
+  "expressing_cells": 994,
+  "chirality": "L-handed (Fibonacci-L branching) \u2192 \u0126=\ud801\udc7b",
+  "topology": "branching/dendritic \u2014 \u00de=\ud801\udc6a (distinct from spot topology)",
+  "note": "31.1% surface as chlorophyll-expressing vascular network. Leaf-finger extensions expand this to full canopy geometry."
+}

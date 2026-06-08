@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="CLINK_Human_Core" name="CLINK Human Core Metabolic Model" substanceUnits="mmol" timeUnits="h">
+    <listOfCompartments>
+      <compartment id="c" name="cytosol" constant="true"/>
+      <compartment id="m" name="mitochondria" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species id="glc__D_c" name="D-Glucose" compartment="c" hasOnlySubstanceUnits="true" constant="false"/>
+      <species id="pyr_c" name="Pyruvate" compartment="c" hasOnlySubstanceUnits="true" constant="false"/>
+      <species id="atp_c" name="ATP" compartment="c" hasOnlySubstanceUnits="true" constant="false"/>
+      <species id="adp_c" name="ADP" compartment="c" hasOnlySubstanceUnits="true" constant="false"/>
+      <species id="nad_c" name="NAD+" compartment="c" hasOnlySubstanceUnits="true" constant="false"/>
+      <species id="nadh_c" name="NADH" compartment="c" hasOnlySubstanceUnits="true" constant="false"/>
+      <species id="h2o_c" name="H2O" compartment="c" hasOnlySubstanceUnits="true" constant="false"/>
+      <species id="o2_m" name="O2" compartment="m" hasOnlySubstanceUnits="true" constant="false"/>
+      <species id="co2_m" name="CO2" compartment="m" hasOnlySubstanceUnits="true" constant="false"/>
+    </listOfSpecies>
+    <listOfReactions>
+      <reaction id="HEX1" name="Hexokinase" reversible="false">
+        <listOfReactants>
+          <speciesReference species="glc__D_c" stoichiometry="1"/>
+          <speciesReference species="atp_c" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="adp_c" stoichiometry="1"/>
+        </listOfProducts>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

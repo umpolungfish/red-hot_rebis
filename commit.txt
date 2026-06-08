@@ -1,3 +1,91 @@
+generators.py + paper: fix protein framing — SerpentRod ob3ect primary, not external tools
+
+When the Frobenius condition is approximate, the fix is to bring the ob3ect to exactness,
+not to defer to AlphaFold/ESMFold. "Requires external tool X" = ob3ect not fully configured.
+
+generators.py: upgrade_protein_generation() now routes SerpentRod v5 as primary engine.
+  Reports Frobenius approximation level (primitive coverage %) in output notes.
+  PDB labeled "SerpentRod-informed" when SR bridge active.
+  frobenius_level key added to result dict: "exact" or "approximate".
+
+paper/designing_homo_sapiens.md §4.3: AlphaFold/ESMFold removed. Replaced with:
+  - SerpentRod v5 as the native folding derivation engine
+  - 5-layer bridge description (grammar → B4 → Ramachandran → backbone → contacts)
+  - "Bringing to exactness" framing for the remaining gap
+  - L4 table: PDB action now reads "SerpentRod-derived 3D structure — verify Frobenius closure"
+
+---
+
+IMASM_ARRANGEMENT_CLASSES.md: taxonomy of 12 fundamental IMASM arrangement classes
+
+Analysis of all 12 combinatorial arrangements of the 12 IMASM tokens
+(VINIT, TANCH, AFWD, AREV, CLINK, IMSCRIB, FSPLIT, FFUSE, EVALT, EVALF, ENGAGR, IFIX).
+Organized into 4 algebraic families (Logical/Frobenius/Dialetheia/Linear) with
+family signatures, tier assignments, cyclic period analysis, and semantic readings.
+
+Key findings:
+  - 12 tokens → 12 arrangement classes (same cardinality as 12 IG primitives)
+  - Tier distribution: O₀=4, O₁=4, O₂=3, O_inf=1 (Dual Bootstrap only)
+  - Only 2 self-referential: Dialetheic Bootstrap + Dual Bootstrap (both O₂+)
+  - Dual Bootstrap (Class IV) has INVERTED Frobenius: FFUSE→FSPLIT
+  - Full Dialetheia triplet (EVALT+EVALF+ENGAGR) in only 3/12 classes
+  - IFIX is most common token (21.7%); CLINK is rarest (3.3%)
+
+Notation corrections applied: φ̂→⊙, D→Ð, T→Þ (topology)
+
+---
+
+paper/: "Designing Homo sapiens from First Principles" — full research paper + refs
+
+paper/designing_homo_sapiens.md — 9-section paper, zenodo_draft.py format, 5 figures:
+  §1 Introduction: derivation vs. description; two questions answered
+  §2 The Imscribing Grammar: FOUR-enriched SMC, Frobenius structure, 12 generators,
+     Crystal of Types 3³×4⁵×5⁴=17,280,000, ZFC_fe, tier rules R1-R5
+  §3 CLINK Hierarchy: 9-layer chain with tuples, Great Synthesis theorem, 3 ZFC_fe
+     promotions, mitosis exceptional point ⊙=𐑻
+  §4 Human-Specific Design: layer-by-layer (L0-2 universal; L3 20 biomolecules;
+     L4 proteome + SerpentRod; L5 GRCh38 + B4 codon table; L6 CDK cascade;
+     L7 Clevers organoid; L8 physiological setpoints as Frobenius fixed points)
+  §5 Verification: d(organism,ZFC_fe)=1.26, d(human,mammal)=0.0, 3 open derivations
+  §6 Actionable Outputs: 33-file table with wet-lab actions
+  §7 Advanced Components: ouroboric telomere ⟨𐑦𐑸𐑾𐑬𐑐𐑧𐑔𐑠⊙𐑖𐑳𐑴⟩ + detox gland v2
+     ⟨𐑼𐑶𐑾𐑬𐑞𐑧𐑲𐑠⊙𐑖𐑳𐑴⟩ (Axiom C corrected: Þ=𐑶 not 𐑸)
+  §8 Discussion: O_0 genome vs O_inf organism; fiber bundle individuation;
+     T=Work(T) cosmological time; the grammar is not a blueprint
+  §9 Conclusion: 5 key results + 3 open derivations
+paper/designing_homo_sapiens_refs.bib — 12 references
+
+Compile: python3 ~/imscribing_grammar/scripts/zenodo_draft.py paper/designing_homo_sapiens.md
+Alias: rb-paper
+
+generators.py: "human" organism_type — human branching in L3, L5, L6, L7, L8
+
+Key human-specific changes:
+  L3: 20 biomolecules (+ dopamine, serotonin, melatonin, cortisol, ATP, glucose, etc.)
+  L5: genome_size=3.2Gbp, chromosomes=23, gene_count=20391, reference=GRCh38/hg38;
+      codon_usage.csv = complete 64-codon table (B4-derived, not random);
+      growth_media = DMEM/F-12 + 10% FBS + L-Gln + NEAA
+  L6: G1=11h S=8h G2=4h M=1h; CDK4/6-CycD→CDK2-CycE→CDK2-CycA→CDK1-CycB;
+      exceptional_point_mechanism = Aurora-B; Hayflick limit = 50; telomere_repeat = TTAGGG
+  L7: organ masses (brain 1.4kg, liver 1.5kg, heart 0.3kg, skin 4.5kg);
+      ECM: collagen I 58%, III 12%, IV 8% + fibronectin/laminin/elastin/hyaluronan;
+      organoid_protocol = Clevers human intestinal (Sato 2011, van de Wetering 2015)
+  L8: whole_genome_spec includes reference_assembly=GRCh38, repeat_content_pct=45;
+      physiological_params extended: VO2_max, lung_compliance, plasma_osmolarity,
+      hematocrit, serum_calcium, serum_sodium
+
+generate_human.py: entry point for Homo sapiens design package (organism_human/)
+Axiom C fix: gland_specification_v2.json/manifest_v2.json/generate_v2.py: Þ=𐑸→𐑶
+.bashrc: rb-human, rb-human-minimal, rb-paper, rb-actionable-human aliases
+
+Verification:
+  Files: 33 | Frobenius: True
+  Codon rows: 65 (header + 64) | Reference: GRCh38/hg38 | Gene count: 20391
+  G1: 11h | CDK cascade: 4-stage | Exceptional point: Aurora-B
+  Molecule lines: 21 | Axiom C: fixed
+
+---
+
 clink/datasets/gland_designs/: Synthetic Detox Gland v2.0 — zero-incision injectable
 
 v1→v2 key change: surgical implant (laparoscopic, 28-day ex-vivo, ICU recovery)

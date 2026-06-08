@@ -1,0 +1,72 @@
+{
+  "organism": "Homo sapiens",
+  "chromosomes": 46,
+  "ploidy": "diploid (2n)",
+  "karyotype": "46,XX or 46,XY",
+  "phases": {
+    "G1": {
+      "hours": 11,
+      "events": "cell growth, protein synthesis, restriction point (R)"
+    },
+    "S": {
+      "hours": 8,
+      "events": "DNA replication, histone synthesis, centrosome duplication"
+    },
+    "G2": {
+      "hours": 4,
+      "events": "organelle duplication, DNA damage checkpoint, pre-MPF assembly"
+    },
+    "M": {
+      "hours": 1,
+      "subphases": {
+        "prophase": "chromosome condensation, spindle formation",
+        "prometaphase": "nuclear envelope breakdown, kinetochore attachment",
+        "metaphase": "chromosome alignment at equator",
+        "anaphase": "sister chromatid separation",
+        "telophase": "nuclear envelope reformation, chromosome decondensation"
+      }
+    }
+  },
+  "total_cycle_hours": 24,
+  "cdk_cascade": {
+    "G1": "CDK4/6-Cyclin D (Rb phosphorylation)",
+    "G1/S": "CDK2-Cyclin E (initiation of replication)",
+    "S": "CDK2-Cyclin A (replication elongation)",
+    "G2/M": "CDK1-Cyclin B (MPF \u2014 mitosis promoting factor)"
+  },
+  "checkpoints": {
+    "G1/S (Restriction Point)": "pRb-E2F; p53-p21; DNA-damage-sensed",
+    "G2/M": "ATR-Chk1; Wee1-Myt1 (inhibitory phosphorylation of CDK1)",
+    "Spindle Assembly (SAC)": "MAD2-BUBR1-BUB3; Aurora B spatial gradient",
+    "exceptional_point_mechanism": "Aurora-B kinase phosphorylation gradient at inner centromere \u2014 \u2299=\ud801\udc7b coupling"
+  },
+  "telomere": {
+    "repeat_sequence": "TTAGGG",
+    "initial_length_bp": 10000,
+    "shortening_per_division_bp": 50,
+    "hayflick_limit": 50,
+    "telomerase": {
+      "active_in": [
+        "germline",
+        "stem_cells",
+        ">85% cancers"
+      ],
+      "inactive_in": "somatic_cells"
+    },
+    "shelterin_complex": [
+      "TRF1",
+      "TRF2",
+      "POT1",
+      "TPP1",
+      "TIN2",
+      "RAP1"
+    ]
+  },
+  "spindle_checkpoint_active": true,
+  "reference_cell_lines": [
+    "HeLa (cancer, ~24h)",
+    "RPE1 (normal, ~24h)",
+    "HCT116 (cancer, ~18h)",
+    "IMR90 (fibroblast, ~36h)"
+  ]
+}

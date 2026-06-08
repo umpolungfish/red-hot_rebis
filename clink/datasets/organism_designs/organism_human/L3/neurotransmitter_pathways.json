@@ -1,0 +1,52 @@
+{
+  "catecholamines": {
+    "tyrosine": {
+      "enzyme": "tyrosine_hydroxylase",
+      "product": "L-DOPA",
+      "cofactor": "BH4"
+    },
+    "L-DOPA": {
+      "enzyme": "AADC",
+      "product": "dopamine",
+      "cofactor": "PLP"
+    },
+    "dopamine": {
+      "enzyme": "DBH",
+      "product": "norepinephrine",
+      "cofactor": "vitamin C"
+    },
+    "norepinephrine": {
+      "enzyme": "PNMT",
+      "product": "epinephrine",
+      "cofactor": "SAM"
+    }
+  },
+  "serotonergic": {
+    "tryptophan": {
+      "enzyme": "TPH",
+      "product": "5-HTP",
+      "cofactor": "BH4"
+    },
+    "5-HTP": {
+      "enzyme": "AADC",
+      "product": "serotonin",
+      "cofactor": "PLP"
+    },
+    "serotonin": {
+      "enzyme": "AANAT\u2192HIOMT",
+      "product": "melatonin",
+      "organ": "pineal"
+    }
+  },
+  "cholinergic": {
+    "acetyl-CoA + choline": {
+      "enzyme": "ChAT",
+      "product": "acetylcholine"
+    },
+    "acetylcholine": {
+      "enzyme": "AChE",
+      "product": "acetate + choline",
+      "location": "synaptic_cleft"
+    }
+  }
+}

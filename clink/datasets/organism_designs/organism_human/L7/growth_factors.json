@@ -1,0 +1,71 @@
+{
+  "tissue_culture_cocktail": {
+    "EGF": {
+      "concentration_ng_per_mL": 50,
+      "schedule": "every 48h",
+      "target": "epithelial proliferation"
+    },
+    "FGF2": {
+      "concentration_ng_per_mL": 20,
+      "schedule": "every 48h",
+      "target": "mesenchymal/angiogenesis"
+    },
+    "FGF7/KGF": {
+      "concentration_ng_per_mL": 10,
+      "schedule": "every 48h",
+      "target": "epithelial (keratinocyte)"
+    },
+    "VEGF": {
+      "concentration_ng_per_mL": 10,
+      "schedule": "every 72h",
+      "target": "angiogenesis"
+    },
+    "TGF-\u03b21": {
+      "concentration_ng_per_mL": 5,
+      "schedule": "every 72h",
+      "target": "ECM production/fibrosis"
+    },
+    "BMP4": {
+      "concentration_ng_per_mL": 50,
+      "schedule": "days 0-3",
+      "target": "germ layer specification"
+    },
+    "Wnt3a": {
+      "concentration_ng_per_mL": 100,
+      "schedule": "days 0-5",
+      "target": "stem cell maintenance"
+    },
+    "R-Spondin-1": {
+      "concentration_ng_per_mL": 500,
+      "schedule": "every 48h",
+      "target": "Wnt pathway potentiation"
+    },
+    "Noggin": {
+      "concentration_ng_per_mL": 100,
+      "schedule": "every 48h",
+      "target": "BMP inhibition"
+    }
+  },
+  "small_molecule_modulators": {
+    "Y-27632": {
+      "concentration_uM": 10,
+      "target": "ROCK inhibition (anti-apoptosis, single-cell survival)"
+    },
+    "CHIR99021": {
+      "concentration_uM": 3,
+      "target": "GSK3\u03b2 inhibition (Wnt activation)"
+    },
+    "A83-01": {
+      "concentration_uM": 1,
+      "target": "TGF-\u03b2 receptor inhibition"
+    },
+    "DAPT": {
+      "concentration_uM": 10,
+      "target": "\u03b3-secretase inhibition (Notch blockade)"
+    },
+    "SB431542": {
+      "concentration_uM": 10,
+      "target": "TGF-\u03b2/Activin/Nodal receptor inhibition"
+    }
+  }
+}

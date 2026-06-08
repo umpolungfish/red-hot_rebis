@@ -1,0 +1,52 @@
+{
+  "layer": "L3 — Molecular Design",
+  "pharmacophore_hint": "Salvinorin-like with local-only scope — κ-opioid selective with no downstream cascade",
+  "structural_constraints": {
+    "flexibility": "flexible (field-theoretic)",
+    "stereochemistry": "1 stereocenter",
+    "topology": "no topological constraint",
+    "symmetry": "C2-symmetric preferred",
+    "quantum_character": "thermal (dynamic ensemble)"
+  },
+  "bond_formation_strategy": {
+    "composition_mode": "branching disconnection (alternate paths)",
+    "preferred_disconnections": [
+      "bidirectional coupling — two reactive handles needed"
+    ]
+  },
+  "predicted_scaffold": "Flexible chain with branching — phenethylamine scaffold",
+  "predicted_mass_range": "300–450 Da",
+  "predicted_logP": 2.5,
+  "predicted_HBD": 2,
+  "predicted_HBA": 3,
+  "predicted_rotatable_bonds": 6,
+  "ch3mpiler_retrosynthetic": {
+    "target": "Retiarius (Local-Net Trap)",
+    "target_type": "⟨𐑼 · 𐑡 · 𐑾 · 𐑿 · 𐑞 · 𐑺 · 𐑚 · 𐑜 · 𐑮 · 𐑒 · 𐑕 · 𐑷⟩",
+    "strategy": {
+      "composition_mode": "branching disconnection (alternate paths)",
+      "preferred_disconnections": [
+        "bidirectional coupling — two reactive handles needed"
+      ]
+    },
+    "starting_materials": [
+      "Phenylalanine or tyrosine derivative"
+    ],
+    "key_bond_formations": [
+      {
+        "type": "Alternate-path disconnection",
+        "description": "Two viable routes with different protecting group strategies"
+      }
+    ],
+    "protecting_groups": [
+      "Same protecting group on both handles (bidirectional)"
+    ],
+    "estimated_yield_range": "50–70%",
+    "critical_step": "Final coupling step"
+  },
+  "synthesis_feasibility": {
+    "overall_assessment": "Standard medicinal chemistry",
+    "estimated_steps": 6,
+    "key_challenges": []
+  }
+}

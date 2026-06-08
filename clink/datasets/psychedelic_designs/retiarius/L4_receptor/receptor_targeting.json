@@ -1,0 +1,39 @@
+{
+  "layer": "L4 — Receptor Targeting",
+  "primary_targets": [
+    {
+      "receptor": "KOR (κ-opioid)",
+      "predicted_action": "modulator",
+      "directional_bias": "balanced Gq/Gi (bidirectional access)"
+    },
+    {
+      "receptor": "CB1 (peripheral only)",
+      "predicted_action": "modulator",
+      "directional_bias": "balanced Gq/Gi (bidirectional access)"
+    }
+  ],
+  "binding_mode": {
+    "pocket_accommodation": "orthosteric only",
+    "critical_interaction": "complex-plane binding kinetics"
+  },
+  "functional_selectivity": {
+    "mechanism": "kinetic selectivity"
+  },
+  "predicted_Ki_ranges": {
+    "primary": "1–10 nM",
+    "other": ">1 µM (highly selective)"
+  },
+  "predicted_efficacy": {
+    "5-HT2A": "40–70% (thermal ensemble)",
+    "Gq": "moderate",
+    "β-arrestin": "low"
+  },
+  "off_target_risk": {
+    "risk_level": "high",
+    "concern": "many identical components → polypharmacology"
+  },
+  "receptor_dynamics": {
+    "residence_time": "1–4 hours",
+    "desensitization": "standard (tachyphylaxis after repeated dosing)"
+  }
+}

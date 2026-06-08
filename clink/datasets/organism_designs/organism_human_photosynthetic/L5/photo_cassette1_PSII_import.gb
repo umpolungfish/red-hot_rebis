@@ -1,0 +1,111 @@
+LOCUS       pAAV_PHOTOSYN_CASSETTE_1   15240 bp    DNA   circular  07-JUN-2026
+DEFINITION  AAV2/9-skin-tropic photosynthetic gene cassette 1 of 3:
+            TOC75 + TIC110 (import machinery, expressed first)
+            + psbA(D1-CTP) + psbD(D2-CTP) + psbO(MSP-HGT)
+            IG type Ω=𐑰 Φ=𐑨 Σ=𐑓 Ħ=𐑱  ZFC_fe  μ∘δ=id
+ACCESSION   pAAV_PHOTO_v1_cassette1
+SOURCE      synthetic construct
+FEATURES             Location/Qualifiers
+     rep_origin      1..589
+                     /label="f1_ori"
+     misc_feature    590..720
+                     /label="AAV2_ITR_5prime"
+     promoter        721..1500
+                     /label="CMV_promoter"
+                     /note="drives TOC75 — expressed first; enables all other imports"
+     CDS             1501..3756
+                     /label="TOC75_CDS"
+                     /gene="TOC75"
+                     /protein_id="Q9LKX3"
+                     /note="Outer envelope import channel; beta-barrel; self-targeting; priority 1"
+     promoter        3757..4390
+                     /label="EF1a_promoter"
+                     /note="drives TIC110"
+     CDS             4391..7471
+                     /label="TIC110_CDS"
+                     /gene="TIC110"
+                     /protein_id="Q9LD90"
+                     /note="Inner envelope import channel; stroma-facing; priority 2"
+     promoter        7472..8055
+                     /label="Turing_pattern_promoter"
+                     /note="YABBY1-responsive; active only in Fibonacci-pattern cells"
+     CDS             8056..9114
+                     /label="psbA_nuclear_CDS"
+                     /gene="psbA"
+                     /protein_id="P56767"
+                     /note="D1 with N-terminal CTP (45aa); chloroplast-targeted"
+     CDS             9115..10164
+                     /label="psbD_nuclear_CDS"
+                     /gene="psbD"
+                     /protein_id="P56771"
+                     /note="D2 with CTP; assembles with D1"
+     CDS             10165..11163
+                     /label="psbO_HGT_CDS"
+                     /gene="psbO"
+                     /protein_id="Q9SHE7"
+                     /note="Vaucheria psbO (Elysia HGT gene); MSP; bipartite signal; CRITICAL"
+     misc_feature    11164..11330
+                     /label="WPRE"
+     polyA_signal    11331..11570
+                     /label="bGH_polyA"
+     misc_feature    11571..11630
+                     /label="AAV2_ITR_3prime"
+     rep_origin      11631..12490
+                     /label="pUC_ori"
+     CDS             12491..13351
+                     /label="AmpR"
+     misc_feature    13352..15240
+                     /label="AAV2_packaging"
+ORIGIN
+//
+
+LOCUS       pLV_PHOTO_CASSETTE_2    11820 bp    DNA   circular  07-JUN-2026
+DEFINITION  Lentiviral photosynthetic cassette 2 of 3:
+            CHLH + CAO (chlorophyll biosynthesis)
+            + rbcL-CTP + rbcS-CTP (RuBisCO, co-expressed)
+            + YABBY1-VP16 (Turing pattern activator)
+            IG type Φ=𐑨 Σ=𐑓  ZFC_fe  μ∘δ=id
+ACCESSION   pLV_PHOTO_v1_cassette2
+SOURCE      synthetic construct — VSV-G pseudotyped lentivirus
+FEATURES             Location/Qualifiers
+     LTR             1..634
+                     /label="5prime_LTR"
+     misc_feature    635..820
+                     /label="Psi_packaging"
+     promoter        821..1454
+                     /label="CMV_promoter"
+                     /note="drives CHLH — Mg-chelatase, rate-limiting step chlorophyll synth"
+     CDS             1455..5597
+                     /label="CHLH_CDS"
+                     /gene="CHLH"
+                     /protein_id="O49675"
+                     /note="Mg-chelatase H subunit + CTP; 1381aa; rate-limiting chlorophyll"
+     promoter        5598..6181
+                     /label="EF1a_promoter"
+                     /note="drives CAO"
+     CDS             6182..7777
+                     /label="CAO_CDS"
+                     /gene="CAO"
+                     /protein_id="Q9LZJ3"
+                     /note="Chlorophyll a→b oxygenase + CTP; LHCII stability"
+     promoter        7778..8311
+                     /label="Turing_pattern_promoter"
+     CDS             8312..9742
+                     /label="rbcL_nuclear_CDS"
+                     /gene="rbcL"
+                     /protein_id="P00877"
+                     /note="RuBisCO large subunit + CTP; co-expressed with rbcS"
+     CDS             9743..10282
+                     /label="rbcS_CDS"
+                     /gene="rbcS"
+                     /protein_id="P00870"
+                     /note="RuBisCO small subunit + CTP; assembles 8L8S"
+     CDS             10283..10888
+                     /label="YABBY1_VP16_CDS"
+                     /gene="YABBY1"
+                     /protein_id="Q9C9H0"
+                     /note="Synthetic TF; activates Turing-pattern chloroplast gene expression"
+     LTR             10889..11820
+                     /label="3prime_LTR_self-inactivating"
+ORIGIN
+//

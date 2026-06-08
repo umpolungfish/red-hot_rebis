@@ -1,0 +1,53 @@
+{
+  "layer": "L3 — Molecular Design",
+  "pharmacophore_hint": "Phenethylamine-like with directional vector — N-benzylated for adjoint coupling",
+  "structural_constraints": {
+    "flexibility": "rigid (self-referential scaffold)",
+    "stereochemistry": "2+ stereocenters",
+    "topology": "Z2-symmetric dimer",
+    "symmetry": "one Z2 axis",
+    "quantum_character": "quantum-coherent (H-bond network)"
+  },
+  "bond_formation_strategy": {
+    "composition_mode": "sequential bond construction (linear synthesis)",
+    "preferred_disconnections": [
+      "adjoint coupling — one-way handle, protect other side"
+    ]
+  },
+  "predicted_scaffold": "Bridged bicyclic with crossing point — tropane-like or morphinan-like",
+  "predicted_mass_range": "350–550 Da",
+  "predicted_logP": 3.5,
+  "predicted_HBD": 4,
+  "predicted_HBA": 5,
+  "predicted_rotatable_bonds": 3,
+  "ch3mpiler_retrosynthetic": {
+    "target": "Apertix (Adjoint Corridor)",
+    "target_type": "⟨𐑦 · 𐑥 · 𐑽 · 𐑬 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑖 · 𐑳 · 𐑴⟩",
+    "strategy": {
+      "composition_mode": "sequential bond construction (linear synthesis)",
+      "preferred_disconnections": [
+        "adjoint coupling — one-way handle, protect other side"
+      ]
+    },
+    "starting_materials": [
+      "L-tryptophan (for indole core)",
+      "Chiral pool starting material (terpene or amino acid)"
+    ],
+    "key_bond_formations": [
+      {
+        "type": "Sequential construction",
+        "description": "Linear synthesis with ordered bond formation"
+      }
+    ],
+    "protecting_groups": [
+      "Orthogonal protection: one amine as Boc, other as Fmoc (adjoint requires directional control)"
+    ],
+    "estimated_yield_range": "40–60%",
+    "critical_step": "Directional N-benzylation — must avoid bis-alkylation"
+  },
+  "synthesis_feasibility": {
+    "overall_assessment": "Standard medicinal chemistry",
+    "estimated_steps": 6,
+    "key_challenges": []
+  }
+}

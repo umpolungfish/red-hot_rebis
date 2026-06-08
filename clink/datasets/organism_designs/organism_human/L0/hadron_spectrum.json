@@ -1,0 +1,42 @@
+{
+  "mesons": {
+    "\u03c00": "134.98 MeV",
+    "\u03c0\u00b1": "139.57 MeV",
+    "K\u00b1": "493.68 MeV",
+    "K0": "497.61 MeV",
+    "\u03b7": "547.86 MeV",
+    "\u03b7\u2032": "957.78 MeV",
+    "\u03c1": "775.26 MeV",
+    "\u03c9": "782.66 MeV",
+    "\u03c6": "1019.46 MeV",
+    "J/\u03c8": "3096.90 MeV",
+    "\u03d2(1S)": "9460.30 MeV"
+  },
+  "baryons": {
+    "p": "938.272 MeV",
+    "n": "939.565 MeV",
+    "\u039b": "1115.68 MeV",
+    "\u03a3+": "1189.37 MeV",
+    "\u03a30": "1192.64 MeV",
+    "\u03a3\u2212": "1197.45 MeV",
+    "\u039e0": "1314.86 MeV",
+    "\u039e\u2212": "1321.71 MeV",
+    "\u0394++": "1232 MeV",
+    "\u03a9\u2212": "1672.45 MeV"
+  },
+  "quark_content_map": {
+    "\u03c0+": "u d\u0304",
+    "K+": "u s\u0304",
+    "p": "u u d",
+    "n": "u d d",
+    "\u039b": "u d s",
+    "J/\u03c8": "c c\u0304"
+  },
+  "Belnap5_interpretation": {
+    "B (True)": "u quark \u2014 most stable, lightest",
+    "T (False)": "d quark \u2014 slightly heavier",
+    "F (Both)": "s quark \u2014 strangeness superposition",
+    "N (Neither)": "c/b/t quarks \u2014 heavy, short-lived",
+    "X (Frustrated)": "top quark \u2014 decays before hadronization"
+  }
+}

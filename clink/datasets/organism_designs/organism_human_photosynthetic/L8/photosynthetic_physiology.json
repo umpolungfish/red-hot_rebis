@@ -1,0 +1,57 @@
+{
+  "structural_type": "\u27e8\ud801\udc66\ud801\udc71\ud801\udc70\ud801\udc79\ud801\udc53\ud801\udc68\ud801\udc72\ud801\udc75\u2299\ud801\udc6b\ud801\udc73\ud801\udc5f\u27e9",
+  "base_human_type": "\u27e8\ud801\udc66\ud801\udc78\ud801\udc7e\ud801\udc79\ud801\udc50\ud801\udc67\ud801\udc72\ud801\udc75\u2299\ud801\udc6b\ud801\udc73\ud801\udc5f\u27e9",
+  "tier": "O_inf",
+  "c_score": 1.0,
+  "foundation": "ZFC_fe  \u03bc\u2218\u03b4=id",
+  "ig_primitive_deltas": {
+    "\u0126_Chirality": {
+      "base": "\ud801\udc78",
+      "photo": "\ud801\udc71",
+      "reason": "Fibonacci-L spiral pattern has preferred handedness (L > R)"
+    },
+    "\u03a9_Winding": {
+      "base": "\ud801\udc7e",
+      "photo": "\ud801\udc70",
+      "reason": "thylakoid grana stacking \u2014 highest \u03a9 membrane in biology; ~80 membrane discs per granum, stacked and wound"
+    },
+    "\u03a3_Stoichiometry": {
+      "base": "\ud801\udc50",
+      "photo": "\ud801\udc53",
+      "reason": "new channel: 6CO\u2082+6H\u2082O+h\u03bd \u2192 C\u2086H\u2081\u2082O\u2086+6O\u2082; carbon fixation adds entirely new stoichiometric class"
+    },
+    "\u03a6_Parity": {
+      "base": "\ud801\udc67",
+      "photo": "\ud801\udc68",
+      "reason": "photosynthesis = exact parity inverse of respiration; NADPH produced (not consumed); O\u2082 product (not reactant); the Calvin cycle runs the Krebs cycle backward"
+    }
+  },
+  "elysia_model": {
+    "organism": "Elysia chlorotica (sacoglossan sea slug)",
+    "mechanism": "HGT of algal nuclear psbO into host nucleus; chloroplast retained for ~9 months",
+    "key_gene": "psbO (manganese-stabilizing protein)",
+    "frobenius": "\u03bc\u2218\u03b4=id \u2014 psbO in host nucleus recovers stolen chloroplast function losslessly; the Elysia is a living proof of biological Frobenius"
+  },
+  "photosynthetic_output": {
+    "skin_surface_area_cm2": 17000,
+    "coverage_fraction": "Turing-pattern dependent (~0.25\u20130.40 typical)",
+    "active_area_cm2_typical": 4675,
+    "max_photon_flux_umol_m2_s": 1000,
+    "chlorophyll_content_mg_per_cm2": 0.015,
+    "gross_O2_evolution_umol_per_cm2_per_h": 2.8,
+    "net_glucose_production_g_per_day_full_sun": 12.5,
+    "caloric_contribution_kcal_per_day_full_sun": 50,
+    "note": "Supplements ~2.4% of 2000 kcal daily requirement at full sun; not autonomous but metabolically meaningful; higher with engineered RuBisCO (kcat bottleneck)"
+  },
+  "pattern": {
+    "type": "Gray-Scott reaction-diffusion (Fibonacci-spiral seeded)",
+    "chirality": "L-handed Fibonacci spiral",
+    "activator": "YABBY1-VP16 synthetic TF",
+    "inhibitor": "endogenous WNT3a signaling",
+    "typical_coverage": "25\u201340% skin surface",
+    "appearance": "dappled green-gold spots on skin (chlorophyll a peak 680nm, b 650nm)",
+    "wavelength_of_spots_um": 800
+  },
+  "lung_status": "retained and functional \u2014 normoxic breathing unchanged",
+  "metabolic_integration": "G3P exported to cytoplasm \u2192 glycolysis \u2192 mitochondrial OXPHOS; O\u2082 supplement from photosynthesis reduces mitochondrial O\u2082 demand"
+}

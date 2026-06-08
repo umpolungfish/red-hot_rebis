@@ -1,0 +1,20 @@
+{
+  "description": "Belnap4 logic: B=True, T=False, F=Both(contradiction), N=Neither(unknown)",
+  "conjunction_AND": {
+    "B\u2227B=B": "certain truth",
+    "T\u2227T=T": "certain falsehood",
+    "F\u2227F=F": "contradiction persists",
+    "N\u2227N=N": "ignorance persists",
+    "B\u2227T=F": "truth and falsehood contradict",
+    "B\u2227F=F": "truth meets both \u2192 contradiction",
+    "B\u2227N=N": "truth meets unknown \u2192 unknown",
+    "T\u2227F=T": "falsehood meets both \u2192 false",
+    "T\u2227N=T": "falsehood meets unknown \u2192 false",
+    "F\u2227N=F": "both meets unknown \u2192 both"
+  },
+  "disjunction_OR": {
+    "B\u2228T=B": "truth or falsehood = truth",
+    "B\u2228F=B": "truth or both = truth",
+    "T\u2228F=F": "false or both = both"
+  }
+}

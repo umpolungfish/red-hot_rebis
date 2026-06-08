@@ -1,0 +1,38 @@
+{
+  "glycolysis": {
+    "reactants": "Glucose + 2NAD\u207a + 2ADP + 2Pi",
+    "products": "2Pyruvate + 2NADH + 2ATP + 2H\u207a + 2H\u2082O",
+    "deltaG_kJ": -74.5,
+    "location": "cytosol"
+  },
+  "tca_cycle": {
+    "reactants": "Acetyl-CoA + 3NAD\u207a + FAD + GDP + Pi + 2H\u2082O",
+    "products": "2CO\u2082 + 3NADH + FADH\u2082 + GTP + 3H\u207a + CoA",
+    "deltaG_kJ": -40.0,
+    "location": "mitochondrial_matrix"
+  },
+  "oxidative_phosphorylation": {
+    "reactants": "NADH + H\u207a + \u00bdO\u2082 + ADP + Pi",
+    "products": "NAD\u207a + H\u2082O + ATP",
+    "deltaG_kJ": -220,
+    "location": "inner_mitochondrial_membrane"
+  },
+  "gluconeogenesis": {
+    "reactants": "2Pyruvate + 4ATP + 2GTP + 2NADH + 2H\u207a + 6H\u2082O",
+    "products": "Glucose + 4ADP + 2GDP + 2NAD\u207a + 6Pi",
+    "deltaG_kJ": -38,
+    "location": "cytosol/mitochondria"
+  },
+  "urea_cycle": {
+    "reactants": "2NH\u2083 + CO\u2082 + 3ATP",
+    "products": "Urea + 2ADP + AMP + 2Pi + PPi + H\u2082O",
+    "deltaG_kJ": -46,
+    "location": "liver_mitochondria_cytosol"
+  },
+  "fatty_acid_oxidation": {
+    "reactants": "Palmitoyl-CoA + 7CoA + 7FAD + 7NAD\u207a + 7H\u2082O",
+    "products": "8Acetyl-CoA + 7FADH\u2082 + 7NADH + 7H\u207a",
+    "deltaG_kJ": -87,
+    "location": "mitochondrial_matrix"
+  }
+}

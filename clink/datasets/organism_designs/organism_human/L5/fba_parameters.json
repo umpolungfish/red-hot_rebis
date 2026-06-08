@@ -1,0 +1,26 @@
+{
+  "solver": "glpk",
+  "objective": "maximize biomass",
+  "constraints": {
+    "glucose_uptake_mmol_per_gDCW_h": {
+      "lower_bound": -10,
+      "upper_bound": 0
+    },
+    "oxygen_uptake_mmol_per_gDCW_h": {
+      "lower_bound": -20,
+      "upper_bound": 0
+    },
+    "atp_maintenance": 0.7
+  },
+  "biomass_reaction": "BIOMASS_human_v1",
+  "growth_rate_predicted_per_h": 0.028,
+  "shadow_prices": {
+    "glucose": 0.045,
+    "oxygen": 0.082
+  },
+  "essential_metabolites": [
+    "glucose",
+    "glutamine",
+    "O2"
+  ]
+}

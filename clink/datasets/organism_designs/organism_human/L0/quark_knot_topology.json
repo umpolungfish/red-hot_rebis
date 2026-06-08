@@ -1,0 +1,19 @@
+{
+  "Belnap5_lattice": "5-valued: B, T, F, N, X",
+  "color_confinement": "All observable states are Belnap5-B (color singlets)",
+  "knot_invariants": {
+    "proton": {
+      "jones": "V(q) = q\u00b2 + q\u207b\u00b2",
+      "writhe": 0,
+      "color_flux": "RGB\u2192white"
+    },
+    "neutron": {
+      "jones": "V(q) = q\u00b2 + q\u207b\u00b2",
+      "writhe": 0,
+      "color_flux": "RGB\u2192white"
+    }
+  },
+  "frustration_mechanism": "X-value (top) prevents 5-quark bound states",
+  "confinement_scale_MeV": 217,
+  "chiral_condensate_MeV3": "(250)\u00b3"
+}

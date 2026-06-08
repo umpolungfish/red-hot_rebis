@@ -1,0 +1,49 @@
+{
+  "organism_type": "human",
+  "generation_mode": "actionable",
+  "modules_used": {
+    "gene_designer": true,
+    "protein_structure": true,
+    "metabolic_model": true,
+    "plasmid_designer": true
+  },
+  "layers": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "total_files": 33,
+  "total_bytes": 76201,
+  "output_directory": "/home/mrnob0dy666/red-hot_rebis/clink/datasets/organism_designs/organism_human_photosynthetic/_base_human",
+  "generation_time_seconds": 0.13,
+  "actionable_outputs": [
+    "Codon-optimized coding sequences (real, not random)",
+    "Protein PDB with secondary structure (not template)",
+    "SBML metabolic model with stoichiometric matrix",
+    "GenBank plasmid with full feature annotations",
+    "GFF genome annotation",
+    "SBOL synthetic biology construct",
+    "Gibson assembly protocol",
+    "Growth media formulation",
+    "Physiology and homeostasis parameters"
+  ],
+  "what_to_do_with_outputs": {
+    "genome.fasta": "Order DNA synthesis from Twist/IDT/GenScript",
+    "plasmid.gb": "Load into Benchling/SnapGene for construct design",
+    "protein_coords.pdb": "View in PyMOL/ChimeraX",
+    "metabolic_model.xml": "Load into COBRApy for FBA",
+    "construct.sbol": "Exchange with synthetic biology repositories",
+    "growth_media.txt": "Prepare media per formulation"
+  },
+  "advanced_components": {
+    "ouroboric_telomere": "clink/datasets/../biology/ouroboric_telomere.py \u2014 replicative senescence resolution",
+    "synthetic_detox_gland_v2": "clink/datasets/gland_designs/gland_v2/ \u2014 injectable toxin neutralization",
+    "structural_type": "\u27e8\ud801\udc66\ud801\udc78\ud801\udc7e\ud801\udc79\ud801\udc50\ud801\udc67\ud801\udc72\ud801\udc75\u2299\ud801\udc6b\ud801\udc73\ud801\udc5f\u27e9 O_inf C=1.0"
+  }
+}

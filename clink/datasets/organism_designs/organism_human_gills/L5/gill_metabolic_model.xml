@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version2/core" level="3" version="2">
+  <model id="homo_sapiens_gill_metabolism" name="Human Gill Ion/Gas Exchange">
+    <!-- IG type: Ç=𐑴 (active transport kinetics)  Σ=𐑒 (dissolved O2)  ZFC_fe -->
+    <listOfCompartments>
+      <compartment id="water"         name="ambient water"          size="1e6"/>
+      <compartment id="ionocyte"      name="gill ionocyte"          size="1e-12"/>
+      <compartment id="blood"         name="lamellar blood space"   size="1e-11"/>
+      <compartment id="cytoplasm"     name="ionocyte cytoplasm"     size="8e-13"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species id="CO2_w"   compartment="water"    initialConcentration="0.001" name="CO2 water"/>
+      <species id="O2_w"    compartment="water"    initialConcentration="0.27"  name="O2 dissolved"/>
+      <species id="CO2_b"   compartment="blood"    initialConcentration="0.05"  name="CO2 blood"/>
+      <species id="O2_b"    compartment="blood"    initialConcentration="0.01"  name="O2 blood"/>
+      <species id="H2CO3"   compartment="cytoplasm" initialConcentration="0.001"/>
+      <species id="HCO3"    compartment="cytoplasm" initialConcentration="24.0"/>
+      <species id="Hp"      compartment="cytoplasm" initialConcentration="4e-5"/>
+      <species id="Na_w"    compartment="water"    initialConcentration="0.1"   name="Na+ water"/>
+      <species id="Na_ic"   compartment="ionocyte" initialConcentration="12.0"  name="Na+ intracellular"/>
+      <species id="Na_b"    compartment="blood"    initialConcentration="145.0" name="Na+ blood"/>
+      <species id="K_ic"    compartment="ionocyte" initialConcentration="140.0"/>
+      <species id="K_b"     compartment="blood"    initialConcentration="4.5"/>
+      <species id="ATP"     compartment="ionocyte" initialConcentration="5.0"/>
+      <species id="ADP"     compartment="ionocyte" initialConcentration="0.5"/>
+      <species id="Pi"      compartment="ionocyte" initialConcentration="2.0"/>
+    </listOfSpecies>
+    <listOfReactions>
+      <!-- CA2: CO2 hydration -->
+      <reaction id="CA2_hydration" reversible="true" name="CA2: CO2+H2O → H++HCO3-">
+        <listOfReactants><speciesReference species="CO2_b" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="HCO3"  stoichiometry="1"/>
+          <speciesReference species="Hp"    stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply><times/><cn>1.2e6</cn><ci>CO2_b</ci></apply>
+        </math></kineticLaw>
+      </reaction>
+      <!-- NKA: 3Na+(ic)→blood + 2K+(blood)→ic, ATP-driven -->
+      <reaction id="NKA_pump" reversible="false" name="Na/K-ATPase: 3Na out, 2K in">
+        <listOfReactants>
+          <speciesReference species="Na_ic" stoichiometry="3"/>
+          <speciesReference species="K_b"   stoichiometry="2"/>
+          <speciesReference species="ATP"   stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Na_b"  stoichiometry="3"/>
+          <speciesReference species="K_ic"  stoichiometry="2"/>
+          <speciesReference species="ADP"   stoichiometry="1"/>
+          <speciesReference species="Pi"    stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply><times/><cn>500.0</cn><ci>Na_ic</ci><ci>ATP</ci></apply>
+        </math></kineticLaw>
+      </reaction>
+      <!-- NHE3: Na+(water)→ic + H+(ic)→water -->
+      <reaction id="NHE3_exchange" reversible="false" name="NHE3: Na+ uptake / H+ secretion">
+        <listOfReactants>
+          <speciesReference species="Na_w" stoichiometry="1"/>
+          <speciesReference species="Hp"   stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Na_ic" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply><times/><cn>200.0</cn><ci>Na_w</ci></apply>
+        </math></kineticLaw>
+      </reaction>
+      <!-- Gas exchange: O2 from water to blood (counter-current) -->
+      <reaction id="O2_diffusion" reversible="true" name="O2 lamellar diffusion (counter-current)">
+        <listOfReactants><speciesReference species="O2_w" stoichiometry="1"/></listOfReactants>
+        <listOfProducts><speciesReference species="O2_b"  stoichiometry="1"/></listOfProducts>
+        <kineticLaw><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply><times/><cn>1.8e-3</cn>
+            <apply><minus/><ci>O2_w</ci><ci>O2_b</ci></apply>
+          </apply>
+        </math></kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

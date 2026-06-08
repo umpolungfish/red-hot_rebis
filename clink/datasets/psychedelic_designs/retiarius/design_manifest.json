@@ -1,0 +1,17 @@
+{
+  "design_name": "Retiarius (Local-Net Trap)",
+  "design_key": "retiarius",
+  "design_type": "navigatable_operable_psychedelic",
+  "author": "Lando⊗⊙perator",
+  "created": "2026-06-07T19:25:37.838471",
+  "structural_type": "⟨𐑼 · 𐑡 · 𐑾 · 𐑿 · 𐑞 · 𐑺 · 𐑚 · 𐑜 · 𐑮 · 𐑒 · 𐑕 · 𐑷⟩",
+  "tier": "O_1",
+  "c_score": 0.0,
+  "innovations": [
+    "First G=𐑚 (local only)",
+    "First K=𐑺 (MBL)",
+    "First F=𐑞 (thermal)"
+  ],
+  "description": "Nearest-neighbor precision; frozen disorder kinetics. 2/17 universes.",
+  "design_files": {}
+}

@@ -1,0 +1,163 @@
+{
+  "nervous": {
+    "mass_kg": 1.4,
+    "cell_count_neurons": 86000000000.0,
+    "cell_types": [
+      "neuron",
+      "astrocyte",
+      "oligodendrocyte",
+      "microglia",
+      "NG2_progenitor",
+      "ependymal"
+    ],
+    "subdivisions": [
+      "CNS (brain+spinal cord)",
+      "PNS (somatic+autonomic)"
+    ],
+    "neurotransmitters": [
+      "glutamate",
+      "GABA",
+      "dopamine",
+      "serotonin",
+      "acetylcholine",
+      "norepinephrine"
+    ],
+    "energy_demand": "20% of basal O2 consumption (brain alone)"
+  },
+  "circulatory": {
+    "heart_rate_bpm": 70,
+    "heart_mass_kg": 0.3,
+    "blood_volume_L": 5,
+    "vessel_length_km": 100000,
+    "cardiac_output_L_per_min": 5,
+    "conduction_system": [
+      "SA_node",
+      "AV_node",
+      "Bundle_of_His",
+      "Purkinje_fibers"
+    ]
+  },
+  "respiratory": {
+    "lung_capacity_L": 6,
+    "lung_mass_kg_pair": 1.1,
+    "surface_area_m2": 70,
+    "alveoli_count": 300000000.0,
+    "gas_exchange": "O2 in, CO2 out via diffusion across alveolar-capillary membrane (0.6 \u03bcm)"
+  },
+  "digestive": {
+    "length_m": 8,
+    "surface_area_m2": 200,
+    "liver_mass_kg": 1.5,
+    "pancreas_mass_kg": 0.1,
+    "sections": [
+      "esophagus",
+      "stomach",
+      "duodenum",
+      "jejunum",
+      "ileum",
+      "colon",
+      "rectum"
+    ],
+    "gut_microbiome": {
+      "species": ">1000",
+      "total_cells": "~3.8\u00d710\u00b9\u00b3",
+      "phyla_dominant": [
+        "Firmicutes",
+        "Bacteroidetes"
+      ]
+    }
+  },
+  "immune": {
+    "cell_count": 1800000000000.0,
+    "types": [
+      "T_cell",
+      "B_cell",
+      "NK",
+      "macrophage",
+      "neutrophil",
+      "dendritic",
+      "eosinophil",
+      "basophil",
+      "mast_cell"
+    ],
+    "organs": [
+      "bone_marrow",
+      "thymus",
+      "spleen",
+      "lymph_nodes",
+      "tonsils",
+      "Peyer_patches"
+    ]
+  },
+  "endocrine": {
+    "glands": [
+      "pituitary",
+      "thyroid",
+      "parathyroid",
+      "adrenal",
+      "pancreas",
+      "gonads",
+      "pineal"
+    ],
+    "hormone_count": ">50 distinct hormones",
+    "axes": [
+      "HPA (stress)",
+      "HPG (reproduction)",
+      "HPT (metabolism)",
+      "GH/IGF-1 (growth)"
+    ]
+  },
+  "musculoskeletal": {
+    "muscle_mass_kg": 30,
+    "bone_mass_kg": 10,
+    "cartilage_mass_kg": 1,
+    "muscle_types": [
+      "skeletal (striated, voluntary)",
+      "smooth (involuntary)",
+      "cardiac (striated, involuntary)"
+    ],
+    "bones_count": 206,
+    "joints": [
+      "fibrous",
+      "cartilaginous",
+      "synovial"
+    ]
+  },
+  "reproductive": {
+    "type": "sexual",
+    "chromosomes": "XY (male) or XX (female)",
+    "gametes": [
+      "sperm (male, 23 chr)",
+      "oocyte (female, 23 chr)"
+    ],
+    "gestation_days": 280
+  },
+  "integumentary": {
+    "skin_mass_kg": 4.5,
+    "surface_area_m2": 1.7,
+    "layers": [
+      "epidermis",
+      "dermis",
+      "hypodermis"
+    ],
+    "functions": [
+      "barrier",
+      "thermoregulation",
+      "vitamin_D_synthesis",
+      "sensation"
+    ]
+  },
+  "renal": {
+    "kidney_mass_kg_pair": 0.3,
+    "daily_urine_L": 1.5,
+    "GFR_mL_per_min": 125,
+    "nephrons_per_kidney": 1000000.0,
+    "functions": [
+      "filtration",
+      "reabsorption",
+      "secretion",
+      "acid-base_balance",
+      "erythropoietin_production"
+    ]
+  }
+}

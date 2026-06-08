@@ -1,0 +1,17 @@
+{
+  "modification": "patterned epidermal chloroplast expression",
+  "cell_types_modified": [
+    "keratinocyte (suprabasal)",
+    "melanocyte (pigment integration)"
+  ],
+  "organelle_introduced": "chloroplast (Chlamydomonas/Vaucheria hybrid minimal)",
+  "thylakoid_topology": "grana stacking: ~80 discs/granum, 10-15 grana/chloroplast",
+  "grana_winding_Omega": "\ud801\udc70 \u2014 highest membrane winding in organismal biology",
+  "chlorophyll_per_chloroplast": "~250 molecules (minimal, not C3 plant-scale)",
+  "chloroplasts_per_cell": "8-12 (vs 40-150 in mesophyll cells \u2014 lower density by design)",
+  "delivery_layers": "stratum spinosum + stratum granulosum keratinocytes",
+  "Turing_pattern": "L-handed (Fibonacci L > R) \u2192 \u0126=\ud801\udc71 (delta from base \u0126=\ud801\udc78)",
+  "coverage_percent": 9.6,
+  "ig_Omega_class": "\ud801\udc70",
+  "ig_Hbar_class": "\ud801\udc71"
+}

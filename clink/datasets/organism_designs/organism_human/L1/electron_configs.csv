@@ -1,0 +1,26 @@
+Z,symbol,configuration,valence_electrons,orbital_type
+1,H,1s¹,1s¹,1
+2,He,1s²,1s²,1
+6,C,[He] 2s² 2p²,2p²,2
+7,N,[He] 2s² 2p³,2p³,2
+8,O,[He] 2s² 2p⁴,2p⁴,2
+9,F,[He] 2s² 2p⁵,2p⁵,2
+11,Na,[Ne] 3s¹,3s¹,3
+12,Mg,[Ne] 3s²,3s²,3
+15,P,[Ne] 3s² 3p³,3p³,3
+16,S,[Ne] 3s² 3p⁴,3p⁴,3
+17,Cl,[Ne] 3s² 3p⁵,3p⁵,3
+19,K,[Ar] 4s¹,4s¹,4
+20,Ca,[Ar] 4s²,4s²,4
+23,V,[Ar] 3d³ 4s²,4s²,4
+24,Cr,[Ar] 3d⁵ 4s¹,4s¹,4
+25,Mn,[Ar] 3d⁵ 4s²,4s²,4
+26,Fe,[Ar] 3d⁶ 4s²,4s²,4
+27,Co,[Ar] 3d⁷ 4s²,4s²,4
+28,Ni,[Ar] 3d⁸ 4s²,4s²,4
+29,Cu,[Ar] 3d¹⁰ 4s¹,4s¹,4
+30,Zn,[Ar] 3d¹⁰ 4s²,4s²,4
+34,Se,[Ar] 3d¹⁰ 4s² 4p⁴,4p⁴,4
+35,Br,[Ar] 3d¹⁰ 4s² 4p⁵,4p⁵,4
+42,Mo,[Kr] 4d⁵ 5s¹,5s¹,5
+53,I,[Kr] 4d¹⁰ 5s² 5p⁵,5p⁵,5

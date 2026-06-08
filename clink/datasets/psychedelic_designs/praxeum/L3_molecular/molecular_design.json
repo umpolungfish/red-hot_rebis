@@ -1,0 +1,56 @@
+{
+  "layer": "L3 — Molecular Design",
+  "pharmacophore_hint": "β-carboline with EP-inducing substitution — needs co-administered ⊙ compound",
+  "structural_constraints": {
+    "flexibility": "rigid (self-referential scaffold)",
+    "stereochemistry": "atropisomerism required",
+    "topology": "macrocyclic with integer winding",
+    "symmetry": "Frobenius-special µ∘δ=id scaffold",
+    "quantum_character": "quantum-coherent (H-bond network)"
+  },
+  "bond_formation_strategy": {
+    "composition_mode": "sequential bond construction (linear synthesis)",
+    "preferred_disconnections": [
+      "bidirectional coupling — two reactive handles needed"
+    ]
+  },
+  "predicted_scaffold": "Non-factorizable cage — cubane or adamantane derivative",
+  "predicted_mass_range": "350–550 Da",
+  "predicted_logP": 3.5,
+  "predicted_HBD": 4,
+  "predicted_HBA": 5,
+  "predicted_rotatable_bonds": 3,
+  "ch3mpiler_retrosynthetic": {
+    "target": "Praxeum (EP-Core Control Platform)",
+    "target_type": "⟨𐑦 · 𐑶 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · 𐑻 · 𐑫 · 𐑳 · 𐑭⟩",
+    "strategy": {
+      "composition_mode": "sequential bond construction (linear synthesis)",
+      "preferred_disconnections": [
+        "bidirectional coupling — two reactive handles needed"
+      ]
+    },
+    "starting_materials": [
+      "L-tryptophan (for indole core)",
+      "Chiral pool starting material (terpene or amino acid)"
+    ],
+    "key_bond_formations": [
+      {
+        "type": "Sequential construction",
+        "description": "Linear synthesis with ordered bond formation"
+      }
+    ],
+    "protecting_groups": [
+      "Same protecting group on both handles (bidirectional)"
+    ],
+    "estimated_yield_range": "20–40% (macrocyclization)",
+    "critical_step": "EP-inducing substitution at the β-carboline C-6 position"
+  },
+  "synthesis_feasibility": {
+    "overall_assessment": "Standard medicinal chemistry",
+    "estimated_steps": 11,
+    "key_challenges": [
+      "Atropisomer separation — may require chiral HPLC",
+      "Frobenius-special symmetry — scaffold must survive µ∘δ self-check"
+    ]
+  }
+}

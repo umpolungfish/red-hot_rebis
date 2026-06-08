@@ -1,0 +1,32 @@
+{
+  "layer": "L6 — Delivery System",
+  "route": "Intravenous (first-pass metabolism avoidance); liposomal encapsulation for non-Abelian stability",
+  "formulation": {
+    "type": "liposomal encapsulation",
+    "rationale": "mechanical bond stabilization required",
+    "lipid": "DSPC:Cholesterol:PEG-DSPE (55:40:5)"
+  },
+  "pharmacokinetics": {
+    "absorption": "slow (Tmax: 2-4h)",
+    "distribution": "extensive",
+    "profile": "sustained plateau"
+  },
+  "bioavailability": {
+    "predicted_oral_F": "20%",
+    "first_pass_risk": "high"
+  },
+  "half_life_prediction": "6–12 hours (slow clearance)",
+  "volume_of_distribution": "3–5 L/kg (extensive tissue binding)",
+  "clearance": "low (hepatic, CYP2D6)",
+  "BBB_penetration": {
+    "penetration": "high",
+    "mechanism": "passive diffusion",
+    "predicted_BB_ratio": "2.5–5.0"
+  },
+  "metabolism": {
+    "primary_CYP": "CYP2D6",
+    "secondary_CYP": "CYP3A4",
+    "phase_II": "glucuronidation",
+    "chirality_impact": "atropisomer interconversion possible"
+  }
+}

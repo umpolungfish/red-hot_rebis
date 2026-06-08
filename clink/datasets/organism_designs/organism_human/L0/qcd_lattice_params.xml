@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<latticeQCD>
+  <gauge_group>SU(3)</gauge_group>
+  <n_colors>3</n_colors>
+  <n_flavors>2+1+1</n_flavors>
+  <lattice_size>64 64 64 128</lattice_size>
+  <beta>6.0</beta>
+  <a_fm>0.06</a_fm>
+  <m_pi_MeV>135</m_pi_MeV>
+  <confinement>true</confinement>
+  <chiral_symmetry_broken>true</chiral_symmetry_broken>
+  <topological_susceptibility>0.0045 fm^{-4}</topological_susceptibility>
+</latticeQCD>

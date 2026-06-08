@@ -1,0 +1,61 @@
+{
+  "layer": "L3 — Molecular Design",
+  "pharmacophore_hint": "Tryptamine core with extended indole — needs non-Abelian braiding realized via chiral macrocyclic cage",
+  "structural_constraints": {
+    "flexibility": "rigid (self-referential scaffold)",
+    "stereochemistry": "atropisomerism required",
+    "topology": "interlocked cage (catenane/rotaxane)",
+    "symmetry": "Frobenius-special µ∘δ=id scaffold",
+    "quantum_character": "quantum-coherent (H-bond network)"
+  },
+  "bond_formation_strategy": {
+    "composition_mode": "sequential bond construction (linear synthesis)",
+    "preferred_disconnections": [
+      "bidirectional coupling — two reactive handles needed"
+    ]
+  },
+  "predicted_scaffold": "Bridged bicyclic with crossing point — tropane-like or morphinan-like",
+  "predicted_mass_range": "350–550 Da",
+  "predicted_logP": 3.5,
+  "predicted_HBD": 4,
+  "predicted_HBA": 5,
+  "predicted_rotatable_bonds": 3,
+  "ch3mpiler_retrosynthetic": {
+    "target": "Verticullum (EP-Lever)",
+    "target_type": "⟨𐑦 · 𐑥 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑟⟩",
+    "strategy": {
+      "composition_mode": "sequential bond construction (linear synthesis)",
+      "preferred_disconnections": [
+        "bidirectional coupling — two reactive handles needed"
+      ]
+    },
+    "starting_materials": [
+      "L-tryptophan (for indole core)",
+      "Chiral pool starting material (terpene or amino acid)"
+    ],
+    "key_bond_formations": [
+      {
+        "type": "Sequential construction",
+        "description": "Linear synthesis with ordered bond formation"
+      },
+      {
+        "type": "Mechanical bond",
+        "description": "Catenane/rotaxane formation via template-directed clipping"
+      }
+    ],
+    "protecting_groups": [
+      "Same protecting group on both handles (bidirectional)"
+    ],
+    "estimated_yield_range": "5–15% (mechanical bond formation)",
+    "critical_step": "Template-directed catenane formation — the mechanical bond closure"
+  },
+  "synthesis_feasibility": {
+    "overall_assessment": "Challenging but feasible",
+    "estimated_steps": 13,
+    "key_challenges": [
+      "Mechanical bond formation — template design critical",
+      "Atropisomer separation — may require chiral HPLC",
+      "Frobenius-special symmetry — scaffold must survive µ∘δ self-check"
+    ]
+  }
+}

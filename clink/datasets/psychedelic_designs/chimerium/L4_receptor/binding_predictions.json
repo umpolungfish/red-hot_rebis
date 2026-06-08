@@ -1,0 +1,32 @@
+{
+  "compound": "Chimerium (Supercritical Catalyst)",
+  "primary_target": "5-HT2A",
+  "key_residue_interactions": [
+    {
+      "residue": "D3.32",
+      "interaction": "salt bridge (protonated amine)",
+      "strength": "essential"
+    },
+    {
+      "residue": "S5.43",
+      "interaction": "H-bond to indole NH",
+      "strength": "strong"
+    },
+    {
+      "residue": "F6.52",
+      "interaction": "π-π stacking",
+      "strength": "moderate"
+    },
+    {
+      "residue": "W6.48",
+      "interaction": "toggle switch — rotamer change on activation",
+      "strength": "critical"
+    }
+  ],
+  "predicted_binding_pose": "orthosteric with extended TM5-TM6 pocket occupancy",
+  "mutagenesis_predictions": {
+    "D3.32A": "abolishes binding",
+    "F6.52L": "reduces affinity 10-fold",
+    "S5.43A": "reduces affinity 5-fold"
+  }
+}

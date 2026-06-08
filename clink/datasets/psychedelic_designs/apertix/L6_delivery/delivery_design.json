@@ -1,0 +1,34 @@
+{
+  "layer": "L6 — Delivery System",
+  "route": "Oral with enteric coating; sustained release for directional steering window",
+  "formulation": {
+    "type": "standard oral capsule",
+    "excipients": [
+      "microcrystalline cellulose",
+      "magnesium stearate"
+    ]
+  },
+  "pharmacokinetics": {
+    "absorption": "slow (Tmax: 2-4h)",
+    "distribution": "extensive",
+    "profile": "sustained plateau"
+  },
+  "bioavailability": {
+    "predicted_oral_F": "20%",
+    "first_pass_risk": "high"
+  },
+  "half_life_prediction": "6–12 hours (slow clearance)",
+  "volume_of_distribution": "3–5 L/kg (extensive tissue binding)",
+  "clearance": "low (hepatic, CYP2D6)",
+  "BBB_penetration": {
+    "penetration": "high",
+    "mechanism": "passive diffusion",
+    "predicted_BB_ratio": "2.5–5.0"
+  },
+  "metabolism": {
+    "primary_CYP": "CYP2D6",
+    "secondary_CYP": "CYP3A4",
+    "phase_II": "glucuronidation",
+    "chirality_impact": "stable stereochemistry"
+  }
+}

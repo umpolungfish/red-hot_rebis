@@ -1,0 +1,45 @@
+{
+  "representative_proteins": {
+    "KRAS": {
+      "function": "GTPase signaling switch",
+      "length": 189,
+      "family": "RAS",
+      "disease_link": "cancer (30% of human cancers)"
+    },
+    "TP53": {
+      "function": "Tumor suppressor / transcription factor",
+      "length": 393,
+      "family": "p53",
+      "disease_link": "cancer (50% of tumors)"
+    },
+    "ALB": {
+      "function": "Serum albumin / carrier protein",
+      "length": 609,
+      "family": "Albumin",
+      "plasma_concentration_mg_mL": 40
+    },
+    "HBA1": {
+      "function": "Hemoglobin \u03b1 subunit",
+      "length": 142,
+      "family": "Globin"
+    },
+    "COL1A1": {
+      "function": "Collagen type I \u03b11",
+      "length": 1464,
+      "family": "Collagen",
+      "tissue": "bone/skin/tendon"
+    },
+    "TTN": {
+      "function": "Titin (muscle elasticity)",
+      "length": 34350,
+      "note": "largest human protein"
+    }
+  },
+  "fold_distribution": {
+    "\u03b1/\u03b2": "25%",
+    "all_\u03b1": "22%",
+    "all_\u03b2": "13%",
+    "\u03b1+\u03b2": "15%",
+    "intrinsically_disordered": "25%"
+  }
+}

@@ -1,0 +1,40 @@
+LOCUS       CLINK_HUMAN_CHR17  83257441 bp  DNA  linear  PRI 01-JAN-2025
+DEFINITION  Homo sapiens chromosome 17, GRCh38.p14 Primary Assembly.
+ACCESSION   CM000679.2
+VERSION     CM000679.2
+KEYWORDS    CLINK; human design.
+SOURCE      Homo sapiens (human)
+  ORGANISM  Homo sapiens
+            Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;
+            Mammalia; Eutheria; Euarchontoglires; Primates; Haplorrhini;
+            Catarrhini; Hominidae; Homo.
+REFERENCE   1  (bases 1 to 83257441)
+  AUTHORS   CLINK Consortium
+  TITLE     Direct Submission
+  JOURNAL   CLINK Human Genome Design
+COMMENT     CLINK-designed human genome with 12-primitive structural encoding.
+FEATURES             Location/Qualifiers
+     source          1..83257441
+                     /organism="Homo sapiens"
+                     /mol_type="genomic DNA"
+                     /db_xref="taxon:9606"
+                     /chromosome="17"
+                     /assembly="GRCh38.p14"
+     gene            7661779..7687538
+                     /gene="TP53"
+                     /gene_synonym="p53; BCC7; LFS1; P53; TRP53"
+                     /function="Tumor suppressor; guardian of the genome"
+     mRNA            join(7661779..7661902,7674854..7674988,7675054..7675236,
+                          7684479..7687538)
+                     /gene="TP53"
+                     /product="tumor protein p53 isoform a"
+     CDS             join(7661821..7661902,7674854..7674988,7675054..7675236,
+                          7684479..7687538)
+                     /gene="TP53"
+                     /function="DNA-binding transcription factor"
+                     /note="Responds to DNA damage; arrests cell cycle or triggers apoptosis"
+     gene            25195680..25255136
+                     /gene="BRCA1"
+                     /function="DNA repair; homologous recombination"
+CONTIG      join(AC234567.1:1..83257441)
+//

@@ -1,0 +1,50 @@
+{
+  "human_ECM": {
+    "collagen_I_pct": 58,
+    "collagen_III_pct": 12,
+    "collagen_IV_pct": 8,
+    "collagen_V_pct": 3,
+    "collagen_VI_pct": 2,
+    "collagen_others_pct": 5,
+    "fibronectin_pct": 6,
+    "laminin_pct": 6,
+    "elastin_pct": 4,
+    "hyaluronan_pct": 3,
+    "proteoglycans_pct": 2,
+    "water_pct": 1
+  },
+  "tissue_specific_stiffness": {
+    "brain": "0.1-1 kPa",
+    "liver": "0.5-3 kPa",
+    "muscle": "8-17 kPa",
+    "skin": "5-30 kPa",
+    "cartilage": "500-1000 kPa",
+    "bone": "15-20 GPa",
+    "tendon": "1-2 GPa"
+  },
+  "organ_masses_kg": {
+    "brain": 1.4,
+    "liver": 1.5,
+    "heart": 0.3,
+    "lungs_pair": 1.1,
+    "kidneys_pair": 0.3,
+    "skin": 4.5,
+    "skeleton": 10.0,
+    "muscle": 30.0,
+    "intestine": 1.0,
+    "spleen": 0.15,
+    "pancreas": 0.1,
+    "thyroid": 0.02,
+    "adrenal_pair": 0.014,
+    "pituitary": 0.0006
+  },
+  "basement_membrane": {
+    "components": [
+      "collagen_IV",
+      "laminin",
+      "nidogen",
+      "perlecan"
+    ],
+    "thickness_nm": "50-100 (varies by tissue)"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "layer": "L8 — Organism-Level Effects",
+  "phenomenological_profile": {
+    "onset": "5–15 minutes (sublingual pro-drug activation)",
+    "peak": "30–60 minutes",
+    "duration": "2–3 hours (controlled by pro-drug cleavage rate)",
+    "qualitative": "Supercritical launch — rapid acceleration beyond ordinary psychedelic space. The runaway character means the experience expands faster than integration capacity. Visuals are explosive, fractal, self-transcending. NOT for naive users. The broadcast composition (Gm=𐑵) means effects cascade across all cognitive domains simultaneously."
+  },
+  "duration_phases": {
+    "onset_phase": "gradual (15-30 min)",
+    "plateau_phase": "2-4 hours",
+    "resolution_phase": "gradual (1-2 hours)",
+    "afterglow": "6-12 hours"
+  },
+  "dose_response": {
+    "threshold": "0.5–1.0 mg (estimated)",
+    "light": "1–3 mg",
+    "common": "3–8 mg",
+    "strong": "8–15 mg",
+    "heavy": "15+ mg",
+    "note": "Doses are estimates based on predicted 5-HT2A Ki — actual values require empirical determination."
+  },
+  "subjective_effects": {
+    "visual": "complex geometric (D=𐑦)",
+    "auditory": "enhanced, possible synesthesia",
+    "cognitive": "conceptual recombination, ontological flexibility",
+    "emotional": "intensified, labile",
+    "ego_dissolution": "complete but navigable",
+    "mystical_experience": "high probability at common+ doses"
+  },
+  "operable_dimensions": {
+    "chirality_control": true,
+    "winding_control": true,
+    "scope_control": false,
+    "gate_control": false,
+    "direction_control": false,
+    "self_modeling_preserved": false
+  },
+  "safety_profile": {
+    "LD50_predicted": ">100 mg/kg (rodent)",
+    "therapeutic_index": "wide (estimated TI > 20)",
+    "cardiovascular": "mild tachycardia, mild hypertension (expected for 5-HT2A agonists)",
+    "hyperthermia_risk": "low",
+    "serotonin_syndrome_risk": "moderate (polypharmacology)",
+    "dependence_potential": "low (classical psychedelic profile)"
+  },
+  "human_equivalent_dose": {
+    "mouse": "0.5–2.0 mg/kg",
+    "rat": "0.3–1.5 mg/kg",
+    "human_estimated": "1–15 mg (depending on route and formulation)",
+    "note": "HED calculated by body surface area normalization from predicted rodent ED50."
+  }
+}

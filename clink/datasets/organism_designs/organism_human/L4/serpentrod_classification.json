@@ -1,0 +1,25 @@
+{
+  "protein": "KRAS",
+  "primitive_spectrum": {
+    "\ud801\udc66": 4,
+    "\ud801\udc78": 3,
+    "\ud801\udc7e": 2,
+    "\ud801\udc79": 1,
+    "\ud801\udc50": 5,
+    "\ud801\udc67": 6,
+    "\ud801\udc72": 3,
+    "\ud801\udc75": 2,
+    "\u2299": 2,
+    "\ud801\udc6b": 1,
+    "\ud801\udc73": 4,
+    "\ud801\udc5f": 2
+  },
+  "classification": "GTPase_signaling_switch",
+  "fold": "Rossmann-like \u03b1/\u03b2",
+  "modules_detected": [
+    "P-loop_NTPase",
+    "switch_I_effector",
+    "switch_II_GTP"
+  ],
+  "ouroboricity": "O_2"
+}

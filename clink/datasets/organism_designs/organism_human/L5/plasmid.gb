@@ -1,0 +1,54 @@
+LOCUS       pCLINK_eGFP      5468 bp    DNA     circular  SYN 01-JAN-2025
+DEFINITION  CLINK mammalian expression vector for eGFP.
+ACCESSION   CLK000001
+VERSION     CLK000001.1
+KEYWORDS    CLINK; expression vector; eGFP.
+SOURCE      synthetic DNA construct
+  ORGANISM  synthetic DNA construct
+REFERENCE   1  (bases 1 to 5468)
+  AUTHORS   CLINK Consortium
+  TITLE     pCLINK_eGFP — CLINK Expression Plasmid
+  JOURNAL   CLINK Synthetic Biology Platform
+COMMENT     Human codon-optimized eGFP under CMV promoter.
+            Ampicillin resistance for bacterial selection.
+            Neomycin resistance for mammalian selection.
+            Gibson assembly cloning sites: EcoRI (5'), NotI (3').
+FEATURES             Location/Qualifiers
+     promoter        1..589
+                     /label="CMV_enhancer_promoter"
+     primer_bind     590..609
+                     /label="T7_promoter"
+     misc_feature    610..630
+                     /label="Kozak_sequence"
+                     /note="GCCACCATGG"
+     CDS             631..1347
+                     /gene="eGFP"
+                     /product="enhanced green fluorescent protein"
+                     /codon_start=1
+                     /translation="MVSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDAT
+                     YGKLTLKFICTTGKLPVPWPTLVTTLTYGVQCFSRYPDHMKQHDFFKSAMPEG
+                     YVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEY
+                     NYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVL
+                     LPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITLGMDELYK"
+     polyA_signal    1348..1580
+                     /label="bGH_polyA"
+     rep_origin      1620..2100
+                     /label="f1_ori"
+     promoter        2180..2599
+                     /label="SV40_early_promoter"
+     CDS             2600..3394
+                     /gene="NeoR"
+                     /product="neomycin phosphotransferase"
+                     /note="G418 resistance in mammalian cells"
+     rep_origin      3560..4248
+                     /label="pUC_ori"
+                     /note="High-copy bacterial origin"
+     CDS             complement(4408..5268)
+                     /gene="AmpR"
+                     /product="beta-lactamase"
+                     /note="Ampicillin resistance"
+ORIGIN
+        1 gacattgatt attgactagt tattaatagt aatcaattac ggggtcatta gttcatagcc
+       61 catatatgga gttccgcgtt acataactta cggtaaatgg cccgcctggc tgaccgccca
+      121 acgacccccg cccattgacg tcaataatga cgtatgttcc catagtaacg ccaataggga
+//

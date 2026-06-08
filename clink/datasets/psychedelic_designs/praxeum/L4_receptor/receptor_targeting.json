@@ -1,0 +1,46 @@
+{
+  "layer": "L4 — Receptor Targeting",
+  "primary_targets": [
+    {
+      "receptor": "5-HT2A (modulator, not agonist)",
+      "predicted_action": "agonist",
+      "directional_bias": "balanced Gq/Gi (bidirectional access)"
+    },
+    {
+      "receptor": "Sigma-1",
+      "predicted_action": "modulator",
+      "directional_bias": "balanced Gq/Gi (bidirectional access)"
+    },
+    {
+      "receptor": "GABA-A (α1 subunit)",
+      "predicted_action": "modulator",
+      "directional_bias": "balanced Gq/Gi (bidirectional access)"
+    }
+  ],
+  "binding_mode": {
+    "pocket_accommodation": "orthosteric + extended allosteric",
+    "critical_interaction": "allosteric modulator — shifts orthosteric affinity"
+  },
+  "functional_selectivity": {
+    "mechanism": "conformational selection",
+    "arrestin_bias": "β-arrestin biased (eternal chirality drives internalization)"
+  },
+  "predicted_Ki_ranges": {
+    "5-HT2A": "0.1–5 nM",
+    "5-HT1A": "1–20 nM",
+    "other": "10–100 nM"
+  },
+  "predicted_efficacy": {
+    "5-HT2A": "80–100% (quantum-coherent activation)",
+    "Gq": "high",
+    "β-arrestin": "moderate"
+  },
+  "off_target_risk": {
+    "risk_level": "moderate",
+    "concern": "heterogeneous targets expected"
+  },
+  "receptor_dynamics": {
+    "residence_time": ">4 hours",
+    "desensitization": "modulated by co-ligand (EP gate control)"
+  }
+}

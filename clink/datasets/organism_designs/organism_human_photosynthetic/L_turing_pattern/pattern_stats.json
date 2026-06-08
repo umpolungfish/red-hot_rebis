@@ -1,0 +1,23 @@
+{
+  "algorithm": "Gray-Scott reaction-diffusion",
+  "parameters": {
+    "Du": 0.16,
+    "Dv": 0.08,
+    "F": 0.035,
+    "k": 0.065,
+    "steps": 2000
+  },
+  "seed": "Fibonacci-spiral (12 seeds, golden angle, L-handed)",
+  "golden_angle_deg": 137.5078,
+  "grid": {
+    "width": 60,
+    "height": 30
+  },
+  "threshold": 0.18,
+  "coverage_fraction": 0.0956,
+  "coverage_percent": 9.6,
+  "total_cells": 1800,
+  "expressing_cells": 172,
+  "chirality": "L-handed (Fibonacci L > R) \u2192 \u0126=\ud801\udc71 (delta from base \u0126=\ud801\udc78)",
+  "note": "Each expressing cell is a keratinocyte with active chloroplast import machinery. 9.6% skin surface coverage."
+}

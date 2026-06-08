@@ -1,0 +1,43 @@
+{
+  "description": "How the Homo sapiens structural type \u27e8\ud801\udc66\ud801\udc78\ud801\udc7e\ud801\udc79\ud801\udc50\ud801\udc67\ud801\udc72\ud801\udc75\u2299\ud801\udc6b\ud801\udc73\ud801\udc5f\u27e9 manifests at each design layer",
+  "layers": {
+    "L0_quarks": {
+      "\ud801\udc66": "hadron state space self-written by QCD Lagrangian",
+      "\ud801\udc78": "color confinement (self-referential topology of flux tubes)",
+      "\u2299": "chiral condensate at critical temperature"
+    },
+    "L1_electrons": {
+      "\ud801\udc78": "Belnap4 logic table (B/T/F/N) as truth-value topology",
+      "\ud801\udc7e": "complementary base pairing (B\u2194T, F\u2194N) bidirectional coupling"
+    },
+    "L2_atoms": {
+      "\ud801\udc7e": "covalent + ionic + H-bond synergy",
+      "\ud801\udc67": "bond formation near equilibrium (\u03c4\u226bT)"
+    },
+    "L3_molecules": {
+      "\ud801\udc79": "enzyme catalysis: \u03bc\u2218\u03b4=id (substrate\u2192product\u2192reset)",
+      "\ud801\udc50": "quantum tunneling in enzyme active sites"
+    },
+    "L4_proteins": {
+      "\u2299": "folding funnel critical at native state",
+      "\ud801\udc6b": "protein folding memory (Markov \u221e \u2014 sequence determines structure)"
+    },
+    "L5_cells": {
+      "\ud801\udc72": "genome-wide regulation (universal interaction range)",
+      "\ud801\udc73": "multiple distinct organelles and pathways"
+    },
+    "L6_mitosis": {
+      "\ud801\udc79": "spindle checkpoint \u03bc\u2218\u03b4=id (attach\u2192check\u2192segregate\u2192reset)",
+      "\ud801\udc5f": "non-Abelian braiding of sister chromatids at anaphase"
+    },
+    "L7_tissues": {
+      "\ud801\udc7e": "cell-ECM bidirectional mechanotransduction",
+      "\ud801\udc73": "heterogeneous cell types within tissue niche"
+    },
+    "L8_organism": {
+      "\u2299": "consciousness (self-modeling gate open)",
+      "\ud801\udc5f": "neural connectome as non-Abelian braid group"
+    }
+  },
+  "\u03bc\u2218\u03b4=id_verification": "Each layer independently satisfies Frobenius closure: the operation applied to the system returns the system to a state distinguishable from its starting state only by the information gained."
+}

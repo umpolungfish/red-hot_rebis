@@ -1,0 +1,88 @@
+{
+  "innate": {
+    "barriers": [
+      "skin",
+      "mucosa",
+      "stomach_acid",
+      "lysozyme",
+      "defensins"
+    ],
+    "cells": [
+      "neutrophil",
+      "macrophage",
+      "dendritic_cell",
+      "NK_cell",
+      "mast_cell",
+      "eosinophil",
+      "basophil"
+    ],
+    "complement": [
+      "C1-C9",
+      "MBL_pathway",
+      "alternative_pathway"
+    ],
+    "response_time": "minutes-hours"
+  },
+  "adaptive": {
+    "cells": {
+      "T_cell": {
+        "types": [
+          "CD4+ helper",
+          "CD8+ cytotoxic",
+          "Treg",
+          "Th1",
+          "Th2",
+          "Th17",
+          "Tfh"
+        ],
+        "receptor": "TCR (\u03b1\u03b2 or \u03b3\u03b4)"
+      },
+      "B_cell": {
+        "types": [
+          "naive",
+          "memory",
+          "plasma",
+          "Breg"
+        ],
+        "receptor": "BCR/Ig"
+      }
+    },
+    "antibody_classes": {
+      "IgG": {
+        "serum_concentration_mg_per_mL": 12,
+        "half_life_days": 21,
+        "functions": [
+          "opsonization",
+          "neutralization",
+          "ADCC"
+        ]
+      },
+      "IgA": {
+        "serum_concentration_mg_per_mL": 2,
+        "secretory": true,
+        "site": "mucosa"
+      },
+      "IgM": {
+        "serum_concentration_mg_per_mL": 1,
+        "pentamer": true,
+        "primary_response": true
+      },
+      "IgE": {
+        "serum_concentration_ng_per_mL": 50,
+        "function": "allergy/parasite defense"
+      },
+      "IgD": {
+        "serum_concentration_ug_per_mL": 30,
+        "function": "B cell receptor"
+      }
+    },
+    "response_time": "days-weeks",
+    "memory": "years-decades"
+  },
+  "VDJ_recombination": {
+    "TCR_\u03b2_diversity": "~10\u00b9\u2075 theoretical",
+    "actual": "~2\u00d710\u2077 unique TCRs per individual",
+    "RAG1_RAG2": "initiates V(D)J recombination",
+    "junctional_diversity": "TdT adds N-nucleotides"
+  }
+}

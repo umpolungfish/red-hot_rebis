@@ -1,0 +1,79 @@
+{
+  "thermoregulation": {
+    "setpoint_C": 37.0,
+    "range_C": "36.5-37.5",
+    "sensor": "preoptic anterior hypothalamus",
+    "effectors": [
+      "vasodilation/vasoconstriction",
+      "sweating",
+      "shivering",
+      "behavior (seeking shade/warmth)"
+    ],
+    "fever_threshold_C": 38.3
+  },
+  "glucose_regulation": {
+    "setpoint_mM": 5.0,
+    "range_mM": "3.9-5.6 (fasting)",
+    "postprandial_max_mM": 7.8,
+    "hormones": {
+      "insulin": "\u03b2-cells (pancreatic islets) \u2014 lowers glucose",
+      "glucagon": "\u03b1-cells \u2014 raises glucose"
+    },
+    "counter_regulatory": [
+      "epinephrine",
+      "cortisol",
+      "growth_hormone"
+    ],
+    "glycogen_reserve_g": "~400 (liver 100g + muscle 300g)"
+  },
+  "calcium_phosphate_homeostasis": {
+    "calcium_setpoint_mM": 2.5,
+    "phosphate_setpoint_mM": 1.0,
+    "hormones": {
+      "PTH": "raises Ca, lowers P",
+      "calcitriol (1,25-(OH)2-D3)": "raises both Ca and P",
+      "calcitonin": "lowers Ca (minor in humans)",
+      "FGF23": "lowers P"
+    },
+    "organs": [
+      "bone (reservoir)",
+      "kidney (excretion)",
+      "intestine (absorption)"
+    ]
+  },
+  "osmoregulation": {
+    "setpoint_mOsm_per_kg": 290,
+    "range": "285-295",
+    "sensor": "hypothalamic osmoreceptors (OVLT, SFO)",
+    "hormone": "ADH/vasopressin (posterior pituitary)",
+    "effector": "kidney collecting duct aquaporin-2 insertion",
+    "thirst_trigger_mOsm": 295
+  },
+  "blood_pressure_regulation": {
+    "MAP_setpoint_mmHg": 95,
+    "baroreflex": "carotid sinus + aortic arch \u2192 NTS \u2192 sympathetic/parasympathetic output",
+    "RAAS": "renin (JGA) \u2192 Ang II \u2192 aldosterone \u2192 Na\u207a retention \u2192 \u2191BP",
+    "ANP_BNP": "counter-regulatory (atrial/ventricular stretch \u2192 natriuresis)"
+  },
+  "acid_base_balance": {
+    "pH_setpoint": 7.4,
+    "buffer_systems": [
+      "bicarbonate (HCO3\u207b/CO2)",
+      "hemoglobin",
+      "phosphate",
+      "protein"
+    ],
+    "respiratory_compensation": "CO2 excretion (minutes)",
+    "renal_compensation": "HCO3\u207b reabsorption + H\u207a excretion (hours-days)"
+  },
+  "iron_homeostasis": {
+    "total_body_iron_g": 4,
+    "distribution": {
+      "hemoglobin": "65%",
+      "ferritin_hemosiderin": "25%",
+      "myoglobin": "4%",
+      "transferrin": "0.1%"
+    },
+    "regulation": "hepcidin (liver) \u2014 degrades ferroportin to reduce iron export"
+  }
+}
