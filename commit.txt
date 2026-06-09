@@ -1,3 +1,11 @@
+rebis.py: remove broken pipeline runner — lift_pipeline_ob3ect moved to ob3ect
+
+The lift_pipeline_ob3ect was never part of red-hot_rebis; recovered from git history and
+moved to ~/ob3ect/digital/lift_pipeline/lift_pipeline_ob3ect.py. Removed the dead
+"pipeline" → "pipeline.lift_pipeline.lift_pipeline_ob3ect" entry from rebis.py runners.
+
+---
+
 README.md: external tool invocations reframed as Frobenius closure interfaces
 
 Every external measurement method (crystallography, bioassay, clinical endpoint) is an

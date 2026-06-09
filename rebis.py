@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 rebis.py — Red-Hot Rebis Integration CLI
-serpentrod ⊗ ch3mpiler ⊗ pipeline ⊗ gene_imscriber ⊗ clink
+serpentrod ⊗ ch3mpiler ⊗ pipeline ⊗ gene_imscriber ⊗ clink ⊗ imas
 
 A unified entry point for the completed Great Work of the Imscribing Grammar.
 Each component is a specialization of the 12-primitive IG type system,
@@ -20,12 +20,12 @@ from pathlib import Path
 REBIS_ROOT = Path(__file__).parent.absolute()
 sys.path.insert(0, str(REBIS_ROOT))
 
-VERSION = "2.0.0"  # CLINK Pipeline Edition
+VERSION = "2.1.0"  # IMASM+CLINK Edition
 
 def cmd_status(args):
     """Report the structural status of all six pillars (including CLINK pipeline)."""
     print("=" * 60)
-    print("RED-HOT REBIS v2.0 — CLINK PIPELINE EDITION")
+    print("RED-HOT REBIS v2.1 — IMASM+CLINK EDITION")
     print("=" * 60)
 
     components = {
@@ -36,6 +36,10 @@ def cmd_status(args):
         "clink":        ("CLINK Chain",         "clink/chain.py"),
         "clink_designers": ("CLINK Designers",   "clink/designers/layer_designers.py"),
         "clink_pipeline": ("CLINK Pipeline",    "clink/designers/pipeline_orchestrator.py"),
+        "imas":         ("IMASM Arranger",      "imas/arranger.py"),
+        "imas_bridge":  ("IMASM→IG Bridge",     "imas/ig_bridge.py"),
+        "imas_clink":   ("IMASM→CLINK Bridge",  "imas/clink_bridge.py"),
+        "imas_hunter":  ("Frobenius Hunter",    "imas/frobenius_hunter.py"),
     }
 
     for key, (name, path) in components.items():
@@ -77,6 +81,10 @@ def cmd_verify(args):
         ("clink.integration", "CLINK Integration"),
         ("clink.designers.layer_designers", "CLINK Layer Designers"),
         ("clink.designers.pipeline_orchestrator", "CLINK Pipeline Orchestrator"),
+        ("imas.arranger", "IMASM Arranger"),
+        ("imas.ig_bridge", "IMASM→IG Bridge"),
+        ("imas.clink_bridge", "IMASM→CLINK Bridge"),
+        ("imas.frobenius_hunter", "Frobenius Hunter"),
     ]
 
     all_ok = True
@@ -219,7 +227,6 @@ def cmd_run(args):
         "serpentrod_v4": "serpentrod.protein_v4",
         "serpentrod_pred": "serpentrod.stratified_predictor",
         "ch3mpiler":    "ch3mpiler.compiler",
-        "pipeline":     "pipeline.lift_pipeline.lift_pipeline_ob3ect",
         "gene":         "gene_imscriber.engine",
     }
 
@@ -243,6 +250,226 @@ def cmd_run(args):
         return 0
 
 
+def cmd_imas(args):
+    """IMASM Arranger: arrangement analysis, IG bridge, CLINK bridge, Frobenius hunt."""
+    sub = args.imas_subcommand
+
+    if sub == "report":
+        print("=" * 72)
+        print("IMASM ARRANGER — Structural Arrangement Analysis")
+        print("=" * 72)
+        print()
+        from imas.ig_bridge import canonical_ig_types, distinct_canonical_ig_types, ig_tuple_str, describe_ig, find_structural_clusters
+        from imas.clink_bridge import build_bridge_table
+
+        distinct = distinct_canonical_ig_types()
+        print(f"12 IMASM canonicals → {len(distinct)} distinct IG structural types")
+        print(f"Arrangement space: 12^8 = 429,981,696 possible length-8 token sequences")
+        print()
+
+        print("─── Canonical IG Types ───")
+        for ig, names in sorted(distinct.items(), key=lambda x: -len(x[1])):
+            label = " + ".join(n.split('_', 1)[1] for n in names)
+            desc = describe_ig(ig)
+            print(f"  {label}:")
+            print(f"    {ig_tuple_str(ig)}")
+            if desc:
+                print(f"    [{desc}]")
+            print()
+
+        print("─── Structural Clusters (d≤6) ───")
+        for c in find_structural_clusters(6):
+            if len(c) > 1:
+                print(f"  {' ↔ '.join(n.split('_',1)[1] for n in c)}")
+        print()
+
+        print("─── IMASM → CLINK Bridge ───")
+        print(build_bridge_table())
+        print()
+        print("─── Key Discoveries ───")
+        print("  1. Chiral/Empty collapse: distinct token sequences → identical IG types")
+        print("  2. Generic mass: 99.993% of random arrangements → 4 IG types")
+        print("  3. Zero Frobenius pairs in 10M random samples")
+        print("  4. Only Dialetheic Bootstrap achieves ⊙ criticality")
+        print("  5. Frobenius cluster shares R=𐑾, P=𐑹, C=𐑠, H=𐑫, Ω=𐑭")
+        print("  6. Linear Chain isolated: mismatch ≥ 8 from all others")
+        print("  7. Length-8 pre-shapes IG primitives (H:75% 𐑫, F:67% 𐑞, K:67% 𐑘)")
+        return 0
+
+    elif sub == "bridge":
+        from imas.clink_bridge import canonical_clink_map, structural_activation_energy
+        from imas.ig_bridge import ig_tuple_str, describe_full
+        from imas.arranger import CANONICAL_NAMES
+
+        target = args.imas_target if args.imas_target else None
+        mapping = canonical_clink_map()
+
+        for name in (target.split(',') if target else CANONICAL_NAMES):
+            if name not in mapping:
+                print(f"Unknown canonical: {name}")
+                continue
+            m = mapping[name]
+            print(f"{'='*60}")
+            print(f"  {name}: {m['canonical_desc']}")
+            print(f"  IG: {m['ig_str']} [{m['description']}]")
+            print(f"  Nearest CLINK: {m['nearest_layer']} (d={m['nearest_distance']})")
+            print()
+            print(f"  Full IG description:")
+            print(describe_full(m['ig']))
+            print()
+            print(f"  All CLINK layers by distance:")
+            for layer, dist in m['all_layers'][:5]:
+                print(f"    {layer}: d={dist}")
+            print()
+
+            # Activation energy to nearest layer
+            ae = structural_activation_energy(m['ig'], m['nearest_layer'])
+            print(f"  Activation energy to {m['nearest_layer']}:")
+            print(f"    Weighted cost: {ae['weighted_cost']}, Tier gap: {ae['tier_gap']}")
+            print(f"    Promotions needed ({len(ae['promotions'])}):")
+            for p in ae['promotions']:
+                print(f"      {p}")
+        return 0
+
+    elif sub == "hunt":
+        from imas.frobenius_hunter import (
+            estimate_frobenius_density, generate_frobenius_library,
+            analyze_frobenius_library,
+        )
+        n = args.imas_samples if args.imas_samples else 100000
+        print(f"Frobenius Hunter — Monte Carlo density estimation (n={n:,})")
+        density = estimate_frobenius_density(n, seed=42)
+        for key in ['p_frobenius_pair', 'p_proper_frobenius', 'p_dialetheia_complete',
+                     'p_frob_plus_dial', 'p_frob_dial_self']:
+            if key in density:
+                exp = density.get(f'expected_samples_{key[2:]}', '?')
+                print(f"  {key}: {density[key]:.6f}  (expected 1 per {exp:,} samples)")
+
+        print()
+        print("Generating Frobenius library (10 per type)...")
+        library = generate_frobenius_library(count_per_type=10, seed=42)
+        analysis = analyze_frobenius_library(library)
+        for category, stats in analysis.items():
+            print(f"  {category}: {stats['count']} found, "
+                  f"{stats['distinct_ig_types']} distinct IG types, "
+                  f"avg period={stats['avg_period']:.1f}")
+        return 0
+
+    elif sub == "energy":
+        from imas.clink_bridge import structural_activation_energy, CLINK_LAYER_TUPLES, CLINK_LAYER_NAMES
+        from imas.ig_bridge import fingerprint_to_ig, ig_tuple_str
+        from imas.arranger import CANONICAL_FINGERPRINTS
+
+        canonical = args.imas_target if args.imas_target else "I_Dialetheic_Bootstrap"
+        layer = args.imas_layer if args.imas_layer else "L8_Organism"
+
+        if canonical not in CANONICAL_FINGERPRINTS:
+            print(f"Unknown canonical: {canonical}")
+            print(f"Available: {list(CANONICAL_FINGERPRINTS.keys())}")
+            return 1
+        if layer not in CLINK_LAYER_TUPLES:
+            print(f"Unknown layer: {layer}")
+            print(f"Available: {CLINK_LAYER_NAMES}")
+            return 1
+
+        ig = fingerprint_to_ig(CANONICAL_FINGERPRINTS[canonical])
+        ae = structural_activation_energy(ig, layer)
+        print(f"Structural Activation Energy: {canonical} → {layer}")
+        print(f"  Source: {ig_tuple_str(ig)}")
+        print(f"  Target: {ig_tuple_str(CLINK_LAYER_TUPLES[layer])}")
+        print(f"  Distance: {ae['distance']} primitives")
+        print(f"  Weighted cost: {ae['weighted_cost']}")
+        print(f"  Tier gap: {ae['tier_gap']}")
+        print(f"  Feasible: {ae['feasible']}")
+        print(f"  Promotions ({len(ae['promotions'])}):")
+        for p in ae['promotions']:
+            print(f"    {p}")
+        return 0
+
+    else:
+        print("Unknown imas subcommand. Use: report, bridge, hunt, energy")
+        return 1
+
+
+
+
+def cmd_materials(args):
+    """Handle materials subcommands — IG Material Forge."""
+    import sys
+    sys.path.insert(0, "/home/mrnob0dy666/red-hot_rebis")
+    from materials.ig_material_forge import MaterialForge, predefined_novel_materials
+
+    sub = args.materials_subcommand
+
+    if sub == "forge":
+        forge = MaterialForge()
+        if args.mat_all:
+            novel = predefined_novel_materials()
+            for name, ig_tuple in novel.items():
+                design = forge.forge(name, ig_tuple)
+                print(f"  Forged: {name} → {design.ouroboricity_tier} Frob={design.frobenius_score:.2f}  {design.proposed_composition[:70]}")
+            print(f"\n  Total: {len(novel)} materials forged")
+        elif args.mat_name:
+            # Try as predefined
+            novel = predefined_novel_materials()
+            if args.mat_name in novel:
+                design = forge.forge(args.mat_name, novel[args.mat_name])
+                print(forge.report(args.mat_name))
+            else:
+                # Try as IMASM canonical
+                try:
+                    design = forge.forge_from_imas(args.mat_name)
+                    print(forge.report(f"{args.mat_name}_material"))
+                except Exception as e:
+                    print(f"Error: {e}")
+                    print("Known names: frobenius_composite, critical_sensor_metamaterial, ep_detector,")
+                    print("  eternal_memory_alloy, topological_thermal_rectifier, hierarchical_impact_absorber,")
+                    print("  quantum_topological_substrate, non_abelian_braiding_material")
+                    print("  Or any IMASM canonical: I_Dialetheic_Bootstrap, etc.")
+        else:
+            print("Usage: rebis.py materials forge --name <name>  or  --all")
+            print("Predefined: frobenius_composite, critical_sensor_metamaterial, ep_detector,")
+            print("  eternal_memory_alloy, topological_thermal_rectifier,")
+            print("  hierarchical_impact_absorber, quantum_topological_substrate,")
+            print("  non_abelian_braiding_material")
+        return 0
+
+    elif sub == "report":
+        forge = MaterialForge()
+        novel = predefined_novel_materials()
+        for name, ig_tuple in novel.items():
+            forge.forge(name, ig_tuple)
+        print(forge.report("frobenius_composite"))
+        return 0
+
+    elif sub == "frobenius":
+        from materials.frobenius_metamaterial import FrobeniusMetamaterial, FrobeniusMaterialParams
+        params = FrobeniusMaterialParams(capsule_volume_fraction=0.12, feedback_gain=1.5)
+        mat = FrobeniusMetamaterial(size=20, params=params)
+        results = mat.run_simulation(load_cycles=25, heal_steps_per_cycle=10)
+        return 0
+
+    elif sub == "ouroboric":
+        from materials.ouroboric_alloy import OuroboricAlloy
+        alloy = OuroboricAlloy(n_grains=64)
+        results = alloy.run_mechanical_test(stress_amplitude_MPa=800, cycles=40)
+        return 0
+
+    elif sub == "list":
+        print("Predefined novel materials:")
+        for name in predefined_novel_materials():
+            print(f"  {name}")
+        print("\nIMASM canonicals (use --name):")
+        from imas.arranger import CANONICAL_NAMES
+        for name in CANONICAL_NAMES:
+            print(f"  {name}")
+        return 0
+
+    else:
+        print("Unknown materials subcommand. Use: forge, report, list, frobenius, ouroboric")
+        return 1
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Red-Hot Rebis v2.0 — CLINK Pipeline Whole-Organism Design",
@@ -256,10 +483,21 @@ Examples:
   rebis.py pipeline from-layer 5 8   # Design organism starting from cell layer
   rebis.py pipeline actionable --organism mammal  # Generate actionable outputs
 
+  rebis.py imas report               # IMASM arrangement analysis + bridges
+  rebis.py imas bridge --target I_Dialetheic_Bootstrap  # Bridge to CLINK
+  rebis.py imas hunt --samples 100000          # Frobenius pair density estimation
+  rebis.py imas energy --canonical I_Dialetheic_Bootstrap --layer L8_Organism
+
   rebis.py clink report              # Full CLINK integration report
   rebis.py clink list                # List all 9 CLINK layers
   rebis.py clink layer 3             # Show layer details
   rebis.py clink bridge serpentrod 8 # Promotion path to organism
+
+  rebis.py materials forge --all          # Forge all 8 predefined novel materials
+  rebis.py materials forge --name frobenius_composite  # Forge one material
+  rebis.py materials report              # Report all forged materials
+  rebis.py materials frobenius           # Run Frobenius metamaterial simulation
+  rebis.py materials ouroboric           # Run Ouroboric alloy simulation
 
   rebis.py run serpentrod --seq KAL  # Run protein prediction
   rebis.py run ch3mpiler --help      # CH3MPILER help
@@ -275,7 +513,30 @@ Examples:
     # verify
     subparsers.add_parser("verify", help="Verify Frobenius closure across components")
 
+    # imas (NEW — 6th Pillar)
+    p_imas = subparsers.add_parser("imas", help="IMASM Arranger: arrangement analysis, bridges, Frobenius hunt")
+    p_imas.add_argument("imas_subcommand",
+                        choices=["report", "bridge", "hunt", "energy"],
+                        help="IMASM subcommand")
+    p_imas.add_argument("--canonical", dest="imas_target",
+                        help="Canonical name for bridge/energy (comma-separated for bridge)")
+    p_imas.add_argument("--layer", dest="imas_layer",
+                        help="Target CLINK layer for energy (e.g., L8_Organism)")
+    p_imas.add_argument("--samples", dest="imas_samples", type=int,
+                        help="Sample count for Frobenius hunt")
+
     # pipeline (NEW)
+
+    # materials (NEW)
+    p_mat = subparsers.add_parser("materials", help="IG Material Forge — structural type to material design")
+    p_mat.add_argument("materials_subcommand",
+                        choices=["forge", "report", "list", "frobenius", "ouroboric"],
+                        help="Materials subcommand")
+    p_mat.add_argument("--name", dest="mat_name", type=str,
+                        help="Material or IMASM canonical name for forge")
+    p_mat.add_argument("--all", dest="mat_all", action="store_true",
+                        help="Forge all predefined materials")
+
     p_pipe = subparsers.add_parser("pipeline", help="CLINK Design Pipeline")
     p_pipe.add_argument("pipeline_subcommand",
                         choices=["bridges", "ground-up", "from-layer", "actionable"],
@@ -317,6 +578,10 @@ Examples:
         return cmd_pipeline(args)
     elif args.command == "clink":
         return cmd_clink(args)
+    elif args.command == "materials":
+        return cmd_materials(args)
+    elif args.command == "imas":
+        return cmd_imas(args)
     elif args.command == "run":
         return cmd_run(args)
     else:

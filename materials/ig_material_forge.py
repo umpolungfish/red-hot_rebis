@@ -1,0 +1,672 @@
+#!/usr/bin/env python3
+"""
+ig_material_forge.py — IG Structural Type → Concrete Material Design Bridge
+============================================================================
+
+Maps the 12-primitive Imscribing Grammar tuple to physical material properties:
+composition, structure, processing, and predicted behaviors. Each primitive
+family constrains a specific material design axis.
+
+Primitive → Material Property Mapping:
+  D (dimensionality)  → structural dimensionality (0D dots, 1D wires, 2D films, bulk)
+  T (topology)        → connectivity type (network, core-shell, bowtie, interpenetrating)
+  R (coupling)         → interface coupling (weak vdW, covalent, ionic, dynamic bond)
+  P (parity)           → symmetry class (amorphous, polycrystalline, ordered, Frobenius)
+  F (fidelity)         → phase purity (defect-tolerant, thermal, quantum-coherent)
+  K (kinetics)         → processing kinetics (quenched, annealed, equilibrated, trapped)
+  G (cardinality)      → interaction range (short-range bond, mesoscale, long-range order)
+  C (composition)      → synthesis sequence (one-pot, combinatorial, sequential, templated)
+  Phi (criticality)    → critical behavior (inert, self-sensing, tunable, EP, runaway)
+  H (chirality)        → memory/history (memoryless, one-step, two-step, eternal)
+  S (stoichiometry)    → component count (unary, binary, multi-component)
+  Omega (winding)      → topological protection (none, Z2, integer winding, non-Abelian)
+
+This is the materials analog of clink_bridge.py — bridging the structural type
+crystal to the periodic table and processing space.
+
+Author: Lando⊗⊙perator
+"""
+
+from typing import Dict, List, Tuple, Optional
+import json, math
+from dataclasses import dataclass, field
+
+# ═══════════════════════════════════════════════════════════════════
+# PRIMITIVE → MATERIAL PROPERTY MAPS
+# ═══════════════════════════════════════════════════════════════════
+
+D_MATERIAL = {
+    '𐑛': {'dimensionality': '0D', 'structure': 'nanoparticle / quantum dot',
+           'size_regime': '1-100 nm', 'synthesis': 'colloidal precipitation'},
+    '𐑨': {'dimensionality': '2D', 'structure': 'thin film / membrane',
+           'size_regime': 'monolayer to μm', 'synthesis': 'CVD / ALD / Langmuir-Blodgett'},
+    '𐑼': {'dimensionality': '3D bulk', 'structure': 'bulk solid / composite',
+           'size_regime': 'macro', 'synthesis': 'powder metallurgy / casting'},
+    '𐑦': {'dimensionality': 'hierarchical', 'structure': 'self-similar metamaterial',
+           'size_regime': 'nm to cm', 'synthesis': 'additive + self-assembly'},
+}
+
+T_MATERIAL = {
+    '𐑡': {'connectivity': 'network', 'structure': 'percolating network / aerogel',
+           'mechanical': 'high porosity, low density'},
+    '𐑰': {'connectivity': 'core-shell', 'structure': 'coated / encapsulated',
+           'mechanical': 'graded interface, stress-buffered'},
+    '𐑥': {'connectivity': 'bowtie/crossing', 'structure': 'interpenetrating / woven',
+           'mechanical': 'auxetic possible, high toughness'},
+    '𐑶': {'connectivity': 'interpenetrating', 'structure': 'IPN / MOF@COF',
+           'mechanical': 'synergistic, strain-sharing'},
+    '𐑸': {'connectivity': 'self-referential', 'structure': 'self-similar fractal',
+           'mechanical': 'scale-invariant, self-healing capable'},
+}
+
+R_MATERIAL = {
+    '𐑩': {'interface': 'weak (van der Waals)', 'bond_energy': '< 50 kJ/mol',
+           'reversible': True, 'fatigue': 'low cycles'},
+    '𐑑': {'interface': 'moderate (H-bond, π-π)', 'bond_energy': '50-150 kJ/mol',
+           'reversible': 'partially', 'fatigue': 'moderate'},
+    '𐑽': {'interface': 'strong (covalent, ionic)', 'bond_energy': '150-800 kJ/mol',
+           'reversible': False, 'fatigue': 'high cycles'},
+    '𐑾': {'interface': 'dynamic (Diels-Alder, disulfide)', 'bond_energy': '100-300 kJ/mol',
+           'reversible': True, 'fatigue': 'self-healing'},
+}
+
+P_MATERIAL = {
+    '𐑗': {'symmetry': 'amorphous / disordered', 'order_parameter': 0.0,
+           'properties': 'isotropic, broad distributions'},
+    '𐑿': {'symmetry': 'quantum superposition', 'order_parameter': 'complex',
+           'properties': 'coherence-enabled, entangled'},
+    '𐑬': {'symmetry': 'partially ordered (Z₂)', 'order_parameter': '< 1.0',
+           'properties': 'nematic, ferroelectric domains'},
+    '𐑯': {'symmetry': 'fully symmetric', 'order_parameter': 1.0,
+           'properties': 'single crystal, anisotropic'},
+    '𐑹': {'symmetry': 'Frobenius-closed', 'order_parameter': 'μ∘δ=id',
+           'properties': 'self-verifying, closed-loop healing'},
+}
+
+F_MATERIAL = {
+    '𐑱': {'phase': 'classical / defect-tolerant', 'purity': '90-99%',
+           'character': 'polycrystalline, grain boundaries present'},
+    '𐑞': {'phase': 'thermal / noisy', 'purity': '99-99.9%',
+           'character': 'annealed, reduced defects'},
+    '𐑐': {'phase': 'quantum-coherent', 'purity': '99.9999%+',
+           'character': 'single crystal, ultrahigh vacuum processed'},
+}
+K_MATERIAL = {
+    '𐑘': {'kinetics': 'driven / far-from-equilibrium', 'processing': 'quench / rapid solidification',
+           'microstructure': 'fine-grained, metastable phases'},
+    '𐑤': {'kinetics': 'moderate', 'processing': 'controlled cooling',
+           'microstructure': 'medium grain size, equilibrium phases'},
+    '𐑧': {'kinetics': 'near-equilibrium', 'processing': 'slow anneal / float zone',
+           'microstructure': 'coarse, highly ordered'},
+    '𐑪': {'kinetics': 'trapped (ordered)', 'processing': 'field-assisted / epitaxial',
+           'microstructure': 'single domain, trapped order'},
+    '𐑺': {'kinetics': 'trapped (disordered)', 'processing': 'melt-spin / glass-forming',
+           'microstructure': 'metallic glass, no long-range order'},
+}
+
+G_MATERIAL = {
+    '𐑚': {'interaction_range': 'local (nearest-neighbor)', 'coordination': '4-8',
+           'property': 'short-range order only, sensitive to local defects'},
+    '𐑔': {'interaction_range': 'mesoscale', 'coordination': 'grain-level',
+           'property': 'grain-boundary-mediated, Hall-Petch applies'},
+    '𐑲': {'interaction_range': 'long-range / universal', 'coordination': 'global',
+           'property': 'collective modes, topological protection possible'},
+}
+
+C_MATERIAL = {
+    '𐑝': {'synthesis': 'one-pot / in-situ', 'sequence': 'all precursors combined',
+           'advantage': 'simplicity, scalability', 'disadvantage': 'limited control'},
+    '𐑜': {'synthesis': 'combinatorial', 'sequence': 'parallel libraries',
+           'advantage': 'high-throughput discovery', 'disadvantage': 'integration challenge'},
+    '𐑠': {'synthesis': 'sequential / layer-by-layer', 'sequence': 'ordered deposition',
+           'advantage': 'precise architecture', 'disadvantage': 'slow, expensive'},
+    '𐑵': {'synthesis': 'templated / broadcast', 'sequence': 'scaffold-directed',
+           'advantage': 'complex 3D geometries', 'disadvantage': 'template removal'},
+}
+
+PHI_MATERIAL = {
+    '𐑢': {'criticality': 'sub-critical / inert', 'response': 'linear, no divergence',
+           'sensing': 'none', 'application': 'structural material'},
+    '⊙': {'criticality': 'critical (self-modeling)', 'response': 'χ ~ |T-Tc|^(-γ)',
+           'sensing': 'self-sensing, extreme gain', 'application': 'sensor / actuator'},
+    '𐑮': {'criticality': 'complex-plane critical', 'response': 'damped oscillations',
+           'sensing': 'phase-sensitive', 'application': 'tunable filter / resonator'},
+    '𐑻': {'criticality': 'exceptional point', 'response': '√ε sensitivity',
+           'sensing': 'EP-enhanced', 'application': 'ultrasensitive detector'},
+    '𐑣': {'criticality': 'supercritical / runaway', 'response': 'exponential growth',
+           'sensing': 'threshold switch', 'application': 'trigger / fuse / one-shot'},
+}
+
+H_MATERIAL = {
+    '𐑓': {'memory': 'none (Markov-0)', 'hysteresis': False,
+           'history': 'no path dependence', 'fatigue': 'time-independent'},
+    '𐑒': {'memory': 'one-step', 'hysteresis': 'simple loop',
+           'history': 'most recent state only', 'fatigue': 'rate-dependent'},
+    '𐑖': {'memory': 'two-step', 'hysteresis': 'double loop / training effect',
+           'history': 'two prior states', 'fatigue': 'shake-down to steady state'},
+    '𐑫': {'memory': 'eternal / shape-memory', 'hysteresis': 'persistent',
+           'history': 'full path encoding', 'fatigue': 'shape-memory alloy regime'},
+}
+
+S_MATERIAL = {
+    '𐑙': {'components': 1, 'class': 'unary (pure element / compound)',
+           'complexity': 'lowest', 'example': 'pure Cu, SiO₂, Al₂O₃'},
+    '𐑕': {'components': 2, 'class': 'binary (alloy / compound pair)',
+           'complexity': 'moderate', 'example': 'steel, BaTiO₃, GaAs'},
+    '𐑳': {'components': '3+', 'class': 'multi-component (HEA / perovskite)',
+           'complexity': 'high', 'example': 'CrMnFeCoNi, PMN-PT, MAX phases'},
+}
+
+OMEGA_MATERIAL = {
+    '𐑷': {'topology': 'trivial', 'protection': 'none',
+           'edge_states': 'none', 'robustness': 'fragile'},
+    '𐑴': {'topology': 'Z₂ (parity)', 'protection': 'symmetry-protected',
+           'edge_states': 'helical / Dirac', 'robustness': 'defect-tolerant'},
+    '𐑭': {'topology': 'ℤ (integer winding)', 'protection': 'topological (Chern)',
+           'edge_states': 'chiral, quantized', 'robustness': 'disorder-immune'},
+    '𐑟': {'topology': 'non-Abelian', 'protection': 'braiding-protected',
+           'edge_states': 'Majorana / parafermion', 'robustness': 'fault-tolerant'},
+}
+# ═══════════════════════════════════════════════════════════════════
+# MATERIAL DESIGN DATA STRUCTURE
+# ═══════════════════════════════════════════════════════════════════
+
+PRIMITIVE_ORDER = ['D', 'T', 'R', 'P', 'F', 'K', 'G', 'C', 'Φ', 'H', 'S', 'Ω']
+
+@dataclass
+class MaterialDesign:
+    """Complete material specification derived from an IG structural type."""
+    name: str
+    ig_tuple: Tuple[str, ...]
+    # Property maps
+    dimensionality: Dict
+    topology: Dict
+    interface: Dict
+    symmetry: Dict
+    phase: Dict
+    kinetics: Dict
+    interaction_range: Dict
+    synthesis: Dict
+    criticality: Dict
+    memory: Dict
+    stoichiometry: Dict
+    topological_protection: Dict
+    # Derived properties
+    proposed_composition: str = ""
+    proposed_processing: str = ""
+    predicted_properties: Dict = field(default_factory=dict)
+    target_applications: List[str] = field(default_factory=list)
+    frobenius_score: float = 0.0
+    ouroboricity_tier: str = ""
+
+    def to_dict(self) -> Dict:
+        return {
+            'name': self.name,
+            'ig_tuple': '⟨' + ' · '.join(self.ig_tuple) + '⟩',
+            'dimensionality': self.dimensionality,
+            'topology': self.topology,
+            'interface': self.interface,
+            'symmetry': self.symmetry,
+            'phase': self.phase,
+            'kinetics': self.kinetics,
+            'interaction_range': self.interaction_range,
+            'synthesis': self.synthesis,
+            'criticality': self.criticality,
+            'memory': self.memory,
+            'stoichiometry': self.stoichiometry,
+            'topological_protection': self.topological_protection,
+            'proposed_composition': self.proposed_composition,
+            'proposed_processing': self.proposed_processing,
+            'predicted_properties': self.predicted_properties,
+            'target_applications': self.target_applications,
+            'frobenius_score': self.frobenius_score,
+            'ouroboricity_tier': self.ouroboricity_tier,
+        }
+
+
+# ═══════════════════════════════════════════════════════════════════
+# THE FORGE
+# ═══════════════════════════════════════════════════════════════════
+
+class MaterialForge:
+    """
+    Forge a concrete material design from an IG structural type tuple.
+
+    The forge translates each of the 12 primitive values into a specific
+    material design choice, then synthesizes these into a coherent material
+    specification — composition, processing route, predicted properties, and
+    target applications.
+    """
+
+    def __init__(self):
+        self._designs: Dict[str, MaterialDesign] = {}
+
+    def forge(self, name: str, ig_tuple: Tuple[str, ...]) -> MaterialDesign:
+        """Translate an IG tuple into a full MaterialDesign."""
+        D, T, R, P, F, K, G, C, Phi, H, S, Omega = ig_tuple
+
+        design = MaterialDesign(
+            name=name,
+            ig_tuple=ig_tuple,
+            dimensionality=D_MATERIAL.get(D, D_MATERIAL['𐑨']),
+            topology=T_MATERIAL.get(T, T_MATERIAL['𐑡']),
+            interface=R_MATERIAL.get(R, R_MATERIAL['𐑩']),
+            symmetry=P_MATERIAL.get(P, P_MATERIAL['𐑗']),
+            phase=F_MATERIAL.get(F, F_MATERIAL['𐑱']),
+            kinetics=K_MATERIAL.get(K, K_MATERIAL['𐑤']),
+            interaction_range=G_MATERIAL.get(G, G_MATERIAL['𐑔']),
+            synthesis=C_MATERIAL.get(C, C_MATERIAL['𐑝']),
+            criticality=PHI_MATERIAL.get(Phi, PHI_MATERIAL['𐑢']),
+            memory=H_MATERIAL.get(H, H_MATERIAL['𐑓']),
+            stoichiometry=S_MATERIAL.get(S, S_MATERIAL['𐑕']),
+            topological_protection=OMEGA_MATERIAL.get(Omega, OMEGA_MATERIAL['𐑷']),
+        )
+
+        # Synthesize composition, processing, properties, applications
+        self._synthesize_composition(design)
+        self._synthesize_processing(design)
+        self._synthesize_properties(design)
+        self._synthesize_applications(design)
+        self._compute_frobenius_score(design)
+        self._compute_tier(design)
+
+        self._designs[name] = design
+        return design
+
+    def _synthesize_composition(self, d: MaterialDesign):
+        """Derive a proposed chemical composition from structural primitives."""
+        n_comp = d.stoichiometry['components']
+        dim = d.dimensionality['dimensionality']
+        sym = d.symmetry['symmetry']
+        topo_prot = d.topological_protection['topology']
+
+        # Base material families
+        if n_comp == 1:
+            if topo_prot == 'ℤ (integer winding)':
+                d.proposed_composition = "Bi₂Se₃ or Sb₂Te₃ (3D topological insulator)"
+            elif topo_prot == 'Z₂ (parity)':
+                d.proposed_composition = "Graphene / stanene (2D Z₂ topological insulator)"
+            elif d.phase['phase'] == 'quantum-coherent':
+                d.proposed_composition = "Si (isotopically purified ²⁸Si, single crystal)"
+            elif d.criticality['criticality'] == 'critical (self-modeling)':
+                d.proposed_composition = "VO₂ (metal-insulator transition @ 67°C)"
+            else:
+                d.proposed_composition = "Al₂O₃ (sapphire, α-phase)"
+        elif n_comp == 2:
+            if d.memory['memory'] == 'eternal / shape-memory':
+                d.proposed_composition = "NiTi (Nitinol, equiatomic shape-memory alloy)"
+            elif topo_prot == 'ℤ (integer winding)':
+                d.proposed_composition = "HgTe/CdTe quantum well (topological insulator)"
+            elif d.interface['interface'] == 'dynamic (Diels-Alder, disulfide)':
+                d.proposed_composition = "Epoxy-amine with Diels-Alder adducts (self-healing)"
+            elif d.symmetry['symmetry'] == 'partially ordered (Z₂)':
+                d.proposed_composition = "BaTiO₃ (ferroelectric perovskite)"
+            elif d.criticality['criticality'] == 'critical (self-modeling)':
+                d.proposed_composition = "Pb(Mg₁/₃Nb₂/₃)O₃-PbTiO₃ (PMN-PT relaxor)"
+            else:
+                d.proposed_composition = "Ti-6Al-4V (α+β titanium alloy)"
+        else:  # 3+
+            if d.symmetry['symmetry'] == 'Frobenius-closed':
+                d.proposed_composition = "CrMnFeCoNi (Cantor HEA) + self-healing microcapsules"
+            elif topo_prot == 'ℤ (integer winding)':
+                d.proposed_composition = "(Bi,Sb)₂(Te,Se)₃ ternary topological insulator"
+            elif d.memory['memory'] == 'eternal / shape-memory':
+                d.proposed_composition = "NiTiHfPd (high-temperature shape-memory HEA)"
+            elif d.criticality['criticality'] == 'critical (self-modeling)':
+                d.proposed_composition = "Gd₅(SiₓGe₁₋ₓ)₄ (giant magnetocaloric)"
+            else:
+                d.proposed_composition = "AlCoCrFeNi₂.₁ (eutectic high-entropy alloy)"
+
+    def _synthesize_processing(self, d: MaterialDesign):
+        """Derive processing route from kinetics, synthesis, and interface primitives."""
+        kin = d.kinetics['processing']
+        syn = d.synthesis['synthesis']
+        iface = d.interface['interface']
+
+        steps = []
+        steps.append(f"1. Precursor: {d.proposed_composition}")
+        steps.append(f"2. Primary: {kin} ({syn})")
+
+        if d.interface['reversible']:
+            steps.append("3. Interface engineering: dynamic bonding cycle (heat-cool cycle 3×)")
+        else:
+            steps.append("3. Interface engineering: controlled atmosphere bonding")
+
+        if d.topological_protection['topology'] != 'trivial':
+            steps.append("4. Topology: ultrahigh vacuum (10⁻¹⁰ torr), epitaxial growth")
+        elif d.phase['phase'] == 'quantum-coherent':
+            steps.append("4. Purification: zone refining, 99.9999%+ purity target")
+
+        if d.memory['memory'] != 'none (Markov-0)':
+            steps.append(f"5. Memory training: {d.memory['history']} cycling protocol")
+
+        d.proposed_processing = '\n'.join(steps)
+
+    def _synthesize_properties(self, d: MaterialDesign):
+        """Predict key material properties from the structural type."""
+        props = {}
+
+        # Mechanical
+        if d.interface['bond_energy']:
+            be = d.interface['bond_energy']
+            if '800' in str(be):
+                props['Young_modulus_GPa'] = '200-400 (stiff)'
+                props['Tensile_strength_MPa'] = '1000-3000'
+            elif '300' in str(be):
+                props['Young_modulus_GPa'] = '50-200 (moderate)'
+                props['Tensile_strength_MPa'] = '300-1000'
+            else:
+                props['Young_modulus_GPa'] = '1-50 (flexible)'
+                props['Tensile_strength_MPa'] = '10-300'
+
+        # Thermal
+        if d.topological_protection['topology'] != 'trivial':
+            props['Thermal_conductivity_WmK'] = '10-100 (phonon-dominated, edge-channel)'
+        elif d.phase['phase'] == 'quantum-coherent':
+            props['Thermal_conductivity_WmK'] = '> 1000 (ballistic, ultra-pure)'
+        else:
+            props['Thermal_conductivity_WmK'] = '1-50'
+
+        # Electrical
+        if d.criticality['criticality'] == 'critical (self-modeling)':
+            props['Electrical_resistivity'] = 'nonlinear, χ-divergent near Tc'
+        elif d.topological_protection['topology'] == 'ℤ (integer winding)':
+            props['Electrical_resistivity'] = 'surface: metallic (~h/e²), bulk: insulating'
+        elif d.topological_protection['topology'] == 'Z₂ (parity)':
+            props['Electrical_resistivity'] = 'edge: ~h/2e² quantized'
+        else:
+            props['Electrical_resistivity'] = 'ohmic, ρ ~ 10⁻⁶ to 10⁻² Ω·m'
+
+        # Self-healing
+        if d.interface['interface'] == 'dynamic (Diels-Alder, disulfide)':
+            props['Self_healing_efficiency'] = '85-95% (thermal trigger)'
+            props['Healing_cycles'] = '50-200'
+        elif d.symmetry['symmetry'] == 'Frobenius-closed':
+            props['Self_healing_efficiency'] = '> 99% (autonomous, μ∘δ=id)'
+            props['Healing_cycles'] = 'unlimited (Frobenius-closed)'
+        else:
+            props['Self_healing_efficiency'] = 'none'
+
+        # Memory
+        if d.memory['memory'] != 'none (Markov-0)':
+            props['Shape_memory_strain_pct'] = '4-8%'
+            if d.memory['memory'] == 'eternal / shape-memory':
+                props['Shape_memory_strain_pct'] = '6-10% (full recovery)'
+                props['Transformation_temperature_C'] = '-50 to +200'
+
+        # Topological
+        if d.topological_protection['topology'] != 'trivial':
+            props['Topological_invariant'] = d.topological_protection['protection']
+            props['Edge_state_type'] = d.topological_protection['edge_states']
+            props['Robustness'] = d.topological_protection['robustness']
+
+        d.predicted_properties = props
+
+    def _synthesize_applications(self, d: MaterialDesign):
+        """Determine target applications from the structural type."""
+        apps = []
+
+        if d.criticality['criticality'] == 'critical (self-modeling)':
+            apps.append('Ultra-sensitive strain sensor (self-referencing)')
+            apps.append('Critical-point actuator (χ-divergent response)')
+        elif d.criticality['criticality'] == 'exceptional point':
+            apps.append('Single-molecule detector (EP-enhanced √ε)')
+            apps.append('Environmental monitoring (trace analyte)')
+
+        if d.topological_protection['topology'] != 'trivial':
+            apps.append('Topological quantum computing substrate')
+            apps.append('Dissipationless interconnects (edge channels)')
+        elif d.topological_protection['topology'] == 'ℤ (integer winding)':
+            apps.append('Quantum Hall metrology standard')
+
+        if d.interface['reversible'] and d.interface['bond_energy']:
+            apps.append('Self-healing structural composite')
+        if d.symmetry['symmetry'] == 'Frobenius-closed':
+            apps.append('Autonomous damage-repair coating')
+            apps.append('Self-verifying critical infrastructure material')
+
+        if d.memory['memory'] != 'none (Markov-0)':
+            apps.append('Shape-memory actuator / deployable structure')
+            if d.memory['memory'] == 'eternal / shape-memory':
+                apps.append('Morphing aerospace structure (full path memory)')
+
+        if d.phase['phase'] == 'quantum-coherent':
+            apps.append('Quantum sensing / qubit host')
+        if d.dimensionality['dimensionality'] == 'hierarchical':
+            apps.append('Hierarchical impact absorber (nano to macro)')
+
+        if not apps:
+            apps.append('General structural / mechanical')
+        d.target_applications = apps
+
+    def _compute_frobenius_score(self, d: MaterialDesign):
+        """
+        Estimate how close the material is to satisfying μ∘δ = id.
+
+        Score components:
+        - Self-healing interface (+0.4 for dynamic bonding)
+        - Frobenius symmetry (+0.3 for 𐑹)
+        - Eternal memory (+0.2 for 𐑫)
+        - Bidirectional coupling (+0.1 for 𐑾)
+        """
+        score = 0.0
+        ig = d.ig_tuple
+        if ig[3] == '𐑹':
+            score += 0.3
+        if ig[2] == '𐑾':
+            score += 0.1
+        if ig[9] == '𐑫':
+            score += 0.2
+        if ig[4] == '𐑐':
+            score += 0.05
+        if ig[7] == '𐑠':
+            score += 0.05
+        if ig[11] == '𐑭':
+            score += 0.1
+
+        # Dynamic interface bonus
+        if d.interface['interface'] == 'dynamic (Diels-Alder, disulfide)':
+            score += 0.15
+        # Self-healing bonus
+        if 'Self_healing_efficiency' in d.predicted_properties:
+            eff = d.predicted_properties['Self_healing_efficiency']
+            if '99' in str(eff):
+                score += 0.05
+
+        d.frobenius_score = round(min(score, 1.0), 2)
+
+    def _compute_tier(self, d: MaterialDesign):
+        """Estimate ouroboricity tier from IG tuple."""
+        ig = d.ig_tuple
+        # O_inf: 𐑦 + 𐑸 + ⊙ + 𐑫 + 𐑭
+        if ig[0] == '𐑦' and ig[1] == '𐑸' and ig[8] == '⊙' and ig[9] == '𐑫' and ig[11] == '𐑭':
+            d.ouroboricity_tier = 'O_inf'
+        # O_2: ⊙ + (𐑫 or 𐑖) + (𐑭 or 𐑴)
+        elif ig[8] == '⊙' and ig[9] in ('𐑫', '𐑖') and ig[11] in ('𐑭', '𐑴'):
+            d.ouroboricity_tier = 'O_2'
+        elif ig[8] in ('⊙', '𐑮', '𐑻') and ig[9] in ('𐑖', '𐑫'):
+            d.ouroboricity_tier = 'O_2'
+        # O_1: any ⊙ or 𐑮
+        elif ig[8] in ('⊙', '𐑮'):
+            d.ouroboricity_tier = 'O_1'
+        elif ig[11] in ('𐑭', '𐑴') or ig[9] in ('𐑖', '𐑫'):
+            d.ouroboricity_tier = 'O_1'
+        else:
+            d.ouroboricity_tier = 'O_0'
+
+    def forge_from_imas(self, imas_name: str) -> MaterialDesign:
+        """Forge a material from an IMASM canonical arrangement name."""
+        import sys; sys.path.insert(0, "/home/mrnob0dy666/red-hot_rebis")
+        from imas.arranger import CANONICAL_FINGERPRINTS
+        from imas.ig_bridge import fingerprint_to_ig
+
+        if imas_name not in CANONICAL_FINGERPRINTS:
+            raise KeyError(f"Unknown IMASM canonical: {imas_name}. Known: {list(CANONICAL_FINGERPRINTS.keys())}")
+
+        fp = CANONICAL_FINGERPRINTS[imas_name]
+        ig = fingerprint_to_ig(fp)
+        material_name = f"{imas_name}_material"
+        return self.forge(material_name, ig)
+
+    def list_designs(self) -> List[str]:
+        return sorted(self._designs.keys())
+
+    def report(self, name: str) -> str:
+        """Generate a formatted report for a forged material."""
+        d = self._designs.get(name)
+        if not d:
+            return f"No design found for '{name}'"
+
+        ig_str = '⟨' + ' · '.join(d.ig_tuple) + '⟩'
+        lines = [
+            "=" * 72,
+            f"  MATERIAL DESIGN: {d.name}",
+            f"  IG Type: {ig_str}",
+            f"  Ouroboricity: {d.ouroboricity_tier}  |  Frobenius Score: {d.frobenius_score:.2f}",
+            "=" * 72,
+            "",
+            "── STRUCTURE ──",
+            f"  Dimensionality:   {d.dimensionality['structure']} ({d.dimensionality['size_regime']})",
+            f"  Topology:         {d.topology['connectivity']} — {d.topology['structure']}",
+            f"  Symmetry:         {d.symmetry['symmetry']}",
+            f"  Phase:            {d.phase['character']}",
+            "",
+            "── COMPOSITION ──",
+            f"  {d.proposed_composition}",
+            f"  Components:       {d.stoichiometry['class']}",
+            "",
+            "── PROCESSING ──",
+            d.proposed_processing,
+            "",
+            "── INTERFACES ──",
+            f"  Coupling:         {d.interface['interface']} ({d.interface['bond_energy']})",
+            f"  Reversible:       {d.interface['reversible']}",
+            "",
+            "── PROPERTIES ──",
+        ]
+
+        for prop, val in d.predicted_properties.items():
+            lines.append(f"  {prop.replace('_', ' '):30s} {val}")
+
+        lines += [
+            "",
+            "── TOPOLOGICAL PROTECTION ──",
+            f"  Invariant:        {d.topological_protection['topology']}",
+            f"  Protection:       {d.topological_protection['protection']}",
+            f"  Edge states:      {d.topological_protection['edge_states']}",
+            f"  Robustness:       {d.topological_protection['robustness']}",
+            "",
+            "── CRITICALITY ──",
+            f"  Regime:           {d.criticality['criticality']}",
+            f"  Response:         {d.criticality['response']}",
+            f"  Application:      {d.criticality['application']}",
+            "",
+            "── MEMORY ──",
+            f"  Type:             {d.memory['memory']}",
+            f"  Hysteresis:       {d.memory['hysteresis']}",
+            f"  History:          {d.memory['history']}",
+            "",
+            "── TARGET APPLICATIONS ──",
+        ]
+
+        for i, app in enumerate(d.target_applications, 1):
+            lines.append(f"  {i}. {app}")
+
+        lines.append("")
+        lines.append("=" * 72)
+        return '\n'.join(lines)
+
+
+# ═══════════════════════════════════════════════════════════════════
+# PREDEFINED NOVEL MATERIALS
+# ═══════════════════════════════════════════════════════════════════
+
+def predefined_novel_materials() -> Dict[str, Tuple[str, ...]]:
+    """Return a set of structurally novel IG material types not yet in the catalog.
+
+    These are chosen to span interesting regions of the crystal: Frobenius-closed
+    composites, topological memory alloys, ⊙-critical sensors, and EP detectors.
+    """
+    return {
+        # A: Frobenius-closed self-healing composite — the "ultimate" structural material
+        'frobenius_composite': (
+            '𐑼', '𐑸', '𐑾', '𐑹', '𐑞', '𐑧', '𐑲', '𐑠', '𐑮', '𐑫', '𐑳', '𐑭'
+        ),
+        # B: ⊙-critical self-sensing metamaterial — extreme gain sensor
+        'critical_sensor_metamaterial': (
+            '𐑼', '𐑥', '𐑾', '𐑬', '𐑞', '𐑧', '𐑲', '𐑠', '⊙', '𐑖', '𐑳', '𐑭'
+        ),
+        # C: EP-enhanced single-molecule detector
+        'ep_detector': (
+            '𐑨', '𐑡', '𐑽', '𐑬', '𐑐', '𐑘', '𐑔', '𐑜', '𐑻', '𐑒', '𐑕', '𐑴'
+        ),
+        # D: Eternal memory alloy — shape-memory with full history
+        'eternal_memory_alloy': (
+            '𐑼', '𐑰', '𐑑', '𐑬', '𐑞', '𐑤', '𐑲', '𐑝', '𐑢', '𐑫', '𐑳', '𐑷'
+        ),
+        # E: Topological thermal rectifier — heat diode
+        'topological_thermal_rectifier': (
+            '𐑼', '𐑸', '𐑾', '𐑬', '𐑞', '𐑧', '𐑔', '𐑝', '⊙', '𐑖', '𐑳', '𐑭'
+        ),
+        # F: Hierarchical impact absorber — nano-to-macro energy dissipation
+        'hierarchical_impact_absorber': (
+            '𐑦', '𐑸', '𐑑', '𐑯', '𐑱', '𐑪', '𐑲', '𐑠', '𐑢', '𐑖', '𐑳', '𐑴'
+        ),
+        # G: Quantum-coherent topological substrate — for qubits
+        'quantum_topological_substrate': (
+            '𐑨', '𐑡', '𐑽', '𐑯', '𐑐', '𐑪', '𐑲', '𐑠', '𐑮', '𐑫', '𐑙', '𐑭'
+        ),
+        # H: Non-Abelian braiding material — fault-tolerant quantum computing
+        'non_abelian_braiding_material': (
+            '𐑦', '𐑸', '𐑾', '𐑹', '𐑐', '𐑧', '𐑲', '𐑠', '⊙', '𐑫', '𐑳', '𐑟'
+        ),
+    }
+
+# ═══════════════════════════════════════════════════════════════════
+# MAIN
+# ═══════════════════════════════════════════════════════════════════
+
+def main():
+    """Demonstrate the Material Forge with all novel predefined materials."""
+    forge = MaterialForge()
+    novel = predefined_novel_materials()
+
+    print("╔" + "═" * 70 + "╗")
+    print("║" + "  IG MATERIAL FORGE — Structural Type → Concrete Material Design  ".center(70) + "║")
+    print("╚" + "═" * 70 + "╝")
+    print()
+
+    for name, ig_tuple in novel.items():
+        design = forge.forge(name, ig_tuple)
+        print(forge.report(name))
+        print()
+
+    # Also forge all IMASM canonicals
+    print("\n" + "=" * 72)
+    print("  FORGING FROM IMASM CANONICALS")
+    print("=" * 72)
+
+    import sys; sys.path.insert(0, "/home/mrnob0dy666/red-hot_rebis")
+    from imas.arranger import CANONICAL_FINGERPRINTS
+    for imas_name in CANONICAL_FINGERPRINTS:
+        try:
+            design = forge.forge_from_imas(imas_name)
+            print(f"  {imas_name:40s} → {design.ouroboricity_tier:6s}  "
+                  f"Frob={design.frobenius_score:.2f}  "
+                  f"{design.proposed_composition[:60]}")
+        except Exception as e:
+            print(f"  {imas_name:40s} → ERROR: {e}")
+
+    print(f"\n  Total designs forged: {len(forge.list_designs())}")
+
+    # Export all designs as JSON
+    out = {name: d.to_dict() for name, d in forge._designs.items()}
+    import json
+    outpath = "/home/mrnob0dy666/red-hot_rebis/materials/forged_materials.json"
+    with open(outpath, 'w') as f:
+        json.dump(out, f, indent=2)
+    print(f"\n  All designs exported to {outpath}")
+
+
+if __name__ == "__main__":
+    main()

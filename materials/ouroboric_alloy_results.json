@@ -1,0 +1,254 @@
+{
+  "simulation": "Ouroboric Alloy \u2014 Topological Self-Healing HEA",
+  "composition": "AlCoCrFeNi\u2082.\u2081 (eutectic HEA)",
+  "yield_strength_MPa": 600.0,
+  "fracture_toughness_MPam05": 45.0,
+  "topological_winding_W0": 4,
+  "results": {
+    "final_crack_length_um": 3.5197789628680036,
+    "healing_cycles": 30,
+    "winding_conserved": true,
+    "healing_history": [
+      {
+        "cycle": 1,
+        "crack_length_um": 8.771,
+        "topological_force_MPa": 10.0,
+        "healing_rate_um_per_cycle": 3.759,
+        "boundaries_healed": 0,
+        "winding_conserved": true
+      },
+      {
+        "cycle": 2,
+        "crack_length_um": 7.798,
+        "topological_force_MPa": 10.0,
+        "healing_rate_um_per_cycle": 3.342,
+        "boundaries_healed": 0,
+        "winding_conserved": true
+      },
+      {
+        "cycle": 3,
+        "crack_length_um": 7.022,
+        "topological_force_MPa": 10.0,
+        "healing_rate_um_per_cycle": 3.01,
+        "boundaries_healed": 0,
+        "winding_conserved": true
+      },
+      {
+        "cycle": 4,
+        "crack_length_um": 6.4,
+        "topological_force_MPa": 10.0,
+        "healing_rate_um_per_cycle": 2.743,
+        "boundaries_healed": 0,
+        "winding_conserved": true
+      },
+      {
+        "cycle": 5,
+        "crack_length_um": 5.896,
+        "topological_force_MPa": 10.0,
+        "healing_rate_um_per_cycle": 2.527,
+        "boundaries_healed": 0,
+        "winding_conserved": true
+      },
+      {
+        "cycle": 6,
+        "crack_length_um": 5.487,
+        "topological_force_MPa": 10.0,
+        "healing_rate_um_per_cycle": 2.352,
+        "boundaries_healed": 0,
+        "winding_conserved": true
+      },
+      {
+        "cycle": 7,
+        "crack_length_um": 5.153,
+        "topological_force_MPa": 10.0,
+        "healing_rate_um_per_cycle": 2.208,
+        "boundaries_healed": 0,
+        "winding_conserved": true
+      },
+      {
+        "cycle": 8,
+        "crack_length_um": 4.878,
+        "topological_force_MPa": 10.0,
+        "healing_rate_um_per_cycle": 2.091,
+        "boundaries_healed": 0,
+        "winding_conserved": true
+      },
+      {
+        "cycle": 9,
+        "crack_length_um": 4.652,
+        "topological_force_MPa": 10.0,
+        "healing_rate_um_per_cycle": 1.994,
+        "boundaries_healed": 0,
+        "winding_conserved": true
+      },
+      {
+        "cycle": 10,
+        "crack_length_um": 4.464,
+        "topological_force_MPa": 10.0,
+        "healing_rate_um_per_cycle": 1.913,
+        "boundaries_healed": 0,
+        "winding_conserved": true
+      },
+      {
+        "cycle": 11,
+        "crack_length_um": 4.308,
+        "topological_force_MPa": 10.0,
+        "healing_rate_um_per_cycle": 1.846,
+        "boundaries_healed": 0,
+        "winding_conserved": true
+      },
+      {
+        "cycle": 12,
+        "crack_length_um": 4.178,
+        "topological_force_MPa": 10.0,
+        "healing_rate_um_per_cycle": 1.791,
+        "boundaries_healed": 0,
+        "winding_conserved": true
+      },
+      {
+        "cycle": 13,
+        "crack_length_um": 4.069,
+        "topological_force_MPa": 10.0,
+        "healing_rate_um_per_cycle": 1.744,
+        "boundaries_healed": 0,
+        "winding_conserved": true
+      },
+      {
+        "cycle": 14,
+        "crack_length_um": 3.978,
+        "topological_force_MPa": 10.0,
+        "healing_rate_um_per_cycle": 1.705,
+        "boundaries_healed": 0,
+        "winding_conserved": true
+      },
+      {
+        "cycle": 15,
+        "crack_length_um": 3.902,
+        "topological_force_MPa": 10.0,
+        "healing_rate_um_per_cycle": 1.672,
+        "boundaries_healed": 0,
+        "winding_conserved": true
+      },
+      {
+        "cycle": 16,
+        "crack_length_um": 3.837,
+        "topological_force_MPa": 10.0,
+        "healing_rate_um_per_cycle": 1.645,
+        "boundaries_healed": 0,
+        "winding_conserved": true
+      },
+      {
+        "cycle": 17,
+        "crack_length_um": 3.783,
+        "topological_force_MPa": 3.33,
+        "healing_rate_um_per_cycle": 1.621,
+        "boundaries_healed": 0,
+        "winding_conserved": true
+      },
+      {
+        "cycle": 18,
+        "crack_length_um": 3.737,
+        "topological_force_MPa": 3.33,
+        "healing_rate_um_per_cycle": 1.602,
+        "boundaries_healed": 0,
+        "winding_conserved": true
+      },
+      {
+        "cycle": 19,
+        "crack_length_um": 3.699,
+        "topological_force_MPa": 3.33,
+        "healing_rate_um_per_cycle": 1.585,
+        "boundaries_healed": 0,
+        "winding_conserved": true
+      },
+      {
+        "cycle": 20,
+        "crack_length_um": 3.666,
+        "topological_force_MPa": 3.33,
+        "healing_rate_um_per_cycle": 1.571,
+        "boundaries_healed": 0,
+        "winding_conserved": true
+      },
+      {
+        "cycle": 21,
+        "crack_length_um": 3.639,
+        "topological_force_MPa": 3.33,
+        "healing_rate_um_per_cycle": 1.559,
+        "boundaries_healed": 0,
+        "winding_conserved": true
+      },
+      {
+        "cycle": 22,
+        "crack_length_um": 3.615,
+        "topological_force_MPa": 3.33,
+        "healing_rate_um_per_cycle": 1.549,
+        "boundaries_healed": 0,
+        "winding_conserved": true
+      },
+      {
+        "cycle": 23,
+        "crack_length_um": 3.595,
+        "topological_force_MPa": 3.33,
+        "healing_rate_um_per_cycle": 1.541,
+        "boundaries_healed": 0,
+        "winding_conserved": true
+      },
+      {
+        "cycle": 24,
+        "crack_length_um": 3.579,
+        "topological_force_MPa": 3.33,
+        "healing_rate_um_per_cycle": 1.534,
+        "boundaries_healed": 0,
+        "winding_conserved": true
+      },
+      {
+        "cycle": 25,
+        "crack_length_um": 3.564,
+        "topological_force_MPa": 3.33,
+        "healing_rate_um_per_cycle": 1.528,
+        "boundaries_healed": 0,
+        "winding_conserved": true
+      },
+      {
+        "cycle": 26,
+        "crack_length_um": 3.552,
+        "topological_force_MPa": 3.33,
+        "healing_rate_um_per_cycle": 1.522,
+        "boundaries_healed": 0,
+        "winding_conserved": true
+      },
+      {
+        "cycle": 27,
+        "crack_length_um": 3.542,
+        "topological_force_MPa": 3.33,
+        "healing_rate_um_per_cycle": 1.518,
+        "boundaries_healed": 0,
+        "winding_conserved": true
+      },
+      {
+        "cycle": 28,
+        "crack_length_um": 3.533,
+        "topological_force_MPa": 3.33,
+        "healing_rate_um_per_cycle": 1.514,
+        "boundaries_healed": 0,
+        "winding_conserved": true
+      },
+      {
+        "cycle": 29,
+        "crack_length_um": 3.526,
+        "topological_force_MPa": 3.33,
+        "healing_rate_um_per_cycle": 1.511,
+        "boundaries_healed": 0,
+        "winding_conserved": true
+      },
+      {
+        "cycle": 30,
+        "crack_length_um": 3.52,
+        "topological_force_MPa": 3.33,
+        "healing_rate_um_per_cycle": 1.508,
+        "boundaries_healed": 0,
+        "winding_conserved": true
+      }
+    ]
+  }
+}

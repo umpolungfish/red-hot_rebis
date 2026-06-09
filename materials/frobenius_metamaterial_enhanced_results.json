@@ -1,0 +1,232 @@
+{
+  "simulation": "Frobenius Metamaterial \u2014 mu circ delta = id",
+  "params": {
+    "N": 20,
+    "matrix_modulus_GPa": 3.0,
+    "da_activation_temp_C": 90.0,
+    "capsule_vf": 0.15,
+    "cnt_vf": 0.005,
+    "niti_vf": 0.02,
+    "target_frobenius_error": 0.01
+  },
+  "results": {
+    "cycles": [
+      {
+        "cycle": 1,
+        "load_pct": 1.92,
+        "frob_before": 0.024,
+        "frob_after": 0.0048,
+        "healed_pct": 100.0,
+        "agent_remaining_pct": 99.9
+      },
+      {
+        "cycle": 2,
+        "load_pct": 0.92,
+        "frob_before": 0.0125,
+        "frob_after": 0.0073,
+        "healed_pct": 100.0,
+        "agent_remaining_pct": 99.9
+      },
+      {
+        "cycle": 3,
+        "load_pct": 1.77,
+        "frob_before": 0.0256,
+        "frob_after": 0.0088,
+        "healed_pct": 100.0,
+        "agent_remaining_pct": 99.8
+      },
+      {
+        "cycle": 4,
+        "load_pct": 1.17,
+        "frob_before": 0.0172,
+        "frob_after": 0.0113,
+        "healed_pct": 100.0,
+        "agent_remaining_pct": 99.8
+      },
+      {
+        "cycle": 5,
+        "load_pct": 1.37,
+        "frob_before": 0.023,
+        "frob_after": 0.0127,
+        "healed_pct": 100.0,
+        "agent_remaining_pct": 99.8
+      },
+      {
+        "cycle": 6,
+        "load_pct": 0.8,
+        "frob_before": 0.0167,
+        "frob_after": 0.0146,
+        "healed_pct": 100.0,
+        "agent_remaining_pct": 99.7
+      },
+      {
+        "cycle": 7,
+        "load_pct": 1.19,
+        "frob_before": 0.0225,
+        "frob_after": 0.0161,
+        "healed_pct": 100.0,
+        "agent_remaining_pct": 99.7
+      },
+      {
+        "cycle": 8,
+        "load_pct": 1.14,
+        "frob_before": 0.0234,
+        "frob_after": 0.0172,
+        "healed_pct": 100.0,
+        "agent_remaining_pct": 99.7
+      },
+      {
+        "cycle": 9,
+        "load_pct": 1.68,
+        "frob_before": 0.0307,
+        "frob_after": 0.0164,
+        "healed_pct": 100.0,
+        "agent_remaining_pct": 99.6
+      },
+      {
+        "cycle": 10,
+        "load_pct": 1.07,
+        "frob_before": 0.0221,
+        "frob_after": 0.017,
+        "healed_pct": 100.0,
+        "agent_remaining_pct": 99.5
+      },
+      {
+        "cycle": 11,
+        "load_pct": 0.63,
+        "frob_before": 0.0208,
+        "frob_after": 0.0174,
+        "healed_pct": 100.0,
+        "agent_remaining_pct": 99.5
+      },
+      {
+        "cycle": 12,
+        "load_pct": 1.12,
+        "frob_before": 0.0242,
+        "frob_after": 0.0184,
+        "healed_pct": 100.0,
+        "agent_remaining_pct": 99.4
+      },
+      {
+        "cycle": 13,
+        "load_pct": 1.66,
+        "frob_before": 0.0297,
+        "frob_after": 0.0191,
+        "healed_pct": 100.0,
+        "agent_remaining_pct": 99.4
+      },
+      {
+        "cycle": 14,
+        "load_pct": 0.78,
+        "frob_before": 0.0233,
+        "frob_after": 0.0192,
+        "healed_pct": 100.0,
+        "agent_remaining_pct": 99.3
+      },
+      {
+        "cycle": 15,
+        "load_pct": 1.88,
+        "frob_before": 0.0343,
+        "frob_after": 0.0191,
+        "healed_pct": 100.0,
+        "agent_remaining_pct": 99.2
+      },
+      {
+        "cycle": 16,
+        "load_pct": 0.64,
+        "frob_before": 0.0221,
+        "frob_after": 0.0196,
+        "healed_pct": 100.0,
+        "agent_remaining_pct": 99.2
+      },
+      {
+        "cycle": 17,
+        "load_pct": 1.56,
+        "frob_before": 0.0308,
+        "frob_after": 0.0196,
+        "healed_pct": 100.0,
+        "agent_remaining_pct": 99.1
+      },
+      {
+        "cycle": 18,
+        "load_pct": 1.77,
+        "frob_before": 0.0324,
+        "frob_after": 0.0194,
+        "healed_pct": 100.0,
+        "agent_remaining_pct": 99.0
+      },
+      {
+        "cycle": 19,
+        "load_pct": 1.18,
+        "frob_before": 0.0268,
+        "frob_after": 0.0195,
+        "healed_pct": 100.0,
+        "agent_remaining_pct": 99.0
+      },
+      {
+        "cycle": 20,
+        "load_pct": 1.76,
+        "frob_before": 0.0332,
+        "frob_after": 0.0198,
+        "healed_pct": 100.0,
+        "agent_remaining_pct": 98.9
+      }
+    ],
+    "final_frobenius_error": 0.019813807180727807,
+    "healed_fraction": 1.0,
+    "agent_remaining": 0.9890999999999999,
+    "total_healing_events": 30,
+    "frobenius_error_history": [
+      0.02213703566763775,
+      0.02196945472088244,
+      0.02196945472088244,
+      0.02196945472088244,
+      0.02196945472088244,
+      0.02196945472088244,
+      0.02196945472088244,
+      0.02196945472088244,
+      0.019608614105936437,
+      0.019608614105936437,
+      0.030829202624702522,
+      0.030829202624702522,
+      0.030829202624702522,
+      0.030829202624702522,
+      0.030427143786730792,
+      0.030427143786730792,
+      0.027608257528874296,
+      0.027608257528874296,
+      0.019592438461008624,
+      0.019592438461008624,
+      0.03240683410572315,
+      0.03240683410572315,
+      0.03240683410572315,
+      0.03240683410572315,
+      0.028554487072675445,
+      0.025864429300486037,
+      0.025864429300486037,
+      0.025864429300486037,
+      0.01935881637695084,
+      0.01935881637695084,
+      0.026803890962255085,
+      0.026803890962255085,
+      0.026803890962255085,
+      0.026803890962255085,
+      0.026803890962255085,
+      0.026803890962255085,
+      0.02303860678968137,
+      0.02303860678968137,
+      0.019451314674301314,
+      0.019451314674301314,
+      0.033213017207539615,
+      0.033213017207539615,
+      0.033213017207539615,
+      0.031279288094042755,
+      0.031279288094042755,
+      0.031279288094042755,
+      0.02200182224053419,
+      0.021634581734305654,
+      0.019813807180727807,
+      0.019813807180727807
+    ]
+  }
+}

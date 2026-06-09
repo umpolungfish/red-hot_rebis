@@ -1,0 +1,1880 @@
+{
+  "frobenius_composite": {
+    "name": "frobenius_composite",
+    "ig_tuple": "\u27e8\ud801\udc7c \u00b7 \ud801\udc78 \u00b7 \ud801\udc7e \u00b7 \ud801\udc79 \u00b7 \ud801\udc5e \u00b7 \ud801\udc67 \u00b7 \ud801\udc72 \u00b7 \ud801\udc60 \u00b7 \ud801\udc6e \u00b7 \ud801\udc6b \u00b7 \ud801\udc73 \u00b7 \ud801\udc6d\u27e9",
+    "dimensionality": {
+      "dimensionality": "3D bulk",
+      "structure": "bulk solid / composite",
+      "size_regime": "macro",
+      "synthesis": "powder metallurgy / casting"
+    },
+    "topology": {
+      "connectivity": "self-referential",
+      "structure": "self-similar fractal",
+      "mechanical": "scale-invariant, self-healing capable"
+    },
+    "interface": {
+      "interface": "dynamic (Diels-Alder, disulfide)",
+      "bond_energy": "100-300 kJ/mol",
+      "reversible": true,
+      "fatigue": "self-healing"
+    },
+    "symmetry": {
+      "symmetry": "Frobenius-closed",
+      "order_parameter": "\u03bc\u2218\u03b4=id",
+      "properties": "self-verifying, closed-loop healing"
+    },
+    "phase": {
+      "phase": "thermal / noisy",
+      "purity": "99-99.9%",
+      "character": "annealed, reduced defects"
+    },
+    "kinetics": {
+      "kinetics": "near-equilibrium",
+      "processing": "slow anneal / float zone",
+      "microstructure": "coarse, highly ordered"
+    },
+    "interaction_range": {
+      "interaction_range": "long-range / universal",
+      "coordination": "global",
+      "property": "collective modes, topological protection possible"
+    },
+    "synthesis": {
+      "synthesis": "sequential / layer-by-layer",
+      "sequence": "ordered deposition",
+      "advantage": "precise architecture",
+      "disadvantage": "slow, expensive"
+    },
+    "criticality": {
+      "criticality": "complex-plane critical",
+      "response": "damped oscillations",
+      "sensing": "phase-sensitive",
+      "application": "tunable filter / resonator"
+    },
+    "memory": {
+      "memory": "eternal / shape-memory",
+      "hysteresis": "persistent",
+      "history": "full path encoding",
+      "fatigue": "shape-memory alloy regime"
+    },
+    "stoichiometry": {
+      "components": "3+",
+      "class": "multi-component (HEA / perovskite)",
+      "complexity": "high",
+      "example": "CrMnFeCoNi, PMN-PT, MAX phases"
+    },
+    "topological_protection": {
+      "topology": "\u2124 (integer winding)",
+      "protection": "topological (Chern)",
+      "edge_states": "chiral, quantized",
+      "robustness": "disorder-immune"
+    },
+    "proposed_composition": "CrMnFeCoNi (Cantor HEA) + self-healing microcapsules",
+    "proposed_processing": "1. Precursor: CrMnFeCoNi (Cantor HEA) + self-healing microcapsules\n2. Primary: slow anneal / float zone (sequential / layer-by-layer)\n3. Interface engineering: dynamic bonding cycle (heat-cool cycle 3\u00d7)\n4. Topology: ultrahigh vacuum (10\u207b\u00b9\u2070 torr), epitaxial growth\n5. Memory training: full path encoding cycling protocol",
+    "predicted_properties": {
+      "Young_modulus_GPa": "50-200 (moderate)",
+      "Tensile_strength_MPa": "300-1000",
+      "Thermal_conductivity_WmK": "10-100 (phonon-dominated, edge-channel)",
+      "Electrical_resistivity": "surface: metallic (~h/e\u00b2), bulk: insulating",
+      "Self_healing_efficiency": "85-95% (thermal trigger)",
+      "Healing_cycles": "50-200",
+      "Shape_memory_strain_pct": "6-10% (full recovery)",
+      "Transformation_temperature_C": "-50 to +200",
+      "Topological_invariant": "topological (Chern)",
+      "Edge_state_type": "chiral, quantized",
+      "Robustness": "disorder-immune"
+    },
+    "target_applications": [
+      "Topological quantum computing substrate",
+      "Dissipationless interconnects (edge channels)",
+      "Self-healing structural composite",
+      "Autonomous damage-repair coating",
+      "Self-verifying critical infrastructure material",
+      "Shape-memory actuator / deployable structure",
+      "Morphing aerospace structure (full path memory)"
+    ],
+    "frobenius_score": 0.9,
+    "ouroboricity_tier": "O_2"
+  },
+  "critical_sensor_metamaterial": {
+    "name": "critical_sensor_metamaterial",
+    "ig_tuple": "\u27e8\ud801\udc7c \u00b7 \ud801\udc65 \u00b7 \ud801\udc7e \u00b7 \ud801\udc6c \u00b7 \ud801\udc5e \u00b7 \ud801\udc67 \u00b7 \ud801\udc72 \u00b7 \ud801\udc60 \u00b7 \u2299 \u00b7 \ud801\udc56 \u00b7 \ud801\udc73 \u00b7 \ud801\udc6d\u27e9",
+    "dimensionality": {
+      "dimensionality": "3D bulk",
+      "structure": "bulk solid / composite",
+      "size_regime": "macro",
+      "synthesis": "powder metallurgy / casting"
+    },
+    "topology": {
+      "connectivity": "bowtie/crossing",
+      "structure": "interpenetrating / woven",
+      "mechanical": "auxetic possible, high toughness"
+    },
+    "interface": {
+      "interface": "dynamic (Diels-Alder, disulfide)",
+      "bond_energy": "100-300 kJ/mol",
+      "reversible": true,
+      "fatigue": "self-healing"
+    },
+    "symmetry": {
+      "symmetry": "partially ordered (Z\u2082)",
+      "order_parameter": "< 1.0",
+      "properties": "nematic, ferroelectric domains"
+    },
+    "phase": {
+      "phase": "thermal / noisy",
+      "purity": "99-99.9%",
+      "character": "annealed, reduced defects"
+    },
+    "kinetics": {
+      "kinetics": "near-equilibrium",
+      "processing": "slow anneal / float zone",
+      "microstructure": "coarse, highly ordered"
+    },
+    "interaction_range": {
+      "interaction_range": "long-range / universal",
+      "coordination": "global",
+      "property": "collective modes, topological protection possible"
+    },
+    "synthesis": {
+      "synthesis": "sequential / layer-by-layer",
+      "sequence": "ordered deposition",
+      "advantage": "precise architecture",
+      "disadvantage": "slow, expensive"
+    },
+    "criticality": {
+      "criticality": "critical (self-modeling)",
+      "response": "\u03c7 ~ |T-Tc|^(-\u03b3)",
+      "sensing": "self-sensing, extreme gain",
+      "application": "sensor / actuator"
+    },
+    "memory": {
+      "memory": "two-step",
+      "hysteresis": "double loop / training effect",
+      "history": "two prior states",
+      "fatigue": "shake-down to steady state"
+    },
+    "stoichiometry": {
+      "components": "3+",
+      "class": "multi-component (HEA / perovskite)",
+      "complexity": "high",
+      "example": "CrMnFeCoNi, PMN-PT, MAX phases"
+    },
+    "topological_protection": {
+      "topology": "\u2124 (integer winding)",
+      "protection": "topological (Chern)",
+      "edge_states": "chiral, quantized",
+      "robustness": "disorder-immune"
+    },
+    "proposed_composition": "(Bi,Sb)\u2082(Te,Se)\u2083 ternary topological insulator",
+    "proposed_processing": "1. Precursor: (Bi,Sb)\u2082(Te,Se)\u2083 ternary topological insulator\n2. Primary: slow anneal / float zone (sequential / layer-by-layer)\n3. Interface engineering: dynamic bonding cycle (heat-cool cycle 3\u00d7)\n4. Topology: ultrahigh vacuum (10\u207b\u00b9\u2070 torr), epitaxial growth\n5. Memory training: two prior states cycling protocol",
+    "predicted_properties": {
+      "Young_modulus_GPa": "50-200 (moderate)",
+      "Tensile_strength_MPa": "300-1000",
+      "Thermal_conductivity_WmK": "10-100 (phonon-dominated, edge-channel)",
+      "Electrical_resistivity": "nonlinear, \u03c7-divergent near Tc",
+      "Self_healing_efficiency": "85-95% (thermal trigger)",
+      "Healing_cycles": "50-200",
+      "Shape_memory_strain_pct": "4-8%",
+      "Topological_invariant": "topological (Chern)",
+      "Edge_state_type": "chiral, quantized",
+      "Robustness": "disorder-immune"
+    },
+    "target_applications": [
+      "Ultra-sensitive strain sensor (self-referencing)",
+      "Critical-point actuator (\u03c7-divergent response)",
+      "Topological quantum computing substrate",
+      "Dissipationless interconnects (edge channels)",
+      "Self-healing structural composite",
+      "Shape-memory actuator / deployable structure"
+    ],
+    "frobenius_score": 0.4,
+    "ouroboricity_tier": "O_2"
+  },
+  "ep_detector": {
+    "name": "ep_detector",
+    "ig_tuple": "\u27e8\ud801\udc68 \u00b7 \ud801\udc61 \u00b7 \ud801\udc7d \u00b7 \ud801\udc6c \u00b7 \ud801\udc50 \u00b7 \ud801\udc58 \u00b7 \ud801\udc54 \u00b7 \ud801\udc5c \u00b7 \ud801\udc7b \u00b7 \ud801\udc52 \u00b7 \ud801\udc55 \u00b7 \ud801\udc74\u27e9",
+    "dimensionality": {
+      "dimensionality": "2D",
+      "structure": "thin film / membrane",
+      "size_regime": "monolayer to \u03bcm",
+      "synthesis": "CVD / ALD / Langmuir-Blodgett"
+    },
+    "topology": {
+      "connectivity": "network",
+      "structure": "percolating network / aerogel",
+      "mechanical": "high porosity, low density"
+    },
+    "interface": {
+      "interface": "strong (covalent, ionic)",
+      "bond_energy": "150-800 kJ/mol",
+      "reversible": false,
+      "fatigue": "high cycles"
+    },
+    "symmetry": {
+      "symmetry": "partially ordered (Z\u2082)",
+      "order_parameter": "< 1.0",
+      "properties": "nematic, ferroelectric domains"
+    },
+    "phase": {
+      "phase": "quantum-coherent",
+      "purity": "99.9999%+",
+      "character": "single crystal, ultrahigh vacuum processed"
+    },
+    "kinetics": {
+      "kinetics": "driven / far-from-equilibrium",
+      "processing": "quench / rapid solidification",
+      "microstructure": "fine-grained, metastable phases"
+    },
+    "interaction_range": {
+      "interaction_range": "mesoscale",
+      "coordination": "grain-level",
+      "property": "grain-boundary-mediated, Hall-Petch applies"
+    },
+    "synthesis": {
+      "synthesis": "combinatorial",
+      "sequence": "parallel libraries",
+      "advantage": "high-throughput discovery",
+      "disadvantage": "integration challenge"
+    },
+    "criticality": {
+      "criticality": "exceptional point",
+      "response": "\u221a\u03b5 sensitivity",
+      "sensing": "EP-enhanced",
+      "application": "ultrasensitive detector"
+    },
+    "memory": {
+      "memory": "one-step",
+      "hysteresis": "simple loop",
+      "history": "most recent state only",
+      "fatigue": "rate-dependent"
+    },
+    "stoichiometry": {
+      "components": 2,
+      "class": "binary (alloy / compound pair)",
+      "complexity": "moderate",
+      "example": "steel, BaTiO\u2083, GaAs"
+    },
+    "topological_protection": {
+      "topology": "Z\u2082 (parity)",
+      "protection": "symmetry-protected",
+      "edge_states": "helical / Dirac",
+      "robustness": "defect-tolerant"
+    },
+    "proposed_composition": "BaTiO\u2083 (ferroelectric perovskite)",
+    "proposed_processing": "1. Precursor: BaTiO\u2083 (ferroelectric perovskite)\n2. Primary: quench / rapid solidification (combinatorial)\n3. Interface engineering: controlled atmosphere bonding\n4. Topology: ultrahigh vacuum (10\u207b\u00b9\u2070 torr), epitaxial growth\n5. Memory training: most recent state only cycling protocol",
+    "predicted_properties": {
+      "Young_modulus_GPa": "200-400 (stiff)",
+      "Tensile_strength_MPa": "1000-3000",
+      "Thermal_conductivity_WmK": "10-100 (phonon-dominated, edge-channel)",
+      "Electrical_resistivity": "edge: ~h/2e\u00b2 quantized",
+      "Self_healing_efficiency": "none",
+      "Shape_memory_strain_pct": "4-8%",
+      "Topological_invariant": "symmetry-protected",
+      "Edge_state_type": "helical / Dirac",
+      "Robustness": "defect-tolerant"
+    },
+    "target_applications": [
+      "Single-molecule detector (EP-enhanced \u221a\u03b5)",
+      "Environmental monitoring (trace analyte)",
+      "Topological quantum computing substrate",
+      "Dissipationless interconnects (edge channels)",
+      "Shape-memory actuator / deployable structure",
+      "Quantum sensing / qubit host"
+    ],
+    "frobenius_score": 0.05,
+    "ouroboricity_tier": "O_1"
+  },
+  "eternal_memory_alloy": {
+    "name": "eternal_memory_alloy",
+    "ig_tuple": "\u27e8\ud801\udc7c \u00b7 \ud801\udc70 \u00b7 \ud801\udc51 \u00b7 \ud801\udc6c \u00b7 \ud801\udc5e \u00b7 \ud801\udc64 \u00b7 \ud801\udc72 \u00b7 \ud801\udc5d \u00b7 \ud801\udc62 \u00b7 \ud801\udc6b \u00b7 \ud801\udc73 \u00b7 \ud801\udc77\u27e9",
+    "dimensionality": {
+      "dimensionality": "3D bulk",
+      "structure": "bulk solid / composite",
+      "size_regime": "macro",
+      "synthesis": "powder metallurgy / casting"
+    },
+    "topology": {
+      "connectivity": "core-shell",
+      "structure": "coated / encapsulated",
+      "mechanical": "graded interface, stress-buffered"
+    },
+    "interface": {
+      "interface": "moderate (H-bond, \u03c0-\u03c0)",
+      "bond_energy": "50-150 kJ/mol",
+      "reversible": "partially",
+      "fatigue": "moderate"
+    },
+    "symmetry": {
+      "symmetry": "partially ordered (Z\u2082)",
+      "order_parameter": "< 1.0",
+      "properties": "nematic, ferroelectric domains"
+    },
+    "phase": {
+      "phase": "thermal / noisy",
+      "purity": "99-99.9%",
+      "character": "annealed, reduced defects"
+    },
+    "kinetics": {
+      "kinetics": "moderate",
+      "processing": "controlled cooling",
+      "microstructure": "medium grain size, equilibrium phases"
+    },
+    "interaction_range": {
+      "interaction_range": "long-range / universal",
+      "coordination": "global",
+      "property": "collective modes, topological protection possible"
+    },
+    "synthesis": {
+      "synthesis": "one-pot / in-situ",
+      "sequence": "all precursors combined",
+      "advantage": "simplicity, scalability",
+      "disadvantage": "limited control"
+    },
+    "criticality": {
+      "criticality": "sub-critical / inert",
+      "response": "linear, no divergence",
+      "sensing": "none",
+      "application": "structural material"
+    },
+    "memory": {
+      "memory": "eternal / shape-memory",
+      "hysteresis": "persistent",
+      "history": "full path encoding",
+      "fatigue": "shape-memory alloy regime"
+    },
+    "stoichiometry": {
+      "components": "3+",
+      "class": "multi-component (HEA / perovskite)",
+      "complexity": "high",
+      "example": "CrMnFeCoNi, PMN-PT, MAX phases"
+    },
+    "topological_protection": {
+      "topology": "trivial",
+      "protection": "none",
+      "edge_states": "none",
+      "robustness": "fragile"
+    },
+    "proposed_composition": "NiTiHfPd (high-temperature shape-memory HEA)",
+    "proposed_processing": "1. Precursor: NiTiHfPd (high-temperature shape-memory HEA)\n2. Primary: controlled cooling (one-pot / in-situ)\n3. Interface engineering: dynamic bonding cycle (heat-cool cycle 3\u00d7)\n5. Memory training: full path encoding cycling protocol",
+    "predicted_properties": {
+      "Young_modulus_GPa": "1-50 (flexible)",
+      "Tensile_strength_MPa": "10-300",
+      "Thermal_conductivity_WmK": "1-50",
+      "Electrical_resistivity": "ohmic, \u03c1 ~ 10\u207b\u2076 to 10\u207b\u00b2 \u03a9\u00b7m",
+      "Self_healing_efficiency": "none",
+      "Shape_memory_strain_pct": "6-10% (full recovery)",
+      "Transformation_temperature_C": "-50 to +200"
+    },
+    "target_applications": [
+      "Self-healing structural composite",
+      "Shape-memory actuator / deployable structure",
+      "Morphing aerospace structure (full path memory)"
+    ],
+    "frobenius_score": 0.2,
+    "ouroboricity_tier": "O_1"
+  },
+  "topological_thermal_rectifier": {
+    "name": "topological_thermal_rectifier",
+    "ig_tuple": "\u27e8\ud801\udc7c \u00b7 \ud801\udc78 \u00b7 \ud801\udc7e \u00b7 \ud801\udc6c \u00b7 \ud801\udc5e \u00b7 \ud801\udc67 \u00b7 \ud801\udc54 \u00b7 \ud801\udc5d \u00b7 \u2299 \u00b7 \ud801\udc56 \u00b7 \ud801\udc73 \u00b7 \ud801\udc6d\u27e9",
+    "dimensionality": {
+      "dimensionality": "3D bulk",
+      "structure": "bulk solid / composite",
+      "size_regime": "macro",
+      "synthesis": "powder metallurgy / casting"
+    },
+    "topology": {
+      "connectivity": "self-referential",
+      "structure": "self-similar fractal",
+      "mechanical": "scale-invariant, self-healing capable"
+    },
+    "interface": {
+      "interface": "dynamic (Diels-Alder, disulfide)",
+      "bond_energy": "100-300 kJ/mol",
+      "reversible": true,
+      "fatigue": "self-healing"
+    },
+    "symmetry": {
+      "symmetry": "partially ordered (Z\u2082)",
+      "order_parameter": "< 1.0",
+      "properties": "nematic, ferroelectric domains"
+    },
+    "phase": {
+      "phase": "thermal / noisy",
+      "purity": "99-99.9%",
+      "character": "annealed, reduced defects"
+    },
+    "kinetics": {
+      "kinetics": "near-equilibrium",
+      "processing": "slow anneal / float zone",
+      "microstructure": "coarse, highly ordered"
+    },
+    "interaction_range": {
+      "interaction_range": "mesoscale",
+      "coordination": "grain-level",
+      "property": "grain-boundary-mediated, Hall-Petch applies"
+    },
+    "synthesis": {
+      "synthesis": "one-pot / in-situ",
+      "sequence": "all precursors combined",
+      "advantage": "simplicity, scalability",
+      "disadvantage": "limited control"
+    },
+    "criticality": {
+      "criticality": "critical (self-modeling)",
+      "response": "\u03c7 ~ |T-Tc|^(-\u03b3)",
+      "sensing": "self-sensing, extreme gain",
+      "application": "sensor / actuator"
+    },
+    "memory": {
+      "memory": "two-step",
+      "hysteresis": "double loop / training effect",
+      "history": "two prior states",
+      "fatigue": "shake-down to steady state"
+    },
+    "stoichiometry": {
+      "components": "3+",
+      "class": "multi-component (HEA / perovskite)",
+      "complexity": "high",
+      "example": "CrMnFeCoNi, PMN-PT, MAX phases"
+    },
+    "topological_protection": {
+      "topology": "\u2124 (integer winding)",
+      "protection": "topological (Chern)",
+      "edge_states": "chiral, quantized",
+      "robustness": "disorder-immune"
+    },
+    "proposed_composition": "(Bi,Sb)\u2082(Te,Se)\u2083 ternary topological insulator",
+    "proposed_processing": "1. Precursor: (Bi,Sb)\u2082(Te,Se)\u2083 ternary topological insulator\n2. Primary: slow anneal / float zone (one-pot / in-situ)\n3. Interface engineering: dynamic bonding cycle (heat-cool cycle 3\u00d7)\n4. Topology: ultrahigh vacuum (10\u207b\u00b9\u2070 torr), epitaxial growth\n5. Memory training: two prior states cycling protocol",
+    "predicted_properties": {
+      "Young_modulus_GPa": "50-200 (moderate)",
+      "Tensile_strength_MPa": "300-1000",
+      "Thermal_conductivity_WmK": "10-100 (phonon-dominated, edge-channel)",
+      "Electrical_resistivity": "nonlinear, \u03c7-divergent near Tc",
+      "Self_healing_efficiency": "85-95% (thermal trigger)",
+      "Healing_cycles": "50-200",
+      "Shape_memory_strain_pct": "4-8%",
+      "Topological_invariant": "topological (Chern)",
+      "Edge_state_type": "chiral, quantized",
+      "Robustness": "disorder-immune"
+    },
+    "target_applications": [
+      "Ultra-sensitive strain sensor (self-referencing)",
+      "Critical-point actuator (\u03c7-divergent response)",
+      "Topological quantum computing substrate",
+      "Dissipationless interconnects (edge channels)",
+      "Self-healing structural composite",
+      "Shape-memory actuator / deployable structure"
+    ],
+    "frobenius_score": 0.35,
+    "ouroboricity_tier": "O_2"
+  },
+  "hierarchical_impact_absorber": {
+    "name": "hierarchical_impact_absorber",
+    "ig_tuple": "\u27e8\ud801\udc66 \u00b7 \ud801\udc78 \u00b7 \ud801\udc51 \u00b7 \ud801\udc6f \u00b7 \ud801\udc71 \u00b7 \ud801\udc6a \u00b7 \ud801\udc72 \u00b7 \ud801\udc60 \u00b7 \ud801\udc62 \u00b7 \ud801\udc56 \u00b7 \ud801\udc73 \u00b7 \ud801\udc74\u27e9",
+    "dimensionality": {
+      "dimensionality": "hierarchical",
+      "structure": "self-similar metamaterial",
+      "size_regime": "nm to cm",
+      "synthesis": "additive + self-assembly"
+    },
+    "topology": {
+      "connectivity": "self-referential",
+      "structure": "self-similar fractal",
+      "mechanical": "scale-invariant, self-healing capable"
+    },
+    "interface": {
+      "interface": "moderate (H-bond, \u03c0-\u03c0)",
+      "bond_energy": "50-150 kJ/mol",
+      "reversible": "partially",
+      "fatigue": "moderate"
+    },
+    "symmetry": {
+      "symmetry": "fully symmetric",
+      "order_parameter": 1.0,
+      "properties": "single crystal, anisotropic"
+    },
+    "phase": {
+      "phase": "classical / defect-tolerant",
+      "purity": "90-99%",
+      "character": "polycrystalline, grain boundaries present"
+    },
+    "kinetics": {
+      "kinetics": "trapped (ordered)",
+      "processing": "field-assisted / epitaxial",
+      "microstructure": "single domain, trapped order"
+    },
+    "interaction_range": {
+      "interaction_range": "long-range / universal",
+      "coordination": "global",
+      "property": "collective modes, topological protection possible"
+    },
+    "synthesis": {
+      "synthesis": "sequential / layer-by-layer",
+      "sequence": "ordered deposition",
+      "advantage": "precise architecture",
+      "disadvantage": "slow, expensive"
+    },
+    "criticality": {
+      "criticality": "sub-critical / inert",
+      "response": "linear, no divergence",
+      "sensing": "none",
+      "application": "structural material"
+    },
+    "memory": {
+      "memory": "two-step",
+      "hysteresis": "double loop / training effect",
+      "history": "two prior states",
+      "fatigue": "shake-down to steady state"
+    },
+    "stoichiometry": {
+      "components": "3+",
+      "class": "multi-component (HEA / perovskite)",
+      "complexity": "high",
+      "example": "CrMnFeCoNi, PMN-PT, MAX phases"
+    },
+    "topological_protection": {
+      "topology": "Z\u2082 (parity)",
+      "protection": "symmetry-protected",
+      "edge_states": "helical / Dirac",
+      "robustness": "defect-tolerant"
+    },
+    "proposed_composition": "AlCoCrFeNi\u2082.\u2081 (eutectic high-entropy alloy)",
+    "proposed_processing": "1. Precursor: AlCoCrFeNi\u2082.\u2081 (eutectic high-entropy alloy)\n2. Primary: field-assisted / epitaxial (sequential / layer-by-layer)\n3. Interface engineering: dynamic bonding cycle (heat-cool cycle 3\u00d7)\n4. Topology: ultrahigh vacuum (10\u207b\u00b9\u2070 torr), epitaxial growth\n5. Memory training: two prior states cycling protocol",
+    "predicted_properties": {
+      "Young_modulus_GPa": "1-50 (flexible)",
+      "Tensile_strength_MPa": "10-300",
+      "Thermal_conductivity_WmK": "10-100 (phonon-dominated, edge-channel)",
+      "Electrical_resistivity": "edge: ~h/2e\u00b2 quantized",
+      "Self_healing_efficiency": "none",
+      "Shape_memory_strain_pct": "4-8%",
+      "Topological_invariant": "symmetry-protected",
+      "Edge_state_type": "helical / Dirac",
+      "Robustness": "defect-tolerant"
+    },
+    "target_applications": [
+      "Topological quantum computing substrate",
+      "Dissipationless interconnects (edge channels)",
+      "Self-healing structural composite",
+      "Shape-memory actuator / deployable structure",
+      "Hierarchical impact absorber (nano to macro)"
+    ],
+    "frobenius_score": 0.05,
+    "ouroboricity_tier": "O_1"
+  },
+  "quantum_topological_substrate": {
+    "name": "quantum_topological_substrate",
+    "ig_tuple": "\u27e8\ud801\udc68 \u00b7 \ud801\udc61 \u00b7 \ud801\udc7d \u00b7 \ud801\udc6f \u00b7 \ud801\udc50 \u00b7 \ud801\udc6a \u00b7 \ud801\udc72 \u00b7 \ud801\udc60 \u00b7 \ud801\udc6e \u00b7 \ud801\udc6b \u00b7 \ud801\udc59 \u00b7 \ud801\udc6d\u27e9",
+    "dimensionality": {
+      "dimensionality": "2D",
+      "structure": "thin film / membrane",
+      "size_regime": "monolayer to \u03bcm",
+      "synthesis": "CVD / ALD / Langmuir-Blodgett"
+    },
+    "topology": {
+      "connectivity": "network",
+      "structure": "percolating network / aerogel",
+      "mechanical": "high porosity, low density"
+    },
+    "interface": {
+      "interface": "strong (covalent, ionic)",
+      "bond_energy": "150-800 kJ/mol",
+      "reversible": false,
+      "fatigue": "high cycles"
+    },
+    "symmetry": {
+      "symmetry": "fully symmetric",
+      "order_parameter": 1.0,
+      "properties": "single crystal, anisotropic"
+    },
+    "phase": {
+      "phase": "quantum-coherent",
+      "purity": "99.9999%+",
+      "character": "single crystal, ultrahigh vacuum processed"
+    },
+    "kinetics": {
+      "kinetics": "trapped (ordered)",
+      "processing": "field-assisted / epitaxial",
+      "microstructure": "single domain, trapped order"
+    },
+    "interaction_range": {
+      "interaction_range": "long-range / universal",
+      "coordination": "global",
+      "property": "collective modes, topological protection possible"
+    },
+    "synthesis": {
+      "synthesis": "sequential / layer-by-layer",
+      "sequence": "ordered deposition",
+      "advantage": "precise architecture",
+      "disadvantage": "slow, expensive"
+    },
+    "criticality": {
+      "criticality": "complex-plane critical",
+      "response": "damped oscillations",
+      "sensing": "phase-sensitive",
+      "application": "tunable filter / resonator"
+    },
+    "memory": {
+      "memory": "eternal / shape-memory",
+      "hysteresis": "persistent",
+      "history": "full path encoding",
+      "fatigue": "shape-memory alloy regime"
+    },
+    "stoichiometry": {
+      "components": 1,
+      "class": "unary (pure element / compound)",
+      "complexity": "lowest",
+      "example": "pure Cu, SiO\u2082, Al\u2082O\u2083"
+    },
+    "topological_protection": {
+      "topology": "\u2124 (integer winding)",
+      "protection": "topological (Chern)",
+      "edge_states": "chiral, quantized",
+      "robustness": "disorder-immune"
+    },
+    "proposed_composition": "Bi\u2082Se\u2083 or Sb\u2082Te\u2083 (3D topological insulator)",
+    "proposed_processing": "1. Precursor: Bi\u2082Se\u2083 or Sb\u2082Te\u2083 (3D topological insulator)\n2. Primary: field-assisted / epitaxial (sequential / layer-by-layer)\n3. Interface engineering: controlled atmosphere bonding\n4. Topology: ultrahigh vacuum (10\u207b\u00b9\u2070 torr), epitaxial growth\n5. Memory training: full path encoding cycling protocol",
+    "predicted_properties": {
+      "Young_modulus_GPa": "200-400 (stiff)",
+      "Tensile_strength_MPa": "1000-3000",
+      "Thermal_conductivity_WmK": "10-100 (phonon-dominated, edge-channel)",
+      "Electrical_resistivity": "surface: metallic (~h/e\u00b2), bulk: insulating",
+      "Self_healing_efficiency": "none",
+      "Shape_memory_strain_pct": "6-10% (full recovery)",
+      "Transformation_temperature_C": "-50 to +200",
+      "Topological_invariant": "topological (Chern)",
+      "Edge_state_type": "chiral, quantized",
+      "Robustness": "disorder-immune"
+    },
+    "target_applications": [
+      "Topological quantum computing substrate",
+      "Dissipationless interconnects (edge channels)",
+      "Shape-memory actuator / deployable structure",
+      "Morphing aerospace structure (full path memory)",
+      "Quantum sensing / qubit host"
+    ],
+    "frobenius_score": 0.4,
+    "ouroboricity_tier": "O_2"
+  },
+  "non_abelian_braiding_material": {
+    "name": "non_abelian_braiding_material",
+    "ig_tuple": "\u27e8\ud801\udc66 \u00b7 \ud801\udc78 \u00b7 \ud801\udc7e \u00b7 \ud801\udc79 \u00b7 \ud801\udc50 \u00b7 \ud801\udc67 \u00b7 \ud801\udc72 \u00b7 \ud801\udc60 \u00b7 \u2299 \u00b7 \ud801\udc6b \u00b7 \ud801\udc73 \u00b7 \ud801\udc5f\u27e9",
+    "dimensionality": {
+      "dimensionality": "hierarchical",
+      "structure": "self-similar metamaterial",
+      "size_regime": "nm to cm",
+      "synthesis": "additive + self-assembly"
+    },
+    "topology": {
+      "connectivity": "self-referential",
+      "structure": "self-similar fractal",
+      "mechanical": "scale-invariant, self-healing capable"
+    },
+    "interface": {
+      "interface": "dynamic (Diels-Alder, disulfide)",
+      "bond_energy": "100-300 kJ/mol",
+      "reversible": true,
+      "fatigue": "self-healing"
+    },
+    "symmetry": {
+      "symmetry": "Frobenius-closed",
+      "order_parameter": "\u03bc\u2218\u03b4=id",
+      "properties": "self-verifying, closed-loop healing"
+    },
+    "phase": {
+      "phase": "quantum-coherent",
+      "purity": "99.9999%+",
+      "character": "single crystal, ultrahigh vacuum processed"
+    },
+    "kinetics": {
+      "kinetics": "near-equilibrium",
+      "processing": "slow anneal / float zone",
+      "microstructure": "coarse, highly ordered"
+    },
+    "interaction_range": {
+      "interaction_range": "long-range / universal",
+      "coordination": "global",
+      "property": "collective modes, topological protection possible"
+    },
+    "synthesis": {
+      "synthesis": "sequential / layer-by-layer",
+      "sequence": "ordered deposition",
+      "advantage": "precise architecture",
+      "disadvantage": "slow, expensive"
+    },
+    "criticality": {
+      "criticality": "critical (self-modeling)",
+      "response": "\u03c7 ~ |T-Tc|^(-\u03b3)",
+      "sensing": "self-sensing, extreme gain",
+      "application": "sensor / actuator"
+    },
+    "memory": {
+      "memory": "eternal / shape-memory",
+      "hysteresis": "persistent",
+      "history": "full path encoding",
+      "fatigue": "shape-memory alloy regime"
+    },
+    "stoichiometry": {
+      "components": "3+",
+      "class": "multi-component (HEA / perovskite)",
+      "complexity": "high",
+      "example": "CrMnFeCoNi, PMN-PT, MAX phases"
+    },
+    "topological_protection": {
+      "topology": "non-Abelian",
+      "protection": "braiding-protected",
+      "edge_states": "Majorana / parafermion",
+      "robustness": "fault-tolerant"
+    },
+    "proposed_composition": "CrMnFeCoNi (Cantor HEA) + self-healing microcapsules",
+    "proposed_processing": "1. Precursor: CrMnFeCoNi (Cantor HEA) + self-healing microcapsules\n2. Primary: slow anneal / float zone (sequential / layer-by-layer)\n3. Interface engineering: dynamic bonding cycle (heat-cool cycle 3\u00d7)\n4. Topology: ultrahigh vacuum (10\u207b\u00b9\u2070 torr), epitaxial growth\n5. Memory training: full path encoding cycling protocol",
+    "predicted_properties": {
+      "Young_modulus_GPa": "50-200 (moderate)",
+      "Tensile_strength_MPa": "300-1000",
+      "Thermal_conductivity_WmK": "10-100 (phonon-dominated, edge-channel)",
+      "Electrical_resistivity": "nonlinear, \u03c7-divergent near Tc",
+      "Self_healing_efficiency": "85-95% (thermal trigger)",
+      "Healing_cycles": "50-200",
+      "Shape_memory_strain_pct": "6-10% (full recovery)",
+      "Transformation_temperature_C": "-50 to +200",
+      "Topological_invariant": "braiding-protected",
+      "Edge_state_type": "Majorana / parafermion",
+      "Robustness": "fault-tolerant"
+    },
+    "target_applications": [
+      "Ultra-sensitive strain sensor (self-referencing)",
+      "Critical-point actuator (\u03c7-divergent response)",
+      "Topological quantum computing substrate",
+      "Dissipationless interconnects (edge channels)",
+      "Self-healing structural composite",
+      "Autonomous damage-repair coating",
+      "Self-verifying critical infrastructure material",
+      "Shape-memory actuator / deployable structure",
+      "Morphing aerospace structure (full path memory)",
+      "Quantum sensing / qubit host",
+      "Hierarchical impact absorber (nano to macro)"
+    ],
+    "frobenius_score": 0.85,
+    "ouroboricity_tier": "O_2"
+  },
+  "I_Dialetheic_Bootstrap_material": {
+    "name": "I_Dialetheic_Bootstrap_material",
+    "ig_tuple": "\u27e8\ud801\udc7c \u00b7 \ud801\udc78 \u00b7 \ud801\udc7e \u00b7 \ud801\udc79 \u00b7 \ud801\udc50 \u00b7 \ud801\udc58 \u00b7 \ud801\udc54 \u00b7 \ud801\udc60 \u00b7 \u2299 \u00b7 \ud801\udc6b \u00b7 \ud801\udc73 \u00b7 \ud801\udc6d\u27e9",
+    "dimensionality": {
+      "dimensionality": "3D bulk",
+      "structure": "bulk solid / composite",
+      "size_regime": "macro",
+      "synthesis": "powder metallurgy / casting"
+    },
+    "topology": {
+      "connectivity": "self-referential",
+      "structure": "self-similar fractal",
+      "mechanical": "scale-invariant, self-healing capable"
+    },
+    "interface": {
+      "interface": "dynamic (Diels-Alder, disulfide)",
+      "bond_energy": "100-300 kJ/mol",
+      "reversible": true,
+      "fatigue": "self-healing"
+    },
+    "symmetry": {
+      "symmetry": "Frobenius-closed",
+      "order_parameter": "\u03bc\u2218\u03b4=id",
+      "properties": "self-verifying, closed-loop healing"
+    },
+    "phase": {
+      "phase": "quantum-coherent",
+      "purity": "99.9999%+",
+      "character": "single crystal, ultrahigh vacuum processed"
+    },
+    "kinetics": {
+      "kinetics": "driven / far-from-equilibrium",
+      "processing": "quench / rapid solidification",
+      "microstructure": "fine-grained, metastable phases"
+    },
+    "interaction_range": {
+      "interaction_range": "mesoscale",
+      "coordination": "grain-level",
+      "property": "grain-boundary-mediated, Hall-Petch applies"
+    },
+    "synthesis": {
+      "synthesis": "sequential / layer-by-layer",
+      "sequence": "ordered deposition",
+      "advantage": "precise architecture",
+      "disadvantage": "slow, expensive"
+    },
+    "criticality": {
+      "criticality": "critical (self-modeling)",
+      "response": "\u03c7 ~ |T-Tc|^(-\u03b3)",
+      "sensing": "self-sensing, extreme gain",
+      "application": "sensor / actuator"
+    },
+    "memory": {
+      "memory": "eternal / shape-memory",
+      "hysteresis": "persistent",
+      "history": "full path encoding",
+      "fatigue": "shape-memory alloy regime"
+    },
+    "stoichiometry": {
+      "components": "3+",
+      "class": "multi-component (HEA / perovskite)",
+      "complexity": "high",
+      "example": "CrMnFeCoNi, PMN-PT, MAX phases"
+    },
+    "topological_protection": {
+      "topology": "\u2124 (integer winding)",
+      "protection": "topological (Chern)",
+      "edge_states": "chiral, quantized",
+      "robustness": "disorder-immune"
+    },
+    "proposed_composition": "CrMnFeCoNi (Cantor HEA) + self-healing microcapsules",
+    "proposed_processing": "1. Precursor: CrMnFeCoNi (Cantor HEA) + self-healing microcapsules\n2. Primary: quench / rapid solidification (sequential / layer-by-layer)\n3. Interface engineering: dynamic bonding cycle (heat-cool cycle 3\u00d7)\n4. Topology: ultrahigh vacuum (10\u207b\u00b9\u2070 torr), epitaxial growth\n5. Memory training: full path encoding cycling protocol",
+    "predicted_properties": {
+      "Young_modulus_GPa": "50-200 (moderate)",
+      "Tensile_strength_MPa": "300-1000",
+      "Thermal_conductivity_WmK": "10-100 (phonon-dominated, edge-channel)",
+      "Electrical_resistivity": "nonlinear, \u03c7-divergent near Tc",
+      "Self_healing_efficiency": "85-95% (thermal trigger)",
+      "Healing_cycles": "50-200",
+      "Shape_memory_strain_pct": "6-10% (full recovery)",
+      "Transformation_temperature_C": "-50 to +200",
+      "Topological_invariant": "topological (Chern)",
+      "Edge_state_type": "chiral, quantized",
+      "Robustness": "disorder-immune"
+    },
+    "target_applications": [
+      "Ultra-sensitive strain sensor (self-referencing)",
+      "Critical-point actuator (\u03c7-divergent response)",
+      "Topological quantum computing substrate",
+      "Dissipationless interconnects (edge channels)",
+      "Self-healing structural composite",
+      "Autonomous damage-repair coating",
+      "Self-verifying critical infrastructure material",
+      "Shape-memory actuator / deployable structure",
+      "Morphing aerospace structure (full path memory)",
+      "Quantum sensing / qubit host"
+    ],
+    "frobenius_score": 0.95,
+    "ouroboricity_tier": "O_2"
+  },
+  "II_Void_Genesis_material": {
+    "name": "II_Void_Genesis_material",
+    "ig_tuple": "\u27e8\ud801\udc7c \u00b7 \ud801\udc76 \u00b7 \ud801\udc7e \u00b7 \ud801\udc79 \u00b7 \ud801\udc5e \u00b7 \ud801\udc58 \u00b7 \ud801\udc54 \u00b7 \ud801\udc60 \u00b7 \ud801\udc63 \u00b7 \ud801\udc6b \u00b7 \ud801\udc73 \u00b7 \ud801\udc6d\u27e9",
+    "dimensionality": {
+      "dimensionality": "3D bulk",
+      "structure": "bulk solid / composite",
+      "size_regime": "macro",
+      "synthesis": "powder metallurgy / casting"
+    },
+    "topology": {
+      "connectivity": "interpenetrating",
+      "structure": "IPN / MOF@COF",
+      "mechanical": "synergistic, strain-sharing"
+    },
+    "interface": {
+      "interface": "dynamic (Diels-Alder, disulfide)",
+      "bond_energy": "100-300 kJ/mol",
+      "reversible": true,
+      "fatigue": "self-healing"
+    },
+    "symmetry": {
+      "symmetry": "Frobenius-closed",
+      "order_parameter": "\u03bc\u2218\u03b4=id",
+      "properties": "self-verifying, closed-loop healing"
+    },
+    "phase": {
+      "phase": "thermal / noisy",
+      "purity": "99-99.9%",
+      "character": "annealed, reduced defects"
+    },
+    "kinetics": {
+      "kinetics": "driven / far-from-equilibrium",
+      "processing": "quench / rapid solidification",
+      "microstructure": "fine-grained, metastable phases"
+    },
+    "interaction_range": {
+      "interaction_range": "mesoscale",
+      "coordination": "grain-level",
+      "property": "grain-boundary-mediated, Hall-Petch applies"
+    },
+    "synthesis": {
+      "synthesis": "sequential / layer-by-layer",
+      "sequence": "ordered deposition",
+      "advantage": "precise architecture",
+      "disadvantage": "slow, expensive"
+    },
+    "criticality": {
+      "criticality": "supercritical / runaway",
+      "response": "exponential growth",
+      "sensing": "threshold switch",
+      "application": "trigger / fuse / one-shot"
+    },
+    "memory": {
+      "memory": "eternal / shape-memory",
+      "hysteresis": "persistent",
+      "history": "full path encoding",
+      "fatigue": "shape-memory alloy regime"
+    },
+    "stoichiometry": {
+      "components": "3+",
+      "class": "multi-component (HEA / perovskite)",
+      "complexity": "high",
+      "example": "CrMnFeCoNi, PMN-PT, MAX phases"
+    },
+    "topological_protection": {
+      "topology": "\u2124 (integer winding)",
+      "protection": "topological (Chern)",
+      "edge_states": "chiral, quantized",
+      "robustness": "disorder-immune"
+    },
+    "proposed_composition": "CrMnFeCoNi (Cantor HEA) + self-healing microcapsules",
+    "proposed_processing": "1. Precursor: CrMnFeCoNi (Cantor HEA) + self-healing microcapsules\n2. Primary: quench / rapid solidification (sequential / layer-by-layer)\n3. Interface engineering: dynamic bonding cycle (heat-cool cycle 3\u00d7)\n4. Topology: ultrahigh vacuum (10\u207b\u00b9\u2070 torr), epitaxial growth\n5. Memory training: full path encoding cycling protocol",
+    "predicted_properties": {
+      "Young_modulus_GPa": "50-200 (moderate)",
+      "Tensile_strength_MPa": "300-1000",
+      "Thermal_conductivity_WmK": "10-100 (phonon-dominated, edge-channel)",
+      "Electrical_resistivity": "surface: metallic (~h/e\u00b2), bulk: insulating",
+      "Self_healing_efficiency": "85-95% (thermal trigger)",
+      "Healing_cycles": "50-200",
+      "Shape_memory_strain_pct": "6-10% (full recovery)",
+      "Transformation_temperature_C": "-50 to +200",
+      "Topological_invariant": "topological (Chern)",
+      "Edge_state_type": "chiral, quantized",
+      "Robustness": "disorder-immune"
+    },
+    "target_applications": [
+      "Topological quantum computing substrate",
+      "Dissipationless interconnects (edge channels)",
+      "Self-healing structural composite",
+      "Autonomous damage-repair coating",
+      "Self-verifying critical infrastructure material",
+      "Shape-memory actuator / deployable structure",
+      "Morphing aerospace structure (full path memory)"
+    ],
+    "frobenius_score": 0.9,
+    "ouroboricity_tier": "O_1"
+  },
+  "III_Anchor_Protocol_material": {
+    "name": "III_Anchor_Protocol_material",
+    "ig_tuple": "\u27e8\ud801\udc7c \u00b7 \ud801\udc70 \u00b7 \ud801\udc69 \u00b7 \ud801\udc57 \u00b7 \ud801\udc5e \u00b7 \ud801\udc58 \u00b7 \ud801\udc54 \u00b7 \ud801\udc75 \u00b7 \ud801\udc63 \u00b7 \ud801\udc6b \u00b7 \ud801\udc55 \u00b7 \ud801\udc77\u27e9",
+    "dimensionality": {
+      "dimensionality": "3D bulk",
+      "structure": "bulk solid / composite",
+      "size_regime": "macro",
+      "synthesis": "powder metallurgy / casting"
+    },
+    "topology": {
+      "connectivity": "core-shell",
+      "structure": "coated / encapsulated",
+      "mechanical": "graded interface, stress-buffered"
+    },
+    "interface": {
+      "interface": "weak (van der Waals)",
+      "bond_energy": "< 50 kJ/mol",
+      "reversible": true,
+      "fatigue": "low cycles"
+    },
+    "symmetry": {
+      "symmetry": "amorphous / disordered",
+      "order_parameter": 0.0,
+      "properties": "isotropic, broad distributions"
+    },
+    "phase": {
+      "phase": "thermal / noisy",
+      "purity": "99-99.9%",
+      "character": "annealed, reduced defects"
+    },
+    "kinetics": {
+      "kinetics": "driven / far-from-equilibrium",
+      "processing": "quench / rapid solidification",
+      "microstructure": "fine-grained, metastable phases"
+    },
+    "interaction_range": {
+      "interaction_range": "mesoscale",
+      "coordination": "grain-level",
+      "property": "grain-boundary-mediated, Hall-Petch applies"
+    },
+    "synthesis": {
+      "synthesis": "templated / broadcast",
+      "sequence": "scaffold-directed",
+      "advantage": "complex 3D geometries",
+      "disadvantage": "template removal"
+    },
+    "criticality": {
+      "criticality": "supercritical / runaway",
+      "response": "exponential growth",
+      "sensing": "threshold switch",
+      "application": "trigger / fuse / one-shot"
+    },
+    "memory": {
+      "memory": "eternal / shape-memory",
+      "hysteresis": "persistent",
+      "history": "full path encoding",
+      "fatigue": "shape-memory alloy regime"
+    },
+    "stoichiometry": {
+      "components": 2,
+      "class": "binary (alloy / compound pair)",
+      "complexity": "moderate",
+      "example": "steel, BaTiO\u2083, GaAs"
+    },
+    "topological_protection": {
+      "topology": "trivial",
+      "protection": "none",
+      "edge_states": "none",
+      "robustness": "fragile"
+    },
+    "proposed_composition": "NiTi (Nitinol, equiatomic shape-memory alloy)",
+    "proposed_processing": "1. Precursor: NiTi (Nitinol, equiatomic shape-memory alloy)\n2. Primary: quench / rapid solidification (templated / broadcast)\n3. Interface engineering: dynamic bonding cycle (heat-cool cycle 3\u00d7)\n5. Memory training: full path encoding cycling protocol",
+    "predicted_properties": {
+      "Young_modulus_GPa": "1-50 (flexible)",
+      "Tensile_strength_MPa": "10-300",
+      "Thermal_conductivity_WmK": "1-50",
+      "Electrical_resistivity": "ohmic, \u03c1 ~ 10\u207b\u2076 to 10\u207b\u00b2 \u03a9\u00b7m",
+      "Self_healing_efficiency": "none",
+      "Shape_memory_strain_pct": "6-10% (full recovery)",
+      "Transformation_temperature_C": "-50 to +200"
+    },
+    "target_applications": [
+      "Self-healing structural composite",
+      "Shape-memory actuator / deployable structure",
+      "Morphing aerospace structure (full path memory)"
+    ],
+    "frobenius_score": 0.2,
+    "ouroboricity_tier": "O_1"
+  },
+  "IV_Dual_Bootstrap_material": {
+    "name": "IV_Dual_Bootstrap_material",
+    "ig_tuple": "\u27e8\ud801\udc7c \u00b7 \ud801\udc78 \u00b7 \ud801\udc7d \u00b7 \ud801\udc6f \u00b7 \ud801\udc5e \u00b7 \ud801\udc58 \u00b7 \ud801\udc54 \u00b7 \ud801\udc60 \u00b7 \ud801\udc6e \u00b7 \ud801\udc6b \u00b7 \ud801\udc73 \u00b7 \ud801\udc74\u27e9",
+    "dimensionality": {
+      "dimensionality": "3D bulk",
+      "structure": "bulk solid / composite",
+      "size_regime": "macro",
+      "synthesis": "powder metallurgy / casting"
+    },
+    "topology": {
+      "connectivity": "self-referential",
+      "structure": "self-similar fractal",
+      "mechanical": "scale-invariant, self-healing capable"
+    },
+    "interface": {
+      "interface": "strong (covalent, ionic)",
+      "bond_energy": "150-800 kJ/mol",
+      "reversible": false,
+      "fatigue": "high cycles"
+    },
+    "symmetry": {
+      "symmetry": "fully symmetric",
+      "order_parameter": 1.0,
+      "properties": "single crystal, anisotropic"
+    },
+    "phase": {
+      "phase": "thermal / noisy",
+      "purity": "99-99.9%",
+      "character": "annealed, reduced defects"
+    },
+    "kinetics": {
+      "kinetics": "driven / far-from-equilibrium",
+      "processing": "quench / rapid solidification",
+      "microstructure": "fine-grained, metastable phases"
+    },
+    "interaction_range": {
+      "interaction_range": "mesoscale",
+      "coordination": "grain-level",
+      "property": "grain-boundary-mediated, Hall-Petch applies"
+    },
+    "synthesis": {
+      "synthesis": "sequential / layer-by-layer",
+      "sequence": "ordered deposition",
+      "advantage": "precise architecture",
+      "disadvantage": "slow, expensive"
+    },
+    "criticality": {
+      "criticality": "complex-plane critical",
+      "response": "damped oscillations",
+      "sensing": "phase-sensitive",
+      "application": "tunable filter / resonator"
+    },
+    "memory": {
+      "memory": "eternal / shape-memory",
+      "hysteresis": "persistent",
+      "history": "full path encoding",
+      "fatigue": "shape-memory alloy regime"
+    },
+    "stoichiometry": {
+      "components": "3+",
+      "class": "multi-component (HEA / perovskite)",
+      "complexity": "high",
+      "example": "CrMnFeCoNi, PMN-PT, MAX phases"
+    },
+    "topological_protection": {
+      "topology": "Z\u2082 (parity)",
+      "protection": "symmetry-protected",
+      "edge_states": "helical / Dirac",
+      "robustness": "defect-tolerant"
+    },
+    "proposed_composition": "NiTiHfPd (high-temperature shape-memory HEA)",
+    "proposed_processing": "1. Precursor: NiTiHfPd (high-temperature shape-memory HEA)\n2. Primary: quench / rapid solidification (sequential / layer-by-layer)\n3. Interface engineering: controlled atmosphere bonding\n4. Topology: ultrahigh vacuum (10\u207b\u00b9\u2070 torr), epitaxial growth\n5. Memory training: full path encoding cycling protocol",
+    "predicted_properties": {
+      "Young_modulus_GPa": "200-400 (stiff)",
+      "Tensile_strength_MPa": "1000-3000",
+      "Thermal_conductivity_WmK": "10-100 (phonon-dominated, edge-channel)",
+      "Electrical_resistivity": "edge: ~h/2e\u00b2 quantized",
+      "Self_healing_efficiency": "none",
+      "Shape_memory_strain_pct": "6-10% (full recovery)",
+      "Transformation_temperature_C": "-50 to +200",
+      "Topological_invariant": "symmetry-protected",
+      "Edge_state_type": "helical / Dirac",
+      "Robustness": "defect-tolerant"
+    },
+    "target_applications": [
+      "Topological quantum computing substrate",
+      "Dissipationless interconnects (edge channels)",
+      "Shape-memory actuator / deployable structure",
+      "Morphing aerospace structure (full path memory)"
+    ],
+    "frobenius_score": 0.25,
+    "ouroboricity_tier": "O_2"
+  },
+  "V_Linear_Chain_material": {
+    "name": "V_Linear_Chain_material",
+    "ig_tuple": "\u27e8\ud801\udc5b \u00b7 \ud801\udc78 \u00b7 \ud801\udc69 \u00b7 \ud801\udc57 \u00b7 \ud801\udc71 \u00b7 \ud801\udc6a \u00b7 \ud801\udc72 \u00b7 \ud801\udc5d \u00b7 \ud801\udc6e \u00b7 \ud801\udc53 \u00b7 \ud801\udc59 \u00b7 \ud801\udc6d\u27e9",
+    "dimensionality": {
+      "dimensionality": "0D",
+      "structure": "nanoparticle / quantum dot",
+      "size_regime": "1-100 nm",
+      "synthesis": "colloidal precipitation"
+    },
+    "topology": {
+      "connectivity": "self-referential",
+      "structure": "self-similar fractal",
+      "mechanical": "scale-invariant, self-healing capable"
+    },
+    "interface": {
+      "interface": "weak (van der Waals)",
+      "bond_energy": "< 50 kJ/mol",
+      "reversible": true,
+      "fatigue": "low cycles"
+    },
+    "symmetry": {
+      "symmetry": "amorphous / disordered",
+      "order_parameter": 0.0,
+      "properties": "isotropic, broad distributions"
+    },
+    "phase": {
+      "phase": "classical / defect-tolerant",
+      "purity": "90-99%",
+      "character": "polycrystalline, grain boundaries present"
+    },
+    "kinetics": {
+      "kinetics": "trapped (ordered)",
+      "processing": "field-assisted / epitaxial",
+      "microstructure": "single domain, trapped order"
+    },
+    "interaction_range": {
+      "interaction_range": "long-range / universal",
+      "coordination": "global",
+      "property": "collective modes, topological protection possible"
+    },
+    "synthesis": {
+      "synthesis": "one-pot / in-situ",
+      "sequence": "all precursors combined",
+      "advantage": "simplicity, scalability",
+      "disadvantage": "limited control"
+    },
+    "criticality": {
+      "criticality": "complex-plane critical",
+      "response": "damped oscillations",
+      "sensing": "phase-sensitive",
+      "application": "tunable filter / resonator"
+    },
+    "memory": {
+      "memory": "none (Markov-0)",
+      "hysteresis": false,
+      "history": "no path dependence",
+      "fatigue": "time-independent"
+    },
+    "stoichiometry": {
+      "components": 1,
+      "class": "unary (pure element / compound)",
+      "complexity": "lowest",
+      "example": "pure Cu, SiO\u2082, Al\u2082O\u2083"
+    },
+    "topological_protection": {
+      "topology": "\u2124 (integer winding)",
+      "protection": "topological (Chern)",
+      "edge_states": "chiral, quantized",
+      "robustness": "disorder-immune"
+    },
+    "proposed_composition": "Bi\u2082Se\u2083 or Sb\u2082Te\u2083 (3D topological insulator)",
+    "proposed_processing": "1. Precursor: Bi\u2082Se\u2083 or Sb\u2082Te\u2083 (3D topological insulator)\n2. Primary: field-assisted / epitaxial (one-pot / in-situ)\n3. Interface engineering: dynamic bonding cycle (heat-cool cycle 3\u00d7)\n4. Topology: ultrahigh vacuum (10\u207b\u00b9\u2070 torr), epitaxial growth",
+    "predicted_properties": {
+      "Young_modulus_GPa": "1-50 (flexible)",
+      "Tensile_strength_MPa": "10-300",
+      "Thermal_conductivity_WmK": "10-100 (phonon-dominated, edge-channel)",
+      "Electrical_resistivity": "surface: metallic (~h/e\u00b2), bulk: insulating",
+      "Self_healing_efficiency": "none",
+      "Topological_invariant": "topological (Chern)",
+      "Edge_state_type": "chiral, quantized",
+      "Robustness": "disorder-immune"
+    },
+    "target_applications": [
+      "Topological quantum computing substrate",
+      "Dissipationless interconnects (edge channels)",
+      "Self-healing structural composite"
+    ],
+    "frobenius_score": 0.1,
+    "ouroboricity_tier": "O_1"
+  },
+  "VI_Empty_Bootstrap_material": {
+    "name": "VI_Empty_Bootstrap_material",
+    "ig_tuple": "\u27e8\ud801\udc5b \u00b7 \ud801\udc65 \u00b7 \ud801\udc69 \u00b7 \ud801\udc57 \u00b7 \ud801\udc5e \u00b7 \ud801\udc64 \u00b7 \ud801\udc5a \u00b7 \ud801\udc5c \u00b7 \ud801\udc63 \u00b7 \ud801\udc52 \u00b7 \ud801\udc59 \u00b7 \ud801\udc74\u27e9",
+    "dimensionality": {
+      "dimensionality": "0D",
+      "structure": "nanoparticle / quantum dot",
+      "size_regime": "1-100 nm",
+      "synthesis": "colloidal precipitation"
+    },
+    "topology": {
+      "connectivity": "bowtie/crossing",
+      "structure": "interpenetrating / woven",
+      "mechanical": "auxetic possible, high toughness"
+    },
+    "interface": {
+      "interface": "weak (van der Waals)",
+      "bond_energy": "< 50 kJ/mol",
+      "reversible": true,
+      "fatigue": "low cycles"
+    },
+    "symmetry": {
+      "symmetry": "amorphous / disordered",
+      "order_parameter": 0.0,
+      "properties": "isotropic, broad distributions"
+    },
+    "phase": {
+      "phase": "thermal / noisy",
+      "purity": "99-99.9%",
+      "character": "annealed, reduced defects"
+    },
+    "kinetics": {
+      "kinetics": "moderate",
+      "processing": "controlled cooling",
+      "microstructure": "medium grain size, equilibrium phases"
+    },
+    "interaction_range": {
+      "interaction_range": "local (nearest-neighbor)",
+      "coordination": "4-8",
+      "property": "short-range order only, sensitive to local defects"
+    },
+    "synthesis": {
+      "synthesis": "combinatorial",
+      "sequence": "parallel libraries",
+      "advantage": "high-throughput discovery",
+      "disadvantage": "integration challenge"
+    },
+    "criticality": {
+      "criticality": "supercritical / runaway",
+      "response": "exponential growth",
+      "sensing": "threshold switch",
+      "application": "trigger / fuse / one-shot"
+    },
+    "memory": {
+      "memory": "one-step",
+      "hysteresis": "simple loop",
+      "history": "most recent state only",
+      "fatigue": "rate-dependent"
+    },
+    "stoichiometry": {
+      "components": 1,
+      "class": "unary (pure element / compound)",
+      "complexity": "lowest",
+      "example": "pure Cu, SiO\u2082, Al\u2082O\u2083"
+    },
+    "topological_protection": {
+      "topology": "Z\u2082 (parity)",
+      "protection": "symmetry-protected",
+      "edge_states": "helical / Dirac",
+      "robustness": "defect-tolerant"
+    },
+    "proposed_composition": "Graphene / stanene (2D Z\u2082 topological insulator)",
+    "proposed_processing": "1. Precursor: Graphene / stanene (2D Z\u2082 topological insulator)\n2. Primary: controlled cooling (combinatorial)\n3. Interface engineering: dynamic bonding cycle (heat-cool cycle 3\u00d7)\n4. Topology: ultrahigh vacuum (10\u207b\u00b9\u2070 torr), epitaxial growth\n5. Memory training: most recent state only cycling protocol",
+    "predicted_properties": {
+      "Young_modulus_GPa": "1-50 (flexible)",
+      "Tensile_strength_MPa": "10-300",
+      "Thermal_conductivity_WmK": "10-100 (phonon-dominated, edge-channel)",
+      "Electrical_resistivity": "edge: ~h/2e\u00b2 quantized",
+      "Self_healing_efficiency": "none",
+      "Shape_memory_strain_pct": "4-8%",
+      "Topological_invariant": "symmetry-protected",
+      "Edge_state_type": "helical / Dirac",
+      "Robustness": "defect-tolerant"
+    },
+    "target_applications": [
+      "Topological quantum computing substrate",
+      "Dissipationless interconnects (edge channels)",
+      "Self-healing structural composite",
+      "Shape-memory actuator / deployable structure"
+    ],
+    "frobenius_score": 0.0,
+    "ouroboricity_tier": "O_1"
+  },
+  "VII_Parakernel_material": {
+    "name": "VII_Parakernel_material",
+    "ig_tuple": "\u27e8\ud801\udc7c \u00b7 \ud801\udc76 \u00b7 \ud801\udc7e \u00b7 \ud801\udc79 \u00b7 \ud801\udc50 \u00b7 \ud801\udc58 \u00b7 \ud801\udc54 \u00b7 \ud801\udc60 \u00b7 \ud801\udc7b \u00b7 \ud801\udc6b \u00b7 \ud801\udc73 \u00b7 \ud801\udc6d\u27e9",
+    "dimensionality": {
+      "dimensionality": "3D bulk",
+      "structure": "bulk solid / composite",
+      "size_regime": "macro",
+      "synthesis": "powder metallurgy / casting"
+    },
+    "topology": {
+      "connectivity": "interpenetrating",
+      "structure": "IPN / MOF@COF",
+      "mechanical": "synergistic, strain-sharing"
+    },
+    "interface": {
+      "interface": "dynamic (Diels-Alder, disulfide)",
+      "bond_energy": "100-300 kJ/mol",
+      "reversible": true,
+      "fatigue": "self-healing"
+    },
+    "symmetry": {
+      "symmetry": "Frobenius-closed",
+      "order_parameter": "\u03bc\u2218\u03b4=id",
+      "properties": "self-verifying, closed-loop healing"
+    },
+    "phase": {
+      "phase": "quantum-coherent",
+      "purity": "99.9999%+",
+      "character": "single crystal, ultrahigh vacuum processed"
+    },
+    "kinetics": {
+      "kinetics": "driven / far-from-equilibrium",
+      "processing": "quench / rapid solidification",
+      "microstructure": "fine-grained, metastable phases"
+    },
+    "interaction_range": {
+      "interaction_range": "mesoscale",
+      "coordination": "grain-level",
+      "property": "grain-boundary-mediated, Hall-Petch applies"
+    },
+    "synthesis": {
+      "synthesis": "sequential / layer-by-layer",
+      "sequence": "ordered deposition",
+      "advantage": "precise architecture",
+      "disadvantage": "slow, expensive"
+    },
+    "criticality": {
+      "criticality": "exceptional point",
+      "response": "\u221a\u03b5 sensitivity",
+      "sensing": "EP-enhanced",
+      "application": "ultrasensitive detector"
+    },
+    "memory": {
+      "memory": "eternal / shape-memory",
+      "hysteresis": "persistent",
+      "history": "full path encoding",
+      "fatigue": "shape-memory alloy regime"
+    },
+    "stoichiometry": {
+      "components": "3+",
+      "class": "multi-component (HEA / perovskite)",
+      "complexity": "high",
+      "example": "CrMnFeCoNi, PMN-PT, MAX phases"
+    },
+    "topological_protection": {
+      "topology": "\u2124 (integer winding)",
+      "protection": "topological (Chern)",
+      "edge_states": "chiral, quantized",
+      "robustness": "disorder-immune"
+    },
+    "proposed_composition": "CrMnFeCoNi (Cantor HEA) + self-healing microcapsules",
+    "proposed_processing": "1. Precursor: CrMnFeCoNi (Cantor HEA) + self-healing microcapsules\n2. Primary: quench / rapid solidification (sequential / layer-by-layer)\n3. Interface engineering: dynamic bonding cycle (heat-cool cycle 3\u00d7)\n4. Topology: ultrahigh vacuum (10\u207b\u00b9\u2070 torr), epitaxial growth\n5. Memory training: full path encoding cycling protocol",
+    "predicted_properties": {
+      "Young_modulus_GPa": "50-200 (moderate)",
+      "Tensile_strength_MPa": "300-1000",
+      "Thermal_conductivity_WmK": "10-100 (phonon-dominated, edge-channel)",
+      "Electrical_resistivity": "surface: metallic (~h/e\u00b2), bulk: insulating",
+      "Self_healing_efficiency": "85-95% (thermal trigger)",
+      "Healing_cycles": "50-200",
+      "Shape_memory_strain_pct": "6-10% (full recovery)",
+      "Transformation_temperature_C": "-50 to +200",
+      "Topological_invariant": "topological (Chern)",
+      "Edge_state_type": "chiral, quantized",
+      "Robustness": "disorder-immune"
+    },
+    "target_applications": [
+      "Single-molecule detector (EP-enhanced \u221a\u03b5)",
+      "Environmental monitoring (trace analyte)",
+      "Topological quantum computing substrate",
+      "Dissipationless interconnects (edge channels)",
+      "Self-healing structural composite",
+      "Autonomous damage-repair coating",
+      "Self-verifying critical infrastructure material",
+      "Shape-memory actuator / deployable structure",
+      "Morphing aerospace structure (full path memory)",
+      "Quantum sensing / qubit host"
+    ],
+    "frobenius_score": 0.95,
+    "ouroboricity_tier": "O_2"
+  },
+  "VIII_Frobenius_Kernel_material": {
+    "name": "VIII_Frobenius_Kernel_material",
+    "ig_tuple": "\u27e8\ud801\udc68 \u00b7 \ud801\udc76 \u00b7 \ud801\udc7e \u00b7 \ud801\udc79 \u00b7 \ud801\udc5e \u00b7 \ud801\udc64 \u00b7 \ud801\udc54 \u00b7 \ud801\udc60 \u00b7 \ud801\udc63 \u00b7 \ud801\udc6b \u00b7 \ud801\udc55 \u00b7 \ud801\udc6d\u27e9",
+    "dimensionality": {
+      "dimensionality": "2D",
+      "structure": "thin film / membrane",
+      "size_regime": "monolayer to \u03bcm",
+      "synthesis": "CVD / ALD / Langmuir-Blodgett"
+    },
+    "topology": {
+      "connectivity": "interpenetrating",
+      "structure": "IPN / MOF@COF",
+      "mechanical": "synergistic, strain-sharing"
+    },
+    "interface": {
+      "interface": "dynamic (Diels-Alder, disulfide)",
+      "bond_energy": "100-300 kJ/mol",
+      "reversible": true,
+      "fatigue": "self-healing"
+    },
+    "symmetry": {
+      "symmetry": "Frobenius-closed",
+      "order_parameter": "\u03bc\u2218\u03b4=id",
+      "properties": "self-verifying, closed-loop healing"
+    },
+    "phase": {
+      "phase": "thermal / noisy",
+      "purity": "99-99.9%",
+      "character": "annealed, reduced defects"
+    },
+    "kinetics": {
+      "kinetics": "moderate",
+      "processing": "controlled cooling",
+      "microstructure": "medium grain size, equilibrium phases"
+    },
+    "interaction_range": {
+      "interaction_range": "mesoscale",
+      "coordination": "grain-level",
+      "property": "grain-boundary-mediated, Hall-Petch applies"
+    },
+    "synthesis": {
+      "synthesis": "sequential / layer-by-layer",
+      "sequence": "ordered deposition",
+      "advantage": "precise architecture",
+      "disadvantage": "slow, expensive"
+    },
+    "criticality": {
+      "criticality": "supercritical / runaway",
+      "response": "exponential growth",
+      "sensing": "threshold switch",
+      "application": "trigger / fuse / one-shot"
+    },
+    "memory": {
+      "memory": "eternal / shape-memory",
+      "hysteresis": "persistent",
+      "history": "full path encoding",
+      "fatigue": "shape-memory alloy regime"
+    },
+    "stoichiometry": {
+      "components": 2,
+      "class": "binary (alloy / compound pair)",
+      "complexity": "moderate",
+      "example": "steel, BaTiO\u2083, GaAs"
+    },
+    "topological_protection": {
+      "topology": "\u2124 (integer winding)",
+      "protection": "topological (Chern)",
+      "edge_states": "chiral, quantized",
+      "robustness": "disorder-immune"
+    },
+    "proposed_composition": "NiTi (Nitinol, equiatomic shape-memory alloy)",
+    "proposed_processing": "1. Precursor: NiTi (Nitinol, equiatomic shape-memory alloy)\n2. Primary: controlled cooling (sequential / layer-by-layer)\n3. Interface engineering: dynamic bonding cycle (heat-cool cycle 3\u00d7)\n4. Topology: ultrahigh vacuum (10\u207b\u00b9\u2070 torr), epitaxial growth\n5. Memory training: full path encoding cycling protocol",
+    "predicted_properties": {
+      "Young_modulus_GPa": "50-200 (moderate)",
+      "Tensile_strength_MPa": "300-1000",
+      "Thermal_conductivity_WmK": "10-100 (phonon-dominated, edge-channel)",
+      "Electrical_resistivity": "surface: metallic (~h/e\u00b2), bulk: insulating",
+      "Self_healing_efficiency": "85-95% (thermal trigger)",
+      "Healing_cycles": "50-200",
+      "Shape_memory_strain_pct": "6-10% (full recovery)",
+      "Transformation_temperature_C": "-50 to +200",
+      "Topological_invariant": "topological (Chern)",
+      "Edge_state_type": "chiral, quantized",
+      "Robustness": "disorder-immune"
+    },
+    "target_applications": [
+      "Topological quantum computing substrate",
+      "Dissipationless interconnects (edge channels)",
+      "Self-healing structural composite",
+      "Autonomous damage-repair coating",
+      "Self-verifying critical infrastructure material",
+      "Shape-memory actuator / deployable structure",
+      "Morphing aerospace structure (full path memory)"
+    ],
+    "frobenius_score": 0.9,
+    "ouroboricity_tier": "O_1"
+  },
+  "IX_Chiral_Pairs_material": {
+    "name": "IX_Chiral_Pairs_material",
+    "ig_tuple": "\u27e8\ud801\udc5b \u00b7 \ud801\udc65 \u00b7 \ud801\udc69 \u00b7 \ud801\udc57 \u00b7 \ud801\udc5e \u00b7 \ud801\udc64 \u00b7 \ud801\udc5a \u00b7 \ud801\udc5c \u00b7 \ud801\udc63 \u00b7 \ud801\udc52 \u00b7 \ud801\udc59 \u00b7 \ud801\udc74\u27e9",
+    "dimensionality": {
+      "dimensionality": "0D",
+      "structure": "nanoparticle / quantum dot",
+      "size_regime": "1-100 nm",
+      "synthesis": "colloidal precipitation"
+    },
+    "topology": {
+      "connectivity": "bowtie/crossing",
+      "structure": "interpenetrating / woven",
+      "mechanical": "auxetic possible, high toughness"
+    },
+    "interface": {
+      "interface": "weak (van der Waals)",
+      "bond_energy": "< 50 kJ/mol",
+      "reversible": true,
+      "fatigue": "low cycles"
+    },
+    "symmetry": {
+      "symmetry": "amorphous / disordered",
+      "order_parameter": 0.0,
+      "properties": "isotropic, broad distributions"
+    },
+    "phase": {
+      "phase": "thermal / noisy",
+      "purity": "99-99.9%",
+      "character": "annealed, reduced defects"
+    },
+    "kinetics": {
+      "kinetics": "moderate",
+      "processing": "controlled cooling",
+      "microstructure": "medium grain size, equilibrium phases"
+    },
+    "interaction_range": {
+      "interaction_range": "local (nearest-neighbor)",
+      "coordination": "4-8",
+      "property": "short-range order only, sensitive to local defects"
+    },
+    "synthesis": {
+      "synthesis": "combinatorial",
+      "sequence": "parallel libraries",
+      "advantage": "high-throughput discovery",
+      "disadvantage": "integration challenge"
+    },
+    "criticality": {
+      "criticality": "supercritical / runaway",
+      "response": "exponential growth",
+      "sensing": "threshold switch",
+      "application": "trigger / fuse / one-shot"
+    },
+    "memory": {
+      "memory": "one-step",
+      "hysteresis": "simple loop",
+      "history": "most recent state only",
+      "fatigue": "rate-dependent"
+    },
+    "stoichiometry": {
+      "components": 1,
+      "class": "unary (pure element / compound)",
+      "complexity": "lowest",
+      "example": "pure Cu, SiO\u2082, Al\u2082O\u2083"
+    },
+    "topological_protection": {
+      "topology": "Z\u2082 (parity)",
+      "protection": "symmetry-protected",
+      "edge_states": "helical / Dirac",
+      "robustness": "defect-tolerant"
+    },
+    "proposed_composition": "Graphene / stanene (2D Z\u2082 topological insulator)",
+    "proposed_processing": "1. Precursor: Graphene / stanene (2D Z\u2082 topological insulator)\n2. Primary: controlled cooling (combinatorial)\n3. Interface engineering: dynamic bonding cycle (heat-cool cycle 3\u00d7)\n4. Topology: ultrahigh vacuum (10\u207b\u00b9\u2070 torr), epitaxial growth\n5. Memory training: most recent state only cycling protocol",
+    "predicted_properties": {
+      "Young_modulus_GPa": "1-50 (flexible)",
+      "Tensile_strength_MPa": "10-300",
+      "Thermal_conductivity_WmK": "10-100 (phonon-dominated, edge-channel)",
+      "Electrical_resistivity": "edge: ~h/2e\u00b2 quantized",
+      "Self_healing_efficiency": "none",
+      "Shape_memory_strain_pct": "4-8%",
+      "Topological_invariant": "symmetry-protected",
+      "Edge_state_type": "helical / Dirac",
+      "Robustness": "defect-tolerant"
+    },
+    "target_applications": [
+      "Topological quantum computing substrate",
+      "Dissipationless interconnects (edge channels)",
+      "Self-healing structural composite",
+      "Shape-memory actuator / deployable structure"
+    ],
+    "frobenius_score": 0.0,
+    "ouroboricity_tier": "O_1"
+  },
+  "X_Truth_Machine_material": {
+    "name": "X_Truth_Machine_material",
+    "ig_tuple": "\u27e8\ud801\udc68 \u00b7 \ud801\udc70 \u00b7 \ud801\udc69 \u00b7 \ud801\udc57 \u00b7 \ud801\udc5e \u00b7 \ud801\udc58 \u00b7 \ud801\udc54 \u00b7 \ud801\udc75 \u00b7 \ud801\udc63 \u00b7 \ud801\udc6b \u00b7 \ud801\udc73 \u00b7 \ud801\udc77\u27e9",
+    "dimensionality": {
+      "dimensionality": "2D",
+      "structure": "thin film / membrane",
+      "size_regime": "monolayer to \u03bcm",
+      "synthesis": "CVD / ALD / Langmuir-Blodgett"
+    },
+    "topology": {
+      "connectivity": "core-shell",
+      "structure": "coated / encapsulated",
+      "mechanical": "graded interface, stress-buffered"
+    },
+    "interface": {
+      "interface": "weak (van der Waals)",
+      "bond_energy": "< 50 kJ/mol",
+      "reversible": true,
+      "fatigue": "low cycles"
+    },
+    "symmetry": {
+      "symmetry": "amorphous / disordered",
+      "order_parameter": 0.0,
+      "properties": "isotropic, broad distributions"
+    },
+    "phase": {
+      "phase": "thermal / noisy",
+      "purity": "99-99.9%",
+      "character": "annealed, reduced defects"
+    },
+    "kinetics": {
+      "kinetics": "driven / far-from-equilibrium",
+      "processing": "quench / rapid solidification",
+      "microstructure": "fine-grained, metastable phases"
+    },
+    "interaction_range": {
+      "interaction_range": "mesoscale",
+      "coordination": "grain-level",
+      "property": "grain-boundary-mediated, Hall-Petch applies"
+    },
+    "synthesis": {
+      "synthesis": "templated / broadcast",
+      "sequence": "scaffold-directed",
+      "advantage": "complex 3D geometries",
+      "disadvantage": "template removal"
+    },
+    "criticality": {
+      "criticality": "supercritical / runaway",
+      "response": "exponential growth",
+      "sensing": "threshold switch",
+      "application": "trigger / fuse / one-shot"
+    },
+    "memory": {
+      "memory": "eternal / shape-memory",
+      "hysteresis": "persistent",
+      "history": "full path encoding",
+      "fatigue": "shape-memory alloy regime"
+    },
+    "stoichiometry": {
+      "components": "3+",
+      "class": "multi-component (HEA / perovskite)",
+      "complexity": "high",
+      "example": "CrMnFeCoNi, PMN-PT, MAX phases"
+    },
+    "topological_protection": {
+      "topology": "trivial",
+      "protection": "none",
+      "edge_states": "none",
+      "robustness": "fragile"
+    },
+    "proposed_composition": "NiTiHfPd (high-temperature shape-memory HEA)",
+    "proposed_processing": "1. Precursor: NiTiHfPd (high-temperature shape-memory HEA)\n2. Primary: quench / rapid solidification (templated / broadcast)\n3. Interface engineering: dynamic bonding cycle (heat-cool cycle 3\u00d7)\n5. Memory training: full path encoding cycling protocol",
+    "predicted_properties": {
+      "Young_modulus_GPa": "1-50 (flexible)",
+      "Tensile_strength_MPa": "10-300",
+      "Thermal_conductivity_WmK": "1-50",
+      "Electrical_resistivity": "ohmic, \u03c1 ~ 10\u207b\u2076 to 10\u207b\u00b2 \u03a9\u00b7m",
+      "Self_healing_efficiency": "none",
+      "Shape_memory_strain_pct": "6-10% (full recovery)",
+      "Transformation_temperature_C": "-50 to +200"
+    },
+    "target_applications": [
+      "Self-healing structural composite",
+      "Shape-memory actuator / deployable structure",
+      "Morphing aerospace structure (full path memory)"
+    ],
+    "frobenius_score": 0.2,
+    "ouroboricity_tier": "O_1"
+  },
+  "XI_Eternal_Return_material": {
+    "name": "XI_Eternal_Return_material",
+    "ig_tuple": "\u27e8\ud801\udc68 \u00b7 \ud801\udc70 \u00b7 \ud801\udc69 \u00b7 \ud801\udc57 \u00b7 \ud801\udc5e \u00b7 \ud801\udc58 \u00b7 \ud801\udc5a \u00b7 \ud801\udc75 \u00b7 \ud801\udc63 \u00b7 \ud801\udc6b \u00b7 \ud801\udc59 \u00b7 \ud801\udc77\u27e9",
+    "dimensionality": {
+      "dimensionality": "2D",
+      "structure": "thin film / membrane",
+      "size_regime": "monolayer to \u03bcm",
+      "synthesis": "CVD / ALD / Langmuir-Blodgett"
+    },
+    "topology": {
+      "connectivity": "core-shell",
+      "structure": "coated / encapsulated",
+      "mechanical": "graded interface, stress-buffered"
+    },
+    "interface": {
+      "interface": "weak (van der Waals)",
+      "bond_energy": "< 50 kJ/mol",
+      "reversible": true,
+      "fatigue": "low cycles"
+    },
+    "symmetry": {
+      "symmetry": "amorphous / disordered",
+      "order_parameter": 0.0,
+      "properties": "isotropic, broad distributions"
+    },
+    "phase": {
+      "phase": "thermal / noisy",
+      "purity": "99-99.9%",
+      "character": "annealed, reduced defects"
+    },
+    "kinetics": {
+      "kinetics": "driven / far-from-equilibrium",
+      "processing": "quench / rapid solidification",
+      "microstructure": "fine-grained, metastable phases"
+    },
+    "interaction_range": {
+      "interaction_range": "local (nearest-neighbor)",
+      "coordination": "4-8",
+      "property": "short-range order only, sensitive to local defects"
+    },
+    "synthesis": {
+      "synthesis": "templated / broadcast",
+      "sequence": "scaffold-directed",
+      "advantage": "complex 3D geometries",
+      "disadvantage": "template removal"
+    },
+    "criticality": {
+      "criticality": "supercritical / runaway",
+      "response": "exponential growth",
+      "sensing": "threshold switch",
+      "application": "trigger / fuse / one-shot"
+    },
+    "memory": {
+      "memory": "eternal / shape-memory",
+      "hysteresis": "persistent",
+      "history": "full path encoding",
+      "fatigue": "shape-memory alloy regime"
+    },
+    "stoichiometry": {
+      "components": 1,
+      "class": "unary (pure element / compound)",
+      "complexity": "lowest",
+      "example": "pure Cu, SiO\u2082, Al\u2082O\u2083"
+    },
+    "topological_protection": {
+      "topology": "trivial",
+      "protection": "none",
+      "edge_states": "none",
+      "robustness": "fragile"
+    },
+    "proposed_composition": "Al\u2082O\u2083 (sapphire, \u03b1-phase)",
+    "proposed_processing": "1. Precursor: Al\u2082O\u2083 (sapphire, \u03b1-phase)\n2. Primary: quench / rapid solidification (templated / broadcast)\n3. Interface engineering: dynamic bonding cycle (heat-cool cycle 3\u00d7)\n5. Memory training: full path encoding cycling protocol",
+    "predicted_properties": {
+      "Young_modulus_GPa": "1-50 (flexible)",
+      "Tensile_strength_MPa": "10-300",
+      "Thermal_conductivity_WmK": "1-50",
+      "Electrical_resistivity": "ohmic, \u03c1 ~ 10\u207b\u2076 to 10\u207b\u00b2 \u03a9\u00b7m",
+      "Self_healing_efficiency": "none",
+      "Shape_memory_strain_pct": "6-10% (full recovery)",
+      "Transformation_temperature_C": "-50 to +200"
+    },
+    "target_applications": [
+      "Self-healing structural composite",
+      "Shape-memory actuator / deployable structure",
+      "Morphing aerospace structure (full path memory)"
+    ],
+    "frobenius_score": 0.2,
+    "ouroboricity_tier": "O_1"
+  },
+  "XII_ROM_Burn_material": {
+    "name": "XII_ROM_Burn_material",
+    "ig_tuple": "\u27e8\ud801\udc68 \u00b7 \ud801\udc70 \u00b7 \ud801\udc69 \u00b7 \ud801\udc7f \u00b7 \ud801\udc50 \u00b7 \ud801\udc58 \u00b7 \ud801\udc72 \u00b7 \ud801\udc75 \u00b7 \ud801\udc7b \u00b7 \ud801\udc6b \u00b7 \ud801\udc73 \u00b7 \ud801\udc77\u27e9",
+    "dimensionality": {
+      "dimensionality": "2D",
+      "structure": "thin film / membrane",
+      "size_regime": "monolayer to \u03bcm",
+      "synthesis": "CVD / ALD / Langmuir-Blodgett"
+    },
+    "topology": {
+      "connectivity": "core-shell",
+      "structure": "coated / encapsulated",
+      "mechanical": "graded interface, stress-buffered"
+    },
+    "interface": {
+      "interface": "weak (van der Waals)",
+      "bond_energy": "< 50 kJ/mol",
+      "reversible": true,
+      "fatigue": "low cycles"
+    },
+    "symmetry": {
+      "symmetry": "quantum superposition",
+      "order_parameter": "complex",
+      "properties": "coherence-enabled, entangled"
+    },
+    "phase": {
+      "phase": "quantum-coherent",
+      "purity": "99.9999%+",
+      "character": "single crystal, ultrahigh vacuum processed"
+    },
+    "kinetics": {
+      "kinetics": "driven / far-from-equilibrium",
+      "processing": "quench / rapid solidification",
+      "microstructure": "fine-grained, metastable phases"
+    },
+    "interaction_range": {
+      "interaction_range": "long-range / universal",
+      "coordination": "global",
+      "property": "collective modes, topological protection possible"
+    },
+    "synthesis": {
+      "synthesis": "templated / broadcast",
+      "sequence": "scaffold-directed",
+      "advantage": "complex 3D geometries",
+      "disadvantage": "template removal"
+    },
+    "criticality": {
+      "criticality": "exceptional point",
+      "response": "\u221a\u03b5 sensitivity",
+      "sensing": "EP-enhanced",
+      "application": "ultrasensitive detector"
+    },
+    "memory": {
+      "memory": "eternal / shape-memory",
+      "hysteresis": "persistent",
+      "history": "full path encoding",
+      "fatigue": "shape-memory alloy regime"
+    },
+    "stoichiometry": {
+      "components": "3+",
+      "class": "multi-component (HEA / perovskite)",
+      "complexity": "high",
+      "example": "CrMnFeCoNi, PMN-PT, MAX phases"
+    },
+    "topological_protection": {
+      "topology": "trivial",
+      "protection": "none",
+      "edge_states": "none",
+      "robustness": "fragile"
+    },
+    "proposed_composition": "NiTiHfPd (high-temperature shape-memory HEA)",
+    "proposed_processing": "1. Precursor: NiTiHfPd (high-temperature shape-memory HEA)\n2. Primary: quench / rapid solidification (templated / broadcast)\n3. Interface engineering: dynamic bonding cycle (heat-cool cycle 3\u00d7)\n4. Purification: zone refining, 99.9999%+ purity target\n5. Memory training: full path encoding cycling protocol",
+    "predicted_properties": {
+      "Young_modulus_GPa": "1-50 (flexible)",
+      "Tensile_strength_MPa": "10-300",
+      "Thermal_conductivity_WmK": "> 1000 (ballistic, ultra-pure)",
+      "Electrical_resistivity": "ohmic, \u03c1 ~ 10\u207b\u2076 to 10\u207b\u00b2 \u03a9\u00b7m",
+      "Self_healing_efficiency": "none",
+      "Shape_memory_strain_pct": "6-10% (full recovery)",
+      "Transformation_temperature_C": "-50 to +200"
+    },
+    "target_applications": [
+      "Single-molecule detector (EP-enhanced \u221a\u03b5)",
+      "Environmental monitoring (trace analyte)",
+      "Self-healing structural composite",
+      "Shape-memory actuator / deployable structure",
+      "Morphing aerospace structure (full path memory)",
+      "Quantum sensing / qubit host"
+    ],
+    "frobenius_score": 0.25,
+    "ouroboricity_tier": "O_2"
+  }
+}
