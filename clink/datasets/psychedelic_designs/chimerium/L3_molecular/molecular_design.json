@@ -52,5 +52,8 @@
       "Atropisomer separation — may require chiral HPLC",
       "Frobenius-special symmetry — scaffold must survive µ∘δ self-check"
     ]
-  }
+  },
+  "iupac_name": "[n]cyclophane ((Rₐ)-tert-butyl-cyclopropyl-(6aR,9R)-7-methyl-4,6,6a,7,8,9-hexahydroindolo[4,3-fg]quinoline)",
+  "iupac_generator": "diaschizic_iupac.py",
+  "iupac_generation_note": "Systematic IUPAC-style name derived from the 12-primitive structural type. Each primitive value contributes specific IUPAC nomenclature features (stereodescriptors, ring system descriptors, substituents, topological descriptors). See diaschizic_iupac.py for the full mapping."
 }

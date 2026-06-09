@@ -1,3 +1,26 @@
+README.md: external tool invocations reframed as Frobenius closure interfaces
+
+Every external measurement method (crystallography, bioassay, clinical endpoint) is an
+interface where Frobenius closure either holds or it doesn't — not a validator, not a
+standard. The 20% R_free in crystallography is the Frobenius gap, not a residual.
+
+Changes:
+- Section renamed: "Why These Outputs Are More Fundamental Than Crystallographic Data"
+  → "Measurement as Frobenius Closure Problem"
+- Opening paragraph: "dominant experimental method" framing removed; replaced with
+  the Frobenius interface principle — external tool = interface, gap = readable primitive inversion
+- Closing paragraphs rewritten: "conjugate twins" framing removed; "cannot be adequately
+  characterized by crystallography alone" removed; replaced with: Rebis closes the Frobenius
+  gap crystallography opens; platonic outputs are the closure certificate at the measurement
+  boundary; principle generalises to all instruments (NMR, cryo-EM, bioassay, clinical endpoint)
+- Pull quote updated: "The crystal is the arrest. The Grammar is the process the arrest
+  interrupted. Frobenius closure at the measurement boundary recovers the process."
+- Integration Roadmap: phase names + focus column reframed as Frobenius closure interfaces:
+  Phase 1 → Grammar-internal (no external interface); Phase 2 → synthesis boundary;
+  Phase 3 → biological scale interface; Phase 4 → clinical interface
+
+---
+
 generators.py + paper: fix protein framing — SerpentRod ob3ect primary, not external tools
 
 When the Frobenius condition is approximate, the fix is to bring the ob3ect to exactness,

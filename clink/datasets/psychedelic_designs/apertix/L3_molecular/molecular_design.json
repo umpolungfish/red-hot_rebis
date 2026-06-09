@@ -49,5 +49,8 @@
     "overall_assessment": "Standard medicinal chemistry",
     "estimated_steps": 6,
     "key_challenges": []
-  }
+  },
+  "iupac_name": "disulfide-linked homodimer: ((2R,5R)-tert-butyl-N-benzeneethanamine-amine)",
+  "iupac_generator": "diaschizic_iupac.py",
+  "iupac_generation_note": "Systematic IUPAC-style name derived from the 12-primitive structural type. Each primitive value contributes specific IUPAC nomenclature features (stereodescriptors, ring system descriptors, substituents, topological descriptors). See diaschizic_iupac.py for the full mapping."
 }

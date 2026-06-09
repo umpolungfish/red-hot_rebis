@@ -1,0 +1,233 @@
+{
+  "design_name": "PLASTIC_EATER",
+  "description": "Broad-spectrum plastic-degrading enzyme",
+  "target_plastics": [
+    "PET (polyethylene terephthalate)",
+    "PE (polyethylene)",
+    "PP (polypropylene)",
+    "PS (polystyrene)",
+    "PUR (polyurethane)",
+    "PC (polycarbonate)"
+  ],
+  "individual_sites": [
+    {
+      "plastic": "PET_polyethylene_terephthalate",
+      "bond": "ester_link",
+      "mechanism": "Serine hydrolase: nucleophilic attack on ester carbonyl",
+      "fg_pair": "ester + water",
+      "aa_sequence": "SerAlaCysTyrPheIleHisSerGlnAspLysVal",
+      "rna_sequence": "UCUGCCUGUUACUUUAUACAUUCCCAAGACAAAGUG",
+      "site_structural_type": {
+        "D": "\ud801\udc68",
+        "W": "\ud801\udc77",
+        "T": "\ud801\udc70",
+        "H": "\ud801\udc56",
+        "R": "\ud801\udc7e",
+        "S": "\ud801\udc55",
+        "P": "\ud801\udc79",
+        "F": "\ud801\udc50",
+        "K": "\ud801\udc6a",
+        "G": "\ud801\udc54",
+        "Gm": "\ud801\udc5c",
+        "Ph": "\ud801\udc7b"
+      },
+      "pairs_covered": 5,
+      "confidence": 0.8333333333333334
+    },
+    {
+      "plastic": "PE_polyethylene",
+      "bond": "cc_oxidative",
+      "mechanism": "Alkane hydroxylase / monooxygenase: C-H activation \u2192 alcohol \u2192 ketone \u2192 Baeyer-Villiger \u2192 ester \u2192 hydrolysis",
+      "fg_pair": "alkane + dioxygen",
+      "aa_sequence": "MetAlaCysTyrPheLeuHisSerAlaGlyLysVal",
+      "rna_sequence": "AUGGCCUGUUACUUUCUGCAUUCCGCUGGCAAAGUG",
+      "site_structural_type": {
+        "D": "\ud801\udc68",
+        "W": "\ud801\udc77",
+        "T": "\ud801\udc70",
+        "H": "\ud801\udc53",
+        "R": "\ud801\udc7e",
+        "S": "\ud801\udc55",
+        "P": "\ud801\udc79",
+        "F": "\ud801\udc5e",
+        "K": "\ud801\udc58",
+        "G": "\ud801\udc54",
+        "Gm": "\ud801\udc5d",
+        "Ph": "\ud801\udc62"
+      },
+      "pairs_covered": 4,
+      "confidence": 0.6666666666666666
+    },
+    {
+      "plastic": "PP_polypropylene",
+      "bond": "cc_oxidative",
+      "mechanism": "Same as PE but accommodates methyl branching at active site",
+      "fg_pair": "alkane + dioxygen",
+      "aa_sequence": "MetAlaCysTyrPheLeuHisSerAlaGlyLysVal",
+      "rna_sequence": "AUGGCCUGUUACUUUCUGCAUUCCGCUGGCAAAGUG",
+      "site_structural_type": {
+        "D": "\ud801\udc68",
+        "W": "\ud801\udc77",
+        "T": "\ud801\udc70",
+        "H": "\ud801\udc53",
+        "R": "\ud801\udc7e",
+        "S": "\ud801\udc55",
+        "P": "\ud801\udc79",
+        "F": "\ud801\udc5e",
+        "K": "\ud801\udc58",
+        "G": "\ud801\udc54",
+        "Gm": "\ud801\udc5d",
+        "Ph": "\ud801\udc62"
+      },
+      "pairs_covered": 4,
+      "confidence": 0.6666666666666666
+    },
+    {
+      "plastic": "PS_polystyrene",
+      "bond": "aromatic",
+      "mechanism": "Extradiol/intradiol dioxygenase: aromatic ring opening",
+      "fg_pair": "aromatic_ring + dioxygen",
+      "aa_sequence": "MetTrpCysTyrPheIleHisSerGlnAspLysVal",
+      "rna_sequence": "AUGUGGUGUUACUUUAUACAUUCCCAAGACAAAGUG",
+      "site_structural_type": {
+        "D": "\ud801\udc7c",
+        "W": "\ud801\udc74",
+        "T": "\ud801\udc76",
+        "H": "\ud801\udc6b",
+        "R": "\ud801\udc7e",
+        "S": "\ud801\udc73",
+        "P": "\ud801\udc79",
+        "F": "\ud801\udc50",
+        "K": "\ud801\udc6a",
+        "G": "\ud801\udc54",
+        "Gm": "\ud801\udc5c",
+        "Ph": "\ud801\udc7b"
+      },
+      "pairs_covered": 6,
+      "confidence": 1.0
+    },
+    {
+      "plastic": "PUR_polyurethane",
+      "bond": "urethane_link",
+      "mechanism": "Amidase + esterase hybrid: cleaves urethane -NH-CO-O- linkage",
+      "fg_pair": "amide + water",
+      "aa_sequence": "SerTrpCysTyrPheIleHisSerGlnAspLysVal",
+      "rna_sequence": "UCUUGGUGUUACUUUAUACAUUCCCAAGACAAAGUG",
+      "site_structural_type": {
+        "D": "\ud801\udc68",
+        "W": "\ud801\udc74",
+        "T": "\ud801\udc76",
+        "H": "\ud801\udc56",
+        "R": "\ud801\udc7e",
+        "S": "\ud801\udc73",
+        "P": "\ud801\udc79",
+        "F": "\ud801\udc5e",
+        "K": "\ud801\udc6a",
+        "G": "\ud801\udc54",
+        "Gm": "\ud801\udc5c",
+        "Ph": "\ud801\udc7b"
+      },
+      "pairs_covered": 5,
+      "confidence": 0.8333333333333334
+    },
+    {
+      "plastic": "PC_polycarbonate",
+      "bond": "carbonate_link",
+      "mechanism": "Carbonate hydrolase: cleaves -O-CO-O- linkage",
+      "fg_pair": "ester + water",
+      "aa_sequence": "SerTrpCysTyrPheIleHisSerGlnAspLysVal",
+      "rna_sequence": "UCUUGGUGUUACUUUAUACAUUCCCAAGACAAAGUG",
+      "site_structural_type": {
+        "D": "\ud801\udc68",
+        "W": "\ud801\udc74",
+        "T": "\ud801\udc76",
+        "H": "\ud801\udc56",
+        "R": "\ud801\udc7e",
+        "S": "\ud801\udc73",
+        "P": "\ud801\udc79",
+        "F": "\ud801\udc50",
+        "K": "\ud801\udc6a",
+        "G": "\ud801\udc54",
+        "Gm": "\ud801\udc5c",
+        "Ph": "\ud801\udc7b"
+      },
+      "pairs_covered": 5,
+      "confidence": 0.8333333333333334
+    }
+  ],
+  "fused_type": {
+    "meet": {
+      "D": "\ud801\udc68",
+      "T": "\ud801\udc70",
+      "R": "\ud801\udc7e",
+      "P": "\ud801\udc79",
+      "F": "\ud801\udc5e",
+      "K": "\ud801\udc58",
+      "G": "\ud801\udc54",
+      "Gm": "\ud801\udc5d",
+      "Ph": "\ud801\udc62",
+      "H": "\ud801\udc53",
+      "S": "\ud801\udc55",
+      "W": "\ud801\udc77"
+    },
+    "tensor": {
+      "D": "\ud801\udc7c",
+      "T": "\ud801\udc76",
+      "R": "\ud801\udc7e",
+      "P": "\ud801\udc79",
+      "F": "\ud801\udc5e",
+      "K": "\ud801\udc6a",
+      "G": "\ud801\udc54",
+      "Gm": "\ud801\udc5c",
+      "Ph": "\ud801\udc7b",
+      "H": "\ud801\udc6b",
+      "S": "\ud801\udc73",
+      "W": "\ud801\udc74"
+    }
+  },
+  "assembled_enzyme": {
+    "total_aa": 183,
+    "total_rna_nt": 534,
+    "molecular_weight_kda": 20.1,
+    "aa_sequence": "MetPheAlaLysArgPheThrSerLeuLeuProLeuPheAlaGlyLeuLeuLeuLeuPheHisLeuValLeuAlaGlyProAlaAlaAlaHisHisHisHisHisHisSerAlaCysTyrPheIleHisSerGlnAspLysValGlyGlyGlyGlySerGlyGlyGlyGlySerGlyGlyGlyGlySerMetAlaCysTyrPheLeuHisSerAlaGlyLysValGlyGlyGlyGlySerGlyGlyGlyGlySerGlyGlyGlyGlySerMetAlaCysTyrPheLeuHisSerAlaGlyLysValGlyGlyGlyGlySerGlyGlyGlyGlySerGlyGlyGlyGlySerMetTrpCysTyrPheIleHisSerGlnAspLysValGlyGlyGlyGlySerGlyGlyGlyGlySerGlyGlyGlyGlySerSerTrpCysTyrPheIleHisSerGlnAspLysValGlyGlyGlyGlySerGlyGlyGlyGlySerGlyGlyGlyGlySerSerTrpCysTyrPheIleHisSerGlnAspLysVal",
+    "rna_sequence": "AUGUUUGCGAAACGCUUUACCUCGCUGCUGCCGCUGUUUGCGGGCCUGCUGCUGCUGUUUCAUCUGGUGCUGGCGGGCCCGGCGGCGGCGCAUCAUCAUCAUCAUCAUUCUGCCUGUUACUUUAUACAUUCCCAAGACAAAGUGGGUGGAGGCGGUAGUGGAGGCGGUGGCUCUGGUGGUGGAAGCAUGGCCUGUUACUUUCUGCAUUCCGCUGGCAAAGUGGGUGGAGGCGGUAGUGGAGGCGGUGGCUCUGGUGGUGGAAGCAUGGCCUGUUACUUUCUGCAUUCCGCUGGCAAAGUGGGUGGAGGCGGUAGUGGAGGCGGUGGCUCUGGUGGUGGAAGCAUGUGGUGUUACUUUAUACAUUCCCAAGACAAAGUGGGUGGAGGCGGUAGUGGAGGCGGUGGCUCUGGUGGUGGAAGCUCUUGGUGUUACUUUAUACAUUCCCAAGACAAAGUGGGUGGAGGCGGUAGUGGAGGCGGUGGCUCUGGUGGUGGAAGCUCUUGGUGUUACUUUAUACAUUCCCAAGACAAAGUG",
+    "domains": [
+      {
+        "domain": "PET-polyethylene-terephthalate",
+        "start_aa": 36,
+        "end_aa": 48,
+        "length": 12
+      },
+      {
+        "domain": "PE-polyethylene",
+        "start_aa": 63,
+        "end_aa": 75,
+        "length": 12
+      },
+      {
+        "domain": "PP-polypropylene",
+        "start_aa": 90,
+        "end_aa": 102,
+        "length": 12
+      },
+      {
+        "domain": "PS-polystyrene",
+        "start_aa": 117,
+        "end_aa": 129,
+        "length": 12
+      },
+      {
+        "domain": "PUR-polyurethane",
+        "start_aa": 144,
+        "end_aa": 156,
+        "length": 12
+      },
+      {
+        "domain": "PC-polycarbonate",
+        "start_aa": 171,
+        "end_aa": 183,
+        "length": 12
+      }
+    ]
+  }
+}

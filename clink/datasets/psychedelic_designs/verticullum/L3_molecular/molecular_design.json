@@ -57,5 +57,8 @@
       "Atropisomer separation — may require chiral HPLC",
       "Frobenius-special symmetry — scaffold must survive µ∘δ self-check"
     ]
-  }
+  },
+  "iupac_name": "[2]catenane of ((Rₐ)-tert-butyl-1H-indole-3-ethanamine)",
+  "iupac_generator": "diaschizic_iupac.py",
+  "iupac_generation_note": "Systematic IUPAC-style name derived from the 12-primitive structural type. Each primitive value contributes specific IUPAC nomenclature features (stereodescriptors, ring system descriptors, substituents, topological descriptors). See diaschizic_iupac.py for the full mapping."
 }

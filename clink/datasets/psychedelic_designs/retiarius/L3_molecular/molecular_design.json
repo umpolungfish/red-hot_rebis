@@ -48,5 +48,8 @@
     "overall_assessment": "Standard medicinal chemistry",
     "estimated_steps": 6,
     "key_challenges": []
-  }
+  },
+  "iupac_name": "(R)-perdeutero-bis-poly-complex-methyl (2S,4aR,6aR,7R,9S,10aS,10bR)-2-(furan-3-yl)-6a,10b-dimethyl-4,10-dioxo-2,4a,5,6,7,8,9,10a-octahydro-1H-benzo[f]isochromene-7-carboxylate",
+  "iupac_generator": "diaschizic_iupac.py",
+  "iupac_generation_note": "Systematic IUPAC-style name derived from the 12-primitive structural type. Each primitive value contributes specific IUPAC nomenclature features (stereodescriptors, ring system descriptors, substituents, topological descriptors). See diaschizic_iupac.py for the full mapping."
 }

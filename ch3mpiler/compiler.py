@@ -414,7 +414,14 @@ def is_bond_compatible(bond, fg1, fg2):
 def evaluate_disconnection(fg1_name, fg2_name, bond_name, molecule_type):
     """Evaluate a disconnection using grammar-derived rules.
     
-    Delta = distance(bond_type, meet(FG1, FG2)) — lower = bond fits FG interface better.
+    Two deltas are computed:
+      - bond_delta  = distance(bond_type, meet(FG1, FG2)) — bond-to-interface fit
+      - product_delta = distance(product_type, molecule_type) — product-to-target match
+    
+    Product delta is the PRIMARY ranking criterion — it measures whether
+    the disconnection actually produces the target's structural type.
+    Bond delta is a secondary diagnostic.
+    
     Compatibility = whether bond primitives are within FG capacity.
     """
     fg1 = FG.get(fg1_name, {}); fg2 = FG.get(fg2_name, {})
@@ -423,26 +430,33 @@ def evaluate_disconnection(fg1_name, fg2_name, bond_name, molecule_type):
         return None
     
     interface = meet_type(fg1, fg2)
-    delta, conflicts = tup_dist(bond, interface)
+    bond_delta, bond_conflicts = tup_dist(bond, interface)
     compatible, reasons = is_bond_compatible(bond, fg1, fg2)
     
     product = bond_product_type(fg1, fg2, bond)
+    
+    # PRIMARY: distance from product type to target molecule type
+    product_delta, product_conflicts = tup_dist(product, molecule_type)
     
     return {
         "fg1": fg1_name, "fg2": fg2_name,
         "bond": bond_name,
         "bond_desc": bond.get("desc", bond_name),
-        "delta": round(delta, 3),
+        "bond_delta": round(bond_delta, 3),       # bond-to-interface fit
+        "product_delta": round(product_delta, 3),  # product-to-target match (PRIMARY)
+        "delta": round(product_delta, 3),          # legacy alias = product_delta
         "compatible": compatible,
         "incompatible_reasons": reasons,
-        "conflicts": len(conflicts),
+        "bond_conflicts": len(bond_conflicts),
+        "product_conflicts": len(product_conflicts),
         "product_type": fmt_tup(product),
     }
 
 def find_disconnections(fg_names, molecule_type, max_results=10):
     """Find all viable disconnections via grammar-derived rules.
     For each pair of FGs and each bond type, compute structural delta.
-    Incompatible bonds are filtered out. Lower delta = better.
+    Incompatible bonds are filtered out. 
+    Ranked by product_delta (product-to-target match) then bond_delta (bond-to-interface fit).
     """
     results = []
     for i, fg1 in enumerate(fg_names):
@@ -451,7 +465,7 @@ def find_disconnections(fg_names, molecule_type, max_results=10):
                 ev = evaluate_disconnection(fg1, fg2, bname, molecule_type)
                 if ev and ev["compatible"]:
                     results.append(ev)
-    results.sort(key=lambda x: x["delta"])
+    results.sort(key=lambda x: (x["product_delta"], x["bond_delta"]))
     return results[:max_results]
 
 # CAS RESOLVER
@@ -604,6 +618,8 @@ class Ch3mpiler:
                     "bond": cut["bond"],
                     "bond_desc": cut["bond_desc"],
                     "delta": cut["delta"],
+                    "bond_delta": cut.get("bond_delta", cut.get("delta", 0)),
+                    "product_delta": cut.get("product_delta", cut.get("delta", 0)),
                     "fg1": cut["fg1"], "fg2": cut["fg2"],
                     "product_type": cut["product_type"],
                     "precursors": [
@@ -688,7 +704,8 @@ def print_retrosynthesis(tree, indent=0):
         return
     
     for idx, step in enumerate(steps):
-        print(f"{pad}  ── Cut {idx+1}: {step['bond']} (δ={step['delta']}) ──")
+        bd = step.get('bond_delta', '?')
+        print(f"{pad}  ── Cut {idx+1}: {step['bond']} (δ={step['delta']}, binding={bd}) ──")
         print(f"{pad}     {step['bond_desc']}")
         print(f"{pad}     Between: {step['fg1']} + {step['fg2']}")
         print(f"{pad}     Product type: {step['product_type']}")
@@ -710,11 +727,14 @@ def print_analysis(result):
     cuts = result.get("cuts", [])
     if cuts:
         print(f"\nGrammar-derived disconnections (ranked by δ, lower=better):")
-        print(f"  {'Bond':20s} {'δ':8s} {'Between':30s} {'Product Type':40s}")
-        print(f"  {'-'*20} {'-'*8} {'-'*30} {'-'*40}")
+        print(f"  δ = product-to-target distance")
+        print(f"  {'Bond':20s} {'δ':8s} {'Binding':8s} {'Between':30s} {'Product Type':40s}")
+        print(f"  {'-'*20} {'-'*8} {'-'*8} {'-'*30} {'-'*40}")
         for c in cuts[:8]:
             between = f"{c['fg1']}+{c['fg2']}"
-            print(f"  {c['bond']:20s} {c['delta']:<8.3f} {between:30s} {c['product_type']:40s}")
+            bd = c.get('bond_delta', '?')
+            pd = c.get('product_delta', c.get('delta', 0))
+            print(f"  {c['bond']:20s} {pd:<8.3f} {bd:<8.3f} {between:30s} {c['product_type']:40s}")
     else:
         print(f"\n  No disconnections found.")
     

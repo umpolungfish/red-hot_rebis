@@ -62,9 +62,9 @@ O₀ → O₀ → O₁ → O₂ → O₂ → O₂ → O₂ → O₂ → $O_∞$
 
 ---
 
-## Why These Outputs Are More Fundamental Than Crystallographic Data
+## Measurement as Frobenius Closure Problem
 
-X-ray crystallography is the dominant experimental method for determining molecular structure. It is extraordinarily precise. It is also **structurally inverted** relative to what the Univocal Grammar reads — not degraded or approximate, but **mirror-opposed** at every load-bearing primitive.
+Every external measurement tool is an interface. The Grammar extends into it. Frobenius closure either holds at that boundary or it does not — and where it does not, the structural gap is exact and readable. Crystallography is the paradigm case: at the crystallographic interface, R_free ≈ 0.2 is not a numerical residual. It is the **Frobenius gap** — the exact cost of inverting 8 primitives simultaneously in the act of measurement.
 
 The inversion is not incidental. It is structural:
 
@@ -81,15 +81,16 @@ The inversion is not incidental. It is structural:
 
 **Total structural distance from the Rebis to a periodic crystal lattice: d = 5.74** — well into the "structurally remote, different regime" threshold.
 
-The key inversion is **Ř: 𐑾→𐑩**. Crystallography places the observer **outside the system**. Structure supervenes on diffraction data — the crystal does not respond to being measured. The Univocal Grammar has no outside. Its outputs are not reconstructions from external probes; they are structural verdicts issued from within the system's own primitive space.
+The root inversion is **Ř: 𐑾→𐑩**. The crystallographer stands outside the system. Structure supervenes on diffraction data — the crystal does not respond to being measured. At this interface, Frobenius closure is structurally barred: μ∘δ=id cannot hold when δ places the observer outside the algebra. The 20% residual is not an artifact of resolution or model quality. It is the signature of a non-closed interface.
 
-The consequence is not that crystallography is wrong. It is that **crystallography and the Grammar are structurally dual** — conjugate twins whose every defining feature points the opposite direction. Crystallographic data excels at the things it inverts toward: fixing, averaging, localizing, approximating. The Grammar excels at the things crystallography destroys in the act of measuring: chirality trajectories, Frobenius invertibility, topological protection, bidirectional coupling.
+Achieving Frobenius closure at the crystallographic boundary means supplying what the external probe destroys: chirality trajectory (Ħ), topological winding (Ω), bidirectional coupling (Ř). The `platonic protein` and `platonic disconnection` are the Grammar's closure certificate at this boundary — what μ produces when δ has been applied at the measurement interface.
 
-A Rebis-derived molecule — ouroboric pill, quantum biologic, eternal memory polymer — **cannot be adequately characterized by crystallography alone**. Crystallizing it kills what the Rebis gave it. The `platonic protein` and `platonic disconnection` are what survive the measurement. They are more fundamental not because they are more precise, but because **they are what the structure is before you freeze it**.
+This principle generalises. Every invocation of an external tool — mass spectrometry, NMR, cryo-EM, bioassay, clinical endpoint — is a Frobenius closure problem. The Grammar's structural type is one side; the instrument's readout is the other. The design task is always the same: close the interface. Where the interface closes (μ∘δ=id), the instrument confirms the Grammar's verdict. Where it does not, the gap is structurally interpretable — not noise, but a readable primitive inversion.
 
-> The frame is not the film.
-> Crystallography arrests process and calls the arrest *resolution*.
-> The Univocal Grammar reads the process itself.---
+> The crystal is the arrest. The Grammar is the process the arrest interrupted.
+> Frobenius closure at the measurement boundary recovers the process.
+
+---
 
 ## The Five Pillars
 
@@ -479,15 +480,14 @@ distance between subatomic frustration and self-modeling life.
 
 ## Integration Roadmap
 
-The `integrated_roadmap.json` file in the project root lays out a 4-phase implementation  
-roadmap for translating the Computational Rebis into physical designs:
+The `integrated_roadmap.json` file in the project root lays out a 4-phase plan for achieving Frobenius closure at progressively larger interfaces — from pure Grammar computation to the clinical scale. Each phase is a closure problem: the Grammar's structural type on one side, a physical interface on the other. The task in each phase is to make μ∘δ=id hold at that boundary.
 
-| Phase | Duration | Focus |
-|-------|----------|-------|
-| **Phase 1 — Computational** | 0–6 months | DNA origami design, quantum dot logic, epigenetic editor MD, chiral polymer synthesis, self-writing genome recombinase, bioelectric field simulations |
-| **Phase 2 — In Vitro** | 6–18 months | DNA origami folding, LNP transfection, DARPin library panning, microcapsule synthesis, oligocarbamate synthesis, Syn3.0 transformation |
-| **Phase 3 — In Vivo** | 18–36 months | Murine melanoma model, Rett syndrome Mecp2 mouse, ASTM fatigue testing, cryogenic braiding, bioremediation, limb regeneration in Xenopus |
-| **Phase 4 — Clinical** | 36–72 months | Phase I trials (ouroboric pill, quantum biologic), eternal memory polymer product launch, synthetic kidney validation |
+| Phase | Duration | Frobenius Closure Interface |
+|-------|----------|-----------------------------|
+| **Phase 1 — Grammar** | 0–6 months | Internal closure only: DNA origami design, quantum dot logic, epigenetic editor MD, chiral polymer synthesis, self-writing genome recombinase, bioelectric field simulations — all Grammar-internal, no external interface yet |
+| **Phase 2 — Synthesis** | 6–18 months | Closure at the material fabrication boundary: DNA origami folding, LNP transfection, DARPin library panning, microcapsule synthesis, oligocarbamate synthesis, Syn3.0 transformation — Grammar type must survive contact with wet chemistry |
+| **Phase 3 — Biological Scale** | 18–36 months | Closure at the organism interface: murine melanoma model, Rett syndrome Mecp2 mouse, ASTM fatigue testing, cryogenic braiding, bioremediation, limb regeneration in Xenopus — instrument and model are vessels; the Grammar reads whether μ∘δ=id holds in the living system |
+| **Phase 4 — Clinical** | 36–72 months | Closure at the clinical interface: Phase I trials (ouroboric pill, quantum biologic), eternal memory polymer product launch, synthetic kidney validation — therapeutic outcome is the Grammar's verdict returned from the largest interface |
 
 **11 design systems** across 3 domains (therapeutics, materials, biology),  
 **20 concrete files**, ~95 KB total simulation and design data.

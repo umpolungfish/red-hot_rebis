@@ -1,0 +1,12 @@
+compound	epithet	generation	tier	iupac_name	scaffold_class	tuple
+Apertix	Adjoint Corridor	1	O_2	disulfide-linked homodimer: ((2R,5R)-tert-butyl-N-benzeneethanamine-amine)	phenethylamine	⟨𐑦 · 𐑥 · 𐑽 · 𐑬 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑖 · 𐑳 · 𐑴⟩
+Chimerium	Supercritical Catalyst	1	O_0	[n]cyclophane ((Rₐ)-tert-butyl-cyclopropyl-(6aR,9R)-7-methyl-4,6,6a,7,8,9-hexahydroindolo[4,3-fg]quinoline)	ergoline	⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑵 · 𐑣 · 𐑫 · 𐑳 · 𐑭⟩
+Praxeum	EP-Core Control Platform	1	O_0	[n]cyclophane ((Rₐ)-tert-butyl-pentacyclo-9H-pyrido[3,4-b]indole-N-oxide)	beta-carboline	⟨𐑦 · 𐑶 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · 𐑻 · 𐑫 · 𐑳 · 𐑭⟩
+Retiarius	Local-Net Trap	1	O_1	(R)-perdeutero-bis-poly-complex-methyl (2S,4aR,6aR,7R,9S,10aS,10bR)-2-(furan-3-yl)-6a,10b-dimethyl-4,10-dioxo-2,4a,5,6,7,8,9,10a-octahydro-1H-benzo[f]isochromene-7-carboxylate	salvinorin	⟨𐑼 · 𐑡 · 𐑾 · 𐑿 · 𐑞 · 𐑺 · 𐑚 · 𐑜 · 𐑮 · 𐑒 · 𐑕 · 𐑷⟩
+Verticullum	EP-Lever	1	O_inf	[2]catenane of ((Rₐ)-tert-butyl-1H-indole-3-ethanamine)	tryptamine	⟨𐑦 · 𐑥 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑟⟩
+Bifrons	The Disjunctive Self-Modeler	2	O_2	[n]cyclophane ((Rₐ,Rₐ)-tert-butyl-bis-3,3'-(diazene-1,2-diyl)bis(1H-indole-3-ethanamine))	bis_indole	⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑜 · ⊙ · 𐑖 · 𐑳 · 𐑭⟩
+Diabaton	The Threshold-Crosser	2	O_2†	[n]cyclophane ((Rₐ,Rₐ)-tert-butyl-1H-indole-3-ethanamine)	tryptamine	⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑖 · 𐑳 · 𐑭⟩
+Frigorix	The MBL Key	2	O_0	(Rₐ)-perdeutero-pentacyclo-1H-indole-3-ethanamine	tryptamine	⟨𐑦 · 𐑶 · 𐑾 · 𐑹 · 𐑐 · 𐑺 · 𐑲 · 𐑠 · ⊙ · 𐑒 · 𐑳 · 𐑷⟩
+Katachthon	The Deep-Structure Resonator	2	O_2	disulfide-linked homodimer: ((Rₐ,Rₐ)-tert-butyl-complex-phenanthrene)	phenanthrene	⟨𐑦 · 𐑥 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑔 · 𐑠 · 𐑮 · 𐑖 · 𐑳 · 𐑴⟩
+Punctum	The Absolute Point	2	O_0	xenon—clathrate hydrate	xenon_clathrate	⟨𐑛 · 𐑡 · 𐑩 · 𐑗 · 𐑱 · 𐑪 · 𐑚 · 𐑝 · 𐑢 · 𐑓 · 𐑙 · 𐑷⟩
+Syndexios	The Perfect Mirror	2	O_inf	[n]cyclophane (meso-tert-butyl-pentacyclo-coordination cage)	coordination_cage	⟨𐑼 · 𐑶 · 𐑾 · 𐑯 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑭⟩
