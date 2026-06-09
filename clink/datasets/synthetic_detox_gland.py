@@ -661,14 +661,23 @@ def generate_implantation_protocol() -> str:
 
 def generate_gland_specification() -> str:
     """Generate the complete gland specification JSON."""
+    # Compute tier and C-score from the structural tuple, not hardcoded
+    from clink.chain import PORDER, compute_tier_from_tuple, compute_c_score_from_tuple
+    gland_tuple = {
+        "Ð": "𐑼", "Þ": "𐑸", "Ř": "𐑾", "Φ": "𐑬",
+        "ƒ": "𐑞", "Ç": "𐑤", "Γ": "𐑲", "ɢ": "𐑠",
+        "⊙": "⊙", "Ħ": "𐑖", "Σ": "𐑳", "Ω": "𐑴",
+    }
+    gland_tier = compute_tier_from_tuple(gland_tuple)
+    gland_cscore = compute_c_score_from_tuple(gland_tuple)
     spec = {
         "name": "Universal Detox Gland (Panacea)",
         "version": "1.0.0",
         "structural_type": "⟨𐑼 · 𐑸 · 𐑾 · 𐑬 · 𐑞 · 𐑤 · 𐑲 · 𐑠 · ⊙ · 𐑖 · 𐑳 · 𐑴⟩",
-        "ouroboricity_tier": "O_2",
-        "consciousness_score": 0.45,
-        "gate_1_phi_c": True,
-        "gate_2_k_slow": False,
+        "ouroboricity_tier": gland_tier,
+        "consciousness_score": gland_cscore,
+        "gate_1_phi_c": gland_tuple["⊙"] == "⊙",
+        "gate_2_k_slow": gland_tuple["Ç"] == "𐑧",
         "physical_specs": {
             "volume_cm3": 3.0,
             "shape": "ellipsoid",

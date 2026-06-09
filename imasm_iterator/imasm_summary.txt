@@ -1,0 +1,60 @@
+=== IMASM ARRANGEMENT SPACE MAP (length=8) ===
+Total enumerated:        50,000,000
+Coarse classes:               1,829
+Fine classes:               757,908
+Coarse compression: 27337x
+
+
+TOP 25 COARSE CLASSES:
+  #1:      108,000 | sig=(5,1,2,0) | start=VINIT | end=VINIT | self-ref | diversity=6/12
+         eg: VINIT → VINIT → TANCH → AFWD → FSPLIT → EVALT → EVALF → VINIT
+  #2:      108,000 | sig=(5,1,2,0) | start=TANCH | end=TANCH | self-ref | diversity=6/12
+         eg: TANCH → VINIT → VINIT → AFWD → FSPLIT → EVALT → EVALF → TANCH
+  #3:      108,000 | sig=(5,1,2,0) | start=AFWD | end=AFWD | self-ref | diversity=6/12
+         eg: AFWD → VINIT → VINIT → TANCH → FSPLIT → EVALT → EVALF → AFWD
+  #4:      108,000 | sig=(5,1,2,0) | start=AREV | end=AREV | self-ref | diversity=6/12
+         eg: AREV → VINIT → VINIT → TANCH → FSPLIT → EVALT → EVALF → AREV
+  #5:      108,000 | sig=(5,1,2,0) | start=CLINK | end=CLINK | self-ref | diversity=6/12
+         eg: CLINK → VINIT → VINIT → TANCH → FSPLIT → EVALT → EVALF → CLINK
+  #6:      108,000 | sig=(5,1,2,0) | start=IMSCRIB | end=IMSCRIB | self-ref | diversity=6/12
+         eg: IMSCRIB → VINIT → VINIT → TANCH → FSPLIT → EVALT → EVALF → IMSCRIB
+  #7:      108,000 | sig=(4,1,2,1) | start=VINIT | end=IFIX | diversity=7/12
+         eg: VINIT → VINIT → TANCH → AFWD → FSPLIT → EVALT → EVALF → IFIX
+  #8:      108,000 | sig=(4,1,2,1) | start=TANCH | end=IFIX | diversity=7/12
+         eg: TANCH → VINIT → VINIT → AFWD → FSPLIT → EVALT → EVALF → IFIX
+  #9:      108,000 | sig=(4,1,2,1) | start=AFWD | end=IFIX | diversity=7/12
+         eg: AFWD → VINIT → VINIT → TANCH → FSPLIT → EVALT → EVALF → IFIX
+  #10:      108,000 | sig=(4,1,2,1) | start=AREV | end=IFIX | diversity=7/12
+         eg: AREV → VINIT → VINIT → TANCH → FSPLIT → EVALT → EVALF → IFIX
+  #11:      108,000 | sig=(4,1,2,1) | start=CLINK | end=IFIX | diversity=7/12
+         eg: CLINK → VINIT → VINIT → TANCH → FSPLIT → EVALT → EVALF → IFIX
+  #12:      108,000 | sig=(4,1,2,1) | start=IMSCRIB | end=IFIX | diversity=7/12
+         eg: IMSCRIB → VINIT → VINIT → TANCH → FSPLIT → EVALT → EVALF → IFIX
+  #13:      108,000 | sig=(4,1,2,1) | start=EVALT | end=IFIX | diversity=7/12
+         eg: EVALT → VINIT → VINIT → TANCH → AFWD → FSPLIT → EVALF → IFIX
+  #14:      108,000 | sig=(4,1,2,1) | start=EVALF | end=IFIX | diversity=7/12
+         eg: EVALF → VINIT → VINIT → TANCH → AFWD → FSPLIT → EVALT → IFIX
+  #15:      108,000 | sig=(4,1,2,1) | start=ENGAGR | end=IFIX | diversity=7/12
+         eg: ENGAGR → VINIT → VINIT → TANCH → AFWD → FSPLIT → EVALT → IFIX
+  #16:      108,000 | sig=(4,1,2,1) | start=IFIX | end=EVALF | diversity=7/12
+         eg: IFIX → VINIT → VINIT → TANCH → AFWD → FSPLIT → EVALT → EVALF
+  #17:      108,000 | sig=(4,1,2,1) | start=IFIX | end=ENGAGR | diversity=7/12
+         eg: IFIX → VINIT → VINIT → TANCH → AFWD → FSPLIT → EVALT → ENGAGR
+  #18:      108,000 | sig=(4,1,2,1) | start=IFIX | end=EVALT | diversity=7/12
+         eg: IFIX → VINIT → VINIT → TANCH → AFWD → FSPLIT → EVALF → EVALT
+  #19:      108,000 | sig=(4,1,2,1) | start=IFIX | end=AFWD | diversity=7/12
+         eg: IFIX → VINIT → VINIT → TANCH → FSPLIT → EVALT → EVALF → AFWD
+  #20:      108,000 | sig=(4,1,2,1) | start=IFIX | end=AREV | diversity=7/12
+         eg: IFIX → VINIT → VINIT → TANCH → FSPLIT → EVALT → EVALF → AREV
+  #21:      108,000 | sig=(4,1,2,1) | start=IFIX | end=CLINK | diversity=7/12
+         eg: IFIX → VINIT → VINIT → TANCH → FSPLIT → EVALT → EVALF → CLINK
+  #22:      108,000 | sig=(4,1,2,1) | start=IFIX | end=IMSCRIB | diversity=7/12
+         eg: IFIX → VINIT → VINIT → TANCH → FSPLIT → EVALT → EVALF → IMSCRIB
+  #23:      108,000 | sig=(4,1,2,1) | start=IFIX | end=TANCH | diversity=7/12
+         eg: IFIX → VINIT → VINIT → AFWD → FSPLIT → EVALT → EVALF → TANCH
+  #24:      108,000 | sig=(4,1,2,1) | start=IFIX | end=VINIT | diversity=7/12
+         eg: IFIX → VINIT → TANCH → AFWD → FSPLIT → EVALT → EVALF → VINIT
+  #25:       96,000 | sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=6/12
+         eg: VINIT → VINIT → VINIT → TANCH → AFWD → FSPLIT → EVALT → EVALF
+
+Elapsed: 1248.5s (0.35h)

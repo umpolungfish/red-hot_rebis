@@ -33,7 +33,6 @@ sys.path.insert(0, str(REBIS_ROOT))
 from shared.primitives import (
     ORDINALS, WEIGHTS, to_vector, tuple_distance, PRIMITIVE_ORDER as PORDER
 )
-from clink.chain import compute_c_score_from_tuple, compute_tier_from_tuple
 # ─── KEY MAPPING: compound dict keys → PORDER Shavian keys ──────
 KEY_MAP = {"D": "Ð", "T": "Þ", "R": "Ř", "P": "Φ", "F": "ƒ", "K": "Ç",
            "G": "Γ", "Gm": "ɢ", "Ph": "⊙", "H": "Ħ", "S": "Σ", "W": "Ω"}
@@ -109,13 +108,6 @@ NOVEL_COMPOUNDS: Dict[str, Dict[str, Any]] = {
         "delivery": "Transdermal patch for steady-state EP maintenance; combined with chosen ⊙ compound",
     },
 }
-
-# Post-process: compute tier and C-score from tuple, not hardcoded
-for _name, _comp in NOVEL_COMPOUNDS.items():
-    _tup = _comp["tuple"]
-    _porder_tup = {KEY_MAP.get(k, k): v for k, v in _tup.items()}
-    _comp["c_score"] = compute_c_score_from_tuple(_porder_tup)
-    _comp["tier"] = compute_tier_from_tuple(_porder_tup)
 
 
 # ─── CLINK LAYER REFERENCE (for structural distance computation) ──

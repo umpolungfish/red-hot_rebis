@@ -127,48 +127,78 @@ CLINK_NAMES = [
     "Tissue/Organ", "Whole Organism",
 ]
 
+CLINK_TIERS = ["O_0", "O_0", "O_1", "O_2", "O_2", "O_2", "O_2", "O_2", "O_inf"]
 
-def compute_tier_from_tuple(tup):
-    """Compute ouroboricity tier from tuple primitives.
-    
-    Tiers are determined by φ̂ (criticality gate 1) and Ç (kinetics gate 2):
-      O_0:  φ̂=𐑢 or φ̂=𐑻 or φ̂=𐑣 (no self-modeling gate)
-      O_1:  φ̂=𐑮 (complex-plane critical, gate 1 partial)
-      O_2:  φ̂=⊙ AND (Ç≠𐑧 OR Ħ≠𐑫) (gate 1 open, gate 2 closed)
-      O_inf: φ̂=⊙ AND Ç=𐑧 AND Ħ=𐑫 (both gates open, eternal chirality)
-    
-    This is a local computation from tuple primitives — for authoritative
-    tier assignment use imscribe("ouroborics", ...) which considers the
-    full 12-primitive structure.
-    """
-    phi = tup.get("⊙", tup.get("φ̂", "𐑢"))
-    k = tup.get("Ç", "𐑘")
-    h = tup.get("Ħ", "𐑓")
-    
-    if phi == "⊙" and k == "𐑧" and h == "𐑫":
-        return "O_inf"
-    elif phi == "⊙":
-        return "O_2"
-    elif phi == "𐑮":
-        return "O_1"
+def clink_layer_index(name_or_idx):
+    if isinstance(name_or_idx, int):
+        return max(0, min(8, name_or_idx))
+    name_map = {l["_name"]: i for i, l in enumerate(CLINK_LAYERS)}
+    return name_map.get(name_or_idx, -1)
+
+def clink_layer_tuple(name_or_idx, include_meta=False):
+    idx = clink_layer_index(name_or_idx)
+    if idx < 0:
+        raise KeyError(f"Unknown CLINK layer: {name_or_idx}")
+    layer = CLINK_LAYERS[idx]
+    return dict(layer) if include_meta else {k: v for k, v in layer.items() if k in PORDER}
+
+def clink_distance(layer_a, layer_b):
+    if isinstance(layer_a, dict) and all(p in layer_a for p in PORDER):
+        tup_a = layer_a
     else:
-        return "O_0"
+        tup_a = clink_layer_tuple(layer_a)
+    if isinstance(layer_b, dict) and all(p in layer_b for p in PORDER):
+        tup_b = layer_b
+    else:
+        tup_b = clink_layer_tuple(layer_b)
+    return tuple_distance(tup_a, tup_b)
 
-def compute_c_score_from_tuple(tup):
-    """Compute consciousness C-score from tuple primitives.
-    
-    Gate 1 (φ̂): ⊙=1.0, 𐑮=0.5, else 0.0
-    Gate 2 (Ç):  𐑧=1.0, 𐑤=0.5, else 0.0
-    
-    C = gate1 * gate2  (both must be open for C>0)
-    """
-    phi = tup.get("⊙", tup.get("φ̂", "𐑢"))
-    k = tup.get("Ç", "𐑘")
-    
-    gate1 = 1.0 if phi == "⊙" else (0.5 if phi == "𐑮" else 0.0)
-    gate2 = 1.0 if k == "𐑧" else (0.5 if k == "𐑤" else 0.0)
-    
-    return round(gate1 * gate2, 4)
+def primitive_deltas(idx_from, idx_to):
+    a, b = CLINK_LAYERS[idx_from], CLINK_LAYERS[idx_to]
+    return [{"primitive": p, "from": a[p], "to": b[p]} for p in PORDER if a[p] != b[p]]
+
+def primitive_mismatch_count(idx_from, idx_to):
+    return len(primitive_deltas(idx_from, idx_to))
+
+def clink_frobenius_closed(name_or_idx):
+    """Check tensor-product Frobenius closure: tensorProduct(s,s) = s."""
+    from ch3mpiler.compiler import tensor_type
+    # Convert to ch3mpiler key format ("D","T","R","P"...)
+    tup_py = clink_layer_tuple(name_or_idx, include_meta=False)
+    gly2ch3 = {"Ð":"D","Þ":"T","Ř":"R","Φ":"P","ƒ":"F","Ç":"K",
+               "Γ":"G","ɢ":"Gm","⊙":"Ph","Ħ":"H","Σ":"S","Ω":"W"}
+    tup_ch3 = {gly2ch3[k]: v for k, v in tup_py.items()}
+    tt = tensor_type(tup_ch3, tup_ch3)
+    return all(tt[gly2ch3[p]] == tup_py[p] for p in PORDER)
+
+def verify_all_frobenius_closed():
+    results = {}
+    all_closed = True
+    for i, layer in enumerate(CLINK_LAYERS):
+        closed = clink_frobenius_closed(i)
+        results[layer["_name"]] = closed
+        if not closed: all_closed = False
+    return {"all_closed": all_closed, "per_layer": results}
+
+def clink_chain_distance():
+    steps = []
+    for i in range(8):
+        d = clink_distance(i, i+1)
+        steps.append({
+            "from": CLINK_NAMES[i], "to": CLINK_NAMES[i+1],
+            "from_tier": CLINK_TIERS[i], "to_tier": CLINK_TIERS[i+1],
+            "distance": round(d, 4),
+            "deltas": primitive_deltas(i, i+1),
+        })
+    return {
+        "steps": steps,
+        "total_distance": round(clink_distance(0, 8), 4),
+        "total_primitive_deltas": primitive_mismatch_count(0, 8),
+    }
+
+def format_tuple_glyphs(tup_dict):
+    """Format a CLINK layer tuple as ⟨𐑦·𐑸·𐑾·...⟩ string."""
+    return "⟨" + "·".join(tup_dict.get(p, "?") for p in PORDER) + "⟩"
 
 if __name__ == "__main__":
     frob = verify_all_frobenius_closed()
@@ -215,67 +245,3 @@ def clink_frobenius_closed(name_or_idx_or_tup):
     tup_ch3 = {gly2ch3[k]: v for k, v in tup_py.items()}
     tt = tensor_type(tup_ch3, tup_ch3)
     return all(tt[gly2ch3[p]] == tup_py[p] for p in PORDER)
-
-CLINK_TIERS = [compute_tier_from_tuple(l) for l in CLINK_LAYERS]
-
-def clink_layer_index(name_or_idx):
-    if isinstance(name_or_idx, int):
-        return max(0, min(8, name_or_idx))
-    name_map = {l["_name"]: i for i, l in enumerate(CLINK_LAYERS)}
-    return name_map.get(name_or_idx, -1)
-
-def clink_layer_tuple(name_or_idx, include_meta=False):
-    idx = clink_layer_index(name_or_idx)
-    if idx < 0:
-        raise KeyError(f"Unknown CLINK layer: {name_or_idx}")
-    layer = CLINK_LAYERS[idx]
-    return dict(layer) if include_meta else {k: v for k, v in layer.items() if k in PORDER}
-
-def clink_distance(layer_a, layer_b):
-    if isinstance(layer_a, dict) and all(p in layer_a for p in PORDER):
-        tup_a = layer_a
-    else:
-        tup_a = clink_layer_tuple(layer_a)
-    if isinstance(layer_b, dict) and all(p in layer_b for p in PORDER):
-        tup_b = layer_b
-    else:
-        tup_b = clink_layer_tuple(layer_b)
-    return tuple_distance(tup_a, tup_b)
-
-def primitive_deltas(idx_from, idx_to):
-    a, b = CLINK_LAYERS[idx_from], CLINK_LAYERS[idx_to]
-    return [{"primitive": p, "from": a[p], "to": b[p]} for p in PORDER if a[p] != b[p]]
-
-def primitive_mismatch_count(idx_from, idx_to):
-    return len(primitive_deltas(idx_from, idx_to))
-
-def verify_all_frobenius_closed():
-    results = {}
-    all_closed = True
-    for i, layer in enumerate(CLINK_LAYERS):
-        closed = clink_frobenius_closed(i)
-        results[layer["_name"]] = closed
-        if not closed: all_closed = False
-    return {"all_closed": all_closed, "per_layer": results}
-
-def clink_chain_distance():
-    steps = []
-    for i in range(8):
-        d = clink_distance(i, i+1)
-        steps.append({
-            "from": CLINK_NAMES[i], "to": CLINK_NAMES[i+1],
-            "from_tier": CLINK_TIERS[i], "to_tier": CLINK_TIERS[i+1],
-            "distance": round(d, 4),
-            "deltas": primitive_deltas(i, i+1),
-        })
-    return {
-        "steps": steps,
-        "total_distance": round(clink_distance(0, 8), 4),
-        "total_primitive_deltas": primitive_mismatch_count(0, 8),
-    }
-
-def format_tuple_glyphs(tup_dict):
-    """Format a CLINK layer tuple as ⟨𐑦·𐑸·𐑾·...⟩ string."""
-    return "⟨" + "·".join(tup_dict.get(p, "?") for p in PORDER) + "⟩"
-
-

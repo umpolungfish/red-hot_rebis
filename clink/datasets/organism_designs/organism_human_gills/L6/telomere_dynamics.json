@@ -1,0 +1,103 @@
+{
+  "organism": "Gilled Human (Homo sapiens amphibius)",
+  "structural_type": "⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑧·𐑔·𐑠·⊙·𐑖·𐑳·𐑭⟩",
+  "ouroboricity": "O_inf",
+  "repeat_sequence": "TTAGGG",
+  "initial_telomere_length_bp": 10000,
+  "initial_telomere_std_bp": 1500,
+  "n_telomeres": 92,
+  "shelterin_complex": {
+    "TRF1": {"function": "dsDNA telomeric binding", "notes": "Standard"},
+    "TRF2": {"function": "T-loop formation, ATM suppression", "notes": "Standard"},
+    "POT1": {"function": "ssDNA overhang protection", "notes": "Cold-stabilized isoform"},
+    "TPP1": {"function": "POT1-TIN2 bridge, telomerase recruitment", "notes": "Standard"},
+    "TIN2": {"function": "Scaffold", "notes": "Standard"},
+    "RAP1": {"function": "TRF2 partner", "notes": "Standard"}
+  },
+  "telomerase": {
+    "hTERT": {
+      "expression": "Conditional, HIF-1α-enhanced in gill epithelium",
+      "promoter_state": "Germline-edited with added HIF-1α response elements (HREs) and NFAT5 enhancers",
+      "cold_adaptation": "Psychrophilic surface mutations: Glu→Asp at 3 solvent-exposed residues for cold stability",
+      "activation": "Shelterin density drop + HIF-1α (hypoxia) + NFAT5 (osmotic stress)"
+    },
+    "hTR_TERC": {
+      "expression": "Constitutive",
+      "notes": "Unmodified from base human"
+    },
+    "processivity_basal": 100,
+    "pot1_tpp1_boost": 5.0,
+    "target_zone_bp": [8000, 13000],
+    "tissue_specificity": "Enhanced in gill epithelium and hematopoietic cells; basal in other somatic tissues"
+  },
+  "ouroboric_telomere_endogenous": {
+    "mechanism": "Seven-layer endogenous loop with gill-specific enhancements",
+    "intervention": "GERMLINE — hTERT promoter edited with HREs + NFAT5 enhancers; cold-adapted hTERT mutations",
+    "one_time": true,
+    "heritable": true,
+    "layers": {
+      "L1_SENSE": "Shelterin density sensor — enhanced POT1 cold-stability for marine environments",
+      "L2_SIGNAL": "ATM → KAP1 → chromatin relaxation + HIF-1α + NFAT5 → multi-input activation",
+      "L3_DEREPRESS": "TET2-mediated CpG demethylation at hTERT promoter",
+      "L4_EXPRESS": "Conditional hTERT: basal (like endogenous) + HIF-1α boost during underwater hypoxia + NFAT5 boost during osmotic stress",
+      "L5_EXTEND": "Telomerase with cold-adapted processivity (maintains activity at 4–15°C)",
+      "L6_TERMINATE": "G-quadruplex length sensor; enhanced by salt (Na⁺ stabilizes parallel G4)",
+      "L7_SEAL": "CST + Pol α fill-in; T-loop reformation"
+    }
+  },
+  "gilled_specific_enhancements": {
+    "hypoxia_driven_hTERT": {
+      "mechanism": "HIF-1α binds hypoxia response elements (HREs) engineered into hTERT promoter",
+      "trigger": "Underwater periods (pO₂ < 40 mmHg in gill tissue)",
+      "effect": "2–4× hTERT expression boost during hypoxia, returning to basal at surface"
+    },
+    "osmotic_stress_response": {
+      "mechanism": "NFAT5/TonEBP binds engineered enhancers at hTERT locus",
+      "trigger": "Hypertonic stress in marine gill epithelium (seawater: ~1000 mOsm)",
+      "effect": "Compensatory hTERT upregulation to offset osmotically-induced oxidative attrition"
+    },
+    "cold_adaptation": {
+      "mechanism": "3 surface Glu→Asp mutations reduce electrostatic rigidity at low temperature",
+      "effect": "Processivity maintained at 4–15°C (vs. ~50% reduction in WT hTERT)",
+      "structural_basis": "Increased conformational flexibility in the TRBD (telomerase RNA-binding domain)"
+    },
+    "salt_enhanced_G4": {
+      "mechanism": "Na⁺ (seawater) and K⁺ (intracellular) stabilize parallel G-quadruplex topology",
+      "effect": "G4 ceiling at ~12–13 kb is more robust in marine conditions",
+      "note": "Freshwater gilled humans have standard G4 stability"
+    },
+    "G_primitive_shift": "𐑲 → 𐑔 — tissue-specific (gill) rather than universal telomere maintenance"
+  },
+  "cell_cycle_params": {
+    "gill_epithelium": {
+      "division_rate": 0.8,
+      "s_phase_duration_h": 6,
+      "notes": "High turnover in gill epithelium — primary target for ouroboric maintenance"
+    },
+    "other_somatic": {
+      "division_rate": 0.4,
+      "notes": "Standard somatic turnover; basal ouroboric maintenance"
+    }
+  },
+  "senescence_markers": {
+    "SA_beta_gal": true,
+    "p16_INK4a": true,
+    "p21_CIP1": true,
+    "SASP": ["IL-6", "IL-8", "MCP-1", "MMP3"],
+    "telomere_dysfunction_foci": true
+  },
+  "simulation_parameters": {
+    "source": "biology/ouroboric_telomere_expanded.py — mode='gilled'",
+    "attrition_per_division_bp": 45,
+    "oxidative_attrition_max_bp": 50,
+    "oxidative_stress_factor": 0.24,
+    "processivity_basal": 100,
+    "pot1_tpp1_boost": 5.0,
+    "htert_myc_activated": 2.5,
+    "htert_max_fold": 10.0,
+    "expected_equilibrium_length_bp": 7700,
+    "expected_senescence_at_300_div": "0%"
+  },
+  "generation_timestamp": "2025-06-08",
+  "author": "Lando⊗⊙perator"
+}

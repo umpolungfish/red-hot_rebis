@@ -1,0 +1,4005 @@
+{
+  "total_novel_classes": 72648,
+  "novel_classes_sorted": [
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|000101001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALT \u2192 AREV \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001101001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALT \u2192 AREV \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010101001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALT \u2192 AREV \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|001101001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALF \u2192 AREV \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001001001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALF \u2192 AREV \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|011001001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALF \u2192 AREV \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|010101001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 ENGAGR \u2192 AREV \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|011001001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 ENGAGR \u2192 AREV \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010001001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 ENGAGR \u2192 AREV \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|000110001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALT \u2192 AREV \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001110001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALT \u2192 AREV \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010110001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALT \u2192 AREV \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|001110001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALF \u2192 AREV \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001010001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALF \u2192 AREV \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|011010001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALF \u2192 AREV \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|010110001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 ENGAGR \u2192 AREV \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|011010001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 ENGAGR \u2192 AREV \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010010001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 ENGAGR \u2192 AREV \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|000101010111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALT \u2192 CLINK \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001101010111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALT \u2192 CLINK \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010101010111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALT \u2192 CLINK \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|001101010111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALF \u2192 CLINK \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001001010111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALF \u2192 CLINK \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|011001010111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALF \u2192 CLINK \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|010101010111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 ENGAGR \u2192 CLINK \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|011001010111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 ENGAGR \u2192 CLINK \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010001010111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 ENGAGR \u2192 CLINK \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|000110010111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALT \u2192 CLINK \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001110010111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALT \u2192 CLINK \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010110010111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALT \u2192 CLINK \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|001110010111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALF \u2192 CLINK \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001010010111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALF \u2192 CLINK \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|011010010111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALF \u2192 CLINK \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|010110010111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 ENGAGR \u2192 CLINK \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|011010010111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 ENGAGR \u2192 CLINK \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010010010111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 ENGAGR \u2192 CLINK \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|000101100111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALT \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001101100111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALT \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010101100111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALT \u2192 IMSCRIB \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|001101100111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALF \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001001100111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALF \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|011001100111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALF \u2192 IMSCRIB \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|010101100111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 ENGAGR \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|011001100111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 ENGAGR \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010001100111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 ENGAGR \u2192 IMSCRIB \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|000110100111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALT \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001110100111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALT \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010110100111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALT \u2192 IMSCRIB \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|001110100111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALF \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001010100111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALF \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|011010100111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALF \u2192 IMSCRIB \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|010110100111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 ENGAGR \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|011010100111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 ENGAGR \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010010100111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 ENGAGR \u2192 IMSCRIB \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|000101011011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001101011011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010101011011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|001101011011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 EVALF \u2192 CLINK \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001001011011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 EVALF \u2192 CLINK \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|011001011011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 EVALF \u2192 CLINK \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|010101011011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 ENGAGR \u2192 CLINK \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|011001011011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 ENGAGR \u2192 CLINK \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010001011011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 ENGAGR \u2192 CLINK \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|000110011011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001110011011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010110011011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|001110011011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 EVALF \u2192 CLINK \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001010011011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 EVALF \u2192 CLINK \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|011010011011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 EVALF \u2192 CLINK \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|010110011011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 ENGAGR \u2192 CLINK \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|011010011011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 ENGAGR \u2192 CLINK \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010010011011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 ENGAGR \u2192 CLINK \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|000101101011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001101101011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010101101011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|001101101011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 EVALF \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001001101011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 EVALF \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|011001101011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 EVALF \u2192 IMSCRIB \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|010101101011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 ENGAGR \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|011001101011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 ENGAGR \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010001101011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 ENGAGR \u2192 IMSCRIB \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|000110101011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001110101011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010110101011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|001110101011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 EVALF \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001010101011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 EVALF \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|011010101011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 EVALF \u2192 IMSCRIB \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|010110101011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 ENGAGR \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|011010101011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 ENGAGR \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010010101011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 ENGAGR \u2192 IMSCRIB \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|000101110011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001101110011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010101110011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|001101110011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001001110011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|011001110011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|010101110011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 CLINK \u2192 ENGAGR \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|011001110011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 CLINK \u2192 ENGAGR \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010001110011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 CLINK \u2192 ENGAGR \u2192 IMSCRIB \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|000110110011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001110110011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010110110011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|001110110011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001010110011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|011010110011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|010110110011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 CLINK \u2192 ENGAGR \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|011010110011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 CLINK \u2192 ENGAGR \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010010110011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 CLINK \u2192 ENGAGR \u2192 IMSCRIB \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|000101011101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001101011101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010101011101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|001101011101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 EVALF \u2192 CLINK \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001001011101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 EVALF \u2192 CLINK \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|011001011101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 EVALF \u2192 CLINK \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|010101011101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 ENGAGR \u2192 CLINK \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|011001011101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 ENGAGR \u2192 CLINK \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010001011101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 ENGAGR \u2192 CLINK \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|000110011101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001110011101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010110011101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|001110011101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 EVALF \u2192 CLINK \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001010011101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 EVALF \u2192 CLINK \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|011010011101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 EVALF \u2192 CLINK \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|010110011101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 ENGAGR \u2192 CLINK \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|011010011101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 ENGAGR \u2192 CLINK \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010010011101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 ENGAGR \u2192 CLINK \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|000101101101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001101101101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010101101101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|001101101101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 EVALF \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001001101101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 EVALF \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|011001101101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 EVALF \u2192 IMSCRIB \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|010101101101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 ENGAGR \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|011001101101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 ENGAGR \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010001101101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 ENGAGR \u2192 IMSCRIB \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|000110101101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001110101101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010110101101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|001110101101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 EVALF \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001010101101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 EVALF \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|011010101101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 EVALF \u2192 IMSCRIB \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|010110101101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 ENGAGR \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|011010101101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 ENGAGR \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010010101101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 ENGAGR \u2192 IMSCRIB \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|000101110101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001101110101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010101110101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|001101110101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001001110101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|011001110101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|010101110101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 CLINK \u2192 ENGAGR \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|011001110101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 CLINK \u2192 ENGAGR \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010001110101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 CLINK \u2192 ENGAGR \u2192 IMSCRIB \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|000110110101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001110110101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010110110101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|001110110101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001010110101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|011010110101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|010110110101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 CLINK \u2192 ENGAGR \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|011010110101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 CLINK \u2192 ENGAGR \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010010110101|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 CLINK \u2192 ENGAGR \u2192 IMSCRIB \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|000101111001|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AREV \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001101111001|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AREV \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010101111001|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AREV \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|001101111001|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AREV \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001001111001|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AREV \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|011001111001|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AREV \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|010101111001|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AREV \u2192 CLINK \u2192 ENGAGR \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|011001111001|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AREV \u2192 CLINK \u2192 ENGAGR \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010001111001|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AREV \u2192 CLINK \u2192 ENGAGR \u2192 IMSCRIB \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|000110111001|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AREV \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001110111001|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AREV \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010110111001|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AREV \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|001110111001|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AREV \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|001010111001|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AREV \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|011010111001|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AREV \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|8|0|0|0|8|010110111001|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AREV \u2192 CLINK \u2192 ENGAGR \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|9|0|0|0|8|011010111001|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=EVALF | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AREV \u2192 CLINK \u2192 ENGAGR \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|10|0|0|0|8|010010111001|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=ENGAGR | diversity=6/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AREV \u2192 CLINK \u2192 ENGAGR \u2192 IMSCRIB \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|000101001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=6/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALT \u2192 AREV \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001101001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALT \u2192 AREV \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010101001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALT \u2192 AREV \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|001101001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALF \u2192 AREV \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001001001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=6/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALF \u2192 AREV \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|011001001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALF \u2192 AREV \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|010101001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 ENGAGR \u2192 AREV \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|011001001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 ENGAGR \u2192 AREV \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010001001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=6/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 ENGAGR \u2192 AREV \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|000110001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=6/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALT \u2192 AREV \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001110001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALT \u2192 AREV \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010110001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALT \u2192 AREV \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|001110001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALF \u2192 AREV \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001010001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=6/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALF \u2192 AREV \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|011010001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALF \u2192 AREV \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|010110001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 ENGAGR \u2192 AREV \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|011010001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 ENGAGR \u2192 AREV \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010010001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=6/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 ENGAGR \u2192 AREV \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|000101010111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=6/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALT \u2192 CLINK \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001101010111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALT \u2192 CLINK \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010101010111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALT \u2192 CLINK \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|001101010111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALF \u2192 CLINK \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001001010111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=6/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALF \u2192 CLINK \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|011001010111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALF \u2192 CLINK \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|010101010111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 ENGAGR \u2192 CLINK \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|011001010111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 ENGAGR \u2192 CLINK \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010001010111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=6/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 ENGAGR \u2192 CLINK \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|000110010111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=6/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALT \u2192 CLINK \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001110010111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALT \u2192 CLINK \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010110010111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALT \u2192 CLINK \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|001110010111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALF \u2192 CLINK \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001010010111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=6/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALF \u2192 CLINK \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|011010010111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALF \u2192 CLINK \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|010110010111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 ENGAGR \u2192 CLINK \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|011010010111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 ENGAGR \u2192 CLINK \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010010010111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=6/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 ENGAGR \u2192 CLINK \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|000101100111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=6/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALT \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001101100111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALT \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010101100111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALT \u2192 IMSCRIB \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|001101100111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALF \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001001100111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=6/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALF \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|011001100111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALF \u2192 IMSCRIB \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|010101100111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 ENGAGR \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|011001100111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 ENGAGR \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010001100111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=6/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 ENGAGR \u2192 IMSCRIB \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|000110100111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=6/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALT \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001110100111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALT \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010110100111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALT \u2192 IMSCRIB \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|001110100111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALF \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001010100111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=6/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALF \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|011010100111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALF \u2192 IMSCRIB \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|010110100111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 ENGAGR \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|011010100111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 ENGAGR \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010010100111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=6/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 ENGAGR \u2192 IMSCRIB \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|000101011011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=6/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001101011011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010101011011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|001101011011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 EVALF \u2192 CLINK \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001001011011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=6/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 EVALF \u2192 CLINK \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|011001011011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 EVALF \u2192 CLINK \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|010101011011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 ENGAGR \u2192 CLINK \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|011001011011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 ENGAGR \u2192 CLINK \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010001011011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=6/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 ENGAGR \u2192 CLINK \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|000110011011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=6/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001110011011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010110011011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|001110011011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 EVALF \u2192 CLINK \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001010011011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=6/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 EVALF \u2192 CLINK \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|011010011011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 EVALF \u2192 CLINK \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|010110011011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 ENGAGR \u2192 CLINK \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|011010011011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 ENGAGR \u2192 CLINK \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010010011011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=6/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 ENGAGR \u2192 CLINK \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|000101101011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=6/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001101101011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010101101011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|001101101011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 EVALF \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001001101011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=6/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 EVALF \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|011001101011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 EVALF \u2192 IMSCRIB \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|010101101011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 ENGAGR \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|011001101011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 ENGAGR \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010001101011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=6/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 ENGAGR \u2192 IMSCRIB \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|000110101011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=6/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001110101011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010110101011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|001110101011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 EVALF \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001010101011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=6/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 EVALF \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|011010101011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 EVALF \u2192 IMSCRIB \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|010110101011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 ENGAGR \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|011010101011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 ENGAGR \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010010101011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=6/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 ENGAGR \u2192 IMSCRIB \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|000101110011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=6/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001101110011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010101110011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|001101110011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001001110011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=6/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|011001110011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|010101110011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 CLINK \u2192 ENGAGR \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|011001110011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 CLINK \u2192 ENGAGR \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010001110011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=6/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 CLINK \u2192 ENGAGR \u2192 IMSCRIB \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|000110110011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=6/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001110110011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010110110011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|001110110011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001010110011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=6/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|011010110011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|010110110011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 CLINK \u2192 ENGAGR \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|011010110011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 CLINK \u2192 ENGAGR \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010010110011|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=6/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 CLINK \u2192 ENGAGR \u2192 IMSCRIB \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|000101011110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=6/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001101011110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010101011110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|001101011110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 EVALF \u2192 CLINK \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001001011110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=6/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 EVALF \u2192 CLINK \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|011001011110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 EVALF \u2192 CLINK \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|010101011110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 ENGAGR \u2192 CLINK \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|011001011110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 ENGAGR \u2192 CLINK \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010001011110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=6/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 ENGAGR \u2192 CLINK \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|000110011110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=6/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001110011110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010110011110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|001110011110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 EVALF \u2192 CLINK \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001010011110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=6/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 EVALF \u2192 CLINK \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|011010011110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 EVALF \u2192 CLINK \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|010110011110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 ENGAGR \u2192 CLINK \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|011010011110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 ENGAGR \u2192 CLINK \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010010011110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=6/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 ENGAGR \u2192 CLINK \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|000101101110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=6/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001101101110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010101101110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|001101101110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 EVALF \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001001101110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=6/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 EVALF \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|011001101110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 EVALF \u2192 IMSCRIB \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|010101101110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 ENGAGR \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|011001101110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 ENGAGR \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010001101110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=6/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 ENGAGR \u2192 IMSCRIB \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|000110101110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=6/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001110101110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010110101110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|001110101110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 EVALF \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001010101110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=6/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 EVALF \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|011010101110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 EVALF \u2192 IMSCRIB \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|010110101110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 ENGAGR \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|011010101110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 ENGAGR \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010010101110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=6/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 ENGAGR \u2192 IMSCRIB \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|000101110110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=6/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001101110110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010101110110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|001101110110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001001110110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=6/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|011001110110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|010101110110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 CLINK \u2192 ENGAGR \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|011001110110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 CLINK \u2192 ENGAGR \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010001110110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=6/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 CLINK \u2192 ENGAGR \u2192 IMSCRIB \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|000110110110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=6/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001110110110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010110110110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|001110110110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001010110110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=6/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|011010110110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|010110110110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 CLINK \u2192 ENGAGR \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|011010110110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 CLINK \u2192 ENGAGR \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010010110110|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=6/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 CLINK \u2192 ENGAGR \u2192 IMSCRIB \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|000101111010|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=6/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AREV \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001101111010|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AREV \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010101111010|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AREV \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|001101111010|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AREV \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001001111010|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=6/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AREV \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|011001111010|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AREV \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|010101111010|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AREV \u2192 CLINK \u2192 ENGAGR \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|011001111010|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AREV \u2192 CLINK \u2192 ENGAGR \u2192 IMSCRIB \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010001111010|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=6/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AREV \u2192 CLINK \u2192 ENGAGR \u2192 IMSCRIB \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|000110111010|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=6/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AREV \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001110111010|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AREV \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010110111010|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AREV \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|001110111010|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AREV \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|001010111010|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=6/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AREV \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|011010111010|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AREV \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|8|0|0|0|8|010110111010|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALT | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AREV \u2192 CLINK \u2192 ENGAGR \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|9|0|0|0|8|011010111010|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=EVALF | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AREV \u2192 CLINK \u2192 ENGAGR \u2192 IMSCRIB \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|10|0|0|0|8|010010111010|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=ENGAGR | diversity=6/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AREV \u2192 CLINK \u2192 ENGAGR \u2192 IMSCRIB \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|2|8|0|0|0|8|000101001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=AFWD | end=EVALT | diversity=6/12",
+        "representative": "AFWD \u2192 VINIT \u2192 VINIT \u2192 TANCH \u2192 EVALT \u2192 AREV \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|2|9|0|0|0|8|001101001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=AFWD | end=EVALF | diversity=7/12",
+        "representative": "AFWD \u2192 VINIT \u2192 VINIT \u2192 TANCH \u2192 EVALT \u2192 AREV \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|2|10|0|0|0|8|010101001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=AFWD | end=ENGAGR | diversity=7/12",
+        "representative": "AFWD \u2192 VINIT \u2192 VINIT \u2192 TANCH \u2192 EVALT \u2192 AREV \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|2|8|0|0|0|8|001101001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=AFWD | end=EVALT | diversity=7/12",
+        "representative": "AFWD \u2192 VINIT \u2192 VINIT \u2192 TANCH \u2192 EVALF \u2192 AREV \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|2|9|0|0|0|8|001001001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=AFWD | end=EVALF | diversity=6/12",
+        "representative": "AFWD \u2192 VINIT \u2192 VINIT \u2192 TANCH \u2192 EVALF \u2192 AREV \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|2|10|0|0|0|8|011001001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=AFWD | end=ENGAGR | diversity=7/12",
+        "representative": "AFWD \u2192 VINIT \u2192 VINIT \u2192 TANCH \u2192 EVALF \u2192 AREV \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|2|8|0|0|0|8|010101001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=AFWD | end=EVALT | diversity=7/12",
+        "representative": "AFWD \u2192 VINIT \u2192 VINIT \u2192 TANCH \u2192 ENGAGR \u2192 AREV \u2192 FSPLIT \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|2|9|0|0|0|8|011001001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=AFWD | end=EVALF | diversity=7/12",
+        "representative": "AFWD \u2192 VINIT \u2192 VINIT \u2192 TANCH \u2192 ENGAGR \u2192 AREV \u2192 FSPLIT \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|2|10|0|0|0|8|010001001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=AFWD | end=ENGAGR | diversity=6/12",
+        "representative": "AFWD \u2192 VINIT \u2192 VINIT \u2192 TANCH \u2192 ENGAGR \u2192 AREV \u2192 FSPLIT \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|2|8|0|0|0|8|000110001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=AFWD | end=EVALT | diversity=6/12",
+        "representative": "AFWD \u2192 VINIT \u2192 VINIT \u2192 TANCH \u2192 EVALT \u2192 AREV \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|2|9|0|0|0|8|001110001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=AFWD | end=EVALF | diversity=7/12",
+        "representative": "AFWD \u2192 VINIT \u2192 VINIT \u2192 TANCH \u2192 EVALT \u2192 AREV \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|2|10|0|0|0|8|010110001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=AFWD | end=ENGAGR | diversity=7/12",
+        "representative": "AFWD \u2192 VINIT \u2192 VINIT \u2192 TANCH \u2192 EVALT \u2192 AREV \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|2|8|0|0|0|8|001110001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=AFWD | end=EVALT | diversity=7/12",
+        "representative": "AFWD \u2192 VINIT \u2192 VINIT \u2192 TANCH \u2192 EVALF \u2192 AREV \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|2|9|0|0|0|8|001010001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=AFWD | end=EVALF | diversity=6/12",
+        "representative": "AFWD \u2192 VINIT \u2192 VINIT \u2192 TANCH \u2192 EVALF \u2192 AREV \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|2|10|0|0|0|8|011010001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=AFWD | end=ENGAGR | diversity=7/12",
+        "representative": "AFWD \u2192 VINIT \u2192 VINIT \u2192 TANCH \u2192 EVALF \u2192 AREV \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|2|8|0|0|0|8|010110001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=AFWD | end=EVALT | diversity=7/12",
+        "representative": "AFWD \u2192 VINIT \u2192 VINIT \u2192 TANCH \u2192 ENGAGR \u2192 AREV \u2192 FFUSE \u2192 EVALT"
+      }
+    ],
+    [
+      "8|5,1,2,0|2|9|0|0|0|8|011010001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=AFWD | end=EVALF | diversity=7/12",
+        "representative": "AFWD \u2192 VINIT \u2192 VINIT \u2192 TANCH \u2192 ENGAGR \u2192 AREV \u2192 FFUSE \u2192 EVALF"
+      }
+    ],
+    [
+      "8|5,1,2,0|2|10|0|0|0|8|010010001111|101000111|DL:1,FD:1,LD:1,LF:1,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=AFWD | end=ENGAGR | diversity=6/12",
+        "representative": "AFWD \u2192 VINIT \u2192 VINIT \u2192 TANCH \u2192 ENGAGR \u2192 AREV \u2192 FFUSE \u2192 ENGAGR"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|6|0|0|0|8|001101001111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FSPLIT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALT \u2192 AREV \u2192 EVALF \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|6|0|0|0|8|010101001111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FSPLIT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALT \u2192 AREV \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|6|0|0|0|8|011001001111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FSPLIT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALF \u2192 AREV \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|7|0|0|0|8|001110001111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FFUSE | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALT \u2192 AREV \u2192 EVALF \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|7|0|0|0|8|010110001111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FFUSE | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALT \u2192 AREV \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|7|0|0|0|8|011010001111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FFUSE | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALF \u2192 AREV \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|6|0|0|0|8|001101010111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FSPLIT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALT \u2192 CLINK \u2192 EVALF \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|6|0|0|0|8|010101010111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FSPLIT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALT \u2192 CLINK \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|6|0|0|0|8|011001010111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FSPLIT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALF \u2192 CLINK \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|7|0|0|0|8|001110010111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FFUSE | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALT \u2192 CLINK \u2192 EVALF \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|7|0|0|0|8|010110010111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FFUSE | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALT \u2192 CLINK \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|7|0|0|0|8|011010010111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FFUSE | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALF \u2192 CLINK \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|6|0|0|0|8|001101100111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FSPLIT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALT \u2192 IMSCRIB \u2192 EVALF \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|6|0|0|0|8|010101100111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FSPLIT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALT \u2192 IMSCRIB \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|6|0|0|0|8|011001100111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FSPLIT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALF \u2192 IMSCRIB \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|7|0|0|0|8|001110100111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FFUSE | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALT \u2192 IMSCRIB \u2192 EVALF \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|7|0|0|0|8|010110100111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FFUSE | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALT \u2192 IMSCRIB \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|7|0|0|0|8|011010100111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FFUSE | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AFWD \u2192 EVALF \u2192 IMSCRIB \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|6|0|0|0|8|001101011011|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FSPLIT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 EVALF \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|6|0|0|0|8|010101011011|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FSPLIT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|6|0|0|0|8|011001011011|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FSPLIT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 EVALF \u2192 CLINK \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|7|0|0|0|8|001110011011|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FFUSE | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 EVALF \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|7|0|0|0|8|010110011011|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FFUSE | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|7|0|0|0|8|011010011011|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FFUSE | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 EVALF \u2192 CLINK \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|6|0|0|0|8|001101101011|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FSPLIT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 EVALF \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|6|0|0|0|8|010101101011|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FSPLIT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|6|0|0|0|8|011001101011|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FSPLIT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 EVALF \u2192 IMSCRIB \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|7|0|0|0|8|001110101011|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FFUSE | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 EVALF \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|7|0|0|0|8|010110101011|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FFUSE | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|7|0|0|0|8|011010101011|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FFUSE | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 AREV \u2192 EVALF \u2192 IMSCRIB \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|6|0|0|0|8|001101110011|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FSPLIT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 EVALF \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|6|0|0|0|8|010101110011|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FSPLIT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|6|0|0|0|8|011001110011|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FSPLIT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|7|0|0|0|8|001110110011|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FFUSE | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 EVALF \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|7|0|0|0|8|010110110011|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FFUSE | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|7|0|0|0|8|011010110011|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FFUSE | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 TANCH \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|6|0|0|0|8|001101011101|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FSPLIT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 EVALF \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|6|0|0|0|8|010101011101|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FSPLIT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|6|0|0|0|8|011001011101|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FSPLIT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 EVALF \u2192 CLINK \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|7|0|0|0|8|001110011101|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FFUSE | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 EVALF \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|7|0|0|0|8|010110011101|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FFUSE | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|7|0|0|0|8|011010011101|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FFUSE | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 EVALF \u2192 CLINK \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|6|0|0|0|8|001101101101|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FSPLIT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 EVALF \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|6|0|0|0|8|010101101101|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FSPLIT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|6|0|0|0|8|011001101101|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FSPLIT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 EVALF \u2192 IMSCRIB \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|7|0|0|0|8|001110101101|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FFUSE | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 EVALF \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|7|0|0|0|8|010110101101|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FFUSE | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|7|0|0|0|8|011010101101|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FFUSE | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 AREV \u2192 EVALF \u2192 IMSCRIB \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|6|0|0|0|8|001101110101|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FSPLIT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 EVALF \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|6|0|0|0|8|010101110101|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FSPLIT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|6|0|0|0|8|011001110101|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FSPLIT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|7|0|0|0|8|001110110101|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FFUSE | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 EVALF \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|7|0|0|0|8|010110110101|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FFUSE | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|7|0|0|0|8|011010110101|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FFUSE | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AFWD \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|6|0|0|0|8|001101111001|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FSPLIT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AREV \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 EVALF \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|6|0|0|0|8|010101111001|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FSPLIT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AREV \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|6|0|0|0|8|011001111001|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FSPLIT | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AREV \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|7|0|0|0|8|001110111001|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FFUSE | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AREV \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 EVALF \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|7|0|0|0|8|010110111001|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FFUSE | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AREV \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|0|7|0|0|0|8|011010111001|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=VINIT | end=FFUSE | diversity=7/12",
+        "representative": "VINIT \u2192 VINIT \u2192 AREV \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|6|0|0|0|8|001101001111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FSPLIT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALT \u2192 AREV \u2192 EVALF \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|6|0|0|0|8|010101001111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FSPLIT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALT \u2192 AREV \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|6|0|0|0|8|011001001111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FSPLIT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALF \u2192 AREV \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|7|0|0|0|8|001110001111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FFUSE | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALT \u2192 AREV \u2192 EVALF \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|7|0|0|0|8|010110001111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FFUSE | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALT \u2192 AREV \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|7|0|0|0|8|011010001111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FFUSE | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALF \u2192 AREV \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|6|0|0|0|8|001101010111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FSPLIT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALT \u2192 CLINK \u2192 EVALF \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|6|0|0|0|8|010101010111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FSPLIT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALT \u2192 CLINK \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|6|0|0|0|8|011001010111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FSPLIT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALF \u2192 CLINK \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|7|0|0|0|8|001110010111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FFUSE | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALT \u2192 CLINK \u2192 EVALF \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|7|0|0|0|8|010110010111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FFUSE | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALT \u2192 CLINK \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|7|0|0|0|8|011010010111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FFUSE | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALF \u2192 CLINK \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|6|0|0|0|8|001101100111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FSPLIT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALT \u2192 IMSCRIB \u2192 EVALF \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|6|0|0|0|8|010101100111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FSPLIT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALT \u2192 IMSCRIB \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|6|0|0|0|8|011001100111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FSPLIT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALF \u2192 IMSCRIB \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|7|0|0|0|8|001110100111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FFUSE | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALT \u2192 IMSCRIB \u2192 EVALF \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|7|0|0|0|8|010110100111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FFUSE | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALT \u2192 IMSCRIB \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|7|0|0|0|8|011010100111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FFUSE | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AFWD \u2192 EVALF \u2192 IMSCRIB \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|6|0|0|0|8|001101011011|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FSPLIT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 EVALF \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|6|0|0|0|8|010101011011|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FSPLIT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|6|0|0|0|8|011001011011|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FSPLIT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 EVALF \u2192 CLINK \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|7|0|0|0|8|001110011011|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FFUSE | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 EVALF \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|7|0|0|0|8|010110011011|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FFUSE | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|7|0|0|0|8|011010011011|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FFUSE | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 EVALF \u2192 CLINK \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|6|0|0|0|8|001101101011|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FSPLIT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 EVALF \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|6|0|0|0|8|010101101011|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FSPLIT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|6|0|0|0|8|011001101011|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FSPLIT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 EVALF \u2192 IMSCRIB \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|7|0|0|0|8|001110101011|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FFUSE | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 EVALF \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|7|0|0|0|8|010110101011|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FFUSE | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|7|0|0|0|8|011010101011|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FFUSE | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 AREV \u2192 EVALF \u2192 IMSCRIB \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|6|0|0|0|8|001101110011|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FSPLIT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 EVALF \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|6|0|0|0|8|010101110011|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FSPLIT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|6|0|0|0|8|011001110011|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FSPLIT | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|7|0|0|0|8|001110110011|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FFUSE | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 EVALF \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|7|0|0|0|8|010110110011|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FFUSE | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|7|0|0|0|8|011010110011|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FFUSE | diversity=7/12",
+        "representative": "TANCH \u2192 VINIT \u2192 VINIT \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|6|0|0|0|8|001101011110|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FSPLIT | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 EVALF \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|6|0|0|0|8|010101011110|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FSPLIT | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|6|0|0|0|8|011001011110|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FSPLIT | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 EVALF \u2192 CLINK \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|7|0|0|0|8|001110011110|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FFUSE | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 EVALF \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|7|0|0|0|8|010110011110|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FFUSE | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 CLINK \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|7|0|0|0|8|011010011110|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FFUSE | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 EVALF \u2192 CLINK \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|6|0|0|0|8|001101101110|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FSPLIT | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 EVALF \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|6|0|0|0|8|010101101110|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FSPLIT | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|6|0|0|0|8|011001101110|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FSPLIT | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 EVALF \u2192 IMSCRIB \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|7|0|0|0|8|001110101110|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FFUSE | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 EVALF \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|7|0|0|0|8|010110101110|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FFUSE | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 EVALT \u2192 IMSCRIB \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|7|0|0|0|8|011010101110|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FFUSE | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 AREV \u2192 EVALF \u2192 IMSCRIB \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|6|0|0|0|8|001101110110|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FSPLIT | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 EVALF \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|6|0|0|0|8|010101110110|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FSPLIT | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|6|0|0|0|8|011001110110|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FSPLIT | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|7|0|0|0|8|001110110110|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FFUSE | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 EVALF \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|7|0|0|0|8|010110110110|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FFUSE | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|7|0|0|0|8|011010110110|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FFUSE | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AFWD \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|6|0|0|0|8|001101111010|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FSPLIT | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AREV \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 EVALF \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|6|0|0|0|8|010101111010|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FSPLIT | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AREV \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|6|0|0|0|8|011001111010|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FSPLIT | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AREV \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|7|0|0|0|8|001110111010|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FFUSE | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AREV \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 EVALF \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|7|0|0|0|8|010110111010|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FFUSE | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AREV \u2192 CLINK \u2192 EVALT \u2192 IMSCRIB \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|1|7|0|0|0|8|011010111010|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=TANCH | end=FFUSE | diversity=7/12",
+        "representative": "TANCH \u2192 TANCH \u2192 AREV \u2192 CLINK \u2192 EVALF \u2192 IMSCRIB \u2192 ENGAGR \u2192 FFUSE"
+      }
+    ],
+    [
+      "8|5,1,2,0|2|6|0|0|0|8|001101001111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=AFWD | end=FSPLIT | diversity=7/12",
+        "representative": "AFWD \u2192 VINIT \u2192 VINIT \u2192 TANCH \u2192 EVALT \u2192 AREV \u2192 EVALF \u2192 FSPLIT"
+      }
+    ],
+    [
+      "8|5,1,2,0|2|6|0|0|0|8|010101001111|1100000101|DF:1,DL:1,LD:2,LL:3",
+      {
+        "count": 240,
+        "fingerprint": "sig=(5,1,2,0) | start=AFWD | end=FSPLIT | diversity=7/12",
+        "representative": "AFWD \u2192 VINIT \u2192 VINIT \u2192 TANCH \u2192 EVALT \u2192 AREV \u2192 ENGAGR \u2192 FSPLIT"
+      }
+    ]
+  ]
+}

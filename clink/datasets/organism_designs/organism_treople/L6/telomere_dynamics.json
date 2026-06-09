@@ -1,0 +1,93 @@
+{
+  "organism": "Treople (Homo sapiens × photosynthetic symbiont)",
+  "structural_type": "⟨𐑦·𐑥·𐑾·𐑹·𐑐·𐑧·𐑲·𐑠·⊙·𐑖·𐑳·𐑭⟩",
+  "ouroboricity": "O_inf",
+  "repeat_sequence": "TTAGGG",
+  "initial_telomere_length_bp": 12000,
+  "initial_telomere_std_bp": 1500,
+  "n_telomeres": 92,
+  "shelterin_complex": {
+    "TRF1": {"function": "dsDNA telomeric binding", "notes": "Standard"},
+    "TRF2": {"function": "T-loop formation, ATM suppression", "notes": "Enhanced by photosynthetic metabolites"},
+    "POT1": {"function": "ssDNA overhang protection", "notes": "Standard"},
+    "TPP1": {"function": "POT1-TIN2 bridge, telomerase recruitment", "notes": "Standard"},
+    "TIN2": {"function": "Scaffold", "notes": "Standard"},
+    "RAP1": {"function": "TRF2 partner", "notes": "Standard"}
+  },
+  "telomerase": {
+    "hTERT": {
+      "expression": "Conditional, epigenetically poised",
+      "promoter_state": "Germline-edited: CpG island methylation control region deleted",
+      "activation": "Shelterin density drop → ATM → TET2 demethylation → MYC/SP1 activation"
+    },
+    "hTR_TERC": {
+      "expression": "Constitutive",
+      "notes": "Unmodified from base human"
+    },
+    "processivity_basal": 100,
+    "pot1_tpp1_boost": 5.0,
+    "target_zone_bp": [8000, 13000]
+  },
+  "ouroboric_telomere_endogenous": {
+    "mechanism": "Seven-layer endogenous loop (SENSE→SIGNAL→DEREPRESS→EXPRESS→EXTEND→TERMINATE→SEAL)",
+    "intervention": "GERMLINE — hTERT promoter methylation control region deleted at embryo stage",
+    "one_time": true,
+    "heritable": true,
+    "layers": {
+      "L1_SENSE": "Shelterin density sensor — TRF2/POT1 occupancy threshold at 55%",
+      "L2_SIGNAL": "ATM → KAP1 → chromatin relaxation → p53 gradient",
+      "L3_DEREPRESS": "TET2-mediated CpG demethylation at hTERT promoter (accelerated by treople-enhanced chromatin stability)",
+      "L4_EXPRESS": "Conditional hTERT expression via MYC/SP1/NF-κB/HIF-1α",
+      "L5_EXTEND": "Telomerase adds TTAGGG repeats with enhanced processivity",
+      "L6_TERMINATE": "G-quadruplex length sensor; enhanced stability from porphyrin intercalation (+5–15°C Tm)",
+      "L7_SEAL": "CST + Pol α fill-in; T-loop reformation"
+    }
+  },
+  "treople_specific_enhancements": {
+    "reduced_ROS": {
+      "mechanism": "Photosynthetic ATP production (no mitochondrial ROS)",
+      "effect": "30–50% lower oxidative telomere attrition",
+      "attrition_modifier": 0.6
+    },
+    "g4_enhancement": {
+      "mechanism": "Protoporphyrin IX and Mg-protoporphyrin IX π-stack with G-tetrads",
+      "effect": "+5–15°C Tm increase for G-quadruplex stability",
+      "termination_enhancement": "Tighter extension ceiling at target length"
+    },
+    "ourboreum_integration": {
+      "mechanism": "Bioelectric synchronization of telomere maintenance across grove via mycorrhizal networks",
+      "T_primitive_shift": "𐑸 → 𐑥 — telomere participates in collective crossing-point",
+      "collective_memory": "Shared epigenetic memory of telomere maintenance states"
+    }
+  },
+  "cell_cycle_params": {
+    "division_rate": 0.3,
+    "s_phase_duration_h": 8,
+    "g1_phase_duration_h": 12,
+    "g2_phase_duration_h": 6,
+    "m_phase_duration_h": 1,
+    "notes": "Slower division rate than base human (metabolic efficiency reduces turnover)"
+  },
+  "senescence_markers": {
+    "SA_beta_gal": true,
+    "p16_INK4a": true,
+    "p21_CIP1": true,
+    "SASP": ["IL-6", "IL-8", "MCP-1"],
+    "telomere_dysfunction_foci": true,
+    "notes": "Senescence threshold raised due to ouroboric maintenance"
+  },
+  "simulation_parameters": {
+    "source": "biology/ouroboric_telomere_expanded.py — mode='treople'",
+    "attrition_per_division_bp": 45,
+    "oxidative_attrition_max_bp": 50,
+    "oxidative_stress_factor": 0.12,
+    "processivity_basal": 100,
+    "pot1_tpp1_boost": 5.0,
+    "htert_myc_activated": 2.5,
+    "htert_max_fold": 10.0,
+    "expected_equilibrium_length_bp": 8000,
+    "expected_senescence_at_300_div": "0%"
+  },
+  "generation_timestamp": "2025-06-08",
+  "author": "Lando⊗⊙perator"
+}

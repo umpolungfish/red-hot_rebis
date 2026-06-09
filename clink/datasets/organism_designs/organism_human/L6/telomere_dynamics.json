@@ -1,7 +1,7 @@
 {
   "repeat_sequence": "TTAGGG",
   "human_repeats_per_telomere": "500-3000 (3-20 kb)",
-  "shortening_per_division_bp": 50,
+  "shortening_per_division_bp": 45,
   "shelterin_complex": {
     "TRF1": {
       "function": "double-strand telomeric DNA binding",
@@ -16,7 +16,7 @@
       "type": "OB-fold"
     },
     "TPP1": {
-      "function": "bridges POT1 to TIN2",
+      "function": "bridges POT1 to TIN2, recruits telomerase",
       "type": "OB-fold"
     },
     "TIN2": {
@@ -40,14 +40,97 @@
       ">85% cancers"
     ],
     "inactive_cell_types": [
-      "somatic",
+      "somatic (WILD-TYPE — silenced by CpG methylation)",
       "differentiated"
     ],
-    "ALT_pathway": "Alternative Lengthening of Telomeres \u2014 recombination-based, 10-15% cancers"
+    "ALT_pathway": "Alternative Lengthening of Telomeres — recombination-based, 10-15% cancers"
   },
-  "ouroboric_telomere_theory": {
-    "mechanism": "Telomere loop closure as topological protection (\u03a9=\ud801\udc5f)",
-    "hayflick_escape": "hTERT expression or ALT activation \u2192 O_inf tier",
-    "structural_type": "\u27e8\ud801\udc66\ud801\udc78\ud801\udc7e\ud801\udc79\ud801\udc50\ud801\udc67\ud801\udc72\ud801\udc60\u2299\ud801\udc6b\ud801\udc73\ud801\udc5f\u27e9"
-  }
+  "ouroboric_telomere_endogenous": {
+    "status": "EXPANDED — full 7-layer endogenous system",
+    "structural_type": "⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑧·𐑲·𐑠·⊙·𐑖·𐑳·𐑭⟩",
+    "ouroboricity": "O_inf",
+    "C_score": 1.0,
+    "mechanism": "Telomere loop closure as Frobenius-special parity (μ∘δ=id) with integer winding protection (Ω=𐑭)",
+    "endogenous": true,
+    "intervention": "ONE-TIME: dCas9-TET2 mRNA + hTERT sgRNA LNP infusion",
+    "intervention_target": "hTERT promoter CpG island (30 CpG sites at 5p15.33)",
+    "demethylation_mechanism": "TET2-mediated 5mC → 5hmC → passive dilution over 10–15 divisions",
+    "seven_layers": {
+      "L1_SENSE": {
+        "mechanism": "Shelterin density sensor",
+        "sensor": "TRF2 occupancy < 55% → graded ATM signal",
+        "threshold": "~4–6 kb telomere length"
+      },
+      "L2_SIGNAL": {
+        "mechanism": "ATM → KAP1 phosphorylation → subtelomeric chromatin relaxation",
+        "output": "Graded p53 (2–5× baseline) → p21 induction; sub-apoptotic",
+        "p53_threshold_apoptosis": ">8× baseline"
+      },
+      "L3_DEREPRESS": {
+        "mechanism": "TET2 recruited to relaxed chromatin at 5p15.33",
+        "biochemistry": "5mC → 5hmC → 5fC → 5caC → TDG excision → BER → unmethylated C",
+        "timeline": "Full demethylation over 10–15 divisions post-intervention"
+      },
+      "L4_EXPRESS": {
+        "mechanism": "Conditional hTERT transcription from poised promoter",
+        "transcription_factors": "c-MYC (cell cycle), SP1 (basal), NF-κB (stress), HIF-1α (hypoxia)",
+        "hTR_TERC": "Constitutively expressed from 3q26.2 — no modification needed"
+      },
+      "L5_EXTEND": {
+        "mechanism": "hTERT-hTR holoenzyme adds TTAGGG repeats to 3′ overhang",
+        "processivity_basal": 100,
+        "pot1_tpp1_boost": 5.0,
+        "bp_per_repeat": 6,
+        "target_zone": "8000–13000 bp"
+      },
+      "L6_TERMINATE": {
+        "mechanism": "G-quadruplex length sensor on extended 3′ overhang",
+        "g4_layers": "2–4 stacked G-tetrads",
+        "thermodynamics": "ΔG ≈ −8 kcal/mol (3-layer G4)",
+        "ceiling": "Overhang > 150 nt → G4 blocks telomerase access > 90%"
+      },
+      "L7_SEAL": {
+        "mechanism": "CST complex (CTC1-STN1-TEN1) + DNA Pol α fill-in C-strand",
+        "final_state": "T-loop reformation via TRF2 — telomere indistinguishable from healthy baseline"
+      }
+    },
+    "safety_safeguards": [
+      "G-quadruplex physical ceiling at ~15 kb",
+      "CST complex competition with telomerase",
+      "T-loop reformation sequesters 3′ overhang",
+      "p53/p16 senescence machinery intact",
+      "Methylation memory: loop failure → re-silencing by DNMT1",
+      "Immune surveillance of hTERT-overexpressing cells"
+    ],
+    "frobenius_closure": "μ∘δ=id: Extension (δ) balanced by termination+sealing (μ) at homeostatic setpoint",
+    "simulation_source": "biology/ouroboric_telomere_expanded.py — mode='endogenous'",
+    "simulation_results": {
+      "equilibrium_length_bp": 8000,
+      "senescence_at_300_div": "0%",
+      "ouroboric_cells_at_300_div": "100%",
+      "homeostasis_verified": true
+    }
+  },
+  "cell_cycle_params": {
+    "division_rate": 0.5,
+    "s_phase_duration_h": 7,
+    "g1_phase_duration_h": 10,
+    "g2_phase_duration_h": 5,
+    "m_phase_duration_h": 1
+  },
+  "senescence_markers": {
+    "SA_beta_gal": true,
+    "p16_INK4a": true,
+    "p21_CIP1": true,
+    "SASP": ["IL-6", "IL-8", "MCP-1", "MMP3"],
+    "telomere_dysfunction_foci": true
+  },
+  "rejuvenation_strategies": {
+    "endogenous_ouroboric": "Primary — one-time epigenetic trigger → life-long homeostatic telomere maintenance",
+    "Yamanaka_factors_partial": "OSKM pulsed expression (complementary, for epigenetic age reversal)",
+    "senolytics": ["dasatinib+quercetin", "fisetin"],
+    "NAD_boosters": ["NMN", "NR"]
+  },
+  "generation_timestamp": "2025-06-08",
+  "author": "Lando⊗⊙perator"
 }
