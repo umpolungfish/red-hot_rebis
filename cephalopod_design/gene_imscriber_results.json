@@ -1,0 +1,86 @@
+{
+  "REFLECTIN_SYNTH": {
+    "gene": "COL1A2",
+    "edit": "Gly\u2192Ser",
+    "function": "Structural color iridescence \u2014 tunable photonic crystal",
+    "best_codon_path": "GGA\u2192UCA",
+    "b4_cost": 2,
+    "primitive_delta": "{'orig_primitive': None, 'target_primitive': None, 'changed': False, 'risk_class': 'low', 'risk_score': 0.5}",
+    "frobenius_ratio": 0.9733333333333334,
+    "composite_score": 0.9733333333333334,
+    "stratum_crossing": false,
+    "crossing_risk": "none \u2014 same stratum"
+  },
+  "CEPH_OPSIN": {
+    "gene": "OPN4",
+    "edit": "Tyr\u2192Trp",
+    "function": "Full-spectrum polarization-sensitive vision in skin",
+    "best_codon_path": "UAC\u2192UGG",
+    "b4_cost": 3,
+    "primitive_delta": "{'orig_primitive': <IGPrimitive.PARITY: '\u03a6'>, 'target_primitive': <IGPrimitive.TOPOLOGY: '\u00de'>, 'changed': True, 'risk_class': 'moderate', 'risk_score': 3.0}",
+    "frobenius_ratio": 0.8400000000000001,
+    "composite_score": 0.8200000000000001,
+    "stratum_crossing": false,
+    "crossing_risk": "none \u2014 same stratum"
+  },
+  "nAChR_MOTOR": {
+    "gene": "CHRNA7",
+    "edit": "Leu\u2192Phe",
+    "function": "Millisecond-scale chromatophore expansion/contraction",
+    "best_codon_path": "UUA\u2192UUU",
+    "b4_cost": 1,
+    "primitive_delta": "{'orig_primitive': None, 'target_primitive': <IGPrimitive.FORCE: '\u0192'>, 'changed': True, 'risk_class': 'low', 'risk_score': 0.5}",
+    "frobenius_ratio": 0.8666666666666667,
+    "composite_score": 0.8616666666666667,
+    "stratum_crossing": false,
+    "crossing_risk": "none \u2014 same stratum"
+  },
+  "PAPILLA_HYDROSTAT": {
+    "gene": "ACTB",
+    "edit": "Ser\u2192Cys",
+    "function": "3D skin texturing \u2014 papillae erection/retraction",
+    "best_codon_path": "AGC\u2192UGC",
+    "b4_cost": 1,
+    "primitive_delta": "{'orig_primitive': None, 'target_primitive': <IGPrimitive.REVERSIBILITY: '\u0158'>, 'changed': True, 'risk_class': 'high', 'risk_score': 5.0}",
+    "frobenius_ratio": 0.8666666666666667,
+    "composite_score": 0.8166666666666667,
+    "stratum_crossing": false,
+    "crossing_risk": "none \u2014 same stratum"
+  },
+  "NEUROGENIC_TRIAD": {
+    "gene": "NEUROD1",
+    "edit": "Glu\u2192Asp",
+    "function": "Satellite organoid neurogenesis at body junctions",
+    "best_codon_path": "GAA\u2192GAU",
+    "b4_cost": 1,
+    "primitive_delta": "{'orig_primitive': <IGPrimitive.WINDING: '\u03a9'>, 'target_primitive': <IGPrimitive.CHIRALITY: '\u0126'>, 'changed': True, 'risk_class': 'critical', 'risk_score': 15.0}",
+    "frobenius_ratio": 0.8666666666666667,
+    "composite_score": 0.7666666666666667,
+    "stratum_crossing": false,
+    "crossing_risk": "none \u2014 same stratum"
+  },
+  "OPTOGENETIC_BRIDGE": {
+    "gene": "CHR2",
+    "edit": "His\u2192Arg",
+    "function": "Optogenetic synaptic bridge connecting organoids to CNS",
+    "best_codon_path": "CAC\u2192CGC",
+    "b4_cost": 2,
+    "primitive_delta": "{'orig_primitive': <IGPrimitive.GRAMMAR: '\u0393'>, 'target_primitive': None, 'changed': True, 'risk_class': 'moderate', 'risk_score': 2.0}",
+    "frobenius_ratio": 0.7333333333333334,
+    "composite_score": 0.5133333333333334,
+    "stratum_crossing": true,
+    "crossing_risk": "MODERATE \u2014 position 3 loses information. Two distinct AAs may collapse."
+  },
+  "VEGF_VASCULATURE": {
+    "gene": "VEGFA",
+    "edit": "Gln\u2192Asn",
+    "function": "Controlled vascularization of organoid implants",
+    "best_codon_path": "CAA\u2192AAU",
+    "b4_cost": 2,
+    "primitive_delta": "{'orig_primitive': <IGPrimitive.CRITICALITY: '\u03c6\u0302'>, 'target_primitive': <IGPrimitive.INTERACTION: '\u0262'>, 'changed': True, 'risk_class': 'high', 'risk_score': 7.5}",
+    "frobenius_ratio": 0.8533333333333333,
+    "composite_score": 0.8033333333333332,
+    "stratum_crossing": false,
+    "crossing_risk": "none \u2014 same stratum"
+  }
+}

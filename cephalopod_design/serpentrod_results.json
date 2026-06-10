@@ -1,0 +1,42 @@
+{
+  "REFLECTIN_A1": {
+    "source": "Euprymna scolopes (Hawaiian bobtail squid)",
+    "length": 428,
+    "function": "Tunable photonic crystal \u2014 Bragg reflector for structural color",
+    "prediction_type": "ProcessingPrediction",
+    "prediction_str": "<ProcessingPrediction REFLECTIN_A1: 1 products>",
+    "narrative": "\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557\n\u2551  v5 ENHANCED: REFLECTIN_A1\n\u255a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255d\nInput: 428 AA | Promoted: 40.7% | Dominant: \u03a6 | \u00d0:2 | \u00de:1 | \u0126:1 | \u0192:2 | \u0262:3 | \u0393:27 | \u03a6:137 | \u2299:1\n\n\u25b8 PRODUCTS (1):\n\n  [1] Signal Peptide (428 AA @ 0\u2013428)\n      \u03a6-dominant (174/428 residues)\n      MNRYFMYLFLALLLPAAVSAQNYLYRGRWDRYGRYGRYGR...\n\n\u25b8 MAP:\n  Chain 1: [0\u2013428] (428 AA) Signal Peptide"
+  },
+  "CEPHALOPOD_OPSIN": {
+    "source": "Octopus bimaculoides",
+    "length": 353,
+    "function": "Polarization-sensitive photoreceptor for skin vision",
+    "prediction_type": "ProcessingPrediction",
+    "prediction_str": "<ProcessingPrediction CEPHALOPOD_OPSIN: 2 products>",
+    "narrative": "\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557\n\u2551  v5 ENHANCED: CEPHALOPOD_OPSIN\n\u255a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255d\nInput: 353 AA | Promoted: 48.4% | Dominant: \u0192 | \u00c7:23 | \u00d0:18 | \u00de:5 | \u0126:4 | \u0158:11 | \u0192:29 | \u0262:15 | \u0393:5 | \u03a3:13 | \u03a6:20 | \u03a9:17 | \u2299:11\n\n\u25b8 CLEAVAGE (1 sites):\n  pos  67: KK   \u2192 unknown                   \u25cb=0.50\n\n\u25b8 PRODUCTS (2):\n\n  [1] Signal Peptide (67 AA @ 0\u201367)\n      \u03a6-dominant (34/67 residues)\n      MNGTEGPNFYVPMSNKTGVVRSPFEYPQYYLAEPWKYSVL...\n\n  [2] \u0192-hydrophobic core (286 AA @ 67\u2013353)\n      \u0192-dominant (137/286 residues)\n      LRTPLNYILLNLAVADLFMVFGGFTTTMYTSMHGYFVFGP...\n\n\u25b8 MAP:\n  KK \u2193 67\n  Chain 1: [0\u201367] (67 AA) Signal Peptide\n  Chain 2: [67\u2013353] (286 AA) \u0192-hydrophobic core"
+  },
+  "nAChR_ALPHA7_MOTOR": {
+    "source": "Sepia officinalis (cuttlefish)",
+    "length": 403,
+    "function": "Nicotinic acetylcholine receptor \u2014 chromatophore motor control",
+    "prediction_type": "ProcessingPrediction",
+    "prediction_str": "<ProcessingPrediction nAChR_ALPHA7_MOTOR: 4 products>",
+    "narrative": "\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557\n\u2551  v5 ENHANCED: nAChR_ALPHA7_MOTOR\n\u255a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255d\nInput: 403 AA | Promoted: 41.7% | Dominant: \u0126 | \u00c7:14 | \u00d0:4 | \u00de:8 | \u0126:30 | \u0158:7 | \u0192:24 | \u0262:13 | \u0393:11 | \u03a3:11 | \u03a6:18 | \u03a9:15 | \u2299:13\n\n\u25b8 CLEAVAGE (3 sites):\n  pos 194: RK   \u2192 unknown                   \u25cb=0.50\n  pos 226: RR   \u2192 unknown                   \u25cb=0.50\n  pos 366: K    \u2192 PC2_monobasic             \u25cb=0.40 [M]\n\n\u25b8 PRODUCTS (4):\n\n  [1] B-chain (194 AA @ 1\u2013194)\n      \u0126-dominant (82/194 residues)\n      MRLVLLLALALALGPGARAQERLLADLFANYTSIRPVLNI...\n\n  [2] \u0126-chiral domain (32 AA @ 195\u2013226)\n      \u0126-dominant (12/32 residues)\n      LLYIGFRSYLDFLEDDVLIPSSQDLVRVAARR\n\n  [3] \u0126-chiral domain (140 AA @ 227\u2013366)\n      \u0126-dominant (58/140 residues)\n      HRDQGHLYSSLDYSSHALPASDDFLQIMSLEASEFYKLTK...\n\n  [4] \u0192-hydrophobic core (37 AA @ 367\u2013403)\n      \u0192-dominant (16/37 residues)\n      LKFISSCHTFKWGNVLLWCLLFALSLTFLGGSVWLQD\n\n\u25b8 MAP:\n  RK \u2193 194\n  RR \u2193 226\n  [M] \u2193 3"
+  },
+  "PAPILLIN_HYDROSTAT": {
+    "source": "Octopus vulgaris",
+    "length": 232,
+    "function": "Hydrostatic skeleton protein for 3D skin papillae",
+    "prediction_type": "ProcessingPrediction",
+    "prediction_str": "<ProcessingPrediction PAPILLIN_HYDROSTAT: 1 products>",
+    "narrative": "\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557\n\u2551  v5 ENHANCED: PAPILLIN_HYDROSTAT\n\u255a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255d\nInput: 232 AA | Promoted: 96.6% | Dominant: \u0126 | \u00d0:1 | \u0126:211 | \u0192:2 | \u0262:7 | \u03a9:3\n\n\u25b8 PRODUCTS (1):\n\n  [1] Signal Peptide (232 AA @ 0\u2013232)\n      \u0126-dominant (224/232 residues)\n      MSDNEDNFDGDDFDDEDGDDNGDEDDDDDDDDDDDDDDDD...\n\n\u25b8 MAP:\n  Chain 1: [0\u2013232] (232 AA) Signal Peptide"
+  },
+  "NEUROGENIN_OCTOPUS": {
+    "source": "Octopus bimaculoides",
+    "length": 228,
+    "function": "Proneural transcription factor for satellite brain neurogenesis",
+    "prediction_type": "ProcessingPrediction",
+    "prediction_str": "<ProcessingPrediction NEUROGENIN_OCTOPUS: 2 products>",
+    "narrative": "\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557\n\u2551  v5 ENHANCED: NEUROGENIN_OCTOPUS\n\u255a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255d\nInput: 228 AA | Promoted: 44.3% | Dominant: \u0126 | \u00c7:1 | \u00d0:1 | \u0126:88 | \u0192:1 | \u0262:1 | \u03a3:3 | \u03a9:4 | \u2299:2\n\n\u25b8 CLEAVAGE (1 sites):\n  pos 218: R    \u2192 PC2_monobasic             \u25cb=0.40 [M]\n\n\u25b8 PRODUCTS (2):\n\n  [1] Signal Peptide (218 AA @ 1\u2013218)\n      \u0126-dominant (99/218 residues)\n      MPSSRTDSQDTNESSASKSPGPKGGGGGGGGGGGGGGGGG...\n\n  [2] \u03a3-variable region (10 AA @ 219\u2013228)\n      \u03a3-dominant (2/10 residues)\n      VRTTRSKSRD\n\n\u25b8 MAP:\n  [M] \u2193 218\n  Chain 1: [1\u2013218] (218 AA) Signal Peptide\n  Chain 2: [219\u2013228] (10 AA) \u03a3-variable region"
+  }
+}

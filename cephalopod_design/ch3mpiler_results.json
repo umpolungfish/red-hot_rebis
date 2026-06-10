@@ -1,0 +1,44 @@
+{
+  "REFLECTIN_CHROMOPHORE": {
+    "name": "Reflectin A1 photonic protein",
+    "description": "High-refractive-index protein forming Bragg reflectors. Contains tandem (GRY)n repeats with interspersed (GHY)n nodes. The aromatic residues (Tyr, Trp, Phe) provide the refractive index contrast essential for structural color.",
+    "cas_result": "{'cas': 'reflectin', 'name': 'CAS-reflectin', 'formula': '', 'source': 'unresolved', 'type_hint': '', 'error': 'HTTP Error 404: PUGREST.NotFound'}",
+    "analysis": "No SMILES \u2014 protein/macromolecule analysis deferred"
+  },
+  "RETINAL_CHROMOPHORE": {
+    "name": "11-cis-retinal (opsin chromophore)",
+    "description": "Light-sensitive chromophore for cephalopod opsin. Photoisomerization from 11-cis to all-trans triggers the G-protein cascade enabling polarization-sensitive vision.",
+    "cas_result": "{'cas': '11-cis-retinal', 'name': '(2E,4Z,6E,8E)-3,7-dimethyl-9-(2,6,6-trimethylcyclohexen-1-yl)nona-2,4,6,8-tetraenal', 'formula': 'C20H28O', 'source': 'pubchem', 'type_hint': ''}",
+    "analysis": "{'target': 'CC1=C(C(CCC1)(C)C)/C=C/C(=C/C=C/C(=C/C=O)/C)/C', 'type': '<?; ?; ?; ?; ?; ?; ?; ?; ?; ?; ?; ?>', 'type_source': 'none', 'fgs': [], 'cuts': [], 'analogs': []}"
+  },
+  "ACETYLCHOLINE": {
+    "name": "Acetylcholine (nAChR neurotransmitter)",
+    "description": "Fast excitatory neurotransmitter for chromatophore neuromuscular junction. Mediates millisecond-scale chromatophore expansion.",
+    "cas_result": "{'cas': 'acetylcholine', 'name': '2-acetoxyethyl(trimethyl)ammonium', 'formula': 'C7H16NO2+', 'source': 'pubchem', 'type_hint': ''}",
+    "analysis": "{'target': 'CC(=O)OCC[N+](C)(C)C', 'type': '<?; ?; ?; ?; ?; ?; ?; ?; ?; ?; ?; ?>', 'type_source': 'none', 'fgs': [], 'cuts': [], 'analogs': []}"
+  },
+  "SILK_FIBROIN_HYDROGEL": {
+    "name": "Silk fibroin hydrogel matrix for organoid scaffold",
+    "description": "Biocompatible hydrogel matrix. G: A: S: V: = 43:30:12:11 ratio. Forms beta-sheet crystalline domains interspersed with amorphous regions for tunable stiffness.",
+    "cas_result": "{'cas': 'silk fibroin', 'name': 'CAS-silk fibroin', 'formula': '', 'source': 'unresolved', 'type_hint': '', 'error': \"URL can't contain control characters. '/rest/pug/compound/name/silk fibroin/JSON' (found at least ' ')\"}",
+    "analysis": "No SMILES \u2014 protein/macromolecule analysis deferred"
+  },
+  "CHANNELRHODOPSIN_2_RETINAL": {
+    "name": "Channelrhodopsin-2 + all-trans-retinal complex",
+    "description": "Light-gated cation channel for optogenetic synaptic bridge. 470nm peak activation, 7-transmembrane rhodopsin fold with retinal Schiff base linkage to Lys296.",
+    "cas_result": "{'cas': 'channelrhodopsin', 'name': 'CAS-channelrhodopsin', 'formula': '', 'source': 'unresolved', 'type_hint': '', 'error': 'HTTP Error 404: PUGREST.NotFound'}",
+    "analysis": "No SMILES \u2014 protein/macromolecule analysis deferred"
+  },
+  "VEGF165_GLYCOSYLATED": {
+    "name": "VEGF-A 165 \u2014 vascular endothelial growth factor",
+    "description": "Heparin-binding angiogenic factor. Homodimeric cystine-knot growth factor. N-glycosylated at Asn75. Key regulator of organoid vascularization.",
+    "cas_result": "{'cas': 'VEGF vascular endothelial growth factor', 'name': 'CAS-VEGF vascular endothelial growth factor', 'formula': '', 'source': 'unresolved', 'type_hint': '', 'error': \"URL can't contain control characters. '/rest/pug/compound/name/VEGF vascular endothelial growth factor/JSON' (found at least ' ')\"}",
+    "analysis": "No SMILES \u2014 protein/macromolecule analysis deferred"
+  },
+  "DOPACHROME_MELANIN": {
+    "name": "Dopachrome \u2192 melanin pigment pathway",
+    "description": "Chromatophore pigment biosynthesis. Tyrosinase-catalyzed oxidation of tyrosine through DOPA and dopachrome to eumelanin (brown/black) or pheomelanin (red/yellow).",
+    "cas_result": "{'cas': 'dopachrome', 'name': '5,6-diketo-2,3-dihydro-1H-indole-2-carboxylic acid', 'formula': 'C9H7NO4', 'source': 'pubchem', 'type_hint': ''}",
+    "analysis": "{'target': 'O=C1C(=O)C2=CC(=C(C=C2N1)C(=O)O)O', 'type': '<?; ?; ?; ?; ?; ?; ?; ?; ?; ?; ?; ?>', 'type_source': 'none', 'fgs': [], 'cuts': [], 'analogs': []}"
+  }
+}

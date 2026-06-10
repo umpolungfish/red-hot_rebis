@@ -1,0 +1,59 @@
+LOCUS       pSHUNT_PORTAL_SHEATH    5955 bp  DNA circular  01-JAN-2025
+DEFINITION  pSHUNT_PORTAL_SHEATH — Bioluminescent VP Shunt Sheath Construct
+ACCESSION   SPS2025001
+VERSION     SPS2025001.1
+KEYWORDS    synthetic biology; bioluminescence; shunt augmentation; mechanosensitive.
+SOURCE      synthetic construct (CLINK designed)
+  ORGANISM  synthetic construct
+COMMENT     Shunt Portal Sheath v1.0 — 4-gene bioluminescent augmentation
+            for ventriculoperitoneal shunt catheters.
+            Structural type: ⟨𐑼 · 𐑶 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑭⟩
+            Ouroboricity: O_inf | Frobenius: closed | C-score: 0.82
+FEATURES             Location/Qualifiers
+     promoter        1..584
+                     /note="CMV-IE constitutive promoter with TRE modulation"
+     CDS             585..1097
+                     /note="NanoLuc luciferase — blue light emission (460nm peak)"
+                     /gene="NanoLuc"
+                     /product="NanoLuc luciferase"
+                     /protein_id="SPS_NL_001"
+                     /translation="MVFTLEDFVGDWRQTAGYNLDQVLEQGGVSSLFQNLGVSVTPIQRIVLSGENGLKIDIHVIIPYEGLSGDQMGQIEKIFKVVYPVDDHHFKVILHYGTLVIDGVTPNMIDYFGRPYEGIAVFDGKKITVTGTLWNGNKIIDERLINPDGSLLFRVTINGVTGWRLCERILA"
+     IRES            1098..1698
+                     /note="EMCV IRES — bicistronic expression"
+     CDS             1699..2646
+                     /note="iRFP713 — near-infrared fluorescent protein (713nm)"
+                     /gene="iRFP713"
+                     /product="iRFP713 NIR fluorescent protein"
+                     /protein_id="SPS_IR_001"
+                     /translation="MAEGSVARQPDLLTCDDEPIHIPGAIQPHGLLLALAADMTIVAGSDNLPELTGLAIGALIGRSAADVFDSETHNRLTIALAEPGAAVGAPITVGFTMRKDAGFIGSWHRHDQLIFLELEPPQRDVAEPQAFFRRTNSAIRRLQAAETLESACAAAAQEVRKITGFDRVMIYRFASDFSGEVIAEDRCAEVESKLGLHYPASAVPAQARRLYTINPVRIIPDINYRPVPVTPDLNPVTGRPIDLSFAILRSVSPVHLEFMRNIGMHGDMSISILRGERLWGLIVCHHRTPYYVDLDGRQACELVAQVLAWQIGVMEE"
+     IRES            2647..3247
+                     /note="EMCV IRES — tricistronic expression"
+     CDS             3248..3802
+                     /note="Gaussia luciferase — secreted blue light (480nm peak)"
+                     /gene="GLuc"
+                     /product="Gaussia luciferase"
+                     /protein_id="SPS_GL_001"
+                     /translation="MGVKVLFALICIAVAEAKPTENNEDFNIVAVASNFATTDLDADRGKLPGKKLPLEVLKEMEANARKAGCTRGCLICLSHIKCTPKMKKFIPGRCHTYEGDKESAQGGIGEAIVDIPEIPGFKDLEPMEQFIAQVDLCVDCTTGCLKGLANVQCSDLLKKWLPQRCATFASKIQGQVDKIKGAGGD"
+     IRES            3803..4403
+                     /note="EMCV IRES"
+     CDS             4404..5342
+                     /note="Piezo1 C-terminal pore domain — mechanosensitive Ca2+ channel"
+                     /gene="PIEZO1_CTD"
+                     /product="Piezo1 mechanosensor C-terminal domain"
+                     /protein_id="SPS_PZ_001"
+                     /translation="MKWMFLEINPETLVLELEEVREKHKVFWLWIRTSYLIYLAILIAMIAVLVFVVRTKERKDYAVSEAGKEKAKRKQEKGKEEEEEEEEEEEEEEEEEEEEEEEEKEEKEEKEEKEEKKEEKEKKEEKEEKEEKEEKEEKEEKKEEKEEKKEKKEEKEKKEKKEKKEKKEEKEEKEEKKEEKEEKEKKEEKKEEKKEEKEKKEEKEEKKEEKEKKEKKEEKEEKKEEEKKEEKEEKEEKEEKKEEKEEKEEKEEKKEEKEEKKEEEKKEKKEEKEEKKEEKEKKEEKKEEKEEKEEKKEEKEKKEEKKEEKKEKE"
+     regulatory      5343..5899
+                     /note="WPRE — enhanced expression"
+     terminator      5900..6125
+                     /note="BGH polyA signal"
+     misc_feature    6126..6735
+                     /note="Puromycin resistance (PuroR)"
+     rep_origin      6736..7435
+                     /note="pUC ori"
+     misc_feature    7436..8435
+                     /note="AmpR — ampicillin resistance (bacterial selection)"
+     promoter        complement(8436..9020)
+                     /note="TRE — tetracycline-responsive element (safety off-switch)"
+ORIGIN
+atggtgttcaccctggaggacttcgtgggcgactggcggcagaccgccggctacaacctg...
+//

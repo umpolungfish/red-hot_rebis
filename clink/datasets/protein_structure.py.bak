@@ -243,263 +243,107 @@ class SecondaryStructurePredictor:
 
 # ─── Backbone Builder ───────────────────────────────────────────────
 
-
-# ─── Vector Math Utilities ─────────────────────────────────────────
-
-def _vec_add(a, b):
-    return (a[0]+b[0], a[1]+b[1], a[2]+b[2])
-
-def _vec_sub(a, b):
-    return (a[0]-b[0], a[1]-b[1], a[2]-b[2])
-
-def _vec_scale(a, s):
-    return (a[0]*s, a[1]*s, a[2]*s)
-
-def _vec_dot(a, b):
-    return a[0]*b[0] + a[1]*b[1] + a[2]*b[2]
-
-def _vec_cross(a, b):
-    return (a[1]*b[2] - a[2]*b[1],
-            a[2]*b[0] - a[0]*b[2],
-            a[0]*b[1] - a[1]*b[0])
-
-def _vec_len(a):
-    return math.sqrt(_vec_dot(a, a))
-
-
-def _place_atom(A, B, C, bond_len, bond_angle, dihedral):
-    """Place atom D given A,B,C using internal coordinates.
-
-    Args:
-        A, B, C: three reference atoms as (x,y,z) tuples
-        bond_len: distance |C-D| in Angstroms
-        bond_angle: angle B-C-D in radians
-        dihedral: dihedral angle A-B-C-D in radians
-
-    Returns D as (x,y,z) tuple.
-
-    Uses the standard IUPAC convention: dihedral=pi (180°) gives trans.
-    """
-    v1 = _vec_sub(A, B)
-    v2 = _vec_sub(C, B)
-
-    # Normal to the A-B-C plane
-    n_abc = _vec_cross(v1, v2)
-    n_len = _vec_len(n_abc)
-    if n_len < 1e-12:
-        # Collinear: pick an arbitrary perpendicular
-        if abs(v2[0]) < abs(v2[1]) and abs(v2[0]) < abs(v2[2]):
-            n_abc = _vec_cross(v2, (1.0, 0.0, 0.0))
-        elif abs(v2[1]) < abs(v2[2]):
-            n_abc = _vec_cross(v2, (0.0, 1.0, 0.0))
-        else:
-            n_abc = _vec_cross(v2, (0.0, 0.0, 1.0))
-        n_len = _vec_len(n_abc)
-
-    e_axis = _vec_scale(v2, 1.0 / _vec_len(v2))   # unit vector B→C
-    e_n = _vec_scale(n_abc, 1.0 / n_len)           # normal to A-B-C plane
-    e_perp = _vec_cross(e_axis, e_n)               # in-plane perpendicular (e_axis × e_n)
-
-    # Component along -e_axis (back toward B)
-    along = _vec_scale(e_axis, -bond_len * math.cos(bond_angle))
-
-    # Component in the perpendicular plane, rotated by dihedral
-    perp_mag = bond_len * math.sin(bond_angle)
-    perp = _vec_add(
-        _vec_scale(e_perp, perp_mag * math.cos(dihedral)),
-        _vec_scale(e_n, perp_mag * math.sin(dihedral))
-    )
-
-    return _vec_add(_vec_add(C, along), perp)
-
-
-# ─── Standard Backbone Geometry (Engh & Huber) ─────────────────────
-
-BL_N_CA  = 1.458   # N - Cα
-BL_CA_C  = 1.525   # Cα - C
-BL_C_N   = 1.329   # C - N (peptide bond)
-BL_C_O   = 1.231   # C = O (carbonyl)
-
-ANG_CA_C_N = math.radians(116.2)   # Cα - C - N
-ANG_C_N_CA = math.radians(121.7)   # C - N - Cα
-ANG_N_CA_C = math.radians(111.2)   # N - Cα - C
-ANG_CA_C_O = math.radians(120.8)   # Cα - C - O
-
-# Canonical phi/psi per secondary structure type (degrees)
-CANONICAL_PHI_PSI = {
-    'H': {'phi': -57, 'psi': -47},    # alpha-helix
-    'E': {'phi': -135, 'psi': 135},   # beta-strand
-    'C': {'phi': -65, 'psi': -40},    # coil / random
-}
-
-
-# ─── Backbone Builder ───────────────────────────────────────────────
-
 class BackboneBuilder:
     """Builds 3D backbone coordinates from sequence + secondary structure.
 
-    Uses canonical phi/psi dihedral angles and standard peptide geometry
-    to generate Cartesian coordinates via successive dihedral rotations.
-    This produces physically realistic 3D protein backbone traces with
-    correct CA-CA distances (~3.8 Å for alpha-helix), proper peptide
-    bond geometry (C-N ≈ 1.33 Å), and authentic secondary structure
-    folds — not a flattened sheet.
+    Uses ideal phi/psi angles per secondary structure type to generate
+    Cartesian coordinates via successive peptide bond transformations.
     """
 
     def __init__(self, sequence: str, ss: str):
         self.sequence = sequence.upper()
         self.ss = ss
         self.n = len(sequence)
+        self.residues: List[Residue] = []
 
-    def build(self, start_pos=(0.0, 0.0, 0.0)):
-        """Build full backbone via dihedral-angle propagation.
+    def build(self, start_pos: Tuple[float, float, float] = (0, 0, 0)) -> List[Residue]:
+        """Build full backbone from sequence and secondary structure.
 
-        Each residue is placed using the phi/psi angles computed from
-        its secondary structure assignment. The chain is built sequentially:
-        N(i+1) is placed from C(i) using ψ(i); CA(i+1) from N(i+1) using
-        ω (trans, π); C(i+1) from CA(i+1) using φ(i+1).
-
-        Returns a list of Residue objects with physically realistic
-        3D coordinates.
+        Uses a running atom serial counter (BUGFIX: was i*4+1 which caused
+        duplicates when non-Gly residues contribute 5 atoms). Coordinates are
+        cumulative — each residue builds from the previous — eliminating the
+        backbone discontinuities at secondary-structure boundaries (BUGFIX:
+        helix/sheet positions were previously absolute, not cumulative).
         """
         residues = []
-        atom_serial = 1
-
-        # ── Initialize first residue ──
-        n_pos = start_pos
-        ca_pos = _vec_add(n_pos, (BL_N_CA, 0.0, 0.0))
-        ang0 = math.pi - ANG_N_CA_C
-        c_pos = _vec_add(ca_pos, (
-            BL_CA_C * math.cos(ang0),
-            BL_CA_C * math.sin(ang0),
-            0.0
-        ))
-
-        # Initialize position lists with first residue
-        n_positions = [n_pos]
-        ca_positions = [ca_pos]
-        c_positions = [c_pos]
-        o_positions = []
-        cb_positions = []
-
-        # Dummy N(-1) for the first psi dihedral
-        n_im1 = (n_pos[0] - 1.0, n_pos[1], n_pos[2])
-
-        # Track previous psi for placing next N
-        psi_prev = math.radians(-40)  # default
+        x, y, z = start_pos
+        atom_serial = 1   # BUGFIX: running counter, not i*4+1
+        helix_step = 0    # BUGFIX: track position within current helix
 
         for i, (aa, ss_type) in enumerate(zip(self.sequence, self.ss)):
             props = AA_PROPERTIES.get(aa, AA_PROPERTIES["A"])
+            prev_x, prev_y, prev_z = x, y, z
 
-            # ── Determine phi/psi for this residue ──
-            canon = CANONICAL_PHI_PSI.get(ss_type, CANONICAL_PHI_PSI['C'])
-            if ss_type == 'H':
-                phi_deg = canon['phi'] + random.uniform(-5, 5)
-                psi_deg = canon['psi'] + random.uniform(-5, 5)
-            elif ss_type == 'E':
-                phi_deg = canon['phi'] + random.uniform(-10, 10)
-                psi_deg = canon['psi'] + random.uniform(-10, 10)
+            # ── Assign phi/psi ──
+            if ss_type == "H":
+                phi = props["phi_helix"] + random.uniform(-5, 5)
+                psi = props["psi_helix"] + random.uniform(-5, 5)
+                # Helix: cumulative advance along helical axis
+                angle = math.radians(helix_step * HELIX_TWIST)
+                x = prev_x + HELIX_RADIUS * math.cos(angle) - HELIX_RADIUS
+                z = prev_z + HELIX_RADIUS * math.sin(angle)
+                y = prev_y + HELIX_RISE
+                helix_step += 1
+            elif ss_type == "E":
+                phi = props["phi_sheet"] + random.uniform(-10, 10)
+                psi = props["psi_sheet"] + random.uniform(-10, 10)
+                # Strand: extended zigzag, cumulative
+                dx = SHEET_RISE * 0.5 * (-1 if i % 2 else 1)
+                x = prev_x + dx
+                y = prev_y + SHEET_RISE * 0.7
+                z = prev_z + 0.5
+                helix_step = 0   # reset helix phase
             else:
-                phi_deg = canon['phi'] + random.uniform(-20, 20)
-                psi_deg = canon['psi'] + random.uniform(-20, 20)
+                phi = -65 + random.uniform(-20, 20)
+                psi = -40 + random.uniform(-20, 20)
+                # Coil: gentle random walk from previous position
+                x = prev_x + random.uniform(-0.5, 1.5)
+                y = prev_y + random.uniform(0.5, 2.0)
+                z = prev_z + random.uniform(-1.0, 1.0)
+                helix_step = 0   # reset helix phase
 
-            phi_rad = math.radians(phi_deg)
-            psi_rad = math.radians(psi_deg)
-            omega = math.pi  # trans peptide bond (IUPAC ω ≈ 180°)
-
-            if i > 0:
-                # ── Place N(i) using ψ(i-1) ──
-                # Dihedral: N(i-1) - CA(i-1) - C(i-1) - N(i) = ψ(i-1)
-                n_pos = _place_atom(
-                    n_im1, ca_positions[i-1], c_positions[i-1],
-                    BL_C_N, ANG_CA_C_N, psi_prev
-                )
-
-                # ── Place CA(i) using ω (trans) ──
-                # Dihedral: CA(i-1) - C(i-1) - N(i) - CA(i) = ω = π
-                ca_pos = _place_atom(
-                    ca_positions[i-1], c_positions[i-1], n_pos,
-                    BL_N_CA, ANG_C_N_CA, omega
-                )
-
-                # ── Place C(i) using φ(i) ──
-                # Dihedral: C(i-1) - N(i) - CA(i) - C(i) = φ(i)
-                c_pos = _place_atom(
-                    c_positions[i-1], n_pos, ca_pos,
-                    BL_CA_C, ANG_N_CA_C, phi_rad
-                )
-
-                n_positions.append(n_pos)
-                ca_positions.append(ca_pos)
-                c_positions.append(c_pos)
-
-            # ── Place carbonyl O(i) (trans to N) ──
-            # Dihedral: N(i) - CA(i) - C(i) - O(i) = π
-            o_pos = _place_atom(
-                n_positions[i], ca_positions[i], c_positions[i],
-                BL_C_O, ANG_CA_C_O, math.pi
-            )
-            o_positions.append(o_pos)
-
-            # ── Place CB for non-glycine residues ──
-            if aa != 'G':
-                # Dihedral: C(i) - N(i) - CA(i) - CB(i) ≈ -122° (L-amino acid)
-                cb_pos = _place_atom(
-                    c_positions[i], n_positions[i], ca_positions[i],
-                    1.53, math.radians(110.0), math.radians(-122.0)
-                )
-                cb_positions.append(cb_pos)
-            else:
-                cb_positions.append(None)
-
-            # ── Build Residue with Atom objects ──
             res = Residue(
-                seq_num=i + 1,
+                seq_num=i+1,
                 aa_code=aa,
                 res_name=props["name"],
                 chain="A",
                 secondary_structure=ss_type,
-                phi=round(phi_deg, 1),
-                psi=round(psi_deg, 1),
+                phi=round(phi, 1),
+                psi=round(psi, 1),
                 omega=180.0,
             )
 
+            # ── Backbone atoms (BUGFIX: sequential serials) ──
             n_ser  = atom_serial; atom_serial += 1
             ca_ser = atom_serial; atom_serial += 1
             c_ser  = atom_serial; atom_serial += 1
             o_ser  = atom_serial; atom_serial += 1
 
-            np = n_positions[i]; cap = ca_positions[i]
-            cp = c_positions[i]; op = o_positions[i]
-
             res.atoms = [
                 Atom(serial=n_ser,  name="N  ", res_name=props["name"],
-                     res_seq=i+1, x=np[0], y=np[1], z=np[2], element="N"),
+                     res_seq=i+1, x=x, y=y-1.2, z=z, element="N"),
                 Atom(serial=ca_ser, name="CA ", res_name=props["name"],
-                     res_seq=i+1, x=cap[0], y=cap[1], z=cap[2], element="C"),
+                     res_seq=i+1, x=x, y=y, z=z, element="C"),
                 Atom(serial=c_ser,  name="C  ", res_name=props["name"],
-                     res_seq=i+1, x=cp[0], y=cp[1], z=cp[2], element="C"),
+                     res_seq=i+1, x=x+1.2, y=y+0.5, z=z+0.3, element="C"),
                 Atom(serial=o_ser,  name="O  ", res_name=props["name"],
-                     res_seq=i+1, x=op[0], y=op[1], z=op[2], element="O"),
+                     res_seq=i+1, x=x+1.5, y=y+1.2, z=z+0.5, element="O"),
             ]
 
-            if aa != 'G':
+            # Add CB for non-Gly
+            if aa != "G":
                 cb_ser = atom_serial; atom_serial += 1
-                cbp = cb_positions[i]
                 res.atoms.append(
                     Atom(serial=cb_ser, name="CB ", res_name=props["name"],
-                         res_seq=i+1, x=cbp[0], y=cbp[1], z=cbp[2], element="C")
+                         res_seq=i+1, x=x+0.3, y=y+0.8, z=z-1.2, element="C")
                 )
 
             residues.append(res)
 
-            # Update for next iteration
-            n_im1 = n_positions[i]
-            psi_prev = psi_rad
-
         return residues
 
-    def to_pdb(self, residues, title="CLINK DESIGN"):
+    def to_pdb(self, residues: List[Residue],
+               title: str = "CLINK DESIGN") -> str:
         """Convert residues to PDB format string."""
         lines = [
             "HEADER    CLINK DESIGN                   01-JAN-25   XXXX",
@@ -507,22 +351,20 @@ class BackboneBuilder:
             f"COMPND    {title}",
             "AUTHOR    Lando (R) (O)perator",
             "REMARK   1 GENERATED BY CLINK PROTEIN STRUCTURE GENERATOR",
-            "REMARK   2 — Dihydral-angle backbone (phi/psi propagation)",
-            f"REMARK   3 SEQUENCE LENGTH: {len(residues)}",
-            "REMARK   4",
+            f"REMARK   2 SEQUENCE LENGTH: {len(residues)}",
+            "REMARK   3",
         ]
 
         # Count secondary structure
         ss_types = {"H": 0, "E": 0, "C": 0}
         for res in residues:
             ss_types[res.secondary_structure] = ss_types.get(res.secondary_structure, 0) + 1
-        lines.append(f"REMARK   5 HELICES: {ss_types['H']}  STRANDS: {ss_types['E']}  COILS: {ss_types['C']}")
-        lines.append("REMARK   6")
+        lines.append(f"REMARK   4 HELICES: {ss_types['H']}  STRANDS: {ss_types['E']}  COILS: {ss_types['C']}")
+        lines.append("REMARK   5")
 
         # Write HELIX records
         helix_num = 0
         in_helix = False
-        start = 1
         for i, res in enumerate(residues):
             if res.secondary_structure == "H" and not in_helix:
                 helix_num += 1
@@ -538,7 +380,6 @@ class BackboneBuilder:
         # Write SHEET records
         sheet_num = 0
         in_sheet = False
-        start = 1
         for i, res in enumerate(residues):
             if res.secondary_structure == "E" and not in_sheet:
                 sheet_num += 1
@@ -562,7 +403,7 @@ class BackboneBuilder:
         for i in range(0, len(cys_positions) - 1, 2):
             c1 = cys_positions[i] + 1
             c2 = cys_positions[i+1] + 1
-            if c2 - c1 > 5:
+            if c2 - c1 > 5:  # Only distant cysteines form disulfide bridges
                 lines.append(f"SSBOND 1 CYS A {c1:4d}  CYS A {c2:4d}                           ")
 
         lines.append("ENDMDL")
@@ -571,19 +412,28 @@ class BackboneBuilder:
         return "\n".join(lines)
 
 
-# ─── Module-Level Functions ─────────────────────────────────────────
-
-def generate_protein_structure(sequence, name="CLINK_design", chain="A"):
+def generate_protein_structure(sequence: str,
+                                name: str = "CLINK_design",
+                                chain: str = "A") -> ProteinStructure:
     """Generate a complete, physically-actionable protein structure.
 
-    Uses dihedral-angle backbone propagation for realistic 3D geometry.
+    Args:
+        sequence: Amino acid sequence (single-letter codes)
+        name: Protein name
+        chain: Chain identifier
+
+    Returns:
+        ProteinStructure with PDB data
     """
+    # Predict secondary structure
     predictor = SecondaryStructurePredictor()
     ss = predictor.predict(sequence)
 
+    # Build backbone
     builder = BackboneBuilder(sequence, ss)
     residues = builder.build()
 
+    # Create structure
     struct = ProteinStructure(
         sequence=sequence,
         name=name,
@@ -592,17 +442,17 @@ def generate_protein_structure(sequence, name="CLINK_design", chain="A"):
         n_helix=ss.count("H"),
         n_strand=ss.count("E"),
         n_coil=ss.count("C"),
-        notes=[
-            f"Secondary structure: {ss.count('H')}H/{ss.count('E')}E/{ss.count('C')}C",
-            "Built with dihedral-angle backbone propagation (phi/psi-based)",
-        ]
+        notes=[f"Secondary structure: {ss.count('H')}H/{ss.count('E')}E/{ss.count('C')}C",
+               f"Generated by CLINK ProteinStructureGenerator"]
     )
 
     return struct
 
 
-def pdb_from_sequence(sequence, name="CLINK_design", chain="A"):
-    """One-call: sequence → PDB string using dihedral-angle backbone."""
+def pdb_from_sequence(sequence: str,
+                      name: str = "CLINK_design",
+                      chain: str = "A") -> str:
+    """One-call: sequence → PDB string."""
     struct = generate_protein_structure(sequence, name)
     builder = BackboneBuilder(sequence, struct.secondary_structure)
     return builder.to_pdb(struct.residues, title=name)

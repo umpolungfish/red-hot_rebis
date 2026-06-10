@@ -1,0 +1,23 @@
+{
+  "11-cis-retinal": {
+    "cas": "11-cis-retinal",
+    "name": "(2E,4Z,6E,8E)-3,7-dimethyl-9-(2,6,6-trimethylcyclohexen-1-yl)nona-2,4,6,8-tetraenal",
+    "formula": "C20H28O",
+    "source": "pubchem",
+    "type_hint": ""
+  },
+  "acetylcholine": {
+    "cas": "acetylcholine",
+    "name": "2-acetoxyethyl(trimethyl)ammonium",
+    "formula": "C7H16NO2+",
+    "source": "pubchem",
+    "type_hint": ""
+  },
+  "dopachrome": {
+    "cas": "dopachrome",
+    "name": "5,6-diketo-2,3-dihydro-1H-indole-2-carboxylic acid",
+    "formula": "C9H7NO4",
+    "source": "pubchem",
+    "type_hint": ""
+  }
+}
