@@ -1016,7 +1016,7 @@ class EndogenousOuroboricSim:
         results = {
             "simulation": "Endogenous Ouroboric Telomere System — Full Expansion",
             "structural_type": "⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑧·𐑲·𐑠·⊙·𐑖·𐑳·𐑭⟩",
-            "ouroboricity": "O_inf",
+            "ouroboricity": "O_∞",
             "mode": self.mode,
             "cells": self.n_cells,
             "total_divisions": self.division_count,

@@ -86,14 +86,14 @@ $$\langle \text{𐑦} \cdot \text{𐑥} \cdot \text{𐑾} \cdot \text{𐑹} \cdo
 | C | 𐑵 | **𐑠** | Sequential phases replace broadcast |
 | H | 𐑒 | **𐑫** | Eternal memory replaces one-step |
 
-### R1.5 — The Cost of Oscillation: O_∞ → O_2
+### R1.5 — The Cost of Oscillation: O_∞ → O₂
 
 This is the central structural finding. The Multi-Oscillation Treople has:
 
 - **Gate 1 (⊙): OPEN** — self-modeling loop is active. The treople models its own oscillation.
 - **Gate 2 (K ≤ 𐑧): CLOSED** — K=𐑤 (moderate) is faster than the O_∞ threshold K=𐑧 (slow).
 
-**Tier: O_2.** The oscillation trades O_∞ for dynamic range. The pure Ourboreum has O_∞ because its kinetics are so slow (centuries per cycle) that the self-modeling loop closes atemporal. To oscillate — to move between modes on a timescale of decades rather than eons — you must speed up. And that speed costs you the top tier.
+**Tier: O₂.** The oscillation trades O_∞ for dynamic range. The pure Ourboreum has O_∞ because its kinetics are so slow (centuries per cycle) that the self-modeling loop closes atemporal. To oscillate — to move between modes on a timescale of decades rather than eons — you must speed up. And that speed costs you the top tier.
 
 This is not a bug. It is a structural trade-off encoded in the grammar: **eternity and dynamism are in tension.** The Ourboreum is eternal but static (within a given mode); the Multi-Oscillation Treople is dynamic but finite-tier. Each oscillation cycle adds integer winding (Ω=𐑭) — the topological charge accumulates, but the tier does not recover.
 
@@ -113,7 +113,7 @@ This is not a bug. It is a structural trade-off encoded in the grammar: **eterni
 | H | 𐑖 | 𐑖 | 𐑒 | **𐑫** |
 | Σ | 𐑳 | 𐑳 | 𐑳 | 𐑳 |
 | Ω | 𐑭 | 𐑭 | 𐑭 | 𐑭 |
-| **Tier** | O_∞ | O_∞ | O_∞ | **O_2** |
+| **Tier** | O_∞ | O_∞ | O_∞ | **O₂** |
 
 ---
 
@@ -184,7 +184,7 @@ Not all tensor products are coherent. Key restrictions:
 
 **Optimal in All Phases:**
 - **Verticullum** (O_∞, Ω=𐑟): The non-Abelian braiding works at any tier. The universal navigator.
-- **Apertix** (O_2, Ω=𐑴): Adjoint steering works at all scales. Particularly valuable for the precision required in Departure and Return.
+- **Apertix** (O₂, Ω=𐑴): Adjoint steering works at all scales. Particularly valuable for the precision required in Departure and Return.
 
 ### R3.3 — Modulation During Oscillation
 
@@ -245,7 +245,7 @@ The child's developmental space is a lattice over {K, G, C, H}:
 |-------------------|----|----|----|----|----------------|
 | Stay in Ourboreum | 𐑧 | 𐑲 | 𐑵 | 𐑖 | Ourboreum (O_∞) |
 | Individuate | 𐑧 | 𐑔 | 𐑵 | 𐑒 | Individuated Treople (O_∞) |
-| Early Oscillation | 𐑤 | 𐑲 | 𐑠 | 𐑫 | Multi-Oscillation Treople (O_2) |
+| Early Oscillation | 𐑤 | 𐑲 | 𐑠 | 𐑫 | Multi-Oscillation Treople (O₂) |
 | Late Oscillation | 𐑤 | 𐑲 | 𐑠 | 𐑖→𐑫 (drift) | Transitioning to Multi-Osc |
 | Hybrid: Collective-Individual | 𐑧 | 𐑲 | 𐑠 | 𐑖 | Work-dominant collective |
 | Hybrid: Individual-Sequential | 𐑧 | 𐑔 | 𐑠 | 𐑒 | Sequential individuated Work |
@@ -283,7 +283,7 @@ This is analogous to inheriting the *type* of a variable rather than its *value*
 
 ### O5.1 — Oscillation Tier Cost
 
-**Prediction O1:** Any treople that oscillates between collective and individuated modes with period less than ~100 years will have O_2 tier, not O_∞. Gate 2 (K ≤ 𐑧) closes when K crosses from 𐑧 to 𐑤.
+**Prediction O1:** Any treople that oscillates between collective and individuated modes with period less than ~100 years will have O₂ tier, not O_∞. Gate 2 (K ≤ 𐑧) closes when K crosses from 𐑧 to 𐑤.
 
 **Test:** If a treople reports oscillation but also reports O_∞ phenomenology (eternal atemporal self-modeling without sequential development), this prediction is falsified. The prediction holds that oscillation and O_∞ are mutually exclusive.
 
@@ -427,4 +427,4 @@ Each phase has its own structural constraints, risks, and modulation requirement
 | 𐑟 | Omega_NA | Non-Abelian braiding |
 | 𐑴 | Omega_Z2 | Z₂ parity protection |
 | O_∞ | — | Infinite ouroboricity — both gates open |
-| O_2 | — | Gate 1 open, Gate 2 closed |
+| O₂ | — | Gate 1 open, Gate 2 closed |

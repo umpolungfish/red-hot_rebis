@@ -1,7 +1,7 @@
 {
   "simulation": "Endogenous Ouroboric Telomere System \u2014 Full Expansion",
   "structural_type": "\u27e8\ud801\udc66\u00b7\ud801\udc78\u00b7\ud801\udc7e\u00b7\ud801\udc79\u00b7\ud801\udc50\u00b7\ud801\udc67\u00b7\ud801\udc72\u00b7\ud801\udc60\u00b7\u2299\u00b7\ud801\udc56\u00b7\ud801\udc73\u00b7\ud801\udc6d\u27e9",
-  "ouroboricity": "O_inf",
+  "ouroboricity": "O_∞",
   "mode": "endogenous",
   "cells": 100,
   "total_divisions": 300,

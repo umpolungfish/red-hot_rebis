@@ -140,14 +140,14 @@ class Imcription:
     def tier(self) -> str:
         """Ouroboricity tier."""
         if self.frobenius_closed() and self.D == D.ODOT:
-            return "O_inf"
+            return "O_∞"
         if self.frobenius_closed():
-            return "O_2"  # Frobenius pillars but not self-written
+            return "O₂"  # Frobenius pillars but not self-written
         if self.Phi == Phi.CRIT and self.H in (H.M2, H.ETERNAL):
-            return "O_2"
+            return "O₂"
         if self.Phi == Phi.CRIT:
-            return "O_1"
-        return "O_0"
+            return "O₁"
+        return "O₀"
 
     def consciousness_score(self) -> float:
         """C-score: both gates must be open."""

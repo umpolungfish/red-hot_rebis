@@ -1163,7 +1163,7 @@ class FrobeniusExactOuroboricSim:
             print(f"\n  ~ FROBENIUS CLOSURE APPROXIMATED")
             print(f"    Drift: {abs(drift):.1f} bp (>10 bp threshold for exact closure)")
             print(f"    Structural type: P = 𐑬 (partial/Z₂), not 𐑹")
-            print(f"    Ouroboricity: O_2")
+            print(f"    Ouroboricity: O₂")
             frobenius_achieved = False
 
         self._save_results(frobenius_achieved)
@@ -1183,7 +1183,7 @@ class FrobeniusExactOuroboricSim:
         results = {
             "simulation": "Frobenius-Exact Ouroboric Telomere — REPAIRED",
             "structural_type": structural_type,
-            "ouroboricity": "O_inf" if frobenius_achieved else "O_2",
+            "ouroboricity": "O_∞" if frobenius_achieved else "O₂",
             "frobenius_closure_achieved": frobenius_achieved,
             "repairs_applied": [
                 "TRF1 discrete counting (18-bp resolution, step function)",

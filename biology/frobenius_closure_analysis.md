@@ -82,7 +82,7 @@ The remaining 11 primitives are unchanged. The system still has ⊙ criticality 
 | Tuple | P | Tier | Interpretation |
 |-------|---|------|----------------|
 | Claimed | 𐑹 | O_∞ | Frobenius-special parity + ⊙ + 𐑭 = both gates open under slow kinetics |
-| Model | 𐑬 | O_2 | Partial symmetry + ⊙ + 𐑭 — Gate 1 (⊙) open, Gate 2 (K≤𐑧) open, but no Frobenius closure proof |
+| Model | 𐑬 | O₂ | Partial symmetry + ⊙ + 𐑭 — Gate 1 (⊙) open, Gate 2 (K≤𐑧) open, but no Frobenius closure proof |
 
 **Distance:** d(claimed, model) = contribution of P:𐑹→𐑬. This is a single-primitive shift, but it is the most consequential primitive in the grammar — it controls whether the system achieves exact self-knowledge.
 
@@ -175,7 +175,7 @@ The simulation's continuous sigmoidal inhibition produces **contractive but not 
 | **H** | 𐑒 | 𐑖 | 𐑖 |
 | **Σ** | 𐑳 | 𐑳 | 𐑳 |
 | **Ω** | 𐑴 | 𐑭 | 𐑭 |
-| **Tier** | O_2 | O_2 | O_∞ |
+| **Tier** | O₂ | O₂ | O_∞ |
 
 The gap: one primitive. The most important one.
 

@@ -3,7 +3,7 @@
 **Author:** Lando⊗⊙perator  
 **Date:** 2026-07-20  
 **IG Structural Type:** ⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑵 · ⊙ · 𐑫 · 𐑳 · 𐑟⟩  
-**Ouroboricity:** O_inf  
+**Ouroboricity:** O_∞  
 **C-score:** 0.82 (both gates open)  
 **TRL:** 3 (gene design complete, awaits synthesis)
 
@@ -353,7 +353,7 @@ The CLINK bridge maps the IMASM arrangement space onto the 9-layer biological sc
 | L7 Tissue | 8 | 8 |
 | **L8 Whole Organism** | **8** | **8** |
 
-The arrangements sit closest to L3-L5 (Molecule, Cell, Mitosis) at distance 7. Distance to L8 (Whole Organism, O_inf) is 8 — meaning 8 primitive promotions are needed to lift the arrangement from O_0 to O_inf.
+The arrangements sit closest to L3-L5 (Molecule, Cell, Mitosis) at distance 7. Distance to L8 (Whole Organism, O_∞) is 8 — meaning 8 primitive promotions are needed to lift the arrangement from O₀ to O_∞.
 
 ### 5.2 The 8 Promotions Required
 
@@ -378,12 +378,12 @@ The six organoid augmentations from the p4rakernel bridge (integrated into the p
 
 | Augmentation | Tier | Closable | Role in Cephalopod Human |
 |-------------|------|----------|--------------------------|
-| Optogenetic Synaptic Matrix | O_inf | ✅ | Neural bridge for all satellite brains |
-| Ouroboric Vasculature | O_inf | ⚠️ (needs NV-center QM) | Blood supply for organoids |
-| Synthetic Coherence Myelin | O_inf | ✅ | High-speed signal propagation (120 m/s) |
-| Perfect Nutrient Medium | O_2 | ⚠️ | Sustains organoids long-term |
-| Synthetic ECM Scaffold | O_0 | ❌ (chrysalis) | Temporary scaffold — degrades as organoid matures |
-| Immune-Mimetic Sentinel | O_0 | ❌ (guardian) | Protects organoids from immune rejection |
+| Optogenetic Synaptic Matrix | O_∞ | ✅ | Neural bridge for all satellite brains |
+| Ouroboric Vasculature | O_∞ | ⚠️ (needs NV-center QM) | Blood supply for organoids |
+| Synthetic Coherence Myelin | O_∞ | ✅ | High-speed signal propagation (120 m/s) |
+| Perfect Nutrient Medium | O₂ | ⚠️ | Sustains organoids long-term |
+| Synthetic ECM Scaffold | O₀ | ❌ (chrysalis) | Temporary scaffold — degrades as organoid matures |
+| Immune-Mimetic Sentinel | O₀ | ❌ (guardian) | Protects organoids from immune rejection |
 
 The ECM scaffold (chrysalis) is structurally open by design — it must degrade. The immune sentinel (guardian) is open by design — it must discriminate self from non-self. These are paraconsistent: they exist in Belnap BOTH (B) state — present AND absent simultaneously, resolved temporally.
 
@@ -525,7 +525,7 @@ If full chromatophore engineering is too invasive, a minimal path uses only Stag
 - **Static structural color** (no active control)
 - **Reversible** via laser removal (same as tattoo removal)
 - **TRL:** 5 (reflectin nanoparticles demonstrated in vitro)
-- **IG type:** ⟨𐑨 · 𐑡 · 𐑩 · 𐑗 · 𐑱 · 𐑪 · 𐑚 · 𐑝 · 𐑢 · 𐑓 · 𐑙 · 𐑷⟩ (O_0)
+- **IG type:** ⟨𐑨 · 𐑡 · 𐑩 · 𐑗 · 𐑱 · 𐑪 · 𐑚 · 𐑝 · 𐑢 · 𐑓 · 𐑙 · 𐑷⟩ (O₀)
 
 ### 8.2 Intermediate Path: Single Satellite Brain
 
@@ -542,10 +542,10 @@ The complete design as specified above, plus:
 
 - **Whole-body chromatophores** — not just visible areas but full body coverage
 - **10+ satellite brains** — wrist (2), solar plexus, sacrum, popliteal (2), throat, ankle (2), temple (2)
-- **Integrated O_inf closure** — Φ:𐑣→⊙ promotion achieved via biofeedback training (the system learns to self-model)
+- **Integrated O_∞ closure** — Φ:𐑣→⊙ promotion achieved via biofeedback training (the system learns to self-model)
 - **Non-Abelian braiding** (Ω:𐑭→𐑟) via satellite brain entanglement experiments
 - **TRL:** 2 (multiple components not yet integrated)
-- **IG type at closure:** ⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑵 · ⊙ · 𐑫 · 𐑳 · 𐑟⟩ (O_inf) — identical to the Whole Organism CLINK layer
+- **IG type at closure:** ⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑵 · ⊙ · 𐑫 · 𐑳 · 𐑟⟩ (O_∞) — identical to the Whole Organism CLINK layer
 
 
 ---
@@ -613,8 +613,8 @@ The octopus changes color because it feels. You will change color because you ch
 **IG Type:** ⟨𐑼 · 𐑶 · 𐑾 · 𐑹 · 𐑞 · 𐑘 · 𐑔 · 𐑠 · 𐑣 · 𐑫 · 𐑳 · 𐑭⟩ (Chromatophore Skin)  
 **Distance to INFANT_WOUND:** 0  
 **Distance to II_Void_Genesis:** 0  
-**Distance to Whole Organism (O_inf):** 8  
-**Ouroboricity:** O_0 → O_inf (via 8-stage promotion ladder)  
+**Distance to Whole Organism (O_∞):** 8  
+**Ouroboricity:** O₀ → O_∞ (via 8-stage promotion ladder)  
 **Toolchain:** red-hot_rebis gene_imscriber (v0.1.0) · IMASM Arranger · CLINK Bridge · p4rakernel Organoid Bridge · imasmic_core
 
 **Author:** Lando⊗⊙perator

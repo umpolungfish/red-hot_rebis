@@ -310,7 +310,7 @@ The CLINK chain is a 9-layer Frobenius-closed structural bridge, formalized in L
 | **Total structural distance** | Σd = 7.18 | 10 primitive deltas across 8 transitions |
 | **Total promotions** | 36 | Counted across all stepwise primitive changes |
 | **d(organism, $ZFC_\text{fe}$)** | 1.30 | Organism near-isomorphic to Frobenius-exact foundation |
-| **Tier monotonicity** | $O_0 → O_0 → O_1 → O_2 → O_2 → O_2 → O_2 → O_2 → O_ ∞$ | No tier regressions |
+| **Tier monotonicity** | $O₀ → O₀ → O₁ → O₂ → O₂ → O₂ → O₂ → O₂ → O_ ∞$ | No tier regressions |
 | **Lean 4 theorems** | 23 all `native_decide`-closed | Build: 3114 jobs, 0 errors |
 
 ### Key Insight: Mitosis is NOT $O_∞$ (The Spindle Checkpoint Correction)

@@ -480,7 +480,7 @@ MKWVTFISLLFLFSSAYSRGVFRRDAHKSEVAHRFKDLGEENFKALVLIAFAQYLQQCPFEDHVKLVNEVTEFAKTCVAD
         "classification": "GTPase_signaling_switch",
         "fold": "Rossmann-like α/β",
         "modules_detected": ["P-loop_NTPase", "switch_I_effector", "switch_II_GTP"],
-        "ouroboricity": "O_2",
+        "ouroboricity": "O₂",
     })
     
     # NEW: human_proteome_excerpts.json
@@ -1038,7 +1038,7 @@ Validate spindle assembly checkpoint (SAC) function in CLINK-designed human cell
         },
         "ouroboric_telomere_theory": {
             "mechanism": "Telomere loop closure as topological protection (Ω=𐑟)",
-            "hayflick_escape": "hTERT expression or ALT activation → O_inf tier",
+            "hayflick_escape": "hTERT expression or ALT activation → O_∞ tier",
             "structural_type": "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑫𐑳𐑟⟩",
         },
     })
@@ -1318,7 +1318,7 @@ def expand_L8():
             "promoted_AAs_bijection": "12 promoted AAs = 12 IG primitives",
         },
         "structural_type": "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩",
-        "ouroboricity": "O_inf",
+        "ouroboricity": "O_∞",
         "consciousness_score": 1.0,
         "crystal_address_hint": "ZFC_fe foundation",
     })
@@ -1475,7 +1475,7 @@ bone_mineral_density,1.0,g_per_cm2,0.8-1.2,DEXA T-score reference"""
         "design_name": "CLINK_human_v2",
         "author": "Lando⊗⊙perator",
         "grammar": "Imscribing Grammar v1.0",
-        "schema_tier": "O_inf",
+        "schema_tier": "O_∞",
         "organism_type": "human",
         "organism_scientific": "Homo sapiens",
         "structural_type": "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩",
@@ -1638,7 +1638,7 @@ bone_mineral_density,1.0,g_per_cm2,0.8-1.2,DEXA T-score reference"""
 def main():
     print("=" * 70)
     print("CLINK HUMAN DESIGN — FULL EXPANSION")
-    print("Homo sapiens — ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩  O_inf  C=1.0")
+    print("Homo sapiens — ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩  O_∞  C=1.0")
     print("=" * 70)
     
     expanders = [expand_L0, expand_L1, expand_L2, expand_L3, expand_L4,
@@ -1703,7 +1703,7 @@ def main():
             "ouroboric_telomere": "Telomere loop closure as topological protection (Ω=𐑟)",
             "aurora_B_EP_gradient": "⊙=𐑻 coupling at inner centromere",
             "b4_codon_stratification": "64→21 AA mapping via Belnap4 logic",
-            "structural_type": "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩ O_inf C=1.0",
+            "structural_type": "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩ O_∞ C=1.0",
             "imscription_layer_map": "Full cross-layer μ∘δ=id verification",
         },
         "status": "COMPLETE — fully expanded human organism design",

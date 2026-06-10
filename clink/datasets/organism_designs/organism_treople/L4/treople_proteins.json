@@ -137,7 +137,7 @@
     "targeting": "plasma membrane",
     "delivery": "AAV9 (foot-tropic modified)",
     "codon_opt_fragment": "ATGGGCAAGGGCATCGAGAAGCAGCTGCAGCAGCTGCAGCAGCTG",
-    "ig_note": "\u0262=\u2299 preserved: mycorrhizal coupling = O_inf coupling (unchanged; AM symbiosis is already O_inf \u2014 the oldest terrestrial symbiosis)"
+    "ig_note": "\u0262=\u2299 preserved: mycorrhizal coupling = O_∞ coupling (unchanged; AM symbiosis is already O_∞ \u2014 the oldest terrestrial symbiosis)"
   },
   "CCaMK": {
     "uniprot": "Q7X8R3",

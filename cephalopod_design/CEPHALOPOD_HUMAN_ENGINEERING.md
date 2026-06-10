@@ -358,7 +358,7 @@ The CLINK Pipeline Engine executed a complete ground-up design across all 9 laye
 **Total Distance:** 23.3188  
 **Total Promotions:** 36  
 **Final Tuple (L8):** ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑧·𐑲·𐑵·⊙·𐑫·𐑳·𐑟⟩  
-**Final Tier:** O_inf  
+**Final Tier:** O_∞  
 **Frobenius:** ✅ CLOSED
 
 ### 6.2 Generated Layer Files

@@ -380,7 +380,7 @@ The Universal Detox Gland v1.0 specification demonstrates **strong structural al
 
 **Path to approval:** Resolve 5 identified issues (1 critical, 2 high, 2 medium) and the system will be ready for organoid validation and preclinical trials.
 
-The design exhibits genuine **O_2 ouroboricity** (circular feedback loops) and **partial ⊙-criticality** (self-modeling without evolutionary adaptation). This is appropriate for a therapeutic device; full O_∞ would require self-replication capability, which introduces unacceptable safety risk.
+The design exhibits genuine **O₂ ouroboricity** (circular feedback loops) and **partial ⊙-criticality** (self-modeling without evolutionary adaptation). This is appropriate for a therapeutic device; full O_∞ would require self-replication capability, which introduces unacceptable safety risk.
 
 ---
 

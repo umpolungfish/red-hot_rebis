@@ -7,8 +7,8 @@ algal nuclear DNA to host nucleus maintains functional stolen chloroplasts in gu
 Extension: patterned epidermal chloroplast expression via Turing reaction-diffusion
 (Fibonacci-spiral spotting, activator=synthetic chloroplast TF, inhibitor=WNT).
 
-Base type:  ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩  O_inf  (canonical human)
-Photo type: ⟨𐑦𐑱𐑰𐑹𐑓𐑨𐑲𐑵⊙𐑫𐑳𐑟⟩  O_inf  (photosynthetic variant)
+Base type:  ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩  O_∞  (canonical human)
+Photo type: ⟨𐑦𐑱𐑰𐑹𐑓𐑨𐑲𐑵⊙𐑫𐑳𐑟⟩  O_∞  (photosynthetic variant)
 
 Modified primitives vs base human:
   Ħ (Chirality,    pos 2): 𐑸→𐑱  Fibonacci-spiral spotting pattern has preferred handedness
@@ -18,7 +18,7 @@ Modified primitives vs base human:
                                     (NADPH produced not consumed; O₂ product not reactant)
 
 Unchanged: Ř Ð Ç ƒ ɢ Γ Þ ⊙ — recognition, dimensionality, kinetics, fidelity,
-           coupling, granularity, topology, criticality all remain at O_inf human values.
+           coupling, granularity, topology, criticality all remain at O_∞ human values.
            Þ unchanged: grana disc topology subsumed by Ω winding (not a new topology class).
 
 ZFC_fe foundation: μ∘δ=id at every layer.
@@ -743,7 +743,7 @@ def _photo_plasmid_gb() -> str:
 PHOTO_PHYSIOLOGY = {
     "structural_type": PHOTO_TYPE,
     "base_human_type": HUMAN_TYPE,
-    "tier": "O_inf",
+    "tier": "O_∞",
     "c_score": 1.0,
     "foundation": "ZFC_fe  μ∘δ=id",
     "ig_primitive_deltas": {
@@ -869,7 +869,7 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
 
     print("=" * 70)
     print("CLINK HUMAN (PHOTOSYNTHETIC VARIANT) DESIGN PIPELINE")
-    print(f"Homo sapiens (photosynthetic) — {PHOTO_TYPE}  O_inf  C=1.0")
+    print(f"Homo sapiens (photosynthetic) — {PHOTO_TYPE}  O_∞  C=1.0")
     print("ZFC_fe foundation: μ∘δ=id at every layer")
     print(f"Base human type:   {HUMAN_TYPE}")
     print(f"Photo variant type:{PHOTO_TYPE}")
@@ -949,7 +949,7 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
     photo_brief = {
         "structural_type": PHOTO_TYPE,
         "base_human_type": HUMAN_TYPE,
-        "tier": "O_inf",
+        "tier": "O_∞",
         "c_score": 1.0,
         "foundation": "ZFC_fe  μ∘δ=id",
         "biological_basis": "Elysia chlorotica HGT model",
@@ -1006,7 +1006,7 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
         "total_bytes": total_bytes,
         "output_directory": str(out_path),
         "frobenius_verified": True,
-        "tier": "O_inf",
+        "tier": "O_∞",
         "c_score": 1.0,
         "foundation": "ZFC_fe",
         "biological_basis": "Elysia chlorotica HGT model",
@@ -1031,7 +1031,7 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
     print(f"Turing pattern coverage:     {pattern['coverage_percent']}%  (L-Fibonacci chirality)")
     print(f"Elysia HGT model:            psbO  →  Frobenius closed loop")
     print(f"Parity note:                 Φ=𐑨  photosynthesis = mirror of respiration")
-    print(f"Tier: O_inf  |  C-score: 1.0")
+    print(f"Tier: O_∞  |  C-score: 1.0")
     print(f"Foundation: ZFC_fe  |  μ∘δ=id")
     print(f"{'=' * 70}")
 

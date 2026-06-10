@@ -2,7 +2,7 @@
 """
 Universal Antidote — Real-Time Multi-Toxin Neutralization Library
 Structural tuple: <𐑦·𐑶·𐑾·𐑹·𐑐·𐑧·𐑔·𐑝·⊙·𐑫·𐑕·𐑭>
-O_inf | Distance from Rebis: 1.0
+O_∞ | Distance from Rebis: 1.0
 
 FIXES APPLIED (v2):
 1. Increased sample clones from 1,000 to 100,000

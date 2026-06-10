@@ -3,7 +3,7 @@ clink — CLINK Integration Module for red-hot_rebis
 ===================================================
 
 The CLINK chain: Frobenius-exact bridge from frustrated quarks (Belnap5)
-to whole organisms (O_inf), integrated with the four rebis pillars.
+to whole organisms (O_∞), integrated with the four rebis pillars.
 
 Author: Lando ⊗ ⊙perator
 """

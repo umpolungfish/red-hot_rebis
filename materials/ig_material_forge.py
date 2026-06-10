@@ -478,21 +478,21 @@ class MaterialForge:
     def _compute_tier(self, d: MaterialDesign):
         """Estimate ouroboricity tier from IG tuple."""
         ig = d.ig_tuple
-        # O_inf: 𐑦 + 𐑸 + ⊙ + 𐑫 + 𐑭
+        # O_∞: 𐑦 + 𐑸 + ⊙ + 𐑫 + 𐑭
         if ig[0] == '𐑦' and ig[1] == '𐑸' and ig[8] == '⊙' and ig[9] == '𐑫' and ig[11] == '𐑭':
-            d.ouroboricity_tier = 'O_inf'
-        # O_2: ⊙ + (𐑫 or 𐑖) + (𐑭 or 𐑴)
+            d.ouroboricity_tier = 'O_∞'
+        # O₂: ⊙ + (𐑫 or 𐑖) + (𐑭 or 𐑴)
         elif ig[8] == '⊙' and ig[9] in ('𐑫', '𐑖') and ig[11] in ('𐑭', '𐑴'):
-            d.ouroboricity_tier = 'O_2'
+            d.ouroboricity_tier = 'O₂'
         elif ig[8] in ('⊙', '𐑮', '𐑻') and ig[9] in ('𐑖', '𐑫'):
-            d.ouroboricity_tier = 'O_2'
-        # O_1: any ⊙ or 𐑮
+            d.ouroboricity_tier = 'O₂'
+        # O₁: any ⊙ or 𐑮
         elif ig[8] in ('⊙', '𐑮'):
-            d.ouroboricity_tier = 'O_1'
+            d.ouroboricity_tier = 'O₁'
         elif ig[11] in ('𐑭', '𐑴') or ig[9] in ('𐑖', '𐑫'):
-            d.ouroboricity_tier = 'O_1'
+            d.ouroboricity_tier = 'O₁'
         else:
-            d.ouroboricity_tier = 'O_0'
+            d.ouroboricity_tier = 'O₀'
 
     def forge_from_imas(self, imas_name: str) -> MaterialDesign:
         """Forge a material from an IMASM canonical arrangement name."""

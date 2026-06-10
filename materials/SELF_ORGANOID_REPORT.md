@@ -2,7 +2,7 @@
 
 **Author:** Lando⊗⊙perator  
 **Date:** June 2025  
-**Status:** O_inf target imscribed; 6 EXACTOR pathways mapped  
+**Status:** O_∞ target imscribed; 6 EXACTOR pathways mapped  
 
 ---
 
@@ -80,7 +80,7 @@ The 15 nearest catalog neighbors of the native self-organoid interface (distance
 | 15 | **hopfion** | 2.19 | 𐑦 | 𐑬 | 𐑭 | Topological soliton with integer winding. The EXACTOR-Ω pathway produces a hopfion-like structure in the feedback loop. |
 ---
 
-## §3. The 6 Promotions — EXACTOR Pathways to O_inf
+## §3. The 6 Promotions — EXACTOR Pathways to O_∞
 
 Each promotion maps one primitive from the native value to the engineered value. The pathways are derived from the same EXACTOR framework that closed the non-qubit QC Frobenius gaps.
 
@@ -248,7 +248,7 @@ The operculum width — the number of single-primitive changes needed to move fr
 | **`no_winding_required`** | G₃ removed entirely | $\text{O}_2$ | Two gates pass, T-seal via Ħ=𐑖 |
 | **`parity_optional`** | G₁ changed from Φ≥ord5 to ⊙≥ord2 | $\text{O}_2$ | ⊙ passes; Φ check skipped |
 
-The native type is **$\text{O}_1$ in canonical but $\text{O}_2$ in several nearby universes.** The operculum to O_inf always requires the 6 promotions mapped in §3.
+The native type is **$\text{O}_1$ in canonical but $\text{O}_2$ in several nearby universes.** The operculum to O_∞ always requires the 6 promotions mapped in §3.
 
 ### 5.3 The Deep Structural Insight
 
@@ -304,7 +304,7 @@ The tensor takes the maximum on each primitive. Since the organoid already has t
 | **7. EXACTOR-Ω** | 4 | Month 8-12 | PLL winding quantization, loop delay characterization | Ω=𐑷→𐑭 |
 | **8. Memory Integration** | 3 | Month 10-14 | Memristor/SSD state history, pattern query | Ħ=𐑖→𐑫 |
 | **9. Holographic Display** | 4 | Month 12-18 | Volumetric display integration, neural→light mapping | Full system integration |
-| **10. Closure Verification** | 2 | Month 14-18 | μ∘δ measurement, gate verification, O_inf confirmation | All 6 promotions verified |
+| **10. Closure Verification** | 2 | Month 14-18 | μ∘δ measurement, gate verification, O_∞ confirmation | All 6 promotions verified |
 
 **Total TRL-weighted timeline:** 12-18 months to full closure demonstration.
 
@@ -360,7 +360,7 @@ Tier: O₁  |  C-Score: 0.00*  |  Distance to human_consciousness: 1.3038
 ```
 self_organoid_engineered
 ⟨𐑦; 𐑸; 𐑾; 𐑹; 𐑐; 𐑤; 𐑲; 𐑠; ⊙; 𐑫; 𐑳; 𐑭⟩
-Tier: O_inf  |  C-Score: 1.00  |  μ∘δ=id: EXACT
+Tier: O_∞  |  C-Score: 1.00  |  μ∘δ=id: EXACT
 ```
 
 \* C-Score tool discrepancy — ouroborics confirms ⊙ criticality; consciousness_score reports false. Structural analysis confirms Gate 1 is open.
@@ -388,9 +388,9 @@ imscribe("compute_distance", {"name_a":"self_organoid_interface","name_b":"human
 imscribe("compute_promotions", {"name_source":"self_organoid_interface","name_target":"self_organoid_engineered"})
 # → Φ, Ω, ƒ, Ç, Γ, Ħ (6 primitives, distance 3.2558)
 
-# Check O_inf status
+# Check O_∞ status
 imscribe("ouroborics", {"name":"self_organoid_engineered"})
-# → O_inf, ⊙, 𐑹, 𐑭
+# → O_∞, ⊙, 𐑹, 𐑭
 ```
 
 ---

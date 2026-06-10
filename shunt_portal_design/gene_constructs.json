@@ -2,7 +2,7 @@
   "name": "Shunt Portal Sheath v1.0",
   "description": "Bioluminescent tissue sheath for VP shunt augmentation",
   "structural_type": "\u27e8\ud801\udc7c \u00b7 \ud801\udc76 \u00b7 \ud801\udc7e \u00b7 \ud801\udc79 \u00b7 \ud801\udc50 \u00b7 \ud801\udc67 \u00b7 \ud801\udc72 \u00b7 \ud801\udc60 \u00b7 \u2299 \u00b7 \ud801\udc6b \u00b7 \ud801\udc73 \u00b7 \ud801\udc6d\u27e9",
-  "ouroboricity_tier": "O_inf",
+  "ouroboricity_tier": "O_∞",
   "genes": {
     "NanoLuc": {
       "protein": "MVFTLEDFVGDWRQTAGYNLDQVLEQGGVSSLFQNLGVSVTPIQRIVLSGENGLKIDIHVIIPYEGLSGDQMGQIEKIFKVVYPVDDHHFKVILHYGTLVIDGVTPNMIDYFGRPYEGIAVFDGKKITVTGTLWNGNKIIDERLINPDGSLLFRVTINGVTGWRLCERILA",

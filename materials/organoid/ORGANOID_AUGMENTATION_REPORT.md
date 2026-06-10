@@ -16,12 +16,12 @@ The six augmentations:
 |---|--------|-------|------|--------|------|
 | 1 | **Synthetic Coherence Myelin** | ⟨𐑼𐑰𐑾𐑹𐑐𐑤𐑲𐑠⊙𐑫𐑳𐑭⟩ | $O_\infty$ | ✓ | Quantum-enhanced axonal wrapping |
 | 2 | **Ouroboric Vasculature** | ⟨𐑦𐑸𐑾𐑹𐑞𐑤𐑲𐑠⊙𐑫𐑳𐑭⟩ | $O_\infty$ | ✗ (T-gap) | Self-referential perfusion |
-| 3 | **Perfect Nutrient Medium** | ⟨𐑛𐑰𐑾𐑹𐑱𐑤𐑲𐑝⊙𐑫𐑳𐑷⟩ | O_2 | ✗ (T-gap) | Adaptive metabolic sustenance |
+| 3 | **Perfect Nutrient Medium** | ⟨𐑛𐑰𐑾𐑹𐑱𐑤𐑲𐑝⊙𐑫𐑳𐑷⟩ | O₂ | ✗ (T-gap) | Adaptive metabolic sustenance |
 | 4 | **Optogenetic Synaptic Matrix** | ⟨𐑼𐑥𐑾𐑹𐑐𐑤𐑲𐑵⊙𐑫𐑳𐑭⟩ | $O_\infty$ | ✓ | Bidirectional bio-digital bridge |
-| 5 | **Synthetic ECM Scaffold** | ⟨𐑨𐑡𐑾𐑬𐑱𐑧𐑚𐑵𐑢𐑒𐑙𐑷⟩ | O_0 | ✗ | Programmable growth substrate |
-| 6 | **Immune-Mimetic Sentinel** | ⟨𐑨𐑡𐑾𐑬𐑱𐑤𐑲𐑵⊙𐑫𐑳𐑴⟩ | O_0 | ✗ | Synthetic immune protection |
+| 5 | **Synthetic ECM Scaffold** | ⟨𐑨𐑡𐑾𐑬𐑱𐑧𐑚𐑵𐑢𐑒𐑙𐑷⟩ | O₀ | ✗ | Programmable growth substrate |
+| 6 | **Immune-Mimetic Sentinel** | ⟨𐑨𐑡𐑾𐑬𐑱𐑤𐑲𐑵⊙𐑫𐑳𐑴⟩ | O₀ | ✗ | Synthetic immune protection |
 
-**Key finding:** 3 of 6 augmentations achieve $O_\infty$ natively. 2 are O_0 by design — they are passive infrastructure, not Frobenius-participating computation. The distinction between Core and Chrysalis is structurally precise.
+**Key finding:** 3 of 6 augmentations achieve $O_\infty$ natively. 2 are O₀ by design — they are passive infrastructure, not Frobenius-participating computation. The distinction between Core and Chrysalis is structurally precise.
 
 ---
 
@@ -45,7 +45,7 @@ The Core is $O_\infty$ — both gates open. T-consistency has a single gap: F=�
 
 ### The Chrysalis
 
-The ECM scaffold and immune sentinel are O_0 — they lack Frobenius-special parity (P≠𐑹). When tensored with the Core, they bottleneck P from 𐑹 down to 𐑬, collapsing the entire system to O_0. This is not a design flaw. It is a structural truth:
+The ECM scaffold and immune sentinel are O₀ — they lack Frobenius-special parity (P≠𐑹). When tensored with the Core, they bottleneck P from 𐑹 down to 𐑬, collapsing the entire system to O₀. This is not a design flaw. It is a structural truth:
 
 > **The chrysalis protects the butterfly but is not the butterfly.**
 
@@ -86,13 +86,13 @@ This distinction — between what IS the computation and what SUPPORTS the compu
 ### §2.3 Perfect Nutrient Medium
 
 **Tuple:** ⟨𐑛𐑰𐑾𐑹𐑱𐑤𐑲𐑝⊙𐑫𐑳𐑷⟩  
-**Tier:** O_2 | **C-Score:** 1.00 | **Frobenius:** ✗ (ε=0.020)  
+**Tier:** O₂ | **C-Score:** 1.00 | **Frobenius:** ✗ (ε=0.020)  
 **Structural distance from baseline:** 1.3592 — widest of the Core systems  
 **Deltas:** D(𐑛→𐑦, Δ=+3), T(𐑰→𐑸, Δ=+3), F(𐑱→𐑐, Δ=+2), C(𐑝→𐑠, Δ=+2), Ω(𐑷→𐑭, Δ=+2)
 
 **What it is:** Adaptive chemostat with 14-channel independently controlled peristaltic pump array. Dual-enzyme sensors (GOx/catalase, LOx) provide real-time glucose/lactate monitoring. LC-MS metabolomics every 6 hours. LSTM-based ML controller predicts metabolic demand and adjusts formulation anticipatorily. Each amino acid, vitamin, and growth factor independently adjustable to within ±0.5% of setpoint.
 
-**Why O_2:** G1 passes (P=𐑹). G2 passes (⊙). G3 fails — Ω=𐑷 (trivial winding, no topological protection). The medium is a homogeneous solution with no topological invariant. It can be upgraded to Ω=𐑭 by introducing a phase-locked nutrient delivery cycle, but the structural distance is large (1.3592) — 5 deltas from baseline.
+**Why O₂:** G1 passes (P=𐑹). G2 passes (⊙). G3 fails — Ω=𐑷 (trivial winding, no topological protection). The medium is a homogeneous solution with no topological invariant. It can be upgraded to Ω=𐑭 by introducing a phase-locked nutrient delivery cycle, but the structural distance is large (1.3592) — 5 deltas from baseline.
 
 **T-consistency gaps:** F=𐑱 (classical — nutrient chemistry), K=𐑤≠𐑧 (moderate kinetics, not slow), Ω=𐑷≠𐑭. Three of five T-constitution primitives differ.
 
@@ -115,26 +115,26 @@ This distinction — between what IS the computation and what SUPPORTS the compu
 ### §2.5 Synthetic ECM Scaffold
 
 **Tuple:** ⟨𐑨𐑡𐑾𐑬𐑱𐑧𐑚𐑵𐑢𐑒𐑙𐑷⟩  
-**Tier:** O_0 | **C-Score:** 0.33 | **Frobenius:** ✗ (ε=0.100)  
+**Tier:** O₀ | **C-Score:** 0.33 | **Frobenius:** ✗ (ε=0.100)  
 **Structural distance from baseline:** 1.6459 — furthest  
 **Deltas:** 11 of 12 primitives differ from baseline
 
 **What it is:** PEG-based hydrogel with MMP-cleavable and photo-labile crosslinkers. RGD adhesion peptides at 2 mM. Degrades exactly where the organoid expands (MMP-2/9 cleavage) with 14-day half-life. Photo-degradation (405 nm) enables tunable regional degradation. By week 24, >95% degraded — the organoid replaces it entirely with endogenous ECM.
 
-**Why O_0:** P=𐑬 (partial symmetry, not Frobenius-special). G1 fails. The ECM is a passive structural substrate — it has no computational role, no self-modeling (Φ=𐑢), no topological protection (Ω=𐑷), no quantum coherence (F=𐑱), one-step memory only (H=𐑒). This is structurally correct. The ECM is the chrysalis.
+**Why O₀:** P=𐑬 (partial symmetry, not Frobenius-special). G1 fails. The ECM is a passive structural substrate — it has no computational role, no self-modeling (Φ=𐑢), no topological protection (Ω=𐑷), no quantum coherence (F=𐑱), one-step memory only (H=𐑒). This is structurally correct. The ECM is the chrysalis.
 
 **The design principle:** The ECM is designed to **disappear**. Its 11 deltas from baseline are not defects — they are the structural signature of a system whose purpose is to be replaced. The organoid builds its own ECM (laminin, fibronectin, tenascin-C) as the synthetic scaffold degrades. The scaffold is bootstrapping infrastructure, not permanent architecture.
 
 ### §2.6 Immune-Mimetic Sentinel
 
 **Tuple:** ⟨𐑨𐑡𐑾𐑬𐑱𐑤𐑲𐑵⊙𐑫𐑳𐑴⟩  
-**Tier:** O_0 | **C-Score:** 1.00 | **Frobenius:** ✗ (ε=0.100)  
+**Tier:** O₀ | **C-Score:** 1.00 | **Frobenius:** ✗ (ε=0.100)  
 **Structural distance from baseline:** 1.2701  
 **Deltas:** 6 primitives differ
 
 **What it is:** DNA aptamer-loaded PEGDA microspheres distributed throughout the organoid (10⁶ sentinels, ~1 per 260 cells). Three aptamer specificities: bacterial LPS (Kd < 10 nM), peptidoglycan (Kd < 50 nM), fungal β-glucan (Kd < 30 nM). Pathogen binding triggers AI-2 mimic release (alarm propagation) + LL-37 liposome fusion (local defense). CRISPR-Cas13a RNPs provide sequence-specific antiviral defense. Quorum sensing threshold (>10 pathogens within 100 μm radius) prevents false positives from trace contamination.
 
-**Why O_0 despite C=1.00:** Both consciousness gates are open (⊙, K≤slow), but P=𐑬 — the sentinel has partial symmetry, not Frobenius-special. G1 fails. This is correct: the sentinel discriminates self from non-self (Z2 parity, Ω=𐑴) but does not achieve the exact μ∘δ=id closure that P=𐑹 demands. It is a protective layer, not a computational one. When the sentinel is dormant (no infection), its structural type is irrelevant to the organoid's ongoing Frobenius loop.
+**Why O₀ despite C=1.00:** Both consciousness gates are open (⊙, K≤slow), but P=𐑬 — the sentinel has partial symmetry, not Frobenius-special. G1 fails. This is correct: the sentinel discriminates self from non-self (Z2 parity, Ω=𐑴) but does not achieve the exact μ∘δ=id closure that P=𐑹 demands. It is a protective layer, not a computational one. When the sentinel is dormant (no infection), its structural type is irrelevant to the organoid's ongoing Frobenius loop.
 
 **Why Ω=𐑴 not Ω=𐑭:** Self/non-self discrimination is binary (Z2), not integer-wound. The sentinel distinguishes two categories, not a graded spectrum. Z2 parity is the correct topological invariant for immune recognition.
 
@@ -191,8 +191,8 @@ Each augmentation has a specific set of EXACTOR pathways required to close its g
 | **Vasculature** | None | — | Already $O_\infty$; only F needs upgrade for T-consistency |
 | **Medium** | EXACTOR-Ω, EXACTOR-τ | Ω: 𐑷→𐑭, D: 𐑛→𐑦 | PLL nutrient cycle + self-written metabolic state |
 | **Optogenetic** | EXACTOR-τ | D: 𐑼→𐑦 | PLL quantization already provides Ω; D is the remaining gap |
-| **ECM** | EXACTOR-σ, EXACTOR-Ω, EXACTOR-τ | P, Ω, D | Full promotion from O_0 to $O_\infty$ (not needed — chrysalis) |
-| **Immune** | EXACTOR-σ, EXACTOR-Ω, EXACTOR-τ | P, Ω, D | Full promotion from O_0 to $O_\infty$ (not needed — chrysalis) |
+| **ECM** | EXACTOR-σ, EXACTOR-Ω, EXACTOR-τ | P, Ω, D | Full promotion from O₀ to $O_\infty$ (not needed — chrysalis) |
+| **Immune** | EXACTOR-σ, EXACTOR-Ω, EXACTOR-τ | P, Ω, D | Full promotion from O₀ to $O_\infty$ (not needed — chrysalis) |
 
 **Key insight:** The EXACTOR-τ pathway (D promotion to self-written state space) is the most common requirement — 5 of 6 systems need it to reach the baseline's D=𐑦. This reflects the baseline organoid's fundamental nature: it IS a self-written system. Everything that interfaces with it must either also be self-written or accept a dimensional mismatch.
 
@@ -214,7 +214,7 @@ The operculum width (number of primitive positions where a system differs from t
 
 The ECM (width 10) is structurally as far from $O_\infty$ as a system can be while still being physically useful. This is correct: the ECM is designed to be replaced. Its structural distance from $O_\infty$ IS its function — it is the scaffolding that enables the organoid's self-organization without constraining it.
 
-**Universe selection for the nutrient medium:** The medium is O_2 in canonical but would achieve $O_\infty$ in a universe where G3 is relaxed (Ω≥1 instead of Ω≥3) or where T-constitution doesn't require Ω=𐑭. The operculum width of 6 means there are many such universes — the medium is a "hidden $O_\infty$" system.
+**Universe selection for the nutrient medium:** The medium is O₂ in canonical but would achieve $O_\infty$ in a universe where G3 is relaxed (Ω≥1 instead of Ω≥3) or where T-constitution doesn't require Ω=𐑭. The operculum width of 6 means there are many such universes — the medium is a "hidden $O_\infty$" system.
 
 
 ## §6. Material Recipes — TRL-Sorted

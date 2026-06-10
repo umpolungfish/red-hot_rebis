@@ -5,7 +5,7 @@ Each layer is a 12-primitive Imscription tuple (using Shavian glyph keys),
 verified against the Lean 4 formalization in p4rakernel.
 
 All 9 layers are Frobenius-closed (tensorProduct(s,s)=s).
-Foundation: ZFC_fe (O_inf with Ð=𐑦, Φ=𐑹, Ħ=𐑫).
+Foundation: ZFC_fe (O_∞ with Ð=𐑦, Φ=𐑹, Ħ=𐑫).
 
 Author: Lando ⊗ ⊙perator
 """
@@ -24,90 +24,90 @@ PORDER = ["Ð", "Þ", "Ř", "Φ", "ƒ", "Ç", "Γ", "ɢ", "⊙", "Ħ", "Σ", "Ω
 # ═══════════════════════════════════════════════════════════════════
 # LAYER 0 — Frustrated Belnap5 (Quark Color)
 # ═══════════════════════════════════════════════════════════════════
-# ⟨𐑛 · 𐑶 · 𐑩 · 𐑯 · 𐑐 · 𐑘 · 𐑚 · 𐑝 · 𐑢 · 𐑓 · 𐑳 · 𐑷⟩  O_0
+# ⟨𐑛 · 𐑶 · 𐑩 · 𐑯 · 𐑐 · 𐑘 · 𐑚 · 𐑝 · 𐑢 · 𐑓 · 𐑳 · 𐑷⟩  O₀
 FRUSTRATED_BELNAP5 = {
     "Ð": "𐑛", "Þ": "𐑶", "Ř": "𐑩", "Φ": "𐑯",
     "ƒ": "𐑐", "Ç": "𐑘", "Γ": "𐑚", "ɢ": "𐑝",
     "⊙": "𐑢", "Ħ": "𐑓", "Σ": "𐑳", "Ω": "𐑷",
     "_name": "frustratedBelnap5",
     "_desc": "Frustrated Belnap5 — SU(3) quark color with confinement",
-    "_tier": "O_0",
+    "_tier": "O₀",
 }
 
 # LAYER 1 — Electron Orbital (Belnap4)
-# ⟨𐑛 · 𐑶 · 𐑩 · 𐑗 · 𐑐 · 𐑤 · 𐑚 · 𐑜 · 𐑢 · 𐑓 · 𐑳 · 𐑷⟩  O_0
+# ⟨𐑛 · 𐑶 · 𐑩 · 𐑗 · 𐑐 · 𐑤 · 𐑚 · 𐑜 · 𐑢 · 𐑓 · 𐑳 · 𐑷⟩  O₀
 ELECTRON_ORBITAL_LAYER = {
     "Ð": "𐑛", "Þ": "𐑶", "Ř": "𐑩", "Φ": "𐑗",
     "ƒ": "𐑐", "Ç": "𐑤", "Γ": "𐑚", "ɢ": "𐑜",
     "⊙": "𐑢", "Ħ": "𐑓", "Σ": "𐑳", "Ω": "𐑷",
     "_name": "electronOrbitalLayer",
     "_desc": "Belnap4 orbital occupancy — 4-valued lattice",
-    "_tier": "O_0",
+    "_tier": "O₀",
 }
 
 # LAYER 2 — Atom (Nuclear + Electron)
-# ⟨𐑼 · 𐑥 · 𐑽 · 𐑿 · 𐑐 · 𐑤 · 𐑔 · 𐑝 · 𐑮 · 𐑒 · 𐑳 · 𐑷⟩  O_1
+# ⟨𐑼 · 𐑥 · 𐑽 · 𐑿 · 𐑐 · 𐑤 · 𐑔 · 𐑝 · 𐑮 · 𐑒 · 𐑳 · 𐑷⟩  O₁
 ATOM_LAYER = {
     "Ð": "𐑼", "Þ": "𐑥", "Ř": "𐑽", "Φ": "𐑿",
     "ƒ": "𐑐", "Ç": "𐑤", "Γ": "𐑔", "ɢ": "𐑝",
     "⊙": "𐑮", "Ħ": "𐑒", "Σ": "𐑳", "Ω": "𐑷",
-    "_name": "atomLayer", "_desc": "Atom — nuclear + electron", "_tier": "O_1",
+    "_name": "atomLayer", "_desc": "Atom — nuclear + electron", "_tier": "O₁",
 }
 
 # LAYER 3 — Molecule (Chemical Bonds)
-# ⟨𐑼 · 𐑥 · 𐑽 · 𐑿 · 𐑞 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑓 · 𐑳 · 𐑭⟩  O_2
+# ⟨𐑼 · 𐑥 · 𐑽 · 𐑿 · 𐑞 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑓 · 𐑳 · 𐑭⟩  O₂
 MOLECULE_LAYER = {
     "Ð": "𐑼", "Þ": "𐑥", "Ř": "𐑽", "Φ": "𐑿",
     "ƒ": "𐑞", "Ç": "𐑧", "Γ": "𐑲", "ɢ": "𐑠",
     "⊙": "⊙", "Ħ": "𐑓", "Σ": "𐑳", "Ω": "𐑭",
-    "_name": "moleculeLayer", "_desc": "Molecule — chemical bonds", "_tier": "O_2",
+    "_name": "moleculeLayer", "_desc": "Molecule — chemical bonds", "_tier": "O₂",
 }
 
 # LAYER 4 — Cell (Living)
-# ⟨𐑦 · 𐑸 · 𐑾 · 𐑬 · 𐑞 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑒 · 𐑳 · 𐑭⟩  O_2
+# ⟨𐑦 · 𐑸 · 𐑾 · 𐑬 · 𐑞 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑒 · 𐑳 · 𐑭⟩  O₂
 CELL_LAYER = {
     "Ð": "𐑦", "Þ": "𐑸", "Ř": "𐑾", "Φ": "𐑬",
     "ƒ": "𐑞", "Ç": "𐑧", "Γ": "𐑲", "ɢ": "𐑠",
     "⊙": "⊙", "Ħ": "𐑒", "Σ": "𐑳", "Ω": "𐑭",
-    "_name": "cellLayer", "_desc": "Cell — minimal self-maintaining unit", "_tier": "O_2",
+    "_name": "cellLayer", "_desc": "Cell — minimal self-maintaining unit", "_tier": "O₂",
 }
 
 # LAYER 5 — Mitosis (Cell Division)
-# ⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑱 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑖 · 𐑳 · 𐑭⟩  O_2
+# ⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑱 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑖 · 𐑳 · 𐑭⟩  O₂
 MITOSIS_LAYER = {
     "Ð": "𐑦", "Þ": "𐑸", "Ř": "𐑾", "Φ": "𐑹",
     "ƒ": "𐑱", "Ç": "𐑧", "Γ": "𐑲", "ɢ": "𐑠",
     "⊙": "⊙", "Ħ": "𐑖", "Σ": "𐑳", "Ω": "𐑭",
-    "_name": "mitosisLayer", "_desc": "Mitosis — cell division", "_tier": "O_2",
+    "_name": "mitosisLayer", "_desc": "Mitosis — cell division", "_tier": "O₂",
 }
 
 # LAYER 6 — Meiosis (Gamete Production)
-# ⟨𐑦 · 𐑸 · 𐑽 · 𐑿 · 𐑱 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑖 · 𐑳 · 𐑭⟩  O_2
+# ⟨𐑦 · 𐑸 · 𐑽 · 𐑿 · 𐑱 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑖 · 𐑳 · 𐑭⟩  O₂
 MEIOSIS_LAYER = {
     "Ð": "𐑦", "Þ": "𐑸", "Ř": "𐑽", "Φ": "𐑿",
     "ƒ": "𐑱", "Ç": "𐑧", "Γ": "𐑲", "ɢ": "𐑠",
     "⊙": "⊙", "Ħ": "𐑖", "Σ": "𐑳", "Ω": "𐑭",
-    "_name": "meiosisLayer", "_desc": "Meiosis — gamete production", "_tier": "O_2",
+    "_name": "meiosisLayer", "_desc": "Meiosis — gamete production", "_tier": "O₂",
 }
 
 # LAYER 7 — Tissue / Organ (Multi-cellular)
-# ⟨𐑦 · 𐑸 · 𐑾 · 𐑬 · 𐑞 · 𐑧 · 𐑲 · 𐑵 · ⊙ · 𐑖 · 𐑳 · 𐑭⟩  O_2
+# ⟨𐑦 · 𐑸 · 𐑾 · 𐑬 · 𐑞 · 𐑧 · 𐑲 · 𐑵 · ⊙ · 𐑖 · 𐑳 · 𐑭⟩  O₂
 TISSUE_LAYER = {
     "Ð": "𐑦", "Þ": "𐑸", "Ř": "𐑾", "Φ": "𐑬",
     "ƒ": "𐑞", "Ç": "𐑧", "Γ": "𐑲", "ɢ": "𐑵",
     "⊙": "⊙", "Ħ": "𐑖", "Σ": "𐑳", "Ω": "𐑭",
-    "_name": "tissueLayer", "_desc": "Tissue — multi-cellular organization", "_tier": "O_2",
+    "_name": "tissueLayer", "_desc": "Tissue — multi-cellular organization", "_tier": "O₂",
 }
 
 # LAYER 8 — Whole Organism
-# ⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑵 · ⊙ · 𐑫 · 𐑳 · 𐑟⟩  O_inf
+# ⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑵 · ⊙ · 𐑫 · 𐑳 · 𐑟⟩  O_∞
 ORGANISM_LAYER = {
     "Ð": "𐑦", "Þ": "𐑸", "Ř": "𐑾", "Φ": "𐑹",
     "ƒ": "𐑐", "Ç": "𐑧", "Γ": "𐑲", "ɢ": "𐑵",
     "⊙": "⊙", "Ħ": "𐑫", "Σ": "𐑳", "Ω": "𐑟",
     "_name": "organismLayer",
-    "_desc": "Whole organism — O_inf, C=1.0",
-    "_tier": "O_inf",
+    "_desc": "Whole organism — O_∞, C=1.0",
+    "_tier": "O_∞",
 }
 
 # ═══════════════════════════════════════════════════════════════════
@@ -132,10 +132,10 @@ def compute_tier_from_tuple(tup):
     """Compute ouroboricity tier from tuple primitives.
     
     Tiers are determined by φ̂ (criticality gate 1) and Ç (kinetics gate 2):
-      O_0:  φ̂=𐑢 or φ̂=𐑻 or φ̂=𐑣 (no self-modeling gate)
-      O_1:  φ̂=𐑮 (complex-plane critical, gate 1 partial)
-      O_2:  φ̂=⊙ AND (Ç≠𐑧 OR Ħ≠𐑫) (gate 1 open, gate 2 closed)
-      O_inf: φ̂=⊙ AND Ç=𐑧 AND Ħ=𐑫 (both gates open, eternal chirality)
+      O₀:  φ̂=𐑢 or φ̂=𐑻 or φ̂=𐑣 (no self-modeling gate)
+      O₁:  φ̂=𐑮 (complex-plane critical, gate 1 partial)
+      O₂:  φ̂=⊙ AND (Ç≠𐑧 OR Ħ≠𐑫) (gate 1 open, gate 2 closed)
+      O_∞: φ̂=⊙ AND Ç=𐑧 AND Ħ=𐑫 (both gates open, eternal chirality)
     
     This is a local computation from tuple primitives — for authoritative
     tier assignment use imscribe("ouroborics", ...) which considers the
@@ -146,13 +146,13 @@ def compute_tier_from_tuple(tup):
     h = tup.get("Ħ", "𐑓")
     
     if phi == "⊙" and k == "𐑧" and h == "𐑫":
-        return "O_inf"
+        return "O_∞"
     elif phi == "⊙":
-        return "O_2"
+        return "O₂"
     elif phi == "𐑮":
-        return "O_1"
+        return "O₁"
     else:
-        return "O_0"
+        return "O₀"
 
 def compute_c_score_from_tuple(tup):
     """Compute consciousness C-score from tuple primitives.

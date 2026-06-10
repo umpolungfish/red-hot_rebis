@@ -13,7 +13,7 @@ w('''
 class Layer5DatasetGenerator(DatasetGenerator):
     layer_idx = 5; layer_name = "Living Cell"
     def generate(self, d=None):
-        o = DatasetOutput(layer_idx=5, layer_name=self.layer_name, layer_tier="O_2", structural_tuple=dict(self.tup))
+        o = DatasetOutput(layer_idx=5, layer_name=self.layer_name, layer_tier="O₂", structural_tuple=dict(self.tup))
         ct = (d or {}).get("cell_type","prokaryote") or "prokaryote"
         
         # Bridge to gene_imscriber
@@ -140,7 +140,7 @@ w('''
 class Layer6DatasetGenerator(DatasetGenerator):
     layer_idx = 6; layer_name = "Mitosis (Cell Division)"
     def generate(self, d=None):
-        o = DatasetOutput(layer_idx=6, layer_name=self.layer_name, layer_tier="O_2", structural_tuple=dict(self.tup))
+        o = DatasetOutput(layer_idx=6, layer_name=self.layer_name, layer_tier="O₂", structural_tuple=dict(self.tup))
         chroms = (d or {}).get("chromosome_count", 46) or 46
         
         # Bridge to ouroboric_telomere
@@ -198,7 +198,7 @@ w('''
 class Layer7DatasetGenerator(DatasetGenerator):
     layer_idx = 7; layer_name = "Tissue/Organ"
     def generate(self, d=None):
-        o = DatasetOutput(layer_idx=7, layer_name=self.layer_name, layer_tier="O_2", structural_tuple=dict(self.tup))
+        o = DatasetOutput(layer_idx=7, layer_name=self.layer_name, layer_tier="O₂", structural_tuple=dict(self.tup))
         tt = (d or {}).get("tissue_type","epithelial") or "epithelial"
         
         # Bridge to materials

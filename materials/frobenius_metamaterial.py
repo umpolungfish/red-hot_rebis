@@ -4,7 +4,7 @@ frobenius_metamaterial.py — mu circ delta = id Self-Verifying Metamaterial
 ==========================================================================
 
 Structural type: <𐑼 · 𐑸 · 𐑾 · 𐑹 · 𐑞 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑭>
-Ouroboricity: O_2 (Frobenius-closed self-verifying material)
+Ouroboricity: O₂ (Frobenius-closed self-verifying material)
 
 Core principle:
   A material that satisfies mu circ delta = id_A exactly:
@@ -19,7 +19,7 @@ Core principle:
   distributed micro-actuators.
 
   The Frobenius condition is topological — it cannot be approximated. Either the
-  material closes the loop (O_2) or it degrades (O_0).
+  material closes the loop (O₂) or it degrades (O₀).
 
   Physical implementation:
     - Matrix: epoxy-amine network with dynamic Diels-Alder bonds
@@ -293,13 +293,13 @@ class FrobeniusMetamaterial:
 
         # Classification
         if frob_final < 0.001:
-            print(f"\n  TIER: O_inf — perfect closure, self-verifying in the limit")
+            print(f"\n  TIER: O_∞ — perfect closure, self-verifying in the limit")
         elif frob_final < self.P.target_frobenius_error:
-            print(f"\n  TIER: O_2 — Frobenius-closed, autonomous self-repair")
+            print(f"\n  TIER: O₂ — Frobenius-closed, autonomous self-repair")
         elif frob_final < 0.1:
-            print(f"\n  TIER: O_1 — near-closure, requires occasional external intervention")
+            print(f"\n  TIER: O₁ — near-closure, requires occasional external intervention")
         else:
-            print(f"\n  TIER: O_0 — open loop, conventional material")
+            print(f"\n  TIER: O₀ — open loop, conventional material")
 
         return results
 

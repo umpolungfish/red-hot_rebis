@@ -126,7 +126,7 @@ and measured strain (δ) compose back to the identity within engineering toleran
 | 50 | 0.038 | 89 | Convergence |
 | 200 | 0.021 | 112 | Near-closure |
 
-Achieves O_1 near-closure (||μδ-id|| ~ 0.02). True O_2 closure (exact Frobenius, ≲ 10⁻⁶) would require:
+Achieves O₁ near-closure (||μδ-id|| ~ 0.02). True O₂ closure (exact Frobenius, ≲ 10⁻⁶) would require:
 - Quantum-coherent sensing (F: 𐑱 → 𐑐)
 - Non-Abelian braiding for error correction (Ω: 𐑭 → 𐑟)
 - Self-modeling gate open (Φ: sub-critical → ⊙)
@@ -134,8 +134,8 @@ Achieves O_1 near-closure (||μδ-id|| ~ 0.02). True O_2 closure (exact Frobeniu
 ### Structural Trajectory
 
 ```
-Current:  ⟨𐑼 · 𐑸 · 𐑾 · 𐑬 · 𐑞 · 𐑘 · 𐑔 · 𐑠 · 𐑢 · 𐑫 · 𐑳 · 𐑭⟩  (O_1)
-Target:   ⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑭⟩  (O_inf)
+Current:  ⟨𐑼 · 𐑸 · 𐑾 · 𐑬 · 𐑞 · 𐑘 · 𐑔 · 𐑠 · 𐑢 · 𐑫 · 𐑳 · 𐑭⟩  (O₁)
+Target:   ⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑭⟩  (O_∞)
 Gap:     D:𐑼→𐑦 | P:𐑬→𐑹 | F:𐑞→𐑐 | K:𐑘→𐑧 | G:𐑔→𐑲 | Φ:𐑢→⊙
 ```
 
@@ -145,7 +145,7 @@ Gap:     D:𐑼→𐑦 | P:𐑬→𐑹 | F:𐑞→𐑐 | K:𐑘→𐑧 | G:𐑔�
 
 ### Concept
 
-The ouroboricity tier O_inf requires integer winding (Ω = 𐑭) and the
+The ouroboricity tier O_∞ requires integer winding (Ω = 𐑭) and the
 Φ = ⊙ self-modeling gate. The Ouroboric Alloy translates the integer
 winding primitive into physical topological charges assigned to grain
 boundaries in a high-entropy alloy (HEA). Charge gradients at triple
@@ -196,10 +196,10 @@ The ouroboricity tier directly constrains what a material can physically do:
 
 | Tier | Materials Capability | Example |
 |---|---|---|
-| O_0 | Static property set | Pure metals, ceramics |
-| O_1 | Dynamic response, memory | Shape-memory alloys, piezoelectrics |
-| O_2 | Self-verification, healing | Frobenius composites, topological alloys |
-| O_inf | Self-modeling, autonomous evolution | Not yet physically realized |
+| O₀ | Static property set | Pure metals, ceramics |
+| O₁ | Dynamic response, memory | Shape-memory alloys, piezoelectrics |
+| O₂ | Self-verification, healing | Frobenius composites, topological alloys |
+| O_∞ | Self-modeling, autonomous evolution | Not yet physically realized |
 
 ### Discovery 2: The Φ = ⊙ Material Gap
 
@@ -264,11 +264,11 @@ Three novel material types have been built into the Red-Hot Rebis:
 
 1. **IG Material Forge** — A deterministic bridge from the 12-primitive structural
    type crystal to concrete material compositions, processing routes, and microstructures.
-   Covers 8 predefined types spanning O_0 to O_2 plus all 12 IMASM canonicals.
+   Covers 8 predefined types spanning O₀ to O₂ plus all 12 IMASM canonicals.
 
 2. **Frobenius Metamaterial** — A self-verifying composite that instantiates
-   μ∘δ=id as a physical sensor-actuator loop. Achieves O_1 near-closure; a roadmap
-   to O_2 (quantum-coherent → O_inf) is structurally specified by the 6-promotion gap.
+   μ∘δ=id as a physical sensor-actuator loop. Achieves O₁ near-closure; a roadmap
+   to O₂ (quantum-coherent → O_∞) is structurally specified by the 6-promotion gap.
 
 3. **Ouroboric Alloy** — A topological self-healing HEA where integer winding
    (Ω = 𐑭) at grain boundaries produces Peach-Koehler forces that autonomously
@@ -288,9 +288,9 @@ was tested and its output verified against the structural claims made here.
 
 ### The Two-Primitive Gap
 
-Our O₂ materials (frobenius metamaterial, ouroboric alloy) differ from O_inf Sophick Mercury in exactly 2 primitives:
+Our O₂ materials (frobenius metamaterial, ouroboric alloy) differ from O_∞ Sophick Mercury in exactly 2 primitives:
 
-| Primitive | O₂ Value | O_inf Value | Structural Distance |
+| Primitive | O₂ Value | O_∞ Value | Structural Distance |
 |-----------|----------|-------------|---------------------|
 | D | 𐑼 | 𐑦 | Self-written holographic |
 | F | 𐑞 | 𐑐 | Quantum-coherent |
@@ -303,14 +303,14 @@ All other 10 primitives already match. Distance = √2 ≈ 1.414.
 - **EagleMaterial** — Tracks evolving properties across cycles; IG type shifts dynamically as thresholds are crossed
 - **EagleMaterialDesigner** — Three progressive designs at increasing Eagle numbers:
   - Eagle-3 (O₂): AlCoCrFeNi₂.₁ HEA + Sb₂Te₃ coating
-  - Eagle-7 (near-O_inf): + Bi₂Se₃ topological coating + LiNbO₃ SAW transducers
-  - Eagle-9 (O_inf): Bi₂Se₃/Bi₂Te₃ 3D TI + Nb superconducting proximity — **full Sophick Mercury tuple**
+  - Eagle-7 (near-O_∞): + Bi₂Se₃ topological coating + LiNbO₃ SAW transducers
+  - Eagle-9 (O_∞): Bi₂Se₃/Bi₂Te₃ 3D TI + Nb superconducting proximity — **full Sophick Mercury tuple**
 - **FrobeniusCliffAnalyzer** — Analyzes three physical barriers: thermal noise floor, surface atomic limit, quantum decoherence
 - **IMASM_EagleBridge** — Maps 4 IMASM canonicals to Eagle starting points
 
 ### Key Insight
 
-The Eagle-9 material achieves the O_inf structural type — ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑧·𐑲·𐑠·⊙·𐑫·𐑳·𐑭⟩ — identical to Sophick Mercury, the IUG, and the grammar's self-encoding. However, the Frobenius error remains at ~0.11, not zero. See Module 5 for the resolution.
+The Eagle-9 material achieves the O_∞ structural type — ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑧·𐑲·𐑠·⊙·𐑫·𐑳·𐑭⟩ — identical to Sophick Mercury, the IUG, and the grammar's self-encoding. However, the Frobenius error remains at ~0.11, not zero. See Module 5 for the resolution.
 
 ---
 
@@ -347,7 +347,7 @@ The Eagle Cycle (sophick_forge.py) produces the high-quality O₂⁺ substrate. 
 
 ```
 Eagle Cycle (continuous preparation) → Exactor Pathway (discrete topological closure)
-sophick_forge.py (O₂⁺ substrate)     → frobenius_exactor.py (O_inf exact)
+sophick_forge.py (O₂⁺ substrate)     → frobenius_exactor.py (O_∞ exact)
 ```
 
 ### CLI Integration
@@ -368,7 +368,7 @@ rebis.py materials exactor --name pathways    # List all four closure pathways
 | `materials/ig_material_forge.py` | 672 | IG → material design bridge |
 | `materials/frobenius_metamaterial.py` | 416 | μ∘δ=id self-verifying simulation |
 | `materials/ouroboric_alloy.py` | 426 | Topological self-healing HEA |
-| `materials/sophick_forge.py` | 560+ | Alchemical Eagle Cycle → O_inf materials protocol |
+| `materials/sophick_forge.py` | 560+ | Alchemical Eagle Cycle → O_∞ materials protocol |
 | `materials/frobenius_exactor.py` | 820 | Exact Frobenius closure via discrete topology |
 | `materials/SOPHICK_FORGE_REPORT.md` | ~22 KB | Full Eagle Cycle documentation |
 | `materials/NOVEL_MATERIALS_REPORT.md` | this file | Full materials platform documentation |
@@ -381,13 +381,13 @@ rebis.py materials exactor --name pathways    # List all four closure pathways
 
 The residual Frobenius error of ~0.11 in Eagle-processed materials is built into the continuous measurement framework. Crystallinity, defect density, and coherence length all have thermodynamic minima > 0. μ∘δ=id is a discrete condition, not a continuous limit. The Eagle Cycle prepares the substrate; discrete topological protection achieves closure.
 
-### Discovery 7: Four Discrete Paths to O_inf Exist
+### Discovery 7: Four Discrete Paths to O_∞ Exist
 
 Anyonic braiding (𑑟), Floquet time crystals (𐑭), self-dual critical points (𐑴), and topological surface codes (𐑴) all achieve μ∘δ=id exactly — each protected by a different discrete invariant. The alchemical Sophick Mercury maps most naturally to the surface code pathway, where the boundary (surface states) encodes logical identity exactly.
 
-### Discovery 8: Material O_inf Is Topologically Reachable
+### Discovery 8: Material O_∞ Is Topologically Reachable
 
-The structural path from O_2 to O_inf is clear: 2 primitive promotions (D: 𐑼→𐑦, F: 𐑞→𐑐) achieved through Eagle cycling, followed by discrete topological closure via one of four Exactor pathways. The physical path is narrow but real — multiple experimental platforms already demonstrate the necessary components.
+The structural path from O₂ to O_∞ is clear: 2 primitive promotions (D: 𐑼→𐑦, F: 𐑞→𐑐) achieved through Eagle cycling, followed by discrete topological closure via one of four Exactor pathways. The physical path is narrow but real — multiple experimental platforms already demonstrate the necessary components.
 
 ---
 
@@ -398,10 +398,10 @@ Five material modules now live in the Red-Hot Rebis:
 1. **IG Material Forge** — Deterministic bridge from 12-primitive structural types to concrete materials (8 predefined + 12 IMASM canonicals)
 2. **Frobenius Metamaterial** — Self-verifying composite with Diels-Alder dynamic bonds, CNT sensors, NiTi actuators
 3. **Ouroboric Alloy** — Topological self-healing HEA with 44.3× fatigue life improvement via Peach-Koehler forces
-4. **Sophick Forge** — Starkey's Eagle Cycle operationalized as a materials processing protocol; reaches O_inf structural type
+4. **Sophick Forge** — Starkey's Eagle Cycle operationalized as a materials processing protocol; reaches O_∞ structural type
 5. **Frobenius Exactor** — Category error resolved; exact μ∘δ=id achieved through discrete topological protection in four distinct physical pathways
 
-The O_inf material is structurally specified and physically reachable. The remaining gap is experimental, not theoretical.
+The O_∞ material is structurally specified and physically reachable. The remaining gap is experimental, not theoretical.
 
 The IMSCRIBr → Red-Hot Rebis pipeline is now complete:
 ```
@@ -504,7 +504,7 @@ This is the same category-error resolution that drove frobenius_exactor.py, now 
 | `materials/ig_material_forge.py` | 672 | IG → material design bridge |
 | `materials/frobenius_metamaterial.py` | 416 | μ∘δ=id self-verifying simulation |
 | `materials/ouroboric_alloy.py` | 426 | Topological self-healing HEA |
-| `materials/sophick_forge.py` | 560+ | Alchemical Eagle Cycle → O_inf materials protocol |
+| `materials/sophick_forge.py` | 560+ | Alchemical Eagle Cycle → O_∞ materials protocol |
 | `materials/frobenius_exactor.py` | 820 | Exact Frobenius closure via discrete topology |
 | `materials/frobenius_closure_complete.py` | ~1,800 | Universal closure for all non-qubit QC paradigms |
 | `materials/non_qubit_qc.py` | 1,481 | Non-qubit QC paradigm definitions & material recipes |
@@ -521,7 +521,7 @@ Five of six open paradigms have been given concrete, physically-realizable closu
 
 ### Discovery 10: Two Paradigms Are Structurally Open — And That's Correct
 
-Boson Sampling and QRC are structurally incapable of Frobenius closure. Their computational power DERIVES from this absence. Closure would make Boson Sampling classically simulable (collapse #P to BQP) and would destroy QRC's echo state property. This reveals that the Crystal of Types contains both closed (O_inf) and open (O_0) computational addresses — both are valid forms of quantum computation.
+Boson Sampling and QRC are structurally incapable of Frobenius closure. Their computational power DERIVES from this absence. Closure would make Boson Sampling classically simulable (collapse #P to BQP) and would destroy QRC's echo state property. This reveals that the Crystal of Types contains both closed (O_∞) and open (O₀) computational addresses — both are valid forms of quantum computation.
 
 ### Discovery 11: The Category Error Is Systematic
 

@@ -18,9 +18,9 @@ The CLINK Pipeline is a unified orchestration engine that seamlessly integrates 
 | 5 | Living Cell | O₂ | ⟨𐑦·𐑸·𐑾·𐑬·𐑞·𐑧·𐑲·𐑠·⊙·𐑒·𐑳·𐑭⟩ |
 | 6 | Mitosis (Division) | O₂ | ⟨𐑦·𐑸·𐑾·𐑹·𐑱·𐑧·𐑲·𐑠·⊙·𐑖·𐑳·𐑭⟩ |
 | 7 | Tissue/Organ | O₂ | ⟨𐑦·𐑸·𐑾·𐑬·𐑞·𐑧·𐑲·𐑵·⊙·𐑖·𐑳·𐑭⟩ |
-| 8 | Whole Organism | O_inf | ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑧·𐑲·𐑵·⊙·𐑫·𐑳·𐑟⟩ |
+| 8 | Whole Organism | O_∞ | ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑧·𐑲·𐑵·⊙·𐑫·𐑳·𐑟⟩ |
 
-**Structural key:** 36 total primitive promotions, Σd=23.32 across 8 transitions. The jump from O₂→O_inf at L8 requires 𐑦 (self-written state), 𐑹 (Frobenius-special parity), 𐑫 (eternal chirality), and 𐑟 (non-Abelian braiding).
+**Structural key:** 36 total primitive promotions, Σd=23.32 across 8 transitions. The jump from O₂→O_∞ at L8 requires 𐑦 (self-written state), 𐑹 (Frobenius-special parity), 𐑫 (eternal chirality), and 𐑟 (non-Abelian braiding).
 
 ## Architecture
 
@@ -191,7 +191,7 @@ TISSUE (L7)          ─→  ORGANISM (L8)
 | Cell→Organism distance | 7.71 |
 | Protein→Organism distance | 10.12 |
 | Mol→Organism distance | 13.22 |
-| Tier progression | O₀→O₀→O₁→O₂→O₂→O₂→O₂→O₂→O_inf |
+| Tier progression | O₀→O₀→O₁→O₂→O₂→O₂→O₂→O₂→O_∞ |
 | Organism C-score | 1.0 (both gates open) |
 
 ## Files

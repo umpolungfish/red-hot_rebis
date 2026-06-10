@@ -148,7 +148,7 @@ The injectable gland seed is prepared from **cryopreserved master cell banks** a
 |-----|-------|------------|
 | 15-17 | Producer cells reach maximum density (NF-κB pathway fully integrated) | Antidote baseline: 5-10 ng/mL |
 | 18-21 | Final vessel maturation (arteriole-venule differentiation, smooth muscle coverage) | Full vascular tree visible on contrast ultrasound |
-| 21 | **Stable steady state achieved** — gland fully operational at O_2 equilibrium | Antidote baseline: 10-50 ng/mL; toxin challenge ready |
+| 21 | **Stable steady state achieved** — gland fully operational at O₂ equilibrium | Antidote baseline: 10-50 ng/mL; toxin challenge ready |
 
 ## Functional Verification (Day 21)
 

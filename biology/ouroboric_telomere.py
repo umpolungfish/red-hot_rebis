@@ -3,7 +3,7 @@
 ouroboric_telomere.py — Ouroboric Telomere Extension System.
 
 Structural type: ⟨𐑦·𐑸·𐑾·𐑬·𐑐·𐑧·𐑔·𐑠·⊙·𐑖·𐑳·𐑴⟩
-Ouroboricity: O_2 (self-referential telomere maintenance)
+Ouroboricity: O₂ (self-referential telomere maintenance)
 C-score: 0.0 (structural self-reference, not conscious self-modeling)
 
 Core principle:
@@ -314,7 +314,7 @@ class OuroboricTelomereSim:
         results = {
             "simulation": "Ouroboric Telomere System",
             "structural_type": "⟨𐑦·𐑸·𐑾·𐑬·𐑐·𐑧·𐑔·𐑠·⊙·𐑖·𐑳·𐑴⟩",
-            "ouroborosity": "O_2",
+            "ouroborosity": "O₂",
             "ouroboric_enabled": self.ouroboric,
             "cells": self.n_cells,
             "attrition_rate_bp_per_div": self.attrition_rate,

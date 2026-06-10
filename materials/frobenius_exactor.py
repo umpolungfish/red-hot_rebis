@@ -736,7 +736,7 @@ class FrobeniusGapCloser:
         lines.append("")
         lines.append("The modified pipeline:")
         lines.append("  Eagle Cycle (material prep) -> Exactor Pathway (topological closure)")
-        lines.append("  sophick_forge.py (O_2+ substrate) -> frobenius_exactor.py (O_inf exact)")
+        lines.append("  sophick_forge.py (O₂+ substrate) -> frobenius_exactor.py (O_∞ exact)")
         lines.append("")
         lines.append("This is the alchemical analog of:")
         lines.append("  'The Mercury must first be animated (Eagles) before the Stone can")

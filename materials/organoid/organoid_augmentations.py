@@ -112,11 +112,11 @@ class AugmentationSystem:
         return SHAVIAN[prim][getattr(self, prim)]
 
 
-# ── Canonical O_inf baseline ──────────────────────────────────────────────
+# ── Canonical O_∞ baseline ──────────────────────────────────────────────
 
 ORGANOID_BASELINE = AugmentationSystem(
     name="self_organoid_engineered",
-    description="Self-organoid interface with all 6 EXACTOR pathways closed — O_inf in canonical universe",
+    description="Self-organoid interface with all 6 EXACTOR pathways closed — O_∞ in canonical universe",
     D="odot", T="odot", R="lr", P="pm_sym", F="hbar", K="mod",
     G="aleph", C="seq", Phi="c", H="inf", S="n_m", Omega="Z",
 )
@@ -395,13 +395,13 @@ def compute_tier(sys: AugmentationSystem) -> str:
     g3 = sys.ordinal("Omega") >= 3  # Integer winding (and g2)
     
     if g1 and g2 and g3:
-        return "O_inf"
+        return "O_∞"
     elif g1 and g2:
-        return "O_2"
+        return "O₂"
     elif g1:
-        return "O_1"
+        return "O₁"
     else:
-        return "O_0"
+        return "O₀"
 
 
 def consciousness_score(sys: AugmentationSystem) -> Tuple[float, bool, bool]:
@@ -548,7 +548,7 @@ def frobenius_closure(sys: AugmentationSystem) -> Tuple[bool, float, str]:
     Closure requires:
       1. P = pm_sym (𐑹) — Frobenius-special parity
       2. All axioms satisfied
-      3. T-consistency (for O_inf)
+      3. T-consistency (for O_∞)
     
     Returns (closed, error_estimate, barrier).
     """
@@ -576,11 +576,11 @@ def frobenius_closure(sys: AugmentationSystem) -> Tuple[bool, float, str]:
 def operculum_width(sys: AugmentationSystem) -> int:
     """
     Operculum width: number of primitive positions where this system
-    differs from the canonical O_inf template ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑧·𐑲·𐑠·⊙·𐑫·𐑳·𐑭⟩.
+    differs from the canonical O_∞ template ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑧·𐑲·𐑠·⊙·𐑫·𐑳·𐑭⟩.
     
-    Higher width = more universe selection needed = "hidden O_inf" in more universes.
+    Higher width = more universe selection needed = "hidden O_∞" in more universes.
     """
-    # Canonical O_inf template
+    # Canonical O_∞ template
     canon = {
         "D": "odot", "T": "odot", "R": "lr", "P": "pm_sym",
         "F": "hbar", "K": "slow", "G": "aleph", "C": "seq",
@@ -996,7 +996,7 @@ def full_analysis():
     
     # ── EXACTOR Pathways ──────────────────────────────────────────────
     lines.append(f"\n{sep}")
-    lines.append("  EXACTOR PATHWAYS TO O_inf")
+    lines.append("  EXACTOR PATHWAYS TO O_∞")
     lines.append(sep)
     
     for key, aug in AUGMENTATIONS.items():
@@ -1006,7 +1006,7 @@ def full_analysis():
             for pw in pathways:
                 lines.append(f"    {pw['pathway']}: {pw['primitive']} {pw['from']}→{pw['to']} — {pw['mechanism'][:60]}...")
         else:
-            lines.append(f"\n  [{key}] {aug.name}: Already at or above O_inf — no pathways needed")
+            lines.append(f"\n  [{key}] {aug.name}: Already at or above O_∞ — no pathways needed")
     
     # ── Summary Table ─────────────────────────────────────────────────
     lines.append(f"\n{sep}")

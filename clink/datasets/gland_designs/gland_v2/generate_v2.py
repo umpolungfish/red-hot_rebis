@@ -7,7 +7,7 @@ Redesign: gland grows inside the body from an injectable precursor.
 No incisions. Single 22G needle puncture. Ultrasound-guided.
 
 Structural type: ⟨𐑼 · 𐑶 · 𐑾 · 𐑬 · 𐑞 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑖 · 𐑳 · 𐑴⟩
-  Ouroboricity: O_2
+  Ouroboricity: O₂
   Kinetics shifted to 𐑧 (slow in-situ assembly, days not minutes)
   Four cell types: sensor + producer + vascular support + EPC
 
@@ -114,7 +114,7 @@ def generate_v2_specification() -> str:
         "version": "2.0.0",
         "design_principle": "Zero-incision in-situ assembly via percutaneous injection",
         "structural_type": "⟨𐑼 · 𐑶 · 𐑾 · 𐑬 · 𐑞 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑖 · 𐑳 · 𐑴⟩",
-        "ouroboricity_tier": "O_2",
+        "ouroboricity_tier": "O₂",
         "consciousness_score": 0.45,
         "delivery_method": {
             "type": "ultrasound_guided_percutaneous_injection",
@@ -210,7 +210,7 @@ def generate_manifest_v2() -> str:
         "design_principle": "zero_incision_in_situ_assembly",
         "delivery": "ultrasound_guided_percutaneous_injection",
         "structural_type": "⟨𐑼 · 𐑶 · 𐑾 · 𐑬 · 𐑞 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑖 · 𐑳 · 𐑴⟩",
-        "tier": "O_2",
+        "tier": "O₂",
         "cell_types": 4,
         "sensors": 5,
         "antidote_arms": 6,

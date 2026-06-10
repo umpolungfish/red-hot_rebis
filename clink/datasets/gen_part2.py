@@ -13,7 +13,7 @@ w('''
 class Layer0DatasetGenerator(DatasetGenerator):
     layer_idx = 0; layer_name = "Frustrated Belnap5 (Quarks)"
     def generate(self, d=None):
-        o = DatasetOutput(layer_idx=0, layer_name=self.layer_name, layer_tier="O_0", structural_tuple=dict(self.tup))
+        o = DatasetOutput(layer_idx=0, layer_name=self.layer_name, layer_tier="O₀", structural_tuple=dict(self.tup))
         o.files.append(DatasetFile(filename="qcd_coupling_alpha_s.csv", extension=".csv",
             content=self._alphas(), description="Running QCD coupling constant", format_name="CSV"))
         o.files.append(DatasetFile(filename="qcd_lattice_params.xml", extension=".xml",
@@ -33,7 +33,7 @@ w('''
 class Layer1DatasetGenerator(DatasetGenerator):
     layer_idx = 1; layer_name = "Electron Orbital (Belnap4)"
     def generate(self, d=None):
-        o = DatasetOutput(layer_idx=1, layer_name=self.layer_name, layer_tier="O_0", structural_tuple=dict(self.tup))
+        o = DatasetOutput(layer_idx=1, layer_name=self.layer_name, layer_tier="O₀", structural_tuple=dict(self.tup))
         o.files.append(DatasetFile(filename="electron_configs.csv", extension=".csv",
             content=self._cfgs(), description="Electron configurations", format_name="CSV"))
         o.files.append(DatasetFile(filename="b4_map.json", extension=".json",
@@ -50,7 +50,7 @@ w('''
 class Layer2DatasetGenerator(DatasetGenerator):
     layer_idx = 2; layer_name = "Atom (Nuclear + Electron)"
     def generate(self, d=None):
-        o = DatasetOutput(layer_idx=2, layer_name=self.layer_name, layer_tier="O_1", structural_tuple=dict(self.tup))
+        o = DatasetOutput(layer_idx=2, layer_name=self.layer_name, layer_tier="O₁", structural_tuple=dict(self.tup))
         o.files.append(DatasetFile(filename="atomic_params.csv", extension=".csv",
             content="Z,symbol,mass_amu,radius_pm,ionization_eV\\n6,C,12.011,76,11.260\\n7,N,14.007,75,14.534\\n8,O,15.999,73,13.618\\n15,P,30.974,107,10.487\\n26,Fe,55.845,132,7.902",
             description="Atomic parameters table", format_name="CSV"))
@@ -65,7 +65,7 @@ w('''
 class Layer3DatasetGenerator(DatasetGenerator):
     layer_idx = 3; layer_name = "Molecule (Chemical Bonds)"
     def generate(self, d=None):
-        o = DatasetOutput(layer_idx=3, layer_name=self.layer_name, layer_tier="O_2", structural_tuple=dict(self.tup))
+        o = DatasetOutput(layer_idx=3, layer_name=self.layer_name, layer_tier="O₂", structural_tuple=dict(self.tup))
         # Try ch3mpiler bridge
         try:
             sys.path.insert(0, str(REBIS_ROOT / "ch3mpiler"))
@@ -120,7 +120,7 @@ w('''
 class Layer4DatasetGenerator(DatasetGenerator):
     layer_idx = 4; layer_name = "Folded Protein"
     def generate(self, d=None):
-        o = DatasetOutput(layer_idx=4, layer_name=self.layer_name, layer_tier="O_2", structural_tuple=dict(self.tup))
+        o = DatasetOutput(layer_idx=4, layer_name=self.layer_name, layer_tier="O₂", structural_tuple=dict(self.tup))
         seq = (d or {}).get("sequence", "MLSDCGP") or "MLSDCGP"
         fn = (d or {}).get("target_function", "structural") or "structural"
         o.notes.append(f"Protein {seq} ({fn})")

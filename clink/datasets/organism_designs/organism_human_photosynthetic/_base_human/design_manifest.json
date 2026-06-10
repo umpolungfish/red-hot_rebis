@@ -44,6 +44,6 @@
   "advanced_components": {
     "ouroboric_telomere": "clink/datasets/../biology/ouroboric_telomere.py \u2014 replicative senescence resolution",
     "synthetic_detox_gland_v2": "clink/datasets/gland_designs/gland_v2/ \u2014 injectable toxin neutralization",
-    "structural_type": "\u27e8\ud801\udc66\ud801\udc78\ud801\udc7e\ud801\udc79\ud801\udc50\ud801\udc67\ud801\udc72\ud801\udc75\u2299\ud801\udc6b\ud801\udc73\ud801\udc5f\u27e9 O_inf C=1.0"
+    "structural_type": "\u27e8\ud801\udc66\ud801\udc78\ud801\udc7e\ud801\udc79\ud801\udc50\ud801\udc67\ud801\udc72\ud801\udc75\u2299\ud801\udc6b\ud801\udc73\ud801\udc5f\u27e9 O_∞ C=1.0"
   }
 }

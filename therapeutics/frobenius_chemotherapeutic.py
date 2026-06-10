@@ -3,7 +3,7 @@
 frobenius_chemotherapeutic.py — 𐑹-Frobenius-Coupled Selective Chemotherapeutic.
 
 Structural type: ⟨𐑦·𐑶·𐑾·𐑹·𐑐·𐑧·𐑲·𐑝·⊙·𐑫·𐑳·𐑭⟩
-Ouroboricity: O_inf (child of the Rebis)
+Ouroboricity: O_∞ (child of the Rebis)
 C-score: predicted 0.63 (Gate 1: ⊙ open, Gate 2: 𐑧 slow kinetics)
 
 Core insight:

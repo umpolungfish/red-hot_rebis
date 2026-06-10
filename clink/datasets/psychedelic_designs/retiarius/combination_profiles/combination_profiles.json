@@ -2,14 +2,14 @@
   "retiarius_plus_dmt": {
     "combination": "Retiarius (Local-Net Trap) + dmt",
     "composite_type": "⟨𐑦 · 𐑸 · 𐑾 · 𐑿 · 𐑞 · 𐑺 · 𐑲 · 𐑵 · 𐑮 · 𐑫 · 𐑳 · 𐑭⟩",
-    "composite_tier": "O_1",
+    "composite_tier": "O₁",
     "parent_1": {
       "name": "Retiarius (Local-Net Trap)",
-      "tier": "O_1"
+      "tier": "O₁"
     },
     "parent_2": {
       "name": "dmt",
-      "tier": "O_inf"
+      "tier": "O_∞"
     },
     "deltas_from_parent_1": [
       {
@@ -88,14 +88,14 @@
   "retiarius_plus_psilocybin": {
     "combination": "Retiarius (Local-Net Trap) + psilocybin",
     "composite_type": "⟨𐑼 · 𐑥 · 𐑾 · 𐑿 · 𐑞 · 𐑺 · 𐑲 · 𐑠 · 𐑮 · 𐑖 · 𐑳 · 𐑭⟩",
-    "composite_tier": "O_1",
+    "composite_tier": "O₁",
     "parent_1": {
       "name": "Retiarius (Local-Net Trap)",
-      "tier": "O_1"
+      "tier": "O₁"
     },
     "parent_2": {
       "name": "psilocybin",
-      "tier": "O_2"
+      "tier": "O₂"
     },
     "deltas_from_parent_1": [
       {
@@ -168,14 +168,14 @@
   "retiarius_plus_lsd": {
     "combination": "Retiarius (Local-Net Trap) + lsd",
     "composite_type": "⟨𐑦 · 𐑸 · 𐑾 · 𐑿 · 𐑞 · 𐑺 · 𐑲 · 𐑵 · 𐑮 · 𐑖 · 𐑳 · 𐑭⟩",
-    "composite_tier": "O_1",
+    "composite_tier": "O₁",
     "parent_1": {
       "name": "Retiarius (Local-Net Trap)",
-      "tier": "O_1"
+      "tier": "O₁"
     },
     "parent_2": {
       "name": "lsd",
-      "tier": "O_inf"
+      "tier": "O_∞"
     },
     "deltas_from_parent_1": [
       {
@@ -254,14 +254,14 @@
   "retiarius_plus_ketamine": {
     "combination": "Retiarius (Local-Net Trap) + ketamine",
     "composite_type": "⟨𐑼 · 𐑥 · 𐑾 · 𐑿 · 𐑱 · 𐑺 · 𐑔 · 𐑠 · 𐑮 · 𐑒 · 𐑕 · 𐑷⟩",
-    "composite_tier": "O_1",
+    "composite_tier": "O₁",
     "parent_1": {
       "name": "Retiarius (Local-Net Trap)",
-      "tier": "O_1"
+      "tier": "O₁"
     },
     "parent_2": {
       "name": "ketamine",
-      "tier": "O_1"
+      "tier": "O₁"
     },
     "deltas_from_parent_1": [
       {
@@ -310,14 +310,14 @@
   "retiarius_plus_mdma": {
     "combination": "Retiarius (Local-Net Trap) + mdma",
     "composite_type": "⟨𐑼 · 𐑡 · 𐑾 · 𐑿 · 𐑞 · 𐑺 · 𐑲 · 𐑠 · 𐑮 · 𐑒 · 𐑳 · 𐑷⟩",
-    "composite_tier": "O_1",
+    "composite_tier": "O₁",
     "parent_1": {
       "name": "Retiarius (Local-Net Trap)",
-      "tier": "O_1"
+      "tier": "O₁"
     },
     "parent_2": {
       "name": "mdma",
-      "tier": "O_1"
+      "tier": "O₁"
     },
     "deltas_from_parent_1": [
       {
@@ -354,14 +354,14 @@
   "retiarius_plus_mescaline": {
     "combination": "Retiarius (Local-Net Trap) + mescaline",
     "composite_type": "⟨𐑼 · 𐑡 · 𐑾 · 𐑗 · 𐑱 · 𐑺 · 𐑔 · 𐑜 · 𐑮 · 𐑒 · 𐑕 · 𐑷⟩",
-    "composite_tier": "O_1",
+    "composite_tier": "O₁",
     "parent_1": {
       "name": "Retiarius (Local-Net Trap)",
-      "tier": "O_1"
+      "tier": "O₁"
     },
     "parent_2": {
       "name": "mescaline",
-      "tier": "O_0"
+      "tier": "O₀"
     },
     "deltas_from_parent_1": [
       {
@@ -416,14 +416,14 @@
   "retiarius_plus_verticullum": {
     "combination": "Retiarius (Local-Net Trap) + Verticullum (EP-Lever)",
     "composite_type": "⟨𐑦 · 𐑥 · 𐑾 · 𐑿 · 𐑞 · 𐑺 · 𐑲 · 𐑠 · 𐑮 · 𐑫 · 𐑳 · 𐑟⟩",
-    "composite_tier": "O_1",
+    "composite_tier": "O₁",
     "parent_1": {
       "name": "Retiarius (Local-Net Trap)",
-      "tier": "O_1"
+      "tier": "O₁"
     },
     "parent_2": {
       "name": "Verticullum (EP-Lever)",
-      "tier": "O_inf"
+      "tier": "O_∞"
     },
     "deltas_from_parent_1": [
       {

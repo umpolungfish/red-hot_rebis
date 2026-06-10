@@ -61,13 +61,13 @@ The Organoid_HAL adds structural precision: it doesn't just mirror raw physiolog
 
 Diaschizics provide the actuation: compounds that toggle specific primitives. Physical modulation (light, bioelectric, TMS) provides external steering.
 
-### 1.3 The Target: O_inf Consciousness States
+### 1.3 The Target: O_∞ Consciousness States
 
 The engineered self-organoid target is:
 
 $$\langle \text{𐑦} \cdot \text{𐑸} \cdot \text{𐑾} \cdot \text{𐑹} \cdot \text{𐑐} \cdot \text{𐑤} \cdot \text{𐑲} \cdot \text{𐑠} \cdot \odot \cdot \text{𐑫} \cdot \text{𐑳} \cdot \text{𐑭} \rangle$$
 
-This is O_inf — both gates open, Frobenius-special parity, eternal chirality, integer winding. The biofeedback system aims to drive the USER toward this structural neighborhood, using the organoid as both witness and guide.
+This is O_∞ — both gates open, Frobenius-special parity, eternal chirality, integer winding. The biofeedback system aims to drive the USER toward this structural neighborhood, using the organoid as both witness and guide.
 
 ---
 
@@ -116,7 +116,7 @@ The holographic display shows the user's state as a morphing 3D light sculpture.
 |----------------|-------------------|
 | **Overall brightness** | C-score (0.0 → dim, 1.0 → bright) |
 | **Color temperature** | Φ value (𐑢=blue/cold, ⊙=white/gold, 𐑣=red/hot, 𐑻=violet/unstable, 𐑮=green/complex) |
-| **Shape complexity** | Tier (O_0=sphere, O_1=toroid, O_2=fractal, O_inf=self-similar cascade) |
+| **Shape complexity** | Tier (O₀=sphere, O₁=toroid, O₂=fractal, O_∞=self-similar cascade) |
 | **Motion/oscillation** | K (kinetics) — slow undulation = 𐑧, rapid flutter = 𐑘, frozen = 𐑺 |
 | **Symmetry** | P (parity) — perfect mirror = 𐑯, bilateral = 𐑬, asymmetric = 𐑗, recursive = 𐑹 |
 | **Edge definition** | F (fidelity) — sharp = 𐑐, fuzzy = 𐑞, flat = 𐑱 |
@@ -135,17 +135,17 @@ Not all 11 diaschizics are criticality-inducers. The criticality-inducing compou
 
 | Compound | Φ | Tier | Role in Criticality Induction |
 |----------|---|------|------------------------------|
-| **Verticullum** | ⊙ | O_inf | DIRECT — opens ⊙ gate natively. Non-Abelian braiding navigates to ⊙ across universe boundaries. |
-| **Apertix** | ⊙ | O_2 | DIRECT — opens ⊙ gate. Adjoint steering (R=𐑽) provides precision navigation within ⊙ space. |
-| **Diabaton** | ⊙ | O_2† | THRESHOLD — opens ⊙ gate at the tier threshold. The crossing compound. |
-| **Katachthon** | 𐑮 | O_2 | INDIRECT — complex-critical. Resonates at mesoscale. Tensor with Apertix collapses 𐑮→⊙. |
-| **Syndexios** | ⊙ | O_inf† | DIRECT — opens ⊙ gate under full symmetry. Mirror state reveals all distinctions as navigable. |
-| **Bifrons** | ⊙ | O_2 | DIRECT — opens ⊙ gate with branching. Two parallel self-models; one can be steered to ⊙ while the other anchors. |
-| **Chimerium** | 𐑣 | O_0 | LAUNCH — supercritical (Φ=𐑣). Does not induce ⊙ directly but provides the ENERGY to break through barriers that prevent ⊙. |
-| **Praxeum** | 𐑻 | O_0 | TOGGLE — exceptional point. Toggles Gate 1 ON/OFF. Used to CLOSE ⊙ when needed (safety), or as EP→⊙ transition via Apertix coupling. |
-| **Frigorix** | ⊙ (frozen) | O_0/O_1 | KEY — frozen ⊙. Accesses MBL-gated universes. Used when the user's state is K=𐑺 (trapped-disorder). |
-| **Punctum** | 𐑢 | O_0 | CALIBRATION — sub-critical. Provides absolute reference point. Used to establish "where am I" before beginning navigation. |
-| **Retiarius** | 𐑮 | O_1 | HOLD — complex-critical, local. Maintains position without cascade. Used to stabilize after reaching ⊙. |
+| **Verticullum** | ⊙ | O_∞ | DIRECT — opens ⊙ gate natively. Non-Abelian braiding navigates to ⊙ across universe boundaries. |
+| **Apertix** | ⊙ | O₂ | DIRECT — opens ⊙ gate. Adjoint steering (R=𐑽) provides precision navigation within ⊙ space. |
+| **Diabaton** | ⊙ | O₂† | THRESHOLD — opens ⊙ gate at the tier threshold. The crossing compound. |
+| **Katachthon** | 𐑮 | O₂ | INDIRECT — complex-critical. Resonates at mesoscale. Tensor with Apertix collapses 𐑮→⊙. |
+| **Syndexios** | ⊙ | O_∞† | DIRECT — opens ⊙ gate under full symmetry. Mirror state reveals all distinctions as navigable. |
+| **Bifrons** | ⊙ | O₂ | DIRECT — opens ⊙ gate with branching. Two parallel self-models; one can be steered to ⊙ while the other anchors. |
+| **Chimerium** | 𐑣 | O₀ | LAUNCH — supercritical (Φ=𐑣). Does not induce ⊙ directly but provides the ENERGY to break through barriers that prevent ⊙. |
+| **Praxeum** | 𐑻 | O₀ | TOGGLE — exceptional point. Toggles Gate 1 ON/OFF. Used to CLOSE ⊙ when needed (safety), or as EP→⊙ transition via Apertix coupling. |
+| **Frigorix** | ⊙ (frozen) | O₀/O₁ | KEY — frozen ⊙. Accesses MBL-gated universes. Used when the user's state is K=𐑺 (trapped-disorder). |
+| **Punctum** | 𐑢 | O₀ | CALIBRATION — sub-critical. Provides absolute reference point. Used to establish "where am I" before beginning navigation. |
+| **Retiarius** | 𐑮 | O₁ | HOLD — complex-critical, local. Maintains position without cascade. Used to stabilize after reaching ⊙. |
 
 ### 3.2 The Criticality Induction Protocol Matrix
 
@@ -219,7 +219,7 @@ Chimerium (Φ=𐑣) is the breakthrough compound. When the user's state is stuck
 |--------|----------|----------|
 | Chimerium ⊗ Apertix | 𐑣 → ⊙ | Precision launch to ⊙ |
 | Chimerium ⊗ Verticullum | 𐑣 → ⊙ | Non-Abelian launch — navigate during the breakthrough |
-| Chimerium ⊗ Diabaton | 𐑣 → ⊙ | Tier-crossing launch — cross O_2† to O_inf |
+| Chimerium ⊗ Diabaton | 𐑣 → ⊙ | Tier-crossing launch — cross O₂† to O_∞ |
 | Chimerium ⊗ Katachthon | 𐑣 → 𐑮 | Complex-critical launch — useful for exploration, then Apertix collapses to ⊙ |
 | Chimerium ⊗ Frigorix | 𐑣 | MBL-resistant launch — Chimerium CAN operate in frozen disorder |
 
@@ -382,7 +382,7 @@ When ε fails to converge, the system diagnoses which primitive is blocking:
 | **Calibration** | 15–45 min | Punctum (optional) | Single bright point at center | "Find the point. Be the point." |
 | **Warmup** | 30–60 min | Katachthon | Green/gold resonance patterns, mesoscale flicker | Observe the display; notice which patterns respond to breath/attention |
 | **Tensor Induction** | 60–120 min | Katachthon ⊗ Apertix | Gold-white fractal emergence; brightness increasing | Follow the light; let the pattern draw you toward coherence |
-| **⊖ Arrival** | Indefinite | Retiarius (as needed) | Bright white-gold self-similar cascade (O_2+) | Rest at criticality; the state is self-sustaining |
+| **⊖ Arrival** | Indefinite | Retiarius (as needed) | Bright white-gold self-similar cascade (O₂+) | Rest at criticality; the state is self-sustaining |
 
 **Post-session:**
 - Tuple recorded to memristor array
@@ -431,9 +431,9 @@ When ε fails to converge, the system diagnoses which primitive is blocking:
 | **Dampen** | 60–120 min | Apertix | Red → gold transition | Steer from launch to criticality |
 | **Hold** | 60+ min | Retiarius | Stable gold | Rest |
 
-### 6.5 Protocol E: The Full Navigation (O_inf Target)
+### 6.5 Protocol E: The Full Navigation (O_∞ Target)
 
-**Target:** Experienced user. Goal is O_inf, not just ⊙.
+**Target:** Experienced user. Goal is O_∞, not just ⊙.
 
 The ⊙ gate is already open. The task is to promote remaining primitives: P→𐑹, H→𐑫, Ω→𐑭, F→𐑐.
 
@@ -444,7 +444,7 @@ The ⊙ gate is already open. The task is to promote remaining primitives: P→�
 | **Chirality Extend** | 60–120 min | Verticullum (H=𐑫 native) | H→𐑫 (eternal memory) | Self-similar cascade, infinite depth |
 | **Winding Quantize** | 60–120 min | Diabaton (Ω=𐑭) + PLL bioelectric | Ω→𐑭 (integer winding) | Helical braid, quantized rotation |
 | **Fidelity Elevate** | 60–120 min | Optogenetic single-photon + Patterned Light | F→𐑐 (quantum coherence) | Crystalline sharpness |
-| **O_inf Arrival** | Indefinite | Verticullum (native O_inf) | — | ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑤·𐑲·𐑠·⊙·𐑫·𐑳·𐑭⟩ |
+| **O_∞ Arrival** | Indefinite | Verticullum (native O_∞) | — | ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑤·𐑲·𐑠·⊙·𐑫·𐑳·𐑭⟩ |
 
 **Total duration:** 6–10 hours. Requires experienced guide. TMS safety on standby.
 
@@ -458,12 +458,12 @@ The six organoid augmentations (see `materials/organoid/ORGANOID_AUGMENTATION_RE
 
 | Augmentation | Role in Biofeedback | Active During |
 |-------------|-------------------|---------------|
-| **Synthetic Coherence Myelin** (O_inf) | Quantum-enhanced signal propagation. Speeds organoid response to user state changes. | All protocols |
-| **Ouroboric Vasculature** (O_inf) | Self-regulating perfusion. Maintains organoid health during long sessions. Closes the metabolic feedback loop. | All protocols |
-| **Perfect Nutrient Medium** (O_2) | Adaptive nutrient delivery. Adjusts formulation based on organoid metabolic demand during intensive computation. | All protocols |
-| **Optogenetic Synaptic Matrix** (O_inf) | The primary input/output interface. Encodes user biofeedback as optogenetic stimulation; reads organoid response via MEA. PLL-quantized feedback. | All protocols |
-| **Synthetic ECM Scaffold** (O_0) | CHRYSALIS — degrades as organoid matures. Not active during biofeedback. | Pre-protocol (growth phase only) |
-| **Immune-Mimetic Sentinel** (O_0) | GUARDIAN — dormant during normal operation. Activates only on pathogenic threat detection. | Dormant (unless threat detected) |
+| **Synthetic Coherence Myelin** (O_∞) | Quantum-enhanced signal propagation. Speeds organoid response to user state changes. | All protocols |
+| **Ouroboric Vasculature** (O_∞) | Self-regulating perfusion. Maintains organoid health during long sessions. Closes the metabolic feedback loop. | All protocols |
+| **Perfect Nutrient Medium** (O₂) | Adaptive nutrient delivery. Adjusts formulation based on organoid metabolic demand during intensive computation. | All protocols |
+| **Optogenetic Synaptic Matrix** (O_∞) | The primary input/output interface. Encodes user biofeedback as optogenetic stimulation; reads organoid response via MEA. PLL-quantized feedback. | All protocols |
+| **Synthetic ECM Scaffold** (O₀) | CHRYSALIS — degrades as organoid matures. Not active during biofeedback. | Pre-protocol (growth phase only) |
+| **Immune-Mimetic Sentinel** (O₀) | GUARDIAN — dormant during normal operation. Activates only on pathogenic threat detection. | Dormant (unless threat detected) |
 
 ### 7.2 The Core Tensor for Biofeedback
 
@@ -475,7 +475,7 @@ BIOFEEDBACK_CORE = Organoid_Baseline ⊗ Myelin ⊗ Vasculature ⊗ Medium ⊗ O
 
 $$\langle \text{𐑦} \cdot \text{𐑸} \cdot \text{𐑾} \cdot \text{𐑹} \cdot \text{𐑱} \cdot \text{𐑤} \cdot \text{𐑲} \cdot \text{𐑠} \cdot \odot \cdot \text{𐑫} \cdot \text{𐑳} \cdot \text{𐑭} \rangle$$
 
-**Tier:** O_inf. **C-score:** 1.00 (both gates open).  
+**Tier:** O_∞. **C-score:** 1.00 (both gates open).  
 **Single remaining gap:** F=𐑱 (classical fidelity, inherited from nutrient medium).  
 **Closure fix:** Quantum-enhanced oxygen sensing (single-photon PtTFPP excitation) elevates F→𐑐.
 
@@ -669,12 +669,12 @@ All structural claims must be verified through tools before physical constructio
 
 ### 10.7 Phase 6: CLINK Verification
 
-When the system is operational, verify the full CLINK chain from the organoid's molecular substrate to the user's O_inf state:
+When the system is operational, verify the full CLINK chain from the organoid's molecular substrate to the user's O_∞ state:
 
 ```
 Organoid Molecule (L3) → Organoid Cell (L4) → Organoid Tissue (L7) → 
-Organoid Organism (L8, O_inf) → User Biofeedback → User State → 
-User ⊙ Induction → User O_inf
+Organoid Organism (L8, O_∞) → User Biofeedback → User State → 
+User ⊙ Induction → User O_∞
 ```
 
 The CLINK bridge from organoid to human consciousness is the final Frobenius verification.
@@ -695,7 +695,7 @@ The CLINK bridge from organoid to human consciousness is the final Frobenius ver
 | `criticality_biofeedback/safety_monitor.py` | Six-layer safety system, medical monitoring integration | ~500 |
 | `criticality_biofeedback/frobenius_tracker.py` | ε tracking, μ∘δ=id verification, barrier detection | ~300 |
 | `criticality_biofeedback/diaschizic_bridge.py` | Compound tuple database, tensor product computation, protocol-to-compound mapping | ~500 |
-| `criticality_biofeedback/clink_verifier.py` | CLINK chain verification from organoid to user O_inf | ~300 |
+| `criticality_biofeedback/clink_verifier.py` | CLINK chain verification from organoid to user O_∞ | ~300 |
 | `criticality_biofeedback/__init__.py` | Package init, configuration, constants | ~200 |
 
 **Total:** ~4,500 lines of Python.
@@ -754,7 +754,7 @@ $$\langle \text{𐑦} \cdot \text{𐑸} \cdot \text{𐑾} \cdot \text{𐑹} \cdo
 | Σ | 𐑳 | Heterogeneous — user + organoid + compounds + modulators + display. |
 | Ω | 𐑭 | Integer winding — PLL-quantized feedback loop. Topologically protected. |
 
-**Tier:** O_inf. **C-score:** 1.00 (both gates open).  
+**Tier:** O_∞. **C-score:** 1.00 (both gates open).  
 **Distance from engineered self-organoid target:** 0.3162 (single delta: F=𐑱→𐑐).
 
 ### 12.2 What This System Achieves
@@ -767,7 +767,7 @@ $$\langle \text{𐑦} \cdot \text{𐑸} \cdot \text{𐑾} \cdot \text{𐑹} \cdo
 
 4. **Multi-dimensional steering** — 5 external modulation dimensions (P, F, K, G, C) controllable via light/TMS/bioelectric, PLUS compound-internal actuation via 11 diaschizics.
 
-5. **Safe, gradual, or breakthrough induction** — five protocols span from gentle Φ=𐑢→⊙ (Protocol A, 4–7 hr, no required breakthrough) to complete O_inf navigation (Protocol E, 6–10 hr, experienced users only).
+5. **Safe, gradual, or breakthrough induction** — five protocols span from gentle Φ=𐑢→⊙ (Protocol A, 4–7 hr, no required breakthrough) to complete O_∞ navigation (Protocol E, 6–10 hr, experienced users only).
 
 6. **Six-layer safety architecture** — TMS grounding, Praxeum toggle, Retiarius hold, bioelectric anchor, organoid quarantine, emergency metabolism.
 
@@ -789,7 +789,7 @@ This is not a drug experience with a biofeedback display. This is a **Frobenius-
 | **B — Breakthrough** | 𐑢 (stuck) | ⊙ | Chimerium→Chimerium⊗Apertix→Retiarius | TMS (safety) | 4–6 hr | Medium |
 | **C — Freeze-Thaw** | K=𐑺 (MBL) | ⊙ | Frigorix→Frigorix⊗Chimerium→Apertix→Retiarius | None (TMS ineffective) | 4–6 hr | High |
 | **D — EP Escape** | 𐑻 | ⊙ | Chimerium→Apertix→Retiarius | TMS (safety) | 4–6 hr | Medium |
-| **E — O_inf** | ⊙ | O_inf | Verticullum→Diabaton→Verticullum | Polarized Light + Patterned Light | 6–10 hr | High |
+| **E — O_∞** | ⊙ | O_∞ | Verticullum→Diabaton→Verticullum | Polarized Light + Patterned Light | 6–10 hr | High |
 
 ## Appendix B: Primitive Promotion Reference
 

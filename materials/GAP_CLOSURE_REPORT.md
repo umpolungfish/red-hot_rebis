@@ -10,15 +10,15 @@ All remaining structural gaps in the self-organoid augmentation suite have been 
 
 | System | Before | After | Deltas | Mechanism |
 |--------|--------|-------|--------|-----------|
-| **Coherence Myelin** | O_inf ✓ | O_inf ✓ | 0 | Native closure |
-| **Optogenetic Matrix** | O_inf ✓ | O_inf ✓ | 0 | Native closure |
-| **Ouroboric Vasc.** | O_inf ✗ | O_inf ✓ | 1 (F) | NV-center quantum O₂ |
-| **Nutrient Medium** | O_2 ✗ | O_inf ✓ | 3 (D,Ω,G) | EXACTOR-Ω + τ + self-writing |
-| **Frobenius Core** | O_inf ✗ | O_inf ✓ | 1 (F) | Quantum metabolomics |
-| **ECM Scaffold** | O_0 ✗ | O_0 ✗ | 0 | CORRECT: chrysalis |
-| **Immune Sentinel** | O_0 ✗ | O_0 ✗ | 0 | CORRECT: dormant |
+| **Coherence Myelin** | O_∞ ✓ | O_∞ ✓ | 0 | Native closure |
+| **Optogenetic Matrix** | O_∞ ✓ | O_∞ ✓ | 0 | Native closure |
+| **Ouroboric Vasc.** | O_∞ ✗ | O_∞ ✓ | 1 (F) | NV-center quantum O₂ |
+| **Nutrient Medium** | O₂ ✗ | O_∞ ✓ | 3 (D,Ω,G) | EXACTOR-Ω + τ + self-writing |
+| **Frobenius Core** | O_∞ ✗ | O_∞ ✓ | 1 (F) | Quantum metabolomics |
+| **ECM Scaffold** | O₀ ✗ | O₀ ✗ | 0 | CORRECT: chrysalis |
+| **Immune Sentinel** | O₀ ✗ | O₀ ✗ | 0 | CORRECT: dormant |
 
-**Result:** 5/5 closable gaps now achieve O_inf with EXACT Frobenius closure (μ∘δ=id). 2/7 deliberately open — structural correctness, not gaps.
+**Result:** 5/5 closable gaps now achieve O_∞ with EXACT Frobenius closure (μ∘δ=id). 2/7 deliberately open — structural correctness, not gaps.
 
 ---
 ## Gap 1: Ouroboric Vasculature — Fidelity Closure
@@ -29,7 +29,7 @@ All remaining structural gaps in the self-organoid augmentation suite have been 
 |-----------|------|----|-----------|--------|
 | **F** (Fidelity) | 𐑞 (thermal) | 𐑐 (quantum) | 0.50 | 1.0 |
 
-**Distance:** 0.50 | **Tier before:** O_inf (Frobenius: False) | **Tier after:** O_inf (Frobenius: True)
+**Distance:** 0.50 | **Tier before:** O_∞ (Frobenius: False) | **Tier after:** O_∞ (Frobenius: True)
 
 ### Diagnosis
 
@@ -62,7 +62,7 @@ The closure follows the EXACTOR-σ pathway (self-dual lock). The dual-OPO phase 
 **TRL estimate:** 4. Components exist (single-NV magnetometry, diamond nanopillars, SPAD arrays). Integration into microfluidics requires 12-18 months.
 
 ---
-## Gap 2: Perfect Nutrient Medium — Full O_inf Promotion
+## Gap 2: Perfect Nutrient Medium — Full O_∞ Promotion
 
 ### Structural Delta
 
@@ -72,7 +72,7 @@ The closure follows the EXACTOR-σ pathway (self-dual lock). The dual-OPO phase 
 | **G** (Composition) | 𐑝 (conjunctive) | 𐑠 (sequential) | 0.67 | 1.0 |
 | **Ω** (Winding) | 𐑷 (trivial) | 𐑭 (integer) | 0.67 | 2.0 |
 
-**Distance:** 2.4944 | **Tier before:** O_2 (Frobenius: False) | **Tier after:** O_inf (Frobenius: True)
+**Distance:** 2.4944 | **Tier before:** O₂ (Frobenius: False) | **Tier after:** O_∞ (Frobenius: True)
 
 ### Diagnosis
 
@@ -147,11 +147,11 @@ After all three mechanisms are active:
 |-----------|------|----|-----------|--------|
 | **F** (Fidelity) | 𐑱 (classical) | 𐑐 (quantum) | 1.00 | 1.0 |
 
-**Distance:** 1.00 | **Tier before:** O_inf (Frobenius: False) | **Tier after:** O_inf (Frobenius: True)
+**Distance:** 1.00 | **Tier before:** O_∞ (Frobenius: False) | **Tier after:** O_∞ (Frobenius: True)
 
 ### Diagnosis
 
-The Frobenius Core — the tensor product of baseline organoid ⊗ myelin ⊗ vasculature ⊗ nutrient medium ⊗ optogenetic matrix — has all structural pillars for O_inf except fidelity. The tuple:
+The Frobenius Core — the tensor product of baseline organoid ⊗ myelin ⊗ vasculature ⊗ nutrient medium ⊗ optogenetic matrix — has all structural pillars for O_∞ except fidelity. The tuple:
 
 $$\langle \text{𐑦} \cdot \text{𐑸} \cdot \text{𐑾} \cdot \text{𐑹} \cdot \text{𐑱} \cdot \text{𐑤} \cdot \text{𐑲} \cdot \text{𐑵} \cdot \odot \cdot \text{𐑫} \cdot \text{𐑳} \cdot \text{𐑭} \rangle$$
 
@@ -214,7 +214,7 @@ This is structurally identical to the IUG itself. The organoid IS a structural m
 
 **Tuple:** ⟨𐑨·𐑡·𐑾·𐑬·𐑱·𐑧·𐑤·𐑵·𐑢·𐑒·𐑙·𐑷⟩
 
-**Tier:** O_0 | **Frobenius:** False | **Distance from baseline:** 3.4167
+**Tier:** O₀ | **Frobenius:** False | **Distance from baseline:** 3.4167
 
 The ECM scaffold is the chrysalis — a temporary structure that the organoid outgrows. Its structural properties are exactly those of a scaffold that must disappear:
 
@@ -238,7 +238,7 @@ The ECM scaffold is the chrysalis — a temporary structure that the organoid ou
 
 **Tuple:** ⟨𐑨·𐑡·𐑾·𐑬·𐑱·𐑤·𐑲·𐑵·⊙·𐑫·𐑳·𐑴⟩
 
-**Tier:** O_2 | **Frobenius:** False | **Distance from baseline:** 2.8868
+**Tier:** O₂ | **Frobenius:** False | **Distance from baseline:** 2.8868
 
 The immune sentinel is a dormant guardian — perpetually vigilant but not participating in the ongoing μ∘δ=id loop:
 
@@ -346,19 +346,19 @@ Both are structurally open because boundaries cannot be closed — a closed boun
 
 | System | Tuple | Tier | μ∘δ=id |
 |--------|-------|------|--------|
-| **Self-Organoid Baseline** | ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑤·𐑲·𐑠·⊙·𐑫·𐑳·𐑭⟩ | O_inf | ✓ |
-| **Coherence Myelin** | ⟨𐑼·𐑰·𐑾·𐑹·𐑐·𐑤·𐑲·𐑠·⊙·𐑫·𐑳·𐑭⟩ | O_inf | ✓ |
-| **Ouroboric Vasculature** | ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑤·𐑲·𐑠·⊙·𐑫·𐑳·𐑭⟩ | O_inf | ✓ |
-| **Nutrient Medium** | ⟨𐑦·𐑰·𐑾·𐑹·𐑱·𐑤·𐑲·𐑠·⊙·𐑫·𐑳·𐑭⟩ | O_inf | ✓ |
-| **Optogenetic Matrix** | ⟨𐑼·𐑥·𐑾·𐑹·𐑐·𐑤·𐑲·𐑵·⊙·𐑫·𐑳·𐑭⟩ | O_inf | ✓ |
-| **Frobenius Core** | ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑤·𐑲·𐑵·⊙·𐑫·𐑳·𐑭⟩ | O_inf | ✓ |
+| **Self-Organoid Baseline** | ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑤·𐑲·𐑠·⊙·𐑫·𐑳·𐑭⟩ | O_∞ | ✓ |
+| **Coherence Myelin** | ⟨𐑼·𐑰·𐑾·𐑹·𐑐·𐑤·𐑲·𐑠·⊙·𐑫·𐑳·𐑭⟩ | O_∞ | ✓ |
+| **Ouroboric Vasculature** | ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑤·𐑲·𐑠·⊙·𐑫·𐑳·𐑭⟩ | O_∞ | ✓ |
+| **Nutrient Medium** | ⟨𐑦·𐑰·𐑾·𐑹·𐑱·𐑤·𐑲·𐑠·⊙·𐑫·𐑳·𐑭⟩ | O_∞ | ✓ |
+| **Optogenetic Matrix** | ⟨𐑼·𐑥·𐑾·𐑹·𐑐·𐑤·𐑲·𐑵·⊙·𐑫·𐑳·𐑭⟩ | O_∞ | ✓ |
+| **Frobenius Core** | ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑤·𐑲·𐑵·⊙·𐑫·𐑳·𐑭⟩ | O_∞ | ✓ |
 
 ### Deliberately Open Systems
 
 | System | Tuple | Tier | Rationale |
 |--------|-------|------|-----------|
-| **ECM Scaffold** | ⟨𐑨·𐑡·𐑾·𐑬·𐑱·𐑧·𐑚·𐑵·𐑢·𐑒·𐑙·𐑷⟩ | O_0 | Transient chrysalis — degrades as organoid matures |
-| **Immune Sentinel** | ⟨𐑨·𐑡·𐑾·𐑬·𐑱·𐑤·𐑲·𐑵·⊙·𐑫·𐑳·𐑴⟩ | O_2 | Dormant guardian — activates only on non-self detection |
+| **ECM Scaffold** | ⟨𐑨·𐑡·𐑾·𐑬·𐑱·𐑧·𐑚·𐑵·𐑢·𐑒·𐑙·𐑷⟩ | O₀ | Transient chrysalis — degrades as organoid matures |
+| **Immune Sentinel** | ⟨𐑨·𐑡·𐑾·𐑬·𐑱·𐑤·𐑲·𐑵·⊙·𐑫·𐑳·𐑴⟩ | O₂ | Dormant guardian — activates only on non-self detection |
 
 ## Appendix B: Frobenius Verification Protocols
 

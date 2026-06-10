@@ -57,7 +57,7 @@ PLATONIC_PROTEIN = {
     "⊙": "⊙", "Ħ": "𐑒", "Σ": "𐑳", "Ω": "𐑭",
     "_name": "platonicProtein",
     "_desc": "Folded protein — between molecule and cell",
-    "_tier": "O_2",
+    "_tier": "O₂",
 }
 
 # Canonical structural type for unfolded/random coil protein
@@ -67,7 +67,7 @@ UNFOLDED_PROTEIN = {
     "⊙": "𐑢", "Ħ": "𐑓", "Σ": "𐑕", "Ω": "𐑷",
     "_name": "unfoldedProtein",
     "_desc": "Unfolded/random coil protein chain",
-    "_tier": "O_0",
+    "_tier": "O₀",
 }
 
 def protein_to_clink(protein_tuple=None):
@@ -173,7 +173,7 @@ CODON_BELNAP4_TYPE = {
     "⊙": "𐑢", "Ħ": "𐑓", "Σ": "𐑙", "Ω": "𐑷",
     "_name": "codonBelnap4",
     "_desc": "Codon in Belnap4 lattice — 4-valued paraconsistent",
-    "_tier": "O_0",
+    "_tier": "O₀",
 }
 
 def gene_to_clink(gene_tuple=None):

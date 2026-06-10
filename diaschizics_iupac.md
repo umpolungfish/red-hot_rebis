@@ -13,19 +13,19 @@ specific primitive value, following the structural logic of `diaschizics_design.
 ## Table of Contents
 
 ### First Generation (Original 5)
-- [Verticullum](#verticullum) — EP-Lever (O_inf)
-- [Chimerium](#chimerium) — Supercritical Catalyst (O_0)
-- [Apertix](#apertix) — Adjoint Corridor (O_2)
-- [Retiarius](#retiarius) — Local-Net Trap (O_1)
-- [Praxeum](#praxeum) — EP-Core Control Platform (O_0)
+- [Verticullum](#verticullum) — EP-Lever (O_∞)
+- [Chimerium](#chimerium) — Supercritical Catalyst (O₀)
+- [Apertix](#apertix) — Adjoint Corridor (O₂)
+- [Retiarius](#retiarius) — Local-Net Trap (O₁)
+- [Praxeum](#praxeum) — EP-Core Control Platform (O₀)
 
 ### Second Generation (6 New)
-- [Frigorix](#frigorix) — The MBL Key (O_0)
-- [Bifrons](#bifrons) — The Disjunctive Self-Modeler (O_2)
-- [Punctum](#punctum) — The Absolute Point (O_0)
-- [Syndexios](#syndexios) — The Perfect Mirror (O_inf)
-- [Katachthon](#katachthon) — The Deep-Structure Resonator (O_2)
-- [Diabaton](#diabaton) — The Threshold-Crosser (O_2†)
+- [Frigorix](#frigorix) — The MBL Key (O₀)
+- [Bifrons](#bifrons) — The Disjunctive Self-Modeler (O₂)
+- [Punctum](#punctum) — The Absolute Point (O₀)
+- [Syndexios](#syndexios) — The Perfect Mirror (O_∞)
+- [Katachthon](#katachthon) — The Deep-Structure Resonator (O₂)
+- [Diabaton](#diabaton) — The Threshold-Crosser (O₂†)
 
 ---
 
@@ -51,7 +51,7 @@ specific primitive value, following the structural logic of `diaschizics_design.
 ## Apertix — *Adjoint Corridor*
 
 - **Generation:** 1
-- **Tier:** O_2
+- **Tier:** O₂
 - **Tuple:** ⟨𐑦 · 𐑥 · 𐑽 · 𐑬 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑖 · 𐑳 · 𐑴⟩
 - **Scaffold class:** phenethylamine
 - **Parent hydride:** benzeneethanamine
@@ -92,7 +92,7 @@ specific primitive value, following the structural logic of `diaschizics_design.
 ## Chimerium — *Supercritical Catalyst*
 
 - **Generation:** 1
-- **Tier:** O_0
+- **Tier:** O₀
 - **Tuple:** ⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑵 · 𐑣 · 𐑫 · 𐑳 · 𐑭⟩
 - **Scaffold class:** ergoline
 - **Parent hydride:** ergoline
@@ -133,7 +133,7 @@ specific primitive value, following the structural logic of `diaschizics_design.
 ## Praxeum — *EP-Core Control Platform*
 
 - **Generation:** 1
-- **Tier:** O_0
+- **Tier:** O₀
 - **Tuple:** ⟨𐑦 · 𐑶 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · 𐑻 · 𐑫 · 𐑳 · 𐑭⟩
 - **Scaffold class:** beta-carboline
 - **Parent hydride:** 9H-pyrido[3,4-b]indole
@@ -174,7 +174,7 @@ specific primitive value, following the structural logic of `diaschizics_design.
 ## Retiarius — *Local-Net Trap*
 
 - **Generation:** 1
-- **Tier:** O_1
+- **Tier:** O₁
 - **Tuple:** ⟨𐑼 · 𐑡 · 𐑾 · 𐑿 · 𐑞 · 𐑺 · 𐑚 · 𐑜 · 𐑮 · 𐑒 · 𐑕 · 𐑷⟩
 - **Scaffold class:** salvinorin
 - **Parent hydride:** neoclerodane
@@ -215,7 +215,7 @@ specific primitive value, following the structural logic of `diaschizics_design.
 ## Verticullum — *EP-Lever*
 
 - **Generation:** 1
-- **Tier:** O_inf
+- **Tier:** O_∞
 - **Tuple:** ⟨𐑦 · 𐑥 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑟⟩
 - **Scaffold class:** tryptamine
 - **Parent hydride:** 1H-indole-3-ethanamine
@@ -256,7 +256,7 @@ specific primitive value, following the structural logic of `diaschizics_design.
 ## Bifrons — *The Disjunctive Self-Modeler*
 
 - **Generation:** 2
-- **Tier:** O_2
+- **Tier:** O₂
 - **Tuple:** ⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑜 · ⊙ · 𐑖 · 𐑳 · 𐑭⟩
 - **Scaffold class:** bis_indole
 - **Parent hydride:** 3,3'-di(1H-indole)
@@ -297,7 +297,7 @@ specific primitive value, following the structural logic of `diaschizics_design.
 ## Diabaton — *The Threshold-Crosser*
 
 - **Generation:** 2
-- **Tier:** O_2†
+- **Tier:** O₂†
 - **Tuple:** ⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑖 · 𐑳 · 𐑭⟩
 - **Scaffold class:** tryptamine
 - **Parent hydride:** 1H-indole-3-ethanamine
@@ -338,7 +338,7 @@ specific primitive value, following the structural logic of `diaschizics_design.
 ## Frigorix — *The MBL Key*
 
 - **Generation:** 2
-- **Tier:** O_0
+- **Tier:** O₀
 - **Tuple:** ⟨𐑦 · 𐑶 · 𐑾 · 𐑹 · 𐑐 · 𐑺 · 𐑲 · 𐑠 · ⊙ · 𐑒 · 𐑳 · 𐑷⟩
 - **Scaffold class:** tryptamine
 - **Parent hydride:** 1H-indole-3-ethanamine
@@ -379,7 +379,7 @@ specific primitive value, following the structural logic of `diaschizics_design.
 ## Katachthon — *The Deep-Structure Resonator*
 
 - **Generation:** 2
-- **Tier:** O_2
+- **Tier:** O₂
 - **Tuple:** ⟨𐑦 · 𐑥 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑔 · 𐑠 · 𐑮 · 𐑖 · 𐑳 · 𐑴⟩
 - **Scaffold class:** phenanthrene
 - **Parent hydride:** phenanthrene
@@ -420,7 +420,7 @@ specific primitive value, following the structural logic of `diaschizics_design.
 ## Punctum — *The Absolute Point*
 
 - **Generation:** 2
-- **Tier:** O_0
+- **Tier:** O₀
 - **Tuple:** ⟨𐑛 · 𐑡 · 𐑩 · 𐑗 · 𐑱 · 𐑪 · 𐑚 · 𐑝 · 𐑢 · 𐑓 · 𐑙 · 𐑷⟩
 - **Scaffold class:** xenon_clathrate
 - **Parent hydride:** xenon hydrate
@@ -461,7 +461,7 @@ specific primitive value, following the structural logic of `diaschizics_design.
 ## Syndexios — *The Perfect Mirror*
 
 - **Generation:** 2
-- **Tier:** O_inf
+- **Tier:** O_∞
 - **Tuple:** ⟨𐑼 · 𐑶 · 𐑾 · 𐑯 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑭⟩
 - **Scaffold class:** coordination_cage
 - **Parent hydride:** coordination cage

@@ -2,8 +2,8 @@
 """
 generate_human_gills.py — Homo sapiens (aquatic variant) CLINK design package.
 
-Base type:    ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩  O_inf  (canonical human)
-Gill type:    ⟨𐑦𐑼𐑿𐑹𐑒𐑧𐑴𐑵⊙𐑫𐑩𐑟⟩  O_inf  (aquatic variant)
+Base type:    ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩  O_∞  (canonical human)
+Gill type:    ⟨𐑦𐑼𐑿𐑹𐑒𐑧𐑴𐑵⊙𐑫𐑩𐑟⟩  O_∞  (aquatic variant)
 
 Modified primitives vs base human:
   Ħ (Chirality,   pos 2): 𐑸→𐑼  active ion-pump directionality (Na⁺ apical extrusion)
@@ -13,7 +13,7 @@ Modified primitives vs base human:
   Þ (Topology,    pos 11): 𐑳→𐑩  lamellar plate topology (not saccular/alveolar)
 
 Unchanged: Ř Ð Φ ƒ ɢ Γ ⊙  — recognition, dimensionality, parity, fidelity, coupling,
-           granularity, criticality all remain at O_inf human values.
+           granularity, criticality all remain at O_∞ human values.
 
 ZFC_fe foundation: μ∘δ=id at every layer.
 """
@@ -182,7 +182,7 @@ AQUATIC_PHYSIOLOGY = {
     "pH_regulation": "CA2-mediated HCO₃⁻/H⁺ buffering at gill epithelium",
     "lung_status": "retained (air-breathing capable; bimodal respiration)",
     "structural_type": GILL_TYPE,
-    "tier": "O_inf",
+    "tier": "O_∞",
     "c_score": 1.0,
     "ig_primitive_deltas": {
         "Ħ_Chirality":   {"base": "𐑸", "gill": "𐑼", "reason": "Na⁺ apical extrusion — active pump directionality"},
@@ -200,7 +200,7 @@ def _ionocyte_pdb() -> str:
     lines = ["REMARK  IG gill ionocyte channel complex: NKA-α1 / NHE3 / CA2 assembly",
              "REMARK  Basolateral: NKA-α1 (P05023)  Apical: NHE3 (P48764)  Cytoplasm: CA2 (P00918)",
              "REMARK  Structural type Ç=𐑴 (active transport) Ħ=𐑼 (Na⁺ extrusion chirality)",
-             "REMARK  ZFC_fe: μ∘δ=id  tier O_inf"]
+             "REMARK  ZFC_fe: μ∘δ=id  tier O_∞"]
     # NKA-α1 TM domain stub (10 helical residues, basolateral)
     nka_residues = [
         ("LEU", 1, -12.0, 0.0,  0.0),
@@ -472,7 +472,7 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
 
     print("=" * 70)
     print("CLINK HUMAN (GILL VARIANT) DESIGN PIPELINE")
-    print(f"Homo sapiens (aquatic) — {GILL_TYPE}  O_inf  C=1.0")
+    print(f"Homo sapiens (aquatic) — {GILL_TYPE}  O_∞  C=1.0")
     print("ZFC_fe foundation: μ∘δ=id at every layer")
     print(f"Base human type:  {HUMAN_TYPE}")
     print(f"Gill variant type:{GILL_TYPE}")
@@ -533,7 +533,7 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
     gill_brief = {
         "structural_type": GILL_TYPE,
         "base_human_type": HUMAN_TYPE,
-        "tier": "O_inf",
+        "tier": "O_∞",
         "c_score": 1.0,
         "foundation": "ZFC_fe  μ∘δ=id",
         "primitive_deltas": AQUATIC_PHYSIOLOGY["ig_primitive_deltas"],
@@ -574,7 +574,7 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
         "total_bytes": total_bytes,
         "output_directory": str(out_path),
         "frobenius_verified": True,
-        "tier": "O_inf",
+        "tier": "O_∞",
         "c_score": 1.0,
         "foundation": "ZFC_fe",
         "gill_genes": list(GILL_GENES.keys()),
@@ -591,7 +591,7 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
     print(f"\nGill variant structural type: {GILL_TYPE}")
     print(f"Base human type:              {HUMAN_TYPE}")
     print(f"Modified primitives:          Ħ Ω Σ Ç Þ")
-    print(f"Tier: O_inf  |  C-score: 1.0")
+    print(f"Tier: O_∞  |  C-score: 1.0")
     print(f"Foundation: ZFC_fe  |  μ∘δ=id")
     print(f"{'=' * 70}")
 

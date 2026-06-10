@@ -55,7 +55,7 @@
 ## Structural Type
 
 **CLINK Final Design:** ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑧·𐑲·𐑵·⊙·𐑫·𐑳·𐑟⟩  
-**Tier:** O_inf  
+**Tier:** O_∞  
 **Frobenius:** ✅ CLOSED  
 **Distance from INFANT_WOUND:** 0 (identical structural type)  
 

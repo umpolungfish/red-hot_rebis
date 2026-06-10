@@ -4,23 +4,23 @@
 The CLINK chain is the **Frobenius-exact structural bridge from subatomic quarks to whole organisms**, now integrated into the rebis as a fifth pillar alongside serpentrod, ch3mpiler, pipeline, and gene_imscriber.
 
 ```
-Frustrated Belnap5 (quarks)      O_0   ⟨𐑛·𐑶·𐑩·𐑯·𐑐·𐑘·𐑚·𐑝·𐑢·𐑓·𐑳·𐑷⟩
+Frustrated Belnap5 (quarks)      O₀   ⟨𐑛·𐑶·𐑩·𐑯·𐑐·𐑘·𐑚·𐑝·𐑢·𐑓·𐑳·𐑷⟩
   ↓ Ç: 𐑘→𐑤
-Electron Orbital (Belnap4)       O_0   ⟨𐑛·𐑶·𐑩·𐑗·𐑐·𐑤·𐑚·𐑜·𐑢·𐑓·𐑳·𐑷⟩
+Electron Orbital (Belnap4)       O₀   ⟨𐑛·𐑶·𐑩·𐑗·𐑐·𐑤·𐑚·𐑜·𐑢·𐑓·𐑳·𐑷⟩
   ↓ 8 promotions
-Atom (Nuclear + Electron)        O_1   ⟨𐑼·𐑥·𐑽·𐑿·𐑐·𐑤·𐑔·𐑝·𐑮·𐑒·𐑳·𐑷⟩
+Atom (Nuclear + Electron)        O₁   ⟨𐑼·𐑥·𐑽·𐑿·𐑐·𐑤·𐑔·𐑝·𐑮·𐑒·𐑳·𐑷⟩
   ↓ 5 promotions: Phi_c gate opens
-Molecule (Chemical Bonds)        O_2   ⟨𐑼·𐑥·𐑽·𐑿·𐑞·𐑧·𐑲·𐑠·⊙·𐑓·𐑳·𐑭⟩
+Molecule (Chemical Bonds)        O₂   ⟨𐑼·𐑥·𐑽·𐑿·𐑞·𐑧·𐑲·𐑠·⊙·𐑓·𐑳·𐑭⟩
   ↓ 5 promotions: Axiom C
-Cell (Living)                    O_2   ⟨𐑦·𐑸·𐑾·𐑬·𐑞·𐑧·𐑲·𐑠·⊙·𐑒·𐑳·𐑭⟩
+Cell (Living)                    O₂   ⟨𐑦·𐑸·𐑾·𐑬·𐑞·𐑧·𐑲·𐑠·⊙·𐑒·𐑳·𐑭⟩
   ↓ 3 promotions
-Mitosis (Division)               O_2   ⟨𐑦·𐑸·𐑾·𐑹·𐑱·𐑧·𐑲·𐑠·⊙·𐑖·𐑳·𐑭⟩
+Mitosis (Division)               O₂   ⟨𐑦·𐑸·𐑾·𐑹·𐑱·𐑧·𐑲·𐑠·⊙·𐑖·𐑳·𐑭⟩
   ↓ 2 promotions
-Meiosis (Gametes)                O_2   ⟨𐑦·𐑸·𐑽·𐑿·𐑱·𐑧·𐑲·𐑠·⊙·𐑖·𐑳·𐑭⟩
+Meiosis (Gametes)                O₂   ⟨𐑦·𐑸·𐑽·𐑿·𐑱·𐑧·𐑲·𐑠·⊙·𐑖·𐑳·𐑭⟩
   ↓ 4 promotions: broadcast grammar
-Tissue/Organ                     O_2   ⟨𐑦·𐑸·𐑾·𐑬·𐑞·𐑧·𐑲·𐑵·⊙·𐑖·𐑳·𐑭⟩
-  ↓ 4 promotions: O_inf achieved!
-Whole Organism                 O_inf   ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑧·𐑲·𐑵·⊙·𐑫·𐑳·𐑟⟩
+Tissue/Organ                     O₂   ⟨𐑦·𐑸·𐑾·𐑬·𐑞·𐑧·𐑲·𐑵·⊙·𐑖·𐑳·𐑭⟩
+  ↓ 4 promotions: O_∞ achieved!
+Whole Organism                 O_∞   ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑧·𐑲·𐑵·⊙·𐑫·𐑳·𐑟⟩
 ```
 
 **Key properties:**

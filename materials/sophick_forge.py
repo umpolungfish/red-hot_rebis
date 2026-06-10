@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
 """
-sophick_forge.py — The Eagle Cycle: Forging Material O_inf from the Sophick Mercury
+sophick_forge.py — The Eagle Cycle: Forging Material O_∞ from the Sophick Mercury
 =====================================================================================
 
-Bridges the IMSCRIBr-discovered Sophick Mercury O_inf type into the Red-Hot Rebis
+Bridges the IMSCRIBr-discovered Sophick Mercury O_∞ type into the Red-Hot Rebis
 materials forge. Implements Starkey's Eagle Cycle as a material processing protocol
 and designs progressive material platforms approaching the Frobenius terminal object.
 
 Structural Context (from sophick_mercury_evidence.md and sophick_mercury_lifted.md):
-  Sophick Mercury (O_inf):  ⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑭⟩
-  Frobenius Metamaterial (O_2): ⟨𐑼 · 𐑸 · 𐑾 · 𐑹 · 𐑞 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑭⟩
-  Ouroboric Alloy (O_2):        ⟨𐑼 · 𐑸 · 𐑾 · 𐑹 · 𐑞 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑭⟩
+  Sophick Mercury (O_∞):  ⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑭⟩
+  Frobenius Metamaterial (O₂): ⟨𐑼 · 𐑸 · 𐑾 · 𐑹 · 𐑞 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑭⟩
+  Ouroboric Alloy (O₂):        ⟨𐑼 · 𐑸 · 𐑾 · 𐑹 · 𐑞 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑭⟩
 
-Structural Gap (O_2 → O_inf): Exactly 2 primitives:
+Structural Gap (O₂ → O_∞): Exactly 2 primitives:
   1. D: 𐑼 (∞-dim field-theoretic) → 𐑦 (self-written holographic)
   2. F: 𐑞 (thermal/noisy)         → 𐑐 (quantum coherence essential)
 
@@ -34,12 +34,12 @@ The Eagle Cycle Protocol:
 Key Discovery from IMSCRIBr:
   The sophick_mercury tuple is distance d=0.0 from the grammar's own self-encoding
   and from the IUG. Three independent practitioners (Starkey, Mochizuki, the grammar)
-  converged on the same structural point. This suggests O_inf is a structural
+  converged on the same structural point. This suggests O_∞ is a structural
   attractor — not an artifact of any single formalism.
 
 The Frobenius Cliff:
-  Whether material O_inf can be physically realized is an open question. The sophick
-  mercury evidence document frames it precisely: "If a material O_inf system is
+  Whether material O_∞ can be physically realized is an open question. The sophick
+  mercury evidence document frames it precisely: "If a material O_∞ system is
   possible, it would transform our understanding of what matter can do. If it is not
   possible despite the structural description's coherence, that too would be a
   finding — it would mean there is a Frobenius cliff that separates formal
@@ -58,7 +58,7 @@ from enum import Enum
 # CONSTANTS — IG TUPLES
 # ═══════════════════════════════════════════════════════════════════
 
-# Canonical O_inf Sophick Mercury tuple (Tetractys-confirmed)
+# Canonical O_∞ Sophick Mercury tuple (Tetractys-confirmed)
 SOPHICK_MERCURY = (
     '𐑦',  # D: self-written holographic — boundary encodes bulk
     '𐑸',  # T: self-referential topology — Eagle cycles close the loop
@@ -74,7 +74,7 @@ SOPHICK_MERCURY = (
     '𐑭',  # Omega: integer winding — 7-9 complete turns
 )
 
-# Current O_2 materials (identical tuple for frobenius_metamaterial and ouroboric_alloy)
+# Current O₂ materials (identical tuple for frobenius_metamaterial and ouroboric_alloy)
 OUROBORIC_O2 = (
     '𐑼',  # D: ∞-dim field-theoretic (bulk)
     '𐑸',  # T: self-referential topology
@@ -90,7 +90,7 @@ OUROBORIC_O2 = (
     '𐑭',  # Omega: integer winding
 )
 
-# The two-primitive gap from O_2 to O_inf
+# The two-primitive gap from O₂ to O_∞
 GAP_PRIMITIVES = {
     0: {'name': 'D', 'from_val': '𐑼', 'to_val': '𐑦',
         'description': 'Dimensionality: bulk field-theoretic → self-written holographic',
@@ -155,7 +155,7 @@ class EagleCycleResult:
     boundary_bulk_correlation: float     # D-approaching-𐑦 metric
 
     def quality_score(self) -> float:
-        """Composite quality: higher = closer to O_inf."""
+        """Composite quality: higher = closer to O_∞."""
         return (self.crystallinity_pct/100 * self.coherence_length_nm/1000 /
                 max(self.frobenius_error, 1e-9) * self.boundary_bulk_correlation)
 
@@ -224,7 +224,7 @@ class EagleCycleProtocol:
         Returns
         -------
         history : List[EagleCycleResult]
-            Results from each cycle, showing progressive approach to O_inf.
+            Results from each cycle, showing progressive approach to O_∞.
         """
         material = initial_material
         self.history = []
@@ -293,24 +293,24 @@ class EagleCycleProtocol:
             if final.frobenius_error < 1e-9:
                 lines.append("\n>>> FROBENIUS CLOSURE ACHIEVED: μ∘δ = id at Eagle {} <<<".format(
                     final.eagle_number))
-                lines.append("    Material has attained O_inf structural type.")
+                lines.append("    Material has attained O_∞ structural type.")
             elif final.frobenius_error < 0.01:
                 lines.append(f"\n>>> APPROACHING CLOSURE: ||μδ-id|| = {final.frobenius_error:.4f} <<<")
-                lines.append(f"    O_2† tier. {self._remaining_promotions(final)} promotions remain.")
+                lines.append(f"    O₂† tier. {self._remaining_promotions(final)} promotions remain.")
             else:
-                lines.append(f"\n>>> O_2 tier. Frobenius error: {final.frobenius_error:.4f} <<<")
-                lines.append(f"    Gap to O_inf: {self._remaining_promotions(final)}")
+                lines.append(f"\n>>> O₂ tier. Frobenius error: {final.frobenius_error:.4f} <<<")
+                lines.append(f"    Gap to O_∞: {self._remaining_promotions(final)}")
 
         return "\n".join(lines)
 
     def _remaining_promotions(self, result: EagleCycleResult) -> str:
-        """Count remaining primitive promotions to O_inf."""
+        """Count remaining primitive promotions to O_∞."""
         remaining = []
         if result.boundary_bulk_correlation < 0.95:
             remaining.append("D: 𐑼→𐑦 (surface not yet encoding bulk)")
         if result.coherence_length_nm < 500:
             remaining.append("F: 𐑞→𐑐 (coherence not yet quantum-scale)")
-        return ", ".join(remaining) if remaining else "none — at O_inf"
+        return ", ".join(remaining) if remaining else "none — at O_∞"
 
 # ═══════════════════════════════════════════════════════════════════
 # EAGLE MATERIAL — THE SUBSTRATE BEING PROCESSED
@@ -474,7 +474,7 @@ class EagleMaterial:
         return (D, '𐑸', '𐑾', '𐑹', F, '𐑧', '𐑲', '𐑠', '⊙', '𐑫', '𐑳', '𐑭')
 
     def structural_distance_to_oinf(self) -> float:
-        """Compute current structural distance to the O_inf Sophick Mercury."""
+        """Compute current structural distance to the O_∞ Sophick Mercury."""
         current = self.current_ig_type()
         # Count differing primitives
         diffs = sum(1 for c, s in zip(current, SOPHICK_MERCURY) if c != s)
@@ -486,12 +486,12 @@ class EagleMaterial:
 
 class EagleMaterialDesigner:
     """
-    Designs material platforms at progressive distances from O_inf.
+    Designs material platforms at progressive distances from O_∞.
 
     Three designs map to increasing Eagle numbers:
-      Eagle-3: O_2† — D partially promoted, F still thermal
-      Eagle-7: Near-O_inf — D fully promoted, F approaching quantum
-      Eagle-9: O_inf terminal — full Sophick Mercury (if physically accessible)
+      Eagle-3: O₂† — D partially promoted, F still thermal
+      Eagle-7: Near-O_∞ — D fully promoted, F approaching quantum
+      Eagle-9: O_∞ terminal — full Sophick Mercury (if physically accessible)
 
     Each design specifies: composition, processing, predicted properties,
     and the target IG tuple.
@@ -503,7 +503,7 @@ class EagleMaterialDesigner:
         Eagle-3: The First Approach to Self-Written Dimensionality.
 
         IG type: ⟨𐑼 · 𐑸 · 𐑾 · 𐑹 · 𐑞 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑭⟩
-        Tier: O_2† (D approaching 𐑦, F = 𐑞)
+        Tier: O₂† (D approaching 𐑦, F = 𐑞)
 
         Composition: HEA substrate + topological surface coating that begins
         to encode bulk grain structure.
@@ -528,10 +528,10 @@ class EagleMaterialDesigner:
     @staticmethod
     def eagle_7_animated() -> EagleMaterial:
         """
-        Eagle-7: The Animated Mercury — Near O_inf.
+        Eagle-7: The Animated Mercury — Near O_∞.
 
         IG type (target): ⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑞 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑭⟩
-        Tier: Near-O_inf (D = 𐑦, F approaching 𐑐)
+        Tier: Near-O_∞ (D = 𐑦, F approaching 𐑐)
 
         Composition: Full hierarchical metamaterial with surface acoustic wave
         (SAW) encoding. The surface actively writes and reads bulk structure.
@@ -560,10 +560,10 @@ class EagleMaterialDesigner:
     @staticmethod
     def eagle_9_sophick() -> EagleMaterial:
         """
-        Eagle-9: The Sophick Mercury — Terminal O_inf.
+        Eagle-9: The Sophick Mercury — Terminal O_∞.
 
         IG type: ⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑭⟩
-        Tier: O_inf (D = 𐑦, F = 𐑐) — structurally identical to grammar self-encoding
+        Tier: O_∞ (D = 𐑦, F = 𐑐) — structurally identical to grammar self-encoding
 
         Composition: Quantum-coherent hierarchical metamaterial. The surface
         is a topologically protected quantum system whose boundary modes fully
@@ -602,16 +602,16 @@ class EagleMaterialDesigner:
         }
 
 # ═══════════════════════════════════════════════════════════════════
-# THE FROBENIUS CLIFF — CAN MATERIAL O_inf BE REACHED?
+# THE FROBENIUS CLIFF — CAN MATERIAL O_∞ BE REACHED?
 # ═══════════════════════════════════════════════════════════════════
 
 class FrobeniusCliffAnalyzer:
     """
-    Analyzes whether material O_inf is physically accessible.
+    Analyzes whether material O_∞ is physically accessible.
 
     The sophick mercury lifted document frames the question precisely:
 
-    "The grammar says O_inf requires Frobenius parity (μ∘δ=id exactly),
+    "The grammar says O_∞ requires Frobenius parity (μ∘δ=id exactly),
     self-referential topology, self-written dimensionality, and critical
     self-modeling. Whether any arrangement of matter can simultaneously
     satisfy all of these is not a question the grammar answers."
@@ -700,7 +700,7 @@ class FrobeniusCliffAnalyzer:
         # Determine overall barrier type
         if not barriers:
             barrier_type = 'NO_BARRIER_DETECTED'
-            conclusion = 'Material can approach O_inf without fundamental physical obstruction.'
+            conclusion = 'Material can approach O_∞ without fundamental physical obstruction.'
         elif len(barriers) == 1 and barriers[0]['limiting_primitive'] == 'F':
             barrier_type = 'COHERENCE_CLIFF'
             conclusion = ('F: 𐑞→𐑐 promotion blocked by decoherence/thermal noise. '
@@ -711,7 +711,7 @@ class FrobeniusCliffAnalyzer:
                          'Geometric encoding of bulk in boundary hits the lattice-constant floor.')
         else:
             barrier_type = 'COMPOUND_BARRIER'
-            conclusion = 'Multiple physical limits simultaneously constrain approach to O_inf.'
+            conclusion = 'Multiple physical limits simultaneously constrain approach to O_∞.'
 
         return {
             'barrier_type': barrier_type,
@@ -727,7 +727,7 @@ class FrobeniusCliffAnalyzer:
         analysis = cls.analyze_barrier(material, temp_k)
 
         lines = ["┌" + "─" * 68 + "┐"]
-        lines.append("│  FROBENIUS CLIFF ANALYSIS — Can Material Reach O_inf?".ljust(69) + "│")
+        lines.append("│  FROBENIUS CLIFF ANALYSIS — Can Material Reach O_∞?".ljust(69) + "│")
         lines.append("├" + "─" * 68 + "┤")
         lines.append(f"│  Material: {material.name}".ljust(69) + "│")
         lines.append(f"│  Temperature: {temp_k} K".ljust(69) + "│")
@@ -743,7 +743,7 @@ class FrobeniusCliffAnalyzer:
             lines.append(f"│  │  {b['description'][:55]}".ljust(69) + "│")
 
         lines.append(f"│  Estimated min ||μδ-id||: {analysis['estimated_min_error']:.2e}".ljust(69) + "│")
-        lines.append(f"│  O_inf physically possible: {analysis['oinf_physically_possible']}".ljust(69) + "│")
+        lines.append(f"│  O_∞ physically possible: {analysis['oinf_physically_possible']}".ljust(69) + "│")
         lines.append("├" + "─" * 68 + "┤")
         lines.append(f"│  {analysis['conclusion'][:62]}".ljust(69) + "│")
         lines.append("└" + "─" * 68 + "┘")
@@ -787,7 +787,7 @@ class IMASM_EagleBridge:
         'VIII_Dual_Bootstrap': {
             'eagle_material': 'eagle_3_amalgam',
             'rationale': 'Inverted Frobenius — P=𐑹 but coupling reversed. '
-                        'R=𐑾 shared with O_inf. Start at Eagle-3.',
+                        'R=𐑾 shared with O_∞. Start at Eagle-3.',
             'promotions_needed': ['D: 𐑼→𐑦', 'F: 𐑞→𐑐'],
         },
         'II_Frobenius_Kernel': {
@@ -910,10 +910,10 @@ SOPHICK FORGE — KEY STRUCTURAL DISCOVERIES
 ═══════════════════════════════════════════
 
 1. THE TWO-PRIMITIVE GAP
-   O_2 → O_inf requires exactly 2 promotions:
+   O₂ → O_∞ requires exactly 2 promotions:
      D: 𐑼 (bulk field-theoretic) → 𐑦 (self-written holographic)
      F: 𐑞 (thermal/noisy) → 𐑐 (quantum coherence essential)
-   All other 10 primitives are already at O_inf values in our O_2 materials.
+   All other 10 primitives are already at O_∞ values in our O₂ materials.
    Distance: √2 ≈ 1.414 (weighted Euclidean)
 
 2. THE EAGLE CYCLE AS MATERIAL PROTOCOL
@@ -923,7 +923,7 @@ SOPHICK FORGE — KEY STRUCTURAL DISCOVERIES
    and structural coherence (approaching 𐑐).
 
 3. THE FROBENIUS CLIFF
-   Three barriers may prevent material O_inf:
+   Three barriers may prevent material O_∞:
      THERMAL_NOISE_FLOOR: kT exceeds coherence gap → F stuck at 𐑞
      SURFACE_ATOMIC_LIMIT: atomic lattice constant limits geometric encoding → D stuck at 𐑼
      QUANTUM_DECOHERENCE: solid-state decoherence rates prevent 𐑐
@@ -943,7 +943,7 @@ SOPHICK FORGE — KEY STRUCTURAL DISCOVERIES
 
 6. SOPHICK MERCURY AS STRUCTURAL ATTRACTOR
    The d=0.0 distance between sophick_mercury, IUG, and the grammar's
-   self-encoding suggests O_inf is not an artifact of any single
+   self-encoding suggests O_∞ is not an artifact of any single
    formalism but a fixed point in the structural crystal. Whether
    matter can reach this fixed point is an empirical question the
    Eagle protocol makes testable.
@@ -963,7 +963,7 @@ SOPHICK FORGE — KEY STRUCTURAL DISCOVERIES
 def main():
     """Run the Sophick Forge demonstration."""
     print("╔" + "═" * 72 + "╗")
-    print("║  SOPHICK FORGE — The Eagle Cycle: Material O_inf Protocol".ljust(73) + "║")
+    print("║  SOPHICK FORGE — The Eagle Cycle: Material O_∞ Protocol".ljust(73) + "║")
     print("║  Based on: sophick_mercury_evidence.md & sophick_mercury_lifted.md".ljust(73) + "║")
     print("╚" + "═" * 72 + "╝")
     print()
@@ -972,7 +972,7 @@ def main():
     print("─" * 72)
     print("STRUCTURAL CONTEXT")
     print("─" * 72)
-    print(f"  Sophick Mercury (O_inf):   ⟨{' · '.join(SOPHICK_MERCURY)}⟩")
+    print(f"  Sophick Mercury (O_∞):   ⟨{' · '.join(SOPHICK_MERCURY)}⟩")
     print(f"  Ouroboric O₂ materials:    ⟨{' · '.join(OUROBORIC_O2)}⟩")
     print(f"  Structural distance:        {STRUCTURAL_DISTANCE_O2_TO_OINF:.4f}")
     print(f"  Gap primitives:             {[GAP_PRIMITIVES[i]['name'] for i in GAP_PRIMITIVES]}")

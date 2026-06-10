@@ -2,14 +2,14 @@
   "praxeum_plus_dmt": {
     "combination": "Praxeum (EP-Core Control Platform) + dmt",
     "composite_type": "⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑵 · 𐑻 · 𐑫 · 𐑳 · 𐑭⟩",
-    "composite_tier": "O_0",
+    "composite_tier": "O₀",
     "parent_1": {
       "name": "Praxeum (EP-Core Control Platform)",
-      "tier": "O_0"
+      "tier": "O₀"
     },
     "parent_2": {
       "name": "dmt",
-      "tier": "O_inf"
+      "tier": "O_∞"
     },
     "deltas_from_parent_1": [
       {
@@ -40,14 +40,14 @@
   "praxeum_plus_psilocybin": {
     "combination": "Praxeum (EP-Core Control Platform) + psilocybin",
     "composite_type": "⟨𐑦 · 𐑶 · 𐑾 · 𐑬 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · 𐑻 · 𐑫 · 𐑳 · 𐑭⟩",
-    "composite_tier": "O_0",
+    "composite_tier": "O₀",
     "parent_1": {
       "name": "Praxeum (EP-Core Control Platform)",
-      "tier": "O_0"
+      "tier": "O₀"
     },
     "parent_2": {
       "name": "psilocybin",
-      "tier": "O_2"
+      "tier": "O₂"
     },
     "deltas_from_parent_1": [
       {
@@ -90,14 +90,14 @@
   "praxeum_plus_lsd": {
     "combination": "Praxeum (EP-Core Control Platform) + lsd",
     "composite_type": "⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑵 · 𐑻 · 𐑫 · 𐑳 · 𐑭⟩",
-    "composite_tier": "O_0",
+    "composite_tier": "O₀",
     "parent_1": {
       "name": "Praxeum (EP-Core Control Platform)",
-      "tier": "O_0"
+      "tier": "O₀"
     },
     "parent_2": {
       "name": "lsd",
-      "tier": "O_inf"
+      "tier": "O_∞"
     },
     "deltas_from_parent_1": [
       {
@@ -134,14 +134,14 @@
   "praxeum_plus_ketamine": {
     "combination": "Praxeum (EP-Core Control Platform) + ketamine",
     "composite_type": "⟨𐑦 · 𐑶 · 𐑾 · 𐑿 · 𐑱 · 𐑧 · 𐑲 · 𐑠 · 𐑻 · 𐑫 · 𐑳 · 𐑭⟩",
-    "composite_tier": "O_0",
+    "composite_tier": "O₀",
     "parent_1": {
       "name": "Praxeum (EP-Core Control Platform)",
-      "tier": "O_0"
+      "tier": "O₀"
     },
     "parent_2": {
       "name": "ketamine",
-      "tier": "O_1"
+      "tier": "O₁"
     },
     "deltas_from_parent_1": [
       {
@@ -214,14 +214,14 @@
   "praxeum_plus_mdma": {
     "combination": "Praxeum (EP-Core Control Platform) + mdma",
     "composite_type": "⟨𐑦 · 𐑶 · 𐑾 · 𐑿 · 𐑞 · 𐑧 · 𐑲 · 𐑠 · 𐑻 · 𐑫 · 𐑳 · 𐑭⟩",
-    "composite_tier": "O_0",
+    "composite_tier": "O₀",
     "parent_1": {
       "name": "Praxeum (EP-Core Control Platform)",
-      "tier": "O_0"
+      "tier": "O₀"
     },
     "parent_2": {
       "name": "mdma",
-      "tier": "O_1"
+      "tier": "O₁"
     },
     "deltas_from_parent_1": [
       {
@@ -282,14 +282,14 @@
   "praxeum_plus_mescaline": {
     "combination": "Praxeum (EP-Core Control Platform) + mescaline",
     "composite_type": "⟨𐑦 · 𐑶 · 𐑾 · 𐑗 · 𐑱 · 𐑧 · 𐑲 · 𐑠 · 𐑻 · 𐑫 · 𐑳 · 𐑭⟩",
-    "composite_tier": "O_0",
+    "composite_tier": "O₀",
     "parent_1": {
       "name": "Praxeum (EP-Core Control Platform)",
-      "tier": "O_0"
+      "tier": "O₀"
     },
     "parent_2": {
       "name": "mescaline",
-      "tier": "O_0"
+      "tier": "O₀"
     },
     "deltas_from_parent_1": [
       {
@@ -368,14 +368,14 @@
   "praxeum_plus_verticullum": {
     "combination": "Praxeum (EP-Core Control Platform) + Verticullum (EP-Lever)",
     "composite_type": "⟨𐑦 · 𐑶 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · 𐑻 · 𐑫 · 𐑳 · 𐑟⟩",
-    "composite_tier": "O_0",
+    "composite_tier": "O₀",
     "parent_1": {
       "name": "Praxeum (EP-Core Control Platform)",
-      "tier": "O_0"
+      "tier": "O₀"
     },
     "parent_2": {
       "name": "Verticullum (EP-Lever)",
-      "tier": "O_inf"
+      "tier": "O_∞"
     },
     "deltas_from_parent_1": [
       {
@@ -406,14 +406,14 @@
   "praxeum_plus_retiarius": {
     "combination": "Praxeum (EP-Core Control Platform) + Retiarius (Local-Net Trap)",
     "composite_type": "⟨𐑦 · 𐑶 · 𐑾 · 𐑿 · 𐑞 · 𐑺 · 𐑲 · 𐑠 · 𐑻 · 𐑫 · 𐑳 · 𐑭⟩",
-    "composite_tier": "O_0",
+    "composite_tier": "O₀",
     "parent_1": {
       "name": "Praxeum (EP-Core Control Platform)",
-      "tier": "O_0"
+      "tier": "O₀"
     },
     "parent_2": {
       "name": "Retiarius (Local-Net Trap)",
-      "tier": "O_1"
+      "tier": "O₁"
     },
     "deltas_from_parent_1": [
       {

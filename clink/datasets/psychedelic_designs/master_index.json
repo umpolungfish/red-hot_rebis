@@ -6,7 +6,7 @@
     "verticullum": {
       "name": "Verticullum (EP-Lever)",
       "directory": "/home/mrnob0dy666/red-hot_rebis/clink/datasets/psychedelic_designs/verticullum",
-      "tier": "O_inf",
+      "tier": "O_∞",
       "tuple": "⟨𐑦 · 𐑥 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑟⟩",
       "innovations": [
         "First Ω=𐑟 (non-Abelian)",
@@ -16,7 +16,7 @@
     "chimerium": {
       "name": "Chimerium (Supercritical Catalyst)",
       "directory": "/home/mrnob0dy666/red-hot_rebis/clink/datasets/psychedelic_designs/chimerium",
-      "tier": "O_0",
+      "tier": "O₀",
       "tuple": "⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑵 · 𐑣 · 𐑫 · 𐑳 · 𐑭⟩",
       "innovations": [
         "First Ph=𐑣 (supercritical)",
@@ -26,7 +26,7 @@
     "apertix": {
       "name": "Apertix (Adjoint Corridor)",
       "directory": "/home/mrnob0dy666/red-hot_rebis/clink/datasets/psychedelic_designs/apertix",
-      "tier": "O_2",
+      "tier": "O₂",
       "tuple": "⟨𐑦 · 𐑥 · 𐑽 · 𐑬 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑖 · 𐑳 · 𐑴⟩",
       "innovations": [
         "First R=𐑽 (adjoint)",
@@ -36,7 +36,7 @@
     "retiarius": {
       "name": "Retiarius (Local-Net Trap)",
       "directory": "/home/mrnob0dy666/red-hot_rebis/clink/datasets/psychedelic_designs/retiarius",
-      "tier": "O_1",
+      "tier": "O₁",
       "tuple": "⟨𐑼 · 𐑡 · 𐑾 · 𐑿 · 𐑞 · 𐑺 · 𐑚 · 𐑜 · 𐑮 · 𐑒 · 𐑕 · 𐑷⟩",
       "innovations": [
         "First G=𐑚 (local only)",
@@ -47,7 +47,7 @@
     "praxeum": {
       "name": "Praxeum (EP-Core Control Platform)",
       "directory": "/home/mrnob0dy666/red-hot_rebis/clink/datasets/psychedelic_designs/praxeum",
-      "tier": "O_0",
+      "tier": "O₀",
       "tuple": "⟨𐑦 · 𐑶 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · 𐑻 · 𐑫 · 𐑳 · 𐑭⟩",
       "innovations": [
         "First Ph=𐑻 (exceptional point)",

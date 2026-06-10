@@ -4,7 +4,7 @@
   "design_principle": "zero_incision_in_situ_assembly",
   "delivery": "ultrasound_guided_percutaneous_injection",
   "structural_type": "⟨𐑼 · 𐑶 · 𐑾 · 𐑬 · 𐑞 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑖 · 𐑳 · 𐑴⟩",
-  "tier": "O_2",
+  "tier": "O₂",
   "cell_types": 4,
   "sensors": 5,
   "antidote_arms": 6,

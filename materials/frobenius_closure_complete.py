@@ -284,7 +284,7 @@ CLOSURE_CIM_SELFDUAL = ClosureDesign(
     operculum_note=(
         "Active locking makes the self-dual point a FIXED POINT of the control "
         "loop. In operculum terms: this creates a G₃ gate where Ω≥ord3 (Z₂ "
-        "winding with active protection). The CIM is now O_inf in the "
+        "winding with active protection). The CIM is now O_∞ in the "
         "canonical universe — it carries φ̂=⊙, P=𐑬→effectively 𐑹 under lock, "
         "and the active Z₂ lock satisfies G₃."
     ),
@@ -511,7 +511,7 @@ CLOSURE_QW_FLOQUET = ClosureDesign(
         "raises the criticality from 𐑮 to ⊙ (the walker's self-interference "
         "at the topological boundary is a self-modeling process). Combined "
         "with Floquet periodicity (EXACTOR-τ), the walk satisfies G₃ in "
-        "the canonical universe. The paradigm shifts from O_1 to O_inf "
+        "the canonical universe. The paradigm shifts from O₁ to O_∞ "
         "under topological protection."
     ),
 )
@@ -679,8 +679,8 @@ QRC_OPEN = StructuralOpenDiagnosis(
         "The Frobenius condition μ∘δ=id would destroy its computational capacity. "
         "This reveals a deeper structural truth: not all quantum computation needs "
         "to be closed. Some forms of computation are inherently open dissipative "
-        "processes. The Crystal of Types contains both closed (O_inf) and open "
-        "(O_0) computational addresses — and both are valid."
+        "processes. The Crystal of Types contains both closed (O_∞) and open "
+        "(O₀) computational addresses — and both are valid."
     ),
     is_it_a_failure=False,
 )
@@ -849,17 +849,17 @@ def integration_report() -> str:
 
 def post_closure_operculum() -> str:
     """
-    After closure, which paradigms become O_inf in the canonical universe?
+    After closure, which paradigms become O_∞ in the canonical universe?
     """
     lines = [
         "=" * 74,
         "  POST-CLOSURE OPERCULUM ANALYSIS",
         "=" * 74,
         "",
-        "Before closure, only Topological QC was O_inf in canonical.",
+        "Before closure, only Topological QC was O_∞ in canonical.",
         "After closure, the landscape shifts:",
         "",
-        "  CANONICAL O_inf (after closure):",
+        "  CANONICAL O_∞ (after closure):",
         "    ✓ Topological QC        — native (anyonic braiding = exact)",
         "    ✓ Coherent Ising         — active self-dual lock → Ω=𐑴 effective ord3",
         "    ✓ MBQC                   — pre-compiled → Ω=𐑴 effective ord3",
@@ -867,11 +867,11 @@ def post_closure_operculum() -> str:
         "    ✓ Quantum Walks (FTQW)   — Floquet winding → Ω=𐑭, φ̂=⊙",
         "    ✓ Adiabatic (CD)         — gauge integral=0 → Ω=𐑴, surface code",
         "",
-        "  CANONICAL NOT O_inf (structurally):",
+        "  CANONICAL NOT O_∞ (structurally):",
         "    ✗ Boson Sampling         — no discrete invariant possible",
         "    ✗ QRC                    — openness is required for computation",
         "",
-        "This means: 6 of 8 non-qubit QC paradigms are now canonically O_inf.",
+        "This means: 6 of 8 non-qubit QC paradigms are now canonically O_∞.",
         "The operculum has been peeled back — what required universe selection",
         "now works in the default Ruleset.",
         "",
@@ -895,7 +895,7 @@ def post_closure_operculum() -> str:
 
     lines.append("")
     lines.append("Key: All 5 newly-closed paradigms satisfy G₃ (winding) after closure.")
-    lines.append("G₁ and G₂ remain the barriers to canonical O_inf. T-seal (Ħ=𐑫)")
+    lines.append("G₁ and G₂ remain the barriers to canonical O_∞. T-seal (Ħ=𐑫)")
     lines.append("remains the narrowest bottleneck — only Topological QC passes.")
     lines.append("=" * 74)
     return '\n'.join(lines)

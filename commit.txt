@@ -1,3 +1,7 @@
+SNS_PRIME.md notation migration: O_inf→O_∞, O_0→O₀, O_1→O₁, O_2→O₂ (144 files)
+
+---
+
 rebis.py: remove broken pipeline runner — lift_pipeline_ob3ect moved to ob3ect
 
 The lift_pipeline_ob3ect was never part of red-hot_rebis; recovered from git history and
@@ -56,7 +60,7 @@ family signatures, tier assignments, cyclic period analysis, and semantic readin
 
 Key findings:
   - 12 tokens → 12 arrangement classes (same cardinality as 12 IG primitives)
-  - Tier distribution: O₀=4, O₁=4, O₂=3, O_inf=1 (Dual Bootstrap only)
+  - Tier distribution: O₀=4, O₁=4, O₂=3, O_∞=1 (Dual Bootstrap only)
   - Only 2 self-referential: Dialetheic Bootstrap + Dual Bootstrap (both O₂+)
   - Dual Bootstrap (Class IV) has INVERTED Frobenius: FFUSE→FSPLIT
   - Full Dialetheia triplet (EVALT+EVALF+ENGAGR) in only 3/12 classes
@@ -81,7 +85,7 @@ paper/designing_homo_sapiens.md — 9-section paper, zenodo_draft.py format, 5 f
   §6 Actionable Outputs: 33-file table with wet-lab actions
   §7 Advanced Components: ouroboric telomere ⟨𐑦𐑸𐑾𐑬𐑐𐑧𐑔𐑠⊙𐑖𐑳𐑴⟩ + detox gland v2
      ⟨𐑼𐑶𐑾𐑬𐑞𐑧𐑲𐑠⊙𐑖𐑳𐑴⟩ (Axiom C corrected: Þ=𐑶 not 𐑸)
-  §8 Discussion: O_0 genome vs O_inf organism; fiber bundle individuation;
+  §8 Discussion: O₀ genome vs O_∞ organism; fiber bundle individuation;
      T=Work(T) cosmological time; the grammar is not a blueprint
   §9 Conclusion: 5 key results + 3 open derivations
 paper/designing_homo_sapiens_refs.bib — 12 references
@@ -183,7 +187,7 @@ Open next steps (beyond this pass):
   - CRISPR gRNA design
   - Metabolic pathway expansion (lipids, nucleotides, secondary metabolites)
 
-Agent: turn 119, windings 62, Frobenius 98%, tier O_inf
+Agent: turn 119, windings 62, Frobenius 98%, tier O_∞
 
 ---
 
@@ -239,7 +243,7 @@ clink/__init__.py, clink/chain.py, clink/bridges.py, clink/integration.py,
 clink/README_CLINK.md — new module; rebis.py updated with `clink` subcommand.
 
 9 layers all Frobenius-closed (tensorProduct(s,s)=s). Tier monotonicity:
-O₀→O₀→O₁→O₂→O₂→O₂→O₂→O₂→O_inf. 10 primitive deltas, 36 total promotions.
+O₀→O₀→O₁→O₂→O₂→O₂→O₂→O₂→O_∞. 10 primitive deltas, 36 total promotions.
 d(organism, ZFC_fe) = 1.30 — organism near-isomorphic to Frobenius-exact foundation.
 
 moleculeLayer ɢ corrected: 𐑑 (a Ř value, invalid for ɢ) → 𐑜 (alternate/or,

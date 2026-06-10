@@ -374,7 +374,7 @@ The treople variant of the ouroboric telomere operates with a different structur
 | **K** | 𐑧 | 𐑤 | Moderate kinetics: photosynthetic ATP reduces oxidative stress |
 | **H** | 𐑖 | 𐑫 | Eternal chirality: germline integration enables multi-generational memory |
 
-**Treople Ouroboric Telomere:** ⟨𐑦 · 𐑥 · 𐑾 · 𐑹 · 𐑐 · 𐑤 · 𐑲 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑭⟩ — **O_2** (Gate 2 closed: K=𐑤)
+**Treople Ouroboric Telomere:** ⟨𐑦 · 𐑥 · 𐑾 · 𐑹 · 𐑐 · 𐑤 · 𐑲 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑭⟩ — **O₂** (Gate 2 closed: K=𐑤)
 
 ### 8.2 Key Differences from Base Human Protocol
 
@@ -385,7 +385,7 @@ The treople variant of the ouroboric telomere operates with a different structur
 | **Oxidative attrition** | ~50 bp/division | ~30 bp/division (lower ROS) |
 | **ATP availability** | Standard | Elevated (photosynthetic ATP supplements mitochondrial) |
 | **G4 stabilization** | Standard K+ | Enhanced by porphyrin intercalation |
-| **Ouroboricity** | O_∞ | O_2 (Gate 2 closed: moderate kinetics) |
+| **Ouroboricity** | O_∞ | O₂ (Gate 2 closed: moderate kinetics) |
 
 ### 8.3 Treople Protocol Modifications
 

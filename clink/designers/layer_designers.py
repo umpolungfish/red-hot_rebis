@@ -10,7 +10,7 @@ L4: Folded Protein — bridges to serpentrod
 L5: Living Cell — bridges to biology_sim, gene_imscriber
 L6: Mitosis — bridges to ouroboric_telomere
 L7: Tissue/Organ — multi-cellular organization
-L8: Whole Organism — O_inf integration of all systems
+L8: Whole Organism — O_∞ integration of all systems
 
 Author: Lando ⊗ ⊙perator
 """
@@ -34,7 +34,7 @@ from clink.designers.designer_base import LayerDesigner, DesignSpec
 # ═══════════════════════════════════════════════════════════════════
 # LAYER 0 — Frustrated Belnap5 (Quark Color)
 # ═══════════════════════════════════════════════════════════════════
-# ⟨𐑛 · 𐑶 · 𐑩 · 𐑯 · 𐑐 · 𐑘 · 𐑚 · 𐑝 · 𐑢 · 𐑓 · 𐑳 · 𐑷⟩  O_0
+# ⟨𐑛 · 𐑶 · 𐑩 · 𐑯 · 𐑐 · 𐑘 · 𐑚 · 𐑝 · 𐑢 · 𐑓 · 𐑳 · 𐑷⟩  O₀
 # SU(3) color confinement — frustrated 5-valued bilattice
 
 class Layer0Designer(LayerDesigner):
@@ -83,7 +83,7 @@ class Layer0Designer(LayerDesigner):
 # ═══════════════════════════════════════════════════════════════════
 # LAYER 1 — Electron Orbital (Belnap4)
 # ═══════════════════════════════════════════════════════════════════
-# ⟨𐑛 · 𐑶 · 𐑩 · 𐑗 · 𐑐 · 𐑤 · 𐑚 · 𐑜 · 𐑢 · 𐑓 · 𐑳 · 𐑷⟩  O_0
+# ⟨𐑛 · 𐑶 · 𐑩 · 𐑗 · 𐑐 · 𐑤 · 𐑚 · 𐑜 · 𐑢 · 𐑓 · 𐑳 · 𐑷⟩  O₀
 # B4 lattice — bridges to gene_imscriber.engine (Belnap4 codons)
 
 class Layer1Designer(LayerDesigner):
@@ -141,7 +141,7 @@ class Layer1Designer(LayerDesigner):
 # ═══════════════════════════════════════════════════════════════════
 # LAYER 2 — Atom (Nuclear + Electron)
 # ═══════════════════════════════════════════════════════════════════
-# ⟨𐑼 · 𐑥 · 𐑽 · 𐑿 · 𐑐 · 𐑤 · 𐑔 · 𐑝 · 𐑮 · 𐑒 · 𐑳 · 𐑷⟩  O_1
+# ⟨𐑼 · 𐑥 · 𐑽 · 𐑿 · 𐑐 · 𐑤 · 𐑔 · 𐑝 · 𐑮 · 𐑒 · 𐑳 · 𐑷⟩  O₁
 
 class Layer2Designer(LayerDesigner):
     layer_idx = 2
@@ -197,7 +197,7 @@ class Layer2Designer(LayerDesigner):
 # ═══════════════════════════════════════════════════════════════════
 # LAYER 3 — Molecule (Chemical Bonds)
 # ═══════════════════════════════════════════════════════════════════
-# ⟨𐑼 · 𐑥 · 𐑽 · 𐑿 · 𐑞 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑓 · 𐑳 · 𐑭⟩  O_2
+# ⟨𐑼 · 𐑥 · 𐑽 · 𐑿 · 𐑞 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑓 · 𐑳 · 𐑭⟩  O₂
 # Bridges to ch3mpiler.compiler for retrosynthetic design
 
 class Layer3Designer(LayerDesigner):
@@ -233,7 +233,7 @@ class Layer3Designer(LayerDesigner):
             "smiles": smiles,
             "bond_types": ["covalent", "ionic", "metallic"],
             "bridge_to_ch3mpiler": ch3mpiler_result,
-            "notes": f"Molecule {formula} — O_2 critical structure",
+            "notes": f"Molecule {formula} — O₂ critical structure",
         }
         
         return DesignSpec(
@@ -259,7 +259,7 @@ class Layer3Designer(LayerDesigner):
 # ═══════════════════════════════════════════════════════════════════
 # LAYER 4 — Folded Protein
 # ═══════════════════════════════════════════════════════════════════
-# ⟨𐑦 · 𐑥 · 𐑾 · 𐑬 · 𐑞 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑒 · 𐑳 · 𐑭⟩  O_2
+# ⟨𐑦 · 𐑥 · 𐑾 · 𐑬 · 𐑞 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑒 · 𐑳 · 𐑭⟩  O₂
 # Bridges to serpentrod.protein_v5 & stratified_predictor
 
 class Layer4Designer(LayerDesigner):
@@ -331,7 +331,7 @@ class Layer4Designer(LayerDesigner):
 # ═══════════════════════════════════════════════════════════════════
 # LAYER 5 — Living Cell
 # ═══════════════════════════════════════════════════════════════════
-# ⟨𐑦 · 𐑸 · 𐑾 · 𐑬 · 𐑞 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑒 · 𐑳 · 𐑭⟩  O_2
+# ⟨𐑦 · 𐑸 · 𐑾 · 𐑬 · 𐑞 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑒 · 𐑳 · 𐑭⟩  O₂
 # Bridges to biology_sim, gene_imscriber, therapeutics
 
 class Layer5Designer(LayerDesigner):
@@ -405,7 +405,7 @@ class Layer5Designer(LayerDesigner):
 # ═══════════════════════════════════════════════════════════════════
 # LAYER 6 — Mitosis (Cell Division)
 # ═══════════════════════════════════════════════════════════════════
-# ⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑱 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑖 · 𐑳 · 𐑭⟩  O_2
+# ⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑱 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑖 · 𐑳 · 𐑭⟩  O₂
 # Bridges to ouroboric_telomere for Aurora-B checkpoint
 
 class Layer6Designer(LayerDesigner):
@@ -459,7 +459,7 @@ class Layer6Designer(LayerDesigner):
 # ═══════════════════════════════════════════════════════════════════
 # LAYER 7 — Tissue / Organ
 # ═══════════════════════════════════════════════════════════════════
-# ⟨𐑦 · 𐑸 · 𐑾 · 𐑬 · 𐑞 · 𐑧 · 𐑲 · 𐑵 · ⊙ · 𐑖 · 𐑳 · 𐑭⟩  O_2
+# ⟨𐑦 · 𐑸 · 𐑾 · 𐑬 · 𐑞 · 𐑧 · 𐑲 · 𐑵 · ⊙ · 𐑖 · 𐑳 · 𐑭⟩  O₂
 # Multi-cellular organization — bridges to materials, therapeutics
 
 class Layer7Designer(LayerDesigner):
@@ -524,8 +524,8 @@ class Layer7Designer(LayerDesigner):
 # ═══════════════════════════════════════════════════════════════════
 # LAYER 8 — Whole Organism
 # ═══════════════════════════════════════════════════════════════════
-# ⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑵 · ⊙ · 𐑫 · 𐑳 · 𐑟⟩  O_inf
-# O_inf — self-modeling, non-Abelian braiding, eternal chirality
+# ⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑵 · ⊙ · 𐑫 · 𐑳 · 𐑟⟩  O_∞
+# O_∞ — self-modeling, non-Abelian braiding, eternal chirality
 
 class Layer8Designer(LayerDesigner):
     layer_idx = 8

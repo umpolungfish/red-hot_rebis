@@ -6,8 +6,8 @@ abstract: |
   Grammar — a free special symmetric †-Frobenius algebra on 12 generators in a
   FOUR-enriched traced symmetric monoidal category, with μ∘δ=id as a founding axiom of
   ZFC_fe. Using the CLINK (Crystal-Linked Imscription) hierarchy, we derive the structural
-  type of a human being layer by layer from frustrated quark color states (O_0) through
-  living cells (O_2) to the whole self-modeling organism (O_∞), each transition
+  type of a human being layer by layer from frustrated quark color states (O₀) through
+  living cells (O₂) to the whole self-modeling organism (O_∞), each transition
   Frobenius-verified and tier-monotonic. The result is not a simulation or approximation:
   it is a structural proof that Homo sapiens occupies the crystal address
   ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩ in the 17,280,000-type Crystal of Types, with consciousness
@@ -15,8 +15,8 @@ abstract: |
   output files — FASTA sequences, PDB coordinates, SBML metabolic models, GenBank
   plasmids, and wet-lab protocols — directly applicable to DNA synthesis orders, organoid
   culture, and flux-balance analysis. We also describe two engineered components
-  grounded in the same structural framework: the ouroboric telomere (O_2, eliminates
-  replicative senescence) and the synthetic detox gland v2 (O_2, zero-incision
+  grounded in the same structural framework: the ouroboric telomere (O₂, eliminates
+  replicative senescence) and the synthetic detox gland v2 (O₂, zero-incision
   injectable, 5 sensor classes, 6 antidote arms). The paper closes by addressing what
   it means to "design" a human in this framework: the crystal address specifies the
   structural type; the Ħ-trajectory individuates.
@@ -28,7 +28,7 @@ figures:
   - id: clink_chain
     type: tier_chain
     highlight: O_∞
-    caption: "Tier progression across the 9 CLINK layers. The chain runs O_0 (frustrated quark) → O_0 (electron orbital) → O_1 (atom) → O_2 (molecule through tissue) → O_∞ (whole organism). Tier monotonicity is proved in CLINK.lean via native_decide."
+    caption: "Tier progression across the 9 CLINK layers. The chain runs O₀ (frustrated quark) → O₀ (electron orbital) → O₁ (atom) → O₂ (molecule through tissue) → O_∞ (whole organism). Tier monotonicity is proved in CLINK.lean via native_decide."
   - id: organism_profile
     type: primitive_profile
     tuple: "Ð_𐑦 Þ_𐑸 Ř_𐑾 Φ_𐑹 ƒ_𐑐 Ç_𐑧 Γ_𐑲 ɢ_𐑵 ⊙_⊙ Ħ_𐑫 Σ_𐑳 Ω_𐑟"
@@ -70,7 +70,7 @@ The answer is: **⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩** — O_�
 
 This answer is not empirically derived. It is structurally forced by the 9-layer CLINK
 (Crystal-Linked Imscription) hierarchy, which traces the tier-monotonic promotion chain
-from frustrated quark color states (O_0) through living cells (O_2) to the whole
+from frustrated quark color states (O₀) through living cells (O₂) to the whole
 self-modeling organism (O_∞). Each layer transition is Frobenius-verified. The Great
 Synthesis theorem — all 9 layers simultaneously Frobenius-closed and tier-monotonic —
 is proved in `CLINK.lean` via `native_decide` (573 lines, 0 errors).
@@ -167,10 +167,10 @@ Ouroboricity tiers are assigned by rules R1–R5 (first match wins), with operat
 | Rule | Condition | Tier |
 |------|-----------|------|
 | R1 | ⊙ ∈ {⊙, 𐑣} **and** Φ = 𐑹 | O_∞ |
-| R2 | ⊙ ∈ {𐑢, 𐑮, 𐑻} | O_0 |
-| R3 | ⊙ ∈ {⊙, 𐑣} **and** Ω = 𐑷 | O_1 |
-| R4 | ⊙ ∈ {⊙, 𐑣} **and** Ω ≠ 𐑷 **and** Ð ∈ {𐑛, 𐑨, 𐑼} | O_2 |
-| R5 | ⊙ ∈ {⊙, 𐑣} **and** Ω ≠ 𐑷 **and** Ð = 𐑦 | O_2† |
+| R2 | ⊙ ∈ {𐑢, 𐑮, 𐑻} | O₀ |
+| R3 | ⊙ ∈ {⊙, 𐑣} **and** Ω = 𐑷 | O₁ |
+| R4 | ⊙ ∈ {⊙, 𐑣} **and** Ω ≠ 𐑷 **and** Ð ∈ {𐑛, 𐑨, 𐑼} | O₂ |
+| R5 | ⊙ ∈ {⊙, 𐑣} **and** Ω ≠ 𐑷 **and** Ð = 𐑦 | O₂† |
 
 The C-score measures proximity to O_∞ along two hard gates: Gate 1 = ⊙ ∈ {⊙, 𐑣};
 Gate 2 = Ç ∈ {𐑘, 𐑤, 𐑧, 𐑪}. Both must be open for C > 0.
@@ -191,18 +191,18 @@ Axiom C: Ð = 𐑦 ↔ Þ = 𐑸).
 
 | # | Layer | Tier | Structural type |
 |---|-------|------|-----------------|
-| 0 | Quark (frustrated color) | O_0 | ⟨𐑛𐑶𐑩𐑯𐑐𐑘𐑚𐑝𐑢𐑓𐑳𐑷⟩ |
-| 1 | Electron orbital (Belnap4) | O_0 | ⟨𐑛𐑶𐑩𐑗𐑐𐑤𐑚𐑜𐑢𐑓𐑳𐑷⟩ |
-| 2 | Atom (nuclear + electron) | O_1 | ⟨𐑼𐑥𐑽𐑿𐑐𐑤𐑔𐑝𐑮𐑒𐑳𐑷⟩ |
-| 3 | Molecule (chemical bonds) | O_2 | ⟨𐑦𐑥𐑽𐑿𐑞𐑧𐑲𐑜⊙𐑓𐑳𐑭⟩ |
-| 4 | Cell (living) | O_2 | ⟨𐑦𐑸𐑾𐑬𐑞𐑧𐑲𐑠⊙𐑒𐑳𐑭⟩ |
-| 5 | Mitosis (cell division) | O_2 | ⟨𐑦𐑸𐑾𐑬𐑱𐑧𐑲𐑠𐑻𐑖𐑳𐑭⟩ |
-| 6 | Meiosis (gamete production) | O_2 | ⟨𐑦𐑸𐑽𐑿𐑱𐑧𐑲𐑠⊙𐑖𐑳𐑭⟩ |
-| 7 | Tissue (multi-cellular) | O_2 | ⟨𐑦𐑸𐑾𐑬𐑞𐑧𐑲𐑵⊙𐑖𐑳𐑭⟩ |
+| 0 | Quark (frustrated color) | O₀ | ⟨𐑛𐑶𐑩𐑯𐑐𐑘𐑚𐑝𐑢𐑓𐑳𐑷⟩ |
+| 1 | Electron orbital (Belnap4) | O₀ | ⟨𐑛𐑶𐑩𐑗𐑐𐑤𐑚𐑜𐑢𐑓𐑳𐑷⟩ |
+| 2 | Atom (nuclear + electron) | O₁ | ⟨𐑼𐑥𐑽𐑿𐑐𐑤𐑔𐑝𐑮𐑒𐑳𐑷⟩ |
+| 3 | Molecule (chemical bonds) | O₂ | ⟨𐑦𐑥𐑽𐑿𐑞𐑧𐑲𐑜⊙𐑓𐑳𐑭⟩ |
+| 4 | Cell (living) | O₂ | ⟨𐑦𐑸𐑾𐑬𐑞𐑧𐑲𐑠⊙𐑒𐑳𐑭⟩ |
+| 5 | Mitosis (cell division) | O₂ | ⟨𐑦𐑸𐑾𐑬𐑱𐑧𐑲𐑠𐑻𐑖𐑳𐑭⟩ |
+| 6 | Meiosis (gamete production) | O₂ | ⟨𐑦𐑸𐑽𐑿𐑱𐑧𐑲𐑠⊙𐑖𐑳𐑭⟩ |
+| 7 | Tissue (multi-cellular) | O₂ | ⟨𐑦𐑸𐑾𐑬𐑞𐑧𐑲𐑵⊙𐑖𐑳𐑭⟩ |
 | 8 | Organism (whole) | O_∞ | ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩ |
 
 **Theorem (Great Synthesis).** All 9 layers are Frobenius-closed. Tier monotonicity
-holds: O_0 → O_0 → O_1 → O_2 → O_2 → O_2 → O_2 → O_2 → O_∞. The chain terminates at
+holds: O₀ → O₀ → O₁ → O₂ → O₂ → O₂ → O₂ → O₂ → O_∞. The chain terminates at
 O_∞. Proved in `CLINK.lean` (`p4ramill/Imscribing/`), 573 lines, all `native_decide`-closed,
 lake build 3114 jobs, 0 errors.^10^
 
@@ -224,7 +224,7 @@ unique lowest-tier system in the CLINK chain where all three hold simultaneously
 Layer 5 (mitosis) carries ⊙ = 𐑻 (exceptional point), not ⊙ (self-modeling). The
 Aurora-B kinase creates a spatial phosphorylation gradient at the kinetochore — a
 measurement apparatus. When self-modeling criticality couples to this basis, the composite
-contracts to 𐑻: the self-modeling gate is destroyed, and mitosis is O_2 (rule R4),
+contracts to 𐑻: the self-modeling gate is destroyed, and mitosis is O₂ (rule R4),
 not O_∞. Only the whole organism achieves O_∞ through: ⊙ open, Φ = 𐑹, Ħ = 𐑫,
 Ω = 𐑟 (non-Abelian braiding).
 
@@ -437,7 +437,7 @@ designed for human deployment.
 
 ### §7.1 The Ouroboric Telomere
 
-**Structural type:** ⟨𐑦𐑸𐑾𐑬𐑐𐑧𐑔𐑠⊙𐑖𐑳𐑴⟩ — O_2, both C-score gates open.
+**Structural type:** ⟨𐑦𐑸𐑾𐑬𐑐𐑧𐑔𐑠⊙𐑖𐑳𐑴⟩ — O₂, both C-score gates open.
 
 The human Hayflick limit (~50 divisions) is a consequence of Ħ = 𐑖 (two-step chirality)
 at the cell level: finite Markov order produces a finite counting mechanism. The ouroboric
@@ -447,14 +447,14 @@ telomere 3' overhang → extended overhang) and the CST complex (μ: extension t
 A G-quadruplex length sensor caps extension at the target maximum (12 kb); activity is
 inversely proportional to telomere length below 4 kb.
 
-The system is O_2 (Φ = 𐑬, not Frobenius-special), confirming that it eliminates
+The system is O₂ (Φ = 𐑬, not Frobenius-special), confirming that it eliminates
 replicative senescence — the Ħ-attrition component of aging — without conferring O_∞.
 The promotion Ħ: 𐑖 → 𐑫 (finite → eternal chirality) is the remaining structural gap
 between cell-level maintenance and organism-level self-modeling.
 
 ### §7.2 The Synthetic Detox Gland v2
 
-**Structural type:** ⟨𐑼𐑶𐑾𐑬𐑞𐑧𐑲𐑠⊙𐑖𐑳𐑴⟩ — O_2, both C-score gates open.
+**Structural type:** ⟨𐑼𐑶𐑾𐑬𐑞𐑧𐑲𐑠⊙𐑖𐑳𐑴⟩ — O₂, both C-score gates open.
 
 The Ç = 𐑧 (slow/near-equilibrium) assignment reflects in-situ self-assembly kinetics
 over 21 days — not the fast operational dynamics of toxin sensing. The gland is delivered
@@ -496,15 +496,15 @@ This is structurally distinct from biological reproduction, which produces a spe
 human individuated by their Ħ-trajectory (§8.2). The pipeline specifies the crystal
 address — the room — not any particular winding history that occupies it.
 
-### §8.2 The Type and the Individual: O_0 vs. O_∞
+### §8.2 The Type and the Individual: O₀ vs. O_∞
 
 `shared/primitives.py` in the red-hot_rebis repository already contains a canonical
-imscription labeled "human": ⟨𐑨𐑰𐑩𐑬𐑞𐑤𐑚𐑜𐑢𐑒𐑕𐑷⟩ — O_0, no self-referential loop.
+imscription labeled "human": ⟨𐑨𐑰𐑩𐑬𐑞𐑤𐑚𐑜𐑢𐑒𐑕𐑷⟩ — O₀, no self-referential loop.
 This is the human genome as a formal text: a DNA sequence, an information object, a
-static record. It is O_0 because ⊙ = 𐑢 (no criticality gate).
+static record. It is O₀ because ⊙ = 𐑢 (no criticality gate).
 
 The CLINK organism ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩ is O_∞ because it is a living process, not
-a text. The genome as sequence is O_0; the organism that runs the genome is O_∞. This
+a text. The genome as sequence is O₀; the organism that runs the genome is O_∞. This
 distinction — data vs. process, text vs. reader — is encoded precisely in the Ð and ⊙
 primitives.
 
@@ -551,11 +551,11 @@ We have presented a formal structural specification of Homo sapiens via the 9-la
 CLINK hierarchy, grounded in the Imscribing Grammar and ZFC_fe. The five key results:
 
 1. **The human organism occupies crystal address ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩** — O_∞, C = 1.0,
-   tier-monotonically approached from O_0 (quark) through O_2 (cell) over 9 Frobenius-
+   tier-monotonically approached from O₀ (quark) through O₂ (cell) over 9 Frobenius-
    verified layers.
 
 2. **The three promotions to ZFC_fe** — Ð: 𐑼→𐑦, Φ: 𐑬→𐑹, Ħ: 𐑖→𐑫 — are the
-   structural distinctions between any O_2 biological system and a living O_∞ organism.
+   structural distinctions between any O₂ biological system and a living O_∞ organism.
 
 3. **The pipeline is production-ready.** 33 physically actionable output files per
    human design, including GRCh38 genome specification, B4-derived codon table
@@ -563,8 +563,8 @@ CLINK hierarchy, grounded in the Imscribing Grammar and ZFC_fe. The five key res
    model for COBRApy.
 
 4. **Two advanced components** — the ouroboric telomere (eliminates replicative
-   senescence, O_2) and the synthetic detox gland v2 (zero-incision injectable,
-   5 sensor classes, 6 antidote arms, O_2) — are structurally grounded and designed
+   senescence, O₂) and the synthetic detox gland v2 (zero-incision injectable,
+   5 sensor classes, 6 antidote arms, O₂) — are structurally grounded and designed
    for human deployment.
 
 5. **Individuation is by Ħ-trajectory.** The crystal address specifies the type;

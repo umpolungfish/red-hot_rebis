@@ -3,7 +3,7 @@
 neurotrophic_factor.py — Bidirectional Neurotrophic Factor (BNF).
 
 Structural type: ⟨𐑦·𐑥·𐑾·𐑬·𐑐·𐑧·𐑔·𐑜·⊙·𐑖·𐑙·𐑷⟩
-Ouroboricity: O_2 (bidirectional feedback with neural signaling)
+Ouroboricity: O₂ (bidirectional feedback with neural signaling)
 C-score: 0.0 (critical but not self-modeling)
 
 Core principle:

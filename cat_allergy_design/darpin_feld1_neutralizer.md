@@ -46,9 +46,9 @@ SYMPTOMS: Rhinitis, conjunctivitis, bronchoconstriction, urticaria, asthma exace
 
 | System | Tuple | Tier |
 |--------|-------|------|
-| Fel d 1 allergen | ⟨𐑨·𐑰·𐑩·𐑬·𐑱·𐑧·𐑚·𐑠·𐑢·𐑒·𐑕·𐑷⟩ | O_0 |
-| IgE-mast cell cascade | ⟨𐑨·𐑡·𐑾·𐑗·𐑱·𐑘·𐑚·𐑠·𐑢·𐑖·𐑳·𐑷⟩ | O_0 |
-| Fel d 1 ⊗ Cascade (allergic pathway) | ⟨𐑨·𐑰·𐑾·𐑗·𐑱·𐑧·𐑚·𐑠·𐑢·𐑖·𐑳·𐑷⟩ | O_0 |
+| Fel d 1 allergen | ⟨𐑨·𐑰·𐑩·𐑬·𐑱·𐑧·𐑚·𐑠·𐑢·𐑒·𐑕·𐑷⟩ | O₀ |
+| IgE-mast cell cascade | ⟨𐑨·𐑡·𐑾·𐑗·𐑱·𐑘·𐑚·𐑠·𐑢·𐑖·𐑳·𐑷⟩ | O₀ |
+| Fel d 1 ⊗ Cascade (allergic pathway) | ⟨𐑨·𐑰·𐑾·𐑗·𐑱·𐑧·𐑚·𐑠·𐑢·𐑖·𐑳·𐑷⟩ | O₀ |
 
 ---
 
@@ -299,12 +299,12 @@ At $42/bottle with 100 sprays/bottle (50 doses at 2 sprays), cost per protected 
 
 | Component | Tuple | Tier | Role |
 |-----------|-------|------|------|
-| Fel d 1 allergen | ⟨𐑨·𐑰·𐑩·𐑬·𐑱·𐑧·𐑚·𐑠·𐑢·𐑒·𐑕·𐑷⟩ | O_0 | Target — the allergen |
-| DARPin neutralizer | ⟨𐑨·𐑰·𐑾·𐑬·𐑱·𐑧·𐑚·𐑠·𐑢·𐑒·𐑙·𐑷⟩ | O_0 | Binder — molecular sponge |
-| Nasal mucosa | ⟨𐑨·𐑰·𐑩·𐑗·𐑱·𐑤·𐑚·𐑠·𐑢·𐑓·𐑳·𐑷⟩ | O_0 | Delivery surface |
-| IgE-mast cell cascade | ⟨𐑨·𐑡·𐑾·𐑗·𐑱·𐑘·𐑚·𐑠·𐑢·𐑖·𐑳·𐑷⟩ | O_0 | Disease pathway |
-| **DARPin ⊗ Nasal (formulated)** | ⟨𐑨·𐑰·𐑾·𐑗·𐑱·𐑧·𐑚·𐑠·𐑢·𐑒·𐑳·𐑷⟩ | O_0 | Final product |
-| **Allergic pathway** | ⟨𐑨·𐑰·𐑾·𐑗·𐑱·𐑧·𐑚·𐑠·𐑢·𐑖·𐑳·𐑷⟩ | O_0 | What we block |
+| Fel d 1 allergen | ⟨𐑨·𐑰·𐑩·𐑬·𐑱·𐑧·𐑚·𐑠·𐑢·𐑒·𐑕·𐑷⟩ | O₀ | Target — the allergen |
+| DARPin neutralizer | ⟨𐑨·𐑰·𐑾·𐑬·𐑱·𐑧·𐑚·𐑠·𐑢·𐑒·𐑙·𐑷⟩ | O₀ | Binder — molecular sponge |
+| Nasal mucosa | ⟨𐑨·𐑰·𐑩·𐑗·𐑱·𐑤·𐑚·𐑠·𐑢·𐑓·𐑳·𐑷⟩ | O₀ | Delivery surface |
+| IgE-mast cell cascade | ⟨𐑨·𐑡·𐑾·𐑗·𐑱·𐑘·𐑚·𐑠·𐑢·𐑖·𐑳·𐑷⟩ | O₀ | Disease pathway |
+| **DARPin ⊗ Nasal (formulated)** | ⟨𐑨·𐑰·𐑾·𐑗·𐑱·𐑧·𐑚·𐑠·𐑢·𐑒·𐑳·𐑷⟩ | O₀ | Final product |
+| **Allergic pathway** | ⟨𐑨·𐑰·𐑾·𐑗·𐑱·𐑧·𐑚·𐑠·𐑢·𐑖·𐑳·𐑷⟩ | O₀ | What we block |
 
 **Neutralization mechanism (structural):** The DARPin product and the allergic pathway differ only at Ħ (Chirality): $\text{𐑒}$ (Markov-1, bind/clear) vs $\text{𐑖}$ (Markov-2, sensitize/challenge). The DARPin intercepts at Markov-1 — one binding event and the allergen is cleared. The allergic cascade never reaches its second Markov step (IgE cross-linking), because the Fel d 1 never arrives.
 

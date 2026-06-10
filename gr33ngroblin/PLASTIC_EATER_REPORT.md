@@ -376,11 +376,11 @@ ammonium sulfate is recommended.
 
 | Enzyme | Target | Type | Tier |
 |--------|--------|------|------|
-| IsPETase (*Ideonella sakaiensis*) | PET | Esterase | O_1 |
-| MHETase (*I. sakaiensis*) | MHET | Esterase | O_1 |
-| LCC (leaf compost cutinase) | PET | Esterase | O_1 |
-| AlkB (*Pseudomonas putida*) | Alkanes | Hydroxylase | O_1 |
-| **PLASTIC_EATER (this work)** | **6 plastics** | **Multi-domain fusion** | **O_1** |
+| IsPETase (*Ideonella sakaiensis*) | PET | Esterase | O₁ |
+| MHETase (*I. sakaiensis*) | MHET | Esterase | O₁ |
+| LCC (leaf compost cutinase) | PET | Esterase | O₁ |
+| AlkB (*Pseudomonas putida*) | Alkanes | Hydroxylase | O₁ |
+| **PLASTIC_EATER (this work)** | **6 plastics** | **Multi-domain fusion** | **O₁** |
 
 PLASTIC_EATER is the **first designed enzyme targeting all six major plastic
 classes simultaneously**. While individual domains are structurally simpler

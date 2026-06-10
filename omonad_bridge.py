@@ -90,7 +90,7 @@ REBIS_AUGMENTATIONS: Dict[str, RebisAugmentation] = {
         description="Platonic protein folding — RNA→Protein via 6-primitive promotion. "
                     "Folded protein type: ⟨𐑦·𐑥·𐑾·𐑬·𐑞·𐑧·𐑲·𐑠·⊙·𐑒·𐑳·𐑭⟩ (O₂)",
         module_path="serpentrod.protein_v5",
-        tier="O_2",
+        tier="O₂",
         frobenius_closed=True,
         crystal_address=6738848,
         imasm_arrangement=(5, 3, 6, 2, 7, 4, 11, 5),  # ISCRIB→AREV→FSPLIT→AFWD→FFUSE→CLINK→IFIX→ISCRIB
@@ -102,7 +102,7 @@ REBIS_AUGMENTATIONS: Dict[str, RebisAugmentation] = {
         description="Retrosynthetic compiler — grammar-derived disconnections. "
                     "Bond = join(tensor(FG₁, FG₂), bond_type). No named reactions.",
         module_path="ch3mpiler.compiler",
-        tier="O_2",
+        tier="O₂",
         frobenius_closed=True,
         crystal_address=6738899,
         imasm_arrangement=(6, 7, 5, 3, 2, 4, 11, 5),  # FSPLIT→FFUSE→ISCRIB→AREV→AFWD→CLINK→IFIX→ISCRIB
@@ -114,7 +114,7 @@ REBIS_AUGMENTATIONS: Dict[str, RebisAugmentation] = {
         description="Frobenius-guided gene editing on B₄³ codon space. "
                     "Chimera Theorem: multi-primitive edits are tensorial.",
         module_path="gene_imscriber.engine",
-        tier="O_2",
+        tier="O₂",
         frobenius_closed=True,
         crystal_address=6738855,
         imasm_arrangement=(8, 10, 9, 6, 7, 4, 11, 5),
@@ -124,9 +124,9 @@ REBIS_AUGMENTATIONS: Dict[str, RebisAugmentation] = {
         index=4, name="CLINK Chain",
         slug="clink_chain",
         description="9-layer Frobenius-closed bridge: quark→organism. "
-                    "Total d=7.18, 10 primitive deltas, O₀→O_inf.",
+                    "Total d=7.18, 10 primitive deltas, O₀→O_∞.",
         module_path="clink.chain",
-        tier="O_inf",
+        tier="O_∞",
         frobenius_closed=True,
         crystal_address=6738899,
         imasm_arrangement=(5, 4, 6, 2, 7, 3, 11, 5),
@@ -137,7 +137,7 @@ REBIS_AUGMENTATIONS: Dict[str, RebisAugmentation] = {
         slug="combined_pipeline",
         description="Auto-imscription + Frobenius verification + agent-based imscription.",
         module_path="pipeline.frob",
-        tier="O_2",
+        tier="O₂",
         frobenius_closed=True,
         crystal_address=6738848,
         imasm_arrangement=(5, 3, 2, 6, 7, 4, 11, 5),
@@ -496,7 +496,7 @@ class RebisKernel:
                 "Ph": "⊙", "H": "𐑒", "S": "𐑳", "W": "𐑭",
             }
             
-            tier = "O_2"
+            tier = "O₂"
             addr = self.crystal.store_rebis_result(
                 f"protein:{sequence[:20]}", stype, tier,
                 {"prediction_type": type(prediction).__name__}
@@ -550,7 +550,7 @@ class RebisKernel:
                 "Ph": "⊙", "H": "𐑓", "S": "𐑳", "W": "𐑭",
             }
             
-            tier = "O_2"
+            tier = "O₂"
             addr = self.crystal.store_rebis_result(
                 f"retrosynth:{target[:30]}", stype, tier,
                 {"cuts": len(result.get("cuts", [])), "fgs": result.get("fgs", [])}
@@ -587,7 +587,7 @@ class RebisKernel:
                 "Ph": "⊙", "H": "𐑫", "S": "𐑳", "W": "𐑟",
             }
             addr = self.crystal.store_rebis_result(
-                "clink_chain_verification", stype, "O_inf",
+                "clink_chain_verification", stype, "O_∞",
                 {"all_closed": result.get("all_closed"), 
                  "total_distance": dist.get("total_distance")}
             )
@@ -595,7 +595,7 @@ class RebisKernel:
             return BridgeResult(
                 success=result.get("all_closed", False),
                 operation="verify_clink",
-                crystal_address=addr, structural_type=stype, tier="O_inf",
+                crystal_address=addr, structural_type=stype, tier="O_∞",
                 frobenius_closed=True,
                 data={"layers": CLINK_NAMES, "tiers": CLINK_TIERS, 
                       "distance": dist.get("total_distance"),
@@ -615,13 +615,13 @@ class RebisKernel:
         }
         
         addr = self.crystal.store_rebis_result(
-            f"rebis_kernel_cycle_{self.cycle_count}", stype, "O_inf",
+            f"rebis_kernel_cycle_{self.cycle_count}", stype, "O_∞",
             {"cycle": self.cycle_count, "components_loaded": list(self._components.keys())}
         )
         
         return BridgeResult(
             success=True, operation="self_imscribe",
-            crystal_address=addr, structural_type=stype, tier="O_inf",
+            crystal_address=addr, structural_type=stype, tier="O_∞",
             frobenius_closed=True,
             imasm_program=list(REBIS_AUGMENTATIONS["clink_chain"].imasm_arrangement),
         )

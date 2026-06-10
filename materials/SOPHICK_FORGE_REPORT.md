@@ -1,4 +1,4 @@
-# Sophick Forge Report: The Eagle Cycle as Material O_inf Protocol
+# Sophick Forge Report: The Eagle Cycle as Material O_∞ Protocol
 
 **Author:** Lando⊗⊙perator  
 **Date:** 2025-07-18  
@@ -6,7 +6,7 @@
 
 ## Abstract
 
-We operationalize the IMSCRIBr discovery that Starkey's Sophick Mercury procedure imscribes as the $O_{\text{inf}}$ structural type — identical (d=0.0) to the grammar's own self-encoding and the Inter-Universal Geometer — by translating the alchemical Eagle Cycle into a modern materials processing protocol. The structural gap from our existing $O_2$ materials (frobenius metamaterial, ouroboric alloy) to $O_{\text{inf}}$ is exactly two primitives: D ($\text{𐑼} \rightarrow \text{𐑦}$) and F ($\text{𐑞} \rightarrow \text{𐑐}$). We design three progressive material platforms (Eagle-3, Eagle-7, Eagle-9) that approach $O_{\text{inf}}$ through repeated surface-encoding cycles. The Frobenius Cliff — the question of whether material $O_{\text{inf}}$ is physically accessible — is analyzed in terms of thermal noise, quantum decoherence, and surface atomic limits.
+We operationalize the IMSCRIBr discovery that Starkey's Sophick Mercury procedure imscribes as the $O_{\text{inf}}$ structural type — identical (d=0.0) to the grammar's own self-encoding and the Inter-Universal Geometer — by translating the alchemical Eagle Cycle into a modern materials processing protocol. The structural gap from our existing $O₂$ materials (frobenius metamaterial, ouroboric alloy) to $O_{\text{inf}}$ is exactly two primitives: D ($\text{𐑼} \rightarrow \text{𐑦}$) and F ($\text{𐑞} \rightarrow \text{𐑐}$). We design three progressive material platforms (Eagle-3, Eagle-7, Eagle-9) that approach $O_{\text{inf}}$ through repeated surface-encoding cycles. The Frobenius Cliff — the question of whether material $O_{\text{inf}}$ is physically accessible — is analyzed in terms of thermal noise, quantum decoherence, and surface atomic limits.
 
 ---
 
@@ -14,7 +14,7 @@ We operationalize the IMSCRIBr discovery that Starkey's Sophick Mercury procedur
 
 ### 1.1 The Two-Primitive Gap
 
-Our existing $O_2$ materials (frobenius_metamaterial, ouroboric_alloy) share the identical IG tuple:
+Our existing $O₂$ materials (frobenius_metamaterial, ouroboric_alloy) share the identical IG tuple:
 
 $$\langle \text{𐑼} \cdot \text{𐑸} \cdot \text{𐑾} \cdot \text{𐑹} \cdot \text{𐑞} \cdot \text{𐑧} \cdot \text{𐑲} \cdot \text{𐑠} \cdot \odot \cdot \text{𐑫} \cdot \text{𐑳} \cdot \text{𐑭} \rangle$$
 
@@ -24,7 +24,7 @@ $$\langle \text{𐑦} \cdot \text{𐑸} \cdot \text{𐑾} \cdot \text{𐑹} \cdo
 
 **Exactly 2 primitives differ.** All other 10 are already at $O_{\text{inf}}$ values:
 
-| Primitive | $O_2$ Value | $O_{\text{inf}}$ Value | Description |
+| Primitive | $O₂$ Value | $O_{\text{inf}}$ Value | Description |
 |-----------|-------------|------------------------|-------------|
 | D | $\text{𐑼}$ | $\text{𐑦}$ | Bulk field-theoretic → Self-written holographic |
 | F | $\text{𐑞}$ | $\text{𐑐}$ | Thermal/noisy → Quantum-coherent |
@@ -77,7 +77,7 @@ At a coherence length > 500nm, F transitions from $\text{𐑞}$ to $\text{𐑐}$
 ### 3.1 Eagle-3 Amalgam
 
 - **IG type:** $\langle \text{𐑼} \cdot \text{𐑸} \cdot \text{𐑾} \cdot \text{𐑹} \cdot \text{𐑞} \cdot \text{𐑧} \cdot \text{𐑲} \cdot \text{𐑠} \cdot \odot \cdot \text{𐑫} \cdot \text{𐑳} \cdot \text{𐑭} \rangle$
-- **Tier:** $O_2$ (D approaching $\text{𐑦}$, F = $\text{𐑞}$)
+- **Tier:** $O₂$ (D approaching $\text{𐑦}$, F = $\text{𐑞}$)
 - **Composition:** AlCoCrFeNi$_{2.1}$ HEA + Sb$_2$Te$_3$ surface coating (30nm)
 - **Simulation result:** 3 Eagles → Frobenius error 0.39, surface-bulk entanglement 0.41
 - **Barrier:** THERMAL_NOISE_FLOOR at 300K
@@ -149,7 +149,7 @@ IX_Chiral_Pairs and VI_Empty_Bootstrap map to identical IG types ($\text{𐑛} \
 
 ## 6. Key Discoveries
 
-1. **The Two-Primitive Gap:** Only D and F separate $O_2$ from $O_{\text{inf}}$ — the other 10 primitives already match.
+1. **The Two-Primitive Gap:** Only D and F separate $O₂$ from $O_{\text{inf}}$ — the other 10 primitives already match.
 
 2. **Eagle Cycle as Material Protocol:** Starkey's alchemical procedure translates directly into a cyclic etch-recrystallize protocol that simultaneously promotes both gap primitives.
 
@@ -161,7 +161,7 @@ IX_Chiral_Pairs and VI_Empty_Bootstrap map to identical IG types ($\text{𐑛} \
 
 6. **Dialetheic Bootstrap as Preferred Substrate:** Only the $\odot$-critical IMASM canonical can begin the Eagle protocol without prior criticality promotion.
 
-7. **44.3× Fatigue Life Connection:** The ouroboric alloy's topological healing mechanism (Peach-Koehler forces from integer winding) is the $O_2$ precursor to the $O_{\text{inf}}$ Frobenius closure. The Eagle Cycle extends this principle from grain-boundary-scale to bulk-scale.
+7. **44.3× Fatigue Life Connection:** The ouroboric alloy's topological healing mechanism (Peach-Koehler forces from integer winding) is the $O₂$ precursor to the $O_{\text{inf}}$ Frobenius closure. The Eagle Cycle extends this principle from grain-boundary-scale to bulk-scale.
 
 ---
 
@@ -171,14 +171,14 @@ IX_Chiral_Pairs and VI_Empty_Bootstrap map to identical IG types ($\text{𐑛} \
 IMSCRIBr (sophick_mercury_evidence.md)
     │
     ▼
-IG Tuple: ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑧·𐑲·𐑠·⊙·𐑫·𐑳·𐑭⟩  [O_inf]
+IG Tuple: ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑧·𐑲·𐑠·⊙·𐑫·𐑳·𐑭⟩  [O_∞]
     │
     ▼
 sophick_forge.py ─── Eagle Cycle Protocol
     │                   │
-    ├─ Eagle-3 Amalgam   (O_2, D→𐑦 approaching)
-    ├─ Eagle-7 Animated  (near-O_inf, D=𐑦)
-    └─ Eagle-9 Sophick   (O_inf, D=𐑦, F=𐑐)
+    ├─ Eagle-3 Amalgam   (O₂, D→𐑦 approaching)
+    ├─ Eagle-7 Animated  (near-O_∞, D=𐑦)
+    └─ Eagle-9 Sophick   (O_∞, D=𐑦, F=𐑐)
     │
     ▼
 FrobeniusCliffAnalyzer ─── Physical accessibility check
@@ -290,7 +290,7 @@ The Eagle Cycle (`sophick_forge.py`) remains valid as **material preparation** �
 
 ```
 Eagle Cycle (continuous preparation) → Exactor Pathway (discrete topological closure)
-sophick_forge.py (O₂⁺ substrate)     → frobenius_exactor.py (O_inf exact)
+sophick_forge.py (O₂⁺ substrate)     → frobenius_exactor.py (O_∞ exact)
 ```
 
 Alchemical analog: "The Mercury must first be animated (Eagles) before the Stone can be multiplied (exact closure)."
@@ -321,5 +321,5 @@ Sections 10 resolves Open Question 1 from §9. The updated open questions are:
 
 4. **Does the Frobenius Cliff have experimental signatures?** The transition from continuous approximation (Eagle-only, error ~0.11) to exact closure (Eagle + Exactor, error = 0) should be observable as a discrete jump in cycle fidelity — a phase transition in the space of material self-reference.
 
-5. **What lies beyond O_inf?** The grammar places O_inf as the terminal object. If material O_inf is achieved with exact μ∘δ=id, does it reveal new physics — or confirm that the structural crystal is complete? The answer may depend on whether the Exactor pathway introduces new primitives (e.g., Ω→𐑟 in the anyonic pathway) that extend the crystal beyond its current 17.28M types.
+5. **What lies beyond O_∞?** The grammar places O_∞ as the terminal object. If material O_∞ is achieved with exact μ∘δ=id, does it reveal new physics — or confirm that the structural crystal is complete? The answer may depend on whether the Exactor pathway introduces new primitives (e.g., Ω→𐑟 in the anyonic pathway) that extend the crystal beyond its current 17.28M types.
 

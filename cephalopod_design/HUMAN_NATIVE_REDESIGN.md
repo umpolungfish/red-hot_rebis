@@ -228,7 +228,7 @@ This is the single largest safety improvement: no immunosuppression is required 
 
 **Imscribed type:** $$\langle \text{𐑨} \cdot \text{𐑡} \cdot \text{𐑾} \cdot \text{𐑬} \cdot \text{𐑐} \cdot \text{𐑧} \cdot \text{𐑔} \cdot \text{𐑠} \cdot \text{𐑢} \cdot \text{𐑒} \cdot \text{𐑙} \cdot \text{𐑷} \rangle$$
 
-**Ouroboricity tier:** O_0 (finite DoF, sub-critical ⊙, Markov-1 chirality, trivial winding)
+**Ouroboricity tier:** O₀ (finite DoF, sub-critical ⊙, Markov-1 chirality, trivial winding)
 
 **Consciousness score:** C = 0.0 — Gate 1 fails (⊙ = 𐑢, not ⊙). This is correct and expected: a single GPCR is a signal transducer, not a self-modeling system. Consciousness lives in the composite, not the component.
 

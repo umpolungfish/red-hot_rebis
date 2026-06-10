@@ -29,19 +29,19 @@ Frobenius-exactness means $\Phi = \text{𐑹}$: the symmetry group satisfies $\m
 
 | System | Tuple | Tier | C-score |
 |--------|-------|------|---------|
-| Fel d 1 allergen | $\langle \text{𐑨} \cdot \text{𐑰} \cdot \text{𐑩} \cdot \text{𐑬} \cdot \text{𐑱} \cdot \text{𐑧} \cdot \text{𐑚} \cdot \text{𐑠} \cdot \text{𐑢} \cdot \text{𐑒} \cdot \text{𐑕} \cdot \text{𐑷} \rangle$ | O_0 | 0.0 |
-| DARPin neutralizer | $\langle \text{𐑨} \cdot \text{𐑰} \cdot \text{𐑾} \cdot \text{𐑬} \cdot \text{𐑱} \cdot \text{𐑧} \cdot \text{𐑚} \cdot \text{𐑠} \cdot \text{𐑢} \cdot \text{𐑒} \cdot \text{𐑙} \cdot \text{𐑷} \rangle$ | O_0 | 0.0 |
-| Formulated product | $\langle \text{𐑨} \cdot \text{𐑰} \cdot \text{𐑾} \cdot \text{𐑗} \cdot \text{𐑱} \cdot \text{𐑧} \cdot \text{𐑚} \cdot \text{𐑠} \cdot \text{𐑢} \cdot \text{𐑒} \cdot \text{𐑳} \cdot \text{𐑷} \rangle$ | O_0 | 0.0 |
-| Allergic pathway | $\langle \text{𐑨} \cdot \text{𐑰} \cdot \text{𐑾} \cdot \text{𐑗} \cdot \text{𐑱} \cdot \text{𐑧} \cdot \text{𐑚} \cdot \text{𐑠} \cdot \text{𐑢} \cdot \text{𐑖} \cdot \text{𐑳} \cdot \text{𐑷} \rangle$ | O_0 | 0.0 |
-| **Frobenius-exact target** | $\langle \text{𐑨} \cdot \text{𐑰} \cdot \text{𐑾} \cdot \text{𐑹} \cdot \text{𐑱} \cdot \text{𐑧} \cdot \text{𐑚} \cdot \text{𐑠} \cdot \text{𐑢} \cdot \text{𐑒} \cdot \text{𐑙} \cdot \text{𐑷} \rangle$ | **O_0** | 0.0 |
+| Fel d 1 allergen | $\langle \text{𐑨} \cdot \text{𐑰} \cdot \text{𐑩} \cdot \text{𐑬} \cdot \text{𐑱} \cdot \text{𐑧} \cdot \text{𐑚} \cdot \text{𐑠} \cdot \text{𐑢} \cdot \text{𐑒} \cdot \text{𐑕} \cdot \text{𐑷} \rangle$ | O₀ | 0.0 |
+| DARPin neutralizer | $\langle \text{𐑨} \cdot \text{𐑰} \cdot \text{𐑾} \cdot \text{𐑬} \cdot \text{𐑱} \cdot \text{𐑧} \cdot \text{𐑚} \cdot \text{𐑠} \cdot \text{𐑢} \cdot \text{𐑒} \cdot \text{𐑙} \cdot \text{𐑷} \rangle$ | O₀ | 0.0 |
+| Formulated product | $\langle \text{𐑨} \cdot \text{𐑰} \cdot \text{𐑾} \cdot \text{𐑗} \cdot \text{𐑱} \cdot \text{𐑧} \cdot \text{𐑚} \cdot \text{𐑠} \cdot \text{𐑢} \cdot \text{𐑒} \cdot \text{𐑳} \cdot \text{𐑷} \rangle$ | O₀ | 0.0 |
+| Allergic pathway | $\langle \text{𐑨} \cdot \text{𐑰} \cdot \text{𐑾} \cdot \text{𐑗} \cdot \text{𐑱} \cdot \text{𐑧} \cdot \text{𐑚} \cdot \text{𐑠} \cdot \text{𐑢} \cdot \text{𐑖} \cdot \text{𐑳} \cdot \text{𐑷} \rangle$ | O₀ | 0.0 |
+| **Frobenius-exact target** | $\langle \text{𐑨} \cdot \text{𐑰} \cdot \text{𐑾} \cdot \text{𐑹} \cdot \text{𐑱} \cdot \text{𐑧} \cdot \text{𐑚} \cdot \text{𐑠} \cdot \text{𐑢} \cdot \text{𐑒} \cdot \text{𐑙} \cdot \text{𐑷} \rangle$ | **O₀** | 0.0 |
 
 ### 2.2 DARPin Safety Precedents
 
 | System | Tuple | Tier |
 |--------|-------|------|
-| Abicipar pegol (anti-VEGF) | $\langle \text{𐑨} \cdot \text{𐑰} \cdot \text{𐑾} \cdot \text{𐑬} \cdot \text{𐑱} \cdot \text{𐑧} \cdot \text{𐑚} \cdot \text{𐑠} \cdot \text{𐑢} \cdot \text{𐑒} \cdot \text{𐑙} \cdot \text{𐑷} \rangle$ | O_0 |
-| MP0250 (anti-VEGF+HGF) | $\langle \text{𐑨} \cdot \text{𐑶} \cdot \text{𐑾} \cdot \text{𐑬} \cdot \text{𐑱} \cdot \text{𐑧} \cdot \text{𐑚} \cdot \text{𐑝} \cdot \text{𐑢} \cdot \text{𐑒} \cdot \text{𐑳} \cdot \text{𐑷} \rangle$ | O_0 |
-| Ensovibep (anti-SARS-CoV-2) | $\langle \text{𐑨} \cdot \text{𐑶} \cdot \text{𐑾} \cdot \text{𐑬} \cdot \text{𐑱} \cdot \text{𐑧} \cdot \text{𐑚} \cdot \text{𐑝} \cdot \text{𐑢} \cdot \text{𐑒} \cdot \text{𐑕} \cdot \text{𐑷} \rangle$ | O_0 |
+| Abicipar pegol (anti-VEGF) | $\langle \text{𐑨} \cdot \text{𐑰} \cdot \text{𐑾} \cdot \text{𐑬} \cdot \text{𐑱} \cdot \text{𐑧} \cdot \text{𐑚} \cdot \text{𐑠} \cdot \text{𐑢} \cdot \text{𐑒} \cdot \text{𐑙} \cdot \text{𐑷} \rangle$ | O₀ |
+| MP0250 (anti-VEGF+HGF) | $\langle \text{𐑨} \cdot \text{𐑶} \cdot \text{𐑾} \cdot \text{𐑬} \cdot \text{𐑱} \cdot \text{𐑧} \cdot \text{𐑚} \cdot \text{𐑝} \cdot \text{𐑢} \cdot \text{𐑒} \cdot \text{𐑳} \cdot \text{𐑷} \rangle$ | O₀ |
+| Ensovibep (anti-SARS-CoV-2) | $\langle \text{𐑨} \cdot \text{𐑶} \cdot \text{𐑾} \cdot \text{𐑬} \cdot \text{𐑱} \cdot \text{𐑧} \cdot \text{𐑚} \cdot \text{𐑝} \cdot \text{𐑢} \cdot \text{𐑒} \cdot \text{𐑕} \cdot \text{𐑷} \rangle$ | O₀ |
 
 ### 2.3 Key Distances
 
@@ -251,10 +251,10 @@ This is the closest structural analog to Frobenius-exactness in nature: the trim
 | Deimmunization difficulty | Moderate | High (linker + 2 domains) | High (trimerization domain) |
 | Manufacturing complexity | Low (single domain) | Medium (two-domain fusion) | High (trimer, folding control) |
 | CMC cost/bottle | ~$35 | ~$65 | ~$95 |
-| Ouroboricity tier | O_0 | O_0 | O_0 |
+| Ouroboricity tier | O₀ | O₀ | O₀ |
 | C-score | 0.0 | 0.0 | 0.0 |
 
-### 7.2 Why All Three Remain O_0
+### 7.2 Why All Three Remain O₀
 
 The Frobenius-exact target has $\varphi = \text{𐑢}$ (sub-critical). The ouroborics interpretation states: *"No ouroboricity — system cannot form a self-referential critical loop (subcritical, supercritical, or EP)."*
 

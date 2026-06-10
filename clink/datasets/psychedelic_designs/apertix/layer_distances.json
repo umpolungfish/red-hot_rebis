@@ -64,7 +64,7 @@
         "delta": -1
       }
     ],
-    "tier": "O_0"
+    "tier": "O₀"
   },
   "L1": {
     "layer": "Electron Orbital (Belnap4)",
@@ -131,7 +131,7 @@
         "delta": -1
       }
     ],
-    "tier": "O_0"
+    "tier": "O₀"
   },
   "L2": {
     "layer": "Atom (Nuclear + Electron)",
@@ -186,7 +186,7 @@
         "delta": -1
       }
     ],
-    "tier": "O_1"
+    "tier": "O₁"
   },
   "L3": {
     "layer": "Molecule (Chemical Bonds)",
@@ -223,7 +223,7 @@
         "delta": 1
       }
     ],
-    "tier": "O_2"
+    "tier": "O₂"
   },
   "L4": {
     "layer": "Folded Protein",
@@ -254,7 +254,7 @@
         "delta": 1
       }
     ],
-    "tier": "O_2"
+    "tier": "O₂"
   },
   "L5": {
     "layer": "Living Cell",
@@ -291,7 +291,7 @@
         "delta": 1
       }
     ],
-    "tier": "O_2"
+    "tier": "O₂"
   },
   "L6": {
     "layer": "Mitosis (Cell Division)",
@@ -328,7 +328,7 @@
         "delta": 1
       }
     ],
-    "tier": "O_2"
+    "tier": "O₂"
   },
   "L7": {
     "layer": "Tissue / Organ",
@@ -365,7 +365,7 @@
         "delta": 1
       }
     ],
-    "tier": "O_2"
+    "tier": "O₂"
   },
   "L8": {
     "layer": "Whole Organism",
@@ -408,6 +408,6 @@
         "delta": 2
       }
     ],
-    "tier": "O_inf"
+    "tier": "O_∞"
   }
 }

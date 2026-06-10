@@ -96,7 +96,7 @@ print("Base written")
 # L0 - Quarks
 w('''
 # ============================================================
-# LAYER 0 — Frustrated Belnap5 (Quark Color) — O_0
+# LAYER 0 — Frustrated Belnap5 (Quark Color) — O₀
 # ============================================================
 
 class Layer0DatasetGenerator(DatasetGenerator):
@@ -106,7 +106,7 @@ class Layer0DatasetGenerator(DatasetGenerator):
     def generate(self, design_data=None):
         out = DatasetOutput(
             layer_idx=0, layer_name="Frustrated Belnap5 (Quarks)",
-            layer_tier="O_0", structural_tuple=dict(self.tup),
+            layer_tier="O₀", structural_tuple=dict(self.tup),
         )
         
         out.files.append(DatasetFile(
@@ -179,7 +179,7 @@ print("L0 written")
 # L1 - Electron Orbitals  
 w('''
 # ============================================================
-# LAYER 1 — Electron Orbital (Belnap4) — O_0
+# LAYER 1 — Electron Orbital (Belnap4) — O₀
 # ============================================================
 
 class Layer1DatasetGenerator(DatasetGenerator):
@@ -189,7 +189,7 @@ class Layer1DatasetGenerator(DatasetGenerator):
     def generate(self, design_data=None):
         out = DatasetOutput(
             layer_idx=1, layer_name="Electron Orbital (Belnap4)",
-            layer_tier="O_0", structural_tuple=dict(self.tup),
+            layer_tier="O₀", structural_tuple=dict(self.tup),
         )
         out.files.append(DatasetFile(
             filename="electron_configurations.csv",

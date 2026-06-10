@@ -4,7 +4,7 @@ ouroboric_alloy.py — Topological Self-Healing Alloy with Integer Winding Prote
 ===================================================================================
 
 Structural type: <𐑼 · 𐑸 · 𐑾 · 𐑹 · 𐑞 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑭>
-Ouroboricity: O_2 (self-healing, topologically protected alloy)
+Ouroboricity: O₂ (self-healing, topologically protected alloy)
 
 Core principle:
   A high-entropy alloy (HEA) whose grain boundary network carries an integer

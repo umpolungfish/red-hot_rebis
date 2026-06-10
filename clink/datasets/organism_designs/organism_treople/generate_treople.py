@@ -16,8 +16,8 @@ Treople = Homo sapiens with:
 
 Six primitive deltas from base human — the deepest variant in this series.
 
-Base type:    ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩  O_inf  (canonical human)
-Treople type: ⟨𐑦𐑻𐑽𐑺𐑕𐑤𐑲𐑵⊙𐑫𐑪𐑟⟩  O_inf  (Homo arboreus)
+Base type:    ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩  O_∞  (canonical human)
+Treople type: ⟨𐑦𐑻𐑽𐑺𐑕𐑤𐑲𐑵⊙𐑫𐑪𐑟⟩  O_∞  (Homo arboreus)
 
 Modified primitives:
   Ħ (Chirality,      pos 2): 𐑸→𐑻  β-glycosidic cellulose (vs α-glycosidic animal polysaccharides)
@@ -228,8 +228,8 @@ TREOPLE_GENES = {
         "targeting": "plasma membrane",
         "delivery": "AAV9 (foot-tropic modified)",
         "codon_opt_fragment": "ATGGGCAAGGGCATCGAGAAGCAGCTGCAGCAGCTGCAGCAGCTG",
-        "ig_note": "ɢ=⊙ preserved: mycorrhizal coupling = O_inf coupling (unchanged; AM symbiosis "
-                   "is already O_inf — the oldest terrestrial symbiosis)",
+        "ig_note": "ɢ=⊙ preserved: mycorrhizal coupling = O_∞ coupling (unchanged; AM symbiosis "
+                   "is already O_∞ — the oldest terrestrial symbiosis)",
     },
     "CCaMK": {
         "uniprot": "Q7X8R3",  # LjCCaMK/DMI3
@@ -667,7 +667,7 @@ TREOPLE_PHYSIOLOGY = {
     "base_human_type": HUMAN_TYPE,
     "photosynthetic_human_type": PHOTO_TYPE,
     "arc": "Elysia chlorotica → Homo sapiens photosynthetic → Homo arboreus (treople)",
-    "tier": "O_inf",
+    "tier": "O_∞",
     "c_score": 1.0,
     "foundation": "ZFC_fe  μ∘δ=id",
     "ig_primitive_deltas": {
@@ -837,7 +837,7 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
 
     print("=" * 70)
     print("CLINK TREOPLE (Homo arboreus) DESIGN PIPELINE")
-    print(f"Homo arboreus — {TREOPLE_TYPE}  O_inf  C=1.0")
+    print(f"Homo arboreus — {TREOPLE_TYPE}  O_∞  C=1.0")
     print("ZFC_fe foundation: μ∘δ=id at every layer")
     print(f"Base human type:   {HUMAN_TYPE}")
     print(f"Photo human type:  {PHOTO_TYPE}")
@@ -934,7 +934,7 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
         "structural_type": TREOPLE_TYPE,
         "base_human_type": HUMAN_TYPE,
         "arc_position": "3rd / terminal: Elysia → photosynthetic human → Homo arboreus",
-        "tier": "O_inf",
+        "tier": "O_∞",
         "c_score": 1.0,
         "primitive_deltas": TREOPLE_PHYSIOLOGY["ig_primitive_deltas"],
         "mycorrhizal_frobenius": TREOPLE_PHYSIOLOGY["mycorrhizal_frobenius"],
@@ -978,7 +978,7 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
         "total_bytes": total_bytes,
         "output_directory": str(out_path),
         "frobenius_verified": True,
-        "tier": "O_inf",
+        "tier": "O_∞",
         "c_score": 1.0,
         "foundation": "ZFC_fe",
         "arc": "Elysia chlorotica → Homo sapiens (photo) → Homo arboreus",
@@ -1005,7 +1005,7 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
     print(f"Arc position:            Elysia → photo human → Homo arboreus [TERMINAL]")
     print(f"Oldest Frobenius:        mycorrhizal PT4 (400 Mya)")
     print(f"Gene cassettes:          5  ({len(TREOPLE_GENES)} genes total)")
-    print(f"Tier: O_inf  |  C-score: 1.0")
+    print(f"Tier: O_∞  |  C-score: 1.0")
     print(f"Foundation: ZFC_fe  |  μ∘δ=id")
     print(f"{'=' * 70}")
 

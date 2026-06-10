@@ -75,23 +75,23 @@
   },
   "supercritical_launch": {
     "method": "Supercritical Launch",
-    "mechanism": "Co-administer Chimerium (Ph=𐑣) with any sub-O_inf compound. The supercritical catalyst tensor-promotes the base compound, adding 5–12 universes of access.",
+    "mechanism": "Co-administer Chimerium (Ph=𐑣) with any sub-O_∞ compound. The supercritical catalyst tensor-promotes the base compound, adding 5–12 universes of access.",
     "known_launches": {
       "ketamine + chimerium": {
-        "from_tier": "O_1",
-        "to_tier": "O_2",
+        "from_tier": "O₁",
+        "to_tier": "O₂",
         "universes_gained": 12,
         "risk": "HIGH — dissociative + supercritical"
       },
       "mescaline + chimerium": {
-        "from_tier": "O_0",
-        "to_tier": "O_1",
+        "from_tier": "O₀",
+        "to_tier": "O₁",
         "universes_gained": 5,
         "risk": "moderate"
       },
       "retiarius + chimerium": {
-        "from_tier": "O_1",
-        "to_tier": "O_2",
+        "from_tier": "O₁",
+        "to_tier": "O₂",
         "universes_gained": 8,
         "risk": "moderate-high"
       }

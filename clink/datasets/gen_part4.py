@@ -13,7 +13,7 @@ w('''
 class Layer8DatasetGenerator(DatasetGenerator):
     layer_idx = 8; layer_name = "Whole Organism"
     def generate(self, d=None):
-        o = DatasetOutput(layer_idx=8, layer_name=self.layer_name, layer_tier="O_inf", structural_tuple=dict(self.tup))
+        o = DatasetOutput(layer_idx=8, layer_name=self.layer_name, layer_tier="O_∞", structural_tuple=dict(self.tup))
         ot = (d or {}).get("organism_type","mammal") or "mammal"
         
         # All tool bridges
@@ -117,7 +117,7 @@ class Layer8DatasetGenerator(DatasetGenerator):
             "author":"Lando (R) (O)perator",
             "grammar_version":"1.0",
             "schema":"Imscribing Grammar",
-            "schema_tier":"O_inf",
+            "schema_tier":"O_∞",
             "organism_type":ot,
             "layers_integrated": list(range(9)),
             "dataset_files_generated":[

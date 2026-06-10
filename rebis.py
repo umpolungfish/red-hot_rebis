@@ -197,7 +197,7 @@ def cmd_clink(args):
             print(IMASM_EagleBridge.report())
         else:
             print("Sophick Forge - Eagle Cycle Protocol")
-            print(f"  Sophick Mercury (O_inf):  <{' · '.join(SOPHICK_MERCURY)}>")
+            print(f"  Sophick Mercury (O_∞):  <{' · '.join(SOPHICK_MERCURY)}>")
             print(f"  Ouroboric O2 materials:   <{' · '.join(OUROBORIC_O2)}>")
             print(f"  Structural distance:       {STRUCTURAL_DISTANCE_O2_TO_OINF:.4f}")
             print(f"  Gap primitives:            {[GAP_PRIMITIVES[i]['name'] for i in GAP_PRIMITIVES]}")
@@ -512,7 +512,7 @@ def cmd_materials(args):
             print(IMASM_EagleBridge.report())
         else:
             print("Sophick Forge - Eagle Cycle Protocol")
-            print(f"  Sophick Mercury (O_inf):  <{' · '.join(SOPHICK_MERCURY)}>")
+            print(f"  Sophick Mercury (O_∞):  <{' · '.join(SOPHICK_MERCURY)}>")
             print(f"  Ouroboric O2 materials:   <{' · '.join(OUROBORIC_O2)}>")
             print(f"  Structural distance:       {STRUCTURAL_DISTANCE_O2_TO_OINF:.4f}")
             print(f"  Gap primitives:            {[GAP_PRIMITIVES[i]['name'] for i in GAP_PRIMITIVES]}")

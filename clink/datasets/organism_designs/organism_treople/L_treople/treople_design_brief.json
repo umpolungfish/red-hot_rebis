@@ -2,7 +2,7 @@
   "structural_type": "\u27e8\ud801\udc66\ud801\udc7b\ud801\udc7d\ud801\udc7a\ud801\udc55\ud801\udc64\ud801\udc72\ud801\udc75\u2299\ud801\udc6b\ud801\udc6a\ud801\udc5f\u27e9",
   "base_human_type": "\u27e8\ud801\udc66\ud801\udc78\ud801\udc7e\ud801\udc79\ud801\udc50\ud801\udc67\ud801\udc72\ud801\udc75\u2299\ud801\udc6b\ud801\udc73\ud801\udc5f\u27e9",
   "arc_position": "3rd / terminal: Elysia \u2192 photosynthetic human \u2192 Homo arboreus",
-  "tier": "O_inf",
+  "tier": "O_∞",
   "c_score": 1.0,
   "primitive_deltas": {
     "\u0126_Chirality": {

@@ -94,7 +94,7 @@
       "Morphing aerospace structure (full path memory)"
     ],
     "frobenius_score": 0.9,
-    "ouroboricity_tier": "O_2"
+    "ouroboricity_tier": "O₂"
   },
   "critical_sensor_metamaterial": {
     "name": "critical_sensor_metamaterial",
@@ -189,7 +189,7 @@
       "Shape-memory actuator / deployable structure"
     ],
     "frobenius_score": 0.4,
-    "ouroboricity_tier": "O_2"
+    "ouroboricity_tier": "O₂"
   },
   "ep_detector": {
     "name": "ep_detector",
@@ -283,7 +283,7 @@
       "Quantum sensing / qubit host"
     ],
     "frobenius_score": 0.05,
-    "ouroboricity_tier": "O_1"
+    "ouroboricity_tier": "O₁"
   },
   "eternal_memory_alloy": {
     "name": "eternal_memory_alloy",
@@ -372,7 +372,7 @@
       "Morphing aerospace structure (full path memory)"
     ],
     "frobenius_score": 0.2,
-    "ouroboricity_tier": "O_1"
+    "ouroboricity_tier": "O₁"
   },
   "topological_thermal_rectifier": {
     "name": "topological_thermal_rectifier",
@@ -467,7 +467,7 @@
       "Shape-memory actuator / deployable structure"
     ],
     "frobenius_score": 0.35,
-    "ouroboricity_tier": "O_2"
+    "ouroboricity_tier": "O₂"
   },
   "hierarchical_impact_absorber": {
     "name": "hierarchical_impact_absorber",
@@ -560,7 +560,7 @@
       "Hierarchical impact absorber (nano to macro)"
     ],
     "frobenius_score": 0.05,
-    "ouroboricity_tier": "O_1"
+    "ouroboricity_tier": "O₁"
   },
   "quantum_topological_substrate": {
     "name": "quantum_topological_substrate",
@@ -654,7 +654,7 @@
       "Quantum sensing / qubit host"
     ],
     "frobenius_score": 0.4,
-    "ouroboricity_tier": "O_2"
+    "ouroboricity_tier": "O₂"
   },
   "non_abelian_braiding_material": {
     "name": "non_abelian_braiding_material",
@@ -755,7 +755,7 @@
       "Hierarchical impact absorber (nano to macro)"
     ],
     "frobenius_score": 0.85,
-    "ouroboricity_tier": "O_2"
+    "ouroboricity_tier": "O₂"
   },
   "I_Dialetheic_Bootstrap_material": {
     "name": "I_Dialetheic_Bootstrap_material",
@@ -855,7 +855,7 @@
       "Quantum sensing / qubit host"
     ],
     "frobenius_score": 0.95,
-    "ouroboricity_tier": "O_2"
+    "ouroboricity_tier": "O₂"
   },
   "II_Void_Genesis_material": {
     "name": "II_Void_Genesis_material",
@@ -952,7 +952,7 @@
       "Morphing aerospace structure (full path memory)"
     ],
     "frobenius_score": 0.9,
-    "ouroboricity_tier": "O_1"
+    "ouroboricity_tier": "O₁"
   },
   "III_Anchor_Protocol_material": {
     "name": "III_Anchor_Protocol_material",
@@ -1041,7 +1041,7 @@
       "Morphing aerospace structure (full path memory)"
     ],
     "frobenius_score": 0.2,
-    "ouroboricity_tier": "O_1"
+    "ouroboricity_tier": "O₁"
   },
   "IV_Dual_Bootstrap_material": {
     "name": "IV_Dual_Bootstrap_material",
@@ -1134,7 +1134,7 @@
       "Morphing aerospace structure (full path memory)"
     ],
     "frobenius_score": 0.25,
-    "ouroboricity_tier": "O_2"
+    "ouroboricity_tier": "O₂"
   },
   "V_Linear_Chain_material": {
     "name": "V_Linear_Chain_material",
@@ -1224,7 +1224,7 @@
       "Self-healing structural composite"
     ],
     "frobenius_score": 0.1,
-    "ouroboricity_tier": "O_1"
+    "ouroboricity_tier": "O₁"
   },
   "VI_Empty_Bootstrap_material": {
     "name": "VI_Empty_Bootstrap_material",
@@ -1316,7 +1316,7 @@
       "Shape-memory actuator / deployable structure"
     ],
     "frobenius_score": 0.0,
-    "ouroboricity_tier": "O_1"
+    "ouroboricity_tier": "O₁"
   },
   "VII_Parakernel_material": {
     "name": "VII_Parakernel_material",
@@ -1416,7 +1416,7 @@
       "Quantum sensing / qubit host"
     ],
     "frobenius_score": 0.95,
-    "ouroboricity_tier": "O_2"
+    "ouroboricity_tier": "O₂"
   },
   "VIII_Frobenius_Kernel_material": {
     "name": "VIII_Frobenius_Kernel_material",
@@ -1513,7 +1513,7 @@
       "Morphing aerospace structure (full path memory)"
     ],
     "frobenius_score": 0.9,
-    "ouroboricity_tier": "O_1"
+    "ouroboricity_tier": "O₁"
   },
   "IX_Chiral_Pairs_material": {
     "name": "IX_Chiral_Pairs_material",
@@ -1605,7 +1605,7 @@
       "Shape-memory actuator / deployable structure"
     ],
     "frobenius_score": 0.0,
-    "ouroboricity_tier": "O_1"
+    "ouroboricity_tier": "O₁"
   },
   "X_Truth_Machine_material": {
     "name": "X_Truth_Machine_material",
@@ -1694,7 +1694,7 @@
       "Morphing aerospace structure (full path memory)"
     ],
     "frobenius_score": 0.2,
-    "ouroboricity_tier": "O_1"
+    "ouroboricity_tier": "O₁"
   },
   "XI_Eternal_Return_material": {
     "name": "XI_Eternal_Return_material",
@@ -1783,7 +1783,7 @@
       "Morphing aerospace structure (full path memory)"
     ],
     "frobenius_score": 0.2,
-    "ouroboricity_tier": "O_1"
+    "ouroboricity_tier": "O₁"
   },
   "XII_ROM_Burn_material": {
     "name": "XII_ROM_Burn_material",
@@ -1875,6 +1875,6 @@
       "Quantum sensing / qubit host"
     ],
     "frobenius_score": 0.25,
-    "ouroboricity_tier": "O_2"
+    "ouroboricity_tier": "O₂"
   }
 }

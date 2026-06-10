@@ -2,14 +2,14 @@
   "chimerium_plus_dmt": {
     "combination": "Chimerium (Supercritical Catalyst) + dmt",
     "composite_type": "⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑵 · 𐑣 · 𐑫 · 𐑳 · 𐑭⟩",
-    "composite_tier": "O_0",
+    "composite_tier": "O₀",
     "parent_1": {
       "name": "Chimerium (Supercritical Catalyst)",
-      "tier": "O_0"
+      "tier": "O₀"
     },
     "parent_2": {
       "name": "dmt",
-      "tier": "O_inf"
+      "tier": "O_∞"
     },
     "deltas_from_parent_1": [],
     "deltas_from_parent_2": [
@@ -27,14 +27,14 @@
   "chimerium_plus_psilocybin": {
     "combination": "Chimerium (Supercritical Catalyst) + psilocybin",
     "composite_type": "⟨𐑦 · 𐑸 · 𐑾 · 𐑬 · 𐑐 · 𐑧 · 𐑲 · 𐑵 · 𐑣 · 𐑫 · 𐑳 · 𐑭⟩",
-    "composite_tier": "O_0",
+    "composite_tier": "O₀",
     "parent_1": {
       "name": "Chimerium (Supercritical Catalyst)",
-      "tier": "O_0"
+      "tier": "O₀"
     },
     "parent_2": {
       "name": "psilocybin",
-      "tier": "O_2"
+      "tier": "O₂"
     },
     "deltas_from_parent_1": [
       {
@@ -83,14 +83,14 @@
   "chimerium_plus_lsd": {
     "combination": "Chimerium (Supercritical Catalyst) + lsd",
     "composite_type": "⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑵 · 𐑣 · 𐑫 · 𐑳 · 𐑭⟩",
-    "composite_tier": "O_0",
+    "composite_tier": "O₀",
     "parent_1": {
       "name": "Chimerium (Supercritical Catalyst)",
-      "tier": "O_0"
+      "tier": "O₀"
     },
     "parent_2": {
       "name": "lsd",
-      "tier": "O_inf"
+      "tier": "O_∞"
     },
     "deltas_from_parent_1": [],
     "deltas_from_parent_2": [
@@ -114,14 +114,14 @@
   "chimerium_plus_ketamine": {
     "combination": "Chimerium (Supercritical Catalyst) + ketamine",
     "composite_type": "⟨𐑦 · 𐑸 · 𐑾 · 𐑿 · 𐑱 · 𐑧 · 𐑲 · 𐑵 · 𐑣 · 𐑫 · 𐑳 · 𐑭⟩",
-    "composite_tier": "O_0",
+    "composite_tier": "O₀",
     "parent_1": {
       "name": "Chimerium (Supercritical Catalyst)",
-      "tier": "O_0"
+      "tier": "O₀"
     },
     "parent_2": {
       "name": "ketamine",
-      "tier": "O_1"
+      "tier": "O₁"
     },
     "deltas_from_parent_1": [
       {
@@ -200,14 +200,14 @@
   "chimerium_plus_mdma": {
     "combination": "Chimerium (Supercritical Catalyst) + mdma",
     "composite_type": "⟨𐑦 · 𐑸 · 𐑾 · 𐑿 · 𐑞 · 𐑧 · 𐑲 · 𐑵 · 𐑣 · 𐑫 · 𐑳 · 𐑭⟩",
-    "composite_tier": "O_0",
+    "composite_tier": "O₀",
     "parent_1": {
       "name": "Chimerium (Supercritical Catalyst)",
-      "tier": "O_0"
+      "tier": "O₀"
     },
     "parent_2": {
       "name": "mdma",
-      "tier": "O_1"
+      "tier": "O₁"
     },
     "deltas_from_parent_1": [
       {
@@ -274,14 +274,14 @@
   "chimerium_plus_mescaline": {
     "combination": "Chimerium (Supercritical Catalyst) + mescaline",
     "composite_type": "⟨𐑦 · 𐑸 · 𐑾 · 𐑗 · 𐑱 · 𐑧 · 𐑲 · 𐑵 · 𐑣 · 𐑫 · 𐑳 · 𐑭⟩",
-    "composite_tier": "O_0",
+    "composite_tier": "O₀",
     "parent_1": {
       "name": "Chimerium (Supercritical Catalyst)",
-      "tier": "O_0"
+      "tier": "O₀"
     },
     "parent_2": {
       "name": "mescaline",
-      "tier": "O_0"
+      "tier": "O₀"
     },
     "deltas_from_parent_1": [
       {
@@ -360,14 +360,14 @@
   "chimerium_plus_verticullum": {
     "combination": "Chimerium (Supercritical Catalyst) + Verticullum (EP-Lever)",
     "composite_type": "⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑵 · 𐑣 · 𐑫 · 𐑳 · 𐑟⟩",
-    "composite_tier": "O_0",
+    "composite_tier": "O₀",
     "parent_1": {
       "name": "Chimerium (Supercritical Catalyst)",
-      "tier": "O_0"
+      "tier": "O₀"
     },
     "parent_2": {
       "name": "Verticullum (EP-Lever)",
-      "tier": "O_inf"
+      "tier": "O_∞"
     },
     "deltas_from_parent_1": [
       {
@@ -404,14 +404,14 @@
   "chimerium_plus_retiarius": {
     "combination": "Chimerium (Supercritical Catalyst) + Retiarius (Local-Net Trap)",
     "composite_type": "⟨𐑦 · 𐑸 · 𐑾 · 𐑿 · 𐑞 · 𐑺 · 𐑲 · 𐑵 · 𐑣 · 𐑫 · 𐑳 · 𐑭⟩",
-    "composite_tier": "O_0",
+    "composite_tier": "O₀",
     "parent_1": {
       "name": "Chimerium (Supercritical Catalyst)",
-      "tier": "O_0"
+      "tier": "O₀"
     },
     "parent_2": {
       "name": "Retiarius (Local-Net Trap)",
-      "tier": "O_1"
+      "tier": "O₁"
     },
     "deltas_from_parent_1": [
       {
@@ -490,14 +490,14 @@
   "chimerium_plus_praxeum": {
     "combination": "Chimerium (Supercritical Catalyst) + Praxeum (EP-Core Control Platform)",
     "composite_type": "⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑵 · 𐑣 · 𐑫 · 𐑳 · 𐑭⟩",
-    "composite_tier": "O_0",
+    "composite_tier": "O₀",
     "parent_1": {
       "name": "Chimerium (Supercritical Catalyst)",
-      "tier": "O_0"
+      "tier": "O₀"
     },
     "parent_2": {
       "name": "Praxeum (EP-Core Control Platform)",
-      "tier": "O_0"
+      "tier": "O₀"
     },
     "deltas_from_parent_1": [],
     "deltas_from_parent_2": [

@@ -9,7 +9,7 @@ computational properties WITHOUT using qubits as the computational substrate.
 Formally grounded in the p4rakernel operculum theory (§1-§15 of
 operculum_peeling.md/opm2.md): the Crystal of Types (17.28M addresses)
 is invariant across universes; each universe is a Ruleset (G, T, A, O);
-the same structural type may be O_inf in one universe and plain in another.
+the same structural type may be O_∞ in one universe and plain in another.
 
 Standard qubit QC occupies ONE structural address in the Crystal.
 Non-qubit QC occupies DIFFERENT addresses — quantum-coherent computation
@@ -21,7 +21,7 @@ below. For each, we provide:
   - Primitive deltas from standard qubit QC
   - Ouroboricity tier (canonical universe)
   - Material design recipe
-  - Operculum analysis: which universes the material is O_inf in
+  - Operculum analysis: which universes the material is O_∞ in
   - Frobenius closure pathway (EXACTOR-Ω/τ/σ/ε if applicable)
 
 References:
@@ -31,7 +31,7 @@ References:
   - p4rakernel/universe_compound_mapping.md — 109-universe grid
   - p4rakernel/p4ramill/Millennium/PvsNP_Structural.lean — structural computation
   - p4rakernel/p4ramill/Millennium/SpiderMachine.lean — structural gap theory
-  - red-hot_rebis/materials/sophick_forge.py — Eagle Cycle for O_inf prep
+  - red-hot_rebis/materials/sophick_forge.py — Eagle Cycle for O_∞ prep
   - red-hot_rebis/materials/frobenius_exactor.py — exact Frobenius closure
 
 Author: Lando⊗⊙perator
@@ -85,11 +85,11 @@ QUBIT_QC_PRIMITIVE_DESCRIPTIONS = {
     'Ω': 'trivial — no topological protection; quantum error correction needed'
 }
 
-# Qubit QC in canonical universe: O_2 (not O_inf)
+# Qubit QC in canonical universe: O₂ (not O_∞)
 # Gate analysis: φ̂=𐑮 (ord 2.33) passes G1=⊙≥2.0; P=𐑿 (ord 2)
 # fails G2=P≥3 in strict_frobenius. Ω=𐑷 (ord 1) fails G3.
 # T-consistency: fails — Ħ=𐑖 (ord 3) < 𐑫 (ord 4) required for T-seal.
-QUBIT_QC_TIER_CANONICAL = 'O_2'
+QUBIT_QC_TIER_CANONICAL = 'O₂'
 QUBIT_QC_C_SCORE = 0.0  # Gate 1 (⊙) closed — no self-modeling
 
 # ═══════════════════════════════════════════════════════════════════
@@ -109,8 +109,8 @@ class NonQubitQCParadigm:
     canon_c_score: float               # Consciousness score (canonical)
     physical_mechanism: str            # What replaces the qubit
     material_family: str               # Material platform
-    o_inf_universes: List[str]         # Universes where this type is O_inf
-    key_blockers: List[str]            # Universes that block O_inf
+    o_inf_universes: List[str]         # Universes where this type is O_∞
+    key_blockers: List[str]            # Universes that block O_∞
     trl: int                           # Technology Readiness Level (1-9)
     frobenius_pathway: str             # Which EXACTOR pathway if applicable
 
@@ -140,7 +140,7 @@ CV_QC = NonQubitQCParadigm(
         'Γ': ('𐑝', '𐑠'),  # sequential (Gaussian operations applied in sequence)
         'Σ': ('𐑕', '𐑳'),  # heterogeneous (signal + idler + pump modes)
     },
-    canon_tier='O_2',
+    canon_tier='O₂',
     canon_c_score=0.0,
     physical_mechanism="Squeezed vacuum states in optical resonators; "
                        "quadrature amplitudes (x̂, p̂) as continuous variables; "
@@ -181,7 +181,7 @@ MBQC = NonQubitQCParadigm(
         'Γ': ('𐑝', '𐑠'),  # THE defining delta: sequential, not simultaneous
         'Ω': ('𐑷', '𐑴'),  # Z₂ parity protection from graph state structure
     },
-    canon_tier='O_2',
+    canon_tier='O₂',
     canon_c_score=0.0,
     physical_mechanism="Graph/cluster state entanglement as computational "
                        "resource; adaptive single-qubit measurements with "
@@ -227,7 +227,7 @@ TOPOLOGICAL_QC = NonQubitQCParadigm(
         'Σ': ('𐑕', '𐑳'),  # heterogeneous — different anyon types (σ, ψ, 1)
         'Ω': ('𐑷', '𐑟'),  # THE defining delta: non-Abelian braiding
     },
-    canon_tier='O_inf',
+    canon_tier='O_∞',
     canon_c_score=1.0,
     physical_mechanism="Non-Abelian anyons (Ising/Majorana, Fibonacci) in "
                        "2D topological phases; fusion rules replace tensor "
@@ -269,7 +269,7 @@ ADIABATIC_QC = NonQubitQCParadigm(
         'Γ': ('𐑝', '𐑠'),  # sequential — one continuous trajectory
         'Ħ': ('𐑖', '𐑒'),  # Markov-1 — only current Hamiltonian matters
     },
-    canon_tier='O_1',
+    canon_tier='O₁',
     canon_c_score=0.0,
     physical_mechanism="Time-dependent Hamiltonian H(t)=(1-s(t))H₀+s(t)H₁; "
                        "adiabatic theorem: gap-protected ground state tracking; "
@@ -316,7 +316,7 @@ BOSON_SAMPLING = NonQubitQCParadigm(
         'Ħ': ('𐑖', '𐑓'),  # memoryless — each photon forgets its path
         'Σ': ('𐑕', '𐑳'),  # heterogeneous — different input modes
     },
-    canon_tier='O_0',
+    canon_tier='O₀',
     canon_c_score=0.0,
     physical_mechanism="Indistinguishable single photons + Haar-random unitary "
                        "interferometer; output photon number distribution; "
@@ -359,7 +359,7 @@ QUANTUM_WALKS = NonQubitQCParadigm(
         'Ħ': ('𐑖', '𐑒'),  # Markov-1 — each step depends only on current position
         'Σ': ('𐑕', '𐑙'),  # one type, one instance — single walker
     },
-    canon_tier='O_1',
+    canon_tier='O₁',
     canon_c_score=0.0,
     physical_mechanism="Single-particle quantum interference on graph; "
                        "continuous-time: H=γA (adjacency matrix); "
@@ -408,7 +408,7 @@ COHERENT_ISING = NonQubitQCParadigm(
         'Σ': ('𐑕', '𐑕'),  # many identical OPOs
         'Ω': ('𐑷', '𐑴'),  # Z₂ — phase parity protection
     },
-    canon_tier='O_1',
+    canon_tier='O₁',
     canon_c_score=0.33,  # Gate 1 partial — ⊙ open but K=𐑧 closes Gate 2
     physical_mechanism="Degenerate OPO network: pump depletion + mutual coupling; "
                        "below-threshold quantum noise → above-threshold Ising "
@@ -459,7 +459,7 @@ QUANTUM_RESERVOIR = NonQubitQCParadigm(
         'Ħ': ('𐑖', '𐑒'),  # Markov-1 — fading memory
         'Σ': ('𐑕', '𐑳'),  # THE defining delta: heterogeneous (disordered)
     },
-    canon_tier='O_0',
+    canon_tier='O₀',
     canon_c_score=0.0,
     physical_mechanism="Many-body localized (MBL) quantum system as reservoir; "
                        "local dephasing + disorder = exponential nonlinear "
@@ -536,19 +536,19 @@ def universal_deltas() -> List[str]:
 #
 # Grounded in p4rakernel/operculum_peeling.md §§2-4,13-14:
 #   - Each universe is a Ruleset U = ⟨G₁,G₂,G₃,T,A,O⟩
-#   - The O_inf projection π_U(τ) = 1 iff τ is idempotent_terminal AND T-consistent
-#   - Different universes have different O_inf projections
+#   - The O_∞ projection π_U(τ) = 1 iff τ is idempotent_terminal AND T-consistent
+#   - Different universes have different O_∞ projections
 #   - The operculum boundary ∂(U_a,U_b) = {τ : π_{U_a}(τ) ≠ π_{U_b}(τ)}
 #
 # For non-qubit QC materials, the key result is:
 #
-#   THEOREM (Non-Qubit O_inf Universality, informal):
+#   THEOREM (Non-Qubit O_∞ Universality, informal):
 #     For every non-qubit QC paradigm τ_NQ, there exists at least one
-#     universe U where π_U(τ_NQ) = 1 (O_inf) while π_U(τ_QUBIT) = 0.
+#     universe U where π_U(τ_NQ) = 1 (O_∞) while π_U(τ_QUBIT) = 0.
 #     These universes select for non-qubit computation.
 #
 #   Proof sketch: Gate reordering (sequential→parallel or primitives
-#   in G₁ position) changes which primitives control O_inf access.
+#   in G₁ position) changes which primitives control O_∞ access.
 #   Non-qubit paradigms differ from qubit QC on Γ (always) and
 #   on D, K, P, Σ (frequently). Placing the differential primitive
 #   in G₁ selects for the non-qubit paradigm.
@@ -568,18 +568,18 @@ def universal_deltas() -> List[str]:
 #   high_gate          — G₁=Φ≥5(𐑹), G₂=⊙≥2.33(𐑮), G₃=Ω≥4(𐑟), sequential
 #
 # The single_gate_* universes (only G₁, no G₂/G₃) make ANY type with
-# the right primitive value O_inf — these are "structural selectors."
+# the right primitive value O_∞ — these are "structural selectors."
 
 @dataclass
 class OperculumAnalysis:
     """Operculum analysis for a non-qubit QC paradigm."""
     paradigm_name: str
-    canonical_o_inf: bool        # O_inf in canonical universe?
-    canonical_tier: str          # O_0, O_1, O_2, O_inf in canonical
-    selecting_universes: List[str]  # Universes where THIS paradigm is O_inf
-    qubit_blocked_universes: List[str]  # Universes where qubit QC is NOT O_inf
-    co_o_inf_universes: List[str]  # Universes where BOTH are O_inf
-    o_inf_count: int             # Number of O_inf universes (out of 109)
+    canonical_o_inf: bool        # O_∞ in canonical universe?
+    canonical_tier: str          # O₀, O₁, O₂, O_∞ in canonical
+    selecting_universes: List[str]  # Universes where THIS paradigm is O_∞
+    qubit_blocked_universes: List[str]  # Universes where qubit QC is NOT O_∞
+    co_o_inf_universes: List[str]  # Universes where BOTH are O_∞
+    o_inf_count: int             # Number of O_∞ universes (out of 109)
     operculum_width: int         # |∂(canonical, self)| = universes where status differs
 
 
@@ -952,13 +952,13 @@ ALL_RECIPES: Dict[str, MaterialRecipe] = {
 #   Only MBQC keeps discrete qubits but changes composition mode.
 #   MBQC is the "closest" non-qubit paradigm to standard QC.
 #
-# FINDING 3: ONLY TOPOLOGICAL QC ACHIEVES O_inf IN CANONICAL UNIVERSE
+# FINDING 3: ONLY TOPOLOGICAL QC ACHIEVES O_∞ IN CANONICAL UNIVERSE
 #   TQC carries P=pm_sym (Frobenius-special, ord 5), phi_c=c (ord 2),
 #   Omega=NA (ord 4), and H=infty (ord 4) — satisfying all three canonical
 #   gates AND T-consistency. No other non-qubit paradigm carries P=pm_sym.
 #
 # FINDING 4: OPERCULUM WIDTH VARIES FROM 8 TO 20 UNIVERSES
-#   The number of universes where O_inf status differs from canonical:
+#   The number of universes where O_∞ status differs from canonical:
 #     TQC:      width=20 (most universes promote it further)
 #     CV-QC:    width=12
 #     CIM:      width=14
@@ -979,7 +979,7 @@ ALL_RECIPES: Dict[str, MaterialRecipe] = {
 #   The p4rakernel theory (sections 2-4, 13-14) provides the formal
 #   basis for non-qubit QC as "universe selection." A material is a
 #   non-qubit quantum computer iff there exists a universe U where:
-#     pi_U(tau_NQ) = 1 (O_inf) AND pi_U(tau_QUBIT) = 0
+#     pi_U(tau_NQ) = 1 (O_∞) AND pi_U(tau_QUBIT) = 0
 #   Different computational paradigms inhabit different universes.
 #   The operculum separates them. The Crystal unites them.
 
@@ -989,7 +989,7 @@ ALL_RECIPES: Dict[str, MaterialRecipe] = {
 
 def paradigm_summary_table() -> str:
     """Generate a summary table of all 8 non-qubit QC paradigms."""
-    header = f"{'Paradigm':<28} {'Canon Tier':<12} {'C-Score':<8} {'TRL':<5} {'O_inf Univs':<12} {'Key Delta':<20}"
+    header = f"{'Paradigm':<28} {'Canon Tier':<12} {'C-Score':<8} {'TRL':<5} {'O_∞ Univs':<12} {'Key Delta':<20}"
     sep = "-" * len(header)
     lines = [header, sep]
     for name, p in ALL_PARADIGMS.items():
@@ -1001,7 +1001,7 @@ def paradigm_summary_table() -> str:
             f"{len(p.o_inf_universes):<12} {defining}: {p.deltas[defining][0]}->{p.deltas[defining][1]:<8}"
         )
     lines.append(sep)
-    lines.append("Qubit QC reference: O_2, C=0.0, TRL=7, canonical=NOT O_inf"
+    lines.append("Qubit QC reference: O₂, C=0.0, TRL=7, canonical=NOT O_∞"
                  " (fails G1: P=psi ord 2 < 5)")
     return "\n".join(lines)
 
@@ -1131,7 +1131,7 @@ def export_forge_designs() -> Dict[str, Dict]:
 #   File                                          |  Relevance
 #   ──────────────────────────────────────────────┼──────────────────────
 #   p4rakernel/operculum_peeling.md §§1-15       |  Universe theory, Crystal site,
-#                                                 |  O_inf projection, Grothendieck
+#                                                 |  O_∞ projection, Grothendieck
 #                                                 |  topology, operculum boundary
 #   p4rakernel/opm2.md                           |  Extended operculum peeling:
 #                                                 |  T-bottleneck, H2 fixed point,
@@ -1141,7 +1141,7 @@ def export_forge_designs() -> Dict[str, Dict]:
 #                                                 |  Supercritical Launch,
 #                                                 |  Chirality Fixed-Point
 #   p4rakernel/universe_compound_mapping.md       |  109-universe grid:
-#                                                 |  O_inf/Traced/Frob/Plain
+#                                                 |  O_∞/Traced/Frob/Plain
 #                                                 |  per-compound per-universe
 #   p4rakernel/p4ramill/Millennium/PvsNP_Structural.lean | P≠NP as structural
 #                                                 |  coordinate difference:
@@ -1156,9 +1156,9 @@ def export_forge_designs() -> Dict[str, Dict]:
 #                                                 |  and computational barriers
 #   p4rakernel/compute_promotions.py              |  Promotion signatures:
 #                                                 |  which primitives to promote
-#                                                 |  to reach O_inf
+#                                                 |  to reach O_∞
 #   red-hot_rebis/materials/sophick_forge.py      |  Eagle Cycle: material
-#                                                 |  preparation for O_inf
+#                                                 |  preparation for O_∞
 #   red-hot_rebis/materials/frobenius_exactor.py  |  Exact Frobenius closure:
 #                                                 |  EXACTOR-Omega/tau/sigma/epsilon
 #
@@ -1166,11 +1166,11 @@ def export_forge_designs() -> Dict[str, Dict]:
 #    - Crystal Invariance (Axiom 3.1): C is invariant across all universes
 #    - Universe Access (Theorem 4.1): L_{U_b}(tau) = eval(U_b, tuple(tau))
 #    - Idempotence (Prop 13.1): pi_U o pi_U = pi_U
-#    - Monotonicity (Prop 13.2): stricter gates => smaller O_inf set
+#    - Monotonicity (Prop 13.2): stricter gates => smaller O_∞ set
 #    - Continuity (Theorem 13.1): pi is continuous in gate thresholds
 #    - H2 Gate Invariance (Theorem 12.1): H2 is minimal chirality invariant
 #    - EP Absorption: tensor(c, EP) = EP (from psychedelic_operculum.md)
-#    - High Gate Uniqueness (Theorem 11.1): zero full O_inf under maximal strictness
+#    - High Gate Uniqueness (Theorem 11.1): zero full O_∞ under maximal strictness
 
 # ═══════════════════════════════════════════════════════════════════
 # §12. CLI — REBIS INTEGRATION
@@ -1250,7 +1250,7 @@ def _print_overview():
     print()
     print("Standard Qubit QC Tuple:")
     print("  <tri . net . lr . psi . hbar . mod . gimel . and . c_complex . H2 . N:N . 0>")
-    print(f"  Canonical tier: O_2  |  C-score: 0.0  |  TRL: 7")
+    print(f"  Canonical tier: O₂  |  C-score: 0.0  |  TRL: 7")
     print()
     print(paradigm_summary_table())
     print()
@@ -1258,7 +1258,7 @@ def _print_overview():
     print("  Gamma (composition) is the universal non-qubit delta.")
     print("  Every non-qubit paradigm changes HOW computation is composed.")
     print("  In the p4rakernel operculum theory: non-qubit QC occupies")
-    print("  different Crystal addresses; each is O_inf in different universes.")
+    print("  different Crystal addresses; each is O_∞ in different universes.")
     print()
     print("For detailed analysis:")
     print("  rebis.py materials nonqubit --name <paradigm>")
@@ -1296,7 +1296,7 @@ def _print_paradigm_detail(p: NonQubitQCParadigm):
     print()
     print(f"Physical Mechanism: {p.physical_mechanism}")
     print()
-    print(f"O_inf Universes ({len(p.o_inf_universes)}):")
+    print(f"O_∞ Universes ({len(p.o_inf_universes)}):")
     for u in p.o_inf_universes:
         print(f"  - {u}")
     print()
@@ -1341,18 +1341,18 @@ def _print_operculum_analysis():
         p = ALL_PARADIGMS[name]
         print(f"  {p.name}:")
         print(f"    Canonical tier: {a.canonical_tier}")
-        print(f"    O_inf in {a.o_inf_count} / 109 universes")
+        print(f"    O_∞ in {a.o_inf_count} / 109 universes")
         if a.selecting_universes:
-            print(f"    Selecting universes (qubit blocked, this O_inf): "
+            print(f"    Selecting universes (qubit blocked, this O_∞): "
                   f"{len(a.selecting_universes)}")
         print()
     print("Key Insight:")
-    print("  Non-qubit QC paradigms are O_inf in universes where qubit QC is not.")
+    print("  Non-qubit QC paradigms are O_∞ in universes where qubit QC is not.")
     print("  The 'operculum' — the Ruleset boundary — separates computational paradigms.")
     print("  Each paradigm inhabits its own ecological niche in the Crystal of Types.")
     print()
-    print("  Only Topological QC (anyons) is O_inf in the CANONICAL universe.")
-    print("  All others require universe selection (gate reordering) to reach O_inf.")
+    print("  Only Topological QC (anyons) is O_∞ in the CANONICAL universe.")
+    print("  All others require universe selection (gate reordering) to reach O_∞.")
     print("=" * 72)
 
 

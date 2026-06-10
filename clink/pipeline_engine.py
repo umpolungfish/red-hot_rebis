@@ -77,7 +77,7 @@ LAYER_TOOLS = {
     7: {"name": "Tissue / Organ", "module": None,
         "desc": "Multi-cellular organization — cell-cell signaling, ECM"},
     8: {"name": "Whole Organism", "module": None,
-        "desc": "O_inf — self-modeling, non-Abelian braiding, eternal chirality"},
+        "desc": "O_∞ — self-modeling, non-Abelian braiding, eternal chirality"},
 }
 
 # Layer transition: from_layer → to_layer : what tools are needed

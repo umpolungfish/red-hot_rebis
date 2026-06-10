@@ -62,8 +62,8 @@ CLINK_LAYER_NAMES = [
 ]
 
 CLINK_TIERS = {
-    "L0": "O_0", "L1": "O_0", "L2": "O_1", "L3": "O_2",
-    "L4": "O_2", "L5": "O_2", "L6": "O_2", "L7": "O_2", "L8": "O_∞",
+    "L0": "O₀", "L1": "O₀", "L2": "O₁", "L3": "O₂",
+    "L4": "O₂", "L5": "O₂", "L6": "O₂", "L7": "O₂", "L8": "O_∞",
 }
 
 
@@ -209,11 +209,11 @@ def _estimate_tier(ig: Tuple[str, ...]) -> str:
     if ig[8] == '⊙' and ig[3] in ('𐑹', '𐑯') and ig[11] in ('𐑭', '𐑟'):
         return 'O_∞'
     elif ig[8] == '⊙' and ig[0] in ('𐑦', '𐑼'):
-        return 'O_2'
+        return 'O₂'
     elif ig[0] in ('𐑼',):
-        return 'O_1'
+        return 'O₁'
     else:
-        return 'O_0'
+        return 'O₀'
 
 
 # ═══════════════════════════════════════════════════════════════════

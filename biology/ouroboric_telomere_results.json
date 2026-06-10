@@ -1,7 +1,7 @@
 {
   "simulation": "Ouroboric Telomere System",
   "structural_type": "\u27e8\ud801\udc66\u00b7\ud801\udc78\u00b7\ud801\udc7e\u00b7\ud801\udc6c\u00b7\ud801\udc50\u00b7\ud801\udc67\u00b7\ud801\udc54\u00b7\ud801\udc60\u00b7\u2299\u00b7\ud801\udc56\u00b7\ud801\udc73\u00b7\ud801\udc74\u27e9",
-  "ouroborosity": "O_2",
+  "ouroborosity": "O₂",
   "ouroboric_enabled": false,
   "cells": 100,
   "attrition_rate_bp_per_div": 50,

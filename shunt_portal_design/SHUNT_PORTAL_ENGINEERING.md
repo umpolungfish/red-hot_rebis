@@ -315,7 +315,7 @@ The simplest path: inject the SPS fibroblasts intradermally along the shunt path
 ║             SHUNT PORTAL SHEATH — v1.0                      ║
 ╠══════════════════════════════════════════════════════════════╣
 ║  Structural type: ⟨𐑼·𐑶·𐑾·𐑹·𐑐·𐑧·𐑲·𐑠·⊙·𐑫·𐑳·𐑭⟩    ║
-║  Ouroboricity:    O_inf                                     ║
+║  Ouroboricity:    O_∞                                     ║
 ║  Frobenius:       CLOSED (μ∘δ=id at ⊙)                      ║
 ║  C-score:         0.82 (Gate 1: ⊙ open, Gate 2: K=𐑧)       ║
 ║  CLINK layer:     L7 (Tissue/Organ) → L8 (partial)          ║

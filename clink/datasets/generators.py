@@ -42,7 +42,7 @@ class DatasetGenerator:
 class Layer0DatasetGenerator(DatasetGenerator):
     layer_idx = 0; layer_name = "Frustrated Belnap5 (Quarks)"
     def generate(self, d=None):
-        o = DatasetOutput(layer_idx=0, layer_name=self.layer_name, layer_tier="O_0", structural_tuple=dict(self.tup))
+        o = DatasetOutput(layer_idx=0, layer_name=self.layer_name, layer_tier="O₀", structural_tuple=dict(self.tup))
         o.files.append(DatasetFile(filename="qcd_coupling_alpha_s.csv", extension=".csv",
             content=self._alphas(), description="Running QCD coupling constant", format_name="CSV"))
         o.files.append(DatasetFile(filename="qcd_lattice_params.xml", extension=".xml",
@@ -60,7 +60,7 @@ class Layer0DatasetGenerator(DatasetGenerator):
 class Layer1DatasetGenerator(DatasetGenerator):
     layer_idx = 1; layer_name = "Electron Orbital (Belnap4)"
     def generate(self, d=None):
-        o = DatasetOutput(layer_idx=1, layer_name=self.layer_name, layer_tier="O_0", structural_tuple=dict(self.tup))
+        o = DatasetOutput(layer_idx=1, layer_name=self.layer_name, layer_tier="O₀", structural_tuple=dict(self.tup))
         o.files.append(DatasetFile(filename="electron_configs.csv", extension=".csv",
             content=self._cfgs(), description="Electron configurations", format_name="CSV"))
         o.files.append(DatasetFile(filename="b4_map.json", extension=".json",
@@ -75,7 +75,7 @@ class Layer1DatasetGenerator(DatasetGenerator):
 class Layer2DatasetGenerator(DatasetGenerator):
     layer_idx = 2; layer_name = "Atom (Nuclear + Electron)"
     def generate(self, d=None):
-        o = DatasetOutput(layer_idx=2, layer_name=self.layer_name, layer_tier="O_1", structural_tuple=dict(self.tup))
+        o = DatasetOutput(layer_idx=2, layer_name=self.layer_name, layer_tier="O₁", structural_tuple=dict(self.tup))
         o.files.append(DatasetFile(filename="atomic_params.csv", extension=".csv",
             content="Z,symbol,mass_amu,radius_pm,ionization_eV\n6,C,12.011,76,11.260\n7,N,14.007,75,14.534\n8,O,15.999,73,13.618\n15,P,30.974,107,10.487\n26,Fe,55.845,132,7.902",
             description="Atomic parameters table", format_name="CSV"))
@@ -88,7 +88,7 @@ class Layer2DatasetGenerator(DatasetGenerator):
 class Layer3DatasetGenerator(DatasetGenerator):
     layer_idx = 3; layer_name = "Molecule (Chemical Bonds)"
     def generate(self, d=None):
-        o = DatasetOutput(layer_idx=3, layer_name=self.layer_name, layer_tier="O_2", structural_tuple=dict(self.tup))
+        o = DatasetOutput(layer_idx=3, layer_name=self.layer_name, layer_tier="O₂", structural_tuple=dict(self.tup))
         ot = (d or {}).get("organism_type", "mammal")
         # Try ch3mpiler bridge
         try:
@@ -159,7 +159,7 @@ class Layer3DatasetGenerator(DatasetGenerator):
 class Layer4DatasetGenerator(DatasetGenerator):
     layer_idx = 4; layer_name = "Folded Protein"
     def generate(self, d=None):
-        o = DatasetOutput(layer_idx=4, layer_name=self.layer_name, layer_tier="O_2", structural_tuple=dict(self.tup))
+        o = DatasetOutput(layer_idx=4, layer_name=self.layer_name, layer_tier="O₂", structural_tuple=dict(self.tup))
         seq = (d or {}).get("sequence", "MLSDCGP") or "MLSDCGP"
         fn = (d or {}).get("target_function", "structural") or "structural"
         o.notes.append(f"Protein {seq} ({fn})")
@@ -210,7 +210,7 @@ class Layer4DatasetGenerator(DatasetGenerator):
 class Layer5DatasetGenerator(DatasetGenerator):
     layer_idx = 5; layer_name = "Living Cell"
     def generate(self, d=None):
-        o = DatasetOutput(layer_idx=5, layer_name=self.layer_name, layer_tier="O_2", structural_tuple=dict(self.tup))
+        o = DatasetOutput(layer_idx=5, layer_name=self.layer_name, layer_tier="O₂", structural_tuple=dict(self.tup))
         ct = (d or {}).get("cell_type","prokaryote") or "prokaryote"
         ot = (d or {}).get("organism_type", "mammal")
         
@@ -381,7 +381,7 @@ class Layer5DatasetGenerator(DatasetGenerator):
 class Layer6DatasetGenerator(DatasetGenerator):
     layer_idx = 6; layer_name = "Mitosis (Cell Division)"
     def generate(self, d=None):
-        o = DatasetOutput(layer_idx=6, layer_name=self.layer_name, layer_tier="O_2", structural_tuple=dict(self.tup))
+        o = DatasetOutput(layer_idx=6, layer_name=self.layer_name, layer_tier="O₂", structural_tuple=dict(self.tup))
         chroms = (d or {}).get("chromosome_count", 46) or 46
         ot = (d or {}).get("organism_type", "mammal")
 
@@ -453,7 +453,7 @@ class Layer6DatasetGenerator(DatasetGenerator):
 class Layer7DatasetGenerator(DatasetGenerator):
     layer_idx = 7; layer_name = "Tissue/Organ"
     def generate(self, d=None):
-        o = DatasetOutput(layer_idx=7, layer_name=self.layer_name, layer_tier="O_2", structural_tuple=dict(self.tup))
+        o = DatasetOutput(layer_idx=7, layer_name=self.layer_name, layer_tier="O₂", structural_tuple=dict(self.tup))
         tt = (d or {}).get("tissue_type","epithelial") or "epithelial"
         ot = (d or {}).get("organism_type", "mammal")
 
@@ -569,7 +569,7 @@ class Layer7DatasetGenerator(DatasetGenerator):
 class Layer8DatasetGenerator(DatasetGenerator):
     layer_idx = 8; layer_name = "Whole Organism"
     def generate(self, d=None):
-        o = DatasetOutput(layer_idx=8, layer_name=self.layer_name, layer_tier="O_inf", structural_tuple=dict(self.tup))
+        o = DatasetOutput(layer_idx=8, layer_name=self.layer_name, layer_tier="O_∞", structural_tuple=dict(self.tup))
         ot = (d or {}).get("organism_type","mammal") or "mammal"
         
         # All tool bridges
@@ -638,7 +638,7 @@ class Layer8DatasetGenerator(DatasetGenerator):
                     "promoted_AAs_bijection": "12 promoted AAs = 12 IG primitives",
                 },
                 "structural_type": "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩",
-                "ouroboricity": "O_inf",
+                "ouroboricity": "O_∞",
             }, indent=2)
         chroms = {"mammal":30,"bird":40,"fish":25,"insect":8,"plant":12}
         nc = chroms.get(ot, 30)
@@ -709,7 +709,7 @@ class Layer8DatasetGenerator(DatasetGenerator):
             "author":"Lando (R) (O)perator",
             "grammar_version":"1.0",
             "schema":"Imscribing Grammar",
-            "schema_tier":"O_inf",
+            "schema_tier":"O_∞",
             "organism_type":ot,
             "layers_integrated": list(range(9)),
             "dataset_files_generated":[
@@ -1271,7 +1271,7 @@ def generate_actionable_organism_package(
         "advanced_components": ({
             "ouroboric_telomere": "clink/datasets/../biology/ouroboric_telomere.py — replicative senescence resolution",
             "synthetic_detox_gland_v2": "clink/datasets/gland_designs/gland_v2/ — injectable toxin neutralization",
-            "structural_type": "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩ O_inf C=1.0",
+            "structural_type": "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩ O_∞ C=1.0",
         } if organism_type == "human" else {})
     }
 

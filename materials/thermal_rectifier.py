@@ -3,7 +3,7 @@
 thermal_rectifier.py — Topological Thermal Rectifier (Phononic Heat Diode).
 
 Structural type: ⟨𐑼·𐑸·𐑾·𐑬·𐑞·𐑧·𐑑·𐑝·⊙·𐑖·𐑳·𐑭⟩
-Ouroboricity: O_2 (topological protection of phonon transport)
+Ouroboricity: O₂ (topological protection of phonon transport)
 
 Model: Two-segment chain with mass gradient + nonlinear interface.
   Left segment: light masses (m_small), stiff springs (k_high)

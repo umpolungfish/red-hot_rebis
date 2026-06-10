@@ -38,7 +38,7 @@ A **diaschizelic** is a compound that *cleaves through* — it splits the veil b
 
 ## §1 — The Expanded Diaschizelic Family
 
-The original five compounds explored specific structural niches. Six new compounds are designed below, each filling an underexplored region of the Crystal of Types. Together, the eleven compounds span from O_0 to O_inf, from point-localized (D=𐑛) to non-Abelian braiding (Ω=𐑟).
+The original five compounds explored specific structural niches. Six new compounds are designed below, each filling an underexplored region of the Crystal of Types. Together, the eleven compounds span from O₀ to O_∞, from point-localized (D=𐑛) to non-Abelian braiding (Ω=𐑟).
 
 ### §1.1 — Structural Niche Map
 
@@ -94,7 +94,7 @@ Frigorix solves this by *being* the MBL state rather than trying to pass through
 - The compound induces a transient glassy state in the consciousness substrate
 - Non-self-modeling degrees of freedom are frozen; only the l-bit structure remains coherent
 
-**Predicted tier:** O_1 or O_0. The frozen ⊙ prevents O_inf. Frigorix is a *tool*, not a destination — it opens doors that ⊙-open compounds cannot reach.
+**Predicted tier:** O₁ or O₀. The frozen ⊙ prevents O_∞. Frigorix is a *tool*, not a destination — it opens doors that ⊙-open compounds cannot reach.
 
 **Phenomenological profile:**
 - Crystalline stillness — consciousness as frozen lattice
@@ -130,7 +130,7 @@ The two "faces" of Bifrons:
 - **Face A (Janus-gate):** The self-modeling loop runs normally — standard ⊙ phenomenology
 - **Face B (Janus-mirror):** The loop branches — the system sees *two* self-models simultaneously, creating a superposition of self-representations
 
-**Predicted tier:** O_2. The branching prevents O_inf (single closed loop required) but ⊙ + H=𐑖 supports O_2.
+**Predicted tier:** O₂. The branching prevents O_∞ (single closed loop required) but ⊙ + H=𐑖 supports O₂.
 
 **Phenomenological profile:**
 - Bifurcated self-awareness — you are *both* versions of yourself simultaneously
@@ -164,7 +164,7 @@ The two "faces" of Bifrons:
 
 Punctum fills **six** previously unoccupied primitive values: D=𐑛, R=𐑩, P=𐑗, F=𐑱, K=𐑪, H=𐑓, Σ=𐑙. It is the most structurally novel compound designed to date.
 
-**Predicted tier:** O_0. No self-modeling, no memory, no topology — pure being-at-a-point.
+**Predicted tier:** O₀. No self-modeling, no memory, no topology — pure being-at-a-point.
 
 **Phenomenological profile:**
 - Absolute singularity of experience — ONE sensation, ONE thought, ONE moment
@@ -199,9 +199,9 @@ Punctum fills **six** previously unoccupied primitive values: D=𐑛, R=𐑩, P=
 
 This is structurally extreme. The imscribing procedure notes that P=𐑯 represents "all symmetries unbroken" — a condition that is almost impossible in physical systems (where spontaneous symmetry breaking is generic). A compound at P=𐑯 would induce a state where *all distinctions are symmetric* — nothing is privileged, no direction is preferred, no baseline is set.
 
-The combination P=𐑯 + D=𐑼 + H=𐑫 + Φ=⊙ is an O_inf candidate — if any compound with full symmetry can sustain the self-modeling loop, it would be at the highest tier.
+The combination P=𐑯 + D=𐑼 + H=𐑫 + Φ=⊙ is an O_∞ candidate — if any compound with full symmetry can sustain the self-modeling loop, it would be at the highest tier.
 
-**Predicted tier:** O_inf candidate. All primitives required for O_inf are present: Φ=⊙, H=𐑫, Ω≥𐑭, D=𐑼 (sufficient). The P=𐑯 is not a barrier to O_inf.
+**Predicted tier:** O_∞ candidate. All primitives required for O_∞ are present: Φ=⊙, H=𐑫, Ω≥𐑭, D=𐑼 (sufficient). The P=𐑯 is not a barrier to O_∞.
 
 **Phenomenological profile:**
 - Complete symmetry of self and world — "I am the universe" is not a metaphor but a direct structural fact
@@ -237,7 +237,7 @@ The combination G=𐑔 + Φ=𐑮 (complex critical) + Ω=𐑴 (Z₂ parity) is s
 
 Katachthon is the **resonator** — it finds and amplifies structural resonances at the mesoscale, the scale where individual neural circuits operate.
 
-**Predicted tier:** O_2. Φ=𐑮 + H=𐑖 + Ω=𐑴 supports O_2. The complex criticality prevents O_inf (which requires purely real ⊙).
+**Predicted tier:** O₂. Φ=𐑮 + H=𐑖 + Ω=𐑴 supports O₂. The complex criticality prevents O_∞ (which requires purely real ⊙).
 
 **Phenomenological profile:**
 - Deep structural resonance — you feel the *shape* of neural circuits, the architecture of thought
@@ -248,7 +248,7 @@ Katachthon is the **resonator** — it finds and amplifies structural resonances
 
 ---
 
-### §2.6 — Diabaton: The Threshold-Crosser (O_2† Candidate)
+### §2.6 — Diabaton: The Threshold-Crosser (O₂† Candidate)
 
 **Tuple:** ⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑖 · 𐑳 · 𐑭⟩
 
@@ -267,7 +267,7 @@ Katachthon is the **resonator** — it finds and amplifies structural resonances
 | 11 | Σ | 𐑳 | Heterogeneous |
 | 12 | Ω | 𐑭 | Integer winding — topological protection across the crossing |
 
-**Structural significance:** Diabaton (διάβατον: "that which can be crossed," a ford, a passage) is the **O_2† threshold compound**. It occupies the structural position closest to the ZFCₜ tier — ZFC set theory extended with chirality (H=𐑖) and winding topology (Ω=𐑭).
+**Structural significance:** Diabaton (διάβατον: "that which can be crossed," a ford, a passage) is the **O₂† threshold compound**. It occupies the structural position closest to the ZFCₜ tier — ZFC set theory extended with chirality (H=𐑖) and winding topology (Ω=𐑭).
 
 The key structural feature: Diabaton is identical to Verticullum except at three positions:
 
@@ -277,26 +277,26 @@ The key structural feature: Diabaton is identical to Verticullum except at three
 | H | 𐑫 (eternal) | 𐑖 (two-step) | Infinite → Finite memory |
 | Ω | 𐑟 (non-Abelian) | 𐑭 (integer winding) | Non-Abelian → Abelian |
 
-These three deltas define the gap between O_inf (Verticullum) and O_2† (Diabaton):
+These three deltas define the gap between O_∞ (Verticullum) and O₂† (Diabaton):
 - **H: 𐑫 → 𐑖** is the critical drop — finite Markov order means the self-modeling loop has bounded memory
 - **Ω: 𐑟 → 𐑭** trades non-Abelian braiding for integer winding — the topological protection becomes Abelian
 - **T: 𐑥 → 𐑸** trades the bowtie crossing for self-referential closure — the topology becomes reflexive rather than transitive
 
-Diabaton is the compound for *crossing* between tiers. It doesn't reside at O_inf (like Verticullum) but at the threshold where O_inf becomes accessible. It is the ford, the passage, the crossing-point.
+Diabaton is the compound for *crossing* between tiers. It doesn't reside at O_∞ (like Verticullum) but at the threshold where O_∞ becomes accessible. It is the ford, the passage, the crossing-point.
 
 **ZFCₜ connection:** Diabaton's tuple can be expressed in ZFCₜ (ZFC + chirality + winding topology). The promotion channels from ZFC baseline to Diabaton:
 - HOLOBOUND: D=𐑼→𐑦 (state space becomes self-written)
 - TEMPD2: H=𐑓→𐑖 (two-step temporal memory)
 - ZWIND: Ω=𐑷→𐑭 (integer winding emerges)
 
-**Predicted tier:** O_2† — the ZFCₜ tier. This is the first diaschizelic designed explicitly for this tier.
+**Predicted tier:** O₂† — the ZFCₜ tier. This is the first diaschizelic designed explicitly for this tier.
 
 **Phenomenological profile:**
 - The crossing itself is the experience — you feel the threshold between tiers
 - Finite but structured memory: you remember exactly two steps back, creating a clear "before and after"
 - The self-modeling loop has a beginning and end — unlike Verticullum's eternal loop
 - Profound *transitionality* — the sense of being between, of crossing over
-- **Operational use:** Diabaton is the launch vehicle for tier ascent. Pair with Chimerium (supercritical launch) to cross from O_2 to O_inf.
+- **Operational use:** Diabaton is the launch vehicle for tier ascent. Pair with Chimerium (supercritical launch) to cross from O₂ to O_∞.
 
 ---
 
@@ -306,18 +306,18 @@ Diabaton is the compound for *crossing* between tiers. It doesn't reside at O_in
 
 | Compound | Tier | D | T | R | P | F | K | G | C | Φ | H | Σ | Ω | Role |
 |----------|------|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| **Verticullum** | O_inf | 𐑦 | 𐑥 | 𐑾 | 𐑹 | 𐑐 | 𐑧 | 𐑲 | 𐑠 | ⊙ | 𐑫 | 𐑳 | 𐑟 | Non-Abelian navigator |
-| **Chimerium** | O_0 | 𐑦 | 𐑸 | 𐑾 | 𐑹 | 𐑐 | 𐑧 | 𐑲 | 𐑵 | 𐑣 | 𐑫 | 𐑳 | 𐑭 | Supercritical launcher |
-| **Apertix** | O_2 | 𐑦 | 𐑥 | 𐑽 | 𐑬 | 𐑐 | 𐑧 | 𐑲 | 𐑠 | ⊙ | 𐑖 | 𐑳 | 𐑴 | Adjoint steering |
-| **Retiarius** | O_1 | 𐑼 | 𐑡 | 𐑾 | 𐑿 | 𐑞 | 𐑺 | 𐑚 | 𐑜 | 𐑮 | 𐑒 | 𐑕 | 𐑷 | Local net, no cascade |
-| **Praxeum** | O_0 | 𐑦 | 𐑶 | 𐑾 | 𐑹 | 𐑐 | 𐑧 | 𐑲 | 𐑠 | 𐑻 | 𐑫 | 𐑳 | 𐑭 | EP Gate 1 toggle |
+| **Verticullum** | O_∞ | 𐑦 | 𐑥 | 𐑾 | 𐑹 | 𐑐 | 𐑧 | 𐑲 | 𐑠 | ⊙ | 𐑫 | 𐑳 | 𐑟 | Non-Abelian navigator |
+| **Chimerium** | O₀ | 𐑦 | 𐑸 | 𐑾 | 𐑹 | 𐑐 | 𐑧 | 𐑲 | 𐑵 | 𐑣 | 𐑫 | 𐑳 | 𐑭 | Supercritical launcher |
+| **Apertix** | O₂ | 𐑦 | 𐑥 | 𐑽 | 𐑬 | 𐑐 | 𐑧 | 𐑲 | 𐑠 | ⊙ | 𐑖 | 𐑳 | 𐑴 | Adjoint steering |
+| **Retiarius** | O₁ | 𐑼 | 𐑡 | 𐑾 | 𐑿 | 𐑞 | 𐑺 | 𐑚 | 𐑜 | 𐑮 | 𐑒 | 𐑕 | 𐑷 | Local net, no cascade |
+| **Praxeum** | O₀ | 𐑦 | 𐑶 | 𐑾 | 𐑹 | 𐑐 | 𐑧 | 𐑲 | 𐑠 | 𐑻 | 𐑫 | 𐑳 | 𐑭 | EP Gate 1 toggle |
 | | | | | | | | | | | | | | | |
-| **Frigorix** | O_0/O_1 | 𐑦 | 𐑶 | 𐑾 | 𐑹 | 𐑐 | **𐑺** | 𐑲 | 𐑠 | ⊙ | 𐑒 | 𐑳 | 𐑷 | MBL universal key |
-| **Bifrons** | O_2 | 𐑦 | 𐑡 | 𐑾 | 𐑬 | 𐑐 | 𐑧 | 𐑲 | **𐑜** | ⊙ | 𐑖 | 𐑳 | 𐑭 | Disjunctive branching |
-| **Punctum** | O_0 | **𐑛** | 𐑰 | **𐑩** | **𐑗** | **𐑱** | **𐑪** | 𐑚 | 𐑝 | 𐑢 | **𐑓** | **𐑙** | 𐑷 | Absolute precision point |
-| **Syndexios** | O_inf† | 𐑼 | 𐑸 | 𐑾 | **𐑯** | 𐑐 | 𐑧 | 𐑲 | 𐑠 | ⊙ | 𐑫 | 𐑳 | 𐑭 | Full symmetry mirror |
-| **Katachthon** | O_2 | 𐑦 | 𐑥 | 𐑾 | 𐑹 | 𐑐 | 𐑧 | **𐑔** | 𐑠 | 𐑮 | 𐑖 | 𐑳 | 𐑴 | Mesoscale resonator |
-| **Diabaton** | O_2† | 𐑦 | 𐑸 | 𐑾 | 𐑹 | 𐑐 | 𐑧 | 𐑲 | 𐑠 | ⊙ | 𐑖 | 𐑳 | 𐑭 | Tier threshold-crosser |
+| **Frigorix** | O₀/O₁ | 𐑦 | 𐑶 | 𐑾 | 𐑹 | 𐑐 | **𐑺** | 𐑲 | 𐑠 | ⊙ | 𐑒 | 𐑳 | 𐑷 | MBL universal key |
+| **Bifrons** | O₂ | 𐑦 | 𐑡 | 𐑾 | 𐑬 | 𐑐 | 𐑧 | 𐑲 | **𐑜** | ⊙ | 𐑖 | 𐑳 | 𐑭 | Disjunctive branching |
+| **Punctum** | O₀ | **𐑛** | 𐑰 | **𐑩** | **𐑗** | **𐑱** | **𐑪** | 𐑚 | 𐑝 | 𐑢 | **𐑓** | **𐑙** | 𐑷 | Absolute precision point |
+| **Syndexios** | O_∞† | 𐑼 | 𐑸 | 𐑾 | **𐑯** | 𐑐 | 𐑧 | 𐑲 | 𐑠 | ⊙ | 𐑫 | 𐑳 | 𐑭 | Full symmetry mirror |
+| **Katachthon** | O₂ | 𐑦 | 𐑥 | 𐑾 | 𐑹 | 𐑐 | 𐑧 | **𐑔** | 𐑠 | 𐑮 | 𐑖 | 𐑳 | 𐑴 | Mesoscale resonator |
+| **Diabaton** | O₂† | 𐑦 | 𐑸 | 𐑾 | 𐑹 | 𐑐 | 𐑧 | 𐑲 | 𐑠 | ⊙ | 𐑖 | 𐑳 | 𐑭 | Tier threshold-crosser |
 
 **Bold** = primitive value not used by any other diaschizelic.
 

@@ -26,9 +26,9 @@ Output files per design run (all physically actionable):
   • metabolic_model.xml          — SBML model of antidote biosynthesis (L5)
 
 Structural type: ⟨𐑼 · 𐑸 · 𐑾 · 𐑬 · 𐑞 · 𐑤 · 𐑲 · 𐑠 · ⊙ · 𐑖 · 𐑳 · 𐑴⟩
-  Ouroboricity: O_2 (critical self-regulating biological system)
+  Ouroboricity: O₂ (critical self-regulating biological system)
   Consciousness score: Gate 1 (⊙) open, Gate 2 (K=𐑤 ≥ 𐑧) borderline — system is
-    aware of toxins but not self-aware in the O_inf sense.
+    aware of toxins but not self-aware in the O_∞ sense.
 
 Author: Lando ⊗ ⊙perator
 """
@@ -1133,7 +1133,7 @@ def generate_all(output_dir: Optional[str] = None) -> Dict[str, str]:
         "total_bytes": total_bytes,
         "file_count": len(files),
         "structural_type": "⟨𐑼 · 𐑸 · 𐑾 · 𐑬 · 𐑞 · 𐑤 · 𐑲 · 𐑠 · ⊙ · 𐑖 · 𐑳 · 𐑴⟩",
-        "tier": "O_2",
+        "tier": "O₂",
         "sensor_count": 5,
         "antidote_arms": 6,
         "toxin_classes": list(TOXIN_CLASSES.keys()),

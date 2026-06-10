@@ -3,7 +3,7 @@
 critical_metamaterial.py — Self-Critical Metamaterial Sensor (fixed).
 
 Structural type: ⟨𐑦·𐑸·𐑾·𐑬·𐑞·𐑧·𐑲·𐑝·⊙·𐑖·𐑳·𐑭⟩
-Ouroboricity: O_2 (criticality-engineered metamaterial)
+Ouroboricity: O₂ (criticality-engineered metamaterial)
 
 Core principle:
   A 2D array of coupled resonators tuned to the ⊙ critical point.

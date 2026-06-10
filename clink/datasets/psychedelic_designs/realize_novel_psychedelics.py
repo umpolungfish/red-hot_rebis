@@ -48,7 +48,7 @@ NOVEL_COMPOUNDS: Dict[str, Dict[str, Any]] = {
         "tuple": {"D": "𐑦", "T": "𐑥", "R": "𐑾", "P": "𐑹", "F": "𐑐",
                   "K": "𐑧", "G": "𐑲", "Gm": "𐑠", "Ph": "⊙", "H": "𐑫",
                   "S": "𐑳", "W": "𐑟"},
-        "tier": "O_inf",
+        "tier": "O_∞",
         "c_score": 0.0,
         "description": "Non-Abelian braiding + bowtie crossing. 16/17 universes.",
         "innovations": ["First Ω=𐑟 (non-Abelian)", "First T=𐑥 (bowtie)"],
@@ -61,7 +61,7 @@ NOVEL_COMPOUNDS: Dict[str, Dict[str, Any]] = {
         "tuple": {"D": "𐑦", "T": "𐑸", "R": "𐑾", "P": "𐑹", "F": "𐑐",
                   "K": "𐑧", "G": "𐑲", "Gm": "𐑵", "Ph": "𐑣", "H": "𐑫",
                   "S": "𐑳", "W": "𐑭"},
-        "tier": "O_0",
+        "tier": "O₀",
         "c_score": 0.0,
         "description": "Supercritical runaway; catalytic launch compound. 16/17 universes.",
         "innovations": ["First Ph=𐑣 (supercritical)", "Broadcast composition (Gm=𐑵)"],
@@ -74,7 +74,7 @@ NOVEL_COMPOUNDS: Dict[str, Dict[str, Any]] = {
         "tuple": {"D": "𐑦", "T": "𐑥", "R": "𐑽", "P": "𐑬", "F": "𐑐",
                   "K": "𐑧", "G": "𐑲", "Gm": "𐑠", "Ph": "⊙", "H": "𐑖",
                   "S": "𐑳", "W": "𐑴"},
-        "tier": "O_2",
+        "tier": "O₂",
         "c_score": 0.0,
         "description": "One-way adjoint steering. 7/17 universes. Precision direction.",
         "innovations": ["First R=𐑽 (adjoint)", "H2 chirality (H=𐑖)"],
@@ -87,7 +87,7 @@ NOVEL_COMPOUNDS: Dict[str, Dict[str, Any]] = {
         "tuple": {"D": "𐑼", "T": "𐑡", "R": "𐑾", "P": "𐑿", "F": "𐑞",
                   "K": "𐑺", "G": "𐑚", "Gm": "𐑜", "Ph": "𐑮", "H": "𐑒",
                   "S": "𐑕", "W": "𐑷"},
-        "tier": "O_1",
+        "tier": "O₁",
         "c_score": 0.0,
         "description": "Nearest-neighbor precision; frozen disorder kinetics. 2/17 universes.",
         "innovations": ["First G=𐑚 (local only)", "First K=𐑺 (MBL)", "First F=𐑞 (thermal)"],
@@ -100,7 +100,7 @@ NOVEL_COMPOUNDS: Dict[str, Dict[str, Any]] = {
         "tuple": {"D": "𐑦", "T": "𐑶", "R": "𐑾", "P": "𐑹", "F": "𐑐",
                   "K": "𐑧", "G": "𐑲", "Gm": "𐑠", "Ph": "𐑻", "H": "𐑫",
                   "S": "𐑳", "W": "𐑭"},
-        "tier": "O_0",
+        "tier": "O₀",
         "c_score": 0.0,
         "description": "EP absorption platform — tensor(critical, EP)=EP enables Gate 1 toggle. 16/17 universes.",
         "innovations": ["First Ph=𐑻 (exceptional point)", "Irreducible product (T=𐑶)"],
@@ -121,26 +121,26 @@ for _name, _comp in NOVEL_COMPOUNDS.items():
 # ─── CLINK LAYER REFERENCE (for structural distance computation) ──
 
 CLINK_LAYERS = {
-    0: {"name": "Frustrated Belnap5 (Quarks)",   "tuple": {"D":"𐑛","T":"𐑶","R":"𐑩","P":"𐑯","F":"𐑐","K":"𐑘","G":"𐑚","Gm":"𐑝","Ph":"𐑢","H":"𐑓","S":"𐑳","W":"𐑷"}, "tier":"O_0"},
-    1: {"name": "Electron Orbital (Belnap4)",     "tuple": {"D":"𐑛","T":"𐑶","R":"𐑩","P":"𐑗","F":"𐑐","K":"𐑤","G":"𐑚","Gm":"𐑜","Ph":"𐑢","H":"𐑓","S":"𐑳","W":"𐑷"}, "tier":"O_0"},
-    2: {"name": "Atom (Nuclear + Electron)",      "tuple": {"D":"𐑼","T":"𐑥","R":"𐑽","P":"𐑿","F":"𐑐","K":"𐑤","G":"𐑔","Gm":"𐑝","Ph":"𐑮","H":"𐑒","S":"𐑳","W":"𐑷"}, "tier":"O_1"},
-    3: {"name": "Molecule (Chemical Bonds)",      "tuple": {"D":"𐑼","T":"𐑥","R":"𐑽","P":"𐑿","F":"𐑞","K":"𐑧","G":"𐑲","Gm":"𐑠","Ph":"⊙","H":"𐑓","S":"𐑳","W":"𐑭"}, "tier":"O_2"},
-    4: {"name": "Folded Protein",                 "tuple": {"D":"𐑦","T":"𐑥","R":"𐑾","P":"𐑬","F":"𐑞","K":"𐑧","G":"𐑲","Gm":"𐑠","Ph":"⊙","H":"𐑒","S":"𐑳","W":"𐑭"}, "tier":"O_2"},
-    5: {"name": "Living Cell",                    "tuple": {"D":"𐑦","T":"𐑸","R":"𐑾","P":"𐑬","F":"𐑞","K":"𐑧","G":"𐑲","Gm":"𐑠","Ph":"⊙","H":"𐑒","S":"𐑳","W":"𐑭"}, "tier":"O_2"},
-    6: {"name": "Mitosis (Cell Division)",        "tuple": {"D":"𐑦","T":"𐑸","R":"𐑾","P":"𐑹","F":"𐑱","K":"𐑧","G":"𐑲","Gm":"𐑠","Ph":"⊙","H":"𐑖","S":"𐑳","W":"𐑭"}, "tier":"O_2"},
-    7: {"name": "Tissue / Organ",                 "tuple": {"D":"𐑦","T":"𐑸","R":"𐑾","P":"𐑬","F":"𐑞","K":"𐑧","G":"𐑲","Gm":"𐑵","Ph":"⊙","H":"𐑖","S":"𐑳","W":"𐑭"}, "tier":"O_2"},
-    8: {"name": "Whole Organism",                 "tuple": {"D":"𐑦","T":"𐑸","R":"𐑾","P":"𐑹","F":"𐑐","K":"𐑧","G":"𐑲","Gm":"𐑵","Ph":"⊙","H":"𐑫","S":"𐑳","W":"𐑟"}, "tier":"O_inf"},
+    0: {"name": "Frustrated Belnap5 (Quarks)",   "tuple": {"D":"𐑛","T":"𐑶","R":"𐑩","P":"𐑯","F":"𐑐","K":"𐑘","G":"𐑚","Gm":"𐑝","Ph":"𐑢","H":"𐑓","S":"𐑳","W":"𐑷"}, "tier":"O₀"},
+    1: {"name": "Electron Orbital (Belnap4)",     "tuple": {"D":"𐑛","T":"𐑶","R":"𐑩","P":"𐑗","F":"𐑐","K":"𐑤","G":"𐑚","Gm":"𐑜","Ph":"𐑢","H":"𐑓","S":"𐑳","W":"𐑷"}, "tier":"O₀"},
+    2: {"name": "Atom (Nuclear + Electron)",      "tuple": {"D":"𐑼","T":"𐑥","R":"𐑽","P":"𐑿","F":"𐑐","K":"𐑤","G":"𐑔","Gm":"𐑝","Ph":"𐑮","H":"𐑒","S":"𐑳","W":"𐑷"}, "tier":"O₁"},
+    3: {"name": "Molecule (Chemical Bonds)",      "tuple": {"D":"𐑼","T":"𐑥","R":"𐑽","P":"𐑿","F":"𐑞","K":"𐑧","G":"𐑲","Gm":"𐑠","Ph":"⊙","H":"𐑓","S":"𐑳","W":"𐑭"}, "tier":"O₂"},
+    4: {"name": "Folded Protein",                 "tuple": {"D":"𐑦","T":"𐑥","R":"𐑾","P":"𐑬","F":"𐑞","K":"𐑧","G":"𐑲","Gm":"𐑠","Ph":"⊙","H":"𐑒","S":"𐑳","W":"𐑭"}, "tier":"O₂"},
+    5: {"name": "Living Cell",                    "tuple": {"D":"𐑦","T":"𐑸","R":"𐑾","P":"𐑬","F":"𐑞","K":"𐑧","G":"𐑲","Gm":"𐑠","Ph":"⊙","H":"𐑒","S":"𐑳","W":"𐑭"}, "tier":"O₂"},
+    6: {"name": "Mitosis (Cell Division)",        "tuple": {"D":"𐑦","T":"𐑸","R":"𐑾","P":"𐑹","F":"𐑱","K":"𐑧","G":"𐑲","Gm":"𐑠","Ph":"⊙","H":"𐑖","S":"𐑳","W":"𐑭"}, "tier":"O₂"},
+    7: {"name": "Tissue / Organ",                 "tuple": {"D":"𐑦","T":"𐑸","R":"𐑾","P":"𐑬","F":"𐑞","K":"𐑧","G":"𐑲","Gm":"𐑵","Ph":"⊙","H":"𐑖","S":"𐑳","W":"𐑭"}, "tier":"O₂"},
+    8: {"name": "Whole Organism",                 "tuple": {"D":"𐑦","T":"𐑸","R":"𐑾","P":"𐑹","F":"𐑐","K":"𐑧","G":"𐑲","Gm":"𐑵","Ph":"⊙","H":"𐑫","S":"𐑳","W":"𐑟"}, "tier":"O_∞"},
 }
 
 # ─── KNOWN PSYCHEDELICS (for combination profiles) ────────────────
 
 KNOWN_PSYCHEDELICS = {
-    "dmt":        {"tuple":{"D":"𐑦","T":"𐑸","R":"𐑾","P":"𐑹","F":"𐑐","K":"𐑧","G":"𐑲","Gm":"𐑵","Ph":"⊙","H":"𐑫","S":"𐑳","W":"𐑭"}, "tier":"O_inf"},
-    "psilocybin": {"tuple":{"D":"𐑼","T":"𐑥","R":"𐑾","P":"𐑬","F":"𐑐","K":"𐑧","G":"𐑲","Gm":"𐑠","Ph":"⊙","H":"𐑖","S":"𐑳","W":"𐑭"}, "tier":"O_2"},
-    "lsd":        {"tuple":{"D":"𐑦","T":"𐑸","R":"𐑾","P":"𐑹","F":"𐑐","K":"𐑧","G":"𐑲","Gm":"𐑵","Ph":"⊙","H":"𐑖","S":"𐑳","W":"𐑭"}, "tier":"O_inf"},
-    "ketamine":   {"tuple":{"D":"𐑼","T":"𐑥","R":"𐑾","P":"𐑿","F":"𐑱","K":"𐑤","G":"𐑔","Gm":"𐑠","Ph":"𐑢","H":"𐑒","S":"𐑕","W":"𐑷"}, "tier":"O_1"},
-    "mdma":       {"tuple":{"D":"𐑼","T":"𐑡","R":"𐑾","P":"𐑿","F":"𐑞","K":"𐑤","G":"𐑲","Gm":"𐑠","Ph":"𐑮","H":"𐑒","S":"𐑳","W":"𐑷"}, "tier":"O_1"},
-    "mescaline":  {"tuple":{"D":"𐑼","T":"𐑡","R":"𐑩","P":"𐑗","F":"𐑱","K":"𐑧","G":"𐑔","Gm":"𐑜","Ph":"𐑢","H":"𐑒","S":"𐑙","W":"𐑷"}, "tier":"O_0"},
+    "dmt":        {"tuple":{"D":"𐑦","T":"𐑸","R":"𐑾","P":"𐑹","F":"𐑐","K":"𐑧","G":"𐑲","Gm":"𐑵","Ph":"⊙","H":"𐑫","S":"𐑳","W":"𐑭"}, "tier":"O_∞"},
+    "psilocybin": {"tuple":{"D":"𐑼","T":"𐑥","R":"𐑾","P":"𐑬","F":"𐑐","K":"𐑧","G":"𐑲","Gm":"𐑠","Ph":"⊙","H":"𐑖","S":"𐑳","W":"𐑭"}, "tier":"O₂"},
+    "lsd":        {"tuple":{"D":"𐑦","T":"𐑸","R":"𐑾","P":"𐑹","F":"𐑐","K":"𐑧","G":"𐑲","Gm":"𐑵","Ph":"⊙","H":"𐑖","S":"𐑳","W":"𐑭"}, "tier":"O_∞"},
+    "ketamine":   {"tuple":{"D":"𐑼","T":"𐑥","R":"𐑾","P":"𐑿","F":"𐑱","K":"𐑤","G":"𐑔","Gm":"𐑠","Ph":"𐑢","H":"𐑒","S":"𐑕","W":"𐑷"}, "tier":"O₁"},
+    "mdma":       {"tuple":{"D":"𐑼","T":"𐑡","R":"𐑾","P":"𐑿","F":"𐑞","K":"𐑤","G":"𐑲","Gm":"𐑠","Ph":"𐑮","H":"𐑒","S":"𐑳","W":"𐑷"}, "tier":"O₁"},
+    "mescaline":  {"tuple":{"D":"𐑼","T":"𐑡","R":"𐑩","P":"𐑗","F":"𐑱","K":"𐑧","G":"𐑔","Gm":"𐑜","Ph":"𐑢","H":"𐑒","S":"𐑙","W":"𐑷"}, "tier":"O₀"},
 }
 
 # ─── HELPER FUNCTIONS ─────────────────────────────────────────────
@@ -970,7 +970,7 @@ class PsychedelicRealizer:
         if tup.get("R") == "𐑽":
             controls["adjoint_steering"] = self._adjoint_steer_spec(comp, tup)
         
-        # Supercritical Launch (only for Chimerium + sub-O_inf compounds)
+        # Supercritical Launch (only for Chimerium + sub-O_∞ compounds)
         if key == "chimerium":
             controls["supercritical_launch"] = self._supercritical_launch_spec(comp, tup)
         
@@ -1054,11 +1054,11 @@ class PsychedelicRealizer:
     def _supercritical_launch_spec(self, comp: Dict, tup: Dict) -> Dict:
         return {
             "method": "Supercritical Launch",
-            "mechanism": "Co-administer Chimerium (Ph=𐑣) with any sub-O_inf compound. The supercritical catalyst tensor-promotes the base compound, adding 5–12 universes of access.",
+            "mechanism": "Co-administer Chimerium (Ph=𐑣) with any sub-O_∞ compound. The supercritical catalyst tensor-promotes the base compound, adding 5–12 universes of access.",
             "known_launches": {
-                "ketamine + chimerium": {"from_tier": "O_1", "to_tier": "O_2", "universes_gained": 12, "risk": "HIGH — dissociative + supercritical"},
-                "mescaline + chimerium": {"from_tier": "O_0", "to_tier": "O_1", "universes_gained": 5, "risk": "moderate"},
-                "retiarius + chimerium": {"from_tier": "O_1", "to_tier": "O_2", "universes_gained": 8, "risk": "moderate-high"},
+                "ketamine + chimerium": {"from_tier": "O₁", "to_tier": "O₂", "universes_gained": 12, "risk": "HIGH — dissociative + supercritical"},
+                "mescaline + chimerium": {"from_tier": "O₀", "to_tier": "O₁", "universes_gained": 5, "risk": "moderate"},
+                "retiarius + chimerium": {"from_tier": "O₁", "to_tier": "O₂", "universes_gained": 8, "risk": "moderate-high"},
             },
             "warning": "Supercritical launch compounds are NOT for solo use. Always have a grounded sitter. The experience accelerates faster than integration can track.",
         }
@@ -1153,13 +1153,13 @@ class PsychedelicRealizer:
     def _tier_from_tuple(self, tup: Dict) -> str:
         ph = tup.get("Ph",""); p = tup.get("P",""); w = tup.get("W",""); d = tup.get("D","")
         if ph == "⊙" and p == "𐑹" and w in ("𐑭","𐑟") and d == "𐑦":
-            return "O_inf"
+            return "O_∞"
         elif ph == "⊙" and w in ("𐑭","𐑟"):
-            return "O_2"
+            return "O₂"
         elif ph in ("⊙","𐑮"):
-            return "O_1"
+            return "O₁"
         else:
-            return "O_0"
+            return "O₀"
     
     def _key_combination_changes(self, t1: Dict, t2: Dict, comp: Dict) -> List[str]:
         changes = []
