@@ -175,6 +175,41 @@ def cmd_clink(args):
         print(full_report())
         return 0
 
+    elif sub == "sophick":
+        import json
+        from materials.sophick_forge import (
+            EagleMaterialDesigner, EagleCycleProtocol,
+            FrobeniusCliffAnalyzer, IMASM_EagleBridge,
+            SOPHICK_MERCURY, OUROBORIC_O2, STRUCTURAL_DISTANCE_O2_TO_OINF,
+            GAP_PRIMITIVES, run_eagle_simulation
+        )
+        designer = EagleMaterialDesigner()
+        all_mats = designer.all_designs()
+        if args.mat_name and args.mat_name in all_mats:
+            result = run_eagle_simulation(args.mat_name)
+            print(json.dumps(result, indent=2, default=str))
+        elif args.mat_name == "cliff":
+            for name, mat in all_mats.items():
+                temp = 0.01 if "9" in name else (77.0 if "7" in name else 300.0)
+                print(FrobeniusCliffAnalyzer.full_report(mat, temp_k=temp))
+                print()
+        elif args.mat_name == "bridge":
+            print(IMASM_EagleBridge.report())
+        else:
+            print("Sophick Forge - Eagle Cycle Protocol")
+            print(f"  Sophick Mercury (O_inf):  <{' · '.join(SOPHICK_MERCURY)}>")
+            print(f"  Ouroboric O2 materials:   <{' · '.join(OUROBORIC_O2)}>")
+            print(f"  Structural distance:       {STRUCTURAL_DISTANCE_O2_TO_OINF:.4f}")
+            print(f"  Gap primitives:            {[GAP_PRIMITIVES[i]['name'] for i in GAP_PRIMITIVES]}")
+            print()
+            for name, mat in all_mats.items():
+                print(f"  {name}: {mat.composition[:60]}...")
+            print()
+            print("  Use --name eagle_3_amalgam | eagle_7_animated | eagle_9_sophick")
+            print("  Use --name cliff for Frobenius Cliff analysis")
+            print("  Use --name bridge for IMASM->Eagle bridge")
+        return 0
+
     elif sub == "list":
         print(f"{'Idx':>3} {'Name':40s} {'Tier':10s} {'Tuple':50s}")
         print("-" * 105)
@@ -455,6 +490,72 @@ def cmd_materials(args):
         results = alloy.run_mechanical_test(stress_amplitude_MPa=800, cycles=40)
         return 0
 
+    elif sub == "sophick":
+        import json
+        from materials.sophick_forge import (
+            EagleMaterialDesigner, EagleCycleProtocol,
+            FrobeniusCliffAnalyzer, IMASM_EagleBridge,
+            SOPHICK_MERCURY, OUROBORIC_O2, STRUCTURAL_DISTANCE_O2_TO_OINF,
+            GAP_PRIMITIVES, run_eagle_simulation
+        )
+        designer = EagleMaterialDesigner()
+        all_mats = designer.all_designs()
+        if args.mat_name and args.mat_name in all_mats:
+            result = run_eagle_simulation(args.mat_name)
+            print(json.dumps(result, indent=2, default=str))
+        elif args.mat_name == "cliff":
+            for name, mat in all_mats.items():
+                temp = 0.01 if "9" in name else (77.0 if "7" in name else 300.0)
+                print(FrobeniusCliffAnalyzer.full_report(mat, temp_k=temp))
+                print()
+        elif args.mat_name == "bridge":
+            print(IMASM_EagleBridge.report())
+        else:
+            print("Sophick Forge - Eagle Cycle Protocol")
+            print(f"  Sophick Mercury (O_inf):  <{' · '.join(SOPHICK_MERCURY)}>")
+            print(f"  Ouroboric O2 materials:   <{' · '.join(OUROBORIC_O2)}>")
+            print(f"  Structural distance:       {STRUCTURAL_DISTANCE_O2_TO_OINF:.4f}")
+            print(f"  Gap primitives:            {[GAP_PRIMITIVES[i]['name'] for i in GAP_PRIMITIVES]}")
+            print()
+            for name, mat in all_mats.items():
+                print(f"  {name}: {mat.composition[:60]}...")
+            print()
+            print("  Use --name eagle_3_amalgam | eagle_7_animated | eagle_9_sophick")
+            print("  Use --name cliff for Frobenius Cliff analysis")
+            print("  Use --name bridge for IMASM->Eagle bridge")
+        return 0
+
+    elif sub == "exactor":
+        import json
+        from materials.frobenius_exactor import (
+            FrobeniusGapCloser, CategoryErrorDiagnosis, ALL_PATHWAYS,
+            ALL_EXACTORS, ClosureObstruction
+        )
+        if args.mat_name == "diagnose":
+            print(CategoryErrorDiagnosis.diagnose())
+        elif args.mat_name == "close":
+            obstruction = None
+            result = FrobeniusGapCloser.close_gap()
+            print(f"Selected pathway: {result['selected_pathway']}")
+            print(f"Gap closed: {result['gap_closed']}")
+            print(f"Closure type: {result['closure_state']['closure_type']}")
+            print(f"Obstruction: {result['closure_state']['obstruction']}")
+            print()
+            print(result['exactor_design'])
+        elif args.mat_name in ALL_EXACTORS:
+            exactor = ALL_EXACTORS[args.mat_name]()
+            print(exactor.report())
+            state = exactor.verify_closure()
+            print(f"\nClosure: {'EXACT' if state.is_exact else 'APPROXIMATE'}")
+            print(f"Type: {state.closure_type().value}")
+        elif args.mat_name == "pathways":
+            for p in ALL_PATHWAYS:
+                print(p.description())
+                print()
+        else:
+            print(FrobeniusGapCloser.full_report())
+        return 0
+
     elif sub == "list":
         print("Predefined novel materials:")
         for name in predefined_novel_materials():
@@ -466,7 +567,7 @@ def cmd_materials(args):
         return 0
 
     else:
-        print("Unknown materials subcommand. Use: forge, report, list, frobenius, ouroboric")
+        print("Unknown materials subcommand. Use: forge, report, list, frobenius, ouroboric, sophick, exactor")
         return 1
 
 
@@ -530,7 +631,7 @@ Examples:
     # materials (NEW)
     p_mat = subparsers.add_parser("materials", help="IG Material Forge — structural type to material design")
     p_mat.add_argument("materials_subcommand",
-                        choices=["forge", "report", "list", "frobenius", "ouroboric"],
+                        choices=["forge", "report", "list", "frobenius", "ouroboric", "sophick", "exactor"],
                         help="Materials subcommand")
     p_mat.add_argument("--name", dest="mat_name", type=str,
                         help="Material or IMASM canonical name for forge")
