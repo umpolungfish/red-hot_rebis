@@ -34,12 +34,17 @@ FIELD_TO_ORD = {
 }
 
 def glyph_ord(p, glyph):
+    if not glyph or glyph == '?':
+        return 0
     ord_key = FIELD_TO_ORD.get(p, p)
     om = ORDINALS.get(ord_key, {})
     if glyph in om:
         return om[glyph]
-    k = resolve_ordinal_key(ord_key, glyph)
-    return om.get(k, om.get(glyph, 0))
+    try:
+        k = resolve_ordinal_key(ord_key, glyph)
+        return om.get(k, 0)
+    except (KeyError, Exception):
+        return 0
 
 def ord_to_glyph(p, o):
     ord_key = FIELD_TO_ORD.get(p, p)
@@ -465,6 +470,64 @@ REAGENT_DB = {
         "D":"\U0001045B","T":"\U00010461","R":"\U00010469","P":"\U00010457","F":"\U00010450",
         "K":"\U00010458","G":"\U00010472","Gm":"\U0001045D","Ph":"\U00010462",
         "H":"\U00010452","S":"\U00010459","W":"\U00010477",
+    },
+
+    # ── Amide suppliers ──
+    "acetamide": {
+        "smiles": "CC(=O)N", "role": "amide_source",
+        "supplies": ["amide", "carbonyl"],
+    },
+    "formamide": {
+        "smiles": "O=CN", "role": "amide_source",
+        "supplies": ["amide", "aldehyde"],
+    },
+    # ── Nitrile suppliers ──
+    "acetonitrile": {
+        "smiles": "CC#N", "role": "nitrile_source",
+        "supplies": ["nitrile"],
+    },
+    # ── Halide suppliers ──
+    "thionyl_chloride": {
+        "smiles": "ClS(Cl)=O", "role": "halogenating_agent",
+        "supplies": ["halide"],
+    },
+    "phosphorus_tribromide": {
+        "smiles": "BrP(Br)Br", "role": "halogenating_agent",
+        "supplies": ["halide"],
+    },
+    # ── Carboxylic acid suppliers ──
+    "acetic_acid": {
+        "smiles": "CC(=O)O", "role": "acid_source",
+        "supplies": ["carboxylic_acid"],
+    },
+    "benzoic_acid": {
+        "smiles": "O=C(O)c1ccccc1", "role": "acid_source",
+        "supplies": ["carboxylic_acid", "aromatic_ring"],
+    },
+    # ── Ether suppliers ──
+    "diethyl_ether": {
+        "smiles": "CCOCC", "role": "ether_source",
+        "supplies": ["ether"],
+    },
+    # ── Nitro suppliers ──
+    "nitric_acid": {
+        "smiles": "O[N+](=O)[O-]", "role": "nitrating_agent",
+        "supplies": ["nitro"],
+    },
+    # ── Epoxide suppliers ──
+    "ethylene_oxide": {
+        "smiles": "C1CO1", "role": "epoxide_source",
+        "supplies": ["epoxide"],
+    },
+    # ── Diazonium suppliers ──
+    "sodium_nitrite": {
+        "smiles": "[Na+].[O-]N=O", "role": "diazotizing_agent",
+        "supplies": ["diazonium"],
+    },
+    # ── Sulfur/thiol suppliers ──
+    "hydrogen_sulfide": {
+        "smiles": "S", "role": "thiol_source",
+        "supplies": ["thiol"],
     },
 }
 

@@ -25,3 +25,4 @@ Thumbs.db
 
 # Large data (catalog is committed)
 *.json.bak
+*.zip

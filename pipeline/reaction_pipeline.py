@@ -66,6 +66,93 @@ class ReactionPipeline:
         self.max_depth = max_depth
         self._visited: Set[str] = set()
 
+    def _decompose_single_fg(self, fg_name: str, mol_type: Dict,
+                            target: str, depth: int) -> Optional[List[Dict]]:
+        """Decompose a single-FG precursor by enumerating ALL FG types.
+
+        When a precursor has only one FG (e.g., amine_precursor), the standard
+        disconnection engine can't find meaningful cuts (it would pair the FG
+        with itself, producing nonsense). Instead, we enumerate every known FG
+        type as a potential co-precursor and find the best (other_fg, bond)
+        pair whose product type matches the target FG's structural type.
+
+        Returns a list of route dicts (same format as the multi-FG path),
+        or None if no chemically reasonable disconnection exists.
+        """
+        from compiler import evaluate_disconnection
+
+        fg_type = FG_TYPES.get(fg_name, {})
+        if not fg_type:
+            return None
+
+        candidates = []
+        for other_fg in sorted(FG_TYPES.keys()):
+            if other_fg == fg_name:
+                continue
+            for bond_name in BOND_TYPES:
+                result = evaluate_disconnection(fg_name, other_fg, bond_name, fg_type)
+                if result and result.get("compatible", True):
+                    candidates.append(result)
+
+        if not candidates:
+            return None
+
+        # Sort by product_delta (lower = better match to target FG type)
+        candidates.sort(key=lambda c: c.get("product_delta", 999))
+
+        # Only accept if the best disconnection is chemically reasonable
+        best = candidates[0]
+        if best.get("product_delta", 999) > 2.5:
+            return None  # No chemically meaningful decomposition
+
+        # Build routes (up to 3, skip candidates with product_delta > 3.0)
+        routes = []
+        for i, cut in enumerate(candidates[:3]):
+            if cut.get("product_delta", 999) > 3.0:
+                break
+            route = {
+                "index": i + 1,
+                "fg1": cut["fg1"],
+                "fg2": cut["fg2"],
+                "bond": cut["bond"],
+                "bond_desc": cut.get("bond_desc", cut["bond"]),
+                "product_delta": cut.get("product_delta", 0),
+                "bond_delta": cut.get("bond_delta", 0),
+                "product_type": cut.get("product_type", "?"),
+            }
+
+            # Derive reaction conditions
+            rxn = self.deriver.derive(cut)
+            if rxn:
+                route["reaction"] = rxn.to_dict()
+
+            if i == 0:
+                # Best cut: full recursive decomposition
+                route["child_a"] = self.deep_retrosynthesis(
+                    f"{cut['fg1']}_precursor", depth + 1, fg_hint=cut["fg1"])
+                route["child_b"] = self.deep_retrosynthesis(
+                    f"{cut['fg2']}_precursor", depth + 1, fg_hint=cut["fg2"])
+            else:
+                # Alternative cuts: terminal reagent matches only
+                def _make_terminal(fg):
+                    n = RetrosyntheticNode(f"{fg}_precursor", depth + 1)
+                    n.fgs = [fg]
+                    n.is_terminal = True
+                    match = self._match_reagent(fg)
+                    if match:
+                        n.is_simple = True
+                        n.reagent_match = match
+                        n.terminal_reason = f"alt_single_fg, reagent: {match['name']}"
+                    else:
+                        n.terminal_reason = "alt_single_fg_no_reagent"
+                    return n
+                route["child_a"] = _make_terminal(cut["fg1"])
+                route["child_b"] = _make_terminal(cut["fg2"])
+
+            routes.append(route)
+
+        return routes
+
     def _match_reagent(self, fg_name: str) -> Optional[Dict]:
         """Find the best REAGENT_DB match for a functional group type.
 
@@ -167,6 +254,32 @@ class ReactionPipeline:
         node.fgs = fgs
         node.mol_type = fmt_tup(mol_type) if mol_type else "?"
 
+        # ── Single FG: enumerate ALL FG types as co-precursors ──
+        # Instead of terminating, find the best retrosynthetic disconnection
+        # to form this FG from simpler precursors via exhaustive FG-pair search.
+        if len(fgs) == 1 or (len(fgs) > 1 and len(set(fgs)) == 1):
+            routes = self._decompose_single_fg(fgs[0], mol_type, target, depth)
+            if routes:
+                node.routes = routes
+                return node
+            # No valid retrosynthetic disconnection → fall back to reagent matching
+            node.is_terminal = True
+            match = self._match_reagent(fgs[0])
+            if match:
+                node.is_simple = True
+                node.reagent_match = match
+                node.terminal_reason = f"single_fg_no_decomp, reagent: {match['name']}"
+            else:
+                nk = target.lower().replace(" ", "_").replace("-", "_")
+                if nk in REAGENT_DB:
+                    node.is_simple = True
+                    node.reagent_match = {"name": target, "smiles": REAGENT_DB[nk]["smiles"],
+                                          "distance": 0.0}
+                    node.terminal_reason = "direct_reagent_match"
+                else:
+                    node.terminal_reason = "single_fg_no_decomp_no_reagent"
+            return node
+
         # ── Terminal: no FGs, no type ──
         if not fgs or not mol_type:
             node.is_terminal = True
@@ -211,6 +324,8 @@ class ReactionPipeline:
             return node
 
         # ── Recursive decomposition ──
+        # Best cut gets full recursive decomposition.
+        # Alternative cuts get route info only (terminal reagent matches for children).
         for i, cut in enumerate(cuts[:5]):
             route = {
                 "index": i + 1,
@@ -228,12 +343,28 @@ class ReactionPipeline:
             if rxn:
                 route["reaction"] = rxn.to_dict()
 
-            # Recurse on FG-based precursors (like ch3mpiler does)
-            # These are ABSTRACT — e.g., "amine_precursor", "aromatic_ring_precursor"
-            route["child_a"] = self.deep_retrosynthesis(
-                f"{cut['fg1']}_precursor", depth + 1, fg_hint=cut["fg1"])
-            route["child_b"] = self.deep_retrosynthesis(
-                f"{cut['fg2']}_precursor", depth + 1, fg_hint=cut["fg2"])
+            if i == 0:
+                # Best cut: full recursive decomposition
+                route["child_a"] = self.deep_retrosynthesis(
+                    f"{cut['fg1']}_precursor", depth + 1, fg_hint=cut["fg1"])
+                route["child_b"] = self.deep_retrosynthesis(
+                    f"{cut['fg2']}_precursor", depth + 1, fg_hint=cut["fg2"])
+            else:
+                # Alternative cuts: terminal reagent matches only (no recursion)
+                def _make_terminal(fg_name):
+                    n = RetrosyntheticNode(f"{fg_name}_precursor", depth + 1)
+                    n.fgs = [fg_name]
+                    n.is_terminal = True
+                    match = self._match_reagent(fg_name)
+                    if match:
+                        n.is_simple = True
+                        n.reagent_match = match
+                        n.terminal_reason = f"alt_route, reagent: {match['name']}"
+                    else:
+                        n.terminal_reason = "alt_route_no_reagent"
+                    return n
+                route["child_a"] = _make_terminal(cut["fg1"])
+                route["child_b"] = _make_terminal(cut["fg2"])
 
             node.routes.append(route)
 

@@ -30,7 +30,9 @@ FIELD_TO_ORD = {
 }
 
 def g2v(p, r):
-    """Primitive glyph \u2192 ordinal value."""
+    """Primitive glyph → ordinal value."""
+    if not r or r == '?':
+        return '?', 0
     ord_key = FIELD_TO_ORD.get(p, p)
     om = ORDINALS.get(ord_key, {})
     if r in om:
@@ -40,7 +42,6 @@ def g2v(p, r):
         return k, om[k]
     except Exception:
         return r, 0
-
 def glyph_ord(p, glyph):
     _, o = g2v(p, glyph)
     return o
@@ -456,17 +457,21 @@ def find_fgs(name):
     name_lower = name.lower().replace("_", " ").replace("-", " ").strip()
     found = set()
     
-    # Step 1: Exact match in molecule name DB
-    if name_lower in MOLECULE_FG_DB:
-        found.update(MOLECULE_FG_DB[name_lower])
+    # Build normalized DB for hyphen-insensitive lookup
+    _norm = lambda s: s.lower().replace('_',' ').replace('-',' ').strip()
+    _norm_db = {_norm(k): v for k, v in MOLECULE_FG_DB.items()}
+
+    # Step 1: Exact match in molecule name DB (hyphen-insensitive)
+    if name_lower in _norm_db:
+        found.update(_norm_db[name_lower])
         # Still fall through to token matching to catch additional FGs
         # that might not be in the DB entry
-    
+
     # Step 2: Collect ALL matching DB entries (not just first)
     # Sort by length descending but collect ALL matches
-    for db_name in sorted(MOLECULE_FG_DB.keys(), key=len, reverse=True):
+    for db_name in sorted(_norm_db.keys(), key=len, reverse=True):
         if db_name in name_lower:
-            found.update(MOLECULE_FG_DB[db_name])
+            found.update(_norm_db[db_name])
     
     # Step 3: Token matching — collect ALL matching tokens
     # Use word-aware matching: a token only matches if it appears
