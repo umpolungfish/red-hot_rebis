@@ -249,6 +249,68 @@ FG = {
 }
 
 FG_TOKENS = {
+    # ── Heterocycles (BEFORE short tokens — length-prioritized) ──
+    "dihydroimidazol":"aromatic_ring", "imidazolidin":"aromatic_ring",
+    "dihydrooxazol":"aromatic_ring", "oxazolidin":"aromatic_ring",
+    "dihydrothiazol":"aromatic_ring", "thiazolidin":"aromatic_ring",
+    "tetrahydroisoquinolin":"aromatic_ring", "tetrahydroquinolin":"aromatic_ring",
+    "dihydroindol":"aromatic_ring",
+    "isoquinolin":"aromatic_ring", "quinazolin":"aromatic_ring",
+    "quinoxalin":"aromatic_ring", "cinnolin":"aromatic_ring",
+    "phthalazin":"aromatic_ring", "quinolin":"aromatic_ring",
+    "benzimidazol":"aromatic_ring", "benzothiazol":"aromatic_ring",
+    "benzoxazol":"aromatic_ring", "benzofuran":"aromatic_ring",
+    "benzothiophen":"aromatic_ring", "carbazol":"aromatic_ring",
+    "acridin":"aromatic_ring", "phenanthridin":"aromatic_ring",
+    "phenazin":"aromatic_ring", "phenothiazin":"aromatic_ring",
+    "phenoxazin":"aromatic_ring",
+    "indolizin":"aromatic_ring", "indol":"aromatic_ring",
+    "pyrrolizin":"aromatic_ring", "pyrrol":"aromatic_ring",
+    "imidazol":"aromatic_ring", "pyrazol":"aromatic_ring",
+    "triazol":"aromatic_ring", "tetrazol":"aromatic_ring",
+    "thiazol":"aromatic_ring", "oxazol":"aromatic_ring",
+    "isoxazol":"aromatic_ring", "isothiazol":"aromatic_ring",
+    "oxadiazol":"aromatic_ring", "thiadiazol":"aromatic_ring",
+    "pyridin":"aromatic_ring", "pyrimidin":"aromatic_ring",
+    "pyrazin":"aromatic_ring", "pyridazin":"aromatic_ring",
+    "triazin":"aromatic_ring", "tetrazin":"aromatic_ring",
+    "thiophen":"aromatic_ring", "furan":"aromatic_ring",
+    "selenophen":"aromatic_ring", "tellurophen":"aromatic_ring",
+    "purin":"aromatic_ring", "pteridin":"aromatic_ring",
+    "flavin":"aromatic_ring", "phenanthrolin":"aromatic_ring",
+    "naphthyridin":"aromatic_ring", "chromen":"aromatic_ring",
+    "coumarin":"aromatic_ring", "flavon":"aromatic_ring",
+    "xanthen":"aromatic_ring", "acridon":"aromatic_ring",
+    "porphyrin":"aromatic_ring", "chlorin":"aromatic_ring",
+    "corrin":"aromatic_ring", "phthalocyanin":"aromatic_ring",
+    # ── Amine side chains ──
+    "ethanamine":"amine", "ethylamine":"amine",
+    "propanamine":"amine", "propylamine":"amine",
+    "butanamine":"amine", "butylamine":"amine",
+    "pentanamine":"amine", "pentylamine":"amine",
+    "hexanamine":"amine", "hexylamine":"amine",
+    "methanamine":"amine", "methylamine":"amine",
+    "tryptamine":"amine",
+    "phenethylamine":"amine",
+    # ── Common aromatic names (prevent "ene"→alkene misfire) ──
+    "naphthalene":"aromatic_ring", "anthracene":"aromatic_ring",
+    "phenanthrene":"aromatic_ring", "pyrene":"aromatic_ring",
+    "chrysene":"aromatic_ring", "tetracene":"aromatic_ring",
+    "pentacene":"aromatic_ring", "coronene":"aromatic_ring",
+    "perylene":"aromatic_ring", "triphenylene":"aromatic_ring",
+    "fluoranthene":"aromatic_ring", "benzene":"aromatic_ring",
+    "toluene":"aromatic_ring", "xylene":"aromatic_ring",
+    "mesitylene":"aromatic_ring", "styrene":"aromatic_ring",
+    "azulene":"aromatic_ring", "fulvene":"aromatic_ring",
+    "biphenylene":"aromatic_ring", "acenaphthene":"aromatic_ring",
+    "fluorene":"aromatic_ring", "indene":"aromatic_ring",
+    "thiophene":"aromatic_ring", "selenophene":"aromatic_ring",
+    "tellurophene":"aromatic_ring", "furan":"aromatic_ring",
+    "dibenzofuran":"aromatic_ring", "dibenzothiophene":"aromatic_ring",
+    "carbazole":"aromatic_ring", "dibenzopyrrole":"aromatic_ring",
+    "acridine":"aromatic_ring", "phenazine":"aromatic_ring",
+    "phenoxazine":"aromatic_ring", "phenothiazine":"aromatic_ring",
+    # ── Standard tokens (kept from original) ──
     "alcohol":"alcohol","ol":"alcohol","hydroxy":"alcohol","hydroxyl":"alcohol",
     "carbonyl":"carbonyl","oxo":"carbonyl",
     "aldehyde":"aldehyde","al":"aldehyde",
@@ -268,7 +330,7 @@ FG_TOKENS = {
     "diazonium":"diazonium","diazo":"diazonium",
     "nitro":"nitro","nitroso":"nitro",
     "epoxide":"epoxide","oxirane":"epoxide",
-    "thio":"thiol","thiol":"thiol","sulfanyl":"thiol",
+    "thiol":"thiol","sulfanyl":"thiol",
     "cyclo":"cyclic","cyclohex":"cyclic","cyclopent":"cyclic",
 }
 
@@ -302,12 +364,8 @@ def get_molecule_type(name, catalog):
                     t[pn] = v
             if len(t) == 12:
                 return t, "catalog"
-    # Fallback: compose from name
-    name_lower = name.lower().replace("_", " ").replace("-", " ")
-    fgs_found = set()
-    for token, fg_name in FG_TOKENS.items():
-        if token in name_lower:
-            fgs_found.add(fg_name)
+    # Fallback: use find_fgs which checks MOLECULE_FG_DB first, then FG_TOKENS
+    fgs_found = find_fgs(name)
     if fgs_found:
         return compose_molecule_type(fgs_found), "composed"
     return {}, "none"
@@ -353,7 +411,33 @@ MOLECULE_FG_DB = {
     "2-acetoxybenzoic acid": ["ester", "carboxylic_acid", "aromatic_ring"],
     "11-hydroxy-δ9-tetrahydrocannabinol": ["phenol", "alcohol", "alkene", "ether", "cyclic"],
     "4-methyl-5-phenyl-4,5-dihydro-1,3-oxazol-2-amine": ["amine", "aromatic_ring", "ether", "cyclic"],
-        "cubane": ["cyclic", "alkane"],
+    "tryptamine": ["amine", "aromatic_ring", "cyclic"],
+    "dimethyltryptamine": ["amine", "aromatic_ring", "cyclic"],
+    "5-methoxy-dimethyltryptamine": ["amine", "aromatic_ring", "ether", "cyclic"],
+    "serotonin": ["amine", "phenol", "aromatic_ring", "cyclic"],
+    "melatonin": ["amide", "ether", "aromatic_ring", "cyclic"],
+    "psilocybin": ["amine", "phosphate", "aromatic_ring", "cyclic"],
+    "psilocin": ["amine", "phenol", "aromatic_ring", "cyclic"],
+    "ibogaine": ["amine", "ether", "aromatic_ring", "cyclic"],
+    "harmaline": ["amine", "ether", "aromatic_ring", "cyclic"],
+    "harmine": ["amine", "ether", "aromatic_ring", "cyclic"],
+    "yohimbine": ["amine", "ester", "aromatic_ring", "cyclic"],
+    "reserpine": ["amine", "ester", "ether", "aromatic_ring", "cyclic"],
+    "quinine": ["amine", "alcohol", "ether", "aromatic_ring", "cyclic"],
+    "quinidine": ["amine", "alcohol", "ether", "aromatic_ring", "cyclic"],
+    "strychnine": ["amine", "amide", "ether", "aromatic_ring", "cyclic"],
+    "brucine": ["amine", "amide", "ether", "aromatic_ring", "cyclic"],
+    "lysergic_acid": ["amine", "carboxylic_acid", "aromatic_ring", "cyclic"],
+    "lsd": ["amine", "amide", "aromatic_ring", "cyclic"],
+    "cocaine": ["amine", "ester", "aromatic_ring", "cyclic"],
+    "heroin": ["amine", "ester", "ether", "aromatic_ring", "cyclic"],
+    "dopamine": ["amine", "phenol", "aromatic_ring"],
+    "norepinephrine": ["amine", "alcohol", "phenol", "aromatic_ring"],
+    "epinephrine": ["amine", "alcohol", "phenol", "aromatic_ring"],
+    "histamine": ["amine", "aromatic_ring"],
+    "gramine": ["amine", "aromatic_ring", "cyclic"],
+    "bufotenin": ["amine", "phenol", "aromatic_ring", "cyclic"],
+    "cubane": ["cyclic", "alkane"],
     "pentacyclo": ["cyclic", "alkane"],
     "p-phenylenediamine": ["amine", "aromatic_ring"],
     "3,4-dichloroaniline": ["halide", "amine", "aromatic_ring"],
@@ -362,27 +446,68 @@ MOLECULE_FG_DB = {
 def find_fgs(name):
     """Extract functional groups from molecule name.
     
-    Priority order:
-    1. Molecule name lookup (MOLECULE_FG_DB)
+    Collects ALL functional groups from ALL matching sources.
+    Priority order (all sources contribute; tokens collected cumulatively):
+    1. Molecule name lookup (MOLECULE_FG_DB) — exact or substring
     2. Substring token matching (FG_TOKENS)
+    
+    Returns UNION of all matched FGs, deduplicated and sorted.
     """
     name_lower = name.lower().replace("_", " ").replace("-", " ").strip()
+    found = set()
     
     # Step 1: Exact match in molecule name DB
     if name_lower in MOLECULE_FG_DB:
-        return sorted(MOLECULE_FG_DB[name_lower])
+        found.update(MOLECULE_FG_DB[name_lower])
+        # Still fall through to token matching to catch additional FGs
+        # that might not be in the DB entry
     
-    # Step 2: Check if name_lower starts with or contains a DB key
-    # Sort by length descending for best match first
+    # Step 2: Collect ALL matching DB entries (not just first)
+    # Sort by length descending but collect ALL matches
     for db_name in sorted(MOLECULE_FG_DB.keys(), key=len, reverse=True):
         if db_name in name_lower:
-            return sorted(MOLECULE_FG_DB[db_name])
+            found.update(MOLECULE_FG_DB[db_name])
     
-    # Step 3: Fallback — substring token matching
-    found = set()
+    # Step 3: Token matching — collect ALL matching tokens
+    # Use word-aware matching: a token only matches if it appears
+    # as a whole-word fragment, avoiding spurious substring matches
+    # like "ol" in "indole" being misread as alcohol.
+    matched_tokens = set()
     for token in sorted(FG_TOKENS.keys(), key=len, reverse=True):
         if token in name_lower:
-            found.add(FG_TOKENS[token])
+            # For short tokens (<=3 chars), require word-boundary context
+            # to avoid spurious matches like "ol" in "indole"
+            if len(token) <= 3:
+                # Check that token appears at a word boundary.
+                # Primary check: token must END at a word boundary (after_ok).
+                # Secondary (subsumption): don't match if a longer token already
+                # covered this position (e.g. "indol" already matched → skip "ol").
+                idx = name_lower.find(token)
+                while idx != -1:
+                    # Check character after (or end of string) — token must end at boundary
+                    after_ok = (idx + len(token) == len(name_lower) or
+                               name_lower[idx + len(token)] in ' ()[]{}.,;:-' or
+                               name_lower[idx + len(token)].isdigit())
+                    if after_ok:
+                        # Check: is this token already subsumed by a longer
+                        # token that matched? E.g. "indole" already matched, so
+                        # don't also match "ol" -> "alcohol" for the same position
+                        subsumed = False
+                        for longer in matched_tokens:
+                            if len(longer) > len(token) and token in longer:
+                                # Check if the longer match overlaps this position
+                                longer_idx = name_lower.find(longer)
+                                if longer_idx <= idx <= longer_idx + len(longer):
+                                    subsumed = True
+                                    break
+                        if not subsumed:
+                            found.add(FG_TOKENS[token])
+                        break
+                    idx = name_lower.find(token, idx + 1)
+            else:
+                found.add(FG_TOKENS[token])
+                matched_tokens.add(token)
+    
     return sorted(found)
 def get_fg_type(fg_name):
     return FG.get(fg_name, {})

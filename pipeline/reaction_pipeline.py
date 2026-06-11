@@ -1,0 +1,522 @@
+#!/usr/bin/env python3
+"""
+pipeline/reaction_pipeline.py — Full recursive retrosynthetic pipeline.
+
+Builds a complete multi-step synthesis tree by recursively decomposing every
+intermediate through ch3mpiler's grammar-derived disconnection engine until
+commercially available starting materials are reached.
+
+Key difference from v1: uses ch3mpiler's FG-based recursive decomposition
+(amine_precursor → amine+amine → hydrogen_bond → ...) for intermediate steps,
+then matches REAGENT_DB only at terminal leaves. No premature termination.
+
+Author: Lando⊗⊙perator
+"""
+import json
+import math
+import sys
+import os
+from pathlib import Path
+from typing import Dict, List, Optional, Any, Set, Tuple
+
+BASE_DIR = Path(__file__).parent.parent.absolute()
+CH3MPILER_DIR = BASE_DIR / "ch3mpiler"
+sys.path.insert(0, str(CH3MPILER_DIR))
+sys.path.insert(0, str(BASE_DIR))
+
+from compiler import (
+    Ch3mpiler, PNAMES, tup_dist, fmt_tup, BOND_TYPES, FG as FG_TYPES,
+    find_fgs, get_molecule_type, find_disconnections,
+)
+from reaction_deriver import (
+    ReactionDeriver, DerivedReaction,
+    REAGENT_DB, SOLVENT_DB, CATALYST_DB, ACTIVATOR_DB,
+    SIMPLE_STARTING_MATERIALS, is_simple_material,
+    select_reactants, select_solvent, select_catalyst, select_activator, select_workup,
+    meet_type, tensor_type,
+    derive_conditions_from_disconnection,
+)
+
+
+class RetrosyntheticNode:
+    """One node in the recursive retrosynthetic tree."""
+    def __init__(self, name: str, level: int = 0):
+        self.name = name
+        self.level = level
+        self.fgs: List[str] = []
+        self.mol_type: str = ""
+        self.is_terminal: bool = False
+        self.is_simple: bool = False
+        self.terminal_reason: str = ""
+        self.reagent_match: Optional[Dict] = None
+        self.routes: List[Dict] = []
+
+
+class ReactionPipeline:
+    """Full ch3mpiler pipeline with deep recursive retrosynthesis.
+
+    Recursively decomposes target molecules through FG-based disconnection
+    trees, deriving reaction conditions at each step, until commercially
+    available starting materials are reached.
+    """
+
+    def __init__(self, max_depth: int = 6):
+        self.compiler = Ch3mpiler()
+        self.deriver = ReactionDeriver()
+        self.max_depth = max_depth
+        self._visited: Set[str] = set()
+
+    def _match_reagent(self, fg_name: str) -> Optional[Dict]:
+        """Find the best REAGENT_DB match for a functional group type.
+
+        Prefers reagents that supply ONLY the target FG (fewest extras),
+        then breaks ties by structural distance.
+        """
+        fg_type = FG_TYPES.get(fg_name, {})
+        candidates = []
+        for name, rinfo in REAGENT_DB.items():
+            supplies = rinfo.get("supplies", [])
+            if fg_name in supplies or any(s in fg_name for s in supplies):
+                ct = {p: rinfo.get(p, "?") for p in PNAMES}
+                d, _ = tup_dist(fg_type, ct) if fg_type else (3.0, [])
+                extra = [s for s in supplies if s != fg_name]
+                candidates.append({
+                    "name": name, "smiles": rinfo["smiles"],
+                    "distance": round(d, 3), "supplies": supplies,
+                    "extra_count": len(extra), "extra": extra,
+                })
+        if not candidates:
+            return None
+        # Sort by extra_count first, then by distance
+        candidates.sort(key=lambda c: (c["extra_count"], c["distance"]))
+        best = candidates[0]
+        return {"name": best["name"], "smiles": best["smiles"],
+                "distance": best["distance"], "supplies": best["supplies"]}
+
+    def _is_truly_simple(self, name: str) -> Tuple[bool, str]:
+        """Check if a molecule is a genuine simple starting material.
+        
+        Uses ONLY the SIMPLE_STARTING_MATERIALS set + REAGENT_DB.
+        Does NOT use the len(fgs)<=1 heuristic — that incorrectly marks
+        complex single-FG molecules (indole, benzene, etc.) as simple.
+        """
+        name_lower = name.lower().replace(" ", "_").replace("-", "_")
+        if name_lower in SIMPLE_STARTING_MATERIALS or name in SIMPLE_STARTING_MATERIALS:
+            return True, "commercially_available"
+        if name_lower in REAGENT_DB:
+            return True, "in_reagent_db"
+        return False, ""
+
+    def deep_retrosynthesis(self, target: str, depth: int = 0,
+                            fg_hint: Optional[str] = None) -> RetrosyntheticNode:
+        """Full recursive retrosynthetic tree.
+
+        Uses ch3mpiler's FG-based decomposition logic for intermediate steps.
+        At terminal nodes (max depth, cycles, or no disconnections),
+        matches against REAGENT_DB for concrete starting materials.
+
+        Args:
+            target: molecule name or FG-precursor name
+            depth: current recursion depth
+            fg_hint: if this precursor came from a disconnection, the FG it supplies
+        """
+        node = RetrosyntheticNode(target, depth)
+
+        # ── Terminal: max depth ──
+        if depth >= self.max_depth:
+            node.is_terminal = True
+            match = self._match_reagent(fg_hint) if fg_hint else None
+            if match:
+                node.is_simple = True
+                node.reagent_match = match
+                node.terminal_reason = f"max_depth, reagent: {match['name']}"
+            else:
+                node.terminal_reason = f"max_depth={self.max_depth}"
+            return node
+
+        # ── Terminal: cycle detection ──
+        name_key = (fg_hint or target).lower().replace(" ", "_").replace("-", "_")
+        if name_key in self._visited:
+            node.is_terminal = True
+            match = self._match_reagent(fg_hint) if fg_hint else None
+            if match:
+                node.is_simple = True
+                node.reagent_match = match
+                node.terminal_reason = f"cycle, reagent: {match['name']}"
+            else:
+                node.terminal_reason = "cycle_detected"
+            return node
+        self._visited.add(name_key)
+
+        # ── Determine FGs and type ──
+        if fg_hint:
+            # Use the FG hint directly — find_fgs can miss tokens like "aromatic_ring"
+            fgs = [fg_hint]
+            mol_type = FG_TYPES.get(fg_hint, {})
+            type_src = "fg_hint"
+        else:
+            fgs = find_fgs(target)
+            if not fgs:
+                # Try token-based: strip "_precursor" suffix
+                clean = target.replace("_precursor", "")
+                fgs = find_fgs(clean)
+            mol_type, type_src = get_molecule_type(target, self.compiler.catalog)
+            if not mol_type and fgs:
+                mol_type = FG_TYPES.get(fgs[0], {})
+
+        node.fgs = fgs
+        node.mol_type = fmt_tup(mol_type) if mol_type else "?"
+
+        # ── Terminal: no FGs, no type ──
+        if not fgs or not mol_type:
+            node.is_terminal = True
+            match = self._match_reagent(fg_hint) if fg_hint else None
+            if match:
+                node.is_simple = True
+                node.reagent_match = match
+                node.terminal_reason = f"no_fgs, reagent: {match['name']}"
+            else:
+                # Try direct REAGENT_DB lookup by name
+                nk = target.lower().replace(" ", "_").replace("-", "_")
+                if nk in REAGENT_DB:
+                    node.is_simple = True
+                    node.reagent_match = {"name": target, "smiles": REAGENT_DB[nk]["smiles"],
+                                          "distance": 0.0}
+                    node.terminal_reason = "direct_reagent_match"
+                else:
+                    node.terminal_reason = "no_functional_groups"
+            return node
+
+        # ── Find disconnections ──
+        cuts = find_disconnections(fgs, mol_type, max_results=5)
+
+        # ── Terminal: no disconnections found ──
+        if not cuts:
+            node.is_terminal = True
+            match = self._match_reagent(fgs[0]) if fgs else None
+            if match:
+                node.is_simple = True
+                node.reagent_match = match
+                node.terminal_reason = f"no_cuts, reagent: {match['name']}"
+            else:
+                # Try REAGENT_DB by name
+                nk = target.lower().replace(" ", "_").replace("-", "_")
+                if nk in REAGENT_DB:
+                    node.is_simple = True
+                    node.reagent_match = {"name": target, "smiles": REAGENT_DB[nk]["smiles"],
+                                          "distance": 0.0}
+                    node.terminal_reason = "direct_reagent_match"
+                else:
+                    node.terminal_reason = "no_viable_disconnections"
+            return node
+
+        # ── Recursive decomposition ──
+        for i, cut in enumerate(cuts[:5]):
+            route = {
+                "index": i + 1,
+                "fg1": cut["fg1"],
+                "fg2": cut["fg2"],
+                "bond": cut["bond"],
+                "bond_desc": cut.get("bond_desc", cut["bond"]),
+                "product_delta": cut.get("product_delta", cut.get("delta", 0)),
+                "bond_delta": cut.get("bond_delta", 0),
+                "product_type": cut.get("product_type", "?"),
+            }
+
+            # Derive reaction conditions for this disconnection
+            rxn = self.deriver.derive(cut)
+            if rxn:
+                route["reaction"] = rxn.to_dict()
+
+            # Recurse on FG-based precursors (like ch3mpiler does)
+            # These are ABSTRACT — e.g., "amine_precursor", "aromatic_ring_precursor"
+            route["child_a"] = self.deep_retrosynthesis(
+                f"{cut['fg1']}_precursor", depth + 1, fg_hint=cut["fg1"])
+            route["child_b"] = self.deep_retrosynthesis(
+                f"{cut['fg2']}_precursor", depth + 1, fg_hint=cut["fg2"])
+
+            node.routes.append(route)
+
+        return node
+
+    def _tree_to_dict(self, node: RetrosyntheticNode) -> Dict:
+        """Convert a RetrosyntheticNode tree to a plain dict (for JSON output)."""
+        result = {
+            "name": node.name,
+            "level": node.level,
+            "fgs": node.fgs,
+            "type": node.mol_type,
+            "is_terminal": node.is_terminal,
+            "is_simple": node.is_simple,
+            "terminal_reason": node.terminal_reason,
+        }
+        if node.reagent_match:
+            result["reagent_match"] = node.reagent_match
+        if node.routes:
+            result["routes"] = []
+            for r in node.routes:
+                rd = {
+                    "index": r["index"],
+                    "fg1": r["fg1"], "fg2": r["fg2"],
+                    "bond": r["bond"], "bond_desc": r["bond_desc"],
+                    "product_delta": r["product_delta"],
+                    "reaction": r.get("reaction"),
+                    "child_a": self._tree_to_dict(r["child_a"]),
+                    "child_b": self._tree_to_dict(r["child_b"]),
+                }
+                result["routes"].append(rd)
+        return result
+
+    # ── Tree Printing ──
+
+    def print_tree(self, node, prefix="", is_last=True, show_all_routes=False):
+        """Pretty-print the retrosynthetic tree with Unicode box-drawing."""
+        if prefix == "":
+            print()
+            print("=" * 72)
+            print(f"  RETROSYNTHETIC TREE: {node.name}")
+            if node.fgs:
+                print(f"  FGs: {node.fgs}")
+            if node.mol_type and node.mol_type != "?":
+                print(f"  Type: {node.mol_type}")
+            print("=" * 72)
+
+        connector = "└── " if is_last else "├── "
+
+        if node.is_terminal and node.is_simple:
+            tag = "SIMPLE ✓"
+            if node.reagent_match:
+                tag = f"{node.reagent_match['name']} [{node.reagent_match['smiles']}] (reagent)"
+            elif node.fgs:
+                tag += f" [{', '.join(node.fgs[:3])}]"
+            print(f"{prefix}{connector}{node.name}  -- {tag}")
+        elif node.is_terminal:
+            print(f"{prefix}{connector}{node.name}  -- TERMINAL ({node.terminal_reason})")
+        else:
+            n_routes = len(node.routes)
+            if n_routes == 0:
+                print(f"{prefix}{connector}{node.name}  -- NO ROUTES")
+                return
+
+            best = node.routes[0]
+            delta_str = ""
+            if best.get("product_delta", 0) > 0:
+                delta_str = f" (D={best['product_delta']:.3f})"
+            print(f"{prefix}{connector}{node.name}  via {best['fg1']} + {best['fg2']} -> {best['bond']}{delta_str}")
+
+            rxn = best.get("reaction", {})
+            ext = "    " if is_last else "|   "
+            if rxn:
+                T_info = rxn.get("temperature", {})
+                if T_info:
+                    lo, hi = T_info.get("T_C", (20, 30))
+                    regime = T_info.get("regime", "?")
+                    print(f"{prefix}{ext}  Temp: ({lo}, {hi}) C [{regime}]")
+                solv = rxn.get("solvent", {})
+                if solv:
+                    print(f"{prefix}{ext}  Solvent: {solv.get('name', '?')} (bp {solv.get('bp_C', '?')} C)")
+                cat = rxn.get("catalyst")
+                if cat:
+                    print(f"{prefix}{ext}  Catalyst: {cat.get('name', '?')}")
+                act = rxn.get("activator")
+                if act:
+                    print(f"{prefix}{ext}  Activator: {act.get('name', '?')}")
+                wu = rxn.get("workup", {})
+                if wu:
+                    print(f"{prefix}{ext}  Workup: {wu.get('description', '?')}")
+
+            ext_cont = "    " if is_last else "|   "
+            child_a = best.get("child_a")
+            child_b = best.get("child_b")
+
+            if child_a and child_b:
+                a_is_last = child_b.is_terminal
+                self.print_tree(child_a, prefix + ext_cont, is_last=a_is_last)
+                self.print_tree(child_b, prefix + ext_cont, is_last=True)
+            elif child_a:
+                self.print_tree(child_a, prefix + ext_cont, is_last=True)
+
+            if show_all_routes and n_routes > 1:
+                for r in node.routes[1:]:
+                    pd = r.get("product_delta", 0)
+                    print(f"{prefix}    [Alt] {r['fg1']} + {r['fg2']} -> {r['bond']} (D={pd:.3f})")
+
+    # ── Single-level pipeline (backward compat) ──
+
+    def derive_reactions(self, target: str, max_cuts: int = 5) -> Dict:
+        """Single-level pipeline: target -> disconnections -> reactions (no recursion)."""
+        analysis = self.compiler.analyze(target)
+        cuts = analysis.get("cuts", [])
+        if not cuts:
+            return {
+                "target": target, "type": analysis.get("type", "?"),
+                "fgs": analysis.get("fgs", []),
+                "error": "No viable disconnections found", "reactions": [],
+            }
+        reactions = []
+        for cut in cuts[:max_cuts]:
+            rxn = self.deriver.derive(cut)
+            if rxn:
+                reactions.append(rxn.to_dict())
+        return {
+            "target": target, "type": analysis.get("type", "?"),
+            "type_source": analysis.get("type_source", "?"),
+            "fgs": analysis.get("fgs", []),
+            "num_disconnections": len(cuts),
+            "reactions_derived": len(reactions),
+            "reactions": reactions,
+            "structural_analogs": analysis.get("analogs", []),
+        }
+
+    def cas_pipeline(self, cas_number: str, max_cuts: int = 5) -> Dict:
+        """CAS number -> resolve -> analyze -> derive reactions."""
+        info = self.compiler.resolve_and_analyze(cas_number)
+        name = info.get("cas_info", {}).get("name", cas_number)
+        cuts = info.get("cuts", [])
+        reactions = []
+        for cut in cuts[:max_cuts]:
+            rxn = self.deriver.derive(cut)
+            if rxn:
+                reactions.append(rxn.to_dict())
+        return {
+            "cas": cas_number, "name": name,
+            "formula": info.get("cas_info", {}).get("formula", ""),
+            "type": info.get("type", "?"), "fgs": info.get("fgs", []),
+            "reactions": reactions,
+        }
+
+    def retrosynthetic_pipeline(self, target: str, depth: int = 2, max_cuts: int = 3) -> Dict:
+        """DEPRECATED: Use deep_retrosynthesis() + print_tree() instead."""
+        self._visited.clear()
+        old_max = self.max_depth
+        self.max_depth = min(depth, 6)
+        tree = self.deep_retrosynthesis(target, depth=0)
+        self.max_depth = old_max
+        return self._tree_to_dict(tree)
+
+    def print_synthesis(self, spec):
+        """Pretty-print a single-level synthesis specification."""
+        print(f"\n{'='*70}")
+        print(f"  SYNTHESIS: {spec['target']}")
+        print(f"  Type: {spec.get('type', '?')} [{spec.get('type_source', '?')}]")
+        print(f"  FGs: {spec.get('fgs', [])}")
+        print(f"{'='*70}")
+        reactions = spec.get('reactions', [])
+        if not reactions:
+            print("\n  No reactions derived.")
+            return
+        for i, rxn in enumerate(reactions):
+            disc = rxn.get('disconnection', f"Reaction {i+1}")
+            print(f"\n  -- ROUTE {i+1}: {disc} --")
+            print(f"  Structural delta: {rxn.get('structural_delta', '?')}")
+            T = rxn.get('temperature', {})
+            if T:
+                print(f"  Temperature: {T.get('T_C', (20,30))} C [{T.get('regime','?')}]")
+            solv = rxn.get('solvent', {})
+            if solv:
+                print(f"  Solvent: {solv.get('name','?')} (bp {solv.get('bp_C','?')} C, d={solv.get('distance','?')})")
+            cat = rxn.get('catalyst')
+            if cat:
+                print(f"  Catalyst: {cat.get('name','?')} ({cat.get('type','?')})")
+            act = rxn.get('activator')
+            if act:
+                print(f"  Activator: {act.get('name','?')} ({act.get('type','?')})")
+            reacts = rxn.get('reactants', {})
+            fg1r = reacts.get('fg1_reactants', [])
+            fg2r = reacts.get('fg2_reactants', [])
+            if fg1r:
+                best = fg1r[0]
+                print(f"  Reactant 1: {best['name']} [{best['smiles']}] (d={best['distance']})")
+            if fg2r:
+                best = fg2r[0]
+                print(f"  Reactant 2: {best['name']} [{best['smiles']}] (d={best['distance']})")
+            wu = rxn.get('workup', {})
+            if wu:
+                print(f"  Workup: {wu.get('description','?')}")
+
+def main():
+    import argparse
+    parser = argparse.ArgumentParser(
+        description="ch3mpiler reaction pipeline -- deep recursive retrosynthetic tree (grammar-first)")
+    parser.add_argument("--target", help="Molecule name")
+    parser.add_argument("--cas", help="CAS Registry Number")
+    parser.add_argument("--shallow", action="store_true", help="Single-level only (no recursion)")
+    parser.add_argument("--depth", type=int, default=6, help="Max recursion depth (default: 6)")
+    parser.add_argument("--max-cuts", type=int, default=5, help="Max disconnections per level")
+    parser.add_argument("--all-routes", action="store_true", help="Show all alternative routes")
+    parser.add_argument("--json", action="store_true", help="JSON output")
+    parser.add_argument("--demo", action="store_true", help="Run demo")
+    args = parser.parse_args()
+
+    pipeline = ReactionPipeline(max_depth=args.depth)
+
+    if args.demo:
+        print("=" * 72)
+        print("  ch3mpiler Deep Retrosynthetic Pipeline -- Grammar-First")
+        print("  Decomposing until simple starting materials are reached")
+        print("=" * 72)
+
+        demos = [
+            "benzaldehyde",
+            "aspirin",
+            "4-Methyl-5-phenyl-4,5-dihydro-1,3-oxazol-2-amine",
+            "(Ra)-perdeutero-pentacyclo-1H-indole-3-ethanamine",
+        ]
+        for d in demos:
+            print(f"\n--- DEMO: {d} ---")
+            pipeline._visited.clear()
+            tree = pipeline.deep_retrosynthesis(d)
+            pipeline.print_tree(tree)
+        return
+
+    if args.cas:
+        info = pipeline.compiler.resolve_and_analyze(args.cas)
+        name = info.get("cas_info", {}).get("name", args.cas)
+        if args.shallow:
+            spec = pipeline.cas_pipeline(args.cas, max_cuts=args.max_cuts)
+            if args.json:
+                print(json.dumps(spec, indent=2, ensure_ascii=False))
+            else:
+                print(f"Target: {name}")
+                print(f"Formula: {info.get('cas_info', {}).get('formula', '')}")
+                pipeline.print_synthesis(spec)
+        else:
+            pipeline._visited.clear()
+            tree = pipeline.deep_retrosynthesis(name)
+            if args.json:
+                print(json.dumps(pipeline._tree_to_dict(tree), indent=2, ensure_ascii=False))
+            else:
+                pipeline.print_tree(tree, show_all_routes=args.all_routes)
+        return
+
+    if args.target:
+        if args.shallow:
+            spec = pipeline.derive_reactions(args.target, max_cuts=args.max_cuts)
+            if args.json:
+                print(json.dumps(spec, indent=2, ensure_ascii=False))
+            else:
+                pipeline.print_synthesis(spec)
+        else:
+            pipeline._visited.clear()
+            tree = pipeline.deep_retrosynthesis(args.target)
+            if args.json:
+                print(json.dumps(pipeline._tree_to_dict(tree), indent=2, ensure_ascii=False))
+            else:
+                pipeline.print_tree(tree, show_all_routes=args.all_routes)
+        return
+
+    # Default: demo with benzaldehyde
+    print("=" * 72)
+    print("  ch3mpiler Deep Retrosynthetic Pipeline -- Grammar-First Synthesis")
+    print("  Use --target <molecule> for deep retrosynthetic tree")
+    print("  Use --target <molecule> --shallow for single-level only")
+    print("  Use --demo to see examples")
+    print("=" * 72)
+    print()
+    pipeline._visited.clear()
+    tree = pipeline.deep_retrosynthesis("benzaldehyde")
+    pipeline.print_tree(tree)
+
+
+if __name__ == "__main__":
+    main()
