@@ -431,7 +431,8 @@ def cmd_imas(args):
 def cmd_materials(args):
     """Handle materials subcommands — IG Material Forge."""
     import sys
-    sys.path.insert(0, "/home/mrnob0dy666/red-hot_rebis")
+    import os as _os
+    sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
     from materials.ig_material_forge import MaterialForge, predefined_novel_materials
 
     sub = args.materials_subcommand

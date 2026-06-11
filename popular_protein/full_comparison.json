@@ -1,0 +1,35 @@
+{
+  "lysozyme": {
+    "platonic_length": 129,
+    "crystal_length": 129,
+    "pdb_id": "1LYZ",
+    "sequence_identity_pct": 100.0,
+    "kabsch_rmsd": 18.8,
+    "mean_per_residue_deviation": 17.17,
+    "max_per_residue_deviation": 33.06,
+    "platonic_ss": "REMARK   5 HELICES: 49  STRANDS: 30  COILS: 50",
+    "residues_compared": 129
+  },
+  "gfp": {
+    "platonic_length": 238,
+    "crystal_length": 241,
+    "pdb_id": "2Y0G",
+    "sequence_identity_pct": 19.9,
+    "kabsch_rmsd": 62.62,
+    "mean_per_residue_deviation": 58.48,
+    "max_per_residue_deviation": 117.74,
+    "platonic_ss": "REMARK   5 HELICES: 143  STRANDS: 44  COILS: 51",
+    "residues_compared": 238
+  },
+  "insulin_a_chain": {
+    "platonic_length": 21,
+    "crystal_length": 21,
+    "pdb_id": "3I40",
+    "sequence_identity_pct": 100.0,
+    "kabsch_rmsd": 5.71,
+    "mean_per_residue_deviation": 5.26,
+    "max_per_residue_deviation": 10.8,
+    "platonic_ss": "REMARK   5 HELICES: 12  STRANDS: 5  COILS: 4",
+    "residues_compared": 21
+  }
+}

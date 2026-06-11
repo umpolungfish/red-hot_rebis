@@ -1,0 +1,166 @@
+{
+  "lysozyme": {
+    "name": "lysozyme",
+    "desc": "Hen egg white lysozyme",
+    "pdb_id": "1LYZ",
+    "method": "X-ray",
+    "resolution": 2.0,
+    "platonic_residues": 129,
+    "crystal_residues": 129,
+    "aligned_residues": 129,
+    "sequence_identity_pct": 100.0,
+    "kabsch_rmsd": 18.8,
+    "mean_per_res": 17.17,
+    "median_per_res": 17.42,
+    "max_per_res": 33.06,
+    "platonic_rama": {
+      "alpha": 97,
+      "beta": 30,
+      "left": 0,
+      "ppii": 0,
+      "other": 0,
+      "none": 2
+    },
+    "crystal_rama": {
+      "alpha": 11,
+      "beta": 2,
+      "left": 58,
+      "ppii": 1,
+      "other": 55,
+      "none": 2
+    },
+    "mean_phi_diff": 124.2,
+    "mean_psi_diff": 84.4,
+    "median_phi_diff": 130.8,
+    "median_psi_diff": 87.0
+  },
+  "gfp": {
+    "name": "gfp",
+    "desc": "Enhanced Green Fluorescent Protein (EGFP)",
+    "pdb_id": "2Y0G",
+    "method": "X-ray",
+    "resolution": 1.5,
+    "platonic_residues": 238,
+    "crystal_residues": 225,
+    "aligned_residues": 165,
+    "sequence_identity_pct": 69.3,
+    "kabsch_rmsd": 48.41,
+    "mean_per_res": 45.43,
+    "median_per_res": 45.01,
+    "max_per_res": 130.63,
+    "platonic_rama": {
+      "alpha": 192,
+      "beta": 44,
+      "left": 0,
+      "ppii": 0,
+      "other": 0,
+      "none": 2
+    },
+    "crystal_rama": {
+      "alpha": 10,
+      "beta": 4,
+      "left": 52,
+      "ppii": 0,
+      "other": 157,
+      "none": 2
+    },
+    "mean_phi_diff": 140.9,
+    "mean_psi_diff": 85.3,
+    "median_phi_diff": 151.2,
+    "median_psi_diff": 86.6
+  },
+  "insulin_a_chain": {
+    "name": "insulin_a_chain",
+    "desc": "Human insulin A-chain",
+    "pdb_id": "3I40",
+    "method": "X-ray",
+    "resolution": 1.85,
+    "platonic_residues": 21,
+    "crystal_residues": 21,
+    "aligned_residues": 21,
+    "sequence_identity_pct": 100.0,
+    "kabsch_rmsd": 5.71,
+    "mean_per_res": 5.26,
+    "median_per_res": 4.93,
+    "max_per_res": 10.8,
+    "platonic_rama": {
+      "alpha": 14,
+      "beta": 5,
+      "left": 0,
+      "ppii": 0,
+      "other": 0,
+      "none": 2
+    },
+    "crystal_rama": {
+      "alpha": 0,
+      "beta": 0,
+      "left": 13,
+      "ppii": 0,
+      "other": 6,
+      "none": 2
+    },
+    "mean_phi_diff": 134.4,
+    "mean_psi_diff": 82.1,
+    "median_phi_diff": 133.4,
+    "median_psi_diff": 85.9
+  },
+  "insulin_b_chain": {
+    "name": "insulin_b_chain",
+    "desc": "Human insulin B-chain",
+    "pdb_id": "3I40",
+    "method": "X-ray",
+    "resolution": 1.85,
+    "platonic_residues": 30,
+    "crystal_residues": 30,
+    "aligned_residues": 29,
+    "sequence_identity_pct": 96.7,
+    "kabsch_rmsd": 7.32,
+    "mean_per_res": 6.48,
+    "median_per_res": 6.01,
+    "max_per_res": 17.59,
+    "platonic_rama": {
+      "alpha": 17,
+      "beta": 11,
+      "left": 0,
+      "ppii": 0,
+      "other": 0,
+      "none": 2
+    },
+    "crystal_rama": {
+      "alpha": 0,
+      "beta": 3,
+      "left": 16,
+      "ppii": 0,
+      "other": 9,
+      "none": 2
+    },
+    "mean_phi_diff": 126.1,
+    "mean_psi_diff": 87.3,
+    "median_phi_diff": 133.3,
+    "median_psi_diff": 88.3
+  },
+  "acth": {
+    "name": "acth",
+    "desc": "Adrenocorticotropic hormone (ACTH 1-39)",
+    "length": 39,
+    "pdb_id": null,
+    "status": "no_standalone_crystal_structure",
+    "reason": "ACTH is a 39-residue peptide hormone. No standalone X-ray crystal structure exists \u2014 it does not crystallize in isolation because it is too small and conformationally flexible. The closest structures are:\n  \u2022 1GO9/1GOE \u2014 SOLUTION NMR of modified ACTH(1-24) fragments with D-Phe12 and Aib15 substitutions (not native)\n  \u2022 8GY7 \u2014 Cryo-EM (3.3 \u00c5) of ACTH bound to melanocortin-2 receptor \u2014 receptor-bound conformation, not free peptide\n  \u2022 7F4D \u2014 Cryo-EM (3.0 \u00c5) of \u03b1-MSH bound to MC1R \u2014 shorter peptide, receptor-bound\nThe platonic fold represents the free-solution self-organized topology. Crystallography cannot access this state for small flexible peptides."
+  },
+  "beta_endorphin": {
+    "name": "beta_endorphin",
+    "desc": "Human beta-endorphin (1-31)",
+    "length": 31,
+    "pdb_id": null,
+    "status": "no_standalone_crystal_structure",
+    "reason": "Beta-endorphin is a 31-residue endogenous opioid peptide. No standalone X-ray crystal structure exists. Available PDB entries:\n  \u2022 6TUB \u2014 SOLID-STATE NMR of beta-endorphin amyloid fibril \u2014 aggregates, not the native fold\n  \u2022 8F7Q \u2014 Cryo-EM (3.22 \u00c5) of beta-endorphin bound to mu-opioid receptor \u2014 receptor-bound, not free peptide\nThe platonic fold represents the monomeric free-solution structure. Neither the amyloid fibril nor the receptor-bound conformation is the native fold."
+  },
+  "alpha_msh": {
+    "name": "alpha_msh",
+    "desc": "Alpha-melanocyte stimulating hormone (\u03b1-MSH)",
+    "length": 13,
+    "pdb_id": null,
+    "status": "no_standalone_crystal_structure",
+    "reason": "\u03b1-MSH is a 13-residue peptide. No standalone X-ray crystal or NMR structure exists for the native sequence. Available entries:\n  \u2022 1B0Q \u2014 SOLUTION NMR of a dithiol cyclic \u03b1-MSH analog cyclized via rhenium metal coordination \u2014 artificial, not native\n  \u2022 7F4D, 7F53, 8INR \u2014 Cryo-EM structures of \u03b1-MSH bound to melanocortin receptors (MC1R, MC4R, MC5R) \u2014 receptor-bound, not free peptide\nAt 13 residues, \u03b1-MSH is below the crystallizable size threshold for isolated peptides. The platonic fold provides the only first-principles structural model for the free peptide."
+  }
+}

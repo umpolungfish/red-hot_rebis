@@ -1,0 +1,82 @@
+{
+  "lysozyme": {
+    "platonic": {
+      "alpha": 97,
+      "beta": 30,
+      "left": 0,
+      "ppii": 0,
+      "other": 0,
+      "none": 2
+    },
+    "crystal": {
+      "alpha": 11,
+      "beta": 2,
+      "left": 58,
+      "ppii": 1,
+      "other": 55,
+      "none": 2
+    },
+    "mean_phi_diff": 124.2,
+    "mean_psi_diff": 84.4
+  },
+  "gfp": {
+    "platonic": {
+      "alpha": 192,
+      "beta": 44,
+      "left": 0,
+      "ppii": 0,
+      "other": 0,
+      "none": 2
+    },
+    "crystal": {
+      "alpha": 10,
+      "beta": 4,
+      "left": 52,
+      "ppii": 0,
+      "other": 157,
+      "none": 2
+    },
+    "mean_phi_diff": 140.9,
+    "mean_psi_diff": 85.3
+  },
+  "insulin_a_chain": {
+    "platonic": {
+      "alpha": 14,
+      "beta": 5,
+      "left": 0,
+      "ppii": 0,
+      "other": 0,
+      "none": 2
+    },
+    "crystal": {
+      "alpha": 0,
+      "beta": 0,
+      "left": 13,
+      "ppii": 0,
+      "other": 6,
+      "none": 2
+    },
+    "mean_phi_diff": 134.4,
+    "mean_psi_diff": 82.1
+  },
+  "insulin_b_chain": {
+    "platonic": {
+      "alpha": 17,
+      "beta": 11,
+      "left": 0,
+      "ppii": 0,
+      "other": 0,
+      "none": 2
+    },
+    "crystal": {
+      "alpha": 0,
+      "beta": 3,
+      "left": 16,
+      "ppii": 0,
+      "other": 9,
+      "none": 2
+    },
+    "mean_phi_diff": 126.1,
+    "mean_psi_diff": 87.3
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "lysozyme": {
+    "platonic_residues": 129,
+    "crystal_residues": 129,
+    "sequence_identity_pct": 99.2,
+    "platonic_rama": {
+      "alpha": 97,
+      "beta": 30,
+      "left": 0,
+      "ppii": 0,
+      "other": 0,
+      "none": 2
+    },
+    "crystal_rama": {
+      "alpha": 11,
+      "beta": 2,
+      "left": 58,
+      "ppii": 1,
+      "other": 55,
+      "none": 2
+    },
+    "mean_phi_diff": 145.7,
+    "mean_psi_diff": 99.4,
+    "kabsch_rmsd": 18.8,
+    "mean_per_res": 17.17,
+    "max_per_res": 33.06
+  },
+  "insulin_a_chain": {
+    "platonic_residues": 21,
+    "crystal_residues": 21,
+    "sequence_identity_pct": 95.2,
+    "platonic_rama": {
+      "alpha": 14,
+      "beta": 5,
+      "left": 0,
+      "ppii": 0,
+      "other": 0,
+      "none": 2
+    },
+    "crystal_rama": {
+      "alpha": 0,
+      "beta": 0,
+      "left": 13,
+      "ppii": 0,
+      "other": 6,
+      "none": 2
+    },
+    "mean_phi_diff": 160.4,
+    "mean_psi_diff": 121.6,
+    "kabsch_rmsd": 5.71,
+    "mean_per_res": 5.26,
+    "max_per_res": 10.8
+  }
+}

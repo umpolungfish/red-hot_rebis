@@ -84,7 +84,12 @@ def EVALF(msg: str):
 # =====================================================================
 # Phase 2: Frobenius
 # =====================================================================
-def frobenius_phase(source: str) -> bool:
+def identity_phase(source: str) -> bool:
+    """Verify imscriptive identity: AST round-trip preserves semantic equivalence.
+
+    This is the compiler-domain identity check (FSPLIT→FFUSE), distinct from
+    the algebraic Frobenius condition (μ∘δ=id) on tensor products.
+    """
     tokens, tree = FSPLIT(source)
     success = FFUSE(tree, source)
     verdict = "PASS" if success else "FAIL"
@@ -100,7 +105,7 @@ def bootstrap_compiler(self_path: str = __file__):
     source = AREV(self_path)
     ISCRIB(source)
     
-    if not frobenius_phase(source):
+    if not identity_phase(source):
         EVALF("Self-imscription failed — identity not preserved")
     
     tree = TANCH(source)

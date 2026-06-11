@@ -1,0 +1,528 @@
+{
+  "insulin_a_chain": {
+    "name": "Insulin A-chain (folded)",
+    "sequence": "GIVEQCCTSICSLYQLENYCN",
+    "length": 21,
+    "tuple": {
+      "Ð": "𐑨",
+      "Þ": "𐑸",
+      "Ř": "𐑾",
+      "Φ": "𐑹",
+      "ƒ": "𐑱",
+      "Ç": "𐑤",
+      "Γ": "𐑚",
+      "ɢ": "𐑠",
+      "⊙": "⊙",
+      "Ħ": "𐑓",
+      "Σ": "𐑙",
+      "Ω": "𐑷"
+    },
+    "notation": "⟨𐑨·𐑸·𐑾·𐑹·𐑱·𐑤·𐑚·𐑠·⊙·𐑓·𐑙·𐑷⟩",
+    "spectrum": {
+      "Ð": 0.0,
+      "Þ": 0.0,
+      "Ř": 0.2857142857142857,
+      "Φ": 0.14285714285714285,
+      "ƒ": 0.0,
+      "Ç": 0.14285714285714285,
+      "Γ": 0.0,
+      "ɢ": 0.14285714285714285,
+      "⊙": 0.14285714285714285,
+      "Ħ": 0.0,
+      "Σ": 0.0,
+      "Ω": 0.14285714285714285
+    },
+    "dominant": [
+      [
+        "Ř",
+        4
+      ],
+      [
+        "Φ",
+        2
+      ],
+      [
+        "Ç",
+        2
+      ],
+      [
+        "ɢ",
+        2
+      ],
+      [
+        "⊙",
+        2
+      ]
+    ],
+    "disulfide_bonds": {
+      "bonds": [
+        {
+          "cys_1": {
+            "position": 5,
+            "fragment": "full_precursor"
+          },
+          "cys_2": {
+            "position": 6,
+            "fragment": "full_precursor"
+          },
+          "distance": 1,
+          "motif": "CC",
+          "bond_type": "intrachain"
+        },
+        {
+          "cys_1": {
+            "position": 10,
+            "fragment": "full_precursor"
+          },
+          "cys_2": {
+            "position": 19,
+            "fragment": "full_precursor"
+          },
+          "distance": 9,
+          "motif": "long-range",
+          "bond_type": "intrachain"
+        }
+      ],
+      "unpaired_cys": []
+    },
+    "mature_products": 1
+  },
+  "insulin_b_chain": {
+    "name": "Insulin B-chain (folded)",
+    "sequence": "FVNQHLCGSHLVEALYLVCGERGFFYTPKT",
+    "length": 30,
+    "tuple": {
+      "Ð": "𐑨",
+      "Þ": "𐑥",
+      "Ř": "𐑽",
+      "Φ": "𐑿",
+      "ƒ": "𐑐",
+      "Ç": "𐑘",
+      "Γ": "𐑔",
+      "ɢ": "𐑠",
+      "⊙": "𐑮",
+      "Ħ": "𐑓",
+      "Σ": "𐑙",
+      "Ω": "𐑷"
+    },
+    "notation": "⟨𐑨·𐑥·𐑽·𐑿·𐑐·𐑘·𐑔·𐑠·𐑮·𐑓·𐑙·𐑷⟩",
+    "spectrum": {
+      "Ð": 0.0,
+      "Þ": 0.0,
+      "Ř": 0.14285714285714285,
+      "Φ": 0.14285714285714285,
+      "ƒ": 0.21428571428571427,
+      "Ç": 0.0,
+      "Γ": 0.14285714285714285,
+      "ɢ": 0.07142857142857142,
+      "⊙": 0.07142857142857142,
+      "Ħ": 0.0,
+      "Σ": 0.07142857142857142,
+      "Ω": 0.14285714285714285
+    },
+    "dominant": [
+      [
+        "ƒ",
+        3
+      ],
+      [
+        "Ř",
+        2
+      ],
+      [
+        "Φ",
+        2
+      ],
+      [
+        "Γ",
+        2
+      ],
+      [
+        "Ω",
+        2
+      ]
+    ],
+    "disulfide_bonds": {
+      "bonds": [
+        {
+          "cys_1": {
+            "position": 6,
+            "fragment": "full_precursor"
+          },
+          "cys_2": {
+            "position": 18,
+            "fragment": "full_precursor"
+          },
+          "distance": 12,
+          "motif": "long-range",
+          "bond_type": "intrachain"
+        }
+      ],
+      "unpaired_cys": []
+    },
+    "mature_products": 1
+  },
+  "acth": {
+    "name": "ACTH / corticotropin (folded)",
+    "sequence": "SYSMEHFRWGKPVGKKRRPVKVYPNVAENESAEAFPLEF",
+    "length": 39,
+    "tuple": {
+      "Ð": "𐑦",
+      "Þ": "𐑡",
+      "Ř": "𐑑",
+      "Φ": "𐑿",
+      "ƒ": "𐑐",
+      "Ç": "𐑘",
+      "Γ": "𐑔",
+      "ɢ": "𐑠",
+      "⊙": "𐑢",
+      "Ħ": "𐑓",
+      "Σ": "𐑕",
+      "Ω": "𐑴"
+    },
+    "notation": "⟨𐑦·𐑡·𐑑·𐑿·𐑐·𐑘·𐑔·𐑠·𐑢·𐑓·𐑕·𐑴⟩",
+    "spectrum": {
+      "Ð": 0.05263157894736842,
+      "Þ": 0.05263157894736842,
+      "Ř": 0.0,
+      "Φ": 0.10526315789473684,
+      "ƒ": 0.15789473684210525,
+      "Ç": 0.0,
+      "Γ": 0.05263157894736842,
+      "ɢ": 0.10526315789473684,
+      "⊙": 0.0,
+      "Ħ": 0.0,
+      "Σ": 0.21052631578947367,
+      "Ω": 0.2631578947368421
+    },
+    "dominant": [
+      [
+        "Ω",
+        5
+      ],
+      [
+        "Σ",
+        4
+      ],
+      [
+        "ƒ",
+        3
+      ],
+      [
+        "Φ",
+        2
+      ],
+      [
+        "ɢ",
+        2
+      ]
+    ],
+    "disulfide_bonds": [],
+    "mature_products": 2
+  },
+  "beta_endorphin": {
+    "name": "Beta-endorphin (folded)",
+    "sequence": "YGGFMTSEKSQTPLVTLFKNAIVKNAHKKGQ",
+    "length": 31,
+    "tuple": {
+      "Ð": "𐑨",
+      "Þ": "𐑡",
+      "Ř": "𐑑",
+      "Φ": "𐑬",
+      "ƒ": "𐑐",
+      "Ç": "𐑘",
+      "Γ": "𐑔",
+      "ɢ": "𐑠",
+      "⊙": "𐑮",
+      "Ħ": "𐑓",
+      "Σ": "𐑳",
+      "Ω": "𐑷"
+    },
+    "notation": "⟨𐑨·𐑡·𐑑·𐑬·𐑐·𐑘·𐑔·𐑠·𐑮·𐑓·𐑳·𐑷⟩",
+    "spectrum": {
+      "Ð": 0.0625,
+      "Þ": 0.0,
+      "Ř": 0.0,
+      "Φ": 0.0625,
+      "ƒ": 0.125,
+      "Ç": 0.0625,
+      "Γ": 0.0625,
+      "ɢ": 0.125,
+      "⊙": 0.125,
+      "Ħ": 0.0,
+      "Σ": 0.3125,
+      "Ω": 0.0625
+    },
+    "dominant": [
+      [
+        "Σ",
+        5
+      ],
+      [
+        "ƒ",
+        2
+      ],
+      [
+        "ɢ",
+        2
+      ],
+      [
+        "⊙",
+        2
+      ],
+      [
+        "Ð",
+        1
+      ]
+    ],
+    "disulfide_bonds": [],
+    "mature_products": 2
+  },
+  "alpha_msh": {
+    "name": "Alpha-MSH (folded)",
+    "sequence": "SYSMEHFRWGKPV",
+    "length": 13,
+    "tuple": {
+      "Ð": "𐑦",
+      "Þ": "𐑡",
+      "Ř": "𐑑",
+      "Φ": "𐑬",
+      "ƒ": "𐑐",
+      "Ç": "𐑘",
+      "Γ": "𐑔",
+      "ɢ": "𐑝",
+      "⊙": "𐑢",
+      "Ħ": "𐑓",
+      "Σ": "𐑙",
+      "Ω": "𐑷"
+    },
+    "notation": "⟨𐑦·𐑡·𐑑·𐑬·𐑐·𐑘·𐑔·𐑝·𐑢·𐑓·𐑙·𐑷⟩",
+    "spectrum": {
+      "Ð": 0.14285714285714285,
+      "Þ": 0.14285714285714285,
+      "Ř": 0.0,
+      "Φ": 0.14285714285714285,
+      "ƒ": 0.14285714285714285,
+      "Ç": 0.0,
+      "Γ": 0.14285714285714285,
+      "ɢ": 0.0,
+      "⊙": 0.0,
+      "Ħ": 0.0,
+      "Σ": 0.14285714285714285,
+      "Ω": 0.14285714285714285
+    },
+    "dominant": [
+      [
+        "Ð",
+        1
+      ],
+      [
+        "Þ",
+        1
+      ],
+      [
+        "Φ",
+        1
+      ],
+      [
+        "ƒ",
+        1
+      ],
+      [
+        "Γ",
+        1
+      ]
+    ],
+    "disulfide_bonds": [],
+    "mature_products": 1
+  },
+  "gfp": {
+    "name": "GFP (folded)",
+    "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTFSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+    "length": 238,
+    "tuple": {
+      "Ð": "𐑦",
+      "Þ": "𐑥",
+      "Ř": "𐑽",
+      "Φ": "𐑯",
+      "ƒ": "𐑞",
+      "Ç": "𐑧",
+      "Γ": "𐑲",
+      "ɢ": "𐑵",
+      "⊙": "𐑮",
+      "Ħ": "𐑖",
+      "Σ": "𐑳",
+      "Ω": "𐑟"
+    },
+    "notation": "⟨𐑦·𐑥·𐑽·𐑯·𐑞·𐑧·𐑲·𐑵·𐑮·𐑖·𐑳·𐑟⟩",
+    "spectrum": {
+      "Ð": 0.046153846153846156,
+      "Þ": 0.007692307692307693,
+      "Ř": 0.015384615384615385,
+      "Φ": 0.08461538461538462,
+      "ƒ": 0.1,
+      "Ç": 0.09230769230769231,
+      "Γ": 0.07692307692307693,
+      "ɢ": 0.1,
+      "⊙": 0.06153846153846154,
+      "Ħ": 0.13846153846153847,
+      "Σ": 0.15384615384615385,
+      "Ω": 0.12307692307692308
+    },
+    "dominant": [
+      [
+        "Σ",
+        20
+      ],
+      [
+        "Ħ",
+        18
+      ],
+      [
+        "Ω",
+        16
+      ],
+      [
+        "ƒ",
+        13
+      ],
+      [
+        "ɢ",
+        13
+      ]
+    ],
+    "disulfide_bonds": {
+      "bonds": [
+        {
+          "cys_1": {
+            "position": 47,
+            "fragment": "mature_product_0"
+          },
+          "cys_2": {
+            "position": 69,
+            "fragment": "mature_product_0"
+          },
+          "distance": 22,
+          "motif": "long-range",
+          "bond_type": "intrachain"
+        }
+      ],
+      "unpaired_cys": []
+    },
+    "mature_products": 2
+  },
+  "lysozyme": {
+    "name": "Lysozyme (folded)",
+    "sequence": "KVFGRCELAAAMKRHGLDNYRGYSLGNWVCAAKFESNFNTQATNRNTDGSTDYGILQINSRWWCNDGRTPGSRNLCNIPCSALLSSDITASVNCAKKIVSDGNGMNAWVAWRNRCKGTDVQAWIRGCRL",
+    "length": 129,
+    "tuple": {
+      "Ð": "𐑦",
+      "Þ": "𐑶",
+      "Ř": "𐑾",
+      "Φ": "𐑹",
+      "ƒ": "𐑱",
+      "Ç": "𐑧",
+      "Γ": "𐑔",
+      "ɢ": "𐑵",
+      "⊙": "𐑣",
+      "Ħ": "𐑖",
+      "Σ": "𐑳",
+      "Ω": "𐑷"
+    },
+    "notation": "⟨𐑦·𐑶·𐑾·𐑹·𐑱·𐑧·𐑔·𐑵·𐑣·𐑖·𐑳·𐑷⟩",
+    "spectrum": {
+      "Ð": 0.03278688524590164,
+      "Þ": 0.09836065573770492,
+      "Ř": 0.13114754098360656,
+      "Φ": 0.04918032786885246,
+      "ƒ": 0.04918032786885246,
+      "Ç": 0.09836065573770492,
+      "Γ": 0.01639344262295082,
+      "ɢ": 0.22950819672131148,
+      "⊙": 0.04918032786885246,
+      "Ħ": 0.11475409836065574,
+      "Σ": 0.09836065573770492,
+      "Ω": 0.03278688524590164
+    },
+    "dominant": [
+      [
+        "ɢ",
+        14
+      ],
+      [
+        "Ř",
+        8
+      ],
+      [
+        "Ħ",
+        7
+      ],
+      [
+        "Þ",
+        6
+      ],
+      [
+        "Ç",
+        6
+      ]
+    ],
+    "disulfide_bonds": {
+      "bonds": [
+        {
+          "cys_1": {
+            "position": 5,
+            "fragment": "short_peptide_0"
+          },
+          "cys_2": {
+            "position": 29,
+            "fragment": "mature_product_1"
+          },
+          "distance": 24,
+          "motif": "long-range",
+          "bond_type": "interchain"
+        },
+        {
+          "cys_1": {
+            "position": 63,
+            "fragment": "mature_product_1"
+          },
+          "cys_2": {
+            "position": 75,
+            "fragment": "mature_product_1"
+          },
+          "distance": 12,
+          "motif": "long-range",
+          "bond_type": "intrachain"
+        },
+        {
+          "cys_1": {
+            "position": 79,
+            "fragment": "mature_product_1"
+          },
+          "cys_2": {
+            "position": 93,
+            "fragment": "mature_product_1"
+          },
+          "distance": 14,
+          "motif": "long-range",
+          "bond_type": "intrachain"
+        },
+        {
+          "cys_1": {
+            "position": 114,
+            "fragment": "mature_product_2"
+          },
+          "cys_2": {
+            "position": 126,
+            "fragment": "mature_product_2"
+          },
+          "distance": 12,
+          "motif": "long-range",
+          "bond_type": "intrachain"
+        }
+      ],
+      "unpaired_cys": []
+    },
+    "mature_products": 3
+  }
+}

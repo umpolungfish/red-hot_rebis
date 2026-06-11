@@ -9,7 +9,7 @@ Every disconnection that can be broken can be reconnected.
 import os, sys, json, pathlib, math
 _BASE = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.join(_BASE, "pipeline"))
-from pipeline.frob import frobenius_phase
+from pipeline.frob import identity_phase
 
 CATALOG_PATH = os.path.join(_BASE, "shared", "IG_catalog.json")
 PRIMITIVES_PATH = os.path.join(_BASE, "shared", "primitives.py")
@@ -66,10 +66,13 @@ class Ch3mpilerOb3ect:
 
     def _load_ordinals(self):
         try:
-            spec = {}
-            exec(open(PRIMITIVES_PATH).read(), spec)
-            return spec.get("ORDINALS", {})
-        except:
+            import importlib.util
+            spec = importlib.util.spec_from_file_location("_primitives_mod", PRIMITIVES_PATH)
+            mod = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(mod)
+            return getattr(mod, "ORDINALS", {})
+        except Exception as e:
+            print(f"Warning: could not load ORDINALS from {PRIMITIVES_PATH}: {e}")
             return {}
 
     def _resolve_glyph(self, primitive, value):
@@ -154,7 +157,7 @@ class Ch3mpilerOb3ect:
         print("  Catalog entries loaded:", len(self.catalog))
         print("  Primitive ordinals:", list(self.primitive_ordinals.keys()))
         frob_ok = self.verify_frobenius()
-        source_ok = frobenius_phase(self.source)
+        source_ok = identity_phase(self.source)
         closure = frob_ok and source_ok
         print(f"  Frobenius μ(δ(target))=target: {frob_ok}")
         print(f"  Source integrity: {source_ok}")

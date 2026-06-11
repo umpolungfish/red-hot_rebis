@@ -1,0 +1,72 @@
+{
+  "insulin_a_chain": {
+    "sequence": "GIVEQCCTSICSLYQLENYCN",
+    "length": 21,
+    "ss": "HHHHHHEEEEEHHHHHHCCCC",
+    "n_helix": 12,
+    "n_strand": 5,
+    "n_coil": 4,
+    "pdb_path": "/home/mrnob0dy666/imsgct/red-hot_rebis/popular_protein/insulin_a_chain_platonic.pdb",
+    "pdb_size": 8786
+  },
+  "insulin_b_chain": {
+    "sequence": "FVNQHLCGSHLVEALYLVCGERGFFYTPKT",
+    "length": 30,
+    "ss": "HHHHHHCCHHHHHHEEEEECCEEEEEECCC",
+    "n_helix": 12,
+    "n_strand": 11,
+    "n_coil": 7,
+    "pdb_path": "/home/mrnob0dy666/imsgct/red-hot_rebis/popular_protein/insulin_b_chain_platonic.pdb",
+    "pdb_size": 12220
+  },
+  "acth": {
+    "sequence": "SYSMEHFRWGKPVGKKRRPVKVYPNVAENESAEAFPLEF",
+    "length": 39,
+    "ss": "CCHHHHHHHCHHHHHHHHEEEEECHHHHHHHHHHEEEEE",
+    "n_helix": 25,
+    "n_strand": 10,
+    "n_coil": 4,
+    "pdb_path": "/home/mrnob0dy666/imsgct/red-hot_rebis/popular_protein/acth_platonic.pdb",
+    "pdb_size": 15806
+  },
+  "beta_endorphin": {
+    "sequence": "YGGFMTSEKSQTPLVTLFKNAIVKNAHKKGQ",
+    "length": 31,
+    "ss": "EEEHHHHHHHHHHHHHHHHHHHHHHHHHHCC",
+    "n_helix": 26,
+    "n_strand": 3,
+    "n_coil": 2,
+    "pdb_path": "/home/mrnob0dy666/imsgct/red-hot_rebis/popular_protein/beta_endorphin_platonic.pdb",
+    "pdb_size": 12484
+  },
+  "alpha_msh": {
+    "sequence": "SYSMEHFRWGKPV",
+    "length": 13,
+    "ss": "CCHHHHHHHCCCC",
+    "n_helix": 7,
+    "n_strand": 0,
+    "n_coil": 6,
+    "pdb_path": "/home/mrnob0dy666/imsgct/red-hot_rebis/popular_protein/alpha_msh_platonic.pdb",
+    "pdb_size": 5485
+  },
+  "gfp": {
+    "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTFSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
+    "length": 238,
+    "ss": "HHHHHHHHHHHHHHHHHHHCCCCCCCCCCCCCCCCCCEEHHHHHHEEEEECHHHHHHEEEEEEEEEEEEEECCCCHHHHHHHHHHHHHHHEEHHHHHHEECCCCCCHHHHHHHCCEHHHHHHHHHHHHHHHHHCCHHHHHHHCCCCHHHHHHHHHHHHCHHHHHHHCCCCCHHHHHHHHHHEEEEECCCCEEEEECCEEEEHHHHHHHHHCCHHHHHHHHHHHHHHHHEEEEHHHHHH",
+    "n_helix": 143,
+    "n_strand": 44,
+    "n_coil": 51,
+    "pdb_path": "/home/mrnob0dy666/imsgct/red-hot_rebis/popular_protein/gfp_platonic.pdb",
+    "pdb_size": 93542
+  },
+  "lysozyme": {
+    "sequence": "KVFGRCELAAAMKRHGLDNYRGYSLGNWVCAAKFESNFNTQATNRNTDGSTDYGILQINSRWWCNDGRTPGSRNLCNIPCSALLSSDITASVNCAKKIVSDGNGMNAWVAWRNRCKGTDVQAWIRGCRL",
+    "length": 129,
+    "ss": "CEEEHHHHHHHHHHHCCCCCCCCCEEHHHHHHHCCCEEEEECCCCCCCCHHHHHHHHHEEEEEEECCCCCCCEEEEEECEEEEECCCEHHHHHHHHHCCCCCCHHHHHHHCCCCCCEHHHHHHCCCCCC",
+    "n_helix": 49,
+    "n_strand": 30,
+    "n_coil": 50,
+    "pdb_path": "/home/mrnob0dy666/imsgct/red-hot_rebis/popular_protein/lysozyme_platonic.pdb",
+    "pdb_size": 51127
+  }
+}

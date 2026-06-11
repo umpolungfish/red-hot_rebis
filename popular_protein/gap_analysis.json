@@ -1,0 +1,35 @@
+{
+  "lysozyme": {
+    "canonical_rmsd": 18.8,
+    "exact_rmsd": 23.86,
+    "crystal_phi_rmsd": 18.4,
+    "phipsi_gap_canonical": 0.4,
+    "phipsi_gap_exact": 5.46,
+    "geometry_gap": 18.4,
+    "phipsi_improvement": -5.06,
+    "frobenius_total_gap": 18.8,
+    "frobenius_irreducible": 18.4
+  },
+  "insulin_a_chain": {
+    "canonical_rmsd": 5.71,
+    "exact_rmsd": 4.88,
+    "crystal_phi_rmsd": 3.45,
+    "phipsi_gap_canonical": 2.26,
+    "phipsi_gap_exact": 1.43,
+    "geometry_gap": 3.45,
+    "phipsi_improvement": 0.83,
+    "frobenius_total_gap": 5.71,
+    "frobenius_irreducible": 3.45
+  },
+  "insulin_b_chain": {
+    "canonical_rmsd": 7.32,
+    "exact_rmsd": 7.12,
+    "crystal_phi_rmsd": 6.06,
+    "phipsi_gap_canonical": 1.26,
+    "phipsi_gap_exact": 1.06,
+    "geometry_gap": 6.06,
+    "phipsi_improvement": 0.2,
+    "frobenius_total_gap": 7.32,
+    "frobenius_irreducible": 6.06
+  }
+}

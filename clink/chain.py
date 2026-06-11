@@ -170,21 +170,6 @@ def compute_c_score_from_tuple(tup):
     
     return round(gate1 * gate2, 4)
 
-if __name__ == "__main__":
-    frob = verify_all_frobenius_closed()
-    print("CLINK Frobenius Closure:")
-    for name, closed in frob["per_layer"].items():
-        print(f"  {'✅' if closed else '❌'} {name}: {closed}")
-    print(f"All closed: {frob['all_closed']}")
-
-    chain = clink_chain_distance()
-    print(f"\nCLINK Chain: Σd={chain['total_distance']}, {chain['total_primitive_deltas']} deltas")
-    for s in chain["steps"]:
-        print(f"  {s['from']} → {s['to']}: d={s['distance']} ({len(s['deltas'])} primitives)")
-
-    org = clink_layer_tuple(8, True)
-    print(f"\nOrganism: {format_tuple_glyphs(org)}  Tier={org['_tier']}")
-    print(f"Frobenius-closed: {clink_frobenius_closed(8)}")
 def clink_frobenius_closed(name_or_idx_or_tup):
     """Check tensor-product Frobenius closure: tensorProduct(s,s) = s.
     
@@ -279,3 +264,19 @@ def format_tuple_glyphs(tup_dict):
     return "⟨" + "·".join(tup_dict.get(p, "?") for p in PORDER) + "⟩"
 
 
+
+if __name__ == "__main__":
+    frob = verify_all_frobenius_closed()
+    print("CLINK Frobenius Closure:")
+    for name, closed in frob["per_layer"].items():
+        print(f"  {'✅' if closed else '❌'} {name}: {closed}")
+    print(f"All closed: {frob['all_closed']}")
+
+    chain = clink_chain_distance()
+    print(f"\nCLINK Chain: Σd={chain['total_distance']}, {chain['total_primitive_deltas']} deltas")
+    for s in chain["steps"]:
+        print(f"  {s['from']} → {s['to']}: d={s['distance']} ({len(s['deltas'])} primitives)")
+
+    org = clink_layer_tuple(8, True)
+    print(f"\nOrganism: {format_tuple_glyphs(org)}  Tier={org['_tier']}")
+    print(f"Frobenius-closed: {clink_frobenius_closed(8)}")

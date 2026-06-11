@@ -2,7 +2,7 @@
 import hashlib, os, pathlib, re, sys
 from datetime import datetime
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from frob import frobenius_phase
+from frob import identity_phase
 
 
 class AutoImscriber:
@@ -37,7 +37,7 @@ Auto-imscribed on {datetime.now().strftime("%Y-%m-%d")}
 """
 import os, pathlib, sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from frob import frobenius_phase
+from frob import identity_phase
 
 class {self.name}:
     def __init__(self):
@@ -45,7 +45,7 @@ class {self.name}:
 
     def verify(self) -> bool:
         print(f"=== {{self.__class__.__name__}} ===")
-        frob_ok = frobenius_phase(self.source)
+        frob_ok = identity_phase(self.source)
         print(f"Closure: {{frob_ok}}")
         return frob_ok
 
@@ -69,7 +69,7 @@ class MetaAutoImscriberOb3ect:
     def verify(self) -> bool:
         print("=== Meta Auto-Imscriber Ob3ect ===")
         # Self-imscription: the imscriber can imscribe its own source
-        frob_ok = frobenius_phase(self.source)
+        frob_ok = identity_phase(self.source)
         # Generation check: produce a stub and verify it parses cleanly
         stub = AutoImscriber("TestStub — auto-generated self-imscription").generate()
         import ast

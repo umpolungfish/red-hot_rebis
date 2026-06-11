@@ -13,7 +13,7 @@ verify:
 	python -c "import json; c = json.load(open('shared/IG_catalog.json')); print('catalog: %d entries' % len(c))"
 	python -c "from serpentrod.protein_v5 import *; print('serpentrod: OK')"
 	python -c "from ch3mpiler.compiler import *; print('ch3mpiler: OK')"
-	python -c "from pipeline.frob import frobenius_phase; from pipeline.auto_imscriber import AutoImscriber; print('pipeline: OK')"
+	python -c "from pipeline.frob import identity_phase; from pipeline.auto_imscriber import AutoImscriber; print('pipeline: OK')"
 	python -c "from gene_imscriber.engine import *; print('gene_imscriber: OK')"
 	@echo "=== All components verified ==="
 

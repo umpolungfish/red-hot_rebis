@@ -464,7 +464,7 @@ class RebisKernel:
         components = {
             "serpentrod": ("serpentrod.protein_v5", "EnhancedPredictorV5"),
             "ch3mpiler": ("ch3mpiler.compiler", "Ch3mpiler"),
-            "pipeline": ("pipeline.frob", "frobenius_phase"),
+            "pipeline": ("pipeline.frob", "identity_phase"),
         }
         for key, (mod_name, class_name) in components.items():
             try:
