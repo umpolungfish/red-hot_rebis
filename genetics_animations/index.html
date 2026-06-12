@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paraconsistent Genetics — Animations</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: Georgia, 'Times New Roman', serif; background: #0d1117; color: #c9d1d9; line-height: 1.6; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+  h1 { font-size: 2.2em; text-align: center; margin-bottom: 8px; color: #f0f6fc; letter-spacing: 1px; }
+  h1 span { color: #58a6ff; }
+  .subtitle { text-align: center; color: #8b949e; margin-bottom: 40px; font-style: italic; }
+  .nav { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 40px; }
+  .nav a { padding: 8px 18px; background: #21262d; border: 1px solid #30363d; border-radius: 6px;
+           color: #58a6ff; text-decoration: none; font-size: 14px; transition: 0.2s; }
+  .nav a:hover { background: #1f6feb; color: #fff; border-color: #1f6feb; }
+  .animation-card { background: #161b22; border: 1px solid #30363d; border-radius: 12px; margin-bottom: 40px;
+                    overflow: hidden; transition: 0.2s; }
+  .animation-card:hover { border-color: #58a6ff; }
+  .card-header { padding: 20px 25px 10px; border-bottom: 1px solid #21262d; }
+  .card-header h2 { font-size: 1.4em; color: #f0f6fc; margin-bottom: 6px; }
+  .card-header .desc { color: #8b949e; font-size: 0.95em; }
+  .card-body { padding: 20px 25px; }
+  .card-body svg { width: 100%; height: auto; max-height: 650px; border-radius: 6px; background: #fff; }
+  .card-footer { padding: 10px 25px 18px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .tag { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-family: sans-serif; }
+  .tag-exact { background: #1b3d24; color: #7ee787; border: 1px solid #238636; }
+  .tag-split { background: #3d2e00; color: #d29922; border: 1px solid #9e6a03; }
+  .tag-stop { background: #3d1111; color: #ff7b72; border: 1px solid #da3633; }
+  .tag-core { background: #1c2128; color: #79c0ff; border: 1px solid #1f6feb; }
+  .formula { font-family: 'Courier New', monospace; background: #0d1117; padding: 12px 16px; border-radius: 6px;
+             margin-top: 12px; border-left: 3px solid #58a6ff; font-size: 0.9em; color: #c9d1d9; }
+  .footer { text-align: center; color: #484f58; padding: 30px 0 10px; font-size: 0.85em; }
+  .footer strong { color: #8b949e; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>&#9651; Paraconsistent <span>Genetics</span></h1>
+<p class="subtitle">Animations Illustrating the Genetic Code as a Frobenius Algebra on the p4rakernel</p>
+
+<div class="nav">
+  <a href="#b4">B&#8324; Lattice</a>
+  <a href="#boxes">Codon Boxes</a>
+  <a href="#cycle">Kernel Cycle</a>
+  <a href="#aas">20 = 8+12</a>
+  <a href="#stop">Stop Codons</a>
+  <a href="#mutations">Mutation Paths</a>
+</div>
+
+<div class="animation-card" id="b4">
+  <div class="card-header">
+    <h2>B&#8324; Nucleotide Lattice</h2>
+    <div class="desc">Belnap FOUR as the genetic nucleotide alphabet — the 4-valued distributive lattice
+    underlying the genetic code. G (Both) at top, A (False) at bottom, C (True) and U (Neither) in between.</div>
+  </div>
+  <div class="card-body">
+    <object data="B4_LATTICE.svg" type="image/svg+xml" style="width:100%; max-height:600px;">B4 Lattice SVG</object>
+  </div>
+  <div class="card-footer">
+    <span class="tag tag-core">B&#8324;</span>
+    <span class="tag tag-core">Lattice</span>
+    <span class="tag tag-core">Nucleotide</span>
+  </div>
+  <div class="formula">
+    Watson-Crick complement (A↔U, G↔C) &#8800; Belnap negation (&#172;B=B, &#172;N=N). Both lattice structures are simultaneously present.
+  </div>
+</div>
+
+<div class="animation-card" id="boxes">
+  <div class="card-header">
+    <h2>Codon Box Stratification</h2>
+    <div class="desc">The 16 codon boxes partitioned by the B&#8324; Frobenius rule. 8 exact boxes (&#956;∘&#948;=id holds exactly,
+    32 codons, p&#8323; carries no information) vs 8 split boxes (29 codons + 3 stops, &#956;∘&#948;=id modulo &#8484;&#8322; wobble).</div>
+  </div>
+  <div class="card-body">
+    <object data="CODON_BOXES.svg" type="image/svg+xml" style="width:100%; max-height:650px;">Codon Boxes SVG</object>
+  </div>
+  <div class="card-footer">
+    <span class="tag tag-exact">8 Exact Boxes</span>
+    <span class="tag tag-split">8 Split Boxes</span>
+    <span class="tag tag-stop">3 Stop Codons</span>
+  </div>
+  <div class="formula">
+    Exact iff p&#8322; = C (T), OR p&#8322; &#8712; {U,G} (N,B) with p&#8321; &#8712; {C,G} (T,B) — derived from B&#8324;, not empirical.
+  </div>
+</div>
+
+<div class="animation-card" id="cycle">
+  <div class="card-header">
+    <h2>ENGAGR → FSPLIT → FFUSE Cycle</h2>
+    <div class="desc">The paraconsistent kernel's Frobenius computation. Each codon undergoes the triple
+    operation: ENGAGR (self-reference), FSPLIT (δ comultiplication), FFUSE (μ multiplication).
+    The theorem ffuse∘fsplit = id IS the genetic code's &#956;∘&#948;=id.</div>
+  </div>
+  <div class="card-body">
+    <object data="KERNEL_CYCLE.svg" type="image/svg+xml" style="width:100%; max-height:600px;">Kernel Cycle SVG</object>
+  </div>
+  <div class="card-footer">
+    <span class="tag tag-core">Frobenius</span>
+    <span class="tag tag-exact">&#956;∘&#948;=id</span>
+    <span class="tag tag-stop">&#937; Boundary</span>
+  </div>
+  <div class="formula">
+    ffuse(fsplit(r&#8320;)) = r&#8320; for all four Belnap values. Verified by Lean rfl proofs in p4ramill.
+  </div>
+</div>
+
+<div class="animation-card" id="aas">
+  <div class="card-header">
+    <h2>The 20 Amino Acids: 8 Ground + 12 Promoted</h2>
+    <div class="desc">Ground-layer AAs (Leu, Pro, Arg, Thr, Ala, Ser, Val, Gly) carry no primitive activation.
+    12 promoted AAs biject onto the 12 IG primitives (&#208;, &#254;, &#344;, &#934;, &#402;, &#199;, &#915;, &#610;, &#8857;, &#358;, &#931;, &#937;),
+    ordered by structural risk class.</div>
+  </div>
+  <div class="card-body">
+    <object data="TWENTY_EIGHT_PLUS_TWELVE.svg" type="image/svg+xml" style="width:100%; max-height:650px;">20 AAs SVG</object>
+  </div>
+  <div class="card-footer">
+    <span class="tag tag-exact">8 Ground</span>
+    <span class="tag tag-split">12 Promoted</span>
+    <span class="tag tag-core">IG Bijection</span>
+  </div>
+  <div class="formula">
+    8 + 12 = 20 = 16 × 4 / 3.2 = 64 / 3.2 — Crystal divisibility: 17,280,000 / 64 = 270,000
+  </div>
+</div>
+
+<div class="animation-card" id="stop">
+  <div class="card-header">
+    <h2>Stop Codons as &#937; Winding Boundary</h2>
+    <div class="desc">UAA (&#937;&#8320; Ochre), UAG (&#937;&#8484;&#8322; Amber), UGA (&#937;&#8484; Opal) form the Frobenius algebra's
+    topological boundary. Each carries a distinct &#937; winding class, detected by the kernel as a paradox
+    in the Frobenius condition.</div>
+  </div>
+  <div class="card-body">
+    <object data="STOP_CODONS.svg" type="image/svg+xml" style="width:100%; max-height:550px;">Stop Codons SVG</object>
+  </div>
+  <div class="card-footer">
+    <span class="tag tag-stop">UAA Ochre</span>
+    <span class="tag tag-stop">UAG Amber</span>
+    <span class="tag tag-stop">UGA Opal</span>
+    <span class="tag tag-core">&#937; Winding</span>
+  </div>
+  <div class="formula">
+    All three: p&#8321; = U (N = Neither), p&#8322; = purine (A=F or G=B). The kernel detects r&#8320; &#8800; p&#8321; &#8594; termination.
+  </div>
+</div>
+
+<div class="animation-card" id="mutations">
+  <div class="card-header">
+    <h2>B&#8324; Lattice Mutation Paths</h2>
+    <div class="desc">Amino acid substitutions analyzed as B&#8324; edit distances on the nucleotide lattice.
+    Covering relations cost 1 (G&#8594;C, G&#8594;U, C&#8594;A, U&#8594;A). Cross-lattice jumps cost 2 (G↔A, C↔U).
+    The Chimera Theorem governs composite edits across multiple primitive classes.</div>
+  </div>
+  <div class="card-body">
+    <object data="MUTATION_PATH.svg" type="image/svg+xml" style="width:100%; max-height:650px;">Mutation Paths SVG</object>
+  </div>
+  <div class="card-footer">
+    <span class="tag tag-exact">Cost 1 Edits</span>
+    <span class="tag tag-split">Cost 2 Edits</span>
+    <span class="tag tag-core">Chimera Theorem</span>
+  </div>
+  <div class="formula">
+    tensor(&#8857;&#8331;, &#8857;&#8323;) = &#8857;&#8323; — coupling a self-modeling system to an EP system selects the tensor; the meet preserves &#8857;&#8331;.
+  </div>
+</div>
+
+<div class="footer">
+  Generated from <strong>p4rakernel</strong> genetics implementations —
+  <em>genetic_code.py</em>, <em>genetics_b4.py</em>, <em>genetic_asm.py</em>, <em>kernel.py</em>, <em>belnap.py</em> —
+  formalized in Lean 4 at <strong>p4ramill/</strong><br>
+  <span style="font-size: 0.85em;">All animations are self-contained SVG with CSS/&#60;animate&#62; timing — no JavaScript required.</span>
+</div>
+
+</div>
+</body>
+</html>

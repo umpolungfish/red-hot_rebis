@@ -1,0 +1,11 @@
+flowchart TD
+    A[Telomere State<br/>Length + Overhang + G4 + T-loop] <--> B[Shelterin Sensor<br/>TRF1/TRF2/POT1 Occupancy]
+    B <--> C[ATM Signaling<br/>Damage Response]
+    C <--> D[Epigenetic Derepressor<br/>TET2 + Chromatin]
+    D <--> E[hTERT Expression<br/>Phase Controller]
+    E <--> F[Telomerase Extension<br/>TRF1 Gate + TERRA]
+    F <--> G[Sealer + CST/G4 Dynamics]
+    G --> A
+    style A fill:#ffeb3b,stroke:#333,stroke-width:3px
+    style F fill:#4caf50,stroke:#333,stroke-width:3px
+    style E fill:#2196f3

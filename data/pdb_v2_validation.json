@@ -1,0 +1,82 @@
+[
+  {
+    "pdb_id": "1VII",
+    "seq_match": true,
+    "n_pred": 45,
+    "n_exp": 74,
+    "tp": 19,
+    "fp": 26,
+    "fn": 55,
+    "precision": 0.4222,
+    "recall": 0.2568,
+    "f1": 0.3193,
+    "energy": {
+      "LJ": 11937.0045,
+      "HB": 0.5008,
+      "elec": 1.8062,
+      "total": 11939.3116
+    },
+    "activation": 8,
+    "frobenius": true
+  },
+  {
+    "pdb_id": "1UBQ",
+    "seq_match": true,
+    "n_pred": 72,
+    "n_exp": 177,
+    "tp": 20,
+    "fp": 52,
+    "fn": 157,
+    "precision": 0.2778,
+    "recall": 0.113,
+    "f1": 0.1606,
+    "energy": {
+      "LJ": 11914067.1962,
+      "HB": 0.1096,
+      "elec": -5.7609,
+      "total": 11914061.5449
+    },
+    "activation": 10,
+    "frobenius": true
+  },
+  {
+    "pdb_id": "1ZDD",
+    "seq_match": true,
+    "n_pred": 15,
+    "n_exp": 66,
+    "tp": 13,
+    "fp": 2,
+    "fn": 53,
+    "precision": 0.8667,
+    "recall": 0.197,
+    "f1": 0.321,
+    "energy": {
+      "LJ": 64.5601,
+      "HB": -0.0382,
+      "elec": -3.651,
+      "total": 60.8709
+    },
+    "activation": 11,
+    "frobenius": true
+  },
+  {
+    "pdb_id": "1L2Y",
+    "seq_match": true,
+    "n_pred": 4,
+    "n_exp": 33,
+    "tp": 3,
+    "fp": 1,
+    "fn": 30,
+    "precision": 0.75,
+    "recall": 0.0909,
+    "f1": 0.1622,
+    "energy": {
+      "LJ": -2.0708,
+      "HB": 0.0,
+      "elec": 0.0,
+      "total": -2.0708
+    },
+    "activation": 7,
+    "frobenius": true
+  }
+]

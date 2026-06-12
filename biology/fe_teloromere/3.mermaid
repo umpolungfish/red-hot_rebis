@@ -1,0 +1,10 @@
+flowchart TD
+    Length[Telomere Length] <--> TRF1Calc{n_TRF1 = L / 18}
+    TRF1Calc -->|n_TRF1 < 400| OpenGate[Gate OPEN<br/>Extension Allowed]
+    TRF1Calc -->|n_TRF1 ≥ 400| ClosedGate[Gate CLOSED<br/>Extension = 0 EXACT]
+    OpenGate --> Extension[Add Repeats + POT1 5×]
+    Extension --> HardCap[Clip at 7200 bp]
+    HardCap --> Length
+    ClosedGate --> Length
+    style ClosedGate fill:#f44336
+    style OpenGate fill:#4caf50

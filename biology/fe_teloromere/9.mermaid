@@ -1,0 +1,7 @@
+flowchart LR
+    OverhangLength --> G4Formation
+    G4Formation --> G4Stability[~0.83]
+    G4Stability --> ActivityMod[65% cap]
+    ActivityMod --> ExtensionOutcome
+    CSTFillIn[60 nt/div] <--> OverhangLength
+    ExtensionOutcome --> OverhangLength

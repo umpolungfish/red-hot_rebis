@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="900" height="600">
+  <defs>
+    <style>
+      .title { font-family: serif; font-size: 22px; text-anchor: middle; font-weight: bold; fill: #222; }
+      .caption { font-family: sans-serif; font-size: 13px; text-anchor: middle; fill: #666; }
+      .stop-name { font-family: monospace; font-size: 20px; font-weight: bold; text-anchor: middle; }
+      .belnap-triple { font-family: monospace; font-size: 14px; text-anchor: middle; fill: #555; }
+      .omega-label { font-family: serif; font-size: 16px; font-weight: bold; text-anchor: middle; }
+      @keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
+      @keyframes borderGlow { 0%,100% { stroke: #e74c3c; } 50% { stroke: #f39c12; } }
+    </style>
+  </defs>
+
+  <text x="450" y="35" class="title">Stop Codons as Omega Winding Boundary</text>
+  <text x="450" y="60" class="caption">The three stop codons are the Frobenius algebra's topological boundary (Omega winding number)</text>
+
+  <!-- UAA -->
+  <g style="animation: fadeIn 1s 0.5s forwards; opacity: 0;">
+    <rect x="50" y="100" width="230" height="130" rx="10" fill="#fadbd8" stroke="#e74c3c" stroke-width="2">
+      <animate attributeName="stroke" values="#e74c3c;#f39c12;#e74c3c" dur="3s" repeatCount="indefinite"/>
+    </rect>
+    <text x="165" y="130" class="stop-name" fill="#c0392b">UAA</text>
+    <text x="165" y="155" class="belnap-triple">(N, F, F) = (U, A, A)</text>
+    <text x="165" y="178" class="omega-label" style="fill: #e67e22;">Omega0 — Ochre</text>
+    <text x="165" y="200" class="caption" style="font-size: 11px;">Simple termination</text>
+    <text x="165" y="218" class="caption" style="font-size: 11px;">Minimal Omega value</text>
+  </g>
+
+  <!-- UAG -->
+  <g style="animation: fadeIn 1s 1s forwards; opacity: 0;">
+    <rect x="335" y="100" width="230" height="130" rx="10" fill="#fadbd8" stroke="#e74c3c" stroke-width="2">
+      <animate attributeName="stroke" values="#e74c3c;#f39c12;#e74c3c" dur="3s" begin="1s" repeatCount="indefinite"/>
+    </rect>
+    <text x="450" y="130" class="stop-name" fill="#c0392b">UAG</text>
+    <text x="450" y="155" class="belnap-triple">(N, F, B) = (U, A, G)</text>
+    <text x="450" y="178" class="omega-label" style="fill: #e67e22;">OmegaZ2 — Amber</text>
+    <text x="450" y="200" class="caption" style="font-size: 11px;">Conditional termination</text>
+    <text x="450" y="218" class="caption" style="font-size: 11px;">Selenocysteine readthrough</text>
+  </g>
+
+  <!-- UGA -->
+  <g style="animation: fadeIn 1s 1.5s forwards; opacity: 0;">
+    <rect x="620" y="100" width="230" height="130" rx="10" fill="#fadbd8" stroke="#e74c3c" stroke-width="2">
+      <animate attributeName="stroke" values="#e74c3c;#f39c12;#e74c3c" dur="3s" begin="2s" repeatCount="indefinite"/>
+    </rect>
+    <text x="735" y="130" class="stop-name" fill="#c0392b">UGA</text>
+    <text x="735" y="155" class="belnap-triple">(N, B, F) = (U, G, A)</text>
+    <text x="735" y="178" class="omega-label" style="fill: #e67e22;">OmegaZ — Opal</text>
+    <text x="735" y="200" class="caption" style="font-size: 11px;">Open/topological termination</text>
+    <text x="735" y="218" class="caption" style="font-size: 11px;">SelCys recoding possible</text>
+  </g>
+
+  <!-- B4 triple analysis -->
+  <text x="450" y="280" class="title" style="font-size: 18px;">B4 Triple Structure</text>
+
+  <g style="animation: fadeIn 1s 2s forwards; opacity: 0;">
+    <rect x="100" y="300" width="700" height="80" rx="8" fill="#f8f9fa" stroke="#ddd" stroke-width="1"/>
+    <text x="450" y="325" class="caption" style="font-weight: bold;">All three start with U (N = Neither) at position 1</text>
+    <text x="450" y="345" class="caption">Position 2 is always a purine (A=F or G=B): the kernel's paradox detection point</text>
+    <text x="450" y="365" class="caption">Position 3 carries the Omega winding class</text>
+  </g>
+
+  <!-- Kernel paradox detection -->
+  <text x="450" y="415" class="title" style="font-size: 18px; animation: fadeIn 1s 2.5s forwards; opacity: 0;">Kernel Paradox Detection</text>
+
+  <g style="animation: fadeIn 1s 3s forwards; opacity: 0;">
+    <rect x="100" y="435" width="700" height="80" rx="8" fill="#fce4ec" stroke="#e74c3c" stroke-width="1"/>
+    <text x="450" y="460" class="caption" style="font-weight: bold; fill: #c0392b;">ENGAGR on p1 = N produces N- N = N</text>
+    <text x="450" y="480" class="caption" style="fill: #e74c3c;">FSPLIT on N returns (N,N). FFUSE returns N = paradox detected: r0 does not equal p1</text>
+    <text x="450" y="500" class="caption">The Frobenius condition fails constructively — this IS the termination signal</text>
+  </g>
+
+  <text x="450" y="550" class="caption" style="animation: fadeIn 1s 3.5s forwards; opacity: 0;">
+    Omega winding hierarchy: Ochre &lt; Amber &lt; Opal — increasing topological complexity
+  </text>
+</svg>

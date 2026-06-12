@@ -1,0 +1,8 @@
+flowchart LR
+    TelomereLength[Telomere Length] -->|Longer → more repeats| TERRA_Transcription[TERRA Transcription ↑]
+    TERRA_Transcription --> TERRA_Level[TERRA Level ↑]
+    TERRA_Level -->|Competitive| hTR_Sequestration[hTR Sequestration]
+    hTR_Sequestration --> TelomeraseActivity[Telomerase Activity ↓]
+    TelomeraseActivity --> TelomereLength[Shorter / Stabilized]
+    TelomereLength -.-> TERRA_Transcription
+    style TERRA_Level fill:#ff9800,stroke:#d84315,stroke-width:3px

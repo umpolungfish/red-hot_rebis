@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <style>
+      .node { font-family: monospace; font-size: 28px; font-weight: bold; text-anchor: middle; dominant-baseline: central; }
+      .label { font-family: sans-serif; font-size: 14px; text-anchor: middle; fill: #555; }
+      .title { font-family: serif; font-size: 22px; text-anchor: middle; font-weight: bold; fill: #222; }
+      .caption { font-family: sans-serif; font-size: 13px; text-anchor: middle; fill: #666; }
+      .edge { stroke: #888; stroke-width: 3; fill: none; stroke-linecap: round; }
+      .edge-label { font-family: serif; font-size: 12px; font-style: italic; fill: #888; text-anchor: middle; }
+      @keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
+      @keyframes edgeDraw { 0% { stroke-dashoffset: 200; } 100% { stroke-dashoffset: 0; } }
+      .anim-edge { stroke-dasharray: 200; stroke-dashoffset: 200; animation: edgeDraw 1.5s ease-out forwards; }
+      .anim-node { animation: fadeIn 0.8s ease-out forwards; opacity: 0; }
+      .anim-label { animation: fadeIn 1.5s ease-out 0.5s forwards; opacity: 0; }
+    </style>
+  </defs>
+
+  <text x="400" y="35" class="title">B4 Nucleotide Lattice</text>
+  <text x="400" y="60" class="caption">Belnap FOUR as the genetic nucleotide alphabet</text>
+
+  <!-- Connecting lines -->
+  <line x1="400" y1="130" x2="250" y2="270" class="edge anim-edge" style="animation-delay: 0.2s"/>
+  <line x1="400" y1="130" x2="550" y2="270" class="edge anim-edge" style="animation-delay: 0.3s"/>
+  <line x1="250" y1="270" x2="280" y2="430" class="edge anim-edge" style="animation-delay: 0.5s"/>
+  <line x1="550" y1="270" x2="520" y2="430" class="edge anim-edge" style="animation-delay: 0.6s"/>
+
+  <text x="325" y="195" class="edge-label" style="animation: fadeIn 1s 0.8s forwards; opacity: 0;">cover</text>
+  <text x="475" y="195" class="edge-label" style="animation: fadeIn 1s 0.9s forwards; opacity: 0;">cover</text>
+
+  <!-- G (Both / B) -->
+  <circle cx="400" cy="130" r="40" class="anim-node" style="animation-delay: 0.1s; fill: #e74c3c; stroke: #c0392b; stroke-width: 3;"/>
+  <text x="400" y="122" class="node anim-node" style="animation-delay: 0.15s; fill: white;">G</text>
+  <text x="400" y="148" class="node anim-node" style="animation-delay: 0.15s; font-size: 14px; fill: #f5b7b1;">Both</text>
+  <text x="400" y="175" class="label anim-label" style="animation-delay: 1s;">Guanine</text>
+
+  <!-- C (True / T) -->
+  <circle cx="250" cy="270" r="40" class="anim-node" style="animation-delay: 0.4s; fill: #2980b9; stroke: #2471a3; stroke-width: 3;"/>
+  <text x="250" y="262" class="node anim-node" style="animation-delay: 0.45s; fill: white;">C</text>
+  <text x="250" y="288" class="node anim-node" style="animation-delay: 0.45s; font-size: 14px; fill: #85c1e9;">True</text>
+  <text x="250" y="315" class="label anim-label" style="animation-delay: 1.2s;">Cytosine</text>
+
+  <!-- U (Neither / N) -->
+  <circle cx="550" cy="270" r="40" class="anim-node" style="animation-delay: 0.4s; fill: #8e44ad; stroke: #7d3c98; stroke-width: 3;"/>
+  <text x="550" y="262" class="node anim-node" style="animation-delay: 0.45s; fill: white;">U</text>
+  <text x="550" y="288" class="node anim-node" style="animation-delay: 0.45s; font-size: 14px; fill: #c39bd3;">Neither</text>
+  <text x="550" y="315" class="label anim-label" style="animation-delay: 1.2s;">Uracil</text>
+
+  <!-- A (False / F) -->
+  <circle cx="400" cy="430" r="40" class="anim-node" style="animation-delay: 0.7s; fill: #27ae60; stroke: #1e8449; stroke-width: 3;"/>
+  <text x="400" y="422" class="node anim-node" style="animation-delay: 0.75s; fill: white;">A</text>
+  <text x="400" y="448" class="node anim-node" style="animation-delay: 0.75s; font-size: 14px; fill: #82e0aa;">False</text>
+  <text x="400" y="475" class="label anim-label" style="animation-delay: 1.5s;">Adenine</text>
+
+  <rect x="100" y="510" width="600" height="70" rx="8" fill="#f8f9fa" stroke="#ddd" stroke-width="1" class="anim-label" style="animation-delay: 2s;"/>
+  <text x="400" y="535" class="caption" style="font-weight: bold; fill: #444; animation-delay: 2.2s;">Lattice structure: B (G) at top / covers C and U / C and U cover A (F) at bottom</text>
+  <text x="400" y="555" class="caption" style="animation-delay: 2.4s;">B4 meet = information intersection / B4 join = information union</text>
+  <text x="400" y="575" class="caption" style="font-style: italic; animation-delay: 2.6s;">Watson-Crick complement (A&#8596;U, G&#8596;C) is NOT Belnap negation (which fixes B and N)</text>
+</svg>

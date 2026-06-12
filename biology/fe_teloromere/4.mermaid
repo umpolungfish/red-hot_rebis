@@ -1,0 +1,13 @@
+stateDiagram-v2
+    direction TB
+    SILENCED --> TRIGGERED: Intervention
+    TRIGGERED --> DEMETHYLATING: TET2
+    DEMETHYLATING --> POISED: Meth < 0.15
+    POISED --> ACTIVE: Meth < 0.02 OR Chromatin > 0.12
+    ACTIVE --> hTERTHigh: Expression ↑
+    ACTIVE --> REMETHYLATING: Meth rises
+    REMETHYLATING --> SILENCED
+    hTERTHigh --> TelomereMaintenance
+    TelomereMaintenance --> ATM_Sensing: Shelterin feedback
+    ATM_Sensing --> DEMETHYLATING
+    style ACTIVE fill:#4caf50

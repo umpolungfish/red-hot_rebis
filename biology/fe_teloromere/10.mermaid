@@ -1,0 +1,12 @@
+flowchart TD
+    TelomereState[Telomere State<br/>Length + Criticality] <--> CriticalCheck{≥5 Critically Short Telomeres?}
+    CriticalCheck -->|Yes| SenescencePath[Senescence<br/>p16/p21 + SA-β-gal]
+    CriticalCheck -->|No| ATMCheck{High ATM / p53?}
+    ATMCheck -->|Yes| ApoptosisPath[Apoptosis]
+    ATMCheck -->|No| InterventionCheck{Intervention Applied + hTERT Stable?}
+    InterventionCheck -->|Yes| OuroboricLoop[Ouroboric State<br/>Self-Maintaining]
+    InterventionCheck -->|No| Proliferating[Proliferating]
+    OuroboricLoop --> TelomereState
+    style OuroboricLoop fill:#4caf50,stroke:#2e7d32,stroke-width:4px
+    style SenescencePath fill:#f44336
+    style ApoptosisPath fill:#e91e63

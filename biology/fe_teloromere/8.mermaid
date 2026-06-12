@@ -1,0 +1,9 @@
+flowchart TD
+    Attrition[Attrition Phase<br/>−45 bp] <--> TRF1Check{TRF1 < 400?}
+    TRF1Check -->|Yes| ExtensionCycle[Telomerase + POT1 5× → Restore]
+    ExtensionCycle --> HardCap[Clip @ 7200 bp]
+    HardCap --> Equilibrium[μ∘δ = id_A]
+    TRF1Check -->|No| BlockPhase[TRF1 Gate Closed]
+    BlockPhase --> Equilibrium
+    Equilibrium --> Attrition
+    TERRAFeedback -.-> ExtensionCycle

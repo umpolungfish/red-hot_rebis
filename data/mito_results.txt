@@ -1,0 +1,499 @@
+Genome: >NC_012920.1 Homo sapiens mitochondrion, complete genome
+Length: 16569 bp
+
+======================================================================
+GENE: MT-ND1 — NADH dehydrogenase subunit 1
+Coords: 3307-4262 (956 bp)
+======================================================================
+[MT-ND1] === Gene to Protein Pipeline: MT-ND1 ===
+[MT-ND1] Sequence: AUACCCAUGGCCAACCUCCUACUCCUCAUUGUACCCAUUCUAAUCGCAAU... (956 bp)
+[MT-ND1] IG Primitive Activations (12<->12 bijection):
+[MT-ND1]   Ç: 9x
+[MT-ND1]   Ð: 3x
+[MT-ND1]   Ħ: 1x
+[MT-ND1]   ƒ: 3x
+[MT-ND1]   ɢ: 2x
+[MT-ND1]   Σ: 5x
+[MT-ND1]   Φ: 3x
+[MT-ND1]   Ω: 2x
+[MT-ND1]   ⊙: 2x
+  AA length: 83
+  Frobenius all stages: ✓
+  DNA→Quaternary distance: 3.6100
+  Consciousness invariant: 0.5
+
+  Stage                     B4     Frob   Description
+  ----------------------------------------------------------
+  dna_gene                  B      ✓      Double-stranded DNA gene (956 bp)
+  pre_mrna                  B      ✓      Pre-mRNA transcript (956 nt)
+  mature_mrna               B      ✓      Mature mRNA: 84 codons
+  nascent_polypeptide       B      ✓      Nascent polypeptide: 83 AAs | Promoted: 30
+  secondary_structure       B      ✓      Secondary structure: 9 elements
+  tertiary_structure        B      ✓      Tertiary: 947 contacts
+  quaternary_structure      B      ✓      Quaternary: 1 subunits (monomer)
+
+  Primitive activations:
+    Ç: 9x
+    Ð: 3x
+    Ħ: 1x
+    ƒ: 3x
+    ɢ: 2x
+    Σ: 5x
+    Φ: 3x
+    Ω: 2x
+    ⊙: 2x
+
+======================================================================
+GENE: MT-ND2 — NADH dehydrogenase subunit 2
+Coords: 4470-5511 (1042 bp)
+======================================================================
+[MT-ND2] === Gene to Protein Pipeline: MT-ND2 ===
+[MT-ND2] Sequence: AUUAAUCCCCUGGCCCAACCCGUCAUCUACUCUACCAUCUUUGCAGGCAC... (1042 bp)
+[MT-ND2] IG Primitive Activations (12<->12 bijection):
+[MT-ND2]   Ç: 8x
+[MT-ND2]   Ð: 1x
+[MT-ND2]   ƒ: 3x
+[MT-ND2]   ɢ: 3x
+[MT-ND2]   Σ: 3x
+[MT-ND2]   Φ: 1x
+[MT-ND2]   Ω: 1x
+[MT-ND2]   ⊙: 2x
+  AA length: 47
+  Frobenius all stages: ✓
+  DNA→Quaternary distance: 3.6100
+  Consciousness invariant: 0.5
+
+  Stage                     B4     Frob   Description
+  ----------------------------------------------------------
+  dna_gene                  B      ✓      Double-stranded DNA gene (1042 bp)
+  pre_mrna                  B      ✓      Pre-mRNA transcript (1042 nt)
+  mature_mrna               B      ✓      Mature mRNA: 48 codons
+  nascent_polypeptide       B      ✓      Nascent polypeptide: 47 AAs | Promoted: 22
+  secondary_structure       B      ✓      Secondary structure: 6 elements
+  tertiary_structure        B      ✓      Tertiary: 267 contacts
+  quaternary_structure      B      ✓      Quaternary: 1 subunits (monomer)
+
+  Primitive activations:
+    Ç: 8x
+    Ð: 1x
+    ƒ: 3x
+    ɢ: 3x
+    Σ: 3x
+    Φ: 1x
+    Ω: 1x
+    ⊙: 2x
+
+======================================================================
+GENE: MT-CO1 — Cytochrome c oxidase subunit I
+Coords: 5904-7445 (1542 bp)
+======================================================================
+[MT-CO1] === Gene to Protein Pipeline: MT-CO1 ===
+[MT-CO1] Sequence: AUGUUCGCCGACCGUUGACUAUUCUCUACAAACCACAAAGACAUUGGAAC... (1542 bp)
+[MT-CO1] IG Primitive Activations (12<->12 bijection):
+[MT-CO1]   Ð: 1x
+[MT-CO1]   Ħ: 1x
+[MT-CO1]   ƒ: 1x
+  AA length: 5
+  Frobenius all stages: ✓
+  DNA→Quaternary distance: 3.6100
+  Consciousness invariant: 0.5
+
+  Stage                     B4     Frob   Description
+  ----------------------------------------------------------
+  dna_gene                  B      ✓      Double-stranded DNA gene (1542 bp)
+  pre_mrna                  B      ✓      Pre-mRNA transcript (1542 nt)
+  mature_mrna               B      ✓      Mature mRNA: 6 codons
+  nascent_polypeptide       B      ✓      Nascent polypeptide: 5 AAs | Promoted: 3
+  secondary_structure       B      ✓      Secondary structure: 1 elements
+  tertiary_structure        B      ✓      Tertiary: 0 contacts
+  quaternary_structure      B      ✓      Quaternary: 1 subunits (monomer)
+
+  Primitive activations:
+    Ð: 1x
+    Ħ: 1x
+    ƒ: 1x
+
+======================================================================
+GENE: MT-CO2 — Cytochrome c oxidase subunit II
+Coords: 7586-8269 (684 bp)
+======================================================================
+[MT-CO2] === Gene to Protein Pipeline: MT-CO2 ===
+[MT-CO2] Sequence: AUGGCACAUGCAGCGCAAGUAGGUCUACAAGACGCUACUUCCCCUAUCAU... (684 bp)
+[MT-CO2] IG Primitive Activations (12<->12 bijection):
+[MT-CO2]   Ç: 9x
+[MT-CO2]   Ð: 1x
+[MT-CO2]   Ħ: 3x
+[MT-CO2]   Ř: 1x
+[MT-CO2]   ƒ: 4x
+[MT-CO2]   ɢ: 2x
+[MT-CO2]   Γ: 3x
+[MT-CO2]   Σ: 1x
+[MT-CO2]   Φ: 1x
+[MT-CO2]   Ω: 4x
+[MT-CO2]   ⊙: 3x
+  AA length: 64
+  Frobenius all stages: ✓
+  DNA→Quaternary distance: 3.6100
+  Consciousness invariant: 0.5
+
+  Stage                     B4     Frob   Description
+  ----------------------------------------------------------
+  dna_gene                  B      ✓      Double-stranded DNA gene (684 bp)
+  pre_mrna                  B      ✓      Pre-mRNA transcript (684 nt)
+  mature_mrna               B      ✓      Mature mRNA: 65 codons
+  nascent_polypeptide       B      ✓      Nascent polypeptide: 64 AAs | Promoted: 32
+  secondary_structure       B      ✓      Secondary structure: 7 elements
+  tertiary_structure        B      ✓      Tertiary: 537 contacts
+  quaternary_structure      B      ✓      Quaternary: 1 subunits (monomer)
+
+  Primitive activations:
+    Ç: 9x
+    Ð: 1x
+    Ħ: 3x
+    Ř: 1x
+    ƒ: 4x
+    ɢ: 2x
+    Γ: 3x
+    Σ: 1x
+    Φ: 1x
+    Ω: 4x
+    ⊙: 3x
+
+======================================================================
+GENE: MT-ATP8 — ATP synthase F0 subunit 8
+Coords: 8366-8572 (207 bp)
+======================================================================
+[MT-ATP8] === Gene to Protein Pipeline: MT-ATP8 ===
+[MT-ATP8] Sequence: AUGCCCCAACUAAAUACUACCGUAUGGCCCACCAUAAUUACCCCCAUACU... (207 bp)
+[MT-ATP8] IG Primitive Activations (12<->12 bijection):
+[MT-ATP8]   Ç: 7x
+[MT-ATP8]   Ð: 1x
+[MT-ATP8]   Þ: 1x
+[MT-ATP8]   ƒ: 1x
+[MT-ATP8]   ɢ: 5x
+[MT-ATP8]   Γ: 1x
+[MT-ATP8]   Σ: 5x
+[MT-ATP8]   Φ: 2x
+[MT-ATP8]   ⊙: 2x
+  AA length: 50
+  Frobenius all stages: ✓
+  DNA→Quaternary distance: 3.6100
+  Consciousness invariant: 0.5
+
+  Stage                     B4     Frob   Description
+  ----------------------------------------------------------
+  dna_gene                  B      ✓      Double-stranded DNA gene (207 bp)
+  pre_mrna                  B      ✓      Pre-mRNA transcript (207 nt)
+  mature_mrna               B      ✓      Mature mRNA: 51 codons
+  nascent_polypeptide       B      ✓      Nascent polypeptide: 50 AAs | Promoted: 25
+  secondary_structure       B      ✓      Secondary structure: 6 elements
+  tertiary_structure        B      ✓      Tertiary: 125 contacts
+  quaternary_structure      B      ✓      Quaternary: 1 subunits (monomer)
+
+  Primitive activations:
+    Ç: 7x
+    Ð: 1x
+    Þ: 1x
+    ƒ: 1x
+    ɢ: 5x
+    Γ: 1x
+    Σ: 5x
+    Φ: 2x
+    ⊙: 2x
+
+======================================================================
+GENE: MT-ATP6 — ATP synthase F0 subunit 6
+Coords: 8527-9207 (681 bp)
+======================================================================
+[MT-ATP6] === Gene to Protein Pipeline: MT-ATP6 ===
+[MT-ATP6] Sequence: AUGAACGAAAAUCUGUUCGCUUCAUUCAUUGCCCCCACAAUCCUAGGCCU... (681 bp)
+[MT-ATP6] IG Primitive Activations (12<->12 bijection):
+[MT-ATP6]   Ç: 7x
+[MT-ATP6]   Ð: 1x
+[MT-ATP6]   ƒ: 3x
+[MT-ATP6]   ɢ: 4x
+[MT-ATP6]   Σ: 1x
+[MT-ATP6]   Φ: 1x
+[MT-ATP6]   Ω: 1x
+[MT-ATP6]   ⊙: 2x
+  AA length: 47
+  Frobenius all stages: ✓
+  DNA→Quaternary distance: 3.6100
+  Consciousness invariant: 0.5
+
+  Stage                     B4     Frob   Description
+  ----------------------------------------------------------
+  dna_gene                  B      ✓      Double-stranded DNA gene (681 bp)
+  pre_mrna                  B      ✓      Pre-mRNA transcript (681 nt)
+  mature_mrna               B      ✓      Mature mRNA: 48 codons
+  nascent_polypeptide       B      ✓      Nascent polypeptide: 47 AAs | Promoted: 20
+  secondary_structure       B      ✓      Secondary structure: 6 elements
+  tertiary_structure        B      ✓      Tertiary: 247 contacts
+  quaternary_structure      B      ✓      Quaternary: 1 subunits (monomer)
+
+  Primitive activations:
+    Ç: 7x
+    Ð: 1x
+    ƒ: 3x
+    ɢ: 4x
+    Σ: 1x
+    Φ: 1x
+    Ω: 1x
+    ⊙: 2x
+
+======================================================================
+GENE: MT-CO3 — Cytochrome c oxidase subunit III
+Coords: 9207-9990 (784 bp)
+======================================================================
+[MT-CO3] === Gene to Protein Pipeline: MT-CO3 ===
+[MT-CO3] Sequence: AUGACCCACCAAUCACAUGCCUAUCAUAUAGUAAAACCCAGCCCAUGACC... (784 bp)
+[MT-CO3] IG Primitive Activations (12<->12 bijection):
+[MT-CO3]   Ç: 1x
+[MT-CO3]   Ð: 1x
+[MT-CO3]   Γ: 3x
+[MT-CO3]   Σ: 1x
+[MT-CO3]   Φ: 1x
+[MT-CO3]   ⊙: 1x
+  AA length: 15
+  Frobenius all stages: ✓
+  DNA→Quaternary distance: 3.6100
+  Consciousness invariant: 0.5
+
+  Stage                     B4     Frob   Description
+  ----------------------------------------------------------
+  dna_gene                  B      ✓      Double-stranded DNA gene (784 bp)
+  pre_mrna                  B      ✓      Pre-mRNA transcript (784 nt)
+  mature_mrna               B      ✓      Mature mRNA: 16 codons
+  nascent_polypeptide       B      ✓      Nascent polypeptide: 15 AAs | Promoted: 8
+  secondary_structure       B      ✓      Secondary structure: 2 elements
+  tertiary_structure        B      ✓      Tertiary: 4 contacts
+  quaternary_structure      B      ✓      Quaternary: 1 subunits (monomer)
+
+  Primitive activations:
+    Ç: 1x
+    Ð: 1x
+    Γ: 3x
+    Σ: 1x
+    Φ: 1x
+    ⊙: 1x
+
+======================================================================
+GENE: MT-ND3 — NADH dehydrogenase subunit 3
+Coords: 10059-10404 (346 bp)
+======================================================================
+[MT-ND3] === Gene to Protein Pipeline: MT-ND3 ===
+[MT-ND3] Sequence: AUAAACUUCGCCUUAAUUUUAAUAAUCAACACCCUCCUAGCCUUACUACU... (346 bp)
+[MT-ND3] IG Primitive Activations (12<->12 bijection):
+[MT-ND3]   Ð: 1x
+[MT-ND3]   ɢ: 2x
+  ERROR: Must run stage_secondary_structure first
+
+======================================================================
+GENE: MT-ND4L — NADH dehydrogenase subunit 4L
+Coords: 10470-10766 (297 bp)
+======================================================================
+[MT-ND4L] === Gene to Protein Pipeline: MT-ND4L ===
+[MT-ND4L] Sequence: AUGCCCCUCAUUUACAUAAAUAUUAUACUAGCAUUUACCAUCUCACUUCU... (297 bp)
+[MT-ND4L] IG Primitive Activations (12<->12 bijection):
+[MT-ND4L]   Ç: 16x
+[MT-ND4L]   Ð: 1x
+[MT-ND4L]   Ħ: 1x
+[MT-ND4L]   Ř: 3x
+[MT-ND4L]   ƒ: 3x
+[MT-ND4L]   ɢ: 6x
+[MT-ND4L]   Γ: 3x
+[MT-ND4L]   Φ: 4x
+[MT-ND4L]   Ω: 2x
+[MT-ND4L]   ⊙: 1x
+  AA length: 98
+  Frobenius all stages: ✓
+  DNA→Quaternary distance: 3.6100
+  Consciousness invariant: 0.5
+
+  Stage                     B4     Frob   Description
+  ----------------------------------------------------------
+  dna_gene                  B      ✓      Double-stranded DNA gene (297 bp)
+  pre_mrna                  B      ✓      Pre-mRNA transcript (297 nt)
+  mature_mrna               B      ✓      Mature mRNA: 99 codons
+  nascent_polypeptide       B      ✓      Nascent polypeptide: 98 AAs | Promoted: 40
+  secondary_structure       B      ✓      Secondary structure: 14 elements
+  tertiary_structure        B      ✓      Tertiary: 1692 contacts
+  quaternary_structure      B      ✓      Quaternary: 1 subunits (monomer)
+
+  Primitive activations:
+    Ç: 16x
+    Ð: 1x
+    Ħ: 1x
+    Ř: 3x
+    ƒ: 3x
+    ɢ: 6x
+    Γ: 3x
+    Φ: 4x
+    Ω: 2x
+    ⊙: 1x
+
+======================================================================
+GENE: MT-ND4 — NADH dehydrogenase subunit 4
+Coords: 10760-12137 (1378 bp)
+======================================================================
+[MT-ND4] === Gene to Protein Pipeline: MT-ND4 ===
+[MT-ND4] Sequence: AUGCUAAAACUAAUCGUCCCAACAAUUAUAUUACUACCACUGACAUGACU... (1378 bp)
+[MT-ND4] IG Primitive Activations (12<->12 bijection):
+[MT-ND4]   Ç: 3x
+[MT-ND4]   Ð: 1x
+[MT-ND4]   Σ: 1x
+  AA length: 15
+  Frobenius all stages: ✓
+  DNA→Quaternary distance: 3.6100
+  Consciousness invariant: 0.5
+
+  Stage                     B4     Frob   Description
+  ----------------------------------------------------------
+  dna_gene                  B      ✓      Double-stranded DNA gene (1378 bp)
+  pre_mrna                  B      ✓      Pre-mRNA transcript (1378 nt)
+  mature_mrna               B      ✓      Mature mRNA: 16 codons
+  nascent_polypeptide       B      ✓      Nascent polypeptide: 15 AAs | Promoted: 5
+  secondary_structure       B      ✓      Secondary structure: 2 elements
+  tertiary_structure        B      ✓      Tertiary: 29 contacts
+  quaternary_structure      B      ✓      Quaternary: 1 subunits (monomer)
+
+  Primitive activations:
+    Ç: 3x
+    Ð: 1x
+    Σ: 1x
+
+======================================================================
+GENE: MT-ND5 — NADH dehydrogenase subunit 5
+Coords: 12337-14148 (1812 bp)
+======================================================================
+[MT-ND5] === Gene to Protein Pipeline: MT-ND5 ===
+[MT-ND5] Sequence: AUAACCAUGCACACUACUAUAACCACCCUAACCCUGACUUCCCUAAUUCC... (1812 bp)
+[MT-ND5] IG Primitive Activations (12<->12 bijection):
+[MT-ND5]   Ç: 9x
+[MT-ND5]   Ð: 2x
+[MT-ND5]   Ħ: 1x
+[MT-ND5]   Ř: 1x
+[MT-ND5]   ƒ: 3x
+[MT-ND5]   ɢ: 4x
+[MT-ND5]   Γ: 2x
+[MT-ND5]   Σ: 3x
+[MT-ND5]   Φ: 2x
+[MT-ND5]   Ω: 1x
+[MT-ND5]   ⊙: 1x
+  AA length: 63
+  Frobenius all stages: ✓
+  DNA→Quaternary distance: 3.6100
+  Consciousness invariant: 0.5
+
+  Stage                     B4     Frob   Description
+  ----------------------------------------------------------
+  dna_gene                  B      ✓      Double-stranded DNA gene (1812 bp)
+  pre_mrna                  B      ✓      Pre-mRNA transcript (1812 nt)
+  mature_mrna               B      ✓      Mature mRNA: 64 codons
+  nascent_polypeptide       B      ✓      Nascent polypeptide: 63 AAs | Promoted: 29
+  secondary_structure       B      ✓      Secondary structure: 8 elements
+  tertiary_structure        B      ✓      Tertiary: 313 contacts
+  quaternary_structure      B      ✓      Quaternary: 1 subunits (monomer)
+
+  Primitive activations:
+    Ç: 9x
+    Ð: 2x
+    Ħ: 1x
+    Ř: 1x
+    ƒ: 3x
+    ɢ: 4x
+    Γ: 2x
+    Σ: 3x
+    Φ: 2x
+    Ω: 1x
+    ⊙: 1x
+
+======================================================================
+GENE: MT-ND6 — NADH dehydrogenase subunit 6
+Coords: 14149-14673 (525 bp)
+======================================================================
+[MT-ND6] === Gene to Protein Pipeline: MT-ND6 ===
+[MT-ND6] Sequence: CCUAUUCCCCCGAGCAAUCUCAAUUACAAUAUAUACACCAACAAACAAUG... (525 bp)
+[MT-ND6] IG Primitive Activations (12<->12 bijection):
+[MT-ND6]   Ð: 1x
+[MT-ND6]   ƒ: 1x
+[MT-ND6]   ɢ: 1x
+[MT-ND6]   ⊙: 1x
+  AA length: 4
+  Frobenius all stages: ✓
+  DNA→Quaternary distance: 3.6100
+  Consciousness invariant: 0.5
+
+  Stage                     B4     Frob   Description
+  ----------------------------------------------------------
+  dna_gene                  B      ✓      Double-stranded DNA gene (525 bp)
+  pre_mrna                  B      ✓      Pre-mRNA transcript (525 nt)
+  mature_mrna               B      ✓      Mature mRNA: 5 codons
+  nascent_polypeptide       F      ✓      Nascent polypeptide: 4 AAs | Promoted: 4
+  secondary_structure       F      ✓      Secondary structure: 1 elements
+  tertiary_structure        F      ✓      Tertiary: 0 contacts
+  quaternary_structure      F      ✓      Quaternary: 1 subunits (monomer)
+
+  Primitive activations:
+    Ð: 1x
+    ƒ: 1x
+    ɢ: 1x
+    ⊙: 1x
+
+======================================================================
+GENE: MT-CYB — Cytochrome b
+Coords: 14747-15887 (1141 bp)
+======================================================================
+[MT-CYB] === Gene to Protein Pipeline: MT-CYB ===
+[MT-CYB] Sequence: AUGACCCCAAUACGCAAAACUAACCCCCUAAUAAAAUUAAUUAACCACUC... (1141 bp)
+[MT-CYB] IG Primitive Activations (12<->12 bijection):
+[MT-CYB]   Ç: 5x
+[MT-CYB]   Ð: 1x
+[MT-CYB]   Ħ: 1x
+[MT-CYB]   ƒ: 1x
+[MT-CYB]   ɢ: 3x
+[MT-CYB]   Γ: 1x
+[MT-CYB]   Σ: 2x
+  AA length: 29
+  Frobenius all stages: ✓
+  DNA→Quaternary distance: 3.6100
+  Consciousness invariant: 0.5
+
+  Stage                     B4     Frob   Description
+  ----------------------------------------------------------
+  dna_gene                  B      ✓      Double-stranded DNA gene (1141 bp)
+  pre_mrna                  B      ✓      Pre-mRNA transcript (1141 nt)
+  mature_mrna               B      ✓      Mature mRNA: 30 codons
+  nascent_polypeptide       B      ✓      Nascent polypeptide: 29 AAs | Promoted: 14
+  secondary_structure       B      ✓      Secondary structure: 4 elements
+  tertiary_structure        B      ✓      Tertiary: 47 contacts
+  quaternary_structure      B      ✓      Quaternary: 1 subunits (monomer)
+
+  Primitive activations:
+    Ç: 5x
+    Ð: 1x
+    Ħ: 1x
+    ƒ: 1x
+    ɢ: 3x
+    Γ: 1x
+    Σ: 2x
+
+
+======================================================================
+SUMMARY: ALL 13 MITOCHONDRIAL PROTEIN-CODING GENES
+======================================================================
+Gene       bp     AA    Frob   ClosureDist  Consc  Primitives  
+------------------------------------------------------------
+MT-ATP6    681    47    ✓      3.6100       0.5    8/12
+MT-ATP8    207    50    ✓      3.6100       0.5    9/12
+MT-CO1     1542   5     ✓      3.6100       0.5    3/12
+MT-CO2     684    64    ✓      3.6100       0.5    11/12
+MT-CO3     784    15    ✓      3.6100       0.5    6/12
+MT-CYB     1141   29    ✓      3.6100       0.5    7/12
+MT-ND1     956    83    ✓      3.6100       0.5    9/12
+MT-ND2     1042   47    ✓      3.6100       0.5    8/12
+MT-ND3     ERROR: Must run stage_secondary_structure first
+MT-ND4     1378   15    ✓      3.6100       0.5    3/12
+MT-ND4L    297    98    ✓      3.6100       0.5    10/12
+MT-ND5     1812   63    ✓      3.6100       0.5    11/12
+MT-ND6     525    4     ✓      3.6100       0.5    4/12

@@ -1,0 +1,242 @@
+{
+  "ubiquitin": {
+    "human": {
+      "seq_len": 76,
+      "aa_sequence": "MQIFVKTLTGKTITLEVEPSDTIENVKAKIQDKEGIPPDQQRLIFAGKQLEDGRTLSDYNIQKESTLHLVLRLRGG",
+      "winding": 45,
+      "contacts": 16,
+      "subunits": 2,
+      "frobenius": true,
+      "confidence": 1.0,
+      "primitives_activated": [
+        "Criticality",
+        "Parity",
+        "Granularity",
+        "Winding",
+        "Fidelity",
+        "Stoichiometry",
+        "Kinetics",
+        "Dimensionality",
+        "Coupling",
+        "Chirality"
+      ],
+      "num_activated": 10
+    },
+    "mouse": {
+      "seq_len": 76,
+      "aa_sequence": "MQIFVKTLTGKTITLEVEPSDTIENVKAKIQDKEGIPPDQQRLIFAGKQLEDGRTLSDYNIQKESTLHLVLRLRGG",
+      "winding": 45,
+      "contacts": 16,
+      "subunits": 2,
+      "frobenius": true,
+      "confidence": 1.0,
+      "primitives_activated": [
+        "Criticality",
+        "Parity",
+        "Granularity",
+        "Winding",
+        "Fidelity",
+        "Stoichiometry",
+        "Kinetics",
+        "Dimensionality",
+        "Coupling",
+        "Chirality"
+      ],
+      "num_activated": 10
+    },
+    "yeast": {
+      "seq_len": 76,
+      "aa_sequence": "MQIFVKTLTGKTITLEVESSDTIDNVKSKIQDKEGIPPDQQRLIFAGKQLEDGRTLSDYNIQKESTLHLVLRLRGG",
+      "winding": 50,
+      "contacts": 17,
+      "subunits": 2,
+      "frobenius": true,
+      "confidence": 1.0,
+      "primitives_activated": [
+        "Criticality",
+        "Parity",
+        "Granularity",
+        "Winding",
+        "Fidelity",
+        "Stoichiometry",
+        "Kinetics",
+        "Dimensionality",
+        "Coupling",
+        "Chirality"
+      ],
+      "num_activated": 10
+    },
+    "plant_arabidopsis": {
+      "seq_len": 76,
+      "aa_sequence": "MQIFVKTLTGKKITLEVEPSDTIENVKAKIQDKEGIPPDQQRLIFAGKQLEDGRTLSDYNIQKESTLHLVLRLRGG",
+      "winding": 45,
+      "contacts": 16,
+      "subunits": 2,
+      "frobenius": true,
+      "confidence": 1.0,
+      "primitives_activated": [
+        "Criticality",
+        "Parity",
+        "Granularity",
+        "Winding",
+        "Fidelity",
+        "Stoichiometry",
+        "Kinetics",
+        "Dimensionality",
+        "Coupling",
+        "Chirality"
+      ],
+      "num_activated": 10
+    },
+    "drosophila": {
+      "seq_len": 76,
+      "aa_sequence": "MQIFVKTLTGKTITLEVEPSDTIENVKAKIQDKEGIPPDQQRLIFAGKQLEDGRTLSDYNIQKESTLHLVLRLRGG",
+      "winding": 45,
+      "contacts": 16,
+      "subunits": 2,
+      "frobenius": true,
+      "confidence": 1.0,
+      "primitives_activated": [
+        "Criticality",
+        "Parity",
+        "Granularity",
+        "Winding",
+        "Fidelity",
+        "Stoichiometry",
+        "Kinetics",
+        "Dimensionality",
+        "Coupling",
+        "Chirality"
+      ],
+      "num_activated": 10
+    },
+    "conserved_primitives": [
+      "Criticality",
+      "Parity",
+      "Granularity",
+      "Winding",
+      "Chirality",
+      "Fidelity",
+      "Stoichiometry",
+      "Kinetics",
+      "Dimensionality",
+      "Coupling"
+    ],
+    "variable_primitives": [],
+    "conservation_rate": 0.8333333333333334
+  },
+  "cytochrome_c": {
+    "human": {
+      "seq_len": 105,
+      "aa_sequence": "MGDVEKGKKIFIMKCSQCHTVEKGGKHKTGPNLHGLFGRKTGQAPGYSYTAANKNKGIIWGEDTLMEYLENPKKYIPGTKMIFAGIKKKGEREDLIAYLKKATNE",
+      "winding": 60,
+      "contacts": 54,
+      "subunits": 2,
+      "frobenius": true,
+      "confidence": 1.0,
+      "primitives_activated": [
+        "Criticality",
+        "Granularity",
+        "Parity",
+        "Recognition",
+        "Topology",
+        "Winding",
+        "Fidelity",
+        "Stoichiometry",
+        "Kinetics",
+        "Dimensionality",
+        "Coupling",
+        "Chirality"
+      ],
+      "num_activated": 12
+    },
+    "horse": {
+      "seq_len": 105,
+      "aa_sequence": "MGDVEKGKKIFVQKCAQCHTVEKGGKHKTGPNLHGLFGRKTGQAPGFTYTDANKNKGITWKEETLMEYLENPKKYIPGTKMIFAGIKKKTEREDLIAYLKKATNE",
+      "winding": 56,
+      "contacts": 50,
+      "subunits": 2,
+      "frobenius": true,
+      "confidence": 1.0,
+      "primitives_activated": [
+        "Criticality",
+        "Granularity",
+        "Parity",
+        "Recognition",
+        "Topology",
+        "Winding",
+        "Fidelity",
+        "Stoichiometry",
+        "Kinetics",
+        "Dimensionality",
+        "Coupling",
+        "Chirality"
+      ],
+      "num_activated": 12
+    },
+    "yeast": {
+      "seq_len": 109,
+      "aa_sequence": "MTEFKAGSAKKGATLFKTRCLQCHTVEKGGPHKVGPNLHGLFGRHSGQAEGYSYTDANIKKNVLWDENNMSEYLTNPKKYIPGTKMAFGGLKKEKDRNDLITYLKKACE",
+      "winding": 64,
+      "contacts": 56,
+      "subunits": 2,
+      "frobenius": true,
+      "confidence": 1.0,
+      "primitives_activated": [
+        "Criticality",
+        "Granularity",
+        "Parity",
+        "Recognition",
+        "Topology",
+        "Winding",
+        "Chirality",
+        "Fidelity",
+        "Stoichiometry",
+        "Kinetics",
+        "Dimensionality",
+        "Coupling"
+      ],
+      "num_activated": 12
+    },
+    "wheat": {
+      "seq_len": 114,
+      "aa_sequence": "MAAFFGAKAGSTEKPGKKLFKTKCAQCHTVEKGGKHKTGPNLHGLFGRKTGQAAGFSYTDANKGKVEWEEDTLMEYLENPKKYIPGTKMIFAGIKKPAGERDDLTIAYLKQATG",
+      "winding": 54,
+      "contacts": 47,
+      "subunits": 2,
+      "frobenius": true,
+      "confidence": 1.0,
+      "primitives_activated": [
+        "Criticality",
+        "Granularity",
+        "Parity",
+        "Recognition",
+        "Topology",
+        "Winding",
+        "Chirality",
+        "Fidelity",
+        "Stoichiometry",
+        "Kinetics",
+        "Dimensionality",
+        "Coupling"
+      ],
+      "num_activated": 12
+    },
+    "conserved_primitives": [
+      "Criticality",
+      "Granularity",
+      "Parity",
+      "Recognition",
+      "Topology",
+      "Winding",
+      "Fidelity",
+      "Stoichiometry",
+      "Kinetics",
+      "Dimensionality",
+      "Coupling",
+      "Chirality"
+    ],
+    "variable_primitives": [],
+    "conservation_rate": 1.0
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "1VII": {
+    "n_res": 36,
+    "n_activated": 8,
+    "activated_set": [
+      "Chirality",
+      "Coupling",
+      "Criticality",
+      "Dimensionality",
+      "Fidelity",
+      "Stoichiometry",
+      "Topology",
+      "Winding"
+    ],
+    "avg_nearest_activated": 3.81,
+    "avg_nearest_ground": 3.81,
+    "n_comp_pairs": 8,
+    "comp_avg_spatial_dist": 14.7,
+    "pair_contact_rates": {
+      "Dimensionality\u2194Winding": 0.0,
+      "Topology\u2194Chirality": 0.0,
+      "Coupling\u2194Criticality": 50.0
+    }
+  },
+  "1UBQ": {
+    "n_res": 76,
+    "n_activated": 10,
+    "activated_set": [
+      "Chirality",
+      "Coupling",
+      "Criticality",
+      "Dimensionality",
+      "Fidelity",
+      "Granularity",
+      "Kinetics",
+      "Parity",
+      "Stoichiometry",
+      "Winding"
+    ],
+    "avg_nearest_activated": 3.8,
+    "avg_nearest_ground": 3.8,
+    "n_comp_pairs": 26,
+    "comp_avg_spatial_dist": 13.64,
+    "pair_contact_rates": {
+      "Dimensionality\u2194Winding": 50.0,
+      "Parity\u2194Fidelity": 50.0,
+      "Kinetics\u2194Granularity": 14.3,
+      "Coupling\u2194Criticality": 9.1
+    }
+  },
+  "1ZDD": {
+    "n_res": 34,
+    "n_activated": 11,
+    "activated_set": [
+      "Chirality",
+      "Coupling",
+      "Criticality",
+      "Dimensionality",
+      "Fidelity",
+      "Granularity",
+      "Kinetics",
+      "Parity",
+      "Recognition",
+      "Stoichiometry",
+      "Winding"
+    ],
+    "avg_nearest_activated": 3.83,
+    "avg_nearest_ground": 3.83,
+    "n_comp_pairs": 20,
+    "comp_avg_spatial_dist": 15.21,
+    "pair_contact_rates": {
+      "Dimensionality\u2194Winding": 0.0,
+      "Recognition\u2194Stoichiometry": 25.0,
+      "Parity\u2194Fidelity": 0.0,
+      "Kinetics\u2194Granularity": 0.0,
+      "Coupling\u2194Criticality": 22.2
+    }
+  },
+  "1L2Y": {
+    "n_res": 20,
+    "n_activated": 7,
+    "activated_set": [
+      "Chirality",
+      "Coupling",
+      "Criticality",
+      "Kinetics",
+      "Parity",
+      "Stoichiometry",
+      "Topology"
+    ],
+    "avg_nearest_activated": 3.86,
+    "avg_nearest_ground": 3.86,
+    "n_comp_pairs": 2,
+    "comp_avg_spatial_dist": 5.95,
+    "pair_contact_rates": {
+      "Coupling\u2194Criticality": 100.0
+    }
+  }
+}

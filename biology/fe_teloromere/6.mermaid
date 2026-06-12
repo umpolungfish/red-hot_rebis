@@ -1,0 +1,17 @@
+flowchart TD
+    Start[Telomere Ready for Division] --> AttritionPhase[-45 bp + oxidative]
+    AttritionPhase --> hTERTCheck{hTERT > 0.001?}
+    hTERTCheck -->|No| NoExtension[0 repeats]
+    hTERTCheck -->|Yes| TRF1Gate{n_TRF1 ≥ 400?}
+    TRF1Gate -->|Yes| Blocked[TRF1 Gate Closed]
+    TRF1Gate -->|No| TERRAFactor[TERRA modulation]
+    TERRAFactor --> ActivityCalc[Activity calc + G4 cap]
+    ActivityCalc --> FloorCheck{Activity ≥ 0.005?}
+    FloorCheck -->|No| Blocked
+    FloorCheck -->|Yes| POT1Boost[POT1 5× boost]
+    POT1Boost --> AddRepeats[Poisson repeats]
+    AddRepeats --> HardCap[Clip @ 7200 bp]
+    HardCap --> Sealing[CST fill-in]
+    Sealing --> NextDivision[Next cycle]
+    Blocked --> NextDivision
+    NextDivision --> Start

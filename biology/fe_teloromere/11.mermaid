@@ -1,0 +1,13 @@
+flowchart TD
+    Attrition[-45 bp Attrition] --> ShelterinDeficit[TRF1 Occupancy Drops<br/>Below 400 dimers]
+    ShelterinDeficit --> ATMActivation[ATM Signaling Cascade]
+    ATMActivation --> EpigeneticDemethylation[TET2 Demethylation + Chromatin Opening]
+    EpigeneticDemethylation --> hTERTExpression[hTERT Expression ↑<br/>Phase → ACTIVE]
+    hTERTExpression --> TelomeraseExtension[Telomerase Extension<br/>+ POT1 5× Boost]
+    TelomeraseExtension --> Restoration[Restore to 7200 bp Hard Cap]
+    Restoration --> TRF1Block[TRF1 Gate Closes<br/>n_TRF1 ≥ 400]
+    TRF1Block --> Attrition
+    TERRAFeedback[TERRA Negative Feedback] -.-> TelomeraseExtension
+    TLoopBarrier[T-Loop Topological Barrier] -.-> TelomeraseExtension
+    style Restoration fill:#4caf50,stroke:#2e7d32,stroke-width:4px
+    style Attrition fill:#ff9800
