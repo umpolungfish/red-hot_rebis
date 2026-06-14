@@ -1,3 +1,16 @@
+Moved ancillary documents to ig-docs (2026-06-14)
+
+7 files moved from docs/: Dirac_From_Imscribing_Grammar.md → applications/physics/,
+Dirac_From_Imscribing_Grammar_LIFTED.md → applications/physics/,
+IG_CROSS_POLLINATION.md → bridges/,
+Pi_Boundary_Planck_Event.md → applications/physics/,
+Pi_Boundary_Planck_Event_LIFTED.md → applications/physics/.
+(3 PDFs missing, skipped; 7 files moved.)
+Kept: README.md, all clink/ docs, all biology/ docs, all pipeline operational docs,
+serpentrod/*, therapeutics/*, materials/*, gene_imscriber/README.md, all source code.
+
+---
+
 SNS_PRIME.md notation migration: O_inf→O_∞, O_0→O₀, O_1→O₁, O_2→O₂ (144 files)
 
 ---
