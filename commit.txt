@@ -1,3 +1,58 @@
+README: comprehensive CLI reference + updated inventory (2026-06-17)
+
+Added complete command reference covering all subcommands:
+status/verify, run (all 5 module targets + 4 script aliases), clink, pipeline,
+materials (all 7 subs), imas (4 subs), scripts list/run.
+Updated Quick Start to use python3 + new commands.
+Updated architecture diagram: six pillars, scripts/ in tree, rhr_p4rky shown.
+Updated Project Inventory: added scripts/ table (14 entries).
+Fixed biology table: ouroboric_telomere.py → ouroboric_telomere_expanded.py + v3 note.
+Updated repo path and datestamp.
+
+---
+
+Unify and streamline all tools (2026-06-17)
+
+Three categories of waste removed:
+
+1. DELETED 8 confirmed duplicates/stubs:
+   - biology/biology_sim.py (identical to biology_sim_frobenius_exact.py)
+   - biology/ouroboric_telomere.py (superseded by ouroboric_telomere_expanded.py)
+   - frob_v4.py (superseded by frob_v5.py)
+   - frobenius_exact_design_v4.py (2-line stub)
+   - mito_pipeline.py + mito_pipeline_v2.py (superseded by v3)
+   - run_antibody.py (superseded by run_antibody2.py)
+   - rhr_p4rky/serpent_rod_v2_recovered.py (1-line stub)
+
+2. FIXED rebis.py internal duplication:
+   - Removed the sophick arm from cmd_clink() — identical code already in
+     cmd_materials(). Was dead code (not in argparse choices).
+   - Fixed pre-existing Python 3.10 f-string syntax error lines 55-56.
+
+3. CREATED scripts/ — 13 standalone scripts moved from root:
+   frob_v5.py → scripts/frob_design.py
+   frobenius_exact_design.py → scripts/frobenius_exact_design.py
+   mito_pipeline_v3.py → scripts/mito_pipeline.py
+   run_antibody2.py → scripts/run_antibody.py
+   run_msa.py, run_pdb_validation.py, run_serpent.py → scripts/
+   compute_promotions.py, analyze_validation.py, msa_analysis.py → scripts/
+   _gen_univ_map.py → scripts/gen_univ_map.py
+   diaschizic_iupac.py → scripts/diaschizic_iupac.py
+   omonad_bridge.py → scripts/omonad_bridge.py
+
+4. CONSOLIDATED psychedelic bridge:
+   Merged psychedelic_bridge.py + psychedelic_universe_bridge.py into
+   scripts/psychedelic_bridge.py. Unified main() with argparse subcommands.
+   Both originals deleted.
+
+5. EXTENDED rebis.py CLI:
+   - rebis.py scripts list / rebis.py scripts run <name> (subprocess dispatch)
+   - rebis.py run mito/antibody/psychedelic/iupac (aliases to scripts/)
+
+Root is now clean: rebis.py + packages + scripts/.
+
+---
+
 Moved ancillary documents to ig-docs (2026-06-14)
 
 7 files moved from docs/: Dirac_From_Imscribing_Grammar.md → applications/physics/,

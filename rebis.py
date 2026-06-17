@@ -52,8 +52,8 @@ def cmd_status(args):
     # Shared primitives
     prim_path = REBIS_ROOT / "shared/primitives.py"
     cat_path = REBIS_ROOT / "shared/IG_catalog.json"
-    print(f"  {"":20s}  primitives: {'✅' if prim_path.exists() else '❌'}")
-    print(f"  {"":20s}  IG catalog: {'✅' if cat_path.exists() else '❌'} ({cat_path.stat().st_size:,d} bytes)")
+    print(f"  {'':20s}  primitives: {'✅' if prim_path.exists() else '❌'}")
+    print(f"  {'':20s}  IG catalog: {'✅' if cat_path.exists() else '❌'} ({cat_path.stat().st_size:,d} bytes)")
     print("=" * 60)
     return 0
 
@@ -175,41 +175,6 @@ def cmd_clink(args):
         print(full_report())
         return 0
 
-    elif sub == "sophick":
-        import json
-        from materials.sophick_forge import (
-            EagleMaterialDesigner, EagleCycleProtocol,
-            FrobeniusCliffAnalyzer, IMASM_EagleBridge,
-            SOPHICK_MERCURY, OUROBORIC_O2, STRUCTURAL_DISTANCE_O2_TO_OINF,
-            GAP_PRIMITIVES, run_eagle_simulation
-        )
-        designer = EagleMaterialDesigner()
-        all_mats = designer.all_designs()
-        if args.mat_name and args.mat_name in all_mats:
-            result = run_eagle_simulation(args.mat_name)
-            print(json.dumps(result, indent=2, default=str))
-        elif args.mat_name == "cliff":
-            for name, mat in all_mats.items():
-                temp = 0.01 if "9" in name else (77.0 if "7" in name else 300.0)
-                print(FrobeniusCliffAnalyzer.full_report(mat, temp_k=temp))
-                print()
-        elif args.mat_name == "bridge":
-            print(IMASM_EagleBridge.report())
-        else:
-            print("Sophick Forge - Eagle Cycle Protocol")
-            print(f"  Sophick Mercury (O_∞):  <{' · '.join(SOPHICK_MERCURY)}>")
-            print(f"  Ouroboric O2 materials:   <{' · '.join(OUROBORIC_O2)}>")
-            print(f"  Structural distance:       {STRUCTURAL_DISTANCE_O2_TO_OINF:.4f}")
-            print(f"  Gap primitives:            {[GAP_PRIMITIVES[i]['name'] for i in GAP_PRIMITIVES]}")
-            print()
-            for name, mat in all_mats.items():
-                print(f"  {name}: {mat.composition[:60]}...")
-            print()
-            print("  Use --name eagle_3_amalgam | eagle_7_animated | eagle_9_sophick")
-            print("  Use --name cliff for Frobenius Cliff analysis")
-            print("  Use --name bridge for IMASM->Eagle bridge")
-        return 0
-
     elif sub == "list":
         print(f"{'Idx':>3} {'Name':40s} {'Tier':10s} {'Tuple':50s}")
         print("-" * 105)
@@ -253,24 +218,37 @@ def cmd_clink(args):
 
 
 def cmd_run(args):
-    """Route to a specific component with its own args."""
+    """Route to a specific component or script with its own args."""
+    import subprocess
     subcommand = args.subcommand
     rest = args.rest
 
-    runners = {
-        "serpentrod":   "serpentrod.protein_v5",
-        "serpentrod_v4": "serpentrod.protein_v4",
+    module_runners = {
+        "serpentrod":      "serpentrod.protein_v5",
+        "serpentrod_v4":   "serpentrod.protein_v4",
         "serpentrod_pred": "serpentrod.stratified_predictor",
-        "ch3mpiler":    "ch3mpiler.compiler",
-        "gene":         "gene_imscriber.engine",
+        "ch3mpiler":       "ch3mpiler.compiler",
+        "gene":            "gene_imscriber.engine",
     }
 
-    if subcommand not in runners:
+    script_aliases = {
+        "mito":        "scripts/mito_pipeline.py",
+        "antibody":    "scripts/run_antibody.py",
+        "psychedelic": "scripts/psychedelic_bridge.py",
+        "iupac":       "scripts/diaschizic_iupac.py",
+    }
+
+    if subcommand in script_aliases:
+        script = REBIS_ROOT / script_aliases[subcommand]
+        return subprocess.run([sys.executable, str(script)] + rest).returncode
+
+    if subcommand not in module_runners:
+        all_names = list(module_runners) + list(script_aliases)
         print("Unknown subcommand: %s" % subcommand)
-        print("Available: %s" % ", ".join(runners.keys()))
+        print("Available: %s" % ", ".join(all_names))
         return 1
 
-    mod_path = runners[subcommand]
+    mod_path = module_runners[subcommand]
     module = __import__(mod_path, fromlist=["main"])
 
     if hasattr(module, "main"):
@@ -283,6 +261,41 @@ def cmd_run(args):
         print("  No standalone main(). Import and use programmatically:")
         print("    from %s import ..." % mod_path.rsplit(".", 1)[0])
         return 0
+
+
+def cmd_scripts(args):
+    """List or invoke scripts in scripts/."""
+    import subprocess
+    scripts_dir = REBIS_ROOT / "scripts"
+
+    if args.scripts_subcommand == "list":
+        scripts = sorted(scripts_dir.glob("*.py"))
+        print(f"{'Script':35s}  Lines")
+        print("-" * 50)
+        for s in scripts:
+            lines = sum(1 for _ in s.open())
+            print(f"  {s.name:33s}  {lines:5d}")
+        print(f"\n{len(scripts)} scripts — run with: rebis.py scripts run <name>")
+        return 0
+
+    elif args.scripts_subcommand == "run":
+        name = args.script_name
+        if not name:
+            print("Usage: rebis.py scripts run <script_name> [args...]")
+            return 1
+        # Accept with or without .py
+        script = scripts_dir / (name if name.endswith(".py") else name + ".py")
+        if not script.exists():
+            candidates = [s.name for s in scripts_dir.glob("*.py") if name in s.name]
+            print(f"Script not found: {name}")
+            if candidates:
+                print(f"Did you mean: {', '.join(candidates)}")
+            return 1
+        return subprocess.run([sys.executable, str(script)] + (args.script_args or [])).returncode
+
+    else:
+        print("Usage: rebis.py scripts list | rebis.py scripts run <name>")
+        return 1
 
 
 def cmd_imas(args):
@@ -603,6 +616,14 @@ Examples:
 
   rebis.py run serpentrod --seq KAL  # Run protein prediction
   rebis.py run ch3mpiler --help      # CH3MPILER help
+  rebis.py run mito                  # Mitochondrial gene pipeline
+  rebis.py run antibody              # Antibody designer
+  rebis.py run psychedelic           # Psychedelic bridge (intrinsics)
+  rebis.py run psychedelic report    # Psychedelic × universe access report
+  rebis.py run iupac                 # Diaschizic IUPAC generator
+
+  rebis.py scripts list              # Show all available scripts
+  rebis.py scripts run omonad_bridge # Invoke scripts/omonad_bridge.py
 """
     )
     parser.add_argument("--version", action="version", version="%(prog)s " + VERSION)
@@ -662,13 +683,22 @@ Examples:
                          help="Target layer index for 'bridge' (0-8)")
 
     # run
-    p_run = subparsers.add_parser("run", help="Run a specific component")
+    p_run = subparsers.add_parser("run", help="Run a component or script alias")
     p_run.add_argument("subcommand",
                        choices=["serpentrod", "serpentrod_v4", "serpentrod_pred",
-                                "ch3mpiler", "pipeline", "gene"],
-                       help="Component to run")
+                                "ch3mpiler", "pipeline", "gene",
+                                "mito", "antibody", "psychedelic", "iupac"],
+                       help="Component or script alias to run")
     p_run.add_argument("rest", nargs=argparse.REMAINDER,
                        help="Arguments to pass to the component")
+
+    # scripts
+    p_scr = subparsers.add_parser("scripts", help="List or invoke scripts in scripts/")
+    p_scr.add_argument("scripts_subcommand", choices=["list", "run"],
+                       help="list — show all scripts; run — invoke one")
+    p_scr.add_argument("script_name", nargs="?", help="Script name for 'run'")
+    p_scr.add_argument("script_args", nargs=argparse.REMAINDER,
+                       help="Arguments forwarded to the script")
 
     args = parser.parse_args()
 
@@ -686,6 +716,8 @@ Examples:
         return cmd_imas(args)
     elif args.command == "run":
         return cmd_run(args)
+    elif args.command == "scripts":
+        return cmd_scripts(args)
     else:
         parser.print_help()
         return 1

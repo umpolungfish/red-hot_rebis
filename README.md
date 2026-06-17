@@ -112,56 +112,102 @@ connected through the `shared/` primitives layer and the combined pipeline.
 |---|---|---|
 | **Therapeutics** | `therapeutics/` | Ouroboric pill, quantum biologic, universal antidote, Frobenius chemotherapeutic, bidirectional neurotrophic factor |
 | **Materials** | `materials/` | Self-healing CFRP, topological quantum material, eternal memory polymer, self-weaving fabric, thermal rectifier, critical metamaterial |
-| **Biology** | `biology/` | Biological simulation engine, ouroboric telomere system, quantum bioelectric tissue |
+| **Biology** | `biology/` | Biological simulation engine (Frobenius-exact), ouroboric telomere v2+v3, quantum bioelectric tissue |
 
 ---
 
 ## Architecture
 
 ```
-                         ┌─────────────────────────────────────────────────┐
-                         │           red-hot_rebis/                        │
-                         │  (Frobenius-critical integration + CLI)          │
-                         │         rebis.py status|verify|run|clink        │
-                         └──────┬──────────────────────────┬───────────────┘
-                                │                          │
-               ┌────────────────┴──────────┐   ┌──────────┴──────────────┐
-               │    SOURCE COMPONENTS      │   │      APPLICATIONS        │
-               │    (The Five Pillars)     │   │                          │
-      ┌────────┼──┬────────┬────────┬──────┤   ├─ therapeutics/           │
-      │        │  │        │        │      │   ├─ materials/              │
-      │ serpentrod ch3mpiler pipeline genes clink│                        │
-      │        │  │        │        │      │   └─ biology/                │
-      └────────┴──┴────────┴────────┴──────┘                              │
-               │                          │                               │
-               └────────────┬─────────────┘                               │
-                            │                                             │
-                 ┌──────────┴──────────┐                                  │
-                 │     shared/         │◄──── All components import from  │
-                 │  primitives.py      │      here — single source of     │
-                 │  IG_catalog.json    │      truth for ordinal weights   │
-                 └─────────────────────┘                                  │
-                            │                                             │
-                 ┌──────────┴──────────┐                                  │
-                 │   Lean 4 ($ZFC_\text{fe}$)   │◄──── CLINK formalization at      │
-                 │  CLINK.lean (572L)  │      p4rakernel/p4ramill/        │
-                 │  23 theorems, all   │      Verified cross-reference    │
-                 │  native_decide-clsd │      for all 9 layer tuples      │
-                 └─────────────────────┘                                  │
+              ┌───────────────────────────────────────────────────────────┐
+              │                   red-hot_rebis/                          │
+              │            rebis.py  (unified CLI)                        │
+              │  status|verify|run|clink|pipeline|materials|imas|scripts  │
+              └──────┬─────────────────────────────────┬──────────────────┘
+                     │                                 │
+      ┌──────────────┴────────────┐    ┌──────────────┴──────────────┐
+      │    SOURCE COMPONENTS      │    │   APPLICATIONS + SCRIPTS     │
+      │    (The Six Pillars)      │    │                              │
+      │                           │    ├─ therapeutics/               │
+      │  serpentrod/  ch3mpiler/  │    ├─ materials/                  │
+      │  pipeline/    gene_imscr/ │    ├─ biology/                    │
+      │  clink/       imas/       │    ├─ rhr_p4rky/  (runtime pkg)  │
+      └──────────────┬────────────┘    └─ scripts/   (14 standalone) ┘
+                     │
+          ┌──────────┴──────────┐
+          │     shared/         │  ← single source of truth
+          │  primitives.py      │    ordinal weights, distance fn,
+          │  IG_catalog.json    │    Shavian↔key maps
+          └──────────┬──────────┘
+                     │
+          ┌──────────┴──────────┐
+          │   Lean 4 (ZFC_fe)   │  ← CLINK.lean (572L, 23 theorems)
+          │  p4rakernel/        │    native_decide-closed
+          │  p4ramill/          │    cross-referenced to all 9 layers
+          └─────────────────────┘
 ```
 
 **CLI Integration:**
 
-The `rebis.py` CLI provides a unified entry point:
+The `rebis.py` CLI is the single unified entry point for all tools:
 
 ```bash
-rebis.py status                # Report status of all five pillars
-rebis.py verify                # Verify Frobenius closure across all modules
-rebis.py run serpentrod --seq  # Run any component with its own args
-rebis.py run ch3mpiler --help   # CH₃MPILER help
-rebis.py clink report           # Full CLINK integration report
-rebis.py clink list             # List all 9 CLINK layers
-rebis.py clink layer 8          # Show organism layer details
+# ── Core ──────────────────────────────────────────────────────────────
+rebis.py status                            # Status of all six pillars
+rebis.py verify                            # Frobenius closure across all modules
+
+# ── Components ────────────────────────────────────────────────────────
+rebis.py run serpentrod --seq MALK...      # Platonic protein prediction (v5)
+rebis.py run serpentrod_v4 --seq MALK...   # Protein prediction (v4)
+rebis.py run serpentrod_pred --seq MALK... # Stratified predictor
+rebis.py run ch3mpiler --smiles "CC(=O)O"  # Retrosynthetic compiler
+rebis.py run gene --codons "AUGGCU..."     # Gene imscriber
+
+# ── CLINK Chain ───────────────────────────────────────────────────────
+rebis.py clink report                      # Full CLINK integration report
+rebis.py clink list                        # All 9 layers with tuples
+rebis.py clink layer 4                     # Cell layer details + bridges
+rebis.py clink bridge serpentrod 8         # Promotion path: protein → organism
+
+# ── CLINK Design Pipeline ─────────────────────────────────────────────
+rebis.py pipeline bridges                  # Available tool bridges
+rebis.py pipeline ground-up                # Whole-organism design from quarks
+rebis.py pipeline from-layer 5 8           # Design from cell layer to organism
+rebis.py pipeline actionable               # Generate 33-file actionable package
+rebis.py pipeline actionable --organism human  # Human-specific package
+
+# ── Materials ─────────────────────────────────────────────────────────
+rebis.py materials list                    # All predefined novel materials
+rebis.py materials forge --all             # Forge all 8 predefined materials
+rebis.py materials forge --name frobenius_composite
+rebis.py materials report                  # Full materials report
+rebis.py materials frobenius               # Frobenius metamaterial simulation
+rebis.py materials ouroboric               # Ouroboric alloy simulation
+rebis.py materials sophick                 # Eagle Cycle Protocol (Sophick Forge)
+rebis.py materials sophick --name cliff    # Frobenius Cliff analysis
+rebis.py materials exactor                 # Discrete closure pathways
+
+# ── IMASM Arranger ────────────────────────────────────────────────────
+rebis.py imas report                       # Arrangement analysis + CLINK bridge
+rebis.py imas bridge                       # All 12 canonicals → CLINK
+rebis.py imas bridge --canonical I_Dialetheic_Bootstrap
+rebis.py imas hunt                         # Frobenius pair density (Monte Carlo)
+rebis.py imas hunt --samples 1000000
+rebis.py imas energy --canonical I_Dialetheic_Bootstrap --layer L8_Organism
+
+# ── Scripts (standalone tools) ────────────────────────────────────────
+rebis.py scripts list                      # All 14 available scripts with line counts
+rebis.py scripts run mito_pipeline         # Run any script by name
+rebis.py scripts run diaschizic_iupac
+rebis.py scripts run compute_promotions
+rebis.py scripts run omonad_bridge
+
+# ── Script aliases (most-used) ────────────────────────────────────────
+rebis.py run mito                          # Mitochondrial gene pipeline
+rebis.py run antibody                      # Antibody CDR designer
+rebis.py run psychedelic                   # Compound intrinsics + coupling
+rebis.py run psychedelic report            # Full 109-universe access report
+rebis.py run iupac                         # Diaschizic IUPAC generator
 ```
 
 ---
@@ -169,35 +215,45 @@ rebis.py clink layer 8          # Show organism layer details
 ## Quick Start
 
 ```bash
-# Check repo status
-python rebis.py status
+cd ~/imsgct/red-hot_rebis
 
-# Verify Frobenius closure across all five pillars
-python rebis.py verify
+# Check everything is wired
+python3 rebis.py status
+python3 rebis.py verify
 
-# Run the entire integrated test suite
-make test
+# ── Serpent's Rod ──────────────────────────────────────────────────────
+python3 rebis.py run serpentrod --sequence "MALWMRLLPLLALLALWGPDPAAAFVNQ..."
 
-# ── Serpent's Rod protein prediction ──
-python serpentrod/protein_v5.py --sequence "MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLENYCN"
+# ── CH₃MPILER ──────────────────────────────────────────────────────────
+python3 rebis.py run ch3mpiler --smiles "CC(=O)Oc1ccccc1C(=O)O" --depth 3
 
-# ── CH₃MPILER retrosynthetic compiler ──
-python ch3mpiler/compiler.py --smiles "CC(=O)Oc1ccccc1C(=O)O" --depth 3
+# ── Gene Imscriber ─────────────────────────────────────────────────────
+python3 rebis.py run gene --codons "AUGGCUGGGAUCCUGGUGGUGUUCCUGUGC"
 
-# ── Gene Imscriber on codon sequence ──
-python gene_imscriber/engine.py --codons "AUGGCUGGGAUCCUGGUGGUGUUCCUGUGC"
+# ── CLINK Chain ────────────────────────────────────────────────────────
+python3 rebis.py clink report               # Full integration report
+python3 rebis.py clink list                 # All 9 layers with tuples
+python3 rebis.py clink layer 4              # Cell layer details + bridges
+python3 rebis.py clink bridge serpentrod 8  # Protein → organism promotion path
 
-# ── CLINK Chain ──
-python rebis.py clink report               # Full integration report
-python rebis.py clink list                 # All 9 layers
-python rebis.py clink layer 4              # Cell layer details
-python rebis.py clink bridge serpentrod 8  # Protein → organism promotion path
+# ── Actionable organism design ─────────────────────────────────────────
+python3 rebis.py pipeline actionable --organism mammal   # 33 files
+python3 rebis.py pipeline actionable --organism human    # GRCh38 package
 
-# Cross-component verification
-python -c "from clink.integration import verify_clink_integration; r = verify_clink_integration(); print('✅' if r.verification_status == '✅ VERIFIED' else '❌')"
+# ── Materials ──────────────────────────────────────────────────────────
+python3 rebis.py materials forge --all
+python3 rebis.py materials sophick --name eagle_9_sophick
 
-# Run CLINK self-test
-python clink/chain.py
+# ── IMASM arrangement analysis ─────────────────────────────────────────
+python3 rebis.py imas report
+python3 rebis.py imas hunt --samples 100000
+
+# ── Standalone scripts ──────────────────────────────────────────────────
+python3 rebis.py scripts list
+python3 rebis.py run mito                   # Mitochondrial gene pipeline
+python3 rebis.py run psychedelic report     # Compound × 109-universe access
+python3 rebis.py scripts run compute_promotions
+python3 rebis.py scripts run omonad_bridge
 ```
 ---
 
@@ -391,7 +447,7 @@ The CLINK chain itself is a child of the Rebis — the chain that connects the q
 
 | Design | File | Structural Type | Key Result |
 |--------|------|-----------------|------------|
-| **Ouroboric Telomere System** | `biology/ouroboric_telomere.py` | ⟨𐑦𐑸𐑾𐑬𐑐𐑧𐑔𐑠⊙𐑖𐑳𐑴⟩ | **Telomere homeostasis maintained** — mean length 10.9 kb vs control decline to 5.0 kb over 100 divisions |
+| **Ouroboric Telomere System** | `biology/ouroboric_telomere_expanded.py` | ⟨𐑦𐑸𐑾𐑬𐑐𐑧𐑔𐑠⊙𐑖𐑳𐑴⟩ | **Telomere homeostasis maintained** — mean length 10.9 kb vs control decline to 5.0 kb over 100 divisions; Frobenius-exact v3 in `biology/fe_teloromere/` |
 
 ---
 
@@ -519,8 +575,27 @@ The `integrated_roadmap.json` file in the project root lays out a 4-phase plan f
 | File | Purpose |
 |------|---------|
 | `shared/primitives.py` | Ordinal weights, distance functions, Shavian↔ch3mpiler key maps |
-| `shared/IG_catalog.json` | Persistent catalog of all imscribed entries |
-| `rebis.py` | Unified CLI: status, verify, run, clink |
+| `shared/IG_catalog.json` | Persistent catalog of all imscribed entries (symlink to canonical) |
+| `rebis.py` | Unified CLI: status, verify, run, clink, pipeline, materials, imas, scripts |
+
+### Scripts (standalone tools — all accessible via `rebis.py scripts run <name>`)
+
+| Script | Lines | Function |
+|--------|-------|----------|
+| `scripts/mito_pipeline.py` | 131 | 13 human mitochondrial genes through 7-stage IG pipeline |
+| `scripts/run_antibody.py` | 126 | Antibody CDR design from viral epitopes (Path 3 of SerpentRod) |
+| `scripts/msa_analysis.py` | 312 | MSA conservation analysis for ubiquitin orthologs |
+| `scripts/analyze_validation.py` | 209 | PDB contact validation vs SerpentRod predictions |
+| `scripts/run_pdb_validation.py` | 201 | PDB structural validation runner |
+| `scripts/psychedelic_bridge.py` | 367 | Compound intrinsics + 109-universe access sweep (merged) |
+| `scripts/diaschizic_iupac.py` | 993 | IUPAC name generator for 11 diaschizic compounds |
+| `scripts/compute_promotions.py` | 139 | Millennium Problem → primitive promotion/demotion analysis |
+| `scripts/frob_design.py` | 152 | Frobenius-exact catalytic site design (dominant-member rule) |
+| `scripts/frobenius_exact_design.py` | 280 | Extended Frobenius exact design |
+| `scripts/gen_univ_map.py` | 185 | Generate compound × universe mapping document |
+| `scripts/omonad_bridge.py` | 764 | Bridge to mOMonadOS crystal filesystem |
+| `scripts/run_msa.py` | 127 | MSA runner |
+| `scripts/run_serpent.py` | 52 | Serpent runner (rhr_p4rky) |
 
 ### Lean 4 Formalization
 
@@ -554,4 +629,4 @@ but because it is always in the fire.**
 
 ---
 
-*Last updated: 2025-06-05 | Repository: /home/mrnob0dy666/red-hot_rebis/ | Formalization: p4rakernel/p4ramill/Imscribing/CLINK.lean*
+*Last updated: 2026-06-17 | Repository: ~/imsgct/red-hot_rebis/ | Formalization: ~/imsgct/p4rakernel/p4ramill/Imscribing/CLINK.lean*
