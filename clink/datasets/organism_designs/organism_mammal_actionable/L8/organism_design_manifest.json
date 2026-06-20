@@ -3,7 +3,7 @@
   "author": "Lando (R) (O)perator",
   "grammar_version": "1.0",
   "schema": "Imscribing Grammar",
-  "schema_tier": "O_∞",
+  "schema_tier": "O_\u221e",
   "organism_type": "mammal",
   "layers_integrated": [
     0,
@@ -30,5 +30,6 @@
   ],
   "frobenius_verified": true,
   "consciousness_score": 1.0,
+  "tier": "O_\u221e",
   "notes": "Whole organism design package - all layers actionable"
 }

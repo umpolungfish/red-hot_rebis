@@ -5,13 +5,13 @@ demo_gene_to_protein.py — Interactive Demo of the RNA→Protein Pipeline
 Showcases the Imscribing Grammar structural transformation pipeline
 across multiple real biological sequences: DNA, RNA, small/large proteins.
 
-Usage:  python -m p4ramill_py.demo_gene_to_protein
+Usage:  python -m rhr_p4rky.demo_gene_to_protein
 """
 
 import json, sys, os, math
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from p4ramill_py.gene_to_protein_pipeline import GeneToProteinPipeline
+from rhr_p4rky.gene_to_protein_pipeline import GeneToProteinPipeline
 
 BANNER = r"""
 ╔══════════════════════════════════════════════════════════════════╗

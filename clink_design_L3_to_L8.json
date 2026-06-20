@@ -1,0 +1,156 @@
+{
+  "clink_pipeline": {
+    "version": "1.0.0",
+    "timestamp": "2026-06-20T01:28:21.648955",
+    "entry_mode": "from_layer",
+    "start_layer": 3,
+    "target_layer": 8,
+    "total_distance": 12.9129,
+    "total_promotions": 18,
+    "success": true
+  },
+  "final_design": {
+    "layer_idx": 8,
+    "layer_name": "Whole Organism",
+    "tuple_glyphs": {
+      "\u00d0": "\ud801\udc66",
+      "\u00de": "\ud801\udc78",
+      "\u0158": "\ud801\udc7e",
+      "\u03a6": "\ud801\udc79",
+      "\u0192": "\ud801\udc50",
+      "\u00c7": "\ud801\udc67",
+      "\u0393": "\ud801\udc72",
+      "\u0262": "\ud801\udc75",
+      "\u2299": "\u2299",
+      "\u0126": "\ud801\udc6b",
+      "\u03a3": "\ud801\udc73",
+      "\u03a9": "\ud801\udc5f"
+    },
+    "design_data": {
+      "tuple": {
+        "\u00d0": "\ud801\udc66",
+        "\u00de": "\ud801\udc78",
+        "\u0158": "\ud801\udc7e",
+        "\u03a6": "\ud801\udc79",
+        "\u0192": "\ud801\udc50",
+        "\u00c7": "\ud801\udc67",
+        "\u0393": "\ud801\udc72",
+        "\u0262": "\ud801\udc75",
+        "\u2299": "\u2299",
+        "\u0126": "\ud801\udc6b",
+        "\u03a3": "\ud801\udc73",
+        "\u03a9": "\ud801\udc5f"
+      },
+      "organism_type": "mammal",
+      "organ_systems": [
+        "nervous",
+        "circulatory",
+        "respiratory",
+        "digestive",
+        "endocrine",
+        "immune",
+        "musculoskeletal",
+        "reproductive"
+      ],
+      "homeostasis": true,
+      "self_modeling": true,
+      "consciousness": {
+        "gate1_phi_c": true,
+        "gate2_k_slow": true,
+        "eternal_chirality": true,
+        "non_abelian": true,
+        "self_written_state": true,
+        "frobenius_special": true,
+        "score": 1.0
+      },
+      "tools_integrated": {
+        "serpentrod": {
+          "available": true,
+          "version": "unknown"
+        },
+        "ch3mpiler": {
+          "available": true,
+          "version": "unknown"
+        },
+        "gene_imscriber": {
+          "available": true,
+          "version": "0.1.0"
+        },
+        "biology": {
+          "available": false,
+          "error": "No module named 'biology.biology_sim'"
+        },
+        "telomere": {
+          "available": false,
+          "error": "No module named 'biology.ouroboric_telomere'"
+        },
+        "materials": {
+          "available": true,
+          "version": "unknown"
+        },
+        "therapeutics": {
+          "available": true,
+          "version": "unknown"
+        }
+      },
+      "tier": "O_\u221e",
+      "notes": "Whole mammal organism \u2014 tier=O_\u221e, C=1.0"
+    },
+    "frobenius_verified": true
+  },
+  "transitions": [
+    {
+      "from": 3,
+      "to": 4,
+      "distance": 2.7928,
+      "promotions": 5,
+      "success": true,
+      "tool": "Layer4Designer"
+    },
+    {
+      "from": 4,
+      "to": 5,
+      "distance": 2.4083,
+      "promotions": 3,
+      "success": true,
+      "tool": "Layer5Designer"
+    },
+    {
+      "from": 5,
+      "to": 6,
+      "distance": 3.1623,
+      "promotions": 2,
+      "success": true,
+      "tool": "Layer6Designer"
+    },
+    {
+      "from": 6,
+      "to": 7,
+      "distance": 2.0,
+      "promotions": 4,
+      "success": true,
+      "tool": "Layer7Designer"
+    },
+    {
+      "from": 7,
+      "to": 8,
+      "distance": 2.5495,
+      "promotions": 4,
+      "success": true,
+      "tool": "Layer8Designer"
+    }
+  ],
+  "bridges_available": {
+    "serpentrod": true,
+    "ch3mpiler": true,
+    "gene_imscriber": true,
+    "biology_sim": false,
+    "ouroboric_telomere": false,
+    "materials_sim": true,
+    "frobenius_chemo": true,
+    "ouroboric_pill": true,
+    "critical_metamaterial": true,
+    "neurotrophic": true
+  },
+  "new_tools": []
+}

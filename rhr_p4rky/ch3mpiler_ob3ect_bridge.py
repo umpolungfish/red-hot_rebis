@@ -2,8 +2,8 @@
 """p4rakernel bridge — ch3mpiler ob3ect self-verification bridge.
 
 Usage:
-  python3 -m p4ramill_py.ch3mpiler_ob3ect_bridge        # Run verification
-  python3 -m p4ramill_py.ch3mpiler_ob3ect_bridge --quiet  # Just return code
+  python3 -m rhr_p4rky.ch3mpiler_ob3ect_bridge        # Run verification
+  python3 -m rhr_p4rky.ch3mpiler_ob3ect_bridge --quiet  # Just return code
 """
 import sys
 from pathlib import Path

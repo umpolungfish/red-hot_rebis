@@ -15,9 +15,9 @@ import json
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-import p4ramill_py.gene_to_protein_pipeline as gpp
-from p4ramill_py.gene_to_protein_pipeline import GeneToProteinPipeline
-from p4ramill_py.gene_to_protein_pipeline import STAGE_TUPLES, ONE_LETTER
+import rhr_p4rky.gene_to_protein_pipeline as gpp
+from rhr_p4rky.gene_to_protein_pipeline import GeneToProteinPipeline
+from rhr_p4rky.gene_to_protein_pipeline import STAGE_TUPLES, ONE_LETTER
 
 TEST_SEQUENCE = "ATGGCCGACTGGAACTGCAAGAAGATCGTGCCCAAGTACTACGGCCGCTG"
 

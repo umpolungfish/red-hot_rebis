@@ -257,6 +257,8 @@ class EnhancedPredictor:
 
     def predict(self, seq: str, name: str = "protein", enable_viral: bool = False) -> ProcessingPrediction:
         result = predict_processing(seq, name)
+        result.full_profile = RollingProfile(seq)
+        result.input_name = name
 
         # Improved SP detection
         sp_end, sp_score, _ = improved_signal_peptide_detection(RollingProfile(seq))
@@ -286,7 +288,7 @@ class EnhancedPredictor:
             prod.name = name_fragment(prod.sequence, prod.start, prod.end,
                                       prev_motif=pm, next_motif=nm,
                                       idx=i, total=len(result.mature_products),
-                                      profile=prod.classification.get('profile'))
+                                      profile=None)
 
         # PTM predictions on full sequence
         result._phosphorylation = predict_phosphorylation(seq)
@@ -355,7 +357,7 @@ class EnhancedPredictor:
             lines.append(f"\n▸ PRODUCTS:")
             for i, p in enumerate(result.mature_products):
                 lines.append(f"\n  [{i+1}] {p.name} ({len(p.sequence)} AA @ {p.start}-{p.end})")
-                lines.append(f"      {p.classification.get('description','')}")
+                lines.append(f"      {p.classification if isinstance(p.classification, str) else p.classification.get('description','')}")
                 seq_short = p.sequence[:45] + ('...' if len(p.sequence)>45 else '')
                 lines.append(f"      {seq_short}")
                 if hasattr(p,'_cpe') and p._cpe: lines.append(f"      → CPE: -{p._cpe} C-term R/K")

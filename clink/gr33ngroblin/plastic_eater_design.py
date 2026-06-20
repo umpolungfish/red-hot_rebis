@@ -22,7 +22,7 @@ from dataclasses import dataclass, field
 
 # ── Paths ────────────────────────────────────────────────────
 BASE = Path(__file__).parent.absolute()
-P4RA = Path("/home/mrnob0dy666/p4rakernel/p4ramill_py")
+_REBIS_ROOT = Path(__file__).parent.parent.parent
 IG = Path("/home/mrnob0dy666/imscribing_grammar")
 sys.path.insert(0, str(P4RA))
 sys.path.insert(0, str(IG))

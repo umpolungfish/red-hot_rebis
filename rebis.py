@@ -22,39 +22,52 @@ sys.path.insert(0, str(REBIS_ROOT))
 
 VERSION = "2.1.0"  # IMASM+CLINK Edition
 
+def _discover_packages():
+    """Auto-discover all Python packages and standalone module files under REBIS_ROOT."""
+    SKIP = {'.venv', '__pycache__', '.git', 'data', 'popular_protein'}
+    results = []
+    for item in sorted(REBIS_ROOT.iterdir()):
+        if item.name.startswith('.') or item.name in SKIP:
+            continue
+        if item.is_dir() and (item / '__init__.py').exists():
+            py_files = list(item.rglob('*.py'))
+            total = sum(f.stat().st_size for f in py_files)
+            results.append((item.name, item, len(py_files), total))
+    return results
+
+
 def cmd_status(args):
-    """Report the structural status of all six pillars (including CLINK pipeline)."""
-    print("=" * 60)
+    """Report the structural status of all discovered packages."""
+    print("=" * 66)
     print("RED-HOT REBIS v2.1 — IMASM+CLINK EDITION")
-    print("=" * 60)
+    print("=" * 66)
 
-    components = {
-        "serpentrod":   ("Serpent's Rod",       "serpentrod/manuscript.md"),
-        "ch3mpiler":    ("CH3MPILER",           "ch3mpiler/compiler.py"),
-        "pipeline":     ("Combined Pipeline",    "pipeline/frob.py"),
-        "gene_imscriber": ("Gene Imscriber",    "gene_imscriber/engine.py"),
-        "clink":        ("CLINK Chain",         "clink/chain.py"),
-        "clink_designers": ("CLINK Designers",   "clink/designers/layer_designers.py"),
-        "clink_pipeline": ("CLINK Pipeline",    "clink/designers/pipeline_orchestrator.py"),
-        "imas":         ("IMASM Arranger",      "imas/arranger.py"),
-        "imas_bridge":  ("IMASM→IG Bridge",     "imas/ig_bridge.py"),
-        "imas_clink":   ("IMASM→CLINK Bridge",  "imas/clink_bridge.py"),
-        "imas_hunter":  ("Frobenius Hunter",    "imas/frobenius_hunter.py"),
-    }
+    packages = _discover_packages()
+    print(f"\n{'Package':22s}  {'Files':>6}  {'Size':>10}  Root file")
+    print("-" * 66)
+    for name, path, n_files, total in packages:
+        init = path / '__init__.py'
+        root_file = init.name if init.exists() else "—"
+        tick = "✅"
+        print(f"  {tick} {name:20s}  {n_files:>5}  {total:>9,d}  {root_file}")
 
-    for key, (name, path) in components.items():
-        p = REBIS_ROOT / path
+    # scripts/
+    scripts_dir = REBIS_ROOT / "scripts"
+    n_scripts = len(list(scripts_dir.glob("*.py")))
+    print(f"  ✅ {'scripts':20s}  {n_scripts:>5}  (standalone, no __init__)")
+
+    # Shared assets
+    print()
+    for label, rel in [("shared/primitives.py", "shared/primitives.py"),
+                        ("shared/IG_catalog.json", "shared/IG_catalog.json")]:
+        p = REBIS_ROOT / rel
         exists = p.exists()
-        size = p.stat().st_size if exists else 0
-        status = "✅" if exists else "❌"
-        print(f"  {status} {name:20s} ({key}) {size:>8,d} bytes")
+        sz = f"{p.stat().st_size:,d} bytes" if exists else "missing"
+        print(f"  {'✅' if exists else '❌'} {label}: {sz}")
 
-    # Shared primitives
-    prim_path = REBIS_ROOT / "shared/primitives.py"
-    cat_path = REBIS_ROOT / "shared/IG_catalog.json"
-    print(f"  {'':20s}  primitives: {'✅' if prim_path.exists() else '❌'}")
-    print(f"  {'':20s}  IG catalog: {'✅' if cat_path.exists() else '❌'} ({cat_path.stat().st_size:,d} bytes)")
-    print("=" * 60)
+    print("=" * 66)
+    print(f"  {len(packages)} packages + {n_scripts} scripts discovered")
+    print(f"  Run 'rebis.py run list' for all runnable targets")
     return 0
 
 
@@ -184,7 +197,19 @@ def cmd_clink(args):
         return 0
 
     elif sub == "layer":
-        idx = int(args.layer_args[0]) if args.layer_args else 0
+        if args.layer_args:
+            arg = args.layer_args[0]
+            try:
+                idx = int(arg)
+            except ValueError:
+                needle = arg.lower()
+                matches = [i for i, n in enumerate(CLINK_NAMES) if needle in n.lower()]
+                if not matches:
+                    print(f"No layer matching '{arg}'")
+                    return 1
+                idx = matches[0]
+        else:
+            idx = 0
         if idx < 0 or idx > 8:
             print("Layer index must be 0-8")
             return 1
@@ -217,50 +242,81 @@ def cmd_clink(args):
         return 1
 
 
+def _discover_run_targets():
+    """
+    Auto-discover all runnable targets under REBIS_ROOT.
+
+    Returns dict: name → ('script', Path) | ('module', 'dot.path')
+
+    Discovery rules:
+      scripts/*.py           → name = stem (e.g. 'run_msa', 'mito_pipeline')
+      rhr_p4rky/*.py         → name = stem if it has if __name__ == '__main__'
+      <pkg>/<stem>.py        → name = '<pkg>.<stem>' if has if __name__ == '__main__'
+                               where pkg in (serpentrod, gene_imscriber, ch3mpiler,
+                                             clink, pipeline, imas, materials)
+    """
+    targets = {}
+
+    # 1. Every script in scripts/
+    for p in sorted((REBIS_ROOT / "scripts").glob("*.py")):
+        targets[p.stem] = ("script", p)
+
+    # 2. Runnable modules in rhr_p4rky/
+    for p in sorted((REBIS_ROOT / "rhr_p4rky").glob("*.py")):
+        if p.stem.startswith("_"):
+            continue
+        try:
+            if '__main__' in p.read_text(encoding='utf-8', errors='ignore'):
+                targets[p.stem] = ("script", p)
+        except OSError:
+            pass
+
+    # 3. Top-level package __main__ entry-points
+    PACKAGES = [
+        ("serpentrod",     "serpentrod.protein_v5"),
+        ("serpentrod_v4",  "serpentrod.protein_v4"),
+        ("serpentrod_pred","serpentrod.stratified_predictor"),
+        ("ch3mpiler",      "ch3mpiler.compiler"),
+        ("gene",           "gene_imscriber.engine"),
+    ]
+    for alias, mod in PACKAGES:
+        if alias not in targets:    # scripts/ take precedence
+            targets[alias] = ("module", mod)
+
+    return targets
+
+
 def cmd_run(args):
-    """Route to a specific component or script with its own args."""
+    """Route to any discoverable script or module under REBIS_ROOT."""
     import subprocess
     subcommand = args.subcommand
     rest = args.rest
 
-    module_runners = {
-        "serpentrod":      "serpentrod.protein_v5",
-        "serpentrod_v4":   "serpentrod.protein_v4",
-        "serpentrod_pred": "serpentrod.stratified_predictor",
-        "ch3mpiler":       "ch3mpiler.compiler",
-        "gene":            "gene_imscriber.engine",
-    }
+    if subcommand == "list" or subcommand is None:
+        targets = _discover_run_targets()
+        print(f"{'Target':35s}  Type    Path")
+        print("-" * 72)
+        for name in sorted(targets):
+            kind, ref = targets[name]
+            path_str = str(ref) if kind == "script" else ref
+            print(f"  {name:33s}  {kind:7s}  {path_str}")
+        print(f"\n{len(targets)} targets — run with: rebis.py run <target> [args...]")
+        return 0
 
-    script_aliases = {
-        "mito":        "scripts/mito_pipeline.py",
-        "antibody":    "scripts/run_antibody.py",
-        "psychedelic": "scripts/psychedelic_bridge.py",
-        "iupac":       "scripts/diaschizic_iupac.py",
-    }
-
-    if subcommand in script_aliases:
-        script = REBIS_ROOT / script_aliases[subcommand]
-        return subprocess.run([sys.executable, str(script)] + rest).returncode
-
-    if subcommand not in module_runners:
-        all_names = list(module_runners) + list(script_aliases)
-        print("Unknown subcommand: %s" % subcommand)
-        print("Available: %s" % ", ".join(all_names))
+    targets = _discover_run_targets()
+    if subcommand not in targets:
+        print(f"Unknown target: {subcommand}")
+        print(f"Run 'rebis.py run list' to see all available targets.")
         return 1
 
-    mod_path = module_runners[subcommand]
-    module = __import__(mod_path, fromlist=["main"])
-
-    if hasattr(module, "main"):
-        sys.argv = [mod_path] + rest
-        return module.main()
+    kind, ref = targets[subcommand]
+    if kind == "script":
+        return subprocess.run([sys.executable, str(ref)] + rest).returncode
     else:
-        doc = module.__doc__ or ""
-        first_line = doc.split("\n")[0] if doc else "No docstring"
-        print("%s — %s" % (mod_path, first_line))
-        print("  No standalone main(). Import and use programmatically:")
-        print("    from %s import ..." % mod_path.rsplit(".", 1)[0])
-        return 0
+        return subprocess.run(
+            [sys.executable, "-m", ref] + rest,
+            cwd=str(REBIS_ROOT)
+        ).returncode
 
 
 def cmd_scripts(args):
@@ -614,16 +670,16 @@ Examples:
   rebis.py materials frobenius           # Run Frobenius metamaterial simulation
   rebis.py materials ouroboric           # Run Ouroboric alloy simulation
 
-  rebis.py run serpentrod --seq KAL  # Run protein prediction
-  rebis.py run ch3mpiler --help      # CH3MPILER help
-  rebis.py run mito                  # Mitochondrial gene pipeline
-  rebis.py run antibody              # Antibody designer
-  rebis.py run psychedelic           # Psychedelic bridge (intrinsics)
-  rebis.py run psychedelic report    # Psychedelic × universe access report
-  rebis.py run iupac                 # Diaschizic IUPAC generator
-
-  rebis.py scripts list              # Show all available scripts
-  rebis.py scripts run omonad_bridge # Invoke scripts/omonad_bridge.py
+  rebis.py run list                     # Show all discoverable targets
+  rebis.py run serpentrod --seq KAL     # Run protein prediction
+  rebis.py run ch3mpiler --help         # CH3MPILER help
+  rebis.py run mito_pipeline            # Mitochondrial gene pipeline
+  rebis.py run run_antibody             # Antibody designer
+  rebis.py run psychedelic_bridge       # Psychedelic bridge (intrinsics)
+  rebis.py run diaschizic_iupac         # Diaschizic IUPAC generator
+  rebis.py run run_gene_pipeline        # Gene imscription pipeline
+  rebis.py run run_msa                  # Multiple sequence alignment
+  rebis.py run run_pdb_validation       # PDB structure validation
 """
     )
     parser.add_argument("--version", action="version", version="%(prog)s " + VERSION)
@@ -683,14 +739,11 @@ Examples:
                          help="Target layer index for 'bridge' (0-8)")
 
     # run
-    p_run = subparsers.add_parser("run", help="Run a component or script alias")
-    p_run.add_argument("subcommand",
-                       choices=["serpentrod", "serpentrod_v4", "serpentrod_pred",
-                                "ch3mpiler", "pipeline", "gene",
-                                "mito", "antibody", "psychedelic", "iupac"],
-                       help="Component or script alias to run")
+    p_run = subparsers.add_parser("run", help="Run any discoverable script or module (use 'run list' to see all)")
+    p_run.add_argument("subcommand", nargs="?", default="list",
+                       help="Target name, or 'list' to show all available targets")
     p_run.add_argument("rest", nargs=argparse.REMAINDER,
-                       help="Arguments to pass to the component")
+                       help="Arguments to pass to the target")
 
     # scripts
     p_scr = subparsers.add_parser("scripts", help="List or invoke scripts in scripts/")

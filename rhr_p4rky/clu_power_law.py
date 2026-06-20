@@ -598,7 +598,7 @@ def main() -> None:
     print(f"    Status: {'VERIFIED' if o['all_pass'] else 'PARTIAL'}")
 
     print("\n" + "=" * 72)
-    print("  Implementation file: p4ramill_py/clu_power_law.py")
+    print("  Implementation file: rhr_p4rky/clu_power_law.py")
     print("  Integrated with:     Frobenius kernel (kernel.py)")
     print("  Filtration:          frobenius_filtration.py")
     print("=" * 72)

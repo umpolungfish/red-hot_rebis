@@ -29,9 +29,9 @@ from typing import Dict, List, Tuple, Optional, Set, Any
 from enum import Enum
 
 # ─── Path setup ──────────────────────────────────────────────────
-REBIS_ROOT = Path(__file__).parent.absolute()
-OMONAD_ROOT = Path("/home/mrnob0dy666/omonad_OS/src")
-IMASMIC_ROOT = Path("/home/mrnob0dy666/imasmic_core")
+REBIS_ROOT = Path(__file__).parent.parent.absolute()  # scripts/../ = repo root
+OMONAD_ROOT = Path("/home/mrnob0dy666/imsgct/omonad_OS/src")
+IMASMIC_ROOT = Path("/home/mrnob0dy666/imsgct/imasmic_core")
 
 for p in [str(REBIS_ROOT), str(OMONAD_ROOT), str(IMASMIC_ROOT)]:
     if p not in sys.path:
@@ -40,11 +40,11 @@ for p in [str(REBIS_ROOT), str(OMONAD_ROOT), str(IMASMIC_ROOT)]:
 # ─── omonad_OS imports ────────────────────────────────────────────
 OMONAD_AVAILABLE = False
 try:
-    from tokens import Token, BOOTSTRAP_LOOP as OMONAD_BOOTSTRAP, CANONICALS
-    from belnap_state import B4Memory, B4Cell, B4_STATES
-    from crystal_fs import CrystalFS, crystal_encode, crystal_decode, FROBENIUS_ADDRESS_MAX
-    from organoid_hal import OrganoidHAL, AUGMENTATION_REGISTRY
-    from clink_chain import CLINKChain as OmonadCLINKChain
+    from src.tokens import Token, CANONICALS
+    from src.belnap_state import B4Memory
+    from src.crystal_fs import CrystalFS, crystal_encode, crystal_decode
+    from src.organoid_hal import OrganoidController as OrganoidHAL
+    from src.clink_chain import ClinkNavigator as OmonadCLINKChain
     OMONAD_AVAILABLE = True
 except ImportError as e:
     print(f"[omonad_bridge] omonad_OS not fully importable: {e}", file=sys.stderr)

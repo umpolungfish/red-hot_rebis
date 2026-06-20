@@ -2,7 +2,7 @@
 machine.py — ParaASM Virtual Machine built on the p4rakernel.
 
 Implements the full ParaASM instruction set for the paraconsistent virtual
-machine, using the p4ramill_py kernel (which mirrors the Lean 4 kernel) as
+machine, using the rhr_p4rky kernel (which mirrors the Lean 4 kernel) as
 its foundational Belnap logic layer.
 
 Instruction set (from para_vm.py):
@@ -12,7 +12,7 @@ Instruction set (from para_vm.py):
     Stack: PUSH, POP
     I/O: EMIT, READ
 
-All Belnap operations delegate to p4ramill_py.belnap and p4ramill_py.kernel.
+All Belnap operations delegate to rhr_p4rky.belnap and rhr_p4rky.kernel.
 """
 
 from __future__ import annotations
@@ -168,7 +168,7 @@ class ParaVM:
 
     Runs ParaASM programs with a Belnap FOUR register file, Frobenius kernel,
     control flow, stack, and I/O. All Belnap operations delegate to the
-    p4ramill_py kernel (mirroring the Lean 4 formalization).
+    rhr_p4rky kernel (mirroring the Lean 4 formalization).
     """
 
     def __init__(self, nregs: int = 16) -> None:

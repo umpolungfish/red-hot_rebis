@@ -6,18 +6,12 @@ Tests evolutionary conservation of activation patterns across species.
 Author: Lando ⊗ ⊙perator
 """
 import sys, os, json, urllib.request
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "p4ramill_py"))
-import p4ramill_py.belnap, p4ramill_py.genetics_b4, p4ramill_py.genetic_code
-import importlib.util, importlib.machinery, types
-
-pkg_dir = os.path.join(os.path.dirname(__file__), "p4ramill_py")
-loader = importlib.machinery.SourceFileLoader("p4ramill_py.serpent_rod", os.path.join(pkg_dir, "serpent_rod.py"))
-spec = importlib.util.spec_from_loader("p4ramill_py.serpent_rod", loader)
-mod = importlib.util.module_from_spec(spec)
-sys.modules["p4ramill_py.serpent_rod"] = mod
-mod.__package__ = "p4ramill_py"
-loader.exec_module(mod)
-SerpentRod = mod.SerpentRod
+_REBIS_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, _REBIS_ROOT)
+import rhr_p4rky.belnap
+import rhr_p4rky.genetics_b4
+import rhr_p4rky.genetic_code
+from rhr_p4rky.serpent_rod import SerpentRod
 
 AA_PREFERRED = {"A":"GCU","R":"CGU","N":"AAU","D":"GAU","C":"UGU","Q":"CAA","E":"GAA","G":"GGU","H":"CAU","I":"AUU","L":"UUG","K":"AAA","M":"AUG","F":"UUU","P":"CCU","S":"UCU","T":"ACU","W":"UGG","Y":"UAU","V":"GUU"}
 

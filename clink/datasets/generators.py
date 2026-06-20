@@ -11,7 +11,7 @@ from datetime import datetime
 
 REBIS_ROOT = Path(__file__).parent.parent.parent.absolute()
 sys.path.insert(0, str(REBIS_ROOT))
-from clink.chain import clink_frobenius_closed
+from clink.chain import clink_frobenius_closed, compute_c_score_from_tuple, compute_tier_from_tuple
 
 @dataclass
 class DatasetFile:

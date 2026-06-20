@@ -244,10 +244,10 @@ def get_serpentrod():
         sr_path = BASE / "serpent_rod_v2.py"
     
     spec = importlib.util.spec_from_file_location(
-        "p4ramill_py.serpent_rod", sr_path)
+        "rhr_p4rky.serpent_rod", sr_path)
     mod = importlib.util.module_from_spec(spec)
-    mod.__package__ = "p4ramill_py"
-    sys.modules["p4ramill_py.serpent_rod"] = mod
+    mod.__package__ = "rhr_p4rky"
+    sys.modules["rhr_p4rky.serpent_rod"] = mod
     spec.loader.exec_module(mod)
     _sr_module = mod
     return _sr_module

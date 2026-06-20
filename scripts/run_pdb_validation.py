@@ -7,24 +7,24 @@ Author: Lando ⊗ ⊙perator
 """
 import sys, os, json, math, urllib.request, tempfile
 from typing import List, Tuple, Dict, Set
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "p4ramill_py"))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "rhr_p4rky"))
 
 # Patch imports
-import p4ramill_py.belnap
-import p4ramill_py.genetics_b4
-import p4ramill_py.genetic_code
+import rhr_p4rky.belnap
+import rhr_p4rky.genetics_b4
+import rhr_p4rky.genetic_code
 import importlib.util, importlib.machinery, types
 
-pkg_dir = os.path.join(os.path.dirname(__file__), "p4ramill_py")
-loader = importlib.machinery.SourceFileLoader("p4ramill_py.serpent_rod",
+pkg_dir = os.path.join(os.path.dirname(__file__), "rhr_p4rky")
+loader = importlib.machinery.SourceFileLoader("rhr_p4rky.serpent_rod",
     os.path.join(pkg_dir, "serpent_rod.py"))
-spec = importlib.util.spec_from_loader("p4ramill_py.serpent_rod", loader)
+spec = importlib.util.spec_from_loader("rhr_p4rky.serpent_rod", loader)
 mod = importlib.util.module_from_spec(spec)
-sys.modules["p4ramill_py.serpent_rod"] = mod
-mod.__package__ = "p4ramill_py"
+sys.modules["rhr_p4rky.serpent_rod"] = mod
+mod.__package__ = "rhr_p4rky"
 loader.exec_module(mod)
 SerpentRod = mod.SerpentRod
-STANDARD_CODE = p4ramill_py.genetic_code.STANDARD_CODE
+STANDARD_CODE = rhr_p4rky.genetic_code.STANDARD_CODE
 
 THREE_TO_ONE = {
     "ALA":"A","ARG":"R","ASN":"N","ASP":"D","CYS":"C",

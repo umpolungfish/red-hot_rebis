@@ -19,9 +19,9 @@
     8
   ],
   "total_files": 33,
-  "total_bytes": 75893,
+  "total_bytes": 75960,
   "output_directory": "clink/datasets/organism_designs/organism_mammal_actionable",
-  "generation_time_seconds": 0.11,
+  "generation_time_seconds": 0.1,
   "actionable_outputs": [
     "Codon-optimized coding sequences (real, not random)",
     "Protein PDB with secondary structure (not template)",
@@ -40,5 +40,6 @@
     "metabolic_model.xml": "Load into COBRApy for FBA",
     "construct.sbol": "Exchange with synthetic biology repositories",
     "growth_media.txt": "Prepare media per formulation"
-  }
+  },
+  "advanced_components": {}
 }

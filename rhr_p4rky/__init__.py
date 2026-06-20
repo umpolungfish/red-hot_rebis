@@ -1,5 +1,5 @@
 """
-p4ramill_py — Python mirror of the p4ramill Lean 4 paraconsistent kernel.
+rhr_p4rky — Python mirror of the p4ramill Lean 4 paraconsistent kernel.
 
 This package provides the canonical Python representations of the types and
 theorems formalized in the Lean 4 kernel at ../p4ramill/. Every type, operation,

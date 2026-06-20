@@ -5,10 +5,10 @@ Processes all 13 human mitochondrial protein-coding genes from NC_012920.1
 through the 7-stage IG structural pipeline.
 """
 import sys, os, json
-sys.path.insert(0, "/home/mrnob0dy666/p4rakernel/p4ramill_py")
-from p4ramill_py.gene_to_protein_pipeline import GeneToProteinPipeline
+sys.path.insert(0, "/home/mrnob0dy666/imsgct/red-hot_rebis")
+from rhr_p4rky.gene_to_protein_pipeline import GeneToProteinPipeline
 
-fasta_path = "/home/mrnob0dy666/p4rakernel/NC_012920.1.fasta"
+fasta_path = "/home/mrnob0dy666/imsgct/red-hot_rebis/data/NC_012920.1.fasta"
 with open(fasta_path) as f:
     lines = f.readlines()
 seq = "".join(l.strip() for l in lines[1:]).upper()

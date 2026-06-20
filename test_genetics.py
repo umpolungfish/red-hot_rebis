@@ -21,11 +21,11 @@ import sys, os, traceback
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, SCRIPT_DIR)
 
-import p4ramill_py.genetics_b4 as gb4
-import p4ramill_py.genetic_code as gc
-import p4ramill_py.genetic_tuples as gt
-import p4ramill_py.gene_to_protein_pipeline as gpp
-import p4ramill_py.kernel as kern
+import rhr_p4rky.genetics_b4 as gb4
+import rhr_p4rky.genetic_code as gc
+import rhr_p4rky.genetic_tuples as gt
+import rhr_p4rky.gene_to_protein_pipeline as gpp
+import rhr_p4rky.kernel as kern
 
 PASS = 0
 FAIL = 0
@@ -195,7 +195,7 @@ def section_pipeline():
 
     def t2():
         import subprocess, json
-        runner = os.path.join(SCRIPT_DIR, 'p4ramill_py', 'run_gene_pipeline.py')
+        runner = os.path.join(SCRIPT_DIR, 'rhr_p4rky', 'run_gene_pipeline.py')
         r = subprocess.run(
             [sys.executable, runner, "--test", "-o", "/tmp/pipeline_test.json"],
             capture_output=True, text=True
@@ -302,8 +302,8 @@ def section_consistency():
     test("His->Gamma / Gln->odot mapping", t1)
 
     def t2():
-        from p4ramill_py.genetic_tuples import DEFAULT_TUPLES as tuples
-        from p4ramill_py.gene_to_protein_pipeline import STAGE_TUPLES
+        from rhr_p4rky.genetic_tuples import DEFAULT_TUPLES as tuples
+        from rhr_p4rky.gene_to_protein_pipeline import STAGE_TUPLES
         assert len(tuples) == len(STAGE_TUPLES) == 7
         for name in tuples:
             assert name in STAGE_TUPLES, f"{name} missing from pipeline STAGE_TUPLES"

@@ -881,7 +881,8 @@ if __name__ == '__main__':
 # are required by the v4/v5 enhancement engines.
 # ══════════════════════════════════════════════════════════════════════════
 
-from typing import NamedTuple, Optional, List, Tuple, Dict
+from typing import NamedTuple, Optional, List, Tuple, Dict, Any
+from dataclasses import dataclass, field
 from collections import namedtuple
 import math
 
@@ -964,13 +965,17 @@ class CleavageSite:
 
 # ── MatureProduct ──────────────────────────────────────────────────────
 
-class MatureProduct(NamedTuple):
+@dataclass
+class MatureProduct:
     name: str
     start: int
     end: int
     sequence: str
-    classification: str
+    classification: Any
     is_connecting: bool = False
+    _cpe: Any = field(default=None, repr=False)
+    _amidation: Any = field(default=None, repr=False)
+    _disulfide: Any = field(default=None, repr=False)
 
 # ── ProcessingPrediction ───────────────────────────────────────────────
 

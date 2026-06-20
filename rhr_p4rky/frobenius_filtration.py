@@ -1,4 +1,4 @@
-# p4ramill_py/frobenius_filtration.py
+# rhr_p4rky/frobenius_filtration.py
 # Python mirror of Imscribing/Paraconsistent/FrobeniusFiltration.lean
 # Author: Lando ⊗ ⊙perator
 #

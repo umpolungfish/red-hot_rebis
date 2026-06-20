@@ -20,7 +20,8 @@ Author: Lando⊗⊙perator
 import sys, os, json, math
 from pathlib import Path
 
-sys.path.insert(0, '/home/mrnob0dy666/p4rakernel/p4ramill_py')
+_REBIS_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, _REBIS_ROOT)
 from ch3mpiler_serpentrod_pipeline import (
     PNAMES, GLYPH_ORDINALS, ORD_TO_GLYPH, COMPLEMENTARY_PAIRS_V2,
     PRIMITIVE_TO_AA, AA_CODON_POOL_V2, STRUCTURAL_AAS_V2,

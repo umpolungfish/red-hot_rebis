@@ -3,7 +3,7 @@
 ch3mpiler_bridge.py — ch3mpiler integrated into the p4rakernel namespace.
 
 Wraps the Imscribing Grammar's retrosynthetic/forward reaction compiler
-for use within the p4ramill_py paraconsistent kernel ecosystem.
+for use within the rhr_p4rky paraconsistent kernel ecosystem.
 
 The ch3mpiler lives at ~/imscribing_grammar/ch3mpiler.py and performs:
   - Target molecule → structural type via FG token parsing
@@ -11,7 +11,7 @@ The ch3mpiler lives at ~/imscribing_grammar/ch3mpiler.py and performs:
   - Forward reaction prediction from reagent names
   - Structural analog search via IG primitive distance
 
-This bridge makes it importable as p4ramill_py.ch3mpiler_bridge
+This bridge makes it importable as rhr_p4rky.ch3mpiler_bridge
 and provides CLI entry points matching the p4rk-* alias pattern.
 
 Structural type of this bridge:

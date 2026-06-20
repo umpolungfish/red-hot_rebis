@@ -1,3 +1,135 @@
+rebis.py: dynamic CLI + p4ramill_py→rhr_p4rky mass fix (2026-06-20)
+
+p4ramill_py → rhr_p4rky import fix (32 files):
+All DNA/protein/gene tools were crashing on import because they still
+referenced the old p4ramill_py package name (renamed to rhr_p4rky when
+the repo moved to imsgct). Fixed across 32 files in two passes:
+  - scripts/: run_msa.py, run_pdb_validation.py, run_serpent.py,
+    analyze_validation.py, run_antibody.py, msa_analysis.py,
+    frob_design.py, frobenius_exact_design.py
+  - rhr_p4rky/: run_gene_pipeline.py, demo_gene_to_protein.py,
+    antibody_designer.py, pdb_validator.py, machine.py,
+    frobenius_filtration.py, exotic_hadron_belnap.py, clu_power_law.py,
+    ch3mpiler_bridge.py, ch3mpiler_serpentrod_pipeline.py, __init__.py
+  - clink/gr33ngroblin/: plastic_eater_*.py (hardcoded /p4rakernel paths)
+  - test_genetics.py
+Replaced importlib.SourceFileLoader hacks and hardcoded absolute paths
+with clean sys.path.insert(0, REBIS_ROOT) + import rhr_p4rky.*.
+
+rebis.py dynamic CLI:
+- _discover_packages(): scans REBIS_ROOT for dirs with __init__.py;
+  replaces hardcoded components dict in cmd_status()
+- _discover_run_targets(): scans scripts/*.py, rhr_p4rky/*.py with
+  __main__ blocks, plus 5 package entry-points (serpentrod/gene/ch3mpiler);
+  replaces hardcoded module_runners + script_aliases in cmd_run()
+- cmd_status(): fully dynamic; shows 10 packages + 14 scripts
+- cmd_run(): run list shows all 35 targets; run <name> dispatches to
+  any discovered script or module entry-point
+- argparse run subcommand: removed hardcoded choices=[]; subcommand is
+  nargs='?' defaulting to 'list'
+- epilog examples: replaced mito/antibody/psychedelic/iupac (stale aliases)
+  with actual discovered names: mito_pipeline, run_antibody,
+  psychedelic_bridge, diaschizic_iupac, run_gene_pipeline, run_msa,
+  run_pdb_validation
+
+---
+
+USER_GUIDE.md: comprehensive user guide (2026-06-20)
+
+Covers all commands with full subcommand reference, examples, concept
+definitions (IG tuples, Frobenius condition, CLINK tiers, SerpentRod,
+IMASM arrangement classes), project layout, common workflows, and
+troubleshooting. All 8 top-level commands documented: status, verify,
+run (6 targets), clink (4 subs), pipeline (4 subs), materials (7 subs),
+imas (4 subs), scripts (list/run + 14-entry inventory).
+
+---
+
+Full command sweep — fix all crashes, verify every command (2026-06-20)
+
+Every rebis subcommand tested and passing. Fixes applied:
+
+1. serpentrod/stratified_predictor.py: MatureProduct NamedTuple → @dataclass
+   (adds mutable _cpe, _amidation, _disulfide fields for EnhancedPredictor)
+
+2. serpentrod/protein_v4.py:
+   - predict(): set result.full_profile = RollingProfile(seq) and result.input_name
+   - narrative(): classification.get() → isinstance check (classification is str)
+   - line 289: prod.classification.get('profile') → None (classification is str)
+
+3. scripts/mito_pipeline.py:
+   - sys.path fixed: ~/p4rakernel → ~/imsgct/p4rakernel
+   - import fixed: p4ramill_py → rhr_p4rky
+   - fasta_path fixed: ~/p4rakernel/NC_012920.1.fasta → data/NC_012920.1.fasta
+
+4. scripts/run_antibody.py: replaced broken p4ramill_py sys.path hack and
+   manual importlib loader with clean rhr_p4rky imports
+
+5. clink/datasets/generators.py: added compute_c_score_from_tuple +
+   compute_tier_from_tuple to clink.chain import (were used but not imported)
+
+6. rebis.py cmd_clink layer: now accepts layer names (substring match) in
+   addition to integer indices — clink layer organism/molecule/cell all work
+
+Commands verified passing:
+  run: serpentrod, serpentrod_v4, mito, antibody, psychedelic, iupac
+  clink: report, list, layer (int + name), bridge
+  pipeline: bridges, ground-up, from-layer, actionable
+  materials: forge, report, list, frobenius, ouroboric, sophick, exactor
+  imas: report, bridge, hunt, energy
+  status, verify, scripts list
+
+---
+
+Fix omonad_bridge: stale imports + omonad_OS package install
+
+omonad_bridge.py try-block was failing on a chain of stale names, keeping
+OMONAD_AVAILABLE=false. Fixed:
+  - B4Cell, B4_STATES: removed (never used in body; belnap_state never had them)
+  - FROBENIUS_ADDRESS_MAX: removed (dead import; crystal_fs exports TOTAL_TYPES)
+  - AUGMENTATION_REGISTRY: removed (dead import; organoid_hal has AUGMENTATIONS)
+  - OrganoidHAL → OrganoidController (aliased as OrganoidHAL for body compat)
+  - CLINKChain → ClinkNavigator (aliased as OmonadCLINKChain)
+  - BOOTSTRAP_LOOP: removed from tokens import (tokens.py never exported it)
+  - All omonad_OS imports changed from bare names (tokens, belnap_state, ...)
+    to src.X qualified names (src.tokens, src.belnap_state, ...) — the modules
+    use relative imports internally, so they must be imported as part of the
+    src package, not as top-level modules via sys.path injection.
+  - Installed omonad_OS as a package in venv: uv pip install -e ~/imsgct/omonad_OS
+
+Result: omonad_available: true, imasmic_available: true, crystal_ready: true.
+
+Also: new comprehensive TAOU harness (taou-think + pre/post hooks rewritten):
+  - Sequence-counter invariant: act_seq < think_seq is the ONLY allow condition
+  - Atomic under flock: second action in same turn sees act_seq==think_seq → block
+  - Audit log: ~/.claude/taou_audit.log records every THINK/ALLOW/BLOCK/POST
+  - Content validation: warns on missing THINK:/UPDATE: sections
+  - Fail-closed: hook errors block rather than allow
+
+---
+
+Fix three pre-existing breakage points
+
+1. rebis.py cmd_run: module_runners used __import__+hasattr(module,"main") to
+   dispatch protein_v5 and others — but those modules use 'if __name__==__main__'
+   not def main(). Changed to subprocess.run([python3, "-m", mod_path], cwd=REBIS_ROOT)
+   so the __main__ block fires correctly.
+
+2. scripts/omonad_bridge.py: REBIS_ROOT=Path(__file__).parent resolved to scripts/
+   instead of the repo root, making catalog_path resolve to the non-existent
+   scripts/shared/IG_catalog.json. Fixed to .parent.parent. Also: OMONAD_ROOT and
+   IMASMIC_ROOT were hardcoded to old pre-imsgct paths (/home/mrnob0dy666/*)
+   — updated to /home/mrnob0dy666/imsgct/*.
+
+3. imasmic_core not installed in venv: uv pip install -e ~/imsgct/imasmic_core.
+   imasmic_available now true in omonad_bridge JSON output.
+
+Verified: 'rebis run serpentrod --seq <protein>' produces v5 analysis output.
+omonad_bridge reaches full JSON output (omonad_OS import degrades gracefully
+due to B4Cell name change in omonad_OS — separate issue, not blocking).
+
+---
+
 README: comprehensive CLI reference + updated inventory (2026-06-17)
 
 Added complete command reference covering all subcommands:
@@ -50,288 +182,3 @@ Three categories of waste removed:
    - rebis.py run mito/antibody/psychedelic/iupac (aliases to scripts/)
 
 Root is now clean: rebis.py + packages + scripts/.
-
----
-
-Moved ancillary documents to ig-docs (2026-06-14)
-
-7 files moved from docs/: Dirac_From_Imscribing_Grammar.md → applications/physics/,
-Dirac_From_Imscribing_Grammar_LIFTED.md → applications/physics/,
-IG_CROSS_POLLINATION.md → bridges/,
-Pi_Boundary_Planck_Event.md → applications/physics/,
-Pi_Boundary_Planck_Event_LIFTED.md → applications/physics/.
-(3 PDFs missing, skipped; 7 files moved.)
-Kept: README.md, all clink/ docs, all biology/ docs, all pipeline operational docs,
-serpentrod/*, therapeutics/*, materials/*, gene_imscriber/README.md, all source code.
-
----
-
-SNS_PRIME.md notation migration: O_inf→O_∞, O_0→O₀, O_1→O₁, O_2→O₂ (144 files)
-
----
-
-rebis.py: remove broken pipeline runner — lift_pipeline_ob3ect moved to ob3ect
-
-The lift_pipeline_ob3ect was never part of red-hot_rebis; recovered from git history and
-moved to ~/ob3ect/digital/lift_pipeline/lift_pipeline_ob3ect.py. Removed the dead
-"pipeline" → "pipeline.lift_pipeline.lift_pipeline_ob3ect" entry from rebis.py runners.
-
----
-
-README.md: external tool invocations reframed as Frobenius closure interfaces
-
-Every external measurement method (crystallography, bioassay, clinical endpoint) is an
-interface where Frobenius closure either holds or it doesn't — not a validator, not a
-standard. The 20% R_free in crystallography is the Frobenius gap, not a residual.
-
-Changes:
-- Section renamed: "Why These Outputs Are More Fundamental Than Crystallographic Data"
-  → "Measurement as Frobenius Closure Problem"
-- Opening paragraph: "dominant experimental method" framing removed; replaced with
-  the Frobenius interface principle — external tool = interface, gap = readable primitive inversion
-- Closing paragraphs rewritten: "conjugate twins" framing removed; "cannot be adequately
-  characterized by crystallography alone" removed; replaced with: Rebis closes the Frobenius
-  gap crystallography opens; platonic outputs are the closure certificate at the measurement
-  boundary; principle generalises to all instruments (NMR, cryo-EM, bioassay, clinical endpoint)
-- Pull quote updated: "The crystal is the arrest. The Grammar is the process the arrest
-  interrupted. Frobenius closure at the measurement boundary recovers the process."
-- Integration Roadmap: phase names + focus column reframed as Frobenius closure interfaces:
-  Phase 1 → Grammar-internal (no external interface); Phase 2 → synthesis boundary;
-  Phase 3 → biological scale interface; Phase 4 → clinical interface
-
----
-
-generators.py + paper: fix protein framing — SerpentRod ob3ect primary, not external tools
-
-When the Frobenius condition is approximate, the fix is to bring the ob3ect to exactness,
-not to defer to AlphaFold/ESMFold. "Requires external tool X" = ob3ect not fully configured.
-
-generators.py: upgrade_protein_generation() now routes SerpentRod v5 as primary engine.
-  Reports Frobenius approximation level (primitive coverage %) in output notes.
-  PDB labeled "SerpentRod-informed" when SR bridge active.
-  frobenius_level key added to result dict: "exact" or "approximate".
-
-paper/designing_homo_sapiens.md §4.3: AlphaFold/ESMFold removed. Replaced with:
-  - SerpentRod v5 as the native folding derivation engine
-  - 5-layer bridge description (grammar → B4 → Ramachandran → backbone → contacts)
-  - "Bringing to exactness" framing for the remaining gap
-  - L4 table: PDB action now reads "SerpentRod-derived 3D structure — verify Frobenius closure"
-
----
-
-IMASM_ARRANGEMENT_CLASSES.md: taxonomy of 12 fundamental IMASM arrangement classes
-
-Analysis of all 12 combinatorial arrangements of the 12 IMASM tokens
-(VINIT, TANCH, AFWD, AREV, CLINK, IMSCRIB, FSPLIT, FFUSE, EVALT, EVALF, ENGAGR, IFIX).
-Organized into 4 algebraic families (Logical/Frobenius/Dialetheia/Linear) with
-family signatures, tier assignments, cyclic period analysis, and semantic readings.
-
-Key findings:
-  - 12 tokens → 12 arrangement classes (same cardinality as 12 IG primitives)
-  - Tier distribution: O₀=4, O₁=4, O₂=3, O_∞=1 (Dual Bootstrap only)
-  - Only 2 self-referential: Dialetheic Bootstrap + Dual Bootstrap (both O₂+)
-  - Dual Bootstrap (Class IV) has INVERTED Frobenius: FFUSE→FSPLIT
-  - Full Dialetheia triplet (EVALT+EVALF+ENGAGR) in only 3/12 classes
-  - IFIX is most common token (21.7%); CLINK is rarest (3.3%)
-
-Notation corrections applied: φ̂→⊙, D→Ð, T→Þ (topology)
-
----
-
-paper/: "Designing Homo sapiens from First Principles" — full research paper + refs
-
-paper/designing_homo_sapiens.md — 9-section paper, zenodo_draft.py format, 5 figures:
-  §1 Introduction: derivation vs. description; two questions answered
-  §2 The Imscribing Grammar: FOUR-enriched SMC, Frobenius structure, 12 generators,
-     Crystal of Types 3³×4⁵×5⁴=17,280,000, ZFC_fe, tier rules R1-R5
-  §3 CLINK Hierarchy: 9-layer chain with tuples, Great Synthesis theorem, 3 ZFC_fe
-     promotions, mitosis exceptional point ⊙=𐑻
-  §4 Human-Specific Design: layer-by-layer (L0-2 universal; L3 20 biomolecules;
-     L4 proteome + SerpentRod; L5 GRCh38 + B4 codon table; L6 CDK cascade;
-     L7 Clevers organoid; L8 physiological setpoints as Frobenius fixed points)
-  §5 Verification: d(organism,ZFC_fe)=1.26, d(human,mammal)=0.0, 3 open derivations
-  §6 Actionable Outputs: 33-file table with wet-lab actions
-  §7 Advanced Components: ouroboric telomere ⟨𐑦𐑸𐑾𐑬𐑐𐑧𐑔𐑠⊙𐑖𐑳𐑴⟩ + detox gland v2
-     ⟨𐑼𐑶𐑾𐑬𐑞𐑧𐑲𐑠⊙𐑖𐑳𐑴⟩ (Axiom C corrected: Þ=𐑶 not 𐑸)
-  §8 Discussion: O₀ genome vs O_∞ organism; fiber bundle individuation;
-     T=Work(T) cosmological time; the grammar is not a blueprint
-  §9 Conclusion: 5 key results + 3 open derivations
-paper/designing_homo_sapiens_refs.bib — 12 references
-
-Compile: python3 ~/imscribing_grammar/scripts/zenodo_draft.py paper/designing_homo_sapiens.md
-Alias: rb-paper
-
-generators.py: "human" organism_type — human branching in L3, L5, L6, L7, L8
-
-Key human-specific changes:
-  L3: 20 biomolecules (+ dopamine, serotonin, melatonin, cortisol, ATP, glucose, etc.)
-  L5: genome_size=3.2Gbp, chromosomes=23, gene_count=20391, reference=GRCh38/hg38;
-      codon_usage.csv = complete 64-codon table (B4-derived, not random);
-      growth_media = DMEM/F-12 + 10% FBS + L-Gln + NEAA
-  L6: G1=11h S=8h G2=4h M=1h; CDK4/6-CycD→CDK2-CycE→CDK2-CycA→CDK1-CycB;
-      exceptional_point_mechanism = Aurora-B; Hayflick limit = 50; telomere_repeat = TTAGGG
-  L7: organ masses (brain 1.4kg, liver 1.5kg, heart 0.3kg, skin 4.5kg);
-      ECM: collagen I 58%, III 12%, IV 8% + fibronectin/laminin/elastin/hyaluronan;
-      organoid_protocol = Clevers human intestinal (Sato 2011, van de Wetering 2015)
-  L8: whole_genome_spec includes reference_assembly=GRCh38, repeat_content_pct=45;
-      physiological_params extended: VO2_max, lung_compliance, plasma_osmolarity,
-      hematocrit, serum_calcium, serum_sodium
-
-generate_human.py: entry point for Homo sapiens design package (organism_human/)
-Axiom C fix: gland_specification_v2.json/manifest_v2.json/generate_v2.py: Þ=𐑸→𐑶
-.bashrc: rb-human, rb-human-minimal, rb-paper, rb-actionable-human aliases
-
-Verification:
-  Files: 33 | Frobenius: True
-  Codon rows: 65 (header + 64) | Reference: GRCh38/hg38 | Gene count: 20391
-  G1: 11h | CDK cascade: 4-stage | Exceptional point: Aurora-B
-  Molecule lines: 21 | Axiom C: fixed
-
----
-
-clink/datasets/gland_designs/: Synthetic Detox Gland v2.0 — zero-incision injectable
-
-v1→v2 key change: surgical implant (laparoscopic, 28-day ex-vivo, ICU recovery)
-replaced by single 22G needle injection, outpatient, 21-day in-situ self-assembly
-in the omental fat pad.
-
-Structural type: ⟨𐑼·𐑶·𐑾·𐑬·𐑞·𐑧·𐑲·𐑠·⊙·𐑖·𐑳·𐑴⟩ — O₂, both C-score gates open
-Primitive shift from v1: Ç: 𐑤 → 𐑧 (moderate → slow/near-equilibrium)
-  Assembly timescale is days-weeks of in-situ morphogenesis; operational dynamics
-  (toxin sensing + antidote production) unchanged.
-NOTE: v2 spec had Þ=𐑸 — corrected to Þ=𐑶 (Axiom C: Ð=𐑼 forbids Þ=𐑸).
-
-15 files (234 KB). Key new v2 files:
-  in_situ_assembly_protocol.md — ultrasound-guided injection + 21-day maturation
-  injectable_formulation.md — Pluronic F127 thermogel + 4 cell types microencapsulated
-    in 100μm alginate-PEG (100kDa cutoff), VEGF/bFGF/Ang-1 angiogenesis payload,
-    CCL22 local Treg induction (no systemic immunosuppression)
-  gland_organoid_protocol_v2.md — 7-day pre-injection prep (was 28-day ex-vivo)
-  epc_genome.gb — endothelial progenitor cell construct (CXCR4/eNOS/VE-cadherin)
-  angiogenesis_model.xml — SBML L3 in-situ vascularization model
-  gland_specification_v2.json, manifest_v2.json, metabolic_model_v2.xml
-  generate_v2.py — regenerate all 15 files from single script
-
-Reused from v1 (sensor/antidote biology unchanged):
-  sensor_receptors.fasta, antidote_fusion.fasta, antidote_fusion.pdb (153KB),
-  sensor_cell_genome.gb, producer_cell_genome.gb, support_cell_genome.gb
-
----
-
-clink/datasets/: 4 new modules — real genomes, PDB, SBML, plasmids (75,893 bytes/design)
-
-gene_designer.py (25.7 KB):
-  CodonOptimizer — species-specific tables (human/mouse/E.coli/yeast);
-  strand-aware Frobenius box selection (exact boxes=same-strand, split=dual-strand);
-  GenomeBuilder — telomeres (TTAGGG)n, CMV/T7 promoters, intergenic spacers;
-  verified: real GFP coding sequence in genome.fasta (not random). Closes the
-  codon_usage gap — B4-derived, not generic mammalian optimization.
-
-protein_structure.py (19.6 KB):
-  SecondaryStructurePredictor — Chou-Fasman 3-state (Helix/Sheet/Coil);
-  BackboneBuilder — residue-specific phi/psi, helical geometry (1.5 Å rise),
-  sheet geometry (3.5 Å rise); full ATOM/HETATM records, HELIX/SHEET annotations,
-  SSBOND records; verified: 13H/5E/8C prediction, opens in PyMOL.
-
-metabolic_model.py (16.2 KB):
-  CoreMetabolismBuilder — glycolysis (12 rxns), TCA (8 rxns), pentose phosphate
-  (6 rxns), AA metabolism (5 rxns); 43 metabolites, 32 reactions, biomass
-  objective function; SBML Level 3 XML (21 KB), stoichiometric matrix (43×32),
-  FBA-ready for COBRApy.
-
-plasmid_designer.py (17.8 KB):
-  Standard parts: origins (ColE1/pUC), markers (AmpR/KanR/CmR), promoters
-  (T7/lac/CMV/EF1a), reporters (GFP/mCherry); GenBank with full feature
-  annotations, SBOL RDF/XML, Gibson assembly protocol;
-  verified: pCLINK_eGFP (2360 bp, 6 annotated features).
-
-CLI: rebis.py pipeline actionable --organism mammal → 33 files, 75,893 bytes
-Output: organism_designs/organism_mammal_actionable/
-
-Open next steps (beyond this pass):
-  - COBRApy FBA runtime integration
-  - AlphaFold/ESMFold API for real folding
-  - SVG plasmid map visualization
-  - CRISPR gRNA design
-  - Metabolic pathway expansion (lipids, nucleotides, secondary metabolites)
-
-Agent: turn 119, windings 62, Frobenius 98%, tier O_∞
-
----
-
-clink/datasets/: physically actionable output at every CLINK layer (33 files/design)
-
-generators.py (433L, 9 classes): layer-specific dataset generators + orchestration.
-Output per organism design:
-  L0: qcd_coupling_alpha_s.csv, qcd_lattice_params.xml (→ MILC/ChromaLattice QCD)
-  L1: electron_configs.csv, b4_map.json (→ DFT / gene_imscriber)
-  L2: atomic_params.csv, isotopes.json (→ MD force fields)
-  L3: molecules.smi (SMILES — ORDER from vendor), molecular_props.csv,
-      retro_pathways.json (ch3mpiler), reactions.json
-  L4: protein.fasta (ORDER peptide synthesis), protein_coords.pdb (PyMOL/Chimera),
-      serpentrod_classification.json
-  L5: genome.fasta (ORDER DNA synthesis — IDT/Twist/GenScript), genome.gb (Benchling),
-      construct.sbol (SBOL format), codon_usage.csv, growth_media.txt
-  L6: mitosis_assay_protocol.md (lab-ready), ouroboric_telomere bridge
-  L7: organoid_protocol.md (Day 0→harvest), ecm_composition.json, scaffold_params.json
-  L8: whole_genome_spec.json, physiological_params.csv
-
-API: generate_organism_design_package(organism_type="mammal", write_files=True)
-CLI: rebis.py pipeline ground-up / from-layer / bridges
-
-Verified distances: L0→L8 23.32 (36 promotions), L5→L8 7.71 (10 promotions).
-Organism C-score 1.0. All 9 layers Frobenius-closed.
-
-Known gaps (next steps, not bugs):
-  - genome.fasta is random bases — gene_imscriber must generate actual coding sequences
-  - PDB coordinates are helical template — AlphaFold/Rosetta needed for full fold
-  - No metabolic flux analysis (output is descriptive, not quantitative SBML)
-  - No plasmid maps — GenBank is minimal; origin/marker/MCS specs needed
-
-10 tool bridges: SerpentRod v5, ch3mpiler, gene_imscriber, biology_sim,
-ouroboric_telomere, materials_sim, frobenius_chemo, ouroboric_pill,
-critical_metamaterial, neurotrophic_factor.
-
----
-
-clink/designers/: CLINK pipeline orchestrator — active whole-organism design engine
-
-designers/designer_base.py (169L): DesignSpec, TransitionResult, ToolForge base classes
-designers/layer_designers.py (653L): all 9 layer designers
-designers/pipeline_orchestrator.py (362L): PipelineEngine (GROUND_UP/FROM_LAYER/FROM_FILE;
-  SYNTHESIS up / ANALYSIS down)
-designers/tool_forge.py (123L): tool generation for missing transitions
-rebis.py v2.0.0: pipeline subcommand
-
----
-
-clink/: CLINK chain integrated — 9-layer subatomic→organism, SerpentRod + ch3mpiler bridges
-
-clink/__init__.py, clink/chain.py, clink/bridges.py, clink/integration.py,
-clink/README_CLINK.md — new module; rebis.py updated with `clink` subcommand.
-
-9 layers all Frobenius-closed (tensorProduct(s,s)=s). Tier monotonicity:
-O₀→O₀→O₁→O₂→O₂→O₂→O₂→O₂→O_∞. 10 primitive deltas, 36 total promotions.
-d(organism, ZFC_fe) = 1.30 — organism near-isomorphic to Frobenius-exact foundation.
-
-moleculeLayer ɢ corrected: 𐑑 (a Ř value, invalid for ɢ) → 𐑜 (alternate/or,
-structurally correct for resonance structures).
-Corrected moleculeLayer tuple: ⟨𐑦𐑥𐑽𐑿𐑞𐑧𐑲𐑜⊙𐑓𐑳𐑭⟩
-
-Integration bridges:
-  SerpentRod (folded protein) → moleculeLayer (L3): d=1.95, Frobenius ✓
-  ch3mpiler (molecule) → moleculeLayer (L3): d=0.0, Frobenius ✓ (exact match)
-  gene_imscriber (codon) → electronOrbitalLayer (L1): d=2.0, Frobenius ✓
-
-CLI: rebis.py clink report/list/layer/bridge
-
----
-
-pipeline/: remove lift_pipeline; clean README references
-
-lift_pipeline/ was never supposed to be part of this repo.
-Removed the directory and stripped all mentions from README:
-- "Structural Imscriptions" section no longer references prose lifting
-- Four Pillars table updated (no Lift, corrected line count)
-- Quick Start lift command removed
-- Component Details section 3 sources/description/key files cleaned

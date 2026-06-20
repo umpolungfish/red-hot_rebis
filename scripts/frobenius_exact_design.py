@@ -16,7 +16,8 @@ Key fixes:
 import sys, json, math
 from pathlib import Path
 
-sys.path.insert(0, '/home/mrnob0dy666/p4rakernel/p4ramill_py')
+_REBIS_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, _REBIS_ROOT)
 sys.path.insert(0, '/home/mrnob0dy666/imscribing_grammar')
 
 from ch3mpiler_serpentrod_pipeline import (

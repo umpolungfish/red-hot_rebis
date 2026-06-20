@@ -294,7 +294,7 @@ def verify_frobenius(aa_list, from_genetic_code_module=True):
     logic as serpentrod_v2.frobenius_pair_coverage.
     """
     if from_genetic_code_module:
-        from p4ramill_py.genetic_code import IG_PRIMITIVE_OF_AA
+        from rhr_p4rky.genetic_code import IG_PRIMITIVE_OF_AA
     else:
         IG_PRIMITIVE_OF_AA = {
             "Met": "Ð (Dimensionality)", "Trp": "Þ (Topology)",

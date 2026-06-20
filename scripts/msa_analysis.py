@@ -9,24 +9,24 @@ Frobenius closure universality.
 import sys, os, json, importlib.util
 
 # ── Fix imports for serpent_rod ───────────────────────────────────
-pkg_dir = os.path.join(os.path.dirname(__file__), "p4ramill_py")
+pkg_dir = os.path.join(os.path.dirname(__file__), "rhr_p4rky")
 sys.path.insert(0, pkg_dir)
 
-import p4ramill_py.belnap
-import p4ramill_py.genetics_b4
-import p4ramill_py.genetic_code
+import rhr_p4rky.belnap
+import rhr_p4rky.genetics_b4
+import rhr_p4rky.genetic_code
 
 spec = importlib.util.spec_from_file_location(
-    "p4ramill_py.serpent_rod",
+    "rhr_p4rky.serpent_rod",
     os.path.join(pkg_dir, "serpent_rod.py"),
 )
 mod = importlib.util.module_from_spec(spec)
-sys.modules["p4ramill_py.serpent_rod"] = mod
-mod.__package__ = "p4ramill_py"
+sys.modules["rhr_p4rky.serpent_rod"] = mod
+mod.__package__ = "rhr_p4rky"
 spec.loader.exec_module(mod)
 
 SerpentRod = mod.SerpentRod
-from p4ramill_py.genetic_code import (
+from rhr_p4rky.genetic_code import (
     AA_TO_SYMBOLS, IG_PRIMITIVE_OF_AA, STANDARD_CODE,
     PROMOTED_AAS, GROUND_LAYER_AAS,
 )

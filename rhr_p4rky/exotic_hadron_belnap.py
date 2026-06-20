@@ -1,4 +1,4 @@
-# p4ramill_py/exotic_hadron_belnap.py
+# rhr_p4rky/exotic_hadron_belnap.py
 # Python mirror of Imscribing/Paraconsistent/ExoticHadronBelnap.lean
 # Author: Lando ⊗ ⊙perator
 
