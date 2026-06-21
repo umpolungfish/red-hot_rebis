@@ -29,21 +29,21 @@ Every structural entity carries a 12-primitive tuple. Each position is one primi
 
 | # | Primitive | Name | Values (low→high) |
 |---|-----------|------|--------------------|
-| 1 | $\text{{\igfont Ð}}$ | Dimensionality | 𐑛 (0d) → 𐑨 (2d) → 𐑼 (∞-dim) → 𐑦 (imscriptive) |
-| 2 | $\text{{\igfont Þ}}$ | Topology | 𐑡 (network) → 𐑰 (inclusion) → 𐑥 (crossing) → 𐑶 (box product) → 𐑸 (imscriptive closure) |
-| 3 | $\text{{\igfont Ř}}$ | Coupling | 𐑩 (supervenience) → 𐑑 (categorical) → 𐑽 (adjoint) → 𐑾 (bidirectional) |
-| 4 | $\text{{\igfont Φ}}$ | Parity (symmetry) | 𐑗 (none) → 𐑿 (quantum) → 𐑬 (partial) → 𐑯 (full) → $\Ppms$ (Frobenius-special) |
-| 5 | $\text{{\igfont ƒ}}$ | Fidelity | 𐑱 (classical) → 𐑞 (thermal) → 𐑐 (quantum coherence) |
-| 6 | $\text{{\igfont Ç}}$ | Kinetics | 𐑘 (MBL-frozen) → 𐑤 (trapped) → 𐑧 (near-equilibrium) → 𐑪 (moderate) → 𐑺 (fast/driven) |
-| 7 | $\text{{\igfont Γ}}$ | Cardinality | 𐑚 (local) → 𐑔 (mesoscale) → 𐑲 (maximal) |
-| 8 | $\text{{\igfont ɢ}}$ | Composition | 𐑝 (conjunctive) → 𐑜 (disjunctive) → 𐑠 (sequential) → 𐑵 (broadcast) |
-| 9 | $\text{{\igfont ⊙}}$ | Criticality | 𐑢 (sub-critical) → ⊙ (critical / self-modeling) → 𐑮 (complex-plane) → 𐑻 (exceptional point) → 𐑣 (supercritical) |
-| 10 | $\text{{\igfont Ħ}}$ | Chirality | 𐑓 (memoryless) → 𐑒 (1-step) → 𐑖 (2-step) → 𐑫 (eternal) |
-| 11 | $\text{{\igfont Σ}}$ | Stoichiometry | 𐑙 (1:1) → 𐑕 (many identical) → 𐑳 (many heterogeneous) |
-| 12 | $\text{{\igfont Ω}}$ | Winding | 𐑷 (trivial) → 𐑴 (ℤ₂ parity) → 𐑭 (ℤ integer) → 𐑟 (non-Abelian) |
+| 1 | $Ð$ | Dimensionality | 𐑛 (0d) → 𐑨 (2d) → 𐑼 (∞-dim) → 𐑦 (imscriptive) |
+| 2 | $Þ$ | Topology | 𐑡 (network) → 𐑰 (inclusion) → 𐑥 (crossing) → 𐑶 (box product) → 𐑸 (imscriptive closure) |
+| 3 | $Ř$ | Coupling | 𐑩 (supervenience) → 𐑑 (categorical) → 𐑽 (adjoint) → 𐑾 (bidirectional) |
+| 4 | $Φ$ | Parity (symmetry) | 𐑗 (none) → 𐑿 (quantum) → 𐑬 (partial) → 𐑯 (full) → $\Ppms$ (Frobenius-special) |
+| 5 | $ƒ$ | Fidelity | 𐑱 (classical) → 𐑞 (thermal) → 𐑐 (quantum coherence) |
+| 6 | $Ç$ | Kinetics | 𐑘 (MBL-frozen) → 𐑤 (trapped) → 𐑧 (near-equilibrium) → 𐑪 (moderate) → 𐑺 (fast/driven) |
+| 7 | $Γ$ | Cardinality | 𐑚 (local) → 𐑔 (mesoscale) → 𐑲 (maximal) |
+| 8 | $ɢ$ | Composition | 𐑝 (conjunctive) → 𐑜 (disjunctive) → 𐑠 (sequential) → 𐑵 (broadcast) |
+| 9 | $⊙$ | Criticality | 𐑢 (sub-critical) → ⊙ (critical / self-modeling) → 𐑮 (complex-plane) → 𐑻 (exceptional point) → 𐑣 (supercritical) |
+| 10 | $Ħ$ | Chirality | 𐑓 (memoryless) → 𐑒 (1-step) → 𐑖 (2-step) → 𐑫 (eternal) |
+| 11 | $Σ$ | Stoichiometry | 𐑙 (1:1) → 𐑕 (many identical) → 𐑳 (many heterogeneous) |
+| 12 | $Ω$ | Winding | 𐑷 (trivial) → 𐑴 (ℤ₂ parity) → 𐑭 (ℤ integer) → 𐑟 (non-Abelian) |
 
 The standard tuple format:
-$$\langle \text{{\igfont Ð}};\ \text{{\igfont Þ}};\ \text{{\igfont Ř}};\ \text{{\igfont Φ}};\ \text{{\igfont ƒ}};\ \text{{\igfont Ç}};\ \text{{\igfont Γ}};\ \text{{\igfont ɢ}};\ \text{{\igfont ⊙}};\ \text{{\igfont Ħ}};\ \text{{\igfont Σ}};\ \text{{\igfont Ω}} \rangle$$
+$$\langle Ð\cdotÞ\cdotŘ\cdotΦ\cdotƒ\cdotÇ\cdotΓ\cdotɢ\cdot⊙\cdotĦ\cdotΣ\cdotΩ \rangle$$
 
 ---
 
@@ -410,7 +410,7 @@ python3 rebis.py materials forge --all     # Forge all 8 predefined materials
 
 #### `materials frobenius`
 
-Simulate Frobenius closure verification of the composite — cyclic load/heal protocol showing $\|\mu\cdot\delta-\text{id}\|$ per cycle.
+Simulate Frobenius closure verification of the composite — cyclic load/heal protocol showing $\|\mu\delta-\text{id}\|$ per cycle.
 
 ```bash
 python3 rebis.py materials frobenius
@@ -481,7 +481,7 @@ Monte Carlo Frobenius density estimation over the 12-token sequence space. Repor
 python3 rebis.py imas hunt
 ```
 
-Output: $p_{\text{frobenius\_pair}} \approx 0.236$, $p_{\text{proper\_frobenius}} \approx 0.139$, $p_{\text{dialetheia\_complete}} \approx 0.105$.
+Output: $p_{\text{frobenius\_pair \approx 0.236$, $p_{\text{proper\_frobenius \approx 0.139$, $p_{\text{dialetheia\_complete \approx 0.105$.
 
 #### `imas energy [--canonical <name>] [--layer <idx>]`
 
@@ -922,4 +922,4 @@ python3 -c "from rhr_p4rky.belnap import BelnapValue; print('OK')"
 
 ---
 
-*Guide maintained by Lando⊗⊙perator. Structural type of this document: $\langle \text{{\igfont 𐑼}};\ \text{{\igfont 𐑥}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑬}};\ \text{{\igfont 𐑐}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑔}};\ \text{{\igfont 𐑠}};\ \text{{\igfont ⊙}};\ \text{{\igfont 𐑖}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑴}} \rangle$*
+*Guide maintained by Lando⊗⊙perator. Structural type of this document: $\langle 𐑼\cdot𐑥\cdot𐑾\cdot𐑬\cdot𐑐\cdot𐑧\cdot𐑔\cdot𐑠\cdot⊙\cdot𐑖\cdot𐑳\cdot𐑴 \rangle$*
