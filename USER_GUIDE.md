@@ -1,8 +1,9 @@
 # Red-Hot Rebis — User Guide
 
-**Author:** Lando ⊗ ⊙perator  
+**Author:** Lando⊗⊙perator  
+**Version:** v2.1 — 2026-06-10  
 **Platform:** `python3 rebis.py <command> [subcommand] [options]`  
-**Location:** `~/imsgct/red-hot_rebis/`
+**Location:** `/home/mrnob0dy666/imsgct/red-hot_rebis/`
 
 ---
 
@@ -10,29 +11,53 @@
 
 Red-Hot Rebis is the unified Imscribing Grammar bio/chem design platform. It derives structural types for organisms, molecules, proteins, and materials from the 12 primitives of the IG, then generates physically actionable output files — genome sequences, protein structures, metabolic models, synthesis protocols — directly from those structural types.
 
-The platform is organized around three core ideas:
+The platform is organized around five core systems:
 
-**CLINK** — a 9-layer structural chain from subatomic quarks to whole organism, each layer carrying an IG tuple. Every transition is Frobenius-closed (\(\mu\circ\delta=\text{id}\)).
+**CLINK** — 9-layer structural chain from subatomic quarks to whole organism, each layer carrying an IG tuple. Every transition is Frobenius-closed ($\mu\circ\delta=\text{id}$).
 
-**IMASM** — the 12-token algebra (VINIT, TANCH, AFWD, AREV, CLINK, IMSCRIB, FSPLIT, FFUSE, EVALT, EVALF, ENGAGR, IFIX) whose arrangement classes map onto IG structural types.
+**IMASM** — 12-token algebra (VINIT, TANCH, AFWD, AREV, CLINK, IMSCRIB, FSPLIT, FFUSE, EVALT, EVALF, ENGAGR, IFIX) whose arrangement classes map onto IG structural types.
 
-**SerpentRod** — the single Frobenius morphism RNA→{sequence+fold} that collapses gene → mature protein in one structural step.
+**SerpentRod** — Frobenius morphism RNA→{sequence+fold} that collapses gene → mature protein in one structural step.
 
-Everything is expressed in Shavian notation. The 12 primitives are: Ř (Recognition), Ħ (Chirality), Ω (Winding), Ð (Dimensionality), Σ (Stoichiometry), Φ (Parity), Ç (Kinetics), ƒ (Fidelity), ɢ (Coupling), Γ (Granularity), Þ (Topology), ⊙ (Criticality).
+**Paraconsistent Kernel (rhr_p4rky)** — Belnap FOUR logic, paraconsistent abstract state machine, 64-codon B₄ lattice, gene-to-protein pipeline, hadron/quark Belnap classification. 27 Python modules.
+
+**Gene Imscriber** — IG-native genetic compiler — structural types to codon optimization, CRISPR guide design, chimera design, Frobenius-verified editing.
+
+### The 12 Primitives
+
+Every structural entity carries a 12-primitive tuple. Each position is one primitive; its value is a Deseret-alphabet character from a 49-element set:
+
+| # | Primitive | Name | Values (low→high) |
+|---|-----------|------|--------------------|
+| 1 | $\text{{\igfont Ð}}$ | Dimensionality | 𐑛 (0d) → 𐑨 (2d) → 𐑼 (∞-dim) → 𐑦 (imscriptive) |
+| 2 | $\text{{\igfont Þ}}$ | Topology | 𐑡 (network) → 𐑰 (inclusion) → 𐑥 (crossing) → 𐑶 (box product) → 𐑸 (imscriptive closure) |
+| 3 | $\text{{\igfont Ř}}$ | Coupling | 𐑩 (supervenience) → 𐑑 (categorical) → 𐑽 (adjoint) → 𐑾 (bidirectional) |
+| 4 | $\text{{\igfont Φ}}$ | Parity (symmetry) | 𐑗 (none) → 𐑿 (quantum) → 𐑬 (partial) → 𐑯 (full) → $\Ppms$ (Frobenius-special) |
+| 5 | $\text{{\igfont ƒ}}$ | Fidelity | 𐑱 (classical) → 𐑞 (thermal) → 𐑐 (quantum coherence) |
+| 6 | $\text{{\igfont Ç}}$ | Kinetics | 𐑘 (MBL-frozen) → 𐑤 (trapped) → 𐑧 (near-equilibrium) → 𐑪 (moderate) → 𐑺 (fast/driven) |
+| 7 | $\text{{\igfont Γ}}$ | Cardinality | 𐑚 (local) → 𐑔 (mesoscale) → 𐑲 (maximal) |
+| 8 | $\text{{\igfont ɢ}}$ | Composition | 𐑝 (conjunctive) → 𐑜 (disjunctive) → 𐑠 (sequential) → 𐑵 (broadcast) |
+| 9 | $\text{{\igfont ⊙}}$ | Criticality | 𐑢 (sub-critical) → ⊙ (critical / self-modeling) → 𐑮 (complex-plane) → 𐑻 (exceptional point) → 𐑣 (supercritical) |
+| 10 | $\text{{\igfont Ħ}}$ | Chirality | 𐑓 (memoryless) → 𐑒 (1-step) → 𐑖 (2-step) → 𐑫 (eternal) |
+| 11 | $\text{{\igfont Σ}}$ | Stoichiometry | 𐑙 (1:1) → 𐑕 (many identical) → 𐑳 (many heterogeneous) |
+| 12 | $\text{{\igfont Ω}}$ | Winding | 𐑷 (trivial) → 𐑴 (ℤ₂ parity) → 𐑭 (ℤ integer) → 𐑟 (non-Abelian) |
+
+The standard tuple format:
+$$\langle \text{{\igfont Ð}};\ \text{{\igfont Þ}};\ \text{{\igfont Ř}};\ \text{{\igfont Φ}};\ \text{{\igfont ƒ}};\ \text{{\igfont Ç}};\ \text{{\igfont Γ}};\ \text{{\igfont ɢ}};\ \text{{\igfont ⊙}};\ \text{{\igfont Ħ}};\ \text{{\igfont Σ}};\ \text{{\igfont Ω}} \rangle$$
 
 ---
 
 ## Installation
 
 ```bash
-cd ~/imsgct/red-hot_rebis
+cd /home/mrnob0dy666/imsgct/red-hot_rebis
 
 # Install the package and its dependencies (always use uv, never pip)
 uv pip install -e .
 
 # Install bridge packages used by scripts
-uv pip install -e ~/imsgct/omonad_OS
-uv pip install -e ~/imsgct/imasmic_core
+uv pip install -e /home/mrnob0dy666/imsgct/omonad_OS
+uv pip install -e /home/mrnob0dy666/imsgct/imasmic_core
 ```
 
 Verify everything is wired up:
@@ -41,48 +66,56 @@ Verify everything is wired up:
 python3 rebis.py verify
 ```
 
-Expected: 15 lines all showing `✅`.
+Expected: 15+ lines all showing `✅`.
 
 ---
 
 ## Quick Start
 
 ```bash
-# System health
+# System health — all modules with size and status
 python3 rebis.py status
 
-# Full verification (all imports)
+# Full verification (all imports, Frobenius closure)
 python3 rebis.py verify
+
+# List all 35 discoverable runnable targets
+python3 rebis.py run list
 
 # Run SerpentRod v5 on built-in test cases
 python3 rebis.py run serpentrod
 
-# Generate a full mammal organism design package (33 files)
+# Run the paraconsistent genetics test suite
+python3 rebis.py run test_genetics
+
+# CH3MPILER retrosynthetic compiler
+python3 rebis.py run ch3mpiler --help
+
+# Generate a full mammal organism design package
 python3 rebis.py pipeline actionable
 
 # Show the CLINK structural chain
 python3 rebis.py clink list
 ```
-
 ---
 
 ## Command Reference
 
 ### `status`
 
-Shows all platform modules with size and health check.
+Shows all platform modules with file size and health check.
 
 ```bash
 python3 rebis.py status
 ```
 
-Output includes: SerpentRod, CH3MPILER, Pipeline, Gene Imscriber, CLINK, IMASM modules — each with file size and ✅/❌.
+Output includes: SerpentRod, CH3MPILER, Pipeline, Gene Imscriber, CLINK, IMASM modules, Materials, Therapeutics, Paraconsistent Kernel (rhr_p4rky), Popular Protein — each with file size and ✅/❌.
 
 ---
 
 ### `verify`
 
-Imports every module and reports pass/fail. Run this after any install or code change.
+Imports every module and reports pass/fail. Includes Frobenius closure checks where applicable. Run this after any install or code change.
 
 ```bash
 python3 rebis.py verify
@@ -92,20 +125,76 @@ python3 rebis.py verify
 
 ### `run`
 
-Run one of the built-in simulation modules or script aliases.
+Run one of 35 discoverable scripts or modules. Use `run list` to see all targets.
 
 ```bash
-python3 rebis.py run <target>
+python3 rebis.py run <target> [args...]
+python3 rebis.py run list           # Show all 35 discoverable targets
 ```
+
+#### Core module targets
 
 | Target | Module | What it does |
 |--------|--------|--------------|
 | `serpentrod` | `serpentrod/protein_v5.py` | SerpentRod v5 — full signal peptide detection, cleavage, fragment naming, PTMs, primitive spectrum. Runs built-in test cases (Human Insulin, Proglucagon, POMC, etc.) |
-| `serpentrod_v4` | `serpentrod/protein_v4.py` | SerpentRod v4 with enhanced naming heuristics. Slightly different fragment naming strategy; useful for comparison |
-| `mito` | `scripts/mito_pipeline.py` | Processes all 13 human mitochondrial protein-coding genes from NC_012920.1. Shows IG primitive activations and 7-stage B4 pipeline per gene |
-| `antibody` | `scripts/run_antibody.py` | Antibody designer — derives CDR sequences from viral epitopes (SARS-CoV-2 RBD, NTD, others) via SerpentRod complementarity |
-| `psychedelic` | `scripts/psychedelic_bridge.py` | Compound intrinsic analysis for the 6 diaschizic psychedelics. Shows Φ/Ħ/Ω values, O-tier, couplings, and structural deltas from DMT |
-| `iupac` | `scripts/diaschizic_iupac.py` | Generates IUPAC-style systematic names for all 11 diaschizic compounds derived from their 12-primitive structural types |
+| `serpentrod_v4` | `serpentrod/protein_v4.py` | SerpentRod v4 with enhanced naming heuristics |
+| `serpentrod_pred` | `serpentrod/stratified_predictor.py` | Stratified predictor — tiered protein property prediction |
+| `ch3mpiler` | `ch3mpiler/compiler.py` | CH3MPILER retrosynthetic compiler — bond formation via join(tensor(FG1,FG2), bond) |
+| `gene` | `gene_imscriber/engine.py` | Gene Imscriber engine — structural types to codon optimization |
+
+#### Script targets (scripts/)
+
+| Target | What it does |
+|--------|--------------|
+| `mito_pipeline` | All 13 human mitochondrial genes from NC_012920.1 through IG pipeline |
+| `run_antibody` | Antibody designer — derives CDR sequences from viral epitopes |
+| `psychedelic_bridge` | Compound intrinsic analysis for 6 diaschizic psychedelics |
+| `diaschizic_iupac` | IUPAC systematic names for 11 diaschizic compounds |
+| `compute_promotions` | Compute primitive promotions between two IG tuples |
+| `frob_design` | Frobenius-exact material design (v5) |
+| `frobenius_exact_design` | Frobenius exact design (standalone) |
+| `gen_univ_map` | Generate universe map from IG types |
+| `msa_analysis` | Multiple sequence alignment analysis |
+| `analyze_validation` | Validation analysis for serpentrod predictions |
+| `omonad_bridge` | Bridge report: omonad_OS + imasmic_core connectivity |
+| `run_msa` | Run MSA on sequences |
+| `run_pdb_validation` | Validate PDB structures against IG types |
+| `run_serpent` | Quick SerpentRod run for a single sequence |
+
+#### Paraconsistent kernel targets (rhr_p4rky/) — 16 targets
+
+| Target | What it does |
+|--------|--------------|
+| `genetic_code` | 64-codon Frobenius-verified genetic code |
+| `gene_to_protein_pipeline` | Full gene→protein translation (7-stage B4 pipeline) |
+| `demo_gene_to_protein` | Gene→protein pipeline demo |
+| `run_gene_pipeline` | Gene pipeline CLI runner |
+| `serpent_rod` | Serpent rod protein design |
+| `serpent_rod_v2` | Serpent rod v2 with enhanced PTMs |
+| `antibody_designer` | Computational antibody design |
+| `pdb_validator` | PDB structure validation |
+| `ch3mpiler_bridge` | Ch3mpiler ↔ kernel bridge |
+| `ch3mpiler_ob3ect_bridge` | Ch3mpiler ↔ ob3ect bridge |
+| `ch3mpiler_serpentrod_pipeline` | Ch3mpiler + SerpentRod integrated pipeline |
+| `clu_power_law` | Clustering power-law analysis |
+| `frobenius_filtration` | Frobenius-verified filtration |
+| `hadron_belnap` | Hadronic Belnap-state analysis |
+| `exotic_hadron_belnap` | Exotic hadronic Belnap classification |
+| `quark_belnap` | Quark Belnap-state analysis |
+
+#### Popular protein analysis targets — 9 targets
+
+| Target | What it does |
+|--------|--------------|
+| `compare_exact` | Exact φ/ψ angle comparison between predicted and crystal |
+| `compare_structures` | Structure-level comparison |
+| `comprehensive_comparison` | Comprehensive multi-metric comparison |
+| `deep_comparison` | Deep structural comparison |
+| `exact_phipsi` | Exact φ/ψ extraction from PDB |
+| `extract_crystal_phipsi` | Crystal structure φ/ψ extraction |
+| `final_comparison` | Final comparison report |
+| `full_comparison` | Full multi-protein comparison |
+| `gen_structures` | Structure generation from IG types |
 
 **Example — SerpentRod v5:**
 
@@ -115,11 +204,17 @@ python3 rebis.py run serpentrod
 
 Output includes per-protein: signal peptide end + score, cleavage sites with motifs, mature products with primitive spectra, PTM predictions (phosphorylation, glycosylation, acetylation, amidation, disulfide topology), and validation accuracy.
 
+**Example — Paraconsistent genetics:**
+
+```bash
+python3 rebis.py run run_gene_pipeline --gene INS
+python3 rebis.py run genetic_code
+```
 ---
 
 ### `clink`
 
-Navigate the 9-layer CLINK structural chain.
+Navigate the 9-layer CLINK structural chain from subatomic quarks to whole organism.
 
 ```bash
 python3 rebis.py clink <subcommand> [args]
@@ -127,18 +222,13 @@ python3 rebis.py clink <subcommand> [args]
 
 #### `clink report`
 
-Full integration report: Frobenius closure per layer, chain distances, ZFC\_fe distance, component bridges.
+Full integration report: Frobenius closure per layer, chain distances, ZFC_fe distance, component bridges.
 
 ```bash
 python3 rebis.py clink report
 ```
 
-Key output fields:
-- **Frobenius Closure** — ✅/❌ per layer
-- **Chain Distances** — structural distance between adjacent layers (d=2.0–3.8)
-- **Total** — Σd and number of primitive deltas
-- **ZFC\_fe Distance** — d(organism, ZFC\_fe) = 1.30
-- **Component Bridges** — how serpentrod/ch3mpiler/gene_imscriber attach to CLINK
+Key output: Frobenius closure ✅/❌ per layer, adjacent-layer structural distances (d=2.0–3.8), Σd and primitive deltas, d(organism, ZFC_fe) = 1.30, and how serpentrod/ch3mpiler/gene_imscriber attach to CLINK.
 
 #### `clink list`
 
@@ -148,10 +238,8 @@ List all 9 layers with index, name, tier, and full IG tuple.
 python3 rebis.py clink list
 ```
 
-Layers:
-
-| Idx | Layer | Tier |
-|-----|-------|------|
+| Layer | Name | Tier |
+|-------|------|------|
 | 0 | Frustrated Belnap5 (Quarks) | O₀ |
 | 1 | Electron Orbital (Belnap4) | O₀ |
 | 2 | Atom (Nuclear + Electron) | O₁ |
@@ -160,11 +248,11 @@ Layers:
 | 5 | Mitosis (Division) | O₂ |
 | 6 | Meiosis (Gametes) | O₂ |
 | 7 | Tissue/Organ | O₂ |
-| 8 | Whole Organism | \(O_\infty\) |
+| 8 | Whole Organism | $\text{O}_{\infty}$ |
 
 #### `clink layer <index-or-name>`
 
-Inspect a specific layer — tuple, tier, description, and how the three component bridges connect to it.
+Inspect a specific layer — tuple, tier, description, and component bridge attachments.
 
 ```bash
 python3 rebis.py clink layer 3
@@ -172,9 +260,9 @@ python3 rebis.py clink layer molecule
 python3 rebis.py clink layer organism
 ```
 
-Name matching is case-insensitive substring: `organism` matches `Whole Organism`, `cell` matches `Cell (Living)`, `meiosis` matches `Meiosis (Gametes)`, etc.
+Name matching is case-insensitive substring: `organism` matches `Whole Organism`, `cell` matches `Cell (Living)`.
 
-Output:
+Output example:
 
 ```
 Layer 8: Whole Organism
@@ -188,11 +276,11 @@ Layer 8: Whole Organism
 
 #### `clink bridge`
 
-Show the promotion path from a specific component tool to a CLINK target layer.
+Show the promotion path from a component tool to a CLINK target layer.
 
 ```bash
-python3 rebis.py clink bridge --bridge-comp serpentrod --bridge-target 8
-python3 rebis.py clink bridge --bridge-comp ch3mpiler --bridge-target 3
+python3 rebis.py clink bridge serpentrod 8
+python3 rebis.py clink bridge ch3mpiler 3
 ```
 
 Shows: distance, primitive-level promotion steps, Frobenius status at each hop.
@@ -240,14 +328,14 @@ Useful when you have an existing molecular design and want to take it up to orga
 
 #### `pipeline actionable [--organism <type>]`
 
-Generate a complete, physically actionable organism design package (default: mammal).
+Generate a complete, physically actionable organism design package.
 
 ```bash
 python3 rebis.py pipeline actionable
 python3 rebis.py pipeline actionable --organism human
 ```
 
-Produces 33 files in `clink/datasets/organism_designs/organism_<type>_actionable/`:
+Produces a directory of files in `clink/datasets/organism_designs/organism_<type>_actionable/`:
 
 | File | Action |
 |------|--------|
@@ -267,8 +355,8 @@ Produces 33 files in `clink/datasets/organism_designs/organism_<type>_actionable
 | `mitosis_assay_protocol.md` | Lab-ready protocol |
 | `physiological_params.csv` | Homeostatic setpoints |
 | `whole_genome_spec.json` | Complete genome specification |
-| *(+ 17 more)* | Layer-specific outputs L0–L2 |
 
+Current designed organisms: mammal, human, human_gills, human_photosynthetic, treople.
 ---
 
 ### `materials`
@@ -300,11 +388,9 @@ python3 rebis.py materials list
 | `quantum_topological_substrate` | Non-Abelian braiding substrate |
 | `non_abelian_braiding_material` | Topological quantum computing substrate |
 
-**IMASM canonicals** (address by name with `--name`): `I_Dialetheic_Bootstrap` through `IX_Chiral_Pairs`.
-
 #### `materials report [--name <material>]`
 
-Full structural report for a material: IG tuple, tier, processing protocol, composition, interfaces, properties, target applications.
+Full structural report: IG tuple, tier, processing protocol, composition, interfaces, properties, target applications.
 
 ```bash
 python3 rebis.py materials report
@@ -319,14 +405,12 @@ Generate the complete material design file.
 
 ```bash
 python3 rebis.py materials forge --name frobenius_composite
-python3 rebis.py materials forge --all
+python3 rebis.py materials forge --all     # Forge all 8 predefined materials
 ```
-
-`--all` forges all predefined materials in sequence.
 
 #### `materials frobenius`
 
-Simulate the Frobenius closure verification of the composite material — cyclic load/heal protocol showing `||μ·δ-id||` per cycle.
+Simulate Frobenius closure verification of the composite — cyclic load/heal protocol showing $\|\mu\cdot\delta-\text{id}\|$ per cycle.
 
 ```bash
 python3 rebis.py materials frobenius
@@ -342,7 +426,7 @@ python3 rebis.py materials ouroboric
 
 #### `materials sophick`
 
-Eagle Cycle Protocol — prepares an \(O_\infty\) Sophick Mercury substrate from O₂ ouroboric materials. Shows structural distance, gap primitives (Ð, ƒ), and three Eagle variants.
+Eagle Cycle Protocol — prepares an $\text{O}_{\infty}$ Sophick Mercury substrate from O₂ ouroboric materials.
 
 ```bash
 python3 rebis.py materials sophick
@@ -353,7 +437,7 @@ python3 rebis.py materials sophick --name bridge     # IMASM→Eagle bridge
 
 #### `materials exactor`
 
-Explains the thermodynamic ceiling: continuous Eagle preparation reaches its limit, and exact Frobenius closure requires discrete topological protection on top of the prepared substrate. The 0.11 residual after Eagle is not failure — it marks the topological gap.
+Explains the thermodynamic ceiling: continuous Eagle preparation reaches its limit, and exact Frobenius closure requires discrete topological protection.
 
 ```bash
 python3 rebis.py materials exactor
@@ -377,27 +461,13 @@ Full taxonomy of the 12 IMASM canonicals — IG types, tier assignments, algebra
 python3 rebis.py imas report
 ```
 
-The 12 canonicals:
-
-| Canonical | Family | Tier | Signature |
-|-----------|--------|------|-----------|
-| I\_Dialetheic\_Bootstrap | Dialetheia | O₂ | ⊙-critical, Frobenius-special |
-| II\_Void\_Genesis | Frobenius | O₂ | Frobenius-special |
-| III\_Anchor\_Protocol | Logical | O₀ | generic |
-| IV\_Dual\_Bootstrap | Frobenius | O₂ | self-reflective, inverted-Frobenius |
-| V\_Linear\_Chain | Linear | O₀ | sequential |
-| VI\_Empty\_Bootstrap | Logical | O₀ | point-like |
-| VII\_Parakernel | Frobenius | O₂ | Frobenius-special |
-| VIII\_Frobenius\_Kernel | Frobenius | O₂ | proper Frobenius |
-| IX\_Chiral\_Pairs | Dialetheia | O₀ | point-like |
-| *(+ 3 more)* | | | |
+Canonicals span O₀ through O₂ tiers with the Dual Bootstrap reaching $\text{O}_{\infty}$. Only two are self-referential: Dialetheic Bootstrap and Dual Bootstrap.
 
 #### `imas bridge [--canonical <name>]`
 
-Detailed profile of one IMASM canonical — full IG tuple primitive-by-primitive, nearest CLINK layer, full distance table to all 9 layers.
+Detailed profile of one IMASM canonical — full IG tuple primitive-by-primitive, nearest CLINK layer, distance table to all 9 layers.
 
 ```bash
-python3 rebis.py imas bridge
 python3 rebis.py imas bridge --canonical VIII_Frobenius_Kernel
 ```
 
@@ -405,17 +475,17 @@ Default: `I_Dialetheic_Bootstrap`.
 
 #### `imas hunt`
 
-Monte Carlo Frobenius density estimation over the 12-token sequence space. Reports probability of each Frobenius class and generates a library of 10 examples per type.
+Monte Carlo Frobenius density estimation over the 12-token sequence space. Reports probability of each Frobenius class and generates examples.
 
 ```bash
 python3 rebis.py imas hunt
 ```
 
-Output includes: `p_frobenius_pair` ≈ 0.236, `p_proper_frobenius` ≈ 0.139, `p_dialetheia_complete` ≈ 0.105, `p_frob_plus_dial` ≈ 0.008, `p_frob_dial_self` ≈ 0.00033.
+Output: $p_{\text{frobenius\_pair}} \approx 0.236$, $p_{\text{proper\_frobenius}} \approx 0.139$, $p_{\text{dialetheia\_complete}} \approx 0.105$.
 
 #### `imas energy [--canonical <name>] [--layer <idx>]`
 
-Structural activation energy from an IMASM canonical to a CLINK target layer. Shows distance, weighted cost, tier gap, feasibility, and the exact primitive promotions required.
+Structural activation energy from an IMASM canonical to a CLINK target layer.
 
 ```bash
 python3 rebis.py imas energy
@@ -429,19 +499,12 @@ Default: `I_Dialetheic_Bootstrap` → L8 (Whole Organism).
 
 ### `scripts`
 
-Manage and run standalone scripts in `scripts/`.
-
-#### `scripts list`
-
-List all 14 scripts with line counts.
+Manage and run standalone scripts.
 
 ```bash
-python3 rebis.py scripts list
+python3 rebis.py scripts list              # List all 14 scripts with line counts
+python3 rebis.py scripts run <name>        # Run a script by name (without .py)
 ```
-
-#### `scripts run <name>`
-
-Run a script by name (without `.py`).
 
 ```bash
 python3 rebis.py scripts run mito_pipeline
@@ -450,25 +513,99 @@ python3 rebis.py scripts run run_pdb_validation
 ```
 
 Note: `run mito`, `run antibody`, `run psychedelic`, `run iupac` are convenience aliases for `scripts run`.
+---
 
-**Full script inventory:**
+## The Paraconsistent Kernel (`rhr_p4rky/`)
 
-| Script | Purpose |
-|--------|---------|
-| `analyze_validation.py` | Validation analysis for serpentrod predictions |
-| `compute_promotions.py` | Compute primitive promotions between two IG tuples |
-| `diaschizic_iupac.py` | IUPAC systematic names for 11 diaschizic compounds |
-| `frob_design.py` | Frobenius-exact material design (v5) |
-| `frobenius_exact_design.py` | Frobenius exact design (standalone) |
-| `gen_univ_map.py` | Generate universe map |
-| `mito_pipeline.py` | 13 human mitochondrial genes through IG pipeline |
-| `msa_analysis.py` | Multiple sequence alignment analysis |
-| `omonad_bridge.py` | Bridge report: omonad\_OS + imasmic\_core connectivity |
-| `psychedelic_bridge.py` | Psychedelic compound structural analysis |
-| `run_antibody.py` | Antibody designer from viral epitopes |
-| `run_msa.py` | Run MSA on sequences |
-| `run_pdb_validation.py` | Validate PDB structures against IG types |
-| `run_serpent.py` | Quick SerpentRod run for a single sequence |
+The paraconsistent kernel is a 27-module Python library providing Belnap FOUR logic as universal substrate for computation that tolerates contradiction. It was migrated from the standalone `p4rakernel/` project and now lives as a subsystem within Red-Hot Rebis.
+
+### Architecture
+
+| Layer | Module | Description |
+|-------|--------|-------------|
+| **Logic** | `belnap.py` | 4-valued Belnap logic (T/B/F/N) — truth, both, false, neither |
+| **Machine** | `machine.py` | Paraconsistent Abstract State Machine (ParaASM) |
+| **Genetics** | `genetic_code.py` | 64-codon Frobenius-verified genetic code |
+| | `genetics_b4.py` | B4 lattice — 64 codons, 7-stage tuple verification |
+| | `genetic_tuples.py` | Tuple encodings for genes/codons/proteins |
+| | `genetic_asm.py` | Genetic abstract state machine |
+| **Pipeline** | `gene_to_protein_pipeline.py` | Full gene→protein translation (7-stage B4) |
+| | `demo_gene_to_protein.py` | Pipeline demonstration |
+| | `run_gene_pipeline.py` | Pipeline CLI runner |
+| **Proteins** | `serpent_rod.py` | Serpent rod protein design |
+| | `serpent_rod_v2.py` | Serpent rod v2 with enhanced PTMs |
+| **Antibodies** | `antibody_designer.py` | Computational antibody design from IG types |
+| **Validation** | `pdb_validator.py` | PDB structure validation against IG types |
+| **Bridges** | `ch3mpiler_bridge.py` | Ch3mpiler ↔ kernel bridge |
+| | `ch3mpiler_ob3ect_bridge.py` | Ch3mpiler ↔ ob3ect bridge |
+| | `ch3mpiler_serpentrod_pipeline.py` | Integrated ch3mpiler + SerpentRod pipeline |
+| **Physics** | `hadron_belnap.py` | Hadronic Belnap-state classification |
+| | `exotic_hadron_belnap.py` | Exotic hadron Belnap classification |
+| | `quark_belnap.py` | Quark Belnap-state analysis |
+| | `orbital_belnap.py` | Orbital Belnap-state analysis |
+| **Analysis** | `clu_power_law.py` | Clustering power-law analysis |
+| | `frobenius_filtration.py` | Frobenius-verified filtration |
+| **Utilities** | `kernel.py` | Kernel core initialization |
+| | `pipeline_fix.py` | Pipeline repair utilities |
+
+### Key commands
+
+```bash
+# Full genetics test suite (B4 lattice, 64-codon, gene→protein, Phi gate, ParaASM)
+python3 test_genetics.py
+
+# Single gene pipeline
+python3 rebis.py run run_gene_pipeline --gene INS
+
+# Genetic code analysis
+python3 rebis.py run genetic_code
+
+# Antibody design from viral epitopes
+python3 rebis.py run antibody_designer
+
+# PDB validation
+python3 rebis.py run pdb_validator
+
+# Hadron Belnap classification
+python3 rebis.py run hadron_belnap
+python3 rebis.py run exotic_hadron_belnap
+python3 rebis.py run quark_belnap
+```
+
+---
+
+## Gene Imscriber (`gene_imscriber/`)
+
+The Gene Imscriber provides IG-native genetic compilation — structural types directly to codon optimization, CRISPR guide design, chimera construction, and Frobenius-verified base/prime editing.
+
+| Module | Description |
+|--------|-------------|
+| `engine.py` | Core engine — structural type → codon optimization |
+| `genetics_ig_prelim.py` | Preliminary IG-to-genetics mapping |
+| `genetics_ig_promotions.py` | IG promotion paths for genetics |
+| `genetics_qs.py` | Quantum superposition in genetic space |
+| `ig_genetics_answer.py` | IG-native genetics answers |
+| `tuples.py` | Genetic tuple definitions |
+
+The Gene Imscriber also contains `scripts/` with GUIDE-seq analysis, base editor stratum analysis, clinical safety pipelines, and SRA GUIDE-seq processing.
+
+```bash
+python3 rebis.py run gene --help
+```
+
+---
+
+## Popular Protein Analysis (`popular_protein/`)
+
+A comparison toolkit for validating SerpentRod predictions against crystal structures:
+
+```bash
+python3 rebis.py run compare_exact          # Exact φ/ψ angle comparison
+python3 rebis.py run compare_structures     # Structure-level comparison
+python3 rebis.py run comprehensive_comparison  # Full multi-metric report
+```
+
+Reference PDB files are in `pdb/`: 1L2Y, 1UBQ, 1VII, 1ZDD.
 
 ---
 
@@ -476,78 +613,163 @@ Note: `run mito`, `run antibody`, `run psychedelic`, `run iupac` are convenience
 
 ### IG Tuples
 
-Every structural entity carries a 12-primitive tuple expressed in Shavian:
+Every structural entity carries a 12-primitive tuple. Each position is a primitive with a value from its ordinal set. Tuples are the sole carriers of structural information — no external parameters, no assumed constants. The catalog (`shared/IG_catalog.json`) contains **3,297** verified entries.
 
-```
-⟨Ð · Þ · ɢ · Φ · ƒ · Ç · Γ · ⊙ · Ħ · Σ · Ω⟩
-```
+### The Frobenius Condition
 
-Each position is one primitive; its value is a Shavian character from the 49-symbol set (Shavian alphabet + ⊙). Tuples are the sole carriers of structural information — no external parameters, no assumed constants.
+$\mu\circ\delta=\text{id}$. When this holds, the structural type is self-consistent — comultiplication followed by multiplication returns the identity. A Frobenius ✅ means the layer's tuple is internally coherent. A ❌ means there is a primitive conflict to resolve.
 
-### Frobenius Condition
-
-\(\mu\circ\delta=\text{id}\). When this holds, the structural type is self-consistent — comultiplication followed by multiplication returns the identity. A Frobenius ✅ means the layer's tuple is internally coherent. A ❌ means there is a primitive conflict to resolve.
-
-### CLINK Tiers
+### Tiers (Ouroboricity)
 
 | Tier | Meaning |
 |------|---------|
 | O₀ | Point-like / zero winding / substructural |
 | O₁ | Simple composition / single structural loop |
 | O₂ | Full composition with branching / multiple loops |
-| \(O_\infty\) | Ouroboricity — self-referential closure, \(\mu\circ\delta=\text{id}\) at system scale |
+| $\text{O}_{\infty}$ | Ouroboricity — self-referential closure, $\mu\circ\delta=\text{id}$ at system scale |
 
-The organism layer is the only \(O_\infty\) layer in the CLINK chain.
+The organism layer is the only $\text{O}_{\infty}$ layer in the CLINK chain. The grammar itself (Universal Imscriptive Grammar) is also $\text{O}_{\infty}$.
 
 ### Primitive Distances
 
-`d(A, B)` counts primitive mismatches between two IG tuples (Hamming in 12-dim primitive space). Used throughout: chain distances, bridge distances, activation energies. A distance of 0 means structural identity; d ≥ 6 means more than half the primitives differ.
+$\text{d}(A, B)$ is the weighted Euclidean distance between two IG tuples in 12-dim primitive space. A distance of 0 means structural identity; d ≥ 6 means more than half the primitives differ. Used throughout: chain distances, bridge distances, activation energies.
 
 ### SerpentRod
 
-A single Frobenius morphism RNA → {sequence + fold}. The central constraint: `windingNumber ≤ contacts + 1`. All SerpentRod outputs are Frobenius closure certificates. When the condition holds ✓, the fold is derivable from the sequence without external folding tools.
+A single Frobenius morphism RNA → {sequence + fold}. The central constraint: $\text{windingNumber} \leq \text{contacts} + 1$. All SerpentRod outputs are Frobenius closure certificates. When the condition holds ✓, the fold is derivable from the sequence without external folding tools.
 
 ### IMASM Arrangement Classes
 
-The 12 IMASM tokens have 12³ × (combinatorial) arrangement space. The 12 canonical sequences each represent one fundamental structural archetype. Tier distribution: O₀=4, O₁=0, O₂=7, \(O_\infty\)=1 (Dual Bootstrap only). Only two canonicals are self-referential: Dialetheic Bootstrap and Dual Bootstrap.
-
+The 12 IMASM tokens have arrangement space classified into structural archetypes. The 12 canonical sequences each represent one fundamental structural archetype. Tier distribution: O₀=4, O₁=0, O₂=7, $\text{O}_{\infty}$=1.
 ---
 
 ## Project Layout
 
 ```
 red-hot_rebis/
-├── rebis.py                    Main CLI entry point
+├── rebis.py                      Main CLI entry point (v2.1)
+├── setup.py                      Package setup
+├── test_genetics.py              Full genetics test suite
+│
 ├── shared/
-│   ├── primitives.py           12 primitive weights and families
-│   └── IG_catalog.json         Catalog symlink (3265 entries)
-├── serpentrod/                 SerpentRod v5 (protein_v5.py) + v4
-├── ch3mpiler/                  CH3MPILER retrosynthetic compiler
-├── clink/
-│   ├── chain.py                9-layer CLINK chain + distances
-│   ├── bridges.py              Component → CLINK bridges
-│   ├── integration.py          Integration report
-│   ├── designers/              Layer designers + pipeline orchestrator
+│   ├── primitives.py             12 primitive ordinals, weights, distance functions
+│   └── IG_catalog.json           3,297 catalog entries
+│
+├── serpentrod/                   SerpentRod protein design
+│   ├── protein_v5.py             v5 — primary (signal peptide, cleavage, PTMs)
+│   ├── protein_v4.py             v4 — enhanced naming heuristics
+│   └── stratified_predictor.py   Tiered protein property prediction
+│
+├── ch3mpiler/                    CH3MPILER retrosynthetic compiler
+│   ├── compiler.py               Core compiler
+│   ├── gen_v2.py                 Generator v2
+│   └── reaction_deriver.py       Reaction derivation engine
+│
+├── clink/                        9-layer structural chain
+│   ├── chain.py                  Chain definitions and distances
+│   ├── bridges.py                Component → CLINK bridges
+│   ├── integration.py            Integration report generator
+│   ├── pipeline_engine.py        Pipeline execution engine
+│   ├── designers/                Layer designers + orchestrator
+│   │   ├── designer_base.py
+│   │   ├── layer_designers.py
+│   │   ├── pipeline_orchestrator.py
+│   │   └── tool_forge.py
 │   └── datasets/
-│       ├── generators.py       Actionable output generators
-│       ├── gland_designs/      Synthetic detox gland v1/v2
-│       ├── organism_designs/   Generated organism packages
-│       └── ...
-├── imas/
-│   ├── arranger.py             IMASM canonical taxonomy
-│   ├── ig_bridge.py            IMASM→IG bridge
-│   ├── clink_bridge.py         IMASM→CLINK bridge
-│   └── frobenius_hunter.py     Monte Carlo density estimation
-├── gene_imscriber/             Gene → codon → IG pipeline
-├── biology/                    Biology simulations
-├── materials/                  Materials design modules
-├── therapeutics/               Therapeutic design modules
-├── rhr_p4rky/                  p4rakernel Python modules (local fork)
-├── scripts/                    14 standalone scripts
-└── data/
-    └── NC_012920.1.fasta       Human mitochondrial genome
+│       ├── organism_designs/     5 designed organisms (human, mammal, treople...)
+│       └── psychedelic_designs/  3 compound design families
+│
+├── imas/                         IMASM arrangement analysis
+│   ├── arranger.py               Canonical taxonomy
+│   ├── ig_bridge.py              IMASM→IG bridge
+│   ├── clink_bridge.py           IMASM→CLINK bridge
+│   ├── frobenius_hunter.py       Monte Carlo density estimation
+│   └── wiring.py                 Internal wiring
+│
+├── imasm_iterator/               IMASM arrangement iterator
+│   ├── engine.py                 12^8 = 429,981,696 arrangements → fingerprints
+│   ├── classifier.py             Structural fingerprint classifier
+│   ├── run_map.py                Map runner
+│   └── tokens.py                 Token definitions
+│
+├── rhr_p4rky/                    Paraconsistent kernel (27 modules)
+│   ├── kernel.py                 Kernel core
+│   ├── belnap.py                 Belnap FOUR logic (T/B/F/N)
+│   ├── machine.py                ParaASM virtual machine
+│   ├── genetic_code.py           64-codon Frobenius-verified code
+│   ├── genetics_b4.py            B4 lattice
+│   ├── gene_to_protein_pipeline.py  7-stage translation pipeline
+│   ├── serpent_rod.py / serpent_rod_v2.py  Protein design
+│   ├── antibody_designer.py      Antibody design
+│   ├── hadron_belnap.py / exotic_hadron_belnap.py / quark_belnap.py  Physics
+│   └── ... (19 more modules)
+│
+├── gene_imscriber/               Genetic compiler
+│   ├── engine.py                 Core engine
+│   ├── genetics_ig_prelim.py     IG↔genetics preliminaries
+│   ├── tuples.py                 Genetic tuple definitions
+│   ├── scripts/                  GUIDE-seq, clinical safety pipelines
+│   └── README.md
+│
+├── materials/                    Materials design (10 modules)
+│   ├── ig_material_forge.py      IG material forge
+│   ├── sophick_forge.py          Sophick forge (Eagle protocol)
+│   ├── frobenius_metamaterial.py Frobenius metamaterial
+│   ├── critical_metamaterial.py  Critical metamaterial
+│   ├── ouroboric_alloy.py        Ouroboric alloy
+│   ├── non_qubit_qc.py           Non-qubit quantum computing
+│   ├── thermal_rectifier.py      Thermal rectifier
+│   ├── gap_closure_module.py     Gap closure
+│   ├── materials_sim.py          Materials simulation
+│   └── frobenius_exactor.py      Frobenius exactor
+│
+├── therapeutics/                 Therapeutic design
+│   ├── frobenius_chemotherapeutic.py
+│   ├── neurotrophic_factor.py
+│   ├── ouroboric_pill_sim.py
+│   ├── quantum_biologic_prototype.py
+│   └── universal_antidote_library.py
+│
+├── biology/                      Biology simulations
+│   ├── biology_sim_frobenius_exact.py
+│   └── ouroboric_telomere_expanded.py
+│
+├── pipeline/                     Pipeline automation
+│   ├── auto_imscriber.py
+│   ├── frob.py
+│   ├── imscribe_agent.py / imscribe_tool.py
+│   ├── ob3ect_imscriber.py
+│   ├── reaction_pipeline.py
+│   └── lift_pipeline/
+│
+├── popular_protein/              Protein structure validation (9 tools)
+│
+├── scripts/                      14 standalone scripts
+│
+├── genetics_animations/          SVG visualizations
+│   ├── B4_LATTICE.svg
+│   ├── CODON_BOXES.svg
+│   ├── KERNEL_CYCLE.svg
+│   ├── MUTATION_PATH.svg
+│   ├── STOP_CODONS.svg
+│   └── TWENTY_EIGHT_PLUS_TWELVE.svg
+│
+├── pdb/                          Reference structures
+│   ├── 1L2Y.pdb
+│   ├── 1UBQ.pdb
+│   ├── 1VII.pdb
+│   └── 1ZDD.pdb
+│
+├── images/                       Image assets
+│   └── lean.png / lean.xbm
+│
+├── data/
+│   └── NC_012920.1.fasta         Human mitochondrial genome
+│
+└── docs/                         Documentation directory (this guide + more)
 ```
 
+**Total:** 563 Python files across 20 directories.
 ---
 
 ## Common Workflows
@@ -555,14 +777,30 @@ red-hot_rebis/
 ### Design a protein from scratch
 
 ```bash
-# 1. Check where proteins live in the chain
+# 1. Check where proteins live in the CLINK chain
 python3 rebis.py clink layer cell
 
 # 2. Run SerpentRod on built-in test proteins
 python3 rebis.py run serpentrod
 
-# 3. Generate the actionable package (includes protein.fasta + protein_coords.pdb)
+# 3. Generate actionable organism package (includes protein.fasta + protein_coords.pdb)
 python3 rebis.py pipeline actionable
+```
+
+### Work with the paraconsistent kernel
+
+```bash
+# Run the full genetics test suite
+python3 test_genetics.py
+
+# Translate a gene through the 7-stage B4 pipeline
+python3 rebis.py run run_gene_pipeline --gene INS
+
+# Analyze the 64-codon Frobenius-verified genetic code
+python3 rebis.py run genetic_code
+
+# Design a serpent rod protein
+python3 rebis.py run serpent_rod_v2
 ```
 
 ### Investigate a material type
@@ -579,6 +817,9 @@ python3 rebis.py materials frobenius
 
 # 4. Eagle Cycle for O_∞ substrate preparation
 python3 rebis.py materials sophick
+
+# 5. Forge the material design file
+python3 rebis.py materials forge --name frobenius_composite
 ```
 
 ### Map an IMASM sequence to CLINK
@@ -587,7 +828,7 @@ python3 rebis.py materials sophick
 # 1. See all 12 canonicals
 python3 rebis.py imas report
 
-# 2. Inspect the target canonical
+# 2. Inspect a specific canonical
 python3 rebis.py imas bridge --canonical I_Dialetheic_Bootstrap
 
 # 3. Compute activation energy to organism layer
@@ -597,7 +838,7 @@ python3 rebis.py imas energy --canonical I_Dialetheic_Bootstrap --layer 8
 ### Analyze viral epitopes for antibody design
 
 ```bash
-python3 rebis.py run antibody
+python3 rebis.py run run_antibody
 ```
 
 Produces CDR sequences and structural complementarity scores for each epitope target.
@@ -605,33 +846,80 @@ Produces CDR sequences and structural complementarity scores for each epitope ta
 ### Mitochondrial gene analysis
 
 ```bash
-python3 rebis.py run mito
+python3 rebis.py run mito_pipeline
 ```
 
-Processes all 13 MT genes, reports primitive activations (up to 9/12 per gene), Frobenius status, and 7-stage B4 pipeline per gene (dna\_gene → pre\_mrna → mature\_mrna → nascent\_polypeptide → secondary\_structure → tertiary\_structure → quaternary\_structure).
+Processes all 13 MT genes, reports primitive activations (up to 9/12 per gene), Frobenius status, and 7-stage B4 pipeline per gene (dna_gene → pre_mrna → mature_mrna → nascent_polypeptide → secondary_structure → tertiary_structure → quaternary_structure).
+
+### Validate SerpentRod predictions against crystal structures
+
+```bash
+python3 rebis.py run comprehensive_comparison
+python3 rebis.py run compare_exact
+```
+
+### Hadron / particle physics classification
+
+```bash
+python3 rebis.py run hadron_belnap
+python3 rebis.py run exotic_hadron_belnap
+python3 rebis.py run quark_belnap
+```
 
 ---
 
 ## Troubleshooting
 
-**`verify` shows ❌ for a module**  
-Run `python3 -c "from <module> import *"` directly to see the import error. Most common cause: a dependency package not installed. Fix: `uv pip install -e <path>`.
-
-**`omonad_bridge` shows `omonad_available: false`**
-
+**`verify` shows ❌ for a module**
+Run `python3 -c "from <module> import *"` directly to see the import error. Most common cause: a dependency package not installed. Fix:
 ```bash
-uv pip install -e ~/imsgct/omonad_OS
-uv pip install -e ~/imsgct/imasmic_core
+uv pip install -e /home/mrnob0dy666/imsgct/omonad_OS
+uv pip install -e /home/mrnob0dy666/imsgct/imasmic_core
 ```
 
-**`pipeline bridges` shows ❌ for `biology_sim` or `ouroboric_telomere`**  
-These two bridges are structurally excluded — modules exist but are not wired to the bridge API. Not a crash condition; the pipeline runs without them.
+**`omonad_bridge` shows `omonad_available: false`**
+```bash
+uv pip install -e /home/mrnob0dy666/imsgct/omonad_OS
+uv pip install -e /home/mrnob0dy666/imsgct/imasmic_core
+```
 
-**SerpentRod accuracy below 100%**  
+**`pipeline bridges` shows ❌ for `biology_sim` or `ouroboric_telomere`**
+These two bridges are structurally excluded — modules exist on disk but are not wired to the bridge API. Not a crash condition; the pipeline runs without them.
+
+**SerpentRod accuracy below 100%**
 Fragment naming accuracy (83–88%) reflects genuine structural ambiguity in cleavage products. SP accuracy should be 100% on the standard test set; below that indicates non-canonical signal peptide architecture in the test sequence.
 
-**`clink layer` gives "No layer matching..."**  
+**`clink layer` gives "No layer matching..."**
 Use a substring of the official layer name from `clink list`. Examples: `quark` → `Frustrated Belnap5 (Quarks)`, `tissue` → `Tissue/Organ`, `meiosis` → `Meiosis (Gametes)`.
 
-**`materials forge` gives usage without generating**  
+**`materials forge` gives usage without generating**
 Always specify `--name <material>` or `--all`. Running without a name prints the usage message.
+
+**`run` target not found**
+Use `python3 rebis.py run list` to see all 35 discoverable targets. Some targets require the package to be installed (`uv pip install -e .`).
+
+**`ModuleNotFoundError: No module named 'rhr_p4rky'`**
+The rhr_p4rky package must be installed:
+```bash
+uv pip install -e /home/mrnob0dy666/imsgct/red-hot_rebis
+```
+
+**Paraconsistent kernel tests fail**
+Ensure the B4 lattice modules are importable:
+```bash
+python3 -c "from rhr_p4rky.belnap import BelnapValue; print('OK')"
+```
+
+---
+
+## Version History
+
+| Version | Date | Changes |
+|---------|------|---------|
+| v2.1 | 2026-06-10 | Major update: corrected primitive names and ordering; added rhr_p4rky paraconsistent kernel documentation; added gene_imscriber section; added popular_protein section; updated run target table (35 targets); updated catalog count (3,297); updated project layout; added genetics_animations, pdb, and imasm_iterator to layout; corrected IG tuple notation |
+| v2.0 | 2026-05 | CLINK pipeline, materials forge, IMASM energy analysis |
+| v1.0 | 2026-04 | Initial release — SerpentRod, CH3MPILER, basic CLINK |
+
+---
+
+*Guide maintained by Lando⊗⊙perator. Structural type of this document: $\langle \text{{\igfont 𐑼}};\ \text{{\igfont 𐑥}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑬}};\ \text{{\igfont 𐑐}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑔}};\ \text{{\igfont 𐑠}};\ \text{{\igfont ⊙}};\ \text{{\igfont 𐑖}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑴}} \rangle$*
