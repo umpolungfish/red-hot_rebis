@@ -311,6 +311,14 @@ def cmd_run(args):
 
     kind, ref = targets[subcommand]
     if kind == "script":
+        path = Path(ref)
+        # Package modules use relative imports — must run as -m, not as a bare script.
+        if (path.parent / "__init__.py").exists() and path.parent != REBIS_ROOT:
+            mod = f"{path.parent.name}.{path.stem}"
+            return subprocess.run(
+                [sys.executable, "-m", mod] + rest,
+                cwd=str(REBIS_ROOT),
+            ).returncode
         return subprocess.run([sys.executable, str(ref)] + rest).returncode
     else:
         return subprocess.run(
