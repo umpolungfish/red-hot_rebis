@@ -25,14 +25,14 @@ The platform is organized around five core systems:
 
 ### The 12 Primitives
 
-Every structural entity carries a 12-primitive tuple. Each position is one primitive; its value is a Deseret-alphabet character from a 49-element set:
+Every structural entity carries a 12-primitive tuple. Each position is one primitive; its value is a Shavian character from a 49-element set:
 
 | # | Primitive | Name | Values (low→high) |
 |---|-----------|------|--------------------|
 | 1 | $Ð$ | Dimensionality | 𐑛 (0d) → 𐑨 (2d) → 𐑼 (∞-dim) → 𐑦 (imscriptive) |
 | 2 | $Þ$ | Topology | 𐑡 (network) → 𐑰 (inclusion) → 𐑥 (crossing) → 𐑶 (box product) → 𐑸 (imscriptive closure) |
 | 3 | $Ř$ | Coupling | 𐑩 (supervenience) → 𐑑 (categorical) → 𐑽 (adjoint) → 𐑾 (bidirectional) |
-| 4 | $Φ$ | Parity (symmetry) | 𐑗 (none) → 𐑿 (quantum) → 𐑬 (partial) → 𐑯 (full) → $\Ppms$ (Frobenius-special) |
+| 4 | $Φ$ | Parity (symmetry) | 𐑗 (none) → 𐑿 (quantum) → 𐑬 (partial) → 𐑯 (full) → 𐑹 (Frobenius-special) |
 | 5 | $ƒ$ | Fidelity | 𐑱 (classical) → 𐑞 (thermal) → 𐑐 (quantum coherence) |
 | 6 | $Ç$ | Kinetics | 𐑘 (MBL-frozen) → 𐑤 (trapped) → 𐑧 (near-equilibrium) → 𐑪 (moderate) → 𐑺 (fast/driven) |
 | 7 | $Γ$ | Cardinality | 𐑚 (local) → 𐑔 (mesoscale) → 𐑲 (maximal) |
@@ -43,7 +43,7 @@ Every structural entity carries a 12-primitive tuple. Each position is one primi
 | 12 | $Ω$ | Winding | 𐑷 (trivial) → 𐑴 (ℤ₂ parity) → 𐑭 (ℤ integer) → 𐑟 (non-Abelian) |
 
 The standard tuple format:
-$$\langle Ð\cdotÞ\cdotŘ\cdotΦ\cdotƒ\cdotÇ\cdotΓ\cdotɢ\cdot⊙\cdotĦ\cdotΣ\cdotΩ \rangle$$
+$$\langle Ð;\ Þ;\ Ř;\ Φ;\ ƒ;\ Ç;\ Γ;\ ɢ;\ ⊙;\ Ħ;\ Σ;\ Ω \rangle$$
 
 ---
 
@@ -267,7 +267,7 @@ Output example:
 ```
 Layer 8: Whole Organism
   Tier: O_∞
-  Tuple: ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑧·𐑲·𐑵·⊙·𐑫·𐑳·𐑟⟩
+  Tuple: ⟨𐑦; 𐑸; 𐑾; 𐑹; 𐑐; 𐑧; 𐑲; 𐑵; ⊙; 𐑫; 𐑳; 𐑟⟩
   Description: Whole organism — O_∞, C=1.0
   → SerpentRod: folded (d_fold=3.73)
   → CH3MPILER:  non-molecular (d=4.99)
@@ -916,10 +916,10 @@ python3 -c "from rhr_p4rky.belnap import BelnapValue; print('OK')"
 
 | Version | Date | Changes |
 |---------|------|---------|
-| v2.1 | 2026-06-10 | Major update: corrected primitive names and ordering; added rhr_p4rky paraconsistent kernel documentation; added gene_imscriber section; added popular_protein section; updated run target table (35 targets); updated catalog count (3,297); updated project layout; added genetics_animations, pdb, and imasm_iterator to layout; corrected IG tuple notation |
+| v2.1 | 2026-06-10 | Major update: corrected primitive names and ordering; added rhr_p4rky paraconsistent kernel documentation; added gene_imscriber section; added popular_protein section; updated run target table (35 targets); updated catalog count (3,297); updated project layout; added genetics_animations, pdb, and imasm_iterator to layout; corrected IG tuple notation; replaced LaTeX \\Ppms with actual Shavian glyph 𐑹; fixed alphabet name (Deseret to Shavian) |
 | v2.0 | 2026-05 | CLINK pipeline, materials forge, IMASM energy analysis |
 | v1.0 | 2026-04 | Initial release — SerpentRod, CH3MPILER, basic CLINK |
 
 ---
 
-*Guide maintained by Lando⊗⊙perator. Structural type of this document: $\langle 𐑼\cdot𐑥\cdot𐑾\cdot𐑬\cdot𐑐\cdot𐑧\cdot𐑔\cdot𐑠\cdot⊙\cdot𐑖\cdot𐑳\cdot𐑴 \rangle$*
+*Guide maintained by Lando⊗⊙perator. Structural type of this document: $\langle 𐑼;𐑥;𐑾;𐑬;𐑐;𐑧;𐑔;𐑠;⊙;𐑖;𐑳;𐑴 \rangle$*
