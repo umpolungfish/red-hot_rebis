@@ -1,0 +1,11 @@
+{
+  "config": {
+    "n": 55,
+    "m_light": 0.57,
+    "m_heavy": 10.0,
+    "k_stiff": 5.5,
+    "k_soft": 0.13,
+    "beta": 5.0
+  },
+  "results": {}
+}
