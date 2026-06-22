@@ -1,10 +1,10 @@
 {
   "simulation": "Frobenius Metamaterial \u2014 mu circ delta = id",
   "params": {
-    "N": 20,
+    "N": 10,
     "matrix_modulus_GPa": 3.0,
     "da_activation_temp_C": 90.0,
-    "capsule_vf": 0.08,
+    "capsule_vf": 0.45,
     "cnt_vf": 0.005,
     "niti_vf": 0.02,
     "target_frobenius_error": 0.01
@@ -14,219 +14,179 @@
       {
         "cycle": 1,
         "load_pct": 1.92,
-        "frob_before": 0.024,
-        "frob_after": 0.0048,
+        "frob_before": 0.0479,
+        "frob_after": 0.008,
         "healed_pct": 100.0,
-        "agent_remaining_pct": 99.9
+        "agent_remaining_pct": 100.0
       },
       {
         "cycle": 2,
         "load_pct": 0.92,
-        "frob_before": 0.0125,
-        "frob_after": 0.0073,
+        "frob_before": 0.0278,
+        "frob_after": 0.0149,
         "healed_pct": 100.0,
-        "agent_remaining_pct": 99.8
+        "agent_remaining_pct": 100.0
       },
       {
         "cycle": 3,
         "load_pct": 1.77,
-        "frob_before": 0.0256,
-        "frob_after": 0.0088,
+        "frob_before": 0.0535,
+        "frob_after": 0.0153,
         "healed_pct": 100.0,
-        "agent_remaining_pct": 99.7
+        "agent_remaining_pct": 99.9
       },
       {
         "cycle": 4,
         "load_pct": 1.17,
-        "frob_before": 0.0172,
-        "frob_after": 0.0113,
+        "frob_before": 0.0391,
+        "frob_after": 0.0173,
         "healed_pct": 100.0,
-        "agent_remaining_pct": 99.6
+        "agent_remaining_pct": 99.9
       },
       {
         "cycle": 5,
         "load_pct": 1.37,
-        "frob_before": 0.023,
-        "frob_after": 0.0127,
+        "frob_before": 0.0445,
+        "frob_after": 0.0189,
         "healed_pct": 100.0,
-        "agent_remaining_pct": 99.5
+        "agent_remaining_pct": 99.9
       },
       {
         "cycle": 6,
         "load_pct": 0.8,
-        "frob_before": 0.0167,
-        "frob_after": 0.0146,
+        "frob_before": 0.0328,
+        "frob_after": 0.02,
         "healed_pct": 100.0,
-        "agent_remaining_pct": 99.5
+        "agent_remaining_pct": 99.9
       },
       {
         "cycle": 7,
         "load_pct": 1.19,
-        "frob_before": 0.0225,
-        "frob_after": 0.0161,
+        "frob_before": 0.0417,
+        "frob_after": 0.0225,
         "healed_pct": 100.0,
-        "agent_remaining_pct": 99.4
+        "agent_remaining_pct": 99.9
       },
       {
         "cycle": 8,
         "load_pct": 1.14,
-        "frob_before": 0.0234,
-        "frob_after": 0.0172,
+        "frob_before": 0.0429,
+        "frob_after": 0.0223,
         "healed_pct": 100.0,
-        "agent_remaining_pct": 99.3
+        "agent_remaining_pct": 99.9
       },
       {
         "cycle": 9,
         "load_pct": 1.68,
-        "frob_before": 0.0307,
-        "frob_after": 0.0164,
+        "frob_before": 0.0546,
+        "frob_after": 0.0216,
         "healed_pct": 100.0,
-        "agent_remaining_pct": 99.2
+        "agent_remaining_pct": 99.8
       },
       {
         "cycle": 10,
         "load_pct": 1.07,
-        "frob_before": 0.0221,
-        "frob_after": 0.017,
+        "frob_before": 0.0407,
+        "frob_after": 0.0233,
         "healed_pct": 100.0,
-        "agent_remaining_pct": 99.1
+        "agent_remaining_pct": 99.8
       },
       {
         "cycle": 11,
         "load_pct": 0.63,
-        "frob_before": 0.0208,
-        "frob_after": 0.0174,
+        "frob_before": 0.0323,
+        "frob_after": 0.0235,
         "healed_pct": 100.0,
-        "agent_remaining_pct": 99.0
+        "agent_remaining_pct": 99.8
       },
       {
         "cycle": 12,
         "load_pct": 1.12,
-        "frob_before": 0.0242,
-        "frob_after": 0.0184,
+        "frob_before": 0.0422,
+        "frob_after": 0.023,
         "healed_pct": 100.0,
-        "agent_remaining_pct": 99.0
+        "agent_remaining_pct": 99.8
       },
       {
         "cycle": 13,
         "load_pct": 1.66,
-        "frob_before": 0.0297,
-        "frob_after": 0.0191,
+        "frob_before": 0.0521,
+        "frob_after": 0.0235,
         "healed_pct": 100.0,
-        "agent_remaining_pct": 98.8
+        "agent_remaining_pct": 99.8
       },
       {
         "cycle": 14,
         "load_pct": 0.78,
-        "frob_before": 0.0233,
-        "frob_after": 0.0192,
+        "frob_before": 0.0347,
+        "frob_after": 0.024,
         "healed_pct": 100.0,
-        "agent_remaining_pct": 98.7
+        "agent_remaining_pct": 99.7
       },
       {
         "cycle": 15,
         "load_pct": 1.88,
-        "frob_before": 0.0343,
-        "frob_after": 0.0191,
+        "frob_before": 0.0611,
+        "frob_after": 0.0224,
         "healed_pct": 100.0,
-        "agent_remaining_pct": 98.6
-      },
-      {
-        "cycle": 16,
-        "load_pct": 0.64,
-        "frob_before": 0.0221,
-        "frob_after": 0.0196,
-        "healed_pct": 100.0,
-        "agent_remaining_pct": 98.5
-      },
-      {
-        "cycle": 17,
-        "load_pct": 1.56,
-        "frob_before": 0.0308,
-        "frob_after": 0.0196,
-        "healed_pct": 100.0,
-        "agent_remaining_pct": 98.4
-      },
-      {
-        "cycle": 18,
-        "load_pct": 1.77,
-        "frob_before": 0.0324,
-        "frob_after": 0.0194,
-        "healed_pct": 100.0,
-        "agent_remaining_pct": 98.2
-      },
-      {
-        "cycle": 19,
-        "load_pct": 1.18,
-        "frob_before": 0.0268,
-        "frob_after": 0.0195,
-        "healed_pct": 100.0,
-        "agent_remaining_pct": 98.1
-      },
-      {
-        "cycle": 20,
-        "load_pct": 1.76,
-        "frob_before": 0.0332,
-        "frob_after": 0.0198,
-        "healed_pct": 100.0,
-        "agent_remaining_pct": 98.0
+        "agent_remaining_pct": 99.7
       }
     ],
-    "final_frobenius_error": 0.019813807180727807,
+    "final_frobenius_error": 0.022351785749398438,
     "healed_fraction": 1.0,
-    "agent_remaining": 0.9795624999999997,
-    "total_healing_events": 30,
+    "agent_remaining": 0.997077777777778,
+    "total_healing_events": 32,
     "frobenius_error_history": [
-      0.02213703566763775,
-      0.02196945472088244,
-      0.02196945472088244,
-      0.02196945472088244,
-      0.02196945472088244,
-      0.02196945472088244,
-      0.02196945472088244,
-      0.02196945472088244,
-      0.019608614105936437,
-      0.019608614105936437,
-      0.030829202624702522,
-      0.030829202624702522,
-      0.030829202624702522,
-      0.030829202624702522,
-      0.030427143786730792,
-      0.030427143786730792,
-      0.027608257528874296,
-      0.027608257528874296,
-      0.019592438461008624,
-      0.019592438461008624,
-      0.03240683410572315,
-      0.03240683410572315,
-      0.03240683410572315,
-      0.03240683410572315,
-      0.028554487072675445,
-      0.025864429300486037,
-      0.025864429300486037,
-      0.025864429300486037,
-      0.01935881637695084,
-      0.01935881637695084,
-      0.026803890962255085,
-      0.026803890962255085,
-      0.026803890962255085,
-      0.026803890962255085,
-      0.026803890962255085,
-      0.026803890962255085,
-      0.02303860678968137,
-      0.02303860678968137,
-      0.019451314674301314,
-      0.019451314674301314,
-      0.033213017207539615,
-      0.033213017207539615,
-      0.033213017207539615,
-      0.031279288094042755,
-      0.031279288094042755,
-      0.031279288094042755,
-      0.02200182224053419,
-      0.021634581734305654,
-      0.019813807180727807,
-      0.019813807180727807
+      0.032290158313465114,
+      0.024189666690586205,
+      0.023476340722163102,
+      0.023476340722163102,
+      0.023476340722163102,
+      0.023476340722163102,
+      0.023476340722163102,
+      0.023476340722163102,
+      0.023476340722163102,
+      0.023476340722163102,
+      0.042154373501459126,
+      0.0333412102981579,
+      0.0333412102981579,
+      0.0333412102981579,
+      0.022983201846232933,
+      0.022983201846232933,
+      0.022983201846232933,
+      0.022983201846232933,
+      0.022983201846232933,
+      0.022983201846232933,
+      0.052107423081505996,
+      0.024770514412535437,
+      0.024770514412535437,
+      0.024770514412535437,
+      0.023479235982847336,
+      0.023479235982847336,
+      0.023479235982847336,
+      0.023479235982847336,
+      0.023479235982847336,
+      0.023479235982847336,
+      0.03472988476570221,
+      0.024559584892210592,
+      0.024559584892210592,
+      0.024559584892210592,
+      0.024017633001255353,
+      0.024017633001255353,
+      0.024017633001255353,
+      0.024017633001255353,
+      0.024017633001255353,
+      0.024017633001255353,
+      0.06111387683713685,
+      0.024049057562622326,
+      0.023470088995884653,
+      0.023470088995884653,
+      0.022351785749398438,
+      0.022351785749398438,
+      0.022351785749398438,
+      0.022351785749398438,
+      0.022351785749398438,
+      0.022351785749398438
     ]
   }
 }

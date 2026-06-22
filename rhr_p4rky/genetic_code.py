@@ -17,6 +17,11 @@ Key theorems (all verified against the kernel):
 """
 
 from __future__ import annotations
+import sys as _sys, os as _os
+_GC_DIR = _os.path.dirname(_os.path.abspath(__file__))
+_REBIS_ROOT = _os.path.dirname(_GC_DIR)
+if _REBIS_ROOT not in _sys.path:
+    _sys.path.insert(0, _REBIS_ROOT)
 _HELP_EXAMPLES = """  rebis.py run genetic_code"""
 import sys as _sys
 if '--help' in _sys.argv or '-h' in _sys.argv:
@@ -32,9 +37,13 @@ from dataclasses import dataclass
 from typing import Dict, List, Tuple, Optional
 from collections import defaultdict
 
-from .belnap import Belnap, meet, join, bnot
-from .kernel import fsplit, ffuse, engager, frobenius_invariant
-from .genetics_b4 import (BelnapCodon, nucleotide_to_belnap, belnap_to_nucleotide,
+# Try absolute import first, fall back to relative
+try:
+    from rhr_p4rky.belnap import Belnap, meet, join, bnot
+except ImportError:
+    from rhr_p4rky.belnap import Belnap, meet, join, bnot
+from rhr_p4rky.kernel import fsplit, ffuse, engager, frobenius_invariant
+from rhr_p4rky.genetics_b4 import (BelnapCodon, nucleotide_to_belnap, belnap_to_nucleotide,
                           b4_lattice_distance, b4_meet, b4_join, b4_complement)
 
 
@@ -444,7 +453,7 @@ def codon_to_kernel_state(codon: BelnapCodon):
     For split-stratum codons, r0 equals p1 modulo ℤ₂ wobble.
     For stop codons, the kernel detects paradox (r0 = B).
     """
-    from .kernel import MachineState, step
+    from rhr_p4rky.kernel import MachineState, step
     
     state = MachineState(r0=codon.p1, r1=codon.p2, r2=codon.p3,
                          paradoxCount=0, cycleCount=0)
@@ -471,7 +480,7 @@ def run_kernel_on_protein(protein_seq: str, cycles_per_codon: int = 1) -> list:
     The kernel's paradox accumulation across the sequence measures
     total Frobenius violation (exact→split crossings).
     """
-    from .kernel import run, MachineState
+    from rhr_p4rky.kernel import run, MachineState
     
     results = []
     for i in range(0, len(protein_seq) - 2, 3):
@@ -515,7 +524,7 @@ def run_genetic_verification() -> dict:
       5. Crystal divisibility: 17,280,000 / 64 = 270,000
       6. Kernel invariant: frobenius_invariant for all Belnap values
     """
-    from .kernel import verify_frobenius_invariant as kernel_frob_check
+    from rhr_p4rky.kernel import verify_frobenius_invariant as kernel_frob_check
     
     results = {}
     
@@ -568,7 +577,7 @@ def run_genetic_verification() -> dict:
 
 def demo() -> dict:
     """Run a demonstration of the genetic code on the paraconsistent kernel."""
-    from .kernel import verify_frobenius_invariant, run, initial_state
+    from rhr_p4rky.kernel import verify_frobenius_invariant, run, initial_state
     
     print("=" * 60)
     print("GENETIC CODE AS FROBENIUS ALGEBRA ON PARACONSISTENT KERNEL")

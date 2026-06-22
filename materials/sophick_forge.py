@@ -49,6 +49,7 @@ Author: Lando⊗⊙perator
 """
 
 import numpy as np
+import os
 import json
 from dataclasses import dataclass, field
 from typing import Dict, List, Tuple, Optional
@@ -1009,7 +1010,7 @@ def main():
     for name in all_materials:
         results[name] = run_eagle_simulation(name)
 
-    outpath = "/home/mrnob0dy666/red-hot_rebis/materials/sophick_forge_results.json"
+    outpath = os.path.join(os.path.dirname(os.path.abspath(__file__)), "sophick_forge_results.json")
     with open(outpath, 'w') as f:
         json.dump(results, f, indent=2, default=str)
     print(f"\n  All results exported to {outpath}")

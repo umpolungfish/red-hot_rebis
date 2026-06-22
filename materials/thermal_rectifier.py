@@ -22,6 +22,7 @@ Reference: Phys. Rev. Lett. 93, 184301 (2004) — thermal diode model
 """
 
 import numpy as np
+import os
 import json
 from typing import Tuple
 
@@ -237,23 +238,50 @@ class TwoSegmentDiode:
                 "rectification_ratio": round(rect, 2)
             }
         }
-        path = "/home/mrnob0dy666/red-hot_rebis/materials/thermal_rectifier_results.json"
+        path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "thermal_rectifier_results.json")
         with open(path, 'w') as f:
             json.dump(results, f, indent=2)
         print(f"\nSaved to {path}")
 
 
 if __name__ == "__main__":
-    # Strong asymmetry configuration
+    import argparse, os
+
+    parser = argparse.ArgumentParser(
+        description="Topological Thermal Rectifier — heat diode simulation",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""Examples:
+  %(prog)s                                                    Default strong-asymmetry config
+  %(prog)s --n 30 --m-light 0.2 --m-heavy 8.0 --beta 4.0     Extreme asymmetry
+  %(prog)s --output my_results.json                           Custom export path
+""")
+    parser.add_argument("--n", type=int, default=20, help="Segment size (default: 20)")
+    parser.add_argument("--m-light", type=float, default=0.3, help="Light mass (default: 0.3)")
+    parser.add_argument("--m-heavy", type=float, default=5.0, help="Heavy mass (default: 5.0)")
+    parser.add_argument("--k-stiff", type=float, default=6.0, help="Stiff spring const (default: 6.0)")
+    parser.add_argument("--k-soft", type=float, default=0.3, help="Soft spring const (default: 0.3)")
+    parser.add_argument("--beta", type=float, default=3.0, help="Nonlinearity (default: 3.0)")
+    parser.add_argument("--T-hot", type=float, default=1.5, help="Hot temp (default: 1.5)")
+    parser.add_argument("--T-cold", type=float, default=0.05, help="Cold temp (default: 0.05)")
+    parser.add_argument("--output", type=str, help="Export path for JSON results")
+    args = parser.parse_args()
+
     diode = TwoSegmentDiode(
-        n_left=20,
-        n_right=20,
-        m_light=0.3,
-        m_heavy=5.0,
-        k_stiff=6.0,
-        k_soft=0.3,
-        beta_nl=3.0,
-        T_hot=1.5,
-        T_cold=0.05
+        n_left=args.n, n_right=args.n,
+        m_light=args.m_light, m_heavy=args.m_heavy,
+        k_stiff=args.k_stiff, k_soft=args.k_soft,
+        beta_nl=args.beta,
+        T_hot=args.T_hot, T_cold=args.T_cold
     )
     diode.run()
+
+    if args.output:
+        import json
+        results = {
+            "config": {"n": args.n, "m_light": args.m_light, "m_heavy": args.m_heavy,
+                      "k_stiff": args.k_stiff, "k_soft": args.k_soft, "beta": args.beta},
+            "results": diode.results if hasattr(diode, 'results') else {}
+        }
+        with open(args.output, 'w') as f:
+            json.dump(results, f, indent=2)
+        print(f"\nResults exported to {args.output}")
