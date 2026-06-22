@@ -27,7 +27,8 @@ import math
 from typing import List, Tuple, Dict, Set
 from collections import defaultdict
 
-sys.path.insert(0, os.path.dirname(__file__))
+_REBIS_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, _REBIS_ROOT)
 
 # Fix imports
 import rhr_p4rky.belnap

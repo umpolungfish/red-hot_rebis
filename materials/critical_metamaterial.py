@@ -15,6 +15,7 @@ Core principle:
 """
 
 import numpy as np, json
+import os
 
 class CriticalMetamaterial:
     def __init__(self, size=16, initial_kappa=0.2, nonlinearity=0.1):
@@ -146,10 +147,41 @@ class CriticalMetamaterial:
                        "final_kappa": round(final_kap, 4),
                        "criticality_achieved": bool(abs(final_kap - self.kappa_c) < 0.05)}
         }
-        with open("/home/mrnob0dy666/red-hot_rebis/materials/critical_metamaterial_results.json", 'w') as f:
+        with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "critical_metamaterial_results.json"), 'w') as f:
             json.dump(results, f, indent=2)
         print(f"\nSaved to results file")
 
 if __name__ == "__main__":
-    mm = CriticalMetamaterial(size=16, initial_kappa=0.2, nonlinearity=0.1)
-    mm.run(total_time=60)
+    import argparse, os
+
+    parser = argparse.ArgumentParser(
+        description="Critical Metamaterial — ⊙ criticality self-tuning sensor simulation",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""Examples:
+  %(prog)s                                               Default simulation (size=16, 60 timesteps)
+  %(prog)s --size 32 --time 120 --kappa 0.15             Larger sensor, longer run
+  %(prog)s --nonlinearity 0.2 --output my_results.json   Higher nonlinearity
+""")
+    parser.add_argument("--size", type=int, default=16, help="Grid size (default: 16)")
+    parser.add_argument("--kappa", type=float, default=0.2, help="Initial coupling (default: 0.2)")
+    parser.add_argument("--nonlinearity", type=float, default=0.1, help="Nonlinearity parameter (default: 0.1)")
+    parser.add_argument("--time", type=int, default=60, help="Total simulation timesteps (default: 60)")
+    parser.add_argument("--output", type=str, help="Export path for JSON results")
+    args = parser.parse_args()
+
+    mm = CriticalMetamaterial(size=args.size, initial_kappa=args.kappa, nonlinearity=args.nonlinearity)
+    mm.run(total_time=args.time)
+
+    if args.output:
+        import json
+        results = {
+            "simulation": "Self-Critical Metamaterial Sensor",
+            "params": {"N": mm.N, "kappa_c": mm.kappa_c, "target_chi": mm.target_chi},
+            "results": {"mean_chi": round(float(np.mean(mm.history["chi"])), 2),
+                       "peak_chi": round(float(max(mm.history["chi"])), 2),
+                       "final_kappa": round(float(mm.history["kappa"][-1]), 4),
+                       "criticality_achieved": bool(abs(mm.history["kappa"][-1] - mm.kappa_c) < 0.05)}
+        }
+        with open(args.output, 'w') as f:
+            json.dump(results, f, indent=2)
+        print(f"\nResults exported to {args.output}")

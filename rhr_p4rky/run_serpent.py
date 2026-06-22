@@ -1,24 +1,24 @@
 #!/usr/bin/env python3
 """Runner for the Serpent on the Rod of Asclepius."""
-_HELP_EXAMPLES = """  rebis.py run run_serpent"""
-import sys as _sys
-_HELP_ARGS = set(_sys.argv[1:])
-if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
-    _doc = __doc__.strip() if __doc__ else "rhr_p4rky/run_serpent.py"
-    print(_doc)
-    print()
-    print("Examples:")
-    print(_HELP_EXAMPLES)
-    print()
-    _sys.exit(0)
+import sys, os, json
 
-import sys
-import os
-sys.path.insert(0, os.path.dirname(__file__))
-from serpent_rod import SerpentRod
-import json
+_REBIS_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, _REBIS_ROOT)
+
+import rhr_p4rky.belnap
+import rhr_p4rky.genetics_b4
+import rhr_p4rky.genetic_code
+from rhr_p4rky.serpent_rod import SerpentRod
+
 if __name__ == "__main__":
-    # Test with the default sequence
-    sr = SerpentRod("AUGGCCGACUGGAACUGCAAGAAGAUCGUGCCCAAGUACUACGGCCGCUG", name="test_protein")
+    import argparse
+    parser = argparse.ArgumentParser(description="SerpentRod — Direct RNA to Folded Protein")
+    parser.add_argument("--seq", "-s", type=str, default="AUGGCCGACUGGAACUGCAAGAAGAUCGUGCCCAAGUACUACGGCCGCUG",
+                        help="RNA sequence (default: test sequence)")
+    parser.add_argument("--name", "-n", type=str, default="protein",
+                        help="Protein name")
+    args = parser.parse_args()
+    
+    sr = SerpentRod(args.seq, name=args.name)
     result = sr.report()
     print(json.dumps(result, indent=2))

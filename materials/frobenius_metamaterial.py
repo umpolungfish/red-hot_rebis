@@ -33,6 +33,7 @@ Author: Lando tensor odot perator
 """
 
 import numpy as np
+import os
 import json
 from dataclasses import dataclass, field
 from typing import List, Tuple, Optional
@@ -335,23 +336,43 @@ class FrobeniusMetamaterial:
 # ═══════════════════════════════════════════════════════════════════
 
 if __name__ == "__main__":
-    # Run with default parameters
-    material = FrobeniusMetamaterial(size=20)
-    results = material.run_simulation(load_cycles=20, heal_steps_per_cycle=10)
-    material.export_results(
-        results,
-        "/home/mrnob0dy666/red-hot_rebis/materials/frobenius_metamaterial_results.json"
-    )
+    import argparse, os
 
-    # Run with higher healing agent density (should achieve better closure)
-    print("\n\n")
-    params_enhanced = FrobeniusMaterialParams(
-        capsule_volume_fraction=0.15,
-        feedback_gain=2.0,
+    parser = argparse.ArgumentParser(
+        description="Frobenius Metamaterial — μ∘δ=id self-verifying composite simulation",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""Examples:
+  %(prog)s                                              Default simulation (size=20, cycles=25)
+  %(prog)s --size 30 --cycles 50 --capsules 0.15        Large high-density simulation
+  %(prog)s --enhanced --gain 3.0                        Enhanced feedback loop
+  %(prog)s --output my_results.json                     Custom export path
+""")
+    parser.add_argument("--size", type=int, default=20, help="Grid size (default: 20)")
+    parser.add_argument("--capsules", type=float, default=0.12, help="Capsule volume fraction (default: 0.12)")
+    parser.add_argument("--gain", type=float, default=1.5, help="Feedback gain (default: 1.5)")
+    parser.add_argument("--cycles", type=int, default=25, help="Load cycles (default: 25)")
+    parser.add_argument("--heal-steps", type=int, default=10, help="Heal steps per cycle (default: 10)")
+    parser.add_argument("--enhanced", action="store_true", help="Also run enhanced variant")
+    parser.add_argument("--output", type=str, help="Export path for JSON results")
+    args = parser.parse_args()
+
+    params = FrobeniusMaterialParams(
+        capsule_volume_fraction=args.capsules,
+        feedback_gain=args.gain,
     )
-    material2 = FrobeniusMetamaterial(size=20, params=params_enhanced)
-    results2 = material2.run_simulation(load_cycles=20, heal_steps_per_cycle=10)
-    material2.export_results(
-        results2,
-        "/home/mrnob0dy666/red-hot_rebis/materials/frobenius_metamaterial_enhanced_results.json"
-    )
+    mat = FrobeniusMetamaterial(size=args.size, params=params)
+    results = mat.run_simulation(load_cycles=args.cycles, heal_steps_per_cycle=args.heal_steps)
+    outpath = args.output or os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                          "frobenius_metamaterial_results.json")
+    mat.export_results(results, outpath)
+
+    if args.enhanced:
+        print("\n" + "=" * 72)
+        print("  ENHANCED VARIANT")
+        print("=" * 72)
+        params2 = FrobeniusMaterialParams(capsule_volume_fraction=0.15, feedback_gain=2.0)
+        mat2 = FrobeniusMetamaterial(size=args.size, params=params2)
+        results2 = mat2.run_simulation(load_cycles=args.cycles, heal_steps_per_cycle=args.heal_steps)
+        base = args.output.replace(".json", "_enhanced.json") if args.output else os.path.join(
+            os.path.dirname(os.path.abspath(__file__)), "frobenius_metamaterial_enhanced_results.json")
+        mat2.export_results(results2, base)

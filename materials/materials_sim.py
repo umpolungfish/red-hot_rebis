@@ -10,6 +10,7 @@ FIXES APPLIED:
 """
 import numpy as np
 import json, math
+import os
 from pathlib import Path
 
 class SelfHealingComposite:
@@ -227,7 +228,7 @@ if __name__ == "__main__":
         }
     }
     
-    path = "/home/mrnob0dy666/rebis_concrete/materials/materials_simulation_results.json"
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "materials_simulation_results.json")
     Path(path).parent.mkdir(parents=True, exist_ok=True)
     with open(path, 'w') as f:
         json.dump(results_data, f, indent=2)

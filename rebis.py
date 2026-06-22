@@ -570,9 +570,10 @@ def cmd_imas(args):
 
 
 
+
 def cmd_materials(args):
     """Handle materials subcommands — IG Material Forge."""
-    import sys
+    import sys, json
     import os as _os
     sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
     from materials.ig_material_forge import MaterialForge, predefined_novel_materials
@@ -581,20 +582,68 @@ def cmd_materials(args):
 
     if sub == "forge":
         forge = MaterialForge()
+
         if args.mat_all:
             novel = predefined_novel_materials()
             for name, ig_tuple in novel.items():
                 design = forge.forge(name, ig_tuple)
-                print(f"  Forged: {name} → {design.ouroboricity_tier} Frob={design.frobenius_score:.2f}  {design.proposed_composition[:70]}")
+                print(f"  Forged: {name} → {design.ouroboricity_tier} Frob={design.frobenius_score:.2f}  "
+                      f"{design.proposed_composition[:70]}")
             print(f"\n  Total: {len(novel)} materials forged")
+            if args.mat_output:
+                out = {name: forge._designs[name].to_dict() for name in novel}
+                with open(args.mat_output, 'w') as f:
+                    json.dump(out, f, indent=2)
+                print(f"  Exported to {args.mat_output}")
+
+        elif getattr(args, 'mat_tuple', None):
+            parts = [p.strip() for p in args.mat_tuple.split(',')]
+            if len(parts) != 12:
+                print(f"Error: --tuple requires exactly 12 comma-separated primitives, got {len(parts)}")
+                return 1
+            ig_tuple = tuple(parts)
+            name = args.mat_name or "custom_material"
+            design = forge.forge(name, ig_tuple)
+            print(forge.report(name))
+            if args.mat_output:
+                with open(args.mat_output, 'w') as f:
+                    json.dump(design.to_dict(), f, indent=2)
+                print(f"\n  Exported to {args.mat_output}")
+
+        elif getattr(args, 'mat_catalog', None):
+            try:
+                design = forge.forge_from_catalog(args.mat_catalog)
+                print(forge.report(design.name))
+                if args.mat_output:
+                    with open(args.mat_output, 'w') as f:
+                        json.dump(design.to_dict(), f, indent=2)
+                    print(f"\n  Exported to {args.mat_output}")
+            except (KeyError, FileNotFoundError) as e:
+                print(f"Error: {e}")
+                return 1
+
+        elif getattr(args, 'mat_imas', None):
+            try:
+                design = forge.forge_from_imas(args.mat_imas)
+                print(forge.report(f"{args.mat_imas}_material"))
+                if args.mat_output:
+                    with open(args.mat_output, 'w') as f:
+                        json.dump(design.to_dict(), f, indent=2)
+                    print(f"\n  Exported to {args.mat_output}")
+            except Exception as e:
+                print(f"Error: {e}")
+                return 1
+
         elif args.mat_name:
-            # Try as predefined
             novel = predefined_novel_materials()
             if args.mat_name in novel:
                 design = forge.forge(args.mat_name, novel[args.mat_name])
                 print(forge.report(args.mat_name))
+                if args.mat_output:
+                    with open(args.mat_output, 'w') as f:
+                        json.dump(design.to_dict(), f, indent=2)
+                    print(f"\n  Exported to {args.mat_output}")
             else:
-                # Try as IMASM canonical
                 try:
                     design = forge.forge_from_imas(args.mat_name)
                     print(forge.report(f"{args.mat_name}_material"))
@@ -604,26 +653,47 @@ def cmd_materials(args):
                     print("  eternal_memory_alloy, topological_thermal_rectifier, hierarchical_impact_absorber,")
                     print("  quantum_topological_substrate, non_abelian_braiding_material")
                     print("  Or any IMASM canonical: I_Dialetheic_Bootstrap, etc.")
+                    print("  Or use: --tuple '𐑼,𐑸,𐑾,...' --name my_mat     (custom 12-tuple)")
+                    print("  Or use: --catalog <name>                    (catalog lookup)")
+                    return 1
         else:
-            print("Usage: rebis.py materials forge --name <name>  or  --all")
-            print("Predefined: frobenius_composite, critical_sensor_metamaterial, ep_detector,")
-            print("  eternal_memory_alloy, topological_thermal_rectifier,")
-            print("  hierarchical_impact_absorber, quantum_topological_substrate,")
-            print("  non_abelian_braiding_material")
+            print("Usage: rebis.py materials forge [options]")
+            print("  --all                         Forge all 8 predefined materials")
+            print("  --name <name>                 Forge a predefined material")
+            print("  --tuple 'D,T,R,P,F,K,G,C,Φ,H,S,Ω'  Forge from 12-primitive tuple")
+            print("  --catalog <name>              Forge from catalog entry")
+            print("  --imas <name>                 Forge from IMASM canonical")
+            print("  --output <path>               Export JSON results")
+            print("\nPredefined: frobenius_composite, critical_sensor_metamaterial, ep_detector,")
+            print("  eternal_memory_alloy, topological_thermal_rectifier, hierarchical_impact_absorber,")
+            print("  quantum_topological_substrate, non_abelian_braiding_material")
         return 0
-
 
     elif sub == "frobenius":
         from materials.frobenius_metamaterial import FrobeniusMetamaterial, FrobeniusMaterialParams
-        params = FrobeniusMaterialParams(capsule_volume_fraction=0.12, feedback_gain=1.5)
-        mat = FrobeniusMetamaterial(size=20, params=params)
-        results = mat.run_simulation(load_cycles=25, heal_steps_per_cycle=10)
+        sz = getattr(args, 'mat_frob_size', 20)
+        caps = getattr(args, 'mat_frob_capsules', 0.12)
+        gain = getattr(args, 'mat_frob_gain', 1.5)
+        cyc = getattr(args, 'mat_frob_cycles', 25)
+        heal = getattr(args, 'mat_frob_heal_steps', 10)
+        params = FrobeniusMaterialParams(capsule_volume_fraction=caps, feedback_gain=gain)
+        mat = FrobeniusMetamaterial(size=sz, params=params)
+        results = mat.run_simulation(load_cycles=cyc, heal_steps_per_cycle=heal)
+        if args.mat_output:
+            mat.export_results(results, args.mat_output)
         return 0
 
     elif sub == "ouroboric":
-        from materials.ouroboric_alloy import OuroboricAlloy
-        alloy = OuroboricAlloy(n_grains=64)
-        results = alloy.run_mechanical_test(stress_amplitude_MPa=800, cycles=40)
+        from materials.ouroboric_alloy import OuroboricAlloy, compare_with_conventional
+        grains = getattr(args, 'mat_ouro_grains', 64)
+        stress = getattr(args, 'mat_ouro_stress', 800)
+        cyc = getattr(args, 'mat_ouro_cycles', 30)
+        alloy = OuroboricAlloy(n_grains=grains)
+        results = alloy.run_mechanical_test(stress_amplitude_MPa=stress, cycles=cyc)
+        if args.mat_output:
+            alloy.export_results(results, args.mat_output)
+        if getattr(args, 'mat_ouro_compare', False):
+            compare_with_conventional()
         return 0
 
     elif sub == "sophick":
@@ -639,6 +709,10 @@ def cmd_materials(args):
         if args.mat_name and args.mat_name in all_mats:
             result = run_eagle_simulation(args.mat_name)
             print(json.dumps(result, indent=2, default=str))
+            if args.mat_output:
+                with open(args.mat_output, 'w') as f:
+                    json.dump(result, f, indent=2, default=str)
+                print(f"\n  Exported to {args.mat_output}")
         elif args.mat_name == "cliff":
             for name, mat in all_mats.items():
                 temp = 0.01 if "9" in name else (77.0 if "7" in name else 300.0)
@@ -662,7 +736,6 @@ def cmd_materials(args):
         if args.mat_name == "diagnose":
             print(CategoryErrorDiagnosis.diagnose())
         elif args.mat_name == "close":
-            obstruction = None
             result = FrobeniusGapCloser.close_gap()
             print(f"Selected pathway: {result['selected_pathway']}")
             print(f"Gap closed: {result['gap_closed']}")
@@ -686,7 +759,6 @@ def cmd_materials(args):
             for name in ALL_EXACTORS:
                 print(f"  --name {name}")
         return 0
-
 
     else:
         print("Unknown materials subcommand. Use: forge, frobenius, ouroboric, sophick, exactor. Static data: see INDEX.md")
@@ -773,6 +845,32 @@ Examples:
                         help="Material or IMASM canonical name for forge")
     p_mat.add_argument("--all", dest="mat_all", action="store_true",
                         help="Forge all predefined materials")
+    p_mat.add_argument("--tuple", dest="mat_tuple", type=str,
+                        help="Comma-separated 12-tuple: D,T,R,P,F,K,G,C,Phi,H,S,Omega")
+    p_mat.add_argument("--catalog", dest="mat_catalog", type=str,
+                        help="Catalog entry name to look up")
+    p_mat.add_argument("--imas", dest="mat_imas", type=str,
+                        help="IMASM canonical name to forge from")
+    p_mat.add_argument("--output", dest="mat_output", type=str,
+                        help="Export path for JSON results")
+    # frobenius metamaterial params
+    p_mat.add_argument("--size", dest="mat_frob_size", type=int,
+                        help="Grid size for Frobenius metamaterial (default: 20)")
+    p_mat.add_argument("--capsules", dest="mat_frob_capsules", type=float,
+                        help="Capsule volume fraction (default: 0.12)")
+    p_mat.add_argument("--gain", dest="mat_frob_gain", type=float,
+                        help="Feedback gain (default: 1.5)")
+    p_mat.add_argument("--cycles", dest="mat_frob_cycles", type=int,
+                        help="Load cycles for Frobenius / Ouroboric (default: 25/30)")
+    p_mat.add_argument("--heal-steps", dest="mat_frob_heal_steps", type=int,
+                        help="Heal steps per cycle (default: 10)")
+    # ouroboric alloy params
+    p_mat.add_argument("--grains", dest="mat_ouro_grains", type=int,
+                        help="Number of grains for Ouroboric alloy (default: 64)")
+    p_mat.add_argument("--stress", dest="mat_ouro_stress", type=float,
+                        help="Stress amplitude in MPa (default: 800)")
+    p_mat.add_argument("--compare", dest="mat_ouro_compare", action="store_true",
+                        help="Run comparative analysis for Ouroboric alloy")
 
     p_pipe = subparsers.add_parser("pipeline", help="CLINK Design Pipeline",
                                   epilog=EXAMPLES["pipeline"],

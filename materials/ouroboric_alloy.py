@@ -416,10 +416,29 @@ def compare_with_conventional():
 # ═══════════════════════════════════════════════════════════════════
 
 if __name__ == "__main__":
-    alloy = OuroboricAlloy(n_grains=64)
-    results = alloy.run_mechanical_test(stress_amplitude_MPa=800, cycles=30)
-    alloy.export_results(
-        results,
-        "/home/mrnob0dy666/red-hot_rebis/materials/ouroboric_alloy_results.json"
-    )
-    compare_with_conventional()
+    import argparse, os
+
+    parser = argparse.ArgumentParser(
+        description="Ouroboric Alloy — topologically protected high-entropy alloy simulation",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""Examples:
+  %(prog)s                                            Default simulation (64 grains, 800 MPa, 30 cycles)
+  %(prog)s --grains 128 --stress 1000 --cycles 50     High-stress endurance test
+  %(prog)s --compare                                  Run comparative analysis vs conventional HEA
+  %(prog)s --output my_results.json                   Custom export path
+""")
+    parser.add_argument("--grains", type=int, default=64, help="Number of grains (default: 64)")
+    parser.add_argument("--stress", type=float, default=800, help="Stress amplitude in MPa (default: 800)")
+    parser.add_argument("--cycles", type=int, default=30, help="Number of stress cycles (default: 30)")
+    parser.add_argument("--compare", action="store_true", help="Run comparative analysis vs conventional HEA")
+    parser.add_argument("--output", type=str, help="Export path for JSON results")
+    args = parser.parse_args()
+
+    alloy = OuroboricAlloy(n_grains=args.grains)
+    results = alloy.run_mechanical_test(stress_amplitude_MPa=args.stress, cycles=args.cycles)
+    outpath = args.output or os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                          "ouroboric_alloy_results.json")
+    alloy.export_results(results, outpath)
+
+    if args.compare:
+        compare_with_conventional()

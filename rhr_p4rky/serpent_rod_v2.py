@@ -21,6 +21,31 @@ Author: Lando ⊗ ⊙perator
 """
 
 from __future__ import annotations
+import sys, os
+_REBIS_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if _REBIS_ROOT not in sys.path:
+    sys.path.insert(0, _REBIS_ROOT)
+
+# Handle imports for both direct script execution and package usage
+try:
+    from rhr_p4rky.serpent_rod import (
+        SerpentRod, FoldedProtein, PredictedContact,
+        NUCLEOTIDE_B4, COMPLEMENTARY_PRIMITIVE_PAIRS,
+        ONE_LETTER, HYDROPHOBICITY,
+    )
+    from rhr_p4rky.genetic_code import (
+        IG_PRIMITIVE_OF_AA, PROMOTED_AAS, AA_TO_SYMBOLS,
+    )
+except ImportError:
+    from .serpent_rod import (
+        SerpentRod, FoldedProtein, PredictedContact,
+        NUCLEOTIDE_B4, COMPLEMENTARY_PRIMITIVE_PAIRS,
+        ONE_LETTER, HYDROPHOBICITY,
+    )
+    from .genetic_code import (
+        IG_PRIMITIVE_OF_AA, PROMOTED_AAS, AA_TO_SYMBOLS,
+    )
+
 import sys as _sys
 if '--help' in _sys.argv or '-h' in _sys.argv:
     print(__doc__.strip())
@@ -37,14 +62,7 @@ import sys
 from typing import Dict, List, Tuple, Optional, Set
 from dataclasses import dataclass, field
 
-from .serpent_rod import (
-    SerpentRod, FoldedProtein, PredictedContact,
-    NUCLEOTIDE_B4, COMPLEMENTARY_PRIMITIVE_PAIRS,
-    ONE_LETTER, HYDROPHOBICITY,
-)
-from .genetic_code import (
-    IG_PRIMITIVE_OF_AA, PROMOTED_AAS, AA_TO_SYMBOLS,
-)
+# (imports handled above)
 
 # ═══════════════════════════════════════════════════════════════════
 # 1. B₄ → RAMACHANDRAN φ/ψ MAPPING
