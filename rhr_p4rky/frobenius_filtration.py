@@ -5,6 +5,21 @@
 # The Frobenius filtration: F_1 superset F_2 superset F_3 superset ...
 # where F_k is the domain of mu circ delta = id at level k.
 
+_HELP_EXAMPLES = """  rebis.py run frobenius_filtration"""
+import sys as _sys
+_HELP_ARGS = set(_sys.argv[1:])
+if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
+    _doc = __doc__.strip() if __doc__ else "rhr_p4rky/frobenius_filtration.py"
+    print(_doc)
+    print()
+    print("Examples:")
+    print(_HELP_EXAMPLES)
+    print()
+    _sys.exit(0)
+
+import os as _os
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+
 from orbital_belnap import OrbitalState
 from quark_belnap import QuarkState, ColorState
 from hadron_belnap import Meson, Baryon
@@ -70,12 +85,12 @@ def level2_subset_level1(q: QuarkState) -> bool:
 
 def test_filtration():
     # Test: the chain property holds
-    from quark_belnap import test_quark as _  # ensure quark_belnap loaded
+    from quark_belnap import test_quark_belnap as _  # ensure quark_belnap loaded
     print("FrobeniusFiltration tests:")
     
     # Orbital: ALL states are in domain
-    for s in [OrbitalState.EMPTY, OrbitalState.SPIN_UP, 
-              OrbitalState.SPIN_DOWN, OrbitalState.PAIRED]:
+    for s in [OrbitalState.empty, OrbitalState.spinUp, 
+              OrbitalState.spinDown, OrbitalState.paired]:
         assert orbital_domain(s), f"All orbital states should be in domain: {s}"
     print("  Level 1 (orbital): universal domain verified")
     
@@ -84,6 +99,5 @@ def test_filtration():
     # This is the structural content of the filtration property.
     print("  Filtration chain: F_3 subset F_2 subset F_1: invariant maintained")
     print("  All tests passed!")
-
 if __name__ == "__main__":
     test_filtration()

@@ -2,22 +2,22 @@
   "simulation": "Topological Thermal Rectifier (Two-Segment)",
   "structural_type": "\u27e8\ud801\udc7c\u00b7\ud801\udc78\u00b7\ud801\udc7e\u00b7\ud801\udc6c\u00b7\ud801\udc5e\u00b7\ud801\udc67\u00b7\ud801\udc51\u00b7\ud801\udc5d\u00b7\u2299\u00b7\ud801\udc56\u00b7\ud801\udc73\u00b7\ud801\udc6d\u27e9",
   "parameters": {
-    "N_L": 20,
-    "N_R": 20,
-    "m_light": 0.3,
-    "m_heavy": 5.0,
-    "mass_ratio": 16.666666666666668,
-    "k_stiff": 6.0,
-    "k_soft": 0.3,
-    "beta_nl": 3.0,
-    "T_hot": 1.5,
-    "T_cold": 0.05
+    "N_L": 8,
+    "N_R": 8,
+    "m_light": 0.5,
+    "m_heavy": 3.0,
+    "mass_ratio": 6.0,
+    "k_stiff": 5.0,
+    "k_soft": 0.5,
+    "beta_nl": 2.0,
+    "T_hot": 3.0,
+    "T_cold": 1.0
   },
   "results": {
-    "J_forward": 0.000404,
-    "J_forward_std": 12.773487,
-    "J_backward": 3.6e-05,
-    "J_backward_std": 0.330573,
-    "rectification_ratio": 11.18
+    "J_forward": 0.000125,
+    "J_forward_std": 12.672251,
+    "J_backward": -3.8e-05,
+    "J_backward_std": 3.510444,
+    "rectification_ratio": 3.28
   }
 }

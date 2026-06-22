@@ -17,8 +17,22 @@ Theorems (matching Lean):
 """
 
 from __future__ import annotations
+_HELP_EXAMPLES = """  rebis.py run hadron_belnap"""
+import sys as _sys
+if '--help' in _sys.argv or '-h' in _sys.argv:
+    _doc = __doc__.strip() if __doc__ else "rhr_p4rky/hadron_belnap.py"
+    print(_doc)
+    print()
+    print("Examples:")
+    print(_HELP_EXAMPLES)
+    print()
+    _sys.exit(0)
+
 from dataclasses import dataclass
 from typing import Optional, Tuple
+
+import os as _os
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
 
 from quark_belnap import (
     ColorState, QuarkState, anti_color, color_join,
@@ -196,7 +210,5 @@ def test_hadron_belnap() -> None:
     assert m_both and b_both
 
     print("✅ hadron_belnap.py: all tests pass")
-
-
 if __name__ == "__main__":
     test_hadron_belnap()

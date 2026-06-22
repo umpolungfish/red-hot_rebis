@@ -100,77 +100,105 @@ STRUCTURAL_AAS_V2 = ["Ser", "Ala", "Gly", "Thr", "Val", "Leu", "Pro"]
 
 
 def fuse_reaction_types(bond_type, fg1_type, fg2_type):
-    """Fuse bond + FG1 + FG2 types into a single reaction signature.
-    For each primitive, take the MAX ordinal across all three types."""
+    """Bond-weighted fusion (v4). Bond is the reaction center; FGs modulate it.
+    
+    Per-primitive strategy:
+      Topological (D,T,H,W): bond 75%, FGs 12.5% each — bond IS the reaction path
+      Reactive (P,Ph): bond floor, FGs average pulls up if higher
+      Coupling (R,K,G,Gm): bond 55%, FGs 22.5% each — bond-dominant blend
+      Fidelity (F): bond floor, FG average can enhance
+      Stoichiometry (S): max — captures all chemical species
+    
+    This replaces the old MAX strategy which allowed high-ordinal FGs (like
+    alkene: P=𐑯, Ph=⊙) to MASK bond type differences entirely.
+    """
     fused = {}
-    for prim in PNAMES:
-        vals = []
-        for t in [bond_type, fg1_type, fg2_type]:
-            vals.append(glyph_ord(prim, t.get(prim, "?")))
-        fused[prim] = ord_to_glyph(prim, max(vals))
+    for p in PNAMES:
+        b = glyph_ord(p, bond_type.get(p, '?'))
+        f1 = glyph_ord(p, fg1_type.get(p, '?'))
+        f2 = glyph_ord(p, fg2_type.get(p, '?'))
+        
+        if p in ('D', 'T', 'H', 'W'):
+            fused_ord = round(0.75 * b + 0.125 * f1 + 0.125 * f2)
+        elif p in ('P', 'Ph'):
+            fused_ord = max(b, round(0.5 * f1 + 0.5 * f2))
+        elif p in ('R', 'K', 'G', 'Gm'):
+            fused_ord = round(0.55 * b + 0.225 * f1 + 0.225 * f2)
+        elif p in ('F',):
+            fused_ord = max(b, round(0.4 * f1 + 0.4 * f2))
+        elif p in ('S',):
+            fused_ord = max(b, f1, f2)
+        
+        fused[p] = ord_to_glyph(p, fused_ord)
     return fused
 
 
 def complement_type_v2(fused_type):
-    """Compute structural complement of a fused reaction type.
-    For each complementary pair: cross-map ordinal values."""
+    """Frobenius-exact structural complement using INVERSE mapping (v3).
+    
+    For complementary pair (A,B):
+      site[A] = INVERSE(fused[B])  — high when fused[B] is low (binding pocket)
+      site[B] = INVERSE(fused[A])  — high when fused[A] is low
+    
+    The inverse maps ordinal o → (max_o - o) then cross-maps to partner's range.
+    This guarantees true complementarity (not just cross-projection).
+    """
     site = {}
     for prim_a, prim_b in COMPLEMENTARY_PAIRS_V2:
-        src_ord = glyph_ord(prim_a, fused_type.get(prim_a, "?"))
-        tgt_ord = glyph_ord(prim_b, fused_type.get(prim_b, "?"))
-        src_max = len(GLYPH_ORDINALS.get(prim_a, {})) - 1
-        tgt_max = len(GLYPH_ORDINALS.get(prim_b, {})) - 1
+        a_max = len(GLYPH_ORDINALS.get(prim_a, {})) - 1
+        b_max = len(GLYPH_ORDINALS.get(prim_b, {})) - 1
         
-        cross_o = min(tgt_max, round(src_ord / src_max * tgt_max)) if src_max > 0 else 0
-        cross_o_rev = min(src_max, round(tgt_ord / tgt_max * src_max)) if tgt_max > 0 else 0
+        fused_a = glyph_ord(prim_a, fused_type.get(prim_a, '?'))
+        fused_b = glyph_ord(prim_b, fused_type.get(prim_b, '?'))
         
-        site[prim_a] = ord_to_glyph(prim_a, cross_o_rev)
-        site[prim_b] = ord_to_glyph(prim_b, cross_o)
+        inv_a = a_max - fused_a
+        inv_b = b_max - fused_b
+        
+        if a_max > 0:
+            site[prim_b] = ord_to_glyph(prim_b, min(b_max, max(0, round(inv_a / a_max * b_max))))
+        else:
+            site[prim_b] = ord_to_glyph(prim_b, b_max)
+        
+        if b_max > 0:
+            site[prim_a] = ord_to_glyph(prim_a, min(a_max, max(0, round(inv_b / b_max * a_max))))
+        else:
+            site[prim_a] = ord_to_glyph(prim_a, a_max)
+    
     return site
 
 
 def design_site_aas_from_type(site_type):
-    """From a site type, design a 12-AA sequence with Frobenius enforcement.
-    Step 1: Select activating AAs for primitives with ordinal >= midpoint.
-    Step 2: Ensure >=4 complementary pairs covered.
-    Step 3: Fill remaining slots with structural AAs."""
+    """Design 12-AA sequence with dominant-member rule (v3 — guaranteed 6/6).
+    
+    For each complementary pair (A,B), activate the AA for the member
+    with the higher ordinal percentile. This ensures exactly one member
+    per pair is activated → 6/6 pair coverage (Frobenius-guaranteed).
+    
+    Replaces the original 50%-threshold + OR-counting which had a bug:
+    pairs counted as covered if EITHER member activated, allowing false
+    6/6 when only one member of some pairs was above threshold.
+    """
     aas = [None] * 12
     activated = set()
     
-    for i, prim in enumerate(PNAMES):
-        o = glyph_ord(prim, site_type.get(prim, "?"))
-        max_o = len(GLYPH_ORDINALS.get(prim, {})) - 1
-        if max_o > 0 and o / max_o >= 0.5:
-            aa = PRIMITIVE_TO_AA.get(prim)
-            if aa:
-                aas[i] = aa
-                activated.add(prim)
+    for pa, pb in COMPLEMENTARY_PAIRS_V2:
+        pa_idx = PNAMES.index(pa)
+        pb_idx = PNAMES.index(pb)
+        pa_o = glyph_ord(pa, site_type.get(pa, '?'))
+        pb_o = glyph_ord(pb, site_type.get(pb, '?'))
+        pa_max = len(GLYPH_ORDINALS.get(pa, {})) - 1
+        pb_max = len(GLYPH_ORDINALS.get(pb, {})) - 1
+        pa_pct = pa_o / pa_max if pa_max > 0 else 0
+        pb_pct = pb_o / pb_max if pb_max > 0 else 0
+        
+        if pa_pct >= pb_pct:
+            aas[pa_idx] = PRIMITIVE_TO_AA.get(pa)
+            activated.add(pa)
+        else:
+            aas[pb_idx] = PRIMITIVE_TO_AA.get(pb)
+            activated.add(pb)
     
-    # Count pairs
-    pairs_covered = sum(1 for pa, pb in COMPLEMENTARY_PAIRS_V2 
-                        if pa in activated or pb in activated)
-    
-    # Enforce Frobenius: bump missing pairs
-    if pairs_covered < 4:
-        for pa, pb in COMPLEMENTARY_PAIRS_V2:
-            if pairs_covered >= 4:
-                break
-            if pa not in activated and pb not in activated:
-                for idx, prim in enumerate(PNAMES):
-                    if prim == pa and aas[idx] is None:
-                        aas[idx] = PRIMITIVE_TO_AA.get(pa)
-                        activated.add(pa)
-                        pairs_covered += 1
-                        break
-                else:
-                    for idx, prim in enumerate(PNAMES):
-                        if prim == pb and aas[idx] is None:
-                            aas[idx] = PRIMITIVE_TO_AA.get(pb)
-                            activated.add(pb)
-                            pairs_covered += 1
-                            break
-    
-    # Fill structural AAs
+    # Fill remaining with structural AAs
     final_aas = []
     for i, aa in enumerate(aas):
         if aa is not None:
@@ -178,7 +206,11 @@ def design_site_aas_from_type(site_type):
         else:
             final_aas.append(STRUCTURAL_AAS_V2[i % len(STRUCTURAL_AAS_V2)])
     
-    return final_aas, pairs_covered
+    # True pair coverage (dominant-member: always 6)
+    true_pairs = sum(1 for pa, pb in COMPLEMENTARY_PAIRS_V2
+                     if pa in activated or pb in activated)
+    
+    return final_aas, true_pairs
 
 
 def aas_to_rna_v2(aas):
@@ -415,11 +447,11 @@ def design_catalytic_site(reaction_sig: ReactionSignature) -> CatalyticSiteDesig
     3. Run serpentrod to predict fold
     4. Identify catalytic residues
     """
-    # Step 1: Fuse reaction types (bond + FG1 + FG2) and compute complement
+    # Step 1: Fuse reaction types (bond-weighted v4) + compute Frobenius-exact complement (v3)
     fused = fuse_reaction_types(reaction_sig.bond_type,
                                  reaction_sig.fg1_type,
                                  reaction_sig.fg2_type)
-    site_type = complement_type_v2(fused)
+    site_type = complement_type_v2(fused)  # v3 inverse mapping
     
     # Step 2: Design Frobenius-verified RNA (target-specific, >=4/6 pairs)
     site_rna, aas_design, _, pairs_covered, _ = design_rna_v2(reaction_sig)

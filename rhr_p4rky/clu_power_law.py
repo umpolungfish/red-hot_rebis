@@ -22,6 +22,17 @@ Verification: 3D random walk on (K×H×Ω) lattice, MLE exponent = 1.5 ± 0.15
 """
 
 from __future__ import annotations
+_HELP_EXAMPLES = """  rebis.py run clu_power_law"""
+import sys as _sys
+if '--help' in _sys.argv or '-h' in _sys.argv:
+    _doc = __doc__.strip() if __doc__ else "rhr_p4rky/clu_power_law.py"
+    print(_doc)
+    print()
+    print("Examples:")
+    print(_HELP_EXAMPLES)
+    print()
+    _sys.exit(0)
+
 import math
 import random
 from typing import List, Tuple, Optional, Callable
@@ -602,7 +613,5 @@ def main() -> None:
     print("  Integrated with:     Frobenius kernel (kernel.py)")
     print("  Filtration:          frobenius_filtration.py")
     print("=" * 72)
-
-
 if __name__ == "__main__":
     main()

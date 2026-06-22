@@ -43,10 +43,19 @@ BELNAP_TO_NUCLEOTIDE: Dict[Belnap, str] = {
 
 
 def nucleotide_to_belnap(sym: str) -> Belnap:
-    """Map nucleotide symbol to Belnap value."""
-    b = NUCLEOTIDE_TO_BELNAP.get(sym)
+    """Map nucleotide symbol to Belnap value.
+    
+    Unknown nucleotides map to Belnap.B (Both = paraconsistent unknown).
+    In Belnap FOUR logic, an unresolvable input is inherently both-true-and-false
+    until disambiguated. This is the structural treatment of sequencing ambiguity.
+    The gap symbol '-' maps to Belnap.N (Neither = deletion/absence).
+    """
+    if sym == '-':
+        return Belnap.N
+    b = NUCLEOTIDE_TO_BELNAP.get(sym.upper())
     if b is None:
-        raise ValueError(f"Unknown nucleotide: {sym!r}")
+        # Paraconsistent: unknown → Both (all possibilities simultaneously)
+        return Belnap.B
     return b
 
 

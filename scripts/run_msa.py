@@ -5,6 +5,18 @@ Tests evolutionary conservation of activation patterns across species.
 
 Author: Lando ⊗ ⊙perator
 """
+_HELP_EXAMPLES = """  rebis.py run run_msa"""
+import sys as _sys
+_HELP_ARGS = set(_sys.argv[1:])
+if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
+    _doc = __doc__.strip() if __doc__ else "scripts/run_msa.py"
+    print(_doc)
+    print()
+    print("Examples:")
+    print(_HELP_EXAMPLES)
+    print()
+    _sys.exit(0)
+
 import sys, os, json, urllib.request
 _REBIS_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, _REBIS_ROOT)

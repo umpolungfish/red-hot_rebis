@@ -5,6 +5,18 @@ Usage:
   python3 -m rhr_p4rky.ch3mpiler_ob3ect_bridge        # Run verification
   python3 -m rhr_p4rky.ch3mpiler_ob3ect_bridge --quiet  # Just return code
 """
+_HELP_EXAMPLES = """  rebis.py run ch3mpiler_ob3ect_bridge"""
+import sys as _sys
+_HELP_ARGS = set(_sys.argv[1:])
+if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
+    _doc = __doc__.strip() if __doc__ else "rhr_p4rky/ch3mpiler_ob3ect_bridge.py"
+    print(_doc)
+    print()
+    print("Examples:")
+    print(_HELP_EXAMPLES)
+    print()
+    _sys.exit(0)
+
 import sys
 from pathlib import Path
 
@@ -19,7 +31,6 @@ def run_verify(quiet=False):
     if quiet:
         print(f"Closure: {closure}")
     return 0 if closure else 1
-
 if __name__ == "__main__":
     quiet = "--quiet" in sys.argv
     sys.exit(run_verify(quiet=quiet))

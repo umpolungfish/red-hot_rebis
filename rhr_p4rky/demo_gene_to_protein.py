@@ -7,6 +7,18 @@ across multiple real biological sequences: DNA, RNA, small/large proteins.
 
 Usage:  python -m rhr_p4rky.demo_gene_to_protein
 """
+_HELP_EXAMPLES = """  rebis.py run demo_gene_to_protein"""
+import sys as _sys
+_HELP_ARGS = set(_sys.argv[1:])
+if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
+    _doc = __doc__.strip() if __doc__ else "rhr_p4rky/demo_gene_to_protein.py"
+    print(_doc)
+    print()
+    print("Examples:")
+    print(_HELP_EXAMPLES)
+    print()
+    _sys.exit(0)
+
 
 import json, sys, os, math
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -218,7 +230,5 @@ def main():
     print(f"\n{DIVIDER}")
     print("  DEMO COMPLETE — All Frobenius-closed ✓")
     print(f"{DIVIDER}")
-
-
 if __name__ == "__main__":
     main()

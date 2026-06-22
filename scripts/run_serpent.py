@@ -1,5 +1,17 @@
 #!/usr/bin/env python3
 """Runner for the Serpent on the Rod of Asclepius — with import fix."""
+_HELP_EXAMPLES = """  rebis.py run run_serpent"""
+import sys as _sys
+_HELP_ARGS = set(_sys.argv[1:])
+if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
+    _doc = __doc__.strip() if __doc__ else "scripts/run_serpent.py"
+    print(_doc)
+    print()
+    print("Examples:")
+    print(_HELP_EXAMPLES)
+    print()
+    _sys.exit(0)
+
 import sys
 import os
 import importlib.util
@@ -11,7 +23,6 @@ import rhr_p4rky.genetics_b4
 import rhr_p4rky.genetic_code
 from rhr_p4rky.serpent_rod import SerpentRod
 import json
-
 if __name__ == "__main__":
     # Test sequence
     sr = SerpentRod("AUGGCCGACUGGAACUGCAAGAAGAUCGUGCCCAAGUACUACGGCCGCUG", name="test_protein")

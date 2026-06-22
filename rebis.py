@@ -21,6 +21,7 @@ REBIS_ROOT = Path(__file__).parent.absolute()
 sys.path.insert(0, str(REBIS_ROOT))
 
 VERSION = "2.1.0"  # IMASM+CLINK Edition
+from _help_examples import EXAMPLES
 
 def _discover_packages():
     """Auto-discover all Python packages and standalone module files under REBIS_ROOT."""
@@ -184,19 +185,7 @@ def cmd_clink(args):
 
     sub = args.clink_subcommand
 
-    if sub == "report":
-        print(full_report())
-        return 0
-
-    elif sub == "list":
-        print(f"{'Idx':>3} {'Name':40s} {'Tier':10s} {'Tuple':50s}")
-        print("-" * 105)
-        for i in range(9):
-            tup = clink_layer_tuple(i, True)
-            print(f"{i:>3} {CLINK_NAMES[i]:40s} {CLINK_TIERS[i]:10s} {format_tuple_glyphs(tup)}")
-        return 0
-
-    elif sub == "layer":
+    if sub == "layer":
         if args.layer_args:
             arg = args.layer_args[0]
             try:
@@ -227,8 +216,16 @@ def cmd_clink(args):
         return 0
 
     elif sub == "bridge":
-        comp = args.bridge_comp if args.bridge_comp else "serpentrod"
-        target = int(args.bridge_target) if args.bridge_target else 8
+        # Support both --bridge-comp/--bridge-target flags and positional fallback
+        # (layer_args nargs="*" catches positional args before optional flags)
+        comp = args.bridge_comp
+        target_str = args.bridge_target
+        if not comp and args.layer_args:
+            comp = args.layer_args[0]
+        if not target_str and len(args.layer_args) > 1:
+            target_str = args.layer_args[1]
+        comp = comp or "serpentrod"
+        target = int(target_str) if target_str else 8
         p = integrated_promotion_path(comp, target)
         print(f"Promotion path: {p['from']} → {p['to']}")
         print(f"  Distance: {p['distance']}")
@@ -238,7 +235,7 @@ def cmd_clink(args):
         return 0
 
     else:
-        print("Unknown clink subcommand. Use: report, list, layer, bridge")
+        print("Unknown clink subcommand. Use: layer, bridge. Static data: see INDEX.md")
         return 1
 
 
@@ -256,6 +253,16 @@ def _discover_run_targets():
                                              clink, pipeline, imas, materials)
     """
     targets = {}
+
+    # 0. Root-level runnable scripts (e.g. test_genetics.py)
+    for p in sorted(REBIS_ROOT.glob("*.py")):
+        if p.name in ("rebis.py", "setup.py") or p.name.startswith('_'):
+            continue
+        try:
+            if '__main__' in p.read_text(encoding='utf-8', errors='ignore'):
+                targets[p.stem] = ("script", p)
+        except OSError:
+            pass
 
     # 1. Every script in scripts/
     for p in sorted((REBIS_ROOT / "scripts").glob("*.py")):
@@ -286,11 +293,111 @@ def _discover_run_targets():
     return targets
 
 
+def _show_run_target_help(target):
+    """Show help with examples for a runnable target."""
+    targets = _discover_run_targets()
+    if target not in targets:
+        print(f"Unknown target: {target}")
+        print(f"Run 'rebis.py run list' to see all available targets.")
+        return
+    kind, ref = targets[target]
+    print(f"Target: {target}")
+    print(f"Type:   {kind}")
+    print(f"Path:   {ref}")
+    print()
+    print("Usage:  rebis.py run " + target + " [args...]")
+    print()
+    # Per-target examples
+    target_examples = {
+        "serpentrod": "  rebis.py run serpentrod --seq KAL\n  rebis.py run serpentrod --seq ALMVL", 
+        "serpentrod_v4": "  rebis.py run serpentrod_v4 --seq ALMV", 
+        "serpentrod_pred": "  rebis.py run serpentrod_pred --seq KAL", 
+        "ch3mpiler": "  rebis.py run ch3mpiler --help\n  rebis.py run ch3mpiler --target aspirin --retrosynthesis",
+        "gene": "  rebis.py run gene --help\n  rebis.py run gene --rna AUGGCC...",
+        "gene_to_protein_pipeline": "  rebis.py run gene_to_protein_pipeline --test\n  rebis.py run gene_to_protein_pipeline AAAAATGGCT...\n  rebis.py run gene_to_protein_pipeline --file my.fasta",
+        "run_gene_pipeline": "  rebis.py run run_gene_pipeline --test\n  rebis.py run run_gene_pipeline ATG...\n  rebis.py run run_gene_pipeline --file my.fasta -n mygene",
+        "demo_gene_to_protein": "  rebis.py run demo_gene_to_protein",
+        "test_genetics": "  rebis.py run test_genetics\n  rebis.py run test_genetics --b4\n  rebis.py run test_genetics --codons\n  rebis.py run test_genetics --pipeline\n  rebis.py run test_genetics --quick\n  rebis.py run test_genetics --phi\n  rebis.py run test_genetics --kernel",
+        "run_serpent": "  rebis.py run run_serpent",
+        "serpent_rod": "  rebis.py run serpent_rod",
+        "serpent_rod_v2": "  rebis.py run serpent_rod_v2",
+        "run_antibody": "  rebis.py run run_antibody",
+        "run_msa": "  rebis.py run run_msa",
+        "run_pdb_validation": "  rebis.py run run_pdb_validation",
+        "mito_pipeline": "  rebis.py run mito_pipeline",
+        "msa_analysis": "  rebis.py run msa_analysis",
+        "psychedelic_bridge": "  rebis.py run psychedelic_bridge",
+        "diaschizic_iupac": "  rebis.py run diaschizic_iupac",
+        "frob_design": "  rebis.py run frob_design",
+        "frobenius_exact_design": "  rebis.py run frobenius_exact_design",
+        "gen_univ_map": "  rebis.py run gen_univ_map",
+        "omonad_bridge": "  rebis.py run omonad_bridge",
+        "compute_promotions": "  rebis.py run compute_promotions",
+        "analyze_validation": "  rebis.py run analyze_validation",
+        "hadron_belnap": "  rebis.py run hadron_belnap",
+        "exotic_hadron_belnap": "  rebis.py run exotic_hadron_belnap",
+        "quark_belnap": "  rebis.py run quark_belnap",
+        "ch3mpiler_bridge": "  rebis.py run ch3mpiler_bridge",
+        "ch3mpiler_ob3ect_bridge": "  rebis.py run ch3mpiler_ob3ect_bridge",
+        "ch3mpiler_serpentrod_pipeline": "  rebis.py run ch3mpiler_serpentrod_pipeline",
+        "clu_power_law": "  rebis.py run clu_power_law",
+        "frobenius_filtration": "  rebis.py run frobenius_filtration",
+        "genetic_code": "  rebis.py run genetic_code",
+        "pdb_validator": "  rebis.py run pdb_validator",
+        "antibody_designer": "  rebis.py run antibody_designer",
+    }
+    examples = target_examples.get(target, "  rebis.py run " + target)
+    print("Examples:")
+    print(examples)
+
 def cmd_run(args):
     """Route to any discoverable script or module under REBIS_ROOT."""
     import subprocess
     subcommand = args.subcommand
     rest = args.rest
+
+    # --help / -h passthrough: intercept before dispatching
+    if '--help' in (rest or []) or '-h' in (rest or []):
+        from _target_help import TARGET_EXAMPLES
+        # Special case: 'list' or no subcommand shows discoverable-target help
+        if subcommand == 'list' or subcommand is None:
+            print("Usage: rebis.py run list")
+            print()
+            print("  List all discoverable runnable targets under REBIS_ROOT.")
+            print("  Each target can be run with: rebis.py run <target> [args...]")
+            print()
+            print("Examples:")
+            print("  rebis.py run list                     # Show all 35+ targets")
+            print("  rebis.py run serpentrod --seq KAL     # Run with args")
+            print("  rebis.py run gene_to_protein_pipeline --help  # Target-specific help")
+            print("  rebis.py run ch3mpiler --help         # Forward --help to target")
+            return 0
+        targets = _discover_run_targets()
+        if subcommand not in targets:
+            print(f"Unknown target: {subcommand}")
+            print("Run 'rebis.py run list' to see all available targets.")
+            return 1
+        kind, ref = targets[subcommand]
+        print(f"Target: {subcommand}")
+        print(f"Type:   {kind}")
+        print(f"Path:   {ref}")
+        print()
+        print(f"Usage:  rebis.py run {subcommand} [args...]")
+        print()
+        examples = TARGET_EXAMPLES.get(subcommand, f"  rebis.py run {subcommand}")
+        print("Examples:")
+        print(examples)
+        return 0
+
+    """Route to any discoverable script or module under REBIS_ROOT."""
+    import subprocess
+    subcommand = args.subcommand
+    rest = args.rest
+
+    # --help / -h passthrough: intercept before dispatching
+    if '--help' in (rest or []) or '-h' in (rest or []):
+        _show_run_target_help(subcommand)
+        return 0
 
     if subcommand == "list" or subcommand is None:
         targets = _discover_run_targets()
@@ -366,49 +473,7 @@ def cmd_imas(args):
     """IMASM Arranger: arrangement analysis, IG bridge, CLINK bridge, Frobenius hunt."""
     sub = args.imas_subcommand
 
-    if sub == "report":
-        print("=" * 72)
-        print("IMASM ARRANGER — Structural Arrangement Analysis")
-        print("=" * 72)
-        print()
-        from imas.ig_bridge import canonical_ig_types, distinct_canonical_ig_types, ig_tuple_str, describe_ig, find_structural_clusters
-        from imas.clink_bridge import build_bridge_table
-
-        distinct = distinct_canonical_ig_types()
-        print(f"12 IMASM canonicals → {len(distinct)} distinct IG structural types")
-        print(f"Arrangement space: 12^8 = 429,981,696 possible length-8 token sequences")
-        print()
-
-        print("─── Canonical IG Types ───")
-        for ig, names in sorted(distinct.items(), key=lambda x: -len(x[1])):
-            label = " + ".join(n.split('_', 1)[1] for n in names)
-            desc = describe_ig(ig)
-            print(f"  {label}:")
-            print(f"    {ig_tuple_str(ig)}")
-            if desc:
-                print(f"    [{desc}]")
-            print()
-
-        print("─── Structural Clusters (d≤6) ───")
-        for c in find_structural_clusters(6):
-            if len(c) > 1:
-                print(f"  {' ↔ '.join(n.split('_',1)[1] for n in c)}")
-        print()
-
-        print("─── IMASM → CLINK Bridge ───")
-        print(build_bridge_table())
-        print()
-        print("─── Key Discoveries ───")
-        print("  1. Chiral/Empty collapse: distinct token sequences → identical IG types")
-        print("  2. Generic mass: 99.993% of random arrangements → 4 IG types")
-        print("  3. Zero Frobenius pairs in 10M random samples")
-        print("  4. Only Dialetheic Bootstrap achieves ⊙ criticality")
-        print("  5. Frobenius cluster shares R=𐑾, P=𐑹, C=𐑠, H=𐑫, Ω=𐑭")
-        print("  6. Linear Chain isolated: mismatch ≥ 8 from all others")
-        print("  7. Length-8 pre-shapes IG primitives (H:75% 𐑫, F:67% 𐑞, K:67% 𐑘)")
-        return 0
-
-    elif sub == "bridge":
+    if sub == "bridge":
         from imas.clink_bridge import canonical_clink_map, structural_activation_energy
         from imas.ig_bridge import ig_tuple_str, describe_full
         from imas.arranger import CANONICAL_NAMES
@@ -499,7 +564,7 @@ def cmd_imas(args):
         return 0
 
     else:
-        print("Unknown imas subcommand. Use: report, bridge, hunt, energy")
+        print("Unknown imas subcommand. Use: bridge, hunt, energy. Static data: see INDEX.md")
         return 1
 
 
@@ -547,13 +612,6 @@ def cmd_materials(args):
             print("  non_abelian_braiding_material")
         return 0
 
-    elif sub == "report":
-        forge = MaterialForge()
-        novel = predefined_novel_materials()
-        for name, ig_tuple in novel.items():
-            forge.forge(name, ig_tuple)
-        print(forge.report("frobenius_composite"))
-        return 0
 
     elif sub == "frobenius":
         from materials.frobenius_metamaterial import FrobeniusMetamaterial, FrobeniusMaterialParams
@@ -589,18 +647,10 @@ def cmd_materials(args):
         elif args.mat_name == "bridge":
             print(IMASM_EagleBridge.report())
         else:
-            print("Sophick Forge - Eagle Cycle Protocol")
-            print(f"  Sophick Mercury (O_∞):  <{' · '.join(SOPHICK_MERCURY)}>")
-            print(f"  Ouroboric O2 materials:   <{' · '.join(OUROBORIC_O2)}>")
-            print(f"  Structural distance:       {STRUCTURAL_DISTANCE_O2_TO_OINF:.4f}")
-            print(f"  Gap primitives:            {[GAP_PRIMITIVES[i]['name'] for i in GAP_PRIMITIVES]}")
-            print()
-            for name, mat in all_mats.items():
-                print(f"  {name}: {mat.composition[:60]}...")
-            print()
-            print("  Use --name eagle_3_amalgam | eagle_7_animated | eagle_9_sophick")
-            print("  Use --name cliff for Frobenius Cliff analysis")
-            print("  Use --name bridge for IMASM->Eagle bridge")
+            print("Sophick Forge requires --name. Static reference: see INDEX.md")
+            print("  --name eagle_3_amalgam | eagle_7_animated | eagle_9_sophick")
+            print("  --name cliff for Frobenius Cliff analysis")
+            print("  --name bridge for IMASM->Eagle bridge")
         return 0
 
     elif sub == "exactor":
@@ -631,21 +681,15 @@ def cmd_materials(args):
                 print(p.description())
                 print()
         else:
-            print(FrobeniusGapCloser.full_report())
+            print("Frobenius Exactor requires --name. Static reference: see INDEX.md")
+            print("  --name diagnose | close | pathways")
+            for name in ALL_EXACTORS:
+                print(f"  --name {name}")
         return 0
 
-    elif sub == "list":
-        print("Predefined novel materials:")
-        for name in predefined_novel_materials():
-            print(f"  {name}")
-        print("\nIMASM canonicals (use --name):")
-        from imas.arranger import CANONICAL_NAMES
-        for name in CANONICAL_NAMES:
-            print(f"  {name}")
-        return 0
 
     else:
-        print("Unknown materials subcommand. Use: forge, report, list, frobenius, ouroboric, sophick, exactor")
+        print("Unknown materials subcommand. Use: forge, frobenius, ouroboric, sophick, exactor. Static data: see INDEX.md")
         return 1
 
 
@@ -662,19 +706,15 @@ Examples:
   rebis.py pipeline from-layer 5 8   # Design organism starting from cell layer
   rebis.py pipeline actionable --organism mammal  # Generate actionable outputs
 
-  rebis.py imas report               # IMASM arrangement analysis + bridges
   rebis.py imas bridge --target I_Dialetheic_Bootstrap  # Bridge to CLINK
   rebis.py imas hunt --samples 100000          # Frobenius pair density estimation
   rebis.py imas energy --canonical I_Dialetheic_Bootstrap --layer L8_Organism
 
-  rebis.py clink report              # Full CLINK integration report
-  rebis.py clink list                # List all 9 CLINK layers
   rebis.py clink layer 3             # Show layer details
   rebis.py clink bridge serpentrod 8 # Promotion path to organism
 
   rebis.py materials forge --all          # Forge all 8 predefined novel materials
   rebis.py materials forge --name frobenius_composite  # Forge one material
-  rebis.py materials report              # Report all forged materials
   rebis.py materials frobenius           # Run Frobenius metamaterial simulation
   rebis.py materials ouroboric           # Run Ouroboric alloy simulation
 
@@ -688,6 +728,8 @@ Examples:
   rebis.py run run_gene_pipeline        # Gene imscription pipeline
   rebis.py run run_msa                  # Multiple sequence alignment
   rebis.py run run_pdb_validation       # PDB structure validation
+
+  Static reference (CLINK layers, IMASM canonicals, materials): less INDEX.md
 """
     )
     parser.add_argument("--version", action="version", version="%(prog)s " + VERSION)
@@ -695,15 +737,21 @@ Examples:
     subparsers = parser.add_subparsers(dest="command")
 
     # status
-    subparsers.add_parser("status", help="Show all component status")
+    subparsers.add_parser("status", help="Show all component status",
+                          epilog=EXAMPLES["status"],
+                          formatter_class=argparse.RawDescriptionHelpFormatter)
 
     # verify
-    subparsers.add_parser("verify", help="Verify Frobenius closure across components")
+    subparsers.add_parser("verify", help="Verify Frobenius closure across components",
+                          epilog=EXAMPLES["verify"],
+                          formatter_class=argparse.RawDescriptionHelpFormatter)
 
     # imas (NEW — 6th Pillar)
-    p_imas = subparsers.add_parser("imas", help="IMASM Arranger: arrangement analysis, bridges, Frobenius hunt")
+    p_imas = subparsers.add_parser("imas", help="IMASM Arranger: arrangement analysis, bridges, Frobenius hunt",
+                                  epilog=EXAMPLES["imas"],
+                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     p_imas.add_argument("imas_subcommand",
-                        choices=["report", "bridge", "hunt", "energy"],
+                        choices=["bridge", "hunt", "energy"],
                         help="IMASM subcommand")
     p_imas.add_argument("--canonical", dest="imas_target",
                         help="Canonical name for bridge/energy (comma-separated for bridge)")
@@ -715,16 +763,20 @@ Examples:
     # pipeline (NEW)
 
     # materials (NEW)
-    p_mat = subparsers.add_parser("materials", help="IG Material Forge — structural type to material design")
+    p_mat = subparsers.add_parser("materials", help="IG Material Forge — structural type to material design",
+                                 epilog=EXAMPLES["materials"],
+                                 formatter_class=argparse.RawDescriptionHelpFormatter)
     p_mat.add_argument("materials_subcommand",
-                        choices=["forge", "report", "list", "frobenius", "ouroboric", "sophick", "exactor"],
+                        choices=["forge", "frobenius", "ouroboric", "sophick", "exactor"],
                         help="Materials subcommand")
     p_mat.add_argument("--name", dest="mat_name", type=str,
                         help="Material or IMASM canonical name for forge")
     p_mat.add_argument("--all", dest="mat_all", action="store_true",
                         help="Forge all predefined materials")
 
-    p_pipe = subparsers.add_parser("pipeline", help="CLINK Design Pipeline")
+    p_pipe = subparsers.add_parser("pipeline", help="CLINK Design Pipeline",
+                                  epilog=EXAMPLES["pipeline"],
+                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     p_pipe.add_argument("pipeline_subcommand",
                         choices=["bridges", "ground-up", "from-layer", "actionable"],
                         help="Pipeline subcommand")
@@ -736,9 +788,11 @@ Examples:
                         help="Target layer index for from-layer mode")
 
     # clink
-    p_clink = subparsers.add_parser("clink", help="CLINK chain: subatomic to whole organism")
+    p_clink = subparsers.add_parser("clink", help="CLINK chain: subatomic to whole organism",
+                                   epilog=EXAMPLES["clink"],
+                                   formatter_class=argparse.RawDescriptionHelpFormatter)
     p_clink.add_argument("clink_subcommand",
-                         choices=["report", "list", "layer", "bridge"],
+                         choices=["layer", "bridge"],
                          help="CLINK subcommand")
     p_clink.add_argument("layer_args", nargs="*", help="Layer index for 'layer'")
     p_clink.add_argument("--bridge-comp", dest="bridge_comp",
@@ -747,14 +801,18 @@ Examples:
                          help="Target layer index for 'bridge' (0-8)")
 
     # run
-    p_run = subparsers.add_parser("run", help="Run any discoverable script or module (use 'run list' to see all)")
+    p_run = subparsers.add_parser("run", help="Run any discoverable script or module (use 'run list' to see all)",
+                                 epilog=EXAMPLES["run"],
+                                 formatter_class=argparse.RawDescriptionHelpFormatter)
     p_run.add_argument("subcommand", nargs="?", default="list",
                        help="Target name, or 'list' to show all available targets")
     p_run.add_argument("rest", nargs=argparse.REMAINDER,
                        help="Arguments to pass to the target")
 
     # scripts
-    p_scr = subparsers.add_parser("scripts", help="List or invoke scripts in scripts/")
+    p_scr = subparsers.add_parser("scripts", help="List or invoke scripts in scripts/",
+                                 epilog=EXAMPLES["scripts"],
+                                 formatter_class=argparse.RawDescriptionHelpFormatter)
     p_scr.add_argument("scripts_subcommand", choices=["list", "run"],
                        help="list — show all scripts; run — invoke one")
     p_scr.add_argument("script_name", nargs="?", help="Script name for 'run'")

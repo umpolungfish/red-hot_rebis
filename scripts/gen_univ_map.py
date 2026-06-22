@@ -1,7 +1,20 @@
 #!/usr/bin/env python3
 """Generate the universe-compound mapping document — v2 with correct glyphs."""
+_HELP_EXAMPLES = """  rebis.py run gen_univ_map"""
+import sys as _sys
+_HELP_ARGS = set(_sys.argv[1:])
+if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
+    _doc = __doc__.strip() if __doc__ else "scripts/gen_univ_map.py"
+    print(_doc)
+    print()
+    print("Examples:")
+    print(_HELP_EXAMPLES)
+    print()
+    _sys.exit(0)
+
 import sys
-sys.path.insert(0, '/home/mrnob0dy666/imscribing_grammar')
+sys.path.insert(0, '/home/mrnob0dy666/imsgct/imscribing_grammar')
+sys.path.insert(0, '/home/mrnob0dy666/imsgct/imscribing_grammar/scripts')
 from navigators.ruleset_universe import RULESETS
 from new_universes import NEW_RULESETS
 from iterate_universes import build_universes

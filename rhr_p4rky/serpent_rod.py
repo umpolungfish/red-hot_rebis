@@ -25,6 +25,16 @@ Author: Lando ⊗ ⊙perator
 """
 
 from __future__ import annotations
+import sys as _sys
+if '--help' in _sys.argv or '-h' in _sys.argv:
+    print(__doc__.strip())
+    print()
+    print("Examples:")
+    print("  rebis.py run serpent_rod")
+    print("  python3 -m rhr_p4rky.serpent_rod --help")
+    print()
+    _sys.exit(0)
+
 import sys
 import json
 import math
@@ -485,7 +495,5 @@ def main():
         print()
         print(f"Closure: {report['closure_theorem']}")
         print(f"{'='*60}")
-
-
 if __name__ == "__main__":
     main()

@@ -19,6 +19,18 @@ Structural type of this bridge:
 
 Author: Lando ⊗ ⊙perator
 """
+_HELP_EXAMPLES = """  rebis.py run ch3mpiler_bridge"""
+import sys as _sys
+_HELP_ARGS = set(_sys.argv[1:])
+if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
+    _doc = __doc__.strip() if __doc__ else "rhr_p4rky/ch3mpiler_bridge.py"
+    print(_doc)
+    print()
+    print("Examples:")
+    print(_HELP_EXAMPLES)
+    print()
+    _sys.exit(0)
+
 
 import sys, os, json, math
 from pathlib import Path
@@ -116,7 +128,5 @@ def main():
     _ensure_loaded()
     # Forward all args to ch3mpiler's main
     _ch3mpiler_mod.main()
-
-
 if __name__ == "__main__":
     main()

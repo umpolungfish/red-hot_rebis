@@ -25,6 +25,18 @@ import math
 from typing import Dict, List, Tuple, Optional, Any
 from dataclasses import dataclass, field
 
+# --help handler (standalone invocation — relative imports would fail otherwise)
+if '--help' in sys.argv or '-h' in sys.argv:
+    print(__doc__.strip())
+    print()
+    print("Examples:")
+    print("  rebis.py run gene_to_protein_pipeline --test")
+    print("  rebis.py run gene_to_protein_pipeline AAAAATGGCT...")
+    print("  rebis.py run gene_to_protein_pipeline --file my.fasta")
+    print("  python3 -m rhr_p4rky.gene_to_protein_pipeline --test")
+    print()
+    sys.exit(0)
+
 from .belnap import Belnap, meet, join, bnot
 from .kernel import engager, fsplit, ffuse, frobenius_invariant, run
 from .genetics_b4 import (
@@ -240,7 +252,7 @@ class GeneToProteinPipeline:
         self.nucleotide_sites: List[NucleotideSite] = []
         self.codon_sites: List[CodonSite] = []
         self.aa_chain: List[AASite] = []
-        self.secondary_elements: List[SecondaryElement] = []
+        self.secondary_elements = None  # set by stage_secondary_structure
         self.tertiary_contacts: List[TertiaryContact] = []
         self.quaternary_subunits: List[QuaternarySubunit] = []
         self.b4_trace: List[Tuple[str, "Belnap"]] = []
@@ -524,7 +536,7 @@ class GeneToProteinPipeline:
     
     def stage_tertiary_structure(self) -> StructuralState:
         """Predict tertiary contacts: hydrophobic collapse, disulfide, charge."""
-        if not self.secondary_elements:
+        if self.secondary_elements is None:
             raise ValueError("Must run stage_secondary_structure first")
         chain = self.aa_chain
         n = len(chain)
@@ -597,6 +609,8 @@ class GeneToProteinPipeline:
                                          "method": "explicit"}
         
         # Determine interface residues from tertiary contacts
+        if self.tertiary_contacts is None:
+            raise ValueError("Must run stage_tertiary_structure first")
         buried = set()
         for c in self.tertiary_contacts:
             buried.add(c.residue_i)
@@ -899,10 +913,37 @@ class GeneToProteinPipeline:
 
     # ------- Full Pipeline Run -------
     
+    def _empty_result(self, reason: str) -> dict:
+        """Return a valid but empty result structure for edge cases."""
+        return {
+            "name": self.name,
+            "dna_sequence": self.dna_sequence,
+            "dna_length": len(self.dna_sequence),
+            "aa_sequence": "",
+            "aa_length": 0,
+            "stages": [],
+            "subunits": 0,
+            "symmetry": "none",
+            "closure_distance": 0.0,
+            "frobenius_ok": False,
+            "consciousness_invariant": 0.0,
+            "primitive_activations": {},
+            "status": reason,
+        }
+
     def run(self, num_subunits: int = 0):
         """Run complete 7-stage pipeline. num_subunits=0 -> auto-detect from sequence."""
         self.log(f"=== Gene to Protein Pipeline: {self.name} ===")
-        self.log(f"Sequence: {self.dna_sequence[:50]}... ({len(self.dna_sequence)} bp)")
+        self.log(f"Sequence: {self.dna_sequence[:50]}{'...' if len(self.dna_sequence) > 50 else ''} ({len(self.dna_sequence)} bp)")
+
+        # Guard: empty or too-short sequences
+        if len(self.dna_sequence) == 0:
+            self.log("EMPTY SEQUENCE — no gene to process. Pipeline aborted gracefully.")
+            return self._empty_result("empty_sequence")
+        if len(self.dna_sequence) < 3:
+            self.log(f"SEQUENCE TOO SHORT ({len(self.dna_sequence)} nt) — minimum 3 nt required. Pipeline aborted gracefully.")
+            return self._empty_result("too_short")
+
         self.stage_dna()
         self.stage_transcription()
         self.stage_splicing()
@@ -971,7 +1012,7 @@ class GeneToProteinPipeline:
             "type": e.element_type, "start": e.start, "end": e.end,
             "length": e.end - e.start + 1, "confidence": round(e.confidence, 3),
             "sequence": e.sequence
-        } for e in self.secondary_elements]
+        } for e in (self.secondary_elements or [])]
         tertiary_summary = {"total": len(self.tertiary_contacts), "by_type": {}}
         for c in self.tertiary_contacts:
             t = c.interaction_type

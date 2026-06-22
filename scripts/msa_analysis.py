@@ -6,11 +6,22 @@ Author: Lando ⊗ ⊙perator
 Compares IG primitive activation patterns across species and verifies
 Frobenius closure universality.
 """
+_HELP_EXAMPLES = """  rebis.py run msa_analysis"""
+import sys as _sys
+_HELP_ARGS = set(_sys.argv[1:])
+if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
+    _doc = __doc__.strip() if __doc__ else "scripts/msa_analysis.py"
+    print(_doc)
+    print()
+    print("Examples:")
+    print(_HELP_EXAMPLES)
+    print()
+    _sys.exit(0)
+
 import sys, os, json, importlib.util
 
 # ── Fix imports for serpent_rod ───────────────────────────────────
-pkg_dir = os.path.join(os.path.dirname(__file__), "rhr_p4rky")
-sys.path.insert(0, pkg_dir)
+sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
 import rhr_p4rky.belnap
 import rhr_p4rky.genetics_b4
@@ -18,7 +29,7 @@ import rhr_p4rky.genetic_code
 
 spec = importlib.util.spec_from_file_location(
     "rhr_p4rky.serpent_rod",
-    os.path.join(pkg_dir, "serpent_rod.py"),
+    os.path.join(os.path.dirname(os.path.dirname(__file__)), "rhr_p4rky", "serpent_rod.py"),
 )
 mod = importlib.util.module_from_spec(spec)
 sys.modules["rhr_p4rky.serpent_rod"] = mod
@@ -307,6 +318,5 @@ def main():
     print(f"\n{'='*70}")
     print(f"Results saved to msa_analysis.json")
     print(f"{'='*70}")
-
 if __name__ == "__main__":
     main()

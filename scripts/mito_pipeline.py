@@ -4,6 +4,18 @@ mito_pipeline_v3.py — Clean final report.
 Processes all 13 human mitochondrial protein-coding genes from NC_012920.1
 through the 7-stage IG structural pipeline.
 """
+_HELP_EXAMPLES = """  rebis.py run mito_pipeline"""
+import sys as _sys
+_HELP_ARGS = set(_sys.argv[1:])
+if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
+    _doc = __doc__.strip() if __doc__ else "scripts/mito_pipeline.py"
+    print(_doc)
+    print()
+    print("Examples:")
+    print(_HELP_EXAMPLES)
+    print()
+    _sys.exit(0)
+
 import sys, os, json
 sys.path.insert(0, "/home/mrnob0dy666/imsgct/red-hot_rebis")
 from rhr_p4rky.gene_to_protein_pipeline import GeneToProteinPipeline

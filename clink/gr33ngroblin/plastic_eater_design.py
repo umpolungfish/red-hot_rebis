@@ -23,7 +23,8 @@ from dataclasses import dataclass, field
 # ── Paths ────────────────────────────────────────────────────
 BASE = Path(__file__).parent.absolute()
 _REBIS_ROOT = Path(__file__).parent.parent.parent
-IG = Path("/home/mrnob0dy666/imscribing_grammar")
+IG = Path("/home/mrnob0dy666/imsgct/imscribing_grammar")
+P4RA = _REBIS_ROOT / "rhr_p4rky"
 sys.path.insert(0, str(P4RA))
 sys.path.insert(0, str(IG))
 

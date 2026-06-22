@@ -17,6 +17,17 @@ Key theorems (all verified against the kernel):
 """
 
 from __future__ import annotations
+_HELP_EXAMPLES = """  rebis.py run genetic_code"""
+import sys as _sys
+if '--help' in _sys.argv or '-h' in _sys.argv:
+    _doc = __doc__.strip() if __doc__ else "rhr_p4rky/genetic_code.py"
+    print(_doc)
+    print()
+    print("Examples:")
+    print(_HELP_EXAMPLES)
+    print()
+    _sys.exit(0)
+
 from dataclasses import dataclass
 from typing import Dict, List, Tuple, Optional
 from collections import defaultdict
@@ -616,7 +627,6 @@ def demo() -> dict:
 
 
 # ── Run demo on import ──────────────────────────────────────────
-
 if __name__ == "__main__":
     demo()
 

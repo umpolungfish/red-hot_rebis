@@ -22,6 +22,17 @@ Theorems (matching Lean):
 """
 
 from __future__ import annotations
+_HELP_EXAMPLES = """  rebis.py run quark_belnap"""
+import sys as _sys
+if '--help' in _sys.argv or '-h' in _sys.argv:
+    _doc = __doc__.strip() if __doc__ else "rhr_p4rky/quark_belnap.py"
+    print(_doc)
+    print()
+    print("Examples:")
+    print(_HELP_EXAMPLES)
+    print()
+    _sys.exit(0)
+
 from dataclasses import dataclass
 from enum import Enum
 from typing import Optional, Tuple
@@ -232,6 +243,5 @@ def test_quark_belnap() -> None:
         assert orb_pair_self(s)
 
     print("✅ quark_belnap.py: all tests pass")
-
 if __name__ == "__main__":
     test_quark_belnap()

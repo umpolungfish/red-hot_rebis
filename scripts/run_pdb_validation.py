@@ -5,9 +5,21 @@ Downloads PDB structures, runs SerpentRod predictions, compares contacts.
 
 Author: Lando ⊗ ⊙perator
 """
+_HELP_EXAMPLES = """  rebis.py run run_pdb_validation"""
+import sys as _sys
+_HELP_ARGS = set(_sys.argv[1:])
+if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
+    _doc = __doc__.strip() if __doc__ else "scripts/run_pdb_validation.py"
+    print(_doc)
+    print()
+    print("Examples:")
+    print(_HELP_EXAMPLES)
+    print()
+    _sys.exit(0)
+
 import sys, os, json, math, urllib.request, tempfile
 from typing import List, Tuple, Dict, Set
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "rhr_p4rky"))
+sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
 # Patch imports
 import rhr_p4rky.belnap
@@ -15,7 +27,7 @@ import rhr_p4rky.genetics_b4
 import rhr_p4rky.genetic_code
 import importlib.util, importlib.machinery, types
 
-pkg_dir = os.path.join(os.path.dirname(__file__), "rhr_p4rky")
+pkg_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "rhr_p4rky")
 loader = importlib.machinery.SourceFileLoader("rhr_p4rky.serpent_rod",
     os.path.join(pkg_dir, "serpent_rod.py"))
 spec = importlib.util.spec_from_loader("rhr_p4rky.serpent_rod", loader)
@@ -170,7 +182,6 @@ def validate(pdb_id: str, pdb_text: str) -> Dict:
         "winding_number": result["winding_number"],
         "activation_coverage": result["activation_coverage"],
     }
-
 if __name__ == "__main__":
     pdb_ids = ["1VII", "1UBQ", "1ZDD", "2MTP", "1L2Y"]
     results = []

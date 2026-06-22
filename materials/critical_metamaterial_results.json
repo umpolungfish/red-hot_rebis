@@ -6,8 +6,8 @@
     "target_chi": 20000.0
   },
   "results": {
-    "mean_chi": 13605.22,
-    "peak_chi": 20000.0,
+    "mean_chi": 7221.42,
+    "peak_chi": 19753.71,
     "final_kappa": 0.0929,
     "criticality_achieved": false
   }

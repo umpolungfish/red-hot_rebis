@@ -3,6 +3,18 @@
 Compute primitive mismatches between each Millennium Problem's
 PrimitiveBridge.lean encoding and the O_∞ target (6,734,591).
 """
+_HELP_EXAMPLES = """  rebis.py run compute_promotions"""
+import sys as _sys
+_HELP_ARGS = set(_sys.argv[1:])
+if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
+    _doc = __doc__.strip() if __doc__ else "scripts/compute_promotions.py"
+    print(_doc)
+    print()
+    print("Examples:")
+    print(_HELP_EXAMPLES)
+    print()
+    _sys.exit(0)
+
 import json
 
 # O_∞ target from crystal_decode(6,734,591)

@@ -12,20 +12,33 @@ Key fixes:
      force both members of each incomplete pair
   3. Cluster plastics by structural compatibility
 """
+_HELP_EXAMPLES = """  rebis.py run frobenius_exact_design"""
+import sys as _sys
+_HELP_ARGS = set(_sys.argv[1:])
+if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
+    _doc = __doc__.strip() if __doc__ else "scripts/frobenius_exact_design.py"
+    print(_doc)
+    print()
+    print("Examples:")
+    print(_HELP_EXAMPLES)
+    print()
+    _sys.exit(0)
 
-import sys, json, math
+import sys, os, json, math
 from pathlib import Path
 
 _REBIS_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, _REBIS_ROOT)
 sys.path.insert(0, '/home/mrnob0dy666/imscribing_grammar')
 
+sys.path.insert(0, os.path.join(_REBIS_ROOT, 'rhr_p4rky'))
 from ch3mpiler_serpentrod_pipeline import (
     PNAMES, GLYPH_ORDINALS, ORD_TO_GLYPH, COMPLEMENTARY_PAIRS_V2,
     PRIMITIVE_TO_AA, AA_CODON_POOL_V2, STRUCTURAL_AAS_V2,
     fuse_reaction_types, glyph_ord, ord_to_glyph,
 )
 
+sys.path.insert(0, os.path.join(_REBIS_ROOT, 'clink/gr33ngroblin'))
 from plastic_eater_design import (
     ALL_BOND_TYPES, ALL_FG, PLASTIC_TARGETS,
     LINKER_AA, LINKER_CODONS, SIGNAL_AA, SIGNAL_CODONS,

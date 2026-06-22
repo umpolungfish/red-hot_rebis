@@ -13,6 +13,18 @@ complement to form a structural contact.
 
 Author: Lando ⊗ ⊙perator
 """
+_HELP_EXAMPLES = """  rebis.py run antibody_designer"""
+import sys as _sys
+_HELP_ARGS = set(_sys.argv[1:])
+if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
+    _doc = __doc__.strip() if __doc__ else "rhr_p4rky/antibody_designer.py"
+    print(_doc)
+    print()
+    print("Examples:")
+    print(_HELP_EXAMPLES)
+    print()
+    _sys.exit(0)
+
 import sys, os, json, math
 _REBIS_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, _REBIS_ROOT)
@@ -266,7 +278,6 @@ def test_on_viral_targets():
         }
     
     return results
-
 if __name__ == "__main__":
     print("="*70)
     print("🐍 SERPENT ON THE ROD — ANTIBODY DESIGN PIPELINE 🐍")
