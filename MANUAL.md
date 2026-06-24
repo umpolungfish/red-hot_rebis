@@ -247,6 +247,7 @@ The 9-layer Frobenius-closed bridge from subatomic particles to whole organisms 
 - `bridges.py` — Cross-component bridges (237 lines)
 - `integration.py` — Unified integration reporting (205 lines)
 - `pipeline_engine.py` — Pipeline orchestration
+- `datasets/protein_structure.py` — PDB v3.3-compliant structure generator (SEQRES, standard atom names ` N  ` / ` CA `, TER, SSBOND before MODEL, deterministic backbone)
 - `designers/` — Layer designers, tool forge, pipeline orchestrator
 - `cephalopod_design/` — Cephalopod-human engineering designs
 - `cat_allergy_design/` — DARPin Fel d1 neutralizer
@@ -268,9 +269,10 @@ A 28-module paraconsistent kernel migrated from `p4rakernel/`. Implements Belnap
 | `genetics_b4.py` | — | $\text{B}_4$ lattice — 64 codons, 7-stage tuple verification |
 | `genetic_tuples.py` | — | Tuple encodings for genes/codons/proteins |
 | `gene_to_protein_pipeline.py` | — | Full gene-to-protein translation pipeline |
-| `serpent_rod.py` / `_v2.py` | — | Serpent rod protein design |
+| `serpent_rod.py` | — | Foundational `SerpentRod` class — Frobenius morphism RNA→{sequence+fold} |
+| `serpent_rod_v2.py` | — | `SerpentRodV2`: 3D backbone (φ/ψ propagation), geometry contacts, energy scoring |
 | `antibody_designer.py` | — | Computational antibody design |
-| `pdb_validator.py` | — | PDB structure validation |
+| `pdb_validator.py` | — | PDB structure validation; `extract_sequence()` round-trips SEQRES from generated files |
 | `hadron_belnap.py` | — | Hadronic Belnap-state analysis |
 | `exotic_hadron_belnap.py` | — | Exotic hadron Belnap analysis |
 | `quark_belnap.py` | — | Quark Belnap-state analysis |
