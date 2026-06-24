@@ -1,0 +1,45 @@
+{
+  "organism_type": "treople",
+  "generation_mode": "actionable",
+  "modules_used": {
+    "gene_designer": true,
+    "protein_structure": true,
+    "metabolic_model": true,
+    "plasmid_designer": true
+  },
+  "layers": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "total_files": 33,
+  "total_bytes": 70443,
+  "output_directory": "clink/datasets/organism_designs/organism_treople_actionable",
+  "generation_time_seconds": 0.14,
+  "actionable_outputs": [
+    "Codon-optimized coding sequences (real, not random)",
+    "Protein PDB with secondary structure (not template)",
+    "SBML metabolic model with stoichiometric matrix",
+    "GenBank plasmid with full feature annotations",
+    "GFF genome annotation",
+    "SBOL synthetic biology construct",
+    "Gibson assembly protocol",
+    "Growth media formulation",
+    "Physiology and homeostasis parameters"
+  ],
+  "what_to_do_with_outputs": {
+    "genome.fasta": "Order DNA synthesis from Twist/IDT/GenScript",
+    "plasmid.gb": "Load into Benchling/SnapGene for construct design",
+    "protein_coords.pdb": "View in PyMOL/ChimeraX",
+    "metabolic_model.xml": "Load into COBRApy for FBA",
+    "construct.sbol": "Exchange with synthetic biology repositories",
+    "growth_media.txt": "Prepare media per formulation"
+  },
+  "advanced_components": {}
+}

@@ -26,7 +26,7 @@ Examples:
   rebis.py imas hunt --samples 100000          # Frobenius pair density estimation
   rebis.py imas hunt --samples 1000000         # Larger sample for better estimates
   rebis.py imas energy --canonical I_Dialetheic_Bootstrap --layer L8_Organism
-  rebis.py imas energy --canonical V_Linear_Chain --layer L0_Quark
+  rebis.py imas energy --canonical V_Linear_Chain --layer L0_FrustratedBelnap5
 
   Static reference (canonical types, clusters, bridge table): see INDEX.md
 """

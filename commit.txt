@@ -1,3 +1,39 @@
+Full framework test pass (2026-06-24)
+
+Tested all 8 top-level commands and all 36 `run` targets. Two bugs found and fixed:
+
+1. frobenius_exact_design.py: wrong sys.path for plastic_eater_design module
+   - Was:  clink/gr33ngroblin/
+   - Now:  designs/gr33ngroblin/
+   - Module exists there; import now resolves correctly.
+
+2. `imas energy` help example referenced non-existent layer "L0_Quark"
+   - Fixed in rhr_p4rky/_help_examples.py and USER_GUIDE.md
+   - Correct name: L0_FrustratedBelnap5
+
+All other targets pass cleanly. Two bridges marked unavailable by design
+(omonad_bridge: omonad_OS src not on path; ch3mpiler_ob3ect_bridge: ob3ect
+integration not yet built) — expected stubs, not errors.
+
+---
+
+protein_v5: fix compare_spectra crash + doc updates — 2026-06-24
+
+serpentrod/protein_v5.py:
+  run_validation() line 833: compare_spectra(spectra) called with one arg;
+  compare_spectra() requires two spectra dicts and returns a float.
+  Fixed: iterate all pairs and print a cosine-similarity table.
+
+README.md / USER_GUIDE.md / MANUAL.md:
+  USER_GUIDE: version bumped v2.3.0 → v2.3.1; module table, SerpentRod
+  key concept, protein_coords.pdb note, PDB Structure Output table, version
+  history entry all updated.
+  README: Serpent's Rod section updated with correct source files.
+  MANUAL: serpent_rod.py / _v2.py rows expanded; protein_structure.py added
+  to CLINK Chain key files.
+
+---
+
 PDB format robustness — 2026-06-24
 
 clink/datasets/protein_structure.py:

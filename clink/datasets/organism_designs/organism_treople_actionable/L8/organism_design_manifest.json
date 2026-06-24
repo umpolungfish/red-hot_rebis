@@ -1,0 +1,35 @@
+{
+  "design_name": "CLINK_treople_v1",
+  "author": "Lando (R) (O)perator",
+  "grammar_version": "1.0",
+  "schema": "Imscribing Grammar",
+  "schema_tier": "O_\u221e",
+  "organism_type": "treople",
+  "layers_integrated": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "dataset_files_generated": [
+    "genome.fasta",
+    "genome.gb",
+    "construct.sbol",
+    "protein.fasta",
+    "protein_coords.pdb",
+    "molecules.smi",
+    "molecular_props.csv",
+    "physiological_params.csv",
+    "organ_systems.json",
+    "homeostasis_setpoints.json"
+  ],
+  "frobenius_verified": true,
+  "consciousness_score": 1.0,
+  "tier": "O_\u221e",
+  "notes": "Whole organism design package - all layers actionable"
+}

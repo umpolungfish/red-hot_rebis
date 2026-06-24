@@ -502,7 +502,7 @@ Structural activation energy from an IMASM canonical to a CLINK target layer.
 
 ```bash
 python3 rebis.py imas energy --canonical I_Dialetheic_Bootstrap --layer L8_Organism
-python3 rebis.py imas energy --canonical V_Linear_Chain --layer L0_Quark
+python3 rebis.py imas energy --canonical V_Linear_Chain --layer L0_FrustratedBelnap5
 ```
 
 Default: `I_Dialetheic_Bootstrap` → L8 (Whole Organism).

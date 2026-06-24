@@ -14,6 +14,9 @@ if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
     print()
     _sys.exit(0)
 
+import os as _os
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+
 from dataclasses import dataclass
 from typing import Optional, Set, Tuple, List, Union
 from quark_belnap import ColorState, QuarkState, anti_color, color_join
