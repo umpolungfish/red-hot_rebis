@@ -19,9 +19,9 @@
     8
   ],
   "total_files": 33,
-  "total_bytes": 77596,
+  "total_bytes": 76418,
   "output_directory": "clink/datasets/organism_designs/organism_mammal_actionable",
-  "generation_time_seconds": 0.1,
+  "generation_time_seconds": 0.14,
   "actionable_outputs": [
     "Codon-optimized coding sequences (real, not random)",
     "Protein PDB with secondary structure (not template)",

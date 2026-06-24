@@ -33,6 +33,9 @@ if '--help' in _sys.argv or '-h' in _sys.argv:
     print()
     _sys.exit(0)
 
+import os as _os
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+
 from dataclasses import dataclass
 from enum import Enum
 from typing import Optional, Tuple

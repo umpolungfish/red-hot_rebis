@@ -830,7 +830,12 @@ def run_validation():
     spectra = {}
     for name in test_cases:
         spectra[name] = analyze_spectrum(test_cases[name])
-    print(compare_spectra(spectra))
+    spec_names = list(spectra.keys())
+    print("  Cosine similarity between primitive spectra (1.0 = identical):")
+    for i, a in enumerate(spec_names):
+        for b in spec_names[i + 1:]:
+            sim = compare_spectra(spectra[a], spectra[b])
+            print(f"    {a:30s} ↔ {b:25s}  cos={sim:.3f}")
 
     # ── Summary ──
     print(f"\n{'═' * 80}")

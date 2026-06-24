@@ -851,20 +851,20 @@ Examples:
     p_mat.add_argument("--output", dest="mat_output", type=str,
                         help="Export path for JSON results")
     # frobenius metamaterial params
-    p_mat.add_argument("--size", dest="mat_frob_size", type=int,
+    p_mat.add_argument("--size", dest="mat_frob_size", type=int, default=20,
                         help="Grid size for Frobenius metamaterial (default: 20)")
-    p_mat.add_argument("--capsules", dest="mat_frob_capsules", type=float,
+    p_mat.add_argument("--capsules", dest="mat_frob_capsules", type=float, default=0.12,
                         help="Capsule volume fraction (default: 0.12)")
-    p_mat.add_argument("--gain", dest="mat_frob_gain", type=float,
+    p_mat.add_argument("--gain", dest="mat_frob_gain", type=float, default=1.5,
                         help="Feedback gain (default: 1.5)")
-    p_mat.add_argument("--cycles", dest="mat_frob_cycles", type=int,
+    p_mat.add_argument("--cycles", dest="mat_frob_cycles", type=int, default=25,
                         help="Load cycles for Frobenius / Ouroboric (default: 25/30)")
-    p_mat.add_argument("--heal-steps", dest="mat_frob_heal_steps", type=int,
+    p_mat.add_argument("--heal-steps", dest="mat_frob_heal_steps", type=int, default=10,
                         help="Heal steps per cycle (default: 10)")
     # ouroboric alloy params
-    p_mat.add_argument("--grains", dest="mat_ouro_grains", type=int,
+    p_mat.add_argument("--grains", dest="mat_ouro_grains", type=int, default=64,
                         help="Number of grains for Ouroboric alloy (default: 64)")
-    p_mat.add_argument("--stress", dest="mat_ouro_stress", type=float,
+    p_mat.add_argument("--stress", dest="mat_ouro_stress", type=float, default=800.0,
                         help="Stress amplitude in MPa (default: 800)")
     p_mat.add_argument("--compare", dest="mat_ouro_compare", action="store_true",
                         help="Run comparative analysis for Ouroboric alloy")

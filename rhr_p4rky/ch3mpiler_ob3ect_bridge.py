@@ -25,10 +25,16 @@ OB3ECT_PATH = str(Path.home() / "ob3ect/digital/ch3mpiler_ob3ect")
 sys.path.insert(0, OB3ECT_PATH)
 
 def run_verify(quiet=False):
-    from ch3mpiler_ob3ect import Ch3mpilerOb3ect
+    try:
+        from ch3mpiler_ob3ect import Ch3mpilerOb3ect
+    except ModuleNotFoundError:
+        if not quiet:
+            print("ch3mpiler_ob3ect: module not found at ob3ect/digital/ch3mpiler_ob3ect")
+            print("Bridge unavailable — ob3ect integration not yet built")
+        return 1
     ob3ect = Ch3mpilerOb3ect()
     closure = ob3ect.verify()
-    if quiet:
+    if not quiet:
         print(f"Closure: {closure}")
     return 0 if closure else 1
 if __name__ == "__main__":

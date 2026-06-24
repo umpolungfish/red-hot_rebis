@@ -1,0 +1,7 @@
+{
+  "material": "PLGA 75:25",
+  "porosity_percent": 85,
+  "pore_size_um": 200,
+  "degradation_time_weeks": 12,
+  "mechanical_modulus_kPa": 50
+}

@@ -38,7 +38,7 @@ from ch3mpiler_serpentrod_pipeline import (
     fuse_reaction_types, glyph_ord, ord_to_glyph,
 )
 
-sys.path.insert(0, os.path.join(_REBIS_ROOT, 'clink/gr33ngroblin'))
+sys.path.insert(0, os.path.join(_REBIS_ROOT, 'designs/gr33ngroblin'))
 from plastic_eater_design import (
     ALL_BOND_TYPES, ALL_FG, PLASTIC_TARGETS,
     LINKER_AA, LINKER_CODONS, SIGNAL_AA, SIGNAL_CODONS,

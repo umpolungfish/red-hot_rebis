@@ -1,0 +1,19 @@
+{
+  "classification": "{'type': 'structured', 'profile': {'promoted_count': 9, 'dominant_primitive': '\u0126', 'description': '\u0126-dominant (9/26 residues)', '\u00d0': 1, '\u0126': 2, '\u0158': 1, '\u03a6': 1, '\u03a3': 2, '\u00c7': 1, '\u2299': 1}, 'dominant': '\u0126', 'description': '\u0126-dominant (9/26 residues)'}",
+  "primitive_spectrum": {
+    "\u00d0": 0.1111111111111111,
+    "\u00de": 0.0,
+    "\u0158": 0.1111111111111111,
+    "\u03a6": 0.1111111111111111,
+    "\u0192": 0.0,
+    "\u00c7": 0.1111111111111111,
+    "\u0393": 0.0,
+    "\u0262": 0.0,
+    "\u2299": 0.1111111111111111,
+    "\u0126": 0.2222222222222222,
+    "\u03a3": 0.2222222222222222,
+    "\u03a9": 0.0
+  },
+  "frobenius_coverage": 0.5833333333333334,
+  "source": "SerpentRod v5 ob3ect"
+}
