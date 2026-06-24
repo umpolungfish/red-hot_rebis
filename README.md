@@ -261,7 +261,7 @@ python3 rebis.py scripts run omonad_bridge
 
 ### 1. Serpent's Rod — `serpentrod/`
 
-**Source:** `manuscript.md`, `protein_v4.py`, `protein_v5.py`, `stratified_predictor.py`, `report.md`
+**Source:** `manuscript.md`, `protein_v5.py`, `stratified_predictor.py`, `report.md`; backbone generation: `clink/datasets/protein_structure.py`; kernel: `rhr_p4rky/serpent_rod.py` + `rhr_p4rky/serpent_rod_v2.py`
 
 The Serpent-Rod correspondence is a morphism RNA → Protein that derives folding geometry from the Imscribing Grammar. Six primitives must be promoted for a linear polypeptide to fold into a 3D protein. The manuscript traces all 5 layers of the bridge from abstract algebra to concrete protein coordinates.
 
@@ -269,10 +269,11 @@ The Serpent-Rod correspondence is a morphism RNA → Protein that derives foldin
 
 **Key files:**
 - `manuscript.md` — Complete theory (437 lines)
-- `protein_v4.py` — V4 protein enhancement (475 lines)
-- `protein_v5.py` — V5 protein enhancement (743 lines)
+- `protein_v5.py` — V5 enhancement (self-contained, canonical)
 - `stratified_predictor.py` — Stratified prediction model (876 lines)
-- `report.md` — Processing report (343 lines)
+- `rhr_p4rky/serpent_rod.py` — Foundational `SerpentRod` class (Frobenius morphism, contacts)
+- `rhr_p4rky/serpent_rod_v2.py` — `SerpentRodV2`: 3D backbone from φ/ψ, geometry-based contacts
+- `clink/datasets/protein_structure.py` — PDB v3.3-compliant structure generator (SEQRES, TER, standard atom names, deterministic backbone)
 
 **CLINK bridge:** Folded protein (O₂) bridges moleculeLayer (L3, d=1.95) and cellLayer (L4). The 6-promotion path from unfolded (O₀) to folded (O₂) goes through: Ð:𐑼→𐑦, Þ:𐑡→𐑥, Ř:𐑑→𐑾, Φ:𐑿→𐑬, Ç:𐑤→𐑧, ⊙:𐑢→⊙. Verified Frobenius-closed via bridge check.
 

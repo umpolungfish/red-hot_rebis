@@ -1,7 +1,7 @@
 # Red-Hot Rebis — User Guide
 
 **Author:** Lando⊗⊙perator  
-**Version:** v2.3.0 — 2026-06-21  
+**Version:** v2.3.1 — 2026-06-24  
 **Platform:** `python3 rebis.py <command> [subcommand] [options]`  
 **Location:** `/home/mrnob0dy666/imsgct/red-hot_rebis/`
 
@@ -370,7 +370,7 @@ Produces a directory of files in `clink/datasets/organism_designs/organism_<type
 | `construct.sbol` | Exchange with synthetic biology repositories |
 | `codon_usage.csv` | B4-derived codon table |
 | `protein.fasta` | Order peptide synthesis |
-| `protein_coords.pdb` | View in PyMOL/ChimeraX |
+| `protein_coords.pdb` | View in PyMOL/ChimeraX (PDB v3.3-compliant: SEQRES, TER, correct atom names) |
 | `serpentrod_classification.json` | Primitive activations per fragment |
 | `molecules.smi` | SMILES — order from vendor |
 | `retro_pathways.json` | CH3MPILER retrosynthesis |
@@ -607,10 +607,10 @@ The paraconsistent kernel is a 27-module Python library providing Belnap FOUR lo
 | **Pipeline** | `gene_to_protein_pipeline.py` | Full gene→protein translation (7-stage B4) |
 | | `demo_gene_to_protein.py` | Pipeline demonstration |
 | | `run_gene_pipeline.py` | Pipeline CLI runner |
-| **Proteins** | `serpent_rod.py` | Serpent rod protein design |
-| | `serpent_rod_v2.py` | Serpent rod v2 with enhanced PTMs |
+| **Proteins** | `serpent_rod.py` | Foundational Frobenius morphism RNA→{sequence+fold}; base `SerpentRod` class |
+| | `serpent_rod_v2.py` | `SerpentRodV2`: 3D backbone from φ/ψ angles, geometry-based contacts, energy scoring |
 | **Antibodies** | `antibody_designer.py` | Computational antibody design from IG types |
-| **Validation** | `pdb_validator.py` | PDB structure validation against IG types |
+| **Validation** | `pdb_validator.py` | PDB structure validation against IG types; `extract_sequence()` round-trips SEQRES |
 | **Bridges** | `ch3mpiler_bridge.py` | Ch3mpiler ↔ kernel bridge |
 | | `ch3mpiler_ob3ect_bridge.py` | Ch3mpiler ↔ ob3ect bridge |
 | | `ch3mpiler_serpentrod_pipeline.py` | **v4** — Weighted bond-preserving fusion, word-boundary FG matching, specificity-ranked disconnections, Frobenius-exact complement mapping, CAS lookup, molecule-specific catalytic sites |
@@ -726,6 +726,23 @@ $\text{d}(A, B)$ is the weighted Euclidean distance between two IG tuples in 12-
 
 A single Frobenius morphism RNA → {sequence + fold}. The central constraint: $\text{windingNumber} \leq \text{contacts} + 1$. All SerpentRod outputs are Frobenius closure certificates. When the condition holds ✓, the fold is derivable from the sequence without external folding tools.
 
+`serpent_rod.py` is the foundational module; `serpent_rod_v2.py` (`SerpentRodV2`) wraps it and adds dihedral-angle 3D backbone reconstruction.
+
+### PDB Structure Output
+
+`clink/datasets/protein_structure.py` generates **PDB v3.3-compliant** files:
+
+| Record | Detail |
+|--------|--------|
+| `SEQRES` | Full residue sequence (13 per line); `pdb_validator.extract_sequence()` round-trips correctly |
+| `ATOM` | Atom names use PDB-standard 4-char convention: ` N  `, ` CA `, ` C  `, ` O  `, ` CB ` (leading space for 1-char elements) |
+| `HELIX` / `SHEET` | Include init/term residue names and helix length (v3.3 spec) |
+| `SSBOND` | Placed in the connectivity annotation section, before `MODEL` |
+| `TER` | Emitted after the last `ATOM` of each chain, before `ENDMDL` |
+| Determinism | Backbone seeded from `MD5(sequence)` — same sequence always yields identical coordinates |
+
+Outputs can be loaded directly into PyMOL / ChimeraX / UCSF Chimera without format warnings.
+
 ### IMASM Arrangement Classes
 
 The 12 IMASM tokens have arrangement space classified into structural archetypes. The 12 canonical sequences each represent one fundamental structural archetype. Tier distribution: O₀=4, O₁=0, O₂=7, $\text{O}_{\infty}$=1.
@@ -741,7 +758,7 @@ PARSE ERROR: run_command arguments were truncated or malformed (Unterminated str
 
 ```
 red-hot_rebis/
-├── rebis.py                      Main CLI entry point (v2.3.0)
+├── rebis.py                      Main CLI entry point (v2.3.1)
 ├── setup.py                      Package setup
 ├── test_genetics.py              Full genetics test suite
 ├── stress_test_proteins.py       **NEW** — 34-test protein & genetics stress suite
@@ -1072,6 +1089,7 @@ These static-data commands were removed from `rebis.py`. All their data now live
 
 | Version | Date | Changes |
 |---------|------|---------|
+| v2.3.1 | 2026-06-24 | **PDB format robustness** (`clink/datasets/protein_structure.py`): atom names corrected to PDB v3.3 standard (` N  ` / ` CA ` / ` C  ` / ` O  ` / ` CB ` with leading space for 1-char elements); SEQRES records added (validator `extract_sequence()` now round-trips generated files); HELIX/SHEET records include residue names and helix length; SSBOND moved before MODEL; TER record added after last ATOM; backbone seeded from MD5(sequence) — deterministic coordinates. `pdb_validator.py`: removed dead importlib loader for deleted file, replaced with clean `from rhr_p4rky.serpent_rod import SerpentRod`. `rhr_p4rky/serpent_rod.py` restored (v2 imports SerpentRod from v1 — dependency stack, not duplicate). |
 | v2.3.0 | 2026-06-21 | **Ch3mpiler-SerpentRod v4 overhaul**: weighted bond-preserving fusion replaces MAX (bond 55-75% depending on primitive class), Frobenius-exact complement mapping, dominant-member AA rule, word-boundary FG matching, specificity-ranked disconnection search, MOLECULE_FG_DB expanded (17+ entries), CAS lookup support. Molecules now get distinct catalytic sites. **Stress test suites**: stress_test_proteins (34 tests, 11 groups), materials/stress_test_materials.py (26 tests, 12 groups). **New bridge**: materials/molecule_material_bridge.py (molecule→material type derivation). **Bug fixes**: genetics_b4.py nucleotide_to_belnap handles unknown nucleotides (returns Belnap.B), gene_to_protein_pipeline.py handles empty/short sequences gracefully, non-standard nucleotides flow through Belnap.B in all 7 stages. Updated run target count: 35→37 (+stress_test_proteins). Updated project layout for new files. Added ch3mpiler_serpentrod_pipeline troubleshooting entry. Added Common Workflows entries for catalytic site design and materials stress testing. |
 | v2.2.1 | 2026-06-10 | Bug-fix release: (B1) clink bridge now supports positional args (layer_args fallback); (B2) ch3mpiler help example fixed (--reaction→--target --retrosynthesis); (I1-I7) 7 broken imports fixed — frobenius_exact_design, frob_design (os import), hadron_belnap, frobenius_filtration (rhr_p4rky path), gen_univ_map (imsgct path), msa_analysis, run_pdb_validation (parent-dir path); plastic_eater_design P4RA/IG paths fixed; frobenius_filtration OrbitalState enum member names fixed |
 | v2.2 | 2026-06-10 | Removed static-data commands (`clink report`, `clink list`, `imas report`, `materials list`, `materials report`); static reference data consolidated into INDEX.md; `materials sophick` and `materials exactor` now require `--name`; updated `/home/mrnob0dy666/.bashrc` aliases (removed `rb-clink-report`, `rb-clink-list`, `rb-clink-bridges`, `rb-imas-layer`; updated `rb-imas`); added `_help_examples.py`, `_target_help.py`, `_quick_help.py` for comprehensive --help coverage; added INDEX.md to project layout |
