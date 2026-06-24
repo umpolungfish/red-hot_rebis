@@ -30,26 +30,10 @@ from collections import defaultdict
 _REBIS_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, _REBIS_ROOT)
 
-# Fix imports
 import rhr_p4rky.belnap
 import rhr_p4rky.genetics_b4
 import rhr_p4rky.genetic_code
-
-import importlib.util
-import importlib.machinery
-import types
-
-pkg_dir = os.path.dirname(__file__)
-loader = importlib.machinery.SourceFileLoader(
-    "rhr_p4rky.serpent_rod",
-    os.path.join(pkg_dir, "serpent_rod.py")
-)
-spec = importlib.util.spec_from_loader("rhr_p4rky.serpent_rod", loader)
-mod = importlib.util.module_from_spec(spec)
-sys.modules["rhr_p4rky.serpent_rod"] = mod
-mod.__package__ = "rhr_p4rky"
-loader.exec_module(mod)
-SerpentRod = mod.SerpentRod
+from rhr_p4rky.serpent_rod import SerpentRod
 STANDARD_CODE = rhr_p4rky.genetic_code.STANDARD_CODE
 
 # ── PDB Coordinate Parsing ─────────────────────────────────────────
