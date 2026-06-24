@@ -1,3 +1,41 @@
+Repo consolidation: backup purge, file layout, version dedup — 2026-06-24
+
+File cleanup:
+  Deleted: 12 .bak and .p4rakernel_backup files across clink/, biology/, therapeutics/
+  Deleted: 4 zip archives (biology.zip, files.zip, gr33ngroblin.zip, psaA_datasets.zip)
+  Deleted: 5 duplicate root-level .fasta files (already in fasta/ as .txt)
+  Moved:   ps1p.fasta, gene.fna → fasta/  (unique; not previously in fasta/)
+  Moved:   7 loose JSON/TSV results → data/
+  Moved:   6 loose SVG/PNG images + imscribing-grammar.html → images/
+  Deleted: commit_fix.txt (one-off note, superseded)
+
+Organization:
+  designs/ (new): cat_allergy_design, cephalopod_design, gr33ngroblin, shunt_portal_design
+    moved from inside clink/ (Python package dir was not the right place for design outputs)
+  _help_examples.py, _quick_help.py, _target_help.py → rhr_p4rky/
+    rebis.py imports updated to rhr_p4rky._help_examples / rhr_p4rky._target_help
+
+Version consolidation (no functionality lost):
+  serpentrod/protein_v4.py: DELETED
+    — improved_signal_peptide_detection() promoted into protein_v5.py (self-contained)
+    — SP_ALLOWED_M1, SP_ALLOWED_M3, SP_LENGTH_WEIGHTS promoted into protein_v5.py
+    — lazy `from serpentrod.protein_v4 import ...` in run_validation() removed
+    — serpentrod_v4 removed from rebis.py PACKAGES list and target_examples
+  rhr_p4rky/serpent_rod.py (v1): DELETED
+    — v2 is a strict superset (zero unique functions in v1); serpent_rod_v2 is canonical
+    — serpent_rod removed from target_examples dict
+
+rebis.py:
+  Version bump 2.1.0 → 2.2.0 (Consolidated edition)
+  SKIP set updated: designs/, fasta/, images/, pdb/ excluded from package discovery
+  All stale target references removed
+
+.gitignore:
+  Added: *.bak, *.p4rakernel_backup, *.zip (prevents re-accumulation)
+  Added: .pytest_cache/
+
+---
+
 rebis.py: dynamic CLI + p4ramill_py→rhr_p4rky mass fix (2026-06-20)
 
 p4ramill_py → rhr_p4rky import fix (32 files):
