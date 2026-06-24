@@ -23,6 +23,11 @@ Thumbs.db
 # Logs
 *.log
 
-# Large data (catalog is committed)
-*.json.bak
+# Backup files — never commit these
+*.bak
+*.p4rakernel_backup
 *.zip
+*.json.bak
+
+# pytest
+.pytest_cache/

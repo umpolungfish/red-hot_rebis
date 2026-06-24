@@ -20,12 +20,12 @@ from pathlib import Path
 REBIS_ROOT = Path(__file__).parent.absolute()
 sys.path.insert(0, str(REBIS_ROOT))
 
-VERSION = "2.1.0"  # IMASM+CLINK Edition
-from _help_examples import EXAMPLES
+VERSION = "2.2.0"  # Consolidated edition
+from rhr_p4rky._help_examples import EXAMPLES
 
 def _discover_packages():
     """Auto-discover all Python packages and standalone module files under REBIS_ROOT."""
-    SKIP = {'.venv', '__pycache__', '.git', 'data', 'popular_protein'}
+    SKIP = {'.venv', '__pycache__', '.git', 'data', 'popular_protein', 'designs', 'fasta', 'images', 'pdb'}
     results = []
     for item in sorted(REBIS_ROOT.iterdir()):
         if item.name.startswith('.') or item.name in SKIP:
@@ -40,7 +40,7 @@ def _discover_packages():
 def cmd_status(args):
     """Report the structural status of all discovered packages."""
     print("=" * 66)
-    print("RED-HOT REBIS v2.1 — IMASM+CLINK EDITION")
+    print("RED-HOT REBIS v2.2 — CONSOLIDATED EDITION")
     print("=" * 66)
 
     packages = _discover_packages()
@@ -281,7 +281,6 @@ def _discover_run_targets():
     # 3. Top-level package __main__ entry-points
     PACKAGES = [
         ("serpentrod",     "serpentrod.protein_v5"),
-        ("serpentrod_v4",  "serpentrod.protein_v4"),
         ("serpentrod_pred","serpentrod.stratified_predictor"),
         ("ch3mpiler",      "ch3mpiler.compiler"),
         ("gene",           "gene_imscriber.engine"),
@@ -310,8 +309,7 @@ def _show_run_target_help(target):
     # Per-target examples
     target_examples = {
         "serpentrod": "  rebis.py run serpentrod --seq KAL\n  rebis.py run serpentrod --seq ALMVL", 
-        "serpentrod_v4": "  rebis.py run serpentrod_v4 --seq ALMV", 
-        "serpentrod_pred": "  rebis.py run serpentrod_pred --seq KAL", 
+        "serpentrod_pred": "  rebis.py run serpentrod_pred --seq KAL",
         "ch3mpiler": "  rebis.py run ch3mpiler --help\n  rebis.py run ch3mpiler --target aspirin --retrosynthesis",
         "gene": "  rebis.py run gene --help\n  rebis.py run gene --rna AUGGCC...",
         "gene_to_protein_pipeline": "  rebis.py run gene_to_protein_pipeline --test\n  rebis.py run gene_to_protein_pipeline AAAAATGGCT...\n  rebis.py run gene_to_protein_pipeline --file my.fasta",
@@ -319,7 +317,6 @@ def _show_run_target_help(target):
         "demo_gene_to_protein": "  rebis.py run demo_gene_to_protein",
         "test_genetics": "  rebis.py run test_genetics\n  rebis.py run test_genetics --b4\n  rebis.py run test_genetics --codons\n  rebis.py run test_genetics --pipeline\n  rebis.py run test_genetics --quick\n  rebis.py run test_genetics --phi\n  rebis.py run test_genetics --kernel",
         "run_serpent": "  rebis.py run run_serpent",
-        "serpent_rod": "  rebis.py run serpent_rod",
         "serpent_rod_v2": "  rebis.py run serpent_rod_v2",
         "run_antibody": "  rebis.py run run_antibody",
         "run_msa": "  rebis.py run run_msa",
@@ -358,7 +355,7 @@ def cmd_run(args):
 
     # --help / -h passthrough: intercept before dispatching
     if '--help' in (rest or []) or '-h' in (rest or []):
-        from _target_help import TARGET_EXAMPLES
+        from rhr_p4rky._target_help import TARGET_EXAMPLES
         # Special case: 'list' or no subcommand shows discoverable-target help
         if subcommand == 'list' or subcommand is None:
             print("Usage: rebis.py run list")

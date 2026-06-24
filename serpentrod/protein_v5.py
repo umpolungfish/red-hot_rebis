@@ -24,6 +24,55 @@ from serpentrod.stratified_predictor import (
 from typing import List, Tuple, Optional, Dict
 from dataclasses import dataclass, field
 
+# ── Signal Peptide constants + detector (promoted from protein_v4) ──
+SP_ALLOWED_M1 = set('AGSTCP')
+SP_ALLOWED_M3 = set('AGSTCVIL')
+SP_LENGTH_WEIGHTS = {l: 1.0 + 0.3 * max(0, 1 - abs(l-22)/8) for l in range(10, 46)}
+
+def improved_signal_peptide_detection(profile: RollingProfile) -> Tuple[Optional[int], float, dict]:
+    """SP detection with von Heijne (-3,-1) rule. 100% accuracy on test set."""
+    seq = profile.sequence[:50]
+    if len(seq) < 20: return None, 0.0, {}
+    w = 9
+    hydro = [sum(HYDROPATHY.get(aa, 0) for aa in seq[i:i+w]) / w
+             for i in range(len(seq) - w + 1)] if len(seq) >= w else []
+    def n_charge(s, n=5):
+        c = {'K':1,'R':1,'H':0.5,'D':-1,'E':-1}
+        return sum(c.get(aa,0) for aa in s[:n])
+    candidates = []
+    for end in range(14, min(36, len(profile.sequence)+1)):
+        sp_seq = seq[:end]; score = 0.0; feat = {}
+        d_first5 = sum(1 for aa in sp_seq[:5] if aa == 'M')
+        score += d_first5 * 2.0; feat['bootstrap'] = d_first5
+        nc = n_charge(sp_seq, min(8, end))
+        score += nc * 0.5 if nc > 0 else -1.0; feat['n_charge'] = nc
+        core = sp_seq[5:max(6,end-4)]
+        if core:
+            h_core = sum(1 for aa in core if aa in 'LVIMAFWY') / len(core)
+            score += h_core * 4.0; feat['core'] = h_core
+            if h_core < 0.4: score -= 2.0
+        m1 = seq[end-1] if end <= len(seq) else ''
+        m3 = seq[end-3] if end >= 3 else ''
+        hj = 2.0 if (m1 in SP_ALLOWED_M1 and m3 in SP_ALLOWED_M3) else \
+             1.0 if m1 in SP_ALLOWED_M1 else \
+             0.5 if m3 in SP_ALLOWED_M3 else 0.0
+        score += hj; feat['heijne'] = hj
+        tail = sp_seq[-5:]
+        tail_polar = sum(1 for aa in tail if aa in 'STNQEDKRH')
+        score += tail_polar * 0.3; feat['c_region'] = tail_polar
+        score += SP_LENGTH_WEIGHTS.get(end, 0.5)
+        if hydro:
+            pi = max(range(len(hydro)), key=lambda i: hydro[i])
+            ext = end - pi - w
+            if 4 <= ext <= 14 and hydro[pi] > 1.5:
+                score += 1.5; feat['extension'] = ext
+        candidates.append((end, score, feat))
+    if not candidates: return None, 0.0, {}
+    candidates.sort(key=lambda c: -c[1])
+    for end, s, f in candidates:
+        if s >= 5.0: return end, s, f
+    return candidates[0] if candidates[0][1] >= 3.0 else (None, 0.0, {})
+
 
 # ── classify_module_rich ──
 # Replaces the string-returning classify_module from stratified_predictor.
@@ -745,7 +794,6 @@ def run_validation():
     print(f"{'─' * 80}")
     for name, expected in SP_BENCHMARKS.items():
         seq = test_cases[name]
-        from serpentrod.protein_v4 import improved_signal_peptide_detection
         pred_end, score, _ = improved_signal_peptide_detection(RollingProfile(seq))
         ok = pred_end == expected
         sp_correct += 1 if ok else 0; sp_total += 1
