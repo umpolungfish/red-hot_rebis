@@ -1,3 +1,30 @@
+PDB format robustness — 2026-06-24
+
+clink/datasets/protein_structure.py:
+  Atom.to_pdb(): name field {:<4s} → {:4s}; serial capped at 99,999
+  Atom name strings: "N  "/"CA "/"C  "/"O  "/"CB " → " N  "/" CA "/" C  "/" O  "/" CB "
+    (PDB v3.3 standard: 1-char element names carry a leading space in cols 13-16)
+  BackboneBuilder.build(): seed random.seed() from MD5 of sequence
+    — same sequence now always produces identical coordinates
+  BackboneBuilder.to_pdb():
+    + SEQRES records added (cols 9-10=serial, 12=chain, 14-17=n_res, 20+=3-letter names)
+      validator's extract_sequence() can now round-trip any generated PDB
+    HELIX records: include init_resName + end_resName + helix length field (PDB v3.3)
+    SHEET records: include init_resName + end_resName (PDB v3.3)
+    SSBOND records: moved before MODEL record (connectivity annotation section)
+    + TER record: added after last ATOM, before ENDMDL
+
+rhr_p4rky/pdb_validator.py:
+  Removed dead importlib.SourceFileLoader hack that loaded deleted serpent_rod.py
+  Replaced with: from rhr_p4rky.serpent_rod import SerpentRod  (direct clean import)
+
+rhr_p4rky/serpent_rod.py: RESTORED
+  Previously deleted under wrong assumption it was superseded by v2.
+  v2 imports SerpentRod from v1 — they are a stack, not duplicates.
+  commit.txt entry corrected: serpent_rod removal was an error.
+
+---
+
 Repo consolidation: backup purge, file layout, version dedup — 2026-06-24
 
 File cleanup:
