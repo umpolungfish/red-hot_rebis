@@ -42,7 +42,6 @@ CDXML_HEADER = '''<?xml version="1.0" encoding="UTF-8" ?>
  ShowBondQuery="yes"
  ShowBondRxn="yes"
  ShowBondStereo="no"
- ShowTerminalCarbonLabels="no"
  ShowNonTerminalCarbonLabels="no"
  HideImplicitHydrogens="no"
  Magnification="666"
@@ -78,6 +77,7 @@ CDXML_HEADER = '''<?xml version="1.0" encoding="UTF-8" ?>
 <page
  id="1"
  BoundingBox="0 0 -32768 4318.50"
+ bgcolor="1"
  HeaderPosition="36"
  FooterPosition="36"
  PrintTrimMarks="yes"
@@ -86,7 +86,6 @@ CDXML_HEADER = '''<?xml version="1.0" encoding="UTF-8" ?>
 
 CDXML_FOOTER = '''</page>
 </CDXML>'''
-
 
 def _cdxml_graphic_line(x1, y1, x2, y2, color_id=4, line_width=3):
     """Generate a CDXML <graphic> element drawing a colored dashed line."""
@@ -113,6 +112,21 @@ def _cdxml_annotation(text, x, y, color_id=0, font_size=10, just='Center', ann_i
  LabelFace="96" LabelSize="{font_size}" LabelFont="3">
  <s font="3" size="{font_size}" face="96">{text}</s>
 </annotation>'''
+
+
+def molecule_to_cdxml(smiles: str, molecule_name: str, strategic_bonds: list,
+                       fg_pair_bonds: dict = None) -> str:
+    """Wrapper: pipeline_hook-compatible entrypoint.
+    
+    Delegates to target_decomposition_cdxml with the same signature.
+    fg_pair_bonds is accepted for API compatibility; the detailed overlay
+    layer can be enriched later.
+    """
+    return target_decomposition_cdxml(
+        smiles=smiles,
+        name=molecule_name,
+        strategic_bonds=strategic_bonds,
+    )
 
 
 def target_decomposition_cdxml(smiles: str, name: str, strategic_bonds: list) -> str:
@@ -163,11 +177,14 @@ def target_decomposition_cdxml(smiles: str, name: str, strategic_bonds: list) ->
 
         if atomic_num != 6:
             label = ATOMIC_SYMBOLS.get(atomic_num, symbol)
-            attrs += f' Element="{atomic_num}" NumHydrogens="0" NeedsClean="yes"'
+            num_h = atom.GetNumImplicitHs()
+            attrs += f' Element="{atomic_num}" NumHydrogens="{num_h}" NeedsClean="yes"'
+            if num_h > 0:
+                label += 'H' + (str(num_h) if num_h > 1 else '')
             lines.append(f'<n {attrs}>')
-            tx = x - 4
+            tx = x - (4 + 2 * num_h)
             ty = y + 4
-            tb = f"{tx-2:.2f} {ty-8:.2f} {tx+8:.2f} {ty+2:.2f}"
+            tb = f"{tx-2:.2f} {ty-8:.2f} {tx+8+4*num_h:.2f} {ty+2:.2f}"
             lines.append(f'<t p="{tx:.2f} {ty:.2f}" BoundingBox="{tb}" LabelJustification="Left">')
             lines.append(f'<s font="3" size="10" color="0" face="96">{label}</s>')
             lines.append('</t>')
@@ -217,13 +234,13 @@ def target_decomposition_cdxml(smiles: str, name: str, strategic_bonds: list) ->
         mx = (x1 + x2) / 2
         my = (y1 + y2) / 2
 
-        # Dashed overlay line extending past the bond
+        # Dashed overlay line ORTHOGONAL to the bond (perpendicular scission mark)
         dx = x2 - x1
         dy = y2 - y1
         length = (dx**2 + dy**2)**0.5
         if length > 0:
-            dx, dy = dx / length, dy / length
-        ext = 5
+            dx, dy = -dy / length, dx / length  # rotate 90° for perpendicular
+        ext = 14
         gx1 = mx - dx * ext
         gy1 = my - dy * ext
         gx2 = mx + dx * ext

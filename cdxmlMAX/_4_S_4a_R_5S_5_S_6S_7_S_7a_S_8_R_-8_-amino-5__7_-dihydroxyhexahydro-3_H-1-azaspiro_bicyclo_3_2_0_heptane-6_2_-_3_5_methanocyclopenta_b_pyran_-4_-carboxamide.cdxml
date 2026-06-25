@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE CDXML SYSTEM "https://static.chemistry.revvitycloud.com/cdxml/CDXML.dtd" >
+<CDXML
+ CreationProgram="ChemDraw 23.1.1.3"
+ Name="(4'S,4a'R,5S,5'S,6S,7'S,7a'S,8'R)-8'-amino-5',7'-dihydroxyhexahydro-3'H-1-azaspiro[bicyclo[3.2.0]heptane-6,2'-[3,5]methanocyclopenta[b]pyran]-4'-carboxamide.cdxml"
+ BoundingBox="220.91 203.83 539.83 367.39"
+ WindowPosition="0 0"
+ WindowSize="-2147483648 -2147483648"
+ WindowIsZoomed="yes"
+ FractionalWidths="yes"
+ InterpretChemically="yes"
+ ShowAtomQuery="yes"
+ ShowAtomStereo="no"
+ ShowAtomEnhancedStereo="yes"
+ ShowAtomNumber="no"
+ ShowResidueID="no"
+ ShowBondQuery="yes"
+ ShowBondRxn="yes"
+ ShowBondStereo="no"
+ ShowNonTerminalCarbonLabels="no"
+ HideImplicitHydrogens="no"
+ Magnification="666"
+ LabelFont="3"
+ LabelSize="10"
+ LabelFace="96"
+ CaptionFont="3"
+ CaptionSize="10"
+ HashSpacing="2.50"
+ MarginWidth="1.60"
+ LineWidth="0.60"
+ BoldWidth="2"
+ BondLength="14.40"
+ BondSpacing="18"
+ ChainAngle="120"
+ LabelJustification="Auto"
+ CaptionJustification="Left"
+ PrintMargins="36 36 36 36"
+>
+<colortable>
+<color r="1" g="1" b="1"/>
+<color r="0" g="0" b="0"/>
+<color r="1" g="0" b="0"/>
+<color r="0" g="1" b="0"/>
+<color r="0" g="0" b="1"/>
+<color r="1" g="0" b="1"/>
+<color r="0" g="1" b="1"/>
+<color r="1" g="1" b="0"/>
+</colortable>
+<fonttable>
+ <font id="3" charset="iso-8859-1" name="Arial"/>
+</fonttable>
+<page
+ id="1"
+ BoundingBox="0 0 -32768 4318.50"
+ bgcolor="1"
+ HeaderPosition="36"
+ FooterPosition="36"
+ PrintTrimMarks="yes"
+>
+<fragment
+ id="1"
+ BoundingBox="220.91 203.83 539.83 367.39"
+ Z="1"
+><n id="2" p="302.87 289.95" Z="2" AS="N" Element="7" NumHydrogens="2" NeedsClean="yes">
+<t p="294.87 293.95" BoundingBox="292.87 285.95 310.87 295.95" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">NH2</s>
+</t>
+</n>
+<n id="3" p="302.16 297.89" Z="3" AS="N"/>
+<n id="4" p="291.53 308.48" Z="4" AS="N"/>
+<n id="5" p="306.05 312.24" Z="5" AS="N"/>
+<n id="6" p="316.57 301.55" Z="6" AS="N"/>
+<n id="7" p="312.57 287.09" Z="7" AS="N"/>
+<n id="8" p="298.05 283.33" Z="8" AS="N" Element="8" NumHydrogens="0" NeedsClean="yes">
+<t p="294.05 287.33" BoundingBox="292.05 279.33 302.05 289.33" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">O</s>
+</t>
+</n>
+<n id="9" p="287.53 294.03" Z="9" AS="N"/>
+<n id="10" p="274.60 301.63" Z="10" AS="N"/>
+<n id="11" p="264.66 312.86" Z="11" AS="N"/>
+<n id="12" p="250.91 306.88" Z="12" AS="N"/>
+<n id="13" p="252.35 291.94" Z="13" AS="N"/>
+<n id="14" p="267.00 288.70" Z="14" AS="N" Element="7" NumHydrogens="0" NeedsClean="yes">
+<t p="263.00 292.70" BoundingBox="261.00 284.70 271.00 294.70" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">N</s>
+</t>
+</n>
+<n id="15" p="279.93 281.10" Z="15" AS="N"/>
+<n id="16" p="325.08 278.82" Z="16" AS="N"/>
+<n id="17" p="336.82 288.16" Z="17" AS="N"/>
+<n id="18" p="331.56 302.21" Z="18" AS="N"/>
+<n id="19" p="339.83 314.72" Z="19" AS="N" Element="8" NumHydrogens="1" NeedsClean="yes">
+<t p="333.83 318.72" BoundingBox="331.83 310.72 345.83 320.72" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">OH</s>
+</t>
+</n>
+<n id="20" p="325.74 263.83" Z="20" AS="N" Element="8" NumHydrogens="1" NeedsClean="yes">
+<t p="319.74 267.83" BoundingBox="317.74 259.83 331.74 269.83" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">OH</s>
+</t>
+</n>
+<n id="21" p="310.06 326.70" Z="21" AS="N"/>
+<n id="22" p="324.58 330.46" Z="22" AS="N" Element="8" NumHydrogens="0" NeedsClean="yes">
+<t p="320.58 334.46" BoundingBox="318.58 326.46 328.58 336.46" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">O</s>
+</t>
+</n>
+<n id="23" p="299.54 337.39" Z="23" AS="N" Element="7" NumHydrogens="2" NeedsClean="yes">
+<t p="291.54 341.39" BoundingBox="289.54 333.39 307.54 343.39" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">NH2</s>
+</t>
+</n>
+<b id="1000" Z="25" B="2" E="3" BS="N" Color="6"/>
+<b id="1001" Z="26" B="3" E="4" BS="N"/>
+<b id="1002" Z="27" B="4" E="5" BS="N"/>
+<b id="1003" Z="28" B="5" E="6" BS="N"/>
+<b id="1004" Z="29" B="6" E="7" BS="N"/>
+<b id="1005" Z="30" B="7" E="8" BS="N"/>
+<b id="1006" Z="31" B="8" E="9" BS="N"/>
+<b id="1007" Z="32" B="9" E="10" BS="N"/>
+<b id="1008" Z="33" B="10" E="11" BS="N"/>
+<b id="1009" Z="34" B="11" E="12" BS="N"/>
+<b id="1010" Z="35" B="12" E="13" BS="N"/>
+<b id="1011" Z="36" B="13" E="14" BS="N"/>
+<b id="1012" Z="37" B="14" E="15" BS="N"/>
+<b id="1013" Z="38" B="7" E="16" BS="N"/>
+<b id="1014" Z="39" B="16" E="17" BS="N"/>
+<b id="1015" Z="40" B="17" E="18" BS="N"/>
+<b id="1016" Z="41" B="18" E="19" BS="N" Color="6"/>
+<b id="1017" Z="42" B="16" E="20" BS="N" Color="6"/>
+<b id="1018" Z="43" B="5" E="21" BS="N" Color="6"/>
+<b id="1019" Z="44" B="21" E="22" BS="N" Color="6" Order="2"/>
+<b id="1020" Z="45" B="21" E="23" BS="N" Color="6"/>
+<b id="1021" Z="46" B="18" E="3" BS="N"/>
+<b id="1022" Z="47" B="9" E="4" BS="N"/>
+<b id="1023" Z="48" B="14" E="10" BS="N"/>
+<b id="1024" Z="49" B="18" E="6" BS="N"/>
+<b id="1025" Z="50" B="15" E="9" BS="N"/>
+</fragment>
+<graphic
+ GraphicType="Line"
+ BoundingBox="286.57 290.68 318.46 297.17"
+ LineType="Dashed"
+ LineWidth="3"
+ LineCap="0"
+ Color="2"
+>
+ <p p="316.46 295.17"/>
+ <p p="288.57 292.68"/>
+</graphic>
+<graphic
+ GraphicType="Line"
+ BoundingBox="322.02 298.75 349.37 318.19"
+ LineType="Dashed"
+ LineWidth="3"
+ LineCap="0"
+ Color="4"
+>
+ <p p="347.37 300.75"/>
+ <p p="324.02 316.19"/>
+</graphic>
+<graphic
+ GraphicType="Line"
+ BoundingBox="309.43 268.71 341.40 273.94"
+ LineType="Dashed"
+ LineWidth="3"
+ LineCap="0"
+ Color="6"
+>
+ <p p="311.43 270.71"/>
+ <p p="339.40 271.94"/>
+</graphic>
+<graphic
+ GraphicType="Line"
+ BoundingBox="292.56 313.74 323.55 325.21"
+ LineType="Dashed"
+ LineWidth="3"
+ LineCap="0"
+ Color="5"
+>
+ <p p="321.55 315.74"/>
+ <p p="294.56 323.21"/>
+</graphic>
+<graphic
+ GraphicType="Line"
+ BoundingBox="311.81 313.03 322.83 344.13"
+ LineType="Dashed"
+ LineWidth="3"
+ LineCap="0"
+ Color="7"
+>
+ <p p="320.83 315.03"/>
+ <p p="313.81 342.13"/>
+</graphic>
+<graphic
+ GraphicType="Line"
+ BoundingBox="292.82 320.23 316.78 343.86"
+ LineType="Dashed"
+ LineWidth="3"
+ LineCap="0"
+ Color="2"
+>
+ <p p="314.78 341.86"/>
+ <p p="294.82 322.23"/>
+</graphic>
+<annotation id="99" BoundingBox="235.37 209.83 355.37 229.83"
+ CaptionAlignment="Center" CaptionJustification="Center"
+ Color="0" LabelJustification="Center"
+ VerticalOffset="0" HorizontalOffset="0"
+ LabelFace="96" LabelSize="11" LabelFont="3">
+ <s font="3" size="11" face="96">Target: (4'S,4a'R,5S,5'S,6S,7'S,7a'S,8'R)-8'-amino-5',7'-dihydroxyhexahydro-3'H-1-azaspiro[bicyclo[3.2.0]heptane-6,2'-[3,5]methanocyclopenta[b]pyran]-4'-carboxamide [N[C@@H]1C2[C@@H]([C@@H]3[C@H](O[C@@]24[C@@H]2CCCN2C4)[C@H](C[C@]31O)O)C(=O)N]  |  6 disconnection(s)</s>
+</annotation>
+<annotation id="500" BoundingBox="248.76 273.98 368.76 293.98"
+ CaptionAlignment="Center" CaptionJustification="Center"
+ Color="2" LabelJustification="Center"
+ VerticalOffset="0" HorizontalOffset="0"
+ LabelFace="96" LabelSize="8" LabelFont="3">
+ <s font="3" size="8" face="96">amine→N | cyclic→NC(=O)[C@H]1C2C[C@]3</s>
+</annotation>
+<annotation id="501" BoundingBox="272.97 290.79 392.97 310.79"
+ CaptionAlignment="Center" CaptionJustification="Center"
+ Color="4" LabelJustification="Center"
+ VerticalOffset="0" HorizontalOffset="0"
+ LabelFace="96" LabelSize="8" LabelFont="3">
+ <s font="3" size="8" face="96">spirocycle→NC(=O)[C@H]1C2[C@@H] | alcohol→O</s>
+</annotation>
+<annotation id="502" BoundingBox="269.80 279.31 389.80 299.31"
+ CaptionAlignment="Center" CaptionJustification="Center"
+ Color="6" LabelJustification="Center"
+ VerticalOffset="0" HorizontalOffset="0"
+ LabelFace="96" LabelSize="8" LabelFont="3">
+ <s font="3" size="8" face="96">cyclic→NC(=O)[C@H]1C2[C@@H] | alcohol→O</s>
+</annotation>
+<annotation id="503" BoundingBox="249.32 299.98 369.32 319.98"
+ CaptionAlignment="Center" CaptionJustification="Center"
+ Color="5" LabelJustification="Center"
+ VerticalOffset="0" HorizontalOffset="0"
+ LabelFace="96" LabelSize="8" LabelFont="3">
+ <s font="3" size="8" face="96">spirocycle→N[C@@H]1C2C[C@@H]3[C | alkane→NC=O</s>
+</annotation>
+<annotation id="504" BoundingBox="248.76 319.07 368.76 339.07"
+ CaptionAlignment="Center" CaptionJustification="Center"
+ Color="7" LabelJustification="Center"
+ VerticalOffset="0" HorizontalOffset="0"
+ LabelFace="96" LabelSize="8" LabelFont="3">
+ <s font="3" size="8" face="96">alkane→NC[C@H]1C2[C@@H](N)[ | amide→O</s>
+</annotation>
+<annotation id="505" BoundingBox="259.61 316.07 379.61 336.07"
+ CaptionAlignment="Center" CaptionJustification="Center"
+ Color="2" LabelJustification="Center"
+ VerticalOffset="0" HorizontalOffset="0"
+ LabelFace="96" LabelSize="8" LabelFont="3">
+ <s font="3" size="8" face="96">alkane→N[C@@H]1C2[C@H](C=O) | amide→N</s>
+</annotation></page>
+</CDXML>

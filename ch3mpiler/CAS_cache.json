@@ -14,5 +14,61 @@
     "smiles": "CC1=C2C(C(=O)C3(C(CC4C(C3C(C(C2(C)C)(CC1OC(=O)C(C(C5=CC=CC=C5)NC(=O)C6=CC=CC=C6)O)O)OC(=O)C7=CC=CC=C7)(CO4)OC(=O)C)O)C)OC(=O)C",
     "source": "pubchem",
     "type_hint": ""
+  },
+  "479-61-8": {
+    "cas": "479-61-8",
+    "name": "magnesium methyl (3R,21S,22S)-16-ethenyl-11-ethyl-12,17,21,26-tetramethyl-4-oxo-22-[3-oxo-3-[(E,7R,11R)-3,7,11,15-tetramethylhexadec-2-enoxy]propyl]-23,25-diaza-7,24-diazanidahexacyclo[18.2.1.15,8.110,13.115,18.02,6]hexacosa-1,5,8(26),9,11,13(25),14,16,18,20(23)-decaene-3-carboxylate",
+    "formula": "C55H72MgN4O5",
+    "smiles": "CCC1=C(C2=NC1=CC3=C(C4=C([N-]3)C(=C5C(C(C(=N5)C=C6C(=C(C(=C2)[N-]6)C=C)C)C)CCC(=O)OCC=C(C)CCCC(C)CCCC(C)CCCC(C)C)C(C4=O)C(=O)OC)C)C.[Mg+2]",
+    "source": "pubchem",
+    "type_hint": ""
+  },
+  "58-08-2": {
+    "cas": "58-08-2",
+    "name": "1,3,7-trimethylpurine-2,6-dione",
+    "formula": "C8H10N4O2",
+    "smiles": "CN1C=NC2=C1C(=O)N(C(=O)N2C)C",
+    "source": "pubchem",
+    "type_hint": ""
+  },
+  "57-24-9": {
+    "cas": "57-24-9",
+    "name": "(4aR,5aS,8aR,13aS,15aS,15bR)-4a,5,5a,7,8,13a,15,15a,15b,16-decahydro-2H-4,6-methanoindolo[3,2,1-ij]oxepino[2,3,4-de]pyrrolo[2,3-h]quinolin-14-one",
+    "formula": "C21H22N2O2",
+    "smiles": "C1CN2CC3=CCOC4CC(=O)N5C6C4C3CC2C61C7=CC=CC=C75",
+    "source": "pubchem",
+    "type_hint": ""
+  },
+  "4368-28-9": {
+    "cas": "4368-28-9",
+    "name": "(1R,5R,6R,7R,9S,11S,12S,13S,14S)-3-amino-14-(hydroxymethyl)-8,10-dioxa-2,4-diazatetracyclo[7.3.1.17,11.01,6]tetradec-3-ene-5,9,12,13,14-pentol",
+    "formula": "C11H17N3O8",
+    "smiles": "C(C1(C2C3C(N=C(NC34C(C1OC(C4O)(O2)O)O)N)O)O)O",
+    "source": "pubchem",
+    "type_hint": ""
+  },
+  "61-33-6": {
+    "cas": "61-33-6",
+    "name": "(2S,5R,6R)-3,3-dimethyl-7-oxo-6-[(2-phenylacetyl)amino]-4-thia-1-azabicyclo[3.2.0]heptane-2-carboxylic acid",
+    "formula": "C16H18N2O4S",
+    "smiles": "CC1(C(N2C(S1)C(C2=O)NC(=O)CC3=CC=CC=C3)C(=O)O)C",
+    "source": "pubchem",
+    "type_hint": ""
+  },
+  "78-82-0": {
+    "cas": "78-82-0",
+    "name": "2-methylpropanenitrile",
+    "formula": "C4H7N",
+    "smiles": "CC(C)C#N",
+    "source": "pubchem",
+    "type_hint": ""
+  },
+  "120-12-7": {
+    "cas": "120-12-7",
+    "name": "anthracene",
+    "formula": "C14H10",
+    "smiles": "C1=CC=C2C=C3C=CC=CC3=CC2=C1",
+    "source": "pubchem",
+    "type_hint": ""
   }
 }

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE CDXML SYSTEM "https://static.chemistry.revvitycloud.com/cdxml/CDXML.dtd" >
+<CDXML
+ CreationProgram="ChemDraw 23.1.1.3"
+ Name="1,3,7-trimethylpurine-2,6-dione.cdxml"
+ BoundingBox="235.02 211.96 533.79 358.08"
+ WindowPosition="0 0"
+ WindowSize="-2147483648 -2147483648"
+ WindowIsZoomed="yes"
+ FractionalWidths="yes"
+ InterpretChemically="yes"
+ ShowAtomQuery="yes"
+ ShowAtomStereo="no"
+ ShowAtomEnhancedStereo="yes"
+ ShowAtomNumber="no"
+ ShowResidueID="no"
+ ShowBondQuery="yes"
+ ShowBondRxn="yes"
+ ShowBondStereo="no"
+ ShowNonTerminalCarbonLabels="no"
+ HideImplicitHydrogens="no"
+ Magnification="666"
+ LabelFont="3"
+ LabelSize="10"
+ LabelFace="96"
+ CaptionFont="3"
+ CaptionSize="10"
+ HashSpacing="2.50"
+ MarginWidth="1.60"
+ LineWidth="0.60"
+ BoldWidth="2"
+ BondLength="14.40"
+ BondSpacing="18"
+ ChainAngle="120"
+ LabelJustification="Auto"
+ CaptionJustification="Left"
+ PrintMargins="36 36 36 36"
+>
+<colortable>
+<color r="1" g="1" b="1"/>
+<color r="0" g="0" b="0"/>
+<color r="1" g="0" b="0"/>
+<color r="0" g="1" b="0"/>
+<color r="0" g="0" b="1"/>
+<color r="1" g="0" b="1"/>
+<color r="0" g="1" b="1"/>
+<color r="1" g="1" b="0"/>
+</colortable>
+<fonttable>
+ <font id="3" charset="iso-8859-1" name="Arial"/>
+</fonttable>
+<page
+ id="1"
+ BoundingBox="0 0 -32768 4318.50"
+ bgcolor="1"
+ HeaderPosition="36"
+ FooterPosition="36"
+ PrintTrimMarks="yes"
+>
+<fragment
+ id="1"
+ BoundingBox="235.02 211.96 533.79 358.08"
+ Z="1"
+><n id="2" p="333.79 313.43" Z="2" AS="N"/>
+<n id="3" p="324.41 301.73" Z="3" AS="N" Element="7" NumHydrogens="0" NeedsClean="yes">
+<t p="320.41 305.73" BoundingBox="318.41 297.73 328.41 307.73" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">N</s>
+</t>
+</n>
+<n id="4" p="328.36 287.26" Z="4" AS="N"/>
+<n id="5" p="315.83 279.03" Z="5" AS="N" Element="7" NumHydrogens="0" NeedsClean="yes">
+<t p="311.83 283.03" BoundingBox="309.83 275.03 319.83 285.03" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">N</s>
+</t>
+</n>
+<n id="6" p="304.12 288.41" Z="6" AS="N"/>
+<n id="7" p="309.43 302.44" Z="7" AS="N"/>
+<n id="8" p="299.93 314.05" Z="8" AS="N"/>
+<n id="9" p="305.23 328.08" Z="9" AS="N" Element="8" NumHydrogens="0" NeedsClean="yes">
+<t p="301.23 332.08" BoundingBox="299.23 324.08 309.23 334.08" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">O</s>
+</t>
+</n>
+<n id="10" p="285.12 311.63" Z="10" AS="N" Element="7" NumHydrogens="0" NeedsClean="yes">
+<t p="281.12 315.63" BoundingBox="279.12 307.63 289.12 317.63" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">N</s>
+</t>
+</n>
+<n id="11" p="279.82 297.60" Z="11" AS="N"/>
+<n id="12" p="265.02 295.17" Z="12" AS="N" Element="8" NumHydrogens="0" NeedsClean="yes">
+<t p="261.02 299.17" BoundingBox="259.02 291.17 269.02 301.17" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">O</s>
+</t>
+</n>
+<n id="13" p="289.32 285.99" Z="13" AS="N" Element="7" NumHydrogens="0" NeedsClean="yes">
+<t p="285.32 289.99" BoundingBox="283.32 281.99 293.32 291.99" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">N</s>
+</t>
+</n>
+<n id="14" p="284.01 271.96" Z="14" AS="N"/>
+<n id="15" p="275.62 323.24" Z="15" AS="N"/>
+<b id="1000" Z="17" B="2" E="3" BS="N" Color="6"/>
+<b id="1001" Z="18" B="3" E="4" BS="N"/>
+<b id="1002" Z="19" B="4" E="5" BS="N" Order="2"/>
+<b id="1003" Z="20" B="5" E="6" BS="N"/>
+<b id="1004" Z="21" B="6" E="7" BS="N" Order="2"/>
+<b id="1005" Z="22" B="7" E="8" BS="N"/>
+<b id="1006" Z="23" B="8" E="9" BS="N" Color="6" Order="2"/>
+<b id="1007" Z="24" B="8" E="10" BS="N"/>
+<b id="1008" Z="25" B="10" E="11" BS="N"/>
+<b id="1009" Z="26" B="11" E="12" BS="N" Color="6" Order="2"/>
+<b id="1010" Z="27" B="11" E="13" BS="N"/>
+<b id="1011" Z="28" B="13" E="14" BS="N" Color="6"/>
+<b id="1012" Z="29" B="10" E="15" BS="N" Color="6"/>
+<b id="1013" Z="30" B="7" E="3" BS="N"/>
+<b id="1014" Z="31" B="13" E="6" BS="N"/>
+</fragment>
+<graphic
+ GraphicType="Line"
+ BoundingBox="316.17 296.83 342.02 318.34"
+ LineType="Dashed"
+ LineWidth="3"
+ LineCap="0"
+ Color="2"
+>
+ <p p="318.17 316.34"/>
+ <p p="340.02 298.83"/>
+</graphic>
+<graphic
+ GraphicType="Line"
+ BoundingBox="287.48 314.11 317.67 328.01"
+ LineType="Dashed"
+ LineWidth="3"
+ LineCap="0"
+ Color="4"
+>
+ <p p="315.67 316.11"/>
+ <p p="289.48 326.01"/>
+</graphic>
+<graphic
+ GraphicType="Line"
+ BoundingBox="268.16 280.57 276.68 312.20"
+ LineType="Dashed"
+ LineWidth="3"
+ LineCap="0"
+ Color="6"
+>
+ <p p="270.16 310.20"/>
+ <p p="274.68 282.57"/>
+</graphic>
+<graphic
+ GraphicType="Line"
+ BoundingBox="271.57 272.02 301.76 285.92"
+ LineType="Dashed"
+ LineWidth="3"
+ LineCap="0"
+ Color="5"
+>
+ <p p="273.57 283.92"/>
+ <p p="299.76 274.02"/>
+</graphic>
+<graphic
+ GraphicType="Line"
+ BoundingBox="267.54 306.57 293.21 328.30"
+ LineType="Dashed"
+ LineWidth="3"
+ LineCap="0"
+ Color="7"
+>
+ <p p="291.21 326.30"/>
+ <p p="269.54 308.57"/>
+</graphic>
+<annotation id="99" BoundingBox="239.40 217.96 359.40 237.96"
+ CaptionAlignment="Center" CaptionJustification="Center"
+ Color="0" LabelJustification="Center"
+ VerticalOffset="0" HorizontalOffset="0"
+ LabelFace="96" LabelSize="11" LabelFont="3">
+ <s font="3" size="11" face="96">Target: 1,3,7-trimethylpurine-2,6-dione [CN1C=NC2=C1C(=O)N(C(=O)N2C)C]  |  5 disconnection(s)</s>
+</annotation>
+<annotation id="500" BoundingBox="282.85 312.51 402.85 332.51"
+ CaptionAlignment="Center" CaptionJustification="Center"
+ Color="2" LabelJustification="Center"
+ VerticalOffset="0" HorizontalOffset="0"
+ LabelFace="96" LabelSize="8" LabelFont="3">
+ <s font="3" size="8" face="96">alkane→C | aromatic_ring→Cn1c(=O)c2[nH]cnc2n(</s>
+</annotation>
+<annotation id="501" BoundingBox="242.63 301.97 362.63 321.97"
+ CaptionAlignment="Center" CaptionJustification="Center"
+ Color="4" LabelJustification="Center"
+ VerticalOffset="0" HorizontalOffset="0"
+ LabelFace="96" LabelSize="8" LabelFont="3">
+ <s font="3" size="8" face="96">aromatic_ring→Cn1cc2c(ncn2C)n(C)c1 | alkane→O</s>
+</annotation>
+<annotation id="502" BoundingBox="231.23 292.65 351.23 312.65"
+ CaptionAlignment="Center" CaptionJustification="Center"
+ Color="6" LabelJustification="Center"
+ VerticalOffset="0" HorizontalOffset="0"
+ LabelFace="96" LabelSize="8" LabelFont="3">
+ <s font="3" size="8" face="96">aromatic_ring→Cn1cn(C)c2ncn(C)c2c1 | alkane→O</s>
+</annotation>
+<annotation id="503" BoundingBox="236.62 286.07 356.62 306.07"
+ CaptionAlignment="Center" CaptionJustification="Center"
+ Color="5" LabelJustification="Center"
+ VerticalOffset="0" HorizontalOffset="0"
+ LabelFace="96" LabelSize="8" LabelFont="3">
+ <s font="3" size="8" face="96">aromatic_ring→Cn1c(=O)[nH]c2ncn(C) | alkane→C</s>
+</annotation>
+<annotation id="504" BoundingBox="234.24 300.60 354.24 320.60"
+ CaptionAlignment="Center" CaptionJustification="Center"
+ Color="7" LabelJustification="Center"
+ VerticalOffset="0" HorizontalOffset="0"
+ LabelFace="96" LabelSize="8" LabelFont="3">
+ <s font="3" size="8" face="96">aromatic_ring→Cn1cnc2c1c(=O)[nH]c( | alkane→C</s>
+</annotation></page>
+</CDXML>
