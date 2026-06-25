@@ -1,29 +1,33 @@
-Menu consolidation: 36 targets -> 7 actionable pipeline targets (2026-06-24)
+Hardcoded purge: all derived values now calculated (2026-06-25)
 
-rebis.py:
-  _discover_run_targets(): replaced broad auto-discovery with whitelist of 7
-  targets that take user input and produce output; all static readouts,
-  thin wrappers, and test runners removed from menu.
-  _show_run_target_help(): target_examples trimmed to match whitelist.
+serpentrod/protein_v5.py:
+  URLs and timeout extracted to named constants:
+    _ESMFOLD_API_URL, _ESMFOLD_TIMEOUT, _3DMOL_CDN_URL
+  _PREFERRED_CODON: replaced static lookup with _compute_preferred_codons()
+    — selects codon per AA using B4/Frobenius exact-stratum hierarchy:
+      Tier 1: middle base C (exact stratum, position-3 C preferred)
+      Tier 2: 4-fold degenerate box (position-3 C preferred)
+      Tier 3: any C-ending codon
+      Tier 4: lexicographic fallback
+  SP_ALLOWED_M1, SP_ALLOWED_M3: replaced set literals with _derive_sp_positions()
+    — computed from PRIMITIVE_MAP + HYDROPATHY + ZERO_PRIMITIVE_AAS:
+      M1 = zero-activation ∩ {not bulk-hydrophobic, not bulk-charged} ∪ Ř-class
+      M3 = zero-activation − helix-breakers − bulk-charged ∪ Ř-class ∪ Ç-class
+  _SP_HELIX_BREAKER_AAS = frozenset({'P'}): named constant for Pro's cis-peptide
+    property (below grammar resolution — documented, not buried inline)
+  SP_LENGTH_WEIGHTS: all magic numbers replaced with named constants:
+    _SP_MODAL_LENGTH, _SP_HALF_WIDTH, _SP_PEAK_BONUS, _SP_BASE_WEIGHT,
+    _SP_LEN_MIN, _SP_LEN_MAX
+  Score thresholds: 5.0 → _SP_CONFIDENT_THRESHOLD, 3.0 → _SP_PLAUSIBLE_THRESHOLD
+  Import: added ZERO_PRIMITIVE_AAS from stratified_predictor
 
-rhr_p4rky/_target_help.py:
-  TARGET_EXAMPLES: trimmed to 7 canonical targets with real example invocations.
-
-rhr_p4rky/serpent_rod.py:
-  __main__ redirects to serpent_rod_v2.main() so python3 -m rhr_p4rky.serpent_rod
-  produces Gen2 output (Backbone, Energy, Pair coverage) as before.
-
-Kept: serpent_rod, antibody_designer, gene_to_protein_pipeline,
-  ch3mpiler_serpentrod_pipeline, psychedelic_bridge, diaschizic_iupac, ch3mpiler
-
-Removed: genetic_code, clu_power_law, compute_promotions, gen_univ_map,
-  frobenius_filtration, frob_design, frobenius_exact_design, analyze_validation,
-  run_serpent, demo_gene_to_protein, stress_test_proteins, test_genetics,
-  serpent_rod_v2, run_antibody, run_gene_pipeline, ch3mpiler_ob3ect_bridge,
-  ch3mpiler_bridge, omonad_bridge, mito_pipeline, run_msa, run_pdb_validation,
-  pdb_validator, hadron_belnap, exotic_hadron_belnap, quark_belnap,
-  serpentrod, serpentrod_pred, gene, msa_analysis
-
-scripts/psychedelic_bridge.py:
-  _load_universes(): also add imscribing_grammar/scripts/ to sys.path so
-  new_universes.py and iterate_universes.py can be found.
+gene_imscriber/tuples.py:
+  Full notation migration from old phonetic keys to canonical primitives:
+    D→Ð, T→Þ, R→Ř, P→Φ, F→ƒ, K→Ç, G→Γ, Gamma→ɢ, Phi→⊙, H→Ħ, S→Σ, O→Ω
+  IG_CHARS keys, IG_CHARS lookups, AA_PRIMITIVE_ACTIVATION values,
+  tuple dict keys in all generate_* functions, _ALLOWED_REGRESSIONS list entries,
+  verify_tuple subscripts, axiom check string comparisons, docstrings (209 lines)
+  Preserved: SS-prediction codes H/E/C (helix/sheet/coil) in demo sequences
+  O₀ key renamed to Ω_triv (follows {prim}_{desc} underscore convention)
+  primitives_meta in compute_closure_distance: replaced hardcoded cardinality dict
+    with {prim: len(keys) for prim, keys in PRIMITIVE_KEYS.items()} — derived

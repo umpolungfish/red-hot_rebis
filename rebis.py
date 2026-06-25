@@ -415,6 +415,145 @@ def cmd_scripts(args):
         return 1
 
 
+def cmd_cdxml(args):
+    """Generate CDXML files for red-hot_rebis chemical structures.
+
+    Integrates the CDXML v2 generator as a first-class rebis command.
+    All CDXML uses correct tags: <n> for atoms, <b> for bonds, p="x y" coords.
+    """
+    base_dir = REBIS_ROOT
+    sub = args.cdxml_subcommand
+
+    if sub == "generate":
+        from cdxml import smiles_to_cdxml, verify_cdxml
+        from cdxml.molecules import generate_all
+        from cdxml.molecules import (
+            MOLECULES, APTAMERS, MATERIALS,
+            generate_molecules, generate_aptamers, generate_materials
+        )
+
+        output_dir = args.cdxml_output or str(base_dir / "cdxml_output")
+
+        if args.cdxml_smiles:
+            # Single SMILES → CDXML
+            name = args.cdxml_name or "molecule"
+            annotation = args.cdxml_annotation or f"SMILES: {args.cdxml_smiles}"
+            try:
+                cdxml = smiles_to_cdxml(args.cdxml_smiles, name, annotation)
+                v = verify_cdxml(cdxml)
+                if not v['valid']:
+                    print(f"Verification issues: {v['issues']}")
+                fname = f"{name}.cdxml"
+                from pathlib import Path
+                out = Path(output_dir)
+                out.mkdir(parents=True, exist_ok=True)
+                (out / fname).write_text(cdxml)
+                print(f"  ✓ {fname} ({v['atom_count']} atoms, {v['bond_count']} bonds)")
+                if args.cdxml_print:
+                    print()
+                    print(cdxml[:2000])
+            except Exception as e:
+                print(f"  ✗ Error: {e}")
+                return 1
+
+        elif args.cdxml_molecule:
+            # Generate a single predefined molecule
+            name = args.cdxml_molecule
+            found = [m for m in MOLECULES if name.lower() in m['filename'].lower() or name.lower() in m['name'].lower()]
+            if found:
+                m = found[0]
+                from pathlib import Path
+                out = Path(output_dir)
+                out.mkdir(parents=True, exist_ok=True)
+                cdxml = smiles_to_cdxml(m['smiles'], m['name'], m['annotation'])
+                (out / m['filename']).write_text(cdxml)
+                v = verify_cdxml(cdxml)
+                print(f"  ✓ {m['filename']} ({v['atom_count']} atoms, {v['bond_count']} bonds)")
+                print(f"  Name: {m['name']}")
+                print(f"  Annotation: {m['annotation']}")
+            else:
+                print(f"Molecule '{name}' not found.")
+                print(f"Known molecules: {', '.join(m['filename'] for m in MOLECULES[:10])}...")
+                return 1
+
+        elif args.cdxml_all:
+            total, failed = generate_all(output_dir)
+            return 1 if failed else 0
+
+        elif args.cdxml_molecules_only:
+            n, failed = generate_molecules(output_dir)
+            return 1 if failed else 0
+
+        elif args.cdxml_aptamers_only:
+            n, failed = generate_aptamers(output_dir)
+            return 1 if failed else 0
+
+        elif args.cdxml_materials_only:
+            n, failed = generate_materials(output_dir)
+            return 1 if failed else 0
+
+        else:
+            print("CDXML Generator — red-hot_rebis pipeline integration")
+            print()
+            print("Usage: rebis.py cdxml generate [options]")
+            print()
+            print("  --smiles <SMILES>    Generate CDXML from SMILES")
+            print("  --name <name>        Molecule name")
+            print("  --annotation <text>  Canvas annotation")
+            print("  --molecule <name>    Find & generate predefined molecule")
+            print("  --all                Generate ALL molecules + aptamers + materials")
+            print("  --molecules-only     Generate only small molecules")
+            print("  --aptamers-only      Generate only aptamers")
+            print("  --materials-only     Generate only materials")
+            print("  --output <dir>       Output directory")
+            print("  --print              Print generated CDXML to stdout")
+            print()
+            print(f"Molecules available: {len(MOLECULES)}")
+            print(f"Aptamers available:  {len(APTAMERS)}")
+            print(f"Materials available: {len(MATERIALS)}")
+            return 0
+
+    elif sub == "verify":
+        import os
+        from cdxml.generator import verify_cdxml
+        from pathlib import Path
+        target = args.cdxml_file
+        if target and Path(target).exists():
+            # Verify a single CDXML file
+            cdxml = Path(target).read_text()
+            v = verify_cdxml(cdxml)
+            print(f"Verification of {target}:")
+            print(f"  Valid: {v['valid']}")
+            print(f"  Atoms: {v['atom_count']}, Bonds: {v['bond_count']}")
+            print(f"  Size:  {v['size_bytes']} bytes")
+            if v['issues']:
+                for issue in v['issues']:
+                    print(f"  ✗ {issue}")
+            return 0 if v['valid'] else 1
+        else:
+            print("Usage: rebis.py cdxml verify --file <path.cdxml>")
+            return 1
+
+    elif sub == "clean":
+        import shutil
+        from pathlib import Path
+        target = args.cdxml_output or str(base_dir / "cdxml_output")
+        target = Path(target)
+        if target.exists():
+            count = len(list(target.glob("*.cdxml")))
+            shutil.rmtree(target)
+            print(f"Cleaned {count} CDXML files from {target}")
+        else:
+            print(f"No output directory at {target}")
+        return 0
+
+    else:
+        print("Unknown cdxml subcommand. Use: generate, verify, clean")
+        return 1
+
+
+
+
 def cmd_imas(args):
     """IMASM Arranger: arrangement analysis, IG bridge, CLINK bridge, Frobenius hunt."""
     sub = args.imas_subcommand
@@ -818,6 +957,35 @@ Examples:
     p_mat.add_argument("--compare", dest="mat_ouro_compare", action="store_true",
                         help="Run comparative analysis for Ouroboric alloy")
 
+    # cdxml — Chemical CDXML generation
+    p_cdxml = subparsers.add_parser("cdxml", help="CDXML chemical structure generation (v2-correct format)",
+                                    epilog=EXAMPLES.get("cdxml", "Generate CDXML for molecules, aptamers, and materials"),
+                                    formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_cdxml.add_argument("cdxml_subcommand", choices=["generate", "verify", "clean"],
+                          help="cdxml subcommand")
+    p_cdxml.add_argument("--smiles", dest="cdxml_smiles", type=str,
+                          help="SMILES string to convert")
+    p_cdxml.add_argument("--name", dest="cdxml_name", type=str,
+                          help="Molecule name for CDXML header")
+    p_cdxml.add_argument("--annotation", dest="cdxml_annotation", type=str,
+                          help="Annotation text on CDXML canvas")
+    p_cdxml.add_argument("--molecule", dest="cdxml_molecule", type=str,
+                          help="Generate a predefined molecule by name/filename")
+    p_cdxml.add_argument("--all", dest="cdxml_all", action="store_true",
+                          help="Generate ALL CDXML files (molecules + aptamers + materials)")
+    p_cdxml.add_argument("--molecules-only", dest="cdxml_molecules_only", action="store_true",
+                          help="Generate only small molecule CDXML")
+    p_cdxml.add_argument("--aptamers-only", dest="cdxml_aptamers_only", action="store_true",
+                          help="Generate only aptamer CDXML")
+    p_cdxml.add_argument("--materials-only", dest="cdxml_materials_only", action="store_true",
+                          help="Generate only material CDXML")
+    p_cdxml.add_argument("--output", "-o", dest="cdxml_output", type=str,
+                          help="Output directory for CDXML files")
+    p_cdxml.add_argument("--file", dest="cdxml_file", type=str,
+                          help="CDXML file path for verify")
+    p_cdxml.add_argument("--print", dest="cdxml_print", action="store_true",
+                          help="Print generated CDXML to stdout")
+
     p_pipe = subparsers.add_parser("pipeline", help="CLINK Design Pipeline",
                                   epilog=EXAMPLES["pipeline"],
                                   formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -877,6 +1045,8 @@ Examples:
         return cmd_materials(args)
     elif args.command == "imas":
         return cmd_imas(args)
+    elif args.command == "cdxml":
+        return cmd_cdxml(args)
     elif args.command == "run":
         return cmd_run(args)
     elif args.command == "scripts":

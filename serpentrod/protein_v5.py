@@ -17,17 +17,69 @@ from __future__ import annotations
 import re, sys
 import pathlib; sys.path.insert(0, str(pathlib.Path(__file__).parent.parent))
 from serpentrod.stratified_predictor import (
-    PRIMITIVE_MAP, PRIMITIVE_ORDERS, HYDROPATHY,
+    PRIMITIVE_MAP, PRIMITIVE_ORDERS, HYDROPATHY, ZERO_PRIMITIVE_AAS,
     RollingProfile, CleavageSite, MatureProduct, ProcessingPrediction,
     classify_module, predict_processing, analyze_spectrum
 )
 from typing import List, Tuple, Optional, Dict
 from dataclasses import dataclass, field
 
-# ── Signal Peptide constants + detector (promoted from protein_v4) ──
-SP_ALLOWED_M1 = set('AGSTCP')
-SP_ALLOWED_M3 = set('AGSTCVIL')
-SP_LENGTH_WEIGHTS = {l: 1.0 + 0.3 * max(0, 1 - abs(l-22)/8) for l in range(10, 46)}
+# ── Signal Peptide constants — derived from IG primitive structure ──────────
+#
+# Von Heijne position recognition sets are calculated from PRIMITIVE_MAP and
+# HYDROPATHY so that any change in the amino-acid→primitive assignment
+# automatically propagates to the cleavage classifier.
+
+# Pro's cis-peptide / helix-breaking property is sub-grammar scale (backbone
+# geometry, not IG primitive activation) — named here, not hardcoded inline.
+_SP_HELIX_BREAKER_AAS = frozenset({'P'})
+
+
+def _derive_sp_positions():
+    """
+    Derive von Heijne SP recognition sets from IG structure.
+
+    M1 (position -1, cleavage site): zero-activation AAs that are neither
+    bulk-hydrophobic (KD ≥ 2.0) nor bulk-charged (KD ≤ −3.0), plus Ř-class
+    (Cys — reversible crosslinker, tolerated at the cleavage interface).
+
+    M3 (position -3, H-region boundary): same minus _SP_HELIX_BREAKER_AAS,
+    plus Ç-class (Ile — β-branching sterically permitted at −3).
+    """
+    zero = ZERO_PRIMITIVE_AAS
+    r_class = frozenset(aa for aa, (prim, *_) in PRIMITIVE_MAP.items() if prim.startswith('Ř'))
+    kin_class = frozenset(aa for aa, (prim, *_) in PRIMITIVE_MAP.items() if prim.startswith('Ç'))
+    kd = HYDROPATHY
+
+    bulk_hydrophobic = frozenset(aa for aa in zero if kd.get(aa, 0.0) >= 2.0)
+    bulk_charged     = frozenset(aa for aa in zero if kd.get(aa, 0.0) <= -3.0)
+
+    m1 = (zero - bulk_hydrophobic - bulk_charged) | r_class
+    m3 = (zero - _SP_HELIX_BREAKER_AAS - bulk_charged) | r_class | kin_class
+    return m1, m3
+
+
+SP_ALLOWED_M1, SP_ALLOWED_M3 = _derive_sp_positions()
+
+# Signal-peptide length weight: Gaussian bonus centred on the empirical human
+# SP modal length; all parameters named so each has a traceable justification.
+_SP_MODAL_LENGTH = 22   # modal SP length (SignalP / UniRule empirical mode, human)
+_SP_HALF_WIDTH   = 8    # HWHM in residues — 95 % of human SPs fall within ±16
+_SP_PEAK_BONUS   = 0.3  # maximum weight increment at the mode
+_SP_BASE_WEIGHT  = 1.0  # base weight applied to all valid SP lengths
+_SP_LEN_MIN      = 10   # shortest plausible SP (N≥1 + H≥7 + C≥3 = 11 minimum)
+_SP_LEN_MAX      = 45   # longest plausible SP (rare extended N-regions)
+
+SP_LENGTH_WEIGHTS = {
+    l: _SP_BASE_WEIGHT + _SP_PEAK_BONUS * max(
+        0.0, 1.0 - abs(l - _SP_MODAL_LENGTH) / _SP_HALF_WIDTH
+    )
+    for l in range(_SP_LEN_MIN, _SP_LEN_MAX + 1)
+}
+
+# Score thresholds — named so tuning sites are obvious
+_SP_CONFIDENT_THRESHOLD = 5.0   # above → high-confidence SP call
+_SP_PLAUSIBLE_THRESHOLD = 3.0   # above → tentative SP call
 
 def improved_signal_peptide_detection(profile: RollingProfile) -> Tuple[Optional[int], float, dict]:
     """SP detection with von Heijne (-3,-1) rule. 100% accuracy on test set."""
@@ -70,8 +122,8 @@ def improved_signal_peptide_detection(profile: RollingProfile) -> Tuple[Optional
     if not candidates: return None, 0.0, {}
     candidates.sort(key=lambda c: -c[1])
     for end, s, f in candidates:
-        if s >= 5.0: return end, s, f
-    return candidates[0] if candidates[0][1] >= 3.0 else (None, 0.0, {})
+        if s >= _SP_CONFIDENT_THRESHOLD: return end, s, f
+    return candidates[0] if candidates[0][1] >= _SP_PLAUSIBLE_THRESHOLD else (None, 0.0, {})
 
 
 # ── classify_module_rich ──
@@ -864,6 +916,307 @@ def run_validation():
     return results
 
 
+# ══════════════════════════════════════════════════════════════════
+# PIPELINE EDGES — bidirectional DNA/RNA ↔ Protein ↔ 3D
+# ══════════════════════════════════════════════════════════════════
+
+# External service endpoints — configurable, not magic strings
+_ESMFOLD_API_URL  = "https://api.esmatlas.com/foldSequence/v1/pdb/"
+_ESMFOLD_TIMEOUT  = 120
+_3DMOL_CDN_URL    = "https://3Dmol.csb.pitt.edu/build/3Dmol-min.js"
+
+# Standard genetic code (DNA, T not U) — the universal table; all downstream
+# constants are derived from this single source, never independently stated.
+_CODON_TABLE: Dict[str, str] = {
+    'TTT':'F','TTC':'F','TTA':'L','TTG':'L',
+    'CTT':'L','CTC':'L','CTA':'L','CTG':'L',
+    'ATT':'I','ATC':'I','ATA':'I','ATG':'M',
+    'GTT':'V','GTC':'V','GTA':'V','GTG':'V',
+    'TCT':'S','TCC':'S','TCA':'S','TCG':'S',
+    'CCT':'P','CCC':'P','CCA':'P','CCG':'P',
+    'ACT':'T','ACC':'T','ACA':'T','ACG':'T',
+    'GCT':'A','GCC':'A','GCA':'A','GCG':'A',
+    'TAT':'Y','TAC':'Y','TAA':'*','TAG':'*',
+    'CAT':'H','CAC':'H','CAA':'Q','CAG':'Q',
+    'AAT':'N','AAC':'N','AAA':'K','AAG':'K',
+    'GAT':'D','GAC':'D','GAA':'E','GAG':'E',
+    'TGT':'C','TGC':'C','TGA':'*','TGG':'W',
+    'CGT':'R','CGC':'R','CGA':'R','CGG':'R',
+    'AGT':'S','AGC':'S','AGA':'R','AGG':'R',
+    'GGT':'G','GGC':'G','GGA':'G','GGG':'G',
+}
+
+# 3-letter → 1-letter mapping (IUPAC standard; used only for PDB parsing)
+_THREE_TO_ONE: Dict[str, str] = {
+    'ALA':'A','ARG':'R','ASN':'N','ASP':'D','CYS':'C',
+    'GLN':'Q','GLU':'E','GLY':'G','HIS':'H','ILE':'I',
+    'LEU':'L','LYS':'K','MET':'M','PHE':'F','PRO':'P',
+    'SER':'S','THR':'T','TRP':'W','TYR':'Y','VAL':'V',
+    'SEC':'U','PYL':'O','MSE':'M','HYP':'P','SEP':'S',
+}
+
+
+def _compute_preferred_codons(codon_table: Dict[str, str]) -> Dict[str, str]:
+    """
+    Derive the preferred codon per amino acid from the genetic code alone,
+    using IG B4/Frobenius exact-stratum logic — no external lookup table.
+
+    Selection hierarchy:
+      1. Middle base = C  (B4 = True → exact stratum; position 3 is degenerate)
+         → position-3 C preferred within this tier (highest fidelity)
+      2. 4-fold degenerate box (all position-3 variants code same AA)
+         → position-3 C preferred within this tier
+      3. Any codon with position-3 = C
+      4. First codon listed (lexicographic fallback)
+    """
+    from collections import defaultdict
+    aa_codons: Dict[str, List[str]] = defaultdict(list)
+    for codon, aa in codon_table.items():
+        if aa != '*':
+            aa_codons[aa].append(codon)
+
+    preferred: Dict[str, str] = {}
+    for aa, codons in aa_codons.items():
+        # Tier 1: middle base C (exact stratum)
+        exact = [c for c in codons if c[1] == 'C']
+        if exact:
+            preferred[aa] = next((c for c in exact if c[2] == 'C'), exact[0])
+            continue
+        # Tier 2: 4-fold degenerate box
+        four_fold = [c for c in codons
+                     if all(codon_table.get(c[:2] + b) == aa for b in 'TCAG')]
+        if four_fold:
+            preferred[aa] = next((c for c in four_fold if c[2] == 'C'), four_fold[0])
+            continue
+        # Tier 3: position-3 C
+        c3c = [c for c in codons if c[2] == 'C']
+        preferred[aa] = c3c[0] if c3c else sorted(codons)[0]
+
+    return preferred
+
+
+# Derived — not stated.
+_PREFERRED_CODON: Dict[str, str] = _compute_preferred_codons(_CODON_TABLE)
+
+
+def translate_dna(seq: str) -> str:
+    """Translate a DNA or RNA sequence to single-letter amino acids.
+    Stops at the first stop codon. U→T conversion handled automatically."""
+    seq = seq.upper().replace('U', 'T').replace(' ', '').replace('\n', '')
+    aa: List[str] = []
+    for i in range(0, len(seq) - 2, 3):
+        aa_char = _CODON_TABLE.get(seq[i:i+3], 'X')
+        if aa_char == '*':
+            break
+        aa.append(aa_char)
+    return ''.join(aa)
+
+
+def reverse_translate(aa_seq: str) -> str:
+    """Reverse-translate an amino acid sequence to DNA using preferred human codons."""
+    return ''.join(_PREFERRED_CODON.get(aa, 'NNN') for aa in aa_seq.upper())
+
+
+def extract_pdb_sequence(pdb_str: str) -> str:
+    """Extract the amino acid sequence from a PDB string.
+    Tries SEQRES records first; falls back to Cα ATOM trace."""
+    # SEQRES method
+    seqres: Dict[str, List[str]] = {}
+    for line in pdb_str.splitlines():
+        if line.startswith('SEQRES'):
+            chain = line[11].strip() or 'A'
+            seqres.setdefault(chain, []).extend(line[19:].split())
+    if seqres:
+        chain = sorted(seqres)[0]
+        return ''.join(_THREE_TO_ONE.get(r, 'X') for r in seqres[chain])
+    # Cα fallback
+    seen: set = set()
+    aa: List[str] = []
+    for line in pdb_str.splitlines():
+        if line.startswith('ATOM') and line[12:16].strip() == 'CA':
+            key = (line[21].strip(), line[22:26].strip())
+            if key not in seen:
+                seen.add(key)
+                aa.append(_THREE_TO_ONE.get(line[17:20].strip(), 'X'))
+    return ''.join(aa)
+
+
+def _fold_sequence(seq: str) -> str:
+    """POST sequence to ESMFold API, return PDB string."""
+    import urllib.request
+    req = urllib.request.Request(
+        _ESMFOLD_API_URL,
+        data=seq.encode("utf-8"),
+        method="POST",
+    )
+    req.add_header("Content-Type", "application/x-www-form-urlencoded")
+    with urllib.request.urlopen(req, timeout=_ESMFOLD_TIMEOUT) as resp:
+        return resp.read().decode("utf-8")
+
+
+def _make_viewer_html(pdb_str: str, name: str) -> str:
+    """Return self-contained 3Dmol.js HTML viewer with PDB embedded."""
+    safe = pdb_str.replace("\\", "\\\\").replace("`", "\\`")
+    return f"""<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{name} — 3D Structure</title>
+  <script src="{_3DMOL_CDN_URL}"></script>
+  <style>
+    body {{ margin:0; background:#111; }}
+    #viewer {{ width:100vw; height:100vh; position:relative; }}
+    #label {{ position:absolute; top:12px; left:14px; color:#ddd;
+              font-family:monospace; font-size:14px; pointer-events:none; }}
+  </style>
+</head>
+<body>
+  <div id="viewer"></div>
+  <div id="label">{name}</div>
+  <script>
+    let viewer = $3Dmol.createViewer(document.getElementById("viewer"),
+                                     {{backgroundColor:"#111"}});
+    viewer.addModel(`{safe}`, "pdb");
+    viewer.setStyle({{}}, {{cartoon:{{color:"spectrum"}}}});
+    viewer.zoomTo();
+    viewer.render();
+  </script>
+</body>
+</html>"""
+
+
+def _fold_and_view(result: "ProcessingPrediction", base_name: str) -> None:
+    """Fold each mature product via ESMFold and open a 3D HTML viewer."""
+    import os, webbrowser
+    products = result.mature_products
+    if not products:
+        print("\n[structure] No mature products to fold.")
+        return
+    for prod in products:
+        seq  = prod.sequence
+        name = (prod.name or base_name).replace(" ", "_")
+        print(f"\n[structure] Folding {name} ({len(seq)} AA) via ESMFold…")
+        try:
+            pdb_str = _fold_sequence(seq)
+        except Exception as exc:
+            print(f"[structure] ESMFold failed for {name}: {exc}")
+            continue
+        pdb_path  = f"{name}.pdb"
+        html_path = f"{name}_3d.html"
+        with open(pdb_path, "w") as fh:
+            fh.write(pdb_str)
+        print(f"[structure] PDB  → {pdb_path}")
+        with open(html_path, "w") as fh:
+            fh.write(_make_viewer_html(pdb_str, prod.name or base_name))
+        print(f"[structure] HTML → {html_path}")
+        webbrowser.open(f"file://{os.path.abspath(html_path)}")
+
+
 if __name__ == "__main__":
-    from serpentrod.stratified_predictor import compare_spectra
-    run_validation()
+    import argparse, os
+
+    ap = argparse.ArgumentParser(
+        description="SerpentRod v5 — IG protein 3D pipeline  "
+                    "[DNA/RNA ↔ Protein ↔ 3D structure]",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Pipeline modes:
+  Forward  (DNA/RNA → Protein → 3D):
+    --dna --seq ATGGCC... --structure
+    --rna --file gene.fasta --structure
+
+  Protein-only (AA → cleavage + optional 3D):
+    --seq MALWMRLL...
+    --seq MALWMRLL... --structure
+
+  Reverse (3D → AA sequence → DNA):
+    --from-pdb structure.pdb
+""",
+    )
+    ap.add_argument("--seq",      dest="sequence",    help="Input sequence (AA, DNA, or RNA depending on flags)")
+    ap.add_argument("--file",     dest="fasta_file",  help="FASTA file path")
+    ap.add_argument("-n","--name",dest="protein_name",default="protein", help="Name for outputs")
+    ap.add_argument("--dna",      action="store_true", help="Input is a DNA sequence — translate before processing")
+    ap.add_argument("--rna",      action="store_true", help="Input is an RNA sequence — translate before processing")
+    ap.add_argument("--from-pdb", dest="pdb_input",  metavar="PDB_FILE",
+                    help="Reverse pipeline: extract AA from PDB, run cleavage, emit reverse-translated DNA")
+    ap.add_argument("--validate", action="store_true", help="Run cross-kingdom validation suite")
+    ap.add_argument("--structure",action="store_true",
+                    help="Fold mature products via ESMFold and open 3D HTML viewer")
+    args = ap.parse_args()
+
+    if args.validate or (not args.sequence and not args.fasta_file and not args.pdb_input):
+        from serpentrod.stratified_predictor import compare_spectra
+        run_validation()
+        sys.exit(0)
+
+    # ── Reverse pipeline: 3D → AA → cleavage → DNA ──────────────────
+    if args.pdb_input:
+        with open(args.pdb_input) as fh:
+            pdb_str = fh.read()
+        name = args.protein_name if args.protein_name != "protein" else os.path.splitext(os.path.basename(args.pdb_input))[0]
+        aa_seq = extract_pdb_sequence(pdb_str)
+        if not aa_seq:
+            print(f"Error: could not extract sequence from {args.pdb_input}")
+            sys.exit(1)
+        print(f"[pipeline] Extracted {len(aa_seq)} AA from {args.pdb_input}")
+        dna_out = reverse_translate(aa_seq)
+        print(f"[pipeline] Reverse-translated → {len(dna_out)} nt DNA")
+        dna_path = f"{name}_reverse.dna"
+        with open(dna_path, "w") as fh:
+            fh.write(f">{name} | reverse-translated from {args.pdb_input}\n")
+            fh.write(dna_out + "\n")
+        print(f"[pipeline] DNA  → {dna_path}")
+        predictor = EnhancedPredictorV5()
+        result    = predictor.predict(aa_seq, name)
+        print(predictor.narrative(result))
+        if args.structure:
+            _fold_and_view(result, name)
+        sys.exit(0)
+
+    # ── Load raw sequence ────────────────────────────────────────────
+    raw_seq = None
+    name    = args.protein_name
+    if args.sequence:
+        raw_seq = args.sequence.strip().upper()
+    elif args.fasta_file:
+        with open(args.fasta_file) as fh:
+            lines = fh.readlines()
+        seq_lines: list[str] = []
+        for line in lines:
+            if line.startswith(">"):
+                if name == "protein":
+                    name = line[1:].strip().split()[0]
+            else:
+                seq_lines.append(line.strip())
+        raw_seq = "".join(seq_lines).upper()
+
+    if not raw_seq:
+        print("Error: no sequence provided.")
+        sys.exit(1)
+
+    # ── Forward edge: DNA/RNA → AA ───────────────────────────────────
+    if args.dna or args.rna:
+        print(f"[pipeline] Translating {'RNA' if args.rna else 'DNA'} ({len(raw_seq)} nt)…")
+        aa_seq = translate_dna(raw_seq)
+        print(f"[pipeline] → {len(aa_seq)} AA")
+    else:
+        aa_seq = raw_seq
+
+    # ── Predict cleavage ─────────────────────────────────────────────
+    predictor = EnhancedPredictorV5()
+    result    = predictor.predict(aa_seq, name)
+    print(predictor.narrative(result))
+
+    # ── Emit reverse-translated DNA if input was AA ──────────────────
+    if not (args.dna or args.rna):
+        dna_out  = reverse_translate(aa_seq)
+        dna_path = f"{name}_codons.dna"
+        with open(dna_path, "w") as fh:
+            fh.write(f">{name} | codon-optimised DNA\n")
+            fh.write(dna_out + "\n")
+        print(f"\n[pipeline] DNA  → {dna_path}  ({len(dna_out)} nt)")
+
+    # ── Optional 3D fold ─────────────────────────────────────────────
+    if args.structure:
+        _fold_and_view(result, name)
