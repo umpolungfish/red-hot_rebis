@@ -204,8 +204,10 @@ COMPOUNDS: Dict[str, Dict] = {
 def _load_universes():
     """Lazy-load universe rulesets from imscribing_grammar."""
     ig_path = str(Path(__file__).resolve().parent.parent.parent / "imscribing_grammar")
-    if ig_path not in sys.path:
-        sys.path.insert(0, ig_path)
+    ig_scripts = str(Path(ig_path) / "scripts")
+    for p in (ig_path, ig_scripts):
+        if p not in sys.path:
+            sys.path.insert(0, p)
     from navigators.ruleset_universe import RULESETS, Ruleset
     from new_universes import NEW_RULESETS
     from iterate_universes import build_universes

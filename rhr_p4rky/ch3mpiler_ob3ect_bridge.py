@@ -20,8 +20,8 @@ if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
 import sys
 from pathlib import Path
 
-# Add ob3ect path
-OB3ECT_PATH = str(Path.home() / "ob3ect/digital/ch3mpiler_ob3ect")
+# Add ob3ect/digital to path — ch3mpiler_ob3ect.py lives there
+OB3ECT_PATH = str(Path.home() / "ob3ect/digital")
 sys.path.insert(0, OB3ECT_PATH)
 
 def run_verify(quiet=False):
@@ -33,7 +33,7 @@ def run_verify(quiet=False):
             print("Bridge unavailable — ob3ect integration not yet built")
         return 1
     ob3ect = Ch3mpilerOb3ect()
-    closure = ob3ect.verify()
+    closure = ob3ect.verify(verbose=not quiet)
     if not quiet:
         print(f"Closure: {closure}")
     return 0 if closure else 1

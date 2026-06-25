@@ -239,55 +239,32 @@ def cmd_clink(args):
         return 1
 
 
+_MENU_WHITELIST = {
+    "serpent_rod",
+    "antibody_designer",
+    "gene_to_protein_pipeline",
+    "ch3mpiler_serpentrod_pipeline",
+    "psychedelic_bridge",
+    "diaschizic_iupac",
+    "ch3mpiler",
+}
+
 def _discover_run_targets():
-    """
-    Auto-discover all runnable targets under REBIS_ROOT.
-
-    Returns dict: name → ('script', Path) | ('module', 'dot.path')
-
-    Discovery rules:
-      scripts/*.py           → name = stem (e.g. 'run_msa', 'mito_pipeline')
-      rhr_p4rky/*.py         → name = stem if it has if __name__ == '__main__'
-      <pkg>/<stem>.py        → name = '<pkg>.<stem>' if has if __name__ == '__main__'
-                               where pkg in (serpentrod, gene_imscriber, ch3mpiler,
-                                             clink, pipeline, imas, materials)
-    """
+    """Return only the actionable pipeline targets (take user input, produce output)."""
     targets = {}
 
-    # 0. Root-level runnable scripts (e.g. test_genetics.py)
-    for p in sorted(REBIS_ROOT.glob("*.py")):
-        if p.name in ("rebis.py", "setup.py") or p.name.startswith('_'):
-            continue
-        try:
-            if '__main__' in p.read_text(encoding='utf-8', errors='ignore'):
-                targets[p.stem] = ("script", p)
-        except OSError:
-            pass
-
-    # 1. Every script in scripts/
-    for p in sorted((REBIS_ROOT / "scripts").glob("*.py")):
-        targets[p.stem] = ("script", p)
-
-    # 2. Runnable modules in rhr_p4rky/
+    # rhr_p4rky/ scripts
     for p in sorted((REBIS_ROOT / "rhr_p4rky").glob("*.py")):
-        if p.stem.startswith("_"):
-            continue
-        try:
-            if '__main__' in p.read_text(encoding='utf-8', errors='ignore'):
-                targets[p.stem] = ("script", p)
-        except OSError:
-            pass
+        if p.stem in _MENU_WHITELIST:
+            targets[p.stem] = ("script", p)
 
-    # 3. Top-level package __main__ entry-points
-    PACKAGES = [
-        ("serpentrod",     "serpentrod.protein_v5"),
-        ("serpentrod_pred","serpentrod.stratified_predictor"),
-        ("ch3mpiler",      "ch3mpiler.compiler"),
-        ("gene",           "gene_imscriber.engine"),
-    ]
-    for alias, mod in PACKAGES:
-        if alias not in targets:    # scripts/ take precedence
-            targets[alias] = ("module", mod)
+    # scripts/
+    for p in sorted((REBIS_ROOT / "scripts").glob("*.py")):
+        if p.stem in _MENU_WHITELIST:
+            targets[p.stem] = ("script", p)
+
+    # Package entry-points
+    targets["ch3mpiler"] = ("module", "ch3mpiler.compiler")
 
     return targets
 
@@ -306,42 +283,14 @@ def _show_run_target_help(target):
     print()
     print("Usage:  rebis.py run " + target + " [args...]")
     print()
-    # Per-target examples
     target_examples = {
-        "serpentrod": "  rebis.py run serpentrod --seq KAL\n  rebis.py run serpentrod --seq ALMVL", 
-        "serpentrod_pred": "  rebis.py run serpentrod_pred --seq KAL",
-        "ch3mpiler": "  rebis.py run ch3mpiler --help\n  rebis.py run ch3mpiler --target aspirin --retrosynthesis",
-        "gene": "  rebis.py run gene --help\n  rebis.py run gene --rna AUGGCC...",
-        "gene_to_protein_pipeline": "  rebis.py run gene_to_protein_pipeline --test\n  rebis.py run gene_to_protein_pipeline AAAAATGGCT...\n  rebis.py run gene_to_protein_pipeline --file my.fasta",
-        "run_gene_pipeline": "  rebis.py run run_gene_pipeline --test\n  rebis.py run run_gene_pipeline ATG...\n  rebis.py run run_gene_pipeline --file my.fasta -n mygene",
-        "demo_gene_to_protein": "  rebis.py run demo_gene_to_protein",
-        "test_genetics": "  rebis.py run test_genetics\n  rebis.py run test_genetics --b4\n  rebis.py run test_genetics --codons\n  rebis.py run test_genetics --pipeline\n  rebis.py run test_genetics --quick\n  rebis.py run test_genetics --phi\n  rebis.py run test_genetics --kernel",
-        "run_serpent": "  rebis.py run run_serpent",
-        "serpent_rod_v2": "  rebis.py run serpent_rod_v2",
-        "run_antibody": "  rebis.py run run_antibody",
-        "run_msa": "  rebis.py run run_msa",
-        "run_pdb_validation": "  rebis.py run run_pdb_validation",
-        "mito_pipeline": "  rebis.py run mito_pipeline",
-        "msa_analysis": "  rebis.py run msa_analysis",
-        "psychedelic_bridge": "  rebis.py run psychedelic_bridge",
-        "diaschizic_iupac": "  rebis.py run diaschizic_iupac",
-        "frob_design": "  rebis.py run frob_design",
-        "frobenius_exact_design": "  rebis.py run frobenius_exact_design",
-        "gen_univ_map": "  rebis.py run gen_univ_map",
-        "omonad_bridge": "  rebis.py run omonad_bridge",
-        "compute_promotions": "  rebis.py run compute_promotions",
-        "analyze_validation": "  rebis.py run analyze_validation",
-        "hadron_belnap": "  rebis.py run hadron_belnap",
-        "exotic_hadron_belnap": "  rebis.py run exotic_hadron_belnap",
-        "quark_belnap": "  rebis.py run quark_belnap",
-        "ch3mpiler_bridge": "  rebis.py run ch3mpiler_bridge",
-        "ch3mpiler_ob3ect_bridge": "  rebis.py run ch3mpiler_ob3ect_bridge",
-        "ch3mpiler_serpentrod_pipeline": "  rebis.py run ch3mpiler_serpentrod_pipeline",
-        "clu_power_law": "  rebis.py run clu_power_law",
-        "frobenius_filtration": "  rebis.py run frobenius_filtration",
-        "genetic_code": "  rebis.py run genetic_code",
-        "pdb_validator": "  rebis.py run pdb_validator",
-        "antibody_designer": "  rebis.py run antibody_designer",
+        "serpent_rod": "  rebis.py run serpent_rod AUGGCCGACUGGAACUGCAAGAAGAUC\n  rebis.py run serpent_rod --file my.fasta -n myprotein\n  rebis.py run serpent_rod --validate",
+        "antibody_designer": "  rebis.py run antibody_designer --epitope EVQLVESGG\n  rebis.py run antibody_designer --builtin covid_spike\n  rebis.py run antibody_designer --all\n  rebis.py run antibody_designer --list",
+        "gene_to_protein_pipeline": "  rebis.py run gene_to_protein_pipeline ATGGCCGAC...\n  rebis.py run gene_to_protein_pipeline --file my.fasta\n  rebis.py run gene_to_protein_pipeline --test",
+        "ch3mpiler_serpentrod_pipeline": "  rebis.py run ch3mpiler_serpentrod_pipeline --help",
+        "psychedelic_bridge": "  rebis.py run psychedelic_bridge compound Verticullum\n  rebis.py run psychedelic_bridge universe MyUniverse\n  rebis.py run psychedelic_bridge best MyUniverse",
+        "diaschizic_iupac": "  rebis.py run diaschizic_iupac\n  rebis.py run diaschizic_iupac --compound Verticullum\n  rebis.py run diaschizic_iupac --format json\n  rebis.py run diaschizic_iupac --output names.md",
+        "ch3mpiler": "  rebis.py run ch3mpiler --target aspirin --retrosynthesis\n  rebis.py run ch3mpiler --target glucose --forward C6H12O6\n  rebis.py run ch3mpiler --interactive",
     }
     examples = target_examples.get(target, "  rebis.py run " + target)
     print("Examples:")
@@ -364,7 +313,7 @@ def cmd_run(args):
             print("  Each target can be run with: rebis.py run <target> [args...]")
             print()
             print("Examples:")
-            print("  rebis.py run list                     # Show all 35+ targets")
+            print("  rebis.py run list                     # Show all pipeline targets")
             print("  rebis.py run serpentrod --seq KAL     # Run with args")
             print("  rebis.py run gene_to_protein_pipeline --help  # Target-specific help")
             print("  rebis.py run ch3mpiler --help         # Forward --help to target")

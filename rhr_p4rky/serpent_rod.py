@@ -496,4 +496,5 @@ def main():
         print(f"Closure: {report['closure_theorem']}")
         print(f"{'='*60}")
 if __name__ == "__main__":
-    main()
+    from rhr_p4rky.serpent_rod_v2 import main as _main_v2
+    _main_v2()
