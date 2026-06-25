@@ -223,6 +223,33 @@ BOND_TYPES = {
         "H":"\U00010453","S":"\U00010459","W":"\U00010477",
         "desc":"C-O-C ether (bent, polar)"
     },
+    # Strain-release: ring-opening of strained 3/4-membered ring
+    # High T (strain topology) + max K (strain energy drives opening)
+    "strain_release": {
+        "D":"𐑛","T":"𐑶","R":"𐑑",
+        "P":"𐑿","F":"𐑐","K":"𐑺",
+        "G":"𐑚","Gm":"𐑝","Ph":"⊙",
+        "H":"𐑒","S":"𐑳","W":"𐑭",
+        "desc":"Strain-release ring opening (3/4-membered)"
+    },
+    # Cage C-C: bridged polycyclic σ bond (adamantane/cubane/norbornane)
+    # Matches cage_alkane exactly: H=𐑓 (achiral cage vertex), W=𐑟 (fully wound)
+    "cage_bond": {
+        "D":"𐑨","T":"𐑸","R":"𐑾",
+        "P":"𐑯","F":"𐑐","K":"𐑧",
+        "G":"𐑲","Gm":"𐑠","Ph":"⊙",
+        "H":"𐑓","S":"𐑳","W":"𐑟",
+        "desc":"Cage C-C bond (bridged polycyclic, sp3)"
+    },
+    # Dative/coordinate bond: metal-ligand η coordination
+    # D=𐑦 (full 3D), Gm=𐑵 (maximum coupling), Ph=𐑣 (maximum criticality)
+    "dative_bond": {
+        "D":"𐑦","T":"𐑸","R":"𐑾",
+        "P":"𐑯","F":"𐑐","K":"𐑤",
+        "G":"𐑲","Gm":"𐑵","Ph":"𐑣",
+        "H":"𐑓","S":"𐑳","W":"𐑟",
+        "desc":"Dative/coordinate bond (metal-ligand η)"
+    },
 }
 # ====================================================================
 # FUNCTIONAL GROUP TYPES (IG structural encodings)
@@ -247,6 +274,65 @@ FG = {
     "phenol": {"D":"\U00010468","T":"\U00010478","R":"\U0001047E","P":"\U0001046F","F":"\U00010450","K":"\U00010467","G":"\U00010472","Gm":"\U00010460","Ph":"\u2299","H":"\U00010456","S":"\U00010473","W":"\U0001046D"},
     "epoxide": {"D":"\U00010468","T":"\U00010470","R":"\U00010451","P":"\U0001046F","F":"\U00010450","K":"\U00010458","G":"\U0001045A","Gm":"\U0001045D","Ph":"\u2299","H":"\U00010452","S":"\U00010459","W":"\U00010474"},
     "thiol": {"D":"\U0001045B","T":"\U00010461","R":"\U00010451","P":"\U00010457","F":"\U0001045E","K":"\U00010467","G":"\U0001045A","Gm":"\U0001045D","Ph":"\U00010462","H":"\U00010452","S":"\U00010459","W":"\U00010477"},
+    # ── Fused N-heterocycle primitives ──────────────────────────────────────
+    # imidazole: 5-membered aromatic N-heterocycle with N-H tautomerism
+    #   T=𐑥 fused/heterocyclic topology  R=𐑾 bidirectional (N1-H↔N3-H tautomers)
+    #   P=𐑗 minimal (odd-electron heterocycle)  W=𐑴 partial winding
+    "imidazole": {"D":"𐑛","T":"𐑥","R":"𐑾","P":"𐑗","F":"𐑐","K":"𐑧","G":"𐑲","Gm":"𐑠","Ph":"⊙","H":"𐑖","S":"𐑳","W":"𐑴"},
+    # lactam: cyclic amide (N-containing ring closed by C=O)
+    #   T=𐑥 fused topology  R=𐑽 recognition (ring-constrained, not full tautomeric)
+    #   P=𐑗 minimal parity  W=𐑴 partial winding
+    "lactam": {"D":"𐑛","T":"𐑥","R":"𐑽","P":"𐑗","F":"𐑐","K":"𐑧","G":"𐑲","Gm":"𐑠","Ph":"⊙","H":"𐑖","S":"𐑳","W":"𐑴"},
+    # ── Strained small rings ────────────────────────────────────────────────
+    # aziridine: 3-membered N-ring (angle strain + nucleophilic N, SN2 opening)
+    #   T=𐑶 strain topology  K=𐑺 max kinetics (strain-driven)
+    #   H=𐑒 chirality at N  W=𐑭 wound by ring closure
+    "aziridine": {"D":"𐑛","T":"𐑶","R":"𐑑","P":"𐑿","F":"𐑐","K":"𐑺","G":"𐑚","Gm":"𐑝","Ph":"⊙","H":"𐑒","S":"𐑳","W":"𐑭"},
+    # beta_lactam: 4-membered cyclic amide (antibiotic pharmacophore)
+    #   T=𐑶 4-ring strain  K=𐑺 max kinetics (acylation of β-lactamase)
+    #   H=𐑖 chirality at C4  R=𐑽 constrained β-lactamase recognition
+    "beta_lactam": {"D":"𐑛","T":"𐑶","R":"𐑽","P":"𐑿","F":"𐑐","K":"𐑺","G":"𐑲","Gm":"𐑠","Ph":"⊙","H":"𐑖","S":"𐑳","W":"𐑭"},
+    # cyclopropane: 3-membered C-ring (bent bonds / Walsh orbitals)
+    #   T=𐑶 strain topology  R=𐑾 Walsh orbitals = bidirectional e- donation
+    #   K=𐑧 moderate (activation needed for strain release)  W=𐑭 wound
+    "cyclopropane": {"D":"𐑛","T":"𐑶","R":"𐑾","P":"𐑗","F":"𐑐","K":"𐑧","G":"𐑚","Gm":"𐑝","Ph":"⊙","H":"𐑓","S":"𐑙","W":"𐑭"},
+    # oxetane: 4-membered O-ring (ring strain + ether-like reactivity)
+    #   T=𐑶 4-ring topology  K=𐑪 reactive (acid-catalyzed opening)
+    "oxetane": {"D":"𐑛","T":"𐑶","R":"𐑑","P":"𐑿","F":"𐑐","K":"𐑪","G":"𐑚","Gm":"𐑝","Ph":"⊙","H":"𐑓","S":"𐑕","W":"𐑭"},
+    # ── Cage and polyhedral carbons ─────────────────────────────────────────
+    # cage_alkane: bridged polycyclic cage (adamantane/norbornane/cubane family)
+    #   T=𐑸 maximum cage topology  P=𐑯 high symmetry/parity
+    #   R=𐑾 bidirectional (cage bonds equivalent by symmetry)  W=𐑟 fully wound
+    "cage_alkane": {"D":"𐑨","T":"𐑸","R":"𐑾","P":"𐑯","F":"𐑐","K":"𐑧","G":"𐑲","Gm":"𐑠","Ph":"⊙","H":"𐑓","S":"𐑳","W":"𐑟"},
+    # ── Axial chirality / cumulated bonds ───────────────────────────────────
+    # allene: cumulated C=C=C (axial chirality, linear sp carbon center)
+    #   H=𐑫 MAXIMUM chirality (axial)  R=𐑾 cumulated π = bidirectional
+    #   K=𐑪 reactive toward cycloaddition  W=𐑴 partial winding
+    "allene": {"D":"𐑨","T":"𐑡","R":"𐑾","P":"𐑿","F":"𐑐","K":"𐑪","G":"𐑚","Gm":"𐑝","Ph":"⊙","H":"𐑫","S":"𐑙","W":"𐑴"},
+    # ── Organometallic ──────────────────────────────────────────────────────
+    # metallocene: sandwich η5 complex (ferrocene, Cp2M)
+    #   D=𐑦 full 3D dimensionality  T=𐑸 maximum sandwich topology
+    #   Gm=𐑵 maximum coupling (metal-π)  Ph=𐑣 maximum criticality
+    "metallocene": {"D":"𐑦","T":"𐑸","R":"𐑾","P":"𐑯","F":"𐑐","K":"𐑤","G":"𐑲","Gm":"𐑵","Ph":"𐑣","H":"𐑓","S":"𐑳","W":"𐑟"},
+    # ── Spherical carbon ────────────────────────────────────────────────────
+    # fullerene: spherical all-carbon cage (C60/C70)
+    #   P=𐑹 MAXIMUM parity (icosahedral Oh symmetry)  K=𐑺 strong e- acceptor
+    #   Ph=𐑣 maximum criticality  Gm=𐑵 maximum π coupling
+    "fullerene": {"D":"𐑨","T":"𐑸","R":"𐑾","P":"𐑹","F":"𐑐","K":"𐑺","G":"𐑲","Gm":"𐑵","Ph":"𐑣","H":"𐑓","S":"𐑳","W":"𐑟"},
+    # ── Spirocyclic ─────────────────────────────────────────────────────────
+    # spirocycle: two rings sharing one spiro carbon (orthogonal ring planes)
+    #   H=𐑖 chirality at spiro center  R=𐑽 constrained recognition
+    "spirocycle": {"D":"𐑛","T":"𐑥","R":"𐑽","P":"𐑿","F":"𐑐","K":"𐑧","G":"𐑚","Gm":"𐑜","Ph":"⊙","H":"𐑖","S":"𐑕","W":"𐑭"},
+    # ── Macrocyclic ─────────────────────────────────────────────────────────
+    # macrolide: large ring lactone (>8-membered, macrolide antibiotics)
+    #   D=𐑨 extended chain  R=𐑾 conformational flexibility = bidirectional recognition
+    #   P=𐑗 minimal (flexible, no rigid parity)  W=𐑭 wound by macrocycle
+    "macrolide": {"D":"𐑨","T":"𐑥","R":"𐑾","P":"𐑗","F":"𐑐","K":"𐑧","G":"𐑲","Gm":"𐑠","Ph":"⊙","H":"𐑒","S":"𐑳","W":"𐑭"},
+    # ── Non-benzenoid aromatics ─────────────────────────────────────────────
+    # tropolone: 7-membered aromatic ring with C=O and enol tautomerism
+    #   T=𐑸 max topology (non-benzenoid aromatic, unusual ring size)
+    #   R=𐑾 bidirectional (C-OH ↔ C=O tautomeric exchange)  P=𐑯 unusual parity
+    "tropolone": {"D":"𐑛","T":"𐑸","R":"𐑾","P":"𐑯","F":"𐑐","K":"𐑧","G":"𐑲","Gm":"𐑠","Ph":"⊙","H":"𐑒","S":"𐑳","W":"𐑭"},
 }
 
 FG_TOKENS = {
@@ -333,6 +419,40 @@ FG_TOKENS = {
     "epoxide":"epoxide","oxirane":"epoxide",
     "thiol":"thiol","sulfanyl":"thiol",
     "cyclo":"cyclic","cyclohex":"cyclic","cyclopent":"cyclic",
+    # ── Fused N-heterocycles ─────────────────────────────────────────────
+    "lactam":"lactam","pyrrolidinon":"lactam","piperidinon":"lactam",
+    "caprolactam":"lactam","valerolactam":"lactam","butyrolactam":"lactam",
+    "imidazole":"imidazole","imidazolin":"imidazole",
+    # ── Strained ring tokens ─────────────────────────────────────────────
+    "aziridine":"aziridine","aziridin":"aziridine","ethyleneimine":"aziridine",
+    "beta_lactam":"beta_lactam","betalactam":"beta_lactam",
+    "azetidinon":"beta_lactam","penam":"beta_lactam",
+    "penicill":"beta_lactam","cephalospor":"beta_lactam",
+    "cyclopropane":"cyclopropane","cyclopropyl":"cyclopropane",
+    "cyclopropan":"cyclopropane",
+    "oxetane":"oxetane","oxetan":"oxetane",
+    # ── Cage alkane tokens ───────────────────────────────────────────────
+    "adamantane":"cage_alkane","adamantyl":"cage_alkane",
+    "norbornane":"cage_alkane","norbornyl":"cage_alkane","norbornan":"cage_alkane",
+    "cubane":"cage_alkane","cubyl":"cage_alkane",
+    "diamondoid":"cage_alkane","twistan":"cage_alkane",
+    # ── Allene / axial chirality ─────────────────────────────────────────
+    "allene":"allene","allenyl":"allene","cumulene":"allene",
+    "propadiene":"allene",
+    # ── Organometallic ───────────────────────────────────────────────────
+    "ferrocene":"metallocene","metallocen":"metallocene",
+    "ruthenocene":"metallocene","osmocene":"metallocene",
+    "titanocene":"metallocene","zirconocene":"metallocene",
+    # ── Fullerene ────────────────────────────────────────────────────────
+    "fullerene":"fullerene","buckminster":"fullerene","buckyball":"fullerene",
+    # ── Spirocycle ───────────────────────────────────────────────────────
+    "spirocycl":"spirocycle","spiro[":"spirocycle",
+    # ── Macrolide ────────────────────────────────────────────────────────
+    "macrolide":"macrolide","erythromycin":"macrolide",
+    "azithromycin":"macrolide","rapamycin":"macrolide","sirolimus":"macrolide",
+    # ── Tropolone / non-benzenoid ────────────────────────────────────────
+    "tropolone":"tropolone","tropone":"tropolone","colchicin":"tropolone",
+    "thujaplicin":"tropolone","hinokitiol":"tropolone",
 }
 
 # ====================================================================
@@ -379,7 +499,14 @@ MOLECULE_FG_DB = {
     "acetaminophen": ["amide", "phenol"],
     "thc": ["phenol", "alkene", "ether", "cyclic"],
     "cannabidiol": ["phenol", "alkene", "cyclic"],
-    "caffeine": ["amine", "amide", "alkene", "cyclic"],
+    "caffeine": ["imidazole", "lactam"],
+    "theophylline": ["imidazole", "lactam"],
+    "theobromine": ["imidazole", "lactam"],
+    "xanthine": ["imidazole", "lactam"],
+    "hypoxanthine": ["imidazole", "lactam"],
+    "adenine": ["imidazole", "lactam"],
+    "guanine": ["imidazole", "lactam"],
+    "uric_acid": ["imidazole", "lactam"],
     "ibuprofen": ["carboxylic_acid", "aromatic_ring"],
     "naproxen": ["carboxylic_acid", "ether", "aromatic_ring"],
     "morphine": ["amine", "alcohol", "ether", "aromatic_ring"],
@@ -438,8 +565,64 @@ MOLECULE_FG_DB = {
     "histamine": ["amine", "aromatic_ring"],
     "gramine": ["amine", "aromatic_ring", "cyclic"],
     "bufotenin": ["amine", "phenol", "aromatic_ring", "cyclic"],
-    "cubane": ["cyclic", "alkane"],
-    "pentacyclo": ["cyclic", "alkane"],
+    "cubane": ["cage_alkane"],
+    "pentacyclo": ["cage_alkane"],
+    # ── Strained small rings ──────────────────────────────────────────────
+    "aziridine": ["aziridine"],
+    "ethyleneimine": ["aziridine"],
+    "2_methylaziridine": ["aziridine"],
+    "oxetane": ["oxetane"],
+    "beta_propiolactone": ["oxetane", "ester"],
+    "beta_lactam": ["beta_lactam"],
+    "penicillin_g": ["beta_lactam", "thiol", "amide", "carboxylic_acid"],
+    "ampicillin": ["beta_lactam", "amine", "amide", "carboxylic_acid"],
+    "amoxicillin": ["beta_lactam", "amine", "amide", "carboxylic_acid", "phenol"],
+    "cephalosporin_c": ["beta_lactam", "amide", "carboxylic_acid", "alkene"],
+    # ── Strained C3 ───────────────────────────────────────────────────────
+    "cyclopropane": ["cyclopropane"],
+    "cyclopropanol": ["cyclopropane", "alcohol"],
+    "cyclopropanone": ["cyclopropane", "ketone"],
+    "chrysanthemum_acid": ["cyclopropane", "alkene", "carboxylic_acid"],
+    "permethrin": ["cyclopropane", "ester", "halide", "aromatic_ring"],
+    # ── Cage/bridged ──────────────────────────────────────────────────────
+    "adamantane": ["cage_alkane"],
+    "norbornane": ["cage_alkane"],
+    "norbornene": ["cage_alkane", "alkene"],
+    "bicyclo_1_1_1_pentane": ["cage_alkane", "cyclopropane"],
+    "bcp": ["cage_alkane", "cyclopropane"],
+    "diamondoid": ["cage_alkane"],
+    # ── Allene / axial chirality ──────────────────────────────────────────
+    "allene": ["allene"],
+    "propadiene": ["allene"],
+    "spiropentane": ["spirocycle", "cyclopropane"],
+    # ── Organometallic ────────────────────────────────────────────────────
+    "ferrocene": ["metallocene", "aromatic_ring"],
+    "ruthenocene": ["metallocene", "aromatic_ring"],
+    "osmocene": ["metallocene", "aromatic_ring"],
+    "decamethylferrocene": ["metallocene", "aromatic_ring"],
+    "ferricinium": ["metallocene", "aromatic_ring"],
+    # ── Fullerene ─────────────────────────────────────────────────────────
+    "buckminsterfullerene": ["fullerene"],
+    "c60": ["fullerene"],
+    "c70": ["fullerene"],
+    "fullerene": ["fullerene"],
+    "pcbm": ["fullerene", "ester", "aromatic_ring"],
+    # ── Spirocyclic ───────────────────────────────────────────────────────
+    "spiro_4_5_decane": ["spirocycle"],
+    "griseofulvin": ["spirocycle", "ether", "ketone", "aromatic_ring"],
+    "2_oxa_6_azaspiro_3_3_heptane": ["spirocycle", "aziridine", "oxetane"],
+    # ── Macrolide antibiotics ─────────────────────────────────────────────
+    "erythromycin": ["macrolide", "ether", "amine", "alcohol"],
+    "azithromycin": ["macrolide", "ether", "amine", "alcohol"],
+    "rapamycin": ["macrolide", "ether", "amide", "alkene"],
+    "sirolimus": ["macrolide", "ether", "amide", "alkene"],
+    "cyclosporin": ["macrolide", "amide"],
+    "epothilone": ["macrolide", "ester", "alkene", "epoxide"],
+    # ── Tropolone / non-benzenoid aromatics ───────────────────────────────
+    "tropolone": ["tropolone"],
+    "colchicine": ["tropolone", "amide", "ether"],
+    "hinokitiol": ["tropolone", "alcohol"],
+    "beta_thujaplicin": ["tropolone", "alcohol"],
     "p-phenylenediamine": ["amine", "aromatic_ring"],
     "3,4-dichloroaniline": ["halide", "amine", "aromatic_ring"],
 }
