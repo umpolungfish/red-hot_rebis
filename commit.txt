@@ -1,3 +1,24 @@
+decay_chain.py: nuclear decay as IMASM winding toward Frobenius fixed point (2026-06-25)
+
+Added rhr_p4rky/decay_chain.py — encodes the structural insight that radioactive decay
+is the grammar iterating toward a Frobenius-exact fixed point. Each decay event fires δ
+without compensating μ (agitates subatomic Belnap state); the chain winds until it lands
+on a daughter where ⊙=⊙ and μ∘δ=id holds. Half-life = dwell time per winding step.
+
+Implements 5 natural decay series: U238 (14 windings), U235 (11), Th232 (10), Ra226 (7),
+Rn222 (8). Per step: IMASM word, Frobenius verdict, structural distance Δ to previous step.
+
+Key result from U238 chain:
+  Steps 0–4 (U→Th→Pa→U→Th, all f-block actinides): Δ=0 — same structural type
+  Step 5 Ra-226: Δ=162 cliff — f-block → s-block alkaline earth
+  Step 8 Pb-214: Frobenius FIRST FIRES (⊙=⊙) but Po-210 (step 13) breaks closure again
+  Step 14 Pb-206: permanent fixed point — chain terminates structurally, not energetically
+
+Symlinked shared/elem2imasm.py + shared/reactivity.py from imscribing_grammar/.
+Added "decay_chain" to _MENU_WHITELIST in rebis.py — `rebis.py run decay_chain`.
+
+---
+
 Hardcoded purge: all derived values now calculated (2026-06-25)
 
 serpentrod/protein_v5.py:
