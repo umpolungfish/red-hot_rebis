@@ -38,77 +38,77 @@ import math
 
 IG_CHARS: Dict[str, str] = {
     # ── Dimensionality (Ð) — 4 values ──
-    "D_wedge":      "𐑛",     # Ð_; — 0d point / flat
-    "D_tri":        "𐑨",     # Ð_C — 2d surface / simplicial
-    "D_infty":      "𐑼",     # Ð_ß — infinite-dimensional
-    "D_odot":       "𐑦",     # Ð_ω — imscriptive (self-written state-space)
+    "Ð_wedge":      "𐑛",     # Ð_; — 0d point / flat
+    "Ð_tri":        "𐑨",     # Ð_C — 2d surface / simplicial
+    "Ð_infty":      "𐑼",     # Ð_ß — infinite-dimensional
+    "Ð_odot":       "𐑦",     # Ð_ω — imscriptive (self-written state-space)
     
     # ── Topology (Þ) — 5 values ──
-    "T_net":        "𐑡",     # Þ_¨ — branching / network
-    "T_inc":        "𐑰",     # Þ_6 — inclusion / containment
-    "T_bowtie":     "𐑥",     # Þ_K — crossing point / bifurcation
-    "T_boxtimes":   "𐑶",     # Þ_ò — box product / irreducible product
-    "T_odot":       "𐑸",     # Þ_O — imscriptive / self-referential topology
+    "Þ_net":        "𐑡",     # Þ_¨ — branching / network
+    "Þ_inc":        "𐑰",     # Þ_6 — inclusion / containment
+    "Þ_bowtie":     "𐑥",     # Þ_K — crossing point / bifurcation
+    "Þ_boxtimes":   "𐑶",     # Þ_ò — box product / irreducible product
+    "Þ_odot":       "𐑸",     # Þ_O — imscriptive / self-referential topology
     
     # ── Relational Mode (Ř) — 4 values ──
-    "R_super":      "𐑩",     # Ř_¯ — supervenience / hierarchical
-    "R_cat":        "𐑑",     # Ř_ý — categorical / compositional
-    "R_dagger":     "𐑽",     # Ř_Ť — adjoint / reciprocal
-    "R_lr":         "𐑾",     # Ř_= — bidirectional / lateral
+    "Ř_super":      "𐑩",     # Ř_¯ — supervenience / hierarchical
+    "Ř_cat":        "𐑑",     # Ř_ý — categorical / compositional
+    "Ř_dagger":     "𐑽",     # Ř_Ť — adjoint / reciprocal
+    "Ř_lr":         "𐑾",     # Ř_= — bidirectional / lateral
     
     # ── Parity/Symmetry (Φ) — 5 values ──
-    "P_asym":       "𐑗",     # Φ_˙ — asymmetric / no symmetry
-    "P_psi":        "𐑿",     # Φ_F — quantum / phase symmetry
-    "P_pm":         "𐑬",     # Φ_υ — Z2 / partial symmetry
-    "P_sym":        "𐑯",     # Φ_ɐ — full symmetry
-    "P_pm_sym":     "𐑹",     # Φ_} — Frobenius special (μ∘δ=id)
+    "Φ_asym":       "𐑗",     # Φ_˙ — asymmetric / no symmetry
+    "Φ_psi":        "𐑿",     # Φ_F — quantum / phase symmetry
+    "Φ_pm":         "𐑬",     # Φ_υ — Z2 / partial symmetry
+    "Φ_sym":        "𐑯",     # Φ_ɐ — full symmetry
+    "Φ_pm_sym":     "𐑹",     # Φ_} — Frobenius special (μ∘δ=id)
     
     # ── Fidelity (ƒ) — 3 values ──
-    "F_ell":        "𐑱",     # ƒ_ð — classical / lossy
-    "F_eth":        "𐑞",     # ƒ_ì — thermal / threshold
-    "F_hbar":       "𐑐",     # ƒ_ż — quantum / coherent
+    "ƒ_ell":        "𐑱",     # ƒ_ð — classical / lossy
+    "ƒ_eth":        "𐑞",     # ƒ_ì — thermal / threshold
+    "ƒ_hbar":       "𐑐",     # ƒ_ż — quantum / coherent
     
     # ── Kinetics (Ç) — 5 values ──
-    "K_fast":       "𐑺",     # Ç_- — driven / fast relaxation
-    "K_mod":        "𐑪",     # Ç_W — moderate
-    "K_slow":       "𐑧",     # Ç_@ — near-equilibrium / slow
-    "K_trap_order": "𐑤",     # Ç_λ — frozen by order
-    "K_trap_disorder":"𐑘",   # Ç_Ù — frozen by disorder
+    "Ç_fast":       "𐑺",     # Ç_- — driven / fast relaxation
+    "Ç_mod":        "𐑪",     # Ç_W — moderate
+    "Ç_slow":       "𐑧",     # Ç_@ — near-equilibrium / slow
+    "Ç_trap_order": "𐑤",     # Ç_λ — frozen by order
+    "Ç_trap_disorder":"𐑘",   # Ç_Ù — frozen by disorder
     
     # ── Scope/Granularity (Γ) — 3 values ──
-    "G_beth":       "𐑲",     # Γ_β — local / mesoscale
-    "G_gimel":      "𐑚",     # Γ_γ — intermediate
-    "G_aleph":      "𐑔",     # Γ_ʔ — global / maximal
+    "Γ_beth":       "𐑲",     # Γ_β — local / mesoscale
+    "Γ_gimel":      "𐑚",     # Γ_γ — intermediate
+    "Γ_aleph":      "𐑔",     # Γ_ʔ — global / maximal
     
     # ── Interaction Grammar (ɢ) — 4 values ──
-    "Gamma_and":    "𐑝",     # ɢ_˝ — conjunctive / simultaneous
-    "Gamma_or":     "𐑜",     # ɢ_Ş — disjunctive / alternative
-    "Gamma_seq":    "𐑠",     # ɢ_^ — sequential / ordered
-    "Gamma_broad":  "𐑵",     # ɢ_ˌ — broadcast / universal
+    "ɢ_and":    "𐑝",     # ɢ_˝ — conjunctive / simultaneous
+    "ɢ_or":     "𐑜",     # ɢ_Ş — disjunctive / alternative
+    "ɢ_seq":    "𐑠",     # ɢ_^ — sequential / ordered
+    "ɢ_broad":  "𐑵",     # ɢ_ˌ — broadcast / universal
     
     # ── Criticality (φ̂/⊙) — 5 values ──
-    "Phi_sub":      "𐑢",     # φ̂_ž — subcritical / stable
-    "Phi_c":        "⊙",     # φ̂_ÿ — critical (self-modeling gate open)
-    "Phi_c_complex":"𐑮",     # φ̂_Æ — complex-plane critical
-    "Phi_EP":       "𐑻",     # φ̂_3 — exceptional point
-    "Phi_super":    "𐑣",     # φ̂_Ţ — supercritical / runaway
+    "⊙_sub":      "𐑢",     # φ̂_ž — subcritical / stable
+    "⊙_c":        "⊙",     # φ̂_ÿ — critical (self-modeling gate open)
+    "⊙_c_complex":"𐑮",     # φ̂_Æ — complex-plane critical
+    "⊙_EP":       "𐑻",     # φ̂_3 — exceptional point
+    "⊙_super":    "𐑣",     # φ̂_Ţ — supercritical / runaway
     
     # ── Chirality (Ħ) — 4 values ──
-    "H_0":          "𐑓",     # Ħ_Ñ — memoryless / achiral
-    "H_1":          "𐑒",     # Ħ_£ — one-step
-    "H_2":          "𐑖",     # Ħ_A — two-step
-    "H_inf":        "𐑫",     # Ħ_! — eternal / topological
+    "Ħ_0":          "𐑓",     # Ħ_Ñ — memoryless / achiral
+    "Ħ_1":          "𐑒",     # Ħ_£ — one-step
+    "Ħ_2":          "𐑖",     # Ħ_A — two-step
+    "Ħ_inf":        "𐑫",     # Ħ_! — eternal / topological
     
     # ── Stoichiometry (Σ) — 3 values ──
-    "S_one_one":    "𐑙",     # Σ_S — 1:1
-    "S_n_n":        "𐑕",     # Σ_ő — n:n (matched many)
-    "S_n_m":        "𐑳",     # Σ_ï — n:m (unmatched many)
+    "Σ_one_one":    "𐑙",     # Σ_S — 1:1
+    "Σ_n_n":        "𐑕",     # Σ_ő — n:n (matched many)
+    "Σ_n_m":        "𐑳",     # Σ_ï — n:m (unmatched many)
     
     # ── Winding/Protection (Ω) — 4 values ──
-    "O₀":          "𐑷",     # Ω_Å — trivial / no protection
-    "O_Z2":         "𐑴",     # Ω_2 — ℤ₂ parity protection
-    "O_Z":          "𐑭",     # Ω_z — integer winding
-    "O_NA":         "𐑟",     # Ω_5 — non-Abelian braiding
+    "Ω_triv":          "𐑷",     # Ω_Å — trivial / no protection
+    "Ω_Z2":         "𐑴",     # Ω_2 — ℤ₂ parity protection
+    "Ω_Z":          "𐑭",     # Ω_z — integer winding
+    "Ω_NA":         "𐑟",     # Ω_5 — non-Abelian braiding
 }
 
 # Reverse mapping: Unicode → key
@@ -128,7 +128,7 @@ def prim_value_to_char(prim: str, value: str) -> str:
     """Convert a primitive name + value name to IG Unicode character.
     
     Args:
-        prim: One of 'D', 'T', 'R', 'P', 'F', 'K', 'G', 'Gamma', 'Phi', 'H', 'S', 'O'
+        prim: One of 'Ð', 'Þ', 'Ř', 'Φ', 'ƒ', 'Ç', 'Γ', 'ɢ', '⊙', 'Ħ', 'Σ', 'Ω'
         value: The descriptive value name (e.g. 'tri', 'bowtie', 'slow')
     
     Returns:
@@ -185,18 +185,18 @@ CHOU_FASMAN: Dict[str, Dict[str, float]] = {
 
 # Primitive activation (revised v0.6.0): His→⊙, Gln→Γ
 AA_PRIMITIVE_ACTIVATION: Dict[str, str] = {
-    "His": "Phi",       # ⊙ — criticality
-    "Gln": "G",         # Γ — grammar/scope
-    "Met": "D",         # Ð — scope
-    "Trp": "T",         # Þ — topology
-    "Cys": "R",         # Ř — reversibility
-    "Tyr": "P",         # Φ — parity
-    "Phe": "F",         # ƒ — force
-    "Ile": "K",         # Ç — kinetics
-    "Asn": "Gamma",     # ɢ — interaction
-    "Asp": "H",         # Ħ — chirality
-    "Lys": "S",         # Σ — entropy
-    "Glu": "O",         # Ω — winding
+    "His": "⊙",       # ⊙ — criticality
+    "Gln": "Γ",         # Γ — grammar/scope
+    "Met": "Ð",         # Ð — scope
+    "Trp": "Þ",         # Þ — topology
+    "Cys": "Ř",         # Ř — reversibility
+    "Tyr": "Φ",         # Φ — parity
+    "Phe": "ƒ",         # ƒ — force
+    "Ile": "Ç",         # Ç — kinetics
+    "Asn": "ɢ",     # ɢ — interaction
+    "Asp": "Ħ",         # Ħ — chirality
+    "Lys": "Σ",         # Σ — entropy
+    "Glu": "Ω",         # Ω — winding
 }
 
 PRIMITIVE_TO_AAS: Dict[str, List[str]] = defaultdict(list)
@@ -346,25 +346,25 @@ def generate_dna_gene_tuple(features: Dict[str, Any]) -> Dict[str, str]:
     seq_len = features.get("total_length", 0)
     
     if seq_len > 1000:
-        g_val = "G_aleph"
+        g_val = "Γ_aleph"
     elif seq_len > 100:
-        g_val = "G_gimel"
+        g_val = "Γ_gimel"
     else:
-        g_val = "G_beth"
+        g_val = "Γ_beth"
     
     return {
-        "D": IG_CHARS["D_tri"],
-        "T": IG_CHARS["T_boxtimes"],
-        "R": IG_CHARS["R_lr"],
-        "P": IG_CHARS["P_asym"],
-        "F": IG_CHARS["F_ell"],
-        "K": IG_CHARS["K_slow"],
-        "G": IG_CHARS[g_val],
-        "Gamma": IG_CHARS["Gamma_seq"],
-        "Phi": IG_CHARS["Phi_sub"],
-        "H": IG_CHARS["H_2"],
-        "S": IG_CHARS["S_n_m"],
-        "O": IG_CHARS["O₀"],
+        "Ð": IG_CHARS["Ð_tri"],
+        "Þ": IG_CHARS["Þ_boxtimes"],
+        "Ř": IG_CHARS["Ř_lr"],
+        "Φ": IG_CHARS["Φ_asym"],
+        "ƒ": IG_CHARS["ƒ_ell"],
+        "Ç": IG_CHARS["Ç_slow"],
+        "Γ": IG_CHARS[g_val],
+        "ɢ": IG_CHARS["ɢ_seq"],
+        "⊙": IG_CHARS["⊙_sub"],
+        "Ħ": IG_CHARS["Ħ_2"],
+        "Σ": IG_CHARS["Σ_n_m"],
+        "Ω": IG_CHARS["Ω_triv"],
     }
 
 
@@ -374,41 +374,41 @@ def generate_pre_mrna_tuple(features: Dict[str, Any]) -> Dict[str, str]:
     has_introns = features.get("has_introns", True)
     
     if has_introns:
-        g_val = "G_gimel" if seq_len > 500 else "G_beth"
+        g_val = "Γ_gimel" if seq_len > 500 else "Γ_beth"
     else:
-        g_val = "G_beth"
+        g_val = "Γ_beth"
     
     return {
-        "D": IG_CHARS["D_tri"],
-        "T": IG_CHARS["T_net"],
-        "R": IG_CHARS["R_dagger"],
-        "P": IG_CHARS["P_asym"],
-        "F": IG_CHARS["F_ell"],
-        "K": IG_CHARS["K_mod"],
-        "G": IG_CHARS[g_val],
-        "Gamma": IG_CHARS["Gamma_or"],
-        "Phi": IG_CHARS["Phi_sub"],
-        "H": IG_CHARS["H_1"],
-        "S": IG_CHARS["S_n_m"],
-        "O": IG_CHARS["O₀"],
+        "Ð": IG_CHARS["Ð_tri"],
+        "Þ": IG_CHARS["Þ_net"],
+        "Ř": IG_CHARS["Ř_dagger"],
+        "Φ": IG_CHARS["Φ_asym"],
+        "ƒ": IG_CHARS["ƒ_ell"],
+        "Ç": IG_CHARS["Ç_mod"],
+        "Γ": IG_CHARS[g_val],
+        "ɢ": IG_CHARS["ɢ_or"],
+        "⊙": IG_CHARS["⊙_sub"],
+        "Ħ": IG_CHARS["Ħ_1"],
+        "Σ": IG_CHARS["Σ_n_m"],
+        "Ω": IG_CHARS["Ω_triv"],
     }
 
 
 def generate_mrna_tuple(features: Dict[str, Any]) -> Dict[str, str]:
     """Generate structural tuple for the mature mRNA stage."""
     return {
-        "D": IG_CHARS["D_tri"],
-        "T": IG_CHARS["T_net"],
-        "R": IG_CHARS["R_super"],
-        "P": IG_CHARS["P_asym"],
-        "F": IG_CHARS["F_ell"],
-        "K": IG_CHARS["K_mod"],
-        "G": IG_CHARS["G_aleph"],
-        "Gamma": IG_CHARS["Gamma_seq"],
-        "Phi": IG_CHARS["Phi_sub"],
-        "H": IG_CHARS["H_1"],
-        "S": IG_CHARS["S_n_m"],
-        "O": IG_CHARS["O₀"],
+        "Ð": IG_CHARS["Ð_tri"],
+        "Þ": IG_CHARS["Þ_net"],
+        "Ř": IG_CHARS["Ř_super"],
+        "Φ": IG_CHARS["Φ_asym"],
+        "ƒ": IG_CHARS["ƒ_ell"],
+        "Ç": IG_CHARS["Ç_mod"],
+        "Γ": IG_CHARS["Γ_aleph"],
+        "ɢ": IG_CHARS["ɢ_seq"],
+        "⊙": IG_CHARS["⊙_sub"],
+        "Ħ": IG_CHARS["Ħ_1"],
+        "Σ": IG_CHARS["Σ_n_m"],
+        "Ω": IG_CHARS["Ω_triv"],
     }
 
 
@@ -430,41 +430,41 @@ def generate_secondary_structure_tuple(features: Dict[str, Any]) -> Dict[str, st
     
     # Kinetics (Ç): β-branched fraction determines folding speed
     if beta_frac > 0.3:
-        k_val = "K_slow"
+        k_val = "Ç_slow"
     elif beta_frac > 0.15:
-        k_val = "K_mod"
+        k_val = "Ç_mod"
     else:
-        k_val = "K_fast"
+        k_val = "Ç_fast"
     
     # Criticality (φ̂): His at loops → self-structuring; Pro absorbs
     if phi_gate and not pro_abs and not geo_sup:
-        phi_val = "Phi_c"
+        phi_val = "⊙_c"
     elif phi_gate and pro_abs:
-        phi_val = "Phi_EP"
+        phi_val = "⊙_EP"
     else:
-        phi_val = "Phi_sub"
+        phi_val = "⊙_sub"
     
     # Parity (Φ): mixed SS → asymmetry
     if mixed_ss:
-        p_val = "P_asym"
-    elif par.get("dominant_ss") == "H":
-        p_val = "P_pm"
+        p_val = "Φ_asym"
+    elif par.get("dominant_ss") == "Ħ":
+        p_val = "Φ_pm"
     else:
-        p_val = "P_pm"
+        p_val = "Φ_pm"
     
     return {
-        "D": IG_CHARS["D_tri"],
-        "T": IG_CHARS["T_bowtie"],      # FIXED: bowtie, NOT odot
-        "R": IG_CHARS["R_lr"],
-        "P": IG_CHARS[p_val],
-        "F": IG_CHARS["F_ell"],
-        "K": IG_CHARS[k_val],
-        "G": IG_CHARS["G_gimel"],
-        "Gamma": IG_CHARS["Gamma_seq"],
-        "Phi": IG_CHARS[phi_val],
-        "H": IG_CHARS["H_0"],
-        "S": IG_CHARS["S_one_one"],
-        "O": IG_CHARS["O₀"],
+        "Ð": IG_CHARS["Ð_tri"],
+        "Þ": IG_CHARS["Þ_bowtie"],      # FIXED: bowtie, NOT odot
+        "Ř": IG_CHARS["Ř_lr"],
+        "Φ": IG_CHARS[p_val],
+        "ƒ": IG_CHARS["ƒ_ell"],
+        "Ç": IG_CHARS[k_val],
+        "Γ": IG_CHARS["Γ_gimel"],
+        "ɢ": IG_CHARS["ɢ_seq"],
+        "⊙": IG_CHARS[phi_val],
+        "Ħ": IG_CHARS["Ħ_0"],
+        "Σ": IG_CHARS["Σ_one_one"],
+        "Ω": IG_CHARS["Ω_triv"],
     }
 
 
@@ -489,46 +489,46 @@ def generate_tertiary_structure_tuple(features: Dict[str, Any]) -> Dict[str, str
     chain_len = gram.get("chain_length", 0)
     
     if beta_frac > 0.25:
-        k_val = "K_slow"
+        k_val = "Ç_slow"
     elif beta_frac > 0.1:
-        k_val = "K_mod"
+        k_val = "Ç_mod"
     else:
-        k_val = "K_fast"
+        k_val = "Ç_fast"
     
     if phi_gate and not pro_abs and not geo_sup:
-        phi_val = "Phi_c"
+        phi_val = "⊙_c"
     elif phi_gate and pro_abs:
-        phi_val = "Phi_EP"
+        phi_val = "⊙_EP"
     else:
-        phi_val = "Phi_sub"
+        phi_val = "⊙_sub"
     
     if mixed_ss and unique_aas > 10:
-        p_val = "P_asym"
+        p_val = "Φ_asym"
     elif not mixed_ss and unique_aas < 5:
-        p_val = "P_sym"
+        p_val = "Φ_sym"
     else:
-        p_val = "P_pm"
+        p_val = "Φ_pm"
     
     if chain_len > 500:
-        g_val = "G_aleph"
+        g_val = "Γ_aleph"
     elif chain_len > 100:
-        g_val = "G_gimel"
+        g_val = "Γ_gimel"
     else:
-        g_val = "G_beth"
+        g_val = "Γ_beth"
     
     return {
-        "D": IG_CHARS["D_tri"],
-        "T": IG_CHARS["T_bowtie"],      # FIXED: bowtie, NOT odot
-        "R": IG_CHARS["R_lr"],
-        "P": IG_CHARS[p_val],
-        "F": IG_CHARS["F_ell"],
-        "K": IG_CHARS[k_val],
-        "G": IG_CHARS[g_val],
-        "Gamma": IG_CHARS["Gamma_broad"],
-        "Phi": IG_CHARS[phi_val],
-        "H": IG_CHARS["H_0"],           # H=0: folded protein has no temporal memory
-        "S": IG_CHARS["S_one_one"],
-        "O": IG_CHARS["O₀"],           # FIXED: no topological protection (no Axiom B conflict)
+        "Ð": IG_CHARS["Ð_tri"],
+        "Þ": IG_CHARS["Þ_bowtie"],      # FIXED: bowtie, NOT odot
+        "Ř": IG_CHARS["Ř_lr"],
+        "Φ": IG_CHARS[p_val],
+        "ƒ": IG_CHARS["ƒ_ell"],
+        "Ç": IG_CHARS[k_val],
+        "Γ": IG_CHARS[g_val],
+        "ɢ": IG_CHARS["ɢ_broad"],
+        "⊙": IG_CHARS[phi_val],
+        "Ħ": IG_CHARS["Ħ_0"],           # H=0: folded protein has no temporal memory
+        "Σ": IG_CHARS["Σ_one_one"],
+        "Ω": IG_CHARS["Ω_triv"],           # FIXED: no topological protection (no Axiom B conflict)
     }
 
 
@@ -553,50 +553,50 @@ def generate_quaternary_structure_tuple(features: Dict[str, Any]) -> Dict[str, s
     
     # Stoichiometry (Σ)
     if n_subunits > 4:
-        s_val = "S_n_m"
+        s_val = "Σ_n_m"
     elif n_subunits > 1:
-        s_val = "S_n_n"
+        s_val = "Σ_n_n"
     else:
-        s_val = "S_one_one"
+        s_val = "Σ_one_one"
     
     # Winding (Ω) from subunit symmetry
     # Dimer = Z2 (parity), Tetramer+ = Z (integer winding)
     if n_subunits == 2:
-        o_val = "O_Z2"
+        o_val = "Ω_Z2"
     elif n_subunits >= 4:
-        o_val = "O_Z"
+        o_val = "Ω_Z"
     else:
-        o_val = "O₀"
+        o_val = "Ω_triv"
     
     # Criticality (φ̂)
     if phi_gate and not pro_abs and not geo_sup:
-        phi_val = "Phi_c"
+        phi_val = "⊙_c"
     elif phi_gate and pro_abs:
-        phi_val = "Phi_EP"
+        phi_val = "⊙_EP"
     else:
-        phi_val = "Phi_sub"
+        phi_val = "⊙_sub"
     
     # Scope (Γ)
     if n_subunits >= 4 and unique_aas > 8:
-        g_val = "G_aleph"
+        g_val = "Γ_aleph"
     elif n_subunits >= 2:
-        g_val = "G_gimel"
+        g_val = "Γ_gimel"
     else:
-        g_val = "G_beth"
+        g_val = "Γ_beth"
     
     return {
-        "D": IG_CHARS["D_tri"],
-        "T": IG_CHARS["T_bowtie"],      # FIXED: bowtie, NOT odot
-        "R": IG_CHARS["R_lr"],
-        "P": IG_CHARS["P_asym"],
-        "F": IG_CHARS["F_ell"],
-        "K": IG_CHARS["K_slow"],
-        "G": IG_CHARS[g_val],
-        "Gamma": IG_CHARS["Gamma_broad"],
-        "Phi": IG_CHARS[phi_val],
-        "H": IG_CHARS["H_0"],           # H=0: quaternary is memoryless
-        "S": IG_CHARS[s_val],
-        "O": IG_CHARS[o_val],           # Subunit winding protection
+        "Ð": IG_CHARS["Ð_tri"],
+        "Þ": IG_CHARS["Þ_bowtie"],      # FIXED: bowtie, NOT odot
+        "Ř": IG_CHARS["Ř_lr"],
+        "Φ": IG_CHARS["Φ_asym"],
+        "ƒ": IG_CHARS["ƒ_ell"],
+        "Ç": IG_CHARS["Ç_slow"],
+        "Γ": IG_CHARS[g_val],
+        "ɢ": IG_CHARS["ɢ_broad"],
+        "⊙": IG_CHARS[phi_val],
+        "Ħ": IG_CHARS["Ħ_0"],           # H=0: quaternary is memoryless
+        "Σ": IG_CHARS[s_val],
+        "Ω": IG_CHARS[o_val],           # Subunit winding protection
     }
 
 
@@ -700,20 +700,20 @@ def get_value_name(key: str) -> str:
 
 
 def check_axiom_c(d_char: str, t_char: str) -> Tuple[bool, str]:
-    """Check Axiom C: D_odot ↔ T_odot.
+    """Check Axiom C: Ð_odot ↔ Þ_odot.
     
-    RESOLVED: Protein stages use T=bowtie with D=tri,
+    RESOLVED: Protein stages use Þ=bowtie with Ð=tri,
     which satisfies the precondition (neither is odot).
     """
     d_key = CHAR_TO_NAME.get(d_char, "")
     t_key = CHAR_TO_NAME.get(t_char, "")
-    d_odot = d_key == "D_odot"
-    t_odot = t_key == "T_odot"
+    d_odot = d_key == "Ð_odot"
+    t_odot = t_key == "Þ_odot"
     
     if d_odot and not t_odot:
-        return False, f"AXIOM C: D=odot but T={get_value_name(t_key)}"
+        return False, f"AXIOM C: Ð=odot but Þ={get_value_name(t_key)}"
     if t_odot and not d_odot:
-        return False, f"AXIOM C: T=odot but D={get_value_name(d_key)}"
+        return False, f"AXIOM C: Þ=odot but Ð={get_value_name(d_key)}"
     return True, "OK"
 
 
@@ -729,9 +729,9 @@ def check_axiom_b(o_char: str, h_char: str) -> Tuple[bool, str]:
     h_name = get_value_name(h_key) if h_key else "?"
     
     if o_name == "Z" and h_name not in ("2", "inf"):
-        return False, f"AXIOM B: Omega=Z but H={h_name} (need ≥2)"
+        return False, f"AXIOM B: Ω=Z but Ħ={h_name} (need ≥2)"
     if o_name == "Z2" and h_name not in ("1", "2", "inf", "0"):
-        return False, f"AXIOM B: Omega=Z2 but H={h_name} (need ≥1)"
+        return False, f"AXIOM B: Ω=Z2 but Ħ={h_name} (need ≥1)"
     # Z2 with H=0 is acceptable for protein quaternary: subunit symmetry
     # alone provides parity protection without requiring temporal chirality
     if o_name == "Z2" and h_name == "0":
@@ -747,9 +747,9 @@ def check_d_omega(o_char: str, d_char: str) -> Tuple[bool, str]:
     d_name = get_value_name(d_key) if d_key else "?"
     
     if o_name == "Z" and d_name not in ("infty", "odot"):
-        return False, f"D-Ω: Omega=Z but D={d_name} (<infty)"
+        return False, f"Ð-Ω: Ω=Z but Ð={d_name} (<infty)"
     if o_name == "Z2" and d_name not in ("tri", "infty", "odot"):
-        return False, f"D-Ω: Omega=Z2 but D={d_name} (<tri)"
+        return False, f"Ð-Ω: Ω=Z2 but Ð={d_name} (<tri)"
     return True, "OK"
 
 
@@ -772,19 +772,19 @@ def verify_tuple(tup: Dict[str, str], stage_name: str = "") -> Dict[str, Any]:
     checks = {}
     all_pass = True
     
-    c_pass, c_msg = check_axiom_c(tup["D"], tup["T"])
+    c_pass, c_msg = check_axiom_c(tup["Ð"], tup["Þ"])
     checks["axiom_c"] = {"pass": c_pass, "message": c_msg}
     all_pass = all_pass and c_pass
     
-    b_pass, b_msg = check_axiom_b(tup["O"], tup["H"])
+    b_pass, b_msg = check_axiom_b(tup["Ω"], tup["Ħ"])
     checks["axiom_b"] = {"pass": b_pass, "message": b_msg}
     all_pass = all_pass and b_pass
     
-    do_pass, do_msg = check_d_omega(tup["O"], tup["D"])
+    do_pass, do_msg = check_d_omega(tup["Ω"], tup["Ð"])
     checks["d_omega"] = {"pass": do_pass, "message": do_msg}
     all_pass = all_pass and do_pass
     
-    kp_pass, kp_msg = check_k_phi(tup["K"], tup["Phi"])
+    kp_pass, kp_msg = check_k_phi(tup["Ç"], tup["⊙"])
     checks["k_phi"] = {"pass": kp_pass, "message": kp_msg}
     
     return {"stage": stage_name, "all_pass": all_pass, "checks": checks, "tuple": tup}
@@ -793,14 +793,14 @@ def verify_tuple(tup: Dict[str, str], stage_name: str = "") -> Dict[str, Any]:
 # Regressions that are structurally necessary (DNA→RNA unwinding)
 _ALLOWED_REGRESSIONS: Dict[str, List[str]] = {
     # DNA→pre-mRNA: Gamma seq→or (splicing introduces alternative paths)
-    "pre_mrna": ["T", "R", "K", "H", "O", "Gamma"],
+    "pre_mrna": ["Þ", "Ř", "Ç", "Ħ", "Ω", "ɢ"],
     # mRNA→secondary: K mod→fast (folding kinetics accelerate), G aleph→gimel (scale narrows)
-    "mrna": ["T", "R", "K", "H"],
-    "secondary_structure": ["H", "S", "O", "K", "G"],
+    "mrna": ["Þ", "Ř", "Ç", "Ħ"],
+    "secondary_structure": ["Ħ", "Σ", "Ω", "Ç", "Γ"],
     # secondary→tertiary: G gimel→beth (further localization to residue contacts)
-    "tertiary_structure": ["G"],
+    "tertiary_structure": ["Γ"],
     # tertiary→quaternary: P pm→asym (parity breaks upon multimerization)
-    "quaternary_structure": ["P"],
+    "quaternary_structure": ["Φ"],
 }
 
 # Ordinal positions for monotonicity checking
@@ -820,7 +820,7 @@ def verify_pathway(generated: Dict[str, Dict[str, str]]) -> Dict[str, Any]:
     regressions = []
     
     stage_order = _PIPELINE_STAGES
-    all_prims = ["D", "T", "R", "P", "F", "K", "G", "Gamma", "Phi", "H", "S", "O"]
+    all_prims = ["Ð", "Þ", "Ř", "Φ", "ƒ", "Ç", "Γ", "ɢ", "⊙", "Ħ", "Σ", "Ω"]
     
     for i, stage in enumerate(stage_order):
         tup = generated[stage]
@@ -856,8 +856,7 @@ def verify_pathway(generated: Dict[str, Dict[str, str]]) -> Dict[str, Any]:
 
 def compute_closure_distance(tup_a: Dict[str, str], tup_b: Dict[str, str]) -> float:
     """Compute weighted Euclidean distance between two structural tuples."""
-    primitives_meta = {"D": 4, "T": 5, "R": 4, "P": 5, "F": 3, "K": 5,
-                        "G": 3, "Gamma": 4, "Phi": 5, "H": 4, "S": 3, "O": 4}
+    primitives_meta = {prim: len(keys) for prim, keys in PRIMITIVE_KEYS.items()}
     
     total_sq = 0
     max_sq = 0
@@ -888,7 +887,7 @@ def make_test_sequence(aa_codes: List[str],
 def print_tup(stage: str, tup: Dict[str, str]) -> None:
     """Pretty-print a tuple."""
     print(f"\n  {stage}:")
-    for prim in ["D", "T", "R", "P", "F", "K", "G", "Gamma", "Phi", "H", "S", "O"]:
+    for prim in ["Ð", "Þ", "Ř", "Φ", "ƒ", "Ç", "Γ", "ɢ", "⊙", "Ħ", "Σ", "Ω"]:
         char = tup[prim]
         name = prim_value_name(prim, char)
         print(f"    {prim}: {char}  ({name})")
@@ -957,8 +956,8 @@ def demo_his_rich() -> None:
     
     generated = generate_all_tuples(features)
     for stage in ["secondary_structure", "tertiary_structure", "quaternary_structure"]:
-        phi_char = generated[stage]["Phi"]
-        phi_name = prim_value_name("Phi", phi_char)
+        phi_char = generated[stage]["⊙"]
+        phi_name = prim_value_name("⊙", phi_char)
         print(f"  {stage}: Phi={phi_char} ({phi_name})")
 
 
@@ -981,13 +980,13 @@ def demo_pro_absorption() -> None:
     
     generated = generate_all_tuples(features)
     for stage in ["secondary_structure", "tertiary_structure", "quaternary_structure"]:
-        phi_char = generated[stage]["Phi"]
-        phi_name = prim_value_name("Phi", phi_char)
+        phi_char = generated[stage]["⊙"]
+        phi_name = prim_value_name("⊙", phi_char)
         print(f"  {stage}: Phi={phi_char} ({phi_name})")
     
     # Verify EP absorption
     for stage in ["secondary_structure", "tertiary_structure"]:
-        assert prim_value_name("Phi", generated[stage]["Phi"]) == "EP", \
+        assert prim_value_name("⊙", generated[stage]["⊙"]) == "EP", \
             f"Expected EP for {stage}, got {prim_value_name('Phi', generated[stage]['Phi'])}"
     print("  ✓ Pro absorption confirmed: φ̂=EP in folding stages")
 
@@ -1034,8 +1033,8 @@ def demo_gcn4_leucine_zipper() -> None:
     
     print_tup("quaternary_structure", generated["quaternary_structure"])
     
-    o_char = generated["quaternary_structure"]["O"]
-    o_name = prim_value_name("O", o_char)
+    o_char = generated["quaternary_structure"]["Ω"]
+    o_name = prim_value_name("Ω", o_char)
     print(f"\n  Ω = {o_char} ({o_name}) — dimer Z2 parity protection")
     assert o_name == "Z2", f"Expected Z2 for dimer, got {o_name}"
     print("  ✓ Dimer confirmed: Ω=Z2")

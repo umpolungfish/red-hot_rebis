@@ -36,6 +36,7 @@ from reaction_deriver import (
     meet_type, tensor_type,
     derive_conditions_from_disconnection,
 )
+from ch3mpiler.scaffold_parser import ScaffoldParser, resolve_name_to_smiles
 
 
 class RetrosyntheticNode:
@@ -49,6 +50,7 @@ class RetrosyntheticNode:
         self.is_simple: bool = False
         self.terminal_reason: str = ""
         self.reagent_match: Optional[Dict] = None
+        self.fragment_smiles: Optional[str] = ""  # actual molecular fragment from scaffold cut
         self.routes: List[Dict] = []
 
 
@@ -65,6 +67,8 @@ class ReactionPipeline:
         self.deriver = ReactionDeriver()
         self.max_depth = max_depth
         self._visited: Set[str] = set()
+        self._scaffold_map = {}  # Pass 1 scaffold decomposition
+        self._target_smiles = ""
 
     def _decompose_single_fg(self, fg_name: str, mol_type: Dict,
                             target: str, depth: int) -> Optional[List[Dict]]:
@@ -128,10 +132,15 @@ class ReactionPipeline:
 
             if i == 0:
                 # Best cut: full recursive decomposition
+                # ── Compute fragment SMILES FIRST, then pass INTO recursion ──
+                frag_a, frag_b = self._get_fragment_smiles_for_cut(
+                    cut["fg1"], cut["fg2"], cut["bond"])
                 route["child_a"] = self.deep_retrosynthesis(
-                    f"{cut['fg1']}_precursor", depth + 1, fg_hint=cut["fg1"])
+                    f"{cut['fg1']}_precursor", depth + 1, fg_hint=cut["fg1"],
+                    fragment_smiles=frag_a)
                 route["child_b"] = self.deep_retrosynthesis(
-                    f"{cut['fg2']}_precursor", depth + 1, fg_hint=cut["fg2"])
+                    f"{cut['fg2']}_precursor", depth + 1, fg_hint=cut["fg2"],
+                    fragment_smiles=frag_b)
             else:
                 # Alternative cuts: terminal reagent matches only
                 def _make_terminal(fg):
@@ -180,6 +189,286 @@ class ReactionPipeline:
         return {"name": best["name"], "smiles": best["smiles"],
                 "distance": best["distance"], "supplies": best["supplies"]}
 
+    def _get_fragment_smiles_for_cut(self, fg1: str, fg2: str, bond_type: str) -> tuple:
+        """Pass 2: Look up fragment SMILES for a specific FG-pair cut.
+        
+        When the scaffold map has multiple bonds for the same FG pair,
+        picks the BEST bond (most sensible retrosynthetic cut), not the
+        first one. Prefers real functional group links and sigma_single
+        bonds over C=O double bonds.
+        
+        Returns (frag_a, frag_b) or (None, None).
+        """
+        pair = tuple(sorted([fg1, fg2]))
+        bonds = self._scaffold_map.get(pair, [])
+        if not bonds:
+            return None, None
+        
+        # Bond type ranking: lower score = better cut
+        BOND_RANK = {
+            "ether_link": 0,     # C-O-C ether — real FG link
+            "ester_link": 0,     # C(=O)-O ester — real FG link
+            "amide_link": 0,     # C(=O)-N amide — real FG link
+            "sigma_single": 1,   # C-C single bond — good
+            "co_sigma": 2,       # C-O sigma
+            "cn_sigma": 2,       # C-N sigma
+            "pi_bond": 3,        # pi bond
+            "carbonyl": 3,       # C=O
+            "hydrogen_bond": 4,  # H-bond
+            "double_bond": 5,    # C=C
+            "triple_bond": 5,    # C#C
+        }
+        
+        def _frag_quality(b):
+            """Score a bond: lower = better. Higher = worse."""
+            bt = b.get("bond_type", "")
+            fa = b.get("fragment_smiles_a", "")
+            fb = b.get("fragment_smiles_b", "")
+            
+            # Bond type rank (0 = best, 5+ = worst)
+            rank = BOND_RANK.get(bt, 3)
+            
+            # Count heavy atoms in fragments
+            from rdkit import Chem
+            def _heavy(smi):
+                if not smi or smi in ('?', '', 'H', '[H]'):
+                    return 0
+                try:
+                    mol = Chem.MolFromSmiles(smi)
+                    if mol is None:
+                        return 0
+                    return sum(1 for a in mol.GetAtoms() if a.GetAtomicNum() > 1)
+                except:
+                    return 0
+            
+            ha = _heavy(fa)
+            hb = _heavy(fb)
+            
+            # Penalize single-atom fragments heavily
+            atom_penalty = 0
+            if ha < 2:
+                atom_penalty += 10
+            if hb < 2:
+                atom_penalty += 10
+            
+            # Prefer balanced fragments (both sides have meaningful size)
+            if ha >= 2 and hb >= 2:
+                atom_penalty -= 2  # Bonus for balanced
+            
+            return rank + atom_penalty
+        
+        # Sort by bond quality, pick best
+        best = min(bonds, key=_frag_quality)
+        frag_a = best.get("fragment_smiles_a")
+        frag_b = best.get("fragment_smiles_b")
+        
+        # Verify: the scaffold bond's (fg1, fg2) may not match the caller's (fg1, fg2)
+        # because the pair is sorted. If they're reversed, swap the fragments.
+        bond_fg1 = best.get("fg1", "")
+        bond_fg2 = best.get("fg2", "")
+        if fg1 == bond_fg2 and fg2 == bond_fg1:
+            # Caller's order is reversed from bond's atom order → swap
+            frag_a, frag_b = frag_b, frag_a
+        
+        return frag_a, frag_b
+
+    def _parse_smiles_to_scaffold_map(self, smiles: str) -> dict:
+        """Parse a SMILES string into a sub-scaffold map for recursive decomposition.
+        
+        Used at every tree level: when a node has a real fragment SMILES from
+        its parent cut, this parses THAT fragment to find its own strategic
+        bonds. Each bond carries the sub-fragment SMILES for the next level.
+        
+        Returns dict mapping FG-pair tuples to lists of bond info dicts,
+        or empty dict on failure.
+        """
+        if not smiles or smiles in ('?', '', 'H', '[H]'):
+            return {}
+        try:
+            from ch3mpiler.scaffold_parser import ScaffoldParser
+            parser = ScaffoldParser()
+            parser.load(smiles, name="_sub")
+            decomp = parser.get_full_scaffold_decomposition()
+            
+            sub_map = {}
+            for pair_str, bonds in decomp.get("fg_pair_bonds", {}).items():
+                import ast
+                pair = ast.literal_eval(pair_str)
+                pair_key = tuple(sorted(pair))
+                if pair_key not in sub_map:
+                    sub_map[pair_key] = []
+                sub_map[pair_key].extend(bonds)
+            return sub_map
+        except Exception:
+            return {}
+
+    def _is_sensible_cut(self, bond_info: dict) -> bool:
+        """Check if a scaffold bond is a sensible retrosynthetic disconnection.
+        
+        Rules for sensible cuts:
+        1. Bond must be between DIFFERENT FG types (cutting within same FG is wrong)
+        2. Must NOT be a C=O double bond (breaking carbonyl = useless)
+        3. Both fragments must have >1 heavy atom (no single-atom fragments)
+        4. Prefer sigma_single, ester_link, amide_link bonds
+        
+        Args:
+            bond_info: dict from scaffold parser with bond type and fragment SMILES
+        Returns:
+            bool: True if this is a sensible disconnection
+        """
+        from rdkit import Chem
+        fg1 = bond_info.get("fg1", "")
+        fg2 = bond_info.get("fg2", "")
+        bond_type = bond_info.get("bond_type", "")
+        frag_a = bond_info.get("fragment_smiles_a", "")
+        frag_b = bond_info.get("fragment_smiles_b", "")
+        
+        # Rule: must be different FG types
+        if fg1 == fg2:
+            return False
+        
+        # Rule: C=O double bond — not a useful disconnection
+        if bond_type == "double_bond" and ("carboxylic_acid" in (fg1, fg2) or "carbonyl" in (fg1, fg2)):
+            return False
+        
+        # Rule: both fragments must have >1 heavy atom (no single-atom fragments)
+        def _heavy_count(smi):
+            if not smi or smi in ('?', '', 'H', '[H]'):
+                return 0
+            # Count non-H atoms in SMILES
+            mol = Chem.MolFromSmiles(smi)
+            if mol is None:
+                return 0
+            return sum(1 for a in mol.GetAtoms() if a.GetAtomicNum() > 1)
+        
+        ha = _heavy_count(frag_a)
+        hb = _heavy_count(frag_b)
+        if ha < 2 or hb < 2:
+            return False
+        
+        return True
+
+    def _build_scaffold_routes(self, bonds: list, depth: int, 
+                               parent_fragment_smiles: str = None) -> list:
+        """Build retrosynthetic route dicts from actual scaffold bond cuts.
+        
+        Unlike _decompose_single_fg which GUESSES abstract FG co-precursors,
+        this uses the REAL bond cuts from the scaffold parser. Each bond
+        carries actual fragment SMILES for both sides.
+        
+        Only sensible disconnections are included (see _is_sensible_cut).
+        
+        Args:
+            bonds: list of bond info dicts from scaffold parser
+            depth: current recursion depth
+            parent_fragment_smiles: the SMILES of the parent fragment
+        """
+        # Filter to only sensible cuts
+        sensible = [b for b in bonds if self._is_sensible_cut(b)]
+        if not sensible:
+            return []  # No sensible cuts → will fall back to reagent matching
+        
+        from rdkit import Chem
+        
+        routes = []
+        for i, bond_info in enumerate(sensible[:5]):
+            fg1 = bond_info["fg1"]
+            fg2 = bond_info["fg2"]
+            bond_type = bond_info.get("bond_type", "sigma_single")
+            frag_a = bond_info.get("fragment_smiles_a")
+            frag_b = bond_info.get("fragment_smiles_b")
+            
+            cut = {"fg1": fg1, "fg2": fg2, "bond": bond_type,
+                   "bond_desc": bond_type, "product_delta": 1.0,
+                   "bond_delta": 0, "product_type": "?"}
+            
+            route = {
+                "index": i + 1,
+                "fg1": fg1, "fg2": fg2,
+                "bond": bond_type,
+                "bond_desc": bond_type,
+                "product_delta": 1.0,
+                "bond_delta": 0,
+                "product_type": "?",
+            }
+            
+            rxn = self.deriver.derive(cut)
+            if rxn:
+                route["reaction"] = rxn.to_dict()
+            
+            if i == 0:
+                # Best cut: pass sub-fragment SMILES recursively
+                route["child_a"] = self.deep_retrosynthesis(
+                    f"{fg1}_precursor", depth + 1, fg_hint=fg1,
+                    fragment_smiles=frag_a)
+                route["child_b"] = self.deep_retrosynthesis(
+                    f"{fg2}_precursor", depth + 1, fg_hint=fg2,
+                    fragment_smiles=frag_b)
+            else:
+                # Alternative cuts: terminal
+                def _make_terminal(fg):
+                    n = RetrosyntheticNode(f"{fg}_precursor", depth + 1)
+                    n.fgs = [fg]
+                    n.is_terminal = True
+                    match = self._match_reagent(fg)
+                    if match:
+                        n.is_simple = True
+                        n.reagent_match = match
+                        n.terminal_reason = f"alt_scaffold, reagent: {match['name']}"
+                    else:
+                        n.terminal_reason = "alt_scaffold_no_reagent"
+                    return n
+                route["child_a"] = _make_terminal(fg1)
+                route["child_b"] = _make_terminal(fg2)
+            
+            routes.append(route)
+        
+        return routes
+
+    def resolve_and_parse_scaffold(self, target: str, smiles: str = "") -> bool:
+        """Pass 1: Resolve target to SMILES and parse scaffold decomposition.
+        
+        Builds the scaffold map that maps FG-pair cuts to actual
+        fragment SMILES from the target molecule.
+        """
+        if not smiles:
+            smiles = resolve_name_to_smiles(target)
+        
+        if not smiles:
+            print(f"  [scaffold] WARNING: Could not resolve '{target}' to SMILES. "
+                  f"Using FG-only decomposition (no fragment structures).")
+            return False
+        
+        try:
+            parser = ScaffoldParser()
+            parser.load(smiles, name=target)
+            decomp = parser.get_full_scaffold_decomposition()
+            
+            self._scaffold_map = {}
+            for pair_str, bonds in decomp.get("fg_pair_bonds", {}).items():
+                import ast
+                pair = ast.literal_eval(pair_str)
+                pair_key = tuple(sorted(pair))
+                if pair_key not in self._scaffold_map:
+                    self._scaffold_map[pair_key] = []
+                self._scaffold_map[pair_key].extend(bonds)
+            
+            self._target_smiles = smiles
+            n_bonds = sum(len(v) for v in self._scaffold_map.values())
+            
+            print(f"  [scaffold] Pass 1: Parsed {target} [{smiles}]")
+            print(f"  [scaffold]   {decomp['num_atoms']} atoms, {decomp['num_bonds']} bonds, "
+                  f"{len(decomp['fgs'])} FGs: {', '.join(decomp['fgs'])}")
+            print(f"  [scaffold]   {n_bonds} strategic disconnections across "
+                  f"{len(self._scaffold_map)} FG-pair types")
+            for pair, bonds in sorted(self._scaffold_map.items()):
+                print(f"  [scaffold]     {pair[0]} + {pair[1]}: {len(bonds)} bond(s)")
+            return True
+            
+        except Exception as e:
+            print(f"  [scaffold] ERROR parsing scaffold: {e}")
+            return False
+
     def _is_truly_simple(self, name: str) -> Tuple[bool, str]:
         """Check if a molecule is a genuine simple starting material.
         
@@ -195,7 +484,8 @@ class ReactionPipeline:
         return False, ""
 
     def deep_retrosynthesis(self, target: str, depth: int = 0,
-                            fg_hint: Optional[str] = None) -> RetrosyntheticNode:
+                            fg_hint: Optional[str] = None,
+                            fragment_smiles: Optional[str] = None) -> RetrosyntheticNode:
         """Full recursive retrosynthetic tree.
 
         Uses ch3mpiler's FG-based decomposition logic for intermediate steps.
@@ -207,7 +497,27 @@ class ReactionPipeline:
             depth: current recursion depth
             fg_hint: if this precursor came from a disconnection, the FG it supplies
         """
+        # ── Pass 1: Scaffold parsing (only at root, depth=0) ──
+        if depth == 0 and not fg_hint:
+            if hasattr(self, '_target_smiles') and self._target_smiles:
+                self.resolve_and_parse_scaffold(target, self._target_smiles)
+            else:
+                self.resolve_and_parse_scaffold(target)
+
         node = RetrosyntheticNode(target, depth)
+        if fragment_smiles:
+            node.fragment_smiles = fragment_smiles
+
+        # ── Attach scaffold decomposition data to root node ──
+        if depth == 0 and not fg_hint and hasattr(self, '_scaffold_map'):
+            # Collect all strategic bonds from scaffold map
+            all_bonds = []
+            for pair, bonds in self._scaffold_map.items():
+                all_bonds.extend(bonds)
+            node.strategic_bonds = all_bonds
+            node.fg_pair_bonds = self._scaffold_map
+            node.smiles = getattr(self, '_target_smiles', '')
+            node.fragment_smiles = node.smiles or node.fragment_smiles
 
         # ── Terminal: max depth ──
         if depth >= self.max_depth:
@@ -258,6 +568,23 @@ class ReactionPipeline:
         # Instead of terminating, find the best retrosynthetic disconnection
         # to form this FG from simpler precursors via exhaustive FG-pair search.
         if len(fgs) == 1 or (len(fgs) > 1 and len(set(fgs)) == 1):
+            # ── RECURSIVE SCAFFOLD PATH: If we have a real fragment SMILES,
+            # parse THAT fragment to find its actual bond cuts instead of
+            # guessing abstract FG co-precursors. This is the key fix: every
+            # tree level uses real structural decomposition, not FG guessing.
+            if fragment_smiles and depth > 0:
+                sub_map = self._parse_smiles_to_scaffold_map(fragment_smiles)
+                if sub_map:
+                    all_bonds = []
+                    for pair in sorted(sub_map.keys()):
+                        all_bonds.extend(sub_map[pair])
+                    if all_bonds:
+                        routes = self._build_scaffold_routes(all_bonds, depth, fragment_smiles)
+                        if routes:
+                            node.routes = routes
+                            return node
+            
+            # ── FALLBACK: Abstract FG guessing (only when no fragment SMILES) ──
             routes = self._decompose_single_fg(fgs[0], mol_type, target, depth)
             if routes:
                 node.routes = routes
@@ -345,10 +672,15 @@ class ReactionPipeline:
 
             if i == 0:
                 # Best cut: full recursive decomposition
+                # ── Compute fragment SMILES FIRST, then pass INTO recursion ──
+                frag_a, frag_b = self._get_fragment_smiles_for_cut(
+                    cut["fg1"], cut["fg2"], cut["bond"])
                 route["child_a"] = self.deep_retrosynthesis(
-                    f"{cut['fg1']}_precursor", depth + 1, fg_hint=cut["fg1"])
+                    f"{cut['fg1']}_precursor", depth + 1, fg_hint=cut["fg1"],
+                    fragment_smiles=frag_a)
                 route["child_b"] = self.deep_retrosynthesis(
-                    f"{cut['fg2']}_precursor", depth + 1, fg_hint=cut["fg2"])
+                    f"{cut['fg2']}_precursor", depth + 1, fg_hint=cut["fg2"],
+                    fragment_smiles=frag_b)
             else:
                 # Alternative cuts: terminal reagent matches only (no recursion)
                 def _make_terminal(fg_name):
@@ -381,6 +713,8 @@ class ReactionPipeline:
             "is_simple": node.is_simple,
             "terminal_reason": node.terminal_reason,
         }
+        if node.fragment_smiles:
+            result["fragment_smiles"] = node.fragment_smiles
         if node.reagent_match:
             result["reagent_match"] = node.reagent_match
         if node.routes:
@@ -569,6 +903,7 @@ def main():
     import argparse
     parser = argparse.ArgumentParser(
         description="ch3mpiler reaction pipeline -- deep recursive retrosynthetic tree (grammar-first)")
+    parser.add_argument("--smiles", help="Target SMILES (bypasses name-to-SMILES resolution)")
     parser.add_argument("--target", help="Molecule name")
     parser.add_argument("--cas", help="CAS Registry Number")
     parser.add_argument("--shallow", action="store_true", help="Single-level only (no recursion)")
@@ -577,6 +912,9 @@ def main():
     parser.add_argument("--all-routes", action="store_true", help="Show all alternative routes")
     parser.add_argument("--json", action="store_true", help="JSON output")
     parser.add_argument("--demo", action="store_true", help="Run demo")
+    parser.add_argument("--cdxml", action="store_true", help="Export intermediates as CDXML")
+    parser.add_argument("--cdxml-dir", type=str, default="cdxml_output",
+                        help="Directory for CDXML exports (default: cdxml_output)")
     args = parser.parse_args()
 
     pipeline = ReactionPipeline(max_depth=args.depth)
@@ -594,10 +932,15 @@ def main():
             "(Ra)-perdeutero-pentacyclo-1H-indole-3-ethanamine",
         ]
         for d in demos:
+            pipeline._target_smiles = args.smiles or ""
             print(f"\n--- DEMO: {d} ---")
             pipeline._visited.clear()
             tree = pipeline.deep_retrosynthesis(d)
             pipeline.print_tree(tree)
+            if args.cdxml:
+                from cdxml.pipeline_hook import export_tree_to_cdxml
+                result = export_tree_to_cdxml(tree, args.cdxml_dir, prefix=f"demo_{d}_", verbose=True)
+                print(f"  >> CDXML: {result['generated']} files written to {args.cdxml_dir}/")
         return
 
     if args.cas:
@@ -612,12 +955,19 @@ def main():
                 print(f"Formula: {info.get('cas_info', {}).get('formula', '')}")
                 pipeline.print_synthesis(spec)
         else:
+            pipeline._target_smiles = info.get("cas_info", {}).get("smiles", "") or args.smiles or ""
             pipeline._visited.clear()
             tree = pipeline.deep_retrosynthesis(name)
             if args.json:
                 print(json.dumps(pipeline._tree_to_dict(tree), indent=2, ensure_ascii=False))
             else:
                 pipeline.print_tree(tree, show_all_routes=args.all_routes)
+                if args.cdxml:
+                    from cdxml.pipeline_hook import export_tree_to_cdxml
+                    result = export_tree_to_cdxml(tree, args.cdxml_dir, verbose=True)
+                    print(f"  >> CDXML: {result['generated']} files written to {args.cdxml_dir}/")
+                    if result['failed']:
+                        print(f"  >> Failed: {result['failed']}")
         return
 
     if args.target:
@@ -628,12 +978,19 @@ def main():
             else:
                 pipeline.print_synthesis(spec)
         else:
+            pipeline._target_smiles = args.smiles or ""
             pipeline._visited.clear()
             tree = pipeline.deep_retrosynthesis(args.target)
             if args.json:
                 print(json.dumps(pipeline._tree_to_dict(tree), indent=2, ensure_ascii=False))
             else:
                 pipeline.print_tree(tree, show_all_routes=args.all_routes)
+                if args.cdxml:
+                    from cdxml.pipeline_hook import export_tree_to_cdxml
+                    result = export_tree_to_cdxml(tree, args.cdxml_dir, verbose=True)
+                    print(f"  >> CDXML: {result['generated']} files written to {args.cdxml_dir}/")
+                    if result['failed']:
+                        print(f"  >> Failed: {result['failed']}")
         return
 
     # Default: demo with benzaldehyde
@@ -647,6 +1004,10 @@ def main():
     pipeline._visited.clear()
     tree = pipeline.deep_retrosynthesis("benzaldehyde")
     pipeline.print_tree(tree)
+    if args.cdxml:
+        from cdxml.pipeline_hook import export_tree_to_cdxml
+        result = export_tree_to_cdxml(tree, args.cdxml_dir, verbose=True)
+        print(f"  >> CDXML: {result['generated']} files written to {args.cdxml_dir}/")
 
 
 if __name__ == "__main__":

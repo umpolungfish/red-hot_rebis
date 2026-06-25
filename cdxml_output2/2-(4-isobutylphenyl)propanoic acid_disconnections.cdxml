@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE CDXML SYSTEM "https://static.chemistry.revvitycloud.com/cdxml/CDXML.dtd" >
+<CDXML
+ CreationProgram="ChemDraw 23.1.1.3"
+ Name="2-(4-isobutylphenyl)propanoic acid.cdxml"
+ BoundingBox="214.68 218.43 549.48 349.63"
+ WindowPosition="0 0"
+ WindowSize="-2147483648 -2147483648"
+ WindowIsZoomed="yes"
+ FractionalWidths="yes"
+ InterpretChemically="yes"
+ ShowAtomQuery="yes"
+ ShowAtomStereo="no"
+ ShowAtomEnhancedStereo="yes"
+ ShowAtomNumber="no"
+ ShowResidueID="no"
+ ShowBondQuery="yes"
+ ShowBondRxn="yes"
+ ShowBondStereo="no"
+ ShowTerminalCarbonLabels="no"
+ ShowNonTerminalCarbonLabels="no"
+ HideImplicitHydrogens="no"
+ Magnification="666"
+ LabelFont="3"
+ LabelSize="10"
+ LabelFace="96"
+ CaptionFont="3"
+ CaptionSize="10"
+ HashSpacing="2.50"
+ MarginWidth="1.60"
+ LineWidth="0.60"
+ BoldWidth="2"
+ BondLength="14.40"
+ BondSpacing="18"
+ ChainAngle="120"
+ LabelJustification="Auto"
+ CaptionJustification="Left"
+ PrintMargins="36 36 36 36"
+>
+<colortable>
+<color r="1" g="1" b="1"/>
+<color r="0" g="0" b="0"/>
+<color r="1" g="0" b="0"/>
+<color r="0" g="1" b="0"/>
+<color r="0" g="0" b="1"/>
+<color r="1" g="0" b="1"/>
+<color r="0" g="1" b="1"/>
+<color r="1" g="1" b="0"/>
+</colortable>
+<fonttable>
+ <font id="3" charset="iso-8859-1" name="Arial"/>
+</fonttable>
+<page
+ id="1"
+ BoundingBox="0 0 -32768 4318.50"
+ HeaderPosition="36"
+ FooterPosition="36"
+ PrintTrimMarks="yes"
+>
+<fragment
+ id="1"
+ BoundingBox="214.68 218.43 549.48 349.63"
+ Z="1"
+><n id="2" p="267.93 308.04" Z="2" AS="N"/>
+<n id="3" p="259.65 295.54" Z="3" AS="N"/>
+<n id="4" p="244.68 296.45" Z="4" AS="N"/>
+<n id="5" p="266.34 282.11" Z="5" AS="N"/>
+<n id="6" p="282.90 307.12" Z="6" AS="N"/>
+<n id="7" p="289.59 293.70" Z="7" AS="N"/>
+<n id="8" p="304.57 292.78" Z="8" AS="N"/>
+<n id="9" p="312.85 305.28" Z="9" AS="N"/>
+<n id="10" p="306.16 318.71" Z="10" AS="N"/>
+<n id="11" p="291.19 319.63" Z="11" AS="N"/>
+<n id="12" p="327.82 304.37" Z="12" AS="N"/>
+<n id="13" p="334.51 290.94" Z="13" AS="N"/>
+<n id="14" p="326.23 278.43" Z="14" AS="N" Element="8" NumHydrogens="0" NeedsClean="yes">
+<t p="322.23 282.43" BoundingBox="320.23 274.43 330.23 284.43" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">O</s>
+</t>
+</n>
+<n id="15" p="349.48 290.02" Z="15" AS="N" Element="8" NumHydrogens="0" NeedsClean="yes">
+<t p="345.48 294.02" BoundingBox="343.48 286.02 353.48 296.02" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">O</s>
+</t>
+</n>
+<n id="16" p="336.10 316.87" Z="16" AS="N"/>
+<b id="1000" Z="18" B="2" E="3" BS="N"/>
+<b id="1001" Z="19" B="3" E="4" BS="N"/>
+<b id="1002" Z="20" B="3" E="5" BS="N"/>
+<b id="1003" Z="21" B="2" E="6" BS="N" Color="6"/>
+<b id="1004" Z="22" B="6" E="7" BS="N" Order="2"/>
+<b id="1005" Z="23" B="7" E="8" BS="N"/>
+<b id="1006" Z="24" B="8" E="9" BS="N" Order="2"/>
+<b id="1007" Z="25" B="9" E="10" BS="N"/>
+<b id="1008" Z="26" B="10" E="11" BS="N" Order="2"/>
+<b id="1009" Z="27" B="9" E="12" BS="N" Color="6"/>
+<b id="1010" Z="28" B="12" E="13" BS="N" Color="6"/>
+<b id="1011" Z="29" B="13" E="14" BS="N" Order="2"/>
+<b id="1012" Z="30" B="13" E="15" BS="N" Color="6"/>
+<b id="1013" Z="31" B="12" E="16" BS="N"/>
+<b id="1014" Z="32" B="11" E="6" BS="N"/>
+</fragment>
+<graphic
+ GraphicType="Line"
+ BoundingBox="268.43 305.28 282.41 309.89"
+ LineType="Dashed"
+ LineWidth="3"
+ LineCap="0"
+ Color="2"
+>
+ <p p="270.43 307.89"/>
+ <p p="280.41 307.28"/>
+</graphic>
+<graphic
+ GraphicType="Line"
+ BoundingBox="313.34 302.52 327.32 307.13"
+ LineType="Dashed"
+ LineWidth="3"
+ LineCap="0"
+ Color="4"
+>
+ <p p="315.34 305.13"/>
+ <p p="325.32 304.52"/>
+</graphic>
+<graphic
+ GraphicType="Line"
+ BoundingBox="326.93 291.18 335.39 304.13"
+ LineType="Dashed"
+ LineWidth="3"
+ LineCap="0"
+ Color="6"
+>
+ <p p="328.93 302.13"/>
+ <p p="333.39 293.18"/>
+</graphic>
+<graphic
+ GraphicType="Line"
+ BoundingBox="335.01 288.17 348.99 292.79"
+ LineType="Dashed"
+ LineWidth="3"
+ LineCap="0"
+ Color="5"
+>
+ <p p="337.01 290.79"/>
+ <p p="346.99 290.17"/>
+</graphic>
+<annotation id="99" BoundingBox="237.08 224.43 357.08 244.43"
+ CaptionAlignment="Center" CaptionJustification="Center"
+ Color="0" LabelJustification="Center"
+ VerticalOffset="0" HorizontalOffset="0"
+ LabelFace="96" LabelSize="11" LabelFont="3">
+ <s font="3" size="11" face="96">Target: 2-(4-isobutylphenyl)propanoic acid [C(C(C)C)C1=CC=C(C=C1)C(C(=O)O)C]  |  4 disconnection(s)</s>
+</annotation>
+<annotation id="500" BoundingBox="221.28 315.56 341.28 335.56"
+ CaptionAlignment="Center" CaptionJustification="Center"
+ Color="2" LabelJustification="Center"
+ VerticalOffset="0" HorizontalOffset="0"
+ LabelFace="96" LabelSize="8" LabelFont="3">
+ <s font="3" size="8" face="96">alkane→CC(C)C | aromatic_ring→CC(C(=O)O)c1ccccc1</s>
+</annotation>
+<annotation id="501" BoundingBox="266.19 312.80 386.19 332.80"
+ CaptionAlignment="Center" CaptionJustification="Center"
+ Color="4" LabelJustification="Center"
+ VerticalOffset="0" HorizontalOffset="0"
+ LabelFace="96" LabelSize="8" LabelFont="3">
+ <s font="3" size="8" face="96">aromatic_ring→CC(C)Cc1ccccc1 | alkane→CCC(=O)O</s>
+</annotation>
+<annotation id="502" BoundingBox="288.70 297.90 408.70 317.90"
+ CaptionAlignment="Center" CaptionJustification="Center"
+ Color="6" LabelJustification="Center"
+ VerticalOffset="0" HorizontalOffset="0"
+ LabelFace="96" LabelSize="8" LabelFont="3">
+ <s font="3" size="8" face="96">alkane→CCc1ccc(CC(C)C)cc1 | carboxylic_acid→O=CO</s>
+</annotation>
+<annotation id="503" BoundingBox="287.85 298.45 407.85 318.45"
+ CaptionAlignment="Center" CaptionJustification="Center"
+ Color="5" LabelJustification="Center"
+ VerticalOffset="0" HorizontalOffset="0"
+ LabelFace="96" LabelSize="8" LabelFont="3">
+ <s font="3" size="8" face="96">carboxylic_acid→CC(C)Cc1ccc(C(C)C=O) | carboxylic_acid→O</s>
+</annotation></page>
+</CDXML>

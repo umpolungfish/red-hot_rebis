@@ -804,42 +804,42 @@ class CASResolver:
 
     def _load_local(self):
         return {
-            "50-78-2": {"name": "2-acetoxybenzoic acid", "formula": "C9H8O4", "type_hint": "ester carboxylic_acid aromatic_ring"},
-            "103-90-2": {"name": "acetaminophen", "formula": "C8H9NO2", "type_hint": "amide phenol"},
-            "69-72-7": {"name": "salicylic acid", "formula": "C7H6O3", "type_hint": "carboxylic_acid phenol"},
-            "79-09-4": {"name": "propionic acid", "formula": "C3H6O2", "type_hint": "carboxylic_acid"},
-            "64-19-7": {"name": "acetic acid", "formula": "C2H4O2", "type_hint": "carboxylic_acid"},
-            "67-64-1": {"name": "acetone", "formula": "C3H6O", "type_hint": "ketone"},
-            "67-56-1": {"name": "methanol", "formula": "CH4O", "type_hint": "alcohol"},
-            "64-17-5": {"name": "ethanol", "formula": "C2H6O", "type_hint": "alcohol"},
-            "71-23-8": {"name": "propanol", "formula": "C3H8O", "type_hint": "alcohol"},
-            "75-07-0": {"name": "acetaldehyde", "formula": "C2H4O", "type_hint": "aldehyde"},
-            "100-52-7": {"name": "benzaldehyde", "formula": "C7H6O", "type_hint": "aldehyde aromatic_ring"},
-            "100-66-3": {"name": "anisole", "formula": "C7H8O", "type_hint": "ether aromatic_ring"},
-            "108-95-2": {"name": "phenol", "formula": "C6H6O", "type_hint": "phenol"},
-            "71-43-2": {"name": "benzene", "formula": "C6H6", "type_hint": "aromatic_ring"},
-            "100-42-5": {"name": "styrene", "formula": "C8H8", "type_hint": "alkene aromatic_ring"},
-            "121-44-8": {"name": "triethylamine", "formula": "C6H15N", "type_hint": "amine"},
-            "62-53-3": {"name": "aniline", "formula": "C6H7N", "type_hint": "aniline"},
-            "75-05-8": {"name": "acetonitrile", "formula": "C2H3N", "type_hint": "nitrile"},
-            "67-66-3": {"name": "chloroform", "formula": "CHCl3", "type_hint": "halide"},
-            "75-09-2": {"name": "dichloromethane", "formula": "CH2Cl2", "type_hint": "halide"},
-            "107-13-1": {"name": "acrylonitrile", "formula": "C3H3N", "type_hint": "alkene nitrile"},
-            "74-85-1": {"name": "ethylene", "formula": "C2H4", "type_hint": "alkene"},
-            "74-86-2": {"name": "acetylene", "formula": "C2H2", "type_hint": "alkyne"},
-            "106-97-8": {"name": "butane", "formula": "C4H10", "type_hint": "alkene"},
-            "110-82-7": {"name": "cyclohexane", "formula": "C6H12", "type_hint": "cyclic"},
-            "108-88-3": {"name": "toluene", "formula": "C7H8", "type_hint": "aromatic_ring"},
-            "100-41-4": {"name": "ethylbenzene", "formula": "C8H10", "type_hint": "aromatic_ring"},
-            "98-86-2": {"name": "acetophenone", "formula": "C8H8O", "type_hint": "ketone aromatic_ring"},
-            "98-95-3": {"name": "nitrobenzene", "formula": "C6H5NO2", "type_hint": "nitro aromatic_ring"},
-            "100-47-0": {"name": "benzonitrile", "formula": "C7H5N", "type_hint": "nitrile aromatic_ring"},
-            "88-89-1": {"name": "picric acid", "formula": "C6H3N3O7", "type_hint": "phenol nitro"},
-            "106-50-3": {"name": "p-phenylenediamine", "formula": "C6H8N2", "type_hint": "amine aromatic_ring"},
-            "95-76-1": {"name": "3,4-dichloroaniline", "formula": "C6H5Cl2N", "type_hint": "halide aniline"},
-            "3568-94-3": {"name": "4-methyl-5-phenyl-4,5-dihydro-1,3-oxazol-2-amine", "formula": "C10H12N2O", "type_hint": "amine aromatic_ring ether cyclic"},
-            "1972-08-3": {"name": "11-hydroxy-Δ9-tetrahydrocannabinol", "formula": "C21H30O3", "type_hint": "phenol alcohol alkene ether cyclic"},
-            "7704-34-9": {"name": "sulfur", "formula": "S8", "type_hint": "thiol"},
+            "50-78-2": {"name": "2-acetoxybenzoic acid", "formula": "C9H8O4", "type_hint": "ester carboxylic_acid aromatic_ring", "smiles": "CC(=O)Oc1ccccc1C(=O)O"},
+            "103-90-2": {"name": "acetaminophen", "formula": "C8H9NO2", "type_hint": "amide phenol", "smiles": "CC(=O)Nc1ccc(O)cc1"},
+            "69-72-7": {"name": "salicylic acid", "formula": "C7H6O3", "type_hint": "carboxylic_acid phenol", "smiles": "O=C(O)c1ccccc1O"},
+            "79-09-4": {"name": "propionic acid", "formula": "C3H6O2", "type_hint": "carboxylic_acid", "smiles": "CCC(=O)O"},
+            "64-19-7": {"name": "acetic acid", "formula": "C2H4O2", "type_hint": "carboxylic_acid", "smiles": "CC(=O)O"},
+            "67-64-1": {"name": "acetone", "formula": "C3H6O", "type_hint": "ketone", "smiles": "CC(=O)C"},
+            "67-56-1": {"name": "methanol", "formula": "CH4O", "type_hint": "alcohol", "smiles": "CO"},
+            "64-17-5": {"name": "ethanol", "formula": "C2H6O", "type_hint": "alcohol", "smiles": "CCO"},
+            "71-23-8": {"name": "propanol", "formula": "C3H8O", "type_hint": "alcohol", "smiles": "CCCO"},
+            "75-07-0": {"name": "acetaldehyde", "formula": "C2H4O", "type_hint": "aldehyde", "smiles": "CC=O"},
+            "100-52-7": {"name": "benzaldehyde", "formula": "C7H6O", "type_hint": "aldehyde aromatic_ring", "smiles": "C1=CC=C(C=C1)C=O"},
+            "100-66-3": {"name": "anisole", "formula": "C7H8O", "type_hint": "ether aromatic_ring", "smiles": "COc1ccccc1"},
+            "108-95-2": {"name": "phenol", "formula": "C6H6O", "type_hint": "phenol", "smiles": "Oc1ccccc1"},
+            "71-43-2": {"name": "benzene", "formula": "C6H6", "type_hint": "aromatic_ring", "smiles": "c1ccccc1"},
+            "100-42-5": {"name": "styrene", "formula": "C8H8", "type_hint": "alkene aromatic_ring", "smiles": "C=Cc1ccccc1"},
+            "121-44-8": {"name": "triethylamine", "formula": "C6H15N", "type_hint": "amine", "smiles": "CCN(CC)CC"},
+            "62-53-3": {"name": "aniline", "formula": "C6H7N", "type_hint": "aniline", "smiles": "Nc1ccccc1"},
+            "75-05-8": {"name": "acetonitrile", "formula": "C2H3N", "type_hint": "nitrile", "smiles": "CC#N"},
+            "67-66-3": {"name": "chloroform", "formula": "CHCl3", "type_hint": "halide", "smiles": "C(Cl)(Cl)Cl"},
+            "75-09-2": {"name": "dichloromethane", "formula": "CH2Cl2", "type_hint": "halide", "smiles": "C(Cl)Cl"},
+            "107-13-1": {"name": "acrylonitrile", "formula": "C3H3N", "type_hint": "alkene nitrile", "smiles": "C=CC#N"},
+            "74-85-1": {"name": "ethylene", "formula": "C2H4", "type_hint": "alkene", "smiles": "C=C"},
+            "74-86-2": {"name": "acetylene", "formula": "C2H2", "type_hint": "alkyne", "smiles": "C#C"},
+            "106-97-8": {"name": "butane", "formula": "C4H10", "type_hint": "alkene", "smiles": "CCCC"},
+            "110-82-7": {"name": "cyclohexane", "formula": "C6H12", "type_hint": "cyclic", "smiles": "C1CCCCC1"},
+            "108-88-3": {"name": "toluene", "formula": "C7H8", "type_hint": "aromatic_ring", "smiles": "Cc1ccccc1"},
+            "100-41-4": {"name": "ethylbenzene", "formula": "C8H10", "type_hint": "aromatic_ring", "smiles": "CCc1ccccc1"},
+            "98-86-2": {"name": "acetophenone", "formula": "C8H8O", "type_hint": "ketone aromatic_ring", "smiles": "CC(=O)c1ccccc1"},
+            "98-95-3": {"name": "nitrobenzene", "formula": "C6H5NO2", "type_hint": "nitro aromatic_ring", "smiles": "O=N(=O)c1ccccc1"},
+            "100-47-0": {"name": "benzonitrile", "formula": "C7H5N", "type_hint": "nitrile aromatic_ring", "smiles": "N#Cc1ccccc1"},
+            "88-89-1": {"name": "picric acid", "formula": "C6H3N3O7", "type_hint": "phenol nitro", "smiles": "O=[N+]([O-])c1c(O)c([N+](=O)[O-])cc1[N+]([O-])=O"},
+            "106-50-3": {"name": "p-phenylenediamine", "formula": "C6H8N2", "type_hint": "amine aromatic_ring", "smiles": "Nc1ccc(N)cc1"},
+            "95-76-1": {"name": "3,4-dichloroaniline", "formula": "C6H5Cl2N", "type_hint": "halide aniline", "smiles": "Nc1cc(Cl)c(Cl)cc1"},
+            "3568-94-3": {"name": "4-methyl-5-phenyl-4,5-dihydro-1,3-oxazol-2-amine", "formula": "C10H12N2O", "type_hint": "amine aromatic_ring ether cyclic", "smiles": "CC1=NC(=NO1)c2ccccc2N"},
+            "1972-08-3": {"name": "11-hydroxy-Δ9-tetrahydrocannabinol", "formula": "C21H30O3", "type_hint": "phenol alcohol alkene ether cyclic", "smiles": "CC1(OC2=CC(CCCC(C)(O)C)=CC(=C2C1)C)C"},
+            "7704-34-9": {"name": "sulfur", "formula": "S8", "type_hint": "thiol", "smiles": "S1SSSSSSS1"},
         }
 
     def resolve(self, cas_number):
@@ -853,19 +853,15 @@ class CASResolver:
             entry["cas"] = cas; entry["source"] = "cache"
             return entry
         try:
-            url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/{cas}/JSON"
+            url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/{cas}/property/CanonicalSMILES,MolecularFormula,IUPACName/JSON"
             req = urllib.request.Request(url, headers={"User-Agent": "ch3mpiler/1.0"})
             resp = urllib.request.urlopen(req, timeout=10)
             data = json.loads(resp.read())
-            props = {}
-            if "PC_Compounds" in data and data["PC_Compounds"]:
-                for prop in data["PC_Compounds"][0].get("props", []):
-                    urn = prop.get("urn", {}).get("label", "")
-                    val = prop.get("value", {}).get("sval", "")
-                    props[urn] = val
-            name = props.get("IUPAC Name", props.get("Molecular Formula", cas))
-            formula = props.get("Molecular Formula", "")
-            entry = {"cas": cas, "name": name, "formula": formula, "source": "pubchem", "type_hint": ""}
+            props = data.get("PropertyTable", {}).get("Properties", [{}])[0]
+            name = props.get("IUPACName", props.get("MolecularFormula", cas))
+            formula = props.get("MolecularFormula", "")
+            smiles = props.get("CanonicalSMILES", "") or props.get("ConnectivitySMILES", "")
+            entry = {"cas": cas, "name": name, "formula": formula, "smiles": smiles, "source": "pubchem", "type_hint": ""}
             self._cache[cas] = entry
             self._save_cache()
             return entry
