@@ -247,6 +247,7 @@ _MENU_WHITELIST = {
     "psychedelic_bridge",
     "diaschizic_iupac",
     "ch3mpiler",
+    "decay_chain",
 }
 
 def _discover_run_targets():
