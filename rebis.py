@@ -851,6 +851,72 @@ def cmd_materials(args):
         return 1
 
 
+
+def cmd_alchemy(args):
+    """Alchemy Bridge — map alchemical treatise types to molecular designs."""
+    from alchemical_bridge import AlchemicalBridge, bridge_summary
+    from alchemical_bridge.operations import AlchemicalOperations, apply_operation
+    
+    bridge = AlchemicalBridge()
+    sub = args.alchemy_subcommand
+    
+    if sub == "report":
+        print(bridge.full_report())
+        return 0
+    elif sub == "tier":
+        tname = args.alchemy_treatise
+        if tname:
+            import json
+            analysis = bridge.analyze_treatise(tname)
+            print(json.dumps(analysis, indent=2))
+        else:
+            print("Usage: rebis.py alchemy tier <treatise_name>")
+            print("Available tiers: O_inf_self_modeling, O2_irreducible_product, O1_pedagogical, O1_reformist, O1_kabbalistic, O1_supercritical, O0_metadata, O0_practical")
+            return 1
+        return 0
+    elif sub == "scroll-family":
+        import json
+        fam = bridge.analyze_scroll_family()
+        print(json.dumps(fam, indent=2))
+        return 0
+    elif sub == "suggest":
+        import json
+        result = bridge.suggest_design(args.alchemy_treatise)
+        print(json.dumps(result, indent=2))
+        return 0
+    elif sub == "trace":
+        import json
+        trace = bridge.trace_opus_on_treatise(args.alchemy_treatise)
+        print(json.dumps(trace, indent=2, default=str))
+        return 0
+    elif sub == "operate":
+        tup_str = args.alchemy_tuple
+        op_name = args.alchemy_operation
+        if not tup_str or not op_name:
+            print("Usage: rebis.py alchemy operate --tuple D,T,R,P,F,K,G,C,Phi,H,S,Omega --operation <name>")
+            ops = [n for n, _, _ in AlchemicalOperations.list_operations()]
+            print("Operations:", ", ".join(ops))
+            return 1
+        parts = tup_str.split(",")
+        if len(parts) != 12:
+            print("Tuple must have exactly 12 comma-separated values")
+            return 1
+        from shared.primitives import ORDINALS, PRIMITIVE_ORDER
+        tup_dict = {}
+        for i, prim in enumerate(PRIMITIVE_ORDER):
+            glyph = parts[i].strip()
+            ord_map = ORDINALS.get(prim, {})
+            rev_map = {str(v): k for k, v in ord_map.items()}
+            resolved = rev_map.get(glyph) or glyph
+            tup_dict[prim] = resolved
+        result = apply_operation(tup_dict, op_name)
+        import json
+        print(json.dumps(result, indent=2, default=str))
+        return 0
+    else:
+        print("Unknown subcommand. Use: report, tier, scroll-family, suggest, trace, operate")
+        return 1
+
 def main():
     parser = argparse.ArgumentParser(
         description="Red-Hot Rebis v2.0 — CLINK Pipeline Whole-Organism Design",
@@ -1008,6 +1074,28 @@ Examples:
                          choices=["layer", "bridge"],
                          help="CLINK subcommand")
     p_clink.add_argument("layer_args", nargs="*", help="Layer index for 'layer'")
+
+    # alchemy (NEW)
+    p_alc = subparsers.add_parser("alchemy", help="Alchemical Bridge — map alchemical treatises to molecular designs",
+                                  formatter_class=argparse.RawDescriptionHelpFormatter,
+                                  epilog="""Examples:
+  rebis.py alchemy report                  # Full bridge report
+  rebis.py alchemy tier O_inf_self_modeling # Analyze a tier
+  rebis.py alchemy scroll-family           # Scroll family (phi=odot, Omega=Z)
+  rebis.py alchemy suggest O1_pedagogical   # Suggest molecular designs from tier
+  rebis.py alchemy trace O_inf_self_modeling # Trace grand sequence on treatise tuple
+  rebis.py alchemy operate --tuple D,T,R,P,F,K,G,C,Phi,H,S,Omega --operation calcination
+""")
+    p_alc.add_argument("alchemy_subcommand",
+                        choices=["report", "tier", "scroll-family", "suggest", "trace", "operate"],
+                        help="Alchemical bridge subcommand")
+    p_alc.add_argument("alchemy_treatise", nargs="?", default=None,
+                        help="Treatise name or tier identifier")
+    p_alc.add_argument("--tuple", dest="alchemy_tuple", type=str,
+                        help="Comma-separated 12-tuple for 'operate'")
+    p_alc.add_argument("--operation", dest="alchemy_operation", type=str,
+                        help="Alchemical operation for 'operate'")
+
     p_clink.add_argument("--bridge-comp", dest="bridge_comp",
                          help="Component for 'bridge' (serpentrod/ch3mpiler/gene_imscriber)")
     p_clink.add_argument("--bridge-target", dest="bridge_target",
@@ -1052,6 +1140,8 @@ Examples:
         return cmd_run(args)
     elif args.command == "scripts":
         return cmd_scripts(args)
+    elif args.command == "alchemy":
+        return cmd_alchemy(args)
     else:
         parser.print_help()
         return 1
