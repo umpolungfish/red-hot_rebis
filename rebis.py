@@ -852,70 +852,6 @@ def cmd_materials(args):
 
 
 
-def cmd_alchemy(args):
-    """Alchemy Bridge — map alchemical treatise types to molecular designs."""
-    from alchemical_bridge import AlchemicalBridge, bridge_summary
-    from alchemical_bridge.operations import AlchemicalOperations, apply_operation
-    
-    bridge = AlchemicalBridge()
-    sub = args.alchemy_subcommand
-    
-    if sub == "report":
-        print(bridge.full_report())
-        return 0
-    elif sub == "tier":
-        tname = args.alchemy_treatise
-        if tname:
-            import json
-            analysis = bridge.analyze_treatise(tname)
-            print(json.dumps(analysis, indent=2))
-        else:
-            print("Usage: rebis.py alchemy tier <treatise_name>")
-            print("Available tiers: O_inf_self_modeling, O2_irreducible_product, O1_pedagogical, O1_reformist, O1_kabbalistic, O1_supercritical, O0_metadata, O0_practical")
-            return 1
-        return 0
-    elif sub == "scroll-family":
-        import json
-        fam = bridge.analyze_scroll_family()
-        print(json.dumps(fam, indent=2))
-        return 0
-    elif sub == "suggest":
-        import json
-        result = bridge.suggest_design(args.alchemy_treatise)
-        print(json.dumps(result, indent=2))
-        return 0
-    elif sub == "trace":
-        import json
-        trace = bridge.trace_opus_on_treatise(args.alchemy_treatise)
-        print(json.dumps(trace, indent=2, default=str))
-        return 0
-    elif sub == "operate":
-        tup_str = args.alchemy_tuple
-        op_name = args.alchemy_operation
-        if not tup_str or not op_name:
-            print("Usage: rebis.py alchemy operate --tuple D,T,R,P,F,K,G,C,Phi,H,S,Omega --operation <name>")
-            ops = [n for n, _, _ in AlchemicalOperations.list_operations()]
-            print("Operations:", ", ".join(ops))
-            return 1
-        parts = tup_str.split(",")
-        if len(parts) != 12:
-            print("Tuple must have exactly 12 comma-separated values")
-            return 1
-        from shared.primitives import ORDINALS, PRIMITIVE_ORDER
-        tup_dict = {}
-        for i, prim in enumerate(PRIMITIVE_ORDER):
-            glyph = parts[i].strip()
-            ord_map = ORDINALS.get(prim, {})
-            rev_map = {str(v): k for k, v in ord_map.items()}
-            resolved = rev_map.get(glyph) or glyph
-            tup_dict[prim] = resolved
-        result = apply_operation(tup_dict, op_name)
-        import json
-        print(json.dumps(result, indent=2, default=str))
-        return 0
-    else:
-        print("Unknown subcommand. Use: report, tier, scroll-family, suggest, trace, operate")
-        return 1
 
 def main():
     parser = argparse.ArgumentParser(
@@ -1087,7 +1023,7 @@ Examples:
   rebis.py alchemy operate --tuple D,T,R,P,F,K,G,C,Phi,H,S,Omega --operation calcination
 """)
     p_alc.add_argument("alchemy_subcommand",
-                        choices=["report", "tier", "scroll-family", "suggest", "trace", "operate"],
+                        choices=["report", "tier", "scroll-family", "suggest", "trace", "operate", "greenfire", "wavelength", "host", "bind", "retro", "grand-sequence", "decode", "learn", "alchemical-mol", "zosimos", "portico", "stilling", "ladder", "key", "opus"],
                         help="Alchemical bridge subcommand")
     p_alc.add_argument("alchemy_treatise", nargs="?", default=None,
                         help="Treatise name or tier identifier")
@@ -1095,6 +1031,15 @@ Examples:
                         help="Comma-separated 12-tuple for 'operate'")
     p_alc.add_argument("--operation", dest="alchemy_operation", type=str,
                         help="Alchemical operation for 'operate'")
+    p_alc.add_argument("--guest", dest="guest_smiles", type=str,
+                        help="Guest SMILES for 'bind'")
+    p_alc.add_argument("--modern", dest="modern_term", type=str,
+                        help="Modern scientific term for 'learn'")
+    p_alc.add_argument("--key-number", dest="key_number", type=int,
+                        help="Key number (1-12) for 'key'")
+    p_alc.add_argument("--substrate", dest="substrate", type=str,
+                        help="Substrate SMILES for 'greenfire'")
+
 
     p_clink.add_argument("--bridge-comp", dest="bridge_comp",
                          help="Component for 'bridge' (serpentrod/ch3mpiler/gene_imscriber)")
@@ -1149,3 +1094,288 @@ Examples:
 
 if __name__ == "__main__":
     sys.exit(main())
+def cmd_alchemy(args):
+    """Alchemy Bridge — map alchemical treatise types to molecular designs.
+    
+    Includes 6 fully functional computational engines:
+      greenfire — Photocatalytic cycle discovery (Secret Fire)
+      third — Supramolecular cavity/void design (Salt)
+      retro — Solve et Coagula retrosynthesis
+      decode — Cryptic alchemical → modern science co-type matching
+      zosimos — 12-primitive structural analysis + Stilling Practice
+      ladder — 12-step promotion ladder (Basil Valentine's Twelve Keys)
+    """
+    from alchemical_bridge import AlchemicalBridge
+    from alchemical_bridge.operations import AlchemicalOperations, apply_operation
+    
+    bridge = AlchemicalBridge()
+    sub = args.alchemy_subcommand
+    
+    if sub == "report":
+        print(bridge.full_report())
+        return 0
+
+    # ── Original subcommands ──────────────────────────────────
+    elif sub == "tier":
+        tname = args.alchemy_treatise
+        if tname:
+            import json
+            analysis = bridge.analyze_treatise(tname)
+            print(json.dumps(analysis, indent=2))
+        else:
+            print("Usage: rebis.py alchemy tier <treatise_name>")
+            print("Available tiers: O_inf_self_modeling, O2_irreducible_product, O1_pedagogical, O1_reformist, O1_kabbalistic, O1_supercritical, O0_metadata, O0_practical")
+            return 1
+        return 0
+    elif sub == "scroll-family":
+        import json
+        fam = bridge.analyze_scroll_family()
+        print(json.dumps(fam, indent=2))
+        return 0
+    elif sub == "suggest":
+        import json
+        result = bridge.suggest_design(args.alchemy_treatise)
+        print(json.dumps(result, indent=2))
+        return 0
+    elif sub == "trace":
+        import json
+        trace = bridge.trace_opus_on_treatise(args.alchemy_treatise)
+        print(json.dumps(trace, indent=2, default=str))
+        return 0
+    elif sub == "operate":
+        tup_str = args.alchemy_tuple
+        op_name = args.alchemy_operation
+        if not tup_str or not op_name:
+            print("Usage: rebis.py alchemy operate --tuple D,T,R,P,F,K,G,C,Phi,H,S,Omega --operation <name>")
+            ops = [n for n, _, _ in AlchemicalOperations.list_operations()]
+            print("Operations:", ", ".join(ops))
+            return 1
+        parts = tup_str.split(",")
+        if len(parts) != 12:
+            print("Tuple must have exactly 12 comma-separated values")
+            return 1
+        from shared.primitives import ORDINALS, PRIMITIVE_ORDER
+        tup_dict = {}
+        for i, prim in enumerate(PRIMITIVE_ORDER):
+            glyph = parts[i].strip()
+            ord_map = ORDINALS.get(prim, {})
+            rev_map = {str(v): k for k, v in ord_map.items()}
+            resolved = rev_map.get(glyph) or glyph
+            tup_dict[prim] = resolved
+        result = apply_operation(tup_dict, op_name)
+        import json
+        print(json.dumps(result, indent=2, default=str))
+        return 0
+
+    # ── NEW: Green Fire Engine ────────────────────────────────
+    elif sub == "greenfire":
+        smiles = args.alchemy_treatise
+        if not smiles:
+            print("Usage: rebis.py alchemy greenfire <catalyst_SMILES>")
+            return 1
+        result = bridge.analyze_photocatalyst(smiles, getattr(args, 'substrate', None))
+        import json
+        print(json.dumps(result, indent=2, default=str))
+        return 0
+
+    elif sub == "wavelength":
+        smiles = args.alchemy_treatise
+        if not smiles:
+            print("Usage: rebis.py alchemy wavelength <catalyst_SMILES>")
+            return 1
+        result = bridge.suggest_wavelength(smiles)
+        import json
+        print(json.dumps(result, indent=2))
+        return 0
+
+    # ── NEW: Alchemical Third Engine ──────────────────────────
+    elif sub == "host":
+        smiles = args.alchemy_treatise
+        if not smiles:
+            print("Usage: rebis.py alchemy host <host_SMILES>")
+            return 1
+        result = bridge.analyze_host(smiles)
+        import json
+        print(json.dumps(result, indent=2, default=str))
+        return 0
+
+    elif sub == "bind":
+        host = args.alchemy_treatise
+        guest = args.guest_smiles if hasattr(args, 'guest_smiles') else None
+        if not host or not guest:
+            print("Usage: rebis.py alchemy bind <host_SMILES> --guest <guest_SMILES>")
+            return 1
+        result = bridge.compute_binding(host, guest)
+        import json
+        print(json.dumps(result, indent=2, default=str))
+        return 0
+
+    # ── NEW: Retrosynthetic Stone Engine ──────────────────────
+    elif sub == "retro":
+        smiles = args.alchemy_treatise
+        if not smiles:
+            print("Usage: rebis.py alchemy retro <target_SMILES>")
+            return 1
+        result = bridge.plan_synthesis(smiles)
+        import json
+        print(json.dumps(result, indent=2, default=str))
+        return 0
+
+    elif sub == "grand-sequence":
+        smiles = args.alchemy_treatise
+        if not smiles:
+            print("Usage: rebis.py alchemy grand-sequence <target_SMILES>")
+            return 1
+        result = bridge.grand_sequence_synthesis(smiles)
+        import json
+        print(json.dumps(result, indent=2, default=str))
+        return 0
+
+    # ── NEW: Artephius Decoder ────────────────────────────────
+    elif sub == "decode":
+        phrase = args.alchemy_treatise
+        if not phrase:
+            print("Usage: rebis.py alchemy decode '<cryptic_phrase>'")
+            return 1
+        result = bridge.decode_cryptic(phrase)
+        import json
+        print(json.dumps(result, indent=2))
+        return 0
+
+    elif sub == "learn":
+        cryptic = args.alchemy_treatise
+        modern = args.modern_term if hasattr(args, 'modern_term') else None
+        if not cryptic or not modern:
+            print("Usage: rebis.py alchemy learn '<cryptic>' --modern '<modern>'")
+            return 1
+        result = bridge.learn_decoding(cryptic, modern, "user_discovery", 0.8, "user")
+        import json
+        print(json.dumps(result, indent=2))
+        return 0
+
+    elif sub == "alchemical-mol":
+        smiles = args.alchemy_treatise
+        if not smiles:
+            print("Usage: rebis.py alchemy alchemical-mol <SMILES>")
+            return 1
+        result = bridge.decode_molecule(smiles)
+        import json
+        print(json.dumps(result, indent=2))
+        return 0
+
+    # ── NEW: Zosimos Engine ───────────────────────────────────
+    elif sub == "zosimos":
+        tup_str = args.alchemy_tuple
+        if not tup_str:
+            print("Usage: rebis.py alchemy zosimos --tuple D,T,R,P,F,K,G,C,Phi,H,S,Omega")
+            return 1
+        parts = tup_str.split(",")
+        if len(parts) != 12:
+            print("Tuple must have exactly 12 comma-separated values")
+            return 1
+        from shared.primitives import ORDINALS, PRIMITIVE_ORDER
+        tup_dict = {}
+        for i, prim in enumerate(PRIMITIVE_ORDER):
+            glyph = parts[i].strip()
+            ord_map = ORDINALS.get(prim, {})
+            rev_map = {str(v): k for k, v in ord_map.items()}
+            resolved = rev_map.get(glyph) or glyph
+            tup_dict[prim] = resolved
+        result = bridge.analyze_structure("user_system", tup_dict)
+        import json
+        print(json.dumps(result, indent=2, default=str))
+        return 0
+
+    elif sub == "portico":
+        tup_str = args.alchemy_tuple
+        if not tup_str:
+            print("Usage: rebis.py alchemy portico --tuple D,T,R,P,F,K,G,C,Phi,H,S,Omega")
+            return 1
+        parts = tup_str.split(",")
+        if len(parts) != 12:
+            print("Tuple must have exactly 12 comma-separated values")
+            return 1
+        from shared.primitives import ORDINALS, PRIMITIVE_ORDER
+        tup_dict = {}
+        for i, prim in enumerate(PRIMITIVE_ORDER):
+            glyph = parts[i].strip()
+            ord_map = ORDINALS.get(prim, {})
+            rev_map = {str(v): k for k, v in ord_map.items()}
+            resolved = rev_map.get(glyph) or glyph
+            tup_dict[prim] = resolved
+        result = bridge.check_portico(tup_dict)
+        import json
+        print(json.dumps(result, indent=2))
+        return 0
+
+    elif sub == "stilling":
+        tup_str = args.alchemy_tuple
+        if not tup_str:
+            print("Usage: rebis.py alchemy stilling --tuple D,T,R,P,F,K,G,C,Phi,H,S,Omega")
+            return 1
+        parts = tup_str.split(",")
+        if len(parts) != 12:
+            print("Tuple must have exactly 12 comma-separated values")
+            return 1
+        from shared.primitives import ORDINALS, PRIMITIVE_ORDER
+        tup_dict = {}
+        for i, prim in enumerate(PRIMITIVE_ORDER):
+            glyph = parts[i].strip()
+            ord_map = ORDINALS.get(prim, {})
+            rev_map = {str(v): k for k, v in ord_map.items()}
+            resolved = rev_map.get(glyph) or glyph
+            tup_dict[prim] = resolved
+        result = bridge.perform_stilling(tup_dict)
+        import json
+        print(json.dumps(result, indent=2))
+        return 0
+
+    # ── NEW: Basil Valentine Ladder ───────────────────────────
+    elif sub == "ladder":
+        tup_str = args.alchemy_tuple
+        if not tup_str:
+            # Default: climb from O₀ to Stone
+            result = bridge.full_opus_report()
+        else:
+            parts = tup_str.split(",")
+            if len(parts) != 12:
+                print("Tuple must have exactly 12 comma-separated values")
+                return 1
+            from shared.primitives import ORDINALS, PRIMITIVE_ORDER
+            tup_dict = {}
+            for i, prim in enumerate(PRIMITIVE_ORDER):
+                glyph = parts[i].strip()
+                ord_map = ORDINALS.get(prim, {})
+                rev_map = {str(v): k for k, v in ord_map.items()}
+                resolved = rev_map.get(glyph) or glyph
+                tup_dict[prim] = resolved
+            result = bridge.climb_to_stone(tup_dict)
+        import json
+        print(json.dumps(result, indent=2, default=str))
+        return 0
+
+    elif sub == "key":
+        key_num = args.key_number if hasattr(args, 'key_number') else None
+        if key_num is None:
+            print("Usage: rebis.py alchemy key <1-12>")
+            return 1
+        result = bridge.key_info(int(key_num))
+        import json
+        print(json.dumps(result, indent=2))
+        return 0
+
+    elif sub == "opus":
+        result = bridge.full_opus_report()
+        import json
+        print(json.dumps(result, indent=2, default=str))
+        return 0
+
+    else:
+        print("Unknown subcommand. Use:")
+        print("  report, tier, scroll-family, suggest, trace, operate")
+        print("  greenfire, wavelength, host, bind")
+        print("  retro, grand-sequence")
+        print("  decode, learn, alchemical-mol")
+        print("  zosimos, portico, stilling")
+        print("  ladder, key, opus")
+        return 1

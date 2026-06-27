@@ -1,3 +1,7 @@
+Strip '; ' delimiter from Shavian tuple in materials_sim.py module header — 2026-06-26
+
+---
+
 decay_chain.py: nuclear decay as IMASM winding toward Frobenius fixed point (2026-06-25)
 
 Added rhr_p4rky/decay_chain.py — encodes the structural insight that radioactive decay
