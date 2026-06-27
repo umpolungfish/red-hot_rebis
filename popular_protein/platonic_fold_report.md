@@ -108,7 +108,7 @@ $$\langle\text{𐑦}\cdot\text{𐑥}\cdot\text{𐑽}\cdot\text{𐑯}\cdot\text{�
 
 $$\langle\text{𐑦}\cdot\text{𐑶}\cdot\text{𐑾}\cdot\text{𐑹}\cdot\text{𐑱}\cdot\text{𐑧}\cdot\text{𐑔}\cdot\text{𐑵}\cdot\text{𐑣}\cdot\text{𐑖}\cdot\text{𐑳}\cdot\text{𐑷}\rangle$$
 
-- **Tier:** $\text{O}_0$ (supercritical φ̂=𐑣 — runaway, not self-modeling)
+- **Tier:** $\text{O}_0$ (supercritical ⊙=𐑣 — runaway, not self-modeling)
 - **129 AA, 8 Cys (4 disulfides), 2 Glu, 3 Gln**
 - **Φ=𐑹 (Frobenius-special)** — the 4-disulfide topology is Frobenius-exact, but ⊙ is supercritical (not critical), so the self-modeling gate cannot open
 - **First protein solved by crystallography (Blake, 1965)** — the very origin of the crystallographic distortion problem
