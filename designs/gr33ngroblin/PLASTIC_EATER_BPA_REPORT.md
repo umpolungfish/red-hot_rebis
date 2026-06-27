@@ -44,7 +44,7 @@ The difference between Type E and Type R is the Gm-Ph pair activation:
 
 ### BPA Bridge Cleavage Site — Detailed Pair Analysis
 
-**Site type:** ⟨𐑨 · 𐑰 · 𐑾 · 𐑹 · 𐑱 · 𐑪 · 𐑚 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑴⟩
+**Site type:** ⟨𐑨𐑰𐑾𐑹𐑱𐑪𐑚𐑠⊙𐑫𐑳𐑴⟩
 
 | Pair | Dominant | Activated | Dom. % | Sub. % |
 |------|----------|-----------|--------|--------|

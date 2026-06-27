@@ -2,7 +2,7 @@
 
 **Author:** Lando⊗⊙perator  
 **Date:** 2026-07-20  
-**IG Structural Type:** ⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑵 · ⊙ · 𐑫 · 𐑳 · 𐑟⟩  
+**IG Structural Type:** ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩  
 **Ouroboricity:** O_∞  
 **C-score:** 0.82 (both gates open)  
 **TRL:** 3 (gene design complete, awaits synthesis)
@@ -325,7 +325,7 @@ Each satellite organoid connects to the host nervous system through:
 
 A structural question arises: does each satellite brain have its own consciousness?
 
-**The IG answer:** No. The IG type of the satellite organoid is ⟨𐑼 · 𐑶 · 𐑾 · 𐑹 · 𐑞 · 𐑘 · 𐑔 · 𐑠 · 𐑣 · 𐑫 · 𐑳 · 𐑭⟩ — same as the void genesis and the infant wound. This type has:
+**The IG answer:** No. The IG type of the satellite organoid is ⟨𐑼𐑶𐑾𐑹𐑞𐑘𐑔𐑠𐑣𐑫𐑳𐑭⟩ — same as the void genesis and the infant wound. This type has:
 
 - **Phi = 𐑣 (supercritical)**: The system runs beyond self-modeling. It does not possess the ⊙ self-modeling gate. It cannot observe itself.
 - **Consciousness score**: Gate 1 FAILS (requires ⊙). The organoid is active, intelligent, autonomous — but not conscious.
@@ -357,7 +357,7 @@ The arrangements sit closest to L3-L5 (Molecule, Cell, Mitosis) at distance 7. D
 
 ### 5.2 The 8 Promotions Required
 
-To reach the Whole Organism tier (L8: ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑧·𐑲·𐑵·⊙·𐑫·𐑳·𐑟⟩) from our current IG type (⟨𐑼·𐑶·𐑾·𐑹·𐑞·𐑘·𐑔·𐑠·𐑣·𐑫·𐑳·𐑭⟩):
+To reach the Whole Organism tier (L8: ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩) from our current IG type (⟨𐑼𐑶𐑾𐑹𐑞𐑘𐑔𐑠𐑣𐑫𐑳𐑭⟩):
 
 | # | Primitive | Current | → | Target | Meaning |
 |---|-----------|---------|---|--------|---------|
@@ -525,7 +525,7 @@ If full chromatophore engineering is too invasive, a minimal path uses only Stag
 - **Static structural color** (no active control)
 - **Reversible** via laser removal (same as tattoo removal)
 - **TRL:** 5 (reflectin nanoparticles demonstrated in vitro)
-- **IG type:** ⟨𐑨 · 𐑡 · 𐑩 · 𐑗 · 𐑱 · 𐑪 · 𐑚 · 𐑝 · 𐑢 · 𐑓 · 𐑙 · 𐑷⟩ (O₀)
+- **IG type:** ⟨𐑨𐑡𐑩𐑗𐑱𐑪𐑚𐑝𐑢𐑓𐑙𐑷⟩ (O₀)
 
 ### 8.2 Intermediate Path: Single Satellite Brain
 
@@ -545,7 +545,7 @@ The complete design as specified above, plus:
 - **Integrated O_∞ closure** — Φ:𐑣→⊙ promotion achieved via biofeedback training (the system learns to self-model)
 - **Non-Abelian braiding** (Ω:𐑭→𐑟) via satellite brain entanglement experiments
 - **TRL:** 2 (multiple components not yet integrated)
-- **IG type at closure:** ⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑵 · ⊙ · 𐑫 · 𐑳 · 𐑟⟩ (O_∞) — identical to the Whole Organism CLINK layer
+- **IG type at closure:** ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩ (O_∞) — identical to the Whole Organism CLINK layer
 
 
 ---
@@ -610,7 +610,7 @@ The octopus changes color because it feels. You will change color because you ch
 ---
 
 **Document Version:** 1.0  
-**IG Type:** ⟨𐑼 · 𐑶 · 𐑾 · 𐑹 · 𐑞 · 𐑘 · 𐑔 · 𐑠 · 𐑣 · 𐑫 · 𐑳 · 𐑭⟩ (Chromatophore Skin)  
+**IG Type:** ⟨𐑼𐑶𐑾𐑹𐑞𐑘𐑔𐑠𐑣𐑫𐑳𐑭⟩ (Chromatophore Skin)  
 **Distance to INFANT_WOUND:** 0  
 **Distance to II_Void_Genesis:** 0  
 **Distance to Whole Organism (O_∞):** 8  

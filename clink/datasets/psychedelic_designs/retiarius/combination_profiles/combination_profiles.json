@@ -1,7 +1,7 @@
 {
   "retiarius_plus_dmt": {
     "combination": "Retiarius (Local-Net Trap) + dmt",
-    "composite_type": "⟨𐑦 · 𐑸 · 𐑾 · 𐑿 · 𐑞 · 𐑺 · 𐑲 · 𐑵 · 𐑮 · 𐑫 · 𐑳 · 𐑭⟩",
+    "composite_type": "⟨𐑦𐑸𐑾𐑿𐑞𐑺𐑲𐑵𐑮𐑫𐑳𐑭⟩",
     "composite_tier": "O₁",
     "parent_1": {
       "name": "Retiarius (Local-Net Trap)",
@@ -87,7 +87,7 @@
   },
   "retiarius_plus_psilocybin": {
     "combination": "Retiarius (Local-Net Trap) + psilocybin",
-    "composite_type": "⟨𐑼 · 𐑥 · 𐑾 · 𐑿 · 𐑞 · 𐑺 · 𐑲 · 𐑠 · 𐑮 · 𐑖 · 𐑳 · 𐑭⟩",
+    "composite_type": "⟨𐑼𐑥𐑾𐑿𐑞𐑺𐑲𐑠𐑮𐑖𐑳𐑭⟩",
     "composite_tier": "O₁",
     "parent_1": {
       "name": "Retiarius (Local-Net Trap)",
@@ -167,7 +167,7 @@
   },
   "retiarius_plus_lsd": {
     "combination": "Retiarius (Local-Net Trap) + lsd",
-    "composite_type": "⟨𐑦 · 𐑸 · 𐑾 · 𐑿 · 𐑞 · 𐑺 · 𐑲 · 𐑵 · 𐑮 · 𐑖 · 𐑳 · 𐑭⟩",
+    "composite_type": "⟨𐑦𐑸𐑾𐑿𐑞𐑺𐑲𐑵𐑮𐑖𐑳𐑭⟩",
     "composite_tier": "O₁",
     "parent_1": {
       "name": "Retiarius (Local-Net Trap)",
@@ -253,7 +253,7 @@
   },
   "retiarius_plus_ketamine": {
     "combination": "Retiarius (Local-Net Trap) + ketamine",
-    "composite_type": "⟨𐑼 · 𐑥 · 𐑾 · 𐑿 · 𐑱 · 𐑺 · 𐑔 · 𐑠 · 𐑮 · 𐑒 · 𐑕 · 𐑷⟩",
+    "composite_type": "⟨𐑼𐑥𐑾𐑿𐑱𐑺𐑔𐑠𐑮𐑒𐑕𐑷⟩",
     "composite_tier": "O₁",
     "parent_1": {
       "name": "Retiarius (Local-Net Trap)",
@@ -309,7 +309,7 @@
   },
   "retiarius_plus_mdma": {
     "combination": "Retiarius (Local-Net Trap) + mdma",
-    "composite_type": "⟨𐑼 · 𐑡 · 𐑾 · 𐑿 · 𐑞 · 𐑺 · 𐑲 · 𐑠 · 𐑮 · 𐑒 · 𐑳 · 𐑷⟩",
+    "composite_type": "⟨𐑼𐑡𐑾𐑿𐑞𐑺𐑲𐑠𐑮𐑒𐑳𐑷⟩",
     "composite_tier": "O₁",
     "parent_1": {
       "name": "Retiarius (Local-Net Trap)",
@@ -353,7 +353,7 @@
   },
   "retiarius_plus_mescaline": {
     "combination": "Retiarius (Local-Net Trap) + mescaline",
-    "composite_type": "⟨𐑼 · 𐑡 · 𐑾 · 𐑗 · 𐑱 · 𐑺 · 𐑔 · 𐑜 · 𐑮 · 𐑒 · 𐑕 · 𐑷⟩",
+    "composite_type": "⟨𐑼𐑡𐑾𐑗𐑱𐑺𐑔𐑜𐑮𐑒𐑕𐑷⟩",
     "composite_tier": "O₁",
     "parent_1": {
       "name": "Retiarius (Local-Net Trap)",
@@ -415,7 +415,7 @@
   },
   "retiarius_plus_verticullum": {
     "combination": "Retiarius (Local-Net Trap) + Verticullum (EP-Lever)",
-    "composite_type": "⟨𐑦 · 𐑥 · 𐑾 · 𐑿 · 𐑞 · 𐑺 · 𐑲 · 𐑠 · 𐑮 · 𐑫 · 𐑳 · 𐑟⟩",
+    "composite_type": "⟨𐑦𐑥𐑾𐑿𐑞𐑺𐑲𐑠𐑮𐑫𐑳𐑟⟩",
     "composite_tier": "O₁",
     "parent_1": {
       "name": "Retiarius (Local-Net Trap)",

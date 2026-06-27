@@ -5,7 +5,7 @@
     "epithet": "Adjoint Corridor",
     "generation": 1,
     "tier": "O₂",
-    "tuple": "⟨𐑦 · 𐑥 · 𐑽 · 𐑬 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑖 · 𐑳 · 𐑴⟩",
+    "tuple": "⟨𐑦𐑥𐑽𐑬𐑐𐑧𐑲𐑠⊙𐑖𐑳𐑴⟩",
     "iupac_name": "disulfide-linked homodimer: ((2R,5R)-tert-butyl-N-benzeneethanamine-amine)",
     "scaffold_class": "phenethylamine"
   },
@@ -15,7 +15,7 @@
     "epithet": "The Disjunctive Self-Modeler",
     "generation": 2,
     "tier": "O₂",
-    "tuple": "⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑜 · ⊙ · 𐑖 · 𐑳 · 𐑭⟩",
+    "tuple": "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑜⊙𐑖𐑳𐑭⟩",
     "iupac_name": "[n]cyclophane ((Rₐ,Rₐ)-tert-butyl-bis-3,3'-(diazene-1,2-diyl)bis(1H-indole-3-ethanamine))",
     "scaffold_class": "bis_indole"
   },
@@ -25,7 +25,7 @@
     "epithet": "Supercritical Catalyst",
     "generation": 1,
     "tier": "O₀",
-    "tuple": "⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑵 · 𐑣 · 𐑫 · 𐑳 · 𐑭⟩",
+    "tuple": "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵𐑣𐑫𐑳𐑭⟩",
     "iupac_name": "[n]cyclophane ((Rₐ)-tert-butyl-cyclopropyl-(6aR,9R)-7-methyl-4,6,6a,7,8,9-hexahydroindolo[4,3-fg]quinoline)",
     "scaffold_class": "ergoline"
   },
@@ -35,7 +35,7 @@
     "epithet": "The Threshold-Crosser",
     "generation": 2,
     "tier": "O₂†",
-    "tuple": "⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑖 · 𐑳 · 𐑭⟩",
+    "tuple": "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑖𐑳𐑭⟩",
     "iupac_name": "[n]cyclophane ((Rₐ,Rₐ)-tert-butyl-1H-indole-3-ethanamine)",
     "scaffold_class": "tryptamine"
   },
@@ -45,7 +45,7 @@
     "epithet": "The MBL Key",
     "generation": 2,
     "tier": "O₀",
-    "tuple": "⟨𐑦 · 𐑶 · 𐑾 · 𐑹 · 𐑐 · 𐑺 · 𐑲 · 𐑠 · ⊙ · 𐑒 · 𐑳 · 𐑷⟩",
+    "tuple": "⟨𐑦𐑶𐑾𐑹𐑐𐑺𐑲𐑠⊙𐑒𐑳𐑷⟩",
     "iupac_name": "(Rₐ)-perdeutero-pentacyclo-1H-indole-3-ethanamine",
     "scaffold_class": "tryptamine"
   },
@@ -55,7 +55,7 @@
     "epithet": "The Deep-Structure Resonator",
     "generation": 2,
     "tier": "O₂",
-    "tuple": "⟨𐑦 · 𐑥 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑔 · 𐑠 · 𐑮 · 𐑖 · 𐑳 · 𐑴⟩",
+    "tuple": "⟨𐑦𐑥𐑾𐑹𐑐𐑧𐑔𐑠𐑮𐑖𐑳𐑴⟩",
     "iupac_name": "disulfide-linked homodimer: ((Rₐ,Rₐ)-tert-butyl-complex-phenanthrene)",
     "scaffold_class": "phenanthrene"
   },
@@ -65,7 +65,7 @@
     "epithet": "EP-Core Control Platform",
     "generation": 1,
     "tier": "O₀",
-    "tuple": "⟨𐑦 · 𐑶 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · 𐑻 · 𐑫 · 𐑳 · 𐑭⟩",
+    "tuple": "⟨𐑦𐑶𐑾𐑹𐑐𐑧𐑲𐑠𐑻𐑫𐑳𐑭⟩",
     "iupac_name": "[n]cyclophane ((Rₐ)-tert-butyl-pentacyclo-9H-pyrido[3,4-b]indole-N-oxide)",
     "scaffold_class": "beta-carboline"
   },
@@ -75,7 +75,7 @@
     "epithet": "The Absolute Point",
     "generation": 2,
     "tier": "O₀",
-    "tuple": "⟨𐑛 · 𐑡 · 𐑩 · 𐑗 · 𐑱 · 𐑪 · 𐑚 · 𐑝 · 𐑢 · 𐑓 · 𐑙 · 𐑷⟩",
+    "tuple": "⟨𐑛𐑡𐑩𐑗𐑱𐑪𐑚𐑝𐑢𐑓𐑙𐑷⟩",
     "iupac_name": "xenon—clathrate hydrate",
     "scaffold_class": "xenon_clathrate"
   },
@@ -85,7 +85,7 @@
     "epithet": "Local-Net Trap",
     "generation": 1,
     "tier": "O₁",
-    "tuple": "⟨𐑼 · 𐑡 · 𐑾 · 𐑿 · 𐑞 · 𐑺 · 𐑚 · 𐑜 · 𐑮 · 𐑒 · 𐑕 · 𐑷⟩",
+    "tuple": "⟨𐑼𐑡𐑾𐑿𐑞𐑺𐑚𐑜𐑮𐑒𐑕𐑷⟩",
     "iupac_name": "(R)-perdeutero-bis-poly-complex-methyl (2S,4aR,6aR,7R,9S,10aS,10bR)-2-(furan-3-yl)-6a,10b-dimethyl-4,10-dioxo-2,4a,5,6,7,8,9,10a-octahydro-1H-benzo[f]isochromene-7-carboxylate",
     "scaffold_class": "salvinorin"
   },
@@ -95,7 +95,7 @@
     "epithet": "The Perfect Mirror",
     "generation": 2,
     "tier": "O_∞",
-    "tuple": "⟨𐑼 · 𐑶 · 𐑾 · 𐑯 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑭⟩",
+    "tuple": "⟨𐑼𐑶𐑾𐑯𐑐𐑧𐑲𐑠⊙𐑫𐑳𐑭⟩",
     "iupac_name": "[n]cyclophane (meso-tert-butyl-pentacyclo-coordination cage)",
     "scaffold_class": "coordination_cage"
   },
@@ -105,7 +105,7 @@
     "epithet": "EP-Lever",
     "generation": 1,
     "tier": "O_∞",
-    "tuple": "⟨𐑦 · 𐑥 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑟⟩",
+    "tuple": "⟨𐑦𐑥𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑫𐑳𐑟⟩",
     "iupac_name": "[2]catenane of ((Rₐ)-tert-butyl-1H-indole-3-ethanamine)",
     "scaffold_class": "tryptamine"
   }

@@ -201,7 +201,7 @@ class MaterialDesign:
     def to_dict(self) -> Dict:
         return {
             'name': self.name,
-            'ig_tuple': '⟨' + ' · '.join(self.ig_tuple) + '⟩',
+            'ig_tuple': '⟨' + ''.join(self.ig_tuple) + '⟩',
             'dimensionality': self.dimensionality,
             'topology': self.topology,
             'interface': self.interface,
@@ -506,7 +506,7 @@ class MaterialForge:
         if not d:
             return f"No design found for '{name}'"
 
-        ig_str = '⟨' + ' · '.join(d.ig_tuple) + '⟩'
+        ig_str = '⟨' + ''.join(d.ig_tuple) + '⟩'
         lines = [
             "=" * 72,
             f"  MATERIAL DESIGN: {d.name}",
@@ -630,7 +630,7 @@ Examples:
         novel = predefined_novel_materials()
         print("Predefined materials:")
         for name, tup in novel.items():
-            print(f"  {name:40s} ⟨{' · '.join(tup)}⟩")
+            print(f"  {name:40s} ⟨{''.join(tup)}⟩")
         print(f"\n  {len(novel)} predefined materials")
         print("\nAlso try: --imas I_Dialetheic_Bootstrap (12 IMASM canonicals)")
         print("          --catalog <name> (3300+ catalog entries)")

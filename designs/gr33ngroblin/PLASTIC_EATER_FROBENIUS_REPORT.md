@@ -47,7 +47,7 @@ Three structurally distinct, Frobenius-exact enzymes that together degrade all s
 | Gm-Ph | Ph | Ph | 0.750 | 0.333 |
 
 **Site structural type:**
-`⟨𐑨 · 𐑰 · 𐑾 · 𐑹 · 𐑐 · 𐑪 · 𐑔 · 𐑜 · 𐑻 · 𐑖 · 𐑕 · 𐑷⟩`
+`⟨𐑨𐑰𐑾𐑹𐑐𐑪𐑔𐑜𐑻𐑖𐑕𐑷⟩`
 
 #### PS_polystyrene
 
@@ -68,7 +68,7 @@ Three structurally distinct, Frobenius-exact enzymes that together degrade all s
 | Gm-Ph | Ph | Ph | 0.750 | 0.333 |
 
 **Site structural type:**
-`⟨𐑼 · 𐑶 · 𐑾 · 𐑹 · 𐑐 · 𐑪 · 𐑔 · 𐑜 · 𐑻 · 𐑫 · 𐑳 · 𐑴⟩`
+`⟨𐑼𐑶𐑾𐑹𐑐𐑪𐑔𐑜𐑻𐑫𐑳𐑴⟩`
 
 ### Full Amino Acid Sequence
 
@@ -89,7 +89,7 @@ GGAAGCAUGGCCUGUUACGUUAUACCAUCCCAAGACACAGUG
 
 ### Composite Structural Type (Tensor)
 
-`⟨𐑼 · 𐑶 · 𐑾 · 𐑹 · 𐑐 · 𐑪 · 𐑔 · 𐑜 · 𐑻 · 𐑫 · 𐑳 · 𐑴⟩`
+`⟨𐑼𐑶𐑾𐑹𐑐𐑪𐑔𐑜𐑻𐑫𐑳𐑴⟩`
 
 ## B_Alkanase: PE + PP — alkane hydroxylase / Baeyer-Villiger pathway
 
@@ -126,7 +126,7 @@ GGAAGCAUGGCCUGUUACGUUAUACCAUCCCAAGACACAGUG
 | Gm-Ph | Gm | Gm | 0.000 | 0.000 |
 
 **Site structural type:**
-`⟨𐑨 · 𐑰 · 𐑾 · 𐑹 · 𐑞 · 𐑘 · 𐑔 · 𐑝 · 𐑢 · 𐑓 · 𐑕 · 𐑷⟩`
+`⟨𐑨𐑰𐑾𐑹𐑞𐑘𐑔𐑝𐑢𐑓𐑕𐑷⟩`
 
 #### PP_polypropylene
 
@@ -147,7 +147,7 @@ GGAAGCAUGGCCUGUUACGUUAUACCAUCCCAAGACACAGUG
 | Gm-Ph | Gm | Gm | 0.000 | 0.000 |
 
 **Site structural type:**
-`⟨𐑨 · 𐑰 · 𐑾 · 𐑹 · 𐑞 · 𐑘 · 𐑔 · 𐑝 · 𐑢 · 𐑓 · 𐑕 · 𐑷⟩`
+`⟨𐑨𐑰𐑾𐑹𐑞𐑘𐑔𐑝𐑢𐑓𐑕𐑷⟩`
 
 ### Full Amino Acid Sequence
 
@@ -168,7 +168,7 @@ GGAAGCAUGUGGUGUUACGUUCUGCAUAACGCUGGCACAGUG
 
 ### Composite Structural Type (Tensor)
 
-`⟨𐑨 · 𐑰 · 𐑾 · 𐑹 · 𐑞 · 𐑘 · 𐑔 · 𐑝 · 𐑢 · 𐑓 · 𐑕 · 𐑷⟩`
+`⟨𐑨𐑰𐑾𐑹𐑞𐑘𐑔𐑝𐑢𐑓𐑕𐑷⟩`
 
 ## C_Urethanase: PUR + PC — urethane/carbonate hydrolase fusion
 
@@ -205,7 +205,7 @@ GGAAGCAUGUGGUGUUACGUUCUGCAUAACGCUGGCACAGUG
 | Gm-Ph | Ph | Ph | 0.750 | 0.333 |
 
 **Site structural type:**
-`⟨𐑨 · 𐑶 · 𐑾 · 𐑹 · 𐑞 · 𐑪 · 𐑔 · 𐑜 · 𐑻 · 𐑖 · 𐑳 · 𐑴⟩`
+`⟨𐑨𐑶𐑾𐑹𐑞𐑪𐑔𐑜𐑻𐑖𐑳𐑴⟩`
 
 #### PC_polycarbonate
 
@@ -226,7 +226,7 @@ GGAAGCAUGUGGUGUUACGUUCUGCAUAACGCUGGCACAGUG
 | Gm-Ph | Ph | Ph | 0.750 | 0.333 |
 
 **Site structural type:**
-`⟨𐑨 · 𐑶 · 𐑾 · 𐑹 · 𐑐 · 𐑪 · 𐑔 · 𐑜 · 𐑻 · 𐑖 · 𐑳 · 𐑴⟩`
+`⟨𐑨𐑶𐑾𐑹𐑐𐑪𐑔𐑜𐑻𐑖𐑳𐑴⟩`
 
 ### Full Amino Acid Sequence
 
@@ -247,7 +247,7 @@ GGAAGCAUGUGGUGUUACGUUAUACCAUCCCAAGGCACAGUG
 
 ### Composite Structural Type (Tensor)
 
-`⟨𐑨 · 𐑶 · 𐑾 · 𐑹 · 𐑞 · 𐑪 · 𐑔 · 𐑜 · 𐑻 · 𐑖 · 𐑳 · 𐑴⟩`
+`⟨𐑨𐑶𐑾𐑹𐑞𐑪𐑔𐑜𐑻𐑖𐑳𐑴⟩`
 
 ---
 

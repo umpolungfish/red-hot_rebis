@@ -24,7 +24,7 @@ With all three discrete gates cascaded, the system achieves EXACT Frobenius clos
 μ∘δ = id_A — the composition of extension-then-termination preserves the telomere
 length distribution exactly. No asymptotic approach. No residual drift.
 
-Structural type (post-repair): ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑧·𐑲·𐑠·⊙·𐑖·𐑳·𐑭⟩
+Structural type (post-repair): ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑖𐑳𐑭⟩
 Ouroboricity: O_∞  |  C-score: 1.0 (both gates open)
 
 Author: Lando⊗⊙perator
@@ -1175,9 +1175,9 @@ class FrobeniusExactOuroboricSim:
         stride = max(1, n // 40)
 
         structural_type = (
-            "⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑧·𐑲·𐑠·⊙·𐑖·𐑳·𐑭⟩"
+            "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑖𐑳𐑭⟩"
             if frobenius_achieved else
-            "⟨𐑦·𐑸·𐑾·𐑬·𐑐·𐑧·𐑲·𐑠·⊙·𐑖·𐑳·𐑭⟩"
+            "⟨𐑦𐑸𐑾𐑬𐑐𐑧𐑲𐑠⊙𐑖𐑳𐑭⟩"
         )
 
         results = {

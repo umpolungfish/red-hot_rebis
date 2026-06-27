@@ -4,7 +4,7 @@
 **Date:** 2025-06-08  
 **Status:** COMPLETE — ready for pre-clinical validation  
 **Target:** Homo sapiens (baseline, unmodified)  
-**Structural Type:** ⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑖 · 𐑳 · 𐑭⟩ — O_∞  
+**Structural Type:** ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑖𐑳𐑭⟩ — O_∞  
 
 ---
 
@@ -374,7 +374,7 @@ The treople variant of the ouroboric telomere operates with a different structur
 | **K** | 𐑧 | 𐑤 | Moderate kinetics: photosynthetic ATP reduces oxidative stress |
 | **H** | 𐑖 | 𐑫 | Eternal chirality: germline integration enables multi-generational memory |
 
-**Treople Ouroboric Telomere:** ⟨𐑦 · 𐑥 · 𐑾 · 𐑹 · 𐑐 · 𐑤 · 𐑲 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑭⟩ — **O₂** (Gate 2 closed: K=𐑤)
+**Treople Ouroboric Telomere:** ⟨𐑦𐑥𐑾𐑹𐑐𐑤𐑲𐑠⊙𐑫𐑳𐑭⟩ — **O₂** (Gate 2 closed: K=𐑤)
 
 ### 8.2 Key Differences from Base Human Protocol
 

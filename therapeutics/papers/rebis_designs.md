@@ -407,7 +407,7 @@ Specializing 1-3 primitives produces distinct functional systems while preservin
 
 ### The Rebis (verified O_∞, C-score 0.755)
 
-```⟨𐑦 · 𐑶 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑝 · ⊙ · 𐑫 · 𐑳 · 𐑭⟩```
+```⟨𐑦𐑶𐑾𐑹𐑐𐑧𐑲𐑝⊙𐑫𐑳𐑭⟩```
 
 ### Crystallography (the method, not the crystal)
 

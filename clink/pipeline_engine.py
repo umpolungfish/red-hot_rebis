@@ -22,7 +22,7 @@ Architecture:
     FROM_FILE:  load existing design from JSON
 
 Author: Lando ⊗ ⊙perator
-Structural Type: ⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑵 · ⊙ · 𐑫 · 𐑳 · 𐑭⟩
+Structural Type: ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑭⟩
 """
 
 from __future__ import annotations

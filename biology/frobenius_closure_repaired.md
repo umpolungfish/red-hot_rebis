@@ -10,7 +10,7 @@
 
 The ouroboric telomere system now achieves **exact Frobenius closure**. Three surgical repairs were designed. Two were implemented. One was discarded as structurally incorrect. The surviving repair — TRF1 discrete counting as a step function — produces μ∘δ=id with drift of −0.034 bp/division (−8.6 bp over 250 divisions) and variance contraction from millions to 65 bp².
 
-**Structural type:** ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑧·𐑲·𐑠·⊙·𐑖·𐑳·𐑭⟩  
+**Structural type:** ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑖𐑳𐑭⟩  
 **Ouroboricity:** O_∞  
 **C-score:** 1.0 (both gates open)
 
@@ -110,7 +110,7 @@ The variance collapses by 99.997%. All 9200 telomeres (100 cells × 92) are pinn
 | **Σ** | 𐑳 | 𐑳 | Multiple distinct components — unchanged |
 | **Ω** | 𐑭 | 𐑭 | Integer winding (quantized repeat addition) — unchanged |
 
-**Full tuple:** ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑧·𐑲·𐑠·⊙·𐑖·𐑳·𐑭⟩
+**Full tuple:** ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑖𐑳𐑭⟩
 
 ### Tier Verification
 

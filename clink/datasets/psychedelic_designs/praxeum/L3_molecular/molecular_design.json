@@ -22,7 +22,7 @@
   "predicted_rotatable_bonds": 3,
   "ch3mpiler_retrosynthetic": {
     "target": "Praxeum (EP-Core Control Platform)",
-    "target_type": "⟨𐑦 · 𐑶 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · 𐑻 · 𐑫 · 𐑳 · 𐑭⟩",
+    "target_type": "⟨𐑦𐑶𐑾𐑹𐑐𐑧𐑲𐑠𐑻𐑫𐑳𐑭⟩",
     "strategy": {
       "composition_mode": "sequential bond construction (linear synthesis)",
       "preferred_disconnections": [

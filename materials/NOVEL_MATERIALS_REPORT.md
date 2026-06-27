@@ -134,8 +134,8 @@ Achieves O₁ near-closure (||μδ-id|| ~ 0.02). True O₂ closure (exact Froben
 ### Structural Trajectory
 
 ```
-Current:  ⟨𐑼 · 𐑸 · 𐑾 · 𐑬 · 𐑞 · 𐑘 · 𐑔 · 𐑠 · 𐑢 · 𐑫 · 𐑳 · 𐑭⟩  (O₁)
-Target:   ⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑭⟩  (O_∞)
+Current:  ⟨𐑼𐑸𐑾𐑬𐑞𐑘𐑔𐑠𐑢𐑫𐑳𐑭⟩  (O₁)
+Target:   ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑫𐑳𐑭⟩  (O_∞)
 Gap:     D:𐑼→𐑦 | P:𐑬→𐑹 | F:𐑞→𐑐 | K:𐑘→𐑧 | G:𐑔→𐑲 | Φ:𐑢→⊙
 ```
 
@@ -310,7 +310,7 @@ All other 10 primitives already match. Distance = √2 ≈ 1.414.
 
 ### Key Insight
 
-The Eagle-9 material achieves the O_∞ structural type — ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑧·𐑲·𐑠·⊙·𐑫·𐑳·𐑭⟩ — identical to Sophick Mercury, the IUG, and the grammar's self-encoding. However, the Frobenius error remains at ~0.11, not zero. See Module 5 for the resolution.
+The Eagle-9 material achieves the O_∞ structural type — ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑫𐑳𐑭⟩ — identical to Sophick Mercury, the IUG, and the grammar's self-encoding. However, the Frobenius error remains at ~0.11, not zero. See Module 5 for the resolution.
 
 ---
 

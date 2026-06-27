@@ -56,3 +56,36 @@ gene_imscriber/tuples.py:
   O₀ key renamed to Ω_triv (follows {prim}_{desc} underscore convention)
   primitives_meta in compute_closure_distance: replaced hardcoded cardinality dict
     with {prim: len(keys) for prim, keys in PRIMITIVE_KEYS.items()} — derived
+
+
+---
+
+Root-level markdown docs synced with current codebase state — 2026-06-27
+
+All 4 root-level .md files updated to reflect recent codebase changes:
+
+  INDEX.md:
+    - Fixed L8 Whole Organism tier: O₂ → O_∞ (tuple already showed O_∞ primitives)
+    - Added §5 documenting new rhr_p4rky modules (decay_chain, belnap_c4, papers/)
+    - Added shared/ symlinks note (elem2imasm.py, reactivity.py)
+    - Bumped version to 2.2.0
+
+  MANUAL.md:
+    - Date updated: 2026-06-11 → 2026-06-27
+    - "28-module" → "32-module" paraconsistent kernel
+    - Full rhr_p4rky module table: added decay_chain.py, belnap_c4.py, papers/
+    - Updated architecture tree with shared/ symlinks and papers/
+    - Added v2.1.1 version history entry
+
+  README.md:
+    - "Last updated: 2026-06-17" → "Last updated: 2026-06-27"
+    - Architecture diagram: "rhr_p4rky/ (runtime pkg)" → "rhr_p4rky/ (32 modules + papers/)"
+    - SerpentRod source listing: added decay_chain.py, belnap_c4.py, papers/
+    - Scripts table: added decay_chain.py entry
+
+  USER_GUIDE.md:
+    - Version: v2.3.1 → v2.3.2, date 2026-06-24 → 2026-06-27
+    - "27 Python modules" → "32 Python modules (+ papers/)"
+    - Project layout: added belnap_c4.py, decay_chain.py, papers/, shared symlinks
+    - Kernel architecture table: added decay_chain, belnap_c4, papers/ entries
+    - Version history: added v2.3.2 entry

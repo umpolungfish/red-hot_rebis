@@ -1,0 +1,110 @@
+[
+  {
+    "dir": "ttx",
+    "name": "Tetrodotoxin",
+    "files": [
+      "_1R_5R_6R_7R_9S_11S_12S_13S_14S_-3-amino-14-_hydroxymet.cdxml"
+    ],
+    "total_size_bytes": 10622,
+    "molecule_type": "CDXML molecular structure"
+  },
+  {
+    "dir": "tetrodo",
+    "name": "Tetrodotoxin (duplicate)",
+    "files": [
+      "_1R_5R_6R_7R_9S_11S_12S_13S_14S_-3-amino-14-_hydroxymet.cdxml"
+    ],
+    "total_size_bytes": 10622,
+    "molecule_type": "CDXML molecular structure"
+  },
+  {
+    "dir": "strychnine",
+    "name": "Strychnine",
+    "files": [
+      "unnamed__1R_5R_6R_7R_9S_11S_12S_13S_14S_-3-amino-14-_hydroxymethyl.cdxml",
+      "_1S_2S_3R_4S_7R_9S_10S_12R_15S_-4_12-diacetyloxy-15-_2R.cdxml",
+      "_4aR_5aS_8aR_13aS_15aS_15bR_-4a_5_5a_7_8_13a_15_15a_15b.cdxml",
+      "acetaminophen.cdxml",
+      "unnamed_anthracene.cdxml",
+      "unnamed__1S_2S_3R_4S_7R_9S_10S_12R_15S_-4_12-diacetyloxy-15-_2R_3S.cdxml",
+      "unnamed_acetaminophen.cdxml",
+      "_2S_5R_6R_-3_3-dimethyl-7-oxo-6-_2-phenylacetyl_amino.cdxml",
+      "unnamed__2S_5R_6R_-3_3-dimethyl-7-oxo-6-_2-phenylacetyl_amino_-4-thi.cdxml",
+      "unnamed_2-methylpropanenitrile.cdxml",
+      "_4aR_5aS_8aR_13aS_15aS_15bR_-4a_5_5a_7_8_13a_15_15a_15b_16-decahydro-2H-4_6-methanoindolo_3_2_1-ij_oxepino_2_3_4-de_pyrrolo_2_3-h_quinolin-14-one.cdxml"
+    ],
+    "total_size_bytes": 117605,
+    "molecule_type": "CDXML molecular structure"
+  },
+  {
+    "dir": "strych",
+    "name": "Strychnine (alternate)",
+    "files": [
+      "_4aR_5aS_8aR_13aS_15aS_15bR_-4a_5_5a_7_8_13a_15_15a_15b.cdxml"
+    ],
+    "total_size_bytes": 5906,
+    "molecule_type": "CDXML molecular structure"
+  },
+  {
+    "dir": "pen",
+    "name": "Penicillin",
+    "files": [
+      "_2S_5R_6R_-3_3-dimethyl-7-oxo-6-_2-phenylacetyl_amino.cdxml"
+    ],
+    "total_size_bytes": 11554,
+    "molecule_type": "CDXML molecular structure"
+  },
+  {
+    "dir": "palc",
+    "name": "Palytoxin/Ciguatoxin",
+    "files": [
+      "_1S_2S_3R_4S_7R_9S_10S_12R_15S_-4_12-diacetyloxy-15-_2R.cdxml"
+    ],
+    "total_size_bytes": 26900,
+    "molecule_type": "CDXML molecular structure"
+  },
+  {
+    "dir": "ipc",
+    "name": "Isopropyl Cyanide",
+    "files": [
+      "2-methylpropanenitrile.cdxml"
+    ],
+    "total_size_bytes": 2944,
+    "molecule_type": "CDXML molecular structure"
+  },
+  {
+    "dir": "chlorophyll",
+    "name": "Chlorophyll",
+    "files": [],
+    "total_size_bytes": 0,
+    "molecule_type": "unknown"
+  },
+  {
+    "dir": "anthracene",
+    "name": "Anthracene",
+    "files": [
+      "anthracene.cdxml"
+    ],
+    "total_size_bytes": 3187,
+    "molecule_type": "CDXML molecular structure"
+  },
+  {
+    "dir": "aceta",
+    "name": "Acetaminophen",
+    "files": [
+      "acetaminophen.cdxml"
+    ],
+    "total_size_bytes": 6066,
+    "molecule_type": "CDXML molecular structure"
+  },
+  {
+    "dir": "caff",
+    "name": "Caffeine",
+    "files": [
+      "1_3_7-trimethylpurine-2_6-dione.cdxml",
+      "_4aR_5aS_8aR_13aS_15aS_15bR_-4a_5_5a_7_8_13a_15_15a_15b_16-decahydro-2H-4_6-methanoindolo_3_2_1-ij_oxepino_2_3_4-de_pyrrolo_2_3-h_quinolin-14-one.cdxml"
+    ],
+    "total_size_bytes": 12951,
+    "molecule_type": "CDXML molecular structure"
+  }
+]

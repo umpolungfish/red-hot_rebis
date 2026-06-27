@@ -427,7 +427,7 @@ class ExactorMaterial:
             f"Pathway: {self.pathway.name}",
             f"Composition: {self.composition}",
             f"Operating T: {self.operating_temperature_k} K",
-            f"Target IG: <{' · '.join(self.target_ig_tuple)}>",
+            f"Target IG: <{''.join(self.target_ig_tuple)}>",
             f"",
             f"Closure type: {ct.value}",
             f"Exact? {state.is_exact}",

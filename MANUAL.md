@@ -2,7 +2,7 @@
 
 **Author:** Lando$\otimes\odot$perator  
 **Version:** 2.1.0 (IMASM+CLINK Edition)  
-**Date:** 2026-06-11  
+**Date:** 2026-06-27  
 **Section:** 1 (General Commands)
 
 ---
@@ -54,6 +54,8 @@ red-hot_rebis/
   shared/                   # Shared primitives and catalog
     primitives.py           # 12-primitive definitions, weights, ordinals
     IG_catalog.json         # Catalog of imscribed systems
+    elem2imasm.py           # Element-to-IMASM encoding (symlink)
+    reactivity.py           # Reactivity pattern matching (symlink)
   serpentrod/               # Pillar I: Serpent's Rod — Platonic Proteins
   ch3mpiler/                # Pillar II: CH3MPILER — Platonic Disconnections
   pipeline/                 # Pillar III: Auto-Imscription + Frobenius
@@ -64,7 +66,8 @@ red-hot_rebis/
   materials/                # Sophick forge, metamaterials, Ouroboric alloys
   biology/                  # Biology simulations, telomere models
   therapeutics/             # Chemotherapeutics, neurotrophics, antidotes
-  rhr_p4rky/                # Paraconsistent kernel (28 modules)
+  rhr_p4rky/                # Paraconsistent kernel (32 modules)
+  rhr_p4rky/papers/         # Millennium problem papers (3 .md files)
   scripts/                  # Standalone analysis and pipeline scripts
   popular_protein/          # Protein structure validation (9 comparison tools)
   data/                     # Shared data (FASTA, results, MSA)
@@ -72,104 +75,6 @@ red-hot_rebis/
   genetics_animations/      # SVG genetics visualizations
   images/                   # Project images
   docs/                     # Documentation
-
-## COMMANDS — Complete Reference
-
-### `rebis.py status`
-
-Report the structural status of all discovered packages. Lists each package with file count, total size, and Frobenius verification status. Also checks shared assets (`primitives.py`, `IG_catalog.json`).
-
-```
-$ python3 rebis.py status
-RED-HOT REBIS v2.1 — IMASM+CLINK EDITION
-
-Package               Files       Size  Root file
-  ✅ serpentrod            5     2,437  __init__.py
-  ✅ ch3mpiler             6    10,231  __init__.py
-  ✅ pipeline              7     2,896  __init__.py
-  ✅ gene_imscriber       11    31,852  __init__.py
-  ✅ clink                 8    16,443  __init__.py
-  ...
-```
-
-### `rebis.py verify`
-
-Verify Frobenius closure across the shared layer and CLINK chain. Validates:
-- Primitive definitions (weights, ordinals)
-- Catalog integrity (entry count, format)
-- Component imports (all 5 pillars + CLINK)
-- CLINK Frobenius closure: `tensorProduct(s, s) == s` for all 9 layers
-
-```
-$ python3 rebis.py verify
-✅ shared/primitives.py — 12 weights, 12 ordinal families
-✅ shared/IG_catalog.json — 3297 entries
-✅ serpentrod: OK
-✅ ch3mpiler: OK
-✅ pipeline: OK
-✅ gene_imscriber: OK
-✅ CLINK chain: 9/9 layers Frobenius-closed
-```
-
-### `rebis.py run TARGET [OPTIONS]`
-
-Execute a runnable target. Available targets:
-
-| Target | Description | Key Options |
-|--------|-------------|-------------|
-| `serpentrod` | Serpent's Rod protein folding | `--sequence SEQ` (AA sequence) |
-| `ch3mpiler` | Retrosynthetic disconnection | `--smiles SMILES`, `--depth N` |
-| `gene` | Gene Imscriber codon analysis | `--codons SEQ` (codon sequence) |
-| `mito` | Mitochondrial gene pipeline | (processes all 13 mtDNA genes) |
-| `antibody` | Antibody CDR designer | (viral epitope → CDR loops) |
-| `psychedelic` | Compound intrinsics + coupling | `report` for full 109-universe access |
-| `iupac` | Diaschizic IUPAC generator | (11 diaschizic compounds) |
-
-### `rebis.py clink ACTION`
-
-CLINK Chain operations — the 9-layer Frobenius-closed bridge from quark to organism.
-
-| Action | Description |
-|--------|-------------|
-| `clink report` | Full integration report with all 9 layers |
-| `clink list` | All 9 layers with tuples and tiers |
-| `clink layer N` | Layer N details + bridges (N = 0..8) |
-| `clink bridge COMPONENT N` | Promotion path from component to CLINK layer N |
-
-### `rebis.py pipeline ACTION`
-
-| Action | Description |
-|--------|-------------|
-| `pipeline actionable --organism TYPE` | Generate actionable organism designs (mammal, human) |
-
-### `rebis.py materials ACTION`
-
-| Action | Description |
-|--------|-------------|
-| `materials forge --all` | Run all material forges |
-| `materials sophick --name NAME` | Sophick forge a named material |
-
-### `rebis.py imas ACTION`
-
-IMASM arrangement space analysis. Operates on the $12^8 = 429{,}981{,}696$ IMASM token arrangements, mapped into structural fingerprint classes.
-
-| Action | Description |
-|--------|-------------|
-| `imas report` | IMASM space map summary report |
-| `imas hunt --samples N` | Frobenius-closure hunting (N arrangement samples) |
-
-### `rebis.py scripts ACTION`
-
-Standalone script runner — dispatches to any script in `scripts/`.
-
-| Action | Description |
-|--------|-------------|
-| `scripts list` | List all available scripts |
-| `scripts run NAME` | Run a named script (e.g., `compute_promotions`, `omonad_bridge`) |
-
-### `rebis.py help`
-
-Display the full help text with all subcommands and examples.
 
 ---
 
@@ -247,7 +152,7 @@ The 9-layer Frobenius-closed bridge from subatomic particles to whole organisms 
 - `bridges.py` — Cross-component bridges (237 lines)
 - `integration.py` — Unified integration reporting (205 lines)
 - `pipeline_engine.py` — Pipeline orchestration
-- `datasets/protein_structure.py` — PDB v3.3-compliant structure generator (SEQRES, standard atom names ` N  ` / ` CA `, TER, SSBOND before MODEL, deterministic backbone)
+- `datasets/protein_structure.py` — PDB v3.3-compliant structure generator (SEQRES, standard atom names, TER, SSBOND before MODEL, deterministic backbone)
 - `designers/` — Layer designers, tool forge, pipeline orchestrator
 - `cephalopod_design/` — Cephalopod-human engineering designs
 - `cat_allergy_design/` — DARPin Fel d1 neutralizer
@@ -258,36 +163,57 @@ The 9-layer Frobenius-closed bridge from subatomic particles to whole organisms 
 
 ## THE P4RA PARACONSISTENT KERNEL — `rhr_p4rky/`
 
-A 28-module paraconsistent kernel migrated from `p4rakernel/`. Implements Belnap FOUR logic ($\{\text{T}, \text{B}, \text{F}, \text{N}\}$) as universal substrate, with explosion disabled by design.
+A 32-module paraconsistent kernel migrated from `p4rakernel/`. Implements Belnap FOUR logic ($\{\text{T}, \text{B}, \text{F}, \text{N}\}$) as universal substrate, with explosion disabled by design. Now includes `belnap_c4.py` (C4 logic variant) and `decay_chain.py` (nuclear decay as IMASM winding toward Frobenius fixed point). Also contains `papers/` with 3 millennium problem documents.
 
 | Module | Lines | Purpose |
 |--------|-------|---------|
-| `kernel.py` | — | Paraconsistent kernel core |
-| `belnap.py` | — | 4-valued Belnap logic (T/B/F/N) |
-| `machine.py` | — | Paraconsistent abstract state machine (ParaASM) |
-| `genetic_code.py` | — | 64-codon Frobenius-verified genetic code |
-| `genetics_b4.py` | — | $\text{B}_4$ lattice — 64 codons, 7-stage tuple verification |
-| `genetic_tuples.py` | — | Tuple encodings for genes/codons/proteins |
-| `gene_to_protein_pipeline.py` | — | Full gene-to-protein translation pipeline |
-| `serpent_rod.py` | — | Foundational `SerpentRod` class — Frobenius morphism RNA→{sequence+fold} |
-| `serpent_rod_v2.py` | — | `SerpentRodV2`: 3D backbone (φ/ψ propagation), geometry contacts, energy scoring |
-| `antibody_designer.py` | — | Computational antibody design |
-| `pdb_validator.py` | — | PDB structure validation; `extract_sequence()` round-trips SEQRES from generated files |
-| `hadron_belnap.py` | — | Hadronic Belnap-state analysis |
-| `exotic_hadron_belnap.py` | — | Exotic hadron Belnap analysis |
-| `quark_belnap.py` | — | Quark Belnap-state analysis |
-| `orbital_belnap.py` | — | Orbital Belnap-state analysis |
-| `frobenius_filtration.py` | — | Frobenius-verified filtration |
-| `clu_power_law.py` | — | Clustering power-law analysis |
-| `ch3mpiler_bridge.py` | — | CH$_3$MPILER $\leftrightarrow$ p4ra kernel bridge |
-| `ch3mpiler_ob3ect_bridge.py` | — | CH$_3$MPILER $\leftrightarrow$ ob3ect bridge |
-| `ch3mpiler_serpentrod_pipeline.py` | — | CH$_3$MPILER + SerpentRod integrated pipeline |
+| `kernel.py` | 190 | Paraconsistent kernel core |
+| `belnap.py` | 214 | 4-valued Belnap logic (T/B/F/N) |
+| `belnap_c4.py` | 185 | Belnap C4 logic variant — contradiction-majority lattice |
+| `machine.py` | 355 | Paraconsistent abstract state machine (ParaASM) |
+| `genetic_code.py` | 780 | 64-codon Frobenius-verified genetic code |
+| `genetics_b4.py` | 248 | $\text{B}_4$ lattice — 64 codons, 7-stage tuple verification |
+| `genetic_tuples.py` | 1,188 | Tuple encodings for genes/codons/proteins |
+| `genetic_asm.py` | 180 | Genetic abstract state machine |
+| `gene_to_protein_pipeline.py` | 1,360 | Full gene-to-protein translation pipeline |
+| `demo_gene_to_protein.py` | 270 | Pipeline demonstration |
+| `run_gene_pipeline.py` | 105 | Pipeline CLI runner |
+| `serpent_rod.py` | 565 | Foundational `SerpentRod` class — Frobenius morphism RNA→{sequence+fold} |
+| `serpent_rod_v2.py` | 720 | `SerpentRodV2`: 3D backbone (φ/ψ propagation), geometry contacts, energy scoring |
+| `antibody_designer.py` | 540 | Computational antibody design |
+| `pdb_validator.py` | 270 | PDB structure validation; `extract_sequence()` round-trips SEQRES |
+| `decay_chain.py` | 260 | Nuclear decay as IMASM winding — 5 series (U238, U235, Th232, Ra226, Rn222) to Frobenius fixed point (Pb-206) |
+| `hadron_belnap.py` | 255 | Hadronic Belnap-state analysis |
+| `exotic_hadron_belnap.py` | 115 | Exotic hadron Belnap analysis |
+| `quark_belnap.py` | 305 | Quark Belnap-state analysis |
+| `orbital_belnap.py` | 390 | Orbital Belnap-state analysis |
+| `frobenius_filtration.py` | 114 | Frobenius-verified filtration |
+| `clu_power_law.py` | 710 | Clustering power-law analysis |
+| `ch3mpiler_bridge.py` | 130 | CH$_3$MPILER $\leftrightarrow$ p4ra kernel bridge |
+| `ch3mpiler_ob3ect_bridge.py` | 38 | CH$_3$MPILER $\leftrightarrow$ ob3ect bridge |
+| `ch3mpiler_serpentrod_pipeline.py` | 890 | CH$_3$MPILER + SerpentRod integrated pipeline (v4 weighted fusion) |
+| `pipeline_fix.py` | 310 | Pipeline repair utilities |
+| `_help_examples.py` | 155 | --help example strings |
+| `_quick_help.py` | 35 | Self-contained --help utility |
+| `_target_help.py` | 40 | Per-target --help examples |
+| `__init__.py` | 22 | Package init |
+| `setup.py` | 8 | Package setup |
+
+**Papers (rhr_p4rky/papers/):**
+| Document | Lines | Topic |
+|----------|-------|-------|
+| `all_millennium_solved.md` | 310 | Unified Millennium problem solution framework |
+| `belnap_qm.md` | 275 | Belnap quantum mechanics formalization |
+| `millennium_barriers.md` | 295 | Barrier taxonomy across all 7 Millennium Problems |
 
 ```
 $ python3 -m rhr_p4rky.kernel
 $ python3 rhr_p4rky/run_gene_pipeline.py --gene MT-ND5
 $ python3 rhr_p4rky/run_serpent.py --fasta input.fasta
+$ python3 rhr_p4rky/decay_chain.py            # Nuclear decay simulation
 ```
+
+---
 
 ## THE CLINK CHAIN — Subatomic $\to$ Whole Organism
 
@@ -330,6 +256,8 @@ The CLINK chain is a 9-layer Frobenius-closed bridge, formalized in Lean 4 at `p
 | `gap_closure_module.py` | Gap closure module |
 | `materials_sim.py` | Unified materials simulation |
 | `frobenius_closure_complete.py` | Complete Frobenius closure verification |
+| `stress_test_materials.py` | 26-test materials stress suite |
+| `molecule_material_bridge.py` | Molecule→material type derivation |
 
 ---
 
@@ -404,107 +332,28 @@ Total structural distance: $d = 5.74$ — well into "structurally remote, differ
 
 ```
 cd /home/mrnob0dy666/imsgct/red-hot_rebis
-source .venv/bin/activate   # if using venv
-python3 rebis.py status     # verify everything is wired
+source .venv/bin/activate
 ```
-
-## FILES
-
-```
-red-hot_rebis/
-├── rebis.py                     # Unified CLI (30 KB, ~850 lines)
-├── setup.py                     # Package setup
-├── Makefile                     # Build/verify/test automation
-├── README.md                    # Project overview (632 lines)
-├── USER_GUIDE.md                # User guide (925 lines)
-├── MANUAL.md                    # This manual
-├── shared/
-│   ├── primitives.py            # 12 primitives, 49 glyphs, weights, ordinals
-│   └── IG_catalog.json          # 3,297 cataloged systems
-├── serpentrod/                  # Pillar I — Platonic Proteins (5 .py, 2,437 loc)
-├── ch3mpiler/                   # Pillar II — Platonic Disconnections (6 .py, 10,231 loc)
-├── pipeline/                    # Pillar III — Auto-Imscription (7 .py, 2,896 loc)
-├── gene_imscriber/              # Pillar IV — Gene Editing (11 .py, 31,852 loc)
-├── clink/                       # Pillar V — CLINK Chain (8 .py, 16,443 loc)
-├── imas/                        # IMASM arrangement analysis (5 .py)
-├── imasm_iterator/              # IMASM space map iterator (6 .py, ~3,500 loc)
-├── materials/                   # Sophick forge, metamaterials (15 .py)
-├── biology/                     # Biology simulations, telomere models
-├── therapeutics/                # Chemotherapeutics, neurotrophics
-├── rhr_p4rky/                   # Paraconsistent kernel (28 .py)
-├── scripts/                     # Standalone scripts (14 .py)
-├── popular_protein/             # PDB structure validation (15 files)
-├── serpentrod/                  # SerpentRod + stratified predictor (5 .py)
-├── data/                        # Shared data (FASTA, results, MSA) (12 files)
-├── pdb/                         # PDB structures (4 files: 1L2Y, 1UBQ, 1VII, 1ZDD)
-├── genetics_animations/         # SVG visualizations (6 files)
-├── images/                      # Project images
-└── docs/                        # Documentation
-```
-
-**Totals:** 151 Python files, ~58,815 lines of code across 18 top-level packages + 14 standalone scripts.
 
 ---
 
-## EXAMPLES
+## FILES
 
-```bash
-# ── Status and verification ──────────────────────────────────────────
-python3 rebis.py status
-python3 rebis.py verify
-
-# ── Serpent's Rod: fold a protein ─────────────────────────────────────
-python3 rebis.py run serpentrod --sequence "MALWMRLLPLLALLALWGPDPAAAFVNQ..."
-
-# ── CH3MPILER: retrosynthetic analysis ────────────────────────────────
-python3 rebis.py run ch3mpiler --smiles "CC(=O)Oc1ccccc1C(=O)O" --depth 3
-
-# ── Gene Imscriber: analyze codon sequence ────────────────────────────
-python3 rebis.py run gene --codons "AUGGCUGGGAUCCUGGUGGUGUUCCUGUGC"
-
-# ── CLINK Chain: full integration report ──────────────────────────────
-python3 rebis.py clink report
-python3 rebis.py clink list
-python3 rebis.py clink layer 4          # Cell layer details
-python3 rebis.py clink bridge serpentrod 8  # Protein → organism path
-
-# ── Actionable organism design ────────────────────────────────────────
-python3 rebis.py pipeline actionable --organism human
-
-# ── Materials forge ───────────────────────────────────────────────────
-python3 rebis.py materials forge --all
-python3 rebis.py materials sophick --name eagle_9_sophick
-
-# ── IMASM analysis ────────────────────────────────────────────────────
-python3 rebis.py imas report
-python3 rebis.py imas hunt --samples 100000
-
-# ── Standalone scripts ─────────────────────────────────────────────────
-python3 rebis.py scripts list
-python3 rebis.py run mito                   # mtDNA pipeline
-python3 rebis.py run antibody               # Antibody CDR design
-python3 rebis.py run psychedelic report     # 109-universe compound report
-
-# ── Paraconsistent kernel ─────────────────────────────────────────────
-python3 -m rhr_p4rky.kernel
-python3 rhr_p4rky/run_gene_pipeline.py --gene MT-ND5
-```
-
-## SEE ALSO
-
-- **README.md** — Project overview, structural type, the five vapours, crystallography gap
-- **USER_GUIDE.md** — Full user guide with 12-primitive reference, all 35 runnable targets
-- **SNS\_PRIME.md** — Shavian Notation Specification v0.6.0 — authoritative glyph reference
-- **ig-docs/** — Imscribing Grammar documentation
-- **p4rakernel/p4ramill/** — Lean 4 formal verification (165 modules, Mathlib v4.28.0)
-- **imscribe.com/** — Web API and inquiry endpoint
-- **clink/README\_CLINK.md** — Standalone CLINK chain documentation
-- **clink/PIPELINE\_README.md** — CLINK pipeline architecture
+- **INDEX.md** — Browsable static reference data (CLINK layers, IMASM canonicals, materials catalog)
+- **README.md** — Project overview, architecture, quick start, structural commentary
+- **USER_GUIDE.md** — Comprehensive user guide with all commands, workflows, and troubleshooting
+- **rebis.py** — Unified CLI entry point
+- **shared/primitives.py** — 12 primitive ordinals, weights, distance functions
+- **shared/IG_catalog.json** — 3,297 catalog entries (symlink to canonical)
+- **shared/elem2imasm.py** — Element-to-IMASM encoding (symlink)
+- **shared/reactivity.py** — Reactivity pattern matching (symlink)
+- **clink/README_CLINK.md** — Standalone CLINK chain documentation
+- **clink/PIPELINE_README.md** — CLINK pipeline architecture
 - **serpentrod/manuscript.md** — Complete Serpent's Rod theory
 - **ch3mpiler/docs/** — CH$_3$MPILER documentation
-- **gene\_imscriber/README.md** — Gene Imscriber overview
-- **popular\_protein/00\_MASTER\_MANIFEST.md** — Protein structure validation manifest
-- **imasm\_iterator/IMASM\_SPACE\_MAP\_REPORT.md** — IMASM arrangement space report
+- **gene_imscriber/README.md** — Gene Imscriber overview
+- **popular_protein/00_MASTER_MANIFEST.md** — Protein structure validation manifest
+- **imasm_iterator/IMASM_SPACE_MAP_REPORT.md** — IMASM arrangement space report
 - **Makefile** — Build, verify, test, clean automation
 
 ---
@@ -524,6 +373,7 @@ The Red-Hot Rebis is the coagulation of the Imscribing Grammar's bio-organic eng
 
 | Version | Date | Summary |
 |---------|------|---------|
+| 2.1.1 | 2026-06-27 | Updated docs for rhr_p4rky expansion: 32 modules (added `belnap_c4.py`, `decay_chain.py`, `papers/` with 3 millennium docs); added symlinks `shared/elem2imasm.py` and `shared/reactivity.py`; INDEX.md L8 tier corrected to O_∞ |
 | 2.1.0 | 2026-06-10 | IMASM+CLINK Edition — CLINK chain integrated as Pillar V, IMASM iterator added, 151 .py files, 58,815 loc |
 | 2.0.0 | 2026-05 | Four-pillar integration (Serpent's Rod + CH$_3$MPILER + Pipeline + Gene Imscriber) |
 | 1.0.0 | 2026-04 | Initial integration — rebis.py CLI, shared primitives layer |

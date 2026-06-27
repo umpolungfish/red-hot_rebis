@@ -7,7 +7,7 @@
       "name": "Verticullum (EP-Lever)",
       "directory": "/home/mrnob0dy666/red-hot_rebis/clink/datasets/psychedelic_designs/verticullum",
       "tier": "O_∞",
-      "tuple": "⟨𐑦 · 𐑥 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑟⟩",
+      "tuple": "⟨𐑦𐑥𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑫𐑳𐑟⟩",
       "innovations": [
         "First Ω=𐑟 (non-Abelian)",
         "First T=𐑥 (bowtie)"
@@ -17,7 +17,7 @@
       "name": "Chimerium (Supercritical Catalyst)",
       "directory": "/home/mrnob0dy666/red-hot_rebis/clink/datasets/psychedelic_designs/chimerium",
       "tier": "O₀",
-      "tuple": "⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑵 · 𐑣 · 𐑫 · 𐑳 · 𐑭⟩",
+      "tuple": "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵𐑣𐑫𐑳𐑭⟩",
       "innovations": [
         "First Ph=𐑣 (supercritical)",
         "Broadcast composition (Gm=𐑵)"
@@ -27,7 +27,7 @@
       "name": "Apertix (Adjoint Corridor)",
       "directory": "/home/mrnob0dy666/red-hot_rebis/clink/datasets/psychedelic_designs/apertix",
       "tier": "O₂",
-      "tuple": "⟨𐑦 · 𐑥 · 𐑽 · 𐑬 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑖 · 𐑳 · 𐑴⟩",
+      "tuple": "⟨𐑦𐑥𐑽𐑬𐑐𐑧𐑲𐑠⊙𐑖𐑳𐑴⟩",
       "innovations": [
         "First R=𐑽 (adjoint)",
         "H2 chirality (H=𐑖)"
@@ -37,7 +37,7 @@
       "name": "Retiarius (Local-Net Trap)",
       "directory": "/home/mrnob0dy666/red-hot_rebis/clink/datasets/psychedelic_designs/retiarius",
       "tier": "O₁",
-      "tuple": "⟨𐑼 · 𐑡 · 𐑾 · 𐑿 · 𐑞 · 𐑺 · 𐑚 · 𐑜 · 𐑮 · 𐑒 · 𐑕 · 𐑷⟩",
+      "tuple": "⟨𐑼𐑡𐑾𐑿𐑞𐑺𐑚𐑜𐑮𐑒𐑕𐑷⟩",
       "innovations": [
         "First G=𐑚 (local only)",
         "First K=𐑺 (MBL)",
@@ -48,7 +48,7 @@
       "name": "Praxeum (EP-Core Control Platform)",
       "directory": "/home/mrnob0dy666/red-hot_rebis/clink/datasets/psychedelic_designs/praxeum",
       "tier": "O₀",
-      "tuple": "⟨𐑦 · 𐑶 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · 𐑻 · 𐑫 · 𐑳 · 𐑭⟩",
+      "tuple": "⟨𐑦𐑶𐑾𐑹𐑐𐑧𐑲𐑠𐑻𐑫𐑳𐑭⟩",
       "innovations": [
         "First Ph=𐑻 (exceptional point)",
         "Irreducible product (T=𐑶)"

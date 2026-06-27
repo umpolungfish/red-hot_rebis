@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE CDXML SYSTEM "https://static.chemistry.revvitycloud.com/cdxml/CDXML.dtd" >
+<CDXML
+ CreationProgram="ChemDraw 23.1.1.3"
+ Name="(4aR,5aS,8aR,13aS,15aS,15bR)-4a,5,5a,7,8,13a,15,15a,15b,16-decahydro-2H-4,6-methanoindolo[3,2,1-ij]oxepino[2,3,4-de]pyrrolo[2,3-h]quinolin-14-one.cdxml"
+ BoundingBox="226.76 206.32 554.23 365.42"
+ WindowPosition="0 0"
+ WindowSize="-2147483648 -2147483648"
+ WindowIsZoomed="yes"
+ FractionalWidths="yes"
+ InterpretChemically="yes"
+ ShowAtomQuery="yes"
+ ShowAtomStereo="no"
+ ShowAtomEnhancedStereo="yes"
+ ShowAtomNumber="no"
+ ShowResidueID="no"
+ ShowBondQuery="yes"
+ ShowBondRxn="yes"
+ ShowBondStereo="no"
+ ShowNonTerminalCarbonLabels="no"
+ HideImplicitHydrogens="no"
+ Magnification="666"
+ LabelFont="3"
+ LabelSize="10"
+ LabelFace="96"
+ CaptionFont="3"
+ CaptionSize="10"
+ HashSpacing="2.50"
+ MarginWidth="1.60"
+ LineWidth="0.60"
+ BoldWidth="2"
+ BondLength="14.40"
+ BondSpacing="18"
+ ChainAngle="120"
+ LabelJustification="Auto"
+ CaptionJustification="Left"
+ PrintMargins="36 36 36 36"
+>
+<colortable>
+<color r="1" g="1" b="1"/>
+<color r="0" g="0" b="0"/>
+<color r="1" g="0" b="0"/>
+<color r="0" g="1" b="0"/>
+<color r="0" g="0" b="1"/>
+<color r="1" g="0" b="1"/>
+<color r="0" g="1" b="1"/>
+<color r="1" g="1" b="0"/>
+</colortable>
+<fonttable>
+ <font id="3" charset="iso-8859-1" name="Arial"/>
+</fonttable>
+<page
+ id="1"
+ BoundingBox="0 0 -32768 4318.50"
+ bgcolor="1"
+ HeaderPosition="36"
+ FooterPosition="36"
+ PrintTrimMarks="yes"
+>
+<fragment
+ id="1"
+ BoundingBox="226.76 206.32 554.23 365.42"
+ Z="1"
+><n id="2" p="283.64 332.31" Z="2" AS="N"/>
+<n id="3" p="268.97 335.42" Z="3" AS="N"/>
+<n id="4" p="261.48 322.42" Z="4" AS="N" Element="7" NumHydrogens="0" NeedsClean="yes">
+<t p="257.48 326.42" BoundingBox="255.48 318.42 265.48 328.42" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">N</s>
+</t>
+</n>
+<n id="5" p="256.76 308.18" Z="5" AS="N"/>
+<n id="6" p="266.74 296.98" Z="6" AS="N"/>
+<n id="7" p="259.95 283.60" Z="7" AS="N"/>
+<n id="8" p="266.18 269.96" Z="8" AS="N"/>
+<n id="9" p="280.73 266.32" Z="9" AS="N" Element="8" NumHydrogens="0" NeedsClean="yes">
+<t p="276.73 270.32" BoundingBox="274.73 262.32 284.73 272.32" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">O</s>
+</t>
+</n>
+<n id="10" p="292.65 275.42" Z="10" AS="N"/>
+<n id="11" p="305.48 267.65" Z="11" AS="N"/>
+<n id="12" p="318.62 274.88" Z="12" AS="N"/>
+<n id="13" p="331.45 267.12" Z="13" AS="N" Element="8" NumHydrogens="0" NeedsClean="yes">
+<t p="327.45 271.12" BoundingBox="325.45 263.12 335.45 273.12" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">O</s>
+</t>
+</n>
+<n id="14" p="318.93 289.88" Z="14" AS="N" Element="7" NumHydrogens="0" NeedsClean="yes">
+<t p="314.93 293.88" BoundingBox="312.93 285.88 322.93 295.88" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">N</s>
+</t>
+</n>
+<n id="15" p="306.10 297.65" Z="15" AS="N"/>
+<n id="16" p="292.96 290.42" Z="16" AS="N"/>
+<n id="17" p="281.43 300.01" Z="17" AS="N"/>
+<n id="18" p="286.14 314.25" Z="18" AS="N"/>
+<n id="19" p="276.17 325.46" Z="19" AS="N"/>
+<n id="20" p="309.52 312.25" Z="20" AS="N"/>
+<n id="21" p="324.47 313.51" Z="21" AS="N"/>
+<n id="22" p="333.54 325.46" Z="22" AS="N"/>
+<n id="23" p="348.42 323.58" Z="23" AS="N"/>
+<n id="24" p="354.23 309.76" Z="24" AS="N"/>
+<n id="25" p="345.17 297.81" Z="25" AS="N"/>
+<n id="26" p="330.28 299.68" Z="26" AS="N"/>
+<b id="1000" Z="28" B="2" E="3" BS="N"/>
+<b id="1001" Z="29" B="3" E="4" BS="N"/>
+<b id="1002" Z="30" B="4" E="5" BS="N"/>
+<b id="1003" Z="31" B="5" E="6" BS="N"/>
+<b id="1004" Z="32" B="6" E="7" BS="N" Order="2"/>
+<b id="1005" Z="33" B="7" E="8" BS="N"/>
+<b id="1006" Z="34" B="8" E="9" BS="N"/>
+<b id="1007" Z="35" B="9" E="10" BS="N"/>
+<b id="1008" Z="36" B="10" E="11" BS="N"/>
+<b id="1009" Z="37" B="11" E="12" BS="N"/>
+<b id="1010" Z="38" B="12" E="13" BS="N" Color="6" Order="2"/>
+<b id="1011" Z="39" B="12" E="14" BS="N"/>
+<b id="1012" Z="40" B="14" E="15" BS="N"/>
+<b id="1013" Z="41" B="15" E="16" BS="N"/>
+<b id="1014" Z="42" B="16" E="17" BS="N"/>
+<b id="1015" Z="43" B="17" E="18" BS="N"/>
+<b id="1016" Z="44" B="18" E="19" BS="N"/>
+<b id="1017" Z="45" B="19" E="20" BS="N"/>
+<b id="1018" Z="46" B="20" E="21" BS="N"/>
+<b id="1019" Z="47" B="21" E="22" BS="N" Order="2"/>
+<b id="1020" Z="48" B="22" E="23" BS="N"/>
+<b id="1021" Z="49" B="23" E="24" BS="N" Order="2"/>
+<b id="1022" Z="50" B="24" E="25" BS="N"/>
+<b id="1023" Z="51" B="25" E="26" BS="N" Order="2"/>
+<b id="1024" Z="52" B="20" E="2" BS="N"/>
+<b id="1025" Z="53" B="19" E="4" BS="N"/>
+<b id="1026" Z="54" B="17" E="6" BS="N"/>
+<b id="1027" Z="55" B="16" E="10" BS="N"/>
+<b id="1028" Z="56" B="26" E="14" BS="N"/>
+<b id="1029" Z="57" B="20" E="15" BS="N"/>
+<b id="1030" Z="58" B="26" E="21" BS="N"/>
+</fragment>
+<graphic
+ GraphicType="Line"
+ BoundingBox="315.79 257.02 334.29 284.98"
+ LineType="Dashed"
+ LineWidth="3"
+ LineCap="0"
+ Color="2"
+>
+ <p p="317.79 259.02"/>
+ <p p="332.29 282.98"/>
+</graphic>
+<annotation id="99" BoundingBox="245.50 212.32 365.50 232.32"
+ CaptionAlignment="Center" CaptionJustification="Center"
+ Color="0" LabelJustification="Center"
+ VerticalOffset="0" HorizontalOffset="0"
+ LabelFace="96" LabelSize="11" LabelFont="3">
+ <s font="3" size="11" face="96">Target: (4aR,5aS,8aR,13aS,15aS,15bR)-4a,5,5a,7,8,13a,15,15a,15b,16-decahydro-2H-4,6-methanoindolo[3,2,1-ij]oxepino[2,3,4-de]pyrrolo[2,3-h]quinolin-14-one [C1CN2CC3=CCOC4CC(=O)N5C6C4C3CC2C61C7=CC=CC=C75]  |  1 disconnection(s)</s>
+</annotation>
+<annotation id="500" BoundingBox="258.06 272.25 378.06 292.25"
+ CaptionAlignment="Center" CaptionJustification="Center"
+ Color="2" LabelJustification="Center"
+ VerticalOffset="0" HorizontalOffset="0"
+ LabelFace="96" LabelSize="8" LabelFont="3">
+ <s font="3" size="8" face="96">cyclic→C1=C2CN3CCC45c6ccccc | amide→O</s>
+</annotation></page>
+</CDXML>

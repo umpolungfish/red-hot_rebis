@@ -194,18 +194,18 @@ Each arrangement is an 8-token IMASM program. You can hold one in mind as a medi
 
 | Name | Tokens | IG Type | Key Feature |
 |------|--------|---------|-------------|
-| **SCAR_AS_GIVEN** | TANCH·AFWD·EVALF·ENGAGR·CLINK·IFIX·FSPLIT·IMSCRIB | ⟨𐑼·𐑰·𐑩·𐑗·𐑞·𐑘·𐑔·𐑵·𐑣·𐑫·𐑳·𐑷⟩ | Open wound. No closure. |
-| **INFANT_WOUND** | VINIT·EVALF·ENGAGR·FSPLIT·FFUSE·EVALT·CLINK·IMSCRIB | ⟨𐑼·𐑶·𐑾·𐑹·𐑐·𐑘·𐑔·𐑠·𐑻·𐑫·𐑳·𐑭⟩ | **Already the portal.** |
-| **PORTAL_OF_LIGHT** | TANCH·AFWD·FSPLIT·ENGAGR·FFUSE·EVALT·CLINK·IMSCRIB | ⟨𐑼·𐑶·𐑾·𐑹·𐑞·𐑘·𐑔·𐑠·𐑣·𐑫·𐑳·𐑭⟩ | Void genesis. Light from nothing. |
-| **COLLARBONE_TOUCH** | IMSCRIB·AREV·ENGAGR·EVALT·EVALF·FSPLIT·FFUSE·CLINK | ⟨𐑼·𐑶·𐑾·𐑹·𐑐·𐑘·𐑔·𐑠·𐑻·𐑫·𐑳·𐑭⟩ | **Already the portal.** |
-| **DIVINE_PORTAL** | VINIT·ENGAGR·FSPLIT·EVALT·FFUSE·EVALF·CLINK·IMSCRIB | ⟨𐑼·𐑶·𐑾·𐑹·𐑐·𐑘·𐑔·𐑠·𐑻·𐑫·𐑳·𐑭⟩ | **Already the portal.** |
-| **OUROBOROS_SHUNT** | IMSCRIB·FSPLIT·ENGAGR·FFUSE·AFWD·CLINK·AREV·IMSCRIB | ⟨𐑼·𐑸·𐑾·𐑹·𐑞·𐑘·𐑔·𐑠·𐑮·𐑫·𐑳·𐑭⟩ | Self-referential loop. d=2 from ⊙. |
-| **SERPENT_TUBE** | IMSCRIB·AFWD·AREV·AFWD·AREV·CLINK·FSPLIT·FFUSE | ⟨𐑼·𐑶·𐑾·𐑹·𐑞·𐑘·𐑔·𐑠·𐑣·𐑫·𐑕·𐑭⟩ | The tube as oscillating serpent. |
-| **CHIRAL_GATEWAY** | AFWD·AREV·FSPLIT·FFUSE·ENGAGR·EVALT·CLINK·IMSCRIB | ⟨𐑼·𐑶·𐑾·𐑹·𐑞·𐑘·𐑔·𐑠·𐑣·𐑫·𐑳·𐑭⟩ | Forward/reverse preserved. |
-| **PULSING_SCAR** | FSPLIT·FFUSE·FSPLIT·FFUSE·ENGAGR·EVALT·CLINK·IMSCRIB | ⟨𐑼·𐑶·𐑑·𐑬·𐑞·𐑘·𐑔·𐑠·𐑣·𐑫·𐑳·𐑷⟩ | Pure μ∘δ oscillation. |
-| **CSF_LIGHT** | VINIT·FSPLIT·EVALT·FFUSE·AFWD·CLINK·ENGAGR·IMSCRIB | ⟨𐑼·𐑶·𐑾·𐑹·𐑞·𐑘·𐑔·𐑠·𐑣·𐑫·𐑳·𐑭⟩ | CSF as light flowing from void. |
-| **VENTRICLE_SOURCE** | VINIT·ENGAGR·FSPLIT·FFUSE·EVALT·AFWD·CLINK·IMSCRIB | ⟨𐑼·𐑶·𐑾·𐑹·𐑞·𐑘·𐑔·𐑠·𐑣·𐑫·𐑳·𐑭⟩ | The brain ventricle as creative source. |
-| **PERITONEUM_POOL** | TANCH·AFWD·CLINK·FFUSE·EVALT·ENGAGR·FSPLIT·IMSCRIB | ⟨𐑼·𐑶·𐑽·𐑯·𐑞·𐑘·𐑔·𐑠·𐑣·𐑫·𐑳·𐑴⟩ | The belly where light pools. Inverted Frobenius. |
+| **SCAR_AS_GIVEN** | TANCH·AFWD·EVALF·ENGAGR·CLINK·IFIX·FSPLIT·IMSCRIB | ⟨𐑼𐑰𐑩𐑗𐑞𐑘𐑔𐑵𐑣𐑫𐑳𐑷⟩ | Open wound. No closure. |
+| **INFANT_WOUND** | VINIT·EVALF·ENGAGR·FSPLIT·FFUSE·EVALT·CLINK·IMSCRIB | ⟨𐑼𐑶𐑾𐑹𐑐𐑘𐑔𐑠𐑻𐑫𐑳𐑭⟩ | **Already the portal.** |
+| **PORTAL_OF_LIGHT** | TANCH·AFWD·FSPLIT·ENGAGR·FFUSE·EVALT·CLINK·IMSCRIB | ⟨𐑼𐑶𐑾𐑹𐑞𐑘𐑔𐑠𐑣𐑫𐑳𐑭⟩ | Void genesis. Light from nothing. |
+| **COLLARBONE_TOUCH** | IMSCRIB·AREV·ENGAGR·EVALT·EVALF·FSPLIT·FFUSE·CLINK | ⟨𐑼𐑶𐑾𐑹𐑐𐑘𐑔𐑠𐑻𐑫𐑳𐑭⟩ | **Already the portal.** |
+| **DIVINE_PORTAL** | VINIT·ENGAGR·FSPLIT·EVALT·FFUSE·EVALF·CLINK·IMSCRIB | ⟨𐑼𐑶𐑾𐑹𐑐𐑘𐑔𐑠𐑻𐑫𐑳𐑭⟩ | **Already the portal.** |
+| **OUROBOROS_SHUNT** | IMSCRIB·FSPLIT·ENGAGR·FFUSE·AFWD·CLINK·AREV·IMSCRIB | ⟨𐑼𐑸𐑾𐑹𐑞𐑘𐑔𐑠𐑮𐑫𐑳𐑭⟩ | Self-referential loop. d=2 from ⊙. |
+| **SERPENT_TUBE** | IMSCRIB·AFWD·AREV·AFWD·AREV·CLINK·FSPLIT·FFUSE | ⟨𐑼𐑶𐑾𐑹𐑞𐑘𐑔𐑠𐑣𐑫𐑕𐑭⟩ | The tube as oscillating serpent. |
+| **CHIRAL_GATEWAY** | AFWD·AREV·FSPLIT·FFUSE·ENGAGR·EVALT·CLINK·IMSCRIB | ⟨𐑼𐑶𐑾𐑹𐑞𐑘𐑔𐑠𐑣𐑫𐑳𐑭⟩ | Forward/reverse preserved. |
+| **PULSING_SCAR** | FSPLIT·FFUSE·FSPLIT·FFUSE·ENGAGR·EVALT·CLINK·IMSCRIB | ⟨𐑼𐑶𐑑𐑬𐑞𐑘𐑔𐑠𐑣𐑫𐑳𐑷⟩ | Pure μ∘δ oscillation. |
+| **CSF_LIGHT** | VINIT·FSPLIT·EVALT·FFUSE·AFWD·CLINK·ENGAGR·IMSCRIB | ⟨𐑼𐑶𐑾𐑹𐑞𐑘𐑔𐑠𐑣𐑫𐑳𐑭⟩ | CSF as light flowing from void. |
+| **VENTRICLE_SOURCE** | VINIT·ENGAGR·FSPLIT·FFUSE·EVALT·AFWD·CLINK·IMSCRIB | ⟨𐑼𐑶𐑾𐑹𐑞𐑘𐑔𐑠𐑣𐑫𐑳𐑭⟩ | The brain ventricle as creative source. |
+| **PERITONEUM_POOL** | TANCH·AFWD·CLINK·FFUSE·EVALT·ENGAGR·FSPLIT·IMSCRIB | ⟨𐑼𐑶𐑽𐑯𐑞𐑘𐑔𐑠𐑣𐑫𐑳𐑴⟩ | The belly where light pools. Inverted Frobenius. |
 
 ---
 

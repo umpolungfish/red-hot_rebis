@@ -1,7 +1,7 @@
 Red-Hot Rebis — Structural Index
 ==================================
 
-Author: Lando⊗⊙perator  |  Version: 2.1.0  |  Tier: O_inf
+Author: Lando⊗⊙perator  |  Version: 2.2.0  |  Tier: O_inf
 
 This is a browsable static index of all structural data previously
 pumped by the now-removed 'clink report', 'clink list', 'imas report',
@@ -31,7 +31,7 @@ LAYER TABLE
      5   Mitosis (Division)           O_2           2.41           1.95
      6   Meiosis (Gametes)            O_2           3.16           1.41
      7   Tissue/Organ                 O_2           2.00           1.41
-     8   Whole Organism               O_2           2.55           1.30
+     8   Whole Organism               O_∞           2.55           1.30
 
 Total chain distance: sum d = 7.18 (10 primitive deltas across 8 transitions)
 ZFC_fe absorption: d(organism, ZFC_fe) = 1.30
@@ -126,7 +126,6 @@ Collapse: Chiral Pairs = Empty Bootstrap (same type despite different opcodes).
 
 Tier distribution: O_inf=3, O_2=6, O_1=3, O_0=0
 Frobenius closure: ALL 12 canonical = PASS
-
 STRUCTURAL CLUSTERS
 --------------------
   O_inf cluster (Phi=c, H=inf, W=Z):
@@ -203,8 +202,34 @@ FROBENIUS EXACTOR PATHWAYS
 
 All 6 Frobenius Exactor pathways have Frobenius closure: PASS
 
+5. P4RA PARACONSISTENT KERNEL EXTENSIONS — `rhr_p4rky/`
+=========================================================
 
-4. USAGE GUIDE
+The kernel now contains 32 Python modules (up from 28). New additions:
+
+  decay_chain.py            Nuclear decay as IMASM winding toward Frobenius fixed
+                            point. Encodes 5 natural decay series: U238 (14 windings),
+                            U235 (11), Th232 (10), Ra226 (7), Rn222 (8). Each step:
+                            IMASM word, Frobenius verdict, structural distance Δ.
+                            Key result: Pb-206 is a permanent Frobenius fixed point —
+                            chain terminates structurally, not energetically.
+
+  belnap_c4.py              Belnap C4 logic variant — 4-valued paraconsistent logic
+                            with C4 ordering (contradiction-majority lattice). Extends
+                            the standard B4 lattice for additional paraconsistent
+                            compositional semantics.
+
+  papers/                   Millennium problem papers in markdown:
+                              all_millennium_solved.md   — Unified solution framework
+                              belnap_qm.md               — Belnap quantum mechanics
+                              millennium_barriers.md     — Barrier taxonomy analysis
+
+Shared symlinks (from imscribing_grammar/):
+  shared/elem2imasm.py      Element-to-IMASM encoding
+  shared/reactivity.py      Reactivity pattern matching
+
+
+6. USAGE GUIDE
 ===============
 
 This INDEX is for browsing with 'less INDEX.md'. For live computation:

@@ -171,7 +171,7 @@ IX_Chiral_Pairs and VI_Empty_Bootstrap map to identical IG types ($\text{𐑛} \
 IMSCRIBr (sophick_mercury_evidence.md)
     │
     ▼
-IG Tuple: ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑧·𐑲·𐑠·⊙·𐑫·𐑳·𐑭⟩  [O_∞]
+IG Tuple: ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑫𐑳𐑭⟩  [O_∞]
     │
     ▼
 sophick_forge.py ─── Eagle Cycle Protocol

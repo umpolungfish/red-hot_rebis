@@ -22,7 +22,7 @@
   "predicted_rotatable_bonds": 3,
   "ch3mpiler_retrosynthetic": {
     "target": "Apertix (Adjoint Corridor)",
-    "target_type": "⟨𐑦 · 𐑥 · 𐑽 · 𐑬 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑖 · 𐑳 · 𐑴⟩",
+    "target_type": "⟨𐑦𐑥𐑽𐑬𐑐𐑧𐑲𐑠⊙𐑖𐑳𐑴⟩",
     "strategy": {
       "composition_mode": "sequential bond construction (linear synthesis)",
       "preferred_disconnections": [

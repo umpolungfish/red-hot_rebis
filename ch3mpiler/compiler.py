@@ -940,6 +940,194 @@ class Ch3mpiler:
                 })
         return tree
 
+    def path_to_target(self, starting_material, target, depth=4):
+        """Find retrosynthetic path from target to starting material."""
+        target_analysis = self.analyze(target)
+        start_analysis = self.analyze(starting_material)
+
+        def _analysis_to_ords(analysis):
+            ords = {}
+            t = analysis.get("type", "")
+            if t.startswith("<") and t.endswith(">"):
+                vals = [v.strip() for v in t[1:-1].split(";")]
+                for i, p in enumerate(PNAMES):
+                    if i < len(vals):
+                        _, o = g2v(p, vals[i])
+                        ords[p] = o
+            return ords
+
+        tgt_ords = _analysis_to_ords(target_analysis)
+        src_ords = _analysis_to_ords(start_analysis)
+        direct_dist = 0.0
+        direct_conflicts = []
+        if tgt_ords and src_ords:
+            sq = 0.0
+            for p in PNAMES:
+                o1 = tgt_ords.get(p, 0)
+                o2 = src_ords.get(p, 0)
+                w = WEIGHTS.get(p, 1.0)
+                d = (o1 - o2) * w
+                sq += d * d
+                if o1 != o2:
+                    direct_conflicts.append({"p": p, "tgt": o1, "src": o2})
+            direct_dist = math.sqrt(sq)
+
+        try:
+            from reaction_deriver import is_simple_material
+            start_is_simple = is_simple_material(starting_material, self)
+        except Exception:
+            start_is_simple = False
+
+        retro_tree = self.retrosynthesis(target, depth=depth)
+        found_paths = []
+
+        def _walk_tree(node, current_path, current_depth):
+            steps = node.get("steps", [])
+            if not steps:
+                node_name = node.get("target", "")
+                node_fgs = node.get("fgs", [])
+                node_type = node.get("type", "")
+                nm = (node_name.lower() == starting_material.lower() or
+                      node_name.lower().replace("_"," ").strip() ==
+                      starting_material.lower().replace("_"," ").strip())
+                start_fgs = start_analysis.get("fgs", [])
+                fg_overlap = len(set(node_fgs) & set(start_fgs))
+                fgm = (fg_overlap >= min(len(node_fgs), len(start_fgs)) * 0.5
+                       if node_fgs and start_fgs else False)
+                found_paths.append({
+                    "node_name": node_name, "node_type": node_type,
+                    "node_fgs": node_fgs, "path": list(current_path),
+                    "path_length": len(current_path),
+                    "name_match": nm, "fg_match": fgm, "depth": current_depth
+                })
+                return
+            for idx, step in enumerate(steps):
+                se = {"bond": step.get("bond",""), "bond_desc": step.get("bond_desc",""),
+                      "delta": step.get("delta",0), "fg1": step.get("fg1",""),
+                      "fg2": step.get("fg2",""),
+                      "product_type": step.get("product_type",""),
+                      "target_at_this_level": node.get("target", target)}
+                new_path = current_path + [se]
+                for prec in step.get("precursors", []):
+                    prec_name = prec.get("name", "")
+                    prec_type = prec.get("type", "")
+                    prec_fgs = []
+                    # Use fg_hint from precursor data (most reliable)
+                    fg_hint = prec.get("fg_hint", "")
+                    if fg_hint and fg_hint in FG:
+                        prec_fgs = [fg_hint]
+                    else:
+                        # Fallback: try analyzing the stripped name
+                        stripped = prec_name.replace("_precursor","").replace("_"," ")
+                        try:
+                            pa = self.analyze(stripped)
+                            prec_fgs = pa.get("fgs", [])
+                        except Exception:
+                            pass
+                        # If still empty, check if stripped name IS a known FG
+                        if not prec_fgs and stripped in FG:
+                            prec_fgs = [stripped]
+                    nm = (prec_name.lower() == starting_material.lower() or
+                          prec_name.lower().replace("_"," ").strip() ==
+                          starting_material.lower().replace("_"," ").strip())
+                    start_fgs = start_analysis.get("fgs", [])
+                    fg_overlap = len(set(prec_fgs) & set(start_fgs))
+                    fgm = (fg_overlap >= min(len(prec_fgs), len(start_fgs)) * 0.5
+                           if prec_fgs and start_fgs else False)
+                    found_paths.append({
+                        "node_name": prec_name, "node_type": prec_type,
+                        "node_fgs": prec_fgs, "path": list(new_path),
+                        "path_length": len(new_path),
+                        "name_match": nm, "fg_match": fgm, "depth": current_depth + 1
+                    })
+                    further = prec.get("further", [])
+                    if further:
+                        sub = {"target": prec_name, "type": prec_type, "fgs": prec_fgs,
+                               "steps": [{"bond": f.get("bond",""), "bond_desc": f.get("bond_desc",""),
+                                          "delta": f.get("delta",0), "fg1": f.get("fg1",""),
+                                          "fg2": f.get("fg2",""), "product_type": f.get("product_type",""),
+                                          "precursors": []} for f in further]}
+                        _walk_tree(sub, new_path, current_depth + 1)
+
+        root_node = {"target": target, "type": retro_tree.get("type",""),
+                     "fgs": target_analysis.get("fgs", []),
+                     "steps": retro_tree.get("steps", [])}
+        _walk_tree(root_node, [], 0)
+
+        name_matches = [p for p in found_paths if p["name_match"]]
+        fg_matches = [p for p in found_paths if p["fg_match"] and not p["name_match"]]
+        name_matches.sort(key=lambda x: (x["path_length"], x["depth"]))
+        fg_matches.sort(key=lambda x: (x["path_length"], x["depth"]))
+
+        result = {"target": target, "starting_material": starting_material,
+                  "direct_structural_distance": round(direct_dist, 4),
+                  "direct_conflicts": direct_conflicts[:6],
+                  "start_is_simple": start_is_simple,
+                  "retro_depth_searched": depth,
+                  "total_nodes_searched": len(found_paths),
+                  "exact_name_matches": len(name_matches),
+                  "fg_signature_matches": len(fg_matches)}
+
+        if name_matches:
+            best = name_matches[0]
+            fwd_path = []
+            for step in best["path"]:
+                fwd_path.append({"step": len(fwd_path)+1, "operation": "Coagula (mu)",
+                    "bond": step.get("bond",""), "reaction": step.get("bond_desc",""),
+                    "delta": step.get("delta",0), "fg1": step.get("fg1",""), "fg2": step.get("fg2",""),
+                    "product": step.get("target_at_this_level", target)})
+            result["found"] = True
+            result["path"] = fwd_path
+            result["path_length"] = best["path_length"]
+            result["match_type"] = "exact_name"
+            result["terminal_node_name"] = best["node_name"]
+        elif fg_matches:
+            best = fg_matches[0]
+            fwd_path = []
+            for step in best["path"]:
+                fwd_path.append({"step": len(fwd_path)+1, "operation": "Coagula (mu)",
+                    "bond": step.get("bond",""), "reaction": step.get("bond_desc",""),
+                    "delta": step.get("delta",0), "fg1": step.get("fg1",""), "fg2": step.get("fg2",""),
+                    "product": step.get("target_at_this_level", target)})
+            result["found"] = True
+            result["path"] = fwd_path
+            result["path_length"] = best["path_length"]
+            result["match_type"] = "fg_signature"
+            result["terminal_node_name"] = best["node_name"]
+            result["nearest_match"] = {"name": best["node_name"],
+                "type": best["node_type"], "fgs": best["node_fgs"]}
+        else:
+            result["found"] = False
+            best_node = None
+            best_dist = float("inf")
+            for p in found_paths:
+                nts = p.get("node_type", "")
+                if nts and nts.startswith("<"):
+                    vals = [v.strip() for v in nts[1:-1].split(";")]
+                    no = {}
+                    for i, pn in enumerate(PNAMES):
+                        if i < len(vals):
+                            _, o = g2v(pn, vals[i])
+                            no[pn] = o
+                    if no and src_ords:
+                        sq = 0.0
+                        for pn in PNAMES:
+                            o1 = src_ords.get(pn, 0)
+                            o2 = no.get(pn, 0)
+                            w = WEIGHTS.get(pn, 1.0)
+                            d = (o1 - o2) * w
+                            sq += d * d
+                        d = math.sqrt(sq)
+                        if d < best_dist:
+                            best_dist = d
+                            best_node = p
+            if best_node:
+                result["nearest_match"] = {"name": best_node["node_name"],
+                    "type": best_node["node_type"], "fgs": best_node["node_fgs"],
+                    "structural_distance": round(best_dist, 4),
+                    "path_to_nearest": best_node["path_length"]}
+        return result
+
     def forward(self, reagents):
         """Predict forward reaction: find most compatible bond between reagent FGs."""
         all_fgs = set()
@@ -981,6 +1169,13 @@ class Ch3mpiler:
         result = self.analyze(name)
         result["cas_info"] = info
         return result
+
+# Patch Ch3mpiler with enriched precursor lattice
+try:
+    from . import precursor_lattice
+except ImportError:
+    import precursor_lattice
+precursor_lattice.patch_ch3mpiler(Ch3mpiler)
 # ====================================================================
 # OUTPUT FORMATTERS
 # ====================================================================
@@ -1055,7 +1250,78 @@ def print_analysis(result):
 
 
 # ====================================================================
+
+# ====================================================================
+def print_path(result):
+    """Print the synthetic path from starting material to target."""
+    target = result.get("target", "?")
+    start = result.get("starting_material", "?")
+    direct_dist = result.get("direct_structural_distance", "?")
+    
+    print("=" * 66)
+    print(f"  ch3mpiler — Synthetic Path: {start} -> {target}")
+    print("=" * 66)
+    print(f"  Direct structural distance: {direct_dist}")
+    print(f"  Starting material is simple: {result.get('start_is_simple', '?')}")
+    print(f"  Retro depth searched: {result.get('retro_depth_searched', '?')}")
+    print(f"  Total nodes searched: {result.get('total_nodes_searched', '?')}")
+    print()
+    
+    if result.get("found"):
+        match_type = result.get("match_type", "?")
+        path_len = result.get("path_length", 0)
+        term_node = result.get("terminal_node_name", "?")
+        
+        print(f"  PATH FOUND (match: {match_type})")
+        print(f"  Terminal node: {term_node}")
+        print(f"  Path length: {path_len} steps")
+        print()
+        
+        path = result.get("path", [])
+        print(f"  Forward synthetic route ({start} -> {target}):")
+        print()
+        
+        for i, step in enumerate(path):
+            step_num = step.get("step", i+1)
+            bond = step.get("bond", "?")
+            reaction = step.get("reaction", "?")
+            delta = step.get("delta", 0)
+            fg1 = step.get("fg1", "?")
+            fg2 = step.get("fg2", "?")
+            product = step.get("product", "?")
+            
+            print(f"  Step {step_num}:")
+            print(f"    Bond:      {bond} ({reaction})")
+            print(f"    Delta:     {delta}")
+            print(f"    Between:   {fg1} + {fg2}")
+            print(f"    Product:   {product}")
+            print()
+        
+        print(f"  {'─' * 50}")
+        print(f"  FINAL: {target}")
+    else:
+        print("  NO EXACT PATH FOUND")
+        nearest = result.get("nearest_match")
+        if nearest:
+            print(f"  Nearest tree node: {nearest.get('name', '?')}")
+            print(f"  Structural distance: {nearest.get('structural_distance', '?')}")
+            print(f"  Node type: {nearest.get('type', '?')}")
+            print(f"  Node FGs: {nearest.get('fgs', [])}")
+            print(f"  Path steps to nearest: {nearest.get('path_to_nearest', '?')}")
+        print()
+        print("  The starting material cannot be reached from this target")
+        print("  within the searched depth. Try --depth N for deeper search.")
+    
+    # Show direct conflicts (which primitives differ)
+    conflicts = result.get("direct_conflicts", [])
+    if conflicts:
+        print()
+        print(f"  Structural conflicts ({len(conflicts)}):")
+        for c in conflicts[:5]:
+            print(f"    {c['p']}: target={c['tgt']} vs start={c['src']}")
+
 # MAIN CLI
+
 # ====================================================================
 def main():
     _dash_map = str.maketrans({chr(c): '-' for c in [0x2212, 0x2013, 0x2014, 0x2015, 0xff0d, 0xfe63]})
@@ -1073,11 +1339,14 @@ def main():
     parser.add_argument("--list-fgs", action="store_true", help="List FGs")
     parser.add_argument("--list-bonds", action="store_true", help="List bond types")
     parser.add_argument("--show-cas-cache", action="store_true", help="Show CAS cache")
+    parser.add_argument("--starting-material", help="Starting material name (used with --target for pathfinding)")
+    parser.add_argument("--path", action="store_true", help="Find synthetic path between --starting-material and --target")
     
     args = parser.parse_args()
     ch = Ch3mpiler()
     
-    if args.cas:
+    if args.cas and not args.starting_material:
+        # Plain CAS mode (no --starting-material)
         if args.retrosynthesis:
             tree = ch.resolve_and_analyze(args.cas, do_retrosynthesis=True, depth=args.depth)
             print("=" * 66)
@@ -1093,6 +1362,9 @@ def main():
             if info.get("smiles"): print(f"SMILES: {info['smiles']}")
             print_analysis(r)
         return
+    elif args.cas and args.starting_material:
+        # Handled below by the starting_material handler
+        pass
     
     if args.list_fgs:
         print("Functional Groups:")
@@ -1128,6 +1400,22 @@ def main():
             print(f"Unknown FG: {args.fg}")
             print(f"Known: {', '.join(sorted(FG.keys()))}")
         return
+    
+    if args.starting_material:
+        # Pathfinding mode: resolve target from --target or --cas
+        target_name = args.target
+        if args.cas and not target_name:
+            # Resolve CAS to name first
+            cas_info = ch.resolve_cas(args.cas)
+            target_name = cas_info.get("name", "")
+            if not target_name or target_name == args.cas:
+                print(f"Could not resolve CAS {args.cas} to a known molecule name.")
+                return
+        if target_name:
+            result = ch.path_to_target(args.starting_material, target_name, depth=args.depth)
+            print_path(result)
+            return
+        # If only --starting-material without --target or --cas, fall through
     
     if args.target:
         if args.retrosynthesis:

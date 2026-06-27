@@ -22,7 +22,7 @@
   "predicted_rotatable_bonds": 6,
   "ch3mpiler_retrosynthetic": {
     "target": "Retiarius (Local-Net Trap)",
-    "target_type": "⟨𐑼 · 𐑡 · 𐑾 · 𐑿 · 𐑞 · 𐑺 · 𐑚 · 𐑜 · 𐑮 · 𐑒 · 𐑕 · 𐑷⟩",
+    "target_type": "⟨𐑼𐑡𐑾𐑿𐑞𐑺𐑚𐑜𐑮𐑒𐑕𐑷⟩",
     "strategy": {
       "composition_mode": "branching disconnection (alternate paths)",
       "preferred_disconnections": [

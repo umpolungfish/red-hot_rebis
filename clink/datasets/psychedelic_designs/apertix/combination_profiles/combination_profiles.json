@@ -1,7 +1,7 @@
 {
   "apertix_plus_dmt": {
     "combination": "Apertix (Adjoint Corridor) + dmt",
-    "composite_type": "⟨𐑦 · 𐑸 · 𐑾 · 𐑬 · 𐑐 · 𐑧 · 𐑲 · 𐑵 · ⊙ · 𐑫 · 𐑳 · 𐑭⟩",
+    "composite_type": "⟨𐑦𐑸𐑾𐑬𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑭⟩",
     "composite_tier": "O₂",
     "parent_1": {
       "name": "Apertix (Adjoint Corridor)",
@@ -57,7 +57,7 @@
   },
   "apertix_plus_psilocybin": {
     "combination": "Apertix (Adjoint Corridor) + psilocybin",
-    "composite_type": "⟨𐑦 · 𐑥 · 𐑾 · 𐑬 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑖 · 𐑳 · 𐑭⟩",
+    "composite_type": "⟨𐑦𐑥𐑾𐑬𐑐𐑧𐑲𐑠⊙𐑖𐑳𐑭⟩",
     "composite_tier": "O₂",
     "parent_1": {
       "name": "Apertix (Adjoint Corridor)",
@@ -95,7 +95,7 @@
   },
   "apertix_plus_lsd": {
     "combination": "Apertix (Adjoint Corridor) + lsd",
-    "composite_type": "⟨𐑦 · 𐑸 · 𐑾 · 𐑬 · 𐑐 · 𐑧 · 𐑲 · 𐑵 · ⊙ · 𐑖 · 𐑳 · 𐑭⟩",
+    "composite_type": "⟨𐑦𐑸𐑾𐑬𐑐𐑧𐑲𐑵⊙𐑖𐑳𐑭⟩",
     "composite_tier": "O₂",
     "parent_1": {
       "name": "Apertix (Adjoint Corridor)",
@@ -145,7 +145,7 @@
   },
   "apertix_plus_ketamine": {
     "combination": "Apertix (Adjoint Corridor) + ketamine",
-    "composite_type": "⟨𐑦 · 𐑥 · 𐑾 · 𐑿 · 𐑱 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑖 · 𐑳 · 𐑴⟩",
+    "composite_type": "⟨𐑦𐑥𐑾𐑿𐑱𐑧𐑲𐑠⊙𐑖𐑳𐑴⟩",
     "composite_tier": "O₁",
     "parent_1": {
       "name": "Apertix (Adjoint Corridor)",
@@ -225,7 +225,7 @@
   },
   "apertix_plus_mdma": {
     "combination": "Apertix (Adjoint Corridor) + mdma",
-    "composite_type": "⟨𐑦 · 𐑥 · 𐑾 · 𐑿 · 𐑞 · 𐑧 · 𐑲 · 𐑠 · 𐑮 · 𐑖 · 𐑳 · 𐑴⟩",
+    "composite_type": "⟨𐑦𐑥𐑾𐑿𐑞𐑧𐑲𐑠𐑮𐑖𐑳𐑴⟩",
     "composite_tier": "O₁",
     "parent_1": {
       "name": "Apertix (Adjoint Corridor)",
@@ -299,7 +299,7 @@
   },
   "apertix_plus_mescaline": {
     "combination": "Apertix (Adjoint Corridor) + mescaline",
-    "composite_type": "⟨𐑦 · 𐑥 · 𐑽 · 𐑗 · 𐑱 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑖 · 𐑳 · 𐑴⟩",
+    "composite_type": "⟨𐑦𐑥𐑽𐑗𐑱𐑧𐑲𐑠⊙𐑖𐑳𐑴⟩",
     "composite_tier": "O₁",
     "parent_1": {
       "name": "Apertix (Adjoint Corridor)",
@@ -385,7 +385,7 @@
   },
   "apertix_plus_verticullum": {
     "combination": "Apertix (Adjoint Corridor) + Verticullum (EP-Lever)",
-    "composite_type": "⟨𐑦 · 𐑥 · 𐑾 · 𐑬 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑟⟩",
+    "composite_type": "⟨𐑦𐑥𐑾𐑬𐑐𐑧𐑲𐑠⊙𐑫𐑳𐑟⟩",
     "composite_tier": "O₂",
     "parent_1": {
       "name": "Apertix (Adjoint Corridor)",
@@ -429,7 +429,7 @@
   },
   "apertix_plus_chimerium": {
     "combination": "Apertix (Adjoint Corridor) + Chimerium (Supercritical Catalyst)",
-    "composite_type": "⟨𐑦 · 𐑸 · 𐑾 · 𐑬 · 𐑐 · 𐑧 · 𐑲 · 𐑵 · 𐑣 · 𐑫 · 𐑳 · 𐑭⟩",
+    "composite_type": "⟨𐑦𐑸𐑾𐑬𐑐𐑧𐑲𐑵𐑣𐑫𐑳𐑭⟩",
     "composite_tier": "O₀",
     "parent_1": {
       "name": "Apertix (Adjoint Corridor)",
@@ -491,7 +491,7 @@
   },
   "apertix_plus_retiarius": {
     "combination": "Apertix (Adjoint Corridor) + Retiarius (Local-Net Trap)",
-    "composite_type": "⟨𐑦 · 𐑥 · 𐑾 · 𐑿 · 𐑞 · 𐑺 · 𐑲 · 𐑠 · 𐑮 · 𐑖 · 𐑳 · 𐑴⟩",
+    "composite_type": "⟨𐑦𐑥𐑾𐑿𐑞𐑺𐑲𐑠𐑮𐑖𐑳𐑴⟩",
     "composite_tier": "O₁",
     "parent_1": {
       "name": "Apertix (Adjoint Corridor)",
@@ -583,7 +583,7 @@
   },
   "apertix_plus_praxeum": {
     "combination": "Apertix (Adjoint Corridor) + Praxeum (EP-Core Control Platform)",
-    "composite_type": "⟨𐑦 · 𐑶 · 𐑾 · 𐑬 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · 𐑻 · 𐑫 · 𐑳 · 𐑭⟩",
+    "composite_type": "⟨𐑦𐑶𐑾𐑬𐑐𐑧𐑲𐑠𐑻𐑫𐑳𐑭⟩",
     "composite_tier": "O₀",
     "parent_1": {
       "name": "Apertix (Adjoint Corridor)",

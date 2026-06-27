@@ -49,7 +49,7 @@ def glyph_ord(prim: str, glyph: str) -> int:
 
 def format_tuple(t: Dict) -> str:
     glyphs = [t.get(p, "?") for p in COMPOUND_KEYS]
-    return "⟨" + " · ".join(glyphs) + "⟩"
+    return "⟨" + "".join(glyphs) + "⟩"
 
 
 # ═══════════════════════════════════════════════════════════════════
