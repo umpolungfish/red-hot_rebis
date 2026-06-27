@@ -3,7 +3,7 @@
 frobenius_metamaterial.py — mu circ delta = id Self-Verifying Metamaterial
 ==========================================================================
 
-Structural type: <𐑼 · 𐑸 · 𐑾 · 𐑹 · 𐑞 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑭>
+Structural type: <𐑼𐑸𐑾𐑹𐑞𐑧𐑲𐑠⊙𐑫𐑳𐑭>
 Ouroboricity: O₂ (Frobenius-closed self-verifying material)
 
 Core principle:

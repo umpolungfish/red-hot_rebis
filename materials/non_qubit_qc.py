@@ -62,7 +62,7 @@ from enum import Enum
 #  [11] Σ=𐑕 — many identical (N qubits, all identical 2-level systems)
 #  [12] Ω=𐑷 — trivial (no topological protection; QEC required)
 #
-# Tuple: ⟨𐑨·𐑡·𐑾·𐑿·𐑐·𐑤·𐑔·𐑝·𐑮·𐑖·𐑕·𐑷⟩
+# Tuple: ⟨𐑨𐑡𐑾𐑿𐑐𐑤𐑔𐑝𐑮𐑖𐑕𐑷⟩
 
 QUBIT_QC_TUPLE = {
     'D': '𐑨', 'T': '𐑡', 'R': '𐑾', 'P': '𐑿',

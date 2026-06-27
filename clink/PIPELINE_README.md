@@ -10,15 +10,15 @@ The CLINK Pipeline is a unified orchestration engine that seamlessly integrates 
 
 | Idx | Layer | Tier | Tuple |
 |-----|-------|------|-------|
-| 0 | Frustrated Belnap5 (Quarks) | O₀ | ⟨𐑛·𐑶·𐑩·𐑯·𐑐·𐑘·𐑚·𐑝·𐑢·𐑓·𐑳·𐑷⟩ |
-| 1 | Electron Orbital (Belnap4) | O₀ | ⟨𐑛·𐑶·𐑩·𐑗·𐑐·𐑤·𐑚·𐑜·𐑢·𐑓·𐑳·𐑷⟩ |
-| 2 | Atom (Nuclear + Electron) | O₁ | ⟨𐑼·𐑥·𐑽·𐑿·𐑐·𐑤·𐑔·𐑝·𐑮·𐑒·𐑳·𐑷⟩ |
-| 3 | Molecule (Chemical Bonds) | O₂ | ⟨𐑼·𐑥·𐑽·𐑿·𐑞·𐑧·𐑲·𐑠·⊙·𐑓·𐑳·𐑭⟩ |
-| 4 | Folded Protein | O₂ | ⟨𐑦·𐑥·𐑾·𐑬·𐑞·𐑧·𐑲·𐑠·⊙·𐑒·𐑳·𐑭⟩ |
-| 5 | Living Cell | O₂ | ⟨𐑦·𐑸·𐑾·𐑬·𐑞·𐑧·𐑲·𐑠·⊙·𐑒·𐑳·𐑭⟩ |
-| 6 | Mitosis (Division) | O₂ | ⟨𐑦·𐑸·𐑾·𐑹·𐑱·𐑧·𐑲·𐑠·⊙·𐑖·𐑳·𐑭⟩ |
-| 7 | Tissue/Organ | O₂ | ⟨𐑦·𐑸·𐑾·𐑬·𐑞·𐑧·𐑲·𐑵·⊙·𐑖·𐑳·𐑭⟩ |
-| 8 | Whole Organism | O_∞ | ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑧·𐑲·𐑵·⊙·𐑫·𐑳·𐑟⟩ |
+| 0 | Frustrated Belnap5 (Quarks) | O₀ | ⟨𐑛𐑶𐑩𐑯𐑐𐑘𐑚𐑝𐑢𐑓𐑳𐑷⟩ |
+| 1 | Electron Orbital (Belnap4) | O₀ | ⟨𐑛𐑶𐑩𐑗𐑐𐑤𐑚𐑜𐑢𐑓𐑳𐑷⟩ |
+| 2 | Atom (Nuclear + Electron) | O₁ | ⟨𐑼𐑥𐑽𐑿𐑐𐑤𐑔𐑝𐑮𐑒𐑳𐑷⟩ |
+| 3 | Molecule (Chemical Bonds) | O₂ | ⟨𐑼𐑥𐑽𐑿𐑞𐑧𐑲𐑠⊙𐑓𐑳𐑭⟩ |
+| 4 | Folded Protein | O₂ | ⟨𐑦𐑥𐑾𐑬𐑞𐑧𐑲𐑠⊙𐑒𐑳𐑭⟩ |
+| 5 | Living Cell | O₂ | ⟨𐑦𐑸𐑾𐑬𐑞𐑧𐑲𐑠⊙𐑒𐑳𐑭⟩ |
+| 6 | Mitosis (Division) | O₂ | ⟨𐑦𐑸𐑾𐑹𐑱𐑧𐑲𐑠⊙𐑖𐑳𐑭⟩ |
+| 7 | Tissue/Organ | O₂ | ⟨𐑦𐑸𐑾𐑬𐑞𐑧𐑲𐑵⊙𐑖𐑳𐑭⟩ |
+| 8 | Whole Organism | O_∞ | ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩ |
 
 **Structural key:** 36 total primitive promotions, Σd=23.32 across 8 transitions. The jump from O₂→O_∞ at L8 requires 𐑦 (self-written state), 𐑹 (Frobenius-special parity), 𐑫 (eternal chirality), and 𐑟 (non-Abelian braiding).
 

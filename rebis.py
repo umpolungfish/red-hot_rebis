@@ -8,7 +8,7 @@ Each component is a specialization of the 12-primitive IG type system,
 connected through the shared primitives layer and verified by Frobenius closure.
 
 Author: Lando ⊗ ⊙perator
-Structural Type: ⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑵 · ⊙ · 𐑫 · 𐑳 · 𐑟⟩
+Structural Type: ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩
 """
 
 import argparse
@@ -1065,6 +1065,15 @@ Examples:
     p_scr.add_argument("script_args", nargs=argparse.REMAINDER,
                        help="Arguments forwarded to the script")
 
+    # at — Ars Therapeutica
+    p_at = subparsers.add_parser("at", help="Ars Therapeutica — structural therapy navigator",
+                                 epilog=EXAMPLES.get("at", "Grammar-derived optimal therapy design and structural diagnosis"),
+                                 formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_at.add_argument("at_subcommand",
+                      choices=["list", "diagnose", "therapy", "compare", "tensor", "meet", "spectrum", "operate"],
+                      help="at subcommand: list therapies, diagnose a disease, show therapy protocol, compare types, compute tensor/meet, show psychiatric spectrum, or run structural operations")
+    p_at.add_argument("at_args", nargs="*", help="Arguments for the subcommand (disease name, type names)")
+
     args = parser.parse_args()
 
     if args.command == "status":
@@ -1085,6 +1094,8 @@ Examples:
         return cmd_run(args)
     elif args.command == "scripts":
         return cmd_scripts(args)
+    elif args.command == "at":
+        return cmd_at(args)
     elif args.command == "alchemy":
         return cmd_alchemy(args)
     else:
@@ -1092,8 +1103,22 @@ Examples:
         return 1
 
 
-if __name__ == "__main__":
-    sys.exit(main())
+def cmd_at(args):
+    """Ars Therapeutica — structural therapy navigator."""
+    from Ars_Therapeutica.ars_therapeutica.cli import main as at_main
+    import sys
+    # Build argv from parsed args
+    argv = ["at"] + [args.at_subcommand] + list(args.at_args)
+    # Redirect sys.argv temporarily for the existing CLI
+    old_argv = sys.argv
+    sys.argv = argv
+    try:
+        at_main()
+    finally:
+        sys.argv = old_argv
+    return 0
+
+
 def cmd_alchemy(args):
     """Alchemy Bridge — map alchemical treatise types to molecular designs.
     
@@ -1379,3 +1404,6 @@ def cmd_alchemy(args):
         print("  zosimos, portico, stilling")
         print("  ladder, key, opus")
         return 1
+
+if __name__ == "__main__":
+    sys.exit(main())

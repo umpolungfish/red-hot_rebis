@@ -1,7 +1,7 @@
 {
   "praxeum_plus_dmt": {
     "combination": "Praxeum (EP-Core Control Platform) + dmt",
-    "composite_type": "⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑵 · 𐑻 · 𐑫 · 𐑳 · 𐑭⟩",
+    "composite_type": "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵𐑻𐑫𐑳𐑭⟩",
     "composite_tier": "O₀",
     "parent_1": {
       "name": "Praxeum (EP-Core Control Platform)",
@@ -39,7 +39,7 @@
   },
   "praxeum_plus_psilocybin": {
     "combination": "Praxeum (EP-Core Control Platform) + psilocybin",
-    "composite_type": "⟨𐑦 · 𐑶 · 𐑾 · 𐑬 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · 𐑻 · 𐑫 · 𐑳 · 𐑭⟩",
+    "composite_type": "⟨𐑦𐑶𐑾𐑬𐑐𐑧𐑲𐑠𐑻𐑫𐑳𐑭⟩",
     "composite_tier": "O₀",
     "parent_1": {
       "name": "Praxeum (EP-Core Control Platform)",
@@ -89,7 +89,7 @@
   },
   "praxeum_plus_lsd": {
     "combination": "Praxeum (EP-Core Control Platform) + lsd",
-    "composite_type": "⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑵 · 𐑻 · 𐑫 · 𐑳 · 𐑭⟩",
+    "composite_type": "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵𐑻𐑫𐑳𐑭⟩",
     "composite_tier": "O₀",
     "parent_1": {
       "name": "Praxeum (EP-Core Control Platform)",
@@ -133,7 +133,7 @@
   },
   "praxeum_plus_ketamine": {
     "combination": "Praxeum (EP-Core Control Platform) + ketamine",
-    "composite_type": "⟨𐑦 · 𐑶 · 𐑾 · 𐑿 · 𐑱 · 𐑧 · 𐑲 · 𐑠 · 𐑻 · 𐑫 · 𐑳 · 𐑭⟩",
+    "composite_type": "⟨𐑦𐑶𐑾𐑿𐑱𐑧𐑲𐑠𐑻𐑫𐑳𐑭⟩",
     "composite_tier": "O₀",
     "parent_1": {
       "name": "Praxeum (EP-Core Control Platform)",
@@ -213,7 +213,7 @@
   },
   "praxeum_plus_mdma": {
     "combination": "Praxeum (EP-Core Control Platform) + mdma",
-    "composite_type": "⟨𐑦 · 𐑶 · 𐑾 · 𐑿 · 𐑞 · 𐑧 · 𐑲 · 𐑠 · 𐑻 · 𐑫 · 𐑳 · 𐑭⟩",
+    "composite_type": "⟨𐑦𐑶𐑾𐑿𐑞𐑧𐑲𐑠𐑻𐑫𐑳𐑭⟩",
     "composite_tier": "O₀",
     "parent_1": {
       "name": "Praxeum (EP-Core Control Platform)",
@@ -281,7 +281,7 @@
   },
   "praxeum_plus_mescaline": {
     "combination": "Praxeum (EP-Core Control Platform) + mescaline",
-    "composite_type": "⟨𐑦 · 𐑶 · 𐑾 · 𐑗 · 𐑱 · 𐑧 · 𐑲 · 𐑠 · 𐑻 · 𐑫 · 𐑳 · 𐑭⟩",
+    "composite_type": "⟨𐑦𐑶𐑾𐑗𐑱𐑧𐑲𐑠𐑻𐑫𐑳𐑭⟩",
     "composite_tier": "O₀",
     "parent_1": {
       "name": "Praxeum (EP-Core Control Platform)",
@@ -367,7 +367,7 @@
   },
   "praxeum_plus_verticullum": {
     "combination": "Praxeum (EP-Core Control Platform) + Verticullum (EP-Lever)",
-    "composite_type": "⟨𐑦 · 𐑶 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · 𐑻 · 𐑫 · 𐑳 · 𐑟⟩",
+    "composite_type": "⟨𐑦𐑶𐑾𐑹𐑐𐑧𐑲𐑠𐑻𐑫𐑳𐑟⟩",
     "composite_tier": "O₀",
     "parent_1": {
       "name": "Praxeum (EP-Core Control Platform)",
@@ -405,7 +405,7 @@
   },
   "praxeum_plus_retiarius": {
     "combination": "Praxeum (EP-Core Control Platform) + Retiarius (Local-Net Trap)",
-    "composite_type": "⟨𐑦 · 𐑶 · 𐑾 · 𐑿 · 𐑞 · 𐑺 · 𐑲 · 𐑠 · 𐑻 · 𐑫 · 𐑳 · 𐑭⟩",
+    "composite_type": "⟨𐑦𐑶𐑾𐑿𐑞𐑺𐑲𐑠𐑻𐑫𐑳𐑭⟩",
     "composite_tier": "O₀",
     "parent_1": {
       "name": "Praxeum (EP-Core Control Platform)",

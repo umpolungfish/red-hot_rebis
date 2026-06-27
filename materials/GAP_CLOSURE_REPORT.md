@@ -212,7 +212,7 @@ This is structurally identical to the IUG itself. The organoid IS a structural m
 
 ### ECM Scaffold: The Chrysalis
 
-**Tuple:** ⟨𐑨·𐑡·𐑾·𐑬·𐑱·𐑧·𐑤·𐑵·𐑢·𐑒·𐑙·𐑷⟩
+**Tuple:** ⟨𐑨𐑡𐑾𐑬𐑱𐑧𐑤𐑵𐑢𐑒𐑙𐑷⟩
 
 **Tier:** O₀ | **Frobenius:** False | **Distance from baseline:** 3.4167
 
@@ -236,7 +236,7 @@ The ECM scaffold is the chrysalis — a temporary structure that the organoid ou
 
 ### Immune-Mimetic Sentinel: The Dormant Guardian
 
-**Tuple:** ⟨𐑨·𐑡·𐑾·𐑬·𐑱·𐑤·𐑲·𐑵·⊙·𐑫·𐑳·𐑴⟩
+**Tuple:** ⟨𐑨𐑡𐑾𐑬𐑱𐑤𐑲𐑵⊙𐑫𐑳𐑴⟩
 
 **Tier:** O₂ | **Frobenius:** False | **Distance from baseline:** 2.8868
 
@@ -346,19 +346,19 @@ Both are structurally open because boundaries cannot be closed — a closed boun
 
 | System | Tuple | Tier | μ∘δ=id |
 |--------|-------|------|--------|
-| **Self-Organoid Baseline** | ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑤·𐑲·𐑠·⊙·𐑫·𐑳·𐑭⟩ | O_∞ | ✓ |
-| **Coherence Myelin** | ⟨𐑼·𐑰·𐑾·𐑹·𐑐·𐑤·𐑲·𐑠·⊙·𐑫·𐑳·𐑭⟩ | O_∞ | ✓ |
-| **Ouroboric Vasculature** | ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑤·𐑲·𐑠·⊙·𐑫·𐑳·𐑭⟩ | O_∞ | ✓ |
-| **Nutrient Medium** | ⟨𐑦·𐑰·𐑾·𐑹·𐑱·𐑤·𐑲·𐑠·⊙·𐑫·𐑳·𐑭⟩ | O_∞ | ✓ |
-| **Optogenetic Matrix** | ⟨𐑼·𐑥·𐑾·𐑹·𐑐·𐑤·𐑲·𐑵·⊙·𐑫·𐑳·𐑭⟩ | O_∞ | ✓ |
-| **Frobenius Core** | ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑤·𐑲·𐑵·⊙·𐑫·𐑳·𐑭⟩ | O_∞ | ✓ |
+| **Self-Organoid Baseline** | ⟨𐑦𐑸𐑾𐑹𐑐𐑤𐑲𐑠⊙𐑫𐑳𐑭⟩ | O_∞ | ✓ |
+| **Coherence Myelin** | ⟨𐑼𐑰𐑾𐑹𐑐𐑤𐑲𐑠⊙𐑫𐑳𐑭⟩ | O_∞ | ✓ |
+| **Ouroboric Vasculature** | ⟨𐑦𐑸𐑾𐑹𐑐𐑤𐑲𐑠⊙𐑫𐑳𐑭⟩ | O_∞ | ✓ |
+| **Nutrient Medium** | ⟨𐑦𐑰𐑾𐑹𐑱𐑤𐑲𐑠⊙𐑫𐑳𐑭⟩ | O_∞ | ✓ |
+| **Optogenetic Matrix** | ⟨𐑼𐑥𐑾𐑹𐑐𐑤𐑲𐑵⊙𐑫𐑳𐑭⟩ | O_∞ | ✓ |
+| **Frobenius Core** | ⟨𐑦𐑸𐑾𐑹𐑐𐑤𐑲𐑵⊙𐑫𐑳𐑭⟩ | O_∞ | ✓ |
 
 ### Deliberately Open Systems
 
 | System | Tuple | Tier | Rationale |
 |--------|-------|------|-----------|
-| **ECM Scaffold** | ⟨𐑨·𐑡·𐑾·𐑬·𐑱·𐑧·𐑚·𐑵·𐑢·𐑒·𐑙·𐑷⟩ | O₀ | Transient chrysalis — degrades as organoid matures |
-| **Immune Sentinel** | ⟨𐑨·𐑡·𐑾·𐑬·𐑱·𐑤·𐑲·𐑵·⊙·𐑫·𐑳·𐑴⟩ | O₂ | Dormant guardian — activates only on non-self detection |
+| **ECM Scaffold** | ⟨𐑨𐑡𐑾𐑬𐑱𐑧𐑚𐑵𐑢𐑒𐑙𐑷⟩ | O₀ | Transient chrysalis — degrades as organoid matures |
+| **Immune Sentinel** | ⟨𐑨𐑡𐑾𐑬𐑱𐑤𐑲𐑵⊙𐑫𐑳𐑴⟩ | O₂ | Dormant guardian — activates only on non-self detection |
 
 ## Appendix B: Frobenius Verification Protocols
 
@@ -368,7 +368,7 @@ For any system claiming μ∘δ=id:
 
 1. **Define the maps:** μ: system state → measurement; δ: measurement → reconstructed state
 2. **Establish the metric:** ||δ(μ(s)) − s|| ≤ ε for all s in state space
-3. **Verify over cycles:** After N cycles, accumulated error ≤ N·ε (linear) or constant (bounded)
+3. **Verify over cycles:** After N cycles, accumulated error ≤ Nε (linear) or constant (bounded)
 4. **Frobenius condition:** ε = 0 exactly (not approximately) — or ε bounded by fundamental limit
 
 ### Per-System Verification

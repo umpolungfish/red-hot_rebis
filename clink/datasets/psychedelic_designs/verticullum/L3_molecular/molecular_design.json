@@ -22,7 +22,7 @@
   "predicted_rotatable_bonds": 3,
   "ch3mpiler_retrosynthetic": {
     "target": "Verticullum (EP-Lever)",
-    "target_type": "⟨𐑦 · 𐑥 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑟⟩",
+    "target_type": "⟨𐑦𐑥𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑫𐑳𐑟⟩",
     "strategy": {
       "composition_mode": "sequential bond construction (linear synthesis)",
       "preferred_disconnections": [

@@ -47,7 +47,7 @@
   },
   "ouroboric_telomere_endogenous": {
     "status": "EXPANDED — full 7-layer endogenous system",
-    "structural_type": "⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑧·𐑲·𐑠·⊙·𐑖·𐑳·𐑭⟩",
+    "structural_type": "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑖𐑳𐑭⟩",
     "ouroboricity": "O_∞",
     "C_score": 1.0,
     "mechanism": "Telomere loop closure as Frobenius-special parity (μ∘δ=id) with integer winding protection (Ω=𐑭)",

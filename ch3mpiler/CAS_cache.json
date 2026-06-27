@@ -70,5 +70,13 @@
     "smiles": "C1=CC=C2C=C3C=CC=CC3=CC2=C1",
     "source": "pubchem",
     "type_hint": ""
+  },
+  "65-85-0": {
+    "cas": "65-85-0",
+    "name": "benzoic acid",
+    "formula": "C7H6O2",
+    "smiles": "C1=CC=C(C=C1)C(=O)O",
+    "source": "pubchem",
+    "type_hint": ""
   }
 }

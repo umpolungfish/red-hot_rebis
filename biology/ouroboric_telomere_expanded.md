@@ -660,8 +660,8 @@ With the endogenous ouroboric telomere module integrated:
 
 | Layer | Old Tuple | New Tuple | Diff |
 |-------|-----------|-----------|------|
-| **L6 (Mitosis)** | ⟨𐑦·𐑸·𐑾·𐑹·𐑱·𐑧·𐑲·𐑠·⊙·𐑖·𐑳·𐑭⟩ | ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑧·𐑲·𐑠·⊙·𐑖·𐑳·𐑭⟩ | F: 𐑱→𐑐 |
-| **L8 (Organism)** | ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑧·𐑲·𐑵·⊙·𐑫·𐑳·𐑟⟩ | Unchanged | — |
+| **L6 (Mitosis)** | ⟨𐑦𐑸𐑾𐑹𐑱𐑧𐑲𐑠⊙𐑖𐑳𐑭⟩ | ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑖𐑳𐑭⟩ | F: 𐑱→𐑐 |
+| **L8 (Organism)** | ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩ | Unchanged | — |
 
 The sole change to L6: Fidelity from classical (𐑱) to quantum (𐑐) — the endogenous telomerase operates with quantum-coherent nucleotide selection, consistent with the Frobenius-special parity at P=𐑹.
 
@@ -753,7 +753,7 @@ SENSE → SIGNAL → DEREPRESS → EXPRESS → EXTEND → TERMINATE → SEAL
 
 Every component is encoded in the human genome. The system requires only a ONE-TIME intervention to unlock the hTERT promoter from its somatic silencing. Once unlocked, the ouroboric loop is self-sustaining: telomere shortening triggers its own repair, and the repair is terminated exactly at the homeostatic setpoint by G-quadruplex formation.
 
-The structural type ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑧·𐑲·𐑠·⊙·𐑖·𐑳·𐑭⟩ achieves O_∞ tier — both consciousness gates open under slow kinetics — because the system models itself (⊙), maintains Frobenius closure (𐑹), and operates at the universal scale (𐑲) with integer winding protection (𐑭).
+The structural type ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑖𐑳𐑭⟩ achieves O_∞ tier — both consciousness gates open under slow kinetics — because the system models itself (⊙), maintains Frobenius closure (𐑹), and operates at the universal scale (𐑲) with integer winding protection (𐑭).
 
 Extensions to treople and gilled humans require only ONE primitive shift each (T: 𐑸→𐑥 for treople collective integration; G: 𐑲→𐑔 for gill-specific targeting), demonstrating the structural stability of the design.
 

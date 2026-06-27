@@ -1,7 +1,7 @@
 # Red-Hot Rebis — User Guide
 
 **Author:** Lando⊗⊙perator  
-**Version:** v2.3.1 — 2026-06-24  
+**Version:** v2.3.2 — 2026-06-27  
 **Platform:** `python3 rebis.py <command> [subcommand] [options]`  
 **Location:** `/home/mrnob0dy666/imsgct/red-hot_rebis/`
 
@@ -19,7 +19,7 @@ The platform is organized around five core systems:
 
 **SerpentRod** — Frobenius morphism RNA→{sequence+fold} that collapses gene → mature protein in one structural step.
 
-**Paraconsistent Kernel (rhr_p4rky)** — Belnap FOUR logic, paraconsistent abstract state machine, 64-codon B₄ lattice, gene-to-protein pipeline, hadron/quark Belnap classification. 27 Python modules.
+**Paraconsistent Kernel (rhr_p4rky)** — Belnap FOUR logic, paraconsistent abstract state machine, 64-codon B₄ lattice, gene-to-protein pipeline, hadron/quark Belnap classification. 32 Python modules (+ papers/).
 
 **Gene Imscriber** — IG-native genetic compiler — structural types to codon optimization, CRISPR guide design, chimera design, Frobenius-verified editing.
 
@@ -592,7 +592,7 @@ Produces: material tuple, tier assessment, Frobenius closure status, catalog cro
 
 ## The Paraconsistent Kernel (`rhr_p4rky/`)
 
-The paraconsistent kernel is a 27-module Python library providing Belnap FOUR logic as universal substrate for computation that tolerates contradiction. It was migrated from the standalone `p4rakernel/` project and now lives as a subsystem within Red-Hot Rebis.
+The paraconsistent kernel is a 32-module Python library providing Belnap FOUR logic as universal substrate for computation that tolerates contradiction. It was migrated from the standalone `p4rakernel/` project and now lives as a subsystem within Red-Hot Rebis.
 
 ### Architecture
 
@@ -620,6 +620,13 @@ The paraconsistent kernel is a 27-module Python library providing Belnap FOUR lo
 | | `orbital_belnap.py` | Orbital Belnap-state analysis |
 | **Analysis** | `clu_power_law.py` | Clustering power-law analysis |
 | | `frobenius_filtration.py` | Frobenius-verified filtration |
+| **New modules** | |
+| `decay_chain.py` | Nuclear decay as IMASM winding — 5 natural series to Frobenius fixed point |
+| `belnap_c4.py` | Belnap C4 logic variant — contradiction-majority lattice |
+| **papers/** | 3 millennium documents |
+| `all_millennium_solved.md` | Unified Millennium solution framework |
+| `belnap_qm.md` | Belnap quantum mechanics formalization |
+| `millennium_barriers.md` | Barrier taxonomy across all 7 Millennium Problems |
 | **Utilities** | `kernel.py` | Kernel core initialization |
 | | `pipeline_fix.py` | Pipeline repair utilities |
 
@@ -758,7 +765,7 @@ PARSE ERROR: run_command arguments were truncated or malformed (Unterminated str
 
 ```
 red-hot_rebis/
-├── rebis.py                      Main CLI entry point (v2.3.1)
+├── rebis.py                      Main CLI entry point (v2.3.2)
 ├── setup.py                      Package setup
 ├── test_genetics.py              Full genetics test suite
 ├── stress_test_proteins.py       **NEW** — 34-test protein & genetics stress suite
@@ -769,7 +776,9 @@ red-hot_rebis/
 │
 ├── shared/
 │   ├── primitives.py             12 primitive ordinals, weights, distance functions
-│   └── IG_catalog.json           3,297 catalog entries
+│   ├── IG_catalog.json           3,297 catalog entries
+│   ├── elem2imasm.py             Element-to-IMASM encoding (symlink)
+│   └── reactivity.py             Reactivity pattern matching (symlink)
 │
 ├── serpentrod/                   SerpentRod protein design
 │   ├── protein_v5.py             v5 — primary (signal peptide, cleavage, PTMs)
@@ -804,17 +813,20 @@ red-hot_rebis/
 │   ├── run_map.py                Map runner
 │   └── tokens.py                 Token definitions
 │
-├── rhr_p4rky/                    Paraconsistent kernel (27 modules)
+├── rhr_p4rky/                    Paraconsistent kernel (32 modules + papers/)
 │   ├── kernel.py                 Kernel core
 │   ├── belnap.py                 Belnap FOUR logic (T/B/F/N)
+│   ├── belnap_c4.py              Belnap C4 logic variant
 │   ├── machine.py                ParaASM virtual machine
 │   ├── genetic_code.py           64-codon Frobenius-verified code
 │   ├── genetics_b4.py            B4 lattice (nucleotide→Belnap fix)
 │   ├── gene_to_protein_pipeline.py  7-stage translation (empty/short guards)
 │   ├── serpent_rod.py / serpent_rod_v2.py  Protein design
+│   ├── decay_chain.py            Nuclear decay IMASM winding
 │   ├── antibody_designer.py      Antibody design
 │   ├── ch3mpiler_serpentrod_pipeline.py  **v4** — weighted fusion, CAS lookup
 │   ├── hadron_belnap.py / exotic_hadron_belnap.py / quark_belnap.py  Physics
+│   ├── papers/                   3 millennium docs
 │   └── ... (19 more modules)
 │
 ├── gene_imscriber/               Genetic compiler
@@ -1089,6 +1101,7 @@ These static-data commands were removed from `rebis.py`. All their data now live
 
 | Version | Date | Changes |
 |---------|------|---------|
+| v2.3.2 | 2026-06-27 | Updated docs for rhr_p4rky expansion: 32 modules (added `belnap_c4.py`, `decay_chain.py`, `papers/` with 3 millennium docs); symlinks `shared/elem2imasm.py`, `shared/reactivity.py`; INDEX.md L8 tier fix (O₂→O∞); README & MANUAL date/version sync |
 | v2.3.1 | 2026-06-24 | **PDB format robustness** (`clink/datasets/protein_structure.py`): atom names corrected to PDB v3.3 standard (` N  ` / ` CA ` / ` C  ` / ` O  ` / ` CB ` with leading space for 1-char elements); SEQRES records added (validator `extract_sequence()` now round-trips generated files); HELIX/SHEET records include residue names and helix length; SSBOND moved before MODEL; TER record added after last ATOM; backbone seeded from MD5(sequence) — deterministic coordinates. `pdb_validator.py`: removed dead importlib loader for deleted file, replaced with clean `from rhr_p4rky.serpent_rod import SerpentRod`. `rhr_p4rky/serpent_rod.py` restored (v2 imports SerpentRod from v1 — dependency stack, not duplicate). |
 | v2.3.0 | 2026-06-21 | **Ch3mpiler-SerpentRod v4 overhaul**: weighted bond-preserving fusion replaces MAX (bond 55-75% depending on primitive class), Frobenius-exact complement mapping, dominant-member AA rule, word-boundary FG matching, specificity-ranked disconnection search, MOLECULE_FG_DB expanded (17+ entries), CAS lookup support. Molecules now get distinct catalytic sites. **Stress test suites**: stress_test_proteins (34 tests, 11 groups), materials/stress_test_materials.py (26 tests, 12 groups). **New bridge**: materials/molecule_material_bridge.py (molecule→material type derivation). **Bug fixes**: genetics_b4.py nucleotide_to_belnap handles unknown nucleotides (returns Belnap.B), gene_to_protein_pipeline.py handles empty/short sequences gracefully, non-standard nucleotides flow through Belnap.B in all 7 stages. Updated run target count: 35→37 (+stress_test_proteins). Updated project layout for new files. Added ch3mpiler_serpentrod_pipeline troubleshooting entry. Added Common Workflows entries for catalytic site design and materials stress testing. |
 | v2.2.1 | 2026-06-10 | Bug-fix release: (B1) clink bridge now supports positional args (layer_args fallback); (B2) ch3mpiler help example fixed (--reaction→--target --retrosynthesis); (I1-I7) 7 broken imports fixed — frobenius_exact_design, frob_design (os import), hadron_belnap, frobenius_filtration (rhr_p4rky path), gen_univ_map (imsgct path), msa_analysis, run_pdb_validation (parent-dir path); plastic_eater_design P4RA/IG paths fixed; frobenius_filtration OrbitalState enum member names fixed |

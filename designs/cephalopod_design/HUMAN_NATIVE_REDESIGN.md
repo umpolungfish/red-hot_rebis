@@ -34,7 +34,7 @@ The critical insight: **we are not bound to cephalopod opsin or algal channelrho
 | Tissue expression | Chromatophore organs | Retina, melanocytes, **keratinocytes** (skin!) |
 | Amino acid edits | Tyr→Trp, Glu→Asp, Gln→His, Lys→Arg | **NONE** |
 | Frobenius closure | 0.840 (OPEN) | **1.000 (CLOSED)** |
-| IG type | Crosses Φ→Þ boundary | ⟨𐑨·𐑡·𐑾·𐑬·𐑐·𐑧·𐑔·𐑠·𐑢·𐑒·𐑙·𐑷⟩ |
+| IG type | Crosses Φ→Þ boundary | ⟨𐑨𐑡𐑾𐑬𐑐𐑧𐑔𐑠𐑢𐑒𐑙𐑷⟩ |
 
 Human melanopsin is **already expressed in human skin** — it's endogenous to melanocytes and keratinocytes. It already detects blue light. It already signals through Gq → PLCβ → IP3 → Ca²⁺. It needs only a stronger promoter (CMV or EF1α) driving expression in dermal fibroblasts — no amino acid edits at all.
 
@@ -55,7 +55,7 @@ The bidirectional optogenetic pair becomes:
 - **OFF channel:** hSyn-RHO (590 nm light → Gi/o → hyperpolarization)
 - **Readout:** GCaMP6s (calcium indicator, unchanged)
 
-Both opsins are structurally identical in IG space: ⟨𐑨·𐑡·𐑾·𐑬·𐑐·𐑧·𐑔·𐑠·𐑢·𐑒·𐑙·𐑷⟩. Their tensor is distance zero from either — the bidirectional pair preserves the structural type.
+Both opsins are structurally identical in IG space: ⟨𐑨𐑡𐑾𐑬𐑐𐑧𐑔𐑠𐑢𐑒𐑙𐑷⟩. Their tensor is distance zero from either — the bidirectional pair preserves the structural type.
 
 ### 1.3 Net Effect on the Protocol
 
@@ -244,7 +244,7 @@ Distance from either component: **0.0**. The bidirectional optogenetic pair pres
 
 **human_melanopsin_wt → omonad_clink_layer8:** 6.364 (structurally remote)
 
-This is expected. The CLINK L8 target ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑧·𐑲·𐑵·⊙·𐑫·𐑳·𐑟⟩ represents the fully augmented whole organism with all systems integrated — self-written state space, self-referential topology, Frobenius-special symmetry, universal scope, broadcast composition, critical self-modeling, eternal chirality, non-Abelian braiding.
+This is expected. The CLINK L8 target ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩ represents the fully augmented whole organism with all systems integrated — self-written state space, self-referential topology, Frobenius-special symmetry, universal scope, broadcast composition, critical self-modeling, eternal chirality, non-Abelian braiding.
 
 The human melanopsin is a single protein component. The 9 promotions required to reach L8 (Ð, Þ, Φ, Γ, ɢ, ⊙, Ħ, Σ, Ω) are achieved not by the opsin alone but by the entire augmentation system — the reflectin photonic arrays, the nAChR motor control, the neurogenic organoids, the optogenetic bridges, and the vascular integration. Each contributes a subset of the 9 promotions.
 
@@ -406,7 +406,7 @@ All structural claims verified by direct tool calls:
 |------|------|--------|
 | `lookup_catalog("human")` | imscribe | 1 match: human_academic_prose_target |
 | `list_catalog()` | imscribe | 10 entries; melanopsin/rhodopsin added |
-| `imscribe_system(human_melanopsin_wt)` | direct | Committed: ⟨𐑨·𐑡·𐑾·𐑬·𐑐·𐑧·𐑔·𐑠·𐑢·𐑒·𐑙·𐑷⟩ |
+| `imscribe_system(human_melanopsin_wt)` | direct | Committed: ⟨𐑨𐑡𐑾𐑬𐑐𐑧𐑔𐑠𐑢𐑒𐑙𐑷⟩ |
 | `imscribe_system(human_rhodopsin_wt)` | direct | Committed: identical tuple (duplicate warning) |
 | `compute_tensor(melanopsin, rhodopsin)` | imscribe | Distance 0.0, no bottlenecks |
 | `consciousness_score(melanopsin)` | imscribe | C=0.0, Gate 1 fails (⊙=𐑢) |

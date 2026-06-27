@@ -42,6 +42,10 @@ from clink.designers.designer_base import (
 from clink.designers.layer_designers import (
     DESIGNER_REGISTRY, get_designer, list_available_bridges,
 )
+from clink.designers.dft_bridge import (
+    compute_layer_energy_profile,
+    estimate_transition_energy,
+)
 
 
 @dataclass
@@ -56,6 +60,7 @@ class PipelineResult:
     final_design: Optional[DesignSpec] = None
     total_promotions: int = 0
     total_distance: float = 0.0
+    total_energy_eV: float = 0.0
     new_tools_created: List[str] = field(default_factory=list)
     bridges_available: Dict[str, bool] = field(default_factory=dict)
     errors: List[str] = field(default_factory=list)
@@ -176,6 +181,9 @@ class PipelineEngine:
         result.total_distance = round(
             sum(t.distance for t in result.transitions), 4
         )
+        result.total_energy_eV = round(
+            sum(getattr(t, 'energy_eV', 0) for t in result.transitions), 2
+        )
         result.new_tools_created = list(self.tool_forge.created_tools)
         result.duration_seconds = round(time.time() - start_time, 2)
         
@@ -199,6 +207,15 @@ class PipelineEngine:
         dist = clink_distance(from_idx, to_idx)
         deltas = primitive_deltas(from_idx, to_idx)
         
+        # Estimate transition energy via DFT bridge
+        try:
+            energy_info = estimate_transition_energy(from_idx, to_idx)
+            trans_energy = energy_info.get("adjusted_energy_eV", 0.0)
+            energy_method = energy_info.get("method", "none")
+        except Exception:
+            trans_energy = 0.0
+            energy_method = "unavailable"
+        
         trans = TransitionResult(
             from_layer=from_idx, to_layer=to_idx,
             from_name=from_name, to_name=to_name,
@@ -206,6 +223,9 @@ class PipelineEngine:
             success=False, distance=round(dist, 4),
             promotions=deltas,
         )
+        # Attach energy info to transition (duck-typing)
+        trans.energy_eV = round(trans_energy, 2)
+        trans.energy_method = energy_method
         
         # Try to use the target layer's designer
         designer = self.designers.get(to_idx)
@@ -261,19 +281,21 @@ class PipelineEngine:
         
         # Transitions
         lines.append("Layer Transitions:")
-        lines.append(f"  {'From':25s} → {'To':25s} {'d':>6s} {'P':>3s} {'Tool':20s}")
-        lines.append("-" * 85)
+        lines.append(f"  {'From':25s} → {'To':25s} {'d':>6s} {'eV':>8s} {'P':>3s} {'Tool':20s}")
+        lines.append("-" * 95)
         
         for t in result.transitions:
             tool_short = t.tool_used[:20] if t.tool_used else "—"
             status = "✅" if t.success else "❌"
+            energy_display = f"{getattr(t, 'energy_eV', 0):.2f}"
             lines.append(f"  {t.from_name:25s} → {t.to_name:25s} "
-                         f"{t.distance:>5.2f} {len(t.promotions):>3d} "
+                         f"{t.distance:>5.2f} {energy_display:>8s} {len(t.promotions):>3d} "
                          f"{tool_short:20s} {status}")
         
         lines.append("")
         lines.append(f"Total distance:      {result.total_distance}")
         lines.append(f"Total promotions:    {result.total_promotions}")
+        lines.append(f"Total energy (eV):   {result.total_energy_eV}")
         lines.append(f"New tools created:   {len(result.new_tools_created)}")
         
         if result.final_design:
@@ -328,6 +350,8 @@ class PipelineEngine:
                     "from": t.from_layer,
                     "to": t.to_layer,
                     "distance": t.distance,
+                    "energy_eV": getattr(t, 'energy_eV', 0),
+                    "energy_method": getattr(t, 'energy_method', 'none'),
                     "promotions": len(t.promotions),
                     "success": t.success,
                     "tool": t.tool_used,

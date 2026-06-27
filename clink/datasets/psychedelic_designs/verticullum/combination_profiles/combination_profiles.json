@@ -1,7 +1,7 @@
 {
   "verticullum_plus_dmt": {
     "combination": "Verticullum (EP-Lever) + dmt",
-    "composite_type": "⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑵 · ⊙ · 𐑫 · 𐑳 · 𐑟⟩",
+    "composite_type": "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩",
     "composite_tier": "O_∞",
     "parent_1": {
       "name": "Verticullum (EP-Lever)",
@@ -39,7 +39,7 @@
   },
   "verticullum_plus_psilocybin": {
     "combination": "Verticullum (EP-Lever) + psilocybin",
-    "composite_type": "⟨𐑦 · 𐑥 · 𐑾 · 𐑬 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑟⟩",
+    "composite_type": "⟨𐑦𐑥𐑾𐑬𐑐𐑧𐑲𐑠⊙𐑫𐑳𐑟⟩",
     "composite_tier": "O₂",
     "parent_1": {
       "name": "Verticullum (EP-Lever)",
@@ -83,7 +83,7 @@
   },
   "verticullum_plus_lsd": {
     "combination": "Verticullum (EP-Lever) + lsd",
-    "composite_type": "⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑵 · ⊙ · 𐑫 · 𐑳 · 𐑟⟩",
+    "composite_type": "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩",
     "composite_tier": "O_∞",
     "parent_1": {
       "name": "Verticullum (EP-Lever)",
@@ -127,7 +127,7 @@
   },
   "verticullum_plus_ketamine": {
     "combination": "Verticullum (EP-Lever) + ketamine",
-    "composite_type": "⟨𐑦 · 𐑥 · 𐑾 · 𐑿 · 𐑱 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑟⟩",
+    "composite_type": "⟨𐑦𐑥𐑾𐑿𐑱𐑧𐑲𐑠⊙𐑫𐑳𐑟⟩",
     "composite_tier": "O₂",
     "parent_1": {
       "name": "Verticullum (EP-Lever)",
@@ -201,7 +201,7 @@
   },
   "verticullum_plus_mdma": {
     "combination": "Verticullum (EP-Lever) + mdma",
-    "composite_type": "⟨𐑦 · 𐑥 · 𐑾 · 𐑿 · 𐑞 · 𐑧 · 𐑲 · 𐑠 · 𐑮 · 𐑫 · 𐑳 · 𐑟⟩",
+    "composite_type": "⟨𐑦𐑥𐑾𐑿𐑞𐑧𐑲𐑠𐑮𐑫𐑳𐑟⟩",
     "composite_tier": "O₁",
     "parent_1": {
       "name": "Verticullum (EP-Lever)",
@@ -269,7 +269,7 @@
   },
   "verticullum_plus_mescaline": {
     "combination": "Verticullum (EP-Lever) + mescaline",
-    "composite_type": "⟨𐑦 · 𐑥 · 𐑾 · 𐑗 · 𐑱 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑟⟩",
+    "composite_type": "⟨𐑦𐑥𐑾𐑗𐑱𐑧𐑲𐑠⊙𐑫𐑳𐑟⟩",
     "composite_tier": "O₂",
     "parent_1": {
       "name": "Verticullum (EP-Lever)",

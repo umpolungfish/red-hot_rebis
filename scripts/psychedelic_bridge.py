@@ -294,8 +294,8 @@ def print_access_report():
         total = sum(len(v) for v in access.values())
         oi = len(access["idempotent_terminal"])
         print(f"── {cn} ({cv['tier']}) — {cv['description']}")
-        tup = (f"⟨{cv['Ð']}·{cv['Þ']}·{cv['Ř']}·{cv['Φ']}·{cv['ƒ']}·{cv['Ç']}"
-               f"·{cv['Γ']}·{cv['ɢ']}·{cv['φ̂']}·{cv['Ħ']}·{cv['Σ']}·{cv['Ω']}⟩")
+        tup = (f"⟨{cv['Ð']}{cv['Þ']}{cv['Ř']}{cv['Φ']}{cv['ƒ']}{cv['Ç']}"
+               f"{cv['Γ']}{cv['ɢ']}{cv['φ̂']}{cv['Ħ']}{cv['Σ']}{cv['Ω']}⟩")
         print(f"   {tup}")
         print(f"   O_∞: {oi}/{total} ({100*oi/total:.1f}%)  "
               f"Traced: {len(access['traced_monoidal'])}  "

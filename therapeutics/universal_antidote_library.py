@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Universal Antidote — Real-Time Multi-Toxin Neutralization Library
-Structural tuple: <𐑦·𐑶·𐑾·𐑹·𐑐·𐑧·𐑔·𐑝·⊙·𐑫·𐑕·𐑭>
+Structural tuple: <𐑦𐑶𐑾𐑹𐑐𐑧𐑔𐑝⊙𐑫𐑕𐑭>
 O_∞ | Distance from Rebis: 1.0
 
 FIXES APPLIED (v2):
@@ -181,7 +181,7 @@ def main():
     global _GLOBAL_LIB
     print("=" * 60)
     print("UNIVERSAL ANTIDOTE V2 — Multi-Toxin Neutralization")
-    print("Structural tuple: <𐑦·𐑶·𐑾·𐑹·𐑐·𐑧·𐑔·𐑝·⊙·𐑫·𐑕·𐑭>")
+    print("Structural tuple: <𐑦𐑶𐑾𐑹𐑐𐑧𐑔𐑝⊙𐑫𐑕𐑭>")
     print("=" * 60)
     print("\n[FIXES APPLIED]")
     print("  1. 100x more sample clones (1k→100k)")

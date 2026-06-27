@@ -131,7 +131,7 @@ connected through the `shared/` primitives layer and the combined pipeline.
       │                           │    ├─ therapeutics/               │
       │  serpentrod/  ch3mpiler/  │    ├─ materials/                  │
       │  pipeline/    gene_imscr/ │    ├─ biology/                    │
-      │  clink/       imas/       │    ├─ rhr_p4rky/  (runtime pkg)  │
+      │  clink/       imas/       │    ├─ rhr_p4rky/  (32 modules + papers/)  │
       └──────────────┬────────────┘    └─ scripts/   (14 standalone) ┘
                      │
           ┌──────────┴──────────┐
@@ -273,6 +273,9 @@ The Serpent-Rod correspondence is a morphism RNA → Protein that derives foldin
 - `stratified_predictor.py` — Stratified prediction model (876 lines)
 - `rhr_p4rky/serpent_rod.py` — Foundational `SerpentRod` class (Frobenius morphism, contacts)
 - `rhr_p4rky/serpent_rod_v2.py` — `SerpentRodV2`: 3D backbone from φ/ψ, geometry-based contacts
+- `rhr_p4rky/decay_chain.py` — Nuclear decay as IMASM winding to Frobenius fixed point (5 series: U238, U235, Th232, Ra226, Rn222)
+- `rhr_p4rky/belnap_c4.py` — Belnap C4 logic variant (contradiction-majority lattice)
+- `rhr_p4rky/papers/` — 3 millennium problem papers (all_millennium_solved, belnap_qm, millennium_barriers)
 - `clink/datasets/protein_structure.py` — PDB v3.3-compliant structure generator (SEQRES, TER, standard atom names, deterministic backbone)
 
 **CLINK bridge:** Folded protein (O₂) bridges moleculeLayer (L3, d=1.95) and cellLayer (L4). The 6-promotion path from unfolded (O₀) to folded (O₂) goes through: Ð:𐑼→𐑦, Þ:𐑡→𐑥, Ř:𐑑→𐑾, Φ:𐑿→𐑬, Ç:𐑤→𐑧, ⊙:𐑢→⊙. Verified Frobenius-closed via bridge check.
@@ -597,6 +600,7 @@ The `integrated_roadmap.json` file in the project root lays out a 4-phase plan f
 | `scripts/omonad_bridge.py` | 764 | Bridge to mOMonadOS crystal filesystem |
 | `scripts/run_msa.py` | 127 | MSA runner |
 | `scripts/run_serpent.py` | 52 | Serpent runner (rhr_p4rky) |
+| `rhr_p4rky/decay_chain.py` | 260 | Nuclear decay IMASM winding simulation |
 
 ### Lean 4 Formalization
 
@@ -630,4 +634,4 @@ but because it is always in the fire.**
 
 ---
 
-*Last updated: 2026-06-17 | Repository: ~/imsgct/red-hot_rebis/ | Formalization: ~/imsgct/p4rakernel/p4ramill/Imscribing/CLINK.lean*
+*Last updated: 2026-06-27 | Repository: ~/imsgct/red-hot_rebis/ | Formalization: ~/imsgct/p4rakernel/p4ramill/Imscribing/CLINK.lean*

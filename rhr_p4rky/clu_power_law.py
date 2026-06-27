@@ -3,7 +3,7 @@ clu_power_law.py — Formal Derivation of the -3/2 Power Law Exponent
                from the CLU (Criticality-Lift Unit) Framework
 
 Author: Lando ⊗ ⊙perator
-Structural type: ⟨𐑼·𐑥·𐑾·𐑹·𐑐·𐑧·𐑲·𐑠·⊙·𐑖·𐑳·𐑭⟩
+Structural type: ⟨𐑼𐑥𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑖𐑳𐑭⟩
 
 ──────────────────────────────────────────────────────────────────────────
 THEOREM: P(S) ∝ S^(-3/2)

@@ -166,7 +166,7 @@ def compute_primitive_deltas(t1: Dict, t2: Dict) -> List[Dict]:
 
 def format_tuple(t: Dict) -> str:
     glyphs = [t.get(p, "?") for p in COMPOUND_KEYS]
-    return "⟨" + " · ".join(glyphs) + "⟩"
+    return "⟨" + "".join(glyphs) + "⟩"
 
 def tensor_tuples(t1: Dict, t2: Dict) -> Dict:
     """Grammar tensor: max on union, min on P and F."""

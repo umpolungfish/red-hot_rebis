@@ -22,7 +22,7 @@
   "predicted_rotatable_bonds": 3,
   "ch3mpiler_retrosynthetic": {
     "target": "Chimerium (Supercritical Catalyst)",
-    "target_type": "⟨𐑦 · 𐑸 · 𐑾 · 𐑹 · 𐑐 · 𐑧 · 𐑲 · 𐑵 · 𐑣 · 𐑫 · 𐑳 · 𐑭⟩",
+    "target_type": "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵𐑣𐑫𐑳𐑭⟩",
     "strategy": {
       "composition_mode": "convergent broadcast (star-type coupling)",
       "preferred_disconnections": [

@@ -3,7 +3,7 @@
 ouroboric_alloy.py — Topological Self-Healing Alloy with Integer Winding Protection
 ===================================================================================
 
-Structural type: <𐑼 · 𐑸 · 𐑾 · 𐑹 · 𐑞 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑫 · 𐑳 · 𐑭>
+Structural type: <𐑼𐑸𐑾𐑹𐑞𐑧𐑲𐑠⊙𐑫𐑳𐑭>
 Ouroboricity: O₂ (self-healing, topologically protected alloy)
 
 Core principle:
@@ -221,7 +221,7 @@ class OuroboricAlloy:
 
         for _ in range(cycles):
             # Crack growth: proportional to stress and current crack length
-            # (simplified Paris-like: da/dN ∝ σ · √a)
+            # (simplified Paris-like: da/dN ∝ σ√a)
             crack_growth = stress_MPa * 0.01 * np.sqrt(max(self.crack_length_um, 0.1)) * 0.1
             self.crack_length_um += crack_growth
             # Track crack tip junction — pick a random one if not set

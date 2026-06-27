@@ -1,0 +1,14 @@
+[project]
+name = "ars-therapeutica"
+version = "1.0.0"
+description = "Ars Therapeutica — Structural grammar-derived optimal therapies, operationalized as a type-lattice navigator with disease-to-health promotion pathways"
+requires-python = ">=3.10"
+license = {text = "Unlicense"}
+dependencies = []
+
+[project.scripts]
+at = "ars_therapeutica.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

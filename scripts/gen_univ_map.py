@@ -100,7 +100,7 @@ lines.append("")
 for cn, cv in COMPOUNDS.items():
     lines.append(f"### {cn}")
     lines.append("")
-    tup = f"⟨{cv['Ð']}·{cv['Þ']}·{cv['Ř']}·{cv['Φ']}·{cv['ƒ']}·{cv['Ç']}·{cv['Γ']}·{cv['ɢ']}·{cv['φ̂']}·{cv['Ħ']}·{cv['Σ']}·{cv['Ω']}⟩"
+    tup = f"⟨{cv['Ð']}{cv['Þ']}{cv['Ř']}{cv['Φ']}{cv['ƒ']}{cv['Ç']}{cv['Γ']}{cv['ɢ']}{cv['φ̂']}{cv['Ħ']}{cv['Σ']}{cv['Ω']}⟩"
     lines.append(f"**Tuple:** {tup}  ")
     lines.append(f"**Tier (canonical):** {TIERS[cn]}  ")
     

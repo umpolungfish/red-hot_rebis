@@ -280,5 +280,5 @@ ACTIVE → equilibrium). The core architecture (TRF1 discrete gate, TERRA modula
 shelterin sensing, epigenetic derepression) was correct; only the parameterization was 
 wrong.
 
-The structural type ⟨𐑦·𐑸·𐑾·𐑹·𐑐·𐑧·𐑲·𐑠·⊙·𐑖·𐑳·𐑭⟩ and O_∞ tier are confirmed by 
+The structural type ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑖𐑳𐑭⟩ and O_∞ tier are confirmed by 
 simulation evidence.

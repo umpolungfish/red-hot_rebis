@@ -14,7 +14,7 @@
     "S": "𐑳",
     "W": "𐑴"
   },
-  "tuple_display": "⟨𐑦 · 𐑥 · 𐑽 · 𐑬 · 𐑐 · 𐑧 · 𐑲 · 𐑠 · ⊙ · 𐑖 · 𐑳 · 𐑴⟩",
+  "tuple_display": "⟨𐑦𐑥𐑽𐑬𐑐𐑧𐑲𐑠⊙𐑖𐑳𐑴⟩",
   "tier": "O₂",
   "c_score": 0.0,
   "primitive_breakdown": {
