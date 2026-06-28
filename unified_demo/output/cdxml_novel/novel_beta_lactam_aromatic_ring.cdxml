@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE CDXML SYSTEM "http://www.cambridgesoft.com/xml/cdxml.dtd">
+<CDXML
+ CreationProgram="Red-Hot Rebis Novelty Generator"
+ CreationProgramVersion="1.0"
+ BoundingBox="0 0 13500 18000"
+ WindowPosition="0 0"
+ WindowSize="13500 18000"
+ PageSize="13500 18000"
+ PageOverlap="0"
+ HeaderFont="24"
+ CaptionFont="16"
+ LabelFont="12"
+ BondLength="48.16"
+ BondSpacing="0.25"
+ BondWidth="4.19"
+ BoldWidth="6.69"
+ LineWidth="4.19"
+ MarginWidth="1.33"
+ HashSpacing="2.77"
+ ChainAngle="120"
+ BondAngle="120"
+ CaptionFace="96"
+ CaptionSize="12"
+ LabelFace="96"
+ LabelSize="10"
+><colortable>
+<color r="0" g="0" b="0"/>
+<color r="1" g="1" b="1"/>
+<color r="1" g="0" b="0"/>
+</colortable>
+<fonttable>
+<font id="96" charset="iso-8859-1" name="Arial"/>
+</fonttable>
+<page BoundingBox="0 0 13500 18000" HeaderFont="24"
+      CaptionFont="16" LabelFont="12" PageNumber="1"
+      PageOverlap="0" HeaderPosition="0"
+      FooterPosition="0" PrintTrim="0"
+      HeightPages="1" WidthPages="1">
+<fragment BoundingBox="0 0 13500 18000">
+  <n id="1" p="6750.0 1500.0" Element="7" LabelText="novel_beta_lactam_aromatic_ring" LabelJustification="Center"/>
+  <n id="2" p="6674.4 8940.2" Element="O"/>
+  <n id="3" p="6680.7 8984.8" Element="C"/>
+  <n id="4" p="6716.7 9011.8" Element="C"/>
+  <n id="5" p="6689.7 9047.8" Element="C"/>
+  <n id="6" p="6653.7 9020.8" Element="N"/>
+  <n id="7" p="6761.3 9005.5" Element="C"/>
+  <n id="8" p="6789.0 9040.9" Element="C"/>
+  <n id="9" p="6833.6 9034.5" Element="C"/>
+  <n id="10" p="6850.4 8992.8" Element="C"/>
+  <n id="11" p="6822.6 8957.4" Element="C"/>
+  <n id="12" p="6778.0 8963.7" Element="C"/>
+  <b id="2_3" B="2" E="3" Display="Double"/>
+  <b id="3_4" B="3" E="4" Display="Solid"/>
+  <b id="4_5" B="4" E="5" Display="Solid"/>
+  <b id="5_6" B="5" E="6" Display="Solid"/>
+  <b id="6_3" B="6" E="3" Display="Solid"/>
+  <b id="7_8" B="7" E="8" Display="Solid"/>
+  <b id="8_9" B="8" E="9" Display="Solid"/>
+  <b id="9_10" B="9" E="10" Display="Solid"/>
+  <b id="10_11" B="10" E="11" Display="Solid"/>
+  <b id="11_12" B="11" E="12" Display="Solid"/>
+  <b id="12_7" B="12" E="7" Display="Solid"/>
+  <b id="4_7" B="4" E="7" Display="Solid"/>
+  <n id="14" p="6750.0 16000.0" Element="7" LabelText="SMILES: O=C1NCC1c1ccccc1" LabelJustification="Center"/>
+  <n id="15" p="6750.0 16500.0" Element="7" LabelText="Novelty: beta_lactam + aromatic_ring" LabelJustification="Center"/>
+</fragment>
+</page>
+</CDXML>

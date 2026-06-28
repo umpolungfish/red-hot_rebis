@@ -21,6 +21,60 @@ sys.path.insert(0, str(BASE.parent))
 
 from shared.primitives import ORDINALS, WEIGHTS, resolve_ordinal_key
 
+# ── Exhaustive functional group database (SMARTS-based) ──
+try:
+    from fg_exhaustive import SMARTS_PATTERNS, FG_TUPLES as EXHAUSTIVE_FG_TUPLES, detect_functional_groups
+    HAS_EXHAUSTIVE_FG = True
+except ImportError:
+    HAS_EXHAUSTIVE_FG = False
+    EXHAUSTIVE_FG_TUPLES = {}
+
+# ── CDXML generation (optional) ──
+try:
+    from cdxml_generator import generate_reaction_cdxml, nucleophilicity_score, electrophilicity_score
+    HAS_CDXML = True
+except ImportError:
+    HAS_CDXML = False
+
+# ── SMILES lookup for known molecules ──
+SMILES_LOOKUP = {
+    "benzaldehyde": "C1=CC=C(C=C1)C=O",
+    "taxol": "CC1=C2C(C(=O)C3(C(CC4C(C3C(C(C2(C)C)(CC1OC(=O)C(C(C5=CC=CC=C5)NC(=O)C6=CC=CC=C6)O)O)OC(=O)C7=CC=CC=C7)(CO4)OC(=O)C)O)C)OC(=O)C",
+    "baccatin_iii": "CC1=C2C(C(=O)C3(C(CC4C(C3C(C(C2(C)C)(CC1O)O)OC(=O)C5=CC=CC=C5)(CO4)OC(=O)C)O)C)OC(=O)C",
+    "n_benzoyl_phenylisoserine": "C1=CC=C(C=C1)C(C(=O)O)NC(=O)C2=CC=CC=C2",
+    "phenylisoserine_side_chain": "C1=CC=C(C=C1)C(C(=O)O)N",
+    "acetic_acid": "CC(=O)O",
+    "chiral_acetate": "CC(=O)[O-]",
+    "benzophenone": "C1=CC=C(C=C1)C(=O)C2=CC=CC=C2",
+    "acetophenone": "CC(=O)C1=CC=CC=C1",
+    "methanol": "CO",
+    "ethanol": "CCO",
+    "water": "O",
+}
+
+def cascade_smiles(path, start_smi, smi_lookup):
+    '''Cascade SMILES through multi-step paths: each product becomes next reactant.'''
+    steps = []
+    prev_smi = start_smi
+    for i, step in enumerate(path):
+        prod_name = step.get("product", "").lower().replace(" ", "_").replace("-", "_")
+        prod_smi = smi_lookup.get(prod_name, "")
+        steps.append({
+            "step": step.get("step", i+1),
+            "bond": step.get("bond", ""),
+            "reaction": step.get("reaction", ""),
+            "fg1": step.get("fg1", ""),
+            "fg2": step.get("fg2", ""),
+            "product": step.get("product", ""),
+            "smiles_reactant": prev_smi,
+            "smiles_product": prod_smi,
+        })
+        if prod_smi:
+            prev_smi = prod_smi
+    return steps
+
+
+
 PNAMES = ["D","T","R","P","F","K","G","Gm","Ph","H","S","W"]
 PFIELDS = ["D","T","R","P","F","K","G","Gm","Ph","H","S","W"]
 FIELD_TO_ORD = {
@@ -334,6 +388,12 @@ FG = {
     #   R=𐑾 bidirectional (C-OH ↔ C=O tautomeric exchange)  P=𐑯 unusual parity
     "tropolone": {"D":"𐑛","T":"𐑸","R":"𐑾","P":"𐑯","F":"𐑐","K":"𐑧","G":"𐑲","Gm":"𐑠","Ph":"⊙","H":"𐑒","S":"𐑳","W":"𐑭"},
 }
+
+
+# Auto-extend FG table with exhaustive SMARTS-based FGs
+if HAS_EXHAUSTIVE_FG:
+    FG.update(EXHAUSTIVE_FG_TUPLES)
+    FG_detect = staticmethod(detect_functional_groups)
 
 FG_TOKENS = {
     # ── Heterocycles (BEFORE short tokens — length-prioritized) ──
@@ -765,7 +825,7 @@ def evaluate_disconnection(fg1_name, fg2_name, bond_name, molecule_type):
         "product_type": fmt_tup(product),
     }
 
-def find_disconnections(fg_names, molecule_type, max_results=10):
+def find_disconnections(fg_names, molecule_type, max_results=None):
     """Find all viable disconnections via grammar-derived rules.
     For each pair of FGs and each bond type, compute structural delta.
     Incompatible bonds are filtered out. 
@@ -891,7 +951,7 @@ class Ch3mpiler:
         
         cuts = []
         if fgs and mol_type:
-            cuts = find_disconnections(fgs, mol_type, max_results=10)
+            cuts = find_disconnections(fgs, mol_type)
         
         # Find analogs from catalog
         analogs = []
@@ -1234,7 +1294,7 @@ def print_analysis(result):
         print(f"  δ = product-to-target distance")
         print(f"  {'Bond':20s} {'δ':8s} {'Binding':8s} {'Between':30s} {'Product Type':40s}")
         print(f"  {'-'*20} {'-'*8} {'-'*8} {'-'*30} {'-'*40}")
-        for c in cuts[:8]:
+        for c in cuts:
             between = f"{c['fg1']}+{c['fg2']}"
             bd = c.get('bond_delta', '?')
             pd = c.get('product_delta', c.get('delta', 0))
@@ -1339,6 +1399,7 @@ def main():
     parser.add_argument("--list-fgs", action="store_true", help="List FGs")
     parser.add_argument("--list-bonds", action="store_true", help="List bond types")
     parser.add_argument("--show-cas-cache", action="store_true", help="Show CAS cache")
+    parser.add_argument("--cdxml", help="Generate CDXML reaction scheme (path to .cdxml output file)")
     parser.add_argument("--starting-material", help="Starting material name (used with --target for pathfinding)")
     parser.add_argument("--path", action="store_true", help="Find synthetic path between --starting-material and --target")
     
@@ -1414,6 +1475,55 @@ def main():
         if target_name:
             result = ch.path_to_target(args.starting_material, target_name, depth=args.depth)
             print_path(result)
+            
+            # Generate CDXML if requested
+            if args.cdxml and HAS_CDXML:
+                try:
+                    from cdxml_generator import generate_reaction_cdxml
+                    
+                    # Build SMILES for each step with cascading intermediates
+                    start_name = args.starting_material.lower().replace(" ", "_")
+                    target_name_lower = target_name.lower().replace(" ", "_")
+                    
+                    start_smi = SMILES_LOOKUP.get(start_name, "")
+                    target_smi = SMILES_LOOKUP.get(target_name_lower, "")
+                    
+                    # Cascade SMILES: product of step n is reactant of step n+1
+                    steps_for_cdxml = []
+                    prev_smi = start_smi
+                    for step in result.get("path", []):
+                        fg1_name = step.get("fg1", "")
+                        fg2_name = step.get("fg2", "")
+                        fg1_tup = FG.get(fg1_name, {})
+                        fg2_tup = FG.get(fg2_name, {})
+                        
+                        prod_name = step.get("product", "")
+                        prod_smi = SMILES_LOOKUP.get(prod_name.lower().replace(" ", "_").replace("-", "_"), "")
+                        
+                        steps_for_cdxml.append({
+                            "step": step.get("step", 0),
+                            "bond": step.get("bond", ""),
+                            "reaction": step.get("reaction", ""),
+                            "fg1": fg1_name,
+                            "fg2": fg2_name,
+                            "product": prod_name,
+                            "smiles_reactant": prev_smi,
+                            "smiles_product": prod_smi or target_smi,
+                            "fg1_tuple": fg1_tup,
+                            "fg2_tuple": fg2_tup,
+                        })
+                        if prod_smi:
+                            prev_smi = prod_smi
+                    
+                    out_path = args.cdxml
+                    print(f"\n  [Generating CDXML: {out_path}]")
+                    generate_reaction_cdxml(steps_for_cdxml, out_path=out_path,
+                                             title=f"{args.starting_material} \u2192 {target_name}")
+                except Exception as e:
+                    import traceback
+                    print(f"  [CDXML ERROR: {e}]")
+                    traceback.print_exc()
+            
             return
         # If only --starting-material without --target or --cas, fall through
     

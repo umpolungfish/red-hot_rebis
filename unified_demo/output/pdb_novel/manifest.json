@@ -1,0 +1,67 @@
+[
+  {
+    "name": "pbp2a_binder_s42",
+    "length": 85,
+    "mw": 9350.0,
+    "pi": 4.0,
+    "hydrophobicity": -0.27,
+    "ss_composition": "H=61 E=14 C=10",
+    "aa_types": 19,
+    "sequence": "PGAFKLYFLMLHDYFYMEMLYNLQMQRYKMTKHRLMENMKWTMMVIKMMATDEYYMMKELVVQNEHWIRTYVWRTMWMNSTISAG",
+    "rna": "CCAGGUGCCUUUAAAUUAUAUUUUUUAAUGCUUCAUGAUUACUUCUAUAUGGAGAUGCUCUACAAUUUACAAAUGCAGCGGUACAAGAUG...",
+    "pdb_file": "unified_demo/output/pdb_novel/pbp2a_binder_s42.pdb",
+    "novelty": "De novo designed protein: 85 aa, promoted AA fraction=35.29%, pI=4.0. Sequence generated seed=42 \u2014 no natural template. Structured as alternating hydrophobic core / charged surface patches. RNA is codon-optimized synthetic."
+  },
+  {
+    "name": "pbp2a_binder_s179",
+    "length": 85,
+    "mw": 9350.0,
+    "pi": 4.2,
+    "hydrophobicity": -0.45,
+    "ss_composition": "H=55 E=18 C=12",
+    "aa_types": 19,
+    "sequence": "ASGWLHRTVVEFCSQWSWDWFEEMASTEIMFRFCNKKVEYRKKLCLCFHFTQFCFDNLLWMRQTEMKALKQKFLLNRSKEAHKAN",
+    "rna": "GCUUCCGGCUGGCUGCAUCGCACUGUAGUCGAGUUUUGCUCCCAAUGGUCAUGGGACUGGUUCGAGGAAAUGGCUAGCACUGAAAUAAUG...",
+    "pdb_file": "unified_demo/output/pdb_novel/pbp2a_binder_s179.pdb",
+    "novelty": "De novo designed protein: 85 aa, promoted AA fraction=28.24%, pI=4.2. Sequence generated seed=179 \u2014 no natural template. Structured as alternating hydrophobic core / charged surface patches. RNA is codon-optimized synthetic."
+  },
+  {
+    "name": "pbp2a_binder_s316",
+    "length": 85,
+    "mw": 9350.0,
+    "pi": 3.7,
+    "hydrophobicity": -0.7,
+    "ss_composition": "H=50 E=25 C=10",
+    "aa_types": 19,
+    "sequence": "GANFMSTFRLSDWLLLESRQRIKYCYLKHYAWQQRRWEEMWMYNRWHMMFHYEECMQQQVMYKDIWDQYYECIYIRNSEFVFTAG",
+    "rna": "GGGGCAAAUUUUAUGAGUACAUUCCGUCUGUCCGAUUGGCUCCUUUUAGAAUCUAGACAACGAAUUAAAUACUGUUAUCUCAAGCAUUAU...",
+    "pdb_file": "unified_demo/output/pdb_novel/pbp2a_binder_s316.pdb",
+    "novelty": "De novo designed protein: 85 aa, promoted AA fraction=35.29%, pI=3.7. Sequence generated seed=316 \u2014 no natural template. Structured as alternating hydrophobic core / charged surface patches. RNA is codon-optimized synthetic."
+  },
+  {
+    "name": "pbp2a_binder_s453",
+    "length": 85,
+    "mw": 9350.0,
+    "pi": 4.0,
+    "hydrophobicity": -0.7,
+    "ss_composition": "H=42 E=31 C=12",
+    "aa_types": 18,
+    "sequence": "SDTMRFAYSQRKIYNYWLCMHSTQLWYEMCFQQWFCEEMCEFHNFYCHMYTKQYWHYLELKKFYDQREYQWSFVWNKMVLAHSAK",
+    "rna": "UCUGACACUAUGCGAUUCGCCUACAGUCAACGGAAGAUAUAUAAUUACUGGCUGUGUAUGCACAGCACUCAGUUGUGGUAUGAGAUGUGC...",
+    "pdb_file": "unified_demo/output/pdb_novel/pbp2a_binder_s453.pdb",
+    "novelty": "De novo designed protein: 85 aa, promoted AA fraction=40.00%, pI=4.0. Sequence generated seed=453 \u2014 no natural template. Structured as alternating hydrophobic core / charged surface patches. RNA is codon-optimized synthetic."
+  },
+  {
+    "name": "pbp2a_binder_s590",
+    "length": 85,
+    "mw": 9350.0,
+    "pi": 4.2,
+    "hydrophobicity": -0.62,
+    "ss_composition": "H=68 E=9 C=8",
+    "aa_types": 18,
+    "sequence": "GATQYLAMWFEKWWTFAFEHLAFALDWWFRYWRFHLMNSELMSQLAREQSRMHMQRRHNCWSQEFRMMEIIMDQLRKWTRWLRAK",
+    "rna": "GGCGCGACUCAGUACUUGGCUAUGUGGUUUGAGAAGUGGUGGACAUUUGCAUUUGAGCAUUUGGCGUUCGCGUUGGAUUGGUGGUUCCGU...",
+    "pdb_file": "unified_demo/output/pdb_novel/pbp2a_binder_s590.pdb",
+    "novelty": "De novo designed protein: 85 aa, promoted AA fraction=31.76%, pI=4.2. Sequence generated seed=590 \u2014 no natural template. Structured as alternating hydrophobic core / charged surface patches. RNA is codon-optimized synthetic."
+  }
+]

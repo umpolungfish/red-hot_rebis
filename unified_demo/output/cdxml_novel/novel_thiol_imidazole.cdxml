@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE CDXML SYSTEM "http://www.cambridgesoft.com/xml/cdxml.dtd">
+<CDXML
+ CreationProgram="Red-Hot Rebis Novelty Generator"
+ CreationProgramVersion="1.0"
+ BoundingBox="0 0 13500 18000"
+ WindowPosition="0 0"
+ WindowSize="13500 18000"
+ PageSize="13500 18000"
+ PageOverlap="0"
+ HeaderFont="24"
+ CaptionFont="16"
+ LabelFont="12"
+ BondLength="48.16"
+ BondSpacing="0.25"
+ BondWidth="4.19"
+ BoldWidth="6.69"
+ LineWidth="4.19"
+ MarginWidth="1.33"
+ HashSpacing="2.77"
+ ChainAngle="120"
+ BondAngle="120"
+ CaptionFace="96"
+ CaptionSize="12"
+ LabelFace="96"
+ LabelSize="10"
+><colortable>
+<color r="0" g="0" b="0"/>
+<color r="1" g="1" b="1"/>
+<color r="1" g="0" b="0"/>
+</colortable>
+<fonttable>
+<font id="96" charset="iso-8859-1" name="Arial"/>
+</fonttable>
+<page BoundingBox="0 0 13500 18000" HeaderFont="24"
+      CaptionFont="16" LabelFont="12" PageNumber="1"
+      PageOverlap="0" HeaderPosition="0"
+      FooterPosition="0" PrintTrim="0"
+      HeightPages="1" WidthPages="1">
+<fragment BoundingBox="0 0 13500 18000">
+  <n id="1" p="6750.0 1500.0" Element="7" LabelText="novel_thiol_imidazole" LabelJustification="Center"/>
+  <n id="2" p="6696.7 9018.9" Element="C"/>
+  <n id="3" p="6665.5 8986.4" Element="S"/>
+  <n id="4" p="6740.4 9008.1" Element="C"/>
+  <n id="5" p="6774.8 9037.1" Element="C"/>
+  <n id="6" p="6813.0 9013.4" Element="N"/>
+  <n id="7" p="6802.2 8969.7" Element="C"/>
+  <n id="8" p="6757.4 8966.4" Element="N"/>
+  <b id="2_3" B="2" E="3" Display="Solid"/>
+  <b id="4_5" B="4" E="5" Display="Solid"/>
+  <b id="5_6" B="5" E="6" Display="Solid"/>
+  <b id="6_7" B="6" E="7" Display="Solid"/>
+  <b id="7_8" B="7" E="8" Display="Solid"/>
+  <b id="8_4" B="8" E="4" Display="Solid"/>
+  <b id="2_4" B="2" E="4" Display="Solid"/>
+  <n id="10" p="6750.0 16000.0" Element="7" LabelText="SMILES: SCc1c[nH]cn1" LabelJustification="Center"/>
+  <n id="11" p="6750.0 16500.0" Element="7" LabelText="Novelty: thiol + imidazole" LabelJustification="Center"/>
+</fragment>
+</page>
+</CDXML>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE CDXML SYSTEM "https://static.chemistry.revvitycloud.com/cdxml/CDXML.dtd" >
+<CDXML
+ CreationProgram="ChemDraw 23.1.1.3"
+ Name="methicillin.cdxml"
+ BoundingBox="208.50 205.19 567.05 369.64"
+ WindowPosition="0 0"
+ WindowSize="-2147483648 -2147483648"
+ WindowIsZoomed="yes"
+ FractionalWidths="yes"
+ InterpretChemically="yes"
+ ShowAtomQuery="yes"
+ ShowAtomStereo="no"
+ ShowAtomEnhancedStereo="yes"
+ ShowAtomNumber="no"
+ ShowResidueID="no"
+ ShowBondQuery="yes"
+ ShowBondRxn="yes"
+ ShowBondStereo="no"
+ ShowNonTerminalCarbonLabels="no"
+ HideImplicitHydrogens="no"
+ Magnification="666"
+ LabelFont="3"
+ LabelSize="10"
+ LabelFace="96"
+ CaptionFont="3"
+ CaptionSize="10"
+ HashSpacing="2.50"
+ MarginWidth="1.60"
+ LineWidth="0.60"
+ BoldWidth="2"
+ BondLength="14.40"
+ BondSpacing="18"
+ ChainAngle="120"
+ LabelJustification="Auto"
+ CaptionJustification="Left"
+ PrintMargins="36 36 36 36"
+>
+<colortable>
+<color r="1" g="1" b="1"/>
+<color r="0" g="0" b="0"/>
+<color r="1" g="0" b="0"/>
+<color r="0" g="1" b="0"/>
+<color r="0" g="0" b="1"/>
+<color r="1" g="0" b="1"/>
+<color r="0" g="1" b="1"/>
+<color r="1" g="1" b="0"/>
+</colortable>
+<fonttable>
+ <font id="3" charset="iso-8859-1" name="Arial"/>
+</fonttable>
+<page
+ id="1"
+ BoundingBox="0 0 -32768 4318.50"
+ bgcolor="1"
+ HeaderPosition="36"
+ FooterPosition="36"
+ PrintTrimMarks="yes"
+>
+<fragment
+ id="1"
+ BoundingBox="208.50 205.19 567.05 369.64"
+ Z="1"
+><n id="2" p="358.55 308.94" Z="2" AS="N"/>
+<n id="3" p="344.01 312.62" Z="3" AS="N"/>
+<n id="4" p="341.87 297.78" Z="4" AS="N"/>
+<n id="5" p="327.08 295.23" Z="5" AS="N" Element="7" NumHydrogens="0" NeedsClean="yes">
+<t p="323.08 299.23" BoundingBox="321.08 291.23 331.08 301.23" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">N</s>
+</t>
+</n>
+<n id="6" p="320.09 308.50" Z="6" AS="N"/>
+<n id="7" p="330.55 319.25" Z="7" AS="N" Element="16" NumHydrogens="0" NeedsClean="yes">
+<t p="326.55 323.25" BoundingBox="324.55 315.25 334.55 325.25" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">S</s>
+</t>
+</n>
+<n id="8" p="306.82 301.51" Z="8" AS="N"/>
+<n id="9" p="313.81 288.24" Z="9" AS="N"/>
+<n id="10" p="309.37 273.91" Z="10" AS="N" Element="8" NumHydrogens="0" NeedsClean="yes">
+<t p="305.37 277.91" BoundingBox="303.37 269.91 313.37 279.91" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">O</s>
+</t>
+</n>
+<n id="11" p="292.49 305.94" Z="11" AS="N" Element="7" NumHydrogens="1" NeedsClean="yes">
+<t p="286.49 309.94" BoundingBox="284.49 301.94 298.49 311.94" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">NH</s>
+</t>
+</n>
+<n id="12" p="281.48 295.76" Z="12" AS="N"/>
+<n id="13" p="284.80 281.13" Z="13" AS="N" Element="8" NumHydrogens="0" NeedsClean="yes">
+<t p="280.80 285.13" BoundingBox="278.80 277.13 288.80 287.13" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">O</s>
+</t>
+</n>
+<n id="14" p="267.16 300.19" Z="14" AS="N"/>
+<n id="15" p="256.15 290.00" Z="15" AS="N"/>
+<n id="16" p="259.47 275.38" Z="16" AS="N" Element="8" NumHydrogens="0" NeedsClean="yes">
+<t p="255.47 279.38" BoundingBox="253.47 271.38 263.47 281.38" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">O</s>
+</t>
+</n>
+<n id="17" p="248.46 265.19" Z="17" AS="N"/>
+<n id="18" p="241.82 294.44" Z="18" AS="N"/>
+<n id="19" p="238.50 309.07" Z="19" AS="N"/>
+<n id="20" p="249.51 319.26" Z="20" AS="N"/>
+<n id="21" p="263.84 314.82" Z="21" AS="N"/>
+<n id="22" p="274.84 325.01" Z="22" AS="N" Element="8" NumHydrogens="0" NeedsClean="yes">
+<t p="270.84 329.01" BoundingBox="268.84 321.01 278.84 331.01" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">O</s>
+</t>
+</n>
+<n id="23" p="271.52 339.64" Z="23" AS="N"/>
+<n id="24" p="352.62 287.32" Z="24" AS="N"/>
+<n id="25" p="348.93 272.78" Z="25" AS="N" Element="8" NumHydrogens="0" NeedsClean="yes">
+<t p="344.93 276.78" BoundingBox="342.93 268.78 352.93 278.78" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">O</s>
+</t>
+</n>
+<n id="26" p="367.05 291.40" Z="26" AS="N" Element="8" NumHydrogens="1" NeedsClean="yes">
+<t p="361.05 295.40" BoundingBox="359.05 287.40 373.05 297.40" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">OH</s>
+</t>
+</n>
+<n id="27" p="349.19 326.70" Z="27" AS="N"/>
+<b id="1000" Z="29" B="2" E="3" BS="N"/>
+<b id="1001" Z="30" B="3" E="4" BS="N"/>
+<b id="1002" Z="31" B="4" E="5" BS="N"/>
+<b id="1003" Z="32" B="5" E="6" BS="N"/>
+<b id="1004" Z="33" B="6" E="7" BS="N"/>
+<b id="1005" Z="34" B="6" E="8" BS="N"/>
+<b id="1006" Z="35" B="8" E="9" BS="N"/>
+<b id="1007" Z="36" B="9" E="10" BS="N" Order="2"/>
+<b id="1008" Z="37" B="8" E="11" BS="N"/>
+<b id="1009" Z="38" B="11" E="12" BS="N"/>
+<b id="1010" Z="39" B="12" E="13" BS="N" Order="2"/>
+<b id="1011" Z="40" B="12" E="14" BS="N"/>
+<b id="1012" Z="41" B="14" E="15" BS="N" Order="2"/>
+<b id="1013" Z="42" B="15" E="16" BS="N"/>
+<b id="1014" Z="43" B="16" E="17" BS="N"/>
+<b id="1015" Z="44" B="15" E="18" BS="N"/>
+<b id="1016" Z="45" B="18" E="19" BS="N" Order="2"/>
+<b id="1017" Z="46" B="19" E="20" BS="N"/>
+<b id="1018" Z="47" B="20" E="21" BS="N" Order="2"/>
+<b id="1019" Z="48" B="21" E="22" BS="N"/>
+<b id="1020" Z="49" B="22" E="23" BS="N"/>
+<b id="1021" Z="50" B="4" E="24" BS="N"/>
+<b id="1022" Z="51" B="24" E="25" BS="N" Order="2"/>
+<b id="1023" Z="52" B="24" E="26" BS="N"/>
+<b id="1024" Z="53" B="3" E="27" BS="N"/>
+<b id="1025" Z="54" B="7" E="3" BS="N"/>
+<b id="1026" Z="55" B="9" E="5" BS="N"/>
+<b id="1027" Z="56" B="21" E="14" BS="N"/>
+</fragment>
+<annotation id="99" BoundingBox="242.78 211.19 362.78 231.19"
+ CaptionAlignment="Center" CaptionJustification="Center"
+ Color="0" LabelJustification="Center"
+ VerticalOffset="0" HorizontalOffset="0"
+ LabelFace="96" LabelSize="11" LabelFont="3">
+ <s font="3" size="11" face="96">Target: methicillin [CC1(C(N2C(S1)C(C2=O)NC(=O)c3c(OC)cccc3OC)C(=O)O)C]  |  0 disconnection(s)</s>
+</annotation></page>
+</CDXML>

@@ -78,5 +78,61 @@
     "smiles": "C1=CC=C(C=C1)C(=O)O",
     "source": "pubchem",
     "type_hint": ""
+  },
+  "cyclophosphamide": {
+    "cas": "cyclophosphamide",
+    "name": "N,N-bis(2-chloroethyl)-2-oxo-1,3,2lambda5-oxazaphosphinan-2-amine",
+    "formula": "C7H15Cl2N2O2P",
+    "smiles": "C1CNP(=O)(OC1)N(CCCl)CCCl",
+    "source": "pubchem",
+    "type_hint": ""
+  },
+  "23214-92-8": {
+    "cas": "23214-92-8",
+    "name": "(7S,9S)-7-[(2R,4S,5S,6S)-4-amino-5-hydroxy-6-methyloxan-2-yl]oxy-6,9,11-trihydroxy-9-(2-hydroxyacetyl)-4-methoxy-8,10-dihydro-7H-tetracene-5,12-dione",
+    "formula": "C27H29NO11",
+    "smiles": "CC1C(C(CC(O1)OC2CC(CC3=C2C(=C4C(=C3O)C(=O)C5=C(C4=O)C(=CC=C5)OC)O)(C(=O)CO)O)N)O",
+    "source": "pubchem",
+    "type_hint": ""
+  },
+  "20830-81-3": {
+    "cas": "20830-81-3",
+    "name": "(7S,9S)-9-acetyl-7-[(2R,4S,5S,6S)-4-amino-5-hydroxy-6-methyloxan-2-yl]oxy-6,9,11-trihydroxy-4-methoxy-8,10-dihydro-7H-tetracene-5,12-dione",
+    "formula": "C27H29NO10",
+    "smiles": "CC1C(C(CC(O1)OC2CC(CC3=C2C(=C4C(=C3O)C(=O)C5=C(C4=O)C(=CC=C5)OC)O)(C(=O)C)O)N)O",
+    "source": "pubchem",
+    "type_hint": ""
+  },
+  "147-94-4": {
+    "cas": "147-94-4",
+    "name": "4-amino-1-[(2R,3S,4S,5R)-3,4-dihydroxy-5-(hydroxymethyl)oxolan-2-yl]pyrimidin-2-one",
+    "formula": "C9H13N3O5",
+    "smiles": "C1=CN(C(=O)N=C1N)C2C(C(C(O2)CO)O)O",
+    "source": "pubchem",
+    "type_hint": ""
+  },
+  "33419-42-0": {
+    "cas": "33419-42-0",
+    "name": "(5S,5aR,8aR,9R)-5-[[(2R,4aR,6R,7R,8R,8aS)-7,8-dihydroxy-2-methyl-4,4a,6,7,8,8a-hexahydropyrano[3,2-d][1,3]dioxin-6-yl]oxy]-9-(4-hydroxy-3,5-dimethoxyphenyl)-5a,6,8a,9-tetrahydro-5H-[2]benzofuro[6,5-f][1,3]benzodioxol-8-one",
+    "formula": "C29H32O13",
+    "smiles": "CC1OCC2C(O1)C(C(C(O2)OC3C4COC(=O)C4C(C5=CC6=C(C=C35)OCO6)C7=CC(=C(C(=C7)OC)O)OC)O)O",
+    "source": "pubchem",
+    "type_hint": ""
+  },
+  "154361-50-9": {
+    "cas": "154361-50-9",
+    "name": "pentyl N-[1-[(2R,3R,4S,5R)-3,4-dihydroxy-5-methyloxolan-2-yl]-5-fluoro-2-oxopyrimidin-4-yl]carbamate",
+    "formula": "C15H22FN3O6",
+    "smiles": "CCCCCOC(=O)NC1=NC(=O)N(C=C1F)C2C(C(C(O2)C)O)O",
+    "source": "pubchem",
+    "type_hint": ""
+  },
+  "57-22-7": {
+    "cas": "57-22-7",
+    "name": "methyl (1R,9R,10S,11R,12R,19R)-11-acetyloxy-12-ethyl-4-[(13S,15S,17S)-17-ethyl-17-hydroxy-13-methoxycarbonyl-1,11-diazatetracyclo[13.3.1.04,12.05,10]nonadeca-4(12),5,7,9-tetraen-13-yl]-8-formyl-10-hydroxy-5-methoxy-8,16-diazapentacyclo[10.6.1.01,9.02,7.016,19]nonadeca-2,4,6,13-tetraene-10-carboxylate",
+    "formula": "C46H56N4O10",
+    "smiles": "CCC1(CC2CC(C3=C(CCN(C2)C1)C4=CC=CC=C4N3)(C5=C(C=C6C(=C5)C78CCN9C7C(C=CC9)(C(C(C8N6C=O)(C(=O)OC)O)OC(=O)C)CC)OC)C(=O)OC)O",
+    "source": "pubchem",
+    "type_hint": ""
   }
 }

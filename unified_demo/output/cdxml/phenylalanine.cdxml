@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE CDXML SYSTEM "https://static.chemistry.revvitycloud.com/cdxml/CDXML.dtd" >
+<CDXML
+ CreationProgram="ChemDraw 23.1.1.3"
+ Name="phenylalanine.cdxml"
+ BoundingBox="228.68 223.20 537.88 346.19"
+ WindowPosition="0 0"
+ WindowSize="-2147483648 -2147483648"
+ WindowIsZoomed="yes"
+ FractionalWidths="yes"
+ InterpretChemically="yes"
+ ShowAtomQuery="yes"
+ ShowAtomStereo="no"
+ ShowAtomEnhancedStereo="yes"
+ ShowAtomNumber="no"
+ ShowResidueID="no"
+ ShowBondQuery="yes"
+ ShowBondRxn="yes"
+ ShowBondStereo="no"
+ ShowNonTerminalCarbonLabels="no"
+ HideImplicitHydrogens="no"
+ Magnification="666"
+ LabelFont="3"
+ LabelSize="10"
+ LabelFace="96"
+ CaptionFont="3"
+ CaptionSize="10"
+ HashSpacing="2.50"
+ MarginWidth="1.60"
+ LineWidth="0.60"
+ BoldWidth="2"
+ BondLength="14.40"
+ BondSpacing="18"
+ ChainAngle="120"
+ LabelJustification="Auto"
+ CaptionJustification="Left"
+ PrintMargins="36 36 36 36"
+>
+<colortable>
+<color r="1" g="1" b="1"/>
+<color r="0" g="0" b="0"/>
+<color r="1" g="0" b="0"/>
+<color r="0" g="1" b="0"/>
+<color r="0" g="0" b="1"/>
+<color r="1" g="0" b="1"/>
+<color r="0" g="1" b="1"/>
+<color r="1" g="1" b="0"/>
+</colortable>
+<fonttable>
+ <font id="3" charset="iso-8859-1" name="Arial"/>
+</fonttable>
+<page
+ id="1"
+ BoundingBox="0 0 -32768 4318.50"
+ bgcolor="1"
+ HeaderPosition="36"
+ FooterPosition="36"
+ PrintTrimMarks="yes"
+>
+<fragment
+ id="1"
+ BoundingBox="228.68 223.20 537.88 346.19"
+ Z="1"
+><n id="2" p="287.61 283.20" Z="2" AS="N" Element="7" NumHydrogens="2" NeedsClean="yes">
+<t p="279.61 287.20" BoundingBox="277.61 279.20 295.61 289.20" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">NH2</s>
+</t>
+</n>
+<n id="3" p="283.82 297.71" Z="3" AS="N"/>
+<n id="4" p="294.49 308.25" Z="4" AS="N"/>
+<n id="5" p="308.95 304.28" Z="5" AS="N"/>
+<n id="6" p="312.75 289.77" Z="6" AS="N"/>
+<n id="7" p="327.21 285.79" Z="7" AS="N"/>
+<n id="8" p="337.88 296.34" Z="8" AS="N"/>
+<n id="9" p="334.09 310.85" Z="9" AS="N"/>
+<n id="10" p="319.62 314.82" Z="10" AS="N"/>
+<n id="11" p="269.35 301.68" Z="11" AS="N"/>
+<n id="12" p="265.56 316.19" Z="12" AS="N" Element="8" NumHydrogens="0" NeedsClean="yes">
+<t p="261.56 320.19" BoundingBox="259.56 312.19 269.56 322.19" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">O</s>
+</t>
+</n>
+<n id="13" p="258.68 291.14" Z="13" AS="N" Element="8" NumHydrogens="1" NeedsClean="yes">
+<t p="252.68 295.14" BoundingBox="250.68 287.14 264.68 297.14" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">OH</s>
+</t>
+</n>
+<b id="1000" Z="15" B="2" E="3" BS="N"/>
+<b id="1001" Z="16" B="3" E="4" BS="N"/>
+<b id="1002" Z="17" B="4" E="5" BS="N"/>
+<b id="1003" Z="18" B="5" E="6" BS="N" Order="2"/>
+<b id="1004" Z="19" B="6" E="7" BS="N"/>
+<b id="1005" Z="20" B="7" E="8" BS="N" Order="2"/>
+<b id="1006" Z="21" B="8" E="9" BS="N"/>
+<b id="1007" Z="22" B="9" E="10" BS="N" Order="2"/>
+<b id="1008" Z="23" B="3" E="11" BS="N"/>
+<b id="1009" Z="24" B="11" E="12" BS="N" Order="2"/>
+<b id="1010" Z="25" B="11" E="13" BS="N"/>
+<b id="1011" Z="26" B="10" E="5" BS="N"/>
+</fragment>
+<annotation id="99" BoundingBox="238.28 229.20 358.28 249.20"
+ CaptionAlignment="Center" CaptionJustification="Center"
+ Color="0" LabelJustification="Center"
+ VerticalOffset="0" HorizontalOffset="0"
+ LabelFace="96" LabelSize="11" LabelFont="3">
+ <s font="3" size="11" face="96">Target: phenylalanine [N[C@@H](Cc1ccccc1)C(=O)O]  |  0 disconnection(s)</s>
+</annotation></page>
+</CDXML>

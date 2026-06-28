@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE CDXML SYSTEM "https://static.chemistry.revvitycloud.com/cdxml/CDXML.dtd" >
+<CDXML
+ CreationProgram="ChemDraw 23.1.1.3"
+ Name="penicillin_g.cdxml"
+ BoundingBox="197.51 211.00 562.59 353.87"
+ WindowPosition="0 0"
+ WindowSize="-2147483648 -2147483648"
+ WindowIsZoomed="yes"
+ FractionalWidths="yes"
+ InterpretChemically="yes"
+ ShowAtomQuery="yes"
+ ShowAtomStereo="no"
+ ShowAtomEnhancedStereo="yes"
+ ShowAtomNumber="no"
+ ShowResidueID="no"
+ ShowBondQuery="yes"
+ ShowBondRxn="yes"
+ ShowBondStereo="no"
+ ShowNonTerminalCarbonLabels="no"
+ HideImplicitHydrogens="no"
+ Magnification="666"
+ LabelFont="3"
+ LabelSize="10"
+ LabelFace="96"
+ CaptionFont="3"
+ CaptionSize="10"
+ HashSpacing="2.50"
+ MarginWidth="1.60"
+ LineWidth="0.60"
+ BoldWidth="2"
+ BondLength="14.40"
+ BondSpacing="18"
+ ChainAngle="120"
+ LabelJustification="Auto"
+ CaptionJustification="Left"
+ PrintMargins="36 36 36 36"
+>
+<colortable>
+<color r="1" g="1" b="1"/>
+<color r="0" g="0" b="0"/>
+<color r="1" g="0" b="0"/>
+<color r="0" g="1" b="0"/>
+<color r="0" g="0" b="1"/>
+<color r="1" g="0" b="1"/>
+<color r="0" g="1" b="1"/>
+<color r="1" g="1" b="0"/>
+</colortable>
+<fonttable>
+ <font id="3" charset="iso-8859-1" name="Arial"/>
+</fonttable>
+<page
+ id="1"
+ BoundingBox="0 0 -32768 4318.50"
+ bgcolor="1"
+ HeaderPosition="36"
+ FooterPosition="36"
+ PrintTrimMarks="yes"
+>
+<fragment
+ id="1"
+ BoundingBox="197.51 211.00 562.59 353.87"
+ Z="1"
+><n id="2" p="357.62 304.64" Z="2" AS="N"/>
+<n id="3" p="344.05 311.05" Z="3" AS="N"/>
+<n id="4" p="339.10 296.89" Z="4" AS="N"/>
+<n id="5" p="324.10 297.23" Z="5" AS="N" Element="7" NumHydrogens="0" NeedsClean="yes">
+<t p="320.10 301.23" BoundingBox="318.10 293.23 328.10 303.23" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">N</s>
+</t>
+</n>
+<n id="6" p="319.79 311.60" Z="6" AS="N"/>
+<n id="7" p="332.12 320.14" Z="7" AS="N" Element="16" NumHydrogens="0" NeedsClean="yes">
+<t p="328.12 324.14" BoundingBox="326.12 316.14 336.12 326.14" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">S</s>
+</t>
+</n>
+<n id="8" p="305.42 307.29" Z="8" AS="N"/>
+<n id="9" p="309.73 292.92" Z="9" AS="N"/>
+<n id="10" p="302.62 279.72" Z="10" AS="N" Element="8" NumHydrogens="0" NeedsClean="yes">
+<t p="298.62 283.72" BoundingBox="296.62 275.72 306.62 285.72" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">O</s>
+</t>
+</n>
+<n id="11" p="292.22 314.40" Z="11" AS="N" Element="7" NumHydrogens="1" NeedsClean="yes">
+<t p="286.22 318.40" BoundingBox="284.22 310.40 298.22 320.40" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">NH</s>
+</t>
+</n>
+<n id="12" p="279.45 306.52" Z="12" AS="N"/>
+<n id="13" p="279.90 291.53" Z="13" AS="N" Element="8" NumHydrogens="0" NeedsClean="yes">
+<t p="275.90 295.53" BoundingBox="273.90 287.53 283.90 297.53" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">O</s>
+</t>
+</n>
+<n id="14" p="266.25 313.63" Z="14" AS="N"/>
+<n id="15" p="253.48 305.75" Z="15" AS="N"/>
+<n id="16" p="253.93 290.76" Z="16" AS="N"/>
+<n id="17" p="241.17 282.87" Z="17" AS="N"/>
+<n id="18" p="227.96 289.99" Z="18" AS="N"/>
+<n id="19" p="227.51 304.98" Z="19" AS="N"/>
+<n id="20" p="240.28 312.86" Z="20" AS="N"/>
+<n id="21" p="347.64 284.56" Z="21" AS="N"/>
+<n id="22" p="341.23 271.00" Z="22" AS="N" Element="8" NumHydrogens="0" NeedsClean="yes">
+<t p="337.23 275.00" BoundingBox="335.23 267.00 345.23 277.00" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">O</s>
+</t>
+</n>
+<n id="23" p="362.59 285.79" Z="23" AS="N" Element="8" NumHydrogens="1" NeedsClean="yes">
+<t p="356.59 289.79" BoundingBox="354.59 281.79 368.59 291.79" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">OH</s>
+</t>
+</n>
+<n id="24" p="351.85 323.87" Z="24" AS="N"/>
+<b id="1000" Z="26" B="2" E="3" BS="N"/>
+<b id="1001" Z="27" B="3" E="4" BS="N"/>
+<b id="1002" Z="28" B="4" E="5" BS="N"/>
+<b id="1003" Z="29" B="5" E="6" BS="N"/>
+<b id="1004" Z="30" B="6" E="7" BS="N"/>
+<b id="1005" Z="31" B="6" E="8" BS="N"/>
+<b id="1006" Z="32" B="8" E="9" BS="N"/>
+<b id="1007" Z="33" B="9" E="10" BS="N" Order="2"/>
+<b id="1008" Z="34" B="8" E="11" BS="N"/>
+<b id="1009" Z="35" B="11" E="12" BS="N"/>
+<b id="1010" Z="36" B="12" E="13" BS="N" Order="2"/>
+<b id="1011" Z="37" B="12" E="14" BS="N"/>
+<b id="1012" Z="38" B="14" E="15" BS="N"/>
+<b id="1013" Z="39" B="15" E="16" BS="N" Order="2"/>
+<b id="1014" Z="40" B="16" E="17" BS="N"/>
+<b id="1015" Z="41" B="17" E="18" BS="N" Order="2"/>
+<b id="1016" Z="42" B="18" E="19" BS="N"/>
+<b id="1017" Z="43" B="19" E="20" BS="N" Order="2"/>
+<b id="1018" Z="44" B="4" E="21" BS="N"/>
+<b id="1019" Z="45" B="21" E="22" BS="N" Order="2"/>
+<b id="1020" Z="46" B="21" E="23" BS="N"/>
+<b id="1021" Z="47" B="3" E="24" BS="N"/>
+<b id="1022" Z="48" B="7" E="3" BS="N"/>
+<b id="1023" Z="49" B="9" E="5" BS="N"/>
+<b id="1024" Z="50" B="20" E="15" BS="N"/>
+</fragment>
+<annotation id="99" BoundingBox="235.05 217.00 355.05 237.00"
+ CaptionAlignment="Center" CaptionJustification="Center"
+ Color="0" LabelJustification="Center"
+ VerticalOffset="0" HorizontalOffset="0"
+ LabelFace="96" LabelSize="11" LabelFont="3">
+ <s font="3" size="11" face="96">Target: penicillin_g [CC1(C(N2C(S1)C(C2=O)NC(=O)Cc3ccccc3)C(=O)O)C]  |  0 disconnection(s)</s>
+</annotation></page>
+</CDXML>
