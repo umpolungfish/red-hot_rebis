@@ -38,7 +38,29 @@ from reaction_deriver import (
 )
 from ch3mpiler.scaffold_parser import ScaffoldParser, resolve_name_to_smiles
 
+# ── Rich text formatting ──
+try:
+    from ch3mpiler.rich_output import header, subheader, info_line, success_line, error_line, target_line, numeric_line, panel, separator, table, reaction_header, step_detail, bond_line, fg_line
+    STYLED = True
+except ImportError:
+    STYLED = False
 
+
+
+
+# --- SMILES resolution for tree output ---
+_SMILES_CACHE = {}
+def _resolve_node_smiles(name):
+    """Resolve a molecule/fragment name to SMILES."""
+    if not name: return ""
+    key = name.lower().replace(" ", "_").replace("-", "_")
+    if key in _SMILES_CACHE: return _SMILES_CACHE[key]
+    try:
+        from ch3mpiler.scaffold_parser import resolve_name_to_smiles as _r
+        smi = _r(name)
+        if smi: _SMILES_CACHE[key] = smi; return smi
+    except: pass
+    return ""
 class RetrosyntheticNode:
     """One node in the recursive retrosynthetic tree."""
     def __init__(self, name: str, level: int = 0):
@@ -735,39 +757,53 @@ class ReactionPipeline:
     # ── Tree Printing ──
 
     def print_tree(self, node, prefix="", is_last=True, show_all_routes=False):
-        """Pretty-print the retrosynthetic tree with Unicode box-drawing."""
+        """Pretty-print the retrosynthetic tree with rich text formatting."""
         if prefix == "":
-            print()
-            print("=" * 72)
-            print(f"  RETROSYNTHETIC TREE: {node.name}")
+            reaction_header(f"RETROSYNTHETIC TREE: {node.name}")
             if node.fgs:
-                print(f"  FGs: {node.fgs}")
+                fg_line(f"FGs: {node.fgs}")
             if node.mol_type and node.mol_type != "?":
-                print(f"  Type: {node.mol_type}")
-            print("=" * 72)
+                numeric_line("Type", node.mol_type)
+            separator()
 
         connector = "└── " if is_last else "├── "
 
+        node_smi = node.smiles or node.fragment_smiles or _resolve_node_smiles(node.name)
+        node_smi_str = f"  SMILES: {node_smi}" if node_smi else ""
         if node.is_terminal and node.is_simple:
             tag = "SIMPLE ✓"
             if node.reagent_match:
                 tag = f"{node.reagent_match['name']} [{node.reagent_match['smiles']}] (reagent)"
             elif node.fgs:
                 tag += f" [{', '.join(node.fgs[:3])}]"
-            print(f"{prefix}{connector}{node.name}  -- {tag}")
+            if STYLED:
+                success_line(f"{prefix}{connector}{node.name}  {node_smi_str}  -- {tag}")
+            else:
+                print(f"{prefix}{connector}{node.name}  {node_smi_str}  -- {tag}")
         elif node.is_terminal:
-            print(f"{prefix}{connector}{node.name}  -- TERMINAL ({node.terminal_reason})")
+            if STYLED:
+                error_line(f"{prefix}{connector}{node.name}  {node_smi_str}  -- TERMINAL ({node.terminal_reason})")
+            else:
+                print(f"{prefix}{connector}{node.name}  {node_smi_str}  -- TERMINAL ({node.terminal_reason})")
         else:
             n_routes = len(node.routes)
             if n_routes == 0:
-                print(f"{prefix}{connector}{node.name}  -- NO ROUTES")
+                if STYLED:
+                    error_line(f"{prefix}{connector}{node.name}  {node_smi_str}  -- NO ROUTES")
+                else:
+                    print(f"{prefix}{connector}{node.name}  {node_smi_str}  -- NO ROUTES")
                 return
 
             best = node.routes[0]
             delta_str = ""
             if best.get("product_delta", 0) > 0:
                 delta_str = f" (D={best['product_delta']:.3f})"
-            print(f"{prefix}{connector}{node.name}  via {best['fg1']} + {best['fg2']} -> {best['bond']}{delta_str}")
+            if STYLED:
+                target_line(f"{prefix}{connector}{node.name}", node_smi, indent=0)
+                if delta_str:
+                    info_line(f"{'':>{len(prefix)+4}}via {best['fg1']} + {best['fg2']} -> {best['bond']}{delta_str}")
+            else:
+                print(f"{prefix}{connector}{node.name}  {node_smi_str}  via {best['fg1']} + {best['fg2']} -> {best['bond']}{delta_str}")
 
             rxn = best.get("reaction", {})
             ext = "    " if is_last else "|   "
@@ -776,19 +812,19 @@ class ReactionPipeline:
                 if T_info:
                     lo, hi = T_info.get("T_C", (20, 30))
                     regime = T_info.get("regime", "?")
-                    print(f"{prefix}{ext}  Temp: ({lo}, {hi}) C [{regime}]")
+                    info_line(f"{prefix}{ext}  Temp: ({lo}, {hi}) C [{regime}]")
                 solv = rxn.get("solvent", {})
                 if solv:
-                    print(f"{prefix}{ext}  Solvent: {solv.get('name', '?')} (bp {solv.get('bp_C', '?')} C)")
+                    info_line(f"{prefix}{ext}  Solvent: {solv.get('name', '?')} (bp {solv.get('bp_C', '?')} C)")
                 cat = rxn.get("catalyst")
                 if cat:
-                    print(f"{prefix}{ext}  Catalyst: {cat.get('name', '?')}")
+                    info_line(f"{prefix}{ext}  Catalyst: {cat.get('name', '?')}")
                 act = rxn.get("activator")
                 if act:
-                    print(f"{prefix}{ext}  Activator: {act.get('name', '?')}")
+                    info_line(f"{prefix}{ext}  Activator: {act.get('name', '?')}")
                 wu = rxn.get("workup", {})
                 if wu:
-                    print(f"{prefix}{ext}  Workup: {wu.get('description', '?')}")
+                    info_line(f"{prefix}{ext}  Workup: {wu.get('description', '?')}")
 
             ext_cont = "    " if is_last else "|   "
             child_a = best.get("child_a")
@@ -804,9 +840,7 @@ class ReactionPipeline:
             if show_all_routes and n_routes > 1:
                 for r in node.routes[1:]:
                     pd = r.get("product_delta", 0)
-                    print(f"{prefix}    [Alt] {r['fg1']} + {r['fg2']} -> {r['bond']} (D={pd:.3f})")
-
-    # ── Single-level pipeline (backward compat) ──
+                    info_line(f"{prefix}    [Alt] {r['fg1']} + {r['fg2']} -> {r['bond']} (D={pd:.3f})")
 
     def derive_reactions(self, target: str, max_cuts: int = 5) -> Dict:
         """Single-level pipeline: target -> disconnections -> reactions (no recursion)."""
@@ -860,44 +894,45 @@ class ReactionPipeline:
         return self._tree_to_dict(tree)
 
     def print_synthesis(self, spec):
-        """Pretty-print a single-level synthesis specification."""
-        print(f"\n{'='*70}")
-        print(f"  SYNTHESIS: {spec['target']}")
-        print(f"  Type: {spec.get('type', '?')} [{spec.get('type_source', '?')}]")
-        print(f"  FGs: {spec.get('fgs', [])}")
-        print(f"{'='*70}")
+        """Pretty-print a single-level synthesis specification (rich formatted)."""
+        tgt_smi = _resolve_node_smiles(spec['target'])
+        reaction_header(f"SYNTHESIS: {spec['target']}", f"SMILES: {tgt_smi}" if tgt_smi else "")
+        info_line(f"Type: {spec.get('type', '?')} [{spec.get('type_source', '?')}]")
+        if spec.get('fgs'):
+            fg_line(f"FGs: {spec.get('fgs', [])}")
+        separator()
         reactions = spec.get('reactions', [])
         if not reactions:
-            print("\n  No reactions derived.")
+            info_line("No reactions derived.")
             return
         for i, rxn in enumerate(reactions):
             disc = rxn.get('disconnection', f"Reaction {i+1}")
-            print(f"\n  -- ROUTE {i+1}: {disc} --")
-            print(f"  Structural delta: {rxn.get('structural_delta', '?')}")
+            subheader(f"ROUTE {i+1}: {disc}")
+            numeric_line("Structural delta", rxn.get('structural_delta', '?'), indent=1)
             T = rxn.get('temperature', {})
             if T:
-                print(f"  Temperature: {T.get('T_C', (20,30))} C [{T.get('regime','?')}]")
+                info_line(f"Temperature: {T.get('T_C', (20,30))} C [{T.get('regime','?')}]", indent=1)
             solv = rxn.get('solvent', {})
             if solv:
-                print(f"  Solvent: {solv.get('name','?')} (bp {solv.get('bp_C','?')} C, d={solv.get('distance','?')})")
+                info_line(f"Solvent: {solv.get('name','?')} (bp {solv.get('bp_C','?')} C, d={solv.get('distance','?')})", indent=1)
             cat = rxn.get('catalyst')
             if cat:
-                print(f"  Catalyst: {cat.get('name','?')} ({cat.get('type','?')})")
+                info_line(f"Catalyst: {cat.get('name','?')} ({cat.get('type','?')})", indent=1)
             act = rxn.get('activator')
             if act:
-                print(f"  Activator: {act.get('name','?')} ({act.get('type','?')})")
+                info_line(f"Activator: {act.get('name','?')} ({act.get('type','?')})", indent=1)
             reacts = rxn.get('reactants', {})
             fg1r = reacts.get('fg1_reactants', [])
             fg2r = reacts.get('fg2_reactants', [])
             if fg1r:
                 best = fg1r[0]
-                print(f"  Reactant 1: {best['name']} [{best['smiles']}] (d={best['distance']})")
+                info_line(f"Reactant 1: {best['name']} [{best['smiles']}] (d={best['distance']})", indent=1)
             if fg2r:
                 best = fg2r[0]
-                print(f"  Reactant 2: {best['name']} [{best['smiles']}] (d={best['distance']})")
+                info_line(f"Reactant 2: {best['name']} [{best['smiles']}] (d={best['distance']})", indent=1)
             wu = rxn.get('workup', {})
             if wu:
-                print(f"  Workup: {wu.get('description','?')}")
+                info_line(f"Workup: {wu.get('description','?')}", indent=1)
 
 def main():
     import argparse
@@ -920,10 +955,7 @@ def main():
     pipeline = ReactionPipeline(max_depth=args.depth)
 
     if args.demo:
-        print("=" * 72)
-        print("  ch3mpiler Deep Retrosynthetic Pipeline -- Grammar-First")
-        print("  Decomposing until simple starting materials are reached")
-        print("=" * 72)
+        reaction_header("ch3mpiler Deep Retrosynthetic Pipeline", "Grammar-First — Decomposing until simple starting materials are reached")
 
         demos = [
             "benzaldehyde",

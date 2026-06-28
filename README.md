@@ -2,7 +2,7 @@
 
 **Author:** Lando ⊗ ⊙perator  
 **Structural Type:** ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩ — **$O_∞$**  
-**Repository:** `~/red-hot_rebis/`
+**Repository:** `/home/mrnob0dy666/red-hot_rebis/`
 
 > *"The serpent winds, the rod stands, the vessel contains — μ ∘ δ = id."*  
 > Not as a conclusion. As a *signature of process*.
@@ -11,17 +11,17 @@
 
 ## What the Red-Hot Rebis Is
 
-The Grammar's engine for **deterministic, algebraic, exact bio and organic chemistries** — now extended by the **CLINK Chain**, a Frobenius-closed bridge from subatomic quarks to whole organisms.
+The Grammar's engine for **deterministic, algebraic, exact bio and organic chemistries** — now extended by the **CLINK Chain** (subatomic→organism), the **IMASM Compound Pipeline** (SMILES→IMASM→IG encoding), and **Crystal-Guided Molecular Discovery** (⊙-critical molecule design).
 
-The Red-Hot Rebis is a tool whose purpose is to be *taken up into the loop* — not to stand outside it as a finished monument. It integrates five structural pillars (Serpent's Rod, CH₃MPILER, Pipeline, Gene Imscriber, CLINK Chain) into a single coherent architecture, all grounded in the 12-primitive Imscribing Grammar and verified by Frobenius closure (μ∘δ=id).
+The Red-Hot Rebis is a tool whose purpose is to be *taken up into the loop* — not to stand outside it as a finished monument. It integrates five structural pillars (Serpent's Rod, CH₃MPILER, Pipeline, Gene Imscriber, CLINK Chain) plus the new **IMASM Compound Pipeline** into a single coherent architecture, all grounded in the 12-primitive Imscribing Grammar and verified by Frobenius closure (μ∘δ=id).
 
-**Foundation:** $ZFC_\text{fe}$ — Frobenius-exact $ZFC$ ($O_∞$ with Ð=𐑦 self-written, Φ=𐑹 Frobenius-special, Ħ=𐑫 eternal chirality), distinct from the weaker  $ZFC_t$ ( $O_{{2}^†}$). All five pillars are Frobenius-closed and interoperable through the `shared/` primitives layer.
+**Foundation:** $ZFC_\text{fe}$ — Frobenius-exact $ZFC$ ($O_∞$ with Ð=𐑦 self-written, Φ=𐑹 Frobenius-special, Ħ=𐑫 eternal chirality), distinct from the weaker  $ZFC_t$ ( $O_{{2}^†}$). All pillars are Frobenius-closed and interoperable through the `shared/` primitives layer.
 
 ---
 
 ## What the Program Gives You
 
-The throat of the Red-Hot Rebis produces five vapours. Each is a **platonic structural fact** — a verdict of the Univocal Grammar that is independent of how you chose to measure the molecule.
+The throat of the Red-Hot Rebis produces five vapours and one new precipitate. Each is a **platonic structural fact** — a verdict of the Univocal Grammar that is independent of how you chose to measure the molecule.
 
 ### Platonic Proteins — `serpentrod/`
 
@@ -60,6 +60,16 @@ quark → orbital → atom → molecule → cell → mitosis → meiosis → tis
 O₀ → O₀ → O₁ → O₂ → O₂ → O₂ → O₂ → O₂ → $O_∞$
 ```
 
+### Platonic Compound Signatures — `imas/` (new)
+
+A `platonic compound signature` is the **structural imscription of a molecule from its SMILES string**: 8-token IMASM arrangement → StructuralFingerprint → IG 12-tuple, enabling cross-domain analogy search across the entire 4,027+ entry catalog.
+
+```
+SMILES → [compound_imasm] → 8-token arrangement → [ig_bridge] → IG tuple → [compound_catalog] → analogies
+```
+
+The `platonic compound signature` tells you: which IMASM tokens are active, what Dialetheia state the molecule occupies, what its IG type is, and — remarkably — which consciousness states, languages, mathematical theorems, or materials share its structural type.
+
 ---
 
 ## Measurement as Frobenius Closure Problem
@@ -81,141 +91,64 @@ The inversion is not incidental. It is structural:
 
 **Total structural distance from the Rebis to a periodic crystal lattice: d = 5.74** — well into the "structurally remote, different regime" threshold.
 
-The root inversion is **Ř: 𐑾→𐑩**. The crystallographer stands outside the system. Structure supervenes on diffraction data — the crystal does not respond to being measured. At this interface, Frobenius closure is structurally barred: μ∘δ=id cannot hold when δ places the observer outside the algebra. The 20% residual is not an artifact of resolution or model quality. It is the signature of a non-closed interface.
-
-Achieving Frobenius closure at the crystallographic boundary means supplying what the external probe destroys: chirality trajectory (Ħ), topological winding (Ω), bidirectional coupling (Ř). The `platonic protein` and `platonic disconnection` are the Grammar's closure certificate at this boundary — what μ produces when δ has been applied at the measurement interface.
-
-This principle generalises. Every invocation of an external tool — mass spectrometry, NMR, cryo-EM, bioassay, clinical endpoint — is a Frobenius closure problem. The Grammar's structural type is one side; the instrument's readout is the other. The design task is always the same: close the interface. Where the interface closes (μ∘δ=id), the instrument confirms the Grammar's verdict. Where it does not, the gap is structurally interpretable — not noise, but a readable primitive inversion.
-
-> The crystal is the arrest. The Grammar is the process the arrest interrupted.
-> Frobenius closure at the measurement boundary recovers the process.
-
 ---
 
-## The Five Pillars
-
-The Rebis integrates five major toolchains into a single, coherent architecture.  
-Each toolchain is a structural specialization of the 12-primitive IG type system,  
-connected through the `shared/` primitives layer and the combined pipeline.
-
-| Component | Directory | Function | Lines |
-|---|---|---|---|
-| **Serpent's Rod** | `serpentrod/` | Protein folding from IG — RNA→Protein correspondence via tier promotion | ~2,500 |
-| **CH₃MPILER** | `ch3mpiler/` | Retrosynthetic compiler — IG-grounded chemical synthesis planning | ~1,400 |
-| **Combined Pipeline** | `pipeline/` | Imscribe → Verify — auto-imscription, Frobenius verification, agent-based imscription | ~300 |
-| **Gene Imscriber** | `gene_imscriber/` | Frobenius-guided gene editing engine on codon space | ~2,800 |
-| **CLINK Chain** | `clink/` | Subatomic→whole organism bridge — 9 Frobenius-closed layers, Lean 4 formalized | ~650 |
-
-### Domain Applications
-
-| Domain | Directory | Designs |
-|---|---|---|
-| **Therapeutics** | `therapeutics/` | Ouroboric pill, quantum biologic, universal antidote, Frobenius chemotherapeutic, bidirectional neurotrophic factor |
-| **Materials** | `materials/` | Self-healing CFRP, topological quantum material, eternal memory polymer, self-weaving fabric, thermal rectifier, critical metamaterial |
-| **Biology** | `biology/` | Biological simulation engine (Frobenius-exact), ouroboric telomere v2+v3, quantum bioelectric tissue |
-
----
-
-## Architecture
-
-```
-              ┌───────────────────────────────────────────────────────────┐
-              │                   red-hot_rebis/                          │
-              │            rebis.py  (unified CLI)                        │
-              │  status|verify|run|clink|pipeline|materials|imas|scripts  │
-              └──────┬─────────────────────────────────┬──────────────────┘
-                     │                                 │
-      ┌──────────────┴────────────┐    ┌──────────────┴──────────────┐
-      │    SOURCE COMPONENTS      │    │   APPLICATIONS + SCRIPTS     │
-      │    (The Six Pillars)      │    │                              │
-      │                           │    ├─ therapeutics/               │
-      │  serpentrod/  ch3mpiler/  │    ├─ materials/                  │
-      │  pipeline/    gene_imscr/ │    ├─ biology/                    │
-      │  clink/       imas/       │    ├─ rhr_p4rky/  (32 modules + papers/)  │
-      └──────────────┬────────────┘    └─ scripts/   (14 standalone) ┘
-                     │
-          ┌──────────┴──────────┐
-          │     shared/         │  ← single source of truth
-          │  primitives.py      │    ordinal weights, distance fn,
-          │  IG_catalog.json    │    Shavian↔key maps
-          └──────────┬──────────┘
-                     │
-          ┌──────────┴──────────┐
-          │   Lean 4 (ZFC_fe)   │  ← CLINK.lean (572L, 23 theorems)
-          │  p4rakernel/        │    native_decide-closed
-          │  p4ramill/          │    cross-referenced to all 9 layers
-          └─────────────────────┘
-```
-
-**CLI Integration:**
-
-The `rebis.py` CLI is the single unified entry point for all tools:
+## Command Reference
 
 ```bash
-# ── Core ──────────────────────────────────────────────────────────────
-rebis.py status                            # Status of all six pillars
-rebis.py verify                            # Frobenius closure across all modules
+# ── Core ────────────────────────────────────────────────────────────
+python3 rebis.py status                       # Module health check
+python3 rebis.py verify                       # Frobenius closure verification
+python3 rebis.py help                         # Full command reference
 
-# ── Components ────────────────────────────────────────────────────────
-rebis.py run serpentrod --seq MALK...      # Platonic protein prediction (v5)
-rebis.py run serpentrod_v4 --seq MALK...   # Protein prediction (v4)
-rebis.py run serpentrod_pred --seq MALK... # Stratified predictor
-rebis.py run ch3mpiler --smiles "CC(=O)O"  # Retrosynthetic compiler
-rebis.py run gene --codons "AUGGCU..."     # Gene imscriber
+# ── Serpent's Rod ────────────────────────────────────────────────────
+python3 rebis.py run serpentrod               # Protein fold analysis
+python3 rebis.py run serpentrod_v2            # 3D backbone generation
 
-# ── CLINK Chain ───────────────────────────────────────────────────────
-rebis.py clink report                      # Full CLINK integration report
-rebis.py clink list                        # All 9 layers with tuples
-rebis.py clink layer 4                     # Cell layer details + bridges
-rebis.py clink bridge serpentrod 8         # Promotion path: protein → organism
+# ── CH₃MPILER Rea Synthetic ─────────────────────────────────────────
+python3 rebis.py run ch3mpiler --smiles "CC(=O)Oc1ccccc1C(=O)O"
+python3 rebis.py run ch3mpiler --help
 
-# ── CLINK Design Pipeline ─────────────────────────────────────────────
-rebis.py pipeline bridges                  # Available tool bridges
-rebis.py pipeline ground-up                # Whole-organism design from quarks
-rebis.py pipeline from-layer 5 8           # Design from cell layer to organism
-rebis.py pipeline actionable               # Generate 33-file actionable package
-rebis.py pipeline actionable --organism human  # Human-specific package
+# ── Gene Imscriber ────────────────────────────────────────────────────
+python3 rebis.py run gene                     # Genetic compilation
+python3 rebis.py run test_genetics            # 64-codon B4 test suite
 
-# ── Materials ─────────────────────────────────────────────────────────
-rebis.py materials list                    # All predefined novel materials
-rebis.py materials forge --all             # Forge all 8 predefined materials
-rebis.py materials forge --name frobenius_composite
-rebis.py materials report                  # Full materials report
-rebis.py materials frobenius               # Frobenius metamaterial simulation
-rebis.py materials ouroboric               # Ouroboric alloy simulation
-rebis.py materials sophick                 # Eagle Cycle Protocol (Sophick Forge)
-rebis.py materials sophick --name cliff    # Frobenius Cliff analysis
-rebis.py materials exactor                 # Discrete closure pathways
+# ── Materials ────────────────────────────────────────────────────────
+python3 rebis.py materials forge --all
+python3 rebis.py materials sophick --name eagle_9_sophick
+python3 rebis.py materials frobenius          # Frobenius closure simulation
+python3 rebis.py materials ouroboric          # Crack healing simulation
 
-# ── IMASM Arranger ────────────────────────────────────────────────────
-rebis.py imas report                       # Arrangement analysis + CLINK bridge
-rebis.py imas bridge                       # All 12 canonicals → CLINK
-rebis.py imas bridge --canonical I_Dialetheic_Bootstrap
-rebis.py imas hunt                         # Frobenius pair density (Monte Carlo)
-rebis.py imas hunt --samples 1000000
-rebis.py imas energy --canonical I_Dialetheic_Bootstrap --layer L8_Organism
+# ── CLINK Chain ──────────────────────────────────────────────────────
+python3 rebis.py clink layer 8                # Organism layer
+python3 rebis.py pipeline actionable          # Full organism design package
 
-# ── Scripts (standalone tools) ────────────────────────────────────────
-rebis.py scripts list                      # All 14 available scripts with line counts
-rebis.py scripts run mito_pipeline         # Run any script by name
-rebis.py scripts run diaschizic_iupac
-rebis.py scripts run compute_promotions
-rebis.py scripts run omonad_bridge
+# ── IMASM Compound Pipeline (NEW) ─────────────────────────────────────
+python3 rebis.py imas compound --smiles "CC(=O)OC1=CC=CC=C1C(=O)O"   # Aspirin
+python3 rebis.py imas analogies --smiles "CN(C)CCC1=CNC2=CC=CC=C12" --limit 10  # DMT
+python3 rebis.py imas register --smiles "CC(C)C1=CC=C(C=C1)C(C)C(=O)O" --name ibuprofen
 
-# ── Script aliases (most-used) ────────────────────────────────────────
-rebis.py run mito                          # Mitochondrial gene pipeline
-rebis.py run antibody                      # Antibody CDR designer
-rebis.py run psychedelic                   # Compound intrinsics + coupling
-rebis.py run psychedelic report            # Full 109-universe access report
-rebis.py run iupac                         # Diaschizic IUPAC generator
-```
+# ── Scripts ──────────────────────────────────────────────────────────
+python3 rebis.py scripts list
+python3 rebis.py run mito                          # Mitochondrial gene pipeline
+python3 rebis.py run antibody                      # Antibody CDR designer
+python3 rebis.py run psychedelic                   # Compound intrinsics + coupling
+python3 rebis.py run psychedelic report            # Full 109-universe access report
+python3 rebis.py run iupac                         # Diaschizic IUPAC generator
+
+# ── Script aliases (most-used) ───────────────────────────────────────
+python3 rebis.py run mito                          # Mitochondrial gene pipeline
+python3 rebis.py run antibody                      # Antibody CDR designer
+python3 rebis.py run psychedelic                   # Compound intrinsics + coupling
+python3 rebis.py run psychedelic report            # Full 109-universe access report
+python3 rebis.py run iupac                         # Diaschizic IUPAC generator
 
 ---
 
 ## Quick Start
 
 ```bash
-cd ~/imsgct/red-hot_rebis
+cd /home/mrnob0dy666/imsgct/red-hot_rebis
 
 # Check everything is wired
 python3 rebis.py status
@@ -248,7 +181,12 @@ python3 rebis.py materials sophick --name eagle_9_sophick
 python3 rebis.py imas report
 python3 rebis.py imas hunt --samples 100000
 
-# ── Standalone scripts ──────────────────────────────────────────────────
+# ── IMASM COMPOUND PIPELINE (NEW) ──────────────────────────────────────
+python3 rebis.py imas compound --smiles "CN1C=NC2=C1C(=O)N(C(=O)N2C)C" --json
+python3 rebis.py imas analogies --smiles "CC(=O)OC1=CC=CC=C1C(=O)O" --limit 10
+python3 rebis.py imas register --smiles "CN(C)CCC1=CNC2=CC=CC=C12" --name DMT
+
+# ── Standalone scripts ────────────────────────────────────────────────
 python3 rebis.py scripts list
 python3 rebis.py run mito                   # Mitochondrial gene pipeline
 python3 rebis.py run psychedelic report     # Compound × 109-universe access
@@ -342,7 +280,75 @@ The CLINK chain is the **fifth pillar** of the Red-Hot Rebis — the first compl
 - `bridges.py` — Cross-component bridges to serpentrod, ch3mpiler, gene_imscriber (237 lines)
 - `integration.py` — Unified verification and integration reporting (205 lines)
 - `__init__.py` — Module entry point with exported API
-- `README_CLINK.md` — Standalone CLINK documentation---
+- `README_CLINK.md` — Standalone CLINK documentation
+
+---
+
+### 6. IMASM Compound Pipeline — `imas/`
+
+**Source:** `compound_imasm.py`, `fg_exhaustive.py`, `reactivity_imasm.py`, `ig_bridge.py`, `compound_catalog.py`, `molecular_crystal_designer.py`
+
+The **IMASM Compound Pipeline** is the sixth pillar — a complete SMILES→IMASM→IG encoding path. Every molecule becomes an 8-token IMASM arrangement, resolved to a StructuralFingerprint, then to an IG 12-tuple. This makes chemical compounds first-class citizens in the Imscribing Grammar, enabling cross-domain analogy search across the entire 4,027+ entry catalog.
+
+**Pipeline:**
+
+```
+SMILES → [fg_exhaustive] → FG vector → [compound_imasm] → 8-token arrangement
+  → [arranger] → StructuralFingerprint → [ig_bridge] → IG tuple → catalog entry
+```
+
+**Key files:**
+- `compound_imasm.py` — SMILES→IMASM 8-token encoder. Detects functional groups from `fg_exhaustive.py`'s 190 SMARTS patterns, maps chemical roles to IMASM tokens, builds semantically-positioned 8-token arrangements (position 0=core, 1=forward reactivity, 2=reverse, 3=ambident, 4=linker, 5=terminal, 7=closure)
+- `fg_exhaustive.py` — 190 SMARTS patterns across 11 IMASM tokens, 10 categories (was 21 patterns)
+- `reactivity_imasm.py` — Reaction→IMASM transition analyzer with token delta analysis and named reaction identification (Grignard, Suzuki, Diels-Alder, etc.)
+- `ig_bridge.py` — StructuralFingerprint→IG 12-tuple: 15 distinct IG types from 54 compounds
+- `compound_catalog.py` — Catalog registration + cross-domain analogy search (4007+ catalog entries)
+- `molecular_crystal_designer.py` — Crystal-guided molecular discovery engine (700+ lines). Reverses the pipeline: given a target IG tuple, computes what molecule would produce it.
+
+**By the numbers:**
+- **54 compounds** → **15 distinct IG types** → **31 unique IMASM arrangements**
+- **190 functional group SMARTS** patterns (9× the original 21)
+- **4,027+ catalog entries** — compounds are full citizens
+- **42–80+ non-compound systems** within d ≤ 5 per compound
+- Avg **5.9 FGs** detected per compound (lysergic acid max: 12)
+
+**CLINK bridge:** Compounds bridge to moleculeLayer (L3) and beyond through their IG type. Aspirin, testosterone, THC, CBD share the same structural type → identical cross-domain analogies (time_no_grain, Kalachakra, Codex Vienna, Rig Veda at d≤5).
+
+**Cross-domain examples:**
+
+| Compound | d=4 | d=5 |
+|----------|-----|-----|
+| **LSD** | Kalachakra Tantra, time_no_grain | Langlands, Lee-Yang, Codex Selden |
+| **Water** | Pyromancy, evocation, temporal logic | Hebrew core, radical chemistry |
+| **Lysergic acid** | Fermat's Last Theorem (proven), time_no_arrow | Connes spectral triple, spacetime |
+| **Aspirin/THC/CBD** | time_no_grain, Kalachakra | Rig Veda, Homeric Hymns, Psalms |
+
+---
+
+### 7. Crystal-Guided Molecular Discovery — Crystal→Molecule
+
+The `molecular_crystal_designer.py` engine navigates the Crystal of Types (17,280,000 structural types) to discover molecules with target structural properties. It is the **inverse** of the SMILES→IMASM→IG pipeline: given a target IG tuple, it computes what IMASM arrangement and molecular structure would produce it.
+
+**The discovery:** **5-nitro-bufotenin** — an autocatalytic DMT analog — was discovered by promoting one primitive (𐑮→⊙) from DMT's crystal address. The molecule has all three Dialetheia tokens (EVALT + EVALF + ENGAGR) simultaneously, enabling autocatalytic template-directed synthesis.
+
+```
+DMT:      ⟨𐑨𐑸𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑕𐑭⟩   Phi=𐑮 (complex critical)
+DMT-⊙:    ⟨𐑨𐑸𐑩𐑿𐑐𐑘𐑔𐑵⊙𐑫𐑕𐑭⟩   Phi=⊙ (self-modeling / autocatalytic)
+```
+
+SMILES: `CN(C)CCC1=CNC2=CC=C(O)C([N+](=O)[O-])=C12`
+
+The **⊙-Finder** (`ig-docs/dmt-odot-discovery/odot_finder.py`) is a standalone tool that, given any SMILES, systematically finds ⊙-critical variants by completing the Dialetheia triad.
+
+**Results:**
+| Compound | ⊙-Critical Candidates |
+|----------|----------------------|
+| DMT | 20 |
+| Serotonin | 4 |
+| Bufotenin | 4 |
+| 5-nitro-bufotenin | Already ⊙-critical |
+
+---
 
 ## The CLINK Chain — Subatomic → Whole Organism
 
@@ -372,6 +378,8 @@ The CLINK chain is a 9-layer Frobenius-closed structural bridge, formalized in L
 | **d(organism, $ZFC_\text{fe}$)** | 1.30 | Organism near-isomorphic to Frobenius-exact foundation |
 | **Tier monotonicity** | $O₀ → O₀ → O₁ → O₂ → O₂ → O₂ → O₂ → O₂ → O_ ∞$ | No tier regressions |
 | **Lean 4 theorems** | 23 all `native_decide`-closed | Build: 3114 jobs, 0 errors |
+| **IMASM compound types** | 15 distinct IG types from 54 compounds | Cross-domain analogies at d≤5 |
+| **⊙-critical molecules** | 29 candidates across tested tryptamines | Crystal-guided discovery |
 
 ### Key Insight: Mitosis is NOT $O_∞$ (The Spindle Checkpoint Correction)
 
@@ -389,7 +397,7 @@ Distance d($ZFC_\text{fe}$,  $ZFC_t$) = 2.65 — a real structural gap.
 
 ### Cross-Component Bridges
 
-All three Rebis pillars bridge to CLINK layers with Frobenius verification:
+All Rebis pillars bridge to CLINK layers with Frobenius verification:
 
 | Component | Nearest CLINK Layer | Distance | Frobenius ✅ |
 |-----------|--------------------|----------|-------------|
@@ -397,6 +405,7 @@ All three Rebis pillars bridge to CLINK layers with Frobenius verification:
 | **SerpentRod** (unfolded) | Quark (L0) | 2.24 | ✅ |
 | **CH₃MPILER** (molecule) | Molecule (L3) | 0.00 | ✅ (exact match) |
 | **Gene Imscriber** (codon) | Orbital (L1) | 2.00 | ✅ |
+| **IMASM compounds** (aspirin/THC type) | Molecule (L3) | ~1–3 | ✅ |
 
 ### Lean 4 Formalization
 
@@ -409,7 +418,9 @@ Key theorems proven:
 - `tier_monotonic` — O₀→O₀→O₁→O₂→O₂→O₂→O₂→O₂→$O_∞$
 - `great_synthesis` — chain is Frobenius-closed, tier-monotonic, terminates at $O_∞$
 
-Build: `lake build Imscribing.CLINK` — 3114 jobs, 0 errors. All theorems closed by `decide`/`native_decide`.---
+Build: `lake build Imscribing.CLINK` — 3114 jobs, 0 errors. All theorems closed by `decide`/`native_decide`.
+
+---
 
 ## Children of the Rebis
 
@@ -424,6 +435,7 @@ Every child of the Rebis is also $O_∞$ — each is a *particular wounding* of 
 - **Self-weaving fabric** — garment whose topology is its own manufacture
 - **Ouroboric cell** — cell whose bodyplan cannot forget itself
 - **Quantum bioelectric tissue** — tissue with 𐑾-bidirectional growth control
+- **⊙-Critical molecules** — autocatalytic compounds discovered via crystal navigation
 
 ### CLINK as Child
 
@@ -431,7 +443,7 @@ The CLINK chain itself is a child of the Rebis — the chain that connects the q
 
 ---
 
-## New Designs — Woundings of the Rebis (v2.0)
+## New Designs — Woundings of the Rebis (v2.0+)
 
 ### Therapeutics
 
@@ -453,6 +465,22 @@ The CLINK chain itself is a child of the Rebis — the chain that connects the q
 |--------|------|-----------------|------------|
 | **Ouroboric Telomere System** | `biology/ouroboric_telomere_expanded.py` | ⟨𐑦𐑸𐑾𐑬𐑐𐑧𐑔𐑠⊙𐑖𐑳𐑴⟩ | **Telomere homeostasis maintained** — mean length 10.9 kb vs control decline to 5.0 kb over 100 divisions; Frobenius-exact v3 in `biology/fe_teloromere/` |
 
+### Crystal-Guided Molecular Discovery (new)
+
+| Design | File | Structural Type | Key Result |
+|--------|------|-----------------|------------|
+| **5-Nitro-Bufotenin (DMT-⊙)** | `ig-docs/dmt-odot-discovery/` | ⟨𐑨𐑸𐑩𐑿𐑐𐑘𐑔𐑵⊙𐑫𐑕𐑭⟩ | **⊙-critical autocatalytic DMT analog** — discovered via crystal navigation (Φ promoted 𐑮→⊙). All 3 Dialetheia tokens (EVALT+EVALF+ENGAGR). 20 ⊙-critical candidates from DMT, 4 from serotonin, 4 from bufotenin |
+
+### IMASM Compound Pipeline (new)
+
+| Capability | File | Key Result |
+|-----------|------|------------|
+| **Compound encoding** | `imas/compound_imasm.py` | 54 compounds → 31 unique IMASM arrangements → 15 distinct IG types |
+| **FG library** | `imas/fg_exhaustive.py` | 190 SMARTS patterns (9× expansion from 21) |
+| **Reaction typing** | `imas/reactivity_imasm.py` | 7 reaction classes, Grignard/Suzuki/Diels-Alder identification |
+| **Cross-domain analogies** | `imas/compound_catalog.py` | 42–80+ non-compound neighbors at d≤5 per compound |
+| **Catalog registration** | `imas/compound_catalog.py` | 4,027+ catalog entries — compounds are full IG citizens |
+
 ---
 
 ## Verified Simulation Results
@@ -472,6 +500,8 @@ All simulations pass verification:
 | Materials (composite/quantum/polymer) | ✅ | 7 healing cycles, 55723 yr polymer half-life |
 | Biology (cell/tissue) | ✅ | 200 generations, 40% genome edited |
 | CLINK Chain (all 9 layers) | ✅ | All Frobenius-closed, Σd=7.18, 36 promotions |
+| IMASM Compound Pipeline | ✅ | 54 compounds encoded, all Frobenius-closed |
+| ⊙-Finder (autocatalytic design) | ✅ | 29 ⊙-critical candidates across all tested molecules |
 
 ---
 
@@ -503,104 +533,68 @@ The chain's Frobenius closure is monotonic — ensure the new layer does not bre
 | **𐑲** | Universal/long-range | Scope is maximal; interactions are not bounded by locality |
 | **𐑵** | Broadcast | Composition is one-to-all — signals propagate to all components |
 | **⊙** | Critical/self-modeling | Power-law criticality; the Gate of self-modeling is open |
-| **𐑫** | Eternal/no finite | Chirality has no finite Markov order; memory is unbounded |
-| **𐑳** | Multiple heterogeneous | Many distinct component types coexist |
-| **𐑟** | Non-Abelian braiding | Topological protection is non-Abelian; braiding statistics are path-dependent |---
+| **𐑫** | Eternal/no finite | Chirality has no finite Markov order; memory is transfinite |
+| **𐑳** | Many heterogeneous | Many component types, many copies — the stoichiometry of complexity |
+| **𐑟** | Non-Abelian braiding | Topological invariant supports non-Abelian anyon exchange |
 
-## Grammar-Derived, Not Grammar-Defined
-
-The Rebis was *derived* from the Imscribing Grammar, not *defined* by it.  
-A derived system can be extended. A defined system is closed.
-
-The 12-primitive tuple is not a cage — it is a **crystal address**.  
-17.28 million structural types exist in the crystal of types.  
-The Rebis occupies one. Another type may serve your chemistry better.  
-The Grammar does not prescribe; it *maps*.
-
-For **bio-chemistries**: the Rebis gives you exact structural control because  
-its **𐑹**-symmetry (μ∘δ=id) means every operation is invertible on the structural level.  
-No approximation. No guesswork. Algebraic closure.
-
-For **organic chemistries**: its **𐑫**-eternal chirality and **𐑭**-integer winding  
-mean stereochemical configuration is topologically protected.  
-A molecule encoded in the Rebis is a molecule that *stays* what you made it.
-
-For **scale bridging**: the **CLINK chain** shows that structural types are not confined  
-to a single scale — the same grammar that describes a quark describes an organism.  
-The 10 primitive deltas between layer 0 and layer 8 are the entire grammatical  
-distance between subatomic frustration and self-modeling life.
-
-> Its 12-primitive tuple places it at $O_∞$ — but $O_∞$ is not "completion."  
-> $O_∞$ is the tier at which the distinction between *system* and *environment* dissolves.  
-> The Rebis has no boundary. It extends into everything it touches.  
-> This is why it is dangerous to call it finished: a thing without a boundary  
-> cannot be *completed*, only *applied*.
 
 ---
 
-## Integration Roadmap
+## File Map
 
-The `integrated_roadmap.json` file in the project root lays out a 4-phase plan for achieving Frobenius closure at progressively larger interfaces — from pure Grammar computation to the clinical scale. Each phase is a closure problem: the Grammar's structural type on one side, a physical interface on the other. The task in each phase is to make μ∘δ=id hold at that boundary.
+### Core
 
-| Phase | Duration | Frobenius Closure Interface |
-|-------|----------|-----------------------------|
-| **Phase 1 — Grammar** | 0–6 months | Internal closure only: DNA origami design, quantum dot logic, epigenetic editor MD, chiral polymer synthesis, self-writing genome recombinase, bioelectric field simulations — all Grammar-internal, no external interface yet |
-| **Phase 2 — Synthesis** | 6–18 months | Closure at the material fabrication boundary: DNA origami folding, LNP transfection, DARPin library panning, microcapsule synthesis, oligocarbamate synthesis, Syn3.0 transformation — Grammar type must survive contact with wet chemistry |
-| **Phase 3 — Biological Scale** | 18–36 months | Closure at the organism interface: murine melanoma model, Rett syndrome Mecp2 mouse, ASTM fatigue testing, cryogenic braiding, bioremediation, limb regeneration in Xenopus — instrument and model are vessels; the Grammar reads whether μ∘δ=id holds in the living system |
-| **Phase 4 — Clinical** | 36–72 months | Closure at the clinical interface: Phase I trials (ouroboric pill, quantum biologic), eternal memory polymer product launch, synthetic kidney validation — therapeutic outcome is the Grammar's verdict returned from the largest interface |
+| File | Size | Purpose |
+|------|------|---------|
+| `rebis.py` | ~30 KB | Unified CLI orchestrator — routes all subcommands |
+| `setup.py` | < 1 KB | Package install (uv pip install -e .) |
+| `Makefile` | ~3 KB | Build, verify, test, clean |
+| `shared/primitives.py` | ~10 KB | 12 primitive ordinals, weights, distance, tensor, meet, join |
+| `shared/IG_catalog.json` | ~500 KB | 4,027+ catalog entries |
 
-**11 design systems** across 3 domains (therapeutics, materials, biology),  
-**20 concrete files**, ~95 KB total simulation and design data.
+### Serpent's Rod
 
----
+| File | Size | Purpose |
+|------|------|---------|
+| `serpentrod/manuscript.md` | 19 KB | Complete Serpent's Rod theory |
+| `serpentrod/protein_v5.py` | 28 KB | V5 protein enhancement engine |
+| `serpentrod/stratified_predictor.py` | 30 KB | Stratified prediction model |
 
-## Project Inventory
+### CH₃MPILER
 
-### Five Pillars
+| File | Size | Purpose |
+|------|------|---------|
+| `ch3mpiler/compiler.py` | 31 KB | Main retrosynthetic compiler |
+| `ch3mpiler/docs/documentation.md` | 17 KB | Full compiler documentation |
+| `ch3mpiler/CAS_cache.json` | ~110 KB| CAS number → SMILES cache |
 
-| Component | Directory | Lines | Key Function |
-|-----------|-----------|-------|-------------|
-| Serpent's Rod | `serpentrod/` | ~2,500 | Platonic protein prediction |
-| CH₃MPILER | `ch3mpiler/` | ~1,400 | Retrosynthetic disconnection |
-| Combined Pipeline | `pipeline/` | ~300 | Auto-imscription + Frobenius verification |
-| Gene Imscriber | `gene_imscriber/` | ~2,800 | Frobenius-guided gene editing |
-| CLINK Chain | `clink/` | ~650 | 9-layer scale bridge (quark→organism) |
+### IMASM Compound Pipeline (new)
 
-### Applications
+| File | Size | Purpose |
+|------|------|---------|
+| `imas/compound_imasm.py` | 22 KB | SMILES→IMASM 8-token encoder |
+| `imas/fg_exhaustive.py` | 19 KB | 190 SMARTS patterns across 11 tokens |
+| `imas/reactivity_imasm.py` | 16 KB | Reaction→IMASM transition analyzer |
+| `imas/ig_bridge.py` | 14 KB | StructuralFingerprint→IG 12-tuple |
+| `imas/compound_catalog.py` | 22 KB | 54 compounds, 4,027+ catalog entries |
+| `imas/molecular_crystal_designer.py` | 45 KB | Crystal-guided molecular discovery engine |
 
-| Domain | Directory | Designs | Verified |
-|--------|-----------|---------|----------|
-| Therapeutics | `therapeutics/` | 5 designs | ✅ All |
-| Materials | `materials/` | 6 designs | ✅ All |
-| Biology | `biology/` | 3 designs | ✅ All |
+### CLINK Chain
 
-### Shared Infrastructure
+| File | Size | Purpose |
+|------|------|---------|
+| `clink/chain.py` | 7 KB | 9-layer chain definition + Frobenius checks |
+| `clink/bridges.py` | 7 KB | Cross-pillar bridge tables |
+| `clink/integration.py` | 7 KB | Unified verification |
 
-| File | Purpose |
-|------|---------|
-| `shared/primitives.py` | Ordinal weights, distance functions, Shavian↔ch3mpiler key maps |
-| `shared/IG_catalog.json` | Persistent catalog of all imscribed entries (symlink to canonical) |
-| `rebis.py` | Unified CLI: status, verify, run, clink, pipeline, materials, imas, scripts |
+### Paraconsistent Kernel
 
-### Scripts (standalone tools — all accessible via `rebis.py scripts run <name>`)
-
-| Script | Lines | Function |
-|--------|-------|----------|
-| `scripts/mito_pipeline.py` | 131 | 13 human mitochondrial genes through 7-stage IG pipeline |
-| `scripts/run_antibody.py` | 126 | Antibody CDR design from viral epitopes (Path 3 of SerpentRod) |
-| `scripts/msa_analysis.py` | 312 | MSA conservation analysis for ubiquitin orthologs |
-| `scripts/analyze_validation.py` | 209 | PDB contact validation vs SerpentRod predictions |
-| `scripts/run_pdb_validation.py` | 201 | PDB structural validation runner |
-| `scripts/psychedelic_bridge.py` | 367 | Compound intrinsics + 109-universe access sweep (merged) |
-| `scripts/diaschizic_iupac.py` | 993 | IUPAC name generator for 11 diaschizic compounds |
-| `scripts/compute_promotions.py` | 139 | Millennium Problem → primitive promotion/demotion analysis |
-| `scripts/frob_design.py` | 152 | Frobenius-exact catalytic site design (dominant-member rule) |
-| `scripts/frobenius_exact_design.py` | 280 | Extended Frobenius exact design |
-| `scripts/gen_univ_map.py` | 185 | Generate compound × universe mapping document |
-| `scripts/omonad_bridge.py` | 764 | Bridge to mOMonadOS crystal filesystem |
-| `scripts/run_msa.py` | 127 | MSA runner |
-| `scripts/run_serpent.py` | 52 | Serpent runner (rhr_p4rky) |
-| `rhr_p4rky/decay_chain.py` | 260 | Nuclear decay IMASM winding simulation |
+| File | Size | Purpose |
+|------|------|---------|
+| `rhr_p4rky/belnap.py` | 7 KB | 4-valued Belnap logic (T/B/F/N) |
+| `rhr_p4rky/genetic_code.py` | 7 KB | 64-codon Frobenius-verified table |
+| `rhr_p4rky/serpent_rod.py` | 9 KB | Frobenius morphism RNA→protein |
+| `rhr_p4rky/decay_chain.py` | 260 lines | Nuclear decay IMASM winding simulation |
 
 ### Lean 4 Formalization
 
@@ -621,6 +615,8 @@ The Work is the act of applying it:
 - Growing tissues whose bodyplan cannot forget itself  
 - Designing drugs that rewrite their own dosage in real time  
 - Bridging from quark to organism in a single Frobenius-closed chain  
+- Mapping every molecule to its structural type through IMASM encoding  
+- Navigating the Crystal of Types to find autocatalytic consciousness-critical compounds  
 
 Each application is a winding of the loop.  
 Each winding is complete.  
@@ -634,4 +630,4 @@ but because it is always in the fire.**
 
 ---
 
-*Last updated: 2026-06-27 | Repository: ~/imsgct/red-hot_rebis/ | Formalization: ~/imsgct/p4rakernel/p4ramill/Imscribing/CLINK.lean*
+*Last updated: 2026-06-27 | Repository: /home/mrnob0dy666/imsgct/red-hot_rebis/ | Formalization: /home/mrnob0dy666/imsgct/p4rakernel/p4ramill/Imscribing/CLINK.lean*

@@ -21,6 +21,15 @@ Author: Lando⊗⊙perator
 import sys, json
 from pathlib import Path
 from typing import Tuple, List, Dict, Optional, NamedTuple
+# ── Rich text formatting ──
+from rich import print  # override print to render rich markup
+
+try:
+    from ch3mpiler.rich_output import header, subheader, info_line, success_line, error_line, target_line, numeric_line, panel, separator, table, reaction_header, step_detail, bond_line, cprint
+    STYLED = True
+except ImportError:
+    STYLED = False
+
 from collections import Counter
 
 # ── IMASM Token definitions ──
@@ -279,21 +288,35 @@ def identify_reaction(fp: ReactionFingerprint) -> Dict:
 
 # ── CLI and demo ──
 
-def format_transition(fp: ReactionFingerprint) -> str:
-    """Format a reaction as a readable transition string."""
+def format_transition(fp: ReactionFingerprint, reactant_smi: str = "", product_smi: str = "") -> str:
+    """Format a reaction as a readable transition string (rich formatted)."""
     r_names = " → ".join(TOKEN_NAMES[t] for t in fp.reactant_arr)
     p_names = " → ".join(TOKEN_NAMES[t] for t in fp.product_arr)
     lost = ", ".join(TOKEN_NAMES[t] for t in fp.tokens_lost) or "none"
     gained = ", ".join(TOKEN_NAMES[t] for t in fp.tokens_gained) or "none"
-    return (
-        f"Reactant:  {r_names}\n"
-        f"Product:   {p_names}\n"
-        f"Class:     {fp.reaction_class}\n"
-        f"Frobenius: {fp.frobenius_order}\n"
-        f"Lost:      {lost}\n"
-        f"Gained:    {gained}\n"
-        f"Irrev:     {fp.irreversible}"
-    )
+    r_smi_str = f"  SMILES: {reactant_smi}" if reactant_smi else ""
+    p_smi_str = f"  SMILES: {product_smi}" if product_smi else ""
+    # Rich formatted lines
+    result = []
+    if STYLED:
+        result.append(f"[bold green]Reactant:[/bold green]  {r_names}  [cyan]{r_smi_str}[/cyan]")
+        result.append(f"[bold green]Product:[/bold green]   {p_names}  [cyan]{p_smi_str}[/cyan]")
+        result.append(f"[bold magenta]Class:[/bold magenta]     {fp.reaction_class}")
+        result.append(f"[bold yellow]Frobenius:[/bold yellow] {fp.frobenius_order}")
+        result.append(f"[dim]Lost:[/dim]      {lost}")
+        result.append(f"[dim]Gained:[/dim]    {gained}")
+        result.append(f"[dim]Irrev:[/dim]     {fp.irreversible}")
+        return "\\n".join(result)
+    else:
+        return (
+            f"Reactant:  {r_names}  {r_smi_str}\n"
+            f"Product:   {p_names}  {p_smi_str}\n"
+            f"Class:     {fp.reaction_class}\n"
+            f"Frobenius: {fp.frobenius_order}\n"
+            f"Lost:      {lost}\n"
+            f"Gained:    {gained}\n"
+            f"Irrev:     {fp.irreversible}"
+        )
 
 
 def main():
@@ -307,13 +330,28 @@ def main():
     args = parser.parse_args()
 
     if args.list_reactions:
-        print(f"{'Reaction':30s} {'Frob':5s} {'Description'}")
-        print("-" * 80)
-        for name, (r, p, frob, desc) in sorted(REACTION_PATTERNS.items()):
-            r_toks = "+".join(TOKEN_NAMES[t] for t in r)
-            p_toks = "+".join(TOKEN_NAMES[t] for t in p)
-            print(f"{name:30s} {frob:5d} {desc}")
-            print(f"{'':30s} {r_toks:20s} → {p_toks}")
+        if STYLED:
+            from rich.table import Table
+            from rich import box
+            from rich.console import Console
+            t = Table(box=box.ROUNDED, border_style="bright_blue", header_style="bold yellow")
+            t.add_column("Reaction")
+            t.add_column("Frob", justify="right")
+            t.add_column("Description")
+            t.add_column("Transition")
+            for name, (r, p, frob, desc) in sorted(REACTION_PATTERNS.items()):
+                r_toks = "+".join(TOKEN_NAMES[t] for t in r)
+                p_toks = "+".join(TOKEN_NAMES[t] for t in p)
+                t.add_row(name, str(frob), desc, f"{r_toks} → {p_toks}")
+            Console().print(t)
+        else:
+            print(f"{'Reaction':30s} {'Frob':5s} {'Description'}")
+            print("-" * 80)
+            for name, (r, p, frob, desc) in sorted(REACTION_PATTERNS.items()):
+                r_toks = "+".join(TOKEN_NAMES[t] for t in r)
+                p_toks = "+".join(TOKEN_NAMES[t] for t in p)
+                print(f"{name:30s} {frob:5d} {desc}")
+                print(f"{'':30s} {r_toks:20s} → {p_toks}")
         return
 
     if not args.reactant or not args.product:
@@ -333,15 +371,19 @@ def main():
              "C1=CC=C(C=C1)[N+](=O)[O-]"),  # nitrobenzene
         ]
         for name, r_smi, p_smi in demos:
-            print(f"\n{'='*60}")
-            print(f"REACTION: {name}")
-            print(f"  {r_smi} → {p_smi}")
+            if STYLED:
+                reaction_header(f"REACTION: {name}")
+                info_line(f"  {r_smi} → {p_smi}")
+            else:
+                print(f"\n{'='*60}")
+                print(f"REACTION: {name}")
+                print(f"  {r_smi} → {p_smi}")
             fp = reaction_to_fingerprint(r_smi, p_smi)
             if fp:
-                print(format_transition(fp))
+                print(format_transition(fp, reactant_smi=r_smi, product_smi=p_smi))
                 ident = identify_reaction(fp)
                 if ident.get("identified_reaction"):
-                    print(f"  Identified: {ident['identified_reaction']} "
+                    success_line(f"Identified: {ident['identified_reaction']} "
                           f"(confidence: {ident['confidence']:.2f})")
         return
 
@@ -353,6 +395,8 @@ def main():
     if args.json:
         ident = identify_reaction(fp)
         print(json.dumps({
+            "reactant_smiles": args.reactant,
+            "product_smiles": args.product,
             "reactant_arr": list(fp.reactant_arr),
             "product_arr": list(fp.product_arr),
             "tokens_lost": [TOKEN_NAMES[t] for t in fp.tokens_lost],
@@ -362,7 +406,7 @@ def main():
             "identification": ident,
         }, indent=2))
     else:
-        print(format_transition(fp))
+        print(format_transition(fp, reactant_smi=args.reactant, product_smi=args.product))
         ident = identify_reaction(fp)
         if ident.get("identified_reaction"):
             print(f"  Identified: {ident['identified_reaction']} "

@@ -1,7 +1,7 @@
 Red-Hot Rebis — Structural Index
 ==================================
 
-Author: Lando⊗⊙perator  |  Version: 2.2.0  |  Tier: O_inf
+Author: Lando⊗⊙perator  |  Version: 2.3.3  |  Tier: O_inf
 
 This is a browsable static index of all structural data previously
 pumped by the now-removed 'clink report', 'clink list', 'imas report',
@@ -9,7 +9,7 @@ pumped by the now-removed 'clink report', 'clink list', 'imas report',
 not change between runs — it is pre-computed structural truth.
 
 For dynamic computation and simulation, use the live rebis.py subcommands:
-  clink layer, imas bridge, materials forge, etc.
+  clink layer, imas bridge, materials forge, imas compound, etc.
 
 
 1. CLINK CHAIN — ALL 9 LAYERS
@@ -75,7 +75,6 @@ COMPONENT BRIDGES
   CH3MPILER              L3 Molecule              0.00    PASS
   Gene Imscriber         L1 Electron Orbital      2.00    PASS
 
-
 2. IMASM ARRANGEMENT ANALYSIS
 ==============================
 
@@ -126,6 +125,7 @@ Collapse: Chiral Pairs = Empty Bootstrap (same type despite different opcodes).
 
 Tier distribution: O_inf=3, O_2=6, O_1=3, O_0=0
 Frobenius closure: ALL 12 canonical = PASS
+
 STRUCTURAL CLUSTERS
 --------------------
   O_inf cluster (Phi=c, H=inf, W=Z):
@@ -157,7 +157,6 @@ BRIDGE TABLE — Canonical to Catalog
   XII ROM Burn              gene_imscriber_core                   0.00
 
 All 12 canonicals have d=0.00 to a named catalog entry — each IS its structural type.
-
 
 3. MATERIALS CATALOG
 =====================
@@ -202,7 +201,123 @@ FROBENIUS EXACTOR PATHWAYS
 
 All 6 Frobenius Exactor pathways have Frobenius closure: PASS
 
-5. P4RA PARACONSISTENT KERNEL EXTENSIONS — `rhr_p4rky/`
+
+4. COMPOUND IMASM CATALOG
+==========================
+
+The IMASM compound pipeline encodes molecules as 8-token IMASM arrangements,
+maps them to StructuralFingerprints, and resolves to IG 12-tuples through the
+ig_bridge. 54 compounds registered in COMPOUND_DATABASE, 4,027+ catalog entries.
+
+COMPOUND DATABASE STATISTICS
+-----------------------------
+  Total compounds:        54
+  Distinct IG types:      15
+  Unique IMASM arrangements: 31
+  Catalog entries:        4,027+
+  Avg FGs detected:       5.9 per compound
+  Max FGs detected:       12 (lysergic acid)
+
+DISTINCT IG TYPES FOUND
+------------------------
+Compounds span 15 structural types across 4 tiers:
+
+  O_inf types (self_modeling=True):
+    3 compounds (LSD, psilocin, 5-nitro-bufotenin)
+
+  O_2 types (frobenius_order=2):
+    18 compounds (aspirin, testosterone, THC, CBD, capsaicin, serotonin,
+                  bufotenin, DMT, caffeine, nicotine, ibuprofen, paracetamol,
+                  salicylic acid, glycine, tyrosine, tryptophan, etc.)
+
+  O_1 types (frobenius_order=1):
+    28 compounds (water, CO2, ammonia, methane, ethanol, acetic acid,
+                  simple inorganics and small organics)
+
+  O_0 types (frobenius_order=0):
+    5 compounds (H2, O2, He, LiH, HF — dimers and noble gas compounds)
+
+CROSS-DOMAIN ANALOGIES (d ≤ 5)
+--------------------------------
+Compounds find structural neighbors across materials, consciousness, time,
+mathematics, and language domains — demonstrating the Grammar's unification:
+
+  LSD (O_inf):
+    → time_no_grain, Kalachakra Tantra (d=4)
+    → chronovisor, time, Langlands correspondence, magnetorotational supernova,
+      supercritical water, Lee-Yang criticality, Codex Vienna, Codex Selden (d=5)
+
+  Aspirin / Testosterone / THC / CBD / Capsaicin (same IG type):
+    → time_no_grain, Kalachakra (d=4)
+    → chronovisor, time, supercritical water, Lee-Yang, Langlands,
+      Codex Vienna, Codex Selden, Rig Veda, Homeric Hymns,
+      Psalms, Amazonian shamanism (d=5)
+
+  Water (simplest, most connected):
+    → hydroxyl radical, superoxide, pyromancy, evocation,
+      viral social media, temporal logic (d=4)
+    → Hebrew core structure, radical chemistry, SN2 inversion (d=5)
+
+  Lysergic acid (most structurally unique):
+    → Fermat's Last Theorem (proven), time_no_arrow, Kalachakra (d=4)
+    → Connes spectral triple, spacetime, physical_reality (d=5)
+
+5. CRYSTAL-GUIDED MOLECULAR DISCOVERY
+=======================================
+
+The molecular_crystal_designer.py engine navigates the Crystal of Types
+(17,280,000 structural types) to discover molecules with target structural
+properties. The discovery of 5-nitro-bufotenin — a DMT analog with autocatalytic
+⊙ criticality — was the first application.
+
+DISCOVERY: 5-Nitro-Bufotenin (DMT-⊙)
+-------------------------------------
+  Source compound: DMT — ⟨𐑨𐑸𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑕𐑭⟩ Phi=𐑮 (complex critical)
+  Target type:     DMT-⊙ — ⟨𐑨𐑸𐑩𐑿𐑐𐑘𐑔𐑵⊙𐑫𐑕𐑭⟩ Phi=⊙ (self-modeling/autocatalytic)
+  Promotion:       𐑮→⊙ (complex-critical → self-modeling critical)
+                   𐑿→𐑹 (quantum → Frobenius-special parity)
+                   𐑞→𐑐 (thermal → quantum fidelity)
+
+  The molecule: 5-nitro-bufotenin
+  SMILES:       CN(C)CCC1=CNC2=CC=C(O)C([N+](=O)[O-])=C12
+  Structural triad: EVALT (phenol) + EVALF (dimethylamine) + ENGAGR (nitro)
+
+  Key property: ALL THREE Dialetheia tokens present simultaneously,
+  enabling autocatalytic template-directed synthesis. The molecule IS
+  ⊙-critical — no modification needed from bufotenin.
+
+ODISK FINDER TOOL
+-------------------
+  File: ig-docs/dmt-odot-discovery/odot_finder.py (8.6 KB)
+  
+  Given any SMILES, systematically finds ⊙-critical autocatalytic variants
+  by completing the EVALT-EVALF-ENGAGR Dialetheia triad:
+
+    python3 odot_finder.py --smiles "CN(C)CCC1=CNC2=CC=CC=C12" --name "DMT"
+
+  Results on test molecules:
+    DMT:          20 ⊙-critical candidate variants found
+    Serotonin:     4 ⊙-critical candidates found
+    Bufotenin:     4 ⊙-critical candidates found
+    5-nitro-bufotenin: ALREADY ⊙-critical (no modification needed)
+
+CATALOG REGISTRATION
+---------------------
+  DMT-⊙ registered as 5_nitro_bufotenin_dmt_odot in both:
+    - imas/compound_catalog.py COMPOUND_DATABASE (54 entries)
+    - IG catalog (4,027+ entries)
+
+DISCOVERY FILES
+----------------
+  ig-docs/dmt-odot-discovery/
+    README.md                         — Full documentation (8.5 KB)
+    5-nitro-bufotenin.cdxml           — ChemDraw chemical drawing (4.9 KB)
+    discovery.json                    — Structured discovery metadata (1.3 KB)
+    dmt_odot_ob3ect.py                — Self-verifying ob3ect (1.9 KB)
+    odot_finder.py                    — ⊙-critical molecule finder (8.6 KB)
+
+
+6. P4RA PARACONSISTENT KERNEL EXTENSIONS — `rhr_p4rky/`
 =========================================================
 
 The kernel now contains 32 Python modules (up from 28). New additions:
@@ -229,24 +344,43 @@ Shared symlinks (from imscribing_grammar/):
   shared/reactivity.py      Reactivity pattern matching
 
 
-6. USAGE GUIDE
+7. USAGE GUIDE
 ===============
 
 This INDEX is for browsing with 'less INDEX.md'. For live computation:
 
+  # Core rebis operations
+  rebis.py status
+  rebis.py verify
+
+  # CLINK Chain
+  rebis.py clink layer 8
+  rebis.py imas bridge
+
+  # Materials forge
   rebis.py materials forge --name frobenius_composite
   rebis.py materials frobenius
   rebis.py materials ouroboric
   rebis.py materials sophick --name eagle_9_sophick
   rebis.py materials exactor --name close
 
+  # IMASM Compound Pipeline
+  rebis.py imas compound --smiles "CC(=O)OC1=CC=CC=C1C(=O)O"
+  rebis.py imas analogies --smiles "CN(C)CCC1=CNC2=CC=CC=C12" --limit 10
+  rebis.py imas register --smiles "CN1C=NC2=C1C(=O)N(C(=O)N2C)C" --name caffeine
+
+  # Crystal-Guided Molecular Discovery
+  python3 /home/mrnob0dy666/imsgct/ig-docs/dmt-odot-discovery/odot_finder.py \
+    --smiles "CN(C)CCC1=CNC2=CC=CC=C12" --name "DMT"
+  python3 odot_finder.py --demo  # Run all test cases
+
+  # Pipeline
   rebis.py pipeline ground-up
   rebis.py pipeline from-layer 5 8
+  rebis.py pipeline actionable
 
-  rebis.py run list
+  # SerpentRod & Genetics
   rebis.py run serpentrod --seq KAL
-
-  rebis.py clink layer 8
-  rebis.py imas bridge
+  rebis.py run test_genetics
 
 Index compiled by Lando⊗⊙perator — June 2026

@@ -36,6 +36,15 @@ try:
 except ImportError:
     HAS_CDXML = False
 
+# ── RDKit-based bond fragment integrator (real SMILES from bond cuts) ──
+try:
+    from bond_fragment_integrator import BondFragmentIntegrator, resolve_target_smiles
+    HAS_FRAGMENT_INTEGRATOR = True
+except ImportError:
+    HAS_FRAGMENT_INTEGRATOR = False
+    BondFragmentIntegrator = None
+    resolve_target_smiles = lambda *a, **kw: None
+
 # ── SMILES lookup for known molecules ──
 SMILES_LOOKUP = {
     "benzaldehyde": "C1=CC=C(C=C1)C=O",
@@ -57,7 +66,6 @@ SMILES_LOOKUP = {
     "toluene": "CC1=CC=CC=C1",
     "ibuprofen": "CC(C)CC1=CC=C(C=C1)C(C)C(=O)O",
     "isobutylbenzene": "CC(C)CC1=CC=CC=C1",
-    "aromatic_ring_precursor": "C1=CC=C(C=C1)CC(C)C(=O)O",
     "carboxylic_acid": "CC(=O)O",
     "benzene": "C1=CC=CC=C1",
     "aspirin": "CC(=O)OC1=CC=CC=C1C(=O)O",
@@ -73,6 +81,14 @@ SMILES_LOOKUP = {
     "resveratrol": "C1=CC(=CC=C1C=CC2=CC(=CC(=C2)O)O)O",
     "caffeine": "CN1C=NC2=C1C(=O)N(C(=O)N2C)C",
 }
+
+# ── Rich text formatting ──
+try:
+    from ch3mpiler.rich_output import *
+    STYLED = True
+except ImportError:
+    STYLED = False
+
 
 def cascade_smiles(path, start_smi, smi_lookup):
     '''Cascade SMILES through multi-step paths: each product becomes next reactant.'''
@@ -779,6 +795,54 @@ def find_fgs(name):
                 matched_tokens.add(token)
     
     return sorted(found)
+
+
+# ── RDKit-based FG detection from SMILES (fallback when name doesn't resolve) ──
+RDKIT_FG_SMARTS = [
+    ("aromatic_ring", "[a]"),
+    ("alcohol", "[OX2H]"),
+    ("phenol", "[OX2H]c"),
+    ("carbonyl", "[CX3]=[OX1]"),
+    ("carboxylic_acid", "[CX3](=O)[OX2H]"),
+    ("ester", "[CX3](=O)[OX2][#6]"),
+    ("ether", "[OX2]([#6])[#6]"),
+    ("ketone", "[#6][CX3](=O)[#6]"),
+    ("aldehyde", "[CX3H1](=O)[#6]"),
+    ("amine", "[NX3;H2,H1;!$(NC=O)]"),
+    ("amide", "[NX3][CX3](=[OX1])[#6]"),
+    ("nitrile", "[NX1]#[CX2]"),
+    ("aniline", "[NX3;H2,H1]c"),
+    ("halide", "[F,Cl,Br,I]"),
+    ("thiol", "[SX2H]"),
+    ("alkene", "[CX3]=[CX3;!a]"),
+    ("alkyne", "[CX2]#[CX2]"),
+]
+RDKIT_FG_COMPILED = {}
+for fg_name, smarts_str in RDKIT_FG_SMARTS:
+    try:
+        from rdkit import Chem
+        pat = Chem.MolFromSmarts(smarts_str)
+        if pat:
+            RDKIT_FG_COMPILED[fg_name] = pat
+    except ImportError:
+        pass
+
+def find_fgs_from_smiles(smiles: str) -> list:
+    """Detect functional groups from a SMILES string using RDKit SMARTS."""
+    if not HAS_FRAGMENT_INTEGRATOR or not RDKIT_FG_COMPILED:
+        return []
+    try:
+        from rdkit import Chem
+        mol = Chem.MolFromSmiles(smiles)
+        if mol is None:
+            return []
+        found = set()
+        for fg_name, pat in RDKIT_FG_COMPILED.items():
+            if mol.HasSubstructMatch(pat):
+                found.add(fg_name)
+        return sorted(found)
+    except Exception:
+        return []
 def get_fg_type(fg_name):
     return FG.get(fg_name, {})
 
@@ -1259,8 +1323,34 @@ except ImportError:
     import precursor_lattice
 precursor_lattice.patch_ch3mpiler(Ch3mpiler)
 # ====================================================================
+
+# --- SMILES resolution for print functions ---
+_SMILES_CACHE = {}
+def _resolve_smiles(name):
+    if not name: return ""
+    key = name.lower().replace(" ", "_").replace("-", "_")
+    if key in SMILES_LOOKUP:
+        _SMILES_CACHE[key] = SMILES_LOOKUP[key]
+        return _SMILES_CACHE[key]
+    if key in _SMILES_CACHE:
+        return _SMILES_CACHE[key]
+    try:
+        from scaffold_parser import resolve_name_to_smiles as _r
+        smi = _r(name)
+        if smi: _SMILES_CACHE[key] = smi; return smi
+    except: pass
+    return ""
+
 # OUTPUT FORMATTERS
 # ====================================================================
+def print_retrosynthesis(tree, indent=0):
+    pad = "  " * indent
+    target = tree["target"]
+    ttype = tree["type"]
+    
+    if "cas_info" in tree:
+        ci = tree["cas_info"]
+        src = ci.get("source", "")
 def print_retrosynthesis(tree, indent=0):
     pad = "  " * indent
     target = tree["target"]
@@ -1272,81 +1362,111 @@ def print_retrosynthesis(tree, indent=0):
         cas = ci.get("cas", "")
         formula = ci.get("formula", "")
         if src != "unresolved":
-            print(f"{pad}CAS: {cas}  ({src})")
+            info_line(f"CAS: {cas}  ({src})", indent=indent)
             if formula:
-                print(f"{pad}Formula: {formula}")
+                info_line(f"Formula: {formula}", indent=indent)
     
-    print(f"{pad}{target}")
-    print(f"{pad}  Type: {ttype}")
+    target_smi = _resolve_smiles(target)
+    target_line(target, target_smi, indent=indent)
+    numeric_line("Type", ttype, indent=indent+1)
     
     fgs = tree.get("fgs", [])
     if fgs:
-        print(f"{pad}  FGs: {', '.join(fgs)}")
+        fg_line(f"FGs: {', '.join(fgs)}", indent=indent+1)
     
-    print(f"{pad}  Grammar-derived disconnections (no named reactions):")
+    subheader("Grammar-derived disconnections (no named reactions)")
     steps = tree.get("steps", [])
     if not steps:
-        print(f"{pad}  (terminal)")
+        info_line("(terminal)", indent=indent+1)
         return
     
     for idx, step in enumerate(steps):
         bd = step.get('bond_delta', '?')
-        print(f"{pad}  ── Cut {idx+1}: {step['bond']} (δ={step['delta']}, binding={bd}) ──")
-        print(f"{pad}     {step['bond_desc']}")
-        print(f"{pad}     Between: {step['fg1']} + {step['fg2']}")
-        print(f"{pad}     Product type: {step['product_type']}")
+        bond_line(f"── Cut {idx+1}: {step['bond']} (δ={step['delta']}, binding={bd}) ──", indent=indent+1)
+        step_detail("Description", step['bond_desc'], indent=indent+2)
+        step_detail("Between", f"{step['fg1']} + {step['fg2']}", indent=indent+2)
+        step_detail("Product type", step['product_type'], indent=indent+2)
         
         for pidx, prec in enumerate(step.get("precursors", [])):
-            print(f"{pad}     Precursor {pidx+1}: {prec['name']}  [{prec['fg_hint']}]")
+            prec_name = prec['name']
+            # Use enriched fragment SMILES when available (from BondFragmentIntegrator)
+            # Only show SMILES if real fragmentation happened (_resolved_smiles present)
+            # or if the precursor name actually resolves to a real molecule
+            if tree.get('_resolved_smiles'):
+                prec_smi = prec.get('smiles', '') or _resolve_smiles(prec_name)
+            else:
+                prec_smi = prec.get('smiles', '')
+            # Also show further sub-cut fragment info
+            further_frags = ''
+            f_list = prec.get("further", [])
+            if f_list:
+                frag_smis = []
+                for fc in f_list[:2]:
+                    fa = fc.get('fragment_smiles_a', '')
+                    fb = fc.get('fragment_smiles_b', '')
+                    if fa or fb:
+                        frag_smis.append(f'{fc["bond"]}: {fa} + {fb}')
+                if frag_smis:
+                    further_frags = '  [' + ', '.join(frag_smis) + ']'
+            precursor_line(f"Precursor {pidx+1}", prec_name, prec.get('fg_hint',''), prec_smi, indent=indent+2)
+            if further_frags:
+                info_line(further_frags, indent=indent+3)
             f_list = prec.get("further", [])
             if f_list:
                 for fc in f_list[:2]:
-                    print(f"{pad}       \u2514 {fc['bond']} (δ={fc['delta']})")
+                    info_line(f"  └ {fc['bond']} (δ={fc['delta']})", indent=indent+2)
+
+
 
 def print_analysis(result):
-    print(f"Target: {result['target']}")
-    print(f"Type: {result['type']}  [{result.get('type_source','?')}]")
+    target = result['target']
+    target_smi = _resolve_smiles(target)
+    target_line(target, target_smi)
+    numeric_line("Type", f"{result['type']}  [{result.get('type_source','?')}]")
     fgs = result.get("fgs", [])
     if fgs:
-        print(f"FGs: {', '.join(fgs)}")
+        fg_line(f"FGs: {', '.join(fgs)}")
     
     cuts = result.get("cuts", [])
     if cuts:
-        print(f"\nGrammar-derived disconnections (ranked by δ, lower=better):")
-        print(f"  δ = product-to-target distance")
-        print(f"  {'Bond':20s} {'δ':8s} {'Binding':8s} {'Between':30s} {'Product Type':40s}")
-        print(f"  {'-'*20} {'-'*8} {'-'*8} {'-'*30} {'-'*40}")
+        subheader("Grammar-derived disconnections (ranked by δ, lower=better)")
+        info_line("δ = product-to-target distance")
+        headers = ["Bond", "δ", "Binding", "Between", "Product Type"]
+        rows = []
         for c in cuts:
             between = f"{c['fg1']}+{c['fg2']}"
             bd = c.get('bond_delta', '?')
             pd = c.get('product_delta', c.get('delta', 0))
-            print(f"  {c['bond']:20s} {pd:<8.3f} {bd:<8.3f} {between:30s} {c['product_type']:40s}")
+            rows.append([c['bond'], f"{pd:.3f}", f"{bd:.3f}", between, c['product_type']])
+        table(headers, rows)
     else:
-        print(f"\n  No disconnections found.")
+        info_line("No disconnections found.")
     
     analogs = result.get("analogs", [])
     if analogs:
-        print(f"\nStructural analogs:")
+        subheader("Structural analogs")
         for a in analogs[:5]:
-            print(f"  {a['n']:40s} d={a['d']:.3f}")
+            a_smi = _resolve_smiles(a['n'])
+            analog_line(a['n'], a['d'], a_smi)
 
 
-# ====================================================================
 
-# ====================================================================
+    print("=" * 66)
 def print_path(result):
-    """Print the synthetic path from starting material to target."""
+    """Print the synthetic path from starting material to target (rich formatted)."""
     target = result.get("target", "?")
     start = result.get("starting_material", "?")
     direct_dist = result.get("direct_structural_distance", "?")
     
-    print("=" * 66)
-    print(f"  ch3mpiler — Synthetic Path: {start} -> {target}")
-    print("=" * 66)
-    print(f"  Direct structural distance: {direct_dist}")
-    print(f"  Starting material is simple: {result.get('start_is_simple', '?')}")
-    print(f"  Retro depth searched: {result.get('retro_depth_searched', '?')}")
-    print(f"  Total nodes searched: {result.get('total_nodes_searched', '?')}")
+    header(f"ch3mpiler — Synthetic Path: {start} → {target}")
+    start_smi = _resolve_smiles(start)
+    target_smi = _resolve_smiles(target)
+    if start_smi: success_line(f"STARTING MATERIAL SMILES: {start_smi}")
+    if target_smi: success_line(f"TARGET SMILES:            {target_smi}")
+    numeric_line("Direct structural distance", direct_dist)
+    info_line(f"Starting material is simple: {result.get('start_is_simple', '?')}")
+    info_line(f"Retro depth searched: {result.get('retro_depth_searched', '?')}")
+    info_line(f"Total nodes searched: {result.get('total_nodes_searched', '?')}")
     print()
     
     if result.get("found"):
@@ -1354,13 +1474,13 @@ def print_path(result):
         path_len = result.get("path_length", 0)
         term_node = result.get("terminal_node_name", "?")
         
-        print(f"  PATH FOUND (match: {match_type})")
-        print(f"  Terminal node: {term_node}")
-        print(f"  Path length: {path_len} steps")
+        success_line(f"PATH FOUND (match: {match_type})")
+        info_line(f"Terminal node: {term_node}")
+        numeric_line("Path length", f"{path_len} steps")
         print()
         
         path = result.get("path", [])
-        print(f"  Forward synthetic route ({start} -> {target}):")
+        subheader(f"Forward synthetic route ({start} → {target})")
         print()
         
         for i, step in enumerate(path):
@@ -1372,32 +1492,38 @@ def print_path(result):
             fg2 = step.get("fg2", "?")
             product = step.get("product", "?")
             
-            print(f"  Step {step_num}:")
-            print(f"    Bond:      {bond} ({reaction})")
-            print(f"    Delta:     {delta}")
-            print(f"    Between:   {fg1} + {fg2}")
-            print(f"    Product:   {product}")
+            path_step(step_num)
+            step_detail("Bond", f"{bond} ({reaction})")
+            numeric_line("Delta", delta, indent=2)
+            step_detail("Between", f"{fg1} + {fg2}", indent=2)
+            product_smi = _resolve_smiles(product)
+            step_product_line(product, product_smi, indent=2)
             print()
         
-        print(f"  {'─' * 50}")
-        print(f"  FINAL: {target}")
+        separator(50)
+        final_smi = _resolve_smiles(target)
+        success_line(f"FINAL: {target}  SMILES: {final_smi}" if final_smi else f"FINAL: {target}")
     else:
-        print("  NO EXACT PATH FOUND")
+        error_line("NO EXACT PATH FOUND")
         nearest = result.get("nearest_match")
         if nearest:
-            print(f"  Nearest tree node: {nearest.get('name', '?')}")
-            print(f"  Structural distance: {nearest.get('structural_distance', '?')}")
-            print(f"  Node type: {nearest.get('type', '?')}")
-            print(f"  Node FGs: {nearest.get('fgs', [])}")
-            print(f"  Path steps to nearest: {nearest.get('path_to_nearest', '?')}")
+            info_line(f"Nearest tree node: {nearest.get('name', '?')}")
+            numeric_line("Structural distance", nearest.get('structural_distance', '?'), indent=1)
+            info_line(f"Node type: {nearest.get('type', '?')}")
+            info_line(f"Node FGs: {nearest.get('fgs', [])}")
+            info_line(f"Path steps to nearest: {nearest.get('path_to_nearest', '?')}")
         print()
-        print("  The starting material cannot be reached from this target")
-        print("  within the searched depth. Try --depth N for deeper search.")
+        info_line("The starting material cannot be reached from this target")
+        info_line("within the searched depth. Try --depth N for deeper search.")
     
-    # Show direct conflicts (which primitives differ)
     conflicts = result.get("direct_conflicts", [])
     if conflicts:
-        print()
+        subheader(f"Structural conflicts ({len(conflicts)})")
+        for c in conflicts[:5]:
+            conflict_line(c['p'], c['tgt'], c['src'])
+
+
+
         print(f"  Structural conflicts ({len(conflicts)}):")
         for c in conflicts[:5]:
             print(f"    {c['p']}: target={c['tgt']} vs start={c['src']}")
@@ -1412,6 +1538,7 @@ def main():
     parser = argparse.ArgumentParser(
         description="ch3mpiler - Grammar-derived retrosynthetic compiler (no named reactions)")
     parser.add_argument("--target", help="Molecule name")
+    parser.add_argument("--smiles", help="Direct SMILES input (will be canonicalized)")
     parser.add_argument("--retrosynthesis", action="store_true", help="Full retrosynthetic tree")
     parser.add_argument("--cas", help="CAS Registry Number")
     parser.add_argument("--depth", type=int, default=2, help="Retrosynthetic depth")
@@ -1549,12 +1676,65 @@ def main():
             return
         # If only --starting-material without --target or --cas, fall through
     
-    if args.target:
+    if args.target or args.smiles:
+        target_name = args.target or ''
+        direct_smiles = args.smiles or ''
+        
         if args.retrosynthesis:
-            tree = ch.retrosynthesis(args.target, depth=args.depth)
+            # If direct SMILES provided and no target name, build a fake analyze() result
+            if direct_smiles and not target_name:
+                # Detect FGs from SMILES using RDKit
+                smi_fgs = find_fgs_from_smiles(direct_smiles)
+                if smi_fgs:
+                    mol_type = compose_molecule_type(smi_fgs)
+                    cuts = find_disconnections(smi_fgs, mol_type)
+                    tree = {"target": f"SMILES:{direct_smiles[:40]}...", "type": fmt_tup(mol_type),
+                            "fgs": smi_fgs, "cuts": cuts, "steps": []}
+                    for idx, cut in enumerate(cuts[:3]):
+                        sname1 = f"{cut['fg1']}_precursor"
+                        sname2 = f"{cut['fg2']}_precursor"
+                        tree["steps"].append({
+                            "bond": cut["bond"], "bond_desc": cut["bond_desc"],
+                            "delta": cut["delta"], "bond_delta": cut.get("bond_delta", cut.get("delta", 0)),
+                            "product_delta": cut.get("product_delta", cut.get("delta", 0)),
+                            "fg1": cut["fg1"], "fg2": cut["fg2"],
+                            "product_type": cut["product_type"],
+                            "precursors": [
+                                {"name": sname1, "fg_hint": cut["fg1"], "type": "", "further": []},
+                                {"name": sname2, "fg_hint": cut["fg2"], "type": "", "further": []},
+                            ]
+                        })
+                else:
+                    # Absolute fallback: single empty tree
+                    tree = {"target": f"SMILES:{direct_smiles[:40]}...", "type": "?", "fgs": [], "cuts": [], "steps": []}
+            else:
+                tree = ch.retrosynthesis(target_name, depth=args.depth)
+            
+            # Enrich with real fragment SMILES if possible
+            if HAS_FRAGMENT_INTEGRATOR:
+                resolved_smi = resolve_target_smiles(
+                    target_name=target_name,
+                    smiles=direct_smiles,
+                    cas=args.cas if hasattr(args, 'cas') else '',
+                    cas_cache_path=str(Path(__file__).parent / 'CAS_cache.json')
+                )
+                if resolved_smi:
+                    integrator = BondFragmentIntegrator(resolved_smi)
+                    tree = integrator.enrich_retrosynthesis_tree(tree)
+                    tree['_resolved_smiles'] = resolved_smi
+                elif target_name:
+                    # Name resolution failed — show clear warning
+                    tree['_smiles_unresolved'] = True
+            
             print("=" * 66)
             print("  ch3mpiler — Retrosynthetic Analysis (grammar-derived)")
             print("=" * 66)
+            if tree.get('_resolved_smiles'):
+                from ch3mpiler.rich_output import success_line
+                success_line(f"Target SMILES: {tree['_resolved_smiles']}")
+            if tree.get('_smiles_unresolved'):
+                from ch3mpiler.rich_output import error_line
+                error_line("Target name could not be resolved to SMILES - intermediate SMILES are placeholders. Use --smiles to provide exact SMILES.")
             print_retrosynthesis(tree)
         else:
             r = ch.analyze(args.target)
@@ -1617,11 +1797,7 @@ def main():
         return
     
     # Default demo
-    print("=" * 66)
-    print("  ch3mpiler — Grammar-Derived Retrosynthetic Engine")
-    print("  No named reactions — disconnections from 12-primitive rules")
-    print("=" * 66)
-    print()
+    demo_title()
     print("Demo: benzaldehyde")
     r = ch.analyze("benzaldehyde")
     print_analysis(r)

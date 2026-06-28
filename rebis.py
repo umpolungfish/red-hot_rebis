@@ -22,6 +22,13 @@ sys.path.insert(0, str(REBIS_ROOT))
 
 VERSION = "2.2.0"  # Consolidated edition
 from rhr_p4rky._help_examples import EXAMPLES
+# ── Rich text formatting ──
+try:
+    from ch3mpiler.rich_output import header, subheader, info_line, success_line, error_line, target_line, numeric_line, panel, separator, table, reaction_header, demo_title
+    STYLED = True
+except ImportError:
+    STYLED = False
+
 
 def _discover_packages():
     """Auto-discover all Python packages and standalone module files under REBIS_ROOT."""
@@ -39,23 +46,34 @@ def _discover_packages():
 
 def cmd_status(args):
     """Report the structural status of all discovered packages."""
-    print("=" * 66)
-    print("RED-HOT REBIS v2.2 — CONSOLIDATED EDITION")
-    print("=" * 66)
+    reaction_header("RED-HOT REBIS v2.2 — CONSOLIDATED EDITION", "All components status")
 
     packages = _discover_packages()
-    print(f"\n{'Package':22s}  {'Files':>6}  {'Size':>10}  Root file")
-    print("-" * 66)
-    for name, path, n_files, total in packages:
-        init = path / '__init__.py'
-        root_file = init.name if init.exists() else "—"
-        tick = "✅"
-        print(f"  {tick} {name:20s}  {n_files:>5}  {total:>9,d}  {root_file}")
-
-    # scripts/
     scripts_dir = REBIS_ROOT / "scripts"
     n_scripts = len(list(scripts_dir.glob("*.py")))
-    print(f"  ✅ {'scripts':20s}  {n_scripts:>5}  (standalone, no __init__)")
+    
+    if STYLED:
+        from rich.table import Table
+        from rich import box
+        t = Table(box=box.ROUNDED, border_style="bright_blue", header_style="bold yellow")
+        t.add_column("Package")
+        t.add_column("Files", justify="right")
+        t.add_column("Size", justify="right")
+        t.add_column("Root file")
+        for name, path, n_files, total in packages:
+            t.add_row(f"✅ {name}", str(n_files), f"{total:,d}", "__init__.py")
+        t.add_row(f"✅ scripts", str(n_scripts), "—", "standalone")
+        from rich.console import Console
+        Console().print(t)
+    else:
+        print(f"\n{'Package':22s}  {'Files':>6}  {'Size':>10}  Root file")
+        print("-" * 66)
+        for name, path, n_files, total in packages:
+            init = path / '__init__.py'
+            root_file = init.name if init.exists() else "—"
+            tick = "✅"
+            print(f"  {tick} {name:20s}  {n_files:>5}  {total:>9,d}  {root_file}")
+        print(f"  ✅ {'scripts':20s}  {n_scripts:>5}  (standalone, no __init__)")
 
     # Shared assets
     print()
@@ -64,25 +82,28 @@ def cmd_status(args):
         p = REBIS_ROOT / rel
         exists = p.exists()
         sz = f"{p.stat().st_size:,d} bytes" if exists else "missing"
-        print(f"  {'✅' if exists else '❌'} {label}: {sz}")
+        if STYLED:
+            success_line(f"{'✅' if exists else '❌'} {label}: {sz}")
+        else:
+            print(f"  {'✅' if exists else '❌'} {label}: {sz}")
 
-    print("=" * 66)
-    print(f"  {len(packages)} packages + {n_scripts} scripts discovered")
-    print(f"  Run 'rebis.py run list' for all runnable targets")
+    separator()
+    info_line(f"{len(packages)} packages + {n_scripts} scripts discovered")
+    info_line("Run 'rebis.py run list' for all runnable targets")
     return 0
 
 
 def cmd_verify(args):
     """Verify Frobenius closure across the shared layer and CLINK."""
     from shared.primitives import WEIGHTS, ORDINALS
-    print("✅ shared/primitives.py — %d weights, %d ordinal families" % (len(WEIGHTS), len(ORDINALS)))
+    success_line("shared/primitives.py — %d weights, %d ordinal families" % (len(WEIGHTS), len(ORDINALS)))
 
     try:
         with open(REBIS_ROOT / "shared/IG_catalog.json") as f:
             catalog = json.load(f)
-        print("✅ shared/IG_catalog.json — %d catalog entries" % len(catalog))
+        success_line("shared/IG_catalog.json — %d catalog entries" % len(catalog))
     except (FileNotFoundError, json.JSONDecodeError) as e:
-        print("❌ Catalog error: %s" % e)
+        error_line("Catalog error: %s" % e)
         return 1
 
     modules = [
@@ -105,9 +126,9 @@ def cmd_verify(args):
     for mod_name, label in modules:
         try:
             __import__(mod_name)
-            print("✅ %s — %s imports OK" % (label, mod_name))
+            success_line("%s — %s imports OK" % (label, mod_name))
         except Exception as e:
-            print("❌ %s — %s: %s" % (label, mod_name, e))
+            error_line("%s — %s: %s" % (label, mod_name, e))
             all_ok = False
 
     return 0 if all_ok else 1
@@ -128,9 +149,7 @@ def cmd_pipeline(args):
         return 0
 
     elif args.pipeline_subcommand == "ground-up":
-        print("=" * 65)
-        print("CLINK PIPELINE — GROUND-UP WHOLE ORGANISM DESIGN")
-        print("=" * 65)
+        reaction_header("CLINK PIPELINE", "Ground-up whole organism design")
         result = engine.ground_up_design()
         print(engine.generate_report(result))
         return 0 if result.success else 1
@@ -138,7 +157,7 @@ def cmd_pipeline(args):
     elif args.pipeline_subcommand == "from-layer":
         start = args.start_layer if args.start_layer is not None else 5
         target = args.target_layer if args.target_layer is not None else 8
-        print(f"CLINK Pipeline: L{start} → L{target}")
+        header(f"CLINK Pipeline: L{start} → L{target}")
         result = engine.from_layer_design(start_layer=start)
         print(engine.generate_report(result))
         if result.success and result.final_design:
@@ -148,9 +167,7 @@ def cmd_pipeline(args):
         return 0 if result.success else 1
 
     elif args.pipeline_subcommand == "actionable":
-        print("=" * 65)
-        print("CLINK PIPELINE — ACTIONABLE ORGANISM DESIGN PACKAGE")
-        print("=" * 65)
+        reaction_header("CLINK PIPELINE", "Actionable organism design package")
         from clink.datasets.generators import generate_actionable_organism_package
         ot = getattr(args, 'organism', 'mammal')
         print(f"Generating {ot} organism design...")
@@ -203,16 +220,16 @@ def cmd_clink(args):
             print("Layer index must be 0-8")
             return 1
         tup = clink_layer_tuple(idx, True)
-        print(f"Layer {idx}: {CLINK_NAMES[idx]}")
-        print(f"  Tier: {CLINK_TIERS[idx]}")
-        print(f"  Tuple: {format_tuple_glyphs(tup)}")
-        print(f"  Description: {tup['_desc']}")
+        target_line(f"Layer {idx}: {CLINK_NAMES[idx]}")
+        numeric_line("Tier", CLINK_TIERS[idx], indent=1)
+        info_line(f"Tuple: {format_tuple_glyphs(tup)}", indent=1)
+        info_line(f"Description: {tup['_desc']}", indent=1)
         sr = clink_to_serpentrod(idx)
         cm = clink_to_ch3mpiler(idx)
         ge = clink_to_gene(idx)
-        print(f"  → SerpentRod: {sr['closer_to']} (d_fold={sr['distance_to_folded']})")
-        print(f"  → CH3MPILER:  {'molecular' if cm['is_molecular'] else 'non-molecular'} (d={cm['distance_to_molecule']})")
-        print(f"  → Gene:       {'genetic' if ge['is_genetic'] else 'non-genetic'} (d={ge['distance_to_codon_belnap4']})")
+        info_line(f"SerpentRod: {sr['closer_to']} (d_fold={sr['distance_to_folded']})", indent=2)
+        info_line(f"CH3MPILER:  {'molecular' if cm['is_molecular'] else 'non-molecular'} (d={cm['distance_to_molecule']})", indent=2)
+        info_line(f"Gene:       {'genetic' if ge['is_genetic'] else 'non-genetic'} (d={ge['distance_to_codon_belnap4']})", indent=2)
         return 0
 
     elif sub == "bridge":
@@ -690,6 +707,28 @@ def cmd_imas(args):
             print()
             print("Full IG description:")
             print(describe_full(ig))
+
+            # Show cross-domain analogies
+            print()
+            print("-" * 60)
+            print("CROSS-DOMAIN ANALOGIES (nearest structural neighbors)")
+            print("-" * 60)
+            from imas.compound_catalog import find_analogies
+            try:
+                analogies = find_analogies(smi, limit=9)
+                for r in analogies[1:9]:
+                    d = r["distance"]
+                    bar = chr(9608) * (12 - d) + chr(9617) * d
+                    desc = r.get("description", "")[:90]
+                    print(f"  d={d:2d}  {bar}  {r['name']}")
+                    if desc:
+                        print(f"             {desc}")
+                    if d <= 3:
+                        for m in r["mismatches"][:2]:
+                            print(f"             delta {m['primitive']}: {m['query']} -> {m['entry']}")
+                    print()
+            except Exception as e:
+                print(f"  (analogies: {e})")
         return 0
 
     elif sub == "reaction":
@@ -739,11 +778,93 @@ def cmd_imas(args):
                 print(f"Identified: {ident['identified_reaction']} (confidence: {ident['confidence']:.2f})")
         return 0
 
+    elif sub == "analogies":
+        from imas.compound_catalog import find_analogies, describe_analogies
+        
+        query = args.imas_smiles or args.imas_name
+        if not query:
+            print("Error: --smiles <SMILES> or --name <catalog_name> required")
+            return 1
+        
+        try:
+            results = find_analogies(query, limit=args.imas_limit or 10)
+            print(describe_analogies(results, query_name=query))
+            return 0
+        except ValueError as e:
+            print(f"Error: {e}")
+            return 1
+    
+    elif sub == "register":
+        from imas.compound_catalog import register_compound, smiles_to_ig, ig_tuple_str
+        
+        smi = args.imas_smiles
+        name = args.imas_name
+        if not smi:
+            print("Error: --smiles <SMILES> required")
+            return 1
+        if not name:
+            import hashlib
+            name = "smiles_" + hashlib.md5(smi.encode()).hexdigest()[:8]
+        
+        try:
+            result = register_compound(name, smi, description=f"Auto-registered compound {name}")
+            print(f"Registered: {result['name']} -> {result['ig_tuple_str']}")
+            print(f"Status: {result['status']}")
+            return 0
+        except Exception as e:
+            print(f"Error: {e}")
+            return 1
+    
+
+    elif sub == "crystal":
+        """Crystal-guided molecular discovery: analyze SMILES, explore neighborhood, generate candidates."""
+        from imas.molecular_crystal_designer import (
+            analyze_molecule_properties, analyze_compound_design_space,
+            design_from_type, analyze_crystal_neighborhood, generate_candidate_smiles,
+        )
+        from imas.compound_imasm import molecule_to_arrangement
+        from imas.arranger import compute_fingerprint
+        from imas.ig_bridge import fingerprint_to_ig, ig_tuple_str
+        
+        smiles = args.imas_smiles or "CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
+        radius = args.crystal_radius
+        max_candidates = args.crystal_candidates
+        
+        print(f"\nCrystal-Guided Molecular Discovery")
+        print(f"{'='*60}")
+        print(f"SMILES: {smiles}")
+        
+        # Property analysis
+        props = analyze_molecule_properties(smiles)
+        if props.get('valid'):
+            print(f"\nProperties:")
+            print(f"  Formula: {props.get('formula','?')}")
+            print(f"  MW: {props.get('mol_weight',0):.1f} Da")
+            print(f"  LogP: {props.get('logp',0):.2f}")
+            print(f"  Lipinski: {props.get('lipinski_score',0)}/4")
+        
+        # IG Type
+        arr = molecule_to_arrangement(smiles)
+        if arr:
+            fp = compute_fingerprint(arr)
+            ig = fingerprint_to_ig(fp)
+            print(f"\nIG Crystal Type: {ig_tuple_str(ig)}")
+        
+        # Neighborhood
+        if radius > 0:
+            print(f"\nCrystal Neighborhood (d<={radius}):")
+            designs = analyze_compound_design_space(smiles, radius)
+            for d in designs[:max_candidates]:
+                print(f"  [{d['distance']}] {d['target_type']} [{d['criticality']}]")
+                for feat in d['features'][:2]:
+                    print(f"    - {feat}")
+                if d['candidates']:
+                    print(f"    Candidates: {', '.join(d['candidates'][:2])}")
+        
+        print(f"\n{'='*60}")
     else:
-        print("Unknown imas subcommand. Use: bridge, hunt, energy, compound, reaction")
+        print("Unknown imas subcommand. Use: bridge, hunt, energy, compound, reaction, analogies, register")
         return 1
-
-
 
 
 
@@ -944,6 +1065,11 @@ def cmd_materials(args):
 
 
 def main():
+    if len(sys.argv) == 1:
+        from ch3mpiler.rich_output import demo_title
+        print()
+        demo_title()
+        print()
     parser = argparse.ArgumentParser(
         description="Red-Hot Rebis v2.0 — CLINK Pipeline Whole-Organism Design",
         formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -1001,7 +1127,7 @@ Examples:
                                   epilog=EXAMPLES["imas"],
                                   formatter_class=argparse.RawDescriptionHelpFormatter)
     p_imas.add_argument("imas_subcommand",
-                        choices=["bridge", "hunt", "energy", "compound", "reaction"],
+                        choices=["bridge", "hunt", "energy", "compound", "reaction", "analogies", "register", "crystal"],
                         help="IMASM subcommand")
     p_imas.add_argument("--canonical", dest="imas_target",
                         help="Canonical name for bridge/energy (comma-separated for bridge)")
@@ -1011,10 +1137,18 @@ Examples:
                         help="Sample count for Frobenius hunt")
     p_imas.add_argument("--smiles", dest="imas_smiles", type=str,
                         help="SMILES string for compound/reaction")
+    p_imas.add_argument("--radius", dest="crystal_radius", type=int, default=1,
+                        help="Crystal neighborhood radius (default: 1)")
+    p_imas.add_argument("--candidates", dest="crystal_candidates", type=int, default=10,
+                        help="Max candidate molecules (default: 10)")
     p_imas.add_argument("--product", dest="imas_product", type=str,
                         help="Product SMILES for reaction analysis")
     p_imas.add_argument("--json", dest="imas_json", action="store_true",
                         help="JSON output format")
+    p_imas.add_argument("--name", dest="imas_name", type=str,
+                        help="Catalog name for analogies (alternative to --smiles)")
+    p_imas.add_argument("--limit", dest="imas_limit", type=int, default=10,
+                        help="Number of analogies to return")
 
     # pipeline (NEW)
 
