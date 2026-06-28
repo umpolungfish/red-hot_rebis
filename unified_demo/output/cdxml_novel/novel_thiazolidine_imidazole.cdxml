@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE CDXML SYSTEM "http://www.cambridgesoft.com/xml/cdxml.dtd">
+<CDXML
+ CreationProgram="Red-Hot Rebis Novelty Generator"
+ CreationProgramVersion="1.0"
+ BoundingBox="0 0 13500 18000"
+ WindowPosition="0 0"
+ WindowSize="13500 18000"
+ PageSize="13500 18000"
+ PageOverlap="0"
+ HeaderFont="24"
+ CaptionFont="16"
+ LabelFont="12"
+ BondLength="48.16"
+ BondSpacing="0.25"
+ BondWidth="4.19"
+ BoldWidth="6.69"
+ LineWidth="4.19"
+ MarginWidth="1.33"
+ HashSpacing="2.77"
+ ChainAngle="120"
+ BondAngle="120"
+ CaptionFace="96"
+ CaptionSize="12"
+ LabelFace="96"
+ LabelSize="10"
+><colortable>
+<color r="0" g="0" b="0"/>
+<color r="1" g="1" b="1"/>
+<color r="1" g="0" b="0"/>
+</colortable>
+<fonttable>
+<font id="96" charset="iso-8859-1" name="Arial"/>
+</fonttable>
+<page BoundingBox="0 0 13500 18000" HeaderFont="24"
+      CaptionFont="16" LabelFont="12" PageNumber="1"
+      PageOverlap="0" HeaderPosition="0"
+      FooterPosition="0" PrintTrim="0"
+      HeightPages="1" WidthPages="1">
+<fragment BoundingBox="0 0 13500 18000">
+  <n id="1" p="6750.0 1500.0" Element="7" LabelText="novel_thiazolidine_imidazole" LabelJustification="Center"/>
+  <n id="2" p="6727.5 9000.0" Element="C"/>
+  <n id="3" p="6701.0 9036.4" Element="C"/>
+  <n id="4" p="6658.3 9022.5" Element="S"/>
+  <n id="5" p="6658.3 8977.5" Element="C"/>
+  <n id="6" p="6701.0 8963.6" Element="N"/>
+  <n id="7" p="6772.5 9000.0" Element="C"/>
+  <n id="8" p="6799.0 8963.6" Element="C"/>
+  <n id="9" p="6841.7 8977.5" Element="N"/>
+  <n id="10" p="6841.7 9022.5" Element="C"/>
+  <n id="11" p="6799.0 9036.4" Element="N"/>
+  <b id="2_3" B="2" E="3" Display="Solid"/>
+  <b id="3_4" B="3" E="4" Display="Solid"/>
+  <b id="4_5" B="4" E="5" Display="Solid"/>
+  <b id="5_6" B="5" E="6" Display="Solid"/>
+  <b id="6_2" B="6" E="2" Display="Solid"/>
+  <b id="7_8" B="7" E="8" Display="Solid"/>
+  <b id="8_9" B="8" E="9" Display="Solid"/>
+  <b id="9_10" B="9" E="10" Display="Solid"/>
+  <b id="10_11" B="10" E="11" Display="Solid"/>
+  <b id="11_7" B="11" E="7" Display="Solid"/>
+  <b id="2_7" B="2" E="7" Display="Solid"/>
+  <n id="13" p="6750.0 16000.0" Element="7" LabelText="SMILES: c1nc(C2CSCN2)c[nH]1" LabelJustification="Center"/>
+  <n id="14" p="6750.0 16500.0" Element="7" LabelText="Novelty: thiazolidine + imidazole" LabelJustification="Center"/>
+</fragment>
+</page>
+</CDXML>

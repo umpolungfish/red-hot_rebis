@@ -1,0 +1,122 @@
+[
+  {
+    "name": "novel_beta_lactam_imidazole",
+    "smiles": "O=C1NCC1c1c[nH]cn1",
+    "fg_combination": [
+      "beta_lactam",
+      "imidazole"
+    ],
+    "mw": 137.1,
+    "logp": -0.38,
+    "rotatable_bonds": 1,
+    "hbd": 2,
+    "hba": 2,
+    "cdxml_file": "unified_demo/output/cdxml_novel/novel_beta_lactam_imidazole.cdxml",
+    "novelty": "Fragment pair (beta_lactam, imidazole) does not co-occur in any of the 122 known molecules in the ch3mpiler database. This is a structurally unprecedented combination."
+  },
+  {
+    "name": "novel_beta_lactam_thiazolidine",
+    "smiles": "O=C1NCC1C1CSCN1",
+    "fg_combination": [
+      "beta_lactam",
+      "thiazolidine"
+    ],
+    "mw": 158.1,
+    "logp": -0.61,
+    "rotatable_bonds": 1,
+    "hbd": 2,
+    "hba": 3,
+    "cdxml_file": "unified_demo/output/cdxml_novel/novel_beta_lactam_thiazolidine.cdxml",
+    "novelty": "Fragment pair (beta_lactam, thiazolidine) does not co-occur in any of the 122 known molecules in the ch3mpiler database. This is a structurally unprecedented combination."
+  },
+  {
+    "name": "novel_beta_lactam_aromatic_ring",
+    "smiles": "O=C1NCC1c1ccccc1",
+    "fg_combination": [
+      "beta_lactam",
+      "aromatic_ring"
+    ],
+    "mw": 147.1,
+    "logp": 0.9,
+    "rotatable_bonds": 1,
+    "hbd": 1,
+    "hba": 1,
+    "cdxml_file": "unified_demo/output/cdxml_novel/novel_beta_lactam_aromatic_ring.cdxml",
+    "novelty": "Fragment pair (beta_lactam, aromatic_ring) does not co-occur in any of the 122 known molecules in the ch3mpiler database. This is a structurally unprecedented combination."
+  },
+  {
+    "name": "novel_beta_lactam_sulfonamide",
+    "smiles": "NS(=O)(=O)CC1CNC1=O",
+    "fg_combination": [
+      "beta_lactam",
+      "sulfonamide"
+    ],
+    "mw": 164.0,
+    "logp": -1.98,
+    "rotatable_bonds": 2,
+    "hbd": 2,
+    "hba": 3,
+    "cdxml_file": "unified_demo/output/cdxml_novel/novel_beta_lactam_sulfonamide.cdxml",
+    "novelty": "Fragment pair (beta_lactam, sulfonamide) does not co-occur in any of the 122 known molecules in the ch3mpiler database. This is a structurally unprecedented combination."
+  },
+  {
+    "name": "novel_beta_lactam_halide",
+    "smiles": "O=C1NCC1CF",
+    "fg_combination": [
+      "beta_lactam",
+      "halide"
+    ],
+    "mw": 103.0,
+    "logp": -0.3,
+    "rotatable_bonds": 1,
+    "hbd": 1,
+    "hba": 1,
+    "cdxml_file": "unified_demo/output/cdxml_novel/novel_beta_lactam_halide.cdxml",
+    "novelty": "Fragment pair (beta_lactam, halide) does not co-occur in any of the 122 known molecules in the ch3mpiler database. This is a structurally unprecedented combination."
+  },
+  {
+    "name": "novel_thiol_imidazole",
+    "smiles": "SCc1c[nH]cn1",
+    "fg_combination": [
+      "thiol",
+      "imidazole"
+    ],
+    "mw": 114.0,
+    "logp": 0.84,
+    "rotatable_bonds": 1,
+    "hbd": 2,
+    "hba": 2,
+    "cdxml_file": "unified_demo/output/cdxml_novel/novel_thiol_imidazole.cdxml",
+    "novelty": "Fragment pair (thiol, imidazole) does not co-occur in any of the 122 known molecules in the ch3mpiler database. This is a structurally unprecedented combination."
+  },
+  {
+    "name": "novel_thiazolidine_thiol",
+    "smiles": "SCC1CSCN1",
+    "fg_combination": [
+      "thiazolidine",
+      "thiol"
+    ],
+    "mw": 135.0,
+    "logp": 0.58,
+    "rotatable_bonds": 1,
+    "hbd": 2,
+    "hba": 3,
+    "cdxml_file": "unified_demo/output/cdxml_novel/novel_thiazolidine_thiol.cdxml",
+    "novelty": "Fragment pair (thiazolidine, thiol) does not co-occur in any of the 122 known molecules in the ch3mpiler database. This is a structurally unprecedented combination."
+  },
+  {
+    "name": "novel_thiazolidine_imidazole",
+    "smiles": "c1nc(C2CSCN2)c[nH]1",
+    "fg_combination": [
+      "thiazolidine",
+      "imidazole"
+    ],
+    "mw": 155.1,
+    "logp": 0.74,
+    "rotatable_bonds": 1,
+    "hbd": 2,
+    "hba": 3,
+    "cdxml_file": "unified_demo/output/cdxml_novel/novel_thiazolidine_imidazole.cdxml",
+    "novelty": "Fragment pair (thiazolidine, imidazole) does not co-occur in any of the 122 known molecules in the ch3mpiler database. This is a structurally unprecedented combination."
+  }
+]

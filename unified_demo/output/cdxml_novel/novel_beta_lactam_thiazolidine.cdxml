@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE CDXML SYSTEM "http://www.cambridgesoft.com/xml/cdxml.dtd">
+<CDXML
+ CreationProgram="Red-Hot Rebis Novelty Generator"
+ CreationProgramVersion="1.0"
+ BoundingBox="0 0 13500 18000"
+ WindowPosition="0 0"
+ WindowSize="13500 18000"
+ PageSize="13500 18000"
+ PageOverlap="0"
+ HeaderFont="24"
+ CaptionFont="16"
+ LabelFont="12"
+ BondLength="48.16"
+ BondSpacing="0.25"
+ BondWidth="4.19"
+ BoldWidth="6.69"
+ LineWidth="4.19"
+ MarginWidth="1.33"
+ HashSpacing="2.77"
+ ChainAngle="120"
+ BondAngle="120"
+ CaptionFace="96"
+ CaptionSize="12"
+ LabelFace="96"
+ LabelSize="10"
+><colortable>
+<color r="0" g="0" b="0"/>
+<color r="1" g="1" b="1"/>
+<color r="1" g="0" b="0"/>
+</colortable>
+<fonttable>
+<font id="96" charset="iso-8859-1" name="Arial"/>
+</fonttable>
+<page BoundingBox="0 0 13500 18000" HeaderFont="24"
+      CaptionFont="16" LabelFont="12" PageNumber="1"
+      PageOverlap="0" HeaderPosition="0"
+      FooterPosition="0" PrintTrim="0"
+      HeightPages="1" WidthPages="1">
+<fragment BoundingBox="0 0 13500 18000">
+  <n id="1" p="6750.0 1500.0" Element="7" LabelText="novel_beta_lactam_thiazolidine" LabelJustification="Center"/>
+  <n id="2" p="6817.5 9059.5" Element="O"/>
+  <n id="3" p="6810.6 9015.0" Element="C"/>
+  <n id="4" p="6774.2 8988.5" Element="C"/>
+  <n id="5" p="6800.8 8952.1" Element="C"/>
+  <n id="6" p="6837.1 8978.7" Element="N"/>
+  <n id="7" p="6729.8 8995.4" Element="C"/>
+  <n id="8" p="6709.2 9035.4" Element="C"/>
+  <n id="9" p="6664.8 9028.2" Element="S"/>
+  <n id="10" p="6657.9 8983.7" Element="C"/>
+  <n id="11" p="6698.1 8963.4" Element="N"/>
+  <b id="2_3" B="2" E="3" Display="Double"/>
+  <b id="3_4" B="3" E="4" Display="Solid"/>
+  <b id="4_5" B="4" E="5" Display="Solid"/>
+  <b id="5_6" B="5" E="6" Display="Solid"/>
+  <b id="6_3" B="6" E="3" Display="Solid"/>
+  <b id="7_8" B="7" E="8" Display="Solid"/>
+  <b id="8_9" B="8" E="9" Display="Solid"/>
+  <b id="9_10" B="9" E="10" Display="Solid"/>
+  <b id="10_11" B="10" E="11" Display="Solid"/>
+  <b id="11_7" B="11" E="7" Display="Solid"/>
+  <b id="4_7" B="4" E="7" Display="Solid"/>
+  <n id="13" p="6750.0 16000.0" Element="7" LabelText="SMILES: O=C1NCC1C1CSCN1" LabelJustification="Center"/>
+  <n id="14" p="6750.0 16500.0" Element="7" LabelText="Novelty: beta_lactam + thiazolidine" LabelJustification="Center"/>
+</fragment>
+</page>
+</CDXML>
