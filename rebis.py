@@ -649,8 +649,98 @@ def cmd_imas(args):
             print(f"    {p}")
         return 0
 
+    elif sub == "compound":
+        from imas.compound_imasm import analyze_molecule, format_arrangement, molecule_to_arrangement, TOKEN_NAMES
+        from imas.arranger import compute_fingerprint
+        from imas.ig_bridge import fingerprint_to_ig, ig_tuple_str, describe_full
+
+        smi = args.imas_smiles
+        if not smi:
+            print("Error: --smiles <SMILES> required")
+            return 1
+
+        result = analyze_molecule(smi)
+        if not result.get("valid"):
+            print(f"Error: invalid SMILES: {smi}")
+            return 1
+
+        arr = molecule_to_arrangement(smi)
+        fp = compute_fingerprint(arr)
+        ig = fingerprint_to_ig(fp)
+
+        if args.imas_json:
+            import json
+            print(json.dumps({
+                "smiles": smi,
+                "arrangement": list(arr),
+                "tokens": [TOKEN_NAMES[t] for t in arr],
+                "fingerprint": fp.description(),
+                "ig_tuple": list(ig),
+                "functional_groups": result.get("functional_groups", []),
+                "ring_count": result.get("ring_count", 0),
+            }, indent=2))
+        else:
+            print(f"SMILES:         {smi}")
+            print(f"Arrangement:    {format_arrangement(arr)}")
+            print(f"Fingerprint:    {fp.description()}")
+            print(f"IG Tuple:       ({', '.join(ig)})")
+            print(f"Functional Gps: {', '.join(result.get('functional_groups', []))}")
+            print(f"Rings:          {result.get('ring_count', 0)} "
+                  f"(aromatic: {result.get('aromatic_rings', 0)})")
+            print()
+            print("Full IG description:")
+            print(describe_full(ig))
+        return 0
+
+    elif sub == "reaction":
+        from imas.reactivity_imasm import reaction_to_fingerprint, identify_reaction, TOKEN_NAMES
+        from imas.compound_imasm import format_arrangement
+
+        r_smi = args.imas_smiles
+        p_smi = args.imas_product
+        if not r_smi or not p_smi:
+            print("Error: --smiles <reactant_SMILES> and --product <product_SMILES> required")
+            return 1
+
+        fp = reaction_to_fingerprint(r_smi, p_smi)
+        if fp is None:
+            print("Error: invalid SMILES")
+            return 1
+
+        r_names = " → ".join(TOKEN_NAMES[t] for t in fp.reactant_arr)
+        p_names = " → ".join(TOKEN_NAMES[t] for t in fp.product_arr)
+        ident = identify_reaction(fp)
+
+        if args.imas_json:
+            import json
+            print(json.dumps({
+                "reactant_smiles": r_smi,
+                "product_smiles": p_smi,
+                "reactant_arr": list(fp.reactant_arr),
+                "product_arr": list(fp.product_arr),
+                "tokens_lost": [TOKEN_NAMES[t] for t in fp.tokens_lost],
+                "tokens_gained": [TOKEN_NAMES[t] for t in fp.tokens_gained],
+                "frobenius_order": fp.frobenius_order,
+                "reaction_class": fp.reaction_class,
+                "forward_dominant": fp.forward_dominant,
+                "irreversible": fp.irreversible,
+                "identification": ident,
+            }, indent=2))
+        else:
+            print(f"Reaction: {r_smi} → {p_smi}")
+            print(f"Reactant:  {r_names}")
+            print(f"Product:   {p_names}")
+            print(f"Class:     {fp.reaction_class}")
+            print(f"Frobenius: {fp.frobenius_order}")
+            print(f"Delta:     {fp.delta_tokens}")
+            print(f"Lost:      {', '.join(TOKEN_NAMES[t] for t in fp.tokens_lost) or 'none'}")
+            print(f"Gained:    {', '.join(TOKEN_NAMES[t] for t in fp.tokens_gained) or 'none'}")
+            if ident.get("identified_reaction"):
+                print(f"Identified: {ident['identified_reaction']} (confidence: {ident['confidence']:.2f})")
+        return 0
+
     else:
-        print("Unknown imas subcommand. Use: bridge, hunt, energy. Static data: see INDEX.md")
+        print("Unknown imas subcommand. Use: bridge, hunt, energy, compound, reaction")
         return 1
 
 
@@ -911,7 +1001,7 @@ Examples:
                                   epilog=EXAMPLES["imas"],
                                   formatter_class=argparse.RawDescriptionHelpFormatter)
     p_imas.add_argument("imas_subcommand",
-                        choices=["bridge", "hunt", "energy"],
+                        choices=["bridge", "hunt", "energy", "compound", "reaction"],
                         help="IMASM subcommand")
     p_imas.add_argument("--canonical", dest="imas_target",
                         help="Canonical name for bridge/energy (comma-separated for bridge)")
@@ -919,6 +1009,12 @@ Examples:
                         help="Target CLINK layer for energy (e.g., L8_Organism)")
     p_imas.add_argument("--samples", dest="imas_samples", type=int,
                         help="Sample count for Frobenius hunt")
+    p_imas.add_argument("--smiles", dest="imas_smiles", type=str,
+                        help="SMILES string for compound/reaction")
+    p_imas.add_argument("--product", dest="imas_product", type=str,
+                        help="Product SMILES for reaction analysis")
+    p_imas.add_argument("--json", dest="imas_json", action="store_true",
+                        help="JSON output format")
 
     # pipeline (NEW)
 
