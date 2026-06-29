@@ -60,6 +60,7 @@ except ImportError:
 
 # ─── Red-Hot Rebis imports ────────────────────────────────────────
 from shared.primitives import WEIGHTS, ORDINALS
+from shared.rich_output import *
 from clink.chain import (
     CLINK_LAYERS, CLINK_NAMES, CLINK_TIERS,
     clink_frobenius_closed, clink_chain_distance,
@@ -696,7 +697,7 @@ def main():
         if result.data:
             for k, v in result.data.items():
                 if k != "per_layer":
-                    print(f"  {k}: {v}")
+                    info_line(f"  {k}: {v}")
     elif args.command == "fold":
         result = kernel.fold_protein(args.sequence)
         print(f"Fold: {'✅' if result.success else '❌'} | Tier: {result.tier} | Crystal: {result.crystal_address}")
@@ -704,9 +705,9 @@ def main():
         result = kernel.retrosynthesize(args.target)
         print(f"Retrosynthesis: {'✅' if result.success else '❌'} | FGs: {result.data.get('fgs', []) if result.data else []}")
         if result.data and result.data.get('cuts'):
-            print(f"  Cuts: {result.data['cuts_count']}")
+            info_line(f"  Cuts: {result.data['cuts_count']}")
             for cut in result.data['cuts'][:3]:
-                print(f"    {cut.get('fg1','?')} + {cut.get('fg2','?')} via {cut.get('bond','?')}")
+                info_line(f"    {cut.get('fg1','?')} + {cut.get('fg2','?')} via {cut.get('bond','?')}")
     else:
         # Default: show status
         import json as j
@@ -745,6 +746,7 @@ def _patch_ch3mpiler_for_smiles():
     def patched_get_molecule_type(name, catalog):
         """Enhanced get_molecule_type with SMILES fallback."""
         import re
+
         mol_type, source = _original_get_molecule_type(name, catalog)
         if not mol_type and re.match(r'^[A-Za-z0-9\[\]\(\)#=@\\/+\-.%\[\]]+$', name) and len(name) > 3:
             # SMILES fallback

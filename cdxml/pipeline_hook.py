@@ -5,6 +5,7 @@ import os
 import sys
 import hashlib
 from typing import Dict, Optional
+from shared.rich_output import *
 
 MAX_FILENAME_LEN = 100  # safe well under 255-char filesystem limit
 
@@ -56,11 +57,11 @@ def export_tree_to_cdxml(
     if not smiles:
         msg = f"No SMILES on root node '{target_name}' - cannot generate CDXML"
         if verbose:
-            print(f"  [cdxml] {msg}")
+            info_line(f"  [cdxml] {msg}")
         return {"generated": 0, "failed": 1, "error": msg, "path": ""}
 
     if not strategic_bonds and verbose:
-        print(f"  [cdxml] No strategic bonds for '{target_name}'; generating plain molecule CDXML")
+        info_line(f"  [cdxml] No strategic bonds for '{target_name}'; generating plain molecule CDXML")
 
     # ── Build a truncated, deduplicated filename ─────────────────────
     # The demo mode passes prefix=f"demo_{d}_" where d == target_name.
@@ -118,14 +119,15 @@ def export_tree_to_cdxml(
         if verbose:
             fg_count = len(fg_pair_bonds)
             bond_count = len(strategic_bonds)
-            print(f"  [cdxml] Written: {out_path}  ({bond_count} strategic bonds, {fg_count} FG pairs)")
+            info_line(f"  [cdxml] Written: {out_path}  ({bond_count} strategic bonds, {fg_count} FG pairs)")
 
         return {"generated": 1, "failed": 0, "path": out_path}
 
     except Exception as e:
         msg = f"CDXML generation failed for '{target_name}': {e}"
         if verbose:
-            print(f"  [cdxml] ERROR: {msg}")
+            info_line(f"  [cdxml] ERROR: {msg}")
         import traceback
+
         traceback.print_exc()
         return {"generated": 0, "failed": 1, "error": msg, "path": out_path}

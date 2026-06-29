@@ -19,6 +19,7 @@ import json, math, sys, os
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 from dataclasses import dataclass, field
+from shared.rich_output import *
 
 # ─── PRIMITIVE ORDINALS (from shared/primitives.py) ──────────────
 
@@ -915,6 +916,7 @@ def format_tsv(results: Dict[str, Dict]) -> str:
 
 def main():
     import argparse
+
     parser = argparse.ArgumentParser(
         description="Generate IUPAC systematic names for diaschizic compounds"
     )
@@ -985,8 +987,8 @@ def main():
     print(f"\nGenerated IUPAC names for {len(results)} diaschizic compounds.", file=sys.stderr)
     gen1_count = sum(1 for r in results.values() if r["generation"] == 1)
     gen2_count = sum(1 for r in results.values() if r["generation"] == 2)
-    print(f"  Generation 1: {gen1_count} compounds", file=sys.stderr)
-    print(f"  Generation 2: {gen2_count} compounds", file=sys.stderr)
+    info_line(f"  Generation 1: {gen1_count} compounds", file=sys.stderr)
+    info_line(f"  Generation 2: {gen2_count} compounds", file=sys.stderr)
 
 
 if __name__ == "__main__":

@@ -64,6 +64,7 @@ except ImportError:
     def score_phi_c_candidacy(*a, **kw): return None
 
 from imscribe_tool import ImscribeTool, IG_TOOL_SCHEMA as imscription_TOOL_SCHEMA, ToolResponse
+from shared.rich_output import *
 
 register_molecular_imscriptions()
 register_quantum_imscriptions()
@@ -694,6 +695,7 @@ def run_design(
 if __name__ == "__main__":
     import sys
 
+
     goal = (
         " ".join(sys.argv[1:])
         if len(sys.argv) > 1
@@ -722,5 +724,5 @@ if __name__ == "__main__":
             "n_tool_calls": len(r.tool_calls),
         })
     print("\n" + "="*70)
-    print("FULL HISTORY (JSON)")
+    info_line("FULL HISTORY (JSON)")
     print(json.dumps(out, indent=2))

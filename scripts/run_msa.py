@@ -12,7 +12,7 @@ if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
     _doc = __doc__.strip() if __doc__ else "scripts/run_msa.py"
     print(_doc)
     print()
-    print("Examples:")
+    info_line("Examples:")
     print(_HELP_EXAMPLES)
     print()
     _sys.exit(0)
@@ -24,6 +24,8 @@ import rhr_p4rky.belnap
 import rhr_p4rky.genetics_b4
 import rhr_p4rky.genetic_code
 from rhr_p4rky.serpent_rod import SerpentRod
+from shared.rich_output import *
+
 
 AA_PREFERRED = {"A":"GCU","R":"CGU","N":"AAU","D":"GAU","C":"UGU","Q":"CAA","E":"GAA","G":"GGU","H":"CAU","I":"AUU","L":"UUG","K":"AAA","M":"AUG","F":"UUU","P":"CCU","S":"UCU","T":"ACU","W":"UGG","Y":"UAU","V":"GUU"}
 
@@ -77,12 +79,12 @@ def analyze_family(name, orthologs):
         all_primitives[species] = activated
         
         print(f"\n  {species.upper()}:")
-        print(f"    Length: {len(seq)} AA")
-        print(f"    Winding: {result['winding_number']} B4 loops")
-        print(f"    Contacts: {len(result['contacts'])}")
-        print(f"    Subunits: {result['subunit_count']}")
-        print(f"    Frobenius: {'✓' if result['frobenius_verified'] else '✗'}")
-        print(f"    Primitives: {len(activated)}/12 — {sorted(activated)}")
+        info_line(f"    Length: {len(seq)} AA")
+        info_line(f"    Winding: {result['winding_number']} B4 loops")
+        info_line(f"    Contacts: {len(result['contacts'])}")
+        info_line(f"    Subunits: {result['subunit_count']}")
+        info_line(f"    Frobenius: {'✓' if result['frobenius_verified'] else '✗'}")
+        info_line(f"    Primitives: {len(activated)}/12 — {sorted(activated)}")
     
     # Cross-species conservation
     if len(orthologs) >= 2:
@@ -94,7 +96,7 @@ def analyze_family(name, orthologs):
             variable |= all_primitives[sp] - conserved
         
         print(f"\n  CONSERVED primitives ({len(conserved)}/12): {sorted(conserved)}")
-        print(f"  VARIABLE primitives: {sorted(variable)}")
+        info_line(f"  VARIABLE primitives: {sorted(variable)}")
         
         results["conserved_primitives"] = list(conserved)
         results["variable_primitives"] = list(variable)
@@ -105,7 +107,7 @@ def analyze_family(name, orthologs):
 all_results = {}
 
 print("="*70)
-print("🐍 SERPENTROD — EVOLUTIONARY CONSERVATION ANALYSIS 🐍")
+info_line("🐍 SERPENTROD — EVOLUTIONARY CONSERVATION ANALYSIS 🐍")
 print("="*70)
 
 # Ubiquitin
@@ -115,18 +117,18 @@ all_results["ubiquitin"] = analyze_family("ubiquitin", UBIQUITIN_ORTHOLOGS)
 all_results["cytochrome_c"] = analyze_family("cytochrome_c", CYTC_ORTHOLOGS)
 
 print(f"\n\n{'='*70}")
-print("SUMMARY: EVOLUTIONARY CONSERVATION OF ACTIVATION PATTERNS")
+info_line("SUMMARY: EVOLUTIONARY CONSERVATION OF ACTIVATION PATTERNS")
 print(f"{'='*70}")
 for fam_name, fam_results in all_results.items():
     seqs = [k for k in fam_results.keys() if k not in ["conserved_primitives", "variable_primitives", "conservation_rate"]]
     print(f"\n{fam_name.upper()}: {len(seqs)} orthologs")
     for sp in seqs:
         r = fam_results[sp]
-        print(f"  {sp:20s} len={r['seq_len']:3d} wind={r['winding']:3d} frob={'✓' if r['frobenius'] else '✗'} prim={r['num_activated']:2d}/12")
+        info_line(f"  {sp:20s} len={r['seq_len']:3d} wind={r['winding']:3d} frob={'✓' if r['frobenius'] else '✗'} prim={r['num_activated']:2d}/12")
     if "conserved_primitives" in fam_results:
-        print(f"  Conserved: {fam_results['conserved_primitives']}")
-        print(f"  Variable:  {fam_results['variable_primitives']}")
-        print(f"  Rate: {fam_results['conservation_rate']:.0%}")
+        info_line(f"  Conserved: {fam_results['conserved_primitives']}")
+        info_line(f"  Variable:  {fam_results['variable_primitives']}")
+        info_line(f"  Rate: {fam_results['conservation_rate']:.0%}")
 
 with open("/home/mrnob0dy666/p4rakernel/msa_analysis.json", "w") as f:
     json.dump(all_results, f, indent=2, default=str)

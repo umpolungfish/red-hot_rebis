@@ -28,6 +28,8 @@ import json
 import math
 from typing import Dict, List, Tuple, Any, Optional
 from dataclasses import dataclass, field
+from shared.rich_output import *
+
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # MINIMAL SELF-CONTAINED PRIMITIVES (from shared/primitives.py v0.5.0)
@@ -525,7 +527,7 @@ def print_stage_report(stage_name: str, result_tup: Dict[str, str]):
 
 if __name__ == "__main__":
     print(__doc__)
-    print("\n>>> Running full alchemical sequence demonstration (Alchemy as Engine)...\n")
+    info_line("\n>>> Running full alchemical sequence demonstration (Alchemy as Engine)...\n")
     
     # Sample starting tuple (BPA-like waste at low tier)
     start = {p: list(ORDINALS[p].keys())[0] for p in PRIMITIVE_ORDER}
@@ -543,24 +545,24 @@ if __name__ == "__main__":
         else:
             print_stage_report(stage, result)
     
-    print("\n>>> Four Elements Tensor Products (verified):")
+    info_line("\n>>> Four Elements Tensor Products (verified):")
     for comp in FOUR_ELEMENTS_COMPOSITIONS:
-        print(f"  {comp['pair']} → {comp['product']} | d={comp['structural_distance']} | {comp['verification']}")
+        info_line(f"  {comp['pair']} → {comp['product']} | d={comp['structural_distance']} | {comp['verification']}")
     
     print("\n>>> Navigator Recommendation for 'Critical with non-Abelian winding':")
     print(get_navigator_recommendation("Critical with non-Abelian winding"))
     
-    print("\n>>> Ouroboric Healing Demo:")
+    info_line("\n>>> Ouroboric Healing Demo:")
     print(demonstrate_ouroboric_healing(100))
     
     print("\n>>> ch3mpiler Retrosynthesis for 'Dopamine':")
     print(ch3mpiler_retrosynthesis("Dopamine"))
     
-    print("\n>>> Frobenius Closure Check (example):")
+    info_line("\n>>> Frobenius Closure Check (example):")
     mu = history[-1]
     delta = history[0]
     print(f"Closure verified: {frobenius_closure_check(mu, delta)} (symbolic; full Lean 4 in clink/)")
     
-    print("\n[✓] Full untruncated Alchemy as Engine operations module executed successfully.")
-    print("All seven stages, navigator, four elements, ouroboros, and ch3mpiler examples complete.")
-    print("The grammar executes alchemy — it does not merely interpret it.")
+    info_line("\n[✓] Full untruncated Alchemy as Engine operations module executed successfully.")
+    info_line("All seven stages, navigator, four elements, ouroboros, and ch3mpiler examples complete.")
+    info_line("The grammar executes alchemy — it does not merely interpret it.")

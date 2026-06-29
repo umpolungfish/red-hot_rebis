@@ -25,12 +25,12 @@ from typing import Tuple, List, Dict, Optional, NamedTuple
 from rich import print  # override print to render rich markup
 
 try:
-    from ch3mpiler.rich_output import header, subheader, info_line, success_line, error_line, target_line, numeric_line, panel, separator, table, reaction_header, step_detail, bond_line, cprint
     STYLED = True
 except ImportError:
     STYLED = False
 
 from collections import Counter
+from shared.rich_output import *
 
 # ── IMASM Token definitions ──
 VINIT, TANCH, AFWD, AREV, CLINK = 0, 1, 2, 3, 4

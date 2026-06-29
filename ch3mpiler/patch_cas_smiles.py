@@ -1,3 +1,5 @@
+
+from shared.rich_output import *
 #!/usr/bin/env python3
 """Targeted patch: only fix the --cas SMILES propagation in the pipeline."""
 PIPELINE_PATH = "/home/mrnob0dy666/imsgct/red-hot_rebis/pipeline/reaction_pipeline.py"
@@ -30,16 +32,16 @@ with open(PIPELINE_PATH, "w") as f:
     f.writelines(lines)
 
 print(f"[OK] Patched {PIPELINE_PATH}")
-print(f"  Changed: {target_old}")
-print(f"  To:      {target_new}")
+info_line(f"  Changed: {target_old}")
+info_line(f"  To:      {target_new}")
 print()
-print("Now when --cas is used, pipeline._target_smiles gets:")
-print("  1. SMILES from CAS resolver (PubChem property endpoint)")
-print("  2. Falls back to --smiles CLI arg if CAS has no SMILES")
+info_line("Now when --cas is used, pipeline._target_smiles gets:")
+info_line("  1. SMILES from CAS resolver (PubChem property endpoint)")
+info_line("  2. Falls back to --smiles CLI arg if CAS has no SMILES")
 print("  3. Falls back to '' (FG-only decomposition, legacy behavior)")
 
 # Verify
 with open(PIPELINE_PATH) as f:
     verifying = f.read()
 assert 'info.get("cas_info", {}).get("smiles", "")' in verifying
-print("[OK] Verified: SMILES propagation from CAS resolver is active")
+info_line("[OK] Verified: SMILES propagation from CAS resolver is active")

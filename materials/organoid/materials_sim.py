@@ -18,6 +18,8 @@ from typing import Dict, List, Optional, Tuple
 import math
 import random
 import struct
+from shared.rich_output import *
+
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -335,9 +337,9 @@ def run_memory_polymer_simulation(
     
     if verbose:
         print(f"🧬 Memory Polymer Initialised")
-        print(f"   Message: {message}")
-        print(f"   Data bytes: {len(data)}")
-        print(f"   Target monomers: {n_monomers}")
+        info_line(f"   Message: {message}")
+        info_line(f"   Data bytes: {len(data)}")
+        info_line(f"   Target monomers: {n_monomers}")
     
     # Synthesize with optimized chemistry
     qc_report = polymer.synthesize(
@@ -349,23 +351,23 @@ def run_memory_polymer_simulation(
     
     if verbose:
         print(f"\n═══ SYNTHESIS ═══")
-        print(f"   Target length:    {qc_report['target_length']}")
-        print(f"   Actual length:    {qc_report['actual_length']}")
-        print(f"   Yield:            {qc_report['yield_pct']:.1f}%")
-        print(f"   QC passed:        {'✅' if qc_report['qc_passed'] else '❌'}")
-        print(f"   Coupling time:    {qc_report['coupling_time_min']} min")
-        print(f"   Double-coupled:   final {qc_report['double_coupled_final_n']}")
-        print(f"   Capping:          {'✅' if qc_report['capping_enabled'] else '❌'}")
+        info_line(f"   Target length:    {qc_report['target_length']}")
+        info_line(f"   Actual length:    {qc_report['actual_length']}")
+        info_line(f"   Yield:            {qc_report['yield_pct']:.1f}%")
+        info_line(f"   QC passed:        {'✅' if qc_report['qc_passed'] else '❌'}")
+        info_line(f"   Coupling time:    {qc_report['coupling_time_min']} min")
+        info_line(f"   Double-coupled:   final {qc_report['double_coupled_final_n']}")
+        info_line(f"   Capping:          {'✅' if qc_report['capping_enabled'] else '❌'}")
     
     # Mass spec verification
     ms_report = polymer.mass_spec_verify()
     
     if verbose:
         print(f"\n═══ MASS SPEC ═══")
-        print(f"   Expected mass:    {ms_report['expected_mass_da']:.0f} Da")
-        print(f"   Measured mass:    {ms_report['measured_mass_da']:.0f} Da")
-        print(f"   Accuracy:         {ms_report['mass_accuracy']*100:.2f}%")
-        print(f"   Full-length peak: {ms_report['full_length_intensity']*100:.0f}%")
+        info_line(f"   Expected mass:    {ms_report['expected_mass_da']:.0f} Da")
+        info_line(f"   Measured mass:    {ms_report['measured_mass_da']:.0f} Da")
+        info_line(f"   Accuracy:         {ms_report['mass_accuracy']*100:.2f}%")
+        info_line(f"   Full-length peak: {ms_report['full_length_intensity']*100:.0f}%")
     
     # Decode (best-effort)
     decoded = polymer.decode_bytes()
@@ -374,17 +376,17 @@ def run_memory_polymer_simulation(
     
     if verbose:
         print(f"\n═══ DECODE ═══")
-        print(f"   Encoded: {message}")
-        print(f"   Decoded: {decoded_str}")
-        print(f"   Match:   {'✅' if match else '❌'}")
+        info_line(f"   Encoded: {message}")
+        info_line(f"   Decoded: {decoded_str}")
+        info_line(f"   Match:   {'✅' if match else '❌'}")
     
     # Compute long-term BER
     ber_300k = compute_ber_after_years(300.0, 1000.0, n_monomers)
     
     if verbose:
         print(f"\n═══ LONGEVITY ═══")
-        print(f"   1000 years @ 300K: BER = {ber_300k:.4e}")
-        print(f"   {'✅ Data viable' if ber_300k < 0.01 else '❌ Data degraded'}")
+        info_line(f"   1000 years @ 300K: BER = {ber_300k:.4e}")
+        info_line(f"   {'✅ Data viable' if ber_300k < 0.01 else '❌ Data degraded'}")
     
     return {
         "message": message,
@@ -410,10 +412,10 @@ def verify_polymer(results: Dict) -> Dict:
     }
     all_pass = all(checks.values())
     
-    print("═══ POLYMER VERIFICATION ═══")
+    info_line("═══ POLYMER VERIFICATION ═══")
     for check, passed in checks.items():
         status = "✅" if passed else "❌"
-        print(f"   {status} {check}")
+        info_line(f"   {status} {check}")
     print(f"\n{'✅ ALL CHECKS PASS' if all_pass else '❌ SOME FAILED'}")
     
     return checks
@@ -421,7 +423,7 @@ def verify_polymer(results: Dict) -> Dict:
 
 if __name__ == "__main__":
     print("═" * 60)
-    print("  ETERNAL MEMORY POLYMER — Optimized Synthesis")
+    info_line("  ETERNAL MEMORY POLYMER — Optimized Synthesis")
     print("═" * 60)
     print()
     
@@ -429,7 +431,7 @@ if __name__ == "__main__":
     
     print()
     print("═" * 60)
-    print("  VERIFICATION")
+    info_line("  VERIFICATION")
     print("═" * 60)
     print()
     

@@ -7,7 +7,7 @@ if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
     _doc = __doc__.strip() if __doc__ else "scripts/run_serpent.py"
     print(_doc)
     print()
-    print("Examples:")
+    info_line("Examples:")
     print(_HELP_EXAMPLES)
     print()
     _sys.exit(0)
@@ -23,6 +23,8 @@ import rhr_p4rky.genetics_b4
 import rhr_p4rky.genetic_code
 from rhr_p4rky.serpent_rod import SerpentRod
 import json
+from shared.rich_output import *
+
 if __name__ == "__main__":
     # Test sequence
     sr = SerpentRod("AUGGCCGACUGGAACUGCAAGAAGAUCGUGCCCAAGUACUACGGCCGCUG", name="test_protein")
@@ -30,7 +32,7 @@ if __name__ == "__main__":
     print(json.dumps(result, indent=2))
     
     # Second test: longer sequence
-    print("\n\n=== SECOND TEST: 108 nt ===")
+    info_line("\n\n=== SECOND TEST: 108 nt ===")
     sr2 = SerpentRod("AUGGCCGACUGGAACUGCAAGAAGAUCGUGCCCAAGUACUACGGCCGCUGGAACUGCAAGAAGAUCGUGCCCAAGUACUACGGC", name="extended")
     result2 = sr2.report()
     print(f"AA: {result2['aa_sequence']} ({result2['aa_length']} AAs)")

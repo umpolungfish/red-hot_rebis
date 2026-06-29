@@ -9,6 +9,7 @@ Changes:
 6. At depth=0, run scaffold parsing if we have SMILES
 """
 import re
+from shared.rich_output import *
 
 with open('/home/mrnob0dy666/imsgct/red-hot_rebis/pipeline/reaction_pipeline.py', 'r') as f:
     content = f.read()
@@ -70,8 +71,8 @@ for i, line in enumerate(lines):
             smiles = resolve_name_to_smiles(target)
         
         if not smiles:
-            print(f"  [scaffold] WARNING: Could not resolve '{target}' to SMILES. "
-                  f"Using FG-only decomposition (no fragment structures).")
+            info_line(f"  [scaffold] WARNING: Could not resolve '{target}' to SMILES. "
+f"Using FG-only decomposition (no fragment structures).")
             return False
         
         try:
@@ -84,6 +85,7 @@ for i, line in enumerate(lines):
             for pair_str, bonds in decomp.get("fg_pair_bonds", {}).items():
                 # pair_str is "('fg1', 'fg2')" — parse it back
                 import ast
+
                 pair = ast.literal_eval(pair_str)
                 pair_key = tuple(sorted(pair))
                 if pair_key not in self._scaffold_map:
@@ -93,17 +95,17 @@ for i, line in enumerate(lines):
             self._target_smiles = smiles
             n_bonds = sum(len(v) for v in self._scaffold_map.values())
             
-            print(f"  [scaffold] Pass 1: Parsed {target} [{smiles}]")
-            print(f"  [scaffold]   {decomp['num_atoms']} atoms, {decomp['num_bonds']} bonds, "
-                  f"{len(decomp['fgs'])} FGs: {', '.join(decomp['fgs'])}")
-            print(f"  [scaffold]   {n_bonds} strategic disconnections across "
-                  f"{len(self._scaffold_map)} FG-pair types")
+            info_line(f"  [scaffold] Pass 1: Parsed {target} [{smiles}]")
+            info_line(f"  [scaffold]   {decomp['num_atoms']} atoms, {decomp['num_bonds']} bonds, "
+f"{len(decomp['fgs'])} FGs: {', '.join(decomp['fgs'])}")
+            info_line(f"  [scaffold]   {n_bonds} strategic disconnections across "
+f"{len(self._scaffold_map)} FG-pair types")
             for pair, bonds in sorted(self._scaffold_map.items()):
-                print(f"  [scaffold]     {pair[0]} + {pair[1]}: {len(bonds)} bond(s)")
+                info_line(f"  [scaffold]     {pair[0]} + {pair[1]}: {len(bonds)} bond(s)")
             return True
             
         except Exception as e:
-            print(f"  [scaffold] ERROR parsing scaffold: {e}")
+            info_line(f"  [scaffold] ERROR parsing scaffold: {e}")
             return False
     
     def _get_fragment_smiles_for_cut(self, fg1: str, fg2: str, bond_type: str) -> tuple:
@@ -139,4 +141,4 @@ with open('/home/mrnob0dy666/imsgct/red-hot_rebis/pipeline/reaction_pipeline.py'
     f.write(result)
 
 print(f"\nApplied {len(patches)} patches successfully")
-print("Verifying patches exist...")
+info_line("Verifying patches exist...")

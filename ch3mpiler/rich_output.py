@@ -4,7 +4,6 @@ Provides styled print functions using the `rich` library.
 Uses force_terminal=True so colors render even in piped/subprocess environments.
 Set env NO_COLOR=1 for plain-text fallback.
 
-Import as: from ch3mpiler.rich_output import *
 
 Color scheme:
   Target/Product      bold green
@@ -22,6 +21,7 @@ Color scheme:
   Step numbers        bold cyan
 """
 
+from shared.rich_output import *
 import os
 
 from rich.console import Console

@@ -14,7 +14,7 @@ if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
     _doc = __doc__.strip() if __doc__ else "rhr_p4rky/demo_gene_to_protein.py"
     print(_doc)
     print()
-    print("Examples:")
+    info_line("Examples:")
     print(_HELP_EXAMPLES)
     print()
     _sys.exit(0)
@@ -24,6 +24,8 @@ import json, sys, os, math
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from rhr_p4rky.gene_to_protein_pipeline import GeneToProteinPipeline
+from shared.rich_output import *
+
 
 BANNER = r"""
 ╔══════════════════════════════════════════════════════════════════╗
@@ -130,17 +132,17 @@ def format_activations(report: dict) -> str:
 
 def run_demo_sequence(name: str, dna: str, desc: str, is_rna: bool = False):
     print(f"\n{DIVIDER}")
-    print(f"  SEQUENCE: {name}")
-    print(f"  {desc}")
-    print(f"  Input: {dna[:55]}... ({len(dna)} nt)")
+    info_line(f"  SEQUENCE: {name}")
+    info_line(f"  {desc}")
+    info_line(f"  Input: {dna[:55]}... ({len(dna)} nt)")
     print(f"{DIVIDER}")
     
     pipeline = GeneToProteinPipeline(dna, name=name, is_rna=is_rna)
     report = pipeline.run(num_subunits=0)
     
     print(f"\n  ► Translated Protein: {report['aa_sequence']}")
-    print(f"    Length: {report['aa_length']} AAs")
-    print(f"    Subunits: {report['subunits']} ({report['subunit_symmetry']})")
+    info_line(f"    Length: {report['aa_length']} AAs")
+    info_line(f"    Subunits: {report['subunits']} ({report['subunit_symmetry']})")
     print()
     
     print(format_stage_table(report))
@@ -149,19 +151,19 @@ def run_demo_sequence(name: str, dna: str, desc: str, is_rna: bool = False):
     print(format_pathway(report))
     print()
     
-    print("Secondary Structure:")
+    info_line("Secondary Structure:")
     print(format_secondary(report))
     print()
     
-    print("Tertiary Contacts:")
+    info_line("Tertiary Contacts:")
     print(format_tertiary(report))
     print()
     
-    print("Quaternary Assembly:")
+    info_line("Quaternary Assembly:")
     print(format_quaternary(report))
     print()
     
-    print("IG Primitive Activations (12↔12 bijection):")
+    info_line("IG Primitive Activations (12↔12 bijection):")
     print(format_activations(report))
     print()
     
@@ -182,7 +184,7 @@ def main():
         run_demo_sequence(name, data["dna"], data["desc"])
     
     print(f"\n{DIVIDER}")
-    print("  BONUS: Mitochondrial Code Demo (MT-ND3, NC_012920.1)")
+    info_line("  BONUS: Mitochondrial Code Demo (MT-ND3, NC_012920.1)")
     print(f"{DIVIDER}")
     mito_fasta = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "NC_012920.1.fasta")
     if os.path.exists(mito_fasta):
@@ -194,28 +196,28 @@ def main():
         # Standard code (fails — truncates at UGA=Stop)
         p_std = GeneToProteinPipeline(nd3_cds, name="MT-ND3_std", genetic_code="standard")
         r_std = p_std.run(num_subunits=1)
-        print(f"  STANDARD code: {r_std['aa_length']} AAs (truncated — UGA=Stop)")
+        info_line(f"  STANDARD code: {r_std['aa_length']} AAs (truncated — UGA=Stop)")
         
         # Mitochondrial code (correct — UGA=Trp, AUA=Met)
         p_mito = GeneToProteinPipeline(nd3_cds, name="MT-ND3_mito", genetic_code="mitochondrial")
         r_mito = p_mito.run(num_subunits=1)
-        print(f"  MITOCHONDRIAL code: {r_mito['aa_length']} AAs ✓ (UGA=Trp, AUA=Met start)")
-        print(f"  Frob: {'✓' if r_mito['closure']['frobenius_across_pathway'] else '✗'}")
-        print(f"  Primitives: {len(r_mito['primitive_activations'])}/12")
-        print(f"  AA seq: {r_mito['aa_sequence'][:50]}")
-        print(f"  The pipeline correctly detects the structural discontinuity")
-        print(f"  and resolves it through the mitochondrial genetic code table.")
+        info_line(f"  MITOCHONDRIAL code: {r_mito['aa_length']} AAs ✓ (UGA=Trp, AUA=Met start)")
+        info_line(f"  Frob: {'✓' if r_mito['closure']['frobenius_across_pathway'] else '✗'}")
+        info_line(f"  Primitives: {len(r_mito['primitive_activations'])}/12")
+        info_line(f"  AA seq: {r_mito['aa_sequence'][:50]}")
+        info_line(f"  The pipeline correctly detects the structural discontinuity")
+        info_line(f"  and resolves it through the mitochondrial genetic code table.")
     else:
-        print("  MT-ND3 demo: NC_012920.1.fasta not found — skipping")
+        info_line("  MT-ND3 demo: NC_012920.1.fasta not found — skipping")
 
     print(f"\n{DIVIDER}")
-    print("  BONUS: Direct RNA input (no T→U conversion needed)")
+    info_line("  BONUS: Direct RNA input (no T→U conversion needed)")
     print(f"{DIVIDER}")
     rna_seq = "AUGGCCGACUGGAACUGCAAGAAGAUCGUGCCCAAGUACUACGGCCGCUG"
     run_demo_sequence("rna_direct_test", rna_seq, "RNA input via --rna flag", is_rna=True)
     
     print(f"\n{DIVIDER}")
-    print("  CROSS-SEQUENCE COMPARISON")
+    info_line("  CROSS-SEQUENCE COMPARISON")
     print(f"{DIVIDER}")
     print(f"{'Name':<25} {'Length':<8} {'AAs':<6} {'Sub':<4} {'Sym':<12} {'Δtotal':<8} {'Frob':<6} {'Dist':<6}")
     print("-" * 75)
@@ -228,7 +230,7 @@ def main():
               f"{r['subunit_symmetry']:<12} {r['total_delta']:<8} {frob:<6} {r['closure']['dna_to_quaternary_distance']:<6}")
     
     print(f"\n{DIVIDER}")
-    print("  DEMO COMPLETE — All Frobenius-closed ✓")
+    info_line("  DEMO COMPLETE — All Frobenius-closed ✓")
     print(f"{DIVIDER}")
 if __name__ == "__main__":
     main()

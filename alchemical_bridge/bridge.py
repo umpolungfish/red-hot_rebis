@@ -15,6 +15,7 @@ from .operations import AlchemicalOperations, apply_operation
 from .treatise_map import TreatiseMapper, ALCHEMICAL_CORPUS_TAXONOMY
 from shared.primitives import PRIMITIVE_ORDER, ORDINALS, tuple_distance
 import json
+from shared.rich_output import *
 
 
 # Mapping from taxonomy keys to tier keys
@@ -291,6 +292,7 @@ class AlchemicalBridge:
         lines.append("SCROLL FAMILY (\u03c6\u0302=\u2299 + \u03a9=\U0001046D)")
         lines.append("=" * 66)
         from .treatise_map import SCROLL_FAMILY
+
         for name, info in SCROLL_FAMILY.items():
             lines.append(f"  \u2022 {name}: {info['description']}")
 

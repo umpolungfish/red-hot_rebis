@@ -5,6 +5,8 @@ import sys, os, json, math, urllib.request, io, gzip
 OUT = os.path.dirname(__file__)
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from clink.datasets.protein_structure import generate_protein_structure, BackboneBuilder
+from shared.rich_output import *
+
 
 # Map protein names to PDB entries
 PDB_MAP = {
@@ -22,7 +24,7 @@ def fetch_pdb(pdb_id):
         with urllib.request.urlopen(req, timeout=30) as resp:
             return resp.read().decode('utf-8')
     except Exception as e:
-        print(f'  [WARN] Cannot fetch {pdb_id}: {e}')
+        info_line(f'  [WARN] Cannot fetch {pdb_id}: {e}')
         return None
 
 def extract_ca_coords_from_pdb(pdb_text, chain='A'):
@@ -109,19 +111,19 @@ for name in ['lysozyme', 'gfp', 'insulin_a_chain']:
     results[name] = result
     print(f"\n{'='*60}")
     print(f"PROTEIN: {name}")
-    print(f"  Platonic: {len(plat_seq)} AA, {len(plat_coords)} CA atoms")
+    info_line(f"  Platonic: {len(plat_seq)} AA, {len(plat_coords)} CA atoms")
     if 'crystal_sequence' in result:
-        print(f"  Crystal ({pdb_id}): {len(result['crystal_sequence'])} AA, {len(crys_coords)} CA atoms")
-        print(f"  Sequence identity: {result['sequence_identity']*100:.1f}%")
+        info_line(f"  Crystal ({pdb_id}): {len(result['crystal_sequence'])} AA, {len(crys_coords)} CA atoms")
+        info_line(f"  Sequence identity: {result['sequence_identity']*100:.1f}%")
         if 'rmsd' in result:
-            print(f"  RMSD: {result['rmsd']:.2f} Å")
+            info_line(f"  RMSD: {result['rmsd']:.2f} Å")
         elif 'rmsd_trimmed' in result:
-            print(f"  RMSD (trimmed): {result['rmsd_trimmed']:.2f} Å")
-            print(f"  Note: {result['rmsd_note']}")
+            info_line(f"  RMSD (trimmed): {result['rmsd_trimmed']:.2f} Å")
+            info_line(f"  Note: {result['rmsd_note']}")
 
 # Save results
 with open(os.path.join(OUT, 'comparison_results.json'), 'w') as f:
     json.dump(results, f, indent=2, default=str)
 
 print(f"\n{'='*60}")
-print("Comparison complete. Results saved.")
+info_line("Comparison complete. Results saved.")

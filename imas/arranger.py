@@ -21,6 +21,7 @@ Adapted from: /home/mrnob0dy666/IMSCRIBr/classifier.py + tokens.py
 from typing import Tuple, List, Dict, NamedTuple, Optional, Set
 from collections import defaultdict
 import itertools
+from shared.rich_output import *
 
 
 # ═══════════════════════════════════════════════════════════════════
@@ -292,6 +293,7 @@ def generate_random_arrangements(count: int, length: int = 8,
                                  seed: int = None) -> List[Tuple[int, ...]]:
     """Generate random arrangements from the 12-token universe."""
     import random
+
     if seed is not None:
         random.seed(seed)
     return [tuple(random.randrange(TOKEN_COUNT) for _ in range(length))

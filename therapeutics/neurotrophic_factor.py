@@ -37,6 +37,8 @@ import numpy as np
 import json
 from dataclasses import dataclass
 from typing import List, Tuple
+from shared.rich_output import *
+
 
 
 @dataclass
@@ -250,9 +252,9 @@ class BNFSim:
         print("=" * 70)
         print(f"BNF system: {'ACTIVE 𐑾' if self.bnf_active else 'DISABLED'}")
         print(f"Initial conditions:")
-        print(f"  ACh={self.env.acetylcholine:.2f}, Glut={self.env.glutamate:.2f}")
-        print(f"  Synaptic density: {self.env.synaptic_density:.2f}")
-        print(f"  Neurodegeneration: {self.env.neurodegeneration:.2f}")
+        info_line(f"  ACh={self.env.acetylcholine:.2f}, Glut={self.env.glutamate:.2f}")
+        info_line(f"  Synaptic density: {self.env.synaptic_density:.2f}")
+        info_line(f"  Neurodegeneration: {self.env.neurodegeneration:.2f}")
         print("─" * 70)
         print(f"{'Time':>6} {'Activity':>10} {'Trophic':>10} {'SynDen':>10} {'NeuroDeg':>10} {'OxStress':>10}")
         print(f"{'─'*6} {'─'*10} {'─'*10} {'─'*10} {'─'*10} {'─'*10}")
@@ -276,27 +278,27 @@ class BNFSim:
         print(f"{'='*70}")
         
         print(f"\nFinal state:")
-        print(f"  Synaptic density:     {self.env.synaptic_density:.3f} "
-              f"({'IMPROVED' if self.env.synaptic_density > 0.5 else 'DECLINED'})")
-        print(f"  Neurodegeneration:    {self.env.neurodegeneration:.3f} "
-              f"({'REDUCED' if self.env.neurodegeneration < 0.3 else 'PROGRESSED'})")
-        print(f"  Oxidative stress:     {self.env.oxidative_stress:.3f}")
-        print(f"  Inflammation:         {self.env.inflammation:.3f}")
+        info_line(f"  Synaptic density:     {self.env.synaptic_density:.3f} "
+f"({'IMPROVED' if self.env.synaptic_density > 0.5 else 'DECLINED'})")
+        info_line(f"  Neurodegeneration:    {self.env.neurodegeneration:.3f} "
+f"({'REDUCED' if self.env.neurodegeneration < 0.3 else 'PROGRESSED'})")
+        info_line(f"  Oxidative stress:     {self.env.oxidative_stress:.3f}")
+        info_line(f"  Inflammation:         {self.env.inflammation:.3f}")
         
         if self.bnf_active:
             outputs = [r['trophic_output'] for r in self.responses]
             print(f"\n  BNF feedback range:  {min(outputs):.3f} - {max(outputs):.3f}")
-            print(f"  BNF mean output:     {np.mean(outputs):.3f}")
+            info_line(f"  BNF mean output:     {np.mean(outputs):.3f}")
             print(f"\n  𐑾 Bidirectional feedback loop is {'ACTIVE' if max(outputs)-min(outputs) > 0.2 else 'WEAK'}")
             
             if self.env.neurodegeneration < 0.3 or self.env.synaptic_density > 0.6:
                 print(f"\n  ✓ NEUROPROTECTION CONFIRMED")
-                print(f"    The BNF dynamically adjusts trophic support to neural demand.")
+                info_line(f"    The BNF dynamically adjusts trophic support to neural demand.")
             else:
                 print(f"\n  ⚠ PARTIAL PROTECTION — increase dose or potency")
         
         print(f"\n  Mechanism: 𐑾 bidirectional feedback between neurotransmitter")
-        print(f"  sensing and trophic signaling creates closed-loop homeostasis.")
+        info_line(f"  sensing and trophic signaling creates closed-loop homeostasis.")
         
         results = {
             "simulation": f"Bidirectional Neurotrophic Factor ({self.disease})",

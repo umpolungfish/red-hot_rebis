@@ -27,6 +27,7 @@ CATALOG_PATH = REBIS_ROOT / "shared" / "IG_catalog.json"
 from imas.compound_imasm import analyze_molecule, format_arrangement, molecule_to_arrangement, TOKEN_NAMES
 from imas.arranger import compute_fingerprint, StructuralFingerprint, CANONICAL_FINGERPRINTS
 from imas.ig_bridge import fingerprint_to_ig, ig_tuple_str, describe_full, PRIMITIVE_NAMES
+from shared.rich_output import *
 
 # ── Shared compound database ──
 
@@ -461,6 +462,7 @@ def describe_analogies(results: List[Dict], query_name: str = "query") -> str:
 def main():
     """CLI entry point: register compounds and find analogies."""
     import argparse
+
     
     parser = argparse.ArgumentParser(
         description="Compound Catalog — register molecules & find cross-domain analogies"
@@ -500,13 +502,13 @@ def main():
             for r in results:
                 status = r.get("status", "?")
                 if status == "error":
-                    print(f"  ❌ {r['name']}: {r.get('error', 'unknown error')}")
+                    info_line(f"  ❌ {r['name']}: {r.get('error', 'unknown error')}")
                 elif status == "already_exists":
-                    print(f"  ⏭️  {r['name']}: {r['ig_tuple_str']} (already exists)")
+                    info_line(f"  ⏭️  {r['name']}: {r['ig_tuple_str']} (already exists)")
                 elif status == "dry_run":
-                    print(f"  🔍 {r['name']}: {r['ig_tuple_str']} (dry run)")
+                    info_line(f"  🔍 {r['name']}: {r['ig_tuple_str']} (dry run)")
                 else:
-                    print(f"  ✅ {r['name']}: {r['ig_tuple_str']}")
+                    info_line(f"  ✅ {r['name']}: {r['ig_tuple_str']}")
         elif args.smiles:
             result = register_compound(args.smiles, args.name or "unknown",
                                        dry_run=args.dry_run)
@@ -550,9 +552,17 @@ def main():
                         print(describe_full(ig))
                         break
             else:
-                print(f"Could not resolve '{query
-    # ★⊙ DMT-⊙: autocatalytic DMT analog (self-modeling criticality)
-    "5-nitro-bufotenin": {
+                print(f"Could not resolve '{query}' as SMILES or catalog name")
+
+    # End of show command
+
+    else:
+        parser.print_help()
+
+
+# ★⊙ AUTOCATALYTIC COMPOUNDS — self-modeling criticality (⊙-promoted)
+COMPOUND_CATALOG_DICT = {
+    "# ★⊙ DMT-⊙": {
         "smiles": "CN(C)CCC1=CNC2=CC=C(O)C([N+](=O)[O-])=C12",
         "category": "autocatalytic_tryptamine",
         "properties": {"criticality": "⊙-self_modeling",
@@ -564,11 +574,9 @@ def main():
         "properties": {"criticality": "⊙-self_modeling",
                         "discovery": "Crystal-navigated: single primitive 𐑮→⊙ promotion from serotonin"}
     },
-}' as SMILES or catalog name")
-    
-    else:
-        parser.print_help()
+}
 
 
 if __name__ == '__main__':
     main()
+

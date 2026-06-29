@@ -15,9 +15,11 @@ Auto-generated. Do not edit directly.
 
 import sys, os
 from pathlib import Path
+from shared.rich_output import *
 
 try:
     from rdkit import Chem
+
     HAS_RDKIT = True
 except ImportError:
     HAS_RDKIT = False
@@ -641,7 +643,7 @@ def test_integration():
     }
     
     print("=" * 60)
-    print("FG EXHAUSTIVE DATABASE — TEST RESULTS")
+    info_line("FG EXHAUSTIVE DATABASE — TEST RESULTS")
     print("=" * 60)
     print(f"Total SMARTS patterns: {len(SMARTS_PATTERNS)}")
     print(f"Compiled patterns: {len(COMPILED_SMARTS)}")
@@ -653,7 +655,7 @@ def test_integration():
         print(f"\n{name} ({smiles}):")
         for fg_name, count in results[:10]:
             if fg_name not in ("no_rdkit", "invalid_smiles"):
-                print(f"  - {fg_name}: {count}")
+                info_line(f"  - {fg_name}: {count}")
     
     return True
 

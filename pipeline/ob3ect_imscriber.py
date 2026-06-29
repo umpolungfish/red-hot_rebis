@@ -1,7 +1,9 @@
 import sys, hashlib, subprocess, os, re, base64, zlib
+from shared.rich_output import *
+
 
 def bootstrap_minimal():
-    print("=== Ob3ect v0.10 Bare-Metal — Raw Binary Boot (WSL2) ===")
+    info_line("=== Ob3ect v0.10 Bare-Metal — Raw Binary Boot (WSL2) ===")
     
     with open("self.o", encoding='utf-8') as f:
         source = f.read()
@@ -36,10 +38,10 @@ void _start(void) {
     subprocess.run(["ld", "-m", "elf_i386", "-Ttext", "0x100000", "--oformat", "binary", 
                     "kernel.o", "-o", "ob3ect-v0.10.bin"], check=True)
 
-    print("Raw binary created: ob3ect-v0.10.bin")
+    info_line("Raw binary created: ob3ect-v0.10.bin")
 
-    print("\n=== Boot Command (should work) ===")
-    print("qemu-system-i386 -kernel ob3ect-v0.10.bin -m 64M -nographic")
+    info_line("\n=== Boot Command (should work) ===")
+    info_line("qemu-system-i386 -kernel ob3ect-v0.10.bin -m 64M -nographic")
 
 if __name__ == "__main__":
     bootstrap_minimal()

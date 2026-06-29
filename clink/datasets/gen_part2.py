@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """PART 2: L0-L4 layer generators."""
 import os, json
+from shared.rich_output import *
 
 PY = "/home/mrnob0dy666/red-hot_rebis/clink/datasets/generators.py"
 
@@ -130,6 +131,7 @@ class Layer4DatasetGenerator(DatasetGenerator):
             sys.path.insert(0, str(REBIS_ROOT / "serpentrod"))
             from serpentrod.stratified_predictor import PRIMITIVE_MAP
             from serpentrod.protein_v5 import classify_module_rich
+
             spec = {}
             for aa in seq.upper():
                 if aa in PRIMITIVE_MAP: spec[PRIMITIVE_MAP[aa][0]] = spec.get(PRIMITIVE_MAP[aa][0],0)+1
@@ -168,4 +170,4 @@ class Layer4DatasetGenerator(DatasetGenerator):
         o.frobenius_verified = clink_frobenius_closed(self.tup); return o
 ''')
 
-print("L0-L4 written")
+info_line("L0-L4 written")

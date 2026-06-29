@@ -25,6 +25,8 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Any
 from dataclasses import dataclass, field
 from collections import OrderedDict
+from shared.rich_output import *
+
 
 # ─── Standard Genetic Parts ─────────────────────────────────────────
 

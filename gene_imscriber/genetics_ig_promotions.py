@@ -12,6 +12,7 @@ REVISED MAPPING (2026-06-03 v0.6.0):
 """
 
 from collections import defaultdict
+from shared.rich_output import *
 
 GENETIC_CODE = {
     "UUU": "Phe", "UUC": "Phe", "UUA": "Leu", "UUG": "Leu",
@@ -35,7 +36,7 @@ GENETIC_CODE = {
 # ── 1. Codon box analysis ─────────────────────────────────────────────────────
 
 print("=" * 60)
-print("1. CODON BOX CLASSIFICATION")
+info_line("1. CODON BOX CLASSIFICATION")
 print("=" * 60)
 
 boxes = {}
@@ -59,7 +60,7 @@ ground_layer = set()
 for k, v in unsplit.items():
     aa = v["unique"][0]
     ground_layer.add(aa)
-    print(f"  {k}: {aa}  [Frobenius-exact: all 4 codons → same AA]")
+    info_line(f"  {k}: {aa}  [Frobenius-exact: all 4 codons → same AA]")
 
 print()
 print("Ground layer (Frobenius-exact AAs):", sorted(ground_layer))
@@ -69,7 +70,7 @@ print()
 # ── 2. Promoted AAs from split boxes ─────────────────────────────────────────
 
 print("=" * 60)
-print("2. PROMOTED AAs FROM FROBENIUS-OPEN BOXES")
+info_line("2. PROMOTED AAs FROM FROBENIUS-OPEN BOXES")
 print("=" * 60)
 
 already_counted = set(ground_layer)
@@ -91,7 +92,7 @@ for k, v in split.items():
             new_aas.append(aa)
             promoted_layer.append(aa)
             already_counted.add(aa)
-    print(f"  {k}: {v['aas']}  →  new={new_aas}  redundant={redundant}  stop={stops}")
+    info_line(f"  {k}: {v['aas']}  →  new={new_aas}  redundant={redundant}  stop={stops}")
 
 print()
 print("Promoted layer (Frobenius-open → new AAs):", sorted(promoted_layer))
@@ -105,25 +106,25 @@ print()
 # ── 3. Stop codons as Ω ───────────────────────────────────────────────────────
 
 print("=" * 60)
-print("3. STOP CODONS AS Ω (WINDING CLOSURE) SIGNAL")
+info_line("3. STOP CODONS AS Ω (WINDING CLOSURE) SIGNAL")
 print("=" * 60)
 
 stop_codons = [c for c, aa in GENETIC_CODE.items() if aa == "Stop"]
 print(f"Stop codons: {stop_codons}  (count: {len(stop_codons)})")
 print()
-print("3-valued IG primitives: ƒ, Γ, Σ  (cardinality = 3)")
+info_line("3-valued IG primitives: ƒ, Γ, Σ  (cardinality = 3)")
 print()
-print("Ω (winding/closure, primitive 12) is 4-valued.")
-print("But the STOP signal fires once per protein = termination of Ω-winding.")
-print("3 stop codons = 3 distinct closure contexts:")
-print("  UAA — ochre  (most common in lower organisms; Ω₀: simple closure)")
-print("  UAG — amber  (read-through in selenoproteins; Ω_Z₂: conditional closure)")
-print("  UGA — opal   (also Sec/Trp in mitochondria; Ω_Z: open/topological closure)")
+info_line("Ω (winding/closure, primitive 12) is 4-valued.")
+info_line("But the STOP signal fires once per protein = termination of Ω-winding.")
+info_line("3 stop codons = 3 distinct closure contexts:")
+info_line("  UAA — ochre  (most common in lower organisms; Ω₀: simple closure)")
+info_line("  UAG — amber  (read-through in selenoproteins; Ω_Z₂: conditional closure)")
+info_line("  UGA — opal   (also Sec/Trp in mitochondria; Ω_Z: open/topological closure)")
 print()
-print("Correspondence:")
-print("  UAA = Ω₀  (null winding; clean termination)")
-print("  UAG = Ω_Z₂ (Z₂-symmetric; recoded in some contexts)")
-print("  UGA = Ω_Z  (maximal; known read-through, selenocysteine gate)")
+info_line("Correspondence:")
+info_line("  UAA = Ω₀  (null winding; clean termination)")
+info_line("  UAG = Ω_Z₂ (Z₂-symmetric; recoded in some contexts)")
+info_line("  UGA = Ω_Z  (maximal; known read-through, selenocysteine gate)")
 print()
 print(f"3 stop codons = 3-valued Ω signal. The Ω closure primitive has exactly")
 print(f"3 non-trivial termination modes. (Ω cardinality = 4; 3 values are Stop,")
@@ -133,19 +134,19 @@ print()
 # ── 4. The 12 promoted AAs ↔ 12 IG primitives ────────────────────────────────
 
 print("=" * 60)
-print("4. 12 PROMOTED AAs → 12 IG PRIMITIVE PROMOTION AXES")
+info_line("4. 12 PROMOTED AAs → 12 IG PRIMITIVE PROMOTION AXES")
 print("=" * 60)
 
-print("Promoted layer (12 AAs, ordered by split-box appearance):")
-print(f"  {sorted(promoted_layer)}")
+info_line("Promoted layer (12 AAs, ordered by split-box appearance):")
+info_line(f"  {sorted(promoted_layer)}")
 print()
 
-print("NOTE: REVISED MAPPING (v0.6.0)")
-print("  His→⊙ (Criticality) — imidazole pKa≈6 = pH-critical protonation gate")
-print("  Gln→Γ (Grammar) — amide H-bond network = interaction grammar")
-print("  Rationale: His is the only residue with pKa near physiological pH,")
+info_line("NOTE: REVISED MAPPING (v0.6.0)")
+info_line("  His→⊙ (Criticality) — imidazole pKa≈6 = pH-critical protonation gate")
+info_line("  Gln→Γ (Grammar) — amide H-bond network = interaction grammar")
+info_line("  Rationale: His is the only residue with pKa near physiological pH,")
 print("  making it the natural carrier of protein criticality. Gln's long")
-print("  amide chain structures H-bond networks — a grammatical function.")
+info_line("  amide chain structures H-bond networks — a grammatical function.")
 print()
 
 # Map each promoted AA to an IG primitive it uniquely activates
@@ -167,21 +168,21 @@ promotions = {
 
 for aa in sorted(promotions):
     prim, reason = promotions[aa]
-    print(f"  {aa:4s} → {prim}  {reason}")
+    info_line(f"  {aa:4s} → {prim}  {reason}")
 
 print()
-print("Mapping accounts for all 12 IG primitives:")
+info_line("Mapping accounts for all 12 IG primitives:")
 covered = set(prim for prim, _ in promotions.values())
 ig_prims = {"Ð","Þ","Ř","Φ","ƒ","Ç","Γ","ɢ","⊙","Ħ","Σ","Ω"}
-print(f"  Covered: {sorted(covered)}")
-print(f"  Missing: {sorted(ig_prims - covered)}")
-print(f"  Bijection: {covered == ig_prims}")
+info_line(f"  Covered: {sorted(covered)}")
+info_line(f"  Missing: {sorted(ig_prims - covered)}")
+info_line(f"  Bijection: {covered == ig_prims}")
 print()
 
 # ── 5. Ground layer chemical character ───────────────────────────────────────
 
 print("=" * 60)
-print("5. GROUND LAYER: PRE-PROMOTION BASE AAs")
+info_line("5. GROUND LAYER: PRE-PROMOTION BASE AAs")
 print("=" * 60)
 
 ground_props = {
@@ -195,22 +196,22 @@ ground_props = {
     "Arg": "guanidinium, positive — DNA/RNA binding, salt bridges",
 }
 
-print("Ground layer (Frobenius-exact, ordinal-0):")
+info_line("Ground layer (Frobenius-exact, ordinal-0):")
 for aa, desc in ground_props.items():
-    print(f"  {aa:4s}: {desc}")
+    info_line(f"  {aa:4s}: {desc}")
 
 print()
-print("Properties of the ground layer:")
-print("  - All are abiotic synthesis products (found in meteorites, Miller-Urey)")
-print("  - Collectively cover: aliphatic/polar/charged/rigid/flexible/achiral")
-print("  - Do NOT include: aromatic, disulfide, imidazole, amide-chain, sulfur-methyl")
-print("  - The missing chemical capabilities = exactly the 12 promoted AAs")
+info_line("Properties of the ground layer:")
+info_line("  - All are abiotic synthesis products (found in meteorites, Miller-Urey)")
+info_line("  - Collectively cover: aliphatic/polar/charged/rigid/flexible/achiral")
+info_line("  - Do NOT include: aromatic, disulfide, imidazole, amide-chain, sulfur-methyl")
+info_line("  - The missing chemical capabilities = exactly the 12 promoted AAs")
 print()
 
 # ── 6. The derivation ─────────────────────────────────────────────────────────
 
 print("=" * 60)
-print("6. DERIVATION: WHY 20 IS FORCED")
+info_line("6. DERIVATION: WHY 20 IS FORCED")
 print("=" * 60)
 
 print("""
@@ -249,34 +250,35 @@ Connection to ZFCₜ construction:
 # ── 7. Why position-2 determines Frobenius exactness ─────────────────────────
 
 print("=" * 60)
-print("7. PHYSICAL BASIS: POSITION 2 H-BOND STRENGTH → FROBENIUS SPLIT")
+info_line("7. PHYSICAL BASIS: POSITION 2 H-BOND STRENGTH → FROBENIUS SPLIT")
 print("=" * 60)
 
 # Check: do exact boxes correlate with strong (C/G) position-2 base?
-print("Exact boxes and their position-2 base:")
+info_line("Exact boxes and their position-2 base:")
 for box, v in unsplit.items():
     b2 = box[1]
     strength = "strong (3 H-bonds)" if b2 in "CG" else "weak (2 H-bonds)"
-    print(f"  {box}: {v['unique'][0]:4s}  pos-2={b2} [{strength}]")
+    info_line(f"  {box}: {v['unique'][0]:4s}  pos-2={b2} [{strength}]")
 
 print()
-print("Split boxes and their position-2 base:")
+info_line("Split boxes and their position-2 base:")
 for box, v in split.items():
     b2 = box[1]
     strength = "strong (3 H-bonds)" if b2 in "CG" else "weak (2 H-bonds)"
     unique_str = "/".join(v["unique"])
-    print(f"  {box}: {unique_str:15s}  pos-2={b2} [{strength}]")
+    info_line(f"  {box}: {unique_str:15s}  pos-2={b2} [{strength}]")
 
 print()
 # Tally
 exact_pos2 = [box[1] for box in unsplit]
 split_pos2 = [box[1] for box in split]
 from collections import Counter
+
 print(f"Position-2 distribution in EXACT boxes:  {dict(Counter(exact_pos2))}")
 print(f"Position-2 distribution in SPLIT  boxes: {dict(Counter(split_pos2))}")
 print()
-print("Note: position-2 strength is not a perfect predictor (some C/G boxes split,")
-print("some A/U boxes are exact) because position-1 also contributes stability.")
-print("The full Frobenius condition depends on the codon triplet energy landscape,")
-print("not just position 2 — but the IG structure (T/F split = B₄ distinction)")
-print("is the algebraic invariant underlying the physical mechanism.")
+info_line("Note: position-2 strength is not a perfect predictor (some C/G boxes split,")
+info_line("some A/U boxes are exact) because position-1 also contributes stability.")
+info_line("The full Frobenius condition depends on the codon triplet energy landscape,")
+info_line("not just position 2 — but the IG structure (T/F split = B₄ distinction)")
+info_line("is the algebraic invariant underlying the physical mechanism.")

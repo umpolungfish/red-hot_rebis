@@ -1,3 +1,5 @@
+
+from shared.rich_output import *
 """Insert fragment_smiles hook after best-cut child creation."""
 
 with open('/home/mrnob0dy666/imsgct/red-hot_rebis/pipeline/reaction_pipeline.py', 'r') as f:
@@ -25,4 +27,4 @@ for i, line in enumerate(lines):
 with open('/home/mrnob0dy666/imsgct/red-hot_rebis/pipeline/reaction_pipeline.py', 'w') as f:
     f.writelines(lines)
 
-print("Patch 5 complete")
+info_line("Patch 5 complete")

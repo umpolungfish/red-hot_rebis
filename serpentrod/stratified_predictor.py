@@ -806,7 +806,7 @@ SARS_COV2_PP1A_PARTIAL = (
 def run_all_tests():
     """Run the engine on all test sequences and print reports."""
     print("=" * 72)
-    print("PROTEIN STRATIFIED PREDICTOR v3 — MULTI-SPECIES VALIDATION")
+    info_line("PROTEIN STRATIFIED PREDICTOR v3 — MULTI-SPECIES VALIDATION")
     print("=" * 72)
 
     engine = ProteinStratifiedPredictor()
@@ -823,7 +823,7 @@ def run_all_tests():
 
     for name, seq in test_cases:
         print(f"\n{'─' * 72}")
-        print(f"  TEST: {name}")
+        info_line(f"  TEST: {name}")
         print(f"{'─' * 72}")
         result = engine.run_full_pipeline(seq, name=name)
         results[name] = result
@@ -831,7 +831,7 @@ def run_all_tests():
 
     # ─── Cross-Species Comparison ─────────────────────────────────────
     print("\n" + "=" * 72)
-    print("CROSS-SPECIES INSULIN COMPARISON")
+    info_line("CROSS-SPECIES INSULIN COMPARISON")
     print("=" * 72)
 
     insulin_cases = ["Human Preproinsulin", "Rat Preproinsulin", "Zebrafish Preproinsulin"]
@@ -840,25 +840,25 @@ def run_all_tests():
         sp = r['signal_peptide']
         products = r['mature_products']
         print(f"\n  {name}:")
-        print(f"    Signal peptide: {sp['length'] if sp else '?'} AA, "
-              f"cleavage @ {sp['cleavage_position'] if sp else '?'}")
-        print(f"    Cleavage sites: {len(r['cleavage_sites'])}")
-        print(f"    Products: {len(products)}")
+        info_line(f"    Signal peptide: {sp['length'] if sp else '?'} AA, "
+f"cleavage @ {sp['cleavage_position'] if sp else '?'}")
+        info_line(f"    Cleavage sites: {len(r['cleavage_sites'])}")
+        info_line(f"    Products: {len(products)}")
 
         # Compute Ω (Glu) totals
         seq = r['sequence']
         omega_total = seq.count('E')
         # Sum Ω across fragments
         frag_omega = sum(f['vector'][11] for f in r['fragments'])  # Ω is index 11
-        print(f"    Ω (Glu) total: {omega_total}")
+        info_line(f"    Ω (Glu) total: {omega_total}")
         c_peptide = [p for p in products if 'peptide' in p['name'] and 'short' not in p['name'] and 'intervening' not in p['name']]
         for p in products:
             omega = p['profile'].get('Ω', 0)
-            print(f"    • {p['name']}: Ω={omega}, {p['inferred_function']}")
+            info_line(f"    • {p['name']}: Ω={omega}, {p['inferred_function']}")
 
     # ─── Proglucagon Detailed ─────────────────────────────────────────
     print("\n" + "=" * 72)
-    print("PROGLUCAGON — FRAGMENT CLASSIFICATION")
+    info_line("PROGLUCAGON — FRAGMENT CLASSIFICATION")
     print("=" * 72)
     r = results.get("Human Proglucagon")
     if r:
@@ -866,8 +866,8 @@ def run_all_tests():
             gln = frag['vector'][8]  # ⊙ index
             glu = frag['vector'][11]  # Ω index
             asp = frag['vector'][9]  # Ħ index
-            print(f"  {frag['label']} ({frag['length']} AA @ {frag['start']}-{frag['end']}): "
-                  f"⊙={gln}, Ω={glu}, Ħ={asp}, dominant={frag['dominant_primitives']}")
+            info_line(f"  {frag['label']} ({frag['length']} AA @ {frag['start']}-{frag['end']}): "
+f"⊙={gln}, Ω={glu}, Ħ={asp}, dominant={frag['dominant_primitives']}")
 
     return results
 
@@ -885,6 +885,7 @@ from typing import NamedTuple, Optional, List, Tuple, Dict, Any
 from dataclasses import dataclass, field
 from collections import namedtuple
 import math
+from shared.rich_output import *
 
 # ── Hydropathy (Kyte-Doolittle scale) ──────────────────────────────────
 
@@ -926,6 +927,7 @@ class RollingProfile:
     def summary(self) -> dict:
         """Compute primitive activation summary for narrative output."""
         from collections import Counter
+
         prim_counts = Counter()
         for aa in self.sequence.upper():
             if aa in PRIMITIVE_MAP:

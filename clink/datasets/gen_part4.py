@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """PART 4: L8 organism + orchestration functions."""
 import os
+from shared.rich_output import *
 
 PY = "/home/mrnob0dy666/red-hot_rebis/clink/datasets/generators.py"
 
@@ -134,7 +135,7 @@ class Layer8DatasetGenerator(DatasetGenerator):
         }, indent=2)
 ''')
 
-print("L8 written")
+info_line("L8 written")
 
 # Orchestration functions
 w('''
@@ -206,6 +207,7 @@ def generate_organism_design_package(organism_type: str = "mammal",
     FASTA, PDB, SMILES, GenBank, SBOL, protocols, formulations.
     """
     import time
+
     start = time.time()
     
     if not output_dir:
@@ -265,5 +267,5 @@ def generate_organism_design_package(organism_type: str = "mammal",
     return manifest
 ''')
 
-print("Orchestration written")
-print("PART 4 complete")
+info_line("Orchestration written")
+info_line("PART 4 complete")

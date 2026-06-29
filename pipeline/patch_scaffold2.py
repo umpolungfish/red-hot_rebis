@@ -1,3 +1,5 @@
+
+from shared.rich_output import *
 """Patch 2: Modify deep_retrosynthesis() and main() for scaffold awareness."""
 
 with open('/home/mrnob0dy666/imsgct/red-hot_rebis/pipeline/reaction_pipeline.py', 'r') as f:

@@ -17,6 +17,8 @@ import os
 import tempfile
 import re
 from typing import Optional
+from shared.rich_output import *
+
 
 OPSIN_JAR = os.path.join(os.path.dirname(__file__), "ext", "opsin-cli.jar")
 
@@ -149,4 +151,4 @@ if __name__ == "__main__":
     ]
     for t in tests:
         s = iupac_to_smiles(t)
-        print(f"  {t:45s} → {s or 'FAILED'}")
+        info_line(f"  {t:45s} → {s or 'FAILED'}")

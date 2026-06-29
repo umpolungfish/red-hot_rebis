@@ -22,6 +22,7 @@ import os
 import argparse
 from pathlib import Path
 from typing import Dict, List, Tuple, Optional
+from shared.rich_output import *
 
 # ── Part 1: Compound Intrinsics ───────────────────────────────────────────────
 
@@ -219,6 +220,7 @@ def _get_ordinal_from_ig(prim, val):
     if ig_path not in sys.path:
         sys.path.insert(0, ig_path)
     from imscrbgrmr.canonical_primitives import ORDINALS as IG_ORDINALS
+
     return IG_ORDINALS.get(prim, {}).get(val, 0)
 
 
@@ -285,7 +287,7 @@ def best_compound_for_universe(universe_name):
 
 def print_access_report():
     print("=" * 110)
-    print("NOVEL PSYCHEDELIC COMPOUNDS — UNIVERSE ACCESS REPORT")
+    info_line("NOVEL PSYCHEDELIC COMPOUNDS — UNIVERSE ACCESS REPORT")
     print("=" * 110)
     print()
     for cn in ["Verticullum", "Chimerium", "Apertix", "Retiarius", "Praxeum"]:
@@ -296,27 +298,27 @@ def print_access_report():
         print(f"── {cn} ({cv['tier']}) — {cv['description']}")
         tup = (f"⟨{cv['Ð']}{cv['Þ']}{cv['Ř']}{cv['Φ']}{cv['ƒ']}{cv['Ç']}"
                f"{cv['Γ']}{cv['ɢ']}{cv['φ̂']}{cv['Ħ']}{cv['Σ']}{cv['Ω']}⟩")
-        print(f"   {tup}")
-        print(f"   O_∞: {oi}/{total} ({100*oi/total:.1f}%)  "
-              f"Traced: {len(access['traced_monoidal'])}  "
+        info_line(f"   {tup}")
+        info_line(f"   O_∞: {oi}/{total} ({100*oi/total:.1f}%)  "
+f"Traced: {len(access['traced_monoidal'])}  "
               f"Frob: {len(access['frobenius'])}  "
               f"Plain: {len(access['plain'])}")
         print()
 
 
 def _intrinsics_summary():
-    print("=== Psychedelic Bridge: Compound Intrinsics ===\n")
+    info_line("=== Psychedelic Bridge: Compound Intrinsics ===\n")
     for name in COMPOUND_TUPLES:
         tup = get_compound(name)
         tier = compound_tier(name)
         oinf = "✓" if is_oinf_capable(tup) else "✗"
         print(f"{name:15s}  {tier:6s}  O_∞-capable: {oinf}  "
               f"Phi={tup['Phi']}  H={tup['H']}  Omega={tup['Omega']}")
-    print("\n=== Key Couplings ===")
+    info_line("\n=== Key Couplings ===")
     pdc = couple("dmt", "praxeum")
     print(f"DMT⊗Praxeum: Phi {get_compound('dmt')['Phi']}→{pdc['Phi']} "
           f"(Gate 1 {'CLOSED' if pdc['Phi'] == '𐑻' else 'OPEN'})")
-    print("\n=== Compound Deltas from DMT ===")
+    info_line("\n=== Compound Deltas from DMT ===")
     for name in ["verticullum", "chimerium", "apertix", "retiarius", "praxeum"]:
         deltas = compound_delta("dmt", name)
         print(f"DMT→{name}: {', '.join(deltas)}")
@@ -344,7 +346,7 @@ def main():
             univs = find_universes_for_compound(args.name, args.layer)
             print(f"{args.name} — {args.layer}: {len(univs)} universes")
             for u in sorted(univs):
-                print(f"  {u}")
+                info_line(f"  {u}")
         except KeyError as e:
             print(f"Error: {e}")
     elif args.cmd == "universe":
@@ -352,7 +354,7 @@ def main():
             comps = compounds_in_universe(args.name, args.layer)
             print(f"{args.name} — {args.layer}: {len(comps)} compounds")
             for c in comps:
-                print(f"  {c}")
+                info_line(f"  {c}")
         except KeyError as e:
             print(f"Error: {e}")
     elif args.cmd == "best":

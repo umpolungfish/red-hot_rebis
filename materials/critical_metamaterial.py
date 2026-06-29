@@ -16,6 +16,7 @@ Core principle:
 
 import numpy as np, json
 import os
+from shared.rich_output import *
 
 class CriticalMetamaterial:
     def __init__(self, size=16, initial_kappa=0.2, nonlinearity=0.1):
@@ -97,7 +98,7 @@ class CriticalMetamaterial:
     
     def run(self, total_time=60):
         print("="*70)
-        print("SELF-CRITICAL METAMATERIAL SENSOR — ⊙ Criticality")
+        info_line("SELF-CRITICAL METAMATERIAL SENSOR — ⊙ Criticality")
         print("="*70)
         print(f"Array: {self.N}×{self.N} ({self.n_res} resonators)")
         print(f"Critical coupling κ_c = {self.kappa_c}")
@@ -123,22 +124,22 @@ class CriticalMetamaterial:
         print(f"\n{'='*70}")
         print(f"RESULTS")
         print(f"{'='*70}")
-        print(f"  Mean χ: {mean_chi:.2e}")
-        print(f"  Peak χ: {max(chi_vals):.2e}")
-        print(f"  Final κ: {final_kap:.4f}")
-        print(f"  Deviation |κ-κ_c|: {abs(final_kap - self.kappa_c):.4f}")
+        info_line(f"  Mean χ: {mean_chi:.2e}")
+        info_line(f"  Peak χ: {max(chi_vals):.2e}")
+        info_line(f"  Final κ: {final_kap:.4f}")
+        info_line(f"  Deviation |κ-κ_c|: {abs(final_kap - self.kappa_c):.4f}")
         
         if abs(final_kap - self.kappa_c) < 0.05:
             print(f"\n  ✓ CRITICALITY ACHIEVED")
-            print(f"    The 𐑾 feedback loop locks κ at the critical point.")
-            print(f"    At this point, χ = {mean_chi:.0e} — extreme sensitivity.")
+            info_line(f"    The 𐑾 feedback loop locks κ at the critical point.")
+            info_line(f"    At this point, χ = {mean_chi:.0e} — extreme sensitivity.")
         else:
             print(f"\n  ⚠ Near-critical (|κ-κ_c| = {abs(final_kap - self.kappa_c):.4f})")
         
         print(f"\n  Small-signal test:")
         for sig in [1e-6, 1e-8, 1e-10]:
             chi_sig, _ = self.compute_susceptibility(sig)
-            print(f"    Signal {sig:.0e}: χ = {chi_sig:.2e} (gain = {chi_sig:.0f})")
+            info_line(f"    Signal {sig:.0e}: χ = {chi_sig:.2e} (gain = {chi_sig:.0f})")
         
         results = {
             "simulation": "Self-Critical Metamaterial Sensor",
@@ -174,6 +175,7 @@ if __name__ == "__main__":
 
     if args.output:
         import json
+
         results = {
             "simulation": "Self-Critical Metamaterial Sensor",
             "params": {"N": mm.N, "kappa_c": mm.kappa_c, "target_chi": mm.target_chi},

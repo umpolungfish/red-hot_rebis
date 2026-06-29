@@ -22,9 +22,9 @@ sys.path.insert(0, str(REBIS_ROOT))
 
 VERSION = "2.2.0"  # Consolidated edition
 from rhr_p4rky._help_examples import EXAMPLES
+from shared.rich_output import *
 # ── Rich text formatting ──
 try:
-    from ch3mpiler.rich_output import header, subheader, info_line, success_line, error_line, target_line, numeric_line, panel, separator, table, reaction_header, demo_title
     STYLED = True
 except ImportError:
     STYLED = False
@@ -1066,7 +1066,6 @@ def cmd_materials(args):
 
 def main():
     if len(sys.argv) == 1:
-        from ch3mpiler.rich_output import demo_title
         print()
         demo_title()
         print()

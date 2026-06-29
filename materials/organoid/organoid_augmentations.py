@@ -25,6 +25,7 @@ import math
 import sys
 import json
 import textwrap
+from shared.rich_output import *
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -1058,6 +1059,7 @@ def full_analysis():
 
 def main():
     import argparse
+
     parser = argparse.ArgumentParser(
         description="Organoid Augmentation Suite — Structural Analysis"
     )
@@ -1114,7 +1116,7 @@ def main():
         return
     
     if args.deltas:
-        print("Primitive-by-primitive deltas vs baseline:")
+        info_line("Primitive-by-primitive deltas vs baseline:")
         print(f"{'System':<25} " + " ".join(f"{p:<6}" for p in ["D","T","R","P","F","K","G","C","Phi","H","S","Omega"]))
         for key, aug in AUGMENTATIONS.items():
             deltas = primitive_deltas(aug, ORGANOID_BASELINE)
@@ -1130,8 +1132,8 @@ def main():
     if args.recipes:
         for r in RECIPES:
             print(f"\n[{r.system}] {r.name} (TRL {r.trl})")
-            print(f"  Materials: {', '.join(r.materials[:5])}")
-            print(f"  Key: {r.key_specs}")
+            info_line(f"  Materials: {', '.join(r.materials[:5])}")
+            info_line(f"  Key: {r.key_specs}")
         return
     
     # Default: full analysis

@@ -7,21 +7,23 @@ import compiler
 from compiler import Ch3mpiler, FG
 
 # Check FG extensions more carefully
-print('=== FG TABLE CHECK ===')
+info_line("=== FG TABLE CHECK ===")
 for fg_name in sorted(FG.keys()):
     if fg_name in ['nitro', 'cyclic', 'diazonium', 'phosphate', 'sulfonate']:
-        print(f'  {fg_name}: {FG[fg_name]}')
+        info_line(f'  {fg_name}: {FG[fg_name]}')
 
 # Also check MOLECULE_FG_DB
 print()
-print('=== MOLECULE DB EXTENSIONS ===')
+info_line("=== MOLECULE DB EXTENSIONS ===")
 from compiler import MOLECULE_FG_DB
+from shared.rich_output import *
+
 for name in ['4_aminophenol', '4_nitrophenol', 'acetic_anhydride', 'isobutylbenzene']:
     if name in MOLECULE_FG_DB:
-        print(f'  {name}: {MOLECULE_FG_DB[name]}')
+        info_line(f'  {name}: {MOLECULE_FG_DB[name]}')
 
 print()
-print('=== PATHFINDING TESTS ===')
+info_line("=== PATHFINDING TESTS ===")
 ch = Ch3mpiler()
 
 tests = [
@@ -37,10 +39,10 @@ for start, target, label in tests:
     print(f'\n--- {label} ---')
     r = ch.path_to_target(start, target, depth=5)
     if r.get('found'):
-        print(f'  ✓ FOUND ({r["path_length"]} steps)')
+        info_line(f'  ✓ FOUND ({r["path_length"]} steps)')
         for step in r['path']:
-            print(f'    {step["step"]}. {step["fg1"]} + {step["fg2"]} → {step["product"]}')
-            print(f'       [{step["bond"]}] {step["reaction"]}')
+            info_line(f'    {step["step"]}. {step["fg1"]} + {step["fg2"]} → {step["product"]}')
+            info_line(f'       [{step["bond"]}] {step["reaction"]}')
     else:
-        print(f'  ✗ NOT FOUND (source: {r.get("source", "?")})')
-        print(f'  Direct distance: {r.get("direct_structural_distance", "?")}')
+        info_line(f'  ✗ NOT FOUND (source: {r.get("source", "?")})')
+        info_line(f'  Direct distance: {r.get("direct_structural_distance", "?")}')

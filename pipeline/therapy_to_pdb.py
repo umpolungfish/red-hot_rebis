@@ -32,6 +32,7 @@ sys.path.insert(0, str(RED_HOT))
 sys.path.insert(0, str(ARS_DIR))
 sys.path.insert(0, str(RED_HOT / "rhr_p4rky"))
 
+from shared.rich_output import *
 from ars_therapeutica.types import (
     Therapy, Imscription, THERAPIES,
     D, T, R, P, F, K, G, Gamma, Phi, H, S, W,
@@ -273,6 +274,7 @@ def stage_serpentrod(therapy, skip=False):
 
     try:
         from rhr_p4rky.serpent_rod import design_catalytic_site
+
         serpent_available = True
     except ImportError:
         serpent_available = False
@@ -488,7 +490,7 @@ def run_pipeline(therapy_key, skip_ch3mpile=False, skip_serpentrod=False,
     s0 = stage_load(therapy_key)
     report.stages.append(s0)
     if verbose:
-        print(f"  [{'✓' if s0.status == StageStatus.SUCCESS else '✗'}] {s0.stage}")
+        info_line(f"  [{'✓' if s0.status == StageStatus.SUCCESS else '✗'}] {s0.stage}")
     if s0.status == StageStatus.FAILED:
         report.total_duration_ms = (time.time() - t_total) * 1000
         return report
@@ -498,33 +500,33 @@ def run_pipeline(therapy_key, skip_ch3mpile=False, skip_serpentrod=False,
     report.stages.append(s1)
     if verbose:
         n_deltas = len(s1.data.get("delta_primitives", []))
-        print(f"  [✓] {s1.stage} — {n_deltas} delta primitives")
+        info_line(f"  [✓] {s1.stage} — {n_deltas} delta primitives")
 
     # Stage 2
     s2 = stage_ch3mpile(therapy, skip=skip_ch3mpile)
     report.stages.append(s2)
     if verbose:
         icon = "→" if s2.status == StageStatus.SKIPPED else "✓" if s2.status == StageStatus.SUCCESS else "∅"
-        print(f"  [{icon}] {s2.stage}")
+        info_line(f"  [{icon}] {s2.stage}")
 
     # Stage 3
     s3 = stage_serpentrod(therapy, skip=skip_serpentrod)
     report.stages.append(s3)
     if verbose:
         icon = "→" if s3.status == StageStatus.SKIPPED else "✓" if s3.status == StageStatus.SUCCESS else "∅"
-        print(f"  [{icon}] {s3.stage}")
+        info_line(f"  [{icon}] {s3.stage}")
 
     # Stage 4
     s4 = stage_pdb_validate(therapy, skip=skip_validation)
     report.stages.append(s4)
     if verbose:
-        print(f"  [{'✓' if s4.status == StageStatus.SUCCESS else '✗' if s4.status == StageStatus.FAILED else '∅'}] {s4.stage}")
+        info_line(f"  [{'✓' if s4.status == StageStatus.SUCCESS else '✗' if s4.status == StageStatus.FAILED else '∅'}] {s4.stage}")
 
     # Stage 5
     s5 = stage_frobenius(therapy, [s0, s1, s2, s3, s4])
     report.stages.append(s5)
     if verbose:
-        print(f"  [{'✓' if s5.status == StageStatus.SUCCESS else '✗'}] {s5.stage} — Frobenius: {s5.frobenius_closed}")
+        info_line(f"  [{'✓' if s5.status == StageStatus.SUCCESS else '✗'}] {s5.stage} — Frobenius: {s5.frobenius_closed}")
 
     report.overall_frobenius = s5.frobenius_closed
     report.total_duration_ms = (time.time() - t_total) * 1000
@@ -537,7 +539,7 @@ def run_all_therapies(skip_ch3mpile=True, skip_serpentrod=True,
     for key in THERAPIES:
         if verbose:
             print(f"\n{'='*60}")
-            print(f"  {THERAPIES[key].name}")
+            info_line(f"  {THERAPIES[key].name}")
             print(f"{'='*60}")
         try:
             report = run_pipeline(key, skip_ch3mpile, skip_serpentrod,
@@ -545,7 +547,7 @@ def run_all_therapies(skip_ch3mpile=True, skip_serpentrod=True,
             reports.append(report)
         except Exception as e:
             if verbose:
-                print(f"  [✗] FAILED: {e}")
+                info_line(f"  [✗] FAILED: {e}")
     return reports
 
 
@@ -601,13 +603,13 @@ def main():
     args = parser.parse_args()
 
     if args.list:
-        print("\nAvailable Therapies:")
+        info_line("\nAvailable Therapies:")
         print("=" * 60)
         for key, t in THERAPIES.items():
             dt = t.disease_type
             ht = t.health_type
-            print(f"  {key:<25} [{t.category}]  d={t.distance:.4f}  "
-                  f"Δ={len(t.delta_primitives)}  {tier(dt)}→{tier(ht)}")
+            info_line(f"  {key:<25} [{t.category}]  d={t.distance:.4f}  "
+f"Δ={len(t.delta_primitives)}  {tier(dt)}→{tier(ht)}")
         print()
         return 0
 

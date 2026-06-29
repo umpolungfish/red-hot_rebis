@@ -25,6 +25,7 @@ import numpy as np
 import os
 import json
 from typing import Tuple
+from shared.rich_output import *
 
 
 class TwoSegmentDiode:
@@ -179,7 +180,7 @@ class TwoSegmentDiode:
     def run(self):
         """Run complete rectification measurement."""
         print("=" * 70)
-        print("TOPOLOGICAL THERMAL RECTIFIER — Two-Segment Diode")
+        info_line("TOPOLOGICAL THERMAL RECTIFIER — Two-Segment Diode")
         print("=" * 70)
         print(f"Left segment:  {self.N_L} light masses (m={self.m_L}), stiff bonds (k={self.k_L})")
         print(f"Right segment: {self.N_R} heavy masses (m={self.m_R}), soft bonds (k={self.k_R})")
@@ -188,13 +189,13 @@ class TwoSegmentDiode:
         print(f"Temperatures: T_h={self.T_h}, T_c={self.T_c}")
         print("─" * 70)
         
-        print("\nMeasuring FORWARD flux (hot→light→heavy→cold)...")
+        info_line("\nMeasuring FORWARD flux (hot→light→heavy→cold)...")
         J_f, s_f = self.run_direction("forward")
-        print(f"  J_forward = {J_f:.6f} ± {s_f:.6f}")
+        info_line(f"  J_forward = {J_f:.6f} ± {s_f:.6f}")
         
-        print("\nMeasuring BACKWARD flux (hot→heavy→light→cold)...")
+        info_line("\nMeasuring BACKWARD flux (hot→heavy→light→cold)...")
         J_b, s_b = self.run_direction("backward")
-        print(f"  J_backward = {J_b:.6f} ± {s_b:.6f}")
+        info_line(f"  J_backward = {J_b:.6f} ± {s_b:.6f}")
         
         # Rectification
         abs_J_f = abs(J_f)
@@ -204,9 +205,9 @@ class TwoSegmentDiode:
         print(f"\n{'='*70}")
         print(f"THERMAL RECTIFICATION RESULTS")
         print(f"{'='*70}")
-        print(f"  Forward heat flux:  {J_f:.6f}")
-        print(f"  Backward heat flux: {J_b:.6f}")
-        print(f"  Rectification ratio: {rect:.2f}x")
+        info_line(f"  Forward heat flux:  {J_f:.6f}")
+        info_line(f"  Backward heat flux: {J_b:.6f}")
+        info_line(f"  Rectification ratio: {rect:.2f}x")
         
         if rect > 3:
             print(f"\n  ✓ STRONG THERMAL DIODE")
@@ -216,8 +217,8 @@ class TwoSegmentDiode:
             print(f"\n  ⚠ WEAK DIODE")
         
         print(f"\n  Mechanism: mass-gradient + nonlinear interface")
-        print(f"  creates direction-dependent phonon mode conversion.")
-        print(f"  Integer winding (𐑭) protects against disorder.")
+        info_line(f"  creates direction-dependent phonon mode conversion.")
+        info_line(f"  Integer winding (𐑭) protects against disorder.")
         
         results = {
             "simulation": "Topological Thermal Rectifier (Two-Segment)",
@@ -277,6 +278,7 @@ if __name__ == "__main__":
 
     if args.output:
         import json
+
         results = {
             "config": {"n": args.n, "m_light": args.m_light, "m_heavy": args.m_heavy,
                       "k_stiff": args.k_stiff, "k_soft": args.k_soft, "beta": args.beta},

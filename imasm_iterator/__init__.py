@@ -28,7 +28,9 @@ from .classifier import (
     CANONICAL_CLASSES, CANONICAL_FINGERPRINTS,
     match_canonical,
 )
+from shared.rich_output import *
 from .engine import (
+
     SignatureClass, enumerate_signatures,
     iter_signature_arrangements,
     count_arrangements, SpaceMap, map_space,

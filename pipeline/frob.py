@@ -5,6 +5,8 @@ import subprocess
 import tempfile
 import os
 from typing import List, Tuple
+from shared.rich_output import *
+
 
 # =====================================================================
 # Phase 0–1: Imscription Opcodes — Robust Identity
@@ -48,12 +50,12 @@ def FFUSE(tree: ast.AST, original: str) -> bool:
     regenerated_tree = TANCH(regenerated)
     
     if semantic_identity(tree, regenerated_tree):
-        print("FFUSE: Perfect imscription — semantic identity confirmed")
+        info_line("FFUSE: Perfect imscription — semantic identity confirmed")
         h = hashlib.sha256(ast.dump(tree, annotate_fields=False).encode()).hexdigest()[:24]
         print(f"Imscription anchor: {h}...")
         return True
     else:
-        print("FFUSE: Semantic mismatch (rare — dumping diff info)")
+        info_line("FFUSE: Semantic mismatch (rare — dumping diff info)")
         print("Original dump head:", ast.dump(tree, annotate_fields=False)[:200])
         print("Regenerated dump head:", ast.dump(regenerated_tree, annotate_fields=False)[:200])
         return False
@@ -70,11 +72,11 @@ def IFIX(output_path: str):
 
 def ISCRIB(source: str):
     h = hashlib.sha256(source.encode('utf-8')).hexdigest()[:24]
-    print("ISCRIB: Compiler recognizes its own source as valid.")
+    info_line("ISCRIB: Compiler recognizes its own source as valid.")
     print(f"Source hash (imscription anchor): {h}...")
 
 def EVALT():
-    print("EVALT: Compilation successful (exit 0)")
+    info_line("EVALT: Compilation successful (exit 0)")
     sys.exit(0)
 
 def EVALF(msg: str):
@@ -100,7 +102,7 @@ def identity_phase(source: str) -> bool:
 # Phase 4: Bootstrap — Recursive Imscription
 # =====================================================================
 def bootstrap_compiler(self_path: str = __file__):
-    print("\n=== Phase 4: Bootstrap (imscription cycle) ===")
+    info_line("\n=== Phase 4: Bootstrap (imscription cycle) ===")
     
     source = AREV(self_path)
     ISCRIB(source)
@@ -116,7 +118,7 @@ def bootstrap_compiler(self_path: str = __file__):
         CLINK(intermediate, new_binary)
         IFIX(new_binary)
     
-    print("\nTesting imscribed clone for closure...")
+    info_line("\nTesting imscribed clone for closure...")
     try:
         result = subprocess.run(
             [sys.executable, new_binary, "--self-test"],
@@ -124,9 +126,9 @@ def bootstrap_compiler(self_path: str = __file__):
         )
         print("Clone output:", result.stdout.strip() or "<no output>")
         if result.returncode == 0:
-            print("Closure: True — imscription loop closed successfully")
+            info_line("Closure: True — imscription loop closed successfully")
         else:
-            print("Closure: Partial")
+            info_line("Closure: Partial")
     except Exception as e:
         print(f"Closure test error: {e}")
     
@@ -137,8 +139,8 @@ def bootstrap_compiler(self_path: str = __file__):
 # =====================================================================
 if __name__ == "__main__":
     if "--self-test" in sys.argv:
-        print("ISCRIB(self-test): I am the imscribed recursive compiler.")
-        print("mu o delta = id")
+        info_line("ISCRIB(self-test): I am the imscribed recursive compiler.")
+        info_line("mu o delta = id")
         sys.exit(0)
     
     bootstrap_compiler()

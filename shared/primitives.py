@@ -21,6 +21,8 @@ build_metric_tensor(catalog_path)
 import json
 import os
 import numpy as np
+from shared.rich_output import *
+
 
 # Ordinal mappings for each primitive tier
 ORDINALS = {
@@ -326,17 +328,17 @@ def mahalanobis_distance(s1: dict, s2: dict, G: np.ndarray | None = None) -> flo
 
 
 if __name__ == "__main__":
-    print("=== Canonical distances: diagonal vs Mahalanobis ===")
+    info_line("=== Canonical distances: diagonal vs Mahalanobis ===")
     G = build_metric_tensor()
 
     eig = metric_eigendecomposition(G)
     print(f"\n=== Metric eigendecomposition (§26.6) ===")
-    print(f"  Effective dimension: {eig['effective_dim']} of 12  (90% eigenweight)")
-    print(f"  Condition number:    {eig['condition_number']:.2f}")
+    info_line(f"  Effective dimension: {eig['effective_dim']} of 12  (90% eigenweight)")
+    info_line(f"  Condition number:    {eig['condition_number']:.2f}")
     for m in eig["named_modes"]:
         top = sorted(m["loadings"].items(), key=lambda x: abs(x[1]), reverse=True)
         top_str = "  ".join(f"{p}({v:+.3f})" for p, v in top)
-        print(f"  e{m['index']} λ={m['eigenvalue']:.3f}  cum={m['cumulative_weight']*100:.1f}%  PR={m['participation_ratio']:.1f}  |  {top_str}")
+        info_line(f"  e{m['index']} λ={m['eigenvalue']:.3f}  cum={m['cumulative_weight']*100:.1f}%  PR={m['participation_ratio']:.1f}  |  {top_str}")
     print()
     pairs = [
         ("human", "civ_dm"),
@@ -346,9 +348,9 @@ if __name__ == "__main__":
     for a, b in pairs:
         d_diag = tuple_distance(imscriptions[a], imscriptions[b])
         d_maha = mahalanobis_distance(imscriptions[a], imscriptions[b], G)
-        print(f"  d_diag({a}, {b}) = {d_diag:.3f}")
-        print(f"  d_maha({a}, {b}) = {d_maha:.3f}")
+        info_line(f"  d_diag({a}, {b}) = {d_diag:.3f}")
+        info_line(f"  d_maha({a}, {b}) = {d_maha:.3f}")
         for row in breakdown(imscriptions[a], imscriptions[b])[:4]:
             if row["weighted_sq"] > 0:
-                print(f"    {row['primitive']}: Δ={row['delta']:.0f}  contrib={row['weighted_sq']:.2f}")
+                info_line(f"    {row['primitive']}: Δ={row['delta']:.0f}  contrib={row['weighted_sq']:.2f}")
         print()

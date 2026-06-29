@@ -25,6 +25,8 @@ import json
 from pathlib import Path
 from dataclasses import dataclass
 from typing import List, Tuple
+from shared.rich_output import *
+
 
 
 class CancerReceptorModel:
@@ -171,7 +173,7 @@ class FrobeniusChemoSim:
         n_steps = int(total_time / self.dt)
         
         print("=" * 70)
-        print("FROBENIUS-COUPLED CHEMOTHERAPEUTIC — Equilibrium Model")
+        info_line("FROBENIUS-COUPLED CHEMOTHERAPEUTIC — Equilibrium Model")
         print("=" * 70)
         print(f"Drug concentration: {self.drug_conc} (normalized)")
         print(f"Principle: 𐑹 symmetry protects healthy cells; 𐑹-breaking exposes cancer")
@@ -192,7 +194,7 @@ class FrobeniusChemoSim:
                 h_pay = self.healthy.payload_exposed
                 c_payloads = [st.payload_exposed for _, st in self.cancer]
                 c_tensions = [st.tether_tension for _, st in self.cancer]
-                print(f"  t={self.time:5.1f} | "
+                info_line(f"  t={self.time:5.1f} | "
                       f"H: {h_pay:.3f} | "
                       f"C: {[f'{p:.3f}' for p in c_payloads]} | "
                       f"T: {[f'{t:.2f}' for t in c_tensions]}")
@@ -206,22 +208,22 @@ class FrobeniusChemoSim:
         
         h_cyt = self.healthy.cytotoxicity
         print(f"\nHealthy Cell (Frobenius-protected):")
-        print(f"  Asymmetry: {self.healthy.asymmetry:.4f}")
-        print(f"  Binding: {self.healthy.domain1_bound_frac:.3f}")
-        print(f"  Dual binding: {self.healthy.dual_binding_prob:.3f}")
-        print(f"  Tether tension: {self.healthy.tether_tension:.4f}")
-        print(f"  Payload exposed: {self.healthy.payload_exposed:.4f}")
-        print(f"  Cytotoxicity: {h_cyt:.4f}")
-        print(f"  𐑹 Protection: {'ACTIVE ✓' if h_cyt < 0.5 else 'COMPROMISED'}")
+        info_line(f"  Asymmetry: {self.healthy.asymmetry:.4f}")
+        info_line(f"  Binding: {self.healthy.domain1_bound_frac:.3f}")
+        info_line(f"  Dual binding: {self.healthy.dual_binding_prob:.3f}")
+        info_line(f"  Tether tension: {self.healthy.tether_tension:.4f}")
+        info_line(f"  Payload exposed: {self.healthy.payload_exposed:.4f}")
+        info_line(f"  Cytotoxicity: {h_cyt:.4f}")
+        info_line(f"  𐑹 Protection: {'ACTIVE ✓' if h_cyt < 0.5 else 'COMPROMISED'}")
         
         print(f"\nCancer Cells:")
         healthy_cyt = max(h_cyt, 0.001)  # avoid div by zero
         for rec, st in self.cancer:
             ratio = st.cytotoxicity / healthy_cyt
-            print(f"  {st.target_type}:")
-            print(f"    Asymmetry: {st.asymmetry:.4f} | Binding: {st.domain1_bound_frac:.3f}")
-            print(f"    Tether: {st.tether_tension:.4f} | Payload: {st.payload_exposed:.4f}")
-            print(f"    Cytotoxicity: {st.cytotoxicity:.4f} | Selectivity vs healthy: {ratio:.1f}x")
+            info_line(f"  {st.target_type}:")
+            info_line(f"    Asymmetry: {st.asymmetry:.4f} | Binding: {st.domain1_bound_frac:.3f}")
+            info_line(f"    Tether: {st.tether_tension:.4f} | Payload: {st.payload_exposed:.4f}")
+            info_line(f"    Cytotoxicity: {st.cytotoxicity:.4f} | Selectivity vs healthy: {ratio:.1f}x")
         
         print(f"\n{'─'*70}")
         print(f"The 𐑹-Frobenius gate selectively activates therapeutics in")

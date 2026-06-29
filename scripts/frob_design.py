@@ -5,7 +5,7 @@ if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
     _doc = __doc__.strip() if __doc__ else "scripts/frob_design.py"
     print(_doc)
     print()
-    print("Examples:")
+    info_line("Examples:")
     print(_HELP_EXAMPLES)
     print()
     _sys.exit(0)
@@ -19,6 +19,8 @@ sys.path.insert(0, os.path.join(_REBIS_ROOT, 'rhr_p4rky'))
 from ch3mpiler_serpentrod_pipeline import *
 sys.path.insert(0, os.path.join(_REBIS_ROOT, 'designs/gr33ngroblin'))
 from plastic_eater_design import *
+from shared.rich_output import *
+
 
 def design_site_frobenius_exact(plastic_name, bond_name, fg1_name, fg2_name, mechanism):
     """
@@ -109,8 +111,8 @@ def design_site_frobenius_exact(plastic_name, bond_name, fg1_name, fg2_name, mec
 
 # Run
 print("=" * 72)
-print("  v5 FROBENIUS-EXACT: Dominant-Member Rule per Complementary Pair")
-print("  Every pair has exactly 1 member activated → 6/6 coverage")
+info_line("  v5 FROBENIUS-EXACT: Dominant-Member Rule per Complementary Pair")
+info_line("  Every pair has exactly 1 member activated → 6/6 coverage")
 print("=" * 72)
 
 all_sites = []
@@ -118,31 +120,31 @@ for plastic_name, bond_name, fg1_name, fg2_name, mechanism in PLASTIC_TARGETS:
     s = design_site_frobenius_exact(plastic_name, bond_name, fg1_name, fg2_name, mechanism)
     all_sites.append(s)
     print(f"\n--- {plastic_name} ---")
-    print(f"  Bond: {bond_name}")
-    print(f"  AA:   {s['aa_sequence']}")
-    print(f"  Activated: {s['activated']}")
+    info_line(f"  Bond: {bond_name}")
+    info_line(f"  AA:   {s['aa_sequence']}")
+    info_line(f"  Activated: {s['activated']}")
     for ps in s['pair_status']:
-        print(f"    {ps['pair']:8s}  dominant={ps['dominant']:2s}  act={ps['activated']:2s}  pcts=({ps['pa_pct']:.2f},{ps['pb_pct']:.2f})")
-    print(f"  Site: {json.dumps(s['site_type'])}")
+        info_line(f"    {ps['pair']:8s}  dominant={ps['dominant']:2s}  act={ps['activated']:2s}  pcts=({ps['pa_pct']:.2f},{ps['pb_pct']:.2f})")
+    info_line(f"  Site: {json.dumps(s['site_type'])}")
 
 # Diversity
 print("\n" + "=" * 72)
-print("  AA SEQUENCE DIVERSITY")
+info_line("  AA SEQUENCE DIVERSITY")
 aas_seen = {}
 for s in all_sites:
     seq = s['aa_sequence']
     if seq not in aas_seen:
         aas_seen[seq] = []
     aas_seen[seq].append(s['plastic'])
-print(f"  Unique AA sequences: {len(aas_seen)}/{len(all_sites)}")
+info_line(f"  Unique AA sequences: {len(aas_seen)}/{len(all_sites)}")
 for seq, plastics in aas_seen.items():
-    print(f"  {seq}")
+    info_line(f"  {seq}")
     for p in plastics:
-        print(f"    <- {p}")
+        info_line(f"    <- {p}")
 
 # Clustering suggestion
 print("\n" + "=" * 72)
-print("  CLUSTERING FOR SEPARATE CATALYSTS")
+info_line("  CLUSTERING FOR SEPARATE CATALYSTS")
 # Group by identical site types
 groups = {}
 for s in all_sites:
@@ -151,17 +153,17 @@ for s in all_sites:
         groups[st] = []
     groups[st].append(s['plastic'])
 
-print(f"  Unique site types: {len(groups)}")
+info_line(f"  Unique site types: {len(groups)}")
 for i, (st, plastics) in enumerate(groups.items()):
-    print(f"  Group {i+1}: {plastics}")
+    info_line(f"  Group {i+1}: {plastics}")
     # Show the site type for the first member
     for s in all_sites:
         if s['plastic'] == plastics[0]:
-            print(f"    AA: {s['aa_sequence']}")
+            info_line(f"    AA: {s['aa_sequence']}")
             break
 
 # Also group by AA sequence
 print(f"\n  Unique AA sequences: {len(aas_seen)}")
 for i, (seq, plastics) in enumerate(aas_seen.items()):
-    print(f"  Catalyst {i+1}: {plastics}")
-    print(f"    AA: {seq}")
+    info_line(f"  Catalyst {i+1}: {plastics}")
+    info_line(f"    AA: {seq}")

@@ -38,6 +38,7 @@ Auto-imscribed on {datetime.now().strftime("%Y-%m-%d")}
 import os, pathlib, sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from frob import identity_phase
+from shared.rich_output import *
 
 class {self.name}:
     def __init__(self):
@@ -67,18 +68,19 @@ class MetaAutoImscriberOb3ect:
         self.source = pathlib.Path(__file__).read_text()
 
     def verify(self) -> bool:
-        print("=== Meta Auto-Imscriber Ob3ect ===")
+        info_line("=== Meta Auto-Imscriber Ob3ect ===")
         # Self-imscription: the imscriber can imscribe its own source
         frob_ok = identity_phase(self.source)
         # Generation check: produce a stub and verify it parses cleanly
         stub = AutoImscriber("TestStub — auto-generated self-imscription").generate()
         import ast
+
         parse_ok = True
         try:
             ast.parse(stub)
         except SyntaxError:
             parse_ok = False
-        print(f"  Generated stub parses : {parse_ok}")
+        info_line(f"  Generated stub parses : {parse_ok}")
         closure = frob_ok and parse_ok
         print(f"Closure: {closure}")
         return closure

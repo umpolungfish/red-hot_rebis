@@ -11,6 +11,8 @@ Where EXAMPLES is a multi-line string of usage examples.
 """
 import sys
 import os
+from shared.rich_output import *
+
 
 
 def show(docstring, examples=""):
@@ -20,7 +22,7 @@ def show(docstring, examples=""):
             print(line.strip())
     print()
     if examples:
-        print("Examples:")
+        info_line("Examples:")
         for line in examples.strip().split('\n'):
             print(line)
     else:

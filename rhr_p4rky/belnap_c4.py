@@ -26,6 +26,7 @@ if str(_THIS_DIR) not in sys.path:
     sys.path.insert(0, str(_THIS_DIR))
 
 from belnap import Belnap, band, bor, bnot
+from shared.rich_output import *
 
 T = Belnap.T
 F = Belnap.F
@@ -151,6 +152,7 @@ def complex_to_belnap(z, epsilon=1e-10):
 def amplitude_to_probability(amplitude):
     """Born rule: amplitude → classical probability."""
     import cmath
+
     if isinstance(amplitude, BelnapComplex):
         return amplitude.born_projection()
     else:
@@ -168,19 +170,19 @@ def belnap_tensor_product(psi_a, psi_b):
 
 
 if __name__ == "__main__":
-    print("=== Belnap Complex Plane C₄ ===")
+    info_line("=== Belnap Complex Plane C₄ ===")
     print(f"Total elements: {len(BelnapComplex.ELEMENTS)}")
     print()
     i_squared = C4_I * C4_I
     print(f"i² = {i_squared}")
     print()
-    print("Born projections:")
+    info_line("Born projections:")
     for name, z in [("0", C4_0), ("1", C4_1), ("i", C4_I),
                     ("|+⟩", C4_PLUS), ("|−⟩", C4_MINUS)]:
-        print(f"  P({name}) = {z.born_projection()}")
+        info_line(f"  P({name}) = {z.born_projection()}")
     print()
     psi_plus = {"0": BelnapComplex(T, F), "1": BelnapComplex(T, F)}
     result = belnap_tensor_product(psi_plus, psi_plus)
-    print("|+⟩ ⊗ |+⟩ amplitudes:")
+    info_line("|+⟩ ⊗ |+⟩ amplitudes:")
     for basis, amp in result.items():
-        print(f"  |{basis}⟩: {amp}")
+        info_line(f"  |{basis}⟩: {amp}")

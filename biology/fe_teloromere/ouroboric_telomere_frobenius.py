@@ -35,6 +35,7 @@ import json
 from dataclasses import dataclass, field
 from typing import List, Tuple, Optional, Dict
 from enum import Enum
+from shared.rich_output import *
 
 
 # ═══════════════════════════════════════════════════════════════════
@@ -999,7 +1000,7 @@ class FrobeniusExactOuroboricSim:
     def run(self, total_divisions: int = 300, report_interval: int = 25):
         """Run the simulation for a given number of divisions."""
         print(f"\n{'='*80}")
-        print("FROBENIUS-EXACT OUROBORIC TELOMERE SYSTEM — Repaired Simulation")
+        info_line("FROBENIUS-EXACT OUROBORIC TELOMERE SYSTEM — Repaired Simulation")
         print(f"{'='*80}")
         print(f"Mode: {self.mode}")
         print(f"Cells: {self.n_cells}")
@@ -1007,12 +1008,12 @@ class FrobeniusExactOuroboricSim:
         print(f"Intervention at division: {self.intervention_time}")
         print(f"Total divisions to simulate: {total_divisions}")
         print()
-        print("ONE DISCRETE FROBENIUS GATE + TERRA GRADED MODULATOR:")
-        print(f"  GATE 1: TRF1 discrete counting ({self.p.trf1_binding_footprint_bp}-bp resolution)")
-        print(f"          Critical threshold: {self.p.trf1_critical_occupancy} dimers "
-              f"= {self.p.trf1_critical_occupancy * self.p.trf1_binding_footprint_bp} bp")
-        print(f"  (T-loop is default structural state — not an independent gate)")
-        print(f"  MODULATOR: TERRA competitive hTR inhibition (IC50: {self.p.terra_hTR_IC50}, graded)")
+        info_line("ONE DISCRETE FROBENIUS GATE + TERRA GRADED MODULATOR:")
+        info_line(f"  GATE 1: TRF1 discrete counting ({self.p.trf1_binding_footprint_bp}-bp resolution)")
+        info_line(f"          Critical threshold: {self.p.trf1_critical_occupancy} dimers "
+f"= {self.p.trf1_critical_occupancy * self.p.trf1_binding_footprint_bp} bp")
+        info_line(f"  (T-loop is default structural state — not an independent gate)")
+        info_line(f"  MODULATOR: TERRA competitive hTR inhibition (IC50: {self.p.terra_hTR_IC50}, graded)")
         print(f"{'Div':>5} {'Mean TL':>9} {'Min TL':>7} {'hTERT':>6} "
               f"{'Meth%':>6} {'Sen%':>5} {'Ouro%':>5} {'Var':>7} "
               f"{'TRF1%':>6} {'TLP%':>5} {'TERRA':>6}")
@@ -1048,7 +1049,7 @@ class FrobeniusExactOuroboricSim:
         idx_final = -1
 
         print(f"\n{'='*80}")
-        print("SIMULATION COMPLETE — Frobenius Closure Verification")
+        info_line("SIMULATION COMPLETE — Frobenius Closure Verification")
         print(f"{'='*80}\n")
 
         final = {
@@ -1068,26 +1069,26 @@ class FrobeniusExactOuroboricSim:
             'total_extensions': int(sum(h['total_extensions'])),
         }
 
-        print(f"  Mode:                        {final['mode']}")
-        print(f"  Final mean telomere length:  {final['final_mean_length']:.1f} bp")
-        print(f"  Final minimum telomere:      {final['final_min_length']:.0f} bp")
-        print(f"  Mean hTERT expression:       {final['final_mean_htert']:.4f}×")
-        print(f"  Mean hTERT methylation:      {final['final_mean_methylation']:.1%}")
-        print(f"  Mean TERRA level:            {final['final_mean_terra']:.4f}")
-        print(f"  Senescent cells:             {final['final_senescent_pct']:.1f}%")
-        print(f"  Ouroboric cells:             {final['final_ouroboric_pct']:.1f}%")
-        print(f"  Apoptotic cells:             {final['final_apoptotic_pct']:.1f}%")
-        print(f"  Critically short telomeres:  {final['final_critically_short_pct']:.1f}%")
-        print(f"  Mean ATM activity:           {final['final_mean_atm']:.4f}")
-        print(f"  Mean G4 stability:           {final['final_mean_g4']:.3f}")
-        print(f"  Length variance:             {final['length_variance']:.0f} bp²")
+        info_line(f"  Mode:                        {final['mode']}")
+        info_line(f"  Final mean telomere length:  {final['final_mean_length']:.1f} bp")
+        info_line(f"  Final minimum telomere:      {final['final_min_length']:.0f} bp")
+        info_line(f"  Mean hTERT expression:       {final['final_mean_htert']:.4f}×")
+        info_line(f"  Mean hTERT methylation:      {final['final_mean_methylation']:.1%}")
+        info_line(f"  Mean TERRA level:            {final['final_mean_terra']:.4f}")
+        info_line(f"  Senescent cells:             {final['final_senescent_pct']:.1f}%")
+        info_line(f"  Ouroboric cells:             {final['final_ouroboric_pct']:.1f}%")
+        info_line(f"  Apoptotic cells:             {final['final_apoptotic_pct']:.1f}%")
+        info_line(f"  Critically short telomeres:  {final['final_critically_short_pct']:.1f}%")
+        info_line(f"  Mean ATM activity:           {final['final_mean_atm']:.4f}")
+        info_line(f"  Mean G4 stability:           {final['final_mean_g4']:.3f}")
+        info_line(f"  Length variance:             {final['length_variance']:.0f} bp²")
         print(f"\n  Total extensions:            {final['total_extensions']}")
 
         # ═══════════════════════════════════════════════════════════════
         # FROBENIUS CLOSURE VERIFICATION
         # ═══════════════════════════════════════════════════════════════
         print(f"\n{'─'*80}")
-        print("FROBENIUS CLOSURE VERIFICATION: μ∘δ = id_A ?")
+        info_line("FROBENIUS CLOSURE VERIFICATION: μ∘δ = id_A ?")
         print(f"{'─'*80}")
 
         # Criterion 1: Drift in the latter half of the simulation
@@ -1100,18 +1101,18 @@ class FrobeniusExactOuroboricSim:
             drift_per_div = drift / max(1, len(second_half))
 
             print(f"\n  Criterion 1 — Drift (last {len(second_half)} divisions):")
-            print(f"    Start: {second_half[0]:.1f} bp")
-            print(f"    End:   {second_half[-1]:.1f} bp")
-            print(f"    Drift: {drift:+.1f} bp  ({drift_per_div:+.3f} bp/div)")
+            info_line(f"    Start: {second_half[0]:.1f} bp")
+            info_line(f"    End:   {second_half[-1]:.1f} bp")
+            info_line(f"    Drift: {drift:+.1f} bp  ({drift_per_div:+.3f} bp/div)")
 
             if abs(drift) < 10:
-                print(f"    ✓ PASS — drift < 10 bp: EXACT closure supported")
+                info_line(f"    ✓ PASS — drift < 10 bp: EXACT closure supported")
                 drift_pass = True
             elif abs(drift) < 100:
-                print(f"    ~ MARGINAL — drift {abs(drift):.0f} bp: near-exact but not proven")
+                info_line(f"    ~ MARGINAL — drift {abs(drift):.0f} bp: near-exact but not proven")
                 drift_pass = False
             else:
-                print(f"    ✗ FAIL — drift {abs(drift):.0f} bp: Frobenius condition not met")
+                info_line(f"    ✗ FAIL — drift {abs(drift):.0f} bp: Frobenius condition not met")
                 drift_pass = False
 
         # Criterion 2: Variance trend (should decrease or stabilize)
@@ -1121,15 +1122,15 @@ class FrobeniusExactOuroboricSim:
             var_ratio = var_second_half / max(1, var_first_half)
 
             print(f"\n  Criterion 2 — Variance trend:")
-            print(f"    First half mean variance:  {var_first_half:.0f} bp²")
-            print(f"    Second half mean variance: {var_second_half:.0f} bp²")
-            print(f"    Ratio (2nd/1st):           {var_ratio:.3f}")
+            info_line(f"    First half mean variance:  {var_first_half:.0f} bp²")
+            info_line(f"    Second half mean variance: {var_second_half:.0f} bp²")
+            info_line(f"    Ratio (2nd/1st):           {var_ratio:.3f}")
 
             if var_ratio < 1.2:
-                print(f"    ✓ PASS — variance stable or contracting")
+                info_line(f"    ✓ PASS — variance stable or contracting")
                 var_pass = True
             else:
-                print(f"    ~ MARGINAL — variance increasing")
+                info_line(f"    ~ MARGINAL — variance increasing")
                 var_pass = False
 
         # Criterion 3: Gate activity
@@ -1137,33 +1138,33 @@ class FrobeniusExactOuroboricSim:
         terra_last = np.mean(h['terra_blocked_fraction'][-10:])
 
         print(f"\n  Criterion 3 — Gate activity (last 10 divisions):")
-        print(f"    TRF1 gate blocked:  {trf1_last:.3f}")
-        print(f"    TERRA modulator:     {terra_last:.3f} (graded, not a gate)")
+        info_line(f"    TRF1 gate blocked:  {trf1_last:.3f}")
+        info_line(f"    TERRA modulator:     {terra_last:.3f} (graded, not a gate)")
         if trf1_last > 0.01:
-            print(f"    ✓ PASS — TRF1 gate is actively blocking")
+            info_line(f"    ✓ PASS — TRF1 gate is actively blocking")
             gate_pass = True
         else:
-            print(f"    ~ NOTE — TRF1 gate not actively blocking (telomeres below threshold)")
+            info_line(f"    ~ NOTE — TRF1 gate not actively blocking (telomeres below threshold)")
 
         # ═══════════════════════════════════════════════════════════════
         # VERDICT
         # ═══════════════════════════════════════════════════════════════
         print(f"\n{'─'*80}")
-        print("VERDICT")
+        info_line("VERDICT")
         print(f"{'─'*80}")
 
         if drift_pass:
             print(f"\n  ✓ FROBENIUS CLOSURE ACHIEVED")
-            print(f"    μ∘δ = id_A — the extension-termination cycle is an identity")
-            print(f"    on the telomere length distribution.")
-            print(f"    Structural type: P = 𐑹 (Frobenius-special parity)")
-            print(f"    Ouroboricity: O_∞")
+            info_line(f"    μ∘δ = id_A — the extension-termination cycle is an identity")
+            info_line(f"    on the telomere length distribution.")
+            info_line(f"    Structural type: P = 𐑹 (Frobenius-special parity)")
+            info_line(f"    Ouroboricity: O_∞")
             frobenius_achieved = True
         else:
             print(f"\n  ~ FROBENIUS CLOSURE APPROXIMATED")
-            print(f"    Drift: {abs(drift):.1f} bp (>10 bp threshold for exact closure)")
-            print(f"    Structural type: P = 𐑬 (partial/Z₂), not 𐑹")
-            print(f"    Ouroboricity: O₂")
+            info_line(f"    Drift: {abs(drift):.1f} bp (>10 bp threshold for exact closure)")
+            info_line(f"    Structural type: P = 𐑬 (partial/Z₂), not 𐑹")
+            info_line(f"    Ouroboricity: O₂")
             frobenius_achieved = False
 
         self._save_results(frobenius_achieved)
@@ -1236,11 +1237,12 @@ class FrobeniusExactOuroboricSim:
 if __name__ == "__main__":
     import sys
 
+
     mode = sys.argv[1] if len(sys.argv) > 1 else 'endogenous'
     n_divisions = int(sys.argv[2]) if len(sys.argv) > 2 else 300
 
     print("\n" + "=" * 80)
-    print("FROBENIUS-EXACT OUROBORIC TELOMERE — REPAIRED SIMULATION")
+    info_line("FROBENIUS-EXACT OUROBORIC TELOMERE — REPAIRED SIMULATION")
     print("=" * 80)
     print(f"Mode: {mode}  |  Divisions: {n_divisions}")
     print()
@@ -1259,7 +1261,7 @@ if __name__ == "__main__":
 
         # Cross-mode comparison
         print(f"\n{'='*80}")
-        print("CROSS-MODE COMPARISON")
+        info_line("CROSS-MODE COMPARISON")
         print(f"{'='*80}")
         print(f"{'Mode':>15} {'Final TL':>10} {'Sen%':>7} {'Ouro%':>7} "
               f"{'hTERT':>7} {'Meth%':>7} {'TERRA':>7} {'Var':>7}")

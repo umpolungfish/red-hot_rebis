@@ -32,6 +32,8 @@ Author: Lando⊗⊙perator
 """
 
 import time, sys, subprocess, os, argparse
+from shared.rich_output import *
+
 
 REBIS_DIR = os.path.dirname(os.path.abspath(__file__))
 os.chdir(REBIS_DIR)
@@ -98,7 +100,7 @@ def section(title):
     print()
     sep = "─" * 66
     print(sep)
-    print(f"  {title}")
+    info_line(f"  {title}")
     print(sep)
     time.sleep(SECTION_DELAY)
 
@@ -353,7 +355,7 @@ def main():
 
     if args.list_sections:
         for n in sorted(SECTION_NAMES):
-            print(f"  {n:2d}. {SECTION_NAMES[n]}")
+            info_line(f"  {n:2d}. {SECTION_NAMES[n]}")
         return
 
     intro()

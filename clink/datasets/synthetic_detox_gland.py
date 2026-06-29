@@ -37,6 +37,7 @@ from __future__ import annotations
 import json, os, textwrap
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Any
+from shared.rich_output import *
 
 # ─────────────────────────────────────────────────────────────────
 # MODULE CONSTANTS
@@ -1145,15 +1146,16 @@ def generate_all(output_dir: Optional[str] = None) -> Dict[str, str]:
     written["manifest.json"] = manifest_path
     
     print(f"✓ SYNTHETIC DETOX GLAND DESIGN: {len(files)} files, {total_bytes} bytes")
-    print(f"  Output: {output_dir}/")
+    info_line(f"  Output: {output_dir}/")
     for fn, fp in written.items():
-        print(f"  • {fn} ({os.path.getsize(fp)} bytes)")
+        info_line(f"  • {fn} ({os.path.getsize(fp)} bytes)")
     
     return written
 
 
 if __name__ == "__main__":
     import sys
+
     output_dir = sys.argv[1] if len(sys.argv) > 1 else None
     generate_all(output_dir)
     "GHSS"

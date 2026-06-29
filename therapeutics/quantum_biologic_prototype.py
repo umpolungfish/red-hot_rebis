@@ -11,6 +11,8 @@ quantum coherence from the NV-center FRET coupling to chromatin (<10 nm).
 import numpy as np
 import json, math
 from pathlib import Path
+from shared.rich_output import *
+
 
 class EpigeneticState:
     """Models DNA methylation state at target loci with supervenience coupling."""
@@ -112,7 +114,7 @@ class QuantumBiologicSim:
     def run_therapy(self, total_weeks=24, edits_per_session=3):
         """Simulate monthly editing sessions over 24 weeks."""
         print("=" * 60)
-        print("QUANTUM BIOLOGIC — Epigenetic Reprogramming Simulation")
+        info_line("QUANTUM BIOLOGIC — Epigenetic Reprogramming Simulation")
         print("=" * 60)
         
         session_interval = 4  # weeks between sessions
@@ -126,11 +128,11 @@ class QuantumBiologicSim:
             # quantum coherence from the NV-center · chromatin FRET coupling.
             # Previously, nv_readout() was never called — coherence stayed at 0.0.
             nv_signal = self.epigenome.nv_readout()
-            print(f"  NV readout signal (coherence={self.epigenome.coherence:.3f}, "
-                  f"dist_to_chromatin={self.epigenome.nv_chromatin_distance_nm:.1f} nm)")
+            info_line(f"  NV readout signal (coherence={self.epigenome.coherence:.3f}, "
+f"dist_to_chromatin={self.epigenome.nv_chromatin_distance_nm:.1f} nm)")
             
-            print(f"  Methylation before: {[f'{m:.2f}' for m in self.epigenome.methylation]}")
-            print(f"  Coherence: {self.epigenome.coherence:.3f}")
+            info_line(f"  Methylation before: {[f'{m:.2f}' for m in self.epigenome.methylation]}")
+            info_line(f"  Coherence: {self.epigenome.coherence:.3f}")
             
             # Apply edits
             edit_genes = list(self.editing_plan.keys())[:edits_per_session]
@@ -148,11 +150,11 @@ class QuantumBiologicSim:
                 })
                 status = "✓" if frob_ok else "✗"
                 delta = new - old
-                print(f"  {status} {gene}: {old:.2f}→{new:.2f} (Δ={delta:.2f}, target={target})")
+                info_line(f"  {status} {gene}: {old:.2f}→{new:.2f} (Δ={delta:.2f}, target={target})")
             
             # Update expression
             self.epigenome.compute_expression()
-            print(f"  Expression: {[f'{e:.2f}' for e in self.epigenome.expression]}")
+            info_line(f"  Expression: {[f'{e:.2f}' for e in self.epigenome.expression]}")
             
             # Record
             self.history['time'].append(week)
@@ -216,7 +218,7 @@ if __name__ == "__main__":
     sim.save_results()
     
     print("\n" + "=" * 60)
-    print("THERAPY COMPLETE")
+    info_line("THERAPY COMPLETE")
     print("=" * 60)
     print(f"Frobenius closure rate: {summary['frobenius_closure_rate']:.1f}%")
     print(f"Therapy efficacy: {summary['therapy_efficacy_pct']:.1f}%")
@@ -226,6 +228,6 @@ if __name__ == "__main__":
     print(f"Supervenience coupling active: {summary['supervenience_coupling_active']}")
     
     if summary['frobenius_closure_rate'] > 95:
-        print("\n✓ FROBENIUS CONDITION VERIFIED: μ∘δ=id holds for epigenetic edits")
+        info_line("\n✓ FROBENIUS CONDITION VERIFIED: μ∘δ=id holds for epigenetic edits")
     if summary['coherence_maintained']:
-        print("✓ NV CENTER COHERENCE MAINTAINED: NV-chromatin FRET coupling active")
+        info_line("✓ NV CENTER COHERENCE MAINTAINED: NV-chromatin FRET coupling active")

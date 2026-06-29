@@ -29,6 +29,7 @@ sys.path.insert(0, str(P4RA))
 sys.path.insert(0, str(IG))
 
 # ── Load pipeline internals ──────────────────────────────────
+from shared.rich_output import *
 from ch3mpiler_serpentrod_pipeline import (
     PNAMES, GLYPH_ORDINALS, ORD_TO_GLYPH, COMPLEMENTARY_PAIRS_V2,
     PRIMITIVE_TO_AA, AA_CODON_POOL_V2, STRUCTURAL_AAS_V2,
@@ -440,6 +441,7 @@ def output_json(all_sites: List[dict], fused: dict, enzyme: dict):
 
 def main():
     import argparse
+
     parser = argparse.ArgumentParser(
         description="PLASTIC_EATER — Broad-spectrum plastic-degrading enzyme design")
     parser.add_argument("--json", action="store_true", help="JSON output")
@@ -447,50 +449,50 @@ def main():
     args = parser.parse_args()
 
     print("═" * 66)
-    print("  PLASTIC_EATER — Broad-Spectrum Plastic-Degrading Enzyme")
-    print("  ch3mpiler ⟲ serpentrod Pipeline")
+    info_line("  PLASTIC_EATER — Broad-Spectrum Plastic-Degrading Enzyme")
+    info_line("  ch3mpiler ⟲ serpentrod Pipeline")
     print("═" * 66)
     print()
 
     # Phase 1: Design individual catalytic sites
-    print("Phase 1: Designing individual catalytic sites...")
+    info_line("Phase 1: Designing individual catalytic sites...")
     print("-" * 40)
     all_sites = []
     for plastic_name, bond, fg1, fg2, mech in PLASTIC_TARGETS:
         site = design_single_plastic_site(plastic_name, bond, fg1, fg2, mech)
         all_sites.append(site)
-        print(f"  ✓ {site['plastic']}")
-        print(f"    Bond: {site['bond']} | FG: {site['fg_pair']}")
-        print(f"    AA:   {''.join(site['aa_sequence'])}")
-        print(f"    RNA:  {site['rna_sequence']}")
-        print(f"    Pairs covered: {site['pairs_covered']}/6 "
-              f"(confidence: {site['confidence']:.2f})")
+        info_line(f"  ✓ {site['plastic']}")
+        info_line(f"    Bond: {site['bond']} | FG: {site['fg_pair']}")
+        info_line(f"    AA:   {''.join(site['aa_sequence'])}")
+        info_line(f"    RNA:  {site['rna_sequence']}")
+        info_line(f"    Pairs covered: {site['pairs_covered']}/6 "
+f"(confidence: {site['confidence']:.2f})")
         print()
 
     # Phase 2: Fuse multi-site structural type
-    print("Phase 2: Fusing multi-site structural type...")
+    info_line("Phase 2: Fusing multi-site structural type...")
     print("-" * 40)
     fused = fuse_multi_sites(all_sites)
-    print(f"  Sites fused: {fused['num_sites']}")
-    print(f"  MEET (shared floor):")
+    info_line(f"  Sites fused: {fused['num_sites']}")
+    info_line(f"  MEET (shared floor):")
     for p in PNAMES:
-        print(f"    {p}: {fused['meet_type'].get(p, '?')}")
-    print(f"  TENSOR (composite ceiling):")
+        info_line(f"    {p}: {fused['meet_type'].get(p, '?')}")
+    info_line(f"  TENSOR (composite ceiling):")
     for p in PNAMES:
-        print(f"    {p}: {fused['tensor_type'].get(p, '?')}")
+        info_line(f"    {p}: {fused['tensor_type'].get(p, '?')}")
     print()
 
     # Phase 3: Assemble multi-domain enzyme
-    print("Phase 3: Assembling multi-domain enzyme...")
+    info_line("Phase 3: Assembling multi-domain enzyme...")
     print("-" * 40)
     enzyme = assemble_multi_enzyme(fused)
-    print(f"  Architecture: {enzyme['architecture']}")
-    print(f"  Total AAs:    {enzyme['total_aa']}")
-    print(f"  Total RNA nt: {enzyme['total_rna_nt']}")
-    print(f"  MW:           ~{enzyme['molecular_weight_kda']} kDa")
+    info_line(f"  Architecture: {enzyme['architecture']}")
+    info_line(f"  Total AAs:    {enzyme['total_aa']}")
+    info_line(f"  Total RNA nt: {enzyme['total_rna_nt']}")
+    info_line(f"  MW:           ~{enzyme['molecular_weight_kda']} kDa")
     print()
     for d in enzyme["domains"]:
-        print(f"  {d['domain']}: AA {d['start_aa']}-{d['end_aa']} ({d['length']} res)")
+        info_line(f"  {d['domain']}: AA {d['start_aa']}-{d['end_aa']} ({d['length']} res)")
     print()
 
     # Phase 4: Output

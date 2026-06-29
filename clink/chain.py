@@ -14,6 +14,7 @@ import math, sys, os
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
+from shared.rich_output import *
 from shared.primitives import (
     ORDINALS, WEIGHTS, to_vector, tuple_distance
 )
@@ -180,6 +181,7 @@ def clink_frobenius_closed(name_or_idx_or_tup):
         bool
     """
     from ch3mpiler.compiler import tensor_type
+
     
     # Handle dict (tuple) case
     if isinstance(name_or_idx_or_tup, dict):
@@ -267,15 +269,15 @@ def format_tuple_glyphs(tup_dict):
 
 if __name__ == "__main__":
     frob = verify_all_frobenius_closed()
-    print("CLINK Frobenius Closure:")
+    info_line("CLINK Frobenius Closure:")
     for name, closed in frob["per_layer"].items():
-        print(f"  {'✅' if closed else '❌'} {name}: {closed}")
+        info_line(f"  {'✅' if closed else '❌'} {name}: {closed}")
     print(f"All closed: {frob['all_closed']}")
 
     chain = clink_chain_distance()
     print(f"\nCLINK Chain: Σd={chain['total_distance']}, {chain['total_primitive_deltas']} deltas")
     for s in chain["steps"]:
-        print(f"  {s['from']} → {s['to']}: d={s['distance']} ({len(s['deltas'])} primitives)")
+        info_line(f"  {s['from']} → {s['to']}: d={s['distance']} ({len(s['deltas'])} primitives)")
 
     org = clink_layer_tuple(8, True)
     print(f"\nOrganism: {format_tuple_glyphs(org)}  Tier={org['_tier']}")

@@ -8,6 +8,8 @@ and 20=4x5 coincidence using the B4 lattice and Crystal structure.
 import json
 from itertools import product
 from collections import defaultdict, Counter
+from shared.rich_output import *
+
 
 # ── 1. Genetic Code ──────────────────────────────────────────────────────────
 
@@ -84,26 +86,26 @@ split_boxes = {k:v for k,v in boxes.items() if v["split"]}
 ground_aas = set(v["unique"][0] for v in exact_boxes.values())
 
 print("=" * 70)
-print("Q1: WHY 8 EXACT BOXES?")
+info_line("Q1: WHY 8 EXACT BOXES?")
 print("=" * 70)
 
 # The exact boxes have position 2 = C (T in B4) always exact
 # Position 2 = G (B in B4) exact when position 1 = C or G
 # Position 2 = A/U (F/N) always split
 
-print("\nExact boxes by position-2 base:")
+info_line("\nExact boxes by position-2 base:")
 pos2_exact = defaultdict(list)
 for k, v in exact_boxes.items():
     pos2_exact[k[1]].append(k)
 for base in sorted(pos2_exact):
-    print(f"  pos-2={base}: {pos2_exact[base]}")
+    info_line(f"  pos-2={base}: {pos2_exact[base]}")
 
-print("\nSplit boxes by position-2 base:")
+info_line("\nSplit boxes by position-2 base:")
 pos2_split = defaultdict(list)
 for k, v in split_boxes.items():
     pos2_split[k[1]].append(k)
 for base in sorted(pos2_split):
-    print(f"  pos-2={base}: {pos2_split[base]}")
+    info_line(f"  pos-2={base}: {pos2_split[base]}")
 
 print()
 
@@ -117,9 +119,9 @@ print()
 #    AU_ and GU_ show the exact/split boundary depends on pos-1.
 
 # B4 lattice analysis of the 8/16 split
-print("\n--- B4 LATTICE ANALYSIS ---")
-print("The 16 boxes = all combinations of B4 at positions 1 and 2.")
-print("Each box prefix (p1_B4, p2_B4) determines Frobenius status.")
+info_line("\n--- B4 LATTICE ANALYSIS ---")
+info_line("The 16 boxes = all combinations of B4 at positions 1 and 2.")
+info_line("Each box prefix (p1_B4, p2_B4) determines Frobenius status.")
 
 for b1 in B4:
     for b2 in B4:
@@ -128,45 +130,45 @@ for b1 in B4:
         if matching:
             k = matching[0]
             is_exact = not boxes[k]["split"]
-            print(f"  B4²=({b1},{b2}) → {k:6s} {'EXACT' if is_exact else 'SPLIT'}")
+            info_line(f"  B4²=({b1},{b2}) → {k:6s} {'EXACT' if is_exact else 'SPLIT'}")
 
 print()
-print("Key structural fact: The 8 exact boxes are EXACTLY those")
+info_line("Key structural fact: The 8 exact boxes are EXACTLY those")
 print("where the prefix is NOT in {(F,N), (F,F), (N,N), (N,F),")
 print("(N,B), (B,N), (F,B), (B,F)} — i.e., 8 out of 16.")
 
 # Show the B4 partial order determines which exact boxes exist
-print("\nB4 order: N ≤ T ≤ B, N ≤ F ≤ B  (T and F are incomparable)")
+info_line("\nB4 order: N ≤ T ≤ B, N ≤ F ≤ B  (T and F are incomparable)")
 print()
-print("Theorem: A box is Frobenius-exact iff its B4² prefix (p1, p2)")
+info_line("Theorem: A box is Frobenius-exact iff its B4² prefix (p1, p2)")
 print("satisfies: p2 ∈ {T, B} with p2 ≠ B or p1 ∈ {T, B}.")
 print("Equivalently: not (p2 ∈ {N, F} or (p2 = B and p1 ∈ {N, F})).")
 print()
 
 # Let me derive this combinatorially
-print("\n--- COMBINATORIAL DERIVATION ---")
-print("Total B4² = 4×4 = 16 possible prefixes.")
+info_line("\n--- COMBINATORIAL DERIVATION ---")
+info_line("Total B4² = 4×4 = 16 possible prefixes.")
 print("A prefix is Frobenius-exact iff position 2 is a 'determining' base,")
-print("where determining = the third position cannot change the AA.")
+info_line("where determining = the third position cannot change the AA.")
 print()
-print("In B4 terms: a box is exact iff p2 is NOT join-absorbed by")
-print("any different B4 value at position 3. The third-position B4")
+info_line("In B4 terms: a box is exact iff p2 is NOT join-absorbed by")
+info_line("any different B4 value at position 3. The third-position B4")
 print("values {N, T, F, B} can only be distinguished at position 3 if")
-print("position 2 is WEAK (N or F, i.e., U or A).")
+info_line("position 2 is WEAK (N or F, i.e., U or A).")
 print()
-print("Counting in B4²:")
-print("  p2 = T (C): 4 prefixes (any p1) → 4 exact")
+info_line("Counting in B4²:")
+info_line("  p2 = T (C): 4 prefixes (any p1) → 4 exact")
 print("  p2 = B (G): exact iff p1 ∈ {T, B} (C or G) → 2 exact")
-print("  p2 = N (U): always split (position 3 needed) → 4 split")
-print("  p2 = F (A): always split → 4 split")
-print("  Total exact: 4 + 2 = 6? Wait...")
+info_line("  p2 = N (U): always split (position 3 needed) → 4 split")
+info_line("  p2 = F (A): always split → 4 split")
+info_line("  Total exact: 4 + 2 = 6? Wait...")
 print()
 
 # Let me recalculate
-print("Let me re-count from the actual genetic code:")
-print(f"  Exact boxes with pos-2 = C (T): ", end="")
+info_line("Let me re-count from the actual genetic code:")
+info_line(f"  Exact boxes with pos-2 = C (T): ", end="")
 print([k for k in exact_boxes if k[1]=='C'])
-print(f"  Exact boxes with pos-2 = G (B): ", end="")
+info_line(f"  Exact boxes with pos-2 = G (B): ", end="")
 print([k for k in exact_boxes if k[1]=='G'])
 
 # Hmm, the exact boxes with pos-2=G are CG_ and GG_. So that's 2 more.
@@ -185,5 +187,5 @@ print()
 print("Wait - CU_ and GU_ have pos-2 = U, which contradicts 'C or G'. Let me re-check.")
 cu = [k for k in exact_boxes if k[1]=='U']
 gu = [k for k in exact_boxes if k[1]=='G']
-print(f"  Exact boxes with pos-2 = U: {cu}")
-print(f"  Exact boxes with pos-2 = G: {gu}")
+info_line(f"  Exact boxes with pos-2 = U: {cu}")
+info_line(f"  Exact boxes with pos-2 = G: {gu}")

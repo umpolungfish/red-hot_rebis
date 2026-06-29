@@ -25,6 +25,7 @@ Author: Lando⊗⊙perator
 
 import math, os, sys
 from xml.sax.saxutils import escape
+from shared.rich_output import *
 
 try:
     from rdkit import Chem
@@ -474,7 +475,7 @@ def generate_reaction_cdxml(steps, out_path="reaction_scheme.cdxml",
     Returns: path to generated file, or None on failure.
     """
     if not HAS_RDKIT:
-        print("WARNING: RDKit not available. Cannot generate CDXML.")
+        info_line("WARNING: RDKit not available. Cannot generate CDXML.")
         return None
     
     global _TEXT_ID_COUNTER, _ATOM_Z_COUNTER, _BOND_Z_COUNTER
@@ -625,9 +626,9 @@ def generate_reaction_cdxml(steps, out_path="reaction_scheme.cdxml",
         with open(out_path, 'w', encoding='utf-8') as f:
             f.write(cdxml)
         print(f"CDXML written to: {out_path}")
-        print(f"  CDXML BoundingBox: {content_bbox}")
-        print(f"  Page: sentinel right edge, top={page_h}")
-        print(f"  Steps: {len(steps)}")
+        info_line(f"  CDXML BoundingBox: {content_bbox}")
+        info_line(f"  Page: sentinel right edge, top={page_h}")
+        info_line(f"  Steps: {len(steps)}")
         return out_path
     except Exception as e:
         print(f"ERROR writing CDXML: {e}")
@@ -651,6 +652,7 @@ def generate_reaction_scheme_simple(reactant_smiles, product_smiles,
 def main():
     """CLI: generate CDXML from SMILES or ch3mpiler path."""
     import argparse
+
     parser = argparse.ArgumentParser(description="Generate CDXML reaction schemes")
     parser.add_argument("--reactant", help="Reactant SMILES")
     parser.add_argument("--product", help="Product SMILES")
@@ -680,7 +682,7 @@ def main():
         generate_reaction_scheme_simple(args.reactant, args.product, args.output, args.title)
     else:
         # Demo: aspirin synthesis
-        print("Demo: Aspirin synthesis (salicylic acid -> aspirin)")
+        info_line("Demo: Aspirin synthesis (salicylic acid -> aspirin)")
         steps = [{
             'step': 1,
             'bond': 'ester_link',

@@ -14,6 +14,8 @@ MORPHOGENESIS: v4 (proven 100% fill — maturing Wnt source + deterministic colo
 import numpy as np
 import json, math
 from pathlib import Path
+from shared.rich_output import *
+
 
 class OuroboricCellSim:
     def __init__(self, genome_size_bp=531000, n_genes=50, n_adaptive_loci=20):
@@ -101,10 +103,10 @@ class OuroboricCellSim:
 
     def run_evolution(self, generations=500):
         print("=" * 60)
-        print("OUROBORIC CELL — Self-Writing Genome (Frobenius-Exact v6)")
+        info_line("OUROBORIC CELL — Self-Writing Genome (Frobenius-Exact v6)")
         print("=" * 60)
-        print("  Environment: matures → locks at 0.6 (discrete, gen 150)")
-        print("  Snap-to-target: |error| < 1e-4 → expression = target exactly")
+        info_line("  Environment: matures → locks at 0.6 (discrete, gen 150)")
+        info_line("  Snap-to-target: |error| < 1e-4 → expression = target exactly")
         zero_edit_streak = 0
         for gen in range(generations):
             edits, fitness = self.run_generation()
@@ -116,9 +118,9 @@ class OuroboricCellSim:
                 edited_pct = np.sum(self.genome) / self.n_genes * 100
                 env = self.environment_signal
                 lock = "LOCKED" if self.env_locked else "maturing"
-                print(f"  Gen {gen:4d} | Fit: {fitness:.15f} | Edits: {len(edits):2d} | Env: {env:.6f} [{lock}] | Streak: {zero_edit_streak}")
+                info_line(f"  Gen {gen:4d} | Fit: {fitness:.15f} | Edits: {len(edits):2d} | Env: {env:.6f} [{lock}] | Streak: {zero_edit_streak}")
             if zero_edit_streak >= 30:
-                print(f"  >>> Frobenius fixed point: 30-gen zero-edit streak at gen {gen} <<<")
+                info_line(f"  >>> Frobenius fixed point: 30-gen zero-edit streak at gen {gen} <<<")
                 break
         return self.summarize()
 
@@ -252,9 +254,9 @@ class TopologicalMorphogenesisSim:
         self.time += dt
 
     def run(self, steps=1200):
-        print("\n--- Topological Morphogenesis (v4 — 100% fill proven) ---")
+        info_line("\n--- Topological Morphogenesis (v4 — 100% fill proven) ---")
         self.initialize_seed()
-        print(f"  Initial seeded cells: {np.sum(self.cell_density):.0f}")
+        info_line(f"  Initial seeded cells: {np.sum(self.cell_density):.0f}")
 
         for i in range(steps):
             maturity = min(1.0, i / (steps * 0.7))
@@ -264,7 +266,7 @@ class TopologicalMorphogenesisSim:
                 max_d = np.max(self.cell_density)
                 mean_d = np.mean(self.cell_density)
                 filled = np.sum(self.cell_density > 0.1) / (self.grid_size**2) * 100
-                print(f"  t={t:5.1f} | mat={maturity:.2f} | max={max_d:.3f} | mean={mean_d:.3f} | fill={filled:5.1f}%")
+                info_line(f"  t={t:5.1f} | mat={maturity:.2f} | max={max_d:.3f} | mean={mean_d:.3f} | fill={filled:5.1f}%")
 
         max_density = float(np.max(self.cell_density))
         mean_density = float(np.mean(self.cell_density))
@@ -284,18 +286,18 @@ if __name__ == "__main__":
     np.random.seed(42)
 
     print("=" * 60)
-    print("FROBENIUS-EXACT OUROBORIC CELL + MORPHOGENESIS (v6)")
+    info_line("FROBENIUS-EXACT OUROBORIC CELL + MORPHOGENESIS (v6)")
     print("=" * 60)
 
     cell = OuroboricCellSim(n_genes=50, n_adaptive_loci=20)
     cell_summary = cell.run_evolution(generations=500)
 
     print(f"\n  GENOME VERDICT:")
-    print(f"  Final fitness: {cell_summary['final_fitness']:.15f}")
-    print(f"  Max expression residual: {cell_summary['max_expression_residual']:.2e}")
-    print(f"  Final edits: {cell_summary['final_edits']}")
-    print(f"  Environment locked: {cell_summary['env_locked']}")
-    print(f"  Frobenius exact: {cell_summary['frobenius_exact']}")
+    info_line(f"  Final fitness: {cell_summary['final_fitness']:.15f}")
+    info_line(f"  Max expression residual: {cell_summary['max_expression_residual']:.2e}")
+    info_line(f"  Final edits: {cell_summary['final_edits']}")
+    info_line(f"  Environment locked: {cell_summary['env_locked']}")
+    info_line(f"  Frobenius exact: {cell_summary['frobenius_exact']}")
 
     morph = TopologicalMorphogenesisSim(grid_size=64)
     morph_summary = morph.run(steps=1200)

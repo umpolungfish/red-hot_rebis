@@ -26,6 +26,8 @@ from __future__ import annotations
 from typing import Dict, List, Optional, Tuple, Any
 from collections import Counter, defaultdict
 import math
+from shared.rich_output import *
+
 
 # ─━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # 1. CANONICAL UNICODE MAPPING (disambiguated naming)
@@ -890,13 +892,13 @@ def print_tup(stage: str, tup: Dict[str, str]) -> None:
     for prim in ["Ð", "Þ", "Ř", "Φ", "ƒ", "Ç", "Γ", "ɢ", "⊙", "Ħ", "Σ", "Ω"]:
         char = tup[prim]
         name = prim_value_name(prim, char)
-        print(f"    {prim}: {char}  ({name})")
+        info_line(f"    {prim}: {char}  ({name})")
 
 
 def demo_all_12() -> None:
     """Demo with the 'all-12' sequence (one of each promoted AA)."""
     print("=" * 60)
-    print("DEMO 1: All-12 Sequence (one of each promoted AA)")
+    info_line("DEMO 1: All-12 Sequence (one of each promoted AA)")
     print("=" * 60)
     
     all_12_aas = ["Met", "Trp", "Cys", "Tyr", "Phe", "Ile",
@@ -910,23 +912,23 @@ def demo_all_12() -> None:
     for stage in _PIPELINE_STAGES:
         print_tup(stage, generated[stage])
     
-    print("\n--- Verification ---")
+    info_line("\n--- Verification ---")
     result = verify_pathway(generated)
-    print(f"  All pass: {result['all_pass']}")
-    print(f"  Pass/Fail: {result['n_pass']}/{result['n_fail']}")
+    info_line(f"  All pass: {result['all_pass']}")
+    info_line(f"  Pass/Fail: {result['n_pass']}/{result['n_fail']}")
     for sr in result["stage_results"]:
         status = "✓" if sr["all_pass"] else "✗"
-        print(f"  [{status}] {sr['stage']}")
+        info_line(f"  [{status}] {sr['stage']}")
         for check_name, check in sr["checks"].items():
             if not check["pass"]:
-                print(f"      {check_name}: {check['message']}")
+                info_line(f"      {check_name}: {check['message']}")
             elif check["message"] != "OK":
-                print(f"      {check_name}: {check['message']}")
+                info_line(f"      {check_name}: {check['message']}")
     
     if result["regressions"]:
         print(f"\n  Unwarranted regressions: {len(result['regressions'])}")
         for r in result["regressions"]:
-            print(f"    {r['primitive']}: {r['from_value']} → {r['to_value']} ({r['from_stage']}→{r['to_stage']})")
+            info_line(f"    {r['primitive']}: {r['from_value']} → {r['to_value']} ({r['from_stage']}→{r['to_stage']})")
     else:
         print(f"\n  No unwarranted regressions.")
     
@@ -939,7 +941,7 @@ def demo_all_12() -> None:
 def demo_his_rich() -> None:
     """Demo His-rich sequence → φ̂=c gate fires."""
     print("\n" + "=" * 60)
-    print("DEMO 2: His-Rich Sequence (≥3 His at loops → φ̂=c)")
+    info_line("DEMO 2: His-Rich Sequence (≥3 His at loops → φ̂=c)")
     print("=" * 60)
     
     his_rich = ["His", "His", "Gly", "His", "Ala", "His", "Val", "His"]
@@ -949,22 +951,22 @@ def demo_his_rich() -> None:
     features = extract_features_from_sequence(seq)
     
     crit = features["secondary_structure"]["criticality"]
-    print(f"  His at loops: {crit['his_at_loops']}")
-    print(f"  Pro at turns: {crit['pro_at_turns']}")
-    print(f"  φ̂=c gate fires: {crit['phi_c_gate_fires']}")
-    print(f"  Pro absorption active: {crit['pro_absorption_active']}")
+    info_line(f"  His at loops: {crit['his_at_loops']}")
+    info_line(f"  Pro at turns: {crit['pro_at_turns']}")
+    info_line(f"  φ̂=c gate fires: {crit['phi_c_gate_fires']}")
+    info_line(f"  Pro absorption active: {crit['pro_absorption_active']}")
     
     generated = generate_all_tuples(features)
     for stage in ["secondary_structure", "tertiary_structure", "quaternary_structure"]:
         phi_char = generated[stage]["⊙"]
         phi_name = prim_value_name("⊙", phi_char)
-        print(f"  {stage}: Phi={phi_char} ({phi_name})")
+        info_line(f"  {stage}: Phi={phi_char} ({phi_name})")
 
 
 def demo_pro_absorption() -> None:
     """Demo Pro absorption: tensor(⊙_ÿ, ⊙_3)=⊙_3."""
     print("\n" + "=" * 60)
-    print("DEMO 3: Pro Absorption (His+Pro → φ̂=EP)")
+    info_line("DEMO 3: Pro Absorption (His+Pro → φ̂=EP)")
     print("=" * 60)
     
     his_pro = ["His", "Pro", "His", "Pro", "His", "Gly", "His", "Ala"]
@@ -974,27 +976,27 @@ def demo_pro_absorption() -> None:
     features = extract_features_from_sequence(seq)
     
     crit = features["secondary_structure"]["criticality"]
-    print(f"  His at loops: {crit['his_at_loops']}")
-    print(f"  Pro at turns: {crit['pro_at_turns']}")
-    print(f"  Pro absorption active: {crit['pro_absorption_active']}")
+    info_line(f"  His at loops: {crit['his_at_loops']}")
+    info_line(f"  Pro at turns: {crit['pro_at_turns']}")
+    info_line(f"  Pro absorption active: {crit['pro_absorption_active']}")
     
     generated = generate_all_tuples(features)
     for stage in ["secondary_structure", "tertiary_structure", "quaternary_structure"]:
         phi_char = generated[stage]["⊙"]
         phi_name = prim_value_name("⊙", phi_char)
-        print(f"  {stage}: Phi={phi_char} ({phi_name})")
+        info_line(f"  {stage}: Phi={phi_char} ({phi_name})")
     
     # Verify EP absorption
     for stage in ["secondary_structure", "tertiary_structure"]:
         assert prim_value_name("⊙", generated[stage]["⊙"]) == "EP", \
             f"Expected EP for {stage}, got {prim_value_name('Phi', generated[stage]['Phi'])}"
-    print("  ✓ Pro absorption confirmed: φ̂=EP in folding stages")
+    info_line("  ✓ Pro absorption confirmed: φ̂=EP in folding stages")
 
 
 def demo_poly_phe() -> None:
     """Demo poly-Phe sequence (all ƒ, no diversity)."""
     print("\n" + "=" * 60)
-    print("DEMO 4: Poly-Phe (all ƒ, minimal diversity)")
+    info_line("DEMO 4: Poly-Phe (all ƒ, minimal diversity)")
     print("=" * 60)
     
     poly_phe = ["Phe"] * 12
@@ -1009,13 +1011,13 @@ def demo_poly_phe() -> None:
     
     result = verify_pathway(generated)
     print(f"\n  All pass: {result['all_pass']}")
-    print(f"  Pass/Fail: {result['n_pass']}/{result['n_fail']}")
+    info_line(f"  Pass/Fail: {result['n_pass']}/{result['n_fail']}")
 
 
 def demo_gcn4_leucine_zipper() -> None:
     """Demo GCN4 leucine zipper (dimer → Z2)."""
     print("\n" + "=" * 60)
-    print("DEMO 5: GCN4 Leucine Zipper (dimer → Ω=Z2)")
+    info_line("DEMO 5: GCN4 Leucine Zipper (dimer → Ω=Z2)")
     print("=" * 60)
     
     # GCN4 coiled-coil dimer sequence (simplified heptad repeats)
@@ -1037,13 +1039,13 @@ def demo_gcn4_leucine_zipper() -> None:
     o_name = prim_value_name("Ω", o_char)
     print(f"\n  Ω = {o_char} ({o_name}) — dimer Z2 parity protection")
     assert o_name == "Z2", f"Expected Z2 for dimer, got {o_name}"
-    print("  ✓ Dimer confirmed: Ω=Z2")
+    info_line("  ✓ Dimer confirmed: Ω=Z2")
 
 
 def demo_geometric_suppression() -> None:
     """Demo Pro-rich geometric suppression."""
     print("\n" + "=" * 60)
-    print("DEMO 6: Geometric Suppression (Pro-rich → His displaced)")
+    info_line("DEMO 6: Geometric Suppression (Pro-rich → His displaced)")
     print("=" * 60)
     
     pro_rich = ["Pro", "Pro", "Pro", "His", "Pro", "Pro", "His", "Pro"]
@@ -1053,21 +1055,21 @@ def demo_geometric_suppression() -> None:
     features = extract_features_from_sequence(seq)
     
     crit = features["secondary_structure"]["criticality"]
-    print(f"  His at loops: {crit['his_at_loops']}")
-    print(f"  Total His: {crit['total_his']}")
-    print(f"  Total Pro: {crit['total_pro']}")
-    print(f"  Geometric suppression: {crit['geometric_suppression']}")
-    print(f"  φ̂=c gate fires: {crit['phi_c_gate_fires']}")
+    info_line(f"  His at loops: {crit['his_at_loops']}")
+    info_line(f"  Total His: {crit['total_his']}")
+    info_line(f"  Total Pro: {crit['total_pro']}")
+    info_line(f"  Geometric suppression: {crit['geometric_suppression']}")
+    info_line(f"  φ̂=c gate fires: {crit['phi_c_gate_fires']}")
 
 
 if __name__ == "__main__":
     print("=" * 60)
-    print("GENETIC TUPLES v0.6.0 — Sequence-Driven Structural Imscription")
+    info_line("GENETIC TUPLES v0.6.0 — Sequence-Driven Structural Imscription")
     print("=" * 60)
-    print("Three Resolutions:")
-    print("  1. AXIOM C: T=bowtie (not T=odot) for protein structures")
-    print("  2. MAPPING: His→⊙ (criticality), Gln→Γ (grammar)")
-    print("  3. φ̂=c GATE with Pro absorption: tensor(⊙_ÿ, ⊙_3)=⊙_3")
+    info_line("Three Resolutions:")
+    info_line("  1. AXIOM C: T=bowtie (not T=odot) for protein structures")
+    info_line("  2. MAPPING: His→⊙ (criticality), Gln→Γ (grammar)")
+    info_line("  3. φ̂=c GATE with Pro absorption: tensor(⊙_ÿ, ⊙_3)=⊙_3")
     print("=" * 60)
     
     demo_all_12()
@@ -1078,5 +1080,5 @@ if __name__ == "__main__":
     demo_geometric_suppression()
     
     print("\n" + "=" * 60)
-    print("ALL DEMOS COMPLETE — All three resolutions verified.")
+    info_line("ALL DEMOS COMPLETE — All three resolutions verified.")
     print("=" * 60)

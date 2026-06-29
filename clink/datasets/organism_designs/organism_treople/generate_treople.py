@@ -38,6 +38,7 @@ import sys
 import argparse
 import textwrap
 from pathlib import Path
+from shared.rich_output import *
 
 REBIS_ROOT = Path(__file__).parent.parent.parent.parent.parent.absolute()
 sys.path.insert(0, str(REBIS_ROOT))
@@ -836,19 +837,20 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
     out_path = Path(output_dir)
 
     print("=" * 70)
-    print("CLINK TREOPLE (Homo arboreus) DESIGN PIPELINE")
+    info_line("CLINK TREOPLE (Homo arboreus) DESIGN PIPELINE")
     print(f"Homo arboreus — {TREOPLE_TYPE}  O_∞  C=1.0")
-    print("ZFC_fe foundation: μ∘δ=id at every layer")
+    info_line("ZFC_fe foundation: μ∘δ=id at every layer")
     print(f"Base human type:   {HUMAN_TYPE}")
     print(f"Photo human type:  {PHOTO_TYPE}")
     print(f"Treople type:      {TREOPLE_TYPE}")
-    print("Modified: Ħ(𐑸→𐑻)  Ω(𐑾→𐑽)  Ð(𐑹→𐑺)  Σ(𐑐→𐑕)  Φ(𐑧→𐑤)  Þ(𐑳→𐑪)")
-    print("Arc: Elysia → photosynthetic human → Homo arboreus")
+    info_line("Modified: Ħ(𐑸→𐑻)  Ω(𐑾→𐑽)  Ð(𐑹→𐑺)  Σ(𐑐→𐑕)  Φ(𐑧→𐑤)  Þ(𐑳→𐑪)")
+    info_line("Arc: Elysia → photosynthetic human → Homo arboreus")
     print("=" * 70)
 
     from clink.datasets.generators import generate_actionable_organism_package
+
     base_dir = str(out_path / "_base_human")
-    print("\nGenerating base human package...")
+    info_line("\nGenerating base human package...")
     base_manifest = generate_actionable_organism_package(
         organism_type="human",
         output_dir=base_dir,
@@ -867,7 +869,7 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
     venation_dir = out_path / "L_venation_pattern"
     venation_dir.mkdir(exist_ok=True)
 
-    print("\nApplying treople augmentation...")
+    info_line("\nApplying treople augmentation...")
 
     # L4: CesA rosette + laccase PDB + protein registry
     (layer_dirs[4] / "CesA_rosette_LAC17_structure.pdb").write_text(_cesa_laccase_pdb())
@@ -897,7 +899,7 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
     (layer_dirs[6] / "cambium_division_spec.json").write_text(json.dumps(cambium_spec, indent=2))
 
     # L7: venation pattern + tissue architecture
-    print("  Computing leaf venation Turing pattern (branching regime, Gray-Scott)...")
+    info_line("  Computing leaf venation Turing pattern (branching regime, Gray-Scott)...")
     pattern = _venation_pattern(width=80, height=40, steps=8000)
     (layer_dirs[7] / "skin_venation_pattern.json").write_text(json.dumps(pattern, indent=2))
     (layer_dirs[7] / "skin_venation.svg").write_text(_venation_svg(pattern))

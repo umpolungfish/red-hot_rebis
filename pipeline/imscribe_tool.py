@@ -37,6 +37,7 @@ from imscrbgrmr.thermodynamics import compute_xi_CP
 from imscrbgrmr.varma_probe import VarmaCorrelationData, score_phi_c_candidacy
 from imscrbgrmr.domains.molecular import register_molecular_imscriptions
 from imscrbgrmr.domains.quantum import register_quantum_imscriptions
+from shared.rich_output import *
 
 register_molecular_imscriptions()
 register_quantum_imscriptions()
@@ -380,19 +381,20 @@ IG_TOOL_SCHEMA = {
 
 if __name__ == "__main__":
     import sys
+
     name = sys.argv[1] if len(sys.argv) > 1 else "allosteric_domain"
 
-    print("=== distance ===")
+    info_line("=== distance ===")
     r = IGTool.distance("allosteric_domain", "active_site")
     print(r.to_json())
 
-    print("\n=== criticality ===")
+    info_line("\n=== criticality ===")
     r = IGTool.criticality("allosteric_domain", xi_r=8.5, xi_tau=1e10)
     print(r.to_json())
 
-    print("\n=== analogies ===")
+    info_line("\n=== analogies ===")
     r = IGTool.analogies("allosteric_domain", limit=3)
     print(r.to_json())
 
-    print("\n=== TOOL SCHEMA (first 300 chars) ===")
+    info_line("\n=== TOOL SCHEMA (first 300 chars) ===")
     print(json.dumps(IG_TOOL_SCHEMA)[:300])

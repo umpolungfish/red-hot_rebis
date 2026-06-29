@@ -28,7 +28,7 @@ if '--help' in _sys.argv or '-h' in _sys.argv:
     _doc = __doc__.strip() if __doc__ else "rhr_p4rky/quark_belnap.py"
     print(_doc)
     print()
-    print("Examples:")
+    info_line("Examples:")
     print(_HELP_EXAMPLES)
     print()
     _sys.exit(0)
@@ -41,6 +41,8 @@ from enum import Enum
 from typing import Optional, Tuple
 
 from orbital_belnap import OrbitalState, occupancy_le, pair
+from shared.rich_output import *
+
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -245,6 +247,6 @@ def test_quark_belnap() -> None:
     for s in OrbitalState:
         assert orb_pair_self(s)
 
-    print("✅ quark_belnap.py: all tests pass")
+    info_line("✅ quark_belnap.py: all tests pass")
 if __name__ == "__main__":
     test_quark_belnap()

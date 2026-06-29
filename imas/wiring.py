@@ -23,6 +23,7 @@ from enum import Enum
 import itertools
 
 from imas.arranger import Token, TOKEN_NAMES, TOKEN_COUNT
+from shared.rich_output import *
 
 
 # ============================================================================
@@ -535,6 +536,7 @@ def token_multiset_compositions(multiset: Dict[int, int]) -> int:
     
     # Catalan number for non-crossing pairings with min(n_fsplit, n_ffuse)
     import math
+
     k = min(n_fsplit, n_ffuse)
     catalan = math.comb(2*k, k) // (k + 1)
     

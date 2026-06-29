@@ -2,6 +2,8 @@
 """Extract phi/psi from crystal structure PDBs for comparison."""
 import sys, json, math, os
 from pathlib import Path
+from shared.rich_output import *
+
 
 OUT = Path(__file__).parent
 
@@ -146,9 +148,9 @@ for pdb_name, pdb_file in [('1LYZ', '1LYZ.pdb'), ('3I40', '3I40.pdb'), ('2Y0G', 
         phis = [v['phi'] for v in phipsi.values() if v['phi'] is not None]
         psis = [v['psi'] for v in phipsi.values() if v['psi'] is not None]
         if phis:
-            print(f"  {chain}: {len(chain_keys)} res, phi mean={sum(phis)/len(phis):.1f}, psi mean={sum(psis)/len(psis):.1f}")
+            info_line(f"  {chain}: {len(chain_keys)} res, phi mean={sum(phis)/len(phis):.1f}, psi mean={sum(psis)/len(psis):.1f}")
         else:
-            print(f"  {chain}: {len(chain_keys)} res (no dihedrals)")
+            info_line(f"  {chain}: {len(chain_keys)} res (no dihedrals)")
 
 with open(OUT / 'crystal_phipsi.json', 'w') as f:
     json.dump(results, f, indent=2)

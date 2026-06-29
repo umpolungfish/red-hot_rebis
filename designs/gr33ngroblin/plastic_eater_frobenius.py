@@ -38,7 +38,9 @@ from ch3mpiler_serpentrod_pipeline import (
     fuse_reaction_types, complement_type_v2, glyph_ord, ord_to_glyph,
 )
 
+from shared.rich_output import *
 from plastic_eater_design import (
+
     ALL_BOND_TYPES, ALL_FG, PLASTIC_TARGETS,
     LINKER_AA, LINKER_CODONS, SIGNAL_AA, SIGNAL_CODONS,
     HIS_TAG_AA, HIS_TAG_CODONS, CH3_BOND_TYPES, CH3_FG,
@@ -352,7 +354,7 @@ def main():
     
     for cat_name, cat_info in CATALYST_GROUPS.items():
         print(f"\n{'='*60}")
-        print(f"  Designing {cat_name}: {cat_info['description']}")
+        info_line(f"  Designing {cat_name}: {cat_info['description']}")
         print(f"{'='*60}")
         
         site_designs = []
@@ -361,14 +363,14 @@ def main():
                 plastic_name, bond_name, fg1_name, fg2_name, mechanism)
             site_designs.append(site)
             all_sites_flat.append(site)
-            print(f"  {plastic_name}: pairs={site['pairs_covered']}/6  "
-                  f"AA={site['aa_sequence']}  "
+            info_line(f"  {plastic_name}: pairs={site['pairs_covered']}/6  "
+f"AA={site['aa_sequence']}  "
                   f"activated={site['activated_primitives']}")
         
         catalyst = assemble_catalyst(cat_name, cat_info, site_designs)
         all_catalysts.append(catalyst)
-        print(f"  -> Catalyst: {catalyst['total_aa']} AA, "
-              f"{catalyst['molecular_weight_kda']} kDa, "
+        info_line(f"  -> Catalyst: {catalyst['total_aa']} AA, "
+f"{catalyst['molecular_weight_kda']} kDa, "
               f"{catalyst['num_domains']} domains")
     
     # Generate report
@@ -391,20 +393,20 @@ def main():
     
     # Summary
     print(f"\n{'='*60}")
-    print(f"  FROBENIUS-EXACT DESIGN COMPLETE")
+    info_line(f"  FROBENIUS-EXACT DESIGN COMPLETE")
     print(f"{'='*60}")
-    print(f"  Catalysts: {len(all_catalysts)}")
+    info_line(f"  Catalysts: {len(all_catalysts)}")
     for cat in all_catalysts:
-        print(f"    {cat['catalyst_name']}: {', '.join(cat['target_plastics'])}")
-        print(f"      AA: {cat['aa_sequence'][:40]}...")
-        print(f"      Domains: {cat['num_domains']}, {cat['total_aa']} AA, {cat['molecular_weight_kda']} kDa")
+        info_line(f"    {cat['catalyst_name']}: {', '.join(cat['target_plastics'])}")
+        info_line(f"      AA: {cat['aa_sequence'][:40]}...")
+        info_line(f"      Domains: {cat['num_domains']}, {cat['total_aa']} AA, {cat['molecular_weight_kda']} kDa")
     
     # Verify all 6/6
     all_ok = all(s["pairs_covered"] == 6 for s in all_sites_flat)
     unique_aas = len(set(s["aa_sequence"] for s in all_sites_flat))
     print(f"\n  All sites Frobenius-exact (6/6): {all_ok}")
-    print(f"  Unique AA sequences: {unique_aas}/6")
-    print(f"  Pipeline: v2 complement + dominant-member rule")
+    info_line(f"  Unique AA sequences: {unique_aas}/6")
+    info_line(f"  Pipeline: v2 complement + dominant-member rule")
     
     return all_catalysts
 

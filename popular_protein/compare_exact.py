@@ -2,6 +2,8 @@
 """Compare exact platonic folds against crystal structures."""
 import json, math, sys, os, numpy as np
 from pathlib import Path
+from shared.rich_output import *
+
 
 OUT = Path(__file__).parent
 
@@ -84,7 +86,7 @@ for name, (pdb_file, chain, n_expected) in CRYSTAL_MAP.items():
     
     # Exact CA
     exact_ca = parse_exact_ca(exact_data[name])
-    print(f"  exact: {len(exact_ca)} CA")
+    info_line(f"  exact: {len(exact_ca)} CA")
     
     # Trim to matching length
     n = min(len(exact_ca), len(crystal_ca), n_expected)
@@ -92,7 +94,7 @@ for name, (pdb_file, chain, n_expected) in CRYSTAL_MAP.items():
     crystal_ca_n = crystal_ca[:n]
     
     if n < 5:
-        print(f"  SKIP: too few residues ({n})")
+        info_line(f"  SKIP: too few residues ({n})")
         continue
     
     # Kabsch RMSD
@@ -129,20 +131,20 @@ for name, (pdb_file, chain, n_expected) in CRYSTAL_MAP.items():
     }
     
     results[name] = result
-    print(f"  Kabsch RMSD: {rmsd:.2f} Å")
-    print(f"  Mean per-res: {np.mean(per_res):.2f} Å")
-    print(f"  Old RMSD: {old_rmsd} Å")
+    info_line(f"  Kabsch RMSD: {rmsd:.2f} Å")
+    info_line(f"  Mean per-res: {np.mean(per_res):.2f} Å")
+    info_line(f"  Old RMSD: {old_rmsd} Å")
     if old_rmsd:
         improvement = old_rmsd - rmsd
         pct = 100 * improvement / old_rmsd
-        print(f"  Improvement: {improvement:.2f} Å ({pct:.1f}%)")
+        info_line(f"  Improvement: {improvement:.2f} Å ({pct:.1f}%)")
     if phi_diffs:
-        print(f"  φ mean diff: {np.mean(phi_diffs):.1f}°")
+        info_line(f"  φ mean diff: {np.mean(phi_diffs):.1f}°")
     if psi_diffs:
-        print(f"  ψ mean diff: {np.mean(psi_diffs):.1f}°")
+        info_line(f"  ψ mean diff: {np.mean(psi_diffs):.1f}°")
 
 # Also handle small peptides — compare old canonical vs new exact
-print("\n--- Small Peptides (no crystal) ---")
+info_line("\n--- Small Peptides (no crystal) ---")
 for name in ['acth', 'beta_endorphin', 'alpha_msh']:
     if name not in exact_data:
         continue

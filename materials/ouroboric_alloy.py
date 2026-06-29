@@ -41,6 +41,7 @@ import numpy as np
 import json
 from dataclasses import dataclass
 from typing import List, Tuple, Dict
+from shared.rich_output import *
 
 # ═══════════════════════════════════════════════════════════════════
 # GRAIN BOUNDARY TOPOLOGY
@@ -296,18 +297,18 @@ class OuroboricAlloy:
         healing driven by topological winding conservation.
         """
         print("=" * 72)
-        print("  OUROBORIC ALLOY — Topological Self-Healing HEA")
+        info_line("  OUROBORIC ALLOY — Topological Self-Healing HEA")
         print("=" * 72)
-        print(f"  Composition: {self.composition}")
-        print(f"  Grains: {self.network.n_grains}")
-        print(f"  Junctions: {self.network.n_junctions}")
-        print(f"  Topological winding W₀: {self.W0}")
-        print(f"  Yield strength: {self.yield_strength_MPa} MPa")
-        print(f"  Σ3 fraction: {self.sigma3_fraction*100:.0f}%")
-        print(f"  Stress amplitude: {stress_amplitude_MPa} MPa")
+        info_line(f"  Composition: {self.composition}")
+        info_line(f"  Grains: {self.network.n_grains}")
+        info_line(f"  Junctions: {self.network.n_junctions}")
+        info_line(f"  Topological winding W₀: {self.W0}")
+        info_line(f"  Yield strength: {self.yield_strength_MPa} MPa")
+        info_line(f"  Σ3 fraction: {self.sigma3_fraction*100:.0f}%")
+        info_line(f"  Stress amplitude: {stress_amplitude_MPa} MPa")
         print("-" * 72)
-        print(f"  {'Cycle':>5} {'Stress':>8} {'Crack':>10} {'Heal':>10} {'W':>5} {'Status'}")
-        print(f"  {'-'*5} {'-'*8} {'-'*10} {'-'*10} {'-'*5} {'-'*12}")
+        info_line(f"  {'Cycle':>5} {'Stress':>8} {'Crack':>10} {'Heal':>10} {'W':>5} {'Status'}")
+        info_line(f"  {'-'*5} {'-'*8} {'-'*10} {'-'*10} {'-'*5} {'-'*12}")
 
         for cycle in range(1, cycles + 1):
             # Apply stress
@@ -332,24 +333,24 @@ class OuroboricAlloy:
             elif self.crack_length_um > 0:
                 status = "GROWING"
 
-            print(f"  {cycle:5d} {stress_amplitude_MPa:8.0f} {self.crack_length_um:10.3f} "
-                  f"{healed_this_cycle:10.3f} {W:5d} {status:>12} {winding_ok}")
+            info_line(f"  {cycle:5d} {stress_amplitude_MPa:8.0f} {self.crack_length_um:10.3f} "
+f"{healed_this_cycle:10.3f} {W:5d} {status:>12} {winding_ok}")
 
         # Final report
         print(f"\n{'='*72}")
-        print(f"  RESULTS")
+        info_line(f"  RESULTS")
         print(f"{'='*72}")
-        print(f"  Final crack length: {self.crack_length_um:.4f} μm")
-        print(f"  Total healing cycles: {self.healing_cycles_completed}")
-        print(f"  Winding conserved: {all(w == self.W0 for w in self.winding_history)}")
-        print(f"  Topological invariant: {'PRESERVED' if self.network.total_winding() == self.W0 else 'BROKEN'}")
-        print(f"  Damaged boundaries: {sum(1 for b in self.network.boundaries.values() if b.state == 'damaged')}")
-        print(f"  Healed boundaries:  {sum(1 for b in self.network.boundaries.values() if b.state == 'healed')}")
+        info_line(f"  Final crack length: {self.crack_length_um:.4f} μm")
+        info_line(f"  Total healing cycles: {self.healing_cycles_completed}")
+        info_line(f"  Winding conserved: {all(w == self.W0 for w in self.winding_history)}")
+        info_line(f"  Topological invariant: {'PRESERVED' if self.network.total_winding() == self.W0 else 'BROKEN'}")
+        info_line(f"  Damaged boundaries: {sum(1 for b in self.network.boundaries.values() if b.state == 'damaged')}")
+        info_line(f"  Healed boundaries:  {sum(1 for b in self.network.boundaries.values() if b.state == 'healed')}")
 
         # Fatigue life comparison
         if self.crack_length_um < 0.1:
             print(f"\n  FATIGUE LIFE: > {cycles} cycles (crack arrested)")
-            print(f"  Compared to conventional HEA: > 10x improvement")
+            info_line(f"  Compared to conventional HEA: > 10x improvement")
         elif self.crack_length_um < 1.0:
             print(f"\n  FATIGUE LIFE: ~{cycles} cycles (slow crack growth)")
         else:
@@ -386,7 +387,7 @@ def compare_with_conventional():
     under identical stress conditions.
     """
     print("\n" + "=" * 72)
-    print("  COMPARATIVE ANALYSIS: Ouroboric vs Conventional HEA")
+    info_line("  COMPARATIVE ANALYSIS: Ouroboric vs Conventional HEA")
     print("=" * 72)
 
     # Ouroboric
@@ -404,11 +405,11 @@ def compare_with_conventional():
         conv.apply_stress(800, cycles=1)
 
     print(f"\n  Conventional HEA final crack: {conv.crack_length_um:.3f} μm")
-    print(f"  Ouroboric HEA final crack:   {ouro.crack_length_um:.3f} μm")
+    info_line(f"  Ouroboric HEA final crack:   {ouro.crack_length_um:.3f} μm")
     if conv.crack_length_um > 0:
         improvement = conv.crack_length_um / max(ouro.crack_length_um, 1e-9)
-        print(f"  Improvement factor: {improvement:.1f}x")
-    print(f"  Winding conserved (ouroboric): {all(w == ouro.W0 for w in ouro.winding_history)}")
+        info_line(f"  Improvement factor: {improvement:.1f}x")
+    info_line(f"  Winding conserved (ouroboric): {all(w == ouro.W0 for w in ouro.winding_history)}")
 
 
 # ═══════════════════════════════════════════════════════════════════
@@ -417,6 +418,7 @@ def compare_with_conventional():
 
 if __name__ == "__main__":
     import argparse, os
+
 
     parser = argparse.ArgumentParser(
         description="Ouroboric Alloy — topologically protected high-entropy alloy simulation",

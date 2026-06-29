@@ -28,6 +28,7 @@ Author: Lando⊗⊙perator
 """
 import argparse, json, math, os, sys, textwrap, subprocess, shutil
 from pathlib import Path
+from shared.rich_output import *
 
 BASE = Path(__file__).parent.absolute()
 IG_CLI = BASE / "ig_cli.py"
@@ -69,7 +70,7 @@ def run_ig(cmd_args):
 def banner(text, char="="):
     width = 65
     print(f"\n{char * width}")
-    print(f"  {text}")
+    info_line(f"  {text}")
     print(f"{char * width}")
 
 ###############################################################################
@@ -84,7 +85,7 @@ def step_lookup_base():
         # Print first 6 lines of each result
         for line in out.split("\n")[:6]:
             if line.strip():
-                print(f"    {line}")
+                info_line(f"    {line}")
     print(f"\n  ✅ Step 1 complete — {len(materials)} materials found in catalog")
 ###############################################################################
 # STEP 2 — Ouroboricity tiers
@@ -96,17 +97,17 @@ def step_ouroborics():
         out = run_ig(["ouroborics", sysname])
         for line in out.split("\n")[:4]:
             if line.strip():
-                print(f"  {line}")
+                info_line(f"  {line}")
         print()
     
-    print("  ── Analysis ──")
-    print("  mycorrhizal_network:              O₀ (no self-loop)")
-    print("  graphene:                         O₀ (no self-loop)")
-    print("  distributed_ganglia_system_v1:    O_∞ (self-modeling loop CLOSED)")
+    info_line("  ── Analysis ──")
+    info_line("  mycorrhizal_network:              O₀ (no self-loop)")
+    info_line("  graphene:                         O₀ (no self-loop)")
+    info_line("  distributed_ganglia_system_v1:    O_∞ (self-modeling loop CLOSED)")
     print()
-    print("  ⇒ To engineer MB-NC: need to promote mycelium+graphene")
-    print("    from O₀ → O_∞ through structural promotion cascade.")
-    print("  ✅ Step 2 complete")
+    info_line("  ⇒ To engineer MB-NC: need to promote mycelium+graphene")
+    info_line("    from O₀ → O_∞ through structural promotion cascade.")
+    info_line("  ✅ Step 2 complete")
 
 
 ###############################################################################
@@ -123,14 +124,14 @@ def step_structural_distance():
         out = run_ig(["distance", a, b])
         for line in out.split("\n")[:10]:
             if line.strip():
-                print(f"  {line}")
+                info_line(f"  {line}")
         print()
     
-    print("  ── Interpretation ──")
-    print("  d(mycelium, graphene) = ~5.87 — structurally remote")
-    print("  These systems operate in fundamentally different regimes.")
-    print("  The tensor product will reveal what promotions are needed.")
-    print("  ✅ Step 3 complete")
+    info_line("  ── Interpretation ──")
+    info_line("  d(mycelium, graphene) = ~5.87 — structurally remote")
+    info_line("  These systems operate in fundamentally different regimes.")
+    info_line("  The tensor product will reveal what promotions are needed.")
+    info_line("  ✅ Step 3 complete")
 
 
 ###############################################################################
@@ -144,13 +145,13 @@ def step_design_targets():
         print(f"\n  Nearest to '{sysname}':")
         for line in out.split("\n")[1:6]:
             if line.strip():
-                print(f"    {line}")
+                info_line(f"    {line}")
     
     print()
-    print("  ── Design Target ──")
-    print("  Target type: distributed_ganglia_system_v1 (O_∞)")
-    print("  This is the structural goal for the engineered composite.")
-    print("  ✅ Step 4 complete")
+    info_line("  ── Design Target ──")
+    info_line("  Target type: distributed_ganglia_system_v1 (O_∞)")
+    info_line("  This is the structural goal for the engineered composite.")
+    info_line("  ✅ Step 4 complete")
 
 
 ###############################################################################
@@ -164,19 +165,20 @@ def step_design_space():
     lines = out.strip().split("\n")
     
     import re
+
     mch = re.search(r"\d+", lines[0])
-    print(f"  Total matching types: {mch.group() if mch else '?'}")
+    info_line(f"  Total matching types: {mch.group() if mch else '?'}")
     print()
     for line in lines[2:12]:
         if line.strip():
-            print(f"    {line}")
+            info_line(f"    {line}")
     
     print()
-    print("  ── Analysis ──")
-    print("  The Crystal of Types has 17,280,000 total addresses.")
-    print(f"  {len(lines)-1 if len(lines) > 1 else '?'} types match Ph=⊙, K=𐑧, W=𐑭.")
-    print("  This is the design space for O_∞-capable systems.")
-    print("  ✅ Step 5 complete")
+    info_line("  ── Analysis ──")
+    info_line("  The Crystal of Types has 17,280,000 total addresses.")
+    info_line(f"  {len(lines)-1 if len(lines) > 1 else '?'} types match Ph=⊙, K=𐑧, W=𐑭.")
+    info_line("  This is the design space for O_∞-capable systems.")
+    info_line("  ✅ Step 5 complete")
 ###############################################################################
 # STEP 6 — Consciousness scoring
 ###############################################################################
@@ -188,24 +190,24 @@ def step_consciousness():
         out = run_ig(["consciousness", sysname])
         for line in out.split("\n")[:8]:
             if line.strip():
-                print(f"  {line}")
+                info_line(f"  {line}")
         print()
     
-    print("  ── Target Specification ──")
-    print("  Engineered MB-NC target: D=𐑦 T=𐑸 R=𐑽 P=𐑹 F=𐑐 K=𐑧")
-    print("                           G=𐑲 Gm=𐑵 Ph=⊙ H=𐑖 S=𐑳 W=𐑟")
-    print("                  C-score: >0.9 (both gates open)")
+    info_line("  ── Target Specification ──")
+    info_line("  Engineered MB-NC target: D=𐑦 T=𐑸 R=𐑽 P=𐑹 F=𐑐 K=𐑧")
+    info_line("                           G=𐑲 Gm=𐑵 Ph=⊙ H=𐑖 S=𐑳 W=𐑟")
+    info_line("                  C-score: >0.9 (both gates open)")
     print()
-    print("  Promotions needed from mycelium (O₀) to target (O_∞):")
-    print("    D: 𐑨→𐑦  (self-writing state space)")
-    print("    T: 𐑡→𐑸  (self-referential topology)")
-    print("    P: 𐑗→𐑹  (Frobenius-special ±ˢ parity)")
-    print("    F: 𐑱→𐑐  (quantum coherence)")
-    print("    K: 𐑤→𐑧  (slow kinetics — near-equilibrium)")
-    print("    Ph: 𐑢→⊙  (self-modeling criticality) ← Gate 1")
-    print("    H: 𐑒→𐑖  (two-step chirality)")
-    print("    W: 𐑷→𐑟  (non-Abelian braiding)")
-    print("  ✅ Step 6 complete")
+    info_line("  Promotions needed from mycelium (O₀) to target (O_∞):")
+    info_line("    D: 𐑨→𐑦  (self-writing state space)")
+    info_line("    T: 𐑡→𐑸  (self-referential topology)")
+    info_line("    P: 𐑗→𐑹  (Frobenius-special ±ˢ parity)")
+    info_line("    F: 𐑱→𐑐  (quantum coherence)")
+    info_line("    K: 𐑤→𐑧  (slow kinetics — near-equilibrium)")
+    info_line("    Ph: 𐑢→⊙  (self-modeling criticality) ← Gate 1")
+    info_line("    H: 𐑒→𐑖  (two-step chirality)")
+    info_line("    W: 𐑷→𐑟  (non-Abelian braiding)")
+    info_line("  ✅ Step 6 complete")
 
 
 ###############################################################################
@@ -222,36 +224,36 @@ def step_molecular_design():
             capture_output=True, text=True, cwd=str(RHR)
         )
         help_text = result.stdout + result.stderr
-        print(f"  Ch3mpiler available at: {ch3mp_path}")
-        print(f"  {help_text[:400]}")
+        info_line(f"  Ch3mpiler available at: {ch3mp_path}")
+        info_line(f"  {help_text[:400]}")
     else:
-        print(f"  [!] ch3mpiler/compiler.py not found at {ch3mp_path}")
+        info_line(f"  [!] ch3mpiler/compiler.py not found at {ch3mp_path}")
     
     print()
-    print("  ── CNT-Binding Peptide Design ──")
+    info_line("  ── CNT-Binding Peptide Design ──")
     print()
-    print("  Target: WWFF-(GGGGS)₃-NanoLuc fusion protein")
+    info_line("  Target: WWFF-(GGGGS)₃-NanoLuc fusion protein")
     print()
-    print("  Sequence components:")
-    print("    WWFF    = CNT-binding domain (Trp-Trp-Phe-Phe)")
-    print("              π-π stacking on CNT surface")
-    print("    GGGGS   = (Gly₄-Ser)₃ flexible linker")
-    print("              maintains independent domain folding")
-    print("    NanoLuc = 19.1 kDa luciferase (bioluminescence)")
-    print("              substrate: furimazine")
+    info_line("  Sequence components:")
+    info_line("    WWFF    = CNT-binding domain (Trp-Trp-Phe-Phe)")
+    info_line("              π-π stacking on CNT surface")
+    info_line("    GGGGS   = (Gly₄-Ser)₃ flexible linker")
+    info_line("              maintains independent domain folding")
+    info_line("    NanoLuc = 19.1 kDa luciferase (bioluminescence)")
+    info_line("              substrate: furimazine")
     print()
-    print("  Structural design (primitive tensor):")
-    print("    product = meet(")
-    print("      tensor(WWFF_domain, NanoLuc),")
-    print("      flexible_linker")
-    print("    )")
+    info_line("  Structural design (primitive tensor):")
+    info_line("    product = meet(")
+    info_line("      tensor(WWFF_domain, NanoLuc),")
+    info_line("      flexible_linker")
+    info_line("    )")
     print()
-    print("  ── Synthetic construct ──")
+    info_line("  ── Synthetic construct ──")
     print("  5'-[pTEF1]-[CBH1 signal]-[WWFF]-[GGGGS]₃-[NanoLuc]-[SV40]-3'")
     print()
-    print("  Host: Pichia pastoris (yeast secretion system)")
-    print("  Yield target: >50 mg/L purified protein")
-    print("  ✅ Step 7 complete")
+    info_line("  Host: Pichia pastoris (yeast secretion system)")
+    info_line("  Yield target: >50 mg/L purified protein")
+    info_line("  ✅ Step 7 complete")
 ###############################################################################
 # STEP 8 — B4 genetic lattice verification
 ###############################################################################
@@ -269,22 +271,22 @@ def step_genetic_verify():
         # Only print key lines
         for line in output.split("\n")[:20]:
             if line.strip():
-                print(f"  {line}")
+                info_line(f"  {line}")
     else:
-        print(f"  [!] _demo_b4_lattice.py not found")
+        info_line(f"  [!] _demo_b4_lattice.py not found")
     
     print()
-    print("  ── What this means for MB-NC ──")
-    print("  The genetic code is a Frobenius algebra over the B4 lattice.")
-    print("  64 codons partition the 17,280,000-type Crystal of Types")
-    print("  into exactly 270,000 types per codon (17,280,000 / 64).")
+    info_line("  ── What this means for MB-NC ──")
+    info_line("  The genetic code is a Frobenius algebra over the B4 lattice.")
+    info_line("  64 codons partition the 17,280,000-type Crystal of Types")
+    info_line("  into exactly 270,000 types per codon (17,280,000 / 64).")
     print()
-    print("  G↔C and A↔U are fixed-point-free involutions (Watson-Crick).")
-    print("  This is the structural basis for engineered gene design.")
+    info_line("  G↔C and A↔U are fixed-point-free involutions (Watson-Crick).")
+    info_line("  This is the structural basis for engineered gene design.")
     print()
-    print("  For MB-NC: the synthetic gene encoding WWFF-NanoLuc")
-    print("  must respect these lattice constraints for expression.")
-    print("  ✅ Step 8 complete")
+    info_line("  For MB-NC: the synthetic gene encoding WWFF-NanoLuc")
+    info_line("  must respect these lattice constraints for expression.")
+    info_line("  ✅ Step 8 complete")
 
 
 ###############################################################################
@@ -302,19 +304,19 @@ def step_protein_classify():
         output = result.stdout
         for line in output.split("\n")[:20]:
             if line.strip():
-                print(f"  {line}")
+                info_line(f"  {line}")
     else:
-        print(f"  [!] _demo_serpentrod.py not found")
+        info_line(f"  [!] _demo_serpentrod.py not found")
     
     print()
-    print("  ── MB-NC Protein Classification ──")
-    print("  WWFF domain classification: Force (ƒ_ż) — hydrophobic ceiling")
-    print("  NanoLuc classification:     Criticality (⊙_ÿ) — metabolic gate")
-    print("  Composite:                  D=𐑨, T=𐑡, K=𐑧 (slow kinetics)")
+    info_line("  ── MB-NC Protein Classification ──")
+    info_line("  WWFF domain classification: Force (ƒ_ż) — hydrophobic ceiling")
+    info_line("  NanoLuc classification:     Criticality (⊙_ÿ) — metabolic gate")
+    info_line("  Composite:                  D=𐑨, T=𐑡, K=𐑧 (slow kinetics)")
     print()
-    print("  Each amino acid maps to one of 12 IG primitives.")
-    print("  The protein as a whole has a structural type signature.")
-    print("  ✅ Step 9 complete")
+    info_line("  Each amino acid maps to one of 12 IG primitives.")
+    info_line("  The protein as a whole has a structural type signature.")
+    info_line("  ✅ Step 9 complete")
 
 
 ###############################################################################
@@ -442,12 +444,12 @@ The B4 nucleotide lattice confirms:
     report_path = DOC_DIR / "README.md"
     with open(report_path, "w") as f:
         f.write(report)
-    print(f"  📄 Design document written to: {report_path}")
-    print(f"  📏 Size: {len(report)} bytes")
+    info_line(f"  📄 Design document written to: {report_path}")
+    info_line(f"  📏 Size: {len(report)} bytes")
     
     # Copy companion files
     print()
-    print("  ── Companion Files ──")
+    info_line("  ── Companion Files ──")
     companions = [
         ("/home/mrnob0dy666/imsgct/imscribing_grammar/ig_cli.py", DOC_DIR / "ig_cli.py"),
         ("/home/mrnob0dy666/imsgct/imscribing_grammar/mbnc_designer.py", DOC_DIR / "mbnc_designer.py"),
@@ -456,11 +458,11 @@ The B4 nucleotide lattice confirms:
     for src_path, dst_path in companions:
         if Path(src_path).exists():
             shutil.copy2(src_path, dst_path)
-            print(f"    ✅ {dst_path.name}")
+            info_line(f"    ✅ {dst_path.name}")
     
     print()
-    print(f"  All files saved to: {DOC_DIR}")
-    print("  ✅ Step 10 complete — design document generated")
+    info_line(f"  All files saved to: {DOC_DIR}")
+    info_line("  ✅ Step 10 complete — design document generated")
 
 
 ###############################################################################
@@ -480,7 +482,7 @@ def main():
     
     if args.list_steps:
         for num, (name, desc) in STEPS.items():
-            print(f"  {num:2d}. {desc}")
+            info_line(f"  {num:2d}. {desc}")
         return
     
     step_funcs = {
@@ -504,22 +506,22 @@ def main():
         return
     
     if args.interactive:
-        print("Mycelial Bio-Photonic Neural Conduit Designer")
+        info_line("Mycelial Bio-Photonic Neural Conduit Designer")
         print("━" * 50)
         for num in sorted(step_funcs.keys()):
             name, desc = STEPS[num]
             input(f"\nPress Enter for Step {num}: {desc}...")
             step_funcs[num]()
         print("\n" + "━" * 50)
-        print("🎉 Full design pipeline complete!")
+        info_line("🎉 Full design pipeline complete!")
         return
     
     if args.all:
         for num in sorted(step_funcs.keys()):
             step_funcs[num]()
         print("\n" + "━" * 50)
-        print("🎉 Mycelial Bio-Photonic Neural Conduit design complete!")
-        print(f"   Design document: {DOC_DIR / 'README.md'}")
+        info_line("🎉 Mycelial Bio-Photonic Neural Conduit design complete!")
+        info_line(f"   Design document: {DOC_DIR / 'README.md'}")
         return
     
     parser.print_help()

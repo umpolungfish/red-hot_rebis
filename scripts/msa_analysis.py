@@ -13,7 +13,7 @@ if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
     _doc = __doc__.strip() if __doc__ else "scripts/msa_analysis.py"
     print(_doc)
     print()
-    print("Examples:")
+    info_line("Examples:")
     print(_HELP_EXAMPLES)
     print()
     _sys.exit(0)
@@ -37,7 +37,9 @@ mod.__package__ = "rhr_p4rky"
 spec.loader.exec_module(mod)
 
 SerpentRod = mod.SerpentRod
+from shared.rich_output import *
 from rhr_p4rky.genetic_code import (
+
     AA_TO_SYMBOLS, IG_PRIMITIVE_OF_AA, STANDARD_CODE,
     PROMOTED_AAS, GROUND_LAYER_AAS,
 )
@@ -162,7 +164,7 @@ def main():
     results = {}
     
     print("=" * 70)
-    print("🐍 SERPENTROD MSA — Ubiquitin Conservation Analysis")
+    info_line("🐍 SERPENTROD MSA — Ubiquitin Conservation Analysis")
     print("=" * 70)
     
     # Analyze each species
@@ -172,17 +174,17 @@ def main():
         results[name] = result
         
         seq = info["sequence"]
-        print(f"  Sequence: {seq[:30]}...{seq[-10:]} ({len(seq)} AAs)")
-        print(f"  RNA: {result['rna_length']} nt")
-        print(f"  Winding: {result['winding_number']} B4 loops")
-        print(f"  Activated: {result['num_activated']}/12 IG primitives")
-        print(f"  Primitives: {', '.join(result['activated_primitives'])}")
-        print(f"  Frobenius: {'✓' if result['frobenius_verified'] else '✗'}")
-        print(f"  Confidence: {result['confidence']}")
+        info_line(f"  Sequence: {seq[:30]}...{seq[-10:]} ({len(seq)} AAs)")
+        info_line(f"  RNA: {result['rna_length']} nt")
+        info_line(f"  Winding: {result['winding_number']} B4 loops")
+        info_line(f"  Activated: {result['num_activated']}/12 IG primitives")
+        info_line(f"  Primitives: {', '.join(result['activated_primitives'])}")
+        info_line(f"  Frobenius: {'✓' if result['frobenius_verified'] else '✗'}")
+        info_line(f"  Confidence: {result['confidence']}")
     
     # ── Conservation Analysis ─────────────────────────────────────
     print(f"\n{'='*70}")
-    print("CONSERVATION ANALYSIS")
+    info_line("CONSERVATION ANALYSIS")
     print("=" * 70)
     
     # Find universally conserved primitives
@@ -199,7 +201,7 @@ def main():
     
     print(f"\nUniversally conserved IG primitives ({len(universal)}/12):")
     for p in sorted(universal):
-        print(f"  • {p}")
+        info_line(f"  • {p}")
     
     print(f"\nVariable/divergent primitives ({len(variable)}/12):")
     for p in sorted(variable):
@@ -207,24 +209,24 @@ def main():
         for name, r in results.items():
             if p in r["activated_primitives"]:
                 species_list.append(name)
-        print(f"  • {p} — present in: {', '.join(species_list)}")
+        info_line(f"  • {p} — present in: {', '.join(species_list)}")
     
     # ── Frobenius Closure Universality ────────────────────────────
     print(f"\n{'='*70}")
-    print("FROBENIUS CLOSURE VERIFICATION")
+    info_line("FROBENIUS CLOSURE VERIFICATION")
     print("=" * 70)
     
     all_frobenius = True
     for name, r in results.items():
         status = "✓ CLOSED" if r["frobenius_verified"] else "✗ OPEN"
         all_frobenius &= r["frobenius_verified"]
-        print(f"  {name:15s}: {status}")
+        info_line(f"  {name:15s}: {status}")
     
     print(f"\n  Universal μ∘δ=id: {'YES ✓' if all_frobenius else 'NO ✗'}")
     
     # ── Pairwise sequence identity ────────────────────────────────
     print(f"\n{'='*70}")
-    print("PAIRWISE SEQUENCE IDENTITY")
+    info_line("PAIRWISE SEQUENCE IDENTITY")
     print("=" * 70)
     
     names = list(ORTHOLOGS.keys())
@@ -234,11 +236,11 @@ def main():
             s2 = ORTHOLOGS[names[j]]["sequence"]
             matches = sum(1 for a, b in zip(s1, s2) if a == b)
             identity = matches / len(s1) * 100
-            print(f"  {names[i]:12s} ↔ {names[j]:12s}: {identity:.1f}% ({matches}/{len(s1)})")
+            info_line(f"  {names[i]:12s} ↔ {names[j]:12s}: {identity:.1f}% ({matches}/{len(s1)})")
     
     # ── Activation pattern differences (yeast vs human) ───────────
     print(f"\n{'='*70}")
-    print("DETAILED COMPARISON: Human ↔ Yeast")
+    info_line("DETAILED COMPARISON: Human ↔ Yeast")
     print("=" * 70)
     
     h_seq = ORTHOLOGS["human"]["sequence"]
@@ -261,25 +263,25 @@ def main():
             y_prim = IG_PRIMITIVE_OF_AA.get(ya3)
             h_prim_s = h_prim.split(' (')[0] if h_prim and '(' in h_prim else (h_prim or 'Ground')
             y_prim_s = y_prim.split(' (')[0] if y_prim and '(' in y_prim else (y_prim or 'Ground')
-            print(f"  Position {i+1:2d}: {ha}({ha3})[{h_prim_s}] → {ya}({ya3})[{y_prim_s}]", end="")
+            info_line(f"  Position {i+1:2d}: {ha}({ha3})[{h_prim_s}] → {ya}({ya3})[{y_prim_s}]", end="")
             if h_prim_s != y_prim_s:
-                print(" ← PRIMITIVE CHANGE")
+                info_line(" ← PRIMITIVE CHANGE")
             else:
-                print(" ← class-conserved")
+                info_line(" ← class-conserved")
     
     print(f"\n  Total differences: {diff_count} / {len(h_seq)} ({diff_count/len(h_seq)*100:.1f}%)")
     
     # ── Structural comparison ─────────────────────────────────────
     print(f"\n{'='*70}")
-    print("STRUCTURAL COMPARISON")
+    info_line("STRUCTURAL COMPARISON")
     print("=" * 70)
     
     for name, r in results.items():
         s_elems = r["secondary_elements"]
         print(f"\n  {name}:")
-        print(f"    Winding: {r['winding_number']} | Subunits: {r['subunit_count']} | Contacts: {r['num_contacts']}")
+        info_line(f"    Winding: {r['winding_number']} | Subunits: {r['subunit_count']} | Contacts: {r['num_contacts']}")
         for el in s_elems:
-            print(f"    {el['type']:6s} [{el['start']:2d}-{el['end']:2d}] len={el['length']:2d}")
+            info_line(f"    {el['type']:6s} [{el['start']:2d}-{el['end']:2d}] len={el['length']:2d}")
     
     # ── Save results ──────────────────────────────────────────────
     output = {

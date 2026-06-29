@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Write complete generators.py for physically actionable datasets."""
 import json, os, textwrap
+from shared.rich_output import *
 
 PY = "/home/mrnob0dy666/red-hot_rebis/clink/datasets/generators.py"
 
@@ -71,6 +72,7 @@ class DatasetGenerator:
     
     def __init__(self):
         from clink.chain import clink_layer_tuple
+
         self.tup = clink_layer_tuple(self.layer_idx)
         self.output_dir = Path(__file__).parent / "output" / self.layer_name.replace(" ", "_")
     
@@ -91,7 +93,7 @@ class DatasetGenerator:
         return path
 ''')
 
-print("Base written")
+info_line("Base written")
 
 # L0 - Quarks
 w('''
@@ -148,7 +150,7 @@ class Layer0DatasetGenerator(DatasetGenerator):
         return "\\n".join(lines)
     
     def _gen_lattice_params(self):
-        return '''<?xml version="1.0"?>
+        return """<?xml version="1.0"?>
 <latticeQCD>
   <gauge_group>SU(3)</gauge_group>
   <n_colors>3</n_colors>
@@ -158,7 +160,7 @@ class Layer0DatasetGenerator(DatasetGenerator):
   <confinement_scale_MeV>200</confinement_scale_MeV>
   <action>Wilson</action>
   <observables>wilson_loop polyakov_loop pion_mass rho_mass nucleon_mass</observables>
-</latticeQCD>'''
+</latticeQCD>"""
     
     def _gen_hadron_spectrum(self):
         return json.dumps({
@@ -174,7 +176,7 @@ class Layer0DatasetGenerator(DatasetGenerator):
         }, indent=2)
 ''')
 
-print("L0 written")
+info_line("L0 written")
 
 # L1 - Electron Orbitals  
 w('''
@@ -244,5 +246,5 @@ class Layer1DatasetGenerator(DatasetGenerator):
         }, indent=2)
 ''')
 
-print("L1 written")
-print("Script generation complete. Run this script to produce generators.py")
+info_line("L1 written")
+info_line("Script generation complete. Run this script to produce generators.py")

@@ -7,7 +7,7 @@ if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
     _doc = __doc__.strip() if __doc__ else "scripts/gen_univ_map.py"
     print(_doc)
     print()
-    print("Examples:")
+    info_line("Examples:")
     print(_HELP_EXAMPLES)
     print()
     _sys.exit(0)
@@ -19,6 +19,8 @@ from navigators.ruleset_universe import RULESETS
 from new_universes import NEW_RULESETS
 from iterate_universes import build_universes
 from imscrbgrmr.canonical_primitives import ORDINALS
+from shared.rich_output import *
+
 
 COMPOUNDS = {
     "Verticullum": {

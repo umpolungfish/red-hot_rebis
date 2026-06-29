@@ -12,13 +12,14 @@ if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
     _doc = __doc__.strip() if __doc__ else "rhr_p4rky/ch3mpiler_ob3ect_bridge.py"
     print(_doc)
     print()
-    print("Examples:")
+    info_line("Examples:")
     print(_HELP_EXAMPLES)
     print()
     _sys.exit(0)
 
 import sys
 from pathlib import Path
+from shared.rich_output import *
 
 # Add ob3ect/digital to path — ch3mpiler_ob3ect.py lives there
 OB3ECT_PATH = str(Path.home() / "ob3ect/digital")
@@ -27,10 +28,11 @@ sys.path.insert(0, OB3ECT_PATH)
 def run_verify(quiet=False):
     try:
         from ch3mpiler_ob3ect import Ch3mpilerOb3ect
+
     except ModuleNotFoundError:
         if not quiet:
-            print("ch3mpiler_ob3ect: module not found at ob3ect/digital/ch3mpiler_ob3ect")
-            print("Bridge unavailable — ob3ect integration not yet built")
+            info_line("ch3mpiler_ob3ect: module not found at ob3ect/digital/ch3mpiler_ob3ect")
+            info_line("Bridge unavailable — ob3ect integration not yet built")
         return 1
     ob3ect = Ch3mpilerOb3ect()
     closure = ob3ect.verify(verbose=not quiet)

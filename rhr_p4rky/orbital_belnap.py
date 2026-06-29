@@ -31,6 +31,8 @@ from enum import Enum
 from typing import Tuple
 
 from belnap import Belnap
+from shared.rich_output import *
+
 
 
 class OrbitalState(Enum):
@@ -290,7 +292,7 @@ for s in OrbitalState:
 assert empty_paired_truth_incomparable(), \
     "empty_paired_truth_incomparable FAILED"
 
-print("OrbitalBelnap: All theorems verified ✓")
-print(f"  {len(OrbitalState)} orbital states ↔ {len(Belnap)} Belnap values")
-print("  Frobenius condition (pair ∘ depair = id): holds for all states")
-print("  Pauli exclusion: B-ceiling is closed")
+info_line("OrbitalBelnap: All theorems verified ✓")
+info_line(f"  {len(OrbitalState)} orbital states ↔ {len(Belnap)} Belnap values")
+info_line("  Frobenius condition (pair ∘ depair = id): holds for all states")
+info_line("  Pauli exclusion: B-ceiling is closed")

@@ -22,6 +22,7 @@ from clink.chain import (
     clink_frobenius_closed, verify_all_frobenius_closed,
     clink_chain_distance, format_tuple_glyphs
 )
+from shared.rich_output import *
 from clink.bridges import (
     BridgeResult, protein_to_clink, molecule_to_clink, gene_to_clink,
     bridge_all_components
@@ -153,6 +154,7 @@ def clink_to_ch3mpiler(layer_idx: int):
 def clink_to_gene(layer_idx: int):
     """Map a CLINK layer to gene space."""
     from clink.bridges import CODON_BELNAP4_TYPE
+
     cod_tup = {k: CODON_BELNAP4_TYPE[k] for k in PORDER}
     tup = clink_layer_tuple(layer_idx)
     d = clink_distance(tup, cod_tup)

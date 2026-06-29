@@ -12,7 +12,7 @@ if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
     _doc = __doc__.strip() if __doc__ else "scripts/analyze_validation.py"
     print(_doc)
     print()
-    print("Examples:")
+    info_line("Examples:")
     print(_HELP_EXAMPLES)
     print()
     _sys.exit(0)
@@ -25,6 +25,8 @@ import rhr_p4rky.belnap
 import rhr_p4rky.genetics_b4
 import rhr_p4rky.genetic_code
 from rhr_p4rky.serpent_rod import SerpentRod
+from shared.rich_output import *
+
 
 THREE_TO_ONE = {"ALA":"A","ARG":"R","ASN":"N","ASP":"D","CYS":"C","GLN":"Q","GLU":"E","GLY":"G","HIS":"H","ILE":"I","LEU":"L","LYS":"K","MET":"M","PHE":"F","PRO":"P","SER":"S","THR":"T","TRP":"W","TYR":"Y","VAL":"V"}
 AA_TO_CODON = {"A":"GCU","R":"CGU","N":"AAU","D":"GAU","C":"UGU","Q":"CAA","E":"GAA","G":"GGU","H":"CAU","I":"AUU","L":"UUG","K":"AAA","M":"AUG","F":"UUU","P":"CCU","S":"UCU","T":"ACU","W":"UGG","Y":"UAU","V":"GUU"}
@@ -81,14 +83,14 @@ def analyze(pdb_id: str):
     print(f"Single-model CA atoms: {len(atoms)}, Sequence: {seq}")
     
     if len(atoms) < 5:
-        print("Too few atoms, skipping")
+        info_line("Too few atoms, skipping")
         return
     
     # Get experimental contacts at multiple cutoffs
     for cutoff in [5.0, 6.0, 8.0, 10.0]:
         for min_dist in [4, 6, 12]:
             c = get_contacts(atoms, cutoff, min_dist)
-            print(f"  cutoff={cutoff}Å, min_dist≥{min_dist}: {len(c)} contacts")
+            info_line(f"  cutoff={cutoff}Å, min_dist≥{min_dist}: {len(c)} contacts")
     
     # Get standard CASP-style long-range contacts (Cβ-Cβ < 8.0Å, seq sep ≥ 24)
     contacts_long = get_contacts(atoms, 8.0, 24)
@@ -97,10 +99,10 @@ def analyze(pdb_id: str):
     contacts_all = get_contacts(atoms, 8.0, 4)
     
     print(f"\nContact stratification (8.0Å cutoff):")
-    print(f"  Short-range (4-6): {len(contacts_all) - len(contacts_short)}")
-    print(f"  Medium-range (6-12): {len(contacts_short) - len(contacts_medium)}")
-    print(f"  Long-range (12-24): {len(contacts_medium) - len(contacts_long)}")
-    print(f"  Very long-range (≥24): {len(contacts_long)}")
+    info_line(f"  Short-range (4-6): {len(contacts_all) - len(contacts_short)}")
+    info_line(f"  Medium-range (6-12): {len(contacts_short) - len(contacts_medium)}")
+    info_line(f"  Long-range (12-24): {len(contacts_medium) - len(contacts_long)}")
+    info_line(f"  Very long-range (≥24): {len(contacts_long)}")
     
     # Run SerpentRod
     rna = "".join(AA_TO_CODON.get(aa, "NNN") for aa in seq)
@@ -111,10 +113,10 @@ def analyze(pdb_id: str):
     pred_contacts = set((c["i"], c["j"]) for c in result["contacts"])
     
     print(f"\nSerpentRod predictions:")
-    print(f"  Predicted contacts: {len(pred_contacts)}")
-    print(f"  Winding number: {result['winding_number']}")
-    print(f"  Subunits: {result['subunit_count']}")
-    print(f"  Frobenius: {'✓' if result['frobenius_verified'] else '✗'}")
+    info_line(f"  Predicted contacts: {len(pred_contacts)}")
+    info_line(f"  Winding number: {result['winding_number']}")
+    info_line(f"  Subunits: {result['subunit_count']}")
+    info_line(f"  Frobenius: {'✓' if result['frobenius_verified'] else '✗'}")
     
     # Analyze each predicted contact
     print(f"\nPredicted contact analysis:")
@@ -135,16 +137,16 @@ def analyze(pdb_id: str):
                 elif (i,j) in contacts_all: classifications.append("SHORT")
                 else: classifications.append("NO_CONTACT")
                 
-                print(f"  {seq[i]}{i} ⟷ {seq[j]}{j}  {c['type']:25s}  "
-                      f"actual_d={d:.2f}Å  {classifications[0]:12s}  "
+                info_line(f"  {seq[i]}{i} ⟷ {seq[j]}{j}  {c['type']:25s}  "
+f"actual_d={d:.2f}Å  {classifications[0]:12s}  "
                       f"conf={c['confidence']:.2f}")
     
     # Check critical secondary structure prediction
     print(f"\nSecondary structure prediction:")
     helices_predicted = [e for e in result["secondary_elements"] if e["type"] == "helix"]
     sheets_predicted = [e for e in result["secondary_elements"] if e["type"] == "sheet"]
-    print(f"  Predicted helices: {len(helices_predicted)}")
-    print(f"  Predicted sheets: {len(sheets_predicted)}")
+    info_line(f"  Predicted helices: {len(helices_predicted)}")
+    info_line(f"  Predicted sheets: {len(sheets_predicted)}")
     
     # Compare with PDB HELIX/SHEET records
     pdb_helices = []
@@ -190,8 +192,8 @@ def analyze(pdb_id: str):
             except: pass
     
     print(f"\nPDB secondary structure (from PDB records):")
-    print(f"  Helices: {pdb_helices}")
-    print(f"  Sheets: {pdb_sheets}")
+    info_line(f"  Helices: {pdb_helices}")
+    info_line(f"  Sheets: {pdb_sheets}")
     
     # Accuracy of secondary structure
     correct_helix = 0

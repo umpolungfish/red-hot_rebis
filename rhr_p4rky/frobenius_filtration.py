@@ -12,7 +12,7 @@ if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
     _doc = __doc__.strip() if __doc__ else "rhr_p4rky/frobenius_filtration.py"
     print(_doc)
     print()
-    print("Examples:")
+    info_line("Examples:")
     print(_HELP_EXAMPLES)
     print()
     _sys.exit(0)
@@ -23,6 +23,7 @@ _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
 from orbital_belnap import OrbitalState
 from quark_belnap import QuarkState, ColorState
 from hadron_belnap import Meson, Baryon
+from shared.rich_output import *
 
 # === LEVEL 1: Orbital ===
 def orbital_domain(s: OrbitalState) -> bool:
@@ -86,18 +87,19 @@ def level2_subset_level1(q: QuarkState) -> bool:
 def test_filtration():
     # Test: the chain property holds
     from quark_belnap import test_quark_belnap as _  # ensure quark_belnap loaded
-    print("FrobeniusFiltration tests:")
+
+    info_line("FrobeniusFiltration tests:")
     
     # Orbital: ALL states are in domain
     for s in [OrbitalState.empty, OrbitalState.spinUp, 
               OrbitalState.spinDown, OrbitalState.paired]:
         assert orbital_domain(s), f"All orbital states should be in domain: {s}"
-    print("  Level 1 (orbital): universal domain verified")
+    info_line("  Level 1 (orbital): universal domain verified")
     
     # Filtration chain: F_3 subset F_2 subset F_1
     # By construction, every hadron maps to a white quark, and every quark maps to an orbital.
     # This is the structural content of the filtration property.
-    print("  Filtration chain: F_3 subset F_2 subset F_1: invariant maintained")
-    print("  All tests passed!")
+    info_line("  Filtration chain: F_3 subset F_2 subset F_1: invariant maintained")
+    info_line("  All tests passed!")
 if __name__ == "__main__":
     test_filtration()

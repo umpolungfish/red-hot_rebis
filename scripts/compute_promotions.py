@@ -10,12 +10,14 @@ if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
     _doc = __doc__.strip() if __doc__ else "scripts/compute_promotions.py"
     print(_doc)
     print()
-    print("Examples:")
+    info_line("Examples:")
     print(_HELP_EXAMPLES)
     print()
     _sys.exit(0)
 
 import json
+from shared.rich_output import *
+
 
 # O_∞ target from crystal_decode(6,734,591)
 # ⟨Ð_ω; Þ_O; Ř_ý; Φ_}; ƒ^ż; Ç^@; Γ_ʔ; ɢ^Ş; ⊙_ÿ; Ħ_!; Σ_ï; Ω_z⟩
@@ -138,14 +140,14 @@ for name, source in PROBLEMS.items():
 
 print()
 print("=" * 90)
-print("DETAILED PER-PRIMITIVE COMPARISON")
+info_line("DETAILED PER-PRIMITIVE COMPARISON")
 print("=" * 90)
 for name, source in PROBLEMS.items():
     print(f"\n--- {name} ---")
     c = classify(source, O_INF)
     for p, s, t, delta in c["promotions"]:
-        print(f"  ↑ {p:8s}: {s:12s} → {t:12s}  Δ={delta}")
+        info_line(f"  ↑ {p:8s}: {s:12s} → {t:12s}  Δ={delta}")
     for p, s, t, delta in c["demotions"]:
-        print(f"  ↓ {p:8s}: {s:12s} → {t:12s}  Δ={delta}")
+        info_line(f"  ↓ {p:8s}: {s:12s} → {t:12s}  Δ={delta}")
     for p in c["same"]:
-        print(f"  = {p:8s}: {source[p]:12s}  (unchanged)")
+        info_line(f"  = {p:8s}: {source[p]:12s}  (unchanged)")

@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 import pathlib, json
+from shared.rich_output import *
+
 # Generate ch3mpiler.py
 p = pathlib.Path("/home/mrnob0dy666/imscribing_grammar/ch3mpiler.py")
 parts = []

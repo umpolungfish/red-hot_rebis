@@ -7,6 +7,7 @@ Author: Lando⊗⊙perator
 """
 
 import sys, os, time, traceback
+from shared.rich_output import *
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'rhr_p4rky'))
 
@@ -19,28 +20,28 @@ def test(name, fn):
         fn()
         elapsed = time.time() - start
         results.append((PASS, name, f"{elapsed:.3f}s"))
-        print(f"  {PASS} {name} ({elapsed:.3f}s)")
+        info_line(f"  {PASS} {name} ({elapsed:.3f}s)")
     except Exception as e:
         results.append((FAIL, name, str(e)[:120]))
-        print(f"  {FAIL} {name}: {e}")
+        info_line(f"  {FAIL} {name}: {e}")
 
 def summary():
     passed = sum(1 for r in results if r[0] == PASS)
     failed = sum(1 for r in results if r[0] == FAIL)
     print(f"\n{'='*60}")
-    print(f"  RESULTS: {passed} passed, {failed} failed, {len(results)} total")
+    info_line(f"  RESULTS: {passed} passed, {failed} failed, {len(results)} total")
     print(f"{'='*60}")
     for status, name, detail in results:
         if status == FAIL:
-            print(f"  {status} {name}: {detail}")
+            info_line(f"  {status} {name}: {detail}")
     return failed == 0
 
 print("=" * 60)
-print("  PROTEIN & GENETICS — COMPREHENSIVE STRESS TEST")
+info_line("  PROTEIN & GENETICS — COMPREHENSIVE STRESS TEST")
 print("=" * 60)
 
 # ── 1. Genetic Code ────────────────────────────────────────────────
-print("\n── 1. Genetic Code ──")
+info_line("\n── 1. Genetic Code ──")
 
 def test_genetic_code_table():
     from rhr_p4rky.genetic_code import get_code_table, STANDARD_CODE
@@ -88,7 +89,7 @@ def test_genetic_code_b4_ops():
 test("B4 lattice operations", test_genetic_code_b4_ops)
 
 # ── 2. Genetics B4 ─────────────────────────────────────────────────
-print("\n── 2. Genetics B4 ──")
+info_line("\n── 2. Genetics B4 ──")
 
 def test_nucleotide_belnap_roundtrip():
     from rhr_p4rky.genetics_b4 import nucleotide_to_belnap, belnap_to_nucleotide
@@ -118,7 +119,7 @@ def test_b4_wobble_pair():
 test("B4 wobble pair detection", test_b4_wobble_pair)
 
 # ── 3. Genetic Tuples ──────────────────────────────────────────────
-print("\n── 3. Genetic Tuples ──")
+info_line("\n── 3. Genetic Tuples ──")
 
 def test_generate_all_tuples():
     from rhr_p4rky.genetic_tuples import generate_all_tuples
@@ -153,7 +154,7 @@ def test_verify_tier_consistency():
 test("Tier consistency verification", test_verify_tier_consistency)
 
 # ── 4. Genetic ASM ─────────────────────────────────────────────────
-print("\n── 4. Genetic ASM ──")
+info_line("\n── 4. Genetic ASM ──")
 
 def test_genetic_asm_programs():
     from rhr_p4rky.genetic_asm import PROGRAM_TRANSLATE_CODON, PROGRAM_FROBENIUS_VERIFY
@@ -163,7 +164,7 @@ def test_genetic_asm_programs():
 test("Genetic ASM program existence", test_genetic_asm_programs)
 
 # ── 5. Gene to Protein Pipeline ────────────────────────────────────
-print("\n── 5. Gene to Protein Pipeline ──")
+info_line("\n── 5. Gene to Protein Pipeline ──")
 
 def test_pipeline_basic():
     from rhr_p4rky.gene_to_protein_pipeline import GeneToProteinPipeline
@@ -230,7 +231,7 @@ def test_pipeline_primitive_activations():
 test("Primitive activations for diverse sequence", test_pipeline_primitive_activations)
 
 # ── 6. SerpentRod ──────────────────────────────────────────────────
-print("\n── 6. SerpentRod ──")
+info_line("\n── 6. SerpentRod ──")
 
 def test_serpentrod_basic():
     from rhr_p4rky.serpent_rod_v2 import SerpentRod
@@ -277,7 +278,7 @@ def test_serpentrod_poly_met():
 test("SerpentRod poly-Met homopolymer", test_serpentrod_poly_met)
 
 # ── 7. Ch3mpiler-SerpentRod Pipeline ───────────────────────────────
-print("\n── 7. Ch3mpiler-SerpentRod Pipeline ──")
+info_line("\n── 7. Ch3mpiler-SerpentRod Pipeline ──")
 
 def test_pipeline_caffeine():
     from rhr_p4rky.ch3mpiler_serpentrod_pipeline import run_pipeline
@@ -305,7 +306,7 @@ def test_pipeline_differentiation():
 test("Pipeline: cross-molecule differentiation", test_pipeline_differentiation)
 
 # ── 8. Cross-Pipeline Integration ──────────────────────────────────
-print("\n── 8. Cross-Pipeline Integration ──")
+info_line("\n── 8. Cross-Pipeline Integration ──")
 
 def test_gene_to_serpentrod():
     """Gene → folded protein: the full pipeline."""
@@ -338,7 +339,7 @@ def test_ch3mpiler_to_material():
 test("Ch3mpiler→Material bridge", test_ch3mpiler_to_material)
 
 # ── 9. Antibody Designer ───────────────────────────────────────────
-print("\n── 9. Antibody Designer ──")
+info_line("\n── 9. Antibody Designer ──")
 
 def test_antibody_designer():
     """Test antibody design functions (functional API, not class-based)."""
@@ -356,7 +357,7 @@ def test_antibody_designer():
 test("Antibody designer functions", test_antibody_designer)
 
 # ── 10. PDB Validator ──────────────────────────────────────────────
-print("\n── 10. PDB Validator ──")
+info_line("\n── 10. PDB Validator ──")
 
 def test_pdb_validator():
     """Test PDB validation functions (functional API)."""
@@ -370,7 +371,7 @@ def test_pdb_validator():
 test("PDB validator functions", test_pdb_validator)
 
 # ── 11. Edge Cases ─────────────────────────────────────────────────
-print("\n── 11. Edge Cases ──")
+info_line("\n── 11. Edge Cases ──")
 
 def test_all_stop_codons():
     """All three stop codons should terminate translation."""
@@ -394,6 +395,7 @@ def test_nonstandard_belnap_handling():
     """Non-standard nucleotides should be handled paraconsistently."""
     from rhr_p4rky.genetics_b4 import nucleotide_to_belnap
     from rhr_p4rky.belnap import Belnap
+
     for sym in ['X', 'N', 'R', 'Y', '?']:
         b = nucleotide_to_belnap(sym)
         assert b == Belnap.B, f"Unknown {sym} should map to Belnap.B, got {b}"

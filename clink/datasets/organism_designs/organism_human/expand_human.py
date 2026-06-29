@@ -6,6 +6,8 @@ Author: Lando⊗⊙perator
 """
 import json, os, math, random, hashlib
 from pathlib import Path
+from shared.rich_output import *
+
 
 OUT = Path(__file__).parent
 random.seed(42)
@@ -1637,15 +1639,15 @@ bone_mineral_density,1.0,g_per_cm2,0.8-1.2,DEXA T-score reference"""
 # ═══════════════════════════════════════════════════════════
 def main():
     print("=" * 70)
-    print("CLINK HUMAN DESIGN — FULL EXPANSION")
-    print("Homo sapiens — ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩  O_∞  C=1.0")
+    info_line("CLINK HUMAN DESIGN — FULL EXPANSION")
+    info_line("Homo sapiens — ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩  O_∞  C=1.0")
     print("=" * 70)
     
     expanders = [expand_L0, expand_L1, expand_L2, expand_L3, expand_L4,
                  expand_L5, expand_L6, expand_L7, expand_L8]
     
     for i, expand_fn in enumerate(expanders):
-        print(f"  L{i} {expand_fn.__name__}...", end=" ")
+        info_line(f"  L{i} {expand_fn.__name__}...", end=" ")
         expand_fn()
         # Count files
         n = len(list((OUT / f"L{i}").glob("*")))

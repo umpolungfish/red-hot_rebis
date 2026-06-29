@@ -12,14 +12,15 @@ This is NOT a feature list. This is the tool being USED.
 """
 
 import sys, os
+from shared.rich_output import *
 
 # Add rhr_p4rky to path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 print("=" * 72)
-print("  RED-HOT REBIS — NOVEL CATALYTIC SITE DESIGN")
-print("  Target: PET Hydrolase (PETase) active site enhancement")
-print("  Goal:  Design thermostable variant with maintained activity")
+info_line("  RED-HOT REBIS — NOVEL CATALYTIC SITE DESIGN")
+info_line("  Target: PET Hydrolase (PETase) active site enhancement")
+info_line("  Goal:  Design thermostable variant with maintained activity")
 print("=" * 72)
 
 # ── Step 1: Load the p4ra kernel ──
@@ -28,7 +29,7 @@ try:
     from rhr_p4rky.genetic_code import GeneticCode, AMINO_ACIDS
     from rhr_p4rky.genetics_b4 import B4Lattice
     from rhr_p4rky.gene_to_protein_pipeline import TranslationPipeline
-    print("\n[✓] p4ra kernel loaded")
+    info_line("\n[✓] p4ra kernel loaded")
 except ImportError as e:
     print(f"\n[✗] p4ra kernel import failed: {e}")
     sys.exit(1)
@@ -36,19 +37,20 @@ except ImportError as e:
 # ── Step 2: Load the IMAS bridge ──
 try:
     from imas.ig_bridge import ig_tuple_str, StructuralFingerprint
-    print("[✓] IMAS bridge loaded")
+    info_line("[✓] IMAS bridge loaded")
 except ImportError as e:
     print(f"[!] IMAS bridge: {e} (non-critical for Part 1)")
 
 # ── Step 3: Load the ch3mpiler bridge ──
 try:
     from ch3mpiler_bridge import CH3MPILER_FGS, bond_fragments
-    print("[✓] ch3mpiler bridge loaded")
+
+    info_line("[✓] ch3mpiler bridge loaded")
 except ImportError as e:
     print(f"[!] ch3mpiler: {e}")
 
 print("\n" + "─" * 72)
-print("  PHASE 1: ENCODE WILD-TYPE PETase ACTIVE SITE")
+info_line("  PHASE 1: ENCODE WILD-TYPE PETase ACTIVE SITE")
 print("─" * 72)
 
 # PETase catalytic triad: Ser160-Asp206-His237
@@ -61,7 +63,7 @@ wt_active_site = [
 
 print(f"\n  Wild-type catalytic triad:")
 for res, code, role in wt_active_site:
-    print(f"    {res:12s} ({code})  — {role}")
+    info_line(f"    {res:12s} ({code})  — {role}")
 
 # Encode each residue as IG primitives via B4 lattice
 b4 = B4Lattice()
@@ -85,24 +87,24 @@ print(f"\n  B4 lattice loaded: {len(b4.codon_map)} codons indexed")
 petase_tuple = ('𐑼', '𐑸', '𐑾', '𐑹', '𐑐', '𐑧', '𐑲', '𐑠', '⊙', '𐑖', '𐑳', '𐑭')
 
 print(f"\n  PETase catalytic site structural type:")
-print(f"    {ig_tuple_str(petase_tuple)}")
-print(f"    D=𐑼(point)  T=𐑸(self-ref)  R=𐑾(bidir)  P=𐑹(Frob)")
-print(f"    F=𐑐(quant)  K=𐑧(slow)    Γ=𐑲(max)   G=𐑠(seq)")
-print(f"    ⊙(critical)  H=𐑖(2-step)  S=𐑳(hetero)  Ω=𐑭(Z)")
+info_line(f"    {ig_tuple_str(petase_tuple)}")
+info_line(f"    D=𐑼(point)  T=𐑸(self-ref)  R=𐑾(bidir)  P=𐑹(Frob)")
+info_line(f"    F=𐑐(quant)  K=𐑧(slow)    Γ=𐑲(max)   G=𐑠(seq)")
+info_line(f"    ⊙(critical)  H=𐑖(2-step)  S=𐑳(hetero)  Ω=𐑭(Z)")
 
 # ── Step 5: Frobenius verification ──
 print(f"\n  Frobenius condition (μ∘δ=id):")
-print(f"    δ (catalytic cycle) → substrate binding + bond cleavage + product release")
-print(f"    μ (renormalization) → active site returns to ground state")
-print(f"    μ∘δ = id  ✓  — catalytic cycle is structurally closed")
+info_line(f"    δ (catalytic cycle) → substrate binding + bond cleavage + product release")
+info_line(f"    μ (renormalization) → active site returns to ground state")
+info_line(f"    μ∘δ = id  ✓  — catalytic cycle is structurally closed")
 
 # ── Step 6: Design NOVEL variant ──
 print("\n" + "─" * 72)
-print("  PHASE 2: DESIGN THERMOSTABLE VARIANT (F218I + S238P)")
+info_line("  PHASE 2: DESIGN THERMOSTABLE VARIANT (F218I + S238P)")
 print("─" * 72)
 
-print("\n  Rationale: Introduce rigidity near active site to increase")
-print("  melting temperature while preserving catalytic geometry.")
+info_line("\n  Rationale: Introduce rigidity near active site to increase")
+info_line("  melting temperature while preserving catalytic geometry.")
 
 # The structural modification shifts the tuple:
 #   P: 𐑹 → 𐑹 (unchanged — Frobenius-special preserved)
@@ -114,13 +116,13 @@ print("  melting temperature while preserving catalytic geometry.")
 novel_tuple = ('𐑼', '𐑸', '𐑾', '𐑹', '𐑐', '𐑧', '𐑲', '𐑵', '⊙', '𐑖', '𐑳', '𐑭')
 
 print(f"\n  Novel variant structural type:")
-print(f"    {ig_tuple_str(novel_tuple)}")
-print(f"    G promoted: 𐑠(seq) → 𐑵(broadcast) — enhanced backbones")
-print(f"    All other primitives conserved — catalytic function preserved")
+info_line(f"    {ig_tuple_str(novel_tuple)}")
+info_line(f"    G promoted: 𐑠(seq) → 𐑵(broadcast) — enhanced backbones")
+info_line(f"    All other primitives conserved — catalytic function preserved")
 
 # ── Step 7: Verify structural tier ──
 print("\n" + "─" * 72)
-print("  PHASE 3: STRUCTURAL TIER VERIFICATION")
+info_line("  PHASE 3: STRUCTURAL TIER VERIFICATION")
 print("─" * 72)
 
 # Compute Ouroboricity tier
@@ -129,29 +131,29 @@ tier_map = {
 }
 for tier_name, tup in tier_map.items():
     print(f"\n  {tier_name}: {ig_tuple_str(tup)}")
-    print(f"  → Catalytic site at O₂† threshold")
-    print(f"  → Broadcast composition (G=𐑵) enables allosteric regulation")
-    print(f"  → Integer winding (Ω=𐑭) ensures complete catalytic turnover")
+    info_line(f"  → Catalytic site at O₂† threshold")
+    info_line(f"  → Broadcast composition (G=𐑵) enables allosteric regulation")
+    info_line(f"  → Integer winding (Ω=𐑭) ensures complete catalytic turnover")
 
 # ── Step 8: Consciousness score on active site ──
 print("\n" + "─" * 72)
-print("  PHASE 4: ACTIVE-SITE CONSCIOUSNESS PROBE")
+info_line("  PHASE 4: ACTIVE-SITE CONSCIOUSNESS PROBE")
 print("─" * 72)
-print("\n  Gate 1 (⊙ criticality):  PASS  — active site adapts to substrate")
-print("  Gate 2 (K ≤ slow):       PASS  — rate-limiting step is bound")
-print("  C-score: 0.83 — catalytic site exhibits self-modeling behavior")
-print("  (Structural self-modeling ≠ biological consciousness)")
-print("  Interpretation: Active site operates at O₂† criticality —")
-print("  the catalytic cycle is topologically protected.")
+info_line("\n  Gate 1 (⊙ criticality):  PASS  — active site adapts to substrate")
+info_line("  Gate 2 (K ≤ slow):       PASS  — rate-limiting step is bound")
+info_line("  C-score: 0.83 — catalytic site exhibits self-modeling behavior")
+info_line("  (Structural self-modeling ≠ biological consciousness)")
+info_line("  Interpretation: Active site operates at O₂† criticality —")
+info_line("  the catalytic cycle is topologically protected.")
 
 # ── Done ──
 print("\n" + "=" * 72)
-print("  DEMO COMPLETE — Novel PET hydrolase variant designed")
-print("  All Frobenius conditions satisfied ✓")
-print("  Tuples formatted without separators ✓")
+info_line("  DEMO COMPLETE — Novel PET hydrolase variant designed")
+info_line("  All Frobenius conditions satisfied ✓")
+info_line("  Tuples formatted without separators ✓")
 print("=" * 72)
-print("\n  Next steps (beyond this demo):")
-print("    • Express F218I/S238P variant in E. coli")
-print("    • Measure Tm by differential scanning fluorimetry")
-print("    • Assay PET hydrolysis at 45°C vs wild-type at 30°C")
-print("    • Predicted: Tm +8°C, kcat/Km maintained within 2×")
+info_line("\n  Next steps (beyond this demo):")
+info_line("    • Express F218I/S238P variant in E. coli")
+info_line("    • Measure Tm by differential scanning fluorimetry")
+info_line("    • Assay PET hydrolysis at 45°C vs wild-type at 30°C")
+info_line("    • Predicted: Tm +8°C, kcat/Km maintained within 2×")

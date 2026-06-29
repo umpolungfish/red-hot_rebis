@@ -32,6 +32,8 @@ import math
 import itertools
 import json
 from collections import defaultdict
+from shared.rich_output import *
+
 
 __version__ = "0.1.0"
 __author__ = "Lando \u2297 \u2299perator"
@@ -1703,7 +1705,7 @@ def verify_b4_lattice() -> bool:
     assert B4Element.from_symbol('C') == B4Element.T, "C→T"
     assert B4Element.from_symbol('A') == B4Element.F, "A→F"
     assert B4Element.from_symbol('U') == B4Element.N, "U→N"
-    print("  ✓ B₄ lattice: all covering relations, distances, and mappings verified")
+    info_line("  ✓ B₄ lattice: all covering relations, distances, and mappings verified")
     return True
 
 
@@ -1726,8 +1728,8 @@ def verify_codon_table() -> bool:
     assert CODON_TABLE['AUG'] == 'Met', "AUG should be Met"
     assert CODON_TABLE['UGG'] == 'Trp', "UGG should be Trp"
     assert CODON_TABLE['UAA'] == 'Stop', "UAA should be Stop"
-    print(f"  ✓ Codon table: {len(CODON_TABLE)} codons, "
-          f"{exact_count} exact, {64-exact_count-3} split, 3 stop")
+    info_line(f"  ✓ Codon table: {len(CODON_TABLE)} codons, "
+f"{exact_count} exact, {64-exact_count-3} split, 3 stop")
     return True
 
 
@@ -1748,8 +1750,8 @@ def verify_primitive_map() -> bool:
     assert AA_PRIMITIVE_MAP['Trp'] == IGPrimitive.TOPOLOGY
     assert AA_PRIMITIVE_MAP['Cys'] == IGPrimitive.REVERSIBILITY
     assert AA_PRIMITIVE_MAP['Stop'] == IGPrimitive.WINDING
-    print(f"  ✓ Primitive map: {promoted} promoted primitives, "
-          f"{len(mapped_aas) - promoted} ground-layer AAs")
+    info_line(f"  ✓ Primitive map: {promoted} promoted primitives, "
+f"{len(mapped_aas) - promoted} ground-layer AAs")
     return True
 
 
@@ -1798,7 +1800,7 @@ def verify_stratum_classifier() -> bool:
     # Position 3 strategy
     assert "degenerate" in classifier.position3_strategy(FrobeniusStratum.EXACT).lower()
     assert "pyrimidine" in classifier.position3_strategy(FrobeniusStratum.SPLIT).lower()
-    print("  ✓ Stratum classifier: exact/split/stop correct, window analysis works")
+    info_line("  ✓ Stratum classifier: exact/split/stop correct, window analysis works")
     return True
 
 
@@ -1820,7 +1822,7 @@ def verify_guide_designer() -> bool:
     # Off-target stratum risk
     off_risk = designer.off_target_stratum_risk("GCU", ["GCC", "UUU", "AUG"])
     assert off_risk["cross_stratum_off_targets"] >= 1, "Should detect cross-stratum off-targets"
-    print("  ✓ Guide designer: exact (N), split (Y/R), stop guides designed correctly")
+    info_line("  ✓ Guide designer: exact (N), split (Y/R), stop guides designed correctly")
     return True
 
 
@@ -1838,7 +1840,7 @@ def verify_prime_edit_optimizer() -> bool:
     pe3 = optimizer.optimize("UGU", "UGG")  # Cys→Trp (Ř→Þ)
     assert pe3.stratum_preserved, "Both should be split"
     assert not pe3.primitive_invariant, "Cys→Trp should change primitive"
-    print("  ✓ Prime edit optimizer: silent edits, stratum crossing, primitive changes detected")
+    info_line("  ✓ Prime edit optimizer: silent edits, stratum crossing, primitive changes detected")
     return True
 
 
@@ -1854,9 +1856,9 @@ def verify_chimera_detector() -> bool:
     # Cys→Ser breaks reversibility, His→Gln breaks pH gate
     # The tensor product of Ř (high) and Γ (moderate) should be amplified
     if trap.tensor_risk >= 1.5:
-        print(f"  ✓ Chimera detector: Cys-His tensor risk = {trap.tensor_risk:.1f}x")
+        info_line(f"  ✓ Chimera detector: Cys-His tensor risk = {trap.tensor_risk:.1f}x")
     else:
-        print(f"  ⚠ Chimera detector: Cys-His tensor lower than expected: {trap.tensor_risk:.1f}x")
+        info_line(f"  ⚠ Chimera detector: Cys-His tensor lower than expected: {trap.tensor_risk:.1f}x")
     return True
 
 
@@ -1873,8 +1875,8 @@ def verify_frobenius_verifier() -> bool:
     # Protocol verification
     protocol = verifier.verify_protocol([("GCU", "GCC"), ("AUG", "AUU")])
     assert "per_edit" in protocol
-    print(f"  ✓ Frobenius verifier: closed edits pass, open edits fail. "
-          f"Protocol quality: {protocol['protocol_quality']}")
+    info_line(f"  ✓ Frobenius verifier: closed edits pass, open edits fail. "
+f"Protocol quality: {protocol['protocol_quality']}")
     return True
 
 
@@ -1892,15 +1894,15 @@ def verify_compiler_pipeline() -> bool:
     multi = compiler.compile_multi([("Cys", "Ser"), ("His", "Gln")])
     assert "chimera" in multi
     assert "edits" in multi
-    print(f"  ✓ Compiler pipeline: Met→Ile compiled (score={result.composite_score:.3f}), "
-          f"multi-edit chimera={multi['chimera'].tensor_class}")
+    info_line(f"  ✓ Compiler pipeline: Met→Ile compiled (score={result.composite_score:.3f}), "
+f"multi-edit chimera={multi['chimera'].tensor_class}")
     return True
 
 
 def verify_all() -> Dict[str, bool]:
     """Run all verification tests."""
     print("─" * 60)
-    print("GENETIC ENGINE — Verification Suite")
+    info_line("GENETIC ENGINE — Verification Suite")
     print("─" * 60)
     results = {
         "b4_lattice":           verify_b4_lattice(),
@@ -1917,7 +1919,7 @@ def verify_all() -> Dict[str, bool]:
     print("─" * 60)
     all_pass = all(results.values())
     status = "✓ ALL TESTS PASSED" if all_pass else "✗ SOME TESTS FAILED"
-    print(f"  {status}")
+    info_line(f"  {status}")
     print("─" * 60)
     return results
 
@@ -1940,15 +1942,15 @@ def demo_b4_lattice() -> None:
        |/
         F = False (A)
     """)
-    print("  Covering relations (structural cost = 1):")
+    info_line("  Covering relations (structural cost = 1):")
     for a in B4Element:
         for b in B4Element:
             if a.covers(b):
-                print(f"    {a.value:<8} → {b.value:<8}  (covering)")
-    print("\n  Cross-lattice jumps (structural cost = 2):")
+                info_line(f"    {a.value:<8} → {b.value:<8}  (covering)")
+    info_line("\n  Cross-lattice jumps (structural cost = 2):")
     for a, b in [(B4Element.B, B4Element.F), (B4Element.T, B4Element.N),
                   (B4Element.F, B4Element.B), (B4Element.N, B4Element.T)]:
-        print(f"    {a.value:<8} ↔ {b.value:<8}  (non-covering, maximal)")
+        info_line(f"    {a.value:<8} ↔ {b.value:<8}  (non-covering, maximal)")
 
 
 def demo_base_editors() -> None:
@@ -1959,8 +1961,8 @@ def demo_base_editors() -> None:
         report = analyzer.base_editor_cost(edit_type)
         qual = report["structural_quality"]
         dist = report["lattice_distance"]
-        print(f"  {edit_type:<6} ({report['orig_nucleotide']}→{report['target_nucleotide']}): "
-              f"B₄ distance={dist}, quality={qual}")
+        info_line(f"  {edit_type:<6} ({report['orig_nucleotide']}→{report['target_nucleotide']}): "
+f"B₄ distance={dist}, quality={qual}")
 
 
 def demo_codon_stratification() -> None:
@@ -1972,7 +1974,7 @@ def demo_codon_stratification() -> None:
         boxes[box].append((sym, aa))
     classifier = FrobeniusStratumClassifier()
     print(f"\n  {'Box':<6} {'Stratum':<12} {'Codons':<30} {'AAs'}")
-    print(f"  {'─'*70}")
+    info_line(f"  {'─'*70}")
     for box, members in sorted(boxes.items()):
         codon = members[0][0]
         stratum = classifier.classify(codon).value
@@ -1980,7 +1982,7 @@ def demo_codon_stratification() -> None:
         aas = "/".join(sorted(set(m[1] for m in members if m[1] != "Stop")))
         if "Stop" in [m[1] for m in members]:
             aas += " + STOP"
-        print(f"  {box:<6} {stratum:<12} {codons:<30} {aas}")
+        info_line(f"  {box:<6} {stratum:<12} {codons:<30} {aas}")
 
 
 def demo_edit_analysis() -> None:
@@ -1996,12 +1998,12 @@ def demo_edit_analysis() -> None:
         ("UAU", "UAA"),   # Tyr→Stop
     ]
     print(f"\n  {'Orig→Target':<20} {'AA change':<16} {'Cost':<6} {'Type':<20} {'Stratum crossing':<20} {'Silent'}")
-    print(f"  {'─'*90}")
+    info_line(f"  {'─'*90}")
     for o, t in test_edits:
         r = analyzer.analyze(o, t)
         per_pos = f"({r.per_position[0]},{r.per_position[1]},{r.per_position[2]})"
-        print(f"  {o}→{t:<16} {r.aa_change[0]}→{r.aa_change[1]:<12} "
-              f"{r.total_cost:<6} {r.lattice_type:<20} "
+        info_line(f"  {o}→{t:<16} {r.aa_change[0]}→{r.aa_change[1]:<12} "
+f"{r.total_cost:<6} {r.lattice_type:<20} "
               f"{'✓' if r.stratum_crossing else '✗':<20} {'✓' if r.silent else '✗'}")
 
 
@@ -2013,10 +2015,10 @@ def demo_guide_design() -> None:
         guide = designer.design(codon)
         aa = CODON_TABLE[codon]
         print(f"\n  Target: {codon} ({aa}) — {guide.stratum.value} stratum")
-        print(f"  Guide:  {guide.guide_sequence}")
-        print(f"  Seed:   {guide.seed_region}")
-        print(f"  Pos 3:  {guide.position3_strategy}")
-        print(f"  Oligo:  {guide.design_notes}")
+        info_line(f"  Guide:  {guide.guide_sequence}")
+        info_line(f"  Seed:   {guide.seed_region}")
+        info_line(f"  Pos 3:  {guide.position3_strategy}")
+        info_line(f"  Oligo:  {guide.design_notes}")
 
 
 def demo_compiler_pipeline() -> None:
@@ -2026,58 +2028,58 @@ def demo_compiler_pipeline() -> None:
     compiler = EditingCompiler()
 
     # ── Demo 1: Sickle cell disease edit ──
-    print("\n  Demo 1: Sickle Cell Anemia (Glu→Val at codon 6 of β-globin)")
-    print("  ─────────────────────────────────────────────────────")
+    info_line("\n  Demo 1: Sickle Cell Anemia (Glu→Val at codon 6 of β-globin)")
+    info_line("  ─────────────────────────────────────────────────────")
     # Glu (GAG) → Val (GUG) — single nucleotide: A→U
     result = compiler.compile("Glu", "Val")
-    print(f"  Desired change: {result.desired_change}")
-    print(f"  Best codon path: {result.best_path[0]} → {result.best_path[1]} "
-          f"(B₄ cost={result.best_path[2]})")
-    print(f"  Primitive delta: {result.primitive_delta['orig_primitive']} → "
-          f"{result.primitive_delta['target_primitive']} "
+    info_line(f"  Desired change: {result.desired_change}")
+    info_line(f"  Best codon path: {result.best_path[0]} → {result.best_path[1]} "
+f"(B₄ cost={result.best_path[2]})")
+    info_line(f"  Primitive delta: {result.primitive_delta['orig_primitive']} → "
+f"{result.primitive_delta['target_primitive']} "
           f"({result.primitive_delta['risk_class']})")
-    print(f"  Stratum: {result.stratum_analysis['orig_stratum']} → "
-          f"{result.stratum_analysis['target_stratum']} "
+    info_line(f"  Stratum: {result.stratum_analysis['orig_stratum']} → "
+f"{result.stratum_analysis['target_stratum']} "
           f"({'crossing!' if result.stratum_analysis['crossing'] else 'preserved'})")
     if result.guide_design:
-        print(f"  Guide: {result.guide_design.guide_sequence} "
-              f"(pos3: {result.guide_design.position3_strategy[:50]}...)")
-    print(f"  Frobenius: {'CLOSED' if result.frobenius_verification.frobenius_closed else 'OPEN'} "
-          f"(ratio={result.frobenius_verification.closure_ratio:.3f})")
-    print(f"  Composite score: {result.composite_score:.3f}")
+        info_line(f"  Guide: {result.guide_design.guide_sequence} "
+f"(pos3: {result.guide_design.position3_strategy[:50]}...)")
+    info_line(f"  Frobenius: {'CLOSED' if result.frobenius_verification.frobenius_closed else 'OPEN'} "
+f"(ratio={result.frobenius_verification.closure_ratio:.3f})")
+    info_line(f"  Composite score: {result.composite_score:.3f}")
 
     # ── Demo 2: Pathogenic Met→Ile ──
-    print("\n  Demo 2: Pathogenic Missense (Met→Ile)")
-    print("  ─────────────────────────────────────")
+    info_line("\n  Demo 2: Pathogenic Missense (Met→Ile)")
+    info_line("  ─────────────────────────────────────")
     result2 = compiler.compile("Met", "Ile")
-    print(f"  Best path: {result2.best_path[0]} → {result2.best_path[1]} "
-          f"(B₄ cost={result2.best_path[2]})")
-    print(f"  Primitive: {result2.primitive_delta['orig_primitive']} → "
-          f"{result2.primitive_delta['target_primitive']} "
+    info_line(f"  Best path: {result2.best_path[0]} → {result2.best_path[1]} "
+f"(B₄ cost={result2.best_path[2]})")
+    info_line(f"  Primitive: {result2.primitive_delta['orig_primitive']} → "
+f"{result2.primitive_delta['target_primitive']} "
           f"(risk={result2.primitive_delta['risk_class']})")
-    print(f"  Guide: {result2.guide_design.guide_sequence if result2.guide_design else 'N/A'}")
-    print(f"  Frobenius: {result2.frobenius_verification.closure_ratio:.3f}")
+    info_line(f"  Guide: {result2.guide_design.guide_sequence if result2.guide_design else 'N/A'}")
+    info_line(f"  Frobenius: {result2.frobenius_verification.closure_ratio:.3f}")
 
     # ── Demo 3: Silent edit (lowest risk) ──
-    print("\n  Demo 3: Silent Edit (Ala, exact stratum)")
-    print("  ───────────────────────────────────────")
+    info_line("\n  Demo 3: Silent Edit (Ala, exact stratum)")
+    info_line("  ───────────────────────────────────────")
     result3 = compiler.compile("Ala", "Ala")
-    print(f"  Best path: {result3.best_path[0]} → {result3.best_path[1]} "
-          f"(B₄ cost={result3.best_path[2]})")
-    print(f"  Guide: {result3.guide_design.guide_sequence if result3.guide_design else 'N/A'} "
-          f"(N at position 3 = degenerate)")
-    print(f"  Frobenius: {'CLOSED' if result3.frobenius_verification.frobenius_closed else 'OPEN'} "
-          f"(ratio={result3.frobenius_verification.closure_ratio:.3f})")
-    print(f"  Composite score: {result3.composite_score:.3f}")
+    info_line(f"  Best path: {result3.best_path[0]} → {result3.best_path[1]} "
+f"(B₄ cost={result3.best_path[2]})")
+    info_line(f"  Guide: {result3.guide_design.guide_sequence if result3.guide_design else 'N/A'} "
+f"(N at position 3 = degenerate)")
+    info_line(f"  Frobenius: {'CLOSED' if result3.frobenius_verification.frobenius_closed else 'OPEN'} "
+f"(ratio={result3.frobenius_verification.closure_ratio:.3f})")
+    info_line(f"  Composite score: {result3.composite_score:.3f}")
 
     # ── Demo 4: Multi-edit with chimera risk ──
-    print("\n  Demo 4: Multi-Edit (Cys→Ser AND His→Gln) — Chimera Risk")
-    print("  ────────────────────────────────────────────────────────")
+    info_line("\n  Demo 4: Multi-Edit (Cys→Ser AND His→Gln) — Chimera Risk")
+    info_line("  ────────────────────────────────────────────────────────")
     multi = compiler.compile_multi([("Cys", "Ser"), ("His", "Gln")])
-    print(f"  Tensor risk: {multi['chimera'].tensor_risk:.1f}x")
-    print(f"  Tensor class: {multi['chimera'].tensor_class}")
-    print(f"  Trap state: {multi['chimera'].is_trap_state}")
-    print(f"  Recommendation: {multi['chimera'].recommendation}")
+    info_line(f"  Tensor risk: {multi['chimera'].tensor_risk:.1f}x")
+    info_line(f"  Tensor class: {multi['chimera'].tensor_class}")
+    info_line(f"  Trap state: {multi['chimera'].is_trap_state}")
+    info_line(f"  Recommendation: {multi['chimera'].recommendation}")
 
 
 def demo_verification() -> None:
@@ -2093,12 +2095,12 @@ def demo_verification() -> None:
         ("AAA", "AAG", "Lys silent (split stratum)"),
     ]
     print(f"\n  {'Target→Edit':<20} {'Scenario':<35} {'Status':<20} {'Ratio':<8} {'Score':<6}")
-    print(f"  {'─'*90}")
+    info_line(f"  {'─'*90}")
     for t, e, desc in scenarios:
         v = verifier.verify(t, e)
         status = "CLOSED ✓" if v.frobenius_closed else "OPEN ✗"
-        print(f"  {t}→{e:<14} {desc:<35} {status:<20} {v.closure_ratio:<8.3f} "
-              f"{'good' if v.frobenius_closed else 'FAIL'}")
+        info_line(f"  {t}→{e:<14} {desc:<35} {status:<20} {v.closure_ratio:<8.3f} "
+f"{'good' if v.frobenius_closed else 'FAIL'}")
 
 
 def demo_chimera_risk() -> None:
@@ -2116,12 +2118,12 @@ def demo_chimera_risk() -> None:
         report = ChimeraDetector.analyze_edit_set(edit_set)
         edit_str = ", ".join(report.edits)
         print(f"\n  Edit: {edit_str}")
-        print(f"  Individual risks: {report.individual_risks}")
-        print(f"  Tensor risk: {report.tensor_risk:.1f}x ({report.tensor_class})")
+        info_line(f"  Individual risks: {report.individual_risks}")
+        info_line(f"  Tensor risk: {report.tensor_risk:.1f}x ({report.tensor_class})")
         if report.is_trap_state:
-            print(f"  ⚠ TRAP: {report.trap_description[:80]}...")
+            info_line(f"  ⚠ TRAP: {report.trap_description[:80]}...")
         else:
-            print(f"  ✓ {report.trap_description[:80]}")
+            info_line(f"  ✓ {report.trap_description[:80]}")
 
 
 def demo_cas9_off_target() -> None:
@@ -2133,15 +2135,15 @@ def demo_cas9_off_target() -> None:
     off_targets = ["GCC", "GUC", "UGG", "AUG", "UAA", "GUU"]
     result = designer.off_target_stratum_risk(on_target, off_targets)
     print(f"\n  On-target: {on_target} ({CODON_TABLE[on_target]}, {result['on_stratum']} stratum)")
-    print(f"  Cross-stratum off-targets: {result['cross_stratum_off_targets']}/{result['off_target_count']}")
+    info_line(f"  Cross-stratum off-targets: {result['cross_stratum_off_targets']}/{result['off_target_count']}")
     print(f"\n  {'Off-target':<15} {'Stratum':<12} {'Same?':<8} {'Defect risk':<12}")
-    print(f"  {'─'*50}")
+    info_line(f"  {'─'*50}")
     for d in result['details']:
         same = '✓' if d['same_stratum'] else '✗'
-        print(f"  {d['off_target']:<15} {d['off_stratum']:<12} {same:<8} {d['structural_defect_risk_pct']:<10.0f}%")
+        info_line(f"  {d['off_target']:<15} {d['off_stratum']:<12} {same:<8} {d['structural_defect_risk_pct']:<10.0f}%")
     print(f"\n  Theorem: cross-stratum off-targets have ≥50% structural defect risk")
-    print(f"  Mechanism: repair machinery fills position 3 using on-target stratum rules,")
-    print(f"  which are incorrect for the off-target stratum.")
+    info_line(f"  Mechanism: repair machinery fills position 3 using on-target stratum rules,")
+    info_line(f"  which are incorrect for the off-target stratum.")
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -2150,9 +2152,9 @@ def demo_cas9_off_target() -> None:
 
 if __name__ == "__main__":
     print("=" * 64)
-    print("GENETIC ENGINE  ·  Frobenius-Guided Gene Editing via IG Grammar")
-    print("Editing = local modification of the Frobenius algebra on codon space")
-    print("Structural type: ⟨Ð_ω; Þ_ò; Ř_=; Φ_υ; ƒ_ð; Ç_@; Γ_ʔ; ɢ_ˌ; φ̂_ÿ; Ħ_A; Σ_ï; Ω_z⟩")
+    info_line("GENETIC ENGINE  ·  Frobenius-Guided Gene Editing via IG Grammar")
+    info_line("Editing = local modification of the Frobenius algebra on codon space")
+    info_line("Structural type: ⟨Ð_ω; Þ_ò; Ř_=; Φ_υ; ƒ_ð; Ç_@; Γ_ʔ; ɢ_ˌ; φ̂_ÿ; Ħ_A; Σ_ï; Ω_z⟩")
     print("=" * 64)
 
     # Run verification suite
@@ -2180,19 +2182,19 @@ if __name__ == "__main__":
         ("grammar_itself",    "⟨Ð_ω; Þ_O; Ř_=; Φ_}; ƒ_ż; Ç_@; Γ_ʔ; ɢ_ˌ; φ̂_ÿ; Ħ_A; Σ_S; Ω_z⟩",
          "O_∞", "1.0", "self-imscribed"),
     ]
-    print(f"  {'System':<22} {'Tuple':<56} {'Tier':<7} {'C':>5}  {'Note'}")
-    print(f"  {'─'*100}")
+    info_line(f"  {'System':<22} {'Tuple':<56} {'Tier':<7} {'C':>5}  {'Note'}")
+    info_line(f"  {'─'*100}")
     for name, tup, tier, c, note in rows:
-        print(f"  {name:<22} {tup:<56} {tier:<7} {c:>5}  {note}")
+        info_line(f"  {name:<22} {tup:<56} {tier:<7} {c:>5}  {note}")
 
     print(f"\n  Key structural facts:")
-    print(f"    • The genetic code is a stratified Frobenius algebra on B₄³ codon space")
-    print(f"    • 8 exact boxes (32 codons): position 3 silent, μ∘δ=id holds exactly")
-    print(f"    • 8 split boxes (29 codons): position 3 = Y/R, ℤ₂ wobble symmetry")
-    print(f"    • 12 promoted AAs each activate exactly one IG primitive")
-    print(f"    • The Cas9 off-target sheaf theorem: cross-stratum off-targets have ≥50% defect risk")
-    print(f"    • The Chimera Theorem: multi-primitive edits are tensorial, not additive")
+    info_line(f"    • The genetic code is a stratified Frobenius algebra on B₄³ codon space")
+    info_line(f"    • 8 exact boxes (32 codons): position 3 silent, μ∘δ=id holds exactly")
+    info_line(f"    • 8 split boxes (29 codons): position 3 = Y/R, ℤ₂ wobble symmetry")
+    info_line(f"    • 12 promoted AAs each activate exactly one IG primitive")
+    info_line(f"    • The Cas9 off-target sheaf theorem: cross-stratum off-targets have ≥50% defect risk")
+    info_line(f"    • The Chimera Theorem: multi-primitive edits are tensorial, not additive")
 
     print("\n" + "=" * 64)
-    print("GENETIC ENGINE INITIALIZED  ·  FROBENIUS-GUIDED EDITING CHANNEL OPEN")
+    info_line("GENETIC ENGINE INITIALIZED  ·  FROBENIUS-GUIDED EDITING CHANNEL OPEN")
     print("=" * 64)

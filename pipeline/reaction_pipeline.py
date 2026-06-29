@@ -37,10 +37,10 @@ from reaction_deriver import (
     derive_conditions_from_disconnection,
 )
 from ch3mpiler.scaffold_parser import ScaffoldParser, resolve_name_to_smiles
+from shared.rich_output import *
 
 # ── Rich text formatting ──
 try:
-    from ch3mpiler.rich_output import header, subheader, info_line, success_line, error_line, target_line, numeric_line, panel, separator, table, reaction_header, step_detail, bond_line, fg_line
     STYLED = True
 except ImportError:
     STYLED = False

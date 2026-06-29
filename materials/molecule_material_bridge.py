@@ -14,6 +14,7 @@ Author: Lando⊗⊙perator
 
 import sys, os, json, argparse
 from pathlib import Path
+from shared.rich_output import *
 
 BASE = Path(__file__).parent.absolute()
 sys.path.insert(0, str(BASE))
@@ -175,32 +176,33 @@ def main():
     ig_tuple = molecule_to_material_tuple(mol_data)
     
     print(f"\n{'='*60}")
-    print(f"  MOLECULE → MATERIAL BRIDGE")
+    info_line(f"  MOLECULE → MATERIAL BRIDGE")
     print(f"{'='*60}")
-    print(f"  Molecule: {mol_data['name']}")
-    print(f"  CAS: {mol_data.get('cas', 'N/A')}")
-    print(f"  Bond: {mol_data['bond']}")
-    print(f"  FGs ({len(mol_data['fgs'])}): {', '.join(mol_data['fgs'])}")
+    info_line(f"  Molecule: {mol_data['name']}")
+    info_line(f"  CAS: {mol_data.get('cas', 'N/A')}")
+    info_line(f"  Bond: {mol_data['bond']}")
+    info_line(f"  FGs ({len(mol_data['fgs'])}): {', '.join(mol_data['fgs'])}")
     print(f"\n  Material IG Tuple:")
     pnames = ["D", "T", "R", "P", "F", "K", "G", "Gm", "Ph", "H", "S", "W"]
     for i, p in enumerate(pnames):
-        print(f"    {p}: {ig_tuple[i]}")
+        info_line(f"    {p}: {ig_tuple[i]}")
     
     # Step 3: Forge material design
     if args.forge:
         from materials.ig_material_forge import MaterialForge
+
         mf = MaterialForge()
         safe_name = mol_data['name'].replace(' ', '_').replace('-', '_').replace(',', '')[:50]
         design = mf.forge(safe_name, ig_tuple)
         print(f"\n{'-'*60}")
-        print(f"  FORGED MATERIAL DESIGN")
+        info_line(f"  FORGED MATERIAL DESIGN")
         print(f"{'-'*60}")
-        print(f"  Tier: {design.ouroboricity_tier}")
-        print(f"  Frobenius Score: {design.frobenius_score:.2f}")
-        print(f"  Composition: {design.proposed_composition}")
-        print(f"  Processing: {design.proposed_processing}")
-        print(f"  Properties: {design.predicted_properties}")
-        print(f"  Applications: {design.proposed_applications}")
+        info_line(f"  Tier: {design.ouroboricity_tier}")
+        info_line(f"  Frobenius Score: {design.frobenius_score:.2f}")
+        info_line(f"  Composition: {design.proposed_composition}")
+        info_line(f"  Processing: {design.proposed_processing}")
+        info_line(f"  Properties: {design.predicted_properties}")
+        info_line(f"  Applications: {design.proposed_applications}")
     
     if args.json:
         output = {

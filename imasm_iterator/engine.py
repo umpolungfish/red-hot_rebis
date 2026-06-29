@@ -23,6 +23,7 @@ from .tokens import (
     Token, Family, TOKEN_COUNT, FAMILY_SIZE, FAMILY_TOKENS,
     token_family, signature, arrangement_str, TOKEN_NAMES,
 )
+from shared.rich_output import *
 from .classifier import (
     StructuralFingerprint, compute_fingerprint,
     CANONICAL_CLASSES, CANONICAL_FINGERPRINTS, match_canonical,
@@ -67,6 +68,7 @@ def enumerate_signatures(length: int = 8) -> List[SignatureClass]:
 
 def _multinomial(n: int, counts: List[int]) -> int:
     from math import factorial
+
     result = factorial(n)
     for c in counts:
         result //= factorial(c)
@@ -288,11 +290,11 @@ def map_space(
 ) -> SpaceMap:
     if signatures is None:
         if verbose:
-            print("Enumerating signatures...")
+            info_line("Enumerating signatures...")
         signatures = enumerate_signatures(length)
         if verbose:
             total = sum(sc.total_arrangements for sc in signatures)
-            print(f"  {len(signatures)} signatures, {total:,} total arrangements")
+            info_line(f"  {len(signatures)} signatures, {total:,} total arrangements")
 
     smap = SpaceMap(length=length)
     total_count = 0
@@ -302,8 +304,8 @@ def map_space(
 
     for sci, sc in enumerate(signatures):
         if verbose:
-            print(f"  Sig {sci+1}/{len(signatures)}: "
-                  f"({sc.sig[0]},{sc.sig[1]},{sc.sig[2]},{sc.sig[3]}) "
+            info_line(f"  Sig {sci+1}/{len(signatures)}: "
+f"({sc.sig[0]},{sc.sig[1]},{sc.sig[2]},{sc.sig[3]}) "
                   f"→ {sc.total_arrangements:,} arrangements")
 
         for arr in iter_signature_arrangements(sc):
@@ -317,8 +319,8 @@ def map_space(
                 new_coarse = smap.distinct_coarse - last_coarse_count
                 last_coarse_count = smap.distinct_coarse
                 if verbose:
-                    print(f"    ... {total_count:,} ({rate:,.0f}/s), "
-                          f"{smap.distinct_coarse} coarse (+{new_coarse}), "
+                    info_line(f"    ... {total_count:,} ({rate:,.0f}/s), "
+f"{smap.distinct_coarse} coarse (+{new_coarse}), "
                           f"{smap.distinct_fine} fine classes")
                 if checkpoint_path:
                     smap.finalize()
