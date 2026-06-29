@@ -32,6 +32,7 @@ from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
+from shared.rich_output import *
 
 # Ensure red-hot_rebis is on path
 REBIS_ROOT = Path(__file__).resolve().parent.parent
@@ -140,20 +141,20 @@ def phase1_structural_diagnosis(disease_key: str) -> PhaseResult:
         result.data = data
         result.success = True
         
-        print(f"  Disease:        {therapy.disease}")
-        print(f"  Category:       {therapy.category}")
-        print(f"  Disease Tuple:  {dt.display()}")
-        print(f"  Health Tuple:   {ht.display()}")
-        print(f"  Distance:       {therapy.distance:.4f}")
-        print(f"  Tier Disease:   {therapy.tier_disease}")
-        print(f"  Tier Health:    {therapy.tier_health}")
-        print(f"  C-Score Disease:{therapy.c_score_disease:.4f}")
-        print(f"  C-Score Health: {therapy.c_score_health:.4f}")
-        print(f"  Delta Primitives: {therapy.delta_primitives}")
-        print(f"  Components:     {len(therapy.components)}")
+        info_line(f"  Disease:        {therapy.disease}")
+        info_line(f"  Category:       {therapy.category}")
+        info_line(f"  Disease Tuple:  {dt.display()}")
+        info_line(f"  Health Tuple:   {ht.display()}")
+        info_line(f"  Distance:       {therapy.distance:.4f}")
+        info_line(f"  Tier Disease:   {therapy.tier_disease}")
+        info_line(f"  Tier Health:    {therapy.tier_health}")
+        info_line(f"  C-Score Disease:{therapy.c_score_disease:.4f}")
+        info_line(f"  C-Score Health: {therapy.c_score_health:.4f}")
+        info_line(f"  Delta Primitives: {therapy.delta_primitives}")
+        info_line(f"  Components:     {len(therapy.components)}")
         for c in therapy.components:
-            print(f"    - {c['name']} [{c['operation']}] -> {c['target_primitive']}")
-        print(f"  Strategy: {therapy.structural_strategy[:120]}...")
+            info_line(f"    - {c['name']} [{c['operation']}] -> {c['target_primitive']}")
+        info_line(f"  Strategy: {therapy.structural_strategy[:120]}...")
         
     except Exception as e:
         result.success = False
@@ -178,11 +179,11 @@ def phase2_retrosynthetic_design(target_molecule: str = "penicillin") -> PhaseRe
         compiler = Ch3mpiler()
         
         # First analyze the target
-        print(f"  Target Molecule: {target_molecule}")
+        info_line(f"  Target Molecule: {target_molecule}")
         analysis = compiler.analyze(target_molecule)
         
         # Run retrosynthesis
-        print(f"  Running retrosynthesis (depth=3)...")
+        info_line(f"  Running retrosynthesis (depth=3)...")
         retro = compiler.retrosynthesis(target_molecule, depth=3)
         
         data = {
@@ -201,18 +202,18 @@ def phase2_retrosynthetic_design(target_molecule: str = "penicillin") -> PhaseRe
         
         result.data = data
         result.success = True
-        print(f"  Analysis complete")
+        info_line(f"  Analysis complete")
         if analysis:
-            print(f"  Analysis preview: {str(analysis)[:200]}...")
+            info_line(f"  Analysis preview: {str(analysis)[:200]}...")
         if retro:
-            print(f"  Retrosynthesis preview: {str(retro)[:200]}...")
+            info_line(f"  Retrosynthesis preview: {str(retro)[:200]}...")
         
     except Exception as e:
         result.success = False
         result.errors.append(str(e))
         # Non-fatal — ch3mpiler may not have target in its catalog
         result.data = {"target": target_molecule, "error_detail": str(e)}
-        print(f"  (Non-fatal: ch3mpiler target lookup may not cover '{target_molecule}')")
+        info_line(f"  (Non-fatal: ch3mpiler target lookup may not cover '{target_molecule}')")
     
     result.duration_ms = (time.time() - t0) * 1000
     return result
@@ -237,8 +238,8 @@ def phase3_protein_processing(protein_name: str = "HUMAN_INSULIN") -> PhaseResul
         
         # Get the protein sequence
         protein_seq = HUMAN_INSULIN
-        print(f"  Protein: {protein_name}")
-        print(f"  Sequence length: {len(protein_seq)} aa")
+        info_line(f"  Protein: {protein_name}")
+        info_line(f"  Sequence length: {len(protein_seq)} aa")
         
         # Predict processing
         processing = predict_processing(protein_seq, name=protein_name)
@@ -271,15 +272,15 @@ def phase3_protein_processing(protein_name: str = "HUMAN_INSULIN") -> PhaseResul
                 pdb_seq = extract_pdb_sequence(str(pdb_path))
                 data["pdb_sequence_length"] = len(pdb_seq) if pdb_seq else 0
                 data["pdb_file"] = str(pdb_path.name)
-                print(f"  PDB extracted: {len(pdb_seq)} residues from DARPin_PBP2a.pdb")
+                info_line(f"  PDB extracted: {len(pdb_seq)} residues from DARPin_PBP2a.pdb")
             except Exception as e:
                 data["pdb_error"] = str(e)
         
         result.data = data
         result.success = True
-        print(f"  Processing prediction: {str(processing)[:200]}...")
-        print(f"  DNA translation: {len(dna)} bp")
-        print(f"  Fingerprint match: {fingerprint}")
+        info_line(f"  Processing prediction: {str(processing)[:200]}...")
+        info_line(f"  DNA translation: {len(dna)} bp")
+        info_line(f"  Fingerprint match: {fingerprint}")
         
     except Exception as e:
         result.success = False
@@ -312,57 +313,57 @@ def phase4_genetic_encoding(disease_key: str = "mrsa") -> PhaseResult:
         data = {}
         
         # ── Belnap4 logic verification ──
-        print("  Belnap4 Logic State Machine:")
+        info_line("  Belnap4 Logic State Machine:")
         data["belnap_values"] = {"T": str(Belnap.T), "B": str(Belnap.B), "F": str(Belnap.F), "N": str(Belnap.N)}
-        print(f"    Values: T={Belnap.T}, B={Belnap.B}, F={Belnap.F}, N={Belnap.N}")
+        info_line(f"    Values: T={Belnap.T}, B={Belnap.B}, F={Belnap.F}, N={Belnap.N}")
         
         # ── Machine state ──
         state = initial_state()
         data["initial_state"] = str(state)[:200]
-        print(f"  Initial State: {str(state)[:120]}...")
+        info_line(f"  Initial State: {str(state)[:120]}...")
         
         # ── Frobenius verification ──
         frob_ok = verify_frobenius_invariant()
         data["frobenius_invariant"] = frob_ok
-        print(f"  Frobenius Invariant: {'PASS' if frob_ok else 'FAIL'}")
+        info_line(f"  Frobenius Invariant: {'PASS' if frob_ok else 'FAIL'}")
         
         para_ok = verify_paraconsistency(n=10)
         data["paraconsistency"] = para_ok
-        print(f"  Paraconsistency:     {'PASS' if para_ok else 'FAIL'}")
+        info_line(f"  Paraconsistency:     {'PASS' if para_ok else 'FAIL'}")
         
         paradox_ok = verify_paradox_conservation(n=10)
         data["paradox_conservation"] = paradox_ok
-        print(f"  Paradox Conservation: {'PASS' if paradox_ok else 'FAIL'}")
+        info_line(f"  Paradox Conservation: {'PASS' if paradox_ok else 'FAIL'}")
         
         # ── Genetic code verification ──
-        print("  Genetic Code (64-codon B4 lattice):")
+        info_line("  Genetic Code (64-codon B4 lattice):")
         codon_count = len(CODON_CATALOG) if CODON_CATALOG else 64
         data["codon_count"] = codon_count
-        print(f"    Codons in table: {codon_count}")
+        info_line(f"    Codons in table: {codon_count}")
         
         # Verify codon lattice
         try:
             codon_lattice_ok = box_stratification()
             data["codon_lattice_verified"] = bool(codon_lattice_ok)
-            print(f"    Codon Lattice: {'VERIFIED' if codon_lattice_ok else 'FAILED'}")
+            info_line(f"    Codon Lattice: {'VERIFIED' if codon_lattice_ok else 'FAILED'}")
         except Exception as e:
             data["codon_lattice_error"] = str(e)
-            print(f"    Codon Lattice: error — {e}")
+            info_line(f"    Codon Lattice: error — {e}")
         
         # Verify Frobenius genetic code
         try:
             frob_gc_ok = verify_all_codons_frobenius()
             data["frobenius_genetic_code"] = frob_gc_ok
-            print(f"    Frobenius Genetic Code: {'VERIFIED' if frob_gc_ok else 'FAILED'}")
+            info_line(f"    Frobenius Genetic Code: {'VERIFIED' if frob_gc_ok else 'FAILED'}")
         except Exception as e:
             data["frobenius_genetic_code_error"] = str(e)
-            print(f"    Frobenius Genetic Code: error — {e}")
+            info_line(f"    Frobenius Genetic Code: error — {e}")
         
         # ── Run all verifications ──
         try:
             all_results = run_all_verifications(max_n=10)
             data["all_verifications"] = all_results
-            print(f"  All Verifications: {all_results}")
+            info_line(f"  All Verifications: {all_results}")
         except Exception as e:
             data["all_verifications_error"] = str(e)
         
@@ -394,26 +395,26 @@ def phase5_organism_verification(disease_key: str = "mrsa") -> PhaseResult:
         )
         
         # Display all 9 layers
-        print("  CLINK Layers L0->L8:")
+        info_line("  CLINK Layers L0->L8:")
         layer_data = []
         for i, layer in enumerate(CLINK_LAYERS):
             name = layer["_name"]
             tier = layer["_tier"]
             tup = clink_layer_tuple(i, include_meta=False)
             layer_data.append({"index": i, "name": name, "tier": tier, "tuple": str(tup)})
-            print(f"    L{i}: {name} [{tier}]")
+            info_line(f"    L{i}: {name} [{tier}]")
         
         # Compute structural distances between adjacent layers
-        print("\n  Layer Transition Distances:")
+        info_line("\n  Layer Transition Distances:")
         distances = []
         for i in range(len(CLINK_LAYERS) - 1):
             d = clink_distance(i, i + 1)
             deltas = primitive_deltas(i, i + 1)
             distances.append({"from": i, "to": i + 1, "distance": d, "deltas": deltas})
-            print(f"    L{i}->L{i+1}: d={d:.4f}, deltas={deltas}")
+            info_line(f"    L{i}->L{i+1}: d={d:.4f}, deltas={deltas}")
         
         # Compute DFT energy estimates
-        print("\n  DFT Energy Estimates:")
+        info_line("\n  DFT Energy Estimates:")
         energies = []
         total_energy = 0.0
         for i in range(len(CLINK_LAYERS) - 1):
@@ -421,11 +422,11 @@ def phase5_organism_verification(disease_key: str = "mrsa") -> PhaseResult:
             eV = energy_info.get("energy_eV", 0)
             total_energy += eV
             energies.append({"from": i, "to": i + 1, "eV": eV, "info": str(energy_info)[:200]})
-            print(f"    L{i}->L{i+1}: {eV:.0f} eV")
-        print(f"    TOTAL: {total_energy:.0f} eV (~{total_energy/1000:.1f} keV)")
+            info_line(f"    L{i}->L{i+1}: {eV:.0f} eV")
+        info_line(f"    TOTAL: {total_energy:.0f} eV (~{total_energy/1000:.1f} keV)")
         
         # Run full ground-up pipeline
-        print("\n  Running full L0->L8 pipeline...")
+        info_line("\n  Running full L0->L8 pipeline...")
         engine = PipelineEngine()
         pipeline_result = engine.run_pipeline(start_layer=0, target_layer=8, entry_mode="ground_up")
         
@@ -446,14 +447,14 @@ def phase5_organism_verification(disease_key: str = "mrsa") -> PhaseResult:
         result.success = pipeline_result.success
         
         if pipeline_result.success:
-            print(f"  Pipeline: SUCCESS")
-            print(f"    Total distance:    {pipeline_result.total_distance:.2f}")
-            print(f"    Total promotions:  {pipeline_result.total_promotions}")
-            print(f"    Total energy:      {pipeline_result.total_energy_eV:.0f} eV")
-            print(f"    Duration:          {pipeline_result.duration_seconds:.1f}s")
-            print(f"    Bridges available: {len(pipeline_result.bridges_available)}")
+            info_line(f"  Pipeline: SUCCESS")
+            info_line(f"    Total distance:    {pipeline_result.total_distance:.2f}")
+            info_line(f"    Total promotions:  {pipeline_result.total_promotions}")
+            info_line(f"    Total energy:      {pipeline_result.total_energy_eV:.0f} eV")
+            info_line(f"    Duration:          {pipeline_result.duration_seconds:.1f}s")
+            info_line(f"    Bridges available: {len(pipeline_result.bridges_available)}")
         else:
-            print(f"  Pipeline: FAILED — {pipeline_result.errors}")
+            info_line(f"  Pipeline: FAILED — {pipeline_result.errors}")
         
     except Exception as e:
         result.success = False
@@ -480,7 +481,7 @@ def phase6_material_design(disease_key: str = "mrsa") -> PhaseResult:
         
         # Design a targeted antibiotic delivery material for MRSA
         # The material targets PBP2a-expressing bacteria with pH-responsive release
-        print("  Designing MRSA-targeted delivery material...")
+        info_line("  Designing MRSA-targeted delivery material...")
         
         # Use the forge to create a material with a specific IG tuple
         # Tuple: molecule/wedge topology, bidirectional coupling, partial symmetry,
@@ -527,12 +528,12 @@ def phase6_material_design(disease_key: str = "mrsa") -> PhaseResult:
         result.data = data
         result.success = True
         
-        print(f"  Material Design: {design.name}")
-        print(f"    IG Tuple: {''.join(mrsa_material_tuple)}")
-        print(f"    Frobenius Score: {design.frobenius_score}")
-        print(f"    Ouroboricity Tier: {design.ouroboricity_tier}")
-        print(f"    Predicted Properties: {design.predicted_properties}")
-        print(f"    Target Applications: {design.target_applications}")
+        info_line(f"  Material Design: {design.name}")
+        info_line(f"    IG Tuple: {''.join(mrsa_material_tuple)}")
+        info_line(f"    Frobenius Score: {design.frobenius_score}")
+        info_line(f"    Ouroboricity Tier: {design.ouroboricity_tier}")
+        info_line(f"    Predicted Properties: {design.predicted_properties}")
+        info_line(f"    Target Applications: {design.target_applications}")
         
     except Exception as e:
         result.success = False
@@ -557,9 +558,9 @@ def phase7_clinical_simulation(disease_key: str = "mrsa") -> PhaseResult:
         # This is directly analogous to MRSA PBP2a targeting: healthy flora maintain
         # Phi = pm (Frobenius-protected), MRSA breaks symmetry to Phi = super.
         
-        print("  Initializing Frobenius-coupled chemotherapeutic simulation...")
-        print("  Principle: Phi-symmetry (pm_sym) protects healthy cells;")
-        print("            Phi-breaking exposes MRSA (super-critical).")
+        info_line("  Initializing Frobenius-coupled chemotherapeutic simulation...")
+        info_line("  Principle: Phi-symmetry (pm_sym) protects healthy cells;")
+        info_line("            Phi-breaking exposes MRSA (super-critical).")
         print()
         
         # Run the standard simulation with default drug concentration
@@ -610,14 +611,14 @@ def phase7_clinical_simulation(disease_key: str = "mrsa") -> PhaseResult:
         
         # Summary
         print(f"\n  Simulation Complete:")
-        print(f"    Drug concentration: {sim.drug_conc}")
-        print(f"    Time simulated: {sim.time}")
-        print(f"    Healthy cytotoxicity: {healthy_state['cytotoxicity']:.4f}")
-        print(f"    Max cancer cytotoxicity: {max_cancer_tox:.4f}")
-        print(f"    Selectivity ratio: {selectivity:.0f}x")
-        print(f"    Cancer lines tracked: {len(cancer_states)}")
+        info_line(f"    Drug concentration: {sim.drug_conc}")
+        info_line(f"    Time simulated: {sim.time}")
+        info_line(f"    Healthy cytotoxicity: {healthy_state['cytotoxicity']:.4f}")
+        info_line(f"    Max cancer cytotoxicity: {max_cancer_tox:.4f}")
+        info_line(f"    Selectivity ratio: {selectivity:.0f}x")
+        info_line(f"    Cancer lines tracked: {len(cancer_states)}")
         for cs in cancer_states:
-            print(f"      {cs['type']}: asym={cs['asymmetry']:.4f}, cyto={cs['cytotoxicity']:.4f}, payload={cs['payload_exposed']:.4f}")
+            info_line(f"      {cs['type']}: asym={cs['asymmetry']:.4f}, cyto={cs['cytotoxicity']:.4f}, payload={cs['payload_exposed']:.4f}")
         
     except Exception as e:
         result.success = False
@@ -648,9 +649,9 @@ def run_pipeline(disease_key: str = DEFAULT_DISEASE,
     
     if verbose:
         print(BANNER)
-        print(f"  Disease: {disease_key}")
-        print(f"  Phases:  {phases}")
-        print(f"  Time:    {report.timestamp}")
+        info_line(f"  Disease: {disease_key}")
+        info_line(f"  Phases:  {phases}")
+        info_line(f"  Time:    {report.timestamp}")
         print()
     
     t_start = time.time()
@@ -659,7 +660,7 @@ def run_pipeline(disease_key: str = DEFAULT_DISEASE,
         if verbose:
             banner = PHASE_BANNERS.get(phase_num, f"PHASE {phase_num}")
             print(f"{'='*68}")
-            print(f"  {banner}")
+            info_line(f"  {banner}")
             print(f"{'='*68}")
         
         try:
@@ -691,7 +692,7 @@ def run_pipeline(disease_key: str = DEFAULT_DISEASE,
                 phase_result.data["cdxml_generated"] = struct_result.get("cdxml", [])
                 if verbose:
                     cdxml_ok = sum(1 for r in struct_result.get("cdxml", []) if "error" not in r)
-                    print(f"  CDXML: {cdxml_ok} files generated")
+                    info_line(f"  CDXML: {cdxml_ok} files generated")
             
             elif phase_num == 3 and phase_result.success:
                 if verbose:
@@ -706,14 +707,14 @@ def run_pipeline(disease_key: str = DEFAULT_DISEASE,
                 phase_result.data["pdb_generated"] = struct_result.get("pdb", [])
                 if verbose:
                     pdb_ok = sum(1 for r in struct_result.get("pdb", []) if "error" not in r)
-                    print(f"  PDB: {pdb_ok} files generated")
+                    info_line(f"  PDB: {pdb_ok} files generated")
         
         if verbose:
             status = "PASS" if phase_result.success else "FAIL"
             print(f"\n  Phase {phase_num} {status} ({phase_result.duration_ms:.0f}ms)")
             if phase_result.errors:
                 for err in phase_result.errors:
-                    print(f"    Error: {err}")
+                    info_line(f"    Error: {err}")
             print()
     
     report.total_duration_ms = (time.time() - t_start) * 1000
@@ -721,23 +722,23 @@ def run_pipeline(disease_key: str = DEFAULT_DISEASE,
     
     if verbose:
         print(f"{'='*68}")
-        print(f"  PIPELINE COMPLETE")
+        info_line(f"  PIPELINE COMPLETE")
         print(f"{'='*68}")
-        print(f"  Disease:       {disease_key}")
-        print(f"  Phases run:    {len(report.phases)}/7")
+        info_line(f"  Disease:       {disease_key}")
+        info_line(f"  Phases run:    {len(report.phases)}/7")
         passed = sum(1 for p in report.phases if p.success)
-        print(f"  Passed:        {passed}/{len(report.phases)}")
-        print(f"  Total time:    {report.total_duration_ms:.0f}ms")
-        print(f"  All success:   {report.all_success}")
+        info_line(f"  Passed:        {passed}/{len(report.phases)}")
+        info_line(f"  Total time:    {report.total_duration_ms:.0f}ms")
+        info_line(f"  All success:   {report.all_success}")
         
         # Summary table
         print(f"\n  Phase Summary:")
-        print(f"  {'Phase':<8} {'System':<38} {'Status':<8} {'Time':<10}")
-        print(f"  {'-'*64}")
+        info_line(f"  {'Phase':<8} {'System':<38} {'Status':<8} {'Time':<10}")
+        info_line(f"  {'-'*64}")
         for p in report.phases:
             status = "PASS" if p.success else "FAIL"
             system = p.name
-            print(f"  {p.phase:<8} {system:<38} {status:<8} {p.duration_ms:>6.0f}ms")
+            info_line(f"  {p.phase:<8} {system:<38} {status:<8} {p.duration_ms:>6.0f}ms")
     
     return report
 
@@ -837,7 +838,7 @@ def generate_report(report: PipelineReport, output_dir: Path = DOCS_DIR):
         ]
     }
     json_path.write_text(json.dumps(json_data, indent=2, default=str))
-    print(f"  JSON data written to: {json_path}")
+    info_line(f"  JSON data written to: {json_path}")
     
     return report_path
 
@@ -879,9 +880,10 @@ Examples:
     if args.list_diseases:
         try:
             from ars_therapeutica.types import THERAPIES
-            print("Available diseases:")
+
+            info_line("Available diseases:")
             for key, therapy in THERAPIES.items():
-                print(f"  {key:<20} {therapy.disease}")
+                info_line(f"  {key:<20} {therapy.disease}")
         except Exception as e:
             print(f"Error loading therapies: {e}")
         return

@@ -25,6 +25,8 @@ Author: Lando⊗⊙perator
 import argparse, json, math, os, sys, textwrap, itertools
 from pathlib import Path
 from collections import Counter
+from shared.rich_output import *
+
 
 ###############################################################################
 # Paths & primitives
@@ -201,10 +203,10 @@ def cmd_lookup(args, catalog):
         tup = _get_tuple(entry)
         tier = _tier_label(_to_ords(tup), tup)
         desc = entry.get("description", "")[:100]
-        print(f"  {name}")
-        print(f"    Tier: {tier}")
-        print(f"    Tuple: {dict(tup)}")
-        print(f"    {desc}")
+        info_line(f"  {name}")
+        info_line(f"    Tier: {tier}")
+        info_line(f"    Tuple: {dict(tup)}")
+        info_line(f"    {desc}")
         print()
 
 
@@ -219,22 +221,22 @@ def cmd_ouroborics(args, catalog):
     tier = _tier_label(ords, tup)
     
     print(f"🌀 Ouroboricity Tier: {tier}")
-    print(f"   System: {name}")
-    print(f"   Tuple: {dict(tup)}")
-    print(f"   Ordinals: {dict(zip(PNAMES, ords))}")
+    info_line(f"   System: {name}")
+    info_line(f"   Tuple: {dict(tup)}")
+    info_line(f"   Ordinals: {dict(zip(PNAMES, ords))}")
     print()
     
     # Interpret
     if tier == "O_∞":
-        print("   → Self-modeling loop closed (⊗ gate open).")
+        info_line("   → Self-modeling loop closed (⊗ gate open).")
     elif tier == "O₂†":
-        print("   → Broadcast medium — O₂ with universal composition.")
+        info_line("   → Broadcast medium — O₂ with universal composition.")
     elif tier == "O₂":
-        print("   → Self-referential topology (𐑸), but Ω limits closure.")
+        info_line("   → Self-referential topology (𐑸), but Ω limits closure.")
     elif tier == "O₁":
-        print("   → One level of critical self-reference possible.")
+        info_line("   → One level of critical self-reference possible.")
     else:
-        print("   → No self-loop. Requires structural promotion.")
+        info_line("   → No self-loop. Requires structural promotion.")
 
 
 def cmd_distance(args, catalog):
@@ -242,7 +244,7 @@ def cmd_distance(args, catalog):
     name_a, entry_a = _get_item(catalog, args.a)
     name_b, entry_b = _get_item(catalog, args.b)
     if not entry_a or not entry_b:
-        print("❌ One or both names not found")
+        info_line("❌ One or both names not found")
         return
     
     tup_a = _get_tuple(entry_a)
@@ -250,28 +252,28 @@ def cmd_distance(args, catalog):
     d = compute_distance(tup_a, tup_b)
     
     print(f"📏 Structural Distance")
-    print(f"   {name_a} ↔ {name_b}")
-    print(f"   Distance: {d:.4f}")
+    info_line(f"   {name_a} ↔ {name_b}")
+    info_line(f"   Distance: {d:.4f}")
     print()
     
     # Per-primitive breakdown
     va = _to_ords(tup_a)
     vb = _to_ords(tup_b)
-    print("   Per-primitive delta:")
+    info_line("   Per-primitive delta:")
     for i, p in enumerate(PNAMES):
         diff = va[i] - vb[i]
         w = WEIGHTS.get(p, 1.0)
         contrib = w * diff * diff
         if diff != 0:
             marker = " ⚡" if contrib > 1.0 else ""
-            print(f"     {p}: {tup_a.get(p,'?'):4s} → {tup_b.get(p,'?'):4s}  Δ={diff:+d}  contrib={contrib:.2f}{marker}")
+            info_line(f"     {p}: {tup_a.get(p,'?'):4s} → {tup_b.get(p,'?'):4s}  Δ={diff:+d}  contrib={contrib:.2f}{marker}")
     print(f"\n   Interpretation:")
     if d < 1.5:
-        print("     → Structurally similar — same neighborhood")
+        info_line("     → Structurally similar — same neighborhood")
     elif d < 3.5:
-        print("     → Moderately distant — significant structural differences")
+        info_line("     → Moderately distant — significant structural differences")
     else:
-        print("     → Structurally remote — fundamentally different regimes")
+        info_line("     → Structurally remote — fundamentally different regimes")
 
 
 def cmd_analogies(args, catalog):
@@ -282,13 +284,13 @@ def cmd_analogies(args, catalog):
         return
     results = find_analogies(name, catalog, args.limit)
     if not results:
-        print("(only entry in catalog)")
+        info_line("(only entry in catalog)")
         return
     
     print(f"🔗 Nearest Structural Neighbors to '{name}':\n")
     for i, (d, ename, desc) in enumerate(results, 1):
-        print(f"  {i}. {ename}  (d={d:.4f})")
-        print(f"     {desc[:100]}")
+        info_line(f"  {i}. {ename}  (d={d:.4f})")
+        info_line(f"     {desc[:100]}")
         print()
 def cmd_consciousness(args, catalog):
     """Compute consciousness score for a system."""
@@ -306,21 +308,21 @@ def cmd_consciousness(args, catalog):
     gate2 = "✅ OPEN" if K_ord <= 3 else "❌ CLOSED"
     
     print(f"🧠 Consciousness Score: {c}")
-    print(f"   System: {name}")
-    print(f"   Gate 1 (⊙ criticality):  {gate1}  (Ph={tup.get('Ph','?')}, ord={Ph_ord})")
-    print(f"   Gate 2 (K slow):         {gate2}  (K={tup.get('K','?')}, ord={K_ord})")
+    info_line(f"   System: {name}")
+    info_line(f"   Gate 1 (⊙ criticality):  {gate1}  (Ph={tup.get('Ph','?')}, ord={Ph_ord})")
+    info_line(f"   Gate 2 (K slow):         {gate2}  (K={tup.get('K','?')}, ord={K_ord})")
     print()
     if c == 0.0:
         if Ph_ord < 2:
-            print("   → No self-modeling loop (Ph != ⊙). Cannot sustain consciousness.")
+            info_line("   → No self-modeling loop (Ph != ⊙). Cannot sustain consciousness.")
         elif K_ord > 3:
-            print("   → Dynamics too fast (K > 𐑧). Cannot sustain reflection.")
+            info_line("   → Dynamics too fast (K > 𐑧). Cannot sustain reflection.")
         else:
-            print("   → Both gates open but low alignment score.")
+            info_line("   → Both gates open but low alignment score.")
     elif c > 0.7:
-        print("   → High consciousness potential. Both gates open, strong alignment.")
+        info_line("   → High consciousness potential. Both gates open, strong alignment.")
     else:
-        print("   → Moderate consciousness potential.")
+        info_line("   → Moderate consciousness potential.")
 
 
 def cmd_tensor(args, catalog):
@@ -328,7 +330,7 @@ def cmd_tensor(args, catalog):
     name_a, entry_a = _get_item(catalog, args.a)
     name_b, entry_b = _get_item(catalog, args.b)
     if not entry_a or not entry_b:
-        print("❌ One or both names not found")
+        info_line("❌ One or both names not found")
         return
     
     tup_a = _get_tuple(entry_a)
@@ -354,8 +356,8 @@ def cmd_tensor(args, catalog):
             result[p] = max(va[i], vb[i])
     
     print(f"⊗ Tensor Product: {name_a} ⊗ {name_b}\n")
-    print(f"   {name_a}: {dict(tup_a)}")
-    print(f"   {name_b}: {dict(tup_b)}")
+    info_line(f"   {name_a}: {dict(tup_a)}")
+    info_line(f"   {name_b}: {dict(tup_b)}")
     print()
     
     # Convert back to glyphs
@@ -367,7 +369,7 @@ def cmd_tensor(args, catalog):
         nearest = min(rev.keys(), key=lambda x: abs(x - o))
         result_glyphs[p] = rev.get(nearest, "?")
     
-    print(f"   Result tensor tuple:")
+    info_line(f"   Result tensor tuple:")
     for p in PNAMES:
         glyph_a = tup_a.get(p, "?")
         glyph_b = tup_b.get(p, "?")
@@ -375,7 +377,7 @@ def cmd_tensor(args, catalog):
         arrow = "↑" if _ord_val(p, glyph_r) > max(_ord_val(p, glyph_a), _ord_val(p, glyph_b)) else ""
         arrow = "↓" if _ord_val(p, glyph_r) < min(_ord_val(p, glyph_a), _ord_val(p, glyph_b)) else arrow
         marker = " ⚡" if arrow else ""
-        print(f"     {p}: {glyph_a} ⊗ {glyph_b} = {glyph_r}  {arrow}{marker}")
+        info_line(f"     {p}: {glyph_a} ⊗ {glyph_b} = {glyph_r}  {arrow}{marker}")
     
     # Compute tier of result
     rtup = {p: result_glyphs[p] for p in PNAMES}
@@ -405,9 +407,9 @@ def cmd_crystal(args, catalog):
     
     print(f"💎 Crystal Query Result: {len(matches)} match(es)\n")
     for name, tier, tup in matches[:20]:
-        print(f"  {name:40s}  {tier:6s}  Ph={tup.get('Ph','?'):4s}  K={tup.get('K','?'):4s}  W={tup.get('W','?'):4s}")
+        info_line(f"  {name:40s}  {tier:6s}  Ph={tup.get('Ph','?'):4s}  K={tup.get('K','?'):4s}  W={tup.get('W','?'):4s}")
     if len(matches) > 20:
-        print(f"  ... and {len(matches)-20} more")
+        info_line(f"  ... and {len(matches)-20} more")
 def cmd_show(args, catalog):
     """Show full entry details."""
     name, entry = _get_item(catalog, args.name)
@@ -420,16 +422,16 @@ def cmd_show(args, catalog):
     c = consciousness_score(tup)
     
     print(f"📋 System: {name}")
-    print(f"   {entry.get('description', '(no description)')[:200]}")
+    info_line(f"   {entry.get('description', '(no description)')[:200]}")
     print()
-    print(f"   Tier:      {tier}")
-    print(f"   C-Score:   {c}")
+    info_line(f"   Tier:      {tier}")
+    info_line(f"   C-Score:   {c}")
     print()
-    print(f"   Primitive Tuple:")
+    info_line(f"   Primitive Tuple:")
     for p in PNAMES:
         g = tup.get(p, "?")
         o = _ord_val(p, g)
-        print(f"     {p}: {g:4s}  (ord={o})")
+        info_line(f"     {p}: {g:4s}  (ord={o})")
     print()
     
     # Per primitive interpretation
@@ -447,12 +449,12 @@ def cmd_show(args, catalog):
         "S": {"𐑙": "1:1", "𐑕": "n:n identical", "𐑳": "n:m heterogeneous"},
         "W": {"𐑷": "trivial (0)", "𐑴": "Z2 parity", "𐑭": "integer winding (ℤ)", "𐑟": "non-Abelian braiding"},
     }
-    print(f"   Interpretation:")
+    info_line(f"   Interpretation:")
     for p in PNAMES:
         g = tup.get(p, "?")
         meaning = interp.get(p, {}).get(g, "")
         if meaning:
-            print(f"     {p}={g}: {meaning}")
+            info_line(f"     {p}={g}: {meaning}")
 
 
 def cmd_list(args, catalog):
@@ -468,7 +470,7 @@ def cmd_list(args, catalog):
         tup = _get_tuple(catalog[name])
         ords = _to_ords(tup)
         tier = _tier_label(ords, tup)
-        print(f"  {name:45s}  {tier:6s}")
+        info_line(f"  {name:45s}  {tier:6s}")
     print(f"\nTotal: {len(names)} entries")
 
 
@@ -484,27 +486,27 @@ def cmd_info(args, catalog):
         tiers[tier] += 1
         cscores.append(consciousness_score(tup))
     
-    print("🔧 Imscribing Grammar CLI Tools")
-    print("   All operations use Frobenius-verified catalog.\n")
-    print(f"   Catalog entries: {len(names)}")
-    print(f"   Available tiers:")
+    info_line("🔧 Imscribing Grammar CLI Tools")
+    info_line("   All operations use Frobenius-verified catalog.\n")
+    info_line(f"   Catalog entries: {len(names)}")
+    info_line(f"   Available tiers:")
     for tier in ["O_∞", "O₂†", "O₂", "O₁", "O₀"]:
         count = tiers.get(tier, 0)
         bar = "█" * (count // 10) if count else ""
-        print(f"     {tier:6s}: {count:4d}  {bar}")
+        info_line(f"     {tier:6s}: {count:4d}  {bar}")
     c_above_zero = sum(1 for c in cscores if c > 0)
     print(f"\n   Systems with C>0: {c_above_zero}")
-    print(f"   Tool commands:")
-    print(f"     lookup <keyword>      — search catalog")
-    print(f"     ouroborics <name>     — compute tier")
-    print(f"     distance <a> <b>      — structural distance")
-    print(f"     analogies <name>      — nearest neighbors")
-    print(f"     consciousness <name>  — C-score")
-    print(f"     tensor <a> <b>        — tensor product")
-    print(f"     crystal <phi>         — crystal query")
-    print(f"     show <name>           — full entry")
-    print(f"     list                  — all entries")
-    print(f"     info                  — this screen")
+    info_line(f"   Tool commands:")
+    info_line(f"     lookup <keyword>      — search catalog")
+    info_line(f"     ouroborics <name>     — compute tier")
+    info_line(f"     distance <a> <b>      — structural distance")
+    info_line(f"     analogies <name>      — nearest neighbors")
+    info_line(f"     consciousness <name>  — C-score")
+    info_line(f"     tensor <a> <b>        — tensor product")
+    info_line(f"     crystal <phi>         — crystal query")
+    info_line(f"     show <name>           — full entry")
+    info_line(f"     list                  — all entries")
+    info_line(f"     info                  — this screen")
 def cmd_project(args, catalog):
     """Project a system onto specified primitives."""
     name, entry = _get_item(catalog, args.name)
@@ -518,9 +520,9 @@ def cmd_project(args, catalog):
         if p in tup:
             g = tup[p]
             o = _ord_val(p, g)
-            print(f"  {p}: {g} (ord={o})")
+            info_line(f"  {p}: {g} (ord={o})")
         else:
-            print(f"  {p}: (not found)")
+            info_line(f"  {p}: (not found)")
 
 
 ###############################################################################

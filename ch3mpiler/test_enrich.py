@@ -5,21 +5,23 @@ sys.path.insert(0, '/home/mrnob0dy666/imsgct/red-hot_rebis')
 sys.path.insert(0, '.')
 import compiler
 from compiler import Ch3mpiler, FG
+from shared.rich_output import *
 
-print('=== FG EXTENSIONS ===')
+
+info_line("=== FG EXTENSIONS ===")
 for fg in ['nitro', 'cyclic', 'diazonium']:
-    print(f'  {fg}: {fg in FG}')
+    info_line(f'  {fg}: {fg in FG}')
 
 print()
-print('=== BENZENE -> PARACETAMOL ===')
+info_line("=== BENZENE -> PARACETAMOL ===")
 ch = Ch3mpiler()
 result = ch.path_to_target('benzene', 'paracetamol', depth=4)
 print(f'Path found: {result.get("found")}')
 print(f'Match type: {result.get("match_type")}')
 if result.get('found'):
     for step in result.get('path', []):
-        print(f'  Step {step["step"]}: {step["fg1"]} + {step["fg2"]} -> {step["product"]}')
-        print(f'    Bond: {step["bond"]}  ({step["reaction"]})')
+        info_line(f'  Step {step["step"]}: {step["fg1"]} + {step["fg2"]} -> {step["product"]}')
+        info_line(f'    Bond: {step["bond"]}  ({step["reaction"]})')
     print(f'Path length: {result.get("path_length")}')
 else:
-    print('No path found via lattice')
+    info_line("No path found via lattice")

@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """PART 5: Fix generate_organism_design_package mkdir issue."""
 import os
+from shared.rich_output import *
+
 
 PY = "/home/mrnob0dy666/red-hot_rebis/clink/datasets/generators.py"
 
@@ -20,4 +22,4 @@ old2 = "        self.output_dir.mkdir(parents=True, exist_ok=True)"
 with open(PY, 'w') as f:
     f.write(content)
 
-print("Fixed mkdir call")
+info_line("Fixed mkdir call")

@@ -18,6 +18,7 @@ sys.path.insert(0, str(_ROOT / "shared"))
 sys.path.insert(0, str(_ROOT))
 
 from elem2imasm import derive_tuple, SH, CRIT, ELEMENTS
+from shared.rich_output import *
 
 # Shavian ordinal lookup
 SH_ORD = {c: i for i, c in enumerate(SH)}
@@ -156,10 +157,10 @@ def analyze_chain(series_key):
 def print_chain(series_key):
     name, steps = analyze_chain(series_key)
     print(f"\n{'═'*70}")
-    print(f"  {name}")
+    info_line(f"  {name}")
     print(f"{'═'*70}")
-    print(f"  {'Step':<4} {'Isotope':<10} {'T½':<12} {'Mode':<6} {'Frob':<6} {'Δ':>4}  IMASM word")
-    print(f"  {'─'*4} {'─'*10} {'─'*12} {'─'*6} {'─'*6} {'─':>4}  {'─'*12}")
+    info_line(f"  {'Step':<4} {'Isotope':<10} {'T½':<12} {'Mode':<6} {'Frob':<6} {'Δ':>4}  IMASM word")
+    info_line(f"  {'─'*4} {'─'*10} {'─'*12} {'─'*6} {'─'*6} {'─':>4}  {'─'*12}")
 
     winding = 0
     for i, s in enumerate(steps):
@@ -168,14 +169,14 @@ def print_chain(series_key):
         stable_tag = '  ← FIXED POINT' if s['stable'] else ''
         if not s['stable']:
             winding += 1
-        print(f"  {i:<4} {s['isotope']:<10} {s['half_life']:<12} {s['mode']:<6} {frob_sym:<6} {dist_str}  {s['word']}{stable_tag}")
+        info_line(f"  {i:<4} {s['isotope']:<10} {s['half_life']:<12} {s['mode']:<6} {frob_sym:<6} {dist_str}  {s['word']}{stable_tag}")
 
     print()
-    print(f"  Windings to closure: {winding}")
+    info_line(f"  Windings to closure: {winding}")
     # Find first Frobenius-exact step
     for i, s in enumerate(steps):
         if s['frobenius']:
-            print(f"  Frobenius first fires at step {i}: {s['isotope']} ({s['half_life']})")
+            info_line(f"  Frobenius first fires at step {i}: {s['isotope']} ({s['half_life']})")
             break
 
 def print_all_series():
@@ -185,10 +186,10 @@ def print_all_series():
 def compare_series():
     """Side-by-side winding counts and first-Frobenius step for all series."""
     print(f"\n{'═'*60}")
-    print("  Decay series comparison")
+    info_line("  Decay series comparison")
     print(f"{'═'*60}")
-    print(f"  {'Series':<10} {'Windings':>9}  {'Frob fires at':>20}  First stable daughter")
-    print(f"  {'─'*10} {'─'*9}  {'─'*20}  {'─'*20}")
+    info_line(f"  {'Series':<10} {'Windings':>9}  {'Frob fires at':>20}  First stable daughter")
+    info_line(f"  {'─'*10} {'─'*9}  {'─'*20}  {'─'*20}")
     for key, data in DECAY_SERIES.items():
         _, steps = analyze_chain(key)
         windings = sum(1 for s in steps if not s['stable'])
@@ -196,12 +197,13 @@ def compare_series():
         stable = next((s for s in steps if s['stable']), None)
         frob_label = f"{first_frob['isotope']} (step {steps.index(first_frob)})" if first_frob else 'never'
         stable_label = stable['isotope'] if stable else '?'
-        print(f"  {key:<10} {windings:>9}  {frob_label:>20}  {stable_label}")
+        info_line(f"  {key:<10} {windings:>9}  {frob_label:>20}  {stable_label}")
 
 # ─── CLI ───────────────────────────────────────────────────────────────────────
 
 def main():
     import argparse
+
     p = argparse.ArgumentParser(
         description='Nuclear decay as IMASM winding toward Frobenius fixed point.'
     )
@@ -213,9 +215,9 @@ def main():
     args = p.parse_args()
 
     if args.list:
-        print("Available decay series:")
+        info_line("Available decay series:")
         for k, v in DECAY_SERIES.items():
-            print(f"  {k:<10}  {v['name']}")
+            info_line(f"  {k:<10}  {v['name']}")
         return
 
     if args.compare or (not args.series and not args.all):

@@ -10,7 +10,9 @@ Author: Lando tensor odot perator
 """
 import sys, os, numpy as np
 sys.path.insert(0, '/home/mrnob0dy666/imsgct/red-hot_rebis')
+from shared.rich_output import *
 from materials.sophick_forge import (
+
     EagleCycleProtocol, EagleMaterial, EagleCycleParams,
     SOPHICK_MERCURY, OUROBORIC_O2
 )

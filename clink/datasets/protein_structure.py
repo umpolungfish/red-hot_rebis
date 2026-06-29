@@ -22,6 +22,7 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Any
 from dataclasses import dataclass, field
 from collections import defaultdict
+from shared.rich_output import *
 
 REBIS_ROOT = Path(__file__).parent.parent.parent.absolute()
 
@@ -368,6 +369,7 @@ class BackboneBuilder:
 
         # Seed random from sequence so same sequence → same coordinates
         import hashlib as _hashlib
+
         _seq_hash = int(_hashlib.md5(self.sequence.encode()).hexdigest(), 16) % (2 ** 31)
         random.seed(_seq_hash)
 

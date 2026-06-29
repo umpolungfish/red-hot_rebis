@@ -12,6 +12,8 @@ import numpy as np
 import json, math
 import os
 from pathlib import Path
+from shared.rich_output import *
+
 
 class SelfHealingComposite:
     """Model self-healing efficiency of ouroboric composite material."""
@@ -168,24 +170,24 @@ class EternalMemorySim:
         }
 if __name__ == "__main__":
     print("=" * 60)
-    print("MATERIALS SIMULATIONS")
+    info_line("MATERIALS SIMULATIONS")
     print("=" * 60)
     
     # 1. Self-Healing Composite
-    print("\n--- Ouroboric Composite: Crack Healing ---")
+    info_line("\n--- Ouroboric Composite: Crack Healing ---")
     composite = SelfHealingComposite()
     results = composite.simulate_crack_propagation(crack_length_mm=5.0, cycles=7)
     for r in results:
-        print(f"  Cycle {r['cycle']}: recovery={r['structural_recovery']:.2f}, "
-              f"capsules={r['capsules_remaining']:.2f}, damage={r['cumulative_damage']:.3f}")
+        info_line(f"  Cycle {r['cycle']}: recovery={r['structural_recovery']:.2f}, "
+f"capsules={r['capsules_remaining']:.2f}, damage={r['cumulative_damage']:.3f}")
     
     fatigue = composite.simulate_bending_fatigue(cycles=1000)
-    print("\n--- Bending Fatigue (1000 cycles) ---")
+    info_line("\n--- Bending Fatigue (1000 cycles) ---")
     for entry in fatigue:
-        print(f"  Cycle {entry['cycle']}: modulus={entry['modulus_GPa']} GPa, retention={entry['retention_pct']}%")
+        info_line(f"  Cycle {entry['cycle']}: modulus={entry['modulus_GPa']} GPa, retention={entry['retention_pct']}%")
     
     # 2. Eternal Memory Polymer (FIXED)
-    print("\n--- Eternal Memory Polymer ---")
+    info_line("\n--- Eternal Memory Polymer ---")
     # FIX: monomers=264 to hold 33 bytes (=264 bits)
     mem = EternalMemorySim(monomers=264)
     
@@ -193,23 +195,23 @@ if __name__ == "__main__":
     seq = mem.encode(test_data)
     decoded = mem.decode()
     
-    print(f"  Encoded: {''.join(seq[:40])}...")
-    print(f"  Original ({len(test_data)} bytes): {test_data}")
-    print(f"  Decoded  ({len(decoded)} bytes): {decoded}")
-    print(f"  Match: {decoded == test_data}")
+    info_line(f"  Encoded: {''.join(seq[:40])}...")
+    info_line(f"  Original ({len(test_data)} bytes): {test_data}")
+    info_line(f"  Decoded  ({len(decoded)} bytes): {decoded}")
+    info_line(f"  Match: {decoded == test_data}")
     
     # FIX: Quality control check
     qc = mem.quality_check()
-    print(f"  QC passed: {qc['passed']}")
-    print(f"  Double-coupling (final 5): {qc['double_coupling_final_5']}")
-    print(f"  Full-length probability: {qc['full_length_probability']:.4f}")
+    info_line(f"  QC passed: {qc['passed']}")
+    info_line(f"  Double-coupling (final 5): {qc['double_coupling_final_5']}")
+    info_line(f"  Full-length probability: {qc['full_length_probability']:.4f}")
     
     # Test longevity
-    print("\n--- Data Longevity ---")
+    info_line("\n--- Data Longevity ---")
     for years in [100, 1000, 10000, 100000, 1000000]:
         lt = mem.test_longevity(years)
         status = "✓" if lt['data_viable'] else "✗"
-        print(f"  {status} {years:7d} y: BER={lt['estimated_bit_error_rate']:.2e} (half-life={lt['half_life_years']:.0f} y)")
+        info_line(f"  {status} {years:7d} y: BER={lt['estimated_bit_error_rate']:.2e} (half-life={lt['half_life_years']:.0f} y)")
     
     results_data = {
         "composite_healing": results[-1] if results else None,

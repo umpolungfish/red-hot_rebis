@@ -29,6 +29,7 @@ BASE = Path(__file__).parent.parent
 sys.path.insert(0, str(BASE))
 sys.path.insert(0, str(BASE / "rhr_p4rky"))
 
+from shared.rich_output import *
 from ch3mpiler.compiler import (
     Ch3mpiler, find_fgs, get_molecule_type, find_disconnections,
     FG, MOLECULE_FG_DB, FG_TOKENS, bond_product_type, tensor_type,
@@ -47,6 +48,7 @@ try:
     from rhr_p4rky.serpent_rod import SerpentRod
     from rhr_p4rky.genetic_code import STANDARD_CODE, CODON_CATALOG
     from rhr_p4rky.genetics_b4 import nucleotide_to_belnap
+
     SERPENT_OK = True
 except ImportError:
     SERPENT_OK = False
@@ -842,56 +844,56 @@ def main():
     gen = NoveltyGenerator()
 
     print("=" * 70)
-    print("NOVELTY GENERATOR — De Novo Molecule & Protein Design")
+    info_line("NOVELTY GENERATOR — De Novo Molecule & Protein Design")
     print("=" * 70)
 
     # ── Molecules ─────────────────────────────────────────────────
     print(f"\n{'─' * 70}")
-    print("NOVEL MOLECULES (MRSA)")
+    info_line("NOVEL MOLECULES (MRSA)")
     print(f"{'─' * 70}")
 
     mols = gen.generate_molecules("mrsa", count=8)
     print(f"Generated {len(mols)} novel molecules\n")
 
     for i, mol in enumerate(mols[:8]):
-        print(f"  [{i+1}] {mol.name}")
-        print(f"      SMILES: {mol.smiles}")
-        print(f"      FGs: {mol.fg_combination}")
-        print(f"      MW: {mol.mw:.1f}  LogP: {mol.logp:.2f}  "
-              f"ROTB: {mol.rotatable_bonds}  HBD: {mol.hbd}  HBA: {mol.hba}")
-        print(f"      Novelty: {mol.novelty_reason[:100]}...")
+        info_line(f"  [{i+1}] {mol.name}")
+        info_line(f"      SMILES: {mol.smiles}")
+        info_line(f"      FGs: {mol.fg_combination}")
+        info_line(f"      MW: {mol.mw:.1f}  LogP: {mol.logp:.2f}  "
+f"ROTB: {mol.rotatable_bonds}  HBD: {mol.hbd}  HBA: {mol.hba}")
+        info_line(f"      Novelty: {mol.novelty_reason[:100]}...")
         if mol.structural_type:
             fg_str = '; '.join(f'{k}={mol.structural_type.get(k, "?")}'
                               for k in PNAMES)
-            print(f"      Type: <{fg_str}>")
+            info_line(f"      Type: <{fg_str}>")
         print()
 
     # ── Proteins ─────────────────────────────────────────────────
     print(f"{'─' * 70}")
-    print("NOVEL PROTEINS (MRSA)")
+    info_line("NOVEL PROTEINS (MRSA)")
     print(f"{'─' * 70}")
 
     prots = gen.generate_proteins("mrsa", count=5)
     print(f"Generated {len(prots)} novel proteins\n")
 
     for i, prot in enumerate(prots):
-        print(f"  [{i+1}] {prot.name}")
-        print(f"      Length: {prot.length} aa")
-        print(f"      Sequence (first 60): {prot.sequence[:60]}...")
-        print(f"      RNA (first 60): {prot.rna_sequence[:60]}...")
-        print(f"      SS: {prot.secondary_structure[:60]}...")
-        print(f"      MW: {prot.mw:.0f} Da  pI: {prot.pi:.1f}  "
-              f"Hydro: {prot.hydrophobicity:.2f}")
-        print(f"      Novelty: {prot.novelty_reason[:100]}...")
+        info_line(f"  [{i+1}] {prot.name}")
+        info_line(f"      Length: {prot.length} aa")
+        info_line(f"      Sequence (first 60): {prot.sequence[:60]}...")
+        info_line(f"      RNA (first 60): {prot.rna_sequence[:60]}...")
+        info_line(f"      SS: {prot.secondary_structure[:60]}...")
+        info_line(f"      MW: {prot.mw:.0f} Da  pI: {prot.pi:.1f}  "
+f"Hydro: {prot.hydrophobicity:.2f}")
+        info_line(f"      Novelty: {prot.novelty_reason[:100]}...")
         print()
 
     print(f"{'=' * 70}")
-    print("VERDICT: ALL MOLECULES AND PROTEINS ARE GENUINELY NOVEL")
+    info_line("VERDICT: ALL MOLECULES AND PROTEINS ARE GENUINELY NOVEL")
     print(f"{'=' * 70}")
-    print(f"  • {len(mols)} molecules — fragment combinations not in any of")
-    print(f"    the 122 known molecules in the ch3mpiler database")
-    print(f"  • {len(prots)} proteins — de novo designed sequences with")
-    print(f"    no natural template, codon-optimized synthetic RNA")
+    info_line(f"  • {len(mols)} molecules — fragment combinations not in any of")
+    info_line(f"    the 122 known molecules in the ch3mpiler database")
+    info_line(f"  • {len(prots)} proteins — de novo designed sequences with")
+    info_line(f"    no natural template, codon-optimized synthetic RNA")
     print()
 
     return 0

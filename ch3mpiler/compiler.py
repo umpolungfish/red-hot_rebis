@@ -20,6 +20,7 @@ CAS_CACHE_PATH = BASE / "CAS_cache.json"
 sys.path.insert(0, str(BASE.parent))
 
 from shared.primitives import ORDINALS, WEIGHTS, resolve_ordinal_key
+from shared.rich_output import *
 
 # ── Exhaustive functional group database (SMARTS-based) ──
 try:
@@ -84,7 +85,6 @@ SMILES_LOOKUP = {
 
 # ── Rich text formatting ──
 try:
-    from ch3mpiler.rich_output import *
     STYLED = True
 except ImportError:
     STYLED = False
@@ -1730,10 +1730,8 @@ def main():
             print("  ch3mpiler — Retrosynthetic Analysis (grammar-derived)")
             print("=" * 66)
             if tree.get('_resolved_smiles'):
-                from ch3mpiler.rich_output import success_line
                 success_line(f"Target SMILES: {tree['_resolved_smiles']}")
             if tree.get('_smiles_unresolved'):
-                from ch3mpiler.rich_output import error_line
                 error_line("Target name could not be resolved to SMILES - intermediate SMILES are placeholders. Use --smiles to provide exact SMILES.")
             print_retrosynthesis(tree)
         else:

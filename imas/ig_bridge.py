@@ -14,7 +14,9 @@ Adapted from: /home/mrnob0dy666/IMSCRIBr/imas_ig_bridge.py
 """
 
 from typing import Tuple, Dict, List
+from shared.rich_output import *
 from imas.arranger import (
+
     StructuralFingerprint, CANONICAL_FINGERPRINTS, CANONICAL_NAMES,
 )
 
@@ -310,7 +312,7 @@ def structural_signal_score(ig: Tuple[str, ...]) -> float:
 
 if __name__ == '__main__':
     print("=" * 72)
-    print("IMASM → IG STRUCTURAL BRIDGE")
+    info_line("IMASM → IG STRUCTURAL BRIDGE")
     print("=" * 72)
 
     distinct = distinct_canonical_ig_types()
@@ -318,11 +320,11 @@ if __name__ == '__main__':
 
     for ig, names in sorted(distinct.items(), key=lambda x: -len(x[1])):
         label = " + ".join(n.split('_', 1)[1] for n in names)
-        print(f"  {label}:")
-        print(f"    {ig_tuple_str(ig)}")
+        info_line(f"  {label}:")
+        info_line(f"    {ig_tuple_str(ig)}")
         desc = describe_ig(ig)
         if desc:
-            print(f"    [{desc}]")
+            info_line(f"    [{desc}]")
         print()
 
     # Clusters
@@ -331,4 +333,4 @@ if __name__ == '__main__':
         print(f"Clusters at d≤{max_d}: {len(clusters)}")
         for c in clusters:
             if len(c) > 1:
-                print(f"  {' ↔ '.join(n.split('_',1)[1] for n in c)}")
+                info_line(f"  {' ↔ '.join(n.split('_',1)[1] for n in c)}")

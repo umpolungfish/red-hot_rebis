@@ -8,6 +8,8 @@ Full Comparison: Platonic (first-principles) vs Crystallographic Structures
 - Secondary structure comparison
 """
 import sys, os, json, math, urllib.request, numpy as np
+from shared.rich_output import *
+
 
 OUT = os.path.dirname(__file__)
 
@@ -64,7 +66,7 @@ def fetch_pdb(pdb_id):
         with urllib.request.urlopen(req, timeout=30) as r:
             return r.read().decode('utf-8')
     except Exception as e:
-        print(f'  Cannot fetch {pdb_id}: {e}')
+        info_line(f'  Cannot fetch {pdb_id}: {e}')
         return None
 
 # ─── Protein comparison targets ───────────────────────────────────
@@ -75,7 +77,7 @@ TARGETS = {
 }
 
 print("="*65)
-print("PLATONIC vs CRYSTALLOGRAPHIC — FULL STRUCTURAL COMPARISON")
+info_line("PLATONIC vs CRYSTALLOGRAPHIC — FULL STRUCTURAL COMPARISON")
 print("="*65)
 
 all_results = {}
@@ -88,24 +90,24 @@ for name, cfg in TARGETS.items():
     with open(pdb_path) as f:
         plat_text = f.read()
     plat_coords, plat_seq = extract_ca(plat_text, 'A')
-    print(f"  Platonic: {len(plat_seq)} AA, {len(plat_coords)} CA atoms")
-    print(f"  First 30: {plat_seq[:30]}")
+    info_line(f"  Platonic: {len(plat_seq)} AA, {len(plat_coords)} CA atoms")
+    info_line(f"  First 30: {plat_seq[:30]}")
     
     # Fetch crystal structure
     crys_text = fetch_pdb(cfg['pdb'])
     if not crys_text:
-        print(f"  FAILED to fetch {cfg['pdb']}")
+        info_line(f"  FAILED to fetch {cfg['pdb']}")
         all_results[name] = {'error': f'Cannot fetch {cfg["pdb"]}'}
         continue
     
     crys_coords, crys_seq = extract_ca(crys_text, cfg['chain'])
-    print(f"  Crystal ({cfg['pdb']}): {len(crys_seq)} AA, {len(crys_coords)} CA atoms")
-    print(f"  First 30: {crys_seq[:30]}")
+    info_line(f"  Crystal ({cfg['pdb']}): {len(crys_seq)} AA, {len(crys_coords)} CA atoms")
+    info_line(f"  First 30: {crys_seq[:30]}")
     
     # Sequence comparison
     matches = sum(1 for a,b in zip(plat_seq, crys_seq) if a==b)
     identity = matches / max(len(plat_seq), len(crys_seq)) * 100
-    print(f"  Sequence identity: {identity:.1f}% ({matches}/{max(len(plat_seq), len(crys_seq))})")
+    info_line(f"  Sequence identity: {identity:.1f}% ({matches}/{max(len(plat_seq), len(crys_seq))})")
     
     # Align sequences and compute Kabsch RMSD
     # Find common subsequence
@@ -126,10 +128,10 @@ for name, cfg in TARGETS.items():
     # Kabsch RMSD
     try:
         rmsd_kabsch = kabsch_rmsd(plat_use, crys_use)
-        print(f"  Kabsch RMSD ({use_len} residues): {rmsd_kabsch:.2f} Å")
+        info_line(f"  Kabsch RMSD ({use_len} residues): {rmsd_kabsch:.2f} Å")
     except Exception as e:
         rmsd_kabsch = None
-        print(f"  Kabsch RMSD failed: {e}")
+        info_line(f"  Kabsch RMSD failed: {e}")
     
     # Also compute per-residue CA-CA distances after superposition
     if rmsd_kabsch is not None and rmsd_kabsch < 100:
@@ -148,7 +150,7 @@ for name, cfg in TARGETS.items():
         max_dev = per_res_dist.max()
         max_dev_idx = per_res_dist.argmax()
         mean_dev = per_res_dist.mean()
-        print(f"  Per-residue deviation: mean={mean_dev:.2f}, max={max_dev:.2f} (res {max_dev_idx+1})")
+        info_line(f"  Per-residue deviation: mean={mean_dev:.2f}, max={max_dev:.2f} (res {max_dev_idx+1})")
     else:
         per_res_dist = None
         mean_dev = None
@@ -158,7 +160,7 @@ for name, cfg in TARGETS.items():
         plat_text = f.read()
     ss_lines = [l for l in plat_text.split('\n') if l.startswith('REMARK   5')]
     ss_info = ss_lines[0] if ss_lines else 'N/A'
-    print(f"  Platonic SS: {ss_info}")
+    info_line(f"  Platonic SS: {ss_info}")
     
     all_results[name] = {
         'platonic_length': len(plat_seq),
@@ -174,7 +176,7 @@ for name, cfg in TARGETS.items():
 
 # ─── Summary ──────────────────────────────────────────────────────
 print(f"\n{'='*65}")
-print("SUMMARY")
+info_line("SUMMARY")
 print(f"{'='*65}")
 print(f"{'Protein':<20} {'Seq ID':>8} {'RMSD':>8} {'Mean Dev':>8} {'Residues':>8}")
 print(f"{'─'*20} {'─'*8} {'─'*8} {'─'*8} {'─'*8}")
@@ -188,4 +190,4 @@ for name, r in all_results.items():
 with open(os.path.join(OUT, 'full_comparison.json'), 'w') as f:
     json.dump(all_results, f, indent=2)
 
-print("\nResults → full_comparison.json")
+info_line("\nResults → full_comparison.json")

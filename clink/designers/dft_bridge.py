@@ -26,6 +26,7 @@ from pathlib import Path
 from typing import Dict, List, Optional, Any, Tuple
 from dataclasses import dataclass, field
 from enum import Enum
+from shared.rich_output import *
 
 REBIS_ROOT = Path(__file__).parent.parent.parent.absolute()
 sys.path.insert(0, str(REBIS_ROOT))
@@ -266,6 +267,7 @@ def compute_layer_energy_profile(layer_idx: int) -> Dict:
     
     # Compute primitive ordinal deltas from baseline
     from shared.primitives import ORDINALS
+
     total_ordinal_delta = 0
     energy_sum = 0.0
     primitive_contribs = {}
@@ -347,7 +349,7 @@ def energy_ladder_summary(ladder: List[Dict]) -> str:
 # ═══════════════════════════════════════════════════════════════════
 
 if __name__ == "__main__":
-    print("DFT Bridge — Self Test")
+    info_line("DFT Bridge — Self Test")
     print("=" * 50)
     
     engines = detect_available_engines()

@@ -54,6 +54,7 @@ red-hot_rebis/
   shared/                   # Shared primitives and catalog
     primitives.py           # 12-primitive definitions, weights, ordinals
     IG_catalog.json         # Catalog of imscribed systems (4,027+ entries)
+    rich_output.py          # Universal rich formatting (success_line, error_line, etc.)
     elem2imasm.py           # Element-to-IMASM encoding (symlink)
     reactivity.py           # Reactivity pattern matching (symlink)
   serpentrod/               # Pillar I: Serpent's Rod — Platonic Proteins
@@ -64,6 +65,7 @@ red-hot_rebis/
   imas/                     # IMASM arrangement analysis + COMPOUND PIPELINE
     arranger.py             #   IMASM arrangement analysis
     compound_imasm.py       #   SMILES→IMASM 8-token encoder (681 lines)
+    bond_fragment_integrator.py  #   RDKit exact SMILES fragmentation (NEW)
     fg_exhaustive.py        #   190 SMARTS patterns across 11 IMASM tokens
     reactivity_imasm.py     #   Reaction→IMASM transition analyzer
     ig_bridge.py            #   StructuralFingerprint→IG 12-tuple bridge
@@ -114,8 +116,9 @@ RNA sequence → [serpentrod] → ⟨structural type, tier, Frobenius certificat
 Target molecule → [ch3mpiler] → ranked disconnections with δ scores
 ```
 
-**Key files (6 modules, 10,231 lines):**
-- `compiler.py` — Main retrosynthetic compiler (883 lines)
+**Key files (7 modules, ~11,000 lines):**
+- `compiler.py` — Main retrosynthetic compiler (~900 lines)
+- `bond_fragment_integrator.py` — RDKit-based exact SMILES fragmentation from grammar-derived cuts (NEW)
 - `gen_v2.py` — V2 generator
 - `reaction_deriver.py` — Reaction derivation from FG meets
 - `docs/` — Full documentation
@@ -293,6 +296,7 @@ The Red-Hot Rebis is the coagulation of the Imscribing Grammar's bio-organic eng
 
 | Version | Date | Summary |
 |---------|------|---------|
+| 2.3.4 | 2026-06-28 | **Rich Formatting + Exact SMILES Edition** — `shared/rich_output.py` deployed repo-wide to all 234 Python files; `bond_fragment_integrator.py` delivers exact RDKit fragment SMILES in retrosynthesis output; `--smiles` CLI flag for direct SMILES input; SMILES FG detection via RDKit SMARTS; no more fake placeholder SMILES; migration scripts (`migrate_rich.py`, `fix_*.py`); all docs updated |
 | 2.3.3 | 2026-06-27 | **Compound IMASM Edition** — New pillar: IMASM Compound Pipeline (compound_imasm.py, fg_exhaustive.py, reactivity_imasm.py, ig_bridge.py, compound_catalog.py); Crystal-Guided Molecular Discovery (molecular_crystal_designer.py, odot_finder.py); DMT-⊙ (5-nitro-bufotenin) discovery; 54 compounds, 15 IG types, 31 arrangements, 4,027+ catalog entries; cross-domain analogies; all docs updated |
 | 2.1.1 | 2026-06-27 | Updated docs for rhr_p4rky expansion: 32 modules (added `belnap_c4.py`, `decay_chain.py`, `papers/` with 3 millennium docs); added symlinks `shared/elem2imasm.py` and `shared/reactivity.py`; INDEX.md L8 tier corrected to O_∞ |
 | 2.1.0 | 2026-06-10 | IMASM+CLINK Edition — CLINK chain integrated as Pillar V, IMASM iterator added, 151 .py files, 58,815 loc |

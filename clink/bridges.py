@@ -17,6 +17,7 @@ from typing import List, Optional
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent))
+from shared.rich_output import *
 from clink.chain import (
     CLINK_LAYERS, CLINK_NAMES, CLINK_TIERS, PORDER,
     clink_distance, clink_layer_index, clink_frobenius_closed,
@@ -226,12 +227,12 @@ def bridge_all_components():
 
 if __name__ == "__main__":
     results = bridge_all_components()
-    print("CLINK Bridges to Rebis Components")
+    info_line("CLINK Bridges to Rebis Components")
     print("=" * 60)
     for name, result in results.items():
         print(f"\n{name}:")
-        print(f"  Nearest layer: {result.nearest_layer_name} (idx={result.nearest_layer_idx})")
-        print(f"  Distance: {result.distance}")
-        print(f"  Frobenius-verified: {result.frobenius_verified}")
-        print(f"  Promotion path: {result.promotion_path}")
-        print(f"  Notes: {result.notes}")
+        info_line(f"  Nearest layer: {result.nearest_layer_name} (idx={result.nearest_layer_idx})")
+        info_line(f"  Distance: {result.distance}")
+        info_line(f"  Frobenius-verified: {result.frobenius_verified}")
+        info_line(f"  Promotion path: {result.promotion_path}")
+        info_line(f"  Notes: {result.notes}")

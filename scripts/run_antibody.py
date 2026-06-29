@@ -14,6 +14,8 @@ REBIS_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, REBIS_ROOT)
 
 from rhr_p4rky.antibody_designer import main as antibody_main
+from shared.rich_output import *
+
 
 if __name__ == "__main__":
     sys.exit(antibody_main())

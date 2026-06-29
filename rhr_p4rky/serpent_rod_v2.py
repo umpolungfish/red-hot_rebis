@@ -50,9 +50,9 @@ import sys as _sys
 if '--help' in _sys.argv or '-h' in _sys.argv:
     print(__doc__.strip())
     print()
-    print("Examples:")
-    print("  rebis.py run serpent_rod_v2")
-    print("  python3 -m rhr_p4rky.serpent_rod_v2 --help")
+    info_line("Examples:")
+    info_line("  rebis.py run serpent_rod_v2")
+    info_line("  python3 -m rhr_p4rky.serpent_rod_v2 --help")
     print()
     _sys.exit(0)
 
@@ -61,6 +61,7 @@ import json
 import sys
 from typing import Dict, List, Tuple, Optional, Set
 from dataclasses import dataclass, field
+from shared.rich_output import *
 
 # (imports handled above)
 
@@ -469,6 +470,7 @@ def run_pdb_validation_suite(output="pdb_v2_validation.json", pdb_dir="pdb"):
 
 def main():
     import argparse
+
     parser = argparse.ArgumentParser(description="Serpent-Rod Gen2 — 3D Protein from RNA")
     parser.add_argument("sequence", nargs="?", help="RNA sequence")
     parser.add_argument("--name", "-n", default="serpent_v2")
@@ -496,7 +498,7 @@ def main():
     print(f"Frobenius: {'YES' if result.frobenius_verified else 'NO'}")
     print(f"Secondary elements: {len(result.secondary_elements)}")
     for el in result.secondary_elements:
-        print(f"  {el['type']:8s} [{el['start']:3d}-{el['end']:3d}] {el['sequence']}")
+        info_line(f"  {el['type']:8s} [{el['start']:3d}-{el['end']:3d}] {el['sequence']}")
     
     if args.output:
         out = {"name":args.name,"aa":result.aa_sequence,

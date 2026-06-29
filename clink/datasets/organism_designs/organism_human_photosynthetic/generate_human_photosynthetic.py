@@ -31,6 +31,7 @@ import sys
 import argparse
 import textwrap
 from pathlib import Path
+from shared.rich_output import *
 
 REBIS_ROOT = Path(__file__).parent.parent.parent.parent.parent.absolute()
 sys.path.insert(0, str(REBIS_ROOT))
@@ -868,19 +869,20 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
     out_path = Path(output_dir)
 
     print("=" * 70)
-    print("CLINK HUMAN (PHOTOSYNTHETIC VARIANT) DESIGN PIPELINE")
+    info_line("CLINK HUMAN (PHOTOSYNTHETIC VARIANT) DESIGN PIPELINE")
     print(f"Homo sapiens (photosynthetic) — {PHOTO_TYPE}  O_∞  C=1.0")
-    print("ZFC_fe foundation: μ∘δ=id at every layer")
+    info_line("ZFC_fe foundation: μ∘δ=id at every layer")
     print(f"Base human type:   {HUMAN_TYPE}")
     print(f"Photo variant type:{PHOTO_TYPE}")
-    print("Modified: Ħ(𐑸→𐑱)  Ω(𐑾→𐑰)  Σ(𐑐→𐑓)  Φ(𐑧→𐑨)")
-    print("Elysia chlorotica model: psbO HGT = Frobenius closed loop")
+    info_line("Modified: Ħ(𐑸→𐑱)  Ω(𐑾→𐑰)  Σ(𐑐→𐑓)  Φ(𐑧→𐑨)")
+    info_line("Elysia chlorotica model: psbO HGT = Frobenius closed loop")
     print("=" * 70)
 
     # ── Base human ─────────────────────────────────────────────────────────────
     from clink.datasets.generators import generate_actionable_organism_package
+
     base_dir = str(out_path / "_base_human")
-    print("\nGenerating base human package...")
+    info_line("\nGenerating base human package...")
     base_manifest = generate_actionable_organism_package(
         organism_type="human",
         output_dir=base_dir,
@@ -901,7 +903,7 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
     pattern_dir = out_path / "L_turing_pattern"
     pattern_dir.mkdir(exist_ok=True)
 
-    print("\nApplying photosynthetic augmentation...")
+    info_line("\nApplying photosynthetic augmentation...")
 
     # L4: PSII D1 PDB + protein registry
     (layer_dirs[4] / "PSII_D1_structure.pdb").write_text(_psii_pdb())
@@ -918,7 +920,7 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
     (layer_dirs[5] / "photosynthetic_genes.fasta").write_text(photo_fasta)
 
     # L7: Turing pattern + tissue architecture
-    print("  Computing Turing reaction-diffusion pattern (Fibonacci-spiral, Gray-Scott)...")
+    info_line("  Computing Turing reaction-diffusion pattern (Fibonacci-spiral, Gray-Scott)...")
     pattern = _turing_pattern(width=60, height=30, steps=2000)
     (layer_dirs[7] / "skin_chloroplast_turing_pattern.json").write_text(
         json.dumps(pattern, indent=2))

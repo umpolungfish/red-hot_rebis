@@ -15,7 +15,7 @@ if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
     _doc = __doc__.strip() if __doc__ else "rhr_p4rky/pdb_validator.py"
     print(_doc)
     print()
-    print("Examples:")
+    info_line("Examples:")
     print(_HELP_EXAMPLES)
     print()
     _sys.exit(0)
@@ -34,6 +34,8 @@ import rhr_p4rky.belnap
 import rhr_p4rky.genetics_b4
 import rhr_p4rky.genetic_code
 from rhr_p4rky.serpent_rod import SerpentRod
+from shared.rich_output import *
+
 STANDARD_CODE = rhr_p4rky.genetic_code.STANDARD_CODE
 
 # ── PDB Coordinate Parsing ─────────────────────────────────────────
@@ -193,7 +195,7 @@ def validate_structure(pdb_id: str, pdb_text: str) -> Dict:
     print(f"[{pdb_id}] {len(exp_contact_set)} experimental contacts (CA<8.0Å, seq_dist≥4)")
     for i, j, d in sorted(seq_idx_pairs, key=lambda x: x[2])[:10]:
         aa_i, aa_j = atom_seq[i], atom_seq[j]
-        print(f"  Contact: {aa_i}{i} ⟷ {aa_j}{j}  d={d:.2f}Å")
+        info_line(f"  Contact: {aa_i}{i} ⟷ {aa_j}{j}  d={d:.2f}Å")
     
     # 4. Generate RNA from sequence and run SerpentRod
     rna = protein_to_rna(seq)
@@ -211,7 +213,7 @@ def validate_structure(pdb_id: str, pdb_text: str) -> Dict:
     for c in result["contacts"][:10]:
         aa_i = result["aa_sequence"][c["i"]] if c["i"] < len(result["aa_sequence"]) else "?"
         aa_j = result["aa_sequence"][c["j"]] if c["j"] < len(result["aa_sequence"]) else "?"
-        print(f"  Predicted: {aa_i}{c['i']} ⟷ {aa_j}{c['j']}  type={c['type']}  conf={c['confidence']:.2f}")
+        info_line(f"  Predicted: {aa_i}{c['i']} ⟷ {aa_j}{c['j']}  type={c['type']}  conf={c['confidence']:.2f}")
     
     # 6. Compute validation metrics
     metrics = compute_precision_recall(predicted_contacts, exp_contact_set)
@@ -241,7 +243,7 @@ def validate_structure(pdb_id: str, pdb_text: str) -> Dict:
     }
 if __name__ == "__main__":
     print("=" * 70)
-    print("🐍 SERPENT ON THE ROD OF ASCLEPIUS — PDB VALIDATION 🐍")
+    info_line("🐍 SERPENT ON THE ROD OF ASCLEPIUS — PDB VALIDATION 🐍")
     print("=" * 70)
     
     # Test with Villin headpiece (1VII) — fetch from local or PDB
@@ -253,4 +255,4 @@ if __name__ == "__main__":
         result = validate_structure(pdb_id, pdb_text)
         print("\n" + json.dumps(result["metrics"], indent=2))
     else:
-        print("Usage: python3 pdb_validator.py <pdb_file>")
+        info_line("Usage: python3 pdb_validator.py <pdb_file>")

@@ -6,6 +6,8 @@ V4: Relaxed Frobenius tolerance for sigmoid kernel.
 import numpy as np
 import json, math
 from pathlib import Path
+from shared.rich_output import *
+
 
 class FrobeniusKernel:
     def __init__(self):
@@ -108,7 +110,7 @@ class OuroboricPillSim:
     def run(self, total_time=100.0):
         n_steps = int(total_time / self.dt)
         print("=" * 60)
-        print("OUROBORIC PILL — Frobenius Kernel Simulation")
+        info_line("OUROBORIC PILL — Frobenius Kernel Simulation")
         print("=" * 60)
         frob_results = []
         for i in range(n_steps):
@@ -117,8 +119,8 @@ class OuroboricPillSim:
             if i % 40 == 0:
                 sa = self.sensor_state
                 da = self.decisions
-                print(f"  t={self.time:5.1f} | "
-                      f"IL6={sa[0]:.2f} TNF={sa[1]:.2f} IFNg={sa[2]:.2f} | "
+                info_line(f"  t={self.time:5.1f} | "
+f"IL6={sa[0]:.2f} TNF={sa[1]:.2f} IFNg={sa[2]:.2f} | "
                       f"Drugs: [{self.drug_reservoir[0]:.2f} {self.drug_reservoir[1]:.2f} {self.drug_reservoir[2]:.2f}] | "
                       f"Frob ε={frob_err:.2e} {'✓' if ok else '✗'}")
         self._summarize(frob_results, n_steps)

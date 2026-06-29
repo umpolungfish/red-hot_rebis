@@ -11,6 +11,8 @@ from typing import Dict, List, Tuple, Optional
 from dataclasses import dataclass
 from enum import Enum
 import math
+from shared.rich_output import *
+
 
 # ─── Primitive Value Enums ───────────────────────────────────────
 
@@ -485,33 +487,33 @@ def print_analysis():
     results = full_analysis()
 
     print("=" * 64)
-    print("GAP CLOSURE — Self-Organoid Augmentation Suite")
+    info_line("GAP CLOSURE — Self-Organoid Augmentation Suite")
     print("=" * 64)
 
     b = results["baseline"]
     print(f"\nBASELINE: tier={b['tier']}, frob={b['frobenius']}, cscore={b['cscore']}")
-    print(f"  axioms: {b['axioms']}")
+    info_line(f"  axioms: {b['axioms']}")
 
-    print("\n--- AUGMENTATIONS ---")
+    info_line("\n--- AUGMENTATIONS ---")
     for name, data in results["augmentations"].items():
-        print(f"  {name:20s}  tier={data['tier']:5s}  frob={str(data['frobenius']):5s}  d={data['distance_from_baseline']}")
+        info_line(f"  {name:20s}  tier={data['tier']:5s}  frob={str(data['frobenius']):5s}  d={data['distance_from_baseline']}")
 
-    print("\n--- GAPS ---")
+    info_line("\n--- GAPS ---")
     for g in results["gaps"]:
         print(f"\n  {g['name']}:")
-        print(f"    distance: {g['distance']}")
-        print(f"    tier: {g['tier_before']} -> {g['tier_after']}")
-        print(f"    frob: {g['frob_before']} -> {g['frob_after']}")
-        print(f"    cscore: {g['cscore_before']} -> {g['cscore_after']}")
-        print(f"    mechanism: {g['mechanism']}")
-        print(f"    exactor: {g['exactor']}")
+        info_line(f"    distance: {g['distance']}")
+        info_line(f"    tier: {g['tier_before']} -> {g['tier_after']}")
+        info_line(f"    frob: {g['frob_before']} -> {g['frob_after']}")
+        info_line(f"    cscore: {g['cscore_before']} -> {g['cscore_after']}")
+        info_line(f"    mechanism: {g['mechanism']}")
+        info_line(f"    exactor: {g['exactor']}")
         for c in g['conflicts']:
-            print(f"      {c['primitive']}: {c['a']} -> {c['b']} (Δ={c['ordinal_delta']:.2f}, w={c['weight']})")
+            info_line(f"      {c['primitive']}: {c['a']} -> {c['b']} (Δ={c['ordinal_delta']:.2f}, w={c['weight']})")
 
-    print("\n--- DELIBERATELY OPEN ---")
+    info_line("\n--- DELIBERATELY OPEN ---")
     for s in results["deliberately_open"]:
         print(f"\n  {s['name']}: tier={s['tier']}, d_baseline={s['distance_from_baseline']}")
-        print(f"    {s['rationale']}")
+        info_line(f"    {s['rationale']}")
 
     print("\n" + "=" * 64)
     s = results["summary"]

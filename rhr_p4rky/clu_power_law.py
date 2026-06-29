@@ -28,7 +28,7 @@ if '--help' in _sys.argv or '-h' in _sys.argv:
     _doc = __doc__.strip() if __doc__ else "rhr_p4rky/clu_power_law.py"
     print(_doc)
     print()
-    print("Examples:")
+    info_line("Examples:")
     print(_HELP_EXAMPLES)
     print()
     _sys.exit(0)
@@ -37,6 +37,8 @@ import math
 import random
 from typing import List, Tuple, Optional, Callable
 from dataclasses import dataclass, field
+from shared.rich_output import *
+
 
 # ──────────────────────────────────────────────────────────────────────
 # CONSTANTS
@@ -568,50 +570,50 @@ def verify_power_law_3d(
 def main() -> None:
     """Run full derivation and verification."""
     print("=" * 72)
-    print("  CLU -3/2 POWER LAW: FORMAL DERIVATION & VERIFICATION")
-    print("  Reference: CLU.md §I-VII (Criticality-Lift Unit)")
+    info_line("  CLU -3/2 POWER LAW: FORMAL DERIVATION & VERIFICATION")
+    info_line("  Reference: CLU.md §I-VII (Criticality-Lift Unit)")
     print("=" * 72)
 
     print(DERIVATION_TEXT)
     print("=" * 72)
 
-    print("\n  RUNNING VERIFICATION...\n")
+    info_line("\n  RUNNING VERIFICATION...\n")
 
     results = verify_power_law_3d(n_steps=60000, b=10.0, tolerance=0.15)
 
     for check in ["check1_3d_avalanche", "check2_filtration", "check3_base_invariance"]:
         c = results[check]
         if check == "check1_3d_avalanche":
-            print(f"  ✓ {check}:")
-            print(f"      Steps simulated: {c['n_steps']}")
-            print(f"      Avalanches collected: {c['n_avalanches']}")
+            info_line(f"  ✓ {check}:")
+            info_line(f"      Steps simulated: {c['n_steps']}")
+            info_line(f"      Avalanches collected: {c['n_avalanches']}")
             if "check1_details" in results:
                 d = results["check1_details"]
-                print(f"      S range: [{d['min_S']}, {d['max_S']}]")
-                print(f"      Mean S: {d['mean_S']}, Median S: {d['median_S']}")
-            print(f"      MLE exponent α = {c['mle_exponent']}")
-            print(f"      Expected α = {c['expected']}  diff = {c['diff']}")
-            print(f"      PASS: {c['pass']}")
+                info_line(f"      S range: [{d['min_S']}, {d['max_S']}]")
+                info_line(f"      Mean S: {d['mean_S']}, Median S: {d['median_S']}")
+            info_line(f"      MLE exponent α = {c['mle_exponent']}")
+            info_line(f"      Expected α = {c['expected']}  diff = {c['diff']}")
+            info_line(f"      PASS: {c['pass']}")
         elif check == "check2_filtration":
-            print(f"  ✓ {check}:")
-            print(f"      Log-log slope = {c['regression_slope']}")
-            print(f"      Expected = {c['expected_slope']}")
-            print(f"      PASS: {c['pass']}")
+            info_line(f"  ✓ {check}:")
+            info_line(f"      Log-log slope = {c['regression_slope']}")
+            info_line(f"      Expected = {c['expected_slope']}")
+            info_line(f"      PASS: {c['pass']}")
         else:
-            print(f"  ✓ {check}:")
-            print(f"      Bases: {c['bases']}")
-            print(f"      Exponents: {c['exponents']}")
-            print(f"      PASS: {c['pass']}")
+            info_line(f"  ✓ {check}:")
+            info_line(f"      Bases: {c['bases']}")
+            info_line(f"      Exponents: {c['exponents']}")
+            info_line(f"      PASS: {c['pass']}")
 
     o = results["overall"]
     print(f"\n  ✓ OVERALL: {o['checks_passed']}/{o['checks_total']} checks passed")
-    print(f"    Theorem: {o['theorem']}")
-    print(f"    Status: {'VERIFIED' if o['all_pass'] else 'PARTIAL'}")
+    info_line(f"    Theorem: {o['theorem']}")
+    info_line(f"    Status: {'VERIFIED' if o['all_pass'] else 'PARTIAL'}")
 
     print("\n" + "=" * 72)
-    print("  Implementation file: rhr_p4rky/clu_power_law.py")
-    print("  Integrated with:     Frobenius kernel (kernel.py)")
-    print("  Filtration:          frobenius_filtration.py")
+    info_line("  Implementation file: rhr_p4rky/clu_power_law.py")
+    info_line("  Integrated with:     Frobenius kernel (kernel.py)")
+    info_line("  Filtration:          frobenius_filtration.py")
     print("=" * 72)
 if __name__ == "__main__":
     main()

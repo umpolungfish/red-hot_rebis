@@ -26,6 +26,7 @@ import rhr_p4rky.genetic_code as gc
 import rhr_p4rky.genetic_tuples as gt
 import rhr_p4rky.gene_to_protein_pipeline as gpp
 import rhr_p4rky.kernel as kern
+from shared.rich_output import *
 
 PASS = 0
 FAIL = 0
@@ -35,17 +36,17 @@ def test(name, fn):
     global PASS, FAIL
     try:
         fn()
-        print(f"  {chr(10003)} {name}")
+        info_line(f"  {chr(10003)} {name}")
         PASS += 1
     except Exception as e:
-        print(f"  {chr(10007)} {name}: {e}")
+        info_line(f"  {chr(10007)} {name}: {e}")
         FAIL += 1
         ERRORS.append((name, traceback.format_exc()))
 
 # ─── Section 1: B4 Nucleotide Lattice ──────────────────────────────
 
 def section_b4():
-    print("\n=== Section 1: B4 Nucleotide Lattice ===")
+    info_line("\n=== Section 1: B4 Nucleotide Lattice ===")
     def t1():
         assert gb4.nucleotide_to_belnap('A') is gb4.Belnap.F
         assert gb4.nucleotide_to_belnap('U') is gb4.Belnap.N
@@ -84,7 +85,7 @@ def section_b4():
 # ─── Section 2: Genetic Code Verification ──────────────────────────
 
 def section_codons():
-    print("\n=== Section 2: Genetic Code Verification ===")
+    info_line("\n=== Section 2: Genetic Code Verification ===")
     def t1():
         r = gc.verify_all_codons_frobenius()
         assert r['frobenius_violations'] == 0
@@ -117,7 +118,7 @@ def section_codons():
 # ─── Section 3: Tuple Generation (Axiom C + 7 Stages) ─────────────
 
 def section_tuples():
-    print("\n=== Section 3: Tuple Generation (Axiom C + 7 Stages) ===")
+    info_line("\n=== Section 3: Tuple Generation (Axiom C + 7 Stages) ===")
 
     def t1():
         # Generate tuples from a real sequence, verify tier consistency
@@ -138,7 +139,7 @@ def section_tuples():
             v = gt.verify_tier_consistency(tup)
             if not v["pass"]:
                 diag = "; ".join(v["diagnostics"])
-                print(f"    [{name}] {diag}")
+                info_line(f"    [{name}] {diag}")
     test("generate_all_tuples -> 7 tier-checked stages", t1)
 
     def t2():
@@ -153,7 +154,7 @@ def section_tuples():
         pw = gt.verify_pathway(result)
         assert len(pw['stages']) == 7
         if not pw["pass"]:
-            print(f"    {pw['n_regressions']} pathway regressions (default design)")
+            info_line(f"    {pw['n_regressions']} pathway regressions (default design)")
     test("Pathway verification over 7 stages", t2)
 
     def t3():
@@ -186,7 +187,7 @@ def section_tuples():
             assert s in result
     test("generate_all_tuples produces 7 named stages", t4)
 def section_pipeline():
-    print("\n=== Section 4: Gene->Protein Pipeline Smoke Test ===")
+    info_line("\n=== Section 4: Gene->Protein Pipeline Smoke Test ===")
     def t1():
         p = gpp.GeneToProteinPipeline("ATGGCCGACTGGAACTGCAAGAAGATCGTGCCCAAGTACTACGGCCGCTG")
         r = p.run()
@@ -210,7 +211,7 @@ def section_pipeline():
 # ─── Section 5: Phi=odot Three-Condition Gate ────────────────────
 
 def section_phi():
-    print("\n=== Section 5: Phi=odot Gate - Three Conditions ===")
+    info_line("\n=== Section 5: Phi=odot Gate - Three Conditions ===")
 
     def t1():
         # 3 His in aa_chain, 0 Pro -> phi=c (criticality gate open)
@@ -276,7 +277,7 @@ def section_phi():
 # ─── Section 6: ParaASM Kernel ───────────────────────────────────
 
 def section_kernel():
-    print("\n=== Section 6: ParaASM Kernel (Frobenius Algebra) ===")
+    info_line("\n=== Section 6: ParaASM Kernel (Frobenius Algebra) ===")
     def t1():
         assert kern.verify_frobenius_invariant()
     test("Kernel Frobenius: ffuse o fsplit = id", t1)
@@ -293,7 +294,7 @@ def section_kernel():
 # ─── Section 7: Cross-File Consistency ────────────────────────────
 
 def section_consistency():
-    print("\n=== Section 7: Cross-File Consistency ===")
+    info_line("\n=== Section 7: Cross-File Consistency ===")
     def t1():
         his = gc.IG_PRIMITIVE_OF_AA['His']
         gln = gc.IG_PRIMITIVE_OF_AA['Gln']
@@ -304,6 +305,7 @@ def section_consistency():
     def t2():
         from rhr_p4rky.genetic_tuples import DEFAULT_TUPLES as tuples
         from rhr_p4rky.gene_to_protein_pipeline import STAGE_TUPLES
+
         assert len(tuples) == len(STAGE_TUPLES) == 7
         for name in tuples:
             assert name in STAGE_TUPLES, f"{name} missing from pipeline STAGE_TUPLES"
@@ -357,14 +359,14 @@ def main():
             fn_map[s]()
 
     print(f"\n{'='*50}")
-    print(f"  {PASS} passed  |  {FAIL} failed  |  {PASS+FAIL} total")
+    info_line(f"  {PASS} passed  |  {FAIL} failed  |  {PASS+FAIL} total")
     print(f"{'='*50}")
 
     if FAIL > 0:
-        print("\nFailure details:")
+        info_line("\nFailure details:")
         for name, tb in ERRORS:
             last = '\n'.join(tb.strip().split('\n')[-4:])
-            print(f"  {name}: ...{last}")
+            info_line(f"  {name}: ...{last}")
         return 1
     return 0
 

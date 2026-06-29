@@ -19,7 +19,7 @@ if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
     _doc = __doc__.strip() if __doc__ else "scripts/frobenius_exact_design.py"
     print(_doc)
     print()
-    print("Examples:")
+    info_line("Examples:")
     print(_HELP_EXAMPLES)
     print()
     _sys.exit(0)
@@ -39,7 +39,9 @@ from ch3mpiler_serpentrod_pipeline import (
 )
 
 sys.path.insert(0, os.path.join(_REBIS_ROOT, 'designs/gr33ngroblin'))
+from shared.rich_output import *
 from plastic_eater_design import (
+
     ALL_BOND_TYPES, ALL_FG, PLASTIC_TARGETS,
     LINKER_AA, LINKER_CODONS, SIGNAL_AA, SIGNAL_CODONS,
     HIS_TAG_AA, HIS_TAG_CODONS,
@@ -227,7 +229,7 @@ def design_single_site_v3(plastic_name, bond_name, fg1_name, fg2_name, mechanism
 # ═══════════════════════════════════════════════════════════════
 
 print("=" * 72)
-print("  FROBENIUS-EXACT DESIGN (v3 — Inverse Complement + AND Logic)")
+info_line("  FROBENIUS-EXACT DESIGN (v3 — Inverse Complement + AND Logic)")
 print("=" * 72)
 print()
 
@@ -237,10 +239,10 @@ for plastic_name, bond_name, fg1_name, fg2_name, mechanism in PLASTIC_TARGETS:
     all_sites.append(site)
     
     print(f"--- {plastic_name} ---")
-    print(f"  Bond: {bond_name}  FG: {fg1_name}+{fg2_name}")
-    print(f"  Pairs covered (AND): {site['pairs_covered']}/6")
-    print(f"  Natural activation: {site['naturally_activated']}")
-    print(f"  Force activation:   {site['force_activated']}")
+    info_line(f"  Bond: {bond_name}  FG: {fg1_name}+{fg2_name}")
+    info_line(f"  Pairs covered (AND): {site['pairs_covered']}/6")
+    info_line(f"  Natural activation: {site['naturally_activated']}")
+    info_line(f"  Force activation:   {site['force_activated']}")
     
     # Per-pair detail
     activated_set = set(site['naturally_activated'] + site['force_activated'])
@@ -250,15 +252,15 @@ for plastic_name, bond_name, fg1_name, fg2_name, mechanism in PLASTIC_TARGETS:
         status = "OK" if (a_act and b_act) else "FAIL"
         a_sym = "Y" if a_act else "N"
         b_sym = "Y" if b_act else "N"
-        print(f"    {pa}-{pb}: {pa}={a_sym} {pb}={b_sym}  [{status}]")
+        info_line(f"    {pa}-{pb}: {pa}={a_sym} {pb}={b_sym}  [{status}]")
     
-    print(f"  Site type: {json.dumps(site['site_type'])}")
-    print(f"  AA: {''.join(site['aa_sequence'])}")
+    info_line(f"  Site type: {json.dumps(site['site_type'])}")
+    info_line(f"  AA: {''.join(site['aa_sequence'])}")
     print()
 
 print()
 print("=" * 72)
-print("  CLUSTERING ANALYSIS")
+info_line("  CLUSTERING ANALYSIS")
 print("=" * 72)
 
 # Group plastics by structural compatibility (shared failure patterns)
@@ -270,15 +272,15 @@ not_6 = [s for s in all_sites if s['pairs_covered'] < 6]
 
 print(f"\nAchieved 6/6: {len(achieved_6)}/{len(all_sites)}")
 for s in achieved_6:
-    print(f"  {s['plastic']}: force={s['force_activated']}")
+    info_line(f"  {s['plastic']}: force={s['force_activated']}")
 
 if not_6:
     print(f"\nDid NOT achieve 6/6: {len(not_6)}")
     for s in not_6:
-        print(f"  {s['plastic']}: pairs={s['pairs_covered']}/6")
+        info_line(f"  {s['plastic']}: pairs={s['pairs_covered']}/6")
 
 # For clustering: compute site type distances between all pairs
-print("\nSite type distances (ordinal Euclidean):")
+info_line("\nSite type distances (ordinal Euclidean):")
 for i, s1 in enumerate(all_sites):
     for j, s2 in enumerate(all_sites):
         if i >= j:
@@ -291,4 +293,4 @@ for i, s1 in enumerate(all_sites):
             if max_o > 0:
                 dist += ((o1 - o2) / max_o) ** 2
         dist = math.sqrt(dist)
-        print(f"  {s1['plastic'][:20]:20s} <-> {s2['plastic'][:20]:20s}  d={dist:.3f}")
+        info_line(f"  {s1['plastic'][:20]:20s} <-> {s2['plastic'][:20]:20s}  d={dist:.3f}")

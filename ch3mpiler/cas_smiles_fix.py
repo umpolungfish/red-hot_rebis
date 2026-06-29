@@ -13,6 +13,8 @@ Fix 2: Pipeline main() — when --cas is provided, propagate the resolved SMILES
         to resolve_and_parse_scaffold() so Pass 1 scaffold decomposition works.
 """
 import re
+from shared.rich_output import *
+
 
 # ── Fix path: compiler.py ──
 COMPILER_PATH = "/home/mrnob0dy666/imsgct/red-hot_rebis/ch3mpiler/compiler.py"
@@ -70,7 +72,7 @@ with open(COMPILER_PATH, "w") as f:
     f.write(src)
 
 print(f"[OK] Patched {COMPILER_PATH}")
-print("  - CASResolver.resolve() now fetches /property/CanonicalSMILES,.../JSON")
+info_line("  - CASResolver.resolve() now fetches /property/CanonicalSMILES,.../JSON")
 print("  - Returns 'smiles' field in addition to name, formula")
 
 # ── Fix 2: Pipeline --cas path: propagate SMILES to scaffold parser ──
@@ -102,17 +104,17 @@ with open(PIPELINE_PATH, "w") as f:
     f.write(psrc)
 
 print(f"[OK] Patched {PIPELINE_PATH}")
-print("  - --cas path now passes SMILES to resolve_and_parse_scaffold()")
+info_line("  - --cas path now passes SMILES to resolve_and_parse_scaffold()")
 print("  - Pipeline._target_smiles = info['smiles'] from CAS resolver")
 print()
-print("=== Usage ===")
+info_line("=== Usage ===")
 print("  p3 pipeline/reaction_pipeline.py --cas \"<CAS_NUMBER>\" --cdxml")
 print()
-print("The CAS resolver will now:")
-print("  1. Query PubChem by CAS number → get IUPAC Name + Formula + SMILES")
-print("  2. Pass SMILES to ScaffoldParser → real fragment CDXML files")
-print("  3. Cache all fields (including SMILES) in CAS_cache.json")
+info_line("The CAS resolver will now:")
+info_line("  1. Query PubChem by CAS number → get IUPAC Name + Formula + SMILES")
+info_line("  2. Pass SMILES to ScaffoldParser → real fragment CDXML files")
+info_line("  3. Cache all fields (including SMILES) in CAS_cache.json")
 print()
 print("If the CAS isn't in PubChem, it falls back gracefully:")
-print("  - SMILES is empty → FG-only decomposition (legacy behavior)")
-print("  - No hard failure, no crash")
+info_line("  - SMILES is empty → FG-only decomposition (legacy behavior)")
+info_line("  - No hard failure, no crash")

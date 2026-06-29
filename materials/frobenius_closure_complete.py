@@ -114,6 +114,7 @@ from dataclasses import dataclass, field
 from typing import Dict, List, Tuple, Optional, Callable, Union
 from enum import Enum
 import math
+from shared.rich_output import *
 
 # ═══════════════════════════════════════════════════════════════════
 # §1. CLOSURE STATE — DISCRETE, BINARY
@@ -961,6 +962,7 @@ def physical_realization_roadmap() -> str:
 def main():
     import argparse
 
+
     parser = argparse.ArgumentParser(
         description='Frobenius Closure Complete — Close μ∘δ=id for all non-qubit QC'
     )
@@ -979,7 +981,7 @@ def main():
     if args.action == 'summary':
         print(complete_closure_table())
         print()
-        print("For complete details: frobenius_closure_complete.py --all")
+        info_line("For complete details: frobenius_closure_complete.py --all")
 
     elif args.action == 'table':
         print(complete_closure_table())
@@ -990,18 +992,18 @@ def main():
             print(design.report())
         elif args.paradigm and args.paradigm in NATIVE_CLOSED:
             print(f"Paradigm '{args.paradigm}' is NATIVELY closed (μ∘δ=id exact).")
-            print("No closure design needed — anyonic braiding IS exact closure.")
+            info_line("No closure design needed — anyonic braiding IS exact closure.")
         elif args.paradigm and args.paradigm in ALL_STRUCTURAL_OPEN:
             diag = ALL_STRUCTURAL_OPEN[args.paradigm]
             print(diag.report())
         else:
-            print("Available paradigms for closure:")
+            info_line("Available paradigms for closure:")
             for name in ALL_CLOSURE_DESIGNS:
-                print(f"  --paradigm {name}")
-            print(f"  Native closed: {', '.join(NATIVE_CLOSED)}")
-            print(f"  Structurally open: {', '.join(ALL_STRUCTURAL_OPEN.keys())}")
+                info_line(f"  --paradigm {name}")
+            info_line(f"  Native closed: {', '.join(NATIVE_CLOSED)}")
+            info_line(f"  Structurally open: {', '.join(ALL_STRUCTURAL_OPEN.keys())}")
             print()
-            print("Use --paradigm <name> to see a specific closure design.")
+            info_line("Use --paradigm <name> to see a specific closure design.")
 
     elif args.action == 'open':
         if args.paradigm and args.paradigm in ALL_STRUCTURAL_OPEN:
@@ -1040,7 +1042,7 @@ def main():
         print(physical_realization_roadmap())
         print()
         print("=" * 74)
-        print("  STRUCTURALLY OPEN PARADIGMS")
+        info_line("  STRUCTURALLY OPEN PARADIGMS")
         print("=" * 74)
         for diag in ALL_STRUCTURAL_OPEN.values():
             print()

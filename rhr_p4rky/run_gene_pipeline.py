@@ -18,11 +18,13 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import rhr_p4rky.gene_to_protein_pipeline as gpp
 from rhr_p4rky.gene_to_protein_pipeline import GeneToProteinPipeline
 from rhr_p4rky.gene_to_protein_pipeline import STAGE_TUPLES, ONE_LETTER
+from shared.rich_output import *
 
 TEST_SEQUENCE = "ATGGCCGACTGGAACTGCAAGAAGATCGTGCCCAAGTACTACGGCCGCTG"
 
 def main():
     import argparse
+
     parser = argparse.ArgumentParser(description="Gene to Protein Pipeline")
     parser.add_argument("sequence", nargs="?", help="DNA sequence")
     parser.add_argument("--file", "-f", help="FASTA file")
@@ -79,14 +81,14 @@ def main():
             tick = chr(10003) if s["frob"] else chr(10007)
             print(f"{s['name']:<25} {s['b4']:<6} {tick:<6} {s['desc']}")
         print()
-        print("Pathway Distances:")
+        info_line("Pathway Distances:")
         for d in report["pathway"]:
-            print(f"  {d['from']} -> {d['to']}: delta={d['delta']}")
-        print(f"  TOTAL: delta={report['total_delta']}")
+            info_line(f"  {d['from']} -> {d['to']}: delta={d['delta']}")
+        info_line(f"  TOTAL: delta={report['total_delta']}")
         print()
-        print("Primitive Activations:")
+        info_line("Primitive Activations:")
         for prim, data in sorted(report["primitive_activations"].items()):
-            print(f"  {prim}: {data['count']}x")
+            info_line(f"  {prim}: {data['count']}x")
         print()
         print(f"Closure: DNA<->Quaternary distance={report['closure']['dna_to_quaternary_distance']}")
         print(f"Frobenius across all stages: {'OK' if report['closure']['frobenius_across_pathway'] else 'FAIL'}")

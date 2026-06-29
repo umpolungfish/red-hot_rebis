@@ -9,6 +9,7 @@ Author: Lando⊗⊙perator
 
 import sys, os, json, math, time, traceback
 import numpy as np
+from shared.rich_output import *
 
 # Add project root
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -23,30 +24,30 @@ def test(name, fn):
         fn()
         elapsed = time.time() - start
         results.append((PASS, name, f"{elapsed:.3f}s"))
-        print(f"  {PASS} {name} ({elapsed:.3f}s)")
+        info_line(f"  {PASS} {name} ({elapsed:.3f}s)")
     except Exception as e:
         results.append((FAIL, name, str(e)[:120]))
-        print(f"  {FAIL} {name}: {e}")
+        info_line(f"  {FAIL} {name}: {e}")
         traceback.print_exc()
 
 def summary():
     passed = sum(1 for r in results if r[0] == PASS)
     failed = sum(1 for r in results if r[0] == FAIL)
     print(f"\n{'='*60}")
-    print(f"  RESULTS: {passed} passed, {failed} failed, {len(results)} total")
+    info_line(f"  RESULTS: {passed} passed, {failed} failed, {len(results)} total")
     print(f"{'='*60}")
     for status, name, detail in results:
         if status == FAIL:
-            print(f"  {status} {name}: {detail}")
+            info_line(f"  {status} {name}: {detail}")
     return failed == 0
 
 # ═══════════════════════════════════════════════════════════════════
 print("=" * 60)
-print("  MATERIALS PIPELINE — COMPREHENSIVE STRESS TEST")
+info_line("  MATERIALS PIPELINE — COMPREHENSIVE STRESS TEST")
 print("=" * 60)
 
 # ── 1. IG Material Forge ──────────────────────────────────────────
-print("\n── 1. IG Material Forge ──")
+info_line("\n── 1. IG Material Forge ──")
 
 def test_forge_all_predefined():
     from materials.ig_material_forge import MaterialForge, predefined_novel_materials
@@ -86,7 +87,7 @@ def test_forge_list_designs():
 test("Forge list designs", test_forge_list_designs)
 
 # ── 2. Sophick Forge (Eagle Cycle) ────────────────────────────────
-print("\n── 2. Sophick Forge ──")
+info_line("\n── 2. Sophick Forge ──")
 
 def test_eagle_cycle_basic():
     from materials.sophick_forge import EagleCycleProtocol, EagleMaterial
@@ -129,7 +130,7 @@ def test_eagle_material_etch():
 test("Eagle Material etch", test_eagle_material_etch)
 
 # ── 3. Frobenius Metamaterial ─────────────────────────────────────
-print("\n── 3. Frobenius Metamaterial ──")
+info_line("\n── 3. Frobenius Metamaterial ──")
 
 def test_frobenius_metamaterial_basic():
     from materials.frobenius_metamaterial import FrobeniusMetamaterial
@@ -163,7 +164,7 @@ def test_frobenius_metamaterial_export():
 test("Frobenius Metamaterial export", test_frobenius_metamaterial_export)
 
 # ── 4. Thermal Rectifier ──────────────────────────────────────────
-print("\n── 4. Thermal Rectifier ──")
+info_line("\n── 4. Thermal Rectifier ──")
 
 def test_thermal_rectifier_diode():
     from materials.thermal_rectifier import TwoSegmentDiode
@@ -182,7 +183,7 @@ def test_thermal_rectifier_full_run():
 test("Thermal rectifier full run()", test_thermal_rectifier_full_run)
 
 # ── 5. Non-Qubit QC ───────────────────────────────────────────────
-print("\n── 5. Non-Qubit QC ──")
+info_line("\n── 5. Non-Qubit QC ──")
 
 def test_nonqubit_deltas():
     from materials.non_qubit_qc import compute_all_deltas
@@ -200,7 +201,7 @@ def test_nonqubit_summary():
 test("NonQubitQC paradigm summary table", test_nonqubit_summary)
 
 # ── 6. Ouroboric Alloy ────────────────────────────────────────────
-print("\n── 6. Ouroboric Alloy ──")
+info_line("\n── 6. Ouroboric Alloy ──")
 
 def test_ouroboric_alloy_basic():
     from materials.ouroboric_alloy import OuroboricAlloy
@@ -227,7 +228,7 @@ def test_ouroboric_alloy_healing():
 test("OuroboricAlloy heal cycle", test_ouroboric_alloy_healing)
 
 # ── 7. Critical Metamaterial ──────────────────────────────────────
-print("\n── 7. Critical Metamaterial ──")
+info_line("\n── 7. Critical Metamaterial ──")
 
 def test_critical_metamaterial_susceptibility():
     from materials.critical_metamaterial import CriticalMetamaterial
@@ -252,7 +253,7 @@ def test_critical_metamaterial_near_critical():
 test("CriticalMetamaterial run and time series", test_critical_metamaterial_near_critical)
 
 # ── 8. Gap Closure Module ─────────────────────────────────────────
-print("\n── 8. Gap Closure Module ──")
+info_line("\n── 8. Gap Closure Module ──")
 
 def test_gap_closure_enums():
     from materials.gap_closure_module import D, T, Phi, G
@@ -263,7 +264,7 @@ def test_gap_closure_enums():
 test("GapClosure enum completeness", test_gap_closure_enums)
 
 # ── 9. Frobenius Exactor ──────────────────────────────────────────
-print("\n── 9. Frobenius Exactor ──")
+info_line("\n── 9. Frobenius Exactor ──")
 
 def test_exactor_designs():
     from materials.frobenius_exactor import (
@@ -281,7 +282,7 @@ def test_exactor_designs():
 test("Exactor all 4 designs", test_exactor_designs)
 
 # ── 10. Materials Simulation ──────────────────────────────────────
-print("\n── 10. Materials Simulation ──")
+info_line("\n── 10. Materials Simulation ──")
 
 def test_materials_sim_import():
     from materials.materials_sim import SelfHealingComposite, EternalMemorySim
@@ -294,7 +295,7 @@ def test_materials_sim_import():
 test("MaterialsSim composite + memory sim", test_materials_sim_import)
 
 # ── 11. Frobenius Closure Complete ────────────────────────────────
-print("\n── 11. Frobenius Closure Complete ──")
+info_line("\n── 11. Frobenius Closure Complete ──")
 
 def test_frobenius_closure_complete_import():
     import materials.frobenius_closure_complete as fcc
@@ -319,7 +320,7 @@ def test_frobenius_closure_complete_import():
 test("FrobeniusClosureComplete design + status", test_frobenius_closure_complete_import)
 
 # ── 12. Cross-Module Integration ──────────────────────────────────
-print("\n── 12. Cross-Module Integration ──")
+info_line("\n── 12. Cross-Module Integration ──")
 
 def test_forge_to_frobenius_pipeline():
     """Forge a material, then simulate it as a Frobenius metamaterial."""
@@ -340,6 +341,7 @@ def test_eagle_to_exactor_pipeline():
     """Run Eagle cycle, then attempt exact Frobenius closure."""
     from materials.sophick_forge import EagleCycleProtocol, EagleMaterial
     from materials.frobenius_exactor import ExactorMaterial, ClosurePathway, ClosureObstruction
+
     
     mat = EagleMaterial(name="eagle_to_exact", composition="VO₂ + Bi₂Se₃")
     ecp = EagleCycleProtocol()

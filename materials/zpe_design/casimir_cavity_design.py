@@ -15,6 +15,8 @@ from pathlib import Path
 from dataclasses import dataclass, field
 from typing import List, Tuple, Optional, Dict
 from enum import Enum
+from shared.rich_output import *
+
 
 # Physical Constants
 HBAR = 1.054571817e-34; C = 299792458; EPS0 = 8.854187817e-12
@@ -636,8 +638,8 @@ class AtHomeZPESystem:
             result = self.engine.run_cycle(i + 1)
 
             if (i + 1) % report_every == 0 or i == 0:
-                print(f"  Cycle {i+1:5d}: "
-                      f"energy={result.energy_extracted_J:.4e} J, "
+                info_line(f"  Cycle {i+1:5d}: "
+f"energy={result.energy_extracted_J:.4e} J, "
                       f"grid={result.energy_to_grid_J:.4e} J, "
                       f"stability={result.cavity_stability:.4f}, "
                       f"frob_err={result.frobenius_error:.4e}, "
@@ -649,19 +651,19 @@ class AtHomeZPESystem:
         print(f"\n{'='*66}")
         print(f"SIMULATION COMPLETE")
         print(f"{'='*66}")
-        print(f"  Total cycles: {verify_result['n_cycles']}")
-        print(f"  Total energy extracted: {verify_result['total_energy_extracted_J']:.4e} J")
-        print(f"  Mean energy per cycle: {verify_result['mean_energy_per_cycle_J']:.6e} J")
-        print(f"  Mean Frobenius error: {verify_result['mean_frobenius_error']:.4e}")
-        print(f"  Final cavity stability: {verify_result['final_stability']:.4f}")
-        print(f"  Paradox engagement: {verify_result['paradox_fraction']*100:.1f}% of cycles")
-        print(f"  Frobenius closed: {'YES' if verify_result['frobenius_closed'] else 'NO'}")
+        info_line(f"  Total cycles: {verify_result['n_cycles']}")
+        info_line(f"  Total energy extracted: {verify_result['total_energy_extracted_J']:.4e} J")
+        info_line(f"  Mean energy per cycle: {verify_result['mean_energy_per_cycle_J']:.6e} J")
+        info_line(f"  Mean Frobenius error: {verify_result['mean_frobenius_error']:.4e}")
+        info_line(f"  Final cavity stability: {verify_result['final_stability']:.4f}")
+        info_line(f"  Paradox engagement: {verify_result['paradox_fraction']*100:.1f}% of cycles")
+        info_line(f"  Frobenius closed: {'YES' if verify_result['frobenius_closed'] else 'NO'}")
 
         if verify_result['frobenius_closed']:
             print(f"\n  >>> mu circ delta = id VERIFIED <<<")
         else:
             print(f"\n  >>> mu circ delta = id NOT YET ACHIEVED <<<")
-            print(f"      Promotions remaining to reach closure.")
+            info_line(f"      Promotions remaining to reach closure.")
 
         return verify_result
 
@@ -671,7 +673,7 @@ class AtHomeZPESystem:
 # ═══════════════════════════════════════════════════════════════════
 
 if __name__ == "__main__":
-    print("At-Home Zero-Point Energy System — Physical Design")
+    info_line("At-Home Zero-Point Energy System — Physical Design")
     print("=" * 66)
     system = AtHomeZPESystem()
     results = system.run_simulation(n_cycles=100, report_every=25)

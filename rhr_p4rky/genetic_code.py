@@ -28,7 +28,7 @@ if '--help' in _sys.argv or '-h' in _sys.argv:
     _doc = __doc__.strip() if __doc__ else "rhr_p4rky/genetic_code.py"
     print(_doc)
     print()
-    print("Examples:")
+    info_line("Examples:")
     print(_HELP_EXAMPLES)
     print()
     _sys.exit(0)
@@ -43,6 +43,7 @@ try:
 except ImportError:
     from rhr_p4rky.belnap import Belnap, meet, join, bnot
 from rhr_p4rky.kernel import fsplit, ffuse, engager, frobenius_invariant
+from shared.rich_output import *
 from rhr_p4rky.genetics_b4 import (BelnapCodon, nucleotide_to_belnap, belnap_to_nucleotide,
                           b4_lattice_distance, b4_meet, b4_join, b4_complement)
 
@@ -578,56 +579,57 @@ def run_genetic_verification() -> dict:
 def demo() -> dict:
     """Run a demonstration of the genetic code on the paraconsistent kernel."""
     from rhr_p4rky.kernel import verify_frobenius_invariant, run, initial_state
+
     
     print("=" * 60)
-    print("GENETIC CODE AS FROBENIUS ALGEBRA ON PARACONSISTENT KERNEL")
+    info_line("GENETIC CODE AS FROBENIUS ALGEBRA ON PARACONSISTENT KERNEL")
     print("=" * 60)
     
     # Test kernel's own Frobenius invariant
-    print("\n[1] Kernel Frobenius invariant (ffuse∘fsplit = id):")
-    print(f"    → {verify_frobenius_invariant()}")
+    info_line("\n[1] Kernel Frobenius invariant (ffuse∘fsplit = id):")
+    info_line(f"    → {verify_frobenius_invariant()}")
     assert verify_frobenius_invariant()
     
     # Test all 64 codons
-    print("\n[2] Codon Frobenius verification:")
+    info_line("\n[2] Codon Frobenius verification:")
     report = verify_all_codons_frobenius()
-    print(f"    Exact: {report['exact_stratum']} codons, "
-          f"Split: {report['split_stratum']} codons, "
+    info_line(f"    Exact: {report['exact_stratum']} codons, "
+f"Split: {report['split_stratum']} codons, "
           f"Stop: {report['stop_stratum']} codons")
-    print(f"    Frobenius violations: {report['frobenius_violations']}")
-    print(f"    Exact boxes: {', '.join(report['exact_boxes'])}")
-    print(f"    Split boxes: {', '.join(report['split_boxes'])}")
+    info_line(f"    Frobenius violations: {report['frobenius_violations']}")
+    info_line(f"    Exact boxes: {', '.join(report['exact_boxes'])}")
+    info_line(f"    Split boxes: {', '.join(report['split_boxes'])}")
     
     # Test ground layer
-    print("\n[3] Ground-layer AAs (no primitive activation):")
-    print(f"    {', '.join(GROUND_LAYER_AAS)}")
+    info_line("\n[3] Ground-layer AAs (no primitive activation):")
+    info_line(f"    {', '.join(GROUND_LAYER_AAS)}")
     
     # Test promoted AAs
-    print("\n[4] Promoted AAs (one per IG primitive):")
+    info_line("\n[4] Promoted AAs (one per IG primitive):")
     for aa in PROMOTED_AAS:
         prim = IG_PRIMITIVE_OF_AA[aa]
         risk = PRIMITIVE_RISK.get(prim.split(" (")[0], "?")
-        print(f"    {aa:4s} → {prim:30s}  [{risk}]")
+        info_line(f"    {aa:4s} → {prim:30s}  [{risk}]")
     
     # Test crystal divisibility
-    print("\n[5] Crystal divisibility:")
+    info_line("\n[5] Crystal divisibility:")
     crystal = crystal_divisibility()
-    print(f"    17,280,000 / 64 = {crystal['quotient']} "
-          f"(remainder {crystal['remainder']})")
-    print(f"    Factorization: {crystal['factorization_formula']}")
+    info_line(f"    17,280,000 / 64 = {crystal['quotient']} "
+f"(remainder {crystal['remainder']})")
+    info_line(f"    Factorization: {crystal['factorization_formula']}")
     
     # Test stop codons
-    print("\n[6] Stop codons (Ω winding boundary):")
+    info_line("\n[6] Stop codons (Ω winding boundary):")
     for sym, analysis in STOP_CODON_ANALYSIS.items():
-        print(f"    {sym}: {analysis}")
+        info_line(f"    {sym}: {analysis}")
     
     # Full verification
-    print("\n[7] Running full verification...")
+    info_line("\n[7] Running full verification...")
     verify = run_genetic_verification()
-    print(f"    ALL TESTS PASS: {verify['all_tests_pass']}")
+    info_line(f"    ALL TESTS PASS: {verify['all_tests_pass']}")
     
     print("\n" + "=" * 60)
-    print("Genetic code is verified as a Frobenius algebra on the")
+    info_line("Genetic code is verified as a Frobenius algebra on the")
     print("paraconsistent kernel. The kernel's ffuse∘fsplit = id")
     print("IS the genetic code's μ∘δ=id.")
     print("=" * 60)

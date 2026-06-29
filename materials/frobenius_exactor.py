@@ -51,6 +51,7 @@ import numpy as np
 from dataclasses import dataclass, field
 from typing import Dict, List, Tuple, Optional, Callable
 from enum import Enum
+from shared.rich_output import *
 
 # ═══════════════════════════════════════════════════════════════════
 # REFRAMED FROBENIUS CONDITION
@@ -755,6 +756,7 @@ class FrobeniusGapCloser:
 
 def main():
     import argparse
+
 
     parser = argparse.ArgumentParser(
         description='Frobenius Exactor — Close the mu-delta=id gap from ~0.11 to 0'

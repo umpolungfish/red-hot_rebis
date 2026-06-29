@@ -12,6 +12,7 @@ from datetime import datetime
 REBIS_ROOT = Path(__file__).parent.parent.parent.absolute()
 sys.path.insert(0, str(REBIS_ROOT))
 from clink.chain import clink_frobenius_closed, compute_c_score_from_tuple, compute_tier_from_tuple
+from shared.rich_output import *
 
 @dataclass
 class DatasetFile:
@@ -881,7 +882,7 @@ def _import_gene_designer():
         from clink.datasets.gene_designer import CodonOptimizer, GenomeBuilder
         return CodonOptimizer, GenomeBuilder
     except Exception as e:
-        print(f"  [warn] gene_designer import failed: {e}")
+        info_line(f"  [warn] gene_designer import failed: {e}")
         return None, None
 
 def _import_protein_structure():
@@ -895,7 +896,7 @@ def _import_protein_structure():
         )
         return generate_protein_structure, pdb_from_sequence, SecondaryStructurePredictor, BackboneBuilder
     except Exception as e:
-        print(f"  [warn] protein_structure import failed: {e}")
+        info_line(f"  [warn] protein_structure import failed: {e}")
         return None, None, None, None
 
 def _import_metabolic():
@@ -906,7 +907,7 @@ def _import_metabolic():
         from clink.datasets.metabolic_model import CoreMetabolismBuilder, MetabolicModel
         return CoreMetabolismBuilder, MetabolicModel
     except Exception as e:
-        print(f"  [warn] metabolic_model import failed: {e}")
+        info_line(f"  [warn] metabolic_model import failed: {e}")
         return None, None
 
 def _import_plasmid():
@@ -917,7 +918,7 @@ def _import_plasmid():
         from clink.datasets.plasmid_designer import PlasmidDesigner, PlasmidDesign
         return PlasmidDesigner, PlasmidDesign
     except Exception as e:
-        print(f"  [warn] plasmid_designer import failed: {e}")
+        info_line(f"  [warn] plasmid_designer import failed: {e}")
         return None, None
 
 # ─── Example proteins for realistic genome design ──────────────────
@@ -1171,6 +1172,7 @@ def generate_actionable_organism_package(
     Returns manifest dict with file paths and statistics.
     """
     import time
+
     start = time.time()
 
     if not output_dir:

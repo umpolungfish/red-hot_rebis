@@ -27,6 +27,7 @@ import random
 import math
 from dataclasses import dataclass
 
+from shared.rich_output import *
 from imas.arranger import (
     Token, StructuralFingerprint, compute_fingerprint,
     CANONICAL_ARRANGEMENTS, CANONICAL_FINGERPRINTS,
@@ -267,6 +268,7 @@ def analyze_frobenius_library(
     """Analyze a generated Frobenius library: fingerprint stats, IG type distribution."""
     from imas.ig_bridge import fingerprint_to_ig, ig_tuple_str
 
+
     analysis = {}
     for category, arrangements in library.items():
         if not arrangements:
@@ -301,26 +303,26 @@ def analyze_frobenius_library(
 
 if __name__ == '__main__':
     print("=" * 72)
-    print("FROBENIUS HUNTER — Targeted Frobenius Pair Search")
+    info_line("FROBENIUS HUNTER — Targeted Frobenius Pair Search")
     print("=" * 72)
 
     # Density estimation
-    print("\n--- Monte Carlo Density Estimation (n=100,000) ---")
+    info_line("\n--- Monte Carlo Density Estimation (n=100,000) ---")
     density = estimate_frobenius_density(100000, seed=42)
     for key in ['p_frobenius_pair', 'p_proper_frobenius', 'p_dialetheia_complete',
                 'p_frob_plus_dial', 'p_frob_dial_self']:
         if key in density:
             exp = density.get(f'expected_samples_{key[2:]}', '?')
-            print(f"  {key}: {density[key]:.6f}  (expected 1 per {exp} samples)")
+            info_line(f"  {key}: {density[key]:.6f}  (expected 1 per {exp} samples)")
 
     # Frobenius library generation
-    print("\n--- Frobenius Library (10 per type) ---")
+    info_line("\n--- Frobenius Library (10 per type) ---")
     library = generate_frobenius_library(count_per_type=10, seed=42)
     analysis = analyze_frobenius_library(library)
     for category, stats in analysis.items():
         print(f"\n  {category}:")
-        print(f"    Count: {stats['count']}, Distinct IG types: {stats['distinct_ig_types']}")
-        print(f"    Avg period: {stats['avg_period']:.1f}, Avg diversity: {stats['avg_diversity']:.1f}")
-        print(f"    Top IG types:")
+        info_line(f"    Count: {stats['count']}, Distinct IG types: {stats['distinct_ig_types']}")
+        info_line(f"    Avg period: {stats['avg_period']:.1f}, Avg diversity: {stats['avg_diversity']:.1f}")
+        info_line(f"    Top IG types:")
         for ig_str, count in stats['top_ig_types'][:3]:
-            print(f"      {ig_str} (×{count})")
+            info_line(f"      {ig_str} (×{count})")

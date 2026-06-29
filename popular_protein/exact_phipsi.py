@@ -21,6 +21,7 @@ import math, json, sys, os
 from pathlib import Path
 from dataclasses import dataclass
 from typing import Dict, List, Tuple, Optional
+from shared.rich_output import *
 
 # ─── AA-Specific Ramachandran Preferences ──────────────────────────
 # Each amino acid has characteristic phi/psi preferences determined
@@ -571,6 +572,7 @@ if __name__ == "__main__":
     import sys
     sys.path.insert(0, str(Path(__file__).parent.parent))
     from clink.datasets.protein_structure import SecondaryStructurePredictor
+
     
     OUT = Path(__file__).parent
     
@@ -589,7 +591,7 @@ if __name__ == "__main__":
         
         # Predict secondary structure
         ss = predictor.predict(seq)
-        print(f"  SS: {ss[:60]}...")
+        info_line(f"  SS: {ss[:60]}...")
         
         # Compute EXACT phi/psi from first principles
         exact = compute_exact_phipsi(seq, ss)
@@ -628,9 +630,9 @@ if __name__ == "__main__":
                         'phi': e['phi_mean'], 'psi': e['psi_mean']} for e in exact],
         }
         
-        print(f"  φ mean={all_results[name]['phi_mean']:.1f}° σ={all_results[name]['phi_std']:.1f}°")
-        print(f"  ψ mean={all_results[name]['psi_mean']:.1f}° σ={all_results[name]['psi_std']:.1f}°")
-        print(f"  PDB → {pdb_path} ({len(pdb_str)} bytes)")
+        info_line(f"  φ mean={all_results[name]['phi_mean']:.1f}° σ={all_results[name]['phi_std']:.1f}°")
+        info_line(f"  ψ mean={all_results[name]['psi_mean']:.1f}° σ={all_results[name]['psi_std']:.1f}°")
+        info_line(f"  PDB → {pdb_path} ({len(pdb_str)} bytes)")
     
     # Save results
     with open(OUT / 'exact_phipsi_results.json', 'w') as f:

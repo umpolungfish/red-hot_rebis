@@ -1,3 +1,24 @@
+imscriptor_card.html: industry-facing content + terminus rendering fix — 2026-06-29
+
+Content: replaced IG-internal jargon (activation coverage, primitive badges, Frobenius notation)
+  with plain biotech language — what it does (ACE2 competitive block), what it is
+  (computationally designed VH, no immunization), status (in silico, awaits wet lab).
+  Category tags (VH Domain / Anti-RBD / Computational) replace primitive type badges.
+  Two prop blocks: Mechanism and Design. Status chips in footer.
+3Dmol.js: switched cartoon style edged→oval to eliminate straight-line terminus artifact.
+  Small sphere caps at resi 1 and 125 prevent ribbon shooting to infinity.
+
+imscriptor_card.html: 3Dmol.js live 3D protein viewer replaces hex-ring illustration — 2026-06-29
+
+Loads PDB 6XDG (real anti-SARS-CoV-2 RBD VHH nanobody) from RCSB via 3Dmol.js CDN.
+Framework cartoon: steel blue; CDR3 (resi 97–113) highlighted gold; CDR1 teal; CDR2 amber.
+Primitive sidechain sticks by type: Trp=Þ teal, Phe=ƒ red, Cys=Ř blue, Tyr=Φ amber,
+His=Γ green, Gln=⊙ purple. Auto-rotate y-axis; hover pauses spin.
+Overlay: CDR3 label, primitive legend, Φ↔ƒ contact badge, 17/12 coverage, PDB tag.
+Named IMSCRIPTOR · Crystal Antibody · O₂ Tier · VH·001/∞.
+
+---
+
 Strip '; ' delimiter from Shavian tuple in materials_sim.py module header — 2026-06-26
 
 ---

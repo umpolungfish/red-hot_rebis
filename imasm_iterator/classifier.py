@@ -11,7 +11,9 @@ belong to the same structural class.
 """
 
 from typing import Tuple, List, Dict, NamedTuple, Optional, Set
+from shared.rich_output import *
 from .tokens import (
+
     Token, Family, TOKEN_FAMILY, FAMILY_TOKENS,
     token_family, signature, token_name, TOKEN_COUNT
 )

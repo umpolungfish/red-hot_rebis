@@ -3,6 +3,8 @@
 import sys, json, os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from clink.datasets.protein_structure import generate_protein_structure, BackboneBuilder
+from shared.rich_output import *
+
 
 with open(os.path.join(os.path.dirname(__file__), 'platonic_folds.json')) as f:
     data = json.load(f)
@@ -42,9 +44,9 @@ for name, info in data.items():
         'pdb_size': len(pdb_str),
     }
     
-    print(f"  SS: {struct.secondary_structure}")
-    print(f"  {struct.n_helix}H / {struct.n_strand}E / {struct.n_coil}C")
-    print(f"  PDB → {pdb_path} ({len(pdb_str)} bytes)")
+    info_line(f"  SS: {struct.secondary_structure}")
+    info_line(f"  {struct.n_helix}H / {struct.n_strand}E / {struct.n_coil}C")
+    info_line(f"  PDB → {pdb_path} ({len(pdb_str)} bytes)")
 
 with open(os.path.join(OUT, 'structure_summary.json'), 'w') as f:
     json.dump(results, f, indent=2)

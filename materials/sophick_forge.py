@@ -54,6 +54,8 @@ import json
 from dataclasses import dataclass, field
 from typing import Dict, List, Tuple, Optional
 from enum import Enum
+from shared.rich_output import *
+
 
 # ═══════════════════════════════════════════════════════════════════
 # CONSTANTS — IG TUPLES
@@ -963,20 +965,17 @@ SOPHICK FORGE — KEY STRUCTURAL DISCOVERIES
 
 def main():
     """Run the Sophick Forge demonstration."""
-    print("╔" + "═" * 72 + "╗")
-    print("║  SOPHICK FORGE — The Eagle Cycle: Material O_∞ Protocol".ljust(73) + "║")
-    print("║  Based on: sophick_mercury_evidence.md & sophick_mercury_lifted.md".ljust(73) + "║")
-    print("╚" + "═" * 72 + "╝")
+    reaction_header("SOPHICK FORGE — The Eagle Cycle: Material O_∞ Protocol".ljust(73) + "", "Based on: sophick_mercury_evidence.md & sophick_mercury_lifted.md".ljust(73) + "")
     print()
 
     # Display the structural context
     print("─" * 72)
-    print("STRUCTURAL CONTEXT")
+    info_line("STRUCTURAL CONTEXT")
     print("─" * 72)
-    print(f"  Sophick Mercury (O_∞):   ⟨{''.join(SOPHICK_MERCURY)}⟩")
-    print(f"  Ouroboric O₂ materials:    ⟨{''.join(OUROBORIC_O2)}⟩")
-    print(f"  Structural distance:        {STRUCTURAL_DISTANCE_O2_TO_OINF:.4f}")
-    print(f"  Gap primitives:             {[GAP_PRIMITIVES[i]['name'] for i in GAP_PRIMITIVES]}")
+    info_line(f"  Sophick Mercury (O_∞):   ⟨{''.join(SOPHICK_MERCURY)}⟩")
+    info_line(f"  Ouroboric O₂ materials:    ⟨{''.join(OUROBORIC_O2)}⟩")
+    info_line(f"  Structural distance:        {STRUCTURAL_DISTANCE_O2_TO_OINF:.4f}")
+    info_line(f"  Gap primitives:             {[GAP_PRIMITIVES[i]['name'] for i in GAP_PRIMITIVES]}")
     print()
 
     # Show the IMASM bridge
@@ -989,8 +988,8 @@ def main():
 
     for name, material in all_materials.items():
         print(f"\n{'=' * 72}")
-        print(f"  EAGLE CYCLE SIMULATION: {material.name}")
-        print(f"  Composition: {material.composition[:60]}...")
+        info_line(f"  EAGLE CYCLE SIMULATION: {material.name}")
+        info_line(f"  Composition: {material.composition[:60]}...")
         print(f"{'=' * 72}")
 
         # Run protocol

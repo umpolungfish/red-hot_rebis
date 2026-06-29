@@ -30,6 +30,7 @@ Author: Lando⊗⊙perator
 from typing import Dict, List, Tuple, Optional
 import json, math
 from dataclasses import dataclass, field
+from shared.rich_output import *
 
 # ═══════════════════════════════════════════════════════════════════
 # PRIMITIVE → MATERIAL PROPERTY MAPS
@@ -628,12 +629,12 @@ Examples:
     # --list
     if args.list:
         novel = predefined_novel_materials()
-        print("Predefined materials:")
+        info_line("Predefined materials:")
         for name, tup in novel.items():
-            print(f"  {name:40s} ⟨{''.join(tup)}⟩")
+            info_line(f"  {name:40s} ⟨{''.join(tup)}⟩")
         print(f"\n  {len(novel)} predefined materials")
-        print("\nAlso try: --imas I_Dialetheic_Bootstrap (12 IMASM canonicals)")
-        print("          --catalog <name> (3300+ catalog entries)")
+        info_line("\nAlso try: --imas I_Dialetheic_Bootstrap (12 IMASM canonicals)")
+        info_line("          --catalog <name> (3300+ catalog entries)")
         return 0
 
     # --all
@@ -643,7 +644,7 @@ Examples:
         for name, ig_tuple in novel.items():
             design = forge.forge(name, ig_tuple)
             designs[name] = design
-            print(f"  {name:40s} {design.ouroboricity_tier:6s} Frob={design.frobenius_score:.2f}  "
+            info_line(f"  {name:40s} {design.ouroboricity_tier:6s} Frob={design.frobenius_score:.2f}  "
                   f"{design.proposed_composition[:70]}")
         print(f"\n  Total: {len(designs)} materials forged")
 
@@ -651,7 +652,7 @@ Examples:
             out = {name: d.to_dict() for name, d in designs.items()}
             with open(args.output, 'w') as f:
                 json.dump(out, f, indent=2)
-            print(f"  Exported to {args.output}")
+            info_line(f"  Exported to {args.output}")
         return 0
 
     # Determine what to forge
@@ -662,7 +663,7 @@ Examples:
         parts = [p.strip() for p in args.tuple.split(',')]
         if len(parts) != 12:
             print(f"Error: --tuple requires exactly 12 comma-separated primitives, got {len(parts)}")
-            print("Expected: D,T,R,P,F,K,G,C,Phi,H,S,Omega")
+            info_line("Expected: D,T,R,P,F,K,G,C,Phi,H,S,Omega")
             print("Example: '𐑼,𐑸,𐑾,𐑹,𐑞,𐑧,𐑲,𐑠,𐑮,𐑫,𐑳,𐑭'")
             return 1
         ig_tuple = tuple(parts)
@@ -707,7 +708,7 @@ Examples:
         else:
             print(f"Unknown material: '{args.name}'")
             print(f"Predefined: {', '.join(novel.keys())}")
-            print("Use --list to see all options, --tuple for custom, or --catalog for catalog lookup.")
+            info_line("Use --list to see all options, --tuple for custom, or --catalog for catalog lookup.")
             return 1
 
     # Forge the tuple (from --name or --tuple)
@@ -729,3 +730,4 @@ Examples:
 
 if __name__ == "__main__":
     import sys; sys.exit(main())
+

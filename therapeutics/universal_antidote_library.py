@@ -17,6 +17,8 @@ import numpy as np
 import json, math, sys
 from dataclasses import dataclass
 from typing import List, Dict
+from shared.rich_output import *
+
 
 AVOGADRO = 6.022e23
 PLASMA_VOL_L = 3.0
@@ -92,7 +94,7 @@ class RibosomeDisplayLibrary:
                     clone.affinity_pM = 10 ** rng_local.uniform(1, 3)
         for t in TOXINS:
             b = [c for c in self.clones if t in c.toxin_targets]
-            print(f"  {t:20s}: {len(b):6d} binders")
+            info_line(f"  {t:20s}: {len(b):6d} binders")
 
     def multi_target_panning(self, rounds: int = 8):
         print(f"\n[MULTI-TARGET PANNING] {len(TOXINS)} toxins x {rounds} rounds")
@@ -116,11 +118,11 @@ class RibosomeDisplayLibrary:
                 self.enriched_clones[t] = retained
                 total += len(retained)
             if rnd % 2 == 0 or rnd == rounds - 1:
-                print(f"  Round {rnd+1:2d}: {total:6d} binders (wash={wash:.2f}, Kd<{thresh:.0f} pM)")
+                info_line(f"  Round {rnd+1:2d}: {total:6d} binders (wash={wash:.2f}, Kd<{thresh:.0f} pM)")
         for t in TOXINS:
             b = self.enriched_clones[t]
             aff = np.mean([c.affinity_pM for c in b]) if b else 0
-            print(f"  {t:20s}: {len(b):6d} enriched, avg {aff:.1f} pM")
+            info_line(f"  {t:20s}: {len(b):6d} enriched, avg {aff:.1f} pM")
 
     def compute_binding(self, toxin_conc_nM: float) -> Dict:
         total_phage = PHAGE_TITER * 1e3 * PLASMA_VOL_L
@@ -154,7 +156,7 @@ _GLOBAL_LIB = None
 
 def run_toxin_challenge_sweep():
     global _GLOBAL_LIB
-    print("\n[CHALLENGE SWEEP] 8-toxin simultaneous challenge")
+    info_line("\n[CHALLENGE SWEEP] 8-toxin simultaneous challenge")
     lib = RibosomeDisplayLibrary(diversity=int(LIBRARY_DIVERSITY))
     lib.generate_library()
     lib.assign_binders()
@@ -168,8 +170,8 @@ def run_toxin_challenge_sweep():
         for t, r in binding.items():
             s = "✓" if r['neutralized'] else "✗"
             clones = r.get('clones_available', 0)
-            print(f"  {s} {t:20s}: {r['fraction_neutralized']*100:5.1f}% (Kd={r.get('effective_Kd_M', 'inf'):.2e}, clones={clones})")
-        print(f"  → {n}/{len(TOXINS)} ({n/len(TOXINS)*100:.0f}%)")
+            info_line(f"  {s} {t:20s}: {r['fraction_neutralized']*100:5.1f}% (Kd={r.get('effective_Kd_M', 'inf'):.2e}, clones={clones})")
+        info_line(f"  → {n}/{len(TOXINS)} ({n/len(TOXINS)*100:.0f}%)")
         results.append({"conc_nM": conc_nM, "toxins_neutralized": n,
                         "total_toxins": len(TOXINS),
                         "fraction_neutralized": n / len(TOXINS),
@@ -180,14 +182,14 @@ def run_toxin_challenge_sweep():
 def main():
     global _GLOBAL_LIB
     print("=" * 60)
-    print("UNIVERSAL ANTIDOTE V2 — Multi-Toxin Neutralization")
-    print("Structural tuple: <𐑦𐑶𐑾𐑹𐑐𐑧𐑔𐑝⊙𐑫𐑕𐑭>")
+    info_line("UNIVERSAL ANTIDOTE V2 — Multi-Toxin Neutralization")
+    info_line("Structural tuple: <𐑦𐑶𐑾𐑹𐑐𐑧𐑔𐑝⊙𐑫𐑕𐑭>")
     print("=" * 60)
-    print("\n[FIXES APPLIED]")
-    print("  1. 100x more sample clones (1k→100k)")
-    print("  2. Multi-target simultaneous panning")
-    print("  3. Negative selection against cross-reactivity")
-    print("  4. Copy-number weighted binding")
+    info_line("\n[FIXES APPLIED]")
+    info_line("  1. 100x more sample clones (1k→100k)")
+    info_line("  2. Multi-target simultaneous panning")
+    info_line("  3. Negative selection against cross-reactivity")
+    info_line("  4. Copy-number weighted binding")
     sweep = run_toxin_challenge_sweep()
     output = {
         "library_diversity": LIBRARY_DIVERSITY,
@@ -204,7 +206,7 @@ def main():
     with open(path, 'w') as f:
         json.dump(output, f, indent=2, default=str)
     print(f"\n[SAVED] {path}")
-    print("\n[VERIFICATION] Frobenius μ∘δ=id: binding self-consistent")
+    info_line("\n[VERIFICATION] Frobenius μ∘δ=id: binding self-consistent")
 
 
 if __name__ == "__main__":

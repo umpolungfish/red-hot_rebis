@@ -37,6 +37,7 @@ import os
 import json
 from dataclasses import dataclass, field
 from typing import List, Tuple, Optional
+from shared.rich_output import *
 
 # ═══════════════════════════════════════════════════════════════════
 # MATERIAL PARAMETERS
@@ -226,18 +227,18 @@ class FrobeniusMetamaterial:
         heal_steps_per_cycle iterations.
         """
         print("=" * 72)
-        print("  FROBENIUS METAMATERIAL — mu circ delta = id SELF-VERIFICATION")
+        info_line("  FROBENIUS METAMATERIAL — mu circ delta = id SELF-VERIFICATION")
         print("=" * 72)
-        print(f"  Grid: {self.N}x{self.N} ({self.N*self.N} cells)")
-        print(f"  Matrix modulus: {self.P.matrix_modulus} GPa")
-        print(f"  DA bond activation: {self.P.da_activation_temp} C")
-        print(f"  Capsule volume fraction: {self.P.capsule_volume_fraction:.2f}")
-        print(f"  CNT gauge factor: {self.P.cnt_gauge_factor}")
-        print(f"  NiTi volume fraction: {self.P.niti_volume_fraction:.2f}")
-        print(f"  Target Frobenius error: < {self.P.target_frobenius_error}")
+        info_line(f"  Grid: {self.N}x{self.N} ({self.N*self.N} cells)")
+        info_line(f"  Matrix modulus: {self.P.matrix_modulus} GPa")
+        info_line(f"  DA bond activation: {self.P.da_activation_temp} C")
+        info_line(f"  Capsule volume fraction: {self.P.capsule_volume_fraction:.2f}")
+        info_line(f"  CNT gauge factor: {self.P.cnt_gauge_factor}")
+        info_line(f"  NiTi volume fraction: {self.P.niti_volume_fraction:.2f}")
+        info_line(f"  Target Frobenius error: < {self.P.target_frobenius_error}")
         print("-" * 72)
-        print(f"  {'Cycle':>5} {'Load':>12} {'||mu·d-id||':>14} {'Healed%':>8} {'Agent%':>8}")
-        print(f"  {'-'*5} {'-'*12} {'-'*14} {'-'*8} {'-'*8}")
+        info_line(f"  {'Cycle':>5} {'Load':>12} {'||mu·d-id||':>14} {'Healed%':>8} {'Agent%':>8}")
+        info_line(f"  {'-'*5} {'-'*12} {'-'*14} {'-'*8} {'-'*8}")
 
         results = []
 
@@ -278,19 +279,19 @@ class FrobeniusMetamaterial:
             })
 
             status = "✓" if frob_after < self.P.target_frobenius_error else "⚠"
-            print(f"  {status} {cycle:3d}  {max_load:8.2f}%  {frob_before:12.4f}  "
+            info_line(f"  {status} {cycle:3d}  {max_load:8.2f}%  {frob_before:12.4f}  "
                   f"{healed_pct:6.1f}%  {agent_pct:6.1f}%")
 
         # Final report
         frob_final = self.compute_frobenius_norm()
         print(f"\n{'='*72}")
-        print(f"  RESULTS")
+        info_line(f"  RESULTS")
         print(f"{'='*72}")
-        print(f"  Final ||mu·delta - id||: {frob_final:.6f}")
-        print(f"  Frobenius closure: {'ACHIEVED' if frob_final < self.P.target_frobenius_error else 'INCOMPLETE'}")
-        print(f"  Total healing events: {len(self.healing_events)}")
-        print(f"  Healing agent remaining: {np.mean(self.healing_agent)/self.P.capsule_volume_fraction*100:.1f}%")
-        print(f"  Cells fully healed: {np.sum(self.healed)}/{self.N*self.N}")
+        info_line(f"  Final ||mu·delta - id||: {frob_final:.6f}")
+        info_line(f"  Frobenius closure: {'ACHIEVED' if frob_final < self.P.target_frobenius_error else 'INCOMPLETE'}")
+        info_line(f"  Total healing events: {len(self.healing_events)}")
+        info_line(f"  Healing agent remaining: {np.mean(self.healing_agent)/self.P.capsule_volume_fraction*100:.1f}%")
+        info_line(f"  Cells fully healed: {np.sum(self.healed)}/{self.N*self.N}")
 
         # Classification
         if frob_final < 0.001:
@@ -338,6 +339,7 @@ class FrobeniusMetamaterial:
 if __name__ == "__main__":
     import argparse, os
 
+
     parser = argparse.ArgumentParser(
         description="Frobenius Metamaterial — μ∘δ=id self-verifying composite simulation",
         formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -368,7 +370,7 @@ if __name__ == "__main__":
 
     if args.enhanced:
         print("\n" + "=" * 72)
-        print("  ENHANCED VARIANT")
+        info_line("  ENHANCED VARIANT")
         print("=" * 72)
         params2 = FrobeniusMaterialParams(capsule_volume_fraction=0.15, feedback_gain=2.0)
         mat2 = FrobeniusMetamaterial(size=args.size, params=params2)

@@ -10,6 +10,7 @@ import os, sys, json, pathlib, math
 _BASE = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.join(_BASE, "pipeline"))
 from pipeline.frob import identity_phase
+from shared.rich_output import *
 
 CATALOG_PATH = os.path.join(_BASE, "shared", "IG_catalog.json")
 PRIMITIVES_PATH = os.path.join(_BASE, "shared", "primitives.py")
@@ -67,6 +68,7 @@ class Ch3mpilerOb3ect:
     def _load_ordinals(self):
         try:
             import importlib.util
+
             spec = importlib.util.spec_from_file_location("_primitives_mod", PRIMITIVES_PATH)
             mod = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(mod)
@@ -148,19 +150,19 @@ class Ch3mpilerOb3ect:
             d, _ = self.compute_distance(tc["pre"], tc["post"])
             # The forward reaction transforms the type; retrosynthesis inverts it
             ok = d > 0.0  # Transformation is non-trivial
-            print(f"  {tc['name']}: distance={d:.3f}, non-trivial={ok}")
+            info_line(f"  {tc['name']}: distance={d:.3f}, non-trivial={ok}")
             all_ok = all_ok and ok
         return all_ok
 
     def verify(self):
-        print("=== Ch3mpiler Ob3ect ===")
+        info_line("=== Ch3mpiler Ob3ect ===")
         print("  Catalog entries loaded:", len(self.catalog))
         print("  Primitive ordinals:", list(self.primitive_ordinals.keys()))
         frob_ok = self.verify_frobenius()
         source_ok = identity_phase(self.source)
         closure = frob_ok and source_ok
-        print(f"  Frobenius μ(δ(target))=target: {frob_ok}")
-        print(f"  Source integrity: {source_ok}")
+        info_line(f"  Frobenius μ(δ(target))=target: {frob_ok}")
+        info_line(f"  Source integrity: {source_ok}")
         print(f"Closure: {closure}")
         return closure
 

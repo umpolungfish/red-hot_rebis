@@ -19,6 +19,7 @@ import sys, os, json, math, itertools
 from pathlib import Path
 from typing import Dict, List, Tuple, Optional, Any
 from dataclasses import dataclass, field
+from shared.rich_output import *
 
 # Paths
 BASE = Path(__file__).parent.absolute()
@@ -716,6 +717,7 @@ def main():
     except Exception as e:
         print(f"[ERROR] Pipeline failed: {e}", file=sys.stderr)
         import traceback; traceback.print_exc()
+
         sys.exit(1)
     
     if args.json:

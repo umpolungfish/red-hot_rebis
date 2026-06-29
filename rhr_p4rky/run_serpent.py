@@ -9,9 +9,11 @@ import rhr_p4rky.belnap
 import rhr_p4rky.genetics_b4
 import rhr_p4rky.genetic_code
 from rhr_p4rky.serpent_rod import SerpentRod
+from shared.rich_output import *
 
 if __name__ == "__main__":
     import argparse
+
     parser = argparse.ArgumentParser(description="SerpentRod — Direct RNA to Folded Protein")
     parser.add_argument("--seq", "-s", type=str, default="AUGGCCGACUGGAACUGCAAGAAGAUCGUGCCCAAGUACUACGGCCGCUG",
                         help="RNA sequence (default: test sequence)")

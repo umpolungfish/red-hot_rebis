@@ -23,6 +23,7 @@ from serpentrod.stratified_predictor import (
 )
 from typing import List, Tuple, Optional, Dict
 from dataclasses import dataclass, field
+from shared.rich_output import *
 
 # ── Signal Peptide constants — derived from IG primitive structure ──────────
 #
@@ -809,9 +810,7 @@ def run_validation():
     sp_correct = 0; sp_total = 0
     frag_correct = 0; frag_total = 0
 
-    print("╔" + "═" * 78 + "╗")
-    print("║  PROTEIN ENHANCEMENTS v5 — CROSS-KINGDOM VALIDATION" + " " * 17 + "║")
-    print("╚" + "═" * 78 + "╝")
+    header("PROTEIN ENHANCEMENTS v5 — CROSS-KINGDOM VALIDATION" + " " * 17 + "")
 
     test_cases = {
         "Human Insulin": HUMAN_INSULIN,
@@ -828,7 +827,7 @@ def run_validation():
 
     for name, seq in test_cases.items():
         print(f"\n{'─' * 80}")
-        print(f"  ▶ {name} ({len(seq)} AA)")
+        info_line(f"  ▶ {name} ({len(seq)} AA)")
         
         # Detect mode
         is_viral = 'sars' in name.lower() or 'cov' in name.lower()
@@ -842,7 +841,7 @@ def run_validation():
 
     # ── Signal Peptide Accuracy ──
     print(f"\n{'═' * 80}")
-    print("  SIGNAL PEPTIDE ACCURACY")
+    info_line("  SIGNAL PEPTIDE ACCURACY")
     print(f"{'─' * 80}")
     for name, expected in SP_BENCHMARKS.items():
         seq = test_cases[name]
@@ -850,12 +849,12 @@ def run_validation():
         ok = pred_end == expected
         sp_correct += 1 if ok else 0; sp_total += 1
         status = "✓" if ok else f"✗ (off by {abs(pred_end - expected)})" if pred_end else "✗ (none)"
-        print(f"  {name:25s} expected={expected:2d} got={pred_end or 0:2d} score={score:5.1f} {status}")
+        info_line(f"  {name:25s} expected={expected:2d} got={pred_end or 0:2d} score={score:5.1f} {status}")
     print(f"\n  SP Accuracy: {sp_correct}/{sp_total} ({100*sp_correct/sp_total:.0f}%)")
 
     # ── Fragment Naming Accuracy ──
     print(f"\n{'─' * 80}")
-    print("  FRAGMENT NAMING ACCURACY")
+    info_line("  FRAGMENT NAMING ACCURACY")
     print(f"{'─' * 80}")
     for name, expected in KNOWN_FRAGMENTS.items():
         result = results.get(name)
@@ -867,41 +866,41 @@ def run_validation():
                     ok = got[i] == exp
                     frag_correct += 1 if ok else 0
                     status = "✓" if ok else "✗"
-                    print(f"  {name:25s} fragment {i+1}: expected='{exp}' got='{got[i]}' {status}")
+                    info_line(f"  {name:25s} fragment {i+1}: expected='{exp}' got='{got[i]}' {status}")
                 else:
-                    print(f"  {name:25s} fragment {i+1}: expected='{exp}' got=MISSING ✗")
+                    info_line(f"  {name:25s} fragment {i+1}: expected='{exp}' got=MISSING ✗")
                     if i+1 <= len(got):
-                        print(f"  {name:25s}  actual[{i+1}]='{got[i]}'")
+                        info_line(f"  {name:25s}  actual[{i+1}]='{got[i]}'")
 
     print(f"\n  Fragment Naming: {frag_correct}/{frag_total} ({100*frag_correct/frag_total:.0f}%)")
 
     # ── Primitive Spectra Comparison ──
     print(f"\n{'─' * 80}")
-    print("  PRIMITIVE SPECTRA COMPARISON")
+    info_line("  PRIMITIVE SPECTRA COMPARISON")
     print(f"{'─' * 80}")
     spectra = {}
     for name in test_cases:
         spectra[name] = analyze_spectrum(test_cases[name])
     spec_names = list(spectra.keys())
-    print("  Cosine similarity between primitive spectra (1.0 = identical):")
+    info_line("  Cosine similarity between primitive spectra (1.0 = identical):")
     for i, a in enumerate(spec_names):
         for b in spec_names[i + 1:]:
             sim = compare_spectra(spectra[a], spectra[b])
-            print(f"    {a:30s} ↔ {b:25s}  cos={sim:.3f}")
+            info_line(f"    {a:30s} ↔ {b:25s}  cos={sim:.3f}")
 
     # ── Summary ──
     print(f"\n{'═' * 80}")
-    print("  SUMMARY")
+    info_line("  SUMMARY")
     print(f"{'─' * 80}")
-    print(f"  Test cases:       {len(test_cases)} (mammal, fish, insect, plant, virus)")
-    print(f"  SP Detection:     {sp_correct}/{sp_total} ({100*sp_correct/sp_total:.0f}%)")
-    print(f"  Fragment Naming:  {frag_correct}/{frag_total} ({100*frag_correct/frag_total:.0f}%)")
-    print(f"  Total products:   {sum(len(results[n].mature_products) for n in results)}")
-    print(f"  Monobasic sites:  {sum(1 for n in results for s in results[n].cleavage_sites if 'monobasic' in s.enzyme_family)}")
+    info_line(f"  Test cases:       {len(test_cases)} (mammal, fish, insect, plant, virus)")
+    info_line(f"  SP Detection:     {sp_correct}/{sp_total} ({100*sp_correct/sp_total:.0f}%)")
+    info_line(f"  Fragment Naming:  {frag_correct}/{frag_total} ({100*frag_correct/frag_total:.0f}%)")
+    info_line(f"  Total products:   {sum(len(results[n].mature_products) for n in results)}")
+    info_line(f"  Monobasic sites:  {sum(1 for n in results for s in results[n].cleavage_sites if 'monobasic' in s.enzyme_family)}")
     
     # Cross-species Ω analysis
     print(f"\n{'─' * 80}")
-    print("  Ω (Glu) CONSERVATION IN INSULIN C-PEPTIDE")
+    info_line("  Ω (Glu) CONSERVATION IN INSULIN C-PEPTIDE")
     print(f"{'─' * 80}")
     ins_species = ['Human Insulin', 'Rat Insulin', 'Guinea Pig Insulin', 'Dogfish Insulin']
     for name in ins_species:
@@ -911,7 +910,7 @@ def run_validation():
                 if 'C-peptide' in p.name:
                     glus = p.sequence.count('E')
                     glns = p.sequence.count('Q')
-                    print(f"  {name:25s}: C-peptide Ω={glus}, ⊙={glns}, len={len(p.sequence)} AA")
+                    info_line(f"  {name:25s}: C-peptide Ω={glus}, ⊙={glns}, len={len(p.sequence)} AA")
     
     return results
 
@@ -1090,7 +1089,7 @@ def _fold_and_view(result: "ProcessingPrediction", base_name: str) -> None:
     import os, webbrowser
     products = result.mature_products
     if not products:
-        print("\n[structure] No mature products to fold.")
+        info_line("\n[structure] No mature products to fold.")
         return
     for prod in products:
         seq  = prod.sequence
@@ -1147,6 +1146,7 @@ Pipeline modes:
 
     if args.validate or (not args.sequence and not args.fasta_file and not args.pdb_input):
         from serpentrod.stratified_predictor import compare_spectra
+
         run_validation()
         sys.exit(0)
 
@@ -1192,7 +1192,7 @@ Pipeline modes:
         raw_seq = "".join(seq_lines).upper()
 
     if not raw_seq:
-        print("Error: no sequence provided.")
+        info_line("Error: no sequence provided.")
         sys.exit(1)
 
     # ── Forward edge: DNA/RNA → AA ───────────────────────────────────

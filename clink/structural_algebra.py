@@ -35,6 +35,8 @@ if str(_REBIS_ROOT) not in sys.path:
     sys.path.insert(0, str(_REBIS_ROOT))
 
 from shared.primitives import ORDINALS, PRIMITIVE_ORDER, tuple_distance
+from shared.rich_output import *
+
 
 # ── Catalog Loader ────────────────────────────────────────────────
 
@@ -248,17 +250,17 @@ def clink_chain_table():
 
 if __name__ == "__main__":
     results = compute_all_algebra()
-    print("=== Organism Structural Algebra (live from catalog) ===\n")
+    info_line("=== Organism Structural Algebra (live from catalog) ===\n")
     for key, val in results.items():
         if isinstance(val, dict):
             print(f"{key}:")
             for k, v in val.items():
                 if k == "tuple":
-                    print(f"  {k}: {dict((p, v[p]) for p in PRIMITIVE_ORDER)}")
+                    info_line(f"  {k}: {dict((p, v[p]) for p in PRIMITIVE_ORDER)}")
                 elif k == "interpretation":
-                    print(f"  {k}: {v}")
+                    info_line(f"  {k}: {v}")
                 else:
-                    print(f"  {k}: {v}")
+                    info_line(f"  {k}: {v}")
         elif isinstance(val, (int, float)):
             print(f"{key}: {round(val, 4)}")
         else:

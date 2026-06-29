@@ -64,6 +64,8 @@ PHENOXY_RADICAL_FG = {
 # ═══════════════════════════════════════════════════════════════
 
 import importlib.util
+from shared.rich_output import *
+
 spec = importlib.util.spec_from_file_location(
     'ch3mpiler', '/home/mrnob0dy666/imscribing_grammar/ch3mpiler.py')
 mod = importlib.util.module_from_spec(spec)
@@ -323,8 +325,8 @@ def assemble_c_plus(site_designs_c, bpa_bridge_site, bpa_ring_site=None):
 
 if __name__ == '__main__':
     print("=" * 72)
-    print("  PLASTIC_EATER_BPA — Bisphenol-A Degradation Module")
-    print("  Frobenius-Exact via Dominant-Member Rule")
+    info_line("  PLASTIC_EATER_BPA — Bisphenol-A Degradation Module")
+    info_line("  Frobenius-Exact via Dominant-Member Rule")
     print("=" * 72)
     print()
 
@@ -334,19 +336,19 @@ if __name__ == '__main__':
         site = design_bpa_site(name, bond_name, fg1, fg2, mech)
         bpa_sites.append(site)
         print(f"[{name}] 6/6 Frobenius-exact")
-        print(f"  AA:  {site['aa_sequence']}")
-        print(f"  RNA: {site['rna_sequence']}")
-        print(f"  Activated: {', '.join(site['activated_primitives'])}")
-        print(f"  Site type: ⟨{''.join(site['site_type'].get(p,'?') for p in PNAMES)}⟩")
+        info_line(f"  AA:  {site['aa_sequence']}")
+        info_line(f"  RNA: {site['rna_sequence']}")
+        info_line(f"  Activated: {', '.join(site['activated_primitives'])}")
+        info_line(f"  Site type: ⟨{''.join(site['site_type'].get(p,'?') for p in PNAMES)}⟩")
         print()
 
     # Assemble standalone BPA degrader (Catalyst D)
     bpa_degrader = assemble_bpa_degrader(bpa_sites)
     print(f"[Catalyst D — BPA_Degrader]")
-    print(f"  Domains: {bpa_degrader['num_domains']}")
-    print(f"  Total AA: {bpa_degrader['total_aa']}")
-    print(f"  MW: ~{bpa_degrader['molecular_weight_kda']} kDa")
-    print(f"  Full AA: {bpa_degrader['aa_sequence']}")
+    info_line(f"  Domains: {bpa_degrader['num_domains']}")
+    info_line(f"  Total AA: {bpa_degrader['total_aa']}")
+    info_line(f"  MW: ~{bpa_degrader['molecular_weight_kda']} kDa")
+    info_line(f"  Full AA: {bpa_degrader['aa_sequence']}")
     print()
 
     # Assemble Catalyst C+ (PC+PUR+BPA bridge)
@@ -354,11 +356,11 @@ if __name__ == '__main__':
     bpa_ring_site = bpa_sites[2]    # BPA_ring_opening
     c_plus = assemble_c_plus(CATALYST_C_SITES, bpa_bridge_site, bpa_ring_site)
     print(f"[Catalyst C+ — Urethanase_BPA]")
-    print(f"  Domains: {c_plus['num_domains']} (PUR + PC + BPA_bridge + BPA_ring)")
-    print(f"  Total AA: {c_plus['total_aa']}")
-    print(f"  MW: ~{c_plus['molecular_weight_kda']} kDa")
-    print(f"  Degrades: PC → BPA → phenol fragments → open chains")
-    print(f"  Full AA: {c_plus['aa_sequence']}")
+    info_line(f"  Domains: {c_plus['num_domains']} (PUR + PC + BPA_bridge + BPA_ring)")
+    info_line(f"  Total AA: {c_plus['total_aa']}")
+    info_line(f"  MW: ~{c_plus['molecular_weight_kda']} kDa")
+    info_line(f"  Degrades: PC → BPA → phenol fragments → open chains")
+    info_line(f"  Full AA: {c_plus['aa_sequence']}")
     print()
 
     # Save designs
@@ -376,4 +378,4 @@ if __name__ == '__main__':
 
     with open('/home/mrnob0dy666/red-hot_rebis/plastic_eater_bpa.json', 'w') as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
-    print("[✓] Saved plastic_eater_bpa.json")
+    info_line("[✓] Saved plastic_eater_bpa.json")

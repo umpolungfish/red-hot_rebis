@@ -23,7 +23,7 @@ if '--help' in _sys.argv or '-h' in _sys.argv:
     _doc = __doc__.strip() if __doc__ else "rhr_p4rky/hadron_belnap.py"
     print(_doc)
     print()
-    print("Examples:")
+    info_line("Examples:")
     print(_HELP_EXAMPLES)
     print()
     _sys.exit(0)
@@ -39,6 +39,8 @@ from quark_belnap import (
     color_meet, CEILING_STATE
 )
 from orbital_belnap import OrbitalState, pair
+from shared.rich_output import *
+
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -209,6 +211,6 @@ def test_hadron_belnap() -> None:
     m_both, b_both = hadron_frobenius_unified(m, b)
     assert m_both and b_both
 
-    print("✅ hadron_belnap.py: all tests pass")
+    info_line("✅ hadron_belnap.py: all tests pass")
 if __name__ == "__main__":
     test_hadron_belnap()

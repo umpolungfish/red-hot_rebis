@@ -29,9 +29,9 @@ import sys as _sys
 if '--help' in _sys.argv or '-h' in _sys.argv:
     print(__doc__.strip())
     print()
-    print("Examples:")
-    print("  rebis.py run serpent_rod")
-    print("  python3 -m rhr_p4rky.serpent_rod --help")
+    info_line("Examples:")
+    info_line("  rebis.py run serpent_rod")
+    info_line("  python3 -m rhr_p4rky.serpent_rod --help")
     print()
     _sys.exit(0)
 
@@ -46,6 +46,7 @@ from .genetics_b4 import (
     BelnapCodon, nucleotide_to_belnap, belnap_to_nucleotide,
     b4_lattice_distance, b4_meet, b4_join, b4_complement,
 )
+from shared.rich_output import *
 from .genetic_code import (
     STANDARD_CODE, CODON_CATALOG, SYMBOL_TO_AA, AA_TO_SYMBOLS,
     get_code_table,
@@ -482,19 +483,20 @@ def main():
         print(f"Confidence: {report['confidence']}")
         print(f"Frobenius: {'✓' if report['frobenius_verified'] else '✗'}")
         print()
-        print("Secondary Structure:")
+        info_line("Secondary Structure:")
         for el in report['secondary_elements']:
-            print(f"  {el['type']:6s} [{el['start']:3d}-{el['end']:3d}] "
-                  f"len={el['length']:2d} conf={el['confidence']:.2f} "
+            info_line(f"  {el['type']:6s} [{el['start']:3d}-{el['end']:3d}] "
+f"len={el['length']:2d} conf={el['confidence']:.2f} "
                   f"  {el['sequence']}")
         print()
-        print("Long-Range Contacts (top 10):")
+        info_line("Long-Range Contacts (top 10):")
         for c in report['contacts'][:10]:
-            print(f"  {c['i']:3d} ⟷ {c['j']:3d}  {c['type']:12s}  "
-                  f"d={c['distance']:.1f}Å  conf={c['confidence']:.2f}")
+            info_line(f"  {c['i']:3d} ⟷ {c['j']:3d}  {c['type']:12s}  "
+f"d={c['distance']:.1f}Å  conf={c['confidence']:.2f}")
         print()
         print(f"Closure: {report['closure_theorem']}")
         print(f"{'='*60}")
 if __name__ == "__main__":
     from rhr_p4rky.serpent_rod_v2 import main as _main_v2
+
     _main_v2()

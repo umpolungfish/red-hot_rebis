@@ -24,6 +24,7 @@ from dataclasses import dataclass, field
 BASE = Path(__file__).parent.absolute()
 sys.path.insert(0, str(BASE.parent))
 from shared.primitives import ORDINALS, WEIGHTS, resolve_ordinal_key
+from shared.rich_output import *
 
 PNAMES = ["D", "T", "R", "P", "F", "K", "G", "Gm", "Ph", "H", "S", "W"]
 PFIELDS = ["D", "T", "R", "P", "F", "K", "G", "Gm", "Ph", "H", "S", "W"]
@@ -1041,9 +1042,9 @@ class DerivedReaction:
     def print_procedure(self):
         """Print a human-readable reaction procedure derived from grammar."""
         print(f"\n{'='*70}")
-        print(f"  REACTION: {self.fg1} + {self.fg2}  via  {self.bond}")
-        print(f"  Bond: {self.bond_desc}")
-        print(f"  Structural Delta: {self.structural_delta:.3f}")
+        info_line(f"  REACTION: {self.fg1} + {self.fg2}  via  {self.bond}")
+        info_line(f"  Bond: {self.bond_desc}")
+        info_line(f"  Structural Delta: {self.structural_delta:.3f}")
         print(f"{'='*70}")
 
         # Mechanism class
@@ -1057,67 +1058,67 @@ class DerivedReaction:
         fg2r = self.reactants.get("fg2_reactants", [])
         if fg1r:
             best1 = fg1r[0]
-            print(f"  [{self.fg1}] Best: {best1['name']}  (d={best1['distance']:.3f})  [{best1['smiles']}]")
+            info_line(f"  [{self.fg1}] Best: {best1['name']}  (d={best1['distance']:.3f})  [{best1['smiles']}]")
             if len(fg1r) > 1:
-                print(f"           Alternatives: {', '.join(r['name'] for r in fg1r[1:4])}")
+                info_line(f"           Alternatives: {', '.join(r['name'] for r in fg1r[1:4])}")
         if fg2r:
             best2 = fg2r[0]
-            print(f"  [{self.fg2}] Best: {best2['name']}  (d={best2['distance']:.3f})  [{best2['smiles']}]")
+            info_line(f"  [{self.fg2}] Best: {best2['name']}  (d={best2['distance']:.3f})  [{best2['smiles']}]")
             if len(fg2r) > 1:
-                print(f"           Alternatives: {', '.join(r['name'] for r in fg2r[1:4])}")
+                info_line(f"           Alternatives: {', '.join(r['name'] for r in fg2r[1:4])}")
 
         # Solvent
         if self.solvent:
             s = self.solvent
             print(f"\n  ── SOLVENT ──")
-            print(f"  {s['name']}  (bp {s.get('bp_C','?')} °C, d={s.get('distance','?')}, {s.get('polarity','?')})")
+            info_line(f"  {s['name']}  (bp {s.get('bp_C','?')} °C, d={s.get('distance','?')}, {s.get('polarity','?')})")
 
         # Conditions
         print(f"\n  ── CONDITIONS ──")
         T = self.temperature
-        print(f"  Temperature: {T.get('T_C', (20,30))} °C  [{T.get('regime','?')}]")
+        info_line(f"  Temperature: {T.get('T_C', (20,30))} °C  [{T.get('regime','?')}]")
         conc = self.concentration
-        print(f"  Concentration: {conc.get('conc_M', (0.5,2.0))} M  [{conc.get('regime','?')}]")
+        info_line(f"  Concentration: {conc.get('conc_M', (0.5,2.0))} M  [{conc.get('regime','?')}]")
         ao = self.addition_order
-        print(f"  Addition: {ao.get('order','?')} ({ao.get('timing','?')})")
+        info_line(f"  Addition: {ao.get('order','?')} ({ao.get('timing','?')})")
         stoich = self.stoichiometry
-        print(f"  Stoichiometry: {stoich.get('ratio','1:1')}")
+        info_line(f"  Stoichiometry: {stoich.get('ratio','1:1')}")
 
         # Catalyst / Activator
         if self.catalyst:
             c = self.catalyst
             print(f"\n  ── CATALYST ──")
-            print(f"  {c['name']} ({c['type']})  [{c['smiles']}]")
-            print(f"  Reason: {c.get('Ph_bridge','?')}")
+            info_line(f"  {c['name']} ({c['type']})  [{c['smiles']}]")
+            info_line(f"  Reason: {c.get('Ph_bridge','?')}")
         if self.activator:
             a = self.activator
             print(f"\n  ── ACTIVATOR ──")
-            print(f"  {a['name']} ({a['type']})  [{a['smiles']}]")
+            info_line(f"  {a['name']} ({a['type']})  [{a['smiles']}]")
 
         # Stereo
         stereo = self.stereochemistry
         if stereo.get("ee_requirement", 0) > 0:
             print(f"\n  ── STEREOCHEMISTRY ──")
-            print(f"  {stereo.get('stereo','?')}  (ee > {stereo.get('ee_requirement',0)}%)")
+            info_line(f"  {stereo.get('stereo','?')}  (ee > {stereo.get('ee_requirement',0)}%)")
 
         # Chirality
         chiral = self.chiral_induction
         if chiral.get("chiral", "none") != "none":
             print(f"\n  ── CHIRAL INDUCTION ──")
-            print(f"  Strategy: {chiral.get('chiral','?')}  [{chiral.get('auxiliary','?')}]")
+            info_line(f"  Strategy: {chiral.get('chiral','?')}  [{chiral.get('auxiliary','?')}]")
 
         # Protecting groups
         pg = self.protecting_groups
         if pg.get("protect", "none") != "none":
             print(f"\n  ── PROTECTING GROUPS ──")
-            print(f"  Level: {pg.get('protect','?')}  [{pg.get('strategy','?')}]")
+            info_line(f"  Level: {pg.get('protect','?')}  [{pg.get('strategy','?')}]")
 
         # Workup
         wu = self.workup
         print(f"\n  ── WORKUP ──")
-        print(f"  Strategy: {wu.get('description','?')}")
+        info_line(f"  Strategy: {wu.get('description','?')}")
         for i, step in enumerate(wu.get("steps", []), 1):
-            print(f"    {i}. {step}")
+            info_line(f"    {i}. {step}")
 
         # Primitive deltas (diagnostic)
         if self.deltas:
@@ -1125,7 +1126,7 @@ class DerivedReaction:
             for p in PNAMES:
                 if p in self.deltas:
                     d = self.deltas[p]
-                    print(f"  {p}: Δ={d['delta']:.3f}  (bond={d['bond']}, meet={d['meet']})")
+                    info_line(f"  {p}: Δ={d['delta']:.3f}  (bond={d['bond']}, meet={d['meet']})")
 
 
 class ReactionDeriver:
@@ -1150,7 +1151,7 @@ class ReactionDeriver:
                 from ch3mpiler import FG as FG_TYPES
                 self.fg_types = FG_TYPES
             except ImportError:
-                print("Warning: Could not load FG type definitions")
+                info_line("Warning: Could not load FG type definitions")
                 self.fg_types = {}
 
     def derive(self, disconnection):
@@ -1318,32 +1319,32 @@ def main():
     deriver = ReactionDeriver()
 
     if args.list_solvents:
-        print("Grammar-typed Solvents:")
+        info_line("Grammar-typed Solvents:")
         for name, s in sorted(SOLVENT_DB.items()):
             t = {p: s.get(p, "?") for p in PNAMES}
-            print(f"  {name:25s}  bp={s['bp_C']:4d} C  pol={s['polarity']:20s}  {fmt_tup(t)}")
+            info_line(f"  {name:25s}  bp={s['bp_C']:4d} C  pol={s['polarity']:20s}  {fmt_tup(t)}")
         return
 
     if args.list_catalysts:
-        print("Grammar-typed Catalysts:")
+        info_line("Grammar-typed Catalysts:")
         for name, c in sorted(CATALYST_DB.items()):
-            print(f"  {name:40s}  {c['type']:20s}  Ph_bridge={c['Ph_bridge']}")
+            info_line(f"  {name:40s}  {c['type']:20s}  Ph_bridge={c['Ph_bridge']}")
         return
 
     if args.list_activators:
-        print("Grammar-typed Activators:")
+        info_line("Grammar-typed Activators:")
         for name, a in sorted(ACTIVATOR_DB.items()):
-            print(f"  {name:25s}  {a['type']:20s}  R_bridge={a['R_bridge']}")
+            info_line(f"  {name:25s}  {a['type']:20s}  R_bridge={a['R_bridge']}")
         return
 
     if args.list_reagents:
-        print("Grammar-typed Reagents:")
+        info_line("Grammar-typed Reagents:")
         for name, r in sorted(REAGENT_DB.items()):
-            print(f"  {name:30s}  {r['role']:20s}  supplies={r['supplies']}  {r['smiles']}")
+            info_line(f"  {name:30s}  {r['role']:20s}  supplies={r['supplies']}  {r['smiles']}")
         return
 
     if args.list_bonds:
-        print("Use ch3mpiler --list-bonds for bond types")
+        info_line("Use ch3mpiler --list-bonds for bond types")
         return
 
     # Manual disconnection
@@ -1375,7 +1376,7 @@ def main():
 
         cuts = result.get("cuts", [])
         if not cuts:
-            print("No disconnections found.")
+            info_line("No disconnections found.")
             return
 
         reactions = deriver.derive_all(cuts, limit=args.limit)
@@ -1399,12 +1400,13 @@ def main():
 
         cuts = result.get("cuts", [])
         if not cuts:
-            print("No disconnections found.")
+            info_line("No disconnections found.")
             return
 
         reactions = deriver.derive_all(cuts, limit=args.limit)
         if args.json:
             import json
+
             doc = deriver.to_procedure_document(args.target, reactions)
             print(json.dumps(doc, indent=2, ensure_ascii=False))
         else:
@@ -1413,21 +1415,21 @@ def main():
 
     # Default: demo
     print("=" * 70)
-    print("  reaction_deriver — Grammar-First Reaction Condition Derivation")
-    print("  No named reactions — conditions derived from 12-primitive algebra")
+    info_line("  reaction_deriver — Grammar-First Reaction Condition Derivation")
+    info_line("  No named reactions — conditions derived from 12-primitive algebra")
     print("=" * 70)
     print()
-    print("Demo: benzaldehyde + amine via amide_link")
-    print("(First, forming an imine with aniline)")
+    info_line("Demo: benzaldehyde + amine via amide_link")
+    info_line("(First, forming an imine with aniline)")
     disc = {"fg1": "amine", "fg2": "aldehyde", "bond": "cn_sigma",
             "bond_desc": "C-N sigma bond (imine formation)", "delta": 1.5}
     rxn = deriver.derive(disc)
     if rxn:
         rxn.print_procedure()
     print()
-    print("Try: python reaction_deriver.py --target benzaldehyde")
-    print("     python reaction_deriver.py --target aspirin")
-    print("     python reaction_deriver.py --disconnection alcohol acid ester_link")
+    info_line("Try: python reaction_deriver.py --target benzaldehyde")
+    info_line("     python reaction_deriver.py --target aspirin")
+    info_line("     python reaction_deriver.py --disconnection alcohol acid ester_link")
 
 
 if __name__ == "__main__":

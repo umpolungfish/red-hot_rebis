@@ -34,7 +34,9 @@ from imas.arranger import (
     CANONICAL_ARRANGEMENTS, CANONICAL_FINGERPRINTS, CANONICAL_NAMES,
     CANONICAL_DESCRIPTIONS, StructuralFingerprint, compute_fingerprint,
 )
+from shared.rich_output import *
 from imas.ig_bridge import (
+
     fingerprint_to_ig, canonical_ig_types, distinct_canonical_ig_types,
     ig_distance, ig_tuple_str, describe_ig, describe_full,
 )
@@ -298,17 +300,17 @@ def frobenius_pathway_to_layer(target_layer: str) -> Dict:
 
 if __name__ == '__main__':
     print("=" * 72)
-    print("IMASM → CLINK BRIDGE")
+    info_line("IMASM → CLINK BRIDGE")
     print("=" * 72)
     print()
     print(build_bridge_table())
     print()
     print("=" * 72)
-    print("FROBENIUS PATHWAY SYNTHESIS")
+    info_line("FROBENIUS PATHWAY SYNTHESIS")
     print("=" * 72)
     for layer in CLINK_LAYER_NAMES:
         fp = frobenius_pathway_to_layer(layer)
         status = "✓ Frobenius-special" if fp['has_frobenius_parity'] else "— not Frobenius"
-        print(f"  {layer}: {status}")
+        info_line(f"  {layer}: {status}")
         if fp['nearest_canonical']:
-            print(f"    Nearest canonical: {fp['nearest_canonical']} (d={fp['nearest_canonical_dist']})")
+            info_line(f"    Nearest canonical: {fp['nearest_canonical']} (d={fp['nearest_canonical_dist']})")

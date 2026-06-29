@@ -25,6 +25,7 @@ from imas.compound_imasm import (
     TOKEN_NAMES
 )
 from imas.ig_bridge import fingerprint_to_ig, ig_tuple_str, PRIMITIVE_NAMES
+from shared.rich_output import *
 
 try:
     from rdkit import Chem
@@ -583,21 +584,21 @@ if __name__ == "__main__":
                    '𐑮', '𐑫', '𐑕', '𐑭')
     
     hints = ig_tuple_to_smiles_hints(caffeine_ig)
-    print("=== Caffeine IG Type Analysis ===")
+    info_line("=== Caffeine IG Type Analysis ===")
     print(ig_tuple_str(caffeine_ig))
     print(f"Consistent: {hints['consistency_ok']}")
     if hints['issues']:
         print(f"Issues: {hints['issues']}")
-    print("\nDesign Hints:")
+    info_line("\nDesign Hints:")
     for f in hints['structural_features']:
-        print(f"  - {f}")
+        info_line(f"  - {f}")
     
     # Explore neighborhood
-    print("\n=== Crystal Neighborhood (d=1) ===")
+    info_line("\n=== Crystal Neighborhood (d=1) ===")
     neighbors = analyze_crystal_neighborhood(caffeine_ig, radius=1)
     for tup, dist, ok, hints, issues in neighbors[:10]:
         marker = "✓" if ok else "✗"
-        print(f"  d={dist} {marker} {ig_tuple_str(tup)}")
+        info_line(f"  d={dist} {marker} {ig_tuple_str(tup)}")
 
 
 # ═══════════════════════════════════════════════════════════
@@ -794,7 +795,7 @@ def run_cli():
     from imas.compound_imasm import molecule_to_arrangement
     arr = molecule_to_arrangement(args.smiles)
     if not arr:
-        print("ERROR: Invalid SMILES")
+        info_line("ERROR: Invalid SMILES")
         return
     
     fp = compute_fingerprint(arr)
@@ -809,17 +810,17 @@ def run_cli():
     print(f"Criticality: {result['criticality']}")
     print(f"\nStructural Features:")
     for f in result['structural_features']:
-        print(f"  - {f}")
+        info_line(f"  - {f}")
     
     print(f"\n--- Crystal Neighborhood (d<={args.radius}) ---")
     designs = analyze_compound_design_space(args.smiles, args.radius)
     for d in designs[:10]:
         print(f"\n  [{d['distance']}] Target: {d['target_type']}")
-        print(f"      Criticality: {d['criticality']}")
+        info_line(f"      Criticality: {d['criticality']}")
         for feat in d['features'][:3]:
-            print(f"      - {feat}")
+            info_line(f"      - {feat}")
         if d['candidates']:
-            print(f"      Candidates: {', '.join(d['candidates'][:2])}")
+            info_line(f"      Candidates: {', '.join(d['candidates'][:2])}")
     
     print(f"\n{'='*60}")
 
@@ -1115,6 +1116,7 @@ def analyze_molecule_properties(smiles: str) -> Dict:
     
     # Functional groups
     from rdkit import Chem
+
     mol = Chem.MolFromSmiles(smiles)
     if mol:
         mol = Chem.AddHs(mol)

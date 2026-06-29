@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>IMSCRIPTOR — 3D Viewer</title>
+  <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #05070f; width: 100vw; height: 100vh; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    #mol { width: 100vw; height: 100vh; }
+  </style>
+</head>
+<body>
+<div id="mol"></div>
+<script>
+let v = $3Dmol.createViewer(document.getElementById('mol'), {
+  backgroundColor: '#05070f', antialias: true, cartoonQuality: 10,
+});
+$3Dmol.download('pdb:6XDG', v, {multimodel: false, frames: false}, function () {
+  v.setStyle({}, {cartoon: {color: '#1e3560', style: 'oval', thickness: 0.35}});
+  v.setStyle({resi: '97-113'}, {cartoon: {color: '#c8a850', style: 'oval', thickness: 0.5}});
+  v.setStyle({resi: '26-33'},  {cartoon: {color: '#0d9488', style: 'oval', thickness: 0.42}});
+  v.setStyle({resi: '51-58'},  {cartoon: {color: '#92400e', style: 'oval', thickness: 0.42}});
+  v.addStyle({resi: '97-113', atom: 'CA'}, {sphere: {color: '#c8a850', radius: 0.28, opacity: 0.6}});
+  v.zoomTo();
+  v.zoom(1.2);
+  v.render();
+});
+</script>
+</body>
+</html>

@@ -30,6 +30,8 @@ import rhr_p4rky.belnap
 import rhr_p4rky.genetics_b4
 import rhr_p4rky.genetic_code
 from rhr_p4rky.serpent_rod import SerpentRod
+from shared.rich_output import *
+
 
 # ── Amino Acid Tables (all 20 standard AAs) ────────────────────────
 
@@ -151,7 +153,7 @@ def analyze_epitope(epitope_seq: str, epitope_name: str = "target") -> dict:
     print(f"Activated IG primitives: {len(activated_primitives)}/12")
 
     for idx, info in sorted(activations.items()):
-        print(f"  Position {idx}: {info['aa']} ({info['aa_3l']}) -> {info['primitive']}")
+        info_line(f"  Position {idx}: {info['aa']} ({info['aa_3l']}) -> {info['primitive']}")
 
     return {
         "name": epitope_name,
@@ -194,9 +196,9 @@ def design_cdr(epitope_analysis: dict,
                 seen.add(prim)
 
     print(f"\n  [CDR Design] Target length: {cdr_length}")
-    print(f"  Epitope activates: {epitope_activations}")
-    print(f"  Complementary primitives: {comp_prims}")
-    print(f"  Complementary AAs: {''.join(comp_1l)} ({len(comp_1l)})")
+    info_line(f"  Epitope activates: {epitope_activations}")
+    info_line(f"  Complementary primitives: {comp_prims}")
+    info_line(f"  Complementary AAs: {''.join(comp_1l)} ({len(comp_1l)})")
 
     # Phase 2: If we have fewer complementary AAs than CDR length,
     #           interleave with strategic bridge residues
@@ -233,27 +235,27 @@ def design_cdr(epitope_analysis: dict,
     cdr_seq = "".join(cdr_1l)
     cdr_rna = "".join(CODON_TABLE.get(aa, "GGU") for aa in cdr_1l)
 
-    print(f"  CDR sequence: {cdr_seq}")
-    print(f"  CDR RNA: {cdr_rna}")
-    print(f"  CDR composition:")
+    info_line(f"  CDR sequence: {cdr_seq}")
+    info_line(f"  CDR RNA: {cdr_rna}")
+    info_line(f"  CDR composition:")
     for i, (aa, ann) in enumerate(zip(cdr_1l, cdr_annot)):
         aa3 = AA_ONE_TO_THREE.get(aa, "???")
-        print(f"    Position {i}: {aa3} ({aa}) -> {ann}")
+        info_line(f"    Position {i}: {aa3} ({aa}) -> {ann}")
     # Phase 3: Run SerpentRod on the designed CDR to verify structure
     sr = SerpentRod(cdr_rna, name=f"cdr_{cdr_name}")
     result = sr.report()
 
     print(f"\n  CDR STRUCTURE PREDICTION:")
-    print(f"    Length: {result.get('aa_length', '?')} AA")
-    print(f"    Winding: {result.get('winding_number', '?')} B4 loops")
-    print(f"    Contacts: {len(result.get('contacts', []))}")
-    print(f"    Secondary elements: {len(result.get('secondary_elements', []))}")
+    info_line(f"    Length: {result.get('aa_length', '?')} AA")
+    info_line(f"    Winding: {result.get('winding_number', '?')} B4 loops")
+    info_line(f"    Contacts: {len(result.get('contacts', []))}")
+    info_line(f"    Secondary elements: {len(result.get('secondary_elements', []))}")
     for e in result.get('secondary_elements', [])[:6]:
-        print(f"      {e.get('type','?'):6s} [{e.get('start',0):2d}-{e.get('end',0):2d}] {e.get('sequence','?')}")
+        info_line(f"      {e.get('type','?'):6s} [{e.get('start',0):2d}-{e.get('end',0):2d}] {e.get('sequence','?')}")
     frob_ok = result.get('frobenius_verified', False)
     conf = result.get('confidence', 0.0)
-    print(f"    Frobenius: {'OK' if frob_ok else 'FAIL'}")
-    print(f"    Confidence: {conf:.2f}")
+    info_line(f"    Frobenius: {'OK' if frob_ok else 'FAIL'}")
+    info_line(f"    Confidence: {conf:.2f}")
 
     return {
         "cdr_name": cdr_name,
@@ -304,12 +306,12 @@ def design_full_antibody(epitope_analysis: dict,
     print(f"Framework 4: {fw['FR4']}")
     print(f"Full V{chain_type}: {full_seq}")
     print(f"\nANTIBODY STRUCTURE:")
-    print(f"  Length: {antibody_pred.get('aa_length','?')} AA")
-    print(f"  Winding: {antibody_pred.get('winding_number','?')} B4 loops")
-    print(f"  Contacts: {len(antibody_pred.get('contacts',[]))}")
-    print(f"  Subunits: {antibody_pred.get('subunits','?')}")
-    print(f"  Frobenius: {'OK' if frob_ok else 'FAIL'}")
-    print(f"  Confidence: {conf:.2f}")
+    info_line(f"  Length: {antibody_pred.get('aa_length','?')} AA")
+    info_line(f"  Winding: {antibody_pred.get('winding_number','?')} B4 loops")
+    info_line(f"  Contacts: {len(antibody_pred.get('contacts',[]))}")
+    info_line(f"  Subunits: {antibody_pred.get('subunits','?')}")
+    info_line(f"  Frobenius: {'OK' if frob_ok else 'FAIL'}")
+    info_line(f"  Confidence: {conf:.2f}")
 
     return {
         "chain_type": chain_type,
@@ -338,7 +340,7 @@ def design_antibodies_for_targets(targets: dict, chain_type: str = "VH",
         print(f"\n\n{'#'*70}")
         print(f"TARGET: {name}")
         if desc:
-            print(f"  {desc}")
+            info_line(f"  {desc}")
         print(f"{'#'*70}")
 
         analysis = analyze_epitope(epitope_seq, name)
@@ -351,7 +353,7 @@ def design_antibodies_for_targets(targets: dict, chain_type: str = "VH",
 
     # Print summary
     print(f"\n\n{'='*70}")
-    print("DESIGN SUMMARY")
+    info_line("DESIGN SUMMARY")
     print(f"{'='*70}")
     print(f"{'Target':25s} {'Epitope':25s} {'CDR3':15s} {'Frob':6s} {'Conf':6s}")
     print("-"*70)
@@ -417,17 +419,17 @@ Examples:
     args = parser.parse_args()
     # --list: show built-in targets
     if args.list:
-        print("BUILT-IN VIRAL EPITOPE TARGETS:")
+        info_line("BUILT-IN VIRAL EPITOPE TARGETS:")
         print("-" * 60)
         for name, info in VIRAL_EPITOPES.items():
-            print(f"  {name:25s}  {info['desc']}")
-            print(f"    Sequence: {info['seq']}")
+            info_line(f"  {name:25s}  {info['desc']}")
+            info_line(f"    Sequence: {info['seq']}")
             print()
-        print("Use --builtin <name> or --all to design antibodies against these targets.")
+        info_line("Use --builtin <name> or --all to design antibodies against these targets.")
         return 0
 
     print("=" * 70)
-    print("SERPENT ON THE ROD — ANTIBODY DESIGN PIPELINE")
+    info_line("SERPENT ON THE ROD — ANTIBODY DESIGN PIPELINE")
     print("=" * 70)
 
     # Determine targets
@@ -450,7 +452,7 @@ Examples:
         if args.builtin not in VIRAL_EPITOPES:
             print(f"Unknown built-in target: {args.builtin}")
             print(f"Available: {list(VIRAL_EPITOPES.keys())}")
-            print("Use --list to see all built-in targets with descriptions.")
+            info_line("Use --list to see all built-in targets with descriptions.")
             return 1
         targets = {args.builtin: VIRAL_EPITOPES[args.builtin]}
 
@@ -461,8 +463,8 @@ Examples:
 
     else:
         # Default: run all built-in targets
-        print("No target specified. Running all built-in viral epitopes.")
-        print("Use --epitope <SEQ> for a custom target, --builtin <NAME> for one, or --list to browse.")
+        info_line("No target specified. Running all built-in viral epitopes.")
+        info_line("Use --epitope <SEQ> for a custom target, --builtin <NAME> for one, or --list to browse.")
         targets = VIRAL_EPITOPES
 
     # Design antibodies

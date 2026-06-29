@@ -104,6 +104,9 @@ python3 rebis.py run serpentrod
 python3 rebis.py run test_genetics
 
 # CH3MPILER retrosynthetic compiler
+python3 rebis.py run ch3mpiler --smiles "CC(=O)OC1=CC=CC=C1C(=O)O"  # Exact SMILES input
+python3 rebis.py run ch3mpiler --target aspirin                                   # Name resolve
+python3 rebis.py run ch3mpiler --target aspirin --smiles "CC(=O)OC1=CC=CC=C1C(=O)O"  # Both
 python3 rebis.py run ch3mpiler --help
 
 # Ch3mpiler + SerpentRod catalytic site design (CAS lookup)
@@ -175,7 +178,7 @@ python3 rebis.py run list           # Show all 39 discoverable targets
 |--------|--------|--------------|
 | `serpentrod` | `serpentrod/protein_v5.py` | SerpentRod v5 — full signal peptide detection, cleavage, fragment naming, PTMs, primitive spectrum. Runs built-in test cases (Human Insulin, Proglucagon, Preproinsulin, Proopiomelanocortin, GLP-1 analog) |
 | `serpentrod_v2` | `rhr_p4rky/serpent_rod_v2.py` | SerpentRod v2 — 3D backbone from φ/ψ angles, geometry-based contacts, energy scoring |
-| `ch3mpiler` | `ch3mpiler/compiler.py` | Retrosynthetic disconnection compiler |
+| `ch3mpiler` | `ch3mpiler/compiler.py` | Retrosynthetic disconnection compiler — `--smiles` for direct SMILES, `--target` for name resolution, `--retrosynthesis` for ranked disconnections with **exact fragment SMILES** |
 | `ch3mpiler_serpentrod_pipeline` | `rhr_p4rky/ch3mpiler_serpentrod_pipeline.py` | Ch3mpiler + SerpentRod integrated pipeline — catalytic site design from SMILES or CAS |
 | `gene` | `gene_imscriber/engine.py` | Gene imscriber (structural type → codon optimization) |
 | `test_genetics` | `test_genetics.py` | 64-codon B4 lattice test suite |
@@ -775,9 +778,13 @@ python3 rebis.py pipeline actionable
 
 ```bash
 # 1. CAS lookup (recommended — resolves molecule identity)
+# 1. Direct retrosynthesis with SMILES input (recommended — exact)
+python3 rebis.py run ch3mpiler --smiles "CN1C=NC2=C1C(=O)N(C(=O)N2C)C" --retrosynthesis
+
+# 2. CAS lookup (also resolves SMILES)
 python3 rebis.py run ch3mpiler_serpentrod_pipeline --cas 58-08-2
 
-# 2. Direct molecule name
+# 3. Direct molecule name (may not resolve if name is synthetic)
 python3 rebis.py run ch3mpiler_serpentrod_pipeline --target "ibuprofen"
 
 # 3. Retrosynthetic pair
@@ -950,6 +957,9 @@ uv pip install rdkit-pypi
 **SerpentRod accuracy below 100%**
 Fragment naming accuracy (83–88%) reflects genuine structural ambiguity in cleavage products. SP accuracy should be 100% on the standard test set; below that indicates non-canonical signal peptide architecture in the test sequence.
 
+**Ch3mpiler retrosynthesis shows `C1=CC=C(C=C1)CC(C)C(=O)O` for all precursors**
+This is the old placeholder SMILES — the target name couldn't be resolved. Use `--smiles "<exact SMILES>"` to provide the molecular structure directly. The `bond_fragment_integrator.py` will then cut real bonds and display real fragment SMILES. If the target name does resolve (e.g. `--target aspirin`), SMILES are auto-resolved via OPSIN/PubChem. A bold red error message now appears when name resolution fails.
+
 **Ch3mpiler-SerpentRod produces identical sites for different molecules**
 This was the pre-v4 MAX fusion bug. Update to the latest pipeline:
 ```bash
@@ -1008,6 +1018,7 @@ These static-data commands were removed from `rebis.py`. All their data now live
 
 | Version | Date | Changes |
 |---------|------|---------|
+| v2.3.4 | 2026-06-28 | **Rich Formatting + Exact SMILES Edition** — `shared/rich_output.py` repo-wide on all 234 Python files; `bond_fragment_integrator.py` delivers exact RDKit fragment SMILES; `--smiles` CLI flag; SMILES FG detection via RDKit SMARTS; fake placeholder SMILES removed; `scripts/migrate_rich.py` + fix scripts |
 | v2.3.3 | 2026-06-27 | **Compound IMASM Edition** — New IMASM Compound Pipeline (imas/compound_imasm.py, fg_exhaustive.py, reactivity_imasm.py, ig_bridge.py, compound_catalog.py); Crystal-Guided Molecular Discovery (molecular_crystal_designer.py, 700+ lines); DMT-⊙ (5-nitro-bufotenin) discovery via crystal navigation; ⊙-Finder tool (odot_finder.py, 8.6 KB); 54 compounds, 15 IG types, 31 arrangements, 4,027+ catalog entries; cross-domain analogies (LSD→Kalachakra, water→pyromancy, etc.); 5-nitro-bufotenin.cdxml ChemDraw drawing; new `imas compound`, `imas analogies`, `imas reaction`, `imas register` subcommands; all docs updated (INDEX §4-5, README pillars 6-7, MANUAL pillars VI-VII, USER_GUIDE compound pipeline) |
 | v2.3.2 | 2026-06-27 | Updated docs for rhr_p4rky expansion: 32 modules (added `belnap_c4.py`, `decay_chain.py`, `papers/` with 3 millennium docs); symlinks `shared/elem2imasm.py`, `shared/reactivity.py`; INDEX.md L8 tier fix (O₂→O∞); README & MANUAL date/version sync |
 | v2.3.1 | 2026-06-24 | PDB format robustness, 34-test stress suite, molecule→material bridge, bug fixes |

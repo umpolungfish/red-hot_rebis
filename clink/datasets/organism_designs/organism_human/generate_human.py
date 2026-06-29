@@ -11,6 +11,7 @@ Usage:
 import sys
 import argparse
 from pathlib import Path
+from shared.rich_output import *
 
 REBIS_ROOT = Path(__file__).parent.parent.parent.parent.parent.absolute()
 sys.path.insert(0, str(REBIS_ROOT))
@@ -18,6 +19,7 @@ sys.path.insert(0, str(REBIS_ROOT))
 
 def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
     from clink.datasets.generators import (
+
         generate_organism_design_package,
         generate_actionable_organism_package,
     )
@@ -26,20 +28,20 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
         output_dir = str(Path(__file__).parent)
 
     print("=" * 70)
-    print("CLINK HUMAN DESIGN PIPELINE")
-    print("Homo sapiens — ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩  O_∞  C=1.0")
-    print("ZFC_fe foundation: μ∘δ=id at every layer")
+    info_line("CLINK HUMAN DESIGN PIPELINE")
+    info_line("Homo sapiens — ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩  O_∞  C=1.0")
+    info_line("ZFC_fe foundation: μ∘δ=id at every layer")
     print("=" * 70)
 
     if mode == "actionable":
-        print("\nMode: actionable (gene_designer + protein_structure + SBML + plasmid)\n")
+        info_line("\nMode: actionable (gene_designer + protein_structure + SBML + plasmid)\n")
         manifest = generate_actionable_organism_package(
             organism_type="human",
             output_dir=output_dir,
             write_files=True,
         )
     else:
-        print("\nMode: minimal (base generators)\n")
+        info_line("\nMode: minimal (base generators)\n")
         manifest = generate_organism_design_package(
             organism_type="human",
             output_dir=output_dir,

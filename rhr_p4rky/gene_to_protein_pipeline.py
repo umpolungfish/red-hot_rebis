@@ -29,11 +29,11 @@ from dataclasses import dataclass, field
 if '--help' in sys.argv or '-h' in sys.argv:
     print(__doc__.strip())
     print()
-    print("Examples:")
-    print("  rebis.py run gene_to_protein_pipeline --test")
-    print("  rebis.py run gene_to_protein_pipeline AAAAATGGCT...")
-    print("  rebis.py run gene_to_protein_pipeline --file my.fasta")
-    print("  python3 -m rhr_p4rky.gene_to_protein_pipeline --test")
+    info_line("Examples:")
+    info_line("  rebis.py run gene_to_protein_pipeline --test")
+    info_line("  rebis.py run gene_to_protein_pipeline AAAAATGGCT...")
+    info_line("  rebis.py run gene_to_protein_pipeline --file my.fasta")
+    info_line("  python3 -m rhr_p4rky.gene_to_protein_pipeline --test")
     print()
     sys.exit(0)
 
@@ -49,6 +49,7 @@ from .genetic_code import (
     GROUND_LAYER_AAS, PROMOTED_AAS, IG_PRIMITIVE_OF_AA, AA_OF_IG_PRIMITIVE,
     verify_all_codons_frobenius, verify_frobenius_on_codon,
 )
+from shared.rich_output import *
 from .genetic_asm import (
     PROGRAM_TRANSLATE_CODON, PROGRAM_FROBENIUS_VERIFY,
 )
@@ -1076,6 +1077,7 @@ class GeneToProteinPipeline:
 def main():
     """CLI entry point for the gene to protein pipeline."""
     import argparse
+
     parser = argparse.ArgumentParser(description="Gene to Protein Pipeline (Imscribing Grammar)")
     parser.add_argument("sequence", nargs="?", help="DNA sequence (or --file)")
     parser.add_argument("--file", "-f", help="FASTA file with sequence")
@@ -1121,7 +1123,7 @@ def main():
         if report['quaternary']['auto_detected']:
             print(f"Subunit detection: AUTO (conf={report['quaternary']['prediction']['confidence']:.2f})")
             for ek, evd in report['quaternary']['prediction']['evidence'].items():
-                print(f"  {ek}: pred={evd['prediction']} conf={evd['confidence']:.2f} -- {evd['reason']}")
+                info_line(f"  {ek}: pred={evd['prediction']} conf={evd['confidence']:.2f} -- {evd['reason']}")
         else:
             print(f"Subunit count: manual ({report['subunits']})")
         print(f"Symmetry: {report['subunit_symmetry']}")
@@ -1132,14 +1134,14 @@ def main():
             fm = chr(10003) if s["frob"] else chr(10007)
             print(f"{s['name']:<25} {s['b4']:<6} {fm:<6} {s['desc']}")
         print()
-        print("Pathway Distances:")
+        info_line("Pathway Distances:")
         for d in report["pathway"]:
-            print(f"  {d['from']} -> {d['to']}: delta={d['delta']}")
-        print(f"  TOTAL: delta={report['total_delta']}")
+            info_line(f"  {d['from']} -> {d['to']}: delta={d['delta']}")
+        info_line(f"  TOTAL: delta={report['total_delta']}")
         print()
-        print("Primitive Activations:")
+        info_line("Primitive Activations:")
         for prim, data in sorted(report["primitive_activations"].items()):
-            print(f"  {prim}: {data['count']}x")
+            info_line(f"  {prim}: {data['count']}x")
         print()
         print(f"Closure: DNA<->Quaternary distance={report['closure']['dna_to_quaternary_distance']}")
         print(f"Frobenius across all stages: {'OK' if report['closure']['frobenius_across_pathway'] else 'FAIL'}")

@@ -129,6 +129,7 @@ def _predict_secondary(sequence: str) -> str:
 # Standard bond lengths and angles for CA trace
 CA_CA_DIST = 3.8  # Angstroms
 import math
+from shared.rich_output import *
 
 
 def generate_pdb_from_sequence(sequence: str, name: str = "protein") -> str:
@@ -425,7 +426,7 @@ def generate_all_structures(
     base = Path(output_dir)
     
     print(f"\n{'='*60}")
-    print(f"  STRUCTURE GENERATION — {disease_key.upper()}")
+    info_line(f"  STRUCTURE GENERATION — {disease_key.upper()}")
     print(f"{'='*60}")
     
     # ── CDXML generation ──
@@ -435,11 +436,11 @@ def generate_all_structures(
     
     for r in cdxml_results:
         if "error" in r:
-            print(f"    ✗ {r['name']}: {r['error']}")
+            info_line(f"    ✗ {r['name']}: {r['error']}")
         else:
-            print(f"    ✓ {r['name']}.cdxml  ({r['size_bytes']}B, method={r.get('method','rdkit')})")
+            info_line(f"    ✓ {r['name']}.cdxml  ({r['size_bytes']}B, method={r.get('method','rdkit')})")
     
-    print(f"  CDXML: {sum(1 for r in cdxml_results if 'error' not in r)}/{len(cdxml_results)} generated")
+    info_line(f"  CDXML: {sum(1 for r in cdxml_results if 'error' not in r)}/{len(cdxml_results)} generated")
     
     # ── PDB generation ──
     print(f"\n  Generating PDB protein structures...")
@@ -448,11 +449,11 @@ def generate_all_structures(
     
     for r in pdb_results:
         if "error" in r:
-            print(f"    ✗ {r['name']}: {r['error']}")
+            info_line(f"    ✗ {r['name']}: {r['error']}")
         else:
-            print(f"    ✓ {r['name']}.pdb  ({r['size_bytes']}B, {r.get('atom_count',0)} atoms, method={r['method']})")
+            info_line(f"    ✓ {r['name']}.pdb  ({r['size_bytes']}B, {r.get('atom_count',0)} atoms, method={r['method']})")
     
-    print(f"  PDB: {sum(1 for r in pdb_results if 'error' not in r)}/{len(pdb_results)} generated")
+    info_line(f"  PDB: {sum(1 for r in pdb_results if 'error' not in r)}/{len(pdb_results)} generated")
     
     return {
         "disease": disease_key,
@@ -467,6 +468,7 @@ def generate_all_structures(
 
 if __name__ == "__main__":
     import argparse
+
     p = argparse.ArgumentParser(description="CDXML & PDB Structure Generator")
     p.add_argument("--disease", default="mrsa", help="Disease key")
     p.add_argument("--protein", default="HUMAN_INSULIN", help="Protein name for PDB")

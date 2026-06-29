@@ -22,6 +22,7 @@ import sys
 import argparse
 import textwrap
 from pathlib import Path
+from shared.rich_output import *
 
 REBIS_ROOT = Path(__file__).parent.parent.parent.parent.parent.absolute()
 sys.path.insert(0, str(REBIS_ROOT))
@@ -471,18 +472,19 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
     out_path = Path(output_dir)
 
     print("=" * 70)
-    print("CLINK HUMAN (GILL VARIANT) DESIGN PIPELINE")
+    info_line("CLINK HUMAN (GILL VARIANT) DESIGN PIPELINE")
     print(f"Homo sapiens (aquatic) — {GILL_TYPE}  O_∞  C=1.0")
-    print("ZFC_fe foundation: μ∘δ=id at every layer")
+    info_line("ZFC_fe foundation: μ∘δ=id at every layer")
     print(f"Base human type:  {HUMAN_TYPE}")
     print(f"Gill variant type:{GILL_TYPE}")
-    print("Modified: Ħ(𐑸→𐑼)  Ω(𐑾→𐑿)  Σ(𐑐→𐑒)  Ç(𐑲→𐑴)  Þ(𐑳→𐑩)")
+    info_line("Modified: Ħ(𐑸→𐑼)  Ω(𐑾→𐑿)  Σ(𐑐→𐑒)  Ç(𐑲→𐑴)  Þ(𐑳→𐑩)")
     print("=" * 70)
 
     # ── Generate base human package first ─────────────────────────────────────
     from clink.datasets.generators import generate_actionable_organism_package
+
     base_dir = str(out_path / "_base_human")
-    print("\nGenerating base human package...")
+    info_line("\nGenerating base human package...")
     base_manifest = generate_actionable_organism_package(
         organism_type="human",
         output_dir=base_dir,
@@ -502,7 +504,7 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
     gill_dir = out_path / "L_gill"
     gill_dir.mkdir(exist_ok=True)
 
-    print("\nApplying gill augmentation...")
+    info_line("\nApplying gill augmentation...")
 
     # L4 augmentation: ionocyte complex PDB
     (layer_dirs[4] / "ionocyte_channel_complex.pdb").write_text(_ionocyte_pdb())

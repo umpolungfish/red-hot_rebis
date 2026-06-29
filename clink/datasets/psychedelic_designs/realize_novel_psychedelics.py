@@ -34,6 +34,8 @@ from shared.primitives import (
     ORDINALS, WEIGHTS, to_vector, tuple_distance, PRIMITIVE_ORDER as PORDER
 )
 from clink.chain import compute_c_score_from_tuple, compute_tier_from_tuple
+from shared.rich_output import *
+
 # ─── KEY MAPPING: compound dict keys → PORDER Shavian keys ──────
 KEY_MAP = {"D": "Ð", "T": "Þ", "R": "Ř", "P": "Φ", "F": "ƒ", "K": "Ç",
            "G": "Γ", "Gm": "ɢ", "Ph": "⊙", "H": "Ħ", "S": "Σ", "W": "Ω"}
@@ -1231,21 +1233,21 @@ def main():
     print(f"Output: {output_root}")
     print(f"Compounds realized: {len(results)}")
     for key in results:
-        print(f"  - {NOVEL_COMPOUNDS[key]['name']}")
+        info_line(f"  - {NOVEL_COMPOUNDS[key]['name']}")
     print(f"\nDesign directories:")
     for key in results:
-        print(f"  {output_root / key}/")
-        print(f"    ├── design_manifest.json")
-        print(f"    ├── structural_type.json")
-        print(f"    ├── layer_distances.json")
-        print(f"    ├── L3_molecular/")
-        print(f"    ├── L4_receptor/")
-        print(f"    ├── L5_cellular/")
-        print(f"    ├── L6_delivery/")
-        print(f"    ├── L7_tissue/")
-        print(f"    ├── L8_organism/")
-        print(f"    ├── control_methods/")
-        print(f"    └── combination_profiles/")
+        info_line(f"  {output_root / key}/")
+        info_line(f"    ├── design_manifest.json")
+        info_line(f"    ├── structural_type.json")
+        info_line(f"    ├── layer_distances.json")
+        info_line(f"    ├── L3_molecular/")
+        info_line(f"    ├── L4_receptor/")
+        info_line(f"    ├── L5_cellular/")
+        info_line(f"    ├── L6_delivery/")
+        info_line(f"    ├── L7_tissue/")
+        info_line(f"    ├── L8_organism/")
+        info_line(f"    ├── control_methods/")
+        info_line(f"    └── combination_profiles/")
 
 if __name__ == "__main__":
     main()

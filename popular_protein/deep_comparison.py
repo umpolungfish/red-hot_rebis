@@ -4,6 +4,8 @@ Deep Comparison: Platonic vs Crystallographic — with Ramachandran, SS, and per
 """
 import sys, os, json, math, urllib.request
 import numpy as np
+from shared.rich_output import *
+
 
 OUT = os.path.dirname(__file__)
 
@@ -113,7 +115,7 @@ TARGETS = {
 }
 
 print("="*70)
-print("DEEP STRUCTURAL COMPARISON — PLATONIC vs CRYSTALLOGRAPHIC")
+info_line("DEEP STRUCTURAL COMPARISON — PLATONIC vs CRYSTALLOGRAPHIC")
 print("="*70)
 
 all_data = {}
@@ -144,8 +146,8 @@ for name, cfg in TARGETS.items():
     plat_seq = ''.join(plat_res[k]['res'] for k in plat_keys)
     crys_seq = ''.join(crys_res[k]['res'] for k in crys_keys)
     
-    print(f"  Platonic: {len(plat_keys)} residues: {plat_seq[:40]}...")
-    print(f"  Crystal:  {len(crys_keys)} residues: {crys_seq[:40]}...")
+    info_line(f"  Platonic: {len(plat_keys)} residues: {plat_seq[:40]}...")
+    info_line(f"  Crystal:  {len(crys_keys)} residues: {crys_seq[:40]}...")
     
     # Ramachandran stats
     plat_rama = {'alpha':0,'beta':0,'left':0,'ppii':0,'other':0,'none':0}
@@ -159,12 +161,12 @@ for name, cfg in TARGETS.items():
         crys_rama[region] = crys_rama.get(region, 0) + 1
     
     print(f"\n  RAMACHANDRAN DISTRIBUTION:")
-    print(f"  {'Region':<12} {'Platonic':>10} {'Crystal':>10} {'Delta':>10}")
-    print(f"  {'─'*12} {'─'*10} {'─'*10} {'─'*10}")
+    info_line(f"  {'Region':<12} {'Platonic':>10} {'Crystal':>10} {'Delta':>10}")
+    info_line(f"  {'─'*12} {'─'*10} {'─'*10} {'─'*10}")
     for region in ['alpha','beta','ppii','left','other','none']:
         pct_p = plat_rama[region]/len(plat_pp)*100 if plat_pp else 0
         pct_c = crys_rama[region]/len(crys_pp)*100 if crys_pp else 0
-        print(f"  {region:<12} {pct_p:>9.1f}% {pct_c:>9.1f}% {pct_p-pct_c:>+9.1f}%")
+        info_line(f"  {region:<12} {pct_p:>9.1f}% {pct_c:>9.1f}% {pct_p-pct_c:>+9.1f}%")
     
     # Phi/Psi comparison for matching residues
     min_len = min(len(plat_keys), len(crys_keys))
@@ -182,8 +184,8 @@ for name, cfg in TARGETS.items():
     
     if phi_diffs:
         print(f"\n  PHI/PSI DEVIATION:")
-        print(f"  Mean |Δφ|: {np.mean(phi_diffs):.1f}°  Median: {np.median(phi_diffs):.1f}°  Max: {np.max(phi_diffs):.1f}°")
-        print(f"  Mean |Δψ|: {np.mean(psi_diffs):.1f}°  Median: {np.median(psi_diffs):.1f}°  Max: {np.max(psi_diffs):.1f}°")
+        info_line(f"  Mean |Δφ|: {np.mean(phi_diffs):.1f}°  Median: {np.median(phi_diffs):.1f}°  Max: {np.max(phi_diffs):.1f}°")
+        info_line(f"  Mean |Δψ|: {np.mean(psi_diffs):.1f}°  Median: {np.median(psi_diffs):.1f}°  Max: {np.max(psi_diffs):.1f}°")
     
     # Kabsch RMSD
     plat_ca = [plat_res[k]['CA'] for k in plat_keys if plat_res[k]['CA']]
@@ -207,4 +209,4 @@ with open(os.path.join(OUT, 'deep_comparison.json'), 'w') as f:
     json.dump(all_data, f, indent=2)
 
 print(f"\n{'='*70}")
-print("Deep comparison complete → deep_comparison.json")
+info_line("Deep comparison complete → deep_comparison.json")

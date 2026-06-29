@@ -12,7 +12,7 @@ if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
     _doc = __doc__.strip() if __doc__ else "scripts/run_pdb_validation.py"
     print(_doc)
     print()
-    print("Examples:")
+    info_line("Examples:")
     print(_HELP_EXAMPLES)
     print()
     _sys.exit(0)
@@ -26,6 +26,8 @@ import rhr_p4rky.belnap
 import rhr_p4rky.genetics_b4
 import rhr_p4rky.genetic_code
 import importlib.util, importlib.machinery, types
+from shared.rich_output import *
+
 
 pkg_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "rhr_p4rky")
 loader = importlib.machinery.SourceFileLoader("rhr_p4rky.serpent_rod",
@@ -122,7 +124,7 @@ def validate(pdb_id: str, pdb_text: str) -> Dict:
     
     # Show top contacts
     for i, j in sorted(exp_contacts)[:8]:
-        print(f"  Contact: {atom_seq[i]}{i} ⟷ {atom_seq[j]}{j}")
+        info_line(f"  Contact: {atom_seq[i]}{i} ⟷ {atom_seq[j]}{j}")
     
     # Generate RNA and run SerpentRod
     rna = protein_to_rna(seq)
@@ -144,7 +146,7 @@ def validate(pdb_id: str, pdb_text: str) -> Dict:
     for c in result["contacts"][:8]:
         aa_i = pred_seq[c["i"]] if c["i"] < len(pred_seq) else "?"
         aa_j = pred_seq[c["j"]] if c["j"] < len(pred_seq) else "?"
-        print(f"  {aa_i}{c['i']} ⟷ {aa_j}{c['j']}  {c['type']}  conf={c['confidence']}")
+        info_line(f"  {aa_i}{c['i']} ⟷ {aa_j}{c['j']}  {c['type']}  conf={c['confidence']}")
     
     # If predicted and experimental sequences differ in length, adjust
     # Map predicted indices to experimental indices using sequence alignment
@@ -157,12 +159,12 @@ def validate(pdb_id: str, pdb_text: str) -> Dict:
     f1 = 2 * precision * recall / max(1e-10, precision + recall)
     
     print(f"\n  TP={tp}, FP={fp}, FN={fn}")
-    print(f"  Precision={precision:.3f}, Recall={recall:.3f}, F1={f1:.3f}")
+    info_line(f"  Precision={precision:.3f}, Recall={recall:.3f}, F1={f1:.3f}")
     
     # Check which specific contacts were correctly predicted
     correct = [(i,j) for i,j in pred_contacts if (i,j) in exp_contacts]
     for i,j in correct[:5]:
-        print(f"  ✓ CORRECT: {atom_seq[i]}{i} ⟷ {atom_seq[j]}{j}")
+        info_line(f"  ✓ CORRECT: {atom_seq[i]}{i} ⟷ {atom_seq[j]}{j}")
     
     return {
         "pdb_id": pdb_id,
@@ -196,7 +198,7 @@ if __name__ == "__main__":
             results.append({"pdb_id": pdb_id, "error": str(e)})
     
     print(f"\n\n{'='*60}")
-    print("VALIDATION SUMMARY")
+    info_line("VALIDATION SUMMARY")
     print(f"{'='*60}")
     for r in results:
         if "error" in r:

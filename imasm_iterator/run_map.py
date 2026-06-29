@@ -34,6 +34,8 @@ from imasm_iterator.classifier import (
     match_canonical,
 )
 from imasm_iterator.tokens import Token, arrangement_str, TOKEN_NAMES
+from shared.rich_output import *
+
 
 
 OUTPUT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -62,15 +64,15 @@ def main():
         return
 
     print(f"IMASM Arrangement Space Mapper")
-    print(f"  Length: {length}")
-    print(f"  Total space: {total_space:,} arrangements")
-    print(f"  Signatures: {len(signatures)}")
+    info_line(f"  Length: {length}")
+    info_line(f"  Total space: {total_space:,} arrangements")
+    info_line(f"  Signatures: {len(signatures)}")
     print()
 
     if args.full:
         max_total = None
-        print("Mode: FULL enumeration of all 430M arrangements")
-        print("Estimated time: 1-3 hours depending on CPU")
+        info_line("Mode: FULL enumeration of all 430M arrangements")
+        info_line("Estimated time: 1-3 hours depending on CPU")
     else:
         max_total = min(args.sample, total_space)
         print(f"Mode: SAMPLING {max_total:,} arrangements "
@@ -111,22 +113,22 @@ def main():
 
 def do_search(signatures, length):
     """Find all canonical arrangements and report their coarse class sizes."""
-    print("=== CANONICAL ARRANGEMENT SEARCH ===\n")
+    info_line("=== CANONICAL ARRANGEMENT SEARCH ===\n")
     for name in sorted(CANONICAL_CLASSES.keys()):
         arr = CANONICAL_CLASSES[name]
         if len(arr) != length:
             print(f"{name}: length={len(arr)} (different from scan length {length})")
             fp = compute_fingerprint(arr)
-            print(f"  Coarse key: {fp.coarse_key()}")
-            print(f"  {fp.description()}")
+            info_line(f"  Coarse key: {fp.coarse_key()}")
+            info_line(f"  {fp.description()}")
             print()
             continue
 
         fp = compute_fingerprint(arr)
         print(f"{name}:")
-        print(f"  Sequence:    {arrangement_str(arr)}")
-        print(f"  Description: {fp.description()}")
-        print(f"  Coarse key:  {fp.coarse_key()}")
+        info_line(f"  Sequence:    {arrangement_str(arr)}")
+        info_line(f"  Description: {fp.description()}")
+        info_line(f"  Coarse key:  {fp.coarse_key()}")
 
         # Find all arrangements with same coarse key
         matches = search_arrangements(
@@ -141,7 +143,7 @@ def do_search(signatures, length):
         # Filter to exact coarse match
         coarse_matches = [a for a in matches
                           if compute_fingerprint(a).coarse_key() == fp.coarse_key()]
-        print(f"  Coarse class size: {len(coarse_matches):,} arrangements")
+        info_line(f"  Coarse class size: {len(coarse_matches):,} arrangements")
         print()
 
 

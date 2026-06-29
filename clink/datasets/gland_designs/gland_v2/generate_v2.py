@@ -17,6 +17,8 @@ Author: Lando ⊗ ⊙perator
 from __future__ import annotations
 import json, os, textwrap, sys
 from typing import Dict, Optional
+from shared.rich_output import *
+
 
 OUTPUT_DIR = os.path.join(os.path.dirname(__file__))
 V1_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "gland_designs", "gland_v1")
@@ -288,13 +290,13 @@ def generate_all(output_dir: Optional[str] = None) -> Dict[str, str]:
             written[fn] = src
             total_bytes += size
         else:
-            print(f"  ⚠ Pre-written file not found: {fn}")
+            info_line(f"  ⚠ Pre-written file not found: {fn}")
 
     print(f"✓ GLAND V2 (IN-SITU): {len(written)} files, {total_bytes} bytes")
-    print(f"  Output: {output_dir}/")
+    info_line(f"  Output: {output_dir}/")
     for fn, fp in sorted(written.items()):
-        print(f"  • {fn} ({os.path.getsize(fp)} bytes)")
-    print(f"  • ZERO incisions — single ultrasound-guided injection")
+        info_line(f"  • {fn} ({os.path.getsize(fp)} bytes)")
+    info_line(f"  • ZERO incisions — single ultrasound-guided injection")
 
     return written
 

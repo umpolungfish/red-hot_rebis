@@ -12,6 +12,7 @@ Usage:
 import sys, json
 from rdkit import Chem
 from rdkit.Chem import rdDepictor
+from shared.rich_output import *
 
 # ── Periodic table ──
 ELEMENT_SYMBOLS = {
@@ -149,6 +150,7 @@ def validate_cdxml(cdxml_str, expected_atoms):
 
 def main():
     import argparse
+
     parser = argparse.ArgumentParser(description="Convert SMILES to validated CDXML")
     parser.add_argument("smiles", nargs="?", help="SMILES string")
     parser.add_argument("-o", "--output", default="output.cdxml", help="Output file")

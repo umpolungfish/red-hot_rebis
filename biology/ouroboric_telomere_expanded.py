@@ -27,6 +27,7 @@ import json
 from dataclasses import dataclass, field
 from typing import List, Tuple, Optional, Dict
 from enum import Enum
+from shared.rich_output import *
 
 
 # ═══════════════════════════════════════════════════════════════════
@@ -932,7 +933,7 @@ class EndogenousOuroboricSim:
     def run(self, total_divisions: int = 300, report_every: int = 25):
         """Run simulation for a given number of cell divisions."""
         print("=" * 80)
-        print("ENDOGENOUS OUROBORIC TELOMERE SYSTEM — Full 7-Layer Simulation")
+        info_line("ENDOGENOUS OUROBORIC TELOMERE SYSTEM — Full 7-Layer Simulation")
         print("=" * 80)
         print(f"Mode: {self.mode}")
         print(f"Cells: {self.n_cells}")
@@ -974,16 +975,16 @@ class EndogenousOuroboricSim:
         print(f"{'='*80}")
         
         print(f"\n  Mode:                        {self.mode}")
-        print(f"  Final mean telomere length:  {final['mean_length']:.1f} bp")
-        print(f"  Final minimum telomere:      {final['min_length']:.0f} bp")
-        print(f"  Mean hTERT expression:       {final['mean_htert']:.4f}×")
-        print(f"  Mean hTERT methylation:      {final['mean_methylation']:.1%}")
-        print(f"  Senescent cells:             {final['senescent_pct']:.1f}%")
-        print(f"  Ouroboric cells:             {final['ouroboric_pct']:.1f}%")
-        print(f"  Apoptotic cells:             {final['apoptotic_pct']:.1f}%")
-        print(f"  Critically short telomeres:  {final['critically_short_pct']:.1f}%")
-        print(f"  Mean ATM activity:           {final['mean_atm']:.4f}")
-        print(f"  Mean G4 stability:           {final['mean_g4_stability']:.3f}")
+        info_line(f"  Final mean telomere length:  {final['mean_length']:.1f} bp")
+        info_line(f"  Final minimum telomere:      {final['min_length']:.0f} bp")
+        info_line(f"  Mean hTERT expression:       {final['mean_htert']:.4f}×")
+        info_line(f"  Mean hTERT methylation:      {final['mean_methylation']:.1%}")
+        info_line(f"  Senescent cells:             {final['senescent_pct']:.1f}%")
+        info_line(f"  Ouroboric cells:             {final['ouroboric_pct']:.1f}%")
+        info_line(f"  Apoptotic cells:             {final['apoptotic_pct']:.1f}%")
+        info_line(f"  Critically short telomeres:  {final['critically_short_pct']:.1f}%")
+        info_line(f"  Mean ATM activity:           {final['mean_atm']:.4f}")
+        info_line(f"  Mean G4 stability:           {final['mean_g4_stability']:.3f}")
         
         total_ext = sum(h['total_extensions'])
         print(f"\n  Total extensions:            {total_ext}")
@@ -995,8 +996,8 @@ class EndogenousOuroboricSim:
                 drift = last_half[-1] - last_half[0]
                 if abs(drift) < 200:
                     print(f"\n  ✓ HOMEOSTATIC EQUILIBRIUM ACHIEVED")
-                    print(f"    Mean TL drift in last half: {drift:.0f} bp")
-                    print(f"    System is O_∞: self-sustaining, both gates open")
+                    info_line(f"    Mean TL drift in last half: {drift:.0f} bp")
+                    info_line(f"    System is O_∞: self-sustaining, both gates open")
                 else:
                     print(f"\n  ⚠ DRIFT DETECTED: {drift:.0f} bp — may need parameter tuning")
         elif self.mode == 'control':
@@ -1056,13 +1057,14 @@ class EndogenousOuroboricSim:
 
 if __name__ == "__main__":
     import sys
+
     
     # Parse mode from command line
     mode = sys.argv[1] if len(sys.argv) > 1 else 'endogenous'
     n_divisions = int(sys.argv[2]) if len(sys.argv) > 2 else 300
     
     print("\n" + "=" * 80)
-    print("OUROBORIC TELOMERE — ENDOGENOUS EXPANSION")
+    info_line("OUROBORIC TELOMERE — ENDOGENOUS EXPANSION")
     print("=" * 80)
     print(f"Mode: {mode}  |  Divisions: {n_divisions}")
     print()
@@ -1082,7 +1084,7 @@ if __name__ == "__main__":
         
         # Comparison
         print(f"\n{'='*80}")
-        print("CROSS-MODE COMPARISON")
+        info_line("CROSS-MODE COMPARISON")
         print(f"{'='*80}")
         print(f"{'Mode':>15} {'Final TL':>10} {'Sen%':>7} {'Ouro%':>7} {'hTERT':>7} {'Meth%':>7}")
         print(f"{'─'*15} {'─'*10} {'─'*7} {'─'*7} {'─'*7} {'─'*7}")

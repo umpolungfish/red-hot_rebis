@@ -8,6 +8,8 @@ FINAL: Corrected Platonic vs Crystallographic Comparison
 """
 import sys, os, json, math, urllib.request
 import numpy as np
+from shared.rich_output import *
+
 
 OUT = os.path.dirname(__file__)
 
@@ -95,7 +97,7 @@ TARGETS = {
 }
 
 print("="*70)
-print("FINAL: PLATONIC vs CRYSTALLOGRAPHIC STRUCTURAL COMPARISON")
+info_line("FINAL: PLATONIC vs CRYSTALLOGRAPHIC STRUCTURAL COMPARISON")
 print("="*70)
 
 all_data = {}
@@ -113,7 +115,7 @@ for name, cfg in TARGETS.items():
     # Crystal
     crys_text = fetch_pdb(cfg['pdb'])
     if not crys_text:
-        print("  FAILED to fetch crystal structure")
+        info_line("  FAILED to fetch crystal structure")
         continue
     crys_res = extract_backbone(crys_text, cfg['chain'])
     crys_pp = compute_phi_psi(crys_res)
@@ -123,8 +125,8 @@ for name, cfg in TARGETS.items():
     plat_seq = ''.join(plat_res[k]['res'] for k in plat_keys)
     crys_seq = ''.join(crys_res[k]['res'] for k in crys_keys)
     
-    print(f"  Platonic: {len(plat_keys)} residues  seq: {plat_seq[:50]}...")
-    print(f"  Crystal:  {len(crys_keys)} residues  seq: {crys_seq[:50]}...")
+    info_line(f"  Platonic: {len(plat_keys)} residues  seq: {plat_seq[:50]}...")
+    info_line(f"  Crystal:  {len(crys_keys)} residues  seq: {crys_seq[:50]}...")
     
     # Sequence match
     min_len = min(len(plat_keys), len(crys_keys))
@@ -132,7 +134,7 @@ for name, cfg in TARGETS.items():
                   crys_keys[i] < len(crys_seq) and 
                   plat_res[plat_keys[i]]['res'] == crys_res[crys_keys[i]]['res'])
     identity = matches / max(len(plat_keys), len(crys_keys)) * 100
-    print(f"  Sequence identity: {identity:.1f}% ({matches}/{max(len(plat_keys),len(crys_keys))})")
+    info_line(f"  Sequence identity: {identity:.1f}% ({matches}/{max(len(plat_keys),len(crys_keys))})")
     
     # Ramachandran
     plat_rama = {'alpha':0,'beta':0,'left':0,'ppii':0,'other':0,'none':0}
@@ -144,9 +146,9 @@ for name, cfg in TARGETS.items():
     
     n_plat = len(plat_pp); n_crys = len(crys_pp)
     print(f"\n  RAMACHANDRAN DISTRIBUTION:")
-    print(f"  {'Region':<10} {'Platonic':>10} {'Crystal':>10} {'Δ':>8}")
+    info_line(f"  {'Region':<10} {'Platonic':>10} {'Crystal':>10} {'Δ':>8}")
     for r in ['alpha','beta','ppii','left','other','none']:
-        print(f"  {r:<10} {plat_rama[r]/n_plat*100:>9.1f}% {crys_rama[r]/n_crys*100:>9.1f}% {plat_rama[r]/n_plat*100 - crys_rama[r]/n_crys*100:>+7.1f}%")
+        info_line(f"  {r:<10} {plat_rama[r]/n_plat*100:>9.1f}% {crys_rama[r]/n_crys*100:>9.1f}% {plat_rama[r]/n_plat*100 - crys_rama[r]/n_crys*100:>+7.1f}%")
     
     # Phi/Psi for residues with complete backbone
     phi_diffs, psi_diffs = [], []
@@ -160,8 +162,8 @@ for name, cfg in TARGETS.items():
     
     n_comp = len(phi_diffs)
     print(f"\n  PHI/PSI COMPARISON ({n_comp} comparable residues):")
-    print(f"  Mean |Δφ|: {np.mean(phi_diffs):.1f}°  |  Mean |Δψ|: {np.mean(psi_diffs):.1f}°")
-    print(f"  Median |Δφ|: {np.median(phi_diffs):.1f}°  |  Median |Δψ|: {np.median(psi_diffs):.1f}°")
+    info_line(f"  Mean |Δφ|: {np.mean(phi_diffs):.1f}°  |  Mean |Δψ|: {np.mean(psi_diffs):.1f}°")
+    info_line(f"  Median |Δφ|: {np.median(phi_diffs):.1f}°  |  Median |Δψ|: {np.median(psi_diffs):.1f}°")
     
     # Kabsch RMSD
     plat_ca = [plat_res[k]['CA'] for k in plat_keys if plat_res[k]['CA']]
@@ -172,14 +174,14 @@ for name, cfg in TARGETS.items():
     
     # Per-residue deviation
     per_res = np.sqrt(np.sum((p_c - q_rot)**2, axis=1))
-    print(f"  Per-residue: mean={np.mean(per_res):.2f} Å, median={np.median(per_res):.2f} Å, max={np.max(per_res):.2f} Å (res {np.argmax(per_res)+1})")
+    info_line(f"  Per-residue: mean={np.mean(per_res):.2f} Å, median={np.median(per_res):.2f} Å, max={np.max(per_res):.2f} Å (res {np.argmax(per_res)+1})")
     
     # Top 5 deviating residues
     top5 = np.argsort(per_res)[-5:][::-1]
-    print(f"  Top 5 deviating residues:")
+    info_line(f"  Top 5 deviating residues:")
     for idx in top5:
         aa = plat_res[plat_keys[idx]]['res'] if idx < len(plat_keys) else '?'
-        print(f"    Res {idx+1} ({aa}): {per_res[idx]:.2f} Å")
+        info_line(f"    Res {idx+1} ({aa}): {per_res[idx]:.2f} Å")
     
     all_data[name] = {
         'platonic_residues': len(plat_keys),
@@ -198,4 +200,4 @@ with open(os.path.join(OUT, 'final_comparison.json'), 'w') as f:
     json.dump(all_data, f, indent=2)
 
 print(f"\n{'='*70}")
-print("Final comparison complete → final_comparison.json")
+info_line("Final comparison complete → final_comparison.json")

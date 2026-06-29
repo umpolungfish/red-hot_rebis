@@ -7,6 +7,8 @@ For peptides without standalone crystal structures, explains structural reasons.
 """
 import sys, os, json, math, urllib.request, io, gzip
 import numpy as np
+from shared.rich_output import *
+
 
 OUT = os.path.dirname(os.path.abspath(__file__))
 
@@ -208,15 +210,15 @@ def compare_protein(name, cfg):
     """Run full comparison for one protein."""
     print(f"\n{'='*70}")
     print(f"PROTEIN: {name} — {cfg['desc']}")
-    print(f"  Crystal: {cfg['pdb']} chain {cfg['chain']} "
-          f"({cfg['method']}, {cfg['resolution']:.2f} Å)")
-    print(f"  {cfg['note']}")
+    info_line(f"  Crystal: {cfg['pdb']} chain {cfg['chain']} "
+f"({cfg['method']}, {cfg['resolution']:.2f} Å)")
+    info_line(f"  {cfg['note']}")
     print(f"{'─'*70}")
 
     # Load platonic PDB
     plat_path = os.path.join(OUT, f'{name}_platonic.pdb')
     if not os.path.exists(plat_path):
-        print(f"  ERROR: Platonic PDB not found: {plat_path}")
+        info_line(f"  ERROR: Platonic PDB not found: {plat_path}")
         return None
 
     with open(plat_path) as f:
@@ -225,7 +227,7 @@ def compare_protein(name, cfg):
     # Load crystal PDB
     crys_text = fetch_pdb(cfg['pdb'])
     if not crys_text:
-        print(f"  FAILED to fetch crystal PDB {cfg['pdb']}")
+        info_line(f"  FAILED to fetch crystal PDB {cfg['pdb']}")
         return None
 
     # Also save crystal PDB locally
@@ -233,7 +235,7 @@ def compare_protein(name, cfg):
     if not os.path.exists(crys_path):
         with open(crys_path, 'w') as f:
             f.write(crys_text)
-        print(f"  Saved {cfg['pdb']}.pdb ({len(crys_text)} bytes)")
+        info_line(f"  Saved {cfg['pdb']}.pdb ({len(crys_text)} bytes)")
 
     # Extract backbone
     plat_res = extract_backbone(plat_text, 'A')
@@ -245,9 +247,9 @@ def compare_protein(name, cfg):
     crys_seq = ''.join(crys_res[k]['res'] for k in crys_keys)
 
     print(f"\n  Platonic: {len(plat_keys)} residues")
-    print(f"  Crystal:  {len(crys_keys)} residues")
-    print(f"  Platonic seq: {plat_seq[:60]}...")
-    print(f"  Crystal seq:  {crys_seq[:60]}...")
+    info_line(f"  Crystal:  {len(crys_keys)} residues")
+    info_line(f"  Platonic seq: {plat_seq[:60]}...")
+    info_line(f"  Crystal seq:  {crys_seq[:60]}...")
 
     # Sequence alignment — find matching region
     # Simple sliding window to find best match
@@ -272,13 +274,13 @@ def compare_protein(name, cfg):
                 best_matches = matches
                 best_offset = -offset  # negative means platonic shifted
         identity = best_matches / max(len(plat_keys), len(crys_keys)) * 100
-        print(f"  Best alignment: offset={best_offset}, matches={best_matches}")
+        info_line(f"  Best alignment: offset={best_offset}, matches={best_matches}")
     else:
         best_offset = 0
         best_matches = min_len
         identity = 100.0
 
-    print(f"  Sequence identity: {identity:.1f}% ({best_matches}/{max(len(plat_keys), len(crys_keys))})")
+    info_line(f"  Sequence identity: {identity:.1f}% ({best_matches}/{max(len(plat_keys), len(crys_keys))})")
 
     # Build aligned CA coordinate lists
     if best_offset >= 0:
@@ -305,10 +307,10 @@ def compare_protein(name, cfg):
             aligned_residues.append((pk, ck, plat_res[pk]['res']))
 
     n_aligned = len(aligned_residues)
-    print(f"  Aligned CA atoms for RMSD: {n_aligned}")
+    info_line(f"  Aligned CA atoms for RMSD: {n_aligned}")
 
     if n_aligned < 3:
-        print(f"  Too few aligned residues for RMSD")
+        info_line(f"  Too few aligned residues for RMSD")
         return None
 
     # Kabsch RMSD
@@ -316,15 +318,15 @@ def compare_protein(name, cfg):
     per_res = np.sqrt(np.sum((p_c - q_rot)**2, axis=1))
 
     print(f"\n  KABSCH RMSD: {rmsd_val:.2f} Å over {n_aligned} aligned CA atoms")
-    print(f"  Per-residue: mean={np.mean(per_res):.2f} Å, "
-          f"median={np.median(per_res):.2f} Å, max={np.max(per_res):.2f} Å")
+    info_line(f"  Per-residue: mean={np.mean(per_res):.2f} Å, "
+f"median={np.median(per_res):.2f} Å, max={np.max(per_res):.2f} Å")
 
     # Top 5 deviating residues
     top5 = np.argsort(per_res)[-5:][::-1]
-    print(f"  Top 5 deviating residues:")
+    info_line(f"  Top 5 deviating residues:")
     for idx in top5:
         pk, ck, aa = aligned_residues[idx]
-        print(f"    Res #{pk} ({aa}): {per_res[idx]:.2f} Å")
+        info_line(f"    Res #{pk} ({aa}): {per_res[idx]:.2f} Å")
 
     # Ramachandran
     plat_pp = compute_phi_psi(plat_res)
@@ -342,11 +344,11 @@ def compare_protein(name, cfg):
 
     print(f"\n  RAMACHANDRAN DISTRIBUTION "
           f"(platonic={n_plat_pp} res, crystal={n_crys_pp} res):")
-    print(f"  {'Region':<10} {'Platonic':>10} {'Crystal':>10} {'Δ':>8}")
+    info_line(f"  {'Region':<10} {'Platonic':>10} {'Crystal':>10} {'Δ':>8}")
     for r in ['alpha', 'beta', 'ppii', 'left', 'other', 'none']:
         pp = plat_rama[r]/n_plat_pp*100 if n_plat_pp else 0
         cp = crys_rama[r]/n_crys_pp*100 if n_crys_pp else 0
-        print(f"  {r:<10} {pp:>9.1f}% {cp:>9.1f}% {pp-cp:>+7.1f}%")
+        info_line(f"  {r:<10} {pp:>9.1f}% {cp:>9.1f}% {pp-cp:>+7.1f}%")
 
     # Phi/Psi differences for aligned residues
     phi_diffs, psi_diffs = [], []
@@ -366,10 +368,10 @@ def compare_protein(name, cfg):
     n_angle = len(phi_diffs)
     if n_angle > 0:
         print(f"\n  PHI/PSI COMPARISON ({n_angle} comparable residues):")
-        print(f"  Mean |Δφ|: {np.mean(phi_diffs):.1f}°  |  "
-              f"Mean |Δψ|: {np.mean(psi_diffs):.1f}°")
-        print(f"  Median |Δφ|: {np.median(phi_diffs):.1f}°  |  "
-              f"Median |Δψ|: {np.median(psi_diffs):.1f}°")
+        info_line(f"  Mean |Δφ|: {np.mean(phi_diffs):.1f}°  |  "
+f"Mean |Δψ|: {np.mean(psi_diffs):.1f}°")
+        info_line(f"  Median |Δφ|: {np.median(phi_diffs):.1f}°  |  "
+f"Median |Δψ|: {np.median(psi_diffs):.1f}°")
 
     result = {
         'name': name,
@@ -397,8 +399,8 @@ def compare_protein(name, cfg):
 # ── Main ───────────────────────────────────────────────────────────
 
 print("="*70)
-print("COMPREHENSIVE: PLATONIC vs X-RAY CRYSTALLOGRAPHIC COMPARISON")
-print("Red-Hot Rebis — Protein Structure from First Principles")
+info_line("COMPREHENSIVE: PLATONIC vs X-RAY CRYSTALLOGRAPHIC COMPARISON")
+info_line("Red-Hot Rebis — Protein Structure from First Principles")
 print(f"Comparing {len(TARGETS)} proteins with X-ray crystal structures")
 print(f"Plus {len(PEPTIDES_NO_CRYSTAL)} peptides without standalone structures")
 print("="*70)
@@ -413,16 +415,16 @@ for name, cfg in TARGETS.items():
 
 # ── Part 2: Peptides WITHOUT standalone crystal structures ────────
 print(f"\n\n{'='*70}")
-print("PEPTIDES WITHOUT STANDALONE X-RAY CRYSTAL STRUCTURES")
+info_line("PEPTIDES WITHOUT STANDALONE X-RAY CRYSTAL STRUCTURES")
 print("="*70)
 
 for name, info in PEPTIDES_NO_CRYSTAL.items():
     print(f"\n  ┌{'─'*66}┐")
-    print(f"  │ {info['desc']} ({info['length']} residues)")
-    print(f"  ├{'─'*66}┤")
+    info_line(f"  │ {info['desc']} ({info['length']} residues)")
+    info_line(f"  ├{'─'*66}┤")
     for line in info['reason'].split('\n'):
-        print(f"  │ {line}")
-    print(f"  └{'─'*66}┘")
+        info_line(f"  │ {line}")
+    info_line(f"  └{'─'*66}┘")
     all_results[name] = {
         'name': name,
         'desc': info['desc'],
@@ -434,24 +436,24 @@ for name, info in PEPTIDES_NO_CRYSTAL.items():
 
 # ── Summary ────────────────────────────────────────────────────────
 print(f"\n\n{'='*70}")
-print("SUMMARY: PLATONIC vs CRYSTALLOGRAPHIC COMPARISON")
+info_line("SUMMARY: PLATONIC vs CRYSTALLOGRAPHIC COMPARISON")
 print("="*70)
 
 print(f"\n  {'Protein':<20} {'PDB':<8} {'Method':<12} {'Res':>6} "
       f"{'Plat':>5} {'Crys':>5} {'Aligned':>7} {'SeqID':>6} {'RMSD':>8} "
       f"{'Mean':>7} {'Max':>7}")
-print(f"  {'─'*20} {'─'*8} {'─'*12} {'─'*6} {'─'*5} {'─'*5} {'─'*7} "
-      f"{'─'*6} {'─'*8} {'─'*7} {'─'*7}")
+info_line(f"  {'─'*20} {'─'*8} {'─'*12} {'─'*6} {'─'*5} {'─'*5} {'─'*7} "
+f"{'─'*6} {'─'*8} {'─'*7} {'─'*7}")
 
 for name, r in all_results.items():
     if r.get('status') == 'no_standalone_crystal_structure':
-        print(f"  {name:<20} {'N/A':<8} {'N/A':<12} {'N/A':>6} "
-              f"{r['length']:>5} {'—':>5} {'—':>7} {'—':>6} "
+        info_line(f"  {name:<20} {'N/A':<8} {'N/A':<12} {'N/A':>6} "
+f"{r['length']:>5} {'—':>5} {'—':>7} {'—':>6} "
               f"{'NO':>8} {'STANDALONE':>7} {'STRUCTURE':>7}")
-        print(f"    → Small flexible peptide. Does not crystallize in isolation.")
+        info_line(f"    → Small flexible peptide. Does not crystallize in isolation.")
     else:
-        print(f"  {name:<20} {r['pdb_id']:<8} {r['method']:<12} "
-              f"{r['resolution']:>5.2f}Å {r['platonic_residues']:>4} "
+        info_line(f"  {name:<20} {r['pdb_id']:<8} {r['method']:<12} "
+f"{r['resolution']:>5.2f}Å {r['platonic_residues']:>4} "
               f"{r['crystal_residues']:>4} {r['aligned_residues']:>6} "
               f"{r['sequence_identity_pct']:>5.1f}% {r['kabsch_rmsd']:>7.2f}Å "
               f"{r['mean_per_res']:>6.2f}Å {r['max_per_res']:>6.2f}Å")
@@ -471,7 +473,7 @@ for name, r in all_results.items():
             interp = "Related fold — significant crystal packing / lattice distortion"
         else:
             interp = "Different conformation — crystal lattice overrides native topology"
-        print(f"    {name}: {rmsd:.2f} Å — {interp}")
+        info_line(f"    {name}: {rmsd:.2f} Å — {interp}")
 
 # Save results
 results_path = os.path.join(OUT, 'comprehensive_comparison_results.json')
@@ -492,8 +494,8 @@ for name, r in all_results.items():
         }
 with open(rama_path, 'w') as f:
     json.dump(rama_data, f, indent=2)
-print(f"  Ramachandran comparison: {rama_path}")
+info_line(f"  Ramachandran comparison: {rama_path}")
 
 print(f"\n{'='*70}")
-print("COMPREHENSIVE COMPARISON COMPLETE")
+info_line("COMPREHENSIVE COMPARISON COMPLETE")
 print("="*70)

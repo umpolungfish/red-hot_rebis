@@ -9,7 +9,7 @@ if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
     _doc = __doc__.strip() if __doc__ else "rhr_p4rky/exotic_hadron_belnap.py"
     print(_doc)
     print()
-    print("Examples:")
+    info_line("Examples:")
     print(_HELP_EXAMPLES)
     print()
     _sys.exit(0)
@@ -22,6 +22,8 @@ from typing import Optional, Set, Tuple, List, Union
 from quark_belnap import ColorState, QuarkState, anti_color, color_join
 from orbital_belnap import OrbitalState
 from hadron_belnap import Meson, Baryon
+from shared.rich_output import *
+
 
 # === §1 GLUEBALL ===
 class GluonColor:
@@ -58,7 +60,7 @@ def test_glueball():
     d1, d2 = g.depair()
     result = Glueball.pair(d1, d2)
     assert result == g, f"Frobenius failed: {result} != {g}"
-    print("  Glueball Frobenius: OK")
+    info_line("  Glueball Frobenius: OK")
 
 # === §2 TETRAQUARK ===
 @dataclass
@@ -105,7 +107,7 @@ def test_tetraquark():
     d1, d2 = t.depair()
     result = Tetraquark.pair(d1, d2)
     assert result == t, f"Frobenius failed: {result} != {t}"
-    print("  Tetraquark Frobenius: OK")
+    info_line("  Tetraquark Frobenius: OK")
 
 # === §3 PENTAQUARK ===
 @dataclass
@@ -126,7 +128,7 @@ class Pentaquark:
 
 # === RUN TESTS ===
 if __name__ == "__main__":
-    print("ExoticHadronBelnap tests:")
+    info_line("ExoticHadronBelnap tests:")
     test_glueball()
     test_tetraquark()
-    print("All exotic hadron tests passed!")
+    info_line("All exotic hadron tests passed!")

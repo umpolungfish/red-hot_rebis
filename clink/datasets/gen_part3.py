@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """PART 3: L5-L8 layer generators + orchestration."""
 import os, json
+from shared.rich_output import *
 
 PY = "/home/mrnob0dy666/red-hot_rebis/clink/datasets/generators.py"
 
@@ -133,7 +134,7 @@ class Layer5DatasetGenerator(DatasetGenerator):
                 "\\n# Protocol: autoclave base, filter-add heat-labile components")
 ''')
 
-print("L5 written")
+info_line("L5 written")
 
 # L6 - Mitosis
 w('''
@@ -191,7 +192,7 @@ class Layer6DatasetGenerator(DatasetGenerator):
                 "- Spindle checkpoint: active (Mad2 at kinetochores)")
 ''')
 
-print("L6 written")
+info_line("L6 written")
 
 # L7 - Tissue
 w('''
@@ -205,6 +206,7 @@ class Layer7DatasetGenerator(DatasetGenerator):
         try:
             sys.path.insert(0, str(REBIS_ROOT))
             from materials.materials_sim import MaterialsSimulation
+
             o.tool_bridges_used.append("materials_sim")
         except: pass
         
@@ -262,4 +264,4 @@ class Layer7DatasetGenerator(DatasetGenerator):
                 "4. Proceed to RNA extraction or fixation")
 ''')
 
-print("L7 written")
+info_line("L7 written")

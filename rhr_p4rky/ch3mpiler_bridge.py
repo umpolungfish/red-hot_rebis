@@ -26,7 +26,7 @@ if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
     _doc = __doc__.strip() if __doc__ else "rhr_p4rky/ch3mpiler_bridge.py"
     print(_doc)
     print()
-    print("Examples:")
+    info_line("Examples:")
     print(_HELP_EXAMPLES)
     print()
     _sys.exit(0)
@@ -34,6 +34,7 @@ if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
 
 import sys, os, json, math
 from pathlib import Path
+from shared.rich_output import *
 
 # ── Locate ch3mpiler in the imscribing_grammar tree ──────────────────────────
 CH3MPILER_PATH = Path.home() / "imscribing_grammar" / "ch3mpiler.py"
@@ -51,6 +52,7 @@ def _ensure_loaded():
         return
     # Import by executing the module
     import importlib.util
+
     spec = importlib.util.spec_from_file_location("ch3mpiler", CH3MPILER_PATH)
     _ch3mpiler_mod = importlib.util.module_from_spec(spec)
     sys.modules["ch3mpiler"] = _ch3mpiler_mod

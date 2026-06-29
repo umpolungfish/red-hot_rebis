@@ -29,6 +29,7 @@ import sys, json, re
 from pathlib import Path
 from collections import Counter
 from typing import Tuple, List, Dict, Optional
+from shared.rich_output import *
 
 try:
     from rdkit import Chem
@@ -36,7 +37,7 @@ try:
     HAS_RDKIT = True
 except ImportError:
     HAS_RDKIT = False
-    print("Warning: RDKit not available. Install with: uv pip install rdkit-pypi")
+    info_line("Warning: RDKit not available. Install with: uv pip install rdkit-pypi")
 
 # ── IMASM Token definitions (mirrors arranger.py) ──
 VINIT, TANCH, AFWD, AREV, CLINK = 0, 1, 2, 3, 4
@@ -635,6 +636,7 @@ def analyze_molecule(smiles: str) -> Dict:
 
 def main():
     import argparse
+
     parser = argparse.ArgumentParser(description="IMASM compound encoder")
     parser.add_argument("smiles", nargs="?", help="SMILES string")
     parser.add_argument("--json", "-j", action="store_true", help="JSON output")

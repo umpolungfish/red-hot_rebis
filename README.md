@@ -222,15 +222,20 @@ The Serpent-Rod correspondence is a morphism RNA → Protein that derives foldin
 
 ### 2. CH₃MPILER — `ch3mpiler/`
 
-**Source:** `compiler.py`, `docs/documentation.md`, `gen_v2.py`, `ob3ect/ch3mpiler_ob3ect.py`
+**Source:** `compiler.py`, `bond_fragment_integrator.py`, `docs/documentation.md`, `gen_v2.py`, `ob3ect/ch3mpiler_ob3ect.py`
 
 The IG-grounded retrosynthetic compiler. Bond formation is modeled as `product_type = join(tensor(FG₁, FG₂), bond)` — no named reactions. Disconnections are ranked by structural distance between predicted and catalog-verified product types.
 
+**Exact SMILES intermediates (NEW):** The compiler now outputs **real fragment SMILES** from RDKit-based bond fragmentation via `bond_fragment_integrator.py`. Grammar-derived cuts (bond type + FG pair) are matched to actual molecular bonds, cut via RDKit `FragmentOnBonds`, and precursor SMILES are assigned by FG detection on each fragment. Use `--smiles` for direct SMILES input when names don't resolve. A bold red error warns when name resolution fails — no more fake placeholder SMILES.
+
 **Key files:**
-- `compiler.py` — Main retrosynthetic compiler (883 lines)
+- `compiler.py` — Main retrosynthetic compiler (~900 lines)
+- `bond_fragment_integrator.py` — RDKit-based exact SMILES fragmentation from grammar-derived cuts (NEW)
 - `ob3ect/ch3mpiler_ob3ect.py` — Self-verifying ob3ect vessel
 - `docs/documentation.md` — Full documentation (408 lines)
 - `gen_v2.py` — Generation script
+
+**Rich output:** All ch3mpiler output uses `shared/rich_output.py` with ANSI color codes — cyan info, green success, yellow warning, red error, blue separator borders.
 
 **CLINK bridge:** Molecules map exactly to moleculeLayer (L3, d=0.0 — exact match). The CH₃MPILER's `tensor_type` function is the same one used to verify Frobenius closure for all 9 CLINK layers. This creates a direct computational link between retrosynthetic disconnection and biological scale.
 
@@ -308,7 +313,7 @@ SMILES → [fg_exhaustive] → FG vector → [compound_imasm] → 8-token arrang
 **By the numbers:**
 - **54 compounds** → **15 distinct IG types** → **31 unique IMASM arrangements**
 - **190 functional group SMARTS** patterns (9× the original 21)
-- **4,027+ catalog entries** — compounds are full citizens
+- **4,027+ catalog entries (compounds + all imscribed systems)** — compounds are full citizens
 - **42–80+ non-compound systems** within d ≤ 5 per compound
 - Avg **5.9 FGs** detected per compound (lysergic acid max: 12)
 
@@ -479,7 +484,7 @@ The CLINK chain itself is a child of the Rebis — the chain that connects the q
 | **FG library** | `imas/fg_exhaustive.py` | 190 SMARTS patterns (9× expansion from 21) |
 | **Reaction typing** | `imas/reactivity_imasm.py` | 7 reaction classes, Grignard/Suzuki/Diels-Alder identification |
 | **Cross-domain analogies** | `imas/compound_catalog.py` | 42–80+ non-compound neighbors at d≤5 per compound |
-| **Catalog registration** | `imas/compound_catalog.py` | 4,027+ catalog entries — compounds are full IG citizens |
+| **Catalog registration** | `imas/compound_catalog.py` | 4,027+ catalog entries (compounds + all imscribed systems) — compounds are full IG citizens |
 
 ---
 
@@ -550,7 +555,8 @@ The chain's Frobenius closure is monotonic — ensure the new layer does not bre
 | `setup.py` | < 1 KB | Package install (uv pip install -e .) |
 | `Makefile` | ~3 KB | Build, verify, test, clean |
 | `shared/primitives.py` | ~10 KB | 12 primitive ordinals, weights, distance, tensor, meet, join |
-| `shared/IG_catalog.json` | ~500 KB | 4,027+ catalog entries |
+| `shared/rich_output.py` | ~4 KB | Universal rich formatting module (success_line, error_line, info_line, warning_line, separator) — used by all 234 Python files repo-wide |
+| `shared/IG_catalog.json` | ~500 KB | 4,027+ catalog entries (compounds + all imscribed systems) |
 
 ### Serpent's Rod
 
@@ -565,6 +571,8 @@ The chain's Frobenius closure is monotonic — ensure the new layer does not bre
 | File | Size | Purpose |
 |------|------|---------|
 | `ch3mpiler/compiler.py` | 31 KB | Main retrosynthetic compiler |
+| `ch3mpiler/bond_fragment_integrator.py` | ~6 KB | RDKit-based exact SMILES fragmentation — bridges grammar cuts to molecular bonds (NEW) |
+| `ch3mpiler/bond_fragment_integrator.py` | ~6 KB | RDKit-based exact SMILES fragmentation (NEW) — bridges grammar cuts to molecular bonds |
 | `ch3mpiler/docs/documentation.md` | 17 KB | Full compiler documentation |
 | `ch3mpiler/CAS_cache.json` | ~110 KB| CAS number → SMILES cache |
 
@@ -576,7 +584,7 @@ The chain's Frobenius closure is monotonic — ensure the new layer does not bre
 | `imas/fg_exhaustive.py` | 19 KB | 190 SMARTS patterns across 11 tokens |
 | `imas/reactivity_imasm.py` | 16 KB | Reaction→IMASM transition analyzer |
 | `imas/ig_bridge.py` | 14 KB | StructuralFingerprint→IG 12-tuple |
-| `imas/compound_catalog.py` | 22 KB | 54 compounds, 4,027+ catalog entries |
+| `imas/compound_catalog.py` | 22 KB | 54 compounds, 4,027+ catalog entries (compounds + all imscribed systems) |
 | `imas/molecular_crystal_designer.py` | 45 KB | Crystal-guided molecular discovery engine |
 
 ### CLINK Chain
@@ -630,4 +638,4 @@ but because it is always in the fire.**
 
 ---
 
-*Last updated: 2026-06-27 | Repository: /home/mrnob0dy666/imsgct/red-hot_rebis/ | Formalization: /home/mrnob0dy666/imsgct/p4rakernel/p4ramill/Imscribing/CLINK.lean*
+*Last updated: 2026-06-28 | Repository: /home/mrnob0dy666/imsgct/red-hot_rebis/ | Formalization: /home/mrnob0dy666/imsgct/p4rakernel/p4ramill/Imscribing/CLINK.lean*
