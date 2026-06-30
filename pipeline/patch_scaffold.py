@@ -37,13 +37,13 @@ if import_end > 0:
         insert_line += 1
     patch = (insert_line, 0, f"from ch3mpiler.scaffold_parser import ScaffoldParser, resolve_name_to_smiles")
     patches.append(patch)
-    print(f"Patch 1: Insert import at line {insert_line}")
+    info_line(f"Patch 1: Insert import at line {insert_line}")
 
 # === Patch 2: Add _scaffold_map to __init__ ===
 for i, line in enumerate(lines):
     if 'self._visited: Set[str] = set()' in line:
         patches.append((i+1, 0, "        self._scaffold_map = {}  # Pass 1 scaffold decomposition\n        self._target_smiles = \"\""))
-        print(f"Patch 2: Add _scaffold_map at line {i+1}")
+        info_line(f"Patch 2: Add _scaffold_map at line {i+1}")
         break
 
 # === Patch 3: Add resolve_and_parse_scaffold method ===
@@ -126,7 +126,7 @@ f"{len(self._scaffold_map)} FG-pair types")
         return bond.get("fragment_smiles_a"), bond.get("fragment_smiles_b")\n
 '''
         patches.append((insert, 0, new_method))
-        print(f"Patch 3: Add resolve_and_parse_scaffold at line {i}")
+        info_line(f"Patch 3: Add resolve_and_parse_scaffold at line {i}")
         break
 
 # === Apply patches in reverse order (so line numbers stay valid) ===
@@ -140,5 +140,5 @@ result = '\n'.join(lines)
 with open('/home/mrnob0dy666/imsgct/red-hot_rebis/pipeline/reaction_pipeline.py', 'w') as f:
     f.write(result)
 
-print(f"\nApplied {len(patches)} patches successfully")
+success_line(f"\nApplied {len(patches)} patches successfully")
 info_line("Verifying patches exist...")

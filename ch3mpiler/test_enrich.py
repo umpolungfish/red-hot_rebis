@@ -16,12 +16,12 @@ print()
 info_line("=== BENZENE -> PARACETAMOL ===")
 ch = Ch3mpiler()
 result = ch.path_to_target('benzene', 'paracetamol', depth=4)
-print(f'Path found: {result.get("found")}')
-print(f'Match type: {result.get("match_type")}')
+info_line(f'Path found: {result.get("found")}')
+info_line(f'Match type: {result.get("match_type")}')
 if result.get('found'):
     for step in result.get('path', []):
         info_line(f'  Step {step["step"]}: {step["fg1"]} + {step["fg2"]} -> {step["product"]}')
         info_line(f'    Bond: {step["bond"]}  ({step["reaction"]})')
-    print(f'Path length: {result.get("path_length")}')
+    info_line(f'Path length: {result.get("path_length")}')
 else:
     info_line("No path found via lattice")

@@ -66,39 +66,39 @@ def _fmt_primitive(name: str, val) -> str:
 
 def cmd_list():
     """List all available therapies."""
-    print(f"{HEADER}Ars Therapeutica — Available Therapies{RESET}\n")
+    info_line(f"{HEADER}Ars Therapeutica — Available Therapies{RESET}\n")
     for key, th in THERAPIES.items():
         info_line(f"  {BOLD}{key}{RESET}  [{th.category}]  d={th.distance}  "
 f"{th.tier_disease}→{th.tier_health}  Δ={th.delta_primitives}")
-    print(f"\n{len(THERAPIES)} therapies available.")
+    info_line(f"\n{len(THERAPIES)} therapies available.")
 
 
 def cmd_diagnose(disease: str):
     """Structural diagnosis: show disease type, health type, deltas, distance."""
     if disease not in THERAPIES:
-        print(f"{ERR}Unknown disease: {disease}{RESET}")
-        print(f"Available: {', '.join(THERAPIES.keys())}")
+        info_line(f"{ERR}Unknown disease: {disease}{RESET}")
+        info_line(f"Available: {', '.join(THERAPIES.keys())}")
         return
 
     th = THERAPIES[disease]
     PRIM_MAP = {"φ̂": "Phi", "Ħ": "H", "Ð": "D", "Þ": "T", "Ř": "R",
                 "Φ": "P", "ƒ": "F", "Ç": "K", "Γ": "G", "ɢ": "Gamma",
                 "Σ": "S", "Ω": "W"}
-    print(f"{HEADER}═══ Structural Diagnosis: {th.disease} ═══{RESET}\n")
+    separator()
 
-    print(f"{SUBHEAD}Disease Type:{RESET}")
+    info_line(f"{SUBHEAD}Disease Type:{RESET}")
     info_line(f"  {_fmt_tuple(th.disease_type)}")
     info_line(f"  Tier: {th.tier_disease}  C-score: {th.c_score_disease}\n")
 
-    print(f"{SUBHEAD}Health Type:{RESET}")
+    info_line(f"{SUBHEAD}Health Type:{RESET}")
     info_line(f"  {_fmt_tuple(th.health_type)}")
     info_line(f"  Tier: {th.tier_health}  C-score: {th.c_score_health}\n")
 
-    print(f"{SUBHEAD}Structural Gap:{RESET}")
+    info_line(f"{SUBHEAD}Structural Gap:{RESET}")
     info_line(f"  Distance: {WARN}{th.distance}{RESET}")
     info_line(f"  Differing primitives ({len(th.delta_primitives)}): {CYAN}{th.delta_primitives}{RESET}\n")
 
-    print(f"{SUBHEAD}Per-Primitive Delta:{RESET}")
+    info_line(f"{SUBHEAD}Per-Primitive Delta:{RESET}")
     for k in th.delta_primitives:
         attr = PRIM_MAP.get(k, k); dv = getattr(th.disease_type, attr)
         hv = getattr(th.health_type, attr)
@@ -106,7 +106,7 @@ def cmd_diagnose(disease: str):
         info_line(f"  {k:5s}  {dv.value} {arrow} {hv.value}")
 
     if th.category == "psychiatric" and disease in ("depression", "schizophrenia", "bipolar_mania"):
-        print(f"\n{SUBHEAD}Psychiatric Spectrum (φ̂ axis):{RESET}")
+        info_line(f"\n{SUBHEAD}Psychiatric Spectrum (φ̂ axis):{RESET}")
         for name, t in PSYCHIATRIC_SPECTRUM.items():
             marker = " ◀" if name == disease else ""
             info_line(f"  {t.Phi.value}  {name}{marker}")
@@ -115,37 +115,37 @@ def cmd_diagnose(disease: str):
 def cmd_therapy(disease: str):
     """Show full therapy protocol."""
     if disease not in THERAPIES:
-        print(f"{ERR}Unknown disease: {disease}{RESET}")
+        info_line(f"{ERR}Unknown disease: {disease}{RESET}")
         return
 
     th = THERAPIES[disease]
     PRIM_MAP = {"φ̂": "Phi", "Ħ": "H", "Ð": "D", "Þ": "T", "Ř": "R",
                 "Φ": "P", "ƒ": "F", "Ç": "K", "Γ": "G", "ɢ": "Gamma",
                 "Σ": "S", "Ω": "W"}
-    print(f"{HEADER}═══ Therapy Protocol: {th.disease} ═══{RESET}\n")
-    print(f"{th.summary}\n")
+    separator()
+    info_line(f"{th.summary}\n")
 
-    print(f"{SUBHEAD}Structural Strategy:{RESET}")
+    info_line(f"{SUBHEAD}Structural Strategy:{RESET}")
     info_line(f"  {th.structural_strategy}\n")
 
-    print(f"{SUBHEAD}Components ({len(th.components)}):{RESET}")
+    info_line(f"{SUBHEAD}Components ({len(th.components)}):{RESET}")
     for i, c in enumerate(th.components, 1):
-        print(f"\n  {BOLD}{i}. {c['name']}{RESET}")
+        info_line(f"\n  {BOLD}{i}. {c['name']}{RESET}")
         info_line(f"     Target: {c['target_primitive']}")
         info_line(f"     Operation: {CYAN}{c['operation']}{RESET}")
         info_line(f"     Mechanism: {c['mechanism']}")
 
     if th.pdb_files:
-        print(f"\n{SUBHEAD}PDB Structures:{RESET}")
+        info_line(f"\n{SUBHEAD}PDB Structures:{RESET}")
         for p in th.pdb_files:
             info_line(f"  • {p}")
 
     if th.lean_files:
-        print(f"\n{SUBHEAD}Lean Verification:{RESET}")
+        info_line(f"\n{SUBHEAD}Lean Verification:{RESET}")
         for l in th.lean_files:
             info_line(f"  • {l}")
 
-    print(f"\n{SUBHEAD}Documentation:{RESET}  {th.doc_file}")
+    info_line(f"\n{SUBHEAD}Documentation:{RESET}  {th.doc_file}")
 
 
 def cmd_tensor(a: str, b: str):
@@ -155,7 +155,7 @@ def cmd_tensor(a: str, b: str):
     if ta is None or tb is None:
         return
     result = tensor(ta, tb)
-    print(f"{HEADER}tensor({a}, {b}){RESET}")
+    info_line(f"{HEADER}tensor({a}, {b}){RESET}")
     info_line(f"  {_fmt_tuple(ta)}")
     info_line(f"  ⊗")
     info_line(f"  {_fmt_tuple(tb)}")
@@ -170,7 +170,7 @@ def cmd_meet(a: str, b: str):
     if ta is None or tb is None:
         return
     result = meet(ta, tb)
-    print(f"{HEADER}meet({a}, {b}){RESET}")
+    info_line(f"{HEADER}meet({a}, {b}){RESET}")
     info_line(f"  {_fmt_tuple(ta)}")
     info_line(f"  ⊓")
     info_line(f"  {_fmt_tuple(tb)}")
@@ -188,7 +188,7 @@ def cmd_compare(a: str, b: str):
     d = distance(ta, tb)
     deltas = delta_primitives(ta, tb)
 
-    print(f"{HEADER}═══ Structural Comparison ═══{RESET}\n")
+    separator()
     info_line(f"  {a:20s}  {b:20s}")
     info_line(f"  {'─'*20}  {'─'*20}")
 
@@ -198,20 +198,20 @@ def cmd_compare(a: str, b: str):
         marker = f" {WARN}◀{RESET}" if va != vb else ""
         info_line(f"  {va.value:20s}  {vb.value:20s}{marker}")
 
-    print(f"\n  Distance: {WARN}{d}{RESET}")
+    warning_line(f"\n  Distance: {WARN}{d}{RESET}")
     info_line(f"  Deltas: {CYAN}{deltas}{RESET}")
 
 
 def cmd_spectrum():
     """Show the psychiatric φ̂ spectrum."""
-    print(f"{HEADER}═══ Psychiatric φ̂ Spectrum ═══{RESET}\n")
+    separator()
     info_line(f"  The φ̂ axis spans all three major psychiatric conditions:\n")
     for name, t in PSYCHIATRIC_SPECTRUM.items():
         cs = c_score(t)
         tr = tier(t)
         info_line(f"  φ̂={t.Phi.value}  {name:20s}  C={cs:.4f}  {tr}")
 
-    print(f"\n{SUBHEAD}Key insight:{RESET}")
+    info_line(f"\n{SUBHEAD}Key insight:{RESET}")
     info_line(f"  Depression (φ̂=𐑢) → Healthy (φ̂=⊙) → Schizophrenia/Mania (φ̂=𐑣)")
     info_line(f"  Distance from depression to health: {distance(DEPRESSION, HEALTHY_BRAIN)}")
     info_line(f"  Distance from schizophrenia to health: {distance(SCHIZOPHRENIA, HEALTHY_BRAIN)}")
@@ -222,7 +222,7 @@ def cmd_spectrum():
 def cmd_operate(disease: str, operation: str):
     """Show what happens when a structural operation is applied to a disease."""
     if disease not in THERAPIES:
-        print(f"{ERR}Unknown disease: {disease}{RESET}")
+        info_line(f"{ERR}Unknown disease: {disease}{RESET}")
         return
 
     th = THERAPIES[disease]
@@ -232,7 +232,7 @@ def cmd_operate(disease: str, operation: str):
     dt = th.disease_type
     ht = th.health_type
 
-    print(f"{HEADER}Structural Operation: {operation}({disease}){RESET}\n")
+    info_line(f"{HEADER}Structural Operation: {operation}({disease}){RESET}\n")
 
     if operation == "distance":
         d = distance(dt, ht)
@@ -258,7 +258,7 @@ def cmd_operate(disease: str, operation: str):
         d = distance(result, ht)
         info_line(f"  d(join, health) = {d}")
     else:
-        print(f"{ERR}Unknown operation: {operation}. Use: tensor, meet, join, distance{RESET}")
+        info_line(f"{ERR}Unknown operation: {operation}. Use: tensor, meet, join, distance{RESET}")
 
 
 # ─────────────────────────────────────────────────────────────────────
@@ -285,7 +285,7 @@ def _resolve(name: str):
     }
     if name in known:
         return known[name]
-    print(f"{ERR}Unknown type: {name}{RESET}")
+    info_line(f"{ERR}Unknown type: {name}{RESET}")
     return None
 
 
@@ -331,10 +331,10 @@ def main():
         elif cmd in ("help", "-h", "--help"):
             print(__doc__)
         else:
-            print(f"{ERR}Unknown command: {cmd}{RESET}")
+            info_line(f"{ERR}Unknown command: {cmd}{RESET}")
             print(__doc__)
     except Exception as e:
-        print(f"{ERR}Error: {e}{RESET}")
+        error_line(f"{ERR}Error: {e}{RESET}")
         import traceback
 
         traceback.print_exc()

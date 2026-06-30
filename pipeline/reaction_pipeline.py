@@ -61,6 +61,27 @@ def _resolve_node_smiles(name):
         if smi: _SMILES_CACHE[key] = smi; return smi
     except: pass
     return ""
+
+def _smiles_formula(smiles: str) -> str:
+    """Return Hill-order molecular formula from SMILES (C7H6O style)."""
+    if not smiles:
+        return ""
+    try:
+        from rdkit import Chem
+        from rdkit.Chem import rdMolDescriptors
+        mol = Chem.MolFromSmiles(smiles)
+        if mol is None:
+            return ""
+        return rdMolDescriptors.CalcMolFormula(mol)
+    except Exception:
+        return ""
+
+def _smi_display(smiles: str) -> str:
+    """Return 'SMILES: <smi>  [formula]' or empty string."""
+    if not smiles:
+        return ""
+    formula = _smiles_formula(smiles)
+    return f"SMILES: {smiles}" + (f"  [{formula}]" if formula else "")
 class RetrosyntheticNode:
     """One node in the recursive retrosynthetic tree."""
     def __init__(self, name: str, level: int = 0):
@@ -72,6 +93,7 @@ class RetrosyntheticNode:
         self.is_simple: bool = False
         self.terminal_reason: str = ""
         self.reagent_match: Optional[Dict] = None
+        self.smiles: Optional[str] = ""          # full molecule SMILES (set on root, empty on intermediates)
         self.fragment_smiles: Optional[str] = ""  # actual molecular fragment from scaffold cut
         self.routes: List[Dict] = []
 
@@ -478,17 +500,17 @@ class ReactionPipeline:
             self._target_smiles = smiles
             n_bonds = sum(len(v) for v in self._scaffold_map.values())
             
-            print(f"  [scaffold] Pass 1: Parsed {target} [{smiles}]")
+            info_line(f"  [scaffold] Pass 1: Parsed {target} [{smiles}]")
             print(f"  [scaffold]   {decomp['num_atoms']} atoms, {decomp['num_bonds']} bonds, "
                   f"{len(decomp['fgs'])} FGs: {', '.join(decomp['fgs'])}")
             print(f"  [scaffold]   {n_bonds} strategic disconnections across "
                   f"{len(self._scaffold_map)} FG-pair types")
             for pair, bonds in sorted(self._scaffold_map.items()):
-                print(f"  [scaffold]     {pair[0]} + {pair[1]}: {len(bonds)} bond(s)")
+                info_line(f"  [scaffold]     {pair[0]} + {pair[1]}: {len(bonds)} bond(s)")
             return True
             
         except Exception as e:
-            print(f"  [scaffold] ERROR parsing scaffold: {e}")
+            error_line(f"  [scaffold] ERROR parsing scaffold: {e}")
             return False
 
     def _is_truly_simple(self, name: str) -> Tuple[bool, str]:
@@ -585,6 +607,23 @@ class ReactionPipeline:
 
         node.fgs = fgs
         node.mol_type = fmt_tup(mol_type) if mol_type else "?"
+
+        # ── Depth-0 SMILES target: name-based FG lookup fails for raw SMILES.
+        # When scaffold map is populated but FG detection returned nothing,
+        # extract FGs from the scaffold bond pairs and build routes directly.
+        if depth == 0 and not fg_hint and not fgs and self._scaffold_map:
+            all_bonds = []
+            for bonds in self._scaffold_map.values():
+                all_bonds.extend(bonds)
+            if all_bonds:
+                routes = self._build_scaffold_routes(all_bonds, depth)
+                if routes:
+                    fgs_set: set = set()
+                    for pair in self._scaffold_map.keys():
+                        fgs_set.update(pair)
+                    node.fgs = sorted(fgs_set)
+                    node.routes = routes
+                    return node
 
         # ── Single FG: enumerate ALL FG types as co-precursors ──
         # Instead of terminating, find the best retrosynthetic disconnection
@@ -769,41 +808,47 @@ class ReactionPipeline:
         connector = "└── " if is_last else "├── "
 
         node_smi = node.smiles or node.fragment_smiles or _resolve_node_smiles(node.name)
-        node_smi_str = f"  SMILES: {node_smi}" if node_smi else ""
+        node_smi_str = f"  {_smi_display(node_smi)}" if node_smi else ""
         if node.is_terminal and node.is_simple:
             tag = "SIMPLE ✓"
             if node.reagent_match:
-                tag = f"{node.reagent_match['name']} [{node.reagent_match['smiles']}] (reagent)"
+                rsmi = node.reagent_match['smiles']
+                rform = _smiles_formula(rsmi)
+                rform_str = f" [{rform}]" if rform else ""
+                tag = f"{node.reagent_match['name']} [{rsmi}]{rform_str} (reagent)"
             elif node.fgs:
                 tag += f" [{', '.join(node.fgs[:3])}]"
             if STYLED:
                 success_line(f"{prefix}{connector}{node.name}  {node_smi_str}  -- {tag}")
             else:
-                print(f"{prefix}{connector}{node.name}  {node_smi_str}  -- {tag}")
+                info_line(f"{prefix}{connector}{node.name}  {node_smi_str}  -- {tag}")
         elif node.is_terminal:
             if STYLED:
                 error_line(f"{prefix}{connector}{node.name}  {node_smi_str}  -- TERMINAL ({node.terminal_reason})")
             else:
-                print(f"{prefix}{connector}{node.name}  {node_smi_str}  -- TERMINAL ({node.terminal_reason})")
+                info_line(f"{prefix}{connector}{node.name}  {node_smi_str}  -- TERMINAL ({node.terminal_reason})")
         else:
             n_routes = len(node.routes)
             if n_routes == 0:
                 if STYLED:
                     error_line(f"{prefix}{connector}{node.name}  {node_smi_str}  -- NO ROUTES")
                 else:
-                    print(f"{prefix}{connector}{node.name}  {node_smi_str}  -- NO ROUTES")
+                    info_line(f"{prefix}{connector}{node.name}  {node_smi_str}  -- NO ROUTES")
                 return
 
             best = node.routes[0]
             delta_str = ""
             if best.get("product_delta", 0) > 0:
                 delta_str = f" (D={best['product_delta']:.3f})"
+            # target_line already prepends "SMILES:" internally; pass smi+formula only
+            _formula = _smiles_formula(node_smi) if node_smi else ""
+            node_smi_for_target = (f"{node_smi}  [{_formula}]" if _formula else node_smi) if node_smi else ""
             if STYLED:
-                target_line(f"{prefix}{connector}{node.name}", node_smi, indent=0)
+                target_line(f"{prefix}{connector}{node.name}", node_smi_for_target, indent=0)
                 if delta_str:
                     info_line(f"{'':>{len(prefix)+4}}via {best['fg1']} + {best['fg2']} -> {best['bond']}{delta_str}")
             else:
-                print(f"{prefix}{connector}{node.name}  {node_smi_str}  via {best['fg1']} + {best['fg2']} -> {best['bond']}{delta_str}")
+                info_line(f"{prefix}{connector}{node.name}  {node_smi_str}  via {best['fg1']} + {best['fg2']} -> {best['bond']}{delta_str}")
 
             rxn = best.get("reaction", {})
             ext = "    " if is_last else "|   "
@@ -965,14 +1010,14 @@ def main():
         ]
         for d in demos:
             pipeline._target_smiles = args.smiles or ""
-            print(f"\n--- DEMO: {d} ---")
+            info_line(f"\n--- DEMO: {d} ---")
             pipeline._visited.clear()
             tree = pipeline.deep_retrosynthesis(d)
             pipeline.print_tree(tree)
             if args.cdxml:
                 from cdxml.pipeline_hook import export_tree_to_cdxml
                 result = export_tree_to_cdxml(tree, args.cdxml_dir, prefix=f"demo_{d}_", verbose=True)
-                print(f"  >> CDXML: {result['generated']} files written to {args.cdxml_dir}/")
+                info_line(f"  >> CDXML: {result['generated']} files written to {args.cdxml_dir}/")
         return
 
     if args.cas:
@@ -983,8 +1028,8 @@ def main():
             if args.json:
                 print(json.dumps(spec, indent=2, ensure_ascii=False))
             else:
-                print(f"Target: {name}")
-                print(f"Formula: {info.get('cas_info', {}).get('formula', '')}")
+                info_line(f"Target: {name}")
+                info_line(f"Formula: {info.get('cas_info', {}).get('formula', '')}")
                 pipeline.print_synthesis(spec)
         else:
             pipeline._target_smiles = info.get("cas_info", {}).get("smiles", "") or args.smiles or ""
@@ -997,9 +1042,9 @@ def main():
                 if args.cdxml:
                     from cdxml.pipeline_hook import export_tree_to_cdxml
                     result = export_tree_to_cdxml(tree, args.cdxml_dir, verbose=True)
-                    print(f"  >> CDXML: {result['generated']} files written to {args.cdxml_dir}/")
+                    info_line(f"  >> CDXML: {result['generated']} files written to {args.cdxml_dir}/")
                     if result['failed']:
-                        print(f"  >> Failed: {result['failed']}")
+                        error_line(f"  >> Failed: {result['failed']}")
         return
 
     if args.target:
@@ -1020,26 +1065,30 @@ def main():
                 if args.cdxml:
                     from cdxml.pipeline_hook import export_tree_to_cdxml
                     result = export_tree_to_cdxml(tree, args.cdxml_dir, verbose=True)
-                    print(f"  >> CDXML: {result['generated']} files written to {args.cdxml_dir}/")
+                    info_line(f"  >> CDXML: {result['generated']} files written to {args.cdxml_dir}/")
                     if result['failed']:
-                        print(f"  >> Failed: {result['failed']}")
+                        error_line(f"  >> Failed: {result['failed']}")
         return
 
-    # Default: demo with benzaldehyde
-    print("=" * 72)
-    print("  ch3mpiler Deep Retrosynthetic Pipeline -- Grammar-First Synthesis")
-    print("  Use --target <molecule> for deep retrosynthetic tree")
-    print("  Use --target <molecule> --shallow for single-level only")
-    print("  Use --demo to see examples")
-    print("=" * 72)
+    # Default: --smiles target if provided, else demo benzaldehyde
+    info_line("=" * 72)
+    info_line("  ch3mpiler Deep Retrosynthetic Pipeline -- Grammar-First Synthesis")
+    info_line("  Use --target <molecule> for deep retrosynthetic tree")
+    info_line("  Use --target <molecule> --shallow for single-level only")
+    info_line("  Use --demo to see examples")
+    info_line("=" * 72)
     print()
     pipeline._visited.clear()
-    tree = pipeline.deep_retrosynthesis("benzaldehyde")
+    if args.smiles:
+        pipeline._target_smiles = args.smiles
+        tree = pipeline.deep_retrosynthesis(args.smiles)
+    else:
+        tree = pipeline.deep_retrosynthesis("benzaldehyde")
     pipeline.print_tree(tree)
     if args.cdxml:
         from cdxml.pipeline_hook import export_tree_to_cdxml
         result = export_tree_to_cdxml(tree, args.cdxml_dir, verbose=True)
-        print(f"  >> CDXML: {result['generated']} files written to {args.cdxml_dir}/")
+        info_line(f"  >> CDXML: {result['generated']} files written to {args.cdxml_dir}/")
 
 
 if __name__ == "__main__":

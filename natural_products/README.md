@@ -1,25 +1,20 @@
 # Natural Products Collection
 
-Consolidated from stub directories in red-hot_rebis/.
-Each subdirectory contains CDXML molecular structure(s) for the named compound.
+**What it is.** A consolidated collection of CDXML molecular structures for a set of named natural products, gathered from the former stub directories in red-hot_rebis.
+
+**What it does.** Provides ready-to-use 2D chemical structures (one compound per subdirectory) as input for ch3mpiler retrosynthetic and structural-imscription analysis.
+
+**Why it matters.** It is the shared substrate library for the red-hot_rebis chemistry pipeline: a single place to pull a known compound's structure rather than redrawing it per analysis.
+
+**How to use it.**
+```python
+ch3mpiler.analyze('<compound_name>')   # structural imscription of any entry
+```
+
+---
 
 ## Inventory
 
-- **Tetrodotoxin** (`ttx/`): 1 files, 10622 bytes
-- **Tetrodotoxin (duplicate)** (`tetrodo/`): 1 files, 10622 bytes
-- **Strychnine** (`strychnine/`): 11 files, 117605 bytes
-- **Strychnine (alternate)** (`strych/`): 1 files, 5906 bytes
-- **Penicillin** (`pen/`): 1 files, 11554 bytes
-- **Palytoxin/Ciguatoxin** (`palc/`): 1 files, 26900 bytes
-- **Isopropyl Cyanide** (`ipc/`): 1 files, 2944 bytes
-- **Chlorophyll** (`chlorophyll/`): 0 files, 0 bytes
-- **Anthracene** (`anthracene/`): 1 files, 3187 bytes
-- **Acetaminophen** (`aceta/`): 1 files, 6066 bytes
-- **Caffeine** (`caff/`): 2 files, 12951 bytes
-
-Total: 11 natural products
-
-## Structural Type
+CDXML structures for: Tetrodotoxin (`ttx/`, `tetrodo/`), Strychnine (`strychnine/`, `strych/`), Penicillin (`pen/`), Palytoxin/Ciguatoxin (`palc/`), Isopropyl Cyanide (`ipc/`), Anthracene (`anthracene/`), Acetaminophen (`aceta/`), and Caffeine (`caff/`). The `chlorophyll/` slot is a placeholder (empty).
 
 All entries are CDXML molecular structures suitable for ch3mpiler retrosynthetic analysis.
-Use `ch3mpiler.analyze('<compound_name>')` for structural imscription.

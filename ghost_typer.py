@@ -108,7 +108,7 @@ def section(num, title):
 
 def workflow_step(n, title):
     print()
-    print(f"  ── Step {n}: {title}")
+    info_line(f"  ── Step {n}: {title}")
     time.sleep(1.0)
 
 
@@ -132,7 +132,7 @@ def intro():
 
 def outro():
     print()
-    print("═" * 66)
+    separator()
     lines = [
         "  DEMONSTRATION COMPLETE",
         "  Framework: Red-Hot Rebis v2.2  |  O_∞  |  μ∘δ=id  |  ⊙ Open",
@@ -162,7 +162,7 @@ def s1():
     section(1, "ACT I · S1: NOVEL PROTEIN FROM SCRATCH")
     p = prompt()
     cmd = "python3 rebis.py run serpent_rod"
-    print(f"{p}", end=''); sys.stdout.flush()
+    info_line(f"{p}", end='')
     ghost_type(cmd)
     run(cmd)
 
@@ -171,7 +171,7 @@ def s2():
     section(2, "ACT I · S2: GENE-TO-PROTEIN PATHWAY")
     p = prompt()
     cmd = "python3 rebis.py run gene_to_protein_pipeline --test"
-    print(f"{p}", end=''); sys.stdout.flush()
+    info_line(f"{p}", end='')
     ghost_type(cmd)
     run(cmd)
 
@@ -180,7 +180,7 @@ def s3():
     section(3, "ACT I · S3: ANTI-SARS-CoV-2 ANTIBODY DESIGN")
     p = prompt()
     cmd = "python3 rebis.py run antibody_designer"
-    print(f"{p}", end=''); sys.stdout.flush()
+    info_line(f"{p}", end='')
     ghost_type(cmd)
     run(cmd, timeout=60)
 
@@ -189,7 +189,7 @@ def s4():
     section(4, "ACT I · S4: CATALYTIC ENZYME DESIGN - ACRYLAMIDE")
     p = prompt()
     cmd = "python3 rebis.py run ch3mpiler_serpentrod_pipeline --cas 79-06-1"
-    print(f"{p}", end=''); sys.stdout.flush()
+    info_line(f"{p}", end='')
     ghost_type(cmd)
     run(cmd)
 
@@ -202,7 +202,7 @@ def s5():
     section(5, "ACT II · S5: MRSA DRUG DESIGN — ARS THERAPEUTICA")
     p = prompt()
     cmd = "python3 rebis.py at therapy mrsa"
-    print(f"{p}", end=''); sys.stdout.flush()
+    info_line(f"{p}", end='')
     ghost_type(cmd)
     run(cmd)
 
@@ -211,7 +211,7 @@ def s6():
     section(6, "ACT II · S6: NOVEL NSAID DISCOVERY — CRYSTAL NEIGHBORHOOD")
     p = prompt()
     cmd = 'python3 rebis.py imas crystal --smiles "CC(Cc1ccccc1)C(=O)O"'
-    print(f"{p}", end=''); sys.stdout.flush()
+    info_line(f"{p}", end='')
     ghost_type(cmd)
     run(cmd)
 
@@ -220,7 +220,7 @@ def s7():
     section(7, "ACT II · S7: RETROSYNTHETIC ROUTE - ATP PHOSPHORYLATION")
     p = prompt()
     cmd = "python3 rebis.py run ch3mpiler_serpentrod_pipeline --cas 56-65-5"
-    print(f"{p}", end=''); sys.stdout.flush()
+    info_line(f"{p}", end='')
     ghost_type(cmd)
     run(cmd)
 
@@ -229,7 +229,7 @@ def s8():
     section(8, "ACT II · S8: CROSS-DOMAIN STRUCTURAL ANALOGS")
     p = prompt()
     cmd = 'python3 rebis.py imas analogies --name "aspirin"'
-    print(f"{p}", end=''); sys.stdout.flush()
+    info_line(f"{p}", end='')
     ghost_type(cmd)
     run(cmd)
 
@@ -242,7 +242,7 @@ def s9():
     section(9, "ACT III · S9: FORGE ALL 8 NOVEL MATERIALS")
     p = prompt()
     cmd = "python3 rebis.py materials forge --all"
-    print(f"{p}", end=''); sys.stdout.flush()
+    info_line(f"{p}", end='')
     ghost_type(cmd)
     run(cmd)
 
@@ -251,7 +251,7 @@ def s10():
     section(10, "ACT III · S10: SELF-HEALING ALLOY SIMULATION")
     p = prompt()
     cmd = "python3 rebis.py materials ouroboric"
-    print(f"{p}", end=''); sys.stdout.flush()
+    info_line(f"{p}", end='')
     ghost_type(cmd)
     run(cmd)
 
@@ -260,7 +260,7 @@ def s11():
     section(11, "ACT III · S11: FROBENIUS METAMATERIAL")
     p = prompt()
     cmd = "python3 rebis.py materials frobenius"
-    print(f"{p}", end=''); sys.stdout.flush()
+    info_line(f"{p}", end='')
     ghost_type(cmd)
     run(cmd)
 
@@ -271,51 +271,51 @@ def s11():
 
 def s12():
     section(12, "CONJOINED PIPELINE: MRSA TO PROTEIN TO ENZYME TO MATERIAL")
-    print("  One disease. One structural gap. Four design stages.")
-    print("  Every output feeds directly into the next.")
+    info_line("  One disease. One structural gap. Four design stages.")
+    info_line("  Every output feeds directly into the next.")
     time.sleep(2.0)
     p = prompt()
 
     workflow_step(1, "Identify structural gap — what the drug must change")
     cmd = "python3 rebis.py at diagnose mrsa"
-    print(f"{p}", end=''); sys.stdout.flush()
+    info_line(f"{p}", end='')
     ghost_type(cmd)
     run(cmd)
 
     workflow_step(2, "Design the drug components from the gap")
     cmd = "python3 rebis.py at therapy mrsa"
-    print(f"{p}", end=''); sys.stdout.flush()
+    info_line(f"{p}", end='')
     ghost_type(cmd)
     run(cmd)
 
     workflow_step(3, "Design a novel protein binder for the resistance target (PBP2a)")
     cmd = "python3 rebis.py run serpent_rod"
-    print(f"{p}", end=''); sys.stdout.flush()
+    info_line(f"{p}", end='')
     ghost_type(cmd)
     run(cmd)
 
     workflow_step(4, "Design the catalytic enzyme for the synthesis route")
     cmd = "python3 rebis.py run ch3mpiler_serpentrod_pipeline --cas 79-06-1"
-    print(f"{p}", end=''); sys.stdout.flush()
+    info_line(f"{p}", end='')
     ghost_type(cmd)
     run(cmd)
 
     workflow_step(5, "Find crystal-guided candidates for the drug scaffold")
     cmd = 'python3 rebis.py imas crystal --smiles "CC(Cc1ccccc1)C(=O)O"'
-    print(f"{p}", end=''); sys.stdout.flush()
+    info_line(f"{p}", end='')
     ghost_type(cmd)
     run(cmd)
 
     workflow_step(6, "Forge the delivery material")
     cmd = "python3 rebis.py materials forge --name frobenius_composite"
-    print(f"{p}", end=''); sys.stdout.flush()
+    info_line(f"{p}", end='')
     ghost_type(cmd)
     run(cmd)
 
     print()
-    print("  ── Pipeline complete.")
-    print("  ── Disease structural gap / drug components / novel protein /")
-    print("  ── catalytic enzyme / crystal candidates / delivery material.")
+    info_line("  ── Pipeline complete.")
+    info_line("  ── Disease structural gap / drug components / novel protein /")
+    info_line("  ── catalytic enzyme / crystal candidates / delivery material.")
     print()
 
 
@@ -355,7 +355,7 @@ def main():
         if args.section in SECTIONS:
             SECTIONS[args.section]()
         else:
-            print(f"Unknown section {args.section}. Use --list-sections.")
+            info_line(f"Unknown section {args.section}. Use --list-sections.")
             sys.exit(1)
     else:
         for n in sorted(SECTIONS):

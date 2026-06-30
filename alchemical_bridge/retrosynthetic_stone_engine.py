@@ -125,9 +125,17 @@ def disconnect_molecule(mol: Chem.Mol, bond_idx: int) -> dict:
             smi = Chem.MolToSmiles(frag)
             mw = Descriptors.MolWt(frag)
             num_atoms = frag.GetNumAtoms()
+            formula = rdMolDescriptors.CalcMolFormula(frag)
+            # Count only heavy atoms for the per-element breakdown
+            heavy = {a.GetSymbol(): 0 for a in frag.GetAtoms() if a.GetAtomicNum() > 1}
+            for a in frag.GetAtoms():
+                if a.GetAtomicNum() > 1:
+                    heavy[a.GetSymbol()] += 1
             fragment_data.append({
                 "fragment_id": i,
                 "smiles": smi,
+                "formula": formula,
+                "heavy_atoms": heavy,
                 "mw": round(mw, 2),
                 "num_atoms": num_atoms,
                 "complexity": round(1.0 - (mw / max(Descriptors.MolWt(mol), 1)), 4),

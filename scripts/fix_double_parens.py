@@ -44,6 +44,8 @@ def fix_file(filepath):
     p.write_text(content)
     return True
 
+from shared.rich_output import *
+
 def main():
     import argparse
     parser = argparse.ArgumentParser()
@@ -63,9 +65,9 @@ def main():
             fix_file(f)
             fixed += 1
         except Exception as e:
-            print(f"  ❌ {f}: {e}")
+            info_line(f"  ❌ {f}: {e}")
     
-    print(f"Fixed {fixed} files")
+    info_line(f"Fixed {fixed} files")
 
 if __name__ == "__main__":
     main()

@@ -448,15 +448,15 @@ def main():
     parser.add_argument("--out", type=str, help="Output file path")
     args = parser.parse_args()
 
-    print("═" * 66)
+    separator()
     info_line("  PLASTIC_EATER — Broad-Spectrum Plastic-Degrading Enzyme")
     info_line("  ch3mpiler ⟲ serpentrod Pipeline")
-    print("═" * 66)
+    separator()
     print()
 
     # Phase 1: Design individual catalytic sites
     info_line("Phase 1: Designing individual catalytic sites...")
-    print("-" * 40)
+    info_line("-" * 40)
     all_sites = []
     for plastic_name, bond, fg1, fg2, mech in PLASTIC_TARGETS:
         site = design_single_plastic_site(plastic_name, bond, fg1, fg2, mech)
@@ -471,7 +471,7 @@ f"(confidence: {site['confidence']:.2f})")
 
     # Phase 2: Fuse multi-site structural type
     info_line("Phase 2: Fusing multi-site structural type...")
-    print("-" * 40)
+    info_line("-" * 40)
     fused = fuse_multi_sites(all_sites)
     info_line(f"  Sites fused: {fused['num_sites']}")
     info_line(f"  MEET (shared floor):")
@@ -484,7 +484,7 @@ f"(confidence: {site['confidence']:.2f})")
 
     # Phase 3: Assemble multi-domain enzyme
     info_line("Phase 3: Assembling multi-domain enzyme...")
-    print("-" * 40)
+    info_line("-" * 40)
     enzyme = assemble_multi_enzyme(fused)
     info_line(f"  Architecture: {enzyme['architecture']}")
     info_line(f"  Total AAs:    {enzyme['total_aa']}")
@@ -501,14 +501,14 @@ f"(confidence: {site['confidence']:.2f})")
         json_str = json.dumps(result, indent=2)
         if args.out:
             Path(args.out).write_text(json_str)
-            print(f"JSON written to {args.out}")
+            info_line(f"JSON written to {args.out}")
         else:
             print(json_str)
     else:
         report = format_full_report(all_sites, fused, enzyme)
         if args.out:
             Path(args.out).write_text(report)
-            print(f"Report written to {args.out}")
+            info_line(f"Report written to {args.out}")
         else:
             print(report)
 

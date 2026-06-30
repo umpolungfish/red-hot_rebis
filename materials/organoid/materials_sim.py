@@ -336,7 +336,7 @@ def run_memory_polymer_simulation(
     polymer.encode_bytes(data)
     
     if verbose:
-        print(f"🧬 Memory Polymer Initialised")
+        info_line(f"🧬 Memory Polymer Initialised")
         info_line(f"   Message: {message}")
         info_line(f"   Data bytes: {len(data)}")
         info_line(f"   Target monomers: {n_monomers}")
@@ -350,7 +350,7 @@ def run_memory_polymer_simulation(
     )
     
     if verbose:
-        print(f"\n═══ SYNTHESIS ═══")
+        separator()
         info_line(f"   Target length:    {qc_report['target_length']}")
         info_line(f"   Actual length:    {qc_report['actual_length']}")
         info_line(f"   Yield:            {qc_report['yield_pct']:.1f}%")
@@ -363,7 +363,7 @@ def run_memory_polymer_simulation(
     ms_report = polymer.mass_spec_verify()
     
     if verbose:
-        print(f"\n═══ MASS SPEC ═══")
+        separator()
         info_line(f"   Expected mass:    {ms_report['expected_mass_da']:.0f} Da")
         info_line(f"   Measured mass:    {ms_report['measured_mass_da']:.0f} Da")
         info_line(f"   Accuracy:         {ms_report['mass_accuracy']*100:.2f}%")
@@ -375,7 +375,7 @@ def run_memory_polymer_simulation(
     match = decoded_str.rstrip('\x00') == message
     
     if verbose:
-        print(f"\n═══ DECODE ═══")
+        separator()
         info_line(f"   Encoded: {message}")
         info_line(f"   Decoded: {decoded_str}")
         info_line(f"   Match:   {'✅' if match else '❌'}")
@@ -384,7 +384,7 @@ def run_memory_polymer_simulation(
     ber_300k = compute_ber_after_years(300.0, 1000.0, n_monomers)
     
     if verbose:
-        print(f"\n═══ LONGEVITY ═══")
+        separator()
         info_line(f"   1000 years @ 300K: BER = {ber_300k:.4e}")
         info_line(f"   {'✅ Data viable' if ber_300k < 0.01 else '❌ Data degraded'}")
     
@@ -416,23 +416,23 @@ def verify_polymer(results: Dict) -> Dict:
     for check, passed in checks.items():
         status = "✅" if passed else "❌"
         info_line(f"   {status} {check}")
-    print(f"\n{'✅ ALL CHECKS PASS' if all_pass else '❌ SOME FAILED'}")
+    error_line(f"\n{'✅ ALL CHECKS PASS' if all_pass else '❌ SOME FAILED'}")
     
     return checks
 
 
 if __name__ == "__main__":
-    print("═" * 60)
+    separator()
     info_line("  ETERNAL MEMORY POLYMER — Optimized Synthesis")
-    print("═" * 60)
+    separator()
     print()
     
     results = run_memory_polymer_simulation()
     
     print()
-    print("═" * 60)
+    separator()
     info_line("  VERIFICATION")
-    print("═" * 60)
+    separator()
     print()
     
     verify_polymer(results)

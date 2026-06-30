@@ -171,10 +171,10 @@ def belnap_tensor_product(psi_a, psi_b):
 
 if __name__ == "__main__":
     info_line("=== Belnap Complex Plane C₄ ===")
-    print(f"Total elements: {len(BelnapComplex.ELEMENTS)}")
+    info_line(f"Total elements: {len(BelnapComplex.ELEMENTS)}")
     print()
     i_squared = C4_I * C4_I
-    print(f"i² = {i_squared}")
+    info_line(f"i² = {i_squared}")
     print()
     info_line("Born projections:")
     for name, z in [("0", C4_0), ("1", C4_1), ("i", C4_I),

@@ -498,7 +498,7 @@ def main():
             results = register_all_compounds(dry_run=args.dry_run)
             n_ok = sum(1 for r in results if r.get("status") in ("registered", "already_exists"))
             n_err = sum(1 for r in results if r.get("status") == "error")
-            print(f"Registered {n_ok}/{len(results)} compounds ({n_err} errors)")
+            error_line(f"Registered {n_ok}/{len(results)} compounds ({n_err} errors)")
             for r in results:
                 status = r.get("status", "?")
                 if status == "error":
@@ -525,7 +525,7 @@ def main():
             results = find_analogies(query, limit=args.limit)
             print(describe_analogies(results, query_name=query))
         except ValueError as e:
-            print(f"Error: {e}")
+            error_line(f"Error: {e}")
     
     elif args.command == "show":
         query = args.query
@@ -535,9 +535,9 @@ def main():
         # Try SMILES first
         try:
             _, _, ig, arr_str = smiles_to_ig(query)
-            print(f"SMILES: {query}")
-            print(f"Arrangement: {arr_str}")
-            print(f"IG Tuple: {ig_tuple_str(ig)}")
+            info_line(f"SMILES: {query}")
+            info_line(f"Arrangement: {arr_str}")
+            info_line(f"IG Tuple: {ig_tuple_str(ig)}")
             print(describe_full(ig))
         except Exception:
             # Try catalog lookup
@@ -546,13 +546,13 @@ def main():
                 if entry.get("name") == query:
                     ig = entry_to_ig(entry)
                     if ig:
-                        print(f"Name: {query}")
-                        print(f"Description: {entry.get('description', '')}")
-                        print(f"IG Tuple: {ig_tuple_str(ig)}")
+                        info_line(f"Name: {query}")
+                        info_line(f"Description: {entry.get('description', '')}")
+                        info_line(f"IG Tuple: {ig_tuple_str(ig)}")
                         print(describe_full(ig))
                         break
             else:
-                print(f"Could not resolve '{query}' as SMILES or catalog name")
+                info_line(f"Could not resolve '{query}' as SMILES or catalog name")
 
     # End of show command
 

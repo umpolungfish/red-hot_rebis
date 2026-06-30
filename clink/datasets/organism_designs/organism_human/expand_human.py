@@ -1638,10 +1638,10 @@ bone_mineral_density,1.0,g_per_cm2,0.8-1.2,DEXA T-score reference"""
 # MAIN
 # ═══════════════════════════════════════════════════════════
 def main():
-    print("=" * 70)
+    info_line("=" * 70)
     info_line("CLINK HUMAN DESIGN — FULL EXPANSION")
     info_line("Homo sapiens — ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩  O_∞  C=1.0")
-    print("=" * 70)
+    info_line("=" * 70)
     
     expanders = [expand_L0, expand_L1, expand_L2, expand_L3, expand_L4,
                  expand_L5, expand_L6, expand_L7, expand_L8]
@@ -1651,7 +1651,7 @@ def main():
         expand_fn()
         # Count files
         n = len(list((OUT / f"L{i}").glob("*")))
-        print(f"→ {n} files")
+        info_line(f"→ {n} files")
     
     # Update root design_manifest.json
     total_files = sum(len(list((OUT / f"L{i}").glob("*"))) for i in range(9))
@@ -1713,11 +1713,11 @@ def main():
     
     write_json("design_manifest.json", manifest)
     
-    print(f"\n{'=' * 70}")
-    print(f"COMPLETE — {total_files} files, {total_bytes:,} bytes")
-    print(f"Status: fully expanded")
-    print(f"Frobenius: μ∘δ=id at every layer")
-    print(f"{'=' * 70}")
+    info_line(f"\n{'=' * 70}")
+    success_line(f"COMPLETE — {total_files} files, {total_bytes:,} bytes")
+    info_line(f"Status: fully expanded")
+    info_line(f"Frobenius: μ∘δ=id at every layer")
+    info_line(f"{'=' * 70}")
 
 
 if __name__ == "__main__":

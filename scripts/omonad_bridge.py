@@ -47,7 +47,7 @@ try:
     from src.clink_chain import ClinkNavigator as OmonadCLINKChain
     OMONAD_AVAILABLE = True
 except ImportError as e:
-    print(f"[omonad_bridge] omonad_OS not fully importable: {e}", file=sys.stderr)
+    info_line(f"[omonad_bridge] omonad_OS not fully importable: {e}", file=sys.stderr)
 
 # ─── imasmic_core imports ─────────────────────────────────────────
 IMASMIC_AVAILABLE = False
@@ -693,17 +693,17 @@ def main():
         print(j.dumps(kernel.full_report(), indent=2))
     elif args.command == "verify":
         result = kernel.verify_clink()
-        print(f"CLINK Frobenius: {'✅' if result.frobenius_closed else '❌'}")
+        success_line(f"CLINK Frobenius: {'✅' if result.frobenius_closed else '❌'}")
         if result.data:
             for k, v in result.data.items():
                 if k != "per_layer":
                     info_line(f"  {k}: {v}")
     elif args.command == "fold":
         result = kernel.fold_protein(args.sequence)
-        print(f"Fold: {'✅' if result.success else '❌'} | Tier: {result.tier} | Crystal: {result.crystal_address}")
+        success_line(f"Fold: {'✅' if result.success else '❌'} | Tier: {result.tier} | Crystal: {result.crystal_address}")
     elif args.command == "retro":
         result = kernel.retrosynthesize(args.target)
-        print(f"Retrosynthesis: {'✅' if result.success else '❌'} | FGs: {result.data.get('fgs', []) if result.data else []}")
+        success_line(f"Retrosynthesis: {'✅' if result.success else '❌'} | FGs: {result.data.get('fgs', []) if result.data else []}")
         if result.data and result.data.get('cuts'):
             info_line(f"  Cuts: {result.data['cuts_count']}")
             for cut in result.data['cuts'][:3]:

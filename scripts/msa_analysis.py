@@ -163,13 +163,13 @@ def analyze_species(name, info):
 def main():
     results = {}
     
-    print("=" * 70)
+    info_line("=" * 70)
     info_line("🐍 SERPENTROD MSA — Ubiquitin Conservation Analysis")
-    print("=" * 70)
+    info_line("=" * 70)
     
     # Analyze each species
     for name, info in ORTHOLOGS.items():
-        print(f"\n[{name}] Analyzing {info['species']}...")
+        info_line(f"\n[{name}] Analyzing {info['species']}...")
         result = analyze_species(name, info)
         results[name] = result
         
@@ -183,9 +183,9 @@ def main():
         info_line(f"  Confidence: {result['confidence']}")
     
     # ── Conservation Analysis ─────────────────────────────────────
-    print(f"\n{'='*70}")
+    info_line(f"\n{'='*70}")
     info_line("CONSERVATION ANALYSIS")
-    print("=" * 70)
+    info_line("=" * 70)
     
     # Find universally conserved primitives
     all_activated = [set(r["activated_primitives"]) for r in results.values()]
@@ -199,11 +199,11 @@ def main():
         union |= s
     variable = union - universal
     
-    print(f"\nUniversally conserved IG primitives ({len(universal)}/12):")
+    info_line(f"\nUniversally conserved IG primitives ({len(universal)}/12):")
     for p in sorted(universal):
         info_line(f"  • {p}")
     
-    print(f"\nVariable/divergent primitives ({len(variable)}/12):")
+    info_line(f"\nVariable/divergent primitives ({len(variable)}/12):")
     for p in sorted(variable):
         species_list = []
         for name, r in results.items():
@@ -212,9 +212,9 @@ def main():
         info_line(f"  • {p} — present in: {', '.join(species_list)}")
     
     # ── Frobenius Closure Universality ────────────────────────────
-    print(f"\n{'='*70}")
+    info_line(f"\n{'='*70}")
     info_line("FROBENIUS CLOSURE VERIFICATION")
-    print("=" * 70)
+    info_line("=" * 70)
     
     all_frobenius = True
     for name, r in results.items():
@@ -222,12 +222,12 @@ def main():
         all_frobenius &= r["frobenius_verified"]
         info_line(f"  {name:15s}: {status}")
     
-    print(f"\n  Universal μ∘δ=id: {'YES ✓' if all_frobenius else 'NO ✗'}")
+    error_line(f"\n  Universal μ∘δ=id: {'YES ✓' if all_frobenius else 'NO ✗'}")
     
     # ── Pairwise sequence identity ────────────────────────────────
-    print(f"\n{'='*70}")
+    info_line(f"\n{'='*70}")
     info_line("PAIRWISE SEQUENCE IDENTITY")
-    print("=" * 70)
+    info_line("=" * 70)
     
     names = list(ORTHOLOGS.keys())
     for i in range(len(names)):
@@ -239,9 +239,9 @@ def main():
             info_line(f"  {names[i]:12s} ↔ {names[j]:12s}: {identity:.1f}% ({matches}/{len(s1)})")
     
     # ── Activation pattern differences (yeast vs human) ───────────
-    print(f"\n{'='*70}")
+    info_line(f"\n{'='*70}")
     info_line("DETAILED COMPARISON: Human ↔ Yeast")
-    print("=" * 70)
+    info_line("=" * 70)
     
     h_seq = ORTHOLOGS["human"]["sequence"]
     y_seq = ORTHOLOGS["yeast"]["sequence"]
@@ -269,16 +269,16 @@ def main():
             else:
                 info_line(" ← class-conserved")
     
-    print(f"\n  Total differences: {diff_count} / {len(h_seq)} ({diff_count/len(h_seq)*100:.1f}%)")
+    info_line(f"\n  Total differences: {diff_count} / {len(h_seq)} ({diff_count/len(h_seq)*100:.1f}%)")
     
     # ── Structural comparison ─────────────────────────────────────
-    print(f"\n{'='*70}")
+    info_line(f"\n{'='*70}")
     info_line("STRUCTURAL COMPARISON")
-    print("=" * 70)
+    info_line("=" * 70)
     
     for name, r in results.items():
         s_elems = r["secondary_elements"]
-        print(f"\n  {name}:")
+        info_line(f"\n  {name}:")
         info_line(f"    Winding: {r['winding_number']} | Subunits: {r['subunit_count']} | Contacts: {r['num_contacts']}")
         for el in s_elems:
             info_line(f"    {el['type']:6s} [{el['start']:2d}-{el['end']:2d}] len={el['length']:2d}")
@@ -317,8 +317,8 @@ def main():
     with open("/home/mrnob0dy666/p4rakernel/msa_analysis.json", "w") as f:
         json.dump(output, f, indent=2)
     
-    print(f"\n{'='*70}")
-    print(f"Results saved to msa_analysis.json")
-    print(f"{'='*70}")
+    info_line(f"\n{'='*70}")
+    info_line(f"Results saved to msa_analysis.json")
+    info_line(f"{'='*70}")
 if __name__ == "__main__":
     main()

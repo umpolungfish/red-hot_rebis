@@ -56,7 +56,7 @@ def main():
     valid = set("ATCGUatcgu")
     for sym in sequence:
         if sym not in valid:
-            print(f"ERROR: Invalid nucleotide '{sym}'")
+            error_line(f"ERROR: Invalid nucleotide '{sym}'")
             sys.exit(1)
 
     pipeline = GeneToProteinPipeline(sequence, name=args.name)
@@ -65,21 +65,21 @@ def main():
     if args.output:
         with open(args.output, "w") as f:
             json.dump(report, f, indent=2)
-        print(f"Report written to {args.output}")
+        info_line(f"Report written to {args.output}")
     else:
         dna_display = report['dna_sequence'][:60]
-        print(f"\n{'='*60}")
-        print(f"GENE -> PROTEIN: {report['pipeline']}")
-        print(f"{'='*60}")
-        print(f"DNA: {dna_display}{'...' if len(report['dna_sequence']) > 60 else ''} ({report['dna_length']} bp)")
-        print(f"AA:  {report['aa_sequence']}")
-        print(f"Length: {report['aa_length']} AAs, Subunits: {report['subunits']}")
+        info_line(f"\n{'='*60}")
+        info_line(f"GENE -> PROTEIN: {report['pipeline']}")
+        info_line(f"{'='*60}")
+        info_line(f"DNA: {dna_display}{'...' if len(report['dna_sequence']) > 60 else ''} ({report['dna_length']} bp)")
+        info_line(f"AA:  {report['aa_sequence']}")
+        info_line(f"Length: {report['aa_length']} AAs, Subunits: {report['subunits']}")
         print()
-        print(f"{'Stage':<25} {'B4':<6} {'Frob':<6} Description")
-        print("-"*60)
+        info_line(f"{'Stage':<25} {'B4':<6} {'Frob':<6} Description")
+        info_line("-"*60)
         for s in report["stages"]:
             tick = chr(10003) if s["frob"] else chr(10007)
-            print(f"{s['name']:<25} {s['b4']:<6} {tick:<6} {s['desc']}")
+            info_line(f"{s['name']:<25} {s['b4']:<6} {tick:<6} {s['desc']}")
         print()
         info_line("Pathway Distances:")
         for d in report["pathway"]:
@@ -90,9 +90,9 @@ def main():
         for prim, data in sorted(report["primitive_activations"].items()):
             info_line(f"  {prim}: {data['count']}x")
         print()
-        print(f"Closure: DNA<->Quaternary distance={report['closure']['dna_to_quaternary_distance']}")
-        print(f"Frobenius across all stages: {'OK' if report['closure']['frobenius_across_pathway'] else 'FAIL'}")
-        print(f"{'='*60}")
+        info_line(f"Closure: DNA<->Quaternary distance={report['closure']['dna_to_quaternary_distance']}")
+        error_line(f"Frobenius across all stages: {'OK' if report['closure']['frobenius_across_pathway'] else 'FAIL'}")
+        info_line(f"{'='*60}")
 
 if __name__ == "__main__":
     main()

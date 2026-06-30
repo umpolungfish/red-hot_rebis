@@ -167,17 +167,17 @@ def main():
             nm = item.get("name", "mol")
             m = Chem.MolFromSmiles(s)
             if m is None:
-                print(f"SKIP {nm}: bad SMILES")
+                info_line(f"SKIP {nm}: bad SMILES")
                 continue
             cdx = mol_to_cdxml(m, nm)
             ok, msg = validate_cdxml(cdx, m.GetNumAtoms())
-            print(f"{nm}: {'✅' if ok else '❌'} {msg}")
+            success_line(f"{nm}: {'✅' if ok else '❌'} {msg}")
             if ok:
                 results.append(cdx)
         if results:
             with open(args.output, 'w') as f:
                 f.write(results[0])
-            print(f"Wrote {args.output} ({len(results)} molecules)")
+            info_line(f"Wrote {args.output} ({len(results)} molecules)")
         return
     
     if not args.smiles:
@@ -186,21 +186,21 @@ def main():
     
     mol = Chem.MolFromSmiles(args.smiles)
     if mol is None:
-        print(f"ERROR: Cannot parse SMILES: {args.smiles}")
+        error_line(f"ERROR: Cannot parse SMILES: {args.smiles}")
         sys.exit(1)
     
     cdxml = mol_to_cdxml(mol, args.name)
     ok, msg = validate_cdxml(cdxml, mol.GetNumAtoms())
-    print(f"{args.name}: {'✅' if ok else '❌'} {msg}")
+    success_line(f"{args.name}: {'✅' if ok else '❌'} {msg}")
     
     if ok:
         with open(args.output, 'w') as f:
             f.write(cdxml)
-        print(f"Wrote {args.output} ({len(cdxml)} bytes, {mol.GetNumAtoms()} atoms, {mol.GetNumBonds()} bonds)")
+        info_line(f"Wrote {args.output} ({len(cdxml)} bytes, {mol.GetNumAtoms()} atoms, {mol.GetNumBonds()} bonds)")
     else:
         with open(args.output + ".debug", 'w') as f:
             f.write(cdxml)
-        print(f"Wrote debug file: {args.output}.debug")
+        info_line(f"Wrote debug file: {args.output}.debug")
 
 
 if __name__ == "__main__":

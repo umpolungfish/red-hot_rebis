@@ -2,9 +2,9 @@
 from shared.rich_output import *
 #!/usr/bin/env python3
 """Materials simulation display — used by ghost_typer.py"""
-print("=" * 65)
+info_line("=" * 65)
 info_line("MATERIALS SIMULATION — 4 Engine Types")
-print("=" * 65)
+info_line("=" * 65)
 sims = [
     ("materials_sim.py",         "Multi-physics materials simulation"),
     ("thermal_rectifier.py",     "Asymmetric thermal diode — phonon ratchet"),

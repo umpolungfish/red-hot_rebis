@@ -228,9 +228,9 @@ def bridge_all_components():
 if __name__ == "__main__":
     results = bridge_all_components()
     info_line("CLINK Bridges to Rebis Components")
-    print("=" * 60)
+    info_line("=" * 60)
     for name, result in results.items():
-        print(f"\n{name}:")
+        info_line(f"\n{name}:")
         info_line(f"  Nearest layer: {result.nearest_layer_name} (idx={result.nearest_layer_idx})")
         info_line(f"  Distance: {result.distance}")
         info_line(f"  Frobenius-verified: {result.frobenius_verified}")

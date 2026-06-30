@@ -31,7 +31,7 @@ compl = str.maketrans("ATCG", "TAGC")
 def revcomp(s):
     return s.translate(compl)[::-1]
 
-print(f"Genome length: {len(seq)} bp")
+info_line(f"Genome length: {len(seq)} bp")
 print()
 
 MITO_GENES = {
@@ -78,7 +78,7 @@ for gene_name, (start, end, strand, desc) in sorted(MITO_GENES.items()):
         }
         
         fm = "✓" if frob_ok else "✗"
-        print(f"[{gene_name:<7}] {strand} | {len(cds):>5}bp | {report['aa_length']:>3}AA | Frob={fm} | prim={n_prim}/12")
+        info_line(f"[{gene_name:<7}] {strand} | {len(cds):>5}bp | {report['aa_length']:>3}AA | Frob={fm} | prim={n_prim}/12")
         
         # Stage detail
         for s in report["stages"]:
@@ -87,34 +87,34 @@ for gene_name, (start, end, strand, desc) in sorted(MITO_GENES.items()):
             info_line(f"         {n:<25} B4:{s['b4']:<4} Frob:{f}")
             
     except Exception as e:
-        print(f"[{gene_name:<7}] ERROR: {e}")
+        error_line(f"[{gene_name:<7}] ERROR: {e}")
         results[gene_name] = {"status": "ERROR", "error": str(e)}
 
 # ====== SUMMARY ======
-print(f"\n{'='*70}")
+info_line(f"\n{'='*70}")
 info_line("COMPLETE RESULTS: HOMO SAPIENS MITOCHONDRIAL GENOME NC_012920.1")
 info_line("13 Protein-Coding Genes → 7-Stage IG Structural Pipeline")
-print(f"{'='*70}")
+info_line(f"{'='*70}")
 ok_results = {k:v for k,v in results.items() if v["status"] == "OK"}
 err_results = {k:v for k,v in results.items() if v["status"] == "ERROR"}
 
-print(f"\n{'Gene':<10} {'Str':<4} {'bp':<6} {'AA':<5} {'Frob':<6} {'Dist':<8} {'Prim':<6} {'Top primitives'}")
-print(f"{'-'*70}")
+info_line(f"\n{'Gene':<10} {'Str':<4} {'bp':<6} {'AA':<5} {'Frob':<6} {'Dist':<8} {'Prim':<6} {'Top primitives'}")
+info_line(f"{'-'*70}")
 for g in sorted(ok_results.keys()):
     r = ok_results[g]
     f = "✓" if r["frob"] else "✗"
     top = sorted(r["prims"].items(), key=lambda x: -x[1]["count"])[:3]
     top_s = ", ".join(f"{k}={v['count']}x" for k,v in top)
-    print(f"{g:<10} {r['strand']:<4} {r['bp']:<6} {r['aa']:<5} {f:<6} {r['dist']:<8.4f} {r['n_prim']}/12  {top_s}")
+    info_line(f"{g:<10} {r['strand']:<4} {r['bp']:<6} {r['aa']:<5} {f:<6} {r['dist']:<8.4f} {r['n_prim']}/12  {top_s}")
 
 if err_results:
-    print(f"\nErrors ({len(err_results)}):")
+    error_line(f"\nErrors ({len(err_results)}):")
     for g, r in err_results.items():
         info_line(f"  {g}: {r['error']}")
 
-print(f"\n{'='*70}")
+info_line(f"\n{'='*70}")
 info_line("AGGREGATE STATISTICS")
-print(f"{'='*70}")
+info_line(f"{'='*70}")
 info_line(f"  Total genes processed:    {len(results)}")
 info_line(f"  Successful:               {len(ok_results)}")
 info_line(f"  Frobenius ✓:              {sum(1 for r in ok_results.values() if r['frob'])}")
@@ -132,7 +132,7 @@ for p, c in sorted(total_prim.items(), key=lambda x: -x[1]):
 info_line(f"    Total: {sum(total_prim.values())}")
 
 # Most-activated genes
-print(f"\n  Most structurally complex genes (most primitives activated):")
+info_line(f"\n  Most structurally complex genes (most primitives activated):")
 for g in sorted(ok_results.keys(), key=lambda g: -ok_results[g]["n_prim"]):
     r = ok_results[g]
     info_line(f"    {g:<10} {r['n_prim']}/12 primitives  ({r['aa']} AA, {r['bp']} bp)")
@@ -140,6 +140,6 @@ for g in sorted(ok_results.keys(), key=lambda g: -ok_results[g]["n_prim"]):
 # Invariants
 dists = set(r["dist"] for r in ok_results.values())
 conscs = set(r["consc"] for r in ok_results.values())
-print(f"\n  DNA→Quaternary closure distance: {dists}")
+info_line(f"\n  DNA→Quaternary closure distance: {dists}")
 info_line(f"  Consciousness invariant:          {conscs}")
 info_line(f"  Invariant across ALL genes:       YES ✓")

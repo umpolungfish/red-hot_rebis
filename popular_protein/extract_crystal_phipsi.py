@@ -97,14 +97,14 @@ results = {}
 for pdb_name, pdb_file in [('1LYZ', '1LYZ.pdb'), ('3I40', '3I40.pdb'), ('2Y0G', '2Y0G.pdb')]:
     pdb_path = OUT / pdb_file
     if not pdb_path.exists():
-        print(f"SKIP {pdb_name}: file not found")
+        info_line(f"SKIP {pdb_name}: file not found")
         continue
     
     atoms = parse_pdb_atoms(pdb_path)
     
     # Get all chains
     chains = sorted(set(k[0] for k in atoms.keys()))
-    print(f"{pdb_name}: chains = {chains}, residues = {len(atoms)}")
+    info_line(f"{pdb_name}: chains = {chains}, residues = {len(atoms)}")
     
     for chain in chains:
         chain_keys = sorted([k for k in atoms.keys() if k[0] == chain], key=lambda k: k[1])
@@ -155,4 +155,4 @@ for pdb_name, pdb_file in [('1LYZ', '1LYZ.pdb'), ('3I40', '3I40.pdb'), ('2Y0G', 
 with open(OUT / 'crystal_phipsi.json', 'w') as f:
     json.dump(results, f, indent=2)
 
-print(f"\nSaved to crystal_phipsi.json")
+info_line(f"\nSaved to crystal_phipsi.json")

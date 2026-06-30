@@ -888,7 +888,7 @@ def make_test_sequence(aa_codes: List[str],
 
 def print_tup(stage: str, tup: Dict[str, str]) -> None:
     """Pretty-print a tuple."""
-    print(f"\n  {stage}:")
+    info_line(f"\n  {stage}:")
     for prim in ["Ð", "Þ", "Ř", "Φ", "ƒ", "Ç", "Γ", "ɢ", "⊙", "Ħ", "Σ", "Ω"]:
         char = tup[prim]
         name = prim_value_name(prim, char)
@@ -897,9 +897,9 @@ def print_tup(stage: str, tup: Dict[str, str]) -> None:
 
 def demo_all_12() -> None:
     """Demo with the 'all-12' sequence (one of each promoted AA)."""
-    print("=" * 60)
+    info_line("=" * 60)
     info_line("DEMO 1: All-12 Sequence (one of each promoted AA)")
-    print("=" * 60)
+    info_line("=" * 60)
     
     all_12_aas = ["Met", "Trp", "Cys", "Tyr", "Phe", "Ile",
                    "His", "Asn", "Gln", "Asp", "Lys", "Glu"]
@@ -926,23 +926,23 @@ def demo_all_12() -> None:
                 info_line(f"      {check_name}: {check['message']}")
     
     if result["regressions"]:
-        print(f"\n  Unwarranted regressions: {len(result['regressions'])}")
+        info_line(f"\n  Unwarranted regressions: {len(result['regressions'])}")
         for r in result["regressions"]:
             info_line(f"    {r['primitive']}: {r['from_value']} → {r['to_value']} ({r['from_stage']}→{r['to_stage']})")
     else:
-        print(f"\n  No unwarranted regressions.")
+        info_line(f"\n  No unwarranted regressions.")
     
     first = generated["dna_gene"]
     last = generated["quaternary_structure"]
     dist = compute_closure_distance(first, last)
-    print(f"\n  Pathway closure distance: {dist}")
+    info_line(f"\n  Pathway closure distance: {dist}")
 
 
 def demo_his_rich() -> None:
     """Demo His-rich sequence → φ̂=c gate fires."""
-    print("\n" + "=" * 60)
+    info_line("\n" + "=" * 60)
     info_line("DEMO 2: His-Rich Sequence (≥3 His at loops → φ̂=c)")
-    print("=" * 60)
+    info_line("=" * 60)
     
     his_rich = ["His", "His", "Gly", "His", "Ala", "His", "Val", "His"]
     his_ss = ["C", "C", "C", "C", "H", "C", "E", "C"]
@@ -965,9 +965,9 @@ def demo_his_rich() -> None:
 
 def demo_pro_absorption() -> None:
     """Demo Pro absorption: tensor(⊙_ÿ, ⊙_3)=⊙_3."""
-    print("\n" + "=" * 60)
+    info_line("\n" + "=" * 60)
     info_line("DEMO 3: Pro Absorption (His+Pro → φ̂=EP)")
-    print("=" * 60)
+    info_line("=" * 60)
     
     his_pro = ["His", "Pro", "His", "Pro", "His", "Gly", "His", "Ala"]
     his_pro_ss = ["C", "C", "C", "C", "C", "C", "C", "H"]
@@ -995,9 +995,9 @@ def demo_pro_absorption() -> None:
 
 def demo_poly_phe() -> None:
     """Demo poly-Phe sequence (all ƒ, no diversity)."""
-    print("\n" + "=" * 60)
+    info_line("\n" + "=" * 60)
     info_line("DEMO 4: Poly-Phe (all ƒ, minimal diversity)")
-    print("=" * 60)
+    info_line("=" * 60)
     
     poly_phe = ["Phe"] * 12
     poly_ss = ["H"] * 12
@@ -1010,15 +1010,15 @@ def demo_poly_phe() -> None:
         print_tup(stage, generated[stage])
     
     result = verify_pathway(generated)
-    print(f"\n  All pass: {result['all_pass']}")
+    info_line(f"\n  All pass: {result['all_pass']}")
     info_line(f"  Pass/Fail: {result['n_pass']}/{result['n_fail']}")
 
 
 def demo_gcn4_leucine_zipper() -> None:
     """Demo GCN4 leucine zipper (dimer → Z2)."""
-    print("\n" + "=" * 60)
+    info_line("\n" + "=" * 60)
     info_line("DEMO 5: GCN4 Leucine Zipper (dimer → Ω=Z2)")
-    print("=" * 60)
+    info_line("=" * 60)
     
     # GCN4 coiled-coil dimer sequence (simplified heptad repeats)
     gcn4 = ["Met", "Lys", "Gln", "Leu", "Glu", "Asp", "Lys",
@@ -1037,16 +1037,16 @@ def demo_gcn4_leucine_zipper() -> None:
     
     o_char = generated["quaternary_structure"]["Ω"]
     o_name = prim_value_name("Ω", o_char)
-    print(f"\n  Ω = {o_char} ({o_name}) — dimer Z2 parity protection")
+    info_line(f"\n  Ω = {o_char} ({o_name}) — dimer Z2 parity protection")
     assert o_name == "Z2", f"Expected Z2 for dimer, got {o_name}"
     info_line("  ✓ Dimer confirmed: Ω=Z2")
 
 
 def demo_geometric_suppression() -> None:
     """Demo Pro-rich geometric suppression."""
-    print("\n" + "=" * 60)
+    info_line("\n" + "=" * 60)
     info_line("DEMO 6: Geometric Suppression (Pro-rich → His displaced)")
-    print("=" * 60)
+    info_line("=" * 60)
     
     pro_rich = ["Pro", "Pro", "Pro", "His", "Pro", "Pro", "His", "Pro"]
     pro_ss = ["C"] * 8
@@ -1063,14 +1063,14 @@ def demo_geometric_suppression() -> None:
 
 
 if __name__ == "__main__":
-    print("=" * 60)
+    info_line("=" * 60)
     info_line("GENETIC TUPLES v0.6.0 — Sequence-Driven Structural Imscription")
-    print("=" * 60)
+    info_line("=" * 60)
     info_line("Three Resolutions:")
     info_line("  1. AXIOM C: T=bowtie (not T=odot) for protein structures")
     info_line("  2. MAPPING: His→⊙ (criticality), Gln→Γ (grammar)")
     info_line("  3. φ̂=c GATE with Pro absorption: tensor(⊙_ÿ, ⊙_3)=⊙_3")
-    print("=" * 60)
+    info_line("=" * 60)
     
     demo_all_12()
     demo_his_rich()
@@ -1079,6 +1079,6 @@ if __name__ == "__main__":
     demo_gcn4_leucine_zipper()
     demo_geometric_suppression()
     
-    print("\n" + "=" * 60)
+    info_line("\n" + "=" * 60)
     info_line("ALL DEMOS COMPLETE — All three resolutions verified.")
-    print("=" * 60)
+    info_line("=" * 60)

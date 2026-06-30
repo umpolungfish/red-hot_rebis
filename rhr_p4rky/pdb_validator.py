@@ -162,11 +162,11 @@ def validate_structure(pdb_id: str, pdb_text: str) -> Dict:
     
     # 1. Extract sequence from PDB
     seq = extract_sequence(pdb_text)
-    print(f"[{pdb_id}] PDB sequence: {seq} ({len(seq)} AAs)")
+    info_line(f"[{pdb_id}] PDB sequence: {seq} ({len(seq)} AAs)")
     
     # 2. Parse coordinates and extract experimental contacts
     atoms = parse_pdb_coords(pdb_text)
-    print(f"[{pdb_id}] {len(atoms)} CA atoms found")
+    info_line(f"[{pdb_id}] {len(atoms)} CA atoms found")
     
     # The atoms may have a different numbering than the SEQRES
     # Try to align by using the sequence from CA atoms
@@ -179,7 +179,7 @@ def validate_structure(pdb_id: str, pdb_text: str) -> Dict:
             atom_seq += one
             atom_to_seq_idx[i] = len(atom_seq) - 1
     
-    print(f"[{pdb_id}] Atom sequence: {atom_seq} ({len(atom_seq)} AAs)")
+    info_line(f"[{pdb_id}] Atom sequence: {atom_seq} ({len(atom_seq)} AAs)")
     
     # 3. Get experimental contacts
     experimental_contacts = extract_experimental_contacts(atoms, cutoff=8.0, min_seq_dist=4)
@@ -192,14 +192,14 @@ def validate_structure(pdb_id: str, pdb_text: str) -> Dict:
             exp_contact_set.add(pair)
             seq_idx_pairs.append((pair[0], pair[1], d))
     
-    print(f"[{pdb_id}] {len(exp_contact_set)} experimental contacts (CA<8.0Å, seq_dist≥4)")
+    info_line(f"[{pdb_id}] {len(exp_contact_set)} experimental contacts (CA<8.0Å, seq_dist≥4)")
     for i, j, d in sorted(seq_idx_pairs, key=lambda x: x[2])[:10]:
         aa_i, aa_j = atom_seq[i], atom_seq[j]
         info_line(f"  Contact: {aa_i}{i} ⟷ {aa_j}{j}  d={d:.2f}Å")
     
     # 4. Generate RNA from sequence and run SerpentRod
     rna = protein_to_rna(seq)
-    print(f"[{pdb_id}] Generated RNA: {rna[:50]}... ({len(rna)} nt)")
+    info_line(f"[{pdb_id}] Generated RNA: {rna[:50]}... ({len(rna)} nt)")
     
     sr = SerpentRod(rna, name=pdb_id)
     result = sr.report()
@@ -209,7 +209,7 @@ def validate_structure(pdb_id: str, pdb_text: str) -> Dict:
     for c in result["contacts"]:
         predicted_contacts.append((c["i"], c["j"]))
     
-    print(f"[{pdb_id}] {len(predicted_contacts)} predicted contacts")
+    info_line(f"[{pdb_id}] {len(predicted_contacts)} predicted contacts")
     for c in result["contacts"][:10]:
         aa_i = result["aa_sequence"][c["i"]] if c["i"] < len(result["aa_sequence"]) else "?"
         aa_j = result["aa_sequence"][c["j"]] if c["j"] < len(result["aa_sequence"]) else "?"
@@ -217,7 +217,7 @@ def validate_structure(pdb_id: str, pdb_text: str) -> Dict:
     
     # 6. Compute validation metrics
     metrics = compute_precision_recall(predicted_contacts, exp_contact_set)
-    print(f"[{pdb_id}] Metrics: P={metrics['precision']:.3f} R={metrics['recall']:.3f} F1={metrics['f1_score']:.3f}")
+    info_line(f"[{pdb_id}] Metrics: P={metrics['precision']:.3f} R={metrics['recall']:.3f} F1={metrics['f1_score']:.3f}")
     
     # 7. Check which predicted contacts are correct
     correct_predictions = []
@@ -228,7 +228,7 @@ def validate_structure(pdb_id: str, pdb_text: str) -> Dict:
                     correct_predictions.append((i, j, d))
                     break
     
-    print(f"[{pdb_id}] {len(correct_predictions)}/{len(predicted_contacts)} predicted contacts confirmed by PDB")
+    info_line(f"[{pdb_id}] {len(correct_predictions)}/{len(predicted_contacts)} predicted contacts confirmed by PDB")
     
     return {
         "pdb_id": pdb_id,
@@ -242,9 +242,9 @@ def validate_structure(pdb_id: str, pdb_text: str) -> Dict:
         "frobenius_verified": result["frobenius_verified"],
     }
 if __name__ == "__main__":
-    print("=" * 70)
+    info_line("=" * 70)
     info_line("🐍 SERPENT ON THE ROD OF ASCLEPIUS — PDB VALIDATION 🐍")
-    print("=" * 70)
+    info_line("=" * 70)
     
     # Test with Villin headpiece (1VII) — fetch from local or PDB
     if len(sys.argv) > 1:

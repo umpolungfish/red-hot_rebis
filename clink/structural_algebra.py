@@ -253,7 +253,7 @@ if __name__ == "__main__":
     info_line("=== Organism Structural Algebra (live from catalog) ===\n")
     for key, val in results.items():
         if isinstance(val, dict):
-            print(f"{key}:")
+            info_line(f"{key}:")
             for k, v in val.items():
                 if k == "tuple":
                     info_line(f"  {k}: {dict((p, v[p]) for p in PRIMITIVE_ORDER)}")
@@ -262,8 +262,8 @@ if __name__ == "__main__":
                 else:
                     info_line(f"  {k}: {v}")
         elif isinstance(val, (int, float)):
-            print(f"{key}: {round(val, 4)}")
+            info_line(f"{key}: {round(val, 4)}")
         else:
-            print(f"{key}: {val}")
+            info_line(f"{key}: {val}")
     print()
     print(clink_chain_table())

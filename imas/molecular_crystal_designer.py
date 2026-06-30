@@ -586,9 +586,9 @@ if __name__ == "__main__":
     hints = ig_tuple_to_smiles_hints(caffeine_ig)
     info_line("=== Caffeine IG Type Analysis ===")
     print(ig_tuple_str(caffeine_ig))
-    print(f"Consistent: {hints['consistency_ok']}")
+    success_line(f"Consistent: {hints['consistency_ok']}")
     if hints['issues']:
-        print(f"Issues: {hints['issues']}")
+        info_line(f"Issues: {hints['issues']}")
     info_line("\nDesign Hints:")
     for f in hints['structural_features']:
         info_line(f"  - {f}")
@@ -786,11 +786,11 @@ def run_cli():
     if not args.smiles:
         # Default: analyze caffeine
         args.smiles = 'CN1C=NC2=C1C(=O)N(C(=O)N2C)C'
-        print(f"No SMILES provided. Defaulting to caffeine: {args.smiles}")
+        info_line(f"No SMILES provided. Defaulting to caffeine: {args.smiles}")
     
-    print(f"\n{'='*60}")
-    print(f"Analyzing: {args.smiles}")
-    print(f"{'='*60}")
+    info_line(f"\n{'='*60}")
+    info_line(f"Analyzing: {args.smiles}")
+    info_line(f"{'='*60}")
     
     from imas.compound_imasm import molecule_to_arrangement
     arr = molecule_to_arrangement(args.smiles)
@@ -801,28 +801,28 @@ def run_cli():
     fp = compute_fingerprint(arr)
     ig = fingerprint_to_ig(fp)
     
-    print(f"\nIG Type: {ig_tuple_str(ig)}")
-    print(f"\n--- Design Analysis ---")
+    info_line(f"\nIG Type: {ig_tuple_str(ig)}")
+    info_line(f"\n--- Design Analysis ---")
     
     result = design_from_type(ig, args.candidates)
     
-    print(f"Consistent: {result['consistency_ok']}")
-    print(f"Criticality: {result['criticality']}")
-    print(f"\nStructural Features:")
+    success_line(f"Consistent: {result['consistency_ok']}")
+    info_line(f"Criticality: {result['criticality']}")
+    info_line(f"\nStructural Features:")
     for f in result['structural_features']:
         info_line(f"  - {f}")
     
-    print(f"\n--- Crystal Neighborhood (d<={args.radius}) ---")
+    info_line(f"\n--- Crystal Neighborhood (d<={args.radius}) ---")
     designs = analyze_compound_design_space(args.smiles, args.radius)
     for d in designs[:10]:
-        print(f"\n  [{d['distance']}] Target: {d['target_type']}")
+        info_line(f"\n  [{d['distance']}] Target: {d['target_type']}")
         info_line(f"      Criticality: {d['criticality']}")
         for feat in d['features'][:3]:
             info_line(f"      - {feat}")
         if d['candidates']:
             info_line(f"      Candidates: {', '.join(d['candidates'][:2])}")
     
-    print(f"\n{'='*60}")
+    info_line(f"\n{'='*60}")
 
 
 if __name__ == "__main__":

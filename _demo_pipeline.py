@@ -6,9 +6,9 @@ from shared.rich_output import *
 
 p = Path("pipeline")
 py_files = sorted(p.glob("*.py"))
-print("=" * 65)
+info_line("=" * 65)
 info_line("PIPELINE MODULES — Verification, Scaffolding, Reaction Design")
-print("=" * 65)
+info_line("=" * 65)
 for f in py_files:
     lines = len(f.read_text().splitlines())
     info_line(f"  {f.name:30s}  {lines:5d} lines")

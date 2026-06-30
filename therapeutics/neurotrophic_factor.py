@@ -247,17 +247,17 @@ class BNFSim:
         """Run full simulation."""
         n_steps = int(total_time / self.dt)
         
-        print("=" * 70)
-        print(f"BIDIRECTIONAL NEUROTROPHIC FACTOR — {self.disease.upper()}")
-        print("=" * 70)
-        print(f"BNF system: {'ACTIVE 𐑾' if self.bnf_active else 'DISABLED'}")
-        print(f"Initial conditions:")
+        info_line("=" * 70)
+        info_line(f"BIDIRECTIONAL NEUROTROPHIC FACTOR — {self.disease.upper()}")
+        info_line("=" * 70)
+        info_line(f"BNF system: {'ACTIVE 𐑾' if self.bnf_active else 'DISABLED'}")
+        info_line(f"Initial conditions:")
         info_line(f"  ACh={self.env.acetylcholine:.2f}, Glut={self.env.glutamate:.2f}")
         info_line(f"  Synaptic density: {self.env.synaptic_density:.2f}")
         info_line(f"  Neurodegeneration: {self.env.neurodegeneration:.2f}")
-        print("─" * 70)
-        print(f"{'Time':>6} {'Activity':>10} {'Trophic':>10} {'SynDen':>10} {'NeuroDeg':>10} {'OxStress':>10}")
-        print(f"{'─'*6} {'─'*10} {'─'*10} {'─'*10} {'─'*10} {'─'*10}")
+        info_line("─" * 70)
+        info_line(f"{'Time':>6} {'Activity':>10} {'Trophic':>10} {'SynDen':>10} {'NeuroDeg':>10} {'OxStress':>10}")
+        info_line(f"{'─'*6} {'─'*10} {'─'*10} {'─'*10} {'─'*10} {'─'*10}")
         
         for i in range(n_steps):
             self.step()
@@ -273,11 +273,11 @@ class BNFSim:
         self._summarize()
     
     def _summarize(self):
-        print(f"\n{'='*70}")
-        print(f"SIMULATION COMPLETE — {self.time:.0f} time units")
-        print(f"{'='*70}")
+        info_line(f"\n{'='*70}")
+        success_line(f"SIMULATION COMPLETE — {self.time:.0f} time units")
+        info_line(f"{'='*70}")
         
-        print(f"\nFinal state:")
+        info_line(f"\nFinal state:")
         info_line(f"  Synaptic density:     {self.env.synaptic_density:.3f} "
 f"({'IMPROVED' if self.env.synaptic_density > 0.5 else 'DECLINED'})")
         info_line(f"  Neurodegeneration:    {self.env.neurodegeneration:.3f} "
@@ -287,17 +287,17 @@ f"({'REDUCED' if self.env.neurodegeneration < 0.3 else 'PROGRESSED'})")
         
         if self.bnf_active:
             outputs = [r['trophic_output'] for r in self.responses]
-            print(f"\n  BNF feedback range:  {min(outputs):.3f} - {max(outputs):.3f}")
+            info_line(f"\n  BNF feedback range:  {min(outputs):.3f} - {max(outputs):.3f}")
             info_line(f"  BNF mean output:     {np.mean(outputs):.3f}")
-            print(f"\n  𐑾 Bidirectional feedback loop is {'ACTIVE' if max(outputs)-min(outputs) > 0.2 else 'WEAK'}")
+            info_line(f"\n  𐑾 Bidirectional feedback loop is {'ACTIVE' if max(outputs)-min(outputs) > 0.2 else 'WEAK'}")
             
             if self.env.neurodegeneration < 0.3 or self.env.synaptic_density > 0.6:
-                print(f"\n  ✓ NEUROPROTECTION CONFIRMED")
+                success_line(f"\n  ✓ NEUROPROTECTION CONFIRMED")
                 info_line(f"    The BNF dynamically adjusts trophic support to neural demand.")
             else:
-                print(f"\n  ⚠ PARTIAL PROTECTION — increase dose or potency")
+                warning_line(f"\n  ⚠ PARTIAL PROTECTION — increase dose or potency")
         
-        print(f"\n  Mechanism: 𐑾 bidirectional feedback between neurotransmitter")
+        info_line(f"\n  Mechanism: 𐑾 bidirectional feedback between neurotransmitter")
         info_line(f"  sensing and trophic signaling creates closed-loop homeostasis.")
         
         results = {
@@ -315,18 +315,18 @@ f"({'REDUCED' if self.env.neurodegeneration < 0.3 else 'PROGRESSED'})")
         path = "/home/mrnob0dy666/red-hot_rebis/therapeutics/neurotrophic_results.json"
         with open(path, 'w') as f:
             json.dump(results, f, indent=2)
-        print(f"\nSaved to {path}")
+        info_line(f"\nSaved to {path}")
 
 
 if __name__ == "__main__":
-    print("=" * 70)
-    print("ALZHEIMER'S DISEASE — BNF Active")
-    print("=" * 70)
+    info_line("=" * 70)
+    info_line("ALZHEIMER'S DISEASE — BNF Active")
+    info_line("=" * 70)
     sim = BNFSim(disease="alzheimer", bnf_active=True)
     sim.run(total_time=80.0)
     
-    print("\n\n" + "=" * 70)
-    print("ALZHEIMER'S DISEASE — Control (No BNF)")
-    print("=" * 70)
+    info_line("\n\n" + "=" * 70)
+    info_line("ALZHEIMER'S DISEASE — Control (No BNF)")
+    info_line("=" * 70)
     ctrl = BNFSim(disease="alzheimer", bnf_active=False)
     ctrl.run(total_time=80.0)

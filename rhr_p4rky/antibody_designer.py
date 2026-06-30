@@ -147,10 +147,10 @@ def analyze_epitope(epitope_seq: str, epitope_name: str = "target") -> dict:
 
     activated_primitives = set(a["primitive"] for a in activations.values())
 
-    print(f"\n{'─'*50}")
-    print(f"EPITOPE: {epitope_name}")
-    print(f"Sequence: {epitope_seq} ({len(epitope_seq)} AA)")
-    print(f"Activated IG primitives: {len(activated_primitives)}/12")
+    info_line(f"\n{'─'*50}")
+    info_line(f"EPITOPE: {epitope_name}")
+    info_line(f"Sequence: {epitope_seq} ({len(epitope_seq)} AA)")
+    info_line(f"Activated IG primitives: {len(activated_primitives)}/12")
 
     for idx, info in sorted(activations.items()):
         info_line(f"  Position {idx}: {info['aa']} ({info['aa_3l']}) -> {info['primitive']}")
@@ -195,7 +195,7 @@ def design_cdr(epitope_analysis: dict,
                 comp_prims.append(cp)
                 seen.add(prim)
 
-    print(f"\n  [CDR Design] Target length: {cdr_length}")
+    info_line(f"\n  [CDR Design] Target length: {cdr_length}")
     info_line(f"  Epitope activates: {epitope_activations}")
     info_line(f"  Complementary primitives: {comp_prims}")
     info_line(f"  Complementary AAs: {''.join(comp_1l)} ({len(comp_1l)})")
@@ -245,7 +245,7 @@ def design_cdr(epitope_analysis: dict,
     sr = SerpentRod(cdr_rna, name=f"cdr_{cdr_name}")
     result = sr.report()
 
-    print(f"\n  CDR STRUCTURE PREDICTION:")
+    info_line(f"\n  CDR STRUCTURE PREDICTION:")
     info_line(f"    Length: {result.get('aa_length', '?')} AA")
     info_line(f"    Winding: {result.get('winding_number', '?')} B4 loops")
     info_line(f"    Contacts: {len(result.get('contacts', []))}")
@@ -298,14 +298,14 @@ def design_full_antibody(epitope_analysis: dict,
     frob_ok = antibody_pred.get('frobenius_verified', False)
     conf = antibody_pred.get('confidence', 0.0)
 
-    print(f"\n{'='*60}")
-    print(f"FULL {chain_type} ANTIBODY DOMAIN")
-    print(f"{'='*60}")
-    print(f"Framework 1: {fw['FR1']}")
-    print(f"CDR3:        {cdr['cdr_sequence']}  (designed)")
-    print(f"Framework 4: {fw['FR4']}")
-    print(f"Full V{chain_type}: {full_seq}")
-    print(f"\nANTIBODY STRUCTURE:")
+    info_line(f"\n{'='*60}")
+    info_line(f"FULL {chain_type} ANTIBODY DOMAIN")
+    info_line(f"{'='*60}")
+    info_line(f"Framework 1: {fw['FR1']}")
+    info_line(f"CDR3:        {cdr['cdr_sequence']}  (designed)")
+    info_line(f"Framework 4: {fw['FR4']}")
+    info_line(f"Full V{chain_type}: {full_seq}")
+    info_line(f"\nANTIBODY STRUCTURE:")
     info_line(f"  Length: {antibody_pred.get('aa_length','?')} AA")
     info_line(f"  Winding: {antibody_pred.get('winding_number','?')} B4 loops")
     info_line(f"  Contacts: {len(antibody_pred.get('contacts',[]))}")
@@ -337,11 +337,11 @@ def design_antibodies_for_targets(targets: dict, chain_type: str = "VH",
         epitope_seq = info["seq"] if isinstance(info, dict) else info
         desc = info.get("desc", "") if isinstance(info, dict) else ""
 
-        print(f"\n\n{'#'*70}")
-        print(f"TARGET: {name}")
+        info_line(f"\n\n{'#'*70}")
+        info_line(f"TARGET: {name}")
         if desc:
             info_line(f"  {desc}")
-        print(f"{'#'*70}")
+        info_line(f"{'#'*70}")
 
         analysis = analyze_epitope(epitope_seq, name)
         antibody = design_full_antibody(analysis, chain_type, cdr_length)
@@ -352,24 +352,24 @@ def design_antibodies_for_targets(targets: dict, chain_type: str = "VH",
         }
 
     # Print summary
-    print(f"\n\n{'='*70}")
+    info_line(f"\n\n{'='*70}")
     info_line("DESIGN SUMMARY")
-    print(f"{'='*70}")
-    print(f"{'Target':25s} {'Epitope':25s} {'CDR3':15s} {'Frob':6s} {'Conf':6s}")
-    print("-"*70)
+    info_line(f"{'='*70}")
+    info_line(f"{'Target':25s} {'Epitope':25s} {'CDR3':15s} {'Frob':6s} {'Conf':6s}")
+    info_line("-"*70)
     for n, r in results.items():
         cdr = r["antibody"]["cdr3"]
         ep = r["epitope"]
         frob = "OK" if cdr.get("frobenius_verified") else "FAIL"
         conf = cdr.get("confidence", 0)
-        print(f"{n:25s} {ep[:23]:25s} {cdr['cdr_sequence']:15s} {frob:6s} {conf:4.2f}")
+        info_line(f"{n:25s} {ep[:23]:25s} {cdr['cdr_sequence']:15s} {frob:6s} {conf:4.2f}")
 
     # Save results
     if output_path:
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
         with open(output_path, "w") as f:
             json.dump(results, f, indent=2, default=str)
-        print(f"\nResults saved to {output_path}")
+        info_line(f"\nResults saved to {output_path}")
 
     return results
 # ── CLI ────────────────────────────────────────────────────────────
@@ -420,7 +420,7 @@ Examples:
     # --list: show built-in targets
     if args.list:
         info_line("BUILT-IN VIRAL EPITOPE TARGETS:")
-        print("-" * 60)
+        info_line("-" * 60)
         for name, info in VIRAL_EPITOPES.items():
             info_line(f"  {name:25s}  {info['desc']}")
             info_line(f"    Sequence: {info['seq']}")
@@ -428,9 +428,9 @@ Examples:
         info_line("Use --builtin <name> or --all to design antibodies against these targets.")
         return 0
 
-    print("=" * 70)
+    info_line("=" * 70)
     info_line("SERPENT ON THE ROD — ANTIBODY DESIGN PIPELINE")
-    print("=" * 70)
+    info_line("=" * 70)
 
     # Determine targets
     if args.epitope:
@@ -440,18 +440,18 @@ Examples:
         valid_aas = set("ACDEFGHIKLMNPQRSTVWY")
         invalid = set(seq) - valid_aas
         if invalid:
-            print(f"WARNING: Non-standard amino acid codes: {invalid}")
-            print(f"Continuing anyway — positions with unknown codes will use NNN codons.")
+            warning_line(f"WARNING: Non-standard amino acid codes: {invalid}")
+            info_line(f"Continuing anyway — positions with unknown codes will use NNN codons.")
 
         targets = {args.name: {"seq": seq, "desc": "User-specified epitope"}}
-        print(f"\nCustom target: {args.name}")
-        print(f"Epitope: {seq}")
+        info_line(f"\nCustom target: {args.name}")
+        info_line(f"Epitope: {seq}")
 
     elif args.builtin:
         # Specific built-in target
         if args.builtin not in VIRAL_EPITOPES:
-            print(f"Unknown built-in target: {args.builtin}")
-            print(f"Available: {list(VIRAL_EPITOPES.keys())}")
+            info_line(f"Unknown built-in target: {args.builtin}")
+            info_line(f"Available: {list(VIRAL_EPITOPES.keys())}")
             info_line("Use --list to see all built-in targets with descriptions.")
             return 1
         targets = {args.builtin: VIRAL_EPITOPES[args.builtin]}
@@ -459,7 +459,7 @@ Examples:
     elif args.all:
         # All built-in targets
         targets = VIRAL_EPITOPES
-        print(f"Designing antibodies for {len(targets)} viral targets...")
+        info_line(f"Designing antibodies for {len(targets)} viral targets...")
 
     else:
         # Default: run all built-in targets
@@ -477,7 +477,7 @@ Examples:
 
     # Quick summary
     frob_all = all(r["antibody"].get("frobenius_verified", False) for r in results.values())
-    print(f"\nOverall Frobenius: {'ALL OK' if frob_all else 'SOME FAILURES'}")
+    error_line(f"\nOverall Frobenius: {'ALL OK' if frob_all else 'SOME FAILURES'}")
     return 0 if frob_all else 1
 
 

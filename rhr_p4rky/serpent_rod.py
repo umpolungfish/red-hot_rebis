@@ -132,7 +132,7 @@ class SerpentRod:
         
     def log(self, msg: str):
         if self.verbose:
-            print(f"[{self.name}] {msg}")
+            info_line(f"[{self.name}] {msg}")
     
     # ── Step 1: B4 Winding Path (The Serpent) ──────────────────
     
@@ -459,7 +459,7 @@ def main():
     valid = set("ACGUacgu")
     for sym in sequence:
         if sym not in valid:
-            print(f"ERROR: Invalid nucleotide '{sym}'")
+            error_line(f"ERROR: Invalid nucleotide '{sym}'")
             sys.exit(1)
     
     sr = SerpentRod(sequence, name=args.name)
@@ -468,20 +468,20 @@ def main():
     if args.output:
         with open(args.output, "w") as f:
             json.dump(report, f, indent=2)
-        print(f"Report written to {args.output}")
+        info_line(f"Report written to {args.output}")
     else:
-        print(f"\n{'='*60}")
-        print(f"🐍 SERPENT ON THE ROD OF ASCLEPIUS 🐍")
-        print(f"{'='*60}")
-        print(f"RNA → FoldedProtein: {report['name']}")
-        print(f"{'='*60}")
-        print(f"RNA: {report['rna_sequence'][:40]}... ({report['rna_length']} nt)")
-        print(f"AA:  {report['aa_sequence']} ({report['aa_length']} AAs)")
-        print(f"B4 Winding: {report['winding_number']} loops")
-        print(f"Subunits: {report['subunit_count']}")
-        print(f"Activations: {report['activation_coverage']}")
-        print(f"Confidence: {report['confidence']}")
-        print(f"Frobenius: {'✓' if report['frobenius_verified'] else '✗'}")
+        info_line(f"\n{'='*60}")
+        info_line(f"🐍 SERPENT ON THE ROD OF ASCLEPIUS 🐍")
+        info_line(f"{'='*60}")
+        info_line(f"RNA → FoldedProtein: {report['name']}")
+        info_line(f"{'='*60}")
+        info_line(f"RNA: {report['rna_sequence'][:40]}... ({report['rna_length']} nt)")
+        info_line(f"AA:  {report['aa_sequence']} ({report['aa_length']} AAs)")
+        info_line(f"B4 Winding: {report['winding_number']} loops")
+        info_line(f"Subunits: {report['subunit_count']}")
+        info_line(f"Activations: {report['activation_coverage']}")
+        info_line(f"Confidence: {report['confidence']}")
+        error_line(f"Frobenius: {'✓' if report['frobenius_verified'] else '✗'}")
         print()
         info_line("Secondary Structure:")
         for el in report['secondary_elements']:
@@ -494,8 +494,8 @@ f"len={el['length']:2d} conf={el['confidence']:.2f} "
             info_line(f"  {c['i']:3d} ⟷ {c['j']:3d}  {c['type']:12s}  "
 f"d={c['distance']:.1f}Å  conf={c['confidence']:.2f}")
         print()
-        print(f"Closure: {report['closure_theorem']}")
-        print(f"{'='*60}")
+        info_line(f"Closure: {report['closure_theorem']}")
+        info_line(f"{'='*60}")
 if __name__ == "__main__":
     from rhr_p4rky.serpent_rod_v2 import main as _main_v2
 

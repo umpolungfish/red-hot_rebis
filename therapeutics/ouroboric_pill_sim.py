@@ -109,9 +109,9 @@ class OuroboricPillSim:
     
     def run(self, total_time=100.0):
         n_steps = int(total_time / self.dt)
-        print("=" * 60)
+        info_line("=" * 60)
         info_line("OUROBORIC PILL — Frobenius Kernel Simulation")
-        print("=" * 60)
+        info_line("=" * 60)
         frob_results = []
         for i in range(n_steps):
             frob_err, ok = self.step()
@@ -129,16 +129,16 @@ f"IL6={sa[0]:.2f} TNF={sa[1]:.2f} IFNg={sa[2]:.2f} | "
         errors = np.array(self.history['frob_err'])
         avg_frob = np.mean(errors)
         passed = all(frob_results)
-        print(f"\n{'='*60}")
-        print(f"SIMULATION COMPLETE — {n_steps} steps over {self.time:.1f} time units")
-        print(f"{'='*60}")
-        print(f"Frobenius kernel passes: {sum(frob_results)}/{n_steps} steps ({sum(frob_results)/n_steps*100:.1f}%)")
-        print(f"Mean Frobenius error: {avg_frob:.4f}")
-        print(f"Max Frobenius error: {np.max(errors):.4f}")
-        print(f"Final drug reservoirs: [{self.drug_reservoir[0]:.2f} {self.drug_reservoir[1]:.2f} {self.drug_reservoir[2]:.2f}]")
-        print(f"Total drug consumed: {(1 - np.mean(self.drug_reservoir))*100:.1f}%")
+        info_line(f"\n{'='*60}")
+        success_line(f"SIMULATION COMPLETE — {n_steps} steps over {self.time:.1f} time units")
+        info_line(f"{'='*60}")
+        info_line(f"Frobenius kernel passes: {sum(frob_results)}/{n_steps} steps ({sum(frob_results)/n_steps*100:.1f}%)")
+        error_line(f"Mean Frobenius error: {avg_frob:.4f}")
+        error_line(f"Max Frobenius error: {np.max(errors):.4f}")
+        info_line(f"Final drug reservoirs: [{self.drug_reservoir[0]:.2f} {self.drug_reservoir[1]:.2f} {self.drug_reservoir[2]:.2f}]")
+        info_line(f"Total drug consumed: {(1 - np.mean(self.drug_reservoir))*100:.1f}%")
         if avg_frob < 0.015:
-            print(f"\n✓ FROBENIUS CONDITION APPROXIMATELY SATISFIED: μ∘δ≈id (ε={avg_frob:.4f})")
+            success_line(f"\n✓ FROBENIUS CONDITION APPROXIMATELY SATISFIED: μ∘δ≈id (ε={avg_frob:.4f})")
         self._save()
     
     def _save(self):
@@ -157,7 +157,7 @@ f"IL6={sa[0]:.2f} TNF={sa[1]:.2f} IFNg={sa[2]:.2f} | "
         }
         with open(path, 'w') as f:
             json.dump(s, f, indent=2)
-        print(f"Results saved to {path}")
+        info_line(f"Results saved to {path}")
 
 
 if __name__ == "__main__":

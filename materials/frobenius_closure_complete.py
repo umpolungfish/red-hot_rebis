@@ -991,7 +991,7 @@ def main():
             design = ALL_CLOSURE_DESIGNS[args.paradigm]
             print(design.report())
         elif args.paradigm and args.paradigm in NATIVE_CLOSED:
-            print(f"Paradigm '{args.paradigm}' is NATIVELY closed (μ∘δ=id exact).")
+            info_line(f"Paradigm '{args.paradigm}' is NATIVELY closed (μ∘δ=id exact).")
             info_line("No closure design needed — anyonic braiding IS exact closure.")
         elif args.paradigm and args.paradigm in ALL_STRUCTURAL_OPEN:
             diag = ALL_STRUCTURAL_OPEN[args.paradigm]
@@ -1010,9 +1010,9 @@ def main():
             diag = ALL_STRUCTURAL_OPEN[args.paradigm]
             print(diag.report())
         elif args.paradigm:
-            print(f"Paradigm '{args.paradigm}' is NOT structurally open.")
+            info_line(f"Paradigm '{args.paradigm}' is NOT structurally open.")
             if args.paradigm in ALL_CLOSURE_DESIGNS:
-                print(f"It HAS a closure pathway. Use --close --paradigm {args.paradigm}")
+                info_line(f"It HAS a closure pathway. Use --close --paradigm {args.paradigm}")
         else:
             for diag in ALL_STRUCTURAL_OPEN.values():
                 print(diag.report())
@@ -1041,9 +1041,9 @@ def main():
         print()
         print(physical_realization_roadmap())
         print()
-        print("=" * 74)
+        info_line("=" * 74)
         info_line("  STRUCTURALLY OPEN PARADIGMS")
-        print("=" * 74)
+        info_line("=" * 74)
         for diag in ALL_STRUCTURAL_OPEN.values():
             print()
             print(diag.report())

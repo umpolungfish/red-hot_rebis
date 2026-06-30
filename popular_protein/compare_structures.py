@@ -109,8 +109,8 @@ for name in ['lysozyme', 'gfp', 'insulin_a_chain']:
                 result['rmsd_note'] = f'Trimmed from {len(plat_coords)}/{len(crys_coords)} to {min_len}'
     
     results[name] = result
-    print(f"\n{'='*60}")
-    print(f"PROTEIN: {name}")
+    info_line(f"\n{'='*60}")
+    info_line(f"PROTEIN: {name}")
     info_line(f"  Platonic: {len(plat_seq)} AA, {len(plat_coords)} CA atoms")
     if 'crystal_sequence' in result:
         info_line(f"  Crystal ({pdb_id}): {len(result['crystal_sequence'])} AA, {len(crys_coords)} CA atoms")
@@ -125,5 +125,5 @@ for name in ['lysozyme', 'gfp', 'insulin_a_chain']:
 with open(os.path.join(OUT, 'comparison_results.json'), 'w') as f:
     json.dump(results, f, indent=2, default=str)
 
-print(f"\n{'='*60}")
+info_line(f"\n{'='*60}")
 info_line("Comparison complete. Results saved.")

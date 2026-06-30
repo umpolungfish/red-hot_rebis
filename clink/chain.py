@@ -272,13 +272,13 @@ if __name__ == "__main__":
     info_line("CLINK Frobenius Closure:")
     for name, closed in frob["per_layer"].items():
         info_line(f"  {'✅' if closed else '❌'} {name}: {closed}")
-    print(f"All closed: {frob['all_closed']}")
+    info_line(f"All closed: {frob['all_closed']}")
 
     chain = clink_chain_distance()
-    print(f"\nCLINK Chain: Σd={chain['total_distance']}, {chain['total_primitive_deltas']} deltas")
+    info_line(f"\nCLINK Chain: Σd={chain['total_distance']}, {chain['total_primitive_deltas']} deltas")
     for s in chain["steps"]:
         info_line(f"  {s['from']} → {s['to']}: d={s['distance']} ({len(s['deltas'])} primitives)")
 
     org = clink_layer_tuple(8, True)
-    print(f"\nOrganism: {format_tuple_glyphs(org)}  Tier={org['_tier']}")
-    print(f"Frobenius-closed: {clink_frobenius_closed(8)}")
+    info_line(f"\nOrganism: {format_tuple_glyphs(org)}  Tier={org['_tier']}")
+    info_line(f"Frobenius-closed: {clink_frobenius_closed(8)}")

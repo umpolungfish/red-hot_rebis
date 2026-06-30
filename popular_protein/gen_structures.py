@@ -14,9 +14,9 @@ results = {}
 
 for name, info in data.items():
     seq = info['sequence']
-    print(f"\n{'='*60}")
-    print(f"PROTEIN: {name}  ({len(seq)} AA)")
-    print(f"SEQ: {seq[:50]}{'...' if len(seq)>50 else ''}")
+    info_line(f"\n{'='*60}")
+    info_line(f"PROTEIN: {name}  ({len(seq)} AA)")
+    info_line(f"SEQ: {seq[:50]}{'...' if len(seq)>50 else ''}")
     
     struct = generate_protein_structure(seq, name)
     builder = BackboneBuilder(seq, struct.secondary_structure)
@@ -51,5 +51,5 @@ for name, info in data.items():
 with open(os.path.join(OUT, 'structure_summary.json'), 'w') as f:
     json.dump(results, f, indent=2)
 
-print(f"\n{'='*60}")
-print(f"DONE. {len(results)} structures saved.")
+info_line(f"\n{'='*60}")
+success_line(f"DONE. {len(results)} structures saved.")

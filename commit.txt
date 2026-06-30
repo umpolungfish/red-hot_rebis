@@ -1,3 +1,77 @@
+retrosynthesis: molecular formula on every fragment/synthon SMILES — 2026-06-29
+
+pipeline/reaction_pipeline.py:
+- Added _smiles_formula(smiles) helper (rdMolDescriptors.CalcMolFormula)
+- Added _smi_display(smiles) helper returning "SMILES: <smi>  [formula]"
+- print_tree: every node SMILES now shows Hill-order formula in brackets
+  e.g. aldehyde synthon "SMILES: C=O  [CH2O]", aromatic "c1ccccc1  [C6H6]"
+- Reagent terminal tags include formula: "formaldehyde [C=O] [CH2O] (reagent)"
+- Fixed double "SMILES: SMILES:" in styled target_line call (target_line
+  adds its own "SMILES:" prefix; pass smi+formula string, not _smi_display)
+- --smiles without --target now routes to deep_retrosynthesis (was silently
+  ignored, always defaulted to benzaldehyde demo)
+- Depth-0 SMILES target: when name-based find_fgs() fails for raw SMILES
+  strings, fall back to scaffold map FG pairs and build scaffold routes
+  directly rather than terminating with "no_functional_groups"
+
+alchemical_bridge/retrosynthetic_stone_engine.py:
+- disconnect_molecule(): fragment dicts now include "formula" (CalcMolFormula)
+  and "heavy_atoms" {symbol: count} alongside existing mw/num_atoms/smiles
+
+---
+
+ch3mpiler: show atom indices in disconnection display — 2026-06-29
+
+Every disconnection row now reports the specific atoms at the FG interface.
+Atoms column shows up to 3 bonds per cut, e.g. "C5-O4, C10-C11".
+
+New functions:
+  locate_disconnection_atoms(smiles, fg1, fg2) — finds bonds crossing the
+    fg1/fg2 atom-set boundary using RDKit GetSubstructMatches; returns up to 3
+    ((sym,idx),(sym,idx)) pairs with 1-based atom indices from SMILES order.
+  annotate_cuts_with_atoms(cuts, smiles) — adds 'atoms' key to each cut dict.
+
+Threading:
+  Ch3mpiler.analyze() accepts optional smiles= param; falls back to
+    _resolve_smiles(target) for named molecules that have known SMILES.
+  resolve_and_analyze() passes info['smiles'] to analyze().
+  retrosynthesis() step dicts now carry atoms= from the parent cut.
+  --smiles non-retrosynthesis branch calls annotate_cuts_with_atoms() after
+    find_disconnections().
+
+Display:
+  print_analysis: Atoms column inserted between Binding and Between when any
+    cut has atoms; table degrades gracefully to 5-column form otherwise.
+  print_retrosynthesis: Atoms detail line printed after Between for each cut
+    step when atoms are present.
+
+Verified: --smiles, --target aspirin (name lookup), --cas 50-78-2 all show
+  atom indices. aromatic_ring+ether→C5-O4,C5-C6,C10-C5; ester+carboxylic→C10-C11.
+
+---
+
+ch3mpiler: fix --smiles crash and SMARTS guard — 2026-06-29
+
+Two bugs when running `ch3mpiler --smiles <SMILES>` without --target:
+
+1. `args.target` is None when only --smiles is given; the non-retrosynthesis
+   branch passed it directly to `ch.analyze()` which called `name.lower()` →
+   AttributeError. Fixed: when `direct_smiles` is set and `target_name` is
+   empty, build the analysis result from SMILES directly (find_fgs_from_smiles
+   + compose_molecule_type + find_disconnections), matching the retrosynthesis
+   SMILES branch.
+
+2. `find_fgs_from_smiles` guarded on `not HAS_FRAGMENT_INTEGRATOR`, which is
+   False when bond_fragment_integrator.py is missing. SMARTS matching only
+   requires `RDKIT_FG_COMPILED`; the fragment integrator is only needed for
+   tree enrichment. Guard reduced to `not RDKIT_FG_COMPILED`.
+
+Both fixes together: `rebis.py run ch3mpiler --smiles "CC(=O)OC1=CC=CC=C1C(=O)O"`
+now detects ester/carboxylic_acid/aromatic_ring/ether FGs and prints full
+disconnection table.
+
+---
+
 ghost_typer.py: slow down output for readability — 2026-06-29
 
 CHAR_DELAY 0.045 -> 0.08 (slower typing).

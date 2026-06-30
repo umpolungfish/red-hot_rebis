@@ -226,9 +226,9 @@ class FrobeniusMetamaterial:
         Each cycle: apply a random load field, then let the material heal for
         heal_steps_per_cycle iterations.
         """
-        print("=" * 72)
+        info_line("=" * 72)
         info_line("  FROBENIUS METAMATERIAL — mu circ delta = id SELF-VERIFICATION")
-        print("=" * 72)
+        info_line("=" * 72)
         info_line(f"  Grid: {self.N}x{self.N} ({self.N*self.N} cells)")
         info_line(f"  Matrix modulus: {self.P.matrix_modulus} GPa")
         info_line(f"  DA bond activation: {self.P.da_activation_temp} C")
@@ -236,7 +236,7 @@ class FrobeniusMetamaterial:
         info_line(f"  CNT gauge factor: {self.P.cnt_gauge_factor}")
         info_line(f"  NiTi volume fraction: {self.P.niti_volume_fraction:.2f}")
         info_line(f"  Target Frobenius error: < {self.P.target_frobenius_error}")
-        print("-" * 72)
+        info_line("-" * 72)
         info_line(f"  {'Cycle':>5} {'Load':>12} {'||mu·d-id||':>14} {'Healed%':>8} {'Agent%':>8}")
         info_line(f"  {'-'*5} {'-'*12} {'-'*14} {'-'*8} {'-'*8}")
 
@@ -284,9 +284,9 @@ class FrobeniusMetamaterial:
 
         # Final report
         frob_final = self.compute_frobenius_norm()
-        print(f"\n{'='*72}")
+        info_line(f"\n{'='*72}")
         info_line(f"  RESULTS")
-        print(f"{'='*72}")
+        info_line(f"{'='*72}")
         info_line(f"  Final ||mu·delta - id||: {frob_final:.6f}")
         info_line(f"  Frobenius closure: {'ACHIEVED' if frob_final < self.P.target_frobenius_error else 'INCOMPLETE'}")
         info_line(f"  Total healing events: {len(self.healing_events)}")
@@ -295,13 +295,13 @@ class FrobeniusMetamaterial:
 
         # Classification
         if frob_final < 0.001:
-            print(f"\n  TIER: O_∞ — perfect closure, self-verifying in the limit")
+            info_line(f"\n  TIER: O_∞ — perfect closure, self-verifying in the limit")
         elif frob_final < self.P.target_frobenius_error:
-            print(f"\n  TIER: O₂ — Frobenius-closed, autonomous self-repair")
+            info_line(f"\n  TIER: O₂ — Frobenius-closed, autonomous self-repair")
         elif frob_final < 0.1:
-            print(f"\n  TIER: O₁ — near-closure, requires occasional external intervention")
+            info_line(f"\n  TIER: O₁ — near-closure, requires occasional external intervention")
         else:
-            print(f"\n  TIER: O₀ — open loop, conventional material")
+            info_line(f"\n  TIER: O₀ — open loop, conventional material")
 
         return results
 
@@ -329,7 +329,7 @@ class FrobeniusMetamaterial:
         }
         with open(filepath, 'w') as f:
             json.dump(out, f, indent=2)
-        print(f"\n  Results exported to {filepath}")
+        info_line(f"\n  Results exported to {filepath}")
 
 
 # ═══════════════════════════════════════════════════════════════════
@@ -369,9 +369,9 @@ if __name__ == "__main__":
     mat.export_results(results, outpath)
 
     if args.enhanced:
-        print("\n" + "=" * 72)
+        info_line("\n" + "=" * 72)
         info_line("  ENHANCED VARIANT")
-        print("=" * 72)
+        info_line("=" * 72)
         params2 = FrobeniusMaterialParams(capsule_volume_fraction=0.15, feedback_gain=2.0)
         mat2 = FrobeniusMetamaterial(size=args.size, params=params2)
         results2 = mat2.run_simulation(load_cycles=args.cycles, heal_steps_per_cycle=args.heal_steps)

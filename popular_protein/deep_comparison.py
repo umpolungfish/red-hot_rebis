@@ -114,15 +114,15 @@ TARGETS = {
     'insulin_a_chain': {'pdb': '3I40', 'chain': 'A'},
 }
 
-print("="*70)
+info_line("="*70)
 info_line("DEEP STRUCTURAL COMPARISON — PLATONIC vs CRYSTALLOGRAPHIC")
-print("="*70)
+info_line("="*70)
 
 all_data = {}
 
 for name, cfg in TARGETS.items():
-    print(f"\n{'─'*70}")
-    print(f"PROTEIN: {name}")
+    info_line(f"\n{'─'*70}")
+    info_line(f"PROTEIN: {name}")
     
     # Load platonic
     plat_path = os.path.join(OUT, f'{name}_platonic.pdb')
@@ -160,7 +160,7 @@ for name, cfg in TARGETS.items():
         region = ramachandran_region(data['phi'], data['psi'])
         crys_rama[region] = crys_rama.get(region, 0) + 1
     
-    print(f"\n  RAMACHANDRAN DISTRIBUTION:")
+    info_line(f"\n  RAMACHANDRAN DISTRIBUTION:")
     info_line(f"  {'Region':<12} {'Platonic':>10} {'Crystal':>10} {'Delta':>10}")
     info_line(f"  {'─'*12} {'─'*10} {'─'*10} {'─'*10}")
     for region in ['alpha','beta','ppii','left','other','none']:
@@ -183,7 +183,7 @@ for name, cfg in TARGETS.items():
             psi_diffs.append(abs(pp['psi'] - cp['psi']))
     
     if phi_diffs:
-        print(f"\n  PHI/PSI DEVIATION:")
+        info_line(f"\n  PHI/PSI DEVIATION:")
         info_line(f"  Mean |Δφ|: {np.mean(phi_diffs):.1f}°  Median: {np.median(phi_diffs):.1f}°  Max: {np.max(phi_diffs):.1f}°")
         info_line(f"  Mean |Δψ|: {np.mean(psi_diffs):.1f}°  Median: {np.median(psi_diffs):.1f}°  Max: {np.max(psi_diffs):.1f}°")
     
@@ -192,7 +192,7 @@ for name, cfg in TARGETS.items():
     crys_ca = [crys_res[k]['CA'] for k in crys_keys[:len(plat_ca)] if crys_res[k]['CA']]
     min_ca = min(len(plat_ca), len(crys_ca))
     rmsd_val, _, _, _ = kabsch(plat_ca[:min_ca], crys_ca[:min_ca])
-    print(f"\n  KABSCH RMSD: {rmsd_val:.2f} Å ({min_ca} CA atoms)")
+    info_line(f"\n  KABSCH RMSD: {rmsd_val:.2f} Å ({min_ca} CA atoms)")
     
     all_data[name] = {
         'platonic_residues': len(plat_keys),
@@ -208,5 +208,5 @@ for name, cfg in TARGETS.items():
 with open(os.path.join(OUT, 'deep_comparison.json'), 'w') as f:
     json.dump(all_data, f, indent=2)
 
-print(f"\n{'='*70}")
+info_line(f"\n{'='*70}")
 info_line("Deep comparison complete → deep_comparison.json")

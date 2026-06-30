@@ -332,7 +332,7 @@ if __name__ == "__main__":
     G = build_metric_tensor()
 
     eig = metric_eigendecomposition(G)
-    print(f"\n=== Metric eigendecomposition (§26.6) ===")
+    info_line(f"\n=== Metric eigendecomposition (§26.6) ===")
     info_line(f"  Effective dimension: {eig['effective_dim']} of 12  (90% eigenweight)")
     info_line(f"  Condition number:    {eig['condition_number']:.2f}")
     for m in eig["named_modes"]:

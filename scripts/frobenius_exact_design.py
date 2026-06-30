@@ -228,9 +228,9 @@ def design_single_site_v3(plastic_name, bond_name, fg1_name, fg2_name, mechanism
 # MAIN: Test v3 on all plastics
 # ═══════════════════════════════════════════════════════════════
 
-print("=" * 72)
+info_line("=" * 72)
 info_line("  FROBENIUS-EXACT DESIGN (v3 — Inverse Complement + AND Logic)")
-print("=" * 72)
+info_line("=" * 72)
 print()
 
 all_sites = []
@@ -238,7 +238,7 @@ for plastic_name, bond_name, fg1_name, fg2_name, mechanism in PLASTIC_TARGETS:
     site = design_single_site_v3(plastic_name, bond_name, fg1_name, fg2_name, mechanism)
     all_sites.append(site)
     
-    print(f"--- {plastic_name} ---")
+    info_line(f"--- {plastic_name} ---")
     info_line(f"  Bond: {bond_name}  FG: {fg1_name}+{fg2_name}")
     info_line(f"  Pairs covered (AND): {site['pairs_covered']}/6")
     info_line(f"  Natural activation: {site['naturally_activated']}")
@@ -259,9 +259,9 @@ for plastic_name, bond_name, fg1_name, fg2_name, mechanism in PLASTIC_TARGETS:
     print()
 
 print()
-print("=" * 72)
+info_line("=" * 72)
 info_line("  CLUSTERING ANALYSIS")
-print("=" * 72)
+info_line("=" * 72)
 
 # Group plastics by structural compatibility (shared failure patterns)
 # If all achieve 6/6 individually, 1 catalyst may suffice
@@ -270,12 +270,12 @@ print("=" * 72)
 achieved_6 = [s for s in all_sites if s['pairs_covered'] == 6]
 not_6 = [s for s in all_sites if s['pairs_covered'] < 6]
 
-print(f"\nAchieved 6/6: {len(achieved_6)}/{len(all_sites)}")
+info_line(f"\nAchieved 6/6: {len(achieved_6)}/{len(all_sites)}")
 for s in achieved_6:
     info_line(f"  {s['plastic']}: force={s['force_activated']}")
 
 if not_6:
-    print(f"\nDid NOT achieve 6/6: {len(not_6)}")
+    info_line(f"\nDid NOT achieve 6/6: {len(not_6)}")
     for s in not_6:
         info_line(f"  {s['plastic']}: pairs={s['pairs_covered']}/6")
 

@@ -76,14 +76,14 @@ TARGETS = {
     'insulin_a_chain': {'pdb': '3I40', 'chain': 'A'},
 }
 
-print("="*65)
+info_line("="*65)
 info_line("PLATONIC vs CRYSTALLOGRAPHIC — FULL STRUCTURAL COMPARISON")
-print("="*65)
+info_line("="*65)
 
 all_results = {}
 for name, cfg in TARGETS.items():
-    print(f"\n{'─'*65}")
-    print(f"PROTEIN: {name}")
+    info_line(f"\n{'─'*65}")
+    info_line(f"PROTEIN: {name}")
     
     # Load platonic structure
     pdb_path = os.path.join(OUT, f'{name}_platonic.pdb')
@@ -175,16 +175,16 @@ for name, cfg in TARGETS.items():
     }
 
 # ─── Summary ──────────────────────────────────────────────────────
-print(f"\n{'='*65}")
+info_line(f"\n{'='*65}")
 info_line("SUMMARY")
-print(f"{'='*65}")
-print(f"{'Protein':<20} {'Seq ID':>8} {'RMSD':>8} {'Mean Dev':>8} {'Residues':>8}")
-print(f"{'─'*20} {'─'*8} {'─'*8} {'─'*8} {'─'*8}")
+info_line(f"{'='*65}")
+info_line(f"{'Protein':<20} {'Seq ID':>8} {'RMSD':>8} {'Mean Dev':>8} {'Residues':>8}")
+info_line(f"{'─'*20} {'─'*8} {'─'*8} {'─'*8} {'─'*8}")
 for name, r in all_results.items():
     if 'error' in r:
-        print(f"{name:<20} {'ERROR':>8}")
+        error_line(f"{name:<20} {'ERROR':>8}")
     else:
-        print(f"{name:<20} {r['sequence_identity_pct']:>7.1f}% {r['kabsch_rmsd'] or 'N/A':>8} {r.get('mean_per_residue_deviation','N/A'):>8} {r['residues_compared']:>8}")
+        info_line(f"{name:<20} {r['sequence_identity_pct']:>7.1f}% {r['kabsch_rmsd'] or 'N/A':>8} {r.get('mean_per_residue_deviation','N/A'):>8} {r['residues_compared']:>8}")
 
 # Save
 with open(os.path.join(OUT, 'full_comparison.json'), 'w') as f:

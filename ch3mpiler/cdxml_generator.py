@@ -625,13 +625,13 @@ def generate_reaction_cdxml(steps, out_path="reaction_scheme.cdxml",
     try:
         with open(out_path, 'w', encoding='utf-8') as f:
             f.write(cdxml)
-        print(f"CDXML written to: {out_path}")
+        info_line(f"CDXML written to: {out_path}")
         info_line(f"  CDXML BoundingBox: {content_bbox}")
         info_line(f"  Page: sentinel right edge, top={page_h}")
         info_line(f"  Steps: {len(steps)}")
         return out_path
     except Exception as e:
-        print(f"ERROR writing CDXML: {e}")
+        error_line(f"ERROR writing CDXML: {e}")
         return None
 
 def generate_reaction_scheme_simple(reactant_smiles, product_smiles,

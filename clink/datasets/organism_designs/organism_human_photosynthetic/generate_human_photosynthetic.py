@@ -868,15 +868,15 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
         output_dir = str(Path(__file__).parent)
     out_path = Path(output_dir)
 
-    print("=" * 70)
+    info_line("=" * 70)
     info_line("CLINK HUMAN (PHOTOSYNTHETIC VARIANT) DESIGN PIPELINE")
-    print(f"Homo sapiens (photosynthetic) — {PHOTO_TYPE}  O_∞  C=1.0")
+    info_line(f"Homo sapiens (photosynthetic) — {PHOTO_TYPE}  O_∞  C=1.0")
     info_line("ZFC_fe foundation: μ∘δ=id at every layer")
-    print(f"Base human type:   {HUMAN_TYPE}")
-    print(f"Photo variant type:{PHOTO_TYPE}")
+    info_line(f"Base human type:   {HUMAN_TYPE}")
+    info_line(f"Photo variant type:{PHOTO_TYPE}")
     info_line("Modified: Ħ(𐑸→𐑱)  Ω(𐑾→𐑰)  Σ(𐑐→𐑓)  Φ(𐑧→𐑨)")
     info_line("Elysia chlorotica model: psbO HGT = Frobenius closed loop")
-    print("=" * 70)
+    info_line("=" * 70)
 
     # ── Base human ─────────────────────────────────────────────────────────────
     from clink.datasets.generators import generate_actionable_organism_package
@@ -1023,19 +1023,19 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
     }
     (out_path / "design_manifest.json").write_text(json.dumps(manifest, indent=2))
 
-    print(f"\n{'=' * 70}")
-    print(f"COMPLETE — {total_files} files, {total_bytes:,} bytes")
-    print(f"Output: {out_path}")
-    print(f"Frobenius: ✓")
-    print(f"\nPhotosynthetic variant type: {PHOTO_TYPE}")
-    print(f"Base human type:             {HUMAN_TYPE}")
-    print(f"Modified primitives:         Ħ Ω Σ Φ")
-    print(f"Turing pattern coverage:     {pattern['coverage_percent']}%  (L-Fibonacci chirality)")
-    print(f"Elysia HGT model:            psbO  →  Frobenius closed loop")
-    print(f"Parity note:                 Φ=𐑨  photosynthesis = mirror of respiration")
-    print(f"Tier: O_∞  |  C-score: 1.0")
-    print(f"Foundation: ZFC_fe  |  μ∘δ=id")
-    print(f"{'=' * 70}")
+    info_line(f"\n{'=' * 70}")
+    success_line(f"COMPLETE — {total_files} files, {total_bytes:,} bytes")
+    info_line(f"Output: {out_path}")
+    success_line(f"Frobenius: ✓")
+    info_line(f"\nPhotosynthetic variant type: {PHOTO_TYPE}")
+    info_line(f"Base human type:             {HUMAN_TYPE}")
+    info_line(f"Modified primitives:         Ħ Ω Σ Φ")
+    info_line(f"Turing pattern coverage:     {pattern['coverage_percent']}%  (L-Fibonacci chirality)")
+    info_line(f"Elysia HGT model:            psbO  →  Frobenius closed loop")
+    info_line(f"Parity note:                 Φ=𐑨  photosynthesis = mirror of respiration")
+    info_line(f"Tier: O_∞  |  C-score: 1.0")
+    info_line(f"Foundation: ZFC_fe  |  μ∘δ=id")
+    info_line(f"{'=' * 70}")
 
     return manifest
 

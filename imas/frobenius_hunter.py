@@ -302,9 +302,9 @@ def analyze_frobenius_library(
 # ═══════════════════════════════════════════════════════════════════
 
 if __name__ == '__main__':
-    print("=" * 72)
+    info_line("=" * 72)
     info_line("FROBENIUS HUNTER — Targeted Frobenius Pair Search")
-    print("=" * 72)
+    info_line("=" * 72)
 
     # Density estimation
     info_line("\n--- Monte Carlo Density Estimation (n=100,000) ---")
@@ -320,7 +320,7 @@ if __name__ == '__main__':
     library = generate_frobenius_library(count_per_type=10, seed=42)
     analysis = analyze_frobenius_library(library)
     for category, stats in analysis.items():
-        print(f"\n  {category}:")
+        info_line(f"\n  {category}:")
         info_line(f"    Count: {stats['count']}, Distinct IG types: {stats['distinct_ig_types']}")
         info_line(f"    Avg period: {stats['avg_period']:.1f}, Avg diversity: {stats['avg_diversity']:.1f}")
         info_line(f"    Top IG types:")

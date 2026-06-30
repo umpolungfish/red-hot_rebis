@@ -458,10 +458,10 @@ def run_pdb_validation_suite(output="pdb_v2_validation.json", pdb_dir="pdb"):
             print(f"{pid}: F1={r['f1']:.4f} P={r['precision']:.4f} R={r['recall']:.4f} "
                   f"Seq={r['seq_match']} Act={r['activation']}/12 Frob={r['frobenius']}")
         except Exception as e:
-            print(f"{pid}: ERROR - {e}")
+            error_line(f"{pid}: ERROR - {e}")
             results.append({"pdb_id":pid,"error":str(e)})
     with open(output,"w") as f: json.dump(results,f,indent=2)
-    print(f"\nResults saved to {output}")
+    info_line(f"\nResults saved to {output}")
     return results
 
 # ═══════════════════════════════════════════════════════════════════
@@ -486,17 +486,17 @@ def main():
     v2 = SerpentRodV2(seq, name=args.name)
     result = v2.predict()
     
-    print(f"\n🐍 SERPENT-ROD GEN2 🐍")
-    print(f"RNA: {v2.rna[:50]}... ({len(v2.rna)} nt)")
-    print(f"AA:  {result.aa_sequence} ({len(result.aa_list)} AAs)")
-    print(f"Winding: {result.winding_number} loops")
-    print(f"Backbone: {len(result.backbone.residues)} CA positions")
-    print(f"Contacts: {len(result.contacts)}")
-    print(f"Energy: {result.energy['total']:.1f} kcal/mol")
-    print(f"Activation: {result.activation_count}/12 unique primitives")
-    print(f"Pair coverage: {result.pair_coverage[0]}/{result.pair_coverage[1]}")
-    print(f"Frobenius: {'YES' if result.frobenius_verified else 'NO'}")
-    print(f"Secondary elements: {len(result.secondary_elements)}")
+    info_line(f"\n🐍 SERPENT-ROD GEN2 🐍")
+    info_line(f"RNA: {v2.rna[:50]}... ({len(v2.rna)} nt)")
+    info_line(f"AA:  {result.aa_sequence} ({len(result.aa_list)} AAs)")
+    info_line(f"Winding: {result.winding_number} loops")
+    info_line(f"Backbone: {len(result.backbone.residues)} CA positions")
+    info_line(f"Contacts: {len(result.contacts)}")
+    info_line(f"Energy: {result.energy['total']:.1f} kcal/mol")
+    info_line(f"Activation: {result.activation_count}/12 unique primitives")
+    info_line(f"Pair coverage: {result.pair_coverage[0]}/{result.pair_coverage[1]}")
+    info_line(f"Frobenius: {'YES' if result.frobenius_verified else 'NO'}")
+    info_line(f"Secondary elements: {len(result.secondary_elements)}")
     for el in result.secondary_elements:
         info_line(f"  {el['type']:8s} [{el['start']:3d}-{el['end']:3d}] {el['sequence']}")
     

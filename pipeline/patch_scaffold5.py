@@ -21,7 +21,7 @@ for i, line in enumerate(lines):
         ]
         for t_line in reversed(hook_lines):
             lines.insert(i+1, t_line)
-        print(f"Applied: fragment_smiles hook at line {i+1}")
+        success_line(f"Applied: fragment_smiles hook at line {i+1}")
         break
 
 with open('/home/mrnob0dy666/imsgct/red-hot_rebis/pipeline/reaction_pipeline.py', 'w') as f:

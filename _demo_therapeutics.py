@@ -2,9 +2,9 @@
 from shared.rich_output import *
 #!/usr/bin/env python3
 """Therapeutics display — used by ghost_typer.py"""
-print("=" * 65)
+info_line("=" * 65)
 info_line("THERAPEUTICS — 5 Frobenius-verified Drug Design Pipelines")
-print("=" * 65)
+info_line("=" * 65)
 therapeutics = [
     ("frobenius_chemotherapeutic.py", "Cancer therapeutic — Frobenius exact"),
     ("neurotrophic_factor.py",       "Neurotrophic factor design"),

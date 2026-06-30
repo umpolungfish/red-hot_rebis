@@ -7,7 +7,7 @@ def bootstrap_minimal():
     
     with open("self.o", encoding='utf-8') as f:
         source = f.read()
-    print("Imscription anchor:", hashlib.sha256(source.encode()).hexdigest()[:24])
+    info_line("Imscription anchor:", hashlib.sha256(source.encode()).hexdigest()[:24])
 
     c_code = """#include <stdint.h>
 

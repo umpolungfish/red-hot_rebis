@@ -1901,9 +1901,9 @@ f"multi-edit chimera={multi['chimera'].tensor_class}")
 
 def verify_all() -> Dict[str, bool]:
     """Run all verification tests."""
-    print("─" * 60)
+    info_line("─" * 60)
     info_line("GENETIC ENGINE — Verification Suite")
-    print("─" * 60)
+    info_line("─" * 60)
     results = {
         "b4_lattice":           verify_b4_lattice(),
         "codon_table":          verify_codon_table(),
@@ -1916,11 +1916,11 @@ def verify_all() -> Dict[str, bool]:
         "frobenius_verifier":   verify_frobenius_verifier(),
         "compiler_pipeline":    verify_compiler_pipeline(),
     }
-    print("─" * 60)
+    info_line("─" * 60)
     all_pass = all(results.values())
     status = "✓ ALL TESTS PASSED" if all_pass else "✗ SOME TESTS FAILED"
     info_line(f"  {status}")
-    print("─" * 60)
+    info_line("─" * 60)
     return results
 
 
@@ -1929,7 +1929,7 @@ def verify_all() -> Dict[str, bool]:
 # ══════════════════════════════════════════════════════════════════════════════
 
 def _hr(title: str) -> None:
-    print(f"\n── {title} {'─'*(56-len(title))}")
+    info_line(f"\n── {title} {'─'*(56-len(title))}")
 
 
 def demo_b4_lattice() -> None:
@@ -1973,7 +1973,7 @@ def demo_codon_stratification() -> None:
         box = sym[:2] + "_"
         boxes[box].append((sym, aa))
     classifier = FrobeniusStratumClassifier()
-    print(f"\n  {'Box':<6} {'Stratum':<12} {'Codons':<30} {'AAs'}")
+    info_line(f"\n  {'Box':<6} {'Stratum':<12} {'Codons':<30} {'AAs'}")
     info_line(f"  {'─'*70}")
     for box, members in sorted(boxes.items()):
         codon = members[0][0]
@@ -1997,7 +1997,7 @@ def demo_edit_analysis() -> None:
         ("CUG", "CUU"),   # Leu silent
         ("UAU", "UAA"),   # Tyr→Stop
     ]
-    print(f"\n  {'Orig→Target':<20} {'AA change':<16} {'Cost':<6} {'Type':<20} {'Stratum crossing':<20} {'Silent'}")
+    info_line(f"\n  {'Orig→Target':<20} {'AA change':<16} {'Cost':<6} {'Type':<20} {'Stratum crossing':<20} {'Silent'}")
     info_line(f"  {'─'*90}")
     for o, t in test_edits:
         r = analyzer.analyze(o, t)
@@ -2014,7 +2014,7 @@ def demo_guide_design() -> None:
     for codon in ["GCU", "UUU", "UAA"]:
         guide = designer.design(codon)
         aa = CODON_TABLE[codon]
-        print(f"\n  Target: {codon} ({aa}) — {guide.stratum.value} stratum")
+        info_line(f"\n  Target: {codon} ({aa}) — {guide.stratum.value} stratum")
         info_line(f"  Guide:  {guide.guide_sequence}")
         info_line(f"  Seed:   {guide.seed_region}")
         info_line(f"  Pos 3:  {guide.position3_strategy}")
@@ -2094,7 +2094,7 @@ def demo_verification() -> None:
         ("AUG", "UAA", "Met→Stop (Ω boundary violation)"),
         ("AAA", "AAG", "Lys silent (split stratum)"),
     ]
-    print(f"\n  {'Target→Edit':<20} {'Scenario':<35} {'Status':<20} {'Ratio':<8} {'Score':<6}")
+    info_line(f"\n  {'Target→Edit':<20} {'Scenario':<35} {'Status':<20} {'Ratio':<8} {'Score':<6}")
     info_line(f"  {'─'*90}")
     for t, e, desc in scenarios:
         v = verifier.verify(t, e)
@@ -2117,7 +2117,7 @@ def demo_chimera_risk() -> None:
     for edit_set in pairs:
         report = ChimeraDetector.analyze_edit_set(edit_set)
         edit_str = ", ".join(report.edits)
-        print(f"\n  Edit: {edit_str}")
+        info_line(f"\n  Edit: {edit_str}")
         info_line(f"  Individual risks: {report.individual_risks}")
         info_line(f"  Tensor risk: {report.tensor_risk:.1f}x ({report.tensor_class})")
         if report.is_trap_state:
@@ -2134,14 +2134,14 @@ def demo_cas9_off_target() -> None:
     on_target = "GCA"
     off_targets = ["GCC", "GUC", "UGG", "AUG", "UAA", "GUU"]
     result = designer.off_target_stratum_risk(on_target, off_targets)
-    print(f"\n  On-target: {on_target} ({CODON_TABLE[on_target]}, {result['on_stratum']} stratum)")
+    info_line(f"\n  On-target: {on_target} ({CODON_TABLE[on_target]}, {result['on_stratum']} stratum)")
     info_line(f"  Cross-stratum off-targets: {result['cross_stratum_off_targets']}/{result['off_target_count']}")
-    print(f"\n  {'Off-target':<15} {'Stratum':<12} {'Same?':<8} {'Defect risk':<12}")
+    info_line(f"\n  {'Off-target':<15} {'Stratum':<12} {'Same?':<8} {'Defect risk':<12}")
     info_line(f"  {'─'*50}")
     for d in result['details']:
         same = '✓' if d['same_stratum'] else '✗'
         info_line(f"  {d['off_target']:<15} {d['off_stratum']:<12} {same:<8} {d['structural_defect_risk_pct']:<10.0f}%")
-    print(f"\n  Theorem: cross-stratum off-targets have ≥50% structural defect risk")
+    info_line(f"\n  Theorem: cross-stratum off-targets have ≥50% structural defect risk")
     info_line(f"  Mechanism: repair machinery fills position 3 using on-target stratum rules,")
     info_line(f"  which are incorrect for the off-target stratum.")
 
@@ -2151,11 +2151,11 @@ def demo_cas9_off_target() -> None:
 # ══════════════════════════════════════════════════════════════════════════════
 
 if __name__ == "__main__":
-    print("=" * 64)
+    info_line("=" * 64)
     info_line("GENETIC ENGINE  ·  Frobenius-Guided Gene Editing via IG Grammar")
     info_line("Editing = local modification of the Frobenius algebra on codon space")
     info_line("Structural type: ⟨Ð_ω; Þ_ò; Ř_=; Φ_υ; ƒ_ð; Ç_@; Γ_ʔ; ɢ_ˌ; φ̂_ÿ; Ħ_A; Σ_ï; Ω_z⟩")
-    print("=" * 64)
+    info_line("=" * 64)
 
     # Run verification suite
     verify_all()
@@ -2187,7 +2187,7 @@ if __name__ == "__main__":
     for name, tup, tier, c, note in rows:
         info_line(f"  {name:<22} {tup:<56} {tier:<7} {c:>5}  {note}")
 
-    print(f"\n  Key structural facts:")
+    info_line(f"\n  Key structural facts:")
     info_line(f"    • The genetic code is a stratified Frobenius algebra on B₄³ codon space")
     info_line(f"    • 8 exact boxes (32 codons): position 3 silent, μ∘δ=id holds exactly")
     info_line(f"    • 8 split boxes (29 codons): position 3 = Y/R, ℤ₂ wobble symmetry")
@@ -2195,6 +2195,6 @@ if __name__ == "__main__":
     info_line(f"    • The Cas9 off-target sheaf theorem: cross-stratum off-targets have ≥50% defect risk")
     info_line(f"    • The Chimera Theorem: multi-primitive edits are tensorial, not additive")
 
-    print("\n" + "=" * 64)
+    info_line("\n" + "=" * 64)
     info_line("GENETIC ENGINE INITIALIZED  ·  FROBENIUS-GUIDED EDITING CHANNEL OPEN")
-    print("=" * 64)
+    info_line("=" * 64)

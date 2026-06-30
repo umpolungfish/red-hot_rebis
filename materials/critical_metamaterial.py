@@ -97,16 +97,16 @@ class CriticalMetamaterial:
         self.time += 1
     
     def run(self, total_time=60):
-        print("="*70)
+        info_line("="*70)
         info_line("SELF-CRITICAL METAMATERIAL SENSOR — ⊙ Criticality")
-        print("="*70)
-        print(f"Array: {self.N}×{self.N} ({self.n_res} resonators)")
-        print(f"Critical coupling κ_c = {self.kappa_c}")
-        print(f"Target χ = {self.target_chi:.0e}")
-        print(f"Bidirectional feedback (𐑾) maintains critical point")
-        print("─"*70)
-        print(f"{'t':>4} {'κ':>10} {'χ':>12} {'Status':>15}")
-        print(f"{'─'*4} {'─'*10} {'─'*12} {'─'*15}")
+        info_line("="*70)
+        info_line(f"Array: {self.N}×{self.N} ({self.n_res} resonators)")
+        info_line(f"Critical coupling κ_c = {self.kappa_c}")
+        info_line(f"Target χ = {self.target_chi:.0e}")
+        info_line(f"Bidirectional feedback (𐑾) maintains critical point")
+        info_line("─"*70)
+        info_line(f"{'t':>4} {'κ':>10} {'χ':>12} {'Status':>15}")
+        info_line(f"{'─'*4} {'─'*10} {'─'*12} {'─'*15}")
         
         for _ in range(total_time):
             self.step()
@@ -115,28 +115,28 @@ class CriticalMetamaterial:
                 chi = self.history["chi"][-1]
                 kap = self.history["kappa"][-1]
                 status = "CRITICAL ✓" if 0.8*self.target_chi < chi < 1.5*self.target_chi else ("TUNING" if chi < self.target_chi else "SATURATED")
-                print(f"{int(t):4d} {kap:10.4f} {chi:12.2e} {status:>15}")
+                info_line(f"{int(t):4d} {kap:10.4f} {chi:12.2e} {status:>15}")
         
         chi_vals = self.history["chi"]
         mean_chi = np.mean(chi_vals)
         final_kap = self.history["kappa"][-1]
         
-        print(f"\n{'='*70}")
-        print(f"RESULTS")
-        print(f"{'='*70}")
+        info_line(f"\n{'='*70}")
+        info_line(f"RESULTS")
+        info_line(f"{'='*70}")
         info_line(f"  Mean χ: {mean_chi:.2e}")
         info_line(f"  Peak χ: {max(chi_vals):.2e}")
         info_line(f"  Final κ: {final_kap:.4f}")
         info_line(f"  Deviation |κ-κ_c|: {abs(final_kap - self.kappa_c):.4f}")
         
         if abs(final_kap - self.kappa_c) < 0.05:
-            print(f"\n  ✓ CRITICALITY ACHIEVED")
+            success_line(f"\n  ✓ CRITICALITY ACHIEVED")
             info_line(f"    The 𐑾 feedback loop locks κ at the critical point.")
             info_line(f"    At this point, χ = {mean_chi:.0e} — extreme sensitivity.")
         else:
-            print(f"\n  ⚠ Near-critical (|κ-κ_c| = {abs(final_kap - self.kappa_c):.4f})")
+            warning_line(f"\n  ⚠ Near-critical (|κ-κ_c| = {abs(final_kap - self.kappa_c):.4f})")
         
-        print(f"\n  Small-signal test:")
+        info_line(f"\n  Small-signal test:")
         for sig in [1e-6, 1e-8, 1e-10]:
             chi_sig, _ = self.compute_susceptibility(sig)
             info_line(f"    Signal {sig:.0e}: χ = {chi_sig:.2e} (gain = {chi_sig:.0f})")
@@ -150,7 +150,7 @@ class CriticalMetamaterial:
         }
         with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "critical_metamaterial_results.json"), 'w') as f:
             json.dump(results, f, indent=2)
-        print(f"\nSaved to results file")
+        info_line(f"\nSaved to results file")
 
 if __name__ == "__main__":
     import argparse, os
@@ -186,4 +186,4 @@ if __name__ == "__main__":
         }
         with open(args.output, 'w') as f:
             json.dump(results, f, indent=2)
-        print(f"\nResults exported to {args.output}")
+        info_line(f"\nResults exported to {args.output}")

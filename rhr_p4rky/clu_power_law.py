@@ -569,13 +569,13 @@ def verify_power_law_3d(
 
 def main() -> None:
     """Run full derivation and verification."""
-    print("=" * 72)
+    info_line("=" * 72)
     info_line("  CLU -3/2 POWER LAW: FORMAL DERIVATION & VERIFICATION")
     info_line("  Reference: CLU.md §I-VII (Criticality-Lift Unit)")
-    print("=" * 72)
+    info_line("=" * 72)
 
     print(DERIVATION_TEXT)
-    print("=" * 72)
+    info_line("=" * 72)
 
     info_line("\n  RUNNING VERIFICATION...\n")
 
@@ -606,14 +606,14 @@ def main() -> None:
             info_line(f"      PASS: {c['pass']}")
 
     o = results["overall"]
-    print(f"\n  ✓ OVERALL: {o['checks_passed']}/{o['checks_total']} checks passed")
+    success_line(f"\n  ✓ OVERALL: {o['checks_passed']}/{o['checks_total']} checks passed")
     info_line(f"    Theorem: {o['theorem']}")
     info_line(f"    Status: {'VERIFIED' if o['all_pass'] else 'PARTIAL'}")
 
-    print("\n" + "=" * 72)
+    info_line("\n" + "=" * 72)
     info_line("  Implementation file: rhr_p4rky/clu_power_law.py")
     info_line("  Integrated with:     Frobenius kernel (kernel.py)")
     info_line("  Filtration:          frobenius_filtration.py")
-    print("=" * 72)
+    info_line("=" * 72)
 if __name__ == "__main__":
     main()

@@ -260,7 +260,7 @@ class GeneToProteinPipeline:
 
     def log(self, msg: str):
         if self.verbose:
-            print(f"[{self.name}] {msg}")
+            info_line(f"[{self.name}] {msg}")
 
 
     # ------- Stage 0: DNA Gene -------
@@ -1105,34 +1105,34 @@ def main():
     valid = set("ATCGUatcgu")
     for sym in sequence:
         if sym not in valid:
-            print(f"ERROR: Invalid nucleotide '{sym}'")
+            error_line(f"ERROR: Invalid nucleotide '{sym}'")
             sys.exit(1)
     pipeline = GeneToProteinPipeline(sequence, name=args.name, is_rna=args.rna)
     report = pipeline.run(num_subunits=args.subunits)
     if args.output:
         with open(args.output, "w") as f:
             json.dump(report, f, indent=2)
-        print(f"Report written to {args.output}")
+        info_line(f"Report written to {args.output}")
     else:
-        print(f"\n{'='*60}")
-        print(f"GENE -> PROTEIN: {report['pipeline']}")
-        print(f"{'='*60}")
-        print(f"DNA: {report['dna_sequence'][:60]}... ({report['dna_length']} bp)")
-        print(f"AA:  {report['aa_sequence']}")
-        print(f"Length: {report['aa_length']} AAs, Subunits: {report['subunits']}")
+        info_line(f"\n{'='*60}")
+        info_line(f"GENE -> PROTEIN: {report['pipeline']}")
+        info_line(f"{'='*60}")
+        info_line(f"DNA: {report['dna_sequence'][:60]}... ({report['dna_length']} bp)")
+        info_line(f"AA:  {report['aa_sequence']}")
+        info_line(f"Length: {report['aa_length']} AAs, Subunits: {report['subunits']}")
         if report['quaternary']['auto_detected']:
-            print(f"Subunit detection: AUTO (conf={report['quaternary']['prediction']['confidence']:.2f})")
+            info_line(f"Subunit detection: AUTO (conf={report['quaternary']['prediction']['confidence']:.2f})")
             for ek, evd in report['quaternary']['prediction']['evidence'].items():
                 info_line(f"  {ek}: pred={evd['prediction']} conf={evd['confidence']:.2f} -- {evd['reason']}")
         else:
-            print(f"Subunit count: manual ({report['subunits']})")
-        print(f"Symmetry: {report['subunit_symmetry']}")
+            info_line(f"Subunit count: manual ({report['subunits']})")
+        info_line(f"Symmetry: {report['subunit_symmetry']}")
         print()
-        print(f"{'Stage':<25} {'B4':<6} {'Frob':<6} Description")
-        print("-"*60)
+        info_line(f"{'Stage':<25} {'B4':<6} {'Frob':<6} Description")
+        info_line("-"*60)
         for s in report["stages"]:
             fm = chr(10003) if s["frob"] else chr(10007)
-            print(f"{s['name']:<25} {s['b4']:<6} {fm:<6} {s['desc']}")
+            info_line(f"{s['name']:<25} {s['b4']:<6} {fm:<6} {s['desc']}")
         print()
         info_line("Pathway Distances:")
         for d in report["pathway"]:
@@ -1143,10 +1143,10 @@ def main():
         for prim, data in sorted(report["primitive_activations"].items()):
             info_line(f"  {prim}: {data['count']}x")
         print()
-        print(f"Closure: DNA<->Quaternary distance={report['closure']['dna_to_quaternary_distance']}")
-        print(f"Frobenius across all stages: {'OK' if report['closure']['frobenius_across_pathway'] else 'FAIL'}")
-        print(f"Consciousness invariant: {report['closure']['consciousness_invariant']}")
-        print(f"{'='*60}")
+        info_line(f"Closure: DNA<->Quaternary distance={report['closure']['dna_to_quaternary_distance']}")
+        error_line(f"Frobenius across all stages: {'OK' if report['closure']['frobenius_across_pathway'] else 'FAIL'}")
+        info_line(f"Consciousness invariant: {report['closure']['consciousness_invariant']}")
+        info_line(f"{'='*60}")
 
 if __name__ == "__main__":
     main()

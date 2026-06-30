@@ -660,12 +660,12 @@ def main():
         for name, smi in demos:
             arr = molecule_to_arrangement(smi)
             if arr:
-                print(f"{name:20s} → {format_arrangement(arr)}")
+                info_line(f"{name:20s} → {format_arrangement(arr)}")
         return
 
     arr = molecule_to_arrangement(args.smiles)
     if arr is None:
-        print(f"Error: invalid SMILES: {args.smiles}", file=sys.stderr)
+        error_line(f"Error: invalid SMILES: {args.smiles}", file=sys.stderr)
         sys.exit(1)
 
     if args.arrangement_only:
@@ -674,9 +674,9 @@ def main():
         result = analyze_molecule(args.smiles)
         print(json.dumps(result, indent=2))
     else:
-        print(f"Arrangement: {format_arrangement(arr)}")
+        info_line(f"Arrangement: {format_arrangement(arr)}")
         names = arrangement_to_tokens(arr)
-        print(f"Tokens: {', '.join(names)}")
+        success_line(f"Tokens: {', '.join(names)}")
 
 
 if __name__ == "__main__":

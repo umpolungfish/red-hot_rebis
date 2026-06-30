@@ -45,9 +45,9 @@ class {self.name}:
         self.source = pathlib.Path(__file__).read_text()
 
     def verify(self) -> bool:
-        print(f"=== {{self.__class__.__name__}} ===")
+        info_line(f"=== {{self.__class__.__name__}} ===")
         frob_ok = identity_phase(self.source)
-        print(f"Closure: {{frob_ok}}")
+        success_line(f"Closure: {{frob_ok}}")
         return frob_ok
 
 if __name__ == "__main__":
@@ -60,7 +60,7 @@ if __name__ == "__main__":
         target_dir.mkdir(parents=True, exist_ok=True)
         target_file = target_dir / f"{folder}_ob3ect.py"
         target_file.write_text(self.generate())
-        print(f"New ob3ect imscribed → {target_file}")
+        info_line(f"New ob3ect imscribed → {target_file}")
 
 
 class MetaAutoImscriberOb3ect:
@@ -82,7 +82,7 @@ class MetaAutoImscriberOb3ect:
             parse_ok = False
         info_line(f"  Generated stub parses : {parse_ok}")
         closure = frob_ok and parse_ok
-        print(f"Closure: {closure}")
+        info_line(f"Closure: {closure}")
         return closure
 
 

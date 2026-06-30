@@ -299,15 +299,15 @@ def frobenius_pathway_to_layer(target_layer: str) -> Dict:
 # ═══════════════════════════════════════════════════════════════════
 
 if __name__ == '__main__':
-    print("=" * 72)
+    info_line("=" * 72)
     info_line("IMASM → CLINK BRIDGE")
-    print("=" * 72)
+    info_line("=" * 72)
     print()
     print(build_bridge_table())
     print()
-    print("=" * 72)
+    info_line("=" * 72)
     info_line("FROBENIUS PATHWAY SYNTHESIS")
-    print("=" * 72)
+    info_line("=" * 72)
     for layer in CLINK_LAYER_NAMES:
         fp = frobenius_pathway_to_layer(layer)
         status = "✓ Frobenius-special" if fp['has_frobenius_parity'] else "— not Frobenius"

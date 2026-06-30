@@ -538,9 +538,9 @@ def run_all_therapies(skip_ch3mpile=True, skip_serpentrod=True,
     reports = []
     for key in THERAPIES:
         if verbose:
-            print(f"\n{'='*60}")
+            info_line(f"\n{'='*60}")
             info_line(f"  {THERAPIES[key].name}")
-            print(f"{'='*60}")
+            info_line(f"{'='*60}")
         try:
             report = run_pipeline(key, skip_ch3mpile, skip_serpentrod,
                                  skip_validation, verbose)
@@ -604,7 +604,7 @@ def main():
 
     if args.list:
         info_line("\nAvailable Therapies:")
-        print("=" * 60)
+        info_line("=" * 60)
         for key, t in THERAPIES.items():
             dt = t.disease_type
             ht = t.health_type
@@ -637,8 +637,8 @@ f"Δ={len(t.delta_primitives)}  {tier(dt)}→{tier(ht)}")
         return 0
 
     if args.therapy not in THERAPIES:
-        print(f"Unknown therapy: {args.therapy}")
-        print(f"Available: {list(THERAPIES.keys())}")
+        info_line(f"Unknown therapy: {args.therapy}")
+        info_line(f"Available: {list(THERAPIES.keys())}")
         return 1
 
     report = run_pipeline(args.therapy, skip_ch3mpile, skip_serpentrod,
@@ -669,7 +669,7 @@ f"Δ={len(t.delta_primitives)}  {tier(dt)}→{tier(ht)}")
             out["stages"].append(sd)
         print(json.dumps(out, indent=2))
     else:
-        print(f"\n{report.summary()}")
+        info_line(f"\n{report.summary()}")
 
     return 0 if report.overall_frobenius else 1
 

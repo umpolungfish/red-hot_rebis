@@ -296,9 +296,9 @@ class OuroboricAlloy:
         Every heal_interval stress cycles, the alloy undergoes autonomous
         healing driven by topological winding conservation.
         """
-        print("=" * 72)
+        info_line("=" * 72)
         info_line("  OUROBORIC ALLOY — Topological Self-Healing HEA")
-        print("=" * 72)
+        info_line("=" * 72)
         info_line(f"  Composition: {self.composition}")
         info_line(f"  Grains: {self.network.n_grains}")
         info_line(f"  Junctions: {self.network.n_junctions}")
@@ -306,7 +306,7 @@ class OuroboricAlloy:
         info_line(f"  Yield strength: {self.yield_strength_MPa} MPa")
         info_line(f"  Σ3 fraction: {self.sigma3_fraction*100:.0f}%")
         info_line(f"  Stress amplitude: {stress_amplitude_MPa} MPa")
-        print("-" * 72)
+        info_line("-" * 72)
         info_line(f"  {'Cycle':>5} {'Stress':>8} {'Crack':>10} {'Heal':>10} {'W':>5} {'Status'}")
         info_line(f"  {'-'*5} {'-'*8} {'-'*10} {'-'*10} {'-'*5} {'-'*12}")
 
@@ -337,9 +337,9 @@ class OuroboricAlloy:
 f"{healed_this_cycle:10.3f} {W:5d} {status:>12} {winding_ok}")
 
         # Final report
-        print(f"\n{'='*72}")
+        info_line(f"\n{'='*72}")
         info_line(f"  RESULTS")
-        print(f"{'='*72}")
+        info_line(f"{'='*72}")
         info_line(f"  Final crack length: {self.crack_length_um:.4f} μm")
         info_line(f"  Total healing cycles: {self.healing_cycles_completed}")
         info_line(f"  Winding conserved: {all(w == self.W0 for w in self.winding_history)}")
@@ -349,12 +349,12 @@ f"{healed_this_cycle:10.3f} {W:5d} {status:>12} {winding_ok}")
 
         # Fatigue life comparison
         if self.crack_length_um < 0.1:
-            print(f"\n  FATIGUE LIFE: > {cycles} cycles (crack arrested)")
+            info_line(f"\n  FATIGUE LIFE: > {cycles} cycles (crack arrested)")
             info_line(f"  Compared to conventional HEA: > 10x improvement")
         elif self.crack_length_um < 1.0:
-            print(f"\n  FATIGUE LIFE: ~{cycles} cycles (slow crack growth)")
+            info_line(f"\n  FATIGUE LIFE: ~{cycles} cycles (slow crack growth)")
         else:
-            print(f"\n  FATIGUE LIFE: limited (crack not arrested)")
+            info_line(f"\n  FATIGUE LIFE: limited (crack not arrested)")
 
         return {
             'final_crack_length_um': self.crack_length_um,
@@ -374,7 +374,7 @@ f"{healed_this_cycle:10.3f} {W:5d} {status:>12} {winding_ok}")
         }
         with open(filepath, 'w') as f:
             json.dump(out, f, indent=2)
-        print(f"\n  Results exported to {filepath}")
+        info_line(f"\n  Results exported to {filepath}")
 
 
 # ═══════════════════════════════════════════════════════════════════
@@ -386,9 +386,9 @@ def compare_with_conventional():
     Compare the ouroboric (topological) alloy against conventional HEA
     under identical stress conditions.
     """
-    print("\n" + "=" * 72)
+    info_line("\n" + "=" * 72)
     info_line("  COMPARATIVE ANALYSIS: Ouroboric vs Conventional HEA")
-    print("=" * 72)
+    info_line("=" * 72)
 
     # Ouroboric
     ouro = OuroboricAlloy(n_grains=64)
@@ -404,7 +404,7 @@ def compare_with_conventional():
     for cycle in range(1, 31):
         conv.apply_stress(800, cycles=1)
 
-    print(f"\n  Conventional HEA final crack: {conv.crack_length_um:.3f} μm")
+    info_line(f"\n  Conventional HEA final crack: {conv.crack_length_um:.3f} μm")
     info_line(f"  Ouroboric HEA final crack:   {ouro.crack_length_um:.3f} μm")
     if conv.crack_length_um > 0:
         improvement = conv.crack_length_um / max(ouro.crack_length_um, 1e-9)

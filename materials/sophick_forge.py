@@ -969,9 +969,9 @@ def main():
     print()
 
     # Display the structural context
-    print("─" * 72)
+    info_line("─" * 72)
     info_line("STRUCTURAL CONTEXT")
-    print("─" * 72)
+    info_line("─" * 72)
     info_line(f"  Sophick Mercury (O_∞):   ⟨{''.join(SOPHICK_MERCURY)}⟩")
     info_line(f"  Ouroboric O₂ materials:    ⟨{''.join(OUROBORIC_O2)}⟩")
     info_line(f"  Structural distance:        {STRUCTURAL_DISTANCE_O2_TO_OINF:.4f}")
@@ -987,10 +987,10 @@ def main():
     all_materials = designer.all_designs()
 
     for name, material in all_materials.items():
-        print(f"\n{'=' * 72}")
+        info_line(f"\n{'=' * 72}")
         info_line(f"  EAGLE CYCLE SIMULATION: {material.name}")
         info_line(f"  Composition: {material.composition[:60]}...")
-        print(f"{'=' * 72}")
+        info_line(f"{'=' * 72}")
 
         # Run protocol
         protocol = EagleCycleProtocol()
@@ -1012,7 +1012,7 @@ def main():
     outpath = os.path.join(os.path.dirname(os.path.abspath(__file__)), "sophick_forge_results.json")
     with open(outpath, 'w') as f:
         json.dump(results, f, indent=2, default=str)
-    print(f"\n  All results exported to {outpath}")
+    info_line(f"\n  All results exported to {outpath}")
 
     # Print discoveries
     print(SOPHICK_FORGE_DISCOVERIES)

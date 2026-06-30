@@ -286,16 +286,16 @@ def best_compound_for_universe(universe_name):
 
 
 def print_access_report():
-    print("=" * 110)
+    info_line("=" * 110)
     info_line("NOVEL PSYCHEDELIC COMPOUNDS — UNIVERSE ACCESS REPORT")
-    print("=" * 110)
+    info_line("=" * 110)
     print()
     for cn in ["Verticullum", "Chimerium", "Apertix", "Retiarius", "Praxeum"]:
         cv = COMPOUNDS[cn]
         access = compound_access(cn)
         total = sum(len(v) for v in access.values())
         oi = len(access["idempotent_terminal"])
-        print(f"── {cn} ({cv['tier']}) — {cv['description']}")
+        info_line(f"── {cn} ({cv['tier']}) — {cv['description']}")
         tup = (f"⟨{cv['Ð']}{cv['Þ']}{cv['Ř']}{cv['Φ']}{cv['ƒ']}{cv['Ç']}"
                f"{cv['Γ']}{cv['ɢ']}{cv['φ̂']}{cv['Ħ']}{cv['Σ']}{cv['Ω']}⟩")
         info_line(f"   {tup}")
@@ -321,7 +321,7 @@ def _intrinsics_summary():
     info_line("\n=== Compound Deltas from DMT ===")
     for name in ["verticullum", "chimerium", "apertix", "retiarius", "praxeum"]:
         deltas = compound_delta("dmt", name)
-        print(f"DMT→{name}: {', '.join(deltas)}")
+        info_line(f"DMT→{name}: {', '.join(deltas)}")
 
 
 def main():
@@ -344,25 +344,25 @@ def main():
     elif args.cmd == "compound":
         try:
             univs = find_universes_for_compound(args.name, args.layer)
-            print(f"{args.name} — {args.layer}: {len(univs)} universes")
+            info_line(f"{args.name} — {args.layer}: {len(univs)} universes")
             for u in sorted(univs):
                 info_line(f"  {u}")
         except KeyError as e:
-            print(f"Error: {e}")
+            error_line(f"Error: {e}")
     elif args.cmd == "universe":
         try:
             comps = compounds_in_universe(args.name, args.layer)
-            print(f"{args.name} — {args.layer}: {len(comps)} compounds")
+            info_line(f"{args.name} — {args.layer}: {len(comps)} compounds")
             for c in comps:
                 info_line(f"  {c}")
         except KeyError as e:
-            print(f"Error: {e}")
+            error_line(f"Error: {e}")
     elif args.cmd == "best":
         try:
             best, layer = best_compound_for_universe(args.name)
-            print(f"{args.name}: best compound = {best} ({layer})")
+            info_line(f"{args.name}: best compound = {best} ({layer})")
         except KeyError as e:
-            print(f"Error: {e}")
+            error_line(f"Error: {e}")
     else:
         _intrinsics_summary()
 

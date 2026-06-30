@@ -324,10 +324,10 @@ def assemble_c_plus(site_designs_c, bpa_bridge_site, bpa_ring_site=None):
 # ═══════════════════════════════════════════════════════════════
 
 if __name__ == '__main__':
-    print("=" * 72)
+    info_line("=" * 72)
     info_line("  PLASTIC_EATER_BPA — Bisphenol-A Degradation Module")
     info_line("  Frobenius-Exact via Dominant-Member Rule")
-    print("=" * 72)
+    info_line("=" * 72)
     print()
 
     # Design all BPA sites
@@ -335,7 +335,7 @@ if __name__ == '__main__':
     for name, bond_name, fg1, fg2, mech in BPA_REACTIONS:
         site = design_bpa_site(name, bond_name, fg1, fg2, mech)
         bpa_sites.append(site)
-        print(f"[{name}] 6/6 Frobenius-exact")
+        info_line(f"[{name}] 6/6 Frobenius-exact")
         info_line(f"  AA:  {site['aa_sequence']}")
         info_line(f"  RNA: {site['rna_sequence']}")
         info_line(f"  Activated: {', '.join(site['activated_primitives'])}")
@@ -344,7 +344,7 @@ if __name__ == '__main__':
 
     # Assemble standalone BPA degrader (Catalyst D)
     bpa_degrader = assemble_bpa_degrader(bpa_sites)
-    print(f"[Catalyst D — BPA_Degrader]")
+    info_line(f"[Catalyst D — BPA_Degrader]")
     info_line(f"  Domains: {bpa_degrader['num_domains']}")
     info_line(f"  Total AA: {bpa_degrader['total_aa']}")
     info_line(f"  MW: ~{bpa_degrader['molecular_weight_kda']} kDa")
@@ -355,7 +355,7 @@ if __name__ == '__main__':
     bpa_bridge_site = bpa_sites[1]  # BPA_bridge_radical_cleavage
     bpa_ring_site = bpa_sites[2]    # BPA_ring_opening
     c_plus = assemble_c_plus(CATALYST_C_SITES, bpa_bridge_site, bpa_ring_site)
-    print(f"[Catalyst C+ — Urethanase_BPA]")
+    info_line(f"[Catalyst C+ — Urethanase_BPA]")
     info_line(f"  Domains: {c_plus['num_domains']} (PUR + PC + BPA_bridge + BPA_ring)")
     info_line(f"  Total AA: {c_plus['total_aa']}")
     info_line(f"  MW: ~{c_plus['molecular_weight_kda']} kDa")

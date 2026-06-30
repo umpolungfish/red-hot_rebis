@@ -642,17 +642,17 @@ def test_integration():
         "toluene": "Cc1ccccc1",
     }
     
-    print("=" * 60)
+    info_line("=" * 60)
     info_line("FG EXHAUSTIVE DATABASE — TEST RESULTS")
-    print("=" * 60)
-    print(f"Total SMARTS patterns: {len(SMARTS_PATTERNS)}")
-    print(f"Compiled patterns: {len(COMPILED_SMARTS)}")
-    print(f"FG tuples: {len(FG_TUPLES)}")
+    info_line("=" * 60)
+    info_line(f"Total SMARTS patterns: {len(SMARTS_PATTERNS)}")
+    info_line(f"Compiled patterns: {len(COMPILED_SMARTS)}")
+    info_line(f"FG tuples: {len(FG_TUPLES)}")
     print()
     
     for name, smiles in tests.items():
         results = detect_functional_groups(smiles)
-        print(f"\n{name} ({smiles}):")
+        info_line(f"\n{name} ({smiles}):")
         for fg_name, count in results[:10]:
             if fg_name not in ("no_rdkit", "invalid_smiles"):
                 info_line(f"  - {fg_name}: {count}")

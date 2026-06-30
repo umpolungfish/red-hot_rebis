@@ -36,7 +36,7 @@ tests = [
 ]
 
 for start, target, label in tests:
-    print(f'\n--- {label} ---')
+    info_line(f'\n--- {label} ---')
     r = ch.path_to_target(start, target, depth=5)
     if r.get('found'):
         info_line(f'  ✓ FOUND ({r["path_length"]} steps)')

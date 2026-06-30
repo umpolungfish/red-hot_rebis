@@ -581,9 +581,9 @@ def demo() -> dict:
     from rhr_p4rky.kernel import verify_frobenius_invariant, run, initial_state
 
     
-    print("=" * 60)
+    info_line("=" * 60)
     info_line("GENETIC CODE AS FROBENIUS ALGEBRA ON PARACONSISTENT KERNEL")
-    print("=" * 60)
+    info_line("=" * 60)
     
     # Test kernel's own Frobenius invariant
     info_line("\n[1] Kernel Frobenius invariant (ffuse∘fsplit = id):")
@@ -628,11 +628,11 @@ f"(remainder {crystal['remainder']})")
     verify = run_genetic_verification()
     info_line(f"    ALL TESTS PASS: {verify['all_tests_pass']}")
     
-    print("\n" + "=" * 60)
+    info_line("\n" + "=" * 60)
     info_line("Genetic code is verified as a Frobenius algebra on the")
-    print("paraconsistent kernel. The kernel's ffuse∘fsplit = id")
-    print("IS the genetic code's μ∘δ=id.")
-    print("=" * 60)
+    info_line("paraconsistent kernel. The kernel's ffuse∘fsplit = id")
+    info_line("IS the genetic code's μ∘δ=id.")
+    info_line("=" * 60)
     
     return {"verified": verify["all_tests_pass"], "report": verify}
 
