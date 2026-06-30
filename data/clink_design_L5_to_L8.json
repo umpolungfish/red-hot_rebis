@@ -1,7 +1,7 @@
 {
   "clink_pipeline": {
     "version": "1.0.0",
-    "timestamp": "2026-06-21T16:08:02.509085",
+    "timestamp": "2026-06-29T16:42:28.693631",
     "entry_mode": "from_layer",
     "start_layer": 5,
     "target_layer": 8,
@@ -103,6 +103,8 @@
       "from": 5,
       "to": 6,
       "distance": 3.1623,
+      "energy_eV": 177.83,
+      "energy_method": "tier_energy_model",
       "promotions": 2,
       "success": true,
       "tool": "Layer6Designer"
@@ -111,6 +113,8 @@
       "from": 6,
       "to": 7,
       "distance": 2.0,
+      "energy_eV": 282.84,
+      "energy_method": "tier_energy_model",
       "promotions": 4,
       "success": true,
       "tool": "Layer7Designer"
@@ -119,6 +123,8 @@
       "from": 7,
       "to": 8,
       "distance": 2.5495,
+      "energy_eV": 798.36,
+      "energy_method": "tier_energy_model",
       "promotions": 4,
       "success": true,
       "tool": "Layer8Designer"
