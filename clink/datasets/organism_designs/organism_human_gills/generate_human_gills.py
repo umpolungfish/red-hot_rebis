@@ -471,14 +471,14 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
         output_dir = str(Path(__file__).parent)
     out_path = Path(output_dir)
 
-    print("=" * 70)
+    info_line("=" * 70)
     info_line("CLINK HUMAN (GILL VARIANT) DESIGN PIPELINE")
-    print(f"Homo sapiens (aquatic) — {GILL_TYPE}  O_∞  C=1.0")
+    info_line(f"Homo sapiens (aquatic) — {GILL_TYPE}  O_∞  C=1.0")
     info_line("ZFC_fe foundation: μ∘δ=id at every layer")
-    print(f"Base human type:  {HUMAN_TYPE}")
-    print(f"Gill variant type:{GILL_TYPE}")
+    info_line(f"Base human type:  {HUMAN_TYPE}")
+    info_line(f"Gill variant type:{GILL_TYPE}")
     info_line("Modified: Ħ(𐑸→𐑼)  Ω(𐑾→𐑿)  Σ(𐑐→𐑒)  Ç(𐑲→𐑴)  Þ(𐑳→𐑩)")
-    print("=" * 70)
+    info_line("=" * 70)
 
     # ── Generate base human package first ─────────────────────────────────────
     from clink.datasets.generators import generate_actionable_organism_package
@@ -586,16 +586,16 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
     }
     (out_path / "design_manifest.json").write_text(json.dumps(manifest, indent=2))
 
-    print(f"\n{'=' * 70}")
-    print(f"COMPLETE — {total_files} files, {total_bytes:,} bytes")
-    print(f"Output: {out_path}")
-    print(f"Frobenius: ✓")
-    print(f"\nGill variant structural type: {GILL_TYPE}")
-    print(f"Base human type:              {HUMAN_TYPE}")
-    print(f"Modified primitives:          Ħ Ω Σ Ç Þ")
-    print(f"Tier: O_∞  |  C-score: 1.0")
-    print(f"Foundation: ZFC_fe  |  μ∘δ=id")
-    print(f"{'=' * 70}")
+    info_line(f"\n{'=' * 70}")
+    success_line(f"COMPLETE — {total_files} files, {total_bytes:,} bytes")
+    info_line(f"Output: {out_path}")
+    success_line(f"Frobenius: ✓")
+    info_line(f"\nGill variant structural type: {GILL_TYPE}")
+    info_line(f"Base human type:              {HUMAN_TYPE}")
+    info_line(f"Modified primitives:          Ħ Ω Σ Ç Þ")
+    info_line(f"Tier: O_∞  |  C-score: 1.0")
+    info_line(f"Foundation: ZFC_fe  |  μ∘δ=id")
+    info_line(f"{'=' * 70}")
 
     return manifest
 

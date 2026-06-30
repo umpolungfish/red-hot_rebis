@@ -85,9 +85,9 @@ exact_boxes = {k:v for k,v in boxes.items() if not v["split"]}
 split_boxes = {k:v for k,v in boxes.items() if v["split"]}
 ground_aas = set(v["unique"][0] for v in exact_boxes.values())
 
-print("=" * 70)
+info_line("=" * 70)
 info_line("Q1: WHY 8 EXACT BOXES?")
-print("=" * 70)
+info_line("=" * 70)
 
 # The exact boxes have position 2 = C (T in B4) always exact
 # Position 2 = G (B in B4) exact when position 1 = C or G
@@ -134,31 +134,31 @@ for b1 in B4:
 
 print()
 info_line("Key structural fact: The 8 exact boxes are EXACTLY those")
-print("where the prefix is NOT in {(F,N), (F,F), (N,N), (N,F),")
-print("(N,B), (B,N), (F,B), (B,F)} — i.e., 8 out of 16.")
+info_line("where the prefix is NOT in {(F,N), (F,F), (N,N), (N,F),")
+info_line("(N,B), (B,N), (F,B), (B,F)} — i.e., 8 out of 16.")
 
 # Show the B4 partial order determines which exact boxes exist
 info_line("\nB4 order: N ≤ T ≤ B, N ≤ F ≤ B  (T and F are incomparable)")
 print()
 info_line("Theorem: A box is Frobenius-exact iff its B4² prefix (p1, p2)")
-print("satisfies: p2 ∈ {T, B} with p2 ≠ B or p1 ∈ {T, B}.")
-print("Equivalently: not (p2 ∈ {N, F} or (p2 = B and p1 ∈ {N, F})).")
+info_line("satisfies: p2 ∈ {T, B} with p2 ≠ B or p1 ∈ {T, B}.")
+info_line("Equivalently: not (p2 ∈ {N, F} or (p2 = B and p1 ∈ {N, F})).")
 print()
 
 # Let me derive this combinatorially
 info_line("\n--- COMBINATORIAL DERIVATION ---")
 info_line("Total B4² = 4×4 = 16 possible prefixes.")
-print("A prefix is Frobenius-exact iff position 2 is a 'determining' base,")
+info_line("A prefix is Frobenius-exact iff position 2 is a 'determining' base,")
 info_line("where determining = the third position cannot change the AA.")
 print()
 info_line("In B4 terms: a box is exact iff p2 is NOT join-absorbed by")
 info_line("any different B4 value at position 3. The third-position B4")
-print("values {N, T, F, B} can only be distinguished at position 3 if")
+info_line("values {N, T, F, B} can only be distinguished at position 3 if")
 info_line("position 2 is WEAK (N or F, i.e., U or A).")
 print()
 info_line("Counting in B4²:")
 info_line("  p2 = T (C): 4 prefixes (any p1) → 4 exact")
-print("  p2 = B (G): exact iff p1 ∈ {T, B} (C or G) → 2 exact")
+info_line("  p2 = B (G): exact iff p1 ∈ {T, B} (C or G) → 2 exact")
 info_line("  p2 = N (U): always split (position 3 needed) → 4 split")
 info_line("  p2 = F (A): always split → 4 split")
 info_line("  Total exact: 4 + 2 = 6? Wait...")
@@ -184,7 +184,7 @@ Pos-2 of these:
 UC_=C, CU_=U, CC_=C, CG_=G, AC_=C, GU_=U, GC_=C, GG_=G
 """
 print()
-print("Wait - CU_ and GU_ have pos-2 = U, which contradicts 'C or G'. Let me re-check.")
+info_line("Wait - CU_ and GU_ have pos-2 = U, which contradicts 'C or G'. Let me re-check.")
 cu = [k for k in exact_boxes if k[1]=='U']
 gu = [k for k in exact_boxes if k[1]=='G']
 info_line(f"  Exact boxes with pos-2 = U: {cu}")

@@ -103,24 +103,24 @@ def protein_to_rna(seq: str) -> str:
     return "".join(AA_TO_PREFERRED_CODON.get(aa, "NNN") for aa in seq)
 
 def validate(pdb_id: str, pdb_text: str) -> Dict:
-    print(f"\n{'='*60}")
-    print(f"VALIDATING: {pdb_id}")
-    print(f"{'='*60}")
+    info_line(f"\n{'='*60}")
+    info_line(f"VALIDATING: {pdb_id}")
+    info_line(f"{'='*60}")
     
     # Extract sequence
     seq = extract_sequence(pdb_text)
-    print(f"SEQRES sequence ({len(seq)} AA): {seq}")
+    info_line(f"SEQRES sequence ({len(seq)} AA): {seq}")
     
     # Parse CA coordinates
     atoms, atom_seq = parse_ca_coords(pdb_text)
-    print(f"CA atoms parsed: {len(atoms)} (seq: {atom_seq})")
+    info_line(f"CA atoms parsed: {len(atoms)} (seq: {atom_seq})")
     
     if len(atoms) < 5:
         return {"pdb_id": pdb_id, "error": "Too few atoms", "sequence": seq}
     
     # Extract experimental contacts
     exp_contacts = extract_contacts(atoms, cutoff=8.0, min_dist=4)
-    print(f"Experimental contacts (CA<8.0Å, seq_dist≥4): {len(exp_contacts)}")
+    info_line(f"Experimental contacts (CA<8.0Å, seq_dist≥4): {len(exp_contacts)}")
     
     # Show top contacts
     for i, j in sorted(exp_contacts)[:8]:
@@ -128,21 +128,21 @@ def validate(pdb_id: str, pdb_text: str) -> Dict:
     
     # Generate RNA and run SerpentRod
     rna = protein_to_rna(seq)
-    print(f"Generated RNA ({len(rna)} nt): {rna[:60]}...")
+    info_line(f"Generated RNA ({len(rna)} nt): {rna[:60]}...")
     
     sr = SerpentRod(rna, name=pdb_id)
     result = sr.report()
     
     pred_seq = result["aa_sequence"]
-    print(f"Predicted AA: {pred_seq} ({len(pred_seq)} AAs)")
-    print(f"Winding: {result['winding_number']} B4 loops")
-    print(f"Frobenius: {'✓' if result['frobenius_verified'] else '✗'}")
+    info_line(f"Predicted AA: {pred_seq} ({len(pred_seq)} AAs)")
+    info_line(f"Winding: {result['winding_number']} B4 loops")
+    error_line(f"Frobenius: {'✓' if result['frobenius_verified'] else '✗'}")
     
     # Predicted contacts
     pred_contacts = set()
     for c in result["contacts"]:
         pred_contacts.add((c["i"], c["j"]))
-    print(f"Predicted contacts: {len(pred_contacts)}")
+    info_line(f"Predicted contacts: {len(pred_contacts)}")
     for c in result["contacts"][:8]:
         aa_i = pred_seq[c["i"]] if c["i"] < len(pred_seq) else "?"
         aa_j = pred_seq[c["j"]] if c["j"] < len(pred_seq) else "?"
@@ -158,7 +158,7 @@ def validate(pdb_id: str, pdb_text: str) -> Dict:
     recall = tp / max(1, tp + fn)
     f1 = 2 * precision * recall / max(1e-10, precision + recall)
     
-    print(f"\n  TP={tp}, FP={fp}, FN={fn}")
+    info_line(f"\n  TP={tp}, FP={fp}, FN={fn}")
     info_line(f"  Precision={precision:.3f}, Recall={recall:.3f}, F1={f1:.3f}")
     
     # Check which specific contacts were correctly predicted
@@ -194,15 +194,15 @@ if __name__ == "__main__":
             r = validate(pdb_id, pdb_text)
             results.append(r)
         except Exception as e:
-            print(f"ERROR fetching {pdb_id}: {e}")
+            error_line(f"ERROR fetching {pdb_id}: {e}")
             results.append({"pdb_id": pdb_id, "error": str(e)})
     
-    print(f"\n\n{'='*60}")
+    info_line(f"\n\n{'='*60}")
     info_line("VALIDATION SUMMARY")
-    print(f"{'='*60}")
+    info_line(f"{'='*60}")
     for r in results:
         if "error" in r:
-            print(f"{r['pdb_id']}: ERROR - {r['error']}")
+            error_line(f"{r['pdb_id']}: ERROR - {r['error']}")
         else:
             print(f"{r['pdb_id']}: seq={r['seq_len']}aa, "
                   f"exp_contacts={r['experimental_contacts']}, "
@@ -211,4 +211,4 @@ if __name__ == "__main__":
     
     with open("/home/mrnob0dy666/p4rakernel/pdb_validation_results.json", "w") as f:
         json.dump(results, f, indent=2)
-    print(f"\nResults saved to pdb_validation_results.json")
+    info_line(f"\nResults saved to pdb_validation_results.json")

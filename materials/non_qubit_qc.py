@@ -1202,7 +1202,7 @@ def run_nonqubit(args):
         designs = export_forge_designs()
         with open(export_json, 'w') as f:
             json.dump(designs, f, indent=2)
-        print(f"Exported {len(designs)} non-qubit QC designs to {export_json}")
+        info_line(f"Exported {len(designs)} non-qubit QC designs to {export_json}")
         return
 
     if show_deltas:
@@ -1226,8 +1226,8 @@ def run_nonqubit(args):
         if recipe:
             _print_recipe(recipe)
         else:
-            print(f"Unknown recipe: {show_recipe}")
-            print(f"Available: {list(ALL_RECIPES.keys())}")
+            info_line(f"Unknown recipe: {show_recipe}")
+            info_line(f"Available: {list(ALL_RECIPES.keys())}")
         return
 
     if name:
@@ -1235,8 +1235,8 @@ def run_nonqubit(args):
         if paradigm:
             _print_paradigm_detail(paradigm)
         else:
-            print(f"Unknown paradigm: {name}")
-            print(f"Available: {list(ALL_PARADIGMS.keys())}")
+            info_line(f"Unknown paradigm: {name}")
+            info_line(f"Available: {list(ALL_PARADIGMS.keys())}")
         return
 
     # Default: overview
@@ -1245,9 +1245,9 @@ def run_nonqubit(args):
 
 def _print_overview():
     """Print overview of all 8 non-qubit QC paradigms."""
-    print("=" * 72)
+    info_line("=" * 72)
     info_line("NON-QUBIT QUANTUM COMPUTATION MATERIALS — STRUCTURAL OVERVIEW")
-    print("=" * 72)
+    info_line("=" * 72)
     print()
     info_line("Standard Qubit QC Tuple:")
     info_line("  <tri . net . lr . psi . hbar . mod . gimel . and . c_complex . H2 . N:N . 0>")
@@ -1270,16 +1270,16 @@ def _print_overview():
     info_line("  rebis.py materials nonqubit --table")
     print()
     info_line("Formal grounding: p4rakernel/operculum_peeling.md §§1-15")
-    print("=" * 72)
+    info_line("=" * 72)
 
 
 def _print_paradigm_detail(p: NonQubitQCParadigm):
     """Print detailed information for one paradigm."""
-    print("=" * 72)
-    print(f"NON-QUBIT QC PARADIGM: {p.name}")
-    print("=" * 72)
+    info_line("=" * 72)
+    info_line(f"NON-QUBIT QC PARADIGM: {p.name}")
+    info_line("=" * 72)
     print()
-    print(f"Description: {p.description}")
+    info_line(f"Description: {p.description}")
     print()
     info_line("12-Primitive Shavian Tuple:")
     t = p.tuple
@@ -1287,30 +1287,30 @@ def _print_paradigm_detail(p: NonQubitQCParadigm):
 f"{t['F']} . {t['K']} . {t['G']} . {t['Γ']} . "
           f"{t['φ̂']} . {t['Ħ']} . {t['Σ']} . {t['Ω']}>")
     print()
-    print(f"Canonical Tier: {p.canon_tier}  |  C-score: {p.canon_c_score}  |  TRL: {p.trl}")
-    print(f"Material Family: {p.material_family}")
-    print(f"Frobenius Pathway: {p.frobenius_pathway}")
+    info_line(f"Canonical Tier: {p.canon_tier}  |  C-score: {p.canon_c_score}  |  TRL: {p.trl}")
+    info_line(f"Material Family: {p.material_family}")
+    info_line(f"Frobenius Pathway: {p.frobenius_pathway}")
     print()
     info_line("Primitive Deltas from Qubit QC:")
     for prim, (from_val, to_val) in sorted(p.deltas.items()):
         info_line(f"  {prim}: {from_val} -> {to_val}")
     print()
-    print(f"Physical Mechanism: {p.physical_mechanism}")
+    info_line(f"Physical Mechanism: {p.physical_mechanism}")
     print()
-    print(f"O_∞ Universes ({len(p.o_inf_universes)}):")
+    info_line(f"O_∞ Universes ({len(p.o_inf_universes)}):")
     for u in p.o_inf_universes:
         info_line(f"  - {u}")
     print()
-    print(f"Key Blockers ({len(p.key_blockers)}):")
+    info_line(f"Key Blockers ({len(p.key_blockers)}):")
     for b in p.key_blockers:
         info_line(f"  - {b}")
-    print("=" * 72)
+    info_line("=" * 72)
 
 def _print_delta_analysis():
     """Print primitive delta analysis across all paradigms."""
-    print("=" * 72)
+    info_line("=" * 72)
     info_line("PRIMITIVE DELTA ANALYSIS — NON-QUBIT QC vs QUBIT QC")
-    print("=" * 72)
+    info_line("=" * 72)
     print()
     delta_counts = compute_all_deltas()
     prims = ['D', 'T', 'R', 'P', 'F', 'K', 'G', 'Γ', 'φ̂', 'Ħ', 'Σ', 'Ω']
@@ -1323,17 +1323,17 @@ def _print_delta_analysis():
     info_line("Near-universal deltas (differ in >=6): D (7/8), K (7/8)")
     print()
     info_line("Interpretation:")
-    print("  A 'qubit' is structurally defined by Gamma=and (simultaneous gates).")
-    print("  Removing that is the minimal structural definition of 'non-qubit'.")
+    info_line("  A 'qubit' is structurally defined by Gamma=and (simultaneous gates).")
+    info_line("  Removing that is the minimal structural definition of 'non-qubit'.")
     info_line("  Changing D (dimensionality) is the second most common difference.")
-    print("=" * 72)
+    info_line("=" * 72)
 
 
 def _print_operculum_analysis():
     """Print operculum universe access analysis."""
-    print("=" * 72)
+    info_line("=" * 72)
     info_line("OPERCULUM ANALYSIS — UNIVERSE ACCESS FOR NON-QUBIT QC")
-    print("=" * 72)
+    info_line("=" * 72)
     print()
     info_line("Grounded in p4rakernel/operculum_peeling.md (109 universes)")
     print()
@@ -1349,19 +1349,19 @@ f"{len(a.selecting_universes)}")
         print()
     info_line("Key Insight:")
     info_line("  Non-qubit QC paradigms are O_∞ in universes where qubit QC is not.")
-    print("  The 'operculum' — the Ruleset boundary — separates computational paradigms.")
+    info_line("  The 'operculum' — the Ruleset boundary — separates computational paradigms.")
     info_line("  Each paradigm inhabits its own ecological niche in the Crystal of Types.")
     print()
     info_line("  Only Topological QC (anyons) is O_∞ in the CANONICAL universe.")
     info_line("  All others require universe selection (gate reordering) to reach O_∞.")
-    print("=" * 72)
+    info_line("=" * 72)
 
 
 def _print_frobenius_analysis():
     """Print Frobenius closure analysis."""
-    print("=" * 72)
+    info_line("=" * 72)
     info_line("FROBENIUS CLOSURE ANALYSIS — NON-QUBIT QC")
-    print("=" * 72)
+    info_line("=" * 72)
     print()
     info_line("From p4rakernel/frobenius_exactor.py: mu(delta(x)) = x is")
     info_line("a discrete, categorical condition. Four closure pathways exist.")
@@ -1380,23 +1380,23 @@ def _print_frobenius_analysis():
     info_line("  Only Topological QC (anyons) achieves EXACT Frobenius closure.")
     info_line("  Three others have identified pathways but residual error > 0.")
     info_line("  Two paradigms (Boson Sampling, QRC) lack Frobenius structure.")
-    print("=" * 72)
+    info_line("=" * 72)
 
 
 def _print_recipe(recipe: MaterialRecipe):
     """Print a full material recipe."""
-    print("=" * 72)
-    print(f"MATERIAL RECIPE: {recipe.name}")
-    print(f"Paradigm: {recipe.paradigm}")
-    print("=" * 72)
+    info_line("=" * 72)
+    info_line(f"MATERIAL RECIPE: {recipe.name}")
+    info_line(f"Paradigm: {recipe.paradigm}")
+    info_line("=" * 72)
     print()
-    print(f"Description: {recipe.description}")
+    info_line(f"Description: {recipe.description}")
     print()
     info_line("Composition:")
     for elem, frac in recipe.composition.items():
         info_line(f"  {elem}: {frac}")
     print()
-    print(f"Structure: {recipe.structure}")
+    info_line(f"Structure: {recipe.structure}")
     print()
     info_line("Processing Steps:")
     for step in recipe.processing:
@@ -1410,12 +1410,12 @@ def _print_recipe(recipe: MaterialRecipe):
     for prim, realization in recipe.primitive_realization.items():
         info_line(f"  {prim}: {realization}")
     print()
-    print(f"TRL: {recipe.trl}")
+    info_line(f"TRL: {recipe.trl}")
     print()
     info_line("Critical Challenges:")
     for challenge in recipe.critical_challenges:
         info_line(f"  - {challenge}")
-    print("=" * 72)
+    info_line("=" * 72)
 
 # ═══════════════════════════════════════════════════════════════════
 # §13. MAIN — DIRECT EXECUTION
@@ -1437,8 +1437,8 @@ if __name__ == '__main__':
         if paradigm:
             _print_paradigm_detail(paradigm)
         else:
-            print(f"Unknown paradigm: {name}")
-            print(f"Available: {list(ALL_PARADIGMS.keys())}")
+            info_line(f"Unknown paradigm: {name}")
+            info_line(f"Available: {list(ALL_PARADIGMS.keys())}")
     elif cmd == '--deltas':
         _print_delta_analysis()
     elif cmd == '--operculum':
@@ -1451,15 +1451,15 @@ if __name__ == '__main__':
         if recipe:
             _print_recipe(recipe)
         else:
-            print(f"Unknown recipe: {recipe_name}")
-            print(f"Available: {list(ALL_RECIPES.keys())}")
+            info_line(f"Unknown recipe: {recipe_name}")
+            info_line(f"Available: {list(ALL_RECIPES.keys())}")
     elif cmd == '--table':
         print(paradigm_summary_table())
     elif cmd == '--export' and len(sys.argv) > 2:
         designs = export_forge_designs()
         with open(sys.argv[2], 'w') as f:
             json.dump(designs, f, indent=2)
-        print(f"Exported {len(designs)} non-qubit QC designs to {sys.argv[2]}")
+        info_line(f"Exported {len(designs)} non-qubit QC designs to {sys.argv[2]}")
     elif cmd == '--all':
         for paradigm in ALL_PARADIGMS.values():
             _print_paradigm_detail(paradigm)

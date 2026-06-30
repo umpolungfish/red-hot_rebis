@@ -113,16 +113,16 @@ class QuantumBiologicSim:
         
     def run_therapy(self, total_weeks=24, edits_per_session=3):
         """Simulate monthly editing sessions over 24 weeks."""
-        print("=" * 60)
+        info_line("=" * 60)
         info_line("QUANTUM BIOLOGIC — Epigenetic Reprogramming Simulation")
-        print("=" * 60)
+        info_line("=" * 60)
         
         session_interval = 4  # weeks between sessions
         n_sessions = total_weeks // session_interval
         
         for session in range(n_sessions):
             week = session * session_interval
-            print(f"\n--- Session {session+1} (Week {week}) ---")
+            info_line(f"\n--- Session {session+1} (Week {week}) ---")
             
             # FIX: Call nv_readout() BEFORE each editing session to refresh
             # quantum coherence from the NV-center · chromatin FRET coupling.
@@ -207,8 +207,8 @@ f"dist_to_chromatin={self.epigenome.nv_chromatin_distance_nm:.1f} nm)")
         log_path = path.replace('.json', '_edit_log.json')
         with open(log_path, 'w') as f:
             json.dump(self.edit_log, f, indent=2)
-        print(f"\nResults saved to {path}")
-        print(f"Edit log saved to {log_path}")
+        info_line(f"\nResults saved to {path}")
+        info_line(f"Edit log saved to {log_path}")
         return summary
 
 
@@ -217,15 +217,15 @@ if __name__ == "__main__":
     summary = sim.run_therapy(total_weeks=24, edits_per_session=3)
     sim.save_results()
     
-    print("\n" + "=" * 60)
+    info_line("\n" + "=" * 60)
     info_line("THERAPY COMPLETE")
-    print("=" * 60)
-    print(f"Frobenius closure rate: {summary['frobenius_closure_rate']:.1f}%")
-    print(f"Therapy efficacy: {summary['therapy_efficacy_pct']:.1f}%")
-    print(f"Mean absolute error from target: {summary['mean_absolute_error']:.3f}")
-    print(f"Coherence maintained: {summary['coherence_maintained']}")
-    print(f"Coherence history: {[f'{c:.3f}' for c in summary.get('coherence_history', [])]}")
-    print(f"Supervenience coupling active: {summary['supervenience_coupling_active']}")
+    info_line("=" * 60)
+    info_line(f"Frobenius closure rate: {summary['frobenius_closure_rate']:.1f}%")
+    info_line(f"Therapy efficacy: {summary['therapy_efficacy_pct']:.1f}%")
+    error_line(f"Mean absolute error from target: {summary['mean_absolute_error']:.3f}")
+    info_line(f"Coherence maintained: {summary['coherence_maintained']}")
+    info_line(f"Coherence history: {[f'{c:.3f}' for c in summary.get('coherence_history', [])]}")
+    info_line(f"Supervenience coupling active: {summary['supervenience_coupling_active']}")
     
     if summary['frobenius_closure_rate'] > 95:
         info_line("\n✓ FROBENIUS CONDITION VERIFIED: μ∘δ=id holds for epigenetic edits")

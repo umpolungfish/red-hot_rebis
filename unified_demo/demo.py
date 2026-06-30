@@ -610,7 +610,7 @@ def phase7_clinical_simulation(disease_key: str = "mrsa") -> PhaseResult:
         result.success = True
         
         # Summary
-        print(f"\n  Simulation Complete:")
+        success_line(f"\n  Simulation Complete:")
         info_line(f"    Drug concentration: {sim.drug_conc}")
         info_line(f"    Time simulated: {sim.time}")
         info_line(f"    Healthy cytotoxicity: {healthy_state['cytotoxicity']:.4f}")
@@ -659,9 +659,9 @@ def run_pipeline(disease_key: str = DEFAULT_DISEASE,
     for phase_num in phases:
         if verbose:
             banner = PHASE_BANNERS.get(phase_num, f"PHASE {phase_num}")
-            print(f"{'='*68}")
+            info_line(f"{'='*68}")
             info_line(f"  {banner}")
-            print(f"{'='*68}")
+            info_line(f"{'='*68}")
         
         try:
             phase_result = phase_runners[phase_num]()
@@ -681,7 +681,7 @@ def run_pipeline(disease_key: str = DEFAULT_DISEASE,
         if HAS_STRUCTURE_GEN:
             if phase_num == 2 and phase_result.success:
                 if verbose:
-                    print(f"\n  Generating CDXML structures...")
+                    info_line(f"\n  Generating CDXML structures...")
                 struct_result = generate_all_structures(
                     disease_key=disease_key,
                     protein_name="HUMAN_INSULIN",
@@ -696,7 +696,7 @@ def run_pipeline(disease_key: str = DEFAULT_DISEASE,
             
             elif phase_num == 3 and phase_result.success:
                 if verbose:
-                    print(f"\n  Generating PDB structures...")
+                    info_line(f"\n  Generating PDB structures...")
                 struct_result = generate_all_structures(
                     disease_key=disease_key,
                     protein_name="HUMAN_INSULIN",
@@ -711,7 +711,7 @@ def run_pipeline(disease_key: str = DEFAULT_DISEASE,
         
         if verbose:
             status = "PASS" if phase_result.success else "FAIL"
-            print(f"\n  Phase {phase_num} {status} ({phase_result.duration_ms:.0f}ms)")
+            info_line(f"\n  Phase {phase_num} {status} ({phase_result.duration_ms:.0f}ms)")
             if phase_result.errors:
                 for err in phase_result.errors:
                     info_line(f"    Error: {err}")
@@ -721,9 +721,9 @@ def run_pipeline(disease_key: str = DEFAULT_DISEASE,
     report.all_success = all(p.success for p in report.phases)
     
     if verbose:
-        print(f"{'='*68}")
+        info_line(f"{'='*68}")
         info_line(f"  PIPELINE COMPLETE")
-        print(f"{'='*68}")
+        info_line(f"{'='*68}")
         info_line(f"  Disease:       {disease_key}")
         info_line(f"  Phases run:    {len(report.phases)}/7")
         passed = sum(1 for p in report.phases if p.success)
@@ -732,7 +732,7 @@ def run_pipeline(disease_key: str = DEFAULT_DISEASE,
         info_line(f"  All success:   {report.all_success}")
         
         # Summary table
-        print(f"\n  Phase Summary:")
+        info_line(f"\n  Phase Summary:")
         info_line(f"  {'Phase':<8} {'System':<38} {'Status':<8} {'Time':<10}")
         info_line(f"  {'-'*64}")
         for p in report.phases:
@@ -816,7 +816,7 @@ def generate_report(report: PipelineReport, output_dir: Path = DOCS_DIR):
     report_path = output_dir / f"pipeline_report_{report.disease}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.md"
     report_path.write_text(report_md)
     
-    print(f"\n  Report written to: {report_path}")
+    info_line(f"\n  Report written to: {report_path}")
     
     # Also save JSON
     json_path = output_dir / f"pipeline_data_{report.disease}.json"
@@ -885,7 +885,7 @@ Examples:
             for key, therapy in THERAPIES.items():
                 info_line(f"  {key:<20} {therapy.disease}")
         except Exception as e:
-            print(f"Error loading therapies: {e}")
+            error_line(f"Error loading therapies: {e}")
         return
     
     # Determine phases

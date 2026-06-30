@@ -586,8 +586,8 @@ if __name__ == "__main__":
     
     for name, info in data.items():
         seq = info['sequence']
-        print(f"\n{'='*60}")
-        print(f"PROTEIN: {name}  ({len(seq)} AA)")
+        info_line(f"\n{'='*60}")
+        info_line(f"PROTEIN: {name}  ({len(seq)} AA)")
         
         # Predict secondary structure
         ss = predictor.predict(seq)
@@ -638,6 +638,6 @@ if __name__ == "__main__":
     with open(OUT / 'exact_phipsi_results.json', 'w') as f:
         json.dump(all_results, f, indent=2)
     
-    print(f"\n{'='*60}")
-    print(f"DONE. {len(all_results)} exact structures saved.")
-    print(f"Results: {OUT / 'exact_phipsi_results.json'}")
+    info_line(f"\n{'='*60}")
+    success_line(f"DONE. {len(all_results)} exact structures saved.")
+    info_line(f"Results: {OUT / 'exact_phipsi_results.json'}")

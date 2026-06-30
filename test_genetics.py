@@ -352,15 +352,15 @@ def main():
     if not sections:
         sections = valid_sections[:]
 
-    print(f"p4rakernel Genetics Test Suite — running: {' + '.join(sections)}")
+    info_line(f"p4rakernel Genetics Test Suite — running: {' + '.join(sections)}")
 
     for s in sections:
         if s in fn_map:
             fn_map[s]()
 
-    print(f"\n{'='*50}")
+    info_line(f"\n{'='*50}")
     info_line(f"  {PASS} passed  |  {FAIL} failed  |  {PASS+FAIL} total")
-    print(f"{'='*50}")
+    info_line(f"{'='*50}")
 
     if FAIL > 0:
         info_line("\nFailure details:")

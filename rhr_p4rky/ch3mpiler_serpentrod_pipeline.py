@@ -503,7 +503,7 @@ def design_catalytic_site(reaction_sig: ReactionSignature) -> CatalyticSiteDesig
         binding_pocket = binding_pocket[:12]
         
     except Exception as e:
-        print(f"[pipeline] SerpentRod unavailable: {e}", file=sys.stderr)
+        info_line(f"[pipeline] SerpentRod unavailable: {e}", file=sys.stderr)
         aa_seq = "<serpentrod_unavailable>"
         sec_elements, contacts = [], []
         winding = len(site_rna) // 9
@@ -537,7 +537,7 @@ def run_pipeline(
     
     def log(msg):
         if verbose:
-            print(f"[pipeline] {msg}")
+            info_line(f"[pipeline] {msg}")
     
     log("╔════════════════════════════════════════╗")
     log("║  ch3mpiler ⟲ serpentrod — Pipeline   ║")
@@ -712,10 +712,10 @@ def main():
             verbose=not args.quiet,
         )
     except ValueError as e:
-        print(f"[ERROR] {e}", file=sys.stderr)
+        error_line(f"[ERROR] {e}", file=sys.stderr)
         sys.exit(1)
     except Exception as e:
-        print(f"[ERROR] Pipeline failed: {e}", file=sys.stderr)
+        error_line(f"[ERROR] Pipeline failed: {e}", file=sys.stderr)
         import traceback; traceback.print_exc()
 
         sys.exit(1)

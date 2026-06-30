@@ -5,11 +5,11 @@ sys.path.insert(0, os.path.dirname(__file__))
 from rhr_p4rky.decay_chain import DECAY_SERIES
 from shared.rich_output import *
 
-print("=" * 65)
+info_line("=" * 65)
 info_line("NUCLEAR DECAY CHAIN — Each decay is one IMASM winding")
-print("=" * 65)
+info_line("=" * 65)
 for series_name, nuclides in list(DECAY_SERIES.items())[:3]:
-    print(f"\n{series_name}:")
+    info_line(f"\n{series_name}:")
     if isinstance(nuclides, list):
         for nuc in nuclides[:5]:
             if isinstance(nuc, dict):

@@ -826,7 +826,7 @@ def run_validation():
     }
 
     for name, seq in test_cases.items():
-        print(f"\n{'─' * 80}")
+        info_line(f"\n{'─' * 80}")
         info_line(f"  ▶ {name} ({len(seq)} AA)")
         
         # Detect mode
@@ -837,12 +837,12 @@ def run_validation():
         print(predictor.narrative(result))
         
         prods = result.mature_products
-        print(f"\n  Products: {' | '.join(f'{p.name} ({len(p.sequence)}AA)' for p in prods)}")
+        info_line(f"\n  Products: {' | '.join(f'{p.name} ({len(p.sequence)}AA)' for p in prods)}")
 
     # ── Signal Peptide Accuracy ──
-    print(f"\n{'═' * 80}")
+    separator()
     info_line("  SIGNAL PEPTIDE ACCURACY")
-    print(f"{'─' * 80}")
+    info_line(f"{'─' * 80}")
     for name, expected in SP_BENCHMARKS.items():
         seq = test_cases[name]
         pred_end, score, _ = improved_signal_peptide_detection(RollingProfile(seq))
@@ -850,12 +850,12 @@ def run_validation():
         sp_correct += 1 if ok else 0; sp_total += 1
         status = "✓" if ok else f"✗ (off by {abs(pred_end - expected)})" if pred_end else "✗ (none)"
         info_line(f"  {name:25s} expected={expected:2d} got={pred_end or 0:2d} score={score:5.1f} {status}")
-    print(f"\n  SP Accuracy: {sp_correct}/{sp_total} ({100*sp_correct/sp_total:.0f}%)")
+    info_line(f"\n  SP Accuracy: {sp_correct}/{sp_total} ({100*sp_correct/sp_total:.0f}%)")
 
     # ── Fragment Naming Accuracy ──
-    print(f"\n{'─' * 80}")
+    info_line(f"\n{'─' * 80}")
     info_line("  FRAGMENT NAMING ACCURACY")
-    print(f"{'─' * 80}")
+    info_line(f"{'─' * 80}")
     for name, expected in KNOWN_FRAGMENTS.items():
         result = results.get(name)
         if result:
@@ -872,12 +872,12 @@ def run_validation():
                     if i+1 <= len(got):
                         info_line(f"  {name:25s}  actual[{i+1}]='{got[i]}'")
 
-    print(f"\n  Fragment Naming: {frag_correct}/{frag_total} ({100*frag_correct/frag_total:.0f}%)")
+    info_line(f"\n  Fragment Naming: {frag_correct}/{frag_total} ({100*frag_correct/frag_total:.0f}%)")
 
     # ── Primitive Spectra Comparison ──
-    print(f"\n{'─' * 80}")
+    info_line(f"\n{'─' * 80}")
     info_line("  PRIMITIVE SPECTRA COMPARISON")
-    print(f"{'─' * 80}")
+    info_line(f"{'─' * 80}")
     spectra = {}
     for name in test_cases:
         spectra[name] = analyze_spectrum(test_cases[name])
@@ -889,9 +889,9 @@ def run_validation():
             info_line(f"    {a:30s} ↔ {b:25s}  cos={sim:.3f}")
 
     # ── Summary ──
-    print(f"\n{'═' * 80}")
+    separator()
     info_line("  SUMMARY")
-    print(f"{'─' * 80}")
+    info_line(f"{'─' * 80}")
     info_line(f"  Test cases:       {len(test_cases)} (mammal, fish, insect, plant, virus)")
     info_line(f"  SP Detection:     {sp_correct}/{sp_total} ({100*sp_correct/sp_total:.0f}%)")
     info_line(f"  Fragment Naming:  {frag_correct}/{frag_total} ({100*frag_correct/frag_total:.0f}%)")
@@ -899,9 +899,9 @@ def run_validation():
     info_line(f"  Monobasic sites:  {sum(1 for n in results for s in results[n].cleavage_sites if 'monobasic' in s.enzyme_family)}")
     
     # Cross-species Ω analysis
-    print(f"\n{'─' * 80}")
+    info_line(f"\n{'─' * 80}")
     info_line("  Ω (Glu) CONSERVATION IN INSULIN C-PEPTIDE")
-    print(f"{'─' * 80}")
+    info_line(f"{'─' * 80}")
     ins_species = ['Human Insulin', 'Rat Insulin', 'Guinea Pig Insulin', 'Dogfish Insulin']
     for name in ins_species:
         result = results.get(name)
@@ -1094,20 +1094,20 @@ def _fold_and_view(result: "ProcessingPrediction", base_name: str) -> None:
     for prod in products:
         seq  = prod.sequence
         name = (prod.name or base_name).replace(" ", "_")
-        print(f"\n[structure] Folding {name} ({len(seq)} AA) via ESMFold…")
+        info_line(f"\n[structure] Folding {name} ({len(seq)} AA) via ESMFold…")
         try:
             pdb_str = _fold_sequence(seq)
         except Exception as exc:
-            print(f"[structure] ESMFold failed for {name}: {exc}")
+            error_line(f"[structure] ESMFold failed for {name}: {exc}")
             continue
         pdb_path  = f"{name}.pdb"
         html_path = f"{name}_3d.html"
         with open(pdb_path, "w") as fh:
             fh.write(pdb_str)
-        print(f"[structure] PDB  → {pdb_path}")
+        info_line(f"[structure] PDB  → {pdb_path}")
         with open(html_path, "w") as fh:
             fh.write(_make_viewer_html(pdb_str, prod.name or base_name))
-        print(f"[structure] HTML → {html_path}")
+        info_line(f"[structure] HTML → {html_path}")
         webbrowser.open(f"file://{os.path.abspath(html_path)}")
 
 
@@ -1157,16 +1157,16 @@ Pipeline modes:
         name = args.protein_name if args.protein_name != "protein" else os.path.splitext(os.path.basename(args.pdb_input))[0]
         aa_seq = extract_pdb_sequence(pdb_str)
         if not aa_seq:
-            print(f"Error: could not extract sequence from {args.pdb_input}")
+            error_line(f"Error: could not extract sequence from {args.pdb_input}")
             sys.exit(1)
-        print(f"[pipeline] Extracted {len(aa_seq)} AA from {args.pdb_input}")
+        info_line(f"[pipeline] Extracted {len(aa_seq)} AA from {args.pdb_input}")
         dna_out = reverse_translate(aa_seq)
-        print(f"[pipeline] Reverse-translated → {len(dna_out)} nt DNA")
+        info_line(f"[pipeline] Reverse-translated → {len(dna_out)} nt DNA")
         dna_path = f"{name}_reverse.dna"
         with open(dna_path, "w") as fh:
             fh.write(f">{name} | reverse-translated from {args.pdb_input}\n")
             fh.write(dna_out + "\n")
-        print(f"[pipeline] DNA  → {dna_path}")
+        info_line(f"[pipeline] DNA  → {dna_path}")
         predictor = EnhancedPredictorV5()
         result    = predictor.predict(aa_seq, name)
         print(predictor.narrative(result))
@@ -1197,9 +1197,9 @@ Pipeline modes:
 
     # ── Forward edge: DNA/RNA → AA ───────────────────────────────────
     if args.dna or args.rna:
-        print(f"[pipeline] Translating {'RNA' if args.rna else 'DNA'} ({len(raw_seq)} nt)…")
+        info_line(f"[pipeline] Translating {'RNA' if args.rna else 'DNA'} ({len(raw_seq)} nt)…")
         aa_seq = translate_dna(raw_seq)
-        print(f"[pipeline] → {len(aa_seq)} AA")
+        info_line(f"[pipeline] → {len(aa_seq)} AA")
     else:
         aa_seq = raw_seq
 
@@ -1215,7 +1215,7 @@ Pipeline modes:
         with open(dna_path, "w") as fh:
             fh.write(f">{name} | codon-optimised DNA\n")
             fh.write(dna_out + "\n")
-        print(f"\n[pipeline] DNA  → {dna_path}  ({len(dna_out)} nt)")
+        info_line(f"\n[pipeline] DNA  → {dna_path}  ({len(dna_out)} nt)")
 
     # ── Optional 3D fold ─────────────────────────────────────────────
     if args.structure:

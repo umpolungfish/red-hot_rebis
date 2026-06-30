@@ -31,14 +31,14 @@ assert count == 1, f"Expected exactly 1 replacement in --cas block, got {count}"
 with open(PIPELINE_PATH, "w") as f:
     f.writelines(lines)
 
-print(f"[OK] Patched {PIPELINE_PATH}")
+success_line(f"[OK] Patched {PIPELINE_PATH}")
 info_line(f"  Changed: {target_old}")
 info_line(f"  To:      {target_new}")
 print()
 info_line("Now when --cas is used, pipeline._target_smiles gets:")
 info_line("  1. SMILES from CAS resolver (PubChem property endpoint)")
 info_line("  2. Falls back to --smiles CLI arg if CAS has no SMILES")
-print("  3. Falls back to '' (FG-only decomposition, legacy behavior)")
+info_line("  3. Falls back to '' (FG-only decomposition, legacy behavior)")
 
 # Verify
 with open(PIPELINE_PATH) as f:

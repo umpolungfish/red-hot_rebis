@@ -5,9 +5,9 @@ sys.path.insert(0, os.path.dirname(__file__))
 from materials.ig_material_forge import PREDEFINED_MATERIALS
 from shared.rich_output import *
 
-print("=" * 65)
+info_line("=" * 65)
 info_line("IG MATERIAL FORGE — 8 Predefined Novel Materials")
-print("=" * 65)
+info_line("=" * 65)
 for name, data in sorted(PREDEFINED_MATERIALS.items()):
     desc = data.get("description", "")[:60]
     info_line(f"  {name:35s}  {desc}")

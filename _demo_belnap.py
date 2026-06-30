@@ -6,9 +6,9 @@ from rhr_p4rky.belnap import BelnapState, B4
 from rhr_p4rky.belnap_c4 import C4State, C4
 from shared.rich_output import *
 
-print("=" * 65)
+info_line("=" * 65)
 info_line("PARACONSISTENT KERNEL — Belnap FOUR & C4 Contradiction Lattices")
-print("=" * 65)
+info_line("=" * 65)
 print()
 info_line("B4 (Belnap FOUR) — 4 truth values:")
 for v in [B4.T, B4.B, B4.N, B4.F]:

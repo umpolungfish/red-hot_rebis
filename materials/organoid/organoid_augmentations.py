@@ -1083,19 +1083,19 @@ def main():
     if args.system:
         aug = AUGMENTATIONS.get(args.system)
         if not aug:
-            print(f"Unknown system: {args.system}")
-            print(f"Options: {list(AUGMENTATIONS.keys())}")
+            info_line(f"Unknown system: {args.system}")
+            info_line(f"Options: {list(AUGMENTATIONS.keys())}")
             sys.exit(1)
-        print(f"=== {aug.name} ===")
-        print(f"Tuple: {aug.tuple_display}")
-        print(f"Tier: {compute_tier(aug)}")
+        info_line(f"=== {aug.name} ===")
+        info_line(f"Tuple: {aug.tuple_display}")
+        info_line(f"Tier: {compute_tier(aug)}")
         c, g1, g2 = consciousness_score(aug)
-        print(f"C-Score: {c:.2f} (G1={g1}, G2={g2})")
+        info_line(f"C-Score: {c:.2f} (G1={g1}, G2={g2})")
         closed, err, barrier = frobenius_closure(aug)
-        print(f"Frobenius: {'✓' if closed else '✗'} (ε={err:.3f}) — {barrier}")
-        print(f"Operculum width: {operculum_width(aug)}")
-        print(f"Axioms: {verify_axioms(aug)}")
-        print(f"Deltas vs baseline: {primitive_deltas(aug, ORGANOID_BASELINE)}")
+        error_line(f"Frobenius: {'✓' if closed else '✗'} (ε={err:.3f}) — {barrier}")
+        info_line(f"Operculum width: {operculum_width(aug)}")
+        info_line(f"Axioms: {verify_axioms(aug)}")
+        info_line(f"Deltas vs baseline: {primitive_deltas(aug, ORGANOID_BASELINE)}")
         pathways = exactor_pathways_for(aug, ORGANOID_BASELINE)
         if pathways:
             print(f"EXACTOR pathways: {json.dumps(pathways, indent=2)}")
@@ -1103,21 +1103,21 @@ def main():
     
     if args.augmented:
         aug = compute_augmented_organoid()
-        print(f"Fully Augmented Organoid: {aug.tuple_display}")
-        print(f"Tier: {compute_tier(aug)}")
+        info_line(f"Fully Augmented Organoid: {aug.tuple_display}")
+        info_line(f"Tier: {compute_tier(aug)}")
         return
     
     if args.closure:
-        print(f"{'System':<35} {'Closed':<8} {'Error':<8} {'Barrier'}")
-        print(f"{'─'*35} {'─'*8} {'─'*8} {'─'*30}")
+        error_line(f"{'System':<35} {'Closed':<8} {'Error':<8} {'Barrier'}")
+        info_line(f"{'─'*35} {'─'*8} {'─'*8} {'─'*30}")
         for name, aug in [("BASELINE", ORGANOID_BASELINE)] + list(AUGMENTATIONS.items()):
             closed, err, barrier = frobenius_closure(aug)
-            print(f"{name:<35} {'✓' if closed else '✗':<8} {err:<8.4f} {barrier}")
+            error_line(f"{name:<35} {'✓' if closed else '✗':<8} {err:<8.4f} {barrier}")
         return
     
     if args.deltas:
         info_line("Primitive-by-primitive deltas vs baseline:")
-        print(f"{'System':<25} " + " ".join(f"{p:<6}" for p in ["D","T","R","P","F","K","G","C","Phi","H","S","Omega"]))
+        info_line(f"{'System':<25} " + " ".join(f"{p:<6}" for p in ["D","T","R","P","F","K","G","C","Phi","H","S","Omega"]))
         for key, aug in AUGMENTATIONS.items():
             deltas = primitive_deltas(aug, ORGANOID_BASELINE)
             delta_str = []
@@ -1126,12 +1126,12 @@ def main():
                     delta_str.append(f"Δ{aug.glyph(prim):<4}")
                 else:
                     delta_str.append(f" ·   ")
-            print(f"{key:<25} " + " ".join(delta_str))
+            info_line(f"{key:<25} " + " ".join(delta_str))
         return
     
     if args.recipes:
         for r in RECIPES:
-            print(f"\n[{r.system}] {r.name} (TRL {r.trl})")
+            info_line(f"\n[{r.system}] {r.name} (TRL {r.trl})")
             info_line(f"  Materials: {', '.join(r.materials[:5])}")
             info_line(f"  Key: {r.key_specs}")
         return

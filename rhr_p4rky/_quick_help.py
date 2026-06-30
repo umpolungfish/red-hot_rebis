@@ -26,5 +26,5 @@ def show(docstring, examples=""):
         for line in examples.strip().split('\n'):
             print(line)
     else:
-        print(f"Usage:  python3 {os.path.basename(sys.argv[0])} [args...]")
+        info_line(f"Usage:  python3 {os.path.basename(sys.argv[0])} [args...]")
     print()

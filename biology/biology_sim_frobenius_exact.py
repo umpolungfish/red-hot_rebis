@@ -102,9 +102,9 @@ class OuroboricCellSim:
         return edits, fitness
 
     def run_evolution(self, generations=500):
-        print("=" * 60)
+        info_line("=" * 60)
         info_line("OUROBORIC CELL — Self-Writing Genome (Frobenius-Exact v6)")
-        print("=" * 60)
+        info_line("=" * 60)
         info_line("  Environment: matures → locks at 0.6 (discrete, gen 150)")
         info_line("  Snap-to-target: |error| < 1e-4 → expression = target exactly")
         zero_edit_streak = 0
@@ -273,7 +273,7 @@ class TopologicalMorphogenesisSim:
         filled_fraction = float(np.sum(self.cell_density > 0.1) / (self.grid_size**2) * 100)
         frobenius_exact = filled_fraction >= 99.0 and max_density >= 0.99
 
-        print(f"\n  Max: {max_density:.4f} | Fill: {filled_fraction:.1f}% | Frobenius: {frobenius_exact}")
+        info_line(f"\n  Max: {max_density:.4f} | Fill: {filled_fraction:.1f}% | Frobenius: {frobenius_exact}")
         return {"max_density": max_density, "mean_density": mean_density,
                 "filled_fraction_pct": filled_fraction, "frobenius_exact": frobenius_exact, "steps": steps}
 
@@ -285,14 +285,14 @@ class TopologicalMorphogenesisSim:
 if __name__ == "__main__":
     np.random.seed(42)
 
-    print("=" * 60)
+    info_line("=" * 60)
     info_line("FROBENIUS-EXACT OUROBORIC CELL + MORPHOGENESIS (v6)")
-    print("=" * 60)
+    info_line("=" * 60)
 
     cell = OuroboricCellSim(n_genes=50, n_adaptive_loci=20)
     cell_summary = cell.run_evolution(generations=500)
 
-    print(f"\n  GENOME VERDICT:")
+    info_line(f"\n  GENOME VERDICT:")
     info_line(f"  Final fitness: {cell_summary['final_fitness']:.15f}")
     info_line(f"  Max expression residual: {cell_summary['max_expression_residual']:.2e}")
     info_line(f"  Final edits: {cell_summary['final_edits']}")
@@ -314,6 +314,6 @@ if __name__ == "__main__":
     with open(out_path, 'w') as f:
         json.dump(all_results, f, indent=2)
 
-    print(f"\n{'='*60}")
-    print(f"OVERALL FROBENIUS EXACT: {all_results['overall_frobenius_exact']}")
-    print(f"Results: {out_path}")
+    info_line(f"\n{'='*60}")
+    info_line(f"OVERALL FROBENIUS EXACT: {all_results['overall_frobenius_exact']}")
+    info_line(f"Results: {out_path}")

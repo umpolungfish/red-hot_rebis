@@ -932,21 +932,21 @@ class EndogenousOuroboricSim:
         self.history['total_extensions'].append(total_extensions)
     def run(self, total_divisions: int = 300, report_every: int = 25):
         """Run simulation for a given number of cell divisions."""
-        print("=" * 80)
+        info_line("=" * 80)
         info_line("ENDOGENOUS OUROBORIC TELOMERE SYSTEM — Full 7-Layer Simulation")
-        print("=" * 80)
-        print(f"Mode: {self.mode}")
-        print(f"Cells: {self.n_cells}")
-        print(f"Initial TL: ~{self.p.initial_length_mean} bp")
-        print(f"Intervention at division: {self.intervention_time if self.mode == 'endogenous' else 'N/A'}")
-        print(f"Total divisions to simulate: {total_divisions}")
-        print("─" * 80)
+        info_line("=" * 80)
+        info_line(f"Mode: {self.mode}")
+        info_line(f"Cells: {self.n_cells}")
+        info_line(f"Initial TL: ~{self.p.initial_length_mean} bp")
+        info_line(f"Intervention at division: {self.intervention_time if self.mode == 'endogenous' else 'N/A'}")
+        info_line(f"Total divisions to simulate: {total_divisions}")
+        info_line("─" * 80)
         
         header = (f"{'Div':>5} {'Mean TL':>9} {'Min TL':>8} "
                   f"{'hTERT':>7} {'Meth%':>6} {'Sen%':>6} {'Ouro%':>6} "
                   f"{'Apop%':>6} {'Crit%':>6} {'ATM':>5} {'G4':>5} {'Ext':>6}")
         print(header)
-        print("─" * 80)
+        info_line("─" * 80)
         
         for div in range(total_divisions):
             self.step(1.0)
@@ -970,11 +970,11 @@ class EndogenousOuroboricSim:
         h = self.history
         final = {k: v[-1] for k, v in h.items()}
         
-        print(f"\n{'='*80}")
-        print(f"SIMULATION COMPLETE — {self.division_count} divisions")
-        print(f"{'='*80}")
+        info_line(f"\n{'='*80}")
+        success_line(f"SIMULATION COMPLETE — {self.division_count} divisions")
+        info_line(f"{'='*80}")
         
-        print(f"\n  Mode:                        {self.mode}")
+        info_line(f"\n  Mode:                        {self.mode}")
         info_line(f"  Final mean telomere length:  {final['mean_length']:.1f} bp")
         info_line(f"  Final minimum telomere:      {final['min_length']:.0f} bp")
         info_line(f"  Mean hTERT expression:       {final['mean_htert']:.4f}×")
@@ -987,7 +987,7 @@ class EndogenousOuroboricSim:
         info_line(f"  Mean G4 stability:           {final['mean_g4_stability']:.3f}")
         
         total_ext = sum(h['total_extensions'])
-        print(f"\n  Total extensions:            {total_ext}")
+        info_line(f"\n  Total extensions:            {total_ext}")
         
         # Equilibrium check
         if self.mode == 'endogenous':
@@ -995,14 +995,14 @@ class EndogenousOuroboricSim:
             if len(last_half) > 1:
                 drift = last_half[-1] - last_half[0]
                 if abs(drift) < 200:
-                    print(f"\n  ✓ HOMEOSTATIC EQUILIBRIUM ACHIEVED")
+                    success_line(f"\n  ✓ HOMEOSTATIC EQUILIBRIUM ACHIEVED")
                     info_line(f"    Mean TL drift in last half: {drift:.0f} bp")
                     info_line(f"    System is O_∞: self-sustaining, both gates open")
                 else:
-                    print(f"\n  ⚠ DRIFT DETECTED: {drift:.0f} bp — may need parameter tuning")
+                    warning_line(f"\n  ⚠ DRIFT DETECTED: {drift:.0f} bp — may need parameter tuning")
         elif self.mode == 'control':
             if final['senescent_pct'] > 50:
-                print(f"\n  ✗ CONTROL: Population senescent — telomere attrition unchecked")
+                error_line(f"\n  ✗ CONTROL: Population senescent — telomere attrition unchecked")
         
         self._save_results()
     
@@ -1048,7 +1048,7 @@ class EndogenousOuroboricSim:
         path = "/home/mrnob0dy666/red-hot_rebis/biology/ouroboric_telomere_expanded_results.json"
         with open(path, 'w') as f:
             json.dump(results, f, indent=2)
-        print(f"\nSaved to {path}")
+        info_line(f"\nSaved to {path}")
 
 
 # ═══════════════════════════════════════════════════════════════════
@@ -1063,10 +1063,10 @@ if __name__ == "__main__":
     mode = sys.argv[1] if len(sys.argv) > 1 else 'endogenous'
     n_divisions = int(sys.argv[2]) if len(sys.argv) > 2 else 300
     
-    print("\n" + "=" * 80)
+    info_line("\n" + "=" * 80)
     info_line("OUROBORIC TELOMERE — ENDOGENOUS EXPANSION")
-    print("=" * 80)
-    print(f"Mode: {mode}  |  Divisions: {n_divisions}")
+    info_line("=" * 80)
+    info_line(f"Mode: {mode}  |  Divisions: {n_divisions}")
     print()
     
     # Run all modes if requested
@@ -1074,20 +1074,20 @@ if __name__ == "__main__":
         modes = ['control', 'endogenous', 'constitutive', 'treople', 'gilled']
         results = {}
         for m in modes:
-            print(f"\n{'#'*80}")
-            print(f"# MODE: {m}")
-            print(f"{'#'*80}")
+            info_line(f"\n{'#'*80}")
+            info_line(f"# MODE: {m}")
+            info_line(f"{'#'*80}")
             sim = EndogenousOuroboricSim(n_cells=100, mode=m,
                                           intervention_time=15.0)
             sim.run(total_divisions=n_divisions)
             results[m] = sim.history
         
         # Comparison
-        print(f"\n{'='*80}")
+        info_line(f"\n{'='*80}")
         info_line("CROSS-MODE COMPARISON")
-        print(f"{'='*80}")
-        print(f"{'Mode':>15} {'Final TL':>10} {'Sen%':>7} {'Ouro%':>7} {'hTERT':>7} {'Meth%':>7}")
-        print(f"{'─'*15} {'─'*10} {'─'*7} {'─'*7} {'─'*7} {'─'*7}")
+        info_line(f"{'='*80}")
+        info_line(f"{'Mode':>15} {'Final TL':>10} {'Sen%':>7} {'Ouro%':>7} {'hTERT':>7} {'Meth%':>7}")
+        info_line(f"{'─'*15} {'─'*10} {'─'*7} {'─'*7} {'─'*7} {'─'*7}")
         for m in modes:
             h = results[m]
             print(f"{m:>15} {h['mean_length'][-1]:10.1f} {h['senescent_pct'][-1]:6.1f} "

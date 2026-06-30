@@ -37,7 +37,7 @@ def run_verify(quiet=False):
     ob3ect = Ch3mpilerOb3ect()
     closure = ob3ect.verify(verbose=not quiet)
     if not quiet:
-        print(f"Closure: {closure}")
+        info_line(f"Closure: {closure}")
     return 0 if closure else 1
 if __name__ == "__main__":
     quiet = "--quiet" in sys.argv

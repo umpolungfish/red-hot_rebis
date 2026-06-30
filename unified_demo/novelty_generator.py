@@ -843,17 +843,17 @@ class NoveltyGenerator:
 def main():
     gen = NoveltyGenerator()
 
-    print("=" * 70)
+    info_line("=" * 70)
     info_line("NOVELTY GENERATOR — De Novo Molecule & Protein Design")
-    print("=" * 70)
+    info_line("=" * 70)
 
     # ── Molecules ─────────────────────────────────────────────────
-    print(f"\n{'─' * 70}")
+    info_line(f"\n{'─' * 70}")
     info_line("NOVEL MOLECULES (MRSA)")
-    print(f"{'─' * 70}")
+    info_line(f"{'─' * 70}")
 
     mols = gen.generate_molecules("mrsa", count=8)
-    print(f"Generated {len(mols)} novel molecules\n")
+    info_line(f"Generated {len(mols)} novel molecules\n")
 
     for i, mol in enumerate(mols[:8]):
         info_line(f"  [{i+1}] {mol.name}")
@@ -869,12 +869,12 @@ f"ROTB: {mol.rotatable_bonds}  HBD: {mol.hbd}  HBA: {mol.hba}")
         print()
 
     # ── Proteins ─────────────────────────────────────────────────
-    print(f"{'─' * 70}")
+    info_line(f"{'─' * 70}")
     info_line("NOVEL PROTEINS (MRSA)")
-    print(f"{'─' * 70}")
+    info_line(f"{'─' * 70}")
 
     prots = gen.generate_proteins("mrsa", count=5)
-    print(f"Generated {len(prots)} novel proteins\n")
+    info_line(f"Generated {len(prots)} novel proteins\n")
 
     for i, prot in enumerate(prots):
         info_line(f"  [{i+1}] {prot.name}")
@@ -887,9 +887,9 @@ f"Hydro: {prot.hydrophobicity:.2f}")
         info_line(f"      Novelty: {prot.novelty_reason[:100]}...")
         print()
 
-    print(f"{'=' * 70}")
+    info_line(f"{'=' * 70}")
     info_line("VERDICT: ALL MOLECULES AND PROTEINS ARE GENUINELY NOVEL")
-    print(f"{'=' * 70}")
+    info_line(f"{'=' * 70}")
     info_line(f"  • {len(mols)} molecules — fragment combinations not in any of")
     info_line(f"    the 122 known molecules in the ch3mpiler database")
     info_line(f"  • {len(prots)} proteins — de novo designed sequences with")

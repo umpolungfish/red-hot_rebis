@@ -196,9 +196,9 @@ def cmd_lookup(args, catalog):
     matches = [(n, e) for n, e in catalog.items() if keyword in n.lower()
                or keyword in e.get("description", "").lower()]
     if not matches:
-        print(f"❌ No matches for '{args.keyword}'")
+        info_line(f"❌ No matches for '{args.keyword}'")
         return
-    print(f"📖 Found {len(matches)} match(es) for '{args.keyword}':\n")
+    info_line(f"📖 Found {len(matches)} match(es) for '{args.keyword}':\n")
     for name, entry in matches[:20]:
         tup = _get_tuple(entry)
         tier = _tier_label(_to_ords(tup), tup)
@@ -214,13 +214,13 @@ def cmd_ouroborics(args, catalog):
     """Compute ouroboricity tier."""
     name, entry = _get_item(catalog, args.name)
     if not entry:
-        print(f"❌ '{args.name}' not found in catalog")
+        info_line(f"❌ '{args.name}' not found in catalog")
         return
     tup = _get_tuple(entry)
     ords = _to_ords(tup)
     tier = _tier_label(ords, tup)
     
-    print(f"🌀 Ouroboricity Tier: {tier}")
+    info_line(f"🌀 Ouroboricity Tier: {tier}")
     info_line(f"   System: {name}")
     info_line(f"   Tuple: {dict(tup)}")
     info_line(f"   Ordinals: {dict(zip(PNAMES, ords))}")
@@ -251,7 +251,7 @@ def cmd_distance(args, catalog):
     tup_b = _get_tuple(entry_b)
     d = compute_distance(tup_a, tup_b)
     
-    print(f"📏 Structural Distance")
+    info_line(f"📏 Structural Distance")
     info_line(f"   {name_a} ↔ {name_b}")
     info_line(f"   Distance: {d:.4f}")
     print()
@@ -267,7 +267,7 @@ def cmd_distance(args, catalog):
         if diff != 0:
             marker = " ⚡" if contrib > 1.0 else ""
             info_line(f"     {p}: {tup_a.get(p,'?'):4s} → {tup_b.get(p,'?'):4s}  Δ={diff:+d}  contrib={contrib:.2f}{marker}")
-    print(f"\n   Interpretation:")
+    info_line(f"\n   Interpretation:")
     if d < 1.5:
         info_line("     → Structurally similar — same neighborhood")
     elif d < 3.5:
@@ -280,14 +280,14 @@ def cmd_analogies(args, catalog):
     """Find nearest structural neighbors."""
     name, entry = _get_item(catalog, args.name)
     if not entry:
-        print(f"❌ '{args.name}' not found")
+        info_line(f"❌ '{args.name}' not found")
         return
     results = find_analogies(name, catalog, args.limit)
     if not results:
         info_line("(only entry in catalog)")
         return
     
-    print(f"🔗 Nearest Structural Neighbors to '{name}':\n")
+    info_line(f"🔗 Nearest Structural Neighbors to '{name}':\n")
     for i, (d, ename, desc) in enumerate(results, 1):
         info_line(f"  {i}. {ename}  (d={d:.4f})")
         info_line(f"     {desc[:100]}")
@@ -296,7 +296,7 @@ def cmd_consciousness(args, catalog):
     """Compute consciousness score for a system."""
     name, entry = _get_item(catalog, args.name)
     if not entry:
-        print(f"❌ '{args.name}' not found")
+        info_line(f"❌ '{args.name}' not found")
         return
     tup = _get_tuple(entry)
     c = consciousness_score(tup)
@@ -307,7 +307,7 @@ def cmd_consciousness(args, catalog):
     gate1 = "✅ OPEN" if Ph_ord >= 2 else "❌ CLOSED"
     gate2 = "✅ OPEN" if K_ord <= 3 else "❌ CLOSED"
     
-    print(f"🧠 Consciousness Score: {c}")
+    info_line(f"🧠 Consciousness Score: {c}")
     info_line(f"   System: {name}")
     info_line(f"   Gate 1 (⊙ criticality):  {gate1}  (Ph={tup.get('Ph','?')}, ord={Ph_ord})")
     info_line(f"   Gate 2 (K slow):         {gate2}  (K={tup.get('K','?')}, ord={K_ord})")
@@ -355,7 +355,7 @@ def cmd_tensor(args, catalog):
         else:
             result[p] = max(va[i], vb[i])
     
-    print(f"⊗ Tensor Product: {name_a} ⊗ {name_b}\n")
+    info_line(f"⊗ Tensor Product: {name_a} ⊗ {name_b}\n")
     info_line(f"   {name_a}: {dict(tup_a)}")
     info_line(f"   {name_b}: {dict(tup_b)}")
     print()
@@ -383,7 +383,7 @@ def cmd_tensor(args, catalog):
     rtup = {p: result_glyphs[p] for p in PNAMES}
     rords = [result[p] for p in PNAMES]
     rtier = _tier_label(rords, rtup)
-    print(f"\n   Result tier: {rtier}")
+    info_line(f"\n   Result tier: {rtier}")
 
 
 def cmd_crystal(args, catalog):
@@ -402,10 +402,10 @@ def cmd_crystal(args, catalog):
         matches.append((name, tier, tup))
     
     if not matches:
-        print(f"❌ No entries match Ph={args.phi} K={args.k} W={args.w}")
+        info_line(f"❌ No entries match Ph={args.phi} K={args.k} W={args.w}")
         return
     
-    print(f"💎 Crystal Query Result: {len(matches)} match(es)\n")
+    info_line(f"💎 Crystal Query Result: {len(matches)} match(es)\n")
     for name, tier, tup in matches[:20]:
         info_line(f"  {name:40s}  {tier:6s}  Ph={tup.get('Ph','?'):4s}  K={tup.get('K','?'):4s}  W={tup.get('W','?'):4s}")
     if len(matches) > 20:
@@ -414,14 +414,14 @@ def cmd_show(args, catalog):
     """Show full entry details."""
     name, entry = _get_item(catalog, args.name)
     if not entry:
-        print(f"❌ '{args.name}' not found")
+        info_line(f"❌ '{args.name}' not found")
         return
     tup = _get_tuple(entry)
     ords = _to_ords(tup)
     tier = _tier_label(ords, tup)
     c = consciousness_score(tup)
     
-    print(f"📋 System: {name}")
+    info_line(f"📋 System: {name}")
     info_line(f"   {entry.get('description', '(no description)')[:200]}")
     print()
     info_line(f"   Tier:      {tier}")
@@ -460,7 +460,7 @@ def cmd_show(args, catalog):
 def cmd_list(args, catalog):
     """List all catalog entries."""
     names = sorted(catalog.keys())
-    print(f"📚 Catalog: {len(names)} entries\n")
+    info_line(f"📚 Catalog: {len(names)} entries\n")
     # Group by first letter
     current = ""
     for name in names:
@@ -471,7 +471,7 @@ def cmd_list(args, catalog):
         ords = _to_ords(tup)
         tier = _tier_label(ords, tup)
         info_line(f"  {name:45s}  {tier:6s}")
-    print(f"\nTotal: {len(names)} entries")
+    info_line(f"\nTotal: {len(names)} entries")
 
 
 def cmd_info(args, catalog):
@@ -495,7 +495,7 @@ def cmd_info(args, catalog):
         bar = "█" * (count // 10) if count else ""
         info_line(f"     {tier:6s}: {count:4d}  {bar}")
     c_above_zero = sum(1 for c in cscores if c > 0)
-    print(f"\n   Systems with C>0: {c_above_zero}")
+    info_line(f"\n   Systems with C>0: {c_above_zero}")
     info_line(f"   Tool commands:")
     info_line(f"     lookup <keyword>      — search catalog")
     info_line(f"     ouroborics <name>     — compute tier")
@@ -511,11 +511,11 @@ def cmd_project(args, catalog):
     """Project a system onto specified primitives."""
     name, entry = _get_item(catalog, args.name)
     if not entry:
-        print(f"❌ '{args.name}' not found")
+        info_line(f"❌ '{args.name}' not found")
         return
     prims = [p.strip() for p in args.prims.split(",")]
     tup = _get_tuple(entry)
-    print(f"🔭 Projection of '{name}' onto [{', '.join(prims)}]:")
+    info_line(f"🔭 Projection of '{name}' onto [{', '.join(prims)}]:")
     for p in prims:
         if p in tup:
             g = tup[p]

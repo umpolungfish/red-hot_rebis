@@ -255,21 +255,21 @@ def main():
                 result = migrate_file(p, dry_run)
                 r.append(result)
             else:
-                print(f"NOT FOUND: {a}")
+                info_line(f"NOT FOUND: {a}")
 
     if not r:
-        print("No files needed changes.")
+        info_line("No files needed changes.")
         return
 
-    print(f"\n{'File':<60} {'Status':<15} {'Changes'}")
+    info_line(f"\n{'File':<60} {'Status':<15} {'Changes'}")
     print('-' * 95)
     for path, status, changes in sorted(r, key=lambda x: x[0]):
         rel = Path(path).relative_to(REBIS_ROOT)
-        print(f"{str(rel):<60} {status:<15} {', '.join(changes)}")
+        info_line(f"{str(rel):<60} {status:<15} {', '.join(changes)}")
 
     migrated = sum(1 for _, s, _ in r if s == "OK" and _)
     if not dry_run:
-        print(f"\n✅ {migrated} files migrated.")
+        success_line(f"\n✅ {migrated} files migrated.")
 
 
 if __name__ == '__main__':

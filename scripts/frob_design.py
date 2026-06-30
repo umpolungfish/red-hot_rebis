@@ -110,16 +110,16 @@ def design_site_frobenius_exact(plastic_name, bond_name, fg1_name, fg2_name, mec
     }
 
 # Run
-print("=" * 72)
+info_line("=" * 72)
 info_line("  v5 FROBENIUS-EXACT: Dominant-Member Rule per Complementary Pair")
 info_line("  Every pair has exactly 1 member activated → 6/6 coverage")
-print("=" * 72)
+info_line("=" * 72)
 
 all_sites = []
 for plastic_name, bond_name, fg1_name, fg2_name, mechanism in PLASTIC_TARGETS:
     s = design_site_frobenius_exact(plastic_name, bond_name, fg1_name, fg2_name, mechanism)
     all_sites.append(s)
-    print(f"\n--- {plastic_name} ---")
+    info_line(f"\n--- {plastic_name} ---")
     info_line(f"  Bond: {bond_name}")
     info_line(f"  AA:   {s['aa_sequence']}")
     info_line(f"  Activated: {s['activated']}")
@@ -128,7 +128,7 @@ for plastic_name, bond_name, fg1_name, fg2_name, mechanism in PLASTIC_TARGETS:
     info_line(f"  Site: {json.dumps(s['site_type'])}")
 
 # Diversity
-print("\n" + "=" * 72)
+info_line("\n" + "=" * 72)
 info_line("  AA SEQUENCE DIVERSITY")
 aas_seen = {}
 for s in all_sites:
@@ -143,7 +143,7 @@ for seq, plastics in aas_seen.items():
         info_line(f"    <- {p}")
 
 # Clustering suggestion
-print("\n" + "=" * 72)
+info_line("\n" + "=" * 72)
 info_line("  CLUSTERING FOR SEPARATE CATALYSTS")
 # Group by identical site types
 groups = {}
@@ -163,7 +163,7 @@ for i, (st, plastics) in enumerate(groups.items()):
             break
 
 # Also group by AA sequence
-print(f"\n  Unique AA sequences: {len(aas_seen)}")
+info_line(f"\n  Unique AA sequences: {len(aas_seen)}")
 for i, (seq, plastics) in enumerate(aas_seen.items()):
     info_line(f"  Catalyst {i+1}: {plastics}")
     info_line(f"    AA: {seq}")

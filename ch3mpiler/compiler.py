@@ -829,7 +829,7 @@ for fg_name, smarts_str in RDKIT_FG_SMARTS:
 
 def find_fgs_from_smiles(smiles: str) -> list:
     """Detect functional groups from a SMILES string using RDKit SMARTS."""
-    if not HAS_FRAGMENT_INTEGRATOR or not RDKIT_FG_COMPILED:
+    if not RDKIT_FG_COMPILED:
         return []
     try:
         from rdkit import Chem
@@ -843,6 +843,70 @@ def find_fgs_from_smiles(smiles: str) -> list:
         return sorted(found)
     except Exception:
         return []
+
+def locate_disconnection_atoms(smiles: str, fg1: str, fg2: str) -> list:
+    """Find bonds at the fg1/fg2 interface in a molecule given its SMILES.
+    Returns list of ((sym1, idx1), (sym2, idx2)) with 1-based atom indices.
+    """
+    if not RDKIT_FG_COMPILED or not smiles:
+        return []
+    try:
+        from rdkit import Chem
+        mol = Chem.MolFromSmiles(smiles)
+        if mol is None:
+            return []
+        pat1 = RDKIT_FG_COMPILED.get(fg1)
+        pat2 = RDKIT_FG_COMPILED.get(fg2)
+        atoms1: set = set()
+        if pat1:
+            for match in mol.GetSubstructMatches(pat1):
+                atoms1.update(match)
+        atoms2: set = set()
+        if pat2:
+            for match in mol.GetSubstructMatches(pat2):
+                atoms2.update(match)
+        results = []
+        seen: set = set()
+        if fg1 == fg2:
+            for bond in mol.GetBonds():
+                a, b = bond.GetBeginAtomIdx(), bond.GetEndAtomIdx()
+                if a in atoms1 and b in atoms1:
+                    key = (min(a, b), max(a, b))
+                    if key not in seen:
+                        seen.add(key)
+                        s1 = mol.GetAtomWithIdx(a).GetSymbol()
+                        s2 = mol.GetAtomWithIdx(b).GetSymbol()
+                        results.append(((s1, a + 1), (s2, b + 1)))
+        else:
+            for bond in mol.GetBonds():
+                a, b = bond.GetBeginAtomIdx(), bond.GetEndAtomIdx()
+                if (a in atoms1 and b in atoms2) or (a in atoms2 and b in atoms1):
+                    key = (min(a, b), max(a, b))
+                    if key not in seen:
+                        seen.add(key)
+                        if a in atoms1:
+                            s1 = mol.GetAtomWithIdx(a).GetSymbol()
+                            s2 = mol.GetAtomWithIdx(b).GetSymbol()
+                            results.append(((s1, a + 1), (s2, b + 1)))
+                        else:
+                            s1 = mol.GetAtomWithIdx(b).GetSymbol()
+                            s2 = mol.GetAtomWithIdx(a).GetSymbol()
+                            results.append(((s1, b + 1), (s2, a + 1)))
+        return results[:3]
+    except Exception:
+        return []
+
+def annotate_cuts_with_atoms(cuts: list, smiles: str) -> list:
+    """Add 'atoms' key to each cut dict when SMILES is available."""
+    if not smiles:
+        return cuts
+    out = []
+    for cut in cuts:
+        c = dict(cut)
+        c['atoms'] = locate_disconnection_atoms(smiles, c.get('fg1', ''), c.get('fg2', ''))
+        out.append(c)
+    return out
+
 def get_fg_type(fg_name):
     return FG.get(fg_name, {})
 
@@ -1030,28 +1094,33 @@ class Ch3mpiler:
         except Exception:
             return []
 
-    def analyze(self, target):
+    def analyze(self, target, smiles=None):
         """Analyze molecule: type, FGs, grammar-derived disconnections."""
         mol_type, source = get_molecule_type(target, self.catalog)
         fgs = find_fgs(target)
-        
+
         cuts = []
         if fgs and mol_type:
             cuts = find_disconnections(fgs, mol_type)
-        
+
+        # Annotate cuts with atom indices when SMILES is available
+        resolved_smi = smiles or _resolve_smiles(target)
+        if resolved_smi:
+            cuts = annotate_cuts_with_atoms(cuts, resolved_smi)
+
         # Find analogs from catalog
         analogs = []
         for e in self.catalog[:500]:
             et = {}
             for pn, pf in zip(PNAMES, PFIELDS):
-                v = e.get(pf, ""); 
+                v = e.get(pf, "");
                 if v: et[pn] = v
             if len(et) == 12:
                 d, _ = tup_dist(mol_type, et)
                 if d < 3.5 and d > 0:
                     analogs.append({"n": e.get("name",""), "d": round(d, 3)})
         analogs.sort(key=lambda x: x["d"])
-        
+
         return {"target": target, "type": fmt_tup(mol_type),
                 "type_source": source, "fgs": fgs,
                 "cuts": cuts, "analogs": analogs[:8]}
@@ -1076,6 +1145,7 @@ class Ch3mpiler:
                     "bond_delta": cut.get("bond_delta", cut.get("delta", 0)),
                     "product_delta": cut.get("product_delta", cut.get("delta", 0)),
                     "fg1": cut["fg1"], "fg2": cut["fg2"],
+                    "atoms": cut.get("atoms", []),
                     "product_type": cut["product_type"],
                     "precursors": [
                         {"name": sname1, "fg_hint": cut["fg1"], "type": sub1["type"],
@@ -1312,7 +1382,7 @@ class Ch3mpiler:
             tree = self.retrosynthesis(name, depth=depth)
             tree["cas_info"] = info
             return tree
-        result = self.analyze(name)
+        result = self.analyze(name, smiles=info.get("smiles", ""))
         result["cas_info"] = info
         return result
 
@@ -1385,6 +1455,10 @@ def print_retrosynthesis(tree, indent=0):
         bond_line(f"── Cut {idx+1}: {step['bond']} (δ={step['delta']}, binding={bd}) ──", indent=indent+1)
         step_detail("Description", step['bond_desc'], indent=indent+2)
         step_detail("Between", f"{step['fg1']} + {step['fg2']}", indent=indent+2)
+        atoms = step.get('atoms', [])
+        if atoms:
+            atom_str = ', '.join(f"{s1}{i1}-{s2}{i2}" for (s1, i1), (s2, i2) in atoms)
+            step_detail("Atoms", atom_str, indent=indent+2)
         step_detail("Product type", step['product_type'], indent=indent+2)
         
         for pidx, prec in enumerate(step.get("precursors", [])):
@@ -1431,13 +1505,22 @@ def print_analysis(result):
     if cuts:
         subheader("Grammar-derived disconnections (ranked by δ, lower=better)")
         info_line("δ = product-to-target distance")
-        headers = ["Bond", "δ", "Binding", "Between", "Product Type"]
+        has_atoms = any(c.get('atoms') for c in cuts)
+        if has_atoms:
+            headers = ["Bond", "δ", "Binding", "Atoms", "Between", "Product Type"]
+        else:
+            headers = ["Bond", "δ", "Binding", "Between", "Product Type"]
         rows = []
         for c in cuts:
             between = f"{c['fg1']}+{c['fg2']}"
             bd = c.get('bond_delta', '?')
             pd = c.get('product_delta', c.get('delta', 0))
-            rows.append([c['bond'], f"{pd:.3f}", f"{bd:.3f}", between, c['product_type']])
+            atoms = c.get('atoms', [])
+            atom_str = ', '.join(f"{s1}{i1}-{s2}{i2}" for (s1, i1), (s2, i2) in atoms)
+            if has_atoms:
+                rows.append([c['bond'], f"{pd:.3f}", f"{bd:.3f}", atom_str, between, c['product_type']])
+            else:
+                rows.append([c['bond'], f"{pd:.3f}", f"{bd:.3f}", between, c['product_type']])
         table(headers, rows)
     else:
         info_line("No disconnections found.")
@@ -1451,7 +1534,7 @@ def print_analysis(result):
 
 
 
-    print("=" * 66)
+    info_line("=" * 66)
 def print_path(result):
     """Print the synthetic path from starting material to target (rich formatted)."""
     target = result.get("target", "?")
@@ -1524,9 +1607,9 @@ def print_path(result):
 
 
 
-        print(f"  Structural conflicts ({len(conflicts)}):")
+        info_line(f"  Structural conflicts ({len(conflicts)}):")
         for c in conflicts[:5]:
-            print(f"    {c['p']}: target={c['tgt']} vs start={c['src']}")
+            info_line(f"    {c['p']}: target={c['tgt']} vs start={c['src']}")
 
 # MAIN CLI
 
@@ -1559,15 +1642,15 @@ def main():
         # Plain CAS mode (no --starting-material)
         if args.retrosynthesis:
             tree = ch.resolve_and_analyze(args.cas, do_retrosynthesis=True, depth=args.depth)
-            print("=" * 66)
-            print("  ch3mpiler — Retrosynthetic Analysis (grammar-derived)")
-            print("=" * 66)
+            info_line("=" * 66)
+            info_line("  ch3mpiler — Retrosynthetic Analysis (grammar-derived)")
+            info_line("=" * 66)
             print_retrosynthesis(tree)
         else:
             r = ch.resolve_and_analyze(args.cas)
             info = r.get("cas_info", {})
-            print(f"CAS: {info.get('cas', args.cas)}")
-            print(f"Name: {info.get('name', 'unknown')}  ({info.get('source', '')})")
+            info_line(f"CAS: {info.get('cas', args.cas)}")
+            info_line(f"Name: {info.get('name', 'unknown')}  ({info.get('source', '')})")
             if info.get("formula"): print(f"Formula: {info['formula']}")
             if info.get("smiles"): print(f"SMILES: {info['smiles']}")
             print_analysis(r)
@@ -1577,38 +1660,38 @@ def main():
         pass
     
     if args.list_fgs:
-        print("Functional Groups:")
+        info_line("Functional Groups:")
         for fg_name in sorted(FG.keys()):
             t = {p: FG[fg_name].get(p, "?") for p in PNAMES}
-            print(f"  {fg_name:30s}  {fmt_tup(t)}")
+            info_line(f"  {fg_name:30s}  {fmt_tup(t)}")
         return
     
     if args.list_bonds:
-        print("Grammar-derived bond types:")
+        info_line("Grammar-derived bond types:")
         for bname in sorted(BOND_TYPES.keys()):
             b = BOND_TYPES[bname]
             t = {p: b.get(p, "?") for p in PNAMES}
-            print(f"  {bname:20s}  {b.get('desc',''):45s}  {fmt_tup(t)}")
+            info_line(f"  {bname:20s}  {b.get('desc',''):45s}  {fmt_tup(t)}")
         return
     
     if args.show_cas_cache:
         cache = ch.cas_resolver._cache
         if not cache:
-            print("CAS cache is empty.")
+            info_line("CAS cache is empty.")
         else:
-            print(f"Cached CAS ({len(cache)}):")
+            info_line(f"Cached CAS ({len(cache)}):")
             for cas, entry in sorted(cache.items()):
-                print(f"  {cas:15s}  {entry.get('name','?'):40s}  [{entry.get('source','?')}]")
+                info_line(f"  {cas:15s}  {entry.get('name','?'):40s}  [{entry.get('source','?')}]")
         return
     
     if args.fg:
         if args.fg in FG:
             t = {p: FG[args.fg].get(p, "?") for p in PNAMES}
-            print(f"FG: {args.fg}")
-            print(f"Type: {fmt_tup(t)}")
+            info_line(f"FG: {args.fg}")
+            info_line(f"Type: {fmt_tup(t)}")
         else:
-            print(f"Unknown FG: {args.fg}")
-            print(f"Known: {', '.join(sorted(FG.keys()))}")
+            info_line(f"Unknown FG: {args.fg}")
+            info_line(f"Known: {', '.join(sorted(FG.keys()))}")
         return
     
     if args.starting_material:
@@ -1619,7 +1702,7 @@ def main():
             cas_info = ch.resolve_cas(args.cas)
             target_name = cas_info.get("name", "")
             if not target_name or target_name == args.cas:
-                print(f"Could not resolve CAS {args.cas} to a known molecule name.")
+                info_line(f"Could not resolve CAS {args.cas} to a known molecule name.")
                 return
         if target_name:
             result = ch.path_to_target(args.starting_material, target_name, depth=args.depth)
@@ -1665,12 +1748,12 @@ def main():
                             prev_smi = prod_smi
                     
                     out_path = args.cdxml
-                    print(f"\n  [Generating CDXML: {out_path}]")
+                    info_line(f"\n  [Generating CDXML: {out_path}]")
                     generate_reaction_cdxml(steps_for_cdxml, out_path=out_path,
                                              title=f"{args.starting_material} \u2192 {target_name}")
                 except Exception as e:
                     import traceback
-                    print(f"  [CDXML ERROR: {e}]")
+                    error_line(f"  [CDXML ERROR: {e}]")
                     traceback.print_exc()
             
             return
@@ -1726,37 +1809,51 @@ def main():
                     # Name resolution failed — show clear warning
                     tree['_smiles_unresolved'] = True
             
-            print("=" * 66)
-            print("  ch3mpiler — Retrosynthetic Analysis (grammar-derived)")
-            print("=" * 66)
+            info_line("=" * 66)
+            info_line("  ch3mpiler — Retrosynthetic Analysis (grammar-derived)")
+            info_line("=" * 66)
             if tree.get('_resolved_smiles'):
                 success_line(f"Target SMILES: {tree['_resolved_smiles']}")
             if tree.get('_smiles_unresolved'):
                 error_line("Target name could not be resolved to SMILES - intermediate SMILES are placeholders. Use --smiles to provide exact SMILES.")
             print_retrosynthesis(tree)
         else:
-            r = ch.analyze(args.target)
+            if direct_smiles and not target_name:
+                smi_fgs = find_fgs_from_smiles(direct_smiles)
+                mol_type = compose_molecule_type(smi_fgs) if smi_fgs else {}
+                cuts = find_disconnections(smi_fgs, mol_type) if smi_fgs and mol_type else []
+                cuts = annotate_cuts_with_atoms(cuts, direct_smiles)
+                r = {
+                    "target": f"SMILES:{direct_smiles[:60]}",
+                    "type": fmt_tup(mol_type) if mol_type else "?",
+                    "type_source": "smiles",
+                    "fgs": smi_fgs,
+                    "cuts": cuts,
+                    "analogs": [],
+                }
+            else:
+                r = ch.analyze(args.target)
             print_analysis(r)
         return
     
     if args.forward:
         r = ch.forward(args.forward)
-        print(f"Reagents: {', '.join(r['reagents'])}")
+        info_line(f"Reagents: {', '.join(r['reagents'])}")
         if "error" in r:
-            print(f"  {r['error']}")
+            error_line(f"  {r['error']}")
         else:
             p = r.get("prediction", {})
-            print(f"FGs: {', '.join(r.get('fgs',[]))}")
-            print(f"Best bond: {p.get('bond','?')} ({p.get('bond_desc','')})")
-            print(f"  Between: {p.get('fg1','?')} + {p.get('fg2','?')}")
-            print(f"  Structuring Δ: {p.get('structuring_delta','?')}")
-            print(f"  Product: {p.get('product_type','?')}")
+            info_line(f"FGs: {', '.join(r.get('fgs',[]))}")
+            info_line(f"Best bond: {p.get('bond','?')} ({p.get('bond_desc','')})")
+            info_line(f"  Between: {p.get('fg1','?')} + {p.get('fg2','?')}")
+            info_line(f"  Structuring Δ: {p.get('structuring_delta','?')}")
+            info_line(f"  Product: {p.get('product_type','?')}")
         return
     
     if args.interactive:
-        print("ch3mpiler interactive — grammar-derived bond rules")
-        print("Commands: <name>, retro:<name>, cas:<n>, cas-retro:<n>,")
-        print("          fwd:r1,r2, fg:<n>, fgs, bonds, quit")
+        info_line("ch3mpiler interactive — grammar-derived bond rules")
+        info_line("Commands: <name>, retro:<name>, cas:<n>, cas-retro:<n>,")
+        info_line("          fwd:r1,r2, fg:<n>, fgs, bonds, quit")
         while True:
             try:
                 c = input(">>> ").strip()
@@ -1765,28 +1862,28 @@ def main():
                     for f in sorted(FG.keys()): print(f"  {f}")
                 elif c == "bonds":
                     for b in sorted(BOND_TYPES.keys()):
-                        print(f"  {b:20s}  {BOND_TYPES[b].get('desc','')}")
+                        info_line(f"  {b:20s}  {BOND_TYPES[b].get('desc','')}")
                 elif c.startswith("fg:"):
                     fg = c[3:]
                     if fg in FG:
                         t = {p: FG[fg].get(p,"?") for p in PNAMES}
-                        print(f"FG {fg}: {fmt_tup(t)}")
+                        info_line(f"FG {fg}: {fmt_tup(t)}")
                     else: print(f"Unknown FG: {fg}")
                 elif c.startswith("retro:"):
                     print_retrosynthesis(ch.retrosynthesis(c[6:], depth=2))
                 elif c.startswith("cas:"):
                     r = ch.resolve_and_analyze(c[4:])
                     info = r.get("cas_info",{})
-                    print(f"CAS: {info.get('cas','')} Name: {info.get('name','')}")
+                    info_line(f"CAS: {info.get('cas','')} Name: {info.get('name','')}")
                     print_analysis(r)
                 elif c.startswith("cas-retro:"):
                     print_retrosynthesis(ch.resolve_and_analyze(c[10:], do_retrosynthesis=True, depth=2))
                 elif c.startswith("fwd:"):
                     r = ch.forward(c[4:].split(","))
-                    print(f"Reagents: {', '.join(r['reagents'])}")
+                    info_line(f"Reagents: {', '.join(r['reagents'])}")
                     if "error" not in r:
                         p = r.get("prediction",{})
-                        print(f"  -> {p.get('bond','?')} ({p.get('bond_desc','')})")
+                        info_line(f"  -> {p.get('bond','?')} ({p.get('bond_desc','')})")
                     else: print(f"  {r['error']}")
                 else:
                     r = ch.analyze(c)
@@ -1796,11 +1893,11 @@ def main():
     
     # Default demo
     demo_title()
-    print("Demo: benzaldehyde")
+    info_line("Demo: benzaldehyde")
     r = ch.analyze("benzaldehyde")
     print_analysis(r)
     print()
-    print("Try: ch3mpiler --cas 3568-94-3 --retrosynthesis")
+    info_line("Try: ch3mpiler --cas 3568-94-3 --retrosynthesis")
 
 if __name__ == "__main__":
     main()

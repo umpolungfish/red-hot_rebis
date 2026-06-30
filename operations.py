@@ -515,15 +515,15 @@ def run_full_alchemical_sequence(initial_tup: Optional[Dict[str, str]] = None) -
 def print_stage_report(stage_name: str, result_tup: Dict[str, str]):
     """Pretty print a stage result with key info from the paper."""
     info = OPERATION_MAP.get(stage_name, {})
-    print(f"\n{'='*60}")
-    print(f"STAGE: {stage_name.upper()}")
-    print(f"IG Operation: {info.get('ig_op', 'N/A')}")
-    print(f"Targets: {info.get('targets', [])}")
-    print(f"Description: {info.get('description', '')[:150]}...")
+    info_line(f"\n{'='*60}")
+    info_line(f"STAGE: {stage_name.upper()}")
+    info_line(f"IG Operation: {info.get('ig_op', 'N/A')}")
+    info_line(f"Targets: {info.get('targets', [])}")
+    info_line(f"Description: {info.get('description', '')[:150]}...")
     if "practical_protocol" in info:
-        print(f"Practical Protocol Example:\n{info['practical_protocol'][:200]}...")
-    print(f"Resulting tuple (sample primitives): {{'⊙': {result_tup.get('⊙')}, 'Ω': {result_tup.get('Ω')}, ...}}")
-    print(f"{'='*60}")
+        info_line(f"Practical Protocol Example:\n{info['practical_protocol'][:200]}...")
+    info_line(f"Resulting tuple (sample primitives): {{'⊙': {result_tup.get('⊙')}, 'Ω': {result_tup.get('Ω')}, ...}}")
+    info_line(f"{'='*60}")
 
 if __name__ == "__main__":
     print(__doc__)
@@ -541,7 +541,7 @@ if __name__ == "__main__":
         history
     )):
         if i == 0:
-            print(f"INITIAL PRIMA MATERIA: structural_distance to base = {structural_distance(result, {p: list(ORDINALS[p].keys())[0] for p in PRIMITIVE_ORDER}):.3f}")
+            info_line(f"INITIAL PRIMA MATERIA: structural_distance to base = {structural_distance(result, {p: list(ORDINALS[p].keys())[0] for p in PRIMITIVE_ORDER}):.3f}")
         else:
             print_stage_report(stage, result)
     
@@ -549,19 +549,19 @@ if __name__ == "__main__":
     for comp in FOUR_ELEMENTS_COMPOSITIONS:
         info_line(f"  {comp['pair']} → {comp['product']} | d={comp['structural_distance']} | {comp['verification']}")
     
-    print("\n>>> Navigator Recommendation for 'Critical with non-Abelian winding':")
+    info_line("\n>>> Navigator Recommendation for 'Critical with non-Abelian winding':")
     print(get_navigator_recommendation("Critical with non-Abelian winding"))
     
     info_line("\n>>> Ouroboric Healing Demo:")
     print(demonstrate_ouroboric_healing(100))
     
-    print("\n>>> ch3mpiler Retrosynthesis for 'Dopamine':")
+    info_line("\n>>> ch3mpiler Retrosynthesis for 'Dopamine':")
     print(ch3mpiler_retrosynthesis("Dopamine"))
     
     info_line("\n>>> Frobenius Closure Check (example):")
     mu = history[-1]
     delta = history[0]
-    print(f"Closure verified: {frobenius_closure_check(mu, delta)} (symbolic; full Lean 4 in clink/)")
+    info_line(f"Closure verified: {frobenius_closure_check(mu, delta)} (symbolic; full Lean 4 in clink/)")
     
     info_line("\n[✓] Full untruncated Alchemy as Engine operations module executed successfully.")
     info_line("All seven stages, navigator, four elements, ouroboros, and ch3mpiler examples complete.")

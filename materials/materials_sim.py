@@ -169,9 +169,9 @@ class EternalMemorySim:
             "data_viable": ber < 0.01
         }
 if __name__ == "__main__":
-    print("=" * 60)
+    info_line("=" * 60)
     info_line("MATERIALS SIMULATIONS")
-    print("=" * 60)
+    info_line("=" * 60)
     
     # 1. Self-Healing Composite
     info_line("\n--- Ouroboric Composite: Crack Healing ---")
@@ -234,4 +234,4 @@ f"capsules={r['capsules_remaining']:.2f}, damage={r['cumulative_damage']:.3f}")
     Path(path).parent.mkdir(parents=True, exist_ok=True)
     with open(path, 'w') as f:
         json.dump(results_data, f, indent=2)
-    print(f"\nResults saved to {path}")
+    info_line(f"\nResults saved to {path}")

@@ -350,10 +350,10 @@ def energy_ladder_summary(ladder: List[Dict]) -> str:
 
 if __name__ == "__main__":
     info_line("DFT Bridge — Self Test")
-    print("=" * 50)
+    info_line("=" * 50)
     
     engines = detect_available_engines()
-    print(f"Available engines: {[e.value for e in engines]}")
+    info_line(f"Available engines: {[e.value for e in engines]}")
     
     # Test energy estimation
     test_smiles = "CC(=O)OC1=CC=CC=C1C(=O)O"  # aspirin
@@ -365,4 +365,4 @@ if __name__ == "__main__":
     print(f"\nL2→L3 transition: {json.dumps(trans, indent=2)}")
     
     # Test full ladder
-    print("\n" + energy_ladder_summary(compute_full_energy_ladder()))
+    info_line("\n" + energy_ladder_summary(compute_full_energy_ladder()))

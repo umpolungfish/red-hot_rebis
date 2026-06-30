@@ -74,13 +74,13 @@ def get_contacts(atoms, cutoff=8.0, min_dist=6):
     return contacts
 
 def analyze(pdb_id: str):
-    print(f"\n{'='*70}")
-    print(f"DEEP ANALYSIS: {pdb_id}")
-    print(f"{'='*70}")
+    info_line(f"\n{'='*70}")
+    info_line(f"DEEP ANALYSIS: {pdb_id}")
+    info_line(f"{'='*70}")
     
     pdb_text = fetch_pdb(pdb_id)
     atoms, seq = extract_single_model_ca(pdb_text)
-    print(f"Single-model CA atoms: {len(atoms)}, Sequence: {seq}")
+    info_line(f"Single-model CA atoms: {len(atoms)}, Sequence: {seq}")
     
     if len(atoms) < 5:
         info_line("Too few atoms, skipping")
@@ -98,7 +98,7 @@ def analyze(pdb_id: str):
     contacts_short = get_contacts(atoms, 8.0, 6)
     contacts_all = get_contacts(atoms, 8.0, 4)
     
-    print(f"\nContact stratification (8.0Å cutoff):")
+    info_line(f"\nContact stratification (8.0Å cutoff):")
     info_line(f"  Short-range (4-6): {len(contacts_all) - len(contacts_short)}")
     info_line(f"  Medium-range (6-12): {len(contacts_short) - len(contacts_medium)}")
     info_line(f"  Long-range (12-24): {len(contacts_medium) - len(contacts_long)}")
@@ -112,14 +112,14 @@ def analyze(pdb_id: str):
     # Get predicted contacts
     pred_contacts = set((c["i"], c["j"]) for c in result["contacts"])
     
-    print(f"\nSerpentRod predictions:")
+    info_line(f"\nSerpentRod predictions:")
     info_line(f"  Predicted contacts: {len(pred_contacts)}")
     info_line(f"  Winding number: {result['winding_number']}")
     info_line(f"  Subunits: {result['subunit_count']}")
     info_line(f"  Frobenius: {'✓' if result['frobenius_verified'] else '✗'}")
     
     # Analyze each predicted contact
-    print(f"\nPredicted contact analysis:")
+    info_line(f"\nPredicted contact analysis:")
     for c in result["contacts"]:
         i, j = c["i"], c["j"]
         if i < len(seq) and j < len(seq):
@@ -142,7 +142,7 @@ f"actual_d={d:.2f}Å  {classifications[0]:12s}  "
                       f"conf={c['confidence']:.2f}")
     
     # Check critical secondary structure prediction
-    print(f"\nSecondary structure prediction:")
+    info_line(f"\nSecondary structure prediction:")
     helices_predicted = [e for e in result["secondary_elements"] if e["type"] == "helix"]
     sheets_predicted = [e for e in result["secondary_elements"] if e["type"] == "sheet"]
     info_line(f"  Predicted helices: {len(helices_predicted)}")
@@ -191,7 +191,7 @@ f"actual_d={d:.2f}Å  {classifications[0]:12s}  "
                 idx += 1
             except: pass
     
-    print(f"\nPDB secondary structure (from PDB records):")
+    info_line(f"\nPDB secondary structure (from PDB records):")
     info_line(f"  Helices: {pdb_helices}")
     info_line(f"  Sheets: {pdb_sheets}")
     
@@ -210,7 +210,7 @@ f"actual_d={d:.2f}Å  {classifications[0]:12s}  "
                     correct_helix += 1
     
     total_pdb_helix = sum(end-start+1 for start,end in pdb_helices)
-    print(f"\n  Helix accuracy: {correct_helix}/{total_pdb_helix} residues matched")
+    info_line(f"\n  Helix accuracy: {correct_helix}/{total_pdb_helix} residues matched")
 
 # Run on best candidates
 for pdb_id in ["1VII", "1UBQ"]:

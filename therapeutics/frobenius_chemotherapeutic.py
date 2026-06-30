@@ -172,12 +172,12 @@ class FrobeniusChemoSim:
     def run(self, total_time: float = 30.0):
         n_steps = int(total_time / self.dt)
         
-        print("=" * 70)
+        info_line("=" * 70)
         info_line("FROBENIUS-COUPLED CHEMOTHERAPEUTIC — Equilibrium Model")
-        print("=" * 70)
-        print(f"Drug concentration: {self.drug_conc} (normalized)")
-        print(f"Principle: 𐑹 symmetry protects healthy cells; 𐑹-breaking exposes cancer")
-        print("─" * 70)
+        info_line("=" * 70)
+        info_line(f"Drug concentration: {self.drug_conc} (normalized)")
+        info_line(f"Principle: 𐑹 symmetry protects healthy cells; 𐑹-breaking exposes cancer")
+        info_line("─" * 70)
         
         for i in range(n_steps):
             self.time = i * self.dt
@@ -202,12 +202,12 @@ class FrobeniusChemoSim:
         self._summarize(n_steps)
     
     def _summarize(self, n_steps):
-        print(f"\n{'='*70}")
-        print(f"SIMULATION COMPLETE — {n_steps} steps over {self.time:.1f} time units")
-        print(f"{'='*70}")
+        info_line(f"\n{'='*70}")
+        success_line(f"SIMULATION COMPLETE — {n_steps} steps over {self.time:.1f} time units")
+        info_line(f"{'='*70}")
         
         h_cyt = self.healthy.cytotoxicity
-        print(f"\nHealthy Cell (Frobenius-protected):")
+        info_line(f"\nHealthy Cell (Frobenius-protected):")
         info_line(f"  Asymmetry: {self.healthy.asymmetry:.4f}")
         info_line(f"  Binding: {self.healthy.domain1_bound_frac:.3f}")
         info_line(f"  Dual binding: {self.healthy.dual_binding_prob:.3f}")
@@ -216,7 +216,7 @@ class FrobeniusChemoSim:
         info_line(f"  Cytotoxicity: {h_cyt:.4f}")
         info_line(f"  𐑹 Protection: {'ACTIVE ✓' if h_cyt < 0.5 else 'COMPROMISED'}")
         
-        print(f"\nCancer Cells:")
+        info_line(f"\nCancer Cells:")
         healthy_cyt = max(h_cyt, 0.001)  # avoid div by zero
         for rec, st in self.cancer:
             ratio = st.cytotoxicity / healthy_cyt
@@ -225,10 +225,10 @@ class FrobeniusChemoSim:
             info_line(f"    Tether: {st.tether_tension:.4f} | Payload: {st.payload_exposed:.4f}")
             info_line(f"    Cytotoxicity: {st.cytotoxicity:.4f} | Selectivity vs healthy: {ratio:.1f}x")
         
-        print(f"\n{'─'*70}")
-        print(f"The 𐑹-Frobenius gate selectively activates therapeutics in")
-        print(f"asymmetric (cancer) microenvironments while healthy tissue")
-        print(f"with μ∘δ=id symmetry experiences minimal payload exposure.")
+        info_line(f"\n{'─'*70}")
+        info_line(f"The 𐑹-Frobenius gate selectively activates therapeutics in")
+        info_line(f"asymmetric (cancer) microenvironments while healthy tissue")
+        info_line(f"with μ∘δ=id symmetry experiences minimal payload exposure.")
         
         # Save results
         results = {
@@ -251,7 +251,7 @@ class FrobeniusChemoSim:
         path = "/home/mrnob0dy666/red-hot_rebis/therapeutics/frobenius_chemo_results.json"
         with open(path, 'w') as f:
             json.dump(results, f, indent=2)
-        print(f"\nResults saved to {path}")
+        info_line(f"\nResults saved to {path}")
 
 
 if __name__ == "__main__":

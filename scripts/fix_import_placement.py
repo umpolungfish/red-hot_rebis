@@ -69,7 +69,7 @@ def main():
                     fixed += 1
             except:
                 pass
-    print(f"Fixed {fixed} files")
+    info_line(f"Fixed {fixed} files")
 
 
 if __name__ == '__main__':

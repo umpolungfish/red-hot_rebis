@@ -66,14 +66,14 @@ def cmd_status(args):
         from rich.console import Console
         Console().print(t)
     else:
-        print(f"\n{'Package':22s}  {'Files':>6}  {'Size':>10}  Root file")
-        print("-" * 66)
+        info_line(f"\n{'Package':22s}  {'Files':>6}  {'Size':>10}  Root file")
+        info_line("-" * 66)
         for name, path, n_files, total in packages:
             init = path / '__init__.py'
             root_file = init.name if init.exists() else "—"
             tick = "✅"
-            print(f"  {tick} {name:20s}  {n_files:>5}  {total:>9,d}  {root_file}")
-        print(f"  ✅ {'scripts':20s}  {n_scripts:>5}  (standalone, no __init__)")
+            info_line(f"  {tick} {name:20s}  {n_files:>5}  {total:>9,d}  {root_file}")
+        success_line(f"  ✅ {'scripts':20s}  {n_scripts:>5}  (standalone, no __init__)")
 
     # Shared assets
     print()
@@ -85,7 +85,7 @@ def cmd_status(args):
         if STYLED:
             success_line(f"{'✅' if exists else '❌'} {label}: {sz}")
         else:
-            print(f"  {'✅' if exists else '❌'} {label}: {sz}")
+            success_line(f"  {'✅' if exists else '❌'} {label}: {sz}")
 
     separator()
     info_line(f"{len(packages)} packages + {n_scripts} scripts discovered")
@@ -143,9 +143,9 @@ def cmd_pipeline(args):
 
     if args.pipeline_subcommand == "bridges":
         bridges = list_available_bridges()
-        print("Available Tool Bridges:")
+        info_line("Available Tool Bridges:")
         for name, avail in sorted(bridges.items()):
-            print(f"  {'✅' if avail else '❌'} {name}")
+            success_line(f"  {'✅' if avail else '❌'} {name}")
         return 0
 
     elif args.pipeline_subcommand == "ground-up":
@@ -163,14 +163,14 @@ def cmd_pipeline(args):
         if result.success and result.final_design:
             export_path = f"clink_design_L{start}_to_L{target}.json"
             if engine.export_design_json(result, export_path):
-                print(f"\nDesign exported to {export_path}")
+                info_line(f"\nDesign exported to {export_path}")
         return 0 if result.success else 1
 
     elif args.pipeline_subcommand == "actionable":
         reaction_header("CLINK PIPELINE", "Actionable organism design package")
         from clink.datasets.generators import generate_actionable_organism_package
         ot = getattr(args, 'organism', 'mammal')
-        print(f"Generating {ot} organism design...")
+        info_line(f"Generating {ot} organism design...")
         import json
         result = generate_actionable_organism_package(
             organism_type=ot,
@@ -178,16 +178,16 @@ def cmd_pipeline(args):
             write_files=True
         )
         print(json.dumps(result, indent=2))
-        print(f"\nOutput: {result['output_directory']}")
-        print(f"Files: {result['total_files']} ({result['total_bytes']} bytes)")
+        info_line(f"\nOutput: {result['output_directory']}")
+        info_line(f"Files: {result['total_files']} ({result['total_bytes']} bytes)")
         print()
-        print("What you can DO with these files:")
+        info_line("What you can DO with these files:")
         for fname, desc in result.get('what_to_do_with_outputs', {}).items():
-            print(f"  {fname:30s} → {desc}")
+            info_line(f"  {fname:30s} → {desc}")
         return 0
 
     else:
-        print("Unknown pipeline subcommand. Use: bridges, ground-up, from-layer, actionable")
+        info_line("Unknown pipeline subcommand. Use: bridges, ground-up, from-layer, actionable")
         return 1
 
 
@@ -211,13 +211,13 @@ def cmd_clink(args):
                 needle = arg.lower()
                 matches = [i for i, n in enumerate(CLINK_NAMES) if needle in n.lower()]
                 if not matches:
-                    print(f"No layer matching '{arg}'")
+                    info_line(f"No layer matching '{arg}'")
                     return 1
                 idx = matches[0]
         else:
             idx = 0
         if idx < 0 or idx > 8:
-            print("Layer index must be 0-8")
+            info_line("Layer index must be 0-8")
             return 1
         tup = clink_layer_tuple(idx, True)
         target_line(f"Layer {idx}: {CLINK_NAMES[idx]}")
@@ -244,15 +244,15 @@ def cmd_clink(args):
         comp = comp or "serpentrod"
         target = int(target_str) if target_str else 8
         p = integrated_promotion_path(comp, target)
-        print(f"Promotion path: {p['from']} → {p['to']}")
-        print(f"  Distance: {p['distance']}")
-        print(f"  Promotions: {p['num_promotions']}")
+        info_line(f"Promotion path: {p['from']} → {p['to']}")
+        info_line(f"  Distance: {p['distance']}")
+        info_line(f"  Promotions: {p['num_promotions']}")
         for prim, change in p['promotions'].items():
-            print(f"    {prim}: {change}")
+            info_line(f"    {prim}: {change}")
         return 0
 
     else:
-        print("Unknown clink subcommand. Use: layer, bridge. Static data: see INDEX.md")
+        info_line("Unknown clink subcommand. Use: layer, bridge. Static data: see INDEX.md")
         return 1
 
 
@@ -291,15 +291,15 @@ def _show_run_target_help(target):
     """Show help with examples for a runnable target."""
     targets = _discover_run_targets()
     if target not in targets:
-        print(f"Unknown target: {target}")
-        print(f"Run 'rebis.py run list' to see all available targets.")
+        info_line(f"Unknown target: {target}")
+        info_line(f"Run 'rebis.py run list' to see all available targets.")
         return
     kind, ref = targets[target]
-    print(f"Target: {target}")
-    print(f"Type:   {kind}")
-    print(f"Path:   {ref}")
+    info_line(f"Target: {target}")
+    info_line(f"Type:   {kind}")
+    info_line(f"Path:   {ref}")
     print()
-    print("Usage:  rebis.py run " + target + " [args...]")
+    info_line("Usage:  rebis.py run " + target + " [args...]")
     print()
     target_examples = {
         "serpent_rod": "  rebis.py run serpent_rod AUGGCCGACUGGAACUGCAAGAAGAUC\n  rebis.py run serpent_rod --file my.fasta -n myprotein\n  rebis.py run serpent_rod --validate",
@@ -311,7 +311,7 @@ def _show_run_target_help(target):
         "ch3mpiler": "  rebis.py run ch3mpiler --target aspirin --retrosynthesis\n  rebis.py run ch3mpiler --target glucose --forward C6H12O6\n  rebis.py run ch3mpiler --interactive",
     }
     examples = target_examples.get(target, "  rebis.py run " + target)
-    print("Examples:")
+    info_line("Examples:")
     print(examples)
 
 def cmd_run(args):
@@ -325,31 +325,31 @@ def cmd_run(args):
         from rhr_p4rky._target_help import TARGET_EXAMPLES
         # Special case: 'list' or no subcommand shows discoverable-target help
         if subcommand == 'list' or subcommand is None:
-            print("Usage: rebis.py run list")
+            info_line("Usage: rebis.py run list")
             print()
-            print("  List all discoverable runnable targets under REBIS_ROOT.")
-            print("  Each target can be run with: rebis.py run <target> [args...]")
+            info_line("  List all discoverable runnable targets under REBIS_ROOT.")
+            info_line("  Each target can be run with: rebis.py run <target> [args...]")
             print()
-            print("Examples:")
-            print("  rebis.py run list                     # Show all pipeline targets")
-            print("  rebis.py run serpentrod --seq KAL     # Run with args")
-            print("  rebis.py run gene_to_protein_pipeline --help  # Target-specific help")
-            print("  rebis.py run ch3mpiler --help         # Forward --help to target")
+            info_line("Examples:")
+            info_line("  rebis.py run list                     # Show all pipeline targets")
+            info_line("  rebis.py run serpentrod --seq KAL     # Run with args")
+            info_line("  rebis.py run gene_to_protein_pipeline --help  # Target-specific help")
+            info_line("  rebis.py run ch3mpiler --help         # Forward --help to target")
             return 0
         targets = _discover_run_targets()
         if subcommand not in targets:
-            print(f"Unknown target: {subcommand}")
-            print("Run 'rebis.py run list' to see all available targets.")
+            info_line(f"Unknown target: {subcommand}")
+            info_line("Run 'rebis.py run list' to see all available targets.")
             return 1
         kind, ref = targets[subcommand]
-        print(f"Target: {subcommand}")
-        print(f"Type:   {kind}")
-        print(f"Path:   {ref}")
+        info_line(f"Target: {subcommand}")
+        info_line(f"Type:   {kind}")
+        info_line(f"Path:   {ref}")
         print()
-        print(f"Usage:  rebis.py run {subcommand} [args...]")
+        info_line(f"Usage:  rebis.py run {subcommand} [args...]")
         print()
         examples = TARGET_EXAMPLES.get(subcommand, f"  rebis.py run {subcommand}")
-        print("Examples:")
+        info_line("Examples:")
         print(examples)
         return 0
 
@@ -365,19 +365,19 @@ def cmd_run(args):
 
     if subcommand == "list" or subcommand is None:
         targets = _discover_run_targets()
-        print(f"{'Target':35s}  Type    Path")
-        print("-" * 72)
+        info_line(f"{'Target':35s}  Type    Path")
+        info_line("-" * 72)
         for name in sorted(targets):
             kind, ref = targets[name]
             path_str = str(ref) if kind == "script" else ref
-            print(f"  {name:33s}  {kind:7s}  {path_str}")
-        print(f"\n{len(targets)} targets — run with: rebis.py run <target> [args...]")
+            info_line(f"  {name:33s}  {kind:7s}  {path_str}")
+        info_line(f"\n{len(targets)} targets — run with: rebis.py run <target> [args...]")
         return 0
 
     targets = _discover_run_targets()
     if subcommand not in targets:
-        print(f"Unknown target: {subcommand}")
-        print(f"Run 'rebis.py run list' to see all available targets.")
+        info_line(f"Unknown target: {subcommand}")
+        info_line(f"Run 'rebis.py run list' to see all available targets.")
         return 1
 
     kind, ref = targets[subcommand]
@@ -405,31 +405,31 @@ def cmd_scripts(args):
 
     if args.scripts_subcommand == "list":
         scripts = sorted(scripts_dir.glob("*.py"))
-        print(f"{'Script':35s}  Lines")
-        print("-" * 50)
+        info_line(f"{'Script':35s}  Lines")
+        info_line("-" * 50)
         for s in scripts:
             lines = sum(1 for _ in s.open())
-            print(f"  {s.name:33s}  {lines:5d}")
-        print(f"\n{len(scripts)} scripts — run with: rebis.py scripts run <name>")
+            info_line(f"  {s.name:33s}  {lines:5d}")
+        info_line(f"\n{len(scripts)} scripts — run with: rebis.py scripts run <name>")
         return 0
 
     elif args.scripts_subcommand == "run":
         name = args.script_name
         if not name:
-            print("Usage: rebis.py scripts run <script_name> [args...]")
+            info_line("Usage: rebis.py scripts run <script_name> [args...]")
             return 1
         # Accept with or without .py
         script = scripts_dir / (name if name.endswith(".py") else name + ".py")
         if not script.exists():
             candidates = [s.name for s in scripts_dir.glob("*.py") if name in s.name]
-            print(f"Script not found: {name}")
+            info_line(f"Script not found: {name}")
             if candidates:
-                print(f"Did you mean: {', '.join(candidates)}")
+                info_line(f"Did you mean: {', '.join(candidates)}")
             return 1
         return subprocess.run([sys.executable, str(script)] + (args.script_args or [])).returncode
 
     else:
-        print("Usage: rebis.py scripts list | rebis.py scripts run <name>")
+        info_line("Usage: rebis.py scripts list | rebis.py scripts run <name>")
         return 1
 
 
@@ -460,18 +460,18 @@ def cmd_cdxml(args):
                 cdxml = smiles_to_cdxml(args.cdxml_smiles, name, annotation)
                 v = verify_cdxml(cdxml)
                 if not v['valid']:
-                    print(f"Verification issues: {v['issues']}")
+                    info_line(f"Verification issues: {v['issues']}")
                 fname = f"{name}.cdxml"
                 from pathlib import Path
                 out = Path(output_dir)
                 out.mkdir(parents=True, exist_ok=True)
                 (out / fname).write_text(cdxml)
-                print(f"  ✓ {fname} ({v['atom_count']} atoms, {v['bond_count']} bonds)")
+                success_line(f"  ✓ {fname} ({v['atom_count']} atoms, {v['bond_count']} bonds)")
                 if args.cdxml_print:
                     print()
                     print(cdxml[:2000])
             except Exception as e:
-                print(f"  ✗ Error: {e}")
+                error_line(f"  ✗ Error: {e}")
                 return 1
 
         elif args.cdxml_molecule:
@@ -486,12 +486,12 @@ def cmd_cdxml(args):
                 cdxml = smiles_to_cdxml(m['smiles'], m['name'], m['annotation'])
                 (out / m['filename']).write_text(cdxml)
                 v = verify_cdxml(cdxml)
-                print(f"  ✓ {m['filename']} ({v['atom_count']} atoms, {v['bond_count']} bonds)")
-                print(f"  Name: {m['name']}")
-                print(f"  Annotation: {m['annotation']}")
+                success_line(f"  ✓ {m['filename']} ({v['atom_count']} atoms, {v['bond_count']} bonds)")
+                info_line(f"  Name: {m['name']}")
+                info_line(f"  Annotation: {m['annotation']}")
             else:
-                print(f"Molecule '{name}' not found.")
-                print(f"Known molecules: {', '.join(m['filename'] for m in MOLECULES[:10])}...")
+                info_line(f"Molecule '{name}' not found.")
+                info_line(f"Known molecules: {', '.join(m['filename'] for m in MOLECULES[:10])}...")
                 return 1
 
         elif args.cdxml_all:
@@ -511,24 +511,24 @@ def cmd_cdxml(args):
             return 1 if failed else 0
 
         else:
-            print("CDXML Generator — red-hot_rebis pipeline integration")
+            info_line("CDXML Generator — red-hot_rebis pipeline integration")
             print()
-            print("Usage: rebis.py cdxml generate [options]")
+            info_line("Usage: rebis.py cdxml generate [options]")
             print()
-            print("  --smiles <SMILES>    Generate CDXML from SMILES")
-            print("  --name <name>        Molecule name")
-            print("  --annotation <text>  Canvas annotation")
-            print("  --molecule <name>    Find & generate predefined molecule")
-            print("  --all                Generate ALL molecules + aptamers + materials")
-            print("  --molecules-only     Generate only small molecules")
-            print("  --aptamers-only      Generate only aptamers")
-            print("  --materials-only     Generate only materials")
-            print("  --output <dir>       Output directory")
-            print("  --print              Print generated CDXML to stdout")
+            info_line("  --smiles <SMILES>    Generate CDXML from SMILES")
+            info_line("  --name <name>        Molecule name")
+            info_line("  --annotation <text>  Canvas annotation")
+            info_line("  --molecule <name>    Find & generate predefined molecule")
+            info_line("  --all                Generate ALL molecules + aptamers + materials")
+            info_line("  --molecules-only     Generate only small molecules")
+            info_line("  --aptamers-only      Generate only aptamers")
+            info_line("  --materials-only     Generate only materials")
+            info_line("  --output <dir>       Output directory")
+            info_line("  --print              Print generated CDXML to stdout")
             print()
-            print(f"Molecules available: {len(MOLECULES)}")
-            print(f"Aptamers available:  {len(APTAMERS)}")
-            print(f"Materials available: {len(MATERIALS)}")
+            info_line(f"Molecules available: {len(MOLECULES)}")
+            info_line(f"Aptamers available:  {len(APTAMERS)}")
+            info_line(f"Materials available: {len(MATERIALS)}")
             return 0
 
     elif sub == "verify":
@@ -540,16 +540,16 @@ def cmd_cdxml(args):
             # Verify a single CDXML file
             cdxml = Path(target).read_text()
             v = verify_cdxml(cdxml)
-            print(f"Verification of {target}:")
-            print(f"  Valid: {v['valid']}")
-            print(f"  Atoms: {v['atom_count']}, Bonds: {v['bond_count']}")
-            print(f"  Size:  {v['size_bytes']} bytes")
+            info_line(f"Verification of {target}:")
+            info_line(f"  Valid: {v['valid']}")
+            info_line(f"  Atoms: {v['atom_count']}, Bonds: {v['bond_count']}")
+            info_line(f"  Size:  {v['size_bytes']} bytes")
             if v['issues']:
                 for issue in v['issues']:
-                    print(f"  ✗ {issue}")
+                    error_line(f"  ✗ {issue}")
             return 0 if v['valid'] else 1
         else:
-            print("Usage: rebis.py cdxml verify --file <path.cdxml>")
+            info_line("Usage: rebis.py cdxml verify --file <path.cdxml>")
             return 1
 
     elif sub == "clean":
@@ -560,13 +560,13 @@ def cmd_cdxml(args):
         if target.exists():
             count = len(list(target.glob("*.cdxml")))
             shutil.rmtree(target)
-            print(f"Cleaned {count} CDXML files from {target}")
+            info_line(f"Cleaned {count} CDXML files from {target}")
         else:
-            print(f"No output directory at {target}")
+            info_line(f"No output directory at {target}")
         return 0
 
     else:
-        print("Unknown cdxml subcommand. Use: generate, verify, clean")
+        info_line("Unknown cdxml subcommand. Use: generate, verify, clean")
         return 1
 
 
@@ -586,29 +586,29 @@ def cmd_imas(args):
 
         for name in (target.split(',') if target else CANONICAL_NAMES):
             if name not in mapping:
-                print(f"Unknown canonical: {name}")
+                info_line(f"Unknown canonical: {name}")
                 continue
             m = mapping[name]
-            print(f"{'='*60}")
-            print(f"  {name}: {m['canonical_desc']}")
-            print(f"  IG: {m['ig_str']} [{m['description']}]")
-            print(f"  Nearest CLINK: {m['nearest_layer']} (d={m['nearest_distance']})")
+            info_line(f"{'='*60}")
+            info_line(f"  {name}: {m['canonical_desc']}")
+            info_line(f"  IG: {m['ig_str']} [{m['description']}]")
+            info_line(f"  Nearest CLINK: {m['nearest_layer']} (d={m['nearest_distance']})")
             print()
-            print(f"  Full IG description:")
+            info_line(f"  Full IG description:")
             print(describe_full(m['ig']))
             print()
-            print(f"  All CLINK layers by distance:")
+            info_line(f"  All CLINK layers by distance:")
             for layer, dist in m['all_layers'][:5]:
-                print(f"    {layer}: d={dist}")
+                info_line(f"    {layer}: d={dist}")
             print()
 
             # Activation energy to nearest layer
             ae = structural_activation_energy(m['ig'], m['nearest_layer'])
-            print(f"  Activation energy to {m['nearest_layer']}:")
-            print(f"    Weighted cost: {ae['weighted_cost']}, Tier gap: {ae['tier_gap']}")
-            print(f"    Promotions needed ({len(ae['promotions'])}):")
+            info_line(f"  Activation energy to {m['nearest_layer']}:")
+            info_line(f"    Weighted cost: {ae['weighted_cost']}, Tier gap: {ae['tier_gap']}")
+            info_line(f"    Promotions needed ({len(ae['promotions'])}):")
             for p in ae['promotions']:
-                print(f"      {p}")
+                info_line(f"      {p}")
         return 0
 
     elif sub == "hunt":
@@ -617,16 +617,16 @@ def cmd_imas(args):
             analyze_frobenius_library,
         )
         n = args.imas_samples if args.imas_samples else 100000
-        print(f"Frobenius Hunter — Monte Carlo density estimation (n={n:,})")
+        info_line(f"Frobenius Hunter — Monte Carlo density estimation (n={n:,})")
         density = estimate_frobenius_density(n, seed=42)
         for key in ['p_frobenius_pair', 'p_proper_frobenius', 'p_dialetheia_complete',
                      'p_frob_plus_dial', 'p_frob_dial_self']:
             if key in density:
                 exp = density.get(f'expected_samples_{key[2:]}', '?')
-                print(f"  {key}: {density[key]:.6f}  (expected 1 per {exp:,} samples)")
+                info_line(f"  {key}: {density[key]:.6f}  (expected 1 per {exp:,} samples)")
 
         print()
-        print("Generating Frobenius library (10 per type)...")
+        info_line("Generating Frobenius library (10 per type)...")
         library = generate_frobenius_library(count_per_type=10, seed=42)
         analysis = analyze_frobenius_library(library)
         for category, stats in analysis.items():
@@ -644,26 +644,26 @@ def cmd_imas(args):
         layer = args.imas_layer if args.imas_layer else "L8_Organism"
 
         if canonical not in CANONICAL_FINGERPRINTS:
-            print(f"Unknown canonical: {canonical}")
-            print(f"Available: {list(CANONICAL_FINGERPRINTS.keys())}")
+            info_line(f"Unknown canonical: {canonical}")
+            info_line(f"Available: {list(CANONICAL_FINGERPRINTS.keys())}")
             return 1
         if layer not in CLINK_LAYER_TUPLES:
-            print(f"Unknown layer: {layer}")
-            print(f"Available: {CLINK_LAYER_NAMES}")
+            info_line(f"Unknown layer: {layer}")
+            info_line(f"Available: {CLINK_LAYER_NAMES}")
             return 1
 
         ig = fingerprint_to_ig(CANONICAL_FINGERPRINTS[canonical])
         ae = structural_activation_energy(ig, layer)
-        print(f"Structural Activation Energy: {canonical} → {layer}")
-        print(f"  Source: {ig_tuple_str(ig)}")
-        print(f"  Target: {ig_tuple_str(CLINK_LAYER_TUPLES[layer])}")
-        print(f"  Distance: {ae['distance']} primitives")
-        print(f"  Weighted cost: {ae['weighted_cost']}")
-        print(f"  Tier gap: {ae['tier_gap']}")
-        print(f"  Feasible: {ae['feasible']}")
-        print(f"  Promotions ({len(ae['promotions'])}):")
+        info_line(f"Structural Activation Energy: {canonical} → {layer}")
+        info_line(f"  Source: {ig_tuple_str(ig)}")
+        info_line(f"  Target: {ig_tuple_str(CLINK_LAYER_TUPLES[layer])}")
+        info_line(f"  Distance: {ae['distance']} primitives")
+        info_line(f"  Weighted cost: {ae['weighted_cost']}")
+        info_line(f"  Tier gap: {ae['tier_gap']}")
+        info_line(f"  Feasible: {ae['feasible']}")
+        info_line(f"  Promotions ({len(ae['promotions'])}):")
         for p in ae['promotions']:
-            print(f"    {p}")
+            info_line(f"    {p}")
         return 0
 
     elif sub == "compound":
@@ -673,12 +673,12 @@ def cmd_imas(args):
 
         smi = args.imas_smiles
         if not smi:
-            print("Error: --smiles <SMILES> required")
+            info_line("Error: --smiles <SMILES> required")
             return 1
 
         result = analyze_molecule(smi)
         if not result.get("valid"):
-            print(f"Error: invalid SMILES: {smi}")
+            error_line(f"Error: invalid SMILES: {smi}")
             return 1
 
         arr = molecule_to_arrangement(smi)
@@ -697,22 +697,22 @@ def cmd_imas(args):
                 "ring_count": result.get("ring_count", 0),
             }, indent=2))
         else:
-            print(f"SMILES:         {smi}")
-            print(f"Arrangement:    {format_arrangement(arr)}")
-            print(f"Fingerprint:    {fp.description()}")
-            print(f"IG Tuple:       ({', '.join(ig)})")
-            print(f"Functional Gps: {', '.join(result.get('functional_groups', []))}")
+            info_line(f"SMILES:         {smi}")
+            info_line(f"Arrangement:    {format_arrangement(arr)}")
+            info_line(f"Fingerprint:    {fp.description()}")
+            info_line(f"IG Tuple:       ({', '.join(ig)})")
+            info_line(f"Functional Gps: {', '.join(result.get('functional_groups', []))}")
             print(f"Rings:          {result.get('ring_count', 0)} "
                   f"(aromatic: {result.get('aromatic_rings', 0)})")
             print()
-            print("Full IG description:")
+            info_line("Full IG description:")
             print(describe_full(ig))
 
             # Show cross-domain analogies
             print()
-            print("-" * 60)
-            print("CROSS-DOMAIN ANALOGIES (nearest structural neighbors)")
-            print("-" * 60)
+            info_line("-" * 60)
+            info_line("CROSS-DOMAIN ANALOGIES (nearest structural neighbors)")
+            info_line("-" * 60)
             from imas.compound_catalog import find_analogies
             try:
                 analogies = find_analogies(smi, limit=9)
@@ -720,15 +720,15 @@ def cmd_imas(args):
                     d = r["distance"]
                     bar = chr(9608) * (12 - d) + chr(9617) * d
                     desc = r.get("description", "")[:90]
-                    print(f"  d={d:2d}  {bar}  {r['name']}")
+                    info_line(f"  d={d:2d}  {bar}  {r['name']}")
                     if desc:
-                        print(f"             {desc}")
+                        info_line(f"             {desc}")
                     if d <= 3:
                         for m in r["mismatches"][:2]:
-                            print(f"             delta {m['primitive']}: {m['query']} -> {m['entry']}")
+                            info_line(f"             delta {m['primitive']}: {m['query']} -> {m['entry']}")
                     print()
             except Exception as e:
-                print(f"  (analogies: {e})")
+                info_line(f"  (analogies: {e})")
         return 0
 
     elif sub == "reaction":
@@ -738,12 +738,12 @@ def cmd_imas(args):
         r_smi = args.imas_smiles
         p_smi = args.imas_product
         if not r_smi or not p_smi:
-            print("Error: --smiles <reactant_SMILES> and --product <product_SMILES> required")
+            info_line("Error: --smiles <reactant_SMILES> and --product <product_SMILES> required")
             return 1
 
         fp = reaction_to_fingerprint(r_smi, p_smi)
         if fp is None:
-            print("Error: invalid SMILES")
+            info_line("Error: invalid SMILES")
             return 1
 
         r_names = " → ".join(TOKEN_NAMES[t] for t in fp.reactant_arr)
@@ -766,16 +766,16 @@ def cmd_imas(args):
                 "identification": ident,
             }, indent=2))
         else:
-            print(f"Reaction: {r_smi} → {p_smi}")
-            print(f"Reactant:  {r_names}")
-            print(f"Product:   {p_names}")
-            print(f"Class:     {fp.reaction_class}")
-            print(f"Frobenius: {fp.frobenius_order}")
-            print(f"Delta:     {fp.delta_tokens}")
-            print(f"Lost:      {', '.join(TOKEN_NAMES[t] for t in fp.tokens_lost) or 'none'}")
-            print(f"Gained:    {', '.join(TOKEN_NAMES[t] for t in fp.tokens_gained) or 'none'}")
+            info_line(f"Reaction: {r_smi} → {p_smi}")
+            info_line(f"Reactant:  {r_names}")
+            info_line(f"Product:   {p_names}")
+            info_line(f"Class:     {fp.reaction_class}")
+            info_line(f"Frobenius: {fp.frobenius_order}")
+            success_line(f"Delta:     {fp.delta_tokens}")
+            success_line(f"Lost:      {', '.join(TOKEN_NAMES[t] for t in fp.tokens_lost) or 'none'}")
+            success_line(f"Gained:    {', '.join(TOKEN_NAMES[t] for t in fp.tokens_gained) or 'none'}")
             if ident.get("identified_reaction"):
-                print(f"Identified: {ident['identified_reaction']} (confidence: {ident['confidence']:.2f})")
+                info_line(f"Identified: {ident['identified_reaction']} (confidence: {ident['confidence']:.2f})")
         return 0
 
     elif sub == "analogies":
@@ -783,7 +783,7 @@ def cmd_imas(args):
         
         query = args.imas_smiles or args.imas_name
         if not query:
-            print("Error: --smiles <SMILES> or --name <catalog_name> required")
+            info_line("Error: --smiles <SMILES> or --name <catalog_name> required")
             return 1
         
         try:
@@ -791,7 +791,7 @@ def cmd_imas(args):
             print(describe_analogies(results, query_name=query))
             return 0
         except ValueError as e:
-            print(f"Error: {e}")
+            error_line(f"Error: {e}")
             return 1
     
     elif sub == "register":
@@ -800,7 +800,7 @@ def cmd_imas(args):
         smi = args.imas_smiles
         name = args.imas_name
         if not smi:
-            print("Error: --smiles <SMILES> required")
+            info_line("Error: --smiles <SMILES> required")
             return 1
         if not name:
             import hashlib
@@ -808,11 +808,11 @@ def cmd_imas(args):
         
         try:
             result = register_compound(name, smi, description=f"Auto-registered compound {name}")
-            print(f"Registered: {result['name']} -> {result['ig_tuple_str']}")
-            print(f"Status: {result['status']}")
+            info_line(f"Registered: {result['name']} -> {result['ig_tuple_str']}")
+            info_line(f"Status: {result['status']}")
             return 0
         except Exception as e:
-            print(f"Error: {e}")
+            error_line(f"Error: {e}")
             return 1
     
 
@@ -830,40 +830,40 @@ def cmd_imas(args):
         radius = args.crystal_radius
         max_candidates = args.crystal_candidates
         
-        print(f"\nCrystal-Guided Molecular Discovery")
-        print(f"{'='*60}")
-        print(f"SMILES: {smiles}")
+        info_line(f"\nCrystal-Guided Molecular Discovery")
+        info_line(f"{'='*60}")
+        info_line(f"SMILES: {smiles}")
         
         # Property analysis
         props = analyze_molecule_properties(smiles)
         if props.get('valid'):
-            print(f"\nProperties:")
-            print(f"  Formula: {props.get('formula','?')}")
-            print(f"  MW: {props.get('mol_weight',0):.1f} Da")
-            print(f"  LogP: {props.get('logp',0):.2f}")
-            print(f"  Lipinski: {props.get('lipinski_score',0)}/4")
+            info_line(f"\nProperties:")
+            info_line(f"  Formula: {props.get('formula','?')}")
+            info_line(f"  MW: {props.get('mol_weight',0):.1f} Da")
+            info_line(f"  LogP: {props.get('logp',0):.2f}")
+            info_line(f"  Lipinski: {props.get('lipinski_score',0)}/4")
         
         # IG Type
         arr = molecule_to_arrangement(smiles)
         if arr:
             fp = compute_fingerprint(arr)
             ig = fingerprint_to_ig(fp)
-            print(f"\nIG Crystal Type: {ig_tuple_str(ig)}")
+            info_line(f"\nIG Crystal Type: {ig_tuple_str(ig)}")
         
         # Neighborhood
         if radius > 0:
-            print(f"\nCrystal Neighborhood (d<={radius}):")
+            info_line(f"\nCrystal Neighborhood (d<={radius}):")
             designs = analyze_compound_design_space(smiles, radius)
             for d in designs[:max_candidates]:
-                print(f"  [{d['distance']}] {d['target_type']} [{d['criticality']}]")
+                info_line(f"  [{d['distance']}] {d['target_type']} [{d['criticality']}]")
                 for feat in d['features'][:2]:
-                    print(f"    - {feat}")
+                    info_line(f"    - {feat}")
                 if d['candidates']:
-                    print(f"    Candidates: {', '.join(d['candidates'][:2])}")
+                    info_line(f"    Candidates: {', '.join(d['candidates'][:2])}")
         
-        print(f"\n{'='*60}")
+        info_line(f"\n{'='*60}")
     else:
-        print("Unknown imas subcommand. Use: bridge, hunt, energy, compound, reaction, analogies, register")
+        info_line("Unknown imas subcommand. Use: bridge, hunt, energy, compound, reaction, analogies, register")
         return 1
 
 
@@ -886,17 +886,17 @@ def cmd_materials(args):
                 design = forge.forge(name, ig_tuple)
                 print(f"  Forged: {name} → {design.ouroboricity_tier} Frob={design.frobenius_score:.2f}  "
                       f"{design.proposed_composition[:70]}")
-            print(f"\n  Total: {len(novel)} materials forged")
+            info_line(f"\n  Total: {len(novel)} materials forged")
             if args.mat_output:
                 out = {name: forge._designs[name].to_dict() for name in novel}
                 with open(args.mat_output, 'w') as f:
                     json.dump(out, f, indent=2)
-                print(f"  Exported to {args.mat_output}")
+                info_line(f"  Exported to {args.mat_output}")
 
         elif getattr(args, 'mat_tuple', None):
             parts = [p.strip() for p in args.mat_tuple.split(',')]
             if len(parts) != 12:
-                print(f"Error: --tuple requires exactly 12 comma-separated primitives, got {len(parts)}")
+                error_line(f"Error: --tuple requires exactly 12 comma-separated primitives, got {len(parts)}")
                 return 1
             ig_tuple = tuple(parts)
             name = args.mat_name or "custom_material"
@@ -905,7 +905,7 @@ def cmd_materials(args):
             if args.mat_output:
                 with open(args.mat_output, 'w') as f:
                     json.dump(design.to_dict(), f, indent=2)
-                print(f"\n  Exported to {args.mat_output}")
+                info_line(f"\n  Exported to {args.mat_output}")
 
         elif getattr(args, 'mat_catalog', None):
             try:
@@ -914,9 +914,9 @@ def cmd_materials(args):
                 if args.mat_output:
                     with open(args.mat_output, 'w') as f:
                         json.dump(design.to_dict(), f, indent=2)
-                    print(f"\n  Exported to {args.mat_output}")
+                    info_line(f"\n  Exported to {args.mat_output}")
             except (KeyError, FileNotFoundError) as e:
-                print(f"Error: {e}")
+                error_line(f"Error: {e}")
                 return 1
 
         elif getattr(args, 'mat_imas', None):
@@ -926,9 +926,9 @@ def cmd_materials(args):
                 if args.mat_output:
                     with open(args.mat_output, 'w') as f:
                         json.dump(design.to_dict(), f, indent=2)
-                    print(f"\n  Exported to {args.mat_output}")
+                    info_line(f"\n  Exported to {args.mat_output}")
             except Exception as e:
-                print(f"Error: {e}")
+                error_line(f"Error: {e}")
                 return 1
 
         elif args.mat_name:
@@ -939,31 +939,31 @@ def cmd_materials(args):
                 if args.mat_output:
                     with open(args.mat_output, 'w') as f:
                         json.dump(design.to_dict(), f, indent=2)
-                    print(f"\n  Exported to {args.mat_output}")
+                    info_line(f"\n  Exported to {args.mat_output}")
             else:
                 try:
                     design = forge.forge_from_imas(args.mat_name)
                     print(forge.report(f"{args.mat_name}_material"))
                 except Exception as e:
-                    print(f"Error: {e}")
-                    print("Known names: frobenius_composite, critical_sensor_metamaterial, ep_detector,")
-                    print("  eternal_memory_alloy, topological_thermal_rectifier, hierarchical_impact_absorber,")
-                    print("  quantum_topological_substrate, non_abelian_braiding_material")
-                    print("  Or any IMASM canonical: I_Dialetheic_Bootstrap, etc.")
-                    print("  Or use: --tuple '𐑼,𐑸,𐑾,...' --name my_mat     (custom 12-tuple)")
-                    print("  Or use: --catalog <name>                    (catalog lookup)")
+                    error_line(f"Error: {e}")
+                    info_line("Known names: frobenius_composite, critical_sensor_metamaterial, ep_detector,")
+                    info_line("  eternal_memory_alloy, topological_thermal_rectifier, hierarchical_impact_absorber,")
+                    info_line("  quantum_topological_substrate, non_abelian_braiding_material")
+                    info_line("  Or any IMASM canonical: I_Dialetheic_Bootstrap, etc.")
+                    info_line("  Or use: --tuple '𐑼,𐑸,𐑾,...' --name my_mat     (custom 12-tuple)")
+                    info_line("  Or use: --catalog <name>                    (catalog lookup)")
                     return 1
         else:
-            print("Usage: rebis.py materials forge [options]")
-            print("  --all                         Forge all 8 predefined materials")
-            print("  --name <name>                 Forge a predefined material")
-            print("  --tuple 'D,T,R,P,F,K,G,C,Φ,H,S,Ω'  Forge from 12-primitive tuple")
-            print("  --catalog <name>              Forge from catalog entry")
-            print("  --imas <name>                 Forge from IMASM canonical")
-            print("  --output <path>               Export JSON results")
-            print("\nPredefined: frobenius_composite, critical_sensor_metamaterial, ep_detector,")
-            print("  eternal_memory_alloy, topological_thermal_rectifier, hierarchical_impact_absorber,")
-            print("  quantum_topological_substrate, non_abelian_braiding_material")
+            info_line("Usage: rebis.py materials forge [options]")
+            info_line("  --all                         Forge all 8 predefined materials")
+            info_line("  --name <name>                 Forge a predefined material")
+            info_line("  --tuple 'D,T,R,P,F,K,G,C,Φ,H,S,Ω'  Forge from 12-primitive tuple")
+            info_line("  --catalog <name>              Forge from catalog entry")
+            info_line("  --imas <name>                 Forge from IMASM canonical")
+            info_line("  --output <path>               Export JSON results")
+            info_line("\nPredefined: frobenius_composite, critical_sensor_metamaterial, ep_detector,")
+            info_line("  eternal_memory_alloy, topological_thermal_rectifier, hierarchical_impact_absorber,")
+            info_line("  quantum_topological_substrate, non_abelian_braiding_material")
         return 0
 
     elif sub == "frobenius":
@@ -1009,7 +1009,7 @@ def cmd_materials(args):
             if args.mat_output:
                 with open(args.mat_output, 'w') as f:
                     json.dump(result, f, indent=2, default=str)
-                print(f"\n  Exported to {args.mat_output}")
+                info_line(f"\n  Exported to {args.mat_output}")
         elif args.mat_name == "cliff":
             for name, mat in all_mats.items():
                 temp = 0.01 if "9" in name else (77.0 if "7" in name else 300.0)
@@ -1018,10 +1018,10 @@ def cmd_materials(args):
         elif args.mat_name == "bridge":
             print(IMASM_EagleBridge.report())
         else:
-            print("Sophick Forge requires --name. Static reference: see INDEX.md")
-            print("  --name eagle_3_amalgam | eagle_7_animated | eagle_9_sophick")
-            print("  --name cliff for Frobenius Cliff analysis")
-            print("  --name bridge for IMASM->Eagle bridge")
+            info_line("Sophick Forge requires --name. Static reference: see INDEX.md")
+            info_line("  --name eagle_3_amalgam | eagle_7_animated | eagle_9_sophick")
+            info_line("  --name cliff for Frobenius Cliff analysis")
+            info_line("  --name bridge for IMASM->Eagle bridge")
         return 0
 
     elif sub == "exactor":
@@ -1034,31 +1034,31 @@ def cmd_materials(args):
             print(CategoryErrorDiagnosis.diagnose())
         elif args.mat_name == "close":
             result = FrobeniusGapCloser.close_gap()
-            print(f"Selected pathway: {result['selected_pathway']}")
-            print(f"Gap closed: {result['gap_closed']}")
-            print(f"Closure type: {result['closure_state']['closure_type']}")
-            print(f"Obstruction: {result['closure_state']['obstruction']}")
+            info_line(f"Selected pathway: {result['selected_pathway']}")
+            info_line(f"Gap closed: {result['gap_closed']}")
+            info_line(f"Closure type: {result['closure_state']['closure_type']}")
+            info_line(f"Obstruction: {result['closure_state']['obstruction']}")
             print()
             print(result['exactor_design'])
         elif args.mat_name in ALL_EXACTORS:
             exactor = ALL_EXACTORS[args.mat_name]()
             print(exactor.report())
             state = exactor.verify_closure()
-            print(f"\nClosure: {'EXACT' if state.is_exact else 'APPROXIMATE'}")
-            print(f"Type: {state.closure_type().value}")
+            info_line(f"\nClosure: {'EXACT' if state.is_exact else 'APPROXIMATE'}")
+            info_line(f"Type: {state.closure_type().value}")
         elif args.mat_name == "pathways":
             for p in ALL_PATHWAYS:
                 print(p.description())
                 print()
         else:
-            print("Frobenius Exactor requires --name. Static reference: see INDEX.md")
-            print("  --name diagnose | close | pathways")
+            info_line("Frobenius Exactor requires --name. Static reference: see INDEX.md")
+            info_line("  --name diagnose | close | pathways")
             for name in ALL_EXACTORS:
-                print(f"  --name {name}")
+                info_line(f"  --name {name}")
         return 0
 
     else:
-        print("Unknown materials subcommand. Use: forge, frobenius, ouroboric, sophick, exactor. Static data: see INDEX.md")
+        info_line("Unknown materials subcommand. Use: forge, frobenius, ouroboric, sophick, exactor. Static data: see INDEX.md")
         return 1
 
 
@@ -1377,8 +1377,8 @@ def cmd_alchemy(args):
             analysis = bridge.analyze_treatise(tname)
             print(json.dumps(analysis, indent=2))
         else:
-            print("Usage: rebis.py alchemy tier <treatise_name>")
-            print("Available tiers: O_inf_self_modeling, O2_irreducible_product, O1_pedagogical, O1_reformist, O1_kabbalistic, O1_supercritical, O0_metadata, O0_practical")
+            info_line("Usage: rebis.py alchemy tier <treatise_name>")
+            info_line("Available tiers: O_inf_self_modeling, O2_irreducible_product, O1_pedagogical, O1_reformist, O1_kabbalistic, O1_supercritical, O0_metadata, O0_practical")
             return 1
         return 0
     elif sub == "scroll-family":
@@ -1400,13 +1400,13 @@ def cmd_alchemy(args):
         tup_str = args.alchemy_tuple
         op_name = args.alchemy_operation
         if not tup_str or not op_name:
-            print("Usage: rebis.py alchemy operate --tuple D,T,R,P,F,K,G,C,Phi,H,S,Omega --operation <name>")
+            info_line("Usage: rebis.py alchemy operate --tuple D,T,R,P,F,K,G,C,Phi,H,S,Omega --operation <name>")
             ops = [n for n, _, _ in AlchemicalOperations.list_operations()]
-            print("Operations:", ", ".join(ops))
+            info_line("Operations:", ", ".join(ops))
             return 1
         parts = tup_str.split(",")
         if len(parts) != 12:
-            print("Tuple must have exactly 12 comma-separated values")
+            info_line("Tuple must have exactly 12 comma-separated values")
             return 1
         from shared.primitives import ORDINALS, PRIMITIVE_ORDER
         tup_dict = {}
@@ -1425,7 +1425,7 @@ def cmd_alchemy(args):
     elif sub == "greenfire":
         smiles = args.alchemy_treatise
         if not smiles:
-            print("Usage: rebis.py alchemy greenfire <catalyst_SMILES>")
+            info_line("Usage: rebis.py alchemy greenfire <catalyst_SMILES>")
             return 1
         result = bridge.analyze_photocatalyst(smiles, getattr(args, 'substrate', None))
         import json
@@ -1435,7 +1435,7 @@ def cmd_alchemy(args):
     elif sub == "wavelength":
         smiles = args.alchemy_treatise
         if not smiles:
-            print("Usage: rebis.py alchemy wavelength <catalyst_SMILES>")
+            info_line("Usage: rebis.py alchemy wavelength <catalyst_SMILES>")
             return 1
         result = bridge.suggest_wavelength(smiles)
         import json
@@ -1446,7 +1446,7 @@ def cmd_alchemy(args):
     elif sub == "host":
         smiles = args.alchemy_treatise
         if not smiles:
-            print("Usage: rebis.py alchemy host <host_SMILES>")
+            info_line("Usage: rebis.py alchemy host <host_SMILES>")
             return 1
         result = bridge.analyze_host(smiles)
         import json
@@ -1457,7 +1457,7 @@ def cmd_alchemy(args):
         host = args.alchemy_treatise
         guest = args.guest_smiles if hasattr(args, 'guest_smiles') else None
         if not host or not guest:
-            print("Usage: rebis.py alchemy bind <host_SMILES> --guest <guest_SMILES>")
+            info_line("Usage: rebis.py alchemy bind <host_SMILES> --guest <guest_SMILES>")
             return 1
         result = bridge.compute_binding(host, guest)
         import json
@@ -1468,7 +1468,7 @@ def cmd_alchemy(args):
     elif sub == "retro":
         smiles = args.alchemy_treatise
         if not smiles:
-            print("Usage: rebis.py alchemy retro <target_SMILES>")
+            info_line("Usage: rebis.py alchemy retro <target_SMILES>")
             return 1
         result = bridge.plan_synthesis(smiles)
         import json
@@ -1478,7 +1478,7 @@ def cmd_alchemy(args):
     elif sub == "grand-sequence":
         smiles = args.alchemy_treatise
         if not smiles:
-            print("Usage: rebis.py alchemy grand-sequence <target_SMILES>")
+            info_line("Usage: rebis.py alchemy grand-sequence <target_SMILES>")
             return 1
         result = bridge.grand_sequence_synthesis(smiles)
         import json
@@ -1489,7 +1489,7 @@ def cmd_alchemy(args):
     elif sub == "decode":
         phrase = args.alchemy_treatise
         if not phrase:
-            print("Usage: rebis.py alchemy decode '<cryptic_phrase>'")
+            info_line("Usage: rebis.py alchemy decode '<cryptic_phrase>'")
             return 1
         result = bridge.decode_cryptic(phrase)
         import json
@@ -1500,7 +1500,7 @@ def cmd_alchemy(args):
         cryptic = args.alchemy_treatise
         modern = args.modern_term if hasattr(args, 'modern_term') else None
         if not cryptic or not modern:
-            print("Usage: rebis.py alchemy learn '<cryptic>' --modern '<modern>'")
+            info_line("Usage: rebis.py alchemy learn '<cryptic>' --modern '<modern>'")
             return 1
         result = bridge.learn_decoding(cryptic, modern, "user_discovery", 0.8, "user")
         import json
@@ -1510,7 +1510,7 @@ def cmd_alchemy(args):
     elif sub == "alchemical-mol":
         smiles = args.alchemy_treatise
         if not smiles:
-            print("Usage: rebis.py alchemy alchemical-mol <SMILES>")
+            info_line("Usage: rebis.py alchemy alchemical-mol <SMILES>")
             return 1
         result = bridge.decode_molecule(smiles)
         import json
@@ -1521,11 +1521,11 @@ def cmd_alchemy(args):
     elif sub == "zosimos":
         tup_str = args.alchemy_tuple
         if not tup_str:
-            print("Usage: rebis.py alchemy zosimos --tuple D,T,R,P,F,K,G,C,Phi,H,S,Omega")
+            info_line("Usage: rebis.py alchemy zosimos --tuple D,T,R,P,F,K,G,C,Phi,H,S,Omega")
             return 1
         parts = tup_str.split(",")
         if len(parts) != 12:
-            print("Tuple must have exactly 12 comma-separated values")
+            info_line("Tuple must have exactly 12 comma-separated values")
             return 1
         from shared.primitives import ORDINALS, PRIMITIVE_ORDER
         tup_dict = {}
@@ -1543,11 +1543,11 @@ def cmd_alchemy(args):
     elif sub == "portico":
         tup_str = args.alchemy_tuple
         if not tup_str:
-            print("Usage: rebis.py alchemy portico --tuple D,T,R,P,F,K,G,C,Phi,H,S,Omega")
+            info_line("Usage: rebis.py alchemy portico --tuple D,T,R,P,F,K,G,C,Phi,H,S,Omega")
             return 1
         parts = tup_str.split(",")
         if len(parts) != 12:
-            print("Tuple must have exactly 12 comma-separated values")
+            info_line("Tuple must have exactly 12 comma-separated values")
             return 1
         from shared.primitives import ORDINALS, PRIMITIVE_ORDER
         tup_dict = {}
@@ -1565,11 +1565,11 @@ def cmd_alchemy(args):
     elif sub == "stilling":
         tup_str = args.alchemy_tuple
         if not tup_str:
-            print("Usage: rebis.py alchemy stilling --tuple D,T,R,P,F,K,G,C,Phi,H,S,Omega")
+            info_line("Usage: rebis.py alchemy stilling --tuple D,T,R,P,F,K,G,C,Phi,H,S,Omega")
             return 1
         parts = tup_str.split(",")
         if len(parts) != 12:
-            print("Tuple must have exactly 12 comma-separated values")
+            info_line("Tuple must have exactly 12 comma-separated values")
             return 1
         from shared.primitives import ORDINALS, PRIMITIVE_ORDER
         tup_dict = {}
@@ -1593,7 +1593,7 @@ def cmd_alchemy(args):
         else:
             parts = tup_str.split(",")
             if len(parts) != 12:
-                print("Tuple must have exactly 12 comma-separated values")
+                info_line("Tuple must have exactly 12 comma-separated values")
                 return 1
             from shared.primitives import ORDINALS, PRIMITIVE_ORDER
             tup_dict = {}
@@ -1611,7 +1611,7 @@ def cmd_alchemy(args):
     elif sub == "key":
         key_num = args.key_number if hasattr(args, 'key_number') else None
         if key_num is None:
-            print("Usage: rebis.py alchemy key <1-12>")
+            info_line("Usage: rebis.py alchemy key <1-12>")
             return 1
         result = bridge.key_info(int(key_num))
         import json
@@ -1625,13 +1625,13 @@ def cmd_alchemy(args):
         return 0
 
     else:
-        print("Unknown subcommand. Use:")
-        print("  report, tier, scroll-family, suggest, trace, operate")
-        print("  greenfire, wavelength, host, bind")
-        print("  retro, grand-sequence")
-        print("  decode, learn, alchemical-mol")
-        print("  zosimos, portico, stilling")
-        print("  ladder, key, opus")
+        info_line("Unknown subcommand. Use:")
+        info_line("  report, tier, scroll-family, suggest, trace, operate")
+        info_line("  greenfire, wavelength, host, bind")
+        info_line("  retro, grand-sequence")
+        info_line("  decode, learn, alchemical-mol")
+        info_line("  zosimos, portico, stilling")
+        info_line("  ladder, key, opus")
         return 1
 
 if __name__ == "__main__":

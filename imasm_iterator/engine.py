@@ -335,7 +335,7 @@ f"{smap.distinct_coarse} coarse (+{new_coarse}), "
     smap.finalize()
     elapsed = time.time() - t0
     if verbose:
-        print(f"\nDone. {total_count:,} in {elapsed:.1f}s ({total_count/elapsed:,.0f}/s)")
+        success_line(f"\nDone. {total_count:,} in {elapsed:.1f}s ({total_count/elapsed:,.0f}/s)")
     return smap
 
 

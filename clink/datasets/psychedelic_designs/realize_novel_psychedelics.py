@@ -197,9 +197,9 @@ class PsychedelicRealizer:
         """Realize all 5 novel compounds."""
         results = {}
         for key, comp in self.compounds.items():
-            print(f"\n{'='*60}")
-            print(f"Realizing: {comp['name']}")
-            print(f"{'='*60}")
+            info_line(f"\n{'='*60}")
+            info_line(f"Realizing: {comp['name']}")
+            info_line(f"{'='*60}")
             results[key] = self.realize_one(key, comp)
         # Write master index
         self._write_master_index(results)
@@ -1217,7 +1217,7 @@ class PsychedelicRealizer:
             }
         with open(self.output_root / "master_index.json", "w") as f:
             json.dump(index, f, indent=2, ensure_ascii=False)
-        print(f"\nMaster index written to {self.output_root / 'master_index.json'}")
+        info_line(f"\nMaster index written to {self.output_root / 'master_index.json'}")
 
 
 # ─── MAIN ─────────────────────────────────────────────────────────
@@ -1227,14 +1227,14 @@ def main():
     realizer = PsychedelicRealizer(output_root)
     results = realizer.realize_all()
     
-    print(f"\n{'='*60}")
-    print(f"REALIZATION COMPLETE")
-    print(f"{'='*60}")
-    print(f"Output: {output_root}")
-    print(f"Compounds realized: {len(results)}")
+    info_line(f"\n{'='*60}")
+    success_line(f"REALIZATION COMPLETE")
+    info_line(f"{'='*60}")
+    info_line(f"Output: {output_root}")
+    info_line(f"Compounds realized: {len(results)}")
     for key in results:
         info_line(f"  - {NOVEL_COMPOUNDS[key]['name']}")
-    print(f"\nDesign directories:")
+    info_line(f"\nDesign directories:")
     for key in results:
         info_line(f"  {output_root / key}/")
         info_line(f"    ├── design_manifest.json")

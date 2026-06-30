@@ -63,7 +63,7 @@ def main():
         do_search(signatures, length)
         return
 
-    print(f"IMASM Arrangement Space Mapper")
+    info_line(f"IMASM Arrangement Space Mapper")
     info_line(f"  Length: {length}")
     info_line(f"  Total space: {total_space:,} arrangements")
     info_line(f"  Signatures: {len(signatures)}")
@@ -106,9 +106,9 @@ def main():
     # Full map JSON
     map_path = os.path.join(OUTPUT_DIR, "imasm_space_map.json")
     smap.to_json(map_path)
-    print(f"\nFull map: {map_path}")
-    print(f"Summary:  {summary_path}")
-    print(f"Total time: {elapsed:.1f}s ({elapsed/3600:.2f}h)")
+    info_line(f"\nFull map: {map_path}")
+    info_line(f"Summary:  {summary_path}")
+    info_line(f"Total time: {elapsed:.1f}s ({elapsed/3600:.2f}h)")
 
 
 def do_search(signatures, length):
@@ -117,7 +117,7 @@ def do_search(signatures, length):
     for name in sorted(CANONICAL_CLASSES.keys()):
         arr = CANONICAL_CLASSES[name]
         if len(arr) != length:
-            print(f"{name}: length={len(arr)} (different from scan length {length})")
+            info_line(f"{name}: length={len(arr)} (different from scan length {length})")
             fp = compute_fingerprint(arr)
             info_line(f"  Coarse key: {fp.coarse_key()}")
             info_line(f"  {fp.description()}")
@@ -125,7 +125,7 @@ def do_search(signatures, length):
             continue
 
         fp = compute_fingerprint(arr)
-        print(f"{name}:")
+        info_line(f"{name}:")
         info_line(f"  Sequence:    {arrangement_str(arr)}")
         info_line(f"  Description: {fp.description()}")
         info_line(f"  Coarse key:  {fp.coarse_key()}")

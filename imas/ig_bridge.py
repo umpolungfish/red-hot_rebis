@@ -311,12 +311,12 @@ def structural_signal_score(ig: Tuple[str, ...]) -> float:
 # ═══════════════════════════════════════════════════════════════════
 
 if __name__ == '__main__':
-    print("=" * 72)
+    info_line("=" * 72)
     info_line("IMASM → IG STRUCTURAL BRIDGE")
-    print("=" * 72)
+    info_line("=" * 72)
 
     distinct = distinct_canonical_ig_types()
-    print(f"\n12 canonicals → {len(distinct)} distinct IG types\n")
+    info_line(f"\n12 canonicals → {len(distinct)} distinct IG types\n")
 
     for ig, names in sorted(distinct.items(), key=lambda x: -len(x[1])):
         label = " + ".join(n.split('_', 1)[1] for n in names)
@@ -330,7 +330,7 @@ if __name__ == '__main__':
     # Clusters
     for max_d in [4, 6, 8]:
         clusters = find_structural_clusters(max_d)
-        print(f"Clusters at d≤{max_d}: {len(clusters)}")
+        info_line(f"Clusters at d≤{max_d}: {len(clusters)}")
         for c in clusters:
             if len(c) > 1:
                 info_line(f"  {' ↔ '.join(n.split('_',1)[1] for n in c)}")

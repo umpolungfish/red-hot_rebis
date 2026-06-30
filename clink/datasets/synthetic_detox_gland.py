@@ -1145,7 +1145,7 @@ def generate_all(output_dir: Optional[str] = None) -> Dict[str, str]:
         json.dump(manifest, f, indent=2)
     written["manifest.json"] = manifest_path
     
-    print(f"✓ SYNTHETIC DETOX GLAND DESIGN: {len(files)} files, {total_bytes} bytes")
+    success_line(f"✓ SYNTHETIC DETOX GLAND DESIGN: {len(files)} files, {total_bytes} bytes")
     info_line(f"  Output: {output_dir}/")
     for fn, fp in written.items():
         info_line(f"  • {fn} ({os.path.getsize(fp)} bytes)")

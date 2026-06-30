@@ -27,11 +27,11 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
     if not output_dir:
         output_dir = str(Path(__file__).parent)
 
-    print("=" * 70)
+    info_line("=" * 70)
     info_line("CLINK HUMAN DESIGN PIPELINE")
     info_line("Homo sapiens — ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩  O_∞  C=1.0")
     info_line("ZFC_fe foundation: μ∘δ=id at every layer")
-    print("=" * 70)
+    info_line("=" * 70)
 
     if mode == "actionable":
         info_line("\nMode: actionable (gene_designer + protein_structure + SBML + plasmid)\n")
@@ -48,15 +48,15 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
             write_files=True,
         )
 
-    print(f"\n{'=' * 70}")
+    info_line(f"\n{'=' * 70}")
     print(f"COMPLETE — {manifest.get('total_files',0)} files, "
           f"{manifest.get('total_bytes',0):,} bytes")
-    print(f"Output: {manifest.get('output_directory', output_dir)}")
-    print(f"Frobenius: {'✓' if manifest.get('frobenius_verified', True) else '✗'}")
-    print(f"\nStructural type: ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩")
-    print(f"Tier: O_∞  |  C-score: 1.0")
-    print(f"Foundation: ZFC_fe  |  μ∘δ=id")
-    print(f"{'=' * 70}")
+    info_line(f"Output: {manifest.get('output_directory', output_dir)}")
+    error_line(f"Frobenius: {'✓' if manifest.get('frobenius_verified', True) else '✗'}")
+    info_line(f"\nStructural type: ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩")
+    info_line(f"Tier: O_∞  |  C-score: 1.0")
+    info_line(f"Foundation: ZFC_fe  |  μ∘δ=id")
+    info_line(f"{'=' * 70}")
 
     return manifest
 

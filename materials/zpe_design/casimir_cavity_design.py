@@ -629,7 +629,7 @@ class AtHomeZPESystem:
                        report_every: int = 100) -> Dict:
         """Run full simulation with smart meter feedback."""
         print(self.print_specs())
-        print(f"\nRunning {n_cycles} extraction cycles...\n")
+        info_line(f"\nRunning {n_cycles} extraction cycles...\n")
 
         for i in range(n_cycles):
             t = i * self.extraction_params.cycle_period_s
@@ -648,9 +648,9 @@ f"energy={result.energy_extracted_J:.4e} J, "
         # Verify Frobenius closure
         verify_result = self.verifier.frobenius_verify(n_cycles)
 
-        print(f"\n{'='*66}")
-        print(f"SIMULATION COMPLETE")
-        print(f"{'='*66}")
+        info_line(f"\n{'='*66}")
+        success_line(f"SIMULATION COMPLETE")
+        info_line(f"{'='*66}")
         info_line(f"  Total cycles: {verify_result['n_cycles']}")
         info_line(f"  Total energy extracted: {verify_result['total_energy_extracted_J']:.4e} J")
         info_line(f"  Mean energy per cycle: {verify_result['mean_energy_per_cycle_J']:.6e} J")
@@ -660,9 +660,9 @@ f"energy={result.energy_extracted_J:.4e} J, "
         info_line(f"  Frobenius closed: {'YES' if verify_result['frobenius_closed'] else 'NO'}")
 
         if verify_result['frobenius_closed']:
-            print(f"\n  >>> mu circ delta = id VERIFIED <<<")
+            info_line(f"\n  >>> mu circ delta = id VERIFIED <<<")
         else:
-            print(f"\n  >>> mu circ delta = id NOT YET ACHIEVED <<<")
+            info_line(f"\n  >>> mu circ delta = id NOT YET ACHIEVED <<<")
             info_line(f"      Promotions remaining to reach closure.")
 
         return verify_result
@@ -674,6 +674,6 @@ f"energy={result.energy_extracted_J:.4e} J, "
 
 if __name__ == "__main__":
     info_line("At-Home Zero-Point Energy System — Physical Design")
-    print("=" * 66)
+    info_line("=" * 66)
     system = AtHomeZPESystem()
     results = system.run_simulation(n_cycles=100, report_every=25)

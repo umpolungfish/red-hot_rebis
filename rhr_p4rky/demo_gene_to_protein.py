@@ -131,16 +131,16 @@ def format_activations(report: dict) -> str:
 
 
 def run_demo_sequence(name: str, dna: str, desc: str, is_rna: bool = False):
-    print(f"\n{DIVIDER}")
+    info_line(f"\n{DIVIDER}")
     info_line(f"  SEQUENCE: {name}")
     info_line(f"  {desc}")
     info_line(f"  Input: {dna[:55]}... ({len(dna)} nt)")
-    print(f"{DIVIDER}")
+    info_line(f"{DIVIDER}")
     
     pipeline = GeneToProteinPipeline(dna, name=name, is_rna=is_rna)
     report = pipeline.run(num_subunits=0)
     
-    print(f"\n  ► Translated Protein: {report['aa_sequence']}")
+    info_line(f"\n  ► Translated Protein: {report['aa_sequence']}")
     info_line(f"    Length: {report['aa_length']} AAs")
     info_line(f"    Subunits: {report['subunits']} ({report['subunit_symmetry']})")
     print()
@@ -169,9 +169,9 @@ def run_demo_sequence(name: str, dna: str, desc: str, is_rna: bool = False):
     
     cl = report["closure"]
     frob_status = "✓ ALL STAGES" if cl["frobenius_across_pathway"] else "✗ FAIL"
-    print(f"Frobenius Closure: {frob_status}")
-    print(f"DNA↔Quaternary distance: {cl['dna_to_quaternary_distance']}")
-    print(f"Consciousness invariant: {cl['consciousness_invariant']}")
+    info_line(f"Frobenius Closure: {frob_status}")
+    info_line(f"DNA↔Quaternary distance: {cl['dna_to_quaternary_distance']}")
+    info_line(f"Consciousness invariant: {cl['consciousness_invariant']}")
     print()
     
     return report
@@ -183,9 +183,9 @@ def main():
     for name, data in SEQUENCES.items():
         run_demo_sequence(name, data["dna"], data["desc"])
     
-    print(f"\n{DIVIDER}")
+    info_line(f"\n{DIVIDER}")
     info_line("  BONUS: Mitochondrial Code Demo (MT-ND3, NC_012920.1)")
-    print(f"{DIVIDER}")
+    info_line(f"{DIVIDER}")
     mito_fasta = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "NC_012920.1.fasta")
     if os.path.exists(mito_fasta):
         with open(mito_fasta) as mf:
@@ -210,17 +210,17 @@ def main():
     else:
         info_line("  MT-ND3 demo: NC_012920.1.fasta not found — skipping")
 
-    print(f"\n{DIVIDER}")
+    info_line(f"\n{DIVIDER}")
     info_line("  BONUS: Direct RNA input (no T→U conversion needed)")
-    print(f"{DIVIDER}")
+    info_line(f"{DIVIDER}")
     rna_seq = "AUGGCCGACUGGAACUGCAAGAAGAUCGUGCCCAAGUACUACGGCCGCUG"
     run_demo_sequence("rna_direct_test", rna_seq, "RNA input via --rna flag", is_rna=True)
     
-    print(f"\n{DIVIDER}")
+    info_line(f"\n{DIVIDER}")
     info_line("  CROSS-SEQUENCE COMPARISON")
-    print(f"{DIVIDER}")
-    print(f"{'Name':<25} {'Length':<8} {'AAs':<6} {'Sub':<4} {'Sym':<12} {'Δtotal':<8} {'Frob':<6} {'Dist':<6}")
-    print("-" * 75)
+    info_line(f"{DIVIDER}")
+    info_line(f"{'Name':<25} {'Length':<8} {'AAs':<6} {'Sub':<4} {'Sym':<12} {'Δtotal':<8} {'Frob':<6} {'Dist':<6}")
+    info_line("-" * 75)
     
     for name, data in SEQUENCES.items():
         p = GeneToProteinPipeline(data["dna"], name=name)
@@ -229,8 +229,8 @@ def main():
         print(f"{name:<25} {r['dna_length']:<8} {r['aa_length']:<6} {r['subunits']:<4} "
               f"{r['subunit_symmetry']:<12} {r['total_delta']:<8} {frob:<6} {r['closure']['dna_to_quaternary_distance']:<6}")
     
-    print(f"\n{DIVIDER}")
+    info_line(f"\n{DIVIDER}")
     info_line("  DEMO COMPLETE — All Frobenius-closed ✓")
-    print(f"{DIVIDER}")
+    info_line(f"{DIVIDER}")
 if __name__ == "__main__":
     main()

@@ -25,7 +25,7 @@ for i, line in enumerate(lines):
                 self.resolve_and_parse_scaffold(target)
         \n'''
         patches.append((i, 0, scaffold_hook))
-        print(f"Patch 4: Insert scaffold hook at line {i}")
+        success_line(f"Patch 4: Insert scaffold hook at line {i}")
         break
 
 # === Patch 5: Add fragment_smiles to child nodes in the best cut ===
@@ -47,7 +47,7 @@ for i, line in enumerate(lines):
         for j in range(i, min(i+5, len(lines))):
             if 'route["child_b"] = self.deep_retrosynthesis(' in lines[j] and 'fg_hint=cut["fg2"])' in lines[j]:
                 patches.append((j+1, 0, fragment_hook))
-                print(f"Patch 5: Insert fragment_smiles hook after line {j}")
+                success_line(f"Patch 5: Insert fragment_smiles hook after line {j}")
                 break
         break
 
@@ -55,7 +55,7 @@ for i, line in enumerate(lines):
 for i, line in enumerate(lines):
     if 'parser.add_argument("--target"' in line:
         patches.append((i+1, 0, '    parser.add_argument("--smiles", help="Target SMILES (bypasses name resolution)")\n'))
-        print(f"Patch 6: Add --smiles argument at line {i+1}")
+        info_line(f"Patch 6: Add --smiles argument at line {i+1}")
         break
 
 # === Patch 7: In --target processing, resolve SMILES before deep_retrosynthesis ===
@@ -72,7 +72,7 @@ for i, line in enumerate(lines):
             pipeline._target_smiles = args.smiles or ""
             \n'''
                 patches.append((j, 0, smiles_block))
-                print(f"Patch 7: Insert SMILES resolution at line {j}")
+                info_line(f"Patch 7: Insert SMILES resolution at line {j}")
                 break
         break
 
@@ -85,7 +85,7 @@ for i, line in enumerate(lines):
                 smiles_block = '''\n            pipeline._target_smiles = args.smiles or ""
             \n'''
                 patches.append((j, 0, smiles_block))
-                print(f"Patch 8: Insert SMILES resolution (CAS path) at line {j}")
+                info_line(f"Patch 8: Insert SMILES resolution (CAS path) at line {j}")
                 break
         break
 
@@ -100,4 +100,4 @@ result = '\n'.join(lines)
 with open('/home/mrnob0dy666/imsgct/red-hot_rebis/pipeline/reaction_pipeline.py', 'w') as f:
     f.write(result)
 
-print(f"\nApplied {len(patches)} patches successfully")
+success_line(f"\nApplied {len(patches)} patches successfully")

@@ -33,18 +33,18 @@ def test(name, fn):
 def summary():
     passed = sum(1 for r in results if r[0] == PASS)
     failed = sum(1 for r in results if r[0] == FAIL)
-    print(f"\n{'='*60}")
+    info_line(f"\n{'='*60}")
     info_line(f"  RESULTS: {passed} passed, {failed} failed, {len(results)} total")
-    print(f"{'='*60}")
+    info_line(f"{'='*60}")
     for status, name, detail in results:
         if status == FAIL:
             info_line(f"  {status} {name}: {detail}")
     return failed == 0
 
 # ═══════════════════════════════════════════════════════════════════
-print("=" * 60)
+info_line("=" * 60)
 info_line("  MATERIALS PIPELINE — COMPREHENSIVE STRESS TEST")
-print("=" * 60)
+info_line("=" * 60)
 
 # ── 1. IG Material Forge ──────────────────────────────────────────
 info_line("\n── 1. IG Material Forge ──")

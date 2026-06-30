@@ -805,9 +805,9 @@ SARS_COV2_PP1A_PARTIAL = (
 
 def run_all_tests():
     """Run the engine on all test sequences and print reports."""
-    print("=" * 72)
+    info_line("=" * 72)
     info_line("PROTEIN STRATIFIED PREDICTOR v3 — MULTI-SPECIES VALIDATION")
-    print("=" * 72)
+    info_line("=" * 72)
 
     engine = ProteinStratifiedPredictor()
     results = {}
@@ -822,24 +822,24 @@ def run_all_tests():
     ]
 
     for name, seq in test_cases:
-        print(f"\n{'─' * 72}")
+        info_line(f"\n{'─' * 72}")
         info_line(f"  TEST: {name}")
-        print(f"{'─' * 72}")
+        info_line(f"{'─' * 72}")
         result = engine.run_full_pipeline(seq, name=name)
         results[name] = result
         print(engine.generate_narrative(result))
 
     # ─── Cross-Species Comparison ─────────────────────────────────────
-    print("\n" + "=" * 72)
+    info_line("\n" + "=" * 72)
     info_line("CROSS-SPECIES INSULIN COMPARISON")
-    print("=" * 72)
+    info_line("=" * 72)
 
     insulin_cases = ["Human Preproinsulin", "Rat Preproinsulin", "Zebrafish Preproinsulin"]
     for name in insulin_cases:
         r = results[name]
         sp = r['signal_peptide']
         products = r['mature_products']
-        print(f"\n  {name}:")
+        info_line(f"\n  {name}:")
         info_line(f"    Signal peptide: {sp['length'] if sp else '?'} AA, "
 f"cleavage @ {sp['cleavage_position'] if sp else '?'}")
         info_line(f"    Cleavage sites: {len(r['cleavage_sites'])}")
@@ -857,9 +857,9 @@ f"cleavage @ {sp['cleavage_position'] if sp else '?'}")
             info_line(f"    • {p['name']}: Ω={omega}, {p['inferred_function']}")
 
     # ─── Proglucagon Detailed ─────────────────────────────────────────
-    print("\n" + "=" * 72)
+    info_line("\n" + "=" * 72)
     info_line("PROGLUCAGON — FRAGMENT CLASSIFICATION")
-    print("=" * 72)
+    info_line("=" * 72)
     r = results.get("Human Proglucagon")
     if r:
         for frag in r['fragments']:

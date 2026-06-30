@@ -57,7 +57,7 @@ def header(title, width=66):
         _console.rule(f"[bold yellow]{title}[/bold yellow]", style="bright_blue")
     else:
         print("=" * width)
-        print(f"  {title}")
+        info_line(f"  {title}")
         print("=" * width)
 
 def subheader(title):
@@ -65,7 +65,7 @@ def subheader(title):
     if STYLED:
         _console.print(f"\n[bold cyan]▸ {title}[/bold cyan]")
     else:
-        print(f"\n  {title}")
+        info_line(f"\n  {title}")
 
 def separator(width=66, char="─"):
     """Print a styled separator line."""
@@ -87,7 +87,7 @@ def target_line(name, smi="", indent=0):
         _console.print(txt)
     else:
         smi_str = f"  SMILES: {smi}" if smi else ""
-        print(f"{pad}{name}  {smi_str}")
+        info_line(f"{pad}{name}  {smi_str}")
 
 def precursor_line(label, name, fg_hint="", smi="", indent=0):
     """Print a precursor line."""
@@ -105,7 +105,7 @@ def precursor_line(label, name, fg_hint="", smi="", indent=0):
     else:
         smi_str = f"  SMILES: {smi}" if smi else ""
         fg_str = f"  [{fg_hint}]" if fg_hint else ""
-        print(f"{pad}{label}: {name}{fg_str}  {smi_str}")
+        info_line(f"{pad}{label}: {name}{fg_str}  {smi_str}")
 
 def bond_line(text, indent=0):
     """Print a bond description line (disconnection cut)."""
@@ -113,7 +113,7 @@ def bond_line(text, indent=0):
     if STYLED:
         _console.print(f"{pad}{text}", style="bold magenta")
     else:
-        print(f"{pad}{text}")
+        info_line(f"{pad}{text}")
 
 def numeric_line(label, value, unit="", indent=0):
     """Print a label with a highlighted numeric value."""
@@ -126,7 +126,7 @@ def numeric_line(label, value, unit="", indent=0):
             txt.append(f" {unit}", style="")
         _console.print(txt)
     else:
-        print(f"{pad}{label}: {value}" + (f" {unit}" if unit else ""))
+        info_line(f"{pad}{label}: {value}" + (f" {unit}" if unit else ""))
 
 def info_line(text, indent=0):
     """Print a metadata/info line in dim style."""
@@ -134,7 +134,7 @@ def info_line(text, indent=0):
     if STYLED:
         _console.print(f"{pad}{text}", style="dim white")
     else:
-        print(f"{pad}{text}")
+        info_line(f"{pad}{text}")
 
 def fg_line(text, indent=0):
     """Print a functional group line in blue."""
@@ -142,7 +142,7 @@ def fg_line(text, indent=0):
     if STYLED:
         _console.print(f"{pad}{text}", style="bold blue")
     else:
-        print(f"{pad}{text}")
+        info_line(f"{pad}{text}")
 
 def success_line(text, indent=0):
     """Print a success/confirmation line in bold green."""
@@ -150,7 +150,7 @@ def success_line(text, indent=0):
     if STYLED:
         _console.print(f"{pad}{text}", style="bold green")
     else:
-        print(f"{pad}{text}")
+        info_line(f"{pad}{text}")
 
 
 
@@ -160,14 +160,14 @@ def warning_line(text, indent=0):
     if STYLED:
         _console.print(f"{pad}{text}", style="bold yellow")
     else:
-        print(f"{pad}{text}")
+        info_line(f"{pad}{text}")
 def error_line(text, indent=0):
     """Print an error/warning line in bold red."""
     pad = "  " * indent
     if STYLED:
         _console.print(f"{pad}{text}", style="bold red")
     else:
-        print(f"{pad}{text}")
+        info_line(f"{pad}{text}")
 
 def analog_line(name, dist, smi="", indent=0):
     """Print a structural analog line."""
@@ -183,7 +183,7 @@ def analog_line(name, dist, smi="", indent=0):
         _console.print(txt)
     else:
         smi_str = f"  SMILES: {smi}" if smi else ""
-        print(f"  {name:40s} d={dist:.3f}  {smi_str}")
+        info_line(f"  {name:40s} d={dist:.3f}  {smi_str}")
 
 def path_step(step_num, label="", indent=0):
     """Print a path step header."""
@@ -191,7 +191,7 @@ def path_step(step_num, label="", indent=0):
     if STYLED:
         _console.print(f"{pad}[bold cyan]Step {step_num}[/bold cyan]{' ' + label if label else ''}")
     else:
-        print(f"{pad}Step {step_num}:{label}")
+        info_line(f"{pad}Step {step_num}:{label}")
 
 def step_detail(key, value, indent=1):
     """Print a key: value line within a step."""
@@ -199,7 +199,7 @@ def step_detail(key, value, indent=1):
     if STYLED:
         _console.print(f"{pad}[dim]{key}:[/dim] [white]{value}[/white]")
     else:
-        print(f"{pad}{key}: {value}")
+        info_line(f"{pad}{key}: {value}")
 
 def demo_title():
     """Print the startup title panel."""
@@ -212,8 +212,8 @@ def demo_title():
         ))
     else:
         print("=" * 66)
-        print("  ch3mpiler — Grammar-Derived Retrosynthetic Engine")
-        print("  No named reactions — disconnections from 12-primitive rules")
+        info_line("  ch3mpiler — Grammar-Derived Retrosynthetic Engine")
+        info_line("  No named reactions — disconnections from 12-primitive rules")
         print("=" * 66)
 def conflict_line(prim, tgt_val, src_val, indent=1):
     """Print a structural conflict report line."""
@@ -223,7 +223,7 @@ def conflict_line(prim, tgt_val, src_val, indent=1):
             f"{pad}[bold red]✗[/bold red] [bold]{prim}[/bold]: target=[yellow]{tgt_val}[/yellow] vs start=[yellow]{src_val}[/yellow]"
         )
     else:
-        print(f"{pad}  {prim}: target={tgt_val} vs start={src_val}")
+        info_line(f"{pad}  {prim}: target={tgt_val} vs start={src_val}")
 
 
 def table(headers, rows, title=None):
@@ -231,10 +231,10 @@ def table(headers, rows, title=None):
     if not STYLED:
         # Fallback: plain text table
         fmt = "  ".join(f"{h:>{len(h)}}" for h in headers)
-        print(f"  {fmt}")
-        print(f"  {'  '.join('-'*len(h) for h in headers)}")
+        info_line(f"  {fmt}")
+        info_line(f"  {'  '.join('-'*len(h) for h in headers)}")
         for row in rows:
-            print(f"  {'  '.join(str(c) for c in row)}")
+            info_line(f"  {'  '.join(str(c) for c in row)}")
         return
     t = Table(title=title, box=box.ROUNDED, border_style="bright_blue",
               header_style="bold yellow", title_style="bold white")
@@ -250,9 +250,9 @@ def panel(title, content, style="bright_blue"):
     if STYLED:
         _console.print(Panel(content, title=title, border_style=style, padding=(1, 2)))
     else:
-        print(f"--- {title} ---")
+        info_line(f"--- {title} ---")
         print(content)
-        print("---")
+        info_line("---")
 
 def step_product_line(product, smi="", indent=0):
     """Print a step product with green highlight."""
@@ -267,7 +267,7 @@ def step_product_line(product, smi="", indent=0):
         _console.print(txt)
     else:
         smi_str = f"  SMILES: {smi}" if smi else ""
-        print(f"{pad}Product:   {product}  {smi_str}")
+        info_line(f"{pad}Product:   {product}  {smi_str}")
 
 def reaction_header(title, subtitle=""):
     """Print a large reaction/sub-reaction header panel."""
@@ -278,7 +278,7 @@ def reaction_header(title, subtitle=""):
         _console.print(Panel(content, border_style="bright_blue", padding=(1, 2)))
     else:
         print("=" * 66)
-        print(f"  {title}")
+        info_line(f"  {title}")
         if subtitle:
-            print(f"  {subtitle}")
+            info_line(f"  {subtitle}")
         print("=" * 66)

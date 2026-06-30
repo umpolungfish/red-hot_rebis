@@ -632,7 +632,7 @@ Examples:
         info_line("Predefined materials:")
         for name, tup in novel.items():
             info_line(f"  {name:40s} ⟨{''.join(tup)}⟩")
-        print(f"\n  {len(novel)} predefined materials")
+        info_line(f"\n  {len(novel)} predefined materials")
         info_line("\nAlso try: --imas I_Dialetheic_Bootstrap (12 IMASM canonicals)")
         info_line("          --catalog <name> (3300+ catalog entries)")
         return 0
@@ -646,7 +646,7 @@ Examples:
             designs[name] = design
             info_line(f"  {name:40s} {design.ouroboricity_tier:6s} Frob={design.frobenius_score:.2f}  "
                   f"{design.proposed_composition[:70]}")
-        print(f"\n  Total: {len(designs)} materials forged")
+        info_line(f"\n  Total: {len(designs)} materials forged")
 
         if args.output:
             out = {name: d.to_dict() for name, d in designs.items()}
@@ -662,9 +662,9 @@ Examples:
     if args.tuple:
         parts = [p.strip() for p in args.tuple.split(',')]
         if len(parts) != 12:
-            print(f"Error: --tuple requires exactly 12 comma-separated primitives, got {len(parts)}")
+            error_line(f"Error: --tuple requires exactly 12 comma-separated primitives, got {len(parts)}")
             info_line("Expected: D,T,R,P,F,K,G,C,Phi,H,S,Omega")
-            print("Example: '𐑼,𐑸,𐑾,𐑹,𐑞,𐑧,𐑲,𐑠,𐑮,𐑫,𐑳,𐑭'")
+            info_line("Example: '𐑼,𐑸,𐑾,𐑹,𐑞,𐑧,𐑲,𐑠,𐑮,𐑫,𐑳,𐑭'")
             return 1
         ig_tuple = tuple(parts)
         if design_name is None:
@@ -679,10 +679,10 @@ Examples:
             if args.output:
                 with open(args.output, 'w') as f:
                     json.dump(design.to_dict(), f, indent=2)
-                print(f"\n  Exported to {args.output}")
+                info_line(f"\n  Exported to {args.output}")
             return 0
         except (KeyError, FileNotFoundError) as e:
-            print(f"Error: {e}")
+            error_line(f"Error: {e}")
             return 1
 
     elif args.imas:
@@ -695,10 +695,10 @@ Examples:
             if args.output:
                 with open(args.output, 'w') as f:
                     json.dump(design.to_dict(), f, indent=2)
-                print(f"\n  Exported to {args.output}")
+                info_line(f"\n  Exported to {args.output}")
             return 0
         except Exception as e:
-            print(f"Error: {e}")
+            error_line(f"Error: {e}")
             return 1
 
     elif args.name:
@@ -706,8 +706,8 @@ Examples:
         if args.name in novel:
             ig_tuple = novel[args.name]
         else:
-            print(f"Unknown material: '{args.name}'")
-            print(f"Predefined: {', '.join(novel.keys())}")
+            info_line(f"Unknown material: '{args.name}'")
+            info_line(f"Predefined: {', '.join(novel.keys())}")
             info_line("Use --list to see all options, --tuple for custom, or --catalog for catalog lookup.")
             return 1
 
@@ -720,7 +720,7 @@ Examples:
         if args.output:
             with open(args.output, 'w') as f:
                 json.dump(design.to_dict(), f, indent=2)
-            print(f"\n  Exported to {args.output}")
+            info_line(f"\n  Exported to {args.output}")
         return 0
 
     # No action specified

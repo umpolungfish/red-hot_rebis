@@ -345,13 +345,13 @@ def main():
                 t.add_row(name, str(frob), desc, f"{r_toks} → {p_toks}")
             Console().print(t)
         else:
-            print(f"{'Reaction':30s} {'Frob':5s} {'Description'}")
-            print("-" * 80)
+            info_line(f"{'Reaction':30s} {'Frob':5s} {'Description'}")
+            info_line("-" * 80)
             for name, (r, p, frob, desc) in sorted(REACTION_PATTERNS.items()):
                 r_toks = "+".join(TOKEN_NAMES[t] for t in r)
                 p_toks = "+".join(TOKEN_NAMES[t] for t in p)
-                print(f"{name:30s} {frob:5d} {desc}")
-                print(f"{'':30s} {r_toks:20s} → {p_toks}")
+                info_line(f"{name:30s} {frob:5d} {desc}")
+                success_line(f"{'':30s} {r_toks:20s} → {p_toks}")
         return
 
     if not args.reactant or not args.product:
@@ -375,9 +375,9 @@ def main():
                 reaction_header(f"REACTION: {name}")
                 info_line(f"  {r_smi} → {p_smi}")
             else:
-                print(f"\n{'='*60}")
-                print(f"REACTION: {name}")
-                print(f"  {r_smi} → {p_smi}")
+                info_line(f"\n{'='*60}")
+                info_line(f"REACTION: {name}")
+                info_line(f"  {r_smi} → {p_smi}")
             fp = reaction_to_fingerprint(r_smi, p_smi)
             if fp:
                 print(format_transition(fp, reactant_smi=r_smi, product_smi=p_smi))
@@ -389,7 +389,7 @@ def main():
 
     fp = reaction_to_fingerprint(args.reactant, args.product)
     if fp is None:
-        print("Error: invalid SMILES", file=sys.stderr)
+        info_line("Error: invalid SMILES", file=sys.stderr)
         sys.exit(1)
 
     if args.json:

@@ -96,15 +96,15 @@ TARGETS = {
     'insulin_a_chain': {'pdb': '3I40', 'chain': 'A'},
 }
 
-print("="*70)
+info_line("="*70)
 info_line("FINAL: PLATONIC vs CRYSTALLOGRAPHIC STRUCTURAL COMPARISON")
-print("="*70)
+info_line("="*70)
 
 all_data = {}
 
 for name, cfg in TARGETS.items():
-    print(f"\n{'─'*70}")
-    print(f"PROTEIN: {name}")
+    info_line(f"\n{'─'*70}")
+    info_line(f"PROTEIN: {name}")
     
     # Platonic
     with open(os.path.join(OUT, f'{name}_platonic.pdb')) as f:
@@ -145,7 +145,7 @@ for name, cfg in TARGETS.items():
         crys_rama[ramachandran_region(d['phi'], d['psi'])] += 1
     
     n_plat = len(plat_pp); n_crys = len(crys_pp)
-    print(f"\n  RAMACHANDRAN DISTRIBUTION:")
+    info_line(f"\n  RAMACHANDRAN DISTRIBUTION:")
     info_line(f"  {'Region':<10} {'Platonic':>10} {'Crystal':>10} {'Δ':>8}")
     for r in ['alpha','beta','ppii','left','other','none']:
         info_line(f"  {r:<10} {plat_rama[r]/n_plat*100:>9.1f}% {crys_rama[r]/n_crys*100:>9.1f}% {plat_rama[r]/n_plat*100 - crys_rama[r]/n_crys*100:>+7.1f}%")
@@ -161,7 +161,7 @@ for name, cfg in TARGETS.items():
             psi_diffs.append(abs(pp['psi'] - cp['psi']))
     
     n_comp = len(phi_diffs)
-    print(f"\n  PHI/PSI COMPARISON ({n_comp} comparable residues):")
+    info_line(f"\n  PHI/PSI COMPARISON ({n_comp} comparable residues):")
     info_line(f"  Mean |Δφ|: {np.mean(phi_diffs):.1f}°  |  Mean |Δψ|: {np.mean(psi_diffs):.1f}°")
     info_line(f"  Median |Δφ|: {np.median(phi_diffs):.1f}°  |  Median |Δψ|: {np.median(psi_diffs):.1f}°")
     
@@ -170,7 +170,7 @@ for name, cfg in TARGETS.items():
     crys_ca = [crys_res[k]['CA'] for k in crys_keys[:len(plat_ca)] if crys_res[k]['CA']]
     min_ca = min(len(plat_ca), len(crys_ca))
     rmsd_val, q_rot, p_c = kabsch(plat_ca[:min_ca], crys_ca[:min_ca])
-    print(f"\n  KABSCH RMSD: {rmsd_val:.2f} Å over {min_ca} CA atoms")
+    info_line(f"\n  KABSCH RMSD: {rmsd_val:.2f} Å over {min_ca} CA atoms")
     
     # Per-residue deviation
     per_res = np.sqrt(np.sum((p_c - q_rot)**2, axis=1))
@@ -199,5 +199,5 @@ for name, cfg in TARGETS.items():
 with open(os.path.join(OUT, 'final_comparison.json'), 'w') as f:
     json.dump(all_data, f, indent=2)
 
-print(f"\n{'='*70}")
+info_line(f"\n{'='*70}")
 info_line("Final comparison complete → final_comparison.json")

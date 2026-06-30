@@ -122,9 +122,9 @@ def classify(source, target):
             result["same"].append(prim)
     return result
 
-print("=" * 90)
-print(f"{'Problem':25s} {'Promos':8s} {'Demos':8s} {'Changes':8s} {'Distance':10s} {'Bottlenecks'}")
-print("=" * 90)
+info_line("=" * 90)
+info_line(f"{'Problem':25s} {'Promos':8s} {'Demos':8s} {'Changes':8s} {'Distance':10s} {'Bottlenecks'}")
+info_line("=" * 90)
 
 results = []
 for name, source in PROBLEMS.items():
@@ -135,15 +135,15 @@ for name, source in PROBLEMS.items():
     n_demos = len(c["demotions"])
     total = n_promos + n_demos
     bottlenecks = ", ".join([f"{p}({s}→{t})" for p, s, t, _ in c["promotions"]])
-    print(f"{name:25s} {str(n_promos):8s} {str(n_demos):8s} {str(total):8s} {f'{d:.2f}':10s} {bottlenecks[:60]}")
+    info_line(f"{name:25s} {str(n_promos):8s} {str(n_demos):8s} {str(total):8s} {f'{d:.2f}':10s} {bottlenecks[:60]}")
     results.append((name, n_promos, n_demos, total, d, c))
 
 print()
-print("=" * 90)
+info_line("=" * 90)
 info_line("DETAILED PER-PRIMITIVE COMPARISON")
-print("=" * 90)
+info_line("=" * 90)
 for name, source in PROBLEMS.items():
-    print(f"\n--- {name} ---")
+    info_line(f"\n--- {name} ---")
     c = classify(source, O_INF)
     for p, s, t, delta in c["promotions"]:
         info_line(f"  ↑ {p:8s}: {s:12s} → {t:12s}  Δ={delta}")

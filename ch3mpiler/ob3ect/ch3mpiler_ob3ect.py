@@ -74,7 +74,7 @@ class Ch3mpilerOb3ect:
             spec.loader.exec_module(mod)
             return getattr(mod, "ORDINALS", {})
         except Exception as e:
-            print(f"Warning: could not load ORDINALS from {PRIMITIVES_PATH}: {e}")
+            warning_line(f"Warning: could not load ORDINALS from {PRIMITIVES_PATH}: {e}")
             return {}
 
     def _resolve_glyph(self, primitive, value):
@@ -156,14 +156,14 @@ class Ch3mpilerOb3ect:
 
     def verify(self):
         info_line("=== Ch3mpiler Ob3ect ===")
-        print("  Catalog entries loaded:", len(self.catalog))
-        print("  Primitive ordinals:", list(self.primitive_ordinals.keys()))
+        info_line("  Catalog entries loaded:", len(self.catalog))
+        info_line("  Primitive ordinals:", list(self.primitive_ordinals.keys()))
         frob_ok = self.verify_frobenius()
         source_ok = identity_phase(self.source)
         closure = frob_ok and source_ok
         info_line(f"  Frobenius μ(δ(target))=target: {frob_ok}")
         info_line(f"  Source integrity: {source_ok}")
-        print(f"Closure: {closure}")
+        info_line(f"Closure: {closure}")
         return closure
 
 if __name__ == "__main__":

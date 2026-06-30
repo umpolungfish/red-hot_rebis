@@ -723,6 +723,6 @@ if __name__ == "__main__":
             "stop_reason": r.stop_reason,
             "n_tool_calls": len(r.tool_calls),
         })
-    print("\n" + "="*70)
+    info_line("\n" + "="*70)
     info_line("FULL HISTORY (JSON)")
     print(json.dumps(out, indent=2))

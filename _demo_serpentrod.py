@@ -3,9 +3,9 @@
 import sys, os
 sys.path.insert(0, os.path.dirname(__file__))
 from serpentrod.stratified_predictor import classify_module
-print("=" * 65)
+info_line("=" * 65)
 info_line("SERPENTROD v5 — Protein Classification by Primitive Spectrum")
-print("=" * 65)
+info_line("=" * 65)
 for seq, name in [("KAL", "Kinase-like"), ("ALMV", "Membrane helix"), ("MALMVL", "Test peptide")]:
     cls = classify_module(seq)
     info_line(f"  {name:20s} ({seq:8s}) → {cls}")

@@ -932,8 +932,8 @@ def main():
 
     if args.compound:
         if args.compound not in DIASCHIZICS:
-            print(f"Unknown compound: {args.compound}", file=sys.stderr)
-            print(f"Available: {', '.join(sorted(DIASCHIZICS.keys()))}", file=sys.stderr)
+            info_line(f"Unknown compound: {args.compound}", file=sys.stderr)
+            info_line(f"Available: {', '.join(sorted(DIASCHIZICS.keys()))}", file=sys.stderr)
             sys.exit(1)
         comp = DIASCHIZICS[args.compound]
         result = gen.generate_one(args.compound, comp)
@@ -947,11 +947,11 @@ def main():
             out_path = args.output or "diaschizics_iupac.md"
             with open(out_path, "w") as f:
                 f.write(md)
-            print(f"Markdown written to {out_path}")
+            info_line(f"Markdown written to {out_path}")
         elif args.output:
             with open(args.output, "w") as f:
                 f.write(md)
-            print(f"Written to {args.output}")
+            info_line(f"Written to {args.output}")
         else:
             print(md)
 
@@ -961,11 +961,11 @@ def main():
             out_path = args.output.replace(".md", ".json") if args.output else "diaschizics_iupac.json"
             with open(out_path, "w") as f:
                 f.write(js)
-            print(f"JSON written to {out_path}")
+            info_line(f"JSON written to {out_path}")
         elif args.output:
             with open(args.output, "w") as f:
                 f.write(js)
-            print(f"Written to {args.output}")
+            info_line(f"Written to {args.output}")
         else:
             print(js)
 
@@ -975,16 +975,16 @@ def main():
             out_path = args.output.replace(".md", ".tsv") if args.output else "diaschizics_iupac.tsv"
             with open(out_path, "w") as f:
                 f.write(tsv)
-            print(f"TSV written to {out_path}")
+            info_line(f"TSV written to {out_path}")
         elif args.output:
             with open(args.output, "w") as f:
                 f.write(tsv)
-            print(f"Written to {args.output}")
+            info_line(f"Written to {args.output}")
         else:
             print(tsv)
 
     # Summary statistics
-    print(f"\nGenerated IUPAC names for {len(results)} diaschizic compounds.", file=sys.stderr)
+    info_line(f"\nGenerated IUPAC names for {len(results)} diaschizic compounds.", file=sys.stderr)
     gen1_count = sum(1 for r in results.values() if r["generation"] == 1)
     gen2_count = sum(1 for r in results.values() if r["generation"] == 2)
     info_line(f"  Generation 1: {gen1_count} compounds", file=sys.stderr)

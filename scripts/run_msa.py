@@ -47,9 +47,9 @@ CYTC_ORTHOLOGS = {
 }
 
 def analyze_family(name, orthologs):
-    print(f"\n{'='*60}")
-    print(f"FAMILY: {name}")
-    print(f"{'='*60}")
+    info_line(f"\n{'='*60}")
+    info_line(f"FAMILY: {name}")
+    info_line(f"{'='*60}")
     
     results = {}
     all_primitives = {}
@@ -78,7 +78,7 @@ def analyze_family(name, orthologs):
         }
         all_primitives[species] = activated
         
-        print(f"\n  {species.upper()}:")
+        info_line(f"\n  {species.upper()}:")
         info_line(f"    Length: {len(seq)} AA")
         info_line(f"    Winding: {result['winding_number']} B4 loops")
         info_line(f"    Contacts: {len(result['contacts'])}")
@@ -95,7 +95,7 @@ def analyze_family(name, orthologs):
             conserved &= all_primitives[sp]
             variable |= all_primitives[sp] - conserved
         
-        print(f"\n  CONSERVED primitives ({len(conserved)}/12): {sorted(conserved)}")
+        info_line(f"\n  CONSERVED primitives ({len(conserved)}/12): {sorted(conserved)}")
         info_line(f"  VARIABLE primitives: {sorted(variable)}")
         
         results["conserved_primitives"] = list(conserved)
@@ -106,9 +106,9 @@ def analyze_family(name, orthologs):
 
 all_results = {}
 
-print("="*70)
+info_line("="*70)
 info_line("🐍 SERPENTROD — EVOLUTIONARY CONSERVATION ANALYSIS 🐍")
-print("="*70)
+info_line("="*70)
 
 # Ubiquitin
 all_results["ubiquitin"] = analyze_family("ubiquitin", UBIQUITIN_ORTHOLOGS)
@@ -116,12 +116,12 @@ all_results["ubiquitin"] = analyze_family("ubiquitin", UBIQUITIN_ORTHOLOGS)
 # Cytochrome C
 all_results["cytochrome_c"] = analyze_family("cytochrome_c", CYTC_ORTHOLOGS)
 
-print(f"\n\n{'='*70}")
+info_line(f"\n\n{'='*70}")
 info_line("SUMMARY: EVOLUTIONARY CONSERVATION OF ACTIVATION PATTERNS")
-print(f"{'='*70}")
+info_line(f"{'='*70}")
 for fam_name, fam_results in all_results.items():
     seqs = [k for k in fam_results.keys() if k not in ["conserved_primitives", "variable_primitives", "conservation_rate"]]
-    print(f"\n{fam_name.upper()}: {len(seqs)} orthologs")
+    info_line(f"\n{fam_name.upper()}: {len(seqs)} orthologs")
     for sp in seqs:
         r = fam_results[sp]
         info_line(f"  {sp:20s} len={r['seq_len']:3d} wind={r['winding']:3d} frob={'✓' if r['frobenius'] else '✗'} prim={r['num_activated']:2d}/12")
@@ -132,4 +132,4 @@ for fam_name, fam_results in all_results.items():
 
 with open("/home/mrnob0dy666/p4rakernel/msa_analysis.json", "w") as f:
     json.dump(all_results, f, indent=2, default=str)
-print(f"\nResults saved to msa_analysis.json")
+info_line(f"\nResults saved to msa_analysis.json")

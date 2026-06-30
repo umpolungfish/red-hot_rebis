@@ -20,13 +20,13 @@ from shared.rich_output import *
 CRYSTAL = 3**3 * 4**5 * 5**4  # 17,280,000
 CODON_SPACE = 4**3             # 64
 
-print("=" * 60)
+info_line("=" * 60)
 info_line("1. CRYSTAL DIVISIBILITY")
-print("=" * 60)
-print(f"Crystal of Types:  {CRYSTAL:,}")
-print(f"Codon space (4³):  {CODON_SPACE}")
-print(f"Crystal / codons:  {CRYSTAL // CODON_SPACE:,}  (fiber size)")
-print(f"Divides exactly:   {CRYSTAL % CODON_SPACE == 0}")
+info_line("=" * 60)
+info_line(f"Crystal of Types:  {CRYSTAL:,}")
+info_line(f"Codon space (4³):  {CODON_SPACE}")
+info_line(f"Crystal / codons:  {CRYSTAL // CODON_SPACE:,}  (fiber size)")
+info_line(f"Divides exactly:   {CRYSTAL % CODON_SPACE == 0}")
 fiber = CRYSTAL // CODON_SPACE  # 270,000
 # factor fiber
 def factorize(n):
@@ -38,7 +38,7 @@ def factorize(n):
     if n > 1:
         factors.append(n)
     return factors
-print(f"Fiber 270,000 factors: {factorize(270_000)}")
+info_line(f"Fiber 270,000 factors: {factorize(270_000)}")
 # 270,000 = 2^4 * 3^3 * 5^4... let's check
 info_line(f"  = 2^4 × 3^3 × 5^4 ? {2**4 * 3**3 * 5**4 == 270_000}")
 # no: 16 * 27 * 625 = 270,000. yes.
@@ -48,9 +48,9 @@ print()
 
 # ── 2. Primitive cardinalities ────────────────────────────────────────────────
 
-print("=" * 60)
+info_line("=" * 60)
 info_line("2. IG PRIMITIVE CARDINALITIES vs GENETIC CODE")
-print("=" * 60)
+info_line("=" * 60)
 
 # Crystal = 3^3 * 4^5 * 5^4
 # 3-card primitives: ƒ, Γ, Σ  (count=3, each 3 values)
@@ -90,9 +90,9 @@ print()
 
 # ── 3. Genetic code table ─────────────────────────────────────────────────────
 
-print("=" * 60)
+info_line("=" * 60)
 info_line("3. GENETIC CODE DEGENERACY STRUCTURE")
-print("=" * 60)
+info_line("=" * 60)
 
 # Standard genetic code (RNA codons, 5'→3')
 GENETIC_CODE = {
@@ -129,12 +129,12 @@ for d in sorted(by_degeneracy):
     info_line(f"  {d} codons: {len(aas)} AAs → {aas}")
 
 total_codons = sum(d * len(aas) for d, aas in by_degeneracy.items())
-print(f"Total codons accounted: {total_codons}")
+info_line(f"Total codons accounted: {total_codons}")
 print()
 
 # Key structural observation: degeneracy values {1,2,3,4,6}
 # 1 = 1, 2 = 2, 3 = 3 (min Crystal card), 4 = 4 (mid Crystal card), 6 = 2×3
-print("Degeneracy values: {1, 2, 3, 4, 6}")
+info_line("Degeneracy values: {1, 2, 3, 4, 6}")
 info_line("  1 = singleton  (no degeneracy)")
 info_line("  2 = pyrimidine/purine split (Frobenius near-id: one tRNA wobbles)")
 info_line("  3 = matches 3-valued IG primitive cardinality")
@@ -144,9 +144,9 @@ print()
 
 # ── 4. Nucleotide → B₄ mapping ───────────────────────────────────────────────
 
-print("=" * 60)
+info_line("=" * 60)
 info_line("4. NUCLEOTIDE → BELNAP B₄ MAPPING")
-print("=" * 60)
+info_line("=" * 60)
 
 # B₄ = {N(None), T(True), F(False), B(Both)}
 # Watson-Crick pairing: G↔C, A↔U  (complement = bnot in B₄)
@@ -216,9 +216,9 @@ print()
 
 # ── 5. Codon as 3-tuple in B₄ ────────────────────────────────────────────────
 
-print("=" * 60)
+info_line("=" * 60)
 info_line("5. CODON AS B₄³ TUPLE: DEGENERACY ↔ LATTICE STRUCTURE")
-print("=" * 60)
+info_line("=" * 60)
 
 def codon_to_b4(codon):
     return tuple(mapping[n] for n in codon)
@@ -254,9 +254,9 @@ print()
 
 # ── 6. Wobble position and Frobenius condition ────────────────────────────────
 
-print("=" * 60)
+info_line("=" * 60)
 info_line("6. WOBBLE POSITION AS FROBENIUS NEAR-ID")
-print("=" * 60)
+info_line("=" * 60)
 
 # The wobble position (codon position 3) is often degenerate
 # If position 3 is degenerate, the amino acid is determined by positions 1+2
@@ -281,21 +281,21 @@ for b1 in "UCAG":
         info_line(f"  {b1}{b2}_ : {status}")
 
 print()
-print(f"Unsplit boxes (Frobenius-closed: 3rd base irrelevant): {boxes_4fold}/16")
-print(f"Split boxes (Frobenius-open: 3rd base matters):        {boxes_split}/16")
+info_line(f"Unsplit boxes (Frobenius-closed: 3rd base irrelevant): {boxes_4fold}/16")
+info_line(f"Split boxes (Frobenius-open: 3rd base matters):        {boxes_split}/16")
 print()
 info_line("Frobenius condition on the code:")
 info_line("  Unsplit boxes: μ∘δ=id holds exactly (any third base → same AA)")
 info_line("  Split boxes:   μ∘δ=id holds up to wobble (pyrimidine/purine = T/F split)")
-print("  → Code is 'near-Frobenius': 8/16 boxes satisfy strict condition,")
+info_line("  → Code is 'near-Frobenius': 8/16 boxes satisfy strict condition,")
 info_line("    8/16 satisfy it modulo the purine/pyrimidine (T/F) distinction")
 print()
 
 # ── 7. Chirality: Ħ invariant ─────────────────────────────────────────────────
 
-print("=" * 60)
+info_line("=" * 60)
 info_line("7. L-AMINO ACID HOMOCHIRALITY AS Ħ INVARIANT")
-print("=" * 60)
+info_line("=" * 60)
 
 info_line("All 19 chiral amino acids are exclusively L-configuration.")
 info_line("Glycine is achiral (no stereocentre).")
@@ -313,9 +313,9 @@ print()
 
 # ── 8. Bootstrap sequence ordering ───────────────────────────────────────────
 
-print("=" * 60)
+info_line("=" * 60)
 info_line("8. IG BOOTSTRAP SEQUENCE vs CENTRAL DOGMA ORDERING")
-print("=" * 60)
+info_line("=" * 60)
 
 # IG bootstrap: ordinal-1 of each primitive in canonical tuple order
 # Ð→Þ→Ř→Φ→ƒ→Ç→Γ→ɢ→⊙→Ħ→Σ→Ω
@@ -351,9 +351,9 @@ print()
 
 # ── 9. Summary ────────────────────────────────────────────────────────────────
 
-print("=" * 60)
+info_line("=" * 60)
 info_line("9. PRELIMINARY FINDINGS SUMMARY")
-print("=" * 60)
+info_line("=" * 60)
 
 findings = [
     ("Divisibility",

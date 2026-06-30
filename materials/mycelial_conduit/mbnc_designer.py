@@ -69,9 +69,9 @@ def run_ig(cmd_args):
 
 def banner(text, char="="):
     width = 65
-    print(f"\n{char * width}")
+    info_line(f"\n{char * width}")
     info_line(f"  {text}")
-    print(f"{char * width}")
+    info_line(f"{char * width}")
 
 ###############################################################################
 # STEP 1 — Lookup base materials
@@ -80,13 +80,13 @@ def step_lookup_base():
     banner("STEP 1: 🔍 Catalog Search — Base Materials")
     materials = ["mycorrhizal", "graphene", "ganglia", "nanoluc", "rhodopsin"]
     for mat in materials:
-        print(f"\n  Searching: '{mat}'")
+        info_line(f"\n  Searching: '{mat}'")
         out = run_ig(["lookup", mat])
         # Print first 6 lines of each result
         for line in out.split("\n")[:6]:
             if line.strip():
                 info_line(f"    {line}")
-    print(f"\n  ✅ Step 1 complete — {len(materials)} materials found in catalog")
+    success_line(f"\n  ✅ Step 1 complete — {len(materials)} materials found in catalog")
 ###############################################################################
 # STEP 2 — Ouroboricity tiers
 ###############################################################################
@@ -142,7 +142,7 @@ def step_design_targets():
     systems = ["mycorrhizal_network", "graphene"]
     for sysname in systems:
         out = run_ig(["analogies", sysname, "--limit", "3"])
-        print(f"\n  Nearest to '{sysname}':")
+        info_line(f"\n  Nearest to '{sysname}':")
         for line in out.split("\n")[1:6]:
             if line.strip():
                 info_line(f"    {line}")
@@ -249,7 +249,7 @@ def step_molecular_design():
     info_line("    )")
     print()
     info_line("  ── Synthetic construct ──")
-    print("  5'-[pTEF1]-[CBH1 signal]-[WWFF]-[GGGGS]₃-[NanoLuc]-[SV40]-3'")
+    info_line("  5'-[pTEF1]-[CBH1 signal]-[WWFF]-[GGGGS]₃-[NanoLuc]-[SV40]-3'")
     print()
     info_line("  Host: Pichia pastoris (yeast secretion system)")
     info_line("  Yield target: >50 mg/L purified protein")
@@ -500,26 +500,26 @@ def main():
     
     if args.step:
         if args.step not in step_funcs:
-            print(f"Invalid step: {args.step}. Use --list-steps to see available steps.")
+            info_line(f"Invalid step: {args.step}. Use --list-steps to see available steps.")
             return
         step_funcs[args.step]()
         return
     
     if args.interactive:
         info_line("Mycelial Bio-Photonic Neural Conduit Designer")
-        print("━" * 50)
+        info_line("━" * 50)
         for num in sorted(step_funcs.keys()):
             name, desc = STEPS[num]
             input(f"\nPress Enter for Step {num}: {desc}...")
             step_funcs[num]()
-        print("\n" + "━" * 50)
+        info_line("\n" + "━" * 50)
         info_line("🎉 Full design pipeline complete!")
         return
     
     if args.all:
         for num in sorted(step_funcs.keys()):
             step_funcs[num]()
-        print("\n" + "━" * 50)
+        info_line("\n" + "━" * 50)
         info_line("🎉 Mycelial Bio-Photonic Neural Conduit design complete!")
         info_line(f"   Design document: {DOC_DIR / 'README.md'}")
         return

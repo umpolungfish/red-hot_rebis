@@ -486,12 +486,12 @@ def print_analysis():
     """Pretty-print the full analysis."""
     results = full_analysis()
 
-    print("=" * 64)
+    info_line("=" * 64)
     info_line("GAP CLOSURE — Self-Organoid Augmentation Suite")
-    print("=" * 64)
+    info_line("=" * 64)
 
     b = results["baseline"]
-    print(f"\nBASELINE: tier={b['tier']}, frob={b['frobenius']}, cscore={b['cscore']}")
+    info_line(f"\nBASELINE: tier={b['tier']}, frob={b['frobenius']}, cscore={b['cscore']}")
     info_line(f"  axioms: {b['axioms']}")
 
     info_line("\n--- AUGMENTATIONS ---")
@@ -500,7 +500,7 @@ def print_analysis():
 
     info_line("\n--- GAPS ---")
     for g in results["gaps"]:
-        print(f"\n  {g['name']}:")
+        info_line(f"\n  {g['name']}:")
         info_line(f"    distance: {g['distance']}")
         info_line(f"    tier: {g['tier_before']} -> {g['tier_after']}")
         info_line(f"    frob: {g['frob_before']} -> {g['frob_after']}")
@@ -512,15 +512,15 @@ def print_analysis():
 
     info_line("\n--- DELIBERATELY OPEN ---")
     for s in results["deliberately_open"]:
-        print(f"\n  {s['name']}: tier={s['tier']}, d_baseline={s['distance_from_baseline']}")
+        info_line(f"\n  {s['name']}: tier={s['tier']}, d_baseline={s['distance_from_baseline']}")
         info_line(f"    {s['rationale']}")
 
-    print("\n" + "=" * 64)
+    info_line("\n" + "=" * 64)
     s = results["summary"]
     print(f"SUMMARY: {s['total_systems']} systems, {s['gaps_identified']} gaps, "
           f"{s['gaps_closed']} closed, {s['deliberately_open']} deliberately open.")
-    print(f"All closable gaps closed: {s['all_closable_closed']}")
-    print("=" * 64)
+    info_line(f"All closable gaps closed: {s['all_closable_closed']}")
+    info_line("=" * 64)
 
     return results
 

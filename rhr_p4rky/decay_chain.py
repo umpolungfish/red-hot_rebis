@@ -156,9 +156,9 @@ def analyze_chain(series_key):
 
 def print_chain(series_key):
     name, steps = analyze_chain(series_key)
-    print(f"\n{'═'*70}")
+    separator()
     info_line(f"  {name}")
-    print(f"{'═'*70}")
+    separator()
     info_line(f"  {'Step':<4} {'Isotope':<10} {'T½':<12} {'Mode':<6} {'Frob':<6} {'Δ':>4}  IMASM word")
     info_line(f"  {'─'*4} {'─'*10} {'─'*12} {'─'*6} {'─'*6} {'─':>4}  {'─'*12}")
 
@@ -185,9 +185,9 @@ def print_all_series():
 
 def compare_series():
     """Side-by-side winding counts and first-Frobenius step for all series."""
-    print(f"\n{'═'*60}")
+    separator()
     info_line("  Decay series comparison")
-    print(f"{'═'*60}")
+    separator()
     info_line(f"  {'Series':<10} {'Windings':>9}  {'Frob fires at':>20}  First stable daughter")
     info_line(f"  {'─'*10} {'─'*9}  {'─'*20}  {'─'*20}")
     for key, data in DECAY_SERIES.items():
@@ -230,7 +230,7 @@ def main():
 
     key = args.series.upper()
     if key not in DECAY_SERIES:
-        print(f"Unknown series '{args.series}'. Known: {', '.join(DECAY_SERIES)}")
+        info_line(f"Unknown series '{args.series}'. Known: {', '.join(DECAY_SERIES)}")
         sys.exit(1)
     print_chain(key)
 

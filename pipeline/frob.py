@@ -52,12 +52,12 @@ def FFUSE(tree: ast.AST, original: str) -> bool:
     if semantic_identity(tree, regenerated_tree):
         info_line("FFUSE: Perfect imscription — semantic identity confirmed")
         h = hashlib.sha256(ast.dump(tree, annotate_fields=False).encode()).hexdigest()[:24]
-        print(f"Imscription anchor: {h}...")
+        info_line(f"Imscription anchor: {h}...")
         return True
     else:
         info_line("FFUSE: Semantic mismatch (rare — dumping diff info)")
-        print("Original dump head:", ast.dump(tree, annotate_fields=False)[:200])
-        print("Regenerated dump head:", ast.dump(regenerated_tree, annotate_fields=False)[:200])
+        info_line("Original dump head:", ast.dump(tree, annotate_fields=False)[:200])
+        info_line("Regenerated dump head:", ast.dump(regenerated_tree, annotate_fields=False)[:200])
         return False
 
 def CLINK(intermediate: str, output_path: str):
@@ -68,19 +68,19 @@ def CLINK(intermediate: str, output_path: str):
     os.chmod(output_path, 0o755)
 
 def IFIX(output_path: str):
-    print(f"IFIX: Permanent executable imscribed → {output_path}")
+    info_line(f"IFIX: Permanent executable imscribed → {output_path}")
 
 def ISCRIB(source: str):
     h = hashlib.sha256(source.encode('utf-8')).hexdigest()[:24]
     info_line("ISCRIB: Compiler recognizes its own source as valid.")
-    print(f"Source hash (imscription anchor): {h}...")
+    info_line(f"Source hash (imscription anchor): {h}...")
 
 def EVALT():
     info_line("EVALT: Compilation successful (exit 0)")
     sys.exit(0)
 
 def EVALF(msg: str):
-    print(f"EVALF: {msg}")
+    info_line(f"EVALF: {msg}")
     sys.exit(1)
 
 # =====================================================================
@@ -95,7 +95,7 @@ def identity_phase(source: str) -> bool:
     tokens, tree = FSPLIT(source)
     success = FFUSE(tree, source)
     verdict = "PASS" if success else "FAIL"
-    print(f"Frobenius: Split→Fuse verdict = {verdict}")
+    info_line(f"Frobenius: Split→Fuse verdict = {verdict}")
     return success
 
 # =====================================================================
@@ -124,13 +124,13 @@ def bootstrap_compiler(self_path: str = __file__):
             [sys.executable, new_binary, "--self-test"],
             capture_output=True, text=True, timeout=10
         )
-        print("Clone output:", result.stdout.strip() or "<no output>")
+        info_line("Clone output:", result.stdout.strip() or "<no output>")
         if result.returncode == 0:
             info_line("Closure: True — imscription loop closed successfully")
         else:
             info_line("Closure: Partial")
     except Exception as e:
-        print(f"Closure test error: {e}")
+        error_line(f"Closure test error: {e}")
     
     EVALT()
 

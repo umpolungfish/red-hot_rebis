@@ -197,4 +197,4 @@ lines.append("```")
 with open('/home/mrnob0dy666/p4rakernel/universe_compound_mapping.md', 'w') as f:
     f.write('\n'.join(lines))
 
-print(f"Written: {len(lines)} lines")
+info_line(f"Written: {len(lines)} lines")

@@ -1041,19 +1041,19 @@ class DerivedReaction:
 
     def print_procedure(self):
         """Print a human-readable reaction procedure derived from grammar."""
-        print(f"\n{'='*70}")
+        info_line(f"\n{'='*70}")
         info_line(f"  REACTION: {self.fg1} + {self.fg2}  via  {self.bond}")
         info_line(f"  Bond: {self.bond_desc}")
         info_line(f"  Structural Delta: {self.structural_delta:.3f}")
-        print(f"{'='*70}")
+        info_line(f"{'='*70}")
 
         # Mechanism class
         mol = self.molecularity.get("molecularity", "unknown")
         act = self.molecularity.get("activation", "unknown")
-        print(f"\n  Mechanism Class: {mol} ({act})")
+        info_line(f"\n  Mechanism Class: {mol} ({act})")
 
         # Reactants
-        print(f"\n  ── REACTANTS ──")
+        info_line(f"\n  ── REACTANTS ──")
         fg1r = self.reactants.get("fg1_reactants", [])
         fg2r = self.reactants.get("fg2_reactants", [])
         if fg1r:
@@ -1070,11 +1070,11 @@ class DerivedReaction:
         # Solvent
         if self.solvent:
             s = self.solvent
-            print(f"\n  ── SOLVENT ──")
+            info_line(f"\n  ── SOLVENT ──")
             info_line(f"  {s['name']}  (bp {s.get('bp_C','?')} °C, d={s.get('distance','?')}, {s.get('polarity','?')})")
 
         # Conditions
-        print(f"\n  ── CONDITIONS ──")
+        info_line(f"\n  ── CONDITIONS ──")
         T = self.temperature
         info_line(f"  Temperature: {T.get('T_C', (20,30))} °C  [{T.get('regime','?')}]")
         conc = self.concentration
@@ -1087,42 +1087,42 @@ class DerivedReaction:
         # Catalyst / Activator
         if self.catalyst:
             c = self.catalyst
-            print(f"\n  ── CATALYST ──")
+            info_line(f"\n  ── CATALYST ──")
             info_line(f"  {c['name']} ({c['type']})  [{c['smiles']}]")
             info_line(f"  Reason: {c.get('Ph_bridge','?')}")
         if self.activator:
             a = self.activator
-            print(f"\n  ── ACTIVATOR ──")
+            info_line(f"\n  ── ACTIVATOR ──")
             info_line(f"  {a['name']} ({a['type']})  [{a['smiles']}]")
 
         # Stereo
         stereo = self.stereochemistry
         if stereo.get("ee_requirement", 0) > 0:
-            print(f"\n  ── STEREOCHEMISTRY ──")
+            info_line(f"\n  ── STEREOCHEMISTRY ──")
             info_line(f"  {stereo.get('stereo','?')}  (ee > {stereo.get('ee_requirement',0)}%)")
 
         # Chirality
         chiral = self.chiral_induction
         if chiral.get("chiral", "none") != "none":
-            print(f"\n  ── CHIRAL INDUCTION ──")
+            info_line(f"\n  ── CHIRAL INDUCTION ──")
             info_line(f"  Strategy: {chiral.get('chiral','?')}  [{chiral.get('auxiliary','?')}]")
 
         # Protecting groups
         pg = self.protecting_groups
         if pg.get("protect", "none") != "none":
-            print(f"\n  ── PROTECTING GROUPS ──")
+            info_line(f"\n  ── PROTECTING GROUPS ──")
             info_line(f"  Level: {pg.get('protect','?')}  [{pg.get('strategy','?')}]")
 
         # Workup
         wu = self.workup
-        print(f"\n  ── WORKUP ──")
+        info_line(f"\n  ── WORKUP ──")
         info_line(f"  Strategy: {wu.get('description','?')}")
         for i, step in enumerate(wu.get("steps", []), 1):
             info_line(f"    {i}. {step}")
 
         # Primitive deltas (diagnostic)
         if self.deltas:
-            print(f"\n  ── PRIMITIVE DELTAS (bond - meet) ──")
+            info_line(f"\n  ── PRIMITIVE DELTAS (bond - meet) ──")
             for p in PNAMES:
                 if p in self.deltas:
                     d = self.deltas[p]
@@ -1359,8 +1359,8 @@ def main():
             else:
                 rxn.print_procedure()
         else:
-            print(f"ERROR: Could not derive reaction for {fg1} + {fg2} via {bond}")
-            print("Check that FGs and bond are defined in ch3mpiler's FG/BOND_TYPES dictionaries")
+            error_line(f"ERROR: Could not derive reaction for {fg1} + {fg2} via {bond}")
+            info_line("Check that FGs and bond are defined in ch3mpiler's FG/BOND_TYPES dictionaries")
         return
 
     # CAS-based
@@ -1370,9 +1370,9 @@ def main():
         ch = Ch3mpiler()
         result = ch.resolve_and_analyze(args.cas)
         name = result.get("cas_info", {}).get("name", args.cas)
-        print(f"Target: {name}")
-        print(f"Type: {result.get('type', '?')}")
-        print(f"FGs: {result.get('fgs', [])}")
+        info_line(f"Target: {name}")
+        info_line(f"Type: {result.get('type', '?')}")
+        info_line(f"FGs: {result.get('fgs', [])}")
 
         cuts = result.get("cuts", [])
         if not cuts:
@@ -1394,9 +1394,9 @@ def main():
         from compiler import Ch3mpiler
         ch = Ch3mpiler()
         result = ch.analyze(args.target)
-        print(f"Target: {result['target']}")
-        print(f"Type: {result['type']} [{result.get('type_source', '?')}]")
-        print(f"FGs: {result.get('fgs', [])}")
+        info_line(f"Target: {result['target']}")
+        info_line(f"Type: {result['type']} [{result.get('type_source', '?')}]")
+        info_line(f"FGs: {result.get('fgs', [])}")
 
         cuts = result.get("cuts", [])
         if not cuts:
@@ -1414,10 +1414,10 @@ def main():
         return
 
     # Default: demo
-    print("=" * 70)
+    info_line("=" * 70)
     info_line("  reaction_deriver — Grammar-First Reaction Condition Derivation")
     info_line("  No named reactions — conditions derived from 12-primitive algebra")
-    print("=" * 70)
+    info_line("=" * 70)
     print()
     info_line("Demo: benzaldehyde + amine via amide_link")
     info_line("(First, forming an imine with aniline)")

@@ -2,6 +2,7 @@
 """Fix broken multi-line f-strings from migrate_rich.py."""
 
 import re
+from shared.rich_output import *
 
 FILES_FIXES = {
     'therapeutics/frobenius_chemotherapeutic.py': [
@@ -23,7 +24,7 @@ def fix_file(fp, fixes):
     for pattern, replacement in fixes:
         content = re.sub(pattern, replacement, content)
     open(fp, 'w').write(content)
-    print(f"Fixed: {fp}")
+    info_line(f"Fixed: {fp}")
 
 for fp, fixes in FILES_FIXES.items():
     fix_file(fp, fixes)

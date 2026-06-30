@@ -208,12 +208,12 @@ def fetch_pdb_info(pdb_id):
 
 def compare_protein(name, cfg):
     """Run full comparison for one protein."""
-    print(f"\n{'='*70}")
-    print(f"PROTEIN: {name} — {cfg['desc']}")
+    info_line(f"\n{'='*70}")
+    info_line(f"PROTEIN: {name} — {cfg['desc']}")
     info_line(f"  Crystal: {cfg['pdb']} chain {cfg['chain']} "
 f"({cfg['method']}, {cfg['resolution']:.2f} Å)")
     info_line(f"  {cfg['note']}")
-    print(f"{'─'*70}")
+    info_line(f"{'─'*70}")
 
     # Load platonic PDB
     plat_path = os.path.join(OUT, f'{name}_platonic.pdb')
@@ -246,7 +246,7 @@ f"({cfg['method']}, {cfg['resolution']:.2f} Å)")
     plat_seq = ''.join(plat_res[k]['res'] for k in plat_keys)
     crys_seq = ''.join(crys_res[k]['res'] for k in crys_keys)
 
-    print(f"\n  Platonic: {len(plat_keys)} residues")
+    info_line(f"\n  Platonic: {len(plat_keys)} residues")
     info_line(f"  Crystal:  {len(crys_keys)} residues")
     info_line(f"  Platonic seq: {plat_seq[:60]}...")
     info_line(f"  Crystal seq:  {crys_seq[:60]}...")
@@ -317,7 +317,7 @@ f"({cfg['method']}, {cfg['resolution']:.2f} Å)")
     rmsd_val, q_rot, p_c = kabsch(plat_ca, crys_ca)
     per_res = np.sqrt(np.sum((p_c - q_rot)**2, axis=1))
 
-    print(f"\n  KABSCH RMSD: {rmsd_val:.2f} Å over {n_aligned} aligned CA atoms")
+    info_line(f"\n  KABSCH RMSD: {rmsd_val:.2f} Å over {n_aligned} aligned CA atoms")
     info_line(f"  Per-residue: mean={np.mean(per_res):.2f} Å, "
 f"median={np.median(per_res):.2f} Å, max={np.max(per_res):.2f} Å")
 
@@ -367,7 +367,7 @@ f"median={np.median(per_res):.2f} Å, max={np.max(per_res):.2f} Å")
 
     n_angle = len(phi_diffs)
     if n_angle > 0:
-        print(f"\n  PHI/PSI COMPARISON ({n_angle} comparable residues):")
+        info_line(f"\n  PHI/PSI COMPARISON ({n_angle} comparable residues):")
         info_line(f"  Mean |Δφ|: {np.mean(phi_diffs):.1f}°  |  "
 f"Mean |Δψ|: {np.mean(psi_diffs):.1f}°")
         info_line(f"  Median |Δφ|: {np.median(phi_diffs):.1f}°  |  "
@@ -398,12 +398,12 @@ f"Median |Δψ|: {np.median(psi_diffs):.1f}°")
 
 # ── Main ───────────────────────────────────────────────────────────
 
-print("="*70)
+info_line("="*70)
 info_line("COMPREHENSIVE: PLATONIC vs X-RAY CRYSTALLOGRAPHIC COMPARISON")
 info_line("Red-Hot Rebis — Protein Structure from First Principles")
-print(f"Comparing {len(TARGETS)} proteins with X-ray crystal structures")
-print(f"Plus {len(PEPTIDES_NO_CRYSTAL)} peptides without standalone structures")
-print("="*70)
+info_line(f"Comparing {len(TARGETS)} proteins with X-ray crystal structures")
+info_line(f"Plus {len(PEPTIDES_NO_CRYSTAL)} peptides without standalone structures")
+info_line("="*70)
 
 # ── Part 1: Proteins WITH crystal structures ──────────────────────
 all_results = {}
@@ -414,12 +414,12 @@ for name, cfg in TARGETS.items():
         all_results[name] = result
 
 # ── Part 2: Peptides WITHOUT standalone crystal structures ────────
-print(f"\n\n{'='*70}")
+info_line(f"\n\n{'='*70}")
 info_line("PEPTIDES WITHOUT STANDALONE X-RAY CRYSTAL STRUCTURES")
-print("="*70)
+info_line("="*70)
 
 for name, info in PEPTIDES_NO_CRYSTAL.items():
-    print(f"\n  ┌{'─'*66}┐")
+    info_line(f"\n  ┌{'─'*66}┐")
     info_line(f"  │ {info['desc']} ({info['length']} residues)")
     info_line(f"  ├{'─'*66}┤")
     for line in info['reason'].split('\n'):
@@ -435,9 +435,9 @@ for name, info in PEPTIDES_NO_CRYSTAL.items():
     }
 
 # ── Summary ────────────────────────────────────────────────────────
-print(f"\n\n{'='*70}")
+info_line(f"\n\n{'='*70}")
 info_line("SUMMARY: PLATONIC vs CRYSTALLOGRAPHIC COMPARISON")
-print("="*70)
+info_line("="*70)
 
 print(f"\n  {'Protein':<20} {'PDB':<8} {'Method':<12} {'Res':>6} "
       f"{'Plat':>5} {'Crys':>5} {'Aligned':>7} {'SeqID':>6} {'RMSD':>8} "
@@ -459,7 +459,7 @@ f"{r['resolution']:>5.2f}Å {r['platonic_residues']:>4} "
               f"{r['mean_per_res']:>6.2f}Å {r['max_per_res']:>6.2f}Å")
 
 # RMSD interpretation
-print(f"\n  RMSD INTERPRETATION GUIDE:")
+info_line(f"\n  RMSD INTERPRETATION GUIDE:")
 for name, r in all_results.items():
     if r.get('kabsch_rmsd'):
         rmsd = r['kabsch_rmsd']
@@ -479,7 +479,7 @@ for name, r in all_results.items():
 results_path = os.path.join(OUT, 'comprehensive_comparison_results.json')
 with open(results_path, 'w') as f:
     json.dump(all_results, f, indent=2)
-print(f"\n  Results saved: {results_path}")
+info_line(f"\n  Results saved: {results_path}")
 
 # ── Also save per-protein detailed Ramachandran breakdown ──────────
 rama_path = os.path.join(OUT, 'ramachandran_comparison.json')
@@ -496,6 +496,6 @@ with open(rama_path, 'w') as f:
     json.dump(rama_data, f, indent=2)
 info_line(f"  Ramachandran comparison: {rama_path}")
 
-print(f"\n{'='*70}")
+info_line(f"\n{'='*70}")
 info_line("COMPREHENSIVE COMPARISON COMPLETE")
-print("="*70)
+info_line("="*70)

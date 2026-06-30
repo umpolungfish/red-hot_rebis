@@ -38,7 +38,7 @@ def resolve_molecule(cas=None, name=None):
     if cas:
         result = ch3.resolve_and_analyze(cas, do_retrosynthesis=True, depth=1)
         mol_name = result.get("cas_info", {}).get("name", cas)
-        print(f"[bridge] Resolved CAS {cas} → {mol_name}")
+        info_line(f"[bridge] Resolved CAS {cas} → {mol_name}")
     else:
         result = ch3.analyze(name)
         mol_name = name
@@ -78,8 +78,8 @@ def resolve_molecule(cas=None, name=None):
         fg1_name = fgs[0] if fgs else "amine"
         fg2_name = fgs[1] if len(fgs) > 1 else fg1_name
     
-    print(f"[bridge] Bond: {bond_name}, FGs: {fg1_name} + {fg2_name}")
-    print(f"[bridge] FGs detected: {fgs}")
+    info_line(f"[bridge] Bond: {bond_name}, FGs: {fg1_name} + {fg2_name}")
+    info_line(f"[bridge] FGs detected: {fgs}")
     
     return {
         "name": mol_name,
@@ -175,14 +175,14 @@ def main():
     # Step 2: Convert to material IG tuple
     ig_tuple = molecule_to_material_tuple(mol_data)
     
-    print(f"\n{'='*60}")
+    info_line(f"\n{'='*60}")
     info_line(f"  MOLECULE → MATERIAL BRIDGE")
-    print(f"{'='*60}")
+    info_line(f"{'='*60}")
     info_line(f"  Molecule: {mol_data['name']}")
     info_line(f"  CAS: {mol_data.get('cas', 'N/A')}")
     info_line(f"  Bond: {mol_data['bond']}")
     info_line(f"  FGs ({len(mol_data['fgs'])}): {', '.join(mol_data['fgs'])}")
-    print(f"\n  Material IG Tuple:")
+    info_line(f"\n  Material IG Tuple:")
     pnames = ["D", "T", "R", "P", "F", "K", "G", "Gm", "Ph", "H", "S", "W"]
     for i, p in enumerate(pnames):
         info_line(f"    {p}: {ig_tuple[i]}")
@@ -194,9 +194,9 @@ def main():
         mf = MaterialForge()
         safe_name = mol_data['name'].replace(' ', '_').replace('-', '_').replace(',', '')[:50]
         design = mf.forge(safe_name, ig_tuple)
-        print(f"\n{'-'*60}")
+        info_line(f"\n{'-'*60}")
         info_line(f"  FORGED MATERIAL DESIGN")
-        print(f"{'-'*60}")
+        info_line(f"{'-'*60}")
         info_line(f"  Tier: {design.ouroboricity_tier}")
         info_line(f"  Frobenius Score: {design.frobenius_score:.2f}")
         info_line(f"  Composition: {design.proposed_composition}")

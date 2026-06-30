@@ -43,9 +43,9 @@ def main():
                 continue
             fp = os.path.join(root, fn)
             if fix_file(fp):
-                print(f"  ✅ {fp[len('./'):]}")
+                success_line(f"  ✅ {fp[len('./'):]}")
                 fixed += 1
-    print(f"\nFixed {fixed} files")
+    info_line(f"\nFixed {fixed} files")
 
 if __name__ == '__main__':
     main()

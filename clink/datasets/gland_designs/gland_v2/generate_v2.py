@@ -292,7 +292,7 @@ def generate_all(output_dir: Optional[str] = None) -> Dict[str, str]:
         else:
             info_line(f"  ⚠ Pre-written file not found: {fn}")
 
-    print(f"✓ GLAND V2 (IN-SITU): {len(written)} files, {total_bytes} bytes")
+    success_line(f"✓ GLAND V2 (IN-SITU): {len(written)} files, {total_bytes} bytes")
     info_line(f"  Output: {output_dir}/")
     for fn, fp in sorted(written.items()):
         info_line(f"  • {fn} ({os.path.getsize(fp)} bytes)")

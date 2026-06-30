@@ -782,8 +782,8 @@ def main():
         diagnosis = closer.diagnose_sophick_forge()
         print(CategoryErrorDiagnosis.diagnose())
         print()
-        print(f"Total residual: {diagnosis['total_residual']:.4f}")
-        print(f"Recommended pathways: {diagnosis['recommended_pathways']}")
+        info_line(f"Total residual: {diagnosis['total_residual']:.4f}")
+        info_line(f"Recommended pathways: {diagnosis['recommended_pathways']}")
 
     elif args.action == 'pathways':
         for p in ALL_PATHWAYS:
@@ -797,11 +797,11 @@ def main():
             exactor = design_func()
             print(exactor.report())
             state = exactor.verify_closure()
-            print(f"\nClosure: {'EXACT' if state.is_exact else 'APPROXIMATE'}")
-            print(f"Type: {state.closure_type().value}")
+            info_line(f"\nClosure: {'EXACT' if state.is_exact else 'APPROXIMATE'}")
+            info_line(f"Type: {state.closure_type().value}")
         else:
-            print(f"Unknown pathway: {pathway_key}")
-            print(f"Available: {list(ALL_EXACTORS.keys())}")
+            info_line(f"Unknown pathway: {pathway_key}")
+            info_line(f"Available: {list(ALL_EXACTORS.keys())}")
 
     elif args.action == 'close':
         obstruction = None
@@ -811,9 +811,9 @@ def main():
             obstruction=obstruction,
             preferred_pathway=args.pathway
         )
-        print(f"Selected pathway: {result['selected_pathway']}")
-        print(f"Gap closed: {result['gap_closed']}")
-        print(f"Closure type: {result['closure_state']['closure_type']}")
+        info_line(f"Selected pathway: {result['selected_pathway']}")
+        info_line(f"Gap closed: {result['gap_closed']}")
+        info_line(f"Closure type: {result['closure_state']['closure_type']}")
         print()
         print(result['exactor_design'])
 

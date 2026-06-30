@@ -353,9 +353,9 @@ def main():
     all_sites_flat = []
     
     for cat_name, cat_info in CATALYST_GROUPS.items():
-        print(f"\n{'='*60}")
+        info_line(f"\n{'='*60}")
         info_line(f"  Designing {cat_name}: {cat_info['description']}")
-        print(f"{'='*60}")
+        info_line(f"{'='*60}")
         
         site_designs = []
         for plastic_name, bond_name, fg1_name, fg2_name, mechanism in cat_info["plastics"]:
@@ -378,7 +378,7 @@ f"{catalyst['molecular_weight_kda']} kDa, "
     report_path = BASE / "PLASTIC_EATER_FROBENIUS_REPORT.md"
     with open(report_path, 'w') as f:
         f.write(report)
-    print(f"\nReport written: {report_path} ({len(report)} chars)")
+    info_line(f"\nReport written: {report_path} ({len(report)} chars)")
     
     # Generate JSON
     json_path = BASE / "plastic_eater_frobenius.json"
@@ -389,12 +389,12 @@ f"{catalyst['molecular_weight_kda']} kDa, "
             "total_plastics_covered": 6,
             "catalysts": all_catalysts,
         }, f, indent=2, default=str)
-    print(f"JSON written: {json_path}")
+    info_line(f"JSON written: {json_path}")
     
     # Summary
-    print(f"\n{'='*60}")
+    info_line(f"\n{'='*60}")
     info_line(f"  FROBENIUS-EXACT DESIGN COMPLETE")
-    print(f"{'='*60}")
+    info_line(f"{'='*60}")
     info_line(f"  Catalysts: {len(all_catalysts)}")
     for cat in all_catalysts:
         info_line(f"    {cat['catalyst_name']}: {', '.join(cat['target_plastics'])}")
@@ -404,7 +404,7 @@ f"{catalyst['molecular_weight_kda']} kDa, "
     # Verify all 6/6
     all_ok = all(s["pairs_covered"] == 6 for s in all_sites_flat)
     unique_aas = len(set(s["aa_sequence"] for s in all_sites_flat))
-    print(f"\n  All sites Frobenius-exact (6/6): {all_ok}")
+    success_line(f"\n  All sites Frobenius-exact (6/6): {all_ok}")
     info_line(f"  Unique AA sequences: {unique_aas}/6")
     info_line(f"  Pipeline: v2 complement + dominant-member rule")
     

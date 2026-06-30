@@ -81,7 +81,7 @@ class RibosomeDisplayLibrary:
                 copy_number=int(self.rng.exponential(1) * 100 + 1)
             )
             self.clones.append(clone)
-        print(f"[LIBRARY] {len(self.clones)} clone types from {self.diversity:.1e}")
+        info_line(f"[LIBRARY] {len(self.clones)} clone types from {self.diversity:.1e}")
         return self.clones
 
     def assign_binders(self):
@@ -97,7 +97,7 @@ class RibosomeDisplayLibrary:
             info_line(f"  {t:20s}: {len(b):6d} binders")
 
     def multi_target_panning(self, rounds: int = 8):
-        print(f"\n[MULTI-TARGET PANNING] {len(TOXINS)} toxins x {rounds} rounds")
+        info_line(f"\n[MULTI-TARGET PANNING] {len(TOXINS)} toxins x {rounds} rounds")
         for t in TOXINS:
             self.enriched_clones[t] = [c for c in self.clones if t in c.toxin_targets]
         for rnd in range(rounds):
@@ -166,7 +166,7 @@ def run_toxin_challenge_sweep():
     for conc_nM in [0.1, 1.0, 10.0, 100.0, 1000.0]:
         binding = lib.compute_binding(conc_nM)
         n = sum(1 for r in binding.values() if r.get("neutralized", False))
-        print(f"\n  --- {conc_nM:6.1f} nM ---")
+        info_line(f"\n  --- {conc_nM:6.1f} nM ---")
         for t, r in binding.items():
             s = "✓" if r['neutralized'] else "✗"
             clones = r.get('clones_available', 0)
@@ -181,10 +181,10 @@ def run_toxin_challenge_sweep():
 
 def main():
     global _GLOBAL_LIB
-    print("=" * 60)
+    info_line("=" * 60)
     info_line("UNIVERSAL ANTIDOTE V2 — Multi-Toxin Neutralization")
     info_line("Structural tuple: <𐑦𐑶𐑾𐑹𐑐𐑧𐑔𐑝⊙𐑫𐑕𐑭>")
-    print("=" * 60)
+    info_line("=" * 60)
     info_line("\n[FIXES APPLIED]")
     info_line("  1. 100x more sample clones (1k→100k)")
     info_line("  2. Multi-target simultaneous panning")
@@ -205,7 +205,7 @@ def main():
     path = "/home/mrnob0dy666/rebis_concrete/therapeutics/universal_antidote_results.json"
     with open(path, 'w') as f:
         json.dump(output, f, indent=2, default=str)
-    print(f"\n[SAVED] {path}")
+    info_line(f"\n[SAVED] {path}")
     info_line("\n[VERIFICATION] Frobenius μ∘δ=id: binding self-consistent")
 
 

@@ -71,9 +71,9 @@ src = src.replace(old_parse, new_parse)
 with open(COMPILER_PATH, "w") as f:
     f.write(src)
 
-print(f"[OK] Patched {COMPILER_PATH}")
+success_line(f"[OK] Patched {COMPILER_PATH}")
 info_line("  - CASResolver.resolve() now fetches /property/CanonicalSMILES,.../JSON")
-print("  - Returns 'smiles' field in addition to name, formula")
+info_line("  - Returns 'smiles' field in addition to name, formula")
 
 # ── Fix 2: Pipeline --cas path: propagate SMILES to scaffold parser ──
 with open(PIPELINE_PATH) as f:
@@ -103,18 +103,18 @@ psrc = psrc.replace(old_smiles_assign, new_smiles_assign)
 with open(PIPELINE_PATH, "w") as f:
     f.write(psrc)
 
-print(f"[OK] Patched {PIPELINE_PATH}")
+success_line(f"[OK] Patched {PIPELINE_PATH}")
 info_line("  - --cas path now passes SMILES to resolve_and_parse_scaffold()")
-print("  - Pipeline._target_smiles = info['smiles'] from CAS resolver")
+info_line("  - Pipeline._target_smiles = info['smiles'] from CAS resolver")
 print()
 info_line("=== Usage ===")
-print("  p3 pipeline/reaction_pipeline.py --cas \"<CAS_NUMBER>\" --cdxml")
+info_line("  p3 pipeline/reaction_pipeline.py --cas \"<CAS_NUMBER>\" --cdxml")
 print()
 info_line("The CAS resolver will now:")
 info_line("  1. Query PubChem by CAS number → get IUPAC Name + Formula + SMILES")
 info_line("  2. Pass SMILES to ScaffoldParser → real fragment CDXML files")
 info_line("  3. Cache all fields (including SMILES) in CAS_cache.json")
 print()
-print("If the CAS isn't in PubChem, it falls back gracefully:")
+info_line("If the CAS isn't in PubChem, it falls back gracefully:")
 info_line("  - SMILES is empty → FG-only decomposition (legacy behavior)")
 info_line("  - No hard failure, no crash")

@@ -2,9 +2,9 @@
 from shared.rich_output import *
 #!/usr/bin/env python3
 """Ch3mpiler display — used by ghost_typer.py"""
-print("=" * 65)
+info_line("=" * 65)
 info_line("CH3MPILER — IG-Grounded Retrosynthetic Compiler")
-print("=" * 65)
+info_line("=" * 65)
 print()
 info_line("Core operation: bond = join(tensor(FG1, FG2), bond)")
 print()

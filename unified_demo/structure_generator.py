@@ -425,12 +425,12 @@ def generate_all_structures(
     """
     base = Path(output_dir)
     
-    print(f"\n{'='*60}")
+    info_line(f"\n{'='*60}")
     info_line(f"  STRUCTURE GENERATION — {disease_key.upper()}")
-    print(f"{'='*60}")
+    info_line(f"{'='*60}")
     
     # ── CDXML generation ──
-    print(f"\n  Generating CDXML chemical structures...")
+    info_line(f"\n  Generating CDXML chemical structures...")
     cdxml_dir = base / "cdxml"
     cdxml_results = generate_cdxml_for_therapy(disease_key, str(cdxml_dir))
     
@@ -443,7 +443,7 @@ def generate_all_structures(
     info_line(f"  CDXML: {sum(1 for r in cdxml_results if 'error' not in r)}/{len(cdxml_results)} generated")
     
     # ── PDB generation ──
-    print(f"\n  Generating PDB protein structures...")
+    info_line(f"\n  Generating PDB protein structures...")
     pdb_dir = base / "pdb"
     pdb_results = generate_pdb_for_therapy(disease_key, str(pdb_dir), protein_name, use_esmfold)
     
@@ -486,4 +486,4 @@ if __name__ == "__main__":
     # Summary
     cdxml_ok = sum(1 for r in result["cdxml"] if "error" not in r)
     pdb_ok = sum(1 for r in result["pdb"] if "error" not in r)
-    print(f"\n  TOTAL: {cdxml_ok} CDXML + {pdb_ok} PDB generated")
+    success_line(f"\n  TOTAL: {cdxml_ok} CDXML + {pdb_ok} PDB generated")

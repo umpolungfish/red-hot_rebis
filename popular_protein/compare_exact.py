@@ -72,17 +72,17 @@ results = {}
 
 for name, (pdb_file, chain, n_expected) in CRYSTAL_MAP.items():
     if name not in exact_data:
-        print(f"SKIP {name}: not in exact data")
+        info_line(f"SKIP {name}: not in exact data")
         continue
     
     pdb_path = OUT / pdb_file
     if not pdb_path.exists():
-        print(f"SKIP {name}: {pdb_file} not found")
+        info_line(f"SKIP {name}: {pdb_file} not found")
         continue
     
     # Parse crystal CA
     crystal_ca, crystal_resnums = parse_ca_atoms(pdb_path, chain)
-    print(f"\n{name}: crystal {len(crystal_ca)} CA, expected {n_expected}")
+    info_line(f"\n{name}: crystal {len(crystal_ca)} CA, expected {n_expected}")
     
     # Exact CA
     exact_ca = parse_exact_ca(exact_data[name])
@@ -151,9 +151,9 @@ for name in ['acth', 'beta_endorphin', 'alpha_msh']:
     ed = exact_data[name]
     phis = [e['phi'] for e in ed['phipsi']]
     psis = [e['psi'] for e in ed['phipsi']]
-    print(f"{name}: φ={np.mean(phis):.1f}±{np.std(phis):.1f}°, ψ={np.mean(psis):.1f}±{np.std(psis):.1f}°")
+    info_line(f"{name}: φ={np.mean(phis):.1f}±{np.std(phis):.1f}°, ψ={np.mean(psis):.1f}±{np.std(psis):.1f}°")
 
 with open(OUT / 'exact_comparison_results.json', 'w') as f:
     json.dump(results, f, indent=2)
 
-print(f"\nSaved to exact_comparison_results.json")
+info_line(f"\nSaved to exact_comparison_results.json")
