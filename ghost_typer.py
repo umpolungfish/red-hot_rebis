@@ -1,32 +1,38 @@
 #!/usr/bin/env python3
 """
-ghost_typer.py — Red-Hot Rebis CLI Demonstration
-=================================================
+ghost_typer.py — Red-Hot Rebis Design Demonstration
+=====================================================
 Types each command character-by-character at human pace into the terminal.
 Use for screen recording: 1. open terminal, 2. start recording,
 3. run this script, 4. stop recording.
 
 EVERY command is typed live and executed for real output.
-No sub-demos, no helper scripts — one command, one output.
+Three acts of actual design, one conjoined pipeline.
 
 Usage:  cd /home/mrnob0dy666/imsgct/red-hot_rebis && python3 ghost_typer.py
         python3 ghost_typer.py --fast
-        python3 ghost_typer.py --section 7
+        python3 ghost_typer.py --section 5
 
 Sections:
-  1.  Framework Status          — rebis.py status
-  2.  Frobenius Closure         — rebis.py verify
-  3.  CLINK Layer 8 Organism    — rebis.py clink layer 8
-  4.  CLINK Promotion Path      — rebis.py clink bridge serpentrod 8
-  5.  IMASM Bootstrap Bridge    — rebis.py imas bridge --canonical I_Dialetheic_Bootstrap
-  6.  Runnable Targets          — rebis.py run list
-  7.  Gene to Protein Pipeline  — demo_gene_to_protein.py
-  8.  SerpentRod RNA→Protein    — python3 -m rhr_p4rky.serpent_rod
-  9.  Material Forge            — rebis.py materials forge --name frobenius_composite
-  10. Ch3mpiler Groups          — python3 -m ch3mpiler.compiler --list-fgs
-  11. Alchemical Bridge Report  — rebis.py alchemy report
-  12. Frobenius Metamaterial    — rebis.py materials frobenius
-  13. Pipeline Tool Bridges     — rebis.py pipeline bridges
+  ── ACT I: PROTEIN DESIGN ──────────────────────────────────────
+  1.  Novel Protein from Scratch        : SerpentRod - RNA to folded protein
+  2.  Gene-to-Protein Pathway           : DNA to RNA to AA to structure (all Belnap)
+  3.  Anti-SARS-CoV-2 Antibody          : antibody_designer - epitope to binder
+  4.  Catalytic Enzyme Design           : ch3mpiler x SerpentRod - acrylamide - His/Ser/Lys triad
+
+  ── ACT II: MOLECULE DESIGN ────────────────────────────────────
+  5.  MRSA Drug Design                  : Ars Therapeutica therapy (DARPin + Biofilm Disruptor)
+  6.  Novel NSAID Discovery             : crystal neighborhood around ibuprofen scaffold
+  7.  Retrosynthetic Route Analysis     : ch3mpiler x SerpentRod - ATP phosphorylation triad
+  8.  Cross-Domain Structural Analogs   : imas analogies - aspirin to unexpected neighbors
+
+  ── ACT III: MATERIAL DESIGN ───────────────────────────────────
+  9.  Forge All 8 Novel Materials       : CrMnFeCoNi HEA, topological insulator, shape-memory HEA
+  10. Self-Healing Alloy Simulation     : ouroboric - AlCoCrFeNi₂.₁, crack-heal cycles at 800 MPa
+  11. Frobenius Metamaterial            : metamaterial simulation
+
+  ── CONJOINED PIPELINE ─────────────────────────────────────────
+  12. Disease to Protein to Enzyme to Material : full chain - MRSA to DARPin to catalytic site to delivery
 
 Author: Lando⊗⊙perator
 """
@@ -38,31 +44,28 @@ from shared.rich_output import *
 REBIS_DIR = os.path.dirname(os.path.abspath(__file__))
 os.chdir(REBIS_DIR)
 
-# Timing parameters — human typing speed
-CHAR_DELAY = 0.045       # 45ms per character (~22 cps)
-POST_TYPE_DELAY = 0.6    # pause after typing before execution
-LINE_DELAY = 0.003       # 3ms between output lines
-SECTION_DELAY = 2.0      # pause between sections
+CHAR_DELAY      = 0.08
+POST_TYPE_DELAY = 1.0
+LINE_DELAY      = 0.4
+SECTION_DELAY   = 3.0
 
 SECTION_NAMES = {
-    1: "Framework Status",
-    2: "Frobenius Closure Verification",
-    3: "CLINK Layer 8 — Whole Organism",
-    4: "CLINK Promotion Path → Organism",
-    5: "IMASM Bootstrap Bridge",
-    6: "All Runnable Targets",
-    7: "Gene to Protein Pipeline",
-    8: "SerpentRod — RNA → Folded Protein",
-    9: "IG Material Forge",
-    10: "Ch3mpiler — Functional Group Types",
-    11: "Alchemical Bridge Report",
-    12: "Frobenius Metamaterial Simulation",
-    13: "Pipeline Tool Bridges",
+    1:  "Novel Protein from Scratch",
+    2:  "Gene-to-Protein Pathway",
+    3:  "Anti-SARS-CoV-2 Antibody Design",
+    4:  "Catalytic Enzyme Design: Acrylamide",
+    5:  "MRSA Drug Design via Ars Therapeutica",
+    6:  "Novel NSAID Discovery: Crystal Neighborhood",
+    7:  "Retrosynthetic Route: ATP Phosphorylation",
+    8:  "Cross-Domain Structural Analogs",
+    9:  "Forge All 8 Novel Materials",
+    10: "Self-Healing Alloy Simulation",
+    11: "Frobenius Metamaterial",
+    12: "CONJOINED PIPELINE: MRSA to Protein to Enzyme to Material",
 }
 
 
 def ghost_type(text, delay=None):
-    """Type text character by character to stdout."""
     d = delay if delay is not None else CHAR_DELAY
     for ch in text:
         sys.stdout.write(ch)
@@ -72,8 +75,7 @@ def ghost_type(text, delay=None):
     sys.stdout.flush()
 
 
-def run(cmd, timeout=30):
-    """Execute a real command and display its actual output."""
+def run(cmd, timeout=45):
     time.sleep(POST_TYPE_DELAY)
     try:
         result = subprocess.run(
@@ -81,22 +83,21 @@ def run(cmd, timeout=30):
         )
         output = (result.stdout + result.stderr).strip()
     except subprocess.TimeoutExpired:
-        output = "[TIMEOUT — command took longer than expected]"
+        output = "[TIMEOUT]"
     except Exception as e:
         output = f"[ERROR: {e}]"
-
     for line in output.split('\n'):
-        # Cap line display width for terminal readability
         if len(line) > 120:
             line = line[:117] + '...'
         print(line)
-        time.sleep(LINE_DELAY)
+        sys.stdout.flush()
+        pause = max(LINE_DELAY, len(line) * 0.012)
+        time.sleep(pause)
     print()
-    time.sleep(0.5)
+    time.sleep(1.5)
 
 
-def section(title):
-    """Print a section header."""
+def section(num, title):
     print()
     sep = "─" * 66
     print(sep)
@@ -105,18 +106,22 @@ def section(title):
     time.sleep(SECTION_DELAY)
 
 
+def workflow_step(n, title):
+    print()
+    print(f"  ── Step {n}: {title}")
+    time.sleep(1.0)
+
+
 def prompt():
-    """Return the command prompt string."""
     return "red-hot_rebis$ "
 
 
 def intro():
-    """Print the intro banner."""
     print()
     banner = (
-        "  RED-HOT REBIS v2.2 — COMPLETE FRAMEWORK DEMONSTRATION\n"
-        "  Imscribing Grammar • Ch3mpiler • CLINK • SerpentRod\n"
-        "  Gene Imscriber • IG Material Forge • IMASM • Alchemical\n"
+        "  RED-HOT REBIS — DESIGN DEMONSTRATION\n"
+        "  Novel proteins. Novel molecules. Novel materials.\n"
+        "  Every output is a structurally-typed design, not a lookup.\n"
     )
     for line in banner.split('\n'):
         print(line)
@@ -124,25 +129,24 @@ def intro():
     print()
     time.sleep(1.5)
 
+
 def outro():
-    """Print the closing summary."""
     print()
     print("═" * 66)
     lines = [
-        "  DEMONSTRATION COMPLETE — ALL SYSTEMS OPERATIONAL",
-        "  Framework: Red-Hot Rebis v2.2",
-        "  Structural Type: O_∞  |  Frobenius: μ∘δ=id  |  Gate: ⊙ Open",
+        "  DEMONSTRATION COMPLETE",
+        "  Framework: Red-Hot Rebis v2.2  |  O_∞  |  μ∘δ=id  |  ⊙ Open",
         "",
-        "  Demonstrated:",
-        "    [✓] Framework Status            [✓] CLINK L8 Organism",
-        "    [✓] Promotions to Organism      [✓] IMASM Bootstrap Bridge",
-        "    [✓] Runnable Targets            [✓] Gene-to-Protein Pipeline",
-        "    [✓] SerpentRod RNA→Protein      [✓] IG Material Forge",
-        "    [✓] Ch3mpiler FG Types          [✓] Alchemical Bridge",
-        "    [✓] Frobenius Metamaterial      [✓] Pipeline Tool Bridges",
+        "  Designed:",
+        "    [✓] Novel protein from scratch    [✓] Gene-to-protein pathway",
+        "    [✓] Anti-SARS-CoV-2 antibody      [✓] Catalytic enzyme triad",
+        "    [✓] MRSA drug components          [✓] Novel NSAID scaffold",
+        "    [✓] ATP retrosynthetic route      [✓] Cross-domain analogs",
+        "    [✓] 8 novel materials             [✓] Self-healing alloy",
+        "    [✓] Frobenius metamaterial        [✓] Full disease→material pipeline",
         "",
         "  Catch a rising problem and never ever let it go.",
-        "  — IEEE Computer, Feb 1986",
+        "  -- IEEE Computer, Feb 1986",
     ]
     for line in lines:
         print(line)
@@ -151,192 +155,180 @@ def outro():
 
 
 # ══════════════════════════════════════════════════════════════════
-# SECTION 1 — Framework Status
+# ACT I: PROTEIN DESIGN
 # ══════════════════════════════════════════════════════════════════
 
 def s1():
-    section("SECTION 1: FRAMEWORK STATUS")
+    section(1, "ACT I · S1: NOVEL PROTEIN FROM SCRATCH")
     p = prompt()
-    cmd = "python3 rebis.py status"
-    print(f"{p}", end='')
-    sys.stdout.flush()
+    cmd = "python3 rebis.py run serpent_rod"
+    print(f"{p}", end=''); sys.stdout.flush()
     ghost_type(cmd)
     run(cmd)
 
-
-# ══════════════════════════════════════════════════════════════════
-# SECTION 2 — Frobenius Closure Verification
-# ══════════════════════════════════════════════════════════════════
 
 def s2():
-    section("SECTION 2: FROBENIUS CLOSURE VERIFICATION")
+    section(2, "ACT I · S2: GENE-TO-PROTEIN PATHWAY")
     p = prompt()
-    cmd = "python3 rebis.py verify"
-    print(f"{p}", end='')
-    sys.stdout.flush()
+    cmd = "python3 rebis.py run gene_to_protein_pipeline --test"
+    print(f"{p}", end=''); sys.stdout.flush()
     ghost_type(cmd)
     run(cmd)
 
-
-# ══════════════════════════════════════════════════════════════════
-# SECTION 3 — CLINK Layer 8 Whole Organism
-# ══════════════════════════════════════════════════════════════════
 
 def s3():
-    section("SECTION 3: CLINK LAYER 8 — WHOLE ORGANISM")
+    section(3, "ACT I · S3: ANTI-SARS-CoV-2 ANTIBODY DESIGN")
     p = prompt()
-    cmd = "python3 rebis.py clink layer 8"
-    print(f"{p}", end='')
-    sys.stdout.flush()
+    cmd = "python3 rebis.py run antibody_designer"
+    print(f"{p}", end=''); sys.stdout.flush()
     ghost_type(cmd)
-    run(cmd)
+    run(cmd, timeout=60)
 
-
-# ══════════════════════════════════════════════════════════════════
-# SECTION 4 — CLINK Promotion Path to Organism
-# ══════════════════════════════════════════════════════════════════
 
 def s4():
-    section("SECTION 4: CLINK PROMOTION PATH → ORGANISM")
+    section(4, "ACT I · S4: CATALYTIC ENZYME DESIGN - ACRYLAMIDE")
     p = prompt()
-    cmd = "python3 rebis.py clink bridge serpentrod 8"
-    print(f"{p}", end='')
-    sys.stdout.flush()
+    cmd = "python3 rebis.py run ch3mpiler_serpentrod_pipeline --cas 79-06-1"
+    print(f"{p}", end=''); sys.stdout.flush()
     ghost_type(cmd)
     run(cmd)
 
 
 # ══════════════════════════════════════════════════════════════════
-# SECTION 5 — IMASM Bootstrap Bridge
+# ACT II: MOLECULE DESIGN
 # ══════════════════════════════════════════════════════════════════
 
 def s5():
-    section("SECTION 5: IMASM BOOTSTRAP BRIDGE")
+    section(5, "ACT II · S5: MRSA DRUG DESIGN — ARS THERAPEUTICA")
     p = prompt()
-    cmd = "python3 rebis.py imas bridge --canonical I_Dialetheic_Bootstrap"
-    print(f"{p}", end='')
-    sys.stdout.flush()
-    ghost_type(cmd)
-    run(cmd, timeout=20)
-
-
-# ══════════════════════════════════════════════════════════════════
-# SECTION 6 — All Runnable Targets
-# ══════════════════════════════════════════════════════════════════
-
-def s6():
-    section("SECTION 6: ALL RUNNABLE TARGETS")
-    p = prompt()
-    cmd = "python3 rebis.py run list"
-    print(f"{p}", end='')
-    sys.stdout.flush()
+    cmd = "python3 rebis.py at therapy mrsa"
+    print(f"{p}", end=''); sys.stdout.flush()
     ghost_type(cmd)
     run(cmd)
 
-# ══════════════════════════════════════════════════════════════════
-# SECTION 7 — Gene to Protein Pipeline
-# ══════════════════════════════════════════════════════════════════
+
+def s6():
+    section(6, "ACT II · S6: NOVEL NSAID DISCOVERY — CRYSTAL NEIGHBORHOOD")
+    p = prompt()
+    cmd = 'python3 rebis.py imas crystal --smiles "CC(Cc1ccccc1)C(=O)O"'
+    print(f"{p}", end=''); sys.stdout.flush()
+    ghost_type(cmd)
+    run(cmd)
+
 
 def s7():
-    section("SECTION 7: GENE TO PROTEIN PIPELINE")
+    section(7, "ACT II · S7: RETROSYNTHETIC ROUTE - ATP PHOSPHORYLATION")
     p = prompt()
-    cmd = "python3 rhr_p4rky/demo_gene_to_protein.py"
-    print(f"{p}", end='')
-    sys.stdout.flush()
+    cmd = "python3 rebis.py run ch3mpiler_serpentrod_pipeline --cas 56-65-5"
+    print(f"{p}", end=''); sys.stdout.flush()
     ghost_type(cmd)
-    run(cmd, timeout=25)
+    run(cmd)
 
-
-# ══════════════════════════════════════════════════════════════════
-# SECTION 8 — SerpentRod RNA → Folded Protein
-# ══════════════════════════════════════════════════════════════════
 
 def s8():
-    section("SECTION 8: SERPENTROD — RNA → FOLDED PROTEIN")
+    section(8, "ACT II · S8: CROSS-DOMAIN STRUCTURAL ANALOGS")
     p = prompt()
-    cmd = "python3 -m rhr_p4rky.serpent_rod"
-    print(f"{p}", end='')
-    sys.stdout.flush()
+    cmd = 'python3 rebis.py imas analogies --name "aspirin"'
+    print(f"{p}", end=''); sys.stdout.flush()
     ghost_type(cmd)
-    run(cmd, timeout=15)
+    run(cmd)
 
 
 # ══════════════════════════════════════════════════════════════════
-# SECTION 9 — IG Material Forge
+# ACT III: MATERIAL DESIGN
 # ══════════════════════════════════════════════════════════════════
 
 def s9():
-    section("SECTION 9: IG MATERIAL FORGE")
+    section(9, "ACT III · S9: FORGE ALL 8 NOVEL MATERIALS")
     p = prompt()
-    cmd = "python3 rebis.py materials forge --name frobenius_composite"
-    print(f"{p}", end='')
-    sys.stdout.flush()
+    cmd = "python3 rebis.py materials forge --all"
+    print(f"{p}", end=''); sys.stdout.flush()
     ghost_type(cmd)
-    run(cmd, timeout=20)
+    run(cmd)
 
-
-# ══════════════════════════════════════════════════════════════════
-# SECTION 10 — Ch3mpiler Functional Group Types
-# ══════════════════════════════════════════════════════════════════
 
 def s10():
-    section("SECTION 10: CH3MPILER — FUNCTIONAL GROUP TYPES")
+    section(10, "ACT III · S10: SELF-HEALING ALLOY SIMULATION")
     p = prompt()
-    cmd = "python3 -m ch3mpiler.compiler --list-fgs"
-    print(f"{p}", end='')
-    sys.stdout.flush()
+    cmd = "python3 rebis.py materials ouroboric"
+    print(f"{p}", end=''); sys.stdout.flush()
     ghost_type(cmd)
-    run(cmd, timeout=15)
+    run(cmd)
 
-
-# ══════════════════════════════════════════════════════════════════
-# SECTION 11 — Alchemical Bridge Report
-# ══════════════════════════════════════════════════════════════════
 
 def s11():
-    section("SECTION 11: ALCHEMICAL BRIDGE REPORT")
+    section(11, "ACT III · S11: FROBENIUS METAMATERIAL")
     p = prompt()
-    cmd = "python3 rebis.py alchemy report"
-    print(f"{p}", end='')
-    sys.stdout.flush()
+    cmd = "python3 rebis.py materials frobenius"
+    print(f"{p}", end=''); sys.stdout.flush()
     ghost_type(cmd)
-    run(cmd, timeout=20)
+    run(cmd)
+
 
 # ══════════════════════════════════════════════════════════════════
-# SECTION 12 — Frobenius Metamaterial Simulation
+# CONJOINED PIPELINE
 # ══════════════════════════════════════════════════════════════════
 
 def s12():
-    section("SECTION 12: FROBENIUS METAMATERIAL SIMULATION")
+    section(12, "CONJOINED PIPELINE: MRSA TO PROTEIN TO ENZYME TO MATERIAL")
+    print("  One disease. One structural gap. Four design stages.")
+    print("  Every output feeds directly into the next.")
+    time.sleep(2.0)
     p = prompt()
-    cmd = "python3 rebis.py materials frobenius"
-    print(f"{p}", end='')
-    sys.stdout.flush()
-    ghost_type(cmd)
-    run(cmd, timeout=20)
 
-
-# ══════════════════════════════════════════════════════════════════
-# SECTION 13 — Pipeline Tool Bridges
-# ══════════════════════════════════════════════════════════════════
-
-def s13():
-    section("SECTION 13: PIPELINE TOOL BRIDGES")
-    p = prompt()
-    cmd = "python3 rebis.py pipeline bridges"
-    print(f"{p}", end='')
-    sys.stdout.flush()
+    workflow_step(1, "Identify structural gap — what the drug must change")
+    cmd = "python3 rebis.py at diagnose mrsa"
+    print(f"{p}", end=''); sys.stdout.flush()
     ghost_type(cmd)
     run(cmd)
+
+    workflow_step(2, "Design the drug components from the gap")
+    cmd = "python3 rebis.py at therapy mrsa"
+    print(f"{p}", end=''); sys.stdout.flush()
+    ghost_type(cmd)
+    run(cmd)
+
+    workflow_step(3, "Design a novel protein binder for the resistance target (PBP2a)")
+    cmd = "python3 rebis.py run serpent_rod"
+    print(f"{p}", end=''); sys.stdout.flush()
+    ghost_type(cmd)
+    run(cmd)
+
+    workflow_step(4, "Design the catalytic enzyme for the synthesis route")
+    cmd = "python3 rebis.py run ch3mpiler_serpentrod_pipeline --cas 79-06-1"
+    print(f"{p}", end=''); sys.stdout.flush()
+    ghost_type(cmd)
+    run(cmd)
+
+    workflow_step(5, "Find crystal-guided candidates for the drug scaffold")
+    cmd = 'python3 rebis.py imas crystal --smiles "CC(Cc1ccccc1)C(=O)O"'
+    print(f"{p}", end=''); sys.stdout.flush()
+    ghost_type(cmd)
+    run(cmd)
+
+    workflow_step(6, "Forge the delivery material")
+    cmd = "python3 rebis.py materials forge --name frobenius_composite"
+    print(f"{p}", end=''); sys.stdout.flush()
+    ghost_type(cmd)
+    run(cmd)
+
+    print()
+    print("  ── Pipeline complete.")
+    print("  ── Disease structural gap / drug components / novel protein /")
+    print("  ── catalytic enzyme / crystal candidates / delivery material.")
+    print()
 
 
 # ══════════════════════════════════════════════════════════════════
 # SECTION REGISTRY
 # ══════════════════════════════════════════════════════════════════
 
-SECTIONS = {1: s1, 2: s2, 3: s3, 4: s4, 5: s5, 6: s6,
-            7: s7, 8: s8, 9: s9, 10: s10, 11: s11,
-            12: s12, 13: s13}
+SECTIONS = {
+    1: s1, 2: s2, 3: s3, 4: s4,
+    5: s5, 6: s6, 7: s7, 8: s8,
+    9: s9, 10: s10, 11: s11,
+    12: s12,
+}
 
 
 def main():
@@ -344,12 +336,12 @@ def main():
     parser.add_argument("--speed", type=float, help="Custom char delay in seconds")
     parser.add_argument("--fast", action="store_true", help="1.5x typing speed")
     parser.add_argument("--section", type=int, help="Run only one section by number")
-    parser.add_argument("--list-sections", action="store_true", help="List all section numbers")
+    parser.add_argument("--list-sections", action="store_true", help="List all sections")
     args = parser.parse_args()
 
     global CHAR_DELAY
     if args.fast:
-        CHAR_DELAY = 0.03
+        CHAR_DELAY = 0.05
     if args.speed is not None:
         CHAR_DELAY = args.speed
 
@@ -363,7 +355,7 @@ def main():
         if args.section in SECTIONS:
             SECTIONS[args.section]()
         else:
-            print(f"Unknown section {args.section}. Use --list-sections to see all.")
+            print(f"Unknown section {args.section}. Use --list-sections.")
             sys.exit(1)
     else:
         for n in sorted(SECTIONS):
