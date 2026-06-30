@@ -1014,20 +1014,611 @@ These static-data commands were removed from `rebis.py`. All their data now live
 
 ---
 
+
+---
+
+### `at` — Ars Therapeutica
+
+Grammar-derived optimal therapy design and structural diagnosis. Maps diseases onto the 12-primitive crystal, computes structural distance to healthy type, and generates the promotion path (therapy protocol) to close the gap.
+
+```bash
+python3 rebis.py at <subcommand> [args...]
+```
+
+#### `at list`
+
+List all available therapies with structural diagnosis data.
+
+```bash
+python3 rebis.py at list
+```
+
+Output shows each therapy's name, structural distance (d) to the healthy state, tier promotion (e.g. O₀→O₂), and the primitives that need promotion (Δ). Currently 10 therapies: schizophrenia, hiv, mrsa, mdd (major depressive disorder), pcos, cf (cystic fibrosis), gout_elimination, gout_combined, gout_holistic, homeopathy.
+
+#### `at diagnose <disease>`
+
+Show full structural diagnosis — the disease's 12-primitive tuple, its distance from healthy/generic human, and the specific primitive conflicts.
+
+```bash
+python3 rebis.py at diagnose schizophrenia
+python3 rebis.py at diagnose mrsa
+python3 rebis.py at diagnose cf
+```
+
+Output includes: disease tuple, healthy tuple, per-primitive conflict list, structural distance, and tier assessment.
+
+#### `at therapy <disease>`
+
+Show the grammar-derived therapy protocol — the exact promotion path from disease state to healthy state.
+
+```bash
+python3 rebis.py at therapy schizophrenia
+python3 rebis.py at therapy mrsa
+python3 rebis.py at therapy hiv
+```
+
+Output lists each primitive promotion step with the structural operation required (e.g., φ̂: 𐑢→⊙, Ħ: 𐑓→𐑫), and compounds/molecules that effect that promotion.
+
+#### `at compare <type_a> <type_b>`
+
+Compare two structural types — show per-primitive alignment and structural distance.
+
+```bash
+python3 rebis.py at compare schizophrenia mdd
+python3 rebis.py at compare hiv mrsa
+```
+
+#### `at tensor <type_a> <type_b>`
+
+Compute the tensor product of two structural types — the composite's absorbing structural type (⊙_3 rule applies).
+
+```bash
+python3 rebis.py at tensor schizophrenia antidepressant
+python3 rebis.py at tensor hiv antiviral
+```
+
+#### `at meet <type_a> <type_b>`
+
+Compute the meet (greatest lower bound) of two structural types — the shared structural floor.
+
+```bash
+python3 rebis.py at meet schizophrenia mdd
+```
+
+#### `at spectrum <type>`
+
+Show the psychiatric spectrum mapping for a structural type — how it positions across mental health dimensions.
+
+```bash
+python3 rebis.py at spectrum schizophrenia
+python3 rebis.py at spectrum mdd
+```
+
+#### `at operate <tuple> <operation>`
+
+Apply a structural operation to a comma-separated 12-tuple. Operations include: `calcination`, `dissolution`, `separation`, `conjunction`, `fermentation`, `distillation`, `coagulation`.
+
+```bash
+python3 rebis.py at operate --tuple "𐑼,𐑡,𐑩,𐑗,𐑱,𐑺,𐑲,𐑝,𐑢,𐑓,𐑙,𐑷" --operation calcination
+```
+
+
+### `scripts`
+
+Run standalone scripts that are not fully integrated as `rebis.py` subcommands. These scripts live in `scripts/` and are callable via this unified interface.
+
+```bash
+python3 rebis.py scripts <subcommand> [script_name] [args...]
+```
+
+#### `scripts list`
+
+List all available scripts with line counts.
+
+```bash
+python3 rebis.py scripts list
+```
+
+Shows each script name and its line count. Currently ~21 scripts in `scripts/` including:
+
+| Script | Description |
+|--------|-------------|
+| `run_antibody*` | Antibody CDR designer (interactive) |
+| `mito_pipeline*` | Mitochondrial genome pipeline (v1–v3) |
+| `run_msa` | Multiple sequence alignment |
+| `run_pdb_validation` | PDB structure validation |
+| `analyze_validation` | Validation results analyzer |
+| `gen_univ_map` | Diaschizic IUPAC generator |
+| `frobenius_exact_design*` | Frobenius exact design tools |
+| `compute_promotions` | Promotion path computer |
+| `psychedelic_bridge*` | Psychedelic compound bridge |
+| `serpentrod_protein*` | SerpentRod standalone scripts |
+| `ghost_typer` | Demo segment runner for screen recording |
+| `operations` | Alchemical operations |
+| `stress_test_proteins` | 34-test protein & genetics stress test |
+| `test_genetics` | Full genetics test suite |
+| `_demo_*` | Demo scripts for each pillar |
+
+#### `scripts run <name> [args...]`
+
+Run a script by name, optionally forwarding arguments.
+
+```bash
+python3 rebis.py scripts list                          # Show all scripts
+python3 rebis.py scripts run run_antibody               # Interactive antibody designer
+python3 rebis.py scripts run mito_pipeline              # MT gene pipeline
+python3 rebis.py scripts run test_genetics              # Full B4 genetics suite
+python3 rebis.py scripts run test_genetics --b4         # B4 lattice tests only
+python3 rebis.py scripts run test_genetics --quick      # Quick test subset
+python3 rebis.py scripts run stress_test_proteins       # 34-test stress suite
+python3 rebis.py scripts run ghost_typer                # Demo typing (slow)
+python3 rebis.py scripts run ghost_typer --fast         # Demo typing (fast)
+python3 rebis.py scripts run ghost_typer --section 5    # Single section
+python3 rebis.py scripts run operations                 # Alchemical operations
+python3 rebis.py scripts run frobenius_exact_design     # Frobenius exact design
+python3 rebis.py scripts run compute_promotions         # Promotion paths
+python3 rebis.py scripts run run_msa                    # MSA analysis
+python3 rebis.py scripts run run_pdb_validation         # PDB validation
+python3 rebis.py scripts run analyze_validation         # Validation results
+python3 rebis.py scripts run gen_univ_map              # IUPAC generator
+python3 rebis.py scripts run psychedelic_bridge         # Psychedelic bridge
+
+---
+
+### `status` — Expanded
+
+Shows all platform modules with file size, line count, and health check.
+
+```bash
+python3 rebis.py status
+```
+
+Sample output (abbreviated):
+```
+╭──────────────────────┬───────┬─────────┬─────────────╮
+│ Package              │ Files │    Size │ Root file   │
+├──────────────────────┼───────┼─────────┼─────────────┤
+│ ✅ ch3mpiler         │    19 │ 355,212 │ __init__.py │
+│ ✅ clink             │    33 │ 685,758 │ __init__.py │
+│ ✅ imas              │    11 │ 211,815 │ __init__.py │
+│ ✅ materials         │    21 │ 551,018 │ __init__.py │
+│ ✅ rhr_p4rky         │    32 │ 390,060 │ __init__.py │
+│ ✅ serpentrod        │     3 │ 103,065 │ __init__.py │
+│ ✅ shared            │     5 │  65,970 │ __init__.py │
+│ ... (14 packages)    │       │         │             │
+╰──────────────────────┴───────┴─────────┴─────────────╯
+✅ shared/primitives.py: 13,467 bytes
+✅ shared/IG_catalog.json: 2,050,279 bytes
+14 packages + 21 scripts discovered
+```
+
+Use this as your first command when setting up — all packages should show ✅. A ❌ means an import failure, usually from a missing dependency (see Troubleshooting).
+
+### `verify` — Expanded
+
+Imports every module and reports pass/fail. Includes Frobenius closure checks where applicable.
+
+```bash
+python3 rebis.py verify
+```
+
+This checks:
+- All 14 packages import cleanly
+- All `rhr_p4rky/` modules import (32 modules)
+- All shared utilities load
+- No circular imports
+
+Expected: 15+ lines all showing ✅. Run after any install, code change, or `git pull`.
+
+
+
+---
+
+## Comprehensive `run` Target Reference
+
+Discoverable via `rebis.py run <target>`:
+
+| Target | Command | Description |
+|--------|---------|-------------|
+| `serpent_rod` | `rebis.py run serpent_rod` | V5 protein prediction — test set |
+| `ch3mpiler` | `rebis.py run ch3mpiler --smiles "<SMILES>"` | Retrosynthetic compiler |
+| `ch3mpiler_serpentrod_pipeline` | `rebis.py run ch3mpiler_serpentrod_pipeline --cas <num>` | Catalytic site design |
+| `antibody_designer` | `rebis.py run antibody_designer` | Advanced antibody design |
+| `gene_to_protein_pipeline` | `rebis.py run gene_to_protein_pipeline --test` | Full 7-stage pipeline |
+| `psychedelic_bridge` | `rebis.py run psychedelic_bridge` | Psychedelic compound bridge |
+| `diaschizic_iupac` | `rebis.py run diaschizic_iupac` | IUPAC generator |
+| `decay_chain` | `rebis.py run decay_chain` | Nuclear decay IMASM analysis |
+
+Use `rebis.py run list` to see the live list. Currently 8 discoverable targets.
+
+### Direct-run Scripts (not discoverable via `rebis.py run`)
+
+Use `python3 scripts/<name>.py` or `python3 scripts/<name>.py [args]`:
+
+| Script | Directory | Command | Description |
+|--------|-----------|---------|-------------|
+| `serpentrod` | `serpentrod/` | `python3 -m serpentrod.protein_v5` | V5 protein prediction |
+| `stress_test_proteins` | `scripts/` | `python3 scripts/stress_test_proteins.py` | 34-test cross-pipeline stress test |
+| `test_genetics` | `scripts/` | `python3 scripts/test_genetics.py [--b4/--quick]` | B4 lattice genetics test suite |
+| `ghost_typer` | `scripts/` | `python3 scripts/ghost_typer.py [--fast/--section N]` | Demo typing for screen recording |
+| `operations` | `scripts/` | `python3 scripts/operations.py` | Alchemical operations |
+| `frobenius_exact_design` | `scripts/` | `python3 scripts/frobenius_exact_design.py` | Frobenius exact design |
+| `compute_promotions` | `scripts/` | `python3 scripts/compute_promotions.py` | Promotion path computer |
+| `run_antibody` | `scripts/` | `python3 scripts/run_antibody.py` | Antibody designer (interactive) |
+| `run_pdb_validation` | `scripts/` | `python3 scripts/run_pdb_validation.py` | PDB structure validation |
+| `analyze_validation` | `scripts/` | `python3 scripts/analyze_validation.py` | Validation results analyzer |
+| `gen_univ_map` | `scripts/` | `python3 scripts/gen_univ_map.py` | Diaschizic IUPAC generator |
+| `run_msa` | `scripts/` | `python3 scripts/run_msa.py` | Multiple sequence alignment |
+| `mito_pipeline[_v2,_v3]` | `scripts/` | `python3 scripts/mito_pipeline.py` | Mitochondrial genome pipeline |
+| `hadron_belnap` | `rhr_p4rky/` | `python3 -m rhr_p4rky.hadron_belnap` | Hadronic Belnap classification |
+| `quark_belnap` | `rhr_p4rky/` | `python3 -m rhr_p4rky.quark_belnap` | Quark Belnap analysis |
+| `gene` | `gene_imscriber/` | `python3 -m gene_imscriber.engine` | IG-native genetic compiler |
+| `demo_*` | `demo_scripts/` | `python3 demo_scripts/_demo_<name>.py` | Per-pillar demos |
+
+### Run Examples
+
+Retrosynthesis with exact fragment SMILES:
+```bash
+python3 rebis.py run ch3mpiler --smiles "CC(=O)OC1=CC=CC=C1C(=O)O" --depth 3
+```
+
+SerpentRod protein prediction:
+```bash
+python3 rebis.py run serpent_rod --seq "MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTR"
+# Or directly:
+python3 -m serpentrod.protein_v5
+```
+
+Full genetics test suite:
+```bash
+python3 scripts/test_genetics.py --quick
+python3 scripts/stress_test_proteins.py
+```
+
+
+---
+
+### `alchemy` — Expanded Subcommand Reference
+
+The alchemical bridge maps the 7 classical stages of the Great Work onto 12-primitive IG structural operations. 19 subcommands covering analysis, design, synthesis, and retro-synthesis.
+
+```bash
+python3 rebis.py alchemy <subcommand> [options]
+```
+
+#### Analysis
+
+| Subcommand | Description | Example |
+|------------|-------------|---------|
+| `report` | Full bridge status — all available scroll treatises, tiers, molecular analogs | `rebis.py alchemy report` |
+| `tier <name>` | Analyze a specific tier — structural type, molecular analogs, operations | `rebis.py alchemy tier O_inf_self_modeling` |
+| `scroll-family` | List the scroll family — treatises where φ̂=⊙ and Ω=ℤ | `rebis.py alchemy scroll-family` |
+| `suggest <tier>` | Suggest molecular designs from a structural tier | `rebis.py alchemy suggest O1_pedagogical` |
+| `trace <treatise>` | Trace the Grand Sequence on a treatise's tuple — step-by-step | `rebis.py alchemy trace O_inf_self_modeling` |
+| `decode <term>` | Decode a modern scientific term into its alchemical equivalent | `rebis.py alchemy decode "electron microscope"` |
+| `learn <modern>` | Learn a modern term — map it to the alchemical framework | `rebis.py alchemy learn --modern "catalyst"` |
+
+#### Molecular Design
+
+| Subcommand | Description | Example |
+|------------|-------------|---------|
+| `alchemical-mol <smiles>` | Analyze a SMILES string through the alchemical bridge | `rebis.py alchemy alchemical-mol "CN1C=NC2=C1C(=O)N(C(=O)N2C)C"` |
+| `retro <smiles>` | Alchemical retrosynthesis — trace a molecule's formation path | `rebis.py alchemy retro "CC(=O)OC1=CC=CC=C1C(=O)O"` |
+| `host <smiles>` | Host-guest analysis — check if a molecule is a suitable host | `rebis.py alchemy host "C1=CC=C(C=C1)C2=CC=CC=C2"` |
+| `bind <smiles>` | Guest binding analysis | `rebis.py alchemy bind --guest "CCO"` |
+| `zosimos <name>` | Zosimos procedure — 7-stage alchemical synthesis path | `rebis.py alchemy zosimos aspirin` |
+
+#### Operations
+
+| Subcommand | Description | Example |
+|------------|-------------|---------|
+| `operate` | Apply an alchemical operation to a tuple | `rebis.py alchemy operate --tuple "𐑼,𐑡,𐑩,𐑗,𐑱,𐑺,..." --operation calcination` |
+| `greenfire` | Analyze green fire potential of a substrate | `rebis.py alchemy greenfire --substrate "CCO"` |
+| `wavelength` | Compute alchemical wavelength of a treatise | `rebis.py alchemy wavelength` |
+| `portico` | Portico analysis — structural entry points | `rebis.py alchemy portico` |
+| `stilling` | Stilling analysis — equilibration pathways | `rebis.py alchemy stilling` |
+| `ladder` | Ladder analysis — tier climbing paths | `rebis.py alchemy ladder` |
+| `grand-sequence` | Full grand sequence — traverse all 7 operations | `rebis.py alchemy grand-sequence` |
+| `key <n>` | Show key number n (1–12) — each maps to a primitive | `rebis.py alchemy key 9` (φ̂=⊙) |
+| `opus` | The Great Work summary — show the full opus | `rebis.py alchemy opus` |
+
+
+### `cdxml` — Expanded Subcommand Reference
+
+Generate, verify, and clean CDXML (ChemDraw XML) files for molecules, aptamers, and materials.
+
+```bash
+python3 rebis.py cdxml <subcommand> [options]
+```
+
+#### `cdxml generate`
+
+Generate CDXML files from SMILES or predefined molecule names.
+
+```bash
+# Generate all CDXML in batch
+python3 rebis.py cdxml generate --all
+
+# Generate only small molecules
+python3 rebis.py cdxml generate --molecules-only
+
+# Single molecule from SMILES
+python3 rebis.py cdxml generate --smiles "CN1C=NC2=C1C(=O)N(C(=O)N2C)C" --name caffeine
+
+# Single molecule from predefined library
+python3 rebis.py cdxml generate --molecule 5-nitro-bufotenin
+
+# Custom annotation on canvas
+python3 rebis.py cdxml generate --smiles "CCO" --name ethanol --annotation "C2H5OH - Solvent"
+
+# Print CDXML to stdout
+python3 rebis.py cdxml generate --smiles "CCO" --print
+```
+
+#### `cdxml verify`
+
+Verify a CDXML file for structural correctness.
+
+```bash
+python3 rebis.py cdxml verify --file /path/to/molecule.cdxml
+```
+
+#### `cdxml clean`
+
+Clean and reformat a CDXML file.
+
+```bash
+python3 rebis.py cdxml clean
+```
+
+
+## Updated Directory Structure (Post-Cleanup)
+
+After the v2.3.5 root cleanup, the top-level directory has been organized into clearly-named subdirectories:
+
+```
+red-hot_rebis/
+├── rebis.py               # CLI entry point (stays at root)
+├── setup.py               # Package setup
+├── Makefile               # Build/verify/test automation
+├── README.md              # Project readme
+├── MANUAL.md              # Manual page (man-style)
+├── USER_GUIDE.md          # This guide — comprehensive usage
+├── INDEX.md               # Static reference data
+├── demo_scripts/          # Demo scripts (_demo_*.py, _real_demo.py)
+├── scripts/               # Standalone scripts (ghost_typer, operations, stress_test, test_genetics)
+├── fasta/                 # FASTA sequence files
+├── data/                  # JSON data files
+├── images/                # Images (PNG, SVG, diagrams)
+├── _archive/              # Patents, commit_logs, old HTML cards
+├── docs/                  # General documentation
+├── rhr_p4rky/             # Paraconsistent kernel (32 modules)
+├── shared/                # Shared primitives, catalog, utilities
+├── serpentrod/            # Serpent's Rod — protein folding
+├── ch3mpiler/             # CH3MPILER — retrosynthesis
+├── pipeline/              # Auto-imscription pipeline
+├── gene_imscriber/        # Gene Imscriber
+├── clink/                 # CLINK Chain
+├── imas/                  # IMASM compound pipeline
+├── imasm_iterator/        # IMASM arrangement iterator
+├── materials/             # Materials forge
+├── biology/               # Biology simulations
+├── therapeutics/          # Therapeutic design
+├── alchemical_bridge/     # Alchemical operations
+├── Ars_Therapeutica/      # Ars Therapeutica
+├── natural_products/      # Natural products database
+├── cdxml/                 # CDXML generation
+├── popular_protein/       # Protein structure validation
+├── pdb/                   # PDB reference files
+├── designs/               # Design outputs
+├── glossary/              # Glossary files
+├── ig-docs/               # IG documentation
+└── genetics_animations/   # SVG genetics visualizations
+```
+
+All scripts (formerly root-level `.py` files) now live in `scripts/` or `demo_scripts/`. All data files live in `data/`, all images in `images/`, all FASTA sequences in `fasta/`. Patents and archival material are in `_archive/`.
+
+
+---
+
+## Workflow Recipes
+
+Complete end-to-end recipes for common tasks.
+
+### Recipe 1: Design a Novel Protein
+
+```bash
+# 1. Verify the system is wired
+python3 rebis.py status
+python3 rebis.py verify
+
+# 2. Check where proteins sit in the structural chain
+python3 rebis.py clink layer 3  # Molecule layer
+python3 rebis.py clink layer 4  # Cell layer (where proteins function)
+
+# 3. Run SerpentRod
+python3 rebis.py run serpent_rod
+
+# 4. Or run with a custom sequence
+python3 -m serpentrod.protein_v5 --seq "MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTR"
+
+# 5. Validate against crystal structure
+python3 scripts/popular_protein/comprehensive_comparison.py
+
+# 6. Stress-test across all modules
+python3 scripts/stress_test_proteins.py
+```
+
+### Recipe 2: Discover Disconnections for a Molecule
+
+```bash
+# 1. Encode the molecule as an IMASM compound
+python3 rebis.py imas compound --smiles "CC(=O)OC1=CC=CC=C1C(=O)O" --json
+
+# 2. Run retrosynthesis
+python3 rebis.py run ch3mpiler --smiles "CC(=O)OC1=CC=CC=C1C(=O)O" --depth 3
+
+# 3. Find cross-domain structural neighbors
+python3 rebis.py imas analogies --smiles "CC(=O)OC1=CC=CC=C1C(=O)O" --limit 10
+
+# 4. Check the reaction mechanism
+python3 rebis.py imas reaction --smiles "CC(=O)C1=CC=CC=C1" --product "CC(C1=CC=CC=C1)(C)O"
+```
+
+### Recipe 3: Design a Whole Organism
+
+```bash
+# 1. View the CLINK chain from quarks to organism
+python3 rebis.py clink layer 0
+python3 rebis.py clink layer 4
+python3 rebis.py clink layer 8
+
+# 2. Check which tool bridges are available
+python3 rebis.py pipeline bridges
+
+# 3. Design from a starting layer
+python3 rebis.py pipeline from-layer 3 8  # molecule → organism
+
+# 4. Generate actionable outputs
+python3 rebis.py pipeline actionable --organism mammal
+
+# 5. Inspect the outputs
+ls clink/datasets/organism_designs/organism_mammal_actionable/
+```
+
+### Recipe 4: Crystal-Guided Drug Discovery
+
+```bash
+# 1. Start from a known compound
+python3 rebis.py imas compound --smiles "CN(C)CCC1=CNC2=CC=CC=C12"
+
+# 2. Find its crystal neighbors
+python3 rebis.py imas analogies --smiles "CN(C)CCC1=CNC2=CC=CC=C12" --limit 10
+
+# 3. Use the crystal designer to find ⊙-critical analogs
+python3 scripts/frobenius_exact_design.py --smiles "CN(C)CCC1=CNC2=CC=CC=C12"
+
+# 4. Register a promising candidate
+python3 rebis.py imas register --smiles "CN(C)CCC1=CNC2=CC=C(O)C([N+](=O)[O-])=C12" --name "5-nitro-bufotenin"
+
+# 5. Generate its CDXML for ChemDraw
+python3 rebis.py cdxml generate --molecule 5-nitro-bufotenin
+```
+
+### Recipe 5: Full Pipeline — SMILES to Organism
+
+```bash
+# Takes a SMILES string through the entire pipeline:
+# SMILES → IMASM → IG tuple → CLINK bridge → organism design
+
+# Step 1: Encode the molecule
+SMILES="CC(=O)OC1=CC=CC=C1C(=O)O"
+python3 rebis.py imas compound --smiles "$SMILES"
+
+# Step 2: Register it
+python3 rebis.py imas register --smiles "$SMILES" --name aspirin
+
+# Step 3: Design from molecule layer to organism
+python3 rebis.py pipeline from-layer 3 8
+```
+
+
+### Recipe 6: Structural Therapy Design
+
+```bash
+# 1. List available therapies
+python3 rebis.py at list
+
+# 2. Diagnose a condition
+python3 rebis.py at diagnose mdd
+
+# 3. Get the therapy protocol
+python3 rebis.py at therapy mdd
+
+# 4. Compare with related conditions
+python3 rebis.py at compare mdd schizophrenia
+```
+
+### Recipe 7: Materials Discovery
+
+```bash
+# 1. Forge all predefined materials
+python3 rebis.py materials forge --all
+
+# 2. Forge from an IMASM canonical
+python3 rebis.py materials forge --name I_Dialetheic_Bootstrap
+
+# 3. Run Frobenius metamaterial simulation
+python3 rebis.py materials frobenius --size 30 --cycles 50
+
+# 4. Run Ouroboric crack-healing simulation
+python3 rebis.py materials ouroboric --grains 128 --stress 1000
+
+# 5. Perform Sophick Mercury analysis
+python3 rebis.py materials sophick --name eagle_9_sophick
+
+# 6. Check Frobenius exactor pathways
+python3 rebis.py materials exactor --name pathways
+```
+
+### Recipe 8: Alchemical Analysis of a Molecule
+
+```bash
+# 1. Get the bridge report
+python3 rebis.py alchemy report
+
+# 2. Analyze a molecule alchemically
+python3 rebis.py alchemy alchemical-mol "CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
+
+# 3. Trace its alchemical retrosynthesis
+python3 rebis.py alchemy retro "CC(=O)OC1=CC=CC=C1C(=O)O"
+
+# 4. Run the full Zosimos procedure
+python3 rebis.py alchemy zosimos caffeine
+```
+
+### Recipe 9: Full Platform Verification
+
+```bash
+# Run every verification the platform offers in sequence:
+
+echo "=== STATUS ===" && python3 rebis.py status && \
+echo "=== VERIFY ===" && python3 rebis.py verify && \
+echo "=== CLINK ===" && python3 rebis.py clink layer 0 && \
+echo "=== CLINK ===" && python3 rebis.py clink layer 8 && \
+echo "=== PIPELINE BRIDGES ===" && python3 rebis.py pipeline bridges && \
+echo "=== IMAS HUNT ===" && python3 rebis.py imas hunt --samples 10000 && \
+echo "=== GENETICS ===" && python3 scripts/test_genetics.py --quick && \
+echo "=== PROTEINS ===" && python3 rebis.py run serpent_rod && \
+echo "=== MATERIALS ===" && python3 rebis.py materials forge --all && \
+echo "=== ALL PASSED ==="
+```
+
+### Recipe 10: Demo for Screen Recording
+
+```bash
+# Ghost Typer types everything at human pace
+python3 scripts/ghost_typer.py        # Full demo (3 acts, ~15 min)
+python3 scripts/ghost_typer.py --fast  # Fast mode (~3 min)
+python3 scripts/ghost_typer.py --section 1  # Act I only
+```
+
+
 ## Version History
 
 | Version | Date | Changes |
 |---------|------|---------|
-| v2.3.4 | 2026-06-28 | **Rich Formatting + Exact SMILES Edition** — `shared/rich_output.py` repo-wide on all 234 Python files; `bond_fragment_integrator.py` delivers exact RDKit fragment SMILES; `--smiles` CLI flag; SMILES FG detection via RDKit SMARTS; fake placeholder SMILES removed; `scripts/migrate_rich.py` + fix scripts |
-| v2.3.3 | 2026-06-27 | **Compound IMASM Edition** — New IMASM Compound Pipeline (imas/compound_imasm.py, fg_exhaustive.py, reactivity_imasm.py, ig_bridge.py, compound_catalog.py); Crystal-Guided Molecular Discovery (molecular_crystal_designer.py, 700+ lines); DMT-⊙ (5-nitro-bufotenin) discovery via crystal navigation; ⊙-Finder tool (odot_finder.py, 8.6 KB); 54 compounds, 15 IG types, 31 arrangements, 4,027+ catalog entries; cross-domain analogies (LSD→Kalachakra, water→pyromancy, etc.); 5-nitro-bufotenin.cdxml ChemDraw drawing; new `imas compound`, `imas analogies`, `imas reaction`, `imas register` subcommands; all docs updated (INDEX §4-5, README pillars 6-7, MANUAL pillars VI-VII, USER_GUIDE compound pipeline) |
-| v2.3.2 | 2026-06-27 | Updated docs for rhr_p4rky expansion: 32 modules (added `belnap_c4.py`, `decay_chain.py`, `papers/` with 3 millennium docs); symlinks `shared/elem2imasm.py`, `shared/reactivity.py`; INDEX.md L8 tier fix (O₂→O∞); README & MANUAL date/version sync |
-| v2.3.1 | 2026-06-24 | PDB format robustness, 34-test stress suite, molecule→material bridge, bug fixes |
-| v2.3.0 | 2026-06-21 | Ch3mpiler-SerpentRod v4 overhaul, 37 run targets, stress_test_proteins (34 tests), materials stress (26 tests) |
-| v2.2.1 | 2026-06-10 | Bug-fix release: 7 broken imports fixed, clink bridge positional args, ch3mpiler help fix |
-| v2.2 | 2026-06-10 | Static-data commands moved to INDEX.md, `materials sophick/exactor` now require `--name` |
-| v2.1 | 2026-06-10 | Primitive names corrected, rhr_p4rky docs, 35 run targets, 3,297 catalog entries |
-| v2.0 | 2026-05 | CLINK pipeline, materials forge, IMASM energy analysis |
-| v1.0 | 2026-04 | Initial release — SerpentRod, CH3MPILER, basic CLINK |
+| v2.3.5 | 2026-06-30 | **Root Cleanup + Manual Expansion Edition** — Root directory organized: loose files moved into `demo_scripts/`, `scripts/`, `fasta/`, `data/`, `images/`, `_archive/`; 0-byte `catalase` and Windows zone identifier removed; USER_GUIDE expanded with full `at` (Ars Therapeutica) coverage (19 subcommands), expanded `scripts` section, accurate `run` target reference, expanded `alchemy` (19 subcommands) and `cdxml` references, updated directory structure, 10 complete workflow recipes |
+| v2.3.4 | 2026-06-28 | **Rich Formatting + Exact SMILES Edition** |
+| v2.3.3 | 2026-06-27 | **Compound IMASM Edition** |
+| v2.3.2 | 2026-06-27 | rhr_p4rky expansion: 32 modules |
+| v2.3.1 | 2026-06-24 | PDB format robustness |
+| v2.3.0 | 2026-06-21 | Ch3mpiler-SerpentRod v4 overhaul |
+| v2.2.1 | 2026-06-10 | Bug-fix release |
+| v2.2 | 2026-06-10 | Static-data commands moved to INDEX.md |
+| v2.1 | 2026-06-10 | Primitive names corrected |
+| v2.0 | 2026-05 | CLINK pipeline, materials forge |
+| v1.0 | 2026-04 | Initial release |
 
 ---
 
