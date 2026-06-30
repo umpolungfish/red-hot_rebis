@@ -1,3 +1,53 @@
+ghost_typer.py: slow down output for readability — 2026-06-29
+
+CHAR_DELAY 0.045 -> 0.08 (slower typing).
+POST_TYPE_DELAY 0.6 -> 1.0 (pause after typing before output starts).
+LINE_DELAY 0.003 -> 0.4 minimum; output lines now pace proportionally to length
+  (max(0.4, len(line) * 0.012)) so longer lines stay on screen longer.
+Post-section pause 0.5 -> 1.5.
+SECTION_DELAY 2.0 -> 3.0.
+--fast mode slowed to 0.05 char delay (was 0.03; still readable).
+
+---
+
+ghost_typer.py: full rebuild around generative design outputs — 2026-06-29
+
+Completely restructured from 22 informational sections to 12 generative design sections.
+Every section executes a real design command and shows actual novel output.
+
+Structure:
+  Act I  (S1-S4)  Protein Design: SerpentRod, gene_to_protein_pipeline, antibody_designer,
+                    ch3mpiler_serpentrod_pipeline --cas 79-06-1 (acrylamide catalytic triad)
+  Act II (S5-S8)  Molecule Design: at therapy mrsa, imas crystal (ibuprofen NSAID),
+                    ch3mpiler_serpentrod_pipeline --cas 56-65-5 (ATP), imas analogies (aspirin)
+  Act III (S9-11) Material Design: materials forge --all (8 materials), materials ouroboric
+                    (self-healing AlCoCrFeNi2.1), materials frobenius
+  S12             Conjoined Pipeline: at diagnose mrsa -> at therapy mrsa -> serpent_rod ->
+                    ch3mpiler x SerpentRod -> imas crystal -> materials forge frobenius_composite
+
+Dropped: all status/list/verify/scaffold/CLINK-layer/IMASM-bridge sections.
+Retained pattern: ghost_type() character-by-character, run() live execution, section() banners.
+
+---
+
+ghost_typer.py: add S14–S22 — full IMASM suite, Ars Therapeutica, conjoined workflow — 2026-06-29
+
+9 new sections (22 total):
+  S14 IMASM Compound — ibuprofen scaffold (arylpropionic acid, Lipinski, IG tuple, FG classification)
+  S15 IMASM Reaction — paracetamol amide→ester, O/N nucleophile selectivity, Dialetheia_acid_base class
+  S16 IMASM Crystal  — crystal neighborhood around ibuprofen for lead hopping
+  S17 IMASM Analogies — aspirin structural neighbors by IG distance (SAR)
+  S18 IMASM Energy   — activation energy I_Dialetheic_Bootstrap → L8_Organism
+  S19 Ars Therapeutica: diagnose mrsa (d=1.2886, 6 differing primitives)
+  S20 Ars Therapeutica: therapy mrsa (TENSOR/MEET, PDB structures, Lean verification)
+  S21 CLINK Pipeline ground-up (L0→L8, layer transitions, tool bridge map)
+  S22 CONJOINED WORKFLOW — Anti-MRSA drug design: 9-step pipeline chaining at, imas, ch3mpiler,
+      SerpentRod, pipeline, and materials forge into a single disease-to-formulation narrative.
+      Uses compact workflow_step() banners instead of full section separators.
+All commands verified live before inclusion.
+
+---
+
 imscriptor_card.html: industry-facing content + terminus rendering fix — 2026-06-29
 
 Content: replaced IG-internal jargon (activation coverage, primitive badges, Frobenius notation)
