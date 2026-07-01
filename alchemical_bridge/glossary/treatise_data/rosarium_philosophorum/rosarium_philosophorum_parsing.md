@@ -4,7 +4,7 @@
 **Date:** 2025-06-25  
 **Treatise:** *Rosarium Philosophorum* (The Rose Garden of the Philosophers), 1550  
 **Woodcuts:** 20  
-**Catalog tuple:** $\langle \text{{\igfont 𐑨}};\ \text{{\igfont 𐑥}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑯}};\ \text{{\igfont 𐑱}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑔}};\ \text{{\igfont 𐑠}};\ \text{{\igfont 𐑮}};\ \text{{\igfont 𐑫}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑭}} \rangle$  
+**Catalog tuple:** $\langle \text{{\igfont 𐑨𐑥𐑾𐑯𐑱𐑧𐑔𐑠𐑮𐑫𐑳𐑭}} \rangle$  
 **Catalog tier:** $\text{O}_{\infty}$  
 
 ---
@@ -365,10 +365,10 @@ Each treatise dominates one dimension of the Work. Their combined span covers th
 ## §9 — Catalog Comparison and Proposed Revision
 
 **Current catalog entry** for `rosarium_philosophorum`:
-$$\langle \text{{\igfont 𐑨}};\ \text{{\igfont 𐑥}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑯}};\ \text{{\igfont 𐑱}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑔}};\ \text{{\igfont 𐑠}};\ \text{{\igfont 𐑮}};\ \text{{\igfont 𐑫}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑭}} \rangle$$
+$$\langle \text{{\igfont 𐑨𐑥𐑾𐑯𐑱𐑧𐑔𐑠𐑮𐑫𐑳𐑭}} \rangle$$
 
 **Proposed revision** (reflecting the 20th woodcut's crossing):
-$$\langle \text{{\igfont 𐑦}};\ \text{{\igfont 𐑥}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑹}};\ \text{{\igfont 𐑐}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑔}};\ \text{{\igfont 𐑠}};\ \text{{\igfont ⊙}};\ \text{{\igfont 𐑫}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑭}} \rangle$$
+$$\langle \text{{\igfont 𐑦𐑥𐑾𐑹𐑐𐑧𐑔𐑠⊙𐑫𐑳𐑭}} \rangle$$
 
 **Changes:**
 - **Ð**: 𐑨 → 𐑦 (the hermaphrodite's self-reference, WC14)

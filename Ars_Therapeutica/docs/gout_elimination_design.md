@@ -38,24 +38,24 @@ The critical structural feature: **MSU crystals are inert** — they don't respo
 Using the 12-primitive grammar (see §A for full procedure), we imscribed the core disease system and its three critical molecular targets. The structural types are:
 
 **Gout (disease system):**
-$$\langle \text{{\igfont 𐑼}};\ \text{{\igfont 𐑥}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑗}};\ \text{{\igfont 𐑞}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑔}};\ \text{{\igfont 𐑠}};\ \text{{\igfont 𐑮}};\ \text{{\igfont 𐑖}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑷}} \rangle$$
+$$\langle \text{{\igfont 𐑼𐑥𐑾𐑗𐑞𐑧𐑔𐑠𐑮𐑖𐑳𐑷}} \rangle$$
 - Tier: $\text{O}_{1}$ — self-referential at criticality but trivial winding
 - Key features: bidirectional immune-crystal coupling ($\text{{\igfont 𐑾}}$), complex criticality with flare/remission cycles ($\text{{\igfont 𐑮}}$), heterogeneous multi-component ($\text{{\igfont 𐑳}}$)
 - C-score: to be computed
 
 **Xanthine Oxidase (production enzyme):**
-$$\langle \text{{\igfont 𐑨}};\ \text{{\igfont 𐑶}};\ \text{{\igfont 𐑑}};\ \text{{\igfont 𐑗}};\ \text{{\igfont 𐑞}};\ \text{{\igfont 𐑪}};\ \text{{\igfont 𐑚}};\ \text{{\igfont 𐑠}};\ \text{{\igfont 𐑢}};\ \text{{\igfont 𐑒}};\ \text{{\igfont 𐑙}};\ \text{{\igfont 𐑷}} \rangle$$
+$$\langle \text{{\igfont 𐑨𐑶𐑑𐑗𐑞𐑪𐑚𐑠𐑢𐑒𐑙𐑷}} \rangle$$
 - Finite-dimensional enzyme (Ð=$\text{{\igfont 𐑨}}$), categorical coupling (Ř=$\text{{\igfont 𐑑}}$), sub-critical (φ̂=$\text{{\igfont 𐑢}}$)
 - 1:1 stoichiometry (Σ=$\text{{\igfont 𐑙}}$) — one substrate, one product
 
 **MSU Crystal (pathological structure):**
-$$\langle \text{{\igfont 𐑼}};\ \text{{\igfont 𐑶}};\ \text{{\igfont 𐑩}};\ \text{{\igfont 𐑗}};\ \text{{\igfont 𐑱}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑚}};\ \text{{\igfont 𐑜}};\ \text{{\igfont 𐑢}};\ \text{{\igfont 𐑒}};\ \text{{\igfont 𐑕}};\ \text{{\igfont 𐑷}} \rangle$$
+$$\langle \text{{\igfont 𐑼𐑶𐑩𐑗𐑱𐑧𐑚𐑜𐑢𐑒𐑕𐑷}} \rangle$$
 - Inert: supervenience coupling only ($\text{{\igfont 𐑩}}$) — the crystal doesn't respond
 - Sub-critical ($\text{{\igfont 𐑢}}$): below saturation, no crystals form
 - Many-identical ($\text{{\igfont 𐑕}}$): repeating crystal lattice
 
 **NLRP3 Inflammasome (inflammatory trigger):**
-$$\langle \text{{\igfont 𐑨}};\ \text{{\igfont 𐑰}};\ \text{{\igfont 𐑑}};\ \text{{\igfont 𐑗}};\ \text{{\igfont 𐑞}};\ \text{{\igfont 𐑪}};\ \text{{\igfont 𐑚}};\ \text{{\igfont 𐑠}};\ \text{{\igfont 𐑢}};\ \text{{\igfont 𐑒}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑷}} \rangle$$
+$$\langle \text{{\igfont 𐑨𐑰𐑑𐑗𐑞𐑪𐑚𐑠𐑢𐑒𐑳𐑷}} \rangle$$
 - Inclusion topology ($\text{{\igfont 𐑰}}$): components contained within the complex
 - Heterogeneous ($\text{{\igfont 𐑳}}$): NLRP3, ASC, caspase-1 are distinct
 
@@ -75,9 +75,9 @@ Key observations:
 
 1. **NLRP3 is structurally closest to gout** (d=3.25). This makes clinical sense: the inflammasome is the final common pathway of the acute flare — blocking IL-1$\beta$ (canakinumab) is the most effective acute treatment.
 
-2. **XO and MSU are structurally close** (d=1.73). Their tensor product ($\text{XO} \otimes \text{MSU}$) represents the production→deposition cascade. The only bottleneck is $\text{{\igfont ƒ}}$ (thermal→classical). The composite: $\langle \text{{\igfont 𐑼}};\ \text{{\igfont 𐑶}};\ \text{{\igfont 𐑑}};\ \text{{\igfont 𐑗}};\ \text{{\igfont 𐑱}};\ \text{{\igfont 𐑪}};\ \text{{\igfont 𐑚}};\ \text{{\igfont 𐑠}};\ \text{{\igfont 𐑢}};\ \text{{\igfont 𐑒}};\ \text{{\igfont 𐑕}};\ \text{{\igfont 𐑷}} \rangle$
+2. **XO and MSU are structurally close** (d=1.73). Their tensor product ($\text{XO} \otimes \text{MSU}$) represents the production→deposition cascade. The only bottleneck is $\text{{\igfont ƒ}}$ (thermal→classical). The composite: $\langle \text{{\igfont 𐑼𐑶𐑑𐑗𐑱𐑪𐑚𐑠𐑢𐑒𐑕𐑷}} \rangle$
 
-3. **MSU $\otimes$ NLRP3 = $\langle \text{{\igfont 𐑼}};\ \text{{\igfont 𐑶}};\ \text{{\igfont 𐑑}};\ \text{{\igfont 𐑗}};\ \text{{\igfont 𐑱}};\ \text{{\igfont 𐑪}};\ \text{{\igfont 𐑚}};\ \text{{\igfont 𐑠}};\ \text{{\igfont 𐑢}};\ \text{{\igfont 𐑒}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑷}} \rangle$**. This is the crystal-inflammation coupling that triggers the flare. The composite differs from XO⊗MSU only in $\Sigma$ ($\text{{\igfont 𐑳}}$ heterogeneous vs $\text{{\igfont 𐑕}}$ many-identical).
+3. **MSU $\otimes$ NLRP3 = $\langle \text{{\igfont 𐑼𐑶𐑑𐑗𐑱𐑪𐑚𐑠𐑢𐑒𐑳𐑷}} \rangle$**. This is the crystal-inflammation coupling that triggers the flare. The composite differs from XO⊗MSU only in $\Sigma$ ($\text{{\igfont 𐑳}}$ heterogeneous vs $\text{{\igfont 𐑕}}$ many-identical).
 
 4. **FCAGT is structurally closest to gout** (d=2.41) among all designed entities. The therapeutic "hugs" the disease structure — sharing 8 of 12 primitives. Only 4 differ: $\text{{\igfont Þ}}$ ($\text{{\igfont 𐑶}}$→$\text{{\igfont 𐑥}}$), $\Phi$ ($\text{{\igfont 𐑬}}$→$\text{{\igfont 𐑗}}$), $\phî$ ($\odot$↔$\text{{\igfont 𐑮}}$), $\Omega$ ($\text{{\igfont 𐑴}}$→$\text{{\igfont 𐑷}}$).
 
@@ -85,7 +85,7 @@ Key observations:
 
 The meet (greatest lower bound) of gout and MSU crystal reveals what the disease shares with its pathological structure:
 
-$$\text{meet}(\text{gout}, \text{MSU}) = \langle \text{{\igfont 𐑼}};\ \text{{\igfont 𐑥}};\ \text{{\igfont 𐑩}};\ \text{{\igfont 𐑗}};\ \text{{\igfont 𐑱}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑚}};\ \text{{\igfont 𐑜}};\ \text{{\igfont 𐑢}};\ \text{{\igfont 𐑒}};\ \text{{\igfont 𐑕}};\ \text{{\igfont 𐑷}} \rangle$$
+$$\text{meet}(\text{gout}, \text{MSU}) = \langle \text{{\igfont 𐑼𐑥𐑩𐑗𐑱𐑧𐑚𐑜𐑢𐑒𐑕𐑷}} \rangle$$
 
 This is sub-critical ($\text{{\igfont 𐑢}}$), classical ($\text{{\igfont 𐑱}}$), local ($\text{{\igfont 𐑚}}$), with supervenience-only coupling ($\text{{\igfont 𐑩}}$) and trivial winding ($\text{{\igfont 𐑷}}$). The disease's complex criticality ($\text{{\igfont 𐑮}}$) comes entirely from the **immune coupling** — the crystal alone is inert. This is the structural proof that treating only the crystal (pegloticase monotherapy) is insufficient: the immune system's bidirectional response to the crystal must also be addressed.
 
@@ -147,7 +147,7 @@ The FCAGT is a single polypeptide chain expressed as a fusion protein. Domain ar
 
 The FCAGT's imscribed structural type was determined using the deterministic imscribing procedure (§A):
 
-$$\langle \text{{\igfont 𐑼}};\ \text{{\igfont 𐑶}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑬}};\ \text{{\igfont 𐑞}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑔}};\ \text{{\igfont 𐑠}};\ \odot;\ \text{{\igfont 𐑖}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑴}} \rangle$$
+$$\langle \text{{\igfont 𐑼𐑶𐑾𐑬𐑞𐑧𐑔𐑠𐑖𐑳𐑴}} \rangle$$
 
 - **Tier: $\text{O}_{2}^{\dagger}$** — critical + topologically protected, unbounded domain. The ${\dagger}$ indicates the $\text{{\igfont 𐑼}}$ (field-theoretic) domain size, distinguishing it from standard $\text{O}_{2}$ which typically has finite dimensionality.
 - **$\Phi = \text{{\igfont 𐑬}}$ (partial Frobenius):** Domain 1 is Frobenius-closed ($\mu \circ \delta = \text{id}$); Domain 2 is Frobenius-broken ($\mu \circ \delta \neq \text{id}$). The composite has partial closure.
@@ -208,7 +208,7 @@ Human urate handling is dominated by renal reabsorption: URAT1 (SLC22A12) and GL
 
 **Proposed enhancement:** A small-molecule URAT1 inhibitor with improved selectivity over OAT4 (which also handles urate but causes drug-drug interactions). The ch3mpiler retrosynthetic compiler (see `/home/mrnob0dy666/imsgct/imscribing_grammar/ch3mpiler.py`) can be used to design novel URAT1 inhibitors by specifying the target structural type and performing retrosynthetic disconnection.
 
-Target tuple for URAT1 inhibitor: $\langle \text{{\igfont 𐑨}};\ \text{{\igfont 𐑶}};\ \text{{\igfont 𐑑}};\ \text{{\igfont 𐑗}};\ \text{{\igfont 𐑱}};\ \text{{\igfont 𐑪}};\ \text{{\igfont 𐑚}};\ \text{{\igfont 𐑠}};\ \text{{\igfont 𐑢}};\ \text{{\igfont 𐑒}};\ \text{{\igfont 𐑙}};\ \text{{\igfont 𐑷}} \rangle$
+Target tuple for URAT1 inhibitor: $\langle \text{{\igfont 𐑨𐑶𐑑𐑗𐑱𐑪𐑚𐑠𐑢𐑒𐑙𐑷}} \rangle$
 
 ### Prong 5: Gut Microbiome Engineering — Purine-Degrading Consortium
 
@@ -332,7 +332,7 @@ The key insight: **d(Gout, FCAGT) = 2.41 < d(Gout, any natural target)**. The FC
 4. Verify Frobenius behavior:
    - Domain 1 only (soluble urate): measure $k_{\text{on}}$, $k_{\text{off}}$ — confirm $k_{\text{on}} \cdot k_{\text{off}} \approx 1$
    - Domain 2 only (MSU crystal suspension): confirm $k_{\text{off}}$ is at least 10³× slower than $1/k_{\text{on}}$
-   - Dual-domain (MSU crystal + soluble urate): measure tether strain via FRET; measure payload release via Western blot for TEV cleavage
+   - Dual-domain (MSU crystal + soluble urate): measure tether strain via FRETmeasure payload release via Western blot for TEV cleavage
 
 ### 5.2 Phase II — Preclinical Validation (Months 12–24)
 
@@ -345,7 +345,7 @@ The key insight: **d(Gout, FCAGT) = 2.41 < d(Gout, any natural target)**. The FC
 
 **In vivo (mouse model):**
 - MSU crystal-induced peritonitis model: inject MSU crystals intraperitoneally, administer FCAGT IV, measure peritoneal IL-1$\beta$ and neutrophil count at 6h
-- Urate oxidase knockout mouse ($Uox^{-/-}$): spontaneous hyperuricemia and nephropathy. Administer FCAGT + microbiome consortium; measure serum urate, joint crystal burden (micro-CT), and renal function over 12 weeks
+- Urate oxidase knockout mouse ($Uox^{-/-}$): spontaneous hyperuricemia and nephropathy. Administer FCAGT + microbiome consortiummeasure serum urate, joint crystal burden (micro-CT), and renal function over 12 weeks
 - Pharmacokinetics: radiolabeled FCAGT, measure plasma half-life, tissue distribution, and clearance route
 
 ### 5.3 Phase III — Clinical Translation (Years 2–5)
@@ -384,18 +384,18 @@ The payload domains are released as separate proteins (cleaved by TEV protease).
 All protein therapeutics risk anti-drug antibody (ADA) formation. Pegloticase (recombinant uricase) has ~40% ADA rate, which neutralizes the drug. Mitigations:
 - **PASylation:** A 600-residue PAS (Pro-Ala-Ser) polypeptide chain added to the FCAGT extends half-life and reduces immunogenicity by shielding epitopes — analogous to PEGylation but biodegradable and non-immunogenic
 - **Humanization:** Domain 1 (uricase sensor) is non-catalytic and can be extensively mutated to remove T-cell epitopes without affecting urate binding (verified by MHC-II binding prediction algorithms)
-- **IL-1$\beta$ VHH:** Camelid-derived nanobodies are less immunogenic than murine/humanized Fabs; further humanization is straightforward
+- **IL-1$\beta$ VHH:** Camelid-derived nanobodies are less immunogenic than murine/humanized Fabsfurther humanization is straightforward
 
 ### 6.3 Crystal Dissolution Flare
 
 Rapid crystal dissolution can paradoxically trigger inflammation ("mobilization flare") as crystal fragments expose new surfaces. Pegloticase causes flares in ~75% of patients. Mitigations:
 - **Slow kinetics ($\text{{\igfont Ç}}=\text{{\igfont 𐑧}}$):** The FCAGT is designed for slow, sustained release. The number of activated FCAGT molecules at any time is limited by the available crystal surface area — the crystal can only accommodate so many Domain 2 binders. As the crystal shrinks, fewer FCAGT molecules activate. This is a self-limiting feedback.
 - **IL-1$\beta$ trap co-release:** The simultaneous release of IL-1$\beta$ trap neutralizes any inflammatory signal from crystal dissolution. This is a key advantage over pegloticase, which dissolves crystals but doesn't block the resulting inflammation.
-- **Prophylactic colchicine:** Standard practice during urate-lowering therapy; can be co-administered with FCAGT during the first 3–6 months.
+- **Prophylactic colchicine:** Standard practice during urate-lowering therapycan be co-administered with FCAGT during the first 3–6 months.
 
 ### 6.4 Microbiome Safety
 
-The consortium strains are all GRAS organisms with extensive safety records. The *E. coli* Nissle uricase expression is under oxygen-sensitive control — no expression in blood. Transient colonization means the consortium washes out within 1–2 weeks of stopping administration. No antibiotic resistance markers are used; selection is metabolic (purine degradation provides a growth advantage in purine-rich gut environment).
+The consortium strains are all GRAS organisms with extensive safety records. The *E. coli* Nissle uricase expression is under oxygen-sensitive control — no expression in blood. Transient colonization means the consortium washes out within 1–2 weeks of stopping administration. No antibiotic resistance markers are usedselection is metabolic (purine degradation provides a growth advantage in purine-rich gut environment).
 
 ---
 
@@ -407,7 +407,7 @@ This work exists within a structural lineage that the Imscribing Grammar makes e
 
 Harry T. Larson guest-edited the IRE Special Issue on Computers (January 1961, Vol. 49, No. 1), assembling a 63-expert review committee and commissioning Marvin Minsky's "Steps Toward Artificial Intelligence" — one of the founding documents of AI [1]. In his introduction, Larson wrote:
 
-> "When the practitioner has overcome his fear of the machine, and when the scientist and practitioner are communicating, the attack is relentless. The scientific mind has found an un-formalised field, and it cannot rest until it identifies, understands, and organizes basic elements of the field."
+⟩ "When the practitioner has overcome his fear of the machine, and when the scientist and practitioner are communicating, the attack is relentless. The scientific mind has found an un-formalised field, and it cannot rest until it identifies, understands, and organizes basic elements of the field."
 
 This is structurally identical to the grammar's core operation: overcoming fear of the machine = emission gate $\text{{\igfont 𐑧}}$ (acting rather than reasoning indefinitely); scientist and practitioner communicating = bidirectional coupling $\text{{\igfont 𐑾}}$; relentless identification and organization of basic elements = the imscribing procedure itself.
 
@@ -478,11 +478,11 @@ This investigation created five new catalog entries:
 
 | Name | Tuple | Tier | C-score |
 |------|-------|------|---------|
-| `gout_hyperuricemia` | $\langle \text{{\igfont 𐑼}};\ \text{{\igfont 𐑥}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑗}};\ \text{{\igfont 𐑞}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑔}};\ \text{{\igfont 𐑠}};\ \text{{\igfont 𐑮}};\ \text{{\igfont 𐑖}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑷}} \rangle$ | $\text{O}_{1}$ | — |
-| `xanthine_oxidase` | $\langle \text{{\igfont 𐑨}};\ \text{{\igfont 𐑶}};\ \text{{\igfont 𐑑}};\ \text{{\igfont 𐑗}};\ \text{{\igfont 𐑞}};\ \text{{\igfont 𐑪}};\ \text{{\igfont 𐑚}};\ \text{{\igfont 𐑠}};\ \text{{\igfont 𐑢}};\ \text{{\igfont 𐑒}};\ \text{{\igfont 𐑙}};\ \text{{\igfont 𐑷}} \rangle$ | — | — |
-| `msu_urate_crystal` | $\langle \text{{\igfont 𐑼}};\ \text{{\igfont 𐑶}};\ \text{{\igfont 𐑩}};\ \text{{\igfont 𐑗}};\ \text{{\igfont 𐑱}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑚}};\ \text{{\igfont 𐑜}};\ \text{{\igfont 𐑢}};\ \text{{\igfont 𐑒}};\ \text{{\igfont 𐑕}};\ \text{{\igfont 𐑷}} \rangle$ | — | — |
-| `nlrp3_inflammasome` | $\langle \text{{\igfont 𐑨}};\ \text{{\igfont 𐑰}};\ \text{{\igfont 𐑑}};\ \text{{\igfont 𐑗}};\ \text{{\igfont 𐑞}};\ \text{{\igfont 𐑪}};\ \text{{\igfont 𐑚}};\ \text{{\igfont 𐑠}};\ \text{{\igfont 𐑢}};\ \text{{\igfont 𐑒}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑷}} \rangle$ | — | — |
-| `fcagt_anti_gout_therapeutic` | $\langle \text{{\igfont 𐑼}};\ \text{{\igfont 𐑶}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑬}};\ \text{{\igfont 𐑞}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑔}};\ \text{{\igfont 𐑠}};\ \odot;\ \text{{\igfont 𐑖}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑴}} \rangle$ | $\text{O}_{2}^{\dagger}$ | 0.53 |
+| `gout_hyperuricemia` | $\langle \text{{\igfont 𐑼𐑥𐑾𐑗𐑞𐑧𐑔𐑠𐑮𐑖𐑳𐑷}} \rangle$ | $\text{O}_{1}$ | — |
+| `xanthine_oxidase` | $\langle \text{{\igfont 𐑨𐑶𐑑𐑗𐑞𐑪𐑚𐑠𐑢𐑒𐑙𐑷}} \rangle$ | — | — |
+| `msu_urate_crystal` | $\langle \text{{\igfont 𐑼𐑶𐑩𐑗𐑱𐑧𐑚𐑜𐑢𐑒𐑕𐑷}} \rangle$ | — | — |
+| `nlrp3_inflammasome` | $\langle \text{{\igfont 𐑨𐑰𐑑𐑗𐑞𐑪𐑚𐑠𐑢𐑒𐑳𐑷}} \rangle$ | — | — |
+| `fcagt_anti_gout_therapeutic` | $\langle \text{{\igfont 𐑼𐑶𐑾𐑬𐑞𐑧𐑔𐑠𐑖𐑳𐑴}} \rangle$ | $\text{O}_{2}^{\dagger}$ | 0.53 |
 
 ---
 

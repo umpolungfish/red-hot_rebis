@@ -924,7 +924,7 @@ _ESMFOLD_API_URL  = "https://api.esmatlas.com/foldSequence/v1/pdb/"
 _ESMFOLD_TIMEOUT  = 120
 _3DMOL_CDN_URL    = "https://3Dmol.csb.pitt.edu/build/3Dmol-min.js"
 
-# Standard genetic code (DNA, T not U) — the universal table; all downstream
+# Standard genetic code (DNA, T not U) — the universal tableall downstream
 # constants are derived from this single source, never independently stated.
 _CODON_TABLE: Dict[str, str] = {
     'TTT':'F','TTC':'F','TTA':'L','TTG':'L',
@@ -945,7 +945,7 @@ _CODON_TABLE: Dict[str, str] = {
     'GGT':'G','GGC':'G','GGA':'G','GGG':'G',
 }
 
-# 3-letter → 1-letter mapping (IUPAC standard; used only for PDB parsing)
+# 3-letter → 1-letter mapping (IUPAC standardused only for PDB parsing)
 _THREE_TO_ONE: Dict[str, str] = {
     'ALA':'A','ARG':'R','ASN':'N','ASP':'D','CYS':'C',
     'GLN':'Q','GLU':'E','GLY':'G','HIS':'H','ILE':'I',

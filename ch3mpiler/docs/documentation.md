@@ -268,13 +268,13 @@ Sample session:
 ```
 >>> cubane
 Target: cubane
-Type: <𐑛; 𐑡; 𐑑; 𐑗; 𐑐; 𐑧; 𐑚; 𐑝; 𐑢; 𐑒; 𐑳; 𐑷>
+Type: ⟨𐑛𐑡𐑑𐑗𐑐𐑧𐑚𐑝𐑢𐑒𐑳𐑷⟩
 FGs: alkane, cyclic
 
 Grammar-derived disconnections (ranked by δ, lower=better):
-  sigma_single         2.449    alkane+alkane          <𐑛; 𐑡; 𐑑; 𐑗; ...>
-  ether_link           2.577    alkane+alkane          <𐑛; 𐑡; 𐑑; 𐑗; ...>
-  hydrogen_bond        3.262    alkane+alkane          <𐑛; 𐑡; 𐑑; 𐑗; ...>
+  sigma_single         2.449    alkane+alkane          ⟨...⟩
+  ether_link           2.577    alkane+alkane          ⟨...⟩
+  hydrogen_bond        3.262    alkane+alkane          ⟨...⟩
 
 >>> retro:cubane
   (full retrosynthesis tree with precursors)

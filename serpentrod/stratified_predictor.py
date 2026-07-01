@@ -166,7 +166,7 @@ class ProteinStratifiedPredictor:
         1. N-region: net positive charge (R, K > D, E) in first 5-8 AA
         2. H-region: hydrophobic core (rolling KD > 2.0, at least 8 AA)
         3. C-region: polar/helix-breaking near cleavage site
-        4. Bootstrap signature: ⟨Ð, Þ⟩ preconditions (M, W present)
+        4. Bootstrap signature: ⟨Ð, Þ> preconditions (M, W present)
         5. Cleavage site: SignalP consensus pattern (AXA↓, etc.)
         """
         if self.length < 15:

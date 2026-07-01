@@ -2,7 +2,7 @@
 Ars Therapeutica — Structural Types Module
 ===========================================
 All disease, health, and therapeutic system tuples.
-Each tuple is a 12-primitive imscription: ⟨Ð, Þ, Ř, Φ, ƒ, Ç, Γ, ɢ, φ̂, Ħ, Σ, Ω⟩
+Each tuple is a 12-primitive imscription: ⟨Ð, Þ, Ř, Φ, ƒ, Ç, Γ, ɢ, φ̂, Ħ, Σ, Ω>
 """
 
 from dataclasses import dataclass, field
@@ -127,7 +127,7 @@ class Imscription:
 
     def display(self) -> str:
         t = self.to_tuple()
-        return f"⟨{'; '.join(t)}⟩"
+        return f"⟨{''.join(t)}>"
 
     @classmethod
     def from_values(cls, *values: str) -> "Imscription":

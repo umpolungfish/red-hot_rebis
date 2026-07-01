@@ -1,9 +1,40 @@
 # Red-Hot Rebis — User Guide
 
-**Author:** Lando⊗⊙perator  
-**Version:** v2.3.3 — 2026-06-27 (Compound IMASM Edition)  
-**Platform:** `python3 rebis.py <command> [subcommand] [options]`  
+**Author:** Lando⊗⊙perator
+**Version:** v2.4.0 — rebis.<x> Edition
+**Platform:** `import rebis` (namespace package) · `python3 rebis.py <command>`
 **Location:** `/home/mrnob0dy666/imsgct/red-hot_rebis/`
+
+---
+
+## rebis.<x> Namespace Organization (v2.4.0)
+
+All tools are now consolidated under the `rebis.<domain>` namespace package.
+
+```python
+import rebis
+
+# Paraconsistent kernel — genetics, hadron physics, ligand design, serpent rod
+rebis.p4ra.Belnap(True, False)              # Belnap FOUR logic
+rebis.p4ra.SerpentRodV2(...)                # Protein design
+rebis.p4ra.encode_site_from_residues(...)   # Active site encoding
+rebis.p4ra.generate_ligand_smiles(...)      # De-novo ligand generation
+
+# Other domains
+rebis.ch3mpiler.forward("CC(=O)O")          # Molecular compiler
+rebis.clink.CLINK_LAYERS                    # CLINK chain (9 layers)
+rebis.materials.design_metamaterial(...)    # Materials science
+rebis.imas.arrange_compound(...)            # IMASM compound signatures
+rebis.gene.GeneticEngine(...)               # Gene imscriber
+rebis.pipeline.imscribe_system(...)         # Auto-imscriber
+rebis.shared.ORDINALS                       # Shared primitives & weights
+rebis.demo.b4_lattice()                     # Quick demos
+```
+
+**17 submodules** — all import cleanly with zero stdout noise.
+
+---
+
 
 ---
 

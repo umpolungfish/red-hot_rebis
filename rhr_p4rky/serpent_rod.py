@@ -26,14 +26,16 @@ Author: Lando ⊗ ⊙perator
 
 from __future__ import annotations
 import sys as _sys
-if '--help' in _sys.argv or '-h' in _sys.argv:
-    print(__doc__.strip())
-    print()
-    info_line("Examples:")
-    info_line("  rebis.py run serpent_rod")
-    info_line("  python3 -m rhr_p4rky.serpent_rod --help")
-    print()
-    _sys.exit(0)
+
+if __name__ == "__main__":
+    if '--help' in _sys.argv or '-h' in _sys.argv:
+        print(__doc__.strip())
+        print()
+        print("Examples:")
+        print("  rebis.py run serpent_rod")
+        print("  python3 -m rhr_p4rky.serpent_rod --help")
+        print()
+        _sys.exit(0)
 
 import sys
 import json
@@ -112,7 +114,6 @@ class FoldedProtein:
     activation_pattern: List[Tuple[str, str]]  # (aa, ig_primitive)
     confidence: float
     frobenius_verified: bool
-
 
 class SerpentRod:
     """
@@ -426,7 +427,6 @@ class SerpentRod:
             "frobenius_verified": result.frobenius_verified,
             "closure_theorem": "RNA → {Sequence + Structure} is μ∘δ=id"
         }
-
 
 def main():
     """CLI entry point for direct RNA→FoldedProtein prediction."""

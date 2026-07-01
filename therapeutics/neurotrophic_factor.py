@@ -2,7 +2,7 @@
 """
 neurotrophic_factor.py — Bidirectional Neurotrophic Factor (BNF).
 
-Structural type: ⟨𐑦𐑥𐑾𐑬𐑐𐑧𐑔𐑜⊙𐑖𐑙𐑷⟩
+Structural type: ⟨𐑦𐑥𐑾𐑬𐑐𐑧𐑔𐑜⊙𐑖𐑙𐑷>
 Ouroboricity: O₂ (bidirectional feedback with neural signaling)
 C-score: 0.0 (critical but not self-modeling)
 
@@ -302,7 +302,7 @@ f"({'REDUCED' if self.env.neurodegeneration < 0.3 else 'PROGRESSED'})")
         
         results = {
             "simulation": f"Bidirectional Neurotrophic Factor ({self.disease})",
-            "structural_type": "⟨𐑦𐑥𐑾𐑬𐑐𐑧𐑔𐑜⊙𐑖𐑙𐑷⟩",
+            "structural_type": "⟨𐑦𐑥𐑾𐑬𐑐𐑧𐑔𐑜⊙𐑖𐑙𐑷>",
             "bnf_active": self.bnf_active,
             "final_state": {
                 "synaptic_density": float(self.env.synaptic_density),

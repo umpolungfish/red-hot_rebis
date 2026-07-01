@@ -22,7 +22,7 @@ The red-hot_rebis pipeline yields a **dual-component therapy** that addresses bo
 
 The combined operation yields a near-healthy state:
 
-$$\text{meet}\big(\text{tensor}(\text{schizophrenia}, \text{NMDA\_PAM}),\; \text{odot\_stabilizer}\big) = \langle \text{{\igfont 𐑨}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑪}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont ⊙}};\; \text{{\igfont 𐑖}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$$
+$$\text{meet}\big(\text{tensor}(\text{schizophrenia}, \text{NMDA\_PAM}),\; \text{odot\_stabilizer}\big) = \langle \text{{\igfont 𐑨𐑥𐑾𐑬𐑞𐑪𐑔𐑠⊙𐑖𐑳𐑷}} \rangle$$
 
 Both disease primitives are corrected. Residual deltas (D: $\text{{\igfont 𐑨}}$ vs $\text{{\igfont 𐑛}}$, K: $\text{{\igfont 𐑪}}$ vs $\text{{\igfont 𐑧}}$) represent acceptable state-space contraction from receptor-level targeting, not disease pathology.
 
@@ -36,10 +36,10 @@ The imscribed structural types, all catalog-verified:
 
 | System | Tuple | Tier | C-Score |
 |--------|-------|------|---------|
-| **Schizophrenia** | $\langle \text{{\igfont 𐑛}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑧}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont 𐑣}};\; \text{{\igfont 𐑒}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$ | $\text{O}_{0}$ | 0.0 |
-| **Healthy Brain** | $\langle \text{{\igfont 𐑛}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑧}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont ⊙}};\; \text{{\igfont 𐑖}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$ | $\text{O}_{1}$ | 0.3615 |
-| **Depression** | $\langle \text{{\igfont 𐑛}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑧}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont 𐑢}};\; \text{{\igfont 𐑒}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$ | $\text{O}_{0}$ | 0.0 |
-| **Bipolar Mania** | $\langle \text{{\igfont 𐑛}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑪}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont 𐑣}};\; \text{{\igfont 𐑒}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$ | $\text{O}_{0}$ | 0.0 |
+| **Schizophrenia** | $\langle \text{{\igfont 𐑛𐑥𐑾𐑬𐑞𐑧𐑔𐑠𐑣𐑒𐑳𐑷}} \rangle$ | $\text{O}_{0}$ | 0.0 |
+| **Healthy Brain** | $\langle \text{{\igfont 𐑛𐑥𐑾𐑬𐑞𐑧𐑔𐑠⊙𐑖𐑳𐑷}} \rangle$ | $\text{O}_{1}$ | 0.3615 |
+| **Depression** | $\langle \text{{\igfont 𐑛𐑥𐑾𐑬𐑞𐑧𐑔𐑠𐑢𐑒𐑳𐑷}} \rangle$ | $\text{O}_{0}$ | 0.0 |
+| **Bipolar Mania** | $\langle \text{{\igfont 𐑛𐑥𐑾𐑬𐑞𐑪𐑔𐑠𐑣𐑒𐑳𐑷}} \rangle$ | $\text{O}_{0}$ | 0.0 |
 
 **Key finding:** Depression, schizophrenia, and bipolar mania are positions on a **single structural axis** centered on φ̂ (criticality):
 
@@ -51,11 +51,11 @@ The distinction between schizophrenia and bipolar mania is **one primitive only*
 
 The dopamine mesolimbic system has the structural type:
 
-$$\langle \text{{\igfont 𐑨}};\; \text{{\igfont 𐑡}};\; \text{{\igfont 𐑩}};\; \text{{\igfont 𐑗}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑪}};\; \text{{\igfont 𐑚}};\; \text{{\igfont 𐑠}};\; \text{{\igfont 𐑢}};\; \text{{\igfont 𐑒}};\; \text{{\igfont 𐑙}};\; \text{{\igfont 𐑷}} \rangle$$
+$$\langle \text{{\igfont 𐑨𐑡𐑩𐑗𐑞𐑪𐑚𐑠𐑢𐑒𐑙𐑷}} \rangle$$
 
 The tensor $\text{schizophrenia} \otimes \text{dopamine}$ yields:
 
-$$\langle \text{{\igfont 𐑨}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑗}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑪}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont 𐑣}};\; \text{{\igfont 𐑒}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$$
+$$\langle \text{{\igfont 𐑨𐑥𐑾𐑗𐑞𐑪𐑔𐑠𐑣𐑒𐑳𐑷}} \rangle$$
 
 **Critical observation:** Both φ̂ ($\text{{\igfont 𐑣}}$) and Ħ ($\text{{\igfont 𐑒}}$) are **preserved unchanged**. The tensor uses MAX for Ph and H — they can only go up, never down. The dopamine system, being sub-critical ($\text{{\igfont 𐑢}}$), cannot pull φ̂ down from $\text{{\igfont 𐑣}}$. The composite actually *degrades* parity (Φ: $\text{{\igfont 𐑬}}$→$\text{{\igfont 𐑗}}$) and narrows dimensionality (Ð: $\text{{\igfont 𐑛}}$→$\text{{\igfont 𐑨}}$).
 
@@ -88,7 +88,7 @@ $$\text{Step 2 (Meet)}\colon\; \text{meet}(\text{intermediate},\; \text{⊙\_sta
 
 **Structural type of NMDA receptor system:**
 
-$$\langle \text{{\igfont 𐑨}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑪}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont 𐑢}};\; \text{{\igfont 𐑖}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$$
+$$\langle \text{{\igfont 𐑨𐑥𐑾𐑬𐑞𐑪𐑔𐑠𐑢𐑖𐑳𐑷}} \rangle$$
 
 The NMDA receptor is a **coincidence detector**: glutamate binding AND postsynaptic depolarization must coincide for channel opening. This two-condition gate is structurally identical to two-step Markov memory ($\text{{\igfont Ħ}} = \text{{\igfont 𐑖}}$): the receptor "remembers" glutamate binding while awaiting depolarization. This is why NMDA is the Ħ-promoting system par excellence.
 
@@ -96,7 +96,7 @@ The NMDA receptor is a **coincidence detector**: glutamate binding AND postsynap
 
 **Result of Step 1:**
 
-$$\text{intermediate} = \langle \text{{\igfont 𐑨}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑪}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont 𐑣}};\; \text{{\igfont 𐑖}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$$
+$$\text{intermediate} = \langle \text{{\igfont 𐑨𐑥𐑾𐑬𐑞𐑪𐑔𐑠𐑣𐑖𐑳𐑷}} \rangle$$
 
 ✅ Ħ corrected. ✗ φ̂ still at $\text{{\igfont 𐑣}}$ (MAX preserves the higher criticality).
 
@@ -117,7 +117,7 @@ $$\text{intermediate} = \langle \text{{\igfont 𐑨}};\; \text{{\igfont 𐑥}};\
 
 **Structural type of the ⊙-bearing therapeutic:**
 
-$$\langle \text{{\igfont 𐑨}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑐}};\; \text{{\igfont 𐑧}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont ⊙}};\; \text{{\igfont 𐑖}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$$
+$$\langle \text{{\igfont 𐑨𐑥𐑾𐑬𐑐𐑧𐑔𐑠⊙𐑖𐑳𐑷}} \rangle$$
 
 This is the **critical self-modeling gate stabilizer**. Unlike the dopamine system ($\text{{\igfont ⊙}} = \text{{\igfont 𐑢}}$, sub-critical), this compound operates AT the critical point — neither suppressing nor inflaming salience, but calibrating it.
 
@@ -138,9 +138,9 @@ This is the **critical self-modeling gate stabilizer**. Unlike the dopamine syst
 
 The full therapeutic sequence produces:
 
-$$\text{Step 1 (Tensor):}\quad \text{schiz} \otimes \text{NMDA\_PAM} = \langle \text{{\igfont 𐑨}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑪}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont 𐑣}};\; \text{{\igfont 𐑖}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$$
+$$\text{Step 1 (Tensor):}\quad \text{schiz} \otimes \text{NMDA\_PAM} = \langle \text{{\igfont 𐑨𐑥𐑾𐑬𐑞𐑪𐑔𐑠𐑣𐑖𐑳𐑷}} \rangle$$
 
-$$\text{Step 2 (Meet):}\quad \text{meet}(\text{intermediate},\; \text{⊙\_stabilizer}) = \langle \text{{\igfont 𐑨}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑪}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont ⊙}};\; \text{{\igfont 𐑖}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$$
+$$\text{Step 2 (Meet):}\quad \text{meet}(\text{intermediate},\; \text{⊙\_stabilizer}) = \langle \text{{\igfont 𐑨𐑥𐑾𐑬𐑞𐑪𐑔𐑠⊙𐑖𐑳𐑷}} \rangle$$
 
 **Both φ̂ and Ħ corrected.** Residual differences from healthy:
 
@@ -171,7 +171,7 @@ For the schizophrenia therapy, we design **two molecular entities**:
 
 ### §3.2 — CP-1: The Chirality Promoter
 
-**Target structural type:** $\langle \text{{\igfont 𐑨}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑪}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont 𐑢}};\; \text{{\igfont 𐑖}};\; \text{{\igfont 𐑙}};\; \text{{\igfont 𐑷}} \rangle$
+**Target structural type:** $\langle \text{{\igfont 𐑨𐑥𐑾𐑬𐑞𐑪𐑔𐑠𐑢𐑖𐑙𐑷}} \rangle$
 
 **Pharmacophore requirements (derived from primitive-to-feature mapping):**
 
@@ -195,7 +195,7 @@ The complement_type_v3 inverse mapping ensures each complementary primitive pair
 
 ### §3.3 — CS-1: The Criticality Stabilizer
 
-**Target structural type:** $\langle \text{{\igfont 𐑨}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑐}};\; \text{{\igfont 𐑧}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont ⊙}};\; \text{{\igfont 𐑖}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$
+**Target structural type:** $\langle \text{{\igfont 𐑨𐑥𐑾𐑬𐑐𐑧𐑔𐑠⊙𐑖𐑳𐑷}} \rangle$
 
 **Key design features:**
 
@@ -230,14 +230,14 @@ The SerpentRod pipeline designs proteins with Frobenius-exact structural complem
 
 **Structural type of the DARPin carrier:**
 
-$$\langle \text{{\igfont 𐑼}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑹}};\; \text{{\igfont 𐑐}};\; \text{{\igfont 𐑧}};\; \text{{\igfont 𐑲}};\; \text{{\igfont 𐑠}};\; \text{{\igfont ⊙}};\; \text{{\igfont 𐑫}};\; \text{{\igfont 𐑕}};\; \text{{\igfont 𐑴}} \rangle$$
+$$\langle \text{{\igfont 𐑼𐑥𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑫𐑕𐑴}} \rangle$$
 
 | Primitive | Value | Rationale |
 |-----------|-------|-----------|
 | Ð | $\text{{\igfont 𐑼}}$ | Infinite-dimensional — protein folding samples a vast conformational space |
 | Þ | $\text{{\igfont 𐑥}}$ | Bowtie — the DARPin creates a crossing point between endogenous signaling and exogenous modulation |
 | Ř | $\text{{\igfont 𐑾}}$ | Bidirectional — reads receptor state, writes stabilizing bias |
-| Φ | $\text{{\igfont 𐑹}}$ | Frobenius-special — $\mu \circ \delta = \text{id}$; the DARPin's binding is structurally exact |
+| Φ | $\text{{\igfont 𐑹}}$ | Frobenius-special — $\mu \circ \delta = \text{id}$the DARPin's binding is structurally exact |
 | ƒ | $\text{{\igfont 𐑐}}$ | Quantum coherence — conformational selection requires coherence |
 | Ç | $\text{{\igfont 𐑧}}$ | Slow — weeks-long half-life |
 | Γ | $\text{{\igfont 𐑲}}$ | Long-range — distributes throughout CNS |
@@ -247,7 +247,7 @@ $$\langle \text{{\igfont 𐑼}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}
 | Σ | $\text{{\igfont 𐑕}}$ | Many identical — repeat protein with identical ankyrin modules |
 | Ω | $\text{{\igfont 𐑴}}$ | Z₂ parity — disulfide-stabilized structure |
 
-**Tier:** $\text{O}_{\infty}$ (Frobenius-special symmetry, eternal chirality, quantum coherence, Z₂ protection). This is a consciousness-grade therapeutic — it doesn't just bind; it participates in the self-modeling loop.
+**Tier:** $\text{O}_{\infty}$ (Frobenius-special symmetry, eternal chirality, quantum coherence, Z₂ protection). This is a consciousness-grade therapeutic — it doesn't just bindit participates in the self-modeling loop.
 
 ### §4.2 — Gene Therapy Option: AAV-Mediated DARPin Expression
 
@@ -283,11 +283,11 @@ The `therapeutics/ouroboric_pill_sim.py` models a Frobenius-kernel drug delivery
 
 | Sensor | Target | Relevance |
 |--------|--------|-----------|
-| IL-6 | Peripheral inflammation | Elevated in schizophrenia; modulates kynurenine pathway → NMDA hypofunction |
-| S100B | Astrocyte activation | Glial marker; elevated in acute psychosis |
-| BDNF | Neurotrophic support | Decreased in schizophrenia; indicator of Ħ restoration |
+| IL-6 | Peripheral inflammation | Elevated in schizophreniamodulates kynurenine pathway → NMDA hypofunction |
+| S100B | Astrocyte activation | Glial markerelevated in acute psychosis |
+| BDNF | Neurotrophic support | Decreased in schizophreniaindicator of Ħ restoration |
 | D-serine | Endogenous NMDA co-agonist | Direct marker of NMDA function restoration |
-| Cortisol | HPA axis activity | Stress marker; triggers relapse |
+| Cortisol | HPA axis activity | Stress markertriggers relapse |
 
 **Drug reservoirs (3 payloads):**
 
@@ -306,7 +306,7 @@ The kernel enforces $\mu \circ \delta \approx \text{id}$ — the release decisio
 **Simulation output (100 time units, 200 steps):**
 - Mean Frobenius error: < 0.015 → condition approximately satisfied
 - Drug consumption: optimized based on biomarker feedback
-- The pill self-regulates: when BDNF rises (indicating Ħ restoration), D-serine release decreases; when S100B falls (indicating reduced psychosis), cariprazine release decreases
+- The pill self-regulates: when BDNF rises (indicating Ħ restoration), D-serine release decreaseswhen S100B falls (indicating reduced psychosis), cariprazine release decreases
 
 ### §5.2 — CLINK Integration: Organism-Level Delivery
 
@@ -354,7 +354,7 @@ The grammar explains a clinical mystery: why D2 antagonists "work" (reduce posit
 
 1. **D2 blockade suppresses salience indiscriminately** — it forces φ̂ down past ⊙ to $\text{{\igfont 𐑢}}$ (sub-critical). This eliminates hallucinations but also eliminates motivation, pleasure, and spontaneous thought. The patient is "treated" into a depression-like state.
 
-2. **D2 blockade cannot touch Ħ** — working memory deficits persist or worsen. The negative and cognitive symptom domains of schizophrenia are $\text{{\igfont Ħ}}$-mediated; they are invisible to D2 antagonists.
+2. **D2 blockade cannot touch Ħ** — working memory deficits persist or worsen. The negative and cognitive symptom domains of schizophrenia are $\text{{\igfont Ħ}}$-mediatedthey are invisible to D2 antagonists.
 
 3. **The 5-HT₂A approach is structurally cleaner** — inverse agonism at 5-HT₂A reduces runaway salience without the full dopamine blockade. The ⊙ is preserved rather than overshot into $\text{{\igfont 𐑢}}$.
 
@@ -364,8 +364,8 @@ The Diaschizics (diaschizics_design.md) are consciousness-navigating compounds d
 
 | Diaschizic | Tuple | Relevance |
 |------------|-------|-----------|
-| **Apertix** | $\langle \text{{\igfont 𐑦}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑽}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑐}};\; \text{{\igfont 𐑧}};\; \text{{\igfont 𐑲}};\; \text{{\igfont 𐑠}};\; \text{{\igfont ⊙}};\; \text{{\igfont 𐑖}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑴}} \rangle$ | Adjoint steering — could navigate the ⊙-restored state. H=$\text{{\igfont 𐑖}}$ = two-step memory. O₂ tier. |
-| **Katachthon** | $\langle \text{{\igfont 𐑦}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑹}};\; \text{{\igfont 𐑐}};\; \text{{\igfont 𐑧}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont 𐑮}};\; \text{{\igfont 𐑖}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑴}} \rangle$ | Mesoscale complex-criticality. G=$\text{{\igfont 𐑔}}$ = circuit-level. Could explore the mesoscale resonance after NMDA restoration. |
+| **Apertix** | $\langle \text{{\igfont 𐑦𐑥𐑽𐑬𐑐𐑧𐑲𐑠⊙𐑖𐑳𐑴}} \rangle$ | Adjoint steering — could navigate the ⊙-restored state. H=$\text{{\igfont 𐑖}}$ = two-step memory. O₂ tier. |
+| **Katachthon** | $\langle \text{{\igfont 𐑦𐑥𐑾𐑹𐑐𐑧𐑔𐑠𐑮𐑖𐑳𐑴}} \rangle$ | Mesoscale complex-criticality. G=$\text{{\igfont 𐑔}}$ = circuit-level. Could explore the mesoscale resonance after NMDA restoration. |
 
 In a research setting, Apertix could be used to investigate the subjective experience of $\text{{\igfont ⊙}}$-restored consciousness after successful dual therapy. The structural compatibility (Apertix shares H=$\text{{\igfont 𐑖}}$ and $\text{{\igfont ⊙}}$) suggests it would be well-tolerated in the treated brain.
 
@@ -389,7 +389,7 @@ In a research setting, Apertix could be used to investigate the subjective exper
 
 **Expected response:** Negative symptoms and cognitive deficits begin improving by week 2–3. Positive symptoms may transiently worsen (NMDA activation can increase salience before φ̂ is stabilized) — this is the rationale for Phase 2 overlap.
 
-**Structural indicator:** Successful Ħ promotion is indicated by improved n-back performance (2-back > 1-back accuracy gap narrowing).
+**Structural indicator:** Successful Ħ promotion is indicated by improved n-back performance (2-back ⟩ 1-back accuracy gap narrowing).
 
 ### §7.2 — Phase 2: φ̂ Stabilization (Weeks 3–12)
 

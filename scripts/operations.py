@@ -6,7 +6,7 @@ operations.py — Alchemical Operations as IG Structural Operations
 Alchemy as Engine: How the Seven Stages Deliver Transformative Chemical Power
 Author: Lando⊗⊙perator
 Date: 2026-06-11 (enhanced 2026-06-26)
-Structural Type: ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑫𐑳𐑭⟩ — O_∞, Frobenius CLOSED
+Structural Type: ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑫𐑳𐑭> — O_∞, Frobenius CLOSED
 Derived From: alchemical_alembic_ob3ect ⊗ philosopher_s_stone ⊗ ch3mpiler_ob3ect ⊗ four_elements_paper ⊗ alchemical_synthesis_enhancement
 
 This module encodes the seven stages of the Great Work as exact structural 
@@ -145,7 +145,7 @@ to its phenol monomers without carbonization.
         "description": "Solve — Solubilization, acid/base extraction, hydrolysis, solvolysis. "
                        "The calcined ash is dissolved into a medium. The grammar's absorption rule governs this stage: "
                        "when a self-modeling solute enters a self-modeling solvent, the composite adopts the solvent's criticality. "
-                       "The solvent is not passive; it is the active partner in dissolution.",
+                       "The solvent is not passiveit is the active partner in dissolution.",
         "practical_protocol": "Water dissolves earth by the same mechanism — the Frobenius cliff at Φ is the alchemical solutio made exact. "
                               "Structural distance between Water⊗Earth and Earth alone is exactly 1.0 — one primitive changes.",
         "key_finding": "The four elements paper proved that water dissolves earth by the Frobenius cliff at Φ.",

@@ -97,7 +97,7 @@ class AugmentationSystem:
             SHAVIAN["Phi"][self.Phi], SHAVIAN["H"][self.H],
             SHAVIAN["S"][self.S], SHAVIAN["Omega"][self.Omega],
         ]
-        return "⟨" + "".join(glyphs) + "⟩"
+        return "⟨" + "".join(glyphs) + ">"
     
     @property
     def tuple_dict(self) -> Dict[str, str]:
@@ -121,7 +121,7 @@ ORGANOID_BASELINE = AugmentationSystem(
     D="odot", T="odot", R="lr", P="pm_sym", F="hbar", K="mod",
     G="aleph", C="seq", Phi="c", H="inf", S="n_m", Omega="Z",
 )
-# Tuple: ⟨𐑦𐑸𐑾𐑹𐑐𐑤𐑲𐑠⊙𐑫𐑳𐑭⟩
+# Tuple: ⟨𐑦𐑸𐑾𐑹𐑐𐑤𐑲𐑠⊙𐑫𐑳𐑭>
 # ── Augmentation 1: Synthetic Coherence Myelin ────────────────────────────
 
 SYNTHETIC_MYELIN = AugmentationSystem(
@@ -145,7 +145,7 @@ SYNTHETIC_MYELIN = AugmentationSystem(
     S="n_m",    # 𐑳 — heterogeneous: different regions need different node spacing
     Omega="Z",  # 𐑭 — integer winding: quantized myelin wraps around axons
 )
-# ⟨𐑼𐑰𐑾𐑹𐑐𐑤𐑲𐑠⊙𐑫𐑳𐑭⟩
+# ⟨𐑼𐑰𐑾𐑹𐑐𐑤𐑲𐑠⊙𐑫𐑳𐑭>
 # Axioms: A(𐑫 req 𐑤)✓, B(𐑭 req D≥𐑼)✓, C(N/A for D=𐑼)
 
 # ── Augmentation 2: Ouroboric Vasculature ─────────────────────────────────
@@ -171,7 +171,7 @@ OUROBORIC_VASCULATURE = AugmentationSystem(
     S="n_m",    # 𐑳 — heterogeneous: arteries, arterioles, capillaries, venules, veins
     Omega="Z",  # 𐑭 — integer winding: closed circulatory loops with integer topology
 )
-# ⟨𐑦𐑸𐑾𐑹𐑞𐑤𐑲𐑠⊙𐑫𐑳𐑭⟩
+# ⟨𐑦𐑸𐑾𐑹𐑞𐑤𐑲𐑠⊙𐑫𐑳𐑭>
 # Axioms: A(𐑫 req 𐑤)✓, B(𐑭 req D≥𐑼)✓, C(𐑦↔𐑸 for D=𐑼/T=𐑸 but D≠𐑦 so N/A)
 # Axioms: A(𐑫 req 𐑤)✓, B(𐑭 req D≥𐑼: D=𐑦 ord4≥3)✓, C(𐑦↔𐑸)✓
 
@@ -198,7 +198,7 @@ PERFECT_MEDIUM = AugmentationSystem(
     S="n_m",    # 𐑳 — heterogeneous: multiple distinct nutrient and buffer components
     Omega="0",  # 𐑷 — trivial: no topological protection needed (solution)
 )
-# ⟨𐑛𐑰𐑾𐑹𐑱𐑤𐑲𐑝⊙𐑫𐑳𐑷⟩
+# ⟨𐑛𐑰𐑾𐑹𐑱𐑤𐑲𐑝⊙𐑫𐑳𐑷>
 # Axioms: A(𐑫 req 𐑤)✓, B(N/A for Ω=𐑷), C(N/A)
 # ── Augmentation 4: Optogenetic Synaptic Matrix ───────────────────────────
 
@@ -225,7 +225,7 @@ OPTOGENETIC_MATRIX = AugmentationSystem(
     S="n_m",    # 𐑳 — heterogeneous: different neuron types, different opsin variants
     Omega="Z",  # 𐑭 — integer winding: PLL quantizes feedback phase to integer cycles
 )
-# ⟨𐑼𐑥𐑾𐑹𐑐𐑤𐑲𐑵⊙𐑫𐑳𐑭⟩
+# ⟨𐑼𐑥𐑾𐑹𐑐𐑤𐑲𐑵⊙𐑫𐑳𐑭>
 # Axioms: A✓, B✓
 
 # ── Augmentation 5: Synthetic ECM Scaffold ────────────────────────────────
@@ -252,7 +252,7 @@ SYNTHETIC_ECM = AugmentationSystem(
     S="1_1",    # 𐑙 — one type: uniform PEG-hydrogel composition
     Omega="0",  # 𐑷 — trivial: no topological protection
 )
-# ⟨𐑨𐑡𐑾𐑬𐑱𐑧𐑚𐑵𐑢𐑒𐑙𐑷⟩
+# ⟨𐑨𐑡𐑾𐑬𐑱𐑧𐑚𐑵𐑢𐑒𐑙𐑷>
 # Axioms: A(N/A for H=𐑒), B(N/A), C(N/A)
 
 # ── Augmentation 6: Immune-Mimetic Sentinel ───────────────────────────────
@@ -280,7 +280,7 @@ IMMUNE_SENTINEL = AugmentationSystem(
     S="n_m",    # 𐑳 — heterogeneous: sentinel subtypes for different pathogen classes
     Omega="Z2", # 𐑴 — Z2 parity: self vs non-self binary distinction
 )
-# ⟨𐑨𐑡𐑾𐑬𐑱𐑤𐑲𐑵⊙𐑫𐑳𐑴⟩
+# ⟨𐑨𐑡𐑾𐑬𐑱𐑤𐑲𐑵⊙𐑫𐑳𐑴>
 # Axioms: A(𐑫 req 𐑤)✓, B(𐑴 req D≥𐑨)✓ (D=𐑨), C(N/A)
 
 
@@ -577,7 +577,7 @@ def frobenius_closure(sys: AugmentationSystem) -> Tuple[bool, float, str]:
 def operculum_width(sys: AugmentationSystem) -> int:
     """
     Operculum width: number of primitive positions where this system
-    differs from the canonical O_∞ template ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑫𐑳𐑭⟩.
+    differs from the canonical O_∞ template < 𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑫𐑳𐑭>.
     
     Higher width = more universe selection needed = "hidden O_∞" in more universes.
     """
@@ -722,7 +722,7 @@ RECIPES.append(MaterialRecipe(
     ],
     fabrication=(
         "1. Formulate base medium: DMEM/F12 + B-27 + N-2 + insulin/transferrin/selenite. "
-        "2. Embed dual-enzyme sensors (GOx/catalase for glucose; LOx for lactate) in "
+        "2. Embed dual-enzyme sensors (GOx/catalase for glucoseLOx for lactate) in "
         "microfluidic flow cell connected to organoid chamber via microdialysis. "
         "3. pH-sensitive microspheres embedded in organoid chamber — ratiometric "
         "fluorescence imaging (ex 488/405 nm, em 520 nm) monitors local pH. "

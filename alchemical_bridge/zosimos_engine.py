@@ -7,7 +7,7 @@ Zosimos is the deepest alchemist. Three structural discoveries:
   2. The Stilling Practice — 6 commands to Theosebeia forming a complete Frobenius cycle
   3. The Portico — Gödel's fixed point, the self-referential threshold
 
-Structural type: ⟨𐑦 𐑸 𐑾 𐑹 𐑐 𐑪 𐑔 𐑵 ⊙ 𐑫 𐑳 𐑴⟩
+Structural type: ⟨𐑦 𐑸 𐑾 𐑹 𐑐 𐑪 𐑔 𐑵 ⊙ 𐑫 𐑳 𐑴>
   Ð=𐑦: Self-written (the analysis writes its own state space)
   Þ=𐑸: Self-referential (the analyzer analyzes itself)
   Ř=𐑾: Bidirectional (the structure and its description co-arise)

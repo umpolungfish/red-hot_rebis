@@ -19,14 +19,16 @@ Theorems (matching Lean):
 from __future__ import annotations
 _HELP_EXAMPLES = """  rebis.py run hadron_belnap"""
 import sys as _sys
-if '--help' in _sys.argv or '-h' in _sys.argv:
-    _doc = __doc__.strip() if __doc__ else "rhr_p4rky/hadron_belnap.py"
-    print(_doc)
-    print()
-    info_line("Examples:")
-    print(_HELP_EXAMPLES)
-    print()
-    _sys.exit(0)
+
+if __name__ == "__main__":
+    if '--help' in _sys.argv or '-h' in _sys.argv:
+        _doc = __doc__.strip() if __doc__ else "rhr_p4rky/hadron_belnap.py"
+        print(_doc)
+        print()
+        print("Examples:")
+        print(_HELP_EXAMPLES)
+        print()
+        _sys.exit(0)
 
 from dataclasses import dataclass
 from typing import Optional, Tuple
@@ -40,8 +42,6 @@ from quark_belnap import (
 )
 from orbital_belnap import OrbitalState, pair
 from shared.rich_output import *
-
-
 
 # ═══════════════════════════════════════════════════════════════════════════
 # §1  MESON = q̄·q
@@ -71,30 +71,25 @@ class Meson:
         """Net spin is the orbital pair of constituents' spins."""
         return pair(self.quark.spin, self.antiquark.spin)
 
-
 def try_make_meson(q1: QuarkState, q2: QuarkState) -> Optional[Meson]:
     """Construct a meson if colors are complementary, else None."""
     if q1.color == anti_color(q2.color):
         return Meson(quark=q1, antiquark=q2)
     return None
 
-
 def meson_depair(m: Meson) -> Tuple[QuarkState, QuarkState]:
     """Meson depairing (δ): split into constituent quarks."""
     return (m.quark, m.antiquark)
 
-
 def meson_pair(q1: QuarkState, q2: QuarkState) -> Optional[Meson]:
     """Meson pairing (μ): combine two complementary-color quarks."""
     return try_make_meson(q1, q2)
-
 
 def meson_frobenius(m: Meson) -> bool:
     """Frobenius for mesons: μ∘δ = id."""
     d = meson_depair(m)
     result = meson_pair(d[0], d[1])
     return result == m
-
 
 # ═══════════════════════════════════════════════════════════════════════════
 # §2  BARYON = q·q·q
@@ -140,16 +135,13 @@ def try_make_baryon(q1: QuarkState, q2: QuarkState, q3: QuarkState) -> Optional[
     except ValueError:
         return None
 
-
 def baryon_depair(b: Baryon) -> Tuple[QuarkState, QuarkState, QuarkState]:
     """Baryon depairing (δ): split into three constituent quarks."""
     return (b.q1, b.q2, b.q3)
 
-
 def baryon_pair(q1: QuarkState, q2: QuarkState, q3: QuarkState) -> Optional[Baryon]:
     """Baryon pairing (μ): combine three quarks into a white singlet."""
     return try_make_baryon(q1, q2, q3)
-
 
 # ═══════════════════════════════════════════════════════════════════════════
 # §3  FROBENIUS FOR HADRONS
@@ -161,11 +153,9 @@ def baryon_frobenius(b: Baryon) -> bool:
     result = baryon_pair(d[0], d[1], d[2])
     return result == b
 
-
 def hadron_frobenius_unified(m: Meson, b: Baryon) -> Tuple[bool, bool]:
     """Both mesons and baryons satisfy μ∘δ = id."""
     return (meson_frobenius(m), baryon_frobenius(b))
-
 
 # ═══════════════════════════════════════════════════════════════════════════
 # §4  SELF-TESTS
@@ -177,14 +167,12 @@ def build_meson_example() -> Meson:
     q_antired = QuarkState(ColorState.Red, OrbitalState.spinDown)
     return Meson(quark=q_red, antiquark=q_antired)
 
-
 def build_baryon_example() -> Baryon:
     """Build a sample baryon: R↑, G↓, B↑ → white singlet."""
     q_r = QuarkState(ColorState.Red, OrbitalState.spinUp)
     q_g = QuarkState(ColorState.Green, OrbitalState.spinDown)
     q_b = QuarkState(ColorState.Blue, OrbitalState.spinUp)
     return Baryon(q1=q_r, q2=q_g, q3=q_b)
-
 
 def test_hadron_belnap() -> None:
     """Run all hadron Belnap tests."""

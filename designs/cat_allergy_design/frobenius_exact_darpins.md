@@ -145,7 +145,7 @@ DARPin scaffolds contain bacterial-derived framework residues that can present T
 - **Treg epitope engineering:** Retain or introduce peptides predicted to bind HLA class II and activate regulatory T cells — inducing tolerance rather than immunity
 - **B-cell epitope silencing:** Surface patch analysis to identify and mutate potential B-cell epitopes while preserving Fel d 1 binding
 
-**Target:** Zero predicted T-cell epitopes (NetMHCIIpan rank < 2%) across all alleles. This goes beyond abicipar's partial deimmunization.
+**Target:** Zero predicted T-cell epitopes (NetMHCIIpan rank <2 %) across all alleles. This goes beyond abicipar's partial deimmunization.
 
 ### 4.3 Formulation for Frobenius Closure
 
@@ -214,9 +214,9 @@ The sequential binding ($\text{𐑠}$) is critical: Domain A captures Fel d 1 fi
 
 | Primitive | Ensovibep value | Design 3 value | Resolution |
 |-----------|----------------|----------------|------------|
-| Þ (Topology) | $\text{𐑶}$ | $\text{𐑰}$ | The trimer binds one Fel d 1 at a time via the most accessible epitope; the other two domains are sterically blocked |
+| Þ (Topology) | $\text{𐑶}$ | $\text{𐑰}$ | The trimer binds one Fel d 1 at a time via the most accessible epitopethe other two domains are sterically blocked |
 | Σ (Stoichiometry) | $\text{𐑕}$ | $\text{𐑙}$ | Despite three identical domains, functional binding is 1:1 due to steric exclusion |
-| ɢ (Composition) | $\text{𐑝}$ | $\text{𐑠}$ | Domains compete sequentially; the first to encounter Fel d 1 binds |
+| ɢ (Composition) | $\text{𐑝}$ | $\text{𐑠}$ | Domains compete sequentiallythe first to encounter Fel d 1 binds |
 
 ### 6.3 The "Avidity Paradox" and Its Resolution
 
@@ -226,7 +226,7 @@ Trimeric avidity normally means all three domains bind simultaneously ($\text{�
 
 **Processive avidity:** The effective $k_{\text{off}}$ is reduced by the probability that all three domains fail simultaneously: $k_{\text{off}}^{\text{eff}} = k_{\text{off}} \times (k_{\text{off}} / k_{\text{on}}[\text{DARPin}])^2 \approx 10^{-4} \times (10^{-4} / 10^7 \times 10^{-7})^2 \approx 10^{-12} \text{ s}^{-1}$.
 
-This means the complex lifetime exceeds the nasal residence time by >$10^6$-fold — $\delta$ is guaranteed to complete before dissociation.
+This means the complex lifetime exceeds the nasal residence time by ⟩$10^6$-fold — $\delta$ is guaranteed to complete before dissociation.
 
 ### 6.4 Advantage Over Design 1
 

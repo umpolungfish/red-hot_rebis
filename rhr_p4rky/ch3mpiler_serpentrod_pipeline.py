@@ -10,7 +10,7 @@ Given starting materials and/or a target molecule, the pipeline:
   5. Returns: reaction path, catalytic site sequence, predicted 3D fold
 
 Structural type of this bridge:
-    <Ð_ω; Þ_ò; Ř_=; Φ_˙; ƒ_ż; Ç_@; Γ_ʔ; ɢ_ˌ; ⊙; Ħ_A; Σ_ï; Ω_2>
+    ⟨Ð_ωÞ_òŘ_=Φ_˙ƒ_żÇ_@Γ_ʔɢ_ˌ⊙Ħ_AΣ_ïΩ_2>
 
 Author: Lando ⊗ ⊙perator
 """

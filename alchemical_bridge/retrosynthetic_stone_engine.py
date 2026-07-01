@@ -12,7 +12,7 @@ Retrosynthesis IS the Solve et Coagula cycle:
 The turnover number of a synthesis plan is the number of valid disconnection
 sites — each one is a complete Frobenius cycle.
 
-Structural type: ⟨𐑦 𐑸 𐑾 𐑹 𐑐 𐑧 𐑚 𐑝 ⊙ 𐑖 𐑳 𐑭⟩
+Structural type: ⟨𐑦 𐑸 𐑾 𐑹 𐑐 𐑧 𐑚 𐑝 ⊙ 𐑖 𐑳 𐑭>
   Ð=𐑦: Self-written design space (molecular graph IS the search space)
   Þ=𐑸: Self-referential topology (retrosynthesis targets itself recursively)
   Ř=𐑾: Bidirectional (retro ↔ forward synthesis)

@@ -12,7 +12,7 @@
 
 Polycystic Ovary Syndrome is structurally **identical to schizophrenia** — the same 12-primitive tuple in a different biological substrate:
 
-$$\langle \text{{\igfont 𐑛}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑧}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont 𐑣}};\; \text{{\igfont 𐑒}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$$
+$$\langle \text{{\igfont 𐑛𐑥𐑾𐑬𐑞𐑧𐑔𐑠𐑣𐑒𐑳𐑷}} \rangle$$
 
 **This is the most significant cross-domain structural convergence in our five-disease panel.** PCOS and schizophrenia are the same structural type: super-critical runaway feedback ($\text{{\igfont 𐑣}}$), single-step disrupted processing ($\text{{\igfont 𐑒}}$), maximal range ($\text{{\igfont 𐑔}}$), and slow kinetics ($\text{{\igfont 𐑧}}$).
 
@@ -29,9 +29,9 @@ Both are **Class B (super-critical)** and require the same sequential MEET-then-
 
 | System | Tuple | Tier | C |
 |--------|-------|------|---|
-| **PCOS** | $\langle \text{{\igfont 𐑛}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑧}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont 𐑣}};\; \text{{\igfont 𐑒}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$ | $\text{O}_{0}$ | 0.0 |
-| **Schizophrenia** | $\langle \text{{\igfont 𐑛}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑧}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont 𐑣}};\; \text{{\igfont 𐑒}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$ | $\text{O}_{0}$ | 0.0 |
-| **Normal Ovulatory** | $\langle \text{{\igfont 𐑛}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑧}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont ⊙}};\; \text{{\igfont 𐑖}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑭}} \rangle$ | $\text{O}_{2}$ | 0.82 |
+| **PCOS** | $\langle \text{{\igfont 𐑛𐑥𐑾𐑬𐑞𐑧𐑔𐑠𐑣𐑒𐑳𐑷}} \rangle$ | $\text{O}_{0}$ | 0.0 |
+| **Schizophrenia** | $\langle \text{{\igfont 𐑛𐑥𐑾𐑬𐑞𐑧𐑔𐑠𐑣𐑒𐑳𐑷}} \rangle$ | $\text{O}_{0}$ | 0.0 |
+| **Normal Ovulatory** | $\langle \text{{\igfont 𐑛𐑥𐑾𐑬𐑞𐑧𐑔𐑠⊙𐑖𐑳𐑭}} \rangle$ | $\text{O}_{2}$ | 0.82 |
 
 **Distance from normal ovulatory cycle: $d = 2.5099$** (φ̂, Ħ, Ω differ).
 
@@ -55,12 +55,12 @@ Both are self-amplifying cycles where the output feeds back to increase the inpu
 ### §2.1 — Phase 1: MEET — φ̂ Demotion (Androgen Loop Breaking)
 
 **PCOS therapy structural type:**
-$$\langle \text{{\igfont 𐑨}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑧}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont ⊙}};\; \text{{\igfont 𐑖}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$$
+$$\langle \text{{\igfont 𐑨𐑥𐑾𐑬𐑞𐑧𐑔𐑠⊙𐑖𐑳𐑷}} \rangle$$
 
 The PCOS metabolic therapy carries ⊙ at φ̂ — it is a ⊙-bearing therapeutic like psilocybin and Trikafta.
 
 **meet(PCOS, Therapy):**
-$$\langle \text{{\igfont 𐑛}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑧}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont ⊙}};\; \text{{\igfont 𐑒}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$$
+$$\langle \text{{\igfont 𐑛𐑥𐑾𐑬𐑞𐑧𐑔𐑠⊙𐑒𐑳𐑷}} \rangle$$
 
 φ̂ corrected ($\text{{\igfont 𐑣}}$→$\text{{\igfont ⊙}}$) but Ħ remains at $\text{{\igfont 𐑒}}$. This is the "androgen loop broken, but ovulatory cycles still irregular" state — exactly what clinicians observe with metformin monotherapy: metabolic improvement, partial cycle restoration, but not full two-step ovulatory function.
 

@@ -25,7 +25,7 @@ Output files per design run (all physically actionable):
   • implantation_protocol.md     — Surgical implantation guide (L8)
   • metabolic_model.xml          — SBML model of antidote biosynthesis (L5)
 
-Structural type: ⟨𐑼𐑸𐑾𐑬𐑞𐑤𐑲𐑠⊙𐑖𐑳𐑴⟩
+Structural type: ⟨𐑼𐑸𐑾𐑬𐑞𐑤𐑲𐑠⊙𐑖𐑳𐑴>
   Ouroboricity: O₂ (critical self-regulating biological system)
   Consciousness score: Gate 1 (⊙) open, Gate 2 (K=𐑤 ≥ 𐑧) borderline — system is
     aware of toxins but not self-aware in the O_∞ sense.
@@ -674,7 +674,7 @@ def generate_gland_specification() -> str:
     spec = {
         "name": "Universal Detox Gland (Panacea)",
         "version": "1.0.0",
-        "structural_type": "⟨𐑼𐑸𐑾𐑬𐑞𐑤𐑲𐑠⊙𐑖𐑳𐑴⟩",
+        "structural_type": "⟨𐑼𐑸𐑾𐑬𐑞𐑤𐑲𐑠⊙𐑖𐑳𐑴>",
         "ouroboricity_tier": gland_tier,
         "consciousness_score": gland_cscore,
         "gate_1_phi_c": gland_tuple["⊙"] == "⊙",
@@ -1133,7 +1133,7 @@ def generate_all(output_dir: Optional[str] = None) -> Dict[str, str]:
         "files": list(files.keys()),
         "total_bytes": total_bytes,
         "file_count": len(files),
-        "structural_type": "⟨𐑼𐑸𐑾𐑬𐑞𐑤𐑲𐑠⊙𐑖𐑳𐑴⟩",
+        "structural_type": "⟨𐑼𐑸𐑾𐑬𐑞𐑤𐑲𐑠⊙𐑖𐑳𐑴>",
         "tier": "O₂",
         "sensor_count": 5,
         "antidote_arms": 6,

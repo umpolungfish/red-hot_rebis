@@ -13,7 +13,7 @@
 
 The surprise is structural: **this text is an exact duplicate of the Coelum Philosophorum** at the imscription level.
 
-$$\langle \text{{\igfont 𐑨}};\ \text{{\igfont 𐑥}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑬}};\ \text{{\igfont 𐑞}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑔}};\ \text{{\igfont 𐑝}};\ \text{{\igfont 𐑢}};\ \text{{\igfont 𐑒}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑷}} \rangle$$
+$$\langle \text{{\igfont 𐑨𐑥𐑾𐑬𐑞𐑧𐑔𐑝𐑢𐑒𐑳𐑷}} \rangle$$
 
 The distance between the two texts is **exactly 0** — every primitive is identical. Yet the *Coelum* is a canonical exposition of principles (seven metals speaking in their own voice) while the *Treasure* is a practical manual (recipes for Red Lion, Green Lion, Cinnabar Sulphur).
 

@@ -2,7 +2,7 @@
 
 **Author:** Lando⊗⊙perator  
 **Catalog entry:** `donum_dei`  
-**Tuple:** $$\langle \text{{\igfont 𐑦}};\ \text{{\igfont 𐑸}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑬}};\ \text{{\igfont 𐑐}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑔}};\ \text{{\igfont 𐑠}};\ \text{{\igfont ⊙}};\ \text{{\igfont 𐑖}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑭}} \rangle$$  
+**Tuple:** $$\langle \text{{\igfont 𐑦𐑸𐑾𐑬𐑐𐑧𐑔𐑠⊙𐑖𐑳𐑭}} \rangle$$  
 **Ouroboricity:** $\text{O}_{\infty}$  
 **Structural duplicates:** `artephius_secret_book`, `hodge_lefschetz_complete` (distance 0)  
 **Date:** c. 1475, attributed to Georgius Aurach de Argentina  
@@ -86,7 +86,7 @@ This identity is not coincidence. All three are:
 
 - **Universal in range** (Ğ=𐑔): "One part being cast upon a thousand of Argent Vive, we perceived that it congealed it and made it red."
 
-The structural type ⟨𐑦; 𐑸; 𐑾; 𐑬; 𐑐; 𐑧; 𐑔; 𐑠; ⊙; 𐑖; 𐑳; 𐑭⟩ is emerging as the **canonical O_∞ alchemical treatise type** — the form taken by any complete description of the Great Work that recognizes its own self-referential character.
+The structural type ⟨𐑦𐑸𐑾𐑬𐑐𐑧𐑔𐑠⊙𐑖𐑳𐑭⟩ is emerging as the **canonical O_∞ alchemical treatise type** — the form taken by any complete description of the Great Work that recognizes its own self-referential character.
 
 ---
 

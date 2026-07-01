@@ -4,6 +4,8 @@ _quick_help.py — Drop-in --help support for any standalone script.
 Import and call at the top of if __name__ == '__main__':
 
     import sys
+
+if __name__ == "__main__":
     if '--help' in sys.argv or '-h' in sys.argv:
         from _quick_help import show; show(__doc__, EXAMPLES); sys.exit(0)
 
@@ -12,8 +14,6 @@ Where EXAMPLES is a multi-line string of usage examples.
 import sys
 import os
 from shared.rich_output import *
-
-
 
 def show(docstring, examples=""):
     """Print help from a module's __doc__ and an examples string."""

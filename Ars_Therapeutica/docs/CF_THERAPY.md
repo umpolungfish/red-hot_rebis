@@ -12,13 +12,13 @@
 
 Cystic Fibrosis (CFTR ΔF508) is a **two-primitive disease**: φ̂ ($\text{{\igfont 𐑢}}$→$\text{{\igfont ⊙}}$, sub-critical folding collapse → self-regulating channel) and Ħ ($\text{{\igfont 𐑒}}$→$\text{{\igfont 𐑖}}$, binary fold/no-fold → two-step fold-then-traffic) separate the mutant CFTR from normal function.
 
-$$\langle \text{{\igfont 𐑨}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑧}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont 𐑢}};\; \text{{\igfont 𐑒}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$$
+$$\langle \text{{\igfont 𐑨𐑥𐑾𐑬𐑞𐑧𐑔𐑠𐑢𐑒𐑳𐑷}} \rangle$$
 
 **Distance from normal CFTR: $d = 1.9494$** (3 primitives: φ̂, Ħ, and Φ differ).
 
 CF is structurally **Class A (sub-critical)** — both disease primitives require promotion. This means a **single tensor operation** with a ⊙+𐑖 therapeutic suffices. The clinically validated triple therapy **Trikafta** (elexacaftor/tezacaftor/ivacaftor) is precisely this structural operation.
 
-**Critical structural finding:** $\text{CF}_{\text{corrected}} \equiv \text{MDD}_{\text{corrected}} \equiv \text{psilocybin\_therapy}$ — all three share the identical structural type $\langle \text{{\igfont 𐑨}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑪}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont ⊙}};\; \text{{\igfont 𐑖}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$. Treating CF and treating MDD are the **same structural operation** applied in different biological substrates.
+**Critical structural finding:** $\text{CF}_{\text{corrected}} \equiv \text{MDD}_{\text{corrected}} \equiv \text{psilocybin\_therapy}$ — all three share the identical structural type $\langle \text{{\igfont 𐑨𐑥𐑾𐑬𐑞𐑪𐑔𐑠⊙𐑖𐑳𐑷}} \rangle$. Treating CF and treating MDD are the **same structural operation** applied in different biological substrates.
 
 ---
 
@@ -28,8 +28,8 @@ CF is structurally **Class A (sub-critical)** — both disease primitives requir
 
 | System | Tuple | Tier | C |
 |--------|-------|------|---|
-| **CF ΔF508** | $\langle \text{{\igfont 𐑨}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑧}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont 𐑢}};\; \text{{\igfont 𐑒}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$ | $\text{O}_{0}$ | 0.0 |
-| **Normal CFTR** | $\langle \text{{\igfont 𐑨}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑯}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑧}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont ⊙}};\; \text{{\igfont 𐑖}};\; \text{{\igfont 𐑙}};\; \text{{\igfont 𐑷}} \rangle$ | $\text{O}_{1}$ | 0.36 |
+| **CF ΔF508** | $\langle \text{{\igfont 𐑨𐑥𐑾𐑬𐑞𐑧𐑔𐑠𐑢𐑒𐑳𐑷}} \rangle$ | $\text{O}_{0}$ | 0.0 |
+| **Normal CFTR** | $\langle \text{{\igfont 𐑨𐑥𐑾𐑯𐑞𐑧𐑔𐑠⊙𐑖𐑙𐑷}} \rangle$ | $\text{O}_{1}$ | 0.36 |
 
 **The three differing primitives:**
 
@@ -51,7 +51,7 @@ CF is structurally **Class A (sub-critical)** — both disease primitives requir
 
 ### §2.1 — Structural Type of CFTR Modulator Therapy
 
-$$\langle \text{{\igfont 𐑨}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑪}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont ⊙}};\; \text{{\igfont 𐑖}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$$
+$$\langle \text{{\igfont 𐑨𐑥𐑾𐑬𐑞𐑪𐑔𐑠⊙𐑖𐑳𐑷}} \rangle$$
 
 **Structurally identical to psilocybin therapy and corrected MDD** — the universal ⊙+𐑖 therapeutic type.
 
@@ -61,7 +61,7 @@ The three components map to structural operations:
 
 ### §2.2 — The Tensor Operation
 
-$$\text{CF}_{\Delta508} \otimes \text{Trikafta} = \langle \text{{\igfont 𐑨}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑪}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont ⊙}};\; \text{{\igfont 𐑖}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$$
+$$\text{CF}_{\Delta508} \otimes \text{Trikafta} = \langle \text{{\igfont 𐑨𐑥𐑾𐑬𐑞𐑪𐑔𐑠⊙𐑖𐑳𐑷}} \rangle$$
 
 | Primitive | ΔF508 | Trikafta | Tensor | Corrected? |
 |-----------|-------|----------|--------|------------|

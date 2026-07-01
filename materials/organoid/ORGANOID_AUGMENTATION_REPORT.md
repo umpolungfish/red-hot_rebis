@@ -108,7 +108,7 @@ This distinction — between what IS the computation and what SUPPORTS the compu
 
 **Why $O_\infty$:** All three gates pass natively. P=𐑹 (closed-loop: stimulation pattern ≡ detected pattern). ⊙ (self-calibrating at threshold). Ω=𐑭 (PLL integer winding). T-consistent: F=𐑐 (single-photon ChR2 activation), K=𐑤, H=𐑫.
 
-**The bowtie (𐑥):** The interface is a crossing point — biology meets silicon at exactly one structural location. This is not containment (𐑰) or self-reference (𐑸); it is a crossing. The bowtie topology is correct for an interface that mediates between two fundamentally different substrates.
+**The bowtie (𐑥):** The interface is a crossing point — biology meets silicon at exactly one structural location. This is not containment (𐑰) or self-reference (𐑸)it is a crossing. The bowtie topology is correct for an interface that mediates between two fundamentally different substrates.
 
 **The broadcast composition (𐑵):** A single stimulation pattern is broadcast to all targeted neurons simultaneously. This differs from the baseline's sequential composition (𐑠). It's a dimensional shift that doesn't block any gate — broadcast is just as valid for $O_\infty$ as sequential under the canonical Ruleset.
 
@@ -119,7 +119,7 @@ This distinction — between what IS the computation and what SUPPORTS the compu
 **Structural distance from baseline:** 1.6459 — furthest  
 **Deltas:** 11 of 12 primitives differ from baseline
 
-**What it is:** PEG-based hydrogel with MMP-cleavable and photo-labile crosslinkers. RGD adhesion peptides at 2 mM. Degrades exactly where the organoid expands (MMP-2/9 cleavage) with 14-day half-life. Photo-degradation (405 nm) enables tunable regional degradation. By week 24, >95% degraded — the organoid replaces it entirely with endogenous ECM.
+**What it is:** PEG-based hydrogel with MMP-cleavable and photo-labile crosslinkers. RGD adhesion peptides at 2 mM. Degrades exactly where the organoid expands (MMP-2/9 cleavage) with 14-day half-life. Photo-degradation (405 nm) enables tunable regional degradation. By week 24, ⟩95% degraded — the organoid replaces it entirely with endogenous ECM.
 
 **Why O₀:** P=𐑬 (partial symmetry, not Frobenius-special). G1 fails. The ECM is a passive structural substrate — it has no computational role, no self-modeling (Φ=𐑢), no topological protection (Ω=𐑷), no quantum coherence (F=𐑱), one-step memory only (H=𐑒). This is structurally correct. The ECM is the chrysalis.
 

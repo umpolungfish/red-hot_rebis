@@ -1,0 +1,94 @@
+{
+  "name": "ChiralEP_28Si_QDot",
+  "ig_tuple": "\u27e8\ud801\udc5b\ud801\udc70\ud801\udc7e\ud801\udc7f\ud801\udc50\ud801\udc6a\ud801\udc72\ud801\udc60\ud801\udc7b\ud801\udc53\ud801\udc59\ud801\udc5f\u27e9",
+  "dimensionality": {
+    "dimensionality": "0D",
+    "structure": "nanoparticle / quantum dot",
+    "size_regime": "1-100 nm",
+    "synthesis": "colloidal precipitation"
+  },
+  "topology": {
+    "connectivity": "core-shell",
+    "structure": "coated / encapsulated",
+    "mechanical": "graded interface, stress-buffered"
+  },
+  "interface": {
+    "interface": "dynamic (Diels-Alder, disulfide)",
+    "bond_energy": "100-300 kJ/mol",
+    "reversible": true,
+    "fatigue": "self-healing"
+  },
+  "symmetry": {
+    "symmetry": "quantum superposition",
+    "order_parameter": "complex",
+    "properties": "coherence-enabled, entangled"
+  },
+  "phase": {
+    "phase": "quantum-coherent",
+    "purity": "99.9999%+",
+    "character": "single crystal, ultrahigh vacuum processed"
+  },
+  "kinetics": {
+    "kinetics": "trapped (ordered)",
+    "processing": "field-assisted / epitaxial",
+    "microstructure": "single domain, trapped order"
+  },
+  "interaction_range": {
+    "interaction_range": "long-range / universal",
+    "coordination": "global",
+    "property": "collective modes, topological protection possible"
+  },
+  "synthesis": {
+    "synthesis": "sequential / layer-by-layer",
+    "sequence": "ordered deposition",
+    "advantage": "precise architecture",
+    "disadvantage": "slow, expensive"
+  },
+  "criticality": {
+    "criticality": "exceptional point",
+    "response": "\u221a\u03b5 sensitivity",
+    "sensing": "EP-enhanced",
+    "application": "ultrasensitive detector"
+  },
+  "memory": {
+    "memory": "none (Markov-0)",
+    "hysteresis": false,
+    "history": "no path dependence",
+    "fatigue": "time-independent"
+  },
+  "stoichiometry": {
+    "components": 1,
+    "class": "unary (pure element / compound)",
+    "complexity": "lowest",
+    "example": "pure Cu, SiO\u2082, Al\u2082O\u2083"
+  },
+  "topological_protection": {
+    "topology": "non-Abelian",
+    "protection": "braiding-protected",
+    "edge_states": "Majorana / parafermion",
+    "robustness": "fault-tolerant"
+  },
+  "proposed_composition": "Si (isotopically purified \u00b2\u2078Si, single crystal)",
+  "proposed_processing": "1. Precursor: Si (isotopically purified \u00b2\u2078Si, single crystal)\n2. Primary: field-assisted / epitaxial (sequential / layer-by-layer)\n3. Interface engineering: dynamic bonding cycle (heat-cool 3\u00d7)\n4. Topology: ultrahigh vacuum (10\u207b\u00b9\u2070 torr), epitaxial growth",
+  "predicted_properties": {
+    "Young_modulus_GPa": "50-200 (moderate)",
+    "Tensile_strength_MPa": "300-1000",
+    "Thermal_conductivity_WmK": "10-100 (phonon-dominated, edge-channel)",
+    "Electrical_resistivity": "ohmic, \u03c1 ~ 10\u207b\u2076 to 10\u207b\u00b2 \u03a9\u00b7m",
+    "Self_healing_efficiency": "85-95% (thermal trigger)",
+    "Healing_cycles": "50-200",
+    "Topological_invariant": "braiding-protected",
+    "Edge_state_type": "Majorana / parafermion",
+    "Robustness": "fault-tolerant"
+  },
+  "target_applications": [
+    "Single-molecule detector (EP-enhanced \u221a\u03b5)",
+    "Environmental monitoring (trace analyte)",
+    "Topological quantum computing substrate",
+    "Dissipationless interconnects (edge channels)",
+    "Self-healing structural composite",
+    "Quantum sensing / qubit host"
+  ],
+  "frobenius_score": 0.35,
+  "ouroboricity_tier": "O\u2080"
+}

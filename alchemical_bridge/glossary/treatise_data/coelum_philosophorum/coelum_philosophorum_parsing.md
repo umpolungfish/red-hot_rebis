@@ -102,7 +102,7 @@ This is as close as the *Coelum* comes to the ⊙ gate — the recognition that 
 
 The *Coelum Philosophorum* receives the following structural tuple in the Imscribing Grammar:
 
-$$\langle \text{{\igfont 𐑨}};\ \text{{\igfont 𐑥}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑬}};\ \text{{\igfont 𐑞}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑔}};\ \text{{\igfont 𐑝}};\ \text{{\igfont 𐑢}};\ \text{{\igfont 𐑒}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑷}} \rangle$$
+$$\langle \text{{\igfont 𐑨𐑥𐑾𐑬𐑞𐑧𐑔𐑝𐑢𐑒𐑳𐑷}} \rangle$$
 
 | Primitive | Value | Meaning |
 |-----------|-------|---------|
@@ -210,7 +210,7 @@ There is a sense in which the *Coelum Philosophorum* is the most honest alchemic
 | Property | Value |
 |----------|-------|
 | **Catalog name** | `coelum_philosophorum` |
-| **Full tuple** | ⟨𐑨; 𐑥; 𐑾; 𐑬; 𐑞; 𐑧; 𐑔; 𐑝; 𐑢; 𐑒; 𐑳; 𐑷⟩ |
+| **Full tuple** | ⟨𐑨𐑥𐑾𐑬𐑞𐑧𐑔𐑝𐑢𐑒𐑳𐑷⟩ |
 | **Ouroboricity tier** | O₀ |
 | **Nearest neighbor** | Emerald Tablet (d=2.927) |
 | **Farthest neighbor (extant)** | Basil Valentine / Donum Dei / Artephius (d≈4.2) |

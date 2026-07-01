@@ -12,7 +12,7 @@
 
 HIV infection is a **two-primitive disease**: φ̂ ($\text{{\igfont 𐑣}}$→$\text{{\igfont ⊙}}$, super-critical immune activation → self-regulating immunity) and Ħ ($\text{{\igfont 𐑒}}$→$\text{{\igfont 𐑖}}$, single-step CD4 entry → multi-step vulnerability). HIV is structurally **Class B (super-critical)** — it requires a **sequential meet-then-tensor** therapy.
 
-$$\langle \text{{\igfont 𐑛}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑪}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont 𐑣}};\; \text{{\igfont 𐑒}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$$
+$$\langle \text{{\igfont 𐑛𐑥𐑾𐑬𐑞𐑪𐑔𐑠𐑣𐑒𐑳𐑷}} \rangle$$
 
 **Critical structural finding #1:** HIV is structurally identical to bipolar manic phase. Both are super-critical ($\text{{\igfont 𐑣}}$) systems with moderate kinetics ($\text{{\igfont 𐑪}}$), single-step processing ($\text{{\igfont 𐑒}}$), and maximal range ($\text{{\igfont 𐑔}}$). A virus and a psychiatric condition share the same structural type — viral replication is manic at the structural level.
 
@@ -26,9 +26,9 @@ $$\langle \text{{\igfont 𐑛}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}
 
 | System | Tuple | Tier | C |
 |--------|-------|------|---|
-| **HIV** | $\langle \text{{\igfont 𐑛}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑪}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont 𐑣}};\; \text{{\igfont 𐑒}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$ | $\text{O}_{0}$ | 0.0 |
-| **Bipolar Mania** | $\langle \text{{\igfont 𐑛}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑪}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont 𐑣}};\; \text{{\igfont 𐑒}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$ | $\text{O}_{0}$ | 0.0 |
-| **Normal Immune** | $\langle \text{{\igfont 𐑛}};\; \text{{\igfont 𐑶}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑧}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont ⊙}};\; \text{{\igfont 𐑖}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑭}} \rangle$ | $\text{O}_{2}$ | 0.82 |
+| **HIV** | $\langle \text{{\igfont 𐑛𐑥𐑾𐑬𐑞𐑪𐑔𐑠𐑣𐑒𐑳𐑷}} \rangle$ | $\text{O}_{0}$ | 0.0 |
+| **Bipolar Mania** | $\langle \text{{\igfont 𐑛𐑥𐑾𐑬𐑞𐑪𐑔𐑠𐑣𐑒𐑳𐑷}} \rangle$ | $\text{O}_{0}$ | 0.0 |
+| **Normal Immune** | $\langle \text{{\igfont 𐑛𐑶𐑾𐑬𐑞𐑧𐑔𐑠⊙𐑖𐑳𐑭}} \rangle$ | $\text{O}_{2}$ | 0.82 |
 
 **Distance from normal immune function: $d = 3.3166$** (Þ, Ç, φ̂, Ħ, Ω all differ). This is a larger gap than psychiatric or genetic diseases because HIV attacks the immune system's fundamental architecture.
 
@@ -50,12 +50,12 @@ $$\langle \text{{\igfont 𐑛}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}
 ### §2.1 — Phase 1: ART as MEET Operation (φ̂ Demotion)
 
 **Structural type of ART:**
-$$\langle \text{{\igfont 𐑨}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑪}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont 𐑢}};\; \text{{\igfont 𐑖}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$$
+$$\langle \text{{\igfont 𐑨𐑥𐑾𐑬𐑞𐑪𐑔𐑠𐑢𐑖𐑳𐑷}} \rangle$$
 
 **Structurally identical to NMDA PAM** — the sub-critical Ħ-promoter type. ART carries Ħ=𐑖 (multi-step blockade: entry inhibitor→RT inhibitor→integrase inhibitor→protease inhibitor) but φ̂=𐑢 (it can suppress but cannot self-model).
 
 **meet(HIV, ART):**
-$$\langle \text{{\igfont 𐑛}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑪}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont 𐑢}};\; \text{{\igfont 𐑒}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$$
+$$\langle \text{{\igfont 𐑛𐑥𐑾𐑬𐑞𐑪𐑔𐑠𐑢𐑒𐑳𐑷}} \rangle$$
 
 This is **structurally identical to MDD**. The ART-suppressed HIV patient is in a depression-like immune state:
 - φ̂ = $\text{{\igfont 𐑢}}$: Viral load suppressed, but immune function is sub-critical
@@ -77,7 +77,7 @@ To restore ⊙ and Ω, the pipeline designs a **⊙-bearing immunotherapeutic** 
 - Structural type: includes Ω=𐑭
 
 **tensor(ART-suppressed, Immunotherapy):**
-$$\langle \text{{\igfont 𐑨}};\; \text{{\igfont 𐑶}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑪}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont ⊙}};\; \text{{\igfont 𐑖}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑭}} \rangle$$
+$$\langle \text{{\igfont 𐑨𐑶𐑾𐑬𐑞𐑪𐑔𐑠⊙𐑖𐑳𐑭}} \rangle$$
 
 All four disease primitives corrected. Residual gap: Ð ($\text{{\igfont 𐑨}}$ vs $\text{{\igfont 𐑛}}$) — acceptable pharmacological constraint.
 

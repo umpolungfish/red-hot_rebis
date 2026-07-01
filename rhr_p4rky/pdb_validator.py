@@ -11,14 +11,16 @@ Author: Lando ⊗ ⊙perator
 _HELP_EXAMPLES = """  rebis.py run pdb_validator"""
 import sys as _sys
 _HELP_ARGS = set(_sys.argv[1:])
-if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
-    _doc = __doc__.strip() if __doc__ else "rhr_p4rky/pdb_validator.py"
-    print(_doc)
-    print()
-    info_line("Examples:")
-    print(_HELP_EXAMPLES)
-    print()
-    _sys.exit(0)
+
+if __name__ == "__main__":
+    if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
+        _doc = __doc__.strip() if __doc__ else "rhr_p4rky/pdb_validator.py"
+        print(_doc)
+        print()
+        print("Examples:")
+        print(_HELP_EXAMPLES)
+        print()
+        _sys.exit(0)
 
 import sys
 import os

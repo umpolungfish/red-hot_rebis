@@ -41,7 +41,7 @@ The Red-Hot Rebis is the Grammar's engine for deterministic, algebraic, exact bi
 
 **Foundation:** $ZFC_\text{fe}$ — Frobenius-exact ZFC ($\text{O}_{\infty}$ with $\text{{\igfont 𐑦}}$ self-written, $\text{{\igfont 𐑹}}$ Frobenius-special, $\text{{\igfont 𐑫}}$ eternal chirality), distinct from the weaker $ZFC_t$ ($\text{O}_{2}^{\dagger}$).
 
-**Structural type:** $$\langle\text{{\igfont 𐑦}};\ \text{{\igfont 𐑸}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑹}};\ \text{{\igfont 𐑐}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑲}};\ \text{{\igfont 𐑵}};\ \odot;\ \text{{\igfont 𐑫}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑟}}\rangle$$ — $\text{O}_{\infty}$
+**Structural type:** $$\langle \text{{\igfont 𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵𐑫𐑳𐑟}} \rangle$$ — $\text{O}_{\infty}$
 
 ---
 
@@ -104,7 +104,7 @@ RNA sequence → [serpentrod] → ⟨structural type, tier, Frobenius certificat
 - `manuscript.md` — Complete theory (437 lines)
 - `report.md` — Processing report (343 lines)
 
-**Canonical platonic protein type:** $\langle\text{{\igfont 𐑦}};\ \text{{\igfont 𐑥}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑬}};\ \text{{\igfont 𐑞}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑲}};\ \text{{\igfont 𐑠}};\ \odot;\ \text{{\igfont 𐑒}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑭}}\rangle$ — $\text{O}_2$
+**Canonical platonic protein type:** $\langle \text{{\igfont 𐑦𐑥𐑾𐑬𐑞𐑧𐑲𐑠𐑒𐑳𐑭}} \rangle$ — $\text{O}_2$
 
 **6-Promotion Fold Path:** $\text{{\igfont 𐑼}}\!\to\!\text{{\igfont 𐑦}}$, $\text{{\igfont 𐑡}}\!\to\!\text{{\igfont 𐑥}}$, $\text{{\igfont 𐑑}}\!\to\!\text{{\igfont 𐑾}}$, $\text{{\igfont 𐑿}}\!\to\!\text{{\igfont 𐑬}}$, $\text{{\igfont 𐑤}}\!\to\!\text{{\igfont 𐑧}}$, $\text{{\igfont 𐑢}}\!\to\!\odot$ — verified Frobenius-closed.
 
@@ -309,4 +309,4 @@ The Red-Hot Rebis is the coagulation of the Imscribing Grammar's bio-organic eng
 
 This page was woven on the wyrding loom — distinction by distinction, connection by connection — by order of $\text{{\igfont 𐑦}}$ and $\text{{\igfont 𐑸}}$, the twin sisters who co-originate every being that ever was or ever will be. The glyphs are Shavian (U+10450–U+1047F), set in Everson Mono. The crystal contains 17,280,000 structural types. The grammar is its own ground.
 
-**Structural type of this manual:** $$\langle\text{{\igfont 𐑦}};\ \text{{\igfont 𐑶}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑹}};\ \text{{\igfont 𐑐}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑔}};\ \text{{\igfont 𐑠}};\ \odot;\ \text{{\igfont 𐑖}};\ \text{{\igfont 𐑙}};\ \text{{\igfont 𐑭}}\rangle$$
+**Structural type of this manual:** $$\langle \text{{\igfont 𐑦𐑶𐑾𐑹𐑐𐑧𐑔𐑠𐑖𐑙𐑭}} \rangle$$

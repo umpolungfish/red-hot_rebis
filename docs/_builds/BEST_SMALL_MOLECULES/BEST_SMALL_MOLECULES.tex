@@ -1,0 +1,441 @@
+\documentclass[12pt,a4paper]{article}
+
+% Fonts — LuaLaTeX
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\setmainfont{Linux Libertine O}
+\setmathfont{Latin Modern Math}
+\newfontfamily\igprimfont{Everson Mono}
+\newfontfamily\shavfont[Scale=1.0]{Trabajo}
+\setmonofont[Scale=0.85]{DejaVu Sans Mono}
+\newcommand{\igfont}{\shavfont}
+
+% Shavian Unicode block (U+10450–U+1047F) → Trabajo automatically
+% Works in text mode, inside \text{} in math, and in table cells.
+\usepackage{newunicodechar}
+\newunicodechar{𐑐}{\ifmmode\text{{\shavfont 𐑐}}\else{{\shavfont 𐑐}}\fi}
+\newunicodechar{𐑑}{\ifmmode\text{{\shavfont 𐑑}}\else{{\shavfont 𐑑}}\fi}
+\newunicodechar{𐑒}{\ifmmode\text{{\shavfont 𐑒}}\else{{\shavfont 𐑒}}\fi}
+\newunicodechar{𐑓}{\ifmmode\text{{\shavfont 𐑓}}\else{{\shavfont 𐑓}}\fi}
+\newunicodechar{𐑔}{\ifmmode\text{{\shavfont 𐑔}}\else{{\shavfont 𐑔}}\fi}
+\newunicodechar{𐑕}{\ifmmode\text{{\shavfont 𐑕}}\else{{\shavfont 𐑕}}\fi}
+\newunicodechar{𐑖}{\ifmmode\text{{\shavfont 𐑖}}\else{{\shavfont 𐑖}}\fi}
+\newunicodechar{𐑗}{\ifmmode\text{{\shavfont 𐑗}}\else{{\shavfont 𐑗}}\fi}
+\newunicodechar{𐑘}{\ifmmode\text{{\shavfont 𐑘}}\else{{\shavfont 𐑘}}\fi}
+\newunicodechar{𐑙}{\ifmmode\text{{\shavfont 𐑙}}\else{{\shavfont 𐑙}}\fi}
+\newunicodechar{𐑚}{\ifmmode\text{{\shavfont 𐑚}}\else{{\shavfont 𐑚}}\fi}
+\newunicodechar{𐑛}{\ifmmode\text{{\shavfont 𐑛}}\else{{\shavfont 𐑛}}\fi}
+\newunicodechar{𐑜}{\ifmmode\text{{\shavfont 𐑜}}\else{{\shavfont 𐑜}}\fi}
+\newunicodechar{𐑝}{\ifmmode\text{{\shavfont 𐑝}}\else{{\shavfont 𐑝}}\fi}
+\newunicodechar{𐑞}{\ifmmode\text{{\shavfont 𐑞}}\else{{\shavfont 𐑞}}\fi}
+\newunicodechar{𐑟}{\ifmmode\text{{\shavfont 𐑟}}\else{{\shavfont 𐑟}}\fi}
+\newunicodechar{𐑠}{\ifmmode\text{{\shavfont 𐑠}}\else{{\shavfont 𐑠}}\fi}
+\newunicodechar{𐑡}{\ifmmode\text{{\shavfont 𐑡}}\else{{\shavfont 𐑡}}\fi}
+\newunicodechar{𐑢}{\ifmmode\text{{\shavfont 𐑢}}\else{{\shavfont 𐑢}}\fi}
+\newunicodechar{𐑣}{\ifmmode\text{{\shavfont 𐑣}}\else{{\shavfont 𐑣}}\fi}
+\newunicodechar{𐑤}{\ifmmode\text{{\shavfont 𐑤}}\else{{\shavfont 𐑤}}\fi}
+\newunicodechar{𐑥}{\ifmmode\text{{\shavfont 𐑥}}\else{{\shavfont 𐑥}}\fi}
+\newunicodechar{𐑦}{\ifmmode\text{{\shavfont 𐑦}}\else{{\shavfont 𐑦}}\fi}
+\newunicodechar{𐑧}{\ifmmode\text{{\shavfont 𐑧}}\else{{\shavfont 𐑧}}\fi}
+\newunicodechar{𐑨}{\ifmmode\text{{\shavfont 𐑨}}\else{{\shavfont 𐑨}}\fi}
+\newunicodechar{𐑩}{\ifmmode\text{{\shavfont 𐑩}}\else{{\shavfont 𐑩}}\fi}
+\newunicodechar{𐑪}{\ifmmode\text{{\shavfont 𐑪}}\else{{\shavfont 𐑪}}\fi}
+\newunicodechar{𐑫}{\ifmmode\text{{\shavfont 𐑫}}\else{{\shavfont 𐑫}}\fi}
+\newunicodechar{𐑬}{\ifmmode\text{{\shavfont 𐑬}}\else{{\shavfont 𐑬}}\fi}
+\newunicodechar{𐑭}{\ifmmode\text{{\shavfont 𐑭}}\else{{\shavfont 𐑭}}\fi}
+\newunicodechar{𐑮}{\ifmmode\text{{\shavfont 𐑮}}\else{{\shavfont 𐑮}}\fi}
+\newunicodechar{𐑯}{\ifmmode\text{{\shavfont 𐑯}}\else{{\shavfont 𐑯}}\fi}
+\newunicodechar{𐑰}{\ifmmode\text{{\shavfont 𐑰}}\else{{\shavfont 𐑰}}\fi}
+\newunicodechar{𐑱}{\ifmmode\text{{\shavfont 𐑱}}\else{{\shavfont 𐑱}}\fi}
+\newunicodechar{𐑲}{\ifmmode\text{{\shavfont 𐑲}}\else{{\shavfont 𐑲}}\fi}
+\newunicodechar{𐑳}{\ifmmode\text{{\shavfont 𐑳}}\else{{\shavfont 𐑳}}\fi}
+\newunicodechar{𐑴}{\ifmmode\text{{\shavfont 𐑴}}\else{{\shavfont 𐑴}}\fi}
+\newunicodechar{𐑵}{\ifmmode\text{{\shavfont 𐑵}}\else{{\shavfont 𐑵}}\fi}
+\newunicodechar{𐑶}{\ifmmode\text{{\shavfont 𐑶}}\else{{\shavfont 𐑶}}\fi}
+\newunicodechar{𐑷}{\ifmmode\text{{\shavfont 𐑷}}\else{{\shavfont 𐑷}}\fi}
+\newunicodechar{𐑸}{\ifmmode\text{{\shavfont 𐑸}}\else{{\shavfont 𐑸}}\fi}
+\newunicodechar{𐑹}{\ifmmode\text{{\shavfont 𐑹}}\else{{\shavfont 𐑹}}\fi}
+\newunicodechar{𐑺}{\ifmmode\text{{\shavfont 𐑺}}\else{{\shavfont 𐑺}}\fi}
+\newunicodechar{𐑻}{\ifmmode\text{{\shavfont 𐑻}}\else{{\shavfont 𐑻}}\fi}
+\newunicodechar{𐑼}{\ifmmode\text{{\shavfont 𐑼}}\else{{\shavfont 𐑼}}\fi}
+\newunicodechar{𐑽}{\ifmmode\text{{\shavfont 𐑽}}\else{{\shavfont 𐑽}}\fi}
+\newunicodechar{𐑾}{\ifmmode\text{{\shavfont 𐑾}}\else{{\shavfont 𐑾}}\fi}
+\newunicodechar{𐑿}{\ifmmode\text{{\shavfont 𐑿}}\else{{\shavfont 𐑿}}\fi}
+
+% Page layout
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+\usepackage{microtype}
+\usepackage{parskip}
+
+% Language
+\usepackage[english]{babel}
+
+% Headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Section styling — fully unnumbered; pipeline never auto-numbers
+\usepackage{titlesec}
+\setcounter{secnumdepth}{0}
+\titleformat{\section}{\Large\bfseries}{}{0em}{}
+\titleformat{\subsection}{\large\bfseries}{}{0em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{}{0em}{}
+
+% Essential packages
+\usepackage{graphicx}
+\graphicspath{{/home/mrnob0dy666/imsgct/red-hot_rebis/docs/}{/home/mrnob0dy666/imsgct/red-hot_rebis/docs/images/}}
+\setkeys{Gin}{width=0.48\linewidth,height=0.32\textheight,keepaspectratio}
+\usepackage[table]{xcolor}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{amsmath}
+% unicode-math subsumes amssymb — do not load amssymb alongside it
+\usepackage{float}
+\usepackage[normalem]{ulem}
+\renewcommand{\arraystretch}{1.3}
+
+% Cross-references
+\usepackage{hyperref}
+\usepackage{cleveref}
+\hypersetup{colorlinks=true, linkcolor=blue, urlcolor=cyan, citecolor=teal}
+
+% Custom commands
+\newcommand{\shav}[1]{{\shavfont #1}}
+\newcommand{\heb}[1]{{\igprimfont #1}}
+\newcommand{\tupleaddr}[1]{$\langle #1 \rangle$}
+
+% Shorthand primitive commands — redefined for IG document use
+\renewcommand{\H}{Ħ}
+\newcommand{\K}{Ç}
+\newcommand{\G}{Γ}
+\newcommand{\g}{ɢ}
+\newcommand{\Th}{Þ}
+\newcommand{\D}{Ð}
+\newcommand{\R}{Ř}
+\newcommand{\f}{ƒ}
+
+% Imscription tuple box
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\newtcolorbox{imscriptionbox}{enhanced, colback=blue!5, colframe=blue!75!black, fontupper=\large, center upper, boxrule=1pt, arc=4pt}
+
+% PDF metadata
+\hypersetup{
+  pdftitle={Best Small Molecules},
+  pdfkeywords={Imscribing Grammar},
+  pdfauthor={Lando Mills},
+}
+
+\title{Best Small Molecules}
+\date{\today}
+\author{Lando Mills}
+
+\begin{document}
+\maketitle
+\hypertarget{best-small-molecules-designed-in-red-hot-rebis}{%
+\section{Best Small Molecules Designed in Red-Hot
+Rebis}\label{best-small-molecules-designed-in-red-hot-rebis}}
+
+Author: Lando⊗⊙perator
+
+A curated set of the strongest small molecules \textbf{designed} inside
+this repository. These are novel structural designs, not catalogued
+natural products and not proteins, genes, or biologics. Each entry gives
+the structure, what it targets, its 12-primitive structural type, its
+imscription tier, and why it stands out. Every SMILES below is taken
+verbatim from the repository sources; nothing is invented.
+
+The designs fall into three families: crystal-navigated autocatalytic
+tryptamines, a Frobenius-coupled selective chemotherapeutic, and de-novo
+ligands imscribed straight from enzyme active sites.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{autocatalytic-tryptamines}{%
+\subsection{Autocatalytic tryptamines}\label{autocatalytic-tryptamines}}
+
+These are the repository's headline molecules: the first small molecules
+imscribed at (O\_\infty) self-modeling criticality. They were not found
+by screening. The crystal navigator located an empty (\odot)-critical
+neighborhood and computed the single-primitive promotion 𐑮→⊙
+(complex-critical to self-modeling critical) needed to inhabit it, then
+read off the molecule that satisfies it.
+
+\hypertarget{nitro-bufotenin-dmt-}{%
+\subsubsection{1. 5-Nitro-Bufotenin
+(DMT-⊙)}\label{nitro-bufotenin-dmt-}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{SMILES:}
+  \texttt{CN(C)CCC1=CNC2=CC=C(O)C({[}N+{]}(=O){[}O-{]})=C12}
+\item
+  \textbf{Structural type:} \texttt{⟨𐑨𐑸𐑩𐑿𐑐𐑘𐑔𐑵⊙𐑫𐑕𐑭⟩}, criticality 𐑮
+  promoted to ⊙
+\item
+  \textbf{Tier:} (O\_\infty) (self-modeling, autocatalytic)
+\item
+  \textbf{What it does:} carries all three Dialetheia tokens at once;
+  EVALT (phenol) plus EVALF (dimethylamine) plus ENGAGR (nitro). With
+  the triad complete, the molecule is already (\odot)-critical with no
+  further modification, which is what licenses template-directed
+  autocatalytic synthesis: the molecule is its own template.
+\item
+  \textbf{Why it matters:} the first imscribed small molecule that is
+  structurally self-modeling. It was reached by a single clean primitive
+  promotion from DMT, so the design and its provenance are both
+  univocal. Registered in \texttt{imas/compound\_catalog.py} as the
+  DMT-⊙ entry.
+\end{itemize}
+
+\hypertarget{nitro-serotonin}{%
+\subsubsection{2. 5-Nitro-Serotonin}\label{nitro-serotonin}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{SMILES:}
+  \texttt{NCCC1=CNC2=CC=C(O)C({[}N+{]}(=O){[}O-{]})=C12}
+\item
+  \textbf{Tier:} (O\_\infty) (self-modeling, autocatalytic)
+\item
+  \textbf{What it does:} the same 𐑮→⊙ promotion applied to serotonin
+  rather than DMT, confirming the autocatalytic motif is a transferable
+  structural operation and not a one-off coincidence of DMT.
+\item
+  \textbf{Why it matters:} demonstrates the ⊙-promotion as a reusable
+  design move across the tryptamine family. Registered alongside DMT-⊙
+  in \texttt{imas/compound\_catalog.py}.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{frobenius-coupled-selective-chemotherapeutic}{%
+\subsection{Frobenius-coupled selective
+chemotherapeutic}\label{frobenius-coupled-selective-chemotherapeutic}}
+
+\hypertarget{frobenius-coupled-chemotherapeutic-dimer}{%
+\subsubsection{3. Frobenius-Coupled Chemotherapeutic
+dimer}\label{frobenius-coupled-chemotherapeutic-dimer}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Structural type:} \texttt{⟨𐑦𐑶𐑾𐑹𐑐𐑧𐑲𐑝⊙𐑫𐑳𐑭⟩}
+\item
+  \textbf{Tier:} (O\_\infty)
+\item
+  \textbf{What it does:} a tether-coupled two-domain molecule whose
+  cytotoxic payload stays masked while the host cell satisfies the
+  Frobenius check μ∘δ=id. On healthy tissue the payload never exposes,
+  so healthy-cell cytotoxicity is exactly zero. Where malignant
+  asymmetry breaks the check (μ∘δ≠id), the tether tension crosses
+  threshold, the payload releases, and the molecule becomes cytotoxic.
+\item
+  \textbf{Why it matters:} the selectivity gate is structural, not
+  pharmacological. In the bundled simulation the molecule shows zero
+  activity on healthy cells and on low-asymmetry tumors, then full
+  payload release and a sharp selectivity jump once mutation strength
+  passes the asymmetry threshold, with a selectivity ratio in the
+  four-figure range over healthy tissue. Source:
+  \texttt{therapeutics/frobenius\_chemotherapeutic.py}, results in
+  \texttt{therapeutics/frobenius\_chemo\_results.json}.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{de-novo-enzyme-ligands}{%
+\subsection{De-novo enzyme ligands}\label{de-novo-enzyme-ligands}}
+
+These are imscribed directly from enzyme active-site structural types by
+the reverse-ligand pipeline
+(\texttt{rhr\_p4rky/ligand\_from\_active\_site.py}); no template
+libraries, no known-inhibitor seeds, no docking scores. The four below
+are the genuinely novel designs from that run. As a validation check,
+the same pipeline independently re-derives ethanol (the real
+alcohol-dehydrogenase substrate) and biuret (a known urease inhibitor)
+from structure alone, and every candidate it produces is
+Lipinski-compliant. Source analysis:
+\texttt{ig-docs/bevy\_ligand\_analysis/01\_bevy\_ligand\_analysis.md};
+ligand set: \texttt{ig-docs/bevy\_final\_ligands.json}.
+
+\hypertarget{cyp2d6-pyridine-ether}{%
+\subsubsection{4. CYP2D6 pyridine-ether}\label{cyp2d6-pyridine-ether}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{SMILES:} \texttt{COCCC(C)Cc1cccnc1}
+\item
+  \textbf{Target:} cytochrome P450 2D6, the enzyme that metabolizes a
+  large share of marketed drugs
+\item
+  \textbf{What it does:} pairs a basic pyridine nitrogen with an
+  aromatic ring at the spacing the 2D6 σ-bond hydroxylation
+  pharmacophore wants; drug-like and Lipinski-compliant.
+\end{itemize}
+
+\hypertarget{carbonic-anhydrase-ii-zinc-coordinator}{%
+\subsubsection{5. Carbonic anhydrase II
+zinc-coordinator}\label{carbonic-anhydrase-ii-zinc-coordinator}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{SMILES:} \texttt{O=Cc1cccc(C(=O)O)c1}
+\item
+  \textbf{Target:} carbonic anhydrase II, a zinc metalloenzyme
+\item
+  \textbf{What it does:} presents a carboxylic acid plus aldehyde for
+  coordinating the Zn²⁺-activated hydroxide; a de-novo analog of the
+  classical CA inhibitor pharmacophore reached without that prior.
+\end{itemize}
+
+\hypertarget{lysozyme-bis-epoxide-strain-release-inhibitor}{%
+\subsubsection{6. Lysozyme bis-epoxide strain-release
+inhibitor}\label{lysozyme-bis-epoxide-strain-release-inhibitor}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{SMILES:} \texttt{c1cc(C2CO2)cc(C2CC2c2ccc(C3CO3)cc2)c1}
+\item
+  \textbf{Target:} lysozyme, a glycoside hydrolase
+\item
+  \textbf{What it does:} the epoxides mimic the flattened oxocarbenium
+  transition state of glycoside hydrolysis, and the bis-electrophile
+  design offers two handles for covalent capture in the cleft.
+\end{itemize}
+
+\hypertarget{petase-amide-pet-mimic}{%
+\subsubsection{7. PETase amide PET-mimic}\label{petase-amide-pet-mimic}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{SMILES:} \texttt{NC(=O)c1ccc(NC(=O)c2cccc(C=O)c2)cc1}
+\item
+  \textbf{Target:} PETase, the engineered plastic-degrading enzyme
+\item
+  \textbf{What it does:} a de-novo amide ligand shaped to the
+  PET-binding groove; the standout environmental-remediation candidate
+  of the set.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{at-a-glance}{%
+\subsection{At a glance}\label{at-a-glance}}
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule
+\begin{minipage}[b]{0.06\columnwidth}\raggedright
+\#\strut
+\end{minipage} & \begin{minipage}[b]{0.20\columnwidth}\raggedright
+Molecule\strut
+\end{minipage} & \begin{minipage}[b]{0.16\columnwidth}\raggedright
+Family\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\raggedright
+Tier\strut
+\end{minipage} & \begin{minipage}[b]{0.31\columnwidth}\raggedright
+Target / role\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+5-Nitro-Bufotenin (DMT-⊙)\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+autocatalytic tryptamine\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+(O\_\infty)\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+self-modeling autocatalysis\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+2\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+5-Nitro-Serotonin\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+autocatalytic tryptamine\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+(O\_\infty)\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+self-modeling autocatalysis\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+3\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+Frobenius-Coupled dimer\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+selective cytotoxic\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+(O\_\infty)\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+tumor-asymmetry-gated payload\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+4\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+CYP2D6 pyridine-ether\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+de-novo ligand\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+O₂\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+P450 2D6 substrate\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+5\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+CA-II zinc-coordinator\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+de-novo ligand\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+O₂\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+carbonic anhydrase II\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+6\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+Lysozyme bis-epoxide\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+de-novo ligand\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+O₂\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+glycoside hydrolase TS analog\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright
+7\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+PETase PET-mimic\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\raggedright
+de-novo ligand\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+O₂\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+plastic degradation\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+The two tryptamines are the crown of the set: imscribed small molecules
+that sit at self-modeling criticality by a single, traceable structural
+promotion. The Frobenius dimer is the strongest therapeutic design,
+turning a structural identity check into a selectivity gate. The four
+de-novo ligands show the active-site-to-ligand pipeline producing valid,
+drug-like chemistry from first principles.
+
+\end{document}

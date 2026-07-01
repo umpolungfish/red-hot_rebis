@@ -43,7 +43,7 @@ Zosimos gives Theosebeia six commands. The six steps promote from the state of F
 
 The un-stilled state is a system caught in causal determinism without self-knowledge. The catalog's nearest representation is **zosimos_draft** (the academic draft system, which encodes the "processions" state):
 
-$$\langle \text{{\igfont 𐑼}};\ \text{{\igfont 𐑡}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑗}};\ \text{{\igfont 𐑱}};\ \text{{\igfont 𐑤}};\ \text{{\igfont 𐑔}};\ \text{{\igfont 𐑝}};\ \text{{\igfont ⊙}};\ \text{{\igfont 𐑓}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑷}} \rangle$$
+$$\langle \text{{\igfont 𐑼𐑡𐑾𐑗𐑱𐑤𐑔𐑝⊙𐑓𐑳𐑷}} \rangle$$
 
 - D=𐑼 (wedge — a point-like surface, no interior topology)
 - T=𐑡 (network — branching, following every causal thread)
@@ -69,7 +69,7 @@ Zosimos' first command is not to add but to **stop**. The branching topology (T=
 The system stops following every causal thread Fate presents and begins forming a closed loop. Zosimos uses the negative formulation ("be not thus distracted") rather than a positive directive ("focus your mind") because closure cannot be built by addition — it requires ceasing the branching first.
 
 The catalog entry **zosimos_alchemy** has T=𐑸, representing this completed promotion:
-$$\langle \text{{\igfont 𐑦}};\ \text{{\igfont 𐑸}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑬}};\ \text{{\igfont 𐑞}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑲}};\ \text{{\igfont 𐑠}};\ \text{{\igfont ⊙}};\ \text{{\igfont 𐑖}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑭}} \rangle$$
+$$\langle \text{{\igfont 𐑦𐑸𐑾𐑬𐑞𐑧𐑲𐑠⊙𐑖𐑳𐑭}} \rangle$$
 
 D=𐑦 (holographic — self-written from the start), T=𐑸 (self-referential closure), R=𐑾 (bidirectional coupling), P=𐑬 (full symmetry), F=𐑞 (thermal — near-equilibrium but not yet quantum), K=𐑧 (slow — near-equilibrium kinetics), G=𐑲 (beth — local range), Γ=𐑠 (sequential — practice unfolds step by step), φ̂=⊙ (critical — self-modeling gate open), H=𐑖 (two-step — temporal reflection), S=𐑳 (n:m — universal scope), Ω=𐑭 (integer winding — topologically protected).
 
@@ -103,7 +103,7 @@ The "Divinity" that comes is the identity operator: μ∘δ=id. What returns is 
 
 Step 5 is about the external face: the alchemical rites decouple the system from parasitic attractors. The catalog's **zosimos_portico** adds two promotions beyond the gnosis:
 
-$$\langle \text{{\igfont 𐑦}};\ \text{{\igfont 𐑸}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑹}};\ \text{{\igfont 𐑐}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑲}};\ \text{{\igfont 𐑵}};\ \text{{\igfont ⊙}};\ \text{{\igfont 𐑫}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑭}} \rangle$$
+$$\langle \text{{\igfont 𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑭}} \rangle$$
 
 Compared to the gnosis: F=𐑱→𐑐 (classical→quantum coherence), Γ=𐑠→𐑵 (sequential→broadcast composition), H=𐑖→𐑫 (two-step→eternal chirality).
 
@@ -180,7 +180,7 @@ Zosimos describes the Counterfeit Daimon (Fragment XXVI.17):
 
 The daimon is a **parasitic attractor**: it occupies the same substrate as the processions but broadcasts a false self-model. Its structure can be derived from the draft entry by promoting Γ (composition) to broadcast mode and H (chirality) to one-step memory:
 
-$$\langle \text{{\igfont 𐑼}};\ \text{{\igfont 𐑡}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑗}};\ \text{{\igfont 𐑱}};\ \text{{\igfont 𐑘}};\ \text{{\igfont 𐑔}};\ \text{{\igfont 𐑵}};\ \text{{\igfont 𐑢}};\ \text{{\igfont 𐑒}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑷}} \rangle$$
+$$\langle \text{{\igfont 𐑼𐑡𐑾𐑗𐑱𐑘𐑔𐑵𐑢𐑒𐑳𐑷}} \rangle$$
 
 Compared to the Processions (draft entry):
 - **K: 𐑤 → 𐑘** (trapped/ordered → trapped/disorder) — the daimon is stuck in a frozen simulation

@@ -2,7 +2,7 @@
 """
 frobenius_chemotherapeutic.py — 𐑹-Frobenius-Coupled Selective Chemotherapeutic.
 
-Structural type: ⟨𐑦𐑶𐑾𐑹𐑐𐑧𐑲𐑝⊙𐑫𐑳𐑭⟩
+Structural type: ⟨𐑦𐑶𐑾𐑹𐑐𐑧𐑲𐑝⊙𐑫𐑳𐑭>
 Ouroboricity: O_∞ (child of the Rebis)
 C-score: predicted 0.63 (Gate 1: ⊙ open, Gate 2: 𐑧 slow kinetics)
 
@@ -234,7 +234,7 @@ class FrobeniusChemoSim:
         results = {
             "simulation": "Frobenius-Coupled Chemotherapeutic",
             "principle": "Selective cytotoxicity via Frobenius-check of μ∘δ=id",
-            "structural_type": "⟨𐑦𐑶𐑾𐑹𐑐𐑧𐑲𐑝⊙𐑫𐑳𐑭⟩",
+            "structural_type": "⟨𐑦𐑶𐑾𐑹𐑐𐑧𐑲𐑝⊙𐑫𐑳𐑭>",
             "drug_conc": self.drug_conc,
             "healthy": {"cytotoxicity": h_cyt, "payload": self.healthy.payload_exposed},
             "cancer": {

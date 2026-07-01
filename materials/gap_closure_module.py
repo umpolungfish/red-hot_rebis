@@ -132,7 +132,7 @@ class Imcription:
         g = lambda e: glyphs.get(e, "?")
         return f"⟨{g(self.D)}{g(self.T)}{g(self.R)}{g(self.P)}{g(self.F)}"
         f"{g(self.K)}{g(self.Gamma)}{g(self.G)}{g(self.Phi)}"
-        f"{g(self.H)}{g(self.S)}{g(self.Omega)}⟩"
+        f"{g(self.H)}{g(self.S)}{g(self.Omega)}>"
 
     def frobenius_closed(self) -> bool:
         """μ∘δ=id holds exactly: P=FROB, Phi=CRIT, Omega=ZWIND."""

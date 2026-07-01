@@ -9,7 +9,7 @@ This engine maintains a growing knowledge base of alchemical terms mapped to
 their modern structural co-types. Given a cryptic phrase, it finds the closest
 modern scientific co-type using structural similarity.
 
-Structural type: ⟨𐑦 𐑸 𐑾 𐑹 𐑐 𐑧 𐑲 𐑵 ⊙ 𐑖 𐑳 𐑭⟩
+Structural type: ⟨𐑦 𐑸 𐑾 𐑹 𐑐 𐑧 𐑲 𐑵 ⊙ 𐑖 𐑳 𐑭>
   Ð=𐑦: Self-written (the decoder learns from each decoding)
   Þ=𐑸: Self-referential (the decoder decodes its own mappings)
   Ř=𐑾: Bidirectional (cryptic ↔ modern is a two-way mapping)

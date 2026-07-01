@@ -1,7 +1,7 @@
 # The Ripley Scroll (Proper Tuples)
 
 ## Structural Type — O₂ Emblematic
-**Tuple:** ⟨𐑨;𐑶;𐑾;𐑬;𐑱;𐑧;𐑔;𐑠;𐑮;𐑫;𐑳;𐑭⟩
+**Tuple:** ⟨𐑨𐑶𐑾𐑬𐑱𐑧𐑔𐑠𐑮𐑫𐑳𐑭⟩
 **Duplicate of:** Liber Juratus (Sworn Book of Honorius)
 
 ## Key Features

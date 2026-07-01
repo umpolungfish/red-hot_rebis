@@ -339,7 +339,7 @@ if __name__ == '__main__':
         info_line(f"  AA:  {site['aa_sequence']}")
         info_line(f"  RNA: {site['rna_sequence']}")
         info_line(f"  Activated: {', '.join(site['activated_primitives'])}")
-        info_line(f"  Site type: ⟨{''.join(site['site_type'].get(p,'?') for p in PNAMES)}⟩")
+        info_line(f"  Site type: ⟨{''.join(site['site_type'].get(p,'?') for p in PNAMES)}>")
         print()
 
     # Assemble standalone BPA degrader (Catalyst D)

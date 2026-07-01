@@ -1,21 +1,63 @@
-"""setup.py — Red-Hot Rebis Integrated Imscribing Grammar Toolchain"""
+"""setup.py — Red-Hot Rebis (delegates to pyproject.toml)
+
+Callable from anywhere via:  pip install -e .  then  rebis.<x> <command>
+
+Usage:
+  pip install -e .                    # Install from anywhere
+  rebis status                        # Package status
+  rebis.materials list                # Materials design tools
+  rebis.ch3mpiler forward <SMILES>    # Forward synthesis
+  rebis.p4ra genetics                 # Genetic code B4 lattice
+  rebis.verify                        # Frobenius closure check
+  python3 -c 'import rebis; rebis.p4ra.Belnap.T'
+"""
 from setuptools import setup, find_packages
 
 setup(
     name="red-hot-rebis",
-    version="1.0.0",
-    description="Integrated Imscribing Grammar toolchain: serpentrod ⊗ ch3mpiler ⊗ pipeline ⊗ gene_imscriber",
+    version="3.0.0",
+    description="Red-Hot Rebis — Integrated Imscribing Grammar toolchain",
     author="Lando ⊗ ⊙perator",
     author_email="mrnob0dy666@devilsdevice",
-    packages=find_packages(),
+    packages=find_packages(include=[
+        "rebis", "rebis.*",
+        "rhr_p4rky", "rhr_p4rky.*",
+        "shared", "shared.*",
+        "ch3mpiler", "ch3mpiler.*",
+        "clink", "clink.*",
+        "materials", "materials.*",
+        "biology", "biology.*",
+        "serpentrod", "serpentrod.*",
+        "imas", "imas.*",
+        "pipeline", "pipeline.*",
+        "cdxml", "cdxml.*",
+        "scripts", "scripts.*",
+        "therapeutics", "therapeutics.*",
+        "unified_demo", "unified_demo.*",
+        "gene_imscriber", "gene_imscriber.*",
+        "imasm_iterator", "imasm_iterator.*",
+        "alchemical_bridge", "alchemical_bridge.*",
+        "Ars_Therapeutica", "Ars_Therapeutica.*",
+    ]),
     include_package_data=True,
     package_data={
-        "shared": ["IG_catalog.json"],
+        "shared": ["*.json"],
+        "*": ["*.json", "*.txt", "*.csv", "*.fasta", "*.pdb"],
     },
     python_requires=">=3.10",
     entry_points={
         "console_scripts": [
-            "rebis=rebis:main",
+            "rebis=rebis.cli:main",
+            "rebis.materials=rebis.materials:main",
+            "rebis.ch3mpiler=rebis.ch3mpiler:main",
+            "rebis.clink=rebis.clink:main",
+            "rebis.p4ra=rebis.p4ra:main",
+            "rebis.biology=rebis.biology:main",
+            "rebis.therapeutics=rebis.therapeutics:main",
+            "rebis.serpentrod=rebis.serpentrod:main",
+            "rebis.pipeline=rebis.pipeline:main",
+            "rebis.gene=rebis.gene:main",
+            "rebis.alchemy=rebis.alchemy:main",
         ],
     },
     install_requires=[

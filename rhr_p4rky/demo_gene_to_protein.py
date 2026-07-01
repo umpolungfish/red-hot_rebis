@@ -10,22 +10,22 @@ Usage:  python -m rhr_p4rky.demo_gene_to_protein
 _HELP_EXAMPLES = """  rebis.py run demo_gene_to_protein"""
 import sys as _sys
 _HELP_ARGS = set(_sys.argv[1:])
-if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
-    _doc = __doc__.strip() if __doc__ else "rhr_p4rky/demo_gene_to_protein.py"
-    print(_doc)
-    print()
-    info_line("Examples:")
-    print(_HELP_EXAMPLES)
-    print()
-    _sys.exit(0)
 
+if __name__ == "__main__":
+    if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
+        _doc = __doc__.strip() if __doc__ else "rhr_p4rky/demo_gene_to_protein.py"
+        print(_doc)
+        print()
+        print("Examples:")
+        print(_HELP_EXAMPLES)
+        print()
+        _sys.exit(0)
 
 import json, sys, os, math
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from rhr_p4rky.gene_to_protein_pipeline import GeneToProteinPipeline
 from shared.rich_output import *
-
 
 BANNER = r"""
 ╔══════════════════════════════════════════════════════════════════╗
@@ -60,7 +60,6 @@ SEQUENCES = {
 
 DIVIDER = "─" * 70
 
-
 def format_stage_table(report: dict) -> str:
     lines = []
     lines.append(f"{'Stage':<25} {'B4':<6} {'Frob':<6} {'Description'}")
@@ -69,7 +68,6 @@ def format_stage_table(report: dict) -> str:
         fm = "✓" if s["frob"] else "✗"
         lines.append(f"{s['name']:<25} {s['b4']:<6} {fm:<6} {s['desc']}")
     return "\n".join(lines)
-
 
 def format_pathway(report: dict) -> str:
     lines = ["Pathway (delta = primitive changes per transition):"]
@@ -81,7 +79,6 @@ def format_pathway(report: dict) -> str:
     lines.append(f"  {'TOTAL Δ':<25} {'':<25}  Δ={report['total_delta']}")
     return "\n".join(lines)
 
-
 def format_secondary(report: dict) -> str:
     if not report.get("secondary"):
         return "  (none predicted)"
@@ -91,7 +88,6 @@ def format_secondary(report: dict) -> str:
         lines.append(f"    {sym}-{e['type']:<8}  [{e['start']:>3}–{e['end']:>3}]  "
                      f"len={e['length']:<3}  conf={e['confidence']:<.3f}  seq={e['sequence'][:30]}")
     return "\n".join(lines)
-
 
 def format_tertiary(report: dict) -> str:
     if not report.get("tertiary"):
@@ -104,7 +100,6 @@ def format_tertiary(report: dict) -> str:
     for c in t.get("top", [])[:5]:
         lines.append(f"    {c['i']:>3} ↔ {c['j']:<3}  {c['type']:<12} conf={c['conf']:.3f}")
     return "\n".join(lines)
-
 
 def format_quaternary(report: dict) -> str:
     q = report["quaternary"]
@@ -119,7 +114,6 @@ def format_quaternary(report: dict) -> str:
         lines.append(f"  Auto-detected (method={method}, conf={conf:.2f})")
     return "\n".join(lines)
 
-
 def format_activations(report: dict) -> str:
     if not report.get("primitive_activations"):
         return "  (none)"
@@ -128,7 +122,6 @@ def format_activations(report: dict) -> str:
         aa_list = ", ".join(sorted(set(data["aa"])))
         lines.append(f"  {prim:<3}: {data['count']}x  ({aa_list})")
     return "\n".join(lines)
-
 
 def run_demo_sequence(name: str, dna: str, desc: str, is_rna: bool = False):
     info_line(f"\n{DIVIDER}")
@@ -175,7 +168,6 @@ def run_demo_sequence(name: str, dna: str, desc: str, is_rna: bool = False):
     print()
     
     return report
-
 
 def main():
     print(BANNER)

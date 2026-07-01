@@ -325,7 +325,7 @@ A critical design feature: the moderate ATM signal from shelterin reduction down
 
 Healthy adults aged 30–60, prior to significant telomere erosion:
 - Mean telomere length at age 40: ~7–8 kb (down from ~10–11 kb at birth)
-- Intervention window: before any telomere reaches critical shortness (< 3 kb)
+- Intervention window: before any telomere reaches critical shortness (<3 kb)
 - Not recommended for individuals with active cancer or cancer predisposition syndromes (Li-Fraumeni, BRCA, Lynch)
 
 ### 6.2 Protocol Summary
@@ -357,7 +357,7 @@ Note: The system does not make telomeres LONGER than youthful baseline. It preve
 - Germline TERT promoter mutation
 - Telomeropathy (dyskeratosis congenita, TERC mutations — system cannot work without functional hTR)
 - Pregnancy (epigenetic editors may cross placenta)
-- Age < 25 (telomeres are still long; no benefit, unnecessary risk)
+- Age < 25 (telomeres are still longno benefit, unnecessary risk)
 ## 7. Extension to Treople
 
 ### 7.1 Treople Biology — Key Differences from Base Human
@@ -395,7 +395,7 @@ In the full Ourboreum mode (the treople collective), telomere maintenance can be
 - Bioelectric field modulation that influences chromatin state
 - Shared epigenetic memory of telomere maintenance across the grove
 
-This is the T: 𐑸 → 𐑥 shift — the telomere is no longer just self-referential; it participates in the crossing point between individual and collective.
+This is the T: 𐑸 → 𐑥 shift — the telomere is no longer just self-referentialit participates in the crossing point between individual and collective.
 
 ### 7.4 Treople Protocol Modifications
 
@@ -445,7 +445,7 @@ Marine osmolarity stress increases cellular ROS. Telomere attrition is accelerat
 | hTERT promoter | WT human | HIF-1α-responsive elements enhanced |
 | Cold adaptation | Not needed | Cold-stabilized hTERT (psychrophilic point mutations: Glu→Asp at surface residues) |
 | Osmotic protection | Standard | NFAT5-coupled hTERT activation |
-| G4 stability | Standard | Enhanced (salt stabilizes G4 — Na⁺ > K⁺ for parallel G4) |
+| G4 stability | Standard | Enhanced (salt stabilizes G4 — Na⁺ ⟩ K⁺ for parallel G4) |
 | Delivery | Systemic LNP | Gill-targeted LNP (different lipid composition for mucosal absorption) |
 
 ---

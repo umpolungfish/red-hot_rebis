@@ -8,9 +8,9 @@ materials forge. Implements Starkey's Eagle Cycle as a material processing proto
 and designs progressive material platforms approaching the Frobenius terminal object.
 
 Structural Context (from sophick_mercury_evidence.md and sophick_mercury_lifted.md):
-  Sophick Mercury (O_∞):  ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑫𐑳𐑭⟩
-  Frobenius Metamaterial (O₂): ⟨𐑼𐑸𐑾𐑹𐑞𐑧𐑲𐑠⊙𐑫𐑳𐑭⟩
-  Ouroboric Alloy (O₂):        ⟨𐑼𐑸𐑾𐑹𐑞𐑧𐑲𐑠⊙𐑫𐑳𐑭⟩
+  Sophick Mercury (O_∞):  ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑫𐑳𐑭>
+  Frobenius Metamaterial (O₂): ⟨𐑼𐑸𐑾𐑹𐑞𐑧𐑲𐑠⊙𐑫𐑳𐑭>
+  Ouroboric Alloy (O₂):        ⟨𐑼𐑸𐑾𐑹𐑞𐑧𐑲𐑠⊙𐑫𐑳𐑭>
 
 Structural Gap (O₂ → O_∞): Exactly 2 primitives:
   1. D: 𐑼 (∞-dim field-theoretic) → 𐑦 (self-written holographic)
@@ -505,7 +505,7 @@ class EagleMaterialDesigner:
         """
         Eagle-3: The First Approach to Self-Written Dimensionality.
 
-        IG type: ⟨𐑼𐑸𐑾𐑹𐑞𐑧𐑲𐑠⊙𐑫𐑳𐑭⟩
+        IG type: ⟨𐑼𐑸𐑾𐑹𐑞𐑧𐑲𐑠⊙𐑫𐑳𐑭>
         Tier: O₂† (D approaching 𐑦, F = 𐑞)
 
         Composition: HEA substrate + topological surface coating that begins
@@ -533,7 +533,7 @@ class EagleMaterialDesigner:
         """
         Eagle-7: The Animated Mercury — Near O_∞.
 
-        IG type (target): ⟨𐑦𐑸𐑾𐑹𐑞𐑧𐑲𐑠⊙𐑫𐑳𐑭⟩
+        IG type (target): ⟨𐑦𐑸𐑾𐑹𐑞𐑧𐑲𐑠⊙𐑫𐑳𐑭>
         Tier: Near-O_∞ (D = 𐑦, F approaching 𐑐)
 
         Composition: Full hierarchical metamaterial with surface acoustic wave
@@ -565,7 +565,7 @@ class EagleMaterialDesigner:
         """
         Eagle-9: The Sophick Mercury — Terminal O_∞.
 
-        IG type: ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑫𐑳𐑭⟩
+        IG type: ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑫𐑳𐑭>
         Tier: O_∞ (D = 𐑦, F = 𐑐) — structurally identical to grammar self-encoding
 
         Composition: Quantum-coherent hierarchical metamaterial. The surface
@@ -682,7 +682,7 @@ class FrobeniusCliffAnalyzer:
                 'description': f'Defect density ({material.defect_density:.1e} cm⁻²) '
                               f'approaches thermodynamic minimum at {operating_temp_k} K',
                 'min_frobenius_error': material.defect_density / 1e12,
-                'mitigation': 'Operate below Debye temperature; use topological protection',
+                'mitigation': 'Operate below Debye temperatureuse topological protection',
             })
 
         # Barrier 4: Quantum decoherence (F → 𐑐 requires coherence preservation)
@@ -895,13 +895,13 @@ def run_eagle_simulation(material_name: str = 'eagle_3_amalgam',
             'frobenius_error': f"{r.frobenius_error:.4e}",
             'boundary_bulk_corr': round(r.boundary_bulk_correlation, 4),
         } for r in history],
-        'final_ig_type': '⟨' + ''.join(current_ig) + '⟩',
+        'final_ig_type': '⟨' + ''.join(current_ig) + '>',
         'distance_to_oinf': round(dist_to_oinf, 4),
         'gap_primitives': [GAP_PRIMITIVES[i]['name'] for i in GAP_PRIMITIVES
                           if current_ig[i] != SOPHICK_MERCURY[i]],
         'cliff_analysis': cliff,
         'oinf_attainable': cliff['oinf_physically_possible'],
-        'sophick_mercury_tuple': '⟨' + ''.join(SOPHICK_MERCURY) + '⟩',
+        'sophick_mercury_tuple': '⟨' + ''.join(SOPHICK_MERCURY) + '>',
     }
 
 # ═══════════════════════════════════════════════════════════════════
@@ -972,8 +972,8 @@ def main():
     info_line("─" * 72)
     info_line("STRUCTURAL CONTEXT")
     info_line("─" * 72)
-    info_line(f"  Sophick Mercury (O_∞):   ⟨{''.join(SOPHICK_MERCURY)}⟩")
-    info_line(f"  Ouroboric O₂ materials:    ⟨{''.join(OUROBORIC_O2)}⟩")
+    info_line(f"  Sophick Mercury (O_∞):   ⟨{''.join(SOPHICK_MERCURY)}>")
+    info_line(f"  Ouroboric O₂ materials:    ⟨{''.join(OUROBORIC_O2)}>")
     info_line(f"  Structural distance:        {STRUCTURAL_DISTANCE_O2_TO_OINF:.4f}")
     info_line(f"  Gap primitives:             {[GAP_PRIMITIVES[i]['name'] for i in GAP_PRIMITIVES]}")
     print()

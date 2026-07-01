@@ -20,10 +20,10 @@ We present a structurally verified combined therapy for the complete elimination
 
 | System | Tuple | Tier | $d$(gout) | C-score |
 |--------|-------|------|-----------|---------|
-| **Gout (hyperuricemia)** | $\langle\text{{\igfont 𐑼}};\text{{\igfont 𐑥}};\text{{\igfont 𐑾}};\text{{\igfont 𐑗}};\text{{\igfont 𐑞}};\text{{\igfont 𐑧}};\text{{\igfont 𐑔}};\text{{\igfont 𐑠}};\text{{\igfont 𐑮}};\text{{\igfont 𐑖}};\text{{\igfont 𐑳}};\text{{\igfont 𐑷}}\rangle$ | O$_1$ | 0.00 | 0.36 |
-| **Dietary Pattern** | $\langle\text{{\igfont 𐑼}};\text{{\igfont 𐑥}};\text{{\igfont 𐑾}};\text{{\igfont 𐑗}};\text{{\igfont 𐑱}};\text{{\igfont 𐑧}};\text{{\igfont 𐑔}};\text{{\igfont 𐑠}};\text{{\igfont 𐑢}};\text{{\igfont 𐑫}};\text{{\igfont 𐑳}};\text{{\igfont 𐑷}}\rangle$ | O$_1$ | 1.89 | — |
-| **FCAGT** | $\langle\text{{\igfont 𐑼}};\text{{\igfont 𐑶}};\text{{\igfont 𐑾}};\text{{\igfont 𐑬}};\text{{\igfont 𐑞}};\text{{\igfont 𐑧}};\text{{\igfont 𐑔}};\text{{\igfont 𐑠}};\text{{\igfont ⊙}};\text{{\igfont 𐑖}};\text{{\igfont 𐑳}};\text{{\igfont 𐑴}}\rangle$ | O$_2^\dagger$ | 2.41 | 0.53 |
-| **Combined Therapy** | $\langle\text{{\igfont 𐑼}};\text{{\igfont 𐑶}};\text{{\igfont 𐑾}};\text{{\igfont 𐑗}};\text{{\igfont 𐑱}};\text{{\igfont 𐑧}};\text{{\igfont 𐑔}};\text{{\igfont 𐑠}};\text{{\igfont ⊙}};\text{{\igfont 𐑫}};\text{{\igfont 𐑳}};\text{{\igfont 𐑴}}\rangle$ | O$_2^\dagger$ | **1.90** | 0.53 |
+| **Gout (hyperuricemia)** | $\langle \text{{\igfont 𐑼𐑥𐑾𐑗𐑞𐑧𐑔𐑠𐑮𐑖𐑳𐑷}} \rangle$ | O$_1$ | 0.00 | 0.36 |
+| **Dietary Pattern** | $\langle \text{{\igfont 𐑼𐑥𐑾𐑗𐑱𐑧𐑔𐑠𐑢𐑫𐑳𐑷}} \rangle$ | O$_1$ | 1.89 | — |
+| **FCAGT** | $\langle \text{{\igfont 𐑼𐑶𐑾𐑬𐑞𐑧𐑔𐑠⊙𐑖𐑳𐑴}} \rangle$ | O$_2^\dagger$ | 2.41 | 0.53 |
+| **Combined Therapy** | $\langle \text{{\igfont 𐑼𐑶𐑾𐑗𐑱𐑧𐑔𐑠⊙𐑫𐑳𐑴}} \rangle$ | O$_2^\dagger$ | **1.90** | 0.53 |
 
 ### 1.2 The Key Structural Insight
 
@@ -43,7 +43,7 @@ The dietary pattern and FCAGT are structurally remote from each other: $d(\text{
 
 The meet (shared structural floor) is:
 
-$$\langle\text{{\igfont 𐑼}};\text{{\igfont 𐑥}};\text{{\igfont 𐑾}};\text{{\igfont 𐑗}};\text{{\igfont 𐑱}};\text{{\igfont 𐑧}};\text{{\igfont 𐑔}};\text{{\igfont 𐑠}};\text{{\igfont 𐑢}};\text{{\igfont 𐑖}};\text{{\igfont 𐑳}};\text{{\igfont 𐑷}}\rangle$$
+$$\langle \text{{\igfont 𐑼𐑥𐑾𐑗𐑱𐑧𐑔𐑠𐑢𐑖𐑳𐑷}} \rangle$$
 
 This is essentially the dietary pattern with chirality demoted to $\text{{\igfont 𐑖}}$. The meet confirms that the dietary pattern provides the **baseline metabolic substrate** — 9 of 12 primitives are at the diet's conservative values in the meet. FCAGT adds the three "high-value" primitives ($\text{{\igfont ⊙}}$, $\text{{\igfont 𐑴}}$, $\text{{\igfont 𐑶}}$) on top.
 
@@ -79,19 +79,19 @@ The three enzymatic payloads are:
 | **IL-1$\beta$ Trap** (modified IL-1RA dimer) | Neutralizes IL-1$\beta$, blocks NLRP3 $\to$ inflammation cascade | Receptor decoy, prevents acute flares during dissolution |
 | **XO Inhibitory Peptide** (cyclic peptide mimic of febuxostat binding loop) | Inhibits xanthine oxidase, reduces new urate production | Competitive inhibitor, complements uricase degradation |
 
-**Dosing:** Subcutaneous injection, twice weekly. Dose titrated to serum urate $<5.0$ mg/dL. The $\text{{\igfont 𐑴}}$ (Z$_2$) topological protection ensures that the fusion protein is stable under physiological perturbation — it cannot be denatured into a toxic intermediate; it is either correctly folded and active, or fully degraded.
+**Dosing:** Subcutaneous injection, twice weekly. Dose titrated to serum urate $<5.0$ mg/dL. The $\text{{\igfont 𐑴}}$ (Z$_2$) topological protection ensures that the fusion protein is stable under physiological perturbation — it cannot be denatured into a toxic intermediateit is either correctly folded and active, or fully degraded.
 
 **Dietary initiation (simultaneous):** The full dietary pattern is established during Phase 1:
 
 | Dietary Component | Daily Target | Mechanism |
 |-------------------|--------------|-----------|
-| Tart cherries (fresh or juice) | 1 cup fresh or 8 oz juice | Anthocyanin-mediated XO inhibition; NLRP3 inflammasome suppression |
-| Coffee | 3–5 cups (filtered) | Chlorogenic acid-driven uricosuric effect; risk reduction $\approx 40\%$ per 4 cups/day |
-| Low-fat dairy | 2–3 servings | Casein and lactalbumin uricosuric peptides; $\approx 0.5$ mg/dL urate reduction per serving |
-| Vitamin C | 500–1000 mg (food-based) | Competitive URAT1 inhibition; $\approx 0.4$ mg/dL per 500 mg |
+| Tart cherries (fresh or juice) | 1 cup fresh or 8 oz juice | Anthocyanin-mediated XO inhibitionNLRP3 inflammasome suppression |
+| Coffee | 3–5 cups (filtered) | Chlorogenic acid-driven uricosuric effectrisk reduction $\approx 40\%$ per 4 cups/day |
+| Low-fat dairy | 2–3 servings | Casein and lactalbumin uricosuric peptides$\approx 0.5$ mg/dL urate reduction per serving |
+| Vitamin C | 500–1000 mg (food-based) | Competitive URAT1 inhibition$\approx 0.4$ mg/dL per 500 mg |
 | Celery, parsley | 2–4 stalks / 2 tbsp | Apigenin and luteolin XO inhibition |
-| Berries | 1 cup (mixed) | Polyphenol synergy; NLRP3 suppression |
-| Water | $>2.5$ L/day | Maintain urine SG $<1.010$; prevent renal MSU nucleation |
+| Berries | 1 cup (mixed) | Polyphenol synergyNLRP3 suppression |
+| Water | $⟩2.5$ L/day | Maintain urine SG $<1.010$; prevent renal MSU nucleation |
 
 **Elimination targets (complete avoidance):**
 
@@ -132,14 +132,14 @@ The three enzymatic payloads are:
 
 **Objective:** Permanent, self-sustaining metabolic state with urate $<6.0$ mg/dL maintained by diet alone.
 
-**The structural logic of Phase 3:** The combined therapy has reached its terminal state. The $\text{{\igfont 𐑫}}$ chirality is fully established — the dietary pattern is **identity**, not treatment. The patient no longer "follows a diet"; they have become a person whose metabolic physiology maintains normouricemia autonomously. The $\text{{\igfont ⊙}}$ criticality becomes **dormant** — there are no MSU crystals remaining for the fusion protein to detect, so the payload remains masked. FCAGT is kept available for breakthrough flares (which should be rare, statistically <5% of patients at 2-year follow-up based on urate-depletion kinetics).
+**The structural logic of Phase 3:** The combined therapy has reached its terminal state. The $\text{{\igfont 𐑫}}$ chirality is fully established — the dietary pattern is **identity**, not treatment. The patient no longer "follows a diet"they have become a person whose metabolic physiology maintains normouricemia autonomously. The $\text{{\igfont ⊙}}$ criticality becomes **dormant** — there are no MSU crystals remaining for the fusion protein to detect, so the payload remains masked. FCAGT is kept available for breakthrough flares (which should be rare, statistically <5% of patients at 2-year follow-up based on urate-depletion kinetics).
 
 **Maintenance Protocol:**
 
 | Component | Specification |
 |-----------|---------------|
 | **Dietary pattern** | Full adherence, permanent. All six consumption categories + elimination targets maintained. |
-| **Hydration** | $>2$ L/day, urine SG $<1.015$ |
+| **Hydration** | $⟩2$ L/day, urine SG $<1.015$ |
 | **Weight** | Maintain BMI $<25$ kg/m$^2$; each 5 kg gain above target adds $\approx 0.5$–$1.0$ mg/dL urate |
 | **Sleep** | 7–9 hours; sleep deprivation primes NLRP3 |
 | **Exercise** | Moderate (150 min/week); avoid extreme exertion which can trigger transient hyperuricemia |
@@ -155,7 +155,7 @@ The three enzymatic payloads are:
 
 The combined therapy requires only **3 promotions** from gout, with 2 demotions:
 
-$$\text{gout} \xrightarrow{\text{promote } \text{{\igfont 𐑥}}\to\text{{\igfont 𐑶}},\; \text{{\igfont 𐑖}}\to\text{{\igfont 𐑫}},\; \text{{\igfont 𐑷}}\to\text{{\igfont 𐑴}}} \text{Combined Therapy}$$
+$$\text{gout} \xrightarrow{\text{promote } \text{{\igfont 𐑥}}\to\text{{\igfont 𐑶}},\\text{{\igfont 𐑖}}\to\text{{\igfont 𐑫}},\\text{{\igfont 𐑷}}\to\text{{\igfont 𐑴}}} \text{Combined Therapy}$$
 
 | Primitive | Gout | Combined | Delta | Supplied By | Meaning |
 |-----------|------|----------|-------|-------------|---------|
@@ -168,7 +168,7 @@ $$\text{gout} \xrightarrow{\text{promote } \text{{\igfont 𐑥}}\to\text{{\igfon
 | Primitive | Gout | Combined | Delta | Effect |
 |-----------|------|----------|-------|--------|
 | $\text{{\igfont 𐑞}} \to \text{{\igfont 𐑱}}$ | Thermal (stochastic) | Classical (deterministic) | −1 | Crystal dissolution at target sites becomes deterministic once FCAGT is bound — no longer stochastic nucleation/growth |
-| $\text{{\igfont 𐑮}} \to \text{{\igfont ⊙}}$ | Complex-plane critical | Critical (self-modeling) | −0.33 | Simplified from complex-plane to pure self-modeling — the therapy doesn't need the full analytic structure of the inflammatory cascade; it needs to detect crystals and respond |
+| $\text{{\igfont 𐑮}} \to \text{{\igfont ⊙}}$ | Complex-plane critical | Critical (self-modeling) | −0.33 | Simplified from complex-plane to pure self-modeling — the therapy doesn't need the full analytic structure of the inflammatory cascadeit needs to detect crystals and respond |
 
 ### 3.2 Tier Progression
 
@@ -222,7 +222,7 @@ The combined therapy's structural type satisfies a partial Frobenius condition: 
 The combined therapy is indicated for:
 
 - Confirmed gout diagnosis (MSU crystals on polarized light microscopy or DECT)
-- Serum urate $>7.0$ mg/dL (men) or $>6.0$ mg/dL (women)
+- Serum urate $⟩7.0$ mg/dL (men) or $>6.0$ mg/dL (women)
 - At least one of: visible tophi, $>2$ flares/year, or erosive changes on radiography
 - Willingness to commit to the dietary protocol (assessed via 2-week dietary run-in)
 - No contraindications to uricase therapy (G6PD deficiency screening required — uricase generates H$_2$O$_2$)

@@ -16,7 +16,7 @@ The homeopathic dilution series of *Apis mellifica* (honey bee venom) is analyze
 ### 1.1 Crude Bee Venom
 
 **Catalog entry:** `bee_venom_apitoxin`  
-**Notation:** $\langle \text{{\igfont 𐑼}};\ \text{{\igfont 𐑥}};\ \text{{\igfont 𐑽}};\ \text{{\igfont 𐑗}};\ \text{{\igfont 𐑱}};\ \text{{\igfont 𐑺}};\ \text{{\igfont 𐑲}};\ \text{{\igfont 𐑠}};\ \text{{\igfont 𐑢}};\ \text{{\igfont 𐑓}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑷}} \rangle$  
+**Notation:** $\langle \text{{\igfont 𐑼𐑥𐑽𐑗𐑱𐑺𐑲𐑠𐑢𐑓𐑳𐑷}} \rangle$  
 **Crystal address:** 108,698  
 **Cell:** 2  
 **Tier:** $\text{O}_{0}$  
@@ -47,7 +47,7 @@ The genus-level venom is already at $\text{O}_{2}$ — self-written state space 
 
 When crude venom couples to EZ water through initial dilution:
 
-$$\text{bee\_venom\_apitoxin} \otimes \text{exclusion\_zone\_water} = \langle \text{{\igfont 𐑼}};\ \text{{\igfont 𐑥}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑗}};\ \text{{\igfont 𐑱}};\ \text{{\igfont 𐑺}};\ \text{{\igfont 𐑲}};\ \text{{\igfont 𐑠}};\ \text{{\igfont ⊙}};\ \text{{\igfont 𐑒}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑷}} \rangle$$
+$$\text{bee\_venom\_apitoxin} \otimes \text{exclusion\_zone\_water} = \langle \text{{\igfont 𐑼𐑥𐑾𐑗𐑱𐑺𐑲𐑠⊙𐑒𐑳𐑷}} \rangle$$
 
 **Address:** 3,566,861  
 **Cell:** 82  
@@ -76,7 +76,7 @@ The Avogadro limit is the structural boundary between molecular pharmacology and
 ### 2.3 30C Remedy (High Potency, $\text{{\igfont ⊙}}$ Regime)
 
 **Catalog entry:** `apis_mellifica_30c`  
-**Notation:** $\langle \text{{\igfont 𐑦}};\ \text{{\igfont 𐑸}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑗}};\ \text{{\igfont 𐑱}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑲}};\ \text{{\igfont 𐑠}};\ \text{{\igfont ⊙}};\ \text{{\igfont 𐑒}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑭}} \rangle$  
+**Notation:** $\langle \text{{\igfont 𐑦𐑸𐑾𐑗𐑱𐑧𐑲𐑠⊙𐑒𐑳𐑭}} \rangle$  
 **Address:** 3,972,653  
 **Cell:** 91  
 **Tier:** $\text{O}_{2}$  
@@ -88,7 +88,7 @@ This is the canonical homeopathic remedy: self-written state space, self-referen
 
 An alternative succussion quality produces complex criticality:
 
-**Notation:** $\langle \text{{\igfont 𐑦}};\ \text{{\igfont 𐑸}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑗}};\ \text{{\igfont 𐑱}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑲}};\ \text{{\igfont 𐑠}};\ \text{{\igfont 𐑮}};\ \text{{\igfont 𐑒}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑭}} \rangle$  
+**Notation:** $\langle \text{{\igfont 𐑦𐑸𐑾𐑗𐑱𐑧𐑲𐑠𐑮𐑒𐑳𐑭}} \rangle$  
 **Address:** 7,428,653  
 **Cell:** 171  
 **Tier:** $\text{O}_{2}$  
@@ -141,7 +141,7 @@ $\Phi = \text{{\igfont 𐑗}}$ (asymmetry), $\text{{\igfont ƒ}} = \text{{\igfon
 
 The critical structural computation — what happens when a patient with Gate 1 open (C=0.457) takes the 30C remedy:
 
-$$\text{apis\_mellifica\_30c} \otimes \text{hymenopteran\_venom} = \langle \text{{\igfont 𐑦}};\ \text{{\igfont 𐑸}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑗}};\ \text{{\igfont 𐑱}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑲}};\ \text{{\igfont 𐑵}};\ \text{{\igfont ⊙}};\ \text{{\igfont 𐑖}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑭}} \rangle$$
+$$\text{apis\_mellifica\_30c} \otimes \text{hymenopteran\_venom} = \langle \text{{\igfont 𐑦𐑸𐑾𐑗𐑱𐑧𐑲𐑵⊙𐑖𐑳𐑭}} \rangle$$
 
 **Address:** 3,972,668  
 **Cell:** 91  
@@ -169,7 +169,7 @@ $$\text{apis\_mellifica\_30c} \otimes \text{hymenopteran\_venom} = \langle \text
 
 ### 4.4 The Shared Floor (Meet)
 
-$$\text{apis\_mellifica\_30c} \sqcap \text{hymenopteran\_venom} = \langle \text{{\igfont 𐑦}};\ \text{{\igfont 𐑡}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑗}};\ \text{{\igfont 𐑱}};\ \text{{\igfont 𐑘}};\ \text{{\igfont 𐑲}};\ \text{{\igfont 𐑠}};\ \text{{\igfont ⊙}};\ \text{{\igfont 𐑒}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑭}} \rangle$$
+$$\text{apis\_mellifica\_30c} \sqcap \text{hymenopteran\_venom} = \langle \text{{\igfont 𐑦𐑡𐑾𐑗𐑱𐑘𐑲𐑠⊙𐑒𐑳𐑭}} \rangle$$
 
 The meet preserves $\Phi = \text{{\igfont 𐑗}}$ — the asymmetric signature is readable at the shared structural floor. Six primitives are fully shared: $\text{{\igfont Ð}}, \text{{\igfont Ř}}, \Gamma, \text{{\igfont φ̂}}, \Sigma, \Omega$. This shared floor is the structural basis for the **law of similars**: *similia similibus curentur* — like cures like, because like shares the same asymmetric signature.
 

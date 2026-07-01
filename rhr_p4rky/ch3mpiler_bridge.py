@@ -22,15 +22,16 @@ Author: Lando ⊗ ⊙perator
 _HELP_EXAMPLES = """  rebis.py run ch3mpiler_bridge"""
 import sys as _sys
 _HELP_ARGS = set(_sys.argv[1:])
-if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
-    _doc = __doc__.strip() if __doc__ else "rhr_p4rky/ch3mpiler_bridge.py"
-    print(_doc)
-    print()
-    info_line("Examples:")
-    print(_HELP_EXAMPLES)
-    print()
-    _sys.exit(0)
 
+if __name__ == "__main__":
+    if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
+        _doc = __doc__.strip() if __doc__ else "rhr_p4rky/ch3mpiler_bridge.py"
+        print(_doc)
+        print()
+        print("Examples:")
+        print(_HELP_EXAMPLES)
+        print()
+        _sys.exit(0)
 
 import sys, os, json, math
 from pathlib import Path
@@ -59,7 +60,6 @@ def _ensure_loaded():
     spec.loader.exec_module(_ch3mpiler_mod)
     _ch3mpiler_cls = _ch3mpiler_mod.Ch3mpiler
 
-
 # ── Public API ────────────────────────────────────────────────────────────────
 
 def Ch3mpiler(*args, **kwargs):
@@ -67,13 +67,11 @@ def Ch3mpiler(*args, **kwargs):
     _ensure_loaded()
     return _ch3mpiler_cls(*args, **kwargs)
 
-
 def analyze(target: str) -> dict:
     """Analyze a target molecule name → structural type + disconnections + analogs."""
     _ensure_loaded()
     ch = _ch3mpiler_cls()
     return ch.analyze(target)
-
 
 def retrosynthesis(target: str, depth: int = 1) -> dict:
     """Recursive retrosynthetic analysis."""
@@ -81,13 +79,11 @@ def retrosynthesis(target: str, depth: int = 1) -> dict:
     ch = _ch3mpiler_cls()
     return ch.retrosynthesis(target, depth=depth)
 
-
 def forward(reagents: list) -> dict:
     """Forward reaction prediction from list of reagent names."""
     _ensure_loaded()
     ch = _ch3mpiler_cls()
     return ch.forward(reagents)
-
 
 def fg_info(name: str) -> dict:
     """Return the structural type of a known functional group."""
@@ -101,7 +97,6 @@ def fg_info(name: str) -> dict:
         }
     return {"name": name, "error": f"Unknown FG: {name}"}
 
-
 def rxn_info(name: str = None) -> dict:
     """Return reaction template info. If name is None, list all."""
     _ensure_loaded()
@@ -112,7 +107,6 @@ def rxn_info(name: str = None) -> dict:
         return {"name": name, "template": rxn_map[name]}
     return {"name": name, "error": f"Unknown RXN: {name}"}
 
-
 def el_info(name: str = None) -> dict:
     """Return element type info. If name is None, list all."""
     _ensure_loaded()
@@ -122,7 +116,6 @@ def el_info(name: str = None) -> dict:
     if name in el_map:
         return {"name": name, "type": el_map[name]}
     return {"name": name, "error": f"Unknown EL: {name}"}
-
 
 # ── CLI entry point ───────────────────────────────────────────────────────────
 def main():

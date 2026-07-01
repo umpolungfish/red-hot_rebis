@@ -7,8 +7,8 @@ algal nuclear DNA to host nucleus maintains functional stolen chloroplasts in gu
 Extension: patterned epidermal chloroplast expression via Turing reaction-diffusion
 (Fibonacci-spiral spotting, activator=synthetic chloroplast TF, inhibitor=WNT).
 
-Base type:  ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩  O_∞  (canonical human)
-Photo type: ⟨𐑦𐑱𐑰𐑹𐑓𐑨𐑲𐑵⊙𐑫𐑳𐑟⟩  O_∞  (photosynthetic variant)
+Base type:  ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟>  O_∞  (canonical human)
+Photo type: ⟨𐑦𐑱𐑰𐑹𐑓𐑨𐑲𐑵⊙𐑫𐑳𐑟>  O_∞  (photosynthetic variant)
 
 Modified primitives vs base human:
   Ħ (Chirality,    pos 2): 𐑸→𐑱  Fibonacci-spiral spotting pattern has preferred handedness
@@ -36,8 +36,8 @@ from shared.rich_output import *
 REBIS_ROOT = Path(__file__).parent.parent.parent.parent.parent.absolute()
 sys.path.insert(0, str(REBIS_ROOT))
 
-PHOTO_TYPE  = "⟨𐑦𐑱𐑰𐑹𐑓𐑨𐑲𐑵⊙𐑫𐑳𐑟⟩"
-HUMAN_TYPE  = "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩"
+PHOTO_TYPE  = "⟨𐑦𐑱𐑰𐑹𐑓𐑨𐑲𐑵⊙𐑫𐑳𐑟>"
+HUMAN_TYPE  = "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟>"
 
 # ── Photosynthetic gene cassette ───────────────────────────────────────────────
 # Genes grouped by functional module. All codon-optimised for Homo sapiens.

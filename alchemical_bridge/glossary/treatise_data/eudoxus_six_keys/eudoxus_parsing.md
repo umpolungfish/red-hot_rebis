@@ -98,7 +98,7 @@ Despite the cyclic character of multiplication, no topological invariant is desc
 
 ## 4. Full Tuple
 
-$$\langle \text{{\igfont 𐑨}};\ \text{{\igfont 𐑥}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑬}};\ \text{{\igfont 𐑱}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑲}};\ \text{{\igfont 𐑠}};\ \text{{\igfont 𐑢}};\ \text{{\igfont 𐑒}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑷}} \rangle$$
+$$\langle \text{{\igfont 𐑨𐑥𐑾𐑬𐑱𐑧𐑲𐑠𐑢𐑒𐑳𐑷}} \rangle$$
 
 ---
 

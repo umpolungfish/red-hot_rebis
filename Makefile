@@ -1,9 +1,36 @@
 # Makefile — Red-Hot Rebis Integration
-# serpentrod ⊗ ch3mpiler ⊗ pipeline ⊗ gene_imscriber
+# rebis.<x> — serpentrod ⊗ ch3mpiler ⊗ pipeline ⊗ gene_imscriber
+# Callable from anywhere after: make install
 
-.PHONY: all test verify status clean
+.PHONY: all test verify status clean install uninstall reinstall editable
 
 all: verify test
+
+# === Installation (anywhere-callable) ===
+
+install:
+	@echo "=== Installing rebis (callable from anywhere) ==="
+	pip install -e .
+	@echo ""
+	@echo "✅ rebis installed. Usage from any directory:"
+	@echo "   rebis status         — Package status"
+	@echo "   rebis verify         — Frobenius closure check"
+	@echo "   rebis run <target>   — Load a subsystem"
+	@echo "   rebis demo <name>    — Run a demo"
+	@echo "   python3 -m rebis status"
+	@echo "   python3 -c 'import rebis; rebis.p4ra.Belnap.T'"
+
+uninstall:
+	@echo "=== Uninstalling rebis ==="
+	pip uninstall -y red-hot-rebis 2>/dev/null || true
+
+reinstall: uninstall install
+
+editable:
+	@echo "=== Installing rebis in editable mode ==="
+	pip install -e .
+	@echo ""
+	@echo "✅ Editable install complete."
 
 # === Verification (Frobenius closure) ===
 
@@ -11,16 +38,14 @@ verify:
 	@echo "=== Verifying all components ==="
 	python -c "from shared.primitives import WEIGHTS, ORDINALS; print('primitives: %d weights, %d ordinal families' % (len(WEIGHTS), len(ORDINALS)))"
 	python -c "import json; c = json.load(open('shared/IG_catalog.json')); print('catalog: %d entries' % len(c))"
-	python -c "from serpentrod.protein_v5 import *; print('serpentrod: OK')"
-	python -c "from ch3mpiler.compiler import *; print('ch3mpiler: OK')"
-	python -c "from pipeline.frob import identity_phase; from pipeline.auto_imscriber import AutoImscriber; print('pipeline: OK')"
-	python -c "from gene_imscriber.engine import *; print('gene_imscriber: OK')"
+	@python -m rebis verify
+	@echo ""
 	@echo "=== All components verified ==="
 
 # === Status ===
 
 status:
-	@python rebis.py status
+	@rebis status
 
 # === Smoke tests ===
 

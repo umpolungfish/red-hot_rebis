@@ -266,7 +266,7 @@ class IGTool:
             # Parse notation
             notation = None
             for line in output.splitlines():
-                if "⟨" in line and "⟩" in line:
+                if "⟨" in line and ">" in line:
                     notation = line.strip()
                     break
             # Parse registered catalog name from "✓ Registered to catalog as '<name>'"

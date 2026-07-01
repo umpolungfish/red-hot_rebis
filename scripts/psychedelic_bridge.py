@@ -297,7 +297,7 @@ def print_access_report():
         oi = len(access["idempotent_terminal"])
         info_line(f"── {cn} ({cv['tier']}) — {cv['description']}")
         tup = (f"⟨{cv['Ð']}{cv['Þ']}{cv['Ř']}{cv['Φ']}{cv['ƒ']}{cv['Ç']}"
-               f"{cv['Γ']}{cv['ɢ']}{cv['φ̂']}{cv['Ħ']}{cv['Σ']}{cv['Ω']}⟩")
+               f"{cv['Γ']}{cv['ɢ']}{cv['φ̂']}{cv['Ħ']}{cv['Σ']}{cv['Ω']}>")
         info_line(f"   {tup}")
         info_line(f"   O_∞: {oi}/{total} ({100*oi/total:.1f}%)  "
 f"Traced: {len(access['traced_monoidal'])}  "

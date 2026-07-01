@@ -28,9 +28,9 @@ The red-hot_rebis pipeline identifies **psilocybin-assisted therapy** as the str
 
 | System | Tuple | Tier | C-Score |
 |--------|-------|------|---------|
-| **MDD** | $\langle \text{{\igfont 𐑛}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑧}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont 𐑢}};\; \text{{\igfont 𐑒}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$ | $\text{O}_{0}$ | 0.0 |
-| **Healthy Brain** | $\langle \text{{\igfont 𐑛}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑧}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont ⊙}};\; \text{{\igfont 𐑖}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$ | $\text{O}_{1}$ | 0.3615 |
-| **Schizophrenia** | $\langle \text{{\igfont 𐑛}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑧}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont 𐑣}};\; \text{{\igfont 𐑒}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$ | $\text{O}_{0}$ | 0.0 |
+| **MDD** | $\langle \text{{\igfont 𐑛𐑥𐑾𐑬𐑞𐑧𐑔𐑠𐑢𐑒𐑳𐑷}} \rangle$ | $\text{O}_{0}$ | 0.0 |
+| **Healthy Brain** | $\langle \text{{\igfont 𐑛𐑥𐑾𐑬𐑞𐑧𐑔𐑠⊙𐑖𐑳𐑷}} \rangle$ | $\text{O}_{1}$ | 0.3615 |
+| **Schizophrenia** | $\langle \text{{\igfont 𐑛𐑥𐑾𐑬𐑞𐑧𐑔𐑠𐑣𐑒𐑳𐑷}} \rangle$ | $\text{O}_{0}$ | 0.0 |
 
 **Key finding:** MDD and schizophrenia are **structural mirror images** on the φ̂ axis. Both are $d = 1.3416$ from health. Both have $\text{{\igfont Ħ}} = \text{{\igfont 𐑒}}$. They differ only in φ̂ direction:
 - MDD: $\text{{\igfont 𐑢}}$ (sub-critical collapse — anhedonia, amotivation, prefrontal hypoactivity)
@@ -51,7 +51,7 @@ From MDD to healthy brain, verified promotions:
 
 Selective serotonin reuptake inhibitors (SSRIs) operate on the serotonin transporter (SERT). The SERT has structural type:
 
-$$\langle \text{{\igfont 𐑨}};\; \text{{\igfont 𐑡}};\; \text{{\igfont 𐑩}};\; \text{{\igfont 𐑗}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑪}};\; \text{{\igfont 𐑚}};\; \text{{\igfont 𐑝}};\; \text{{\igfont 𐑢}};\; \text{{\igfont 𐑒}};\; \text{{\igfont 𐑙}};\; \text{{\igfont 𐑷}} \rangle$$
+$$\langle \text{{\igfont 𐑨𐑡𐑩𐑗𐑞𐑪𐑚𐑝𐑢𐑒𐑙𐑷}} \rangle$$
 
 The tensor $\text{MDD} \otimes \text{SERT}$ preserves both disease primitives unchanged:
 - φ̂: $\text{max}(\text{{\igfont 𐑢}}, \text{{\igfont 𐑢}}) = \text{{\igfont 𐑢}}$ — sub-criticality preserved
@@ -65,7 +65,7 @@ SSRIs cannot structurally correct either disease primitive. This explains the we
 
 ### §2.1 — Structural Type of Psilocybin-Assisted Therapy
 
-$$\langle \text{{\igfont 𐑨}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑪}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont ⊙}};\; \text{{\igfont 𐑖}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$$
+$$\langle \text{{\igfont 𐑨𐑥𐑾𐑬𐑞𐑪𐑔𐑠⊙𐑖𐑳𐑷}} \rangle$$
 
 Psilocybin carries **both corrective primitives**:
 - $\text{{\igfont ⊙}}$: The self-modeling gate is open. 5-HT₂A agonism dissolves the default mode network, enabling radical neuroplasticity. The ego-boundary relaxation is structurally a ⊙ event — the brain models itself anew.
@@ -75,7 +75,7 @@ Tier: $\text{O}_{1}$. C-score: 0.0 (Gate 1 open, Gate 2 closed — the acute sta
 
 ### §2.2 — The Tensor Operation
 
-$$\text{MDD} \otimes \text{Psilocybin} = \langle \text{{\igfont 𐑨}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑪}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont ⊙}};\; \text{{\igfont 𐑖}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$$
+$$\text{MDD} \otimes \text{Psilocybin} = \langle \text{{\igfont 𐑨𐑥𐑾𐑬𐑞𐑪𐑔𐑠⊙𐑖𐑳𐑷}} \rangle$$
 
 **Both disease primitives corrected in a single operation:**
 
@@ -111,12 +111,12 @@ While the psilocybin tensor corrects both primitives, clinical practice benefits
 
 ### §3.2 — NMDA Enhancer: The Ħ Promoter
 
-**Structural type:** $\langle \text{{\igfont 𐑨}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑪}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont 𐑢}};\; \text{{\igfont 𐑖}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$
+**Structural type:** $\langle \text{{\igfont 𐑨𐑥𐑾𐑬𐑞𐑪𐑔𐑠𐑢𐑖𐑳𐑷}} \rangle$
 
 The NMDA receptor is a **coincidence detector**: glutamate binding AND postsynaptic depolarization must coincide. This two-condition gate is structurally a two-step Markov system ($\text{{\igfont Ħ}} = \text{{\igfont 𐑖}}$). The glycine-site PAM enhances this coincidence detection without the excitotoxicity risk of direct agonists.
 
 **tensor(MDD, NMDA_PAM):**
-$$\langle \text{{\igfont 𐑨}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑪}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont 𐑢}};\; \text{{\igfont 𐑖}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$$
+$$\langle \text{{\igfont 𐑨𐑥𐑾𐑬𐑞𐑪𐑔𐑠𐑢𐑖𐑳𐑷}} \rangle$$
 
 Ħ corrected (𐑒→𐑖), φ̂ still at 𐑢. This is the "cognitive improvement without mood improvement" state — structurally, what clinicians observe when D-serine is given as monotherapy.
 
@@ -227,7 +227,7 @@ The structural criterion for treatment success is **tier crossing from $\text{O}
 
 4. **Tier Crossing Predicts Remission:** Patients who cross from $\text{O}_{0}$ to $\text{O}_{1}$ (assessed by C-score) will have sustained remission at 6-month follow-up. Patients who remain $\text{O}_{0}$ will relapse. If $\text{O}_{1}$ patients relapse at the same rate, the tier-crossing criterion is not predictive.
 
-5. **Cross-Domain Isomorphism:** The structural identity $\text{MDD}_{\text{corrected}} \equiv \text{CF}_{\text{corrected}}$ (both become $\langle \text{{\igfont 𐑨}};\; \text{{\igfont 𐑥}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑪}};\; \text{{\igfont 𐑔}};\; \text{{\igfont 𐑠}};\; \text{{\igfont ⊙}};\; \text{{\igfont 𐑖}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$) implies that clinical measures of ⊙ restoration should correlate across psychiatric and genetic diseases. If the fMRI signature of ⊙ in treated MDD does not match the cellular ⊙ signature in Trikafta-treated CF, the cross-domain isomorphism is falsified.
+5. **Cross-Domain Isomorphism:** The structural identity $\text{MDD}_{\text{corrected}} \equiv \text{CF}_{\text{corrected}}$ (both become $\langle \text{{\igfont 𐑨𐑥𐑾𐑬𐑞𐑪𐑔𐑠⊙𐑖𐑳𐑷}} \rangle$) implies that clinical measures of ⊙ restoration should correlate across psychiatric and genetic diseases. If the fMRI signature of ⊙ in treated MDD does not match the cellular ⊙ signature in Trikafta-treated CF, the cross-domain isomorphism is falsified.
 
 ---
 

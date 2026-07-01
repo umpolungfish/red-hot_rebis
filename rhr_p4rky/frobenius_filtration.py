@@ -8,14 +8,16 @@
 _HELP_EXAMPLES = """  rebis.py run frobenius_filtration"""
 import sys as _sys
 _HELP_ARGS = set(_sys.argv[1:])
-if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
-    _doc = __doc__.strip() if __doc__ else "rhr_p4rky/frobenius_filtration.py"
-    print(_doc)
-    print()
-    info_line("Examples:")
-    print(_HELP_EXAMPLES)
-    print()
-    _sys.exit(0)
+
+if __name__ == "__main__":
+    if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
+        _doc = __doc__.strip() if __doc__ else "rhr_p4rky/frobenius_filtration.py"
+        print(_doc)
+        print()
+        print("Examples:")
+        print(_HELP_EXAMPLES)
+        print()
+        _sys.exit(0)
 
 import os as _os
 _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))

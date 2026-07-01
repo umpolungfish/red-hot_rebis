@@ -16,8 +16,8 @@ Treople = Homo sapiens with:
 
 Six primitive deltas from base human — the deepest variant in this series.
 
-Base type:    ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩  O_∞  (canonical human)
-Treople type: ⟨𐑦𐑻𐑽𐑺𐑕𐑤𐑲𐑵⊙𐑫𐑪𐑟⟩  O_∞  (Homo arboreus)
+Base type:    ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟>  O_∞  (canonical human)
+Treople type: ⟨𐑦𐑻𐑽𐑺𐑕𐑤𐑲𐑵⊙𐑫𐑪𐑟>  O_∞  (Homo arboreus)
 
 Modified primitives:
   Ħ (Chirality,      pos 2): 𐑸→𐑻  β-glycosidic cellulose (vs α-glycosidic animal polysaccharides)
@@ -43,9 +43,9 @@ from shared.rich_output import *
 REBIS_ROOT = Path(__file__).parent.parent.parent.parent.parent.absolute()
 sys.path.insert(0, str(REBIS_ROOT))
 
-TREOPLE_TYPE = "⟨𐑦𐑻𐑽𐑺𐑕𐑤𐑲𐑵⊙𐑫𐑪𐑟⟩"
-HUMAN_TYPE   = "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩"
-PHOTO_TYPE   = "⟨𐑦𐑱𐑰𐑹𐑓𐑨𐑲𐑵⊙𐑫𐑳𐑟⟩"
+TREOPLE_TYPE = "⟨𐑦𐑻𐑽𐑺𐑕𐑤𐑲𐑵⊙𐑫𐑪𐑟>"
+HUMAN_TYPE   = "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟>"
+PHOTO_TYPE   = "⟨𐑦𐑱𐑰𐑹𐑓𐑨𐑲𐑵⊙𐑫𐑳𐑟>"
 
 # ── Treople gene cassette ──────────────────────────────────────────────────────
 
