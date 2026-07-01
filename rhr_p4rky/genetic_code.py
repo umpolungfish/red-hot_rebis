@@ -24,14 +24,16 @@ if _REBIS_ROOT not in _sys.path:
     _sys.path.insert(0, _REBIS_ROOT)
 _HELP_EXAMPLES = """  rebis.py run genetic_code"""
 import sys as _sys
-if '--help' in _sys.argv or '-h' in _sys.argv:
-    _doc = __doc__.strip() if __doc__ else "rhr_p4rky/genetic_code.py"
-    print(_doc)
-    print()
-    info_line("Examples:")
-    print(_HELP_EXAMPLES)
-    print()
-    _sys.exit(0)
+
+if __name__ == "__main__":
+    if '--help' in _sys.argv or '-h' in _sys.argv:
+        _doc = __doc__.strip() if __doc__ else "rhr_p4rky/genetic_code.py"
+        print(_doc)
+        print()
+        print("Examples:")
+        print(_HELP_EXAMPLES)
+        print()
+        _sys.exit(0)
 
 from dataclasses import dataclass
 from typing import Dict, List, Tuple, Optional
@@ -46,7 +48,6 @@ from rhr_p4rky.kernel import fsplit, ffuse, engager, frobenius_invariant
 from shared.rich_output import *
 from rhr_p4rky.genetics_b4 import (BelnapCodon, nucleotide_to_belnap, belnap_to_nucleotide,
                           b4_lattice_distance, b4_meet, b4_join, b4_complement)
-
 
 # ── Standard genetic code table ──────────────────────────────────────
 
@@ -77,7 +78,6 @@ STANDARD_CODE: Dict[str, str] = {
     "GGU": "Gly", "GGC": "Gly", "GGA": "Gly", "GGG": "Gly",
 }
 
-
 # ── Build codon catalog ─────────────────────────────────────────────
 
 def _build_codon_catalog() -> Dict[str, BelnapCodon]:
@@ -86,7 +86,6 @@ def _build_codon_catalog() -> Dict[str, BelnapCodon]:
     for sym in STANDARD_CODE:
         catalog[sym] = BelnapCodon.from_symbol(sym)
     return catalog
-
 
 CODON_CATALOG: Dict[str, BelnapCodon] = _build_codon_catalog()
 
@@ -103,14 +102,12 @@ CODON_TO_AA: Dict[BelnapCodon, str] = {}
 for sym, codon in CODON_CATALOG.items():
     CODON_TO_AA[codon] = STANDARD_CODE[sym]
 
-
 def get_codon(symbol: str) -> BelnapCodon:
     """Look up a BelnapCodon by symbol."""
     c = CODON_CATALOG.get(symbol.upper())
     if c is None:
         raise ValueError(f"Unknown codon: {symbol}")
     return c
-
 
 # ── Frobenius Stratum Classification (using kernel invariants) ──────
 
@@ -151,7 +148,6 @@ def verify_frobenius_on_codon(codon: BelnapCodon) -> dict:
         "amino_acid": CODON_TO_AA.get(codon, "?"),
     }
 
-
 def verify_all_codons_frobenius() -> dict:
     """
     Verify Frobenius condition across ALL 64 codons.
@@ -185,7 +181,6 @@ def verify_all_codons_frobenius() -> dict:
         "results": results,
     }
 
-
 # ── The 20 = 8 + 12 Derivation ──────────────────────────────────────
 
 GROUND_LAYER_AAS: List[str] = [
@@ -196,7 +191,6 @@ PROMOTED_AAS: List[str] = [
     "Met", "Trp", "Cys", "Tyr", "Phe", "Ile",
     "His", "Asn", "Gln", "Asp", "Lys", "Glu"
 ]
-
 
 # ── IG Primitive Activation Map ─────────────────────────────────────
 
@@ -237,11 +231,9 @@ PRIMITIVE_RISK: Dict[str, str] = {
     None: "low",       # Ground layer — no primitive activation
 }
 
-
 def get_aa_primitive(aa: str) -> Optional[str]:
     """Return the IG primitive activated by this AA, or None for ground layer."""
     return IG_PRIMITIVE_OF_AA.get(aa, None)
-
 
 # ── Amino Acid Mutation Analysis ────────────────────────────────────
 
@@ -258,7 +250,6 @@ class MutationReport:
     best_paths: List[Tuple[str, str, int]]
     stratum_crossing: bool
     num_codon_options: int
-
 
 def analyze_aa_mutation(orig_aa: str, target_aa: str) -> MutationReport:
     """Analyze structural cost of mutating orig_aa → target_aa.
@@ -335,7 +326,6 @@ def analyze_aa_mutation(orig_aa: str, target_aa: str) -> MutationReport:
         num_codon_options=len(orig_symbols) * len(target_symbols),
     )
 
-
 # ── Box Stratification Theorem (B₄ Lattice) ─────────────────────────
 
 def box_stratification() -> dict:
@@ -387,7 +377,6 @@ def box_stratification() -> dict:
         "boxes": boxes,
     }
 
-
 # ── Stop Codon Analysis (Ω Winding Boundary) ───────────────────────
 
 STOP_CODON_ANALYSIS: Dict[str, str] = {
@@ -402,7 +391,6 @@ STOP_BELNAP_TRIPLES: Dict[str, Tuple[Belnap, Belnap, Belnap]] = {
     "UGA": (Belnap.N, Belnap.B, Belnap.F),
 }
 
-
 def analyze_stop_codons() -> dict:
     """Show stop codons as Ω winding boundary of the Frobenius algebra."""
     results = {}
@@ -415,7 +403,6 @@ def analyze_stop_codons() -> dict:
             "codon": str(codon) if codon else "?",
         }
     return results
-
 
 # ── Crystal Divisibility Verification ──────────────────────────────
 
@@ -437,7 +424,6 @@ def crystal_divisibility() -> dict:
         "factorization": f"{factorization_3}×{factorization_4}×{factorization_5}",
         "factorization_formula": "3³×4²×5⁴",
     }
-
 
 # ── Paraconsistent Kernel Bridge ────────────────────────────────────
 
@@ -471,7 +457,6 @@ def codon_to_kernel_state(codon: BelnapCodon):
         "cycle_count": stepped.cycleCount,
         "frobenius_preserved": stepped.r0 is codon.p1,
     }
-
 
 def run_kernel_on_protein(protein_seq: str, cycles_per_codon: int = 1) -> list:
     """
@@ -509,7 +494,6 @@ def run_kernel_on_protein(protein_seq: str, cycles_per_codon: int = 1) -> list:
         })
     
     return results
-
 
 # ── Complete Frobenius Verification Suite ──────────────────────────
 
@@ -573,7 +557,6 @@ def run_genetic_verification() -> dict:
     
     return results
 
-
 # ── Demo runner ─────────────────────────────────────────────────────
 
 def demo() -> dict:
@@ -636,11 +619,9 @@ f"(remainder {crystal['remainder']})")
     
     return {"verified": verify["all_tests_pass"], "report": verify}
 
-
 # ── Run demo on import ──────────────────────────────────────────
 if __name__ == "__main__":
     demo()
-
 
 __all__ = [
     "BelnapCodon", "CODON_CATALOG", "STANDARD_CODE", "MITOCHONDRIAL_CODE",

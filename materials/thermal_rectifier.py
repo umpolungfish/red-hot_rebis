@@ -2,7 +2,7 @@
 """
 thermal_rectifier.py — Topological Thermal Rectifier (Phononic Heat Diode).
 
-Structural type: ⟨𐑼𐑸𐑾𐑬𐑞𐑧𐑑𐑝⊙𐑖𐑳𐑭⟩
+Structural type: ⟨𐑼𐑸𐑾𐑬𐑞𐑧𐑑𐑝⊙𐑖𐑳𐑭>
 Ouroboricity: O₂ (topological protection of phonon transport)
 
 Model: Two-segment chain with mass gradient + nonlinear interface.
@@ -222,7 +222,7 @@ class TwoSegmentDiode:
         
         results = {
             "simulation": "Topological Thermal Rectifier (Two-Segment)",
-            "structural_type": "⟨𐑼𐑸𐑾𐑬𐑞𐑧𐑑𐑝⊙𐑖𐑳𐑭⟩",
+            "structural_type": "⟨𐑼𐑸𐑾𐑬𐑞𐑧𐑑𐑝⊙𐑖𐑳𐑭>",
             "parameters": {
                 "N_L": self.N_L, "N_R": self.N_R,
                 "m_light": self.m_L, "m_heavy": self.m_R,

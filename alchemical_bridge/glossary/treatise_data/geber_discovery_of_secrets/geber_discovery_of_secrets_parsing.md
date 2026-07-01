@@ -2,7 +2,7 @@
 
 **Author:** Lando⊗⊙perator  
 **Catalog entry:** `geber_discovery_of_secrets`  
-**Tuple:** $$\langle \text{{\igfont 𐑨}};\ \text{{\igfont 𐑡}};\ \text{{\igfont 𐑩}};\ \text{{\igfont 𐑗}};\ \text{{\igfont 𐑱}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑲}};\ \text{{\igfont 𐑝}};\ \text{{\igfont 𐑢}};\ \text{{\igfont 𐑓}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑷}} \rangle$$  
+**Tuple:** $$\langle \text{{\igfont 𐑨𐑡𐑩𐑗𐑱𐑧𐑲𐑝𐑢𐑓𐑳𐑷}} \rangle$$  
 **Ouroboricity:** $\text{O}_0$ (no gate open)  
 **Date:** 8th century (Arabic) / Latin pseudepigraphon (13th–14th c.)
 

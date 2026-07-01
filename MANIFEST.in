@@ -1,0 +1,12 @@
+include README.md
+include USER_GUIDE.md
+include INDEX.md
+include shared/*.json
+include shared/*.csv
+include shared/*.txt
+recursive-include data *
+global-include *.json
+global-include *.csv
+global-include *.txt
+global-include *.fasta
+global-include *.pdb

@@ -128,10 +128,10 @@ C4_1 = BelnapComplex(T, F)      # one
 C4_I = BelnapComplex(F, T)      # imaginary unit
 C4_NEG1 = C4_I * C4_I           # i² computed dynamically
 
-C4_PLUS  = BelnapComplex(T, T)  # |+⟩
-C4_MINUS = BelnapComplex(T, F)  # |−⟩
-C4_ZERO  = BelnapComplex(T, F)  # |0⟩
-C4_ONE   = BelnapComplex(F, T)  # |1⟩
+C4_PLUS  = BelnapComplex(T, T)  # |+>
+C4_MINUS = BelnapComplex(T, F)  # |−>
+C4_ZERO  = BelnapComplex(T, F)  # |0>
+C4_ONE   = BelnapComplex(F, T)  # |1>
 
 # ── Utility Functions ──────────────────────────────────────────────
 
@@ -178,11 +178,11 @@ if __name__ == "__main__":
     print()
     info_line("Born projections:")
     for name, z in [("0", C4_0), ("1", C4_1), ("i", C4_I),
-                    ("|+⟩", C4_PLUS), ("|−⟩", C4_MINUS)]:
+                    ("|+>", C4_PLUS), ("|−>", C4_MINUS)]:
         info_line(f"  P({name}) = {z.born_projection()}")
     print()
     psi_plus = {"0": BelnapComplex(T, F), "1": BelnapComplex(T, F)}
     result = belnap_tensor_product(psi_plus, psi_plus)
-    info_line("|+⟩ ⊗ |+⟩ amplitudes:")
+    info_line("|+> ⊗ |+> amplitudes:")
     for basis, amp in result.items():
-        info_line(f"  |{basis}⟩: {amp}")
+        info_line(f"  |{basis}>: {amp}")

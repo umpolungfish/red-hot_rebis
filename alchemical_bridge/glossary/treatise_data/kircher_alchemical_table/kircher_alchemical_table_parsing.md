@@ -26,7 +26,7 @@ Each category branches into subcategories, which branch further, forming a tree 
 
 ## §2 — Structural Imscription
 
-$$\langle \text{{\igfont 𐑨}};\ \text{{\igfont 𐑰}};\ \text{{\igfont 𐑩}};\ \text{{\igfont 𐑗}};\ \text{{\igfont 𐑱}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑲}};\ \text{{\igfont 𐑜}};\ \text{{\igfont 𐑢}};\ \text{{\igfont 𐑒}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑷}} \rangle$$
+$$\langle \text{{\igfont 𐑨𐑰𐑩𐑗𐑱𐑧𐑲𐑜𐑢𐑒𐑳𐑷}} \rangle$$
 
 | Primitive | Value | Meaning |
 |-----------|-------|---------|

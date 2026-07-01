@@ -6,7 +6,7 @@
 **Structural type:** O₁ — Structured but not topologically protected
 
 ## Tuple
-⟨𐑨; 𐑡; 𐑽; 𐑬; 𐑱; 𐑧; 𐑔; 𐑠; 𐑢; 𐑖; 𐑳; 𐑷⟩
+⟨𐑨𐑡𐑽𐑬𐑱𐑧𐑔𐑠𐑢𐑖𐑳𐑷⟩
 
 ## Structure
 Seven chapters: Definitions → Principles → Matter → Furnace → Operation → Colors → Projection

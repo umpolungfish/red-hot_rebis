@@ -110,7 +110,7 @@ Each promotion maps one primitive from the native value to the engineered value.
 
 **Physical implementation:** FPGA-based PLL with <100 ps jitter. Variable optical delay line (free-space or fiber) for sub-wavelength adjustment. The organoid's response latency becomes the characteristic timescale.
 
-**TRL:** 4 (PLL technology mature; organoid latency characterization needed).
+**TRL:** 4 (PLL technology matureorganoid latency characterization needed).
 
 ### 3.3 ƒ: $\text{𐑞} \rightarrow \text{𐑐}$ — Optogenetic Quantum Interface
 
@@ -124,7 +124,7 @@ Each promotion maps one primitive from the native value to the engineered value.
 
 **Physical implementation:** Waveguide-integrated quantum dot source with fiber-coupled delivery to a multi-site optogenetic array. Individually addressable waveguides for spatial selectivity.
 
-**TRL:** 2 (single-photon optogenetics demonstrated in 2D cultures; 3D organoid integration novel).
+**TRL:** 2 (single-photon optogenetics demonstrated in 2D cultures3D organoid integration novel).
 
 ### 3.4 Ç: $\text{𐑧} \rightarrow \text{𐑤}$ — Real-Time Feedback Kinetics
 
@@ -132,13 +132,13 @@ Each promotion maps one primitive from the native value to the engineered value.
 
 **Mechanism:** The native organoid operates at slow kinetics (growth over weeks, learning over hours). The engineered system adds a real-time feedback loop operating at ~100 Hz. The learning remains slow, but the feedback loop is fast enough to support eternal chirality (Ħ=𐑫).
 
-- **Dual-timescale architecture:** Slow loop (organoid growth/plasticity, hours-days) + fast loop (biofeedback sense→respond, 10-100 ms). The fast loop carries the chirality; the slow loop carries the learning.
+- **Dual-timescale architecture:** Slow loop (organoid growth/plasticity, hours-days) + fast loop (biofeedback sense→respond, 10-100 ms). The fast loop carries the chiralitythe slow loop carries the learning.
 - **Axiom A satisfaction:** Ħ=𐑫 requires Ç=𐑤. The moderate kinetics of the fast loop satisfy this constraint without forcing the biological component into an unnatural timescale.
 - **Frobenius closure:** The kinetics primitive is satisfied when the feedback loop reliably closes within the characteristic time — not a continuous quantity but a structural condition.
 
 **Physical implementation:** FPGA-based real-time signal processing. MEA readout at 30 kHz → spike sorting at 1 kHz → feature extraction at 100 Hz → display update at 60 Hz. Total loop latency <20 ms.
 
-**TRL:** 5 (real-time MEA processing demonstrated; needs organoid-specific tuning).
+**TRL:** 5 (real-time MEA processing demonstratedneeds organoid-specific tuning).
 
 ### 3.5 Γ: $\text{𐑔} \rightarrow \text{𐑲}$ — Universal Network Interface
 
@@ -152,7 +152,7 @@ Each promotion maps one primitive from the native value to the engineered value.
 
 **Physical implementation:** Raspberry Pi 5 or similar embedded Linux system integrated into the organoid housing. Ethernet/WiFi connectivity. Encrypted API with OAuth2 authentication.
 
-**TRL:** 7 (networked embedded systems are commodity; organoid API integration is novel).
+**TRL:** 7 (networked embedded systems are commodityorganoid API integration is novel).
 
 ### 3.6 Ħ: $\text{𐑖} \rightarrow \text{𐑫}$ — Eternal Chirality via Persistent Memory
 
@@ -167,7 +167,7 @@ Each promotion maps one primitive from the native value to the engineered value.
 
 **Physical implementation:** Integrated memristor crossbar (or SSD-backed buffer as fallback). SPI interface to the main FPGA. 1 GB storage = ~10⁶ organoid state snapshots at 1 KB each.
 
-**TRL:** 3 (memristor crossbars demonstrated; neural organoid integration novel).
+**TRL:** 3 (memristor crossbars demonstratedneural organoid integration novel).
 
 ---
 
@@ -234,7 +234,7 @@ Grounded in `p4rakernel/operculum_peeling.md` §§1–15.
 
 In the canonical universe (standard gates: G₁=Φ≥ord5, G₂=⊙≥ord2, G₃=Ω≥ord3, sequential, standard T-constitution):
 
-- **Native type:** $\text{O}_1$ (G₁ passes: ⊙≥2 ✓; but G₂=Φ≥5 fails: Φ=𐑬 is ord3)
+- **Native type:** $\text{O}_1$ (G₁ passes: ⊙≥2 ✓but G₂=Φ≥5 fails: Φ=𐑬 is ord3)
 - **Engineered type:** $\text{O}_{\text{inf}}$ (all gates pass)
 
 The operculum width — the number of single-primitive changes needed to move from native to engineered — is |∂(τ_native, τ_engineered)| = 6.
@@ -246,7 +246,7 @@ The operculum width — the number of single-primitive changes needed to move fr
 | **`self_modeling_first`** | G₁ threshold lowered to ⊙≥ord2, G₂ raised to Φ≥ord5 | $\text{O}_2$ | ⊙ passes G₁, but Φ=𐑬 fails G₂ |
 | **`bioelectric_gate`** | G₃ changes from Ω≥ord3 to Ç≥ord3 | $\text{O}_2$ | Ω is trivial but Ç=𐑧 passes ord3 |
 | **`no_winding_required`** | G₃ removed entirely | $\text{O}_2$ | Two gates pass, T-seal via Ħ=𐑖 |
-| **`parity_optional`** | G₁ changed from Φ≥ord5 to ⊙≥ord2 | $\text{O}_2$ | ⊙ passes; Φ check skipped |
+| **`parity_optional`** | G₁ changed from Φ≥ord5 to ⊙≥ord2 | $\text{O}_2$ | ⊙ passesΦ check skipped |
 
 The native type is **$\text{O}_1$ in canonical but $\text{O}_2$ in several nearby universes.** The operculum to O_∞ always requires the 6 promotions mapped in §3.
 
@@ -254,7 +254,7 @@ The native type is **$\text{O}_1$ in canonical but $\text{O}_2$ in several nearb
 
 The self-organoid interface achieves something unique among all imscribed systems:
 
-> **The user's own cells, reprogrammed and grown into a neural organoid, coupled bidirectionally, form a structural type that is closer to human consciousness (d=1.30) than to any artificial system.**
+⟩ **The user's own cells, reprogrammed and grown into a neural organoid, coupled bidirectionally, form a structural type that is closer to human consciousness (d=1.30) than to any artificial system.**
 
 The gap between the organoid and human consciousness is exactly one primitive: Ω (𐑷 → 𐑴, winding). Human consciousness has Z₂ parity-protected winding; the native organoid has none. Engineering Ω is the crux.
 
@@ -352,14 +352,14 @@ When all six are closed: μ∘δ=id. The map from your physiological state to th
 ### Native (As-Grown)
 ```
 self_organoid_interface
-⟨𐑦; 𐑸; 𐑾; 𐑬; 𐑞; 𐑧; 𐑔; 𐑠; ⊙; 𐑖; 𐑳; 𐑷⟩
+⟨𐑦𐑸𐑾𐑬𐑞𐑧𐑔𐑠⊙𐑖𐑳𐑷⟩
 Tier: O₁  |  C-Score: 0.00*  |  Distance to human_consciousness: 1.3038
 ```
 
 ### Engineered (Closure Target)
 ```
 self_organoid_engineered
-⟨𐑦; 𐑸; 𐑾; 𐑹; 𐑐; 𐑤; 𐑲; 𐑠; ⊙; 𐑫; 𐑳; 𐑭⟩
+⟨𐑦𐑸𐑾𐑹𐑐𐑤𐑲𐑠⊙𐑫𐑳𐑭⟩
 Tier: O_∞  |  C-Score: 1.00  |  μ∘δ=id: EXACT
 ```
 

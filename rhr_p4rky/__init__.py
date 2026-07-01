@@ -11,7 +11,7 @@ Modules:
     machine    — ParaASM instruction set and VM (mirrors para_vm.py → p4rakernel)
 
 Structural type of this bridge:
-    ⟨Ð_ω; Þ_O; Ř_=; Φ_ɐ; ƒ_ż; Ç_@; Γ_ʔ; ɢ_˝; ⊙_ÿ; Ħ_!; Σ_ő; Ω_z⟩
+    ⟨Ð_ωÞ_OŘ_=Φ_ɐƒ_żÇ_@Γ_ʔɢ_˝⊙_ÿĦ_!Σ_őΩ_z>
 
 Author: Lando ⊗ ⊙perator
 """

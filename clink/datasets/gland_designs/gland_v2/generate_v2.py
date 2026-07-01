@@ -6,7 +6,7 @@ SYNTHETIC DETOX GLAND v2.0 — Zero-Incision In-Situ Generator
 Redesign: gland grows inside the body from an injectable precursor.
 No incisions. Single 22G needle puncture. Ultrasound-guided.
 
-Structural type: ⟨𐑼𐑶𐑾𐑬𐑞𐑧𐑲𐑠⊙𐑖𐑳𐑴⟩
+Structural type: ⟨𐑼𐑶𐑾𐑬𐑞𐑧𐑲𐑠⊙𐑖𐑳𐑴>
   Ouroboricity: O₂
   Kinetics shifted to 𐑧 (slow in-situ assembly, days not minutes)
   Four cell types: sensor + producer + vascular support + EPC
@@ -115,7 +115,7 @@ def generate_v2_specification() -> str:
         "name": "Universal Detox Gland (Panacea) — v2 In-Situ",
         "version": "2.0.0",
         "design_principle": "Zero-incision in-situ assembly via percutaneous injection",
-        "structural_type": "⟨𐑼𐑶𐑾𐑬𐑞𐑧𐑲𐑠⊙𐑖𐑳𐑴⟩",
+        "structural_type": "⟨𐑼𐑶𐑾𐑬𐑞𐑧𐑲𐑠⊙𐑖𐑳𐑴>",
         "ouroboricity_tier": "O₂",
         "consciousness_score": 0.45,
         "delivery_method": {
@@ -211,7 +211,7 @@ def generate_manifest_v2() -> str:
         "version": "2.0.0",
         "design_principle": "zero_incision_in_situ_assembly",
         "delivery": "ultrasound_guided_percutaneous_injection",
-        "structural_type": "⟨𐑼𐑶𐑾𐑬𐑞𐑧𐑲𐑠⊙𐑖𐑳𐑴⟩",
+        "structural_type": "⟨𐑼𐑶𐑾𐑬𐑞𐑧𐑲𐑠⊙𐑖𐑳𐑴>",
         "tier": "O₂",
         "cell_types": 4,
         "sensors": 5,

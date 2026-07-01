@@ -2,7 +2,7 @@
 """
 critical_metamaterial.py — Self-Critical Metamaterial Sensor (fixed).
 
-Structural type: ⟨𐑦𐑸𐑾𐑬𐑞𐑧𐑲𐑝⊙𐑖𐑳𐑭⟩
+Structural type: ⟨𐑦𐑸𐑾𐑬𐑞𐑧𐑲𐑝⊙𐑖𐑳𐑭>
 Ouroboricity: O₂ (criticality-engineered metamaterial)
 
 Core principle:

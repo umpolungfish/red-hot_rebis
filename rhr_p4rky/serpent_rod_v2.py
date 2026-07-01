@@ -47,14 +47,16 @@ except ImportError:
     )
 
 import sys as _sys
-if '--help' in _sys.argv or '-h' in _sys.argv:
-    print(__doc__.strip())
-    print()
-    info_line("Examples:")
-    info_line("  rebis.py run serpent_rod_v2")
-    info_line("  python3 -m rhr_p4rky.serpent_rod_v2 --help")
-    print()
-    _sys.exit(0)
+
+if __name__ == "__main__":
+    if '--help' in _sys.argv or '-h' in _sys.argv:
+        print(__doc__.strip())
+        print()
+        print("Examples:")
+        print("  rebis.py run serpent_rod_v2")
+        print("  python3 -m rhr_p4rky.serpent_rod_v2 --help")
+        print()
+        _sys.exit(0)
 
 import math
 import json
@@ -97,7 +99,6 @@ ANGLE_N_CA_C = math.radians(111.0)
 ANGLE_CA_C_N = math.radians(116.2)
 ANGLE_C_N_CA = math.radians(121.7)
 
-
 def build_frame(z_dir: Tuple[float,float,float]) -> Tuple[Tuple[float,float,float], ...]:
     """Build orthonormal frame (x, y, z) from z-direction."""
     z_len = math.sqrt(z_dir[0]**2 + z_dir[1]**2 + z_dir[2]**2)
@@ -115,7 +116,6 @@ def build_frame(z_dir: Tuple[float,float,float]) -> Tuple[Tuple[float,float,floa
     y = (z[1]*x[2]-z[2]*x[1], z[2]*x[0]-z[0]*x[2], z[0]*x[1]-z[1]*x[0])
     return x, y, z
 
-
 def place_atom(prev, prev_prev, bond_len, bond_angle, dihedral):
     """Internal→Cartesian: place atom bonded to prev using bond angle and dihedral."""
     v1 = (prev[0]-prev_prev[0], prev[1]-prev_prev[1], prev[2]-prev_prev[2])
@@ -131,18 +131,15 @@ def place_atom(prev, prev_prev, bond_len, bond_angle, dihedral):
             prev[1]+local[0]*x[1]+local[1]*y[1]+local[2]*z[1],
             prev[2]+local[0]*x[2]+local[1]*y[2]+local[2]*z[2])
 
-
 @dataclass
 class BackboneAtom:
     n: Tuple[float,float,float]; ca: Tuple[float,float,float]
     c: Tuple[float,float,float]; o: Tuple[float,float,float]
 
-
 @dataclass
 class BackboneModel:
     residues: List[BackboneAtom]; phi_psi: List[Tuple[float,float]]
     sequence: str; secondary_structure: List[str]
-
 
 def build_backbone(phi_psi: List[Tuple[float,float]], ss_types: List[str]) -> BackboneModel:
     """Build 3D backbone from φ/ψ using corrected internal→Cartesian."""
@@ -207,7 +204,6 @@ def predict_contacts_from_geometry(model: BackboneModel, ca_dm: List[List[float]
     contacts.sort(key=lambda c: -c.confidence)
     return contacts
 
-
 # ═══════════════════════════════════════════════════════════════════
 # 4. COARSE-GRAINED ENERGY FUNCTION
 # ═══════════════════════════════════════════════════════════════════
@@ -263,7 +259,6 @@ def compute_energy(model, aa_list, contacts):
     en["total"] = en["LJ"]+en["HB"]+en["elec"]
     return {k: round(v,4) for k,v in en.items()}
 
-
 # ═══════════════════════════════════════════════════════════════════
 # 5. PROPER 12-SET ACTIVATION TRACKING
 # ═══════════════════════════════════════════════════════════════════
@@ -307,7 +302,6 @@ class Gen2Result:
     rmsd_to_native: Optional[float] = None
     precision: float = 0.0; recall: float = 0.0; f1: float = 0.0
     n_true_pos: int = 0; n_false_pos: int = 0; n_false_neg: int = 0
-
 
 class SerpentRodV2:
     """Serpent-Rod Gen2 — 3D backbone from RNA via B₄→Ramachandran."""
@@ -445,7 +439,6 @@ def validate_against_pdb(pdb_path, rna_sequence=None, name="pdb_val"):
         "precision":round(prec,4),"recall":round(rec,4),"f1":round(f1,4),
         "energy":result.energy,"activation":result.activation_count,
         "frobenius":result.frobenius_verified}
-
 
 def run_pdb_validation_suite(output="pdb_v2_validation.json", pdb_dir="pdb"):
     targets = ["1VII","1UBQ","1ZDD","1L2Y"]

@@ -366,7 +366,7 @@ Both are structurally open because boundaries cannot be closed — a closed boun
 
 For any system claiming μ∘δ=id:
 
-1. **Define the maps:** μ: system state → measurement; δ: measurement → reconstructed state
+1. **Define the maps:** μ: system state → measurementδ: measurement → reconstructed state
 2. **Establish the metric:** ||δ(μ(s)) − s|| ≤ ε for all s in state space
 3. **Verify over cycles:** After N cycles, accumulated error ≤ Nε (linear) or constant (bounded)
 4. **Frobenius condition:** ε = 0 exactly (not approximately) — or ε bounded by fundamental limit
@@ -386,7 +386,7 @@ For any system claiming μ∘δ=id:
 | Component | Specification | TRL |
 |-----------|--------------|-----|
 | NV diamond nanopillars | 50 nm ∅, 200 nm height, 10⁴/mm², single NV per pillar | 4 |
-| SPAD array | 16-channel, 25 ps timing, quantum efficiency > 40% at 460 nm | 5 |
+| SPAD array | 16-channel, 25 ps timing, quantum efficiency ⟩ 40% at 460 nm | 5 |
 | Two-photon laser | 740 nm, 80 MHz, 100 fs, < 1 W average power | 5 |
 | PLL nutrient pump | 14-channel, 1 kHz master clock, phase resolution 1° | 5 |
 | Microdialysate LC-MS | 30 s duty cycle, 200 metabolites, LOD < 1 nM | 4 |

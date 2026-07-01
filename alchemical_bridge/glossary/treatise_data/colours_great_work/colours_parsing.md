@@ -94,7 +94,7 @@ No topological invariant. No winding number, no parity protection, no non-Abelia
 
 ## 4. Full Tuple
 
-$$\langle \text{{\igfont 𐑨}};\ \text{{\igfont 𐑡}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑗}};\ \text{{\igfont 𐑱}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑲}};\ \text{{\igfont 𐑠}};\ \text{{\igfont 𐑢}};\ \text{{\igfont 𐑒}};\ \text{{\igfont 𐑙}};\ \text{{\igfont 𐑷}} \rangle$$
+$$\langle \text{{\igfont 𐑨𐑡𐑾𐑗𐑱𐑧𐑲𐑠𐑢𐑒𐑙𐑷}} \rangle$$
 
 ---
 

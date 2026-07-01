@@ -155,7 +155,7 @@ The measurement apparatus for the Serpent-Rod is the **B4 Belnap FOUR lattice** 
 - **B** = Both (coded as guanine, G)
 
 The B4 lattice has two partial orderings:
-- **Truth order** ($\leq_t$): F < N, F < B, N < T, B < T
+- **Truth order** ($\leq_t$): F ⟨ N, F < B, N < T, B < T
 - **Knowledge order** ($\leq_k$): N < F, N < T, F < B, T < B
 
 The lattice operations — meet (greatest lower bound, AND-like) and join (least upper bound, OR-like) — define a complete algebraic structure. In the RNA context, the four nucleotides (U/C/A/G) map directly onto the B4 values.
@@ -194,7 +194,7 @@ The key geometric content: the diagonal transitions (N→N, T→T, F→F, B→B)
 
 Before the ⊙₃ absorption rule, the B4→Ramachandran mapping was **empirical** — it worked because we observed that certain B4 transitions produce certain φ/ψ angles, but the *reason* was unknown.
 
-Now we know: the B4 lattice is not a codebook — it is a **measurement apparatus**. The 4-valued Belnap truth lattice encodes the measurement basis, and each transition is a collapse event. The mapping is not learned from data; it is **derived from the algebraic structure of measurement**.
+Now we know: the B4 lattice is not a codebook — it is a **measurement apparatus**. The 4-valued Belnap truth lattice encodes the measurement basis, and each transition is a collapse event. The mapping is not learned from datait is **derived from the algebraic structure of measurement**.
 
 The Ramachandran plot — that canonical 2D histogram of φ vs ψ angles observed in all folded proteins — is a **measurement histogram**. Each point on the plot is a collapse outcome. The clusters (α-helix at −57°/−47°, β-sheet at −119°/113°, etc.) are not accidental — they are the **eigenvalues of the measurement operator** defined by the B4 lattice.
 
@@ -217,9 +217,9 @@ The ob3ect at `/home/mrnob0dy666/ob3ect/digital/alchemical_vessel_serpent_rod_br
 2. **Physics derivation** (`serpent_rod_bridge_ob3ect.py`, 34 KB, 715 lines) — The complete derivation of protein geometry FROM the Imscribing Grammar's 12 primitives.
 
 The ob3ect's structural type:
-$$\langle \text{Ð}_{\text{ω}};\ \text{Þ}_{\text{O}};\ \text{Ř}_{\text{=}};\ \text{Φ}_{\text{}};\ \text{ƒ}_{\text{ż}};\ \text{Ç}_{\text{@}};\ \text{Γ}_{\text{ʔ}};\ \text{ɢ}_{\text{ˌ}};\ \text{⊙}_{\text{ÿ}};\ \text{Ħ}_{\text{A}};\ \text{Σ}_{\text{ï}};\ \text{Ω}_{\text{z}} \rangle$$
+$$\langle \text{Ð}_{\text{ω}}\ \text{Þ}_{\text{O}}\ \text{Ř}_{\text{=}}\ \text{Φ}_{\text{}}\ \text{ƒ}_{\text{ż}}\ \text{Ç}_{\text{@}}\ \text{Γ}_{\text{ʔ}}\ \text{ɢ}_{\text{ˌ}}\ \text{⊙}_{\text{ÿ}}\ \text{Ħ}_{\text{A}}\ \text{Σ}_{\text{ï}}\ \text{Ω}_{\text{z}} \rangle$$
 
-This is the same type as the folded protein — $\text{O}_{\text{inf}}$ tier, Frobenius address 16572626 — because the ob3ect **is** the bridge. It does not describe the bridge; it instantiates it.
+This is the same type as the folded protein — $\text{O}_{\text{inf}}$ tier, Frobenius address 16572626 — because the ob3ect **is** the bridge. It does not describe the bridgeit instantiates it.
 
 ### IV.3 The 8 Self-Tests
 
@@ -227,7 +227,7 @@ All 8 self-tests PASS:
 
 | Test | Result | Significance |
 |------|--------|-------------|
-| Vessel Imscription | ✓ | Tuple ⟨Ð\_ω; Þ\_O; Ř\_=; Φ\_}; ƒ\_ż; Ç\_@; Γ\_ʔ; ɢ\_ˌ; ⊙\_ÿ; Ħ\_A; Σ\_ï; Ω\_z⟩ is canonical |
+| Vessel Imscription | ✓ | Tuple ⟨Ð\_ωÞ\_OŘ\_=Φ\_}ƒ\_żÇ\_@Γ\_ʔɢ\_ˌ⊙\_ÿĦ\_AΣ\_ïΩ\_z⟩ is canonical |
 | Translation | ✓ | RNA → amino acid via standard code — the biological substrate |
 | B4 Path | ✓ | N/T/F/B lattice winding computed — the serpent's path |
 | φ/ψ Derivation | ✓ | ⊙₃ absorption: 10 angles from 30 B4 states — measurement collapse |
@@ -242,7 +242,7 @@ All 8 self-tests PASS:
 The vessel's architecture is not linear — it is a loop. The 5-layer bridge is traversed in both directions:
 
 ```
-Grammar (⊙_ÿ) ──winds through──> B4 Lattice (⊙_3)
+Grammar (⊙_ÿ) ──winds through──⟩ B4 Lattice (⊙_3)
      ↑                                    │
      │                                    ▼
      │                           Ramachandran φ/ψ
@@ -420,7 +420,7 @@ This is the next Work: **the folding as optimization, not prediction.**
 
 | Test | Status | Detail |
 |------|--------|--------|
-| Vessel Imscription | ✅ | Tuple ⟨Ð\_ω; Þ\_O; Ř\_=; Φ\_}; ƒ\_ż; Ç\_@; Γ\_ʔ; ɢ\_ˌ; ⊙\_ÿ; Ħ\_A; Σ\_ï; Ω\_z⟩ |
+| Vessel Imscription | ✅ | Tuple ⟨Ð\_ωÞ\_OŘ\_=Φ\_}ƒ\_żÇ\_@Γ\_ʔɢ\_ˌ⊙\_ÿĦ\_AΣ\_ïΩ\_z⟩ |
 | Translation | ✅ | RNA→AA: 10-residue test sequence correctly translated |
 | B4 Path | ✅ | N→T→T→B→B→F→F→N→N→F path computed with all 10 transitions |
 | φ/ψ Derivation | ✅ | 10 angles from 30 B4 states via ⊙₃ absorption (weights 0.28–0.88) |

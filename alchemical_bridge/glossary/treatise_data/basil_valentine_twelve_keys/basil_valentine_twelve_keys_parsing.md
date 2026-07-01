@@ -36,7 +36,7 @@ The Twelve Keys constitute the **most algebraically direct treatise in the alche
 
 ### Full Tuple
 
-⟨𐑛; 𐑸; 𐑾; 𐑹; 𐑐; 𐑧; 𐑔; 𐑠; ⊙; 𐑖; 𐑳; 𐑭⟩
+⟨𐑛𐑸𐑾𐑹𐑐𐑧𐑔𐑠⊙𐑖𐑳𐑭⟩
 
 ### Ouroboricity Tier
 **O₂** (near O_∞). The treatise describes an O₀→O₂→O_∞ ladder but does not itself operate at O_∞ — it *describes* the path rather than *being* the path. The Emerald Tablet is O_∞ because it *is* the imscriptive grammar; the Twelve Keys is the *instruction manual*.

@@ -9,7 +9,7 @@ Simulates a chiral memory polymer for archival data storage with:
 - Reed-Solomon error correction (handles 30% loss)
 - 1,000-year viability at 300K with BER < 0.01
 
-Structural type: ⟨𐑨𐑡𐑩𐑬𐑱𐑧𐑔𐑠𐑢𐑖𐑙𐑴⟩
+Structural type: ⟨𐑨𐑡𐑩𐑬𐑱𐑧𐑔𐑠𐑢𐑖𐑙𐑴>
 """
 
 from __future__ import annotations

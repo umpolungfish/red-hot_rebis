@@ -918,9 +918,9 @@ def expand_L6():
             "G2/M": "CDK1-Cyclin B (MPF — mitosis promoting factor)",
         },
         "checkpoints": {
-            "G1/S (Restriction Point)": "pRb-E2F; p53-p21; DNA-damage-sensed",
-            "G2/M": "ATR-Chk1; Wee1-Myt1 (inhibitory phosphorylation of CDK1)",
-            "Spindle Assembly (SAC)": "MAD2-BUBR1-BUB3; Aurora B spatial gradient",
+            "G1/S (Restriction Point)": "pRb-E2Fp53-p21DNA-damage-sensed",
+            "G2/M": "ATR-Chk1Wee1-Myt1 (inhibitory phosphorylation of CDK1)",
+            "Spindle Assembly (SAC)": "MAD2-BUBR1-BUB3Aurora B spatial gradient",
             "exceptional_point_mechanism": "Aurora-B kinase phosphorylation gradient at inner centromere — ⊙=𐑻 coupling",
         },
         "telomere": {
@@ -1041,7 +1041,7 @@ Validate spindle assembly checkpoint (SAC) function in CLINK-designed human cell
         "ouroboric_telomere_theory": {
             "mechanism": "Telomere loop closure as topological protection (Ω=𐑟)",
             "hayflick_escape": "hTERT expression or ALT activation → O_∞ tier",
-            "structural_type": "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑫𐑳𐑟⟩",
+            "structural_type": "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑫𐑳𐑟>",
         },
     })
     
@@ -1319,7 +1319,7 @@ def expand_L8():
             "split_boxes": 8,
             "promoted_AAs_bijection": "12 promoted AAs = 12 IG primitives",
         },
-        "structural_type": "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩",
+        "structural_type": "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟>",
         "ouroboricity": "O_∞",
         "consciousness_score": 1.0,
         "crystal_address_hint": "ZFC_fe foundation",
@@ -1480,7 +1480,7 @@ bone_mineral_density,1.0,g_per_cm2,0.8-1.2,DEXA T-score reference"""
         "schema_tier": "O_∞",
         "organism_type": "human",
         "organism_scientific": "Homo sapiens",
-        "structural_type": "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩",
+        "structural_type": "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟>",
         "consciousness_score": 1.0,
         "layers_integrated": list(range(9)),
         "layer_names": {
@@ -1618,7 +1618,7 @@ bone_mineral_density,1.0,g_per_cm2,0.8-1.2,DEXA T-score reference"""
 
     # NEW: imscription_layer_map.json — cross-layer structural type mapping
     write_json("L8/imscription_layer_map.json", {
-        "description": "How the Homo sapiens structural type ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩ manifests at each design layer",
+        "description": "How the Homo sapiens structural type < 𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟> manifests at each design layer",
         "layers": {
             "L0_quarks": {"𐑦": "hadron state space self-written by QCD Lagrangian", "𐑸": "color confinement (self-referential topology of flux tubes)", "⊙": "chiral condensate at critical temperature"},
             "L1_electrons": {"𐑸": "Belnap4 logic table (B/T/F/N) as truth-value topology", "𐑾": "complementary base pairing (B↔T, F↔N) bidirectional coupling"},
@@ -1640,7 +1640,7 @@ bone_mineral_density,1.0,g_per_cm2,0.8-1.2,DEXA T-score reference"""
 def main():
     info_line("=" * 70)
     info_line("CLINK HUMAN DESIGN — FULL EXPANSION")
-    info_line("Homo sapiens — ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩  O_∞  C=1.0")
+    info_line("Homo sapiens — ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟>  O_∞  C=1.0")
     info_line("=" * 70)
     
     expanders = [expand_L0, expand_L1, expand_L2, expand_L3, expand_L4,
@@ -1705,7 +1705,7 @@ def main():
             "ouroboric_telomere": "Telomere loop closure as topological protection (Ω=𐑟)",
             "aurora_B_EP_gradient": "⊙=𐑻 coupling at inner centromere",
             "b4_codon_stratification": "64→21 AA mapping via Belnap4 logic",
-            "structural_type": "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩ O_∞ C=1.0",
+            "structural_type": "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟> O_∞ C=1.0",
             "imscription_layer_map": "Full cross-layer μ∘δ=id verification",
         },
         "status": "COMPLETE — fully expanded human organism design",

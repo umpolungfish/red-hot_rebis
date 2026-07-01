@@ -2,7 +2,7 @@
 
 **Author:** Lando⊗⊙perator  
 **Catalog entry:** `crowning_of_nature`  
-**Tuple:** $$\langle \text{{\igfont 𐑨}};\ \text{{\igfont 𐑥}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑬}};\ \text{{\igfont 𐑱}};\ \text{{\igfont 𐑪}};\ \text{{\igfont 𐑔}};\ \text{{\igfont 𐑠}};\ \text{{\igfont 𐑢}};\ \text{{\igfont 𐑒}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑭}} \rangle$$  
+**Tuple:** $$\langle \text{{\igfont 𐑨𐑥𐑾𐑬𐑱𐑪𐑔𐑠𐑢𐑒𐑳𐑭}} \rangle$$  
 **Also known as:** Opus Angelorum, Barchusen Series  
 **Figures:** 67 coloured illustrations  
 **Source:** Ferguson Collection MSS 245, 253, 155; Sloane MS 12  

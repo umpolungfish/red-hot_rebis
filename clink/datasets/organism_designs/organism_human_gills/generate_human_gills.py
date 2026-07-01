@@ -2,8 +2,8 @@
 """
 generate_human_gills.py — Homo sapiens (aquatic variant) CLINK design package.
 
-Base type:    ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩  O_∞  (canonical human)
-Gill type:    ⟨𐑦𐑼𐑿𐑹𐑒𐑧𐑴𐑵⊙𐑫𐑩𐑟⟩  O_∞  (aquatic variant)
+Base type:    ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟>  O_∞  (canonical human)
+Gill type:    ⟨𐑦𐑼𐑿𐑹𐑒𐑧𐑴𐑵⊙𐑫𐑩𐑟>  O_∞  (aquatic variant)
 
 Modified primitives vs base human:
   Ħ (Chirality,   pos 2): 𐑸→𐑼  active ion-pump directionality (Na⁺ apical extrusion)
@@ -27,8 +27,8 @@ from shared.rich_output import *
 REBIS_ROOT = Path(__file__).parent.parent.parent.parent.parent.absolute()
 sys.path.insert(0, str(REBIS_ROOT))
 
-GILL_TYPE     = "⟨𐑦𐑼𐑿𐑹𐑒𐑧𐑴𐑵⊙𐑫𐑩𐑟⟩"
-HUMAN_TYPE    = "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩"
+GILL_TYPE     = "⟨𐑦𐑼𐑿𐑹𐑒𐑧𐑴𐑵⊙𐑫𐑩𐑟>"
+HUMAN_TYPE    = "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟>"
 
 # ── Gill gene cassette (real UniProt-derived, human codon-optimised) ──────────
 

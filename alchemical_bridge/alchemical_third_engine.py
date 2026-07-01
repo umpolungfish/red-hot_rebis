@@ -8,7 +8,7 @@ Salt is not a substance — it is the void BETWEEN substances. In supramolecular
 chemistry, the binding cavity IS the active structure. Crown ethers, cyclodextrins,
 metal-organic frameworks, enzyme active sites — all are defined by their empty space.
 
-Structural type: ⟨𐑦 𐑸 𐑾 𐑹 𐑐 𐑧 𐑴 𐑵 ⊙ 𐑖 𐑳 𐑭⟩
+Structural type: ⟨𐑦 𐑸 𐑾 𐑹 𐑐 𐑧 𐑴 𐑵 ⊙ 𐑖 𐑳 𐑭>
   Ð=𐑦: Self-written state space (host-guest config space)
   Þ=𐑸: Self-referential topology (cavity shape IS the selector)
   Ř=𐑾: Bidirectional coupling (host and guest define each other)

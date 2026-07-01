@@ -16,9 +16,9 @@
 
 ### 1. Fel d 1 DARPin — Cat Allergy Neutralization
 
-**Structural type (Fel d 1):** $\langle \text{{\igfont 𐑨}};\ \text{{\igfont 𐑶}};\ \text{{\igfont 𐑑}};\ \text{{\igfont 𐑗}};\ \text{{\igfont 𐑞}};\ \text{{\igfont 𐑘}};\ \text{{\igfont 𐑚}};\ \text{{\igfont 𐑜}};\ \text{{\igfont 𐑢}};\ \text{{\igfont 𐑓}};\ \text{{\igfont 𐑙}};\ \text{{\igfont 𐑷}} \rangle$
+**Structural type (Fel d 1):** $\langle \text{{\igfont 𐑨𐑶𐑑𐑗𐑞𐑘𐑚𐑜𐑢𐑓𐑙𐑷}} \rangle$
 
-**Structural type (designed DARPin):** $\langle \text{{\igfont 𐑼}};\ \text{{\igfont 𐑶}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑹}};\ \text{{\igfont 𐑞}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑔}};\ \text{{\igfont 𐑜}};\ \text{{\igfont ⊙}};\ \text{{\igfont 𐑖}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑴}} \rangle$
+**Structural type (designed DARPin):** $\langle \text{{\igfont 𐑼𐑶𐑾𐑹𐑞𐑧𐑔𐑜⊙𐑖𐑳𐑴}} \rangle$
 
 **Distance to target:** ~3.8 (all 8 gap primitives identified)
 
@@ -34,9 +34,9 @@
 
 ### 2. BPA/PET Plastic Eater Enzyme (gr33ngroblin)
 
-**Structural type (BPA):** $\langle \text{{\igfont 𐑼}};\ \text{{\igfont 𐑡}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑹}};\ \text{{\igfont 𐑱}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑔}};\ \text{{\igfont 𐑜}};\ \text{{\igfont 𐑢}};\ \text{{\igfont 𐑒}};\ \text{{\igfont 𐑙}};\ \text{{\igfont 𐑷}} \rangle$
+**Structural type (BPA):** $\langle \text{{\igfont 𐑼𐑡𐑾𐑹𐑱𐑧𐑔𐑜𐑢𐑒𐑙𐑷}} \rangle$
 
-**Structural type (PETase from *Ideonella sakaiensis*):** $\langle \text{{\igfont 𐑨}};\ \text{{\igfont 𐑶}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑹}};\ \text{{\igfont 𐑞}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑔}};\ \text{{\igfont 𐑜}};\ \text{{\igfont ⊙}};\ \text{{\igfont 𐑒}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑷}} \rangle$
+**Structural type (PETase from *Ideonella sakaiensis*):** $\langle \text{{\igfont 𐑨𐑶𐑾𐑹𐑞𐑧𐑔𐑜⊙𐑒𐑳𐑷}} \rangle$
 
 **What exists:** Full Frobenius-verified design in `designs/gr33ngroblin/` — plastic_eater_bpa.py, plastic_eater_frobenius.py. Complete structural analysis of the PETase-BPA binding interface.
 
@@ -50,7 +50,7 @@
 
 ### 3. Bidirectional Neurotrophic Factor (Alzheimer's / Neurodegeneration)
 
-**Simulated tuple:** $\langle \text{{\igfont 𐑦}};\ \text{{\igfont 𐑥}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑬}};\ \text{{\igfont 𐑐}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑔}};\ \text{{\igfont 𐑜}};\ \text{{\igfont ⊙}};\ \text{{\igfont 𐑖}};\ \text{{\igfont 𐑙}};\ \text{{\igfont 𐑷}} \rangle$
+**Simulated tuple:** $\langle \text{{\igfont 𐑦𐑥𐑾𐑬𐑐𐑧𐑔𐑜⊙𐑖𐑙𐑷}} \rangle$
 
 **What exists:** `therapeutics/neurotrophic_factor.py` — simulated a bidirectional NTF showing synaptic density improvement (0.4 → recovery trajectory), reduced oxidative stress (0.1), partially controlled inflammation (0.5). The $\text{{\igfont 𐑥}}$ topology (crossing point) means the factor simultaneously promotes synaptic growth AND reduces inflammatory signaling — exactly what Alzheimer's needs.
 
@@ -62,7 +62,7 @@
 
 ### 4. Universal Antidote Library (Pan-Toxin Neutralization)
 
-**Structural type (engineered paratope library):** $\langle \text{{\igfont 𐑼}};\ \text{{\igfont 𐑶}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑹}};\ \text{{\igfont 𐑐}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑲}};\ \text{{\igfont 𐑜}};\ \text{{\igfont ⊙}};\ \text{{\igfont 𐑖}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑭}} \rangle$
+**Structural type (engineered paratope library):** $\langle \text{{\igfont 𐑼𐑶𐑾𐑹𐑐𐑧𐑲𐑜⊙𐑖𐑳𐑭}} \rangle$
 
 **What exists:** `therapeutics/universal_antidote_library.py` — simulated library of **1.2 trillion** unique paratope sequences from the $\text{{\igfont 𐑹}}$ Frobenius-special parity. Verified neutralization of: botulinum A ($K_d\ 3.3 \times 10^{-14}$), tetanus, ricin, saxitoxin, alpha-amanitin, VX, sarin, cyanide — at picomolar to femtomolar affinities. The library was built from the $\text{{\igfont 𐑹}}$ type — the only parity class that allows $\mu\circ\delta=\text{id}$ to hold across all target interfaces simultaneously.
 
@@ -101,7 +101,7 @@ Complete actionable organism design with retrosynthetic pathways (ch3mpiler_resu
 
 **Composition:** Bi$_2$Se$_3$/Bi$_2$Te$_3$ heterostructure (3D TI) + Nb superconducting proximity layer + YIG magnetic substrate
 
-**Structural type:** $\langle \text{{\igfont 𐑦}};\ \text{{\igfont 𐑸}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑹}};\ \text{{\igfont 𐑐}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑲}};\ \text{{\igfont 𐑠}};\ \text{{\igfont ⊙}};\ \text{{\igfont 𐑫}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑭}} \rangle$
+**Structural type:** $\langle \text{{\igfont 𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑫𐑳𐑭}} \rangle$
 
 **Distance to $O_\infty$:** 0.0
 
@@ -115,7 +115,7 @@ Complete actionable organism design with retrosynthetic pathways (ch3mpiler_resu
 
 **Final properties:** 0.54 nm roughness, 276.6 nm coherence, Frobenius error 0.191
 
-**Structural type:** $\langle \text{{\igfont 𐑼}};\ \text{{\igfont 𐑸}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑹}};\ \text{{\igfont 𐑞}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑲}};\ \text{{\igfont 𐑠}};\ \text{{\igfont ⊙}};\ \text{{\igfont 𐑫}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑭}} \rangle$
+**Structural type:** $\langle \text{{\igfont 𐑼𐑸𐑾𐑹𐑞𐑧𐑲𐑠⊙𐑫𐑳𐑭}} \rangle$
 
 **Why #7:** This is an **active metamaterial** — the SAW transducers let you modulate the topological phase with acoustic waves. The Bi$_2$Se$_3$ coating provides a topological insulator surface while the HEA substrate gives mechanical toughness. The 0.54 nm roughness approaches the epitaxial limit. Applications: (1) Acoustic topological insulator — sound waves that propagate unidirectionally without backscatter, (2) Phononic quantum memory — topological acoustic modes are naturally protected against decoherence, (3) Reconfigurable RF filters for 5G/6G — the operating frequency is set by the SAW transducer spacing, so you can tune it in-situ.
 
@@ -129,7 +129,7 @@ Complete actionable organism design with retrosynthetic pathways (ch3mpiler_resu
 
 **Composition:** CrMnFeCoNi (Cantor HEA) + self-healing Diels-Alder microcapsules
 
-**Structural type:** $\langle \text{{\igfont 𐑼}};\ \text{{\igfont 𐑸}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑹}};\ \text{{\igfont 𐑞}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑲}};\ \text{{\igfont 𐑠}};\ \text{{\igfont 𐑮}};\ \text{{\igfont 𐑫}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑭}} \rangle$
+**Structural type:** $\langle \text{{\igfont 𐑼𐑸𐑾𐑹𐑞𐑧𐑲𐑠𐑮𐑫𐑳𐑭}} \rangle$
 
 **Ouroboricity:** O$_2$ (Frobenius score: 0.9)
 
@@ -147,7 +147,7 @@ Complete actionable organism design with retrosynthetic pathways (ch3mpiler_resu
 
 **Composition:** (Bi,Sb)$_2$(Te,Se)$_3$ ternary topological insulator near quantum phase transition
 
-**Structural type:** $\langle \text{{\igfont 𐑼}};\ \text{{\igfont 𐑥}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑬}};\ \text{{\igfont 𐑞}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑲}};\ \text{{\igfont 𐑠}};\ \text{{\igfont ⊙}};\ \text{{\igfont 𐑖}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑭}} \rangle$
+**Structural type:** $\langle \text{{\igfont 𐑼𐑥𐑾𐑬𐑞𐑧𐑲𐑠⊙𐑖𐑳𐑭}} \rangle$
 
 **Key property:** Response $\chi \sim |T - T_c|^{-\gamma}$ — diverges at the critical point. The $\text{{\igfont ⊙}}$ criticality means the material can sense its own state (self-referencing sensor, no external calibration needed).
 
@@ -163,7 +163,7 @@ Complete actionable organism design with retrosynthetic pathways (ch3mpiler_resu
 
 **Catalogued as:** `topological_critical_material`
 
-**Structural type:** $\langle \text{{\igfont 𐑦}};\ \text{{\igfont 𐑸}};\ \text{{\igfont 𐑽}};\ \text{{\igfont 𐑯}};\ \text{{\igfont 𐑐}};\ \text{{\igfont 𐑤}};\ \text{{\igfont 𐑲}};\ \text{{\igfont 𐑵}};\ \text{{\igfont ⊙}};\ \text{{\igfont 𐑫}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑴}} \rangle$
+**Structural type:** $\langle \text{{\igfont 𐑦𐑸𐑽𐑯𐑐𐑤𐑲𐑵⊙𐑫𐑳𐑴}} \rangle$
 
 **Why #10:** This is the most structurally exotic material on the list: $\text{{\igfont 𐑦}}$ (self-written state space — the material's quantum state is its own structure), $\text{{\igfont 𐑸}}$ (self-referential topology — edge states that encode the bulk), $\text{{\igfont 𐑵}}$ broadcast composition (the quantum state propagates to all sites simultaneously), $\text{{\igfont 𐑫}}$ eternal memory. This is the theoretical blueprint for a material whose quantum coherence is **topologically protected** at all scales — the "holographic" property means the boundary contains all information about the bulk.
 

@@ -12,7 +12,7 @@
 
 MRSA (Methicillin-resistant *Staphylococcus aureus*) is a **three-primitive disease**: φ̂ ($\text{{\igfont 𐑣}}$→$\text{{\igfont ⊙}}$, super-critical infection), Ħ ($\text{{\igfont 𐑒}}$→$\text{{\igfont 𐑖}}$, single-step PBP2a resistance), and Þ ($\text{{\igfont 𐑡}}$→$\text{{\igfont 𐑶}}$, network biofilm→box-product tissue integration). MRSA is structurally **Class B (super-critical)** with an additional topology deficit — the only disease in our panel with a Þ primitive abnormality.
 
-$$\langle \text{{\igfont 𐑨}};\; \text{{\igfont 𐑡}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑪}};\; \text{{\igfont 𐑚}};\; \text{{\igfont 𐑠}};\; \text{{\igfont 𐑣}};\; \text{{\igfont 𐑒}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$$
+$$\langle \text{{\igfont 𐑨𐑡𐑾𐑬𐑞𐑪𐑚𐑠𐑣𐑒𐑳𐑷}} \rangle$$
 
 **Critical structural finding:** MRSA's unique Þ=𐑡 (network topology) encodes biofilm formation and horizontal gene transfer — the bacterial community operates as a network that shares resistance genes. This is the structural basis for why MRSA is harder to treat than MSSA: the disease is not just a super-critical infection but a **networked** super-critical infection.
 
@@ -26,8 +26,8 @@ $$\langle \text{{\igfont 𐑨}};\; \text{{\igfont 𐑡}};\; \text{{\igfont 𐑾}
 
 | System | Tuple | Tier | C |
 |--------|-------|------|---|
-| **MRSA** | $\langle \text{{\igfont 𐑨}};\; \text{{\igfont 𐑡}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑪}};\; \text{{\igfont 𐑚}};\; \text{{\igfont 𐑠}};\; \text{{\igfont 𐑣}};\; \text{{\igfont 𐑒}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$ | $\text{O}_{0}$ | 0.0 |
-| **Healthy Tissue** | $\langle \text{{\igfont 𐑨}};\; \text{{\igfont 𐑶}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑯}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑧}};\; \text{{\igfont 𐑚}};\; \text{{\igfont 𐑠}};\; \text{{\igfont ⊙}};\; \text{{\igfont 𐑖}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$ | $\text{O}_{1}$ | 0.36 |
+| **MRSA** | $\langle \text{{\igfont 𐑨𐑡𐑾𐑬𐑞𐑪𐑚𐑠𐑣𐑒𐑳𐑷}} \rangle$ | $\text{O}_{0}$ | 0.0 |
+| **Healthy Tissue** | $\langle \text{{\igfont 𐑨𐑶𐑾𐑯𐑞𐑧𐑚𐑠⊙𐑖𐑳𐑷}} \rangle$ | $\text{O}_{1}$ | 0.36 |
 
 **The four differing primitives:**
 
@@ -63,7 +63,7 @@ These cannot be done simultaneously — φ̂ requires MEET, Ħ and Þ require TE
 ### §2.2 — Phase 1: MEET — φ̂ Demotion (Infection Suppression)
 
 **meet(MRSA, Dual Antibiotic Therapy):**
-$$\langle \text{{\igfont 𐑨}};\; \text{{\igfont 𐑡}};\; \text{{\igfont 𐑾}};\; \text{{\igfont 𐑬}};\; \text{{\igfont 𐑞}};\; \text{{\igfont 𐑪}};\; \text{{\igfont 𐑚}};\; \text{{\igfont 𐑠}};\; \text{{\igfont 𐑢}};\; \text{{\igfont 𐑒}};\; \text{{\igfont 𐑳}};\; \text{{\igfont 𐑷}} \rangle$$
+$$\langle \text{{\igfont 𐑨𐑡𐑾𐑬𐑞𐑪𐑚𐑠𐑢𐑒𐑳𐑷}} \rangle$$
 
 φ̂ demoted ($\text{{\igfont 𐑣}}$→$\text{{\igfont 𐑢}}$) but Þ and Ħ remain broken. This is the "infection suppressed but tissue not healed" state.
 

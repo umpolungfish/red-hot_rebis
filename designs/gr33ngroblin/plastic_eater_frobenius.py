@@ -292,7 +292,7 @@ def format_report(all_catalysts):
             lines.append("")
             
             lines.append("**Site structural type:**")
-            lines.append(f"`⟨{site['site_type'].get('D','?')}{site['site_type'].get('T','?')}{site['site_type'].get('R','?')}{site['site_type'].get('P','?')}{site['site_type'].get('F','?')}{site['site_type'].get('K','?')}{site['site_type'].get('G','?')}{site['site_type'].get('Gm','?')}{site['site_type'].get('Ph','?')}{site['site_type'].get('H','?')}{site['site_type'].get('S','?')}{site['site_type'].get('W','?')}⟩`")
+            lines.append(f"`⟨{site['site_type'].get('D','?')}{site['site_type'].get('T','?')}{site['site_type'].get('R','?')}{site['site_type'].get('P','?')}{site['site_type'].get('F','?')}{site['site_type'].get('K','?')}{site['site_type'].get('G','?')}{site['site_type'].get('Gm','?')}{site['site_type'].get('Ph','?')}{site['site_type'].get('H','?')}{site['site_type'].get('S','?')}{site['site_type'].get('W','?')}>`")
             lines.append("")
         
         # Full AA sequence
@@ -319,7 +319,7 @@ def format_report(all_catalysts):
         lines.append("### Composite Structural Type (Tensor)")
         lines.append("")
         tt = cat["tensor_type"]
-        lines.append(f"`⟨{tt.get('D','?')}{tt.get('T','?')}{tt.get('R','?')}{tt.get('P','?')}{tt.get('F','?')}{tt.get('K','?')}{tt.get('G','?')}{tt.get('Gm','?')}{tt.get('Ph','?')}{tt.get('H','?')}{tt.get('S','?')}{tt.get('W','?')}⟩`")
+        lines.append(f"`⟨{tt.get('D','?')}{tt.get('T','?')}{tt.get('R','?')}{tt.get('P','?')}{tt.get('F','?')}{tt.get('K','?')}{tt.get('G','?')}{tt.get('Gm','?')}{tt.get('Ph','?')}{tt.get('H','?')}{tt.get('S','?')}{tt.get('W','?')}>`")
         lines.append("")
     
     lines.append("---")
@@ -328,7 +328,7 @@ def format_report(all_catalysts):
     lines.append("")
     lines.append("1. **Bisphenol-A warning:** Polycarbonate (PC) degradation releases BPA, an endocrine disruptor. Catalyst C (Urethanase) must be coupled with a BPA-degrading module (e.g., cytochrome P450 or laccase) before environmental deployment.")
     lines.append("2. **Containment:** All three catalysts should be expressed in GRAS (Generally Recognized As Safe) organisms with auxotrophic markers to prevent environmental escape.")
-    lines.append("3. **pH optima:** Catalyst A functions optimally at pH 7.5-8.5 (serine hydrolase range); Catalyst B at pH 7.0-7.5; Catalyst C at pH 7.0-8.0.")
+    lines.append("3. **pH optima:** Catalyst A functions optimally at pH 7.5-8.5 (serine hydrolase range)Catalyst B at pH 7.0-7.5Catalyst C at pH 7.0-8.0.")
     lines.append("")
     lines.append("## Pipeline Fixes Applied")
     lines.append("")

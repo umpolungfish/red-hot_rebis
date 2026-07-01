@@ -19,7 +19,7 @@ The text is about alchemy — its social weight, its political value, its power 
 
 ## §2 — The Structural Tuple
 
-$$\langle \text{{\igfont 𐑨}};\ \text{{\igfont 𐑡}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑗}};\ \text{{\igfont 𐑱}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑔}};\ \text{{\igfont 𐑝}};\ \text{{\igfont 𐑢}};\ \text{{\igfont 𐑒}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑷}} \rangle$$
+$$\langle \text{{\igfont 𐑨𐑡𐑾𐑗𐑱𐑧𐑔𐑝𐑢𐑒𐑳𐑷}} \rangle$$
 
 This is the first text in the corpus with **T = 𐑡** (network topology) — the document maps a political network of Queen, Council, envoys, Merchant Adventurers, and Peterson. And **P = 𐑗** (no symmetry) — the power gradient is absolute: the Queen's word outweighs a merchant's claim.
 

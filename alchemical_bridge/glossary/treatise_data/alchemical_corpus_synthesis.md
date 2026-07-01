@@ -20,8 +20,8 @@ The self-referential, self-modeling texts that close the loop on their own epist
 
 | Text | Tuple | Notes |
 |------|-------|-------|
-| **Artephius — Secret Book** | ⟨𐑦;𐑸;𐑾;𐑹;𐑐;𐑧;𐑔;𐑵;⊙;𐑫;𐑙;𐑭⟩ | Duplicate of Hodge-Lefschetz |
-| **Donum Dei — Pretiosissimum** | ⟨𐑦;𐑸;𐑾;𐑹;𐑐;𐑧;𐑔;𐑵;⊙;𐑫;𐑙;𐑭⟩ | Duplicate of Artephius |
+| **Artephius — Secret Book** | ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑔𐑵⊙𐑫𐑙𐑭⟩ | Duplicate of Hodge-Lefschetz |
+| **Donum Dei — Pretiosissimum** | ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑔𐑵⊙𐑫𐑙𐑭⟩ | Duplicate of Artephius |
 | **Structural meaning:** Both describe the Art from WITHIN the Art — the practitioner discovers that the knowing and the doing are the same operation. H=𐑫 (eternal return), φ̂=⊙ (self-modeling gate open), Ω=𐑭 (integer winding). |
 
 ### O₂ — 3 texts (3.75%)
@@ -30,14 +30,14 @@ Complex, irreducible products — texts where form and content cannot be separat
 | Text | Tuple | Key features |
 |------|-------|-------------|
 | **Crowning of Nature** | WIP | 67 figures, 10 phases |
-| **Ripley Scroll** | ⟨𐑨;𐑶;𐑾;𐑬;𐑱;𐑧;𐑔;𐑠;𐑮;𐑫;𐑳;𐑭⟩ | Irreducible text+image, ouroboric bird |
-| **Atalanta Fugiens** | ⟨𐑨;𐑸;𐑾;𐑬;𐑱;𐑧;𐑔;𐑵;𐑮;𐑖;𐑳;𐑴⟩ | 4-layer multimedia (image+verse+prose+fugue) |
+| **Ripley Scroll** | ⟨𐑨𐑶𐑾𐑬𐑱𐑧𐑔𐑠𐑮𐑫𐑳𐑭⟩ | Irreducible text+image, ouroboric bird |
+| **Atalanta Fugiens** | ⟨𐑨𐑸𐑾𐑬𐑱𐑧𐑔𐑵𐑮𐑖𐑳𐑴⟩ | 4-layer multimedia (image+verse+prose+fugue) |
 
 ### O₁ — Dominant pedagogical pattern — 35+ texts (44%)
 The "standard" alchemical treatise — systematic, dualistic, sequential.
 
 **The O₁ Pedagogical Cluster (6 exact duplicates):**
-⟨𐑨;𐑡;𐑽;𐑬;𐑱;𐑧;𐑔;𐑠;𐑢;𐑖;𐑳;𐑷⟩
+⟨𐑨𐑡𐑽𐑬𐑱𐑧𐑔𐑠𐑢𐑖𐑳𐑷⟩
 
 1. Alchemical Catechism of Tschoudy
 2. Mirror of Alchemy (Bacon)
@@ -56,9 +56,9 @@ P=𐑗 (no dualism), S=𐑙 (1:1 writer→reader)
 
 | Text | Tuple |
 |------|-------|
-| Pontanus Epistle on the Mineral Fire | ⟨𐑨;𐑡;𐑽;𐑗;𐑱;𐑧;𐑔;𐑠;𐑢;𐑖;𐑙;𐑷⟩ |
-| Pontanus Secret Fire | ⟨𐑨;𐑡;𐑽;𐑗;𐑱;𐑧;𐑔;𐑠;𐑢;𐑖;𐑙;𐑷⟩ |
-| Thomas Vaughan Coelum Terrae | ⟨𐑨;𐑡;𐑽;𐑗;𐑱;𐑧;𐑔;𐑠;𐑢;𐑖;𐑙;𐑷⟩ |
+| Pontanus Epistle on the Mineral Fire | ⟨𐑨𐑡𐑽𐑗𐑱𐑧𐑔𐑠𐑢𐑖𐑙𐑷⟩ |
+| Pontanus Secret Fire | ⟨𐑨𐑡𐑽𐑗𐑱𐑧𐑔𐑠𐑢𐑖𐑙𐑷⟩ |
+| Thomas Vaughan Coelum Terrae | ⟨𐑨𐑡𐑽𐑗𐑱𐑧𐑔𐑠𐑢𐑖𐑙𐑷⟩ |
 | **Structural meaning:** The writer speaks directly to the reader (S=𐑙), has rejected inherited dualisms (P=𐑗), and presents a personal testimony of error and discovery. |
 
 ### O₁ — Supercritical pattern — 1 text (1.25%)
@@ -66,7 +66,7 @@ K=𐑺 (fast), φ̂=𐑣 (supercritical), S=𐑙 (1:1 dialogue)
 
 | Text | Tuple |
 |------|-------|
-| Mary the Prophetess | ⟨𐑨;𐑡;𐑽;𐑬;𐑱;𐑺;𐑔;𐑠;𐑣;𐑖;𐑙;𐑷⟩ |
+| Mary the Prophetess | ⟨𐑨𐑡𐑽𐑬𐑱𐑺𐑔𐑠𐑣𐑖𐑙𐑷⟩ |
 | **Structural meaning:** "Whiten the Stone in one day" — the speed claim is structurally transgressive. Mary is the only text that promises completion in hours. |
 
 ### O₁ — Kabbalistic pattern — 1 text (1.25%)
@@ -74,17 +74,17 @@ T=𐑸 (self-ref topology), Γ=𐑵 (broadcast)
 
 | Text | Tuple |
 |------|-------|
-| Aesch-Mezareph | ⟨𐑨;𐑸;𐑾;𐑬;𐑱;𐑧;𐑔;𐑵;𐑢;𐑖;𐑳;𐑷⟩ |
+| Aesch-Mezareph | ⟨𐑨𐑸𐑾𐑬𐑱𐑧𐑔𐑵𐑢𐑖𐑳𐑷⟩ |
 | **Structural meaning:** The Tree of Life's 10 Sephiroth mapped to 7 metals — the only Kabbalistic-alchemical treatise. T=𐑸 because each letter-number-metal-Sephirah forms a self-referential correspondence system. |
 
 ### O₁ — Emblem book pattern (no music) — 1 text
 | Text | Tuple |
 |------|-------|
-| Book of Lambspring | ⟨𐑨;𐑶;𐑾;𐑬;𐑱;𐑧;𐑔;𐑠;𐑢;𐑖;𐑳;𐑷⟩ |
+| Book of Lambspring | ⟨𐑨𐑶𐑾𐑬𐑱𐑧𐑔𐑠𐑢𐑖𐑳𐑷⟩ |
 | **Structural meaning:** 15 animal-pair emblems — image+verse only, unlike Atalanta's 4-layer structure. |
 
 ### O₀ — Metadata pattern — 2 texts (2.5%)
-⟨𐑨;𐑡;𐑩;𐑗;𐑱;𐑧;𐑔;𐑠;𐑢;𐑓;𐑳;𐑷⟩
+⟨𐑨𐑡𐑩𐑗𐑱𐑧𐑔𐑠𐑢𐑓𐑳𐑷⟩
 
 | Text | Notes |
 |------|-------|
@@ -93,7 +93,7 @@ T=𐑸 (self-ref topology), Γ=𐑵 (broadcast)
 | **Structural meaning:** These are NOT alchemical texts — they are meta-texts that describe, catalog, or record alchemy from outside. |
 
 ### O₀ — Practical/Recipe pattern — 14 texts (17.5%)
-⟨𐑨;𐑰;𐑩;𐑗;𐑱;𐑪;𐑚;𐑝;𐑢;𐑓;𐑙;𐑷⟩
+⟨𐑨𐑰𐑩𐑗𐑱𐑪𐑚𐑝𐑢𐑓𐑙𐑷⟩
 
 All physical alchemy texts: Trithemius, Coelum, Paracelsus Treasure, Colours, Quersitanus, Circulatum Minus, Frontispiece, Agricola, Bacon Sulphur, Bacon Making Gold, etc.
 
@@ -116,7 +116,7 @@ Edward Kelly's 13-step sequence (black→peacock→white→red) is the most comp
 
 The following ~30 texts are structural duplicates of existing patterns and can be assigned without individual reading:
 
-### O₁ Pedagogical duplicates (⟨𐑨;𐑡;𐑽;𐑬;𐑱;𐑧;𐑔;𐑠;𐑢;𐑖;𐑳;𐑷⟩):
+### O₁ Pedagogical duplicates (⟨𐑨𐑡𐑽𐑬𐑱𐑧𐑔𐑠𐑢𐑖𐑳𐑷⟩):
 - Paracelsus Aurora of the philosophers
 - Oswald Croll Preface of Signatures
 - Extract from Glauber's Dialogues
@@ -154,7 +154,7 @@ The following ~30 texts are structural duplicates of existing patterns and can b
 - The Hermetic Triumph
 - Everard's Corpus Hermeticum
 
-### O₁ Supercritical pattern (⟨𐑨;𐑡;𐑽;𐑬;𐑱;𐑺;𐑔;𐑠;𐑣;𐑖;𐑙;𐑷⟩):
+### O₁ Supercritical pattern (⟨𐑨𐑡𐑽𐑬𐑱𐑺𐑔𐑠𐑣𐑖𐑙𐑷⟩):
 - The War of the Knights (chivalric narrative — may have unique features)
 
 ### Potentially unique (requires reading):

@@ -1,3 +1,41 @@
+# Red-Hot Rebis — INDEX
+
+**rebis.<x> Edition v2.4.0**
+*Quick-reference index for all tools under the rebis.<domain> namespace.*
+
+## rebis.<x> Domain Map
+
+| Domain | Module | Key Exports |
+|--------|--------|-------------|
+| `rebis.p4ra` | `rebis/p4ra.py` | Belnap, MachineState, SerpentRodV2, Ch3mpiler, Meson, Baryon, QuarkState, encode_site_from_residues, generate_ligand_smiles, CLUKernel3D, analyze_chain (148 exports) |
+| `rebis.ch3mpiler` | `rebis/ch3mpiler.py` | forward, retrosynthesis, analyze, decompose (27 exports) |
+| `rebis.clink` | `rebis/clink.py` | CLINK_LAYERS, chain, bridges, integration (28 exports) |
+| `rebis.materials` | `rebis/materials.py` | sophick_forge, metamaterial, organoid (12 exports) |
+| `rebis.therapeutics` | `rebis/therapeutics.py` | chemotherapeutic, neurotrophic_factor, quantum_biologic (4 exports) |
+| `rebis.biology` | `rebis/biology.py` | ouroboric_cell, telomere_sim (10 exports) |
+| `rebis.serpentrod` | `rebis/serpentrod.py` | ProteinDesigner, StratifiedPredictor (14 exports) |
+| `rebis.imas` | `rebis/imas.py` | arrange_compound, hunt_frobenius, analogies (22 exports) |
+| `rebis.pipeline` | `rebis/pipeline.py` | auto_imscriber, verify_frobenius (7 exports) |
+| `rebis.cdxml` | `rebis/cdxml.py` | generate_cdxml, decompose_target (6 exports) |
+| `rebis.gene` | `rebis/gene.py` | GeneticEngine, GeneticIGPromotions, compute_quality_score (5 exports) |
+| `rebis.alchemy` | `rebis/alchemy.py` | artephius, valentine, stone_engine, treatises (19 exports) |
+| `rebis.shared` | `rebis/shared.py` | ORDINALS, WEIGHTS, PRIMITIVE_ORDER, tuple_distance (34 exports) |
+| `rebis.demo` | `rebis/demo.py` | b4_lattice, belnap, catalytic_site, materials_sim (17 exports) |
+| `rebis.scripts` | `rebis/scripts.py` | test_genetics, frob_design, mito_pipeline (20 exports) |
+| `rebis.imasm` | `rebis/imasm.py` | Classifier, Engine, tokens (5 exports) |
+| `rebis.cli` | `rebis/cli.py` | status, verify, run, demo (20 exports) |
+
+**Usage:**
+```python
+import rebis
+# Access any domain
+rebis.p4ra.Belnap(True, False)
+rebis.ch3mpiler.forward("CC(=O)O")
+```
+**CLI:** `python3 rebis.py status | verify | run | demo`
+
+---
+
 Red-Hot Rebis — Structural Index
 ==================================
 
@@ -384,3 +422,94 @@ This INDEX is for browsing with 'less INDEX.md'. For live computation:
   rebis.py run test_genetics
 
 Index compiled by Lando⊗⊙perator — June 2026
+
+8. REVERSE LIGAND PIPELINE — ENZYME ACTIVE SITE → DE-NOVO LIGAND
+================================================================
+
+The structural inverse of the bespoke binding pocket pipeline. Takes enzyme
+active-site structural imscriptions and generates de-novo ligands from first
+principles — without template libraries, known inhibitors, or docking scores.
+
+
+BEVY OF 10 CATALYZING PROTEINS
+--------------------------------
+
+  Enzyme                       Organism         Active Site              Bond Type
+  ---------------------------  ---------------  -----------------------  ------------
+  Alcohol dehydrogenase        S. cerevisiae    Cys43, His66, Cys153     sigma_single
+  Urease                       C. ensiformis    His134, His136, His246   amide_link
+  Trypsin                      B. taurus        Ser195, His57, Asp102    amide_link
+  HIV-1 protease               HIV-1            Asp25, Asp25'            amide_link
+  Cytochrome P450 2D6          H. sapiens       Cys443 (heme)            sigma_single
+  Carbonic anhydrase II        H. sapiens       His94, His96, His119     hydrogen_bond
+  Ribonuclease A               B. taurus        His12, His119, Lys41     ester_link
+  PETase                       I. sakaiensis    Ser160, Asp206, His237   amide_link
+  Lysozyme                     G. gallus        Glu35, Asp52             strain_release
+  Acetylcholinesterase         H. sapiens       Ser203, His447, Glu334   amide_link
+
+
+RESULTS — 100 De-Novo Ligands (10 Enzymes × 10 Candidates)
+-----------------------------------------------------------
+
+  Enzyme                       Top Ligand SMILES                                   Score  Validation
+  ---------------------------  --------------------------------------------------  -----  -----------
+  Alcohol dehydrogenase        CCO (ethanol)                                         0.510  ACTUAL SUBSTRATE
+  Urease                       NC(=O)NC(N)=O (biuret)                                0.514  Known inhibitor
+  Trypsin                      NCC(=O)Nc1ccc(C(N)=O)cc1                              0.505  Peptide-mimic
+  HIV-1 protease               NCC(=O)Nc1ccc(C(N)=O)cc1                              0.481  Peptide-mimic
+  Cytochrome P450 2D6          COCCC(C)Cc1cccnc1                                     0.446  Drug-like
+  Carbonic anhydrase II        O=Cc1cccc(C(=O)O)c1                                   0.436  Zn-coordinating
+  Ribonuclease A               O=CCOC(=O)c1cc(C(=O)O)ccc1OC(=O)O                    0.412  Phosphate-mimic
+  PETase                       NC(=O)c1ccc(NC(=O)c2cccc(C=O)c2)cc1                  0.406  PET-mimic
+  Lysozyme                     c1cc(C2CO2)cc(C2CC2c2ccc(C3CO3)cc2)c1                0.397  Bis-epoxide TS
+  Acetylcholinesterase         CNC(=O)CCN                                             0.396  ACh-mimic
+
+
+DRUG-LIKENESS PROFILE (all 100 candidates)
+--------------------------------------------
+
+  Property      Mean     Range        Lipinski Limit
+  ------------  -------  -----------  ----------------
+  MW            214.3    46-318 Da    < 500 Da
+  logP           1.01   -1.27-4.74    < 5
+  HBD            1.7     0-3          < 5
+  HBA            3.2     1-6          < 10
+  TPSA          72.8    20.2-144.4    N/A
+
+  100% Lipinski compliance across all 100 candidates
+
+
+BOND-TYPE DISTRIBUTION
+------------------------
+
+  Bond            Enzymes    Mean Score
+  -------------  ----------  ----------
+  amide_link     5            0.460
+  sigma_single   2            0.478
+  hydrogen_bond  1            0.436
+  ester_link     1            0.412
+  strain_release 1            0.397
+
+
+KEY VALIDATIONS
+----------------
+
+  ADH → ethanol:     Pipeline recovers the ACTUAL BIOLOGICAL SUBSTRATE
+  Urease → biuret:   Pipeline recovers a KNOWN COMPETITIVE INHIBITOR
+  Serine hydrolases: 4 enzymes correctly cluster (conserved catalytic triad)
+  Drug-likeness:     100% Lipinski-compliant
+
+
+SOFTWARE LOCATIONS
+-------------------
+  Pipeline source:           rhr_p4rky/ligand_from_active_site.py (1,340 lines)
+  Improved engine:           rhr_p4rky/ligand_improvements.py (958 lines)
+  Analysis document:         ig-docs/bevy_ligand_analysis/01_bevy_ligand_analysis.md
+  All 100 ligands (JSON):   ig-docs/bevy_final_ligands.json
+
+
+QUICK START
+------------
+  python3 rhr_p4rky/ligand_from_active_site.py list
+  python3 rhr_p4rky/ligand_from_active_site.py improved --protein alcohol_dehydrogenase
+  python3 rhr_p4rky/ligand_from_active_site.py improved --output bevy_results.json

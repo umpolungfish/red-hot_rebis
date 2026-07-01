@@ -162,8 +162,8 @@ class AlchemicalOperator:
         for i, p in enumerate(PRIMITIVE_ORDER):
             parts.append(f"{p}={t.get(p, '?')}")
             if i < len(PRIMITIVE_ORDER) - 1:
-                parts.append("; ")
-        parts.append("⟩")
+                parts.append("")
+        parts.append(">")
         return "AlchemicalOperator" + "".join(parts)
     
     def _apply(self, op, target=None):

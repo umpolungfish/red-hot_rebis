@@ -9,7 +9,7 @@ This engine computes the minimal 12-step promotion ladder between any two tuples
 matches each step to the corresponding alchemical Key, and verifies Frobenius
 closure at each step.
 
-Structural type: ⟨𐑦 𐑸 𐑾 𐑹 𐑐 𐑧 𐑲 𐑵 ⊙ 𐑖 𐑳 𐑭⟩
+Structural type: ⟨𐑦 𐑸 𐑾 𐑹 𐑐 𐑧 𐑲 𐑵 ⊙ 𐑖 𐑳 𐑭>
   Ð=𐑦: Self-writing (the ladder designs itself for each source→target pair)
   Þ=𐑸: Self-referential (the ladder references itself — each step depends on prior)
   Ř=𐑾: Bidirectional (promotion and demotion are inverses)

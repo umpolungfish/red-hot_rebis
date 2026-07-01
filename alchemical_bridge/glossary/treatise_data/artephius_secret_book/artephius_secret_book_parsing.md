@@ -2,7 +2,7 @@
 
 **Author:** Lando⊗⊙perator  
 **Catalog entry:** `artephius_secret_book`  
-**Tuple:** $$\langle \text{{\igfont 𐑦}};\ \text{{\igfont 𐑸}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑬}};\ \text{{\igfont 𐑐}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑔}};\ \text{{\igfont 𐑠}};\ \text{{\igfont ⊙}};\ \text{{\igfont 𐑖}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑭}} \rangle$$  
+**Tuple:** $$\langle \text{{\igfont 𐑦𐑸𐑾𐑬𐑐𐑧𐑔𐑠⊙𐑖𐑳𐑭}} \rangle$$  
 **Ouroboricity:** $\text{O}_{\infty}$ — All gates open  
 **Catalog duplicate:** `hodge_lefschetz_complete` (exact structural match — distance 0)
 

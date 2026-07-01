@@ -74,7 +74,7 @@ CLOSURE-4: Floquet Topological Quantum Walk (EXACTOR-τ)
 CLOSURE-5: Counterdiabatic Adiabatic QC (EXACTOR-ε)
   Problem: Minimum gap Δ_min → Landau-Zener transitions → error 0.12
   Solution: Counterdiabatic (CD) driving adds an auxiliary Hamiltonian
-            H_CD(t) = iℏ Σ_n (|∂_t n⟩⟨n| - ⟨n|∂_t n⟩|n⟩⟨n|)
+            H_CD(t) = iℏ Σ_n (|∂_t n>⟨n| - ⟨n|∂_t n>|n>⟨n|)
             that EXACTLY cancels all non-adiabatic transitions. The evolution
             is EXACT even for finite sweep time. The surface code then verifies
             the final state.
@@ -251,7 +251,7 @@ CLOSURE_CIM_SELFDUAL = ClosureDesign(
         "stability, the self-dual point D²=I holds as an operator identity "
         "to within the measurement precision of the homodyne detector (~shot "
         "noise limit). The duality operator D maps signal → idler at exactly "
-        "threshold; D² maps signal → signal with eigenvalue exactly +1."
+        "thresholdD² maps signal → signal with eigenvalue exactly +1."
     ),
     material_innovation=(
         "Integrated dual-OPO PPLN chip: two identically-poled waveguide sections "
@@ -274,12 +274,12 @@ CLOSURE_CIM_SELFDUAL = ClosureDesign(
     verification_protocol=(
         "1. Measure D² on signal mode: inject coherent state, apply D (swap "
         "signal↔idler via dichroic), apply D again, measure quadratures. "
-        "Verify ⟨x̂_out⟩ = ⟨x̂_in⟩ and ⟨p̂_out⟩ = ⟨p̂_in⟩ to within shot noise. "
-        "2. Verify duality eigenvalue: at exactly threshold, D|ψ⟩ = +1|ψ⟩ for "
+        "Verify < x̂_out> = ⟨x̂_in> and < p̂_out> = ⟨p̂_in> to within shot noise. "
+        "2. Verify duality eigenvalue: at exactly threshold, D|ψ> = +1|ψ> for "
         "any squeezed state. Measure with quantum state tomography. "
         "3. Long-term stability: run for 10⁴ seconds, verify eigenvalue drift "
         "< 10^{-12}. "
-        "4. Frobenius check: μ(δ(|ψ⟩)) = |ψ⟩ for 10⁶ random input states. "
+        "4. Frobenius check: μ(δ(|ψ>)) = |ψ> for 10⁶ random input states. "
         "All must return fidelity > 1-10^{-9} (shot-noise limited)."
     ),
     operculum_note=(
@@ -349,9 +349,9 @@ CLOSURE_MBQC_PRECOMPILED = ClosureDesign(
         "to within detector dark count rate (<10^{-6}). "
         "2. Timing independence: vary measurement timing by ±50 ns (10× jitter "
         "budget). Verify stabilizer parity unchanged. "
-        "3. Frogbenius cycle: prepare |ψ_L⟩, apply δ (cluster measurements), "
+        "3. Frogbenius cycle: prepare |ψ_L>, apply δ (cluster measurements), "
         "apply μ (classical correction based on outcomes), verify output = "
-        "|ψ_L⟩ for 10⁵ random logical states. Fidelity > 1-10^{-9}. "
+        "|ψ_L> for 10⁵ random logical states. Fidelity > 1-10^{-9}. "
         "4. Pre-compilation correctness: verify that for all 2^10 measurement "
         "branches, the correction operator is the identity on the logical "
         "subspace."
@@ -419,8 +419,8 @@ CLOSURE_CVQC_DUALRAIL = ClosureDesign(
     predicted_error=0.0,
     trl_after=6,
     verification_protocol=(
-        "1. Phase parity measurement: encode |0_L⟩ (relative phase 0) and "
-        "|1_L⟩ (relative phase π) in dual-rail basis. Measure relative phase "
+        "1. Phase parity measurement: encode |0_L> (relative phase 0) and "
+        "|1_L> (relative phase π) in dual-rail basis. Measure relative phase "
         "via balanced homodyne. Verify separation > 100σ for 10^6 shots. "
         "2. Floquet cycle: apply δ (dual-rail encode at bin n), wait 1 period, "
         "apply μ (dual-rail decode at bin n+1). Verify output fidelity > "
@@ -486,9 +486,9 @@ CLOSURE_QW_FLOQUET = ClosureDesign(
         "Active waveguide writing with 3D positioning (250 nm precision) "
         "to ensure bipartite lattice uniformity. Chiral-symmetry-preserving "
         "disorder: only diagonal disorder (refractive index variations) "
-        "allowed; off-diagonal disorder (coupling variations) suppressed "
+        "allowedoff-diagonal disorder (coupling variations) suppressed "
         "by design. The winding number is measured via time-resolved "
-        "waveguide output — a quantized mean displacement ⟨Δm⟩ = ν/2 "
+        "waveguide output — a quantized mean displacement < Δm> = ν/2 "
         "confirms topological protection. The Floquet period is defined "
         "by the sample length, which is mechanically stable to <10^{-6}."
     ),
@@ -497,7 +497,7 @@ CLOSURE_QW_FLOQUET = ClosureDesign(
     verification_protocol=(
         "1. Winding number measurement: inject light at center of lattice, "
         "measure mean displacement after N periods. Verify quantization: "
-        "⟨Δm⟩ = ±0.500 ± 0.001 (ν = ±1 for topological phase). "
+        "⟨Δm> = ±0.500 ± 0.001 (ν = ±1 for topological phase). "
         "2. Frobenius cycle: inject wavepacket, propagate N steps forward "
         "(δ), then N steps in time-reversed lattice (μ, achieved by flipping "
         "the coin basis). Verify output overlap with input > 0.9999. "
@@ -537,8 +537,8 @@ CLOSURE_ADIABATIC_CD = ClosureDesign(
         "P_LZ = exp(-π Δ_min² / (2ℏ dΔ/dt)), which is never exactly zero "
         "for any finite sweep time. The 0.12 error comes from these "
         "non-adiabatic leaks. CD driving solves this EXACTLY: add the "
-        "auxiliary Hamiltonian H_CD(t) = iℏ Σ_n (|∂_t n(t)⟩⟨n(t)| - "
-        "⟨n(t)|∂_t n(t)⟩ |n(t)⟩⟨n(t)|) where |n(t)⟩ are the instantaneous "
+        "auxiliary Hamiltonian H_CD(t) = iℏ Σ_n (|∂_t n(t)>⟨n(t)| - "
+        "⟨n(t)|∂_t n(t)> |n(t)>⟨n(t)|) where |n(t)> are the instantaneous "
         "eigenstates of H(t). With H_CD, the evolution follows the adiabatic "
         "path EXACTLY — even for arbitrarily fast sweeps. The transition "
         "probability becomes identically zero, not just exponentially "
@@ -552,14 +552,14 @@ CLOSURE_ADIABATIC_CD = ClosureDesign(
         "No new material needed — CD driving is a SOFTWARE UPGRADE to "
         "existing D-Wave Advantage2 hardware (5000+ qubits). The additional "
         "control required is: multi-qubit interactions that realize the "
-        "|∂_t n⟩⟨n| terms. These are 3-local and 4-local Z-couplings "
+        "|∂_t n>⟨n| terms. These are 3-local and 4-local Z-couplings "
         "that can be synthesized from 2-local Ising interactions via "
         "perturbative gadgets (Jordan-Wigner + ancillary qubits). The "
         "ancilla overhead is O(N) qubits for an N-qubit problem instance."
     ),
     engineering_innovation=(
         "CD Hamiltonian pre-computation: for each problem instance H₁, "
-        "compute the instantaneous eigenstates |n(t)⟩ along the linear "
+        "compute the instantaneous eigenstates |n(t)> along the linear "
         "interpolation path H(t) = (1-s(t))H₀ + s(t)H₁. This is done "
         "classically using the Lanczos algorithm for the low-lying spectrum "
         "(only states near the gap matter). The CD couplings are programmed "
@@ -577,8 +577,8 @@ CLOSURE_ADIABATIC_CD = ClosureDesign(
         "minimum gap Δ_min via Landau-Zener sweep with and without CD. "
         "Without CD: observe finite transition probability. With CD: "
         "transition probability = 0 to within measurement noise (<10^{-3}). "
-        "2. Frobenius cycle: prepare |ψ₀⟩ (ground state of H₀), evolve "
-        "with CD to |ψ_f⟩ (should be ground state of H₁), then reverse "
+        "2. Frobenius cycle: prepare |ψ₀> (ground state of H₀), evolve "
+        "with CD to |ψ_f> (should be ground state of H₁), then reverse "
         "with CD back to H₀. Verify return fidelity > 0.9999. "
         "3. Surface code check: encode logical qubit in distance-7 surface "
         "code, perform CD adiabatic evolution, measure all stabilizers. "

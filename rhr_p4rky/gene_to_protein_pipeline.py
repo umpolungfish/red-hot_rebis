@@ -26,16 +26,18 @@ from typing import Dict, List, Tuple, Optional, Any
 from dataclasses import dataclass, field
 
 # --help handler (standalone invocation — relative imports would fail otherwise)
-if '--help' in sys.argv or '-h' in sys.argv:
-    print(__doc__.strip())
-    print()
-    info_line("Examples:")
-    info_line("  rebis.py run gene_to_protein_pipeline --test")
-    info_line("  rebis.py run gene_to_protein_pipeline AAAAATGGCT...")
-    info_line("  rebis.py run gene_to_protein_pipeline --file my.fasta")
-    info_line("  python3 -m rhr_p4rky.gene_to_protein_pipeline --test")
-    print()
-    sys.exit(0)
+
+if __name__ == "__main__":
+    if '--help' in sys.argv or '-h' in sys.argv:
+        print(__doc__.strip())
+        print()
+        print("Examples:")
+        print("  rebis.py run gene_to_protein_pipeline --test")
+        print("  rebis.py run gene_to_protein_pipeline AAAAATGGCT...")
+        print("  rebis.py run gene_to_protein_pipeline --file my.fasta")
+        print("  python3 -m rhr_p4rky.gene_to_protein_pipeline --test")
+        print()
+        sys.exit(0)
 
 from .belnap import Belnap, meet, join, bnot
 from .kernel import engager, fsplit, ffuse, frobenius_invariant, run
@@ -88,7 +90,6 @@ STAGE_TUPLES = {
         "G": "beth", "Gm": "and", "Phi": "sub", "H": "one", "S": "hetero", "O": "Z"
     }
 }
-
 
 # ------- Physical-Chemical Data -------
 
@@ -261,7 +262,6 @@ class GeneToProteinPipeline:
     def log(self, msg: str):
         if self.verbose:
             info_line(f"[{self.name}] {msg}")
-
 
     # ------- Stage 0: DNA Gene -------
     
@@ -681,7 +681,6 @@ class GeneToProteinPipeline:
         self.b4_trace.append(("quaternary", result))
         return state
 
-
     # ------- Utility Methods -------
     
     def _aggregate_b4(self, values):
@@ -911,7 +910,6 @@ class GeneToProteinPipeline:
         return {"count": final_pred, "confidence": final_conf, "evidence": evidence,
                 "chain_length": n, "prediction_method": "weighted_ensemble"}
 
-
     # ------- Full Pipeline Run -------
     
     def _empty_result(self, reason: str) -> dict:
@@ -955,7 +953,6 @@ class GeneToProteinPipeline:
         actual_units = len(self.quaternary_subunits)
         return self._build_report(actual_units)
 
-
     def _compute_closure_distance(self) -> float:
         """
         Compute DNA<->Quaternary structural distance from actual stage tuples.
@@ -994,7 +991,6 @@ class GeneToProteinPipeline:
                 squared_sum += diff * diff
         
         return round(squared_sum ** 0.5, 2)
-
 
     def _build_report(self, num_subunits: int):
         """Build comprehensive pipeline report with auto-detection evidence."""
@@ -1070,7 +1066,6 @@ class GeneToProteinPipeline:
                 "consciousness_invariant": 0.5
             }
         }
-
 
 # ------- CLI Entry Point -------
 

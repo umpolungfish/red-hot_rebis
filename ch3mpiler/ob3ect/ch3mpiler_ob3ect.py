@@ -148,7 +148,7 @@ class Ch3mpilerOb3ect:
         all_ok = True
         for tc in test_cases:
             d, _ = self.compute_distance(tc["pre"], tc["post"])
-            # The forward reaction transforms the type; retrosynthesis inverts it
+            # The forward reaction transforms the typeretrosynthesis inverts it
             ok = d > 0.0  # Transformation is non-trivial
             info_line(f"  {tc['name']}: distance={d:.3f}, non-trivial={ok}")
             all_ok = all_ok and ok

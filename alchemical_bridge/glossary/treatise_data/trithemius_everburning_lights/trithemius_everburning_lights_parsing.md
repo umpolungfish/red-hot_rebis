@@ -2,7 +2,7 @@
 
 **Author:** Lando⊗⊙perator  
 **Catalog entry:** `trithemius_everburning_lights`  
-**Tuple:** $$\langle \text{{\igfont 𐑛}};\ \text{{\igfont 𐑡}};\ \text{{\igfont 𐑩}};\ \text{{\igfont 𐑗}};\ \text{{\igfont 𐑱}};\ \text{{\igfont 𐑪}};\ \text{{\igfont 𐑲}};\ \text{{\igfont 𐑠}};\ \text{{\igfont 𐑢}};\ \text{{\igfont 𐑓}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑷}} \rangle$$  
+**Tuple:** $$\langle \text{{\igfont 𐑛𐑡𐑩𐑗𐑱𐑪𐑲𐑠𐑢𐑓𐑳𐑷}} \rangle$$  
 **Ouroboricity:** $\text{O}_0$ (no gate open)  
 **Structural sibling (catalog):** `steganographia_trithemius` ($\text{O}_{\infty}$) — same author, radically different type  
 **Date:** c. 1499–1516, MS. Ashmole 1408

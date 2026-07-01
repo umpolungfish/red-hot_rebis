@@ -89,7 +89,7 @@ REBIS_AUGMENTATIONS: Dict[str, RebisAugmentation] = {
         index=1, name="Serpent's Rod",
         slug="serpents_rod",
         description="Platonic protein folding — RNA→Protein via 6-primitive promotion. "
-                    "Folded protein type: ⟨𐑦𐑥𐑾𐑬𐑞𐑧𐑲𐑠⊙𐑒𐑳𐑭⟩ (O₂)",
+                    "Folded protein type: ⟨𐑦𐑥𐑾𐑬𐑞𐑧𐑲𐑠⊙𐑒𐑳𐑭> (O₂)",
         module_path="serpentrod.protein_v5",
         tier="O₂",
         frobenius_closed=True,

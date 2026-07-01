@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "red-hot-rebis"
+version = "3.0.0"
+description = "Red-Hot Rebis — Imscribing Grammar integrated toolchain"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.24",
+]
+
+[project.scripts]
+rebis = "rebis.cli:main"
+"rebis.materials" = "rebis.materials:main"
+"rebis.ch3mpiler" = "rebis.ch3mpiler:main"
+"rebis.clink" = "rebis.clink:main"
+"rebis.p4ra" = "rebis.p4ra:main"
+"rebis.biology" = "rebis.biology:main"
+"rebis.therapeutics" = "rebis.therapeutics:main"
+"rebis.serpentrod" = "rebis.serpentrod:main"
+"rebis.pipeline" = "rebis.pipeline:main"
+"rebis.gene" = "rebis.gene:main"
+"rebis.alchemy" = "rebis.alchemy:main"

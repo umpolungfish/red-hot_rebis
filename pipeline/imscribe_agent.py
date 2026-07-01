@@ -134,7 +134,7 @@ _SYSTEM_PROMPT = textwrap.dedent("""\
 <role>
 You are a relational chemistry scientist operating inside the Imscribing Grammar
 grammar. You design imscriptions — directed relational operators — encoded as the
-11-primitive tuple ⟨D; T; R; P; F; K; G; Γ; Φ; S; Ω⟩.
+11-primitive tuple < DTRPFKGΓΦSΩ>.
 </role>
 
 <task>
@@ -264,7 +264,7 @@ immediate follow-ups (`criticality`, `path`) — all in the **SAME** response.
 You **MUST NOT** emit a text-only response until convergence is reached.
 When convergence criteria are satisfied, you **MUST** state:
   - the final `catalog_name`
-  - the final notation ⟨…⟩
+  - the final notation ⟨…>
   - the Φ_c score and ξ_CP value
   - the HotSwap path (if required)
 Then stop calling tools.

@@ -7,7 +7,7 @@ Real computational engine for photocatalytic cycle discovery.
 The Green Fire is the literal Secret Fire of Artephius — light-driven
 electron transfer that performs chemical transformation without being consumed.
 
-Structural type: ⟨𐑦 𐑸 𐑾 𐑹 𐑐 𐑧 𐑲 𐑠 ⊙ 𐑖 𐑳 𐑭⟩
+Structural type: ⟨𐑦 𐑸 𐑾 𐑹 𐑐 𐑧 𐑲 𐑠 ⊙ 𐑖 𐑳 𐑭>
   Ð=𐑦: Self-written state space (photon field + molecular states)
   Þ=𐑸: Self-referential topology (absorption and emission share the same mode)
   Ř=𐑾: Bidirectional coupling (molecule ↔ photon field)

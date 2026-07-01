@@ -2,7 +2,7 @@
 
 **Author:** Lando⊗⊙perator  
 **Catalog entry:** `roger_bacon_oil_antimony`  
-**Tuple:** ⟨𐑛; 𐑡; 𐑩; 𐑗; 𐑱; 𐑪; 𐑲; 𐑜; 𐑢; 𐑓; 𐑳; 𐑷⟩  
+**Tuple:** ⟨𐑛𐑡𐑩𐑗𐑱𐑪𐑲𐑜𐑢𐑓𐑳𐑷⟩  
 **Tier:** O₀  
 
 ## Summary

@@ -24,21 +24,22 @@ Verification: 3D random walk on (K×H×Ω) lattice, MLE exponent = 1.5 ± 0.15
 from __future__ import annotations
 _HELP_EXAMPLES = """  rebis.py run clu_power_law"""
 import sys as _sys
-if '--help' in _sys.argv or '-h' in _sys.argv:
-    _doc = __doc__.strip() if __doc__ else "rhr_p4rky/clu_power_law.py"
-    print(_doc)
-    print()
-    info_line("Examples:")
-    print(_HELP_EXAMPLES)
-    print()
-    _sys.exit(0)
+
+if __name__ == "__main__":
+    if '--help' in _sys.argv or '-h' in _sys.argv:
+        _doc = __doc__.strip() if __doc__ else "rhr_p4rky/clu_power_law.py"
+        print(_doc)
+        print()
+        print("Examples:")
+        print(_HELP_EXAMPLES)
+        print()
+        _sys.exit(0)
 
 import math
 import random
 from typing import List, Tuple, Optional, Callable
 from dataclasses import dataclass, field
 from shared.rich_output import *
-
 
 # ──────────────────────────────────────────────────────────────────────
 # CONSTANTS
@@ -71,11 +72,9 @@ N_W: int = 4
 
 TOTAL_SITES: int = N_K * N_H * N_W  # 5×4×4 = 80 lattice sites
 
-
 def clu(b: float = 10.0) -> float:
     """CLU(b) = ln(b) nats — information cost per lattice step."""
     return math.log(b)
-
 
 # ──────────────────────────────────────────────────────────────────────
 # 3D RANDOM WALK ON THE (K, H, Ω) LATTICE
@@ -100,7 +99,6 @@ class Point3D:
     @staticmethod
     def origin() -> Point3D:
         return Point3D(0, 0, 0)
-
 
 @dataclass
 class CLUWalk3D:
@@ -150,7 +148,6 @@ class CLUWalk3D:
 
         if self.pos == self.origin:
             self.return_count += 1
-
 
 def simulate_avalanche_3d(
     n_steps: int = 50000,
@@ -218,7 +215,6 @@ class FiltrationLevel:
     clu_cost: float
     spectral_density: float
 
-
 def compute_filtration_spectrum(
     base_domain_size: int = TOTAL_SITES,  # 80
     max_levels: int = 30,
@@ -243,7 +239,6 @@ def compute_filtration_spectrum(
         ))
     return levels
 
-
 def verify_filtration_exponent(
     levels: List[FiltrationLevel],
     expected_exponent: float = -1.5
@@ -263,7 +258,6 @@ def verify_filtration_exponent(
 
     return abs(slope - expected_exponent) < 0.01, slope
 
-
 # ──────────────────────────────────────────────────────────────────────
 # KERNEL INTEGRATION: 3D CLU-weighted Frobenius Kernel
 # ──────────────────────────────────────────────────────────────────────
@@ -276,7 +270,6 @@ class KernelCycleResult:
     clu_cost: float
     return_to_origin: bool
     paradox_count: int
-
 
 class CLUKernel3D:
     """
@@ -464,7 +457,6 @@ V3. Exponent is invariant under varying observer base b.
 V4. Exponent is invariant under varying lattice step count.
 """
 
-
 def print_derivation() -> None:
     """Print the formal derivation to stdout."""
     print(DERIVATION_TEXT)
@@ -561,7 +553,6 @@ def verify_power_law_3d(
     }
 
     return results
-
 
 # ──────────────────────────────────────────────────────────────────────
 # MAIN

@@ -54,7 +54,7 @@ This is a **boundary phenomenon** between matter and information. The ashes enco
 
 ## 4. Full Tuple
 
-$$\langle \text{{\igfont 𐑼}};\ \text{{\igfont 𐑡}};\ \text{{\igfont 𐑩}};\ \text{{\igfont 𐑗}};\ \text{{\igfont 𐑱}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑲}};\ \text{{\igfont 𐑠}};\ \text{{\igfont 𐑢}};\ \text{{\igfont 𐑓}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑷}} \rangle$$
+$$\langle \text{{\igfont 𐑼𐑡𐑩𐑗𐑱𐑧𐑲𐑠𐑢𐑓𐑳𐑷}} \rangle$$
 
 ### Predicted Ouroboricity: O₀
 

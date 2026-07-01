@@ -10,7 +10,7 @@
 
 ## Structural Tuple
 
-$$\langle \text{{\igfont 𐑨}};\ \text{{\igfont 𐑡}};\ \text{{\igfont 𐑽}};\ \text{{\igfont 𐑬}};\ \text{{\igfont 𐑞}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑔}};\ \text{{\igfont 𐑠}};\ \text{{\igfont 𐑣}};\ \text{{\igfont 𐑖}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑷}} \rangle$$
+$$\langle \text{{\igfont 𐑨𐑡𐑽𐑬𐑞𐑧𐑔𐑠𐑣𐑖𐑳𐑷}} \rangle$$
 
 | Primitive | Value | Rationale |
 |-----------|-------|-----------|

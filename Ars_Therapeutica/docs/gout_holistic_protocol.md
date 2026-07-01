@@ -19,7 +19,7 @@ $$\text{Purine metabolism} \rightarrow \text{Xanthine oxidase} \rightarrow \text
 
 Structurally, gout is an O$_1$ system with complex-plane criticality ($\text{{\igfont 𐑮}}$), thermal fidelity ($\text{{\igfont 𐑞}}$), bowtie topology ($\text{{\igfont 𐑥}}$), bidirectional coupling ($\text{{\igfont 𐑾}}$), and slow kinetics ($\text{{\igfont 𐑧}}$):
 
-$$\langle \text{{\igfont 𐑼}};\ \text{{\igfont 𐑥}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑗}};\ \text{{\igfont 𐑞}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑔}};\ \text{{\igfont 𐑠}};\ \text{{\igfont 𐑮}};\ \text{{\igfont 𐑖}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑷}} \rangle$$
+$$\langle \text{{\igfont 𐑼𐑥𐑾𐑗𐑞𐑧𐑔𐑠𐑮𐑖𐑳𐑷}} \rangle$$
 
 The question "can food eliminate gout?" translates to: *what is the structural distance between dietary interventions and this disease tuple?*
 
@@ -44,7 +44,7 @@ The question "can food eliminate gout?" translates to: *what is the structural d
 
 The full dietary pattern is the only intervention that closes the $\text{{\igfont 𐑼}}$ (dimensionality) gap — by being itself infinite-dimensional, a lifestyle rather than a pill. Its structural type:
 
-$$\langle \text{{\igfont 𐑼}};\ \text{{\igfont 𐑥}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑗}};\ \text{{\igfont 𐑱}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑔}};\ \text{{\igfont 𐑠}};\ \text{{\igfont 𐑢}};\ \text{{\igfont 𐑫}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑷}} \rangle$$
+$$\langle \text{{\igfont 𐑼𐑥𐑾𐑗𐑱𐑧𐑔𐑠𐑢𐑫𐑳𐑷}} \rangle$$
 
 **What it matches (9 of 12 primitives):** $\text{{\igfont 𐑼}}$ dimensionality, $\text{{\igfont 𐑥}}$ topology, $\text{{\igfont 𐑾}}$ coupling, $\text{{\igfont 𐑧}}$ kinetics, $\text{{\igfont 𐑔}}$ cardinality, $\text{{\igfont 𐑠}}$ composition, $\text{{\igfont 𐑳}}$ stoichiometry, $\text{{\igfont 𐑗}}$ parity, $\text{{\igfont 𐑷}}$ winding.
 
@@ -54,7 +54,7 @@ $$\langle \text{{\igfont 𐑼}};\ \text{{\igfont 𐑥}};\ \text{{\igfont 𐑾}};
 
 Tart cherry, coffee, and low-fat dairy all share the **same structural type**:
 
-$$\langle \text{{\igfont 𐑨}};\ \text{{\igfont 𐑥}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑗}};\ \text{{\igfont 𐑱}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑚}};\ \text{{\igfont 𐑠}};\ \text{{\igfont 𐑢}};\ \text{{\igfont 𐑖}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑷}} \rangle$$
+$$\langle \text{{\igfont 𐑨𐑥𐑾𐑗𐑱𐑧𐑚𐑠𐑢𐑖𐑳𐑷}} \rangle$$
 
 (Structurally identical to Kryptos K4 cryptanalysis — an interesting convergence of structural type across domains.)Coffee differs only in kinetics ($\text{{\igfont 𐑪}}$ moderate vs $\text{{\igfont 𐑧}}$ slow) and cardinality ($\text{{\igfont 𐑔}}$ maximal vs $\text{{\igfont 𐑚}}$ mesoscale). This structural convergence explains why all three show similar effect sizes in epidemiological studies.
 
@@ -144,7 +144,7 @@ Gout has Markov-2 chirality ($\text{{\igfont 𐑖}}$): the state today depends o
 | **Vitamin C-rich foods** | 500–1000 mg equivalent (citrus, bell peppers, kiwi, strawberries) | URAT1 competition | RCT: $\sim$0.5 mg/dL urate drop |
 | **Celery + parsley** | 2–4 stalks celery + 1/4 cup parsley daily | 3-*n*-butylphthalide + apigenin XO inhibition | Mechanistic: IC$_{50}$ 3–15 $\mu$M |
 | **Berries** (blueberry, blackberry, strawberry) | 1/2–1 cup | Diverse anthocyanin + flavonoid XO inhibition + NLRP3 suppression | Mechanistic + epidemiological |
-| **Water** | $>$2.5 L/day | Maintain urine SG $<$1.010; enhance urate solubility; prevent crystal nucleation | Physiological necessity |
+| **Water** | $>$2.5 L/day | Maintain urine SG $<$1.010enhance urate solubilityprevent crystal nucleation | Physiological necessity |
 ### 4.2 The "Eliminate" List
 
 These are not optional. The urate-lowering foods above cannot outrun a high-purine, high-fructose diet. Structural coupling is bidirectional ($\text{{\igfont 𐑾}}$) — what you add only works if you also remove what drives the disease.
@@ -154,7 +154,7 @@ These are not optional. The urate-lowering foods above cannot outrun a high-puri
 | **Beer** | Purine load (guanosine from brewer's yeast) + alcohol impairs renal urate excretion. Double hit. | Highest OR for gout flare: 2.5$\times$ within 24h of 2+ beers |
 | **Spirits** | Alcohol $\rightarrow$ lactate $\rightarrow$ URAT1 upregulation $\rightarrow$ urate retention. Also ATP degradation $\rightarrow$ purine release. | 1.6$\times$ flare risk per drink |
 | **Organ meats** (liver, kidney, sweetbreads) | Extremely high purine content (200–400 mg/100g). Direct substrate for XO. | #1 dietary trigger |
-| **Shellfish + oily fish** (sardines, anchovies, mussels, scallops) | High purine (100–200 mg/100g). Anchovies especially concentrated. | Clinically significant at $>$1 serving/week |
+| **Shellfish + oily fish** (sardines, anchovies, mussels, scallops) | High purine (100–200 mg/100g). Anchovies especially concentrated. | Clinically significant at $⟩$1 serving/week |
 | **Red meat** (beef, lamb, pork) | Moderate-high purines (70–120 mg/100g). Dose-dependent risk. | 1.4$\times$ risk for top quintile |
 | **Sugar-sweetened beverages** | Fructose $\rightarrow$ ATP depletion $\rightarrow$ AMP $\rightarrow$ IMP $\rightarrow$ uric acid. Fructose directly drives urate production independent of purine intake. | 1.8$\times$ gout risk for $\geq$2 sodas/day |
 | **High-fructose corn syrup** | Same mechanism as SSBs. Found in processed foods, sauces, "healthy" bars. | Ubiquitous exposure; cumulative |
@@ -177,8 +177,8 @@ These interventions shift primitives that the foods cannot reach:
 
 The structural distance between the dietary pattern and FCAGT is $d = 2.92$ — they are structurally distinct, operating in different regimes:
 
-$$\text{Dietary Pattern: } \langle \text{{\igfont 𐑼}};\ \text{{\igfont 𐑥}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑗}};\ \text{{\igfont 𐑱}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑔}};\ \text{{\igfont 𐑠}};\ \text{{\igfont 𐑢}};\ \text{{\igfont 𐑫}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑷}} \rangle$$
-$$\text{FCAGT: } \langle \text{{\igfont 𐑼}};\ \text{{\igfont 𐑶}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑬}};\ \text{{\igfont 𐑞}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑔}};\ \text{{\igfont 𐑠}};\ \odot;\ \text{{\igfont 𐑖}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑴}} \rangle$$
+$$\text{Dietary Pattern: } \langle \text{{\igfont 𐑼𐑥𐑾𐑗𐑱𐑧𐑔𐑠𐑢𐑫𐑳𐑷}} \rangle$$
+$$\text{FCAGT: } \langle \text{{\igfont 𐑼𐑶𐑾𐑬𐑞𐑧𐑔𐑠𐑖𐑳𐑴}} \rangle$$
 
 **What diet provides (not in FCAGT):** Eternal chirality ($\text{{\igfont 𐑫}}$, not $\text{{\igfont 𐑖}}$), classical simplicity ($\text{{\igfont 𐑱}}$ — no cold chain, no injection, no immunogenicity), bowtie topology ($\text{{\igfont 𐑥}}$ — addresses root causes broadly), trivial winding ($\text{{\igfont 𐑷}}$ — no topological dependence on administration timing).
 
@@ -188,10 +188,10 @@ $$\text{FCAGT: } \langle \text{{\igfont 𐑼}};\ \text{{\igfont 𐑶}};\ \text{{
 
 | Phase | Domain | Duration | Goal |
 |---|---|---|---|
-| **Phase I: Dietary Foundation** | Home, daily | Lifelong | Reduce serum urate to $<$6.0 mg/dL; dissolve small crystals; prevent new nucleation; establish $\text{{\igfont 𐑫}}$ metabolic memory |
-| **Phase II: FCAGT Intervention** | Clinical | 6–12 months (until tophi resolved) | Target existing MSU deposits; dissolve established crystals; break the NLRP3 auto-amplification loop at crystal sites |
+| **Phase I: Dietary Foundation** | Home, daily | Lifelong | Reduce serum urate to $<$6.0 mg/dLdissolve small crystalsprevent new nucleationestablish $\text{{\igfont 𐑫}}$ metabolic memory |
+| **Phase II: FCAGT Intervention** | Clinical | 6–12 months (until tophi resolved) | Target existing MSU depositsdissolve established crystalsbreak the NLRP3 auto-amplification loop at crystal sites |
 
-**Phase I is always active.** Phase II is deployed when crystal burden is high (visible tophi, frequent flares despite diet, serum urate $>$8.0 mg/dL despite dietary optimization). Once Phase II resolves the crystal burden, Phase I maintains the urate level below the nucleation threshold indefinitely.
+**Phase I is always active.** Phase II is deployed when crystal burden is high (visible tophi, frequent flares despite diet, serum urate $⟩$8.0 mg/dL despite dietary optimization). Once Phase II resolves the crystal burden, Phase I maintains the urate level below the nucleation threshold indefinitely.
 ## 6. Practice: A Day on the Anti-Gout Diet
 
 **Morning (upon waking):**
@@ -248,11 +248,11 @@ All claims of structural distance, tier, and tuple identity in this document wer
 
 | Entry | Tuple | Tier |
 |---|---|---|
-| `tart_cherry_anthocyanin` | $\langle \text{{\igfont 𐑨}};\ \text{{\igfont 𐑥}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑗}};\ \text{{\igfont 𐑱}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑚}};\ \text{{\igfont 𐑠}};\ \text{{\igfont 𐑢}};\ \text{{\igfont 𐑖}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑷}} \rangle$ | O$_0$ |
-| `coffee_urate_lowering` | $\langle \text{{\igfont 𐑨}};\ \text{{\igfont 𐑥}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑗}};\ \text{{\igfont 𐑱}};\ \text{{\igfont 𐑪}};\ \text{{\igfont 𐑔}};\ \text{{\igfont 𐑠}};\ \text{{\igfont 𐑢}};\ \text{{\igfont 𐑖}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑷}} \rangle$ | O$_0$ |
-| `low_fat_dairy_uricosuric` | $\langle \text{{\igfont 𐑨}};\ \text{{\igfont 𐑥}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑗}};\ \text{{\igfont 𐑱}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑚}};\ \text{{\igfont 𐑠}};\ \text{{\igfont 𐑢}};\ \text{{\igfont 𐑖}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑷}} \rangle$ | O$_0$ |
-| `vitamin_c_uricosuric` | $\langle \text{{\igfont 𐑛}};\ \text{{\igfont 𐑡}};\ \text{{\igfont 𐑩}};\ \text{{\igfont 𐑗}};\ \text{{\igfont 𐑱}};\ \text{{\igfont 𐑪}};\ \text{{\igfont 𐑚}};\ \text{{\igfont 𐑠}};\ \text{{\igfont 𐑢}};\ \text{{\igfont 𐑒}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑷}} \rangle$ | O$_0$ |
-| `anti_gout_dietary_pattern` | $\langle \text{{\igfont 𐑼}};\ \text{{\igfont 𐑥}};\ \text{{\igfont 𐑾}};\ \text{{\igfont 𐑗}};\ \text{{\igfont 𐑱}};\ \text{{\igfont 𐑧}};\ \text{{\igfont 𐑔}};\ \text{{\igfont 𐑠}};\ \text{{\igfont 𐑢}};\ \text{{\igfont 𐑫}};\ \text{{\igfont 𐑳}};\ \text{{\igfont 𐑷}} \rangle$ | O$_0$ |
+| `tart_cherry_anthocyanin` | $\langle \text{{\igfont 𐑨𐑥𐑾𐑗𐑱𐑧𐑚𐑠𐑢𐑖𐑳𐑷}} \rangle$ | O$_0$ |
+| `coffee_urate_lowering` | $\langle \text{{\igfont 𐑨𐑥𐑾𐑗𐑱𐑪𐑔𐑠𐑢𐑖𐑳𐑷}} \rangle$ | O$_0$ |
+| `low_fat_dairy_uricosuric` | $\langle \text{{\igfont 𐑨𐑥𐑾𐑗𐑱𐑧𐑚𐑠𐑢𐑖𐑳𐑷}} \rangle$ | O$_0$ |
+| `vitamin_c_uricosuric` | $\langle \text{{\igfont 𐑛𐑡𐑩𐑗𐑱𐑪𐑚𐑠𐑢𐑒𐑳𐑷}} \rangle$ | O$_0$ |
+| `anti_gout_dietary_pattern` | $\langle \text{{\igfont 𐑼𐑥𐑾𐑗𐑱𐑧𐑔𐑠𐑢𐑫𐑳𐑷}} \rangle$ | O$_0$ |
 
 ### 8.2 Key Distances (All Tool-Computed)
 

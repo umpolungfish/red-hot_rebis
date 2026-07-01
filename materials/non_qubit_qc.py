@@ -59,11 +59,11 @@ from shared.rich_output import *
 #   [7] G=𐑔 — mesoscale (nearest-neighbor + few next-nearest)
 #   [8] Γ=𐑝 — all-simultaneous (circuit model: gates in parallel)
 #   [9] φ̂=𐑮 — complex-plane critical (unitary evolution on Bloch sphere)
-#  [10] Ħ=𐑖 — Markov-2 (unitary gate = 2-step transition U|ψ⟩→U²|ψ⟩)
+#  [10] Ħ=𐑖 — Markov-2 (unitary gate = 2-step transition U|ψ>→U²|ψ>)
 #  [11] Σ=𐑕 — many identical (N qubits, all identical 2-level systems)
 #  [12] Ω=𐑷 — trivial (no topological protection; QEC required)
 #
-# Tuple: ⟨𐑨𐑡𐑾𐑿𐑐𐑤𐑔𐑝𐑮𐑖𐑕𐑷⟩
+# Tuple: ⟨𐑨𐑡𐑾𐑿𐑐𐑤𐑔𐑝𐑮𐑖𐑕𐑷>
 
 QUBIT_QC_TUPLE = {
     'D': '𐑨', 'T': '𐑡', 'R': '𐑾', 'P': '𐑿',
@@ -143,8 +143,8 @@ CV_QC = NonQubitQCParadigm(
     },
     canon_tier='O₂',
     canon_c_score=0.0,
-    physical_mechanism="Squeezed vacuum states in optical resonators; "
-                       "quadrature amplitudes (x̂, p̂) as continuous variables; "
+    physical_mechanism="Squeezed vacuum states in optical resonators"
+                       "quadrature amplitudes (x̂, p̂) as continuous variables"
                        "Gaussian unitaries (symplectic transformations) + "
                        "cubic phase gate for non-Gaussian universality",
     material_family="Lithium niobate (LiNbO₃) thin-film photonics",
@@ -185,8 +185,8 @@ MBQC = NonQubitQCParadigm(
     canon_tier='O₂',
     canon_c_score=0.0,
     physical_mechanism="Graph/cluster state entanglement as computational "
-                       "resource; adaptive single-qubit measurements with "
-                       "feedforward; measurement basis = program; "
+                       "resourceadaptive single-qubit measurements with "
+                       "feedforwardmeasurement basis = program"
                        "measurement outcomes = computation trajectory",
     material_family="Silicon photonic cluster states + superconducting detectors",
     o_inf_universes=['low_gate', 'g1_Ω_min', 'g1_Γ_min',
@@ -202,7 +202,7 @@ MBQC = NonQubitQCParadigm(
 # ═══════════════════════════════════════════════════════════════════
 # Delta: Ω 𐑷→𐑟, P 𐑿→𐑹, D 𐑨→𐑼
 # Physical mechanism: non-Abelian anyons in 2D topological phases.
-# Quantum information stored in fusion channels; gates = braiding.
+# Quantum information stored in fusion channelsgates = braiding.
 # Material: fractional quantum Hall (GaAs, graphene), Majorana nanowires
 # (InSb/InAs + Al), Kitaev spin liquids (α-RuCl₃).
 
@@ -231,8 +231,8 @@ TOPOLOGICAL_QC = NonQubitQCParadigm(
     canon_tier='O_∞',
     canon_c_score=1.0,
     physical_mechanism="Non-Abelian anyons (Ising/Majorana, Fibonacci) in "
-                       "2D topological phases; fusion rules replace tensor "
-                       "products; braiding operations are unitary gates; "
+                       "2D topological phasesfusion rules replace tensor "
+                       "productsbraiding operations are unitary gates"
                        "anyon worldlines form quantum circuits in (2+1)D",
     material_family="Fractional quantum Hall (ν=5/2 GaAs) + Majorana nanowires",
     o_inf_universes=['canonical', 'low_gate', 'strict_frobenius',
@@ -272,9 +272,9 @@ ADIABATIC_QC = NonQubitQCParadigm(
     },
     canon_tier='O₁',
     canon_c_score=0.0,
-    physical_mechanism="Time-dependent Hamiltonian H(t)=(1-s(t))H₀+s(t)H₁; "
-                       "adiabatic theorem: gap-protected ground state tracking; "
-                       "quantum tunneling through energy barriers; "
+    physical_mechanism="Time-dependent Hamiltonian H(t)=(1-s(t))H₀+s(t)H₁"
+                       "adiabatic theorem: gap-protected ground state tracking"
+                       "quantum tunneling through energy barriers"
                        "Ising model encoding of combinatorial optimization",
     material_family="Superconducting flux qubit arrays (D-Wave Advantage2) + "
                     "Rydberg atom arrays (neutral atom quantum processors)",
@@ -320,8 +320,8 @@ BOSON_SAMPLING = NonQubitQCParadigm(
     canon_tier='O₀',
     canon_c_score=0.0,
     physical_mechanism="Indistinguishable single photons + Haar-random unitary "
-                       "interferometer; output photon number distribution; "
-                       "permanent of complex Gaussian matrix = output probability; "
+                       "interferometeroutput photon number distribution"
+                       "permanent of complex Gaussian matrix = output probability"
                        "no entanglement required — interferometric suppression "
                        "(Hong-Ou-Mandel) is sufficient",
     material_family="Si₃N₄ photonic integrated circuits + quantum dot single-photon sources",
@@ -362,9 +362,9 @@ QUANTUM_WALKS = NonQubitQCParadigm(
     },
     canon_tier='O₁',
     canon_c_score=0.0,
-    physical_mechanism="Single-particle quantum interference on graph; "
-                       "continuous-time: H=γA (adjacency matrix); "
-                       "discrete-time: coin + shift operators; "
+    physical_mechanism="Single-particle quantum interference on graph"
+                       "continuous-time: H=γA (adjacency matrix)"
+                       "discrete-time: coin + shift operators"
                        "quadratic speedup in propagation: σ(t) ∝ t (vs √t classical)",
     material_family="Femtosecond-laser-written waveguide arrays (SiO₂) + "
                     "ultracold atoms in optical lattices",
@@ -411,10 +411,10 @@ COHERENT_ISING = NonQubitQCParadigm(
     },
     canon_tier='O₁',
     canon_c_score=0.33,  # Gate 1 partial — ⊙ open but K=𐑧 closes Gate 2
-    physical_mechanism="Degenerate OPO network: pump depletion + mutual coupling; "
+    physical_mechanism="Degenerate OPO network: pump depletion + mutual coupling"
                        "below-threshold quantum noise → above-threshold Ising "
-                       "ground state selection; measurement-feedback to close "
-                       "all-to-all coupling; gain-dissipative annealing",
+                       "ground state selectionmeasurement-feedback to close "
+                       "all-to-all couplinggain-dissipative annealing",
     material_family="Periodically-poled LiNbO₃ (PPLN) waveguide OPOs + "
                     "optical fiber ring resonators",
     o_inf_universes=['low_gate', 'g1_⊙_min', 'g1_Ω_min',
@@ -431,7 +431,7 @@ COHERENT_ISING = NonQubitQCParadigm(
 # Delta: Σ 𐑕→𐑳, K 𐑤→𐑺, Γ 𐑝→𐑵
 # Physical mechanism: a disordered quantum many-body system acts as a
 # high-dimensional nonlinear reservoir. Input is encoded into the
-# system; the natural dynamics perform computation; output is read
+# systemthe natural dynamics perform computationoutput is read
 # via simple linear regression. NOT qubits — computation emerges from
 # many-body dynamics, not gate operations.
 # Material: nuclear spin ensembles, donor spin arrays in silicon,
@@ -440,8 +440,8 @@ COHERENT_ISING = NonQubitQCParadigm(
 QUANTUM_RESERVOIR = NonQubitQCParadigm(
     name="quantum_reservoir_computing",
     description="QRC: a disordered quantum many-body system = the 'reservoir'. "
-                "Input is injected; natural Hamiltonian dynamics mix and "
-                "transform the state; output is read from observables via "
+                "Input is injectednatural Hamiltonian dynamics mix and "
+                "transform the stateoutput is read from observables via "
                 "linear regression. No gates, no circuit, no qubit-level "
                 "control — computation emerges from the many-body Hilbert "
                 "space as a nonlinear dynamical system.",
@@ -462,10 +462,10 @@ QUANTUM_RESERVOIR = NonQubitQCParadigm(
     },
     canon_tier='O₀',
     canon_c_score=0.0,
-    physical_mechanism="Many-body localized (MBL) quantum system as reservoir; "
+    physical_mechanism="Many-body localized (MBL) quantum system as reservoir"
                        "local dephasing + disorder = exponential nonlinear "
-                       "feature expansion; input encoding via external field; "
-                       "output = linear readout of local observables; "
+                       "feature expansioninput encoding via external field"
+                       "output = linear readout of local observables"
                        "echo state property: fading memory of inputs",
     material_family="Nuclear spin ensembles (NV centers in diamond) + "
                     "donor spin arrays (³¹P in ²⁸Si)",
@@ -536,7 +536,7 @@ def universal_deltas() -> List[str]:
 # ═══════════════════════════════════════════════════════════════════
 #
 # Grounded in p4rakernel/operculum_peeling.md §§2-4,13-14:
-#   - Each universe is a Ruleset U = ⟨G₁,G₂,G₃,T,A,O⟩
+#   - Each universe is a Ruleset U = ⟨G₁,G₂,G₃,T,A,O>
 #   - The O_∞ projection π_U(τ) = 1 iff τ is idempotent_terminal AND T-consistent
 #   - Different universes have different O_∞ projections
 #   - The operculum boundary ∂(U_a,U_b) = {τ : π_{U_a}(τ) ≠ π_{U_b}(τ)}
@@ -709,7 +709,7 @@ CV_QC_MATERIAL = MaterialRecipe(
         'φ̂=𐑮': 'Unitary symplectic evolution on optical phase space',
         'Ħ=𐑖': 'Two-mode squeezing: 2-step Markov (pump→signal+idler)',
         'Σ=𐑳': 'Heterogeneous: signal modes + idler modes + local oscillator',
-        'Ω=𐑷': 'No topological protection; squeezing degrades with loss',
+        'Ω=𐑷': 'No topological protectionsqueezing degrades with loss',
     },
     trl=5,
     critical_challenges=[
