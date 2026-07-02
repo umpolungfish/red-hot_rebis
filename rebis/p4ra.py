@@ -277,7 +277,7 @@ def _cmd_ligands(args):
             print(f"\n  Generated {len(candidates)} candidate ligands:\n")
             print(f"  {'#':3s}  {'Method':20s}  {'SMILES':40s}  {'Score':8s}  {'logP':6s}  {'MW':8s}")
             print(f"  {'-'*3}  {'-'*20}  {'-'*40}  {'-'*8}  {'-'*6}  {'-'*8}")
-            for i, c in enumerate(candidates[:15], 1):
+            for i, c in enumerate(candidates, 1):
                 smiles = c.get('smiles', '?')
                 if len(smiles) > 38:
                     smiles = smiles[:35] + '...'
@@ -459,7 +459,7 @@ def _cmd_ligands(args):
         print(f"\n  Generated {len(candidates)} candidate ligands:\n")
         print(f"  {'#':3s}  {'Method':20s}  {'SMILES':40s}  {'Score':8s}  {'logP':6s}  {'MW':8s}")
         print(f"  {'-'*3}  {'-'*20}  {'-'*40}  {'-'*8}  {'-'*6}  {'-'*8}")
-        for i, c in enumerate(candidates[:15], 1):
+        for i, c in enumerate(candidates, 1):
             smiles = c.get('smiles', '?')
             if len(smiles) > 38:
                 smiles = smiles[:35] + '...'
