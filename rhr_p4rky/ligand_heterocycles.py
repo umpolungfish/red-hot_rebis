@@ -238,7 +238,7 @@ HETERO_CORE = {
         "priority": [1, 2],
     },
     "tetrahydrothiophene": {
-        "smiles": "[*:1]C1CC([*:2])CS1",
+        "smiles": "[*:1]C1CCSC([*:2])C1",
         "rings": (1, (5,)), "het_atoms": ["S"], "hbd": 0, "hba": 0,
         "aromatic": False, "saturated": True, "family": "sat_5_S",
         "priority": [1, 2],
@@ -268,7 +268,7 @@ HETERO_CORE = {
         "priority": [1, 2],
     },
     "thiomorpholine": {
-        "smiles": "[*:1]N1CCS([*:2])CC1",
+        "smiles": "[*:1]N1CCSC([*:2])C1",
         "rings": (1, (6,)), "het_atoms": ["S", "N"], "hbd": 0, "hba": 1,
         "aromatic": False, "saturated": True, "family": "sat_6_SN",
         "priority": [1, 2],
@@ -473,6 +473,325 @@ HETERO_CORE = {
         "aromatic": False, "saturated": True, "family": "bridged_poly_N",
         "priority": [1, 2],
     },
+# ════════════════════════════════════════════════════════════════
+    # EXPANDED: Bridged Bicyclic Carbocyclic Systems
+    # ════════════════════════════════════════════════════════════════
+
+    "norbornane_27": {
+        "smiles": "[*:1]C1CC2CCC1([*:2])C2",
+        "rings": (2, (5,6)), "het_atoms": [], "hbd": 0, "hba": 0,
+        "aromatic": False, "saturated": True, "family": "bridged_carbo",
+        "priority": [1, 2],
+    },
+    "norbornene_25": {
+        "smiles": "[*:1]C1CC2C=CC1([*:2])C2",
+        "rings": (2, (5,6)), "het_atoms": [], "hbd": 0, "hba": 0,
+        "aromatic": False, "saturated": False, "family": "bridged_carbo_unsat",
+        "priority": [1, 2],
+    },
+    "bicyclo_222_octane": {
+        "smiles": "[*:1]C1CC2CCC1([*:2])CC2",
+        "rings": (2, (6,6)), "het_atoms": [], "hbd": 0, "hba": 0,
+        "aromatic": False, "saturated": True, "family": "bridged_carbo",
+        "priority": [1, 2],
+    },
+    "bicyclo_321_octane": {
+        "smiles": "[*:1]C1CC2CCCC1([*:2])C2",
+        "rings": (2, (5,6)), "het_atoms": [], "hbd": 0, "hba": 0,
+        "aromatic": False, "saturated": True, "family": "bridged_carbo",
+        "priority": [1, 2],
+    },
+    "bicyclo_331_nonane": {
+        "smiles": "[*:1]C1CC2CCCC1([*:2])CC2",
+        "rings": (2, (6,7)), "het_atoms": [], "hbd": 0, "hba": 0,
+        "aromatic": False, "saturated": True, "family": "bridged_carbo_large",
+        "priority": [1, 2],
+    },
+    "bicyclo_440_decane_cis": {
+        "smiles": "[*:1]C1CCC2CCCCC2C1[*:2]",
+        "rings": (2, (6,6)), "het_atoms": [], "hbd": 0, "hba": 0,
+        "aromatic": False, "saturated": True, "family": "fused_carbo",
+        "priority": [1, 2],
+    },
+
+    # ════════════════════════════════════════════════════════════════
+    # EXPANDED: Bridged Heterocycles (N-containing)
+    # ════════════════════════════════════════════════════════════════
+
+    "7_azabicyclo_221_heptane": {
+        "smiles": "[*:1]C1CC2CCC1([*:2])N2",
+        "rings": (2, (5,6)), "het_atoms": ["N"], "hbd": 1, "hba": 1,
+        "aromatic": False, "saturated": True, "family": "bridged_1N",
+        "priority": [1, 2],
+    },
+    "2_azabicyclo_222_octane": {
+        "smiles": "[*:1]C1CC2CCC1([*:2])CN2",
+        "rings": (2, (6,6)), "het_atoms": ["N"], "hbd": 1, "hba": 1,
+        "aromatic": False, "saturated": True, "family": "bridged_1N",
+        "priority": [1, 2],
+    },
+    "3_azabicyclo_321_octane": {
+        "smiles": "[*:1]C1CC2CNCC1([*:2])C2",
+        "rings": (2, (5,6)), "het_atoms": ["N"], "hbd": 1, "hba": 1,
+        "aromatic": False, "saturated": True, "family": "bridged_1N",
+        "priority": [1, 2],
+    },
+    "8_azabicyclo_321_octane": {
+        "smiles": "[*:1]C1CC2CCC1([*:2])CN2",
+        "rings": (2, (5,6)), "het_atoms": ["N"], "hbd": 1, "hba": 1,
+        "aromatic": False, "saturated": True, "family": "bridged_1N",
+        "priority": [1, 2],
+    },
+    "9_azabicyclo_331_nonane": {
+        "smiles": "[*:1]C1CC2CCCN([*:2])C1C2",
+        "rings": (2, (6,7)), "het_atoms": ["N"], "hbd": 1, "hba": 1,
+        "aromatic": False, "saturated": True, "family": "bridged_1N_large",
+        "priority": [1, 2],
+    },
+    "2_azabicyclo_310_hexane": {
+        "smiles": "[*:1]C1CC2CC1([*:2])N2",
+        "rings": (2, (4,5)), "het_atoms": ["N"], "hbd": 1, "hba": 1,
+        "aromatic": False, "saturated": True, "family": "bridged_1N_small",
+        "priority": [1, 2],
+    },
+
+    # ════════════════════════════════════════════════════════════════
+    # EXPANDED: Bridged Heterocycles (N,N-diaza)
+    # ════════════════════════════════════════════════════════════════
+
+    "37_diazabicyclo_331_nonane": {
+        "smiles": "[*:1]N1CC2CC(C1)CN([*:2])C2",
+        "rings": (2, (6,7)), "het_atoms": ["N", "N"], "hbd": 1, "hba": 2,
+        "aromatic": False, "saturated": True, "family": "bridged_2N",
+        "priority": [1, 2],
+    },
+    "39_diazabicyclo_331_nonane": {
+        "smiles": "[*:1]N1CCCN2CCC1([*:2])C2",
+        "rings": (2, (6,7)), "het_atoms": ["N", "N"], "hbd": 1, "hba": 2,
+        "aromatic": False, "saturated": True, "family": "bridged_2N",
+        "priority": [1, 2],
+    },
+    "28_diazabicyclo_321_octane": {
+        "smiles": "[*:1]C1CC2CNC1([*:2])CN2",
+        "rings": (2, (5,6)), "het_atoms": ["N", "N"], "hbd": 1, "hba": 2,
+        "aromatic": False, "saturated": True, "family": "bridged_2N",
+        "priority": [1, 2],
+    },
+    "26_diazabicyclo_222_octane": {
+        "smiles": "[*:1]C1CN2CCC1([*:2])CN2",
+        "rings": (2, (6,6)), "het_atoms": ["N", "N"], "hbd": 1, "hba": 2,
+        "aromatic": False, "saturated": True, "family": "bridged_2N",
+        "priority": [1, 2],
+    },
+
+    # ════════════════════════════════════════════════════════════════
+    # EXPANDED: Bridged Heterocycles (O-containing)
+    # ════════════════════════════════════════════════════════════════
+
+    "7_oxabicyclo_221_heptane": {
+        "smiles": "[*:1]C1CC2CCC1([*:2])O2",
+        "rings": (2, (5,6)), "het_atoms": ["O"], "hbd": 0, "hba": 1,
+        "aromatic": False, "saturated": True, "family": "bridged_1O",
+        "priority": [1, 2],
+    },
+    "8_oxabicyclo_321_octane": {
+        "smiles": "[*:1]C1CC2CCC1([*:2])CO2",
+        "rings": (2, (5,6)), "het_atoms": ["O"], "hbd": 0, "hba": 1,
+        "aromatic": False, "saturated": True, "family": "bridged_1O",
+        "priority": [1, 2],
+    },
+    "2_oxa_5_azabicyclo_221_heptane": {
+        "smiles": "[*:1]C1CC2COC1([*:2])N2",
+        "rings": (2, (5,6)), "het_atoms": ["O", "N"], "hbd": 1, "hba": 2,
+        "aromatic": False, "saturated": True, "family": "bridged_ON",
+        "priority": [1, 2],
+    },
+    "3_oxa_7_azabicyclo_331_nonane": {
+        "smiles": "[*:1]C1CC2COCC1([*:2])CN2",
+        "rings": (2, (6,7)), "het_atoms": ["O", "N"], "hbd": 1, "hba": 2,
+        "aromatic": False, "saturated": True, "family": "bridged_ON_large",
+        "priority": [1, 2],
+    },
+    "8_oxa_3_azabicyclo_321_octane": {
+        "smiles": "[*:1]C1CC2COC1([*:2])CN2",
+        "rings": (2, (5,6)), "het_atoms": ["O", "N"], "hbd": 1, "hba": 2,
+        "aromatic": False, "saturated": True, "family": "bridged_ON",
+        "priority": [1, 2],
+    },
+
+    # ════════════════════════════════════════════════════════════════
+    # EXPANDED: Bridged Heterocycles (S-containing)
+    # ════════════════════════════════════════════════════════════════
+
+    "7_thiabicyclo_221_heptane": {
+        "smiles": "[*:1]C1CC2CCC1([*:2])S2",
+        "rings": (2, (5,6)), "het_atoms": ["S"], "hbd": 0, "hba": 0,
+        "aromatic": False, "saturated": True, "family": "bridged_1S",
+        "priority": [1, 2],
+    },
+    "8_thiabicyclo_321_octane": {
+        "smiles": "[*:1]C1CC2CCC1([*:2])CS2",
+        "rings": (2, (5,6)), "het_atoms": ["S"], "hbd": 0, "hba": 0,
+        "aromatic": False, "saturated": True, "family": "bridged_1S",
+        "priority": [1, 2],
+    },
+    "3_thia_7_azabicyclo_331_nonane": {
+        "smiles": "[*:1]C1CC2CSCC1([*:2])CN2",
+        "rings": (2, (6,7)), "het_atoms": ["S", "N"], "hbd": 1, "hba": 1,
+        "aromatic": False, "saturated": True, "family": "bridged_SN",
+        "priority": [1, 2],
+    },
+
+    # ════════════════════════════════════════════════════════════════
+    # EXPANDED: Tricyclic & Cage Carbocyclic Systems
+    # ════════════════════════════════════════════════════════════════
+
+    "adamantane": {
+        "smiles": "[*:1]C1C2CC3CC1CC([*:2])(C2)C3",
+        "rings": (3, (6,6,6)), "het_atoms": [], "hbd": 0, "hba": 0,
+        "aromatic": False, "saturated": True, "family": "cage_carbo",
+        "priority": [1, 2],
+    },
+    "twistane": {
+        "smiles": "[*:1]C1CC2CC3CCC1([*:2])CC2C3",
+        "rings": (3, (6,6,6)), "het_atoms": [], "hbd": 0, "hba": 0,
+        "aromatic": False, "saturated": True, "family": "cage_carbo",
+        "priority": [1, 2],
+    },
+    "noradamantane": {
+        "smiles": "[*:1]C1C2CC3CC1([*:2])CC2C3",
+        "rings": (3, (5,6,6)), "het_atoms": [], "hbd": 0, "hba": 0,
+        "aromatic": False, "saturated": True, "family": "cage_carbo_small",
+        "priority": [1, 2],
+    },
+    "tricyclo_331_137_decane": {
+        "smiles": "[*:1]C1CC2CC3CCC1([*:2])CC2C3",
+        "rings": (3, (6,6,6)), "het_atoms": [], "hbd": 0, "hba": 0,
+        "aromatic": False, "saturated": True, "family": "cage_carbo",
+        "priority": [1, 2],
+    },
+
+    # ════════════════════════════════════════════════════════════════
+    # EXPANDED: Cage Heterocycles (aza-adamantanes)
+    # ════════════════════════════════════════════════════════════════
+
+    "1_azaadamantane": {
+        "smiles": "[*:1]C1C2CN3CC1CC([*:2])(C2)C3",
+        "rings": (3, (6,6,6)), "het_atoms": ["N"], "hbd": 0, "hba": 1,
+        "aromatic": False, "saturated": True, "family": "cage_1N",
+        "priority": [1, 2],
+    },
+    "2_azaadamantane": {
+        "smiles": "[*:1]C1C2CC3CN1CC([*:2])(C2)C3",
+        "rings": (3, (6,6,6)), "het_atoms": ["N"], "hbd": 0, "hba": 1,
+        "aromatic": False, "saturated": True, "family": "cage_1N",
+        "priority": [1, 2],
+    },
+    "hexamine_cage": {
+        "smiles": "[*:1]C1N2CN3CN1CN([*:2])C2C3",
+        "rings": (4, (6,6,6,6)), "het_atoms": ["N", "N", "N", "N"], "hbd": 0, "hba": 4,
+        "aromatic": False, "saturated": True, "family": "cage_polyN",
+        "priority": [1, 2],
+    },
+    "14_diazaadamantane": {
+        "smiles": "[*:1]C1C2CN3CCN1CC([*:2])(C2)C3",
+        "rings": (3, (6,6,6)), "het_atoms": ["N", "N"], "hbd": 0, "hba": 2,
+        "aromatic": False, "saturated": True, "family": "cage_2N",
+        "priority": [1, 2],
+    },
+    "oxaadamantane": {
+        "smiles": "[*:1]C1C2CC3CC1CC([*:2])(C2)O3",
+        "rings": (3, (6,6,6)), "het_atoms": ["O"], "hbd": 0, "hba": 1,
+        "aromatic": False, "saturated": True, "family": "cage_1O",
+        "priority": [1, 2],
+    },
+
+    # ════════════════════════════════════════════════════════════════
+    # EXPANDED: Fused Polycyclic (3+ rings) All-Carbon
+    # ════════════════════════════════════════════════════════════════
+
+    "phenanthrene_29": {
+        "smiles": "[*:1]c1ccc2c(c1)ccc1cc([*:2])ccc21",
+        "rings": (3, (6,6,6)), "het_atoms": [], "hbd": 0, "hba": 0,
+        "aromatic": True, "saturated": False, "family": "polyarom",
+        "priority": [1, 2],
+    },
+    "pyrene_16": {
+        "smiles": "[*:1]c1cc2ccc3cccc4ccc1c2c34[*:2]",
+        "rings": (4, (6,6,6,6)), "het_atoms": [], "hbd": 0, "hba": 0,
+        "aromatic": True, "saturated": False, "family": "polyarom",
+        "priority": [1, 2],
+    },
+    "chrysene_612": {
+        "smiles": "[*:1]c1ccc2c(c1)ccc1c3ccccc3cc([*:2])c21",
+        "rings": (4, (6,6,6,6)), "het_atoms": [], "hbd": 0, "hba": 0,
+        "aromatic": True, "saturated": False, "family": "polyarom",
+        "priority": [1, 2],
+    },
+    "fluoranthene_38": {
+        "smiles": "[*:1]c1ccc2c3c1cccc3c1cccc2c1[*:2]",
+        "rings": (4, (5,6,6,6)), "het_atoms": [], "hbd": 0, "hba": 0,
+        "aromatic": True, "saturated": False, "family": "polyarom",
+        "priority": [1, 2],
+    },
+
+    # ════════════════════════════════════════════════════════════════
+    # EXPANDED: Tricyclic Heterocycles (fused)
+    # ════════════════════════════════════════════════════════════════
+
+    "phenanthridine_56": {
+        "smiles": "[*:1]c1ccc2c(c1)cnc1cc([*:2])ccc21",
+        "rings": (3, (6,6,6)), "het_atoms": ["N"], "hbd": 0, "hba": 1,
+        "aromatic": True, "saturated": False, "family": "fused_666_1N",
+        "priority": [1, 2],
+    },
+    "benzo_c_cinnoline": {
+        "smiles": "[*:1]c1ccc2c(c1)nnc1cc([*:2])ccc21",
+        "rings": (3, (6,6,6)), "het_atoms": ["N", "N"], "hbd": 0, "hba": 2,
+        "aromatic": True, "saturated": False, "family": "fused_666_2N",
+        "priority": [1, 2],
+    },
+    "phenoxazine_310": {
+        "smiles": "[*:1]c1ccc2Nc3cc([*:2])ccc3Oc2c1",
+        "rings": (3, (6,6,6)), "het_atoms": ["O", "N"], "hbd": 1, "hba": 2,
+        "aromatic": True, "saturated": False, "family": "fused_666_ON",
+        "priority": [1, 2],
+    },
+    "benzocarbazole": {
+        "smiles": "[*:1]c1ccc2c(c1)c1cc3cc([*:2])ccc3nc1c1ccccc21",
+        "rings": (4, (5,6,6,6)), "het_atoms": ["N"], "hbd": 1, "hba": 1,
+        "aromatic": True, "saturated": False, "family": "polyarom_1N",
+        "priority": [1, 2],
+    },
+
+    # ════════════════════════════════════════════════════════════════
+    # EXPANDED: Spiro Polycyclic Heterocycles
+    # ════════════════════════════════════════════════════════════════
+
+    "spiro_pyrrolidine_piperidine": {
+        "smiles": "[*:1]C1CCCN2CCCC12[*:2]",
+        "rings": (2, (5,6)), "het_atoms": ["N", "N"], "hbd": 1, "hba": 2,
+        "aromatic": False, "saturated": True, "family": "spiro_2N",
+        "priority": [1, 2],
+    },
+    "spiro_piperidine_tetrahydrofuran": {
+        "smiles": "[*:1]C1CCCOC12CCN([*:2])CC2",
+        "rings": (2, (5,6)), "het_atoms": ["O", "N"], "hbd": 0, "hba": 2,
+        "aromatic": False, "saturated": True, "family": "spiro_ON",
+        "priority": [1, 2],
+    },
+    "spiro_chroman_piperidine": {
+        "smiles": "[*:1]N1CCC2(CC1)COc1ccc([*:2])cc21",
+        "rings": (3, (6,6,6)), "het_atoms": ["O", "N"], "hbd": 0, "hba": 2,
+        "aromatic": False, "saturated": False, "family": "spiro_ON_arom",
+        "priority": [1, 2],
+    },
+    "dispiro_piperazine": {
+        "smiles": "[*:1]C1CC23CCN(CC2)CC3N([*:2])C1",
+        "rings": (3, (6,6,6)), "het_atoms": ["N", "N"], "hbd": 1, "hba": 2,
+        "aromatic": False, "saturated": True, "family": "dispiro_2N",
+        "priority": [1, 2],
+    },
 }
 
 
@@ -607,13 +926,84 @@ def match_scaffolds_to_site(site_type: Dict[str, str], n_top: int = 15) -> List[
         if site_hbd >= 3 and sc.get("hbd", 0) >= 1:
             score += 0.5
 
-        # Sulfur complement: W (winding) high → S-containing scaffolds
+        
+        # ── Bridged carbocyclic bonus ──
+        if "bridged" in sc.get("family", ""):
+            if t_val >= 3:
+                score += 2.0
+            elif t_val >= 2:
+                score += 1.0
+            if target_chiral:
+                score += 1.0
+            if sc["saturated"] and target_saturation is False:
+                score += 0.5
+
+        # ── Cage system bonus ──
+        if "cage" in sc.get("family", ""):
+            if t_val >= 4:
+                score += 3.0
+            elif t_val >= 3:
+                score += 1.5
+            if sc["saturated"]:
+                score += 0.5
+            if len(sc["het_atoms"]) >= 2:
+                score += 1.0
+
+        # ── Polyaromatic bonus ──
+        if "polyarom" in sc.get("family", ""):
+            if sc["aromatic"] and target_saturation is False:
+                score += 1.5
+            if ph_val >= 2:
+                score += 1.0
+            if n_rings >= 4:
+                score += 1.5
+
+        # ── Spiro/dispiro bonus ──
+        if "spiro" in sc.get("family", "") or "dispiro" in sc.get("family", ""):
+            if target_chiral:
+                score += 1.5
+            if t_val >= 2:
+                score += 0.5
+            if len(sc["het_atoms"]) >= 2:
+                score += 0.5
+
+
+# Sulfur complement: W (winding) high → S-containing scaffolds
         if o["W"] >= 2 and "S" in sc["het_atoms"]:
             score += 1.0
 
-        # P/F complement
-        if o["P"] >= 3 and o["F"] >= 2:
+        # P/F complement — high P + high F = demand complex aromatic polycyclics
+        p_val = o["P"]
+        f_val = o["F"]
+        if p_val >= 3 and f_val >= 2:
+            # Frobenius-special parity + quantum fidelity → polycyclic aromatics
+            if n_rings >= 3:
+                score += 2.5
+            elif n_rings >= 2:
+                score += 1.5
             if sc["aromatic"] and n_het >= 2:
+                score += 1.5
+            if n_het >= 3:
+                score += 1.0
+        elif p_val >= 3:
+            # High symmetry → multi-ring
+            if n_rings >= 2:
+                score += 1.0
+            if sc["aromatic"]:
+                score += 0.5
+        elif f_val >= 2:
+            # Quantum fidelity → aromatic
+            if sc["aromatic"]:
+                score += 1.0
+            if n_rings >= 2:
+                score += 0.5
+
+        # S (stoichiometry) complement
+        s_val = o["S"]
+        if s_val >= 2:  # heterogeneous → diverse heteroatoms
+            if len(set(sc["het_atoms"])) >= 3:
+                score += 1.0
+            elif len(set(sc["het_atoms"])) >= 2:
                 score += 0.5
 
         scores[name] = score
@@ -643,72 +1033,162 @@ def elaborate_scaffold(
 ) -> List[str]:
     """Elaborate a heterocycle scaffold with substituent fragments.
 
-    Takes a core scaffold (with [*:1] and [*:2] attachment points),
-    replaces dummy atoms with FG fragments, and enumerates all
-    substitution patterns.
+    Uses RDKit RWMol for proper atom-by-atom fragment attachment
+    rather than naive string replacement. This ensures chemically
+    valid connections at all attachment points.
 
-    Returns list of SMILES strings.
+    Returns list of (method_tag, SMILES) tuples.
     """
     if scaffold_name not in HETERO_CORE:
         return []
 
     sc = HETERO_CORE[scaffold_name]
     core_smi = sc["smiles"]
-    frag_smis = _get_fg_smiles_list(fg_names, max_per_fg=3)
+    frag_smis = _get_fg_smiles_list(fg_names, max_per_fg=2)
 
     if not frag_smis:
-        # At minimum use simple FGs
-        frag_smis = ["N", "O", "C(=O)O", "C(=O)N"]
+        frag_smis = ["C", "N", "O", "C(=O)O", "C(=O)N"]
 
     molecules = []
 
-    # Strategy 1: Single FG at position [*:1], keep [*:2] as H
+    # Parse core scaffold with RDKit to find dummy atom positions
+    try:
+        core_mol = Chem.MolFromSmiles(core_smi)
+        if core_mol is None:
+            # Fall back to string-based for unparseable scaffolds
+            return _elaborate_by_string(core_smi, frag_smis, sc)
+    except:
+        return _elaborate_by_string(core_smi, frag_smis, sc)
+
+    # Find dummy atoms [*:1] and [*:2]
+    dummy_atoms = []
+    for atom in core_mol.GetAtoms():
+        if atom.GetSymbol() == '*' and atom.HasProp('molAtomMapNumber'):
+            dummy_atoms.append(atom)
+
+    if len(dummy_atoms) < 2:
+        return _elaborate_by_string(core_smi, frag_smis, sc)
+
+    # Sort by atom map number
+    dummy_atoms.sort(key=lambda a: int(a.GetProp('molAtomMapNumber')))
+    d1, d2 = dummy_atoms[0], dummy_atoms[1]
+
+    # Get the neighbors of each dummy atom (the actual attachment points)
+    nbr1 = [a for a in d1.GetNeighbors()][0] if d1.GetNeighbors() else None
+    nbr2 = [a for a in d2.GetNeighbors()][0] if d2.GetNeighbors() else None
+
+    # Strategy: Use SMILES with explicit attachment via carbon linker
+    # Replace dummy atoms with CH2 groups first, then swap CH2->FG
+    def _attach_fg_at_position(core_mol, dummy_atom, fg_smi, keep_other_dummy=True):
+        """Attach FG at dummy position. Other dummy stays as CH3."""
+        try:
+            rw = Chem.RWMol(core_mol)
+            dummy_idx = dummy_atom.GetIdx()
+            nbr = [a for a in dummy_atom.GetNeighbors()]
+            if not nbr:
+                return None
+            nbr_idx = nbr[0].GetIdx()
+
+            # Remove dummy atom and its neighbor's bond
+            rw.RemoveAtom(dummy_idx)
+
+            # Parse FG fragment
+            fg_mol = Chem.MolFromSmiles(fg_smi)
+            if fg_mol is None:
+                return None
+
+            # Combine core + FG, create bond between nbr and first carbon of FG
+            combined = Chem.CombineMols(rw.GetMol(), fg_mol)
+            rw2 = Chem.RWMol(combined)
+            nbr_new_idx = nbr_idx if nbr_idx < dummy_idx else nbr_idx - 1
+            fg_start = rw.GetMol().GetNumAtoms()
+            rw2.AddBond(nbr_new_idx, fg_start, Chem.BondType.SINGLE)
+
+            mol = rw2.GetMol()
+            Chem.SanitizeMol(mol)
+            return Chem.MolToSmiles(mol)
+        except:
+            return None
+
+    # Strategy 1: Attach FG1 at position 1, leave position 2 as H
     for f1 in frag_smis:
-        # Replace [*:1] with FG, [*:2] with nothing (removed/hydrogen)
-        # For [*:n] in SMILES, we replace with the FG SMILES
-        # RDKit [*:1] means atom with atom map 1, isotopically labeled
-        # We need to do proper R-group decomposition or simple string replace
-        # Simpler: replace [*:1] with FG fragment, strip [*:2]
+        result = _attach_fg_at_position(core_mol, d1, f1)
+        if result:
+            # Remove other dummy
+            try:
+                mol = Chem.MolFromSmiles(result)
+                if mol:
+                    dummies_left = [a for a in mol.GetAtoms() if a.GetSymbol() == '*']
+                    if dummies_left:
+                        rw = Chem.RWMol(mol)
+                        for da in sorted(dummies_left, key=lambda a: a.GetIdx(), reverse=True):
+                            rw.RemoveAtom(da.GetIdx())
+                        mol = rw.GetMol()
+                        Chem.SanitizeMol(mol)
+                        molecules.append(("mono_1", Chem.MolToSmiles(mol)))
+            except:
+                molecules.append(("mono_1_str", result))
+
+    # Strategy 2: Attach FG2 at position 2
+    for f2 in frag_smis:
+        result = _attach_fg_at_position(core_mol, d2, f2)
+        if result:
+            try:
+                mol = Chem.MolFromSmiles(result)
+                if mol:
+                    dummies_left = [a for a in mol.GetAtoms() if a.GetSymbol() == '*']
+                    if dummies_left:
+                        rw = Chem.RWMol(mol)
+                        for da in sorted(dummies_left, key=lambda a: a.GetIdx(), reverse=True):
+                            rw.RemoveAtom(da.GetIdx())
+                        mol = rw.GetMol()
+                        Chem.SanitizeMol(mol)
+                        molecules.append(("mono_2", Chem.MolToSmiles(mol)))
+            except:
+                molecules.append(("mono_2_str", result))
+
+    # If RDKit-based assembly failed, fall back to string-based
+    if len(molecules) < 2:
+        molecules.extend(_elaborate_by_string(core_smi, frag_smis, sc))
+
+    return molecules
+
+
+def _elaborate_by_string(core_smi: str, frag_smis: List[str],
+                         sc: Dict) -> List[Tuple[str, str]]:
+    """Fallback SMILES string-based elaboration."""
+    molecules = []
+    # Ensure all FGs start with carbon for clean connection
+    frag_smis_clean = []
+    for f in frag_smis:
+        # If FG starts with a heteroatom, prepend a CH2 linker
+        first_char = f[0]
+        if first_char in 'NOSPFClBrI[cnos]':
+            f = 'C' + f
+        frag_smis_clean.append(f)
+
+    for f1 in frag_smis_clean:
         smi = core_smi.replace("[*:1]", f1).replace("[*:2]", "")
-        # Clean up: remove duplicate connectors
         smi = smi.replace("-)", ")").replace("(-", "(").replace("--", "-")
         molecules.append(("mono_1", smi))
 
-    # Strategy 2: Single FG at position [*:2]
-    for f2 in frag_smis:
+    for f2 in frag_smis_clean:
         smi = core_smi.replace("[*:2]", f2).replace("[*:1]", "")
         smi = smi.replace("-)", ")").replace("(-", "(").replace("--", "-")
         molecules.append(("mono_2", smi))
 
-    # Strategy 3: Both positions substituted (same FG)
-    for fg in frag_smis:
+    for fg in frag_smis_clean:
         smi = core_smi.replace("[*:1]", fg).replace("[*:2]", fg)
         smi = smi.replace("-)", ")").replace("(-", "(").replace("--", "-")
         molecules.append(("bis_same", smi))
 
-    # Strategy 4: Both positions substituted (different FGs)
-    for i, f1 in enumerate(frag_smis):
-        for j, f2 in enumerate(frag_smis):
-            if i == j:
+    for f1 in frag_smis_clean:
+        for f2 in frag_smis_clean:
+            if f1 == f2:
                 continue
             smi = core_smi.replace("[*:1]", f1).replace("[*:2]", f2)
             smi = smi.replace("-)", ")").replace("(-", "(").replace("--", "-")
             molecules.append(("bis_diff", smi))
-
-    # Strategy 5: Cyclize — use bifunctional FGs to form additional rings
-    if sc["saturated"]:
-        # Try amine + carbonyl → lactam closure
-        bifunctional_pairs = [
-            ("N", "C(=O)O"),   # amide
-            ("N", "C(=O)Cl"),  # amide
-            ("O", "C(=O)O"),   # ester
-            ("N", "S(=O)(=O)O"),  # sulfonamide
-        ]
-        for f1, f2 in bifunctional_pairs:
-            if f1 in frag_smis and f2 in frag_smis:
-                smi = core_smi.replace("[*:1]", f1).replace("[*:2]", f2)
-                smi = smi.replace("-)", ")").replace("(-", "(").replace("--", "-")
-                molecules.append(("bifunctional", smi))
 
     return molecules
 
@@ -805,7 +1285,7 @@ def generate_heterocycle_ligands(
     fg_names: Optional[List[str]] = None,
     substrate_hint: str = "",
     max_candidates: int = 30,
-    n_scaffolds: int = 12,
+    n_scaffolds: int = 25,
 ) -> List[Dict]:
     """Generate de-novo heterocyclic/polycyclic ligands from an active site type.
 
@@ -928,7 +1408,7 @@ def generate_hybrid_ligands(
         fg_names=None,
         substrate_hint=substrate_hint,
         max_candidates=n_het,
-        n_scaffolds=12,
+        n_scaffolds=25,
     )
 
     # Fragment-based generation (existing method)

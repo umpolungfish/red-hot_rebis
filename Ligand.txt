@@ -1,0 +1,513 @@
+Generating ligands for enzyme: 10BM...
+  Not in built-in catalog (10 entries).
+  Attempting PDB fetch from RCSB for '10BM'...
+  ✓ Fetched PDB 10BM: 1991871 bytes
+
+  Extracting active site from PDB structure...
+  Using potential catalytic residues: ARG105, ARG113, ARG118, ARG159, ARG169, ARG171, ARG177, ARG193
+
+  Encoding active site structural type...
+  Site type: <𐑛; 𐑡; 𐑩; 𐑹; 𐑐; 𐑘; 𐑚; 𐑝; 𐑢; 𐑓; 𐑳; 𐑷>
+  Generating de-novo ligands via enzyme structural type pipeline...
+    Bond: hydrogen_bond, FGs: ['amine', 'phosphonate']
+    Matched 18 scaffolds: 14_diazaadamantane, morpholine, spiro_piperidine_oxetane, spiro_piperidine_tetrahydrofuran, oxazole_24, isoxazole_35...
+
+  Generated 20 candidate ligands:
+
+  #    Method                SMILES                                    Score     logP    MW      
+  ---  --------------------  ----------------------------------------  --------  ------  --------
+  1    het_thiomorpholine_mono_2  O=P(O)(O)CCC1CNCCS1                       0.8700    0.3    211.2
+  2    het_thiomorpholine_mono_2  O=P(O)(O)CC1CNCCS1                        0.8650   -0.1    197.2
+  3    het_piperazine_mono_1  O=P(O)(O)CCN1CCNCC1                       0.8590   -0.9    194.2
+  4    het_thiomorpholine_mono_1  O=P(O)(O)CCN1CCSCC1                       0.8570    0.2    211.2
+  5    het_piperazine_mono_1  O=P(O)(O)CN1CCNCC1                        0.8550   -1.0    180.1
+  6    het_thiomorpholine_mono_1  O=P(O)(O)CN1CCSCC1                        0.8530    0.2    197.2
+  7    het_thiazole_24_mono_1  O=P(O)(O)CCc1nccs1                        0.8310    0.9    193.2
+  8    het_thiazole_24_mono_2  O=P(O)(O)CCc1cscn1                        0.8310    0.9    193.2
+  9    het_imidazole_14_mono_1_str  O=P(O)(O)CCc1cn([*:2])cn1                 0.8290   -0.1    175.1
+  10   het_imidazole_45_mono_1  O=P(O)(O)CCc1c[nH]cn1                     0.8270    0.1    176.1
+  11   het_imidazole_45_mono_2  O=P(O)(O)CCc1ncc[nH]1                     0.8270    0.1    176.1
+  12   het_thiazole_24_mono_1  O=P(O)(O)Cc1nccs1                         0.8270    0.8    179.1
+  13   sym_hydrogen_bond     NCOCP(=O)(O)O                             0.4500   -0.9    141.1
+  14   sym_hydrogen_bond     NCOCCP(=O)(O)O                            0.4500   -0.9    155.1
+  15   sym_hydrogen_bond     NCOc1ccc(P(=O)(O)O)cc1                    0.4500   -0.2    203.1
+Generating ligands for enzyme: 4XRY...
+  Not in built-in catalog (10 entries).
+  Attempting PDB fetch from RCSB for '4XRY'...
+  ✓ Fetched PDB 4XRY: 1322244 bytes
+
+  Extracting active site from PDB structure...
+  Using potential catalytic residues: ARG101, ARG115, ARG123, ARG129, ARG132, ARG133, ARG140, ARG170
+
+  Encoding active site structural type...
+  Site type: <𐑛; 𐑡; 𐑩; 𐑹; 𐑐; 𐑘; 𐑚; 𐑝; 𐑢; 𐑓; 𐑳; 𐑷>
+  Generating de-novo ligands via enzyme structural type pipeline...
+    Bond: hydrogen_bond, FGs: ['amine', 'phosphonate']
+    Matched 18 scaffolds: 14_diazaadamantane, morpholine, spiro_piperidine_oxetane, spiro_piperidine_tetrahydrofuran, oxazole_24, isoxazole_35...
+
+  Generated 20 candidate ligands:
+
+  #    Method                SMILES                                    Score     logP    MW      
+  ---  --------------------  ----------------------------------------  --------  ------  --------
+  1    het_thiomorpholine_mono_2  O=P(O)(O)CCC1CNCCS1                       0.8700    0.3    211.2
+  2    het_thiomorpholine_mono_2  O=P(O)(O)CC1CNCCS1                        0.8650   -0.1    197.2
+  3    het_piperazine_mono_1  O=P(O)(O)CCN1CCNCC1                       0.8590   -0.9    194.2
+  4    het_thiomorpholine_mono_1  O=P(O)(O)CCN1CCSCC1                       0.8570    0.2    211.2
+  5    het_piperazine_mono_1  O=P(O)(O)CN1CCNCC1                        0.8550   -1.0    180.1
+  6    het_thiomorpholine_mono_1  O=P(O)(O)CN1CCSCC1                        0.8530    0.2    197.2
+  7    het_thiazole_24_mono_1  O=P(O)(O)CCc1nccs1                        0.8310    0.9    193.2
+  8    het_thiazole_24_mono_2  O=P(O)(O)CCc1cscn1                        0.8310    0.9    193.2
+  9    het_imidazole_14_mono_1_str  O=P(O)(O)CCc1cn([*:2])cn1                 0.8290   -0.1    175.1
+  10   het_imidazole_45_mono_1  O=P(O)(O)CCc1c[nH]cn1                     0.8270    0.1    176.1
+  11   het_imidazole_45_mono_2  O=P(O)(O)CCc1ncc[nH]1                     0.8270    0.1    176.1
+  12   het_thiazole_24_mono_1  O=P(O)(O)Cc1nccs1                         0.8270    0.8    179.1
+  13   sym_hydrogen_bond     NCOCP(=O)(O)O                             0.4500   -0.9    141.1
+  14   sym_hydrogen_bond     NCOCCP(=O)(O)O                            0.4500   -0.9    155.1
+  15   sym_hydrogen_bond     NCOc1ccc(P(=O)(O)O)cc1                    0.4500   -0.2    203.1
+Generating ligands for enzyme: 11BA...
+  Not in built-in catalog (10 entries).
+  Attempting PDB fetch from RCSB for '11BA'...
+  ✓ Fetched PDB 11BA: 216270 bytes
+
+  Extracting active site from PDB structure...
+  Using potential catalytic residues: ARG10, ARG33, ARG80, ARG85, ASP121, ASP14, ASP53, ASP83
+
+  Encoding active site structural type...
+  Site type: <𐑛; 𐑡; 𐑩; 𐑹; 𐑐; 𐑘; 𐑚; 𐑝; 𐑢; 𐑫; 𐑳; 𐑷>
+  Generating de-novo ligands via enzyme structural type pipeline...
+    Bond: hydrogen_bond, FGs: ['sulfate', 'phosphate']
+    Matched 18 scaffolds: spiro_piperidine_oxetane, spiro_piperidine_tetrahydrofuran, spiro_indoline_pyrrolidine, spiro_pyrrolidine_piperidine, dispiro_piperazine, 2_oxa_5_azabicyclo_221_heptane...
+
+  Generated 20 candidate ligands:
+
+  #    Method                SMILES                                    Score     logP    MW      
+  ---  --------------------  ----------------------------------------  --------  ------  --------
+  1    het_piperazine_mono_1  O=P(O)(O)ON1CCNCC1                        0.8910   -1.1    182.1
+  2    het_piperazine_mono_1  O=S(=O)(O)ON1CCNCC1                       0.8850   -1.4    182.2
+  3    het_piperazine_mono_1  O=P(O)(O)OCN1CCNCC1                       0.8800   -1.0    196.1
+  4    het_piperazine_mono_1  O=S(=O)(O)OCN1CCNCC1                      0.8740   -1.3    196.2
+  5    het_2_oxa_5_azabicyclo_221_heptane_mono_1  O=P(O)(O)OC1CC2COC1N2                     0.8550   -0.8    195.1
+  6    het_2_oxa_5_azabicyclo_221_heptane_mono_2  O=P(O)(O)OC12CCC(CO1)N2                   0.8550   -0.5    195.1
+  7    het_2_oxa_5_azabicyclo_221_heptane_mono_1  O=S(=O)(O)OC1CC2COC1N2                    0.8480   -1.1    195.2
+  8    het_2_oxa_5_azabicyclo_221_heptane_mono_2  O=S(=O)(O)OC12CCC(CO1)N2                  0.8480   -0.8    195.2
+  9    het_diazabicyclo_222_octane_mono_2  O=P(O)(O)OC1CN2CCC(CN1)C2                 0.8480   -0.7    222.2
+  10   het_37_diazabicyclo_331_nonane_mono_1  O=P(O)(O)ON1CC2CNCC(C2)C1                 0.8480   -0.5    222.2
+  11   het_39_diazabicyclo_331_nonane_mono_2  O=P(O)(O)OC12CCN(CCCN1)C2                 0.8480   -0.5    222.2
+  12   het_2_oxa_5_azabicyclo_221_heptane_mono_1  O=P(O)(O)OCC1CC2COC1N2                    0.8440   -0.6    209.1
+  13   hydrogen_bond_OS(=O)(=O)O  O=S(=O)(O)OCO                             0.4500   -1.2    128.1
+  14   sym_hydrogen_bond     O=S(=O)(O)OCOCOS(=O)(=O)O                 0.4500   -1.4    238.2
+  15   sym_hydrogen_bond     O=S(=O)(O)OCOc1ccc(OS(=O)(=O)O)cc1        0.4500    0.0    300.3
+Generating ligands for enzyme: 1A0D...
+  Not in built-in catalog (10 entries).
+  Attempting PDB fetch from RCSB for '1A0D'...
+  ✓ Fetched PDB 1A0D: 1230633 bytes
+
+  Extracting active site from PDB structure...
+  Using potential catalytic residues: ARG146, ARG176, ARG188, ARG208, ARG281, ARG284, ARG330, ARG340
+
+  Encoding active site structural type...
+  Site type: <𐑛; 𐑡; 𐑩; 𐑹; 𐑐; 𐑘; 𐑚; 𐑝; 𐑢; 𐑓; 𐑳; 𐑷>
+  Generating de-novo ligands via enzyme structural type pipeline...
+    Bond: hydrogen_bond, FGs: ['amine', 'phosphonate']
+    Matched 18 scaffolds: 14_diazaadamantane, morpholine, spiro_piperidine_oxetane, spiro_piperidine_tetrahydrofuran, oxazole_24, isoxazole_35...
+
+  Generated 20 candidate ligands:
+
+  #    Method                SMILES                                    Score     logP    MW      
+  ---  --------------------  ----------------------------------------  --------  ------  --------
+  1    het_thiomorpholine_mono_2  O=P(O)(O)CCC1CNCCS1                       0.8700    0.3    211.2
+  2    het_thiomorpholine_mono_2  O=P(O)(O)CC1CNCCS1                        0.8650   -0.1    197.2
+  3    het_piperazine_mono_1  O=P(O)(O)CCN1CCNCC1                       0.8590   -0.9    194.2
+  4    het_thiomorpholine_mono_1  O=P(O)(O)CCN1CCSCC1                       0.8570    0.2    211.2
+  5    het_piperazine_mono_1  O=P(O)(O)CN1CCNCC1                        0.8550   -1.0    180.1
+  6    het_thiomorpholine_mono_1  O=P(O)(O)CN1CCSCC1                        0.8530    0.2    197.2
+  7    het_thiazole_24_mono_1  O=P(O)(O)CCc1nccs1                        0.8310    0.9    193.2
+  8    het_thiazole_24_mono_2  O=P(O)(O)CCc1cscn1                        0.8310    0.9    193.2
+  9    het_imidazole_14_mono_1_str  O=P(O)(O)CCc1cn([*:2])cn1                 0.8290   -0.1    175.1
+  10   het_imidazole_45_mono_1  O=P(O)(O)CCc1c[nH]cn1                     0.8270    0.1    176.1
+  11   het_imidazole_45_mono_2  O=P(O)(O)CCc1ncc[nH]1                     0.8270    0.1    176.1
+  12   het_thiazole_24_mono_1  O=P(O)(O)Cc1nccs1                         0.8270    0.8    179.1
+  13   sym_hydrogen_bond     NCOCP(=O)(O)O                             0.4500   -0.9    141.1
+  14   sym_hydrogen_bond     NCOCCP(=O)(O)O                            0.4500   -0.9    155.1
+  15   sym_hydrogen_bond     NCOc1ccc(P(=O)(O)O)cc1                    0.4500   -0.2    203.1
+Generating ligands for enzyme: 9AA8...
+  Not in built-in catalog (10 entries).
+  Attempting PDB fetch from RCSB for '9AA8'...
+  No direct PDB match. Trying UniProt→PDB mapping for '9AA8'...
+
+  ✗ Could not fetch PDB structure for '9AA8'.
+  Available built-in enzymes:
+    - HIV1_protease
+    - PETase
+    - acetylcholinesterase
+    - alcohol_dehydrogenase
+    - carbonic_anhydrase_II
+    - cytochrome_P450_2D6
+    - lysozyme
+    - ribonuclease_A
+    - trypsin
+    - urease
+Generating ligands for enzyme: 9VPD...
+  Not in built-in catalog (10 entries).
+  Attempting PDB fetch from RCSB for '9VPD'...
+  No direct PDB match. Trying UniProt→PDB mapping for '9VPD'...
+
+  ✗ Could not fetch PDB structure for '9VPD'.
+  Available built-in enzymes:
+    - HIV1_protease
+    - PETase
+    - acetylcholinesterase
+    - alcohol_dehydrogenase
+    - carbonic_anhydrase_II
+    - cytochrome_P450_2D6
+    - lysozyme
+    - ribonuclease_A
+    - trypsin
+    - urease
+Generating ligands for enzyme: 9VKO...
+  Not in built-in catalog (10 entries).
+  Attempting PDB fetch from RCSB for '9VKO'...
+  ✓ Fetched PDB 9VKO: 829359 bytes
+
+  Extracting active site from PDB structure...
+  Using potential catalytic residues: ARG113, ARG116, ARG130, ARG134, ARG135, ARG143, ARG173, ARG187
+
+  Encoding active site structural type...
+  Site type: <𐑛; 𐑡; 𐑩; 𐑹; 𐑐; 𐑘; 𐑚; 𐑝; 𐑢; 𐑓; 𐑳; 𐑷>
+  Generating de-novo ligands via enzyme structural type pipeline...
+    Bond: hydrogen_bond, FGs: ['amine', 'phosphonate']
+    Matched 18 scaffolds: 14_diazaadamantane, morpholine, spiro_piperidine_oxetane, spiro_piperidine_tetrahydrofuran, oxazole_24, isoxazole_35...
+
+  Generated 20 candidate ligands:
+
+  #    Method                SMILES                                    Score     logP    MW      
+  ---  --------------------  ----------------------------------------  --------  ------  --------
+  1    het_thiomorpholine_mono_2  O=P(O)(O)CCC1CNCCS1                       0.8700    0.3    211.2
+  2    het_thiomorpholine_mono_2  O=P(O)(O)CC1CNCCS1                        0.8650   -0.1    197.2
+  3    het_piperazine_mono_1  O=P(O)(O)CCN1CCNCC1                       0.8590   -0.9    194.2
+  4    het_thiomorpholine_mono_1  O=P(O)(O)CCN1CCSCC1                       0.8570    0.2    211.2
+  5    het_piperazine_mono_1  O=P(O)(O)CN1CCNCC1                        0.8550   -1.0    180.1
+  6    het_thiomorpholine_mono_1  O=P(O)(O)CN1CCSCC1                        0.8530    0.2    197.2
+  7    het_thiazole_24_mono_1  O=P(O)(O)CCc1nccs1                        0.8310    0.9    193.2
+  8    het_thiazole_24_mono_2  O=P(O)(O)CCc1cscn1                        0.8310    0.9    193.2
+  9    het_imidazole_14_mono_1_str  O=P(O)(O)CCc1cn([*:2])cn1                 0.8290   -0.1    175.1
+  10   het_imidazole_45_mono_1  O=P(O)(O)CCc1c[nH]cn1                     0.8270    0.1    176.1
+  11   het_imidazole_45_mono_2  O=P(O)(O)CCc1ncc[nH]1                     0.8270    0.1    176.1
+  12   het_thiazole_24_mono_1  O=P(O)(O)Cc1nccs1                         0.8270    0.8    179.1
+  13   sym_hydrogen_bond     NCOCP(=O)(O)O                             0.4500   -0.9    141.1
+  14   sym_hydrogen_bond     NCOCCP(=O)(O)O                            0.4500   -0.9    155.1
+  15   sym_hydrogen_bond     NCOc1ccc(P(=O)(O)O)cc1                    0.4500   -0.2    203.1
+Generating ligands for enzyme: 9V3C...
+  Not in built-in catalog (10 entries).
+  Attempting PDB fetch from RCSB for '9V3C'...
+  ✓ Fetched PDB 9V3C: 247860 bytes
+
+  Extracting active site from PDB structure...
+  Using potential catalytic residues: ARG108, ARG147, ARG173, ARG174, ARG183, ARG204, ARG229, ARG230
+
+  Encoding active site structural type...
+  Site type: <𐑛; 𐑡; 𐑩; 𐑹; 𐑐; 𐑘; 𐑚; 𐑝; 𐑢; 𐑓; 𐑳; 𐑷>
+  Generating de-novo ligands via enzyme structural type pipeline...
+    Bond: hydrogen_bond, FGs: ['amine', 'phosphonate']
+    Matched 18 scaffolds: 14_diazaadamantane, morpholine, spiro_piperidine_oxetane, spiro_piperidine_tetrahydrofuran, oxazole_24, isoxazole_35...
+
+  Generated 20 candidate ligands:
+
+  #    Method                SMILES                                    Score     logP    MW      
+  ---  --------------------  ----------------------------------------  --------  ------  --------
+  1    het_thiomorpholine_mono_2  O=P(O)(O)CCC1CNCCS1                       0.8700    0.3    211.2
+  2    het_thiomorpholine_mono_2  O=P(O)(O)CC1CNCCS1                        0.8650   -0.1    197.2
+  3    het_piperazine_mono_1  O=P(O)(O)CCN1CCNCC1                       0.8590   -0.9    194.2
+  4    het_thiomorpholine_mono_1  O=P(O)(O)CCN1CCSCC1                       0.8570    0.2    211.2
+  5    het_piperazine_mono_1  O=P(O)(O)CN1CCNCC1                        0.8550   -1.0    180.1
+  6    het_thiomorpholine_mono_1  O=P(O)(O)CN1CCSCC1                        0.8530    0.2    197.2
+  7    het_thiazole_24_mono_1  O=P(O)(O)CCc1nccs1                        0.8310    0.9    193.2
+  8    het_thiazole_24_mono_2  O=P(O)(O)CCc1cscn1                        0.8310    0.9    193.2
+  9    het_imidazole_14_mono_1_str  O=P(O)(O)CCc1cn([*:2])cn1                 0.8290   -0.1    175.1
+  10   het_imidazole_45_mono_1  O=P(O)(O)CCc1c[nH]cn1                     0.8270    0.1    176.1
+  11   het_imidazole_45_mono_2  O=P(O)(O)CCc1ncc[nH]1                     0.8270    0.1    176.1
+  12   het_thiazole_24_mono_1  O=P(O)(O)Cc1nccs1                         0.8270    0.8    179.1
+  13   sym_hydrogen_bond     NCOCP(=O)(O)O                             0.4500   -0.9    141.1
+  14   sym_hydrogen_bond     NCOCCP(=O)(O)O                            0.4500   -0.9    155.1
+  15   sym_hydrogen_bond     NCOc1ccc(P(=O)(O)O)cc1                    0.4500   -0.2    203.1
+Generating ligands for enzyme: 9T5X...
+  Not in built-in catalog (10 entries).
+  Attempting PDB fetch from RCSB for '9T5X'...
+  No direct PDB match. Trying UniProt→PDB mapping for '9T5X'...
+
+  ✗ Could not fetch PDB structure for '9T5X'.
+  Available built-in enzymes:
+    - HIV1_protease
+    - PETase
+    - acetylcholinesterase
+    - alcohol_dehydrogenase
+    - carbonic_anhydrase_II
+    - cytochrome_P450_2D6
+    - lysozyme
+    - ribonuclease_A
+    - trypsin
+    - urease
+Generating ligands for enzyme: 4NW7...
+  Not in built-in catalog (10 entries).
+  Attempting PDB fetch from RCSB for '4NW7'...
+  ✓ Fetched PDB 4NW7: 294921 bytes
+
+  Extracting active site from PDB structure...
+  Using potential catalytic residues: ARG327, ARG362, ARG375, ARG382, ARG503, ARG507, ARG552, ARG557
+
+  Encoding active site structural type...
+  Site type: <𐑛; 𐑡; 𐑩; 𐑹; 𐑐; 𐑘; 𐑚; 𐑝; 𐑢; 𐑓; 𐑳; 𐑷>
+  Generating de-novo ligands via enzyme structural type pipeline...
+    Bond: hydrogen_bond, FGs: ['amine', 'phosphonate']
+    Matched 18 scaffolds: 14_diazaadamantane, morpholine, spiro_piperidine_oxetane, spiro_piperidine_tetrahydrofuran, oxazole_24, isoxazole_35...
+
+  Generated 20 candidate ligands:
+
+  #    Method                SMILES                                    Score     logP    MW      
+  ---  --------------------  ----------------------------------------  --------  ------  --------
+  1    het_thiomorpholine_mono_2  O=P(O)(O)CCC1CNCCS1                       0.8700    0.3    211.2
+  2    het_thiomorpholine_mono_2  O=P(O)(O)CC1CNCCS1                        0.8650   -0.1    197.2
+  3    het_piperazine_mono_1  O=P(O)(O)CCN1CCNCC1                       0.8590   -0.9    194.2
+  4    het_thiomorpholine_mono_1  O=P(O)(O)CCN1CCSCC1                       0.8570    0.2    211.2
+  5    het_piperazine_mono_1  O=P(O)(O)CN1CCNCC1                        0.8550   -1.0    180.1
+  6    het_thiomorpholine_mono_1  O=P(O)(O)CN1CCSCC1                        0.8530    0.2    197.2
+  7    het_thiazole_24_mono_1  O=P(O)(O)CCc1nccs1                        0.8310    0.9    193.2
+  8    het_thiazole_24_mono_2  O=P(O)(O)CCc1cscn1                        0.8310    0.9    193.2
+  9    het_imidazole_14_mono_1_str  O=P(O)(O)CCc1cn([*:2])cn1                 0.8290   -0.1    175.1
+  10   het_imidazole_45_mono_1  O=P(O)(O)CCc1c[nH]cn1                     0.8270    0.1    176.1
+  11   het_imidazole_45_mono_2  O=P(O)(O)CCc1ncc[nH]1                     0.8270    0.1    176.1
+  12   het_thiazole_24_mono_1  O=P(O)(O)Cc1nccs1                         0.8270    0.8    179.1
+  13   sym_hydrogen_bond     NCOCP(=O)(O)O                             0.4500   -0.9    141.1
+  14   sym_hydrogen_bond     NCOCCP(=O)(O)O                            0.4500   -0.9    155.1
+  15   sym_hydrogen_bond     NCOc1ccc(P(=O)(O)O)cc1                    0.4500   -0.2    203.1
+Generating ligands for enzyme: 9SBN...
+  Not in built-in catalog (10 entries).
+  Attempting PDB fetch from RCSB for '9SBN'...
+  ✓ Fetched PDB 9SBN: 2834271 bytes
+
+  Extracting active site from PDB structure...
+  Detected active site residues (near HETATM, <6Å): ALA402, ARG1289, ARG200, ARG434, ASN394, ASP1288, CYS103, GLU104
+
+  Encoding active site structural type...
+  Site type: <𐑛; 𐑡; 𐑑; 𐑹; 𐑐; 𐑘; 𐑔; 𐑜; 𐑢; 𐑒; 𐑳; 𐑴>
+  Generating de-novo ligands via enzyme structural type pipeline...
+    Bond: hydrogen_bond, FGs: ['phosphonate', 'amine']
+    Matched 18 scaffolds: 124_oxadiazole_35, 134_oxadiazole_25, 134_thiadiazole_25, 14_diazaadamantane, 123_triazole_14, 124_triazole_13...
+
+  Generated 20 candidate ligands:
+
+  #    Method                SMILES                                    Score     logP    MW      
+  ---  --------------------  ----------------------------------------  --------  ------  --------
+  1    het_thiomorpholine_mono_2  O=P(O)(O)CCC1CNCCS1                       0.8970    0.3    211.2
+  2    het_thiomorpholine_mono_2  O=P(O)(O)CC1CNCCS1                        0.8860   -0.1    197.2
+  3    het_thiomorpholine_mono_1  O=P(O)(O)CCN1CCSCC1                       0.8840    0.2    211.2
+  4    het_piperazine_mono_1  O=P(O)(O)CCN1CCNCC1                       0.8790   -0.9    194.2
+  5    het_thiomorpholine_mono_1  O=P(O)(O)CN1CCSCC1                        0.8730    0.2    197.2
+  6    het_piperazine_mono_1  O=P(O)(O)CN1CCNCC1                        0.8680   -1.0    180.1
+  7    het_spiro_piperidine_tetrahydrofuran_mono_1  O=P(O)(O)CCC1CCCOC12CCNCC2                0.8550    1.1    263.3
+  8    het_spiro_piperidine_tetrahydrofuran_mono_1  O=P(O)(O)CC1CCCOC12CCNCC2                 0.8500    0.7    249.2
+  9    het_2_oxa_5_azabicyclo_221_heptane_mono_1  O=P(O)(O)CCC1CC2COC1N2                    0.8480   -0.1    207.2
+  10   het_2_oxa_5_azabicyclo_221_heptane_mono_2  O=P(O)(O)CCC12CCC(CO1)N2                  0.8480    0.0    207.2
+  11   het_123_triazole_14_mono_1_str  O=P(O)(O)CCc1cn([*:2])nn1                 0.8460   -0.7    176.1
+  12   het_124_triazole_13_mono_1  O=P(O)(O)CCc1ncn[nH]1                     0.8450   -0.5    177.1
+  13   hydrogen_bond_CP(=O)(O)O  CP(=O)(O)OCO                              0.4500   -0.2    126.0
+  14   sym_hydrogen_bond     CP(=O)(O)OCOCCP(=O)(O)O                   0.4500   -0.0    234.1
+  15   sym_hydrogen_bond     CP(=O)(O)OCOc1ccc(P(=O)(O)O)cc1           0.4500    0.7    282.1
+Generating ligands for enzyme: 2PE4...
+  Not in built-in catalog (10 entries).
+  Attempting PDB fetch from RCSB for '2PE4'...
+  ✓ Fetched PDB 2PE4: 355185 bytes
+
+  Extracting active site from PDB structure...
+  Using potential catalytic residues: ARG108, ARG134, ARG136, ARG148, ARG150, ARG152, ARG180, ARG191
+
+  Encoding active site structural type...
+  Site type: <𐑛; 𐑡; 𐑩; 𐑹; 𐑐; 𐑘; 𐑚; 𐑝; 𐑢; 𐑓; 𐑳; 𐑷>
+  Generating de-novo ligands via enzyme structural type pipeline...
+    Bond: hydrogen_bond, FGs: ['amine', 'phosphonate']
+    Matched 18 scaffolds: 14_diazaadamantane, morpholine, spiro_piperidine_oxetane, spiro_piperidine_tetrahydrofuran, oxazole_24, isoxazole_35...
+
+  Generated 20 candidate ligands:
+
+  #    Method                SMILES                                    Score     logP    MW      
+  ---  --------------------  ----------------------------------------  --------  ------  --------
+  1    het_thiomorpholine_mono_2  O=P(O)(O)CCC1CNCCS1                       0.8700    0.3    211.2
+  2    het_thiomorpholine_mono_2  O=P(O)(O)CC1CNCCS1                        0.8650   -0.1    197.2
+  3    het_piperazine_mono_1  O=P(O)(O)CCN1CCNCC1                       0.8590   -0.9    194.2
+  4    het_thiomorpholine_mono_1  O=P(O)(O)CCN1CCSCC1                       0.8570    0.2    211.2
+  5    het_piperazine_mono_1  O=P(O)(O)CN1CCNCC1                        0.8550   -1.0    180.1
+  6    het_thiomorpholine_mono_1  O=P(O)(O)CN1CCSCC1                        0.8530    0.2    197.2
+  7    het_thiazole_24_mono_1  O=P(O)(O)CCc1nccs1                        0.8310    0.9    193.2
+  8    het_thiazole_24_mono_2  O=P(O)(O)CCc1cscn1                        0.8310    0.9    193.2
+  9    het_imidazole_14_mono_1_str  O=P(O)(O)CCc1cn([*:2])cn1                 0.8290   -0.1    175.1
+  10   het_imidazole_45_mono_1  O=P(O)(O)CCc1c[nH]cn1                     0.8270    0.1    176.1
+  11   het_imidazole_45_mono_2  O=P(O)(O)CCc1ncc[nH]1                     0.8270    0.1    176.1
+  12   het_thiazole_24_mono_1  O=P(O)(O)Cc1nccs1                         0.8270    0.8    179.1
+  13   sym_hydrogen_bond     NCOCP(=O)(O)O                             0.4500   -0.9    141.1
+  14   sym_hydrogen_bond     NCOCCP(=O)(O)O                            0.4500   -0.9    155.1
+  15   sym_hydrogen_bond     NCOc1ccc(P(=O)(O)O)cc1                    0.4500   -0.2    203.1
+Generating ligands for enzyme: 1BED...
+  Not in built-in catalog (10 entries).
+  Attempting PDB fetch from RCSB for '1BED'...
+  ✓ Fetched PDB 1BED: 144504 bytes
+
+  Extracting active site from PDB structure...
+  Using potential catalytic residues: ARG107, ARG134, ARG135, ARG156, ARG92, ARG97, ASP102, ASP112
+
+  Encoding active site structural type...
+  Site type: <𐑛; 𐑡; 𐑩; 𐑹; 𐑐; 𐑘; 𐑚; 𐑝; 𐑢; 𐑖; 𐑳; 𐑷>
+  Generating de-novo ligands via enzyme structural type pipeline...
+    Bond: hydrogen_bond, FGs: ['amine', 'phosphonate']
+    Matched 18 scaffolds: spiro_piperidine_oxetane, spiro_piperidine_tetrahydrofuran, spiro_indoline_pyrrolidine, spiro_pyrrolidine_piperidine, dispiro_piperazine, 2_oxa_5_azabicyclo_221_heptane...
+
+  Generated 20 candidate ligands:
+
+  #    Method                SMILES                                    Score     logP    MW      
+  ---  --------------------  ----------------------------------------  --------  ------  --------
+  1    het_piperazine_mono_1  O=P(O)(O)CCN1CCNCC1                       0.8740   -0.9    194.2
+  2    het_piperazine_mono_1  O=P(O)(O)CN1CCNCC1                        0.8700   -1.0    180.1
+  3    het_2_oxa_5_azabicyclo_221_heptane_mono_1  O=P(O)(O)CCC1CC2COC1N2                    0.8380   -0.1    207.2
+  4    het_2_oxa_5_azabicyclo_221_heptane_mono_2  O=P(O)(O)CCC12CCC(CO1)N2                  0.8380    0.0    207.2
+  5    het_2_oxa_5_azabicyclo_221_heptane_mono_1  O=P(O)(O)CC1CC2COC1N2                     0.8340   -0.5    193.1
+  6    het_2_oxa_5_azabicyclo_221_heptane_mono_2  O=P(O)(O)CC12CCC(CO1)N2                   0.8340   -0.4    193.1
+  7    het_diazabicyclo_222_octane_mono_2  O=P(O)(O)CCC1CN2CCC(CN1)C2                0.8320   -0.1    234.2
+  8    het_37_diazabicyclo_331_nonane_mono_1  O=P(O)(O)CCN1CC2CNCC(C2)C1                0.8320   -0.3    234.2
+  9    het_39_diazabicyclo_331_nonane_mono_2  O=P(O)(O)CCC12CCN(CCCN1)C2                0.8320   -0.0    234.2
+  10   het_diazabicyclo_222_octane_mono_2  O=P(O)(O)CC1CN2CCC(CN1)C2                 0.8280   -0.5    220.2
+  11   het_37_diazabicyclo_331_nonane_mono_1  O=P(O)(O)CN1CC2CNCC(C2)C1                 0.8280   -0.3    220.2
+  12   het_39_diazabicyclo_331_nonane_mono_2  O=P(O)(O)CC12CCN(CCCN1)C2                 0.8280   -0.4    220.2
+  13   sym_hydrogen_bond     NCOCP(=O)(O)O                             0.4500   -0.9    141.1
+  14   sym_hydrogen_bond     NCOCCP(=O)(O)O                            0.4500   -0.9    155.1
+  15   sym_hydrogen_bond     NCOc1ccc(P(=O)(O)O)cc1                    0.4500   -0.2    203.1
+Generating ligands for enzyme: 3I1C...
+  Not in built-in catalog (10 entries).
+  Attempting PDB fetch from RCSB for '3I1C'...
+  ✓ Fetched PDB 3I1C: 260577 bytes
+
+  Extracting active site from PDB structure...
+  Using potential catalytic residues: ARG114, ARG115, ARG180, ARG186, ARG262, ARG264, ARG299, ARG50
+
+  Encoding active site structural type...
+  Site type: <𐑛; 𐑡; 𐑩; 𐑹; 𐑐; 𐑘; 𐑚; 𐑝; 𐑢; 𐑓; 𐑳; 𐑷>
+  Generating de-novo ligands via enzyme structural type pipeline...
+    Bond: hydrogen_bond, FGs: ['amine', 'phosphonate']
+    Matched 18 scaffolds: 14_diazaadamantane, morpholine, spiro_piperidine_oxetane, spiro_piperidine_tetrahydrofuran, oxazole_24, isoxazole_35...
+
+  Generated 20 candidate ligands:
+
+  #    Method                SMILES                                    Score     logP    MW      
+  ---  --------------------  ----------------------------------------  --------  ------  --------
+  1    het_thiomorpholine_mono_2  O=P(O)(O)CCC1CNCCS1                       0.8700    0.3    211.2
+  2    het_thiomorpholine_mono_2  O=P(O)(O)CC1CNCCS1                        0.8650   -0.1    197.2
+  3    het_piperazine_mono_1  O=P(O)(O)CCN1CCNCC1                       0.8590   -0.9    194.2
+  4    het_thiomorpholine_mono_1  O=P(O)(O)CCN1CCSCC1                       0.8570    0.2    211.2
+  5    het_piperazine_mono_1  O=P(O)(O)CN1CCNCC1                        0.8550   -1.0    180.1
+  6    het_thiomorpholine_mono_1  O=P(O)(O)CN1CCSCC1                        0.8530    0.2    197.2
+  7    het_thiazole_24_mono_1  O=P(O)(O)CCc1nccs1                        0.8310    0.9    193.2
+  8    het_thiazole_24_mono_2  O=P(O)(O)CCc1cscn1                        0.8310    0.9    193.2
+  9    het_imidazole_14_mono_1_str  O=P(O)(O)CCc1cn([*:2])cn1                 0.8290   -0.1    175.1
+  10   het_imidazole_45_mono_1  O=P(O)(O)CCc1c[nH]cn1                     0.8270    0.1    176.1
+  11   het_imidazole_45_mono_2  O=P(O)(O)CCc1ncc[nH]1                     0.8270    0.1    176.1
+  12   het_thiazole_24_mono_1  O=P(O)(O)Cc1nccs1                         0.8270    0.8    179.1
+  13   sym_hydrogen_bond     NCOCP(=O)(O)O                             0.4500   -0.9    141.1
+  14   sym_hydrogen_bond     NCOCCP(=O)(O)O                            0.4500   -0.9    155.1
+  15   sym_hydrogen_bond     NCOc1ccc(P(=O)(O)O)cc1                    0.4500   -0.2    203.1
+Generating ligands for enzyme: 9QD3...
+  Not in built-in catalog (10 entries).
+  Attempting PDB fetch from RCSB for '9QD3'...
+  ✓ Fetched PDB 9QD3: 1411020 bytes
+
+  Extracting active site from PDB structure...
+  Using potential catalytic residues: ARG120, ARG135, ARG137, ARG167, ARG190, ARG201, ARG225, ARG237
+
+  Encoding active site structural type...
+  Site type: <𐑛; 𐑡; 𐑩; 𐑹; 𐑐; 𐑘; 𐑚; 𐑝; 𐑢; 𐑓; 𐑳; 𐑷>
+  Generating de-novo ligands via enzyme structural type pipeline...
+    Bond: hydrogen_bond, FGs: ['amine', 'phosphonate']
+    Matched 18 scaffolds: 14_diazaadamantane, morpholine, spiro_piperidine_oxetane, spiro_piperidine_tetrahydrofuran, oxazole_24, isoxazole_35...
+
+  Generated 20 candidate ligands:
+
+  #    Method                SMILES                                    Score     logP    MW      
+  ---  --------------------  ----------------------------------------  --------  ------  --------
+  1    het_thiomorpholine_mono_2  O=P(O)(O)CCC1CNCCS1                       0.8700    0.3    211.2
+  2    het_thiomorpholine_mono_2  O=P(O)(O)CC1CNCCS1                        0.8650   -0.1    197.2
+  3    het_piperazine_mono_1  O=P(O)(O)CCN1CCNCC1                       0.8590   -0.9    194.2
+  4    het_thiomorpholine_mono_1  O=P(O)(O)CCN1CCSCC1                       0.8570    0.2    211.2
+  5    het_piperazine_mono_1  O=P(O)(O)CN1CCNCC1                        0.8550   -1.0    180.1
+  6    het_thiomorpholine_mono_1  O=P(O)(O)CN1CCSCC1                        0.8530    0.2    197.2
+  7    het_thiazole_24_mono_1  O=P(O)(O)CCc1nccs1                        0.8310    0.9    193.2
+  8    het_thiazole_24_mono_2  O=P(O)(O)CCc1cscn1                        0.8310    0.9    193.2
+  9    het_imidazole_14_mono_1_str  O=P(O)(O)CCc1cn([*:2])cn1                 0.8290   -0.1    175.1
+  10   het_imidazole_45_mono_1  O=P(O)(O)CCc1c[nH]cn1                     0.8270    0.1    176.1
+  11   het_imidazole_45_mono_2  O=P(O)(O)CCc1ncc[nH]1                     0.8270    0.1    176.1
+  12   het_thiazole_24_mono_1  O=P(O)(O)Cc1nccs1                         0.8270    0.8    179.1
+  13   sym_hydrogen_bond     NCOCP(=O)(O)O                             0.4500   -0.9    141.1
+  14   sym_hydrogen_bond     NCOCCP(=O)(O)O                            0.4500   -0.9    155.1
+  15   sym_hydrogen_bond     NCOc1ccc(P(=O)(O)O)cc1                    0.4500   -0.2    203.1
+Generating ligands for enzyme: 5Z3C...
+  Not in built-in catalog (10 entries).
+  Attempting PDB fetch from RCSB for '5Z3C'...
+  ✓ Fetched PDB 5Z3C: 541242 bytes
+
+  Extracting active site from PDB structure...
+  Using potential catalytic residues: ARG100, ARG113, ARG146, ARG153, ARG155, ARG17, ARG171, ARG184
+
+  Encoding active site structural type...
+  Site type: <𐑛; 𐑡; 𐑩; 𐑹; 𐑐; 𐑘; 𐑚; 𐑝; 𐑢; 𐑓; 𐑳; 𐑷>
+  Generating de-novo ligands via enzyme structural type pipeline...
+    Bond: hydrogen_bond, FGs: ['amine', 'phosphonate']
+    Matched 18 scaffolds: 14_diazaadamantane, morpholine, spiro_piperidine_oxetane, spiro_piperidine_tetrahydrofuran, oxazole_24, isoxazole_35...
+
+  Generated 20 candidate ligands:
+
+  #    Method                SMILES                                    Score     logP    MW      
+  ---  --------------------  ----------------------------------------  --------  ------  --------
+  1    het_thiomorpholine_mono_2  O=P(O)(O)CCC1CNCCS1                       0.8700    0.3    211.2
+  2    het_thiomorpholine_mono_2  O=P(O)(O)CC1CNCCS1                        0.8650   -0.1    197.2
+  3    het_piperazine_mono_1  O=P(O)(O)CCN1CCNCC1                       0.8590   -0.9    194.2
+  4    het_thiomorpholine_mono_1  O=P(O)(O)CCN1CCSCC1                       0.8570    0.2    211.2
+  5    het_piperazine_mono_1  O=P(O)(O)CN1CCNCC1                        0.8550   -1.0    180.1
+  6    het_thiomorpholine_mono_1  O=P(O)(O)CN1CCSCC1                        0.8530    0.2    197.2
+  7    het_thiazole_24_mono_1  O=P(O)(O)CCc1nccs1                        0.8310    0.9    193.2
+  8    het_thiazole_24_mono_2  O=P(O)(O)CCc1cscn1                        0.8310    0.9    193.2
+  9    het_imidazole_14_mono_1_str  O=P(O)(O)CCc1cn([*:2])cn1                 0.8290   -0.1    175.1
+  10   het_imidazole_45_mono_1  O=P(O)(O)CCc1c[nH]cn1                     0.8270    0.1    176.1
+  11   het_imidazole_45_mono_2  O=P(O)(O)CCc1ncc[nH]1                     0.8270    0.1    176.1
+  12   het_thiazole_24_mono_1  O=P(O)(O)Cc1nccs1                         0.8270    0.8    179.1
+  13   sym_hydrogen_bond     NCOCP(=O)(O)O                             0.4500   -0.9    141.1
+  14   sym_hydrogen_bond     NCOCCP(=O)(O)O                            0.4500   -0.9    155.1
+  15   sym_hydrogen_bond     NCOc1ccc(P(=O)(O)O)cc1                    0.4500   -0.2    203.1
+Generating ligands for enzyme: 1KEL...
+  Not in built-in catalog (10 entries).
+  Attempting PDB fetch from RCSB for '1KEL'...
+  ✓ Fetched PDB 1KEL: 373410 bytes
+
+  Extracting active site from PDB structure...
+  Using potential catalytic residues: ARG100, ARG101, ARG113, ARG160, ARG19, ARG193, ARG194, ARG216
+
+  Encoding active site structural type...
+  Site type: <𐑛; 𐑡; 𐑩; 𐑹; 𐑐; 𐑘; 𐑚; 𐑝; 𐑢; 𐑓; 𐑳; 𐑷>
+  Generating de-novo ligands via enzyme structural type pipeline...
+    Bond: hydrogen_bond, FGs: ['amine', 'phosphonate']
+    Matched 18 scaffolds: 14_diazaadamantane, morpholine, spiro_piperidine_oxetane, spiro_piperidine_tetrahydrofuran, oxazole_24, isoxazole_35...
+
+  Generated 20 candidate ligands:
+
+  #    Method                SMILES                                    Score     logP    MW      
+  ---  --------------------  ----------------------------------------  --------  ------  --------
+  1    het_thiomorpholine_mono_2  O=P(O)(O)CCC1CNCCS1                       0.8700    0.3    211.2
+  2    het_thiomorpholine_mono_2  O=P(O)(O)CC1CNCCS1                        0.8650   -0.1    197.2
+  3    het_piperazine_mono_1  O=P(O)(O)CCN1CCNCC1                       0.8590   -0.9    194.2
+  4    het_thiomorpholine_mono_1  O=P(O)(O)CCN1CCSCC1                       0.8570    0.2    211.2
+  5    het_piperazine_mono_1  O=P(O)(O)CN1CCNCC1                        0.8550   -1.0    180.1
+  6    het_thiomorpholine_mono_1  O=P(O)(O)CN1CCSCC1                        0.8530    0.2    197.2
+  7    het_thiazole_24_mono_1  O=P(O)(O)CCc1nccs1                        0.8310    0.9    193.2
+  8    het_thiazole_24_mono_2  O=P(O)(O)CCc1cscn1                        0.8310    0.9    193.2
+  9    het_imidazole_14_mono_1_str  O=P(O)(O)CCc1cn([*:2])cn1                 0.8290   -0.1    175.1
+  10   het_imidazole_45_mono_1  O=P(O)(O)CCc1c[nH]cn1                     0.8270    0.1    176.1
+  11   het_imidazole_45_mono_2  O=P(O)(O)CCc1ncc[nH]1                     0.8270    0.1    176.1
+  12   het_thiazole_24_mono_1  O=P(O)(O)Cc1nccs1                         0.8270    0.8    179.1
+  13   sym_hydrogen_bond     NCOCP(=O)(O)O                             0.4500   -0.9    141.1
+  14   sym_hydrogen_bond     NCOCCP(=O)(O)O                            0.4500   -0.9    155.1
+  15   sym_hydrogen_bond     NCOc1ccc(P(=O)(O)O)cc1                    0.4500   -0.2    203.1
