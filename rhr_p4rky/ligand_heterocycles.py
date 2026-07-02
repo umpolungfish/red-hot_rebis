@@ -1361,14 +1361,35 @@ def generate_heterocycle_ligands(
         _estimate_bond_from_site_type, _estimate_fgs_from_site_type
     )
 
+    # ── Multi-bond diversity: try top-3 bond types and top FG combos ──
     if fg_names is None:
-        # First estimate bond type from site
-        bond_name = _estimate_bond_from_site_type(site_type)
-        fg_names = _estimate_fgs_from_site_type(site_type, bond_name)
+        try:
+            from rhr_p4rky.ligand_improvements import _estimate_bonds_top_n, _estimate_fgs_top_n
+            bond_names = _estimate_bonds_top_n(site_type, n=3)
+            all_fg_configs = []
+            for bname in bond_names:
+                fg_combos = _estimate_fgs_top_n(site_type, bname, n=2)
+                for fg_combo in fg_combos:
+                    all_fg_configs.append((bname, fg_combo))
+            if not all_fg_configs:
+                bond_name = _estimate_bond_from_site_type(site_type)
+                fg_names = _estimate_fgs_from_site_type(site_type, bond_name)
+                all_fg_configs = [(bond_name, fg_names)]
+        except ImportError:
+            bond_name = _estimate_bond_from_site_type(site_type)
+            fg_names = _estimate_fgs_from_site_type(site_type, bond_name)
+            all_fg_configs = [(bond_name, fg_names)]
+    else:
+        all_fg_configs = [("manual", fg_names)]
 
-    print(f"    Bond: {bond_name if 'bond_name' in locals() else 'auto'}, FGs: {fg_names}")
+    print(f"    Exploring {len(all_fg_configs)} bond/FG configurations...")
+    for cfg_idx, (bond_name, fg_names) in enumerate(all_fg_configs):
+        if cfg_idx == 0:
+            print(f"    [1] Bond: {bond_name}, FGs: {fg_names}")
+        elif cfg_idx < 4:
+            print(f"    [{cfg_idx+1}] Bond: {bond_name}, FGs: {fg_names}")
 
-    # Match scaffolds
+    # Match scaffolds (once, based on site type)
     scaffold_names = match_scaffolds_to_site(site_type, n_top=n_scaffolds)
     print(f"    Matched {len(scaffold_names)} scaffolds: {', '.join(scaffold_names[:6])}...")
 
@@ -1380,25 +1401,38 @@ def generate_heterocycle_ligands(
         except:
             pass
 
-    # Generate and score candidates
+    # Generate and score candidates across ALL bond/FG configs
     candidates = []
     seen_smiles = set()
 
-    for sc_name in scaffold_names:
-        sc_info = HETERO_CORE[sc_name]
-        elaborated = elaborate_scaffold(sc_name, fg_names, site_type)
+    # Distribute scaffolds across configs: first config gets more scaffolds
+    total_configs = len(all_fg_configs)
+    for cfg_idx, (bond_name, fg_names) in enumerate(all_fg_configs):
+        # First config gets ~50% of scaffolds, rest split evenly
+        if cfg_idx == 0:
+            cfg_scaffolds = scaffold_names[:max(5, n_scaffolds // 2)]
+        else:
+            per_cfg = max(3, (n_scaffolds - len(scaffold_names[:max(5, n_scaffolds // 2)])) // max(1, total_configs - 1))
+            start = max(5, n_scaffolds // 2) + (cfg_idx - 1) * per_cfg
+            cfg_scaffolds = scaffold_names[start:start + per_cfg]
 
-        for method_tag, raw_smi in elaborated:
-            result = _validate_and_score_smiles(
-                raw_smi,
-                method=f"het_{sc_name}_{method_tag}",
-                site_type=site_type,
-                target_mol=target_mol,
-                scaffold_info=sc_info,
-            )
-            if result and result["smiles"] not in seen_smiles:
-                seen_smiles.add(result["smiles"])
-                candidates.append(result)
+        for sc_name in cfg_scaffolds:
+            if sc_name not in HETERO_CORE:
+                continue
+            sc_info = HETERO_CORE[sc_name]
+            elaborated = elaborate_scaffold(sc_name, fg_names, site_type)
+
+            for method_tag, raw_smi in elaborated:
+                result = _validate_and_score_smiles(
+                    raw_smi,
+                    method=f"het_{sc_name}_{method_tag}",
+                    site_type=site_type,
+                    target_mol=target_mol,
+                    scaffold_info=sc_info,
+                )
+                if result and result["smiles"] not in seen_smiles:
+                    seen_smiles.add(result["smiles"])
+                    candidates.append(result)
 
     # Also generate the parent scaffold alone (no substituents except H)
     for sc_name in scaffold_names[:5]:

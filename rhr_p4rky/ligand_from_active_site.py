@@ -619,6 +619,27 @@ CATALYZING_PROTEINS = [
 # Build lookup by name
 PROTEIN_LOOKUP = {p["name"]: p for p in CATALYZING_PROTEINS}
 
+# ── Merge expanded protein catalog (105+ entries) ──
+try:
+    from rhr_p4rky.expanded_catalyzing_proteins import EXPANDED_PROTEINS
+    _existing_names = set(PROTEIN_LOOKUP.keys())
+    _added = 0
+    for _p in EXPANDED_PROTEINS:
+        if _p["name"] not in _existing_names:
+            PROTEIN_LOOKUP[_p["name"]] = _p
+            _added += 1
+    # Also rebuild CATALYZING_PROTEINS list for functions that iterate it
+    CATALYZING_PROTEINS = list(PROTEIN_LOOKUP.values())
+    if _added > 0:
+        import sys as _sys
+        _sys.stderr.write(f"  [catalog] Expanded from {len(_existing_names)} to {len(PROTEIN_LOOKUP)} proteins (+{_added} from expanded catalog)\n")
+    del _existing_names, _added, _p
+except ImportError:
+    pass
+except Exception as _e:
+    import sys as _sys
+    _sys.stderr.write(f"  [catalog] Expanded catalog load error: {_e}\n")
+
 # ── CORE PIPELINE FUNCTIONS ─────────────────────────────────────────
 
 def complement_type(site_type: dict) -> dict:
