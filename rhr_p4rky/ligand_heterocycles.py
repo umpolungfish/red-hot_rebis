@@ -138,19 +138,19 @@ HETERO_CORE = {
         "priority": [1, 2],
     },
     "124_oxadiazole_35": {
-        "smiles": "[*:1]c1nn([*:2])co1",
+        "smiles": "[*:1]c1noc([*:2])n1",
         "rings": (1, (5,)), "het_atoms": ["O", "N", "N"], "hbd": 0, "hba": 3,
         "aromatic": True, "saturated": False, "family": "5het_ON2",
         "priority": [1, 2],
     },
     "134_oxadiazole_25": {
-        "smiles": "[*:1]c1nn([*:2])no1",
+        "smiles": "[*:1]c1nnc([*:2])o1",
         "rings": (1, (5,)), "het_atoms": ["O", "N", "N"], "hbd": 0, "hba": 3,
         "aromatic": True, "saturated": False, "family": "5het_ON2",
         "priority": [1, 2],
     },
     "134_thiadiazole_25": {
-        "smiles": "[*:1]c1nn([*:2])ns1",
+        "smiles": "[*:1]c1nnc([*:2])s1",
         "rings": (1, (5,)), "het_atoms": ["S", "N", "N"], "hbd": 0, "hba": 2,
         "aromatic": True, "saturated": False, "family": "5het_SN2",
         "priority": [1, 2],
@@ -262,7 +262,7 @@ HETERO_CORE = {
         "priority": [1, 2],
     },
     "morpholine": {
-        "smiles": "[*:1]N1CCO([*:2])CC1",
+        "smiles": "[*:1]N1CCOC([*:2])C1",
         "rings": (1, (6,)), "het_atoms": ["O", "N"], "hbd": 0, "hba": 2,
         "aromatic": False, "saturated": True, "family": "sat_6_ON",
         "priority": [1, 2],
@@ -809,7 +809,7 @@ def _get_site_ordinals(site_type: Dict[str, str]) -> Dict[str, int]:
     return ords
 
 
-def match_scaffolds_to_site(site_type: Dict[str, str], n_top: int = 15) -> List[str]:
+def match_scaffolds_to_site(site_type: Dict[str, str], n_top: int = 25) -> List[str]:
     """Match heterocycle scaffolds to an active site structural type.
 
     Maps the 12-primitive site type to preferred scaffold families,
@@ -1105,7 +1105,8 @@ def elaborate_scaffold(
             rw2.AddBond(nbr_new_idx, fg_start, Chem.BondType.SINGLE)
 
             mol = rw2.GetMol()
-            Chem.SanitizeMol(mol)
+            with _silence_rdkit():
+                Chem.SanitizeMol(mol)
             return Chem.MolToSmiles(mol)
         except:
             return None
@@ -1124,7 +1125,8 @@ def elaborate_scaffold(
                         for da in sorted(dummies_left, key=lambda a: a.GetIdx(), reverse=True):
                             rw.RemoveAtom(da.GetIdx())
                         mol = rw.GetMol()
-                        Chem.SanitizeMol(mol)
+                        with _silence_rdkit():
+                            Chem.SanitizeMol(mol)
                         molecules.append(("mono_1", Chem.MolToSmiles(mol)))
             except:
                 molecules.append(("mono_1_str", result))
@@ -1142,7 +1144,8 @@ def elaborate_scaffold(
                         for da in sorted(dummies_left, key=lambda a: a.GetIdx(), reverse=True):
                             rw.RemoveAtom(da.GetIdx())
                         mol = rw.GetMol()
-                        Chem.SanitizeMol(mol)
+                        with _silence_rdkit():
+                            Chem.SanitizeMol(mol)
                         molecules.append(("mono_2", Chem.MolToSmiles(mol)))
             except:
                 molecules.append(("mono_2_str", result))
@@ -1204,43 +1207,81 @@ def _validate_and_score_smiles(
     target_mol: Optional[Chem.Mol],
     scaffold_info: Optional[Dict] = None,
 ) -> Optional[Dict]:
-    """Validate a SMILES, compute properties, and return scored candidate."""
+    """Validate a SMILES, compute properties, and return scored candidate.
+
+    CHEMICAL SPACE: Unbounded. The only hard gate is MolFromSmiles
+    (can RDKit parse the connectivity?). Sanitization failures (kekulization,
+    valence rules) are NOT rejections — they're flags for exotic chemistry.
+    Property filters are wide to admit strained, unusual, and non-drug-like
+    molecules that conventional pipelines would discard.
+    """
+    sanitized = True
     try:
         with _silence_rdkit():
             mol = Chem.MolFromSmiles(smi)
         if mol is None:
             return None
-        Chem.SanitizeMol(mol)
+        with _silence_rdkit():
+            Chem.SanitizeMol(mol)
         canon = Chem.MolToSmiles(mol)
     except:
-        return None
+        # Sanitization failed — molecule is exotic but structurally valid.
+        # Rebuild from SMILES without sanitization for property computation.
+        sanitized = False
+        try:
+            with _silence_rdkit():
+                mol = Chem.MolFromSmiles(smi, sanitize=False)
+            if mol is None:
+                return None
+            # Try partial sanitization: update property cache only
+            try:
+                mol.UpdatePropertyCache(strict=False)
+            except:
+                pass
+            canon = smi  # Keep original SMILES for exotic molecules
+        except:
+            return None
 
+    # --- Property computation (best-effort) ---
     try:
-        logp = Descriptors.MolLogP(mol)
         mw = Descriptors.MolWt(mol)
         heavy = mol.GetNumHeavyAtoms()
         hbd = Descriptors.NumHDonors(mol)
         hba = Descriptors.NumHAcceptors(mol)
+    except:
+        mw, heavy, hbd, hba = 0, 0, 0, 0
+    try:
+        logp = Descriptors.MolLogP(mol)
+    except:
+        logp = 0.0
+    try:
         n_rings = Lipinski.RingCount(mol)
         n_rot = Descriptors.NumRotatableBonds(mol)
         n_arom = Lipinski.NumAromaticRings(mol)
         tpsa = Descriptors.TPSA(mol)
     except:
-        logp, mw, heavy, hbd, hba, n_rings, n_rot, n_arom, tpsa = 0,0,0,0,0,0,0,0,0
+        n_rings, n_rot, n_arom, tpsa = 0, 0, 0, 0.0
 
-    # Property filters
-    if mw < 80 or mw > 650:
+    # Property filters — WIDE gates (unbounded chemical space).
+    # Only reject physically impossible cases (e.g. zero atoms).
+    if heavy < 3:
         return None
-    if logp < -3 or logp > 7:
+    # MW: allow up to 1200 Da (peptides, macrocycles, organometallics)
+    if mw > 1200:
         return None
-    if heavy < 6:
+    # logP: allow -10 to +15 (exotic but physically realizable)
+    if logp < -10 or logp > 15:
         return None
 
-    # Fingerprint similarity
-    fp_score = _score_by_fingerprint(mol, target_mol)
+    # Exotic bonus: molecules that fail RDKit sanitization are often
+    # the most interesting — unusual valences, strained rings, radical species.
+    exotic_bonus = 0.10 if not sanitized else 0.0
 
-    # Drug-likeness
-    drug_score = _score_drug_likeness(mol)
+    # Fingerprint similarity (skip if unsanitized — fingerprint may be unreliable)
+    fp_score = _score_by_fingerprint(mol, target_mol) if sanitized else 0.5
+
+    # Drug-likeness (skip if unsanitized — descriptors may be unstable)
+    drug_score = _score_drug_likeness(mol) if sanitized else 0.5
 
     # Structural complement score — multi-factor
     struct_score = _score_structural_complement(mol, site_type, scaffold_info) if site_type else 0.5
@@ -1251,9 +1292,12 @@ def _validate_and_score_smiles(
         sym = atom.GetSymbol()
         if sym not in ("C", "H"):
             het_types.add(sym)
-    het_bonus = min(0.10, len(het_types) * 0.03)
+    het_bonus = min(0.15, len(het_types) * 0.04)
 
-    composite = round(0.40 * struct_score + 0.25 * drug_score + 0.25 * fp_score + het_bonus + 0.05, 3)
+    composite = round(
+        0.40 * struct_score + 0.20 * drug_score + 0.20 * fp_score
+        + het_bonus + exotic_bonus + 0.05, 3
+    )
 
     return {
         "smiles": canon,
@@ -1272,6 +1316,7 @@ def _validate_and_score_smiles(
         "rotatable": n_rot,
         "TPSA": round(tpsa, 1),
         "heteroatoms": sorted(het_types),
+        "sanitized": sanitized,
         "valid": True,
     }
 
@@ -1452,7 +1497,7 @@ def test_on_enzyme(pdb_id: str, residues: List[str]) -> None:
     print(f"  {'#':3s}  {'Method':35s}  {'SMILES':40s}  {'Score':6s}  {'logP':6s}  {'MW':7s}  {'Rings':5s}  {'Het':10s}")
     print(f"  {'-'*3}  {'-'*35}  {'-'*40}  {'-'*6}  {'-'*6}  {'-'*7}  {'-'*5}  {'-'*10}")
 
-    for i, c in enumerate(candidates[:15]):
+    for i, c in enumerate(candidates):
         het_str = ','.join(c.get('heteroatoms', []))
         print(f"  {i+1:3d}  {c['method'][:35]:35s}  {c['smiles'][:40]:40s}  "
               f"{c['composite_score']:6.3f}  {c['logP']:6.2f}  {c['MW']:7.1f}  "
@@ -1469,9 +1514,6 @@ def test_three_enzymes():
     for pdb, residues in enzymes.items():
         test_on_enzyme(pdb, residues)
 
-
-if __name__ == "__main__":
-    test_three_enzymes()
 
 
 # ══════════════════════════════════════════════════════════════════════
@@ -1578,3 +1620,6 @@ def _score_structural_complement(
         score -= 0.05
 
     return max(0.0, min(1.0, score))
+
+if __name__ == '__main__':
+    test_three_enzymes()
