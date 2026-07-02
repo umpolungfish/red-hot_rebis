@@ -236,23 +236,43 @@ def _cmd_ligands(args):
         print(f"  Active site: {', '.join(protein['active_site_residues'])}")
         print(f"  Catalytic roles: {'; '.join(protein.get('catalytic_roles', []))}")
 
-        site_type = protein.get("structural_type")
+        # Compute site_type from first principles via IMASM encoding
+        residues = protein.get("active_site_residues", [])
+        site_type = None
+        if residues:
+            try:
+                from rhr_p4rky.ligand_imasm import encode_site_imasm as _imasm_encode
+                imasm_result = _imasm_encode(residues)
+                if imasm_result:
+                    site_type = imasm_result['site_type']
+                    print(f"  [IMASM] Arrangement: {imasm_result['arrangement_str']}")
+                    print(f"  [IMASM] Canonical:   {imasm_result['canonical_class'] or '—'}")
+                    print(f"  [IMASM] Roles:      {imasm_result['roles_found']}")
+            except Exception:
+                pass
+        if site_type is None:
+            # Fallback to old hardcoded type
+            site_type = protein.get("structural_type")
+        if site_type is None:
+            # Final fallback: compute from residues via count-based encoder
+            from rhr_p4rky.ligand_from_active_site import encode_site_from_residues
+            site_type = encode_site_from_residues(residues)
+        
         substrate = protein.get("smiles_substrate_hint", "")
 
         if site_type is None:
-            print("  ERROR: No structural type in catalog entry")
+            print("  ERROR: Could not encode active site from residues")
             return 1
 
         print(f"\n  Site structural type: {fmt_tuple(site_type)}")
 
-        try:
-            from rhr_p4rky.ligand_heterocycles import generate_hybrid_ligands
-            candidates = generate_hybrid_ligands(
-                site_type=site_type,
-                substrate_hint=substrate,
-                max_candidates=20,
-            )
-        except Exception:
+        from rhr_p4rky.ligand_heterocycles import generate_hybrid_ligands
+        candidates = generate_hybrid_ligands(
+            site_type=site_type,
+            substrate_hint=substrate,
+            max_candidates=20,
+        )
+        if not candidates:
             try:
                 candidates = generate_from_enzyme_type(
                     site_type=site_type,
@@ -261,19 +281,21 @@ def _cmd_ligands(args):
                 )
             except Exception as e2:
                 print(f"  Generation failed: {e2}")
-            # Fall back: try test_bevy with a protein list
-            try:
-                result = test_bevy([protein])
-                if result:
-                    for pname, presult in result.items():
-                        candidates = presult.get("candidates", [])
-                        print(f"\n  Fallback pipeline generated {len(candidates)} candidates:")
-                        break
-            except Exception as e2:
-                print(f"  Fallback also failed: {e2}")
-                return 1
+            if not candidates:
+                # Fall back: try test_bevy with a protein list
+                try:
+                    result = test_bevy([protein])
+                    if result:
+                        for pname, presult in result.items():
+                            candidates = presult.get("candidates", [])
+                            print(f"\n  Fallback pipeline generated {len(candidates)} candidates:")
+                            break
+                except Exception as e2:
+                    print(f"  Fallback also failed: {e2}")
+                    return 1
 
         if candidates:
+
             print(f"\n  Generated {len(candidates)} candidate ligands:\n")
             print(f"  {'#':3s}  {'Method':20s}  {'SMILES':40s}  {'Score':8s}  {'logP':6s}  {'MW':8s}")
             print(f"  {'-'*3}  {'-'*20}  {'-'*40}  {'-'*8}  {'-'*6}  {'-'*8}")
@@ -427,9 +449,26 @@ def _cmd_ligands(args):
             print(f"  Residues in structure: {', '.join(sorted(set(a['res_name'] for a in atoms)))}")
             return 1
 
-    # ── Step 4: Encode site and generate ligands ──
+    # ── Step 4: Encode site (IMASM first principles) and generate ligands ──
     print(f"\n  Encoding active site structural type...")
-    site_type = encode_site_from_residues(residues)
+    
+    # Try IMASM-based encoding first (first-principles)
+    site_type = None
+    try:
+        from rhr_p4rky.ligand_imasm import encode_site_imasm as _imasm_encode
+        imasm_result = _imasm_encode(residues)
+        if imasm_result:
+            site_type = imasm_result['site_type']
+            print(f"  [IMASM] Arrangement: {imasm_result['arrangement_str']}")
+            print(f"  [IMASM] Canonical:   {imasm_result['canonical_class'] or '—'}")
+            print(f"  [IMASM] Roles:      {imasm_result['roles_found']}")
+    except Exception as e:
+        print(f"  [IMASM] Not available: {e}")
+    
+    # Fallback to count-based encoding
+    if site_type is None:
+        site_type = encode_site_from_residues(residues)
+    
     if site_type is None:
         print("  Failed to encode active site")
         return 1
@@ -437,23 +476,19 @@ def _cmd_ligands(args):
     print(f"  Site type: {fmt_tuple(site_type)}")
 
     print(f"  Generating de-novo ligands via enzyme structural type pipeline...")
-    try:
-        from rhr_p4rky.ligand_heterocycles import generate_hybrid_ligands
-        candidates = generate_hybrid_ligands(
+    from rhr_p4rky.ligand_heterocycles import generate_hybrid_ligands
+    candidates = generate_hybrid_ligands(
+        site_type=site_type,
+        substrate_hint="",
+        max_candidates=20,
+    )
+    if not candidates:
+        from rhr_p4rky.ligand_improvements import generate_from_enzyme_type
+        candidates = generate_from_enzyme_type(
             site_type=site_type,
             substrate_hint="",
             max_candidates=20,
         )
-    except Exception:
-        try:
-            candidates = generate_from_enzyme_type(
-                site_type=site_type,
-                substrate_hint="",
-                max_candidates=20,
-            )
-        except Exception as e:
-            print(f"  Generation error: {e}")
-            return 1
 
     if candidates:
         print(f"\n  Generated {len(candidates)} candidate ligands:\n")

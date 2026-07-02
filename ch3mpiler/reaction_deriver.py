@@ -55,7 +55,7 @@ def ord_to_glyph(p, o):
 
 def fmt_tup(t):
     gs = [t.get(p, "?") for p in PNAMES]
-    return "<" + "; ".join(gs) + ">"
+    return "<" + "".join(gs) + ">"
 
 def tup_dist(t1, t2):
     sq = 0.0

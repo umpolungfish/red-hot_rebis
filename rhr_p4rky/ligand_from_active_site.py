@@ -72,7 +72,7 @@ PRIMITIVE_FULL_NAMES = [
 AA_TO_PRIMITIVE = {
     "Met": "D", "Trp": "T", "Cys": "R", "Tyr": "P", "Phe": "F",
     "Ile": "K", "His": "G", "Asn": "Gm", "Gln": "Ph",
-    "Asp": "H", "Lys": "S", "Glu": "W",
+    "Asp": "H", "Lys": "S", "Glu": "W"
 }
 
 # Primitive → complementary primitive pairs
@@ -92,7 +92,7 @@ GLYPH_ORDINALS = {
     "Ph": {"𐑢": 0, "⊙": 1, "𐑮": 2, "𐑻": 3, "𐑣": 4},
     "H": {"𐑓": 0, "𐑒": 1, "𐑖": 2, "𐑫": 3},
     "S": {"𐑙": 0, "𐑕": 1, "𐑳": 2},
-    "W": {"𐑷": 0, "𐑴": 1, "𐑭": 2, "𐑟": 3},
+    "W": {"𐑷": 0, "𐑴": 1, "𐑭": 2, "𐑟": 3}
 }
 
 ORD_TO_GLYPH = {}
@@ -111,7 +111,7 @@ def ord_to_glyph(prim: str, ordinal: int) -> str:
 
 def fmt_tuple(t: dict) -> str:
     """Format a 12-primitive dict as ⟨...> string."""
-    return "<" + "; ".join(t.get(p, "?") for p in PRIMITIVE_NAMES_SHORT) + ">"
+    return "<" + "".join(t.get(p, "?") for p in PRIMITIVE_NAMES_SHORT) + ">"
 
 
 def tuple_distance_dict(t1: dict, t2: dict) -> float:
@@ -124,6 +124,80 @@ def tuple_distance_dict(t1: dict, t2: dict) -> float:
         sq += w * (o1 - o2) ** 2
     return math.sqrt(sq)
 
+
+
+# ── Catalog-backed structural matching (FIRST PRINCIPLES) ──────────
+# Bond types and functional groups are imscribed in the grammar catalog
+# via the 12-primitive imscription procedure. Matching uses catalog
+# entries rather than hardcoded fallback tuples.
+
+_CATALOG_CACHE = None
+
+def _load_catalog():
+    """Load the imscribed catalog for structural matching. Cached."""
+    global _CATALOG_CACHE
+    if _CATALOG_CACHE is not None:
+        return _CATALOG_CACHE
+    import json as _json
+    catalog_paths = [
+        str(REBIS_ROOT / "shared" / "IG_catalog.json"),
+        str(REBIS_ROOT.parent / "imscribing_grammar" / "IG_catalog.json"),
+        str(REBIS_ROOT.parent / "imscribe.com" / "IG_catalog.json"),
+    ]
+    for cp in catalog_paths:
+        if Path(cp).exists():
+            with open(cp) as f:
+                _CATALOG_CACHE = _json.load(f)
+            return _CATALOG_CACHE
+    _CATALOG_CACHE = []
+    return _CATALOG_CACHE
+
+# Bond type names in the catalog (imscribed from first principles)
+_CATALOG_BOND_NAMES = [
+    "sigma_single_bond", "carbonyl_bond", "amide_bond",
+    "ester_bond", "aromatic_ring",
+]
+
+# FG names in the catalog (imscribed from first principles)
+_CATALOG_FG_NAMES = [
+    "alcohol_fg", "amine_fg", "carboxylic_acid_fg",
+    # Additional FGs can be added as they are imscribed
+]
+
+# Map catalog primitive keys to short names
+_CATALOG_KEY_MAP = {
+    "Ð": "D", "Þ": "T", "Ř": "R", "Φ": "P", "ƒ": "F",
+    "Ç": "K", "Γ": "G", "ɢ": "Gm", "⊙": "Ph",
+    "Ħ": "H", "Σ": "S", "Ω": "W",
+}
+
+def _catalog_entry_to_tuple(entry: dict) -> dict:
+    """Convert a catalog entry dict to a 12-primitive dict with short keys."""
+    result = {}
+    for cat_key, short_key in _CATALOG_KEY_MAP.items():
+        if cat_key in entry:
+            result[short_key] = entry[cat_key]
+    return result
+
+def _get_catalog_tuples_by_name(names: list) -> dict:
+    """Return {name: 12-primitive-dict} for names found in the catalog."""
+    cat = _load_catalog()
+    result = {}
+    if not cat:
+        return result
+    if isinstance(cat, list):
+        for name in names:
+            for entry in cat:
+                if entry.get("name") == name:
+                    result[name] = _catalog_entry_to_tuple(entry)
+                    break
+    elif isinstance(cat, dict):
+        entries = cat.get("entries", cat.get("catalog", {}))
+        if isinstance(entries, dict):
+            for name in names:
+                if name in entries:
+                    result[name] = _catalog_entry_to_tuple(entries[name])
+    return result
 
 # ── Load ch3mpiler's BOND_TYPES and FG tables ──────────────────────
 
@@ -186,11 +260,6 @@ CATALYZING_PROTEINS = [
         "active_site_residues": ["Glu35", "Asp52"],
         "catalytic_roles": ["acid/base (Glu35)", "nucleophile (Asp52)"],
         "reaction": "Hydrolysis of β-1,4 glycosidic bonds in peptidoglycan",
-        "structural_type": {
-            "D": "𐑛", "T": "𐑥", "R": "𐑾", "P": "𐑗", "F": "𐑐",
-            "K": "𐑧", "G": "𐑔", "Gm": "𐑝", "Ph": "⊙", "H": "𐑒",
-            "S": "𐑳", "W": "𐑴"
-        },
         "smiles_substrate_hint": "CC1OC(OC2C(O)C(O)C(O)OC2C(=O)O)C(O)C(O)C1O"
     },
     {
@@ -200,11 +269,6 @@ CATALYZING_PROTEINS = [
         "active_site_residues": ["Ser160", "Asp206", "His237"],
         "catalytic_roles": ["nucleophile (Ser160)", "base (Asp206)", "acid/base (His237)"],
         "reaction": "Hydrolysis of PET (polyethylene terephthalate) to MHET + TPA",
-        "structural_type": {
-            "D": "𐑨", "T": "𐑸", "R": "𐑾", "P": "𐑹", "F": "𐑐",
-            "K": "𐑧", "G": "𐑔", "Gm": "𐑜", "Ph": "⊙", "H": "𐑖",
-            "S": "𐑳", "W": "𐑴"
-        },
         "smiles_substrate_hint": "O=C(Oc1ccc(C(=O)O)cc1)c2ccc(C(=O)O)cc2"
     },
     {
@@ -214,11 +278,6 @@ CATALYZING_PROTEINS = [
         "active_site_residues": ["Ser195", "His57", "Asp102"],
         "catalytic_roles": ["nucleophile (Ser195)", "general base (His57)", "charge relay (Asp102)"],
         "reaction": "Hydrolysis of peptide bonds C-terminal to Arg/Lys",
-        "structural_type": {
-            "D": "𐑨", "T": "𐑸", "R": "𐑾", "P": "𐑹", "F": "𐑐",
-            "K": "𐑧", "G": "𐑔", "Gm": "𐑜", "Ph": "⊙", "H": "𐑖",
-            "S": "𐑳", "W": "𐑴"
-        },
         "smiles_substrate_hint": "O=C(NC(C(=O)O)Cc1ccccc1)C(N)CCCCN"
     },
     {
@@ -228,11 +287,6 @@ CATALYZING_PROTEINS = [
         "active_site_residues": ["His94", "His96", "His119"],
         "catalytic_roles": ["Zn²⁺ ligand (His94)", "Zn²⁺ ligand (His96)", "Zn²⁺ ligand (His119)"],
         "reaction": "Reversible hydration of CO₂ to HCO₃⁻",
-        "structural_type": {
-            "D": "𐑛", "T": "𐑥", "R": "𐑽", "P": "𐑗", "F": "𐑐",
-            "K": "𐑪", "G": "𐑚", "Gm": "𐑜", "Ph": "⊙", "H": "𐑒",
-            "S": "𐑙", "W": "𐑴"
-        },
         "smiles_substrate_hint": "O=C=O"
     },
     {
@@ -242,11 +296,6 @@ CATALYZING_PROTEINS = [
         "active_site_residues": ["Ser203", "His447", "Glu334"],
         "catalytic_roles": ["nucleophile (Ser203)", "general base (His447)", "charge relay (Glu334)"],
         "reaction": "Hydrolysis of acetylcholine to choline + acetate",
-        "structural_type": {
-            "D": "𐑨", "T": "𐑸", "R": "𐑾", "P": "𐑹", "F": "𐑐",
-            "K": "𐑧", "G": "𐑔", "Gm": "𐑜", "Ph": "⊙", "H": "𐑖",
-            "S": "𐑳", "W": "𐑴"
-        },
         "smiles_substrate_hint": "CC(=O)OCC[N+](C)(C)C"
     },
     {
@@ -256,11 +305,6 @@ CATALYZING_PROTEINS = [
         "active_site_residues": ["Cys443"],
         "catalytic_roles": ["heme axial ligand (Cys443)"],
         "reaction": "Monooxygenation of xenobiotics (C-H hydroxylation, N/O-dealkylation)",
-        "structural_type": {
-            "D": "𐑨", "T": "𐑸", "R": "𐑾", "P": "𐑯", "F": "𐑐",
-            "K": "𐑧", "G": "𐑔", "Gm": "𐑵", "Ph": "𐑣", "H": "𐑖",
-            "S": "𐑳", "W": "𐑴"
-        },
         "smiles_substrate_hint": "COc1ccc2CCN(C)Cc2c1"
     },
     {
@@ -270,11 +314,6 @@ CATALYZING_PROTEINS = [
         "active_site_residues": ["His12", "His119", "Lys41"],
         "catalytic_roles": ["general base (His12)", "general acid (His119)", "stabilization (Lys41)"],
         "reaction": "Endonucleolytic cleavage of RNA at 3'-phosphate",
-        "structural_type": {
-            "D": "𐑛", "T": "𐑥", "R": "𐑾", "P": "𐑗", "F": "𐑐",
-            "K": "𐑧", "G": "𐑚", "Gm": "𐑜", "Ph": "⊙", "H": "𐑒",
-            "S": "𐑳", "W": "𐑴"
-        },
         "smiles_substrate_hint": "c1cn(C2CC(O)C(O)C2O)c(=O)[nH]c1=O"
     },
     {
@@ -284,11 +323,6 @@ CATALYZING_PROTEINS = [
         "active_site_residues": ["Cys43", "His66", "Cys153"],
         "catalytic_roles": ["Zn²⁺ ligand (Cys43)", "Zn²⁺ ligand (His66)", "Zn²⁺ ligand (Cys153)"],
         "reaction": "Reversible oxidation of alcohols to aldehydes/ketones (NAD⁺ dependent)",
-        "structural_type": {
-            "D": "𐑨", "T": "𐑸", "R": "𐑾", "P": "𐑿", "F": "𐑐",
-            "K": "𐑧", "G": "𐑔", "Gm": "𐑜", "Ph": "⊙", "H": "𐑖",
-            "S": "𐑳", "W": "𐑴"
-        },
         "smiles_substrate_hint": "CCO"
     },
     {
@@ -298,11 +332,6 @@ CATALYZING_PROTEINS = [
         "active_site_residues": ["Asp25", "Asp25'", "Thr26", "Gly27"],
         "catalytic_roles": ["catalytic Asp dyad (Asp25/Asp25')", "flap residues (Thr26/Gly27)"],
         "reaction": "Hydrolysis of viral Gag-Pol polyprotein at specific peptide bonds",
-        "structural_type": {
-            "D": "𐑨", "T": "𐑸", "R": "𐑾", "P": "𐑹", "F": "𐑐",
-            "K": "𐑧", "G": "𐑔", "Gm": "𐑜", "Ph": "⊙", "H": "𐑖",
-            "S": "𐑳", "W": "𐑴"
-        },
         "smiles_substrate_hint": "CC(C)C[C@H](NC(=O)[C@H](Cc1ccccc1)NC(=O)[C@H](CCCN=C(N)N)NC(=O)[C@H](CCCN=C(N)N)N)C(=O)O"
     },
     {
@@ -312,11 +341,6 @@ CATALYZING_PROTEINS = [
         "active_site_residues": ["His134", "His136", "His246", "Asp360", "Lys220"],
         "catalytic_roles": ["Ni²⁺ ligands (His134, His136, His246)", "base (Asp360)", "substrate binding (Lys220)"],
         "reaction": "Hydrolysis of urea to ammonia + CO₂",
-        "structural_type": {
-            "D": "𐑨", "T": "𐑸", "R": "𐑾", "P": "𐑿", "F": "𐑐",
-            "K": "𐑪", "G": "𐑔", "Gm": "𐑜", "Ph": "⊙", "H": "𐑖",
-            "S": "𐑙", "W": "𐑭"
-        },
         "smiles_substrate_hint": "NC(=O)N"
     },
 ]
@@ -335,7 +359,7 @@ PRIMITIVE_FULL_NAMES = [
 AA_TO_PRIMITIVE = {
     "Met": "D", "Trp": "T", "Cys": "R", "Tyr": "P", "Phe": "F",
     "Ile": "K", "His": "G", "Asn": "Gm", "Gln": "Ph",
-    "Asp": "H", "Lys": "S", "Glu": "W",
+    "Asp": "H", "Lys": "S", "Glu": "W"
 }
 
 # Primitive → complementary primitive pairs
@@ -355,7 +379,7 @@ GLYPH_ORDINALS = {
     "Ph": {"\U00010462": 0, "\u2299": 1, "\U0001046E": 2, "\U0001047B": 3, "\U00010463": 4},
     "H": {"\U00010453": 0, "\U00010452": 1, "\U00010456": 2, "\U0001046B": 3},
     "S": {"\U00010459": 0, "\U00010455": 1, "\U00010473": 2},
-    "W": {"\U00010477": 0, "\U00010474": 1, "\U0001046D": 2, "\U0001045F": 3},
+    "W": {"\U00010477": 0, "\U00010474": 1, "\U0001046D": 2, "\U0001045F": 3}
 }
 
 ORD_TO_GLYPH = {}
@@ -374,7 +398,7 @@ def ord_to_glyph(prim: str, ordinal: int) -> str:
 
 def fmt_tuple(t: dict) -> str:
     """Format a 12-primitive dict as angle-bracket string."""
-    return "<" + "; ".join(t.get(p, "?") for p in PRIMITIVE_NAMES_SHORT) + ">"
+    return "<" + "".join(t.get(p, "?") for p in PRIMITIVE_NAMES_SHORT) + ">"
 
 
 def tuple_distance_dict(t1: dict, t2: dict) -> float:
@@ -507,11 +531,6 @@ CATALYZING_PROTEINS = [
         "active_site_residues": ["Glu35", "Asp52"],
         "catalytic_roles": ["acid/base (Glu35)", "nucleophile (Asp52)"],
         "reaction": "Hydrolysis of beta-1,4 glycosidic bonds in peptidoglycan",
-        "structural_type": {
-            "D": D_wedge, "T": T_bowtie, "R": R_lr, "P": P_asym, "F": F_hbar,
-            "K": K_slow, "G": G_gimel, "Gm": Gm_and, "Ph": Ph_c, "H": H_one,
-            "S": S_nm, "W": W_Z2
-        },
         "smiles_substrate_hint": "CC1OC(OC2C(O)C(O)C(O)OC2C(=O)O)C(O)C(O)C1O"
     },
     {
@@ -521,11 +540,6 @@ CATALYZING_PROTEINS = [
         "active_site_residues": ["Ser160", "Asp206", "His237"],
         "catalytic_roles": ["nucleophile (Ser160)", "base (Asp206)", "acid/base (His237)"],
         "reaction": "Hydrolysis of PET to MHET + terephthalic acid",
-        "structural_type": {
-            "D": D_tri, "T": T_odot, "R": R_lr, "P": P_pm_sym, "F": F_hbar,
-            "K": K_slow, "G": G_gimel, "Gm": Gm_or, "Ph": Ph_c, "H": H_two,
-            "S": S_nm, "W": W_Z2
-        },
         "smiles_substrate_hint": "O=C(Oc1ccc(C(=O)O)cc1)c2ccc(C(=O)O)cc2"
     },
     {
@@ -535,11 +549,6 @@ CATALYZING_PROTEINS = [
         "active_site_residues": ["Ser195", "His57", "Asp102"],
         "catalytic_roles": ["nucleophile (Ser195)", "general base (His57)", "charge relay (Asp102)"],
         "reaction": "Hydrolysis of peptide bonds C-terminal to Arg/Lys",
-        "structural_type": {
-            "D": D_tri, "T": T_odot, "R": R_lr, "P": P_pm_sym, "F": F_hbar,
-            "K": K_slow, "G": G_gimel, "Gm": Gm_or, "Ph": Ph_c, "H": H_two,
-            "S": S_nm, "W": W_Z2
-        },
         "smiles_substrate_hint": "O=C(NC(C(=O)O)Cc1ccccc1)C(N)CCCCN"
     },
     {
@@ -549,11 +558,6 @@ CATALYZING_PROTEINS = [
         "active_site_residues": ["His94", "His96", "His119"],
         "catalytic_roles": ["Zn2+ ligand (His94)", "Zn2+ ligand (His96)", "Zn2+ ligand (His119)"],
         "reaction": "Reversible hydration of CO2 to bicarbonate",
-        "structural_type": {
-            "D": D_wedge, "T": T_bowtie, "R": R_dagger, "P": P_asym, "F": F_hbar,
-            "K": K_MBL, "G": G_beth, "Gm": Gm_or, "Ph": Ph_c, "H": H_one,
-            "S": S_11, "W": W_Z2
-        },
         "smiles_substrate_hint": "O=C=O"
     },
     {
@@ -563,11 +567,6 @@ CATALYZING_PROTEINS = [
         "active_site_residues": ["Ser203", "His447", "Glu334"],
         "catalytic_roles": ["nucleophile (Ser203)", "general base (His447)", "charge relay (Glu334)"],
         "reaction": "Hydrolysis of acetylcholine to choline + acetate",
-        "structural_type": {
-            "D": D_tri, "T": T_odot, "R": R_lr, "P": P_pm_sym, "F": F_hbar,
-            "K": K_slow, "G": G_gimel, "Gm": Gm_or, "Ph": Ph_c, "H": H_two,
-            "S": S_nm, "W": W_Z2
-        },
         "smiles_substrate_hint": "CC(=O)OCC[N+](C)(C)C"
     },
     {
@@ -577,11 +576,6 @@ CATALYZING_PROTEINS = [
         "active_site_residues": ["Cys443"],
         "catalytic_roles": ["heme axial ligand (Cys443)"],
         "reaction": "Monooxygenation (C-H hydroxylation, N/O-dealkylation)",
-        "structural_type": {
-            "D": D_tri, "T": T_odot, "R": R_lr, "P": P_sym, "F": F_hbar,
-            "K": K_slow, "G": G_gimel, "Gm": Gm_broad, "Ph": Ph_super, "H": H_two,
-            "S": S_nm, "W": W_Z2
-        },
         "smiles_substrate_hint": "COc1ccc2CCN(C)Cc2c1"
     },
     {
@@ -591,11 +585,6 @@ CATALYZING_PROTEINS = [
         "active_site_residues": ["His12", "His119", "Lys41"],
         "catalytic_roles": ["general base (His12)", "general acid (His119)", "stabilization (Lys41)"],
         "reaction": "Endonucleolytic cleavage of RNA at 3-prime-phosphate",
-        "structural_type": {
-            "D": D_wedge, "T": T_bowtie, "R": R_lr, "P": P_asym, "F": F_hbar,
-            "K": K_slow, "G": G_beth, "Gm": Gm_or, "Ph": Ph_c, "H": H_one,
-            "S": S_nm, "W": W_Z2
-        },
         "smiles_substrate_hint": "c1cn(C2CC(O)C(O)C2O)c(=O)[nH]c1=O"
     },
     {
@@ -605,11 +594,6 @@ CATALYZING_PROTEINS = [
         "active_site_residues": ["Cys43", "His66", "Cys153"],
         "catalytic_roles": ["Zn2+ ligands (Cys43, His66, Cys153)"],
         "reaction": "Reversible oxidation of alcohols to aldehydes (NAD+ dependent)",
-        "structural_type": {
-            "D": D_tri, "T": T_odot, "R": R_lr, "P": P_psi, "F": F_hbar,
-            "K": K_slow, "G": G_gimel, "Gm": Gm_or, "Ph": Ph_c, "H": H_two,
-            "S": S_nm, "W": W_Z2
-        },
         "smiles_substrate_hint": "CCO"
     },
     {
@@ -619,11 +603,6 @@ CATALYZING_PROTEINS = [
         "active_site_residues": ["Asp25", "Asp25_prime", "Thr26", "Gly27"],
         "catalytic_roles": ["catalytic Asp dyad (Asp25/Asp25')", "flap residues"],
         "reaction": "Hydrolysis of viral Gag-Pol polyprotein",
-        "structural_type": {
-            "D": D_tri, "T": T_odot, "R": R_lr, "P": P_pm_sym, "F": F_hbar,
-            "K": K_slow, "G": G_gimel, "Gm": Gm_or, "Ph": Ph_c, "H": H_two,
-            "S": S_nm, "W": W_Z2
-        },
         "smiles_substrate_hint": "CC(C)C[C@H](NC(=O)[C@H](Cc1ccccc1)N)C(=O)O"
     },
     {
@@ -633,11 +612,6 @@ CATALYZING_PROTEINS = [
         "active_site_residues": ["His134", "His136", "His246", "Asp360", "Lys220"],
         "catalytic_roles": ["Ni2+ ligands", "base (Asp360)", "substrate binding (Lys220)"],
         "reaction": "Hydrolysis of urea to ammonia + CO2",
-        "structural_type": {
-            "D": D_tri, "T": T_odot, "R": R_lr, "P": P_psi, "F": F_hbar,
-            "K": K_MBL, "G": G_gimel, "Gm": Gm_or, "Ph": Ph_c, "H": H_two,
-            "S": S_11, "W": W_Z
-        },
         "smiles_substrate_hint": "NC(=O)N"
     },
 ]
@@ -703,7 +677,7 @@ def encode_site_from_residues(residues: list) -> dict:
     _ALL_AA_PRIMITIVE = dict(AA_TO_PRIMITIVE)
     _ALL_AA_PRIMITIVE.update({
         "Ala": "G", "Gly": "G", "Val": "K", "Leu": "K", "Ile": "K",
-        "Pro": "T", "Ser": "R", "Thr": "R", "Arg": "S", "Lys": "S",
+        "Pro": "T", "Ser": "R", "Thr": "R", "Arg": "S", "Lys": "S"
     })
 
     # Parse residues to clean 3-letter codes
@@ -779,25 +753,16 @@ def closest_bond_type(ligand_type: dict) -> Tuple[str, dict, float]:
         bond_types = getattr(ch3, 'BOND_TYPES', {})
     
     if not bond_types:
-        # Fallback: built-in bond type tuples
-        bond_types = {
-            "sigma_single": {"D": D_wedge, "T": T_net, "R": R_cat, "P": P_asym, 
-                           "F": F_eth, "K": K_mod, "G": G_beth, "Gm": Gm_and, 
-                           "Ph": Ph_sub, "H": H_memless, "S": S_11, "W": W_0},
-            "carbonyl": {"D": D_wedge, "T": T_bowtie, "R": R_dagger, "P": P_sym, 
-                       "F": F_hbar, "K": K_mod, "G": G_beth, "Gm": Gm_and, 
-                       "Ph": Ph_c, "H": H_one, "S": S_11, "W": W_Z2},
-            "amide_link": {"D": D_tri, "T": T_bowtie, "R": R_lr, "P": P_pm, 
-                         "F": F_hbar, "K": K_slow, "G": G_aleph, "Gm": Gm_seq, 
-                         "Ph": Ph_c, "H": H_two, "S": S_nm, "W": W_Z2},
-            "ester_link": {"D": D_wedge, "T": T_bowtie, "R": R_dagger, "P": P_sym, 
-                         "F": F_hbar, "K": K_slow, "G": G_aleph, "Gm": Gm_seq, 
-                         "Ph": Ph_c, "H": H_one, "S": S_nm, "W": W_Z2},
-            "aromatic": {"D": D_tri, "T": T_odot, "R": R_lr, "P": P_pm_sym, 
-                       "F": F_hbar, "K": K_slow, "G": G_aleph, "Gm": Gm_seq, 
-                       "Ph": Ph_c, "H": H_two, "S": S_nm, "W": W_Z},
-        }
-    
+        # FIRST PRINCIPLES: load imscribed bond types from catalog
+        bond_types = _get_catalog_tuples_by_name(_CATALOG_BOND_NAMES)
+        if not bond_types:
+            # Absolute last resort: minimal fallback (only sigma_single_bond)
+            bond_types = {
+                "sigma_single": {"D": D_wedge, "T": T_net, "R": R_cat, "P": P_asym,
+                               "F": F_eth, "K": K_mod, "G": G_beth, "Gm": Gm_and,
+                               "Ph": Ph_sub, "H": H_memless, "S": S_11, "W": W_0},
+            }
+
     best_name = None
     best_tuple = None
     best_dist = float('inf')
@@ -847,39 +812,16 @@ def closest_fg_pair(ligand_type: dict, bond_type: dict = None) -> Tuple[list, di
         fg_table = getattr(ch3, 'FG', {})
     
     if not fg_table:
-        fg_table = {
-            "amine": {"D": D_wedge, "T": T_net, "R": R_cat, "P": P_asym, 
-                     "F": F_hbar, "K": K_fast, "G": G_beth, "Gm": Gm_and, 
-                     "Ph": Ph_sub, "H": H_memless, "S": S_11, "W": W_0},
-            "carbonyl": {"D": D_wedge, "T": T_bowtie, "R": R_cat, "P": P_sym, 
-                        "F": F_hbar, "K": K_mod, "G": G_beth, "Gm": Gm_and, 
-                        "Ph": Ph_c, "H": H_one, "S": S_11, "W": W_Z2},
-            "alcohol": {"D": D_wedge, "T": T_net, "R": R_dagger, "P": P_asym, 
-                       "F": F_hbar, "K": K_slow, "G": G_beth, "Gm": Gm_and, 
-                       "Ph": Ph_sub, "H": H_one, "S": S_11, "W": W_0},
-            "ester": {"D": D_wedge, "T": T_bowtie, "R": R_dagger, "P": P_sym, 
-                     "F": F_hbar, "K": K_slow, "G": G_aleph, "Gm": Gm_seq, 
-                     "Ph": Ph_c, "H": H_one, "S": S_nm, "W": W_Z2},
-            "amide": {"D": D_wedge, "T": T_bowtie, "R": R_dagger, "P": P_pm, 
-                     "F": F_hbar, "K": K_slow, "G": G_aleph, "Gm": Gm_seq, 
-                     "Ph": Ph_c, "H": H_two, "S": S_nm, "W": W_Z2},
-            "ether": {"D": D_wedge, "T": T_net, "R": R_cat, "P": P_asym, 
-                     "F": F_hbar, "K": K_mod, "G": G_beth, "Gm": Gm_and, 
-                     "Ph": Ph_sub, "H": H_one, "S": S_11, "W": W_0},
-            "aromatic_ring": {"D": D_tri, "T": T_odot, "R": R_lr, "P": P_pm_sym, 
-                            "F": F_hbar, "K": K_slow, "G": G_aleph, "Gm": Gm_seq, 
-                            "Ph": Ph_c, "H": H_two, "S": S_nm, "W": W_Z},
-            "carboxylic_acid": {"D": D_wedge, "T": T_bowtie, "R": R_lr, "P": P_sym, 
-                              "F": F_hbar, "K": K_slow, "G": G_aleph, "Gm": Gm_seq, 
-                              "Ph": Ph_c, "H": H_one, "S": S_nm, "W": W_Z2},
-            "phenol": {"D": D_tri, "T": T_odot, "R": R_lr, "P": P_sym, 
-                      "F": F_hbar, "K": K_slow, "G": G_aleph, "Gm": Gm_seq, 
-                      "Ph": Ph_c, "H": H_two, "S": S_nm, "W": W_Z2},
-            "alkene": {"D": D_wedge, "T": T_net, "R": R_lr, "P": P_sym, 
-                      "F": F_hbar, "K": K_mod, "G": G_beth, "Gm": Gm_and, 
-                      "Ph": Ph_c, "H": H_one, "S": S_11, "W": W_Z2},
-        }
-    
+        # FIRST PRINCIPLES: load imscribed FGs from catalog
+        fg_table = _get_catalog_tuples_by_name(_CATALOG_FG_NAMES)
+        if not fg_table:
+            # Absolute last resort: minimal fallback
+            fg_table = {
+                "amine": {"D": D_wedge, "T": T_net, "R": R_cat, "P": P_asym,
+                         "F": F_hbar, "K": K_fast, "G": G_beth, "Gm": Gm_and,
+                         "Ph": Ph_sub, "H": H_memless, "S": S_11, "W": W_0},
+            }
+
     # Try all FG pairs (including single FGs and pairs)
     best_pair = None
     best_fused = None
@@ -961,7 +903,7 @@ FG_SMILES_PATTERNS = {
     "sulfate": "COS(=O)(=O)O",
     "sulfide": "CSC",
     "oxetane": "C1COC1",
-    "beta_lactam": "O=C1CCN1",
+    "beta_lactam": "O=C1CCN1"
 }
 
 # Bond → SMILES connector patterns
@@ -978,7 +920,7 @@ BOND_SMILES_PATTERNS = {
     "aromatic": "c",
     "ether_link": "O",
     "strain_release": "-",
-    "hydrogen_bond": "-",
+    "hydrogen_bond": "-"
 }
 
 
@@ -1092,7 +1034,7 @@ def generate_ligand_smiles(bond_name: str, fg_names: list,
                 "logP": round(logp, 2),
                 "MW": round(mw, 1),
                 "heavy_atoms": heavy,
-                "valid": True,
+                "valid": True
             })
         except Exception as e:
             pass
@@ -1134,7 +1076,7 @@ def decompose_and_generate(site_type: dict, substrate_hint: str = "") -> dict:
         "bond_distance": round(bond_dist, 3) if bond_dist else None,
         "closest_fgs": fg_names,
         "fg_distance": round(fg_dist, 3) if fg_dist else None,
-        "ligand_candidates": ligands,
+        "ligand_candidates": ligands
     }
 
 
@@ -1161,7 +1103,8 @@ def analyze_bevy(protein_names: list = None) -> list:
     results = []
     for protein in proteins:
         name = protein["name"]
-        site_type = protein.get("structural_type")
+        # FIRST PRINCIPLES: compute site tuple from residues
+        site_type = encode_site_from_residues(protein["active_site_residues"])
         substrate = protein.get("smiles_substrate_hint", "")
         
         if not site_type:
@@ -1224,7 +1167,8 @@ def analyze_bevy_improved(protein_names: list = None, max_candidates: int = 10) 
     results = []
     for p in proteins:
         name = p["name"]
-        site_type = p.get("structural_type")
+        # FIRST PRINCIPLES: compute site tuple from residues
+        site_type = encode_site_from_residues(p["active_site_residues"])
         substrate = p.get("smiles_substrate_hint", "")
         
         # Try heterocycle/polycyclic engine first, fall back to fragment-based
@@ -1260,7 +1204,7 @@ def analyze_bevy_improved(protein_names: list = None, max_candidates: int = 10) 
             "estimated_bond": bond_name,
             "estimated_fgs": fg_names,
             "n_candidates": len(candidates),
-            "ligand_candidates": candidates,
+            "ligand_candidates": candidates
         })
     
     return results
