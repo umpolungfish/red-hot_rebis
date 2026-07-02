@@ -160,8 +160,17 @@ FG_FRAGMENTS = {
     "metallocene": ["[C-]12[C-]3[C-]4[C-]1[C-]2[Fe]345", "[C-]1[C-][C-][C-][C-]1[Fe]"],
     "aniline": ["Nc1ccccc1", "NC1=CC=CC=C1", "c1ccc(N)cc1"],
     "heterocyclic": ["c1ccncc1", "c1cccnc1", "c1nccnc1", "c1ccsc1", "c1ccocc1"],
-    "phosphate": ["OP(=O)(O)O", "COP(=O)(O)O", "CCOP(=O)(O)O"],
-    "sulfate": ["OS(=O)(=O)O", "COS(=O)(=O)O"],
+    "phosphate": ["OP(=O)(O)O", "COP(=O)(O)O", "CCOP(=O)(O)O", "c1ccc(OP(=O)(O)O)cc1"],
+    "phosphonate": ["CP(=O)(O)O", "CCP(=O)(O)O", "c1ccc(P(=O)(O)O)cc1"],
+    "sulfate": ["OS(=O)(=O)O", "COS(=O)(=O)O", "c1ccc(OS(=O)(=O)O)cc1"],
+    "sulfonate": ["CS(=O)(=O)O", "c1ccc(S(=O)(=O)O)cc1"],
+    "sulfonamide": ["CS(=O)(=O)N", "c1ccc(S(=O)(=O)N)cc1"],
+    "thiol": ["CS", "CCS", "c1ccc(S)cc1", "CSH"],
+    "sulfide": ["CSC", "CCSCC", "c1ccc(SC)cc1"],
+    "sulfoxide": ["CS(=O)C", "CCS(=O)CC", "c1ccc(S(=O)C)cc1"],
+    "sulfone": ["CS(=O)(=O)C", "CCS(=O)(=O)CC", "c1ccc(S(=O)(=O)C)cc1"],
+    "nitro": ["C[N+](=O)[O-]", "c1ccc([N+](=O)[O-])cc1"],
+    "nitrile": ["CC#N", "c1ccc(C#N)cc1"],
 }
 
 def _build_scaffold_mol(scaffold_smi: str) -> Optional[Chem.Mol]:
@@ -694,57 +703,67 @@ def _estimate_bond_type(ligand_type: Dict[str, str]) -> str:
 
 
 def _estimate_fgs(ligand_type: Dict[str, str], bond_name: str) -> List[str]:
-    """Estimate FG types from the ligand's structural type."""
-    r_glyph = ligand_type.get("R", "\U00010469")  # coupling
-    g_glyph = ligand_type.get("G", "\U0001045A")  # granularity
-    s_glyph = ligand_type.get("S", "\U00010459")  # stoichiometry
-    gm_glyph = ligand_type.get("Gm", "\U0001045D")  # composition
-    
-    # R + S indicates how many FG types
-    if s_glyph == "\U00010459":  # 1:1
-        n_fgs = 1
-    elif s_glyph == "\U00010455":  # nn
-        n_fgs = 2
-    else:  # nm
-        n_fgs = 2
-    
-    # Map (R, Gm) → FG pair
-    fg_map = {
-        ("\U00010451", "\U0001045D"): ["amine"],             # cat + and
-        ("\U00010451", "\U0001045C"): ["amine", "carbonyl"], # cat + or
-        ("\U0001047D", "\U0001045C"): ["alcohol", "amine"],  # dagger + or
-        ("\U0001047D", "\U00010460"): ["amine", "ester"],    # dagger + seq
-        ("\U0001047E", "\U0001045D"): ["carbonyl"],          # lr + and
-        ("\U0001047E", "\U0001045C"): ["carbonyl", "alcohol"], # lr + or
-        ("\U00010451", "\U00010460"): ["amine", "ether"],    # cat + seq
-        ("\U00010469", "\U0001045C"): ["alcohol", "amine"],  # super + or
-        ("\U00010469", "\U0001045D"): ["alcohol"],           # super + and
-        ("\U00010451", "\U00010475"): ["amine", "aromatic_ring"], # cat + broad
-        ("\U0001047D", "\U0001045D"): ["carboxylic_acid"],   # dagger + and
-        ("\U0001047E", "\U00010460"): ["carbonyl", "amine"], # lr + seq
-    }
-    
-    key = (r_glyph, gm_glyph)
-    if key in fg_map:
-        return fg_map[key]
-    
-    # Bond-specific defaults
-    bond_fg_defaults = {
-        "amide_link": ["amine", "carbonyl"],
-        "ester_link": ["alcohol", "carbonyl"],
-        "pi_bond": ["aromatic_ring"],
-        "aromatic": ["aromatic_ring", "amine"],
-        "sigma_single": ["amine"],
-        "ether_link": ["alcohol", "ether"],
-        "strain_release": ["epoxide", "amine"],
-        "carbonyl": ["carbonyl"],
-        "hydrogen_bond": ["alcohol", "amine"],
-        "double_bond": ["carbonyl", "amine"],
-        "triple_bond": ["nitrile", "aromatic_ring"],
-    }
-    
-    return bond_fg_defaults.get(bond_name, ["amine"])
+    """Estimate FG types from the ligand's structural type.
 
+    Full 16-entry (R, Gm) grid — every coupling×composition combination
+    is mapped.  Entries are statically assigned as CHNO-only, sulfur-containing,
+    phosphorus-containing, or mixed P+S.  No gating on S (stoichiometry) because
+    the complement swaps R↔S, making the ligand S uninformative about site
+    heteroatom diversity.
+    """
+    r_glyph = ligand_type.get("R", "𐑩")
+    gm_glyph = ligand_type.get("Gm", "𐑝")
+
+    _R_SUPER   = "𐑩"; _R_CAT     = "𐑑"
+    _R_DAGGER  = "𐑽"; _R_LR      = "𐑾"
+    _GM_AND    = "𐑝"; _GM_OR    = "𐑜"
+    _GM_SEQ    = "𐑠"; _GM_BROAD = "𐑵"
+
+    # 16-entry grid: 4 CHNO, 4 sulfur, 4 phosphorus, 4 mixed P+S
+    fg_grid = {
+        # ── CHNO-only (simple hydrogen-bond / polar interactions) ──
+        (_R_SUPER, _GM_AND):   ["alcohol"],
+        (_R_SUPER, _GM_OR):    ["alcohol", "amine"],
+        (_R_CAT, _GM_AND):     ["amine"],
+        (_R_DAGGER, _GM_AND):  ["carboxylic_acid"],
+        # ── Sulfur-containing (thiol, sulfide, sulfone, sulfoxide, sulfate) ──
+        (_R_LR, _GM_AND):      ["sulfone", "carbonyl"],
+        (_R_DAGGER, _GM_BROAD):["sulfoxide", "phosphate"],
+        (_R_CAT, _GM_BROAD):   ["sulfonamide", "aromatic_ring"],
+        (_R_SUPER, _GM_BROAD): ["sulfate", "thiol"],
+        # ── Phosphorus-containing (phosphate, phosphonate) ──
+        (_R_SUPER, _GM_SEQ):   ["phosphate", "alcohol"],
+        (_R_DAGGER, _GM_SEQ):  ["phosphate", "amine"],
+        (_R_CAT, _GM_SEQ):     ["phosphonate", "amine"],
+        (_R_LR, _GM_BROAD):    ["phosphate", "sulfide"],
+        # ── Mixed P+S (sulfate, thiol, sulfide with phosphate, carbonyl) ──
+        (_R_CAT, _GM_OR):      ["sulfide", "carbonyl"],
+        (_R_DAGGER, _GM_OR):   ["phosphate", "alcohol"],
+        (_R_LR, _GM_OR):       ["thiol", "carbonyl"],
+        (_R_LR, _GM_SEQ):      ["sulfone", "amine"],
+    }
+
+    key2 = (r_glyph, gm_glyph)
+    if key2 in fg_grid:
+        return fg_grid[key2]
+
+    # Bond-specific fallbacks (should not be reached — grid is exhaustive)
+    bond_fg_defaults = {
+        "amide_link":       ["amine", "carbonyl"],
+        "ester_link":       ["alcohol", "carbonyl"],
+        "pi_bond":          ["aromatic_ring"],
+        "aromatic":         ["aromatic_ring", "amine"],
+        "sigma_single":     ["amine", "alcohol"],
+        "ether_link":       ["alcohol", "ether"],
+        "strain_release":   ["epoxide", "amine"],
+        "carbonyl":         ["carbonyl", "thiol"],
+        "hydrogen_bond":    ["alcohol", "amine", "phosphate"],
+        "double_bond":      ["carbonyl", "amine"],
+        "triple_bond":      ["nitrile", "aromatic_ring"],
+        "co_sigma":         ["alcohol", "thiol"],
+        "cn_sigma":         ["amine", "nitrile"],
+    }
+    return bond_fg_defaults.get(bond_name, ["amine", "alcohol"])
 
 # ── TEST: Run on the full bevy ──
 
@@ -869,41 +888,91 @@ def _complement_type(site_type: Dict[str, str]) -> Dict[str, str]:
     return ligand
 def _estimate_bond_from_site_type(site_type: Dict[str, str]) -> str:
     """Estimate bond type from the ENZYME'S catalytic site structural type.
-    
-    Uses the enzyme's full 12-primitive fingerprint to determine what bond
-    type a ligand inhibitor would target. This is more accurate than using
-    the complemented ligand type.
+
+    Uses the enzyme's full 12-primitive fingerprint. Exact match to known
+    catalytic mechanisms first; then a rule-based estimator using dominant
+    primitives for novel site types.
     """
     from rhr_p4rky.ligand_from_active_site import GLYPH_ORDINALS
-    
+
     def o(glyph, pn):
         return GLYPH_ORDINALS.get(pn, {}).get(glyph, -1)
-    
-    fp = tuple(o(site_type.get(pn,"?"), pn) for pn in 
-               ["D","T","R","P","F","K","G","Gm","Ph","H","S","W"])
-    
-    # Enzyme fingerprint → bond type map (from known catalytic mechanisms)
+
+    PN = ["D","T","R","P","F","K","G","Gm","Ph","H","S","W"]
+    fp = tuple(o(site_type.get(pn,"?"), pn) for pn in PN)
+
+    # Enzyme fingerprint -> bond type map (from known catalytic mechanisms)
     ENZYME_BOND_MAP = {
-        # Serine hydrolase triad: D=1 T=4 R=3 P=4 F=2 K=2 G=1 Gm=1 Ph=1 H=2 S=2 W=1
         (1, 4, 3, 4, 2, 2, 1, 1, 1, 2, 2, 1): "amide_link",
-        # Lysozyme: D=0 T=2 R=3 P=0 F=2 K=2 G=1 Gm=0 Ph=1 H=1 S=2 W=1
         (0, 2, 3, 0, 2, 2, 1, 0, 1, 1, 2, 1): "strain_release",
-        # Carbonic anhydrase: D=0 T=2 R=2 P=0 F=2 K=3 G=0 Gm=1 Ph=1 H=1 S=0 W=1
         (0, 2, 2, 0, 2, 3, 0, 1, 1, 1, 0, 1): "hydrogen_bond",
-        # P450: D=1 T=4 R=3 P=3 F=2 K=2 G=1 Gm=3 Ph=4 H=2 S=2 W=1
         (1, 4, 3, 3, 2, 2, 1, 3, 4, 2, 2, 1): "sigma_single",
-        # RNase A: D=0 T=2 R=3 P=0 F=2 K=2 G=0 Gm=1 Ph=1 H=1 S=2 W=1
         (0, 2, 3, 0, 2, 2, 0, 1, 1, 1, 2, 1): "ester_link",
-        # ADH: D=1 T=4 R=3 P=1 F=2 K=2 G=1 Gm=1 Ph=1 H=2 S=2 W=1
         (1, 4, 3, 1, 2, 2, 1, 1, 1, 2, 2, 1): "sigma_single",
-        # Urease: D=1 T=4 R=3 P=1 F=2 K=3 G=1 Gm=1 Ph=1 H=2 S=0 W=2
         (1, 4, 3, 1, 2, 3, 1, 1, 1, 2, 0, 2): "amide_link",
     }
-    
+
     if fp in ENZYME_BOND_MAP:
         return ENZYME_BOND_MAP[fp]
-    
-    # Fallback: Hamming distance to nearest match
+
+    # ── Rule-based fallback for novel fingerprints ──
+    # Each primitive's elevation tells us about residue composition.
+    # Non-P/F primitives: ordinal > 0 means residues present (max semantics).
+    # P/F primitives: ordinal < max_ord means residues present (inverted min semantics).
+
+    # Max ordinals per primitive
+    MAX_ORD = {"D": 3, "T": 4, "R": 3, "P": 4, "F": 2, "K": 4,
+               "G": 2, "Gm": 3, "Ph": 4, "H": 3, "S": 2, "W": 3}
+
+    def is_elevated(idx, val):
+        """True if primitive has residues contributing to it."""
+        pn = PN[idx]
+        max_o = MAX_ORD.get(pn, 1)
+        if pn in ("P", "F"):
+            return val < max_o  # inverted: low ordinal = many residues
+        return val > 0
+
+    def elevation(idx, val):
+        """How strongly this primitive is elevated (0 to 1 scale)."""
+        pn = PN[idx]
+        max_o = MAX_ORD.get(pn, 1)
+        if max_o == 0:
+            return 0.0
+        if pn in ("P", "F"):
+            return (max_o - val) / max_o  # inverted
+        return val / max_o
+
+    # Score each bond type based on which primitives are elevated
+    # Bond type -> (primitive_index, weight) pairs for what drives that bond
+    BOND_RULES = {
+        "hydrogen_bond": [(10, 2.0), (9, 1.0), (8, 0.5)],  # S, H, Ph
+        "amide_link":    [(10, 1.5), (9, 1.5), (7, 1.5), (2, 0.5)],  # S, H, Gm, R
+        "ester_link":    [(9, 2.0), (2, 1.0)],  # H, R
+        "carbonyl":      [(2, 2.0), (9, 0.5)],  # R, H
+        "sigma_single":  [(5, 1.5), (6, 1.5), (0, 0.5)],  # K, G, D
+        "ether_link":    [(6, 2.0), (2, 0.5)],  # G, R
+        "aromatic":      [(3, 1.5), (11, 1.5), (4, 1.0)],  # P, W, F
+        "pi_bond":       [(11, 2.0), (3, 0.5), (4, 0.5)],  # W, P, F
+        "strain_release":[(1, 2.0), (5, 0.5)],  # T, K
+    }
+
+    scores = {}
+    for bt, rules in BOND_RULES.items():
+        score = 0.0
+        for idx, weight in rules:
+            score += elevation(idx, fp[idx]) * weight
+        # Bonus for exact dominant match
+        max_el = max(elevation(i, fp[i]) for i in range(12))
+        for idx, weight in rules:
+            if elevation(idx, fp[idx]) == max_el and max_el > 0:
+                score += weight * 2.0  # double weight for dominant primitive
+        scores[bt] = score
+
+    best = max(scores, key=scores.get)
+    if scores[best] > 0:
+        return best
+
+    # Last resort: Hamming distance to known entries
     best_dist = 99
     best_bond = "sigma_single"
     for pattern, bond_type in ENZYME_BOND_MAP.items():
@@ -917,47 +986,109 @@ def _estimate_bond_from_site_type(site_type: Dict[str, str]) -> str:
 def _estimate_fgs_from_site_type(site_type: Dict[str, str], bond_name: str) -> List[str]:
     """Estimate FG types from the enzyme's catalytic site type and bond type."""
     from rhr_p4rky.ligand_from_active_site import GLYPH_ORDINALS
-    
+
     def o(glyph, pn):
         return GLYPH_ORDINALS.get(pn, {}).get(glyph, -1)
-    
-    fp = tuple(o(site_type.get(pn,"?"), pn) for pn in 
-               ["D","T","R","P","F","K","G","Gm","Ph","H","S","W"])
-    
-    # FG estimation map: fingerprint fragment → FG candidate list
+
+    PN = ["D","T","R","P","F","K","G","Gm","Ph","H","S","W"]
+    fp = tuple(o(site_type.get(pn,"?"), pn) for pn in PN)
+
+    # FG estimation map: exact matches for known catalytic types
     FG_ESTIMATION_MAP = {
-        # Serine hydrolase (P/F dominant, high coupling)
         (1, 4, 3, 4, 2, 2, 1, 1, 1, 2, 2, 1): ["amine", "carbonyl"],
-        # Lysozyme (low D, no P, bowtie T)
         (0, 2, 3, 0, 2, 2, 1, 0, 1, 1, 2, 1): ["lactam", "epoxide"],
-        # Carbonic anhydrase (trapped K, 1:1 S, low G)
         (0, 2, 2, 0, 2, 3, 0, 1, 1, 1, 0, 1): ["carbonyl", "alcohol"],
-        # P450 (broad Gm, supercritical Ph)
         (1, 4, 3, 3, 2, 2, 1, 3, 4, 2, 2, 1): ["aromatic_ring", "ether"],
-        # RNase (low D, no G, bowtie T)
         (0, 2, 3, 0, 2, 2, 0, 1, 1, 1, 2, 1): ["carbonyl", "alcohol"],
-        # ADH (psi P, odot T)
         (1, 4, 3, 1, 2, 2, 1, 1, 1, 2, 2, 1): ["alcohol", "carbonyl"],
-        # Urease (trapped K, 1:1 S, Z winding)
         (1, 4, 3, 1, 2, 3, 1, 1, 1, 2, 0, 2): ["amine", "carbonyl"],
     }
-    
+
     if fp in FG_ESTIMATION_MAP:
         return FG_ESTIMATION_MAP[fp]
-    
-    # Bond-specific defaults as fallback
-    bond_fg_defaults = {
-        "amide_link": ["amine", "carbonyl"],
-        "ester_link": ["alcohol", "carbonyl"],
-        "aromatic": ["aromatic_ring", "amine"],
-        "sigma_single": ["amine", "alcohol"],
-        "ether_link": ["alcohol", "ether"],
-        "strain_release": ["epoxide", "lactam"],
-        "carbonyl": ["carbonyl", "alcohol"],
-        "hydrogen_bond": ["alcohol", "amine"],
-        "pi_bond": ["aromatic_ring", "carbonyl"],
+
+    # ── Rule-based fallback for novel fingerprints ──
+    MAX_ORD = {"D": 3, "T": 4, "R": 3, "P": 4, "F": 2, "K": 4,
+               "G": 2, "Gm": 3, "Ph": 4, "H": 3, "S": 2, "W": 3}
+
+    def elevation(idx, val):
+        pn = PN[idx]
+        max_o = MAX_ORD.get(pn, 1)
+        if max_o == 0:
+            return 0.0
+        if pn in ("P", "F"):
+            return (max_o - val) / max_o
+        return val / max_o
+
+    # FG scoring: each primitive elevation -> FG preferences
+    FG_RULES = {
+        # ── CHNO FGs ──
+        "amine":    [(10, 2.0), (7, 1.5), (8, 1.0)],  # S, Gm, Ph
+        "carbonyl": [(2, 2.0), (9, 1.0), (7, 0.5)],   # R, H, Gm
+        "alcohol":  [(2, 1.5), (9, 1.5), (6, 0.5)],   # R, H, G
+        "ether":    [(6, 2.0), (0, 1.0), (2, 0.5)],   # G, D, R
+        "aromatic_ring": [(3, 2.0), (4, 2.0), (11, 1.5)],  # P, F, W
+        "epoxide":  [(1, 2.0), (5, 0.5)],              # T, K
+        "lactam":   [(9, 1.5), (1, 1.0), (7, 1.0)],   # H, T, Gm
+        # ── Sulfur-containing FGs ──
+        "thiol":    [(2, 2.0), (10, 1.5), (5, 0.5)],  # R, S, K
+        "sulfide":  [(6, 1.5), (10, 1.5), (7, 1.0)],  # G, S, Gm
+        "sulfoxide":[(2, 1.5), (5, 1.5), (11, 1.0)],  # R, K, W
+        "sulfone":  [(3, 1.5), (5, 1.5), (11, 1.5)],  # P, K, W
+        "sulfate":  [(2, 2.0), (9, 1.5), (10, 1.0)],  # R, H, S
+        "sulfonate":[(2, 1.5), (10, 1.5), (7, 1.0)],  # R, S, Gm
+        "sulfonamide":[(7, 2.0), (10, 1.5), (8, 1.0)],# Gm, S, Ph
+        # ── Phosphorus-containing FGs ──
+        "phosphate":[(2, 2.0), (10, 1.5), (9, 1.0)],  # R, S, H
+        "phosphonate":[(10, 2.0), (7, 1.5), (2, 1.0)],# S, Gm, R
+        # ── Other heteroatom FGs ──
+        "nitro":    [(4, 2.0), (5, 1.5), (8, 1.0)],   # F, K, Ph
+        "nitrile":  [(7, 2.0), (10, 1.0), (4, 0.5)],  # Gm, S, F
     }
-    return bond_fg_defaults.get(bond_name, ["amine"])
+
+    scores = {}
+    for fg, rules in FG_RULES.items():
+        score = 0.0
+        for idx, weight in rules:
+            score += elevation(idx, fp[idx]) * weight
+        max_el = max(elevation(i, fp[i]) for i in range(12))
+        for idx, weight in rules:
+            if elevation(idx, fp[idx]) == max_el and max_el > 0:
+                score += weight * 1.5
+        scores[fg] = score
+
+    # Sort FGs by score, take top 2
+    ranked = sorted(scores.items(), key=lambda x: -x[1])
+    top_fgs = [fg for fg, score in ranked[:2] if score > 0]
+
+    if len(top_fgs) >= 2:
+        return top_fgs[:2]
+    if len(top_fgs) == 1:
+        # Add a complementary FG based on bond type
+        bond_complements = {
+            "amide_link": "carbonyl", "ester_link": "alcohol",
+            "carbonyl": "alcohol", "sigma_single": "alcohol",
+            "ether_link": "alcohol", "aromatic": "amine",
+            "pi_bond": "carbonyl", "strain_release": "amine",
+            "hydrogen_bond": "carbonyl",
+        }
+        return [top_fgs[0], bond_complements.get(bond_name, "alcohol")]
+
+    # Bond-specific defaults as last resort
+    bond_fg_defaults = {
+        "amide_link":       ["amine", "carbonyl"],
+        "ester_link":       ["alcohol", "carbonyl", "phosphate"],
+        "aromatic":         ["aromatic_ring", "amine", "thiol"],
+        "sigma_single":     ["amine", "alcohol", "thiol"],
+        "ether_link":       ["alcohol", "ether", "sulfide"],
+        "strain_release":   ["epoxide", "lactam", "sulfone"],
+        "carbonyl":         ["carbonyl", "alcohol", "thiol"],
+        "hydrogen_bond":    ["alcohol", "amine", "phosphate"],
+        "pi_bond":          ["aromatic_ring", "carbonyl", "sulfoxide"],
+        "co_sigma":         ["alcohol", "thiol"],
+        "cn_sigma":         ["amine", "nitrile"],
+    }
+    return bond_fg_defaults.get(bond_name, ["amine", "alcohol", "phosphate"])
 
 
 def generate_from_enzyme_type(

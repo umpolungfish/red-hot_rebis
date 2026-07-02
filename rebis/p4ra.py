@@ -15,6 +15,10 @@ Callable as a command:
 import sys as _sys
 import io as _io
 import argparse
+import json
+import math
+import urllib.request
+import urllib.error
 from contextlib import redirect_stdout, redirect_stderr
 from pathlib import Path as _Path
 
@@ -87,7 +91,9 @@ with redirect_stdout(_quiet), redirect_stderr(_quiet):
                                                     closest_fg_pair,
                                                     generate_ligand_smiles,
                                                     tuple_distance_dict,
-                                                    fmt_tuple)
+                                                    fmt_tuple,
+                                                    PROTEIN_LOOKUP,
+                                                    CATALYZING_PROTEINS)
     from rhr_p4rky.ligand_improvements import (generate_from_enzyme_type,
                                                 generate_from_structural_type,
                                                 generate_ligands_from_bond_fg,
@@ -115,82 +121,468 @@ __all__ = sorted([k for k in dir() if not k.startswith('_')
                                  'redirect_stdout', 'redirect_stderr')])
 
 
+def _cmd_belnap(args):
+    """Test Belnap FOUR operations."""
+    print("Belnap FOUR Values:")
+    for v in [Belnap.T, Belnap.B, Belnap.F, Belnap.N]:
+        print(f"  {v.name}: meet={meet(v, Belnap.T).name}, "
+              f"join={join(v, Belnap.F).name}, "
+              f"not={bnot(v).name}")
+    print(f"\nDesignated: {[v.name for v in [Belnap.T, Belnap.B]]}")
+    return 0
+
+
+def _cmd_genetics(args):
+    """Show genetic code B4 lattice."""
+    print("Genetic Code — B4 Lattice (64 codons):")
+    try:
+        demo()
+    except Exception:
+        for codon in ["AUG", "UAA", "UGA", "UAG", "UUU", "AAA"]:
+            bc = get_codon(codon)
+            if bc:
+                print(f"  {codon}: {bc}")
+    return 0
+
+
+def _cmd_verify(args):
+    """Run B3 Frobenius verification suite."""
+    print("Running ALL B3 Frobenius verifications...")
+    results = run_all_verifications()
+    all_pass = all(v.get("passed", False) for v in results.values())
+    for name, result in results.items():
+        status = "✓" if result.get("passed") else "✗"
+        print(f"  {status} {name}: {result.get('message', '')}")
+    print(f"\n{'ALL PASS' if all_pass else 'SOME FAILED'}")
+    return 0 if all_pass else 1
+
+
+def _cmd_hadrons(args):
+    """Test hadron Belnap operations."""
+    print("Testing Hadron Belnap...")
+    try:
+        test_hadron_belnap()
+    except Exception as e:
+        print(f"  build_meson_example: {build_meson_example()}")
+        print(f"  build_baryon_example: {build_baryon_example()}")
+        print(f"  test_tetraquark: {test_tetraquark()}")
+        print(f"  test_glueball: {test_glueball()}")
+    return 0
+
+
+def _cmd_ligands(args):
+    """Generate ligands from enzyme active site.
+
+    Accepts enzyme names (from built-in catalog), PDB IDs, or UniProt accessions.
+    Fetches PDB structures on-the-fly from RCSB for unrecognized identifiers.
+
+    Examples:
+      rebis.p4ra ligands lysozyme              — built-in catalog entry
+      rebis.p4ra ligands T4LYSOZYME            — PDB ID (fetched from RCSB)
+      rebis.p4ra ligands 1LYZ                  — PDB ID
+      rebis.p4ra ligands P18525                — UniProt accession (resolved via PDB)
+    """
+    enzyme = args.enzyme
+    print(f"Generating ligands for enzyme: {enzyme}...")
+
+    # ── Step 1: Look up in built-in PROTEIN_LOOKUP (case-insensitive, substring) ──
+    protein = None
+    enzyme_lower = enzyme.lower().strip()
+
+    # Exact match first
+    for name, entry in PROTEIN_LOOKUP.items():
+        if name.lower() == enzyme_lower:
+            protein = entry
+            break
+
+    # Substring or fuzzy match
+    if protein is None:
+        for name, entry in PROTEIN_LOOKUP.items():
+            name_lower = name.lower()
+            if enzyme_lower in name_lower or name_lower in enzyme_lower:
+                protein = entry
+                break
+
+    # Try matching alternate names (e.g. "adh" → "alcohol_dehydrogenase")
+    if protein is None:
+        _aliases = {
+            "adh": "alcohol_dehydrogenase",
+            "adh1": "alcohol_dehydrogenase",
+            "rnase": "ribonuclease_A",
+            "rnase_a": "ribonuclease_A",
+            "rnasea": "ribonuclease_A",
+            "ache": "acetylcholinesterase",
+            "ca2": "carbonic_anhydrase_II",
+            "ca_ii": "carbonic_anhydrase_II",
+            "carbonic_anhydrase": "carbonic_anhydrase_II",
+            "hiv_protease": "HIV1_protease",
+            "hiv1_protease": "HIV1_protease",
+            "hiv": "HIV1_protease",
+            "cyp2d6": "cytochrome_P450_2D6",
+            "p450_2d6": "cytochrome_P450_2D6",
+            "p450": "cytochrome_P450_2D6",
+            "pet": "PETase",
+            "petase": "PETase",
+        }
+        canonical = _aliases.get(enzyme_lower)
+        if canonical and canonical in PROTEIN_LOOKUP:
+            protein = PROTEIN_LOOKUP[canonical]
+
+    if protein is not None:
+        print(f"  Enzyme:     {protein['name']}")
+        print(f"  Organism:   {protein['organism']}")
+        print(f"  PDB:        {protein.get('pdb', 'N/A')}")
+        print(f"  Reaction:   {protein['reaction']}")
+        print(f"  Active site: {', '.join(protein['active_site_residues'])}")
+        print(f"  Catalytic roles: {'; '.join(protein.get('catalytic_roles', []))}")
+
+        site_type = protein.get("structural_type")
+        substrate = protein.get("smiles_substrate_hint", "")
+
+        if site_type is None:
+            print("  ERROR: No structural type in catalog entry")
+            return 1
+
+        print(f"\n  Site structural type: {fmt_tuple(site_type)}")
+
+        try:
+            from rhr_p4rky.ligand_heterocycles import generate_hybrid_ligands
+            candidates = generate_hybrid_ligands(
+                site_type=site_type,
+                substrate_hint=substrate,
+                max_candidates=20,
+            )
+        except Exception:
+            try:
+                candidates = generate_from_enzyme_type(
+                    site_type=site_type,
+                    substrate_hint=substrate,
+                    max_candidates=20,
+                )
+            except Exception as e2:
+                print(f"  Generation failed: {e2}")
+            # Fall back: try test_bevy with a protein list
+            try:
+                result = test_bevy([protein])
+                if result:
+                    for pname, presult in result.items():
+                        candidates = presult.get("candidates", [])
+                        print(f"\n  Fallback pipeline generated {len(candidates)} candidates:")
+                        break
+            except Exception as e2:
+                print(f"  Fallback also failed: {e2}")
+                return 1
+
+        if candidates:
+            print(f"\n  Generated {len(candidates)} candidate ligands:\n")
+            print(f"  {'#':3s}  {'Method':20s}  {'SMILES':40s}  {'Score':8s}  {'logP':6s}  {'MW':8s}")
+            print(f"  {'-'*3}  {'-'*20}  {'-'*40}  {'-'*8}  {'-'*6}  {'-'*8}")
+            for i, c in enumerate(candidates[:15], 1):
+                smiles = c.get('smiles', '?')
+                if len(smiles) > 38:
+                    smiles = smiles[:35] + '...'
+                print(f"  {i:<3d}  {c.get('method', '?'):20s}  {smiles:40s}  "
+                      f"{c.get('composite_score', 0):.4f}  "
+                      f"{c.get('logP', 0):5.1f}  "
+                      f"{c.get('MW', 0):7.1f}")
+        else:
+            print(f"\n  No candidate ligands generated.")
+        return 0
+
+    # ── Step 2: Not in catalog — attempt PDB fetch from RCSB ──
+    print(f"  Not in built-in catalog ({len(PROTEIN_LOOKUP)} entries).")
+    print(f"  Attempting PDB fetch from RCSB for '{enzyme}'...")
+
+    pdb_text = None
+    pdb_id = enzyme.strip().upper()
+
+    # Try direct PDB download
+    for fetch_id in [pdb_id, pdb_id.lower(), pdb_id.upper()]:
+        try:
+            url = f'https://files.rcsb.org/download/{fetch_id}.pdb'
+            req = urllib.request.Request(url, headers={'User-Agent': 'Rebis/3.0'})
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                pdb_text = resp.read().decode('utf-8')
+            if pdb_text and len(pdb_text) > 500 and ('ATOM' in pdb_text or 'HETATM' in pdb_text):
+                print(f"  ✓ Fetched PDB {fetch_id}: {len(pdb_text)} bytes")
+                break
+            else:
+                pdb_text = None
+        except urllib.error.HTTPError as e:
+            if e.code == 404:
+                continue
+            print(f"  HTTP error for {fetch_id}: {e}")
+        except Exception as e:
+            print(f"  Fetch error for {fetch_id}: {e}")
+
+    # Try UniProt → PDB mapping via EBI PDBe API
+    if pdb_text is None:
+        print(f"  No direct PDB match. Trying UniProt→PDB mapping for '{enzyme}'...")
+        try:
+            # Try PDBe API: search by UniProt accession
+            url = f'https://www.ebi.ac.uk/pdbe/api/mappings/best_structures/{enzyme.strip().upper()}'
+            req = urllib.request.Request(url, headers={'User-Agent': 'Rebis/3.0'})
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                data = json.loads(resp.read().decode('utf-8'))
+            # Extract PDB IDs (best_structures format: {uniprot_id: [{pdb_id, chain_id, ...}]})
+            pdb_ids = []
+            for uniprot_id, entries in data.items():
+                if isinstance(entries, list):
+                    for entry in entries:
+                        pid = entry.get('pdb_id', '')
+                        if pid:
+                            pdb_ids.append(pid)
+                elif isinstance(entries, dict):
+                    for pdb_entry in entries.get('PDB', []):
+                        pdb_ids.append(pdb_entry.get('pdb_id', ''))
+            if pdb_ids:
+                print(f"  UniProt {enzyme} maps to PDB: {', '.join(pdb_ids[:5])}")
+                # Try the first PDB ID
+                for pid in pdb_ids[:3]:
+                    try:
+                        url = f'https://files.rcsb.org/download/{pid}.pdb'
+                        req = urllib.request.Request(url, headers={'User-Agent': 'Rebis/3.0'})
+                        with urllib.request.urlopen(req, timeout=30) as resp:
+                            pdb_text = resp.read().decode('utf-8')
+                        if pdb_text and len(pdb_text) > 500:
+                            print(f"  ✓ Fetched PDB {pid}: {len(pdb_text)} bytes")
+                            break
+                    except:
+                        continue
+        except urllib.error.HTTPError:
+            pass
+        except Exception as e:
+            print(f"  UniProt mapping error: {e}")
+
+    if pdb_text is None or len(pdb_text) < 500:
+        print(f"\n  ✗ Could not fetch PDB structure for '{enzyme}'.")
+        print(f"  Available built-in enzymes:")
+        for name in sorted(PROTEIN_LOOKUP.keys()):
+            print(f"    - {name}")
+        return 1
+
+    # ── Step 3: Extract active site residues from PDB ──
+    print(f"\n  Extracting active site from PDB structure...")
+
+    # Parse CA atoms
+    atoms = []
+    aa3to1 = {'ALA':'A','ARG':'R','ASN':'N','ASP':'D','CYS':'C','GLN':'Q','GLU':'E',
+              'GLY':'G','HIS':'H','ILE':'I','LEU':'L','LYS':'K','MET':'M','PHE':'F',
+              'PRO':'P','SER':'S','THR':'T','TRP':'W','TYR':'Y','VAL':'V'}
+    for line in pdb_text.split('\n'):
+        if line.startswith('ATOM') and line[12:16].strip() == 'CA':
+            try:
+                res_name = line[17:20].strip()
+                chain = line[21]
+                res_num = int(line[22:26].strip())
+                x = float(line[30:38].strip())
+                y = float(line[38:46].strip())
+                z = float(line[46:54].strip())
+                atoms.append({
+                    'res_name': res_name, 'chain': chain, 'res_num': res_num,
+                    'x': x, 'y': y, 'z': z
+                })
+            except (ValueError, IndexError):
+                continue
+
+    # Find HETATM residues (ligands, cofactors, metals)
+    het_residues = []
+    for line in pdb_text.split('\n'):
+        if line.startswith('HETATM'):
+            try:
+                chain = line[21]
+                res_num = int(line[22:26].strip())
+                het_residues.append((chain, res_num))
+            except:
+                pass
+
+    def _dist(a, b):
+        return math.sqrt((a['x']-b['x'])**2 + (a['y']-b['y'])**2 + (a['z']-b['z'])**2)
+
+    catalytic = set()
+    if het_residues and atoms:
+        for h_chain, h_num in het_residues:
+            h_atom = next((a for a in atoms if a['chain'] == h_chain and a['res_num'] == h_num), None)
+            if h_atom is None:
+                h_atom = next((a for a in atoms if a['res_num'] == h_num), None)
+            if h_atom:
+                for a in atoms:
+                    if _dist(h_atom, a) < 6.0:
+                        catalytic.add(f"{a['res_name']}{a['res_num']}")
+
+    if catalytic:
+        residues = sorted(catalytic)[:8]
+        print(f"  Detected active site residues (near HETATM, <6Å): {', '.join(residues)}")
+    else:
+        # Fall back: look for catalytic residues (ASP, GLU, HIS, SER, CYS, LYS, THR)
+        cat_aas = {'ASP', 'GLU', 'HIS', 'SER', 'CYS', 'LYS', 'THR', 'ARG', 'TYR'}
+        for a in atoms:
+            if a['res_name'] in cat_aas:
+                catalytic.add(f"{a['res_name']}{a['res_num']}")
+        residues = sorted(catalytic)[:8] if catalytic else []
+        if residues:
+            print(f"  Using potential catalytic residues: {', '.join(residues)}")
+        else:
+            print(f"  Could not identify active site residues.")
+            print(f"  Residues in structure: {', '.join(sorted(set(a['res_name'] for a in atoms)))}")
+            return 1
+
+    # ── Step 4: Encode site and generate ligands ──
+    print(f"\n  Encoding active site structural type...")
+    site_type = encode_site_from_residues(residues)
+    if site_type is None:
+        print("  Failed to encode active site")
+        return 1
+
+    print(f"  Site type: {fmt_tuple(site_type)}")
+
+    print(f"  Generating de-novo ligands via enzyme structural type pipeline...")
+    try:
+        from rhr_p4rky.ligand_heterocycles import generate_hybrid_ligands
+        candidates = generate_hybrid_ligands(
+            site_type=site_type,
+            substrate_hint="",
+            max_candidates=20,
+        )
+    except Exception:
+        try:
+            candidates = generate_from_enzyme_type(
+                site_type=site_type,
+                substrate_hint="",
+                max_candidates=20,
+            )
+        except Exception as e:
+            print(f"  Generation error: {e}")
+            return 1
+
+    if candidates:
+        print(f"\n  Generated {len(candidates)} candidate ligands:\n")
+        print(f"  {'#':3s}  {'Method':20s}  {'SMILES':40s}  {'Score':8s}  {'logP':6s}  {'MW':8s}")
+        print(f"  {'-'*3}  {'-'*20}  {'-'*40}  {'-'*8}  {'-'*6}  {'-'*8}")
+        for i, c in enumerate(candidates[:15], 1):
+            smiles = c.get('smiles', '?')
+            if len(smiles) > 38:
+                smiles = smiles[:35] + '...'
+            print(f"  {i:<3d}  {c.get('method', '?'):20s}  {smiles:40s}  "
+                  f"{c.get('composite_score', 0):.4f}  "
+                  f"{c.get('logP', 0):5.1f}  "
+                  f"{c.get('MW', 0):7.1f}")
+    else:
+        print(f"\n  No candidate ligands generated.")
+
+    return 0
+
+
+def _cmd_list(args):
+    """List all exported symbols."""
+    print("rebis.p4ra — Exports:")
+    for name in sorted(__all__):
+        print(f"  {name}")
+    return 0
+
+
 def main():
     """CLI: rebis.p4ra <command> [args]"""
     parser = argparse.ArgumentParser(
-        description="rebis.p4ra — Paraconsistent Kernel & Genetics",
+        prog="rebis.p4ra",
+        description="rebis.p4ra — Paraconsistent Kernel & Genetics\n"
+                    "Structural type: ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩  O_∞ tier · ⊙ criticality",
         formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("command", nargs="?", default="help",
-                       help="Command: belnap, genetics, verify, hadrons, ligands, info, list, help")
-    parser.add_argument("args", nargs="*", help="Arguments for command")
+
+    sub = parser.add_subparsers(dest="command", metavar="COMMAND",
+                                help="Sub-command (run with COMMAND --help for details)")
+
+    # ── belnap ──
+    p_belnap = sub.add_parser("belnap",
+        help="Test Belnap FOUR operations (T, B, F, N)",
+        description="Test Belnap FOUR paraconsistent logic operations.\n\n"
+                    "Shows meet, join, and negation for all four truth values:\n"
+                    "  T=True, B=Both, F=False, N=None",
+        epilog="Example:  rebis.p4ra belnap",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_belnap.set_defaults(func=_cmd_belnap)
+
+    # ── genetics ──
+    p_gen = sub.add_parser("genetics",
+        help="Show genetic code B4 lattice (64 codons)",
+        description="Display the 64-codon Belnap B4 lattice structure.\n\n"
+                    "Shows nucleotide→Belnap mapping, codon examples, and\n"
+                    "Frobenius-verified genetic code tables.",
+        epilog="Example:  rebis.p4ra genetics",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_gen.set_defaults(func=_cmd_genetics)
+
+    # ── verify ──
+    p_verify = sub.add_parser("verify",
+        help="Run B3 Frobenius verification suite",
+        description="Run ALL B3 Frobenius verification tests:\n"
+                    "  frobenius_invariant, verify_run_B3, paradox_conservation,\n"
+                    "  cycle_count, paraconsistency, and more.",
+        epilog="Example:  rebis.p4ra verify",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_verify.set_defaults(func=_cmd_verify)
+
+    # ── hadrons ──
+    p_had = sub.add_parser("hadrons",
+        help="Test hadron Belnap operations (mesons, baryons, tetraquarks, glueballs)",
+        description="Test hadron Belnap state operations:\n"
+                    "  meson_pair / meson_depair / meson_frobenius\n"
+                    "  baryon_pair / baryon_depair / baryon_frobenius\n"
+                    "  tetraquark and glueball tests\n"
+                    "  color confinement with quark_belnap",
+        epilog="Example:  rebis.p4ra hadrons",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_had.set_defaults(func=_cmd_hadrons)
+
+    # ── ligands ──
+    p_lig = sub.add_parser("ligands",
+        help="Generate ligands from enzyme active site",
+        description="Reverse ligand discovery — generate candidate ligand SMILES\n"
+                    "from enzyme active site structural type (Belnap-encoded).",
+        epilog="Examples:  rebis.p4ra ligands\n"
+               "           rebis.p4ra ligands ADH\n"
+               "           rebis.p4ra ligands CYP2D6",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_lig.add_argument("enzyme", nargs="?", default="ADH",
+                       help="Enzyme name/code (default: ADH)")
+    p_lig.set_defaults(func=_cmd_ligands)
+
+    # ── list ──
+    p_list = sub.add_parser("list",
+        help="List all exported symbols",
+        description="List all exported symbols available via `rebis.p4ra.<name>`.",
+        epilog="Example:  rebis.p4ra list",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_list.set_defaults(func=_cmd_list)
+
+    # ── info (alias for list) ──
+    p_info = sub.add_parser("info",
+        help="Show available tools (alias for list)",
+        description="Alias for `rebis.p4ra list`.",
+        epilog="Example:  rebis.p4ra info",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_info.set_defaults(func=_cmd_list)
+
+    # ── help ──
+    p_help = sub.add_parser("help",
+        help="Show this help message",
+        description="Display the full help for rebis.p4ra.",
+        epilog="Example:  rebis.p4ra help",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+
     args = parser.parse_args()
 
-    cmd = args.command
-
-    if cmd in ("help", "--help", "-h"):
+    if not args.command:
         parser.print_help()
         return 0
 
-    if cmd in ("list", "ls", "info"):
-        print("rebis.p4ra — Exports:")
-        for name in sorted(__all__):
-            print(f"  {name}")
+    if args.command == "help":
+        parser.print_help()
         return 0
 
-    if cmd == "belnap":
-        print("Belnap FOUR Values:")
-        for v in [Belnap.T, Belnap.B, Belnap.F, Belnap.N]:
-            print(f"  {v.name}: meet={meet(v, Belnap.T).name}, "
-                  f"join={join(v, Belnap.F).name}, "
-                  f"not={bnot(v).name}")
-        print(f"\nDesignated: {[v.name for v in [Belnap.T, Belnap.B]]}")
-        return 0
+    if hasattr(args, 'func'):
+        return args.func(args)
 
-    if cmd in ("genetics", "genetic"):
-        print("Genetic Code — B4 Lattice (64 codons):")
-        try:
-            demo()
-        except Exception:
-            # Fallback: show a few codons
-            for codon in ["AUG", "UAA", "UGA", "UAG", "UUU", "AAA"]:
-                bc = get_codon(codon)
-                if bc:
-                    print(f"  {codon}: {bc}")
-        return 0
-
-    if cmd == "verify":
-        print("Running ALL B3 Frobenius verifications...")
-        results = run_all_verifications()
-        all_pass = all(v.get("passed", False) for v in results.values())
-        for name, result in results.items():
-            status = "✓" if result.get("passed") else "✗"
-            print(f"  {status} {name}: {result.get('message', '')}")
-        print(f"\n{'ALL PASS' if all_pass else 'SOME FAILED'}")
-        return 0 if all_pass else 1
-
-    if cmd in ("hadrons", "hadron"):
-        print("Testing Hadron Belnap...")
-        try:
-            test_hadron_belnap()
-        except Exception as e:
-            print(f"  build_meson_example: {build_meson_example()}")
-            print(f"  build_baryon_example: {build_baryon_example()}")
-            print(f"  test_tetraquark: {test_tetraquark()}")
-            print(f"  test_glueball: {test_glueball()}")
-        return 0
-
-    if cmd in ("ligands", "ligand", "drugs"):
-        enzyme = args.args[0] if args.args else "ADH"
-        print(f"Generating ligands for enzyme: {enzyme}...")
-        try:
-            result = test_bevy(enzyme_type=enzyme) if hasattr(test_bevy, '__call__') else \
-                     generate_from_enzyme_type(enzyme_type=enzyme)
-            print(result)
-        except Exception as e:
-            print(f"Ligand generation failed: {e}")
-        return 0
-
-    print(f"Unknown command: {cmd}")
     parser.print_help()
     return 1
 
