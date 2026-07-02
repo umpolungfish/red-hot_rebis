@@ -46,7 +46,7 @@ def _fmt_tuple(t: Imscription) -> str:
     vals = [t.D.value, t.T.value, t.R.value, t.P.value, t.F.value,
             t.K.value, t.G.value, t.Gamma.value, t.Phi.value, t.H.value,
             t.S.value, t.W.value]
-    return f"⟨{' '.join(vals)}>"
+    return f"⟨{''.join(vals)}>"
 
 
 def _fmt_primitive(name: str, val) -> str:

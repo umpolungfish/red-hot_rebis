@@ -149,7 +149,7 @@ def fmt_tup(t):
     for p in PNAMES:
         v = t.get(p, "?")
         gs.append(v)
-    return "<" + "; ".join(gs) + ">"
+    return "<" + "".join(gs) + ">"
 
 def tup_to_ords(t):
     """Convert glyph tuple dict to ordinal dict."""

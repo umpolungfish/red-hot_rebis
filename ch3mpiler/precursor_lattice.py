@@ -39,7 +39,7 @@ def _glyph_ord(p, glyph):
     return o
 
 def _fmt_tup(t):
-    return "<" + "; ".join(t.get(p, "?") for p in PNAMES) + ">"
+    return "<" + "".join(t.get(p, "?") for p in PNAMES) + ">"
 
 def _tensor_type(t1, t2):
     r = {}

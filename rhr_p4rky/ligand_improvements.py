@@ -782,7 +782,10 @@ def test_bevy(protein_list: List[Dict]) -> dict:
     results = {}
     for protein in protein_list:
         name = protein.get("name", "unknown")
-        site_type = protein.get("structural_type", {})
+        # FIRST PRINCIPLES: compute site tuple from residues
+        site_type = encode_site_from_residues(protein.get("active_site_residues", protein.get("residues", [])))
+        if site_type is None:
+            site_type = {}
         substrate = protein.get("smiles_substrate_hint", "")
         
         # Get ligand type via complement

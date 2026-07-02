@@ -1129,7 +1129,7 @@ def elaborate_scaffold(
                             Chem.SanitizeMol(mol)
                         molecules.append(("mono_1", Chem.MolToSmiles(mol)))
             except:
-                molecules.append(("mono_1_str", result))
+                molecules.append(("mono_1_str", result.replace("[*:1]","").replace("[*:2]","").replace("-)",")").replace("(-","(").replace("--","-")))
 
     # Strategy 2: Attach FG2 at position 2
     for f2 in frag_smis:
@@ -1148,7 +1148,7 @@ def elaborate_scaffold(
                             Chem.SanitizeMol(mol)
                         molecules.append(("mono_2", Chem.MolToSmiles(mol)))
             except:
-                molecules.append(("mono_2_str", result))
+                molecules.append(("mono_2_str", result.replace("[*:1]","").replace("[*:2]","").replace("-)",")").replace("(-","(").replace("--","-")))
 
     # If RDKit-based assembly failed, fall back to string-based
     if len(molecules) < 2:
@@ -1215,6 +1215,10 @@ def _validate_and_score_smiles(
     Property filters are wide to admit strained, unusual, and non-drug-like
     molecules that conventional pipelines would discard.
     """
+    # Strip any leftover dummy atoms from SMILES string
+    smi = smi.replace("[*:1]", "C").replace("[*:2]", "C").replace("[*]", "C")
+    smi = smi.replace("-)", ")").replace("(-", "(").replace("--", "-")
+
     sanitized = True
     try:
         with _silence_rdkit():
