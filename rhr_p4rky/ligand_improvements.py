@@ -986,6 +986,186 @@ def _estimate_bond_from_site_type(site_type: Dict[str, str]) -> str:
     return best_bond
 
 
+
+def _estimate_bonds_top_n(site_type: Dict[str, str], n: int = 3) -> List[str]:
+    """Return top-N bond types for a given site type (for diversity)."""
+    from rhr_p4rky.ligand_from_active_site import GLYPH_ORDINALS
+    
+    def o(glyph, pn):
+        return GLYPH_ORDINALS.get(pn, {}).get(glyph, -1)
+    
+    PN = ["D","T","R","P","F","K","G","Gm","Ph","H","S","W"]
+    fp = tuple(o(site_type.get(pn,"?"), pn) for pn in PN)
+    
+    ENZYME_BOND_MAP = {
+        (1, 4, 3, 4, 2, 2, 1, 1, 1, 2, 2, 1): "amide_link",
+        (0, 2, 3, 0, 2, 2, 1, 0, 1, 1, 2, 1): "strain_release",
+        (0, 2, 2, 0, 2, 3, 0, 1, 1, 1, 0, 1): "hydrogen_bond",
+        (1, 4, 3, 3, 2, 2, 1, 3, 4, 2, 2, 1): "sigma_single",
+        (0, 2, 3, 0, 2, 2, 0, 1, 1, 1, 2, 1): "ester_link",
+        (1, 4, 3, 1, 2, 2, 1, 1, 1, 2, 2, 1): "sigma_single",
+        (1, 4, 3, 1, 2, 3, 1, 1, 1, 2, 0, 2): "amide_link",
+    }
+    
+    if fp in ENZYME_BOND_MAP:
+        exact = ENZYME_BOND_MAP[fp]
+        # Return exact match plus top alternatives
+        others = [b for b in ["hydrogen_bond", "carbonyl", "ester_link", "ether_link", "aromatic", "pi_bond"] if b != exact]
+        return [exact] + others[:n-1]
+    
+    MAX_ORD = {"D": 3, "T": 4, "R": 3, "P": 4, "F": 2, "K": 4,
+               "G": 2, "Gm": 3, "Ph": 4, "H": 3, "S": 2, "W": 3}
+    
+    def elevation(idx, val):
+        pn = PN[idx]
+        max_o = MAX_ORD.get(pn, 1)
+        if max_o == 0:
+            return 0.0
+        if pn in ("P", "F"):
+            return (max_o - val) / max_o
+        return val / max_o
+    
+    BOND_RULES = {
+        "hydrogen_bond": [(10, 2.0), (9, 1.0), (8, 0.5)],
+        "amide_link":    [(10, 1.5), (9, 1.5), (7, 1.5), (2, 0.5)],
+        "ester_link":    [(9, 2.0), (2, 1.0)],
+        "carbonyl":      [(2, 2.0), (9, 0.5)],
+        "sigma_single":  [(5, 1.5), (6, 1.5), (0, 0.5)],
+        "ether_link":    [(6, 2.0), (2, 0.5)],
+        "aromatic":      [(3, 1.5), (11, 1.5), (4, 1.0)],
+        "pi_bond":       [(11, 2.0), (3, 0.5), (4, 0.5)],
+        "strain_release":[(1, 2.0), (5, 0.5)],
+    }
+    
+    scores = {}
+    for bt, rules in BOND_RULES.items():
+        score = 0.0
+        for idx, weight in rules:
+            score += elevation(idx, fp[idx]) * weight
+        max_el = max(elevation(i, fp[i]) for i in range(12))
+        for idx, weight in rules:
+            if elevation(idx, fp[idx]) == max_el and max_el > 0:
+                score += weight * 2.0
+        scores[bt] = score
+    
+    ranked = sorted(scores.items(), key=lambda x: -x[1])
+    return [bt for bt, sc in ranked[:n] if sc > 0] or ["sigma_single"]
+
+
+def _estimate_fgs_top_n(site_type: Dict[str, str], bond_name: str, n: int = 3) -> List[List[str]]:
+    """Return top-N FG pairs for a given site type + bond (for diversity)."""
+    from rhr_p4rky.ligand_from_active_site import GLYPH_ORDINALS
+    
+    def o(glyph, pn):
+        return GLYPH_ORDINALS.get(pn, {}).get(glyph, -1)
+    
+    PN = ["D","T","R","P","F","K","G","Gm","Ph","H","S","W"]
+    fp = tuple(o(site_type.get(pn,"?"), pn) for pn in PN)
+    
+    FG_ESTIMATION_MAP = {
+        (1, 4, 3, 4, 2, 2, 1, 1, 1, 2, 2, 1): ["amine", "carbonyl"],
+        (0, 2, 3, 0, 2, 2, 1, 0, 1, 1, 2, 1): ["lactam", "epoxide"],
+        (0, 2, 2, 0, 2, 3, 0, 1, 1, 1, 0, 1): ["carbonyl", "alcohol"],
+        (1, 4, 3, 3, 2, 2, 1, 3, 4, 2, 2, 1): ["aromatic_ring", "ether"],
+        (0, 2, 3, 0, 2, 2, 0, 1, 1, 1, 2, 1): ["carbonyl", "alcohol"],
+        (1, 4, 3, 1, 2, 2, 1, 1, 1, 2, 2, 1): ["alcohol", "carbonyl"],
+        (1, 4, 3, 1, 2, 3, 1, 1, 1, 2, 0, 2): ["amine", "carbonyl"],
+    }
+    
+    if fp in FG_ESTIMATION_MAP:
+        exact = FG_ESTIMATION_MAP[fp]
+        # Return exact match plus variations
+        bond_fg_defaults = {
+            "amide_link":       [["amine", "carbonyl"], ["amine", "thiol"], ["carbonyl", "alcohol"]],
+            "ester_link":       [["alcohol", "carbonyl"], ["alcohol", "phosphate"], ["carbonyl", "thiol"]],
+            "aromatic":         [["aromatic_ring", "amine"], ["aromatic_ring", "nitro"], ["aromatic_ring", "thiol"]],
+            "sigma_single":     [["amine", "alcohol"], ["alcohol", "thiol"], ["amine", "carbonyl"]],
+            "ether_link":       [["alcohol", "ether"], ["ether", "sulfide"], ["alcohol", "sulfone"]],
+            "strain_release":   [["epoxide", "lactam"], ["lactam", "sulfone"], ["epoxide", "amine"]],
+            "carbonyl":         [["carbonyl", "alcohol"], ["carbonyl", "thiol"], ["carbonyl", "amine"]],
+            "hydrogen_bond":    [["alcohol", "amine"], ["amine", "phosphate"], ["alcohol", "phosphonate"]],
+            "pi_bond":          [["aromatic_ring", "carbonyl"], ["aromatic_ring", "sulfoxide"], ["carbonyl", "sulfone"]],
+        }
+        defaults = bond_fg_defaults.get(bond_name, [["amine", "alcohol"], ["alcohol", "thiol"], ["amine", "carbonyl"]])
+        return [exact] + [d for d in defaults if d != exact][:n-1]
+    
+    MAX_ORD = {"D": 3, "T": 4, "R": 3, "P": 4, "F": 2, "K": 4,
+               "G": 2, "Gm": 3, "Ph": 4, "H": 3, "S": 2, "W": 3}
+    
+    def elevation(idx, val):
+        pn = PN[idx]
+        max_o = MAX_ORD.get(pn, 1)
+        if max_o == 0:
+            return 0.0
+        if pn in ("P", "F"):
+            return (max_o - val) / max_o
+        return val / max_o
+    
+    FG_RULES = {
+        "amine":    [(10, 2.0), (7, 1.5), (8, 1.0)],
+        "carbonyl": [(2, 2.0), (9, 1.0), (7, 0.5)],
+        "alcohol":  [(2, 1.5), (9, 1.5), (6, 0.5)],
+        "ether":    [(6, 2.0), (0, 1.0), (2, 0.5)],
+        "aromatic_ring": [(3, 2.0), (4, 2.0), (11, 1.5)],
+        "epoxide":  [(1, 2.0), (5, 0.5)],
+        "lactam":   [(9, 1.5), (1, 1.0), (7, 1.0)],
+        "thiol":    [(2, 2.0), (10, 1.5), (5, 0.5)],
+        "sulfide":  [(6, 1.5), (10, 1.5), (7, 1.0)],
+        "sulfoxide":[(2, 1.5), (5, 1.5), (11, 1.0)],
+        "sulfone":  [(3, 1.5), (5, 1.5), (11, 1.5)],
+        "sulfate":  [(2, 2.0), (9, 1.5), (10, 1.0)],
+        "sulfonate":[(2, 1.5), (10, 1.5), (7, 1.0)],
+        "sulfonamide":[(7, 2.0), (10, 1.5), (8, 1.0)],
+        "phosphate":[(2, 2.0), (10, 1.5), (9, 1.0)],
+        "phosphonate":[(10, 2.0), (7, 1.5), (2, 1.0)],
+        "nitro":    [(4, 2.0), (5, 1.5), (8, 1.0)],
+        "nitrile":  [(7, 2.0), (10, 1.0), (4, 0.5)],
+    }
+    
+    scores = {}
+    for fg, rules in FG_RULES.items():
+        score = 0.0
+        for idx, weight in rules:
+            score += elevation(idx, fp[idx]) * weight
+        max_el = max(elevation(i, fp[i]) for i in range(12))
+        for idx, weight in rules:
+            if elevation(idx, fp[idx]) == max_el and max_el > 0:
+                score += weight * 1.5
+        scores[fg] = score
+    
+    ranked = sorted(scores.items(), key=lambda x: -x[1])
+    all_fgs = [fg for fg, sc in ranked if sc > 0]
+    
+    # Return top-N pairs
+    bond_fg_defaults = {
+        "amide_link":       [["amine", "carbonyl"], ["amine", "thiol"], ["carbonyl", "alcohol"]],
+        "ester_link":       [["alcohol", "carbonyl"], ["alcohol", "phosphate"], ["carbonyl", "thiol"]],
+        "aromatic":         [["aromatic_ring", "amine"], ["aromatic_ring", "nitro"], ["aromatic_ring", "thiol"]],
+        "sigma_single":     [["amine", "alcohol"], ["alcohol", "thiol"], ["amine", "carbonyl"]],
+        "ether_link":       [["alcohol", "ether"], ["ether", "sulfide"], ["alcohol", "sulfone"]],
+        "strain_release":   [["epoxide", "lactam"], ["lactam", "sulfone"], ["epoxide", "amine"]],
+        "carbonyl":         [["carbonyl", "alcohol"], ["carbonyl", "thiol"], ["carbonyl", "amine"]],
+        "hydrogen_bond":    [["alcohol", "amine"], ["amine", "phosphate"], ["alcohol", "phosphonate"]],
+        "pi_bond":          [["aromatic_ring", "carbonyl"], ["aromatic_ring", "sulfoxide"], ["carbonyl", "sulfone"]],
+    }
+    
+    # Build diverse pairs from top FGs
+    result = []
+    if len(all_fgs) >= 2:
+        result.append([all_fgs[0], all_fgs[1]])
+    if len(all_fgs) >= 4:
+        result.append([all_fgs[2], all_fgs[3]])
+    if len(all_fgs) >= 6:
+        result.append([all_fgs[4], all_fgs[5]])
+    
+    # Fill remaining with bond defaults
+    defaults = bond_fg_defaults.get(bond_name, [["amine", "alcohol"], ["alcohol", "thiol"], ["amine", "carbonyl"]])
+    for d in defaults:
+        if d not in result and len(result) < n:
+            result.append(d)
+    
+    return result[:n]
+
 def _estimate_fgs_from_site_type(site_type: Dict[str, str], bond_name: str) -> List[str]:
     """Estimate FG types from the enzyme's catalytic site type and bond type."""
     from rhr_p4rky.ligand_from_active_site import GLYPH_ORDINALS

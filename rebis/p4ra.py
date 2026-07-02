@@ -266,47 +266,45 @@ def _cmd_ligands(args):
 
         print(f"\n  Site structural type: {fmt_tuple(site_type)}")
 
-        from rhr_p4rky.ligand_heterocycles import generate_hybrid_ligands
-        candidates = generate_hybrid_ligands(
-            site_type=site_type,
-            substrate_hint=substrate,
-            max_candidates=20,
+        # ── Fast combinatorial generation (SIC-POVM: grammar measures itself) ──
+        from rhr_p4rky.ligand_combinatorial import generate_combinatorial as _gen_combi
+        candidates = _gen_combi(
+            protein_context=protein,
+            n_scaffolds=40,
+            fragments_per_position=5,
+            max_products=500,
+            verbose=False,
         )
+        # Convert to legacy format
+        candidates = [{"smiles": c["smiles"], "method": f"combi/{c.get('scaffold','?')}",
+                       "composite_score": c.get("score", 0), "logP": c.get("logp", 0),
+                       "MW": c.get("mw", 0)} for c in candidates]
+        
+        # Fallback to hybrid generator if combinatorial produces nothing
         if not candidates:
-            try:
-                candidates = generate_from_enzyme_type(
-                    site_type=site_type,
-                    substrate_hint=substrate,
-                    max_candidates=20,
-                )
-            except Exception as e2:
-                print(f"  Generation failed: {e2}")
+            from rhr_p4rky.ligand_heterocycles import generate_hybrid_ligands
+            candidates = generate_hybrid_ligands(
+                site_type=site_type, substrate_hint=substrate, max_candidates=50,
+            )
             if not candidates:
-                # Fall back: try test_bevy with a protein list
                 try:
-                    result = test_bevy([protein])
-                    if result:
-                        for pname, presult in result.items():
-                            candidates = presult.get("candidates", [])
-                            print(f"\n  Fallback pipeline generated {len(candidates)} candidates:")
-                            break
-                except Exception as e2:
-                    print(f"  Fallback also failed: {e2}")
-                    return 1
+                    candidates = generate_from_enzyme_type(
+                        site_type=site_type, substrate_hint=substrate, max_candidates=50)
+                except Exception:
+                    pass
 
         if candidates:
-
             print(f"\n  Generated {len(candidates)} candidate ligands:\n")
-            print(f"  {'#':3s}  {'Method':20s}  {'SMILES':40s}  {'Score':8s}  {'logP':6s}  {'MW':8s}")
-            print(f"  {'-'*3}  {'-'*20}  {'-'*40}  {'-'*8}  {'-'*6}  {'-'*8}")
-            for i, c in enumerate(candidates, 1):
+            print(f"  {'#':3s}  {'Method':20s}  {'SMILES':65s}  {'Score':8s}  {'logP':6s}  {'MW':8s}")
+            print(f"  {'-'*3}  {'-'*20}  {'-'*65}  {'-'*8}  {'-'*6}  {'-'*8}")
+            for i, c in enumerate(candidates[:50], 1):
                 smiles = c.get('smiles', '?')
-                if len(smiles) > 38:
-                    smiles = smiles[:35] + '...'
-                print(f"  {i:<3d}  {c.get('method', '?'):20s}  {smiles:40s}  "
+                print(f"  {i:<3d}  {c.get('method', '?'):20s}  {smiles:65s}  "
                       f"{c.get('composite_score', 0):.4f}  "
                       f"{c.get('logP', 0):5.1f}  "
                       f"{c.get('MW', 0):7.1f}")
+            if len(candidates) > 50:
+                print(f"  ... and {len(candidates)-50} more")
         else:
             print(f"\n  No candidate ligands generated.")
         return 0
@@ -480,25 +478,23 @@ def _cmd_ligands(args):
     candidates = generate_hybrid_ligands(
         site_type=site_type,
         substrate_hint="",
-        max_candidates=20,
+        max_candidates=50,
     )
     if not candidates:
         from rhr_p4rky.ligand_improvements import generate_from_enzyme_type
         candidates = generate_from_enzyme_type(
             site_type=site_type,
             substrate_hint="",
-            max_candidates=20,
+            max_candidates=50,
         )
 
     if candidates:
         print(f"\n  Generated {len(candidates)} candidate ligands:\n")
-        print(f"  {'#':3s}  {'Method':20s}  {'SMILES':40s}  {'Score':8s}  {'logP':6s}  {'MW':8s}")
-        print(f"  {'-'*3}  {'-'*20}  {'-'*40}  {'-'*8}  {'-'*6}  {'-'*8}")
+        print(f"  {'#':3s}  {'Method':20s}  {'SMILES':65s}  {'Score':8s}  {'logP':6s}  {'MW':8s}")
+        print(f"  {'-'*3}  {'-'*20}  {'-'*65}  {'-'*8}  {'-'*6}  {'-'*8}")
         for i, c in enumerate(candidates, 1):
             smiles = c.get('smiles', '?')
-            if len(smiles) > 38:
-                smiles = smiles[:35] + '...'
-            print(f"  {i:<3d}  {c.get('method', '?'):20s}  {smiles:40s}  "
+            print(f"  {i:<3d}  {c.get('method', '?'):20s}  {smiles:65s}  "
                   f"{c.get('composite_score', 0):.4f}  "
                   f"{c.get('logP', 0):5.1f}  "
                   f"{c.get('MW', 0):7.1f}")
