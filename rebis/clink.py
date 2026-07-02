@@ -4,11 +4,11 @@ rebis.clink — CLINK Chain & Organism Pipeline
 Lazy-import bridge to clink/.
 
 Callable as a command:
-  rebis.clink layers              — List CLINK layers
-  rebis.clink bridge <a> <b>     — Compute bridge between components
-  rebis.clink chain <tuple>      — Compute CLINK chain from tuple
-  rebis.clink cscore <tuple>     — Compute consciousness score
-  rebis.clink info               — Show available tools
+  rebis.clink layers              — List CLINK layers L0–L8
+  rebis.clink bridge <a> [b]      — Compute bridge between components
+  rebis.clink chain <tuple>       — Compute CLINK chain from tuple
+  rebis.clink cscore <tuple>      — Compute consciousness score
+  rebis.clink info                — Show available tools
 """
 
 import sys, importlib, argparse, json
@@ -69,76 +69,153 @@ _lazy("PipelineOrchestrator", "clink.designers.pipeline_orchestrator")
 _lazy("DFTBridge", "clink.designers.dft_bridge")
 
 
+def _cmd_layers(args):
+    """List CLINK layers L0–L8 with tier and C-score."""
+    print("CLINK Layers (L0–L8):")
+    for i in range(9):
+        tup = clink_layer_tuple(i)
+        tier = compute_tier_from_tuple(tup)
+        cscore = compute_c_score_from_tuple(tup)
+        print(f"  L{i}: ⟨{''.join(tup.values())}⟩  tier={tier}  C={cscore:.3f}")
+    return 0
+
+
+def _cmd_bridge(args):
+    if not args.components:
+        print("Error: at least one component required.")
+        print("Example:  rebis.clink bridge protein molecule")
+        return 1
+    try:
+        result = bridge_all_components(args.components)
+        print(json.dumps(result, indent=2) if isinstance(result, (dict, list)) else result)
+    except Exception as e:
+        print(f"Bridge failed: {e}")
+        return 1
+    return 0
+
+
+def _cmd_chain(args):
+    if not args.tuple_name:
+        print("Error: tuple-encoded name required.")
+        print("Example:  rebis.clink chain my_system")
+        return 1
+    from clink.pipeline_engine import run_pipeline
+    try:
+        result = run_pipeline(args.tuple_name)
+        print(json.dumps(result, indent=2) if isinstance(result, (dict, list)) else result)
+    except Exception as e:
+        print(f"Chain failed: {e}")
+        return 1
+    return 0
+
+
+def _cmd_cscore(args):
+    if not args.tuple_name:
+        print("Error: tuple-encoded name required.")
+        print("Example:  rebis.clink cscore human_consciousness")
+        return 1
+    try:
+        cscore = compute_c_score_from_tuple(args.tuple_name)
+        print(f"C-score: {cscore:.4f}")
+    except Exception as e:
+        print(f"C-score failed: {e}")
+        return 1
+    return 0
+
+
+def _cmd_list(args):
+    print("rebis.clink — Exports:")
+    for name in sorted(__all__):
+        print(f"  {name}")
+    return 0
+
+
 def main():
     """CLI: rebis.clink <command> [args]"""
     parser = argparse.ArgumentParser(
+        prog="rebis.clink",
         description="rebis.clink — CLINK Chain & Organism Pipeline",
         formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("command", nargs="?", default="help",
-                       help="Command: layers, bridge, chain, cscore, info, list, help")
-    parser.add_argument("args", nargs="*", help="Arguments for command")
+
+    sub = parser.add_subparsers(dest="command", metavar="COMMAND",
+                                help="Sub-command (run with COMMAND --help for details)")
+
+    # ── layers ──
+    p_lay = sub.add_parser("layers",
+        help="List CLINK layers L0–L8 with tier and C-score",
+        description="Display all 9 CLINK layers (L0 through L8)\n"
+                    "with structural tuple, ouroboricity tier, and C-score.",
+        epilog="Example:  rebis.clink layers",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_lay.set_defaults(func=_cmd_layers)
+
+    # ── bridge ──
+    p_br = sub.add_parser("bridge",
+        help="Compute bridge between CLINK components",
+        description="Compute the CLINK bridge between one or more components\n"
+                    "(e.g. protein, molecule, gene) — structural coupling via\n"
+                    "IG lattice meet/join/tensor across the CLINK chain.",
+        epilog="Examples:  rebis.clink bridge protein\n"
+               "           rebis.clink bridge protein molecule\n"
+               "           rebis.clink bridge gene protein molecule",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_br.add_argument("components", nargs="*",
+                      help="Component names (protein, molecule, gene, etc.)")
+    p_br.set_defaults(func=_cmd_bridge)
+
+    # ── chain ──
+    p_ch = sub.add_parser("chain",
+        help="Compute CLINK chain from tuple-encoded name",
+        description="Run the full CLINK pipeline on a tuple-encoded\n"
+                    "catalog entry, producing layer transitions, tier,\n"
+                    "and Frobenius closure verification.",
+        epilog="Example:  rebis.clink chain my_system",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_ch.add_argument("tuple_name", nargs="?", default="",
+                      help="Tuple-encoded catalog name")
+    p_ch.set_defaults(func=_cmd_chain)
+
+    # ── cscore ──
+    p_cs = sub.add_parser("cscore",
+        help="Compute consciousness score from tuple-encoded name",
+        description="Compute the C-score (consciousness score, 0–1) for a\n"
+                    "tuple-encoded catalog entry. Evaluates both gates:\n"
+                    "  Gate 1: ⊙ criticality\n"
+                    "  Gate 2: K ≤ 𐑧 (kinetic constraint)",
+        epilog="Example:  rebis.clink cscore human_consciousness",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_cs.add_argument("tuple_name", nargs="?", default="",
+                      help="Tuple-encoded catalog name")
+    p_cs.set_defaults(func=_cmd_cscore)
+
+    # ── list ──
+    p_ls = sub.add_parser("list",
+        help="List all exported symbols",
+        epilog="Example:  rebis.clink list",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_ls.set_defaults(func=_cmd_list)
+
+    # ── info ──
+    p_inf = sub.add_parser("info",
+        help="Show available tools (alias for list)",
+        epilog="Example:  rebis.clink info",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_inf.set_defaults(func=_cmd_list)
+
+    sub.add_parser("help",
+        help="Show this help message",
+        epilog="Example:  rebis.clink help",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+
     args = parser.parse_args()
 
-    cmd = args.command
-
-    if cmd in ("help", "--help", "-h"):
+    if not args.command or args.command == "help":
         parser.print_help()
         return 0
 
-    if cmd in ("list", "ls", "info"):
-        print("rebis.clink — Exports:")
-        for name in sorted(__all__):
-            print(f"  {name}")
-        return 0
+    if hasattr(args, 'func'):
+        return args.func(args)
 
-    if cmd in ("layers", "layer", "chains"):
-        print("CLINK Layers (L0–L8):")
-        for i in range(9):
-            tup = clink_layer_tuple(i)
-            tier = compute_tier_from_tuple(tup)
-            cscore = compute_c_score_from_tuple(tup)
-            print(f"  L{i}: ⟨{''.join(tup.values())}⟩  tier={tier}  C={cscore:.3f}")
-        return 0
-
-    if cmd == "bridge":
-        cl_args = args.args
-        if len(cl_args) < 1:
-            print("Usage: rebis.clink bridge <component> [component2]")
-            return 1
-        try:
-            result = bridge_all_components(cl_args)
-            print(json.dumps(result, indent=2) if isinstance(result, (dict, list)) else result)
-        except Exception as e:
-            print(f"Bridge failed: {e}")
-            return 1
-        return 0
-
-    if cmd == "chain":
-        if not args.args:
-            print("Usage: rebis.clink chain <tuple_encoded_name>")
-            return 1
-        from clink.pipeline_engine import run_pipeline
-        try:
-            result = run_pipeline(args.args[0])
-            print(json.dumps(result, indent=2) if isinstance(result, (dict, list)) else result)
-        except Exception as e:
-            print(f"Chain failed: {e}")
-            return 1
-        return 0
-
-    if cmd in ("cscore", "c-score", "consciousness"):
-        if not args.args:
-            print("Usage: rebis.clink cscore <tuple_encoded_name>")
-            return 1
-        try:
-            cscore = compute_c_score_from_tuple(args.args[0])
-            print(f"C-score: {cscore:.4f}")
-        except Exception as e:
-            print(f"C-score failed: {e}")
-            return 1
-        return 0
-
-    print(f"Unknown command: {cmd}")
     parser.print_help()
     return 1
 

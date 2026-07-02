@@ -33,62 +33,113 @@ _lazy("LiftPipeline", "pipeline.lift_pipeline.lift_pipeline_ob3ect")
 _lazy("lift_text", "pipeline.lift_pipeline.lift_pipeline_ob3ect")
 
 
+def _cmd_verify(args):
+    print("Running Frobenius verification...")
+    try:
+        result = verify_frobenius()
+        print(json.dumps(result, indent=2) if isinstance(result, (dict, list)) else result)
+    except Exception as e:
+        print(f"Verification failed: {e}")
+    return 0
+
+
+def _cmd_imscribe(args):
+    name = args.name
+    print(f"Running auto-imscription for: {name}")
+    try:
+        imscriber = AutoImscriber()
+        result = imscriber.imscribe(name) if hasattr(imscriber, 'imscribe') else str(imscriber)
+        print(result[:2000] if isinstance(result, str) else json.dumps(result, indent=2))
+    except Exception as e:
+        print(f"Imscription failed: {e}")
+    return 0
+
+
+def _cmd_lift(args):
+    if not args.filepath:
+        print("Error: file path required.")
+        print("Example:  rebis.pipeline lift /path/to/paper.tex")
+        return 1
+    print(f"Lifting prose in: {args.filepath}")
+    try:
+        result = lift_text(args.filepath)
+        print(result[:2000] if isinstance(result, str) else json.dumps(result, indent=2))
+    except Exception as e:
+        print(f"Lift failed: {e}")
+    return 0
+
+
+def _cmd_list(args):
+    print("rebis.pipeline — Exports:")
+    for name in sorted(__all__):
+        print(f"  {name}")
+    return 0
+
+
 def main():
     """CLI: rebis.pipeline <command> [args]"""
     parser = argparse.ArgumentParser(
+        prog="rebis.pipeline",
         description="rebis.pipeline — Imscription Pipeline & Frobenius Verification",
         formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("command", nargs="?", default="help",
-                       help="Command: verify, imscribe, lift, list, info, help")
-    parser.add_argument("args", nargs="*", help="Arguments")
+
+    sub = parser.add_subparsers(dest="command", metavar="COMMAND",
+                                help="Sub-command (run with COMMAND --help for details)")
+
+    p_ver = sub.add_parser("verify",
+        help="Run Frobenius verification across all pipeline modules",
+        description="Run the full Frobenius verification suite — checks μ∘δ=id\n"
+                    "closure across all pipeline components.",
+        epilog="Example:  rebis.pipeline verify",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_ver.set_defaults(func=_cmd_verify)
+
+    p_ims = sub.add_parser("imscribe",
+        help="Run auto-imscription on a named system",
+        description="Auto-imscribe a system — generate its 12-primitive IG tuple\n"
+                    "and register it in the catalog via the pipeline.",
+        epilog="Examples:  rebis.pipeline imscribe my_system\n"
+               "           rebis.pipeline imscribe riemann_zeta",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_ims.add_argument("name", nargs="?", default="test",
+                       help="System name to imscribe (default: 'test')")
+    p_ims.set_defaults(func=_cmd_imscribe)
+
+    p_lif = sub.add_parser("lift",
+        help="Lift prose — apply the human-lift protocol to a file",
+        description="Apply the prose lift protocol to a document — promotes\n"
+                    "8 primitive deltas (H, Γ, T, P, F, K, G, Ω) from AI-default\n"
+                    "to human-academic target. Outputs the lifted file.",
+        epilog="Example:  rebis.pipeline lift /path/to/paper.tex",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_lif.add_argument("filepath", nargs="?", default="",
+                       help="Path to the file to lift")
+    p_lif.set_defaults(func=_cmd_lift)
+
+    p_ls = sub.add_parser("list",
+        help="List all exported symbols",
+        epilog="Example:  rebis.pipeline list",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_ls.set_defaults(func=_cmd_list)
+
+    p_inf = sub.add_parser("info",
+        help="Show available tools (alias for list)",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_inf.set_defaults(func=_cmd_list)
+
+    sub.add_parser("help",
+        help="Show this help message",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+
     args = parser.parse_args()
 
-    cmd = args.command
-
-    if cmd in ("help", "--help", "-h"):
+    if not args.command or args.command == "help":
         parser.print_help()
         return 0
 
-    if cmd in ("list", "ls", "info"):
-        print("rebis.pipeline — Exports:")
-        for name in sorted(__all__):
-            print(f"  {name}")
-        return 0
+    if hasattr(args, 'func'):
+        return args.func(args)
 
-    if cmd == "verify":
-        print("Running Frobenius verification...")
-        try:
-            result = verify_frobenius()
-            print(json.dumps(result, indent=2) if isinstance(result, (dict, list)) else result)
-        except Exception as e:
-            print(f"Verification failed: {e}")
-        return 0
-
-    if cmd == "imscribe":
-        name = args.args[0] if args.args else "test"
-        print(f"Running auto-imscription for: {name}")
-        try:
-            imscriber = AutoImscriber()
-            result = imscriber.imscribe(name) if hasattr(imscriber, 'imscribe') else str(imscriber)
-            print(result[:2000] if isinstance(result, str) else json.dumps(result, indent=2))
-        except Exception as e:
-            print(f"Imscription failed: {e}")
-        return 0
-
-    if cmd == "lift":
-        fname = args.args[0] if args.args else ""
-        if not fname:
-            print("Usage: rebis.pipeline lift <filepath>")
-            return 1
-        print(f"Lifting prose in: {fname}")
-        try:
-            result = lift_text(fname)
-            print(result[:2000] if isinstance(result, str) else json.dumps(result, indent=2))
-        except Exception as e:
-            print(f"Lift failed: {e}")
-        return 0
-
-    print(f"Unknown command: {cmd}")
     parser.print_help()
     return 1
 

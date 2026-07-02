@@ -4,11 +4,11 @@ rebis.gene — Gene Imscriber & Genetic Engineering
 Lazy-import bridge to gene_imscriber/ (suppresses stdout).
 
 Callable as a command:
-  rebis.gene list                  — List available tools
-  rebis.gene analyze <seq>         — Analyze genetic sequence
-  rebis.gene quality <seq>         — Compute genetic quality score
-  rebis.gene tuples <seq>          — Compute genetic tuples
-  rebis.gene info                  — Show available tools
+  rebis.gene list                   — List available tools
+  rebis.gene analyze <sequence>     — Analyze genetic sequence
+  rebis.gene quality <sequence>     — Compute genetic quality score
+  rebis.gene tuples <sequence>      — Compute genetic tuples
+  rebis.gene info                   — Show available tools
 """
 import sys, importlib, io, argparse, json
 from pathlib import Path
@@ -43,64 +43,120 @@ _silent_lazy("GeneticTuples", "gene_imscriber.tuples")
 _silent_lazy("compute_genetic_tuples", "gene_imscriber.tuples")
 
 
+def _cmd_analyze(args):
+    if not args.sequence:
+        print("Error: DNA/RNA sequence required.")
+        print("Example:  rebis.gene analyze ATGGCGTAA")
+        return 1
+    print(f"Analyzing sequence ({len(args.sequence)} bp)...")
+    try:
+        result = analyze_sequence(args.sequence)
+        print(json.dumps(result, indent=2) if isinstance(result, (dict, list)) else result)
+    except Exception as e:
+        print(f"Analysis failed: {e}")
+    return 0
+
+
+def _cmd_quality(args):
+    if not args.sequence:
+        print("Error: DNA/RNA sequence required.")
+        print("Example:  rebis.gene quality ATGGCGTAA")
+        return 1
+    try:
+        score = compute_quality_score(args.sequence)
+        print(f"Quality score: {score}")
+    except Exception as e:
+        print(f"Quality computation failed: {e}")
+    return 0
+
+
+def _cmd_tuples(args):
+    if not args.sequence:
+        print("Error: DNA/RNA sequence required.")
+        print("Example:  rebis.gene tuples ATGGCGTAA")
+        return 1
+    try:
+        result = compute_genetic_tuples(args.sequence)
+        print(json.dumps(result, indent=2) if isinstance(result, (dict, list)) else result)
+    except Exception as e:
+        print(f"Tuple computation failed: {e}")
+    return 0
+
+
+def _cmd_list(args):
+    print("rebis.gene — Exports:")
+    for name in sorted(__all__):
+        print(f"  {name}")
+    return 0
+
+
 def main():
     """CLI: rebis.gene <command> [args]"""
     parser = argparse.ArgumentParser(
+        prog="rebis.gene",
         description="rebis.gene — Gene Imscriber & Genetic Engineering",
         formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("command", nargs="?", default="help",
-                       help="Command: analyze, quality, tuples, list, info, help")
-    parser.add_argument("seq", nargs="?", default="",
-                       help="DNA/RNA sequence or gene name")
+
+    sub = parser.add_subparsers(dest="command", metavar="COMMAND",
+                                help="Sub-command (run with COMMAND --help for details)")
+
+    p_ana = sub.add_parser("analyze",
+        help="Analyze genetic sequence (codons, B4 lattice, mutations)",
+        description="Analyze a DNA/RNA sequence — detect codons, compute\n"
+                    "B4 lattice encoding, identify open reading frames,\n"
+                    "and report structural features.",
+        epilog="Example:  rebis.gene analyze ATGGCGTAA",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_ana.add_argument("sequence", nargs="?", default="",
+                       help="DNA/RNA sequence (A, T/U, G, C)")
+    p_ana.set_defaults(func=_cmd_analyze)
+
+    p_qual = sub.add_parser("quality",
+        help="Compute genetic quality score for a sequence",
+        description="Compute the IG genetic quality score — evaluates\n"
+                    "codon optimality, structural stability, and mutation\n"
+                    "susceptibility via B4 lattice metrics.",
+        epilog="Example:  rebis.gene quality ATGGCGTAA",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_qual.add_argument("sequence", nargs="?", default="",
+                        help="DNA/RNA sequence")
+    p_qual.set_defaults(func=_cmd_quality)
+
+    p_tup = sub.add_parser("tuples",
+        help="Compute genetic IG tuples for a sequence",
+        description="Compute the full genetic IG tuple pipeline —\n"
+                    "DNA → pre-mRNA → mature mRNA → nascent → secondary\n"
+                    "→ tertiary → quaternary structural tuples.",
+        epilog="Example:  rebis.gene tuples ATGGCGTAA",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_tup.add_argument("sequence", nargs="?", default="",
+                       help="DNA/RNA sequence")
+    p_tup.set_defaults(func=_cmd_tuples)
+
+    p_ls = sub.add_parser("list",
+        help="List all exported symbols",
+        epilog="Example:  rebis.gene list",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_ls.set_defaults(func=_cmd_list)
+
+    p_inf = sub.add_parser("info",
+        help="Show available tools (alias for list)",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_inf.set_defaults(func=_cmd_list)
+
+    sub.add_parser("help",
+        help="Show this help message",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+
     args = parser.parse_args()
 
-    cmd = args.command
-
-    if cmd in ("help", "--help", "-h"):
+    if not args.command or args.command == "help":
         parser.print_help()
         return 0
 
-    if cmd in ("list", "ls", "info"):
-        print("rebis.gene — Exports:")
-        for name in sorted(__all__):
-            print(f"  {name}")
-        return 0
+    if hasattr(args, 'func'):
+        return args.func(args)
 
-    if cmd == "analyze":
-        if not args.seq:
-            print("Usage: rebis.gene analyze <sequence>")
-            return 1
-        print(f"Analyzing sequence ({len(args.seq)} bp)...")
-        try:
-            result = analyze_sequence(args.seq)
-            print(json.dumps(result, indent=2) if isinstance(result, (dict, list)) else result)
-        except Exception as e:
-            print(f"Analysis failed: {e}")
-        return 0
-
-    if cmd == "quality":
-        if not args.seq:
-            print("Usage: rebis.gene quality <sequence>")
-            return 1
-        try:
-            score = compute_quality_score(args.seq)
-            print(f"Quality score: {score}")
-        except Exception as e:
-            print(f"Quality computation failed: {e}")
-        return 0
-
-    if cmd == "tuples":
-        if not args.seq:
-            print("Usage: rebis.gene tuples <sequence>")
-            return 1
-        try:
-            result = compute_genetic_tuples(args.seq)
-            print(json.dumps(result, indent=2) if isinstance(result, (dict, list)) else result)
-        except Exception as e:
-            print(f"Tuple computation failed: {e}")
-        return 0
-
-    print(f"Unknown command: {cmd}")
     parser.print_help()
     return 1
 

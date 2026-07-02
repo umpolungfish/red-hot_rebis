@@ -64,91 +64,180 @@ _lazy("fix_cas_smiles", "ch3mpiler.cas_smiles_fix")
 _lazy("validate_smiles", "ch3mpiler.cas_smiles_fix")
 
 
+def _cmd_forward(args):
+    if not args.smiles:
+        print("Error: SMILES string required.")
+        print("Example:  rebis.ch3mpiler forward CC(=O)O")
+        return 1
+    try:
+        result = forward(args.smiles)
+        print(json.dumps(result, indent=2) if isinstance(result, (dict, list)) else result)
+    except Exception as e:
+        print(f"Forward synthesis failed: {e}")
+        return 1
+    return 0
+
+
+def _cmd_retrosynth(args):
+    if not args.smiles:
+        print("Error: SMILES string required.")
+        print("Example:  rebis.ch3mpiler retrosynth c1ccccc1")
+        return 1
+    try:
+        result = retrosynthesis(args.smiles)
+        print(json.dumps(result, indent=2) if isinstance(result, (dict, list)) else result)
+    except Exception as e:
+        print(f"Retrosynthesis failed: {e}")
+        return 1
+    return 0
+
+
+def _cmd_fg(args):
+    if not args.smiles:
+        print("Error: SMILES string required.")
+        print("Example:  rebis.ch3mpiler fg CC(=O)O")
+        return 1
+    try:
+        fgs = detect_functional_groups(args.smiles)
+        for fg in fgs:
+            print(f"  {fg}")
+    except Exception as e:
+        print(f"FG detection failed: {e}")
+        return 1
+    return 0
+
+
+def _cmd_cdxml(args):
+    if not args.smiles:
+        print("Error: SMILES string required.")
+        print("Example:  rebis.ch3mpiler cdxml CC(=O)O")
+        return 1
+    try:
+        cdx = smiles_to_cdxml(args.smiles)
+        print(cdx)
+    except Exception as e:
+        print(f"CDXML conversion failed: {e}")
+        return 1
+    return 0
+
+
+def _cmd_analyze(args):
+    if not args.smiles:
+        print("Error: SMILES string required.")
+        print("Example:  rebis.ch3mpiler analyze CC(=O)O")
+        return 1
+    try:
+        result = analyze(args.smiles)
+        print(result)
+    except Exception as e:
+        print(f"Analysis failed: {e}")
+        return 1
+    return 0
+
+
+def _cmd_list(args):
+    print("rebis.ch3mpiler — Exports:")
+    for name in sorted(__all__):
+        print(f"  {name}")
+    return 0
+
+
 def main():
     """CLI: rebis.ch3mpiler <command> [args]"""
     parser = argparse.ArgumentParser(
+        prog="rebis.ch3mpiler",
         description="rebis.ch3mpiler — Molecular Compiler & Retrosynthesis",
         formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("command", nargs="?", default="help",
-                       help="Command: forward, retrosynth, fg, cdxml, info, list, help")
-    parser.add_argument("smiles", nargs="?", default="",
-                       help="SMILES string or compound name")
+
+    sub = parser.add_subparsers(dest="command", metavar="COMMAND",
+                                help="Sub-command (run with COMMAND --help for details)")
+
+    # ── forward ──
+    p_fwd = sub.add_parser("forward",
+        help="Forward synthesis from SMILES",
+        description="Run forward molecular synthesis — compose a molecule from\n"
+                    "its SMILES string and compute its structural IG tuple.",
+        epilog="Example:  rebis.ch3mpiler forward CC(=O)O",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_fwd.add_argument("smiles", nargs="?", default="",
+                       help="SMILES string (e.g. CC(=O)O for acetic acid)")
+    p_fwd.set_defaults(func=_cmd_forward)
+
+    # ── retrosynth ──
+    p_ret = sub.add_parser("retrosynth",
+        help="Retrosynthetic analysis from SMILES",
+        description="Run retrosynthetic analysis — decompose a molecule into\n"
+                    "functional groups, identify disconnection sites, and compute\n"
+                    "synthetic accessibility via IG lattice operations.",
+        epilog="Example:  rebis.ch3mpiler retrosynth c1ccccc1",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_ret.add_argument("smiles", nargs="?", default="",
+                       help="SMILES string (e.g. c1ccccc1 for benzene)")
+    p_ret.set_defaults(func=_cmd_retrosynth)
+
+    # ── fg ──
+    p_fg = sub.add_parser("fg",
+        help="Detect functional groups in SMILES",
+        description="Detect all functional groups present in a molecule\n"
+                    "by exhaustive pattern matching against known FG templates.",
+        epilog="Example:  rebis.ch3mpiler fg CC(=O)O",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_fg.add_argument("smiles", nargs="?", default="",
+                      help="SMILES string (e.g. CC(=O)O)")
+    p_fg.set_defaults(func=_cmd_fg)
+
+    # ── cdxml ──
+    p_cdx = sub.add_parser("cdxml",
+        help="Convert SMILES to CDXML format",
+        description="Convert a SMILES string to ChemDraw CDXML format\n"
+                    "for structural diagram rendering.",
+        epilog="Example:  rebis.ch3mpiler cdxml CC(=O)O",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_cdx.add_argument("smiles", nargs="?", default="",
+                       help="SMILES string")
+    p_cdx.set_defaults(func=_cmd_cdxml)
+
+    # ── analyze ──
+    p_ana = sub.add_parser("analyze",
+        help="Full molecular analysis (forward + retrosynth + FG)",
+        description="Run complete molecular analysis — forward synthesis,\n"
+                    "retrosynthetic decomposition, and functional group detection.",
+        epilog="Example:  rebis.ch3mpiler analyze CC(=O)O",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_ana.add_argument("smiles", nargs="?", default="",
+                       help="SMILES string")
+    p_ana.set_defaults(func=_cmd_analyze)
+
+    # ── list ──
+    p_list = sub.add_parser("list",
+        help="List all exported symbols",
+        description="List all symbols available via `rebis.ch3mpiler.<name>`.",
+        epilog="Example:  rebis.ch3mpiler list",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_list.set_defaults(func=_cmd_list)
+
+    # ── info (alias) ──
+    p_info = sub.add_parser("info",
+        help="Show available tools (alias for list)",
+        epilog="Example:  rebis.ch3mpiler info",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_info.set_defaults(func=_cmd_list)
+
+    # ── help ──
+    sub.add_parser("help",
+        help="Show this help message",
+        epilog="Example:  rebis.ch3mpiler help",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+
     args = parser.parse_args()
 
-    cmd = args.command
-
-    if cmd in ("help", "--help", "-h"):
+    if not args.command or args.command == "help":
         parser.print_help()
         return 0
 
-    if cmd in ("list", "ls", "info"):
-        print("rebis.ch3mpiler — Exports:")
-        for name in sorted(__all__):
-            print(f"  {name}")
-        return 0
+    if hasattr(args, 'func'):
+        return args.func(args)
 
-    if cmd == "forward":
-        if not args.smiles:
-            print("Usage: rebis.ch3mpiler forward <SMILES>")
-            return 1
-        try:
-            result = forward(args.smiles)
-            print(json.dumps(result, indent=2) if isinstance(result, (dict, list)) else result)
-        except Exception as e:
-            print(f"Forward synthesis failed: {e}")
-            return 1
-        return 0
-
-    if cmd in ("retrosynth", "retro", "retrosynthesis"):
-        if not args.smiles:
-            print("Usage: rebis.ch3mpiler retrosynth <SMILES>")
-            return 1
-        try:
-            result = retrosynthesis(args.smiles)
-            print(json.dumps(result, indent=2) if isinstance(result, (dict, list)) else result)
-        except Exception as e:
-            print(f"Retrosynthesis failed: {e}")
-            return 1
-        return 0
-
-    if cmd in ("fg", "functional-groups", "funcgroups"):
-        if not args.smiles:
-            print("Usage: rebis.ch3mpiler fg <SMILES>")
-            return 1
-        try:
-            fgs = detect_functional_groups(args.smiles)
-            for fg in fgs:
-                print(f"  {fg}")
-        except Exception as e:
-            print(f"FG detection failed: {e}")
-            return 1
-        return 0
-
-    if cmd in ("cdxml", "cdx"):
-        if not args.smiles:
-            print("Usage: rebis.ch3mpiler cdxml <SMILES>")
-            return 1
-        try:
-            cdx = smiles_to_cdxml(args.smiles)
-            print(cdx)
-        except Exception as e:
-            print(f"CDXML conversion failed: {e}")
-            return 1
-        return 0
-
-    if cmd == "analyze":
-        if not args.smiles:
-            print("Usage: rebis.ch3mpiler analyze <SMILES>")
-            return 1
-        try:
-            result = analyze(args.smiles)
-            print(result)
-        except Exception as e:
-            print(f"Analysis failed: {e}")
-            return 1
-        return 0
-
-    print(f"Unknown command: {cmd}")
     parser.print_help()
     return 1
 

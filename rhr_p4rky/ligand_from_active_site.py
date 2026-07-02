@@ -681,68 +681,91 @@ def complement_type(site_type: dict) -> dict:
 
 def encode_site_from_residues(residues: list) -> dict:
     """Encode active site residues as a 12-primitive structural type.
-    
-    Maps each catalytic residue to its dominant primitive, then
-    tensors them all together (max on most primitives, min on P and F).
-    
+
+    Maps each catalytic residue to its dominant primitive, then scales
+    each primitive's ordinal proportionally to how many residues map to it.
+
+    Tensor semantics: max on most primitives (more residues → higher ordinal),
+    min on P and F (more residues → more constrained → lower fidelity/parity).
+
     Args:
-        residues: List of 3-letter AA codes, e.g. ["Glu", "Asp"]
-    
+        residues: List of residue strings, e.g. ["ARG105", "Glu", "Asp"]
+
     Returns:
-        12-primitive dict
+        12-primitive dict, or None if no residues could be parsed
     """
     if not residues:
         return None
-    
-    # Convert residues to AAs if they have position suffixes
+
+    import re as _re
+
+    # Extended AA_TO_PRIMITIVE with all 20 standard AAs
+    _ALL_AA_PRIMITIVE = dict(AA_TO_PRIMITIVE)
+    _ALL_AA_PRIMITIVE.update({
+        "Ala": "G", "Gly": "G", "Val": "K", "Leu": "K", "Ile": "K",
+        "Pro": "T", "Ser": "R", "Thr": "R", "Arg": "S", "Lys": "S",
+    })
+
+    # Parse residues to clean 3-letter codes
     clean_aas = []
+    aa_map_1l = {"S": "Ser", "D": "Asp", "H": "His", "E": "Glu",
+                "K": "Lys", "C": "Cys", "Y": "Tyr", "F": "Phe",
+                "I": "Ile", "N": "Asn", "Q": "Gln", "W": "Trp",
+                "M": "Met", "G": "Gly", "A": "Ala", "V": "Val",
+                "L": "Leu", "P": "Pro", "T": "Thr", "R": "Arg"}
+
     for r in residues:
-        for aa_3l in AA_TO_PRIMITIVE:
-            if r.startswith(aa_3l):
-                clean_aas.append(aa_3l)
-                break
-        else:
-            # Try single-letter code
-            aa_map_1l = {"S": "Ser", "D": "Asp", "H": "His", "E": "Glu", 
-                        "K": "Lys", "C": "Cys", "Y": "Tyr", "F": "Phe",
-                        "I": "Ile", "N": "Asn", "Q": "Gln", "W": "Trp",
-                        "M": "Met", "G": "Gly", "A": "Ala", "V": "Val",
-                        "L": "Leu", "P": "Pro", "T": "Thr", "R": "Arg"}
-            first_char = r[0]
-            if first_char in aa_map_1l:
-                clean_aas.append(aa_map_1l[first_char])
-    
+        match3 = _re.match(r'([A-Za-z]{3})\d*', r)
+        if match3:
+            code3 = match3.group(1)
+            code3_title = code3[0].upper() + code3[1:].lower()
+            if code3_title in _ALL_AA_PRIMITIVE:
+                clean_aas.append(code3_title)
+                continue
+
+        match1 = _re.match(r'([A-Za-z])\d*', r)
+        if match1:
+            code1 = match1.group(1).upper()
+            if code1 in aa_map_1l:
+                clean_aas.append(aa_map_1l[code1])
+
     if not clean_aas:
         return None
-    
-    # Start with first residue's primitive at max ordinal
-    first_prim = AA_TO_PRIMITIVE.get(clean_aas[0])
-    if not first_prim:
-        return None
-    
+
+    # Count residues per primitive
+    prim_counts = {p: 0 for p in PRIMITIVE_NAMES_SHORT}
+    for aa in clean_aas:
+        prim = _ALL_AA_PRIMITIVE.get(aa)
+        if prim:
+            prim_counts[prim] += 1
+
+    # Scale each primitive's ordinal proportionally to count
+    # Non-P/F primitives (max semantics):
+    #   0 residues → ordinal 0 (minimum, no contribution)
+    #   N residues → min(N, max_ordinal)
+    # P and F primitives (tensor-min semantics):
+    #   0 residues → ordinal max_ord (no constraint → highest fidelity/parity)
+    #   N residues → max(0, max_ord - N) (more residues → more constrained)
     result = {}
     for p in PRIMITIVE_NAMES_SHORT:
-        max_g = max(GLYPH_ORDINALS[p].values(), default=0)
-        result[p] = ord_to_glyph(p, max_g)
-    
-    # For each residue, tensor in its effect
-    for aa in clean_aas:
-        prim = AA_TO_PRIMITIVE.get(aa)
-        if not prim:
-            continue
-        
-        for p in PRIMITIVE_NAMES_SHORT:
-            current_o = glyph_ord(p, result[p])
-            if p == prim:
-                # Push this primitive higher
-                new_o = min(glyph_ord(p, ord_to_glyph(p, len(GLYPH_ORDINALS[p]) - 1)), current_o + 1)
-                result[p] = ord_to_glyph(p, new_o)
-            elif p in ("P", "F"):
-                # Tensor: min for P and F
-                continue  # keep at max by default
-    
-    return result
+        max_ord = len(GLYPH_ORDINALS[p]) - 1
+        count = prim_counts.get(p, 0)
 
+        if p in ("P", "F"):
+            # Tensor-min: more residues → lower ordinal
+            # 0 residues = unconstrained = max ordinal
+            if count == 0:
+                result[p] = ord_to_glyph(p, max_ord)
+            else:
+                result[p] = ord_to_glyph(p, max(0, max_ord - min(count, max_ord)))
+        elif count == 0:
+            # Non-P/F, no residues: minimum ordinal
+            result[p] = ord_to_glyph(p, 0)
+        else:
+            # Non-P/F, has residues: ordinal proportional to count
+            result[p] = ord_to_glyph(p, min(count, max_ord))
+
+    return result
 
 def closest_bond_type(ligand_type: dict) -> Tuple[str, dict, float]:
     """Find the bond type whose structural type is closest to the ligand type.
@@ -1204,11 +1227,21 @@ def analyze_bevy_improved(protein_names: list = None, max_candidates: int = 10) 
         site_type = p.get("structural_type")
         substrate = p.get("smiles_substrate_hint", "")
         
-        candidates = limprov.generate_from_enzyme_type(
-            site_type=site_type,
-            substrate_hint=substrate,
-            max_candidates=max_candidates,
-        )
+        # Try heterocycle/polycyclic engine first, fall back to fragment-based
+        try:
+            from rhr_p4rky.ligand_heterocycles import generate_hybrid_ligands
+            candidates = generate_hybrid_ligands(
+                site_type=site_type,
+                substrate_hint=substrate,
+                max_candidates=max_candidates,
+                heterocycle_fraction=0.65,
+            )
+        except Exception:
+            candidates = limprov.generate_from_enzyme_type(
+                site_type=site_type,
+                substrate_hint=substrate,
+                max_candidates=max_candidates,
+            )
         
         # Also get the ligand type via complement for reference
         ligand_type = limprov._complement_type(site_type)
