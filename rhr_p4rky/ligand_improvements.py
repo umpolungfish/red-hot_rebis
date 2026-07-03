@@ -1274,23 +1274,239 @@ def _estimate_fgs_from_site_type(site_type: Dict[str, str], bond_name: str) -> L
     return bond_fg_defaults.get(bond_name, ["amine", "alcohol", "phosphate"])
 
 
+def generate_substrate_analogs(
+    substrate_smiles: str,
+    ligand_type: Optional[Dict[str, str]] = None,
+    max_candidates: int = 20,
+) -> List[Dict]:
+    """Generate ligand candidates by modifying a known substrate.
+    
+    This is the PRIMARY generation strategy when a substrate hint is available.
+    Bioisosteric replacement, functional group variation, and chain extension
+    produce chemically plausible analogs scored by drug-likeness.
+    
+    Strategy:
+    1. Parse substrate, identify functional groups
+    2. Generate bioisostere swaps (COOH→tetrazole, amide→sulfonamide, etc.)
+    3. Generate FG variations (methyl, ethyl, hydroxyl, fluoro substitutions)
+    4. Chain length variations
+    5. Ring substitutions where applicable
+    """
+    from rdkit import Chem
+    from rdkit.Chem import AllChem, Descriptors, rdMolDescriptors, BRICS
+    
+    candidates = []
+    seen = set()
+    
+    mol = Chem.MolFromSmiles(substrate_smiles)
+    if mol is None:
+        return candidates
+    
+    def _add(smi, method, substrate_mol=None):
+        """Validate and add a candidate SMILES."""
+        try:
+            m = Chem.MolFromSmiles(smi)
+            if m is None or m.GetNumHeavyAtoms() < 3:
+                return
+            canon = Chem.MolToSmiles(m)
+            if canon in seen:
+                return
+            seen.add(canon)
+            
+            logp = Descriptors.MolLogP(m)
+            mw = Descriptors.MolWt(m)
+            heavy = m.GetNumHeavyAtoms()
+            hbd = Descriptors.NumHDonors(m)
+            hba = Descriptors.NumHAcceptors(m)
+            tpsa = Descriptors.TPSA(m)
+            rot = Descriptors.NumRotatableBonds(m)
+            rings = rdMolDescriptors.CalcNumRings(m)
+            
+            # Drug-likeness
+            drug = 0.0
+            if 0 <= mw <= 500: drug += 0.25
+            if -2 <= logp <= 5: drug += 0.25
+            if hbd <= 5: drug += 0.25
+            if hba <= 10: drug += 0.25
+            
+            # Structural similarity to substrate
+            fp_score = 0.0
+            if substrate_mol is not None:
+                fp1 = AllChem.GetMorganFingerprintAsBitVect(m, 2, 2048)
+                fp2 = AllChem.GetMorganFingerprintAsBitVect(substrate_mol, 2, 2048)
+                fp_score = AllChem.DataStructs.TanimotoSimilarity(fp1, fp2)
+            
+            composite = 0.4 * drug + 0.3 * fp_score + 0.3 * min(1.0, heavy / 40.0)
+            
+            candidates.append({
+                "smiles": canon,
+                "method": method,
+                "logP": round(logp, 2),
+                "MW": round(mw, 1),
+                "HBD": hbd,
+                "HBA": hba,
+                "TPSA": round(tpsa, 1),
+                "rotatable_bonds": rot,
+                "rings": rings,
+                "heavy_atoms": heavy,
+                "composite_score": round(composite, 3),
+                "fp_score": round(fp_score, 3),
+                "drug_score": round(drug, 3),
+                "valid": True
+            })
+        except Exception:
+            pass
+    
+    # Strategy A: The substrate itself
+    base_smi = Chem.MolToSmiles(mol)
+    _add(base_smi, "substrate", mol)
+    
+    # Strategy B: BRICS fragment recombination
+    try:
+        frags = list(BRICS.BreakBRICSBonds(mol))
+        if len(frags) >= 2:
+            # Keep core, vary other fragments
+            frag_mols = [Chem.MolFromSmiles(f) for f in frags if Chem.MolFromSmiles(f)]
+            for i, frag_smi in enumerate(frags[:6]):  # max 6 fragments
+                for variation in ["C", "CC", "CF", "CO", "CN", "Cl", "c1ccccc1", "C(=O)O", "C(=O)N"]:
+                    if variation == frag_smi:
+                        continue
+                    varied_frags = frags.copy()
+                    varied_frags[i] = variation
+                    try:
+                        recombined = ".".join(varied_frags)
+                        _add(recombined, f"brics_var", mol)
+                    except:
+                        pass
+    except Exception:
+        pass
+    
+    # Strategy C: Bioisostere replacements
+    bioisosteres = {
+        "C(=O)O": ["C(=O)N", "C(=O)NS(=O)(=O)C", "c1[nH]nnn1", "S(=O)(=O)O", "P(=O)(O)O", "C(=O)NC#N"],
+        "C(=O)N": ["C(=O)O", "S(=O)(=O)N", "C(=S)N", "c1noc([H])n1"],
+        "c1ccccc1": ["c1ccncc1", "c1cnccn1", "c1cscn1", "c1ccoc1", "C1CCCCC1"],
+        "O": ["S", "NH", "CF2", "C(=O)", "S(=O)"],
+        "OH": ["F", "Cl", "NH2", "SH", "CF3", "CN"],
+        "S": ["O", "NH", "CH2", "S(=O)", "S(=O)2"],
+    }
+    
+    base = Chem.MolToSmiles(mol)
+    for pattern, replacements in bioisosteres.items():
+        if pattern in base:
+            for repl in replacements[:4]:
+                try:
+                    new_smi = base.replace(pattern, repl)
+                    _add(new_smi, f"bioisostere", mol)
+                except:
+                    pass
+    
+    # Strategy D: Chain length variation for linear substrates
+    # Identify terminal methyl/ethyl groups and vary chain length
+    try:
+        for atom in mol.GetAtoms():
+            if atom.GetAtomicNum() == 6 and atom.GetDegree() == 1:
+                # Terminal carbon - try ethyl, propyl, isopropyl variants
+                neighbors = [n for n in atom.GetNeighbors()]
+                if not neighbors:
+                    continue
+                rw = Chem.RWMol(mol)
+                idx = rw.AddAtom(Chem.Atom(6))
+                rw.AddBond(atom.GetIdx(), idx, Chem.BondType.SINGLE)
+                try:
+                    Chem.SanitizeMol(rw)
+                    _add(Chem.MolToSmiles(rw), "chain_extend", mol)
+                except:
+                    pass
+    except Exception:
+        pass
+    
+    # Strategy E: Ring substitutions
+    ssr = Chem.GetSymmSSSR(mol)
+    if ssr:
+        ring_info = mol.GetRingInfo()
+        for ring in ssr:
+            if len(ring) == 6:
+                ring_atoms = list(ring)
+                for atom_idx in ring_atoms:
+                    atom = mol.GetAtomWithIdx(atom_idx)
+                    if atom.GetAtomicNum() == 6 and atom.GetDegree() <= 3:
+                        for sub in ["F", "Cl", "OH", "NH2", "C", "CF3", "CN", "C(=O)O"]:
+                            try:
+                                rw = Chem.RWMol(mol)
+                                sub_idx = rw.AddAtom(Chem.Atom(6 if sub == "C" else (
+                                    9 if sub == "F" else 17 if sub == "Cl" else 8 if sub in ("OH",) else 7)))
+                                rw.AddBond(atom_idx, sub_idx, Chem.BondType.SINGLE)
+                                Chem.SanitizeMol(rw)
+                                _add(Chem.MolToSmiles(rw), f"ring_sub", mol)
+                            except:
+                                pass
+                        break  # One substitution per ring
+                break  # One ring at a time
+    
+    # Sort and limit
+    candidates.sort(key=lambda x: x["composite_score"], reverse=True)
+    return candidates[:max_candidates]
+
+
+def generate_from_enzyme_type_substrate_first(
+    site_type: Dict[str, str],
+    substrate_hint: str = "",
+    max_candidates: int = 20
+) -> list:
+    """Generate de-novo inhibitors: substrate-driven PRIMARY, fragment-based FALLBACK.
+    
+    When a substrate hint is available, generates substrate analogs first
+    (bioisosteres, chain variations, ring substitutions), then supplements
+    with fragment-based enumeration for diversity.
+    
+    When no substrate hint is available, falls back to fragment-based enumeration.
+    """
+    # ── PRIMARY: Substrate-driven generation ──
+    substrate_analogs = []
+    if substrate_hint:
+        substrate_analogs = generate_substrate_analogs(
+            substrate_smiles=substrate_hint,
+            ligand_type=None,
+            max_candidates=max_candidates,
+        )
+    
+    # ── FALLBACK: Fragment-based enumeration for diversity ──
+    bond_name = _estimate_bond_from_site_type(site_type)
+    fg_names = _estimate_fgs_from_site_type(site_type, bond_name)
+    
+    fragment_ligands = generate_ligands_from_bond_fg(
+        bond_name=bond_name,
+        fg_names=fg_names,
+        ligand_type=None,
+        substrate_hint=substrate_hint if not substrate_analogs else "",
+        max_candidates=max(5, max_candidates // 2),
+    )
+    
+    # ── Merge: substrate analogs first, then fragment diversity ──
+    seen = set()
+    merged = []
+    for c in substrate_analogs + fragment_ligands:
+        if c["smiles"] not in seen:
+            seen.add(c["smiles"])
+            merged.append(c)
+    
+    merged.sort(key=lambda x: x["composite_score"], reverse=True)
+    return merged[:max_candidates]
+
 def generate_from_enzyme_type(
     site_type: Dict[str, str],
     substrate_hint: str = "",
     max_candidates: int = 20
 ) -> list:
-    """Generate de-novo inhibitors from an enzyme's catalytic site structural type.
+    """Generate de-novo inhibitors: substrate-driven PRIMARY, fragment FALLBACK.
     
-    Uses the enzyme structural type → bond type → FG estimation pipeline
-    for more accurate ligand design.
+    When substrate_hint is available, generates bioisosteric analogs,
+    chain variations, and ring substitutions of the known substrate.
+    Supplements with fragment-based enumeration for diversity.
     """
-    bond_name = _estimate_bond_from_site_type(site_type)
-    fg_names = _estimate_fgs_from_site_type(site_type, bond_name)
-    
-    return generate_ligands_from_bond_fg(
-        bond_name=bond_name,
-        fg_names=fg_names,
-        ligand_type=None,  # scoring uses substrate fingerprint instead
+    return generate_from_enzyme_type_substrate_first(
+        site_type=site_type,
         substrate_hint=substrate_hint,
         max_candidates=max_candidates,
     )

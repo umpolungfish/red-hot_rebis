@@ -946,42 +946,57 @@ BOND_SMILES_PATTERNS = {
 
 
 def generate_ligand_smiles(bond_name: str, fg_names: list, 
-                           substrate_hint: str = "") -> list:
+                           substrate_hint: str = "",
+                           ligand_type: dict = None,
+                           max_candidates: int = 20) -> list:
     """Generate de-novo SMILES ligands from bond + FG decomposition.
     
-    Uses first-principles molecular assembly:
-    1. Start with the bond type as the reaction center
-    2. Attach FGs as substituents
-    3. Vary R-group substituents to create a ligand family
-    4. Validate with RDKit
+    PRIMARY: Uses the improved fragment-based engine (ligand_improvements.py)
+    when available — combinatorial fragment enumeration with fingerprint 
+    similarity, structural distance scoring, and drug-likeness ranking.
+    
+    FALLBACK: Hardcoded scaffold enumeration when improved engine unavailable.
     
     Returns:
-        List of (smiles, logP, MW, score) tuples
+        List of candidate dicts with SMILES, scores, and drug properties
     """
-    candidates = []
+    
+    # ── PRIMARY: Fragment-based improved engine ──
+    improved = _get_improved()
+    if improved is not None and (bond_name or fg_names):
+        try:
+            candidates = improved.generate_ligands_from_bond_fg(
+                bond_name=bond_name or "sigma_single",
+                fg_names=fg_names or ["amine"],
+                ligand_type=ligand_type,
+                substrate_hint=substrate_hint,
+                max_candidates=max_candidates,
+            )
+            if candidates:
+                return candidates
+        except Exception:
+            pass  # Fall through to hardcoded strategies
+    
+    # ── FALLBACK: Hardcoded strategies ──
+    candidates_raw = []
     
     # Strategy 1: Scaffold from FG SMILES patterns
     if fg_names:
-        # Build a scaffold combining the FGs
         fg_smiles_list = []
-        for fg in fg_names[:3]:  # max 3 FGs
+        for fg in fg_names[:3]:
             if fg in FG_SMILES_PATTERNS:
                 fg_smiles_list.append(FG_SMILES_PATTERNS[fg])
         
         if fg_smiles_list:
-            # Connect FGs via the bond type
             connector = BOND_SMILES_PATTERNS.get(bond_name, "-")
             scaffold = connector.join(fg_smiles_list)
-            candidates.append((scaffold, "fg_scaffold"))
+            candidates_raw.append((scaffold, "fg_scaffold"))
             
-            # Try with methyl substitution (use RDKit to add methyl safely)
             try:
                 mol_scaffold = Chem.MolFromSmiles(scaffold)
                 if mol_scaffold is not None:
-                    # Use explicit methyl attachment instead of string replace
                     from rdkit.Chem import RWMol
                     rw = RWMol(mol_scaffold)
-                    # Add a methyl carbon to any available attachment point
                     for atom in mol_scaffold.GetAtoms():
                         if atom.GetAtomicNum() == 6 and atom.GetTotalNumHs() > 0:
                             idx = rw.AddAtom(Chem.Atom(6))
@@ -989,7 +1004,7 @@ def generate_ligand_smiles(bond_name: str, fg_names: list,
                             try:
                                 Chem.SanitizeMol(rw)
                                 methyl_smi = Chem.MolToSmiles(rw)
-                                candidates.append((methyl_smi, "methylated"))
+                                candidates_raw.append((methyl_smi, "methylated"))
                             except:
                                 pass
                             break
@@ -1001,58 +1016,118 @@ def generate_ligand_smiles(bond_name: str, fg_names: list,
         try:
             mol = Chem.MolFromSmiles(substrate_hint)
             if mol is not None:
-                # Generate analogs by adding/subtracting functional groups
                 base_smi = Chem.MolToSmiles(mol)
-                candidates.append((base_smi, "substrate_analog"))
+                candidates_raw.append((base_smi, "substrate_analog"))
                 
-                # Add ethyl extension
+                # Generate real analogs via fragment enumeration
+                from rdkit.Chem import AllChem
+                extended = Chem.RWMol(mol)
+                extended.AddAtom(Chem.Atom(6))
+                extended.AddAtom(Chem.Atom(6))
                 try:
-                    from rdkit.Chem import AllChem
-                    # Ethyl extension on available positions
-                    extended = Chem.RWMol(mol)
-                    extended.AddAtom(Chem.Atom(6))  # C
-                    extended.AddAtom(Chem.Atom(6))  # C
+                    Chem.SanitizeMol(extended)
                     ei_smi = Chem.MolToSmiles(extended)
-                    candidates.append((ei_smi, "extended_chain"))
+                    candidates_raw.append((ei_smi, "extended_chain"))
+                except:
+                    pass
+                
+                # Methyl variant
+                methyl_mol = Chem.RWMol(mol)
+                methyl_mol.AddAtom(Chem.Atom(6))
+                try:
+                    Chem.SanitizeMol(methyl_mol)
+                    candidates_raw.append((Chem.MolToSmiles(methyl_mol), "substrate_methyl"))
+                except:
+                    pass
+                    
+                # Hydroxy variant
+                hydroxy_mol = Chem.RWMol(mol)
+                hydroxy_mol.AddAtom(Chem.Atom(8))
+                try:
+                    Chem.SanitizeMol(hydroxy_mol)
+                    candidates_raw.append((Chem.MolToSmiles(hydroxy_mol), "substrate_hydroxy"))
                 except:
                     pass
         except:
             pass
     
-    # Strategy 3: First-principles de-novo construction
-    # Use the bond type to determine scaffold geometry
+    # Strategy 3: First-principles de-novo construction (EXPANDED)
+    r_groups_small = ["C", "CC", "CCC", "C(C)C"]
+    r_groups_ring  = ["c1ccccc1", "c1ccncc1", "c1cnccn1", "C1CC1", "C1CCC1"]
+    r_groups_N     = ["N", "NC", "NCC", "N(C)C", "NC(C)C"]
+    r_groups_O     = ["O", "OC", "OCC", "OC(C)C"]
+    
     if bond_name in ("amide_link", "carbonyl"):
-        # Amide-like scaffold with R-groups
-        for r1 in ["C", "CC", "CCC", "c1ccccc1"]:
-            for r2 in ["N", "NC", "NCC"]:
+        for r1 in r_groups_small + r_groups_ring:
+            for r2 in r_groups_N:
                 smi = f"{r1}C(=O){r2}"
-                candidates.append((smi, f"amide_variant_{r1}_{r2}"))
+                candidates_raw.append((smi, f"amide_variant"))
     
     elif bond_name in ("ester_link",):
-        for r1 in ["C", "CC", "c1ccccc1"]:
-            for r2 in ["O", "OC", "OCC"]:
+        for r1 in r_groups_small + r_groups_ring:
+            for r2 in r_groups_O:
                 smi = f"{r1}C(=O){r2}"
-                candidates.append((smi, f"ester_variant_{r1}_{r2}"))
+                candidates_raw.append((smi, f"ester_variant"))
     
     elif bond_name == "aromatic":
-        for sub in ["O", "N", "C(=O)O", "C(=O)N"]:
+        for sub in ["O", "N", "C(=O)O", "C(=O)N", "C(=O)C", "F", "Cl", "C#N", "S(=O)(=O)N"]:
             smi = f"c1ccccc1{sub}"
-            candidates.append((smi, f"aromatic_{sub}"))
+            candidates_raw.append((smi, f"aromatic_sub"))
+        # Also try heteroaromatics
+        for core in ["c1ccncc1", "c1cnccn1", "c1c[nH]cn1", "c1cscn1", "c1ccoc1"]:
+            candidates_raw.append((core, f"heteroaromatic_core"))
     
-    elif bond_name in ("sigma_single", "co_sigma", "ether_link"):
-        # Simple chain
-        for chain_len in [1, 2, 3, 4]:
+    elif bond_name in ("sigma_single", "co_sigma", "ether_link", "cn_sigma"):
+        for chain_len in [1, 2, 3, 4, 5, 6]:
             chain = "C" * chain_len
+            candidates_raw.append((chain, f"alkane_c{chain_len}"))
             if fg_names:
-                fg_tag = fg_names[0]
-                if fg_tag in FG_SMILES_PATTERNS:
-                    smi = f"{FG_SMILES_PATTERNS[fg_tag]}{chain}"
-                    candidates.append((smi, f"chain_{chain_len}"))
+                for fg_tag in fg_names[:2]:
+                    if fg_tag in FG_SMILES_PATTERNS:
+                        smi = f"{FG_SMILES_PATTERNS[fg_tag]}{chain}"
+                        candidates_raw.append((smi, f"chain_fg"))
+                        # Branched variant
+                        if chain_len >= 3:
+                            mid = chain_len // 2
+                            branched = f"{FG_SMILES_PATTERNS[fg_tag]}" + "C" * mid + "C(C)" + "C" * (chain_len - mid - 1)
+                            candidates_raw.append((branched, f"branched_chain"))
+    
+    elif bond_name in ("pi_bond", "double_bond", "triple_bond", "strain_release"):
+        bond_char = {"pi_bond": "=", "double_bond": "=", "triple_bond": "#", "strain_release": "-"}
+        bc = bond_char.get(bond_name, "=")
+        for r1 in r_groups_small:
+            for r2 in r_groups_small:
+                smi = f"{r1}{bc}{r2}"
+                candidates_raw.append((smi, f"unsaturated"))
+        # Cycloalkenes
+        for size in [3, 4, 5, 6]:
+            ring = "C1" + "C" * (size - 2) + "C1"
+            candidates_raw.append((ring, f"cycloalkene_c{size}"))
+        # Epoxide / strained rings
+        if bond_name == "strain_release":
+            for strained in ["C1OC1", "C1CC1", "C1CN1"]:
+                candidates_raw.append((strained, f"strained_ring"))
+    
+    elif bond_name in ("cage_bond", "dative_bond"):
+        for cage in ["C12C3C4C1C5C2C3C45", "C12C3C4C5C6C7C8C9C%10C%11C%12C1C2C3C4C5C6C7C8C9C%10C%11C%12"]:
+            candidates_raw.append((cage, f"cage"))
+        # Metal-coordinating motifs for dative
+        if bond_name == "dative_bond":
+            for motif in ["NCCN", "OCCN", "NCCS"]:
+                candidates_raw.append((motif, f"chelating"))
+    
+    else:
+        # Generic: try simple combinations
+        for r1 in r_groups_small:
+            candidates_raw.append((r1, f"simple_alkyl"))
+            if fg_names and fg_names[0] in FG_SMILES_PATTERNS:
+                smi = FG_SMILES_PATTERNS[fg_names[0]] + r1
+                candidates_raw.append((smi, f"fg_alkyl"))
     
     # Validate and deduplicate
     validated = []
     seen = set()
-    for smi, method in candidates:
+    for smi, method in candidates_raw:
         try:
             mol = Chem.MolFromSmiles(smi)
             if mol is None:
@@ -1062,7 +1137,6 @@ def generate_ligand_smiles(bond_name: str, fg_names: list,
                 continue
             seen.add(canon)
             
-            # Compute properties
             logp = Descriptors.MolLogP(mol)
             mw = Descriptors.MolWt(mol)
             heavy = mol.GetNumHeavyAtoms()
@@ -1071,10 +1145,8 @@ def generate_ligand_smiles(bond_name: str, fg_names: list,
             tpsa = Descriptors.TPSA(mol)
             rot_bonds = Descriptors.NumRotatableBonds(mol)
             rings = rdMolDescriptors.CalcNumRings(mol)
-            # Composite score: favor drug-like properties
-            # Weight: logP (close to 2-3), MW (<500), Lipinski compliance
             lipinski_pass = int(mw <= 500) + int(-2 <= logp <= 5) + int(hbd <= 5) + int(hba <= 10)
-            composite = lipinski_pass / 4.0  # 0-1 scale based on Lipinski compliance
+            composite = lipinski_pass / 4.0
             
             validated.append({
                 "smiles": canon,
@@ -1090,14 +1162,11 @@ def generate_ligand_smiles(bond_name: str, fg_names: list,
                 "composite_score": round(composite, 3),
                 "valid": True
             })
-        except Exception as e:
+        except Exception:
             pass
     
-    # Sort by heavy atom count (reasonable size first)
     validated.sort(key=lambda x: x["heavy_atoms"])
-    
-    return validated
-
+    return validated[:max_candidates]
 
 def decompose_and_generate(site_type: dict, substrate_hint: str = "") -> dict:
     """Full pipeline: complement site type, decompose, generate ligands.
@@ -1118,10 +1187,11 @@ def decompose_and_generate(site_type: dict, substrate_hint: str = "") -> dict:
     # Step 3: Find closest FG pair
     fg_names, fg_tuple, fg_dist = closest_fg_pair(ligand_type, bond_tuple)
     
-    # Step 4: Generate ligands
+    # Step 4: Generate ligands (pass ligand_type for improved engine scoring)
     ligands = generate_ligand_smiles(bond_name or "sigma_single", 
                                       fg_names or ["amine"],
-                                      substrate_hint)
+                                      substrate_hint=substrate_hint,
+                                      ligand_type=ligand_type)
     
     return {
         "ligand_type": ligand_type,

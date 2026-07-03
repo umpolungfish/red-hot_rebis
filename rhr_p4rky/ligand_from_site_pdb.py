@@ -127,6 +127,58 @@ class CatalyticResidueAnalysis:
     n_neighbors: int
 
 
+def _extract_hetatm_smiles_from_pdb(pdb_text: str) -> list:
+    """Extract SMILES from HETATM records in a PDB file.
+    
+    Parses HETATM residues (non-standard: ligands, cofactors, modified AAs)
+    and converts them to SMILES using RDKit. Filters out water, ions, and
+    buffer molecules.
+    
+    Returns list of (smiles, residue_name) tuples, sorted by heavy atom count.
+    """
+    if not pdb_text:
+        return []
+    
+    from collections import defaultdict
+    from rdkit import Chem
+    
+    # Collect HETATM lines by residue
+    het_residues = defaultdict(list)
+    for line in pdb_text.split('\n'):
+        if line.startswith('HETATM') or line.startswith('HETSYN'):
+            res_name = line[17:20].strip()
+            res_num = line[22:26].strip()
+            chain = line[21].strip()
+            key = f"{res_name}_{res_num}_{chain}"
+            het_residues[key].append(line)
+    
+    # Filter out water, ions, buffers
+    skip_set = {'HOH', 'WAT', 'DOD', 'NA', 'CL', 'K', 'MG', 'CA', 'ZN', 'MN',
+                'FE', 'CU', 'CO', 'NI', 'SO4', 'PO4', 'EDO', 'GOL', 'ACT',
+                'EPE', 'TRS', 'BME', 'DTT', 'PEG', 'MPD', 'DMS', 'DMF'}
+    
+    smiles_list = []
+    for key, lines in het_residues.items():
+        parts = key.split('_')
+        res_name = parts[0]
+        if res_name in skip_set:
+            continue
+        
+        # Build a minimal PDB block for this residue
+        block = '\n'.join(lines)
+        try:
+            mol = Chem.MolFromPDBBlock(block, sanitize=True, removeHs=True)
+            if mol is not None and mol.GetNumHeavyAtoms() >= 3:
+                smi = Chem.MolToSmiles(mol)
+                if smi and len(smi) > 3:
+                    smiles_list.append((smi, res_name, mol.GetNumHeavyAtoms()))
+        except Exception:
+            pass
+    
+    # Sort by size (largest first — most likely the real ligand)
+    smiles_list.sort(key=lambda x: -x[2])
+    return [s[0] for s in smiles_list]
+
 def encode_site_from_pdb(
     pdb_id_or_path: str,
     active_residues: List[str],
@@ -307,6 +359,7 @@ def encode_site_from_pdb(
 
     summary = {
         "pdb_id": pdb_id,
+        "pdb_text": pdb_text,
         "n_catalytic": len(per_residue),
         "not_found": not_found,
         "site_tuple": site_tuple,
@@ -545,11 +598,47 @@ def design_ligand_from_pdb(
         if p.get("pdb", "").upper() == summary.get("pdb_id", "").upper():
             substrate_hint = p.get("smiles_substrate_hint", "")
             break
+    
+    # Extract HETATM ligands from PDB as additional substrate hints
+    het_smiles = _extract_hetatm_smiles_from_pdb(summary.get("pdb_text", ""))
+    if het_smiles and not substrate_hint:
+        substrate_hint = het_smiles[0]  # Use largest co-crystallized ligand
+        if verbose:
+            print(f"  Extracted substrate from PDB HETATM: {substrate_hint}")
 
-    # Use decompose_and_generate for full pipeline including SMILES
-    gen_result = lfas.decompose_and_generate(
-        site_type=ligand_tuple,
-        substrate_hint=substrate_hint)
+    # Try improved engine first, fall back to standard
+    improved = None
+    try:
+        improved = lfas._get_improved()
+    except Exception:
+        pass
+    
+    if improved is not None:
+        try:
+            if verbose:
+                print(f"  Using improved fragment-based engine...")
+            candidates = improved.generate_from_enzyme_type(
+                site_type=site_tuple,
+                substrate_hint=substrate_hint,
+                max_candidates=max_candidates,
+            )
+            gen_result = {
+                "ligand_type": ligand_tuple,
+                "ligand_type_fmt": lfas.fmt_tuple(ligand_tuple),
+                "closest_bond": improved._estimate_bond_from_site_type(site_tuple),
+                "closest_fgs": improved._estimate_fgs_from_site_type(site_tuple, ""),
+                "ligand_candidates": candidates,
+            }
+        except Exception as e:
+            if verbose:
+                print(f"  Improved engine failed ({e}), falling back to standard")
+            improved = None
+    
+    if improved is None:
+        # Use decompose_and_generate for full pipeline including SMILES
+        gen_result = lfas.decompose_and_generate(
+            site_type=ligand_tuple,
+            substrate_hint=substrate_hint)
     candidates = gen_result.get("ligand_candidates", [])
     # Update bond/fg from decompose result if ours were None
     if not bond_name:
