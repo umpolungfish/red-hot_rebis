@@ -50,6 +50,7 @@ setup(
             "rebis=rebis.cli:main",
             "rebis.materials=rebis.materials:main",
             "rebis.ch3mpiler=rebis.ch3mpiler:main",
+            "rebis.sidechain=rebis.sidechain:main",
             "rebis.clink=rebis.clink:main",
             "rebis.p4ra=rebis.p4ra:main",
             "rebis.biology=rebis.biology:main",

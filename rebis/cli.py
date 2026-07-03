@@ -2,7 +2,7 @@
 rebis.cli — Red-Hot Rebis Command-Line Interface
 ═════════════════════════════════════════════════
 Running `rebis` with no arguments shows this comprehensive menu.
-All 11 subsystems accessible as standalone commands: rebis.<domain> <action>
+All 12 subsystems accessible as standalone commands: rebis.<domain> <action>
 
 Usage:
   rebis                      — Show this comprehensive menu
@@ -57,7 +57,7 @@ def cmd_menu(args=None):
 
     header = (
         "RED-HOT REBIS v3.0 — REBIS.<x> INTEGRATED TOOLCHAIN\n"
-        "11 standalone entry points, callable from ANY directory\n"
+        "12 standalone entry points, callable from ANY directory\n"
         "Structural type: ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩  —  O_∞ tier, ⊙ criticality"
     )
 
@@ -79,13 +79,17 @@ def cmd_menu(args=None):
          "Molecular compiler & retrosynthesis — forward/reverse synthesis, FG detection",
          ["forward <SMILES>", "retrosynth <SMILES>", "fg <SMILES>", "cdxml <SMILES>", "info"]),
 
+        ("sidechain",    "rebis.sidechain",
+         "Sidechain × environment algebra — 80 AA×env pairs, PDB integration, bottlenecks, tiers",
+         ["<aa> <env>", "--batch", "--list", "--pdb <ID>", "--json", "--verbose", "info"]),
+
         ("clink",        "rebis.clink",
          "CLINK chain & organism pipeline — 8 layers, bridges, consciousness scores",
          ["layers", "bridge <a> <b>", "chain [tuple]", "cscore [tuple]", "info"]),
 
         ("p4ra",         "rebis.p4ra",
-         "Paraconsistent kernel — Belnap logic, genetic code, hadrons, ligands",
-         ["belnap", "genetics", "verify", "hadrons", "ligands [enzyme]", "info"]),
+         "Paraconsistent kernel — Belnap logic, genetics, ligands, sidechain, SIC-POVM",
+         ["belnap", "genetics", "verify", "hadrons", "ligands", "sidechain", "gene-pipeline", "serpent", "sicpovm", "combinatorial", "heterocycles", "info"]),
 
         ("biology",      "rebis.biology",
          "Biological simulations & telomere design — cell sims, epigenetic states",
@@ -119,7 +123,7 @@ def cmd_menu(args=None):
     if RICH:
         t = Table(box=box.ROUNDED, border_style="bright_red",
                   header_style="bold yellow",
-                  title="📦 REBIS.<x> DOMAINS — 11 COMMANDS")
+                  title="📦 REBIS.<x> DOMAINS — 12 COMMANDS")
         t.add_column("#", style="dim", width=3)
         t.add_column("Domain", style="bright_cyan", width=14)
         t.add_column("Command", style="bold green", width=20)
@@ -129,7 +133,7 @@ def cmd_menu(args=None):
             t.add_row(str(i), name, cmd, desc, "  ".join(actions))
         console.print(t)
     else:
-        section_header("📦 REBIS.<x> DOMAINS — 11 commands")
+        section_header("📦 REBIS.<x> DOMAINS — 12 commands")
         info_line(f"{'#':3s} {'Domain':14s} {'Command':20s}  {'Description'}")
         info_line("─" * 80)
         for i, (name, cmd, desc, actions) in enumerate(domains, 1):
@@ -167,6 +171,7 @@ def cmd_menu(args=None):
             ("rebis",               "rebis.cli:main"),
             ("rebis.materials",     "rebis.materials:main"),
             ("rebis.ch3mpiler",     "rebis.ch3mpiler:main"),
+            ("rebis.sidechain",     "rebis.sidechain:main"),
             ("rebis.clink",         "rebis.clink:main"),
             ("rebis.p4ra",          "rebis.p4ra:main"),
             ("rebis.biology",       "rebis.biology:main"),
@@ -185,7 +190,8 @@ def cmd_menu(args=None):
             "rebis.ch3mpiler.forward('CC(=O)O')  # Molecular compiler\n"
             "rebis.materials.MaterialForge()     # Materials design\n"
             "rebis.clink.compute_c_score_from_tuple(...)  # Consciousness scoring\n"
-            "rebis.p4ra.GeneticBelnapCodon('UUU')  # Genetic code",
+            "rebis.p4ra.GeneticBelnapCodon('UUU')  # Genetic code\n"
+            "rebis.sidechain.analyze_composition('arginine', 'charged_interface')  # Sidechain algebra",
             border_style="green", title="🐍 Python API Examples"
         ))
     else:
@@ -210,6 +216,7 @@ def cmd_menu(args=None):
             ("rebis",               "rebis.cli:main"),
             ("rebis.materials",     "rebis.materials:main"),
             ("rebis.ch3mpiler",     "rebis.ch3mpiler:main"),
+            ("rebis.sidechain",     "rebis.sidechain:main"),
             ("rebis.clink",         "rebis.clink:main"),
             ("rebis.p4ra",          "rebis.p4ra:main"),
             ("rebis.biology",       "rebis.biology:main"),
@@ -301,7 +308,7 @@ def cmd_verify(args):
                      (len(WEIGHTS), len(ORDINALS)))
         separator()
         success_line("rebis package: ALL domains import successfully")
-        for domain_name in ['p4ra', 'ch3mpiler', 'clink', 'materials',
+        for domain_name in ['p4ra', 'ch3mpiler', 'sidechain', 'clink', 'materials',
                             'therapeutics', 'biology', 'serpentrod',
                             'imas', 'pipeline', 'cdxml', 'gene',
                             'alchemy', 'shared', 'imasm']:
