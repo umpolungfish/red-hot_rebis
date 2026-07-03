@@ -775,10 +775,17 @@ def auto_detect_active_site(
     clusters.sort(key=cluster_score, reverse=True)
     best = clusters[0]
 
+    # Cap cluster size: if cluster is too large, rank by frustration and keep top N
+    MAX_CLUSTER_SIZE = 25
+    if len(best) > MAX_CLUSTER_SIZE:
+        # Sort by frustration (descending) — frustrated residues are the pressure points
+        best.sort(key=lambda c: c["frustration"], reverse=True)
+        best = best[:MAX_CLUSTER_SIZE]
+
     if verbose:
         print(f"  Best cluster: {len(best)} residues, "
               f"avg frust={sum(c['frustration'] for c in best)/len(best):.3f}")
-        for c in best:
+        for c in best[:30]:
             print(f"    {c['label']:8s} env={c['environment']:20s} frust={c['frustration']:.2f}")
 
     return [c["label"] for c in best]

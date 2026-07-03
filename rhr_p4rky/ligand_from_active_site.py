@@ -974,9 +974,27 @@ def generate_ligand_smiles(bond_name: str, fg_names: list,
             scaffold = connector.join(fg_smiles_list)
             candidates.append((scaffold, "fg_scaffold"))
             
-            # Try with methyl substitution
-            methyl_variant = scaffold.replace("C(", "C(C)(")
-            candidates.append((methyl_variant, "methylated"))
+            # Try with methyl substitution (use RDKit to add methyl safely)
+            try:
+                mol_scaffold = Chem.MolFromSmiles(scaffold)
+                if mol_scaffold is not None:
+                    # Use explicit methyl attachment instead of string replace
+                    from rdkit.Chem import RWMol
+                    rw = RWMol(mol_scaffold)
+                    # Add a methyl carbon to any available attachment point
+                    for atom in mol_scaffold.GetAtoms():
+                        if atom.GetAtomicNum() == 6 and atom.GetTotalNumHs() > 0:
+                            idx = rw.AddAtom(Chem.Atom(6))
+                            rw.AddBond(atom.GetIdx(), idx, Chem.BondType.SINGLE)
+                            try:
+                                Chem.SanitizeMol(rw)
+                                methyl_smi = Chem.MolToSmiles(rw)
+                                candidates.append((methyl_smi, "methylated"))
+                            except:
+                                pass
+                            break
+            except Exception:
+                pass
     
     # Strategy 2: Use the substrate hint if available
     if substrate_hint:
@@ -1048,13 +1066,28 @@ def generate_ligand_smiles(bond_name: str, fg_names: list,
             logp = Descriptors.MolLogP(mol)
             mw = Descriptors.MolWt(mol)
             heavy = mol.GetNumHeavyAtoms()
+            hbd = Descriptors.NumHDonors(mol)
+            hba = Descriptors.NumHAcceptors(mol)
+            tpsa = Descriptors.TPSA(mol)
+            rot_bonds = Descriptors.NumRotatableBonds(mol)
+            rings = rdMolDescriptors.CalcNumRings(mol)
+            # Composite score: favor drug-like properties
+            # Weight: logP (close to 2-3), MW (<500), Lipinski compliance
+            lipinski_pass = int(mw <= 500) + int(-2 <= logp <= 5) + int(hbd <= 5) + int(hba <= 10)
+            composite = lipinski_pass / 4.0  # 0-1 scale based on Lipinski compliance
             
             validated.append({
                 "smiles": canon,
                 "method": method,
                 "logP": round(logp, 2),
                 "MW": round(mw, 1),
+                "HBD": hbd,
+                "HBA": hba,
+                "TPSA": round(tpsa, 1),
+                "rotatable_bonds": rot_bonds,
+                "rings": rings,
                 "heavy_atoms": heavy,
+                "composite_score": round(composite, 3),
                 "valid": True
             })
         except Exception as e:
