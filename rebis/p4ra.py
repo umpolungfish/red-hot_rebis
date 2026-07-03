@@ -116,6 +116,29 @@ with redirect_stdout(_quiet), redirect_stderr(_quiet):
                                         print_all_series, compare_series,
                                         tuple_distance as dc_tuple_distance)
 
+
+    from rhr_p4rky.sidechain_algebra import (SIDECHAINS, ENVIRONMENTS,
+                                              analyze_composition, batch_analyze,
+                                              print_analysis, print_frustration_matrix,
+                                              print_dominance_matrix, print_tier_matrix,
+                                              tuple_str as sc_tuple_str)
+    from rhr_p4rky.ligand_imasm import (encode_site_imasm,
+                                         fingerprint_to_ig_biochemical)
+    from rhr_p4rky.ligand_imasm_v2 import (fingerprint_to_ig_biochemical
+                                           as fingerprint_to_ig_biochemical_v2)
+    from rhr_p4rky.ligand_sicpovm import (generate_ligands_sicpovm,
+                                           encode_site_with_context,
+                                           batch_generate_all)
+    from rhr_p4rky.ligand_heterocycles import (generate_hybrid_ligands,
+                                                generate_heterocycle_ligands,
+                                                match_scaffolds_to_site)
+    from rhr_p4rky.ligand_combinatorial import (generate_combinatorial,
+                                                 batch_combinatorial_all)
+    from rhr_p4rky.gene_to_protein_pipeline import (GeneToProteinPipeline,
+                                                     AASite, CodonSite)
+    from rhr_p4rky.serpent_rod import (SerpentRod, FoldedProtein)
+    from rhr_p4rky.ch3mpiler_serpentrod_pipeline import (CatalyticSiteDesign,
+                                                           ReactionSignature)
 __all__ = sorted([k for k in dir() if not k.startswith('_')
                    and k not in ('_sys', '_io', '_Path', '_REBIS_ROOT', '_quiet',
                                  'redirect_stdout', 'redirect_stderr')])
@@ -512,6 +535,119 @@ def _cmd_list(args):
     return 0
 
 
+
+def _cmd_sidechain(args):
+    """Analyze sidechain × environment composition."""
+    sc = args.sidechain_name
+    env = args.environment
+    try:
+        analysis = analyze_composition(sc, env)
+        print_analysis(analysis)
+        return 0
+    except KeyError as e:
+        print(f'Unknown sidechain or environment: {e}')
+        print(f'Sidechains: {sorted(SIDECHAINS.keys())}')
+        print(f'Environments: {sorted(ENVIRONMENTS.keys())}')
+        return 1
+
+def _cmd_gene_pipeline(args):
+    """Run gene-to-protein translation pipeline."""
+    try:
+        demo_gene_to_protein()
+    except Exception as e:
+        try:
+            result = run_pipeline(args.sequence if hasattr(args, 'sequence') and args.sequence else 'ATGGCC')
+            print(result)
+        except Exception as e2:
+            print(f'Gene pipeline error: {e2}')
+            return 1
+    return 0
+
+def _cmd_serpent(args):
+    """Run SerpentRod protein design pipeline."""
+    if hasattr(args, 'sequence') and args.sequence:
+        seq = args.sequence
+    else:
+        seq = 'MKFLILFNILV'
+    try:
+        sr = SerpentRod(seq)
+        profile = sr.compute_profile()
+        print(f'SerpentRod profile for {seq}:')
+        for k, v in profile.items():
+            print(f'  {k}: {v}')
+    except Exception as e:
+        print(f'SerpentRod error: {e}')
+        return 1
+    return 0
+
+def _cmd_sicpovm(args):
+    """Run SIC-POVM probe on active site / structural type."""
+    if hasattr(args, 'enzyme') and args.enzyme:
+        enzyme = args.enzyme
+        # Try to encode site first
+        try:
+            from rhr_p4rky.ligand_sicpovm import sic_povm_probe_ligand
+            result = sic_povm_probe_ligand(enzyme)
+            print(json.dumps(result, indent=2) if isinstance(result, dict) else result)
+        except Exception as e:
+            print(f'SIC-POVM probe error: {e}')
+            return 1
+    else:
+        print('Usage: rebis.p4ra sicpovm <enzyme>')
+        print('Example: rebis.p4ra sicpovm lysozyme')
+    return 0
+
+def _cmd_combinatorial(args):
+    """Generate combinatorial ligand library."""
+    enzyme = args.enzyme if hasattr(args, 'enzyme') and args.enzyme else 'ADH'
+    protein = PROTEIN_LOOKUP.get(enzyme.lower(), None)
+    if protein is None:
+        for name, entry in PROTEIN_LOOKUP.items():
+            if enzyme.lower() in name.lower():
+                protein = entry
+                break
+    if protein is None:
+        print(f'Enzyme not found: {enzyme}')
+        return 1
+    try:
+        candidates = generate_combinatorial(
+            protein_context=protein, n_scaffolds=40,
+            fragments_per_position=5, max_products=100, verbose=True)
+        print(f'Generated {len(candidates)} candidates')
+        for i, c in enumerate(candidates[:20], 1):
+            print(f'  {i}. {c["smiles"]}  score={c.get("score",0):.3f}')
+    except Exception as e:
+        print(f'Combinatorial error: {e}')
+        return 1
+    return 0
+
+def _cmd_heterocycles(args):
+    """Generate heterocycle-focused ligand library."""
+    from rhr_p4rky.ligand_from_active_site import encode_site_from_residues
+    enzyme = args.enzyme if hasattr(args, 'enzyme') and args.enzyme else 'ADH'
+    protein = PROTEIN_LOOKUP.get(enzyme.lower(), None)
+    if protein is None:
+        for name, entry in PROTEIN_LOOKUP.items():
+            if enzyme.lower() in name.lower():
+                protein = entry
+                break
+    if protein is None:
+        print(f'Enzyme not found: {enzyme}')
+        return 1
+    residues = protein.get('active_site_residues', [])
+    site_type = encode_site_from_residues(residues)
+    print(f'Site type: {fmt_tuple(site_type)}')
+    try:
+        candidates = generate_hybrid_ligands(site_type=site_type, max_candidates=50)
+        print(f'Generated {len(candidates)} heterocycle candidates')
+        for i, c in enumerate(candidates[:20], 1):
+            print(f'  {i}. {c.get("smiles","?")}  {c.get("method","?")}')
+    except Exception as e:
+        print(f'Heterocycle error: {e}')
+        return 1
+    return 0
+
+
 def main():
     """CLI: rebis.p4ra <command> [args]"""
     parser = argparse.ArgumentParser(
@@ -577,6 +713,79 @@ def main():
     p_lig.add_argument("enzyme", nargs="?", default="ADH",
                        help="Enzyme name/code (default: ADH)")
     p_lig.set_defaults(func=_cmd_ligands)
+
+    # ── sidechain ──
+    p_sc = sub.add_parser("sidechain",
+        help="Analyze sidechain × environment composition",
+        description="Analyze amino acid sidechain in protein environment.\n"
+                    "20 sidechains × 4 environments = 80 pairs.\n"
+                    "Reports tensor/meet/join, bottlenecks, frustration, tier.",
+        epilog="Examples:  rebis.p4ra sidechain arginine charged_interface\n"
+               "           rebis.p4ra sidechain alanine polar_surface",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_sc.add_argument("sidechain_name", help="Sidechain (e.g. arginine, alanine)")
+    p_sc.add_argument("environment", help="Environment (e.g. charged_interface, polar_surface)")
+    p_sc.set_defaults(func=_cmd_sidechain)
+
+    # ── gene-pipeline ──
+    p_gp = sub.add_parser("gene-pipeline",
+        help="Run gene-to-protein translation pipeline",
+        description="Full gene-to-protein translation with Frobenius verification. "
+                    "Includes B4 lattice encoding, transcription, translation, folding.",
+        epilog="Examples:  rebis.p4ra gene-pipeline\n"
+               "           rebis.p4ra gene-pipeline --sequence ATGGCC",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_gp.add_argument("--sequence", "-s", default=None,
+                       help="DNA sequence (default: ATGGCC)")
+    p_gp.set_defaults(func=_cmd_gene_pipeline)
+
+    # ── serpent ──
+    p_srp = sub.add_parser("serpent",
+        help="Run SerpentRod protein design",
+        description="SerpentRod protein design pipeline — compute structural "
+                    "profiles, predict contacts, Frobenius verification.",
+        epilog="Examples:  rebis.p4ra serpent\n"
+               "           rebis.p4ra serpent --sequence MKFLILFNILV",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_srp.add_argument("--sequence", "-s", default=None,
+                        help="Protein sequence (default: MKFLILFNILV)")
+    p_srp.set_defaults(func=_cmd_serpent)
+
+    # ── sicpovm ──
+    p_sp = sub.add_parser("sicpovm",
+        help="Run SIC-POVM probe on active site",
+        description="SIC-POVM structural probe — evaluate an enzyme's active site "
+                    "against the informationally complete measurement basis.",
+        epilog="Examples:  rebis.p4ra sicpovm ADH\n"
+               "           rebis.p4ra sicpovm lysozyme",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_sp.add_argument("enzyme", nargs="?", default=None,
+                       help="Enzyme name (default: show usage)")
+    p_sp.set_defaults(func=_cmd_sicpovm)
+
+    # ── combinatorial ──
+    p_cb = sub.add_parser("combinatorial",
+        help="Generate combinatorial ligand library",
+        description="Combinatorial ligand generation — scaffold + fragment "
+                    "enumeration guided by structural type.",
+        epilog="Examples:  rebis.p4ra combinatorial ADH\n"
+               "           rebis.p4ra combinatorial CYP2D6",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_cb.add_argument("enzyme", nargs="?", default="ADH",
+                       help="Enzyme name (default: ADH)")
+    p_cb.set_defaults(func=_cmd_combinatorial)
+
+    # ── heterocycles ──
+    p_hc = sub.add_parser("heterocycles",
+        help="Generate heterocycle-focused ligand library",
+        description="Heterocycle-focused ligand generation — scaffolds from "
+                    "HETEROCYCLE_CATALOG matched to site structural type.",
+        epilog="Examples:  rebis.p4ra heterocycles ADH\n"
+               "           rebis.p4ra heterocycles CYP2D6",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    p_hc.add_argument("enzyme", nargs="?", default="ADH",
+                       help="Enzyme name (default: ADH)")
+    p_hc.set_defaults(func=_cmd_heterocycles)
 
     # ── list ──
     p_list = sub.add_parser("list",

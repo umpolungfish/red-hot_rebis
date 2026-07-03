@@ -8,6 +8,7 @@ Access any tool as:  rebis.<domain>.<function>(...)
 Domains:
   rebis.p4ra        — p4ra paraconsistent kernel (belnap, genetics, machine, filtration)
   rebis.ch3mpiler   — Molecular compiler & retrosynthesis
+  rebis.sidechain   — Sidechain × environment compositional algebra
   rebis.clink       — CLINK chain organism pipeline
   rebis.materials   — Materials science & metamaterial design
   rebis.therapeutics — Therapeutic design pipeline
@@ -38,7 +39,7 @@ __author__ = "Lando⊗⊙perator"
 
 # Lazy submodule loading — import on first attribute access only
 _SUBMODULES = {
-    "p4ra", "ch3mpiler", "clink", "materials", "therapeutics",
+    "p4ra", "ch3mpiler", "sidechain", "clink", "materials", "therapeutics",
     "biology", "serpentrod", "imas", "pipeline", "cdxml",
     "gene", "alchemy", "shared", "demo", "scripts", "imasm", "cli",
 }
