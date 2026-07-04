@@ -1424,8 +1424,8 @@ def main():
             for l in r["ligand_candidates"]:
                 score_str = f" comp={l['composite_score']:.3f}" if 'composite_score' in l else ""
                 extra = f" HBD={l.get('HBD','?')} HBA={l.get('HBA','?')} rings={l.get('rings','?')}" if 'composite_score' in l else ""
-                info_line(f"    [{l['method']:20s}] {l['smiles']:40s}  "
-                         f"logP={l['logP']:6.2f}  MW={l['MW']:7.1f}{score_str}")
+                metrics = f"logP={l['logP']:6.2f}  MW={l['MW']:7.1f}{score_str}"
+                info_line(f"    [{l['method']:20s}] {l['smiles']:<80s} {metrics:>48s}")
         else:
             warning_line("  No de-novo ligand candidates generated")
         print()

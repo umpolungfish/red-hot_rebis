@@ -564,6 +564,22 @@ def _try_add_candidate(
         canon = Chem.MolToSmiles(mol)
         if canon in seen:
             return
+        
+        # Reject molecules with reactive/toxic substructures
+        _reactive_smarts = [
+            '[O]-[O]',      # peroxide
+            '[O]-[F]',      # hypofluorite  
+            '[O]-[Cl]',     # hypochlorite
+            '[O]-[Br]',     # hypobromite
+            '[N]=[N]=[N]',  # azide
+            '[N+]#[C-]',    # isocyanide
+            '[S]-[S]',      # disulfide without context
+        ]
+        for pat_smarts in _reactive_smarts:
+            pat = Chem.MolFromSmarts(pat_smarts)
+            if pat is not None and mol.HasSubstructMatch(pat):
+                return
+        
         seen.add(canon)
     except:
         return
@@ -811,9 +827,8 @@ def test_bevy(protein_list: List[Dict]) -> dict:
         print(f"  Target ligand type present")
         print(f"  Generated {len(candidates)} validated candidates")
         for c in candidates[:5]:
-            print(f"    [{c['method']:20s}] {c['smiles']:35s} "
-                  f"comp={c['composite_score']:.3f} "
-                  f"logP={c['logP']:5.2f} MW={c['MW']:6.1f}")
+            metrics = f"comp={c['composite_score']:.3f}  logP={c['logP']:5.2f}  MW={c['MW']:6.1f}"
+            print(f"    [{c['method']:20s}] {c['smiles']:<80s} {metrics:>50s}")
     
     return results
 
@@ -1381,25 +1396,44 @@ def generate_substrate_analogs(
     except Exception:
         pass
     
-    # Strategy C: Bioisostere replacements
-    bioisosteres = {
-        "C(=O)O": ["C(=O)N", "C(=O)NS(=O)(=O)C", "c1[nH]nnn1", "S(=O)(=O)O", "P(=O)(O)O", "C(=O)NC#N"],
-        "C(=O)N": ["C(=O)O", "S(=O)(=O)N", "C(=S)N", "c1noc([H])n1"],
-        "c1ccccc1": ["c1ccncc1", "c1cnccn1", "c1cscn1", "c1ccoc1", "C1CCCCC1"],
-        "O": ["S", "NH", "CF2", "C(=O)", "S(=O)"],
-        "OH": ["F", "Cl", "NH2", "SH", "CF3", "CN"],
-        "S": ["O", "NH", "CH2", "S(=O)", "S(=O)2"],
-    }
-    
-    base = Chem.MolToSmiles(mol)
-    for pattern, replacements in bioisosteres.items():
-        if pattern in base:
-            for repl in replacements[:4]:
+    # Strategy C: Murcko scaffold + simple decorations
+    # For large substrates, generate the Murcko scaffold (ring systems + linkers)
+    # and decorate it with common substituents
+    try:
+        from rdkit.Chem.Scaffolds import MurckoScaffold
+        murcko = MurckoScaffold.GetScaffoldForMol(mol)
+        if murcko and murcko.GetNumHeavyAtoms() >= 6:
+            murcko_smi = Chem.MolToSmiles(murcko)
+            _add(murcko_smi, "murcko_scaffold", mol)
+            
+            # Decorate scaffold with common substituents
+            for sub in ['C', 'O', 'N', 'F', 'Cl', 'C(=O)O', 'C(=O)N']:
                 try:
-                    new_smi = base.replace(pattern, repl)
-                    _add(new_smi, f"bioisostere", mol)
+                    rw = Chem.RWMol(murcko)
+                    sub_idx = rw.AddAtom(Chem.Atom(6 if sub in ('C',) else (
+                        8 if sub == 'O' else 7 if sub == 'N' else
+                        9 if sub == 'F' else 17 if sub == 'Cl' else 6)))
+                    # Attach to first atom if possible
+                    if murcko.GetNumAtoms() > 0:
+                        rw.AddBond(0, sub_idx, Chem.BondType.SINGLE)
+                        Chem.SanitizeMol(rw)
+                        _add(Chem.MolToSmiles(rw), "murcko_decorated", mol)
                 except:
                     pass
+    except Exception:
+        pass
+    
+    # Check for key functional groups and log them
+    fg_found = []
+    for smarts, name in [('C(=O)[OH]', 'COOH'), ('C(=O)N', 'amide'), 
+                          ('[OH]', 'OH'), ('[NH2]', 'NH2'),
+                          ('c1ccccc1', 'phenyl')]:
+        try:
+            pat = Chem.MolFromSmarts(smarts)
+            if pat and mol.HasSubstructMatch(pat):
+                fg_found.append(name)
+        except:
+            pass
     
     # Strategy D: Chain length variation for linear substrates
     # Identify terminal methyl/ethyl groups and vary chain length
