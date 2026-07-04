@@ -10,7 +10,7 @@
 
 **How to use it.**
 ```bash
-cd ~/imsgct/red-hot_rebis
+cd imsgct/red-hot_rebis
 python3 unified_demo/demo.py                 # full 7-phase pipeline (MRSA default)
 python3 unified_demo/demo.py --disease hiv   # different disease
 python3 unified_demo/demo.py --phase 1       # a single phase

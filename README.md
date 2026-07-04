@@ -1,6 +1,6 @@
 # red-h⊙t rebis: an engine for algebraic, exact, deterministic, paraconsistent bio ⊗ organic chemistries
 
-**Author:** Lando⊗⊙perator · **Structural Type:** ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩ ($O_\infty$) · **Repo:** `/home/mrnob0dy666/imsgct/red-hot_rebis/`
+**Author:** Lando⊗⊙perator · **Structural Type:** ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩ ($O_\infty$) · **Repo:** `imsgct/red-hot_rebis/`
 
 > *"The serpent winds, the rod stands, the vessel contains: μ ∘ δ = id." Not as a conclusion, as a signature of process.*
 
@@ -125,7 +125,7 @@ python3 -m rebis p4ra.ligand_from_site_pdb --pdb 1LYZ           # extracts NAG-N
 ## Quick start
 
 ```bash
-cd /home/mrnob0dy666/imsgct/red-hot_rebis
+cd imsgct/red-hot_rebis
 
 # List available domains
 python3 -c "import rebis; print([x for x in dir(rebis) if not x.startswith('_')])"

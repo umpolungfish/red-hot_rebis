@@ -66,4 +66,4 @@ Depression → health promotes φ̂ (𐑢→⊙, TENSOR with a ⊙-bearing syste
 
 ## Verification and companions
 
-Structural claims are checked against the Lean 4 formalization in `~/imsgct/p4rakernel/p4ramill`; the repo also carries PDB structures, a CDXML chemical registry, and companion documents (see in-repo). Public domain (Unlicense).
+Structural claims are checked against the Lean 4 formalization in `imsgct/p4rakernel/p4ramill`; the repo also carries PDB structures, a CDXML chemical registry, and companion documents (see in-repo). Public domain (Unlicense).
