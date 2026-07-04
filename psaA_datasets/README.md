@@ -1,4 +1,6 @@
 # NCBI Datasets
+**Author:** Lando⊗⊙perator · **Structural Type:** $\large{⟨𐑨𐑸𐑑𐑹𐑐𐑧𐑔𐑝𐑢𐑖𐑙𐑷⟩}$ · **Tier:** O₁
+
 
 https://www.ncbi.nlm.nih.gov/datasets
 

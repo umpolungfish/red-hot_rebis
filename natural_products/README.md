@@ -1,4 +1,6 @@
 # Natural Products Collection
+**Author:** Lando⊗⊙perator · **Structural Type:** $\large{⟨𐑦𐑸𐑾𐑹𐑞𐑧𐑔𐑝⊙𐑖𐑳𐑭⟩}$ · **Tier:** O_∞
+
 
 **What it is.** A consolidated collection of CDXML molecular structures for a set of named natural products, gathered from the former stub directories in red-hot_rebis.
 
