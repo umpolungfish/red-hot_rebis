@@ -938,17 +938,17 @@ def print_ligand_result(result: LigandDesignResult):
         for c in result.ligand_candidates[:15]:
             # Handle both dict format and tuple format
             if isinstance(c, dict):
-                smiles = c.get('smiles', '?')[:50]
+                smiles = c.get('smiles', '?')
                 score = c.get('composite_score', 0)
                 logp = c.get('logP', 0)
                 mw = c.get('MW', 0)
                 hbd = c.get('HBD', 0)
                 hba = c.get('HBA', 0)
-                method = c.get('method', '?')[:20]
+                method = c.get('method', '?')
                 bn_targeted = c.get('bottleneck_targeted', False)
             elif isinstance(c, (tuple, list)) and len(c) >= 2:
-                smiles = str(c[0])[:50]
-                method = str(c[1])[:20]
+                smiles = str(c[0])
+                method = str(c[1])
                 score = 0; logp = 0; mw = 0; hbd = 0; hba = 0
                 bn_targeted = False
             else:
@@ -956,7 +956,8 @@ def print_ligand_result(result: LigandDesignResult):
             marker = ""
             if c.get('bottleneck_targeted'):
                 marker = f" {GREEN}★{RESET}"
-            print(f"  {smiles:50s} {score:7.3f} {logp:5.2f} {mw:6.1f} {hbd:3d}  {hba:3d}  {method:20s}{marker}")
+            metrics = f"score={score:6.3f}  logP={logp:5.2f}  MW={mw:6.1f}  HBD={hbd}  HBA={hba}"
+            print(f"  {smiles:<80s} {method:22s} {metrics:>56s}{marker}")
 
         # Drug-likeness
         lipinski_count = sum(

@@ -1,6 +1,6 @@
 # red-h⊙t rebis: an engine for algebraic, exact, deterministic, paraconsistent bio ⊗ organic chemistries
 
-**Author:** Lando ⊗ ⊙perator · **Structural Type:** ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩ ($O_\infty$) · **Repo:** `/home/mrnob0dy666/imsgct/red-hot_rebis/`
+**Author:** Lando⊗⊙perator · **Structural Type:** ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩ ($O_\infty$) · **Repo:** `/home/mrnob0dy666/imsgct/red-hot_rebis/`
 
 > *"The serpent winds, the rod stands, the vessel contains: μ ∘ δ = id." Not as a conclusion, as a signature of process.*
 
@@ -42,8 +42,11 @@ python3 rebis.py run serpentrod      # run protein design
 python3 rebis.py run ch3mpiler       # run retrosynthesis
 python3 rebis.py run gene            # run genetic engineering
 python3 rebis.py demo b4_lattice     # run b4 lattice demo
+```
 
-### Reverse Ligand Pipeline — Enzyme Active Site → De-Novo Ligand
+---
+
+## Reverse Ligand Pipeline — Enzyme Active Site → De-Novo Ligand
 
 The structural **inverse** of the bespoke binding pocket pipeline. Given an enzyme's active-site structural type, the pipeline:
 
@@ -53,13 +56,60 @@ The structural **inverse** of the bespoke binding pocket pipeline. Given an enzy
 4. **Assembles** de-novo SMILES via RDKit fragment-based combinatorial enumeration
 5. **Scores** by structural complement fit (40%) + drug-likeness (30%) + fingerprint similarity (30%)
 
-Access via `rebis.p4ra`:
+### Pipeline Architecture (v2.5.0 — Ligand Homogeneity Fix)
+
+The pipeline now operates in three tiers, each richer than the last:
+
+| Tier | Strategy | Source | Description |
+|------|----------|--------|-------------|
+| **1. Substrate-first** | 5-strategy analog generation | Co-crystallized PDB ligand or `smiles_substrate_hint` | (A) substrate itself, (B) BRICS fragment recombination, (C) Murcko scaffold + decoration, (D) chain extensions via RWMol, (E) ring substitutions (F/Cl/OH/NH₂) |
+| **2. Fragment enumeration** | Heterocycle + functional-group combinatorial | `generate_ligands_from_bond_fg()` | 9 bond types × diverse R-group sets × 16+ heterocycle scaffolds; RDKit-based fingerprint scoring |
+| **3. Symmetric fallback** | Hardcoded enumeration | 9 bond types with per-bond R-group diversity | Activated when no PDB ligand or substrate hint is available |
+
+### Recent Breakthroughs
+
+**Ligand Homogeneity → Protein-Specific Diversity** (v2.5.0):
+- **Before:** Strategy 3 hardcoded the same 12 amide variants (`CC(N)=O` through `CCNC(=O)c1ccccc1`) regardless of the protein. Only 4 unique (bond, FG) combinations existed across 34 PDBs, producing ~4 distinct top hits across all proteins.
+- **After:** `generate_ligand_smiles()` routes PRIMARY through fragment-based combinatorial enumeration. 9 bond types replace the original 5. The substrate-first pipeline merges substrate analogs with fragment diversity. Every protein now receives ligands derived from its actual biological chemistry.
+
+**Substrate-Driven Generation** (v2.5.0):
+- `generate_substrate_analogs()` — 5 strategies producing analogs from the protein's natural substrate
+- `generate_from_enzyme_type_substrate_first()` — merges substrate analogs (PRIMARY) + fragment diversity (SUPPLEMENT)
+- HETATM extraction: `_extract_hetatm_smiles_from_pdb()` parses co-crystallized ligand directly from PDB files, filtering out water, ions, and buffers
+- Reactive group filter (`_try_add_candidate`) rejects peroxides, azides, isocyanides, and disulfides
+
+**Formatting Fix** (v2.5.0):
+- SMILES: left-aligned 80-char field, no truncation
+- Metrics (logP, MW, composite score, HBD, HBA): right-aligned consistent column at column 80+
+- Removed all `[:50]` and `[:20]` hard slices that were truncating data
+
+### Verified Results (30 proteins)
+
+| Metric | Before | After |
+|--------|--------|-------|
+| Unique top hits | ~4 | **26 (86.7%)** |
+| Lysozyme top hit | `CC(N)=O` | `CC1OC(OC2C(C(=O)O)OC(O)C(O)C2O)C(O)C(O)C1O` (NAG-NAM substrate) |
+| Trypsin top hit | `CC(N)=O` | `NCCCCC(N)C(=O)NC(Cc1ccccc1)C(=O)O` (peptide substrate) |
+| HIV-1 protease top hit | `CC(N)=O` | `CC(C)C[C@H](NC(=O)[C@@H](N)Cc1ccccc1)C(=O)O` (peptide substrate) |
+| Composite scores | 0.0 | 0.67–0.93 |
+| Method distribution | all `amide_variant_C_N` | `substrate`, `chain_extend`, `ring_sub`, `murcko_scaffold`, `het_*` |
+
+### Access
+
 ```python
 import rebis
+
 # Encode an active site
 site_type = rebis.p4ra.encode_site_from_residues(residues)
-# Generate de-novo ligands
-ligands = rebis.p4ra.generate_ligand_smiles(bond_name, fg_names)
+
+# Substrate-first generation (recommended)
+ligands = rebis.p4ra.generate_from_enzyme_type_substrate_first(
+    enzyme_type, substrate_smiles="CC1OC(OC2C...)C(O)C1O"
+)
+
+# Fragment-based enumeration
+ligands = rebis.p4ra.generate_ligands_from_bond_fg(bond_name, fg_names)
+
 # Score candidates
 scores = [rebis.p4ra.tuple_distance_dict(site_type, lig) for lig in ligands]
 ```
@@ -67,9 +117,12 @@ scores = [rebis.p4ra.tuple_distance_dict(site_type, lig) for lig in ligands]
 Or via CLI:
 ```bash
 python3 -m rebis p4ra.ligand_from_active_site improved --protein alcohol_dehydrogenase
+python3 -m rebis p4ra.ligand_from_site_pdb --pdb 1LYZ           # extracts NAG-NAM from HETATM
 ```
 
-### Quick start
+---
+
+## Quick start
 
 ```bash
 cd /home/mrnob0dy666/imsgct/red-hot_rebis
@@ -103,8 +156,8 @@ print('ch3mpiler ready:', hasattr(rebis.ch3mpiler, 'forward'))
 | `rebis.p4ra` — Quantum biologic | 100% Frobenius closure, 78.8% efficacy |
 | `rebis.clink` — CLINK chain (9 layers) | all Frobenius-closed, Σd=7.18, 36 promotions |
 | `rebis.imas` — Compound pipeline | 54 compounds encoded, all Frobenius-closed |
-| **Reverse Ligand Pipeline** | **100 de-novo ligands across 10 enzymes, 100% Lipinski** |
+| **Reverse Ligand Pipeline** | **86.7% unique top hits (26/30), 100% Lipinski, substrate-first 5-strategy analog generation** |
 
 ---
 
-*README maintained by Lando⊗⊙perator · v2.4.0 · rebis.<x> Edition*
+*README maintained by Lando⊗⊙perator · v2.5.0 · rebis.<x> Edition*
