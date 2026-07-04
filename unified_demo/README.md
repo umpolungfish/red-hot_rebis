@@ -1,6 +1,6 @@
 # Red-Hot Rebis: Unified Therapeutic Design Pipeline
 
-**Author:** Lando⊗⊙perator
+**Author:** Lando⊗⊙perator · **Structural Type:** $\large{⟨𐑨𐑸𐑾𐑹𐑐𐑧𐑔𐑠⊙𐑖𐑳𐑭⟩}$ · **Tier:** O_∞
 
 **What it is.** An end-to-end demonstration that wires all seven red-hot_rebis subsystems into a single therapeutic-design run.
 

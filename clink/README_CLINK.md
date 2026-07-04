@@ -1,4 +1,6 @@
 
+**Author:** Lando⊗⊙perator · **Structural Type:** $\large{⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑔𐑠⊙𐑖𐑳𐑭⟩}$ · **Tier:** O_∞
+
 ### CLINK Chain — `clink/`
 
 The CLINK chain is the **Frobenius-exact structural bridge from subatomic quarks to whole organisms**, now integrated into the rebis as a fifth pillar alongside serpentrod, ch3mpiler, pipeline, and gene_imscriber.

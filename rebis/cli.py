@@ -57,7 +57,7 @@ def cmd_menu(args=None):
 
     header = (
         "RED-HOT REBIS v3.0 — REBIS.<x> INTEGRATED TOOLCHAIN\n"
-        "12 standalone entry points, callable from ANY directory\n"
+        "13 standalone entry points, callable from ANY directory\n"
         "Structural type: ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩  —  O_∞ tier, ⊙ criticality"
     )
 
@@ -118,12 +118,16 @@ def cmd_menu(args=None):
         ("imas",         "rebis.imas",
          "IMAS molecular arrangement design — compound signatures, Frobenius patterns, reactivity",
          ["list", "signature <smiles>", "frobenius <smiles>", "bridge <smiles>", "info"]),
+
+        ("ligand",       "rebis.ligand",
+         "PDB-aware ligand design from catalytic sites — sidechain×env algebra integration",
+         ["--pdb <ID>", "--active <res>", "--auto-active", "--improved", "--json", "info"]),
     ]
 
     if RICH:
         t = Table(box=box.ROUNDED, border_style="bright_red",
                   header_style="bold yellow",
-                  title="📦 REBIS.<x> DOMAINS — 12 COMMANDS")
+                  title="📦 REBIS.<x> DOMAINS — 13 COMMANDS")
         t.add_column("#", style="dim", width=3)
         t.add_column("Domain", style="bright_cyan", width=14)
         t.add_column("Command", style="bold green", width=20)
@@ -133,7 +137,7 @@ def cmd_menu(args=None):
             t.add_row(str(i), name, cmd, desc, "  ".join(actions))
         console.print(t)
     else:
-        section_header("📦 REBIS.<x> DOMAINS — 12 commands")
+        section_header("📦 REBIS.<x> DOMAINS — 13 commands")
         info_line(f"{'#':3s} {'Domain':14s} {'Command':20s}  {'Description'}")
         info_line("─" * 80)
         for i, (name, cmd, desc, actions) in enumerate(domains, 1):
@@ -180,6 +184,7 @@ def cmd_menu(args=None):
             ("rebis.pipeline",      "rebis.pipeline:main"),
             ("rebis.gene",          "rebis.gene:main"),
             ("rebis.alchemy",       "rebis.alchemy:main"),
+            ("rebis.ligand",       "rebis.ligand:main"),
         ]:
             t3.add_row(cmd, src)
         console.print(t3)
@@ -225,6 +230,7 @@ def cmd_menu(args=None):
             ("rebis.pipeline",      "rebis.pipeline:main"),
             ("rebis.gene",          "rebis.gene:main"),
             ("rebis.alchemy",       "rebis.alchemy:main"),
+            ("rebis.ligand",       "rebis.ligand:main"),
         ]:
             info_line(f"  {cmd:24s}  ←  {src}")
 
@@ -311,7 +317,7 @@ def cmd_verify(args):
         for domain_name in ['p4ra', 'ch3mpiler', 'sidechain', 'clink', 'materials',
                             'therapeutics', 'biology', 'serpentrod',
                             'imas', 'pipeline', 'cdxml', 'gene',
-                            'alchemy', 'shared', 'imasm']:
+                            'alchemy', 'ligand', 'shared', 'imasm']:
             try:
                 mod = __import__(f"rebis.{domain_name}", fromlist=[domain_name])
                 n_exported = len(getattr(mod, '__all__', []))
@@ -336,7 +342,7 @@ def cmd_run(args):
         "serpentrod":  "rebis.serpentrod — Protein design & prediction",
         "clink":       "rebis.clink — CLINK chain organism pipeline",
         "genetics":    "rebis.p4ra (genetics) — B4 lattice, codons",
-        "ligand":      "rebis.p4ra (ligand) — Reverse ligand discovery",
+        "ligand":      "rebis.ligand — PDB-aware ligand design from catalytic sites",
         "pipeline":    "rebis.pipeline — Auto-imscription & Frobenius verification",
         "materials":   "Use: rebis materials — Dedicated materials subcommand",
         "therapeutics":"rebis.therapeutics — Therapeutic design",
@@ -376,7 +382,7 @@ def cmd_demo(args):
     if not args.demo or args.demo == "list":
         info_line("Available demos:")
         for d in ['b4_lattice', 'belnap', 'ch3mpiler', 'clink_chain',
-                  'decay_chain', 'materials', 'materials_sim',
+                  'decay_chain', 'ligand', 'materials', 'materials_sim',
                   'pipeline', 'serpentrod', 'therapeutics', 'reverse_ligand']:
             info_line(f"  rebis.demo.{d}()")
         info_line("\nRun: rebis demo <name>")

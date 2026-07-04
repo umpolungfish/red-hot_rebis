@@ -19,6 +19,7 @@ Domains:
   rebis.cdxml       — CDXML generation & target decomposition
   rebis.gene        — Gene imscriber & genetic engineering
   rebis.alchemy     — Alchemical treatise bridge & operations
+  rebis.ligand      — PDB-aware ligand design from catalytic sites
   rebis.shared      — Shared primitives, weights, IG catalog
   rebis.demo        — Demonstration scripts
   rebis.scripts     — Utility scripts
@@ -41,7 +42,7 @@ __author__ = "Lando⊗⊙perator"
 _SUBMODULES = {
     "p4ra", "ch3mpiler", "sidechain", "clink", "materials", "therapeutics",
     "biology", "serpentrod", "imas", "pipeline", "cdxml",
-    "gene", "alchemy", "shared", "demo", "scripts", "imasm", "cli",
+    "gene", "alchemy", "ligand", "shared", "demo", "scripts", "imasm", "cli",
 }
 
 _module_cache = {}
