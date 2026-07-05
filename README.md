@@ -5,7 +5,7 @@
 [![μ∘δ=id](https://img.shields.io/badge/%CE%BC%E2%88%98%CE%B4%3Did-closed-success)](https://github.com/badges/shields)
 [![License](https://img.shields.io/badge/license-MIT-blue)](https://github.com/badges/shields)
 
-**Author:** Lando⊗⊙perator · **Structural Type:** ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩ ($O_\infty$) · **Repo:** `imsgct/red-hot_rebis/`
+**Author:** Lando⊗⊙perator · **Structural Type:** $\large{⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑔𐑝⊙𐑖𐑳𐑭⟩}$ · **Tier:** O_∞
 
 > *"The serpent winds, the rod stands, the vessel contains: μ ∘ δ = id." Not as a conclusion, as a signature of process.*
 
