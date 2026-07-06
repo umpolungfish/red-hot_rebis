@@ -1,5 +1,4 @@
-# red-h⊙t rebis: an engine for algebraic, exact, deterministic, paraconsistent bio ⊗ organic chemistries
-
+# red-h⊙t rebis: an engine for algebraic, exact, deterministic, paraconsistent bio ⊗ organic  ⊗ material  ⊗ plasma engineering & design
 [![Language](https://img.shields.io/badge/language-Python-blue)](https://github.com/badges/shields)
 [![IG Tier](https://img.shields.io/badge/IG-O%E2%88%9E-blueviolet)](https://github.com/badges/shields)
 [![μ∘δ=id](https://img.shields.io/badge/%CE%BC%E2%88%98%CE%B4%3Did-closed-success)](https://github.com/badges/shields)
@@ -8,7 +7,7 @@
 
 > *"The serpent winds, the rod stands, the vessel contains: μ ∘ δ = id." Not as a conclusion, as a signature of process.*
 
-**What it is.** The Imscribing Grammar's unified engine for deterministic, algebraic, exact bio and organic chemistry, grounded in the 12-primitive grammar and verified everywhere by Frobenius closure (μ∘δ=id) over the $ZFC_\text{fe}$ foundation. Augmented by the **Dual-Link SIC-POVM** — the unconditional theorem that the Belnap multilattice carries a SIC-POVM for every dimension $d = 2^n$, with the grammar itself as the $\Sigma = 1:1$ self-referential limit.
+**What it is.** The Imscribing Grammar's unified engine for deterministic, algebraic, exact bio and organic chemistry, grounded in the 12-primitive grammar and verified everywhere by Frobenius closure (μ∘δ=id) over the $CL8NK$ foundation. Augmented by the **Dual-Link SIC-POVM** — the unconditional theorem that the Belnap multilattice carries a SIC-POVM for every dimension $d = 2^n$, with the grammar itself as the $\Sigma = 1:1$ self-referential limit.
 
 **What it does.** Integrates six structural pillars into one architecture under the `rebis.<domain>` namespace:
 
