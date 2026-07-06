@@ -98,7 +98,12 @@ def _cmd_fg(args):
         print("Example:  rebis.ch3mpiler fg CC(=O)O")
         return 1
     try:
-        fgs = detect_functional_groups(args.smiles)
+        import importlib, pathlib
+        _fg_path = pathlib.Path(__file__).parent.parent / 'ch3mpiler' / 'fg_exhaustive.py'
+        _spec = importlib.util.spec_from_file_location('fg_exhaustive', str(_fg_path))
+        _fg_mod = importlib.util.module_from_spec(_spec)
+        _spec.loader.exec_module(_fg_mod)
+        fgs = _fg_mod.detect_functional_groups(args.smiles)
         for fg in fgs:
             print(f"  {fg}")
     except Exception as e:
@@ -113,7 +118,19 @@ def _cmd_cdxml(args):
         print("Example:  rebis.ch3mpiler cdxml CC(=O)O")
         return 1
     try:
-        cdx = smiles_to_cdxml(args.smiles)
+        import importlib, pathlib
+        _cdx_path = pathlib.Path(__file__).parent.parent / 'ch3mpiler' / 'smiles_to_cdxml.py'
+        _cdx_spec = importlib.util.spec_from_file_location('smiles_to_cdxml', str(_cdx_path))
+        _cdx_mod = importlib.util.module_from_spec(_cdx_spec)
+        _cdx_spec.loader.exec_module(_cdx_mod)
+        from rdkit import Chem
+        mol = Chem.MolFromSmiles(args.smiles)
+        if mol is None:
+            print(f'Invalid SMILES: {args.smiles}')
+            return 1
+        cdx = _cdx_mod.mol_to_cdxml(mol)
+        if args.smiles:
+            cdx = cdx.replace('<s name="molecule"', f'<s name="{args.smiles}"')
         print(cdx)
     except Exception as e:
         print(f"CDXML conversion failed: {e}")

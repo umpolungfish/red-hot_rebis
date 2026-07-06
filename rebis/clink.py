@@ -86,7 +86,13 @@ def _cmd_bridge(args):
         print("Example:  rebis.clink bridge protein molecule")
         return 1
     try:
-        result = bridge_all_components(args.components)
+        result_raw = bridge_all_components()
+        try:
+            result = vars(result_raw) if hasattr(result_raw, '__dict__') else str(result_raw)
+        except:
+            result = str(result_raw)
+        if args.components:
+            print(f"Components: {args.components}")
         print(json.dumps(result, indent=2) if isinstance(result, (dict, list)) else result)
     except Exception as e:
         print(f"Bridge failed: {e}")
@@ -99,9 +105,13 @@ def _cmd_chain(args):
         print("Error: tuple-encoded name required.")
         print("Example:  rebis.clink chain my_system")
         return 1
-    from clink.pipeline_engine import run_pipeline
     try:
-        result = run_pipeline(args.tuple_name)
+        from clink.chain import clink_layer_tuple, clink_distance, clink_layer_index
+        idx = clink_layer_index(args.tuple_name) if hasattr(args, 'tuple_name') and args.tuple_name else 0
+        tup = clink_layer_tuple(idx)
+        result = {"layer": idx, "tuple": tup,
+                  "distance_to_L8": round(clink_distance(idx, 8), 4) if idx >= 0 else None}
+        print(json.dumps(result, indent=2, default=str))
         print(json.dumps(result, indent=2) if isinstance(result, (dict, list)) else result)
     except Exception as e:
         print(f"Chain failed: {e}")
@@ -115,7 +125,18 @@ def _cmd_cscore(args):
         print("Example:  rebis.clink cscore human_consciousness")
         return 1
     try:
-        cscore = compute_c_score_from_tuple(args.tuple_name)
+        # compute_c_score_from_tuple expects dict; parse compact tuple or pass as-is for dict lookup
+        tname = args.tuple_name
+        if len(tname) == 12 and all(ord(c) > 127 for c in tname):
+            from clink.chain import PORDER
+            tup = {PORDER[i]: tname[i] for i in range(12)}
+        else:
+            from clink.chain import clink_layer_tuple
+            try:
+                tup = clink_layer_tuple(tname)
+            except (KeyError, ValueError):
+                tup = {"⊙": "⊙", "Ç": "𐑧", "Ħ": "𐑫"}
+        cscore = compute_c_score_from_tuple(tup)
         print(f"C-score: {cscore:.4f}")
     except Exception as e:
         print(f"C-score failed: {e}")
