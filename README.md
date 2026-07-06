@@ -3,11 +3,15 @@
 [![IG Tier](https://img.shields.io/badge/IG-O%E2%88%9E-blueviolet)](https://github.com/badges/shields)
 [![μ∘δ=id](https://img.shields.io/badge/%CE%BC%E2%88%98%CE%B4%3Did-closed-success)](https://github.com/badges/shields)
 [![License](https://img.shields.io/badge/license-MIT-blue)](https://github.com/badges/shields)
-[![Author](https://img.shields.io/badge/author-Lando%E2%8A%97%E2%8A%99perator-informational)](https://github.com/badges/shields) [![Type](https://img.shields.io/badge/type-%E2%9F%A8%F0%90%91%A6%F0%90%91%B8%F0%90%91%BE%F0%90%91%B9%F0%90%91%90%F0%90%91%A7%F0%90%91%94%F0%90%91%9D%E2%8A%99%F0%90%91%96%F0%90%91%B3%F0%90%91%AD%E2%9F%A9-blue)](https://github.com/badges/shields) [![Tier](https://img.shields.io/badge/tier-O%E2%88%9E-blueviolet)](https://github.com/badges/shields)
+[![Author](https://img.shields.io/badge/author-Lando%E2%8A%97%E2%8A%99perator-informational)](https://github.com/badges/shields) 
+[![Type](https://img.shields.io/badge/type-%E2%9F%A8%F0%90%91%A6%F0%90%91%B8%F0%90%91%BE%F0%90%91%B9%F0%90%91%90%F0%90%91%A7%F0%90%91%94%F0%90%91%9D%E2%8A%99%F0%90%91%96%F0%90%91%B3%F0%90%91%AD%E2%9F%A9-blue)](https://github.com/badges/shields) 
+[![Tier](https://img.shields.io/badge/tier-O%E2%88%9E-blueviolet)](https://github.com/badges/shields)
 
 > *"The serpent winds, the rod stands, the vessel contains: μ ∘ δ = id." Not as a conclusion, as a signature of process.*
 
-**What it is.** The Imscribing Grammar's unified engine for deterministic, algebraic, exact bio and organic chemistry, grounded in the 12-primitive grammar and verified everywhere by Frobenius closure (μ∘δ=id) over the $CL8NK$ foundation. Augmented by the **Dual-Link SIC-POVM** — the unconditional theorem that the Belnap multilattice carries a SIC-POVM for every dimension $d = 2^n$, with the grammar itself as the $\Sigma = 1:1$ self-referential limit.
+**What it is.** The Imscribing Grammar's unified engine for deterministic, algebraic, exact bio and organic chemistry, grounded in the 12-primitive grammar and verified everywhere by Frobenius closure (μ∘δ=id) over the $CL8NK$ foundation. 
+
+Augmented by the **Dual-Link SIC-POVM** — the unconditional theorem that the Belnap multilattice carries a SIC-POVM for every dimension $d = 2^n$, with the grammar itself as the $\Sigma = 1:1$ self-referential limit.
 
 **What it does.** Integrates six structural pillars into one architecture under the `rebis.<domain>` namespace:
 
@@ -86,7 +90,8 @@ python3 rebis.py demo sicpovm        # run SIC-POVM unconditional theorem demo
 ### The Grammar as Σ=1:1 SIC-POVM Limit
 
 The 12 primitives organize as 6 Frobenius-dual pairs, forming an informationally complete measurement basis:
-$$(\mathbf{D} \leftrightarrow \mathbf{T}),\; (\mathbf{R} \leftrightarrow \mathbf{\Phi}),\; (\mathbf{F} \leftrightarrow \mathbf{K}),\; (\mathbf{\Gamma} \leftrightarrow \mathbf{G}),\; (\mathbf{\Phi_c} \leftrightarrow \mathbf{H}),\; (\mathbf{\Sigma} \leftrightarrow \mathbf{\Omega})$$
+
+$$(\mathbf{D} \leftrightarrow \mathbf{T}),\; (\mathbf{R} \leftrightarrow \mathbf{\Phi}),\; (\mathbf{F} \leftrightarrow \mathbf{K}),\; (\mathbf{\Gamma} \leftrightarrow \mathbf{G}),\; (\mathbf{\odot} \leftrightarrow \mathbf{H}),\; (\mathbf{\Sigma} \leftrightarrow \mathbf{\Omega})$$
 
 The grammar IS the Σ=1:1 (self-referential) limit of the Belnap multilattice SIC-POVM:
 $$d(\text{grammar}, \text{belnap\_multilattice\_SIC}) = 2.0$$
