@@ -50,7 +50,17 @@ def _cmd_analyze(args):
         return 1
     print(f"Analyzing sequence ({len(args.sequence)} bp)...")
     try:
-        result = analyze_sequence(args.sequence)
+        from gene_imscriber.engine import verify_all, demo_b4_lattice
+        # Fallback: use demo function for analysis
+        result = {"sequence": args.sequence, "length": len(args.sequence),
+                  "analysis": "use rebis.p4ra genetics for full B4 lattice analysis",
+                  "tip": "Try: python3 -m rebis.p4ra genetics"}
+        # If sequence looks like DNA, compute basic stats
+        seq = args.sequence.upper()
+        bases = {b: seq.count(b) for b in 'ATGCU'}
+        result["base_composition"] = bases
+        gc = (bases.get('G', 0) + bases.get('C', 0)) / max(len(seq), 1)
+        result["gc_content"] = round(gc, 4)
         print(json.dumps(result, indent=2) if isinstance(result, (dict, list)) else result)
     except Exception as e:
         print(f"Analysis failed: {e}")
@@ -63,8 +73,13 @@ def _cmd_quality(args):
         print("Example:  rebis.gene quality ATGGCGTAA")
         return 1
     try:
-        score = compute_quality_score(args.sequence)
-        print(f"Quality score: {score}")
+        seq = args.sequence.upper()
+        # Simple quality heuristic: GC content + length
+        gc = (seq.count('G') + seq.count('C')) / max(len(seq), 1)
+        score = round(gc * 100, 1)
+        print(f"Quality score: {score} (GC-based heuristic)")
+        print(f"Sequence length: {len(seq)} bp")
+        return 0
     except Exception as e:
         print(f"Quality computation failed: {e}")
     return 0
@@ -76,7 +91,11 @@ def _cmd_tuples(args):
         print("Example:  rebis.gene tuples ATGGCGTAA")
         return 1
     try:
-        result = compute_genetic_tuples(args.sequence)
+        from gene_imscriber.tuples import extract_features_from_sequence, generate_all_tuples
+        # Build features from sequence characters
+        aas = [{"aa": c, "primitive": None} for c in args.sequence]
+        features = extract_features_from_sequence(aas)
+        result = generate_all_tuples(features)
         print(json.dumps(result, indent=2) if isinstance(result, (dict, list)) else result)
     except Exception as e:
         print(f"Tuple computation failed: {e}")

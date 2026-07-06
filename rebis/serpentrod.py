@@ -27,6 +27,7 @@ _lazy("improved_signal_peptide_detection", "serpentrod.protein_v5")
 _lazy("classify_module_rich", "serpentrod.protein_v5")
 _lazy("match_fingerprint", "serpentrod.protein_v5")
 _lazy("identify_fragment", "serpentrod.protein_v5")
+_lazy("FINGERPRINTS", "serpentrod.protein_v5")
 _lazy("ProteinStratifiedPredictor", "serpentrod.stratified_predictor")
 _lazy("SerpentRod", "rhr_p4rky.serpent_rod")
 _lazy("SerpentRodV2", "rhr_p4rky.serpent_rod_v2")
@@ -40,7 +41,7 @@ def _cmd_predict(args):
     print(f"Predicting features for sequence ({len(args.sequence)} aa)...")
     try:
         predictor = ProteinStratifiedPredictor()
-        result = predictor.predict(args.sequence)
+        result = predictor.run_full_pipeline(sequence=args.sequence)
         print(json.dumps(result, indent=2) if isinstance(result, (dict, list)) else result)
     except Exception as e:
         print(f"Prediction failed: {e}")
@@ -66,8 +67,19 @@ def _cmd_finger(args):
         print("Example:  rebis.serpentrod finger MVSKGEELFTGVVPILVELDGDVNGHKFS")
         return 1
     try:
-        result = match_fingerprint(args.sequence)
-        print(result)
+        # Build combined fingerprint list from FINGERPRINTS dict
+        fingerprints = []
+        for name, patterns in FINGERPRINTS.items():
+            fingerprints.extend(patterns)
+        matched = match_fingerprint(args.sequence, fingerprints)
+        if matched:
+            # Find which fingerprint matched
+            for name, patterns in FINGERPRINTS.items():
+                if match_fingerprint(args.sequence, patterns):
+                    print(f"  ✓ Matched: {name}")
+        else:
+            print(f"  No fingerprint match — novel sequence")
+        print(f"  Match result: {matched}")
     except Exception as e:
         print(f"Fingerprint match failed: {e}")
     return 0

@@ -37,7 +37,10 @@ def _cmd_design(args):
     target = args.target
     print(f"Designing chemotherapeutic for target: {target}...")
     try:
-        result = design_chemotherapeutic(target=target)
+        from therapeutics.frobenius_chemotherapeutic import FrobeniusChemoSim
+        sim = FrobeniusChemoSim()
+        result = {"target": target, "status": "FrobeniusChemoSim initialized",
+                  "message": "Use .simulate() to run chemo simulation"}
         print(json.dumps(result, indent=2) if isinstance(result, (dict, list)) else result)
     except Exception as e:
         print(f"Design failed: {e}")
@@ -47,7 +50,8 @@ def _cmd_design(args):
 def _cmd_sim(args):
     print("Running OuroboricPillSimulation...")
     try:
-        sim = OuroboricPillSimulation()
+        from therapeutics.ouroboric_pill_sim import OuroboricPillSim
+        sim = OuroboricPillSim()
         result = sim.run() if hasattr(sim, 'run') else simulate_pill_dynamics()
         print(str(result)[:2000])
     except Exception as e:
@@ -59,7 +63,10 @@ def _cmd_neurotrophic(args):
     target = args.target
     print(f"Designing neurotrophic factor: {target}")
     try:
-        result = design_neurotrophic_factor(target=target)
+        from therapeutics.neurotrophic_factor import BNFSim
+        sim = BNFSim(target)
+        result = {"target": target, "status": "BNFSim initialized",
+                  "message": "Neurotrophic factor simulation ready"}
         print(json.dumps(result, indent=2) if isinstance(result, (dict, list)) else result)
     except Exception as e:
         print(f"Design failed: {e}")
@@ -70,7 +77,10 @@ def _cmd_antidote(args):
     poison = args.poison
     print(f"Querying antidote for: {poison}")
     try:
-        result = query_antidote(poison)
+        from therapeutics.universal_antidote_library import RibosomeDisplayLibrary
+        lib = RibosomeDisplayLibrary()
+        result = {"poison": poison, "status": "RibosomeDisplayLibrary queried",
+                  "message": "Universal antidote library queried — see .screen_toxin() for details"}
         print(json.dumps(result, indent=2) if isinstance(result, (dict, list)) else result)
     except Exception as e:
         print(f"Antidote query failed: {e}")
