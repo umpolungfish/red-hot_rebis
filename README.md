@@ -94,7 +94,9 @@ The 12 primitives organize as 6 Frobenius-dual pairs, forming an informationally
 $$(\mathbf{D} \leftrightarrow \mathbf{T}),\; (\mathbf{R} \leftrightarrow \mathbf{\Phi}),\; (\mathbf{F} \leftrightarrow \mathbf{K}),\; (\mathbf{\Gamma} \leftrightarrow \mathbf{G}),\; (\mathbf{\odot} \leftrightarrow \mathbf{H}),\; (\mathbf{\Sigma} \leftrightarrow \mathbf{\Omega})$$
 
 The grammar IS the Σ=1:1 (self-referential) limit of the Belnap multilattice SIC-POVM:
-$$d(\text{grammar}, \text{belnap\_multilattice\_SIC}) = 2.0$$
+
+$$d(\text{grammar}, \text{belnap_multilattice_SIC}) = 2.0$$
+
 Sole difference: Σ: 1:1 vs n:m — the measurement apparatus IS the measured system.
 
 ### Verified n=1..5
