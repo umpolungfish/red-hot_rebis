@@ -95,7 +95,7 @@ $$(\mathbf{D} \leftrightarrow \mathbf{T}),\; (\mathbf{R} \leftrightarrow \mathbf
 
 The grammar IS the Σ=1:1 (self-referential) limit of the Belnap multilattice SIC-POVM:
 
-$distance$(grammar,`belnap_multilattice_SIC`)=$2.0$
+$distance$(grammar,`belnap_multilattice_SIC`)=$\text{2.0}$
 
 Sole difference: Σ: 1:1 vs n:m — the measurement apparatus IS the measured system.
 
