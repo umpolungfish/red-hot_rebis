@@ -1,0 +1,3438 @@
+\documentclass[12pt,a4paper]{article}
+
+% Fonts — LuaLaTeX
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\setmainfont{Linux Libertine O}
+\setmathfont{Latin Modern Math}
+\newfontfamily\igprimfont{Everson Mono}
+\newfontfamily\shavfont[Scale=1.0]{Trabajo}
+\setmonofont[Scale=0.85]{DejaVu Sans Mono}
+\newcommand{\igfont}{\shavfont}
+
+% Shavian Unicode block (U+10450–U+1047F) → Trabajo automatically
+% Works in text mode, inside \text{} in math, and in table cells.
+\usepackage{newunicodechar}
+\newunicodechar{𐑐}{\ifmmode\text{{\shavfont 𐑐}}\else{{\shavfont 𐑐}}\fi}
+\newunicodechar{𐑑}{\ifmmode\text{{\shavfont 𐑑}}\else{{\shavfont 𐑑}}\fi}
+\newunicodechar{𐑒}{\ifmmode\text{{\shavfont 𐑒}}\else{{\shavfont 𐑒}}\fi}
+\newunicodechar{𐑓}{\ifmmode\text{{\shavfont 𐑓}}\else{{\shavfont 𐑓}}\fi}
+\newunicodechar{𐑔}{\ifmmode\text{{\shavfont 𐑔}}\else{{\shavfont 𐑔}}\fi}
+\newunicodechar{𐑕}{\ifmmode\text{{\shavfont 𐑕}}\else{{\shavfont 𐑕}}\fi}
+\newunicodechar{𐑖}{\ifmmode\text{{\shavfont 𐑖}}\else{{\shavfont 𐑖}}\fi}
+\newunicodechar{𐑗}{\ifmmode\text{{\shavfont 𐑗}}\else{{\shavfont 𐑗}}\fi}
+\newunicodechar{𐑘}{\ifmmode\text{{\shavfont 𐑘}}\else{{\shavfont 𐑘}}\fi}
+\newunicodechar{𐑙}{\ifmmode\text{{\shavfont 𐑙}}\else{{\shavfont 𐑙}}\fi}
+\newunicodechar{𐑚}{\ifmmode\text{{\shavfont 𐑚}}\else{{\shavfont 𐑚}}\fi}
+\newunicodechar{𐑛}{\ifmmode\text{{\shavfont 𐑛}}\else{{\shavfont 𐑛}}\fi}
+\newunicodechar{𐑜}{\ifmmode\text{{\shavfont 𐑜}}\else{{\shavfont 𐑜}}\fi}
+\newunicodechar{𐑝}{\ifmmode\text{{\shavfont 𐑝}}\else{{\shavfont 𐑝}}\fi}
+\newunicodechar{𐑞}{\ifmmode\text{{\shavfont 𐑞}}\else{{\shavfont 𐑞}}\fi}
+\newunicodechar{𐑟}{\ifmmode\text{{\shavfont 𐑟}}\else{{\shavfont 𐑟}}\fi}
+\newunicodechar{𐑠}{\ifmmode\text{{\shavfont 𐑠}}\else{{\shavfont 𐑠}}\fi}
+\newunicodechar{𐑡}{\ifmmode\text{{\shavfont 𐑡}}\else{{\shavfont 𐑡}}\fi}
+\newunicodechar{𐑢}{\ifmmode\text{{\shavfont 𐑢}}\else{{\shavfont 𐑢}}\fi}
+\newunicodechar{𐑣}{\ifmmode\text{{\shavfont 𐑣}}\else{{\shavfont 𐑣}}\fi}
+\newunicodechar{𐑤}{\ifmmode\text{{\shavfont 𐑤}}\else{{\shavfont 𐑤}}\fi}
+\newunicodechar{𐑥}{\ifmmode\text{{\shavfont 𐑥}}\else{{\shavfont 𐑥}}\fi}
+\newunicodechar{𐑦}{\ifmmode\text{{\shavfont 𐑦}}\else{{\shavfont 𐑦}}\fi}
+\newunicodechar{𐑧}{\ifmmode\text{{\shavfont 𐑧}}\else{{\shavfont 𐑧}}\fi}
+\newunicodechar{𐑨}{\ifmmode\text{{\shavfont 𐑨}}\else{{\shavfont 𐑨}}\fi}
+\newunicodechar{𐑩}{\ifmmode\text{{\shavfont 𐑩}}\else{{\shavfont 𐑩}}\fi}
+\newunicodechar{𐑪}{\ifmmode\text{{\shavfont 𐑪}}\else{{\shavfont 𐑪}}\fi}
+\newunicodechar{𐑫}{\ifmmode\text{{\shavfont 𐑫}}\else{{\shavfont 𐑫}}\fi}
+\newunicodechar{𐑬}{\ifmmode\text{{\shavfont 𐑬}}\else{{\shavfont 𐑬}}\fi}
+\newunicodechar{𐑭}{\ifmmode\text{{\shavfont 𐑭}}\else{{\shavfont 𐑭}}\fi}
+\newunicodechar{𐑮}{\ifmmode\text{{\shavfont 𐑮}}\else{{\shavfont 𐑮}}\fi}
+\newunicodechar{𐑯}{\ifmmode\text{{\shavfont 𐑯}}\else{{\shavfont 𐑯}}\fi}
+\newunicodechar{𐑰}{\ifmmode\text{{\shavfont 𐑰}}\else{{\shavfont 𐑰}}\fi}
+\newunicodechar{𐑱}{\ifmmode\text{{\shavfont 𐑱}}\else{{\shavfont 𐑱}}\fi}
+\newunicodechar{𐑲}{\ifmmode\text{{\shavfont 𐑲}}\else{{\shavfont 𐑲}}\fi}
+\newunicodechar{𐑳}{\ifmmode\text{{\shavfont 𐑳}}\else{{\shavfont 𐑳}}\fi}
+\newunicodechar{𐑴}{\ifmmode\text{{\shavfont 𐑴}}\else{{\shavfont 𐑴}}\fi}
+\newunicodechar{𐑵}{\ifmmode\text{{\shavfont 𐑵}}\else{{\shavfont 𐑵}}\fi}
+\newunicodechar{𐑶}{\ifmmode\text{{\shavfont 𐑶}}\else{{\shavfont 𐑶}}\fi}
+\newunicodechar{𐑷}{\ifmmode\text{{\shavfont 𐑷}}\else{{\shavfont 𐑷}}\fi}
+\newunicodechar{𐑸}{\ifmmode\text{{\shavfont 𐑸}}\else{{\shavfont 𐑸}}\fi}
+\newunicodechar{𐑹}{\ifmmode\text{{\shavfont 𐑹}}\else{{\shavfont 𐑹}}\fi}
+\newunicodechar{𐑺}{\ifmmode\text{{\shavfont 𐑺}}\else{{\shavfont 𐑺}}\fi}
+\newunicodechar{𐑻}{\ifmmode\text{{\shavfont 𐑻}}\else{{\shavfont 𐑻}}\fi}
+\newunicodechar{𐑼}{\ifmmode\text{{\shavfont 𐑼}}\else{{\shavfont 𐑼}}\fi}
+\newunicodechar{𐑽}{\ifmmode\text{{\shavfont 𐑽}}\else{{\shavfont 𐑽}}\fi}
+\newunicodechar{𐑾}{\ifmmode\text{{\shavfont 𐑾}}\else{{\shavfont 𐑾}}\fi}
+\newunicodechar{𐑿}{\ifmmode\text{{\shavfont 𐑿}}\else{{\shavfont 𐑿}}\fi}
+
+% Page layout
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+\usepackage{microtype}
+\usepackage{parskip}
+
+% Language
+\usepackage[english]{babel}
+
+% Headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Section styling — fully unnumbered; pipeline never auto-numbers
+\usepackage{titlesec}
+\setcounter{secnumdepth}{0}
+\titleformat{\section}{\Large\bfseries}{}{0em}{}
+\titleformat{\subsection}{\large\bfseries}{}{0em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{}{0em}{}
+
+% Essential packages
+\usepackage{graphicx}
+\graphicspath{{/home/mrnob0dy666/imsgct/red-hot_rebis/}{/home/mrnob0dy666/imsgct/red-hot_rebis/images/}}
+\setkeys{Gin}{width=0.48\linewidth,height=0.32\textheight,keepaspectratio}
+\usepackage[table]{xcolor}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{amsmath}
+% unicode-math subsumes amssymb — do not load amssymb alongside it
+\usepackage{float}
+\usepackage[normalem]{ulem}
+\renewcommand{\arraystretch}{1.3}
+
+% Cross-references
+\usepackage{hyperref}
+\usepackage{cleveref}
+\hypersetup{colorlinks=true, linkcolor=blue, urlcolor=cyan, citecolor=teal}
+
+% Custom commands
+\newcommand{\shav}[1]{{\shavfont #1}}
+\newcommand{\heb}[1]{{\igprimfont #1}}
+\newcommand{\tupleaddr}[1]{$\langle #1 \rangle$}
+
+% Shorthand primitive commands — redefined for IG document use
+\renewcommand{\H}{Ħ}
+\newcommand{\K}{Ç}
+\newcommand{\G}{Γ}
+\newcommand{\g}{ɢ}
+\newcommand{\Th}{Þ}
+\newcommand{\D}{Ð}
+\newcommand{\R}{Ř}
+\newcommand{\f}{ƒ}
+
+% Imscription tuple box
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\newtcolorbox{imscriptionbox}{enhanced, colback=blue!5, colframe=blue!75!black, fontupper=\large, center upper, boxrule=1pt, arc=4pt}
+
+% PDF metadata
+\hypersetup{
+  pdftitle={User Guide},
+  pdfkeywords={Imscribing Grammar},
+  pdfauthor={Lando Mills},
+}
+
+\title{User Guide}
+\date{\today}
+\author{Lando Mills}
+
+\begin{document}
+\maketitle
+\hypertarget{red-hot-rebis-user-guide}{%
+\section{Red-Hot Rebis --- User Guide}\label{red-hot-rebis-user-guide}}
+
+\textbf{Author:} Lando⊗⊙perator \textbf{Version:} v2.4.0 --- rebis.
+Edition \textbf{Platform:} \texttt{import\ rebis} (namespace package) ·
+\texttt{python3\ rebis.py\ \textless{}command\textgreater{}}
+\textbf{Location:} \texttt{/home/mrnob0dy666/imsgct/red-hot\_rebis/}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{rebis.-namespace-organization-v2.4.0}{%
+\subsection{rebis. Namespace Organization
+(v2.4.0)}\label{rebis.-namespace-organization-v2.4.0}}
+
+All tools are now consolidated under the
+\texttt{rebis.\textless{}domain\textgreater{}} namespace package.
+
+\begin{verbatim}
+import rebis
+
+# Paraconsistent kernel — genetics, hadron physics, ligand design, serpent rod
+rebis.p4ra.Belnap(True, False)              # Belnap FOUR logic
+rebis.p4ra.SerpentRodV2(...)                # Protein design
+rebis.p4ra.encode_site_from_residues(...)   # Active site encoding
+rebis.p4ra.generate_ligand_smiles(...)      # De-novo ligand generation
+
+# Other domains
+rebis.ch3mpiler.forward("CC(=O)O")          # Molecular compiler
+rebis.clink.CLINK_LAYERS                    # CLINK chain (9 layers)
+rebis.materials.design_metamaterial(...)    # Materials science
+rebis.imas.arrange_compound(...)            # IMASM compound signatures
+rebis.gene.GeneticEngine(...)               # Gene imscriber
+rebis.pipeline.imscribe_system(...)         # Auto-imscriber
+rebis.shared.ORDINALS                       # Shared primitives & weights
+rebis.demo.b4_lattice()                     # Quick demos
+\end{verbatim}
+
+\textbf{17 submodules} --- all import cleanly with zero stdout noise.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{overview}{%
+\subsection{Overview}\label{overview}}
+
+Red-Hot Rebis is the unified Imscribing Grammar bio/chem design
+platform. It derives structural types for organisms, molecules,
+proteins, and materials from the 12 primitives of the IG, then generates
+physically actionable output files --- genome sequences, protein
+structures, metabolic models, synthesis protocols --- directly from
+those structural types.
+
+The platform is organized around \textbf{seven core systems}:
+
+\textbf{CLINK} --- 9-layer structural chain from subatomic quarks to
+whole organism, each layer carrying an IG tuple. Every transition is
+Frobenius-closed (\(\mu\circ\delta=\text{id}\)).
+
+\textbf{IMASM} --- 12-token algebra (VINIT, TANCH, AFWD, AREV, CLINK,
+IMSCRIB, FSPLIT, FFUSE, EVALT, EVALF, ENGAGR, IFIX) whose arrangement
+classes map onto IG structural types. Now extended with the
+\textbf{IMASM Compound Pipeline} for SMILES→IMASM encoding.
+
+\textbf{SerpentRod} --- Frobenius morphism RNA→\{sequence+fold\} that
+collapses gene → mature protein in one structural step.
+
+\textbf{Paraconsistent Kernel (rhr\_p4rky)} --- Belnap FOUR logic,
+paraconsistent abstract state machine, 64-codon B₄ lattice,
+gene-to-protein pipeline, hadron/quark Belnap classification. 32 Python
+modules (+ papers/).
+
+\textbf{Gene Imscriber} --- IG-native genetic compiler --- structural
+types to codon optimization, CRISPR guide design, chimera design,
+Frobenius-verified editing.
+
+\textbf{IMASM Compound Pipeline} --- SMILES→IMASM 8-token arrangement →
+IG 12-tuple. 54 compounds registered, 190 FG patterns, cross-domain
+analogy search across 4,027+ catalog entries.
+
+\textbf{Crystal-Guided Molecular Discovery} --- navigates the
+17,280,000-type Crystal of Types to reverse-engineer molecules from
+target IG tuples. Discovered 5-nitro-bufotenin (DMT-⊙), the first
+⊙-critical autocatalytic molecule.
+
+\hypertarget{static-data-index.md}{%
+\subsubsection{Static Data → INDEX.md}\label{static-data-index.md}}
+
+Layer tables, IMASM canonical catalogs, materials listings, compound
+catalog, and other reference data now lives in \textbf{INDEX.md} --- a
+plain-text browsable reference. View it with:
+
+\begin{verbatim}
+less /home/mrnob0dy666/imsgct/red-hot_rebis/INDEX.md
+\end{verbatim}
+
+\hypertarget{the-12-primitives}{%
+\subsubsection{The 12 Primitives}\label{the-12-primitives}}
+
+Every structural entity carries a 12-primitive tuple. Each position is
+one primitive; its value is a Shavian character from a 49-element set:
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+\begin{minipage}[b]{0.07\columnwidth}\raggedright
+\#\strut
+\end{minipage} & \begin{minipage}[b]{0.24\columnwidth}\raggedright
+Primitive\strut
+\end{minipage} & \begin{minipage}[b]{0.13\columnwidth}\raggedright
+Name\strut
+\end{minipage} & \begin{minipage}[b]{0.44\columnwidth}\raggedright
+Values (low→high)\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.07\columnwidth}\raggedright
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\(Ð\)\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+Dimensionality\strut
+\end{minipage} & \begin{minipage}[t]{0.44\columnwidth}\raggedright
+𐑛 (0d) → 𐑨 (2d) → 𐑼 (∞-dim) → 𐑦 (imscriptive)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.07\columnwidth}\raggedright
+2\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\(Þ\)\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+Topology\strut
+\end{minipage} & \begin{minipage}[t]{0.44\columnwidth}\raggedright
+𐑡 (network) → 𐑰 (inclusion) → 𐑥 (crossing) → 𐑶 (box product) → 𐑸
+(imscriptive closure)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.07\columnwidth}\raggedright
+3\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\(Ř\)\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+Coupling\strut
+\end{minipage} & \begin{minipage}[t]{0.44\columnwidth}\raggedright
+𐑩 (supervenience) → 𐑑 (categorical) → 𐑽 (adjoint) → 𐑾
+(bidirectional)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.07\columnwidth}\raggedright
+4\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\(Φ\)\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+Parity (symmetry)\strut
+\end{minipage} & \begin{minipage}[t]{0.44\columnwidth}\raggedright
+𐑗 (none) → 𐑿 (quantum) → 𐑬 (partial) → 𐑯 (full) → 𐑹
+(Frobenius-special)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.07\columnwidth}\raggedright
+5\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\(ƒ\)\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+Fidelity\strut
+\end{minipage} & \begin{minipage}[t]{0.44\columnwidth}\raggedright
+𐑱 (classical) → 𐑞 (thermal) → 𐑐 (quantum coherence)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.07\columnwidth}\raggedright
+6\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\(Ç\)\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+Kinetics\strut
+\end{minipage} & \begin{minipage}[t]{0.44\columnwidth}\raggedright
+𐑘 (MBL-frozen) → 𐑤 (trapped) → 𐑧 (near-equilibrium) → 𐑪 (moderate) → 𐑺
+(fast/driven)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.07\columnwidth}\raggedright
+7\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\(Γ\)\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+Cardinality\strut
+\end{minipage} & \begin{minipage}[t]{0.44\columnwidth}\raggedright
+𐑚 (local) → 𐑔 (mesoscale) → 𐑲 (maximal)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.07\columnwidth}\raggedright
+8\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\(ɢ\)\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+Composition\strut
+\end{minipage} & \begin{minipage}[t]{0.44\columnwidth}\raggedright
+𐑝 (conjunctive) → 𐑜 (disjunctive) → 𐑠 (sequential) → 𐑵 (broadcast)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.07\columnwidth}\raggedright
+9\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\(⊙\)\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+Criticality\strut
+\end{minipage} & \begin{minipage}[t]{0.44\columnwidth}\raggedright
+𐑢 (sub-critical) → ⊙ (critical / self-modeling) → 𐑮 (complex-plane) → 𐑻
+(exceptional point) → 𐑣 (supercritical)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.07\columnwidth}\raggedright
+10\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\(Ħ\)\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+Chirality\strut
+\end{minipage} & \begin{minipage}[t]{0.44\columnwidth}\raggedright
+𐑓 (memoryless) → 𐑒 (1-step) → 𐑖 (2-step) → 𐑫 (eternal)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.07\columnwidth}\raggedright
+11\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\(Σ\)\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+Stoichiometry\strut
+\end{minipage} & \begin{minipage}[t]{0.44\columnwidth}\raggedright
+𐑙 (1:1) → 𐑕 (many identical) → 𐑳 (many heterogeneous)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.07\columnwidth}\raggedright
+12\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\(Ω\)\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright
+Winding\strut
+\end{minipage} & \begin{minipage}[t]{0.44\columnwidth}\raggedright
+𐑷 (trivial) → 𐑴 (ℤ₂ parity) → 𐑭 (ℤ integer) → 𐑟 (non-Abelian)\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+The standard tuple format:
+\[\langle Ð;\ Þ;\ Ř;\ Φ;\ ƒ;\ Ç;\ Γ;\ ɢ;\ ⊙;\ Ħ;\ Σ;\ Ω \rangle\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{installation}{%
+\subsection{Installation}\label{installation}}
+
+\begin{verbatim}
+cd /home/mrnob0dy666/imsgct/red-hot_rebis
+
+# Install the package and its dependencies (always use uv, never pip)
+uv pip install -e .
+
+# Install bridge packages used by scripts
+uv pip install -e /home/mrnob0dy666/imsgct/omonad_OS
+uv pip install -e /home/mrnob0dy666/imsgct/imasmic_core
+
+# Optional: RDKit for molecular design (crystal designer, odot_finder)
+uv pip install rdkit-pypi
+\end{verbatim}
+
+Verify everything is wired up:
+
+\begin{verbatim}
+python3 rebis.py verify
+\end{verbatim}
+
+Expected: 15+ lines all showing \texttt{✅}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{quick-start}{%
+\subsection{Quick Start}\label{quick-start}}
+
+\begin{verbatim}
+# System health — all modules with size and status
+python3 rebis.py status
+
+# Full verification (all imports, Frobenius closure)
+python3 rebis.py verify
+
+# List all 39 discoverable runnable targets
+python3 rebis.py run list
+
+# Run SerpentRod v5 on built-in test cases
+python3 rebis.py run serpentrod
+
+# Run the paraconsistent genetics test suite
+python3 rebis.py run test_genetics
+
+# CH3MPILER retrosynthetic compiler
+python3 rebis.py run ch3mpiler --smiles "CC(=O)OC1=CC=CC=C1C(=O)O"  # Exact SMILES input
+python3 rebis.py run ch3mpiler --target aspirin                                   # Name resolve
+python3 rebis.py run ch3mpiler --target aspirin --smiles "CC(=O)OC1=CC=CC=C1C(=O)O"  # Both
+python3 rebis.py run ch3mpiler --help
+
+# Ch3mpiler + SerpentRod catalytic site design (CAS lookup)
+python3 rebis.py run ch3mpiler_serpentrod_pipeline --cas 58-08-2
+
+# IMASM Compound Pipeline — encode a molecule
+python3 rebis.py imas compound --smiles "CC(=O)OC1=CC=CC=C1C(=O)O"
+
+# IMASM Compound Pipeline — find cross-domain analogies
+python3 rebis.py imas analogies --smiles "CN(C)CCC1=CNC2=CC=CC=C12" --limit 10
+
+# IMASM Compound Pipeline — register a compound
+python3 rebis.py imas register --smiles "CN1C=NC2=C1C(=O)N(C(=O)N2C)C" --name caffeine
+
+# IMASM Reaction Analysis
+python3 rebis.py imas reaction --smiles "CC(=O)C1=CC=CC=C1" --product "CC(C1=CC=CC=C1)(C)O"
+
+# Comprehensive protein & genetics stress test (34 tests)
+python3 rebis.py run stress_test_proteins
+
+# Materials stress test (26 tests)
+python3 materials/stress_test_materials.py
+
+# Generate a full mammal organism design package
+python3 rebis.py pipeline actionable
+
+# Browse static reference data (CLINK layers, IMASM canonicals, compound catalog)
+less INDEX.md
+\end{verbatim}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{command-reference}{%
+\subsection{Command Reference}\label{command-reference}}
+
+\hypertarget{status}{%
+\subsubsection{\texorpdfstring{\texttt{status}}{status}}\label{status}}
+
+Shows all platform modules with file size and health check.
+
+\begin{verbatim}
+python3 rebis.py status
+\end{verbatim}
+
+Output includes: SerpentRod, CH3MPILER, Pipeline, Gene Imscriber, CLINK,
+IMASM modules, \textbf{Compound Pipeline}, Materials, Therapeutics,
+Paraconsistent Kernel (rhr\_p4rky), Popular Protein --- each with file
+size and ✅/❌.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{verify}{%
+\subsubsection{\texorpdfstring{\texttt{verify}}{verify}}\label{verify}}
+
+Imports every module and reports pass/fail. Includes Frobenius closure
+checks where applicable. Run this after any install or code change.
+
+\begin{verbatim}
+python3 rebis.py verify
+\end{verbatim}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{run}{%
+\subsubsection{\texorpdfstring{\texttt{run}}{run}}\label{run}}
+
+Run one of 39 discoverable scripts or modules. Use \texttt{run\ list} to
+see all targets.
+
+\begin{verbatim}
+python3 rebis.py run <target> [args...]
+python3 rebis.py run list           # Show all 39 discoverable targets
+\end{verbatim}
+
+\hypertarget{core-module-targets}{%
+\paragraph{Core module targets}\label{core-module-targets}}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+\begin{minipage}[b]{0.24\columnwidth}\raggedright
+Target\strut
+\end{minipage} & \begin{minipage}[b]{0.24\columnwidth}\raggedright
+Module\strut
+\end{minipage} & \begin{minipage}[b]{0.43\columnwidth}\raggedright
+What it does\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{serpentrod}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{serpentrod/protein\_v5.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
+SerpentRod v5 --- full signal peptide detection, cleavage, fragment
+naming, PTMs, primitive spectrum. Runs built-in test cases (Human
+Insulin, Proglucagon, Preproinsulin, Proopiomelanocortin, GLP-1
+analog)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{serpentrod\_v2}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{rhr\_p4rky/serpent\_rod\_v2.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
+SerpentRod v2 --- 3D backbone from φ/ψ angles, geometry-based contacts,
+energy scoring\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{ch3mpiler}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{ch3mpiler/compiler.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
+Retrosynthetic disconnection compiler --- \texttt{-\/-smiles} for direct
+SMILES, \texttt{-\/-target} for name resolution,
+\texttt{-\/-retrosynthesis} for ranked disconnections with \textbf{exact
+fragment SMILES}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{ch3mpiler\_serpentrod\_pipeline}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{rhr\_p4rky/ch3mpiler\_serpentrod\_pipeline.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
+Ch3mpiler + SerpentRod integrated pipeline --- catalytic site design
+from SMILES or CAS\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{gene}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{gene\_imscriber/engine.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
+Gene imscriber (structural type → codon optimization)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{test\_genetics}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{test\_genetics.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
+64-codon B4 lattice test suite\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{stress\_test\_proteins}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{stress\_test\_proteins.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
+Comprehensive 34-test protein \& genetics stress test\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{compare\_exact}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{popular\_protein/compare\_exact\_phi\_psi.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
+Exact φ/ψ angle comparison\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{compare\_structures}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{popular\_protein/compare\_structures.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
+Structure-level comparison\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{comprehensive\_comparison}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{popular\_protein/comprehensive\_comparison.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
+Full multi-metric protein report\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{run\_gene\_pipeline}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{rhr\_p4rky/run\_gene\_pipeline.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
+Gene→protein 7-stage B4 pipeline\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{antibody}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{run\_antibody.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
+Antibody CDR designer\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{genetic\_code}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{rhr\_p4rky/genetic\_code.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
+64-codon Frobenius-verified table\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{pschedelic}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{psychedelic\_bridge.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
+Compound intrinsics + coupling report\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{iupac}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{\_gen\_univ\_map.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
+Diaschizic IUPAC generator\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{mito}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{mito\_pipeline.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
+Mitochondrial gene pipeline\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{mito\_v2}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{mito\_pipeline\_v2.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
+Mitochondrial gene pipeline v2\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{mito\_v3}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{mito\_pipeline\_v3.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
+Mitochondrial gene pipeline v3\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{antibody\_designer}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{rhr\_p4rky/antibody\_designer.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
+Advanced antibody designer\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{pdb\_validator}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{rhr\_p4rky/pdb\_validator.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
+PDB structure validation\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{hadron\_belnap}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{rhr\_p4rky/hadron\_belnap.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
+Hadronic Belnap classification\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{exotic\_hadron\_belnap}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{rhr\_p4rky/exotic\_hadron\_belnap.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
+Exotic hadron classification\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{quark\_belnap}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{rhr\_p4rky/quark\_belnap.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.43\columnwidth}\raggedright
+Quark Belnap analysis\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{clink}{%
+\subsubsection{\texorpdfstring{\texttt{clink}}{clink}}\label{clink}}
+
+Inspect the CLINK chain --- 9 layers from frustrated quarks to whole
+organisms.
+
+\begin{verbatim}
+python3 rebis.py clink <subcommand> [options]
+\end{verbatim}
+
+\hypertarget{clink-layer-name_or_index}{%
+\paragraph{\texorpdfstring{\texttt{clink\ layer\ \textless{}name\_or\_index\textgreater{}}}{clink layer \textless name\_or\_index\textgreater{}}}\label{clink-layer-name_or_index}}
+
+Show the full profile of one CLINK layer --- tuple, tier, Frobenius
+status, bridges, promotion paths.
+
+\begin{verbatim}
+python3 rebis.py clink layer 8          # Organism
+python3 rebis.py clink layer cell       # Fuzzy match → Cell layer
+python3 rebis.py clink layer L3         # Molecule layer
+\end{verbatim}
+
+Output includes: index, name, tier, distance from previous, IG tuple
+(Shavian glyphs), primitive-by-primitive description, and nearest tool
+bridge.
+
+\hypertarget{clink-bridge-component-target}{%
+\paragraph{\texorpdfstring{\texttt{clink\ bridge\ \textless{}component\textgreater{}\ \textless{}target\textgreater{}}}{clink bridge \textless component\textgreater{} \textless target\textgreater{}}}\label{clink-bridge-component-target}}
+
+Show the promotion path from a component tool to a CLINK target layer.
+
+\begin{verbatim}
+python3 rebis.py clink bridge serpentrod 8
+python3 rebis.py clink bridge ch3mpiler 3
+\end{verbatim}
+
+Shows: distance, primitive-level promotion steps, Frobenius status at
+each hop.
+
+\textbf{Static reference:} \texttt{less\ INDEX.md} §1 (9-layer table,
+tuples, tiers, Frobenius status, chain distances, ZFC\_fe distance,
+component bridge attachments).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{pipeline}{%
+\subsubsection{\texorpdfstring{\texttt{pipeline}}{pipeline}}\label{pipeline}}
+
+Orchestrate the full CLINK pipeline --- design a whole organism from
+structural types alone.
+
+\begin{verbatim}
+python3 rebis.py pipeline <subcommand> [options]
+\end{verbatim}
+
+\hypertarget{pipeline-bridges}{%
+\paragraph{\texorpdfstring{\texttt{pipeline\ bridges}}{pipeline bridges}}\label{pipeline-bridges}}
+
+Show which tool bridges are available (✅) or missing (❌).
+
+\begin{verbatim}
+python3 rebis.py pipeline bridges
+\end{verbatim}
+
+Current bridges: serpentrod ✅, ch3mpiler ✅, gene\_imscriber ✅,
+materials\_sim ✅, frobenius\_chemo ✅, ouroboric\_pill ✅,
+critical\_metamaterial ✅, neurotrophic ✅, biology\_sim ❌,
+ouroboric\_telomere ❌.
+
+\hypertarget{pipeline-ground-up}{%
+\paragraph{\texorpdfstring{\texttt{pipeline\ ground-up}}{pipeline ground-up}}\label{pipeline-ground-up}}
+
+Full L0→L8 synthesis run. Traverses all 9 layers, applies layer
+designers, reports status per transition.
+
+\begin{verbatim}
+python3 rebis.py pipeline ground-up
+\end{verbatim}
+
+Output: per-layer transition table with distance, primitive promotions,
+tool used, and ✅/❌. Total distance and total promotions at end.
+
+\hypertarget{pipeline-from-layer-start-end}{%
+\paragraph{\texorpdfstring{\texttt{pipeline\ from-layer\ \textless{}start\textgreater{}\ \textless{}end\textgreater{}}}{pipeline from-layer \textless start\textgreater{} \textless end\textgreater{}}}\label{pipeline-from-layer-start-end}}
+
+Partial run starting from a specific layer.
+
+\begin{verbatim}
+python3 rebis.py pipeline from-layer 3 8   # molecule → organism
+python3 rebis.py pipeline from-layer 4 8   # cell → organism
+\end{verbatim}
+
+Useful when you have an existing molecular design and want to take it up
+to organism level.
+
+\hypertarget{pipeline-actionable---organism-type}{%
+\paragraph{\texorpdfstring{\texttt{pipeline\ actionable\ {[}-\/-organism\ \textless{}type\textgreater{}{]}}}{pipeline actionable {[}-\/-organism \textless type\textgreater{]}}}\label{pipeline-actionable---organism-type}}
+
+Generate a complete, physically actionable organism design package.
+
+\begin{verbatim}
+python3 rebis.py pipeline actionable
+python3 rebis.py pipeline actionable --organism human
+\end{verbatim}
+
+Produces a directory of files in
+\texttt{clink/datasets/organism\_designs/organism\_\textless{}type\textgreater{}\_actionable/}:
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+\begin{minipage}[b]{0.40\columnwidth}\raggedright
+File\strut
+\end{minipage} & \begin{minipage}[b]{0.54\columnwidth}\raggedright
+Action\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.40\columnwidth}\raggedright
+\texttt{genome.fasta}\strut
+\end{minipage} & \begin{minipage}[t]{0.54\columnwidth}\raggedright
+Order DNA synthesis from Twist/IDT/GenScript\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.40\columnwidth}\raggedright
+\texttt{genome.gb}\strut
+\end{minipage} & \begin{minipage}[t]{0.54\columnwidth}\raggedright
+Load into Benchling/SnapGene\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.40\columnwidth}\raggedright
+\texttt{construct.sbol}\strut
+\end{minipage} & \begin{minipage}[t]{0.54\columnwidth}\raggedright
+Exchange with synthetic biology repositories\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.40\columnwidth}\raggedright
+\texttt{codon\_usage.csv}\strut
+\end{minipage} & \begin{minipage}[t]{0.54\columnwidth}\raggedright
+B4-derived codon table\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.40\columnwidth}\raggedright
+\texttt{protein.fasta}\strut
+\end{minipage} & \begin{minipage}[t]{0.54\columnwidth}\raggedright
+Order peptide synthesis\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.40\columnwidth}\raggedright
+\texttt{protein\_coords.pdb}\strut
+\end{minipage} & \begin{minipage}[t]{0.54\columnwidth}\raggedright
+View in PyMOL/ChimeraX (PDB v3.3-compliant: SEQRES, TER, correct atom
+names)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.40\columnwidth}\raggedright
+\texttt{serpentrod\_classification.json}\strut
+\end{minipage} & \begin{minipage}[t]{0.54\columnwidth}\raggedright
+Primitive activations per fragment\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.40\columnwidth}\raggedright
+\texttt{molecules.smi}\strut
+\end{minipage} & \begin{minipage}[t]{0.54\columnwidth}\raggedright
+SMILES --- order from vendor\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.40\columnwidth}\raggedright
+\texttt{retro\_pathways.json}\strut
+\end{minipage} & \begin{minipage}[t]{0.54\columnwidth}\raggedright
+CH3MPILER retrosynthesis\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.40\columnwidth}\raggedright
+\texttt{metabolic\_model.xml}\strut
+\end{minipage} & \begin{minipage}[t]{0.54\columnwidth}\raggedright
+Load into COBRApy for FBA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.40\columnwidth}\raggedright
+\texttt{plasmid.gb}\strut
+\end{minipage} & \begin{minipage}[t]{0.54\columnwidth}\raggedright
+GenBank construct\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.40\columnwidth}\raggedright
+\texttt{growth\_media.txt}\strut
+\end{minipage} & \begin{minipage}[t]{0.54\columnwidth}\raggedright
+Prepare media per formulation\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.40\columnwidth}\raggedright
+\texttt{organoid\_protocol.md}\strut
+\end{minipage} & \begin{minipage}[t]{0.54\columnwidth}\raggedright
+Lab-ready protocol\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.40\columnwidth}\raggedright
+\texttt{mitosis\_assay\_protocol.md}\strut
+\end{minipage} & \begin{minipage}[t]{0.54\columnwidth}\raggedright
+Lab-ready protocol\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.40\columnwidth}\raggedright
+\texttt{physiological\_params.csv}\strut
+\end{minipage} & \begin{minipage}[t]{0.54\columnwidth}\raggedright
+Homeostatic setpoints\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.40\columnwidth}\raggedright
+\texttt{whole\_genome\_spec.json}\strut
+\end{minipage} & \begin{minipage}[t]{0.54\columnwidth}\raggedright
+Complete genome specification\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+Current designed organisms: mammal, human, human\_gills,
+human\_photosynthetic, treople.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{materials}{%
+\subsubsection{\texorpdfstring{\texttt{materials}}{materials}}\label{materials}}
+
+Design novel IG-typed materials. All materials are derived from their
+12-primitive structural types. Five dynamic subcommands; static
+reference data (material catalog, Sophick Mercury, Eagle Cycle, gap
+primitives) is in \textbf{INDEX.md}.
+
+\begin{verbatim}
+python3 rebis.py materials <subcommand> [options]
+\end{verbatim}
+
+\hypertarget{materials-forge---name-material---all}{%
+\paragraph{\texorpdfstring{\texttt{materials\ forge\ -\/-name\ \textless{}material\textgreater{}\ {[}-\/-all{]}}}{materials forge -\/-name \textless material\textgreater{} {[}-\/-all{]}}}\label{materials-forge---name-material---all}}
+
+Generate the complete material design file.
+
+\begin{verbatim}
+python3 rebis.py materials forge --name frobenius_composite
+python3 rebis.py materials forge --name I_Dialetheic_Bootstrap   # From IMASM canonical
+python3 rebis.py materials forge --all     # Forge all 8 predefined materials
+\end{verbatim}
+
+\hypertarget{materials-frobenius}{%
+\paragraph{\texorpdfstring{\texttt{materials\ frobenius}}{materials frobenius}}\label{materials-frobenius}}
+
+Simulate Frobenius closure verification of the composite --- cyclic
+load/heal protocol showing \(\|\mu\delta-\text{id}\|\) per cycle.
+
+\begin{verbatim}
+python3 rebis.py materials frobenius
+\end{verbatim}
+
+\hypertarget{materials-ouroboric}{%
+\paragraph{\texorpdfstring{\texttt{materials\ ouroboric}}{materials ouroboric}}\label{materials-ouroboric}}
+
+Simulate ouroboric crack healing --- crack propagation + self-healing
+cycles, reports fatigue life and topological invariant preservation.
+
+\begin{verbatim}
+python3 rebis.py materials ouroboric
+\end{verbatim}
+
+\hypertarget{materials-sophick---name-target}{%
+\paragraph{\texorpdfstring{\texttt{materials\ sophick\ -\/-name\ \textless{}target\textgreater{}}}{materials sophick -\/-name \textless target\textgreater{}}}\label{materials-sophick---name-target}}
+
+Eagle Cycle Protocol --- prepares an \(\text{O}_{\infty}\) Sophick
+Mercury substrate from O₂ ouroboric materials. Requires
+\texttt{-\/-name}.
+
+\begin{verbatim}
+python3 rebis.py materials sophick --name eagle_9_sophick
+python3 rebis.py materials sophick --name cliff               # Frobenius Cliff analysis
+python3 rebis.py materials sophick --name bridge              # IMASM→Eagle bridge report
+\end{verbatim}
+
+\hypertarget{materials-exactor---name-target}{%
+\paragraph{\texorpdfstring{\texttt{materials\ exactor\ -\/-name\ \textless{}target\textgreater{}}}{materials exactor -\/-name \textless target\textgreater{}}}\label{materials-exactor---name-target}}
+
+Explains the thermodynamic ceiling: continuous Eagle preparation reaches
+its limit, and exact Frobenius closure requires discrete topological
+protection. Requires \texttt{-\/-name}.
+
+\begin{verbatim}
+python3 rebis.py materials exactor --name diagnose            # Category error diagnosis
+python3 rebis.py materials exactor --name close               # Close Frobenius gap
+python3 rebis.py materials exactor --name pathways            # List all exactor pathways
+\end{verbatim}
+
+\hypertarget{static-reference-less-index.md-3-8-predefined-materials-imasm-canonicals-as-materials-sophick-mercury-pathway-frobenius-exactor-gap-primitives.}{%
+\subsection{\texorpdfstring{\textbf{Static reference:}
+\texttt{less\ INDEX.md} §3 (8 predefined materials, IMASM canonicals as
+materials, Sophick Mercury pathway, Frobenius Exactor gap
+primitives).}{Static reference: less INDEX.md §3 (8 predefined materials, IMASM canonicals as materials, Sophick Mercury pathway, Frobenius Exactor gap primitives).}}\label{static-reference-less-index.md-3-8-predefined-materials-imasm-canonicals-as-materials-sophick-mercury-pathway-frobenius-exactor-gap-primitives.}}
+
+\hypertarget{imas}{%
+\subsubsection{\texorpdfstring{\texttt{imas}}{imas}}\label{imas}}
+
+IMASM arrangement analysis --- the 12-token algebra over IG structural
+types. Three existing subcommands (\texttt{bridge}, \texttt{hunt},
+\texttt{energy}) plus \textbf{three new compound pipeline subcommands}
+(\texttt{compound}, \texttt{analogies}, \texttt{reaction},
+\texttt{register}).
+
+\begin{verbatim}
+python3 rebis.py imas <subcommand> [options]
+\end{verbatim}
+
+\hypertarget{imas-bridge---canonical-name}{%
+\paragraph{\texorpdfstring{\texttt{imas\ bridge\ {[}-\/-canonical\ \textless{}name\textgreater{}{]}}}{imas bridge {[}-\/-canonical \textless name\textgreater{]}}}\label{imas-bridge---canonical-name}}
+
+Detailed profile of one IMASM canonical --- full IG tuple
+primitive-by-primitive, nearest CLINK layer, distance table to all 9
+layers.
+
+\begin{verbatim}
+python3 rebis.py imas bridge --canonical I_Dialetheic_Bootstrap
+python3 rebis.py imas bridge --canonical I_Dialetheic_Bootstrap,VII_Parakernel  # Multi
+\end{verbatim}
+
+Default: \texttt{I\_Dialetheic\_Bootstrap}.
+
+\hypertarget{imas-hunt---samples-n}{%
+\paragraph{\texorpdfstring{\texttt{imas\ hunt\ {[}-\/-samples\ \textless{}n\textgreater{}{]}}}{imas hunt {[}-\/-samples \textless n\textgreater{]}}}\label{imas-hunt---samples-n}}
+
+Monte Carlo Frobenius density estimation over the 12-token sequence
+space. Reports probability of each Frobenius class and generates
+examples.
+
+\begin{verbatim}
+python3 rebis.py imas hunt --samples 100000
+python3 rebis.py imas hunt --samples 1000000          # Larger sample
+\end{verbatim}
+
+Output: \(p_{\text{frobenius\_pair}} \approx 0.236\),
+\(p_{\text{proper\_frobenius}} \approx 0.139\),
+\(p_{\text{dialetheia\_complete}} \approx 0.105\).
+
+\hypertarget{imas-energy---canonical-name---layer-idx}{%
+\paragraph{\texorpdfstring{\texttt{imas\ energy\ {[}-\/-canonical\ \textless{}name\textgreater{}{]}\ {[}-\/-layer\ \textless{}idx\textgreater{}{]}}}{imas energy {[}-\/-canonical \textless name\textgreater{]} {[}-\/-layer \textless idx\textgreater{]}}}\label{imas-energy---canonical-name---layer-idx}}
+
+Structural activation energy from an IMASM canonical to a CLINK target
+layer.
+
+\begin{verbatim}
+python3 rebis.py imas energy --canonical I_Dialetheic_Bootstrap --layer L8_Organism
+python3 rebis.py imas energy --canonical V_Linear_Chain --layer L0_FrustratedBelnap5
+\end{verbatim}
+
+Default: \texttt{I\_Dialetheic\_Bootstrap} → L8 (Whole Organism).
+
+\hypertarget{imas-compound---smiles-smiles---name-name---json}{%
+\paragraph{\texorpdfstring{\texttt{imas\ compound\ -\/-smiles\ \textless{}SMILES\textgreater{}\ {[}-\/-name\ \textless{}name\textgreater{}{]}\ {[}-\/-json{]}}}{imas compound -\/-smiles \textless SMILES\textgreater{} {[}-\/-name \textless name\textgreater{]} {[}-\/-json{]}}}\label{imas-compound---smiles-smiles---name-name---json}}
+
+\textbf{NEW --- Encode a molecule as an IMASM arrangement.} The compound
+pipeline detects functional groups (from 190 SMARTS patterns), builds an
+8-token arrangement, computes the StructuralFingerprint, and resolves to
+an IG 12-tuple.
+
+\begin{verbatim}
+# Aspirin — print arrangement + fingerprint + IG tuple
+python3 rebis.py imas compound --smiles "CC(=O)OC1=CC=CC=C1C(=O)O"
+
+# Caffeine — JSON output for programmatic use
+python3 rebis.py imas compound --smiles "CN1C=NC2=C1C(=O)N(C(=O)N2C)C" --json
+
+# DMT — with name annotation
+python3 rebis.py imas compound --smiles "CN(C)CCC1=CNC2=CC=CC=C12" --name "DMT"
+\end{verbatim}
+
+Output includes: detected FGs, 8-token IMASM arrangement,
+StructuralFingerprint fields (self\_ref, dialetheia\_complete,
+frobenius\_order, period, diversity, sigmas), IG 12-tuple with
+per-primitive description, tier assessment.
+
+\hypertarget{imas-analogies---smiles-smiles---limit-n}{%
+\paragraph{\texorpdfstring{\texttt{imas\ analogies\ -\/-smiles\ \textless{}SMILES\textgreater{}\ {[}-\/-limit\ \textless{}n\textgreater{}{]}}}{imas analogies -\/-smiles \textless SMILES\textgreater{} {[}-\/-limit \textless n\textgreater{]}}}\label{imas-analogies---smiles-smiles---limit-n}}
+
+\textbf{NEW --- Find cross-domain structural analogies.} Given a SMILES,
+compute its IG type and search the entire catalog for nearest neighbors
+--- across materials, consciousness states, languages, mathematical
+theorems, and more.
+
+\begin{verbatim}
+# DMT's 10 nearest neighbors
+python3 rebis.py imas analogies --smiles "CN(C)CCC1=CNC2=CC=CC=C12" --limit 10
+
+# Water's nearest neighbors
+python3 rebis.py imas analogies --smiles "O" --limit 15
+\end{verbatim}
+
+Output: ranked list of catalog entries with structural distances.
+Typical results include consciousness states (Kalachakra Tantra, d=4),
+mathematical theorems (Fermat's Last Theorem, d=4), languages (Codex
+Vienna, d=5), materials (supercritical water, d=5).
+
+\hypertarget{imas-reaction---smiles-smiles---product-smiles}{%
+\paragraph{\texorpdfstring{\texttt{imas\ reaction\ -\/-smiles\ \textless{}SMILES\textgreater{}\ -\/-product\ \textless{}SMILES\textgreater{}}}{imas reaction -\/-smiles \textless SMILES\textgreater{} -\/-product \textless SMILES\textgreater{}}}\label{imas-reaction---smiles-smiles---product-smiles}}
+
+\textbf{NEW --- Analyze a reaction as an IMASM transition.} Computes
+reactant and product IMASM arrangements, identifies the token delta
+(what changed), and classifies the reaction.
+
+\begin{verbatim}
+# Grignard: acetophenone → 2-phenyl-2-propanol
+python3 rebis.py imas reaction --smiles "CC(=O)C1=CC=CC=C1" --product "CC(C1=CC=CC=C1)(C)O"
+\end{verbatim}
+
+Output includes: reactant arrangement, product arrangement, IMASM delta
+(AFWD→AREV), reaction class (Redox\_reduction), named reaction
+confidence scores.
+
+\hypertarget{imas-register---smiles-smiles---name-name}{%
+\paragraph{\texorpdfstring{\texttt{imas\ register\ -\/-smiles\ \textless{}SMILES\textgreater{}\ -\/-name\ \textless{}name\textgreater{}}}{imas register -\/-smiles \textless SMILES\textgreater{} -\/-name \textless name\textgreater{}}}\label{imas-register---smiles-smiles---name-name}}
+
+\textbf{NEW --- Register a compound in the IG catalog.} Encodes the
+molecule, computes its IG tuple, and registers it in both the
+COMPOUND\_DATABASE and the shared IG\_catalog.json for future lookups.
+
+\begin{verbatim}
+python3 rebis.py imas register --smiles "CN1C=NC2=C1C(=O)N(C(=O)N2C)C" --name "caffeine"
+python3 rebis.py imas register --smiles "CC(=O)OC1=CC=CC=C1C(=O)O" --name "aspirin"
+\end{verbatim}
+
+\textbf{Static reference:} \texttt{less\ INDEX.md} §4 (compound catalog
+with statistics, distinct IG types, cross-domain analogies table).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{scripts}{%
+\subsubsection{\texorpdfstring{\texttt{scripts}}{scripts}}\label{scripts}}
+
+Manage and run standalone scripts.
+
+\begin{verbatim}
+python3 rebis.py scripts list              # List all 14 scripts with line counts
+python3 rebis.py scripts run <name>        # Run a script by name (without .py)
+\end{verbatim}
+
+\begin{verbatim}
+python3 rebis.py scripts run mito_pipeline
+python3 rebis.py scripts run omonad_bridge
+python3 rebis.py scripts run run_pdb_validation
+\end{verbatim}
+
+Note: \texttt{run\ mito}, \texttt{run\ antibody},
+\texttt{run\ psychedelic}, \texttt{run\ iupac} are convenience aliases
+for \texttt{scripts\ run}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{crystal-guided-molecular-discovery}{%
+\subsection{Crystal-Guided Molecular
+Discovery}\label{crystal-guided-molecular-discovery}}
+
+The \textbf{Crystal-Guided Molecular Discovery Engine}
+(\texttt{imas/molecular\_crystal\_designer.py}, 700+ lines) navigates
+the Imscribing Grammar's Crystal of Types (17,280,000 structural types)
+to discover molecules with target structural properties. It is the
+\textbf{inverse} of the SMILES→IMASM→IG pipeline.
+
+\hypertarget{how-it-works}{%
+\subsubsection{How It Works}\label{how-it-works}}
+
+\begin{verbatim}
+Target IG tuple → [ig_to_fp_constraints] → FP constraints → [arrangement candidates]
+  → [molecular_suggestion] → candidate SMILES → [validate with RDKit]
+\end{verbatim}
+
+The discovery protocol: 1. Encode molecule → IMASM arrangement → IG
+12-tuple 2. Navigate crystal neighborhood → find target types 3. Target
+⊙: requires self\_ref=True AND dialetheia\_complete=True 4. Design
+constraints: EVALT + EVALF + ENGAGR in 8-token arrangement 5. Minimize
+competing high-priority tokens (phenol \textgreater{} carboxylic acid)
+6. Generate candidate SMILES → validate → register
+
+\hypertarget{discovery-5-nitro-bufotenin-dmt-}{%
+\subsubsection{Discovery: 5-Nitro-Bufotenin
+(DMT-⊙)}\label{discovery-5-nitro-bufotenin-dmt-}}
+
+The first discovery was \textbf{5-nitro-bufotenin} --- an autocatalytic
+DMT analog found by promoting Phi from 𐑮 (complex-plane critical) to ⊙
+(self-modeling critical):
+
+\begin{verbatim}
+DMT:      ⟨𐑨𐑸𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑕𐑭⟩   Phi=𐑮 (complex critical)
+DMT-⊙:    ⟨𐑨𐑸𐑩𐑿𐑐𐑘𐑔𐑵⊙𐑫𐑕𐑭⟩   Phi=⊙ (self-modeling / autocatalytic)
+\end{verbatim}
+
+The molecule --- 5-nitro-bufotenin --- is a tryptamine with phenol
+(EVALT), dimethylamine (EVALF), and nitro (ENGAGR), giving it all three
+Dialetheia tokens simultaneously for autocatalytic template-directed
+synthesis.
+
+SMILES: \texttt{CN(C)CCC1=CNC2=CC=C(O)C({[}N+{]}(=O){[}O-{]})=C12}
+
+\hypertarget{finder-tool}{%
+\subsubsection{⊙-Finder Tool}\label{finder-tool}}
+
+The standalone \textbf{⊙-Finder}
+(\texttt{ig-docs/dmt-odot-discovery/odot\_finder.py}, 8.6 KB)
+systematically finds ⊙-critical variants of any molecule:
+
+\begin{verbatim}
+# Find ⊙-critical variants of DMT
+python3 /home/mrnob0dy666/imsgct/ig-docs/dmt-odot-discovery/odot_finder.py \
+  --smiles "CN(C)CCC1=CNC2=CC=CC=C12" --name "DMT"
+
+# Run demo mode (all test cases)
+python3 /home/mrnob0dy666/imsgct/ig-docs/dmt-odot-discovery/odot_finder.py
+\end{verbatim}
+
+Results: \textbar{} Compound \textbar{} ⊙-Critical Candidates \textbar{}
+\textbar----------\textbar----------------------\textbar{} \textbar{}
+DMT \textbar{} 20 \textbar{} \textbar{} Serotonin \textbar{} 4
+\textbar{} \textbar{} Bufotenin \textbar{} 4 \textbar{} \textbar{}
+5-nitro-bufotenin \textbar{} Already ⊙-critical \textbar{}
+
+\hypertarget{discovery-files}{%
+\subsubsection{Discovery Files}\label{discovery-files}}
+
+Located at \texttt{ig-docs/dmt-odot-discovery/}: - \texttt{README.md}
+--- Full documentation (8.5 KB) - \texttt{5-nitro-bufotenin.cdxml} ---
+ChemDraw drawing (4.9 KB) - \texttt{discovery.json} --- Structured
+metadata (1.3 KB) - \texttt{dmt\_odot\_ob3ect.py} --- Self-verifying
+ob3ect (1.9 KB) - \texttt{odot\_finder.py} --- ⊙-critical molecule
+finder (8.6 KB) ---
+
+\hypertarget{stress-testing}{%
+\subsection{Stress Testing}\label{stress-testing}}
+
+Two comprehensive stress test suites validate the entire platform across
+edge cases, large inputs, boundary conditions, and cross-pipeline
+integration. Both suites run to completion with 100\% pass rate.
+
+\hypertarget{protein-genetics-34-tests-11-groups}{%
+\subsubsection{Protein \& Genetics (34 tests, 11
+groups)}\label{protein-genetics-34-tests-11-groups}}
+
+\begin{verbatim}
+python3 rebis.py run stress_test_proteins
+# or directly:
+python3 stress_test_proteins.py
+\end{verbatim}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+\begin{minipage}[b]{0.09\columnwidth}\raggedright
+\#\strut
+\end{minipage} & \begin{minipage}[b]{0.31\columnwidth}\raggedright
+Test Group\strut
+\end{minipage} & \begin{minipage}[b]{0.20\columnwidth}\raggedright
+Tests\strut
+\end{minipage} & \begin{minipage}[b]{0.29\columnwidth}\raggedright
+Coverage\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.09\columnwidth}\raggedright
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Genetic Code\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+4\strut
+\end{minipage} & \begin{minipage}[t]{0.29\columnwidth}\raggedright
+64-codon Frobenius-verified table, B4 invariant, lattice
+operations\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright
+2\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Genetics B4\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+3\strut
+\end{minipage} & \begin{minipage}[t]{0.29\columnwidth}\raggedright
+Nucleotide↔Belnap (T/B/F/N), structural distance, wobble pair
+detection\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright
+3\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Genetic Tuples\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+3\strut
+\end{minipage} & \begin{minipage}[t]{0.29\columnwidth}\raggedright
+7-stage tuple generation, structural distance DNA→quaternary, tier
+consistency\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright
+4\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Genetic ASM\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.29\columnwidth}\raggedright
+Paraconsistent abstract state machine program execution\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright
+5\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Gene→Protein Pipeline\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+8\strut
+\end{minipage} & \begin{minipage}[t]{0.29\columnwidth}\raggedright
+Standard 7-stage, empty sequence, short (≤1 nt), start→stop, 100-AA,
+multi-stop, no-stop, primitive activations\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright
+6\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+SerpentRod\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+5\strut
+\end{minipage} & \begin{minipage}[t]{0.29\columnwidth}\raggedright
+12-AA design, single-codon, empty, 200-AA, poly-Met homopolymer\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright
+7\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Ch3mpiler-SerpentRod\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+3\strut
+\end{minipage} & \begin{minipage}[t]{0.29\columnwidth}\raggedright
+Caffeine (58-08-2), aspirin (50-78-2), cross-molecule
+differentiation\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright
+8\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Cross-Integration\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+2\strut
+\end{minipage} & \begin{minipage}[t]{0.29\columnwidth}\raggedright
+Gene→protein→fold, ch3mpiler→material bridge\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright
+9\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Antibody Designer\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.29\columnwidth}\raggedright
+Epitope analysis → CDR → full VH antibody (53 AA, Frobenius ✓)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright
+10\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+PDB Validator\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.29\columnwidth}\raggedright
+Structure validation, precision/recall metrics\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright
+11\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Edge Cases\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+3\strut
+\end{minipage} & \begin{minipage}[t]{0.29\columnwidth}\raggedright
+All 3 stop codons (UAA/UAG/UGA), AUG start, non-standard nucleotides
+(X/N/R/Y/?)\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{materials-26-tests-12-groups}{%
+\subsubsection{Materials (26 tests, 12
+groups)}\label{materials-26-tests-12-groups}}
+
+\begin{verbatim}
+python3 materials/stress_test_materials.py
+\end{verbatim}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+\begin{minipage}[b]{0.09\columnwidth}\raggedright
+\#\strut
+\end{minipage} & \begin{minipage}[b]{0.31\columnwidth}\raggedright
+Test Group\strut
+\end{minipage} & \begin{minipage}[b]{0.20\columnwidth}\raggedright
+Tests\strut
+\end{minipage} & \begin{minipage}[b]{0.29\columnwidth}\raggedright
+Coverage\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.09\columnwidth}\raggedright
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+IG Material Forge\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+4\strut
+\end{minipage} & \begin{minipage}[t]{0.29\columnwidth}\raggedright
+All 8 predefined materials, empty name, report, list\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright
+2\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Sophick Forge\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+4\strut
+\end{minipage} & \begin{minipage}[t]{0.29\columnwidth}\raggedright
+7-eagle cycle, progressive refinement, report, etch\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright
+3\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Frobenius Metamaterial\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+3\strut
+\end{minipage} & \begin{minipage}[t]{0.29\columnwidth}\raggedright
+10×10 grid 20-cycle healing, load-heal cycle, export\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright
+4\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Thermal Rectifier\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+2\strut
+\end{minipage} & \begin{minipage}[t]{0.29\columnwidth}\raggedright
+Diode asymmetry ratio, full simulation run\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright
+5\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Non-Qubit QC\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+2\strut
+\end{minipage} & \begin{minipage}[t]{0.29\columnwidth}\raggedright
+all\_deltas computation, paradigm summary table\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright
+6\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Ouroboric Alloy\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+3\strut
+\end{minipage} & \begin{minipage}[t]{0.29\columnwidth}\raggedright
+Init, mechanical test, heal cycle\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright
+7\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Critical Metamaterial\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+2\strut
+\end{minipage} & \begin{minipage}[t]{0.29\columnwidth}\raggedright
+Susceptibility divergence, critical run\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright
+8\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Gap Closure\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.29\columnwidth}\raggedright
+Enum completeness check\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright
+9\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Frobenius Exactor\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.29\columnwidth}\raggedright
+All 4 designs (ω/τ/σ/ε)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright
+10\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Materials Simulation\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.29\columnwidth}\raggedright
+SelfHealingComposite + EternalMemorySim\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright
+11\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Frobenius Closure\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.29\columnwidth}\raggedright
+ClosureDesign status\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright
+12\strut
+\end{minipage} & \begin{minipage}[t]{0.31\columnwidth}\raggedright
+Cross-Module\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+2\strut
+\end{minipage} & \begin{minipage}[t]{0.29\columnwidth}\raggedright
+Forge→metamaterial, eagle→exactor\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{molecule-material-bridge}{%
+\subsubsection{Molecule → Material
+Bridge}\label{molecule-material-bridge}}
+
+Derives material structural types directly from molecular input:
+
+\begin{verbatim}
+python3 materials/molecule_material_bridge.py --cas 58-08-2
+python3 materials/molecule_material_bridge.py --smiles "CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
+\end{verbatim}
+
+Produces: material tuple, tier assessment, Frobenius closure status,
+catalog cross-reference.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{the-paraconsistent-kernel-rhr_p4rky}{%
+\subsection{\texorpdfstring{The Paraconsistent Kernel
+(\texttt{rhr\_p4rky/})}{The Paraconsistent Kernel (rhr\_p4rky/)}}\label{the-paraconsistent-kernel-rhr_p4rky}}
+
+The paraconsistent kernel is a 32-module Python library providing Belnap
+FOUR logic as universal substrate for computation that tolerates
+contradiction. It was migrated from the standalone \texttt{p4rakernel/}
+project and now lives as a subsystem within Red-Hot Rebis.
+
+\hypertarget{architecture}{%
+\subsubsection{Architecture}\label{architecture}}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+\begin{minipage}[b]{0.23\columnwidth}\raggedright
+Layer\strut
+\end{minipage} & \begin{minipage}[b]{0.26\columnwidth}\raggedright
+Module\strut
+\end{minipage} & \begin{minipage}[b]{0.42\columnwidth}\raggedright
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\textbf{Logic}\strut
+\end{minipage} & \begin{minipage}[t]{0.26\columnwidth}\raggedright
+\texttt{belnap.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.42\columnwidth}\raggedright
+4-valued Belnap logic (T/B/F/N) --- truth, both, false, neither\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\textbf{Machine}\strut
+\end{minipage} & \begin{minipage}[t]{0.26\columnwidth}\raggedright
+\texttt{machine.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.42\columnwidth}\raggedright
+Paraconsistent Abstract State Machine (ParaASM)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\textbf{Genetics}\strut
+\end{minipage} & \begin{minipage}[t]{0.26\columnwidth}\raggedright
+\texttt{genetic\_code.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.42\columnwidth}\raggedright
+64-codon Frobenius-verified genetic code\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.26\columnwidth}\raggedright
+\texttt{genetics\_b4.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.42\columnwidth}\raggedright
+B4 lattice --- 64 codons, 7-stage tuple verification\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.26\columnwidth}\raggedright
+\texttt{genetic\_tuples.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.42\columnwidth}\raggedright
+Tuple encodings for genes/codons/proteins\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.26\columnwidth}\raggedright
+\texttt{genetic\_asm.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.42\columnwidth}\raggedright
+Genetic abstract state machine\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\textbf{Pipeline}\strut
+\end{minipage} & \begin{minipage}[t]{0.26\columnwidth}\raggedright
+\texttt{gene\_to\_protein\_pipeline.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.42\columnwidth}\raggedright
+Full gene→protein translation (7-stage B4)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.26\columnwidth}\raggedright
+\texttt{demo\_gene\_to\_protein.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.42\columnwidth}\raggedright
+Pipeline demonstration\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.26\columnwidth}\raggedright
+\texttt{run\_gene\_pipeline.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.42\columnwidth}\raggedright
+Pipeline CLI runner\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\textbf{Proteins}\strut
+\end{minipage} & \begin{minipage}[t]{0.26\columnwidth}\raggedright
+\texttt{serpent\_rod.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.42\columnwidth}\raggedright
+Foundational Frobenius morphism RNA→\{sequence+fold\}; base
+\texttt{SerpentRod} class\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.26\columnwidth}\raggedright
+\texttt{serpent\_rod\_v2.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.42\columnwidth}\raggedright
+\texttt{SerpentRodV2}: 3D backbone from φ/ψ angles, geometry-based
+contacts, energy scoring\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\textbf{Antibodies}\strut
+\end{minipage} & \begin{minipage}[t]{0.26\columnwidth}\raggedright
+\texttt{antibody\_designer.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.42\columnwidth}\raggedright
+Computational antibody design from IG types\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\textbf{Validation}\strut
+\end{minipage} & \begin{minipage}[t]{0.26\columnwidth}\raggedright
+\texttt{pdb\_validator.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.42\columnwidth}\raggedright
+PDB structure validation against IG types; \texttt{extract\_sequence()}
+round-trips SEQRES\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\textbf{Bridges}\strut
+\end{minipage} & \begin{minipage}[t]{0.26\columnwidth}\raggedright
+\texttt{ch3mpiler\_bridge.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.42\columnwidth}\raggedright
+Ch3mpiler ↔ kernel bridge\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.26\columnwidth}\raggedright
+\texttt{ch3mpiler\_ob3ect\_bridge.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.42\columnwidth}\raggedright
+Ch3mpiler ↔ ob3ect bridge\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.26\columnwidth}\raggedright
+\texttt{ch3mpiler\_serpentrod\_pipeline.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.42\columnwidth}\raggedright
+\textbf{v4} --- Weighted bond-preserving fusion, word-boundary FG
+matching, specificity-ranked disconnections, Frobenius-exact complement
+mapping, CAS lookup, molecule-specific catalytic sites\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\textbf{Physics}\strut
+\end{minipage} & \begin{minipage}[t]{0.26\columnwidth}\raggedright
+\texttt{hadron\_belnap.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.42\columnwidth}\raggedright
+Hadronic Belnap-state classification\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.26\columnwidth}\raggedright
+\texttt{exotic\_hadron\_belnap.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.42\columnwidth}\raggedright
+Exotic hadron Belnap classification\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.26\columnwidth}\raggedright
+\texttt{quark\_belnap.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.42\columnwidth}\raggedright
+Quark Belnap-state analysis\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.26\columnwidth}\raggedright
+\texttt{orbital\_belnap.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.42\columnwidth}\raggedright
+Orbital Belnap-state analysis\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\textbf{Analysis}\strut
+\end{minipage} & \begin{minipage}[t]{0.26\columnwidth}\raggedright
+\texttt{clu\_power\_law.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.42\columnwidth}\raggedright
+Clustering power-law analysis\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.26\columnwidth}\raggedright
+\texttt{frobenius\_filtration.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.42\columnwidth}\raggedright
+Frobenius-verified filtration\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\textbf{New modules}\strut
+\end{minipage} & \begin{minipage}[t]{0.26\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.42\columnwidth}\raggedright
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\texttt{decay\_chain.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.26\columnwidth}\raggedright
+Nuclear decay as IMASM winding --- 5 natural series to Frobenius fixed
+point\strut
+\end{minipage} & \begin{minipage}[t]{0.42\columnwidth}\raggedright
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\texttt{belnap\_c4.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.26\columnwidth}\raggedright
+Belnap C4 logic variant --- contradiction-majority lattice\strut
+\end{minipage} & \begin{minipage}[t]{0.42\columnwidth}\raggedright
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\textbf{papers/}\strut
+\end{minipage} & \begin{minipage}[t]{0.26\columnwidth}\raggedright
+3 millennium documents\strut
+\end{minipage} & \begin{minipage}[t]{0.42\columnwidth}\raggedright
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\texttt{all\_millennium\_solved.md}\strut
+\end{minipage} & \begin{minipage}[t]{0.26\columnwidth}\raggedright
+Unified Millennium solution framework\strut
+\end{minipage} & \begin{minipage}[t]{0.42\columnwidth}\raggedright
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\texttt{belnap\_qm.md}\strut
+\end{minipage} & \begin{minipage}[t]{0.26\columnwidth}\raggedright
+Belnap quantum mechanics formalization\strut
+\end{minipage} & \begin{minipage}[t]{0.42\columnwidth}\raggedright
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\texttt{millennium\_barriers.md}\strut
+\end{minipage} & \begin{minipage}[t]{0.26\columnwidth}\raggedright
+Barrier taxonomy across all 7 Millennium Problems\strut
+\end{minipage} & \begin{minipage}[t]{0.42\columnwidth}\raggedright
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\textbf{Utilities}\strut
+\end{minipage} & \begin{minipage}[t]{0.26\columnwidth}\raggedright
+\texttt{kernel.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.42\columnwidth}\raggedright
+Kernel core initialization\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\strut
+\end{minipage} & \begin{minipage}[t]{0.26\columnwidth}\raggedright
+\texttt{pipeline\_fix.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.42\columnwidth}\raggedright
+Pipeline repair utilities\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{key-commands}{%
+\subsubsection{Key commands}\label{key-commands}}
+
+\begin{verbatim}
+# Full genetics test suite (B4 lattice, 64-codon, gene→protein, Phi gate, ParaASM)
+python3 test_genetics.py
+
+# Comprehensive protein & genetics stress test (34 tests, 11 groups)
+python3 rebis.py run stress_test_proteins
+
+# Single gene pipeline
+python3 rebis.py run run_gene_pipeline --gene INS
+
+# Genetic code analysis
+python3 rebis.py run genetic_code
+
+# Antibody design from viral epitopes
+python3 rebis.py run antibody_designer
+
+# PDB validation
+python3 rebis.py run pdb_validator
+
+# Hadron Belnap classification
+python3 rebis.py run hadron_belnap
+python3 rebis.py run exotic_hadron_belnap
+python3 rebis.py run quark_belnap
+\end{verbatim}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{gene-imscriber-gene_imscriber}{%
+\subsection{\texorpdfstring{Gene Imscriber
+(\texttt{gene\_imscriber/})}{Gene Imscriber (gene\_imscriber/)}}\label{gene-imscriber-gene_imscriber}}
+
+The Gene Imscriber provides IG-native genetic compilation --- structural
+types directly to codon optimization, CRISPR guide design, chimera
+construction, and Frobenius-verified base/prime editing.
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+Module & Description\tabularnewline
+\midrule
+\endhead
+\texttt{engine.py} & Core engine --- structural type → codon
+optimization\tabularnewline
+\texttt{genetics\_ig\_prelim.py} & Preliminary IG-to-genetics
+mapping\tabularnewline
+\texttt{genetics\_ig\_promotions.py} & IG promotion paths for
+genetics\tabularnewline
+\texttt{genetics\_qs.py} & Quantum superposition in genetic
+space\tabularnewline
+\texttt{ig\_genetics\_answer.py} & IG-native genetics
+answers\tabularnewline
+\texttt{tuples.py} & Genetic tuple definitions\tabularnewline
+\bottomrule
+\end{longtable}
+
+The Gene Imscriber also contains \texttt{scripts/} with GUIDE-seq
+analysis, base editor stratum analysis, clinical safety pipelines, and
+SRA GUIDE-seq processing.
+
+\begin{verbatim}
+python3 rebis.py run gene --help
+\end{verbatim}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{popular-protein-analysis-popular_protein}{%
+\subsection{\texorpdfstring{Popular Protein Analysis
+(\texttt{popular\_protein/})}{Popular Protein Analysis (popular\_protein/)}}\label{popular-protein-analysis-popular_protein}}
+
+A comparison toolkit for validating SerpentRod predictions against
+crystal structures:
+
+\begin{verbatim}
+python3 rebis.py run compare_exact          # Exact φ/ψ angle comparison
+python3 rebis.py run compare_structures     # Structure-level comparison
+python3 rebis.py run comprehensive_comparison  # Full multi-metric report
+\end{verbatim}
+
+Reference PDB files are in \texttt{pdb/}: 1L2Y, 1UBQ, 1VII, 1ZDD.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{key-concepts}{%
+\subsection{Key Concepts}\label{key-concepts}}
+
+\hypertarget{ig-tuples}{%
+\subsubsection{IG Tuples}\label{ig-tuples}}
+
+Every structural entity carries a 12-primitive tuple. Each position is a
+primitive with a value from its ordinal set. Tuples are the sole
+carriers of structural information --- no external parameters, no
+assumed constants. The catalog (\texttt{shared/IG\_catalog.json})
+contains \textbf{4,027+} verified entries (up from 3,297).
+
+\hypertarget{the-frobenius-condition}{%
+\subsubsection{The Frobenius Condition}\label{the-frobenius-condition}}
+
+\(\mu\circ\delta=\text{id}\). When this holds, the structural type is
+self-consistent --- comultiplication followed by multiplication returns
+the identity. A Frobenius ✅ means the layer's tuple is internally
+coherent. A ❌ means there is a primitive conflict to resolve.
+
+\hypertarget{tiers-ouroboricity}{%
+\subsubsection{Tiers (Ouroboricity)}\label{tiers-ouroboricity}}
+
+Structural types are classified into ouroboricity tiers based on their
+\(\Phi\) (parity/symmetry) and \(\Omega\) (winding) primitives:
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+\begin{minipage}[b]{0.21\columnwidth}\raggedright
+Tier\strut
+\end{minipage} & \begin{minipage}[b]{0.39\columnwidth}\raggedright
+Condition\strut
+\end{minipage} & \begin{minipage}[b]{0.32\columnwidth}\raggedright
+Meaning\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.21\columnwidth}\raggedright
+\(O₀\)\strut
+\end{minipage} & \begin{minipage}[t]{0.39\columnwidth}\raggedright
+\(\Phi \leq 𐑬\), \(\Omega = 𐑷\)\strut
+\end{minipage} & \begin{minipage}[t]{0.32\columnwidth}\raggedright
+No winding, no self-modeling --- trivial\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.21\columnwidth}\raggedright
+\(O₁\)\strut
+\end{minipage} & \begin{minipage}[t]{0.39\columnwidth}\raggedright
+\(\Phi \leq 𐑿\), \(\Omega \geq 𐑴\)\strut
+\end{minipage} & \begin{minipage}[t]{0.32\columnwidth}\raggedright
+Quantum parity, \(\mathbb{Z}_2\) winding --- simple loop\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.21\columnwidth}\raggedright
+\(O₂\)\strut
+\end{minipage} & \begin{minipage}[t]{0.39\columnwidth}\raggedright
+\(\Phi \geq 𐑬\), \(\Omega \geq 𐑭\)\strut
+\end{minipage} & \begin{minipage}[t]{0.32\columnwidth}\raggedright
+Partial symmetry, \(\mathbb{Z}\) winding --- structured loop\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.21\columnwidth}\raggedright
+\(O_∞\)\strut
+\end{minipage} & \begin{minipage}[t]{0.39\columnwidth}\raggedright
+\(\Phi = 𐑹\), \(\Omega \geq 𐑟\), \(\odot\)=⊙\strut
+\end{minipage} & \begin{minipage}[t]{0.32\columnwidth}\raggedright
+Frobenius-special, non-Abelian winding, self-modeling gate open\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{imasm-token-system}{%
+\subsubsection{IMASM Token System}\label{imasm-token-system}}
+
+The IMASM token algebra has 12 tokens organized in semantic families:
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+Token & Category & Chemical Meaning\tabularnewline
+\midrule
+\endhead
+VINIT & Scaffold & Carbon backbone, ring system\tabularnewline
+AFWD & Forward reactivity & Electrophilic site, carbonyl\tabularnewline
+AREV & Reverse reactivity & Nucleophilic site,
+alcohol/amine\tabularnewline
+FFUSE & Fusion site & Bond formation site\tabularnewline
+FSPLIT & Disconnection point & Retrosynthetic cut site\tabularnewline
+EVALT & Acidic & Carboxylic acid, phenol\tabularnewline
+EVALF & Basic & Amine, amidine\tabularnewline
+ENGAGR & Ambident & Nitro, nitrile --- multi-site
+reactivity\tabularnewline
+CLINK & Linker & Conjugated system, spacer\tabularnewline
+TANCH & Terminal anchor & Terminal functional group\tabularnewline
+IFIX & Fixation & Cyclization, ring closure\tabularnewline
+IMSCRIB & Self-imscribing & Aromatic ring, self-consistent
+system\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{dialetheia-triad}{%
+\subsubsection{Dialetheia Triad}\label{dialetheia-triad}}
+
+A compound is \textbf{Dialetheia-complete} when it simultaneously
+contains three IMASM tokens: - \textbf{EVALT} (acidic functional group
+--- carboxylic acid, phenol) - \textbf{EVALF} (basic functional group
+--- amine, amidine) - \textbf{ENGAGR} (ambident functional group ---
+nitro, nitrile)
+
+This triad enables autocatalytic template-directed synthesis --- a
+necessary condition for ⊙ criticality in molecules.
+
+\hypertarget{cross-domain-analogies}{%
+\subsubsection{Cross-Domain Analogies}\label{cross-domain-analogies}}
+
+\hypertarget{because-all-4027-catalog-entries-share-the-same-12-primitive-typing-a-compounds-ig-type-can-be-compared-to-any-other-system-materials-languages-consciousness-states-mathematical-theorems.-this-is-what-makes-the-imasm-compound-pipeline-powerful-a-molecules-structural-fingerprint-reveals-kinship-with-systems-that-no-conventional-chemical-descriptor-could-reach.}{%
+\subsection{Because all 4,027+ catalog entries share the same
+12-primitive typing, a compound's IG type can be compared to any other
+system --- materials, languages, consciousness states, mathematical
+theorems. This is what makes the IMASM compound pipeline powerful: a
+molecule's structural fingerprint reveals kinship with systems that no
+conventional chemical descriptor could
+reach.}\label{because-all-4027-catalog-entries-share-the-same-12-primitive-typing-a-compounds-ig-type-can-be-compared-to-any-other-system-materials-languages-consciousness-states-mathematical-theorems.-this-is-what-makes-the-imasm-compound-pipeline-powerful-a-molecules-structural-fingerprint-reveals-kinship-with-systems-that-no-conventional-chemical-descriptor-could-reach.}}
+
+\hypertarget{common-workflows}{%
+\subsection{Common Workflows}\label{common-workflows}}
+
+\hypertarget{design-a-protein-from-scratch}{%
+\subsubsection{Design a protein from
+scratch}\label{design-a-protein-from-scratch}}
+
+\begin{verbatim}
+# 1. Check where proteins live in the CLINK chain
+python3 rebis.py clink layer cell
+
+# 2. Run SerpentRod on built-in test proteins
+python3 rebis.py run serpentrod
+
+# 3. Generate actionable organism package (includes protein.fasta + protein_coords.pdb)
+python3 rebis.py pipeline actionable
+\end{verbatim}
+
+\hypertarget{design-a-catalytic-site-for-a-molecule}{%
+\subsubsection{Design a catalytic site for a
+molecule}\label{design-a-catalytic-site-for-a-molecule}}
+
+\begin{verbatim}
+# 1. CAS lookup (recommended — resolves molecule identity)
+# 1. Direct retrosynthesis with SMILES input (recommended — exact)
+python3 rebis.py run ch3mpiler --smiles "CN1C=NC2=C1C(=O)N(C(=O)N2C)C" --retrosynthesis
+
+# 2. CAS lookup (also resolves SMILES)
+python3 rebis.py run ch3mpiler_serpentrod_pipeline --cas 58-08-2
+
+# 3. Direct molecule name (may not resolve if name is synthetic)
+python3 rebis.py run ch3mpiler_serpentrod_pipeline --target "ibuprofen"
+
+# 3. Retrosynthetic pair
+python3 rebis.py run ch3mpiler_serpentrod_pipeline --start "salicylic_acid" --target "aspirin"
+
+# 4. JSON output for programmatic use
+python3 rebis.py run ch3mpiler_serpentrod_pipeline --cas 58-08-2 --json
+\end{verbatim}
+
+\hypertarget{encode-a-molecule-as-an-imasm-structural-type}{%
+\subsubsection{Encode a molecule as an IMASM structural
+type}\label{encode-a-molecule-as-an-imasm-structural-type}}
+
+\begin{verbatim}
+# 1. Encode a single compound
+python3 rebis.py imas compound --smiles "CC(=O)OC1=CC=CC=C1C(=O)O"
+
+# 2. Find cross-domain analogies
+python3 rebis.py imas analogies --smiles "CN(C)CCC1=CNC2=CC=CC=C12" --limit 15
+
+# 3. Analyze a reaction
+python3 rebis.py imas reaction --smiles "CC(=O)C1=CC=CC=C1" --product "CC(C1=CC=CC=C1)(C)O"
+
+# 4. Register a new compound for future lookups
+python3 rebis.py imas register --smiles "CC(C)C1=CC=C(C=C1)C(C)C(=O)O" --name "ibuprofen"
+
+# 5. Browse the compound catalog (static)
+less INDEX.md    # §4 — Compound IMASM Catalog
+\end{verbatim}
+
+\hypertarget{find--critical-autocatalytic-molecules}{%
+\subsubsection{Find ⊙-critical autocatalytic
+molecules}\label{find--critical-autocatalytic-molecules}}
+
+\begin{verbatim}
+# 1. Run the ⊙-Finder on DMT
+python3 /home/mrnob0dy666/imsgct/ig-docs/dmt-odot-discovery/odot_finder.py \
+  --smiles "CN(C)CCC1=CNC2=CC=CC=C12" --name "DMT"
+
+# 2. Run in demo mode (all test cases)
+python3 /home/mrnob0dy666/imsgct/ig-docs/dmt-odot-discovery/odot_finder.py
+
+# 3. Explore the discovery documentation
+less /home/mrnob0dy666/imsgct/ig-docs/dmt-odot-discovery/README.md
+\end{verbatim}
+
+\hypertarget{work-with-the-paraconsistent-kernel}{%
+\subsubsection{Work with the paraconsistent
+kernel}\label{work-with-the-paraconsistent-kernel}}
+
+\begin{verbatim}
+# Run the full genetics test suite
+python3 test_genetics.py
+
+# Comprehensive stress test (34 tests across 11 groups)
+python3 rebis.py run stress_test_proteins
+
+# Translate a gene through the 7-stage B4 pipeline
+python3 rebis.py run run_gene_pipeline --gene INS
+
+# Analyze the 64-codon Frobenius-verified genetic code
+python3 rebis.py run genetic_code
+
+# Design a serpent rod protein
+python3 rebis.py run serpent_rod_v2
+\end{verbatim}
+
+\hypertarget{investigate-a-material-type}{%
+\subsubsection{Investigate a material
+type}\label{investigate-a-material-type}}
+
+\begin{verbatim}
+# 1. Browse the materials catalog (static reference)
+less INDEX.md                          # §3 — 8 predefined materials
+
+# 2. Run a dynamic simulation
+python3 rebis.py materials frobenius   # Frobenius closure verification
+python3 rebis.py materials ouroboric   # Crack healing simulation
+
+# 3. Eagle Cycle for O_∞ substrate preparation
+python3 rebis.py materials sophick --name eagle_9_sophick
+
+# 4. Forge the material design file
+python3 rebis.py materials forge --name frobenius_composite
+
+# 5. Run comprehensive materials stress test
+python3 materials/stress_test_materials.py
+
+# 6. Derive material type from molecule
+python3 materials/molecule_material_bridge.py --cas 58-08-2
+\end{verbatim}
+
+\hypertarget{map-an-imasm-sequence-to-clink}{%
+\subsubsection{Map an IMASM sequence to
+CLINK}\label{map-an-imasm-sequence-to-clink}}
+
+\begin{verbatim}
+# 1. Browse the 12 IMASM canonicals (static reference)
+less INDEX.md                          # §2 — 12 canonicals with tuples and tiers
+
+# 2. Inspect a specific canonical's bridge to CLINK (dynamic)
+python3 rebis.py imas bridge --canonical I_Dialetheic_Bootstrap
+
+# 3. Compute activation energy to organism layer
+python3 rebis.py imas energy --canonical I_Dialetheic_Bootstrap --layer L8_Organism
+
+# 4. Monte Carlo Frobenius density estimation
+python3 rebis.py imas hunt --samples 100000
+\end{verbatim}
+
+\hypertarget{analyze-viral-epitopes-for-antibody-design}{%
+\subsubsection{Analyze viral epitopes for antibody
+design}\label{analyze-viral-epitopes-for-antibody-design}}
+
+\begin{verbatim}
+python3 rebis.py run run_antibody
+\end{verbatim}
+
+Produces CDR sequences and structural complementarity scores for each
+epitope target.
+
+\hypertarget{mitochondrial-gene-analysis}{%
+\subsubsection{Mitochondrial gene
+analysis}\label{mitochondrial-gene-analysis}}
+
+\begin{verbatim}
+python3 rebis.py run mito_pipeline
+\end{verbatim}
+
+Processes all 13 MT genes, reports primitive activations (up to 9/12 per
+gene), Frobenius status, and 7-stage B4 pipeline per gene (dna\_gene →
+pre\_mrna → mature\_mrna → nascent\_polypeptide → secondary\_structure →
+tertiary\_structure → quaternary\_structure).
+
+\hypertarget{validate-serpentrod-predictions-against-crystal-structures}{%
+\subsubsection{Validate SerpentRod predictions against crystal
+structures}\label{validate-serpentrod-predictions-against-crystal-structures}}
+
+\begin{verbatim}
+python3 rebis.py run comprehensive_comparison
+python3 rebis.py run compare_exact
+\end{verbatim}
+
+\hypertarget{hadron-particle-physics-classification}{%
+\subsubsection{Hadron / particle physics
+classification}\label{hadron-particle-physics-classification}}
+
+\begin{verbatim}
+python3 rebis.py run hadron_belnap
+python3 rebis.py run exotic_hadron_belnap
+python3 rebis.py run quark_belnap
+\end{verbatim}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{troubleshooting}{%
+\subsection{Troubleshooting}\label{troubleshooting}}
+
+\textbf{\texttt{verify} shows ❌ for a module} Run
+\texttt{python3\ -c\ "from\ \textless{}module\textgreater{}\ import\ *"}
+directly to see the import error. Most common cause: a dependency
+package not installed. Fix:
+
+\begin{verbatim}
+uv pip install -e /home/mrnob0dy666/imsgct/omonad_OS
+uv pip install -e /home/mrnob0dy666/imsgct/imasmic_core
+\end{verbatim}
+
+\textbf{\texttt{omonad\_bridge} shows
+\texttt{omonad\_available:\ false}}
+
+\begin{verbatim}
+uv pip install -e /home/mrnob0dy666/imsgct/omonad_OS
+uv pip install -e /home/mrnob0dy666/imsgct/imasmic_core
+\end{verbatim}
+
+\textbf{\texttt{pipeline\ bridges} shows ❌ for \texttt{biology\_sim} or
+\texttt{ouroboric\_telomere}} These two bridges are structurally
+excluded --- modules exist on disk but are not wired to the bridge API.
+Not a crash condition; the pipeline runs without them.
+
+\textbf{\texttt{imas\ compound} fails with \texttt{ModuleNotFoundError}}
+Ensure the package is installed:
+
+\begin{verbatim}
+uv pip install -e /home/mrnob0dy666/imsgct/red-hot_rebis
+\end{verbatim}
+
+The compound pipeline imports from \texttt{imas.compound\_imasm},
+\texttt{imas.arranger}, and \texttt{imas.ig\_bridge} --- all part of the
+Rebis package.
+
+\textbf{\texttt{imas\ analogies} returns fewer results than
+\texttt{-\/-limit}} The analogies search filters by structural distance.
+If fewer neighbors exist within d ≤ 5, the result set will be smaller.
+Try a higher limit. The compound must first be encodable (valid SMILES
+with detectable functional groups).
+
+\textbf{\texttt{imas\ reaction} misclassifies a reaction} The reaction
+classifier uses token delta analysis (AFWD→AREV swap for reductions,
+etc.). Unusual reaction mechanisms may fall outside the 7 built-in
+classes. Check the raw token delta for structural insight.
+
+\textbf{RDKit import errors (crystal designer, odot\_finder)} RDKit is
+optional --- needed only for \texttt{molecular\_crystal\_designer.py}
+and \texttt{odot\_finder.py}. Install with:
+
+\begin{verbatim}
+uv pip install rdkit-pypi
+\end{verbatim}
+
+\textbf{SerpentRod accuracy below 100\%} Fragment naming accuracy
+(83--88\%) reflects genuine structural ambiguity in cleavage products.
+SP accuracy should be 100\% on the standard test set; below that
+indicates non-canonical signal peptide architecture in the test
+sequence.
+
+\textbf{Ch3mpiler retrosynthesis shows \texttt{C1=CC=C(C=C1)CC(C)C(=O)O}
+for all precursors} This is the old placeholder SMILES --- the target
+name couldn't be resolved. Use
+\texttt{-\/-smiles\ "\textless{}exact\ SMILES\textgreater{}"} to provide
+the molecular structure directly. The
+\texttt{bond\_fragment\_integrator.py} will then cut real bonds and
+display real fragment SMILES. If the target name does resolve
+(e.g.~\texttt{-\/-target\ aspirin}), SMILES are auto-resolved via
+OPSIN/PubChem. A bold red error message now appears when name resolution
+fails.
+
+\textbf{Ch3mpiler-SerpentRod produces identical sites for different
+molecules} This was the pre-v4 MAX fusion bug. Update to the latest
+pipeline:
+
+\begin{verbatim}
+cd /home/mrnob0dy666/imsgct/red-hot_rebis
+git pull  # or ensure rhr_p4rky/ch3mpiler_serpentrod_pipeline.py has v4 weighted fusion
+\end{verbatim}
+
+Verify differentiation with:
+
+\begin{verbatim}
+python3 rebis.py run ch3mpiler_serpentrod_pipeline --cas 58-08-2  # caffeine
+python3 rebis.py run ch3mpiler_serpentrod_pipeline --cas 17699-14-8  # tricyclic sesquiterpene
+\end{verbatim}
+
+Different AA sequences and catalytic triads confirm the fix.
+
+\textbf{Genetics modules crash on unknown nucleotides} Fixed in v2.3.0
+--- \texttt{genetics\_b4.py} \texttt{nucleotide\_to\_belnap} returns
+\texttt{Belnap.B} for X/N/R/Y/?. \texttt{gene\_to\_protein\_pipeline.py}
+handles empty/short sequences gracefully.
+
+\textbf{\texttt{clink\ layer} gives ``No layer matching\ldots{}''} Use a
+substring of the official layer name from INDEX.md §1 or
+\texttt{python3\ rebis.py\ clink\ layer\ -\/-help}. Examples:
+\texttt{quark} → \texttt{Frustrated\ Belnap5\ (Quarks)}, \texttt{tissue}
+→ \texttt{Tissue/Organ}, \texttt{meiosis} → \texttt{Meiosis\ (Gametes)}.
+
+\textbf{\texttt{materials\ forge} gives usage without generating} Always
+specify \texttt{-\/-name\ \textless{}material\textgreater{}} or
+\texttt{-\/-all}. Running without a name prints the usage message.
+
+\textbf{\texttt{materials\ sophick} or \texttt{materials\ exactor} shows
+usage prompt} These now require \texttt{-\/-name}. Run with
+\texttt{-\/-help} to see valid name options, or browse INDEX.md §3.
+
+\textbf{\texttt{run} target not found} Use
+\texttt{python3\ rebis.py\ run\ list} to see all 39 discoverable
+targets. Some targets require the package to be installed
+(\texttt{uv\ pip\ install\ -e\ .}).
+
+\textbf{\texttt{ModuleNotFoundError:\ No\ module\ named\ \textquotesingle{}rhr\_p4rky\textquotesingle{}}}
+The rhr\_p4rky package must be installed:
+
+\begin{verbatim}
+uv pip install -e /home/mrnob0dy666/imsgct/red-hot_rebis
+\end{verbatim}
+
+\textbf{Paraconsistent kernel tests fail} Ensure the B4 lattice modules
+are importable:
+
+\begin{verbatim}
+python3 -c "from rhr_p4rky.belnap import BelnapValue; print('OK')"
+\end{verbatim}
+
+\textbf{Stress tests fail} Run directly to see detailed tracebacks:
+
+\begin{verbatim}
+python3 stress_test_proteins.py          # Protein & genetics (34 tests)
+python3 materials/stress_test_materials.py  # Materials (26 tests)
+\end{verbatim}
+
+Individual test failures report the exact module, function, and
+exception.
+
+\textbf{Where did \texttt{clink\ report}, \texttt{clink\ list},
+\texttt{imas\ report}, \texttt{materials\ list},
+\texttt{materials\ report} go?} These static-data commands were removed
+from \texttt{rebis.py}. All their data now lives in \textbf{INDEX.md}
+--- a plain-text browsable reference. Every removed command's
+\texttt{-\/-help} points to the relevant INDEX.md section.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{at-ars-therapeutica}{%
+\subsubsection{\texorpdfstring{\texttt{at} ---
+Ars\,Therapeutica}{at --- Ars\,Therapeutica}}\label{at-ars-therapeutica}}
+
+Grammar-derived optimal therapy design and structural diagnosis. Maps
+diseases onto the 12-primitive crystal, computes structural distance to
+healthy type, and generates the promotion path (therapy protocol) to
+close the gap.
+
+\begin{verbatim}
+python3 rebis.py at <subcommand> [args...]
+\end{verbatim}
+
+\hypertarget{at-list}{%
+\paragraph{\texorpdfstring{\texttt{at\ list}}{at list}}\label{at-list}}
+
+List all available therapies with structural diagnosis data.
+
+\begin{verbatim}
+python3 rebis.py at list
+\end{verbatim}
+
+Output shows each therapy's name, structural distance (d) to the healthy
+state, tier promotion (e.g.~O₀→O₂), and the primitives that need
+promotion (Δ). Currently 10 therapies: schizophrenia, hiv, mrsa, mdd
+(major depressive disorder), pcos, cf (cystic fibrosis),
+gout\_elimination, gout\_combined, gout\_holistic, homeopathy.
+
+\hypertarget{at-diagnose-disease}{%
+\paragraph{\texorpdfstring{\texttt{at\ diagnose\ \textless{}disease\textgreater{}}}{at diagnose \textless disease\textgreater{}}}\label{at-diagnose-disease}}
+
+Show full structural diagnosis --- the disease's 12-primitive tuple, its
+distance from healthy/generic human, and the specific primitive
+conflicts.
+
+\begin{verbatim}
+python3 rebis.py at diagnose schizophrenia
+python3 rebis.py at diagnose mrsa
+python3 rebis.py at diagnose cf
+\end{verbatim}
+
+Output includes: disease tuple, healthy tuple, per-primitive conflict
+list, structural distance, and tier assessment.
+
+\hypertarget{at-therapy-disease}{%
+\paragraph{\texorpdfstring{\texttt{at\ therapy\ \textless{}disease\textgreater{}}}{at therapy \textless disease\textgreater{}}}\label{at-therapy-disease}}
+
+Show the grammar-derived therapy protocol --- the exact promotion path
+from disease state to healthy state.
+
+\begin{verbatim}
+python3 rebis.py at therapy schizophrenia
+python3 rebis.py at therapy mrsa
+python3 rebis.py at therapy hiv
+\end{verbatim}
+
+Output lists each primitive promotion step with the structural operation
+required (e.g., φ̂: 𐑢→⊙, Ħ: 𐑓→𐑫), and compounds/molecules that effect
+that promotion.
+
+\hypertarget{at-compare-type_a-type_b}{%
+\paragraph{\texorpdfstring{\texttt{at\ compare\ \textless{}type\_a\textgreater{}\ \textless{}type\_b\textgreater{}}}{at compare \textless type\_a\textgreater{} \textless type\_b\textgreater{}}}\label{at-compare-type_a-type_b}}
+
+Compare two structural types --- show per-primitive alignment and
+structural distance.
+
+\begin{verbatim}
+python3 rebis.py at compare schizophrenia mdd
+python3 rebis.py at compare hiv mrsa
+\end{verbatim}
+
+\hypertarget{at-tensor-type_a-type_b}{%
+\paragraph{\texorpdfstring{\texttt{at\ tensor\ \textless{}type\_a\textgreater{}\ \textless{}type\_b\textgreater{}}}{at tensor \textless type\_a\textgreater{} \textless type\_b\textgreater{}}}\label{at-tensor-type_a-type_b}}
+
+Compute the tensor product of two structural types --- the composite's
+absorbing structural type (⊙\_3 rule applies).
+
+\begin{verbatim}
+python3 rebis.py at tensor schizophrenia antidepressant
+python3 rebis.py at tensor hiv antiviral
+\end{verbatim}
+
+\hypertarget{at-meet-type_a-type_b}{%
+\paragraph{\texorpdfstring{\texttt{at\ meet\ \textless{}type\_a\textgreater{}\ \textless{}type\_b\textgreater{}}}{at meet \textless type\_a\textgreater{} \textless type\_b\textgreater{}}}\label{at-meet-type_a-type_b}}
+
+Compute the meet (greatest lower bound) of two structural types --- the
+shared structural floor.
+
+\begin{verbatim}
+python3 rebis.py at meet schizophrenia mdd
+\end{verbatim}
+
+\hypertarget{at-spectrum-type}{%
+\paragraph{\texorpdfstring{\texttt{at\ spectrum\ \textless{}type\textgreater{}}}{at spectrum \textless type\textgreater{}}}\label{at-spectrum-type}}
+
+Show the psychiatric spectrum mapping for a structural type --- how it
+positions across mental health dimensions.
+
+\begin{verbatim}
+python3 rebis.py at spectrum schizophrenia
+python3 rebis.py at spectrum mdd
+\end{verbatim}
+
+\hypertarget{at-operate-tuple-operation}{%
+\paragraph{\texorpdfstring{\texttt{at\ operate\ \textless{}tuple\textgreater{}\ \textless{}operation\textgreater{}}}{at operate \textless tuple\textgreater{} \textless operation\textgreater{}}}\label{at-operate-tuple-operation}}
+
+Apply a structural operation to a comma-separated 12-tuple. Operations
+include: \texttt{calcination}, \texttt{dissolution},
+\texttt{separation}, \texttt{conjunction}, \texttt{fermentation},
+\texttt{distillation}, \texttt{coagulation}.
+
+\begin{verbatim}
+python3 rebis.py at operate --tuple "𐑼,𐑡,𐑩,𐑗,𐑱,𐑺,𐑲,𐑝,𐑢,𐑓,𐑙,𐑷" --operation calcination
+\end{verbatim}
+
+\hypertarget{scripts-1}{%
+\subsubsection{\texorpdfstring{\texttt{scripts}}{scripts}}\label{scripts-1}}
+
+Run standalone scripts that are not fully integrated as
+\texttt{rebis.py} subcommands. These scripts live in \texttt{scripts/}
+and are callable via this unified interface.
+
+\begin{verbatim}
+python3 rebis.py scripts <subcommand> [script_name] [args...]
+\end{verbatim}
+
+\hypertarget{scripts-list}{%
+\paragraph{\texorpdfstring{\texttt{scripts\ list}}{scripts list}}\label{scripts-list}}
+
+List all available scripts with line counts.
+
+\begin{verbatim}
+python3 rebis.py scripts list
+\end{verbatim}
+
+Shows each script name and its line count. Currently \textasciitilde21
+scripts in \texttt{scripts/} including:
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+Script & Description\tabularnewline
+\midrule
+\endhead
+\texttt{run\_antibody*} & Antibody CDR designer
+(interactive)\tabularnewline
+\texttt{mito\_pipeline*} & Mitochondrial genome pipeline
+(v1--v3)\tabularnewline
+\texttt{run\_msa} & Multiple sequence alignment\tabularnewline
+\texttt{run\_pdb\_validation} & PDB structure validation\tabularnewline
+\texttt{analyze\_validation} & Validation results
+analyzer\tabularnewline
+\texttt{gen\_univ\_map} & Diaschizic IUPAC generator\tabularnewline
+\texttt{frobenius\_exact\_design*} & Frobenius exact design
+tools\tabularnewline
+\texttt{compute\_promotions} & Promotion path computer\tabularnewline
+\texttt{psychedelic\_bridge*} & Psychedelic compound
+bridge\tabularnewline
+\texttt{serpentrod\_protein*} & SerpentRod standalone
+scripts\tabularnewline
+\texttt{ghost\_typer} & Demo segment runner for screen
+recording\tabularnewline
+\texttt{operations} & Alchemical operations\tabularnewline
+\texttt{stress\_test\_proteins} & 34-test protein \& genetics stress
+test\tabularnewline
+\texttt{test\_genetics} & Full genetics test suite\tabularnewline
+\texttt{\_demo\_*} & Demo scripts for each pillar\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{scripts-run-name-args...}{%
+\paragraph{\texorpdfstring{\texttt{scripts\ run\ \textless{}name\textgreater{}\ {[}args...{]}}}{scripts run \textless name\textgreater{} {[}args...{]}}}\label{scripts-run-name-args...}}
+
+Run a script by name, optionally forwarding arguments.
+
+\begin{verbatim}
+python3 rebis.py scripts list                          # Show all scripts
+python3 rebis.py scripts run run_antibody               # Interactive antibody designer
+python3 rebis.py scripts run mito_pipeline              # MT gene pipeline
+python3 rebis.py scripts run test_genetics              # Full B4 genetics suite
+python3 rebis.py scripts run test_genetics --b4         # B4 lattice tests only
+python3 rebis.py scripts run test_genetics --quick      # Quick test subset
+python3 rebis.py scripts run stress_test_proteins       # 34-test stress suite
+python3 rebis.py scripts run ghost_typer                # Demo typing (slow)
+python3 rebis.py scripts run ghost_typer --fast         # Demo typing (fast)
+python3 rebis.py scripts run ghost_typer --section 5    # Single section
+python3 rebis.py scripts run operations                 # Alchemical operations
+python3 rebis.py scripts run frobenius_exact_design     # Frobenius exact design
+python3 rebis.py scripts run compute_promotions         # Promotion paths
+python3 rebis.py scripts run run_msa                    # MSA analysis
+python3 rebis.py scripts run run_pdb_validation         # PDB validation
+python3 rebis.py scripts run analyze_validation         # Validation results
+python3 rebis.py scripts run gen_univ_map              # IUPAC generator
+python3 rebis.py scripts run psychedelic_bridge         # Psychedelic bridge
+
+---
+
+### `status` — Expanded
+
+Shows all platform modules with file size, line count, and health check.
+
+```bash
+python3 rebis.py status
+\end{verbatim}
+
+Sample output (abbreviated):
+
+\begin{verbatim}
+╭──────────────────────┬───────┬─────────┬─────────────╮
+│ Package              │ Files │    Size │ Root file   │
+├──────────────────────┼───────┼─────────┼─────────────┤
+│ ✅ ch3mpiler         │    19 │ 355,212 │ __init__.py │
+│ ✅ clink             │    33 │ 685,758 │ __init__.py │
+│ ✅ imas              │    11 │ 211,815 │ __init__.py │
+│ ✅ materials         │    21 │ 551,018 │ __init__.py │
+│ ✅ rhr_p4rky         │    32 │ 390,060 │ __init__.py │
+│ ✅ serpentrod        │     3 │ 103,065 │ __init__.py │
+│ ✅ shared            │     5 │  65,970 │ __init__.py │
+│ ... (14 packages)    │       │         │             │
+╰──────────────────────┴───────┴─────────┴─────────────╯
+✅ shared/primitives.py: 13,467 bytes
+✅ shared/IG_catalog.json: 2,050,279 bytes
+14 packages + 21 scripts discovered
+\end{verbatim}
+
+Use this as your first command when setting up --- all packages should
+show ✅. A ❌ means an import failure, usually from a missing dependency
+(see Troubleshooting).
+
+\hypertarget{verify-expanded}{%
+\subsubsection{\texorpdfstring{\texttt{verify} ---
+Expanded}{verify --- Expanded}}\label{verify-expanded}}
+
+Imports every module and reports pass/fail. Includes Frobenius closure
+checks where applicable.
+
+\begin{verbatim}
+python3 rebis.py verify
+\end{verbatim}
+
+This checks: - All 14 packages import cleanly - All \texttt{rhr\_p4rky/}
+modules import (32 modules) - All shared utilities load - No circular
+imports
+
+Expected: 15+ lines all showing ✅. Run after any install, code change,
+or \texttt{git\ pull}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{comprehensive-run-target-reference}{%
+\subsection{\texorpdfstring{Comprehensive \texttt{run} Target
+Reference}{Comprehensive run Target Reference}}\label{comprehensive-run-target-reference}}
+
+Discoverable via
+\texttt{rebis.py\ run\ \textless{}target\textgreater{}}:
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+\begin{minipage}[b]{0.24\columnwidth}\raggedright
+Target\strut
+\end{minipage} & \begin{minipage}[b]{0.27\columnwidth}\raggedright
+Command\strut
+\end{minipage} & \begin{minipage}[b]{0.40\columnwidth}\raggedright
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{serpent\_rod}\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright
+\texttt{rebis.py\ run\ serpent\_rod}\strut
+\end{minipage} & \begin{minipage}[t]{0.40\columnwidth}\raggedright
+V5 protein prediction --- test set\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{ch3mpiler}\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright
+\texttt{rebis.py\ run\ ch3mpiler\ -\/-smiles\ "\textless{}SMILES\textgreater{}"}\strut
+\end{minipage} & \begin{minipage}[t]{0.40\columnwidth}\raggedright
+Retrosynthetic compiler\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{ch3mpiler\_serpentrod\_pipeline}\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright
+\texttt{rebis.py\ run\ ch3mpiler\_serpentrod\_pipeline\ -\/-cas\ \textless{}num\textgreater{}}\strut
+\end{minipage} & \begin{minipage}[t]{0.40\columnwidth}\raggedright
+Catalytic site design\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{antibody\_designer}\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright
+\texttt{rebis.py\ run\ antibody\_designer}\strut
+\end{minipage} & \begin{minipage}[t]{0.40\columnwidth}\raggedright
+Advanced antibody design\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{gene\_to\_protein\_pipeline}\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright
+\texttt{rebis.py\ run\ gene\_to\_protein\_pipeline\ -\/-test}\strut
+\end{minipage} & \begin{minipage}[t]{0.40\columnwidth}\raggedright
+Full 7-stage pipeline\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{psychedelic\_bridge}\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright
+\texttt{rebis.py\ run\ psychedelic\_bridge}\strut
+\end{minipage} & \begin{minipage}[t]{0.40\columnwidth}\raggedright
+Psychedelic compound bridge\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{diaschizic\_iupac}\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright
+\texttt{rebis.py\ run\ diaschizic\_iupac}\strut
+\end{minipage} & \begin{minipage}[t]{0.40\columnwidth}\raggedright
+IUPAC generator\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{decay\_chain}\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright
+\texttt{rebis.py\ run\ decay\_chain}\strut
+\end{minipage} & \begin{minipage}[t]{0.40\columnwidth}\raggedright
+Nuclear decay IMASM analysis\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+Use \texttt{rebis.py\ run\ list} to see the live list. Currently 8
+discoverable targets.
+
+\hypertarget{direct-run-scripts-not-discoverable-via-rebis.py-run}{%
+\subsubsection{\texorpdfstring{Direct-run Scripts (not discoverable via
+\texttt{rebis.py\ run})}{Direct-run Scripts (not discoverable via rebis.py run)}}\label{direct-run-scripts-not-discoverable-via-rebis.py-run}}
+
+Use \texttt{python3\ scripts/\textless{}name\textgreater{}.py} or
+\texttt{python3\ scripts/\textless{}name\textgreater{}.py\ {[}args{]}}:
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+\begin{minipage}[b]{0.17\columnwidth}\raggedright
+Script\strut
+\end{minipage} & \begin{minipage}[b]{0.24\columnwidth}\raggedright
+Directory\strut
+\end{minipage} & \begin{minipage}[b]{0.19\columnwidth}\raggedright
+Command\strut
+\end{minipage} & \begin{minipage}[b]{0.28\columnwidth}\raggedright
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.17\columnwidth}\raggedright
+\texttt{serpentrod}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{serpentrod/}\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright
+\texttt{python3\ -m\ serpentrod.protein\_v5}\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright
+V5 protein prediction\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.17\columnwidth}\raggedright
+\texttt{stress\_test\_proteins}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{scripts/}\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright
+\texttt{python3\ scripts/stress\_test\_proteins.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright
+34-test cross-pipeline stress test\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.17\columnwidth}\raggedright
+\texttt{test\_genetics}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{scripts/}\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright
+\texttt{python3\ scripts/test\_genetics.py\ {[}-\/-b4/-\/-quick{]}}\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright
+B4 lattice genetics test suite\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.17\columnwidth}\raggedright
+\texttt{ghost\_typer}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{scripts/}\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright
+\texttt{python3\ scripts/ghost\_typer.py\ {[}-\/-fast/-\/-section\ N{]}}\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright
+Demo typing for screen recording\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.17\columnwidth}\raggedright
+\texttt{operations}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{scripts/}\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright
+\texttt{python3\ scripts/operations.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright
+Alchemical operations\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.17\columnwidth}\raggedright
+\texttt{frobenius\_exact\_design}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{scripts/}\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright
+\texttt{python3\ scripts/frobenius\_exact\_design.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright
+Frobenius exact design\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.17\columnwidth}\raggedright
+\texttt{compute\_promotions}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{scripts/}\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright
+\texttt{python3\ scripts/compute\_promotions.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright
+Promotion path computer\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.17\columnwidth}\raggedright
+\texttt{run\_antibody}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{scripts/}\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright
+\texttt{python3\ scripts/run\_antibody.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright
+Antibody designer (interactive)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.17\columnwidth}\raggedright
+\texttt{run\_pdb\_validation}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{scripts/}\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright
+\texttt{python3\ scripts/run\_pdb\_validation.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright
+PDB structure validation\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.17\columnwidth}\raggedright
+\texttt{analyze\_validation}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{scripts/}\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright
+\texttt{python3\ scripts/analyze\_validation.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright
+Validation results analyzer\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.17\columnwidth}\raggedright
+\texttt{gen\_univ\_map}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{scripts/}\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright
+\texttt{python3\ scripts/gen\_univ\_map.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright
+Diaschizic IUPAC generator\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.17\columnwidth}\raggedright
+\texttt{run\_msa}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{scripts/}\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright
+\texttt{python3\ scripts/run\_msa.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright
+Multiple sequence alignment\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.17\columnwidth}\raggedright
+\texttt{mito\_pipeline{[}\_v2,\_v3{]}}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{scripts/}\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright
+\texttt{python3\ scripts/mito\_pipeline.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright
+Mitochondrial genome pipeline\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.17\columnwidth}\raggedright
+\texttt{hadron\_belnap}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{rhr\_p4rky/}\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright
+\texttt{python3\ -m\ rhr\_p4rky.hadron\_belnap}\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright
+Hadronic Belnap classification\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.17\columnwidth}\raggedright
+\texttt{quark\_belnap}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{rhr\_p4rky/}\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright
+\texttt{python3\ -m\ rhr\_p4rky.quark\_belnap}\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright
+Quark Belnap analysis\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.17\columnwidth}\raggedright
+\texttt{gene}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{gene\_imscriber/}\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright
+\texttt{python3\ -m\ gene\_imscriber.engine}\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright
+IG-native genetic compiler\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.17\columnwidth}\raggedright
+\texttt{demo\_*}\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{demo\_scripts/}\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\raggedright
+\texttt{python3\ demo\_scripts/\_demo\_\textless{}name\textgreater{}.py}\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright
+Per-pillar demos\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{run-examples}{%
+\subsubsection{Run Examples}\label{run-examples}}
+
+Retrosynthesis with exact fragment SMILES:
+
+\begin{verbatim}
+python3 rebis.py run ch3mpiler --smiles "CC(=O)OC1=CC=CC=C1C(=O)O" --depth 3
+\end{verbatim}
+
+SerpentRod protein prediction:
+
+\begin{verbatim}
+python3 rebis.py run serpent_rod --seq "MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTR"
+# Or directly:
+python3 -m serpentrod.protein_v5
+\end{verbatim}
+
+Full genetics test suite:
+
+\begin{verbatim}
+python3 scripts/test_genetics.py --quick
+python3 scripts/stress_test_proteins.py
+\end{verbatim}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{alchemy-expanded-subcommand-reference}{%
+\subsubsection{\texorpdfstring{\texttt{alchemy} --- Expanded Subcommand
+Reference}{alchemy --- Expanded Subcommand Reference}}\label{alchemy-expanded-subcommand-reference}}
+
+The alchemical bridge maps the 7 classical stages of the Great Work onto
+12-primitive IG structural operations. 19 subcommands covering analysis,
+design, synthesis, and retro-synthesis.
+
+\begin{verbatim}
+python3 rebis.py alchemy <subcommand> [options]
+\end{verbatim}
+
+\hypertarget{analysis}{%
+\paragraph{Analysis}\label{analysis}}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+\begin{minipage}[b]{0.32\columnwidth}\raggedright
+Subcommand\strut
+\end{minipage} & \begin{minipage}[b]{0.35\columnwidth}\raggedright
+Description\strut
+\end{minipage} & \begin{minipage}[b]{0.24\columnwidth}\raggedright
+Example\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.32\columnwidth}\raggedright
+\texttt{report}\strut
+\end{minipage} & \begin{minipage}[t]{0.35\columnwidth}\raggedright
+Full bridge status --- all available scroll treatises, tiers, molecular
+analogs\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{rebis.py\ alchemy\ report}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.32\columnwidth}\raggedright
+\texttt{tier\ \textless{}name\textgreater{}}\strut
+\end{minipage} & \begin{minipage}[t]{0.35\columnwidth}\raggedright
+Analyze a specific tier --- structural type, molecular analogs,
+operations\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{rebis.py\ alchemy\ tier\ O\_inf\_self\_modeling}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.32\columnwidth}\raggedright
+\texttt{scroll-family}\strut
+\end{minipage} & \begin{minipage}[t]{0.35\columnwidth}\raggedright
+List the scroll family --- treatises where φ̂=⊙ and Ω=ℤ\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{rebis.py\ alchemy\ scroll-family}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.32\columnwidth}\raggedright
+\texttt{suggest\ \textless{}tier\textgreater{}}\strut
+\end{minipage} & \begin{minipage}[t]{0.35\columnwidth}\raggedright
+Suggest molecular designs from a structural tier\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{rebis.py\ alchemy\ suggest\ O1\_pedagogical}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.32\columnwidth}\raggedright
+\texttt{trace\ \textless{}treatise\textgreater{}}\strut
+\end{minipage} & \begin{minipage}[t]{0.35\columnwidth}\raggedright
+Trace the Grand Sequence on a treatise's tuple --- step-by-step\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{rebis.py\ alchemy\ trace\ O\_inf\_self\_modeling}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.32\columnwidth}\raggedright
+\texttt{decode\ \textless{}term\textgreater{}}\strut
+\end{minipage} & \begin{minipage}[t]{0.35\columnwidth}\raggedright
+Decode a modern scientific term into its alchemical equivalent\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{rebis.py\ alchemy\ decode\ "electron\ microscope"}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.32\columnwidth}\raggedright
+\texttt{learn\ \textless{}modern\textgreater{}}\strut
+\end{minipage} & \begin{minipage}[t]{0.35\columnwidth}\raggedright
+Learn a modern term --- map it to the alchemical framework\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{rebis.py\ alchemy\ learn\ -\/-modern\ "catalyst"}\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{molecular-design}{%
+\paragraph{Molecular Design}\label{molecular-design}}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+\begin{minipage}[b]{0.32\columnwidth}\raggedright
+Subcommand\strut
+\end{minipage} & \begin{minipage}[b]{0.35\columnwidth}\raggedright
+Description\strut
+\end{minipage} & \begin{minipage}[b]{0.24\columnwidth}\raggedright
+Example\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.32\columnwidth}\raggedright
+\texttt{alchemical-mol\ \textless{}smiles\textgreater{}}\strut
+\end{minipage} & \begin{minipage}[t]{0.35\columnwidth}\raggedright
+Analyze a SMILES string through the alchemical bridge\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{rebis.py\ alchemy\ alchemical-mol\ "CN1C=NC2=C1C(=O)N(C(=O)N2C)C"}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.32\columnwidth}\raggedright
+\texttt{retro\ \textless{}smiles\textgreater{}}\strut
+\end{minipage} & \begin{minipage}[t]{0.35\columnwidth}\raggedright
+Alchemical retrosynthesis --- trace a molecule's formation path\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{rebis.py\ alchemy\ retro\ "CC(=O)OC1=CC=CC=C1C(=O)O"}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.32\columnwidth}\raggedright
+\texttt{host\ \textless{}smiles\textgreater{}}\strut
+\end{minipage} & \begin{minipage}[t]{0.35\columnwidth}\raggedright
+Host-guest analysis --- check if a molecule is a suitable host\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{rebis.py\ alchemy\ host\ "C1=CC=C(C=C1)C2=CC=CC=C2"}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.32\columnwidth}\raggedright
+\texttt{bind\ \textless{}smiles\textgreater{}}\strut
+\end{minipage} & \begin{minipage}[t]{0.35\columnwidth}\raggedright
+Guest binding analysis\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{rebis.py\ alchemy\ bind\ -\/-guest\ "CCO"}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.32\columnwidth}\raggedright
+\texttt{zosimos\ \textless{}name\textgreater{}}\strut
+\end{minipage} & \begin{minipage}[t]{0.35\columnwidth}\raggedright
+Zosimos procedure --- 7-stage alchemical synthesis path\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{rebis.py\ alchemy\ zosimos\ aspirin}\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{operations}{%
+\paragraph{Operations}\label{operations}}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+\begin{minipage}[b]{0.32\columnwidth}\raggedright
+Subcommand\strut
+\end{minipage} & \begin{minipage}[b]{0.35\columnwidth}\raggedright
+Description\strut
+\end{minipage} & \begin{minipage}[b]{0.24\columnwidth}\raggedright
+Example\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.32\columnwidth}\raggedright
+\texttt{operate}\strut
+\end{minipage} & \begin{minipage}[t]{0.35\columnwidth}\raggedright
+Apply an alchemical operation to a tuple\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{rebis.py\ alchemy\ operate\ -\/-tuple\ "𐑼,𐑡,𐑩,𐑗,𐑱,𐑺,..."\ -\/-operation\ calcination}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.32\columnwidth}\raggedright
+\texttt{greenfire}\strut
+\end{minipage} & \begin{minipage}[t]{0.35\columnwidth}\raggedright
+Analyze green fire potential of a substrate\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{rebis.py\ alchemy\ greenfire\ -\/-substrate\ "CCO"}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.32\columnwidth}\raggedright
+\texttt{wavelength}\strut
+\end{minipage} & \begin{minipage}[t]{0.35\columnwidth}\raggedright
+Compute alchemical wavelength of a treatise\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{rebis.py\ alchemy\ wavelength}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.32\columnwidth}\raggedright
+\texttt{portico}\strut
+\end{minipage} & \begin{minipage}[t]{0.35\columnwidth}\raggedright
+Portico analysis --- structural entry points\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{rebis.py\ alchemy\ portico}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.32\columnwidth}\raggedright
+\texttt{stilling}\strut
+\end{minipage} & \begin{minipage}[t]{0.35\columnwidth}\raggedright
+Stilling analysis --- equilibration pathways\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{rebis.py\ alchemy\ stilling}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.32\columnwidth}\raggedright
+\texttt{ladder}\strut
+\end{minipage} & \begin{minipage}[t]{0.35\columnwidth}\raggedright
+Ladder analysis --- tier climbing paths\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{rebis.py\ alchemy\ ladder}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.32\columnwidth}\raggedright
+\texttt{grand-sequence}\strut
+\end{minipage} & \begin{minipage}[t]{0.35\columnwidth}\raggedright
+Full grand sequence --- traverse all 7 operations\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{rebis.py\ alchemy\ grand-sequence}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.32\columnwidth}\raggedright
+\texttt{key\ \textless{}n\textgreater{}}\strut
+\end{minipage} & \begin{minipage}[t]{0.35\columnwidth}\raggedright
+Show key number n (1--12) --- each maps to a primitive\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{rebis.py\ alchemy\ key\ 9} (φ̂=⊙)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.32\columnwidth}\raggedright
+\texttt{opus}\strut
+\end{minipage} & \begin{minipage}[t]{0.35\columnwidth}\raggedright
+The Great Work summary --- show the full opus\strut
+\end{minipage} & \begin{minipage}[t]{0.24\columnwidth}\raggedright
+\texttt{rebis.py\ alchemy\ opus}\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{cdxml-expanded-subcommand-reference}{%
+\subsubsection{\texorpdfstring{\texttt{cdxml} --- Expanded Subcommand
+Reference}{cdxml --- Expanded Subcommand Reference}}\label{cdxml-expanded-subcommand-reference}}
+
+Generate, verify, and clean CDXML (ChemDraw XML) files for molecules,
+aptamers, and materials.
+
+\begin{verbatim}
+python3 rebis.py cdxml <subcommand> [options]
+\end{verbatim}
+
+\hypertarget{cdxml-generate}{%
+\paragraph{\texorpdfstring{\texttt{cdxml\ generate}}{cdxml generate}}\label{cdxml-generate}}
+
+Generate CDXML files from SMILES or predefined molecule names.
+
+\begin{verbatim}
+# Generate all CDXML in batch
+python3 rebis.py cdxml generate --all
+
+# Generate only small molecules
+python3 rebis.py cdxml generate --molecules-only
+
+# Single molecule from SMILES
+python3 rebis.py cdxml generate --smiles "CN1C=NC2=C1C(=O)N(C(=O)N2C)C" --name caffeine
+
+# Single molecule from predefined library
+python3 rebis.py cdxml generate --molecule 5-nitro-bufotenin
+
+# Custom annotation on canvas
+python3 rebis.py cdxml generate --smiles "CCO" --name ethanol --annotation "C2H5OH - Solvent"
+
+# Print CDXML to stdout
+python3 rebis.py cdxml generate --smiles "CCO" --print
+\end{verbatim}
+
+\hypertarget{cdxml-verify}{%
+\paragraph{\texorpdfstring{\texttt{cdxml\ verify}}{cdxml verify}}\label{cdxml-verify}}
+
+Verify a CDXML file for structural correctness.
+
+\begin{verbatim}
+python3 rebis.py cdxml verify --file /path/to/molecule.cdxml
+\end{verbatim}
+
+\hypertarget{cdxml-clean}{%
+\paragraph{\texorpdfstring{\texttt{cdxml\ clean}}{cdxml clean}}\label{cdxml-clean}}
+
+Clean and reformat a CDXML file.
+
+\begin{verbatim}
+python3 rebis.py cdxml clean
+\end{verbatim}
+
+\hypertarget{updated-directory-structure-post-cleanup}{%
+\subsection{Updated Directory Structure
+(Post-Cleanup)}\label{updated-directory-structure-post-cleanup}}
+
+After the v2.3.5 root cleanup, the top-level directory has been
+organized into clearly-named subdirectories:
+
+\begin{verbatim}
+red-hot_rebis/
+├── rebis.py               # CLI entry point (stays at root)
+├── setup.py               # Package setup
+├── Makefile               # Build/verify/test automation
+├── README.md              # Project readme
+├── MANUAL.md              # Manual page (man-style)
+├── USER_GUIDE.md          # This guide — comprehensive usage
+├── INDEX.md               # Static reference data
+├── demo_scripts/          # Demo scripts (_demo_*.py, _real_demo.py)
+├── scripts/               # Standalone scripts (ghost_typer, operations, stress_test, test_genetics)
+├── fasta/                 # FASTA sequence files
+├── data/                  # JSON data files
+├── images/                # Images (PNG, SVG, diagrams)
+├── _archive/              # Patents, commit_logs, old HTML cards
+├── docs/                  # General documentation
+├── rhr_p4rky/             # Paraconsistent kernel (32 modules)
+├── shared/                # Shared primitives, catalog, utilities
+├── serpentrod/            # Serpent's Rod — protein folding
+├── ch3mpiler/             # CH3MPILER — retrosynthesis
+├── pipeline/              # Auto-imscription pipeline
+├── gene_imscriber/        # Gene Imscriber
+├── clink/                 # CLINK Chain
+├── imas/                  # IMASM compound pipeline
+├── imasm_iterator/        # IMASM arrangement iterator
+├── materials/             # Materials forge
+├── biology/               # Biology simulations
+├── therapeutics/          # Therapeutic design
+├── alchemical_bridge/     # Alchemical operations
+├── Ars_Therapeutica/      # Ars Therapeutica
+├── natural_products/      # Natural products database
+├── cdxml/                 # CDXML generation
+├── popular_protein/       # Protein structure validation
+├── pdb/                   # PDB reference files
+├── designs/               # Design outputs
+├── glossary/              # Glossary files
+├── ig-docs/               # IG documentation
+└── genetics_animations/   # SVG genetics visualizations
+\end{verbatim}
+
+All scripts (formerly root-level \texttt{.py} files) now live in
+\texttt{scripts/} or \texttt{demo\_scripts/}. All data files live in
+\texttt{data/}, all images in \texttt{images/}, all FASTA sequences in
+\texttt{fasta/}. Patents and archival material are in
+\texttt{\_archive/}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{workflow-recipes}{%
+\subsection{Workflow Recipes}\label{workflow-recipes}}
+
+Complete end-to-end recipes for common tasks.
+
+\hypertarget{recipe-1-design-a-novel-protein}{%
+\subsubsection{Recipe 1: Design a Novel
+Protein}\label{recipe-1-design-a-novel-protein}}
+
+\begin{verbatim}
+# 1. Verify the system is wired
+python3 rebis.py status
+python3 rebis.py verify
+
+# 2. Check where proteins sit in the structural chain
+python3 rebis.py clink layer 3  # Molecule layer
+python3 rebis.py clink layer 4  # Cell layer (where proteins function)
+
+# 3. Run SerpentRod
+python3 rebis.py run serpent_rod
+
+# 4. Or run with a custom sequence
+python3 -m serpentrod.protein_v5 --seq "MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTR"
+
+# 5. Validate against crystal structure
+python3 scripts/popular_protein/comprehensive_comparison.py
+
+# 6. Stress-test across all modules
+python3 scripts/stress_test_proteins.py
+\end{verbatim}
+
+\hypertarget{recipe-2-discover-disconnections-for-a-molecule}{%
+\subsubsection{Recipe 2: Discover Disconnections for a
+Molecule}\label{recipe-2-discover-disconnections-for-a-molecule}}
+
+\begin{verbatim}
+# 1. Encode the molecule as an IMASM compound
+python3 rebis.py imas compound --smiles "CC(=O)OC1=CC=CC=C1C(=O)O" --json
+
+# 2. Run retrosynthesis
+python3 rebis.py run ch3mpiler --smiles "CC(=O)OC1=CC=CC=C1C(=O)O" --depth 3
+
+# 3. Find cross-domain structural neighbors
+python3 rebis.py imas analogies --smiles "CC(=O)OC1=CC=CC=C1C(=O)O" --limit 10
+
+# 4. Check the reaction mechanism
+python3 rebis.py imas reaction --smiles "CC(=O)C1=CC=CC=C1" --product "CC(C1=CC=CC=C1)(C)O"
+\end{verbatim}
+
+\hypertarget{recipe-3-design-a-whole-organism}{%
+\subsubsection{Recipe 3: Design a Whole
+Organism}\label{recipe-3-design-a-whole-organism}}
+
+\begin{verbatim}
+# 1. View the CLINK chain from quarks to organism
+python3 rebis.py clink layer 0
+python3 rebis.py clink layer 4
+python3 rebis.py clink layer 8
+
+# 2. Check which tool bridges are available
+python3 rebis.py pipeline bridges
+
+# 3. Design from a starting layer
+python3 rebis.py pipeline from-layer 3 8  # molecule → organism
+
+# 4. Generate actionable outputs
+python3 rebis.py pipeline actionable --organism mammal
+
+# 5. Inspect the outputs
+ls clink/datasets/organism_designs/organism_mammal_actionable/
+\end{verbatim}
+
+\hypertarget{recipe-4-crystal-guided-drug-discovery}{%
+\subsubsection{Recipe 4: Crystal-Guided Drug
+Discovery}\label{recipe-4-crystal-guided-drug-discovery}}
+
+\begin{verbatim}
+# 1. Start from a known compound
+python3 rebis.py imas compound --smiles "CN(C)CCC1=CNC2=CC=CC=C12"
+
+# 2. Find its crystal neighbors
+python3 rebis.py imas analogies --smiles "CN(C)CCC1=CNC2=CC=CC=C12" --limit 10
+
+# 3. Use the crystal designer to find ⊙-critical analogs
+python3 scripts/frobenius_exact_design.py --smiles "CN(C)CCC1=CNC2=CC=CC=C12"
+
+# 4. Register a promising candidate
+python3 rebis.py imas register --smiles "CN(C)CCC1=CNC2=CC=C(O)C([N+](=O)[O-])=C12" --name "5-nitro-bufotenin"
+
+# 5. Generate its CDXML for ChemDraw
+python3 rebis.py cdxml generate --molecule 5-nitro-bufotenin
+\end{verbatim}
+
+\hypertarget{recipe-5-full-pipeline-smiles-to-organism}{%
+\subsubsection{Recipe 5: Full Pipeline --- SMILES to
+Organism}\label{recipe-5-full-pipeline-smiles-to-organism}}
+
+\begin{verbatim}
+# Takes a SMILES string through the entire pipeline:
+# SMILES → IMASM → IG tuple → CLINK bridge → organism design
+
+# Step 1: Encode the molecule
+SMILES="CC(=O)OC1=CC=CC=C1C(=O)O"
+python3 rebis.py imas compound --smiles "$SMILES"
+
+# Step 2: Register it
+python3 rebis.py imas register --smiles "$SMILES" --name aspirin
+
+# Step 3: Design from molecule layer to organism
+python3 rebis.py pipeline from-layer 3 8
+\end{verbatim}
+
+\hypertarget{recipe-6-structural-therapy-design}{%
+\subsubsection{Recipe 6: Structural Therapy
+Design}\label{recipe-6-structural-therapy-design}}
+
+\begin{verbatim}
+# 1. List available therapies
+python3 rebis.py at list
+
+# 2. Diagnose a condition
+python3 rebis.py at diagnose mdd
+
+# 3. Get the therapy protocol
+python3 rebis.py at therapy mdd
+
+# 4. Compare with related conditions
+python3 rebis.py at compare mdd schizophrenia
+\end{verbatim}
+
+\hypertarget{recipe-7-materials-discovery}{%
+\subsubsection{Recipe 7: Materials
+Discovery}\label{recipe-7-materials-discovery}}
+
+\begin{verbatim}
+# 1. Forge all predefined materials
+python3 rebis.py materials forge --all
+
+# 2. Forge from an IMASM canonical
+python3 rebis.py materials forge --name I_Dialetheic_Bootstrap
+
+# 3. Run Frobenius metamaterial simulation
+python3 rebis.py materials frobenius --size 30 --cycles 50
+
+# 4. Run Ouroboric crack-healing simulation
+python3 rebis.py materials ouroboric --grains 128 --stress 1000
+
+# 5. Perform Sophick Mercury analysis
+python3 rebis.py materials sophick --name eagle_9_sophick
+
+# 6. Check Frobenius exactor pathways
+python3 rebis.py materials exactor --name pathways
+\end{verbatim}
+
+\hypertarget{recipe-8-alchemical-analysis-of-a-molecule}{%
+\subsubsection{Recipe 8: Alchemical Analysis of a
+Molecule}\label{recipe-8-alchemical-analysis-of-a-molecule}}
+
+\begin{verbatim}
+# 1. Get the bridge report
+python3 rebis.py alchemy report
+
+# 2. Analyze a molecule alchemically
+python3 rebis.py alchemy alchemical-mol "CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
+
+# 3. Trace its alchemical retrosynthesis
+python3 rebis.py alchemy retro "CC(=O)OC1=CC=CC=C1C(=O)O"
+
+# 4. Run the full Zosimos procedure
+python3 rebis.py alchemy zosimos caffeine
+\end{verbatim}
+
+\hypertarget{recipe-9-full-platform-verification}{%
+\subsubsection{Recipe 9: Full Platform
+Verification}\label{recipe-9-full-platform-verification}}
+
+\begin{verbatim}
+# Run every verification the platform offers in sequence:
+
+echo "=== STATUS ===" && python3 rebis.py status && \
+echo "=== VERIFY ===" && python3 rebis.py verify && \
+echo "=== CLINK ===" && python3 rebis.py clink layer 0 && \
+echo "=== CLINK ===" && python3 rebis.py clink layer 8 && \
+echo "=== PIPELINE BRIDGES ===" && python3 rebis.py pipeline bridges && \
+echo "=== IMAS HUNT ===" && python3 rebis.py imas hunt --samples 10000 && \
+echo "=== GENETICS ===" && python3 scripts/test_genetics.py --quick && \
+echo "=== PROTEINS ===" && python3 rebis.py run serpent_rod && \
+echo "=== MATERIALS ===" && python3 rebis.py materials forge --all && \
+echo "=== ALL PASSED ==="
+\end{verbatim}
+
+\hypertarget{recipe-10-demo-for-screen-recording}{%
+\subsubsection{Recipe 10: Demo for Screen
+Recording}\label{recipe-10-demo-for-screen-recording}}
+
+\begin{verbatim}
+# Ghost Typer types everything at human pace
+python3 scripts/ghost_typer.py        # Full demo (3 acts, ~15 min)
+python3 scripts/ghost_typer.py --fast  # Fast mode (~3 min)
+python3 scripts/ghost_typer.py --section 1  # Act I only
+\end{verbatim}
+
+\hypertarget{version-history}{%
+\subsection{Version History}\label{version-history}}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+\begin{minipage}[b]{0.34\columnwidth}\raggedright
+Version\strut
+\end{minipage} & \begin{minipage}[b]{0.23\columnwidth}\raggedright
+Date\strut
+\end{minipage} & \begin{minipage}[b]{0.34\columnwidth}\raggedright
+Changes\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
+v2.3.5\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright
+2026-06-30\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
+\textbf{Root Cleanup + Manual Expansion Edition} --- Root directory
+organized: loose files moved into \texttt{demo\_scripts/},
+\texttt{scripts/}, \texttt{fasta/}, \texttt{data/}, \texttt{images/},
+\texttt{\_archive/}; 0-byte \texttt{catalase} and Windows zone
+identifier removed; USER\_GUIDE expanded with full \texttt{at}
+(Ars\,Therapeutica) coverage (19 subcommands), expanded \texttt{scripts}
+section, accurate \texttt{run} target reference, expanded
+\texttt{alchemy} (19 subcommands) and \texttt{cdxml} references, updated
+directory structure, 10 complete workflow recipes\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
+v2.3.4\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright
+2026-06-28\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
+\textbf{Rich Formatting + Exact SMILES Edition}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
+v2.3.3\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright
+2026-06-27\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
+\textbf{Compound IMASM Edition}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
+v2.3.2\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright
+2026-06-27\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
+rhr\_p4rky expansion: 32 modules\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
+v2.3.1\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright
+2026-06-24\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
+PDB format robustness\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
+v2.3.0\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright
+2026-06-21\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
+Ch3mpiler-SerpentRod v4 overhaul\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
+v2.2.1\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright
+2026-06-10\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
+Bug-fix release\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
+v2.2\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright
+2026-06-10\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
+Static-data commands moved to INDEX.md\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
+v2.1\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright
+2026-06-10\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
+Primitive names corrected\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
+v2.0\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright
+2026-05\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
+CLINK pipeline, materials forge\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
+v1.0\strut
+\end{minipage} & \begin{minipage}[t]{0.23\columnwidth}\raggedright
+2026-04\strut
+\end{minipage} & \begin{minipage}[t]{0.34\columnwidth}\raggedright
+Initial release\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\emph{Guide maintained by Lando⊗⊙perator. Structural type of this
+document: \(\langle 𐑼;𐑥;𐑾;𐑬;𐑐;𐑧;𐑔;𐑠;⊙;𐑖;𐑳;𐑴 \rangle\)}
+
+\end{document}
