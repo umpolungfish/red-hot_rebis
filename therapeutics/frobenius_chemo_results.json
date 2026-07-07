@@ -1,8 +1,8 @@
 {
   "simulation": "Frobenius-Coupled Chemotherapeutic",
   "principle": "Selective cytotoxicity via Frobenius-check of \u03bc\u2218\u03b4=id",
-  "structural_type": "\u27e8\ud801\udc66\ud801\udc76\ud801\udc7e\ud801\udc79\ud801\udc50\ud801\udc67\ud801\udc72\ud801\udc5d\u2299\ud801\udc6b\ud801\udc73\ud801\udc6d\u27e9",
-  "drug_conc": 2.0,
+  "structural_type": "\u27e8\ud801\udc66\ud801\udc76\ud801\udc7e\ud801\udc79\ud801\udc50\ud801\udc67\ud801\udc72\ud801\udc5d\u2299\ud801\udc6b\ud801\udc73\ud801\udc6d>",
+  "drug_conc": 10.0,
   "healthy": {
     "cytotoxicity": 0.0,
     "payload": 0.0
@@ -10,38 +10,38 @@
   "cancer": {
     "cancer_m0.2": {
       "asymmetry": 0.04881163609402639,
-      "tether_tension": 0.244651054233147,
+      "tether_tension": 0.25438039733006423,
       "payload": 0.0,
       "cytotoxicity": 0.0,
       "selectivity_vs_healthy": 0.0
     },
     "cancer_m0.4": {
       "asymmetry": 0.048208682131696934,
-      "tether_tension": 0.2525110615474278,
+      "tether_tension": 0.2553926314859154,
       "payload": 0.0,
       "cytotoxicity": 0.0,
       "selectivity_vs_healthy": 0.0
     },
     "cancer_m0.6": {
       "asymmetry": 0.16940222355682688,
-      "tether_tension": 0.5005912622865841,
+      "tether_tension": 0.5050322385934548,
       "payload": 1.0,
-      "cytotoxicity": 14.2875,
-      "selectivity_vs_healthy": 14287.5
+      "cytotoxicity": 63.2875,
+      "selectivity_vs_healthy": 63287.5
     },
     "cancer_m0.8": {
       "asymmetry": 0.27320511677646886,
-      "tether_tension": 0.7202651294589683,
+      "tether_tension": 0.7223651298434272,
       "payload": 1.0,
-      "cytotoxicity": 14.2875,
-      "selectivity_vs_healthy": 14287.5
+      "cytotoxicity": 63.2875,
+      "selectivity_vs_healthy": 63287.5
     },
     "cancer_m1.0": {
       "asymmetry": 0.35063879489640815,
-      "tether_tension": 0.8387846359566719,
+      "tether_tension": 0.8394902623343946,
       "payload": 1.0,
-      "cytotoxicity": 14.2875,
-      "selectivity_vs_healthy": 14287.5
+      "cytotoxicity": 63.2875,
+      "selectivity_vs_healthy": 63287.5
     }
   }
 }
