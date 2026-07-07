@@ -512,7 +512,7 @@ def main():
         elif args.smiles:
             result = register_compound(args.smiles, args.name or "unknown",
                                        dry_run=args.dry_run)
-            print(json.dumps(result, indent=2))
+            print(json.dumps(result, indent=2, ensure_ascii=False))
         else:
             parser.print_help()
     

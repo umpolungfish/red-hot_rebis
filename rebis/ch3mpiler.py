@@ -72,7 +72,7 @@ def _cmd_forward(args):
         return 1
     try:
         result = forward(args.smiles)
-        print(json.dumps(result, indent=2) if isinstance(result, (dict, list)) else result)
+        print(json.dumps(result, indent=2, ensure_ascii=False) if isinstance(result, (dict, list)) else result)
     except Exception as e:
         print(f"Forward synthesis failed: {e}")
         return 1
@@ -86,7 +86,7 @@ def _cmd_retrosynth(args):
         return 1
     try:
         result = retrosynthesis(args.smiles)
-        print(json.dumps(result, indent=2) if isinstance(result, (dict, list)) else result)
+        print(json.dumps(result, indent=2, ensure_ascii=False) if isinstance(result, (dict, list)) else result)
     except Exception as e:
         print(f"Retrosynthesis failed: {e}")
         return 1

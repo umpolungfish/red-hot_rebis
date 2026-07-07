@@ -73,10 +73,10 @@ _lazy("frobenius_verified_v2", "rhr_p4rky.serpent_rod_v2")
 
 def _json_or_str(obj):
     if isinstance(obj, (dict, list)):
-        return json.dumps(obj, indent=2, default=str)
+        return json.dumps(obj, indent=2, default=str, ensure_ascii=False)
     if hasattr(obj, '__dict__'):
         try:
-            return json.dumps(vars(obj), indent=2, default=str)
+            return json.dumps(vars(obj), indent=2, default=str, ensure_ascii=False)
         except Exception:
             return str(obj)
     return str(obj)

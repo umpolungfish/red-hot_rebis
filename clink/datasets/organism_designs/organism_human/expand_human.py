@@ -13,7 +13,7 @@ OUT = Path(__file__).parent
 random.seed(42)
 
 def write_json(name, data):
-    (OUT / name).write_text(json.dumps(data, indent=2))
+    (OUT / name).write_text(json.dumps(data, indent=2, ensure_ascii=False))
 
 def write_text(name, text):
     (OUT / name).write_text(text)

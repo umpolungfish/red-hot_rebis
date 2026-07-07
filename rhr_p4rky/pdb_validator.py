@@ -255,6 +255,6 @@ if __name__ == "__main__":
             pdb_text = f.read()
         pdb_id = os.path.basename(pdb_file).replace(".pdb", "").upper()
         result = validate_structure(pdb_id, pdb_text)
-        print("\n" + json.dumps(result["metrics"], indent=2))
+        print("\n" + json.dumps(result["metrics"], indent=2, ensure_ascii=False))
     else:
         info_line("Usage: python3 pdb_validator.py <pdb_file>")

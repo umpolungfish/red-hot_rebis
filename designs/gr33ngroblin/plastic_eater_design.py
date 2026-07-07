@@ -498,7 +498,7 @@ f"(confidence: {site['confidence']:.2f})")
     # Phase 4: Output
     if args.json:
         result = output_json(all_sites, fused, enzyme)
-        json_str = json.dumps(result, indent=2)
+        json_str = json.dumps(result, indent=2, ensure_ascii=False)
         if args.out:
             Path(args.out).write_text(json_str)
             info_line(f"JSON written to {args.out}")

@@ -166,14 +166,14 @@ class Layer0DatasetGenerator(DatasetGenerator):
         return json.dumps({
             "mesons": {"pion": {"mass_MeV":135,"JPC":"0-+"},"rho": {"mass_MeV":770,"JPC":"1--"},"kaon":{"mass_MeV":494},"J_psi":{"mass_MeV":3097}},
             "baryons": {"proton":{"mass_MeV":938,"JP":"1/2+"},"neutron":{"mass_MeV":940},"lambda":{"mass_MeV":1116}},
-        }, indent=2)
+        }, indent=2, ensure_ascii=False)
     
     def _gen_color_table(self):
         return json.dumps({
             "color_charges": ["red","green","blue"],
             "anti_colors": ["anti_red","anti_green","anti_blue"],
             "confinement": True, "asymptotic_freedom": True,
-        }, indent=2)
+        }, indent=2, ensure_ascii=False)
 ''')
 
 info_line("L0 written")
@@ -236,14 +236,14 @@ class Layer1DatasetGenerator(DatasetGenerator):
                 "F_False": "Adenine_A", "N_Neither": "Thymine_T"
             },
             "bridge_to_gene_imscriber": True,
-        }, indent=2)
+        }, indent=2, ensure_ascii=False)
     
     def _gen_qc_inputs(self):
         return json.dumps({
             "software": ["Gaussian","ORCA","GAMESS","NWChem"],
             "basis_sets": ["STO-3G","6-31G(d)","cc-pVDZ","aug-cc-pVQZ"],
             "methods": ["HF","DFT/B3LYP","MP2","CCSD(T)"],
-        }, indent=2)
+        }, indent=2, ensure_ascii=False)
 ''')
 
 info_line("L1 written")

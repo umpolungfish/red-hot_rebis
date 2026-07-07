@@ -404,7 +404,7 @@ def main():
             "frobenius_order": fp.frobenius_order,
             "reaction_class": fp.reaction_class,
             "identification": ident,
-        }, indent=2))
+        }, indent=2, ensure_ascii=False))
     else:
         print(format_transition(fp, reactant_smi=args.reactant, product_smi=args.product))
         ident = identify_reaction(fp)

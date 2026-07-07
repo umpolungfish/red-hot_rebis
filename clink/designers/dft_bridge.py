@@ -358,11 +358,11 @@ if __name__ == "__main__":
     # Test energy estimation
     test_smiles = "CC(=O)OC1=CC=CC=C1C(=O)O"  # aspirin
     energy = estimate_small_molecule_energy(test_smiles)
-    print(f"\nAspirin energy estimate: {json.dumps(energy, indent=2)}")
+    print(f"\nAspirin energy estimate: {json.dumps(energy, indent=2, ensure_ascii=False)}")
     
     # Test transition energy
     trans = estimate_transition_energy(2, 3)  # atom → molecule
-    print(f"\nL2→L3 transition: {json.dumps(trans, indent=2)}")
+    print(f"\nL2→L3 transition: {json.dumps(trans, indent=2, ensure_ascii=False)}")
     
     # Test full ladder
     info_line("\n" + energy_ladder_summary(compute_full_energy_ladder()))

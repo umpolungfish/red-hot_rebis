@@ -254,7 +254,7 @@ for plastic_name, bond_name, fg1_name, fg2_name, mechanism in PLASTIC_TARGETS:
         b_sym = "Y" if b_act else "N"
         info_line(f"    {pa}-{pb}: {pa}={a_sym} {pb}={b_sym}  [{status}]")
     
-    info_line(f"  Site type: {json.dumps(site['site_type'])}")
+    info_line(f"  Site type: {json.dumps(site['site_type'], ensure_ascii=False)}")
     info_line(f"  AA: {''.join(site['aa_sequence'])}")
     print()
 

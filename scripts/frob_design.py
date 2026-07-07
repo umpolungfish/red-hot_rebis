@@ -125,7 +125,7 @@ for plastic_name, bond_name, fg1_name, fg2_name, mechanism in PLASTIC_TARGETS:
     info_line(f"  Activated: {s['activated']}")
     for ps in s['pair_status']:
         info_line(f"    {ps['pair']:8s}  dominant={ps['dominant']:2s}  act={ps['activated']:2s}  pcts=({ps['pa_pct']:.2f},{ps['pb_pct']:.2f})")
-    info_line(f"  Site: {json.dumps(s['site_type'])}")
+    info_line(f"  Site: {json.dumps(s['site_type'], ensure_ascii=False)}")
 
 # Diversity
 info_line("\n" + "=" * 72)
@@ -148,7 +148,7 @@ info_line("  CLUSTERING FOR SEPARATE CATALYSTS")
 # Group by identical site types
 groups = {}
 for s in all_sites:
-    st = json.dumps(s['site_type'], sort_keys=True)
+    st = json.dumps(s['site_type'], sort_keys=True, ensure_ascii=False)
     if st not in groups:
         groups[st] = []
     groups[st].append(s['plastic'])

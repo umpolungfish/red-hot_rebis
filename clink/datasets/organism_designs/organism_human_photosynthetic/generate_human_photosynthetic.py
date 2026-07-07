@@ -908,7 +908,7 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
     # L4: PSII D1 PDB + protein registry
     (layer_dirs[4] / "PSII_D1_structure.pdb").write_text(_psii_pdb())
     (layer_dirs[4] / "photosynthetic_proteins.json").write_text(
-        json.dumps(PHOTO_GENES, indent=2))
+        json.dumps(PHOTO_GENES, indent=2, ensure_ascii=False))
 
     # L5: gene cassettes + metabolic model
     (layer_dirs[5] / "photo_cassette1_PSII_import.gb").write_text(_photo_plasmid_gb())
@@ -923,7 +923,7 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
     info_line("  Computing Turing reaction-diffusion pattern (Fibonacci-spiral, Gray-Scott)...")
     pattern = _turing_pattern(width=60, height=30, steps=2000)
     (layer_dirs[7] / "skin_chloroplast_turing_pattern.json").write_text(
-        json.dumps(pattern, indent=2))
+        json.dumps(pattern, indent=2, ensure_ascii=False))
     (layer_dirs[7] / "skin_chloroplast_pattern.svg").write_text(_turing_svg(pattern))
     tissue_spec = {
         "modification": "patterned epidermal chloroplast expression",
@@ -940,11 +940,11 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
         "ig_Hbar_class": "𐑱",
     }
     (layer_dirs[7] / "skin_photosynthetic_tissue.json").write_text(
-        json.dumps(tissue_spec, indent=2))
+        json.dumps(tissue_spec, indent=2, ensure_ascii=False))
 
     # L8: physiology + protocol
     (layer_dirs[8] / "photosynthetic_physiology.json").write_text(
-        json.dumps(PHOTO_PHYSIOLOGY, indent=2))
+        json.dumps(PHOTO_PHYSIOLOGY, indent=2, ensure_ascii=False))
     (layer_dirs[8] / "photosynthetic_delivery_protocol.txt").write_text(_gibson_protocol())
 
     # L_photosynthetic: consolidated brief
@@ -983,13 +983,13 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
         "delivery": "AAV2/9-skin (C1,C3) + lentiviral ex vivo (C2)",
     }
     (photo_dir / "photosynthetic_design_brief.json").write_text(
-        json.dumps(photo_brief, indent=2))
+        json.dumps(photo_brief, indent=2, ensure_ascii=False))
 
     # Pattern layer: SVG copy + stats
     (pattern_dir / "skin_pattern.svg").write_text(_turing_svg(pattern))
     (pattern_dir / "pattern_stats.json").write_text(json.dumps({
         k: v for k, v in pattern.items() if k != "cells"
-    }, indent=2))
+    }, indent=2, ensure_ascii=False))
 
     # ── Manifest ───────────────────────────────────────────────────────────────
     all_dirs = [*layer_dirs.values(), photo_dir, pattern_dir]
@@ -1021,7 +1021,7 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
         "cassette_count": 3,
         "parity_note": "Φ=𐑨: photosynthesis is the metabolic parity-conjugate of respiration",
     }
-    (out_path / "design_manifest.json").write_text(json.dumps(manifest, indent=2))
+    (out_path / "design_manifest.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False))
 
     info_line(f"\n{'=' * 70}")
     success_line(f"COMPLETE — {total_files} files, {total_bytes:,} bytes")

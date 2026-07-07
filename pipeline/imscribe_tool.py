@@ -66,7 +66,7 @@ class ToolResponse:
         return {k: v for k, v in self.__dict__.items() if v is not None}
 
     def to_json(self) -> str:
-        return json.dumps(self.to_dict(), indent=2)
+        return json.dumps(self.to_dict(), indent=2, ensure_ascii=False)
 
 
 # ── CLI passthrough (for generate, which uses LLM internally) ─────────────────
@@ -397,4 +397,4 @@ if __name__ == "__main__":
     print(r.to_json())
 
     info_line("\n=== TOOL SCHEMA (first 300 chars) ===")
-    print(json.dumps(IG_TOOL_SCHEMA)[:300])
+    print(json.dumps(IG_TOOL_SCHEMA, ensure_ascii=False)[:300])

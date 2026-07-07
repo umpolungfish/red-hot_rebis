@@ -417,7 +417,7 @@ if __name__ == "__main__":
                 print(out)
             print(f"\n# Total unique SMILES: {len(all_smiles)}", file=sys.stderr)
         else:
-            print(json.dumps({n: len(c) for n, c in results.items()}, indent=2))
+            print(json.dumps({n: len(c) for n, c in results.items()}, indent=2, ensure_ascii=False))
             print(f"\nTotal unique: {len(all_smiles)}")
     
     elif args.protein:

@@ -715,7 +715,7 @@ if __name__ == "__main__":
             print(f"Wrote {args.output}", file=sys.stderr)
         else:
             import json
-            print(json.dumps({name: len(cands) for name, cands in results.items()}, indent=2))
+            print(json.dumps({name: len(cands) for name, cands in results.items()}, indent=2, ensure_ascii=False))
             total = len(collect_all_unique_smiles(results))
             print(f"\nTotal unique SMILES across all proteins: {total}")
     

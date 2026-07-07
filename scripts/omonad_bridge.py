@@ -245,7 +245,7 @@ class RebisCrystalBridge:
         
         if self.cfs:
             try:
-                self.cfs.store(addr, json.dumps(entry))
+                self.cfs.store(addr, json.dumps(entry, ensure_ascii=False))
             except Exception:
                 pass
         
