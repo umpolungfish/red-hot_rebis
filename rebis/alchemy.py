@@ -68,6 +68,20 @@ _lazy("check_portico", "alchemical_bridge.zosimos_engine")
 # --- Default structural tuples ---
 _PRIMITIVE_ORDER = ["Ð", "Þ", "Ř", "Φ", "ƒ", "Ç", "Γ", "ɢ", "⊙", "Ħ", "Σ", "Ω"]
 _DEFAULT_SOURCE = {"Ð": "𐑛", "Þ": "𐑡", "Ř": "𐑩", "Φ": "𐑗", "ƒ": "𐑱", "Ç": "𐑺", "Γ": "𐑲", "ɢ": "𐑝", "⊙": "𐑢", "Ħ": "𐑓", "Σ": "𐑙", "Ω": "𐑷"}
+# --- Key mapping: short names → Unicode primitive names ---
+_KEY_MAP = {"D": "Ð", "T": "Þ", "R": "Ř", "P": "Φ", "F": "ƒ", "Ç": "Ç",
+            "K": "Ç", "G": "Γ", "Gm": "ɢ", "Ph": "⊙", "H": "Ħ", "S": "Σ", "W": "Ω"}
+
+def _smiles_to_tuple(smiles: str) -> dict:
+    """Convert SMILES → IG tuple dict with Unicode keys."""
+    try:
+        import importlib
+        m = importlib.import_module("scripts.omonad_bridge")
+        short = m.smiles_to_molecule_type(smiles)
+    except Exception:
+        short = dict(_DEFAULT_SOURCE)
+    return {_KEY_MAP.get(k, k): v for k, v in short.items()}
+
 _DEFAULT_TARGET = {"Ð": "𐑦", "Þ": "𐑸", "Ř": "𐑾", "Φ": "𐑹", "ƒ": "𐑐", "Ç": "𐑧", "Γ": "𐑔", "ɢ": "𐑠", "⊙": "⊙", "Ħ": "𐑫", "Σ": "𐑳", "Ω": "𐑭"}
 
 
@@ -151,8 +165,9 @@ def _cmd_stilling(args):
     print(f"═ Zosimos Stilling ═")
     print(f"  Molecule: {args.smiles}")
     try:
+        tuple_dict = _smiles_to_tuple(args.smiles)
         engine = ZosimosEngine()
-        result = engine.perform_stilling(args.smiles)
+        result = engine.perform_stilling(tuple_dict)
         print(_json_or_str(result))
     except Exception as e:
         print(f"Stilling failed: {e}")
@@ -168,12 +183,13 @@ def _cmd_structure(args):
     print(f"═ Alchemical Structural Analysis ═")
     print(f"  Molecule: {args.smiles}")
     try:
+        tuple_dict = _smiles_to_tuple(args.smiles)
         engine = ZosimosEngine()
-        result = engine.analyze_structure(args.smiles)
+        result = engine.analyze_structure(args.smiles, tuple_dict)
         print(_json_or_str(result))
         # Also compare to zosimos
         try:
-            comparison = engine.compare_to_zosimos(args.smiles)
+            comparison = engine.compare_to_zosimos(tuple_dict)
             print("\n─ Comparison to Zosimos ─")
             print(_json_or_str(comparison))
         except Exception:
@@ -402,7 +418,7 @@ def _cmd_portico(args):
         # Also get the portico speech
         try:
             engine = ZosimosEngine()
-            speech = engine.the_portico_speaks(tup) if hasattr(engine, 'the_portico_speaks') else None
+            speech = engine.the_portico_speaks() if hasattr(engine, 'the_portico_speaks') else None
             if speech:
                 print("\n─ The Portico Speaks ─")
                 print(_json_or_str(speech))
