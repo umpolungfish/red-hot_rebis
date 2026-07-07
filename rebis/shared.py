@@ -114,3 +114,44 @@ __all__ = [
     "reaction_header", "info_line", "success_line", "error_line",
     "warning_line", "separator", "section_header", "subsection_header",
 ]
+
+
+def parse_numerical_tuple(tup_str):
+    """Parse a numerical 12-tuple string into a glyph dict.
+
+    Accepts formats:
+      1-based:  "4,5,4,5,3,5,3,4,2,4,3,3"   (matches ORDINALS convention)
+      0-based:  "3,3,3,4,0,2,1,2,1,2,0,2"
+      Space-sep: "4 5 4 5 3 5 3 4 2 4 3 3"
+      Semicolon: "4;5;4;5;3;5;3;4;2;4;3;3"
+
+    Returns dict {prim_name: glyph} or None if not a valid numerical tuple.
+    """
+    import re
+    if not tup_str or not isinstance(tup_str, str):
+        return None
+    cleaned = tup_str.strip().replace("⟨", "").replace("⟩", "")
+    # Split on commas, semicolons, or whitespace
+    parts = re.split(r"[,;\s]+", cleaned.strip())
+    parts = [p for p in parts if p]
+    if len(parts) != 12:
+        return None
+    # Must all be integers
+    try:
+        nums = [int(p) for p in parts]
+    except ValueError:
+        return None
+    # Determine if 0-based or 1-based: if any value is 0, it's 0-based
+    is_zero_based = any(n == 0 for n in nums)
+    result = {}
+    for i, n in enumerate(nums):
+        prim = PRIMITIVE_ORDER[i]
+        glyphs = GLYPH_MAP[prim]
+        idx = n if is_zero_based else n - 1
+        if idx < 0 or idx >= len(glyphs):
+            return None  # Out of range — not a valid numerical tuple
+        result[prim] = glyphs[idx]
+    return result
+
+
+__all__.append("parse_numerical_tuple")

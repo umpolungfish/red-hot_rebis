@@ -117,9 +117,18 @@ def _json_or_str(obj):
 
 
 def _parse_tuple_input(tup_str):
-    """Parse a compact 12-glyph tuple string or a named system."""
+    """Parse a compact 12-glyph tuple string, a numerical 12-tuple, or a named system."""
     if not tup_str:
         return None
+    # Try numerical 12-tuple first (e.g. "4,5,4,5,3,5,3,4,2,4,3,3")
+    try:
+        from rebis.shared import parse_numerical_tuple
+        num_result = parse_numerical_tuple(tup_str)
+        if num_result is not None:
+            return num_result
+    except Exception:
+        pass
+    # Compact 12-glyph string
     if len(tup_str) == 12 and all(ord(c) > 127 for c in tup_str):
         try:
             from clink.chain import PORDER
