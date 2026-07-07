@@ -27,6 +27,7 @@ for _p in [str(REBIS_ROOT),
     if _p not in sys.path:
         sys.path.insert(0, _p)
 
+from rebis.file_input import parse_with_file, add_file_input
 from rebis.shared import (reaction_header, info_line, success_line,
                            error_line, warning_line, separator,
                            section_header)
@@ -546,6 +547,11 @@ def main():
 
     parser.add_argument("--version", action="version",
                        version=f"%(prog)s {VERSION}")
+    parser.add_argument("--file", "-f", type=str, default=None,
+                   help="JSON input file with argument values")
+    parser.add_argument("--stdin", "-i", action="store_true",
+                   default=False,
+                   help="Read JSON arguments from stdin")
     parser.add_argument("--help", "-h", action="store_true",
                        help="Show the dynamic-first menu")
 
@@ -590,6 +596,28 @@ def main():
     p_demo.set_defaults(func=cmd_demo)
 
     args = parser.parse_args()
+
+    # ── FILE/STDIN MERGE ──
+    if args.file or args.stdin:
+        import json
+        file_data = {}
+        try:
+            if args.file and __import__('os').path.isfile(args.file):
+                with open(args.file) as fh:
+                    file_data = json.load(fh)
+            elif args.stdin:
+                file_data = json.loads(sys.stdin.read().strip())
+            # Merge: file data as defaults, CLI args override
+            if file_data:
+                for k, v in file_data.items():
+                    if v is not None and getattr(args, k, None) is None:
+                        setattr(args, k, v)
+                # If no command specified but file has it
+                if not args.command and 'command' in file_data:
+                    args.command = file_data['command']
+        except Exception as e:
+            error_line(f"Failed to load file/stdin: {e}")
+            return 1
 
     # No command = menu
     if args.help or not args.command:

@@ -12,6 +12,7 @@ Callable as a command:
 """
 
 import sys, importlib, argparse, json
+from rebis.file_input import parse_with_file
 from pathlib import Path
 
 _REBIS_ROOT = Path(__file__).parent.parent.absolute()
@@ -228,7 +229,7 @@ def main():
         epilog="Example:  rebis.clink help",
         formatter_class=argparse.RawDescriptionHelpFormatter)
 
-    args = parser.parse_args()
+    args = parse_with_file(parser)
 
     if not args.command or args.command == "help":
         parser.print_help()

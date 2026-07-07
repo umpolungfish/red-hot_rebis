@@ -4,24 +4,36 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "red-hot-rebis"
-version = "3.0.0"
+version = "4.0.0"
 description = "Red-Hot Rebis — Imscribing Grammar integrated toolchain"
 requires-python = ">=3.10"
+license = {text = "MIT"}
 dependencies = [
     "numpy>=1.24",
 ]
 
 [project.scripts]
 rebis = "rebis.cli:main"
-"rebis.materials" = "rebis.materials:main"
+
+# Primary computation engines (Tier 1)
+"rebis.chain" = "rebis.chain_entry:main"
+"rebis.gene-pipeline" = "rebis.gene_pipeline_entry:main"
 "rebis.ch3mpiler" = "rebis.ch3mpiler:main"
-"rebis.clink" = "rebis.clink:main"
-"rebis.p4ra" = "rebis.p4ra:main"
-"rebis.biology" = "rebis.biology:main"
-"rebis.therapeutics" = "rebis.therapeutics:main"
 "rebis.serpentrod" = "rebis.serpentrod:main"
-"rebis.sidechain" = "rebis.sidechain:main"
 "rebis.ligand" = "rebis.ligand:main"
+"rebis.sidechain" = "rebis.sidechain:main"
+
+# Specialized engines (Tier 2)
+"rebis.therapeutics" = "rebis.therapeutics:main"
+"rebis.materials" = "rebis.materials:main"
+"rebis.biology" = "rebis.biology:main"
 "rebis.pipeline" = "rebis.pipeline:main"
 "rebis.gene" = "rebis.gene:main"
 "rebis.alchemy" = "rebis.alchemy:main"
+"rebis.clink" = "rebis.clink:main"
+"rebis.p4ra" = "rebis.p4ra:main"
+
+# Infrastructure
+"rebis.demo" = "rebis.demo_entry:main"
+"rebis.status" = "rebis.status_entry:main"
+"rebis.verify" = "rebis.verify_entry:main"

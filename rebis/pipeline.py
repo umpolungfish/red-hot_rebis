@@ -11,6 +11,7 @@ Callable as a command:
   rebis.pipeline info              — Show available tools
 """
 import sys, importlib, argparse, json
+from rebis.file_input import parse_with_file
 from pathlib import Path
 _REBIS_ROOT = Path(__file__).parent.parent.absolute()
 for p in [str(_REBIS_ROOT), str(_REBIS_ROOT / "pipeline")]:
@@ -137,7 +138,7 @@ def main():
         help="Show this help message",
         formatter_class=argparse.RawDescriptionHelpFormatter)
 
-    args = parser.parse_args()
+    args = parse_with_file(parser)
 
     if not args.command or args.command == "help":
         parser.print_help()
