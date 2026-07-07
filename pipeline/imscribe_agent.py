@@ -563,7 +563,7 @@ class ImscriptionDesignAgent:
             # ── Tool execution ─────────────────────────────────────────────────
             tool_results: List[Tuple[str, str]] = []
             for call_id, tool_name, kwargs in calls:
-                self._log(f"  Tool call → {tool_name}({json.dumps(kwargs)[:120]})")
+                self._log(f"  Tool call → {tool_name}({json.dumps(kwargs, ensure_ascii=False)[:120]})")
                 result = self._dispatch_tool(tool_name, kwargs)
                 record.tool_calls.append({"name": tool_name, "kwargs": kwargs})
                 record.tool_results.append(result)
@@ -725,4 +725,4 @@ if __name__ == "__main__":
         })
     info_line("\n" + "="*70)
     info_line("FULL HISTORY (JSON)")
-    print(json.dumps(out, indent=2))
+    print(json.dumps(out, indent=2, ensure_ascii=False))

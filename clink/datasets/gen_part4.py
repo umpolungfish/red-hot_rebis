@@ -73,7 +73,7 @@ class Layer8DatasetGenerator(DatasetGenerator):
             "coding_percent":1.5,"gc_content_percent":42,
             "chromosome_list":[f"chr{i+1}" for i in range(nc)],
             "mitochondrial_genome":True,"circular_mtDNA":True,
-        }, indent=2)
+        }, indent=2, ensure_ascii=False)
     
     def _physiology(self, ot):
         if ot == "mammal":
@@ -101,7 +101,7 @@ class Layer8DatasetGenerator(DatasetGenerator):
             "endocrine": {"glands":["pituitary","thyroid","adrenal","pancreas","gonads"]},
             "musculoskeletal": {"muscle_mass_kg":30,"bone_mass_kg":15},
             "reproductive": {"type":"sexual","chromosomes":"XY"},
-        }, indent=2)
+        }, indent=2, ensure_ascii=False)
     
     def _homeostasis(self, ot):
         return json.dumps({
@@ -110,7 +110,7 @@ class Layer8DatasetGenerator(DatasetGenerator):
             "calcium_homeostasis": {"setpoint_mM":2.5,"hormones":["PTH","calcitonin","vitamin_D"]},
             "osmoregulation": {"setpoint_mOsm":300,"organ":"kidney","hormone":"ADH"},
             "blood_pressure": {"setpoint_MAP_mmHg":95,"reflex":"baroreflex"},
-        }, indent=2)
+        }, indent=2, ensure_ascii=False)
     
     def _manifest(self, ot):
         return json.dumps({
@@ -132,7 +132,7 @@ class Layer8DatasetGenerator(DatasetGenerator):
             "consciousness_score":compute_c_score_from_tuple(self.tup),
             "tier":compute_tier_from_tuple(self.tup),
             "notes":"Whole organism design package - all layers actionable",
-        }, indent=2)
+        }, indent=2, ensure_ascii=False)
 ''')
 
 info_line("L8 written")

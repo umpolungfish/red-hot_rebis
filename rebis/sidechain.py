@@ -82,7 +82,7 @@ def main():
     if args.pdb:
         result = analyze_pdb_structure(args.pdb, cutoff=args.cutoff, verbose=not args.json)
         if args.json:
-            print(json.dumps(result, indent=2, default=str))
+            print(json.dumps(result, indent=2, default=str, ensure_ascii=False))
         else:
             print_pdb_analysis(result, verbose=args.verbose)
         return 0
@@ -143,7 +143,7 @@ def main():
                     },
                 }
             }
-            print(json.dumps(out, indent=2))
+            print(json.dumps(out, indent=2, ensure_ascii=False))
         else:
             print_frustration_matrix(data["summary"])
             print_dominance_matrix(data["summary"])

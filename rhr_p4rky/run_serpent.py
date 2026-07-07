@@ -23,4 +23,4 @@ if __name__ == "__main__":
     
     sr = SerpentRod(args.seq, name=args.name)
     result = sr.report()
-    print(json.dumps(result, indent=2))
+    print(json.dumps(result, indent=2, ensure_ascii=False))

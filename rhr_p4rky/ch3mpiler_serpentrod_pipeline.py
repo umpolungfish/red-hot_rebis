@@ -721,7 +721,7 @@ def main():
         sys.exit(1)
     
     if args.json:
-        print(json.dumps(design.to_dict(), indent=2))
+        print(json.dumps(design.to_dict(), indent=2, ensure_ascii=False))
     else:
         print(format_report(design))
 

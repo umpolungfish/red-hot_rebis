@@ -52,10 +52,10 @@ _lazy("run_toxin_challenge_sweep", "therapeutics.universal_antidote_library")
 def _json_or_str(obj):
     """Serialize to JSON if possible, else str."""
     if isinstance(obj, (dict, list)):
-        return json.dumps(obj, indent=2, default=str)
+        return json.dumps(obj, indent=2, default=str, ensure_ascii=False)
     if hasattr(obj, '__dict__'):
         try:
-            return json.dumps(vars(obj), indent=2, default=str)
+            return json.dumps(vars(obj), indent=2, default=str, ensure_ascii=False)
         except Exception:
             return str(obj)
     return str(obj)

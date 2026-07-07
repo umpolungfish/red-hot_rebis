@@ -786,7 +786,7 @@ def generate_gland_specification() -> str:
             "metabolic_model.xml"
         ]
     }
-    return json.dumps(spec, indent=2)
+    return json.dumps(spec, indent=2, ensure_ascii=False)
 def generate_antidote_fusion_pdb() -> str:
     """Generate a self-consistent coarse backbone PDB model of the antidote fusion protein.
     

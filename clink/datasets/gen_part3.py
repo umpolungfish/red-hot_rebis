@@ -23,7 +23,7 @@ class Layer5DatasetGenerator(DatasetGenerator):
             from gene_imscriber.engine import B4Element, genetic_code
             o.tool_bridges_used.append("gene_imscriber")
             o.files.append(DatasetFile(filename="genetic_code.json",extension=".json",
-                content=json.dumps({"b4_lattice":True,"codon_table":"64 codons, 21 AAs","bridge_active":True},indent=2),
+                content=json.dumps({"b4_lattice":True,"codon_table":"64 codons, 21 AAs","bridge_active":True},indent=2, ensure_ascii=False),
                 description="Genetic code from gene_imscriber bridge", format_name="JSON"))
         except: pass
         
@@ -118,7 +118,7 @@ class Layer5DatasetGenerator(DatasetGenerator):
             "atp_yield_per_glucose": {"anaerobic":2,"aerobic":36},
             "biomass_equation": "0.5G6P+0.2AA+0.1NT+0.05FA+0.05COF+0.1H2O -> biomass",
             "growth_rate_h": 0.5 if ct=="prokaryote" else 0.03,
-        }, indent=2)
+        }, indent=2, ensure_ascii=False)
     
     def _gen_media(self, ct):
         return (f"# CLINK Growth Media Formulation for {ct}\\n\\n"
@@ -151,13 +151,13 @@ class Layer6DatasetGenerator(DatasetGenerator):
             tel = OuroboricTelomere()
             o.tool_bridges_used.append("ouroboric_telomere")
             o.files.append(DatasetFile(filename="telomere_dynamics.json",extension=".json",
-                content=json.dumps({"telomerase_active":True,"tandem_repeats":"TTAGGG","length_bp":10000},indent=2),
+                content=json.dumps({"telomerase_active":True,"tandem_repeats":"TTAGGG","length_bp":10000},indent=2, ensure_ascii=False),
                 description="Telomere dynamics from ouroboric_telomere bridge", format_name="JSON"))
         except: pass
         
         o.files.append(DatasetFile(filename="cell_cycle_params.json",extension=".json",
             content=json.dumps({"chromosomes":chroms,"phases":{"G1":{"hours":12},"S":{"hours":7},"G2":{"hours":3},"M":{"hours":1}},
-                "checkpoint":"Aurora-B","spindle_checkpoint_active":True},indent=2),
+                "checkpoint":"Aurora-B","spindle_checkpoint_active":True},indent=2, ensure_ascii=False),
             description="Cell cycle parameters with checkpoint specifications", format_name="JSON"))
         
         o.files.append(DatasetFile(filename="mitosis_assay_protocol.md",extension=".md",
@@ -218,7 +218,7 @@ class Layer7DatasetGenerator(DatasetGenerator):
             content=json.dumps({
                 "collagen_I":"60%","collagen_IV":"10%","laminin":"10%",
                 "fibronectin":"5%","elastin":"5%","proteoglycans":"5%","water":"5%"
-            }, indent=2), description="Extracellular matrix composition", format_name="JSON"))
+            }, indent=2, ensure_ascii=False), description="Extracellular matrix composition", format_name="JSON"))
         
         o.files.append(DatasetFile(filename="growth_factors.json",extension=".json",
             content=json.dumps({
@@ -226,7 +226,7 @@ class Layer7DatasetGenerator(DatasetGenerator):
                 "FGF2":{"concentration_ng_per_mL":20,"schedule":"every 48h"},
                 "VEGF":{"concentration_ng_per_mL":10,"schedule":"every 72h"},
                 "TGFb":{"concentration_ng_per_mL":5,"schedule":"every 72h"},
-            }, indent=2), description="Growth factor concentrations for tissue culture", format_name="JSON"))
+            }, indent=2, ensure_ascii=False), description="Growth factor concentrations for tissue culture", format_name="JSON"))
         
         o.files.append(DatasetFile(filename="organoid_protocol.md",extension=".md",
             content=self._organoid_protocol(tt),
@@ -236,7 +236,7 @@ class Layer7DatasetGenerator(DatasetGenerator):
             content=json.dumps({
                 "material":"PLGA 75:25","porosity_percent":85,"pore_size_um":200,
                 "degradation_time_weeks":12,"mechanical_modulus_kPa":50,
-            }, indent=2), description="Scaffold design parameters for tissue engineering", format_name="JSON"))
+            }, indent=2, ensure_ascii=False), description="Scaffold design parameters for tissue engineering", format_name="JSON"))
         
         o.frobenius_verified = clink_frobenius_closed(self.tup); return o
     

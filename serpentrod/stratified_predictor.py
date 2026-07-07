@@ -726,7 +726,7 @@ class ProteinStratifiedPredictor:
             } for f in result.get('mature_products', [])],
             'processing_steps': result.get('processing', {}).get('steps', [])
         }
-        return json.dumps(report, indent=2)
+        return json.dumps(report, indent=2, ensure_ascii=False)
 
 # ═══════════════════════════════════════════════════════════════════════
 # TEST SUITE — Known preproproteins with validated processing

@@ -100,10 +100,10 @@ def _parse_tuple_arg(tup_str, default=None):
 
 def _json_or_str(obj):
     if isinstance(obj, (dict, list)):
-        return json.dumps(obj, indent=2, default=str)
+        return json.dumps(obj, indent=2, default=str, ensure_ascii=False)
     if hasattr(obj, '__dict__'):
         try:
-            return json.dumps(vars(obj), indent=2, default=str)
+            return json.dumps(vars(obj), indent=2, default=str, ensure_ascii=False)
         except Exception:
             return str(obj)
     return str(obj)

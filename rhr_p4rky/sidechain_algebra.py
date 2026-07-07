@@ -575,7 +575,7 @@ if __name__ == "__main__":
                 break
         result = analyze_pdb_structure(pdb_target, cutoff=cutoff, verbose=not as_json)
         if as_json:
-            print(_json.dumps(result, indent=2, default=str))
+            print(_json.dumps(result, indent=2, default=str, ensure_ascii=False))
         else:
             print_pdb_analysis(result, verbose=verbose)
         sys.exit(0)

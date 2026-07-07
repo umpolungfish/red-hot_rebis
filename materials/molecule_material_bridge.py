@@ -219,7 +219,7 @@ def main():
                 "properties": design.predicted_properties,
                 "applications": design.proposed_applications,
             }
-        print(json.dumps(output, indent=2))
+        print(json.dumps(output, indent=2, ensure_ascii=False))
 
 
 if __name__ == "__main__":

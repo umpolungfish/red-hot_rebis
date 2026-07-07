@@ -29,7 +29,7 @@ if __name__ == "__main__":
     # Test sequence
     sr = SerpentRod("AUGGCCGACUGGAACUGCAAGAAGAUCGUGCCCAAGUACUACGGCCGCUG", name="test_protein")
     result = sr.report()
-    print(json.dumps(result, indent=2))
+    print(json.dumps(result, indent=2, ensure_ascii=False))
     
     # Second test: longer sequence
     info_line("\n\n=== SECOND TEST: 108 nt ===")

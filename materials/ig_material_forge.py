@@ -675,7 +675,7 @@ Examples:
             design = forge.forge_from_catalog(args.catalog)
             print(forge.report(design.name))
             if args.json:
-                print(json.dumps(design.to_dict(), indent=2))
+                print(json.dumps(design.to_dict(), indent=2, ensure_ascii=False))
             if args.output:
                 with open(args.output, 'w') as f:
                     json.dump(design.to_dict(), f, indent=2)
@@ -691,7 +691,7 @@ Examples:
             design = forge.forge_from_imas(args.imas)
             print(forge.report(design.name))
             if args.json:
-                print(json.dumps(design.to_dict(), indent=2))
+                print(json.dumps(design.to_dict(), indent=2, ensure_ascii=False))
             if args.output:
                 with open(args.output, 'w') as f:
                     json.dump(design.to_dict(), f, indent=2)
@@ -716,7 +716,7 @@ Examples:
         design = forge.forge(design_name, ig_tuple)
         print(forge.report(design_name))
         if args.json:
-            print(json.dumps(design.to_dict(), indent=2))
+            print(json.dumps(design.to_dict(), indent=2, ensure_ascii=False))
         if args.output:
             with open(args.output, 'w') as f:
                 json.dump(design.to_dict(), f, indent=2)

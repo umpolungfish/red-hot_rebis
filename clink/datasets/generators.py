@@ -49,7 +49,7 @@ class Layer0DatasetGenerator(DatasetGenerator):
         o.files.append(DatasetFile(filename="qcd_lattice_params.xml", extension=".xml",
             content=self._lattice(), description="Lattice QCD parameters", format_name="XML"))
         o.files.append(DatasetFile(filename="hadron_spectrum.json", extension=".json",
-            content=json.dumps({"pion":"135MeV","rho":"770MeV","proton":"938MeV"},indent=2),
+            content=json.dumps({"pion":"135MeV","rho":"770MeV","proton":"938MeV"},indent=2, ensure_ascii=False),
             description="Hadron mass spectrum", format_name="JSON"))
         o.frobenius_verified = clink_frobenius_closed(self.tup); return o
     def _alphas(self):
@@ -65,7 +65,7 @@ class Layer1DatasetGenerator(DatasetGenerator):
         o.files.append(DatasetFile(filename="electron_configs.csv", extension=".csv",
             content=self._cfgs(), description="Electron configurations", format_name="CSV"))
         o.files.append(DatasetFile(filename="b4_map.json", extension=".json",
-            content=json.dumps({"B":"Guanine","T":"Cytosine","F":"Adenine","N":"Thymine"},indent=2),
+            content=json.dumps({"B":"Guanine","T":"Cytosine","F":"Adenine","N":"Thymine"},indent=2, ensure_ascii=False),
             description="Belnap4 to nucleotide mapping", format_name="JSON"))
         o.frobenius_verified = clink_frobenius_closed(self.tup); return o
     def _cfgs(self):
@@ -81,7 +81,7 @@ class Layer2DatasetGenerator(DatasetGenerator):
             content="Z,symbol,mass_amu,radius_pm,ionization_eV\n6,C,12.011,76,11.260\n7,N,14.007,75,14.534\n8,O,15.999,73,13.618\n15,P,30.974,107,10.487\n26,Fe,55.845,132,7.902",
             description="Atomic parameters table", format_name="CSV"))
         o.files.append(DatasetFile(filename="isotopes.json", extension=".json",
-            content=json.dumps({"C":{"stable":["C12","C13"],"radioactive":["C14"]},"O":{"stable":["O16","O17","O18"]}},indent=2),
+            content=json.dumps({"C":{"stable":["C12","C13"],"radioactive":["C14"]},"O":{"stable":["O16","O17","O18"]}},indent=2, ensure_ascii=False),
             description="Isotope selection table", format_name="JSON"))
         o.frobenius_verified = clink_frobenius_closed(self.tup); return o
 
@@ -148,13 +148,13 @@ class Layer3DatasetGenerator(DatasetGenerator):
             "alanine": {"from": ["pyruvate","NH3","NADPH"],"enzymes":["ALT","GDH"]},
             "glucose": {"from": ["CO2","H2O"],"pathway":"gluconeogenesis"},
             "atp": {"from":["ADP","Pi"],"enzyme":"ATP synthase"},
-        }, indent=2)
+        }, indent=2, ensure_ascii=False)
     
     def _rxns(self):
         return json.dumps({
             "glycolysis":{"reactants":"Glucose+2NAD+2ADP","products":"2Pyruvate+2NADH+2ATP","deltaG_kJ":-74.5},
             "tca":{"reactants":"Acetyl-CoA+3NAD+FAD","products":"2CO2+3NADH+FADH2+GTP","deltaG_kJ":-40.0},
-        }, indent=2)
+        }, indent=2, ensure_ascii=False)
 
 
 class Layer4DatasetGenerator(DatasetGenerator):
@@ -176,7 +176,7 @@ class Layer4DatasetGenerator(DatasetGenerator):
             cls = classify_module_rich(seq)
             o.tool_bridges_used.append("serpentrod")
             o.files.append(DatasetFile(filename="serpentrod_classification.json",extension=".json",
-                content=json.dumps({"primitive_spectrum":spec,"classification":str(cls)},indent=2),
+                content=json.dumps({"primitive_spectrum":spec,"classification":str(cls)},indent=2, ensure_ascii=False),
                 description="Serpentrod protein classification", format_name="JSON"))
         except: pass
         
@@ -202,7 +202,7 @@ class Layer4DatasetGenerator(DatasetGenerator):
             elif aa in "SC": ss[i] = "E"
             else: ss[i] = "C"
         o.files.append(DatasetFile(filename="secondary_structure.json",extension=".json",
-            content=json.dumps({"prediction":ss,"composition":{"H":list(ss.values()).count("H"),"E":list(ss.values()).count("E"),"C":list(ss.values()).count("C")}},indent=2),
+            content=json.dumps({"prediction":ss,"composition":{"H":list(ss.values()).count("H"),"E":list(ss.values()).count("E"),"C":list(ss.values()).count("C")}},indent=2, ensure_ascii=False),
             description="Secondary structure prediction", format_name="JSON"))
         
         o.frobenius_verified = clink_frobenius_closed(self.tup); return o
@@ -221,7 +221,7 @@ class Layer5DatasetGenerator(DatasetGenerator):
             from gene_imscriber.engine import B4Element, genetic_code
             o.tool_bridges_used.append("gene_imscriber")
             o.files.append(DatasetFile(filename="genetic_code.json",extension=".json",
-                content=json.dumps({"b4_lattice":True,"codon_table":"64 codons, 21 AAs","bridge_active":True},indent=2),
+                content=json.dumps({"b4_lattice":True,"codon_table":"64 codons, 21 AAs","bridge_active":True},indent=2, ensure_ascii=False),
                 description="Genetic code from gene_imscriber bridge", format_name="JSON"))
         except: pass
         
@@ -346,7 +346,7 @@ class Layer5DatasetGenerator(DatasetGenerator):
             "atp_yield_per_glucose": {"anaerobic":2,"aerobic":36},
             "biomass_equation": "0.5G6P+0.2AA+0.1NT+0.05FA+0.05COF+0.1H2O -> biomass",
             "growth_rate_h": 0.5 if ct=="prokaryote" else 0.03,
-        }, indent=2)
+        }, indent=2, ensure_ascii=False)
     
     def _gen_media(self, ct):
         if ct == "human":
@@ -393,7 +393,7 @@ class Layer6DatasetGenerator(DatasetGenerator):
             tel = OuroboricTelomere()
             o.tool_bridges_used.append("ouroboric_telomere")
             o.files.append(DatasetFile(filename="telomere_dynamics.json",extension=".json",
-                content=json.dumps({"telomerase_active":True,"tandem_repeats":"TTAGGG","length_bp":10000},indent=2),
+                content=json.dumps({"telomerase_active":True,"tandem_repeats":"TTAGGG","length_bp":10000},indent=2, ensure_ascii=False),
                 description="Telomere dynamics from ouroboric_telomere bridge", format_name="JSON"))
         except: pass
         
@@ -416,7 +416,7 @@ class Layer6DatasetGenerator(DatasetGenerator):
             cc_params = {"chromosomes":chroms,"phases":{"G1":{"hours":12},"S":{"hours":7},"G2":{"hours":3},"M":{"hours":1}},
                 "checkpoint":"Aurora-B","spindle_checkpoint_active":True}
         o.files.append(DatasetFile(filename="cell_cycle_params.json",extension=".json",
-            content=json.dumps(cc_params,indent=2),
+            content=json.dumps(cc_params,indent=2, ensure_ascii=False),
             description="Cell cycle parameters with checkpoint specifications", format_name="JSON"))
         
         o.files.append(DatasetFile(filename="mitosis_assay_protocol.md",extension=".md",
@@ -485,7 +485,7 @@ class Layer7DatasetGenerator(DatasetGenerator):
             ecm = {"collagen_I":"60%","collagen_IV":"10%","laminin":"10%",
                 "fibronectin":"5%","elastin":"5%","proteoglycans":"5%","water":"5%"}
         o.files.append(DatasetFile(filename="ecm_composition.json",extension=".json",
-            content=json.dumps(ecm, indent=2), description="Extracellular matrix composition", format_name="JSON"))
+            content=json.dumps(ecm, indent=2, ensure_ascii=False), description="Extracellular matrix composition", format_name="JSON"))
         
         o.files.append(DatasetFile(filename="growth_factors.json",extension=".json",
             content=json.dumps({
@@ -493,7 +493,7 @@ class Layer7DatasetGenerator(DatasetGenerator):
                 "FGF2":{"concentration_ng_per_mL":20,"schedule":"every 48h"},
                 "VEGF":{"concentration_ng_per_mL":10,"schedule":"every 72h"},
                 "TGFb":{"concentration_ng_per_mL":5,"schedule":"every 72h"},
-            }, indent=2), description="Growth factor concentrations for tissue culture", format_name="JSON"))
+            }, indent=2, ensure_ascii=False), description="Growth factor concentrations for tissue culture", format_name="JSON"))
         
         o.files.append(DatasetFile(filename="organoid_protocol.md",extension=".md",
             content=self._organoid_protocol(tt, ot),
@@ -503,7 +503,7 @@ class Layer7DatasetGenerator(DatasetGenerator):
             content=json.dumps({
                 "material":"PLGA 75:25","porosity_percent":85,"pore_size_um":200,
                 "degradation_time_weeks":12,"mechanical_modulus_kPa":50,
-            }, indent=2), description="Scaffold design parameters for tissue engineering", format_name="JSON"))
+            }, indent=2, ensure_ascii=False), description="Scaffold design parameters for tissue engineering", format_name="JSON"))
         
         o.frobenius_verified = clink_frobenius_closed(self.tup); return o
     
@@ -640,7 +640,7 @@ class Layer8DatasetGenerator(DatasetGenerator):
                 },
                 "structural_type": "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟>",
                 "ouroboricity": "O_∞",
-            }, indent=2)
+            }, indent=2, ensure_ascii=False)
         chroms = {"mammal":30,"bird":40,"fish":25,"insect":8,"plant":12}
         nc = chroms.get(ot, 30)
         return json.dumps({
@@ -650,7 +650,7 @@ class Layer8DatasetGenerator(DatasetGenerator):
             "coding_percent":1.5,"gc_content_percent":42,
             "chromosome_list":[f"chr{i+1}" for i in range(nc)],
             "mitochondrial_genome":True,"circular_mtDNA":True,
-        }, indent=2)
+        }, indent=2, ensure_ascii=False)
     
     def _physiology(self, ot):
         if ot in ("mammal", "human"):
@@ -693,7 +693,7 @@ class Layer8DatasetGenerator(DatasetGenerator):
             "integumentary": {"skin_mass_kg":4.5,"surface_area_m2":1.7,"layers":["epidermis","dermis","hypodermis"]},
             "renal": {"kidney_mass_kg_pair":0.3,"daily_urine_L":1.5,"GFR_mL_min":125},
         }
-        return json.dumps(base, indent=2)
+        return json.dumps(base, indent=2, ensure_ascii=False)
     
     def _homeostasis(self, ot):
         return json.dumps({
@@ -702,7 +702,7 @@ class Layer8DatasetGenerator(DatasetGenerator):
             "calcium_homeostasis": {"setpoint_mM":2.5,"hormones":["PTH","calcitonin","vitamin_D"]},
             "osmoregulation": {"setpoint_mOsm":300,"organ":"kidney","hormone":"ADH"},
             "blood_pressure": {"setpoint_MAP_mmHg":95,"reflex":"baroreflex"},
-        }, indent=2)
+        }, indent=2, ensure_ascii=False)
     
     def _manifest(self, ot):
         return json.dumps({
@@ -724,7 +724,7 @@ class Layer8DatasetGenerator(DatasetGenerator):
             "consciousness_score":compute_c_score_from_tuple(self.tup),
             "tier":compute_tier_from_tuple(self.tup),
             "notes":"Whole organism design package - all layers actionable",
-        }, indent=2)
+        }, indent=2, ensure_ascii=False)
 
 
 # ============================================================
@@ -975,7 +975,7 @@ def upgrade_protein_generation(sequence: str = "MLSDCGPYKVLVVGDGGVGKSALTIQ",
             "primitive_spectrum": sr_spectrum,
             "frobenius_coverage": coverage,
             "source": "SerpentRod v5 ob3ect",
-        }, indent=2)
+        }, indent=2, ensure_ascii=False)
         result["notes"].append(
             f"SerpentRod v5: coverage {coverage:.2f}, Frobenius "
             f"{'exact (μ∘δ=id)' if coverage >= 1.0 else f'approximate — {coverage:.0%} primitive coverage'}")
@@ -1109,7 +1109,7 @@ def upgrade_cell_generation(organism_type: str = "mammal",
             result["metabolic_model_sbml"] = sbml
 
             fba = metab_builder.export_fba_parameters(model)
-            result["metabolic_fba_params"] = json.dumps(fba, indent=2)
+            result["metabolic_fba_params"] = json.dumps(fba, indent=2, ensure_ascii=False)
             result["notes"].append(
                 f"SBML model: {len(model.metabolites)} metabolites, {len(model.reactions)} reactions")
         except Exception as e:
@@ -1278,6 +1278,6 @@ def generate_actionable_organism_package(
     }
 
     if write_files:
-        (out_path / "design_manifest.json").write_text(json.dumps(manifest, indent=2))
+        (out_path / "design_manifest.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False))
 
     return manifest

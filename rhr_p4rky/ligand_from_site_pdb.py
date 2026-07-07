@@ -1107,7 +1107,7 @@ Examples:
 
     # Output
     if args.json:
-        print(json.dumps(result_to_json(result), indent=2))
+        print(json.dumps(result_to_json(result), indent=2, ensure_ascii=False))
     else:
         print_ligand_result(result)
 

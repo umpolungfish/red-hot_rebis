@@ -599,7 +599,7 @@ def _cmd_sicpovm(args):
             site_type = encode_site_with_context(residues)
             result = {"enzyme": enzyme, "site_type": site_type,
                       "sic_povm_probe": "SIC-POVM dual-link encoding complete"}
-            print(json.dumps(result, indent=2) if isinstance(result, dict) else result)
+            print(json.dumps(result, indent=2, ensure_ascii=False) if isinstance(result, dict) else result)
         except Exception as e:
             print(f'SIC-POVM probe error: {e}')
             return 1

@@ -782,7 +782,7 @@ def generate_report(report: PipelineReport, output_dir: Path = DOCS_DIR):
         if p.data:
             lines.append(f"")
             lines.append(f"```json")
-            lines.append(json.dumps(p.data, indent=2, default=str))
+            lines.append(json.dumps(p.data, indent=2, default=str, ensure_ascii=False))
             lines.append(f"```")
         
         lines.append(f"")
@@ -837,7 +837,7 @@ def generate_report(report: PipelineReport, output_dir: Path = DOCS_DIR):
             for p in report.phases
         ]
     }
-    json_path.write_text(json.dumps(json_data, indent=2, default=str))
+    json_path.write_text(json.dumps(json_data, indent=2, default=str, ensure_ascii=False))
     info_line(f"  JSON data written to: {json_path}")
     
     return report_path

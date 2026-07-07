@@ -895,7 +895,7 @@ def format_json(results: Dict[str, Dict]) -> str:
             "iupac_name": result["iupac_name"],
             "scaffold_class": result["scaffold_class"],
         })
-    return json.dumps(output, indent=2, ensure_ascii=False)
+    return json.dumps(output, indent=2, ensure_ascii=False, ensure_ascii=False)
 
 
 def format_tsv(results: Dict[str, Dict]) -> str:

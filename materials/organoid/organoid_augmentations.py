@@ -1098,7 +1098,7 @@ def main():
         info_line(f"Deltas vs baseline: {primitive_deltas(aug, ORGANOID_BASELINE)}")
         pathways = exactor_pathways_for(aug, ORGANOID_BASELINE)
         if pathways:
-            print(f"EXACTOR pathways: {json.dumps(pathways, indent=2)}")
+            print(f"EXACTOR pathways: {json.dumps(pathways, indent=2, ensure_ascii=False)}")
         return
     
     if args.augmented:

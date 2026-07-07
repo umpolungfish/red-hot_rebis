@@ -631,7 +631,7 @@ f"Δ={len(t.delta_primitives)}  {tier(dt)}→{tier(ht)}")
                     "stages": [{"stage": s.stage, "status": s.status.value}
                                for s in r.stages]}
                    for r in reports]
-            print(json.dumps(out, indent=2))
+            print(json.dumps(out, indent=2, ensure_ascii=False))
         else:
             print(generate_summary_report(reports))
         return 0
@@ -667,7 +667,7 @@ f"Δ={len(t.delta_primitives)}  {tier(dt)}→{tier(ht)}")
             elif s.stage == "5:FROBENIUS" and s.status == StageStatus.SUCCESS:
                 sd["data"] = {"all_pass": s.data["all_pass"]}
             out["stages"].append(sd)
-        print(json.dumps(out, indent=2))
+        print(json.dumps(out, indent=2, ensure_ascii=False))
     else:
         info_line(f"\n{report.summary()}")
 

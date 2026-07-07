@@ -672,7 +672,7 @@ def main():
         print(format_arrangement(arr))
     elif args.json:
         result = analyze_molecule(args.smiles)
-        print(json.dumps(result, indent=2))
+        print(json.dumps(result, indent=2, ensure_ascii=False))
     else:
         info_line(f"Arrangement: {format_arrangement(arr)}")
         names = arrangement_to_tokens(arr)

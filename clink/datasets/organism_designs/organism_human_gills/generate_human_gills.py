@@ -508,7 +508,7 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
 
     # L4 augmentation: ionocyte complex PDB
     (layer_dirs[4] / "ionocyte_channel_complex.pdb").write_text(_ionocyte_pdb())
-    (layer_dirs[4] / "gill_proteins.json").write_text(json.dumps(GILL_GENES, indent=2))
+    (layer_dirs[4] / "gill_proteins.json").write_text(json.dumps(GILL_GENES, indent=2, ensure_ascii=False))
 
     # L5 augmentation: gill genome additions + plasmid
     (layer_dirs[5] / "gill_plasmid.gb").write_text(_gill_plasmid_gb())
@@ -524,11 +524,11 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
 
     # L7 augmentation: tissue architecture
     (layer_dirs[7] / "gill_tissue_architecture.json").write_text(
-        json.dumps(GILL_TISSUE_SPEC, indent=2))
+        json.dumps(GILL_TISSUE_SPEC, indent=2, ensure_ascii=False))
 
     # L8 augmentation: aquatic physiology + gibson protocol
     (layer_dirs[8] / "aquatic_physiology.json").write_text(
-        json.dumps(AQUATIC_PHYSIOLOGY, indent=2))
+        json.dumps(AQUATIC_PHYSIOLOGY, indent=2, ensure_ascii=False))
     (layer_dirs[8] / "gill_gibson_assembly_protocol.txt").write_text(_gibson_protocol())
 
     # Gill-specific layer: consolidated design brief
@@ -556,7 +556,7 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
         },
         "frobenius": "μ∘δ=id — every ion gradient folded by gill lamellae is recovered losslessly",
     }
-    (gill_dir / "gill_design_brief.json").write_text(json.dumps(gill_brief, indent=2))
+    (gill_dir / "gill_design_brief.json").write_text(json.dumps(gill_brief, indent=2, ensure_ascii=False))
 
     # ── Manifest ───────────────────────────────────────────────────────────────
     total_files = sum(len(list(d.glob("*")))
@@ -584,7 +584,7 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
         "gas_exchange_efficiency": GILL_TISSUE_SPEC["gas_exchange_efficiency"],
         "respiration": "bimodal (gill primary, lung retained)",
     }
-    (out_path / "design_manifest.json").write_text(json.dumps(manifest, indent=2))
+    (out_path / "design_manifest.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False))
 
     info_line(f"\n{'=' * 70}")
     success_line(f"COMPLETE — {total_files} files, {total_bytes:,} bytes")

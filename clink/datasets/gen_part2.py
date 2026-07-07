@@ -20,7 +20,7 @@ class Layer0DatasetGenerator(DatasetGenerator):
         o.files.append(DatasetFile(filename="qcd_lattice_params.xml", extension=".xml",
             content=self._lattice(), description="Lattice QCD parameters", format_name="XML"))
         o.files.append(DatasetFile(filename="hadron_spectrum.json", extension=".json",
-            content=json.dumps({"pion":"135MeV","rho":"770MeV","proton":"938MeV"},indent=2),
+            content=json.dumps({"pion":"135MeV","rho":"770MeV","proton":"938MeV"},indent=2, ensure_ascii=False),
             description="Hadron mass spectrum", format_name="JSON"))
         o.frobenius_verified = clink_frobenius_closed(self.tup); return o
     def _alphas(self):
@@ -38,7 +38,7 @@ class Layer1DatasetGenerator(DatasetGenerator):
         o.files.append(DatasetFile(filename="electron_configs.csv", extension=".csv",
             content=self._cfgs(), description="Electron configurations", format_name="CSV"))
         o.files.append(DatasetFile(filename="b4_map.json", extension=".json",
-            content=json.dumps({"B":"Guanine","T":"Cytosine","F":"Adenine","N":"Thymine"},indent=2),
+            content=json.dumps({"B":"Guanine","T":"Cytosine","F":"Adenine","N":"Thymine"},indent=2, ensure_ascii=False),
             description="Belnap4 to nucleotide mapping", format_name="JSON"))
         o.frobenius_verified = clink_frobenius_closed(self.tup); return o
     def _cfgs(self):
@@ -56,7 +56,7 @@ class Layer2DatasetGenerator(DatasetGenerator):
             content="Z,symbol,mass_amu,radius_pm,ionization_eV\\n6,C,12.011,76,11.260\\n7,N,14.007,75,14.534\\n8,O,15.999,73,13.618\\n15,P,30.974,107,10.487\\n26,Fe,55.845,132,7.902",
             description="Atomic parameters table", format_name="CSV"))
         o.files.append(DatasetFile(filename="isotopes.json", extension=".json",
-            content=json.dumps({"C":{"stable":["C12","C13"],"radioactive":["C14"]},"O":{"stable":["O16","O17","O18"]}},indent=2),
+            content=json.dumps({"C":{"stable":["C12","C13"],"radioactive":["C14"]},"O":{"stable":["O16","O17","O18"]}},indent=2, ensure_ascii=False),
             description="Isotope selection table", format_name="JSON"))
         o.frobenius_verified = clink_frobenius_closed(self.tup); return o
 ''')
@@ -107,13 +107,13 @@ class Layer3DatasetGenerator(DatasetGenerator):
             "alanine": {"from": ["pyruvate","NH3","NADPH"],"enzymes":["ALT","GDH"]},
             "glucose": {"from": ["CO2","H2O"],"pathway":"gluconeogenesis"},
             "atp": {"from":["ADP","Pi"],"enzyme":"ATP synthase"},
-        }, indent=2)
+        }, indent=2, ensure_ascii=False)
     
     def _rxns(self):
         return json.dumps({
             "glycolysis":{"reactants":"Glucose+2NAD+2ADP","products":"2Pyruvate+2NADH+2ATP","deltaG_kJ":-74.5},
             "tca":{"reactants":"Acetyl-CoA+3NAD+FAD","products":"2CO2+3NADH+FADH2+GTP","deltaG_kJ":-40.0},
-        }, indent=2)
+        }, indent=2, ensure_ascii=False)
 ''')
 
 # L4 - Protein  
@@ -138,7 +138,7 @@ class Layer4DatasetGenerator(DatasetGenerator):
             cls = classify_module_rich(seq)
             o.tool_bridges_used.append("serpentrod")
             o.files.append(DatasetFile(filename="serpentrod_classification.json",extension=".json",
-                content=json.dumps({"primitive_spectrum":spec,"classification":str(cls)},indent=2),
+                content=json.dumps({"primitive_spectrum":spec,"classification":str(cls)},indent=2, ensure_ascii=False),
                 description="Serpentrod protein classification", format_name="JSON"))
         except: pass
         
@@ -164,7 +164,7 @@ class Layer4DatasetGenerator(DatasetGenerator):
             elif aa in "SC": ss[i] = "E"
             else: ss[i] = "C"
         o.files.append(DatasetFile(filename="secondary_structure.json",extension=".json",
-            content=json.dumps({"prediction":ss,"composition":{"H":list(ss.values()).count("H"),"E":list(ss.values()).count("E"),"C":list(ss.values()).count("C")}},indent=2),
+            content=json.dumps({"prediction":ss,"composition":{"H":list(ss.values()).count("H"),"E":list(ss.values()).count("E"),"C":list(ss.values()).count("C")}},indent=2, ensure_ascii=False),
             description="Secondary structure prediction", format_name="JSON"))
         
         o.frobenius_verified = clink_frobenius_closed(self.tup); return o

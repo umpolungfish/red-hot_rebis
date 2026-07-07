@@ -873,7 +873,7 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
 
     # L4: CesA rosette + laccase PDB + protein registry
     (layer_dirs[4] / "CesA_rosette_LAC17_structure.pdb").write_text(_cesa_laccase_pdb())
-    (layer_dirs[4] / "treople_proteins.json").write_text(json.dumps(TREOPLE_GENES, indent=2))
+    (layer_dirs[4] / "treople_proteins.json").write_text(json.dumps(TREOPLE_GENES, indent=2, ensure_ascii=False))
 
     # L5: gene cassettes + metabolic model
     (layer_dirs[5] / "treople_metabolic_model.xml").write_text(_treople_sbml())
@@ -882,7 +882,7 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
         treople_fasta += f">{gname}_{gdata.get('uniprot','UNK')}_human_codon_opt\n"
         treople_fasta += gdata["codon_opt_fragment"] + "\n"
     (layer_dirs[5] / "treople_genes.fasta").write_text(treople_fasta)
-    (layer_dirs[5] / "annual_ring_spec.json").write_text(json.dumps(ANNUAL_RING_SPEC, indent=2))
+    (layer_dirs[5] / "annual_ring_spec.json").write_text(json.dumps(ANNUAL_RING_SPEC, indent=2, ensure_ascii=False))
 
     # L6: cambium cell division spec
     cambium_spec = {
@@ -896,12 +896,12 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
         "ig_note": "Ð=𐑺: WOX4 lateral meristem enables indefinite branching dimensional expansion; "
                    "this is the architectural shift from animal (centralized) to arboreal (branching)",
     }
-    (layer_dirs[6] / "cambium_division_spec.json").write_text(json.dumps(cambium_spec, indent=2))
+    (layer_dirs[6] / "cambium_division_spec.json").write_text(json.dumps(cambium_spec, indent=2, ensure_ascii=False))
 
     # L7: venation pattern + tissue architecture
     info_line("  Computing leaf venation Turing pattern (branching regime, Gray-Scott)...")
     pattern = _venation_pattern(width=80, height=40, steps=8000)
-    (layer_dirs[7] / "skin_venation_pattern.json").write_text(json.dumps(pattern, indent=2))
+    (layer_dirs[7] / "skin_venation_pattern.json").write_text(json.dumps(pattern, indent=2, ensure_ascii=False))
     (layer_dirs[7] / "skin_venation.svg").write_text(_venation_svg(pattern))
     bark_tissue = {
         "layers_outer_to_inner": [
@@ -925,10 +925,10 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
         "chloroplasts_per_photosynthetic_cell": 40,
         "bark_thickness_mm": 2.5,
     }
-    (layer_dirs[7] / "bark_tissue_architecture.json").write_text(json.dumps(bark_tissue, indent=2))
+    (layer_dirs[7] / "bark_tissue_architecture.json").write_text(json.dumps(bark_tissue, indent=2, ensure_ascii=False))
 
     # L8: physiology + protocol
-    (layer_dirs[8] / "treople_physiology.json").write_text(json.dumps(TREOPLE_PHYSIOLOGY, indent=2))
+    (layer_dirs[8] / "treople_physiology.json").write_text(json.dumps(TREOPLE_PHYSIOLOGY, indent=2, ensure_ascii=False))
     (layer_dirs[8] / "treople_engineering_protocol.txt").write_text(_treople_protocol())
 
     # L_treople: design brief
@@ -956,12 +956,12 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
             "The treople is not a fantasy. It is a grammar reading."
         ),
     }
-    (treople_dir / "treople_design_brief.json").write_text(json.dumps(brief, indent=2))
+    (treople_dir / "treople_design_brief.json").write_text(json.dumps(brief, indent=2, ensure_ascii=False))
 
     # L_venation: SVG copy + stats
     (venation_dir / "venation.svg").write_text(_venation_svg(pattern))
     (venation_dir / "venation_stats.json").write_text(json.dumps(
-        {k: v for k, v in pattern.items() if k != "cells"}, indent=2))
+        {k: v for k, v in pattern.items() if k != "cells"}, indent=2, ensure_ascii=False))
 
     all_dirs = [*layer_dirs.values(), treople_dir, venation_dir]
     total_files = sum(len(list(d.glob("*"))) for d in all_dirs)
@@ -992,7 +992,7 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
         "mycorrhizal_partner": "Rhizophagus irregularis",
         "oldest_frobenius_on_earth": "PT4 mycorrhizal exchange — 400 million years",
     }
-    (out_path / "design_manifest.json").write_text(json.dumps(manifest, indent=2))
+    (out_path / "design_manifest.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False))
 
     aut_pct = round(8.5*18e-6*3600*8/6*686*0.80/2000*100, 0)
     info_line(f"\n{'=' * 70}")
