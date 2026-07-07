@@ -5,9 +5,11 @@ Callable from anywhere via:  pip install -e .  then  rebis.<x> <command>
 Usage:
   pip install -e .                    # Install from anywhere
   rebis status                        # Package status
+  rebis.chain --dna <DNA> --target <SMILES>  # Unified pipeline
+  rebis.gene-pipeline --test          # Gene → folded protein (self-test)
   rebis.materials list                # Materials design tools
   rebis.ch3mpiler forward <SMILES>    # Forward synthesis
-  rebis.p4ra genetics                 # Genetic code B4 lattice
+  rebis.p4ra belnap                   # Belnap FOUR logic
   rebis.verify                        # Frobenius closure check
   python3 -c 'import rebis; rebis.p4ra.Belnap.T'
 """
@@ -15,7 +17,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="red-hot-rebis",
-    version="3.0.0",
+    version="4.0.0",
     description="Red-Hot Rebis — Integrated Imscribing Grammar toolchain",
     author="Lando ⊗ ⊙perator",
     author_email="mrnob0dy666@devilsdevice",
@@ -48,17 +50,26 @@ setup(
     entry_points={
         "console_scripts": [
             "rebis=rebis.cli:main",
-            "rebis.materials=rebis.materials:main",
+            # Tier 1 — primary computation engines
+            "rebis.chain=rebis.chain_entry:main",
+            "rebis.gene-pipeline=rebis.gene_pipeline_entry:main",
             "rebis.ch3mpiler=rebis.ch3mpiler:main",
-            "rebis.sidechain=rebis.sidechain:main",
-            "rebis.clink=rebis.clink:main",
-            "rebis.p4ra=rebis.p4ra:main",
-            "rebis.biology=rebis.biology:main",
-            "rebis.therapeutics=rebis.therapeutics:main",
             "rebis.serpentrod=rebis.serpentrod:main",
+            "rebis.ligand=rebis.ligand:main",
+            "rebis.sidechain=rebis.sidechain:main",
+            # Tier 2 — specialized engines
+            "rebis.therapeutics=rebis.therapeutics:main",
+            "rebis.materials=rebis.materials:main",
+            "rebis.biology=rebis.biology:main",
             "rebis.pipeline=rebis.pipeline:main",
             "rebis.gene=rebis.gene:main",
             "rebis.alchemy=rebis.alchemy:main",
+            "rebis.clink=rebis.clink:main",
+            "rebis.p4ra=rebis.p4ra:main",
+            # Infrastructure
+            "rebis.demo=rebis.demo_entry:main",
+            "rebis.status=rebis.status_entry:main",
+            "rebis.verify=rebis.verify_entry:main",
         ],
     },
     install_requires=[

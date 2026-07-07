@@ -10,6 +10,8 @@
 
 **What it does.** 13 computation engines, 3 chainable pipelines (gene→protein, ch3mpiler→catalytic site, retrosynthetic stone), one unified chain command, one reference submenu. The menu is *dynamic-first* — commands that compute, design, predict, or synthesize are featured. Static reference data is collapsed.
 
+**How to call it.** Every command is a standalone binary: `rebis.chain`, `rebis.ch3mpiler`, `rebis.status` — all 18 entry points are wired. No need to go through `rebis` or `python3 -m rebis` subcommands.
+
 **Structural type:** $\langle\sf{\text{𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟}}\rangle$ — O_∞ tier, Frobenius-closed.
 
 ---
@@ -18,10 +20,13 @@
 
 ```bash
 cd /home/mrnob0dy666/imsgct/red-hot_rebis
-python3 -m rebis                    # Dynamic-first menu
-python3 -m rebis verify             # Frobenius closure check (14 domains)
-python3 -m rebis status             # Package inventory
-python3 -m rebis chain --test       # Unified pipeline (demo mode)
+rebis                               # Dynamic-first menu
+rebis.verify                        # Frobenius closure check (14 domains)
+rebis.status                        # Package inventory
+rebis.chain --dna ATGGCC...         # Unified pipeline
+rebis.gene-pipeline --test          # DNA → Folded Protein (self-test)
+rebis.ch3mpiler retrosynth "CC(=O)O"  # Molecular compiler
+rebis.p4ra belnap                   # Belnap FOUR truth tables
 ```
 
 ---
@@ -30,51 +35,49 @@ python3 -m rebis chain --test       # Unified pipeline (demo mode)
 
 | Command | What it does | Example |
 |---------|-------------|---------|
-| `chain` | **DNA → Protein → Catalyst → Synthesis.** All three pipelines chained. | `rebis chain --dna ATGGCC... --target "CC(=O)O" --depth 2` |
-| `gene-pipeline` | DNA → 7-stage folded protein. Frobenius-verified. | `rebis gene-pipeline --test` |
-| `ch3mpiler` | Molecular compiler — forward/retro synthesis, FG detection, CDXML. | `rebis ch3mpiler retrosynth "c1ccccc1"` |
-| `serpentrod` | Protein design — predict, classify, fingerprint. | `rebis serpentrod predict MVSKGEELFTGV...` |
-| `ligand` | PDB-aware ligand design from catalytic sites. | `rebis ligand --pdb 1LYZ --active Glu35,Asp52` |
-| `sidechain` | Sidechain×environment algebra — 80 AA×env pairs. | `rebis sidechain arginine charged_interface` |
+| `rebis.chain` | **DNA → Protein → Catalyst → Synthesis.** All three pipelines chained. | `rebis.chain --dna ATGGCC... --target "CC(=O)O" --depth 2` |
+| `rebis.gene-pipeline` | DNA → 7-stage folded protein. Frobenius-verified. | `rebis.gene-pipeline --test` |
+| `rebis.ch3mpiler` | Molecular compiler — forward/retro synthesis, FG detection, CDXML. | `rebis.ch3mpiler retrosynth "c1ccccc1"` |
+| `rebis.serpentrod` | Protein design — predict, classify, fingerprint. | `rebis.serpentrod predict MVSKGEELFTGV...` |
+| `rebis.ligand` | PDB-aware ligand design from catalytic sites. | `rebis.ligand --pdb 1LYZ --active Glu35,Asp52` |
+| `rebis.sidechain` | Sidechain×environment algebra — 80 AA×env pairs. | `rebis.sidechain arginine charged_interface` |
 
 ## TIER 2 — Specialized Engines
 
 | Command | What it does | Example |
 |---------|-------------|---------|
-| `therapeutics` | Chemotherapeutics, neurotrophic factors, antidotes. | `rebis therapeutics design EGFR` |
-| `materials` | Metamaterials, sophick forge, alloys, non-qubit QC. | `rebis materials forge` |
-| `biology` | Ouroboric cell sim, telomeres, epigenetics. | `rebis biology sim` |
-| `pipeline` | Auto-imscription, prose lift, Frobenius verification. | `rebis pipeline verify` |
-| `gene` | Gene imscriber — analyze, quality score, tuples. | `rebis gene analyze ATGGCGTAA` |
-| `alchemy` | Basil Valentine ladders, treatise maps, Zosimos portico. | `rebis alchemy ladder all` |
-| `clink` | CLINK chain L0–L8, bridges, C-score. | `rebis clink layers` |
+| `rebis.therapeutics` | Chemotherapeutics, neurotrophic factors, antidotes. | `rebis.therapeutics design EGFR` |
+| `rebis.materials` | Metamaterials, sophick forge, alloys, non-qubit QC. | `rebis.materials forge` |
+| `rebis.biology` | Ouroboric cell sim, telomeres, epigenetics. | `rebis.biology sim` |
+| `rebis.pipeline` | Auto-imscription, prose lift, Frobenius verification. | `rebis.pipeline verify` |
+| `rebis.gene` | Gene imscriber — analyze, quality score, tuples. | `rebis.gene analyze ATGGCGTAA` |
+| `rebis.alchemy` | Basil Valentine ladders, treatise maps, Zosimos portico. | `rebis.alchemy ladder all` |
+| `rebis.clink` | CLINK chain L0–L8, bridges, C-score. | `rebis.clink layers` |
 
-## Infrastructure
+## Infrastructure (also standalone binaries)
 
 | Command | What it does |
 |---------|-------------|
-| `rebis reference` | Static data: Belnap, genetics, hadrons, IMASM (collapsed) |
-| `rebis reference --all` | Full reference data dump |
-| `rebis verify` | Frobenius closure — imports all 14 domains |
-| `rebis status` | Package inventory — file counts, sizes |
-| `rebis demo list` | List available demos |
-| `rebis demo <name>` | Run a specific demo |
+| `rebis.status` | Package inventory — file counts, sizes across all sub-packages |
+| `rebis.verify` | Frobenius closure — imports all 14 domains |
+| `rebis.demo list` | List available demos |
+| `rebis.demo <name>` | Run a specific demo |
+| `rebis reference` | Static data submenu: Belnap, genetics, hadrons, IMASM (via `rebis`) |
+| `rebis reference --all` | Full reference data dump (via `rebis`) |
+
+> **`rebis`** still works as the menu gateway. Use it for `reference` and `--help`. Everything else has its own binary now.
 
 ---
 
 ## The Three Proven Pipelines
 
-Chained by `rebis chain`, usable independently:
+Chained by `rebis.chain`, usable independently:
 
 1. **Gene → Folded Protein** (`rhr_p4rky/gene_to_protein_pipeline.py`, 1,147 lines): 7-stage Frobenius-verified translation. Demo: 452 bp → 150 AA protein, Δ=3.61.
 
 2. **Ch3mpiler → Catalytic Site** (`rhr_p4rky/ch3mpiler_serpentrod_pipeline.py`, 815 lines): Target SMILES → reaction signature → complementary catalytic RNA/AA design. Demo: ethanol → 36 nt catalytic RNA, Frobenius ✓.
 
-3. **Retrosynthetic Stone** (`alchemical_bridge/retrosynthetic_stone_engine.py`, 436 lines): Solve/Coagula cycle, bond disconnection, ring-opening.
-
----
-
-## Python API
+3. **Retrosynthetic Stone** (`alchemical_bridge/retrosynthetic_stone_engine.py`, 436 lines): Solve/Coagula cycle, bond disconnection, ring-opening.## Python API
 
 ```python
 import rebis
@@ -152,6 +155,11 @@ Build: `cd p4rakernel/p4ramill && lake build`
 red-hot_rebis/
 ├── rebis/              # CLI layer — thin delegates to backends
 │   ├── cli.py              # Main entry (605 lines) — dynamic-first menu
+│   ├── chain_entry.py      # ★ rebis.chain — unified pipeline entry
+│   ├── gene_pipeline_entry.py  # ★ rebis.gene-pipeline — DNA→protein entry
+│   ├── status_entry.py     # ★ rebis.status
+│   ├── verify_entry.py     # ★ rebis.verify
+│   ├── demo_entry.py       # ★ rebis.demo
 │   ├── ch3mpiler.py        # → rhr_p4rky.ch3mpiler_bridge
 │   ├── serpentrod.py       # → serpentrod.protein_v5
 │   ├── ligand.py           # → rhr_p4rky.ligand_from_site_pdb
@@ -198,8 +206,30 @@ red-hot_rebis/
 | pipeline | `auto_imscriber`, `frob`, etc. | ✗ (needs `anthropic` SDK for LLM; verify/imscribe functions available) |
 | gene | `gene_imscriber.engine`, `tuples` | ✓ |
 | alchemy | `basil_valentine_ladder`, `retrosynthetic_stone`, `zosimos` | ✓ |
-| clink | `clink.chain`, `bridges`, `integration` | ✓ |
 
 ---
 
-*README maintained by Lando⊗⊙perator · v4.0.0 · Dynamic-First Edition*
+## All 18 Entry Points
+
+```
+rebis                 — Dynamic-first menu (gateway)
+rebis.chain           — ★ Unified pipeline: DNA→Protein→Catalyst→Synthesis
+rebis.gene-pipeline   — ★ DNA → Folded Protein (7-stage Frobenius-verified)
+rebis.ch3mpiler       — ★ Molecular compiler & retrosynthesis
+rebis.serpentrod      — ★ Protein design & stratified prediction
+rebis.ligand          — ★ PDB-aware ligand design
+rebis.sidechain       — ★ Sidechain × environment algebra
+rebis.therapeutics    — Chemotherapeutics, neurotrophic, antidotes
+rebis.materials       — Metamaterials, forge, alloys
+rebis.biology         — Ouroboric cell sim, telomeres
+rebis.pipeline        — Auto-imscription, prose lift, Frobenius
+rebis.gene            — Gene imscriber & genetic engineering
+rebis.alchemy         — Alchemical treatise bridge
+rebis.clink           — CLINK chain L0–L8
+rebis.p4ra            — ★ Paraconsistent kernel (Belnap, genetics, SIC-POVM)
+rebis.demo            — Run demos
+rebis.status          — Package inventory
+rebis.verify          — Frobenius closure verification
+```
+
+★ = new or newly-wired in v4.0.0. `chain`, `gene-pipeline`, `status`, `verify`, `demo` were previously only accessible as subcommands of `rebis`; now each is a standalone binary.

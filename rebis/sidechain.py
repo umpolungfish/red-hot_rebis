@@ -23,6 +23,7 @@ Examples:
 """
 
 import sys as _sys
+from rebis.file_input import parse_with_file
 import io as _io
 import argparse
 import json
@@ -75,7 +76,7 @@ def main():
     parser.add_argument("--verbose", action="store_true",
                         help="Per-residue output for PDB analysis")
 
-    args = parser.parse_args()
+    args = parse_with_file(parser)
 
 
     if args.pdb:
