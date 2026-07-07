@@ -113,13 +113,22 @@ def _cmd_forge(args):
             print(f"═ Forging material: {name} ═")
             print(f"  IG tuple: {args.tuple}")
             forge = MaterialForge()
-            # Parse tuple — accept compact 12-glyph string
+            # Parse tuple — accept compact 12-glyph, numerical 12-tuple, or space-separated
             tup = args.tuple
             if isinstance(tup, str):
-                if len(tup) == 12:
-                    tup = tuple(tup)
-                else:
-                    tup = tuple(tup.split())
+                # Try numerical 12-tuple first (e.g. "4,5,4,5,3,5,3,4,2,4,3,3")
+                try:
+                    from rebis.shared import parse_numerical_tuple
+                    num_result = parse_numerical_tuple(tup)
+                    if num_result is not None:
+                        tup = tuple(num_result.values())
+                    else:
+                        raise ValueError("not numerical")
+                except (ValueError, ImportError):
+                    if len(tup) == 12:
+                        tup = tuple(tup)
+                    else:
+                        tup = tuple(tup.split())
             design = forge.forge(name, tup)
             print(_json_or_str(design.to_dict() if hasattr(design, 'to_dict') else design))
             return 0

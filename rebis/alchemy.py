@@ -90,8 +90,18 @@ def _parse_tuple_arg(tup_str, default=None):
         return dict(default)
     if not tup_str:
         return dict(_DEFAULT_SOURCE)
+    # Try numerical 12-tuple first (e.g. "4,5,4,5,3,5,3,4,2,4,3,3")
+    try:
+        from rebis.shared import parse_numerical_tuple
+        num_result = parse_numerical_tuple(tup_str)
+        if num_result is not None:
+            return num_result
+    except Exception:
+        pass
+    # Compact 12-glyph string
     if len(tup_str) == 12:
         return {_PRIMITIVE_ORDER[i]: tup_str[i] for i in range(12)}
+    # Semicolon-separated 12-glyph string
     parts = [p.strip() for p in tup_str.replace("⟨", "").replace("⟩", "").split(";")]
     if len(parts) == 12:
         return {_PRIMITIVE_ORDER[i]: parts[i] for i in range(12)}
@@ -134,7 +144,17 @@ def _cmd_ladder(args):
             source = _parse_tuple_arg(name)
             result = ladder.climb_between(source, _DEFAULT_TARGET)
         else:
-            result = ladder.key_info(name) if hasattr(ladder, 'key_info') else ladder.full_opus_report()
+            # Try numerical 12-tuple (e.g. "4,5,4,5,3,5,3,4,2,4,3,3")
+            try:
+                from rebis.shared import parse_numerical_tuple
+                num_tup = parse_numerical_tuple(name)
+                if num_tup is not None:
+                    source = num_tup
+                    result = ladder.climb_between(source, _DEFAULT_TARGET)
+                else:
+                    raise ValueError("not numerical")
+            except (ValueError, ImportError):
+                result = ladder.key_info(name) if hasattr(ladder, 'key_info') else ladder.full_opus_report()
         print(_json_or_str(result))
     except Exception as e:
         import traceback
