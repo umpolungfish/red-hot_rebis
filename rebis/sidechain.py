@@ -137,7 +137,7 @@ def main():
                         for sc in SC_NAMES
                     },
                     "tiers": {
-                        sc: {env: data["summary"]["tiers"].get(sc, {}).get(env, None)
+                        sc: {env: data["summary"]["tier_matrix"].get(sc, {}).get(env, None)
                              for env in ENV_NAMES}
                         for sc in SC_NAMES
                     },
