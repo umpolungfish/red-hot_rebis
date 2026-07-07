@@ -1,17 +1,13 @@
+#!/usr/bin/env python3
 """
-rebis.cli — Red-Hot Rebis Command-Line Interface
-═════════════════════════════════════════════════
-Running `rebis` with no arguments shows this comprehensive menu.
-All 12 subsystems accessible as standalone commands: rebis.<domain> <action>
+rebis.cli — Red-Hot Rebis v4.0 CLI — DYNAMIC-FIRST MENU
+═══════════════════════════════════════════════════════════
+Commands that DO SHIT are featured. Static data is collapsed
+into a single reference submenu. The full pipeline chain is
+a first-class command.
 
-Usage:
-  rebis                      — Show this comprehensive menu
-  rebis status               — Show package status
-  rebis verify               — Verify Frobenius closure
-  rebis run [target]         — Run a target (list to see all)
-  rebis demo [name]          — Run a demo (list to see all)
-  rebis materials <action>   — Materials subsystem
-  rebis.<domain> <action>    — Any entry point from anywhere
+Design principle: If it just prints enums, it's reference.
+If it computes, designs, predicts, or synthesizes, it's a command.
 
 Structural Type: ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩
 """
@@ -26,7 +22,8 @@ REBIS_ROOT = Path(__file__).parent.parent.absolute()
 
 for _p in [str(REBIS_ROOT),
            str(REBIS_ROOT / "rhr_p4rky"),
-           str(REBIS_ROOT / "shared")]:
+           str(REBIS_ROOT / "shared"),
+           str(REBIS_ROOT / "alchemical_bridge")]:
     if _p not in sys.path:
         sys.path.insert(0, _p)
 
@@ -34,21 +31,20 @@ from rebis.shared import (reaction_header, info_line, success_line,
                            error_line, warning_line, separator,
                            section_header)
 
-VERSION = "3.0.0"
+VERSION = "4.0.0"
 
 
-# ──────────────────────────────────────────────────────
-# COMPREHENSIVE MENU (default when `rebis` alone)
-# ──────────────────────────────────────────────────────
+# ═══════════════════════════════════════════════════════════════
+# RICH MENU — defaults to rich if available
+# ═══════════════════════════════════════════════════════════════
+
 def cmd_menu(args=None):
-    """Print the comprehensive rebis.<x> menu."""
+    """Print the DYNAMIC-FIRST rebis menu."""
 
-    # Try rich; fall back to plain text
     try:
         from rich.console import Console
         from rich.table import Table
         from rich.panel import Panel
-        from rich.columns import Columns
         from rich import box
         console = Console()
         RICH = True
@@ -56,206 +52,394 @@ def cmd_menu(args=None):
         RICH = False
 
     header = (
-        "RED-HOT REBIS v3.0 — REBIS.<x> INTEGRATED TOOLCHAIN\n"
-        "13 standalone entry points, callable from ANY directory\n"
-        "Structural type: ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩  —  O_∞ tier, ⊙ criticality"
+        "RED-HOT REBIS v4.0 — DYNAMIC-FIRST TOOLCHAIN\n"
+        "Commands that COMPUTE are featured. Static data → rebis reference\n"
+        "13 computation engines | 1 unified chain | 1 reference submenu"
     )
 
     if RICH:
         console.print(Panel(header, border_style="bright_red",
-                            title="🔥 rebis", title_align="center"), width=80)
+                            title="🔥 rebis v4.0", title_align="center"), width=88)
         console.print()
     else:
-        reaction_header("RED-HOT REBIS v3.0", "rebis.<x> Integrated Toolchain")
+        reaction_header("RED-HOT REBIS v4.0", "DYNAMIC-FIRST Toolchain")
         info_line(header)
 
-    # ── DOMAIN DEFINITIONS ──
-    domains = [
-        ("materials",    "rebis.materials",
-         "Materials design & simulation — forge, metamaterials, alloys, non-qubit QC",
-         ["list", "status", "forge [tuple]", "sim [name]"]),
+    # ── TIER 1: FEATURED DYNAMIC COMMANDS ──
+    featured = [
+        ("gene-pipeline",   "rebis gene-pipeline",
+         "DNA → mRNA → polypeptide → folded protein. 7-stage Frobenius-verified translation.",
+         ["--test", "--dna <DNA_seq>", "--seq <RNA_seq>"]),
+        ("ch3mpiler",       "rebis ch3mpiler",
+         "Molecular compiler — forward/retro synthesis, FG detection, CDXML output",
+         ["forward <SMILES>", "retrosynth <SMILES>", "fg <SMILES>", "cdxml <SMILES>"]),
+        ("serpentrod",      "rebis serpentrod",
+         "Protein design & stratified prediction — rolling profiles, classification",
+         ["predict <seq>", "classify <seq>", "finger <seq>"]),
+        ("chain",           "rebis chain",
+         "UNIFIED PIPELINE: DNA→Protein→CatalyticSite→RetrosyntheticPlan",
+         ["--dna <seq>", "--target <SMILES>", "--depth <N>"]),
+        ("ligand",          "rebis ligand",
+         "PDB-aware ligand design from catalytic sites — fetches structures, designs ligands",
+         ["--pdb <ID>", "--active <residues>", "--auto-active", "--json"]),
+        ("sidechain",       "rebis sidechain",
+         "Sidechain×environment algebra — 80 AA×env pairs, bottleneck/tier analysis",
+         ["<aa> <env>", "--pdb <ID>", "--batch", "--json"]),
+    ]
 
-        ("ch3mpiler",    "rebis.ch3mpiler",
-         "Molecular compiler & retrosynthesis — forward/reverse synthesis, FG detection",
-         ["forward <SMILES>", "retrosynth <SMILES>", "fg <SMILES>", "cdxml <SMILES>", "info"]),
-
-        ("sidechain",    "rebis.sidechain",
-         "Sidechain × environment algebra — 80 AA×env pairs, PDB integration, bottlenecks, tiers",
-         ["<aa> <env>", "--batch", "--list", "--pdb <ID>", "--json", "--verbose", "info"]),
-
-        ("clink",        "rebis.clink",
-         "CLINK chain & organism pipeline — 8 layers, bridges, consciousness scores",
-         ["layers", "bridge <a> <b>", "chain [tuple]", "cscore [tuple]", "info"]),
-
-        ("p4ra",         "rebis.p4ra",
-         "Paraconsistent kernel — Belnap logic, genetics, ligands, sidechain, SIC-POVM",
-         ["belnap", "genetics", "verify", "hadrons", "ligands", "sidechain", "gene-pipeline", "serpent", "sicpovm", "combinatorial", "heterocycles", "info"]),
-
-        ("biology",      "rebis.biology",
-         "Biological simulations & telomere design — cell sims, epigenetic states",
-         ["sim", "telomeres", "status", "info"]),
-
-        ("therapeutics", "rebis.therapeutics",
-         "Therapeutic design pipeline — chemotherapeutics, neurotrophic factors, antidotes",
-         ["list", "design <target>", "sim", "neurotrophic", "antidote", "info"]),
-
-        ("serpentrod",   "rebis.serpentrod",
-         "Protein design & stratified prediction — rolling profiles, fingerprints, classification",
-         ["list", "predict <seq>", "classify <seq>", "fingerprint <seq>", "info"]),
-
-        ("pipeline",     "rebis.pipeline",
-         "Imscription pipeline & Frobenius verification — auto-imscribe, lift prose",
-         ["list", "verify", "imscribe <name>", "lift <file>", "info"]),
-
-        ("gene",         "rebis.gene",
-         "Gene imscriber & genetic engineering — sequence analysis, quality scores, tuples",
-         ["list", "analyze <seq>", "quality <seq>", "tuples <seq>", "info"]),
-
-        ("alchemy",      "rebis.alchemy",
-         "Alchemical treatise bridge & operations — Basil Valentine ladders, treatise maps",
-         ["list", "ladder <name>", "map <treatise>", "info"]),
-
-        ("imas",         "rebis.imas",
-         "IMAS molecular arrangement design — compound signatures, Frobenius patterns, reactivity",
-         ["list", "signature <smiles>", "frobenius <smiles>", "bridge <smiles>", "info"]),
-
-        ("ligand",       "rebis.ligand",
-         "PDB-aware ligand design from catalytic sites — sidechain×env algebra integration",
-         ["--pdb <ID>", "--active <res>", "--auto-active", "--improved", "--json", "info"]),
+    secondary = [
+        ("therapeutics",    "rebis therapeutics",
+         "Chemotherapeutics, neurotrophic factors, universal antidote library",
+         ["design <target>", "sim", "neurotrophic <target>", "antidote <poison>"]),
+        ("materials",       "rebis materials",
+         "IG-tuple→material forge, metamaterials, ouroboric alloys, non-qubit QC",
+         ["forge [tuple]", "sim [name]", "status"]),
+        ("biology",         "rebis biology",
+         "Ouroboric cell simulations, telomere design, epigenetic states",
+         ["sim", "status"]),
+        ("pipeline",        "rebis pipeline",
+         "Auto-imscription, prose lift, Frobenius verification",
+         ["imscribe <name>", "lift <file>", "verify"]),
+        ("gene",            "rebis gene",
+         "Gene analysis, tuple encoding, IG primitive mapping",
+         ["analyze <seq>", "tuples <seq>"]),
+        ("alchemy",         "rebis alchemy",
+         "Basil Valentine ladders, Zosimos portico, alchemical bridge operations",
+         ["ladder <tuple|all>", "portico [tuple]"]),
+        ("clink",           "rebis clink",
+         "CLINK chain L0-L8, consciousness scoring, layer bridges",
+         ["layers", "bridge <a> <b>", "chain <name>", "cscore <name>"]),
     ]
 
     if RICH:
         t = Table(box=box.ROUNDED, border_style="bright_red",
                   header_style="bold yellow",
-                  title="📦 REBIS.<x> DOMAINS — 13 COMMANDS")
+                  title="⚡ TIER 1 — PRIMARY COMPUTATION ENGINES")
         t.add_column("#", style="dim", width=3)
-        t.add_column("Domain", style="bright_cyan", width=14)
-        t.add_column("Command", style="bold green", width=20)
-        t.add_column("Description", style="white", width=50)
+        t.add_column("Command", style="bright_cyan", width=18)
+        t.add_column("Description", style="white", width=56)
         t.add_column("Actions", style="dim", width=48)
-        for i, (name, cmd, desc, actions) in enumerate(domains, 1):
-            t.add_row(str(i), name, cmd, desc, "  ".join(actions))
+        for i, (name, cmd, desc, actions) in enumerate(featured, 1):
+            t.add_row(str(i), name, desc, "  ".join(actions))
         console.print(t)
-    else:
-        section_header("📦 REBIS.<x> DOMAINS — 13 commands")
-        info_line(f"{'#':3s} {'Domain':14s} {'Command':20s}  {'Description'}")
-        info_line("─" * 80)
-        for i, (name, cmd, desc, actions) in enumerate(domains, 1):
-            info_line(f"  {i:<2d} {name:14s} {cmd:20s}  {desc}")
-            info_line(f"     {'Actions:':>18s}  {', '.join(actions)}")
 
-
-    if RICH:
         console.print()
         t2 = Table(box=box.SIMPLE, border_style="dim",
-                    title="⚡ TOP-LEVEL COMMANDS")
-        t2.add_column("Command", style="bold cyan", width=30)
-        t2.add_column("Description", style="white", width=65)
-        for cmd, desc in [
-            ("rebis",                     "Show this comprehensive menu"),
-            ("rebis --version",           "Show version 3.0.0"),
-            ("rebis status",              "Show package status (17 packages)"),
-            ("rebis verify",              "Verify Frobenius closure across all imports"),
-            ("rebis run list",            "List available run targets"),
-            ("rebis demo list",           "List available demos"),
-            ("rebis.materials list",      "Direct subcommand access (any domain)"),
-            ("python3 -m rebis",          "Module execution"),
-            ("python3 -m rebis.materials","Run domain as script"),
-            ("python3 -c 'import rebis'", "Python API access"),
-        ]:
-            t2.add_row(cmd, desc)
+                   title="🔧 TIER 2 — SPECIALIZED ENGINES")
+        t2.add_column("Command", style="bright_cyan", width=18)
+        t2.add_column("Description", style="white", width=56)
+        t2.add_column("Actions", style="dim", width=48)
+        for name, cmd, desc, actions in secondary:
+            t2.add_row(name, desc, "  ".join(actions))
         console.print(t2)
 
         console.print()
         t3 = Table(box=box.SIMPLE, border_style="dim",
-                    title="🔧 INSTALLED ENTRY POINTS (console_scripts)")
-        t3.add_column("Command", style="bold green", width=24)
-        t3.add_column("Source", style="dim", width=20)
-        for cmd, src in [
-            ("rebis",               "rebis.cli:main"),
-            ("rebis.materials",     "rebis.materials:main"),
-            ("rebis.ch3mpiler",     "rebis.ch3mpiler:main"),
-            ("rebis.sidechain",     "rebis.sidechain:main"),
-            ("rebis.clink",         "rebis.clink:main"),
-            ("rebis.p4ra",          "rebis.p4ra:main"),
-            ("rebis.biology",       "rebis.biology:main"),
-            ("rebis.therapeutics",  "rebis.therapeutics:main"),
-            ("rebis.serpentrod",    "rebis.serpentrod:main"),
-            ("rebis.pipeline",      "rebis.pipeline:main"),
-            ("rebis.gene",          "rebis.gene:main"),
-            ("rebis.alchemy",       "rebis.alchemy:main"),
-            ("rebis.ligand",       "rebis.ligand:main"),
+                   title="📚 REFERENCE — Static data & enums")
+        t3.add_column("Command", style="bold green", width=30)
+        t3.add_column("Description", style="white", width=65)
+        for cmd, desc in [
+            ("rebis reference",     "Belnap FOUR ops, genetic B4 lattice, hadrons, verification, IMASM"),
+            ("rebis reference --all","Full reference data dump"),
         ]:
-            t3.add_row(cmd, src)
+            t3.add_row(cmd, desc)
         console.print(t3)
 
-        console.print(Panel(
-            "import rebis\n"
-            "rebis.p4ra.Belnap.T           # Paraconsistent logic\n"
-            "rebis.ch3mpiler.forward('CC(=O)O')  # Molecular compiler\n"
-            "rebis.materials.MaterialForge()     # Materials design\n"
-            "rebis.clink.compute_c_score_from_tuple(...)  # Consciousness scoring\n"
-            "rebis.p4ra.GeneticBelnapCodon('UUU')  # Genetic code\n"
-            "rebis.sidechain.analyze_composition('arginine', 'charged_interface')  # Sidechain algebra",
-            border_style="green", title="🐍 Python API Examples"
-        ))
-    else:
-        # ── Plain-text fallback menu ──
-        print()
-        section_header("⚡ TOP-LEVEL COMMANDS")
-        info_line("  {:<30s}  {}".format("COMMAND", "DESCRIPTION"))
-        info_line("  " + "─" * 88)
-        info_line("  {:<30s}  {}".format("rebis",             "Show this comprehensive menu"))
-        info_line("  {:<30s}  {}".format("rebis --version",   "Show version 3.0.0"))
-        info_line("  {:<30s}  {}".format("rebis status",      "Show package status"))
-        info_line("  {:<30s}  {}".format("rebis verify",      "Verify Frobenius closure"))
-        info_line("  {:<30s}  {}".format("rebis run list",    "List run targets"))
-        info_line("  {:<30s}  {}".format("rebis demo list",   "List demos"))
-        info_line("  {:<30s}  {}".format("rebis.<domain> ...","Any entry point"))
-        info_line("  {:<30s}  {}".format("python3 -m rebis",  "Module execution"))
-        info_line("  {:<30s}  {}".format("python3 -c 'import rebis'", "Python API"))
-
-        print()
-        section_header("🔧 INSTALLED ENTRY POINTS")
-        for cmd, src in [
-            ("rebis",               "rebis.cli:main"),
-            ("rebis.materials",     "rebis.materials:main"),
-            ("rebis.ch3mpiler",     "rebis.ch3mpiler:main"),
-            ("rebis.sidechain",     "rebis.sidechain:main"),
-            ("rebis.clink",         "rebis.clink:main"),
-            ("rebis.p4ra",          "rebis.p4ra:main"),
-            ("rebis.biology",       "rebis.biology:main"),
-            ("rebis.therapeutics",  "rebis.therapeutics:main"),
-            ("rebis.serpentrod",    "rebis.serpentrod:main"),
-            ("rebis.pipeline",      "rebis.pipeline:main"),
-            ("rebis.gene",          "rebis.gene:main"),
-            ("rebis.alchemy",       "rebis.alchemy:main"),
-            ("rebis.ligand",       "rebis.ligand:main"),
+        console.print()
+        t4 = Table(box=box.SIMPLE, border_style="dim",
+                   title="⚡ QUICK COMMANDS")
+        t4.add_column("Command", style="bold cyan", width=36)
+        t4.add_column("Description", style="white", width=60)
+        for cmd, desc in [
+            ("rebis",                        "Dynamic-first menu (this screen)"),
+            ("rebis --version",              f"Version {VERSION}"),
+            ("rebis verify",                 "Frobenius closure verification"),
+            ("rebis status",                 "Package status across all domains"),
+            ("rebis demo list",              "List available demos"),
+            ("rebis demo <name>",            "Run a specific demo"),
+            ("python3 -m rebis",             "Module execution"),
+            ("python3 -c 'import rebis'",    "Python API access"),
         ]:
-            info_line(f"  {cmd:24s}  ←  {src}")
+            t4.add_row(cmd, desc)
+        console.print(t4)
+
+    else:
+        section_header("⚡ TIER 1 — PRIMARY COMPUTATION ENGINES")
+        info_line(f"  {'#':3s} {'Command':18s}  {'Description'}")
+        info_line("  " + "─" * 88)
+        for i, (name, cmd, desc, actions) in enumerate(featured, 1):
+            info_line(f"  {i:<2d} {name:18s}  {desc}")
+            info_line(f"     {'Actions:':>18s}  {', '.join(actions)}")
 
         print()
-        section_header("🐍 Python API Examples")
-        info_line("  import rebis")
-        info_line("  rebis.p4ra.Belnap.T")
-        info_line("  rebis.ch3mpiler.forward('CC(=O)O')")
-        info_line("  rebis.materials.MaterialForge()")
-        info_line("  rebis.clink.compute_c_score_from_tuple(...)")
-        info_line("  rebis.p4ra.GeneticBelnapCodon('UUU')")
+        section_header("🔧 TIER 2 — SPECIALIZED ENGINES")
+        for name, cmd, desc, actions in secondary:
+            info_line(f"  {name:18s}  {desc}")
+            info_line(f"     {'Actions:':>18s}  {', '.join(actions)}")
+
+        print()
+        section_header("📚 REFERENCE")
+        info_line("  rebis reference         — Belnap, genetics, hadrons, IMASM static data")
+        info_line("  rebis reference --all   — Full reference dump")
+
+        print()
+        section_header("⚡ QUICK COMMANDS")
+        info_line("  {:<36s}  {}".format("rebis",                   "Dynamic-first menu"))
+        info_line("  {:<36s}  {}".format("rebis --version",         f"Version {VERSION}"))
+        info_line("  {:<36s}  {}".format("rebis verify",            "Frobenius closure"))
+        info_line("  {:<36s}  {}".format("rebis status",            "Package status"))
+        info_line("  {:<36s}  {}".format("rebis demo list",         "List demos"))
+        info_line("  {:<36s}  {}".format("rebis demo <name>",       "Run demo"))
+        info_line("  {:<36s}  {}".format("python3 -m rebis",        "Module execution"))
+        info_line("  {:<36s}  {}".format("python3 -c 'import rebis'","Python API"))
 
     print()
-    info_line("  ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩  —  O_∞ tier · ⊙ criticality · Frobenius-closed")
+    info_line("  ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩  —  O_∞ · ⊙ · Frobenius-closed")
+    return 0# ═══════════════════════════════════════════════════════════════
+# DYNAMIC COMMAND HANDLERS
+# ═══════════════════════════════════════════════════════════════
+
+def cmd_chain(args):
+    """UNIFIED PIPELINE: DNA→Protein→CatalyticSite→RetrosyntheticPlan.
+
+    Three proven pipelines chained together:
+    1. gene_to_protein_pipeline: DNA → 7-stage folded protein
+    2. ch3mpiler_serpentrod_pipeline: target SMILES → catalytic RNA/AA design
+    3. retrosynthetic_stone_engine: target SMILES → synthesis plan
+    """
+    reaction_header("REBIS v4.0 — UNIFIED CHAIN", "DNA → Protein → Catalyst → Synthesis")
+
+    dna = args.dna or args.seq or "ATGGCCGACTGGAACTGCAAGAAGATCGTGCCCAAGTACTACGGCCGCTG"
+    target = args.target or "CC(=O)O"
+    depth = args.depth or 2
+
+    info_line(f"DNA input:    {dna[:50]}{'...' if len(dna) > 50 else ''}  ({len(dna)} bp)")
+    info_line(f"Target SMILES: {target}")
+    info_line(f"Depth:         {depth}")
+
+    # ── Phase 1: Gene → Folded Protein ──
+    separator()
+    section_header("Phase 1/3 — Gene → Folded Protein")
+    try:
+        from rhr_p4rky.gene_to_protein_pipeline import GeneToProteinPipeline
+        gp = GeneToProteinPipeline(dna)
+        protein_result = gp.run()
+        info_line(f"Protein: {protein_result.get('aa_sequence', '?')} "
+                  f"({protein_result.get('aa_length', 0)} aa)")
+        info_line(f"  Closure Δ: {protein_result.get('closure', {}).get('dna_to_quaternary_distance', '?')}")
+        success_line("Phase 1 complete ✓")
+    except Exception as e:
+        error_line(f"Phase 1 FAILED: {e}")
+
+    # ── Phase 2: ch3mpiler ⟲ serpentrod ──
+    separator()
+    section_header("Phase 2/3 — ch3mpiler → Catalytic Site Design")
+    try:
+        from rhr_p4rky.ch3mpiler_serpentrod_pipeline import run_pipeline
+        cs_result = run_pipeline(target_molecule=target, depth=depth, verbose=True)
+        success_line("Phase 2 complete ✓")
+    except Exception as e:
+        error_line(f"Phase 2 FAILED: {e}")
+        import traceback; traceback.print_exc()
+
+    # ── Phase 3: Retrosynthetic Stone ──
+    separator()
+    section_header("Phase 3/3 — Retrosynthetic Stone (Solve et Coagula)")
+    try:
+        from alchemical_bridge.retrosynthetic_stone_engine import RetrosyntheticStoneEngine
+        rse = RetrosyntheticStoneEngine()
+        stone_result = rse.plan_synthesis(target)
+        sites = stone_result.get("disconnection_sites", [])
+        info_line(f"Disconnection sites found: {len(sites)}")
+        for i, site in enumerate(sites[:5]):
+            info_line(f"  [{i}] {site.get('type', '?')} — bond {site.get('bond_idx', '?')}")
+        frogs = stone_result.get("frobenius_cycles", [])
+        info_line(f"Frobenius cycles: {len(frogs)}")
+        success_line("Phase 3 complete ✓")
+    except Exception as e:
+        error_line(f"Phase 3 FAILED: {e}")
+        import traceback; traceback.print_exc()
+
+    separator()
+    success_line("UNIFIED CHAIN COMPLETE")
     return 0
 
 
-# ─────────────────────────────────────────────
-# SUBCOMMAND: status
-# ─────────────────────────────────────────────
+def cmd_gene_pipeline(args):
+    """DNA → Folded Protein pipeline."""
+    reaction_header("GENE → FOLDED PROTEIN", "7-stage Frobenius-verified translation")
+
+    if args.test:
+        from rhr_p4rky.demo_gene_to_protein import main as demo_main
+        return demo_main()
+
+    dna = args.dna or args.seq or "ATGGCCGACTGGAACTGCAAGAAGATCGTGCCCAAGTACTACGGCCGCTG"
+    try:
+        from rhr_p4rky.gene_to_protein_pipeline import GeneToProteinPipeline
+        gp = GeneToProteinPipeline(dna)
+        result = gp.run()
+        success_line(f"Done — {result.get('aa_sequence', '?')} "
+                     f"({result.get('aa_length', 0)} aa) — Δ={result.get('closure', {}).get('dna_to_quaternary_distance', '?')}")
+    except Exception as e:
+        error_line(f"Gene pipeline failed: {e}")
+        return 1
+    return 0
+
+
+def cmd_ch3mpiler(args):
+    """Molecular compiler — delegates to ch3mpiler.py main()."""
+    from rebis.ch3mpiler import main as ch3_main
+    return ch3_main()
+
+
+def cmd_serpentrod(args):
+    """Protein design — delegates to serpentrod.py main()."""
+    from rebis.serpentrod import main as sr_main
+    return sr_main()
+
+
+def cmd_ligand(args):
+    """PDB-aware ligand design — delegates to ligand.py main()."""
+    from rebis.ligand import main as lig_main
+    return lig_main()
+
+
+def cmd_sidechain(args):
+    """Sidechain×environment algebra — delegates to sidechain.py main()."""
+    from rebis.sidechain import main as sc_main
+    return sc_main()
+
+
+def cmd_therapeutics(args):
+    """Therapeutics design — delegates to therapeutics.py main()."""
+    from rebis.therapeutics import main as ther_main
+    return ther_main()
+
+
+def cmd_materials(args):
+    """Materials forge — delegates to materials.py main()."""
+    from rebis.materials import main as mat_main
+    return mat_main()
+
+
+def cmd_biology(args):
+    """Biology simulations — delegates to biology.py main()."""
+    from rebis.biology import main as bio_main
+    return bio_main()
+
+
+def cmd_pipeline(args):
+    """Auto-imscription, prose lift — delegates to pipeline.py main()."""
+    from rebis.pipeline import main as pip_main
+    return pip_main()
+
+
+def cmd_gene(args):
+    """Gene analysis — delegates to gene.py main()."""
+    from rebis.gene import main as gene_main
+    return gene_main()
+
+
+def cmd_alchemy(args):
+    """Alchemical bridge — delegates to alchemy.py main()."""
+    from rebis.alchemy import main as alch_main
+    return alch_main()
+
+
+def cmd_clink(args):
+    """CLINK chain — delegates to clink.py main()."""
+    from rebis.clink import main as clink_main
+    return clink_main()# ═══════════════════════════════════════════════════════════════
+# REFERENCE SUBMENU — Static data & enums (collapsed here)
+# ═══════════════════════════════════════════════════════════════
+
+def cmd_reference(args):
+    """Static reference data — Belnap, genetics, hadrons, verification, IMASM."""
+    reaction_header("REFERENCE DATA", "Static enums, truth tables, B4 lattice")
+
+    show_all = getattr(args, 'all', False)
+
+    sections = {
+        "belnap": "Belnap FOUR logic — truth tables",
+        "genetics": "Genetic code B4 lattice",
+        "hadrons": "Hadron Belnap states",
+        "imas": "IMASM token families",
+        "verify": "B3 Frobenius verification results",
+    }
+
+    if not show_all:
+        info_line("Sections available (use --all for full dump):")
+        for sec, desc in sections.items():
+            info_line(f"  {sec:15s} — {desc}")
+        info_line("\nUsage:  rebis reference --all")
+        return 0
+
+    # ── Belnap ──
+    section_header("BELNAP FOUR LOGIC")
+    try:
+        from rhr_p4rky.belnap import Belnap, join, meet, bnot
+        for v in [Belnap.T, Belnap.B, Belnap.F, Belnap.N]:
+            vals = []
+            for w in [Belnap.T, Belnap.B, Belnap.F, Belnap.N]:
+                vals.append(f"join({v.name},{w.name})={join(v,w).name}")
+            info_line(f"  {v.name}: {'; '.join(vals[:2])}...")
+        info_line("  bnot: T<->F, B<->B, N<->N")
+    except Exception as e:
+        error_line(f"Belnap: {e}")
+
+    # ── Genetics ──
+    section_header("GENETIC CODE B4 LATTICE")
+    try:
+        from rhr_p4rky.genetics_b4 import BelnapCodon
+        for codon in ["AUG", "UAA", "UGA", "UAG", "UUU", "AAA"]:
+            bc = BelnapCodon.from_symbol(codon)
+            print(f"  {codon}: stratum={bc.stratum}, box={bc.box_name}")
+    except Exception as e:
+        error_line(f"Genetics: {e}")
+
+    # ── Hadrons ──
+    section_header("HADRON BELNAP STATES")
+    try:
+        from rhr_p4rky.hadron_belnap import test_hadron_belnap
+        test_hadron_belnap()
+    except Exception as e:
+        error_line(f"Hadrons: {e}")
+
+    # ── IMASM ──
+    section_header("IMASM TOKEN FAMILIES")
+    try:
+        from imas.arranger import Token, Family, token_name
+        for attr in sorted(dir(Family)):
+            if not attr.startswith('_') and attr.isupper():
+                val = getattr(Family, attr)
+                info_line(f"  {attr:15s}: {val}")
+    except Exception as e:
+        error_line(f"IMASM: {e}")
+
+    # ── Verification ──
+    section_header("FROBENIUS VERIFICATION")
+    try:
+        from rhr_p4rky.frobenius_filtration import test_filtration as run_filtration
+        run_filtration()
+        results = {"filtration": True}
+        for name, result in results.items():
+            status = "✓" if result else "✗"
+            (success_line if result else error_line)(f"  {status} {name}")
+    except Exception as e:
+        error_line(f"Verification: {e}")
+
+    return 0
+
+
+# ═══════════════════════════════════════════════════════════════
+# INFRASTRUCTURE COMMANDS
+# ═══════════════════════════════════════════════════════════════
+
 def _discover_packages():
     """Auto-discover all Python packages under REBIS_ROOT."""
     SKIP = {'.venv', '__pycache__', '.git', '.gitignore',
             'data', 'popular_protein', 'designs', 'fasta', 'images',
-            'pdb', 'rebis', '_archive', 'glossary', 'ig-docs', 'pdfs',
+            'pdb', '_archive', 'glossary', 'ig-docs', 'pdfs',
             'natural_products', 'psaA_datasets'}
     results = []
     for item in sorted(REBIS_ROOT.iterdir()):
@@ -270,8 +454,7 @@ def _discover_packages():
 
 def cmd_status(args):
     """Report the structural status of all discovered packages."""
-    reaction_header("RED-HOT REBIS v3.0 — REBIS.<x> EDITION",
-                    "Properly installed: callable from anywhere via `rebis`")
+    reaction_header("RED-HOT REBIS v4.0", "DYNAMIC-FIRST EDITION")
 
     packages = _discover_packages()
     n_rebis = len(list((REBIS_ROOT / "rebis").glob("*.py")))
@@ -282,7 +465,7 @@ def cmd_status(args):
         from rich.console import Console
         t = Table(box=box.ROUNDED, border_style="bright_red",
                   header_style="bold yellow",
-                  title=f"rebis.<domain> — {len(packages)} packages")
+                  title=f"rebis — {len(packages)} packages")
         t.add_column("Package", style="bright_cyan")
         t.add_column("Files", justify="right")
         t.add_column("Size", justify="right")
@@ -303,9 +486,6 @@ def cmd_status(args):
     return 0
 
 
-# ─────────────────────────────────────────────
-# SUBCOMMAND: verify
-# ─────────────────────────────────────────────
 def cmd_verify(args):
     """Verify Frobenius closure across the shared layer."""
     try:
@@ -316,8 +496,8 @@ def cmd_verify(args):
         success_line("rebis package: ALL domains import successfully")
         for domain_name in ['p4ra', 'ch3mpiler', 'sidechain', 'clink', 'materials',
                             'therapeutics', 'biology', 'serpentrod',
-                            'imas', 'pipeline', 'cdxml', 'gene',
-                            'alchemy', 'ligand', 'shared', 'imasm']:
+                            'imas', 'pipeline', 'gene',
+                            'alchemy', 'ligand', 'shared']:
             try:
                 mod = __import__(f"rebis.{domain_name}", fromlist=[domain_name])
                 n_exported = len(getattr(mod, '__all__', []))
@@ -332,46 +512,6 @@ def cmd_verify(args):
         return 1
 
 
-# ─────────────────────────────────────────────
-# SUBCOMMAND: run
-# ─────────────────────────────────────────────
-def cmd_run(args):
-    """Run a registered target or list available targets."""
-    TARGETS = {
-        "ch3mpiler":   "rebis.ch3mpiler — Molecular compiler & retrosynthesis",
-        "serpentrod":  "rebis.serpentrod — Protein design & prediction",
-        "clink":       "rebis.clink — CLINK chain organism pipeline",
-        "genetics":    "rebis.p4ra (genetics) — B4 lattice, codons",
-        "ligand":      "rebis.ligand — PDB-aware ligand design from catalytic sites",
-        "pipeline":    "rebis.pipeline — Auto-imscription & Frobenius verification",
-        "materials":   "Use: rebis materials — Dedicated materials subcommand",
-        "therapeutics":"rebis.therapeutics — Therapeutic design",
-        "biology":     "rebis.biology — Biological simulations & telomeres",
-        "imas":        "rebis.imas — IMAS compound signatures",
-    }
-    if not args.target or args.target == "list":
-        info_line("Available targets:")
-        for name, desc in sorted(TARGETS.items()):
-            info_line(f"  {name:20s} — {desc}")
-        info_line("\nUse: rebis run <target>")
-        return 0
-    if args.target == "materials":
-        info_line("Use 'rebis materials' for the materials subsystem")
-        return 0
-    mod_path = f"rebis.{args.target}"
-    try:
-        mod = __import__(mod_path, fromlist=[args.target])
-        info_line(f"Loaded {mod_path}")
-        success_line(f"Use rebis.{args.target}.<function>() from Python")
-        return 0
-    except Exception as e:
-        error_line(f"Could not load {mod_path}: {e}")
-        return 1
-
-
-# ─────────────────────────────────────────────
-# SUBCOMMAND: demo
-# ─────────────────────────────────────────────
 def cmd_demo(args):
     """Run a named demo."""
     try:
@@ -381,11 +521,10 @@ def cmd_demo(args):
         return 1
     if not args.demo or args.demo == "list":
         info_line("Available demos:")
-        for d in ['b4_lattice', 'belnap', 'ch3mpiler', 'clink_chain',
+        for d in sorted(['b4_lattice', 'belnap', 'ch3mpiler', 'clink_chain',
                   'decay_chain', 'ligand', 'materials', 'materials_sim',
-                  'pipeline', 'serpentrod', 'therapeutics', 'reverse_ligand']:
-            info_line(f"  rebis.demo.{d}()")
-        info_line("\nRun: rebis demo <name>")
+                  'pipeline', 'serpentrod', 'therapeutics', 'reverse_ligand']):
+            info_line(f"  rebis demo {d}")
         return 0
     demo_fn = getattr(demo_mod, args.demo, None)
     if demo_fn:
@@ -396,176 +535,71 @@ def cmd_demo(args):
     return 1
 
 
-# ─────────────────────────────────────────────
-# SUBCOMMAND: materials
-# ─────────────────────────────────────────────
-def cmd_materials(args):
-    """Materials subsystem — forge, design, simulate."""
-    try:
-        import rebis.materials as mat
-    except Exception as e:
-        error_line(f"rebis.materials import failed: {e}")
-        return 1
-
-    action = args.material_action
-
-    if action in ("tools", "list"):
-        section_header("rebis.materials — Available Design Tools")
-        tools = [
-            ("MaterialForge",       "Forge material designs from IG tuples"),
-            ("CriticalMetamaterial","Design critical / ⊙-sensing metamaterials"),
-            ("FrobeniusMetamaterial","Frobenius-closed metamaterial designs"),
-            ("OuroboricAlloy",      "Self-referential alloy design"),
-            ("NonQubitQCParadigm",  "Non-qubit quantum computing paradigms"),
-            ("resolve_molecule",    "Resolve molecule name → SMILES"),
-            ("molecule_to_material_tuple","Map molecule to IG tuple"),
-        ]
-        for name, desc in tools:
-            obj = getattr(mat, name, None)
-            status = "✓" if obj else "✗"
-            info_line(f"  {status} {name:30s} — {desc}")
-        return 0
-
-    elif action in ("status", "results"):
-        section_header("rebis.materials — Results & Reports")
-        results_files = [
-            "forged_materials.json", "frobenius_metamaterial_results.json",
-            "frobenius_metamaterial_enhanced_results.json",
-            "critical_metamaterial_results.json", "ouroboric_alloy_results.json",
-            "thermal_rectifier_results.json", "sophick_forge_results.json",
-            "materials_simulation_results.json",
-        ]
-        mat_dir = REBIS_ROOT / "materials"
-        found = 0
-        for fname in results_files:
-            fpath = mat_dir / fname
-            if fpath.exists():
-                size = fpath.stat().st_size
-                info_line(f"  ✓ {fname:45s}  ({size:,d} bytes)")
-                found += 1
-            else:
-                info_line(f"  · {fname:45s}  (not yet generated)")
-        reports = sorted(mat_dir.glob("*.md"))
-        if reports:
-            info_line("")
-            section_header("Reports")
-            for r in reports:
-                info_line(f"  {r.name}")
-        info_line(f"\n{found}/{len(results_files)} result files present")
-        return 0
-
-    elif action == "forge":
-        if not args.structural_tuple:
-            try:
-                forge = mat.MaterialForge()
-                info_line("MaterialForge instantiated. Design from IG tuple.")
-                info_line("Example from Python:")
-                info_line('  from rebis.materials import MaterialForge')
-                info_line('  forge = MaterialForge()')
-                info_line('  result = forge.design(tuple)')
-                info_line('Or use: rebis materials forge "<tuple>"')
-                success_line("MaterialForge ready")
-            except Exception as e:
-                error_line(f"MaterialForge error: {e}")
-            return 0
-        try:
-            forge = mat.MaterialForge()
-            result = forge.design(args.structural_tuple)
-            print(json.dumps(result, indent=2) if isinstance(result, dict) else result)
-            return 0
-        except Exception as e:
-            error_line(f"Forge failed: {e}")
-            return 1
-
-    elif action in ("sim", "simulate"):
-        sim_name = args.sim_name or "default"
-        try:
-            mod_path = REBIS_ROOT / "materials" / "materials_sim.py"
-            if mod_path.exists():
-                section_header(f"Running simulation: {sim_name}")
-                import runpy
-                runpy.run_path(str(mod_path), run_name="__main__")
-                return 0
-            else:
-                error_line("materials_sim.py not found")
-                return 1
-        except Exception as e:
-            error_line(f"Simulation failed: {e}")
-            return 1
-
-    else:
-        section_header("rebis.materials — Sub-commands")
-        info_line("  rebis materials list            — List available design tools")
-        info_line("  rebis materials status          — Show results from prior runs")
-        info_line("  rebis materials forge [tuple]   — Forge material from IG tuple")
-        info_line("  rebis materials sim [name]      — Run materials simulation")
-        info_line("")
-        info_line("Python API:  import rebis.materials  |  rebis.materials.MaterialForge()")
-        return 0
-
-
-# ─────────────────────────────────────────────
+# ═══════════════════════════════════════════════════════════════
 # MAIN ENTRY POINT
-# ─────────────────────────────────────────────
+# ═══════════════════════════════════════════════════════════════
+
 def main():
     parser = argparse.ArgumentParser(
-        description="Red-Hot Rebis — rebis.<x> Integrated Toolchain",
-        add_help=False)  # We handle --help ourselves
+        description="Red-Hot Rebis v4.0 — Dynamic-First Toolchain",
+        add_help=False)
 
     parser.add_argument("--version", action="version",
                        version=f"%(prog)s {VERSION}")
     parser.add_argument("--help", "-h", action="store_true",
-                       help="Show the comprehensive menu")
+                       help="Show the dynamic-first menu")
 
     sub = parser.add_subparsers(dest="command")
 
-    # rebis status
-    p_status = sub.add_parser("status", help="Show package status")
-    p_status.set_defaults(func=cmd_status)
+    # ── TIER 1: Featured dynamic commands ──
+    p_gp = sub.add_parser("gene-pipeline", help="DNA → Folded Protein pipeline")
+    p_gp.add_argument("--test", action="store_true", help="Run demo/self-test")
+    p_gp.add_argument("--dna", type=str, help="DNA sequence")
+    p_gp.add_argument("--seq", type=str, help="RNA sequence (alias for --dna)")
+    p_gp.set_defaults(func=cmd_gene_pipeline)
 
-    # rebis verify
-    p_verify = sub.add_parser("verify", help="Verify Frobenius closure")
-    p_verify.set_defaults(func=cmd_verify)
+    p_ch = sub.add_parser("chain", help="UNIFIED: DNA→Protein→Catalyst→Synthesis")
+    p_ch.add_argument("--dna", type=str, help="DNA/RNA sequence")
+    p_ch.add_argument("--seq", type=str, help="RNA sequence (alias)")
+    p_ch.add_argument("--target", type=str, help="Target SMILES")
+    p_ch.add_argument("--depth", type=int, default=2, help="Retrosynthesis depth")
+    p_ch.set_defaults(func=cmd_chain)
 
-    # rebis run <target>
-    p_run = sub.add_parser("run", help="Run a target")
-    p_run.add_argument("target", nargs="?", default="list",
-                       help="Target name (default: show all)")
-    p_run.set_defaults(func=cmd_run)
+    # ── TIER 1+2: Domain delegates ──
+    for cmd_name in ['ch3mpiler', 'serpentrod', 'ligand', 'sidechain',
+                     'therapeutics', 'materials', 'biology', 'pipeline',
+                     'gene', 'alchemy', 'clink']:
+        p = sub.add_parser(cmd_name, help=f"{cmd_name} computation engine",
+                          add_help=False)
+        p.set_defaults(func=globals()[f"cmd_{cmd_name}"])
 
-    # rebis demo <name>
+    # ── Reference submenu ──
+    p_ref = sub.add_parser("reference", help="Static reference data (Belnap, genetics, etc.)")
+    p_ref.add_argument("--all", action="store_true", help="Full data dump")
+    p_ref.set_defaults(func=cmd_reference)
+
+    # ── Infrastructure ──
+    p_stat = sub.add_parser("status", help="Package status")
+    p_stat.set_defaults(func=cmd_status)
+
+    p_ver = sub.add_parser("verify", help="Frobenius closure verification")
+    p_ver.set_defaults(func=cmd_verify)
+
     p_demo = sub.add_parser("demo", help="Run a demo")
-    p_demo.add_argument("demo", nargs="?", default="list",
-                        help="Demo name (default: show all)")
+    p_demo.add_argument("demo", nargs="?", default="list")
     p_demo.set_defaults(func=cmd_demo)
-
-    # rebis materials <action> [args]
-    p_mat = sub.add_parser("materials", help="Materials subsystem")
-    p_mat.add_argument("material_action", nargs="?",
-                       default="help",
-                       choices=["list", "tools", "status", "results",
-                                "forge", "sim", "simulate", "help"],
-                       help="Materials action (default: show help)")
-    p_mat.add_argument("structural_tuple", nargs="?",
-                       help="IG tuple for forge (e.g. ⟨𐑛⋯⟩)")
-    p_mat.add_argument("sim_name", nargs="?",
-                       help="Simulation name")
-    p_mat.set_defaults(func=cmd_materials)
 
     args = parser.parse_args()
 
-    # If --help/-h or no command at all: show the comprehensive menu
+    # No command = menu
     if args.help or not args.command:
-        cmd_menu()
-        return 0
+        return cmd_menu()
 
     if hasattr(args, 'func'):
-        sys.exit(args.func(args))
+        return args.func(args)
 
-    # Fallback (shouldn't reach here)
-    cmd_menu()
-    return 0
+    return cmd_menu()
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
