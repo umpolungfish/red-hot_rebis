@@ -19,7 +19,7 @@
 ## Quick Start
 
 ```bash
-cd /home/mrnob0dy666/imsgct/red-hot_rebis
+cd red-hot_rebis
 rebis                               # Dynamic-first menu
 rebis.verify                        # Frobenius closure check (14 domains)
 rebis.status                        # Package inventory
@@ -114,7 +114,7 @@ print(r.all_passed)  # True — all 9 conditions
 
 ## Lean 4 Formalization
 
-Machine-verified at `/home/mrnob0dy666/imsgct/p4rakernel/p4ramill/`:
+Machine-verified at `p4rakernel/p4ramill/`:
 
 | Module | Contents |
 |--------|----------|
