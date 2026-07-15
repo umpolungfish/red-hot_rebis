@@ -6,7 +6,7 @@
 --   §1–§3  Tensor-diagonal Frobenius: δ(a)=(a,a), μ(x,y)=tensorProduct(x,y)
 --   §4     Meet-diagonal Frobenius:   δ(a)=(a,a), μ(x,y)=compute_meet(x,y)
 --   §5     Lattice-interval:          δ(a)=(⊥,a), μ(x,y)=compute_join(x,y)
---   §6     Polarization Frobenius:    δ splits P/Φ, μ fuses at or'/Φ_c
+--   §6     Polarization Frobenius:    δ splits P/Φ, μ fuses at or'/⊙
 --
 -- Reference: PRIMITIVE_THEOREMS §23, PRIMITIVE_PREDICTIONS P-169–P-173.
 

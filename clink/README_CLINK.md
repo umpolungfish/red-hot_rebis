@@ -11,7 +11,7 @@ Frustrated Belnap5 (quarks)      O₀   ⟨𐑛𐑶𐑩𐑯𐑐𐑘𐑚𐑝𐑢�
 Electron Orbital (Belnap4)       O₀   ⟨𐑛𐑶𐑩𐑗𐑐𐑤𐑚𐑜𐑢𐑓𐑳𐑷⟩
   ↓ 8 promotions
 Atom (Nuclear + Electron)        O₁   ⟨𐑼𐑥𐑽𐑿𐑐𐑤𐑔𐑝𐑮𐑒𐑳𐑷⟩
-  ↓ 5 promotions: Phi_c gate opens
+  ↓ 5 promotions: ⊙ gate opens
 Molecule (Chemical Bonds)        O₂   ⟨𐑼𐑥𐑽𐑿𐑞𐑧𐑲𐑠⊙𐑓𐑳𐑭⟩
   ↓ 5 promotions: Axiom C
 Cell (Living)                    O₂   ⟨𐑦𐑸𐑾𐑬𐑞𐑧𐑲𐑠⊙𐑒𐑳𐑭⟩

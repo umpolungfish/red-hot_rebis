@@ -277,9 +277,9 @@ theorem litany_resolution_chir :
 --   zfc_t                — ZFC temporalized: ⟨D_∞; T_⊙; R_↔; out; F_ℏ; egg; sure; Ω_Z⟩
 --   temporal_mathematics — ZFCt ideal: ⟨D_∞; T_⊙; R_†; nun; F_ℏ; egg; sure; Ω_Z⟩
 --   schrodinger_equation — ⟨D_∞; T_⋈; R_↔; P_ψ; F_ℏ; egg; Φ_c_complex; sure; Ω_Z⟩
---   heat_diffusion       — ⟨D_∞; T_⋈; R_†; church; they; egg; Φ_sub; kick; Ω_0⟩
---   navier_stokes_eqns   — ⟨D_∞; T_⋈; R_↔; out; age; loll; Φ_c; sure; Ω_Z⟩
---   wave_equation_temp   — ⟨D_∞; T_⋈; R_†; nun; age; loll; Φ_sub; sure; Ω_0⟩
+--   heat_diffusion       — ⟨D_∞; T_⋈; R_†; church; they; egg; 𐑢; kick; Ω_0⟩
+--   navier_stokes_eqns   — ⟨D_∞; T_⋈; R_↔; out; age; loll; ⊙; sure; Ω_Z⟩
+--   wave_equation_temp   — ⟨D_∞; T_⋈; R_†; nun; age; loll; 𐑢; sure; Ω_0⟩
 --   einstein_field_eqns  — ⟨D_∞; T_⊙; R_†; nun; age; egg; Φ_c_complex; sure; Ω_Z⟩
 --
 -- This section opens ZFCt and uses these Imscriptions as IGProtocol endpoints and labels.

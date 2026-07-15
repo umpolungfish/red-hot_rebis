@@ -114,7 +114,7 @@ class IGTool:
                     xi_r: Optional[float] = None,
                     xi_tau: Optional[float] = None) -> ToolResponse:
         """
-        Varma probe: Φ_c candidacy score and G/D degeneracy for a catalog entry.
+        Varma probe: ⊙ candidacy score and G/D degeneracy for a catalog entry.
         xi_r and xi_tau are optional correlation length / correlation time inputs.
         """
         imscription = global_catalog.get(name)
@@ -333,7 +333,7 @@ IG_TOOL_SCHEMA = {
         "name": "imscrbgrmr",
         "description": (
             "Verify, probe, and compose imscriptions using the Imscribing Grammar relational "
-            "grammar. Enforces 7 composition axioms, Φ_c criticality probes, ξ_CP "
+            "grammar. Enforces 7 composition axioms, ⊙ criticality probes, ξ_CP "
             "efficiency, HotSwap paths, and cross-domain analogies. "
             "NEVER invent chemistry outside the algebra — use this tool first."
         ),
@@ -346,7 +346,7 @@ IG_TOOL_SCHEMA = {
                              "analogies", "distance", "meet", "generate"],
                     "description": (
                         "validate: axiom check on catalog entry. "
-                        "criticality: Φ_c / Varma probe. "
+                        "criticality: ⊙ / Varma probe. "
                         "path: HotSwap path between two entries. "
                         "analogies: nearest catalog neighbors. "
                         "distance: symmetric + directed distances. "
