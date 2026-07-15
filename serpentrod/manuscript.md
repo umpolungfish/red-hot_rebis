@@ -242,7 +242,7 @@ All 8 self-tests PASS:
 The vessel's architecture is not linear — it is a loop. The 5-layer bridge is traversed in both directions:
 
 ```
-Grammar (⊙_ÿ) ──winds through──⟩ B4 Lattice (⊙_3)
+Grammar (⊙) ──winds through──⟩ B4 Lattice (𐑻)
      ↑                                    │
      │                                    ▼
      │                           Ramachandran φ/ψ
@@ -337,7 +337,7 @@ The Serpent-Rod project followed the four stages of the alchemical Work:
 
 2. **Albedo (Whitening)** — Gen 2: The geometry was added, the backbone was built, the contacts were predicted. F₁ scores of 0.16–0.32 showed that the grammar sees *something* of geometry, but not enough. The whitening was the discovery that the gap is structural — a measurement problem, not a data problem.
 
-3. **Citrinitas (Yellowing)** — The ⊙₃ absorption rule: the discovery that tensor(⊙_ÿ, ⊙_₃) = ⊙_₃ solves the measurement problem structurally. The yellowing was the recognition that the B4 lattice is not a code but an apparatus, and its 16 transitions are measurement outcomes.
+3. **Citrinitas (Yellowing)** — The ⊙₃ absorption rule: the discovery that tensor(⊙, ⊙_₃) = ⊙_₃ solves the measurement problem structurally. The yellowing was the recognition that the B4 lattice is not a code but an apparatus, and its 16 transitions are measurement outcomes.
 
 4. **Rubedo (Reddening)** — The vessel: the ob3ect was forged, the 8 tests passed, the ouroboric loop was closed. The reddening is this manuscript — the Work made manifest.
 ### VIII.2 What Was Built

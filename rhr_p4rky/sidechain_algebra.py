@@ -34,15 +34,15 @@ from crystal_navigator import (
 
 # ═══════════════════════════════════════════════════════════════════
 # Σ NORMALIZATION — crystal_navigator's tensor() returns special
-# values (Σ_ï, Σ_S, Σ_ő) not in ORD. Map → canonical glyphs.
+# values (𐑳, 𐑙, 𐑕) not in ORD. Map → canonical glyphs.
 # ═══════════════════════════════════════════════════════════════════
 
 _SIGMA_KEY = "\u03a3"  # Greek capital Sigma
 
 _SIGMA_NORMALIZE = {
-    "\u03a3_\u00ef":  "𐑳",  # Σ_ï → n:m  (index 2)
-    "\u03a3_S":       "𐑙",  # Σ_S  → 1:1  (index 0)
-    "\u03a3_\u0151": "𐑕",  # Σ_ő  → n:n  (index 1)
+    "\u03a3_\u00ef":  "𐑳",  # 𐑳 → n:m  (index 2)
+    "\u03a3_S":       "𐑙",  # 𐑙  → 1:1  (index 0)
+    "\u03a3_\u0151": "𐑕",  # 𐑕  → n:n  (index 1)
 }
 
 def _normalize(t: Dict[str, str]) -> Dict[str, str]:

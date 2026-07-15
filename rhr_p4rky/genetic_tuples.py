@@ -17,7 +17,7 @@ defined here, along with per-stage tuple generators that inspect:
 Each generated tuple is a valid crystal address verified by:
   1. Ouroboricity tier consistency — all 7 stages remain O₀/O₁
   2. Frobenius condition — mu∘delta=id holds across the transformation
-  3. Monotonic advance — Ω_z constraint on trajectory through the crystal
+  3. Monotonic advance — 𐑭 constraint on trajectory through the crystal
 
 Derived from the canonical mapping in Primitives/Core.lean and verified
 against the catalog entries for each stage type.
@@ -1044,7 +1044,7 @@ def verify_pathway(tuples: Dict[str, Dict[str, str]]) -> dict:
     Checks:
     1. Each stage's tuple passes tier consistency
     2. Monotonic advance: the trajectory through the crystal is non-decreasing
-       in structural complexity (Ω_z constraint)
+       in structural complexity (𐑭 constraint)
     3. No backtracking: no primitive regresses to an earlier ordinal value
        (unless it's a necessary structural transition)
     """

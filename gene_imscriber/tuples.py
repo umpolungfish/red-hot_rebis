@@ -16,7 +16,7 @@ THREE RESOLUTIONS IMPLEMENTED:
   
   3. φ̂_c GATE WITH Pro ABSORPTION: The criticality gate (φ̂=⊙ fires when ≥3 His
      occupy loop positions) includes Pro as absorption mechanism — Pro at turns
-     collapses φ̂=⊙ to φ̂=EP (exceptional point) via tensor(⊙_ÿ, ⊙_3) = ⊙_3.
+     collapses φ̂=⊙ to φ̂=EP (exceptional point) via tensor(⊙, 𐑻) = 𐑻.
 
 Canonical Unicode mapping (Deseret block U+1045B–U+1047F):
   See IG_CHARS below for the full bidirectional mapping table.
@@ -34,59 +34,59 @@ from shared.rich_output import *
 # ─━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 #
 # NOTE: Keys are prefixed by primitive name to avoid collisions.
-# E.g., D_super refers to Ř_¯ (relational supervenience),
+# E.g., D_super refers to 𐑩 (relational supervenience),
 # Phi_super refers to φ̂_Ţ (supercritical runaway).
 # Use the helper functions below to look up by (primitive, value).
 
 IG_CHARS: Dict[str, str] = {
     # ── Dimensionality (Ð) — 4 values ──
-    "Ð_wedge":      "𐑛",     # Ð_; — 0d point / flat
-    "Ð_tri":        "𐑨",     # Ð_C — 2d surface / simplicial
-    "Ð_infty":      "𐑼",     # Ð_ß — infinite-dimensional
-    "Ð_odot":       "𐑦",     # Ð_ω — imscriptive (self-written state-space)
+    "Ð_wedge":      "𐑛",     # 𐑼 — 0d point / flat
+    "Ð_tri":        "𐑨",     # 𐑨 — 2d surface / simplicial
+    "Ð_infty":      "𐑼",     # 𐑛 — infinite-dimensional
+    "Ð_odot":       "𐑦",     # 𐑦 — imscriptive (self-written state-space)
     
     # ── Topology (Þ) — 5 values ──
-    "Þ_net":        "𐑡",     # Þ_¨ — branching / network
-    "Þ_inc":        "𐑰",     # Þ_6 — inclusion / containment
-    "Þ_bowtie":     "𐑥",     # Þ_K — crossing point / bifurcation
-    "Þ_boxtimes":   "𐑶",     # Þ_ò — box product / irreducible product
-    "Þ_odot":       "𐑸",     # Þ_O — imscriptive / self-referential topology
+    "Þ_net":        "𐑡",     # 𐑶 — branching / network
+    "Þ_inc":        "𐑰",     # 𐑡 — inclusion / containment
+    "Þ_bowtie":     "𐑥",     # 𐑰 — crossing point / bifurcation
+    "Þ_boxtimes":   "𐑶",     # 𐑥 — box product / irreducible product
+    "Þ_odot":       "𐑸",     # 𐑸 — imscriptive / self-referential topology
     
     # ── Relational Mode (Ř) — 4 values ──
-    "Ř_super":      "𐑩",     # Ř_¯ — supervenience / hierarchical
-    "Ř_cat":        "𐑑",     # Ř_ý — categorical / compositional
-    "Ř_dagger":     "𐑽",     # Ř_Ť — adjoint / reciprocal
-    "Ř_lr":         "𐑾",     # Ř_= — bidirectional / lateral
+    "Ř_super":      "𐑩",     # 𐑩 — supervenience / hierarchical
+    "Ř_cat":        "𐑑",     # 𐑑 — categorical / compositional
+    "Ř_dagger":     "𐑽",     # 𐑽 — adjoint / reciprocal
+    "Ř_lr":         "𐑾",     # 𐑾 — bidirectional / lateral
     
     # ── Parity/Symmetry (Φ) — 5 values ──
-    "Φ_asym":       "𐑗",     # Φ_˙ — asymmetric / no symmetry
-    "Φ_psi":        "𐑿",     # Φ_F — quantum / phase symmetry
-    "Φ_pm":         "𐑬",     # Φ_υ — Z2 / partial symmetry
-    "Φ_sym":        "𐑯",     # Φ_ɐ — full symmetry
-    "Φ_pm_sym":     "𐑹",     # Φ_} — Frobenius special (μ∘δ=id)
+    "Φ_asym":       "𐑗",     # 𐑯 — asymmetric / no symmetry
+    "Φ_psi":        "𐑿",     # 𐑬 — quantum / phase symmetry
+    "Φ_pm":         "𐑬",     # 𐑿 — Z2 / partial symmetry
+    "Φ_sym":        "𐑯",     # 𐑗 — full symmetry
+    "Φ_pm_sym":     "𐑹",     # 𐑹 — Frobenius special (μ∘δ=id)
     
     # ── Fidelity (ƒ) — 3 values ──
-    "ƒ_ell":        "𐑱",     # ƒ_ð — classical / lossy
-    "ƒ_eth":        "𐑞",     # ƒ_ì — thermal / threshold
-    "ƒ_hbar":       "𐑐",     # ƒ_ż — quantum / coherent
+    "ƒ_ell":        "𐑱",     # 𐑞 — classical / lossy
+    "ƒ_eth":        "𐑞",     # 𐑱 — thermal / threshold
+    "ƒ_hbar":       "𐑐",     # 𐑐 — quantum / coherent
     
     # ── Kinetics (Ç) — 5 values ──
-    "Ç_fast":       "𐑺",     # Ç_- — driven / fast relaxation
-    "Ç_mod":        "𐑪",     # Ç_W — moderate
-    "Ç_slow":       "𐑧",     # Ç_@ — near-equilibrium / slow
-    "Ç_trap_order": "𐑤",     # Ç_λ — frozen by order
-    "Ç_trap_disorder":"𐑘",   # Ç_Ù — frozen by disorder
+    "Ç_fast":       "𐑺",     # 𐑘 — driven / fast relaxation
+    "Ç_mod":        "𐑪",     # 𐑤 — moderate
+    "Ç_slow":       "𐑧",     # 𐑧 — near-equilibrium / slow
+    "Ç_trap_order": "𐑤",     # 𐑺 — frozen by order
+    "Ç_trap_disorder":"𐑘",   # 𐑪 — frozen by disorder
     
     # ── Scope/Granularity (Γ) — 3 values ──
-    "Γ_beth":       "𐑲",     # Γ_β — local / mesoscale
-    "Γ_gimel":      "𐑚",     # Γ_γ — intermediate
-    "Γ_aleph":      "𐑔",     # Γ_ʔ — global / maximal
+    "Γ_beth":       "𐑲",     # 𐑚 — local / mesoscale
+    "Γ_gimel":      "𐑚",     # 𐑔 — intermediate
+    "Γ_aleph":      "𐑔",     # 𐑲 — global / maximal
     
     # ── Interaction Grammar (ɢ) — 4 values ──
-    "ɢ_and":    "𐑝",     # ɢ_˝ — conjunctive / simultaneous
-    "ɢ_or":     "𐑜",     # ɢ_Ş — disjunctive / alternative
-    "ɢ_seq":    "𐑠",     # ɢ_^ — sequential / ordered
-    "ɢ_broad":  "𐑵",     # ɢ_ˌ — broadcast / universal
+    "ɢ_and":    "𐑝",     # 𐑜 — conjunctive / simultaneous
+    "ɢ_or":     "𐑜",     # 𐑵 — disjunctive / alternative
+    "ɢ_seq":    "𐑠",     # 𐑝 — sequential / ordered
+    "ɢ_broad":  "𐑵",     # 𐑠 — broadcast / universal
     
     # ── Criticality (φ̂/⊙) — 5 values ──
     "⊙_sub":      "𐑢",     # φ̂_ž — subcritical / stable
@@ -96,21 +96,21 @@ IG_CHARS: Dict[str, str] = {
     "⊙_super":    "𐑣",     # φ̂_Ţ — supercritical / runaway
     
     # ── Chirality (Ħ) — 4 values ──
-    "Ħ_0":          "𐑓",     # Ħ_Ñ — memoryless / achiral
-    "Ħ_1":          "𐑒",     # Ħ_£ — one-step
-    "Ħ_2":          "𐑖",     # Ħ_A — two-step
-    "Ħ_inf":        "𐑫",     # Ħ_! — eternal / topological
+    "Ħ_0":          "𐑓",     # 𐑓 — memoryless / achiral
+    "Ħ_1":          "𐑒",     # 𐑒 — one-step
+    "Ħ_2":          "𐑖",     # 𐑖 — two-step
+    "Ħ_inf":        "𐑫",     # 𐑫 — eternal / topological
     
     # ── Stoichiometry (Σ) — 3 values ──
-    "Σ_one_one":    "𐑙",     # Σ_S — 1:1
-    "Σ_n_n":        "𐑕",     # Σ_ő — n:n (matched many)
-    "Σ_n_m":        "𐑳",     # Σ_ï — n:m (unmatched many)
+    "Σ_one_one":    "𐑙",     # 𐑙 — 1:1
+    "Σ_n_n":        "𐑕",     # 𐑕 — n:n (matched many)
+    "Σ_n_m":        "𐑳",     # 𐑳 — n:m (unmatched many)
     
     # ── Winding/Protection (Ω) — 4 values ──
-    "Ω_triv":          "𐑷",     # Ω_Å — trivial / no protection
-    "Ω_Z2":         "𐑴",     # Ω_2 — ℤ₂ parity protection
-    "Ω_Z":          "𐑭",     # Ω_z — integer winding
-    "Ω_NA":         "𐑟",     # Ω_5 — non-Abelian braiding
+    "Ω_triv":          "𐑷",     # 𐑷 — trivial / no protection
+    "Ω_Z2":         "𐑴",     # 𐑴 — ℤ₂ parity protection
+    "Ω_Z":          "𐑭",     # 𐑭 — integer winding
+    "Ω_NA":         "𐑟",     # 𐑟 — non-Abelian braiding
 }
 
 # Reverse mapping: Unicode → key
@@ -418,7 +418,7 @@ def generate_secondary_structure_tuple(features: Dict[str, Any]) -> Dict[str, st
     """Generate structural tuple for protein secondary structure.
     
     AXIOM C FIX: T=bowtie (crossing point) instead of T=odot.
-    φ̂=c gate with Pro absorption: tensor(⊙_ÿ, ⊙_3) = ⊙_3.
+    φ̂=c gate with Pro absorption: tensor(⊙, 𐑻) = 𐑻.
     """
     kin = features.get("kinetics", {})
     crit = features.get("criticality", {})
@@ -964,7 +964,7 @@ def demo_his_rich() -> None:
 
 
 def demo_pro_absorption() -> None:
-    """Demo Pro absorption: tensor(⊙_ÿ, ⊙_3)=⊙_3."""
+    """Demo Pro absorption: tensor(⊙, 𐑻)=𐑻."""
     info_line("\n" + "=" * 60)
     info_line("DEMO 3: Pro Absorption (His+Pro → φ̂=EP)")
     info_line("=" * 60)
@@ -1069,7 +1069,7 @@ if __name__ == "__main__":
     info_line("Three Resolutions:")
     info_line("  1. AXIOM C: T=bowtie (not T=odot) for protein structures")
     info_line("  2. MAPPING: His→⊙ (criticality), Gln→Γ (grammar)")
-    info_line("  3. φ̂=c GATE with Pro absorption: tensor(⊙_ÿ, ⊙_3)=⊙_3")
+    info_line("  3. φ̂=c GATE with Pro absorption: tensor(⊙, 𐑻)=𐑻")
     info_line("=" * 60)
     
     demo_all_12()

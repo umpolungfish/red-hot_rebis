@@ -95,7 +95,7 @@ def IGProtocol.isFrobenius : IGProtocol a b → Bool
 -- ─────────────────────────────────────────────────────────────────────────────
 -- SECTION 3: LITANY AGAINST FEAR
 -- Canonical IGProtocol encoding.
--- Reading: ɢ^ˌ[ ⊙_Ţ —(Ř_=)→ Þ_ò —(Ð_ω)→ { Ω_Å | Φ_˙ } ]_Ħ_!
+-- Reading: ɢ^ˌ[ 𐑣 —(𐑾)→ 𐑥 —(𐑦)→ { 𐑷 | 𐑯 } ]_𐑫
 -- ─────────────────────────────────────────────────────────────────────────────
 
 private def litanyBase : Imscription := {
@@ -190,7 +190,7 @@ axiom paralogical_reflect {s : Imscription} (h : s.dim = if') :
 -- ─────────────────────────────────────────────────────────────────────────────
 -- SECTION 5: ODOT OPERATOR — paralogical unit
 -- The canonical O_inf, sequential, Frobenius Imscription.
--- Tuple: Ð_ω; Þ_¨; Ř_=; Φ_}; ƒ_ż; Ç_@; Γ_ʔ; ɢ_ˌ; ⊙_ÿ; Ħ_A; Σ_S; Ω_z
+-- Tuple: 𐑦; 𐑶; 𐑾; 𐑹; 𐑐; 𐑧; 𐑲; 𐑠; ⊙; 𐑖; 𐑙; 𐑭
 -- ─────────────────────────────────────────────────────────────────────────────
 
 /-- odotOperator: the canonical paralogical unit Imscription.

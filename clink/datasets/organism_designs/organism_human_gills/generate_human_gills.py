@@ -188,7 +188,7 @@ AQUATIC_PHYSIOLOGY = {
     "ig_primitive_deltas": {
         "Ħ_Chirality":   {"base": "𐑸", "gill": "𐑼", "reason": "Na⁺ apical extrusion — active pump directionality"},
         "Ω_Winding":     {"base": "𐑾", "gill": "𐑿", "reason": "counter-current antiparallel flow adds Ω"},
-        "Σ_Stoichiometry":{"base": "𐑐", "gill": "𐑒", "reason": "dissolved-O₂ stoichiometry ~30× lower than aerial"},
+        "𐑙toichiometry":{"base": "𐑐", "gill": "𐑒", "reason": "dissolved-O₂ stoichiometry ~30× lower than aerial"},
         "Ç_Kinetics":    {"base": "𐑲", "gill": "𐑴", "reason": "NKA+NHE3 active transport kinetics"},
         "Þ_Topology":    {"base": "𐑳", "gill": "𐑩", "reason": "lamellar plate topology ≠ alveolar sacculi"},
     },

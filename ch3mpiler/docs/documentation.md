@@ -360,11 +360,11 @@ Chirality H=∞ (eternal memory) requires trapped kinetics (K=⊛). In chemistry
 ### Axiom B: Ω_protected requires H≥2
 Topological protection (Ω=ℤ₂ or ℤ) requires at least H=2 (2-step Markov order). Conjugated systems (amide, aromatic) have H=𐑖 (2-step) and Ω=𐑴 (Z₂) — this is why they're topologically protected.
 
-### Axiom C: Ð_ω ↔ T_O
+### Axiom C: 𐑦 ↔ T_O
 Self-written dimensionality (D=∞) is equivalent to self-referential topology (T=⊙). In ch3mpiler this appears only at the compiler level (the ob3ect self-model), not at the molecule level.
 
 ### ⊙₃ Absorption Rule
-When computing tensor couplings involving an ⊙₃ system (exceptional point), the composite places at ⊙₃ — tensor(⊙_ÿ, ⊙_₃) = ⊙_₃. Coupling a self-modeling FG to an exceptional-point bond selects the tensor path; the meet path preserves ⊙_ÿ. This is the structural statement of the measurement problem in chemistry.
+When computing tensor couplings involving an ⊙₃ system (exceptional point), the composite places at ⊙₃ — tensor(⊙, ⊙_₃) = ⊙_₃. Coupling a self-modeling FG to an exceptional-point bond selects the tensor path; the meet path preserves ⊙. This is the structural statement of the measurement problem in chemistry.
 
 ### Tensor-Join-Meet Trinity
 - **tensor**: FG₁ ⊗ FG₂ — what two FGs look like together (max on unions, min on intersections)

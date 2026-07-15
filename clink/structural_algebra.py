@@ -113,7 +113,7 @@ def tensor(tuple_a, tuple_b):
     """Composite type — coupling between two systems.
     
     Takes max on union primitives (most expansive), min on P and F.
-    ⊙_3 absorption: tensor(⊙_ÿ, ⊙_3) = ⊙_3
+    𐑻 absorption: tensor(⊙, 𐑻) = 𐑻
     """
     result = {}
     for p in PRIMITIVE_ORDER:
