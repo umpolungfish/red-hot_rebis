@@ -72,7 +72,7 @@ def inner_door_gate : Imscription := {
   kin  := egg        -- K_schwa → slow / thermally activated
   gran := thigh       -- G_revapostrophe → intermediate collective
   gram := measure     -- Gamma_secstress (unchanged)
-  crit := monad         -- Phi_ctyogh → real-axis criticality
+  crit := monad         -- ⊙ → real-axis criticality
   chir := sure            -- sure → persistent chiral memory
   stoi := hung       -- 1:1 → single gate for single soul
   prot := ah       -- Omega_dzlig → integer winding protection
@@ -132,7 +132,7 @@ def zosimos_gnosis : Imscription := {
   kin  := egg        -- K_schwa
   gran := thigh       -- G_revapostrophe
   gram := measure     -- Gamma_secstress (unchanged from Fate)
-  crit := monad         -- Phi_ctyogh
+  crit := monad         -- ⊙
   chir := sure            -- sure
   stoi := up           -- n:m → universal scope
   prot := ah       -- Omega_dzlig
@@ -275,7 +275,7 @@ def stilling_step_zero : Imscription := processions_of_fate
     
     Promotion: judge → mime (stop branching, start closing).
     This is the first bottleneck: ΔT = 2 in ordinal.
-    Also: Φ_sub → Φ_c (begin criticality), fee → kick (soft memory).
+    Also: 𐑢 → ⊙ (begin criticality), fee → kick (soft memory).
     
     The system stops being a passive receiver of Fate's causal branches
     and begins to form a two-cycle. -/

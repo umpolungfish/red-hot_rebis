@@ -90,7 +90,7 @@ IG_CHARS: Dict[str, str] = {
     
     # ── Criticality (φ̂/⊙) — 5 values ──
     "⊙_sub":      "𐑢",     # φ̂_ž — subcritical / stable
-    "⊙_c":        "⊙",     # φ̂_ÿ — critical (self-modeling gate open)
+    "⊙":        "⊙",     # φ̂_ÿ — critical (self-modeling gate open)
     "⊙_c_complex":"𐑮",     # φ̂_Æ — complex-plane critical
     "⊙_EP":       "𐑻",     # φ̂_3 — exceptional point
     "⊙_super":    "𐑣",     # φ̂_Ţ — supercritical / runaway
@@ -440,7 +440,7 @@ def generate_secondary_structure_tuple(features: Dict[str, Any]) -> Dict[str, st
     
     # Criticality (φ̂): His at loops → self-structuring; Pro absorbs
     if phi_gate and not pro_abs and not geo_sup:
-        phi_val = "⊙_c"
+        phi_val = "⊙"
     elif phi_gate and pro_abs:
         phi_val = "⊙_EP"
     else:
@@ -498,7 +498,7 @@ def generate_tertiary_structure_tuple(features: Dict[str, Any]) -> Dict[str, str
         k_val = "Ç_fast"
     
     if phi_gate and not pro_abs and not geo_sup:
-        phi_val = "⊙_c"
+        phi_val = "⊙"
     elif phi_gate and pro_abs:
         phi_val = "⊙_EP"
     else:
@@ -572,7 +572,7 @@ def generate_quaternary_structure_tuple(features: Dict[str, Any]) -> Dict[str, s
     
     # Criticality (φ̂)
     if phi_gate and not pro_abs and not geo_sup:
-        phi_val = "⊙_c"
+        phi_val = "⊙"
     elif phi_gate and pro_abs:
         phi_val = "⊙_EP"
     else:
