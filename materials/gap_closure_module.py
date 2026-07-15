@@ -253,7 +253,7 @@ def tensor(a: Imcription, b: Imcription) -> Imcription:
             args[cls.__name__] = va if oa <= ob else vb  # min on P, F
         else:
             args[cls.__name__] = va if oa >= ob else vb  # max on others
-    # ⊙_3 ABSORPTION: tensor(⊙, EP) = EP
+    # 𐑻 ABSORPTION: tensor(⊙, EP) = EP
     if args["Phi"] == Phi.EP:
         pass  # absorption already handled by max rule; meet would preserve ⊙
     return Imcription(**args)

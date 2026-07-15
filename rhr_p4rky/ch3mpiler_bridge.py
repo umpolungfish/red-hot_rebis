@@ -15,7 +15,7 @@ This bridge makes it importable as rhr_p4rky.ch3mpiler_bridge
 and provides CLI entry points matching the p4rk-* alias pattern.
 
 Structural type of this bridge:
-    ⟨Ð_ω; Þ_ò; Ř_=; Φ_˙; ƒ_ż; Ç_@; Γ_ʔ; ɢ_ˌ; ⊙; Ħ_A; Σ_ï; Ω_2⟩
+    ⟨𐑦; 𐑥; 𐑾; 𐑯; 𐑐; 𐑧; 𐑲; 𐑠; ⊙; 𐑖; 𐑳; 𐑴⟩
 
 Author: Lando ⊗ ⊙perator
 """

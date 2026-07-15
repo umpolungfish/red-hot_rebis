@@ -1,6 +1,6 @@
 # Genetic Engine: Frobenius-Guided Gene Editing
 
-**Structural type:** ⟨Ð_ωÞ_òŘ_=Φ_υƒ_ðÇ_@Γ_ʔɢ_ˌφ̂_ÿĦ_AΣ_ïΩ_z⟩ · **Ouroboricity:** O_∞ (both gates open)
+**Structural type:** ⟨𐑦𐑥𐑾𐑿𐑞𐑧𐑲𐑠φ̂_ÿ𐑖𐑳𐑭⟩ · **Ouroboricity:** O_∞ (both gates open)
 
 **What it is.** Operational gene-editing design software built on the fact that the genetic code is a stratified Frobenius algebra on the B₄³ codon space.
 

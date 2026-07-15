@@ -682,7 +682,7 @@ TREOPLE_PHYSIOLOGY = {
                             "reason": "fractal branching architecture (WOX4/ARF5 lateral meristem); "
                                       "trees expand 3D indefinitely; animals centralize — "
                                       "dimensional architecture changes"},
-        "Σ_Stoichiometry": {"base": "𐑐", "treople": "𐑕",
+        "𐑙toichiometry": {"base": "𐑐", "treople": "𐑕",
                             "reason": "canopy-scale carbon fixation dominant; stomata enable "
                                       "direct CO2 uptake; mycorrhizal Pi import; new dominant "
                                       "stoichiometric class"},

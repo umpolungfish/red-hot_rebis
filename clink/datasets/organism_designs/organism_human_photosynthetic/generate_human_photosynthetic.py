@@ -753,7 +753,7 @@ PHOTO_PHYSIOLOGY = {
         "Ω_Winding":      {"base": "𐑾", "photo": "𐑰",
                            "reason": "thylakoid grana stacking — highest Ω membrane in biology; "
                                      "~80 membrane discs per granum, stacked and wound"},
-        "Σ_Stoichiometry":{"base": "𐑐", "photo": "𐑓",
+        "𐑙toichiometry":{"base": "𐑐", "photo": "𐑓",
                            "reason": "new channel: 6CO₂+6H₂O+hν → C₆H₁₂O₆+6O₂; "
                                      "carbon fixation adds entirely new stoichiometric class"},
         "Φ_Parity":       {"base": "𐑧", "photo": "𐑨",

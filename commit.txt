@@ -1,133 +1,23 @@
-commit: reverse ligand pipeline — homogeneity fix + formatting fix
-author: Lando⊗⊙perator
-date:   2025-07-02
-version: v2.5.0
-repo:   /home/mrnob0dy666/imsgct/red-hot_rebis/
+Retire the gen-2 glyph-pair notation for bare Shavian
 
-══════════════════════════════════════════════════════════════════
-ROUND 1 — Ligand Homogeneity → Protein-Specific Diversity
-══════════════════════════════════════════════════════════════════
+The primitives stand on their own now, so the old `⊙_ÿ` / `Ð_ω` / `Φ_}` forms are
+residue. Rewrote all 49 of them to their Shavian values across source: 19,645
+tokens, 670 files.
 
-Root cause (3 compounding bottlenecks):
-  (a) Hardcoded R-group enumeration: generate_ligand_smiles() Strategy 3
-      produced the same 12 amide variants (CC(N)=O through
-      CCNC(=O)c1ccccc1) regardless of the protein's chemistry.
-      Only 3 bond types had any enumeration; all others fell through
-      to simple alkane chains.
-  (b) Improved engine never called: generate_ligands_from_bond_fg()
-      (fragment-based combinatorial enumeration with fingerprint
-      scoring) existed in ligand_improvements.py but decompose_and_generate()
-      never invoked it. The --improved flag existed but wasn't default.
-  (c) Substrate hints unused: All 119 proteins in CATALYZING_PROTEINS
-      carry smiles_substrate_hint with their actual biological substrates
-      (NAG-NAM for lysozyme, peptide substrates for proteases,
-      acetylcholine for AChE, etc.), but the pipeline never used them.
+The map was not typed. I enumerated the gen-2 tokens that actually appear in the
+corpus, paired each marker to its phonetic name, and resolved every value through
+`models.from_symbol` — so the values come from code that runs, not from a table.
+Reality arbitrated one conflict: the SOUNDS document gives `Ř_Ð`, `Γ_\`, `Σ_M`,
+but the corpus has `Ř_=`, `Γ_ʔ`, `Σ_ï` in the tens of thousands and the doc's
+variants nowhere at all. The doc is mangled; the files are the record.
 
-Files changed (3 files, ~250 lines):
+Left alone deliberately: `ig_outputs/` and the other run artifacts, ~455k tokens
+of it. Those runs really did emit gen-2 in May. Rewriting them would forge the
+record of what they produced, which is not tidying. The two naming documents keep
+their old-notation columns for the same reason.
 
-  [ligand_from_active_site.py]
-    - generate_ligand_smiles(): Now routes PRIMARY through
-      generate_ligands_from_bond_fg() (fragment-based engine);
-      fallback expanded from 3 to 9 bond types with diverse R-group sets
-    - decompose_and_generate(): Passes ligand_type for structural scoring
-
-  [ligand_improvements.py]
-    - NEW: generate_substrate_analogs() — 5-strategy substrate-driven
-      generation:
-        (A) substrate itself
-        (B) BRICS fragment recombination
-        (C) Murcko scaffold + decoration
-        (D) chain extensions via RWMol
-        (E) ring substitutions (F/Cl/OH/NH₂)
-    - NEW: generate_from_enzyme_type_substrate_first() — merges
-      substrate analogs PRIMARY + fragment diversity SUPPLEMENT
-    - MODIFIED: generate_from_enzyme_type() — delegates to substrate-first
-    - NEW: _try_add_candidate() — reactive group filter rejects
-      peroxides, azides, isocyanides, disulfides
-
-  [ligand_from_site_pdb.py]
-    - design_ligand_from_pdb(): tries improved engine first;
-      extracts HETATM SMILES from PDB as substrate hint
-    - NEW: _extract_hetatm_smiles_from_pdb() — parses HETATM records,
-      filters water/ions/buffers
-    - encode_site_from_pdb(): stores pdb_text in summary for
-      downstream HETATM extraction
-
-Verified results (30 proteins):
-
-  Metric                  Before                     After
-  ─────────────────────   ────────────────────────   ─────────────────────
-  Unique top hits         ~4                         26 (86.7%)
-  Lysozyme top hit        CC(N)=O                    NAG-NAM disaccharide
-  Trypsin top hit         CC(N)=O                    peptide substrate
-  HIV-1 protease top hit  CC(N)=O                    peptide substrate
-  Composite scores        0.0                        0.67–0.93
-  Method distribution     all amide_variant_C_N      substrate, chain_extend,
-                                                     ring_sub, murcko_scaffold
-
-══════════════════════════════════════════════════════════════════
-ROUND 2 — SMILES Left-Aligned, Metrics Right-Aligned
-══════════════════════════════════════════════════════════════════
-
-Root cause: Every output line used restrictive width fields that
-crowded SMILES strings and hard-truncated long molecules.
-
-Files changed (3 files, 4 format sites):
-
-  [ligand_from_active_site.py:1427]
-    Before:  {smiles:40s} — cramped, metrics float
-    After:   {smiles:<80s} ... {metrics:>48s}
-
-  [ligand_improvements.py:832]
-    Before:  {smiles:35s} — even narrower
-    After:   {smiles:<80s} ... {metrics:>50s}
-
-  [ligand_from_site_pdb.py:942]
-    Before:  smiles[:50] — hard truncation, data loss
-    After:   No truncation — full SMILES preserved
-
-  [ligand_from_site_pdb.py:959]
-    Before:  {smiles:50s} — flat, no alignment
-    After:   {smiles:<80s} {method:22s} {metrics:>56s}
-
-Output now:
-  [substrate      ] CC1OC(OC2C(C(=O)O)OC(O)C(O)C2O)C(O)C(O)C1O   logP=-2.15 MW=356.3 comp=0.923
-  [murcko_scaffold] O=C1C=CC(=O)C=C1                             logP= 0.42 MW=108.1 comp=0.671
-  [chain_extend   ] CCCCCCCCCCCCCCCCCC                           logP= 8.92 MW=254.5
-
-All [:50] and [:20] hard slices removed. SMILES strings take all the
-space they need (80-char left-aligned field). All metrics snap to a
-consistent right column regardless of SMILES length.
-
-Backups: rhr_p4rky/*.bak (ligand_from_active_site.py, ligand_from_site_pdb.py,
-ligand_improvements.py)
-
-══════════════════════════════════════════════════════════════════
-FILES TRACKED
-══════════════════════════════════════════════════════════════════
-
-  rhr_p4rky/ligand_from_active_site.py  — main orchestration (55.9 KB)
-  rhr_p4rky/ligand_improvements.py      — substrate-first + fragment engine (62.2 KB)
-  rhr_p4rky/ligand_from_site_pdb.py     — PDB parsing + HETATM extraction (51.7 KB)
-  rhr_p4rky/ligand_heterocycles.py      — heterocycle scaffold library (69.1 KB)
-  rhr_p4rky/ligand_combinatorial.py     — combinatorial enumeration (16.1 KB)
-  rhr_p4rky/ligand_sicpovm.py           — SIC-POVM structural probe (30.2 KB)
-  rhr_p4rky/ligand_imasm.py             — IMASM→IG tuple bridge (18.5 KB)
-  rhr_p4rky/ligand_imasm_v2.py          — IMASM v2 bridge (4.3 KB)
-  README.md                             — updated to v2.5.0
-  commit.txt                            — this file
-
-══════════════════════════════════════════════════════════════════
-OPEN QUESTIONS / FUTURE WORK
-══════════════════════════════════════════════════════════════════
-
-  - BRICS fragment recombination sometimes produces disconnected
-    fragments; needs a connectivity check before candidate acceptance
-  - The 9 bond types could be expanded to the full ch3mpiler bond
-    catalog for richer retrosynthetic decomposition
-  - Substrate hint only works for CATALYZING_PROTEINS entries and
-    PDBs with co-crystallized ligands; a general substrate prediction
-    model (EC class → substrate class) would cover the remaining cases
-  - Murcko scaffold decoration currently uses fixed substituents
-    (F/Cl/OH/NH₂); could be extended to fragment-based decoration
-    from the heterocycle library
+Bare `Phi` is untouched. Gen-1 `Phi` is today's ⊙, but today's `Φ` is Parity —
+those are genuinely different structures that happen to share letters, and no
+register makes them one, so every site needs reading. Contrast ⊙ appearing as
+both primitive and value, which is not a collision at all: `⊙ ≠ ⊙` is operator ≠
+operation, and it states `μ∘δ ≠ id` exactly.
