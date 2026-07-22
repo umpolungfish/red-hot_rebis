@@ -261,6 +261,7 @@ class MaterialForge:
         self._synthesize_applications(design)
         self._compute_frobenius_score(design)
         self._compute_tier(design)
+        self._compute_quantitative_properties(design)
 
         self._designs[name] = design
         return design
@@ -441,6 +442,41 @@ class MaterialForge:
             d.ouroboricity_tier = 'O₁'
         else:
             d.ouroboricity_tier = 'O₀'
+    def _compute_quantitative_properties(self, d: MaterialDesign):
+        """Add quantitative physical property predictions grounded in MoDoT constants.
+        
+        Uses the 7 verified Lean 4 constant modules from p4rakernel to compute
+        bond energies, Young's modulus, band gaps, Debye temperatures, etc.
+        """
+        try:
+            from rhr_p4rky.physical_predictor import (
+                predict_from_tuple, get_material_quality_score,
+                get_thermochemical_score
+            )
+            pred = predict_from_tuple(d.name, d.ig_tuple)
+            d.predicted_properties['_quantitative'] = pred.to_dict()
+            d.predicted_properties['_quality_scores'] = get_material_quality_score(pred)
+            
+            d.predicted_properties['Young_modulus_GPa'] = f"{pred.young_modulus_GPa:.1f} (computed)"
+            d.predicted_properties['Shear_modulus_GPa'] = f"{pred.shear_modulus_GPa:.1f}"
+            d.predicted_properties['Bulk_modulus_GPa'] = f"{pred.bulk_modulus_GPa:.1f}"
+            d.predicted_properties['Tensile_strength_MPa'] = f"{pred.tensile_strength_MPa:.1f}"
+            d.predicted_properties['Fracture_toughness_MPam05'] = f"{pred.fracture_toughness_MPam05:.2f}"
+            d.predicted_properties['Band_gap_eV'] = f"{pred.band_gap_eV:.3f}"
+            d.predicted_properties['Dielectric_constant'] = f"{pred.dielectric_constant:.1f}"
+            d.predicted_properties['Electrical_conductivity_Sm'] = f"{pred.electrical_conductivity_Sm:.3e}"
+            d.predicted_properties['Debye_temperature_K'] = f"{pred.debye_temperature_K:.0f}"
+            d.predicted_properties['Thermal_conductivity_WmK'] = f"{pred.thermal_conductivity_WmK:.1f}"
+            d.predicted_properties['Melting_temperature_K'] = f"{pred.melting_temperature_K:.0f}"
+            d.predicted_properties['Topological_gap_meV'] = f"{pred.topological_protection_energy_meV:.2f}"
+            d.predicted_properties['Sensitivity_enhancement'] = f"{pred.sensitivity_enhancement:.2e}x"
+            d.predicted_properties['Thermochemical_score'] = f"{get_thermochemical_score(pred):.3f}"
+            
+        except ImportError:
+            d.predicted_properties['_quantitative'] = {'error': 'physical_predictor not available'}
+        except Exception as e:
+            d.predicted_properties['_quantitative'] = {'error': str(e)}
+
 
     def forge_from_imas(self, imas_name: str) -> MaterialDesign:
         """Forge a material from an IMASM canonical arrangement name."""
@@ -727,7 +763,5 @@ Examples:
     parser.print_help()
     return 1
 
-
 if __name__ == "__main__":
     import sys; sys.exit(main())
-
