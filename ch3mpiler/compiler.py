@@ -20,6 +20,14 @@ CAS_CACHE_PATH = BASE / "CAS_cache.json"
 sys.path.insert(0, str(BASE.parent))
 
 from shared.primitives import ORDINALS, WEIGHTS, resolve_ordinal_key
+
+# ── MoDoT-grounded physical prediction (bond energies, thermochemical scores) ──
+try:
+    from rhr_p4rky.physical_predictor import predict_from_tuple, get_thermochemical_score
+    HAS_PHYSICAL_PREDICTOR = True
+except Exception:
+    HAS_PHYSICAL_PREDICTOR = False
+_HAS_PHYSICAL = HAS_PHYSICAL_PREDICTOR  # cached
 from shared.rich_output import *
 
 # ── Exhaustive functional group database (SMARTS-based) ──
@@ -979,7 +987,15 @@ def find_disconnections(fg_names, molecule_type, max_results=None):
     """Find all viable disconnections via grammar-derived rules.
     For each pair of FGs and each bond type, compute structural delta.
     Incompatible bonds are filtered out. 
-    Ranked by product_delta (product-to-target match) then bond_delta (bond-to-interface fit).
+    
+    Ranked by product_delta (product-to-target match), then thermochemical 
+    score (descending), then bond_delta (bond-to-interface fit).
+    
+    When HAS_PHYSICAL_PREDICTOR is available, each result is augmented with:
+      - thermochemical_score  (0-1, higher = more thermodynamically favorable)
+      - bond_energy_kJmol     (predicted bond strength)
+      - melting_temp_K        (predicted melting point)
+      - band_gap_eV           (predicted electronic band gap)
     """
     results = []
     for i, fg1 in enumerate(fg_names):
@@ -987,8 +1003,27 @@ def find_disconnections(fg_names, molecule_type, max_results=None):
             for bname in BOND_TYPES:
                 ev = evaluate_disconnection(fg1, fg2, bname, molecule_type)
                 if ev and ev["compatible"]:
+                    # Augment with MoDoT-grounded physical predictions
+                    if _HAS_PHYSICAL:
+                        try:
+                            prod_tuple = ev["product_type"]
+                            clean = prod_tuple.replace("<", "").replace(">", "")
+                            chars = [c for c in clean if c.strip()]
+                            if len(chars) == 12:
+                                pred = predict_from_tuple(f"{fg1}_{fg2}_{bname}", tuple(chars))
+                                ev["thermochemical_score"] = round(get_thermochemical_score(pred), 3)
+                                ev["bond_energy_kJmol"] = round(pred.bond_energy_kJmol, 1)
+                                ev["melting_temperature_K"] = round(pred.melting_temperature_K, 0)
+                                ev["band_gap_eV"] = round(pred.band_gap_eV, 3)
+                        except Exception:
+                            pass
                     results.append(ev)
-    results.sort(key=lambda x: (x["product_delta"], x["bond_delta"]))
+    # Sort: primary by product_delta (ascending), secondary by thermochemical_score (descending, if available), tertiary by bond_delta
+    results.sort(key=lambda x: (
+        x["product_delta"],
+        -x.get("thermochemical_score", 0),
+        x["bond_delta"]
+    ))
     return results[:max_results]
 
 # CAS RESOLVER

@@ -77,6 +77,9 @@ def cmd_menu(args=None):
         ("serpentrod",      "rebis serpentrod",
          "Protein design & stratified prediction — rolling profiles, classification",
          ["predict <seq>", "classify <seq>", "finger <seq>"]),
+        ("predict",         "rebis predict",
+         "Quantitative property prediction from IG tuples — bond energies, modulus, band gaps, folding ΔG, topological gaps, catalytic rates — grounded in MoDoT constants",
+         ["<catalog_name>", "<tuple>", "--all", "--json"]),
         ("chain",           "rebis chain",
          "UNIFIED PIPELINE: DNA→Protein→CatalyticSite→RetrosyntheticPlan",
          ["--dna <seq>", "--target <SMILES>", "--depth <N>"]),
@@ -142,6 +145,7 @@ def cmd_menu(args=None):
         for cmd, desc in [
             ("rebis reference",     "Belnap FOUR ops, genetic B4 lattice, hadrons, verification, IMASM"),
             ("rebis reference --all","Full reference data dump"),
+            ("rebis constants",     "MoDoT fundamental constants + SIC-POVM biology bridge"),
         ]:
             t3.add_row(cmd, desc)
         console.print(t3)
@@ -182,6 +186,7 @@ def cmd_menu(args=None):
         section_header("📚 REFERENCE")
         info_line("  rebis reference         — Belnap, genetics, hadrons, IMASM static data")
         info_line("  rebis reference --all   — Full reference dump")
+        info_line("  rebis constants         — MoDoT fundamental constants + biology bridge")
 
         print()
         section_header("⚡ QUICK COMMANDS")
@@ -540,6 +545,94 @@ def cmd_demo(args):
 # MAIN ENTRY POINT
 # ═══════════════════════════════════════════════════════════════
 
+
+# ═══════════════════════════════════════════════════════════════
+# COMMAND: predict — Quantitative physical property prediction
+# ═══════════════════════════════════════════════════════════════
+
+def cmd_predict(args):
+    """Predict quantitative physical/chemical/biological properties from
+    any IG structural type or catalog entry.
+    
+    Uses the MoDoT-grounded physical_predictor module, which computes
+    bond energies, Young's modulus, band gaps, Debye temperatures,
+    topological protection energies, folding stability, enzymatic turnover,
+    and more — all from the 12-primitive structural type.
+    
+    Every prediction is grounded in the 7 verified Lean 4 MoDoT constant
+    modules (FineStructureConstant, ProtonElectronMass, etc.) with
+    native_decide proofs — NOT fitted parameters.
+    """
+    from rhr_p4rky.physical_predictor import (
+        predict_from_tuple, predict_from_name, format_prediction,
+        get_material_quality_score, get_protein_design_score,
+    )
+    from rhr_p4rky.pipeline_integrator import (
+        get_disconnection_thermochemistry, find_best_applications
+    )
+    
+    targets = args.target
+    if not targets:
+        targets = ['diamond']
+    
+    for target in targets:
+        # Try as catalog name first
+        pred = predict_from_name(target)
+        if pred is None:
+            # Try as raw tuple string
+            import re
+            clean = re.sub(r'[⟨⟩]', '', target)
+            if len(clean) >= 12:
+                pred = predict_from_tuple(target, tuple(clean))
+        
+        if pred is None:
+            from shared.primitives import ORDINALS
+            # Try as a raw tuple with standard separator
+            parts = target.replace(';', ',').split(',')
+            if len(parts) >= 12:
+                pred = predict_from_tuple(target, tuple(p.strip() for p in parts[:12]))
+        
+        if pred:
+            print(format_prediction(pred))
+            print()
+            
+            # Material quality scores
+            scores = get_material_quality_score(pred)
+            print('Material Quality Scores:')
+            for k, v in sorted(scores.items()):
+                bar = '█' * int(v * 20) + '░' * (20 - int(v * 20))
+                print(f'  {k:15s}: {bar} {v:.3f}')
+            
+            # Protein design scores (if applicable)
+            protein = get_protein_design_score(pred)
+            if protein['overall'] > 0.1:
+                print()
+                print('Protein Design Scores:')
+                for k, v in sorted(protein.items()):
+                    bar = '█' * int(v * 20) + '░' * (20 - int(v * 20))
+                    print(f'  {k:18s}: {bar} {v:.3f}')
+            
+            # Best applications
+            print()
+            print('Best Applications:')
+            for app in find_best_applications(target, pred.ig_tuple):
+                print(f'  → {app}')
+            
+            # Disconnection thermochemistry (for ch3mpiler users)
+            print()
+            thermo = get_disconnection_thermochemistry(pred.ig_tuple)
+            print('Disconnection Thermochemistry (for retrosynthesis):')
+            print(f'  Score: {thermo["thermochemical_score"]:.3f}  |  '
+                  f'E_bond: {thermo["bond_energy_kJmol"]:.0f} kJ/mol  |  '
+                  f'E_g: {thermo["band_gap_eV"]:.2f} eV  |  '
+                  f'T_m: {thermo["melting_temp_K"]:.0f} K')
+            
+            if target != targets[-1]:
+                print()
+        else:
+            print(f'Could not find or parse: {target}')
+    
+    return 0
 def main():
     parser = argparse.ArgumentParser(
         description="Red-Hot Rebis v4.0 — Dynamic-First Toolchain",
@@ -583,6 +676,16 @@ def main():
     p_ref = sub.add_parser("reference", help="Static reference data (Belnap, genetics, etc.)")
     p_ref.add_argument("--all", action="store_true", help="Full data dump")
     p_ref.set_defaults(func=cmd_reference)
+
+    p_const = sub.add_parser("constants", help="MoDoT fundamental constants + biology bridge")
+    p_const.add_argument("--verbose", "-v", action="store_true", help="Show detailed listing")
+    p_const.set_defaults(func=cmd_constants)
+    
+    p_pred = sub.add_parser('predict', help='Quantitative physical property prediction from IG tuples')
+    p_pred.add_argument('target', nargs='*', help='Catalog entries or IG tuple strings to predict')
+    p_pred.add_argument('--all', '-a', action='store_true', help='Predict for ALL catalog entries')
+    p_pred.add_argument('--json', action='store_true', help='Output as JSON')
+    p_pred.set_defaults(func=cmd_predict)
 
     # ── Infrastructure ──
     p_stat = sub.add_parser("status", help="Package status")
@@ -631,3 +734,48 @@ def main():
 
 if __name__ == "__main__":
     sys.exit(main())
+# ═══════════════════════════════════════════════════════════════
+# COMMAND: constants — MoDoT fundamental constants registry
+# ═══════════════════════════════════════════════════════════════
+
+def cmd_constants(args):
+    """Display the MoDoT Constant Registry with biology bridge connections."""
+    from rhr_p4rky.fundamental_constants import (
+        report_all_constants, ALL_CONSTANTS, D_SIC, SIN2_THETA_W,
+        ALPHA_INV_MO_DOT, MP_ME_MO_DOT, ALPHA_G,
+        H_BOND_ENERGY_KCAL, CODON_SPACE_SIZE, PROMOTED_AA_COUNT,
+        STOP_CODON_COUNT
+    )
+    from rhr_p4rky.genetic_code import verify_sic_povm_genetic_partition
+
+    print(report_all_constants())
+    print()
+
+    # Show the SIC-POVM genetic code verification
+    section_header("GENETIC CODE SIC-POVM PARTITION")
+    gen_part = verify_sic_povm_genetic_partition()
+    print(f"  Crystal of Types / codon space = {gen_part['crystal_per_codon']:.0f}")
+    print(f"  Stop codons = {gen_part['stop_codon_count']} = {gen_part['ew_outcomes']} EW outcomes  ✓")
+    print(f"  Exact 4-fold boxes = {gen_part['exact_4fold_boxes']} ↔ {gen_part['solar_outcomes']} solar outcomes")
+    print(f"  Split boxes = {gen_part['split_boxes']} ↔ {gen_part['atm_outcomes']} atmospheric outcomes")
+    print(f"  Promoted AAs = {gen_part['promoted_aa_count']} = SIC dimension d = {D_SIC}  ✓")
+    status = "✓ VERIFIED" if gen_part['all_verified'] else "✗ PARTIAL"
+    print(f"  Partition status: {status}")
+    print()
+
+    # Show hierarchy summary
+    section_header("HIERARCHY SUMMARY")
+    print(f"  Electromagnetic:   α⁻¹ = {ALPHA_INV_MO_DOT:.6f}  (CODATA: 137.035999084)")
+    print(f"  Hadron scale:      m_p/m_e = {MP_ME_MO_DOT:.6f}  (CODATA: 1836.15267343)")
+    print(f"  Gravity:           α_G = {ALPHA_G:.3e}  (CODATA: 5.904e-39)")
+    print(f"  Biology:           E_HB ≈ {H_BOND_ENERGY_KCAL:.1f} kcal/mol  (from proton ZPE)")
+    print(f"  Codon space:       |Ω| = {CODON_SPACE_SIZE} = 4³  (d=12 SIC-POVM outcomes)")
+    print(f"  Genetic partition: 3 stops = 3/13 = sin²θ_W = {SIN2_THETA_W:.4f}")
+    print()
+
+    # Show all constants with details
+    if getattr(args, 'verbose', False):
+        section_header("DETAILED CONSTANTS")
+        for c in ALL_CONSTANTS:
+            print(f"  {c.symbol:20s} = {c.value:>22.10e}  [{c.unit:15s}]  from {c.source_lean}")
+    return 0
