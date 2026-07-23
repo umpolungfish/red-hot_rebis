@@ -1,18 +1,12 @@
-Cleanup phase A/B: harden gitignore, remove regenerable and dead cruft
+Cleanup phase C: remove duplicate data and archive stubs
 
-The tree had accumulated artifacts that should never have been tracked and
-one-shot scripts that outlived their purpose. This is the hygiene pass, no
-behavior change: rebis.py status/verify and the Makefile smoke imports all
-stay green.
+Byte-identical and redundant copies, no unique content lost. gene.fna was an
+exact md5 match of gene.fasta; kept gene.fasta since the help-text examples
+reference that name. In _archive/stubs, strych/ was a strict subset of
+strychnine/ and tetrodo/ was identical to ttx/, so both redundant dirs are
+gone. Also deleted the untracked NDUFAF6_datasets.zip, a stale archive of the
+already-committed NDUFAF6_datasets/ directory.
 
-gitignore now covers LaTeX intermediates (aux/out/toc/fls/fdb_latexmk/
-synctex.gz) and the stray _write_test marker, so these stop reappearing in
-the index. Removed from tracking: the loose sic_povm LaTeX intermediates,
-the nested orphan setup.py files under rhr_p4rky and gene_imscriber (the
-real build lives at root), and the seven migrate_*/fix_*/rich_convert
-one-shot migration scripts that were already spent. Cleared local-only
-cruft from disk: pycache trees, the egg-info, the rhr_p4rky .py.bak trio,
-and the sic_povm log.
-
-Left the canonical surface untouched: rebis.py, rebis/, rhr_p4rky/, the
-wired siblings, and pyproject.toml.
+Left run_serpent alone: scripts/run_serpent.py and rhr_p4rky/run_serpent.py
+share a name but serve different layers, and scripts/run_serpent.py is live
+via rebis/scripts.py.
