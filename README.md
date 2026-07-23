@@ -31,41 +31,53 @@ rebis.p4ra belnap                   # Belnap FOUR truth tables
 
 ---
 
-## TIER 1 — Primary Computation Engines
+## ⟳ The One Loop
 
-| Command | What it does | Example |
-|---------|-------------|---------|
-| `rebis.chain` | **DNA → Protein → Catalyst → Synthesis.** All three pipelines chained. | `rebis.chain --dna ATGGCC... --target "CC(=O)O" --depth 2` |
-| `rebis.gene-pipeline` | DNA → 7-stage folded protein. Frobenius-verified. | `rebis.gene-pipeline --test` |
-| `rebis.ch3mpiler` | Molecular compiler — forward/retro synthesis, FG detection, CDXML. | `rebis.ch3mpiler retrosynth "c1ccccc1"` |
-| `rebis.serpentrod` | Protein design — predict, classify, fingerprint. | `rebis.serpentrod predict MVSKGEELFTGV...` |
-| `rebis.ligand` | PDB-aware ligand design from catalytic sites. | `rebis.ligand --pdb 1LYZ --active Glu35,Asp52` |
-| `rebis.sidechain` | Sidechain×environment algebra — 80 AA×env pairs. | `rebis.sidechain arginine charged_interface` |
+The whole toolchain is a single ouroboros. `rebis.chain` closes it end to end, and every engine below is one arc of the circle, callable on its own:
 
-## TIER 2 — Specialized Engines
+```
+   DNA ──▶ mRNA ──▶ polypeptide ──▶ fold ──▶ catalytic site ──▶ ligand ──▶ retrosynthesis
+    ▲                                                                              │
+    └──────────────────────────  μ∘δ = id  ◀──────────────────────────────────────┘
+```
 
-| Command | What it does | Example |
-|---------|-------------|---------|
-| `rebis.therapeutics` | Chemotherapeutics, neurotrophic factors, antidotes. | `rebis.therapeutics design EGFR` |
-| `rebis.materials` | Metamaterials, sophick forge, alloys, non-qubit QC. | `rebis.materials forge` |
-| `rebis.biology` | Ouroboric cell sim, telomeres, epigenetics. | `rebis.biology sim` |
-| `rebis.pipeline` | Auto-imscription, prose lift, Frobenius verification. | `rebis.pipeline verify` |
-| `rebis.gene` | Gene imscriber — analyze, quality score, tuples. | `rebis.gene analyze ATGGCGTAA` |
-| `rebis.alchemy` | Basil Valentine ladders, treatise maps, Zosimos portico. | `rebis.alchemy ladder all` |
-| `rebis.clink` | CLINK chain L0–L8, bridges, C-score. | `rebis.clink layers` |
+> A full command grimoire lives in [`COMMANDS.md`](COMMANDS.md). The essentials:
 
-## Infrastructure (also standalone binaries)
+## ⚡ TIER 1 — Primary Engines
+
+| ▸ | Command | What it turns | Example |
+|:-:|---------|--------------|---------|
+| ⛓️ | `rebis.chain` | **the unified loop:** DNA → Protein → Catalyst → Synthesis | `rebis.chain --dna ATGGCC... --target "CC(=O)O" --depth 2` |
+| 🧬 | `rebis.gene-pipeline` | DNA → 7-stage folded protein, Frobenius-verified | `rebis.gene-pipeline --test` |
+| ⚗️ | `rebis.ch3mpiler` | molecular compiler: forward/retro synthesis, FG, CDXML | `rebis.ch3mpiler retrosynth "c1ccccc1"` |
+| 🐍 | `rebis.serpentrod` | protein design: predict, classify, fingerprint | `rebis.serpentrod predict MVSKGEELFTGV...` |
+| 🔑 | `rebis.ligand` | PDB-aware ligand design from catalytic sites | `rebis.ligand --pdb 1LYZ --active Glu35,Asp52` |
+| 🧩 | `rebis.sidechain` | sidechain × environment algebra, 80 AA×env pairs | `rebis.sidechain arginine charged_interface` |
+
+## 🔧 TIER 2 — Specialized Engines
+
+| ▸ | Command | What it turns | Example |
+|:-:|---------|--------------|---------|
+| 📐 | `rebis.p4ra` | property prediction from IG tuples + Belnap FOUR logic | `rebis.p4ra belnap` |
+| 💊 | `rebis.therapeutics` | chemotherapeutics, neurotrophic factors, antidotes | `rebis.therapeutics design EGFR` |
+| 🔩 | `rebis.materials` | metamaterials, sophick forge, alloys, non-qubit QC | `rebis.materials forge` |
+| 🧫 | `rebis.biology` | ouroboric cell sim, telomeres, epigenetics | `rebis.biology sim` |
+| 🧬 | `rebis.gene` | gene imscriber: analyze, quality score, tuples | `rebis.gene analyze ATGGCGTAA` |
+| ☿ | `rebis.alchemy` | Basil Valentine ladders, treatise maps, Zosimos portico | `rebis.alchemy ladder all` |
+| 🔗 | `rebis.clink` | CLINK chain L0→L8, bridges, C-score | `rebis.clink layers` |
+| 🌀 | `rebis.pipeline` | auto-imscription, prose lift, Frobenius verification | `rebis.pipeline verify` |
+
+## 📚 Reference & Infrastructure (also standalone binaries)
 
 | Command | What it does |
 |---------|-------------|
-| `rebis.status` | Package inventory — file counts, sizes across all sub-packages |
-| `rebis.verify` | Frobenius closure — imports all 14 domains |
-| `rebis.demo list` | List available demos |
-| `rebis.demo <name>` | Run a specific demo |
-| `rebis reference` | Static data submenu: Belnap, genetics, hadrons, IMASM (via `rebis`) |
-| `rebis reference --all` | Full reference data dump (via `rebis`) |
+| `rebis` | the dynamic-first menu gateway (use for `reference` and `--help`) |
+| `rebis reference` | static scripture: Belnap, genetics, hadrons, IMASM (`--all` for the full dump) |
+| `rebis.status` | package census: file counts, sizes across all sub-packages |
+| `rebis.verify` | Frobenius closure: imports all 14 domains |
+| `rebis.demo <name>` | run a demo (`rebis.demo list` to enumerate) |
 
-> **`rebis`** still works as the menu gateway. Use it for `reference` and `--help`. Everything else has its own binary now.
+> **`rebis`** is the menu gateway. Everything else has its own binary. `δ splits · μ fuses · the loop closes on itself.`
 
 ---
 
