@@ -47,8 +47,8 @@ rebis = "rebis.cli:main"
 "rebis.verify" = "rebis.verify_entry:main"
 
 # Package discovery (ported from the removed setup.py). Archived experiment
-# dirs (unified_demo, Ars_Therapeutica, plasma, natural_products) are
-# intentionally excluded.
+# dirs (unified_demo, plasma, natural_products) are intentionally excluded.
+# Ars_Therapeutica stays: pipeline/therapy_to_pdb.py imports ars_therapeutica.
 [tool.setuptools.packages.find]
 include = [
     "rebis*",
@@ -67,6 +67,7 @@ include = [
     "gene_imscriber*",
     "imasm_iterator*",
     "alchemical_bridge*",
+    "Ars_Therapeutica*",
 ]
 
 [tool.setuptools.package-data]
