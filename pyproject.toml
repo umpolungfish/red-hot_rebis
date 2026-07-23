@@ -8,6 +8,14 @@ version = "4.0.0"
 description = "Red-Hot Rebis — Imscribing Grammar integrated toolchain"
 requires-python = ">=3.10"
 license = {text = "MIT"}
+authors = [{name = "Lando ⊗ ⊙perator"}]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
 dependencies = [
     "numpy>=1.24",
 ]
@@ -37,3 +45,30 @@ rebis = "rebis.cli:main"
 "rebis.demo" = "rebis.demo_entry:main"
 "rebis.status" = "rebis.status_entry:main"
 "rebis.verify" = "rebis.verify_entry:main"
+
+# Package discovery (ported from the removed setup.py). Archived experiment
+# dirs (unified_demo, Ars_Therapeutica, plasma, natural_products) are
+# intentionally excluded.
+[tool.setuptools.packages.find]
+include = [
+    "rebis*",
+    "rhr_p4rky*",
+    "shared*",
+    "ch3mpiler*",
+    "clink*",
+    "materials*",
+    "biology*",
+    "serpentrod*",
+    "imas*",
+    "pipeline*",
+    "cdxml*",
+    "scripts*",
+    "therapeutics*",
+    "gene_imscriber*",
+    "imasm_iterator*",
+    "alchemical_bridge*",
+]
+
+[tool.setuptools.package-data]
+shared = ["*.json"]
+"*" = ["*.json", "*.txt", "*.csv", "*.fasta", "*.pdb"]

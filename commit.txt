@@ -1,14 +1,13 @@
-Cleanup phase H: retire the stale v2.4 doc generation, fix broken references
+Cleanup phase G: consolidate packaging onto pyproject.toml, drop setup.py
 
-Two documentation generations were living side by side. README.md and
-MANUAL.md are the canonical v4.0.0 docs; INDEX.md and the USER_GUIDE chain
-were an older v2.4 generation that contradicted them on version and command
-model. Removed the stale generation: INDEX.md, the root USER_GUIDE.pdf, and
-the entire _builds/USER_GUIDE/ build tree (which left _builds/ empty).
+setup.py and pyproject.toml duplicated the project metadata and entry points,
+a standing maintenance hazard. pyproject.toml is the build backend, so it is
+now the single source: ported setup.py's find_packages include list and
+package_data into [tool.setuptools.packages.find] and
+[tool.setuptools.package-data], and carried over the author and classifiers.
+The archived experiment dirs (unified_demo, Ars_Therapeutica, plasma,
+natural_products) are dropped from the include list.
 
-Repointed the four "see INDEX.md" pointers in rhr_p4rky/_help_examples.py to
-MANUAL.md so the help text no longer sends users to a deleted file. Fixed
-MANIFEST.in, which included a USER_GUIDE.md that never existed, to ship
-MANUAL.md instead. Corrected two stale facts in README.md: rebis/cli.py is
-781 lines (was stated 605), and the Lean formalization lives in the sibling
-repo at ../p4rakernel/p4ramill/ (the path was written as if in-tree).
+Verified by building the wheel from pyproject alone: it discovers exactly the
+16 wired packages with no archived leakage, ships all 18 console-script entry
+points, and rebis.py status/verify stay green. setup.py removed.
