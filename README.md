@@ -114,7 +114,7 @@ print(r.all_passed)  # True — all 9 conditions
 
 ## Lean 4 Formalization
 
-Machine-verified at `p4rakernel/p4ramill/`:
+Machine-verified in the sibling repo at `../p4rakernel/p4ramill/`:
 
 | Module | Contents |
 |--------|----------|
@@ -128,7 +128,7 @@ Machine-verified at `p4rakernel/p4ramill/`:
 | `Imscribing/Millennium/*.lean` | All 7 Millennium Problems + classical conjectures |
 | `Imscribing/Paraconsistent/*.lean` | Belnap FOUR, category theory, temporal logic, quantum-classical interface |
 
-Build: `cd p4rakernel/p4ramill && lake build`
+Build: `cd ../p4rakernel/p4ramill && lake build`
 
 ---
 
@@ -154,7 +154,7 @@ Build: `cd p4rakernel/p4ramill && lake build`
 ```
 red-hot_rebis/
 ├── rebis/              # CLI layer — thin delegates to backends
-│   ├── cli.py              # Main entry (605 lines) — dynamic-first menu
+│   ├── cli.py              # Main entry (781 lines) — dynamic-first menu
 │   ├── chain_entry.py      # ★ rebis.chain — unified pipeline entry
 │   ├── gene_pipeline_entry.py  # ★ rebis.gene-pipeline — DNA→protein entry
 │   ├── status_entry.py     # ★ rebis.status

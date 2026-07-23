@@ -1,12 +1,14 @@
-Cleanup phase D: untrack external patent PDFs
+Cleanup phase H: retire the stale v2.4 doc generation, fix broken references
 
-The three patent documents under _archive/ (US11724831, US11818829,
-WO2020159603A2, 5.6M total) are external reference material, not project
-artifacts, and are retrievable from the patent offices if ever needed. Removed
-them from tracking and added _archive/*.pdf to gitignore; the files stay on
-disk. Per the chosen approach this does not rewrite history, so .git keeps its
-existing size; the point is to stop tracking bulk binaries going forward.
+Two documentation generations were living side by side. README.md and
+MANUAL.md are the canonical v4.0.0 docs; INDEX.md and the USER_GUIDE chain
+were an older v2.4 generation that contradicted them on version and command
+model. Removed the stale generation: INDEX.md, the root USER_GUIDE.pdf, and
+the entire _builds/USER_GUIDE/ build tree (which left _builds/ empty).
 
-Kept the sic_povm build PDF (moved to materials/) tracked, since it has no
-source in-tree and could not be regenerated, and left pdfs/ figures tracked
-for the same reason.
+Repointed the four "see INDEX.md" pointers in rhr_p4rky/_help_examples.py to
+MANUAL.md so the help text no longer sends users to a deleted file. Fixed
+MANIFEST.in, which included a USER_GUIDE.md that never existed, to ship
+MANUAL.md instead. Corrected two stale facts in README.md: rebis/cli.py is
+781 lines (was stated 605), and the Lean formalization lives in the sibling
+repo at ../p4rakernel/p4ramill/ (the path was written as if in-tree).

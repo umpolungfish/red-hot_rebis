@@ -1,6 +1,5 @@
 include README.md
-include USER_GUIDE.md
-include INDEX.md
+include MANUAL.md
 include shared/*.json
 include shared/*.csv
 include shared/*.txt
