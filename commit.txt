@@ -1,8 +1,11 @@
-Cleanup phase I: unify the facade version with the package version
+Cleanup fix: restore Ars_Therapeutica, it is a live pipeline dependency
 
-rebis/__init__.py hard-coded __version__ = "3.0.0" while the package built as
-4.0.0, so the two drifted. It now reads importlib.metadata.version(
-"red-hot-rebis") with a 4.0.0 fallback, so the facade version tracks the
-installed package automatically and cannot drift again. rebis.py carries no
-version string (the earlier v2.1 note was stale). Left rhr_p4rky at its own
-0.2.0: it is the kernel component and legitimately versions independently.
+Phase F archived Ars_Therapeutica after an import grep found no references,
+but pipeline/therapy_to_pdb.py depends on it by PATH, not by a top-level
+import: it inserts RED_HOT/"Ars_Therapeutica" onto sys.path and does
+`from ars_therapeutica.types import ...`. Archiving it broke that import.
+Moved it back to the top level and re-added Ars_Therapeutica* to the pyproject
+package-discovery include. The final-verification grep for path-string
+references (not just import statements) is what caught it; the other archived
+dirs (plasma, unified_demo, natural_products) have no such references and stay
+archived.
