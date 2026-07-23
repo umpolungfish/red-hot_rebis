@@ -1,7 +1,8 @@
-Add COMMANDS.md: the command grimoire
+README: give the command surface the grimoire treatment
 
-A slick, single-glance reference for the full command surface, written in the
-toolchain's own register. Frames rebis.chain as the ouroboros that closes DNA
-through retrosynthesis, with every Tier I/II engine as one arc of that loop,
-plus the Python namespace face, the make targets, and the reference submenu.
-All 18 entry points, accurate to pyproject. Shipped via MANIFEST.in.
+Replaced the plain TIER tables with the slick version from COMMANDS.md: the
+ouroboros One Loop diagram framing rebis.chain, glyph-marked Tier I/II tables
+with "what it turns", and a link to the full COMMANDS.md grimoire. Also fixed
+an omission: rebis.p4ra (property prediction + Belnap FOUR) was missing from
+the README's engine tables and is now listed, so all 18 entry points are
+accounted for.
