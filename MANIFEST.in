@@ -1,5 +1,6 @@
 include README.md
 include MANUAL.md
+include COMMANDS.md
 include shared/*.json
 include shared/*.csv
 include shared/*.txt
