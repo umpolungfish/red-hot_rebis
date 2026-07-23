@@ -1,12 +1,9 @@
-Cleanup phase C: remove duplicate data and archive stubs
+Cleanup phase E: relocate misplaced root files into their subdirs
 
-Byte-identical and redundant copies, no unique content lost. gene.fna was an
-exact md5 match of gene.fasta; kept gene.fasta since the help-text examples
-reference that name. In _archive/stubs, strych/ was a strict subset of
-strychnine/ and tetrodo/ was identical to ttx/, so both redundant dirs are
-gone. Also deleted the untracked NDUFAF6_datasets.zip, a stale archive of the
-already-committed NDUFAF6_datasets/ directory.
-
-Left run_serpent alone: scripts/run_serpent.py and rhr_p4rky/run_serpent.py
-share a name but serve different layers, and scripts/run_serpent.py is live
-via rebis/scripts.py.
+The repo root had collected loose data and image files that belong in the
+existing topic dirs. No code reads any of them by path (verified by grep), so
+these are pure relocations: gene.fasta and rcsb_pdb_1MBB.fasta into fasta/,
+2.png and rebis1.png into images/, bevy_results.json and Ligand.txt (a ligand
+generation log) into data/, and the sourceless sic_povm build PDF into
+materials/. The root now holds only the canonical launcher, packaging, and
+docs.
