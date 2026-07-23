@@ -1,11 +1,7 @@
-Cleanup fix: restore Ars_Therapeutica, it is a live pipeline dependency
+Add COMMANDS.md: the command grimoire
 
-Phase F archived Ars_Therapeutica after an import grep found no references,
-but pipeline/therapy_to_pdb.py depends on it by PATH, not by a top-level
-import: it inserts RED_HOT/"Ars_Therapeutica" onto sys.path and does
-`from ars_therapeutica.types import ...`. Archiving it broke that import.
-Moved it back to the top level and re-added Ars_Therapeutica* to the pyproject
-package-discovery include. The final-verification grep for path-string
-references (not just import statements) is what caught it; the other archived
-dirs (plasma, unified_demo, natural_products) have no such references and stay
-archived.
+A slick, single-glance reference for the full command surface, written in the
+toolchain's own register. Frames rebis.chain as the ouroboros that closes DNA
+through retrosynthesis, with every Tier I/II engine as one arc of that loop,
+plus the Python namespace face, the make targets, and the reference submenu.
+All 18 entry points, accurate to pyproject. Shipped via MANIFEST.in.
