@@ -23,6 +23,14 @@ Thumbs.db
 # Logs
 *.log
 
+# LaTeX intermediates
+*.aux
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
 # Backup files — never commit these
 *.bak
 *.p4rakernel_backup
@@ -31,3 +39,6 @@ Thumbs.db
 
 # pytest
 .pytest_cache/
+
+# Stray junk
+_write_test.txt
