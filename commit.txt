@@ -1,11 +1,12 @@
-Cleanup phase F: archive orphaned experiment dirs
+Cleanup phase D: untrack external patent PDFs
 
-plasma/, unified_demo/, Ars_Therapeutica/, and natural_products/ are not
-imported by the rebis facade or any wired sibling (plasma and unified_demo
-only self-import; natural_products has no .py at all and was already in the
-package-discovery skip set). Moved them under _archive/ rather than deleting,
-so nothing is lost while the top level clears up. Packaging still lists them;
-that is reconciled in the pyproject consolidation phase.
+The three patent documents under _archive/ (US11724831, US11818829,
+WO2020159603A2, 5.6M total) are external reference material, not project
+artifacts, and are retrievable from the patent offices if ever needed. Removed
+them from tracking and added _archive/*.pdf to gitignore; the files stay on
+disk. Per the chosen approach this does not rewrite history, so .git keeps its
+existing size; the point is to stop tracking bulk binaries going forward.
 
-Kept demo_scripts/ in place despite the plan flagging it: rebis/demo.py runs
-_demo_*.py from it at runtime, so it is live infrastructure, not superseded.
+Kept the sic_povm build PDF (moved to materials/) tracked, since it has no
+source in-tree and could not be regenerated, and left pdfs/ figures tracked
+for the same reason.
