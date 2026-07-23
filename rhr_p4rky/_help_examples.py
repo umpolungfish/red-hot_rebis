@@ -4,7 +4,7 @@ _help_examples.py — Example strings for every subcommand in rebis.py.
 Imported by rebis.py to keep the main file clean while providing rich --help.
 
 Static reference data (CLINK layers, IMASM canonicals, materials catalog)
-is now in INDEX.md — open with 'less INDEX.md' or any text browser.
+is now in MANUAL.md — open with 'less MANUAL.md' or any text browser.
 """
 
 EXAMPLES = {}
@@ -28,7 +28,7 @@ Examples:
   rebis.py imas energy --canonical I_Dialetheic_Bootstrap --layer L8_Organism
   rebis.py imas energy --canonical V_Linear_Chain --layer L0_FrustratedBelnap5
 
-  Static reference (canonical types, clusters, bridge table): see INDEX.md
+  Static reference (canonical types, clusters, bridge table): see MANUAL.md
 """
 
 EXAMPLES["materials"] = """
@@ -46,7 +46,7 @@ Examples:
   rebis.py materials exactor --name pathways              # List all exactor pathways
 
   Static reference (material catalog, Sophick Mercury, Eagle Cycle, gap primitives):
-    see INDEX.md
+    see MANUAL.md
 """
 
 EXAMPLES["pipeline"] = """
@@ -70,7 +70,7 @@ Examples:
   rebis.py clink bridge ch3mpiler 5      # Promotion path from CH3MPILER to cell
   rebis.py clink bridge gene_imscriber 6 # Promotion path from gene imscriber to tissue
 
-  Static reference (layer table, tuples, Frobenius status, bridges): see INDEX.md
+  Static reference (layer table, tuples, Frobenius status, bridges): see MANUAL.md
 """
 
 EXAMPLES["run"] = """
