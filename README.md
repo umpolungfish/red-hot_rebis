@@ -43,7 +43,7 @@ The whole toolchain is a single ouroboros. `rebis.chain` closes it end to end, a
 
 > A full command grimoire lives in [`COMMANDS.md`](COMMANDS.md). The essentials:
 
-## ⚡ TIER 1 — Primary Engines
+## ⚡ TIER 1 · Primary Engines
 
 | ▸ | Command | What it turns | Example |
 |:-:|---------|--------------|---------|
@@ -54,7 +54,7 @@ The whole toolchain is a single ouroboros. `rebis.chain` closes it end to end, a
 | 🔑 | `rebis.ligand` | PDB-aware ligand design from catalytic sites | `rebis.ligand --pdb 1LYZ --active Glu35,Asp52` |
 | 🧩 | `rebis.sidechain` | sidechain × environment algebra, 80 AA×env pairs | `rebis.sidechain arginine charged_interface` |
 
-## 🔧 TIER 2 — Specialized Engines
+## 🔧 TIER 2 · Specialized Engines
 
 | ▸ | Command | What it turns | Example |
 |:-:|---------|--------------|---------|
