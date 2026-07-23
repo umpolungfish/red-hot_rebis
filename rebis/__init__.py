@@ -35,7 +35,11 @@ import importlib
 import sys as _sys
 from pathlib import Path as _Path
 
-__version__ = "3.0.0"
+try:
+    from importlib.metadata import version as _pkg_version
+    __version__ = _pkg_version("red-hot-rebis")
+except Exception:
+    __version__ = "4.0.0"
 __author__ = "Lando⊗⊙perator"
 
 # Lazy submodule loading — import on first attribute access only

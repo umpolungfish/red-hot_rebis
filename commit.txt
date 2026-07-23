@@ -1,13 +1,8 @@
-Cleanup phase G: consolidate packaging onto pyproject.toml, drop setup.py
+Cleanup phase I: unify the facade version with the package version
 
-setup.py and pyproject.toml duplicated the project metadata and entry points,
-a standing maintenance hazard. pyproject.toml is the build backend, so it is
-now the single source: ported setup.py's find_packages include list and
-package_data into [tool.setuptools.packages.find] and
-[tool.setuptools.package-data], and carried over the author and classifiers.
-The archived experiment dirs (unified_demo, Ars_Therapeutica, plasma,
-natural_products) are dropped from the include list.
-
-Verified by building the wheel from pyproject alone: it discovers exactly the
-16 wired packages with no archived leakage, ships all 18 console-script entry
-points, and rebis.py status/verify stay green. setup.py removed.
+rebis/__init__.py hard-coded __version__ = "3.0.0" while the package built as
+4.0.0, so the two drifted. It now reads importlib.metadata.version(
+"red-hot-rebis") with a 4.0.0 fallback, so the facade version tracks the
+installed package automatically and cannot drift again. rebis.py carries no
+version string (the earlier v2.1 note was stale). Left rhr_p4rky at its own
+0.2.0: it is the kernel component and legitimately versions independently.
