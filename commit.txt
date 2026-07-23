@@ -1,9 +1,11 @@
-Cleanup phase E: relocate misplaced root files into their subdirs
+Cleanup phase F: archive orphaned experiment dirs
 
-The repo root had collected loose data and image files that belong in the
-existing topic dirs. No code reads any of them by path (verified by grep), so
-these are pure relocations: gene.fasta and rcsb_pdb_1MBB.fasta into fasta/,
-2.png and rebis1.png into images/, bevy_results.json and Ligand.txt (a ligand
-generation log) into data/, and the sourceless sic_povm build PDF into
-materials/. The root now holds only the canonical launcher, packaging, and
-docs.
+plasma/, unified_demo/, Ars_Therapeutica/, and natural_products/ are not
+imported by the rebis facade or any wired sibling (plasma and unified_demo
+only self-import; natural_products has no .py at all and was already in the
+package-discovery skip set). Moved them under _archive/ rather than deleting,
+so nothing is lost while the top level clears up. Packaging still lists them;
+that is reconciled in the pyproject consolidation phase.
+
+Kept demo_scripts/ in place despite the plan flagging it: rebis/demo.py runs
+_demo_*.py from it at runtime, so it is live infrastructure, not superseded.
