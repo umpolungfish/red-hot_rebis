@@ -1,0 +1,15 @@
+{
+  "smiles": "CN1C=C(C2=CC=CC=C2O)C(=O)C3=C1C=C4C(=C3)C(=O)N(C)C4=O",
+  "name": "Ergoline-Lactam Supercritical Scaffold",
+  "molecular_formula": "C21H16N2O4",
+  "mw": 360.36,
+  "logP": 2.9,
+  "hbd": 1,
+  "hba": 4,
+  "tpsa": 67.4,
+  "rotatable_bonds": 1,
+  "description": "Ring-strained ergoline lactam \u2014 Ph=\ud801\udc63 (supercritical) via ring strain energy > 80 kJ/mol",
+  "rationale": "Ph=\ud801\udc63 (supercritical) requires a molecule at the edge of stability. Fused lactam-quinone introduces high ring strain. Gm=\ud801\udc75 (broadcast) realized by the planar conjugated system that delocalizes electronic effects widely through \u03c0-system.",
+  "canonical_smiles": "CN1C=C(C2=CC=CC=C2O)C(=O)C3=C1C=C4C(=C3)C(=O)N(C)C4=O",
+  "inchikey_prefix": "71A96267F15881"
+}

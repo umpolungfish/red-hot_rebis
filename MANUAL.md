@@ -180,7 +180,9 @@ Backed by `therapeutics/frobenius_chemotherapeutic.py`, `therapeutics/ouroboric_
 rebis materials list                    # List all design tools with availability
 rebis materials status                  # Show generated result files
 rebis materials forge ⟨𐑛𐑨𐑑𐑬𐑞𐑺𐑲𐑝𐑢𐑓𐑕𐑷⟩  # Forge from IG tuple
-rebis materials sim                     # Run materials simulation suite
+rebis materials metamaterial            # Run the critical metamaterial suite
+rebis materials critical                # Critical-point lattice simulation
+rebis materials alloy                   # Ouroboric alloy grain network
 ```
 
 Design tools: MaterialForge, CriticalMetamaterial, FrobeniusMetamaterial, OuroboricAlloy, NonQubitQCParadigm, SophickForge, MBNCDesigner (mycelial bio-nano conduit), CasimirCavityDesigner (ZPE).
@@ -232,7 +234,8 @@ Analyzes DNA/RNA sequences — codon detection, B4 lattice encoding, open readin
 ```bash
 rebis alchemy ladder all                # Full 12-step Basil Valentine ladder
 rebis alchemy ladder calcination        # Single operation ladder step
-rebis alchemy map "Emerald Tablet"      # Map treatise structure
+rebis alchemy treatise "Emerald Tablet" # Map treatise structure
+rebis alchemy operations                # List the 12 alchemical operations
 rebis alchemy portico                   # Check Zosimos portico consistency
 ```
 
@@ -298,9 +301,9 @@ rebis demo b4_lattice                   # B4 lattice demo
 rebis demo belnap                       # Belnap FOUR demo
 rebis demo ch3mpiler                    # Ch3mpiler demo
 rebis demo clink_chain                  # CLINK chain demo
-rebis demo ligand                       # Ligand design demo
+rebis demo reverse_ligand               # Reverse ligand pipeline demo
 rebis demo serpentrod                   # Protein design demo
-rebis demo sicpovm                      # SIC-POVM unconditional theorem demo
+rebis.p4ra sicpovm                      # SIC-POVM structural probe
 ```
 
 ---

@@ -1,0 +1,32 @@
+{
+  "name": "Praxeum (EP-Core Control Platform)",
+  "tuple": {
+    "D": "\ud801\udc66",
+    "T": "\ud801\udc76",
+    "R": "\ud801\udc7e",
+    "P": "\ud801\udc79",
+    "F": "\ud801\udc50",
+    "K": "\ud801\udc67",
+    "G": "\ud801\udc72",
+    "Gm": "\ud801\udc60",
+    "Ph": "\ud801\udc7b",
+    "H": "\ud801\udc6b",
+    "S": "\ud801\udc73",
+    "W": "\ud801\udc6d"
+  },
+  "tier": "O\u2080",
+  "c_score": 0.0,
+  "description": "EP absorption platform \u2014 tensor(critical, EP)=EP enables Gate 1 toggle. 16/17 universes.",
+  "innovations": [
+    "First Ph=\ud801\udc7b (exceptional point)",
+    "Irreducible product (T=\ud801\udc76)"
+  ],
+  "pharmacophore_hint": "\u03b2-carboline with EP-inducing substitution \u2014 needs co-administered \u2299 compound",
+  "receptor_targets": [
+    "5-HT2A (modulator, not agonist)",
+    "Sigma-1",
+    "GABA-A (\u03b11 subunit)"
+  ],
+  "delivery": "Transdermal patch for steady-state EP maintenance; combined with chosen \u2299 compound",
+  "structural_type_glyphs": "\u27e8\ud801\udc66\ud801\udc76\ud801\udc7e\ud801\udc79\ud801\udc50\ud801\udc67\ud801\udc72\ud801\udc60\ud801\udc7b\ud801\udc6b\ud801\udc73\ud801\udc6d>"
+}

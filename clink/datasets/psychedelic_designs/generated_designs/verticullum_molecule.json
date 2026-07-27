@@ -1,0 +1,15 @@
+{
+  "smiles": "CC(C)NC[C@H]1[C@H]2c3[nH]c4ccccc4c3CCN2[C@@H]1c1ccccc1",
+  "name": "Vertebrate-L Tryptamine Macrobicycle",
+  "molecular_formula": "C24H29N3",
+  "mw": 359.51,
+  "logP": 3.8,
+  "hbd": 2,
+  "hba": 1,
+  "tpsa": 30.1,
+  "rotatable_bonds": 3,
+  "description": "Non-Abelian braided tryptamine cage \u2014 \u03a9=\ud801\udc5f realized via macrocyclic chiral bridge",
+  "rationale": "\u03a9=\ud801\udc5f (non-Abelian winding) requires topological braiding in 3D. A macrocyclic tryptamine with chiral bridgehead C-atoms creates non-commuting ring closure paths. T=\ud801\udc65 (bowtie network) realized by fused indole-piperidine-benzene crossing. H=\ud801\udc6b (eternal chirality) via 3 stereocenters in the cage.",
+  "canonical_smiles": "CC(C)NC[C@H]1[C@H]2c3[nH]c4ccccc4c3CCN2[C@@H]1c1ccccc1",
+  "inchikey_prefix": "11F07925D594C8"
+}

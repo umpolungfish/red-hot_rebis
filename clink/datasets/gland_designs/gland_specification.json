@@ -1,0 +1,60 @@
+{
+  "name": "Universal Detox Gland (Panacea)",
+  "structural_type": {
+    "D": "\ud801\udc7c",
+    "T": "\ud801\udc78",
+    "R": "\ud801\udc7e",
+    "P": "\ud801\udc6c",
+    "F": "\ud801\udc5e",
+    "K": "\ud801\udc64",
+    "G": "\ud801\udc72",
+    "Gm": "\ud801\udc60",
+    "Ph": "\u2299",
+    "H": "\ud801\udc56",
+    "S": "\ud801\udc73",
+    "W": "\ud801\udc74"
+  },
+  "tier": "O\u2082",
+  "volume_cm3": 3.0,
+  "shape": "ellipsoid",
+  "cell_types": [
+    {
+      "name": "Sensor cells",
+      "density": 0.05,
+      "source": "HEK293T",
+      "receptors": [
+        "AhR_enhanced",
+        "PXR_CAR_hybrid",
+        "TLR4_MD2_hybrid",
+        "MTF1_metal"
+      ]
+    },
+    {
+      "name": "Producer cells",
+      "density": 0.9,
+      "source": "HEK293T",
+      "product": "Universal Antidote Fusion Protein",
+      "promoter": "NF-\u03baB/AP-1/Nrf2 hybrid inducible"
+    },
+    {
+      "name": "Support cells",
+      "density": 0.05,
+      "source": "HUVEC",
+      "function": "Vascular channel maintenance"
+    }
+  ],
+  "scaffold": "Hyaluronic acid (2% w/v) + Collagen I (0.5% w/v) hydrogel",
+  "immune_protection": "Alginate-PEG microencapsulation (100 kDa cutoff)",
+  "implantation_site": "Omental pouch (peritoneal cavity)",
+  "vascularization": "Pre-formed microchannel network (200 \u03bcm channels)",
+  "toxin_classes": [
+    "organophosphate",
+    "heavy_metal",
+    "biological_toxin",
+    "PAH_dioxin",
+    "cyanide_sulfide",
+    "electrophile_oxidant"
+  ],
+  "fusion_protein_mw_kDa": 71.6,
+  "fusion_protein_length_aa": 651
+}

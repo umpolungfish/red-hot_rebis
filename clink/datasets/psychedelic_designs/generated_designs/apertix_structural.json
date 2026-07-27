@@ -1,0 +1,33 @@
+{
+  "name": "Apertix (Adjoint Corridor)",
+  "tuple": {
+    "D": "\ud801\udc66",
+    "T": "\ud801\udc65",
+    "R": "\ud801\udc7d",
+    "P": "\ud801\udc6c",
+    "F": "\ud801\udc50",
+    "K": "\ud801\udc67",
+    "G": "\ud801\udc72",
+    "Gm": "\ud801\udc60",
+    "Ph": "\u2299",
+    "H": "\ud801\udc56",
+    "S": "\ud801\udc73",
+    "W": "\ud801\udc74"
+  },
+  "tier": "O\u2082",
+  "c_score": 1.0,
+  "description": "One-way adjoint steering. 7/17 universes. Precision direction.",
+  "innovations": [
+    "First R=\ud801\udc7d (adjoint)",
+    "H2 chirality (H=\ud801\udc56)"
+  ],
+  "pharmacophore_hint": "Phenethylamine-like with directional vector \u2014 N-benzylated for adjoint coupling",
+  "receptor_targets": [
+    "5-HT2A",
+    "5-HT2C",
+    "mGluR2",
+    "NMDA (glycine site)"
+  ],
+  "delivery": "Oral with enteric coating; sustained release for directional steering window",
+  "structural_type_glyphs": "\u27e8\ud801\udc66\ud801\udc65\ud801\udc7d\ud801\udc6c\ud801\udc50\ud801\udc67\ud801\udc72\ud801\udc60\u2299\ud801\udc56\ud801\udc73\ud801\udc74>"
+}

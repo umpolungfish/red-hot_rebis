@@ -1,0 +1,15 @@
+{
+  "smiles": "CC1=C(C(=O)NC2=CC=CC3=C2C=CN3)C(=O)N1C",
+  "name": "\u03b2-Carboline Exceptional Point Platform",
+  "molecular_formula": "C16H15N3O2",
+  "mw": 281.31,
+  "logP": 2.1,
+  "hbd": 2,
+  "hba": 3,
+  "tpsa": 63.6,
+  "rotatable_bonds": 1,
+  "description": "EP-inducing \u03b2-carboline \u2014 Ph=\ud801\udc7b (exceptional point) via tautomeric bifurcation",
+  "rationale": "Ph=\ud801\udc7b (exceptional point) requires a molecule with a degeneracy that can be split by a perturbation. The \u03b2-carboline imine/indole tautomerism creates this. T=\ud801\udc76 (box product / irreducible) realized by the fused tricyclic aromatic system. The co-administered compound provides the \u2299 perturbation that triggers the EP.",
+  "canonical_smiles": "CC1=C(C(=O)NC2=CC=CC3=C2C=CN3)C(=O)N1C",
+  "inchikey_prefix": "158A45957F6E91"
+}

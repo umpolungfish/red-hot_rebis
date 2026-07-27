@@ -1,0 +1,33 @@
+{
+  "name": "Verticullum (EP-Lever)",
+  "tuple": {
+    "D": "\ud801\udc66",
+    "T": "\ud801\udc65",
+    "R": "\ud801\udc7e",
+    "P": "\ud801\udc79",
+    "F": "\ud801\udc50",
+    "K": "\ud801\udc67",
+    "G": "\ud801\udc72",
+    "Gm": "\ud801\udc60",
+    "Ph": "\u2299",
+    "H": "\ud801\udc6b",
+    "S": "\ud801\udc73",
+    "W": "\ud801\udc5f"
+  },
+  "tier": "O_\u221e",
+  "c_score": 1.0,
+  "description": "Non-Abelian braiding + bowtie crossing. 16/17 universes.",
+  "innovations": [
+    "First \u03a9=\ud801\udc5f (non-Abelian)",
+    "First T=\ud801\udc65 (bowtie)"
+  ],
+  "pharmacophore_hint": "Tryptamine core with extended indole \u2014 needs non-Abelian braiding realized via chiral macrocyclic cage",
+  "receptor_targets": [
+    "5-HT2A",
+    "5-HT1A",
+    "Sigma-1",
+    "TAAR1"
+  ],
+  "delivery": "Intravenous (first-pass metabolism avoidance); liposomal encapsulation for non-Abelian stability",
+  "structural_type_glyphs": "\u27e8\ud801\udc66\ud801\udc65\ud801\udc7e\ud801\udc79\ud801\udc50\ud801\udc67\ud801\udc72\ud801\udc60\u2299\ud801\udc6b\ud801\udc73\ud801\udc5f>"
+}

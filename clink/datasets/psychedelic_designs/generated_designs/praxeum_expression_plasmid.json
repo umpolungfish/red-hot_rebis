@@ -1,0 +1,62 @@
+{
+  "name": "pCLINK_PraxeumSynthase",
+  "backbone": "pUC",
+  "size_bp": 3074,
+  "promoter": "T7",
+  "marker": "AmpR",
+  "origin": "ColE1",
+  "insert_gene": "PraxeumSynthase",
+  "features": [
+    {
+      "type": "origin",
+      "label": "ColE1",
+      "start": 0,
+      "end": 380,
+      "notes": "Copy number: 500"
+    },
+    {
+      "type": "CDS",
+      "label": "AmpR (Beta-lactamase)",
+      "start": 380,
+      "end": 1279,
+      "notes": "Resistance: Ampicillin at 100 ug/mL"
+    },
+    {
+      "type": "promoter",
+      "label": "T7",
+      "start": 1279,
+      "end": 1299,
+      "notes": "Type: bacteriophage, Strength: strong"
+    },
+    {
+      "type": "RBS",
+      "label": "RBS",
+      "start": 1299,
+      "end": 1310,
+      "notes": "Shine-Dalgarno sequence"
+    },
+    {
+      "type": "CDS",
+      "label": "PraxeumSynthase",
+      "start": 1310,
+      "end": 1784,
+      "notes": "CLINK-designed coding sequence"
+    },
+    {
+      "type": "terminator",
+      "label": "T7 terminator",
+      "start": 1784,
+      "end": 1832,
+      "notes": "Efficiency: 0.95"
+    }
+  ],
+  "gene_sequence": "ATGGAGAGCCTTGTGCCGGGGGAGAAAGTGATCGCCATCATGGGCGGTTCCCTGGCCGGCCTCGCGGGAGCCTACGTGTACCCCGAAGAGGTGGTGGCGCTCAACGACGTCTACGCCGCCAAGTTCGAGCCCCTGGTGACCGCCGCCGCGCTGAACGCCCAGACCGTTGACGCCGCGCTGGCCGCCGTGGCCGAGCTCGCGACGGAGCTGGGCTACCCGGTGGTGCTGTTCGAGCGCGCCACCGACCTGGCCCCGGCGGACCCGGCCGCCGCCGAGCTGAAGGCGCTCATCGCCCGCATCCGCGACGGCGACGTCGAGGCGGCCGTGCGCTTCGTCAACTCGCTGTGCAACCAGCTGGGCCACGGGTTCGCCCGGAGCCTGGACTTCGCGCGCGACTTCATCGACTCCACCAACGCCTTCGACTTCTATTTGAGCACCCTGCTGGAAGCGGCCGCGGCTGCGAGCGGGGCTTAG",
+  "gene_length_bp": 474,
+  "notes": [
+    "Expression plasmid for Praxeum \u03b2-carboline synthase",
+    "T7 promoter for high-level expression in E. coli BL21(DE3)",
+    "6xHis tag for purification via Ni-NTA chromatography",
+    "AmpR selection marker at 100 \u03bcg/mL",
+    "ColE1 origin for high-copy maintenance"
+  ]
+}
