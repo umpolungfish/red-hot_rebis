@@ -1,0 +1,32 @@
+{
+  "name": "Retiarius (Local-Net Trap)",
+  "tuple": {
+    "D": "\ud801\udc7c",
+    "T": "\ud801\udc61",
+    "R": "\ud801\udc7e",
+    "P": "\ud801\udc7f",
+    "F": "\ud801\udc5e",
+    "K": "\ud801\udc7a",
+    "G": "\ud801\udc5a",
+    "Gm": "\ud801\udc5c",
+    "Ph": "\ud801\udc6e",
+    "H": "\ud801\udc52",
+    "S": "\ud801\udc55",
+    "W": "\ud801\udc77"
+  },
+  "tier": "O\u2081",
+  "c_score": 0.0,
+  "description": "Nearest-neighbor precision; frozen disorder kinetics. 2/17 universes.",
+  "innovations": [
+    "First G=\ud801\udc5a (local only)",
+    "First K=\ud801\udc7a (MBL)",
+    "First F=\ud801\udc5e (thermal)"
+  ],
+  "pharmacophore_hint": "Salvinorin-like with local-only scope \u2014 \u03ba-opioid selective with no downstream cascade",
+  "receptor_targets": [
+    "KOR (\u03ba-opioid)",
+    "CB1 (peripheral only)"
+  ],
+  "delivery": "Inhalation for rapid onset/offset; peripheral restriction for local-only scope",
+  "structural_type_glyphs": "\u27e8\ud801\udc7c\ud801\udc61\ud801\udc7e\ud801\udc7f\ud801\udc5e\ud801\udc7a\ud801\udc5a\ud801\udc5c\ud801\udc6e\ud801\udc52\ud801\udc55\ud801\udc77>"
+}

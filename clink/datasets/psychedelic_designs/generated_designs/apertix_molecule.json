@@ -1,0 +1,15 @@
+{
+  "smiles": "COc1ccc(CCNC(=O)C2=CC=CC=C2Br)cc1OC",
+  "name": "Benzylated Phenethylamine Adjoint",
+  "molecular_formula": "C17H18BrNO3",
+  "mw": 364.23,
+  "logP": 3.5,
+  "hbd": 2,
+  "hba": 4,
+  "tpsa": 56.8,
+  "rotatable_bonds": 5,
+  "description": "Directional benzylated PE \u2014 \u0158=\ud801\udc7d (adjoint) via amide directional H-bond vector",
+  "rationale": "\u0158=\ud801\udc7d (adjoint coupling) requires directional specificity. The amide carbonyl creates a fixed H-bond acceptor vector. Br substituent provides heavy-atom directional steering. H=\ud801\udc56 (two-step chirality) realized by the atropisomeric restriction around the amide bond.",
+  "canonical_smiles": "COc1ccc(CCNC(=O)C2=CC=CC=C2Br)cc1OC",
+  "inchikey_prefix": "4EDB59FA23B611"
+}

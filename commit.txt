@@ -1,8 +1,3 @@
-README: give the command surface the grimoire treatment
+The advertised commands are the commands that exist.
 
-Replaced the plain TIER tables with the slick version from COMMANDS.md: the
-ouroboros One Loop diagram framing rebis.chain, glyph-marked Tier I/II tables
-with "what it turns", and a link to the full COMMANDS.md grimoire. Also fixed
-an omission: rebis.p4ra (property prediction + Belnap FOUR) was missing from
-the README's engine tables and is now listed, so all 18 entry points are
-accounted for.
+The demo list was hardcoded and wrong in both directions, offering a ligand demo that was never implemented while omitting three that were; it and demo all now derive from the module, so all really is all. The manual pointed at an alchemy map and a materials sim that live only in prose: they are now treatise and the real materials suites, and the SIC-POVM line points at the p4ra probe that actually carries it.

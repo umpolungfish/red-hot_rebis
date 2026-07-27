@@ -1,0 +1,34 @@
+{
+  "name": "Chimerium (Supercritical Catalyst)",
+  "tuple": {
+    "D": "\ud801\udc66",
+    "T": "\ud801\udc78",
+    "R": "\ud801\udc7e",
+    "P": "\ud801\udc79",
+    "F": "\ud801\udc50",
+    "K": "\ud801\udc67",
+    "G": "\ud801\udc72",
+    "Gm": "\ud801\udc75",
+    "Ph": "\ud801\udc63",
+    "H": "\ud801\udc6b",
+    "S": "\ud801\udc73",
+    "W": "\ud801\udc6d"
+  },
+  "tier": "O\u2080",
+  "c_score": 0.0,
+  "description": "Supercritical runaway; catalytic launch compound. 16/17 universes.",
+  "innovations": [
+    "First Ph=\ud801\udc63 (supercritical)",
+    "Broadcast composition (Gm=\ud801\udc75)"
+  ],
+  "pharmacophore_hint": "Ergoline-like scaffold with supercritical ring strain \u2014 needs controlled-release pro-drug",
+  "receptor_targets": [
+    "5-HT2A",
+    "5-HT2B",
+    "5-HT7",
+    "D2",
+    "Adrenergic \u03b12"
+  ],
+  "delivery": "Sublingual pro-drug; enzymatically cleaved to active form for controlled onset",
+  "structural_type_glyphs": "\u27e8\ud801\udc66\ud801\udc78\ud801\udc7e\ud801\udc79\ud801\udc50\ud801\udc67\ud801\udc72\ud801\udc75\ud801\udc63\ud801\udc6b\ud801\udc73\ud801\udc6d>"
+}

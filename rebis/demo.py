@@ -93,14 +93,14 @@ def real_demo():
     _run_demo("real_demo")
 
 def all():
-    """Run all demos sequentially."""
-    for name in ["b4_lattice", "belnap", "ch3mpiler", "clink_chain",
-                 "decay_chain", "materials", "materials_sim",
-                 "pipeline", "serpentrod", "therapeutics"]:
+    """Run every demo sequentially, except real_demo, which is the full run."""
+    # Derived from __all__ rather than hardcoded: the old list silently skipped
+    # catalytic_site and reverse_ligand, so "all" was not all.
+    for name in [n for n in __all__ if n not in ("all", "real_demo")]:
         print(f"\n{'='*60}")
         print(f"  Running demo: {name}")
         print(f"{'='*60}")
-        _run_demo(name)
+        globals()[name]()
 
 __all__ = [
     "b4_lattice", "belnap", "ch3mpiler", "clink_chain",

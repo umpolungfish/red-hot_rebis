@@ -1,0 +1,40 @@
+LOCUS       pCLINK_PraxeumSynthase    3074 bp    DNA     circular
+DEFINITION  Praxeum β-carboline synthase expression plasmid.
+ACCESSION   CLINK_PR_X01
+VERSION     CLINK_PR_X01.1
+KEYWORDS    CLINK; novel psychedelic; Praxeum.
+SOURCE      Synthetic construct
+  ORGANISM  Synthetic construct
+            Synthetic.
+FEATURES             Location/Qualifiers
+     source          1..3074
+                     /organism="Synthetic construct"
+                     /mol_type="other DNA"
+     origin         0..380
+                     /label="ColE1"
+                     /note="Copy number: 500"
+     CDS         380..1279
+                     /label="AmpR (Beta-lactamase)"
+                     /note="Resistance: Ampicillin at 100 ug/mL"
+     promoter         1279..1299
+                     /label="T7"
+                     /note="Type: bacteriophage, Strength: strong"
+     RBS         1299..1310
+                     /label="RBS"
+                     /note="Shine-Dalgarno sequence"
+     CDS         1310..1784
+                     /label="PraxeumSynthase"
+                     /note="CLINK-designed coding sequence"
+     terminator         1784..1832
+                     /label="T7 terminator"
+                     /note="Efficiency: 0.95"
+ORIGIN
+        1 atggagagccttgtgccgggggagaaagtgatcgccatcatgggcggttccctggccggc
+       61 ctcgcgggagcctacgtgtaccccgaagaggtggtggcgctcaacgacgtctacgccgcc
+      121 aagttcgagcccctggtgaccgccgccgcgctgaacgcccagaccgttgacgccgcgctg
+      181 gccgccgtggccgagctcgcgacggagctgggctacccggtggtgctgttcgagcgcgcc
+      241 accgacctggccccggcggacccggccgccgccgagctgaaggcgctcatcgcccgcatc
+      301 cgcgacggcgacgtcgaggcggccgtgcgcttcgtcaactcgctgtgcaaccagctgggc
+      361 cacgggttcgcccggagcctggacttcgcgcgcgacttcatcgactccaccaacgccttc
+      421 gacttctatttgagcaccctgctggaagcggccgcggctgcgagcggggcttag
+//

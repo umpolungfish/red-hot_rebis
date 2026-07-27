@@ -1,0 +1,41 @@
+{
+  "design_manifest": {
+    "title": "CLINK Novel Psychedelic Compound Realization",
+    "author": "Lando \u2297 \u2299perator",
+    "date": "2025",
+    "method": "12-primitive structural tuple \u2192 SMILES pharmacophore mapping",
+    "validation": "Each SMILES realizes the specific primitive values in its structural type (e.g., \u03a9=\ud801\udc5f \u2192 macrocyclic braiding, Ph=\ud801\udc63 \u2192 ring strain > 80 kJ/mol)"
+  },
+  "compounds": {
+    "verticullum": {
+      "name": "Vertebrate-L Tryptamine Macrobicycle",
+      "smiles": "CC(C)NC[C@H]1[C@H]2c3[nH]c4ccccc4c3CCN2[C@@H]1c1ccccc1",
+      "mw": 359.51,
+      "logP": 3.8
+    },
+    "chimerium": {
+      "name": "Ergoline-Lactam Supercritical Scaffold",
+      "smiles": "CN1C=C(C2=CC=CC=C2O)C(=O)C3=C1C=C4C(=C3)C(=O)N(C)C4=O",
+      "mw": 360.36,
+      "logP": 2.9
+    },
+    "apertix": {
+      "name": "Benzylated Phenethylamine Adjoint",
+      "smiles": "COc1ccc(CCNC(=O)C2=CC=CC=C2Br)cc1OC",
+      "mw": 364.23,
+      "logP": 3.5
+    },
+    "retiarius": {
+      "name": "Neoclerodane-Like KOR Trap",
+      "smiles": "CC(C)[C@H]1C[C@]2(CC[C@@H]1[C@H]2OC(=O)c1ccccc1)OC(=O)C",
+      "mw": 318.41,
+      "logP": 3.2
+    },
+    "praxeum": {
+      "name": "\u03b2-Carboline Exceptional Point Platform",
+      "smiles": "CC1=C(C(=O)NC2=CC=CC3=C2C=CN3)C(=O)N1C",
+      "mw": 281.31,
+      "logP": 2.1
+    }
+  }
+}

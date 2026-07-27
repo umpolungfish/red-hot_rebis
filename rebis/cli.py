@@ -526,10 +526,10 @@ def cmd_demo(args):
         error_line("rebis.demo module not available")
         return 1
     if not args.demo or args.demo == "list":
+        # Derived from the module rather than hardcoded: the old list offered
+        # a 'ligand' demo that does not exist and omitted three that do.
         info_line("Available demos:")
-        for d in sorted(['b4_lattice', 'belnap', 'ch3mpiler', 'clink_chain',
-                  'decay_chain', 'ligand', 'materials', 'materials_sim',
-                  'pipeline', 'serpentrod', 'therapeutics', 'reverse_ligand']):
+        for d in sorted(getattr(demo_mod, "__all__", [])):
             info_line(f"  rebis demo {d}")
         return 0
     demo_fn = getattr(demo_mod, args.demo, None)

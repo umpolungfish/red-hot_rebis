@@ -1,0 +1,308 @@
+{
+  "id": "CLINK_mammalian_core",
+  "name": "CLINK Mammalian Core Metabolism",
+  "organism": "mammalian (engineered for \u03b2-carboline production)",
+  "metabolites": 52,
+  "reactions": [
+    {
+      "id": "HEX1",
+      "name": "Hexokinase",
+      "equation": "glc__D + atp -> g6p + adp + h",
+      "subsystem": "Glycolysis",
+      "ec": "",
+      "dG_kJ": -16.7
+    },
+    {
+      "id": "PGI",
+      "name": "Glucose-6-phosphate isomerase",
+      "equation": "g6p <-> f6p",
+      "subsystem": "Glycolysis",
+      "ec": "",
+      "dG_kJ": 1.7
+    },
+    {
+      "id": "PFK",
+      "name": "Phosphofructokinase",
+      "equation": "f6p + atp -> fdp + adp + h",
+      "subsystem": "Glycolysis",
+      "ec": "",
+      "dG_kJ": -14.2
+    },
+    {
+      "id": "FBA",
+      "name": "Fructose-bisphosphate aldolase",
+      "equation": "fdp <-> dhap + g3p",
+      "subsystem": "Glycolysis",
+      "ec": "",
+      "dG_kJ": 23.8
+    },
+    {
+      "id": "TPI",
+      "name": "Triose-phosphate isomerase",
+      "equation": "dhap <-> g3p",
+      "subsystem": "Glycolysis",
+      "ec": "",
+      "dG_kJ": 7.5
+    },
+    {
+      "id": "GAPD",
+      "name": "Glyceraldehyde-3-phosphate dehydrogenase",
+      "equation": "g3p + nad + pi <-> 13dpg + nadh + h",
+      "subsystem": "Glycolysis",
+      "ec": "",
+      "dG_kJ": 6.3
+    },
+    {
+      "id": "PGK",
+      "name": "Phosphoglycerate kinase",
+      "equation": "13dpg + adp <-> 3pg + atp",
+      "subsystem": "Glycolysis",
+      "ec": "",
+      "dG_kJ": -18.5
+    },
+    {
+      "id": "PGM",
+      "name": "Phosphoglycerate mutase",
+      "equation": "3pg <-> 2pg",
+      "subsystem": "Glycolysis",
+      "ec": "",
+      "dG_kJ": 4.4
+    },
+    {
+      "id": "ENO",
+      "name": "Enolase",
+      "equation": "2pg <-> pep + h2o",
+      "subsystem": "Glycolysis",
+      "ec": "",
+      "dG_kJ": 1.8
+    },
+    {
+      "id": "PYK",
+      "name": "Pyruvate kinase",
+      "equation": "pep + adp -> pyr + atp",
+      "subsystem": "Glycolysis",
+      "ec": "",
+      "dG_kJ": -31.4
+    },
+    {
+      "id": "LDH",
+      "name": "Lactate dehydrogenase",
+      "equation": "pyr + nadh + h <-> lac__D + nad",
+      "subsystem": "Glycolysis",
+      "ec": "",
+      "dG_kJ": -25.1
+    },
+    {
+      "id": "PDH",
+      "name": "Pyruvate dehydrogenase",
+      "equation": "pyr + nad + coa -> accoa + co2 + nadh",
+      "subsystem": "Glycolysis",
+      "ec": "",
+      "dG_kJ": -33.4
+    },
+    {
+      "id": "CS",
+      "name": "Citrate synthase",
+      "equation": "accoa + oaa + h2o -> cit + coa + h",
+      "subsystem": "TCA Cycle",
+      "ec": "",
+      "dG_kJ": -31.5
+    },
+    {
+      "id": "ACONT",
+      "name": "Aconitase",
+      "equation": "cit <-> icit",
+      "subsystem": "TCA Cycle",
+      "ec": "",
+      "dG_kJ": 6.7
+    },
+    {
+      "id": "ICDH",
+      "name": "Isocitrate dehydrogenase",
+      "equation": "icit + nadp -> akg + nadph + co2",
+      "subsystem": "TCA Cycle",
+      "ec": "",
+      "dG_kJ": -8.4
+    },
+    {
+      "id": "AKGD",
+      "name": "2-Oxoglutarate dehydrogenase",
+      "equation": "akg + nad + coa -> succoa + nadh + co2 + h",
+      "subsystem": "TCA Cycle",
+      "ec": "",
+      "dG_kJ": -33.5
+    },
+    {
+      "id": "SUCOAS",
+      "name": "Succinyl-CoA synthetase",
+      "equation": "succoa + adp + pi <-> succ + atp + coa",
+      "subsystem": "TCA Cycle",
+      "ec": "",
+      "dG_kJ": 3.4
+    },
+    {
+      "id": "SUCDH",
+      "name": "Succinate dehydrogenase",
+      "equation": "succ + fad -> fum + fadh2",
+      "subsystem": "TCA Cycle",
+      "ec": "",
+      "dG_kJ": 0.0
+    },
+    {
+      "id": "FUM",
+      "name": "Fumarase",
+      "equation": "fum + h2o <-> mal__L",
+      "subsystem": "TCA Cycle",
+      "ec": "",
+      "dG_kJ": -3.8
+    },
+    {
+      "id": "MDH",
+      "name": "Malate dehydrogenase",
+      "equation": "mal__L + nad <-> oaa + nadh + h",
+      "subsystem": "TCA Cycle",
+      "ec": "",
+      "dG_kJ": 29.7
+    },
+    {
+      "id": "G6PDH",
+      "name": "G6PDH",
+      "equation": "g6p + nadp -> ru5p__D + nadph + co2",
+      "subsystem": "PPP",
+      "ec": "",
+      "dG_kJ": 0.0
+    },
+    {
+      "id": "RPI",
+      "name": "RPI",
+      "equation": "ru5p__D <-> r5p",
+      "subsystem": "PPP",
+      "ec": "",
+      "dG_kJ": 0.0
+    },
+    {
+      "id": "RPE",
+      "name": "RPE",
+      "equation": "ru5p__D <-> xu5p__D",
+      "subsystem": "PPP",
+      "ec": "",
+      "dG_kJ": 0.0
+    },
+    {
+      "id": "TKT1",
+      "name": "TKT1",
+      "equation": "xu5p__D + r5p <-> s7p + g3p",
+      "subsystem": "PPP",
+      "ec": "",
+      "dG_kJ": 0.0
+    },
+    {
+      "id": "TKT2",
+      "name": "TKT2",
+      "equation": "xu5p__D + e4p <-> f6p + g3p",
+      "subsystem": "PPP",
+      "ec": "",
+      "dG_kJ": 0.0
+    },
+    {
+      "id": "TALA",
+      "name": "TALA",
+      "equation": "s7p + g3p <-> f6p + e4p",
+      "subsystem": "PPP",
+      "ec": "",
+      "dG_kJ": 0.0
+    },
+    {
+      "id": "GLNS",
+      "name": "Glutamine synthetase",
+      "equation": "glu__L + atp + nh4 -> gln__L + adp + pi",
+      "subsystem": "AA Metabolism",
+      "ec": "",
+      "dG_kJ": 0.0
+    },
+    {
+      "id": "GLUD",
+      "name": "Glutamate dehydrogenase",
+      "equation": "akg + nadph + nh4 <-> glu__L + nadp + h2o",
+      "subsystem": "AA Metabolism",
+      "ec": "",
+      "dG_kJ": 0.0
+    },
+    {
+      "id": "ALAT",
+      "name": "Alanine transaminase",
+      "equation": "glu__L + pyr <-> akg + ala__L",
+      "subsystem": "AA Metabolism",
+      "ec": "",
+      "dG_kJ": 0.0
+    },
+    {
+      "id": "ASPT",
+      "name": "Aspartate transaminase",
+      "equation": "glu__L + oaa <-> akg + asp__L",
+      "subsystem": "AA Metabolism",
+      "ec": "",
+      "dG_kJ": 0.0
+    },
+    {
+      "id": "ASNS",
+      "name": "Asparagine synthetase",
+      "equation": "asp__L + atp + gln__L -> asn__L + amp + ppi + glu__L",
+      "subsystem": "AA Metabolism",
+      "ec": "",
+      "dG_kJ": 0.0
+    },
+    {
+      "id": "BIOMASS",
+      "name": "Biomass production",
+      "equation": "65.0 atp + glu__L + gln__L + ala__L + asp__L + asn__L + lys__L + g6p + f6p + r5p + accoa + 10.0 nadph + oaa + pep + pyr + h2o + h -> biomass",
+      "subsystem": "Biomass",
+      "ec": "",
+      "dG_kJ": 0.0
+    },
+    {
+      "id": "TPH",
+      "name": "Tryptophan hydroxylase",
+      "equation": "trp__L + o2 + bh4 -> 5htrp + bh2 + h2o",
+      "subsystem": "\u03b2-carboline biosynthesis",
+      "ec": "1.14.16.4",
+      "dG_kJ": 0.0
+    },
+    {
+      "id": "DDC",
+      "name": "DOPA decarboxylase (5-HTP \u2192 serotonin)",
+      "equation": "5htrp + h -> 5ht + co2",
+      "subsystem": "\u03b2-carboline biosynthesis",
+      "ec": "4.1.1.28",
+      "dG_kJ": 0.0
+    },
+    {
+      "id": "BCS",
+      "name": "\u03b2-Carboline synthase (praxeum cyclization)",
+      "equation": "5ht + ala__L + o2 -> bcar + h2o2 + nh3",
+      "subsystem": "\u03b2-carboline biosynthesis",
+      "ec": "",
+      "dG_kJ": -45.0
+    },
+    {
+      "id": "NMT",
+      "name": "N-methyltransferase (praxeum methylation)",
+      "equation": "bcar + sam -> praxeum + sah",
+      "subsystem": "\u03b2-carboline biosynthesis",
+      "ec": "2.1.1.49",
+      "dG_kJ": 0.0
+    }
+  ],
+  "praxeum_pathway": {
+    "substrate": "L-Tryptophan",
+    "steps": 4,
+    "product": "Praxeum (N-methyl-\u03b2-carboline)",
+    "yield": "4 ATP + 2 NADPH per molecule",
+    "enzymes": [
+      "Tryptophan hydroxylase",
+      "DOPA decarboxylase",
+      "\u03b2-Carboline synthase (engineered)",
+      "N-methyltransferase"
+    ]
+  }
+}

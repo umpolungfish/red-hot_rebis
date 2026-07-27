@@ -1,0 +1,15 @@
+{
+  "smiles": "CC(C)[C@H]1C[C@]2(CC[C@@H]1[C@H]2OC(=O)c1ccccc1)OC(=O)C",
+  "name": "Neoclerodane-Like KOR Trap",
+  "molecular_formula": "C19H26O4",
+  "mw": 318.41,
+  "logP": 3.2,
+  "hbd": 0,
+  "hba": 4,
+  "tpsa": 52.6,
+  "rotatable_bonds": 3,
+  "description": "Salvinorin-inspired rigid bicyclic lactone \u2014 G=\ud801\udc5a (local) and K=\ud801\udc7a (MBL) via rigid caged structure",
+  "rationale": "K=\ud801\udc7a (many-body localized / frozen disorder) requires extreme rigidity. The bicyclo[2.2.2]octane core is nearly rigid with no rotatable bonds in the ring system. G=\ud801\udc5a (local cardinality) realized by no extended conjugation \u2014 each functional group acts independently. F=\ud801\udc5e (thermal fidelity) via ester linkages that are thermally labile.",
+  "canonical_smiles": "CC(C)[C@H]1C[C@]2(CC[C@@H]1[C@H]2OC(=O)c1ccccc1)OC(=O)C",
+  "inchikey_prefix": "5898F608256FAF"
+}
