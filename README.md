@@ -25,6 +25,8 @@ rebis.verify                        # Frobenius closure check (14 domains)
 rebis.status                        # Package inventory
 rebis.chain --dna ATGGCC...         # Unified pipeline
 rebis.gene-pipeline --test          # DNA → Folded Protein (self-test)
+rebis.gene-pipeline --dna ATGGCC... --pdb folded.pdb  # DNA → PDB structure
+rebis.serpentrod foldv2 AUGGCC... --pdb folded.pdb    # RNA → 3D PDB structure
 rebis.ch3mpiler retrosynth "CC(=O)O"  # Molecular compiler
 rebis.p4ra belnap                   # Belnap FOUR truth tables
 ```
@@ -48,9 +50,9 @@ The whole toolchain is a single ouroboros. `rebis.chain` closes it end to end, a
 | ▸ | Command | What it turns | Example |
 |:-:|---------|--------------|---------|
 | ⛓️ | `rebis.chain` | **the unified loop:** DNA → Protein → Catalyst → Synthesis | `rebis.chain --dna ATGGCC... --target "CC(=O)O" --depth 2` |
-| 🧬 | `rebis.gene-pipeline` | DNA → 7-stage folded protein, Frobenius-verified | `rebis.gene-pipeline --test` |
+| 🧬 | `rebis.gene-pipeline` | DNA → 7-stage folded protein + **PDB output**, Frobenius-verified | `rebis.gene-pipeline --dna ATGGCC... --pdb out.pdb` |
 | ⚗️ | `rebis.ch3mpiler` | molecular compiler: forward/retro synthesis, FG, CDXML | `rebis.ch3mpiler retrosynth "c1ccccc1"` |
-| 🐍 | `rebis.serpentrod` | protein design: predict, classify, fingerprint | `rebis.serpentrod predict MVSKGEELFTGV...` |
+| 🐍 | `rebis.serpentrod` | protein design: predict, classify, fingerprint, **fold→PDB** | `rebis.serpentrod foldv2 AUGGCC... --pdb out.pdb` |
 | 🔑 | `rebis.ligand` | PDB-aware ligand design from catalytic sites | `rebis.ligand --pdb 1LYZ --active Glu35,Asp52` |
 | 🧩 | `rebis.sidechain` | sidechain × environment algebra, 80 AA×env pairs | `rebis.sidechain arginine charged_interface` |
 
@@ -85,7 +87,7 @@ The whole toolchain is a single ouroboros. `rebis.chain` closes it end to end, a
 
 Chained by `rebis.chain`, usable independently:
 
-1. **Gene → Folded Protein** (`rhr_p4rky/gene_to_protein_pipeline.py`, 1,147 lines): 7-stage Frobenius-verified translation. Demo: 452 bp → 150 AA protein, Δ=3.61.
+1. **Gene → Folded Protein** (`rhr_p4rky/gene_to_protein_pipeline.py`, 1,147 lines): 7-stage Frobenius-verified translation. Demo: 452 bp → 150 AA protein, Δ=3.61. **Now auto-generates PDB structure files** with backbone coordinates from B₄→Ramachandran folding (see `rhr_p4rky/pdb_writer.py`).
 
 2. **Ch3mpiler → Catalytic Site** (`rhr_p4rky/ch3mpiler_serpentrod_pipeline.py`, 815 lines): Target SMILES → reaction signature → complementary catalytic RNA/AA design. Demo: ethanol → 36 nt catalytic RNA, Frobenius ✓.
 
@@ -94,9 +96,18 @@ Chained by `rebis.chain`, usable independently:
 ```python
 import rebis
 
-# Gene → Protein
+# Gene → Protein (with automatic PDB output)
 gp = rebis.p4ra.GeneToProteinPipeline("ATGGCC...")
-result = gp.run()
+result = gp.run(pdb_path="folded.pdb")  # PDB written automatically
+
+# RNA → 3D Folded Protein → PDB (serpent rod v2)
+from rhr_p4rky.serpent_rod_v2 import SerpentRodV2
+v2 = SerpentRodV2("AUGGCCGACUGGAACUGCAAGAAG...")
+folded = v2.predict_and_write_pdb("folded.pdb")  # Folds + writes PDB
+
+# Standalone PDB writer from any Gen2Result
+from rhr_p4rky.pdb_writer import write_pdb_from_gen2
+write_pdb_from_gen2(folded, "output.pdb")  # Valid PDB v3.3 with HEADER/ATOM/HELIX/SHEET
 
 # Molecular compiler
 rebis.p4ra.forward("CC(=O)O")
@@ -187,6 +198,7 @@ red-hot_rebis/
 ├── rhr_p4rky/          # P4RA paraconsistent kernel (28 files)
 │   ├── gene_to_protein_pipeline.py       # ★ DNA → Folded Protein
 │   ├── ch3mpiler_serpentrod_pipeline.py  # ★ Ch3mpiler → Catalytic Site
+│   ├── pdb_writer.py                    # ★ PDB structure writer (N/CA/C/O ATOM records)
 │   ├── belnap.py / genetics_b4.py / kernel.py / sidechain_algebra.py / ...
 ├── ch3mpiler/           # Molecular compiler (RDKit)
 ├── serpentrod/          # Protein design & stratified prediction
@@ -199,6 +211,24 @@ red-hot_rebis/
 ├── clink/               # CLINK chain L0–L8
 └── shared/              # Primitives, weights, ordinals
 ```
+
+---
+
+## 🧬 PDB Structure Output (v4.1)
+
+Red-Hot Rebis now automatically delivers valid PDB v3.3 protein structure files after folding.
+The B₄→Ramachandran→Cartesian pipeline generates backbone atom coordinates (N, CA, C, O)
+from RNA or DNA sequence input.
+
+**What the PDB contains:**
+- `HEADER` / `TITLE` — protein name, Frobenius verification status
+- `REMARK` — primitive activation count, winding number, energy breakdown (LJ, HB, elec)
+- `HELIX` records — alpha-helices (class 1) and left-handed helices (class 5)
+- `SHEET` records — beta strands with parallel/antiparallel sense
+- `ATOM` records — backbone N, CA, C, O per residue with 3D coordinates
+- `TER` / `END` — proper chain termination
+
+**Module:** `rhr_p4rky/pdb_writer.py` — `write_pdb_from_gen2()` / `write_pdb_from_pipeline()`
 
 ---
 
@@ -226,9 +256,9 @@ red-hot_rebis/
 ```
 rebis                 — Dynamic-first menu (gateway)
 rebis.chain           — ★ Unified pipeline: DNA→Protein→Catalyst→Synthesis
-rebis.gene-pipeline   — ★ DNA → Folded Protein (7-stage Frobenius-verified)
+rebis.gene-pipeline   — ★ DNA → Folded Protein + PDB (7-stage Frobenius-verified)
 rebis.ch3mpiler       — ★ Molecular compiler & retrosynthesis
-rebis.serpentrod      — ★ Protein design & stratified prediction
+rebis.serpentrod      — ★ Protein design, stratified prediction & fold→PDB
 rebis.ligand          — ★ PDB-aware ligand design
 rebis.sidechain       — ★ Sidechain × environment algebra
 rebis.therapeutics    — Chemotherapeutics, neurotrophic, antidotes

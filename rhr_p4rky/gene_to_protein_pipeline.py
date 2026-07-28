@@ -930,9 +930,15 @@ class GeneToProteinPipeline:
             "status": reason,
         }
 
-    def run(self, num_subunits: int = 0):
-        """Run complete 7-stage pipeline. num_subunits=0 -> auto-detect from sequence."""
+    def run(self, num_subunits: int = 0, pdb_path: str = None) -> dict:
+        """Run complete 7-stage pipeline. 
+        
+        Args:
+            num_subunits: 0=auto-detect from sequence
+            pdb_path: If provided, write a PDB structure file after folding
+        """
         self.log(f"=== Gene to Protein Pipeline: {self.name} ===")
+        self._requested_pdb = pdb_path
         self.log(f"Sequence: {self.dna_sequence[:50]}{'...' if len(self.dna_sequence) > 50 else ''} ({len(self.dna_sequence)} bp)")
 
         # Guard: empty or too-short sequences
@@ -951,6 +957,16 @@ class GeneToProteinPipeline:
         self.stage_tertiary_structure()
         self.stage_quaternary(num_subunits=num_subunits)
         actual_units = len(self.quaternary_subunits)
+
+        # ── Auto-generate PDB structure file ──
+        if self._requested_pdb:
+            try:
+                from .pdb_writer import write_pdb_from_pipeline
+                actual_pdb = write_pdb_from_pipeline(self._build_report(actual_units), self._requested_pdb)
+                if actual_pdb:
+                    self.log(f"PDB written: {actual_pdb}")
+            except Exception as e:
+                self.log(f"PDB generation failed: {e}")
         return self._build_report(actual_units)
 
     def _compute_closure_distance(self) -> float:
@@ -1082,6 +1098,7 @@ def main():
     parser.add_argument("--rna", action="store_true",
                         help="Input is RNA (A,U,G,C) not DNA")
     parser.add_argument("--output", "-o", help="Output JSON file")
+    parser.add_argument("--pdb", help="Output PDB structure file (e.g. folded.pdb)")
     parser.add_argument("--test", "-t", action="store_true", help="Run with test sequence")
     args = parser.parse_args()
     sequence = None
@@ -1103,7 +1120,9 @@ def main():
             error_line(f"ERROR: Invalid nucleotide '{sym}'")
             sys.exit(1)
     pipeline = GeneToProteinPipeline(sequence, name=args.name, is_rna=args.rna)
-    report = pipeline.run(num_subunits=args.subunits)
+    report = pipeline.run(num_subunits=args.subunits, pdb_path=args.pdb)
+    if args.pdb and not args.output:
+        info_line(f"\n📦 PDB written: {args.pdb}")
     if args.output:
         with open(args.output, "w") as f:
             json.dump(report, f, indent=2)

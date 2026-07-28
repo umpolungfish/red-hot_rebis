@@ -369,6 +369,37 @@ class SerpentRodV2:
             subunit_count=subunits, energy=energy)
 
 # ═══════════════════════════════════════════════════════════════════
+
+    def write_pdb(self, output_path: str, chain_id: str = "A",
+                  include_secondary: bool = True) -> str:
+        """Write folded protein as a PDB structure file.
+        
+        Convenience wrapper around pdb_writer.write_pdb_from_gen2.
+        Must call predict() first.
+        """
+        result = self.predict()
+        from .pdb_writer import write_pdb_from_gen2
+        return write_pdb_from_gen2(
+            result, output_path, chain_id=chain_id,
+            title=f"FOLDED PROTEIN: {self.name}",
+            include_secondary=include_secondary
+        )
+
+    def predict_and_write_pdb(self, output_path: str, chain_id: str = "A",
+                               include_secondary: bool = True) -> "Gen2Result":
+        """Predict structure AND write PDB file in one call.
+        
+        Returns the Gen2Result so you can still inspect predictions.
+        """
+        result = self.predict()
+        from .pdb_writer import write_pdb_from_gen2
+        write_pdb_from_gen2(
+            result, output_path, chain_id=chain_id,
+            title=f"FOLDED PROTEIN: {self.name}",
+            include_secondary=include_secondary
+        )
+        return result
+
 # 7. PDB VALIDATION
 # ═══════════════════════════════════════════════════════════════════
 
@@ -469,6 +500,8 @@ def main():
     parser.add_argument("--name", "-n", default="serpent_v2")
     parser.add_argument("--validate", "-v", action="store_true", help="Run PDB validation")
     parser.add_argument("--output", "-o", help="Output JSON")
+    parser.add_argument("--pdb", help="Output PDB structure file (e.g. folded.pdb)")
+    parser.add_argument("--pdb-chain", default="A", help="Chain ID for PDB output (default: A)")
     args = parser.parse_args()
     
     if args.validate:
@@ -478,6 +511,24 @@ def main():
     seq = args.sequence or "AUGGCCGACUGGAACUGCAAGAAGAUCGUGCCCAAGUACUACGGCCGCUG"
     v2 = SerpentRodV2(seq, name=args.name)
     result = v2.predict()
+    
+    # ── Auto-generate PDB ──
+    pdb_path = None
+    if args.pdb:
+        from .pdb_writer import write_pdb_from_gen2
+        pdb_path = write_pdb_from_gen2(
+            result, args.pdb, chain_id=args.pdb_chain,
+            title=f"FOLDED PROTEIN: {args.name}"
+        )
+    else:
+        # Auto-generate PDB when output JSON is requested
+        pdb_path = args.output.replace('.json', '.pdb') if args.output else None
+        if pdb_path:
+            from .pdb_writer import write_pdb_from_gen2
+            write_pdb_from_gen2(
+                result, pdb_path, chain_id=args.pdb_chain,
+                title=f"FOLDED PROTEIN: {args.name}"
+            )
     
     info_line(f"\n🐍 SERPENT-ROD GEN2 🐍")
     info_line(f"RNA: {v2.rna[:50]}... ({len(v2.rna)} nt)")
@@ -492,11 +543,17 @@ def main():
     info_line(f"Secondary elements: {len(result.secondary_elements)}")
     for el in result.secondary_elements:
         info_line(f"  {el['type']:8s} [{el['start']:3d}-{el['end']:3d}] {el['sequence']}")
+    if pdb_path:
+        success_line(f"\n📦 PDB written: {pdb_path}")
     
     if args.output:
         out = {"name":args.name,"aa":result.aa_sequence,
                "n_contacts":len(result.contacts),"energy":result.energy,
                "activation":result.activation_count,"frobenius":result.frobenius_verified}
+        if pdb_path:
+            out["pdb_path"] = pdb_path
         with open(args.output,"w") as f: json.dump(out,f,indent=2)
 if __name__ == "__main__":
     main()
+
+# ═══════════════════════════════════════════════════════════════════

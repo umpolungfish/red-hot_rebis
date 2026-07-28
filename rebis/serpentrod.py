@@ -236,7 +236,7 @@ def _cmd_fold(args):
 
 
 def _cmd_foldv2(args):
-    """Run SerpentRodV2 — backbone model with energy."""
+    """Run SerpentRodV2 — backbone model with energy + PDB output."""
     if not args.rna:
         print("Error: RNA sequence required.")
         return 1
@@ -248,11 +248,28 @@ def _cmd_foldv2(args):
         from rhr_p4rky.serpent_rod_v2 import SerpentRodV2
         sr = SerpentRodV2(rna_sequence=args.rna, name=name)
         result = sr.predict()
+        
+        # ── Auto PDB output ──
+        pdb_path = getattr(args, 'pdb', None)
+        if pdb_path:
+            from rhr_p4rky.pdb_writer import write_pdb_from_gen2
+            chain = getattr(args, 'pdb_chain', 'A')
+            write_pdb_from_gen2(result, pdb_path, chain_id=chain,
+                               title=f"FOLDED PROTEIN: {name}")
+            print(f"\n📦 PDB written: {pdb_path}")
+        
         output = {
             "name": name,
             "rna": args.rna,
-            "result": result if isinstance(result, (dict, list)) else str(result),
+            "aa_sequence": result.aa_sequence,
+            "n_contacts": len(result.contacts),
+            "energy": result.energy,
+            "activation": result.activation_count,
+            "frobenius": result.frobenius_verified,
+            "winding": result.winding_number,
         }
+        if pdb_path:
+            output["pdb_path"] = pdb_path
         print(_json_or_str(output))
     except Exception as e:
         import traceback
@@ -337,9 +354,11 @@ def build_parser():
     p.set_defaults(func=_cmd_fold)
 
     # foldv2
-    p = sub.add_parser("foldv2", help="SerpentRod v2 backbone + energy")
+    p = sub.add_parser("foldv2", help="SerpentRod v2 backbone + energy + PDB output")
     p.add_argument("rna", nargs="?", help="RNA sequence")
     p.add_argument("--name", default=None, help="Protein name")
+    p.add_argument("--pdb", help="Output PDB structure file path")
+    p.add_argument("--pdb-chain", default="A", help="Chain ID for PDB (default: A)")
     p.set_defaults(func=_cmd_foldv2)
 
     # spectrum

@@ -229,10 +229,12 @@ def cmd_chain(args):
     try:
         from rhr_p4rky.gene_to_protein_pipeline import GeneToProteinPipeline
         gp = GeneToProteinPipeline(dna)
-        protein_result = gp.run()
+        pdb_path = getattr(args, 'pdb', None) or f"rebis_chain_protein.pdb"
+        protein_result = gp.run(pdb_path=pdb_path)
         info_line(f"Protein: {protein_result.get('aa_sequence', '?')} "
                   f"({protein_result.get('aa_length', 0)} aa)")
         info_line(f"  Closure Δ: {protein_result.get('closure', {}).get('dna_to_quaternary_distance', '?')}")
+        info_line(f"  📦 PDB: {pdb_path}")
         success_line("Phase 1 complete ✓")
     except Exception as e:
         error_line(f"Phase 1 FAILED: {e}")
@@ -280,14 +282,18 @@ def cmd_gene_pipeline(args):
         return demo_main()
 
     dna = args.dna or args.seq or "ATGGCCGACTGGAACTGCAAGAAGATCGTGCCCAAGTACTACGGCCGCTG"
+    pdb_path = getattr(args, 'pdb', None)
     try:
         from rhr_p4rky.gene_to_protein_pipeline import GeneToProteinPipeline
         gp = GeneToProteinPipeline(dna)
-        result = gp.run()
+        result = gp.run(pdb_path=pdb_path)
         success_line(f"Done — {result.get('aa_sequence', '?')} "
                      f"({result.get('aa_length', 0)} aa) — Δ={result.get('closure', {}).get('dna_to_quaternary_distance', '?')}")
+        if pdb_path:
+            success_line(f"📦 PDB written: {pdb_path}")
     except Exception as e:
         error_line(f"Gene pipeline failed: {e}")
+        import traceback; traceback.print_exc()
         return 1
     return 0
 

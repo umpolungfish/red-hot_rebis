@@ -268,13 +268,29 @@ class Layer4Designer(LayerDesigner):
     def design(self, lower_spec: DesignSpec = None, **kwargs):
         """Design folded protein from molecular specification.
         
-        Bridges to serpentrod's stratified predictor for 
-        sequence-to-primitive spectrum mapping.
+        Bridges to serpentrod for 3D folding and automatic PDB generation.
+        When pdb_path is provided in kwargs, a structure file is written.
         """
         sequence = kwargs.get("sequence", "MLSDC")
         target_function = kwargs.get("target_function", "structural")
+        rna = kwargs.get("rna", None)  # RNA sequence for serpent_rod_v2
+        pdb_path = kwargs.get("pdb_path", None)
+        folded = None
         
-        # Try bridging to serpentrod
+        # Try full folding via serpent_rod_v2 when RNA is available
+        if rna:
+            try:
+                from rhr_p4rky.serpent_rod_v2 import SerpentRodV2
+                v2 = SerpentRodV2(rna)
+                folded = v2.predict()
+                if pdb_path:
+                    from rhr_p4rky.pdb_writer import write_pdb_from_gen2
+                    write_pdb_from_gen2(folded, pdb_path,
+                                       title=f"CLINK L4: {target_function}")
+            except Exception as e:
+                folded = {"error": str(e)}
+        
+        # Try bridging to serpentrod spectrum analysis
         serpentrod_result = {"available": False}
         try:
             from serpentrod.stratified_predictor import (
@@ -282,14 +298,12 @@ class Layer4Designer(LayerDesigner):
             )
             from serpentrod.protein_v5 import classify_module_rich
             
-            # Get primitive spectrum
             spectrum = {}
             for aa in sequence.upper():
                 if aa in PRIMITIVE_MAP:
                     prim = PRIMITIVE_MAP[aa][0]
                     spectrum[prim] = spectrum.get(prim, 0) + 1
             
-            # Classify modules
             classification = classify_module_rich(sequence)
             serpentrod_result = {
                 "available": True,
@@ -299,12 +313,30 @@ class Layer4Designer(LayerDesigner):
         except Exception as e:
             serpentrod_result["error"] = str(e)
         
+        # Fold summary
+        fold_summary = {}
+        if folded and not isinstance(folded, dict):
+            fold_summary = {
+                "aa_sequence": folded.aa_sequence,
+                "n_residues": len(folded.aa_list),
+                "n_contacts": len(folded.contacts),
+                "energy": folded.energy,
+                "activation": f"{folded.activation_count}/12",
+                "frobenius": folded.frobenius_verified,
+                "winding": folded.winding_number,
+                "pdb_path": pdb_path if pdb_path else None,
+            }
+        
         design_data = {
             "tuple": dict(self.clink_tuple),
             "sequence": sequence,
             "target_function": target_function,
             "length": len(sequence),
             "bridge_to_serpentrod": serpentrod_result,
+            "folded_structure": fold_summary if fold_summary else (
+                folded if isinstance(folded, dict) else None
+            ),
+            "pdb_path": pdb_path,
             "notes": f"Folded protein ({target_function}) — between molecule and cell",
         }
         
