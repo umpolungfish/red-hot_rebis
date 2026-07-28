@@ -18,6 +18,8 @@ def main():
                         help="DNA sequence")
     parser.add_argument("--seq", type=str,
                         help="RNA sequence (alias for --dna)")
+    parser.add_argument("--pdb", type=str,
+                        help="Output PDB structure file path")
     args = parse_with_file(parser)
 
     from rebis.cli import cmd_gene_pipeline

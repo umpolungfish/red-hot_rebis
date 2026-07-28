@@ -531,3 +531,56 @@ $$\langle\text{D T R P F K G }\Gamma\text{ }\Phi\text{ H S }\Omega\rangle$$
 - **Emission gate (𐑧):** Exactly one action per winding — no indefinite reasoning
 - **Uncertainty tracking (⊙):** Unknowns are explicitly accounted in every winding
 - **Self-referential limit:** $\Sigma = 1:1$ is the grammar measuring itself
+---
+
+## 🧬 Protein Structure (PDB) Output — v4.1
+
+Red-Hot Rebis now automatically delivers protein structure files after folding.
+The B₄→Ramachandran→Cartesian pipeline generates valid PDB v3.3 files with
+backbone atom coordinates (N, CA, C, O) from RNA/DNA sequence input.
+
+### Quick Start
+
+```bash
+# Fold from RNA → PDB
+rebis serpentrod foldv2 AUGGCCGACUGGAACUGCAAGAAGAUCGUGCCCA --pdb folded.pdb
+
+# Full gene pipeline → PDB
+rebis gene-pipeline --dna ATGGCCGACTGGAACTGCAAGAAGATCGTGCCCAAG --pdb protein.pdb
+
+# Unified chain → auto-PDB
+rebis chain --dna ATGGCCGACTGGAACTGCAAGAAGATCGTGCCCAAG --pdb my_protein.pdb
+```
+
+### Python API
+
+```python
+# SerpentRodV2: fold + PDB in one call
+from rhr_p4rky.serpent_rod_v2 import SerpentRodV2
+v2 = SerpentRodV2("AUGGCC...")
+result = v2.predict_and_write_pdb("folded.pdb")
+
+# Gene pipeline with PDB
+from rhr_p4rky.gene_to_protein_pipeline import GeneToProteinPipeline
+gp = GeneToProteinPipeline("ATGGCC...")
+result = gp.run(pdb_path="protein.pdb")
+
+# Standalone PDB writer
+from rhr_p4rky.pdb_writer import write_pdb_from_gen2
+write_pdb_from_gen2(gen2_result, "output.pdb")
+```
+
+### PDB File Contents
+Each generated PDB contains:
+- **HEADER/TITLE**: protein name and Frobenius verification status
+- **REMARK**: primitive activation count, winding number, energy breakdown
+- **HELIX records**: alpha-helices (class 1) and left-handed helices (class 5)
+- **SHEET records**: beta strands with parallel/antiparallel sense
+- **ATOM records**: N, CA, C, O per residue with 3D coordinates
+- **TER/END**: proper chain termination
+
+### Structural Basis
+PDB coordinates are derived from the B₄→Ramachandran mapping:
+- Each B₄ transition produces (φ, ψ) angles
+- φ/ψ are converted to 3D Cartesian coordinates via internal→Cartesian geometry
+- Bond lengths and angles use standard peptide geometry constants

@@ -18,6 +18,8 @@ def main():
                         help="Target SMILES (default: acetic acid)")
     parser.add_argument("--depth", type=int, default=2,
                         help="Retrosynthesis depth (default: 2)")
+    parser.add_argument("--pdb", type=str,
+                        help="Output PDB structure file for folded protein")
     args = parse_with_file(parser)
 
     from rebis.cli import cmd_chain
