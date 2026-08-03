@@ -70,9 +70,8 @@ SUBSCRIPT_TO_DESERET = {
 def resolve_ordinal_key(primitive: str, value: str) -> str:
     """Convert a catalog value to the Deseret ordinal key used by ORDINALS.
     
-    Handles three formats:
+    The value IS the ordinal key:
       1. Already a valid ORDINALS key (Deseret char or literal symbol like \u2299)
-      2. Notation format: Primitive_separator_subscript (e.g., "Ð_\u00df")
     """
     if not value:
         raise KeyError(f"Empty value for primitive {primitive}")
