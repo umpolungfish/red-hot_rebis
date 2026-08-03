@@ -148,7 +148,7 @@ CV_QC = NonQubitQCParadigm(
                        "Gaussian unitaries (symplectic transformations) + "
                        "cubic phase gate for non-Gaussian universality",
     material_family="Lithium niobate (LiNbO₃) thin-film photonics",
-    o_inf_universes=['low_gate', 'single_gate_Ð', 'g1_Ð_min',
+    o_inf_universes=['low_gate', 'single_gate_⊢', 'g1_⊢_min',
                      'g1_⊙_min', 'no_ordering'],
     key_blockers=['canonical', 'high_gate', 'strict_frobenius',
                   'kinetics_criticality', 'winding_chirality'],
@@ -368,7 +368,7 @@ QUANTUM_WALKS = NonQubitQCParadigm(
                        "quadratic speedup in propagation: σ(t) ∝ t (vs √t classical)",
     material_family="Femtosecond-laser-written waveguide arrays (SiO₂) + "
                     "ultracold atoms in optical lattices",
-    o_inf_universes=['low_gate', 'g1_Γ_min', 'g1_Ð_min',
+    o_inf_universes=['low_gate', 'g1_Γ_min', 'g1_⊢_min',
                      'single_gate_Γ', 'no_ordering'],
     key_blockers=['canonical', 'high_gate', 'strict_frobenius',
                   'g1_⊙_max', 'kinetics_criticality'],

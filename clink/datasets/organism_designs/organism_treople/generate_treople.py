@@ -678,7 +678,7 @@ TREOPLE_PHYSIOLOGY = {
         "Ω_Winding":       {"base": "𐑾", "treople": "𐑽",
                             "reason": "cellulose crystalline microfibril winding (parallel chains) "
                                       "PLUS thylakoid grana stacking = maximum Ω in this series"},
-        "Ð_Dimensionality":{"base": "𐑹", "treople": "𐑺",
+        "⊢":{"base": "𐑹", "treople": "𐑺",
                             "reason": "fractal branching architecture (WOX4/ARF5 lateral meristem); "
                                       "trees expand 3D indefinitely; animals centralize — "
                                       "dimensional architecture changes"},

@@ -40,10 +40,10 @@ from shared.rich_output import *
 
 IG_CHARS: Dict[str, str] = {
     # ── Dimensionality (Ð) — 4 values ──
-    "Ð_wedge":      "𐑛",     # 𐑼 — 0d point / flat
-    "Ð_tri":        "𐑨",     # 𐑨 — 2d surface / simplicial
-    "Ð_infty":      "𐑼",     # 𐑛 — infinite-dimensional
-    "Ð_odot":       "𐑦",     # 𐑦 — imscriptive (self-written state-space)
+    "𐑛":      "𐑛",     # 𐑼 — 0d point / flat
+    "𐑨":        "𐑨",     # 𐑨 — 2d surface / simplicial
+    "𐑼":      "𐑼",     # 𐑛 — infinite-dimensional
+    "𐑦":       "𐑦",     # 𐑦 — imscriptive (self-written state-space)
     
     # ── Topology (Þ) — 5 values ──
     "Þ_net":        "𐑡",     # 𐑶 — branching / network
@@ -355,7 +355,7 @@ def generate_dna_gene_tuple(features: Dict[str, Any]) -> Dict[str, str]:
         g_val = "Γ_beth"
     
     return {
-        "Ð": IG_CHARS["Ð_tri"],
+        "Ð": IG_CHARS["𐑨"],
         "Þ": IG_CHARS["Þ_boxtimes"],
         "Ř": IG_CHARS["Ř_lr"],
         "Φ": IG_CHARS["Φ_asym"],
@@ -381,7 +381,7 @@ def generate_pre_mrna_tuple(features: Dict[str, Any]) -> Dict[str, str]:
         g_val = "Γ_beth"
     
     return {
-        "Ð": IG_CHARS["Ð_tri"],
+        "Ð": IG_CHARS["𐑨"],
         "Þ": IG_CHARS["Þ_net"],
         "Ř": IG_CHARS["Ř_dagger"],
         "Φ": IG_CHARS["Φ_asym"],
@@ -399,7 +399,7 @@ def generate_pre_mrna_tuple(features: Dict[str, Any]) -> Dict[str, str]:
 def generate_mrna_tuple(features: Dict[str, Any]) -> Dict[str, str]:
     """Generate structural tuple for the mature mRNA stage."""
     return {
-        "Ð": IG_CHARS["Ð_tri"],
+        "Ð": IG_CHARS["𐑨"],
         "Þ": IG_CHARS["Þ_net"],
         "Ř": IG_CHARS["Ř_super"],
         "Φ": IG_CHARS["Φ_asym"],
@@ -455,7 +455,7 @@ def generate_secondary_structure_tuple(features: Dict[str, Any]) -> Dict[str, st
         p_val = "Φ_pm"
     
     return {
-        "Ð": IG_CHARS["Ð_tri"],
+        "Ð": IG_CHARS["𐑨"],
         "Þ": IG_CHARS["Þ_bowtie"],      # FIXED: bowtie, NOT odot
         "Ř": IG_CHARS["Ř_lr"],
         "Φ": IG_CHARS[p_val],
@@ -519,7 +519,7 @@ def generate_tertiary_structure_tuple(features: Dict[str, Any]) -> Dict[str, str
         g_val = "Γ_beth"
     
     return {
-        "Ð": IG_CHARS["Ð_tri"],
+        "Ð": IG_CHARS["𐑨"],
         "Þ": IG_CHARS["Þ_bowtie"],      # FIXED: bowtie, NOT odot
         "Ř": IG_CHARS["Ř_lr"],
         "Φ": IG_CHARS[p_val],
@@ -587,7 +587,7 @@ def generate_quaternary_structure_tuple(features: Dict[str, Any]) -> Dict[str, s
         g_val = "Γ_beth"
     
     return {
-        "Ð": IG_CHARS["Ð_tri"],
+        "Ð": IG_CHARS["𐑨"],
         "Þ": IG_CHARS["Þ_bowtie"],      # FIXED: bowtie, NOT odot
         "Ř": IG_CHARS["Ř_lr"],
         "Φ": IG_CHARS["Φ_asym"],
@@ -702,14 +702,14 @@ def get_value_name(key: str) -> str:
 
 
 def check_axiom_c(d_char: str, t_char: str) -> Tuple[bool, str]:
-    """Check Axiom C: Ð_odot ↔ Þ_odot.
+    """Check Axiom C: 𐑦 ↔ Þ_odot.
     
     RESOLVED: Protein stages use Þ=bowtie with Ð=tri,
     which satisfies the precondition (neither is odot).
     """
     d_key = CHAR_TO_NAME.get(d_char, "")
     t_key = CHAR_TO_NAME.get(t_char, "")
-    d_odot = d_key == "Ð_odot"
+    d_odot = d_key == "𐑦"
     t_odot = t_key == "Þ_odot"
     
     if d_odot and not t_odot:
