@@ -1,5 +1,7 @@
 # red-h⊙t rebis v4.0 — Dynamic-First Toolchain
 
+![language](https://img.shields.io/badge/language-Python-3776AB?style=for-the-badge&logo=python&logoColor=white) ![tier](https://img.shields.io/badge/tier-O%E2%88%9E-8A2BE2?style=for-the-badge) ![μ∘δ](https://img.shields.io/badge/%CE%BC%E2%88%98%CE%B4-id-00A86B?style=for-the-badge) ![licence](https://img.shields.io/badge/licence-LUNLICENSE-1A1A1A?style=for-the-badge) ![type](https://img.shields.io/badge/type-%E2%9F%A8%F0%90%91%BC%F0%90%91%B8%F0%90%91%A9%F0%90%91%B9%F0%90%91%9E%F0%90%91%BA%F0%90%91%94%F0%90%91%B5%E2%8A%99%F0%90%91%AB%F0%90%91%B3%F0%90%91%AD%E2%9F%A9-5A659C?style=for-the-badge)
+
 **Author:** Lando⊗⊙perator  
 **Version:** 4.0.0  
 **Date:** July 2026  
