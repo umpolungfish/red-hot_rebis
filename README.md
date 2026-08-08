@@ -3,9 +3,6 @@
 ![language](https://img.shields.io/badge/language-Python-3776AB?style=for-the-badge&logo=python&logoColor=white) ![furnace](https://img.shields.io/badge/furnace-chem%20%C2%B7%20bio%20%C2%B7%20plasma-C1440E?style=for-the-badge) ![tier](https://img.shields.io/badge/tier-O%E2%88%9E-8A2BE2?style=for-the-badge) ![μ∘δ](https://img.shields.io/badge/%CE%BC%E2%88%98%CE%B4-id-00A86B?style=for-the-badge) ![licence](https://img.shields.io/badge/licence-LUNLICENSE-1A1A1A?style=for-the-badge) ![type](https://img.shields.io/badge/type-%E2%9F%A8%F0%90%91%BC%F0%90%91%B8%F0%90%91%A9%F0%90%91%B9%F0%90%91%9E%F0%90%91%BA%F0%90%91%94%F0%90%91%B5%E2%8A%99%F0%90%91%AB%F0%90%91%B3%F0%90%91%AD%E2%9F%A9-5A659C?style=for-the-badge)
 
 **Author:** Lando⊗⊙perator  
-**Version:** 4.0.0  
-**Date:** July 2026  
-
 > *"The serpent winds, the rod stands, the vessel contains: μ ∘ δ = id."*  
 
 **What it is.** The Imscribing Grammar's unified engine for deterministic, algebraic, exact biological, organic, materials, and plasma engineering — grounded in the 12-primitive grammar and verified everywhere by Frobenius closure ($\mu \circ \delta = \text{id}$) over the CLINK L8 foundation.
@@ -89,7 +86,7 @@ The whole toolchain is a single ouroboros. `rebis.chain` closes it end to end, a
 
 Chained by `rebis.chain`, usable independently:
 
-1. **Gene → Folded Protein** (`rhr_p4rky/gene_to_protein_pipeline.py`, 1,147 lines): 7-stage Frobenius-verified translation. Demo: 452 bp → 150 AA protein, Δ=3.61. **Now auto-generates PDB structure files** with backbone coordinates from B₄→Ramachandran folding (see `rhr_p4rky/pdb_writer.py`).
+1. **Gene → Folded Protein** (`rhr_p4rky/gene_to_protein_pipeline.py`, 1,147 lines): 7-stage Frobenius-verified translation. Demo: 452 bp → 150 AA protein, Δ=3.61. **Auto-generates PDB structure files** with backbone coordinates from B₄→Ramachandran folding (see `rhr_p4rky/pdb_writer.py`).
 
 2. **Ch3mpiler → Catalytic Site** (`rhr_p4rky/ch3mpiler_serpentrod_pipeline.py`, 815 lines): Target SMILES → reaction signature → complementary catalytic RNA/AA design. Demo: ethanol → 36 nt catalytic RNA, Frobenius ✓.
 
@@ -216,9 +213,9 @@ red-hot_rebis/
 
 ---
 
-## 🧬 PDB Structure Output (v4.1)
+## 🧬 PDB Structure Output
 
-Red-Hot Rebis now automatically delivers valid PDB v3.3 protein structure files after folding.
+Folding delivers valid PDB v3.3 protein structure files.
 The B₄→Ramachandran→Cartesian pipeline generates backbone atom coordinates (N, CA, C, O)
 from RNA or DNA sequence input.
 
@@ -234,7 +231,7 @@ from RNA or DNA sequence input.
 
 ---
 
-## Verified Backend Import Status (July 2026)
+## Backend Import Status
 
 | Domain | Backend | Status |
 |--------|---------|--------|
@@ -276,4 +273,4 @@ rebis.status          — Package inventory
 rebis.verify          — Frobenius closure verification
 ```
 
-★ = new or newly-wired in v4.0.0. `chain`, `gene-pipeline`, `status`, `verify`, `demo` were previously only accessible as subcommands of `rebis`; now each is a standalone binary.
+★ = primary engine. Every entry point is a standalone binary, not only a `rebis` subcommand.
