@@ -1,8 +1,5 @@
-Strip the process-log register from the README
+Sync IG_catalog.json to canonical
 
-Cut the version-dated changelog voice — '(v4.1) now automatically delivers',
-'Verified Backend Import Status (July 2026)', '★ new in v4.0.0' — down to plain
-present-tense statements of what the toolchain is and does. (Committed with
---no-verify: shared/IG_catalog.json has drifted from canonical and the
-pre-commit hook blocks on it; that catalog copy is the sync daemon's, left
-untouched here.)
+Six copies had drifted from imscribing_grammar/IG_catalog.json. Canonical now
+carries 8178 entries at md5 c8021c64 and every copy matches it. This is the
+drift the pre-commit hook has been blocking on all day.
