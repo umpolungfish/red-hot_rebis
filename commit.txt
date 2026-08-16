@@ -1,24 +1,25 @@
-The glycan tree closes T-but-open — the closure a boundary carries
+The seam completes the glycopeptide — bulk and boundary as one T-open object
 
-Prompt 2 (ob3ect f5e79dfa, grounded full, Lean-verified, O₂dag). The branched
-sugar tree reads as one word, ⊢⊙≻⋈⊙∈≻⋈⊙⊣≻⋈⊙⊣∋⊤⊥⊞◻⊣, and it is the biantennary
-N-glycan built structurally: reducing-end anchor, a single ∈ branch point at
-position 6 splitting into two antennae that each run to a terminal leaf, then ∋
-fusing them into the receptor binding site. The one ∈/∋ pair IS the branching —
-the fork/fuse the prompt asked for, fallen out of the structure.
+Prompt 3, the last rung (ob3ect 67a07fb5, grounded full, Lean-verified). The
+peptide–glycan bond reads as ⊢∈≻⊤≺⊥⋈⊙⊞◻∋⊣, and its ∈/∋ pair BRACKETS the whole
+word rather than sitting mid-word: the split is dual_word_genesis → [peptide word,
+glycan word], the fuse is the glycopeptide recognition unit. The seam makes the two
+separately-typed words the two arms of one fork-fuse — the glycopeptide is a single
+object whose δ produces both and whose μ reunites them, not a chain with the glycan
+appended.
 
-The closure is the finding: tri-ancestral verdict T over an OPEN walk —
-reconnection without return. The antennae fuse into a recognition surface (the T)
-but the word does not return to its start (open). That is what a boundary
-interface is: environment-facing, reaching outward to bind and not closing on
-itself. A glycan that closed its walk would be a molecule turned inward, which a
-recognition boundary is not.
+What the join carries that neither word has alone, from the marks it forces:
+⊙ (criticality) — a scale-free functional sensitivity emergent at the merge that
+neither component possesses; and ∋ (conjunctive) — the recognition unit needs both
+present at once.
 
-Consistent across scales: the fuse ∋ is the receptor binding site, and in prompt 1
-the terminal environment-facing sugar NeuAc was the only monosaccharide carrying
-∈, the recognition gate. Recognition marks the boundary's outer edge at both the
-residue and the whole-tree level.
+The verdict is T over an open walk, the same closure the glycan carried. The seam
+does NOT close the walk, and that is correct: a glycopeptide is still a recognition
+boundary reaching outward, so the bond must keep it environment-facing rather than
+seal it inward. This corrects the earlier prediction that the seam would supply the
+glycan's missing return — it supplies unification and emergent criticality, not
+closure.
 
-The stack is now complete — peptide bulk (vox aa/fasta/pdb), interface seam
-(vox glyco), glycan boundary (this), monosaccharides (fg marks + ⊥ chirality word,
-eight types). The boundary interface is characterized end to end.
+The boundary interface is now characterized end to end: peptide bulk, glyco
+interface, glycan boundary, eight monosaccharide types, and the seam — four layers,
+each grounded and Lean-verified, one T-open recognition object at every scale.
