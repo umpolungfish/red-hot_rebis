@@ -1,13 +1,24 @@
-Correction: the enclosure must be work, not any mark
+Manuscript: The Fold Verdict of a Coding Sequence
 
-The enclosure law was stated as "encloses at least one mark", which is too weak.
-Seven of the twelve do work — ≻ ≺ ⋈ ⊤ ⊥ ⊞ ◻ — and five do not: the boundaries ⊢ ⊣,
-the self-reference ⊙, and fork and fuse themselves. ⊢∈⊙∋⊣ reads N on both engines,
-as do ⊢∈⊙⊙⊙∋⊣ and ⊢∈⊣∋⊣, while ⊢∈⋈∋⊣ and ⊢∈◻∋⊣ read T.
+The four-valued readout stated in closed form and proved from the cyclic pairing
+definition, then carried through the genetic code to two codon families.
 
-At balance: T if some ∈…∋ pair encloses at least one of the seven work marks, else
-N. Still 65 of 65 over the sweep — no word in the corpus separates the readings, so
-the corpus could not have caught it; ⊢∈⊙∋⊣ is the witness.
+Lemma (Surplus): at most one of the unmatched sets is non-empty and their signed
+difference is the fork count minus the fuse count — so B and F cannot coexist, the
+surplus species is fixed by a sign, and the magnitude is invisible to the readout.
 
-A fork enclosing only self-reference has looked at itself and returned, which is N
-by the same argument as the empty loop.
+Theorem (Closed form): B when d > 0, F when d < 0, and at d = 0, T if some paired
+region contains one of the seven work marks, else N.
+
+Theorem (Readout of a coding sequence), the carrying result: count AAY against CAR
+in the frame. AAY > CAR is B, CAR > AAY is F, equal closes T exactly when some AAY
+is separated from its paired CAR by a Cys, Tyr, Phe, Ile, Asp, Lys or Glu codon,
+and is N otherwise. Nothing else about the sequence affects the value.
+
+The enclosure condition is separated from the weaker non-emptiness reading by an
+explicit witness rather than by the data — the corpus cannot tell them apart.
+Verified on sixty-five deposited structures and on nine reconstructed transcripts.
+Position states plainly that no correspondence to any thermodynamic or kinetic
+observable is claimed.
+
+Eight pages, builds clean.
