@@ -1,0 +1,1 @@
+A structure whose divisions and mergings stand in exact balance, given as a rule that builds toward that balance rather than a test that detects it after the fact. Report what each division must pair with and how the balance is held as the structure grows.
