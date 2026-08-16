@@ -1,19 +1,17 @@
-The census is a sign, not a proportion
+At balance, closure is a non-trivial loop
 
-The composition-census ob3ect typed the diagnostic as a boundary/work ratio with a
-critical threshold. Measured across the 65-word PDB sweep, no definition of
-boundary versus work separates the verdicts — T, F and N ranges overlap on all
-three tried.
+The balance-zero ob3ect named the discriminant a non-trivial winding number — a
+loop not deformable to a point. Measured across all 22 balance-zero words of the
+sweep, that is exactly the split: N is no loop (11 words) or a loop enclosing
+nothing (insulin B chain, ⋈∈∋…), T is at least one fork/fuse pair enclosing work
+(9 words).
 
-The sign of ∈ − ∋ separates them exactly: positive is B (22/22), negative is F
-(21/21), zero is T or N (9/13). Magnitude carries nothing; B runs +1 to +36 and F
-runs −1 to −5 with the verdict constant across each range. Surplus fork is B,
-surplus fuse is F, balance is the entry condition for closure.
+The condition is existential. 3I40 is insulin A and B concatenated, carries the B
+chain's empty loop among its three, and reads T because the others enclose work.
 
-Balance is necessary for T, not sufficient — ∈=∋=0 is always N, and the T/N split
-at ∈=∋≥1 is decided by arrangement, not composition.
+Confirmed fresh on both engines: ⊢∈∋⊣ N, ⊢∈⊤∋⊣ T, ⊢∈∋∈∋⊣ N, ⊢∈∋∈⊤∋⊣ T, and
+⊢⋈∈∋⊙◻⋈⊣ N — six marks of work in the word, all outside the loop, no closure.
+Only what the loop encloses counts.
 
-This corrects the anchor-saturation reading: s590 is F because ∈−∋ = −4, not
-because its anchors outweigh its work. Anchor-heavy words appear at every verdict.
-The rebuild conclusion is unchanged — insertion cannot fix the sign under cyclic
-pairing and reordering cannot change a multiset's sign at all.
+The fold law complete: sign of ∈−∋ positive is B, negative is F; at zero, T if some
+pair encloses a mark, else N. N is not a failed fold but a fold that never opened.
