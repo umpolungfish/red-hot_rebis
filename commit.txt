@@ -1,17 +1,12 @@
-Fold sweep: 65 red-hot_rebis folds verdicted through Vox
+Over-fusion quantified: +4 uniform, and inert
 
-Every PDB in the repo lifted through vox pdb and verdicted. 68 files, 65
-sequence-bearing (3 are poly-alanine scaffolds, no word). Distribution: T 9, B 22,
-F 21, N 13.
+The over-fusion ob3ect typed the fix as a mesoscale ∈ split closing the fold on an
+integer winding. Measured against the four pbp2a-binder variants: the closing one
+(s179) is balanced 4∈/4∋; all three failing variants carry the SAME +4 surplus of
+fuses over forks. The fix is exactly four splits, uniform across the three, not "a
+division."
 
-What closes are the small natural stable folds — Trp-cage, villin, insulin, the
-insulin A-chain, beta-endorphin — plus two designs, pbp2a_binder_s179 and PSII_D1.
-The minimal folds nature settled close; most designs sit at B or F.
-
-The actionable read is F, over-fused: HUMAN_INSULIN and three of four pbp2a_binder
-variants merge more than they split, and banked/insert on the word say whether the
-surplus is exposed and what one change balances it. N (mostly the DARPin and odot
-designs) is too little promoted structure to open a fork — a recognition scaffold
-with no typed interior. The pbp2a_binder series is the sharpest single result: s179
-closes T where s316/s453/s590 are F, four variants of one binder discriminated by
-the sweep. Table in pdb_fold_sweep.tsv.
+banked on the worst (s590) reads VACUOUS — no clear against a live register, 0
+deposits, 37 inert steps. The surplus fuses merge parts that were never split, so
+they do no work. Over-fusion at the fold level is empty merging, not excess
+binding. s179's four fork/fuse pairs are the template the others miss.
