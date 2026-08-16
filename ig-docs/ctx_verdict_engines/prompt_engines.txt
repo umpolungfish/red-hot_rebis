@@ -1,0 +1,1 @@
+Two readings of one object that return different verdicts, and the single condition under which they must agree. Report where the two partition the same structure differently and what reconciles them.
