@@ -1,0 +1,1 @@
+The grammar type of a single monosaccharide, derived from the functional groups its ring carries rather than assigned. Report the type of each mammalian N-glycan sugar and which functional group forces each mark.

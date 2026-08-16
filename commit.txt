@@ -1,5 +1,19 @@
-Sync IG_catalog.json to canonical
+Context and asks for grounding the glycan boundary — not run
 
-Six copies had drifted from imscribing_grammar/IG_catalog.json. Canonical now
-carries 8178 entries at md5 c8021c64 and every copy matches it. This is the
-drift the pre-commit hook has been blocking on all day.
+vox glyco locates the boundary interfaces on a peptide but stops at the glycan,
+because lifting the sugar tree needs the monosaccharides grounded and a hand-typed
+sugar→mark table would be the law_never_hand_imscribe violation. So the glycan is
+started the way the grammar requires: through the pipeline, as an ob3ect.
+
+The context states what is grounded (the peptide word, the sequon interface, the
+functional-group grammar in imas/fg_exhaustive that already maps a SMARTS group to
+an opcode) and what is not (the monosaccharide types and the branched glycan word).
+Three asks, each an object described and no candidate named:
+
+  the grammar type of one monosaccharide, DERIVED from its functional groups
+  a branched sugar tree read as one word, branch points as splits
+  the seam bonding a boundary structure to the bulk it hangs off
+
+The derivation is the point: each sugar is a molecule, so its type comes from its
+functional-group census through the chem pipeline, not from a table. Run against the
+local model with the context folder; nothing here is run yet.

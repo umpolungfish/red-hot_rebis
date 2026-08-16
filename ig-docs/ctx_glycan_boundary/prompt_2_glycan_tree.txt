@@ -1,0 +1,1 @@
+A branched sugar tree read as one word, where each branch point is a split and the reducing end is the anchor. Report how the tree's branching becomes fork/fuse structure and what closure the whole glycan carries.
