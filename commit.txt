@@ -1,7 +1,4 @@
-The subtitle removed — the title is two words
+The manuscript moved to ig-docs, where documents live
 
-Letchford and colleagues, over roughly 140,000 papers, found shorter titles carry
-more citations. The descriptor the subtitle held is already the abstract's first
-line, which is what an index reads anyway, so the title stands alone.
-
-Nine pages, builds clean.
+Life, Compiled belongs in ig-docs with every other document; the manuscripts
+directory under this repo was mine to make and is removed.
