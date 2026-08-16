@@ -1,12 +1,16 @@
-Over-fusion quantified: +4 uniform, and inert
+The balanced-fold rule is a repeat unit
 
-The over-fusion ob3ect typed the fix as a mesoscale ∈ split closing the fold on an
-integer winding. Measured against the four pbp2a-binder variants: the closing one
-(s179) is balanced 4∈/4∋; all three failing variants carry the SAME +4 surplus of
-fuses over forks. The fix is exactly four splits, uniform across the three, not "a
-division."
+The balanced-template ob3ect answered the converse of the over-fusion diagnosis:
+the word is a repeat unit, ⊢[∈≻⊤≺⊥∋⋈]×4⊙⊞◻⊣, four balanced motifs. Each ∈ split
+pairs with its own ∋ fuse one motif later, with both arms worked between them
+(forward/true/reverse/false). A division pairs with its own merge, and the merge
+fires only after both arms did work — exactly what the failing variants lacked,
+their surplus fuses firing inert on unforked parts.
 
-banked on the worst (s590) reads VACUOUS — no clear against a live register, 0
-deposits, 37 inert steps. The surplus fuses merge parts that were never split, so
-they do no work. Over-fusion at the fold level is empty merging, not excess
-binding. s179's four fork/fuse pairs are the template the others miss.
+Balance holds by repeating the unit: growth adds paired ∈/∋ motifs, keeping a 1:1
+fork/fuse ratio at every size, typed as ⊞=𐑙, the self-referential stoichiometry
+limit. Structural, held by construction, not tested after.
+
+This closes the fold-design arc — diagnose (F), measure (+4 inert surplus), fix
+(add splits), rule (build from the motif) — turning the sweep from auditor into
+designer.
