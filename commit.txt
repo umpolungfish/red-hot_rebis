@@ -1,25 +1,17 @@
-The seam completes the glycopeptide — bulk and boundary as one T-open object
+Fold sweep: 65 red-hot_rebis folds verdicted through Vox
 
-Prompt 3, the last rung (ob3ect 67a07fb5, grounded full, Lean-verified). The
-peptide–glycan bond reads as ⊢∈≻⊤≺⊥⋈⊙⊞◻∋⊣, and its ∈/∋ pair BRACKETS the whole
-word rather than sitting mid-word: the split is dual_word_genesis → [peptide word,
-glycan word], the fuse is the glycopeptide recognition unit. The seam makes the two
-separately-typed words the two arms of one fork-fuse — the glycopeptide is a single
-object whose δ produces both and whose μ reunites them, not a chain with the glycan
-appended.
+Every PDB in the repo lifted through vox pdb and verdicted. 68 files, 65
+sequence-bearing (3 are poly-alanine scaffolds, no word). Distribution: T 9, B 22,
+F 21, N 13.
 
-What the join carries that neither word has alone, from the marks it forces:
-⊙ (criticality) — a scale-free functional sensitivity emergent at the merge that
-neither component possesses; and ∋ (conjunctive) — the recognition unit needs both
-present at once.
+What closes are the small natural stable folds — Trp-cage, villin, insulin, the
+insulin A-chain, beta-endorphin — plus two designs, pbp2a_binder_s179 and PSII_D1.
+The minimal folds nature settled close; most designs sit at B or F.
 
-The verdict is T over an open walk, the same closure the glycan carried. The seam
-does NOT close the walk, and that is correct: a glycopeptide is still a recognition
-boundary reaching outward, so the bond must keep it environment-facing rather than
-seal it inward. This corrects the earlier prediction that the seam would supply the
-glycan's missing return — it supplies unification and emergent criticality, not
-closure.
-
-The boundary interface is now characterized end to end: peptide bulk, glyco
-interface, glycan boundary, eight monosaccharide types, and the seam — four layers,
-each grounded and Lean-verified, one T-open recognition object at every scale.
+The actionable read is F, over-fused: HUMAN_INSULIN and three of four pbp2a_binder
+variants merge more than they split, and banked/insert on the word say whether the
+surplus is exposed and what one change balances it. N (mostly the DARPin and odot
+designs) is too little promoted structure to open a fork — a recognition scaffold
+with no typed interior. The pbp2a_binder series is the sharpest single result: s179
+closes T where s316/s453/s590 are F, four variants of one binder discriminated by
+the sweep. Table in pdb_fold_sweep.tsv.
