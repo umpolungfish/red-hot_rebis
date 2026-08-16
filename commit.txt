@@ -1,13 +1,7 @@
-The manuscript's pairing stated as the rotation that makes it one-sided
+Life, Compiled
 
-Definition and lemma rewritten to the formulation that was verified. The pairing
-reads the word from an index where the running balance of forks against fuses
-attains its minimum; the Surplus Lemma now states the counts outright — max(0, d)
-unmatched forks and max(0, −d) unmatched fuses — and proves it from the minimality
-of that index, with the negative case by the mirrored reading.
-
-Verification restated to what was run: the procedure and the closed form return the
-same value on all sixty-five words, that value is the recorded one in every case,
-and the lemma was checked on the same corpus in the form it is stated.
+Retitled at Lando's naming. The subtitle carries the rigorous descriptor — the
+structural readout of a coding sequence in closed form, and its reduction to two
+codon families — so the title can carry the claim.
 
 Nine pages, builds clean.
