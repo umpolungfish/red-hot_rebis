@@ -1,16 +1,19 @@
-The balanced-fold rule is a repeat unit
+Fold repair is a restructuring, not an insertion — and two engines disagree
 
-The balanced-template ob3ect answered the converse of the over-fusion diagnosis:
-the word is a repeat unit, ⊢[∈≻⊤≺⊥∋⋈]×4⊙⊞◻⊣, four balanced motifs. Each ∈ split
-pairs with its own ∋ fuse one motif later, with both arms worked between them
-(forward/true/reverse/false). A division pairs with its own merge, and the merge
-fires only after both arms did work — exactly what the failing variants lacked,
-their surplus fuses firing inert on unforked parts.
+The apply-the-rule ob3ect (66367fe1) typed the repair and produced a balanced word,
+but tested against the real over-fused s590 it does not hold as a simple insertion.
+Two repairs tried on s590's actual word: naive (∈ before each orphan ∋) balances
+counts 6/6 but stays F — ∈∋ adjacent is a bare split-fuse that verifies nothing;
+motif-placed (∈ before a work-run) also balances 6/6 and also stays F. s590 opens
+with a fuse and interleaves six among the anchors, so cyclic pairing leaves fuses
+unmatched wherever no fork precedes them. Balancing counts is necessary, not
+sufficient; closing needs the forks where the pairing consumes them, a
+restructuring of the word rather than an insertion.
 
-Balance holds by repeating the unit: growth adds paired ∈/∋ motifs, keeping a 1:1
-fork/fuse ratio at every size, typed as ⊞=𐑙, the self-referential stoichiometry
-limit. Structural, held by construction, not tested after.
+Honest boundary of the fold-design arc: diagnose, measure, and build-from-motif are
+in hand; in-place repair of an arbitrary F word is open.
 
-This closes the fold-design arc — diagnose (F), measure (+4 inert surplus), fix
-(add splits), rule (build from the motif) — turning the sweep from auditor into
-designer.
+Flagged, not chased: the balanced template word verdicts T under the tri-ancestral
+SIXTEEN_3 engine and B under ask --imasm check. Same word, two lanes, different
+verdict. A fold result must say which engine, and the two want reconciling before
+either grounds a design claim.
