@@ -1,7 +1,7 @@
-Life, Compiled
+The subtitle removed — the title is two words
 
-Retitled at Lando's naming. The subtitle carries the rigorous descriptor — the
-structural readout of a coding sequence in closed form, and its reduction to two
-codon families — so the title can carry the claim.
+Letchford and colleagues, over roughly 140,000 papers, found shorter titles carry
+more citations. The descriptor the subtitle held is already the abstract's first
+line, which is what an index reads anyway, so the title stands alone.
 
 Nine pages, builds clean.
