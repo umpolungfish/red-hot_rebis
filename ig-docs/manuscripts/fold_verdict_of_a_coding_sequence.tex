@@ -1,0 +1,511 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\setmainfont{Linux Libertine O}
+\setmathfont{TeX Gyre Pagella Math}
+\setmonofont[Scale=0.85]{Everson Mono}
+\usepackage[top=1in, bottom=1in, left=1.1in, right=1.1in, headheight=15pt]{geometry}
+\usepackage{microtype}
+\usepackage{parskip}
+\usepackage[english]{babel}
+\setlength{\emergencystretch}{2em}
+\usepackage{fancyhdr}
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\leftmark}\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\usepackage{titlesec}
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+\usepackage{enumitem}
+\setlist[itemize]{topsep=0.5ex, itemsep=0.25ex, parsep=0pt}
+\setlist[enumerate]{topsep=0.5ex, itemsep=0.25ex, parsep=0pt}
+\usepackage{amsmath,amsthm}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+\renewcommand{\arraystretch}{1.3}
+\usepackage{tcolorbox}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\hypersetup{colorlinks=true, linkcolor=blue, urlcolor=cyan, citecolor=blue}
+\providecommand{\Box}{}\renewcommand{\Box}{\mathord{\text{\fontspec{Everson Mono}◻}}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\begin{document}
+\title{\textbf{The Fold Verdict of a Coding Sequence}\\[0.3em]
+\large A closed form for a four-valued structural readout, and its reduction to two codon families}
+\author{C.\ Lando Mills\\
+Trabuco Canyon, California\\
+\texttt{c.landonmills@gmail.com}\\
+ORCID: \href{https://orcid.org/0000-0003-0003-0552}{0000-0003-0003-0552}}
+\date{16 August 2026}
+\maketitle
+
+\begin{abstract}
+A protein sequence can be read as a word in a twelve-letter alphabet. The reading
+is not an analogy imposed from outside: the standard genetic code promotes exactly
+twelve of the twenty amino acids to a distinguished set, that set is in bijection
+with twelve structural operations, and the remaining eight activate none of them
+and are silent. Two of the twelve operations are a three-way \emph{fork} and a
+three-way \emph{fuse}; the other ten are boundaries, self-reference, and work.
+
+Over such words there is a four-valued structural readout, taking values in the
+Belnap lattice $\{T, B, N, F\}$: the word \emph{closes} ($T$) when every fork pairs
+with a fuse around the cycle and some paired region contains work; it is
+\emph{overdetermined} ($B$) when a fork is left open; \emph{underdetermined} ($N$)
+when forks and fuses pair but enclose nothing that does work; and \emph{ill-typed}
+($F$) when a fuse has no fork to pair with. The definition is given by a pairing
+procedure, and it is not obvious from the definition what a word must look like to
+receive each value.
+
+The central distinction this paper establishes is that the readout depends on the
+word through only two numbers and one adjacency condition. Let $|w|_{\in}$ and
+$|w|_{\ni}$ count forks and fuses. The sign of $|w|_{\in} - |w|_{\ni}$ decides
+between $B$ and $F$ outright, with the magnitude carrying no information; and when
+that difference is zero, the word closes precisely when some fork is separated from
+the fuse it pairs with by at least one of the seven letters that do work. Nothing
+else about the arrangement matters for the value.
+
+Carried back through the genetic code, the fork is asparagine and the fuse is
+glutamine, so the readout of a coding sequence is a statement about two codon
+families, $\mathrm{AAY}$ and $\mathrm{CAR}$, which differ in their first base
+alone. We give the closed form, prove it from the pairing definition, exhibit the
+witness that separates the correct enclosure condition from a weaker one that
+agrees with it on every sequence we tested, and verify the result on a corpus of
+sixty-five deposited structures and on coding sequences reconstructed from them.
+\end{abstract}
+
+\section{The alphabet and the four values}
+
+\subsection{Twelve operations}
+
+The alphabet is twelve marks. Each is an operation on a state, and the division
+that matters here is between the marks that transform a state and the marks that do
+not.
+
+\begin{center}
+\begin{tabular}{clll}
+\toprule
+Mark & Operation & Axis & Class \\
+\midrule
+$\vdash$   & source boundary        & Dimensionality  & no work \\
+$\dashv$   & sink boundary          & Topology        & no work \\
+$\odot$    & identity, self-reference & Criticality   & no work \\
+$\in$      & three-way fork         & Granularity     & no work \\
+$\ni$      & three-way fuse         & Grammar         & no work \\
+\midrule
+$\succ$    & forward morphism       & Recognition     & work \\
+$\prec$    & reverse morphism       & Parity          & work \\
+$\bowtie$  & composition            & Fidelity        & work \\
+$\top$     & evaluation, truth axis & Kinetics        & work \\
+$\bot$     & evaluation, falsity axis & Chirality     & work \\
+$\boxplus$ & evaluation, information axis & Stoichiometry & work \\
+$\Box$     & fixpoint               & Protection      & work \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+A \emph{word} is a finite sequence of marks. Words are read as loops: the last mark
+is followed by the first. This is forced rather than chosen, and we return to it in
+\Cref{sec:cyclic}.
+
+\subsection{Four values}
+
+The readout takes values in the four-element Belnap lattice \cite{belnap1977,
+dunn1976}, whose elements record not only truth and falsity but the two ways a
+determination can fail: $B$, both, an overdetermination that holds a conflict; and
+$N$, neither, an underdetermination that holds nothing. The four values are used
+here in their structural reading:
+
+\begin{itemize}
+\item $T$ --- the word closes. Every fork pairs with a fuse, and at least one
+      paired region encloses work. Something was split, something was done to it,
+      and the arms were rejoined.
+\item $B$ --- a fork is left open. The word divides and does not rejoin.
+\item $N$ --- forks and fuses pair, but no paired region encloses work. The word
+      divides and rejoins having done nothing between.
+\item $F$ --- a fuse has no fork. The word rejoins what was never divided, which is
+      ill-typed.
+\end{itemize}
+
+$N$ and $F$ are distinct failures and must not be collapsed. $F$ is a type error;
+$N$ is a well-formed word that performs no transformation.
+
+\subsection{Cyclic pairing}\label{sec:cyclic}
+
+\begin{definition}[Pairing]
+\label{def:pairing}
+Read the word as a cycle. Scan forward around it; on each $\in$ push its position
+onto a stack, and on each $\ni$ pop, forming a pair whose \emph{region} runs forward
+around the cycle from the fork to the fuse. Positions left unpopped at the end of a
+full traversal are the \emph{unmatched forks}; fuses that found an empty stack after
+a full traversal are the \emph{unmatched fuses}.
+\end{definition}
+
+\begin{definition}[Readout]
+\label{def:readout}
+For a word $w$ with pairing as above:
+\begin{enumerate}
+\item if $w$ contains no fork and no fuse, the value is $N$;
+\item otherwise, if there are more unmatched fuses than unmatched forks, the value
+      is $F$;
+\item otherwise, if there is an unmatched fork, the value is $B$;
+\item otherwise, if some region contains a work mark, the value is $T$;
+\item otherwise the value is $N$.
+\end{enumerate}
+\end{definition}
+
+Pairing must be cyclic. A word is a loop and the cyclic shift is a symmetry of the
+reading, so a rotation that cuts through the interior of a region must not change
+the value. Pairing over the linearised list makes it change: a fuse landing before
+its fork in the cut reads as ill-typed while the region is in fact intact, and the
+value becomes a function of where one began reading rather than a property of the
+word. Every statement below is about the cyclic pairing.
+
+\section{The readout in closed form}
+
+\Cref{def:readout} is a procedure. The following two results replace it by a
+count and a local condition.
+
+\begin{lemma}[Surplus]
+\label{lem:surplus}
+For any word $w$, at most one of the two unmatched sets is non-empty, and
+\[
+  \#\{\text{unmatched forks}\} - \#\{\text{unmatched fuses}\}
+  \;=\; |w|_{\in} - |w|_{\ni}.
+\]
+\end{lemma}
+
+\begin{proof}
+Each pair consumes one fork and one fuse, so the displayed identity is immediate
+from counting. For the first claim, suppose both sets were non-empty, and let $i$ be
+the position of an unmatched fork and $j$ that of an unmatched fuse. Traverse the
+cycle forward from $i$. The fork at $i$ is pushed and, by hypothesis, never popped,
+so the stack is non-empty at every position strictly after $i$ until the traversal
+returns to $i$. The position $j$ is reached during that interval, since the cycle
+visits every position. At $j$ the stack is non-empty, so the fuse pops, and $j$ is
+matched, contrary to hypothesis.
+\end{proof}
+
+\Cref{lem:surplus} is the whole content of the $B$/$F$ distinction. It says the two
+failures cannot coexist, that the surplus species is determined by the sign of a
+difference of counts, and --- since \Cref{def:readout} tests only whether an
+unmatched set is non-empty --- that the magnitude of the surplus is invisible to the
+readout.
+
+\begin{theorem}[Closed form]
+\label{thm:closed}
+Let $w$ be a word, let $d = |w|_{\in} - |w|_{\ni}$, and call a paired region
+\emph{substantial} if it contains at least one of the seven work marks
+$\succ, \prec, \bowtie, \top, \bot, \boxplus, \Box$. Then the readout of $w$ is
+\[
+  \begin{cases}
+    B & d > 0,\\
+    F & d < 0,\\
+    T & d = 0 \text{ and some region is substantial},\\
+    N & d = 0 \text{ and no region is substantial}.
+  \end{cases}
+\]
+\end{theorem}
+
+\begin{proof}
+If $d > 0$ then by \Cref{lem:surplus} there is an unmatched fork and no unmatched
+fuse, so clause 2 of \Cref{def:readout} does not fire and clause 3 does, giving $B$.
+If $d < 0$ there is an unmatched fuse and no unmatched fork, so clause 2 fires,
+giving $F$. If $d = 0$ both unmatched sets are empty, and clauses 4 and 5 decide by
+exactly the substantiality condition. The case of no forks and no fuses is
+$d = 0$ with no regions at all, hence no substantial region, and clause 1 and clause
+5 agree on $N$.
+\end{proof}
+
+\begin{remark}
+The four values are therefore not four independent conditions on a word but a
+single integer together with one existential condition on it. In particular the
+value cannot be shifted from $B$ to $F$ or back by any rearrangement, since
+rearrangement preserves $d$; and it cannot be shifted from $B$ or $F$ to $T$ by any
+rearrangement either. Only a change of composition moves a word off $d \neq 0$,
+and only an arrangement question remains once $d = 0$.
+\end{remark}
+
+\subsection{The enclosure condition is about work, not about length}
+
+Substantiality is not the same as a region being non-empty. Five marks do no work:
+the two boundaries, self-reference, and the fork and fuse themselves. A region
+containing only these is not substantial, and the word reads $N$.
+
+The distinction is easy to miss because it is invisible on natural sequences. In the
+corpus of \Cref{sec:verification}, every non-empty region contains a work mark, so
+a weaker reading of \Cref{thm:closed} --- ``some region is non-empty'' --- agrees
+with the correct one on every word tested. The two are separated by an explicit
+witness:
+\[
+  \vdash\, \in \odot \ni \,\dashv \quad\text{reads } N,
+  \qquad
+  \vdash\, \in \bowtie \ni \,\dashv \quad\text{reads } T.
+\]
+The first region is non-empty and not substantial. Its content is self-reference: a
+fork that encloses only $\odot$ has looked at itself and returned. Repeating the
+self-reference does not help, and neither does enclosing a boundary; the value stays
+$N$ until a work mark appears inside a region.
+
+This is what makes $N$ a coherent value rather than a residue. $N$ is not a fold
+that failed. It is a fold that never opened.
+
+\section{The lift from a transcript}
+
+\subsection{Bases}
+
+The four bases carry to the four Belnap values by their pairing behaviour. Guanine
+wobble-pairs with both cytosine and uracil, so it carries the overdetermined value;
+cytosine pairs only with guanine and carries the true value; adenine carries the
+false and uracil the neither. The assignment is a bijection of four elements onto
+four.
+
+\subsection{Codons}
+
+The standard genetic code \cite{crick1968, nirenberg1965} takes the sixty-four
+codons to twenty amino acids and three stops.
+
+\subsection{Amino acids}
+
+Exactly twelve of the twenty amino acids are promoted, and the promoted set is in
+bijection with the twelve marks. The other eight activate no axis and emit nothing;
+this is a property of the code, not a gap in the reading. Twenty-three of the
+sixty-one sense codons are promoted.
+
+\begin{center}
+\begin{tabular}{cllll}
+\toprule
+Mark & Residue & Axis & Codons & Class \\
+\midrule
+$\vdash$   & Met & Dimensionality & AUG          & no work \\
+$\dashv$   & Trp & Topology       & UGG          & no work \\
+$\odot$    & His & Criticality    & CAU, CAC     & no work \\
+$\in$      & Asn & Granularity    & AAU, AAC     & no work \\
+$\ni$      & Gln & Grammar        & CAA, CAG     & no work \\
+\midrule
+$\succ$    & Cys & Recognition    & UGU, UGC     & work \\
+$\prec$    & Tyr & Parity         & UAU, UAC     & work \\
+$\bowtie$  & Phe & Fidelity       & UUU, UUC     & work \\
+$\top$     & Ile & Kinetics       & AUU, AUC, AUA & work \\
+$\bot$     & Asp & Chirality      & GAU, GAC     & work \\
+$\boxplus$ & Lys & Stoichiometry  & AAA, AAG     & work \\
+$\Box$     & Glu & Protection     & GAA, GAG     & work \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+A coding sequence is read from its first in-frame AUG and stops at a stop codon;
+each promoted codon emits its mark and each unpromoted one emits nothing. The
+result is the word of the sequence.
+
+\section{The readout of a coding sequence}
+
+The fork is asparagine and the fuse is glutamine. Their codon families are
+\[
+  \in \;=\; \mathrm{AAY} \;=\; \{\mathrm{AAU}, \mathrm{AAC}\},
+  \qquad
+  \ni \;=\; \mathrm{CAR} \;=\; \{\mathrm{CAA}, \mathrm{CAG}\}.
+\]
+They differ in the first base alone --- adenine forks, cytosine fuses --- with
+adenine fixed at the second position. The third base only selects between the two
+families sharing the first two, and the full $\{A,C\}A\{U,C,A,G\}$ block splits four
+ways:
+\[
+  \mathrm{AAY} \to \in \text{ fork},\quad
+  \mathrm{AAR} \to \boxplus \text{ Lys},\quad
+  \mathrm{CAR} \to \ni \text{ fuse},\quad
+  \mathrm{CAY} \to \odot \text{ His}.
+\]
+
+\begin{tcolorbox}[colback=white,colframe=black!70,arc=1pt,boxrule=0.8pt]
+\begin{theorem}[Readout of a coding sequence]
+\label{thm:codon}
+Let $S$ be an open reading frame, and let $a$ and $g$ be the numbers of
+$\mathrm{AAY}$ and $\mathrm{CAR}$ codons it contains. Then the readout of $S$ is
+\begin{itemize}
+\item $B$ if $a > g$;
+\item $F$ if $a < g$;
+\item $T$ if $a = g$ and some $\mathrm{AAY}$ codon is separated, along the frame
+      read cyclically, from the $\mathrm{CAR}$ codon it pairs with by at least one
+      codon of Cys, Tyr, Phe, Ile, Asp, Lys or Glu;
+\item $N$ if $a = g$ and no such separation occurs.
+\end{itemize}
+No other feature of the sequence --- length, composition in the other seventeen
+residues, or the order of anything outside a paired region --- affects the value.
+\end{theorem}
+\end{tcolorbox}
+
+\begin{proof}
+Immediate from \Cref{thm:closed} and the tables of Section 3, since the lift sends
+$\mathrm{AAY}$ to $\in$, $\mathrm{CAR}$ to $\ni$, the seven listed residues to the
+seven work marks, and Met, Trp and His to the three promoted marks that do no work.
+\end{proof}
+
+The three no-work promoted residues besides the fork and the fuse are methionine,
+tryptophan and histidine. An asparagine and a glutamine separated only by these ---
+or by nothing at all --- enclose no work, and the sequence reads $N$.
+
+\subsection{An instance}
+
+The two chains of insulin are the sharpest available illustration, because they
+carry the same fork count and differ only in what the fork encloses. The B chain
+lifts to
+\[
+  \bowtie\; \in \ni \;\odot \succ \odot \Box \prec \succ \Box \bowtie \bowtie \prec \boxplus,
+\]
+in which the asparagine is immediately followed by the glutamine. The region is
+empty; the six work marks in the chain all lie outside it; the chain reads $N$. The
+A chain, at the same fork count, has regions enclosing three and twelve marks and
+reads $T$. Work adjacent to a fork is not work that the fork does.
+
+\section{Verification}\label{sec:verification}
+
+\subsection{Against the corpus}
+
+Sixty-five deposited structures bearing a residue sequence were lifted --- one mark
+per resolved $\alpha$-carbon, promoted residues only --- and read out by
+\Cref{def:readout}. The distribution is $9$ words at $T$, $22$ at $B$, $13$ at $N$
+and $21$ at $F$. \Cref{thm:closed} reproduces all sixty-five values.
+
+The corpus separates the surplus claim sharply. Every $B$ word has positive
+$d$ and every $F$ word negative, with $d$ ranging over $+1$ to $+36$ on the $B$
+side and $-1$ to $-5$ on the $F$ side, and the value constant across each range.
+The magnitude is invisible, as \Cref{lem:surplus} requires.
+
+At $d = 0$ the corpus splits nine to thirteen, and every one of the thirteen $N$
+words either contains no fork at all or contains a fork adjacent to its fuse. As
+noted above, the corpus does not separate substantiality from non-emptiness; that
+separation is carried by the explicit witness and not by the data.
+
+\subsection{Against reconstructed transcripts}
+
+For nine of the structures, the residue sequence was read from the deposited
+coordinates, back-translated to a coding sequence, and lifted through the codon
+route of \Cref{thm:codon}. The value agrees with the structural route in all nine
+cases:
+
+\begin{center}
+\begin{tabular}{lrrrc}
+\toprule
+Structure & $a$ & $g$ & $d$ & Value \\
+\midrule
+Trp-cage                 & 1 & 1 & $0$  & $T$ \\
+Villin headpiece subdomain & 2 & 2 & $0$  & $T$ \\
+Insulin                  & 3 & 3 & $0$  & $T$ \\
+$\beta$-endorphin        & 2 & 2 & $0$  & $T$ \\
+A designed binder that closes & 4 & 4 & $0$  & $T$ \\
+Insulin B chain          & 1 & 1 & $0$  & $N$ \\
+Green fluorescent protein & 13 & 7 & $+6$ & $B$ \\
+Ubiquitin                & 2 & 6 & $-4$ & $F$ \\
+A designed binder that does not & 2 & 6 & $-4$ & $F$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Trp-cage is the cleanest case. The transcript yields the word
+$\vdash \in \prec \top \ni \dashv \boxplus \bot$ once; the deposited structure, an
+ensemble of thirty-eight models, yields the same motif thirty-eight times. The
+sequence carries the reading, and the structure file carries it once per deposited
+copy.
+
+\section{Position}
+
+\subsection{What is settled}
+
+The four-valued readout is a function of two counts and one existential condition,
+and \Cref{thm:closed} states it in closed form with a proof from the pairing
+definition rather than from the corpus. Carried through the genetic code, the
+readout of an open reading frame is determined by its $\mathrm{AAY}$ and
+$\mathrm{CAR}$ codons and by which of seven other codon families separate a paired
+asparagine from its glutamine. The two failure modes are decided by composition
+alone and are invariant under every rearrangement of the sequence; only the
+distinction between closure and the null reading is a question of arrangement.
+
+Three consequences are worth stating separately. First, the value cannot be
+repaired by insertion or by permutation when $d \neq 0$: permutation preserves $d$,
+and insertion that fixes $d$ changes the composition, which is a rebuild and not a
+repair. Second, the value is computed from the promoted subsequence alone, so it is
+fixed at translation and nothing downstream of translation contributes to it.
+Third, $N$ is not a degenerate $T$ but a separate structural fact, and the witness
+$\vdash \in \odot \ni \dashv$ shows that its boundary with $T$ is drawn at work and
+not at length.
+
+\subsection{What is open}
+
+The readout says which of four structural verdicts a sequence receives. It does not
+say what those verdicts predict about the folded molecule, and this paper claims no
+such correspondence: the agreement reported in \Cref{sec:verification} is between
+two routes to the same readout, not between the readout and any thermodynamic or
+kinetic observable. Whether the classes align with foldedness, with stability, or
+with any measured quantity is an empirical question that the closed form now makes
+cheap to ask, since the classification of an arbitrary reading frame costs a single
+pass counting two codon families.
+
+Two structural questions also remain. The condition at $d = 0$ is existential ---
+one substantial region suffices, and a word with many empty regions and one
+substantial region reads $T$ --- so the readout does not distinguish a sequence with
+a single working fork from one in which every fork works. A refinement counting
+substantial regions rather than testing for one would separate these, and its
+relation to the four values is not settled here. And the alphabet's cyclic reading
+means the first and last marks of a frame are adjacent; what that adjacency
+corresponds to in a linear polypeptide is a question this paper leaves open, having
+used the cyclic pairing throughout because the shift symmetry demands it.
+
+\begin{thebibliography}{9}
+
+\bibitem{belnap1977} N.~D.~Belnap.
+\emph{A useful four-valued logic}. In J.~M.~Dunn and G.~Epstein, editors, Modern
+Uses of Multiple-Valued Logic, pages 5--37. Reidel, Dordrecht, 1977.
+
+\bibitem{dunn1976} J.~M.~Dunn.
+\emph{Intuitive semantics for first-degree entailments and coupled trees}.
+Philosophical Studies, 29(3):149--168, 1976.
+
+\bibitem{crick1968} F.~H.~C.~Crick.
+\emph{The origin of the genetic code}. Journal of Molecular Biology,
+38(3):367--379, 1968.
+
+\bibitem{nirenberg1965} M.~Nirenberg, P.~Leder, M.~Bernfield, R.~Brimacombe,
+J.~Trupin, F.~Rottman, and C.~O'Neal.
+\emph{RNA codewords and protein synthesis, VII. On the general nature of the RNA
+code}. Proceedings of the National Academy of Sciences, 53(5):1161--1168, 1965.
+
+\bibitem{anfinsen1973} C.~B.~Anfinsen.
+\emph{Principles that govern the folding of protein chains}. Science,
+181(4096):223--230, 1973.
+
+\bibitem{levinthal1968} C.~Levinthal.
+\emph{Are there pathways for protein folding?} Journal de Chimie Physique,
+65:44--45, 1968.
+
+\bibitem{neidigh2002} J.~W.~Neidigh, R.~M.~Fesinmeyer, and N.~H.~Andersen.
+\emph{Designing a 20-residue protein}. Nature Structural Biology, 9(6):425--430,
+2002.
+
+\bibitem{mcknight1997} C.~J.~McKnight, D.~S.~Doering, P.~T.~Matsudaira, and
+P.~S.~Kim.
+\emph{A thermostable 35-residue subdomain within villin headpiece}. Journal of
+Molecular Biology, 260(2):126--134, 1996.
+
+\bibitem{vijaykumar1987} S.~Vijay-Kumar, C.~E.~Bugg, and W.~J.~Cook.
+\emph{Structure of ubiquitin refined at 1.8~\AA{} resolution}. Journal of Molecular
+Biology, 194(3):531--544, 1987.
+
+\bibitem{ormo1996} M.~Orm\"o, A.~B.~Cubitt, K.~Kallio, L.~A.~Gross, R.~Y.~Tsien,
+and S.~J.~Remington.
+\emph{Crystal structure of the Aequorea victoria green fluorescent protein}.
+Science, 273(5280):1392--1395, 1996.
+
+\bibitem{priest1979} G.~Priest.
+\emph{The logic of paradox}. Journal of Philosophical Logic, 8(1):219--241, 1979.
+
+\end{thebibliography}
+
+\end{document}
