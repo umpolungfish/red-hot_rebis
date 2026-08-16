@@ -1,0 +1,1 @@
+A structure that merges more of its parts than it divides, and the one division it must add to bring the two into balance. Report where the missing split belongs and what closes once it is there.
