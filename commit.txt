@@ -1,26 +1,8 @@
-Monosaccharide grammar types, and the chirality collapse
+Chirality ob3ect prepared — the next rung of the glycan boundary
 
-Prompt 1 of the glycan-boundary asks, answered deterministically instead of by
-ob3ect: each sugar's type is its functional-group census through fg_exhaustive
-(SMARTS → mark), run over the eight mammalian N-glycan monosaccharides with
-isomeric SMILES and chirality-aware matching.
-
-Eight sugars collapse to four mark-sets, and the collapse is the finding rather
-than a defect. Glucose, Mannose, Galactose and Xylose type identically because
-they are epimers — same functional groups, differing only in hydroxyl orientation
-— and functional groups are achiral information. The grammar names the axis it
-drops: ⊥, chirality. The collapse is a pointer to where the remaining distinction
-lives, not a loss.
-
-This corrects the ob3ect route (dc7093cc), which grounded full and Lean-verified
-but collapsed ALL monosaccharides to one type by reasoning about N-glycans as a
-system rather than a sugar as a molecule. The deterministic route collapses to
-four, for a stated reason.
-
-Two reads dropped out unbidden: NeuAc (sialic acid) is the only sugar carrying ∈,
-the recognition split, from its carboxyl and N-acetyl — the terminal,
-environment-facing residue types as a recognition gate. And the N-acetylated
-sugars carry ⊥ where the bare hexoses do not.
-
-Next rung named: a ⊥-reading census separates the epimers; prompt 2's branched
-glycan word inherits the chirality gap until then.
+The monosaccharide census collapsed eight sugars to four because functional groups
+are achiral and the epimers differ only on the ⊥ axis. Prompt 4 asks for the
+typing that separates objects identical in every functional group and differing
+only in the orientation of their parts, and reports which axis carries the
+distinction the achiral reading drops. Object described, no candidate named; the
+chirality-collapse finding is in the context folder. Not run.
