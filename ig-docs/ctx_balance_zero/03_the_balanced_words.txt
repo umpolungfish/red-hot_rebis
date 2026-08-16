@@ -1,0 +1,44 @@
+N  ∈=∋=0  len=7  alpha_msh_exact_platonic.pdb
+    ≺⊢◻⊙⋈⊣⊞
+N  ∈=∋=0  len=7  alpha_msh_platonic.pdb
+    ≺⊢◻⊙⋈⊣⊞
+N  ∈=∋=0  len=7  ionocyte_channel_complex.pdb
+    ⊤⋈⊤⊙⊙⊙◻
+N  ∈=∋=0  len=10  DARPin_gp120.pdb
+    ⊢⊣⋈⊥⊙≺⊣⊣⊞⊥
+N  ∈=∋=0  len=11  DARPin_PBP2a.pdb
+    ⊢⊣⋈⊥⊙⋈≺⊣⊣⊞⊥
+N  ∈=∋=0  len=12  Biofilm_Disruptor.pdb
+    ⊢⊣⋈⊥⊙⋈≺⊣⊣⊞⊥⊞
+N  ∈=∋=0  len=12  DARPin_5HT2A.pdb
+    ⊢⋈⊥≻⊙≺⊣⊣⊞≺⊥⊞
+N  ∈=∋=0  len=12  DARPin_CFTR.pdb
+    ⊢⊣⋈⊥≻⊙≺⋈⊣⊞⊥⊞
+N  ∈=∋=0  len=12  DARPin_LHR.pdb
+    ⊢⊣⋈⊥⊙⋈≺⊣⊣⊞≺⊥
+N  ∈=∋=0  len=12  FSH_odot.pdb
+    ⊢⊣⋈⊥≻⊙⋈≺⊣⊞≺⊥
+N  ∈=∋=0  len=13  CART_odot.pdb
+    ⊢⊣⋈⊥≻⊙⋈≺⊣⊞≺⊥⊞
+N  ∈=∋=1  len=14  insulin_b_chain_exact_platonic.pdb
+    ⋈∈∋⊙≻⊙◻≺≻◻⋈⋈≺⊞
+N  ∈=∋=1  len=14  insulin_b_chain_platonic.pdb
+    ⋈∈∋⊙≻⊙◻≺≻◻⋈⋈≺⊞
+T  ∈=∋=2  len=14  insulin_a_chain_exact_platonic.pdb
+    ⊤◻∋≻≻⊤≻≺∋◻∈≺≻∈
+T  ∈=∋=2  len=14  insulin_a_chain_platonic.pdb
+    ⊤◻∋≻≻⊤≻≺∋◻∈≺≻∈
+T  ∈=∋=2  len=16  beta_endorphin_exact_platonic.pdb
+    ≺⋈⊢◻⊞∋⋈⊞∈⊤⊞∈⊙⊞⊞∋
+T  ∈=∋=2  len=16  beta_endorphin_platonic.pdb
+    ≺⋈⊢◻⊞∋⋈⊞∈⊤⊞∈⊙⊞⊞∋
+T  ∈=∋=2  len=20  1VII.pdb
+    ⊢⊥◻⊥⋈⊞⋈⊢⋈∈⊣⊞∋∋∈⊞⊞◻⊞⋈
+T  ∈=∋=3  len=28  3I40.pdb
+    ⊤◻∋≻≻⊤≻≺∋◻∈≺≻∈⋈∈∋⊙≻⊙◻≺≻◻⋈⋈≺⊞
+T  ∈=∋=4  len=54  pbp2a_binder_s179.pdb
+    ⊣⊙◻⋈≻∋⊣⊣⊥⊣⋈◻◻⊢◻⊤⊢⋈⋈≻∈⊞⊞◻≺⊞⊞≻≻⋈⊙⋈∋⋈≻⋈⊥∈⊣⊢∋◻⊢⊞⊞∋⊞⋈∈⊞◻⊙⊞∈
+T  ∈=∋=4  len=88  PSII_D1_structure.pdb
+    ≻⊞⊤⊙◻≺≺⊥∈⋈⊞⊥⊞≺◻∈≺⋈⊞⊥⊣⊣⋈⊢⊙∈⋈≻⊥≺⊤⋈⋈≺◻⊞⊥◻≺≻⊤≺≻≻⊢⊢⊥⊤⊙≻⊥⊞⋈⊢≺⊤⊤⋈⊣∋⊣⊙∈⋈∋⊤≻⋈⊙⊣⊥⋈⊤∋⊤⊢⊥⊙≺⋈⊙≻⋈≺⊣∋⊥⊙
+T  ∈=∋=38  len=266  1L2Y.pdb
+    ∈≺⊤∋⊣⊞⊥∈≺⊤∋⊣⊞⊥∈≺⊤∋⊣⊞⊥∈≺⊤∋⊣⊞⊥∈≺⊤∋⊣⊞⊥∈≺⊤∋⊣⊞⊥∈≺⊤∋⊣⊞⊥∈≺⊤∋⊣⊞⊥∈≺⊤∋⊣⊞⊥∈≺⊤∋⊣⊞⊥∈≺⊤∋⊣⊞⊥∈≺⊤∋⊣⊞⊥∈≺⊤∋⊣⊞⊥∈≺⊤∋⊣⊞⊥∈≺⊤∋⊣⊞⊥∈≺⊤∋⊣⊞⊥∈≺⊤∋⊣⊞⊥∈≺⊤∋⊣⊞⊥∈≺⊤∋⊣⊞⊥∈≺⊤∋⊣⊞⊥∈≺⊤∋⊣⊞⊥∈≺⊤∋⊣⊞⊥∈≺⊤∋⊣⊞⊥∈≺⊤∋⊣⊞⊥∈≺⊤∋⊣⊞⊥∈≺⊤∋⊣⊞⊥∈≺⊤∋⊣⊞⊥∈≺⊤∋⊣⊞⊥∈≺⊤∋⊣⊞⊥∈≺⊤∋⊣⊞⊥∈≺⊤∋⊣⊞⊥∈≺⊤∋⊣⊞⊥∈≺⊤∋⊣⊞⊥∈≺⊤∋⊣⊞⊥∈≺⊤∋⊣⊞⊥∈≺⊤∋⊣⊞⊥∈≺⊤∋⊣⊞⊥∈≺⊤∋⊣⊞⊥
