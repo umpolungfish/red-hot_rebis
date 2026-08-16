@@ -1,0 +1,1 @@
+Two collections hold the same parts in the same numbers, and one forms a closed whole while the other does not. Report what distinguishes them.
