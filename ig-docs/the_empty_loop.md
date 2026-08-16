@@ -44,3 +44,27 @@ Composition decides the two failures; enclosure decides closure. N is not a fail
 fold — it is a fold that never opened. The distinction between N and T is not how
 much work a word carries but whether any of it is held inside a division that later
 closes, which is what a fold is.
+
+## Correction: the enclosure must be work, not any mark
+
+Stated above as "encloses at least one mark", which is too weak. Of the twelve,
+seven do work — ≻ ≺ ⋈ ⊤ ⊥ ⊞ ◻ — and five do not: the two boundaries ⊢ ⊣, the
+self-reference ⊙, and the fork and fuse themselves ∈ ∋. A loop enclosing only
+no-work marks is still trivial:
+
+    ⊢∈⊙∋⊣        encloses ⊙ alone           tri N   imasm N
+    ⊢∈⊙⊙⊙∋⊣      encloses three ⊙           tri N   imasm N
+    ⊢∈⊣∋⊣        encloses a boundary        tri N   imasm N
+    ⊢∈⋈∋⊣        encloses ⋈, which works    tri T   imasm T
+    ⊢∈◻∋⊣        encloses ◻, which works    tri T   imasm T
+
+The law reads: at balance, T if some ∈…∋ pair encloses at least one of the seven
+work marks, else N. Re-run over the sweep, the corrected test is still 65 of 65,
+and no word in the corpus separates the two readings — every enclosure there that
+holds a mark holds a work mark. The distinction is real all the same, and ⊢∈⊙∋⊣
+is the witness.
+
+This also sharpens the reading. ⊙ is self-reference and does no work; a fork that
+encloses only self-reference has looked at itself and returned. That is N by the
+same argument as the empty loop, and it is why N is a fold that never opened rather
+than one that failed.
