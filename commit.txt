@@ -1,21 +1,24 @@
-The ⊥ census closes the monosaccharide typing — eight distinct, derived
+The glycan tree closes T-but-open — the closure a boundary carries
 
-The chirality ob3ect (d691afad) typed the epimer separator as a discrete Z₂
-chirality invariant, a per-stereocenter handedness no continuous deformation
-removes. Executed against RDKit's CIP assignment — each stereocenter's R/S as a
-bit — it does exactly that.
+Prompt 2 (ob3ect f5e79dfa, grounded full, Lean-verified, O₂dag). The branched
+sugar tree reads as one word, ⊢⊙≻⋈⊙∈≻⋈⊙⊣≻⋈⊙⊣∋⊤⊥⊞◻⊣, and it is the biantennary
+N-glycan built structurally: reducing-end anchor, a single ∈ branch point at
+position 6 splitting into two antennae that each run to a terminal leaf, then ∋
+fusing them into the receptor binding site. The one ∈/∋ pair IS the branching —
+the fork/fuse the prompt asked for, fallen out of the structure.
 
-The ⊥ chirality word makes the four sugars the achiral census collapsed distinct
-(Glucose 1100, Mannose 1000, Galactose 1101, Xylose 101) and separates GlcNAc from
-GalNAc (1101 vs 1100). The two residual ⊥-ties, Galactose=GlcNAc and
-Glucose=GalNAc, are broken by the functional-group census: the N-acetylated pair
-carries ⊣≻⊥ the bare hexoses lack.
+The closure is the finding: tri-ancestral verdict T over an OPEN walk —
+reconnection without return. The antennae fuse into a recognition surface (the T)
+but the word does not return to its start (open). That is what a boundary
+interface is: environment-facing, reaching outward to bind and not closing on
+itself. A glycan that closed its walk would be a molecule turned inward, which a
+recognition boundary is not.
 
-So the pair (functional-group marks, ⊥ chirality word) separates all eight
-monosaccharides, end to end through the chem pipeline and CIP codes, no hand table.
-Prompt 1 is closed — eight sugars, eight types — and the ob3ect's Z₂-invariant
-reading is confirmed by execution rather than assertion. The achiral census names
-the connectivity class; the ⊥ census names the handedness within it.
+Consistent across scales: the fuse ∋ is the receptor binding site, and in prompt 1
+the terminal environment-facing sugar NeuAc was the only monosaccharide carrying
+∈, the recognition gate. Recognition marks the boundary's outer edge at both the
+residue and the whole-tree level.
 
-Unblocks prompt 2: the branched glycan word can now be built from fully-typed
-monosaccharides rather than inheriting the chirality gap.
+The stack is now complete — peptide bulk (vox aa/fasta/pdb), interface seam
+(vox glyco), glycan boundary (this), monosaccharides (fg marks + ⊥ chirality word,
+eight types). The boundary interface is characterized end to end.
