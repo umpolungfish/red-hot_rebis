@@ -1,17 +1,20 @@
-At balance, closure is a non-trivial loop
+The compilation from RNA to protein, stated exactly
 
-The balance-zero ob3ect named the discriminant a non-trivial winding number — a
-loop not deformable to a point. Measured across all 22 balance-zero words of the
-sweep, that is exactly the split: N is no loop (11 words) or a loop enclosing
-nothing (insulin B chain, ⋈∈∋…), T is at least one fork/fuse pair enclosing work
-(9 words).
+Every stage now has a closed form. Nucleotide→B₄ (G=B, C=T, A=F, U=N), codon→amino
+acid by the Lean-proved genetic code, twelve promoted amino acids bijecting the
+twelve axes (23 of 61 sense codons promoted, 38 silent), and — new — word→verdict
+by the sign law and the enclosure law.
 
-The condition is existential. 3I40 is insulin A and B concatenated, carries the B
-chain's empty loop among its three, and reads T because the others enclose work.
+In codons the fold law is about two families: ∈ is Asn = AAY, ∋ is Gln = CAR. They
+differ in the first base alone, A forks and C fuses, with A fixed at the second
+position. Count AAY against CAR in the ORF: AAY > CAR is B, CAR > AAY is F, equal
+closes T exactly when some AAY is separated from its matching CAR by at least one
+other promoted codon, and is N otherwise.
 
-Confirmed fresh on both engines: ⊢∈∋⊣ N, ⊢∈⊤∋⊣ T, ⊢∈∋∈∋⊣ N, ⊢∈∋∈⊤∋⊣ T, and
-⊢⋈∈∋⊙◻⋈⊣ N — six marks of work in the word, all outside the loop, no closure.
-Only what the loop encloses counts.
+Verified on nine sweep PDBs: sequence from the CA trace, back-translated, lifted
+through vox --rna, verdicted by the law. Nine of nine agree with the structure-lane
+sweep and with vox's own engine. Trp-cage is the cleanest — the transcript gives
+⊢∈≺⊤∋⊣⊞⊥ once, the PDB gives the motif thirty-eight times, once per NMR model.
 
-The fold law complete: sign of ∈−∋ positive is B, negative is F; at zero, T if some
-pair encloses a mark, else N. N is not a failed fold but a fold that never opened.
+Folding adds nothing the sequence lacked. The verdict is computed from the promoted
+subsequence alone, so the fold is decided at translation.
