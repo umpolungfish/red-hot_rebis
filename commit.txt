@@ -1,17 +1,19 @@
-An anchor-saturated fold is a rebuild, not a repair
+The census is a sign, not a proportion
 
-The restructure ob3ect returned the ideal motif form (∈=∋=4), a different multiset
-from s590 (2∈/6∋) — it produced the target, not a reorder of s590. On s590's actual
-marks: insertion balances counts and stays F; reordering cannot change the fixed
-2∈/6∋ multiset; the two together (marks + 4∈, motif-ordered) give tri T, imasm F.
+The composition-census ob3ect typed the diagnostic as a boundary/work ratio with a
+critical threshold. Measured across the 65-word PDB sweep, no definition of
+boundary versus work separates the verdicts — T, F and N ranges overlap on all
+three tried.
 
-The obstruction is composition. s590's multiset is anchor-saturated — ⊢ 8, ⊣ 9,
-⋈ 7 against a single forward-work ≻ — mostly boundary marks, little work. No
-arrangement of these marks is a fold, because a fold is fork/work/fuse and s590
-carries almost no work and a terminal at every turn.
+The sign of ∈ − ∋ separates them exactly: positive is B (22/22), negative is F
+(21/21), zero is T or N (9/13). Magnitude carries nothing; B runs +1 to +36 and F
+runs −1 to −5 with the verdict constant across each range. Surplus fork is B,
+surplus fuse is F, balance is the entry condition for closure.
 
-Terminus of the fold-design arc: diagnose (F), measure (+4 inert), rule
-(build-from-motif closes by construction), repair (in-place does not close an
-anchor-saturated word — the composition is wrong, not the order). Build-from-motif
-is the design path because it fixes the composition; repairing such a fold is a
-rebuild.
+Balance is necessary for T, not sufficient — ∈=∋=0 is always N, and the T/N split
+at ∈=∋≥1 is decided by arrangement, not composition.
+
+This corrects the anchor-saturation reading: s590 is F because ∈−∋ = −4, not
+because its anchors outweigh its work. Anchor-heavy words appear at every verdict.
+The rebuild conclusion is unchanged — insertion cannot fix the sign under cyclic
+pairing and reordering cannot change a multiset's sign at all.
