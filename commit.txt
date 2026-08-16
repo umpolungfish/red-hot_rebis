@@ -1,24 +1,13 @@
-Manuscript: The Fold Verdict of a Coding Sequence
+The manuscript's pairing stated as the rotation that makes it one-sided
 
-The four-valued readout stated in closed form and proved from the cyclic pairing
-definition, then carried through the genetic code to two codon families.
+Definition and lemma rewritten to the formulation that was verified. The pairing
+reads the word from an index where the running balance of forks against fuses
+attains its minimum; the Surplus Lemma now states the counts outright — max(0, d)
+unmatched forks and max(0, −d) unmatched fuses — and proves it from the minimality
+of that index, with the negative case by the mirrored reading.
 
-Lemma (Surplus): at most one of the unmatched sets is non-empty and their signed
-difference is the fork count minus the fuse count — so B and F cannot coexist, the
-surplus species is fixed by a sign, and the magnitude is invisible to the readout.
+Verification restated to what was run: the procedure and the closed form return the
+same value on all sixty-five words, that value is the recorded one in every case,
+and the lemma was checked on the same corpus in the form it is stated.
 
-Theorem (Closed form): B when d > 0, F when d < 0, and at d = 0, T if some paired
-region contains one of the seven work marks, else N.
-
-Theorem (Readout of a coding sequence), the carrying result: count AAY against CAR
-in the frame. AAY > CAR is B, CAR > AAY is F, equal closes T exactly when some AAY
-is separated from its paired CAR by a Cys, Tyr, Phe, Ile, Asp, Lys or Glu codon,
-and is N otherwise. Nothing else about the sequence affects the value.
-
-The enclosure condition is separated from the weaker non-emptiness reading by an
-explicit witness rather than by the data — the corpus cannot tell them apart.
-Verified on sixty-five deposited structures and on nine reconstructed transcripts.
-Position states plainly that no correspondence to any thermodynamic or kinetic
-observable is claimed.
-
-Eight pages, builds clean.
+Nine pages, builds clean.

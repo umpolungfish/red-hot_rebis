@@ -141,12 +141,20 @@ $N$ is a well-formed word that performs no transformation.
 
 \begin{definition}[Pairing]
 \label{def:pairing}
-Read the word as a cycle. Scan forward around it; on each $\in$ push its position
-onto a stack, and on each $\ni$ pop, forming a pair whose \emph{region} runs forward
-around the cycle from the fork to the fuse. Positions left unpopped at the end of a
-full traversal are the \emph{unmatched forks}; fuses that found an empty stack after
-a full traversal are the \emph{unmatched fuses}.
+Write $b(i)$ for the number of forks minus the number of fuses among the first $i$
+marks of $w$, so $b(0) = 0$ and $b(n) = d$ where $n$ is the length of $w$ and
+$d = |w|_{\in} - |w|_{\ni}$. Let $k$ be an index at which $b$ attains its minimum.
+Read $w$ as a cycle beginning at position $k$; on each $\in$ push its position onto
+a stack, and on each $\ni$ pop, forming a pair whose \emph{region} runs forward
+around the cycle from the fork to the fuse. A fuse that finds the stack empty is
+\emph{unmatched}; positions left on the stack after the full traversal are the
+\emph{unmatched forks}.
 \end{definition}
+
+The rotation is not a convenience. A word is a loop, and reading from an arbitrary
+cut makes a fuse whose fork lies across the cut appear unmatched when its region is
+in fact intact; the value would then depend on where one began. Beginning at a
+minimum of $b$ removes every such artefact at once, as \Cref{lem:surplus} shows.
 
 \begin{definition}[Readout]
 \label{def:readout}
@@ -175,22 +183,29 @@ count and a local condition.
 
 \begin{lemma}[Surplus]
 \label{lem:surplus}
-For any word $w$, at most one of the two unmatched sets is non-empty, and
+For any word $w$, with $d = |w|_{\in} - |w|_{\ni}$,
 \[
-  \#\{\text{unmatched forks}\} - \#\{\text{unmatched fuses}\}
-  \;=\; |w|_{\in} - |w|_{\ni}.
+  \#\{\text{unmatched forks}\} = \max(0, d),
+  \qquad
+  \#\{\text{unmatched fuses}\} = \max(0, -d).
 \]
+In particular at most one of the two sets is non-empty, and which one is fixed by
+the sign of $d$.
 \end{lemma}
 
 \begin{proof}
-Each pair consumes one fork and one fuse, so the displayed identity is immediate
-from counting. For the first claim, suppose both sets were non-empty, and let $i$ be
-the position of an unmatched fork and $j$ that of an unmatched fuse. Traverse the
-cycle forward from $i$. The fork at $i$ is pushed and, by hypothesis, never popped,
-so the stack is non-empty at every position strictly after $i$ until the traversal
-returns to $i$. The position $j$ is reached during that interval, since the cycle
-visits every position. At $j$ the stack is non-empty, so the fuse pops, and $j$ is
-matched, contrary to hypothesis.
+Suppose first $d \ge 0$. Reading from $k$, the balance after $j$ steps is
+$b(k + j) - b(k)$ while $k + j \le n$, which is non-negative because $b$ attains
+its minimum at $k$; and once the read wraps, writing $j' = k + j - n$, it is
+$b(n) - b(k) + b(j') = d + \big(b(j') - b(k)\big) \ge d \ge 0$, again by minimality.
+So the running balance never falls below zero, and a fuse never finds the stack
+empty: no fuse is unmatched. Each pair consumes one fork with one fuse, so the
+forks left on the stack number $|w|_{\in} - |w|_{\ni} = d$.
+
+For $d < 0$, apply the same argument to the word read backwards with the roles of
+fork and fuse exchanged. That reading is the mirror of the one above and pairs the
+same regions in the opposite order, so it has the same pairs; its surplus is
+$-d > 0$ fuses, and no fork is unmatched.
 \end{proof}
 
 \Cref{lem:surplus} is the whole content of the $B$/$F$ distinction. It says the two
@@ -372,7 +387,11 @@ reads $T$. Work adjacent to a fork is not work that the fork does.
 Sixty-five deposited structures bearing a residue sequence were lifted --- one mark
 per resolved $\alpha$-carbon, promoted residues only --- and read out by
 \Cref{def:readout}. The distribution is $9$ words at $T$, $22$ at $B$, $13$ at $N$
-and $21$ at $F$. \Cref{thm:closed} reproduces all sixty-five values.
+and $21$ at $F$. The pairing procedure of \Cref{def:pairing} and the closed form of
+\Cref{thm:closed} return the same value on all sixty-five, and that value is the
+recorded one in every case. The Surplus Lemma was checked on the same corpus in the
+form it is stated: on each word exactly one unmatched set is empty and the other has
+the size $|d|$.
 
 The corpus separates the surplus claim sharply. Every $B$ word has positive
 $d$ and every $F$ word negative, with $d$ ranging over $+1$ to $+36$ on the $B$
