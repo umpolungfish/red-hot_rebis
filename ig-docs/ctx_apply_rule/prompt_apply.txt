@@ -1,0 +1,1 @@
+A transformation that takes a structure with unmatched mergings and places, at each unmatched merge, the division it was missing, so the whole comes into balance. Report where each division lands and that the transformed structure closes.
