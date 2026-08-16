@@ -1,0 +1,1 @@
+An ordering of a fixed set of parts in which every division precedes the work that its later merge closes, given as the reordering that carries a tangled arrangement into that order. Report the order it produces and that the reordered whole closes.
