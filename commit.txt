@@ -1,19 +1,11 @@
-Fold repair is a restructuring, not an insertion — and two engines disagree
+The two verdict engines split only at ⊞
 
-The apply-the-rule ob3ect (66367fe1) typed the repair and produced a balanced word,
-but tested against the real over-fused s590 it does not hold as a simple insertion.
-Two repairs tried on s590's actual word: naive (∈ before each orphan ∋) balances
-counts 6/6 but stays F — ∈∋ adjacent is a bare split-fuse that verifies nothing;
-motif-placed (∈ before a work-run) also balances 6/6 and also stays F. s590 opens
-with a fuse and interleaves six among the anchors, so cyclic pairing leaves fuses
-unmatched wherever no fork precedes them. Balancing counts is necessary, not
-sufficient; closing needs the forks where the pairing consumes them, a
-restructuring of the word rather than an insertion.
+Tested across words: tri-ancestral and imasm-check agree on every word without ⊞
+and split only where ⊞ (ENGAGR) is present. Adding ⊞ flips imasm-check T→B while
+tri-ancestral holds T; removing it restores agreement. Count balance and motif
+repetition do not move it.
 
-Honest boundary of the fold-design arc: diagnose, measure, and build-from-motif are
-in hand; in-place repair of an arbitrary F word is open.
-
-Flagged, not chased: the balanced template word verdicts T under the tri-ancestral
-SIXTEEN_3 engine and B under ask --imasm check. Same word, two lanes, different
-verdict. A fold result must say which engine, and the two want reconciling before
-either grounds a design claim.
+⊞ engages a dialetheia, a B held at both arms. imasm-check surfaces the held B;
+tri-ancestral reports the T of the closure the B sits inside. The split is the two
+faces of an engaged B — both T and F — one per lane, not a structural discrepancy.
+A fold verdict names its lane only when ⊞ is present; absent it, the two agree.
