@@ -1,19 +1,26 @@
-Context and asks for grounding the glycan boundary — not run
+Monosaccharide grammar types, and the chirality collapse
 
-vox glyco locates the boundary interfaces on a peptide but stops at the glycan,
-because lifting the sugar tree needs the monosaccharides grounded and a hand-typed
-sugar→mark table would be the law_never_hand_imscribe violation. So the glycan is
-started the way the grammar requires: through the pipeline, as an ob3ect.
+Prompt 1 of the glycan-boundary asks, answered deterministically instead of by
+ob3ect: each sugar's type is its functional-group census through fg_exhaustive
+(SMARTS → mark), run over the eight mammalian N-glycan monosaccharides with
+isomeric SMILES and chirality-aware matching.
 
-The context states what is grounded (the peptide word, the sequon interface, the
-functional-group grammar in imas/fg_exhaustive that already maps a SMARTS group to
-an opcode) and what is not (the monosaccharide types and the branched glycan word).
-Three asks, each an object described and no candidate named:
+Eight sugars collapse to four mark-sets, and the collapse is the finding rather
+than a defect. Glucose, Mannose, Galactose and Xylose type identically because
+they are epimers — same functional groups, differing only in hydroxyl orientation
+— and functional groups are achiral information. The grammar names the axis it
+drops: ⊥, chirality. The collapse is a pointer to where the remaining distinction
+lives, not a loss.
 
-  the grammar type of one monosaccharide, DERIVED from its functional groups
-  a branched sugar tree read as one word, branch points as splits
-  the seam bonding a boundary structure to the bulk it hangs off
+This corrects the ob3ect route (dc7093cc), which grounded full and Lean-verified
+but collapsed ALL monosaccharides to one type by reasoning about N-glycans as a
+system rather than a sugar as a molecule. The deterministic route collapses to
+four, for a stated reason.
 
-The derivation is the point: each sugar is a molecule, so its type comes from its
-functional-group census through the chem pipeline, not from a table. Run against the
-local model with the context folder; nothing here is run yet.
+Two reads dropped out unbidden: NeuAc (sialic acid) is the only sugar carrying ∈,
+the recognition split, from its carboxyl and N-acetyl — the terminal,
+environment-facing residue types as a recognition gate. And the N-acetylated
+sugars carry ⊥ where the bare hexoses do not.
+
+Next rung named: a ⊥-reading census separates the epimers; prompt 2's branched
+glycan word inherits the chirality gap until then.
