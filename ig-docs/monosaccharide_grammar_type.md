@@ -52,3 +52,34 @@ The four-class collapse is the frontier: a ⊥-reading census (chiral SMARTS, or
 stereochemistry read directly) is what separates Glc/Man/Gal/Xyl and GlcNAc/GalNAc.
 Prompt 2 (the branched glycan word) builds on these types, so it inherits the
 same chirality gap until ⊥ is read.
+
+---
+
+## Closed: the ⊥ census separates the eight (2026-08-16)
+
+The chirality ob3ect (d691afad, grounded full, Lean-verified) typed the separator
+as a discrete Z₂ chirality invariant — a per-stereocenter handedness that no
+continuous deformation removes. Executed: read each stereocenter's CIP R/S as a
+bit (R=1, S=0, in CIP order), the ⊥ chirality word.
+
+    sugar       fg marks        ⊥ Z₂ word    stereocenters
+    Glucose     ≺⋈⊙◻            1100         4
+    Mannose     ≺⋈⊙◻            1000         4
+    Galactose   ≺⋈⊙◻            1101         4
+    Xylose      ≺⋈⊙◻            101          3
+    Fucose      ⊣≺⋈⊙◻           0010         4
+    GlcNAc      ⊣≻≺⋈⊙⊥◻         1101         4
+    GalNAc      ⊣≻≺⋈⊙⊥◻         1100         4
+    NeuAc       ⊣≻≺⋈∈⊙⊥         100111       6
+
+The ⊥ word alone makes the four achiral-collapsed hexoses distinct
+(1100/1000/1101/101) and separates GlcNAc from GalNAc (1101/1100). Two ⊥-ties
+remain — Galactose=GlcNAc at 1101, Glucose=GalNAc at 1100 — and each is broken by
+the functional-group census, since the N-acetylated pair carries ⊣≻⊥ the bare
+hexoses lack.
+
+So the PAIR (functional-group marks, ⊥ chirality word) separates all eight
+monosaccharides, derived end to end through the chem pipeline and RDKit's CIP
+assignment, with no hand-typed sugar table. Prompt 1 is closed: eight sugars, eight
+distinct types. The achiral census names the connectivity class; the ⊥ census names
+the handedness within it; the two together are the monosaccharide's grammar type.
