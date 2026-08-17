@@ -1,5 +1,13 @@
 
 from shared.rich_output import *
+
+# This is a patch script: running it rewrites another file. Importing it must
+# not, so an import stops here rather than reapplying an edit that has already
+# been applied.
+if __name__ != "__main__":
+    raise ImportError(
+        "patch_cas_smiles.py rewrites another module; run it directly, do not import it")
+
 #!/usr/bin/env python3
 """Targeted patch: only fix the --cas SMILES propagation in the pipeline."""
 PIPELINE_PATH = "/home/mrnob0dy666/imsgct/red-hot_rebis/pipeline/reaction_pipeline.py"
