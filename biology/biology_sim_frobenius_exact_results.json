@@ -1,0 +1,33 @@
+{
+  "simulation": "Frobenius-Exact v6",
+  "ouroboric_cell": {
+    "generations": 183,
+    "initial_fitness": 0.9941047802845842,
+    "final_fitness": 1.0,
+    "fitness_improvement_pct": 0.5930179426084451,
+    "genome_edited_final_pct": 40.0,
+    "total_edits": 3060,
+    "adaptive_loci": 20,
+    "final_environment_signal": 0.6,
+    "env_locked": true,
+    "frobenius_exact": true,
+    "max_expression_residual": 0.0,
+    "fitness_exact_1": true,
+    "final_edits": 0,
+    "repairs_applied": [
+      "environment_discrete_lock_at_gen150",
+      "snap_to_target_1e-4_threshold",
+      "no_editing_threshold",
+      "actual_frobenius_verification",
+      "early_exit_zero_edit_streak"
+    ]
+  },
+  "topological_morphogenesis": {
+    "max_density": 0.9984389856369681,
+    "mean_density": 0.5553852035931387,
+    "filled_fraction_pct": 100.0,
+    "frobenius_exact": true,
+    "steps": 1200
+  },
+  "overall_frobenius_exact": true
+}

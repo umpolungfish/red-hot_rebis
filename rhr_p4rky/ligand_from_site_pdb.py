@@ -78,12 +78,12 @@ _FULL_TO_SHORT = {
 _SHORT_TO_FULL = {v: k for k, v in _FULL_TO_SHORT.items()}
 
 # ── Import sidechain×environment algebra ──────────────────────────
-from pdb_integration import (
+from rhr_p4rky.pdb_integration import (
     fetch_pdb, parse_pdb_residues, classify_environment,
     classify_all_environments, Residue, dist_3d,
     RESIDUE_TO_SIDECHAIN,
 )
-from sidechain_algebra import (
+from rhr_p4rky.sidechain_algebra import (
     SIDECHAINS, ENVIRONMENTS, analyze_composition,
     safe_tensor, safe_meet, safe_join, safe_distance,
     tuple_str, compute_tier, BOTTLENECK, PRIMS, ORD, WEIGHTS,

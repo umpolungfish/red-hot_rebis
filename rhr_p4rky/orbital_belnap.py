@@ -30,7 +30,7 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Tuple
 
-from belnap import Belnap
+from rhr_p4rky.belnap import Belnap
 from shared.rich_output import *
 
 
