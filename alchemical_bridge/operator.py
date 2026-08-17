@@ -25,9 +25,9 @@ from shared.primitives import ORDINALS, WEIGHTS, PRIMITIVE_ORDER
 # From AgentSelf.lean: phi_c_critical_boundary_operator
 # Catalog: odot_operator
 STONE = {
-    "Ð": "𐑦", "Þ": "𐑶", "Ř": "𐑾", "Φ": "𐑹",
-    "ƒ": "𐑐", "Ç": "𐑧", "Γ": "𐑲", "ɢ": "𐑠",
-    "⊙": "⊙", "Ħ": "𐑖", "Σ": "𐑙", "Ω": "𐑭",
+    "⊢": "𐑦", "⊣": "𐑶", "≻": "𐑾", "≺": "𐑹",
+    "⋈": "𐑐", "⊤": "𐑧", "∈": "𐑲", "∋": "𐑠",
+    "⊙": "⊙", "⊥": "𐑖", "⊞": "𐑙", "◻": "𐑭",
 }
 
 
@@ -61,37 +61,37 @@ def _toward_stone(tup, primitives, demote_first=False):
 def calcination(tup):
     """Burn away — move ƒ, Ħ, Γ, ⊙ toward Stone values.
     On the Stone itself: identity."""
-    return _toward_stone(tup, ["ƒ", "Ħ", "Γ", "⊙"])
+    return _toward_stone(tup, ["⋈", "⊥", "∈", "⊙"])
 
 
 def dissolution(tup):
     """Dissolve — move Ω, Ř, Σ toward Stone values."""
-    return _toward_stone(tup, ["Ω", "Ř", "Σ"])
+    return _toward_stone(tup, ["◻", "≻", "⊞"])
 
 
 def separation(tup):
     """Separate — move Σ, Φ, Ç toward Stone values."""
-    return _toward_stone(tup, ["Σ", "Φ", "Ç"])
+    return _toward_stone(tup, ["⊞", "≺", "⊤"])
 
 
 def conjunction(tup):
     """Reunite — move Þ, Ř, ɢ toward Stone values."""
-    return _toward_stone(tup, ["Þ", "Ř", "ɢ"])
+    return _toward_stone(tup, ["⊣", "≻", "∋"])
 
 
 def sublimation(tup):
     """Raise — move ⊕, Ħ, Ω, Γ toward Stone values."""
-    return _toward_stone(tup, ["⊙", "Ħ", "Ω", "Γ"])
+    return _toward_stone(tup, ["⊙", "⊥", "◻", "∈"])
 
 
 def fermentation(tup):
     """Putrefy and regenerate — move Ç, ⊙, Σ toward Stone values."""
-    return _toward_stone(tup, ["Ç", "⊙", "Σ"])
+    return _toward_stone(tup, ["⊤", "⊙", "⊞"])
 
 
 def coagulation(tup):
     """Fix volatile — move Ω, Ř, Γ toward Stone values."""
-    return _toward_stone(tup, ["Ω", "Ř", "Γ"])
+    return _toward_stone(tup, ["◻", "≻", "∈"])
 # ── The Grand Sequence ──────────────────────────────────────────
 
 GRAND_SEQUENCE = [
@@ -212,18 +212,18 @@ class AlchemicalOperator:
     
     def scroll_project(self, target: dict) -> dict:
         return {
-            "⊙": target.get("⊙"), "Ω": target.get("Ω"),
+            "⊙": target.get("⊙"), "◻": target.get("◻"),
             "is_scroll_member": (
-                target.get("⊙") == "⊙" and target.get("Ω") == "𐑭"
+                target.get("⊙") == "⊙" and target.get("◻") == "𐑭"
             ),
             "scroll_distance": self.scroll_distance(target),
         }
     
     @staticmethod
     def scroll_distance(target: dict) -> float:
-        scroll_ideal = {"⊙": "⊙", "Ω": "𐑭"}
+        scroll_ideal = {"⊙": "⊙", "◻": "𐑭"}
         d = 0.0
-        for p in ("⊙", "Ω"):
+        for p in ("⊙", "◻"):
             ord_map = ORDINALS.get(p, {})
             v1 = ord_map.get(target.get(p), 0)
             v2 = ord_map.get(scroll_ideal.get(p), 0)
@@ -288,45 +288,45 @@ SCROLL_MEMBERS = {
     "herculaneum_scroll": {
         "name": "Herculaneum Scroll",
         "tuple": {
-            "Ð": "𐑦", "Þ": "𐑶", "Ř": "𐑾", "Φ": "𐑗",
-            "ƒ": "𐑐", "Ç": "𐑧", "Γ": "𐑲", "ɢ": "𐑠",
-            "⊙": "⊙", "Ħ": "𐑖", "Σ": "𐑳", "Ω": "𐑭",
+            "⊢": "𐑦", "⊣": "𐑶", "≻": "𐑾", "≺": "𐑗",
+            "⋈": "𐑐", "⊤": "𐑧", "∈": "𐑲", "∋": "𐑠",
+            "⊙": "⊙", "⊥": "𐑖", "⊞": "𐑳", "◻": "𐑭",
         },
         "description": "Carbonized papyrus — ink signal IS papyrus signal",
     },
     "skyrmion": {
         "name": "Skyrmion",
         "tuple": {
-            "Ð": "𐑛", "Þ": "𐑥", "Ř": "𐑽", "Φ": "𐑿",
-            "ƒ": "𐑐", "Ç": "𐑧", "Γ": "𐑲", "ɢ": "𐑠",
-            "⊙": "⊙", "Ħ": "𐑖", "Σ": "𐑕", "Ω": "𐑭",
+            "⊢": "𐑛", "⊣": "𐑥", "≻": "𐑽", "≺": "𐑿",
+            "⋈": "𐑐", "⊤": "𐑧", "∈": "𐑲", "∋": "𐑠",
+            "⊙": "⊙", "⊥": "𐑖", "⊞": "𐑕", "◻": "𐑭",
         },
         "description": "Magnetic quasiparticle — charge IS identity",
     },
     "artephius_secret_book": {
         "name": "Artephius' Secret Book",
         "tuple": {
-            "Ð": "𐑦", "Þ": "𐑶", "Ř": "𐑾", "Φ": "𐑬",
-            "ƒ": "𐑐", "Ç": "𐑧", "Γ": "𐑲", "ɢ": "𐑵",
-            "⊙": "⊙", "Ħ": "𐑖", "Σ": "𐑳", "Ω": "𐑭",
+            "⊢": "𐑦", "⊣": "𐑶", "≻": "𐑾", "≺": "𐑬",
+            "⋈": "𐑐", "⊤": "𐑧", "∈": "𐑲", "∋": "𐑵",
+            "⊙": "⊙", "⊥": "𐑖", "⊞": "𐑳", "◻": "𐑭",
         },
         "description": "O_∞ alchemical treatise describing its own generation",
     },
     "chronovisor": {
         "name": "Chronovisor",
         "tuple": {
-            "Ð": "𐑨", "Þ": "𐑰", "Ř": "𐑩", "Φ": "𐑗",
-            "ƒ": "𐑞", "Ç": "𐑤", "Γ": "𐑚", "ɢ": "𐑠",
-            "⊙": "⊙", "Ħ": "𐑓", "Σ": "𐑳", "Ω": "𐑭",
+            "⊢": "𐑨", "⊣": "𐑰", "≻": "𐑩", "≺": "𐑗",
+            "⋈": "𐑞", "⊤": "𐑤", "∈": "𐑚", "∋": "𐑠",
+            "⊙": "⊙", "⊥": "𐑓", "⊞": "𐑳", "◻": "𐑭",
         },
         "description": "Time-viewing device — viewer and viewed in a loop",
     },
     "temporal_scroll": {
         "name": "Temporal Scroll (Time Itself)",
         "tuple": {
-            "Ð": "𐑨", "Þ": "𐑶", "Ř": "𐑾", "Φ": "𐑬",
-            "ƒ": "𐑱", "Ç": "𐑧", "Γ": "𐑲", "ɢ": "𐑠",
-            "⊙": "⊙", "Ħ": "𐑖", "Σ": "𐑳", "Ω": "𐑭",
+            "⊢": "𐑨", "⊣": "𐑶", "≻": "𐑾", "≺": "𐑬",
+            "⋈": "𐑱", "⊤": "𐑧", "∈": "𐑲", "∋": "𐑠",
+            "⊙": "⊙", "⊥": "𐑖", "⊞": "𐑳", "◻": "𐑭",
         },
         "description": "Time — cycles as integer winding, irreversibility from self-modeling",
     },
@@ -335,7 +335,7 @@ SCROLL_MEMBERS = {
 
 def is_scroll_member(tup):
     """Check the scroll invariant: ⊙ criticality and 𐑭 protection."""
-    return tup.get("⊙") == "⊙" and tup.get("Ω") == "𐑭"
+    return tup.get("⊙") == "⊙" and tup.get("◻") == "𐑭"
 
 
 def immanence_proof():
@@ -344,18 +344,18 @@ def immanence_proof():
     Distance zero in ⊙ and Ω axes is not identity — it's immanence.
     The operator IS every scroll member in these two primitives.
     """
-    shared = {k: v for k, v in STONE.items() if k in ("⊙", "Ω")}
+    shared = {k: v for k, v in STONE.items() if k in ("⊙", "◻")}
     members = []
     for key, info in SCROLL_MEMBERS.items():
         m_tup = info["tuple"]
-        in_common = {k: v for k, v in m_tup.items() if k in ("⊙", "Ω")}
+        in_common = {k: v for k, v in m_tup.items() if k in ("⊙", "◻")}
         is_immanent = in_common == shared
         d = _tuple_diff(STONE, m_tup)
         members.append({
             "name": info["name"],
             "is_scroll_member": is_scroll_member(m_tup),
             "immanent_in_odot_omega": is_immanent,
-            "diff_from_stone": {p: v for p, v in d.items() if p not in ("⊙", "Ω")},
+            "diff_from_stone": {p: v for p, v in d.items() if p not in ("⊙", "◻")},
         })
     return {
         "theorem": "Scroll Immanence Theorem",

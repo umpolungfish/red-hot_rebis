@@ -23,57 +23,57 @@ import math
 OPERATION_MAP = {
     "calcination": {
         "ig_op": "primitive_peel",
-        "targets": ["ƒ", "Ħ", "Γ"],
+        "targets": ["⋈", "⊥", "∈"],
         "results_in": {
-            "ƒ": "𐑞", "Ħ": "𐑓", "Γ": "𐑚", "⊙": "𐑢",
+            "⋈": "𐑞", "⊥": "𐑓", "∈": "𐑚", "⊙": "𐑢",
         },
         "description": "Burn away coherence and long-range memory — reduce to base ash.",
     },
     "dissolution": {
         "ig_op": "project",
-        "targets": ["Ω", "Ř", "Σ"],
+        "targets": ["◻", "≻", "⊞"],
         "results_in": {
-            "Ω": "𐑷", "Ř": "𐑑", "Σ": "𐑙",
+            "◻": "𐑷", "≻": "𐑑", "⊞": "𐑙",
         },
         "description": "Dissolve structure — unwind protection, decouple components, reduce variety.",
     },
     "separation": {
         "ig_op": "principal_decomp",
-        "targets": ["Σ", "Φ", "Ç"],
+        "targets": ["⊞", "≺", "⊤"],
         "results_in": {
-            "Σ": "𐑙", "Φ": "𐑗", "Ç": "𐑘",
+            "⊞": "𐑙", "≺": "𐑗", "⊤": "𐑘",
         },
         "description": "Separate the mixed into pure streams — factor into principal components.",
     },
     "conjunction": {
         "ig_op": "meet",
-        "targets": ["Þ", "Ř", "ɢ"],
+        "targets": ["⊣", "≻", "∋"],
         "results_in": {
-            "Þ": "𐑡", "Ř": "𐑽", "ɢ": "𐑝",
+            "⊣": "𐑡", "≻": "𐑽", "∋": "𐑝",
         },
         "description": "Reunite what was separated — find shared structural floor.",
     },
     "sublimation": {
         "ig_op": "promote",
-        "targets": ["⊙", "Ħ", "Ω", "Γ"],
+        "targets": ["⊙", "⊥", "◻", "∈"],
         "results_in": {
-            "⊙": "⊙", "Ħ": "𐑖", "Ω": "𐑴", "Γ": "𐑲",
+            "⊙": "⊙", "⊥": "𐑖", "◻": "𐑴", "∈": "𐑲",
         },
         "description": "Raise the purified — promote primitives to higher tiers.",
     },
     "fermentation": {
         "ig_op": "tensor",
-        "targets": ["Ç", "⊙", "Σ"],
+        "targets": ["⊤", "⊙", "⊞"],
         "results_in": {
-            "Ç": "𐑺", "⊙": "𐑣", "Σ": "𐑳",
+            "⊤": "𐑺", "⊙": "𐑣", "⊞": "𐑳",
         },
         "description": "Putrefy then regenerate — couple base with catalyst via tensor.",
     },
     "coagulation": {
         "ig_op": "join",
-        "targets": ["Ω", "Ř", "Γ"],
+        "targets": ["◻", "≻", "∈"],
         "results_in": {
-            "Ω": "𐑭", "Ř": "𐑾", "Γ": "𐑔",
+            "◻": "𐑭", "≻": "𐑾", "∈": "𐑔",
         },
         "description": "Fix the volatile — find the minimal ceiling that contains both.",
     },
@@ -104,25 +104,25 @@ ALCHEMICAL_GRAND_SEQUENCE = [
 
 TUPLE_SHIFTS = {
     "calcination": {
-        "ƒ": -2, "Ħ": -2, "Γ": -1, "⊙": -1,
+        "⋈": -2, "⊥": -2, "∈": -1, "⊙": -1,
     },
     "dissolution": {
-        "Ω": -2, "Ř": -2, "Σ": -2,
+        "◻": -2, "≻": -2, "⊞": -2,
     },
     "separation": {
-        "Σ": -2, "Φ": -1, "Ç": -2,
+        "⊞": -2, "≺": -1, "⊤": -2,
     },
     "conjunction": {
-        "Þ": -2, "Ř": -1, "ɢ": -1,
+        "⊣": -2, "≻": -1, "∋": -1,
     },
     "sublimation": {
-        "⊙": +2, "Ħ": +1, "Ω": +1, "Γ": +1,
+        "⊙": +2, "⊥": +1, "◻": +1, "∈": +1,
     },
     "fermentation": {
-        "Ç": +2, "⊙": +2, "Σ": +2,
+        "⊤": +2, "⊙": +2, "⊞": +2,
     },
     "coagulation": {
-        "Ω": +2, "Ř": +1, "Γ": +1,
+        "◻": +2, "≻": +1, "∈": +1,
     },
 }
 

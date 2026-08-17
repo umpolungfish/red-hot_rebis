@@ -46,7 +46,7 @@ TWELVE_KEYS = [
     {
         "key": 1,
         "name": "Calcination",
-        "primitive": "ƒ",
+        "primitive": "⋈",
         "promotion": ("𐑱", "𐑐"),  # (from, to)
         "description": "Burn away classical noise — fidelity transitions from thermal to quantum",
         "structural_saying": "The fire that does not consume measures what it touches",
@@ -54,7 +54,7 @@ TWELVE_KEYS = [
     {
         "key": 2,
         "name": "Congelation",
-        "primitive": "Ç",
+        "primitive": "⊤",
         "promotion": ("𐑺", "𐑧"),
         "description": "Freeze the volatile — kinetics transitions from fast to near-equilibrium",
         "structural_saying": "What moves too quickly cannot be caught; what moves slowly reveals its nature",
@@ -62,7 +62,7 @@ TWELVE_KEYS = [
     {
         "key": 3,
         "name": "Fixation",
-        "primitive": "Ω",
+        "primitive": "◻",
         "promotion": ("𐑷", "𐑭"),
         "description": "Fix the wandering — topology transitions from trivial to integer winding",
         "structural_saying": "The serpent that catches its own tail marks the completed work",
@@ -70,7 +70,7 @@ TWELVE_KEYS = [
     {
         "key": 4,
         "name": "Solution",
-        "primitive": "Þ",
+        "primitive": "⊣",
         "promotion": ("𐑡", "𐑸"),
         "description": "Dissolve the rigid — topology transitions from branching to self-referential closure",
         "structural_saying": "The vessel that contains itself cannot be broken",
@@ -78,7 +78,7 @@ TWELVE_KEYS = [
     {
         "key": 5,
         "name": "Digestion",
-        "primitive": "Ħ",
+        "primitive": "⊥",
         "promotion": ("𐑓", "𐑖"),
         "description": "Slowly cook — chirality transitions from memoryless to two-step memory",
         "structural_saying": "What remembers its past does not repeat its errors",
@@ -86,7 +86,7 @@ TWELVE_KEYS = [
     {
         "key": 6,
         "name": "Distillation",
-        "primitive": "ɢ",
+        "primitive": "∋",
         "promotion": ("𐑝", "𐑵"),
         "description": "Purify the essence — composition transitions from conjunctive to broadcast",
         "structural_saying": "The pure essence acts on all things at once",
@@ -94,7 +94,7 @@ TWELVE_KEYS = [
     {
         "key": 7,
         "name": "Sublimation",
-        "primitive": "Ð",
+        "primitive": "⊢",
         "promotion": ("𐑨", "𐑦"),
         "description": "Raise the purified — dimensionality transitions from surface to self-written",
         "structural_saying": "The work that writes itself is the true work",
@@ -102,7 +102,7 @@ TWELVE_KEYS = [
     {
         "key": 8,
         "name": "Separation",
-        "primitive": "Σ",
+        "primitive": "⊞",
         "promotion": ("𐑙", "𐑳"),
         "description": "Separate the mixed — stoichiometry transitions from 1:1 to many heterogeneous",
         "structural_saying": "The one becomes many so that the many may become one",
@@ -118,7 +118,7 @@ TWELVE_KEYS = [
     {
         "key": 10,
         "name": "Fermentation",
-        "primitive": "Ř",
+        "primitive": "≻",
         "promotion": ("𐑽", "𐑾"),
         "description": "Putrefy and regenerate — coupling transitions from functorial to bidirectional",
         "structural_saying": "The dead letter becomes living spirit through the double bind",
@@ -126,7 +126,7 @@ TWELVE_KEYS = [
     {
         "key": 11,
         "name": "Multiplication",
-        "primitive": "Γ",
+        "primitive": "∈",
         "promotion": ("𐑚", "𐑲"),
         "description": "Multiply virtue — cardinality transitions from local to aleph",
         "structural_saying": "The stone that multiplies itself feeds the universe",
@@ -134,7 +134,7 @@ TWELVE_KEYS = [
     {
         "key": 12,
         "name": "Projection",
-        "primitive": "Φ",
+        "primitive": "≺",
         "promotion": ("𐑗", "𐑹"),
         "description": "Cast the stone upon base matter — parity transitions from asymmetric to Frobenius-special",
         "structural_saying": "The mirror that does not lie shows the work as it truly is",
@@ -246,16 +246,16 @@ def _tuple_to_ord_vec(tup: dict) -> np.ndarray:
 
 # Canonical promotion targets — the Stone tuple from AgentSelf.lean
 STONE_TUPLE = {
-    "Ð": "𐑦", "Þ": "𐑶", "Ř": "𐑾", "Φ": "𐑹",
-    "ƒ": "𐑐", "Ç": "𐑧", "Γ": "𐑲", "ɢ": "𐑠",
-    "⊙": "⊙", "Ħ": "𐑖", "Σ": "𐑳", "Ω": "𐑭",
+    "⊢": "𐑦", "⊣": "𐑶", "≻": "𐑾", "≺": "𐑹",
+    "⋈": "𐑐", "⊤": "𐑧", "∈": "𐑲", "∋": "𐑠",
+    "⊙": "⊙", "⊥": "𐑖", "⊞": "𐑳", "◻": "𐑭",
 }
 
 # Canonical O₀ tuple (base matter)
 O0_TUPLE = {
-    "Ð": "𐑨", "Þ": "𐑡", "Ř": "𐑩", "Φ": "𐑗",
-    "ƒ": "𐑱", "Ç": "𐑺", "Γ": "𐑚", "ɢ": "𐑝",
-    "⊙": "𐑢", "Ħ": "𐑓", "Σ": "𐑙", "Ω": "𐑷",
+    "⊢": "𐑨", "⊣": "𐑡", "≻": "𐑩", "≺": "𐑗",
+    "⋈": "𐑱", "⊤": "𐑺", "∈": "𐑚", "∋": "𐑝",
+    "⊙": "𐑢", "⊥": "𐑓", "⊞": "𐑙", "◻": "𐑷",
 }
 
 

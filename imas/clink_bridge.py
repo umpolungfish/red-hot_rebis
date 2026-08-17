@@ -95,7 +95,7 @@ def imasm_to_clink(canonical_name: str) -> List[IMASM_CLINK_Link]:
         d = ig_distance(ig, layer_ig)
         shared = []
         diffs = []
-        for i, prim_name in enumerate(['D','T','R','P','F','K','G','C','Φ','H','S','Ω']):
+        for i, prim_name in enumerate(['D','T','R','P','F','K','G','C','≺','H','S','◻']):
             if ig[i] == layer_ig[i]:
                 shared.append(f"{prim_name}={ig[i]}")
             else:
@@ -179,16 +179,16 @@ def structural_activation_energy(
     dist = ig_distance(source_ig, target_ig)
 
     promotions = []
-    for i, name in enumerate(['D','T','R','P','F','K','G','C','Φ','H','S','Ω']):
+    for i, name in enumerate(['D','T','R','P','F','K','G','C','≺','H','S','◻']):
         if source_ig[i] != target_ig[i]:
             promotions.append(f"{name}: {source_ig[i]} → {target_ig[i]}")
 
     # Weighted cost: primitives with higher cardinalities cost more to promote
     cardinalities = {'D': 4, 'T': 5, 'R': 4, 'P': 5, 'F': 3, 'K': 5,
-                     'G': 3, 'C': 4, 'Φ': 5, 'H': 4, 'S': 3, 'Ω': 4}
+                     'G': 3, 'C': 4, '≺': 5, 'H': 4, 'S': 3, '◻': 4}
     weighted = sum(
         cardinalities[name] / (cardinalities[name] - 1)
-        for i, name in enumerate(['D','T','R','P','F','K','G','C','Φ','H','S','Ω'])
+        for i, name in enumerate(['D','T','R','P','F','K','G','C','≺','H','S','◻'])
         if source_ig[i] != target_ig[i]
     )
 
@@ -239,7 +239,7 @@ def build_bridge_table() -> str:
         ig = m['ig']
         target = CLINK_LAYER_TUPLES[m['nearest_layer']]
         key_deltas = []
-        for i, pn in enumerate(['D','T','R','P','F','K','G','C','Φ','H','S','Ω']):
+        for i, pn in enumerate(['D','T','R','P','F','K','G','C','≺','H','S','◻']):
             if ig[i] != target[i]:
                 key_deltas.append(f"{pn}")
         lines.append(

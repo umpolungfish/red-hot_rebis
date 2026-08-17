@@ -1,14 +1,16 @@
-The gene tuples were keyed to retired letters, and the fork and fuse were swapped
+Every tuple in the toolchain now addresses the marks
 
-Every tuple the gene imscriber emitted came out under Ð Þ Ř Φ ƒ Ç Γ ɢ Ħ Σ Ω, so
-nothing downstream that addresses the marks could read them.
+The alphabet moved and most of this repo was left addressing the letters it retired.
+Sixty files carried tuple keys of the old form, so anything that composed, joined or
+measured a distance across a module boundary either crashed on a missing key or
+silently computed over misses. CLINK could not walk its own chain. The sidechain
+algebra crashed on the first tensor. The gene imscriber emitted tuples nothing else
+could read.
 
-Worse, the activation map had asparagine on Grammar and glutamine on Granularity,
-which is the fork and the fuse the wrong way round. Canonical now: asparagine on
-Granularity as the branch point, glutamine on Grammar as the join, matching the
-catalog and the genetic code module.
+All of them rekeyed to ⊢ ⊣ ≻ ≺ ⋈ ⊤ ∈ ∋ ⊙ ⊥ ⊞ ◻, and the chain now walks L0 to L8 with
+the tiers ascending to O_∞ as its own documentation claims.
 
-The Belnap command printed meet against T and join against F while labelling both
-plainly, so B appeared to meet to T and F to N and the table looked broken when the
-algebra was right. It prints the full tables now, both orderings visible, with the
-negation row and the designated values.
+The ligand facade exposed nothing at all, alone among the domains, so the census read
+zero symbols for it while the engines underneath imported fine. It exposes them now.
+Given lysozyme and its catalytic pair, the designer returns glycosides carrying a
+carboxylate, which is the peptidoglycan chemistry lysozyme actually cleaves.

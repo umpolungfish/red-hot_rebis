@@ -142,7 +142,7 @@ class AlchemicalBridge:
         design = self.mapper.scroll_family_design()
         return {
             "family_name": "Scroll Family",
-            "invariant": {"⊙": "⊙", "Ω": "𐑭"},
+            "invariant": {"⊙": "⊙", "◻": "𐑭"},
             "members": members,
             "molecular_design": design,
         }

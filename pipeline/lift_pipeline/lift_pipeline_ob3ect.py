@@ -95,9 +95,9 @@ class LiftPipelineOb3ect:
         
         sq = 0.0
         field_map = {
-            "D": "Ð", "T": "Þ", "R": "Ř", "P": "Φ", "F": "ƒ",
-            "K": "Ç", "G": "Γ", "Gm": "ɢ", "Ph": "φ̂", "H": "Ħ",
-            "S": "Σ", "W": "Ω",
+            "D": "⊢", "T": "⊣", "R": "≻", "P": "≺", "F": "⋈",
+            "K": "⊤", "G": "∈", "Gm": "∋", "Ph": "φ̂", "H": "⊥",
+            "S": "⊞", "W": "◻",
         }
         
         for field, glyph_key in field_map.items():

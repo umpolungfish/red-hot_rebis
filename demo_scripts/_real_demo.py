@@ -8,7 +8,7 @@ sys.path.insert(0, os.path.join(ROOT, "red-hot_rebis"))
 def s(t): print(f"\n{'='*70}\n  {t}\n{'='*70}")
 
 def ig_join(d):
-    o = ['Ð','Þ','Ř','Φ','ƒ','Ç','Γ','ɢ','φ̂','Ħ','Σ','Ω']
+    o = ['⊢','⊣','≻','≺','⋈','⊤','∈','∋','φ̂','⊥','⊞','◻']
     return "⟨" + "".join(d.get(k, "?") for k in o) + ">"
 
 s("1. PETase FROM CATALOG")
@@ -51,5 +51,5 @@ s("6. FORMAT CHECK")
 for tc in ["⟨𐑼𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑖𐑳𐑭>","⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟>"]:
     info_line(f"  [{'✗ BAD' if '·' in tc else '✓'}] {tc}")
 
-info_line(f"  [{'✗ BAD' if '·' in ig_join(dict(zip(['Ð','Þ','Ř','Φ','ƒ','Ç','Γ','ɢ','φ̂','Ħ','Σ','Ω'],'𐑼𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑖𐑳𐑭'))) else '✓'}] Generated")
+info_line(f"  [{'✗ BAD' if '·' in ig_join(dict(zip(['⊢','⊣','≻','≺','⋈','⊤','∈','∋','φ̂','⊥','⊞','◻'],'𐑼𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑖𐑳𐑭'))) else '✓'}] Generated")
 s("DONE ✓")

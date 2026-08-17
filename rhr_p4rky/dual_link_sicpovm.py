@@ -468,11 +468,11 @@ def d2_bridge() -> Dict:
 
 FROBENIUS_DUAL_PAIRS = [
     ("D",  "T",  "Dimensionality ↔ Topology",         "Axiom C: co-origination"),
-    ("R",  "Φ",  "Coupling ↔ Criticality",            "Response ↔ Drive"),
+    ("R",  "≺",  "Coupling ↔ Criticality",            "Response ↔ Drive"),
     ("F",  "K",  "Fidelity ↔ Kinetics",                "Resolution ↔ Rate"),
-    ("Γ",  "G",  "Composition ↔ Cardinality",         "How ↔ How Many"),
+    ("∈",  "G",  "Composition ↔ Cardinality",         "How ↔ How Many"),
     ("⊙",  "H",  "Criticality ⊙ ↔ Chirality",        "Gate 1 ↔ Memory order"),
-    ("Σ",  "Ω",  "Stoichiometry ↔ Winding",            "Components ↔ Topology"),
+    ("⊞",  "◻",  "Stoichiometry ↔ Winding",            "Components ↔ Topology"),
 ]
 
 # The Belnap multilattice SIC-POVM structural type (the Σ=n:m type):
@@ -484,11 +484,11 @@ BELNAP_SIC_TUPLE = {
     "F":  "𐑐",   # quantum
     "K":  "𐑧",   # slow / near-equilibrium
     "G":  "𐑔",   # aleph / maximal
-    "Γ":  "𐑠",   # sequential
+    "∈":  "𐑠",   # sequential
     "⊙":  "⊙",   # critical (self-modeling)
     "H":  "𐑖",   # n=2 Markov
-    "Σ":  "𐑳",   # n:m (heterogeneous)
-    "Ω":  "𐑭",   # ℤ integer winding
+    "⊞":  "𐑳",   # n:m (heterogeneous)
+    "◻":  "𐑭",   # ℤ integer winding
 }
 
 # The Grammar tuple (Σ=1:1 self-referential limit):
@@ -500,11 +500,11 @@ GRAMMAR_TUPLE = {
     "F":  "𐑐",   # quantum
     "K":  "𐑧",   # slow / near-equilibrium
     "G":  "𐑔",   # aleph / maximal
-    "Γ":  "𐑠",   # sequential
+    "∈":  "𐑠",   # sequential
     "⊙":  "⊙",   # critical (self-modeling)
     "H":  "𐑖",   # n=2 Markov
-    "Σ":  "𐑙",   # 1:1 (SELF-REFERENTIAL — sole difference!)
-    "Ω":  "𐑭",   # ℤ integer winding
+    "⊞":  "𐑙",   # 1:1 (SELF-REFERENTIAL — sole difference!)
+    "◻":  "𐑭",   # ℤ integer winding
 }
 
 def grammar_belnap_delta() -> Dict:
@@ -700,7 +700,7 @@ def _module_self_check():
     delta = grammar_belnap_delta()
     assert len(delta["differences"]) == 1, \
         f"Expected exactly 1 difference, got {len(delta['differences'])}: {delta['differences']}"
-    assert "Σ" in delta["differences"], \
+    assert "⊞" in delta["differences"], \
         f"Expected Σ to differ, got {delta['differences']}"
     
     return True

@@ -423,9 +423,9 @@ class RetrosyntheticStoneEngine:
         from .operator import STONE as stone_tuple
 
         plan_tuple = {
-            "Ð": "𐑦", "Þ": "𐑸", "Ř": "𐑾", "Φ": "𐑹",
-            "ƒ": "𐑐", "Ç": "𐑧", "Γ": "𐑚", "ɢ": "𐑝",
-            "⊙": "⊙", "Ħ": "𐑖", "Σ": "𐑳", "Ω": "𐑭",
+            "⊢": "𐑦", "⊣": "𐑸", "≻": "𐑾", "≺": "𐑹",
+            "⋈": "𐑐", "⊤": "𐑧", "∈": "𐑚", "∋": "𐑝",
+            "⊙": "⊙", "⊥": "𐑖", "⊞": "𐑳", "◻": "𐑭",
         }
 
         dist = tuple_distance(plan_tuple, stone_tuple)

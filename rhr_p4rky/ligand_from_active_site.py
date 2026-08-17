@@ -166,9 +166,9 @@ _CATALOG_FG_NAMES = [
 
 # Map catalog primitive keys to short names
 _CATALOG_KEY_MAP = {
-    "Ð": "D", "Þ": "T", "Ř": "R", "Φ": "P", "ƒ": "F",
-    "Ç": "K", "Γ": "G", "ɢ": "Gm", "⊙": "Ph",
-    "Ħ": "H", "Σ": "S", "Ω": "W",
+    "⊢": "D", "⊣": "T", "≻": "R", "≺": "P", "⋈": "F",
+    "⊤": "K", "∈": "G", "∋": "Gm", "⊙": "Ph",
+    "⊥": "H", "⊞": "S", "◻": "W",
 }
 
 def _catalog_entry_to_tuple(entry: dict) -> dict:
@@ -796,12 +796,12 @@ def closest_bond_type(ligand_type: dict) -> Tuple[str, dict, float]:
         for p in PRIMITIVE_NAMES_SHORT:
             if p in bt:
                 bt_tuple[p] = bt[p]
-            elif {"D": "Ð", "T": "Þ", "R": "Ř", "P": "Φ", "F": "ƒ", 
-                  "K": "Ç", "G": "Γ", "Gm": "ɢ", "Ph": "⊙", 
-                  "H": "Ħ", "S": "Σ", "W": "Ω"}.get(p, "") in bt:
-                key = {"D": "Ð", "T": "Þ", "R": "Ř", "P": "Φ", "F": "ƒ", 
-                       "K": "Ç", "G": "Γ", "Gm": "ɢ", "Ph": "⊙", 
-                       "H": "Ħ", "S": "Σ", "W": "Ω"}[p]
+            elif {"D": "⊢", "T": "⊣", "R": "≻", "P": "≺", "F": "⋈", 
+                  "K": "⊤", "G": "∈", "Gm": "∋", "Ph": "⊙", 
+                  "H": "⊥", "S": "⊞", "W": "◻"}.get(p, "") in bt:
+                key = {"D": "⊢", "T": "⊣", "R": "≻", "P": "≺", "F": "⋈", 
+                       "K": "⊤", "G": "∈", "Gm": "∋", "Ph": "⊙", 
+                       "H": "⊥", "S": "⊞", "W": "◻"}[p]
                 bt_tuple[p] = bt[key]
             else:
                 continue
@@ -883,8 +883,8 @@ def closest_fg_pair(ligand_type: dict, bond_type: dict = None) -> Tuple[list, di
             # Tensor product: max on most, min on P and F
             fused = {}
             for p in PRIMITIVE_NAMES_SHORT:
-                v1 = fg1_t.get(p) if p in fg1_t else fg1_t.get({"D":"Ð","T":"Þ","R":"Ř","P":"Φ","F":"ƒ","K":"Ç","G":"Γ","Gm":"ɢ","Ph":"⊙","H":"Ħ","S":"Σ","W":"Ω"}[p], "")
-                v2 = fg2_t.get(p) if p in fg2_t else fg2_t.get({"D":"Ð","T":"Þ","R":"Ř","P":"Φ","F":"ƒ","K":"Ç","G":"Γ","Gm":"ɢ","Ph":"⊙","H":"Ħ","S":"Σ","W":"Ω"}[p], "")
+                v1 = fg1_t.get(p) if p in fg1_t else fg1_t.get({"D":"⊢","T":"⊣","R":"≻","P":"≺","F":"⋈","K":"⊤","G":"∈","Gm":"∋","Ph":"⊙","H":"⊥","S":"⊞","W":"◻"}[p], "")
+                v2 = fg2_t.get(p) if p in fg2_t else fg2_t.get({"D":"⊢","T":"⊣","R":"≻","P":"≺","F":"⋈","K":"⊤","G":"∈","Gm":"∋","Ph":"⊙","H":"⊥","S":"⊞","W":"◻"}[p], "")
                 o1 = glyph_ord(p, v1) if v1 else 0
                 o2 = glyph_ord(p, v2) if v2 else 0
                 fused[p] = ord_to_glyph(p, min(o1, o2) if p in ("P", "F") else max(o1, o2))

@@ -231,8 +231,8 @@ CLOSURE_CIM_SELFDUAL = ClosureDesign(
     name="CLOSURE-1: CIM Active Self-Dual Lock",
     paradigm="coherent_ising_machine",
     paradigm_tuple={'D': '𐑼', 'T': '𐑡', 'R': '𐑾', 'P': '𐑬',
-                    'F': '𐑐', 'K': '𐑧', 'G': '𐑲', 'Γ': '𐑠',
-                    'φ̂': '⊙', 'Ħ': '𐑒', 'Σ': '𐑕', 'Ω': '𐑴'},
+                    'F': '𐑐', 'K': '𐑧', 'G': '𐑲', '∈': '𐑠',
+                    'φ̂': '⊙', '⊥': '𐑒', '⊞': '𐑕', '◻': '𐑴'},
     current_error=0.04,
     pathway="EXACTOR-σ (Self-Dual Critical Point)",
     discrete_invariant="Duality operator eigenvalue = +1 (exact at lock point)",
@@ -298,8 +298,8 @@ CLOSURE_MBQC_PRECOMPILED = ClosureDesign(
     name="CLOSURE-2: MBQC Pre-Compiled Measurement Bases",
     paradigm="measurement_based_qc",
     paradigm_tuple={'D': '𐑨', 'T': '𐑡', 'R': '𐑾', 'P': '𐑬',
-                    'F': '𐑐', 'K': '𐑧', 'G': '𐑲', 'Γ': '𐑠',
-                    'φ̂': '𐑮', 'Ħ': '𐑖', 'Σ': '𐑕', 'Ω': '𐑴'},
+                    'F': '𐑐', 'K': '𐑧', 'G': '𐑲', '∈': '𐑠',
+                    'φ̂': '𐑮', '⊥': '𐑖', '⊞': '𐑕', '◻': '𐑴'},
     current_error=0.06,
     pathway="EXACTOR-σ (Self-Dual Critical Point)",
     discrete_invariant="Graph state stabilizer parity = +1 (timing-independent)",
@@ -374,8 +374,8 @@ CLOSURE_CVQC_DUALRAIL = ClosureDesign(
     name="CLOSURE-3: CV-QC Dual-Rail Phase Encoding",
     paradigm="continuous_variable_qc",
     paradigm_tuple={'D': '𐑼', 'T': '𐑡', 'R': '𐑾', 'P': '𐑿',
-                    'F': '𐑐', 'K': '𐑧', 'G': '𐑲', 'Γ': '𐑠',
-                    'φ̂': '𐑮', 'Ħ': '𐑖', 'Σ': '𐑳', 'Ω': '𐑷'},
+                    'F': '𐑐', 'K': '𐑧', 'G': '𐑲', '∈': '𐑠',
+                    'φ̂': '𐑮', '⊥': '𐑖', '⊞': '𐑳', '◻': '𐑷'},
     current_error=0.08,
     pathway="EXACTOR-τ (Floquet Time Crystal)",
     discrete_invariant="Relative phase parity = ±1 (discrete Z₂, not continuous angle)",
@@ -447,8 +447,8 @@ CLOSURE_QW_FLOQUET = ClosureDesign(
     name="CLOSURE-4: Floquet Topological Quantum Walk",
     paradigm="quantum_walks",
     paradigm_tuple={'D': '𐑼', 'T': '𐑡', 'R': '𐑾', 'P': '𐑿',
-                    'F': '𐑐', 'K': '𐑤', 'G': '𐑚', 'Γ': '𐑠',
-                    'φ̂': '𐑮', 'Ħ': '𐑒', 'Σ': '𐑙', 'Ω': '𐑷'},
+                    'F': '𐑐', 'K': '𐑤', 'G': '𐑚', '∈': '𐑠',
+                    'φ̂': '𐑮', '⊥': '𐑒', '⊞': '𐑙', '◻': '𐑷'},
     current_error=0.10,
     pathway="EXACTOR-τ (Floquet Time Crystal)",
     discrete_invariant="Floquet winding number ν ∈ ℤ (quantized topological charge)",
@@ -525,8 +525,8 @@ CLOSURE_ADIABATIC_CD = ClosureDesign(
     name="CLOSURE-5: Counterdiabatic Adiabatic QC",
     paradigm="adiabatic_qc",
     paradigm_tuple={'D': '𐑨', 'T': '𐑡', 'R': '𐑾', 'P': '𐑬',
-                    'F': '𐑐', 'K': '𐑧', 'G': '𐑲', 'Γ': '𐑠',
-                    'φ̂': '𐑮', 'Ħ': '𐑒', 'Σ': '𐑕', 'Ω': '𐑷'},
+                    'F': '𐑐', 'K': '𐑧', 'G': '𐑲', '∈': '𐑠',
+                    'φ̂': '𐑮', '⊥': '𐑒', '⊞': '𐑕', '◻': '𐑷'},
     current_error=0.12,
     pathway="EXACTOR-ε (Topological Surface Code)",
     discrete_invariant="Adiabatic gauge potential integral = 0 (exact by CD driving)",
@@ -607,10 +607,10 @@ CLOSURE_ADIABATIC_CD = ClosureDesign(
 BOSON_SAMPLING_OPEN = StructuralOpenDiagnosis(
     paradigm="boson_sampling",
     tuple={'D': '𐑼', 'T': '𐑥', 'R': '𐑑', 'P': '𐑗',
-           'F': '𐑐', 'K': '𐑘', 'G': '𐑔', 'Γ': '𐑵',
-           'φ̂': '𐑢', 'Ħ': '𐑓', 'Σ': '𐑳', 'Ω': '𐑷'},
+           'F': '𐑐', 'K': '𐑘', 'G': '𐑔', '∈': '𐑵',
+           'φ̂': '𐑢', '⊥': '𐑓', '⊞': '𐑳', '◻': '𐑷'},
     blocking_primitives=[
-        ('Ω', '𐑷', 'No topological invariant. Boson sampling has trivial winding — the '
+        ('◻', '𐑷', 'No topological invariant. Boson sampling has trivial winding — the '
                     'interferometer has no non-trivial topology (all SU(M) matrices are '
                     'homotopically trivial for M>2 in the linear optical regime).'),
         ('φ̂', '𐑢', 'Sub-critical. Boson sampling operates far from any phase transition. '
@@ -618,7 +618,7 @@ BOSON_SAMPLING_OPEN = StructuralOpenDiagnosis(
                     'The permanent is #P-hard precisely because it lacks algebraic structure.'),
         ('P', '𐑗', 'No symmetry. The scattering matrix is a random Haar unitary — there '
                     'are no special symmetry points. No Frobenius-special parity exists.'),
-        ('Ħ', '𐑓', 'Memoryless. Each photon is independent and forgets its history. '
+        ('⊥', '𐑓', 'Memoryless. Each photon is independent and forgets its history. '
                     'No Markov structure can accumulate an invariant across time.'),
     ],
     why_closure_is_impossible=(
@@ -646,8 +646,8 @@ BOSON_SAMPLING_OPEN = StructuralOpenDiagnosis(
 QRC_OPEN = StructuralOpenDiagnosis(
     paradigm="quantum_reservoir_computing",
     tuple={'D': '𐑼', 'T': '𐑡', 'R': '𐑩', 'P': '𐑗',
-           'F': '𐑞', 'K': '𐑺', 'G': '𐑚', 'Γ': '𐑵',
-           'φ̂': '𐑢', 'Ħ': '𐑒', 'Σ': '𐑳', 'Ω': '𐑷'},
+           'F': '𐑞', 'K': '𐑺', 'G': '𐑚', '∈': '𐑵',
+           'φ̂': '𐑢', '⊥': '𐑒', '⊞': '𐑳', '◻': '𐑷'},
     blocking_primitives=[
         ('K', '𐑺', 'Many-body localized (disorder-trapped). MBL systems are glasses — '
                     'they have exponentially many local minima and NEVER return to their '
@@ -657,7 +657,7 @@ QRC_OPEN = StructuralOpenDiagnosis(
                     'No critical point exists where a discrete invariant could be defined. '
                     'The computational power comes from the HIGH dimensionality of the '
                     'disordered Hilbert space, not from any critical structure.'),
-        ('Ω', '𐑷', 'No topological invariant. The disorder that makes QRC work also '
+        ('◻', '𐑷', 'No topological invariant. The disorder that makes QRC work also '
                     'destroys any possible topological order. MBL systems have area-law '
                     'entanglement and no long-range topological correlations.'),
         ('F', '𐑞', 'Thermal/noisy. The reservoir operates in a mixed state. Frobenius '

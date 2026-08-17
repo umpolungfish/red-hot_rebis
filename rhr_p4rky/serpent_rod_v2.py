@@ -264,9 +264,9 @@ def compute_energy(model, aa_list, contacts):
 # ═══════════════════════════════════════════════════════════════════
 
 PRIMITIVE_SHORT_NAMES = {
-    "Ð":"Dimensionality","Þ":"Topology","Ř":"Recognition","Φ":"Parity",
-    "ƒ":"Fidelity","Ç":"Kinetics","Γ":"Granularity","ɢ":"Coupling",
-    "⊙":"Criticality","Ħ":"Chirality","Σ":"Stoichiometry","Ω":"Winding"}
+    "⊢":"Dimensionality","⊣":"Topology","≻":"Recognition","≺":"Parity",
+    "⋈":"Fidelity","⊤":"Kinetics","∈":"Granularity","∋":"Coupling",
+    "⊙":"Criticality","⊥":"Chirality","⊞":"Stoichiometry","◻":"Winding"}
 ALL_12_PRIMITIVES = set(PRIMITIVE_SHORT_NAMES.values())
 
 def compute_activation_set(aas):

@@ -20,16 +20,16 @@ from shared.primitives import (
 )
 
 # Canonical primitive order (Shavian glyph keys)
-PORDER = ["Ð", "Þ", "Ř", "Φ", "ƒ", "Ç", "Γ", "ɢ", "⊙", "Ħ", "Σ", "Ω"]
+PORDER = ["⊢", "⊣", "≻", "≺", "⋈", "⊤", "∈", "∋", "⊙", "⊥", "⊞", "◻"]
 
 # ═══════════════════════════════════════════════════════════════════
 # LAYER 0 — Frustrated Belnap5 (Quark Color)
 # ═══════════════════════════════════════════════════════════════════
 # ⟨𐑛𐑶𐑩𐑯𐑐𐑘𐑚𐑝𐑢𐑓𐑳𐑷>  O₀
 FRUSTRATED_BELNAP5 = {
-    "Ð": "𐑛", "Þ": "𐑶", "Ř": "𐑩", "Φ": "𐑯",
-    "ƒ": "𐑐", "Ç": "𐑘", "Γ": "𐑚", "ɢ": "𐑝",
-    "⊙": "𐑢", "Ħ": "𐑓", "Σ": "𐑳", "Ω": "𐑷",
+    "⊢": "𐑛", "⊣": "𐑶", "≻": "𐑩", "≺": "𐑯",
+    "⋈": "𐑐", "⊤": "𐑘", "∈": "𐑚", "∋": "𐑝",
+    "⊙": "𐑢", "⊥": "𐑓", "⊞": "𐑳", "◻": "𐑷",
     "_name": "frustratedBelnap5",
     "_desc": "Frustrated Belnap5 — SU(3) quark color with confinement",
     "_tier": "O₀",
@@ -38,9 +38,9 @@ FRUSTRATED_BELNAP5 = {
 # LAYER 1 — Electron Orbital (Belnap4)
 # ⟨𐑛𐑶𐑩𐑗𐑐𐑤𐑚𐑜𐑢𐑓𐑳𐑷>  O₀
 ELECTRON_ORBITAL_LAYER = {
-    "Ð": "𐑛", "Þ": "𐑶", "Ř": "𐑩", "Φ": "𐑗",
-    "ƒ": "𐑐", "Ç": "𐑤", "Γ": "𐑚", "ɢ": "𐑜",
-    "⊙": "𐑢", "Ħ": "𐑓", "Σ": "𐑳", "Ω": "𐑷",
+    "⊢": "𐑛", "⊣": "𐑶", "≻": "𐑩", "≺": "𐑗",
+    "⋈": "𐑐", "⊤": "𐑤", "∈": "𐑚", "∋": "𐑜",
+    "⊙": "𐑢", "⊥": "𐑓", "⊞": "𐑳", "◻": "𐑷",
     "_name": "electronOrbitalLayer",
     "_desc": "Belnap4 orbital occupancy — 4-valued lattice",
     "_tier": "O₀",
@@ -49,63 +49,63 @@ ELECTRON_ORBITAL_LAYER = {
 # LAYER 2 — Atom (Nuclear + Electron)
 # ⟨𐑼𐑥𐑽𐑿𐑐𐑤𐑔𐑝𐑮𐑒𐑳𐑷>  O₁
 ATOM_LAYER = {
-    "Ð": "𐑼", "Þ": "𐑥", "Ř": "𐑽", "Φ": "𐑿",
-    "ƒ": "𐑐", "Ç": "𐑤", "Γ": "𐑔", "ɢ": "𐑝",
-    "⊙": "𐑮", "Ħ": "𐑒", "Σ": "𐑳", "Ω": "𐑷",
+    "⊢": "𐑼", "⊣": "𐑥", "≻": "𐑽", "≺": "𐑿",
+    "⋈": "𐑐", "⊤": "𐑤", "∈": "𐑔", "∋": "𐑝",
+    "⊙": "𐑮", "⊥": "𐑒", "⊞": "𐑳", "◻": "𐑷",
     "_name": "atomLayer", "_desc": "Atom — nuclear + electron", "_tier": "O₁",
 }
 
 # LAYER 3 — Molecule (Chemical Bonds)
 # ⟨𐑼𐑥𐑽𐑿𐑞𐑧𐑲𐑠⊙𐑓𐑳𐑭>  O₂
 MOLECULE_LAYER = {
-    "Ð": "𐑼", "Þ": "𐑥", "Ř": "𐑽", "Φ": "𐑿",
-    "ƒ": "𐑞", "Ç": "𐑧", "Γ": "𐑲", "ɢ": "𐑠",
-    "⊙": "⊙", "Ħ": "𐑓", "Σ": "𐑳", "Ω": "𐑭",
+    "⊢": "𐑼", "⊣": "𐑥", "≻": "𐑽", "≺": "𐑿",
+    "⋈": "𐑞", "⊤": "𐑧", "∈": "𐑲", "∋": "𐑠",
+    "⊙": "⊙", "⊥": "𐑓", "⊞": "𐑳", "◻": "𐑭",
     "_name": "moleculeLayer", "_desc": "Molecule — chemical bonds", "_tier": "O₂",
 }
 
 # LAYER 4 — Cell (Living)
 # ⟨𐑦𐑸𐑾𐑬𐑞𐑧𐑲𐑠⊙𐑒𐑳𐑭>  O₂
 CELL_LAYER = {
-    "Ð": "𐑦", "Þ": "𐑸", "Ř": "𐑾", "Φ": "𐑬",
-    "ƒ": "𐑞", "Ç": "𐑧", "Γ": "𐑲", "ɢ": "𐑠",
-    "⊙": "⊙", "Ħ": "𐑒", "Σ": "𐑳", "Ω": "𐑭",
+    "⊢": "𐑦", "⊣": "𐑸", "≻": "𐑾", "≺": "𐑬",
+    "⋈": "𐑞", "⊤": "𐑧", "∈": "𐑲", "∋": "𐑠",
+    "⊙": "⊙", "⊥": "𐑒", "⊞": "𐑳", "◻": "𐑭",
     "_name": "cellLayer", "_desc": "Cell — minimal self-maintaining unit", "_tier": "O₂",
 }
 
 # LAYER 5 — Mitosis (Cell Division)
 # ⟨𐑦𐑸𐑾𐑹𐑱𐑧𐑲𐑠⊙𐑖𐑳𐑭>  O₂
 MITOSIS_LAYER = {
-    "Ð": "𐑦", "Þ": "𐑸", "Ř": "𐑾", "Φ": "𐑹",
-    "ƒ": "𐑱", "Ç": "𐑧", "Γ": "𐑲", "ɢ": "𐑠",
-    "⊙": "⊙", "Ħ": "𐑖", "Σ": "𐑳", "Ω": "𐑭",
+    "⊢": "𐑦", "⊣": "𐑸", "≻": "𐑾", "≺": "𐑹",
+    "⋈": "𐑱", "⊤": "𐑧", "∈": "𐑲", "∋": "𐑠",
+    "⊙": "⊙", "⊥": "𐑖", "⊞": "𐑳", "◻": "𐑭",
     "_name": "mitosisLayer", "_desc": "Mitosis — cell division", "_tier": "O₂",
 }
 
 # LAYER 6 — Meiosis (Gamete Production)
 # ⟨𐑦𐑸𐑽𐑿𐑱𐑧𐑲𐑠⊙𐑖𐑳𐑭>  O₂
 MEIOSIS_LAYER = {
-    "Ð": "𐑦", "Þ": "𐑸", "Ř": "𐑽", "Φ": "𐑿",
-    "ƒ": "𐑱", "Ç": "𐑧", "Γ": "𐑲", "ɢ": "𐑠",
-    "⊙": "⊙", "Ħ": "𐑖", "Σ": "𐑳", "Ω": "𐑭",
+    "⊢": "𐑦", "⊣": "𐑸", "≻": "𐑽", "≺": "𐑿",
+    "⋈": "𐑱", "⊤": "𐑧", "∈": "𐑲", "∋": "𐑠",
+    "⊙": "⊙", "⊥": "𐑖", "⊞": "𐑳", "◻": "𐑭",
     "_name": "meiosisLayer", "_desc": "Meiosis — gamete production", "_tier": "O₂",
 }
 
 # LAYER 7 — Tissue / Organ (Multi-cellular)
 # ⟨𐑦𐑸𐑾𐑬𐑞𐑧𐑲𐑵⊙𐑖𐑳𐑭>  O₂
 TISSUE_LAYER = {
-    "Ð": "𐑦", "Þ": "𐑸", "Ř": "𐑾", "Φ": "𐑬",
-    "ƒ": "𐑞", "Ç": "𐑧", "Γ": "𐑲", "ɢ": "𐑵",
-    "⊙": "⊙", "Ħ": "𐑖", "Σ": "𐑳", "Ω": "𐑭",
+    "⊢": "𐑦", "⊣": "𐑸", "≻": "𐑾", "≺": "𐑬",
+    "⋈": "𐑞", "⊤": "𐑧", "∈": "𐑲", "∋": "𐑵",
+    "⊙": "⊙", "⊥": "𐑖", "⊞": "𐑳", "◻": "𐑭",
     "_name": "tissueLayer", "_desc": "Tissue — multi-cellular organization", "_tier": "O₂",
 }
 
 # LAYER 8 — Whole Organism
 # ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟>  O_∞
 ORGANISM_LAYER = {
-    "Ð": "𐑦", "Þ": "𐑸", "Ř": "𐑾", "Φ": "𐑹",
-    "ƒ": "𐑐", "Ç": "𐑧", "Γ": "𐑲", "ɢ": "𐑵",
-    "⊙": "⊙", "Ħ": "𐑫", "Σ": "𐑳", "Ω": "𐑟",
+    "⊢": "𐑦", "⊣": "𐑸", "≻": "𐑾", "≺": "𐑹",
+    "⋈": "𐑐", "⊤": "𐑧", "∈": "𐑲", "∋": "𐑵",
+    "⊙": "⊙", "⊥": "𐑫", "⊞": "𐑳", "◻": "𐑟",
     "_name": "organismLayer",
     "_desc": "Whole organism — O_∞, C=1.0",
     "_tier": "O_∞",
@@ -143,8 +143,8 @@ def compute_tier_from_tuple(tup):
     full 12-primitive structure.
     """
     phi = tup.get("⊙", tup.get("φ̂", "𐑢"))
-    k = tup.get("Ç", "𐑘")
-    h = tup.get("Ħ", "𐑓")
+    k = tup.get("⊤", "𐑘")
+    h = tup.get("⊥", "𐑓")
     
     if phi == "⊙" and k == "𐑧" and h == "𐑫":
         return "O_∞"
@@ -164,7 +164,7 @@ def compute_c_score_from_tuple(tup):
     C = gate1 * gate2  (both must be open for C>0)
     """
     phi = tup.get("⊙", tup.get("φ̂", "𐑢"))
-    k = tup.get("Ç", "𐑘")
+    k = tup.get("⊤", "𐑘")
     
     gate1 = 1.0 if phi == "⊙" else (0.5 if phi == "𐑮" else 0.0)
     gate2 = 1.0 if k == "𐑧" else (0.5 if k == "𐑤" else 0.0)
@@ -190,15 +190,15 @@ def clink_frobenius_closed(name_or_idx_or_tup):
             tup_py = {k: name_or_idx_or_tup[k] for k in PORDER}
         else:
             # Assume ch3mpiler format and convert
-            ch3_to_porder = {"D":"Ð","T":"Þ","R":"Ř","P":"Φ","F":"ƒ",
-                             "K":"Ç","G":"Γ","Gm":"ɢ","Ph":"⊙","H":"Ħ","S":"Σ","W":"Ω"}
+            ch3_to_porder = {"D":"⊢","T":"⊣","R":"≻","P":"≺","F":"⋈",
+                             "K":"⊤","G":"∈","Gm":"∋","Ph":"⊙","H":"⊥","S":"⊞","W":"◻"}
             tup_py = {ch3_to_porder[k]: v for k, v in name_or_idx_or_tup.items() 
                       if k in ch3_to_porder}
     else:
         tup_py = clink_layer_tuple(name_or_idx_or_tup, include_meta=False)
     
-    gly2ch3 = {"Ð":"D","Þ":"T","Ř":"R","Φ":"P","ƒ":"F","Ç":"K",
-               "Γ":"G","ɢ":"Gm","⊙":"Ph","Ħ":"H","Σ":"S","Ω":"W"}
+    gly2ch3 = {"⊢":"D","⊣":"T","≻":"R","≺":"P","⋈":"F","⊤":"K",
+               "∈":"G","∋":"Gm","⊙":"Ph","⊥":"H","⊞":"S","◻":"W"}
     tup_ch3 = {gly2ch3[k]: v for k, v in tup_py.items()}
     tt = tensor_type(tup_ch3, tup_ch3)
     return all(tt[gly2ch3[p]] == tup_py[p] for p in PORDER)

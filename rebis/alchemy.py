@@ -66,11 +66,11 @@ _lazy("ZosimosEngine", "alchemical_bridge.zosimos_engine")
 _lazy("check_portico", "alchemical_bridge.zosimos_engine")
 
 # --- Default structural tuples ---
-_PRIMITIVE_ORDER = ["Ð", "Þ", "Ř", "Φ", "ƒ", "Ç", "Γ", "ɢ", "⊙", "Ħ", "Σ", "Ω"]
-_DEFAULT_SOURCE = {"Ð": "𐑛", "Þ": "𐑡", "Ř": "𐑩", "Φ": "𐑗", "ƒ": "𐑱", "Ç": "𐑺", "Γ": "𐑲", "ɢ": "𐑝", "⊙": "𐑢", "Ħ": "𐑓", "Σ": "𐑙", "Ω": "𐑷"}
+_PRIMITIVE_ORDER = ["⊢", "⊣", "≻", "≺", "⋈", "⊤", "∈", "∋", "⊙", "⊥", "⊞", "◻"]
+_DEFAULT_SOURCE = {"⊢": "𐑛", "⊣": "𐑡", "≻": "𐑩", "≺": "𐑗", "⋈": "𐑱", "⊤": "𐑺", "∈": "𐑲", "∋": "𐑝", "⊙": "𐑢", "⊥": "𐑓", "⊞": "𐑙", "◻": "𐑷"}
 # --- Key mapping: short names → Unicode primitive names ---
-_KEY_MAP = {"D": "Ð", "T": "Þ", "R": "Ř", "P": "Φ", "F": "ƒ", "Ç": "Ç",
-            "K": "Ç", "G": "Γ", "Gm": "ɢ", "Ph": "⊙", "H": "Ħ", "S": "Σ", "W": "Ω"}
+_KEY_MAP = {"D": "⊢", "T": "⊣", "R": "≻", "P": "≺", "F": "⋈", "⊤": "⊤",
+            "K": "⊤", "G": "∈", "Gm": "∋", "Ph": "⊙", "H": "⊥", "S": "⊞", "W": "◻"}
 
 def _smiles_to_tuple(smiles: str) -> dict:
     """Convert SMILES → IG tuple dict with Unicode keys."""
@@ -82,7 +82,7 @@ def _smiles_to_tuple(smiles: str) -> dict:
         short = dict(_DEFAULT_SOURCE)
     return {_KEY_MAP.get(k, k): v for k, v in short.items()}
 
-_DEFAULT_TARGET = {"Ð": "𐑦", "Þ": "𐑸", "Ř": "𐑾", "Φ": "𐑹", "ƒ": "𐑐", "Ç": "𐑧", "Γ": "𐑔", "ɢ": "𐑠", "⊙": "⊙", "Ħ": "𐑫", "Σ": "𐑳", "Ω": "𐑭"}
+_DEFAULT_TARGET = {"⊢": "𐑦", "⊣": "𐑸", "≻": "𐑾", "≺": "𐑹", "⋈": "𐑐", "⊤": "𐑧", "∈": "𐑔", "∋": "𐑠", "⊙": "⊙", "⊥": "𐑫", "⊞": "𐑳", "◻": "𐑭"}
 
 
 def _parse_tuple_arg(tup_str, default=None):

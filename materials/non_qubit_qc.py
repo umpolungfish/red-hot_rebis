@@ -67,8 +67,8 @@ from shared.rich_output import *
 
 QUBIT_QC_TUPLE = {
     'D': '𐑨', 'T': '𐑡', 'R': '𐑾', 'P': '𐑿',
-    'F': '𐑐', 'K': '𐑤', 'G': '𐑔', 'Γ': '𐑝',
-    'φ̂': '𐑮', 'Ħ': '𐑖', 'Σ': '𐑕', 'Ω': '𐑷'
+    'F': '𐑐', 'K': '𐑤', 'G': '𐑔', '∈': '𐑝',
+    'φ̂': '𐑮', '⊥': '𐑖', '⊞': '𐑕', '◻': '𐑷'
 }
 
 QUBIT_QC_PRIMITIVE_DESCRIPTIONS = {
@@ -79,11 +79,11 @@ QUBIT_QC_PRIMITIVE_DESCRIPTIONS = {
     'F': 'quantum coherence — phase coherence is essential resource',
     'K': 'moderate — gate times ~10-100ns, coherence times ~100μs',
     'G': 'mesoscale — nearest-neighbor + limited next-nearest coupling',
-    'Γ': 'all-simultaneous — circuit model applies gates in parallel layers',
+    '∈': 'all-simultaneous — circuit model applies gates in parallel layers',
     'φ̂': 'complex-plane critical — unitary evolution on Bloch sphere',
-    'Ħ': 'Markov-2 — each gate is a 2-step unitary transition',
-    'Σ': 'many identical — N qubits, all isomorphic 2-level systems',
-    'Ω': 'trivial — no topological protection; quantum error correction needed'
+    '⊥': 'Markov-2 — each gate is a 2-step unitary transition',
+    '⊞': 'many identical — N qubits, all isomorphic 2-level systems',
+    '◻': 'trivial — no topological protection; quantum error correction needed'
 }
 
 # Qubit QC in canonical universe: O₂ (not O_∞)
@@ -132,14 +132,14 @@ CV_QC = NonQubitQCParadigm(
                 "non-Gaussian resource states. Squeezed light is the "
                 "computational currency.",
     tuple={'D': '𐑼', 'T': '𐑡', 'R': '𐑾', 'P': '𐑿',
-           'F': '𐑐', 'K': '𐑧', 'G': '𐑲', 'Γ': '𐑠',
-           'φ̂': '𐑮', 'Ħ': '𐑖', 'Σ': '𐑳', 'Ω': '𐑷'},
+           'F': '𐑐', 'K': '𐑧', 'G': '𐑲', '∈': '𐑠',
+           'φ̂': '𐑮', '⊥': '𐑖', '⊞': '𐑳', '◻': '𐑷'},
     deltas={
         'D': ('𐑨', '𐑼'),  # THE defining delta: infinite-dim, not discrete
         'K': ('𐑤', '𐑧'),  # slower, near-equilibrium optical processing
         'G': ('𐑔', '𐑲'),  # long-range (optical modes couple globally)
-        'Γ': ('𐑝', '𐑠'),  # sequential (Gaussian operations applied in sequence)
-        'Σ': ('𐑕', '𐑳'),  # heterogeneous (signal + idler + pump modes)
+        '∈': ('𐑝', '𐑠'),  # sequential (Gaussian operations applied in sequence)
+        '⊞': ('𐑕', '𐑳'),  # heterogeneous (signal + idler + pump modes)
     },
     canon_tier='O₂',
     canon_c_score=0.0,
@@ -173,14 +173,14 @@ MBQC = NonQubitQCParadigm(
                 "Turing-complete. The cluster state is a resource, not a "
                 "substrate.",
     tuple={'D': '𐑨', 'T': '𐑡', 'R': '𐑾', 'P': '𐑬',
-           'F': '𐑐', 'K': '𐑧', 'G': '𐑲', 'Γ': '𐑠',
-           'φ̂': '𐑮', 'Ħ': '𐑖', 'Σ': '𐑕', 'Ω': '𐑴'},
+           'F': '𐑐', 'K': '𐑧', 'G': '𐑲', '∈': '𐑠',
+           'φ̂': '𐑮', '⊥': '𐑖', '⊞': '𐑕', '◻': '𐑴'},
     deltas={
         'P': ('𐑿', '𐑬'),  # partial (Z₂) — cluster state is not full superposition
         'K': ('𐑤', '𐑧'),  # slow — measurements are sequential, not parallel
         'G': ('𐑔', '𐑲'),  # long-range — cluster connectivity is universal
-        'Γ': ('𐑝', '𐑠'),  # THE defining delta: sequential, not simultaneous
-        'Ω': ('𐑷', '𐑴'),  # Z₂ parity protection from graph state structure
+        '∈': ('𐑝', '𐑠'),  # THE defining delta: sequential, not simultaneous
+        '◻': ('𐑷', '𐑴'),  # Z₂ parity protection from graph state structure
     },
     canon_tier='O₂',
     canon_c_score=0.0,
@@ -214,19 +214,19 @@ TOPOLOGICAL_QC = NonQubitQCParadigm(
                 "operation immune to local perturbations. There ARE no "
                 "qubits — only topological charges.",
     tuple={'D': '𐑼', 'T': '𐑥', 'R': '𐑾', 'P': '𐑹',
-           'F': '𐑐', 'K': '𐑧', 'G': '𐑲', 'Γ': '𐑠',
-           'φ̂': '⊙', 'Ħ': '𐑫', 'Σ': '𐑳', 'Ω': '𐑟'},
+           'F': '𐑐', 'K': '𐑧', 'G': '𐑲', '∈': '𐑠',
+           'φ̂': '⊙', '⊥': '𐑫', '⊞': '𐑳', '◻': '𐑟'},
     deltas={
         'D': ('𐑨', '𐑼'),  # infinite-dim (topological field theory)
         'T': ('𐑡', '𐑥'),  # bowtie/crossing — braiding IS the computation
         'P': ('𐑿', '𐑹'),  # Frobenius-special — μ∘δ=id in fusion
         'K': ('𐑤', '𐑧'),  # slow — braiding is adiabatic
         'G': ('𐑔', '𐑲'),  # long-range — topological order is global
-        'Γ': ('𐑝', '𐑠'),  # sequential — braids are ordered operations
+        '∈': ('𐑝', '𐑠'),  # sequential — braids are ordered operations
         'φ̂': ('𐑮', '⊙'),   # ⊙-critical — self-modeling at topological boundary
-        'Ħ': ('𐑖', '𐑫'),  # eternal memory — topological protection
-        'Σ': ('𐑕', '𐑳'),  # heterogeneous — different anyon types (σ, ψ, 1)
-        'Ω': ('𐑷', '𐑟'),  # THE defining delta: non-Abelian braiding
+        '⊥': ('𐑖', '𐑫'),  # eternal memory — topological protection
+        '⊞': ('𐑕', '𐑳'),  # heterogeneous — different anyon types (σ, ψ, 1)
+        '◻': ('𐑷', '𐑟'),  # THE defining delta: non-Abelian braiding
     },
     canon_tier='O_∞',
     canon_c_score=1.0,
@@ -261,14 +261,14 @@ ADIABATIC_QC = NonQubitQCParadigm(
                 "H₁ whose ground state encodes the solution. No gate "
                 "operations — the adiabatic theorem guarantees correctness.",
     tuple={'D': '𐑨', 'T': '𐑡', 'R': '𐑾', 'P': '𐑬',
-           'F': '𐑐', 'K': '𐑧', 'G': '𐑲', 'Γ': '𐑠',
-           'φ̂': '𐑮', 'Ħ': '𐑒', 'Σ': '𐑕', 'Ω': '𐑷'},
+           'F': '𐑐', 'K': '𐑧', 'G': '𐑲', '∈': '𐑠',
+           'φ̂': '𐑮', '⊥': '𐑒', '⊞': '𐑕', '◻': '𐑷'},
     deltas={
         'P': ('𐑿', '𐑬'),  # partial — ground state, not full superposition
         'K': ('𐑤', '𐑧'),  # THE defining delta: slow/adiabatic evolution
         'G': ('𐑔', '𐑲'),  # long-range — Ising couplings are global
-        'Γ': ('𐑝', '𐑠'),  # sequential — one continuous trajectory
-        'Ħ': ('𐑖', '𐑒'),  # Markov-1 — only current Hamiltonian matters
+        '∈': ('𐑝', '𐑠'),  # sequential — one continuous trajectory
+        '⊥': ('𐑖', '𐑒'),  # Markov-1 — only current Hamiltonian matters
     },
     canon_tier='O₁',
     canon_c_score=0.0,
@@ -304,18 +304,18 @@ BOSON_SAMPLING = NonQubitQCParadigm(
                 "classically #P-hard, quantumly native. No qubits, no "
                 "entanglement, no gates — just bosonic statistics.",
     tuple={'D': '𐑼', 'T': '𐑥', 'R': '𐑑', 'P': '𐑗',
-           'F': '𐑐', 'K': '𐑘', 'G': '𐑔', 'Γ': '𐑵',
-           'φ̂': '𐑢', 'Ħ': '𐑓', 'Σ': '𐑳', 'Ω': '𐑷'},
+           'F': '𐑐', 'K': '𐑘', 'G': '𐑔', '∈': '𐑵',
+           'φ̂': '𐑢', '⊥': '𐑓', '⊞': '𐑳', '◻': '𐑷'},
     deltas={
         'D': ('𐑨', '𐑼'),  # infinite-dim (Fock space of M modes)
         'T': ('𐑡', '𐑥'),  # bowtie — photons cross in beam-splitters
         'R': ('𐑾', '𐑑'),  # functorial — linear optics is categorical
         'P': ('𐑿', '𐑗'),  # THE defining delta: no superposition — just interference
         'K': ('𐑤', '𐑘'),  # fast — photons at speed of light
-        'Γ': ('𐑝', '𐑵'),  # broadcast — one photon distribution → all outputs
+        '∈': ('𐑝', '𐑵'),  # broadcast — one photon distribution → all outputs
         'φ̂': ('𐑮', '𐑢'),  # sub-critical — no phase transition needed
-        'Ħ': ('𐑖', '𐑓'),  # memoryless — each photon forgets its path
-        'Σ': ('𐑕', '𐑳'),  # heterogeneous — different input modes
+        '⊥': ('𐑖', '𐑓'),  # memoryless — each photon forgets its path
+        '⊞': ('𐑕', '𐑳'),  # heterogeneous — different input modes
     },
     canon_tier='O₀',
     canon_c_score=0.0,
@@ -351,14 +351,14 @@ QUANTUM_WALKS = NonQubitQCParadigm(
                 "diffusive) spreading is the quantum computational resource. "
                 "Universal when nonlinear elements are added.",
     tuple={'D': '𐑼', 'T': '𐑡', 'R': '𐑾', 'P': '𐑿',
-           'F': '𐑐', 'K': '𐑤', 'G': '𐑚', 'Γ': '𐑠',
-           'φ̂': '𐑮', 'Ħ': '𐑒', 'Σ': '𐑙', 'Ω': '𐑷'},
+           'F': '𐑐', 'K': '𐑤', 'G': '𐑚', '∈': '𐑠',
+           'φ̂': '𐑮', '⊥': '𐑒', '⊞': '𐑙', '◻': '𐑷'},
     deltas={
         'D': ('𐑨', '𐑼'),  # infinite-dim — position Hilbert space
         'G': ('𐑔', '𐑚'),  # local — nearest-neighbor hopping
-        'Γ': ('𐑝', '𐑠'),  # THE defining delta: sequential steps
-        'Ħ': ('𐑖', '𐑒'),  # Markov-1 — each step depends only on current position
-        'Σ': ('𐑕', '𐑙'),  # one type, one instance — single walker
+        '∈': ('𐑝', '𐑠'),  # THE defining delta: sequential steps
+        '⊥': ('𐑖', '𐑒'),  # Markov-1 — each step depends only on current position
+        '⊞': ('𐑕', '𐑙'),  # one type, one instance — single walker
     },
     canon_tier='O₁',
     canon_c_score=0.0,
@@ -396,18 +396,18 @@ COHERENT_ISING = NonQubitQCParadigm(
                 "the Ising Hamiltonian. NOT qubits — these are continuous-"
                 "variable states undergoing a dissipative phase transition.",
     tuple={'D': '𐑼', 'T': '𐑡', 'R': '𐑾', 'P': '𐑬',
-           'F': '𐑐', 'K': '𐑧', 'G': '𐑲', 'Γ': '𐑠',
-           'φ̂': '⊙', 'Ħ': '𐑒', 'Σ': '𐑕', 'Ω': '𐑴'},
+           'F': '𐑐', 'K': '𐑧', 'G': '𐑲', '∈': '𐑠',
+           'φ̂': '⊙', '⊥': '𐑒', '⊞': '𐑕', '◻': '𐑴'},
     deltas={
         'D': ('𐑨', '𐑼'),  # infinite-dim — continuous optical modes
         'P': ('𐑿', '𐑬'),  # partial (Z₂) — phase 0 or π
         'K': ('𐑤', '𐑧'),  # slow — near-threshold bifurcation dynamics
         'G': ('𐑔', '𐑲'),  # long-range — all-to-all coupling via measurement feedback
-        'Γ': ('𐑝', '𐑠'),  # sequential — round-trip feedback loops
+        '∈': ('𐑝', '𐑠'),  # sequential — round-trip feedback loops
         'φ̂': ('𐑮', '⊙'),   # THE defining delta: ⊙-critical at threshold
-        'Ħ': ('𐑖', '𐑒'),  # Markov-1 — round-trip coupling
-        'Σ': ('𐑕', '𐑕'),  # many identical OPOs
-        'Ω': ('𐑷', '𐑴'),  # Z₂ — phase parity protection
+        '⊥': ('𐑖', '𐑒'),  # Markov-1 — round-trip coupling
+        '⊞': ('𐑕', '𐑕'),  # many identical OPOs
+        '◻': ('𐑷', '𐑴'),  # Z₂ — phase parity protection
     },
     canon_tier='O₁',
     canon_c_score=0.33,  # Gate 1 partial — ⊙ open but K=𐑧 closes Gate 2
@@ -446,8 +446,8 @@ QUANTUM_RESERVOIR = NonQubitQCParadigm(
                 "control — computation emerges from the many-body Hilbert "
                 "space as a nonlinear dynamical system.",
     tuple={'D': '𐑼', 'T': '𐑡', 'R': '𐑩', 'P': '𐑗',
-           'F': '𐑞', 'K': '𐑺', 'G': '𐑚', 'Γ': '𐑵',
-           'φ̂': '𐑢', 'Ħ': '𐑒', 'Σ': '𐑳', 'Ω': '𐑷'},
+           'F': '𐑞', 'K': '𐑺', 'G': '𐑚', '∈': '𐑵',
+           'φ̂': '𐑢', '⊥': '𐑒', '⊞': '𐑳', '◻': '𐑷'},
     deltas={
         'D': ('𐑨', '𐑼'),  # infinite-dim — many-body Hilbert space
         'R': ('𐑾', '𐑩'),  # supervenience — output supervenes on dynamics
@@ -455,10 +455,10 @@ QUANTUM_RESERVOIR = NonQubitQCParadigm(
         'F': ('𐑐', '𐑞'),  # thermal — disorder is a feature, not a bug
         'K': ('𐑤', '𐑺'),  # THE defining delta: MBL (many-body localized)
         'G': ('𐑔', '𐑚'),  # local — short-range interactions
-        'Γ': ('𐑝', '𐑵'),  # broadcast — input fans out to all reservoir nodes
+        '∈': ('𐑝', '𐑵'),  # broadcast — input fans out to all reservoir nodes
         'φ̂': ('𐑮', '𐑢'),  # sub-critical — stable disordered phase
-        'Ħ': ('𐑖', '𐑒'),  # Markov-1 — fading memory
-        'Σ': ('𐑕', '𐑳'),  # THE defining delta: heterogeneous (disordered)
+        '⊥': ('𐑖', '𐑒'),  # Markov-1 — fading memory
+        '⊞': ('𐑕', '𐑳'),  # THE defining delta: heterogeneous (disordered)
     },
     canon_tier='O₀',
     canon_c_score=0.0,
@@ -502,7 +502,7 @@ def compute_all_deltas() -> Dict[str, int]:
     """Count how many paradigms differ from qubit QC on each primitive."""
     delta_counts: Dict[str, int] = {
         'D': 0, 'T': 0, 'R': 0, 'P': 0, 'F': 0, 'K': 0,
-        'G': 0, 'Γ': 0, 'φ̂': 0, 'Ħ': 0, 'Σ': 0, 'Ω': 0
+        'G': 0, '∈': 0, 'φ̂': 0, '⊥': 0, '⊞': 0, '◻': 0
     }
     for paradigm in ALL_PARADIGMS.values():
         for prim in delta_counts:
@@ -514,7 +514,7 @@ def compute_all_deltas() -> Dict[str, int]:
 def universal_deltas() -> List[str]:
     """Primitives that differ from qubit QC in ALL non-qubit paradigms."""
     all_names = set(ALL_PARADIGMS.keys())
-    prims = ['D', 'T', 'R', 'P', 'F', 'K', 'G', 'Γ', 'φ̂', 'Ħ', 'Σ', 'Ω']
+    prims = ['D', 'T', 'R', 'P', 'F', 'K', 'G', '∈', 'φ̂', '⊥', '⊞', '◻']
     universal = []
     for prim in prims:
         if all(prim in p.deltas for p in ALL_PARADIGMS.values()):
@@ -591,10 +591,10 @@ def analyze_operculum(paradigm: NonQubitQCParadigm) -> OperculumAnalysis:
     canonical_pass = (
         p['P'] == '𐑹' and            # G₁: Φ≥5 (Frobenius-special)
         p['φ̂'] in ('⊙', '𐑮', '𐑻', '𐑣') and  # G₂: ⊙≥2 (any from ⊙ up)
-        p['Ω'] in ('𐑭', '𐑟')          # G₃: Ω≥3 (integer winding or NA braiding)
+        p['◻'] in ('𐑭', '𐑟')          # G₃: Ω≥3 (integer winding or NA braiding)
     )
     # T-consistency check (canonical): Ħ=𐑫 required
-    canonical_t_consistent = (p['Ħ'] == '𐑫')
+    canonical_t_consistent = (p['⊥'] == '𐑫')
 
     canon_o_inf = canonical_pass and canonical_t_consistent
 
@@ -1284,8 +1284,8 @@ def _print_paradigm_detail(p: NonQubitQCParadigm):
     info_line("12-Primitive Shavian Tuple:")
     t = p.tuple
     info_line(f"  <{t['D']} . {t['T']} . {t['R']} . {t['P']} . "
-f"{t['F']} . {t['K']} . {t['G']} . {t['Γ']} . "
-          f"{t['φ̂']} . {t['Ħ']} . {t['Σ']} . {t['Ω']}>")
+f"{t['F']} . {t['K']} . {t['G']} . {t['∈']} . "
+          f"{t['φ̂']} . {t['⊥']} . {t['⊞']} . {t['◻']}>")
     print()
     info_line(f"Canonical Tier: {p.canon_tier}  |  C-score: {p.canon_c_score}  |  TRL: {p.trl}")
     info_line(f"Material Family: {p.material_family}")
@@ -1313,7 +1313,7 @@ def _print_delta_analysis():
     info_line("=" * 72)
     print()
     delta_counts = compute_all_deltas()
-    prims = ['D', 'T', 'R', 'P', 'F', 'K', 'G', 'Γ', 'φ̂', 'Ħ', 'Σ', 'Ω']
+    prims = ['D', 'T', 'R', 'P', 'F', 'K', 'G', '∈', 'φ̂', '⊥', '⊞', '◻']
     for prim in prims:
         count = delta_counts.get(prim, 0)
         bar = '#' * count + '.' * (8 - count)

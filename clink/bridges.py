@@ -53,9 +53,9 @@ class BridgeResult:
 
 # Canonical structural type for a folded protein (platonic protein)
 PLATONIC_PROTEIN = {
-    "Ð": "𐑦", "Þ": "𐑥", "Ř": "𐑾", "Φ": "𐑬",
-    "ƒ": "𐑞", "Ç": "𐑧", "Γ": "𐑲", "ɢ": "𐑠",
-    "⊙": "⊙", "Ħ": "𐑒", "Σ": "𐑳", "Ω": "𐑭",
+    "⊢": "𐑦", "⊣": "𐑥", "≻": "𐑾", "≺": "𐑬",
+    "⋈": "𐑞", "⊤": "𐑧", "∈": "𐑲", "∋": "𐑠",
+    "⊙": "⊙", "⊥": "𐑒", "⊞": "𐑳", "◻": "𐑭",
     "_name": "platonicProtein",
     "_desc": "Folded protein — between molecule and cell",
     "_tier": "O₂",
@@ -63,9 +63,9 @@ PLATONIC_PROTEIN = {
 
 # Canonical structural type for unfolded/random coil protein
 UNFOLDED_PROTEIN = {
-    "Ð": "𐑼", "Þ": "𐑡", "Ř": "𐑑", "Φ": "𐑿",
-    "ƒ": "𐑱", "Ç": "𐑤", "Γ": "𐑔", "ɢ": "𐑜",
-    "⊙": "𐑢", "Ħ": "𐑓", "Σ": "𐑕", "Ω": "𐑷",
+    "⊢": "𐑼", "⊣": "𐑡", "≻": "𐑑", "≺": "𐑿",
+    "⋈": "𐑱", "⊤": "𐑤", "∈": "𐑔", "∋": "𐑜",
+    "⊙": "𐑢", "⊥": "𐑓", "⊞": "𐑕", "◻": "𐑷",
     "_name": "unfoldedProtein",
     "_desc": "Unfolded/random coil protein chain",
     "_tier": "O₀",
@@ -85,8 +85,8 @@ def protein_to_clink(protein_tuple=None):
         tup = {k: PLATONIC_PROTEIN[k] for k in PORDER}
     else:
         # Normalize to PORDER keys if needed
-        ch3_to_porder = {"D":"Ð","T":"Þ","R":"Ř","P":"Φ","F":"ƒ",
-                         "K":"Ç","G":"Γ","Gm":"ɢ","Ph":"⊙","H":"Ħ","S":"Σ","W":"Ω"}
+        ch3_to_porder = {"D":"⊢","T":"⊣","R":"≻","P":"≺","F":"⋈",
+                         "K":"⊤","G":"∈","Gm":"∋","Ph":"⊙","H":"⊥","S":"⊞","W":"◻"}
         if all(k in ch3_to_porder for k in protein_tuple):
             tup = {ch3_to_porder[k]: v for k, v in protein_tuple.items()}
         else:
@@ -133,8 +133,8 @@ def molecule_to_clink(molecule_tuple=None):
     if molecule_tuple is None:
         tup = {k: CLINK_LAYERS[3][k] for k in PORDER}
     else:
-        ch3_to_porder = {"D":"Ð","T":"Þ","R":"Ř","P":"Φ","F":"ƒ",
-                         "K":"Ç","G":"Γ","Gm":"ɢ","Ph":"⊙","H":"Ħ","S":"Σ","W":"Ω"}
+        ch3_to_porder = {"D":"⊢","T":"⊣","R":"≻","P":"≺","F":"⋈",
+                         "K":"⊤","G":"∈","Gm":"∋","Ph":"⊙","H":"⊥","S":"⊞","W":"◻"}
         if all(k in ch3_to_porder for k in molecule_tuple):
             tup = {ch3_to_porder[k]: v for k, v in molecule_tuple.items()}
         else:
@@ -169,9 +169,9 @@ def molecule_to_clink(molecule_tuple=None):
 
 # Canonical structural type for a codon in the Belnap4 lattice
 CODON_BELNAP4_TYPE = {
-    "Ð": "𐑛", "Þ": "𐑶", "Ř": "𐑩", "Φ": "𐑗",
-    "ƒ": "𐑐", "Ç": "𐑤", "Γ": "𐑚", "ɢ": "𐑜",
-    "⊙": "𐑢", "Ħ": "𐑓", "Σ": "𐑙", "Ω": "𐑷",
+    "⊢": "𐑛", "⊣": "𐑶", "≻": "𐑩", "≺": "𐑗",
+    "⋈": "𐑐", "⊤": "𐑤", "∈": "𐑚", "∋": "𐑜",
+    "⊙": "𐑢", "⊥": "𐑓", "⊞": "𐑙", "◻": "𐑷",
     "_name": "codonBelnap4",
     "_desc": "Codon in Belnap4 lattice — 4-valued paraconsistent",
     "_tier": "O₀",
@@ -189,8 +189,8 @@ def gene_to_clink(gene_tuple=None):
     if gene_tuple is None:
         tup = {k: CODON_BELNAP4_TYPE[k] for k in PORDER}
     else:
-        ch3_to_porder = {"D":"Ð","T":"Þ","R":"Ř","P":"Φ","F":"ƒ",
-                         "K":"Ç","G":"Γ","Gm":"ɢ","Ph":"⊙","H":"Ħ","S":"Σ","W":"Ω"}
+        ch3_to_porder = {"D":"⊢","T":"⊣","R":"≻","P":"≺","F":"⋈",
+                         "K":"⊤","G":"∈","Gm":"∋","Ph":"⊙","H":"⊥","S":"⊞","W":"◻"}
         if all(k in ch3_to_porder for k in gene_tuple):
             tup = {ch3_to_porder[k]: v for k, v in gene_tuple.items()}
         else:

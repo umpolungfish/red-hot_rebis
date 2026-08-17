@@ -37,42 +37,42 @@ import numpy as np
 # ═══════════════════════════════════════════════════════════════
 
 FATES_OF_DEATH = {
-    "Ð": {
+    "⊢": {
         "zosimos_name": "The First Fate — The Boundary Without Extension",
         "description": "The dimensionality of the work — point, surface, void, or self-written",
         "question": "How many dimensions does the system inscribe?",
     },
-    "Þ": {
+    "⊣": {
         "zosimos_name": "The Second Fate — The Vessel That Contains Itself",
         "description": "The topology of containment — how parts connect to whole",
         "question": "Does the system contain its own description?",
     },
-    "Ř": {
+    "≻": {
         "zosimos_name": "The Third Fate — The Two That Are One",
         "description": "The coupling between inside and outside, subject and object",
         "question": "Is the observer coupled to the observed?",
     },
-    "Φ": {
+    "≺": {
         "zosimos_name": "The Fourth Fate — The Mirror That Does Not Lie",
         "description": "The symmetry of the work — what is preserved across transformation",
         "question": "Is the system's parity Frobenius-exact?",
     },
-    "ƒ": {
+    "⋈": {
         "zosimos_name": "The Fifth Fate — The Fire That Measures",
         "description": "The fidelity regime — classical, thermal, or quantum",
         "question": "What is the coherence regime of the work?",
     },
-    "Ç": {
+    "⊤": {
         "zosimos_name": "The Sixth Fate — The Pace of Becoming",
         "description": "The kinetics — fast, moderate, slow, trapped, or MBL",
         "question": "How fast does the system relax to equilibrium?",
     },
-    "Γ": {
+    "∈": {
         "zosimos_name": "The Seventh Fate — The Reach of the Hand",
         "description": "The interaction range — local, mesoscale, or universal",
         "question": "How far does the system reach?",
     },
-    "ɢ": {
+    "∋": {
         "zosimos_name": "The Eighth Fate — The Weaving of the Web",
         "description": "The composition mode — conjunctive, disjunctive, sequential, or broadcast",
         "question": "How do the system's components compose?",
@@ -82,17 +82,17 @@ FATES_OF_DEATH = {
         "description": "Criticality — the self-modeling gate",
         "question": "Does the system model its own operation?",
     },
-    "Ħ": {
+    "⊥": {
         "zosimos_name": "The Tenth Fate — The Memory of the World",
         "description": "Chirality / Markov order — how far back does the system remember?",
         "question": "How much history does the system retain?",
     },
-    "Σ": {
+    "⊞": {
         "zosimos_name": "The Eleventh Fate — The Number of the Host",
         "description": "Stoichiometry — how many types of components?",
         "question": "How many kinds of things are in the system?",
     },
-    "Ω": {
+    "◻": {
         "zosimos_name": "The Twelfth Fate — The Serpent's Tail",
         "description": "The winding number — the topological invariant that closes the cycle",
         "question": "What topological invariant protects the cycle?",
@@ -108,25 +108,25 @@ STILLING_PRACTICE = [
     {
         "command": "Stop the branching of your thoughts",
         "structural_meaning": "Set Þ to 𐑸 (self-referential closure) — stop branching, close the topology",
-        "primitives_affected": ["Þ"],
+        "primitives_affected": ["⊣"],
         "target_value": "𐑸",
     },
     {
         "command": "Gather the scattered into one vessel",
         "structural_meaning": "Set Σ to 𐑳 (many heterogeneous) — gather all components into one analysis",
-        "primitives_affected": ["Σ"],
+        "primitives_affected": ["⊞"],
         "target_value": "𐑳",
     },
     {
         "command": "Let the inner and outer be as one",
         "structural_meaning": "Set Ř to 𐑾 (bidirectional coupling) — observer and observed are the same",
-        "primitives_affected": ["Ř"],
+        "primitives_affected": ["≻"],
         "target_value": "𐑾",
     },
     {
         "command": "Slow the pace until each step reveals the next",
         "structural_meaning": "Set Ç to 𐑧 (near-equilibrium) — slow enough to see each step",
-        "primitives_affected": ["Ç"],
+        "primitives_affected": ["⊤"],
         "target_value": "𐑧",
     },
     {
@@ -138,7 +138,7 @@ STILLING_PRACTICE = [
     {
         "command": "Close the circle: the end is the beginning",
         "structural_meaning": "Set Ω to 𐑴 (Z2 protection) — the cycle is closed, parity-protected",
-        "primitives_affected": ["Ω"],
+        "primitives_affected": ["◻"],
         "target_value": "𐑴",
     },
 ]
@@ -156,9 +156,9 @@ STILLING_PRACTICE = [
 # The Portico IS the Frobenius fixed point.
 
 PORTICO_TUPLE = {
-    "Ð": "𐑦", "Þ": "𐑸", "Ř": "𐑾", "Φ": "𐑹",
-    "ƒ": "𐑐", "Ç": "𐑧", "Γ": "𐑔", "ɢ": "𐑵",
-    "⊙": "⊙", "Ħ": "𐑫", "Σ": "𐑳", "Ω": "𐑴",
+    "⊢": "𐑦", "⊣": "𐑸", "≻": "𐑾", "≺": "𐑹",
+    "⋈": "𐑐", "⊤": "𐑧", "∈": "𐑔", "∋": "𐑵",
+    "⊙": "⊙", "⊥": "𐑫", "⊞": "𐑳", "◻": "𐑴",
 }
 
 
@@ -175,8 +175,8 @@ def check_portico(tup: dict) -> dict:
     
     At the Portico, the system MUST model itself or remain incomplete.
     """
-    portico_markers = ["Ð", "Þ", "Ř", "Φ", "⊙", "Ħ"]
-    portico_values = {"Ð": "𐑦", "Þ": "𐑸", "Ř": "𐑾", "Φ": "𐑹", "⊙": "⊙", "Ħ": "𐑫"}
+    portico_markers = ["⊢", "⊣", "≻", "≺", "⊙", "⊥"]
+    portico_values = {"⊢": "𐑦", "⊣": "𐑸", "≻": "𐑾", "≺": "𐑹", "⊙": "⊙", "⊥": "𐑫"}
     
     matches = 0
     details = {}
@@ -314,8 +314,8 @@ class ZosimosEngine:
         """
         assigned = sum(1 for p in PRIMITIVE_ORDER if tuple_dict.get(p) is not None)
         phi_gate = tuple_dict.get("⊙") == "⊙"
-        omega_closed = tuple_dict.get("Ω") in ("𐑭", "𐑴")
-        self_ref = tuple_dict.get("Ð") == "𐑦" or tuple_dict.get("Þ") == "𐑸"
+        omega_closed = tuple_dict.get("◻") in ("𐑭", "𐑴")
+        self_ref = tuple_dict.get("⊢") == "𐑦" or tuple_dict.get("⊣") == "𐑸"
         
         score = (assigned / 12) * 0.4 + (0.3 if phi_gate else 0) + (0.15 if omega_closed else 0) + (0.15 if self_ref else 0)
         
@@ -335,9 +335,9 @@ class ZosimosEngine:
     def compare_to_zosimos(self, tuple_dict: dict) -> dict:
         """Compare a tuple to Zosimos' own structural type."""
         zosimos_tuple = {
-            "Ð": "𐑦", "Þ": "𐑸", "Ř": "𐑾", "Φ": "𐑹",
-            "ƒ": "𐑐", "Ç": "𐑪", "Γ": "𐑔", "ɢ": "𐑵",
-            "⊙": "⊙", "Ħ": "𐑫", "Σ": "𐑳", "Ω": "𐑴",
+            "⊢": "𐑦", "⊣": "𐑸", "≻": "𐑾", "≺": "𐑹",
+            "⋈": "𐑐", "⊤": "𐑪", "∈": "𐑔", "∋": "𐑵",
+            "⊙": "⊙", "⊥": "𐑫", "⊞": "𐑳", "◻": "𐑴",
         }
         
         dist = tuple_distance(tuple_dict, zosimos_tuple)

@@ -26,22 +26,22 @@
       "asymmetry": 0.16940222355682688,
       "tether_tension": 0.5005912622865841,
       "payload": 1.0,
-      "cytotoxicity": 63.2875,
-      "selectivity_vs_healthy": 63287.5
+      "cytotoxicity": 14.2875,
+      "selectivity_vs_healthy": 14287.5
     },
     "cancer_m0.8": {
       "asymmetry": 0.27320511677646886,
       "tether_tension": 0.7202651294589683,
       "payload": 1.0,
-      "cytotoxicity": 63.2875,
-      "selectivity_vs_healthy": 63287.5
+      "cytotoxicity": 14.2875,
+      "selectivity_vs_healthy": 14287.5
     },
     "cancer_m1.0": {
       "asymmetry": 0.35063879489640815,
       "tether_tension": 0.8387846359566719,
       "payload": 1.0,
-      "cytotoxicity": 63.2875,
-      "selectivity_vs_healthy": 63287.5
+      "cytotoxicity": 14.2875,
+      "selectivity_vs_healthy": 14287.5
     }
   }
 }

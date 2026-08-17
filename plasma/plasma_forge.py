@@ -345,18 +345,18 @@ W_PLASMA = {
 # ═══════════════════════════════════════════════════════════════════
 
 PLASMA_PRIMITIVE_MAP = {
-    "Ð": D_PLASMA,
-    "Þ": T_PLASMA,
-    "Ř": R_PLASMA,
-    "Φ": P_PLASMA,
-    "ƒ": F_PLASMA,
-    "Ç": K_PLASMA,
-    "Γ": G_PLASMA,
-    "ɢ": C_PLASMA,
+    "⊢": D_PLASMA,
+    "⊣": T_PLASMA,
+    "≻": R_PLASMA,
+    "≺": P_PLASMA,
+    "⋈": F_PLASMA,
+    "⊤": K_PLASMA,
+    "∈": G_PLASMA,
+    "∋": C_PLASMA,
     "⊙": PHI_PLASMA,
-    "Ħ": H_PLASMA,
-    "Σ": S_PLASMA,
-    "Ω": W_PLASMA,
+    "⊥": H_PLASMA,
+    "⊞": S_PLASMA,
+    "◻": W_PLASMA,
 }
 
 # ═══════════════════════════════════════════════════════════════════
@@ -409,7 +409,7 @@ class PlasmaForge:
         """Forge a PlasmaDesign from a 12-primitive tuple.
         
         Args:
-            tuple_dict: Dict with keys ["Ð","Þ","Ř","Φ","ƒ","Ç","Γ","ɢ","⊙","Ħ","Σ","Ω"]
+            tuple_dict: Dict with keys ["⊢","⊣","≻","≺","⋈","⊤","∈","∋","⊙","⊥","⊞","◻"]
             name: Design name
         
         Returns:
@@ -424,16 +424,16 @@ class PlasmaForge:
             return val.get(key, default)
         
         # Synthesize regime description
-        d_regime = lookup("Ð", "regime")
-        f_regime = lookup("ƒ", "regime")
+        d_regime = lookup("⊢", "regime")
+        f_regime = lookup("⋈", "regime")
         regime = f"{d_regime}, {f_regime}"
         
         # Synthesize instabilities
         instabs = []
-        k_instab = lookup("Ç", "characteristic", "")
-        c_instab = lookup("ɢ", "characteristic", "")
+        k_instab = lookup("⊤", "characteristic", "")
+        c_instab = lookup("∋", "characteristic", "")
         phi_instab = lookup("⊙", "characteristic", "")
-        h_instab = lookup("Ħ", "characteristic", "")
+        h_instab = lookup("⊥", "characteristic", "")
         if k_instab: instabs.append(k_instab)
         if c_instab: instabs.append(c_instab)
         if phi_instab: instabs.append(phi_instab)
@@ -441,15 +441,15 @@ class PlasmaForge:
         
         # Synthesize diagnostics
         diags = []
-        t_waves = lookup("Þ", "wave_types", [])
+        t_waves = lookup("⊣", "wave_types", [])
         if isinstance(t_waves, list):
             diags.extend(t_waves[:3])
-        diags.append(lookup("Ω", "characteristic", ""))
-        diags.append(lookup("Ç", "characteristic", ""))
+        diags.append(lookup("◻", "characteristic", ""))
+        diags.append(lookup("⊤", "characteristic", ""))
         diags = [d for d in diags if d]
         
         # Format tuple string
-        porder = ["Ð","Þ","Ř","Φ","ƒ","Ç","Γ","ɢ","⊙","Ħ","Σ","Ω"]
+        porder = ["⊢","⊣","≻","≺","⋈","⊤","∈","∋","⊙","⊥","⊞","◻"]
         tup_str = "⟨" + "".join(p.get(pr, "?") for pr in porder) + "⟩"
         
         return PlasmaDesign(
@@ -457,18 +457,18 @@ class PlasmaForge:
             tuple_glyphs=p,
             tuple_str=tup_str,
             regime=regime,
-            dimensionality=lookup("Ð", "description"),
-            mode_structure=lookup("Þ", "mode_structure"),
-            coupling=lookup("Ř", "characteristic"),
-            symmetries=lookup("Φ", "characteristic"),
-            collisionality=lookup("ƒ", "characteristic"),
-            transport=lookup("Ç", "characteristic"),
-            interaction_range=lookup("Γ", "characteristic"),
-            cascade=lookup("ɢ", "characteristic"),
+            dimensionality=lookup("⊢", "description"),
+            mode_structure=lookup("⊣", "mode_structure"),
+            coupling=lookup("≻", "characteristic"),
+            symmetries=lookup("≺", "characteristic"),
+            collisionality=lookup("⋈", "characteristic"),
+            transport=lookup("⊤", "characteristic"),
+            interaction_range=lookup("∈", "characteristic"),
+            cascade=lookup("∋", "characteristic"),
             criticality=lookup("⊙", "characteristic"),
-            chirality=lookup("Ħ", "characteristic"),
-            species=lookup("Σ", "composition"),
-            topology=lookup("Ω", "characteristic"),
+            chirality=lookup("⊥", "characteristic"),
+            species=lookup("⊞", "composition"),
+            topology=lookup("◻", "characteristic"),
             instabilities=instabs,
             diagnostics=diags,
         )
@@ -528,23 +528,23 @@ _forge = PlasmaForge()
 
 PREDEFINED_PLASMA_DESIGNS = {
     "vlasov": _forge.forge(
-        {"Ð":"𐑛","Þ":"𐑥","Ř":"𐑾","Φ":"𐑬","ƒ":"𐑱","Ç":"𐑧",
-         "Γ":"𐑔","ɢ":"𐑠","⊙":"𐑮","Ħ":"𐑖","Σ":"𐑳","Ω":"𐑭"},
+        {"⊢":"𐑛","⊣":"𐑥","≻":"𐑾","≺":"𐑬","⋈":"𐑱","⊤":"𐑧",
+         "∈":"𐑔","∋":"𐑠","⊙":"𐑮","⊥":"𐑖","⊞":"𐑳","◻":"𐑭"},
         name="vlasovPlasma"
     ),
     "primitive_first": _forge.forge(
-        {"Ð":"𐑼","Þ":"𐑡","Ř":"𐑾","Φ":"𐑗","ƒ":"𐑱","Ç":"𐑧",
-         "Γ":"𐑚","ɢ":"𐑠","⊙":"⊙","Ħ":"𐑖","Σ":"𐑳","Ω":"𐑭"},
+        {"⊢":"𐑼","⊣":"𐑡","≻":"𐑾","≺":"𐑗","⋈":"𐑱","⊤":"𐑧",
+         "∈":"𐑚","∋":"𐑠","⊙":"⊙","⊥":"𐑖","⊞":"𐑳","◻":"𐑭"},
         name="primitiveFirstPlasma"
     ),
     "high_energy": _forge.forge(
-        {"Ð":"𐑼","Þ":"𐑡","Ř":"𐑾","Φ":"𐑗","ƒ":"𐑱","Ç":"𐑧",
-         "Γ":"𐑚","ɢ":"𐑠","⊙":"⊙","Ħ":"𐑓","Σ":"𐑙","Ω":"𐑭"},
+        {"⊢":"𐑼","⊣":"𐑡","≻":"𐑾","≺":"𐑗","⋈":"𐑱","⊤":"𐑧",
+         "∈":"𐑚","∋":"𐑠","⊙":"⊙","⊥":"𐑓","⊞":"𐑙","◻":"𐑭"},
         name="highEnergyPlasma"
     ),
     "rock_cracking": _forge.forge(
-        {"Ð":"𐑼","Þ":"𐑡","Ř":"𐑾","Φ":"𐑗","ƒ":"𐑱","Ç":"𐑧",
-         "Γ":"𐑚","ɢ":"𐑠","⊙":"⊙","Ħ":"𐑖","Σ":"𐑙","Ω":"𐑭"},
+        {"⊢":"𐑼","⊣":"𐑡","≻":"𐑾","≺":"𐑗","⋈":"𐑱","⊤":"𐑧",
+         "∈":"𐑚","∋":"𐑠","⊙":"⊙","⊥":"𐑖","⊞":"𐑙","◻":"𐑭"},
         name="rockCrackingPlasma"
     ),
 }

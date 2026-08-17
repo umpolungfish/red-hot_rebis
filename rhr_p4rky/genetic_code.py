@@ -216,18 +216,18 @@ AA_OF_IG_PRIMITIVE: Dict[str, str] = {
 }
 
 PRIMITIVE_RISK: Dict[str, str] = {
-    "Ð": "critical",   # Dimensionality — translation start; loss = catastrophic
-    "Þ": "moderate",   # Topology — indole collapse tolerable
-    "Ř": "high",       # Recognition — disulfide partner needed
-    "Φ": "moderate",   # Parity — phosphorylation site loss
-    "ƒ": "low",        # Fidelity — hydrophobic class preserved
-    "Ç": "moderate",   # Kinetics — β-branching preservation
-    "Γ": "moderate",   # Granularity — pH-gated catalysis redesign
-    "ɢ": "moderate",   # Coupling — glycosylation loss pathological
+    "⊢": "critical",   # Dimensionality — translation start; loss = catastrophic
+    "⊣": "moderate",   # Topology — indole collapse tolerable
+    "≻": "high",       # Recognition — disulfide partner needed
+    "≺": "moderate",   # Parity — phosphorylation site loss
+    "⋈": "low",        # Fidelity — hydrophobic class preserved
+    "⊤": "moderate",   # Kinetics — β-branching preservation
+    "∈": "moderate",   # Granularity — pH-gated catalysis redesign
+    "∋": "moderate",   # Coupling — glycosylation loss pathological
     "⊙": "high",       # Criticality — metabolic critical point
-    "Ħ": "critical",   # Chirality — chiral specificity lost
-    "Σ": "low",        # Stoichiometry — Lys↔Arg conserved
-    "Ω": "critical",   # Winding — C-terminal boundary removed
+    "⊥": "critical",   # Chirality — chiral specificity lost
+    "⊞": "low",        # Stoichiometry — Lys↔Arg conserved
+    "◻": "critical",   # Winding — C-terminal boundary removed
     None: "low",       # Ground layer — no primitive activation
 }
 
@@ -539,7 +539,7 @@ def run_genetic_verification() -> dict:
     results["primitive_bijection"] = len(IG_PRIMITIVE_OF_AA) == 12
     results["all_primitives_covered"] = (
         set(v.split(" (")[0] for v in IG_PRIMITIVE_OF_AA.values())
-        == {"Ð", "Þ", "Ř", "Φ", "ƒ", "Ç", "Γ", "ɢ", "⊙", "Ħ", "Σ", "Ω"}
+        == {"⊢", "⊣", "≻", "≺", "⋈", "⊤", "∈", "∋", "⊙", "⊥", "⊞", "◻"}
     )
     
     # Overall pass/fail

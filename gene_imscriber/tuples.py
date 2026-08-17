@@ -130,7 +130,7 @@ def prim_value_to_char(prim: str, value: str) -> str:
     """Convert a primitive name + value name to IG Unicode character.
     
     Args:
-        prim: One of 'Ð', 'Þ', 'Ř', 'Φ', 'ƒ', 'Ç', 'Γ', 'ɢ', '⊙', 'Ħ', 'Σ', 'Ω'
+        prim: One of '⊢', '⊣', '≻', '≺', '⋈', '⊤', '∈', '∋', '⊙', '⊥', '⊞', '◻'
         value: The descriptive value name (e.g. 'tri', 'bowtie', 'slow')
     
     Returns:
