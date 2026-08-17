@@ -29,52 +29,55 @@ sys.path.insert(0, str(BASE))
 
 # ── Complementary primitive pairs ───────────────────────────────────
 COMPLEMENTARY_SHORT = {
-    "D": "W", "W": "D",
-    "T": "H", "H": "T",
-    "R": "S", "S": "R",
-    "P": "F", "F": "P",
-    "K": "G", "G": "K",
-    "Gm": "Ph", "Ph": "Gm",
+    "⊢": "◻", "◻": "⊢",
+    "⊣": "⊥", "⊥": "⊣",
+    "≻": "⊞", "⊞": "≻",
+    "≺": "⋈", "⋈": "≺",
+    "⊤": "∈", "∈": "⊤",
+    "∋": "⊙", "⊙": "∋",
 }
 
 FIELD_TO_PRIMITIVE_NAME = {
-    "D": "Dimensionality", "T": "Topology", "R": "Recognition",
-    "P": "Parity", "F": "Fidelity", "K": "Kinetics",
-    "G": "Granularity", "Gm": "Coupling", "Ph": "Criticality",
-    "H": "Chirality", "S": "Stoichiometry", "W": "Winding",
+    "⊢": "Dimensionality", "⊣": "Topology", "≻": "Recognition",
+    "≺": "Parity", "⋈": "Fidelity", "⊤": "Kinetics",
+    "∈": "Granularity", "∋": "Grammar", "⊙": "Criticality",
+    "⊥": "Chirality", "⊞": "Stoichiometry", "◻": "Protection",
 }
 
 # Ordinal values for Shavian glyphs (matching primitives.py)
 GLYPH_ORDINALS = {
-    "D": {"𐑛": 0, "𐑨": 1, "𐑼": 2, "𐑦": 3},
-    "T": {"𐑡": 0, "𐑰": 1, "𐑥": 2, "𐑶": 3, "𐑸": 4},
-    "R": {"𐑩": 0, "𐑑": 1, "𐑽": 2, "𐑾": 3},
-    "P": {"𐑗": 0, "𐑿": 1, "𐑬": 2, "𐑯": 3, "𐑹": 4},
-    "F": {"𐑱": 0, "𐑞": 1, "𐑐": 2},
-    "K": {"𐑘": 0, "𐑤": 1, "𐑧": 2, "𐑺": 3, "𐑪": 4},
-    "G": {"𐑚": 0, "𐑔": 1, "𐑲": 2},
-    "Gm": {"𐑝": 0, "𐑜": 1, "𐑠": 2, "𐑵": 3},
-    "Ph": {"𐑢": 0, "⊙": 1, "𐑮": 2, "𐑻": 3, "𐑣": 4},
-    "H": {"𐑓": 0, "𐑒": 1, "𐑖": 2, "𐑫": 3},
-    "S": {"𐑙": 0, "𐑕": 1, "𐑳": 2},
-    "W": {"𐑷": 0, "𐑴": 1, "𐑭": 2, "𐑟": 3},
+    "⊢": {"𐑛": 0, "𐑨": 1, "𐑼": 2, "𐑦": 3},
+    "⊣": {"𐑡": 0, "𐑰": 1, "𐑥": 2, "𐑶": 3, "𐑸": 4},
+    "≻": {"𐑩": 0, "𐑑": 1, "𐑽": 2, "𐑾": 3},
+    "≺": {"𐑗": 0, "𐑿": 1, "𐑬": 2, "𐑯": 3, "𐑹": 4},
+    "⋈": {"𐑱": 0, "𐑞": 1, "𐑐": 2},
+    "⊤": {"𐑘": 0, "𐑤": 1, "𐑧": 2, "𐑺": 3, "𐑪": 4},
+    "∈": {"𐑚": 0, "𐑔": 1, "𐑲": 2},
+    "∋": {"𐑝": 0, "𐑜": 1, "𐑠": 2, "𐑵": 3},
+    "⊙": {"𐑢": 0, "⊙": 1, "𐑮": 2, "𐑻": 3, "𐑣": 4},
+    "⊥": {"𐑓": 0, "𐑒": 1, "𐑖": 2, "𐑫": 3},
+    "⊞": {"𐑙": 0, "𐑕": 1, "𐑳": 2},
+    "◻": {"𐑷": 0, "𐑴": 1, "𐑭": 2, "𐑟": 3},
 }
 
 ORD_TO_GLYPH = {}
 for prim, mapping in GLYPH_ORDINALS.items():
     ORD_TO_GLYPH[prim] = {v: k for k, v in mapping.items()}
 
-PNAMES = ["D", "T", "R", "P", "F", "K", "G", "Gm", "Ph", "H", "S", "W"]
+# The axes are named by their marks, which is what everything downstream
+# addresses and what the values belong to.
+PNAMES = ["⊢", "⊣", "≻", "≺", "⋈", "⊤", "∈", "∋", "⊙", "⊥", "⊞", "◻"]
 
 # ── Frobenius-aware catalytic site RNA design (v2) ─────────────────
 # Fix: FG-aware fusion + direct AA selection + Frobenius enforcement
 # Replaces the hash-indexed codon lookup that gave 3/6 pair coverage
 
-PRIMITIVE_TO_AA = {
-    "D": "Met", "T": "Trp", "R": "Cys", "P": "Tyr", "F": "Phe",
-    "K": "Ile", "G": "His", "Gm": "Asn", "Ph": "Gln",
-    "H": "Asp", "S": "Lys", "W": "Glu",
-}
+# The residue for each mark comes from V⊙x, which generates it from the Lean.
+# This table had asparagine, glutamine and histidine in the wrong places, which
+# is the division, the rejoining and self-reference.
+from shared.vox_bridge import MARK_AA as _MARK_AA
+
+PRIMITIVE_TO_AA = dict(_MARK_AA)
 
 AA_CODON_POOL_V2 = {
     "Met": ["AUG"], "Trp": ["UGG"],
@@ -93,8 +96,8 @@ AA_CODON_POOL_V2 = {
 }
 
 COMPLEMENTARY_PAIRS_V2 = [
-    ("D", "W"), ("T", "H"), ("R", "S"),
-    ("P", "F"), ("K", "G"), ("Gm", "Ph"),
+    ("⊢", "◻"), ("⊣", "⊥"), ("≻", "⊞"),
+    ("≺", "⋈"), ("⊤", "∈"), ("∋", "⊙"),
 ]
 
 STRUCTURAL_AAS_V2 = ["Ser", "Ala", "Gly", "Thr", "Val", "Leu", "Pro"]
@@ -119,17 +122,26 @@ def fuse_reaction_types(bond_type, fg1_type, fg2_type):
         f1 = glyph_ord(p, fg1_type.get(p, '?'))
         f2 = glyph_ord(p, fg2_type.get(p, '?'))
         
-        if p in ('D', 'T', 'H', 'W'):
+        # Structural axes: the bond dominates and the groups nudge.
+        if p in ('⊢', '⊣', '⊥', '◻'):
             fused_ord = round(0.75 * b + 0.125 * f1 + 0.125 * f2)
-        elif p in ('P', 'Ph'):
+        # Reactive axes: the bond is a floor the groups can raise.
+        elif p in ('≺', '⊙'):
             fused_ord = max(b, round(0.5 * f1 + 0.5 * f2))
-        elif p in ('R', 'K', 'G', 'Gm'):
+        # Coupling axes: a bond-dominant blend.
+        elif p in ('≻', '⊤', '∈', '∋'):
             fused_ord = round(0.55 * b + 0.225 * f1 + 0.225 * f2)
-        elif p in ('F',):
+        # Fidelity: floor, raised by the groups together.
+        elif p == '⋈':
             fused_ord = max(b, round(0.4 * f1 + 0.4 * f2))
-        elif p in ('S',):
+        # Stoichiometry: every species present.
+        elif p == '⊞':
             fused_ord = max(b, f1, f2)
-        
+        else:
+            # No axis is left unfused. This branch was absent, so an axis the
+            # rules did not name left the ordinal unbound rather than saying so.
+            fused_ord = max(b, f1, f2)
+
         fused[p] = ord_to_glyph(p, fused_ord)
     return fused
 
