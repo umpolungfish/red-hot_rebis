@@ -18,42 +18,42 @@
   "tier": "O₁",
   "c_score": 0.0,
   "primitive_breakdown": {
-    "Ð": {
+    "⊢": {
       "glyph": "?",
       "ordinal": 0,
       "weight": 1.0
     },
-    "Þ": {
+    "⊣": {
       "glyph": "?",
       "ordinal": 0,
       "weight": 1.0
     },
-    "Ř": {
+    "≻": {
       "glyph": "?",
       "ordinal": 0,
       "weight": 1.0
     },
-    "Φ": {
+    "≺": {
       "glyph": "?",
       "ordinal": 0,
       "weight": 1.0
     },
-    "ƒ": {
+    "⋈": {
       "glyph": "?",
       "ordinal": 0,
       "weight": 1.0
     },
-    "Ç": {
+    "⊤": {
       "glyph": "?",
       "ordinal": 0,
       "weight": 1.0
     },
-    "Γ": {
+    "∈": {
       "glyph": "?",
       "ordinal": 0,
       "weight": 1.0
     },
-    "ɢ": {
+    "∋": {
       "glyph": "?",
       "ordinal": 0,
       "weight": 1.0
@@ -63,17 +63,17 @@
       "ordinal": 0,
       "weight": 1.0
     },
-    "Ħ": {
+    "⊥": {
       "glyph": "?",
       "ordinal": 0,
       "weight": 0.8
     },
-    "Σ": {
+    "⊞": {
       "glyph": "?",
       "ordinal": 0,
       "weight": 1.0
     },
-    "Ω": {
+    "◻": {
       "glyph": "?",
       "ordinal": 0,
       "weight": 0.7
@@ -256,7 +256,7 @@
     },
     "L3": {
       "layer": "Molecule (Chemical Bonds)",
-      "distance": 4.2847,
+      "distance": 3.919,
       "deltas": [
         {
           "primitive": "T",
@@ -280,7 +280,7 @@
           "primitive": "G",
           "from": "𐑚",
           "to": "𐑲",
-          "delta": 2
+          "delta": -1
         },
         {
           "primitive": "Gm",
@@ -316,7 +316,7 @@
     },
     "L4": {
       "layer": "Folded Protein",
-      "distance": 4.2847,
+      "distance": 3.919,
       "deltas": [
         {
           "primitive": "D",
@@ -346,7 +346,7 @@
           "primitive": "G",
           "from": "𐑚",
           "to": "𐑲",
-          "delta": 2
+          "delta": -1
         },
         {
           "primitive": "Gm",
@@ -376,7 +376,7 @@
     },
     "L5": {
       "layer": "Living Cell",
-      "distance": 5.5099,
+      "distance": 5.2306,
       "deltas": [
         {
           "primitive": "D",
@@ -406,7 +406,7 @@
           "primitive": "G",
           "from": "𐑚",
           "to": "𐑲",
-          "delta": 2
+          "delta": -1
         },
         {
           "primitive": "Gm",
@@ -436,7 +436,7 @@
     },
     "L6": {
       "layer": "Mitosis (Cell Division)",
-      "distance": 6.3529,
+      "distance": 6.1122,
       "deltas": [
         {
           "primitive": "D",
@@ -472,7 +472,7 @@
           "primitive": "G",
           "from": "𐑚",
           "to": "𐑲",
-          "delta": 2
+          "delta": -1
         },
         {
           "primitive": "Gm",
@@ -508,7 +508,7 @@
     },
     "L7": {
       "layer": "Tissue / Organ",
-      "distance": 5.8616,
+      "distance": 5.5999,
       "deltas": [
         {
           "primitive": "D",
@@ -538,7 +538,7 @@
           "primitive": "G",
           "from": "𐑚",
           "to": "𐑲",
-          "delta": 2
+          "delta": -1
         },
         {
           "primitive": "Gm",
@@ -574,7 +574,7 @@
     },
     "L8": {
       "layer": "Whole Organism",
-      "distance": 7.1665,
+      "distance": 6.9541,
       "deltas": [
         {
           "primitive": "D",
@@ -610,7 +610,7 @@
           "primitive": "G",
           "from": "𐑚",
           "to": "𐑲",
-          "delta": 2
+          "delta": -1
         },
         {
           "primitive": "Gm",

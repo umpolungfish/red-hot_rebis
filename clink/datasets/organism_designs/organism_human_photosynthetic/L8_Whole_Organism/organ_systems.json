@@ -1,0 +1,50 @@
+{
+  "nervous": {
+    "mass_kg": 1.5,
+    "cell_types": [
+      "neuron",
+      "astrocyte",
+      "microglia"
+    ]
+  },
+  "circulatory": {
+    "heart_rate_bpm": 70,
+    "blood_volume_L": 5,
+    "vessel_length_km": 100
+  },
+  "respiratory": {
+    "lung_capacity_L": 6,
+    "surface_area_m2": 70
+  },
+  "digestive": {
+    "length_m": 8,
+    "surface_area_m2": 200
+  },
+  "immune": {
+    "cell_count": 1800000000000.0,
+    "types": [
+      "T_cell",
+      "B_cell",
+      "NK",
+      "macrophage",
+      "neutrophil"
+    ]
+  },
+  "endocrine": {
+    "glands": [
+      "pituitary",
+      "thyroid",
+      "adrenal",
+      "pancreas",
+      "gonads"
+    ]
+  },
+  "musculoskeletal": {
+    "muscle_mass_kg": 30,
+    "bone_mass_kg": 15
+  },
+  "reproductive": {
+    "type": "sexual",
+    "chromosomes": "XY"
+  }
+}

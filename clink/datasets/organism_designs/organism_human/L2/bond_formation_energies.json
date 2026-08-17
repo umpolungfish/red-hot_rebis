@@ -2,7 +2,7 @@
   "covalent": {
     "C-C": 348,
     "C=C": 614,
-    "C\u2261C": 839,
+    "C≡C": 839,
     "C-H": 413,
     "C-O": 358,
     "C=O": 799,
@@ -17,8 +17,8 @@
     "Ca-O_lattice": 3400
   },
   "hydrogen_bonds": {
-    "O-H\u00b7\u00b7\u00b7O": "12-30",
-    "N-H\u00b7\u00b7\u00b7O": "8-21",
+    "O-H···O": "12-30",
+    "N-H···O": "8-21",
     "range_unit": "kJ/mol"
   },
   "van_der_Waals": {

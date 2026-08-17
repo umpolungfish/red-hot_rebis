@@ -1,0 +1,18 @@
+{
+  "EGF": {
+    "concentration_ng_per_mL": 50,
+    "schedule": "every 48h"
+  },
+  "FGF2": {
+    "concentration_ng_per_mL": 20,
+    "schedule": "every 48h"
+  },
+  "VEGF": {
+    "concentration_ng_per_mL": 10,
+    "schedule": "every 72h"
+  },
+  "TGFb": {
+    "concentration_ng_per_mL": 5,
+    "schedule": "every 72h"
+  }
+}

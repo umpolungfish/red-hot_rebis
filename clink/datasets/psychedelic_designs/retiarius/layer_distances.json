@@ -178,7 +178,7 @@
   },
   "L3": {
     "layer": "Molecule (Chemical Bonds)",
-    "distance": 4.2847,
+    "distance": 3.919,
     "deltas": [
       {
         "primitive": "T",
@@ -202,7 +202,7 @@
         "primitive": "G",
         "from": "𐑚",
         "to": "𐑲",
-        "delta": 2
+        "delta": -1
       },
       {
         "primitive": "Gm",
@@ -239,7 +239,7 @@
   },
   "L4": {
     "layer": "Folded Protein",
-    "distance": 4.2847,
+    "distance": 3.919,
     "deltas": [
       {
         "primitive": "D",
@@ -269,7 +269,7 @@
         "primitive": "G",
         "from": "𐑚",
         "to": "𐑲",
-        "delta": 2
+        "delta": -1
       },
       {
         "primitive": "Gm",
@@ -300,7 +300,7 @@
   },
   "L5": {
     "layer": "Living Cell",
-    "distance": 5.5099,
+    "distance": 5.2306,
     "deltas": [
       {
         "primitive": "D",
@@ -330,7 +330,7 @@
         "primitive": "G",
         "from": "𐑚",
         "to": "𐑲",
-        "delta": 2
+        "delta": -1
       },
       {
         "primitive": "Gm",
@@ -361,7 +361,7 @@
   },
   "L6": {
     "layer": "Mitosis (Cell Division)",
-    "distance": 6.3529,
+    "distance": 6.1122,
     "deltas": [
       {
         "primitive": "D",
@@ -397,7 +397,7 @@
         "primitive": "G",
         "from": "𐑚",
         "to": "𐑲",
-        "delta": 2
+        "delta": -1
       },
       {
         "primitive": "Gm",
@@ -434,7 +434,7 @@
   },
   "L7": {
     "layer": "Tissue / Organ",
-    "distance": 5.8616,
+    "distance": 5.5999,
     "deltas": [
       {
         "primitive": "D",
@@ -464,7 +464,7 @@
         "primitive": "G",
         "from": "𐑚",
         "to": "𐑲",
-        "delta": 2
+        "delta": -1
       },
       {
         "primitive": "Gm",
@@ -501,7 +501,7 @@
   },
   "L8": {
     "layer": "Whole Organism",
-    "distance": 7.1665,
+    "distance": 6.9541,
     "deltas": [
       {
         "primitive": "D",
@@ -537,7 +537,7 @@
         "primitive": "G",
         "from": "𐑚",
         "to": "𐑲",
-        "delta": 2
+        "delta": -1
       },
       {
         "primitive": "Gm",

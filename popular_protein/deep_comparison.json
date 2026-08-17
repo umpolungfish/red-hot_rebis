@@ -18,9 +18,9 @@
       "other": 55,
       "none": 103
     },
-    "mean_phi_diff": 145.7,
-    "mean_psi_diff": 99.4,
-    "kabsch_rmsd": 18.8
+    "mean_phi_diff": 144.7,
+    "mean_psi_diff": 98.4,
+    "kabsch_rmsd": 33.89
   },
   "insulin_a_chain": {
     "platonic_residues": 21,
@@ -41,8 +41,8 @@
       "other": 6,
       "none": 14
     },
-    "mean_phi_diff": 160.4,
-    "mean_psi_diff": 121.6,
-    "kabsch_rmsd": 5.71
+    "mean_phi_diff": 157.0,
+    "mean_psi_diff": 121.7,
+    "kabsch_rmsd": 6.29
   }
 }

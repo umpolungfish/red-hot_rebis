@@ -20,7 +20,7 @@
       "schedule": "every 72h",
       "target": "angiogenesis"
     },
-    "TGF-\u03b21": {
+    "TGF-β1": {
       "concentration_ng_per_mL": 5,
       "schedule": "every 72h",
       "target": "ECM production/fibrosis"
@@ -53,19 +53,19 @@
     },
     "CHIR99021": {
       "concentration_uM": 3,
-      "target": "GSK3\u03b2 inhibition (Wnt activation)"
+      "target": "GSK3β inhibition (Wnt activation)"
     },
     "A83-01": {
       "concentration_uM": 1,
-      "target": "TGF-\u03b2 receptor inhibition"
+      "target": "TGF-β receptor inhibition"
     },
     "DAPT": {
       "concentration_uM": 10,
-      "target": "\u03b3-secretase inhibition (Notch blockade)"
+      "target": "γ-secretase inhibition (Notch blockade)"
     },
     "SB431542": {
       "concentration_uM": 10,
-      "target": "TGF-\u03b2/Activin/Nodal receptor inhibition"
+      "target": "TGF-β/Activin/Nodal receptor inhibition"
     }
   }
 }

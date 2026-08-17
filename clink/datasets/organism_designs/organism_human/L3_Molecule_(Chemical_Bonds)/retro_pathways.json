@@ -1,0 +1,27 @@
+{
+  "alanine": {
+    "from": [
+      "pyruvate",
+      "NH3",
+      "NADPH"
+    ],
+    "enzymes": [
+      "ALT",
+      "GDH"
+    ]
+  },
+  "glucose": {
+    "from": [
+      "CO2",
+      "H2O"
+    ],
+    "pathway": "gluconeogenesis"
+  },
+  "atp": {
+    "from": [
+      "ADP",
+      "Pi"
+    ],
+    "enzyme": "ATP synthase"
+  }
+}

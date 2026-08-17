@@ -1,13 +1,13 @@
 {
   "embryogenesis": {
-    "fertilization": "Day 0 \u2014 zygote (single cell)",
-    "cleavage": "Days 1-4 \u2014 morula (16-32 cells)",
-    "blastocyst": "Days 5-6 \u2014 ICM + trophectoderm",
-    "implantation": "Days 6-10 \u2014 uterine wall invasion",
-    "gastrulation": "Days 14-21 \u2014 three germ layers (ectoderm, mesoderm, endoderm)",
-    "neurulation": "Days 19-28 \u2014 neural tube closure",
-    "organogenesis": "Weeks 4-8 \u2014 all major organ systems formed",
-    "fetal_period": "Weeks 9-38 \u2014 growth and maturation"
+    "fertilization": "Day 0 — zygote (single cell)",
+    "cleavage": "Days 1-4 — morula (16-32 cells)",
+    "blastocyst": "Days 5-6 — ICM + trophectoderm",
+    "implantation": "Days 6-10 — uterine wall invasion",
+    "gastrulation": "Days 14-21 — three germ layers (ectoderm, mesoderm, endoderm)",
+    "neurulation": "Days 19-28 — neural tube closure",
+    "organogenesis": "Weeks 4-8 — all major organ systems formed",
+    "fetal_period": "Weeks 9-38 — growth and maturation"
   },
   "germ_layer_derivatives": {
     "ectoderm": [
@@ -34,10 +34,10 @@
     ]
   },
   "postnatal_growth": {
-    "infancy": "0-2 years \u2014 rapid growth (triple birth weight by 1 year)",
-    "childhood": "2-12 years \u2014 steady growth 5-6 cm/year",
-    "puberty": "12-18 years \u2014 growth spurt, sexual maturation",
-    "adulthood": "18-65 years \u2014 homeostasis plateau",
-    "senescence": "65+ years \u2014 gradual functional decline"
+    "infancy": "0-2 years — rapid growth (triple birth weight by 1 year)",
+    "childhood": "2-12 years — steady growth 5-6 cm/year",
+    "puberty": "12-18 years — growth spurt, sexual maturation",
+    "adulthood": "18-65 years — homeostasis plateau",
+    "senescence": "65+ years — gradual functional decline"
   }
 }

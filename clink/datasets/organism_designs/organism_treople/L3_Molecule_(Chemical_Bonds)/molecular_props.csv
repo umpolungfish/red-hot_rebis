@@ -1,0 +1,5 @@
+SMILES,Name,MW,logP,HBD,HBA
+C(C(=O)O)N,Alanine,89.09,-2.85,2,4
+CC(C)CC(C(=O)O)N,Leucine,131.17,-1.52,2,4
+C1=CC=C(C=C1)CC(C(=O)O)N,Phenylalanine,165.19,-1.38,2,4
+C(CC(=O)O)C(C(=O)O)N,Glutamic_acid,147.13,-3.69,3,6

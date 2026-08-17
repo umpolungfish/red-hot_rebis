@@ -1,0 +1,12 @@
+{
+  "primitive_spectrum": {
+    "⊢": 1,
+    "⊥": 2,
+    "≻": 1,
+    "≺": 1,
+    "⊞": 2,
+    "⊤": 1,
+    "∋": 1
+  },
+  "classification": "{'type': 'structured', 'profile': {'promoted_count': 9, 'dominant_primitive': '⊥', 'description': '⊥-dominant (9/26 residues)', '⊢': 1, '⊥': 2, '≻': 1, '≺': 1, '⊞': 2, '⊤': 1, '∋': 1}, 'dominant': '⊥', 'description': '⊥-dominant (9/26 residues)'}"
+}

@@ -127,7 +127,7 @@
   },
   "verticullum_plus_ketamine": {
     "combination": "Verticullum (EP-Lever) + ketamine",
-    "composite_type": "⟨𐑦𐑥𐑾𐑿𐑱𐑧𐑲𐑠⊙𐑫𐑳𐑟⟩",
+    "composite_type": "⟨𐑦𐑥𐑾𐑿𐑱𐑧𐑔𐑠⊙𐑫𐑳𐑟⟩",
     "composite_tier": "O₂",
     "parent_1": {
       "name": "Verticullum (EP-Lever)",
@@ -149,6 +149,12 @@
         "from": "𐑐",
         "to": "𐑱",
         "delta": -2
+      },
+      {
+        "primitive": "G",
+        "from": "𐑲",
+        "to": "𐑔",
+        "delta": 2
       }
     ],
     "deltas_from_parent_2": [
@@ -162,12 +168,6 @@
         "primitive": "K",
         "from": "𐑤",
         "to": "𐑧",
-        "delta": 1
-      },
-      {
-        "primitive": "G",
-        "from": "𐑔",
-        "to": "𐑲",
         "delta": 1
       },
       {
@@ -269,7 +269,7 @@
   },
   "verticullum_plus_mescaline": {
     "combination": "Verticullum (EP-Lever) + mescaline",
-    "composite_type": "⟨𐑦𐑥𐑾𐑗𐑱𐑧𐑲𐑠⊙𐑫𐑳𐑟⟩",
+    "composite_type": "⟨𐑦𐑥𐑾𐑗𐑱𐑧𐑔𐑠⊙𐑫𐑳𐑟⟩",
     "composite_tier": "O₂",
     "parent_1": {
       "name": "Verticullum (EP-Lever)",
@@ -291,6 +291,12 @@
         "from": "𐑐",
         "to": "𐑱",
         "delta": -2
+      },
+      {
+        "primitive": "G",
+        "from": "𐑲",
+        "to": "𐑔",
+        "delta": 2
       }
     ],
     "deltas_from_parent_2": [
@@ -311,12 +317,6 @@
         "from": "𐑩",
         "to": "𐑾",
         "delta": 3
-      },
-      {
-        "primitive": "G",
-        "from": "𐑔",
-        "to": "𐑲",
-        "delta": 1
       },
       {
         "primitive": "Gm",

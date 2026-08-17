@@ -16,7 +16,7 @@
     "healthy_lifespan_years": 63
   },
   "senescence_markers": {
-    "SA_\u03b2_gal": true,
+    "SA_β_gal": true,
     "p16_INK4a": true,
     "p21_CIP1": true,
     "SASP": [

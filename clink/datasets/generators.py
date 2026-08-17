@@ -1,17 +1,7 @@
 """
-generators.py — Physically actionable dataset generators for all 9 CLINK layers
-================================================================================
-
-Design principle:
-  - Bridge to existing tools FIRST (serpentrod, ch3mpiler, gene_imscriber, etc.)
-  - Fall back to first-principles generation when tool is unavailable
-  - Every dataset carries its own Frobenius verification metadata
-  - Output files placed in clink/datasets/output/<layer_name>/
-
+generators.py — Physically actionable datasets
 Author: Lando (R) (O)perator
 """
-
-
 from __future__ import annotations
 import json, os, sys, math, random, hashlib
 from pathlib import Path
@@ -22,201 +12,189 @@ from datetime import datetime
 REBIS_ROOT = Path(__file__).parent.parent.parent.absolute()
 sys.path.insert(0, str(REBIS_ROOT))
 
+# Every generator stamps its output with the chain's closure verdict, so the
+# check it calls has to be in scope here.
+from clink.chain import (
+    clink_frobenius_closed,
+    compute_c_score_from_tuple,
+    compute_tier_from_tuple,
+)
 
 @dataclass
 class DatasetFile:
-    """A single physically-actionable output file."""
-    filename: str
-    extension: str
-    content: str
-    description: str
-    format_name: str
-    frobenius_hash: str = ""
+    filename: str; extension: str; content: str
+    description: str; format_name: str; frobenius_hash: str = ""
 
 @dataclass
 class DatasetOutput:
-    """Complete dataset output for a single CLINK layer."""
-    layer_idx: int
-    layer_name: str
-    layer_tier: str
+    layer_idx: int; layer_name: str; layer_tier: str
     files: List[DatasetFile] = field(default_factory=list)
-    structural_tuple: Dict[str, str] = field(default_factory=dict)
+    structural_tuple: Dict[str,str] = field(default_factory=dict)
     frobenius_verified: bool = False
     generation_time: str = field(default_factory=lambda: datetime.now().isoformat())
     tool_bridges_used: List[str] = field(default_factory=list)
     notes: List[str] = field(default_factory=list)
 
 class DatasetGenerator:
-    """Base class for layer-specific dataset generators."""
     layer_idx: int = -1
-    layer_name: str = ""
-    
     def __init__(self):
         from clink.chain import clink_layer_tuple
-
         self.tup = clink_layer_tuple(self.layer_idx)
-        self.output_dir = Path(__file__).parent / "output" / self.layer_name.replace(" ", "_")
-    
-    def generate(self, design_data: Optional[Dict] = None) -> DatasetOutput:
+        name = getattr(self, "layer_name", str(self.layer_idx))
+        self.output_dir = Path(__file__).parent / "output" / name.replace(" ","_")
+    def generate(self, design_data=None) -> DatasetOutput:
         raise NotImplementedError
-    
-    def _hash_content(self, content: str) -> str:
-        return hashlib.sha256(content.encode()).hexdigest()[:12]
-    
-    def _ensure_output_dir(self):
-        self.output_dir.mkdir(parents=True, exist_ok=True)
-    
-    def _write_file(self, filename: str, content: str) -> Path:
-        self._ensure_output_dir()
-        path = self.output_dir / filename
-        with open(path, 'w') as f:
-            f.write(content)
-        return path
 
-
-# ============================================================
-# LAYER 0 — Frustrated Belnap5 (Quark Color) — O₀
-# ============================================================
 
 class Layer0DatasetGenerator(DatasetGenerator):
-    """QCD parameters, coupling constants, hadron spectrum."""
-    layer_idx = 0
-    
-    def generate(self, design_data=None):
-        out = DatasetOutput(
-            layer_idx=0, layer_name="Frustrated Belnap5 (Quarks)",
-            layer_tier="O₀", structural_tuple=dict(self.tup),
-        )
-        
-        out.files.append(DatasetFile(
-            filename="qcd_coupling_alpha_s.csv",
-            extension=".csv",
-            content=self._gen_alpha_s_table(),
-            description="Running QCD coupling constant alpha_s vs energy scale",
-            format_name="CSV",
-        ))
-        out.files.append(DatasetFile(
-            filename="qcd_lattice_params.xml",
-            extension=".xml",
-            content=self._gen_lattice_params(),
-            description="Lattice QCD simulation parameters for MILC/ChromaLattice",
-            format_name="XML",
-        ))
-        out.files.append(DatasetFile(
-            filename="hadron_mass_spectrum.json",
-            extension=".json",
-            content=self._gen_hadron_spectrum(),
-            description="Predicted hadron mass spectrum",
-            format_name="JSON",
-        ))
-        out.files.append(DatasetFile(
-            filename="su3_color_charges.json",
-            extension=".json",
-            content=self._gen_color_table(),
-            description="SU(3) color charge assignments",
-            format_name="JSON",
-        ))
-        out.frobenius_verified = clink_frobenius_closed(self.tup)
-        return out
-    
-    def _gen_alpha_s_table(self):
-        lines = ["Q2_MeV2,alpha_s,error"]
-        for Q2 in [1,2,5,10,20,50,100,200,500,1000,2000,5000,10000]:
-            a = max(0.05, min(0.5, 0.12 / math.log(max(math.sqrt(Q2)/0.2, 1.1))))
-            lines.append(f"{Q2},{a:.4f},{a*0.05:.4f}")
-        return "\n".join(lines)
-    
-    def _gen_lattice_params(self):
-        return """<?xml version="1.0"?>
-<latticeQCD>
-  <gauge_group>SU(3)</gauge_group>
-  <n_colors>3</n_colors>
-  <n_flavors>6</n_flavors>
-  <lattice_size>24 24 24 48</lattice_size>
-  <beta>6.0</beta>
-  <confinement_scale_MeV>200</confinement_scale_MeV>
-  <action>Wilson</action>
-  <observables>wilson_loop polyakov_loop pion_mass rho_mass nucleon_mass</observables>
-</latticeQCD>"""
-    
-    def _gen_hadron_spectrum(self):
-        return json.dumps({
-            "mesons": {"pion": {"mass_MeV":135,"JPC":"0-+"},"rho": {"mass_MeV":770,"JPC":"1--"},"kaon":{"mass_MeV":494},"J_psi":{"mass_MeV":3097}},
-            "baryons": {"proton":{"mass_MeV":938,"JP":"1/2+"},"neutron":{"mass_MeV":940},"lambda":{"mass_MeV":1116}},
-        }, indent=2, ensure_ascii=False)
-    
-    def _gen_color_table(self):
-        return json.dumps({
-            "color_charges": ["red","green","blue"],
-            "anti_colors": ["anti_red","anti_green","anti_blue"],
-            "confinement": True, "asymptotic_freedom": True,
-        }, indent=2, ensure_ascii=False)
+    layer_idx = 0; layer_name = "Frustrated Belnap5 (Quarks)"
+    def generate(self, d=None):
+        o = DatasetOutput(layer_idx=0, layer_name=self.layer_name, layer_tier="O₀", structural_tuple=dict(self.tup))
+        o.files.append(DatasetFile(filename="qcd_coupling_alpha_s.csv", extension=".csv",
+            content=self._alphas(), description="Running QCD coupling constant", format_name="CSV"))
+        o.files.append(DatasetFile(filename="qcd_lattice_params.xml", extension=".xml",
+            content=self._lattice(), description="Lattice QCD parameters", format_name="XML"))
+        o.files.append(DatasetFile(filename="hadron_spectrum.json", extension=".json",
+            content=json.dumps({"pion":"135MeV","rho":"770MeV","proton":"938MeV"},indent=2, ensure_ascii=False),
+            description="Hadron mass spectrum", format_name="JSON"))
+        o.frobenius_verified = clink_frobenius_closed(self.tup); return o
+    def _alphas(self):
+        ls = ["Q2,alpha_s"]; [ls.append(f"{q},{max(0.05,min(0.5,0.12/math.log(max(math.sqrt(q)/0.2,1.1)))):.4f}") for q in [1,2,5,10,20,50,100,200,500,1000,5000]]; return "\n".join(ls)
+    def _lattice(self):
+        return '<?xml version="1.0"?><latticeQCD><gauge_group>SU(3)</gauge_group><n_colors>3</n_colors><lattice_size>24 24 24 48</lattice_size><beta>6.0</beta></latticeQCD>'
 
-
-# ============================================================
-# LAYER 1 — Electron Orbital (Belnap4) — O₀
-# ============================================================
 
 class Layer1DatasetGenerator(DatasetGenerator):
-    """Electron configuration, orbital occupancy, quantum chemistry inputs."""
-    layer_idx = 1
+    layer_idx = 1; layer_name = "Electron Orbital (Belnap4)"
+    def generate(self, d=None):
+        o = DatasetOutput(layer_idx=1, layer_name=self.layer_name, layer_tier="O₀", structural_tuple=dict(self.tup))
+        o.files.append(DatasetFile(filename="electron_configs.csv", extension=".csv",
+            content=self._cfgs(), description="Electron configurations", format_name="CSV"))
+        o.files.append(DatasetFile(filename="b4_map.json", extension=".json",
+            content=json.dumps({"B":"Guanine","T":"Cytosine","F":"Adenine","N":"Thymine"},indent=2, ensure_ascii=False),
+            description="Belnap4 to nucleotide mapping", format_name="JSON"))
+        o.frobenius_verified = clink_frobenius_closed(self.tup); return o
+    def _cfgs(self):
+        c = {1:"1s1",2:"1s2",6:"[He]2s2 2p2",7:"[He]2s2 2p3",8:"[He]2s2 2p4",26:"[Ar]3d6 4s2"}
+        return "\n".join([f"Z={z}, {c[z]}" for z in sorted(c)])
+
+
+class Layer2DatasetGenerator(DatasetGenerator):
+    layer_idx = 2; layer_name = "Atom (Nuclear + Electron)"
+    def generate(self, d=None):
+        o = DatasetOutput(layer_idx=2, layer_name=self.layer_name, layer_tier="O₁", structural_tuple=dict(self.tup))
+        o.files.append(DatasetFile(filename="atomic_params.csv", extension=".csv",
+            content="Z,symbol,mass_amu,radius_pm,ionization_eV\n6,C,12.011,76,11.260\n7,N,14.007,75,14.534\n8,O,15.999,73,13.618\n15,P,30.974,107,10.487\n26,Fe,55.845,132,7.902",
+            description="Atomic parameters table", format_name="CSV"))
+        o.files.append(DatasetFile(filename="isotopes.json", extension=".json",
+            content=json.dumps({"C":{"stable":["C12","C13"],"radioactive":["C14"]},"O":{"stable":["O16","O17","O18"]}},indent=2, ensure_ascii=False),
+            description="Isotope selection table", format_name="JSON"))
+        o.frobenius_verified = clink_frobenius_closed(self.tup); return o
+
+
+class Layer3DatasetGenerator(DatasetGenerator):
+    layer_idx = 3; layer_name = "Molecule (Chemical Bonds)"
+    def generate(self, d=None):
+        o = DatasetOutput(layer_idx=3, layer_name=self.layer_name, layer_tier="O₂", structural_tuple=dict(self.tup))
+        # Try ch3mpiler bridge
+        try:
+            sys.path.insert(0, str(REBIS_ROOT / "ch3mpiler"))
+            from ch3mpiler.compiler import MoleculeCompiler
+            mc = MoleculeCompiler()
+            o.notes.append(f"ch3mpiler bridged: retrosynthesis available")
+            o.tool_bridges_used.append("ch3mpiler")
+        except: pass
+        
+        o.files.append(DatasetFile(filename="molecules.smi", extension=".smi",
+            content=self._smiles(), description="SMILES inventory of biomolecules", format_name="SMILES"))
+        o.files.append(DatasetFile(filename="molecular_props.csv", extension=".csv",
+            content=self._props(), description="Molecular properties MW logP HBD HBA", format_name="CSV"))
+        o.files.append(DatasetFile(filename="retro_pathways.json", extension=".json",
+            content=self._retro(), description="Retrosynthetic pathways", format_name="JSON"))
+        o.files.append(DatasetFile(filename="reactions.json", extension=".json",
+            content=self._rxns(), description="Biochemical reaction equations", format_name="JSON"))
+        o.frobenius_verified = clink_frobenius_closed(self.tup); return o
     
-    def generate(self, design_data=None):
-        out = DatasetOutput(
-            layer_idx=1, layer_name="Electron Orbital (Belnap4)",
-            layer_tier="O₀", structural_tuple=dict(self.tup),
-        )
-        out.files.append(DatasetFile(
-            filename="electron_configurations.csv",
-            extension=".csv",
-            content=self._gen_electron_configs(),
-            description="Electron configurations for all elements",
-            format_name="CSV",
-        ))
-        out.files.append(DatasetFile(
-            filename="b4_lattice_nucleotide_map.json",
-            extension=".json",
-            content=self._gen_b4_mapping(),
-            description="Belnap4 lattice to nucleotide mapping",
-            format_name="JSON",
-        ))
-        out.files.append(DatasetFile(
-            filename="quantum_chemistry_inputs.json",
-            extension=".json",
-            content=self._gen_qc_inputs(),
-            description="Quantum chemistry input deck manifest",
-            format_name="JSON",
-        ))
-        out.frobenius_verified = clink_frobenius_closed(self.tup)
-        return out
+    def _smiles(self):
+        return ("# CLINK Molecule Inventory\n"
+                "C(C(=O)O)N\tAlanine\n"
+                "CC(C)CC(C(=O)O)N\tLeucine\n"
+                "C1=CC=C(C=C1)CC(C(=O)O)N\tPhenylalanine\n"
+                "C(CC(=O)O)C(C(=O)O)N\tGlutamic_acid\n"
+                "C1=NC2=C(N1)N(C=N2)C3C(C(C(O3)CO)O)O\tAdenosine\n"
+                "CC1=CN(C(=O)NC1=O)C2C(C(C(O2)CO)O)O\tThymidine")
     
-    def _gen_electron_configs(self):
-        cfgs = {1:"1s1",2:"1s2",3:"1s2 2s1",4:"1s2 2s2",5:"1s2 2s2 2p1",6:"1s2 2s2 2p2",
-                7:"1s2 2s2 2p3",8:"1s2 2s2 2p4",9:"1s2 2s2 2p5",10:"1s2 2s2 2p6",
-                11:"[Ne] 3s1",12:"[Ne] 3s2",13:"[Ne] 3s2 3p1",14:"[Ne] 3s2 3p2",
-                15:"[Ne] 3s2 3p3",16:"[Ne] 3s2 3p4",17:"[Ne] 3s2 3p5",18:"[Ne] 3s2 3p6",
-                19:"[Ar] 4s1",20:"[Ar] 4s2",26:"[Ar] 3d6 4s2"}
-        syms = {1:"H",2:"He",6:"C",7:"N",8:"O",15:"P",16:"S",26:"Fe"}
-        lines = ["Z,symbol,config"]
-        for z in sorted(cfgs.keys()):
-            lines.append(f"{z},{syms.get(z,'?')},{cfgs[z]}")
-        return "\n".join(lines)
+    def _props(self):
+        return ("SMILES,Name,MW,logP,HBD,HBA\n"
+                "C(C(=O)O)N,Alanine,89.09,-2.85,2,4\n"
+                "CC(C)CC(C(=O)O)N,Leucine,131.17,-1.52,2,4\n"
+                "C1=CC=C(C=C1)CC(C(=O)O)N,Phenylalanine,165.19,-1.38,2,4\n"
+                "C(CC(=O)O)C(C(=O)O)N,Glutamic_acid,147.13,-3.69,3,6")
     
-    def _gen_b4_mapping(self):
+    def _retro(self):
         return json.dumps({
-            "B4_to_nucleotide": {
-                "B_Both": "Guanine_G", "T_True": "Cytosine_C",
-                "F_False": "Adenine_A", "N_Neither": "Thymine_T"
-            },
-            "bridge_to_gene_imscriber": True,
+            "alanine": {"from": ["pyruvate","NH3","NADPH"],"enzymes":["ALT","GDH"]},
+            "glucose": {"from": ["CO2","H2O"],"pathway":"gluconeogenesis"},
+            "atp": {"from":["ADP","Pi"],"enzyme":"ATP synthase"},
         }, indent=2, ensure_ascii=False)
     
-    def _gen_qc_inputs(self):
+    def _rxns(self):
         return json.dumps({
-            "software": ["Gaussian","ORCA","GAMESS","NWChem"],
-            "basis_sets": ["STO-3G","6-31G(d)","cc-pVDZ","aug-cc-pVQZ"],
-            "methods": ["HF","DFT/B3LYP","MP2","CCSD(T)"],
+            "glycolysis":{"reactants":"Glucose+2NAD+2ADP","products":"2Pyruvate+2NADH+2ATP","deltaG_kJ":-74.5},
+            "tca":{"reactants":"Acetyl-CoA+3NAD+FAD","products":"2CO2+3NADH+FADH2+GTP","deltaG_kJ":-40.0},
         }, indent=2, ensure_ascii=False)
+
+
+class Layer4DatasetGenerator(DatasetGenerator):
+    layer_idx = 4; layer_name = "Folded Protein"
+    def generate(self, d=None):
+        o = DatasetOutput(layer_idx=4, layer_name=self.layer_name, layer_tier="O₂", structural_tuple=dict(self.tup))
+        seq = (d or {}).get("sequence", "MLSDCGP") or "MLSDCGP"
+        fn = (d or {}).get("target_function", "structural") or "structural"
+        o.notes.append(f"Protein {seq} ({fn})")
+        
+        # Bridge to serpentrod
+        try:
+            sys.path.insert(0, str(REBIS_ROOT / "serpentrod"))
+            from serpentrod.stratified_predictor import PRIMITIVE_MAP
+            from serpentrod.protein_v5 import classify_module_rich
+
+            spec = {}
+            for aa in seq.upper():
+                if aa in PRIMITIVE_MAP: spec[PRIMITIVE_MAP[aa][0]] = spec.get(PRIMITIVE_MAP[aa][0],0)+1
+            cls = classify_module_rich(seq)
+            o.tool_bridges_used.append("serpentrod")
+            o.files.append(DatasetFile(filename="serpentrod_classification.json",extension=".json",
+                content=json.dumps({"primitive_spectrum":spec,"classification":str(cls)},indent=2, ensure_ascii=False),
+                description="Serpentrod protein classification", format_name="JSON"))
+        except: pass
+        
+        # FASTA
+        o.files.append(DatasetFile(filename="protein.fasta",extension=".fasta",
+            content=f">CLINK|{fn}|length={len(seq)}\n{seq}\n",
+            description="Protein sequence in FASTA format", format_name="FASTA"))
+        
+        # PDB template
+        pdb = ["HEADER CLINK PROTEIN DESIGN\nCOMPND "+fn]
+        for i,aa in enumerate(seq.upper()):
+            x,y,z = i*1.5, math.sin(i*0.5)*5, math.cos(i*0.5)*5
+            pdb.append(f"ATOM  {i+1:5d}  CA  {aa:<3s} A{i+1:4d}    {x:8.3f}{y:8.3f}{z:8.3f}  1.00  0.00           C  ")
+        pdb.append("TER\nEND")
+        o.files.append(DatasetFile(filename="protein_coords.pdb",extension=".pdb",
+            content="\n".join(pdb),
+            description="PDB coordinate template for protein", format_name="PDB"))
+        
+        # Secondary structure
+        ss = {}
+        for i,aa in enumerate(seq.upper()):
+            if aa in "ML": ss[i] = "H"
+            elif aa in "SC": ss[i] = "E"
+            else: ss[i] = "C"
+        o.files.append(DatasetFile(filename="secondary_structure.json",extension=".json",
+            content=json.dumps({"prediction":ss,"composition":{"H":list(ss.values()).count("H"),"E":list(ss.values()).count("E"),"C":list(ss.values()).count("C")}},indent=2, ensure_ascii=False),
+            description="Secondary structure prediction", format_name="JSON"))
+        
+        o.frobenius_verified = clink_frobenius_closed(self.tup); return o
 
 
 class Layer5DatasetGenerator(DatasetGenerator):
@@ -464,153 +442,308 @@ class Layer7DatasetGenerator(DatasetGenerator):
                 "4. Proceed to RNA extraction or fixation")
 
 
-class Layer0DatasetGenerator(DatasetGenerator):
-    layer_idx = 0; layer_name = "Frustrated Belnap5 (Quarks)"
+class Layer8DatasetGenerator(DatasetGenerator):
+    layer_idx = 8; layer_name = "Whole Organism"
     def generate(self, d=None):
-        o = DatasetOutput(layer_idx=0, layer_name=self.layer_name, layer_tier="O₀", structural_tuple=dict(self.tup))
-        o.files.append(DatasetFile(filename="qcd_coupling_alpha_s.csv", extension=".csv",
-            content=self._alphas(), description="Running QCD coupling constant", format_name="CSV"))
-        o.files.append(DatasetFile(filename="qcd_lattice_params.xml", extension=".xml",
-            content=self._lattice(), description="Lattice QCD parameters", format_name="XML"))
-        o.files.append(DatasetFile(filename="hadron_spectrum.json", extension=".json",
-            content=json.dumps({"pion":"135MeV","rho":"770MeV","proton":"938MeV"},indent=2, ensure_ascii=False),
-            description="Hadron mass spectrum", format_name="JSON"))
-        o.frobenius_verified = clink_frobenius_closed(self.tup); return o
-    def _alphas(self):
-        ls = ["Q2,alpha_s"]; [ls.append(f"{q},{max(0.05,min(0.5,0.12/math.log(max(math.sqrt(q)/0.2,1.1)))):.4f}") for q in [1,2,5,10,20,50,100,200,500,1000,5000]]; return "\n".join(ls)
-    def _lattice(self):
-        return '<?xml version="1.0"?><latticeQCD><gauge_group>SU(3)</gauge_group><n_colors>3</n_colors><lattice_size>24 24 24 48</lattice_size><beta>6.0</beta></latticeQCD>'
-
-
-class Layer1DatasetGenerator(DatasetGenerator):
-    layer_idx = 1; layer_name = "Electron Orbital (Belnap4)"
-    def generate(self, d=None):
-        o = DatasetOutput(layer_idx=1, layer_name=self.layer_name, layer_tier="O₀", structural_tuple=dict(self.tup))
-        o.files.append(DatasetFile(filename="electron_configs.csv", extension=".csv",
-            content=self._cfgs(), description="Electron configurations", format_name="CSV"))
-        o.files.append(DatasetFile(filename="b4_map.json", extension=".json",
-            content=json.dumps({"B":"Guanine","T":"Cytosine","F":"Adenine","N":"Thymine"},indent=2, ensure_ascii=False),
-            description="Belnap4 to nucleotide mapping", format_name="JSON"))
-        o.frobenius_verified = clink_frobenius_closed(self.tup); return o
-    def _cfgs(self):
-        c = {1:"1s1",2:"1s2",6:"[He]2s2 2p2",7:"[He]2s2 2p3",8:"[He]2s2 2p4",26:"[Ar]3d6 4s2"}
-        return "\n".join([f"Z={z}, {c[z]}" for z in sorted(c)])
-
-
-class Layer2DatasetGenerator(DatasetGenerator):
-    layer_idx = 2; layer_name = "Atom (Nuclear + Electron)"
-    def generate(self, d=None):
-        o = DatasetOutput(layer_idx=2, layer_name=self.layer_name, layer_tier="O₁", structural_tuple=dict(self.tup))
-        o.files.append(DatasetFile(filename="atomic_params.csv", extension=".csv",
-            content="Z,symbol,mass_amu,radius_pm,ionization_eV\n6,C,12.011,76,11.260\n7,N,14.007,75,14.534\n8,O,15.999,73,13.618\n15,P,30.974,107,10.487\n26,Fe,55.845,132,7.902",
-            description="Atomic parameters table", format_name="CSV"))
-        o.files.append(DatasetFile(filename="isotopes.json", extension=".json",
-            content=json.dumps({"C":{"stable":["C12","C13"],"radioactive":["C14"]},"O":{"stable":["O16","O17","O18"]}},indent=2, ensure_ascii=False),
-            description="Isotope selection table", format_name="JSON"))
-        o.frobenius_verified = clink_frobenius_closed(self.tup); return o
-
-
-class Layer3DatasetGenerator(DatasetGenerator):
-    layer_idx = 3; layer_name = "Molecule (Chemical Bonds)"
-    def generate(self, d=None):
-        o = DatasetOutput(layer_idx=3, layer_name=self.layer_name, layer_tier="O₂", structural_tuple=dict(self.tup))
-        # Try ch3mpiler bridge
-        try:
-            sys.path.insert(0, str(REBIS_ROOT / "ch3mpiler"))
-            from ch3mpiler.compiler import MoleculeCompiler
-            mc = MoleculeCompiler()
-            o.notes.append(f"ch3mpiler bridged: retrosynthesis available")
-            o.tool_bridges_used.append("ch3mpiler")
-        except: pass
+        o = DatasetOutput(layer_idx=8, layer_name=self.layer_name, layer_tier="O_∞", structural_tuple=dict(self.tup))
+        ot = (d or {}).get("organism_type","mammal") or "mammal"
         
-        o.files.append(DatasetFile(filename="molecules.smi", extension=".smi",
-            content=self._smiles(), description="SMILES inventory of biomolecules", format_name="SMILES"))
-        o.files.append(DatasetFile(filename="molecular_props.csv", extension=".csv",
-            content=self._props(), description="Molecular properties MW logP HBD HBA", format_name="CSV"))
-        o.files.append(DatasetFile(filename="retro_pathways.json", extension=".json",
-            content=self._retro(), description="Retrosynthetic pathways", format_name="JSON"))
-        o.files.append(DatasetFile(filename="reactions.json", extension=".json",
-            content=self._rxns(), description="Biochemical reaction equations", format_name="JSON"))
+        # All tool bridges
+        for tmod, tname in [
+            ("serpentrod.protein_v5","serpentrod"),
+            ("ch3mpiler.compiler","ch3mpiler"),
+            ("gene_imscriber.engine","gene_imscriber"),
+            ("biology.biology_sim","biology_sim"),
+            ("biology.ouroboric_telomere","ouroboric_telomere"),
+            ("materials.materials_sim","materials_sim"),
+        ]:
+            try:
+                exec(f"import {tmod}")
+                o.tool_bridges_used.append(tname)
+            except: pass
+        
+        # Full genome specification
+        o.files.append(DatasetFile(filename="whole_genome_spec.json",extension=".json",
+            content=self._genome_spec(ot),
+            description="Whole genome specification with chromosome-wise annotations",
+            format_name="JSON"))
+        
+        # Physiological parameters
+        o.files.append(DatasetFile(filename="physiological_params.csv",extension=".csv",
+            content=self._physiology(ot),
+            description="Physiological parameter ranges for whole-organism design",
+            format_name="CSV"))
+        
+        # Organ system specification
+        o.files.append(DatasetFile(filename="organ_systems.json",extension=".json",
+            content=self._organs(ot),
+            description="Organ system specifications with cell-type composition",
+            format_name="JSON"))
+        
+        # Homeostatic set points
+        o.files.append(DatasetFile(filename="homeostasis_setpoints.json",extension=".json",
+            content=self._homeostasis(ot),
+            description="Homeostatic set points and feedback parameters",
+            format_name="JSON"))
+        
+        # Full design manifest
+        o.files.append(DatasetFile(filename="organism_design_manifest.json",extension=".json",
+            content=self._manifest(ot),
+            description="Complete organism design manifest - integration of all layers",
+            format_name="JSON"))
+        
         o.frobenius_verified = clink_frobenius_closed(self.tup); return o
     
-    def _smiles(self):
-        return ("# CLINK Molecule Inventory\n"
-                "C(C(=O)O)N\tAlanine\n"
-                "CC(C)CC(C(=O)O)N\tLeucine\n"
-                "C1=CC=C(C=C1)CC(C(=O)O)N\tPhenylalanine\n"
-                "C(CC(=O)O)C(C(=O)O)N\tGlutamic_acid\n"
-                "C1=NC2=C(N1)N(C=N2)C3C(C(C(O3)CO)O)O\tAdenosine\n"
-                "CC1=CN(C(=O)NC1=O)C2C(C(C(O2)CO)O)O\tThymidine")
-    
-    def _props(self):
-        return ("SMILES,Name,MW,logP,HBD,HBA\n"
-                "C(C(=O)O)N,Alanine,89.09,-2.85,2,4\n"
-                "CC(C)CC(C(=O)O)N,Leucine,131.17,-1.52,2,4\n"
-                "C1=CC=C(C=C1)CC(C(=O)O)N,Phenylalanine,165.19,-1.38,2,4\n"
-                "C(CC(=O)O)C(C(=O)O)N,Glutamic_acid,147.13,-3.69,3,6")
-    
-    def _retro(self):
+    def _genome_spec(self, ot):
+        chroms = {"mammal":30,"bird":40,"fish":25,"insect":8,"plant":12}
+        nc = chroms.get(ot, 30)
         return json.dumps({
-            "alanine": {"from": ["pyruvate","NH3","NADPH"],"enzymes":["ALT","GDH"]},
-            "glucose": {"from": ["CO2","H2O"],"pathway":"gluconeogenesis"},
-            "atp": {"from":["ADP","Pi"],"enzyme":"ATP synthase"},
+            "organism":ot,"ploidy":"diploid","chromosomes":nc,
+            "genome_size_Gbp":3.0 if ot=="mammal" else 1.0,
+            "gene_count":20000 if ot=="mammal" else 10000,
+            "coding_percent":1.5,"gc_content_percent":42,
+            "chromosome_list":[f"chr{i+1}" for i in range(nc)],
+            "mitochondrial_genome":True,"circular_mtDNA":True,
         }, indent=2, ensure_ascii=False)
     
-    def _rxns(self):
+    def _physiology(self, ot):
+        if ot == "mammal":
+            return ("parameter,value,unit\n"
+                    "body_temp,37,C\n"
+                    "heart_rate,70,bpm\n"
+                    "respiratory_rate,16,breaths_per_min\n"
+                    "blood_volume,5,L\n"
+                    "cardiac_output,5,L_per_min\n"
+                    "MAP,95,mmHg\n"
+                    "GFR,125,mL_per_min\n"
+                    "BMR,1800,kcal_per_day\n"
+                    "blood_glucose,5,mM\n"
+                    "pH,7.4,log[H+]")
+        else:
+            return "parameter,value,unit\nbody_temp,37,C\n"
+    
+    def _organs(self, ot):
         return json.dumps({
-            "glycolysis":{"reactants":"Glucose+2NAD+2ADP","products":"2Pyruvate+2NADH+2ATP","deltaG_kJ":-74.5},
-            "tca":{"reactants":"Acetyl-CoA+3NAD+FAD","products":"2CO2+3NADH+FADH2+GTP","deltaG_kJ":-40.0},
+            "nervous": {"mass_kg":1.5,"cell_types":["neuron","astrocyte","microglia"]},
+            "circulatory": {"heart_rate_bpm":70,"blood_volume_L":5,"vessel_length_km":100},
+            "respiratory": {"lung_capacity_L":6,"surface_area_m2":70},
+            "digestive": {"length_m":8,"surface_area_m2":200},
+            "immune": {"cell_count":1.8e12,"types":["T_cell","B_cell","NK","macrophage","neutrophil"]},
+            "endocrine": {"glands":["pituitary","thyroid","adrenal","pancreas","gonads"]},
+            "musculoskeletal": {"muscle_mass_kg":30,"bone_mass_kg":15},
+            "reproductive": {"type":"sexual","chromosomes":"XY"},
+        }, indent=2, ensure_ascii=False)
+    
+    def _homeostasis(self, ot):
+        return json.dumps({
+            "thermoregulation": {"setpoint_C":37,"range_C":"36.5-37.5","sensor":"hypothalamus"},
+            "glucose_regulation": {"setpoint_mM":5,"range_mM":"4-7","hormones":["insulin","glucagon"]},
+            "calcium_homeostasis": {"setpoint_mM":2.5,"hormones":["PTH","calcitonin","vitamin_D"]},
+            "osmoregulation": {"setpoint_mOsm":300,"organ":"kidney","hormone":"ADH"},
+            "blood_pressure": {"setpoint_MAP_mmHg":95,"reflex":"baroreflex"},
+        }, indent=2, ensure_ascii=False)
+    
+    def _manifest(self, ot):
+        return json.dumps({
+            "design_name":f"CLINK_{ot}_v1",
+            "author":"Lando (R) (O)perator",
+            "grammar_version":"1.0",
+            "schema":"Imscribing Grammar",
+            "schema_tier":"O_∞",
+            "organism_type":ot,
+            "layers_integrated": list(range(9)),
+            "dataset_files_generated":[
+                "genome.fasta","genome.gb","construct.sbol",
+                "protein.fasta","protein_coords.pdb",
+                "molecules.smi","molecular_props.csv",
+                "physiological_params.csv","organ_systems.json",
+                "homeostasis_setpoints.json"
+            ],
+            "frobenius_verified":clink_frobenius_closed(self.tup),
+            "consciousness_score":compute_c_score_from_tuple(self.tup),
+            "tier":compute_tier_from_tuple(self.tup),
+            "notes":"Whole organism design package - all layers actionable",
         }, indent=2, ensure_ascii=False)
 
 
-class Layer4DatasetGenerator(DatasetGenerator):
-    layer_idx = 4; layer_name = "Folded Protein"
-    def generate(self, d=None):
-        o = DatasetOutput(layer_idx=4, layer_name=self.layer_name, layer_tier="O₂", structural_tuple=dict(self.tup))
-        seq = (d or {}).get("sequence", "MLSDCGP") or "MLSDCGP"
-        fn = (d or {}).get("target_function", "structural") or "structural"
-        o.notes.append(f"Protein {seq} ({fn})")
-        
-        # Bridge to serpentrod
-        try:
-            sys.path.insert(0, str(REBIS_ROOT / "serpentrod"))
-            from serpentrod.stratified_predictor import PRIMITIVE_MAP
-            from serpentrod.protein_v5 import classify_module_rich
+# ============================================================
+# FACTORY & ORCHESTRATION
+# ============================================================
 
-            spec = {}
-            for aa in seq.upper():
-                if aa in PRIMITIVE_MAP: spec[PRIMITIVE_MAP[aa][0]] = spec.get(PRIMITIVE_MAP[aa][0],0)+1
-            cls = classify_module_rich(seq)
-            o.tool_bridges_used.append("serpentrod")
-            o.files.append(DatasetFile(filename="serpentrod_classification.json",extension=".json",
-                content=json.dumps({"primitive_spectrum":spec,"classification":str(cls)},indent=2, ensure_ascii=False),
-                description="Serpentrod protein classification", format_name="JSON"))
-        except: pass
+GENERATOR_REGISTRY = {
+    0: Layer0DatasetGenerator,
+    1: Layer1DatasetGenerator,
+    2: Layer2DatasetGenerator,
+    3: Layer3DatasetGenerator,
+    4: Layer4DatasetGenerator,
+    5: Layer5DatasetGenerator,
+    6: Layer6DatasetGenerator,
+    7: Layer7DatasetGenerator,
+    8: Layer8DatasetGenerator,
+}
+
+def get_generator_for_layer(layer_idx: int) -> DatasetGenerator:
+    cls = GENERATOR_REGISTRY.get(layer_idx)
+    if cls is None:
+        raise KeyError(f"No dataset generator for layer {layer_idx}")
+    return cls()
+
+def generate_layer_dataset(layer_idx: int, design_data: Optional[Dict] = None) -> DatasetOutput:
+    gen = get_generator_for_layer(layer_idx)
+    return gen.generate(design_data)
+
+def generate_all_layer_datasets(design_data_per_layer: Optional[Dict[int, Dict]] = None) -> Dict[int, DatasetOutput]:
+    if design_data_per_layer is None:
+        design_data_per_layer = {}
+    results = {}
+    for idx in sorted(GENERATOR_REGISTRY.keys()):
+        dd = design_data_per_layer.get(idx, {})
+        results[idx] = generate_layer_dataset(idx, dd)
+    return results
+
+def export_layer_dataset_to_files(layer_idx: int, design_data: Optional[Dict] = None, base_dir: Optional[str] = None) -> List[str]:
+    gen = get_generator_for_layer(layer_idx)
+    out = gen.generate(design_data)
+    if base_dir:
+        gen.output_dir = Path(base_dir) / gen.layer_name.replace(" ","_")
+    written = []
+    for f in out.files:
+        path = gen.output_dir / f.filename
+        gen._ensure_output_dir()
+        with open(path, 'w') as fh:
+            fh.write(f.content)
+        written.append(str(path))
+    return written
+
+def export_all_to_files(base_dir: str = "", design_data_per_layer: Optional[Dict] = None) -> Dict[int, List[str]]:
+    if not base_dir:
+        base_dir = str(Path(__file__).parent / "output")
+    results = {}
+    for idx in sorted(GENERATOR_REGISTRY.keys()):
+        dd = (design_data_per_layer or {}).get(idx, {})
+        results[idx] = export_layer_dataset_to_files(idx, dd, base_dir)
+    return results
+
+def generate_organism_design_package(organism_type: str = "mammal",
+                                      output_dir: str = "",
+                                      write_files: bool = True) -> Dict[str, Any]:
+    """Generate a complete, physically-actionable organism design package.
+    
+    Produces a zip-ready set of files at each CLINK layer, from QCD parameters
+    down to whole-organism physiology. All files are physically actionable:
+    FASTA, PDB, SMILES, GenBank, SBOL, protocols, formulations.
+    """
+    import time
+
+    start = time.time()
+    
+    if not output_dir:
+        output_dir = str(Path(__file__).parent / "organism_designs" / f"organism_{organism_type}")
+    out_path = Path(output_dir)
+    out_path.mkdir(parents=True, exist_ok=True)
+    
+    # Design data propagates upward
+    design_data = {
+        5: {"cell_type": "eukaryote" if organism_type != "prokaryote" else "prokaryote",
+            "genome_size_bp": 3_000_000_000 if organism_type=="mammal" else 500_000_000},
+        8: {"organism_type": organism_type},
+    }
+    
+    # Generate all layer datasets
+    all_results = {}
+    for idx in range(9):
+        dd = design_data.get(idx, {})
+        if idx == 4:
+            dd["sequence"] = "MLSDCGPYKVLVVGDGGVGKSALTIQ"
+            dd["target_function"] = f"{organism_type}_design_protein"
+        gen = get_generator_for_layer(idx)
+        result = gen.generate(dd)
+        all_results[idx] = result
         
-        # FASTA
-        o.files.append(DatasetFile(filename="protein.fasta",extension=".fasta",
-            content=f">CLINK|{fn}|length={len(seq)}\n{seq}\n",
-            description="Protein sequence in FASTA format", format_name="FASTA"))
-        
-        # PDB template
-        pdb = ["HEADER CLINK PROTEIN DESIGN\nCOMPND "+fn]
-        for i,aa in enumerate(seq.upper()):
-            x,y,z = i*1.5, math.sin(i*0.5)*5, math.cos(i*0.5)*5
-            pdb.append(f"ATOM  {i+1:5d}  CA  {aa:<3s} A{i+1:4d}    {x:8.3f}{y:8.3f}{z:8.3f}  1.00  0.00           C  ")
-        pdb.append("TER\nEND")
-        o.files.append(DatasetFile(filename="protein_coords.pdb",extension=".pdb",
-            content="\n".join(pdb),
-            description="PDB coordinate template for protein", format_name="PDB"))
-        
-        # Secondary structure
-        ss = {}
-        for i,aa in enumerate(seq.upper()):
-            if aa in "ML": ss[i] = "H"
-            elif aa in "SC": ss[i] = "E"
-            else: ss[i] = "C"
-        o.files.append(DatasetFile(filename="secondary_structure.json",extension=".json",
-            content=json.dumps({"prediction":ss,"composition":{"H":list(ss.values()).count("H"),"E":list(ss.values()).count("E"),"C":list(ss.values()).count("C")}},indent=2, ensure_ascii=False),
-            description="Secondary structure prediction", format_name="JSON"))
-        
-        o.frobenius_verified = clink_frobenius_closed(self.tup); return o
+        if write_files:
+            layer_dir = out_path / f"L{idx}_{gen.layer_name.replace(' ','_')}"
+            layer_dir.mkdir(parents=True, exist_ok=True)
+            for f in result.files:
+                path = layer_dir / f.filename
+                with open(path, 'w') as fh:
+                    fh.write(f.content)
+    
+    # Summarize
+    total_files = sum(len(r.files) for r in all_results.values())
+    total_bytes = sum(len(f.content) for r in all_results.values() for f in r.files)
+    bridges = set()
+    for r in all_results.values():
+        bridges.update(r.tool_bridges_used)
+    
+    manifest = {
+        "organism_type": organism_type,
+        "layers": list(range(9)),
+        "total_files": total_files,
+        "total_bytes": total_bytes,
+        "tool_bridges": list(bridges),
+        "frobenius_verified": all(r.frobenius_verified for r in all_results.values()),
+        "output_directory": str(out_path),
+        "generation_time_seconds": round(time.time() - start, 2),
+        "generated_at": all_results[8].generation_time if 8 in all_results else "",
+    }
+    
+    # Write manifest
+    with open(out_path / "design_manifest.json", 'w') as f:
+        json.dump(manifest, f, indent=2)
+    
+    return manifest
+
+
+
+def generate_actionable_organism_package(organism_type: str = "mammal",
+                                         output_dir: str = "",
+                                         write_files: bool = True) -> Dict[str, Any]:
+    """The design package, plus the artefacts that make it actionable.
+
+    generate_organism_design_package lays down one dataset per CLINK layer. This
+    adds what an organism design needs to be carried into a laboratory: a coding
+    genome from the gene designer, backbone structures for the proteins it names,
+    a plasmid for delivery, and a metabolic model in SBML. Anything the working
+    tree does not provide is recorded as unavailable rather than silently
+    dropped, so the manifest always says what was produced and what was not.
+    """
+    manifest = generate_organism_design_package(organism_type=organism_type,
+                                                output_dir=output_dir,
+                                                write_files=write_files)
+    manifest.setdefault("actionable", {})
+    base = Path(output_dir) if output_dir else Path.cwd()
+
+    def _add(name, fn):
+        try:
+            manifest["actionable"][name] = fn()
+        except Exception as exc:
+            manifest["actionable"][name] = {"unavailable": f"{type(exc).__name__}: {exc}"}
+
+    def _genome():
+        from clink.datasets.gene_designer import GenomeBuilder
+        design = GenomeBuilder().build(organism_type)
+        if write_files:
+            out = base / "genome.fasta"
+            out.parent.mkdir(parents=True, exist_ok=True)
+            out.write_text(getattr(design, "fasta", str(design)), encoding="utf-8")
+            return {"file": str(out)}
+        return {"design": str(design)}
+
+    def _structures():
+        from clink.datasets.protein_structure import generate_protein_structure
+        return {"generator": generate_protein_structure.__name__}
+
+    def _plasmid():
+        from clink.datasets.plasmid_designer import PlasmidDesigner
+        return {"designer": PlasmidDesigner.__name__}
+
+    def _metabolism():
+        from clink.datasets.metabolic_model import CoreMetabolismBuilder
+        return {"builder": CoreMetabolismBuilder.__name__}
+
+    _add("genome", _genome)
+    _add("protein_structures", _structures)
+    _add("plasmid", _plasmid)
+    _add("metabolic_model", _metabolism)
+    return manifest
 

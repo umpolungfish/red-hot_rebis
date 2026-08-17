@@ -18,7 +18,7 @@
   "coverage_percent": 9.6,
   "total_cells": 1800,
   "expressing_cells": 172,
-  "chirality": "L-handed (Fibonacci L > R) \u2192 \u0126=\ud801\udc71 (delta from base \u0126=\ud801\udc78)",
+  "chirality": "L-handed (Fibonacci L > R) → Ħ=𐑱 (delta from base Ħ=𐑸)",
   "note": "Each expressing cell is a keratinocyte with active chloroplast import machinery. 9.6% skin surface coverage.",
   "cells": [
     {

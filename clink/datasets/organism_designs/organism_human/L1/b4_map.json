@@ -24,9 +24,9 @@
     "bond_strength": "medium (2 H-bonds)"
   },
   "Belnap4_logic": {
-    "B \u2227 T = F": "G\u00b7C \u2192 A (transition mutation)",
-    "B \u2228 T = B": "Purine conservation",
-    "B \u2192 T = T": "G\u2192C transversion"
+    "B ∧ T = F": "G·C → A (transition mutation)",
+    "B ∨ T = B": "Purine conservation",
+    "B → T = T": "G→C transversion"
   },
-  "complementarity": "B\u2194T (G\u2194C), F\u2194N (A\u2194T/U)"
+  "complementarity": "B↔T (G↔C), F↔N (A↔T/U)"
 }

@@ -10,7 +10,7 @@
     "Matrigel": {
       "type": "GFR (Growth Factor Reduced)",
       "source": "Engelbreth-Holm-Swarm mouse sarcoma",
-      "polymerization": "37\u00b0C, 30 min",
+      "polymerization": "37°C, 30 min",
       "notes": "Gold standard for organoids"
     },
     "Collagen_I": {

@@ -145,7 +145,7 @@
   },
   "apertix_plus_ketamine": {
     "combination": "Apertix (Adjoint Corridor) + ketamine",
-    "composite_type": "⟨𐑦𐑥𐑾𐑿𐑱𐑧𐑲𐑠⊙𐑖𐑳𐑴⟩",
+    "composite_type": "⟨𐑦𐑥𐑾𐑿𐑱𐑧𐑔𐑠⊙𐑖𐑳𐑴⟩",
     "composite_tier": "O₁",
     "parent_1": {
       "name": "Apertix (Adjoint Corridor)",
@@ -173,6 +173,12 @@
         "from": "𐑐",
         "to": "𐑱",
         "delta": -2
+      },
+      {
+        "primitive": "G",
+        "from": "𐑲",
+        "to": "𐑔",
+        "delta": 2
       }
     ],
     "deltas_from_parent_2": [
@@ -186,12 +192,6 @@
         "primitive": "K",
         "from": "𐑤",
         "to": "𐑧",
-        "delta": 1
-      },
-      {
-        "primitive": "G",
-        "from": "𐑔",
-        "to": "𐑲",
         "delta": 1
       },
       {
@@ -299,7 +299,7 @@
   },
   "apertix_plus_mescaline": {
     "combination": "Apertix (Adjoint Corridor) + mescaline",
-    "composite_type": "⟨𐑦𐑥𐑽𐑗𐑱𐑧𐑲𐑠⊙𐑖𐑳𐑴⟩",
+    "composite_type": "⟨𐑦𐑥𐑽𐑗𐑱𐑧𐑔𐑠⊙𐑖𐑳𐑴⟩",
     "composite_tier": "O₁",
     "parent_1": {
       "name": "Apertix (Adjoint Corridor)",
@@ -321,6 +321,12 @@
         "from": "𐑐",
         "to": "𐑱",
         "delta": -2
+      },
+      {
+        "primitive": "G",
+        "from": "𐑲",
+        "to": "𐑔",
+        "delta": 2
       }
     ],
     "deltas_from_parent_2": [
@@ -341,12 +347,6 @@
         "from": "𐑩",
         "to": "𐑽",
         "delta": 2
-      },
-      {
-        "primitive": "G",
-        "from": "𐑔",
-        "to": "𐑲",
-        "delta": 1
       },
       {
         "primitive": "Gm",
@@ -491,7 +491,7 @@
   },
   "apertix_plus_retiarius": {
     "combination": "Apertix (Adjoint Corridor) + Retiarius (Local-Net Trap)",
-    "composite_type": "⟨𐑦𐑥𐑾𐑿𐑞𐑺𐑲𐑠𐑮𐑖𐑳𐑴⟩",
+    "composite_type": "⟨𐑦𐑥𐑾𐑿𐑞𐑺𐑚𐑠𐑮𐑖𐑳𐑴⟩",
     "composite_tier": "O₁",
     "parent_1": {
       "name": "Apertix (Adjoint Corridor)",
@@ -527,6 +527,12 @@
         "delta": 1.5
       },
       {
+        "primitive": "G",
+        "from": "𐑲",
+        "to": "𐑚",
+        "delta": 1
+      },
+      {
         "primitive": "Ph",
         "from": "⊙",
         "to": "𐑮",
@@ -544,12 +550,6 @@
         "primitive": "T",
         "from": "𐑡",
         "to": "𐑥",
-        "delta": 2
-      },
-      {
-        "primitive": "G",
-        "from": "𐑚",
-        "to": "𐑲",
         "delta": 2
       },
       {

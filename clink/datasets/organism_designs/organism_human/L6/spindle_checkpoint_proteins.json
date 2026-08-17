@@ -24,13 +24,13 @@
   },
   "effector": {
     "MCC": "Mitotic Checkpoint Complex = MAD2-CDC20-BUBR1-BUB3",
-    "target": "APC/C (Anaphase Promoting Complex) \u2014 inhibited until all kinetochores attached"
+    "target": "APC/C (Anaphase Promoting Complex) — inhibited until all kinetochores attached"
   },
   "aurora_B_gradient": {
     "mechanism": "Spatial phosphorylation gradient from inner centromere",
     "high_activity": "inner centromere (between sister kinetochores)",
     "low_activity": "outer kinetochore",
-    "readout": "NDC80 phosphorylation state \u2192 microtubule affinity",
-    "IG_primitive": "\u2299=\ud801\udc7b \u2014 exceptional point coupling of kinase gradient"
+    "readout": "NDC80 phosphorylation state → microtubule affinity",
+    "IG_primitive": "⊙=𐑻 — exceptional point coupling of kinase gradient"
   }
 }

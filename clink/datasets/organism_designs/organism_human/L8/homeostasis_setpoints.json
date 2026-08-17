@@ -16,8 +16,8 @@
     "range_mM": "3.9-5.6 (fasting)",
     "postprandial_max_mM": 7.8,
     "hormones": {
-      "insulin": "\u03b2-cells (pancreatic islets) \u2014 lowers glucose",
-      "glucagon": "\u03b1-cells \u2014 raises glucose"
+      "insulin": "β-cells (pancreatic islets) — lowers glucose",
+      "glucagon": "α-cells — raises glucose"
     },
     "counter_regulatory": [
       "epinephrine",
@@ -51,20 +51,20 @@
   },
   "blood_pressure_regulation": {
     "MAP_setpoint_mmHg": 95,
-    "baroreflex": "carotid sinus + aortic arch \u2192 NTS \u2192 sympathetic/parasympathetic output",
-    "RAAS": "renin (JGA) \u2192 Ang II \u2192 aldosterone \u2192 Na\u207a retention \u2192 \u2191BP",
-    "ANP_BNP": "counter-regulatory (atrial/ventricular stretch \u2192 natriuresis)"
+    "baroreflex": "carotid sinus + aortic arch → NTS → sympathetic/parasympathetic output",
+    "RAAS": "renin (JGA) → Ang II → aldosterone → Na⁺ retention → ↑BP",
+    "ANP_BNP": "counter-regulatory (atrial/ventricular stretch → natriuresis)"
   },
   "acid_base_balance": {
     "pH_setpoint": 7.4,
     "buffer_systems": [
-      "bicarbonate (HCO3\u207b/CO2)",
+      "bicarbonate (HCO3⁻/CO2)",
       "hemoglobin",
       "phosphate",
       "protein"
     ],
     "respiratory_compensation": "CO2 excretion (minutes)",
-    "renal_compensation": "HCO3\u207b reabsorption + H\u207a excretion (hours-days)"
+    "renal_compensation": "HCO3⁻ reabsorption + H⁺ excretion (hours-days)"
   },
   "iron_homeostasis": {
     "total_body_iron_g": 4,
@@ -74,6 +74,6 @@
       "myoglobin": "4%",
       "transferrin": "0.1%"
     },
-    "regulation": "hepcidin (liver) \u2014 degrades ferroportin to reduce iron export"
+    "regulation": "hepcidin (liver) — degrades ferroportin to reduce iron export"
   }
 }

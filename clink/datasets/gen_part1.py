@@ -4,6 +4,14 @@ import os, json, textwrap
 
 PY = "/home/mrnob0dy666/red-hot_rebis/clink/datasets/generators.py"
 
+# This is a generator script: running it rewrites generators.py. Importing it
+# must not, so an import stops here rather than truncating the file that the
+# package imports at load time.
+if __name__ != "__main__":
+    raise ImportError(
+        "gen_part1 writes generators.py; run it directly, do not import it")
+
+
 def write(s):
     with open(PY, 'a') as f:
         f.write(s + '\n')
@@ -20,6 +28,14 @@ from datetime import datetime
 
 REBIS_ROOT = Path(__file__).parent.parent.parent.absolute()
 sys.path.insert(0, str(REBIS_ROOT))
+
+# Every generator stamps its output with the chain's closure verdict, so the
+# check it calls has to be in scope here.
+from clink.chain import (
+    clink_frobenius_closed,
+    compute_c_score_from_tuple,
+    compute_tier_from_tuple,
+)
 
 @dataclass
 class DatasetFile:

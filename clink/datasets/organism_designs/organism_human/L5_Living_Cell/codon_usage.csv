@@ -1,0 +1,17 @@
+codon,aa,frequency
+TTT,Phe,44.4
+TTC,Phe,47.8
+TTA,Leu,25.9
+TTG,Leu,46.0
+CTT,Leu,16.3
+CTC,Leu,26.9
+CTA,Leu,31.2
+CTG,Leu,19.7
+ATT,Ile,17.2
+ATC,Ile,42.3
+ATA,Ile,8.3
+ATG,Met,24.9
+GTT,Val,9.7
+GTC,Val,7.8
+GTA,Val,40.8
+GTG,Val,47.2

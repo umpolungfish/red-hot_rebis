@@ -7,8 +7,8 @@
     "max_per_res": 42.18,
     "phi_diff_mean": 45.0,
     "psi_diff_mean": 76.5,
-    "old_rmsd": 18.8,
-    "rmsd_improvement": -5.06
+    "old_rmsd": 33.89,
+    "rmsd_improvement": 10.03
   },
   "insulin_a_chain": {
     "n_residues": 21,
@@ -18,8 +18,8 @@
     "max_per_res": 9.17,
     "phi_diff_mean": 23.2,
     "psi_diff_mean": 55.4,
-    "old_rmsd": 5.71,
-    "rmsd_improvement": 0.83
+    "old_rmsd": 6.29,
+    "rmsd_improvement": 1.41
   },
   "insulin_b_chain": {
     "n_residues": 30,
@@ -29,8 +29,8 @@
     "max_per_res": 17.13,
     "phi_diff_mean": 42.0,
     "psi_diff_mean": 87.9,
-    "old_rmsd": 7.32,
-    "rmsd_improvement": 0.2
+    "old_rmsd": 7.65,
+    "rmsd_improvement": 0.53
   },
   "gfp": {
     "n_residues": 238,
@@ -40,7 +40,7 @@
     "max_per_res": 89.64,
     "phi_diff_mean": 48.9,
     "psi_diff_mean": 127.7,
-    "old_rmsd": 48.41,
-    "rmsd_improvement": -1.84
+    "old_rmsd": 44.94,
+    "rmsd_improvement": -5.31
   }
 }

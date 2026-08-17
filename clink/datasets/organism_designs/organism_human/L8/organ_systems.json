@@ -42,7 +42,7 @@
     "lung_mass_kg_pair": 1.1,
     "surface_area_m2": 70,
     "alveoli_count": 300000000.0,
-    "gas_exchange": "O2 in, CO2 out via diffusion across alveolar-capillary membrane (0.6 \u03bcm)"
+    "gas_exchange": "O2 in, CO2 out via diffusion across alveolar-capillary membrane (0.6 μm)"
   },
   "digestive": {
     "length_m": 8,
@@ -60,7 +60,7 @@
     ],
     "gut_microbiome": {
       "species": ">1000",
-      "total_cells": "~3.8\u00d710\u00b9\u00b3",
+      "total_cells": "~3.8×10¹³",
       "phyla_dominant": [
         "Firmicutes",
         "Bacteroidetes"

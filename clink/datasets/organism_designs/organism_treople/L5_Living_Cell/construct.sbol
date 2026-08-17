@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:sbol="http://sbols.org/v2#">
+  <sbol:ComponentDefinition rdf:about="CLINK_construct_001">
+    <sbol:displayName>CLINK eukaryote design construct</sbol:displayName>
+    <sbol:type rdf:resource="http://identifiers.org/so/SO:0000140"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000804"/>
+  </sbol:ComponentDefinition>
+</rdf:RDF>

@@ -1,9 +1,9 @@
 {
   "psbA": {
-    "locus": "chloroplast\u2192nuclear_copy",
+    "locus": "chloroplast→nuclear_copy",
     "uniprot_ref": "P56767",
     "name": "PSII D1 reaction center protein",
-    "function": "Primary quinone acceptor QA/QB; water-splitting Mn4CaO5 cluster ligand; core of O2 evolution. Light-driven charge separation P680\u2192Pheo\u2192QA\u2192QB.",
+    "function": "Primary quinone acceptor QA/QB; water-splitting Mn4CaO5 cluster ligand; core of O2 evolution. Light-driven charge separation P680→Pheo→QA→QB.",
     "aa_count": 353,
     "targeting": "N-terminal chloroplast transit peptide (CTP, 45 aa); import via TOC/TIC",
     "location": "thylakoid membrane, PSII reaction center",
@@ -13,7 +13,7 @@
     "hgt_note": "Constitutively present in Elysia chlorotica; expressed from nuclear locus"
   },
   "psbD": {
-    "locus": "chloroplast\u2192nuclear_copy",
+    "locus": "chloroplast→nuclear_copy",
     "uniprot_ref": "P56771",
     "name": "PSII D2 reaction center protein",
     "function": "Binds Pheo, QA, nonheme Fe; forms heterodimer with D1; required for PSII assembly",
@@ -28,17 +28,17 @@
     "locus": "nuclear (HGT)",
     "uniprot_ref": "Q9SHE7",
     "name": "Manganese-stabilizing protein (MSP / OEC33)",
-    "function": "Stabilizes Mn4CaO5 oxygen-evolving complex; essential for water oxidation. This is THE Elysia HGT gene \u2014 found in E. chlorotica nuclear genome, transferred from Vaucheria litorea. Proves algal\u2192animal HGT is viable.",
+    "function": "Stabilizes Mn4CaO5 oxygen-evolving complex; essential for water oxidation. This is THE Elysia HGT gene — found in E. chlorotica nuclear genome, transferred from Vaucheria litorea. Proves algal→animal HGT is viable.",
     "aa_count": 333,
     "targeting": "bipartite signal: ER signal + thylakoid lumen targeting",
     "location": "thylakoid lumen, luminal face of PSII",
     "delivery": "lentiviral (stable integration, skin progenitors)",
     "codon_opt_fragment": "ATGAAGACCCTGCTGCTGCTGCTGCTGGTGCTGCTGGTGGCGGCCGCGGCGGCGGCGGCGGCGGCGGCGGCGGCGGCGGCGGCGGCGGCGGCGGCGGCGGCGGCGGCGGCGGCGGCGGCGGCGGCGGCGGCGGCG",
-    "elysia_homolog": "DIRECT \u2014 this gene was found in E. chlorotica nuclear genome by HGT",
-    "hgt_note": "Key proof: nuclear psbO in Elysia maintains stolen chloroplast long-term. \u03bc\u2218\u03b4=id: the host nucleus recovers chloroplast function losslessly."
+    "elysia_homolog": "DIRECT — this gene was found in E. chlorotica nuclear genome by HGT",
+    "hgt_note": "Key proof: nuclear psbO in Elysia maintains stolen chloroplast long-term. μ∘δ=id: the host nucleus recovers chloroplast function losslessly."
   },
   "psbB": {
-    "locus": "chloroplast\u2192nuclear_copy",
+    "locus": "chloroplast→nuclear_copy",
     "uniprot_ref": "P04451",
     "name": "CP47 (chlorophyll a-binding protein)",
     "function": "Inner antenna of PSII; 16 chlorophyll a molecules; energy transfer to P680",
@@ -49,7 +49,7 @@
     "codon_opt_fragment": "ATGGCCACCAAGGCCGCGCTGCTGCAGCAGCTGCAGCAGCTGCAG"
   },
   "psaA": {
-    "locus": "chloroplast\u2192nuclear_copy",
+    "locus": "chloroplast→nuclear_copy",
     "uniprot_ref": "P56271",
     "name": "PSI P700 reaction center protein A",
     "function": "Core PSI subunit; binds P700, A0, A1, FX; drives NADPH production via Fd",
@@ -60,7 +60,7 @@
     "codon_opt_fragment": "ATGGCCACCAAGGCCGCGCTGCTGCAGCAGCTGCAGCAGCTGCAG"
   },
   "psaB": {
-    "locus": "chloroplast\u2192nuclear_copy",
+    "locus": "chloroplast→nuclear_copy",
     "uniprot_ref": "P56273",
     "name": "PSI P700 reaction center protein B",
     "function": "PSI heterodimer partner to PsaA; required for P700 formation",
@@ -71,10 +71,10 @@
     "codon_opt_fragment": "ATGGCCACCAAGGCCGCGCTGCTGCAGCAGCTGCAGCAGCTGCAG"
   },
   "petA": {
-    "locus": "chloroplast\u2192nuclear_copy",
+    "locus": "chloroplast→nuclear_copy",
     "uniprot_ref": "P56765",
     "name": "Cytochrome f (petA)",
-    "function": "Plastocyanin reduction; b6f complex; connects PSII\u2192PSI electron chain",
+    "function": "Plastocyanin reduction; b6f complex; connects PSII→PSI electron chain",
     "aa_count": 285,
     "targeting": "CTP + thylakoid lumen",
     "location": "thylakoid membrane, cytochrome b6f",
@@ -93,10 +93,10 @@
     "codon_opt_fragment": "ATGGCCACCAAGGCCGCGCTGCTGCAGCAGCTGCAGCAGCTGCAG"
   },
   "atpB": {
-    "locus": "chloroplast\u2192nuclear_copy",
+    "locus": "chloroplast→nuclear_copy",
     "uniprot_ref": "P19366",
     "name": "ATP synthase CF1 beta subunit",
-    "function": "Catalytic subunit; proton gradient \u2192 ATP; 3 copies per CF1 head",
+    "function": "Catalytic subunit; proton gradient → ATP; 3 copies per CF1 head",
     "aa_count": 498,
     "targeting": "CTP",
     "location": "thylakoid membrane, stromal face",
@@ -104,19 +104,19 @@
     "codon_opt_fragment": "ATGGCCACCAAGGCCGCGCTGCTGCAGCAGCTGCAGCAGCTGCAG"
   },
   "rbcL": {
-    "locus": "chloroplast\u2192nuclear_copy",
+    "locus": "chloroplast→nuclear_copy",
     "uniprot_ref": "P00877",
     "name": "RuBisCO large subunit (rbcL)",
-    "function": "CO2 fixation: RuBP + CO2 \u2192 2\u00d73-PGA. Rate-limiting enzyme of Calvin cycle. Must assemble with RbcS (8L+8S holoenzyme) for function.",
+    "function": "CO2 fixation: RuBP + CO2 → 2×3-PGA. Rate-limiting enzyme of Calvin cycle. Must assemble with RbcS (8L+8S holoenzyme) for function.",
     "aa_count": 477,
-    "targeting": "CTP (essential \u2014 cytoplasmic RuBisCO is inactive)",
+    "targeting": "CTP (essential — cytoplasmic RuBisCO is inactive)",
     "location": "chloroplast stroma",
     "delivery": "lentiviral (high-copy stable integration)",
     "codon_opt_fragment": "ATGGCCACCAAGGCCGCGCTGCTGCAGCAGCTGCAGCAGCTGCAGCAGCTGCAGCAGCTGCAGCAGCTGCAGCAGCTGCAGCAGCTGCAG",
     "note": "Must co-express with rbcS; separate cassette required"
   },
   "rbcS": {
-    "locus": "nuclear (naturally \u2014 in plants)",
+    "locus": "nuclear (naturally — in plants)",
     "uniprot_ref": "P00870",
     "name": "RuBisCO small subunit (rbcS)",
     "function": "Assembles with rbcL (8L8S complex); modulates active site geometry",
@@ -136,7 +136,7 @@
     "location": "thylakoid membrane, trimeric LHCII",
     "delivery": "AAV2/9",
     "codon_opt_fragment": "ATGGCCACCAAGGCCGCGCTGCTGCAGCAGCTGCAGCAGCTGCAG",
-    "note": "Expressed under Turing-pattern promoter \u2014 defines the green spots"
+    "note": "Expressed under Turing-pattern promoter — defines the green spots"
   },
   "CHLH": {
     "locus": "nuclear",
@@ -153,7 +153,7 @@
     "locus": "nuclear",
     "uniprot_ref": "Q9LZJ3",
     "name": "Chlorophyllide a oxygenase (CAO)",
-    "function": "Chlorophyll a \u2192 chlorophyll b; expands absorption to 650nm; required for LHCII stability",
+    "function": "Chlorophyll a → chlorophyll b; expands absorption to 650nm; required for LHCII stability",
     "aa_count": 532,
     "targeting": "CTP",
     "location": "thylakoid membrane",
@@ -170,7 +170,7 @@
     "location": "chloroplast outer envelope",
     "delivery": "lentiviral (expressed first; enables all other imports)",
     "codon_opt_fragment": "ATGGCCACCAAGGCCGCGCTGCTGCAGCAGCTGCAGCAGCTGCAG",
-    "note": "Express TOC75 first \u2014 enables import of all other CTP-tagged proteins"
+    "note": "Express TOC75 first — enables import of all other CTP-tagged proteins"
   },
   "TIC110": {
     "locus": "nuclear",

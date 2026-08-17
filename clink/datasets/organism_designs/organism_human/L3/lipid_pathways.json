@@ -2,7 +2,7 @@
   "fatty_acid_synthesis": {
     "starting": "Acetyl-CoA",
     "carrier": "ACP",
-    "cycle": "condensation \u2192 reduction \u2192 dehydration \u2192 reduction",
+    "cycle": "condensation → reduction → dehydration → reduction",
     "primary_product": "Palmitate (C16:0)",
     "enzymes": [
       "ACC",
@@ -12,7 +12,7 @@
   },
   "cholesterol_synthesis": {
     "starting": "Acetyl-CoA",
-    "key_intermediate": "HMG-CoA \u2192 mevalonate \u2192 squalene \u2192 lanosterol",
+    "key_intermediate": "HMG-CoA → mevalonate → squalene → lanosterol",
     "rate_limiting": "HMG-CoA reductase",
     "final": "Cholesterol (C27)",
     "location": "ER"

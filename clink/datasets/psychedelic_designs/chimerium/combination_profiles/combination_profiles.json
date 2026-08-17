@@ -113,7 +113,7 @@
   },
   "chimerium_plus_ketamine": {
     "combination": "Chimerium (Supercritical Catalyst) + ketamine",
-    "composite_type": "⟨𐑦𐑸𐑾𐑿𐑱𐑧𐑲𐑵𐑣𐑫𐑳𐑭⟩",
+    "composite_type": "⟨𐑦𐑸𐑾𐑿𐑱𐑧𐑔𐑵𐑣𐑫𐑳𐑭⟩",
     "composite_tier": "O₀",
     "parent_1": {
       "name": "Chimerium (Supercritical Catalyst)",
@@ -135,6 +135,12 @@
         "from": "𐑐",
         "to": "𐑱",
         "delta": -2
+      },
+      {
+        "primitive": "G",
+        "from": "𐑲",
+        "to": "𐑔",
+        "delta": 2
       }
     ],
     "deltas_from_parent_2": [
@@ -154,12 +160,6 @@
         "primitive": "K",
         "from": "𐑤",
         "to": "𐑧",
-        "delta": 1
-      },
-      {
-        "primitive": "G",
-        "from": "𐑔",
-        "to": "𐑲",
         "delta": 1
       },
       {
@@ -273,7 +273,7 @@
   },
   "chimerium_plus_mescaline": {
     "combination": "Chimerium (Supercritical Catalyst) + mescaline",
-    "composite_type": "⟨𐑦𐑸𐑾𐑗𐑱𐑧𐑲𐑵𐑣𐑫𐑳𐑭⟩",
+    "composite_type": "⟨𐑦𐑸𐑾𐑗𐑱𐑧𐑔𐑵𐑣𐑫𐑳𐑭⟩",
     "composite_tier": "O₀",
     "parent_1": {
       "name": "Chimerium (Supercritical Catalyst)",
@@ -295,6 +295,12 @@
         "from": "𐑐",
         "to": "𐑱",
         "delta": -2
+      },
+      {
+        "primitive": "G",
+        "from": "𐑲",
+        "to": "𐑔",
+        "delta": 2
       }
     ],
     "deltas_from_parent_2": [
@@ -315,12 +321,6 @@
         "from": "𐑩",
         "to": "𐑾",
         "delta": 3
-      },
-      {
-        "primitive": "G",
-        "from": "𐑔",
-        "to": "𐑲",
-        "delta": 1
       },
       {
         "primitive": "Gm",
@@ -403,7 +403,7 @@
   },
   "chimerium_plus_retiarius": {
     "combination": "Chimerium (Supercritical Catalyst) + Retiarius (Local-Net Trap)",
-    "composite_type": "⟨𐑦𐑸𐑾𐑿𐑞𐑺𐑲𐑵𐑣𐑫𐑳𐑭⟩",
+    "composite_type": "⟨𐑦𐑸𐑾𐑿𐑞𐑺𐑚𐑵𐑣𐑫𐑳𐑭⟩",
     "composite_tier": "O₀",
     "parent_1": {
       "name": "Chimerium (Supercritical Catalyst)",
@@ -431,6 +431,12 @@
         "from": "𐑧",
         "to": "𐑺",
         "delta": 1.5
+      },
+      {
+        "primitive": "G",
+        "from": "𐑲",
+        "to": "𐑚",
+        "delta": 1
       }
     ],
     "deltas_from_parent_2": [
@@ -445,12 +451,6 @@
         "from": "𐑡",
         "to": "𐑸",
         "delta": 4
-      },
-      {
-        "primitive": "G",
-        "from": "𐑚",
-        "to": "𐑲",
-        "delta": 2
       },
       {
         "primitive": "Gm",
