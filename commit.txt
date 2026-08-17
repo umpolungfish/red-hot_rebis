@@ -1,24 +1,23 @@
-V⊙x, where this repository was working without it
+The migration I said was complete was not
 
-This toolchain was built before V⊙x, so it grew its own copy of the correspondence
-between the twelve promoted residues and the twelve marks, four times over, and it
-could design and fold and synthesise without ever asking the one question V⊙x
-answers: does the thing close.
+I swept for quoted retired letters and reported that every tuple in the toolchain
+addresses the marks. That covered what I had grepped for. Files keyed by the ASCII
+axis abbreviations D T R P F K G Gm Ph H S W, with values written as English names
+like tri, boxtimes, sub and hetero, were invisible to it, and there were many.
 
-Both are fixed by the same bridge. shared/vox_bridge.py reads the correspondence
-from V⊙x, which generates it from the Lean that proves it, and every consumer now
-reads it there: the stratified predictor, the genetic code module, the gene
-imscriber's tuples, and the ligand site encoder. None of them writes it down again.
-Four copies is how three of them came to carry a pre-revision assignment with
-histidine, asparagine and glutamine in the wrong places, which is the division and
-the rejoining themselves.
+Every one is carried now, key and value together, by ordinal so the conversion is
+exact: the seven stages of the gene pipeline, the genetic tuple defaults, the site
+designer, the antibody designer, the validators and writers, the organism designs,
+the stress tests and the analysis scripts. The gene pipeline now reports its stages
+in the marks with Shavian values, dna_gene through quaternary_structure, each with
+its B4 face and its Frobenius verdict.
 
-rebis.vox is the audit this repository never had. It lifts a coding sequence, a
-residue sequence, a bare word, or every top-level function of a module, and reports
-the outcome with the counts it rests on. V⊙x loads a file standalone, which is right
-for a script and wrong for a module inside a package, so the bridge imports by dotted
-name when the file sits under this tree and lifts the functions the same way.
+Two faults were hidden behind the old labels. The stage tuples wrote "two", "one" and
+"zero" on axes whose ordinal table is keyed 0, 1, 2, inf, so those lookups silently
+missed. And the site designer's blend rules named the short forms, so once the axes
+were marks nothing matched and the fused ordinal was never assigned; the branch that
+should have caught it did not exist, so an unnamed axis left the variable unbound
+instead of saying so. Both fixed, and the rules now say what each group of axes does.
 
-The last generator script that still did its work at import time is guarded, since an
-audit that imports everything would otherwise have it rewrite the dataset generators
-while being read.
+The site designer also carried the residue assignment a fifth time, with asparagine,
+glutamine and histidine in the wrong places. It reads V⊙x now, like the rest.

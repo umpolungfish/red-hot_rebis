@@ -133,12 +133,12 @@ test("Generate all stage tuples", test_generate_all_tuples)
 def test_compute_structural_distance():
     from rhr_p4rky.genetic_tuples import pipeline_tuple_to_ig, compute_structural_distance
     # Pipeline shorthand → IG glyphs → distance (H uses "0"/"1"/"2" not "one"/"two")
-    dna_tuple = {"D": "tri", "T": "boxtimes", "R": "lr", "P": "pm",
-                 "F": "ell", "K": "slow", "G": "beth", "Gm": "seq",
-                 "Phi": "sub", "H": "2", "S": "one", "O": "Z"}
-    quat_tuple = {"D": "odot", "T": "odot", "R": "lr", "P": "pm",
-                  "F": "ell", "K": "slow", "G": "beth", "Gm": "and",
-                  "Phi": "sub", "H": "1", "S": "hetero", "O": "Z"}
+    dna_tuple = {"⊢": "𐑨", "⊣": "𐑶", "≻": "𐑾", "≺": "𐑬",
+                 "⋈": "𐑱", "⊤": "𐑧", "∈": "𐑚", "∋": "𐑠",
+                 "⊙": "𐑢", "⊥": "𐑖", "⊞": "𐑙", "◻": "𐑭"}
+    quat_tuple = {"⊢": "𐑦", "⊣": "𐑸", "≻": "𐑾", "≺": "𐑬",
+                  "⋈": "𐑱", "⊤": "𐑧", "∈": "𐑚", "∋": "𐑝",
+                  "⊙": "𐑢", "⊥": "𐑒", "⊞": "𐑳", "◻": "𐑭"}
     dist = compute_structural_distance(pipeline_tuple_to_ig(dna_tuple), 
                                         pipeline_tuple_to_ig(quat_tuple))
     assert dist >= 0
@@ -146,9 +146,9 @@ test("Structural distance DNA→quaternary", test_compute_structural_distance)
 
 def test_verify_tier_consistency():
     from rhr_p4rky.genetic_tuples import verify_tier_consistency
-    ig_tuple = {"D": "tri", "T": "boxtimes", "R": "lr", "P": "pm",
-                "F": "ell", "K": "slow", "G": "beth", "Gm": "seq",
-                "Phi": "sub", "H": "two", "S": "one", "O": "Z"}
+    ig_tuple = {"⊢": "𐑨", "⊣": "𐑶", "≻": "𐑾", "≺": "𐑬",
+                "⋈": "𐑱", "⊤": "𐑧", "∈": "𐑚", "∋": "𐑠",
+                "⊙": "𐑢", "⊥": "𐑖", "⊞": "𐑙", "◻": "𐑭"}
     result = verify_tier_consistency(ig_tuple)
     assert result is not None
 test("Tier consistency verification", test_verify_tier_consistency)

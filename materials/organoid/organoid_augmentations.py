@@ -583,9 +583,9 @@ def operculum_width(sys: AugmentationSystem) -> int:
     """
     # Canonical O_∞ template
     canon = {
-        "D": "odot", "T": "odot", "R": "lr", "P": "pm_sym",
-        "F": "hbar", "K": "slow", "G": "aleph", "C": "seq",
-        "Phi": "c", "H": "inf", "S": "n_m", "Omega": "Z",
+        "⊢": "𐑦", "⊣": "𐑸", "≻": "𐑾", "≺": "𐑹",
+        "⋈": "𐑐", "⊤": "𐑧", "∈": "𐑲", "C": "seq",
+        "⊙": "⊙", "⊥": "𐑫", "S": "n_m", "Omega": "Z",
     }
     width = 0
     for prim, can_val in canon.items():

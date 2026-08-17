@@ -305,9 +305,9 @@ def test_frobenius_closure_complete_import():
     d = fcc.ClosureDesign(
         name="test_closure",
         paradigm="coherent_ising_machine",
-        paradigm_tuple={"D": "tri", "T": "boxtimes", "R": "lr", "P": "pm",
-                        "F": "hbar", "K": "slow", "G": "aleph", "Gm": "seq",
-                        "Phi": "sub", "H": "2", "S": "hetero", "O": "Z"},
+        paradigm_tuple={"⊢": "𐑨", "⊣": "𐑶", "≻": "𐑾", "≺": "𐑬",
+                        "⋈": "𐑐", "⊤": "𐑧", "∈": "𐑲", "∋": "𐑠",
+                        "⊙": "𐑢", "⊥": "𐑖", "⊞": "𐑳", "◻": "𐑭"},
         current_error=0.05,
         pathway="EXACTOR-OMEGA",
         discrete_invariant="braid_group_element",
