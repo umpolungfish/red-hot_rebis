@@ -32,14 +32,14 @@ _REBIS_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__
 sys.path.insert(0, _REBIS_ROOT)
 sys.path.insert(0, '/home/mrnob0dy666/imscribing_grammar')
 
-from ch3mpiler_serpentrod_pipeline import (
+from rhr_p4rky.ch3mpiler_serpentrod_pipeline import (
     PNAMES, GLYPH_ORDINALS, ORD_TO_GLYPH, COMPLEMENTARY_PAIRS_V2,
     PRIMITIVE_TO_AA, AA_CODON_POOL_V2, STRUCTURAL_AAS_V2,
     fuse_reaction_types, complement_type_v2, glyph_ord, ord_to_glyph,
 )
 
 from shared.rich_output import *
-from plastic_eater_design import (
+from designs.gr33ngroblin.plastic_eater_design import (
 
     ALL_BOND_TYPES, ALL_FG, PLASTIC_TARGETS,
     LINKER_AA, LINKER_CODONS, SIGNAL_AA, SIGNAL_CODONS,

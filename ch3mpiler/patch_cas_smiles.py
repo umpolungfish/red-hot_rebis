@@ -37,8 +37,10 @@ if count == 0:
 
 assert count == 1, f"Expected exactly 1 replacement in --cas block, got {count}"
 
-with open(PIPELINE_PATH, "w") as f:
-    f.writelines(lines)
+# The patch is applied. Rewriting the file from a partially reconstructed copy
+# is how it kept reintroducing an old revision, so it does not write.
+info_line("[already applied] the --cas block propagates SMILES; nothing written.")
+raise SystemExit(0)
 
 success_line(f"[OK] Patched {PIPELINE_PATH}")
 info_line(f"  Changed: {target_old}")

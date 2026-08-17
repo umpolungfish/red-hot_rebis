@@ -1,0 +1,811 @@
+{
+  "bpa_sites": [
+    {
+      "name": "BPA_phenol_oxidation",
+      "bond": "phenol_oh",
+      "mechanism": "Laccase-type: Cu-mediated phenol → phenoxy radical + H⁺ + e⁻",
+      "fg_pair": "phenol + dioxygen",
+      "fused_type": {
+        "D": "𐑛",
+        "T": "𐑡",
+        "R": "𐑽",
+        "P": "𐑬",
+        "F": "𐑐",
+        "K": "𐑘",
+        "G": "𐑚",
+        "Gm": "𐑝",
+        "Ph": "⊙",
+        "H": "𐑓",
+        "S": "𐑳",
+        "W": "𐑷"
+      },
+      "site_type": {
+        "W": "𐑟",
+        "D": "𐑦",
+        "H": "𐑫",
+        "T": "𐑸",
+        "S": "𐑕",
+        "R": "𐑩",
+        "F": "𐑞",
+        "P": "𐑗",
+        "G": "𐑲",
+        "K": "𐑪",
+        "Ph": "𐑣",
+        "Gm": "𐑠"
+      },
+      "aa_sequence": "MetTrpGlyThrPheIleProSerGlnGlyLysVal",
+      "rna_sequence": "AUGUGGGGAACGUUUAUACCAUCCCAAGGCAAAGUG",
+      "activated_primitives": [
+        "D",
+        "F",
+        "K",
+        "Ph",
+        "S",
+        "T"
+      ],
+      "pairs_covered": 6,
+      "confidence": 1.0,
+      "pair_details": [
+        {
+          "pair": "D-W",
+          "dominant": "D",
+          "dom_pct": 1.0,
+          "sub_pct": 1.0
+        },
+        {
+          "pair": "T-H",
+          "dominant": "T",
+          "dom_pct": 1.0,
+          "sub_pct": 1.0
+        },
+        {
+          "pair": "R-S",
+          "dominant": "S",
+          "dom_pct": 0.5,
+          "sub_pct": 0.0
+        },
+        {
+          "pair": "P-F",
+          "dominant": "F",
+          "dom_pct": 0.5,
+          "sub_pct": 0.0
+        },
+        {
+          "pair": "K-G",
+          "dominant": "K",
+          "dom_pct": 1.0,
+          "sub_pct": 1.0
+        },
+        {
+          "pair": "Gm-Ph",
+          "dominant": "Ph",
+          "dom_pct": 1.0,
+          "sub_pct": 0.667
+        }
+      ]
+    },
+    {
+      "name": "BPA_bridge_radical_cleavage",
+      "bond": "radical_cc_cleavage",
+      "mechanism": "Radical rearrangement: phenoxy radical → C-C bridge homolysis → fragments",
+      "fg_pair": "phenoxy_radical + water",
+      "fused_type": {
+        "D": "𐑛",
+        "T": "𐑥",
+        "R": "𐑑",
+        "P": "𐑗",
+        "F": "𐑐",
+        "K": "𐑤",
+        "G": "𐑚",
+        "Gm": "𐑜",
+        "Ph": "𐑮",
+        "H": "𐑒",
+        "S": "𐑳",
+        "W": "𐑷"
+      },
+      "site_type": {
+        "W": "𐑟",
+        "D": "𐑦",
+        "H": "𐑖",
+        "T": "𐑶",
+        "S": "𐑕",
+        "R": "𐑩",
+        "F": "𐑐",
+        "P": "𐑗",
+        "G": "𐑲",
+        "K": "𐑪",
+        "Ph": "𐑻",
+        "Gm": "𐑠"
+      },
+      "aa_sequence": "MetTrpGlyThrPheIleProSerGlnGlyLysVal",
+      "rna_sequence": "AUGUGGGGAACGUUUAUACCAUCCCAAGGCAAAGUG",
+      "activated_primitives": [
+        "D",
+        "F",
+        "K",
+        "Ph",
+        "S",
+        "T"
+      ],
+      "pairs_covered": 6,
+      "confidence": 1.0,
+      "pair_details": [
+        {
+          "pair": "D-W",
+          "dominant": "D",
+          "dom_pct": 1.0,
+          "sub_pct": 1.0
+        },
+        {
+          "pair": "T-H",
+          "dominant": "T",
+          "dom_pct": 0.75,
+          "sub_pct": 0.667
+        },
+        {
+          "pair": "R-S",
+          "dominant": "S",
+          "dom_pct": 0.5,
+          "sub_pct": 0.0
+        },
+        {
+          "pair": "P-F",
+          "dominant": "F",
+          "dom_pct": 1.0,
+          "sub_pct": 0.0
+        },
+        {
+          "pair": "K-G",
+          "dominant": "K",
+          "dom_pct": 1.0,
+          "sub_pct": 1.0
+        },
+        {
+          "pair": "Gm-Ph",
+          "dominant": "Ph",
+          "dom_pct": 0.75,
+          "sub_pct": 0.667
+        }
+      ]
+    },
+    {
+      "name": "BPA_ring_opening",
+      "bond": "aromatic",
+      "mechanism": "Secondary dioxygenase: cleave residual aromatic ring in fragment",
+      "fg_pair": "phenoxy_radical + dioxygen",
+      "fused_type": {
+        "D": "𐑨",
+        "T": "𐑸",
+        "R": "𐑾",
+        "P": "𐑹",
+        "F": "𐑐",
+        "K": "𐑤",
+        "G": "𐑲",
+        "Gm": "𐑜",
+        "Ph": "𐑮",
+        "H": "𐑖",
+        "S": "𐑳",
+        "W": "𐑭"
+      },
+      "site_type": {
+        "W": "𐑭",
+        "D": "𐑨",
+        "H": "𐑓",
+        "T": "𐑰",
+        "S": "𐑙",
+        "R": "𐑩",
+        "F": "𐑱",
+        "P": "𐑗",
+        "G": "𐑲",
+        "K": "𐑘",
+        "Ph": "𐑻",
+        "Gm": "𐑠"
+      },
+      "aa_sequence": "SerTrpCysTyrValLeuHisSerGlnGlyThrGlu",
+      "rna_sequence": "UCUUGGUGUUACGUUCUGCAUUCCCAAGGCACAGAG",
+      "activated_primitives": [
+        "G",
+        "P",
+        "Ph",
+        "R",
+        "T",
+        "W"
+      ],
+      "pairs_covered": 6,
+      "confidence": 1.0,
+      "pair_details": [
+        {
+          "pair": "D-W",
+          "dominant": "W",
+          "dom_pct": 0.667,
+          "sub_pct": 0.333
+        },
+        {
+          "pair": "T-H",
+          "dominant": "T",
+          "dom_pct": 0.25,
+          "sub_pct": 0.0
+        },
+        {
+          "pair": "R-S",
+          "dominant": "R",
+          "dom_pct": 0.0,
+          "sub_pct": 0.0
+        },
+        {
+          "pair": "P-F",
+          "dominant": "P",
+          "dom_pct": 0.0,
+          "sub_pct": 0.0
+        },
+        {
+          "pair": "K-G",
+          "dominant": "G",
+          "dom_pct": 1.0,
+          "sub_pct": 0.0
+        },
+        {
+          "pair": "Gm-Ph",
+          "dominant": "Ph",
+          "dom_pct": 0.75,
+          "sub_pct": 0.667
+        }
+      ]
+    }
+  ],
+  "bpa_degrader": {
+    "catalyst_name": "D_BPA_Degrader",
+    "description": "BPA Degrader — laccase/peroxidase radical pathway",
+    "target_plastics": [
+      "BPA_bisphenol_A"
+    ],
+    "num_domains": 3,
+    "total_aa": 174,
+    "total_rna_nt": 300,
+    "molecular_weight_kda": 19.1,
+    "aa_sequence": "MetPheAlaLysArgPheThrSerLeuLeuProLeuPheAlaGlyLeuLeuLeuLeuPheHisLeuValLeuAlaGlyProAlaAlaAlaHisHisHisHisHisHisMetTrpGlyThrPheIleProSerGlnGlyLysValGlyGlyGlyGlySerGlyGlyGlyGlySerGlyGlyGlyGlySerMetTrpGlyThrPheIleProSerGlnGlyLysValGlyGlyGlyGlySerGlyGlyGlyGlySerGlyGlyGlyGlySerSerTrpCysTyrValLeuHisSerGlnGlyThrGlu",
+    "rna_sequence": "AUGUUUGCGAAACGCUUUACCUCGCUGCUGCCGCUGUUUGCGGGCCUGCUGCUGCUGUUUCAUCUGGUGCUGGCGGGCCCGGCGGCGGCGCAUCAUCAUCAUCAUCAUAUGUGGGGAACGUUUAUACCAUCCCAAGGCAAAGUGGGUGGAGGCGGUAGUGGAGGCGGUGGCUCUGGUGGUGGAAGCAUGUGGGGAACGUUUAUACCAUCCCAAGGCAAAGUGGGUGGAGGCGGUAGUGGAGGCGGUGGCUCUGGUGGUGGAAGCUCUUGGUGUUACGUUCUGCAUUCCCAAGGCACAGAG",
+    "domains": [
+      {
+        "domain": "BPA-phenol-oxidation",
+        "start_aa": 36,
+        "end_aa": 48,
+        "bond": "phenol_oh",
+        "mechanism": "Laccase-type: Cu-mediated phenol → phenoxy radical + H⁺ + e⁻"
+      },
+      {
+        "domain": "BPA-bridge-radical-cleavage",
+        "start_aa": 63,
+        "end_aa": 75,
+        "bond": "radical_cc_cleavage",
+        "mechanism": "Radical rearrangement: phenoxy radical → C-C bridge homolysis → fragments"
+      },
+      {
+        "domain": "BPA-ring-opening",
+        "start_aa": 90,
+        "end_aa": 102,
+        "bond": "aromatic",
+        "mechanism": "Secondary dioxygenase: cleave residual aromatic ring in fragment"
+      }
+    ],
+    "site_designs": [
+      {
+        "name": "BPA_phenol_oxidation",
+        "bond": "phenol_oh",
+        "mechanism": "Laccase-type: Cu-mediated phenol → phenoxy radical + H⁺ + e⁻",
+        "fg_pair": "phenol + dioxygen",
+        "fused_type": {
+          "D": "𐑛",
+          "T": "𐑡",
+          "R": "𐑽",
+          "P": "𐑬",
+          "F": "𐑐",
+          "K": "𐑘",
+          "G": "𐑚",
+          "Gm": "𐑝",
+          "Ph": "⊙",
+          "H": "𐑓",
+          "S": "𐑳",
+          "W": "𐑷"
+        },
+        "site_type": {
+          "W": "𐑟",
+          "D": "𐑦",
+          "H": "𐑫",
+          "T": "𐑸",
+          "S": "𐑕",
+          "R": "𐑩",
+          "F": "𐑞",
+          "P": "𐑗",
+          "G": "𐑲",
+          "K": "𐑪",
+          "Ph": "𐑣",
+          "Gm": "𐑠"
+        },
+        "aa_sequence": "MetTrpGlyThrPheIleProSerGlnGlyLysVal",
+        "rna_sequence": "AUGUGGGGAACGUUUAUACCAUCCCAAGGCAAAGUG",
+        "activated_primitives": [
+          "D",
+          "F",
+          "K",
+          "Ph",
+          "S",
+          "T"
+        ],
+        "pairs_covered": 6,
+        "confidence": 1.0,
+        "pair_details": [
+          {
+            "pair": "D-W",
+            "dominant": "D",
+            "dom_pct": 1.0,
+            "sub_pct": 1.0
+          },
+          {
+            "pair": "T-H",
+            "dominant": "T",
+            "dom_pct": 1.0,
+            "sub_pct": 1.0
+          },
+          {
+            "pair": "R-S",
+            "dominant": "S",
+            "dom_pct": 0.5,
+            "sub_pct": 0.0
+          },
+          {
+            "pair": "P-F",
+            "dominant": "F",
+            "dom_pct": 0.5,
+            "sub_pct": 0.0
+          },
+          {
+            "pair": "K-G",
+            "dominant": "K",
+            "dom_pct": 1.0,
+            "sub_pct": 1.0
+          },
+          {
+            "pair": "Gm-Ph",
+            "dominant": "Ph",
+            "dom_pct": 1.0,
+            "sub_pct": 0.667
+          }
+        ]
+      },
+      {
+        "name": "BPA_bridge_radical_cleavage",
+        "bond": "radical_cc_cleavage",
+        "mechanism": "Radical rearrangement: phenoxy radical → C-C bridge homolysis → fragments",
+        "fg_pair": "phenoxy_radical + water",
+        "fused_type": {
+          "D": "𐑛",
+          "T": "𐑥",
+          "R": "𐑑",
+          "P": "𐑗",
+          "F": "𐑐",
+          "K": "𐑤",
+          "G": "𐑚",
+          "Gm": "𐑜",
+          "Ph": "𐑮",
+          "H": "𐑒",
+          "S": "𐑳",
+          "W": "𐑷"
+        },
+        "site_type": {
+          "W": "𐑟",
+          "D": "𐑦",
+          "H": "𐑖",
+          "T": "𐑶",
+          "S": "𐑕",
+          "R": "𐑩",
+          "F": "𐑐",
+          "P": "𐑗",
+          "G": "𐑲",
+          "K": "𐑪",
+          "Ph": "𐑻",
+          "Gm": "𐑠"
+        },
+        "aa_sequence": "MetTrpGlyThrPheIleProSerGlnGlyLysVal",
+        "rna_sequence": "AUGUGGGGAACGUUUAUACCAUCCCAAGGCAAAGUG",
+        "activated_primitives": [
+          "D",
+          "F",
+          "K",
+          "Ph",
+          "S",
+          "T"
+        ],
+        "pairs_covered": 6,
+        "confidence": 1.0,
+        "pair_details": [
+          {
+            "pair": "D-W",
+            "dominant": "D",
+            "dom_pct": 1.0,
+            "sub_pct": 1.0
+          },
+          {
+            "pair": "T-H",
+            "dominant": "T",
+            "dom_pct": 0.75,
+            "sub_pct": 0.667
+          },
+          {
+            "pair": "R-S",
+            "dominant": "S",
+            "dom_pct": 0.5,
+            "sub_pct": 0.0
+          },
+          {
+            "pair": "P-F",
+            "dominant": "F",
+            "dom_pct": 1.0,
+            "sub_pct": 0.0
+          },
+          {
+            "pair": "K-G",
+            "dominant": "K",
+            "dom_pct": 1.0,
+            "sub_pct": 1.0
+          },
+          {
+            "pair": "Gm-Ph",
+            "dominant": "Ph",
+            "dom_pct": 0.75,
+            "sub_pct": 0.667
+          }
+        ]
+      },
+      {
+        "name": "BPA_ring_opening",
+        "bond": "aromatic",
+        "mechanism": "Secondary dioxygenase: cleave residual aromatic ring in fragment",
+        "fg_pair": "phenoxy_radical + dioxygen",
+        "fused_type": {
+          "D": "𐑨",
+          "T": "𐑸",
+          "R": "𐑾",
+          "P": "𐑹",
+          "F": "𐑐",
+          "K": "𐑤",
+          "G": "𐑲",
+          "Gm": "𐑜",
+          "Ph": "𐑮",
+          "H": "𐑖",
+          "S": "𐑳",
+          "W": "𐑭"
+        },
+        "site_type": {
+          "W": "𐑭",
+          "D": "𐑨",
+          "H": "𐑓",
+          "T": "𐑰",
+          "S": "𐑙",
+          "R": "𐑩",
+          "F": "𐑱",
+          "P": "𐑗",
+          "G": "𐑲",
+          "K": "𐑘",
+          "Ph": "𐑻",
+          "Gm": "𐑠"
+        },
+        "aa_sequence": "SerTrpCysTyrValLeuHisSerGlnGlyThrGlu",
+        "rna_sequence": "UCUUGGUGUUACGUUCUGCAUUCCCAAGGCACAGAG",
+        "activated_primitives": [
+          "G",
+          "P",
+          "Ph",
+          "R",
+          "T",
+          "W"
+        ],
+        "pairs_covered": 6,
+        "confidence": 1.0,
+        "pair_details": [
+          {
+            "pair": "D-W",
+            "dominant": "W",
+            "dom_pct": 0.667,
+            "sub_pct": 0.333
+          },
+          {
+            "pair": "T-H",
+            "dominant": "T",
+            "dom_pct": 0.25,
+            "sub_pct": 0.0
+          },
+          {
+            "pair": "R-S",
+            "dominant": "R",
+            "dom_pct": 0.0,
+            "sub_pct": 0.0
+          },
+          {
+            "pair": "P-F",
+            "dominant": "P",
+            "dom_pct": 0.0,
+            "sub_pct": 0.0
+          },
+          {
+            "pair": "K-G",
+            "dominant": "G",
+            "dom_pct": 1.0,
+            "sub_pct": 0.0
+          },
+          {
+            "pair": "Gm-Ph",
+            "dominant": "Ph",
+            "dom_pct": 0.75,
+            "sub_pct": 0.667
+          }
+        ]
+      }
+    ],
+    "tensor_type": {
+      "D": "𐑦",
+      "T": "𐑸",
+      "R": "𐑩",
+      "P": "𐑗",
+      "F": "𐑱",
+      "K": "𐑪",
+      "G": "𐑲",
+      "Gm": "𐑠",
+      "Ph": "𐑣",
+      "H": "𐑫",
+      "S": "𐑕",
+      "W": "𐑟"
+    }
+  },
+  "catalyst_c_plus": {
+    "catalyst_name": "C_plus_Urethanase_BPA",
+    "description": "PC+PUR degradation + BPA bridge cleavage (self-contained)",
+    "target_plastics": [
+      "PUR_polyurethane",
+      "PC_polycarbonate"
+    ],
+    "also_degrades": [
+      "BPA_bisphenol_A"
+    ],
+    "num_domains": 4,
+    "total_aa": 225,
+    "total_rna_nt": 378,
+    "molecular_weight_kda": 24.8,
+    "aa_sequence": "MetPheAlaLysArgPheThrSerLeuLeuProLeuPheAlaGlyLeuLeuLeuLeuPheHisLeuValLeuAlaGlyProAlaAlaAlaHisHisHisHisHisHisMetTrpCysTyrValIleProSerGlnGlyThrValGlyGlyGlyGlySerGlyGlyGlyGlySerGlyGlyGlyGlySerMetTrpCysTyrValIleProSerGlnGlyThrValGlyGlyGlyGlySerGlyGlyGlyGlySerGlyGlyGlyGlySerMetTrpGlyThrPheIleProSerGlnGlyLysValGlyGlyGlyGlySerGlyGlyGlyGlySerGlyGlyGlyGlySerSerTrpCysTyrValLeuHisSerGlnGlyThrGlu",
+    "rna_sequence": "AUGUUUGCGAAACGCUUUACCUCGCUGCUGCCGCUGUUUGCGGGCCUGCUGCUGCUGUUUCAUCUGGUGCUGGCGGGCCCGGCGGCGGCGCAUCAUCAUCAUCAUCAUAUGUGGUGUUACGUUAUACCAUCCCAAGGCACAGUGGGUGGAGGCGGUAGUGGAGGCGGUGGCUCUGGUGGUGGAAGCAUGUGGUGUUACGUUAUACCAUCCCAAGGCACAGUGGGUGGAGGCGGUAGUGGAGGCGGUGGCUCUGGUGGUGGAAGCAUGUGGGGAACGUUUAUACCAUCCCAAGGCAAAGUGGGUGGAGGCGGUAGUGGAGGCGGUGGCUCUGGUGGUGGAAGCUCUUGGUGUUACGUUCUGCAUUCCCAAGGCACAGAG",
+    "domains": [
+      {
+        "domain": "PUR-polyurethane",
+        "start_aa": 36,
+        "end_aa": 48,
+        "bond": "urethane_link",
+        "mechanism": "Amidase + esterase: cleaves -NH-CO-O-"
+      },
+      {
+        "domain": "PC-polycarbonate",
+        "start_aa": 63,
+        "end_aa": 75,
+        "bond": "carbonate_link",
+        "mechanism": "Carbonate hydrolase: cleaves -O-CO-O- → BPA"
+      },
+      {
+        "domain": "BPA-bridge-radical-cleavage",
+        "start_aa": 90,
+        "end_aa": 102,
+        "bond": "radical_cc_cleavage",
+        "mechanism": "Radical rearrangement: phenoxy radical → C-C bridge homolysis → fragments"
+      },
+      {
+        "domain": "BPA-ring-opening",
+        "start_aa": 117,
+        "end_aa": 129,
+        "bond": "aromatic",
+        "mechanism": "Secondary dioxygenase: cleave residual aromatic ring in fragment"
+      }
+    ],
+    "site_designs": [
+      {
+        "aa_sequence": "MetTrpCysTyrValIleProSerGlnGlyThrVal",
+        "rna_sequence": "AUGUGGUGUUACGUUAUACCAUCCCAAGGCACAGUG",
+        "name": "PUR_polyurethane",
+        "bond": "urethane_link",
+        "mechanism": "Amidase + esterase: cleaves -NH-CO-O-"
+      },
+      {
+        "aa_sequence": "MetTrpCysTyrValIleProSerGlnGlyThrVal",
+        "rna_sequence": "AUGUGGUGUUACGUUAUACCAUCCCAAGGCACAGUG",
+        "name": "PC_polycarbonate",
+        "bond": "carbonate_link",
+        "mechanism": "Carbonate hydrolase: cleaves -O-CO-O- → BPA"
+      },
+      {
+        "name": "BPA_bridge_radical_cleavage",
+        "bond": "radical_cc_cleavage",
+        "mechanism": "Radical rearrangement: phenoxy radical → C-C bridge homolysis → fragments",
+        "fg_pair": "phenoxy_radical + water",
+        "fused_type": {
+          "D": "𐑛",
+          "T": "𐑥",
+          "R": "𐑑",
+          "P": "𐑗",
+          "F": "𐑐",
+          "K": "𐑤",
+          "G": "𐑚",
+          "Gm": "𐑜",
+          "Ph": "𐑮",
+          "H": "𐑒",
+          "S": "𐑳",
+          "W": "𐑷"
+        },
+        "site_type": {
+          "W": "𐑟",
+          "D": "𐑦",
+          "H": "𐑖",
+          "T": "𐑶",
+          "S": "𐑕",
+          "R": "𐑩",
+          "F": "𐑐",
+          "P": "𐑗",
+          "G": "𐑲",
+          "K": "𐑪",
+          "Ph": "𐑻",
+          "Gm": "𐑠"
+        },
+        "aa_sequence": "MetTrpGlyThrPheIleProSerGlnGlyLysVal",
+        "rna_sequence": "AUGUGGGGAACGUUUAUACCAUCCCAAGGCAAAGUG",
+        "activated_primitives": [
+          "D",
+          "F",
+          "K",
+          "Ph",
+          "S",
+          "T"
+        ],
+        "pairs_covered": 6,
+        "confidence": 1.0,
+        "pair_details": [
+          {
+            "pair": "D-W",
+            "dominant": "D",
+            "dom_pct": 1.0,
+            "sub_pct": 1.0
+          },
+          {
+            "pair": "T-H",
+            "dominant": "T",
+            "dom_pct": 0.75,
+            "sub_pct": 0.667
+          },
+          {
+            "pair": "R-S",
+            "dominant": "S",
+            "dom_pct": 0.5,
+            "sub_pct": 0.0
+          },
+          {
+            "pair": "P-F",
+            "dominant": "F",
+            "dom_pct": 1.0,
+            "sub_pct": 0.0
+          },
+          {
+            "pair": "K-G",
+            "dominant": "K",
+            "dom_pct": 1.0,
+            "sub_pct": 1.0
+          },
+          {
+            "pair": "Gm-Ph",
+            "dominant": "Ph",
+            "dom_pct": 0.75,
+            "sub_pct": 0.667
+          }
+        ]
+      },
+      {
+        "name": "BPA_ring_opening",
+        "bond": "aromatic",
+        "mechanism": "Secondary dioxygenase: cleave residual aromatic ring in fragment",
+        "fg_pair": "phenoxy_radical + dioxygen",
+        "fused_type": {
+          "D": "𐑨",
+          "T": "𐑸",
+          "R": "𐑾",
+          "P": "𐑹",
+          "F": "𐑐",
+          "K": "𐑤",
+          "G": "𐑲",
+          "Gm": "𐑜",
+          "Ph": "𐑮",
+          "H": "𐑖",
+          "S": "𐑳",
+          "W": "𐑭"
+        },
+        "site_type": {
+          "W": "𐑭",
+          "D": "𐑨",
+          "H": "𐑓",
+          "T": "𐑰",
+          "S": "𐑙",
+          "R": "𐑩",
+          "F": "𐑱",
+          "P": "𐑗",
+          "G": "𐑲",
+          "K": "𐑘",
+          "Ph": "𐑻",
+          "Gm": "𐑠"
+        },
+        "aa_sequence": "SerTrpCysTyrValLeuHisSerGlnGlyThrGlu",
+        "rna_sequence": "UCUUGGUGUUACGUUCUGCAUUCCCAAGGCACAGAG",
+        "activated_primitives": [
+          "G",
+          "P",
+          "Ph",
+          "R",
+          "T",
+          "W"
+        ],
+        "pairs_covered": 6,
+        "confidence": 1.0,
+        "pair_details": [
+          {
+            "pair": "D-W",
+            "dominant": "W",
+            "dom_pct": 0.667,
+            "sub_pct": 0.333
+          },
+          {
+            "pair": "T-H",
+            "dominant": "T",
+            "dom_pct": 0.25,
+            "sub_pct": 0.0
+          },
+          {
+            "pair": "R-S",
+            "dominant": "R",
+            "dom_pct": 0.0,
+            "sub_pct": 0.0
+          },
+          {
+            "pair": "P-F",
+            "dominant": "P",
+            "dom_pct": 0.0,
+            "sub_pct": 0.0
+          },
+          {
+            "pair": "K-G",
+            "dominant": "G",
+            "dom_pct": 1.0,
+            "sub_pct": 0.0
+          },
+          {
+            "pair": "Gm-Ph",
+            "dominant": "Ph",
+            "dom_pct": 0.75,
+            "sub_pct": 0.667
+          }
+        ]
+      }
+    ],
+    "tensor_type": {
+      "D": "𐑦",
+      "T": "𐑶",
+      "R": "𐑩",
+      "P": "𐑗",
+      "F": "𐑱",
+      "K": "𐑪",
+      "G": "𐑲",
+      "Gm": "𐑠",
+      "Ph": "𐑻",
+      "H": "𐑖",
+      "S": "𐑕",
+      "W": "𐑟"
+    }
+  },
+  "unique_aa_sequences": {
+    "type_E_esterase_ring": "MetAlaCysTyrValIleProSerGlnAspThrVal",
+    "type_A_alkanase": "MetTrpCysTyrValLeuHisAsnAlaGlyThrVal",
+    "type_U_urethanase": "MetTrpCysTyrValIleProSerGlnGlyThrVal",
+    "type_R_radicalase": "MetAlaCysTyrValIleProAsnAlaAspThrVal"
+  }
+}

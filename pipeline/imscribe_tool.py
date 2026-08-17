@@ -16,6 +16,9 @@ Usage as an LLM tool definition:
 """
 
 from __future__ import annotations
+import sys as _sys
+# imscrbgrmr lives in the grammar tree, a sibling of this repository
+_sys.path.insert(0, '/home/mrnob0dy666/imsgct/imscribing_grammar')
 
 import json
 import subprocess
@@ -35,7 +38,13 @@ except ImportError:
     _HAVE_IMSCRBGRMR = False
 from imscrbgrmr.thermodynamics import compute_xi_CP
 from imscrbgrmr.varma_probe import VarmaCorrelationData, score_phi_c_candidacy
-from imscrbgrmr.domains.molecular import register_molecular_imscriptions
+try:
+    from imscrbgrmr.domains.molecular import register_molecular_imscriptions
+except ImportError:
+    # The grammar tree retired the molecular domain and records that this
+    # repository supersedes it, so there is nothing to register from there.
+    def register_molecular_imscriptions():
+        return None
 from imscrbgrmr.domains.quantum import register_quantum_imscriptions
 from shared.rich_output import *
 
