@@ -146,12 +146,20 @@ __all__ = sorted([k for k in dir() if not k.startswith('_')
 
 def _cmd_belnap(args):
     """Test Belnap FOUR operations."""
-    print("Belnap FOUR Values:")
-    for v in [Belnap.T, Belnap.B, Belnap.F, Belnap.N]:
-        print(f"  {v.name}: meet={meet(v, Belnap.T).name}, "
-              f"join={join(v, Belnap.F).name}, "
-              f"not={bnot(v).name}")
-    print(f"\nDesignated: {[v.name for v in [Belnap.T, Belnap.B]]}")
+    vals = [Belnap.T, Belnap.B, Belnap.F, Belnap.N]
+    print("Belnap FOUR")
+    print()
+    for name, op in (("meet", meet), ("join", join)):
+        print(f"  {name}")
+        print("        " + "  ".join(f"{v.name:>2}" for v in vals))
+        for a in vals:
+            row = "  ".join(f"{op(a, b).name:>2}" for b in vals)
+            print(f"     {a.name:>2} " + row)
+        print()
+    print("  negation")
+    print("     " + "  ".join(f"{v.name}→{bnot(v).name}" for v in vals))
+    print()
+    print(f"  designated: {', '.join(v.name for v in [Belnap.T, Belnap.B])}")
     return 0
 
 

@@ -185,20 +185,20 @@ CHOU_FASMAN: Dict[str, Dict[str, float]] = {
     "Val": {"alpha": 1.06, "beta": 1.70, "turn": 0.50},
 }
 
-# Primitive activation (revised v0.6.0): His→⊙, Gln→Γ
+# Primitive activation, canonical: the twelve promoted residues on the twelve marks.
 AA_PRIMITIVE_ACTIVATION: Dict[str, str] = {
-    "His": "⊙",       # ⊙ — criticality
-    "Gln": "Γ",         # Γ — grammar/scope
-    "Met": "Ð",         # Ð — scope
-    "Trp": "Þ",         # Þ — topology
-    "Cys": "Ř",         # Ř — reversibility
-    "Tyr": "Φ",         # Φ — parity
-    "Phe": "ƒ",         # ƒ — force
-    "Ile": "Ç",         # Ç — kinetics
-    "Asn": "ɢ",     # ɢ — interaction
-    "Asp": "Ħ",         # Ħ — chirality
-    "Lys": "Σ",         # Σ — entropy
-    "Glu": "Ω",         # Ω — winding
+    "Met": "⊢",         # opens the reading
+    "Trp": "⊣",         # closes the reading
+    "Cys": "≻",         # recognition
+    "Tyr": "≺",         # parity
+    "Phe": "⋈",         # fidelity
+    "Ile": "⊤",         # kinetics
+    "Asn": "∈",         # granularity — the branch point
+    "Gln": "∋",         # grammar — the join
+    "His": "⊙",         # criticality
+    "Asp": "⊥",         # chirality
+    "Lys": "⊞",         # stoichiometry
+    "Glu": "◻",         # protection
 }
 
 PRIMITIVE_TO_AAS: Dict[str, List[str]] = defaultdict(list)
@@ -355,18 +355,18 @@ def generate_dna_gene_tuple(features: Dict[str, Any]) -> Dict[str, str]:
         g_val = "Γ_beth"
     
     return {
-        "Ð": IG_CHARS["𐑨"],
-        "Þ": IG_CHARS["Þ_boxtimes"],
-        "Ř": IG_CHARS["Ř_lr"],
-        "Φ": IG_CHARS["Φ_asym"],
-        "ƒ": IG_CHARS["ƒ_ell"],
-        "Ç": IG_CHARS["Ç_slow"],
-        "Γ": IG_CHARS[g_val],
-        "ɢ": IG_CHARS["ɢ_seq"],
+        "⊢": IG_CHARS["𐑨"],
+        "⊣": IG_CHARS["Þ_boxtimes"],
+        "≻": IG_CHARS["Ř_lr"],
+        "≺": IG_CHARS["Φ_asym"],
+        "⋈": IG_CHARS["ƒ_ell"],
+        "⊤": IG_CHARS["Ç_slow"],
+        "∈": IG_CHARS[g_val],
+        "∋": IG_CHARS["ɢ_seq"],
         "⊙": IG_CHARS["⊙_sub"],
-        "Ħ": IG_CHARS["Ħ_2"],
-        "Σ": IG_CHARS["Σ_n_m"],
-        "Ω": IG_CHARS["Ω_triv"],
+        "⊥": IG_CHARS["Ħ_2"],
+        "⊞": IG_CHARS["Σ_n_m"],
+        "◻": IG_CHARS["Ω_triv"],
     }
 
 
@@ -381,36 +381,36 @@ def generate_pre_mrna_tuple(features: Dict[str, Any]) -> Dict[str, str]:
         g_val = "Γ_beth"
     
     return {
-        "Ð": IG_CHARS["𐑨"],
-        "Þ": IG_CHARS["Þ_net"],
-        "Ř": IG_CHARS["Ř_dagger"],
-        "Φ": IG_CHARS["Φ_asym"],
-        "ƒ": IG_CHARS["ƒ_ell"],
-        "Ç": IG_CHARS["Ç_mod"],
-        "Γ": IG_CHARS[g_val],
-        "ɢ": IG_CHARS["ɢ_or"],
+        "⊢": IG_CHARS["𐑨"],
+        "⊣": IG_CHARS["Þ_net"],
+        "≻": IG_CHARS["Ř_dagger"],
+        "≺": IG_CHARS["Φ_asym"],
+        "⋈": IG_CHARS["ƒ_ell"],
+        "⊤": IG_CHARS["Ç_mod"],
+        "∈": IG_CHARS[g_val],
+        "∋": IG_CHARS["ɢ_or"],
         "⊙": IG_CHARS["⊙_sub"],
-        "Ħ": IG_CHARS["Ħ_1"],
-        "Σ": IG_CHARS["Σ_n_m"],
-        "Ω": IG_CHARS["Ω_triv"],
+        "⊥": IG_CHARS["Ħ_1"],
+        "⊞": IG_CHARS["Σ_n_m"],
+        "◻": IG_CHARS["Ω_triv"],
     }
 
 
 def generate_mrna_tuple(features: Dict[str, Any]) -> Dict[str, str]:
     """Generate structural tuple for the mature mRNA stage."""
     return {
-        "Ð": IG_CHARS["𐑨"],
-        "Þ": IG_CHARS["Þ_net"],
-        "Ř": IG_CHARS["Ř_super"],
-        "Φ": IG_CHARS["Φ_asym"],
-        "ƒ": IG_CHARS["ƒ_ell"],
-        "Ç": IG_CHARS["Ç_mod"],
-        "Γ": IG_CHARS["Γ_aleph"],
-        "ɢ": IG_CHARS["ɢ_seq"],
+        "⊢": IG_CHARS["𐑨"],
+        "⊣": IG_CHARS["Þ_net"],
+        "≻": IG_CHARS["Ř_super"],
+        "≺": IG_CHARS["Φ_asym"],
+        "⋈": IG_CHARS["ƒ_ell"],
+        "⊤": IG_CHARS["Ç_mod"],
+        "∈": IG_CHARS["Γ_aleph"],
+        "∋": IG_CHARS["ɢ_seq"],
         "⊙": IG_CHARS["⊙_sub"],
-        "Ħ": IG_CHARS["Ħ_1"],
-        "Σ": IG_CHARS["Σ_n_m"],
-        "Ω": IG_CHARS["Ω_triv"],
+        "⊥": IG_CHARS["Ħ_1"],
+        "⊞": IG_CHARS["Σ_n_m"],
+        "◻": IG_CHARS["Ω_triv"],
     }
 
 
@@ -449,24 +449,24 @@ def generate_secondary_structure_tuple(features: Dict[str, Any]) -> Dict[str, st
     # Parity (Φ): mixed SS → asymmetry
     if mixed_ss:
         p_val = "Φ_asym"
-    elif par.get("dominant_ss") == "Ħ":
+    elif par.get("dominant_ss") == "⊥":
         p_val = "Φ_pm"
     else:
         p_val = "Φ_pm"
     
     return {
-        "Ð": IG_CHARS["𐑨"],
-        "Þ": IG_CHARS["Þ_bowtie"],      # FIXED: bowtie, NOT odot
-        "Ř": IG_CHARS["Ř_lr"],
-        "Φ": IG_CHARS[p_val],
-        "ƒ": IG_CHARS["ƒ_ell"],
-        "Ç": IG_CHARS[k_val],
-        "Γ": IG_CHARS["Γ_gimel"],
-        "ɢ": IG_CHARS["ɢ_seq"],
+        "⊢": IG_CHARS["𐑨"],
+        "⊣": IG_CHARS["Þ_bowtie"],      # FIXED: bowtie, NOT odot
+        "≻": IG_CHARS["Ř_lr"],
+        "≺": IG_CHARS[p_val],
+        "⋈": IG_CHARS["ƒ_ell"],
+        "⊤": IG_CHARS[k_val],
+        "∈": IG_CHARS["Γ_gimel"],
+        "∋": IG_CHARS["ɢ_seq"],
         "⊙": IG_CHARS[phi_val],
-        "Ħ": IG_CHARS["Ħ_0"],
-        "Σ": IG_CHARS["Σ_one_one"],
-        "Ω": IG_CHARS["Ω_triv"],
+        "⊥": IG_CHARS["Ħ_0"],
+        "⊞": IG_CHARS["Σ_one_one"],
+        "◻": IG_CHARS["Ω_triv"],
     }
 
 
@@ -519,18 +519,18 @@ def generate_tertiary_structure_tuple(features: Dict[str, Any]) -> Dict[str, str
         g_val = "Γ_beth"
     
     return {
-        "Ð": IG_CHARS["𐑨"],
-        "Þ": IG_CHARS["Þ_bowtie"],      # FIXED: bowtie, NOT odot
-        "Ř": IG_CHARS["Ř_lr"],
-        "Φ": IG_CHARS[p_val],
-        "ƒ": IG_CHARS["ƒ_ell"],
-        "Ç": IG_CHARS[k_val],
-        "Γ": IG_CHARS[g_val],
-        "ɢ": IG_CHARS["ɢ_broad"],
+        "⊢": IG_CHARS["𐑨"],
+        "⊣": IG_CHARS["Þ_bowtie"],      # FIXED: bowtie, NOT odot
+        "≻": IG_CHARS["Ř_lr"],
+        "≺": IG_CHARS[p_val],
+        "⋈": IG_CHARS["ƒ_ell"],
+        "⊤": IG_CHARS[k_val],
+        "∈": IG_CHARS[g_val],
+        "∋": IG_CHARS["ɢ_broad"],
         "⊙": IG_CHARS[phi_val],
-        "Ħ": IG_CHARS["Ħ_0"],           # H=0: folded protein has no temporal memory
-        "Σ": IG_CHARS["Σ_one_one"],
-        "Ω": IG_CHARS["Ω_triv"],           # FIXED: no topological protection (no Axiom B conflict)
+        "⊥": IG_CHARS["Ħ_0"],           # H=0: folded protein has no temporal memory
+        "⊞": IG_CHARS["Σ_one_one"],
+        "◻": IG_CHARS["Ω_triv"],           # FIXED: no topological protection (no Axiom B conflict)
     }
 
 
@@ -587,18 +587,18 @@ def generate_quaternary_structure_tuple(features: Dict[str, Any]) -> Dict[str, s
         g_val = "Γ_beth"
     
     return {
-        "Ð": IG_CHARS["𐑨"],
-        "Þ": IG_CHARS["Þ_bowtie"],      # FIXED: bowtie, NOT odot
-        "Ř": IG_CHARS["Ř_lr"],
-        "Φ": IG_CHARS["Φ_asym"],
-        "ƒ": IG_CHARS["ƒ_ell"],
-        "Ç": IG_CHARS["Ç_slow"],
-        "Γ": IG_CHARS[g_val],
-        "ɢ": IG_CHARS["ɢ_broad"],
+        "⊢": IG_CHARS["𐑨"],
+        "⊣": IG_CHARS["Þ_bowtie"],      # FIXED: bowtie, NOT odot
+        "≻": IG_CHARS["Ř_lr"],
+        "≺": IG_CHARS["Φ_asym"],
+        "⋈": IG_CHARS["ƒ_ell"],
+        "⊤": IG_CHARS["Ç_slow"],
+        "∈": IG_CHARS[g_val],
+        "∋": IG_CHARS["ɢ_broad"],
         "⊙": IG_CHARS[phi_val],
-        "Ħ": IG_CHARS["Ħ_0"],           # H=0: quaternary is memoryless
-        "Σ": IG_CHARS[s_val],
-        "Ω": IG_CHARS[o_val],           # Subunit winding protection
+        "⊥": IG_CHARS["Ħ_0"],           # H=0: quaternary is memoryless
+        "⊞": IG_CHARS[s_val],
+        "◻": IG_CHARS[o_val],           # Subunit winding protection
     }
 
 
@@ -774,19 +774,19 @@ def verify_tuple(tup: Dict[str, str], stage_name: str = "") -> Dict[str, Any]:
     checks = {}
     all_pass = True
     
-    c_pass, c_msg = check_axiom_c(tup["Ð"], tup["Þ"])
+    c_pass, c_msg = check_axiom_c(tup["⊢"], tup["⊣"])
     checks["axiom_c"] = {"pass": c_pass, "message": c_msg}
     all_pass = all_pass and c_pass
     
-    b_pass, b_msg = check_axiom_b(tup["Ω"], tup["Ħ"])
+    b_pass, b_msg = check_axiom_b(tup["◻"], tup["⊥"])
     checks["axiom_b"] = {"pass": b_pass, "message": b_msg}
     all_pass = all_pass and b_pass
     
-    do_pass, do_msg = check_d_omega(tup["Ω"], tup["Ð"])
+    do_pass, do_msg = check_d_omega(tup["◻"], tup["⊢"])
     checks["d_omega"] = {"pass": do_pass, "message": do_msg}
     all_pass = all_pass and do_pass
     
-    kp_pass, kp_msg = check_k_phi(tup["Ç"], tup["⊙"])
+    kp_pass, kp_msg = check_k_phi(tup["⊤"], tup["⊙"])
     checks["k_phi"] = {"pass": kp_pass, "message": kp_msg}
     
     return {"stage": stage_name, "all_pass": all_pass, "checks": checks, "tuple": tup}
@@ -795,14 +795,14 @@ def verify_tuple(tup: Dict[str, str], stage_name: str = "") -> Dict[str, Any]:
 # Regressions that are structurally necessary (DNA→RNA unwinding)
 _ALLOWED_REGRESSIONS: Dict[str, List[str]] = {
     # DNA→pre-mRNA: Gamma seq→or (splicing introduces alternative paths)
-    "pre_mrna": ["Þ", "Ř", "Ç", "Ħ", "Ω", "ɢ"],
+    "pre_mrna": ["⊣", "≻", "⊤", "⊥", "◻", "∋"],
     # mRNA→secondary: K mod→fast (folding kinetics accelerate), G aleph→gimel (scale narrows)
-    "mrna": ["Þ", "Ř", "Ç", "Ħ"],
-    "secondary_structure": ["Ħ", "Σ", "Ω", "Ç", "Γ"],
+    "mrna": ["⊣", "≻", "⊤", "⊥"],
+    "secondary_structure": ["⊥", "⊞", "◻", "⊤", "∈"],
     # secondary→tertiary: G gimel→beth (further localization to residue contacts)
-    "tertiary_structure": ["Γ"],
+    "tertiary_structure": ["∈"],
     # tertiary→quaternary: P pm→asym (parity breaks upon multimerization)
-    "quaternary_structure": ["Φ"],
+    "quaternary_structure": ["≺"],
 }
 
 # Ordinal positions for monotonicity checking
@@ -822,7 +822,7 @@ def verify_pathway(generated: Dict[str, Dict[str, str]]) -> Dict[str, Any]:
     regressions = []
     
     stage_order = _PIPELINE_STAGES
-    all_prims = ["Ð", "Þ", "Ř", "Φ", "ƒ", "Ç", "Γ", "ɢ", "⊙", "Ħ", "Σ", "Ω"]
+    all_prims = ["⊢", "⊣", "≻", "≺", "⋈", "⊤", "∈", "∋", "⊙", "⊥", "⊞", "◻"]
     
     for i, stage in enumerate(stage_order):
         tup = generated[stage]
@@ -889,7 +889,7 @@ def make_test_sequence(aa_codes: List[str],
 def print_tup(stage: str, tup: Dict[str, str]) -> None:
     """Pretty-print a tuple."""
     info_line(f"\n  {stage}:")
-    for prim in ["Ð", "Þ", "Ř", "Φ", "ƒ", "Ç", "Γ", "ɢ", "⊙", "Ħ", "Σ", "Ω"]:
+    for prim in ["⊢", "⊣", "≻", "≺", "⋈", "⊤", "∈", "∋", "⊙", "⊥", "⊞", "◻"]:
         char = tup[prim]
         name = prim_value_name(prim, char)
         info_line(f"    {prim}: {char}  ({name})")
@@ -1035,8 +1035,8 @@ def demo_gcn4_leucine_zipper() -> None:
     
     print_tup("quaternary_structure", generated["quaternary_structure"])
     
-    o_char = generated["quaternary_structure"]["Ω"]
-    o_name = prim_value_name("Ω", o_char)
+    o_char = generated["quaternary_structure"]["◻"]
+    o_name = prim_value_name("◻", o_char)
     info_line(f"\n  Ω = {o_char} ({o_name}) — dimer Z2 parity protection")
     assert o_name == "Z2", f"Expected Z2 for dimer, got {o_name}"
     info_line("  ✓ Dimer confirmed: Ω=Z2")
