@@ -1,27 +1,33 @@
 #!/usr/bin/env python3
-"""Belnap FOUR logic display — used by ghost_typer.py"""
+"""Belnap FOUR display — used by ghost_typer.py"""
 import sys, os
 sys.path.insert(0, os.path.dirname(__file__))
-from rhr_p4rky.belnap import BelnapState, B4
-from rhr_p4rky.belnap_c4 import C4State, C4
+from rhr_p4rky.belnap import Belnap, meet, join, bnot, designated, dialetheic
 from shared.rich_output import *
 
 info_line("=" * 65)
-info_line("PARACONSISTENT KERNEL — Belnap FOUR & C4 Contradiction Lattices")
+info_line("PARACONSISTENT KERNEL — Belnap FOUR")
 info_line("=" * 65)
 print()
-info_line("B4 (Belnap FOUR) — 4 truth values:")
-for v in [B4.T, B4.B, B4.N, B4.F]:
-    s = BelnapState(v)
-    info_line(f"  {str(v):12s} → negation: {str(s.negate())}")
+
+vals = [Belnap.T, Belnap.B, Belnap.N, Belnap.F]
+info_line("Four values, and what negation does to each:")
+for v in vals:
+    info_line(f"  {v.name:2s} → negation {bnot(v).name:2s}"
+              f"   designated: {designated(v)}   dialetheic: {dialetheic(v)}")
 print()
-info_line("Frobenius check: ffuse ∘ fsplit = id")
-s = BelnapState(B4.B)
-info_line(f"  BelnapState({s}) → is_odot_critical? {s.is_odot_critical()}")
+
+info_line("meet")
+info_line("        " + "  ".join(f"{v.name:>2}" for v in vals))
+for a in vals:
+    info_line(f"     {a.name:>2} " + "  ".join(f"{meet(a, b).name:>2}" for b in vals))
 print()
-info_line("C4 (Contradiction-Majority Logic):")
-for v in [C4.T, C4.CT, C4.CF, C4.F]:
-    cs = C4State(v)
-    info_line(f"  {str(v):12s} → majority: {cs.majority_truth()}")
+
+info_line("join")
+info_line("        " + "  ".join(f"{v.name:>2}" for v in vals))
+for a in vals:
+    info_line(f"     {a.name:>2} " + "  ".join(f"{join(a, b).name:>2}" for b in vals))
 print()
-info_line("Dialetheic fixed point: ⊙-criticality emerges at T∩F")
+
+info_line("B is the fixed point of negation, and it is where a contradiction is held")
+info_line("rather than exploded. N is the other fixed point, and holds nothing.")

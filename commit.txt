@@ -1,20 +1,18 @@
-Verification was overwriting the file it verified
+Every demo runs, and the arrangement engine is reachable
 
-Three faults in one command. The identity phase takes source text and was handed a
-file path, so it parsed the path itself as Python and failed on line one, and the
-whole verification reported a syntax error against a file that was fine. CLINK writes
-what it is given to the path it is given, and it was given the source path, so
-running verify rewrote the source it had just checked and prepended a shebang to it.
-And CLINK returns nothing, so it was reported as failed regardless.
+Six of the fourteen demos died on import against names their modules do not define,
+and had done for long enough that the API had moved out from under them. The B4
+lattice demo asked for a class that does not exist and now builds the same display
+from the nucleotide map and the codon type; the Belnap demo asked for a state wrapper
+and now prints the four values, both tables and the two negation fixed points from
+the kernel's own functions; the material forge demo asked for a constant and now
+calls the function that returns the designs; the serpentrod demo lacked its output
+helpers entirely and read the residue assignment from the wrong module; the catalytic
+site demo named a lattice class, a translation pipeline and an amino acid table that
+are all called something else.
 
-Source text now flows to the operators that want it, CLINK runs against a temporary
-file and is judged by what it wrote, and the file being verified is left untouched.
-The verification passes, split to fuse, semantic identity confirmed.
+The arrangement engine exposed nothing from its package, so a census read it as empty
+while all nine of its modules imported cleanly. Every engine is reachable from the
+package now, as the other domains are.
 
-The gene pipeline reported its activations under retired letters through a third copy
-of the residue assignment, and that copy carried the pre-revision swap in three
-places: histidine on Granularity, asparagine on Coupling, glutamine on Criticality.
-Canonical now, matching the catalog and the two copies already corrected.
-
-A tuple that opens with ⟨ closes with ⟩ and not with an ASCII greater-than, across
-the repo.
+Wobble takes two values, and the demo was passing one.
