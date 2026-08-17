@@ -57,7 +57,9 @@ _lazy("FrobeniusMaterialParams", "materials.frobenius_metamaterial")
 _lazy("MaterialDesign", "materials.ig_material_forge")
 _lazy("MaterialForge", "materials.ig_material_forge")
 _lazy("predefined_novel_materials", "materials.ig_material_forge")
-_lazy("SophickForge", "materials.sophick_forge")
+_lazy("run_eagle_simulation", "materials.sophick_forge")
+_lazy("EagleMaterialDesigner", "materials.sophick_forge")
+_lazy("EagleCycleProtocol", "materials.sophick_forge")
 _lazy("design_sophick_material", "materials.sophick_forge")
 _lazy("OuroboricAlloy", "materials.ouroboric_alloy")
 _lazy("TripleJunction", "materials.ouroboric_alloy")
@@ -78,7 +80,9 @@ _lazy("OrganoidAugmentation", "materials.organoid.organoid_augmentations")
 _lazy("design_organoid_augmentation", "materials.organoid.organoid_augmentations")
 _lazy("MBNCDesigner", "materials.mycelial_conduit.mbnc_designer")
 _lazy("design_mycelial_conduit", "materials.mycelial_conduit.mbnc_designer")
-_lazy("CasimirCavityDesigner", "materials.zpe_design.casimir_cavity_design")
+_lazy("CasimirCavity", "materials.zpe_design.casimir_cavity_design")
+_lazy("CasimirCavityParams", "materials.zpe_design.casimir_cavity_design")
+_lazy("ExtractionEngine", "materials.zpe_design.casimir_cavity_design")
 _lazy("design_casimir_cavity", "materials.zpe_design.casimir_cavity_design")
 _lazy("SophickForgeIntegration", "materials.zpe_design.sophick_forge_integration")
 _lazy("ThermalRectifier", "materials.thermal_rectifier")
@@ -290,9 +294,10 @@ def _cmd_sophick(args):
     """Run SophickForge."""
     print("═ Sophick Forge ═")
     try:
-        from materials.sophick_forge import SophickForge
-        forge = SophickForge()
-        result = forge.design() if hasattr(forge, 'design') else str(forge)
+        # The forge is driven by the Eagle Cycle protocol; there is no class of
+        # that name, and the entry point is the simulation it runs.
+        from materials.sophick_forge import run_eagle_simulation
+        result = run_eagle_simulation()
         print(_json_or_str(result))
     except Exception as e:
         import traceback
@@ -308,9 +313,20 @@ def _cmd_casimir(args):
     print("═ Casimir Cavity Designer (ZPE) ═")
     print(f"  Target gap: {target_gap} µm")
     try:
-        from materials.zpe_design.casimir_cavity_design import CasimirCavityDesigner
-        designer = CasimirCavityDesigner()
-        result = designer.design(target_gap_um=target_gap) if hasattr(designer, 'design') else str(designer)
+        # The cavity is built from its parameters; the target gap sets the plate
+        # separation, and there is no separate designer class.
+        from materials.zpe_design.casimir_cavity_design import (
+            CasimirCavity, CasimirCavityParams,
+        )
+        cavity = CasimirCavity(CasimirCavityParams(
+            plate_separation_nm=float(target_gap) * 1000.0))
+        result = {
+            "plate_separation_nm": cavity.P.plate_separation_nm,
+            "casimir_pressure_Pa": cavity.P.casimir_pressure_Pa,
+            "casimir_force_N": cavity.casimir_force_N(),
+            "vacuum_energy_density_Jm3": cavity.vacuum_energy_density_Jm3(),
+            "cavity_fundamental_Hz": cavity.P.cavity_fundamental_Hz,
+        }
         print(_json_or_str(result))
     except Exception as e:
         import traceback
