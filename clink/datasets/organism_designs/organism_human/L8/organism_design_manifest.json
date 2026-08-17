@@ -1,11 +1,11 @@
 {
   "design_name": "CLINK_human_v2",
-  "author": "Lando\u2297\u2299perator",
+  "author": "Lando⊗⊙perator",
   "grammar": "Imscribing Grammar v1.0",
   "schema_tier": "O_∞",
   "organism_type": "human",
   "organism_scientific": "Homo sapiens",
-  "structural_type": "\u27e8\ud801\udc66\ud801\udc78\ud801\udc7e\ud801\udc79\ud801\udc50\ud801\udc67\ud801\udc72\ud801\udc75\u2299\ud801\udc6b\ud801\udc73\ud801\udc5f\u27e9",
+  "structural_type": "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩",
   "consciousness_score": 1.0,
   "layers_integrated": [
     0,
@@ -83,11 +83,11 @@
     "L8/organism_design_manifest.json"
   ],
   "frobenius_verified": true,
-  "mu_delta_id": "\u03bc\u2218\u03b4=id holds at every layer",
+  "mu_delta_id": "μ∘δ=id holds at every layer",
   "advanced_components": {
-    "ouroboric_telomere": "Telomere loop closure as topological protection (\u03a9=\ud801\udc5f)",
-    "aurora_B_EP_gradient": "\u2299=\ud801\udc7b coupling at inner centromere spindle checkpoint",
-    "b4_codon_stratification": "64\u219221 amino acid mapping via Belnap4 logic"
+    "ouroboric_telomere": "Telomere loop closure as topological protection (Ω=𐑟)",
+    "aurora_B_EP_gradient": "⊙=𐑻 coupling at inner centromere spindle checkpoint",
+    "b4_codon_stratification": "64→21 amino acid mapping via Belnap4 logic"
   },
   "what_to_do": {
     "genome.fasta": "Order DNA synthesis from Twist/IDT/GenScript",
@@ -100,5 +100,5 @@
     "mitosis_assay_protocol.md": "Follow for cell division checkpoint validation"
   },
   "generation_timestamp": "2025-06-07",
-  "status": "EXPANDED \u2014 all layers fully specified"
+  "status": "EXPANDED — all layers fully specified"
 }

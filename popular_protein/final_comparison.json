@@ -19,11 +19,11 @@
       "other": 55,
       "none": 2
     },
-    "mean_phi_diff": 145.7,
-    "mean_psi_diff": 99.4,
-    "kabsch_rmsd": 18.8,
-    "mean_per_res": 17.17,
-    "max_per_res": 33.06
+    "mean_phi_diff": 144.7,
+    "mean_psi_diff": 98.4,
+    "kabsch_rmsd": 33.89,
+    "mean_per_res": 31.43,
+    "max_per_res": 53.76
   },
   "insulin_a_chain": {
     "platonic_residues": 21,
@@ -45,10 +45,10 @@
       "other": 6,
       "none": 2
     },
-    "mean_phi_diff": 160.4,
-    "mean_psi_diff": 121.6,
-    "kabsch_rmsd": 5.71,
-    "mean_per_res": 5.26,
-    "max_per_res": 10.8
+    "mean_phi_diff": 157.0,
+    "mean_psi_diff": 121.7,
+    "kabsch_rmsd": 6.29,
+    "mean_per_res": 5.79,
+    "max_per_res": 12.14
   }
 }

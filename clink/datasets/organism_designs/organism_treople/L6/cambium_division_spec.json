@@ -7,7 +7,7 @@
     "skin basal layer (stomatal lineage)",
     "foot sole dermis (mycorrhizal)"
   ],
-  "division_type": "asymmetric (WOX4/PXY axis) \u2192 phloem-like (outward) + xylem-like (inward)",
+  "division_type": "asymmetric (WOX4/PXY axis) → phloem-like (outward) + xylem-like (inward)",
   "division_rate": "0.1 divisions/cell/day (slow; tree-rate)",
   "key_genes": [
     "WOX4",
@@ -18,5 +18,5 @@
     "FAMA"
   ],
   "temporal_regulation": "CONSTANS/FT photoperiod gate: active spring/summer; arrested winter",
-  "ig_note": "\u00d0=\ud801\udc7a: WOX4 lateral meristem enables indefinite branching dimensional expansion; this is the architectural shift from animal (centralized) to arboreal (branching)"
+  "ig_note": "Ð=𐑺: WOX4 lateral meristem enables indefinite branching dimensional expansion; this is the architectural shift from animal (centralized) to arboreal (branching)"
 }

@@ -32,13 +32,13 @@
     "G1": "CDK4/6-Cyclin D (Rb phosphorylation)",
     "G1/S": "CDK2-Cyclin E (initiation of replication)",
     "S": "CDK2-Cyclin A (replication elongation)",
-    "G2/M": "CDK1-Cyclin B (MPF \u2014 mitosis promoting factor)"
+    "G2/M": "CDK1-Cyclin B (MPF — mitosis promoting factor)"
   },
   "checkpoints": {
-    "G1/S (Restriction Point)": "pRb-E2F; p53-p21; DNA-damage-sensed",
-    "G2/M": "ATR-Chk1; Wee1-Myt1 (inhibitory phosphorylation of CDK1)",
-    "Spindle Assembly (SAC)": "MAD2-BUBR1-BUB3; Aurora B spatial gradient",
-    "exceptional_point_mechanism": "Aurora-B kinase phosphorylation gradient at inner centromere \u2014 \u2299=\ud801\udc7b coupling"
+    "G1/S (Restriction Point)": "pRb-E2Fp53-p21DNA-damage-sensed",
+    "G2/M": "ATR-Chk1Wee1-Myt1 (inhibitory phosphorylation of CDK1)",
+    "Spindle Assembly (SAC)": "MAD2-BUBR1-BUB3Aurora B spatial gradient",
+    "exceptional_point_mechanism": "Aurora-B kinase phosphorylation gradient at inner centromere — ⊙=𐑻 coupling"
   },
   "telomere": {
     "repeat_sequence": "TTAGGG",

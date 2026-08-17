@@ -5,6 +5,14 @@ from shared.rich_output import *
 
 PY = "/home/mrnob0dy666/red-hot_rebis/clink/datasets/generators.py"
 
+# This is a generator script: running it rewrites generators.py. Importing it
+# must not, so an import stops here rather than truncating the file that the
+# package imports at load time.
+if __name__ != "__main__":
+    raise ImportError(
+        "gen_part3 writes generators.py; run it directly, do not import it")
+
+
 def w(s):
     with open(PY, 'a') as f:
         f.write(s + '\n')

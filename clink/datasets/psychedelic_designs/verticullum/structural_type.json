@@ -16,44 +16,44 @@
   },
   "tuple_display": "⟨𐑦𐑥𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑫𐑳𐑟⟩",
   "tier": "O_∞",
-  "c_score": 0.0,
+  "c_score": 1.0,
   "primitive_breakdown": {
-    "Ð": {
+    "⊢": {
       "glyph": "?",
       "ordinal": 0,
       "weight": 1.0
     },
-    "Þ": {
+    "⊣": {
       "glyph": "?",
       "ordinal": 0,
       "weight": 1.0
     },
-    "Ř": {
+    "≻": {
       "glyph": "?",
       "ordinal": 0,
       "weight": 1.0
     },
-    "Φ": {
+    "≺": {
       "glyph": "?",
       "ordinal": 0,
       "weight": 1.0
     },
-    "ƒ": {
+    "⋈": {
       "glyph": "?",
       "ordinal": 0,
       "weight": 1.0
     },
-    "Ç": {
+    "⊤": {
       "glyph": "?",
       "ordinal": 0,
       "weight": 1.0
     },
-    "Γ": {
+    "∈": {
       "glyph": "?",
       "ordinal": 0,
       "weight": 1.0
     },
-    "ɢ": {
+    "∋": {
       "glyph": "?",
       "ordinal": 0,
       "weight": 1.0
@@ -63,17 +63,17 @@
       "ordinal": 0,
       "weight": 1.0
     },
-    "Ħ": {
+    "⊥": {
       "glyph": "?",
       "ordinal": 0,
       "weight": 0.8
     },
-    "Σ": {
+    "⊞": {
       "glyph": "?",
       "ordinal": 0,
       "weight": 1.0
     },
-    "Ω": {
+    "◻": {
       "glyph": "?",
       "ordinal": 0,
       "weight": 0.7
@@ -82,7 +82,7 @@
   "clink_distances": {
     "L0": {
       "layer": "Frustrated Belnap5 (Quarks)",
-      "distance": 7.1414,
+      "distance": 6.9282,
       "deltas": [
         {
           "primitive": "D",
@@ -118,7 +118,7 @@
           "primitive": "G",
           "from": "𐑲",
           "to": "𐑚",
-          "delta": -2
+          "delta": 1
         },
         {
           "primitive": "Gm",
@@ -148,7 +148,7 @@
     },
     "L1": {
       "layer": "Electron Orbital (Belnap4)",
-      "distance": 7.746,
+      "distance": 7.5498,
       "deltas": [
         {
           "primitive": "D",
@@ -184,7 +184,7 @@
           "primitive": "G",
           "from": "𐑲",
           "to": "𐑚",
-          "delta": -2
+          "delta": 1
         },
         {
           "primitive": "Gm",
@@ -214,7 +214,7 @@
     },
     "L2": {
       "layer": "Atom (Nuclear + Electron)",
-      "distance": 5.4872,
+      "distance": 5.754,
       "deltas": [
         {
           "primitive": "D",
@@ -244,7 +244,7 @@
           "primitive": "G",
           "from": "𐑲",
           "to": "𐑔",
-          "delta": -1
+          "delta": 2
         },
         {
           "primitive": "Gm",

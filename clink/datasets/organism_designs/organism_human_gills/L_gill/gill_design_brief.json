@@ -1,46 +1,46 @@
 {
-  "structural_type": "\u27e8\ud801\udc66\ud801\udc7c\ud801\udc7f\ud801\udc79\ud801\udc52\ud801\udc67\ud801\udc74\ud801\udc75\u2299\ud801\udc6b\ud801\udc69\ud801\udc5f\u27e9",
-  "base_human_type": "\u27e8\ud801\udc66\ud801\udc78\ud801\udc7e\ud801\udc79\ud801\udc50\ud801\udc67\ud801\udc72\ud801\udc75\u2299\ud801\udc6b\ud801\udc73\ud801\udc5f\u27e9",
+  "structural_type": "⟨𐑦𐑼𐑿𐑹𐑒𐑧𐑴𐑵⊙𐑫𐑩𐑟⟩",
+  "base_human_type": "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩",
   "tier": "O_∞",
   "c_score": 1.0,
-  "foundation": "ZFC_fe  \u03bc\u2218\u03b4=id",
+  "foundation": "ZFC_fe  μ∘δ=id",
   "primitive_deltas": {
-    "\u0126_Chirality": {
-      "base": "\ud801\udc78",
-      "gill": "\ud801\udc7c",
-      "reason": "Na\u207a apical extrusion \u2014 active pump directionality"
+    "Ħ_Chirality": {
+      "base": "𐑸",
+      "gill": "𐑼",
+      "reason": "Na⁺ apical extrusion — active pump directionality"
     },
-    "\u03a9_Winding": {
-      "base": "\ud801\udc7e",
-      "gill": "\ud801\udc7f",
-      "reason": "counter-current antiparallel flow adds \u03a9"
+    "Ω_Winding": {
+      "base": "𐑾",
+      "gill": "𐑿",
+      "reason": "counter-current antiparallel flow adds Ω"
     },
-    "\u03a3_Stoichiometry": {
-      "base": "\ud801\udc50",
-      "gill": "\ud801\udc52",
-      "reason": "dissolved-O\u2082 stoichiometry ~30\u00d7 lower than aerial"
+    "𐑙toichiometry": {
+      "base": "𐑐",
+      "gill": "𐑒",
+      "reason": "dissolved-O₂ stoichiometry ~30× lower than aerial"
     },
-    "\u00c7_Kinetics": {
-      "base": "\ud801\udc72",
-      "gill": "\ud801\udc74",
+    "Ç_Kinetics": {
+      "base": "𐑲",
+      "gill": "𐑴",
       "reason": "NKA+NHE3 active transport kinetics"
     },
-    "\u00de_Topology": {
-      "base": "\ud801\udc73",
-      "gill": "\ud801\udc69",
-      "reason": "lamellar plate topology \u2260 alveolar sacculi"
+    "Þ_Topology": {
+      "base": "𐑳",
+      "gill": "𐑩",
+      "reason": "lamellar plate topology ≠ alveolar sacculi"
     }
   },
   "genes": {
     "ATP1A1": {
       "uniprot": "P05023",
-      "function": "Ionocyte basolateral Na\u207a extrusion; drives electrochemical gradient for all secondary transport",
+      "function": "Ionocyte basolateral Na⁺ extrusion; drives electrochemical gradient for all secondary transport",
       "delivery": "AAV9",
-      "target": "pharyngeal arch epithelium \u2192 gill ionocyte"
+      "target": "pharyngeal arch epithelium → gill ionocyte"
     },
     "CA2": {
       "uniprot": "P00918",
-      "function": "CO\u2082 + H\u2082O \u21cc H\u207a + HCO\u2083\u207b; cytoplasmic pH buffering in gill epithelium",
+      "function": "CO₂ + H₂O ⇌ H⁺ + HCO₃⁻; cytoplasmic pH buffering in gill epithelium",
       "delivery": "AAV9",
       "target": "gill epithelium cytoplasm"
     },
@@ -52,40 +52,40 @@
     },
     "SLC9A3": {
       "uniprot": "P48764",
-      "function": "Apical Na\u207a uptake from water / H\u207a secretion; principal freshwater ionoregulation mechanism",
+      "function": "Apical Na⁺ uptake from water / H⁺ secretion; principal freshwater ionoregulation mechanism",
       "delivery": "AAV9",
       "target": "ionocyte apical membrane"
     },
     "FOXA2": {
       "uniprot": "Q9Y261",
-      "function": "Master TF for pharyngeal arch \u2192 gill primordium specification; activates gill structural genes",
+      "function": "Master TF for pharyngeal arch → gill primordium specification; activates gill structural genes",
       "delivery": "lentiviral (developmental, ex vivo pharyngeal arch)",
-      "target": "2nd\u20136th pharyngeal arch progenitors"
+      "target": "2nd–6th pharyngeal arch progenitors"
     },
     "PAX2": {
       "uniprot": "P37812",
       "function": "Branchial arch identity; specifies gill arch fate over middle-ear/jaw default",
       "delivery": "lentiviral (developmental)",
-      "target": "pharyngeal arch 2\u20136 epithelium"
+      "target": "pharyngeal arch 2–6 epithelium"
     },
     "EYA1": {
       "uniprot": "Q99502",
       "function": "Branchial/otic field specification; required for gill primordium competence alongside Six1",
       "delivery": "lentiviral (developmental)",
-      "target": "pharyngeal arch 2\u20136 mesenchyme"
+      "target": "pharyngeal arch 2–6 mesenchyme"
     }
   },
   "tissue": {
     "arch_count": 4,
     "surface_area_cm2": 5760,
     "gas_exchange_efficiency": 0.8,
-    "topology": "lamellar plate (\u00de=\ud801\udc69)",
-    "winding": "counter-current antiparallel (\u03a9=\ud801\udc7f)"
+    "topology": "lamellar plate (Þ=𐑩)",
+    "winding": "counter-current antiparallel (Ω=𐑿)"
   },
   "respiratory": {
     "primary": "gill (aquatic)",
     "secondary": "lung (aerial, retained)",
     "mode": "bimodal"
   },
-  "frobenius": "\u03bc\u2218\u03b4=id \u2014 every ion gradient folded by gill lamellae is recovered losslessly"
+  "frobenius": "μ∘δ=id — every ion gradient folded by gill lamellae is recovered losslessly"
 }

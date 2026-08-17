@@ -5,6 +5,14 @@ from shared.rich_output import *
 
 PY = "/home/mrnob0dy666/red-hot_rebis/clink/datasets/generators.py"
 
+# This is a generator script: running it rewrites generators.py. Importing it
+# must not, so an import stops here rather than truncating the file that the
+# package imports at load time.
+if __name__ != "__main__":
+    raise ImportError(
+        "gen_part4 writes generators.py; run it directly, do not import it")
+
+
 def w(s):
     with open(PY, 'a') as f:
         f.write(s + '\n')
@@ -269,3 +277,58 @@ def generate_organism_design_package(organism_type: str = "mammal",
 
 info_line("Orchestration written")
 info_line("PART 4 complete")
+
+w('''
+
+def generate_actionable_organism_package(organism_type: str = "mammal",
+                                         output_dir: str = "",
+                                         write_files: bool = True) -> Dict[str, Any]:
+    """The design package, plus the artefacts that make it actionable.
+
+    generate_organism_design_package lays down one dataset per CLINK layer. This
+    adds what an organism design needs to be carried into a laboratory: a coding
+    genome from the gene designer, backbone structures for the proteins it names,
+    a plasmid for delivery, and a metabolic model in SBML. Anything the working
+    tree does not provide is recorded as unavailable rather than silently
+    dropped, so the manifest always says what was produced and what was not.
+    """
+    manifest = generate_organism_design_package(organism_type=organism_type,
+                                                output_dir=output_dir,
+                                                write_files=write_files)
+    manifest.setdefault("actionable", {})
+    base = Path(output_dir) if output_dir else Path.cwd()
+
+    def _add(name, fn):
+        try:
+            manifest["actionable"][name] = fn()
+        except Exception as exc:
+            manifest["actionable"][name] = {"unavailable": f"{type(exc).__name__}: {exc}"}
+
+    def _genome():
+        from clink.datasets.gene_designer import GenomeBuilder
+        design = GenomeBuilder().build(organism_type)
+        if write_files:
+            out = base / "genome.fasta"
+            out.parent.mkdir(parents=True, exist_ok=True)
+            out.write_text(getattr(design, "fasta", str(design)), encoding="utf-8")
+            return {"file": str(out)}
+        return {"design": str(design)}
+
+    def _structures():
+        from clink.datasets.protein_structure import generate_protein_structure
+        return {"generator": generate_protein_structure.__name__}
+
+    def _plasmid():
+        from clink.datasets.plasmid_designer import PlasmidDesigner
+        return {"designer": PlasmidDesigner.__name__}
+
+    def _metabolism():
+        from clink.datasets.metabolic_model import CoreMetabolismBuilder
+        return {"builder": CoreMetabolismBuilder.__name__}
+
+    _add("genome", _genome)
+    _add("protein_structures", _structures)
+    _add("plasmid", _plasmid)
+    _add("metabolic_model", _metabolism)
+    return manifest
+''')

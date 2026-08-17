@@ -1,0 +1,13 @@
+# CLINK Growth Media Formulation for eukaryote
+
+Base medium: DMEM
+Carbon source: 25 mM glucose
+Nitrogen source: 20 mM NH4Cl
+Phosphate: 10 mM K2HPO4/KH2PO4 pH 7.0
+Trace elements: Fe, Zn, Mn, Cu, Co, Mo
+Vitamins: biotin, thiamine, B12
+Temperature: 37 C
+pH: 7.2-7.4
+Oxygen: aerobic (supplement 5% CO2 for mammalian)
+
+# Protocol: autoclave base, filter-add heat-labile components

@@ -1,19 +1,21 @@
-The compiler is a module in its package, and the spent patches say so
+The dataset package builds itself, and importing it no longer destroys it
 
-A dozen modules imported the compiler by bare name, which resolves only from inside
-the package directory, so the reaction deriver, the retrosynthetic pipeline, the
-precursor lattice and both enrichment tests failed anywhere else. They name the
-package now.
+generators.py is written by five generator scripts, and those scripts did their work
+at import time. The package imports generators.py when it loads, so importing part
+one truncated the file that everything else needs, and any sweep that touched the
+scripts in order left the package broken behind it. They refuse import now and write
+only when run directly.
 
-The retrosynthetic pipeline also had a whole import line dropped inside an open
-parenthesised import, and two of its methods written bottom to top. Restored from the
-last revision that parses, with the import repaired.
+The file they had left behind carried every orchestration function six times and one
+layer generator six times, from having been appended to repeatedly. Rebuilt: one of
+each.
 
-Two one-shot patch scripts asserted their target text appears exactly once, and it no
-longer does because the patches were applied long ago. Finding its own result in
-place is a patch having worked; both scripts say so and stop, instead of failing.
+The generated header never imported the three chain functions its own generators
+call on every dataset, so every generate() died on the closure verdict it stamps.
+The header imports them, and the fix is in the generator rather than in its output.
 
-The bare-metal imscriber computed its anchor over a file named self.o that never
-existed, where it means its own source. It reads itself now, which is the point.
-
-One test called the printing helpers before importing them.
+Four organism designs called for an actionable package that was never generated. It
+exists now, in the generator: the design package plus a coding genome, protein
+backbones, a plasmid and a metabolic model, with anything the tree cannot supply
+recorded as unavailable rather than dropped. Human, gills, photosynthetic and treople
+all run.

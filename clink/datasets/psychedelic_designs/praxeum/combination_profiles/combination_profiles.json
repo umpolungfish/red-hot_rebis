@@ -133,7 +133,7 @@
   },
   "praxeum_plus_ketamine": {
     "combination": "Praxeum (EP-Core Control Platform) + ketamine",
-    "composite_type": "⟨𐑦𐑶𐑾𐑿𐑱𐑧𐑲𐑠𐑻𐑫𐑳𐑭⟩",
+    "composite_type": "⟨𐑦𐑶𐑾𐑿𐑱𐑧𐑔𐑠𐑻𐑫𐑳𐑭⟩",
     "composite_tier": "O₀",
     "parent_1": {
       "name": "Praxeum (EP-Core Control Platform)",
@@ -155,6 +155,12 @@
         "from": "𐑐",
         "to": "𐑱",
         "delta": -2
+      },
+      {
+        "primitive": "G",
+        "from": "𐑲",
+        "to": "𐑔",
+        "delta": 2
       }
     ],
     "deltas_from_parent_2": [
@@ -174,12 +180,6 @@
         "primitive": "K",
         "from": "𐑤",
         "to": "𐑧",
-        "delta": 1
-      },
-      {
-        "primitive": "G",
-        "from": "𐑔",
-        "to": "𐑲",
         "delta": 1
       },
       {
@@ -281,7 +281,7 @@
   },
   "praxeum_plus_mescaline": {
     "combination": "Praxeum (EP-Core Control Platform) + mescaline",
-    "composite_type": "⟨𐑦𐑶𐑾𐑗𐑱𐑧𐑲𐑠𐑻𐑫𐑳𐑭⟩",
+    "composite_type": "⟨𐑦𐑶𐑾𐑗𐑱𐑧𐑔𐑠𐑻𐑫𐑳𐑭⟩",
     "composite_tier": "O₀",
     "parent_1": {
       "name": "Praxeum (EP-Core Control Platform)",
@@ -303,6 +303,12 @@
         "from": "𐑐",
         "to": "𐑱",
         "delta": -2
+      },
+      {
+        "primitive": "G",
+        "from": "𐑲",
+        "to": "𐑔",
+        "delta": 2
       }
     ],
     "deltas_from_parent_2": [
@@ -323,12 +329,6 @@
         "from": "𐑩",
         "to": "𐑾",
         "delta": 3
-      },
-      {
-        "primitive": "G",
-        "from": "𐑔",
-        "to": "𐑲",
-        "delta": 1
       },
       {
         "primitive": "Gm",
@@ -405,7 +405,7 @@
   },
   "praxeum_plus_retiarius": {
     "combination": "Praxeum (EP-Core Control Platform) + Retiarius (Local-Net Trap)",
-    "composite_type": "⟨𐑦𐑶𐑾𐑿𐑞𐑺𐑲𐑠𐑻𐑫𐑳𐑭⟩",
+    "composite_type": "⟨𐑦𐑶𐑾𐑿𐑞𐑺𐑚𐑠𐑻𐑫𐑳𐑭⟩",
     "composite_tier": "O₀",
     "parent_1": {
       "name": "Praxeum (EP-Core Control Platform)",
@@ -433,6 +433,12 @@
         "from": "𐑧",
         "to": "𐑺",
         "delta": 1.5
+      },
+      {
+        "primitive": "G",
+        "from": "𐑲",
+        "to": "𐑚",
+        "delta": 1
       }
     ],
     "deltas_from_parent_2": [
@@ -447,12 +453,6 @@
         "from": "𐑡",
         "to": "𐑶",
         "delta": 3
-      },
-      {
-        "primitive": "G",
-        "from": "𐑚",
-        "to": "𐑲",
-        "delta": 2
       },
       {
         "primitive": "Gm",

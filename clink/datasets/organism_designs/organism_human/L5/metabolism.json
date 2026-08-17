@@ -24,14 +24,14 @@
     "per_NADH": 2.5,
     "per_FADH2": 1.5
   },
-  "biomass_equation": "0.488 G6P + 0.233 AA + 0.058 dNTPs + 0.033 NTPs + 0.048 lipids + 0.020 cofactors + 0.014 polyamines + 0.036 ions \u2192 1 g biomass",
+  "biomass_equation": "0.488 G6P + 0.233 AA + 0.058 dNTPs + 0.033 NTPs + 0.048 lipids + 0.020 cofactors + 0.014 polyamines + 0.036 ions → 1 g biomass",
   "maintenance_atp_mmol_per_gDCW_h": 0.7,
   "growth_rate_per_hour": 0.03,
   "key_pathways": {
     "insulin_signaling": {
-      "PI3K\u2192AKT\u2192mTOR": "anabolic"
+      "PI3K→AKT→mTOR": "anabolic"
     },
-    "AMPK": "energy sensor \u2192 catabolic when AMP:ATP high",
-    "HIF1\u03b1": "hypoxia response \u2192 anaerobic glycolysis"
+    "AMPK": "energy sensor → catabolic when AMP:ATP high",
+    "HIF1α": "hypoxia response → anaerobic glycolysis"
   }
 }

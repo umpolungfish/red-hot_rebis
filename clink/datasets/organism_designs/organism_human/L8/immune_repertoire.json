@@ -35,7 +35,7 @@
           "Th17",
           "Tfh"
         ],
-        "receptor": "TCR (\u03b1\u03b2 or \u03b3\u03b4)"
+        "receptor": "TCR (αβ or γδ)"
       },
       "B_cell": {
         "types": [
@@ -80,8 +80,8 @@
     "memory": "years-decades"
   },
   "VDJ_recombination": {
-    "TCR_\u03b2_diversity": "~10\u00b9\u2075 theoretical",
-    "actual": "~2\u00d710\u2077 unique TCRs per individual",
+    "TCR_β_diversity": "~10¹⁵ theoretical",
+    "actual": "~2×10⁷ unique TCRs per individual",
     "RAG1_RAG2": "initiates V(D)J recombination",
     "junctional_diversity": "TdT adds N-nucleotides"
   }

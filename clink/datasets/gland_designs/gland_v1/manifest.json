@@ -1,7 +1,7 @@
 {
   "design": "synthetic_detox_gland",
   "version": "1.0.0",
-  "output_dir": "/home/mrnob0dy666/red-hot_rebis/clink/datasets/gland_designs/gland_v1",
+  "output_dir": "/home/mrnob0dy666/imsgct/red-hot_rebis/clink/datasets/gland_designs/gland_v1",
   "files": [
     "sensor_receptors.fasta",
     "antidote_fusion.fasta",
@@ -14,10 +14,10 @@
     "gland_specification.json",
     "metabolic_model.xml"
   ],
-  "total_bytes": 183865,
+  "total_bytes": 183685,
   "file_count": 10,
-  "structural_type": "\u27e8\ud801\udc7c \u00b7 \ud801\udc78 \u00b7 \ud801\udc7e \u00b7 \ud801\udc6c \u00b7 \ud801\udc5e \u00b7 \ud801\udc64 \u00b7 \ud801\udc72 \u00b7 \ud801\udc60 \u00b7 \u2299 \u00b7 \ud801\udc56 \u00b7 \ud801\udc73 \u00b7 \ud801\udc74\u27e9",
-  "tier": "O₂",
+  "structural_type": "\u27e8\ud801\udc7c\ud801\udc78\ud801\udc7e\ud801\udc6c\ud801\udc5e\ud801\udc64\ud801\udc72\ud801\udc60\u2299\ud801\udc56\ud801\udc73\ud801\udc74\u27e9",
+  "tier": "O\u2082",
   "sensor_count": 5,
   "antidote_arms": 6,
   "toxin_classes": [

@@ -1,7 +1,7 @@
 {
   "L0": {
     "layer": "Frustrated Belnap5 (Quarks)",
-    "distance": 7.3485,
+    "distance": 7.1414,
     "deltas": [
       {
         "primitive": "D",
@@ -37,7 +37,7 @@
         "primitive": "G",
         "from": "𐑲",
         "to": "𐑚",
-        "delta": -2
+        "delta": 1
       },
       {
         "primitive": "Gm",
@@ -68,7 +68,7 @@
   },
   "L1": {
     "layer": "Electron Orbital (Belnap4)",
-    "distance": 7.8102,
+    "distance": 7.6158,
     "deltas": [
       {
         "primitive": "D",
@@ -104,7 +104,7 @@
         "primitive": "G",
         "from": "𐑲",
         "to": "𐑚",
-        "delta": -2
+        "delta": 1
       },
       {
         "primitive": "Gm",
@@ -135,7 +135,7 @@
   },
   "L2": {
     "layer": "Atom (Nuclear + Electron)",
-    "distance": 5.8693,
+    "distance": 6.1196,
     "deltas": [
       {
         "primitive": "D",
@@ -171,7 +171,7 @@
         "primitive": "G",
         "from": "𐑲",
         "to": "𐑔",
-        "delta": -1
+        "delta": 2
       },
       {
         "primitive": "Gm",

@@ -1,39 +1,39 @@
 {
   "organism_type": "human_gills",
-  "structural_type": "\u27e8\ud801\udc66\ud801\udc7c\ud801\udc7f\ud801\udc79\ud801\udc52\ud801\udc67\ud801\udc74\ud801\udc75\u2299\ud801\udc6b\ud801\udc69\ud801\udc5f\u27e9",
-  "base_human_type": "\u27e8\ud801\udc66\ud801\udc78\ud801\udc7e\ud801\udc79\ud801\udc50\ud801\udc67\ud801\udc72\ud801\udc75\u2299\ud801\udc6b\ud801\udc73\ud801\udc5f\u27e9",
+  "structural_type": "⟨𐑦𐑼𐑿𐑹𐑒𐑧𐑴𐑵⊙𐑫𐑩𐑟⟩",
+  "base_human_type": "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩",
   "primitive_deltas": {
-    "\u0126_Chirality": {
-      "base": "\ud801\udc78",
-      "gill": "\ud801\udc7c",
-      "reason": "Na\u207a apical extrusion \u2014 active pump directionality"
+    "Ħ_Chirality": {
+      "base": "𐑸",
+      "gill": "𐑼",
+      "reason": "Na⁺ apical extrusion — active pump directionality"
     },
-    "\u03a9_Winding": {
-      "base": "\ud801\udc7e",
-      "gill": "\ud801\udc7f",
-      "reason": "counter-current antiparallel flow adds \u03a9"
+    "Ω_Winding": {
+      "base": "𐑾",
+      "gill": "𐑿",
+      "reason": "counter-current antiparallel flow adds Ω"
     },
-    "\u03a3_Stoichiometry": {
-      "base": "\ud801\udc50",
-      "gill": "\ud801\udc52",
-      "reason": "dissolved-O\u2082 stoichiometry ~30\u00d7 lower than aerial"
+    "𐑙toichiometry": {
+      "base": "𐑐",
+      "gill": "𐑒",
+      "reason": "dissolved-O₂ stoichiometry ~30× lower than aerial"
     },
-    "\u00c7_Kinetics": {
-      "base": "\ud801\udc72",
-      "gill": "\ud801\udc74",
+    "Ç_Kinetics": {
+      "base": "𐑲",
+      "gill": "𐑴",
       "reason": "NKA+NHE3 active transport kinetics"
     },
-    "\u00de_Topology": {
-      "base": "\ud801\udc73",
-      "gill": "\ud801\udc69",
-      "reason": "lamellar plate topology \u2260 alveolar sacculi"
+    "Þ_Topology": {
+      "base": "𐑳",
+      "gill": "𐑩",
+      "reason": "lamellar plate topology ≠ alveolar sacculi"
     }
   },
   "generation_mode": "actionable",
-  "generation_time_seconds": 0.28,
-  "total_files": 43,
-  "total_bytes": 102819,
-  "output_directory": "/home/mrnob0dy666/red-hot_rebis/clink/datasets/organism_designs/organism_human_gills",
+  "generation_time_seconds": 0.1,
+  "total_files": 44,
+  "total_bytes": 107012,
+  "output_directory": "/home/mrnob0dy666/imsgct/red-hot_rebis/clink/datasets/organism_designs/organism_human_gills",
   "frobenius_verified": true,
   "tier": "O_∞",
   "c_score": 1.0,

@@ -33,7 +33,7 @@
       "cofactor": "PLP"
     },
     "serotonin": {
-      "enzyme": "AANAT\u2192HIOMT",
+      "enzyme": "AANAT→HIOMT",
       "product": "melatonin",
       "organ": "pineal"
     }

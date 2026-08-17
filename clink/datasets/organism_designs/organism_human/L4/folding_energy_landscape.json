@@ -12,8 +12,8 @@
     "GroEL/TRiC": "obligate substrates (~10% of proteome)"
   },
   "misfolding_disease_links": {
-    "Alzheimer": "A\u03b2 aggregation",
-    "Parkinson": "\u03b1-synuclein aggregation",
+    "Alzheimer": "Aβ aggregation",
+    "Parkinson": "α-synuclein aggregation",
     "prion": "PrP^Sc propagation"
   }
 }

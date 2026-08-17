@@ -1,0 +1,19 @@
+{
+  "chromosomes": 46,
+  "phases": {
+    "G1": {
+      "hours": 12
+    },
+    "S": {
+      "hours": 7
+    },
+    "G2": {
+      "hours": 3
+    },
+    "M": {
+      "hours": 1
+    }
+  },
+  "checkpoint": "Aurora-B",
+  "spindle_checkpoint_active": true
+}

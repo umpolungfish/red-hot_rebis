@@ -1,0 +1,7 @@
+# CLINK Molecule Inventory
+C(C(=O)O)N	Alanine
+CC(C)CC(C(=O)O)N	Leucine
+C1=CC=C(C=C1)CC(C(=O)O)N	Phenylalanine
+C(CC(=O)O)C(C(=O)O)N	Glutamic_acid
+C1=NC2=C(N1)N(C=N2)C3C(C(C(O3)CO)O)O	Adenosine
+CC1=CN(C(=O)NC1=O)C2C(C(C(O2)CO)O)O	Thymidine
