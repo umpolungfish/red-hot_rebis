@@ -31,19 +31,30 @@ from shared.rich_output import *  # printing helpers this module calls
 
 # ─── AA → Primitive Mapping ───────────────────────────────────────────────
 
+# The residue-to-mark correspondence is V⊙x's, generated from the Lean that
+# proves it. This module reads it rather than keeping a fifth copy.
+from shared.vox_bridge import AA_MARK as _AA_MARK, AA_AXIS as _AA_AXIS
+
+_NOTES = {
+    'M': 'Start codon — opens the reading',
+    'W': 'Indole ring — closes the reading',
+    'C': 'Disulfide bond — reversible crosslink',
+    'Y': 'Phosphorylation switch',
+    'F': 'Hydrophobic ceiling',
+    'I': 'β-branching — slow folding',
+    'N': 'N-glycosylation site — the branch point',
+    'Q': 'Transglutaminase donor — the join',
+    'H': 'pH-gated catalysis',
+    'D': 'Substrate selectivity',
+    'K': 'Acetylation site',
+    'E': 'Closure / C-terminal marker',
+}
+_ONE = {'Met':'M','Trp':'W','Cys':'C','Tyr':'Y','Phe':'F','Ile':'I',
+        'Asn':'N','Gln':'Q','His':'H','Asp':'D','Lys':'K','Glu':'E'}
+
 PRIMITIVE_MAP = {
-    'M': ('⊢', 'Dimensionality', 'Start codon — opens the reading'),
-    'W': ('⊣', 'Topology', 'Indole ring — closes the reading'),
-    'C': ('≻', 'Recognition', 'Disulfide bond — reversible crosslink'),
-    'Y': ('≺', 'Parity', 'Phosphorylation switch'),
-    'F': ('⋈', 'Fidelity', 'Hydrophobic ceiling'),
-    'I': ('⊤', 'Kinetics', 'β-branching — slow folding'),
-    'N': ('∈', 'Granularity', 'N-glycosylation site — the branch point'),
-    'Q': ('∋', 'Grammar', 'Transglutaminase donor — the join'),
-    'H': ('⊙', 'Criticality', 'pH-gated catalysis'),
-    'D': ('⊥', 'Chirality', 'Substrate selectivity'),
-    'K': ('⊞', 'Stoichiometry', 'Acetylation site'),
-    'E': ('◻', 'Protection', 'Closure / C-terminal marker'),
+    _ONE[aa]: (_AA_MARK[aa], _AA_AXIS[aa], _NOTES[_ONE[aa]])
+    for aa in _AA_MARK
 }
 
 # Remaining 8 AAs have zero primitive activation

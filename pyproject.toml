@@ -49,6 +49,7 @@ rebis = "rebis.cli:main"
 # Package discovery (ported from the removed setup.py). Archived experiment
 # dirs (unified_demo, plasma, natural_products) are intentionally excluded.
 # Ars_Therapeutica stays: pipeline/therapy_to_pdb.py imports ars_therapeutica.
+"rebis.vox" = "rebis.vox:main"
 [tool.setuptools.packages.find]
 include = [
     "rebis*",

@@ -196,19 +196,11 @@ PROMOTED_AAS: List[str] = [
 
 # Each promoted AA activates exactly one IG primitive.
 # This is the bijection: 12 promoted AAs ↔ 12 IG primitives.
+# Read from V⊙x, which generates it from the Lean; not restated here.
+from shared.vox_bridge import AA_MARK as _AA_MARK, AA_AXIS as _AA_AXIS
+
 IG_PRIMITIVE_OF_AA: Dict[str, str] = {
-    "Met": "⊢ (Dimensionality)",
-    "Trp": "⊣ (Topology)",
-    "Cys": "≻ (Recognition)",
-    "Tyr": "≺ (Parity)",
-    "Phe": "⋈ (Fidelity)",
-    "Ile": "⊤ (Kinetics)",
-    "Asn": "∈ (Granularity)",
-    "Gln": "∋ (Grammar)",
-    "His": "⊙ (Criticality)",
-    "Asp": "⊥ (Chirality)",
-    "Lys": "⊞ (Stoichiometry)",
-    "Glu": "◻ (Protection)",
+    aa: f"{_AA_MARK[aa]} ({_AA_AXIS[aa]})" for aa in _AA_MARK
 }
 
 AA_OF_IG_PRIMITIVE: Dict[str, str] = {
