@@ -264,8 +264,11 @@ def plasma_to_organism_promotions(plasma_idx=0):
         to = CLINK_ORGANISM[p]
         if frm != to:
             # Ordinal difference (approximate delta)
-            ord_from = ORDINALS.get(frm, 0)
-            ord_to = ORDINALS.get(to, 0)
+            # ORDINALS maps a mark to its own value table, so the primitive
+            # indexes it first and the value second.
+            table = ORDINALS.get(p, {})
+            ord_from = table.get(frm, 0)
+            ord_to = table.get(to, 0)
             delta = abs(ord_to - ord_from) / max(abs(ord_to), abs(ord_from), 1)
             promotions.append({
                 "primitive": p,

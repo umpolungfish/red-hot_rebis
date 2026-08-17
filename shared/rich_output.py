@@ -77,6 +77,8 @@ def separator(width=66, char="─"):
 def target_line(name, smi="", indent=0):
     """Print a target molecule line with its SMILES."""
     pad = "  " * indent
+    if rest:
+        text = " ".join([str(text)] + [str(r) for r in rest])
     if STYLED:
         txt = Text()
         txt.append(f"{pad}", style="")
@@ -92,6 +94,8 @@ def target_line(name, smi="", indent=0):
 def precursor_line(label, name, fg_hint="", smi="", indent=0):
     """Print a precursor line."""
     pad = "  " * indent
+    if rest:
+        text = " ".join([str(text)] + [str(r) for r in rest])
     if STYLED:
         txt = Text()
         txt.append(f"{pad}{label}: ", style="")
@@ -107,17 +111,21 @@ def precursor_line(label, name, fg_hint="", smi="", indent=0):
         fg_str = f"  [{fg_hint}]" if fg_hint else ""
         info_line(f"{pad}{label}: {name}{fg_str}  {smi_str}")
 
-def bond_line(text, indent=0):
+def bond_line(text, *rest, indent=0, end="\n"):
     """Print a bond description line (disconnection cut)."""
     pad = "  " * indent
+    if rest:
+        text = " ".join([str(text)] + [str(r) for r in rest])
     if STYLED:
-        _console.print(f"{pad}{text}", style="bold magenta")
+        _console.print(f"{pad}{text}", style="bold magenta", end=end)
     else:
-        info_line(f"{pad}{text}")
+        print(f"{pad}{text}", end=end)
 
 def numeric_line(label, value, unit="", indent=0):
     """Print a label with a highlighted numeric value."""
     pad = "  " * indent
+    if rest:
+        text = " ".join([str(text)] + [str(r) for r in rest])
     if STYLED:
         txt = Text()
         txt.append(f"{pad}{label}: ", style="")
@@ -128,50 +136,62 @@ def numeric_line(label, value, unit="", indent=0):
     else:
         info_line(f"{pad}{label}: {value}" + (f" {unit}" if unit else ""))
 
-def info_line(text, indent=0):
+def info_line(text, *rest, indent=0, end="\n"):
     """Print a metadata/info line in dim style."""
     pad = "  " * indent
+    if rest:
+        text = " ".join([str(text)] + [str(r) for r in rest])
     if STYLED:
-        _console.print(f"{pad}{text}", style="dim white")
+        _console.print(f"{pad}{text}", style="dim white", end=end)
     else:
-        info_line(f"{pad}{text}")
+        print(f"{pad}{text}", end=end)
 
-def fg_line(text, indent=0):
+def fg_line(text, *rest, indent=0, end="\n"):
     """Print a functional group line in blue."""
     pad = "  " * indent
+    if rest:
+        text = " ".join([str(text)] + [str(r) for r in rest])
     if STYLED:
-        _console.print(f"{pad}{text}", style="bold blue")
+        _console.print(f"{pad}{text}", style="bold blue", end=end)
     else:
-        info_line(f"{pad}{text}")
+        print(f"{pad}{text}", end=end)
 
-def success_line(text, indent=0):
+def success_line(text, *rest, indent=0, end="\n"):
     """Print a success/confirmation line in bold green."""
     pad = "  " * indent
+    if rest:
+        text = " ".join([str(text)] + [str(r) for r in rest])
     if STYLED:
-        _console.print(f"{pad}{text}", style="bold green")
+        _console.print(f"{pad}{text}", style="bold green", end=end)
     else:
-        info_line(f"{pad}{text}")
+        print(f"{pad}{text}", end=end)
 
 
 
-def warning_line(text, indent=0):
+def warning_line(text, *rest, indent=0, end="\n"):
     """Print a warning line in bold yellow."""
     pad = "  " * indent
+    if rest:
+        text = " ".join([str(text)] + [str(r) for r in rest])
     if STYLED:
-        _console.print(f"{pad}{text}", style="bold yellow")
+        _console.print(f"{pad}{text}", style="bold yellow", end=end)
     else:
-        info_line(f"{pad}{text}")
-def error_line(text, indent=0):
+        print(f"{pad}{text}", end=end)
+def error_line(text, *rest, indent=0, end="\n"):
     """Print an error/warning line in bold red."""
     pad = "  " * indent
+    if rest:
+        text = " ".join([str(text)] + [str(r) for r in rest])
     if STYLED:
-        _console.print(f"{pad}{text}", style="bold red")
+        _console.print(f"{pad}{text}", style="bold red", end=end)
     else:
-        info_line(f"{pad}{text}")
+        print(f"{pad}{text}", end=end)
 
 def analog_line(name, dist, smi="", indent=0):
     """Print a structural analog line."""
     pad = "  " * indent
+    if rest:
+        text = " ".join([str(text)] + [str(r) for r in rest])
     if STYLED:
         txt = Text()
         txt.append(f"{pad}", style="")
@@ -188,6 +208,8 @@ def analog_line(name, dist, smi="", indent=0):
 def path_step(step_num, label="", indent=0):
     """Print a path step header."""
     pad = "  " * indent
+    if rest:
+        text = " ".join([str(text)] + [str(r) for r in rest])
     if STYLED:
         _console.print(f"{pad}[bold cyan]Step {step_num}[/bold cyan]{' ' + label if label else ''}")
     else:
@@ -196,6 +218,8 @@ def path_step(step_num, label="", indent=0):
 def step_detail(key, value, indent=1):
     """Print a key: value line within a step."""
     pad = "  " * indent
+    if rest:
+        text = " ".join([str(text)] + [str(r) for r in rest])
     if STYLED:
         _console.print(f"{pad}[dim]{key}:[/dim] [white]{value}[/white]")
     else:
@@ -218,6 +242,8 @@ def demo_title():
 def conflict_line(prim, tgt_val, src_val, indent=1):
     """Print a structural conflict report line."""
     pad = "  " * indent
+    if rest:
+        text = " ".join([str(text)] + [str(r) for r in rest])
     if STYLED:
         _console.print(
             f"{pad}[bold red]✗[/bold red] [bold]{prim}[/bold]: target=[yellow]{tgt_val}[/yellow] vs start=[yellow]{src_val}[/yellow]"
@@ -257,6 +283,8 @@ def panel(title, content, style="bright_blue"):
 def step_product_line(product, smi="", indent=0):
     """Print a step product with green highlight."""
     pad = "  " * indent
+    if rest:
+        text = " ".join([str(text)] + [str(r) for r in rest])
     if STYLED:
         txt = Text()
         txt.append(f"{pad}Product:   ", style="")
