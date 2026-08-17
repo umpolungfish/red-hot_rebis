@@ -5,7 +5,10 @@ from shared.rich_output import *
 def bootstrap_minimal():
     info_line("=== Ob3ect v0.10 Bare-Metal — Raw Binary Boot (WSL2) ===")
     
-    with open("self.o", encoding='utf-8') as f:
+    # The anchor is taken over this module's own source, which is what makes the
+    # imscription self-referential; it was reading a file named "self.o" that
+    # never existed.
+    with open(__file__, encoding='utf-8') as f:
         source = f.read()
     info_line("Imscription anchor:", hashlib.sha256(source.encode()).hexdigest()[:24])
 

@@ -46,7 +46,7 @@ def _tensor_type(t1, t2):
     for p in PNAMES:
         o1, o2 = _glyph_ord(p, t1.get(p,"?")), _glyph_ord(p, t2.get(p,"?"))
         r[p] = p in ("P","F") and min(o1, o2) or max(o1, o2)
-        from compiler import ord_to_glyph
+        from ch3mpiler.compiler import ord_to_glyph
     # Will be patched at import time
     return r
 
@@ -469,8 +469,8 @@ def build_retro_tree(target_name, depth=3, visited=None):
         return {"target": target_name, "cuts": [], "terminal": True, "loop": True}
     visited.add(target_name)
 
-    from compiler import Ch3mpiler, FG, BOND_TYPES, PNAMES
-    from compiler import find_fgs, compose_molecule_type, fmt_tup, find_disconnections, get_molecule_type
+    from ch3mpiler.compiler import Ch3mpiler, FG, BOND_TYPES, PNAMES
+    from ch3mpiler.compiler import find_fgs, compose_molecule_type, fmt_tup, find_disconnections, get_molecule_type
 
     ch = Ch3mpiler()
     mol_type, tsrc = get_molecule_type(target_name, ch.catalog)
@@ -490,7 +490,7 @@ def build_retro_tree(target_name, depth=3, visited=None):
         fg2_t = FG.get(entry["fg2"], {})
         bond_t = BOND_TYPES.get(entry["bond_type"], {})
         if fg1_t and fg2_t and bond_t:
-            from compiler import bond_product_type, tup_dist
+            from ch3mpiler.compiler import bond_product_type, tup_dist
             product = bond_product_type(fg1_t, fg2_t, bond_t)
             pd, _ = tup_dist(product, mol_type) if mol_type else (0, [])
             bond_desc = bond_t.get("desc", entry["bond_type"])
@@ -630,7 +630,7 @@ def install_fg_extensions():
     Called at import time to patch missing FGs into the compiler.
     """
     try:
-        from compiler import FG
+        from ch3mpiler.compiler import FG
         for fg_name, fg_tuple in ENRICHED_FG.items():
             if fg_name not in FG:
                 FG[fg_name] = fg_tuple
@@ -642,7 +642,7 @@ def install_fg_extensions():
 def install_molecule_fg_extensions():
     """Install lattice intermediate compounds into MOLECULE_FG_DB."""
     try:
-        from compiler import MOLECULE_FG_DB
+        from ch3mpiler.compiler import MOLECULE_FG_DB
         # Map intermediate names to their FG compositions
         # These are the intermediates that appear in the lattice but may not
         # be in MOLECULE_FG_DB
@@ -694,14 +694,14 @@ def patch_ch3mpiler(Ch3mpiler_cls=None):
     to use the enriched PRECURSOR_LATTICE."""
     # Use provided class or import from compiler module
     if Ch3mpiler_cls is None:
-        from compiler import Ch3mpiler, PNAMES, FG, BOND_TYPES, fmt_tup
-        from compiler import find_fgs, get_molecule_type, find_disconnections
-        from compiler import g2v, glyph_ord, WEIGHTS, math, tup_dist
+        from ch3mpiler.compiler import Ch3mpiler, PNAMES, FG, BOND_TYPES, fmt_tup
+        from ch3mpiler.compiler import find_fgs, get_molecule_type, find_disconnections
+        from ch3mpiler.compiler import g2v, glyph_ord, WEIGHTS, math, tup_dist
     else:
         Ch3mpiler = Ch3mpiler_cls
-        from compiler import PNAMES, FG, BOND_TYPES, fmt_tup
-        from compiler import find_fgs, get_molecule_type, find_disconnections
-        from compiler import g2v, glyph_ord, WEIGHTS, math, tup_dist
+        from ch3mpiler.compiler import PNAMES, FG, BOND_TYPES, fmt_tup
+        from ch3mpiler.compiler import find_fgs, get_molecule_type, find_disconnections
+        from ch3mpiler.compiler import g2v, glyph_ord, WEIGHTS, math, tup_dist
     # Install FG extensions and molecule DB extensions
     install_fg_extensions()
     install_molecule_fg_extensions()

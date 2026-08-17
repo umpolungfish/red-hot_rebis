@@ -62,6 +62,15 @@ new_parse = '''        try:
             self._save_cache()
             return entry'''
 
+# This patch has been applied. Running it again finds its own result in place
+# rather than the text it was written to replace, which is success and not
+# failure, so it says so and stops.
+if src.count(old_url) == 0 and src.count(old_parse) == 0:
+    if "CanonicalSMILES" in src:
+        info_line("[already applied] compiler.py fetches CanonicalSMILES; nothing to do.")
+        raise SystemExit(0)
+    raise SystemExit("compiler.py matches neither the original nor the patched form.")
+
 assert src.count(old_url) == 1 and src.count(old_parse) == 1, \
     f"Expected exactly 1 occurrence each in compiler.py. Found: url={src.count(old_url)}, parse={src.count(old_parse)}"
 

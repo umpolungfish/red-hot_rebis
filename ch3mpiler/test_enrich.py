@@ -3,8 +3,8 @@
 import sys
 sys.path.insert(0, '/home/mrnob0dy666/imsgct/red-hot_rebis')
 sys.path.insert(0, '.')
-import compiler
-from compiler import Ch3mpiler, FG
+import ch3mpiler.compiler as compiler
+from ch3mpiler.compiler import Ch3mpiler, FG
 from shared.rich_output import *
 
 

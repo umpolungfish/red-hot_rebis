@@ -802,7 +802,7 @@ def is_simple_material(name, compiler=None):
         try:
             fgs = compiler.find_fgs_direct(name) if hasattr(compiler, 'find_fgs_direct') else []
             if not fgs:
-                from compiler import find_fgs
+                from ch3mpiler.compiler import find_fgs
                 fgs = find_fgs(name)
             # Single FG = too simple for further disconnection
             if len(fgs) <= 1:
@@ -810,10 +810,10 @@ def is_simple_material(name, compiler=None):
             # Try to find disconnections; if none, it's terminal
             mol_type, source = compiler.get_molecule_type_direct(name) if hasattr(compiler, 'get_molecule_type_direct') else (None, None)
             if mol_type is None:
-                from compiler import get_molecule_type
+                from ch3mpiler.compiler import get_molecule_type
                 mol_type, source = get_molecule_type(name, compiler.catalog)
             if mol_type:
-                from compiler import find_disconnections
+                from ch3mpiler.compiler import find_disconnections
                 cuts = find_disconnections(fgs, mol_type, max_results=3)
                 if not cuts:
                     return True  # No disconnections → terminal
@@ -922,7 +922,7 @@ def select_reactants(fg1_name, fg2_name, bond_name):
 
     # Rank by structural distance to the FG type
     # (Use FG types from the compiler module)
-    from compiler import FG as FG_TYPES
+    from ch3mpiler.compiler import FG as FG_TYPES
     fg1_t = FG_TYPES.get(fg1_name, {})
     fg2_t = FG_TYPES.get(fg2_name, {})
 
@@ -1142,7 +1142,7 @@ class ReactionDeriver:
         if self.fg_types is not None:
             return
         try:
-            from compiler import FG as FG_TYPES
+            from ch3mpiler.compiler import FG as FG_TYPES
             self.fg_types = FG_TYPES
         except ImportError:
             # Fallback: load ch3mpiler directly
@@ -1176,7 +1176,7 @@ class ReactionDeriver:
 
         # Bond type from compiler
         try:
-            from compiler import BOND_TYPES
+            from ch3mpiler.compiler import BOND_TYPES
         except ImportError:
             sys.path.insert(0, str(BASE.parent.parent / "imscribing_grammar"))
             from ch3mpiler import BOND_TYPES
@@ -1366,7 +1366,7 @@ def main():
     # CAS-based
     if args.cas:
         sys.path.insert(0, str(BASE))
-        from compiler import Ch3mpiler
+        from ch3mpiler.compiler import Ch3mpiler
         ch = Ch3mpiler()
         result = ch.resolve_and_analyze(args.cas)
         name = result.get("cas_info", {}).get("name", args.cas)
@@ -1391,7 +1391,7 @@ def main():
     # Target molecule
     if args.target:
         sys.path.insert(0, str(BASE))
-        from compiler import Ch3mpiler
+        from ch3mpiler.compiler import Ch3mpiler
         ch = Ch3mpiler()
         result = ch.analyze(args.target)
         info_line(f"Target: {result['target']}")
