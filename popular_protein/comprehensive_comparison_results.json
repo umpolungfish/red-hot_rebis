@@ -9,10 +9,10 @@
     "crystal_residues": 129,
     "aligned_residues": 129,
     "sequence_identity_pct": 100.0,
-    "kabsch_rmsd": 18.8,
-    "mean_per_res": 17.17,
-    "median_per_res": 17.42,
-    "max_per_res": 33.06,
+    "kabsch_rmsd": 33.89,
+    "mean_per_res": 31.43,
+    "median_per_res": 29.29,
+    "max_per_res": 53.76,
     "platonic_rama": {
       "alpha": 97,
       "beta": 30,
@@ -29,10 +29,10 @@
       "other": 55,
       "none": 2
     },
-    "mean_phi_diff": 124.2,
-    "mean_psi_diff": 84.4,
-    "median_phi_diff": 130.8,
-    "median_psi_diff": 87.0
+    "mean_phi_diff": 123.5,
+    "mean_psi_diff": 84.0,
+    "median_phi_diff": 133.2,
+    "median_psi_diff": 85.8
   },
   "gfp": {
     "name": "gfp",
@@ -44,10 +44,10 @@
     "crystal_residues": 225,
     "aligned_residues": 165,
     "sequence_identity_pct": 69.3,
-    "kabsch_rmsd": 48.41,
-    "mean_per_res": 45.43,
-    "median_per_res": 45.01,
-    "max_per_res": 130.63,
+    "kabsch_rmsd": 44.94,
+    "mean_per_res": 41.5,
+    "median_per_res": 36.87,
+    "max_per_res": 75.95,
     "platonic_rama": {
       "alpha": 192,
       "beta": 44,
@@ -64,10 +64,10 @@
       "other": 157,
       "none": 2
     },
-    "mean_phi_diff": 140.9,
-    "mean_psi_diff": 85.3,
-    "median_phi_diff": 151.2,
-    "median_psi_diff": 86.6
+    "mean_phi_diff": 141.3,
+    "mean_psi_diff": 84.6,
+    "median_phi_diff": 152.1,
+    "median_psi_diff": 84.7
   },
   "insulin_a_chain": {
     "name": "insulin_a_chain",
@@ -79,10 +79,10 @@
     "crystal_residues": 21,
     "aligned_residues": 21,
     "sequence_identity_pct": 100.0,
-    "kabsch_rmsd": 5.71,
-    "mean_per_res": 5.26,
-    "median_per_res": 4.93,
-    "max_per_res": 10.8,
+    "kabsch_rmsd": 6.29,
+    "mean_per_res": 5.79,
+    "median_per_res": 5.01,
+    "max_per_res": 12.14,
     "platonic_rama": {
       "alpha": 14,
       "beta": 5,
@@ -99,10 +99,10 @@
       "other": 6,
       "none": 2
     },
-    "mean_phi_diff": 134.4,
-    "mean_psi_diff": 82.1,
-    "median_phi_diff": 133.4,
-    "median_psi_diff": 85.9
+    "mean_phi_diff": 132.2,
+    "mean_psi_diff": 84.5,
+    "median_phi_diff": 126.4,
+    "median_psi_diff": 84.8
   },
   "insulin_b_chain": {
     "name": "insulin_b_chain",
@@ -114,10 +114,10 @@
     "crystal_residues": 30,
     "aligned_residues": 29,
     "sequence_identity_pct": 96.7,
-    "kabsch_rmsd": 7.32,
-    "mean_per_res": 6.48,
-    "median_per_res": 6.01,
-    "max_per_res": 17.59,
+    "kabsch_rmsd": 7.65,
+    "mean_per_res": 6.84,
+    "median_per_res": 6.61,
+    "max_per_res": 17.45,
     "platonic_rama": {
       "alpha": 17,
       "beta": 11,
@@ -134,10 +134,10 @@
       "other": 9,
       "none": 2
     },
-    "mean_phi_diff": 126.1,
-    "mean_psi_diff": 87.3,
-    "median_phi_diff": 133.3,
-    "median_psi_diff": 88.3
+    "mean_phi_diff": 126.4,
+    "mean_psi_diff": 85.3,
+    "median_phi_diff": 134.7,
+    "median_psi_diff": 85.9
   },
   "acth": {
     "name": "acth",

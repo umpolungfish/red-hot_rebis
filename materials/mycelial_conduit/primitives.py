@@ -192,8 +192,12 @@ METRIC_TENSOR: np.ndarray | None = None
 _CATALOG_SEARCH_PATHS = [
     # Relative to this file's directory
     os.path.join(os.path.dirname(__file__), "IG_catalog.json"),
+    # The repository's own copy, three directories up from here
+    os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(
+        os.path.abspath(__file__)))), "shared", "IG_catalog.json"),
     # Relative to cwd (common when running from repo root)
     "IG_catalog.json",
+    os.path.join("shared", "IG_catalog.json"),
 ]
 
 

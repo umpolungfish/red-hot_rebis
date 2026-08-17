@@ -131239,7 +131239,6 @@
   {
     "name": "erdos3_behrend_barrier",
     "description": "click fusion of erdos_conjecture_ap ⋈ behrend_construction on D↔W (Δ=1.00); the μ (FFUSE) product, ring saturated on the D↔W pair.",
-    "provenance": "derived:click",
     "⊢": "𐑨",
     "⊣": "𐑡",
     "≻": "𐑽",
@@ -131528,7 +131527,6 @@
   {
     "name": "PK",
     "description": "product of the phrase-catalyzed turnover of SK (oxidative); one winding quantum moved, the catalyst regenerated (μ∘δ=id, fixed point of the loop).",
-    "provenance": "derived:cycle",
     "⊢": "𐑨",
     "⊣": "𐑡",
     "≻": "𐑑",
@@ -131684,6 +131682,22 @@
     "⊙": "𐑢",
     "⊥": "𐑫",
     "⊞": "𐑳",
+    "◻": "𐑭"
+  },
+  {
+    "name": "life_compiled_genetic_code",
+    "description": "The genetic code as a 12-operation structure grammar where amino acids correspond to operations on reading frames. Four outcomes (closes, hangs open, ill-typed, null) map to Belnap four-valued logic (T, N, B, F). Core theorem: outcome determined by d = (#divisions - #rejoinings) and substantiality of regions.",
+    "⊢": "𐑦",
+    "⊣": "𐑸",
+    "≻": "𐑩",
+    "≺": "𐑗",
+    "⋈": "𐑱",
+    "⊤": "𐑧",
+    "∈": "𐑔",
+    "∋": "𐑠",
+    "⊙": "𐑢",
+    "⊥": "𐑖",
+    "⊞": "𐑕",
     "◻": "𐑭"
   }
 ]
