@@ -1,18 +1,15 @@
-Every module in the repository runs
+Four commands named classes that do not exist
 
-The last failures were mostly collateral: a patch script from an older generation
-inserts its import at the first line of a parenthesised import rather than after its
-closing bracket, which is a syntax error, and it had done it twice. Those older
-generations refuse import now, as the current one already documents the trap in a
-comment.
+The forge command asked for a class named after the forge; the forge is driven by
+the Eagle Cycle and its entry point is the simulation that runs it. The Casimir
+command asked for a designer; the cavity is built from its parameters, and the target
+gap sets the plate separation. Both run.
 
-The rest were plain: a module using numpy without importing it, two calling the
-printing helpers without importing them, and several that only failed because the
-sweep before them had truncated the dataset generators.
+The telomere analysis built a cell without the identifier its type requires, then
+without any telomeres in it, so the signalling step reduced over an empty array and
+reported it as an error inside otherwise complete output. It now fills the cell the
+way the simulation does, one cell carrying its full complement at baseline length,
+and the ATM cascade reports activity, phosphorylation and the p53 arm.
 
-The imscription agent reached for an outside account and could not run without one.
-Its default lane is this project's own inference now, through the ask binary, with no
-key and nothing external; the other providers remain available by name.
-
-The tool demo asked the catalog for entries that are not in it and reported the miss
-as its output. It names entries that exist.
+The facades exported the names that do not exist alongside the ones that do; they
+export what is there.

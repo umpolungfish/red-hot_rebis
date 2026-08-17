@@ -47,6 +47,7 @@ _lazy("ATMSignaling", "biology.ouroboric_telomere_expanded")
 _lazy("EpigeneticDerepressor", "biology.ouroboric_telomere_expanded")
 _lazy("hTERTExpression", "biology.ouroboric_telomere_expanded")
 _lazy("TelomeraseExtension", "biology.ouroboric_telomere_expanded")
+_lazy("EndogenousParams", "biology.ouroboric_telomere_expanded")
 _lazy("GQuadruplexTerminator", "biology.ouroboric_telomere_expanded")
 
 
@@ -211,7 +212,12 @@ def _cmd_telomeres(args):
         # Initialize a baseline cell state
         telomere = TelomereState()
         epi = EpigeneticState()
-        cell = CellState()
+        # CellState carries an identifier and starts with no telomeres, so the
+        # analysis fills it the way the simulation does: one cell carrying its
+        # full complement, each at the baseline length.
+        cell = CellState(cell_id=0)
+        for _ in range(getattr(params, "n_telomeres", 92)):
+            cell.telomeres.append(TelomereState())
 
         # Shelterin sensor
         shelterin = ShelterinSensor(params)
@@ -284,7 +290,8 @@ def _cmd_telomeres(args):
             output["telomerase_extension"] = {"error": str(e)}
 
         # G-Quadruplex terminator
-        gquad = GQuadruplexTerminator()
+        # The terminator reads the endogenous parameter set.
+        gquad = GQuadruplexTerminator(EndogenousParams())
         gquad_methods = [m for m in dir(gquad) if not m.startswith('_')]
         output["g_quadruplex_terminator"] = {
             "available_methods": gquad_methods,
