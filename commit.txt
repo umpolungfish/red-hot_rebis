@@ -1,4 +1,5 @@
-The manuscript moved to ig-docs, where documents live
+The sibling compiler carried the retired letters too
 
-Life, Compiled belongs in ig-docs with every other document; the manuscripts
-directory under this repo was mine to make and is removed.
+Same defect as the grammar copy: the field map named Ð Þ Ř Φ ƒ Ç Γ ɢ Ħ Σ Ω while the
+ordinal table is keyed by the twelve marks, so every type resolved to unknowns except
+Criticality, whose mark never changed. The map now names the marks.
