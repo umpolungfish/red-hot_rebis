@@ -1,21 +1,17 @@
-The site encoder had the swap too, in the same file twice
+The Dimensionality family had lost its names, and two modules printed with helpers they never imported
 
-Fourth copy of the pre-revision assignment: histidine on Granularity, asparagine on
-Grammar, glutamine on Criticality. Canonical now. It changes what the encoder
-returns, and the histidine-rich site of carbonic anhydrase and the cysteine-histidine
-dyad of the coronavirus protease now land on Criticality where before they did not,
-which is what a catalytic histidine ought to activate.
+An earlier pass stripped the underscored names from the Dimensionality family alone
+and left the other eleven as they were, so the family index, which splits a name on
+its separator, read the values themselves as families. Twelve families became fifteen
+of the wrong kind and every closure distance died on a missing key. The names are
+back in the shape the other eleven use, every family prefix now names the mark it
+addresses, and the generators point at the names rather than at bare values. Twelve
+families, cardinalities four five four five three five three four five four three
+four.
 
-The same file defines that map twice, forty lines and three hundred apart, and both
-copies were wrong. They are corrected together and the duplication is worth removing
-when the file is next opened for its own sake.
+Two modules called the printing helpers while their only import of them sat inside a
+template string for generated code, so the generated stubs could print and the
+modules themselves could not.
 
-The hundred-protein ligand sweep ran on import rather than on invocation, and wrote
-its results into ig-docs merely because something imported the module. It has its
-guard now.
-
-Its zero counts were not a scraping failure: it counts only ligands it has not
-already emitted, and for most proteins every candidate had been produced for an
-earlier one. Different active sites encode to different types and still return
-byte-identical ligand sets, so the collapse is downstream of the encoding. That is a
-finding rather than a defect I should quietly patch.
+Sibling modules inside the kernel package imported each other by bare name, which
+works from inside the directory and nowhere else. Package-qualified now.

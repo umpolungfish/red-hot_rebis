@@ -47,7 +47,7 @@ _p4rky_dir = os.path.dirname(os.path.abspath(__file__))
 if _p4rky_dir not in sys.path:
     sys.path.insert(0, _p4rky_dir)
 
-from belnap import Belnap, meet, join, band, bor, bnot, designated, to_wh2, from_wh2
+from rhr_p4rky.belnap import Belnap, meet, join, band, bor, bnot, designated, to_wh2, from_wh2
 
 # ═══════════════════════════════════════════════════════════════════════════
 # §1. THE MULTILATTICE — (Belnap)ⁿ

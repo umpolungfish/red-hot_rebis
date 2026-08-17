@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE CDXML SYSTEM "https://static.chemistry.revvitycloud.com/cdxml/CDXML.dtd">
+<CDXML
+ CreationProgram="ch3mpiler Lando⊗⊙perator v2"
+ Name="reaction_scheme.cdxml"
+ BoundingBox="691.6 700.0 5120.4 1260.0"
+ WindowPosition="0 0"
+ WindowSize="-2147483648 -2147483648"
+ WindowIsZoomed="yes"
+ FractionalWidths="yes"
+ InterpretChemically="yes"
+ ShowAtomQuery="yes"
+ ShowAtomStereo="no"
+ ShowAtomEnhancedStereo="yes"
+ ShowAtomNumber="no"
+ ShowResidueID="no"
+ ShowBondQuery="yes"
+ ShowBondRxn="yes"
+ ShowBondStereo="no"
+ ShowNonTerminalCarbonLabels="no"
+ HideImplicitHydrogens="no"
+ Magnification="666"
+ LabelFont="3"
+ LabelSize="10"
+ LabelFace="96"
+ CaptionFont="3"
+ CaptionSize="10"
+ HashSpacing="2.50"
+ MarginWidth="1.60"
+ LineWidth="0.60"
+ BoldWidth="2"
+ BondLength="14.40"
+ BondSpacing="18"
+ ChainAngle="120"
+ LabelJustification="Auto"
+ CaptionJustification="Left"
+ PrintMargins="36 36 36 36"
+>
+<colortable>
+<color r="0" g="0" b="0"/>
+<color r="1" g="0" b="0"/>
+<color r="1" g="1" b="0"/>
+<color r="0" g="0" b="1"/>
+<color r="0" g="1" b="0"/>
+</colortable>
+<fonttable>
+ <font id="3" charset="iso-8859-1" name="Arial"/>
+</fonttable>
+  <page id="1" BoundingBox="0 0 -32768 2560" bgcolor="1" HeaderPosition="36" FooterPosition="36" PrintTrimMarks="yes">
+    <t id="100001" p="500.0 2060.0" BoundingBox="496.0 2056.0 619.0 2064.0" Justification="Left" Font="3" Size="20" Bold="1">Aspirin Synthesis</t>
+    <t id="100002" p="500.0 1660.0" BoundingBox="496.0 1656.0 626.0 1664.0" Justification="Left" Font="3" Size="14" Bold="1">Step 1: ester_link</t>
+    <t id="100003" p="500.0 1460.0" BoundingBox="496.0 1456.0 668.0 1464.0" Justification="Left" Font="3" Size="11">Acetylation (Ac2O/H3PO4)</t>
+    <t id="100004" p="500.0 1260.0" BoundingBox="496.0 1256.0 682.0 1264.0" Justification="Left" Font="3" Size="11">carboxylic_acid + carbonyl</t>
+    <fragment id="1" BoundingBox="591.6 692.6 1004.0 1052.8" Z="2">
+      <n id="1001" p="719.0 801.6" Z="3" AS="N">
+      </n>
+      <n id="1002" p="691.6 855.0" Z="4" AS="N">
+      </n>
+      <n id="1003" p="724.2 905.4" Z="5" AS="N">
+      </n>
+      <n id="1004" p="784.1 902.4" Z="6" AS="N">
+      </n>
+      <n id="1005" p="811.5 849.0" Z="7" AS="N">
+      </n>
+      <n id="1006" p="778.9 798.6" Z="8" AS="N">
+      </n>
+      <n id="1007" p="871.4 846.0" Z="9" AS="N">
+      </n>
+      <n id="1008" p="898.8 792.6" Z="10" AS="N" Element="8">
+        <t p="894.8 796.6" BoundingBox="890.8 792.6 906.8 800.6" LabelJustification="Left">
+          <s font="3" size="10" color="0" face="96">O</s>
+        </t>
+      </n>
+      <n id="1009" p="904.0 896.4" Z="11" AS="N" Element="8" NumHydrogens="1">
+        <t p="900.0 900.4" BoundingBox="896.0 896.4 912.0 904.4" LabelJustification="Left">
+          <s font="3" size="10" color="0" face="96">OH</s>
+        </t>
+      </n>
+      <n id="1010" p="816.7 952.8" Z="12" AS="N" Element="8" NumHydrogens="1">
+        <t p="812.7 956.8" BoundingBox="808.7 952.8 824.7 960.8" LabelJustification="Left">
+          <s font="3" size="10" color="0" face="96">OH</s>
+        </t>
+      </n>
+      <b id="1101" Z="101" B="1001" E="1002" BS="N" Order="2"/>
+      <b id="1102" Z="102" B="1002" E="1003" BS="N"/>
+      <b id="1103" Z="103" B="1003" E="1004" BS="N" Order="2"/>
+      <b id="1104" Z="104" B="1004" E="1005" BS="N"/>
+      <b id="1105" Z="105" B="1005" E="1006" BS="N" Order="2"/>
+      <b id="1106" Z="106" B="1005" E="1007" BS="N"/>
+      <b id="1107" Z="107" B="1007" E="1008" BS="N" Order="2"/>
+      <b id="1108" Z="108" B="1007" E="1009" BS="N"/>
+      <b id="1109" Z="109" B="1004" E="1010" BS="N"/>
+      <b id="1110" Z="110" B="1006" E="1001" BS="N"/>
+    </fragment>
+    <t id="100005" p="800.0 460.0" BoundingBox="796.0 456.0 905.0 464.0" Justification="Left" Font="3" Size="10">carboxylic_acid</t>
+    <arrow id="1" BoundingBox="1204.0 610.0 4547.5 710.0" HeadSize="432" LineWidth="4" ArrowheadHead="Full" ArrowheadType="Solid" p="2875.7 660.0" End="4547.5 660.0" Start="1204.0 660.0"/>
+    <fragment id="2" BoundingBox="4747.5 653.1 5220.4 1069.3" Z="13">
+      <n id="2001" p="4847.5 808.5" Z="14" AS="N">
+      </n>
+      <n id="2002" p="4892.1 848.7" Z="15" AS="N">
+      </n>
+      <n id="2003" p="4879.5 907.4" Z="16" AS="N" Element="8">
+        <t p="4875.5 911.4" BoundingBox="4871.5 907.4 4887.5 915.4" LabelJustification="Left">
+          <s font="3" size="10" color="0" face="96">O</s>
+        </t>
+      </n>
+      <n id="2004" p="4949.1 830.2" Z="17" AS="N" Element="8">
+        <t p="4945.1 834.2" BoundingBox="4941.1 830.2 4957.1 838.2" LabelJustification="Left">
+          <s font="3" size="10" color="0" face="96">O</s>
+        </t>
+      </n>
+      <n id="2005" p="4993.7 870.4" Z="18" AS="N">
+      </n>
+      <n id="2006" p="4981.1 929.1" Z="19" AS="N">
+      </n>
+      <n id="2007" p="5025.7 969.3" Z="20" AS="N">
+      </n>
+      <n id="2008" p="5082.8 950.8" Z="21" AS="N">
+      </n>
+      <n id="2009" p="5095.3 892.2" Z="22" AS="N">
+      </n>
+      <n id="2010" p="5050.8 852.0" Z="23" AS="N">
+      </n>
+      <n id="2011" p="5063.3 793.3" Z="24" AS="N">
+      </n>
+      <n id="2012" p="5120.4 774.8" Z="25" AS="N" Element="8">
+        <t p="5116.4 778.8" BoundingBox="5112.4 774.8 5128.4 782.8" LabelJustification="Left">
+          <s font="3" size="10" color="0" face="96">O</s>
+        </t>
+      </n>
+      <n id="2013" p="5018.8 753.1" Z="26" AS="N" Element="8" NumHydrogens="1">
+        <t p="5014.8 757.1" BoundingBox="5010.8 753.1 5026.8 761.1" LabelJustification="Left">
+          <s font="3" size="10" color="0" face="96">OH</s>
+        </t>
+      </n>
+      <b id="2101" Z="111" B="2001" E="2002" BS="N"/>
+      <b id="2102" Z="112" B="2002" E="2003" BS="N" Order="2"/>
+      <b id="2103" Z="113" B="2002" E="2004" BS="N"/>
+      <b id="2104" Z="114" B="2004" E="2005" BS="N"/>
+      <b id="2105" Z="115" B="2005" E="2006" BS="N" Order="2"/>
+      <b id="2106" Z="116" B="2006" E="2007" BS="N"/>
+      <b id="2107" Z="117" B="2007" E="2008" BS="N" Order="2"/>
+      <b id="2108" Z="118" B="2008" E="2009" BS="N"/>
+      <b id="2109" Z="119" B="2009" E="2010" BS="N" Order="2"/>
+      <b id="2110" Z="120" B="2010" E="2011" BS="N"/>
+      <b id="2111" Z="121" B="2011" E="2012" BS="N" Order="2"/>
+      <b id="2112" Z="122" B="2011" E="2013" BS="N"/>
+      <b id="2113" Z="123" B="2010" E="2005" BS="N"/>
+    </fragment>
+    <t id="100006" p="5000.0 460.0" BoundingBox="4996.0 456.0 5049.0 464.0" Justification="Left" Font="3" Size="10">aspirin</t>
+    <graphic id="1" GraphicType="Arc" BoundingBox="841.4 816.0 943.8 939.0" ArrowheadHead="Full" ArrowheadType="Solid" HeadSize="288" LineWidth="4" Color="1" ArcType="Arc">
+      <n p="912.1 909.0"/>
+      <n p="913.8 863.3"/>
+      <n p="871.4 846.0"/>
+    </graphic>
+    <graphic id="12" GraphicType="Arc" BoundingBox="779.8 816.0 912.7 996.2" ArrowheadHead="Full" ArrowheadType="Solid" HeadSize="288" LineWidth="4" Color="1" ArcType="Arc">
+      <n p="809.8 966.2"/>
+      <n p="882.7 927.6"/>
+      <n p="871.4 846.0"/>
+    </graphic>
+  </page>
+</CDXML>

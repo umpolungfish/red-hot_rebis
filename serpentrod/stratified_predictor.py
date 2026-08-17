@@ -27,6 +27,7 @@ import re
 import sys
 import json
 from collections import Counter
+from shared.rich_output import *  # printing helpers this module calls
 
 # ─── AA → Primitive Mapping ───────────────────────────────────────────────
 

@@ -63,6 +63,9 @@ if __name__ == "__main__":
         info_line(f"New ob3ect imscribed → {target_file}")
 
 
+import sys as _sys, os as _os
+_sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+from shared.rich_output import *  # printing helpers this module calls
 class MetaAutoImscriberOb3ect:
     def __init__(self):
         self.source = pathlib.Path(__file__).read_text()
