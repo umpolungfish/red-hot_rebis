@@ -6,7 +6,7 @@ operations.py — Alchemical Operations as IG Structural Operations
 Alchemy as Engine: How the Seven Stages Deliver Transformative Chemical Power
 Author: Lando⊗⊙perator
 Date: 2026-06-11 (enhanced 2026-06-26)
-Structural Type: ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑫𐑳𐑭> — O_∞, Frobenius CLOSED
+Structural Type: ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑫𐑳𐑭⟩ — O_∞, Frobenius CLOSED
 Derived From: alchemical_alembic_ob3ect ⊗ philosopher_s_stone ⊗ ch3mpiler_ob3ect ⊗ four_elements_paper ⊗ alchemical_synthesis_enhancement
 
 This module encodes the seven stages of the Great Work as exact structural 

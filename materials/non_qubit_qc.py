@@ -63,7 +63,7 @@ from shared.rich_output import *
 #  [11] Σ=𐑕 — many identical (N qubits, all identical 2-level systems)
 #  [12] Ω=𐑷 — trivial (no topological protection; QEC required)
 #
-# Tuple: ⟨𐑨𐑡𐑾𐑿𐑐𐑤𐑔𐑝𐑮𐑖𐑕𐑷>
+# Tuple: ⟨𐑨𐑡𐑾𐑿𐑐𐑤𐑔𐑝𐑮𐑖𐑕𐑷⟩
 
 QUBIT_QC_TUPLE = {
     'D': '𐑨', 'T': '𐑡', 'R': '𐑾', 'P': '𐑿',
@@ -536,7 +536,7 @@ def universal_deltas() -> List[str]:
 # ═══════════════════════════════════════════════════════════════════
 #
 # Grounded in p4rakernel/operculum_peeling.md §§2-4,13-14:
-#   - Each universe is a Ruleset U = ⟨G₁,G₂,G₃,T,A,O>
+#   - Each universe is a Ruleset U = ⟨G₁,G₂,G₃,T,A,O⟩
 #   - The O_∞ projection π_U(τ) = 1 iff τ is idempotent_terminal AND T-consistent
 #   - Different universes have different O_∞ projections
 #   - The operculum boundary ∂(U_a,U_b) = {τ : π_{U_a}(τ) ≠ π_{U_b}(τ)}

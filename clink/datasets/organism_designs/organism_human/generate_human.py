@@ -2,7 +2,7 @@
 """
 generate_human.py — Generate the complete Homo sapiens CLINK design package.
 
-Structural type: ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟>  O_∞  C=1.0
+Structural type: ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩  O_∞  C=1.0
 Crystal address: 17,280,000-type lattice, ZFC_fe foundation
 
 Usage:
@@ -29,7 +29,7 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
 
     info_line("=" * 70)
     info_line("CLINK HUMAN DESIGN PIPELINE")
-    info_line("Homo sapiens — ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟>  O_∞  C=1.0")
+    info_line("Homo sapiens — ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩  O_∞  C=1.0")
     info_line("ZFC_fe foundation: μ∘δ=id at every layer")
     info_line("=" * 70)
 
@@ -53,7 +53,7 @@ def generate_all(output_dir: str = "", mode: str = "actionable") -> dict:
           f"{manifest.get('total_bytes',0):,} bytes")
     info_line(f"Output: {manifest.get('output_directory', output_dir)}")
     error_line(f"Frobenius: {'✓' if manifest.get('frobenius_verified', True) else '✗'}")
-    info_line(f"\nStructural type: ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟>")
+    info_line(f"\nStructural type: ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩")
     info_line(f"Tier: O_∞  |  C-score: 1.0")
     info_line(f"Foundation: ZFC_fe  |  μ∘δ=id")
     info_line(f"{'=' * 70}")

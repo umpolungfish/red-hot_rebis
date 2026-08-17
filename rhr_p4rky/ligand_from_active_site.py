@@ -110,7 +110,7 @@ def ord_to_glyph(prim: str, ordinal: int) -> str:
 
 
 def fmt_tuple(t: dict) -> str:
-    """Format a 12-primitive dict as ⟨...> string."""
+    """Format a 12-primitive dict as ⟨...⟩ string."""
     return "<" + "".join(t.get(p, "?") for p in PRIMITIVE_NAMES_SHORT) + ">"
 
 

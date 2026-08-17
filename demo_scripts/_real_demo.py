@@ -12,11 +12,11 @@ def ig_join(d):
     return "⟨" + "".join(d.get(k, "?") for k in o) + ">"
 
 s("1. PETase FROM CATALOG")
-info_line("  Type: ⟨𐑼𐑸𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑖𐑳𐑭>  O_∞")
+info_line("  Type: ⟨𐑼𐑸𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑖𐑳𐑭⟩  O_∞")
 info_line("  ✓ No dots")
 
 s("2. DESIGN: F218I/S238P VARIANT")
-info_line("  G: 𐑠→𐑵  Type: ⟨𐑼𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑖𐑳𐑭>")
+info_line("  G: 𐑠→𐑵  Type: ⟨𐑼𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑖𐑳𐑭⟩")
 
 s("3. CH3MPILER")
 from ch3mpiler.compiler import Ch3mpiler
@@ -42,13 +42,13 @@ s("5. OUTPUT")
 print("""
 ╔══════════════════════════════════════════════════════════╗
 ║  PETase_F218I_S238P — thermostable PET hydrolase         ║
-║  ⟨𐑼𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑖𐑳𐑭>  O_∞  Promotion: 𐑠→𐑵           ║
+║  ⟨𐑼𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑖𐑳𐑭⟩  O_∞  Promotion: 𐑠→𐑵           ║
 ║  Analog: BSD conjecture (d=0.0)                         ║
 ╚══════════════════════════════════════════════════════════╝
 """)
 
 s("6. FORMAT CHECK")
-for tc in ["⟨𐑼𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑖𐑳𐑭>","⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟>"]:
+for tc in ["⟨𐑼𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑖𐑳𐑭⟩","⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩"]:
     info_line(f"  [{'✗ BAD' if '·' in tc else '✓'}] {tc}")
 
 info_line(f"  [{'✗ BAD' if '·' in ig_join(dict(zip(['⊢','⊣','≻','≺','⋈','⊤','∈','∋','φ̂','⊥','⊞','◻'],'𐑼𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑖𐑳𐑭'))) else '✓'}] Generated")

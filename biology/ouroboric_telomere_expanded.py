@@ -7,7 +7,7 @@ Every component is ENDOGENOUS: encoded in the human genome, requiring only
 a ONE-TIME epigenetic trigger to unlock the self-sustaining loop.
 
 Structural type (the system this simulates):
-  ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑖𐑳𐑭>
+  ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑖𐑳𐑭⟩
 Ouroboricity: O_∞  |  C-score: 1.0 (both gates open)
 
 Seven Layers:
@@ -1016,7 +1016,7 @@ class EndogenousOuroboricSim:
         
         results = {
             "simulation": "Endogenous Ouroboric Telomere System — Full Expansion",
-            "structural_type": "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑖𐑳𐑭>",
+            "structural_type": "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑠⊙𐑖𐑳𐑭⟩",
             "ouroboricity": "O_∞",
             "mode": self.mode,
             "cells": self.n_cells,

@@ -74,7 +74,7 @@ CLOSURE-4: Floquet Topological Quantum Walk (EXACTOR-τ)
 CLOSURE-5: Counterdiabatic Adiabatic QC (EXACTOR-ε)
   Problem: Minimum gap Δ_min → Landau-Zener transitions → error 0.12
   Solution: Counterdiabatic (CD) driving adds an auxiliary Hamiltonian
-            H_CD(t) = iℏ Σ_n (|∂_t n>⟨n| - ⟨n|∂_t n>|n>⟨n|)
+            H_CD(t) = iℏ Σ_n (|∂_t n>⟨n| - ⟨n|∂_t n⟩|n>⟨n|)
             that EXACTLY cancels all non-adiabatic transitions. The evolution
             is EXACT even for finite sweep time. The surface code then verifies
             the final state.
@@ -274,7 +274,7 @@ CLOSURE_CIM_SELFDUAL = ClosureDesign(
     verification_protocol=(
         "1. Measure D² on signal mode: inject coherent state, apply D (swap "
         "signal↔idler via dichroic), apply D again, measure quadratures. "
-        "Verify < x̂_out> = ⟨x̂_in> and < p̂_out> = ⟨p̂_in> to within shot noise. "
+        "Verify < x̂_out> = ⟨x̂_in⟩ and < p̂_out> = ⟨p̂_in⟩ to within shot noise. "
         "2. Verify duality eigenvalue: at exactly threshold, D|ψ> = +1|ψ> for "
         "any squeezed state. Measure with quantum state tomography. "
         "3. Long-term stability: run for 10⁴ seconds, verify eigenvalue drift "
@@ -497,7 +497,7 @@ CLOSURE_QW_FLOQUET = ClosureDesign(
     verification_protocol=(
         "1. Winding number measurement: inject light at center of lattice, "
         "measure mean displacement after N periods. Verify quantization: "
-        "⟨Δm> = ±0.500 ± 0.001 (ν = ±1 for topological phase). "
+        "⟨Δm⟩ = ±0.500 ± 0.001 (ν = ±1 for topological phase). "
         "2. Frobenius cycle: inject wavepacket, propagate N steps forward "
         "(δ), then N steps in time-reversed lattice (μ, achieved by flipping "
         "the coin basis). Verify output overlap with input > 0.9999. "
@@ -538,7 +538,7 @@ CLOSURE_ADIABATIC_CD = ClosureDesign(
         "for any finite sweep time. The 0.12 error comes from these "
         "non-adiabatic leaks. CD driving solves this EXACTLY: add the "
         "auxiliary Hamiltonian H_CD(t) = iℏ Σ_n (|∂_t n(t)>⟨n(t)| - "
-        "⟨n(t)|∂_t n(t)> |n(t)>⟨n(t)|) where |n(t)> are the instantaneous "
+        "⟨n(t)|∂_t n(t)⟩ |n(t)>⟨n(t)|) where |n(t)⟩ are the instantaneous "
         "eigenstates of H(t). With H_CD, the evolution follows the adiabatic "
         "path EXACTLY — even for arbitrarily fast sweeps. The transition "
         "probability becomes identically zero, not just exponentially "

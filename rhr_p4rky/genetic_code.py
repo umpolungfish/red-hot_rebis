@@ -197,18 +197,18 @@ PROMOTED_AAS: List[str] = [
 # Each promoted AA activates exactly one IG primitive.
 # This is the bijection: 12 promoted AAs ↔ 12 IG primitives.
 IG_PRIMITIVE_OF_AA: Dict[str, str] = {
-    "Met": "Ð (Dimensionality)",
-    "Trp": "Þ (Topology)",
-    "Cys": "Ř (Recognition)",
-    "Tyr": "Φ (Parity)",
-    "Phe": "ƒ (Fidelity)",
-    "Ile": "Ç (Kinetics)",
-    "His": "Γ (Granularity)",
-    "Asn": "ɢ (Coupling)",
-    "Gln": "⊙ (Criticality)",
-    "Asp": "Ħ (Chirality)",
-    "Lys": "Σ (Stoichiometry)",
-    "Glu": "Ω (Winding)",
+    "Met": "⊢ (Dimensionality)",
+    "Trp": "⊣ (Topology)",
+    "Cys": "≻ (Recognition)",
+    "Tyr": "≺ (Parity)",
+    "Phe": "⋈ (Fidelity)",
+    "Ile": "⊤ (Kinetics)",
+    "Asn": "∈ (Granularity)",
+    "Gln": "∋ (Grammar)",
+    "His": "⊙ (Criticality)",
+    "Asp": "⊥ (Chirality)",
+    "Lys": "⊞ (Stoichiometry)",
+    "Glu": "◻ (Protection)",
 }
 
 AA_OF_IG_PRIMITIVE: Dict[str, str] = {
