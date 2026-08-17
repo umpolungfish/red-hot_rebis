@@ -2,6 +2,7 @@
 """REAL DEMO: Design a thermostable PET hydrolase variant using IG tools."""
 
 import sys, os
+from shared.rich_output import *
 ROOT = "/home/mrnob0dy666/imsgct"
 sys.path.insert(0, os.path.join(ROOT, "red-hot_rebis"))
 
@@ -28,7 +29,6 @@ from rhr_p4rky.belnap import Belnap, band, bor
 from rhr_p4rky.genetics_b4 import b4_complement, b4_lattice_distance
 from rhr_p4rky.genetic_code import CODON_CATALOG
 from rhr_p4rky.machine import ParaVM
-from shared.rich_output import *
 
 
 t, f = Belnap.T, Belnap.F

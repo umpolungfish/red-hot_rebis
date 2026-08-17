@@ -14,8 +14,8 @@
       "total_aa": 123,
       "total_rna_nt": 222,
       "molecular_weight_kda": 13.5,
-      "aa_sequence": "MetPheAlaLysArgPheThrSerLeuLeuProLeuPheAlaGlyLeuLeuLeuLeuPheHisLeuValLeuAlaGlyProAlaAlaAlaHisHisHisHisHisHisMetAlaCysTyrValIleProSerGlnAspThrValGlyGlyGlyGlySerGlyGlyGlyGlySerGlyGlyGlyGlySerMetAlaCysTyrValIleProSerGlnAspThrVal",
-      "rna_sequence": "AUGUUUGCGAAACGCUUUACCUCGCUGCUGCCGCUGUUUGCGGGCCUGCUGCUGCUGUUUCAUCUGGUGCUGGCGGGCCCGGCGGCGGCGCAUCAUCAUCAUCAUCAUAUGGCCUGUUACGUUAUACCAUCCCAAGACACAGUGGGUGGAGGCGGUAGUGGAGGCGGUGGCUCUGGUGGUGGAAGCAUGGCCUGUUACGUUAUACCAUCCCAAGACACAGUG",
+      "aa_sequence": "MetPheAlaLysArgPheThrSerLeuLeuProLeuPheAlaGlyLeuLeuLeuLeuPheHisLeuValLeuAlaGlyProAlaAlaAlaHisHisHisHisHisHisSerTrpGlyTyrValLeuHisAsnAlaGlyLysGluGlyGlyGlyGlySerGlyGlyGlyGlySerGlyGlyGlyGlySerSerTrpCysTyrValLeuHisAsnAlaGlyThrGlu",
+      "rna_sequence": "AUGUUUGCGAAACGCUUUACCUCGCUGCUGCCGCUGUUUGCGGGCCUGCUGCUGCUGUUUCAUCUGGUGCUGGCGGGCCCGGCGGCGGCGCAUCAUCAUCAUCAUCAUUCUUGGGGAUACGUUCUGCAUAACGCUGGCAAAGAGGGUGGAGGCGGUAGUGGAGGCGGUGGCUCUGGUGGUGGAAGCUCUUGGUGUUACGUUCUGCAUAACGCUGGCACAGAG",
       "domains": [
         {
           "domain": "PET-polyethylene-terephthalate",
@@ -55,73 +55,73 @@
             "W": "\ud801\udc74"
           },
           "site_type": {
-            "D": "\ud801\udc68",
-            "W": "\ud801\udc77",
-            "T": "\ud801\udc70",
+            "W": "\ud801\udc5f",
+            "D": "\ud801\udc7c",
             "H": "\ud801\udc56",
-            "R": "\ud801\udc7e",
+            "T": "\ud801\udc76",
             "S": "\ud801\udc55",
-            "P": "\ud801\udc79",
-            "F": "\ud801\udc50",
-            "K": "\ud801\udc6a",
+            "R": "\ud801\udc69",
+            "F": "\ud801\udc71",
+            "P": "\ud801\udc57",
             "G": "\ud801\udc54",
-            "Gm": "\ud801\udc5c",
-            "Ph": "\ud801\udc7b"
+            "K": "\ud801\udc58",
+            "Ph": "\u2299",
+            "Gm": "\ud801\udc60"
           },
-          "aa_sequence": "MetAlaCysTyrValIleProSerGlnAspThrVal",
-          "rna_sequence": "AUGGCCUGUUACGUUAUACCAUCCCAAGACACAGUG",
+          "aa_sequence": "SerTrpGlyTyrValLeuHisAsnAlaGlyLysGlu",
+          "rna_sequence": "UCUUGGGGAUACGUUCUGCAUAACGCUGGCAAAGAG",
           "pairs_covered": 6,
           "confidence": 1.0,
           "activated_primitives": [
-            "D",
-            "H",
-            "K",
+            "G",
+            "Gm",
             "P",
-            "Ph",
-            "R"
+            "S",
+            "T",
+            "W"
           ],
           "pair_details": [
             {
               "pair": "D-W",
-              "dominant": "D",
-              "activated": "D",
-              "dominant_pct": 0.333,
-              "subordinate_pct": 0.0
+              "dominant": "W",
+              "activated": "W",
+              "dominant_pct": 1.0,
+              "subordinate_pct": 0.667
             },
             {
               "pair": "T-H",
-              "dominant": "H",
-              "activated": "H",
-              "dominant_pct": 0.667,
-              "subordinate_pct": 0.25
+              "dominant": "T",
+              "activated": "T",
+              "dominant_pct": 0.75,
+              "subordinate_pct": 0.667
             },
             {
               "pair": "R-S",
-              "dominant": "R",
-              "activated": "R",
-              "dominant_pct": 1.0,
-              "subordinate_pct": 0.5
+              "dominant": "S",
+              "activated": "S",
+              "dominant_pct": 0.5,
+              "subordinate_pct": 0.0
             },
             {
               "pair": "P-F",
               "dominant": "P",
               "activated": "P",
-              "dominant_pct": 1.0,
-              "subordinate_pct": 1.0
+              "dominant_pct": 0.0,
+              "subordinate_pct": 0.0
             },
             {
               "pair": "K-G",
-              "dominant": "K",
-              "activated": "K",
-              "dominant_pct": 1.0,
-              "subordinate_pct": 0.5
+              "dominant": "G",
+              "activated": "G",
+              "dominant_pct": 0.5,
+              "subordinate_pct": 0.0
             },
             {
               "pair": "Gm-Ph",
-              "dominant": "Ph",
-              "activated": "Ph",
-              "dominant_pct": 0.75,
-              "subordinate_pct": 0.333
+              "dominant": "Gm",
+              "activated": "Gm",
+              "dominant_pct": 0.667,
+              "subordinate_pct": 0.25
             }
           ]
         },
@@ -145,73 +145,73 @@
             "W": "\ud801\udc6d"
           },
           "site_type": {
-            "D": "\ud801\udc7c",
-            "W": "\ud801\udc74",
-            "T": "\ud801\udc76",
-            "H": "\ud801\udc6b",
-            "R": "\ud801\udc7e",
-            "S": "\ud801\udc73",
-            "P": "\ud801\udc79",
-            "F": "\ud801\udc50",
-            "K": "\ud801\udc6a",
+            "W": "\ud801\udc6d",
+            "D": "\ud801\udc68",
+            "H": "\ud801\udc53",
+            "T": "\ud801\udc70",
+            "S": "\ud801\udc59",
+            "R": "\ud801\udc69",
+            "F": "\ud801\udc71",
+            "P": "\ud801\udc57",
             "G": "\ud801\udc54",
-            "Gm": "\ud801\udc5c",
-            "Ph": "\ud801\udc7b"
+            "K": "\ud801\udc58",
+            "Ph": "\u2299",
+            "Gm": "\ud801\udc60"
           },
-          "aa_sequence": "MetAlaCysTyrValIleProSerGlnAspThrVal",
-          "rna_sequence": "AUGGCCUGUUACGUUAUACCAUCCCAAGACACAGUG",
+          "aa_sequence": "SerTrpCysTyrValLeuHisAsnAlaGlyThrGlu",
+          "rna_sequence": "UCUUGGUGUUACGUUCUGCAUAACGCUGGCACAGAG",
           "pairs_covered": 6,
           "confidence": 1.0,
           "activated_primitives": [
-            "D",
-            "H",
-            "K",
+            "G",
+            "Gm",
             "P",
-            "Ph",
-            "R"
+            "R",
+            "T",
+            "W"
           ],
           "pair_details": [
             {
               "pair": "D-W",
-              "dominant": "D",
-              "activated": "D",
+              "dominant": "W",
+              "activated": "W",
               "dominant_pct": 0.667,
               "subordinate_pct": 0.333
             },
             {
               "pair": "T-H",
-              "dominant": "H",
-              "activated": "H",
-              "dominant_pct": 1.0,
-              "subordinate_pct": 0.75
+              "dominant": "T",
+              "activated": "T",
+              "dominant_pct": 0.25,
+              "subordinate_pct": 0.0
             },
             {
               "pair": "R-S",
               "dominant": "R",
               "activated": "R",
-              "dominant_pct": 1.0,
-              "subordinate_pct": 1.0
+              "dominant_pct": 0.0,
+              "subordinate_pct": 0.0
             },
             {
               "pair": "P-F",
               "dominant": "P",
               "activated": "P",
-              "dominant_pct": 1.0,
-              "subordinate_pct": 1.0
+              "dominant_pct": 0.0,
+              "subordinate_pct": 0.0
             },
             {
               "pair": "K-G",
-              "dominant": "K",
-              "activated": "K",
-              "dominant_pct": 1.0,
-              "subordinate_pct": 0.5
+              "dominant": "G",
+              "activated": "G",
+              "dominant_pct": 0.5,
+              "subordinate_pct": 0.0
             },
             {
               "pair": "Gm-Ph",
-              "dominant": "Ph",
-              "activated": "Ph",
-              "dominant_pct": 0.75,
-              "subordinate_pct": 0.333
+              "dominant": "Gm",
+              "activated": "Gm",
+              "dominant_pct": 0.667,
+              "subordinate_pct": 0.25
             }
           ]
         }
@@ -219,16 +219,16 @@
       "tensor_type": {
         "D": "\ud801\udc7c",
         "T": "\ud801\udc76",
-        "R": "\ud801\udc7e",
-        "P": "\ud801\udc79",
-        "F": "\ud801\udc50",
-        "K": "\ud801\udc6a",
+        "R": "\ud801\udc69",
+        "P": "\ud801\udc57",
+        "F": "\ud801\udc71",
+        "K": "\ud801\udc58",
         "G": "\ud801\udc54",
-        "Gm": "\ud801\udc5c",
-        "Ph": "\ud801\udc7b",
-        "H": "\ud801\udc6b",
-        "S": "\ud801\udc73",
-        "W": "\ud801\udc74"
+        "Gm": "\ud801\udc60",
+        "Ph": "\u2299",
+        "H": "\ud801\udc56",
+        "S": "\ud801\udc55",
+        "W": "\ud801\udc5f"
       }
     },
     {
@@ -242,8 +242,8 @@
       "total_aa": 123,
       "total_rna_nt": 222,
       "molecular_weight_kda": 13.5,
-      "aa_sequence": "MetPheAlaLysArgPheThrSerLeuLeuProLeuPheAlaGlyLeuLeuLeuLeuPheHisLeuValLeuAlaGlyProAlaAlaAlaHisHisHisHisHisHisMetTrpCysTyrValLeuHisAsnAlaGlyThrValGlyGlyGlyGlySerGlyGlyGlyGlySerGlyGlyGlyGlySerMetTrpCysTyrValLeuHisAsnAlaGlyThrVal",
-      "rna_sequence": "AUGUUUGCGAAACGCUUUACCUCGCUGCUGCCGCUGUUUGCGGGCCUGCUGCUGCUGUUUCAUCUGGUGCUGGCGGGCCCGGCGGCGGCGCAUCAUCAUCAUCAUCAUAUGUGGUGUUACGUUCUGCAUAACGCUGGCACAGUGGGUGGAGGCGGUAGUGGAGGCGGUGGCUCUGGUGGUGGAAGCAUGUGGUGUUACGUUCUGCAUAACGCUGGCACAGUG",
+      "aa_sequence": "MetPheAlaLysArgPheThrSerLeuLeuProLeuPheAlaGlyLeuLeuLeuLeuPheHisLeuValLeuAlaGlyProAlaAlaAlaHisHisHisHisHisHisMetAlaGlyThrPheIleProAsnAlaAspLysValGlyGlyGlyGlySerGlyGlyGlyGlySerGlyGlyGlyGlySerMetAlaGlyThrPheIleProAsnAlaAspLysVal",
+      "rna_sequence": "AUGUUUGCGAAACGCUUUACCUCGCUGCUGCCGCUGUUUGCGGGCCUGCUGCUGCUGUUUCAUCUGGUGCUGGCGGGCCCGGCGGCGGCGCAUCAUCAUCAUCAUCAUAUGGCCGGAACGUUUAUACCAAACGCUGACAAAGUGGGUGGAGGCGGUAGUGGAGGCGGUGGCUCUGGUGGUGGAAGCAUGGCCGGAACGUUUAUACCAAACGCUGACAAAGUG",
       "domains": [
         {
           "domain": "PE-polyethylene",
@@ -272,84 +272,84 @@
             "D": "\ud801\udc5b",
             "T": "\ud801\udc61",
             "R": "\ud801\udc7d",
-            "P": "\ud801\udc6c",
+            "P": "\ud801\udc7f",
             "F": "\ud801\udc50",
-            "K": "\ud801\udc67",
+            "K": "\ud801\udc58",
             "G": "\ud801\udc5a",
             "Gm": "\ud801\udc5d",
             "Ph": "\ud801\udc62",
             "H": "\ud801\udc52",
             "S": "\ud801\udc73",
-            "W": "\ud801\udc74"
+            "W": "\ud801\udc77"
           },
           "site_type": {
-            "D": "\ud801\udc68",
-            "W": "\ud801\udc77",
-            "T": "\ud801\udc70",
-            "H": "\ud801\udc53",
-            "R": "\ud801\udc7e",
+            "W": "\ud801\udc5f",
+            "D": "\ud801\udc66",
+            "H": "\ud801\udc6b",
+            "T": "\ud801\udc76",
             "S": "\ud801\udc55",
-            "P": "\ud801\udc79",
-            "F": "\ud801\udc5e",
-            "K": "\ud801\udc58",
-            "G": "\ud801\udc54",
-            "Gm": "\ud801\udc5d",
-            "Ph": "\ud801\udc62"
+            "R": "\ud801\udc69",
+            "F": "\ud801\udc50",
+            "P": "\ud801\udc57",
+            "G": "\ud801\udc72",
+            "K": "\ud801\udc6a",
+            "Ph": "\ud801\udc63",
+            "Gm": "\ud801\udc75"
           },
-          "aa_sequence": "MetTrpCysTyrValLeuHisAsnAlaGlyThrVal",
-          "rna_sequence": "AUGUGGUGUUACGUUCUGCAUAACGCUGGCACAGUG",
+          "aa_sequence": "MetAlaGlyThrPheIleProAsnAlaAspLysVal",
+          "rna_sequence": "AUGGCCGGAACGUUUAUACCAAACGCUGACAAAGUG",
           "pairs_covered": 6,
           "confidence": 1.0,
           "activated_primitives": [
             "D",
-            "G",
+            "F",
             "Gm",
-            "P",
-            "R",
-            "T"
+            "H",
+            "K",
+            "S"
           ],
           "pair_details": [
             {
               "pair": "D-W",
               "dominant": "D",
               "activated": "D",
-              "dominant_pct": 0.333,
-              "subordinate_pct": 0.0
+              "dominant_pct": 1.0,
+              "subordinate_pct": 1.0
             },
             {
               "pair": "T-H",
-              "dominant": "T",
-              "activated": "T",
-              "dominant_pct": 0.25,
-              "subordinate_pct": 0.0
+              "dominant": "H",
+              "activated": "H",
+              "dominant_pct": 1.0,
+              "subordinate_pct": 0.75
             },
             {
               "pair": "R-S",
-              "dominant": "R",
-              "activated": "R",
-              "dominant_pct": 1.0,
-              "subordinate_pct": 0.5
+              "dominant": "S",
+              "activated": "S",
+              "dominant_pct": 0.5,
+              "subordinate_pct": 0.0
             },
             {
               "pair": "P-F",
-              "dominant": "P",
-              "activated": "P",
+              "dominant": "F",
+              "activated": "F",
               "dominant_pct": 1.0,
-              "subordinate_pct": 0.5
+              "subordinate_pct": 0.0
             },
             {
               "pair": "K-G",
-              "dominant": "G",
-              "activated": "G",
-              "dominant_pct": 0.5,
-              "subordinate_pct": 0.0
+              "dominant": "K",
+              "activated": "K",
+              "dominant_pct": 1.0,
+              "subordinate_pct": 1.0
             },
             {
               "pair": "Gm-Ph",
               "dominant": "Gm",
               "activated": "Gm",
-              "dominant_pct": 0.0,
-              "subordinate_pct": 0.0
+              "dominant_pct": 1.0,
+              "subordinate_pct": 1.0
             }
           ]
         },
@@ -362,101 +362,101 @@
             "D": "\ud801\udc5b",
             "T": "\ud801\udc61",
             "R": "\ud801\udc7d",
-            "P": "\ud801\udc6c",
+            "P": "\ud801\udc7f",
             "F": "\ud801\udc50",
-            "K": "\ud801\udc67",
+            "K": "\ud801\udc58",
             "G": "\ud801\udc5a",
             "Gm": "\ud801\udc5d",
             "Ph": "\ud801\udc62",
             "H": "\ud801\udc52",
             "S": "\ud801\udc73",
-            "W": "\ud801\udc74"
+            "W": "\ud801\udc77"
           },
           "site_type": {
-            "D": "\ud801\udc68",
-            "W": "\ud801\udc77",
-            "T": "\ud801\udc70",
-            "H": "\ud801\udc53",
-            "R": "\ud801\udc7e",
+            "W": "\ud801\udc5f",
+            "D": "\ud801\udc66",
+            "H": "\ud801\udc6b",
+            "T": "\ud801\udc76",
             "S": "\ud801\udc55",
-            "P": "\ud801\udc79",
-            "F": "\ud801\udc5e",
-            "K": "\ud801\udc58",
-            "G": "\ud801\udc54",
-            "Gm": "\ud801\udc5d",
-            "Ph": "\ud801\udc62"
+            "R": "\ud801\udc69",
+            "F": "\ud801\udc50",
+            "P": "\ud801\udc57",
+            "G": "\ud801\udc72",
+            "K": "\ud801\udc6a",
+            "Ph": "\ud801\udc63",
+            "Gm": "\ud801\udc75"
           },
-          "aa_sequence": "MetTrpCysTyrValLeuHisAsnAlaGlyThrVal",
-          "rna_sequence": "AUGUGGUGUUACGUUCUGCAUAACGCUGGCACAGUG",
+          "aa_sequence": "MetAlaGlyThrPheIleProAsnAlaAspLysVal",
+          "rna_sequence": "AUGGCCGGAACGUUUAUACCAAACGCUGACAAAGUG",
           "pairs_covered": 6,
           "confidence": 1.0,
           "activated_primitives": [
             "D",
-            "G",
+            "F",
             "Gm",
-            "P",
-            "R",
-            "T"
+            "H",
+            "K",
+            "S"
           ],
           "pair_details": [
             {
               "pair": "D-W",
               "dominant": "D",
               "activated": "D",
-              "dominant_pct": 0.333,
-              "subordinate_pct": 0.0
+              "dominant_pct": 1.0,
+              "subordinate_pct": 1.0
             },
             {
               "pair": "T-H",
-              "dominant": "T",
-              "activated": "T",
-              "dominant_pct": 0.25,
-              "subordinate_pct": 0.0
+              "dominant": "H",
+              "activated": "H",
+              "dominant_pct": 1.0,
+              "subordinate_pct": 0.75
             },
             {
               "pair": "R-S",
-              "dominant": "R",
-              "activated": "R",
-              "dominant_pct": 1.0,
-              "subordinate_pct": 0.5
+              "dominant": "S",
+              "activated": "S",
+              "dominant_pct": 0.5,
+              "subordinate_pct": 0.0
             },
             {
               "pair": "P-F",
-              "dominant": "P",
-              "activated": "P",
+              "dominant": "F",
+              "activated": "F",
               "dominant_pct": 1.0,
-              "subordinate_pct": 0.5
+              "subordinate_pct": 0.0
             },
             {
               "pair": "K-G",
-              "dominant": "G",
-              "activated": "G",
-              "dominant_pct": 0.5,
-              "subordinate_pct": 0.0
+              "dominant": "K",
+              "activated": "K",
+              "dominant_pct": 1.0,
+              "subordinate_pct": 1.0
             },
             {
               "pair": "Gm-Ph",
               "dominant": "Gm",
               "activated": "Gm",
-              "dominant_pct": 0.0,
-              "subordinate_pct": 0.0
+              "dominant_pct": 1.0,
+              "subordinate_pct": 1.0
             }
           ]
         }
       ],
       "tensor_type": {
-        "D": "\ud801\udc68",
-        "T": "\ud801\udc70",
-        "R": "\ud801\udc7e",
-        "P": "\ud801\udc79",
-        "F": "\ud801\udc5e",
-        "K": "\ud801\udc58",
-        "G": "\ud801\udc54",
-        "Gm": "\ud801\udc5d",
-        "Ph": "\ud801\udc62",
-        "H": "\ud801\udc53",
+        "D": "\ud801\udc66",
+        "T": "\ud801\udc76",
+        "R": "\ud801\udc69",
+        "P": "\ud801\udc57",
+        "F": "\ud801\udc50",
+        "K": "\ud801\udc6a",
+        "G": "\ud801\udc72",
+        "Gm": "\ud801\udc75",
+        "Ph": "\ud801\udc63",
+        "H": "\ud801\udc6b",
         "S": "\ud801\udc55",
-        "W": "\ud801\udc77"
+        "W": "\ud801\udc5f"
       }
     },
     {
@@ -470,8 +470,8 @@
       "total_aa": 123,
       "total_rna_nt": 222,
       "molecular_weight_kda": 13.5,
-      "aa_sequence": "MetPheAlaLysArgPheThrSerLeuLeuProLeuPheAlaGlyLeuLeuLeuLeuPheHisLeuValLeuAlaGlyProAlaAlaAlaHisHisHisHisHisHisMetTrpCysTyrValIleProSerGlnGlyThrValGlyGlyGlyGlySerGlyGlyGlyGlySerGlyGlyGlyGlySerMetTrpCysTyrValIleProSerGlnGlyThrVal",
-      "rna_sequence": "AUGUUUGCGAAACGCUUUACCUCGCUGCUGCCGCUGUUUGCGGGCCUGCUGCUGCUGUUUCAUCUGGUGCUGGCGGGCCCGGCGGCGGCGCAUCAUCAUCAUCAUCAUAUGUGGUGUUACGUUAUACCAUCCCAAGGCACAGUGGGUGGAGGCGGUAGUGGAGGCGGUGGCUCUGGUGGUGGAAGCAUGUGGUGUUACGUUAUACCAUCCCAAGGCACAGUG",
+      "aa_sequence": "MetPheAlaLysArgPheThrSerLeuLeuProLeuPheAlaGlyLeuLeuLeuLeuPheHisLeuValLeuAlaGlyProAlaAlaAlaHisHisHisHisHisHisMetAlaGlyThrPheIleProAsnAlaAspLysValGlyGlyGlyGlySerGlyGlyGlyGlySerGlyGlyGlyGlySerMetAlaGlyThrPheIleProAsnAlaAspLysVal",
+      "rna_sequence": "AUGUUUGCGAAACGCUUUACCUCGCUGCUGCCGCUGUUUGCGGGCCUGCUGCUGCUGUUUCAUCUGGUGCUGGCGGGCCCGGCGGCGGCGCAUCAUCAUCAUCAUCAUAUGGCCGGAACGUUUAUACCAAACGCUGACAAAGUGGGUGGAGGCGGUAGUGGAGGCGGUGGCUCUGGUGGUGGAAGCAUGGCCGGAACGUUUAUACCAAACGCUGACAAAGUG",
       "domains": [
         {
           "domain": "PUR-polyurethane",
@@ -499,11 +499,11 @@
           "fused_type": {
             "D": "\ud801\udc68",
             "T": "\ud801\udc65",
-            "R": "\ud801\udc7e",
+            "R": "\ud801\udc7d",
             "P": "\ud801\udc6c",
             "F": "\ud801\udc50",
             "K": "\ud801\udc67",
-            "G": "\ud801\udc72",
+            "G": "\ud801\udc54",
             "Gm": "\ud801\udc60",
             "Ph": "\u2299",
             "H": "\ud801\udc56",
@@ -511,73 +511,73 @@
             "W": "\ud801\udc74"
           },
           "site_type": {
-            "D": "\ud801\udc68",
-            "W": "\ud801\udc74",
-            "T": "\ud801\udc76",
+            "W": "\ud801\udc6d",
+            "D": "\ud801\udc7c",
             "H": "\ud801\udc56",
-            "R": "\ud801\udc7e",
-            "S": "\ud801\udc73",
-            "P": "\ud801\udc79",
+            "T": "\ud801\udc70",
+            "S": "\ud801\udc55",
+            "R": "\ud801\udc69",
             "F": "\ud801\udc5e",
-            "K": "\ud801\udc6a",
+            "P": "\ud801\udc57",
             "G": "\ud801\udc54",
-            "Gm": "\ud801\udc5c",
-            "Ph": "\ud801\udc7b"
+            "K": "\ud801\udc67",
+            "Ph": "\u2299",
+            "Gm": "\ud801\udc60"
           },
-          "aa_sequence": "MetTrpCysTyrValIleProSerGlnGlyThrVal",
-          "rna_sequence": "AUGUGGUGUUACGUUAUACCAUCCCAAGGCACAGUG",
+          "aa_sequence": "MetAlaGlyThrPheIleProAsnAlaAspLysVal",
+          "rna_sequence": "AUGGCCGGAACGUUUAUACCAAACGCUGACAAAGUG",
           "pairs_covered": 6,
           "confidence": 1.0,
           "activated_primitives": [
             "D",
+            "F",
+            "Gm",
+            "H",
             "K",
-            "P",
-            "Ph",
-            "R",
-            "T"
+            "S"
           ],
           "pair_details": [
             {
               "pair": "D-W",
               "dominant": "D",
               "activated": "D",
-              "dominant_pct": 0.333,
-              "subordinate_pct": 0.333
-            },
-            {
-              "pair": "T-H",
-              "dominant": "T",
-              "activated": "T",
-              "dominant_pct": 0.75,
+              "dominant_pct": 0.667,
               "subordinate_pct": 0.667
             },
             {
+              "pair": "T-H",
+              "dominant": "H",
+              "activated": "H",
+              "dominant_pct": 0.667,
+              "subordinate_pct": 0.25
+            },
+            {
               "pair": "R-S",
-              "dominant": "R",
-              "activated": "R",
-              "dominant_pct": 1.0,
-              "subordinate_pct": 1.0
+              "dominant": "S",
+              "activated": "S",
+              "dominant_pct": 0.5,
+              "subordinate_pct": 0.0
             },
             {
               "pair": "P-F",
-              "dominant": "P",
-              "activated": "P",
-              "dominant_pct": 1.0,
-              "subordinate_pct": 0.5
+              "dominant": "F",
+              "activated": "F",
+              "dominant_pct": 0.5,
+              "subordinate_pct": 0.0
             },
             {
               "pair": "K-G",
               "dominant": "K",
               "activated": "K",
-              "dominant_pct": 1.0,
+              "dominant_pct": 0.5,
               "subordinate_pct": 0.5
             },
             {
               "pair": "Gm-Ph",
-              "dominant": "Ph",
-              "activated": "Ph",
-              "dominant_pct": 0.75,
-              "subordinate_pct": 0.333
+              "dominant": "Gm",
+              "activated": "Gm",
+              "dominant_pct": 0.667,
+              "subordinate_pct": 0.25
             }
           ]
         },
@@ -589,11 +589,11 @@
           "fused_type": {
             "D": "\ud801\udc68",
             "T": "\ud801\udc65",
-            "R": "\ud801\udc7e",
-            "P": "\ud801\udc6f",
+            "R": "\ud801\udc7d",
+            "P": "\ud801\udc6c",
             "F": "\ud801\udc50",
             "K": "\ud801\udc67",
-            "G": "\ud801\udc72",
+            "G": "\ud801\udc54",
             "Gm": "\ud801\udc60",
             "Ph": "\u2299",
             "H": "\ud801\udc56",
@@ -601,90 +601,90 @@
             "W": "\ud801\udc74"
           },
           "site_type": {
-            "D": "\ud801\udc68",
-            "W": "\ud801\udc74",
-            "T": "\ud801\udc76",
+            "W": "\ud801\udc6d",
+            "D": "\ud801\udc7c",
             "H": "\ud801\udc56",
-            "R": "\ud801\udc7e",
-            "S": "\ud801\udc73",
-            "P": "\ud801\udc79",
-            "F": "\ud801\udc50",
-            "K": "\ud801\udc6a",
+            "T": "\ud801\udc70",
+            "S": "\ud801\udc55",
+            "R": "\ud801\udc69",
+            "F": "\ud801\udc5e",
+            "P": "\ud801\udc57",
             "G": "\ud801\udc54",
-            "Gm": "\ud801\udc5c",
-            "Ph": "\ud801\udc7b"
+            "K": "\ud801\udc67",
+            "Ph": "\u2299",
+            "Gm": "\ud801\udc60"
           },
-          "aa_sequence": "MetTrpCysTyrValIleProSerGlnGlyThrVal",
-          "rna_sequence": "AUGUGGUGUUACGUUAUACCAUCCCAAGGCACAGUG",
+          "aa_sequence": "MetAlaGlyThrPheIleProAsnAlaAspLysVal",
+          "rna_sequence": "AUGGCCGGAACGUUUAUACCAAACGCUGACAAAGUG",
           "pairs_covered": 6,
           "confidence": 1.0,
           "activated_primitives": [
             "D",
+            "F",
+            "Gm",
+            "H",
             "K",
-            "P",
-            "Ph",
-            "R",
-            "T"
+            "S"
           ],
           "pair_details": [
             {
               "pair": "D-W",
               "dominant": "D",
               "activated": "D",
-              "dominant_pct": 0.333,
-              "subordinate_pct": 0.333
-            },
-            {
-              "pair": "T-H",
-              "dominant": "T",
-              "activated": "T",
-              "dominant_pct": 0.75,
+              "dominant_pct": 0.667,
               "subordinate_pct": 0.667
             },
             {
+              "pair": "T-H",
+              "dominant": "H",
+              "activated": "H",
+              "dominant_pct": 0.667,
+              "subordinate_pct": 0.25
+            },
+            {
               "pair": "R-S",
-              "dominant": "R",
-              "activated": "R",
-              "dominant_pct": 1.0,
-              "subordinate_pct": 1.0
+              "dominant": "S",
+              "activated": "S",
+              "dominant_pct": 0.5,
+              "subordinate_pct": 0.0
             },
             {
               "pair": "P-F",
-              "dominant": "P",
-              "activated": "P",
-              "dominant_pct": 1.0,
-              "subordinate_pct": 1.0
+              "dominant": "F",
+              "activated": "F",
+              "dominant_pct": 0.5,
+              "subordinate_pct": 0.0
             },
             {
               "pair": "K-G",
               "dominant": "K",
               "activated": "K",
-              "dominant_pct": 1.0,
+              "dominant_pct": 0.5,
               "subordinate_pct": 0.5
             },
             {
               "pair": "Gm-Ph",
-              "dominant": "Ph",
-              "activated": "Ph",
-              "dominant_pct": 0.75,
-              "subordinate_pct": 0.333
+              "dominant": "Gm",
+              "activated": "Gm",
+              "dominant_pct": 0.667,
+              "subordinate_pct": 0.25
             }
           ]
         }
       ],
       "tensor_type": {
-        "D": "\ud801\udc68",
-        "T": "\ud801\udc76",
-        "R": "\ud801\udc7e",
-        "P": "\ud801\udc79",
+        "D": "\ud801\udc7c",
+        "T": "\ud801\udc70",
+        "R": "\ud801\udc69",
+        "P": "\ud801\udc57",
         "F": "\ud801\udc5e",
-        "K": "\ud801\udc6a",
+        "K": "\ud801\udc67",
         "G": "\ud801\udc54",
-        "Gm": "\ud801\udc5c",
-        "Ph": "\ud801\udc7b",
+        "Gm": "\ud801\udc60",
+        "Ph": "\u2299",
         "H": "\ud801\udc56",
-        "S": "\ud801\udc73",
-        "W": "\ud801\udc74"
+        "S": "\ud801\udc55",
+        "W": "\ud801\udc6d"
       }
     }
   ]

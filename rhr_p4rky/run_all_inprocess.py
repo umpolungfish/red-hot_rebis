@@ -128,6 +128,8 @@ with open(f'{OUTDIR}/all_ligands.json', 'w') as f:
     json.dump(ALL_LIGANDS, f, indent=2)
 
 # ── Per-protein SMILES files for demo sheet ──
+# The per-protein directory is created here; only the parent was.
+os.makedirs(f'{OUTDIR}/by_protein', exist_ok=True)
 for prot in unique_proteins:
     prot_smiles = [l for l in ALL_LIGANDS if l['pdb'] == prot['pdb']]
     if prot_smiles:

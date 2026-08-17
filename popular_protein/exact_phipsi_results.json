@@ -1,12 +1,14 @@
 {
   "insulin_a_chain": {
+    "sequence": "GIVEQCCTSICSLYQLENYCN",
     "length": 21,
     "ss": "HHHHHHEEEEEHHHHHHCCCC",
     "phi_mean": -78.9,
     "psi_mean": -2.2,
     "phi_std": 28.4,
     "psi_std": 71.7,
-    "pdb_path": "popular_protein/insulin_a_chain_exact_platonic.pdb",
+    "pdb_path": "/home/mrnob0dy666/imsgct/red-hot_rebis/popular_protein/insulin_a_chain_exact_platonic.pdb",
+    "pdb_size": 8793,
     "ca_coords": [
       [
         1.458,
@@ -265,13 +267,15 @@
     ]
   },
   "insulin_b_chain": {
+    "sequence": "FVNQHLCGSHLVEALYLVCGERGFFYTPKT",
     "length": 30,
     "ss": "HHHHHHCCHHHHHHEEEEECCEEEEEECCC",
     "phi_mean": -87.1,
     "psi_mean": 20.4,
     "phi_std": 31.5,
     "psi_std": 82.1,
-    "pdb_path": "popular_protein/insulin_b_chain_exact_platonic.pdb",
+    "pdb_path": "/home/mrnob0dy666/imsgct/red-hot_rebis/popular_protein/insulin_b_chain_exact_platonic.pdb",
+    "pdb_size": 12227,
     "ca_coords": [
       [
         1.458,
@@ -638,13 +642,15 @@
     ]
   },
   "acth": {
+    "sequence": "SYSMEHFRWGKPVGKKRRPVKVYPNVAENESAEAFPLEF",
     "length": 39,
     "ss": "CCHHHHHHHCHHHHHHHHEEEEECHHHHHHHHHHEEEEE",
     "phi_mean": -79.6,
     "psi_mean": 1.7,
     "phi_std": 28.5,
     "psi_std": 74.2,
-    "pdb_path": "popular_protein/acth_exact_platonic.pdb",
+    "pdb_path": "/home/mrnob0dy666/imsgct/red-hot_rebis/popular_protein/acth_exact_platonic.pdb",
+    "pdb_size": 15824,
     "ca_coords": [
       [
         1.458,
@@ -1119,13 +1125,15 @@
     ]
   },
   "beta_endorphin": {
+    "sequence": "YGGFMTSEKSQTPLVTLFKNAIVKNAHKKGQ",
     "length": 31,
     "ss": "EEEHHHHHHHHHHHHHHHHHHHHHHHHHHCC",
     "phi_mean": -68.5,
     "psi_mean": -26.1,
     "phi_std": 18.6,
     "psi_std": 49.6,
-    "pdb_path": "popular_protein/beta_endorphin_exact_platonic.pdb",
+    "pdb_path": "/home/mrnob0dy666/imsgct/red-hot_rebis/popular_protein/beta_endorphin_exact_platonic.pdb",
+    "pdb_size": 12492,
     "ca_coords": [
       [
         1.458,
@@ -1504,13 +1512,15 @@
     ]
   },
   "alpha_msh": {
+    "sequence": "SYSMEHFRWGKPV",
     "length": 13,
     "ss": "CCHHHHHHHCCCC",
     "phi_mean": -63.6,
     "psi_mean": -41.2,
     "phi_std": 2.6,
     "psi_std": 4.3,
-    "pdb_path": "popular_protein/alpha_msh_exact_platonic.pdb",
+    "pdb_path": "/home/mrnob0dy666/imsgct/red-hot_rebis/popular_protein/alpha_msh_exact_platonic.pdb",
+    "pdb_size": 5498,
     "ca_coords": [
       [
         1.458,
@@ -1673,13 +1683,15 @@
     ]
   },
   "gfp": {
+    "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTFSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
     "length": 238,
     "ss": "HHHHHHHHHHHHHHHHHHHCCCCCCCCCCCCCCCCCCEEHHHHHHEEEEECHHHHHHEEEEEEEEEEEEEECCCCHHHHHHHHHHHHHHHEEHHHHHHEECCCCCCHHHHHHHCCEHHHHHHHHHHHHHHHHHCCHHHHHHHCCCCHHHHHHHHHHHHCHHHHHHHCCCCCHHHHHHHHHHEEEEECCCCEEEEECCEEEEHHHHHHHHHCCHHHHHHHHHHHHHHHHEEEEHHHHHH",
     "phi_mean": -75.2,
     "psi_mean": -10.6,
     "phi_std": 25.7,
     "psi_std": 66.1,
-    "pdb_path": "popular_protein/gfp_exact_platonic.pdb",
+    "pdb_path": "/home/mrnob0dy666/imsgct/red-hot_rebis/popular_protein/gfp_exact_platonic.pdb",
+    "pdb_size": 93561,
     "ca_coords": [
       [
         1.458,
@@ -4542,13 +4554,15 @@
     ]
   },
   "lysozyme": {
+    "sequence": "KVFGRCELAAAMKRHGLDNYRGYSLGNWVCAAKFESNFNTQATNRNTDGSTDYGILQINSRWWCNDGRTPGSRNLCNIPCSALLSSDITASVNCAKKIVSDGNGMNAWVAWRNRCKGTDVQAWIRGCRL",
     "length": 129,
     "ss": "CEEEHHHHHHHHHHHCCCCCCCCCEEHHHHHHHCCCEEEEECCCCCCCCHHHHHHHHHEEEEEEECCCCCCCEEEEEECEEEEECCCEHHHHHHHHHCCCCCCHHHHHHHCCCCCCEHHHHHHCCCCCC",
     "phi_mean": -78.5,
     "psi_mean": -2.5,
     "phi_std": 27.3,
     "psi_std": 71.8,
-    "pdb_path": "popular_protein/lysozyme_exact_platonic.pdb",
+    "pdb_path": "/home/mrnob0dy666/imsgct/red-hot_rebis/popular_protein/lysozyme_exact_platonic.pdb",
+    "pdb_size": 51141,
     "ca_coords": [
       [
         1.458,

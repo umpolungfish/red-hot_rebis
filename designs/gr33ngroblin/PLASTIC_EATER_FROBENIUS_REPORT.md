@@ -33,63 +33,63 @@ Three structurally distinct, Frobenius-exact enzymes that together degrade all s
 - **Bond:** `ester_link`
 - **FG pair:** `ester + water`
 - **Mechanism:** Serine hydrolase: nucleophilic attack on ester carbonyl
-- **AA sequence:** `MetAlaCysTyrValIleProSerGlnAspThrVal`
-- **RNA sequence:** `AUGGCCUGUUACGUUAUACCAUCCCAAGACACAGUG`
-- **Activated primitives:** D, H, K, P, Ph, R
+- **AA sequence:** `SerTrpGlyTyrValLeuHisAsnAlaGlyLysGlu`
+- **RNA sequence:** `UCUUGGGGAUACGUUCUGCAUAACGCUGGCAAAGAG`
+- **Activated primitives:** G, Gm, P, S, T, W
 
 | Pair | Dominant | Activated | Dom. % | Sub. % |
 |------|----------|-----------|--------|--------|
-| D-W | D | D | 0.333 | 0.000 |
-| T-H | H | H | 0.667 | 0.250 |
-| R-S | R | R | 1.000 | 0.500 |
-| P-F | P | P | 1.000 | 1.000 |
-| K-G | K | K | 1.000 | 0.500 |
-| Gm-Ph | Ph | Ph | 0.750 | 0.333 |
+| D-W | W | W | 1.000 | 0.667 |
+| T-H | T | T | 0.750 | 0.667 |
+| R-S | S | S | 0.500 | 0.000 |
+| P-F | P | P | 0.000 | 0.000 |
+| K-G | G | G | 0.500 | 0.000 |
+| Gm-Ph | Gm | Gm | 0.667 | 0.250 |
 
 **Site structural type:**
-`⟨𐑨𐑰𐑾𐑹𐑐𐑪𐑔𐑜𐑻𐑖𐑕𐑷⟩`
+`⟨𐑼𐑶𐑩𐑗𐑱𐑘𐑔𐑠⊙𐑖𐑕𐑟>`
 
 #### PS_polystyrene
 
 - **Bond:** `aromatic`
 - **FG pair:** `aromatic_ring + dioxygen`
 - **Mechanism:** Extradiol/intradiol dioxygenase: aromatic ring opening
-- **AA sequence:** `MetAlaCysTyrValIleProSerGlnAspThrVal`
-- **RNA sequence:** `AUGGCCUGUUACGUUAUACCAUCCCAAGACACAGUG`
-- **Activated primitives:** D, H, K, P, Ph, R
+- **AA sequence:** `SerTrpCysTyrValLeuHisAsnAlaGlyThrGlu`
+- **RNA sequence:** `UCUUGGUGUUACGUUCUGCAUAACGCUGGCACAGAG`
+- **Activated primitives:** G, Gm, P, R, T, W
 
 | Pair | Dominant | Activated | Dom. % | Sub. % |
 |------|----------|-----------|--------|--------|
-| D-W | D | D | 0.667 | 0.333 |
-| T-H | H | H | 1.000 | 0.750 |
-| R-S | R | R | 1.000 | 1.000 |
-| P-F | P | P | 1.000 | 1.000 |
-| K-G | K | K | 1.000 | 0.500 |
-| Gm-Ph | Ph | Ph | 0.750 | 0.333 |
+| D-W | W | W | 0.667 | 0.333 |
+| T-H | T | T | 0.250 | 0.000 |
+| R-S | R | R | 0.000 | 0.000 |
+| P-F | P | P | 0.000 | 0.000 |
+| K-G | G | G | 0.500 | 0.000 |
+| Gm-Ph | Gm | Gm | 0.667 | 0.250 |
 
 **Site structural type:**
-`⟨𐑼𐑶𐑾𐑹𐑐𐑪𐑔𐑜𐑻𐑫𐑳𐑴⟩`
+`⟨𐑨𐑰𐑩𐑗𐑱𐑘𐑔𐑠⊙𐑓𐑙𐑭>`
 
 ### Full Amino Acid Sequence
 
 ```
 MetPheAlaLysArgPheThrSerLeuLeuProLeuPheAlaGlyLeuLeuLeuLeuPhe
-HisLeuValLeuAlaGlyProAlaAlaAlaHisHisHisHisHisHisMetAlaCysTyr
-ValIleProSerGlnAspThrValGlyGlyGlyGlySerGlyGlyGlyGlySerGlyGly
-GlyGlySerMetAlaCysTyrValIleProSerGlnAspThrVal
+HisLeuValLeuAlaGlyProAlaAlaAlaHisHisHisHisHisHisSerTrpGlyTyr
+ValLeuHisAsnAlaGlyLysGluGlyGlyGlyGlySerGlyGlyGlyGlySerGlyGly
+GlyGlySerSerTrpCysTyrValLeuHisAsnAlaGlyThrGlu
 ```
 
 ### Full RNA (Codon-Optimized) Sequence
 
 ```
 AUGUUUGCGAAACGCUUUACCUCGCUGCUGCCGCUGUUUGCGGGCCUGCUGCUGCUGUUUCAUCUGGUGCUGGCGGGCCCGGCGGCGGCG
-CAUCAUCAUCAUCAUCAUAUGGCCUGUUACGUUAUACCAUCCCAAGACACAGUGGGUGGAGGCGGUAGUGGAGGCGGUGGCUCUGGUGGU
-GGAAGCAUGGCCUGUUACGUUAUACCAUCCCAAGACACAGUG
+CAUCAUCAUCAUCAUCAUUCUUGGGGAUACGUUCUGCAUAACGCUGGCAAAGAGGGUGGAGGCGGUAGUGGAGGCGGUGGCUCUGGUGGU
+GGAAGCUCUUGGUGUUACGUUCUGCAUAACGCUGGCACAGAG
 ```
 
 ### Composite Structural Type (Tensor)
 
-`⟨𐑼𐑶𐑾𐑹𐑐𐑪𐑔𐑜𐑻𐑫𐑳𐑴⟩`
+`⟨𐑼𐑶𐑩𐑗𐑱𐑘𐑔𐑠⊙𐑖𐑕𐑟>`
 
 ## B_Alkanase: PE + PP — alkane hydroxylase / Baeyer-Villiger pathway
 
@@ -112,63 +112,63 @@ GGAAGCAUGGCCUGUUACGUUAUACCAUCCCAAGACACAGUG
 - **Bond:** `cc_oxidative`
 - **FG pair:** `alkane + dioxygen`
 - **Mechanism:** Alkane hydroxylase: C-H activation -> alcohol -> ketone -> BV -> ester -> hydrolysis
-- **AA sequence:** `MetTrpCysTyrValLeuHisAsnAlaGlyThrVal`
-- **RNA sequence:** `AUGUGGUGUUACGUUCUGCAUAACGCUGGCACAGUG`
-- **Activated primitives:** D, G, Gm, P, R, T
+- **AA sequence:** `MetAlaGlyThrPheIleProAsnAlaAspLysVal`
+- **RNA sequence:** `AUGGCCGGAACGUUUAUACCAAACGCUGACAAAGUG`
+- **Activated primitives:** D, F, Gm, H, K, S
 
 | Pair | Dominant | Activated | Dom. % | Sub. % |
 |------|----------|-----------|--------|--------|
-| D-W | D | D | 0.333 | 0.000 |
-| T-H | T | T | 0.250 | 0.000 |
-| R-S | R | R | 1.000 | 0.500 |
-| P-F | P | P | 1.000 | 0.500 |
-| K-G | G | G | 0.500 | 0.000 |
-| Gm-Ph | Gm | Gm | 0.000 | 0.000 |
+| D-W | D | D | 1.000 | 1.000 |
+| T-H | H | H | 1.000 | 0.750 |
+| R-S | S | S | 0.500 | 0.000 |
+| P-F | F | F | 1.000 | 0.000 |
+| K-G | K | K | 1.000 | 1.000 |
+| Gm-Ph | Gm | Gm | 1.000 | 1.000 |
 
 **Site structural type:**
-`⟨𐑨𐑰𐑾𐑹𐑞𐑘𐑔𐑝𐑢𐑓𐑕𐑷⟩`
+`⟨𐑦𐑶𐑩𐑗𐑐𐑪𐑲𐑵𐑣𐑫𐑕𐑟>`
 
 #### PP_polypropylene
 
 - **Bond:** `cc_oxidative`
 - **FG pair:** `alkane + dioxygen`
 - **Mechanism:** Same as PE but accommodates methyl branching
-- **AA sequence:** `MetTrpCysTyrValLeuHisAsnAlaGlyThrVal`
-- **RNA sequence:** `AUGUGGUGUUACGUUCUGCAUAACGCUGGCACAGUG`
-- **Activated primitives:** D, G, Gm, P, R, T
+- **AA sequence:** `MetAlaGlyThrPheIleProAsnAlaAspLysVal`
+- **RNA sequence:** `AUGGCCGGAACGUUUAUACCAAACGCUGACAAAGUG`
+- **Activated primitives:** D, F, Gm, H, K, S
 
 | Pair | Dominant | Activated | Dom. % | Sub. % |
 |------|----------|-----------|--------|--------|
-| D-W | D | D | 0.333 | 0.000 |
-| T-H | T | T | 0.250 | 0.000 |
-| R-S | R | R | 1.000 | 0.500 |
-| P-F | P | P | 1.000 | 0.500 |
-| K-G | G | G | 0.500 | 0.000 |
-| Gm-Ph | Gm | Gm | 0.000 | 0.000 |
+| D-W | D | D | 1.000 | 1.000 |
+| T-H | H | H | 1.000 | 0.750 |
+| R-S | S | S | 0.500 | 0.000 |
+| P-F | F | F | 1.000 | 0.000 |
+| K-G | K | K | 1.000 | 1.000 |
+| Gm-Ph | Gm | Gm | 1.000 | 1.000 |
 
 **Site structural type:**
-`⟨𐑨𐑰𐑾𐑹𐑞𐑘𐑔𐑝𐑢𐑓𐑕𐑷⟩`
+`⟨𐑦𐑶𐑩𐑗𐑐𐑪𐑲𐑵𐑣𐑫𐑕𐑟>`
 
 ### Full Amino Acid Sequence
 
 ```
 MetPheAlaLysArgPheThrSerLeuLeuProLeuPheAlaGlyLeuLeuLeuLeuPhe
-HisLeuValLeuAlaGlyProAlaAlaAlaHisHisHisHisHisHisMetTrpCysTyr
-ValLeuHisAsnAlaGlyThrValGlyGlyGlyGlySerGlyGlyGlyGlySerGlyGly
-GlyGlySerMetTrpCysTyrValLeuHisAsnAlaGlyThrVal
+HisLeuValLeuAlaGlyProAlaAlaAlaHisHisHisHisHisHisMetAlaGlyThr
+PheIleProAsnAlaAspLysValGlyGlyGlyGlySerGlyGlyGlyGlySerGlyGly
+GlyGlySerMetAlaGlyThrPheIleProAsnAlaAspLysVal
 ```
 
 ### Full RNA (Codon-Optimized) Sequence
 
 ```
 AUGUUUGCGAAACGCUUUACCUCGCUGCUGCCGCUGUUUGCGGGCCUGCUGCUGCUGUUUCAUCUGGUGCUGGCGGGCCCGGCGGCGGCG
-CAUCAUCAUCAUCAUCAUAUGUGGUGUUACGUUCUGCAUAACGCUGGCACAGUGGGUGGAGGCGGUAGUGGAGGCGGUGGCUCUGGUGGU
-GGAAGCAUGUGGUGUUACGUUCUGCAUAACGCUGGCACAGUG
+CAUCAUCAUCAUCAUCAUAUGGCCGGAACGUUUAUACCAAACGCUGACAAAGUGGGUGGAGGCGGUAGUGGAGGCGGUGGCUCUGGUGGU
+GGAAGCAUGGCCGGAACGUUUAUACCAAACGCUGACAAAGUG
 ```
 
 ### Composite Structural Type (Tensor)
 
-`⟨𐑨𐑰𐑾𐑹𐑞𐑘𐑔𐑝𐑢𐑓𐑕𐑷⟩`
+`⟨𐑦𐑶𐑩𐑗𐑐𐑪𐑲𐑵𐑣𐑫𐑕𐑟>`
 
 ## C_Urethanase: PUR + PC — urethane/carbonate hydrolase fusion
 
@@ -191,63 +191,63 @@ GGAAGCAUGUGGUGUUACGUUCUGCAUAACGCUGGCACAGUG
 - **Bond:** `urethane_link`
 - **FG pair:** `amide + water`
 - **Mechanism:** Amidase + esterase hybrid: cleaves urethane -NH-CO-O- linkage
-- **AA sequence:** `MetTrpCysTyrValIleProSerGlnGlyThrVal`
-- **RNA sequence:** `AUGUGGUGUUACGUUAUACCAUCCCAAGGCACAGUG`
-- **Activated primitives:** D, K, P, Ph, R, T
+- **AA sequence:** `MetAlaGlyThrPheIleProAsnAlaAspLysVal`
+- **RNA sequence:** `AUGGCCGGAACGUUUAUACCAAACGCUGACAAAGUG`
+- **Activated primitives:** D, F, Gm, H, K, S
 
 | Pair | Dominant | Activated | Dom. % | Sub. % |
 |------|----------|-----------|--------|--------|
-| D-W | D | D | 0.333 | 0.333 |
-| T-H | T | T | 0.750 | 0.667 |
-| R-S | R | R | 1.000 | 1.000 |
-| P-F | P | P | 1.000 | 0.500 |
-| K-G | K | K | 1.000 | 0.500 |
-| Gm-Ph | Ph | Ph | 0.750 | 0.333 |
+| D-W | D | D | 0.667 | 0.667 |
+| T-H | H | H | 0.667 | 0.250 |
+| R-S | S | S | 0.500 | 0.000 |
+| P-F | F | F | 0.500 | 0.000 |
+| K-G | K | K | 0.500 | 0.500 |
+| Gm-Ph | Gm | Gm | 0.667 | 0.250 |
 
 **Site structural type:**
-`⟨𐑨𐑶𐑾𐑹𐑞𐑪𐑔𐑜𐑻𐑖𐑳𐑴⟩`
+`⟨𐑼𐑰𐑩𐑗𐑞𐑧𐑔𐑠⊙𐑖𐑕𐑭>`
 
 #### PC_polycarbonate
 
 - **Bond:** `carbonate_link`
 - **FG pair:** `ester + water`
 - **Mechanism:** Carbonate hydrolase: cleaves -O-CO-O- linkage
-- **AA sequence:** `MetTrpCysTyrValIleProSerGlnGlyThrVal`
-- **RNA sequence:** `AUGUGGUGUUACGUUAUACCAUCCCAAGGCACAGUG`
-- **Activated primitives:** D, K, P, Ph, R, T
+- **AA sequence:** `MetAlaGlyThrPheIleProAsnAlaAspLysVal`
+- **RNA sequence:** `AUGGCCGGAACGUUUAUACCAAACGCUGACAAAGUG`
+- **Activated primitives:** D, F, Gm, H, K, S
 
 | Pair | Dominant | Activated | Dom. % | Sub. % |
 |------|----------|-----------|--------|--------|
-| D-W | D | D | 0.333 | 0.333 |
-| T-H | T | T | 0.750 | 0.667 |
-| R-S | R | R | 1.000 | 1.000 |
-| P-F | P | P | 1.000 | 1.000 |
-| K-G | K | K | 1.000 | 0.500 |
-| Gm-Ph | Ph | Ph | 0.750 | 0.333 |
+| D-W | D | D | 0.667 | 0.667 |
+| T-H | H | H | 0.667 | 0.250 |
+| R-S | S | S | 0.500 | 0.000 |
+| P-F | F | F | 0.500 | 0.000 |
+| K-G | K | K | 0.500 | 0.500 |
+| Gm-Ph | Gm | Gm | 0.667 | 0.250 |
 
 **Site structural type:**
-`⟨𐑨𐑶𐑾𐑹𐑐𐑪𐑔𐑜𐑻𐑖𐑳𐑴⟩`
+`⟨𐑼𐑰𐑩𐑗𐑞𐑧𐑔𐑠⊙𐑖𐑕𐑭>`
 
 ### Full Amino Acid Sequence
 
 ```
 MetPheAlaLysArgPheThrSerLeuLeuProLeuPheAlaGlyLeuLeuLeuLeuPhe
-HisLeuValLeuAlaGlyProAlaAlaAlaHisHisHisHisHisHisMetTrpCysTyr
-ValIleProSerGlnGlyThrValGlyGlyGlyGlySerGlyGlyGlyGlySerGlyGly
-GlyGlySerMetTrpCysTyrValIleProSerGlnGlyThrVal
+HisLeuValLeuAlaGlyProAlaAlaAlaHisHisHisHisHisHisMetAlaGlyThr
+PheIleProAsnAlaAspLysValGlyGlyGlyGlySerGlyGlyGlyGlySerGlyGly
+GlyGlySerMetAlaGlyThrPheIleProAsnAlaAspLysVal
 ```
 
 ### Full RNA (Codon-Optimized) Sequence
 
 ```
 AUGUUUGCGAAACGCUUUACCUCGCUGCUGCCGCUGUUUGCGGGCCUGCUGCUGCUGUUUCAUCUGGUGCUGGCGGGCCCGGCGGCGGCG
-CAUCAUCAUCAUCAUCAUAUGUGGUGUUACGUUAUACCAUCCCAAGGCACAGUGGGUGGAGGCGGUAGUGGAGGCGGUGGCUCUGGUGGU
-GGAAGCAUGUGGUGUUACGUUAUACCAUCCCAAGGCACAGUG
+CAUCAUCAUCAUCAUCAUAUGGCCGGAACGUUUAUACCAAACGCUGACAAAGUGGGUGGAGGCGGUAGUGGAGGCGGUGGCUCUGGUGGU
+GGAAGCAUGGCCGGAACGUUUAUACCAAACGCUGACAAAGUG
 ```
 
 ### Composite Structural Type (Tensor)
 
-`⟨𐑨𐑶𐑾𐑹𐑞𐑪𐑔𐑜𐑻𐑖𐑳𐑴⟩`
+`⟨𐑼𐑰𐑩𐑗𐑞𐑧𐑔𐑠⊙𐑖𐑕𐑭>`
 
 ---
 
@@ -255,7 +255,7 @@ GGAAGCAUGUGGUGUUACGUUAUACCAUCCCAAGGCACAGUG
 
 1. **Bisphenol-A warning:** Polycarbonate (PC) degradation releases BPA, an endocrine disruptor. Catalyst C (Urethanase) must be coupled with a BPA-degrading module (e.g., cytochrome P450 or laccase) before environmental deployment.
 2. **Containment:** All three catalysts should be expressed in GRAS (Generally Recognized As Safe) organisms with auxotrophic markers to prevent environmental escape.
-3. **pH optima:** Catalyst A functions optimally at pH 7.5-8.5 (serine hydrolase range); Catalyst B at pH 7.0-7.5; Catalyst C at pH 7.0-8.0.
+3. **pH optima:** Catalyst A functions optimally at pH 7.5-8.5 (serine hydrolase range)Catalyst B at pH 7.0-7.5Catalyst C at pH 7.0-8.0.
 
 ## Pipeline Fixes Applied
 

@@ -1,21 +1,19 @@
-The dataset package builds itself, and importing it no longer destroys it
+Eleven modules that could not run, and the patch that kept undoing one of them
 
-generators.py is written by five generator scripts, and those scripts did their work
-at import time. The package imports generators.py when it loads, so importing part
-one truncated the file that everything else needs, and any sweep that touched the
-scripts in order left the package broken behind it. They refuse import now and write
-only when run directly.
+A spent patch script rewrote the retrosynthetic pipeline every time it ran, from a
+copy it reconstructed line by line, which is how an old revision with two methods
+written bottom to top kept coming back after I repaired the file. It writes nothing
+now; its own guard already proved the change is in place.
 
-The file they had left behind carried every orchestration function six times and one
-layer generator six times, from having been appended to repeatedly. Rebuilt: one of
-each.
+The rest were each a name that had moved: a design importing the therapeutics package
+by bare name, two plastic eaters importing a kernel module and a sibling design by
+bare name, an agent importing its tool by bare name and then asking for a class the
+tool does not export, a tool importing the molecular domain that the grammar tree
+retired on purpose and recorded as superseded by this repository, a command wiring a
+parser to a function defined sixty lines below it, a structure comparison using numpy
+without importing it, a demo printing before importing its helpers, and a ligand
+sweep writing per-protein files into a directory it never created.
 
-The generated header never imported the three chain functions its own generators
-call on every dataset, so every generate() died on the closure verdict it stamps.
-The header imports them, and the fix is in the generator rather than in its output.
-
-Four organism designs called for an actionable package that was never generated. It
-exists now, in the generator: the design package plus a coding genome, protein
-backbones, a plasmid and a metabolic model, with anything the tree cannot supply
-recorded as unavailable rather than dropped. Human, gills, photosynthetic and treople
-all run.
+That sweep in process yields tens of thousands of ligands where the version that
+scraped a subprocess reported a few hundred, because the scraper counted only what it
+had not already seen and discarded the rest.

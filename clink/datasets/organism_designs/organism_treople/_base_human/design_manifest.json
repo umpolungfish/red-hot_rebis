@@ -15,12 +15,12 @@
   "total_bytes": 59378,
   "tool_bridges": [
     "materials_sim",
-    "gene_imscriber",
     "serpentrod",
-    "ch3mpiler"
+    "ch3mpiler",
+    "gene_imscriber"
   ],
   "frobenius_verified": true,
   "output_directory": "/home/mrnob0dy666/imsgct/red-hot_rebis/clink/datasets/organism_designs/organism_treople/_base_human",
-  "generation_time_seconds": 0.08,
-  "generated_at": "2026-08-16T19:17:14.305427"
+  "generation_time_seconds": 0.09,
+  "generated_at": "2026-08-16T20:49:26.513557"
 }

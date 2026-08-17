@@ -639,6 +639,48 @@ def cmd_predict(args):
             print(f'Could not find or parse: {target}')
     
     return 0
+def cmd_constants(args):
+    """Display the MoDoT Constant Registry with biology bridge connections."""
+    from rhr_p4rky.fundamental_constants import (
+        report_all_constants, ALL_CONSTANTS, D_SIC, SIN2_THETA_W,
+        ALPHA_INV_MO_DOT, MP_ME_MO_DOT, ALPHA_G,
+        H_BOND_ENERGY_KCAL, CODON_SPACE_SIZE, PROMOTED_AA_COUNT,
+        STOP_CODON_COUNT
+    )
+    from rhr_p4rky.genetic_code import verify_sic_povm_genetic_partition
+
+    print(report_all_constants())
+    print()
+
+    # Show the SIC-POVM genetic code verification
+    section_header("GENETIC CODE SIC-POVM PARTITION")
+    gen_part = verify_sic_povm_genetic_partition()
+    print(f"  Crystal of Types / codon space = {gen_part['crystal_per_codon']:.0f}")
+    print(f"  Stop codons = {gen_part['stop_codon_count']} = {gen_part['ew_outcomes']} EW outcomes  ✓")
+    print(f"  Exact 4-fold boxes = {gen_part['exact_4fold_boxes']} ↔ {gen_part['solar_outcomes']} solar outcomes")
+    print(f"  Split boxes = {gen_part['split_boxes']} ↔ {gen_part['atm_outcomes']} atmospheric outcomes")
+    print(f"  Promoted AAs = {gen_part['promoted_aa_count']} = SIC dimension d = {D_SIC}  ✓")
+    status = "✓ VERIFIED" if gen_part['all_verified'] else "✗ PARTIAL"
+    print(f"  Partition status: {status}")
+    print()
+
+    # Show hierarchy summary
+    section_header("HIERARCHY SUMMARY")
+    print(f"  Electromagnetic:   α⁻¹ = {ALPHA_INV_MO_DOT:.6f}  (CODATA: 137.035999084)")
+    print(f"  Hadron scale:      m_p/m_e = {MP_ME_MO_DOT:.6f}  (CODATA: 1836.15267343)")
+    print(f"  Gravity:           α_G = {ALPHA_G:.3e}  (CODATA: 5.904e-39)")
+    print(f"  Biology:           E_HB ≈ {H_BOND_ENERGY_KCAL:.1f} kcal/mol  (from proton ZPE)")
+    print(f"  Codon space:       |Ω| = {CODON_SPACE_SIZE} = 4³  (d=12 SIC-POVM outcomes)")
+    print(f"  Genetic partition: 3 stops = 3/13 = sin²θ_W = {SIN2_THETA_W:.4f}")
+    print()
+
+    # Show all constants with details
+    if getattr(args, 'verbose', False):
+        section_header("DETAILED CONSTANTS")
+        for c in ALL_CONSTANTS:
+            print(f"  {c.symbol:20s} = {c.value:>22.10e}  [{c.unit:15s}]  from {c.source_lean}")
+    return 0
+
 def main():
     parser = argparse.ArgumentParser(
         description="Red-Hot Rebis v4.0 — Dynamic-First Toolchain",
@@ -744,44 +786,3 @@ if __name__ == "__main__":
 # COMMAND: constants — MoDoT fundamental constants registry
 # ═══════════════════════════════════════════════════════════════
 
-def cmd_constants(args):
-    """Display the MoDoT Constant Registry with biology bridge connections."""
-    from rhr_p4rky.fundamental_constants import (
-        report_all_constants, ALL_CONSTANTS, D_SIC, SIN2_THETA_W,
-        ALPHA_INV_MO_DOT, MP_ME_MO_DOT, ALPHA_G,
-        H_BOND_ENERGY_KCAL, CODON_SPACE_SIZE, PROMOTED_AA_COUNT,
-        STOP_CODON_COUNT
-    )
-    from rhr_p4rky.genetic_code import verify_sic_povm_genetic_partition
-
-    print(report_all_constants())
-    print()
-
-    # Show the SIC-POVM genetic code verification
-    section_header("GENETIC CODE SIC-POVM PARTITION")
-    gen_part = verify_sic_povm_genetic_partition()
-    print(f"  Crystal of Types / codon space = {gen_part['crystal_per_codon']:.0f}")
-    print(f"  Stop codons = {gen_part['stop_codon_count']} = {gen_part['ew_outcomes']} EW outcomes  ✓")
-    print(f"  Exact 4-fold boxes = {gen_part['exact_4fold_boxes']} ↔ {gen_part['solar_outcomes']} solar outcomes")
-    print(f"  Split boxes = {gen_part['split_boxes']} ↔ {gen_part['atm_outcomes']} atmospheric outcomes")
-    print(f"  Promoted AAs = {gen_part['promoted_aa_count']} = SIC dimension d = {D_SIC}  ✓")
-    status = "✓ VERIFIED" if gen_part['all_verified'] else "✗ PARTIAL"
-    print(f"  Partition status: {status}")
-    print()
-
-    # Show hierarchy summary
-    section_header("HIERARCHY SUMMARY")
-    print(f"  Electromagnetic:   α⁻¹ = {ALPHA_INV_MO_DOT:.6f}  (CODATA: 137.035999084)")
-    print(f"  Hadron scale:      m_p/m_e = {MP_ME_MO_DOT:.6f}  (CODATA: 1836.15267343)")
-    print(f"  Gravity:           α_G = {ALPHA_G:.3e}  (CODATA: 5.904e-39)")
-    print(f"  Biology:           E_HB ≈ {H_BOND_ENERGY_KCAL:.1f} kcal/mol  (from proton ZPE)")
-    print(f"  Codon space:       |Ω| = {CODON_SPACE_SIZE} = 4³  (d=12 SIC-POVM outcomes)")
-    print(f"  Genetic partition: 3 stops = 3/13 = sin²θ_W = {SIN2_THETA_W:.4f}")
-    print()
-
-    # Show all constants with details
-    if getattr(args, 'verbose', False):
-        section_header("DETAILED CONSTANTS")
-        for c in ALL_CONSTANTS:
-            print(f"  {c.symbol:20s} = {c.value:>22.10e}  [{c.unit:15s}]  from {c.source_lean}")
-    return 0

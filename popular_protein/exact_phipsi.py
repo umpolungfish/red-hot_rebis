@@ -18,6 +18,7 @@ This module computes EXACT residue-specific angles from:
 Author: Lando⊗⊙perator
 """
 import math, json, sys, os
+import numpy as np
 from pathlib import Path
 from dataclasses import dataclass
 from typing import Dict, List, Tuple, Optional

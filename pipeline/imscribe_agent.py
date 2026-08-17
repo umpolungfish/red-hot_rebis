@@ -29,6 +29,9 @@ Requires: {PROVIDER}_API_KEY in environment.
 """
 
 from __future__ import annotations
+import sys as _sys
+# imscrbgrmr lives in the grammar tree, a sibling of this repository
+_sys.path.insert(0, '/home/mrnob0dy666/imsgct/imscribing_grammar')
 
 import json
 import os
@@ -63,7 +66,7 @@ except ImportError:
     class VarmaCorrelationData: pass
     def score_phi_c_candidacy(*a, **kw): return None
 
-from imscribe_tool import ImscribeTool, IG_TOOL_SCHEMA as imscription_TOOL_SCHEMA, ToolResponse
+from pipeline.imscribe_tool import IGTool as ImscribeTool, IG_TOOL_SCHEMA as imscription_TOOL_SCHEMA, ToolResponse
 from shared.rich_output import *
 
 register_molecular_imscriptions()

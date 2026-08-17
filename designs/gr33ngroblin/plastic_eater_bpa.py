@@ -22,7 +22,7 @@ from pathlib import Path
 
 _REBIS_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, _REBIS_ROOT)
-from ch3mpiler_serpentrod_pipeline import (
+from rhr_p4rky.ch3mpiler_serpentrod_pipeline import (
     PNAMES, GLYPH_ORDINALS, ORD_TO_GLYPH, COMPLEMENTARY_PAIRS_V2,
     PRIMITIVE_TO_AA, AA_CODON_POOL_V2, STRUCTURAL_AAS_V2,
     fuse_reaction_types, complement_type_v2, glyph_ord, ord_to_glyph,
