@@ -12,15 +12,15 @@
     8
   ],
   "total_files": 33,
-  "total_bytes": 59380,
+  "total_bytes": 59381,
   "tool_bridges": [
-    "gene_imscriber",
-    "serpentrod",
+    "materials_sim",
     "ch3mpiler",
-    "materials_sim"
+    "gene_imscriber",
+    "serpentrod"
   ],
   "frobenius_verified": true,
   "output_directory": "/home/mrnob0dy666/imsgct/red-hot_rebis/clink/datasets/organism_designs/organism_human",
-  "generation_time_seconds": 0.09,
-  "generated_at": "2026-08-16T20:49:22.411245"
+  "generation_time_seconds": 0.11,
+  "generated_at": "2026-08-16T21:06:13.593894"
 }
