@@ -58,61 +58,71 @@ ALL_LIGANDS = []
 SMILES_SET = set()
 TABLE_RE = re.compile(r'\s*(\d+)\s+(.+?)\s{2,}(.+?)\s+([\d\.\-]+)\s+([\d\.\-]+)\s+([\d\.\-]+)\s*$')
 
-total = len(PDB_CODES)
-for i, pdb in enumerate(PDB_CODES):
-    meta = PDB_META[pdb]
-    t0 = time.time()
-    proc = subprocess.run(
-        ['python3', '-m', 'rebis.p4ra', 'ligands', pdb],
-        capture_output=True, text=True, timeout=120, cwd=BASE,
-        env={**os.environ, 'PYTHONPATH': BASE}
-    )
-    elapsed = time.time() - t0
-    n_parsed = 0
-    
-    for line in proc.stdout.split('\n'):
-        m = TABLE_RE.match(line)
-        if m:
-            smi = m.group(3)
-            if any(c in smi for c in 'CNOSP') and len(smi) > 3:
-                if smi not in SMILES_SET:
-                    SMILES_SET.add(smi)
-                    try:
-                        score, logP, mw = float(m.group(4)), float(m.group(5)), float(m.group(6))
-                    except:
-                        score, logP, mw = 0, 0, 0
-                    ALL_LIGANDS.append({
-                        'pdb': pdb, 'name': meta['name'], 'ec_class': meta['ec_class'],
-                        'organism': meta['organism'], 'smiles': smi,
-                        'method': m.group(2), 'score': score, 'logP': logP, 'MW': mw,
-                    })
-                    n_parsed += 1
-    
-    status = 'OK' if proc.returncode == 0 else f'ERR({proc.returncode})'
-    print(f"[{i+1:3d}/{total}] {pdb:6s} | {meta['name']:<35s} | {n_parsed:3d} smiles | {elapsed:.1f}s | {status}")
-    sys.stdout.flush()
+# The table arrives coloured. Escape sequences sit between the columns the regex
+# is counting, so every row failed to match and the sweep reported no ligands for
+# proteins that had produced dozens.
+ANSI_RE = re.compile(r'\x1b\[[0-9;]*m')
 
-# ── Save ──
-with open(f'{OUTDIR}/all_ligands.smi', 'w') as f:
+def run_sweep():
+    total = len(PDB_CODES)
+    for i, pdb in enumerate(PDB_CODES):
+        meta = PDB_META[pdb]
+        t0 = time.time()
+        proc = subprocess.run(
+            ['python3', '-m', 'rebis.p4ra', 'ligands', pdb],
+            capture_output=True, text=True, timeout=120, cwd=BASE,
+            env={**os.environ, 'PYTHONPATH': BASE}
+        )
+        elapsed = time.time() - t0
+        n_parsed = 0
+    
+        for line in ANSI_RE.sub('', proc.stdout).split('\n'):
+            m = TABLE_RE.match(line)
+            if m:
+                smi = m.group(3)
+                if any(c in smi for c in 'CNOSP') and len(smi) > 3:
+                    if smi not in SMILES_SET:
+                        SMILES_SET.add(smi)
+                        try:
+                            score, logP, mw = float(m.group(4)), float(m.group(5)), float(m.group(6))
+                        except:
+                            score, logP, mw = 0, 0, 0
+                        ALL_LIGANDS.append({
+                            'pdb': pdb, 'name': meta['name'], 'ec_class': meta['ec_class'],
+                            'organism': meta['organism'], 'smiles': smi,
+                            'method': m.group(2), 'score': score, 'logP': logP, 'MW': mw,
+                        })
+                        n_parsed += 1
+    
+        status = 'OK' if proc.returncode == 0 else f'ERR({proc.returncode})'
+        print(f"[{i+1:3d}/{total}] {pdb:6s} | {meta['name']:<35s} | {n_parsed:3d} smiles | {elapsed:.1f}s | {status}")
+        sys.stdout.flush()
+
+    # ── Save ──
+    with open(f'{OUTDIR}/all_ligands.smi', 'w') as f:
+        for lig in ALL_LIGANDS:
+            f.write(f"{lig['smiles']}\t{lig['pdb']}\t{lig['name']}\t{lig['ec_class']}\n")
+
+    with open(f'{OUTDIR}/all_ligands.json', 'w') as f:
+        json.dump(ALL_LIGANDS, f, indent=2)
+
+    # ── Summary ──
+    ec_counts = defaultdict(lambda: {'proteins': set(), 'ligands': 0})
     for lig in ALL_LIGANDS:
-        f.write(f"{lig['smiles']}\t{lig['pdb']}\t{lig['name']}\t{lig['ec_class']}\n")
+        ec = lig['ec_class']
+        ec_counts[ec]['proteins'].add(lig['pdb'])
+        ec_counts[ec]['ligands'] += 1
 
-with open(f'{OUTDIR}/all_ligands.json', 'w') as f:
-    json.dump(ALL_LIGANDS, f, indent=2)
+    print(f"\n{'='*80}")
+    print(f"TOTAL: {len(ALL_LIGANDS)} ligands ({len(SMILES_SET)} unique) from {len(PDB_CODES)} proteins")
+    print(f"\nBy EC Class:")
+    for ec in sorted(ec_counts.keys()):
+        c = ec_counts[ec]
+        print(f"  {ec:<35s} | {len(c['proteins']):3d} proteins | {c['ligands']:5d} ligands")
+    print(f"\nSaved to: {OUTDIR}/")
+    print(f"  all_ligands.smi  — {len(ALL_LIGANDS)} SMILES")
+    print(f"  all_ligands.json — full results")
 
-# ── Summary ──
-ec_counts = defaultdict(lambda: {'proteins': set(), 'ligands': 0})
-for lig in ALL_LIGANDS:
-    ec = lig['ec_class']
-    ec_counts[ec]['proteins'].add(lig['pdb'])
-    ec_counts[ec]['ligands'] += 1
 
-print(f"\n{'='*80}")
-print(f"TOTAL: {len(ALL_LIGANDS)} ligands ({len(SMILES_SET)} unique) from {len(PDB_CODES)} proteins")
-print(f"\nBy EC Class:")
-for ec in sorted(ec_counts.keys()):
-    c = ec_counts[ec]
-    print(f"  {ec:<35s} | {len(c['proteins']):3d} proteins | {c['ligands']:5d} ligands")
-print(f"\nSaved to: {OUTDIR}/")
-print(f"  all_ligands.smi  — {len(ALL_LIGANDS)} SMILES")
-print(f"  all_ligands.json — full results")
+if __name__ == '__main__':
+    run_sweep()
