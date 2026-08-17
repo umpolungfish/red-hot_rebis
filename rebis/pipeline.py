@@ -348,10 +348,18 @@ def main():
         description="Full therapy→PDB pipeline:\n"
                     "  load → analyze → ch3mpile → serpentrod → PDB validate → Frobenius\n"
                     "Generates a structural design report for the specified therapy.",
-        epilog="Example:  rebis.pipeline therapy EGFR_inhibitor",
+        epilog="Example:  rebis.pipeline therapy schizophrenia",
         formatter_class=argparse.RawDescriptionHelpFormatter)
-    p_the.add_argument("key", nargs="?", default="",
-                       help="Therapy key/identifier")
+    # The therapies are named in the pipeline itself, so the choices come from
+    # there and an omitted key runs the first rather than failing on an empty one.
+    try:
+        from pipeline.therapy_to_pdb import THERAPIES as _THERAPIES
+        _keys = list(_THERAPIES)
+    except Exception:
+        _keys = []
+    p_the.add_argument("key", nargs="?", default=(_keys[0] if _keys else ""),
+                       choices=(_keys or None),
+                       help="Therapy key" + (f" ({', '.join(_keys)})" if _keys else ""))
     p_the.add_argument("--skip-ch3mpile", action="store_true",
                        help="Skip ch3mpiler stage")
     p_the.add_argument("--skip-serpentrod", action="store_true",

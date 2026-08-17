@@ -303,8 +303,10 @@ def _cmd_pipeline(args):
     print(f"  Length: {len(dna)} bp")
     try:
         from rhr_p4rky.gene_to_protein_pipeline import GeneToProteinPipeline
-        pipeline = GeneToProteinPipeline()
-        result = pipeline.run(dna) if hasattr(pipeline, 'run') else str(pipeline)
+        # The pipeline takes its sequence at construction; run() takes the
+        # subunit count and an optional structure path, not the sequence.
+        pipeline = GeneToProteinPipeline(dna)
+        result = pipeline.run()
         print(_json_or_str(result))
     except Exception as e:
         import traceback
