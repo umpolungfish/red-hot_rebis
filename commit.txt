@@ -1,25 +1,14 @@
-Eleven of the twelve residues were invisible to the predictor
+The gene tuples were keyed to retired letters, and the fork and fuse were swapped
 
-The activation index is built by matching each residue's mark against the list of
-primitive names, and that list still held the retired letters while the map held
-Shavian values. Nothing matched except glutamine, and only because ⊙ is the mark that
-never changed, so every protein came back with one primitive active out of twelve and
-every rolling profile was flat.
+Every tuple the gene imscriber emitted came out under Ð Þ Ř Φ ƒ Ç Γ ɢ Ħ Σ Ω, so
+nothing downstream that addresses the marks could read them.
 
-The same file carried the assignment twice, in PRIMITIVE_MAP and again in AA_DATA,
-and the two had drifted apart. It is stated once now, and AA_DATA reads from the map.
+Worse, the activation map had asparagine on Grammar and glutamine on Granularity,
+which is the fork and the fuse the wrong way round. Canonical now: asparagine on
+Granularity as the branch point, glutamine on Grammar as the join, matching the
+catalog and the genetic code module.
 
-The assignment itself was pre-revision: histidine sat on Grammar and glutamine on
-Criticality, which is the swap the catalog corrected. Canonical now, histidine on
-Criticality and glutamine on Grammar, with Recognition, Fidelity, Granularity,
-Stoichiometry and Protection replacing the retired axis names Reversibility, Force,
-Interaction, Entropy and Winding.
-
-Trp-cage now profiles as ∈ ∋ ≺ ⊤ ⊥ ⊞ ⊣, which is the motif the fold sweep reports for
-it from the structure side.
-
-Sidechain algebra crashed outright on a missing key, for the same reason one layer
-up: all twenty sidechain tuples and all four environment tuples were keyed by retired
-letters while the navigator addresses the marks. Rekeyed, and the composite tier
-matrix computes across the board, with arginine at a charged interface reaching O_∞
-alone.
+The Belnap command printed meet against T and join against F while labelling both
+plainly, so B appeared to meet to T and F to N and the table looked broken when the
+algebra was right. It prints the full tables now, both orderings visible, with the
+negation row and the designated values.
