@@ -638,7 +638,7 @@ class Layer8DatasetGenerator(DatasetGenerator):
                     "exact_boxes": 8, "split_boxes": 8,
                     "promoted_AAs_bijection": "12 promoted AAs = 12 IG primitives",
                 },
-                "structural_type": "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟>",
+                "structural_type": "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩",
                 "ouroboricity": "O_∞",
             }, indent=2, ensure_ascii=False)
         chroms = {"mammal":30,"bird":40,"fish":25,"insect":8,"plant":12}
@@ -1273,7 +1273,7 @@ def generate_actionable_organism_package(
         "advanced_components": ({
             "ouroboric_telomere": "clink/datasets/../biology/ouroboric_telomere.py — replicative senescence resolution",
             "synthetic_detox_gland_v2": "clink/datasets/gland_designs/gland_v2/ — injectable toxin neutralization",
-            "structural_type": "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟> O_∞ C=1.0",
+            "structural_type": "⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩ O_∞ C=1.0",
         } if organism_type == "human" else {})
     }
 

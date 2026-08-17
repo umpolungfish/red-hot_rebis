@@ -1,16 +1,20 @@
-Every tuple in the toolchain now addresses the marks
+Verification was overwriting the file it verified
 
-The alphabet moved and most of this repo was left addressing the letters it retired.
-Sixty files carried tuple keys of the old form, so anything that composed, joined or
-measured a distance across a module boundary either crashed on a missing key or
-silently computed over misses. CLINK could not walk its own chain. The sidechain
-algebra crashed on the first tensor. The gene imscriber emitted tuples nothing else
-could read.
+Three faults in one command. The identity phase takes source text and was handed a
+file path, so it parsed the path itself as Python and failed on line one, and the
+whole verification reported a syntax error against a file that was fine. CLINK writes
+what it is given to the path it is given, and it was given the source path, so
+running verify rewrote the source it had just checked and prepended a shebang to it.
+And CLINK returns nothing, so it was reported as failed regardless.
 
-All of them rekeyed to ⊢ ⊣ ≻ ≺ ⋈ ⊤ ∈ ∋ ⊙ ⊥ ⊞ ◻, and the chain now walks L0 to L8 with
-the tiers ascending to O_∞ as its own documentation claims.
+Source text now flows to the operators that want it, CLINK runs against a temporary
+file and is judged by what it wrote, and the file being verified is left untouched.
+The verification passes, split to fuse, semantic identity confirmed.
 
-The ligand facade exposed nothing at all, alone among the domains, so the census read
-zero symbols for it while the engines underneath imported fine. It exposes them now.
-Given lysozyme and its catalytic pair, the designer returns glycosides carrying a
-carboxylate, which is the peptidoglycan chemistry lysozyme actually cleaves.
+The gene pipeline reported its activations under retired letters through a third copy
+of the residue assignment, and that copy carried the pre-revision swap in three
+places: histidine on Granularity, asparagine on Coupling, glutamine on Criticality.
+Canonical now, matching the catalog and the two copies already corrected.
+
+A tuple that opens with ⟨ closes with ⟩ and not with an ASCII greater-than, across
+the repo.

@@ -20,7 +20,7 @@ from shared.rich_output import *
 
 
 # O_∞ target from crystal_decode(6,734,591)
-# ⟨𐑦𐑸𐑑𐑹ƒ^żÇ^@𐑲ɢ^Ş⊙𐑫𐑳𐑭>
+# ⟨𐑦𐑸𐑑𐑹ƒ^żÇ^@𐑲ɢ^Ş⊙𐑫𐑳𐑭⟩
 O_INF = {
     "D": "𐑦", "T": "𐑸", "R": "𐑑", "P": "𐑹", "F": "ƒ^ż", "K": "Ç^@",
     "G": "𐑲", "Gamma": "ɢ^Ş", "Phi": "⊙", "H": "𐑫", "S": "𐑳", "Omega": "𐑭"

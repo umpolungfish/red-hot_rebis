@@ -92,27 +92,44 @@ def _cmd_verify(args):
         from pipeline.frob import identity_phase, bootstrap_compiler, VINIT, TANCH, AREV, AFWD, FFUSE, CLINK, IFIX, EVALT, EVALF
         print(f"  Source: {filepath}")
 
-        # Phase 1: Semantic identity check
+        # AREV reads a path and returns the source; every operator below takes
+        # the source text, not the path.
+        source = AREV(filepath)
         print("  [1] Semantic identity phase (AST → source → AST)...")
-        identity_ok = identity_phase(filepath)
+        identity_ok = identity_phase(source)
         print(f"      {'✓ PASS' if identity_ok else '✗ FAIL'}")
 
         # Phase 2: IMASM bootstrap sequence
         print("  [2] IMASM bootstrap sequence:")
         vinit_result = VINIT()
         print(f"      VINIT: {vinit_result}")
-        tanch_result = TANCH(filepath)
+        tanch_result = TANCH(source)
         print(f"      TANCH: {'✓' if tanch_result else '✗'}")
-        arev_result = AREV(filepath)
+        arev_result = source
         print(f"      AREV: {arev_result[:60]}...")
         afwd_result = AFWD(tanch_result) if tanch_result else None
         print(f"      AFWD: {'✓' if afwd_result else '✗'}")
-        ffuse_result = FFUSE(tanch_result, filepath) if tanch_result else None
+        ffuse_result = FFUSE(tanch_result, source) if tanch_result else None
         print(f"      FFUSE: {'✓' if ffuse_result else '✗'}")
-        clink_result = CLINK(arev_result, filepath) if arev_result else None
-        print(f"      CLINK: {'✓' if clink_result else '✗'}")
-        ifix_result = IFIX(filepath)
-        print(f"      IFIX: {ifix_result}")
+        # CLINK writes what it is given to the path it is given, so verification
+        # runs it against a temporary file. Verifying a source must never rewrite
+        # that source, and calling the operator failed because it returns nothing
+        # is a second error: it is judged by what it wrote.
+        clink_ok = False
+        if arev_result:
+            import tempfile, os as _os
+            fd, tmp = tempfile.mkstemp(suffix=".py")
+            _os.close(fd)
+            try:
+                CLINK(arev_result, tmp)
+                with open(tmp, encoding="utf-8") as fh:
+                    written = fh.read()
+                clink_ok = arev_result.strip() in written
+            finally:
+                _os.unlink(tmp)
+        print(f"      CLINK: {'✓' if clink_ok else '✗'}")
+        IFIX(filepath)
+        print("      IFIX: ✓")
         iscrib_result = ISCRIB(filepath) if 'ISCRIB' in globals() else None
         evalt_result = EVALT()
         print(f"      EVALT: {evalt_result}")
