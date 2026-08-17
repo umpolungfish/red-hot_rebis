@@ -81,18 +81,18 @@ COMPLEMENTARY_PAIRS = [("D","W"), ("T","H"), ("R","S"), ("P","F"), ("K","G"), ("
 # Ordinal mappings (glyph → ordinal 0-based)
 # These match GLYPH_ORDINALS from the forward pipeline
 GLYPH_ORDINALS = {
-    "D": {"𐑛": 0, "𐑨": 1, "𐑼": 2, "𐑦": 3},
-    "T": {"𐑡": 0, "𐑰": 1, "𐑥": 2, "𐑶": 3, "𐑸": 4},
-    "R": {"𐑩": 0, "𐑑": 1, "𐑽": 2, "𐑾": 3},
-    "P": {"𐑗": 0, "𐑿": 1, "𐑬": 2, "𐑯": 3, "𐑹": 4},
-    "F": {"𐑱": 0, "𐑞": 1, "𐑐": 2},
-    "K": {"𐑘": 0, "𐑤": 1, "𐑧": 2, "𐑺": 3, "𐑪": 4},
-    "G": {"𐑚": 0, "𐑔": 1, "𐑲": 2},
-    "Gm": {"𐑝": 0, "𐑜": 1, "𐑠": 2, "𐑵": 3},
-    "Ph": {"𐑢": 0, "⊙": 1, "𐑮": 2, "𐑻": 3, "𐑣": 4},
-    "H": {"𐑓": 0, "𐑒": 1, "𐑖": 2, "𐑫": 3},
-    "S": {"𐑙": 0, "𐑕": 1, "𐑳": 2},
-    "W": {"𐑷": 0, "𐑴": 1, "𐑭": 2, "𐑟": 3}
+    "D": {"\U0001045B": 0, "\U00010468": 1, "\U0001047C": 2, "\U00010466": 3},
+    "T": {"\U00010461": 0, "\U00010470": 1, "\U00010465": 2, "\U00010476": 3, "\U00010478": 4},
+    "R": {"\U00010469": 0, "\U00010451": 1, "\U0001047D": 2, "\U0001047E": 3},
+    "P": {"\U00010457": 0, "\U0001047F": 1, "\U0001046C": 2, "\U0001046F": 3, "\U00010479": 4},
+    "F": {"\U00010471": 0, "\U0001045E": 1, "\U00010450": 2},
+    "K": {"\U00010458": 0, "\U00010464": 1, "\U00010467": 2, "\U0001047A": 3, "\U0001046A": 4},
+    "G": {"\U0001045A": 0, "\U00010454": 1, "\U00010472": 2},
+    "Gm": {"\U0001045D": 0, "\U0001045C": 1, "\U00010460": 2, "\U00010475": 3},
+    "Ph": {"\U00010462": 0, "\u2299": 1, "\U0001046E": 2, "\U0001047B": 3, "\U00010463": 4},
+    "H": {"\U00010453": 0, "\U00010452": 1, "\U00010456": 2, "\U0001046B": 3},
+    "S": {"\U00010459": 0, "\U00010455": 1, "\U00010473": 2},
+    "W": {"\U00010477": 0, "\U00010474": 1, "\U0001046D": 2, "\U0001045F": 3}
 }
 
 ORD_TO_GLYPH = {}
@@ -110,7 +110,7 @@ def ord_to_glyph(prim: str, ordinal: int) -> str:
 
 
 def fmt_tuple(t: dict) -> str:
-    """Format a 12-primitive dict as ⟨...⟩ string."""
+    """Format a 12-primitive dict as angle-bracket string."""
     return "<" + "".join(t.get(p, "?") for p in PRIMITIVE_NAMES_SHORT) + ">"
 
 
@@ -120,8 +120,7 @@ def tuple_distance_dict(t1: dict, t2: dict) -> float:
     for p in PRIMITIVE_NAMES_SHORT:
         o1 = glyph_ord(p, t1.get(p, "?"))
         o2 = glyph_ord(p, t2.get(p, "?"))
-        w = 1.0  # uniform weight
-        sq += w * (o1 - o2) ** 2
+        sq += (o1 - o2) ** 2
     return math.sqrt(sq)
 
 
@@ -259,277 +258,6 @@ CATALYZING_PROTEINS = [
         "pdb": "1LYZ",
         "active_site_residues": ["Glu35", "Asp52"],
         "catalytic_roles": ["acid/base (Glu35)", "nucleophile (Asp52)"],
-        "reaction": "Hydrolysis of β-1,4 glycosidic bonds in peptidoglycan",
-        "smiles_substrate_hint": "CC1OC(OC2C(O)C(O)C(O)OC2C(=O)O)C(O)C(O)C1O"
-    },
-    {
-        "name": "pETase",
-        "organism": "Ideonella sakaiensis",
-        "pdb": "",
-        "active_site_residues": ["Ser160", "Asp206", "His237"],
-        "catalytic_roles": ["nucleophile (Ser160)", "base (Asp206)", "acid/base (His237)"],
-        "reaction": "Hydrolysis of PET (polyethylene terephthalate) to MHET + TPA",
-        "smiles_substrate_hint": "O=C(Oc1ccc(C(=O)O)cc1)c2ccc(C(=O)O)cc2"
-    },
-    {
-        "name": "trypsin",
-        "organism": "Bos taurus",
-        "pdb": "",
-        "active_site_residues": ["Ser195", "His57", "Asp102"],
-        "catalytic_roles": ["nucleophile (Ser195)", "general base (His57)", "charge relay (Asp102)"],
-        "reaction": "Hydrolysis of peptide bonds C-terminal to Arg/Lys",
-        "smiles_substrate_hint": "O=C(NC(C(=O)O)Cc1ccccc1)C(N)CCCCN"
-    },
-    {
-        "name": "carbonic_anhydrase_II",
-        "organism": "Homo sapiens",
-        "pdb": "",
-        "active_site_residues": ["His94", "His96", "His119"],
-        "catalytic_roles": ["Zn²⁺ ligand (His94)", "Zn²⁺ ligand (His96)", "Zn²⁺ ligand (His119)"],
-        "reaction": "Reversible hydration of CO₂ to HCO₃⁻",
-        "smiles_substrate_hint": "O=C=O"
-    },
-    {
-        "name": "acetylcholinesterase",
-        "organism": "Homo sapiens",
-        "pdb": "",
-        "active_site_residues": ["Ser203", "His447", "Glu334"],
-        "catalytic_roles": ["nucleophile (Ser203)", "general base (His447)", "charge relay (Glu334)"],
-        "reaction": "Hydrolysis of acetylcholine to choline + acetate",
-        "smiles_substrate_hint": "CC(=O)OCC[N+](C)(C)C"
-    },
-    {
-        "name": "cytochrome_P450_2D6",
-        "organism": "Homo sapiens",
-        "pdb": "",
-        "active_site_residues": ["Cys443"],
-        "catalytic_roles": ["heme axial ligand (Cys443)"],
-        "reaction": "Monooxygenation of xenobiotics (C-H hydroxylation, N/O-dealkylation)",
-        "smiles_substrate_hint": "COc1ccc2CCN(C)Cc2c1"
-    },
-    {
-        "name": "ribonuclease_A",
-        "organism": "Bos taurus",
-        "pdb": "",
-        "active_site_residues": ["His12", "His119", "Lys41"],
-        "catalytic_roles": ["general base (His12)", "general acid (His119)", "stabilization (Lys41)"],
-        "reaction": "Endonucleolytic cleavage of RNA at 3'-phosphate",
-        "smiles_substrate_hint": "c1cn(C2CC(O)C(O)C2O)c(=O)[nH]c1=O"
-    },
-    {
-        "name": "alcohol_dehydrogenase",
-        "organism": "Saccharomyces cerevisiae",
-        "pdb": "",
-        "active_site_residues": ["Cys43", "His66", "Cys153"],
-        "catalytic_roles": ["Zn²⁺ ligand (Cys43)", "Zn²⁺ ligand (His66)", "Zn²⁺ ligand (Cys153)"],
-        "reaction": "Reversible oxidation of alcohols to aldehydes/ketones (NAD⁺ dependent)",
-        "smiles_substrate_hint": "CCO"
-    },
-    {
-        "name": "HIV1_protease",
-        "organism": "Human immunodeficiency virus 1",
-        "pdb": "",
-        "active_site_residues": ["Asp25", "Asp25'", "Thr26", "Gly27"],
-        "catalytic_roles": ["catalytic Asp dyad (Asp25/Asp25')", "flap residues (Thr26/Gly27)"],
-        "reaction": "Hydrolysis of viral Gag-Pol polyprotein at specific peptide bonds",
-        "smiles_substrate_hint": "CC(C)C[C@H](NC(=O)[C@H](Cc1ccccc1)NC(=O)[C@H](CCCN=C(N)N)NC(=O)[C@H](CCCN=C(N)N)N)C(=O)O"
-    },
-    {
-        "name": "urease",
-        "organism": "Canavalia ensiformis (jack bean)",
-        "pdb": "",
-        "active_site_residues": ["His134", "His136", "His246", "Asp360", "Lys220"],
-        "catalytic_roles": ["Ni²⁺ ligands (His134, His136, His246)", "base (Asp360)", "substrate binding (Lys220)"],
-        "reaction": "Hydrolysis of urea to ammonia + CO₂",
-        "smiles_substrate_hint": "NC(=O)N"
-    },
-]
-
-
-# ── AA-to-Primitive bijection (mirrors the forward pipeline) ────────
-
-PRIMITIVE_NAMES_SHORT = ["D", "T", "R", "P", "F", "K", "G", "Gm", "Ph", "H", "S", "W"]
-PRIMITIVE_FULL_NAMES = [
-    "Dimensionality", "Topology", "Recognition", "Parity", "Fidelity",
-    "Kinetics", "Granularity", "Coupling", "Criticality", "Chirality",
-    "Stoichiometry", "Winding"
-]
-
-# Each AA has a dominant primitive (from the serpentrod bijection)
-AA_TO_PRIMITIVE = {
-    "Met": "D", "Trp": "T", "Cys": "R", "Tyr": "P", "Phe": "F",
-    "Ile": "K", "Asn": "G", "Gln": "Gm", "His": "Ph",
-    "Asp": "H", "Lys": "S", "Glu": "W"
-}
-
-# Primitive → complementary primitive pairs
-COMPLEMENTARY_PAIRS = [("D","W"), ("T","H"), ("R","S"), ("P","F"), ("K","G"), ("Gm","Ph")]
-
-# Ordinal mappings (glyph → ordinal 0-based)
-# These match GLYPH_ORDINALS from the forward pipeline
-GLYPH_ORDINALS = {
-    "D": {"\U0001045B": 0, "\U00010468": 1, "\U0001047C": 2, "\U00010466": 3},
-    "T": {"\U00010461": 0, "\U00010470": 1, "\U00010465": 2, "\U00010476": 3, "\U00010478": 4},
-    "R": {"\U00010469": 0, "\U00010451": 1, "\U0001047D": 2, "\U0001047E": 3},
-    "P": {"\U00010457": 0, "\U0001047F": 1, "\U0001046C": 2, "\U0001046F": 3, "\U00010479": 4},
-    "F": {"\U00010471": 0, "\U0001045E": 1, "\U00010450": 2},
-    "K": {"\U00010458": 0, "\U00010464": 1, "\U00010467": 2, "\U0001047A": 3, "\U0001046A": 4},
-    "G": {"\U0001045A": 0, "\U00010454": 1, "\U00010472": 2},
-    "Gm": {"\U0001045D": 0, "\U0001045C": 1, "\U00010460": 2, "\U00010475": 3},
-    "Ph": {"\U00010462": 0, "\u2299": 1, "\U0001046E": 2, "\U0001047B": 3, "\U00010463": 4},
-    "H": {"\U00010453": 0, "\U00010452": 1, "\U00010456": 2, "\U0001046B": 3},
-    "S": {"\U00010459": 0, "\U00010455": 1, "\U00010473": 2},
-    "W": {"\U00010477": 0, "\U00010474": 1, "\U0001046D": 2, "\U0001045F": 3}
-}
-
-ORD_TO_GLYPH = {}
-for prim, mapping in GLYPH_ORDINALS.items():
-    rev = {v: k for k, v in mapping.items()}
-    ORD_TO_GLYPH[prim] = rev
-
-
-def glyph_ord(prim: str, glyph: str) -> int:
-    return GLYPH_ORDINALS.get(prim, {}).get(glyph, 0)
-
-
-def ord_to_glyph(prim: str, ordinal: int) -> str:
-    return ORD_TO_GLYPH.get(prim, {}).get(ordinal, "?")
-
-
-def fmt_tuple(t: dict) -> str:
-    """Format a 12-primitive dict as angle-bracket string."""
-    return "<" + "".join(t.get(p, "?") for p in PRIMITIVE_NAMES_SHORT) + ">"
-
-
-def tuple_distance_dict(t1: dict, t2: dict) -> float:
-    """Weighted Euclidean distance between two 12-primitive dicts."""
-    sq = 0.0
-    for p in PRIMITIVE_NAMES_SHORT:
-        o1 = glyph_ord(p, t1.get(p, "?"))
-        o2 = glyph_ord(p, t2.get(p, "?"))
-        sq += (o1 - o2) ** 2
-    return math.sqrt(sq)
-
-
-# ── Load ch3mpiler's BOND_TYPES and FG tables ──────────────────────
-
-_ch3mpiler_module = None
-
-def _get_ch3mpiler():
-    """Try to load ch3mpiler; return None on failure (uses fallback tables)."""
-    global _ch3mpiler_module
-    if _ch3mpiler_module is not None:
-        return _ch3mpiler_module
-    try:
-        import importlib.util
-        # Fix path: compiler.py is in ch3mpiler/ subdir, not REBIS_ROOT directly
-        compiler_path = REBIS_ROOT / "ch3mpiler" / "compiler.py"
-        if not compiler_path.exists():
-            compiler_path = REBIS_ROOT.parent / "ch3mpiler" / "compiler.py"
-        if not compiler_path.exists():
-            return None
-        spec = importlib.util.spec_from_file_location(
-            "ch3mpiler_compiler", compiler_path)
-        mod = importlib.util.module_from_spec(spec)
-        sys.modules["ch3mpiler_compiler"] = mod
-        # Set __package__ so relative imports work
-        mod.__package__ = "ch3mpiler"
-        mod.__path__ = [str(compiler_path.parent)]
-        # Insert path for relative imports
-        sys.path.insert(0, str(compiler_path.parent))
-        spec.loader.exec_module(mod)
-        _ch3mpiler_module = mod
-    except Exception as e:
-        _ch3mpiler_module = None  # signal to use fallback
-    return _ch3mpiler_module
-
-
-def get_bond_types() -> dict:
-    """Get the BOND_TYPES dict from ch3mpiler, or empty dict as fallback."""
-    ch3 = _get_ch3mpiler()
-    if ch3 is None:
-        return {}
-    return getattr(ch3, 'BOND_TYPES', {})
-
-
-def get_fg_table() -> dict:
-    """Get the FG dict from ch3mpiler, or empty dict as fallback."""
-    ch3 = _get_ch3mpiler()
-    if ch3 is None:
-        return {}
-    return getattr(ch3, 'FG', {})
-
-# ── BEVY OF CATALYZING PROTEINS ────────────────────────────────────
-
-# Shavian glyph constants for readability
-D_wedge = "\U0001045B"   # 0
-D_tri = "\U00010468"     # 1
-D_infty = "\U0001047C"   # 2
-D_odot = "\U00010466"    # 3
-
-T_net = "\U00010461"      # 0
-T_in = "\U00010470"       # 1
-T_bowtie = "\U00010465"   # 2
-T_otimes = "\U00010476"   # 3
-T_odot = "\U00010478"     # 4
-
-R_super = "\U00010469"    # 0
-R_cat = "\U00010451"      # 1
-R_dagger = "\U0001047D"   # 2
-R_lr = "\U0001047E"       # 3
-
-P_asym = "\U00010457"     # 0
-P_psi = "\U0001047F"      # 1
-P_pm = "\U0001046C"       # 2
-P_sym = "\U0001046F"      # 3
-P_pm_sym = "\U00010479"   # 4
-
-F_ell = "\U00010471"      # 0
-F_eth = "\U0001045E"      # 1
-F_hbar = "\U00010450"     # 2
-
-K_fast = "\U00010458"     # 0
-K_mod = "\U00010464"      # 1
-K_slow = "\U00010467"     # 2
-K_MBL = "\U0001047A"      # 3
-K_trap = "\U0001046A"     # 4
-
-G_beth = "\U0001045A"     # 0
-G_gimel = "\U00010454"    # 1
-G_aleph = "\U00010472"    # 2
-
-Gm_and = "\U0001045D"     # 0
-Gm_or = "\U0001045C"      # 1
-Gm_seq = "\U00010460"     # 2
-Gm_broad = "\U00010475"   # 3
-
-Ph_sub = "\U00010462"     # 0
-Ph_c = "\u2299"           # 1 (odot)
-Ph_c_complex = "\U0001046E"  # 2
-Ph_EP = "\U0001047B"      # 3
-Ph_super = "\U00010463"   # 4
-
-H_memless = "\U00010453"  # 0
-H_one = "\U00010452"      # 1
-H_two = "\U00010456"      # 2
-H_inf = "\U0001046B"      # 3
-
-S_11 = "\U00010459"       # 0
-S_nn = "\U00010455"       # 1
-S_nm = "\U00010473"       # 2
-
-W_0 = "\U00010477"        # 0
-W_Z2 = "\U00010474"       # 1
-W_Z = "\U0001046D"        # 2
-W_NA = "\U0001045F"       # 3
-
-CATALYZING_PROTEINS = [
-    {
-        "name": "lysozyme",
-        "organism": "Gallus gallus (chicken egg white)",
-        "pdb": "1LYZ",
-        "active_site_residues": ["Glu35", "Asp52"],
-        "catalytic_roles": ["acid/base (Glu35)", "nucleophile (Asp52)"],
         "reaction": "Hydrolysis of beta-1,4 glycosidic bonds in peptidoglycan",
         "smiles_substrate_hint": "CC1OC(OC2C(O)C(O)C(O)OC2C(=O)O)C(O)C(O)C1O"
     },
@@ -615,6 +343,103 @@ CATALYZING_PROTEINS = [
         "smiles_substrate_hint": "NC(=O)N"
     },
 ]
+
+
+# ── AA-to-Primitive bijection (mirrors the forward pipeline) ────────
+
+
+# Each AA has a dominant primitive (from the serpentrod bijection)
+
+# Primitive → complementary primitive pairs
+
+# Ordinal mappings (glyph → ordinal 0-based)
+# These match GLYPH_ORDINALS from the forward pipeline
+
+for prim, mapping in GLYPH_ORDINALS.items():
+    rev = {v: k for k, v in mapping.items()}
+    ORD_TO_GLYPH[prim] = rev
+
+
+
+
+
+
+
+
+
+
+# ── Load ch3mpiler's BOND_TYPES and FG tables ──────────────────────
+
+
+
+
+
+
+
+# ── BEVY OF CATALYZING PROTEINS ────────────────────────────────────
+
+# Shavian glyph constants for readability
+D_wedge = "\U0001045B"   # 0
+D_tri = "\U00010468"     # 1
+D_infty = "\U0001047C"   # 2
+D_odot = "\U00010466"    # 3
+
+T_net = "\U00010461"      # 0
+T_in = "\U00010470"       # 1
+T_bowtie = "\U00010465"   # 2
+T_otimes = "\U00010476"   # 3
+T_odot = "\U00010478"     # 4
+
+R_super = "\U00010469"    # 0
+R_cat = "\U00010451"      # 1
+R_dagger = "\U0001047D"   # 2
+R_lr = "\U0001047E"       # 3
+
+P_asym = "\U00010457"     # 0
+P_psi = "\U0001047F"      # 1
+P_pm = "\U0001046C"       # 2
+P_sym = "\U0001046F"      # 3
+P_pm_sym = "\U00010479"   # 4
+
+F_ell = "\U00010471"      # 0
+F_eth = "\U0001045E"      # 1
+F_hbar = "\U00010450"     # 2
+
+K_fast = "\U00010458"     # 0
+K_mod = "\U00010464"      # 1
+K_slow = "\U00010467"     # 2
+K_MBL = "\U0001047A"      # 3
+K_trap = "\U0001046A"     # 4
+
+G_beth = "\U0001045A"     # 0
+G_gimel = "\U00010454"    # 1
+G_aleph = "\U00010472"    # 2
+
+Gm_and = "\U0001045D"     # 0
+Gm_or = "\U0001045C"      # 1
+Gm_seq = "\U00010460"     # 2
+Gm_broad = "\U00010475"   # 3
+
+Ph_sub = "\U00010462"     # 0
+Ph_c = "\u2299"           # 1 (odot)
+Ph_c_complex = "\U0001046E"  # 2
+Ph_EP = "\U0001047B"      # 3
+Ph_super = "\U00010463"   # 4
+
+H_memless = "\U00010453"  # 0
+H_one = "\U00010452"      # 1
+H_two = "\U00010456"      # 2
+H_inf = "\U0001046B"      # 3
+
+S_11 = "\U00010459"       # 0
+S_nn = "\U00010455"       # 1
+S_nm = "\U00010473"       # 2
+
+W_0 = "\U00010477"        # 0
+W_Z2 = "\U00010474"       # 1
+W_Z = "\U0001046D"        # 2
+W_NA = "\U0001045F"       # 3
+
 
 # Build lookup by name
 PROTEIN_LOOKUP = {p["name"]: p for p in CATALYZING_PROTEINS}

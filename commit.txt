@@ -1,15 +1,7 @@
-Four commands named classes that do not exist
+One preamble
 
-The forge command asked for a class named after the forge; the forge is driven by
-the Eagle Cycle and its entry point is the simulation that runs it. The Casimir
-command asked for a designer; the cavity is built from its parameters, and the target
-gap sets the plate separation. Both run.
-
-The telomere analysis built a cell without the identifier its type requires, then
-without any telomeres in it, so the signalling step reduced over an empty array and
-reported it as an error inside otherwise complete output. It now fills the cell the
-way the simulation does, one cell carrying its full complement at baseline length,
-and the ATM cascade reports activity, phosphorylation and the p53 arm.
-
-The facades exported the names that do not exist alongside the ones that do; they
-export what is there.
+The ligand module carried its whole preamble twice, fifteen names, in two
+generations that had drifted apart. Python keeps the later definition, so the second
+copy was the live one and the first was dead text that every reader and every audit
+had to wade through. The live definitions stand, in the first position, and the dead
+copy is gone.
