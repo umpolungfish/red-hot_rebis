@@ -1,13 +1,4 @@
-The printing helpers behave like print, and the conduit finds its catalog
+The catalog here is the catalog
 
-Callers hand these helpers trailing values, an end, a file and a flush, exactly as
-they would to print, and the helpers took none of it. They take all of it now, and
-the unstyled branch writes to the file it was given instead of through the console.
-
-One script repeated a keyword in a single call, which is a syntax error and had kept
-the module from parsing at all. One called the helpers without importing them.
-
-The mycelial conduit looked for the catalog beside itself and in the working
-directory, and it lives three directories below the repository copy, so it found the
-catalog only when invoked from exactly one place. It searches the repository copy
-now.
+This repository held its own copy. It is a link to the one catalog now, so there is
+nothing here to drift and nothing to sync.
