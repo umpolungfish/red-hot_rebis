@@ -7,6 +7,23 @@ import hashlib
 from typing import Dict, Optional
 from shared.rich_output import *
 
+# This is a patch script: running it rewrites another file. Importing it must
+# not, so an import stops here rather than reapplying an edit that has already
+# been applied.
+if __name__ != "__main__":
+    raise ImportError(
+        "pipeline_hook.py rewrites another module; run it directly, do not import it")
+
+# ALREADY APPLIED CHECK — a patch that finds its own result in place has worked,
+# and applying it again duplicates what it inserted.
+import pathlib as _pl
+for _t in _pl.Path(__file__).parent.parent.rglob("reaction_pipeline.py"):
+    if 'fragment_smiles' in _t.read_text(encoding="utf-8"):
+        print("[already applied] the fragment hook is already present")
+        raise SystemExit(0)
+
+
+
 MAX_FILENAME_LEN = 100  # safe well under 255-char filesystem limit
 
 

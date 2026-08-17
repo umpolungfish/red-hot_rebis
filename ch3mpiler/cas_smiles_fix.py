@@ -15,6 +15,14 @@ Fix 2: Pipeline main() — when --cas is provided, propagate the resolved SMILES
 import re
 from shared.rich_output import *
 
+# This is a patch script: running it rewrites another file. Importing it must
+# not, so an import stops here rather than reapplying an edit that has already
+# been applied.
+if __name__ != "__main__":
+    raise ImportError(
+        "cas_smiles_fix.py rewrites another module; run it directly, do not import it")
+
+
 
 # ── Fix path: compiler.py ──
 COMPILER_PATH = "/home/mrnob0dy666/imsgct/red-hot_rebis/ch3mpiler/compiler.py"

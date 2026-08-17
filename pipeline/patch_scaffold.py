@@ -11,6 +11,23 @@ Changes:
 import re
 from shared.rich_output import *
 
+# This is a patch script: running it rewrites another file. Importing it must
+# not, so an import stops here rather than reapplying an edit that has already
+# been applied.
+if __name__ != "__main__":
+    raise ImportError(
+        "patch_scaffold.py rewrites another module; run it directly, do not import it")
+
+# ALREADY APPLIED CHECK — a patch that finds its own result in place has worked,
+# and applying it again duplicates what it inserted.
+import pathlib as _pl
+for _t in _pl.Path(__file__).parent.parent.rglob("reaction_pipeline.py"):
+    if 'self._scaffold_map' in _t.read_text(encoding="utf-8"):
+        print("[already applied] the scaffold map is already present")
+        raise SystemExit(0)
+
+
+
 with open('/home/mrnob0dy666/imsgct/red-hot_rebis/pipeline/reaction_pipeline.py', 'r') as f:
     content = f.read()
     lines = content.split('\n')
@@ -20,24 +37,30 @@ patches = []
 # === Patch 1: Add import ===
 # Find the import section (after "from reaction_deriver import ...")
 import_end = 0
+SCAFFOLD_IMPORT = "from ch3mpiler.scaffold_parser import ScaffoldParser, resolve_name_to_smiles"
+
+# Find the reaction_deriver import and the true end of it. The statement is
+# parenthesised and runs over several lines, so the insertion point is the line
+# after its closing bracket; stopping at the first continuation line puts the
+# new import inside the brackets, which is a syntax error.
 for i, line in enumerate(lines):
-    if 'from reaction_deriver import' in line and i > 10:
-        # Find the end of the import block
+    if 'reaction_deriver import' in line and i > 10:
         import_end = i
-        # Look for the next non-continuation line
-        while import_end < len(lines) and ('from ' in lines[import_end] or lines[import_end].strip().startswith('from') or 
-                                            'import' in lines[import_end] or lines[import_end].strip() == ''):
-            import_end += 1
+        if '(' in line and ')' not in line:
+            while import_end < len(lines) and ')' not in lines[import_end]:
+                import_end += 1
+        import_end += 1
         break
 
 # Add scaffold parser import
-if import_end > 0:
+if import_end > 0 and not any(SCAFFOLD_IMPORT in l for l in lines):
     insert_line = import_end
     while insert_line < len(lines) and not lines[insert_line].strip():
         insert_line += 1
-    patch = (insert_line, 0, f"from ch3mpiler.scaffold_parser import ScaffoldParser, resolve_name_to_smiles")
-    patches.append(patch)
+    patches.append((insert_line, 0, SCAFFOLD_IMPORT))
     info_line(f"Patch 1: Insert import at line {insert_line}")
+elif import_end > 0:
+    info_line("Patch 1: the scaffold import is already present")
 
 # === Patch 2: Add _scaffold_map to __init__ ===
 for i, line in enumerate(lines):
@@ -133,8 +156,10 @@ f"{len(self._scaffold_map)} FG-pair types")
 patches.sort(key=lambda x: x[0], reverse=True)
 
 for line_no, count, text in patches:
-    for t in text.split('\n'):
-        lines.insert(line_no, t)
+    # Inserting each line at the same index writes the block backwards, which is
+    # how this patch kept producing methods with their bodies in reverse. The
+    # block goes in as a block.
+    lines[line_no:line_no] = text.split('\n')
 
 result = '\n'.join(lines)
 with open('/home/mrnob0dy666/imsgct/red-hot_rebis/pipeline/reaction_pipeline.py', 'w') as f:
