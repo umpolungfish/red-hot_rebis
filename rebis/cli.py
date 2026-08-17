@@ -257,12 +257,16 @@ def cmd_chain(args):
         from alchemical_bridge.retrosynthetic_stone_engine import RetrosyntheticStoneEngine
         rse = RetrosyntheticStoneEngine()
         stone_result = rse.plan_synthesis(target)
-        sites = stone_result.get("disconnection_sites", [])
-        info_line(f"Disconnection sites found: {len(sites)}")
+        # The plan reports its count, its ranked sites and its disconnections;
+        # reading keys it does not carry reported nothing while it had found
+        # eleven sites.
+        n_sites = stone_result.get("num_disconnection_sites", 0)
+        sites = stone_result.get("top_sites", []) or stone_result.get("disconnections", [])
+        info_line(f"Disconnection sites found: {n_sites}")
         for i, site in enumerate(sites[:5]):
             info_line(f"  [{i}] {site.get('type', '?')} — bond {site.get('bond_idx', '?')}")
-        frogs = stone_result.get("frobenius_cycles", [])
-        info_line(f"Frobenius cycles: {len(frogs)}")
+        info_line(f"Frobenius score: {stone_result.get('frobenius_score', '?')}")
+        info_line(f"  {stone_result.get('synthesis_validity', '')}")
         success_line("Phase 3 complete ✓")
     except Exception as e:
         error_line(f"Phase 3 FAILED: {e}")

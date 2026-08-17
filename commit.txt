@@ -1,7 +1,14 @@
-One preamble
+The chain's last stage reports what its engine found
 
-The ligand module carried its whole preamble twice, fifteen names, in two
-generations that had drifted apart. Python keeps the later definition, so the second
-copy was the live one and the first was dead text that every reader and every audit
-had to wade through. The live definitions stand, in the first position, and the dead
-copy is gone.
+The retrosynthetic stage read two keys the plan does not carry, so it printed no
+disconnections and no cycles for a target whose plan had found eleven sites and ten
+disconnections. It reads the count, the ranked sites and the Frobenius score the plan
+actually returns, and says whether the route re-forms.
+
+The therapy pipeline defaulted its key to an empty string with no choices, so running
+it bare threw on the empty key. The choices come from the therapies the pipeline
+defines, and an omitted key runs the first.
+
+The gene pipeline command built its pipeline with no sequence and passed the sequence
+to run(), which takes the subunit count. The sequence goes where it belongs and the
+seven stages complete.
