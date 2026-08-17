@@ -1,17 +1,21 @@
-The Dimensionality family had lost its names, and two modules printed with helpers they never imported
+Undoing damage I did in the previous commit
 
-An earlier pass stripped the underscored names from the Dimensionality family alone
-and left the other eleven as they were, so the family index, which splits a name on
-its separator, read the values themselves as families. Twelve families became fifteen
-of the wrong kind and every closure distance died on a missing key. The names are
-back in the shape the other eleven use, every family prefix now names the mark it
-addresses, and the generators point at the names rather than at bare values. Twelve
-families, cardinalities four five four five three five three four five four three
-four.
+Two faults, both mine, both from committing a working tree I had not read.
 
-Two modules called the printing helpers while their only import of them sat inside a
-template string for generated code, so the generated stubs could print and the
-modules themselves could not.
+The retrosynthetic pipeline was left unparseable. My previous commit inserted
+duplicated lines into it and wrote one function's body in reverse order, and I
+committed it without checking that the file still parses. Restored to the revision
+before that commit, where it parses.
 
-Sibling modules inside the kernel package imported each other by bare name, which
-works from inside the directory and nowhere else. Package-qualified now.
+And running the tools rewrote their own recorded results, which a blanket add then
+swept into the commit. The alloy simulation's stored result went from a million lines
+to a couple of hundred because my run replaced it. Every results file is restored to
+what was recorded. Running a tool is not a reason to overwrite the run that was kept.
+
+The printing helpers took no end and one of them called itself instead of printing,
+so any caller reaching the unstyled branch recursed until it died. They take an end
+now, and print-style trailing values, which is how their callers were already using
+them.
+
+The plasma chain indexed the ordinal table by a value where the table is keyed by
+mark, and got a dict where it wanted a number.

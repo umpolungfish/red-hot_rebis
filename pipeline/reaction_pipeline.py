@@ -29,7 +29,6 @@ from compiler import (
     find_fgs, get_molecule_type, find_disconnections,
 )
 from reaction_deriver import (
-from ch3mpiler.scaffold_parser import ScaffoldParser, resolve_name_to_smiles
     ReactionDeriver, DerivedReaction,
     REAGENT_DB, SOLVENT_DB, CATALYST_DB, ACTIVATOR_DB,
     SIMPLE_STARTING_MATERIALS, is_simple_material,
@@ -94,7 +93,6 @@ class RetrosyntheticNode:
         self.is_simple: bool = False
         self.terminal_reason: str = ""
         self.reagent_match: Optional[Dict] = None
-        self.fragment_smiles: Optional[str] = ""  # actual molecular fragment from scaffold cut
         self.smiles: Optional[str] = ""          # full molecule SMILES (set on root, empty on intermediates)
         self.fragment_smiles: Optional[str] = ""  # actual molecular fragment from scaffold cut
         self.routes: List[Dict] = []
@@ -113,86 +111,8 @@ class ReactionPipeline:
         self.deriver = ReactionDeriver()
         self.max_depth = max_depth
         self._visited: Set[str] = set()
-        self._target_smiles = ""
-        self._scaffold_map = {}  # Pass 1 scaffold decomposition
         self._scaffold_map = {}  # Pass 1 scaffold decomposition
         self._target_smiles = ""
-
-
-
-        return bond.get("fragment_smiles_a"), bond.get("fragment_smiles_b")
-        bond = bonds[0]
-        # Use the first matching bond cut (prefer strategic ones)
-        
-            return None, None
-        if not bonds:
-        bonds = self._scaffold_map.get(pair, [])
-        pair = tuple(sorted([fg1, fg2]))
-        """
-        The returned tuple is (fragment_smiles_a, fragment_smiles_b).
-        
-        for both sides of the cut. Otherwise returns (None, None).
-        If the scaffold map has this FG pair, returns the fragment SMILES
-        
-        """Pass 2: Look up fragment SMILES for a specific FG-pair cut.
-    def _get_fragment_smiles_for_cut(self, fg1: str, fg2: str, bond_type: str) -> tuple:
-    
-            return False
-            info_line(f"  [scaffold] ERROR parsing scaffold: {e}")
-        except Exception as e:
-            
-            return True
-                info_line(f"  [scaffold]     {pair[0]} + {pair[1]}: {len(bonds)} bond(s)")
-            for pair, bonds in sorted(self._scaffold_map.items()):
-f"{len(self._scaffold_map)} FG-pair types")
-            info_line(f"  [scaffold]   {n_bonds} strategic disconnections across "
-f"{len(decomp['fgs'])} FGs: {', '.join(decomp['fgs'])}")
-            info_line(f"  [scaffold]   {decomp['num_atoms']} atoms, {decomp['num_bonds']} bonds, "
-            info_line(f"  [scaffold] Pass 1: Parsed {target} [{smiles}]")
-            
-            n_bonds = sum(len(v) for v in self._scaffold_map.values())
-            self._target_smiles = smiles
-            
-                self._scaffold_map[pair_key].extend(bonds)
-                    self._scaffold_map[pair_key] = []
-                if pair_key not in self._scaffold_map:
-                pair_key = tuple(sorted(pair))
-                pair = ast.literal_eval(pair_str)
-
-                import ast
-                # pair_str is "('fg1', 'fg2')" — parse it back
-            for pair_str, bonds in decomp.get("fg_pair_bonds", {}).items():
-            self._scaffold_map = {}
-            # Store scaffold map: FG-pair tuples -> list of bond cuts with fragment SMILES
-            
-            decomp = parser.get_full_scaffold_decomposition()
-            parser.load(smiles, name=target)
-            parser = ScaffoldParser()
-        try:
-        
-            return False
-f"Using FG-only decomposition (no fragment structures).")
-            info_line(f"  [scaffold] WARNING: Could not resolve '{target}' to SMILES. "
-        if not smiles:
-        
-            smiles = resolve_name_to_smiles(target)
-            # Try to resolve name to SMILES via PubChem
-        if not smiles:
-        """
-            True if scaffold was successfully parsed
-        Returns:
-        
-            smiles: Optional SMILES string (if already known)
-            target: Molecule name
-        Args:
-        
-        for CDXML output.
-        the retrosynthetic tree will carry fragment_smiles from this map
-        fragment SMILES from the target molecule. Non-terminal nodes in
-        This builds the scaffold map that maps FG-pair cuts to actual
-        
-        """Pass 1: Resolve target to SMILES and parse scaffold decomposition.
-    def resolve_and_parse_scaffold(self, target: str, smiles: str = "") -> bool:
 
     def _decompose_single_fg(self, fg_name: str, mol_type: Dict,
                             target: str, depth: int) -> Optional[List[Dict]]:
@@ -628,18 +548,6 @@ f"Using FG-only decomposition (no fragment structures).")
             else:
                 self.resolve_and_parse_scaffold(target)
 
-
-        
-                self.resolve_and_parse_scaffold(target)
-                # Auto-resolve from name
-            else:
-                self.resolve_and_parse_scaffold(target, self._target_smiles)
-                # Already resolved externally (from --smiles flag)
-            if hasattr(self, '_target_smiles') and self._target_smiles:
-            # First time: resolve target to SMILES and parse scaffold
-        if depth == 0 and not fg_hint:
-        # ── Pass 1: Scaffold parsing (only at root, depth=0) ──
-
         node = RetrosyntheticNode(target, depth)
         if fragment_smiles:
             node.fragment_smiles = fragment_smiles
@@ -868,8 +776,6 @@ f"Using FG-only decomposition (no fragment structures).")
         }
         if node.fragment_smiles:
             result["fragment_smiles"] = node.fragment_smiles
-        if node.fragment_smiles:
-            result["fragment_smiles"] = node.fragment_smiles
         if node.reagent_match:
             result["reagent_match"] = node.reagent_match
         if node.routes:
@@ -1079,8 +985,6 @@ def main():
         description="ch3mpiler reaction pipeline -- deep recursive retrosynthetic tree (grammar-first)")
     parser.add_argument("--smiles", help="Target SMILES (bypasses name-to-SMILES resolution)")
     parser.add_argument("--target", help="Molecule name")
-
-    parser.add_argument("--smiles", help="Target SMILES (bypasses name resolution)")
     parser.add_argument("--cas", help="CAS Registry Number")
     parser.add_argument("--shallow", action="store_true", help="Single-level only (no recursion)")
     parser.add_argument("--depth", type=int, default=6, help="Max recursion depth (default: 6)")
@@ -1130,10 +1034,6 @@ def main():
         else:
             pipeline._target_smiles = info.get("cas_info", {}).get("smiles", "") or args.smiles or ""
             pipeline._visited.clear()
-
-            
-            pipeline._target_smiles = args.smiles or ""
-
             tree = pipeline.deep_retrosynthesis(name)
             if args.json:
                 print(json.dumps(pipeline._tree_to_dict(tree), indent=2, ensure_ascii=False))
@@ -1157,11 +1057,6 @@ def main():
         else:
             pipeline._target_smiles = args.smiles or ""
             pipeline._visited.clear()
-
-            
-            pipeline._target_smiles = args.smiles or ""
-            # Resolve SMILES (Pass 1 scaffold parsing) before retrosynthesis
-
             tree = pipeline.deep_retrosynthesis(args.target)
             if args.json:
                 print(json.dumps(pipeline._tree_to_dict(tree), indent=2, ensure_ascii=False))
