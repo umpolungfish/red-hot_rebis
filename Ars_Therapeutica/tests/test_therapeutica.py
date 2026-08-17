@@ -95,8 +95,8 @@ def test_distance_self_zero():
 
 def test_delta_primitives_vs_distance():
     """delta_primitives list matches the actual differing primitives."""
-    PRIM_REV_MAP = {'D': 'Ð', 'T': 'Þ', 'R': 'Ř', 'P': 'Φ', 'F': 'ƒ', 'K': 'Ç',
-                    'G': 'Γ', 'Gamma': 'ɢ', 'Phi': 'φ̂', 'H': 'Ħ', 'S': 'Σ', 'W': 'Ω'}
+    PRIM_REV_MAP = {'D': '⊢', 'T': '⊣', 'R': '≻', 'P': '≺', 'F': '⋈', 'K': '⊤',
+                    'G': '∈', 'Gamma': '∋', 'Phi': 'φ̂', 'H': '⊥', 'S': '⊞', 'W': '◻'}
     for name, th in THERAPIES.items():
         computed = delta_primitives(th.disease_type, th.health_type)
         computed_symbols = [PRIM_REV_MAP.get(p, p) for p in computed]
@@ -185,8 +185,8 @@ def test_hiv_equals_bipolar_mania():
 
 def test_hiv_normal_immune_deltas():
     """HIV differs from Normal_Immune by exactly 5 primitives."""
-    PRIM_REV_MAP = {'D': 'Ð', 'T': 'Þ', 'R': 'Ř', 'P': 'Φ', 'F': 'ƒ', 'K': 'Ç',
-                    'G': 'Γ', 'Gamma': 'ɢ', 'Phi': 'φ̂', 'H': 'Ħ', 'S': 'Σ', 'W': 'Ω'}
+    PRIM_REV_MAP = {'D': '⊢', 'T': '⊣', 'R': '≻', 'P': '≺', 'F': '⋈', 'K': '⊤',
+                    'G': '∈', 'Gamma': '∋', 'Phi': 'φ̂', 'H': '⊥', 'S': '⊞', 'W': '◻'}
     deltas = delta_primitives(HIV, NORMAL_IMMUNE)
     assert len(deltas) == 5, f"HIV→Normal_Immune deltas count = {len(deltas)}, expected 5"
     computed_symbols = [PRIM_REV_MAP.get(p, p) for p in deltas]

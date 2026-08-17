@@ -250,7 +250,7 @@ def _cmd_cscore(args):
             try:
                 tup = clink_layer_tuple(args.tuple_name)
             except (KeyError, ValueError):
-                tup = {"⊙": "⊙", "Ç": "𐑧", "Ħ": "𐑫"}
+                tup = {"⊙": "⊙", "⊤": "𐑧", "⊥": "𐑫"}
 
         cscore = compute_c_score_from_tuple(tup)
         tier = compute_tier_from_tuple(tup)

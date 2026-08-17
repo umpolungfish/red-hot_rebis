@@ -71,9 +71,9 @@ PRIMITIVE_NAMES_SHORT = ["D", "T", "R", "P", "F", "K", "G", "Gm", "Ph", "H", "S"
 
 # Map between full Unicode primitive keys (from sidechain_algebra) and short keys
 _FULL_TO_SHORT = {
-    "Ð": "D", "Þ": "T", "Ř": "R", "Φ": "P", "ƒ": "F",
-    "Ç": "K", "Γ": "G", "ɢ": "Gm", "⊙": "Ph",
-    "Ħ": "H", "Σ": "S", "Ω": "W",
+    "⊢": "D", "⊣": "T", "≻": "R", "≺": "P", "⋈": "F",
+    "⊤": "K", "∈": "G", "∋": "Gm", "⊙": "Ph",
+    "⊥": "H", "⊞": "S", "◻": "W",
 }
 _SHORT_TO_FULL = {v: k for k, v in _FULL_TO_SHORT.items()}
 

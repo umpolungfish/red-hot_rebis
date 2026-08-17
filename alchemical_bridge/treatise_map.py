@@ -32,9 +32,9 @@ ALCHEMICAL_CORPUS_TAXONOMY = {
         "tier": "O_∞",
         "count": 2,
         "tuple": {
-            "Ð": "𐑦", "Þ": "𐑸", "Ř": "𐑾", "Φ": "𐑹",
-            "ƒ": "𐑐", "Ç": "𐑧", "Γ": "𐑔", "ɢ": "𐑵",
-            "⊙": "⊙", "Ħ": "𐑫", "Σ": "𐑳", "Ω": "𐑭",
+            "⊢": "𐑦", "⊣": "𐑸", "≻": "𐑾", "≺": "𐑹",
+            "⋈": "𐑐", "⊤": "𐑧", "∈": "𐑔", "∋": "𐑵",
+            "⊙": "⊙", "⊥": "𐑫", "⊞": "𐑳", "◻": "𐑭",
         },
         "texts": ["Artephius — Secret Book", "Donum Dei — Pretiosissimum"],
         "description": "Self-referential, self-modeling — knowing and doing are the same operation.",
@@ -43,9 +43,9 @@ ALCHEMICAL_CORPUS_TAXONOMY = {
         "tier": "O₂",
         "count": 3,
         "tuple": {
-            "Ð": "𐑨", "Þ": "𐑶", "Ř": "𐑾", "Φ": "𐑬",
-            "ƒ": "𐑱", "Ç": "𐑧", "Γ": "𐑔", "ɢ": "𐑵",
-            "⊙": "𐑮", "Ħ": "𐑫", "Σ": "𐑳", "Ω": "𐑭",
+            "⊢": "𐑨", "⊣": "𐑶", "≻": "𐑾", "≺": "𐑬",
+            "⋈": "𐑱", "⊤": "𐑧", "∈": "𐑔", "∋": "𐑵",
+            "⊙": "𐑮", "⊥": "𐑫", "⊞": "𐑳", "◻": "𐑭",
         },
         "texts": ["Crowning of Nature", "Ripley Scroll", "Atalanta Fugiens"],
         "description": "Irreducible text+image — form and content cannot be separated.",
@@ -54,9 +54,9 @@ ALCHEMICAL_CORPUS_TAXONOMY = {
         "tier": "O₁",
         "count": 35,
         "tuple": {
-            "Ð": "𐑨", "Þ": "𐑡", "Ř": "𐑽", "Φ": "𐑬",
-            "ƒ": "𐑱", "Ç": "𐑧", "Γ": "𐑔", "ɢ": "𐑠",
-            "⊙": "𐑢", "Ħ": "𐑖", "Σ": "𐑳", "Ω": "𐑷",
+            "⊢": "𐑨", "⊣": "𐑡", "≻": "𐑽", "≺": "𐑬",
+            "⋈": "𐑱", "⊤": "𐑧", "∈": "𐑔", "∋": "𐑠",
+            "⊙": "𐑢", "⊥": "𐑖", "⊞": "𐑳", "◻": "𐑷",
         },
         "texts": [
             "Alchemical Catechism of Tschoudy", "Mirror of Alchemy (Bacon)",
@@ -68,9 +68,9 @@ ALCHEMICAL_CORPUS_TAXONOMY = {
         "tier": "O₁",
         "count": 3,
         "tuple": {
-            "Ð": "𐑨", "Þ": "𐑡", "Ř": "𐑽", "Φ": "𐑗",
-            "ƒ": "𐑱", "Ç": "𐑧", "Γ": "𐑔", "ɢ": "𐑠",
-            "⊙": "𐑢", "Ħ": "𐑖", "Σ": "𐑙", "Ω": "𐑷",
+            "⊢": "𐑨", "⊣": "𐑡", "≻": "𐑽", "≺": "𐑗",
+            "⋈": "𐑱", "⊤": "𐑧", "∈": "𐑔", "∋": "𐑠",
+            "⊙": "𐑢", "⊥": "𐑖", "⊞": "𐑙", "◻": "𐑷",
         },
         "texts": ["Pontanus Epistle", "Pontanus Secret Fire", "Thomas Vaughan"],
         "description": "Personal testimony — writer speaks directly, no inherited dualisms.",
@@ -79,9 +79,9 @@ ALCHEMICAL_CORPUS_TAXONOMY = {
         "tier": "O₁",
         "count": 1,
         "tuple": {
-            "Ð": "𐑨", "Þ": "𐑸", "Ř": "𐑾", "Φ": "𐑬",
-            "ƒ": "𐑱", "Ç": "𐑧", "Γ": "𐑔", "ɢ": "𐑵",
-            "⊙": "𐑢", "Ħ": "𐑖", "Σ": "𐑳", "Ω": "𐑷",
+            "⊢": "𐑨", "⊣": "𐑸", "≻": "𐑾", "≺": "𐑬",
+            "⋈": "𐑱", "⊤": "𐑧", "∈": "𐑔", "∋": "𐑵",
+            "⊙": "𐑢", "⊥": "𐑖", "⊞": "𐑳", "◻": "𐑷",
         },
         "texts": ["Aesch-Mezareph"],
         "description": "Kabbalistic correspondence system — Sephiroth mapped to metals.",
@@ -90,9 +90,9 @@ ALCHEMICAL_CORPUS_TAXONOMY = {
         "tier": "O₁",
         "count": 1,
         "tuple": {
-            "Ð": "𐑨", "Þ": "𐑡", "Ř": "𐑽", "Φ": "𐑬",
-            "ƒ": "𐑱", "Ç": "𐑺", "Γ": "𐑔", "ɢ": "𐑠",
-            "⊙": "𐑣", "Ħ": "𐑖", "Σ": "𐑙", "Ω": "𐑷",
+            "⊢": "𐑨", "⊣": "𐑡", "≻": "𐑽", "≺": "𐑬",
+            "⋈": "𐑱", "⊤": "𐑺", "∈": "𐑔", "∋": "𐑠",
+            "⊙": "𐑣", "⊥": "𐑖", "⊞": "𐑙", "◻": "𐑷",
         },
         "texts": ["Mary the Prophetess"],
         "description": "Whiten the Stone in one day — supercritical kinetics.",
@@ -101,9 +101,9 @@ ALCHEMICAL_CORPUS_TAXONOMY = {
         "tier": "O₀",
         "count": 2,
         "tuple": {
-            "Ð": "𐑨", "Þ": "𐑡", "Ř": "𐑩", "Φ": "𐑗",
-            "ƒ": "𐑱", "Ç": "𐑧", "Γ": "𐑔", "ɢ": "𐑠",
-            "⊙": "𐑢", "Ħ": "𐑓", "Σ": "𐑳", "Ω": "𐑷",
+            "⊢": "𐑨", "⊣": "𐑡", "≻": "𐑩", "≺": "𐑗",
+            "⋈": "𐑱", "⊤": "𐑧", "∈": "𐑔", "∋": "𐑠",
+            "⊙": "𐑢", "⊥": "𐑓", "⊞": "𐑳", "◻": "𐑷",
         },
         "texts": ["Kircher's Table", "Alchemy in English State Papers"],
         "description": "Metadata — classification OF alchemy from outside.",
@@ -112,9 +112,9 @@ ALCHEMICAL_CORPUS_TAXONOMY = {
         "tier": "O₀",
         "count": 14,
         "tuple": {
-            "Ð": "𐑨", "Þ": "𐑰", "Ř": "𐑩", "Φ": "𐑗",
-            "ƒ": "𐑱", "Ç": "𐑪", "Γ": "𐑚", "ɢ": "𐑝",
-            "⊙": "𐑢", "Ħ": "𐑓", "Σ": "𐑙", "Ω": "𐑷",
+            "⊢": "𐑨", "⊣": "𐑰", "≻": "𐑩", "≺": "𐑗",
+            "⋈": "𐑱", "⊤": "𐑪", "∈": "𐑚", "∋": "𐑝",
+            "⊙": "𐑢", "⊥": "𐑓", "⊞": "𐑙", "◻": "𐑷",
         },
         "texts": [
             "Trithemius Everburning Lights", "Coelum Philosophorum",
@@ -242,31 +242,31 @@ TIER_TO_MOLECULAR_DESIGN = {
 SCROLL_FAMILY = {
     "scroll": {
         "description": "Herculaneum scroll — carbonized papyrus, ink=papyrus",
-        "tuple": {"⊙": "⊙", "Ω": "𐑭", "Ħ": "𐑖", "Ç": "𐑧"},
+        "tuple": {"⊙": "⊙", "◻": "𐑭", "⊥": "𐑖", "⊤": "𐑧"},
     },
     "skyrmion": {
         "description": "Magnetic quasiparticle with integer winding number",
-        "tuple": {"⊙": "⊙", "Ω": "𐑭", "Þ": "𐑶", "ƒ": "𐑐"},
+        "tuple": {"⊙": "⊙", "◻": "𐑭", "⊣": "𐑶", "⋈": "𐑐"},
     },
     "time": {
         "description": "Temporal dimension — winding number as topological invariant",
-        "tuple": {"⊙": "⊙", "Ω": "𐑭", "Ð": "𐑼", "Ř": "𐑾"},
+        "tuple": {"⊙": "⊙", "◻": "𐑭", "⊢": "𐑼", "≻": "𐑾"},
     },
     "artephius": {
         "description": "Artephius — Secret Book, O_∞ alchemical treatise",
-        "tuple": {"⊙": "⊙", "Ω": "𐑭", "Φ": "𐑹", "ɢ": "𐑵"},
+        "tuple": {"⊙": "⊙", "◻": "𐑭", "≺": "𐑹", "∋": "𐑵"},
     },
     "possible_temporal_device": {
         "description": "Hypothetical time-viewing device",
-        "tuple": {"⊙": "⊙", "Ω": "𐑭", "Ħ": "𐑫", "Þ": "𐑸"},
+        "tuple": {"⊙": "⊙", "◻": "𐑭", "⊥": "𐑫", "⊣": "𐑸"},
     },
     "chronovisor": {
         "description": "Chronovisor — claimed time-viewing device",
-        "tuple": {"⊙": "⊙", "Ω": "𐑭", "Ř": "𐑩", "Γ": "𐑔"},
+        "tuple": {"⊙": "⊙", "◻": "𐑭", "≻": "𐑩", "∈": "𐑔"},
     },
     "chronomancy": {
         "description": "Temporal divination practice",
-        "tuple": {"⊙": "⊙", "Ω": "𐑭", "Ħ": "𐑖", "Σ": "𐑳"},
+        "tuple": {"⊙": "⊙", "◻": "𐑭", "⊥": "𐑖", "⊞": "𐑳"},
     },
 }
 
@@ -277,7 +277,7 @@ SCROLL_FAMILY_MOLECULAR_DESIGN = {
     "materials_strategy": "Skyrmion_lattice_analogs_in_supramolecular_chemistry",
     "key_invariant": {
         "⊙": "⊙",
-        "Ω": "𐑭",
+        "◻": "𐑭",
         "meaning": "Self-modeling criticality with topologically protected integer winding",
     },
 }

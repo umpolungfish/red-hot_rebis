@@ -591,29 +591,29 @@ class ProteinStratifiedPredictor:
         if not dominant or dominant[0] == '—':
             return 'structural/linker'
         dom = dominant[0]
-        if dom == 'Ř':
+        if dom == '≻':
             return 'structural_scaffold' if vec[2] >= 4 else 'redox_sensor'
         elif dom == '⊙':
             return 'metabolic_signaling'
-        elif dom == 'Ω':
+        elif dom == '◻':
             return 'winding_closure_module'
-        elif dom == 'Φ':
+        elif dom == '≺':
             return 'phosphorylation_switch'
-        elif dom == 'Ħ':
+        elif dom == '⊥':
             return 'substrate_recognition'
-        elif dom == 'Ð':
+        elif dom == '⊢':
             return 'initiation_bootstrap'
-        elif dom == 'Þ':
+        elif dom == '⊣':
             return 'topological_embedding'
-        elif dom == 'ƒ':
+        elif dom == '⋈':
             return 'hydrophobic_core'
-        elif dom == 'Σ':
+        elif dom == '⊞':
             return 'variable_modification_platform'
-        elif dom == 'ɢ':
+        elif dom == '∋':
             return 'glycosylation_target'
-        elif dom == 'Γ':
+        elif dom == '∈':
             return 'catalytic_grammar'
-        elif dom == 'Ç':
+        elif dom == '⊤':
             return 'kinetic_regulator'
         return 'unknown'
 
@@ -859,7 +859,7 @@ f"cleavage @ {sp['cleavage_position'] if sp else '?'}")
         info_line(f"    Ω (Glu) total: {omega_total}")
         c_peptide = [p for p in products if 'peptide' in p['name'] and 'short' not in p['name'] and 'intervening' not in p['name']]
         for p in products:
-            omega = p['profile'].get('Ω', 0)
+            omega = p['profile'].get('◻', 0)
             info_line(f"    • {p['name']}: Ω={omega}, {p['inferred_function']}")
 
     # ─── Proglucagon Detailed ─────────────────────────────────────────

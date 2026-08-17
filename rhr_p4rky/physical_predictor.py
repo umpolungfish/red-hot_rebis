@@ -241,10 +241,10 @@ def tuple_to_scale_factors(t: Tuple[str, ...]) -> Dict[str, float]:
         'F': F_FACTOR.get(t[4], 0.75),
         'K': K_FACTOR.get(t[5], 1.0),
         'G': G_FACTOR.get(t[6], 1.0),
-        'Γ': GAMMA_MULT.get(t[7], 1.0),
+        '∈': GAMMA_MULT.get(t[7], 1.0),
         'H': H_DEPTH.get(t[9], 0),
         'S': S_FACTOR.get(t[10], 1.0),
-        'Ω': OMEGA_SCALE.get(t[11], 0.0),
+        '◻': OMEGA_SCALE.get(t[11], 0.0),
     }
 
 def predict_bond_energy(r_factor: float, p_factor: float) -> Tuple[float, float, float]:
@@ -455,13 +455,13 @@ def predict_from_tuple(name: str, t: Tuple[str, ...]) -> PhysicalPrediction:
     pred.band_gap_eV = predict_band_gap(pred.bond_energy_kJmol, sf['D'], sf['P'])
     pred.dielectric_constant = 12.0 / (pred.band_gap_eV ** 0.5 + 0.1)
     pred.electrical_conductivity_Sm = predict_electrical_conductivity(
-        pred.bond_energy_kJmol, sf['P'], sf['F'], sf['Ω'])
+        pred.bond_energy_kJmol, sf['P'], sf['F'], sf['◻'])
     
     # 4. Thermal
     pred.debye_temperature_K = predict_debye_temperature(
         pred.bond_energy_kJmol, sf['D'])
     pred.thermal_conductivity_WmK = predict_thermal_conductivity(
-        pred.bond_energy_kJmol, sf['D'], sf['Ω'])
+        pred.bond_energy_kJmol, sf['D'], sf['◻'])
     pred.thermal_expansion_ppmK = 20.0 / (pred.debye_temperature_K ** 0.5)
     pred.melting_temperature_K = predict_melting_temperature(
         pred.bond_energy_kJmol, sf['D'], sf['S'])
@@ -469,7 +469,7 @@ def predict_from_tuple(name: str, t: Tuple[str, ...]) -> PhysicalPrediction:
     # 5. Magnetic / Topological
     pred.curie_temperature_K = 1043.0 * sf['P'] * sf['T'] * 0.3  # Fe reference: 1043K
     pred.topological_protection_energy_meV = predict_topological_protection(
-        sf['Ω'], sf['P'], pred.bond_energy_kJmol)
+        sf['◻'], sf['P'], pred.bond_energy_kJmol)
     
     # 6. Critical behavior
     phi_prim = t[8] if len(t) > 8 else '𐑢'
@@ -500,13 +500,13 @@ def predict_from_tuple(name: str, t: Tuple[str, ...]) -> PhysicalPrediction:
 def predict_from_name(catalog_name: str) -> Optional[PhysicalPrediction]:
     """Lookup a catalog entry and predict its physical properties.
     
-    Reads from IG_catalog.json (list of dicts with 'Ð', 'Þ', etc. fields).
+    Reads from IG_catalog.json (list of dicts with '⊢', '⊣', etc. fields).
     """
     import json, os
     from pathlib import Path
     
     # Map Shavian primitive names to tuple positions
-    PRIM_ORDER = ['Ð', 'Þ', 'Ř', 'Φ', 'ƒ', 'Ç', 'Γ', 'ɢ', '⊙', 'Ħ', 'Σ', 'Ω']
+    PRIM_ORDER = ['⊢', '⊣', '≻', '≺', '⋈', '⊤', '∈', '∋', '⊙', '⊥', '⊞', '◻']
     
     # Try multiple catalog locations
     catalog_paths = [

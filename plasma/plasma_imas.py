@@ -227,9 +227,9 @@ def imasm_to_plasma_tuple(sig: Tuple[int,int,int,int], period: int,
         W = "𐑴"  # Z₂
     
     return {
-        "Ð": D, "Þ": T, "Ř": R, "Φ": P,
-        "ƒ": F, "Ç": K, "Γ": G, "ɢ": Gm,
-        "⊙": Phi, "Ħ": H, "Σ": S, "Ω": W,
+        "⊢": D, "⊣": T, "≻": R, "≺": P,
+        "⋈": F, "⊤": K, "∈": G, "∋": Gm,
+        "⊙": Phi, "⊥": H, "⊞": S, "◻": W,
     }
 
 # ═══════════════════════════════════════════════════════════════════
@@ -282,6 +282,6 @@ if __name__ == "__main__":
     
     for sig, period, dial, desc in examples:
         tup = imasm_to_plasma_tuple(sig, period, dial)
-        tup_str = "⟨" + "".join(tup[p] for p in ["Ð","Þ","Ř","Φ","ƒ","Ç","Γ","ɢ","⊙","Ħ","Σ","Ω"]) + "⟩"
+        tup_str = "⟨" + "".join(tup[p] for p in ["⊢","⊣","≻","≺","⋈","⊤","∈","∋","⊙","⊥","⊞","◻"]) + "⟩"
         info_line(f"\n  {desc}")
         info_line(f"    {tup_str}")

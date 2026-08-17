@@ -218,9 +218,9 @@ class Layer3Designer(LayerDesigner):
             
             # Convert atom tuple to ch3mpiler format
             atup = lower_spec.tuple_glyphs if lower_spec else self.clink_tuple
-            gly2ch3 = {"Ð": "D", "Þ": "T", "Ř": "R", "Φ": "P",
-                       "ƒ": "F", "Ç": "K", "Γ": "G", "ɢ": "Gm",
-                       "⊙": "Ph", "Ħ": "H", "Σ": "S", "Ω": "W"}
+            gly2ch3 = {"⊢": "D", "⊣": "T", "≻": "R", "≺": "P",
+                       "⋈": "F", "⊤": "K", "∈": "G", "∋": "Gm",
+                       "⊙": "Ph", "⊥": "H", "⊞": "S", "◻": "W"}
             tup_ch3 = {gly2ch3[k]: v for k, v in atup.items()}
             tt = tensor_type(tup_ch3, tup_ch3)
             ch3mpiler_result = {"available": True, "tensor": tt}
@@ -599,15 +599,15 @@ class Layer8Designer(LayerDesigner):
         # Consciousness features — computed from tuple, not hardcoded
         tup = self.clink_tuple
         gate1_phi_c = tup.get("⊙", "") == "⊙"
-        gate2_k_slow = tup.get("Ç", "") == "𐑧"
+        gate2_k_slow = tup.get("⊤", "") == "𐑧"
         from clink.chain import compute_c_score_from_tuple, compute_tier_from_tuple
         c_score_data = {
             "gate1_phi_c": gate1_phi_c,       # Self-modeling via ⊙
             "gate2_k_slow": gate2_k_slow,     # Slow kinetics via 𐑧
-            "eternal_chirality": tup.get("Ħ","") == "𐑫",
-            "non_abelian": tup.get("Ω","") == "𐑟",
-            "self_written_state": tup.get("Ð","") == "𐑦",
-            "frobenius_special": tup.get("Φ","") == "𐑹",
+            "eternal_chirality": tup.get("⊥","") == "𐑫",
+            "non_abelian": tup.get("◻","") == "𐑟",
+            "self_written_state": tup.get("⊢","") == "𐑦",
+            "frobenius_special": tup.get("≺","") == "𐑹",
             "score": compute_c_score_from_tuple(tup),
         }
         

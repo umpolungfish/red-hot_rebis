@@ -173,7 +173,7 @@ OMEGA_MATERIAL = {
 # MATERIAL DESIGN DATA STRUCTURE
 # ═══════════════════════════════════════════════════════════════════
 
-PRIMITIVE_ORDER = ['D', 'T', 'R', 'P', 'F', 'K', 'G', 'C', 'Φ', 'H', 'S', 'Ω']
+PRIMITIVE_ORDER = ['D', 'T', 'R', 'P', 'F', 'K', 'G', 'C', '≺', 'H', 'S', '◻']
 
 @dataclass
 class MaterialDesign:
@@ -529,9 +529,9 @@ class MaterialForge:
 
         # Build tuple from catalog entry (uses '⊙' field for Phi)
         ig_tuple = (
-            entry['Ð'], entry['Þ'], entry['Ř'], entry['Φ'],
-            entry['ƒ'], entry['Ç'], entry['Γ'], entry['ɢ'],
-            entry['⊙'], entry['Ħ'], entry['Σ'], entry['Ω'],
+            entry['⊢'], entry['⊣'], entry['≻'], entry['≺'],
+            entry['⋈'], entry['⊤'], entry['∈'], entry['∋'],
+            entry['⊙'], entry['⊥'], entry['⊞'], entry['◻'],
         )
         return self.forge(catalog_name, ig_tuple)
 

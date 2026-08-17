@@ -17,7 +17,7 @@ from pathlib import Path
 _ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(_ROOT / "shared"))
 from elem2imasm import ELEMENTS, SH, CRIT, derive_tuple
-ELEM_PRIMS = ["Ř","Ħ","Ω","Ð","Σ","Φ","Ç","ƒ","ɢ","Γ","Þ","⊙"]
+ELEM_PRIMS = ["≻","⊥","◻","⊢","⊞","≺","⊤","⋈","∋","∈","⊣","⊙"]
 
 PRIMS = ['D','T','R','P','F','K','G','Gm','Ph','H','S','W']
 # Magic numbers
@@ -225,7 +225,7 @@ def compare_to_pb():
 
     # Also compute element-level Pb tuple for reference
     pb_elem = derive_tuple('Pb')
-    PRIMS_ELEM = ['Ř','Ħ','Ω','Ð','Σ','Φ','Ç','ƒ','ɢ','Γ','Þ','⊙']
+    PRIMS_ELEM = ['≻','⊥','◻','⊢','⊞','≺','⊤','⋈','∋','∈','⊣','⊙']
     pb_elem_word = ''.join(pb_elem[p] for p in PRIMS_ELEM)
     print(f"  Pb (element-level, elem2imasm): {pb_elem_word}")
     print()

@@ -81,9 +81,9 @@ def cmd_diagnose(disease: str):
         return
 
     th = THERAPIES[disease]
-    PRIM_MAP = {"φ̂": "Phi", "Ħ": "H", "Ð": "D", "Þ": "T", "Ř": "R",
-                "Φ": "P", "ƒ": "F", "Ç": "K", "Γ": "G", "ɢ": "Gamma",
-                "Σ": "S", "Ω": "W"}
+    PRIM_MAP = {"φ̂": "Phi", "⊥": "H", "⊢": "D", "⊣": "T", "≻": "R",
+                "≺": "P", "⋈": "F", "⊤": "K", "∈": "G", "∋": "Gamma",
+                "⊞": "S", "◻": "W"}
     separator()
 
     info_line(f"{SUBHEAD}Disease Type:{RESET}")
@@ -119,9 +119,9 @@ def cmd_therapy(disease: str):
         return
 
     th = THERAPIES[disease]
-    PRIM_MAP = {"φ̂": "Phi", "Ħ": "H", "Ð": "D", "Þ": "T", "Ř": "R",
-                "Φ": "P", "ƒ": "F", "Ç": "K", "Γ": "G", "ɢ": "Gamma",
-                "Σ": "S", "Ω": "W"}
+    PRIM_MAP = {"φ̂": "Phi", "⊥": "H", "⊢": "D", "⊣": "T", "≻": "R",
+                "≺": "P", "⋈": "F", "⊤": "K", "∈": "G", "∋": "Gamma",
+                "⊞": "S", "◻": "W"}
     separator()
     info_line(f"{th.summary}\n")
 
@@ -226,9 +226,9 @@ def cmd_operate(disease: str, operation: str):
         return
 
     th = THERAPIES[disease]
-    PRIM_MAP = {"φ̂": "Phi", "Ħ": "H", "Ð": "D", "Þ": "T", "Ř": "R",
-                "Φ": "P", "ƒ": "F", "Ç": "K", "Γ": "G", "ɢ": "Gamma",
-                "Σ": "S", "Ω": "W"}
+    PRIM_MAP = {"φ̂": "Phi", "⊥": "H", "⊢": "D", "⊣": "T", "≻": "R",
+                "≺": "P", "⋈": "F", "⊤": "K", "∈": "G", "∋": "Gamma",
+                "⊞": "S", "◻": "W"}
     dt = th.disease_type
     ht = th.health_type
 

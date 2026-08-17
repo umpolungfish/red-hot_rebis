@@ -29,9 +29,9 @@ from shared.rich_output import *
 PNAMES = ["D", "T", "R", "P", "F", "K", "G", "Gm", "Ph", "H", "S", "W"]
 PFIELDS = ["D", "T", "R", "P", "F", "K", "G", "Gm", "Ph", "H", "S", "W"]
 FIELD_TO_ORD = {
-    "D": "Ð", "T": "Þ", "R": "Ř", "P": "Φ", "F": "ƒ",
-    "K": "Ç", "G": "Γ", "Gm": "ɢ", "Ph": "⊙", "H": "Ħ",
-    "S": "Σ", "W": "Ω"
+    "D": "⊢", "T": "⊣", "R": "≻", "P": "≺", "F": "⋈",
+    "K": "⊤", "G": "∈", "Gm": "∋", "Ph": "⊙", "H": "⊥",
+    "S": "⊞", "W": "◻"
 }
 
 def glyph_ord(p, glyph):

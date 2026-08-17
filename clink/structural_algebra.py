@@ -85,7 +85,7 @@ def meet(tuple_a, tuple_b):
     for p in PRIMITIVE_ORDER:
         va = tuple_a[p]
         vb = tuple_b[p]
-        if p == "Φ":
+        if p == "≺":
             result[p] = va if ordinal(p, va) >= ordinal(p, vb) else vb
         else:
             result[p] = va if ordinal(p, va) <= ordinal(p, vb) else vb
@@ -102,7 +102,7 @@ def join(tuple_a, tuple_b):
     for p in PRIMITIVE_ORDER:
         va = tuple_a[p]
         vb = tuple_b[p]
-        if p == "Φ":
+        if p == "≺":
             result[p] = va if ordinal(p, va) <= ordinal(p, vb) else vb
         else:
             result[p] = va if ordinal(p, va) >= ordinal(p, vb) else vb
@@ -119,7 +119,7 @@ def tensor(tuple_a, tuple_b):
     for p in PRIMITIVE_ORDER:
         va = tuple_a[p]
         vb = tuple_b[p]
-        if p in ("Φ", "ƒ"):  # P and F — min (most constrained wins)
+        if p in ("≺", "⋈"):  # P and F — min (most constrained wins)
             result[p] = va if ordinal(p, va) <= ordinal(p, vb) else vb
         else:
             if va == "⊙" and vb == "⊙":

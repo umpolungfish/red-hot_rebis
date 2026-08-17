@@ -37,28 +37,28 @@ from shared.rich_output import *
 # ═══════════════════════════════════════════════════════════════════════════════
 
 PRIMITIVE_ORDER: List[str] = [
-    "Ð", "Þ", "Ř", "Φ", "ƒ", "Ç", "Γ", "ɢ", "⊙", "Ħ", "Σ", "Ω"
+    "⊢", "⊣", "≻", "≺", "⋈", "⊤", "∈", "∋", "⊙", "⊥", "⊞", "◻"
 ]
 
 ORDINALS: Dict[str, Dict[str, float]] = {
-    "Ð": {"𐑛": 1.0, "𐑨": 2.0, "𐑼": 3.0, "𐑦": 4.0},
-    "Þ": {"𐑡": 1.0, "𐑰": 2.0, "𐑥": 3.0, "𐑶": 4.0, "𐑸": 5.0},
-    "Ř": {"𐑩": 1.0, "𐑑": 2.0, "𐑽": 3.0, "𐑾": 4.0},
-    "Φ": {"𐑗": 1.0, "𐑿": 2.0, "𐑬": 3.0, "𐑯": 4.0, "𐑹": 5.0},
-    "ƒ": {"𐑱": 1.0, "𐑞": 2.0, "𐑐": 3.0},
-    "Ç": {"𐑘": 1.0, "𐑤": 2.0, "𐑧": 3.0, "𐑪": 4.0, "𐑺": 4.5},
-    "Γ": {"𐑚": 1.0, "𐑔": 2.0, "𐑲": 3.0},
-    "ɢ": {"𐑝": 1.0, "𐑜": 2.0, "𐑠": 3.0, "𐑵": 4.0},
+    "⊢": {"𐑛": 1.0, "𐑨": 2.0, "𐑼": 3.0, "𐑦": 4.0},
+    "⊣": {"𐑡": 1.0, "𐑰": 2.0, "𐑥": 3.0, "𐑶": 4.0, "𐑸": 5.0},
+    "≻": {"𐑩": 1.0, "𐑑": 2.0, "𐑽": 3.0, "𐑾": 4.0},
+    "≺": {"𐑗": 1.0, "𐑿": 2.0, "𐑬": 3.0, "𐑯": 4.0, "𐑹": 5.0},
+    "⋈": {"𐑱": 1.0, "𐑞": 2.0, "𐑐": 3.0},
+    "⊤": {"𐑘": 1.0, "𐑤": 2.0, "𐑧": 3.0, "𐑪": 4.0, "𐑺": 4.5},
+    "∈": {"𐑚": 1.0, "𐑔": 2.0, "𐑲": 3.0},
+    "∋": {"𐑝": 1.0, "𐑜": 2.0, "𐑠": 3.0, "𐑵": 4.0},
     "⊙": {"𐑢": 1.0, "⊙": 2.0, "𐑮": 2.33, "𐑻": 2.67, "𐑣": 3.0},
-    "Ħ": {"𐑓": 1.0, "𐑒": 2.0, "𐑖": 3.0, "𐑫": 4.0},
-    "Σ": {"𐑙": 1.0, "𐑕": 2.0, "𐑳": 3.0},
-    "Ω": {"𐑷": 1.0, "𐑴": 2.0, "𐑭": 3.0, "𐑟": 4.0},
+    "⊥": {"𐑓": 1.0, "𐑒": 2.0, "𐑖": 3.0, "𐑫": 4.0},
+    "⊞": {"𐑙": 1.0, "𐑕": 2.0, "𐑳": 3.0},
+    "◻": {"𐑷": 1.0, "𐑴": 2.0, "𐑭": 3.0, "𐑟": 4.0},
 }
 
 WEIGHTS: Dict[str, float] = {
-    "Ð": 1.0, "Þ": 1.0, "Ř": 1.0, "Φ": 1.0,
-    "ƒ": 1.0, "Ç": 1.0, "Γ": 1.0, "ɢ": 1.0,
-    "⊙": 1.0, "Ħ": 0.8, "Σ": 1.0, "Ω": 0.7,
+    "⊢": 1.0, "⊣": 1.0, "≻": 1.0, "≺": 1.0,
+    "⋈": 1.0, "⊤": 1.0, "∈": 1.0, "∋": 1.0,
+    "⊙": 1.0, "⊥": 0.8, "⊞": 1.0, "◻": 0.7,
 }
 
 def get_ordinal(primitive: str, glyph: str) -> float:
@@ -119,7 +119,7 @@ def frobenius_closure_check(mu: Dict[str, str], delta: Dict[str, str]) -> bool:
 OPERATION_MAP: Dict[str, Dict[str, Any]] = {
     "calcination": {
         "ig_op": "primitive_peel",
-        "targets": ["ƒ", "Ħ", "Γ"],
+        "targets": ["⋈", "⊥", "∈"],
         "description": "Purification by Fire — Thermal decomposition, pyrolysis, combustion, thermolysis. "
                        "High-temperature treatment forces a system to its simplest structural core. "
                        "The alchemist's 'ash' is the tuple after all dissipative structure has been burned away.",
@@ -141,7 +141,7 @@ to its phenol monomers without carbonization.
     },
     "dissolution": {
         "ig_op": "project",
-        "targets": ["Ω", "Ř", "Σ"],
+        "targets": ["◻", "≻", "⊞"],
         "description": "Solve — Solubilization, acid/base extraction, hydrolysis, solvolysis. "
                        "The calcined ash is dissolved into a medium. The grammar's absorption rule governs this stage: "
                        "when a self-modeling solute enters a self-modeling solvent, the composite adopts the solvent's criticality. "
@@ -152,7 +152,7 @@ to its phenol monomers without carbonization.
     },
     "separation": {
         "ig_op": "principal_decomp",
-        "targets": ["Σ", "Φ", "Ç"],
+        "targets": ["⊞", "≺", "⊤"],
         "description": "Distinguishing the Pure — Chromatography, extraction, crystallization, membrane separation. "
                        "Separates the mixed into pure streams. The principal_decomp operator factorizes a composite tuple "
                        "into its constituent summands — it is the inverse of tensor composition. "
@@ -164,7 +164,7 @@ to its phenol monomers without carbonization.
     },
     "conjunction": {
         "ig_op": "meet",
-        "targets": ["Þ", "Ř", "ɢ"],
+        "targets": ["⊣", "≻", "∋"],
         "description": "The Rebis Union — Bioconjugation, cross-coupling, click chemistry, amide bond formation. "
                        "The separated principles are reunited. This is not a return to the original mixture — "
                        "it is a structural meet (greatest lower bound) of the two purified components. "
@@ -177,7 +177,7 @@ to its phenol monomers without carbonization.
     },
     "fermentation": {
         "ig_op": "tensor",
-        "targets": ["Ç", "⊙", "Σ"],
+        "targets": ["⊤", "⊙", "⊞"],
         "description": "Transformation by Catalyst — Catalysis, enzymatic transformation, organocatalysis. "
                        "The conjunction is placed in the presence of a catalyst that models its own transition state. "
                        "The grammar tensor product of a substrate with a self-modeling (⊙) catalyst transforms "
@@ -196,7 +196,7 @@ Cu(I)-triazolide geometrically resembles Cu(I)-acetylide — the serpent recogni
     },
     "distillation": {
         "ig_op": "promote",
-        "targets": ["⊙", "Ħ", "Ω", "Γ"],
+        "targets": ["⊙", "⊥", "◻", "∈"],
         "description": "Raising the Pure — Distillation, reflux, sublimation, rotary evaporation. "
                        "Each distillation plate adds one Ω winding — the substance completes one cycle of "
                        "vaporization and condensation. The grammar proves that the number of plates needed "
@@ -206,7 +206,7 @@ Cu(I)-triazolide geometrically resembles Cu(I)-acetylide — the serpent recogni
     },
     "coagulation": {
         "ig_op": "join",
-        "targets": ["Ω", "Ř", "Γ"],
+        "targets": ["◻", "≻", "∈"],
         "description": "Fixing the Stone — Crystallization, precipitation, lyophilization, curing. "
                        "The product is fixed in its final form. In a Diels-Alder self-healing material, "
                        "coagulation is the cool-down step where the DA adduct reforms and the crack heals. "
@@ -229,13 +229,13 @@ Diels-Alder thermoreversible system (Ouroboros):
 # ═══════════════════════════════════════════════════════════════════════════════
 
 TUPLE_SHIFTS: Dict[str, Dict[str, float]] = {
-    "calcination": {"ƒ": -2.0, "Ħ": -2.0, "Γ": -1.0, "⊙": -1.0},
-    "dissolution": {"Ω": -2.0, "Ř": -2.0, "Σ": -2.0},
-    "separation": {"Σ": -2.0, "Φ": -1.0, "Ç": -2.0},
-    "conjunction": {"Þ": -2.0, "Ř": -1.0, "ɢ": -1.0},
-    "fermentation": {"Ç": +2.0, "⊙": +2.0, "Σ": +2.0},
-    "distillation": {"⊙": +2.0, "Ħ": +1.0, "Ω": +1.0, "Γ": +1.0},
-    "coagulation": {"Ω": +2.0, "Ř": +1.0, "Γ": +1.0},
+    "calcination": {"⋈": -2.0, "⊥": -2.0, "∈": -1.0, "⊙": -1.0},
+    "dissolution": {"◻": -2.0, "≻": -2.0, "⊞": -2.0},
+    "separation": {"⊞": -2.0, "≺": -1.0, "⊤": -2.0},
+    "conjunction": {"⊣": -2.0, "≻": -1.0, "∋": -1.0},
+    "fermentation": {"⊤": +2.0, "⊙": +2.0, "⊞": +2.0},
+    "distillation": {"⊙": +2.0, "⊥": +1.0, "◻": +1.0, "∈": +1.0},
+    "coagulation": {"◻": +2.0, "≻": +1.0, "∈": +1.0},
 }
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -313,7 +313,7 @@ def tensor(tup1: Dict[str, str], tup2: Dict[str, str]) -> Dict[str, str]:
     vec2 = tuple_to_ordinals(tup2)
     result_vec = []
     for i, prim in enumerate(PRIMITIVE_ORDER):
-        if prim in ["Φ", "ƒ"]:  # Frobenius and fidelity bottlenecks — take MIN
+        if prim in ["≺", "⋈"]:  # Frobenius and fidelity bottlenecks — take MIN
             res = min(vec1[i], vec2[i])
         else:  # All other primitives — take MAX (union of strengths)
             res = max(vec1[i], vec2[i])
@@ -361,7 +361,7 @@ def apply_operation(tup: Dict[str, str], operation_name: str) -> Dict[str, str]:
         "dissolution": project,
         "separation": principal_decomp,
         "conjunction": lambda t: meet(t, t),  # self-meet for demo
-        "fermentation": lambda t: tensor(t, {"⊙": "⊙", "Ç": "𐑘", "Σ": "𐑙"}),  # catalyst example
+        "fermentation": lambda t: tensor(t, {"⊙": "⊙", "⊤": "𐑘", "⊞": "𐑙"}),  # catalyst example
         "distillation": promote,
         "coagulation": lambda t: join(t, t),  # self-join for demo
     }
@@ -504,7 +504,7 @@ def run_full_alchemical_sequence(initial_tup: Optional[Dict[str, str]] = None) -
             partner = promote(current)  # simulate purified version
             current = meet(current, partner)
         elif stage == "fermentation":
-            catalyst = {"⊙": "⊙", "Ç": "𐑘", "Σ": "𐑙"}  # self-modeling catalyst
+            catalyst = {"⊙": "⊙", "⊤": "𐑘", "⊞": "𐑙"}  # self-modeling catalyst
             current = tensor(current, catalyst)
         else:
             current = apply_operation(current, stage)
@@ -522,7 +522,7 @@ def print_stage_report(stage_name: str, result_tup: Dict[str, str]):
     info_line(f"Description: {info.get('description', '')[:150]}...")
     if "practical_protocol" in info:
         info_line(f"Practical Protocol Example:\n{info['practical_protocol'][:200]}...")
-    info_line(f"Resulting tuple (sample primitives): {{'⊙': {result_tup.get('⊙')}, 'Ω': {result_tup.get('Ω')}, ...}}")
+    info_line(f"Resulting tuple (sample primitives): {{'⊙': {result_tup.get('⊙')}, '◻': {result_tup.get('◻')}, ...}}")
     info_line(f"{'='*60}")
 
 if __name__ == "__main__":
@@ -531,8 +531,8 @@ if __name__ == "__main__":
     
     # Sample starting tuple (BPA-like waste at low tier)
     start = {p: list(ORDINALS[p].keys())[0] for p in PRIMITIVE_ORDER}
-    start["Σ"] = "𐑳"  # high variety example
-    start["ƒ"] = "𐑐"  # some coherence
+    start["⊞"] = "𐑳"  # high variety example
+    start["⋈"] = "𐑐"  # some coherence
     
     history = run_full_alchemical_sequence(start)
     

@@ -181,9 +181,9 @@ class RebisCrystalBridge:
         try:
             # Map catalog field names to Shavian glyphs
             field_map = {
-                "D": "Ð", "T": "Þ", "R": "Ř", "P": "Φ", "F": "ƒ",
-                "K": "Ç", "G": "Γ", "Gm": "ɢ", "Ph": "φ̂", "H": "Ħ",
-                "S": "Σ", "W": "Ω"
+                "D": "⊢", "T": "⊣", "R": "≻", "P": "≺", "F": "⋈",
+                "K": "⊤", "G": "∈", "Gm": "∋", "Ph": "φ̂", "H": "⊥",
+                "S": "⊞", "W": "◻"
             }
             glyphs = {}
             for field, glyph_key in field_map.items():
@@ -197,18 +197,18 @@ class RebisCrystalBridge:
             # Fallback: compute locally from ordinal weights
             from shared.primitives import ORDINALS
             ordinal_map = {
-                "Ð": ("D", ORDINALS.get("Ð", {})),
-                "Þ": ("T", ORDINALS.get("Þ", {})),
-                "Ř": ("R", ORDINALS.get("Ř", {})),
-                "Φ": ("P", ORDINALS.get("Φ", {})),
-                "ƒ": ("F", ORDINALS.get("ƒ", {})),
-                "Ç": ("K", ORDINALS.get("Ç", {})),
-                "Γ": ("G", ORDINALS.get("Γ", {})),
-                "ɢ": ("Gm", ORDINALS.get("ɢ", {})),
+                "⊢": ("D", ORDINALS.get("⊢", {})),
+                "⊣": ("T", ORDINALS.get("⊣", {})),
+                "≻": ("R", ORDINALS.get("≻", {})),
+                "≺": ("P", ORDINALS.get("≺", {})),
+                "⋈": ("F", ORDINALS.get("⋈", {})),
+                "⊤": ("K", ORDINALS.get("⊤", {})),
+                "∈": ("G", ORDINALS.get("∈", {})),
+                "∋": ("Gm", ORDINALS.get("∋", {})),
                 "φ̂": ("Ph", ORDINALS.get("φ̂", {})),
-                "Ħ": ("H", ORDINALS.get("Ħ", {})),
-                "Σ": ("S", ORDINALS.get("Σ", {})),
-                "Ω": ("W", ORDINALS.get("Ω", {})),
+                "⊥": ("H", ORDINALS.get("⊥", {})),
+                "⊞": ("S", ORDINALS.get("⊞", {})),
+                "◻": ("W", ORDINALS.get("◻", {})),
             }
             # Simple hash-based address
             vals = []
@@ -289,7 +289,7 @@ class RebisCrystalBridge:
         from shared.primitives import WEIGHTS
         sq = 0.0
         fields = ["D","T","R","P","F","K","G","Gm","Ph","H","S","W"]
-        glyph_keys = ["Ð","Þ","Ř","Φ","ƒ","Ç","Γ","ɢ","φ̂","Ħ","Σ","Ω"]
+        glyph_keys = ["⊢","⊣","≻","≺","⋈","⊤","∈","∋","φ̂","⊥","⊞","◻"]
         for f, gk in zip(fields, glyph_keys):
             oa = ORDINALS.get(gk, {}).get(a.get(f, "?"), 0)
             ob = ORDINALS.get(gk, {}).get(b.get(f, "?"), 0)

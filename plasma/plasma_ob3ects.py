@@ -64,8 +64,8 @@ class PlasmaOb3ect:
 PRIMITIVE_FIRST_OB3ECT = PlasmaOb3ect(
     name="Primitive-First Plasma Physics",
     domain="physical",
-    tuple_glyphs={"Ð":"𐑼","Þ":"𐑡","Ř":"𐑾","Φ":"𐑗","ƒ":"𐑱","Ç":"𐑧",
-                  "Γ":"𐑚","ɢ":"𐑠","⊙":"⊙","Ħ":"𐑖","Σ":"𐑳","Ω":"𐑭"},
+    tuple_glyphs={"⊢":"𐑼","⊣":"𐑡","≻":"𐑾","≺":"𐑗","⋈":"𐑱","⊤":"𐑧",
+                  "∈":"𐑚","∋":"𐑠","⊙":"⊙","⊥":"𐑖","⊞":"𐑳","◻":"𐑭"},
     imas_ops=["VINIT","AFWD","IMSCRIB","FSPLIT","EVALT","AREV","EVALF",
               "FFUSE","CLINK","IFIX","ENGAGR","TANCH"],
     imas_sig=(6,2,3,1),
@@ -124,8 +124,8 @@ PRIMITIVE_FIRST_OB3ECT = PlasmaOb3ect(
 HIGH_ENERGY_OB3ECT = PlasmaOb3ect(
     name="High-Energy Plasma",
     domain="physical",
-    tuple_glyphs={"Ð":"𐑼","Þ":"𐑡","Ř":"𐑾","Φ":"𐑗","ƒ":"𐑱","Ç":"𐑧",
-                  "Γ":"𐑚","ɢ":"𐑠","⊙":"⊙","Ħ":"𐑓","Σ":"𐑙","Ω":"𐑭"},
+    tuple_glyphs={"⊢":"𐑼","⊣":"𐑡","≻":"𐑾","≺":"𐑗","⋈":"𐑱","⊤":"𐑧",
+                  "∈":"𐑚","∋":"𐑠","⊙":"⊙","⊥":"𐑓","⊞":"𐑙","◻":"𐑭"},
     imas_ops=["VINIT","AFWD","FSPLIT","IMSCRIB","CLINK","AFWD","FSPLIT",
               "EVALT","ENGAGR","AREV","FFUSE","CLINK","IFIX","TANCH"],
     imas_sig=(8,3,2,1),
@@ -185,8 +185,8 @@ HIGH_ENERGY_OB3ECT = PlasmaOb3ect(
 ROCK_CRACKING_OB3ECT = PlasmaOb3ect(
     name="Plasma-Cracking Rock",
     domain="physical",
-    tuple_glyphs={"Ð":"𐑼","Þ":"𐑡","Ř":"𐑾","Φ":"𐑗","ƒ":"𐑱","Ç":"𐑧",
-                  "Γ":"𐑚","ɢ":"𐑠","⊙":"⊙","Ħ":"𐑖","Σ":"𐑙","Ω":"𐑭"},
+    tuple_glyphs={"⊢":"𐑼","⊣":"𐑡","≻":"𐑾","≺":"𐑗","⋈":"𐑱","⊤":"𐑧",
+                  "∈":"𐑚","∋":"𐑠","⊙":"⊙","⊥":"𐑖","⊞":"𐑙","◻":"𐑭"},
     imas_ops=["VINIT","AFWD","IMSCRIB","FSPLIT","EVALT","CLINK",
               "EVALF","AREV","FFUSE","IFIX","TANCH"],
     imas_sig=(6,2,2,1),
@@ -245,8 +245,8 @@ ROCK_CRACKING_OB3ECT = PlasmaOb3ect(
 IDEAL_DEVICE_OB3ECT = PlasmaOb3ect(
     name="Ideal Rock-Cracking Plasma Device",
     domain="physical",
-    tuple_glyphs={"Ð":"𐑼","Þ":"𐑡","Ř":"𐑾","Φ":"𐑗","ƒ":"𐑱","Ç":"𐑧",
-                  "Γ":"𐑚","ɢ":"𐑠","⊙":"⊙","Ħ":"𐑖","Σ":"𐑙","Ω":"𐑭"},
+    tuple_glyphs={"⊢":"𐑼","⊣":"𐑡","≻":"𐑾","≺":"𐑗","⋈":"𐑱","⊤":"𐑧",
+                  "∈":"𐑚","∋":"𐑠","⊙":"⊙","⊥":"𐑖","⊞":"𐑙","◻":"𐑭"},
     imas_ops=["VINIT","CLINK","AFWD","IMSCRIB","FSPLIT","EVALT",
               "EVALF","ENGAGR","AREV","FFUSE","TANCH","IFIX"],
     imas_sig=(6,2,3,1),
@@ -389,7 +389,7 @@ if __name__ == "__main__":
     info_line("╚══════════════════════════════════════════╝")
     
     for ob in PLASMA_OB3ECTS:
-        tup_str = "⟨" + "".join(ob.tuple_glyphs.get(p, "?") for p in ["Ð","Þ","Ř","Φ","ƒ","Ç","Γ","ɢ","⊙","Ħ","Σ","Ω"]) + "⟩"
+        tup_str = "⟨" + "".join(ob.tuple_glyphs.get(p, "?") for p in ["⊢","⊣","≻","≺","⋈","⊤","∈","∋","⊙","⊥","⊞","◻"]) + "⟩"
         info_line(f"\n  {ob.name}")
         info_line(f"    Tuple:      {tup_str}")
         info_line(f"    IMASM:      {'→'.join(ob.imas_ops)}")

@@ -185,18 +185,18 @@ def estimate_transition_energy(from_layer: int, to_layer: int,
 
 # Energy cost (eV) for promoting each primitive by one ordinal step
 PRIMITIVE_PROMOTION_ENERGY = {
-    "Ð": 10.0,    # Dimensionality increase — new degrees of freedom
-    "Þ": 8.0,     # Topology change — rewiring connections
-    "Ř": 5.0,     # Coupling upgrade — stronger interaction
-    "Φ": 3.0,     # Parity symmetry change — symmetry breaking/restoration
-    "ƒ": 15.0,    # Fidelity upgrade (classical → quantum) — coherence cost
-    "Ç": 2.0,     # Kinetics change — relaxation time adjustment
-    "Γ": 4.0,     # Range extension — longer-range interactions
-    "ɢ": 6.0,     # Composition upgrade — more complex assembly
+    "⊢": 10.0,    # Dimensionality increase — new degrees of freedom
+    "⊣": 8.0,     # Topology change — rewiring connections
+    "≻": 5.0,     # Coupling upgrade — stronger interaction
+    "≺": 3.0,     # Parity symmetry change — symmetry breaking/restoration
+    "⋈": 15.0,    # Fidelity upgrade (classical → quantum) — coherence cost
+    "⊤": 2.0,     # Kinetics change — relaxation time adjustment
+    "∈": 4.0,     # Range extension — longer-range interactions
+    "∋": 6.0,     # Composition upgrade — more complex assembly
     "⊙": 12.0,    # Criticality promotion — approach to critical point
-    "Ħ": 7.0,     # Chirality increase — higher-order memory
-    "Σ": 3.0,     # Stoichiometry — more component types
-    "Ω": 20.0,    # Winding topology — topological protection cost
+    "⊥": 7.0,     # Chirality increase — higher-order memory
+    "⊞": 3.0,     # Stoichiometry — more component types
+    "◻": 20.0,    # Winding topology — topological protection cost
 }
 
 
@@ -272,7 +272,7 @@ def compute_layer_energy_profile(layer_idx: int) -> Dict:
     energy_sum = 0.0
     primitive_contribs = {}
     
-    PNAMES = ["Ð", "Þ", "Ř", "Φ", "ƒ", "Ç", "Γ", "ɢ", "⊙", "Ħ", "Σ", "Ω"]
+    PNAMES = ["⊢", "⊣", "≻", "≺", "⋈", "⊤", "∈", "∋", "⊙", "⊥", "⊞", "◻"]
     for p in PNAMES:
         if p in tup and p in baseline_tup and p in ORDINALS:
             try:

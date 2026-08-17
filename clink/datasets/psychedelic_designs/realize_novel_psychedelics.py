@@ -37,8 +37,8 @@ from clink.chain import compute_c_score_from_tuple, compute_tier_from_tuple
 from shared.rich_output import *
 
 # ─── KEY MAPPING: compound dict keys → PORDER Shavian keys ──────
-KEY_MAP = {"D": "Ð", "T": "Þ", "R": "Ř", "P": "Φ", "F": "ƒ", "K": "Ç",
-           "G": "Γ", "Gm": "ɢ", "Ph": "⊙", "H": "Ħ", "S": "Σ", "W": "Ω"}
+KEY_MAP = {"D": "⊢", "T": "⊣", "R": "≻", "P": "≺", "F": "⋈", "K": "⊤",
+           "G": "∈", "Gm": "∋", "Ph": "⊙", "H": "⊥", "S": "⊞", "W": "◻"}
 COMPOUND_KEYS = ["D", "T", "R", "P", "F", "K", "G", "Gm", "Ph", "H", "S", "W"]
 
 

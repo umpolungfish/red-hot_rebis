@@ -22,7 +22,7 @@ sys.path.insert(0, str(BASE.parent / "shared"))
 from shared.primitives import ORDINALS, WEIGHTS, resolve_ordinal_key
 
 PNAMES = ["D","T","R","P","F","K","G","Gm","Ph","H","S","W"]
-FIELD_TO_ORD = {"D":"Ð","T":"Þ","R":"Ř","P":"Φ","F":"ƒ","K":"Ç","G":"Γ","Gm":"ɢ","Ph":"⊙","H":"Ħ","S":"Σ","W":"Ω"}
+FIELD_TO_ORD = {"D":"⊢","T":"⊣","R":"≻","P":"≺","F":"⋈","K":"⊤","G":"∈","Gm":"∋","Ph":"⊙","H":"⊥","S":"⊞","W":"◻"}
 
 def _g2v(p, r):
     if not r or r == '?': return '?', 0

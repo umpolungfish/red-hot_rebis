@@ -23,7 +23,7 @@ from shared.primitives import (
 )
 
 # Canonical primitive order
-PLASMA_PORDER = PORDER = ["Ð", "Þ", "Ř", "Φ", "ƒ", "Ç", "Γ", "ɢ", "⊙", "Ħ", "Σ", "Ω"]
+PLASMA_PORDER = PORDER = ["⊢", "⊣", "≻", "≺", "⋈", "⊤", "∈", "∋", "⊙", "⊥", "⊞", "◻"]
 
 # ═══════════════════════════════════════════════════════════════════
 # PLASMA TYPE 0 — VLASOV PLASMA (Manual Imscription, Direct Procedure)
@@ -31,9 +31,9 @@ PLASMA_PORDER = PORDER = ["Ð", "Þ", "Ř", "Φ", "ƒ", "Ç", "Γ", "ɢ", "⊙",
 # ⟨𐑛𐑥𐑾𐑬𐑱𐑧𐑔𐑠𐑮𐑖𐑳𐑭⟩  O₂, C=0.5455
 # Crystal address: 8,664,128
 VLASOV_PLASMA = {
-    "Ð": "𐑛", "Þ": "𐑥", "Ř": "𐑾", "Φ": "𐑬",
-    "ƒ": "𐑱", "Ç": "𐑧", "Γ": "𐑔", "ɢ": "𐑠",
-    "⊙": "𐑮", "Ħ": "𐑖", "Σ": "𐑳", "Ω": "𐑭",
+    "⊢": "𐑛", "⊣": "𐑥", "≻": "𐑾", "≺": "𐑬",
+    "⋈": "𐑱", "⊤": "𐑧", "∈": "𐑔", "∋": "𐑠",
+    "⊙": "𐑮", "⊥": "𐑖", "⊞": "𐑳", "◻": "𐑭",
     "_name": "vlasovPlasma",
     "_desc": "Vlasov-Maxwell plasma — infinite-dimensional field theory, mode crossing, bidirectional coupling, complex-plane criticality",
     "_tier": "O₂",
@@ -48,9 +48,9 @@ VLASOV_PLASMA = {
 # ⟨𐑼𐑡𐑾𐑗𐑱𐑧𐑚𐑠⊙𐑖𐑳𐑭⟩  O₂†, C=0.263
 # IMASM: V→AF→IM→FS→ET→AR→EF→FU→CL→IF→EN→TA, sig=(6,2,3,1), period=12
 PRIMITIVE_FIRST_PLASMA = {
-    "Ð": "𐑼", "Þ": "𐑡", "Ř": "𐑾", "Φ": "𐑗",
-    "ƒ": "𐑱", "Ç": "𐑧", "Γ": "𐑚", "ɢ": "𐑠",
-    "⊙": "⊙", "Ħ": "𐑖", "Σ": "𐑳", "Ω": "𐑭",
+    "⊢": "𐑼", "⊣": "𐑡", "≻": "𐑾", "≺": "𐑗",
+    "⋈": "𐑱", "⊤": "𐑧", "∈": "𐑚", "∋": "𐑠",
+    "⊙": "⊙", "⊥": "𐑖", "⊞": "𐑳", "◻": "𐑭",
     "_name": "primitiveFirstPlasma",
     "_desc": "Primitive-First Plasma — collective dielectric response, Debye sheath boundary, dialetheia-complete",
     "_tier": "O₂†",
@@ -69,9 +69,9 @@ PRIMITIVE_FIRST_PLASMA = {
 # Key difference from Primitive-First: Σ=𐑙 (1:1) instead of 𐑳 (heterogeneous)
 # and Ħ=𐑓 (memoryless) instead of 𐑖 (two-step)
 HIGH_ENERGY_PLASMA = {
-    "Ð": "𐑼", "Þ": "𐑡", "Ř": "𐑾", "Φ": "𐑗",
-    "ƒ": "𐑱", "Ç": "𐑧", "Γ": "𐑚", "ɢ": "𐑠",
-    "⊙": "⊙", "Ħ": "𐑓", "Σ": "𐑙", "Ω": "𐑭",
+    "⊢": "𐑼", "⊣": "𐑡", "≻": "𐑾", "≺": "𐑗",
+    "⋈": "𐑱", "⊤": "𐑧", "∈": "𐑚", "∋": "𐑠",
+    "⊙": "⊙", "⊥": "𐑓", "⊞": "𐑙", "◻": "𐑭",
     "_name": "highEnergyPlasma",
     "_desc": "High-Energy Plasma — tokamak/fusion regime, Bohm diffusion, H-mode transition, ELM-active pedestal",
     "_tier": "O₂†",
@@ -88,9 +88,9 @@ HIGH_ENERGY_PLASMA = {
 # Rock-Cracking ≡ Ideal Device — identical structural type
 # IMASM: V→AF→IM→FS→ET→CL→EF→AR→FU→IF→TA, sig=(6,2,2,1), period=11
 ROCK_CRACKING_PLASMA = {
-    "Ð": "𐑼", "Þ": "𐑡", "Ř": "𐑾", "Φ": "𐑗",
-    "ƒ": "𐑱", "Ç": "𐑧", "Γ": "𐑚", "ɢ": "𐑠",
-    "⊙": "⊙", "Ħ": "𐑖", "Σ": "𐑙", "Ω": "𐑭",
+    "⊢": "𐑼", "⊣": "𐑡", "≻": "𐑾", "≺": "𐑗",
+    "⋈": "𐑱", "⊤": "𐑧", "∈": "𐑚", "∋": "𐑠",
+    "⊙": "⊙", "⊥": "𐑖", "⊞": "𐑙", "◻": "𐑭",
     "_name": "rockCrackingPlasma",
     "_desc": "Rock-Cracking Plasma — plasma arc spallation, thermal shock fracture, acoustic-plasma coupling. Identical to Ideal Device.",
     "_tier": "O₂†",
@@ -127,27 +127,27 @@ PLASMA_TIERS = [p["_tier"] for p in PLASMA_TYPES]
 
 # Reference CLINK layers for distance computation
 CLINK_ATOM = {
-    "Ð": "𐑼", "Þ": "𐑥", "Ř": "𐑽", "Φ": "𐑿",
-    "ƒ": "𐑐", "Ç": "𐑤", "Γ": "𐑔", "ɢ": "𐑝",
-    "⊙": "𐑮", "Ħ": "𐑒", "Σ": "𐑳", "Ω": "𐑷",
+    "⊢": "𐑼", "⊣": "𐑥", "≻": "𐑽", "≺": "𐑿",
+    "⋈": "𐑐", "⊤": "𐑤", "∈": "𐑔", "∋": "𐑝",
+    "⊙": "𐑮", "⊥": "𐑒", "⊞": "𐑳", "◻": "𐑷",
 }
 
 CLINK_MOLECULE = {
-    "Ð": "𐑼", "Þ": "𐑥", "Ř": "𐑽", "Φ": "𐑿",
-    "ƒ": "𐑞", "Ç": "𐑧", "Γ": "𐑲", "ɢ": "𐑠",
-    "⊙": "⊙", "Ħ": "𐑓", "Σ": "𐑳", "Ω": "𐑭",
+    "⊢": "𐑼", "⊣": "𐑥", "≻": "𐑽", "≺": "𐑿",
+    "⋈": "𐑞", "⊤": "𐑧", "∈": "𐑲", "∋": "𐑠",
+    "⊙": "⊙", "⊥": "𐑓", "⊞": "𐑳", "◻": "𐑭",
 }
 
 CLINK_ORGANISM = {
-    "Ð": "𐑦", "Þ": "𐑸", "Ř": "𐑾", "Φ": "𐑹",
-    "ƒ": "𐑐", "Ç": "𐑧", "Γ": "𐑲", "ɢ": "𐑵",
-    "⊙": "⊙", "Ħ": "𐑫", "Σ": "𐑳", "Ω": "𐑟",
+    "⊢": "𐑦", "⊣": "𐑸", "≻": "𐑾", "≺": "𐑹",
+    "⋈": "𐑐", "⊤": "𐑧", "∈": "𐑲", "∋": "𐑵",
+    "⊙": "⊙", "⊥": "𐑫", "⊞": "𐑳", "◻": "𐑟",
 }
 
 CLINK_CELL = {
-    "Ð": "𐑦", "Þ": "𐑸", "Ř": "𐑾", "Φ": "𐑬",
-    "ƒ": "𐑞", "Ç": "𐑧", "Γ": "𐑲", "ɢ": "𐑠",
-    "⊙": "⊙", "Ħ": "𐑒", "Σ": "𐑳", "Ω": "𐑭",
+    "⊢": "𐑦", "⊣": "𐑸", "≻": "𐑾", "≺": "𐑬",
+    "⋈": "𐑞", "⊤": "𐑧", "∈": "𐑲", "∋": "𐑠",
+    "⊙": "⊙", "⊥": "𐑒", "⊞": "𐑳", "◻": "𐑭",
 }
 
 # ═══════════════════════════════════════════════════════════════════

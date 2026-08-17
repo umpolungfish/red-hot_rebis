@@ -16,7 +16,31 @@ Usage:
 """
 
 import sys
+import importlib as _importlib
 from rebis.file_input import parse_with_file
+
+__all__ = []
+
+def _lazy(name, module, attr=None):
+    """Expose a backend callable on the facade, as every other domain does."""
+    try:
+        _m = _importlib.import_module(module)
+        globals()[name] = getattr(_m, attr or name)
+        __all__.append(name)
+    except Exception:
+        pass
+
+# ligand design from a deposited structure
+_lazy("design_ligand_from_pdb", "rhr_p4rky.ligand_from_site_pdb")
+_lazy("design_ligand_from_pdb_improved", "rhr_p4rky.ligand_from_site_pdb")
+_lazy("encode_site_from_pdb", "rhr_p4rky.ligand_from_site_pdb")
+_lazy("auto_detect_active_site", "rhr_p4rky.ligand_from_site_pdb")
+_lazy("complement_with_bottleneck_bias", "rhr_p4rky.ligand_from_site_pdb")
+_lazy("print_ligand_result", "rhr_p4rky.ligand_from_site_pdb")
+_lazy("result_to_json", "rhr_p4rky.ligand_from_site_pdb")
+_lazy("CatalyticResidueAnalysis", "rhr_p4rky.ligand_from_site_pdb")
+_lazy("LigandDesignResult", "rhr_p4rky.ligand_from_site_pdb")
+_lazy("fingerprint_to_ig_biochemical", "rhr_p4rky.ligand_imasm_v2")
 import os
 from pathlib import Path
 

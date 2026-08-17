@@ -186,7 +186,7 @@ def ig_distance_matrix(
 # DISPLAY & DESCRIPTION
 # ═══════════════════════════════════════════════════════════════════
 
-PRIMITIVE_NAMES = ['D', 'T', 'R', 'P', 'F', 'K', 'G', 'C', 'Φ', 'H', 'S', 'Ω']
+PRIMITIVE_NAMES = ['D', 'T', 'R', 'P', 'F', 'K', 'G', 'C', '≺', 'H', 'S', '◻']
 
 def ig_tuple_str(ig: Tuple[str, ...]) -> str:
     """Format an IG tuple for display: ⟨DTRPFKGCΦHSΩ>"""
@@ -231,14 +231,14 @@ def describe_full(ig: Tuple[str, ...]) -> str:
               '𐑲': 'universal/long-range'},
         'C': {'𐑝': 'all-simultaneous', '𐑜': 'alternate paths',
               '𐑠': 'ordered steps/sequential', '𐑵': 'broadcast/one-to-all'},
-        'Φ': {'𐑢': 'sub-critical', '⊙': 'critical/self-modeling',
+        '≺': {'𐑢': 'sub-critical', '⊙': 'critical/self-modeling',
               '𐑮': 'complex-plane critical', '𐑻': 'exceptional point',
               '𐑣': 'supercritical/runaway'},
         'H': {'𐑓': 'memoryless (M0)', '𐑒': 'one-step (M1)',
               '𐑖': 'two-step (M2)', '𐑫': 'eternal (no finite n)'},
         'S': {'𐑙': '1:1 single type', '𐑕': 'many identical',
               '𐑳': 'multiple distinct types'},
-        'Ω': {'𐑷': 'trivial', '𐑴': 'Z2 parity-protected',
+        '◻': {'𐑷': 'trivial', '𐑴': 'Z2 parity-protected',
               '𐑭': 'integer winding', '𐑟': 'non-Abelian braiding'},
     }
     lines = []

@@ -261,18 +261,18 @@ def build_catalog_entry(name: str, description: str, ig: Tuple[str, ...]) -> Dic
     return {
         "name": name,
         "description": description,
-        "Ð": ig[0],
-        "Þ": ig[1],
-        "Ř": ig[2],
-        "Φ": ig[3],
-        "ƒ": ig[4],
-        "Ç": ig[5],
-        "Γ": ig[6],
-        "ɢ": ig[7],
+        "⊢": ig[0],
+        "⊣": ig[1],
+        "≻": ig[2],
+        "≺": ig[3],
+        "⋈": ig[4],
+        "⊤": ig[5],
+        "∈": ig[6],
+        "∋": ig[7],
         "⊙": ig[8],
-        "Ħ": ig[9],
-        "Σ": ig[10],
-        "Ω": ig[11],
+        "⊥": ig[9],
+        "⊞": ig[10],
+        "◻": ig[11],
     }
 
 
@@ -373,9 +373,9 @@ def entry_to_ig(entry: Dict) -> Optional[Tuple[str, ...]]:
     """Extract IG tuple from a catalog entry."""
     try:
         return (
-            entry["Ð"], entry["Þ"], entry["Ř"], entry["Φ"],
-            entry["ƒ"], entry["Ç"], entry["Γ"], entry["ɢ"],
-            entry["⊙"], entry["Ħ"], entry["Σ"], entry["Ω"],
+            entry["⊢"], entry["⊣"], entry["≻"], entry["≺"],
+            entry["⋈"], entry["⊤"], entry["∈"], entry["∋"],
+            entry["⊙"], entry["⊥"], entry["⊞"], entry["◻"],
         )
     except KeyError:
         return None

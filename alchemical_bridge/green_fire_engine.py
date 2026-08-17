@@ -264,9 +264,9 @@ class PhotocatalyticCycle:
         
         # Build the tuple for this photocatalyst
         cycle_tuple = {
-            "Ð": "𐑦", "Þ": "𐑸", "Ř": "𐑾", "Φ": "𐑹",
-            "ƒ": "𐑐", "Ç": "𐑧", "Γ": "𐑲", "ɢ": "𐑠",
-            "⊙": "⊙", "Ħ": "𐑖", "Σ": "𐑳", "Ω": "𐑭",
+            "⊢": "𐑦", "⊣": "𐑸", "≻": "𐑾", "≺": "𐑹",
+            "⋈": "𐑐", "⊤": "𐑧", "∈": "𐑲", "∋": "𐑠",
+            "⊙": "⊙", "⊥": "𐑖", "⊞": "𐑳", "◻": "𐑭",
         }
         
         dist = tuple_distance(cycle_tuple, stone_tuple)
