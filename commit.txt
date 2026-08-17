@@ -1,5 +1,25 @@
-The sibling compiler carried the retired letters too
+Eleven of the twelve residues were invisible to the predictor
 
-Same defect as the grammar copy: the field map named Ð Þ Ř Φ ƒ Ç Γ ɢ Ħ Σ Ω while the
-ordinal table is keyed by the twelve marks, so every type resolved to unknowns except
-Criticality, whose mark never changed. The map now names the marks.
+The activation index is built by matching each residue's mark against the list of
+primitive names, and that list still held the retired letters while the map held
+Shavian values. Nothing matched except glutamine, and only because ⊙ is the mark that
+never changed, so every protein came back with one primitive active out of twelve and
+every rolling profile was flat.
+
+The same file carried the assignment twice, in PRIMITIVE_MAP and again in AA_DATA,
+and the two had drifted apart. It is stated once now, and AA_DATA reads from the map.
+
+The assignment itself was pre-revision: histidine sat on Grammar and glutamine on
+Criticality, which is the swap the catalog corrected. Canonical now, histidine on
+Criticality and glutamine on Grammar, with Recognition, Fidelity, Granularity,
+Stoichiometry and Protection replacing the retired axis names Reversibility, Force,
+Interaction, Entropy and Winding.
+
+Trp-cage now profiles as ∈ ∋ ≺ ⊤ ⊥ ⊞ ⊣, which is the motif the fold sweep reports for
+it from the structure side.
+
+Sidechain algebra crashed outright on a missing key, for the same reason one layer
+up: all twenty sidechain tuples and all four environment tuples were keyed by retired
+letters while the navigator addresses the marks. Rekeyed, and the composite tier
+matrix computes across the board, with arginine at a charged interface reaching O_∞
+alone.

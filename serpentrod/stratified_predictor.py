@@ -31,18 +31,18 @@ from collections import Counter
 # ─── AA → Primitive Mapping ───────────────────────────────────────────────
 
 PRIMITIVE_MAP = {
-    'M': ('𐑦', 'Dimensionality', 'Start codon / scope'),
-    'W': ('𐑸', 'Topology', 'Indole ring — topological constraint'),
-    'C': ('𐑾', 'Reversibility', 'Disulfide bond — reversible crosslink'),
-    'Y': ('𐑿', 'Parity', 'Phosphorylation switch'),
-    'F': ('𐑐', 'Force', 'Hydrophobic ceiling'),
-    'I': ('𐑧', 'Kinetics', 'β-branching — slow folding'),
-    'H': ('𐑲', 'Grammar', 'pH-gated catalysis'),
-    'N': ('𐑠', 'Interaction', 'N-glycosylation site'),
-    'Q': ('⊙', 'Criticality', 'Metabolic regulation gate'),
-    'D': ('𐑖', 'Chirality', 'Substrate selectivity'),
-    'K': ('𐑙', 'Entropy', 'Variable / acetylation site'),
-    'E': ('𐑭', 'Winding', 'Closure / C-terminal marker'),
+    'M': ('⊢', 'Dimensionality', 'Start codon — opens the reading'),
+    'W': ('⊣', 'Topology', 'Indole ring — closes the reading'),
+    'C': ('≻', 'Recognition', 'Disulfide bond — reversible crosslink'),
+    'Y': ('≺', 'Parity', 'Phosphorylation switch'),
+    'F': ('⋈', 'Fidelity', 'Hydrophobic ceiling'),
+    'I': ('⊤', 'Kinetics', 'β-branching — slow folding'),
+    'N': ('∈', 'Granularity', 'N-glycosylation site — the branch point'),
+    'Q': ('∋', 'Grammar', 'Transglutaminase donor — the join'),
+    'H': ('⊙', 'Criticality', 'pH-gated catalysis'),
+    'D': ('⊥', 'Chirality', 'Substrate selectivity'),
+    'K': ('⊞', 'Stoichiometry', 'Acetylation site'),
+    'E': ('◻', 'Protection', 'Closure / C-terminal marker'),
 }
 
 # Remaining 8 AAs have zero primitive activation
@@ -52,28 +52,34 @@ ZERO_PRIMITIVE_AAS = {'A', 'G', 'P', 'S', 'T', 'V', 'L', 'R'}
 
 AA_DATA = {
     'A': ('Ala', 'Alanine', None, 'methyl — minimal hydrophobic'),
-    'C': ('Cys', 'Cysteine', ('𐑾', 'Reversibility', 'Disulfide bond — reversible crosslink'), 'thiol — redox-sensitive'),
-    'D': ('Asp', 'Aspartate', ('𐑖', 'Chirality', 'Substrate selectivity'), 'carboxyl — negative charge'),
-    'E': ('Glu', 'Glutamate', ('𐑭', 'Winding', 'Closure / C-terminal marker'), 'carboxyl — longer arm'),
-    'F': ('Phe', 'Phenylalanine', ('𐑐', 'Force', 'Hydrophobic ceiling'), 'benzyl — strong hydrophobic'),
+    'C': ('Cys', 'Cysteine', ('≻', 'Recognition', 'Disulfide bond — reversible crosslink'), 'thiol — redox-sensitive'),
+    'D': ('Asp', 'Aspartate', ('⊥', 'Chirality', 'Substrate selectivity'), 'carboxyl — negative charge'),
+    'E': ('Glu', 'Glutamate', ('◻', 'Protection', 'Closure / C-terminal marker'), 'carboxyl — longer arm'),
+    'F': ('Phe', 'Phenylalanine', ('⋈', 'Fidelity', 'Hydrophobic ceiling'), 'benzyl — strong hydrophobic'),
     'G': ('Gly', 'Glycine', None, 'minimal — backbone flexibility'),
-    'H': ('His', 'Histidine', ('𐑲', 'Grammar', 'pH-gated catalysis'), 'imidazole — pH sensor'),
-    'I': ('Ile', 'Isoleucine', ('𐑧', 'Kinetics', 'β-branching — slow folding'), 'β-branched — sterics'),
-    'K': ('Lys', 'Lysine', ('𐑙', 'Entropy', 'Variable / acetylation site'), 'amine — positive charge'),
+    'H': ('His', 'Histidine', ('⊙', 'Criticality', 'pH-gated catalysis'), 'imidazole — pH sensor'),
+    'I': ('Ile', 'Isoleucine', ('⊤', 'Kinetics', 'β-branching — slow folding'), 'β-branched — sterics'),
+    'K': ('Lys', 'Lysine', ('⊞', 'Stoichiometry', 'Acetylation site'), 'amine — positive charge'),
     'L': ('Leu', 'Leucine', None, 'hydrophobic — structural'),
-    'M': ('Met', 'Methionine', ('𐑦', 'Dimensionality', 'Start codon / scope'), 'thioether — start'),
-    'N': ('Asn', 'Asparagine', ('𐑠', 'Interaction', 'N-glycosylation site'), 'amide — glycosylation'),
+    'M': ('Met', 'Methionine', ('⊢', 'Dimensionality', 'Start codon — opens the reading'), 'thioether — start'),
+    'N': ('Asn', 'Asparagine', ('∈', 'Granularity', 'N-glycosylation site — the branch point'), 'amide — glycosylation'),
     'P': ('Pro', 'Proline', None, 'puckered — backbone break'),
-    'Q': ('Gln', 'Glutamine', ('⊙', 'Criticality', 'Metabolic regulation gate'), 'amide — longer arm'),
+    'Q': ('Gln', 'Glutamine', ('∋', 'Grammar', 'Transglutaminase donor — the join'), 'amide — longer arm'),
     'R': ('Arg', 'Arginine', None, 'guanidino — positive charge'),
     'S': ('Ser', 'Serine', None, 'hydroxyl — phosphorylation'),
     'T': ('Thr', 'Threonine', None, 'β-hydroxyl — O-glycosylation'),
     'V': ('Val', 'Valine', None, 'β-branched — hydrophobic'),
-    'W': ('Trp', 'Tryptophan', ('𐑸', 'Topology', 'Indole ring — topological constraint'), 'indole — large aromatic'),
-    'Y': ('Tyr', 'Tyrosine', ('𐑿', 'Parity', 'Phosphorylation switch'), 'phenol — phosphorylation'),
+    'W': ('Trp', 'Tryptophan', ('⊣', 'Topology', 'Indole ring — closes the reading'), 'indole — large aromatic'),
+    'Y': ('Tyr', 'Tyrosine', ('≺', 'Parity', 'Phosphorylation switch'), 'phenol — phosphorylation'),
 }
 
-PRIMITIVE_NAMES = ['Ð', 'Þ', 'Ř', 'Φ', 'ƒ', 'Ç', 'Γ', 'ɢ', '⊙', 'Ħ', 'Σ', 'Ω']
+PRIMITIVE_NAMES = ['⊢', '⊣', '≻', '≺', '⋈', '⊤', '∈', '∋', '⊙', '⊥', '⊞', '◻']
+# AA_DATA carried a second copy of the same assignment. It reads from the map now,
+# so the residue-to-mark correspondence is stated once.
+for _aa, _entry in list(AA_DATA.items()):
+    if _aa in PRIMITIVE_MAP:
+        AA_DATA[_aa] = (_entry[0], _entry[1], PRIMITIVE_MAP[_aa], _entry[3])
+
 AA_TO_PRIMITIVE_INDEX = {}
 for aa, (prim, _, _) in [(k,v) for k,v in PRIMITIVE_MAP.items()]:
     for i, pn in enumerate(PRIMITIVE_NAMES):
