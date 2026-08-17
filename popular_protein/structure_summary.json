@@ -7,7 +7,7 @@
     "n_strand": 5,
     "n_coil": 4,
     "pdb_path": "/home/mrnob0dy666/imsgct/red-hot_rebis/popular_protein/insulin_a_chain_platonic.pdb",
-    "pdb_size": 8786
+    "pdb_size": 9048
   },
   "insulin_b_chain": {
     "sequence": "FVNQHLCGSHLVEALYLVCGERGFFYTPKT",
@@ -17,7 +17,7 @@
     "n_strand": 11,
     "n_coil": 7,
     "pdb_path": "/home/mrnob0dy666/imsgct/red-hot_rebis/popular_protein/insulin_b_chain_platonic.pdb",
-    "pdb_size": 12220
+    "pdb_size": 12545
   },
   "acth": {
     "sequence": "SYSMEHFRWGKPVGKKRRPVKVYPNVAENESAEAFPLEF",
@@ -27,7 +27,7 @@
     "n_strand": 10,
     "n_coil": 4,
     "pdb_path": "/home/mrnob0dy666/imsgct/red-hot_rebis/popular_protein/acth_platonic.pdb",
-    "pdb_size": 15806
+    "pdb_size": 16194
   },
   "beta_endorphin": {
     "sequence": "YGGFMTSEKSQTPLVTLFKNAIVKNAHKKGQ",
@@ -37,7 +37,7 @@
     "n_strand": 3,
     "n_coil": 2,
     "pdb_path": "/home/mrnob0dy666/imsgct/red-hot_rebis/popular_protein/beta_endorphin_platonic.pdb",
-    "pdb_size": 12484
+    "pdb_size": 12745
   },
   "alpha_msh": {
     "sequence": "SYSMEHFRWGKPV",
@@ -47,7 +47,7 @@
     "n_strand": 0,
     "n_coil": 6,
     "pdb_path": "/home/mrnob0dy666/imsgct/red-hot_rebis/popular_protein/alpha_msh_platonic.pdb",
-    "pdb_size": 5485
+    "pdb_size": 5627
   },
   "gfp": {
     "sequence": "MSKGEELFTGVVPILVELDGDVNGHKFSVSGEGEGDATYGKLTLKFICTTGKLPVPWPTLVTTFSYGVQCFSRYPDHMKQHDFFKSAMPEGYVQERTIFFKDDGNYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNYNSHNVYIMADKQKNGIKVNFKIRHNIEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSALSKDPNEKRDHMVLLEFVTAAGITHGMDELYK",
@@ -57,7 +57,7 @@
     "n_strand": 44,
     "n_coil": 51,
     "pdb_path": "/home/mrnob0dy666/imsgct/red-hot_rebis/popular_protein/gfp_platonic.pdb",
-    "pdb_size": 93542
+    "pdb_size": 95603
   },
   "lysozyme": {
     "sequence": "KVFGRCELAAAMKRHGLDNYRGYSLGNWVCAAKFESNFNTQATNRNTDGSTDYGILQINSRWWCNDGRTPGSRNLCNIPCSALLSSDITASVNCAKKIVSDGNGMNAWVAWRNRCKGTDVQAWIRGCRL",
@@ -67,6 +67,6 @@
     "n_strand": 30,
     "n_coil": 50,
     "pdb_path": "/home/mrnob0dy666/imsgct/red-hot_rebis/popular_protein/lysozyme_platonic.pdb",
-    "pdb_size": 51127
+    "pdb_size": 52257
   }
 }

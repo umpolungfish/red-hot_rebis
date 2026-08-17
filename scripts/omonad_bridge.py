@@ -25,6 +25,7 @@ import json
 import math
 from pathlib import Path
 from dataclasses import dataclass, field
+from shared.rich_output import *  # printing helpers this script calls
 from typing import Dict, List, Tuple, Optional, Set, Any
 from enum import Enum
 

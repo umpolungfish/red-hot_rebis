@@ -111,15 +111,18 @@ def precursor_line(label, name, fg_hint="", smi="", indent=0):
         fg_str = f"  [{fg_hint}]" if fg_hint else ""
         info_line(f"{pad}{label}: {name}{fg_str}  {smi_str}")
 
-def bond_line(text, *rest, indent=0, end="\n"):
+def bond_line(text, *rest, indent=0, end="\n", file=None, flush=False):
     """Print a bond description line (disconnection cut)."""
     pad = "  " * indent
     if rest:
         text = " ".join([str(text)] + [str(r) for r in rest])
     if STYLED:
-        _console.print(f"{pad}{text}", style="bold magenta", end=end)
+        if file is not None:
+            print(f"{pad}{text}", end=end, file=file, flush=flush)
+        else:
+            _console.print(f"{pad}{text}", style="bold magenta", end=end)
     else:
-        print(f"{pad}{text}", end=end)
+        print(f"{pad}{text}", end=end, file=file, flush=flush)
 
 def numeric_line(label, value, unit="", indent=0):
     """Print a label with a highlighted numeric value."""
@@ -136,56 +139,71 @@ def numeric_line(label, value, unit="", indent=0):
     else:
         info_line(f"{pad}{label}: {value}" + (f" {unit}" if unit else ""))
 
-def info_line(text, *rest, indent=0, end="\n"):
+def info_line(text, *rest, indent=0, end="\n", file=None, flush=False):
     """Print a metadata/info line in dim style."""
     pad = "  " * indent
     if rest:
         text = " ".join([str(text)] + [str(r) for r in rest])
     if STYLED:
-        _console.print(f"{pad}{text}", style="dim white", end=end)
+        if file is not None:
+            print(f"{pad}{text}", end=end, file=file, flush=flush)
+        else:
+            _console.print(f"{pad}{text}", style="dim white", end=end)
     else:
-        print(f"{pad}{text}", end=end)
+        print(f"{pad}{text}", end=end, file=file, flush=flush)
 
-def fg_line(text, *rest, indent=0, end="\n"):
+def fg_line(text, *rest, indent=0, end="\n", file=None, flush=False):
     """Print a functional group line in blue."""
     pad = "  " * indent
     if rest:
         text = " ".join([str(text)] + [str(r) for r in rest])
     if STYLED:
-        _console.print(f"{pad}{text}", style="bold blue", end=end)
+        if file is not None:
+            print(f"{pad}{text}", end=end, file=file, flush=flush)
+        else:
+            _console.print(f"{pad}{text}", style="bold blue", end=end)
     else:
-        print(f"{pad}{text}", end=end)
+        print(f"{pad}{text}", end=end, file=file, flush=flush)
 
-def success_line(text, *rest, indent=0, end="\n"):
+def success_line(text, *rest, indent=0, end="\n", file=None, flush=False):
     """Print a success/confirmation line in bold green."""
     pad = "  " * indent
     if rest:
         text = " ".join([str(text)] + [str(r) for r in rest])
     if STYLED:
-        _console.print(f"{pad}{text}", style="bold green", end=end)
+        if file is not None:
+            print(f"{pad}{text}", end=end, file=file, flush=flush)
+        else:
+            _console.print(f"{pad}{text}", style="bold green", end=end)
     else:
-        print(f"{pad}{text}", end=end)
+        print(f"{pad}{text}", end=end, file=file, flush=flush)
 
 
 
-def warning_line(text, *rest, indent=0, end="\n"):
+def warning_line(text, *rest, indent=0, end="\n", file=None, flush=False):
     """Print a warning line in bold yellow."""
     pad = "  " * indent
     if rest:
         text = " ".join([str(text)] + [str(r) for r in rest])
     if STYLED:
-        _console.print(f"{pad}{text}", style="bold yellow", end=end)
+        if file is not None:
+            print(f"{pad}{text}", end=end, file=file, flush=flush)
+        else:
+            _console.print(f"{pad}{text}", style="bold yellow", end=end)
     else:
-        print(f"{pad}{text}", end=end)
-def error_line(text, *rest, indent=0, end="\n"):
+        print(f"{pad}{text}", end=end, file=file, flush=flush)
+def error_line(text, *rest, indent=0, end="\n", file=None, flush=False):
     """Print an error/warning line in bold red."""
     pad = "  " * indent
     if rest:
         text = " ".join([str(text)] + [str(r) for r in rest])
     if STYLED:
-        _console.print(f"{pad}{text}", style="bold red", end=end)
+        if file is not None:
+            print(f"{pad}{text}", end=end, file=file, flush=flush)
+        else:
+            _console.print(f"{pad}{text}", style="bold red", end=end)
     else:
-        print(f"{pad}{text}", end=end)
+        print(f"{pad}{text}", end=end, file=file, flush=flush)
 
 def analog_line(name, dist, smi="", indent=0):
     """Print a structural analog line."""

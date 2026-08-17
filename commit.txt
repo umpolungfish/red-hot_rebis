@@ -1,21 +1,13 @@
-Undoing damage I did in the previous commit
+The printing helpers behave like print, and the conduit finds its catalog
 
-Two faults, both mine, both from committing a working tree I had not read.
+Callers hand these helpers trailing values, an end, a file and a flush, exactly as
+they would to print, and the helpers took none of it. They take all of it now, and
+the unstyled branch writes to the file it was given instead of through the console.
 
-The retrosynthetic pipeline was left unparseable. My previous commit inserted
-duplicated lines into it and wrote one function's body in reverse order, and I
-committed it without checking that the file still parses. Restored to the revision
-before that commit, where it parses.
+One script repeated a keyword in a single call, which is a syntax error and had kept
+the module from parsing at all. One called the helpers without importing them.
 
-And running the tools rewrote their own recorded results, which a blanket add then
-swept into the commit. The alloy simulation's stored result went from a million lines
-to a couple of hundred because my run replaced it. Every results file is restored to
-what was recorded. Running a tool is not a reason to overwrite the run that was kept.
-
-The printing helpers took no end and one of them called itself instead of printing,
-so any caller reaching the unstyled branch recursed until it died. They take an end
-now, and print-style trailing values, which is how their callers were already using
-them.
-
-The plasma chain indexed the ordinal table by a value where the table is keyed by
-mark, and got a dict where it wanted a number.
+The mycelial conduit looked for the catalog beside itself and in the working
+directory, and it lives three directories below the repository copy, so it found the
+catalog only when invoked from exactly one place. It searches the repository copy
+now.

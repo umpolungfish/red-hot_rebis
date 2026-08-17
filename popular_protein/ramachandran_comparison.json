@@ -16,8 +16,8 @@
       "other": 55,
       "none": 2
     },
-    "mean_phi_diff": 124.2,
-    "mean_psi_diff": 84.4
+    "mean_phi_diff": 123.5,
+    "mean_psi_diff": 84.0
   },
   "gfp": {
     "platonic": {
@@ -36,8 +36,8 @@
       "other": 157,
       "none": 2
     },
-    "mean_phi_diff": 140.9,
-    "mean_psi_diff": 85.3
+    "mean_phi_diff": 141.3,
+    "mean_psi_diff": 84.6
   },
   "insulin_a_chain": {
     "platonic": {
@@ -56,8 +56,8 @@
       "other": 6,
       "none": 2
     },
-    "mean_phi_diff": 134.4,
-    "mean_psi_diff": 82.1
+    "mean_phi_diff": 132.2,
+    "mean_psi_diff": 84.5
   },
   "insulin_b_chain": {
     "platonic": {
@@ -76,7 +76,7 @@
       "other": 9,
       "none": 2
     },
-    "mean_phi_diff": 126.1,
-    "mean_psi_diff": 87.3
+    "mean_phi_diff": 126.4,
+    "mean_psi_diff": 85.3
   }
 }
