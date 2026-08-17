@@ -185,21 +185,8 @@ CHOU_FASMAN: Dict[str, Dict[str, float]] = {
     "Val": {"alpha": 1.06, "beta": 1.70, "turn": 0.50},
 }
 
-# Primitive activation, canonical: the twelve promoted residues on the twelve marks.
-AA_PRIMITIVE_ACTIVATION: Dict[str, str] = {
-    "Met": "⊢",         # opens the reading
-    "Trp": "⊣",         # closes the reading
-    "Cys": "≻",         # recognition
-    "Tyr": "≺",         # parity
-    "Phe": "⋈",         # fidelity
-    "Ile": "⊤",         # kinetics
-    "Asn": "∈",         # granularity — the branch point
-    "Gln": "∋",         # grammar — the join
-    "His": "⊙",         # criticality
-    "Asp": "⊥",         # chirality
-    "Lys": "⊞",         # stoichiometry
-    "Glu": "◻",         # protection
-}
+# The correspondence is V⊙x's, generated from the Lean that proves it.
+from shared.vox_bridge import AA_MARK as AA_PRIMITIVE_ACTIVATION
 
 PRIMITIVE_TO_AAS: Dict[str, List[str]] = defaultdict(list)
 for aa, prim in AA_PRIMITIVE_ACTIVATION.items():

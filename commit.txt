@@ -1,14 +1,24 @@
-The chain's last stage reports what its engine found
+V⊙x, where this repository was working without it
 
-The retrosynthetic stage read two keys the plan does not carry, so it printed no
-disconnections and no cycles for a target whose plan had found eleven sites and ten
-disconnections. It reads the count, the ranked sites and the Frobenius score the plan
-actually returns, and says whether the route re-forms.
+This toolchain was built before V⊙x, so it grew its own copy of the correspondence
+between the twelve promoted residues and the twelve marks, four times over, and it
+could design and fold and synthesise without ever asking the one question V⊙x
+answers: does the thing close.
 
-The therapy pipeline defaulted its key to an empty string with no choices, so running
-it bare threw on the empty key. The choices come from the therapies the pipeline
-defines, and an omitted key runs the first.
+Both are fixed by the same bridge. shared/vox_bridge.py reads the correspondence
+from V⊙x, which generates it from the Lean that proves it, and every consumer now
+reads it there: the stratified predictor, the genetic code module, the gene
+imscriber's tuples, and the ligand site encoder. None of them writes it down again.
+Four copies is how three of them came to carry a pre-revision assignment with
+histidine, asparagine and glutamine in the wrong places, which is the division and
+the rejoining themselves.
 
-The gene pipeline command built its pipeline with no sequence and passed the sequence
-to run(), which takes the subunit count. The sequence goes where it belongs and the
-seven stages complete.
+rebis.vox is the audit this repository never had. It lifts a coding sequence, a
+residue sequence, a bare word, or every top-level function of a module, and reports
+the outcome with the counts it rests on. V⊙x loads a file standalone, which is right
+for a script and wrong for a module inside a package, so the bridge imports by dotted
+name when the file sits under this tree and lifts the functions the same way.
+
+The last generator script that still did its work at import time is guarded, since an
+audit that imports everything would otherwise have it rewrite the dataset generators
+while being read.

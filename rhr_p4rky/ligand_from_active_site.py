@@ -69,11 +69,16 @@ PRIMITIVE_FULL_NAMES = [
 ]
 
 # Each AA has a dominant primitive (from the serpentrod bijection)
-AA_TO_PRIMITIVE = {
-    "Met": "D", "Trp": "T", "Cys": "R", "Tyr": "P", "Phe": "F",
-    "Ile": "K", "Asn": "G", "Gln": "Gm", "His": "Ph",
-    "Asp": "H", "Lys": "S", "Glu": "W"
+# The correspondence is V⊙x's; this module holds only the short axis keys it
+# indexes by, and derives them from the marks rather than restating which
+# residue is which.
+from shared.vox_bridge import AA_MARK as _AA_MARK
+
+_MARK_TO_SHORT = {
+    "⊢": "D", "⊣": "T", "≻": "R", "≺": "P", "⋈": "F", "⊤": "K",
+    "∈": "G", "∋": "Gm", "⊙": "Ph", "⊥": "H", "⊞": "S", "◻": "W",
 }
+AA_TO_PRIMITIVE = {aa: _MARK_TO_SHORT[mark] for aa, mark in _AA_MARK.items()}
 
 # Primitive → complementary primitive pairs
 COMPLEMENTARY_PAIRS = [("D","W"), ("T","H"), ("R","S"), ("P","F"), ("K","G"), ("Gm","Ph")]
