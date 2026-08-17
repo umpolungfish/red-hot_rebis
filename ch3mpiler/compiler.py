@@ -124,9 +124,9 @@ def cascade_smiles(path, start_smi, smi_lookup):
 PNAMES = ["D","T","R","P","F","K","G","Gm","Ph","H","S","W"]
 PFIELDS = ["D","T","R","P","F","K","G","Gm","Ph","H","S","W"]
 FIELD_TO_ORD = {
-    "D":"\u00D0", "T":"\u00de", "R":"\u0158", "P":"\u03a6", "F":"\u0192",
-    "K":"\u00c7", "G":"\u0393", "Gm":"\u0262", "Ph":"\u2299", "H":"\u0126",
-    "S":"\u03a3", "W":"\u03a9"
+    "D":"\u22a2", "T":"\u22a3", "R":"\u227b", "P":"\u227a", "F":"\u22c8",
+    "K":"\u22a4", "G":"\u2208", "Gm":"\u220b", "Ph":"\u2299", "H":"\u22a5",
+    "S":"\u229e", "W":"\u25fb"
 }
 
 def g2v(p, r):
