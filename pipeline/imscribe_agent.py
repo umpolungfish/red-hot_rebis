@@ -41,6 +41,7 @@ from typing import Any, Dict, List, Optional, Tuple
 
 import re as _re
 
+from pathlib import Path
 import anthropic
 
 import imscrbgrmr
@@ -311,8 +312,8 @@ class ImscriptionDesignAgent:
         self,
         goal: str,
         criteria: Optional[ConvergenceCriteria] = None,
-        model: str = "claude-sonnet-4-6",
-        provider: str = "anthropic",
+        model: str = "",
+        provider: str = "native",
         verbose: bool = True,
     ):
         self.goal = goal
@@ -322,6 +323,16 @@ class ImscriptionDesignAgent:
         self.verbose = verbose
         self._use_anthropic = (self.provider == "anthropic")
         self._goal_slug = _slugify_goal(goal)
+
+        # The native lane is this project's own inference, reached through the
+        # ask binary, and needs no key and no outside account.
+        self._use_native = (self.provider == "native")
+        if self._use_native:
+            self.client = None
+            self.history: List[IterationRecord] = []
+            self._messages: List[Dict] = []
+            self._best_state = {}
+            return
 
         # Resolve API key: canonical env var → {PROVIDER}_API_KEY → ANTHROPIC_API_KEY
         api_key_env = _PROVIDER_API_KEY_ENV.get(
@@ -432,6 +443,21 @@ class ImscriptionDesignAgent:
         Call the LLM and return:
           (text, [(call_id, tool_name, kwargs_dict), ...], raw_for_threading)
         """
+        if self._use_native:
+            import subprocess, shutil
+            ask = shutil.which("ask") or str(
+                Path(__file__).resolve().parents[2] / "MoDoT" / "ask")
+            prompt = "\n\n".join(
+                (m["content"] if isinstance(m["content"], str) else json.dumps(m["content"]))
+                for m in self._messages)
+            proc = subprocess.run(
+                [ask, "--raw", "--system", _SYSTEM_PROMPT, "--ask", prompt],
+                capture_output=True, text=True, timeout=600)
+            if proc.returncode != 0:
+                raise RuntimeError(f"native lane failed: {proc.stderr.strip()[:200]}")
+            text = proc.stdout.strip()
+            return text, [], text
+
         if self._use_anthropic:
             resp = self.client.messages.create(
                 model=self.model,
@@ -465,6 +491,9 @@ class ImscriptionDesignAgent:
 
     def _thread_assistant(self, raw: Any) -> None:
         """Append the assistant turn to self._messages."""
+        if self._use_native:
+            self._messages.append({"role": "assistant", "content": str(raw)})
+            return
         if self._use_anthropic:
             self._messages.append({"role": "assistant", "content": raw})
         else:

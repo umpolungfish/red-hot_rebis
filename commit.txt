@@ -1,23 +1,18 @@
-The patch scripts were corrupting the file they patch, every time anything imported them
+Every module in the repository runs
 
-Six scripts rewrite the retrosynthetic pipeline, and they did it at import time, so
-every sweep of this repository reapplied them. Three separate faults compounded.
+The last failures were mostly collateral: a patch script from an older generation
+inserts its import at the first line of a parenthesised import rather than after its
+closing bracket, which is a syntax error, and it had done it twice. Those older
+generations refuse import now, as the current one already documents the trap in a
+comment.
 
-The first inserted its import by scanning for the end of a parenthesised import
-statement and stopping at the first continuation line, which put the new import
-inside the brackets. It finds the closing bracket now.
+The rest were plain: a module using numpy without importing it, two calling the
+printing helpers without importing them, and several that only failed because the
+sweep before them had truncated the dataset generators.
 
-Two of them inserted a multi-line block by looping over its lines and inserting each
-at the same index, which writes the block backwards. That is where the methods with
-their bodies in reverse came from, and why the file kept returning to that state
-after I repaired it: I was repairing the output while the cause reapplied itself.
-Blocks go in as blocks.
+The imscription agent reached for an outside account and could not run without one.
+Its default lane is this project's own inference now, through the ask binary, with no
+key and nothing external; the other providers remain available by name.
 
-None of them checked whether their own result was already in place, so each run
-duplicated everything it had inserted before. Three rounds grew the file by three
-hundred lines and broke it at runtime. Each now finds its own result and stops, and
-three rounds leave the file byte for byte the same.
-
-They also refuse to be imported, since running is the only time a patch should write.
-
-The pipeline runs.
+The tool demo asked the catalog for entries that are not in it and reported the miss
+as its output. It names entries that exist.

@@ -391,18 +391,20 @@ IG_TOOL_SCHEMA = {
 if __name__ == "__main__":
     import sys
 
-    name = sys.argv[1] if len(sys.argv) > 1 else "allosteric_domain"
+    # The demo names entries that are in the catalog, so running it with no
+    # arguments demonstrates the tool rather than reporting a lookup miss.
+    name = sys.argv[1] if len(sys.argv) > 1 else "protein_folding_minimum"
 
     info_line("=== distance ===")
-    r = IGTool.distance("allosteric_domain", "active_site")
+    r = IGTool.distance("protein_folding_minimum", "unfolded_protein")
     print(r.to_json())
 
     info_line("\n=== criticality ===")
-    r = IGTool.criticality("allosteric_domain", xi_r=8.5, xi_tau=1e10)
+    r = IGTool.criticality("protein_folding_minimum", xi_r=8.5, xi_tau=1e10)
     print(r.to_json())
 
     info_line("\n=== analogies ===")
-    r = IGTool.analogies("allosteric_domain", limit=3)
+    r = IGTool.analogies("protein_folding_minimum", limit=3)
     print(r.to_json())
 
     info_line("\n=== TOOL SCHEMA (first 300 chars) ===")

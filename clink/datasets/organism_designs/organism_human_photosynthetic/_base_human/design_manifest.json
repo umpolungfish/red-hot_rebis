@@ -14,13 +14,13 @@
   "total_files": 33,
   "total_bytes": 59378,
   "tool_bridges": [
-    "materials_sim",
-    "ch3mpiler",
     "gene_imscriber",
+    "ch3mpiler",
+    "materials_sim",
     "serpentrod"
   ],
   "frobenius_verified": true,
   "output_directory": "/home/mrnob0dy666/imsgct/red-hot_rebis/clink/datasets/organism_designs/organism_human_photosynthetic/_base_human",
   "generation_time_seconds": 0.09,
-  "generated_at": "2026-08-16T20:49:22.989595"
+  "generated_at": "2026-08-16T21:06:14.202377"
 }
