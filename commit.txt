@@ -1,4 +1,19 @@
-The catalog here is the catalog
+The compiler is a module in its package, and the spent patches say so
 
-This repository held its own copy. It is a link to the one catalog now, so there is
-nothing here to drift and nothing to sync.
+A dozen modules imported the compiler by bare name, which resolves only from inside
+the package directory, so the reaction deriver, the retrosynthetic pipeline, the
+precursor lattice and both enrichment tests failed anywhere else. They name the
+package now.
+
+The retrosynthetic pipeline also had a whole import line dropped inside an open
+parenthesised import, and two of its methods written bottom to top. Restored from the
+last revision that parses, with the import repaired.
+
+Two one-shot patch scripts asserted their target text appears exactly once, and it no
+longer does because the patches were applied long ago. Finding its own result in
+place is a patch having worked; both scripts say so and stop, instead of failing.
+
+The bare-metal imscriber computed its anchor over a file named self.o that never
+existed, where it means its own source. It reads itself now, which is the point.
+
+One test called the printing helpers before importing them.

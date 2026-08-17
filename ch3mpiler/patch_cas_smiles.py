@@ -26,6 +26,15 @@ for i, line in enumerate(lines):
             if 'if args.' in lines[j]:
                 break  # wrong block
 
+# Already applied: the line this patch inserts is present and the line it
+# replaces is gone, which is the patch having worked rather than having failed.
+if count == 0:
+    _done = open(PIPELINE_PATH).read()
+    if 'info.get("cas_info", {}).get("smiles", "")' in _done:
+        info_line("[already applied] the --cas block propagates SMILES; nothing to do.")
+        raise SystemExit(0)
+    raise SystemExit("the --cas block matches neither the original nor the patched form.")
+
 assert count == 1, f"Expected exactly 1 replacement in --cas block, got {count}"
 
 with open(PIPELINE_PATH, "w") as f:

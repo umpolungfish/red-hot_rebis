@@ -3,8 +3,9 @@
 import sys
 sys.path.insert(0, '/home/mrnob0dy666/imsgct/red-hot_rebis')
 sys.path.insert(0, '.')
-import compiler
-from compiler import Ch3mpiler, FG
+import ch3mpiler.compiler as compiler
+from ch3mpiler.compiler import Ch3mpiler, FG
+from shared.rich_output import *
 
 # Check FG extensions more carefully
 info_line("=== FG TABLE CHECK ===")
@@ -15,8 +16,7 @@ for fg_name in sorted(FG.keys()):
 # Also check MOLECULE_FG_DB
 print()
 info_line("=== MOLECULE DB EXTENSIONS ===")
-from compiler import MOLECULE_FG_DB
-from shared.rich_output import *
+from ch3mpiler.compiler import MOLECULE_FG_DB
 
 for name in ['4_aminophenol', '4_nitrophenol', 'acetic_anhydride', 'isobutylbenzene']:
     if name in MOLECULE_FG_DB:
