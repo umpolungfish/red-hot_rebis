@@ -25,10 +25,10 @@ info_line("=" * 72)
 
 # ── Step 1: Load the p4ra kernel ──
 try:
-    from rhr_p4rky.belnap import B4, BelnapState
-    from rhr_p4rky.genetic_code import GeneticCode, AMINO_ACIDS
-    from rhr_p4rky.genetics_b4 import B4Lattice
-    from rhr_p4rky.gene_to_protein_pipeline import TranslationPipeline
+    from rhr_p4rky.belnap import Belnap, meet, join, bnot
+    from rhr_p4rky.genetic_code import CODON_TO_AA, IG_PRIMITIVE_OF_AA
+    from rhr_p4rky.genetics_b4 import BelnapCodon
+    from rhr_p4rky.gene_to_protein_pipeline import GeneToProteinPipeline
     info_line("\n[✓] p4ra kernel loaded")
 except ImportError as e:
     error_line(f"\n[✗] p4ra kernel import failed: {e}")
@@ -66,8 +66,7 @@ for res, code, role in wt_active_site:
     info_line(f"    {res:12s} ({code})  — {role}")
 
 # Encode each residue as IG primitives via B4 lattice
-b4 = B4Lattice()
-info_line(f"\n  B4 lattice loaded: {len(b4.codon_map)} codons indexed")
+info_line(f"\n  B4 lattice loaded: {len(CODON_TO_AA)} codons indexed")
 
 # ── Step 4: Encode the catalytic mechanism as structural type ──
 # PETase active site function:
