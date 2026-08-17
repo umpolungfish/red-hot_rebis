@@ -71,7 +71,7 @@ PRIMITIVE_FULL_NAMES = [
 # Each AA has a dominant primitive (from the serpentrod bijection)
 AA_TO_PRIMITIVE = {
     "Met": "D", "Trp": "T", "Cys": "R", "Tyr": "P", "Phe": "F",
-    "Ile": "K", "His": "G", "Asn": "Gm", "Gln": "Ph",
+    "Ile": "K", "Asn": "G", "Gln": "Gm", "His": "Ph",
     "Asp": "H", "Lys": "S", "Glu": "W"
 }
 
@@ -358,7 +358,7 @@ PRIMITIVE_FULL_NAMES = [
 # Each AA has a dominant primitive (from the serpentrod bijection)
 AA_TO_PRIMITIVE = {
     "Met": "D", "Trp": "T", "Cys": "R", "Tyr": "P", "Phe": "F",
-    "Ile": "K", "His": "G", "Asn": "Gm", "Gln": "Ph",
+    "Ile": "K", "Asn": "G", "Gln": "Gm", "His": "Ph",
     "Asp": "H", "Lys": "S", "Glu": "W"
 }
 

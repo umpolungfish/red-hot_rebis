@@ -1,18 +1,21 @@
-Every demo runs, and the arrangement engine is reachable
+The site encoder had the swap too, in the same file twice
 
-Six of the fourteen demos died on import against names their modules do not define,
-and had done for long enough that the API had moved out from under them. The B4
-lattice demo asked for a class that does not exist and now builds the same display
-from the nucleotide map and the codon type; the Belnap demo asked for a state wrapper
-and now prints the four values, both tables and the two negation fixed points from
-the kernel's own functions; the material forge demo asked for a constant and now
-calls the function that returns the designs; the serpentrod demo lacked its output
-helpers entirely and read the residue assignment from the wrong module; the catalytic
-site demo named a lattice class, a translation pipeline and an amino acid table that
-are all called something else.
+Fourth copy of the pre-revision assignment: histidine on Granularity, asparagine on
+Grammar, glutamine on Criticality. Canonical now. It changes what the encoder
+returns, and the histidine-rich site of carbonic anhydrase and the cysteine-histidine
+dyad of the coronavirus protease now land on Criticality where before they did not,
+which is what a catalytic histidine ought to activate.
 
-The arrangement engine exposed nothing from its package, so a census read it as empty
-while all nine of its modules imported cleanly. Every engine is reachable from the
-package now, as the other domains are.
+The same file defines that map twice, forty lines and three hundred apart, and both
+copies were wrong. They are corrected together and the duplication is worth removing
+when the file is next opened for its own sake.
 
-Wobble takes two values, and the demo was passing one.
+The hundred-protein ligand sweep ran on import rather than on invocation, and wrote
+its results into ig-docs merely because something imported the module. It has its
+guard now.
+
+Its zero counts were not a scraping failure: it counts only ligands it has not
+already emitted, and for most proteins every candidate had been produced for an
+earlier one. Different active sites encode to different types and still return
+byte-identical ligand sets, so the collapse is downstream of the encoding. That is a
+finding rather than a defect I should quietly patch.
