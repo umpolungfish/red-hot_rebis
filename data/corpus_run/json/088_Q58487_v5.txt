@@ -1,0 +1,51 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 088_Q58487
+╚══════════════════════════════════════════════════════════╝
+Input: 312 AA | Promoted: 61.5% | Dominant: ⊞ | ∈:26 | ∋:2 | ≺:8 | ≻:6 | ⊙:2 | ⊞:43 | ⊢:6 | ⊤:39 | ⊥:15 | ⋈:14 | ◻:31
+
+▸ CLEAVAGE (7 sites):
+  pos 174: RK   → unknown                   ○=0.50
+  pos 196: KR   → unknown                   ○=0.50
+  pos 197: RK   → unknown                   ○=0.50
+  pos 198: KK   → unknown                   ○=0.50
+  pos 199: KK   → unknown                   ○=0.50
+  pos 249: KK   → unknown                   ○=0.50
+  pos 304: R    → PC2_monobasic             ○=0.40 [M]
+
+▸ PRODUCTS (5):
+
+  [1] Signal Peptide (174 AA @ 1–174)
+      ⊤-dominant (103/174 residues)
+      MIIETPSKVILFGEHAVVYGYRAISMAIDLTSTIEIKETQ...
+
+  [2] Σ-variable region (22 AA @ 175–196)
+      ⊞-dominant (16/22 residues)
+      IKGEFEEFLKNCKFLIVYAEKR
+
+  [3] Σ-variable region (50 AA @ 200–249)
+      ⊞-dominant (36/50 residues)
+      TAELVNEVAKIENKDEIFKEIDKVIDEALKIKNKEDFGKL...
+
+  [4] Σ-variable region (55 AA @ 250–304)
+      ⊞-dominant (27/55 residues)
+      LNISTPKLDRIVDIGNRFGFGAKLTGAGGGGCVIILVNEE...
+
+  [5] Γ-catalytic domain (8 AA @ 305–312)
+      ∈-dominant (7/8 residues)
+      IFNCRMMN
+
+▸ MAP:
+  RK ↓ 174
+  KR ↓ 196
+  RK ↓ 197
+  KK ↓ 198
+  KK ↓ 199
+  KK ↓ 249
+  [M] ↓ 304
+  Chain 1: [1–174] (174 AA) Signal Peptide
+  Chain 2: [175–196] (22 AA) Σ-variable region
+  Chain 3: [200–249] (50 AA) Σ-variable region
+  Chain 4: [250–304] (55 AA) Σ-variable region
+  Chain 5: [305–312] (8 AA) Γ-catalytic domain
+
+[2;37m DNA  → 088_Q58487_codons.dna  [0m[1;2;37m([0m[1;2;36m936[0m[2;37m nt[0m[1;2;37m)[0m

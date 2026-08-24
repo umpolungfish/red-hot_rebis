@@ -1,0 +1,136 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 011_A0A5K7RLP0
+╚══════════════════════════════════════════════════════════╝
+Input: 589 AA | Promoted: 43.3% | Dominant: ⊞ | ∈:24 | ∋:35 | ≺:15 | ≻:14 | ⊙:11 | ⊞:43 | ⊢:7 | ⊣:8 | ⊤:15 | ⊥:29 | ⋈:17 | ◻:37
+
+▸ CLEAVAGE (17 sites):
+  pos  25: RK   → unknown                   ○=0.50
+  pos  28: KK   → unknown                   ○=0.50
+  pos  51: KK   → unknown                   ○=0.50
+  pos  55: KK   → unknown                   ○=0.50
+  pos 126: RK   → unknown                   ○=0.50
+  pos 127: KK   → unknown                   ○=0.50
+  pos 128: KK   → unknown                   ○=0.50
+  pos 144: RR   → unknown                   ○=0.50
+  pos 412: RR   → unknown                   ○=0.50
+  pos 459: KK   → unknown                   ○=0.50
+  pos 462: KK   → unknown                   ○=0.50
+  pos 477: RK   → unknown                   ○=0.50
+  pos 485: KK   → unknown                   ○=0.50
+  pos 486: KK   → unknown                   ○=0.50
+  pos 500: RK   → unknown                   ○=0.50
+  pos 531: KK   → unknown                   ○=0.50
+  pos 539: RR   → unknown                   ○=0.50
+
+▸ PRODUCTS (18):
+
+  [1] Signal Peptide (25 AA @ 0–25)
+      ⊥-dominant (11/25 residues)
+      MLGSDKFSCFSDQHRARSPSPTDRK
+
+  [2] IP-2 (3 AA @ 25–28)
+      ⊞-dominant (3/3 residues)
+      DKK
+
+  [3] Σ-variable region (23 AA @ 28–51)
+      ⊞-dominant (11/23 residues)
+      NHTNKLRELALLIPVTMKTRDKK
+
+  [4] IP-2 (4 AA @ 51–55)
+      ⊞-dominant (3/4 residues)
+      YTKK
+
+  [5] ɢ-glycosylation target (71 AA @ 55–126)
+      ∋-dominant (29/71 residues)
+      EILLRVLHYIQYLQRNIDMTKALLKLHSSNGKGRFVGPGL...
+
+  [6] IP-2 (1 AA @ 126–127)
+      ⊞-dominant (1/1 residues)
+      K
+
+  [7] IP-2 (1 AA @ 127–128)
+      ⊞-dominant (1/1 residues)
+      K
+
+  [8] ƒ-hydrophobic core (16 AA @ 128–144)
+      ⋈-dominant (6/16 residues)
+      FTRVSEHPSWPYNPRR
+
+  [9] B-chain (268 AA @ 144–412)
+      ◻-dominant (110/268 residues)
+      SLALDQAENPNTIHPGLKEENEECATYPGVLSPSTYPTTE...
+
+  [10] ɢ-glycosylation target (47 AA @ 412–459)
+      ∋-dominant (16/47 residues)
+      TGVFSLAQPSVLQQANPEGLQTSSDEDRDYTWTPTGQSSG...
+
+  [11] IP-2 (3 AA @ 459–462)
+      ⊞-dominant (3/3 residues)
+      IKK
+
+  [12] Σ-variable region (15 AA @ 462–477)
+      ⊞-dominant (6/15 residues)
+      VQASQGPVKPKDSRK
+
+  [13] Connector (8 AA @ 477–485)
+      ⊞-dominant (4/8 residues)
+      ACPGQVKK
+
+  [14] IP-2 (1 AA @ 485–486)
+      ⊞-dominant (1/1 residues)
+      K
+
+  [15] Ř-scaffold domain (14 AA @ 486–500)
+      ≻-dominant (10/14 residues)
+      CVNGFIMFCRMNRK
+
+  [16] Σ-variable region (31 AA @ 500–531)
+      ⊞-dominant (13/31 residues)
+      QYIRACPGTASTAATKDLAQLWRGMTLEEKK
+
+  [17] Connector (8 AA @ 531–539)
+      ≺-dominant (3/8 residues)
+      PYCTKARR
+
+  [18] ɢ-glycosylation target (50 AA @ 539–589)
+      ∋-dominant (24/50 residues)
+      FSRQNNRIVKQENSSSEDDDGETPKPFYQLLAEKAQVSLG...
+
+▸ MAP:
+  RK ↓ 25
+  KK ↓ 28
+  KK ↓ 51
+  KK ↓ 55
+  RK ↓ 126
+  KK ↓ 127
+  KK ↓ 128
+  RR ↓ 144
+  RR ↓ 412
+  KK ↓ 459
+  KK ↓ 462
+  RK ↓ 477
+  KK ↓ 485
+  KK ↓ 486
+  RK ↓ 500
+  KK ↓ 531
+  RR ↓ 539
+  Chain 1: [0–25] (25 AA) Signal Peptide
+  Chain 2: [25–28] (3 AA) IP-2
+  Chain 3: [28–51] (23 AA) Σ-variable region
+  Chain 4: [51–55] (4 AA) IP-2
+  Chain 5: [55–126] (71 AA) ɢ-glycosylation target
+  Chain 6: [126–127] (1 AA) IP-2
+  Chain 7: [127–128] (1 AA) IP-2
+  Chain 8: [128–144] (16 AA) ƒ-hydrophobic core
+  Chain 9: [144–412] (268 AA) B-chain
+  Chain 10: [412–459] (47 AA) ɢ-glycosylation target
+  Chain 11: [459–462] (3 AA) IP-2
+  Chain 12: [462–477] (15 AA) Σ-variable region
+  Chain 13: [477–485] (8 AA) Connector
+  Chain 14: [485–486] (1 AA) IP-2
+  Chain 15: [486–500] (14 AA) Ř-scaffold domain
+  Chain 16: [500–531] (31 AA) Σ-variable region
+  Chain 17: [531–539] (8 AA) Connector
+  Chain 18: [539–589] (50 AA) ɢ-glycosylation target
+
+[2;37m DNA  → 011_A0A5K7RLP0_codons.dna  [0m[1;2;37m([0m[1;2;36m1767[0m[2;37m nt[0m[1;2;37m)[0m

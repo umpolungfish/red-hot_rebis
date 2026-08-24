@@ -1,0 +1,193 @@
+═ Protein Prediction Pipeline ═
+  Sequence: MKPVTLYDVAEYAGVSYQTVSRVVNQASHVSAKTREKVEAAMAELNYIPN...
+  Length: 360 aa | Name: P03023
+{
+  "name": "P03023",
+  "sequence": "MKPVTLYDVAEYAGVSYQTVSRVVNQASHVSAKTREKVEAAMAELNYIPNRVAQQLAGKQSLLIGVATSSLALHAPSQIVAAIKSRADQLGASVVVSMVERSGVEACKAAVHNLLAQRVSGLIINYPLDDQDAIAVEAACTNVPALFLDVSDQTPINSIIFSHEDGTRLGVEHLVALGHQQIALLAGPLSSVSARLRLAGWHKYLTRNQIQPIAEREGDWSAMSGFQQTMQMLNEGIVPTAMLVANDQMALGAMRAITESGLRVGADISVVGYDDTEDSSCYIPPLTTIKQDFRLLGQTSVDRLLQLSQGQAVKGNQLLPVSLVKRKTTLAPNTQTASPRALADSLMQLARQVSRLESGQ",
+  "length": 360,
+  "pipeline_result": {
+    "name": "P03023",
+    "sequence": "MKPVTLYDVAEYAGVSYQTVSRVVNQASHVSAKTREKVEAAMAELNYIPNRVAQQLAGKQSLLIGVATSSLALHAPSQIVAAIKSRADQLGASVVVSMVERSGVEACKAAVHNLLAQRVSGLIINYPLDDQDAIAVEAACTNVPALFLDVSDQTPINSIIFSHEDGTRLGVEHLVALGHQQIALLAGPLSSVSARLRLAGWHKYLTRNQIQPIAEREGDWSAMSGFQQTMQMLNEGIVPTAMLVANDQMALGAMRAITESGLRVGADISVVGYDDTEDSSCYIPPLTTIKQDFRLLGQTSVDRLLQLSQGQAVKGNQLLPVSLVKRKTTLAPNTQTASPRALADSLMQLARQVSRLESGQ",
+    "length": 360,
+    "signal_peptide": null,
+    "cleavage_sites": [
+      {
+        "position": 324,
+        "motif": "KR",
+        "motif_seq": "KR",
+        "enzyme": "PC2",
+        "context": "PVSLVKRKTTLA",
+        "discontinuity": 0.067,
+        "density_before": 0.267,
+        "density_after": 0.2,
+        "cpe_trim_candidate": false
+      }
+    ],
+    "fragments": [
+      {
+        "start": 0,
+        "end": 324,
+        "length": 324,
+        "sequence": "MKPVTLYDVAEYAGVSYQTVSRVVNQASHVSAKTREKVEAAMAELNYIPNRVAQQLAGKQSLLIGVATSSLALHAPSQIVAAIKSRADQLGASVVVSMVERSGVEACKAAVHNLLAQRVSGLIINYPLDDQDAIAVEAACTNVPALFLDVSDQTPINSIIFSHEDGTRLGVEHLVALGHQQIALLAGPLSSVSARLRLAGWHKYLTRNQIQPIAEREGDWSAMSGFQQTMQMLNEGIVPTAMLVANDQMALGAMRAITESGLRVGADISVVGYDDTEDSSCYIPPLTTIKQDFRLLGQTSVDRLLQLSQGQAVKGNQLLPVSLV",
+        "label": "mature_product_0",
+        "vector": [
+          9,
+          2,
+          3,
+          8,
+          4,
+          18,
+          11,
+          24,
+          7,
+          16,
+          9,
+          14
+        ],
+        "densities": {
+          "⊢": 0.028,
+          "⊣": 0.006,
+          "≻": 0.009,
+          "≺": 0.025,
+          "⋈": 0.012,
+          "⊤": 0.056,
+          "∈": 0.034,
+          "∋": 0.074,
+          "⊙": 0.022,
+          "⊥": 0.049,
+          "⊞": 0.028,
+          "◻": 0.043
+        },
+        "dominant_primitives": [
+          "∋"
+        ],
+        "total_primitive_activations": 125,
+        "amidation": null
+      },
+      {
+        "start": 326,
+        "end": 360,
+        "length": 34,
+        "sequence": "KTTLAPNTQTASPRALADSLMQLARQVSRLESGQ",
+        "label": "mature_product_1",
+        "vector": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          4,
+          0,
+          1,
+          1,
+          1
+        ],
+        "densities": {
+          "⊢": 0.029,
+          "⊣": 0.0,
+          "≻": 0.0,
+          "≺": 0.0,
+          "⋈": 0.0,
+          "⊤": 0.0,
+          "∈": 0.029,
+          "∋": 0.118,
+          "⊙": 0.0,
+          "⊥": 0.029,
+          "⊞": 0.029,
+          "◻": 0.029
+        },
+        "dominant_primitives": [
+          "∋"
+        ],
+        "total_primitive_activations": 9,
+        "amidation": null
+      }
+    ],
+    "processing": {
+      "precursor": "MKPVTLYDVAEYAGVSYQTVSRVVNQASHVSAKTREKVEAAMAELNYIPNRVAQQLAGKQSLLIGVATSSLALHAPSQIVAAIKSRADQLGASVVVSMVERSGVEACKAAVHNLLAQRVSGLIINYPLDDQDAIAVEAACTNVPALFLDVSDQTPINSIIFSHEDGTRLGVEHLVALGHQQIALLAGPLSSVSARLRLAGWHKYLTRNQIQPIAEREGDWSAMSGFQQTMQMLNEGIVPTAMLVANDQMALGAMRAITESGLRVGADISVVGYDDTEDSSCYIPPLTTIKQDFRLLGQTSVDRLLQLSQGQAVKGNQLLPVSLVKRKTTLAPNTQTASPRALADSLMQLARQVSRLESGQ",
+      "length": 360,
+      "steps": [
+        {
+          "step": 1,
+          "enzyme": "PC2",
+          "action": "Cleave at KR @ pos 324",
+          "motif_sequence": "KR",
+          "discontinuity": 0.067,
+          "position": 324
+        }
+      ]
+    },
+    "disulfide_bonds": {
+      "bonds": [
+        {
+          "cys_1": {
+            "position": 106,
+            "fragment": "mature_product_0"
+          },
+          "cys_2": {
+            "position": 139,
+            "fragment": "mature_product_0"
+          },
+          "distance": 33,
+          "motif": "long-range",
+          "bond_type": "intrachain"
+        }
+      ],
+      "unpaired_cys": [
+        {
+          "fragment": "mature_product_0",
+          "rel_pos": 280,
+          "abs_pos": 280,
+          "context": "SSCYI"
+        }
+      ]
+    },
+    "mature_products": [
+      {
+        "name": "mature_product_0",
+        "sequence": "MKPVTLYDVAEYAGVSYQTVSRVVNQASHVSAKTREKVEAAMAELNYIPNRVAQQLAGKQSLLIGVATSSLALHAPSQIVAAIKSRADQLGASVVVSMVERSGVEACKAAVHNLLAQRVSGLIINYPLDDQDAIAVEAACTNVPALFLDVSDQTPINSIIFSHEDGTRLGVEHLVALGHQQIALLAGPLSSVSARLRLAGWHKYLTRNQIQPIAEREGDWSAMSGFQQTMQMLNEGIVPTAMLVANDQMALGAMRAITESGLRVGADISVVGYDDTEDSSCYIPPLTTIKQDFRLLGQTSVDRLLQLSQGQAVKGNQLLPVSLV",
+        "length": 324,
+        "start": 0,
+        "end": 324,
+        "dominant_primitive": "∋",
+        "profile": {
+          "⊢": 9,
+          "⊣": 2,
+          "≻": 3,
+          "≺": 8,
+          "⋈": 4,
+          "⊤": 18,
+          "∈": 11,
+          "∋": 24,
+          "⊙": 7,
+          "⊥": 16,
+          "⊞": 9,
+          "◻": 14
+        },
+        "inferred_function": "glycosylation_target",
+        "amidation": null
+      },
+      {
+        "name": "mature_product_1",
+        "sequence": "KTTLAPNTQTASPRALADSLMQLARQVSRLESGQ",
+        "length": 34,
+        "start": 326,
+        "end": 360,
+        "dominant_primitive": "∋",
+        "profile": {
+          "⊢": 1,
+          "∈": 1,
+          "∋": 4,
+          "⊥": 1,
+          "⊞": 1,
+          "◻": 1
+        },
+        "inferred_function": "glycosylation_target",
+        "amidation": null
+      }
+    ]
+  },
+  "narrative": "═══ P03023 — Structural Processing Analysis ═══\nSequence: 360 AA\n\n▸ Processing steps:\n  [1] PC2: Cleave at KR @ pos 324\n\n▸ Mature products:\n  • mature_product_0 (324 AA) — glycosylation_target\n    Primitive profile: ∈=11 | ∋=24 | ≺=8 | ≻=3 | ⊙=7 | ⊞=9 | ⊢=9 | ⊣=2 | ⊤=18 | ⊥=16 | ⋈=4 | ◻=14\n  • mature_product_1 (34 AA) — glycosylation_target\n    Primitive profile: ∈=1 | ∋=4 | ⊞=1 | ⊢=1 | ⊥=1 | ◻=1\n\n▸ Predicted disulfide bonds (Ř-Ř):\n  Cys106—Cys139 (intrachain, long-range)\n  ⚠ Unpaired Cys @ pos 280 in mature_product_0\n"
+}

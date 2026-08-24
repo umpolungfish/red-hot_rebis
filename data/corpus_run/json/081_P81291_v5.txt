@@ -1,0 +1,45 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 081_P81291
+╚══════════════════════════════════════════════════════════╝
+Input: 424 AA | Promoted: 50.2% | Dominant: ⊤ | ∈:12 | ∋:9 | ≺:12 | ≻:10 | ⊙:11 | ⊞:34 | ⊢:14 | ⊣:2 | ⊤:36 | ⊥:22 | ⋈:15 | ◻:36
+
+▸ CLEAVAGE (4 sites):
+  pos  17: KK   → unknown                   ○=0.50
+  pos  84: RK   → unknown                   ○=0.50
+  pos 204: KK   → unknown                   ○=0.50
+  pos 243: KK   → unknown                   ○=0.50
+
+▸ PRODUCTS (5):
+
+  [1] Signal Peptide (17 AA @ 0–17)
+      ⊞-dominant (9/17 residues)
+      MGMTIVEKILAKASGKK
+
+  [2] Ç-kinetic regulator (67 AA @ 17–84)
+      ⊤-dominant (37/67 residues)
+      EVSPGDIVMANIDVAMVHDITGPLTVNTLKEYGIEKVWNP...
+
+  [3] Σ-variable region (120 AA @ 84–204)
+      ⊞-dominant (58/120 residues)
+      FVKEQGIKYFYDIREGVCHQVLPEKGHVAPGEVVVGADSH...
+
+  [4] Signal Peptide (39 AA @ 204–243)
+      ⊢-dominant (24/39 residues)
+      MSIASRMTMTNMAIEMGGKTGIIEPDEKTIQYVKEAMKK
+
+  [5] Ω-winding module (181 AA @ 243–424)
+      ◻-dominant (85/181 residues)
+      HGTERPFEVIKGDEDAEFAEVYEIEADKIEPVFACPHNVD...
+
+▸ MAP:
+  KK ↓ 17
+  RK ↓ 84
+  KK ↓ 204
+  KK ↓ 243
+  Chain 1: [0–17] (17 AA) Signal Peptide
+  Chain 2: [17–84] (67 AA) Ç-kinetic regulator
+  Chain 3: [84–204] (120 AA) Σ-variable region
+  Chain 4: [204–243] (39 AA) Signal Peptide
+  Chain 5: [243–424] (181 AA) Ω-winding module
+
+[2;37m DNA  → 081_P81291_codons.dna  [0m[1;2;37m([0m[1;2;36m1272[0m[2;37m nt[0m[1;2;37m)[0m

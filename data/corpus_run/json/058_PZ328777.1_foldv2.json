@@ -1,0 +1,22 @@
+═ SerpentRod Folding (v2 — backbone + energy) ═
+  RNA: UCAGAGCCAUGAGGUAGACUAUGAUUUGUUGUCUUCUUAGAGGAUAAAAA...
+  Length: 122 nt | Name: PZ328777.1
+[Gen2:PZ328777.1] Prediction: 3 AAs, 0 contacts, 1/12 primitives, energy=0
+
+📦 PDB written: /home/mrnob0dy666/imsgct/red-hot_rebis/data/corpus_run/pdb/058_PZ328777.1.pdb
+{
+  "name": "PZ328777.1",
+  "rna": "UCAGAGCCAUGAGGUAGACUAUGAUUUGUUGUCUUCUUAGAGGAUAAAAACAACAAAAUCACUAGUCUUCCACAUGGCAAUGGACUUCAUCAACACAUCUCUGACUAACCACAGAAGAAGUG",
+  "aa_sequence": "SEP",
+  "n_contacts": 0,
+  "energy": {
+    "LJ": 0.0,
+    "HB": 0.0,
+    "elec": 0.0,
+    "total": 0.0
+  },
+  "activation": 1,
+  "frobenius": false,
+  "winding": 29,
+  "pdb_path": "/home/mrnob0dy666/imsgct/red-hot_rebis/data/corpus_run/pdb/058_PZ328777.1.pdb"
+}

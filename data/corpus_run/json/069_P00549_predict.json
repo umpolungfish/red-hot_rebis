@@ -1,0 +1,536 @@
+═ Protein Prediction Pipeline ═
+  Sequence: MSRLERLTSLNVVAGSDLRRTSIIGTIGPKTNNPETLVALRKAGLNIVRM...
+  Length: 500 aa | Name: P00549
+{
+  "name": "P00549",
+  "sequence": "MSRLERLTSLNVVAGSDLRRTSIIGTIGPKTNNPETLVALRKAGLNIVRMNFSHGSYEYHKSVIDNARKSEELYPGRPLAIALDTKGPEIRTGTTTNDVDYPIPPNHEMIFTTDDKYAKACDDKIMYVDYKNITKVISAGRIIYVDDGVLSFQVLEVVDDKTLKVKALNAGKICSHKGVNLPGTDVDLPALSEKDKEDLRFGVKNGVHMVFASFIRTANDVLTIREVLGEQGKDVKIIVKIENQQGVNNFDEILKVTDGVMVARGDLGIEIPAPEVLAVQKKLIAKSNLAGKPVICATQMLESMTYNPRPTRAEVSDVGNAILDGADCVMLSGETAKGNYPINAVTTMAETAVIAEQAIAYLPNYDDMRNCTPKPTSTTETVAASAVAAVFEQKAKAIIVLSTSGTTPRLVSKYRPNCPIILVTRCPRAARFSHLYRGVFPFVFEKEPVSDWTDDVEARINFGIEKAKEFGILKKGDTYVSIQGFKAGAGHSNTLQVSTV",
+  "length": 500,
+  "pipeline_result": {
+    "name": "P00549",
+    "sequence": "MSRLERLTSLNVVAGSDLRRTSIIGTIGPKTNNPETLVALRKAGLNIVRMNFSHGSYEYHKSVIDNARKSEELYPGRPLAIALDTKGPEIRTGTTTNDVDYPIPPNHEMIFTTDDKYAKACDDKIMYVDYKNITKVISAGRIIYVDDGVLSFQVLEVVDDKTLKVKALNAGKICSHKGVNLPGTDVDLPALSEKDKEDLRFGVKNGVHMVFASFIRTANDVLTIREVLGEQGKDVKIIVKIENQQGVNNFDEILKVTDGVMVARGDLGIEIPAPEVLAVQKKLIAKSNLAGKPVICATQMLESMTYNPRPTRAEVSDVGNAILDGADCVMLSGETAKGNYPINAVTTMAETAVIAEQAIAYLPNYDDMRNCTPKPTSTTETVAASAVAAVFEQKAKAIIVLSTSGTTPRLVSKYRPNCPIILVTRCPRAARFSHLYRGVFPFVFEKEPVSDWTDDVEARINFGIEKAKEFGILKKGDTYVSIQGFKAGAGHSNTLQVSTV",
+    "length": 500,
+    "signal_peptide": null,
+    "cleavage_sites": [
+      {
+        "position": 18,
+        "motif": "RR",
+        "motif_seq": "RR",
+        "enzyme": "PC1/3",
+        "context": "AGSDLRRTSIIG",
+        "discontinuity": 0.267,
+        "density_before": 0.2,
+        "density_after": 0.467,
+        "cpe_trim_candidate": false
+      },
+      {
+        "position": 40,
+        "motif": "RK",
+        "motif_seq": "RK",
+        "enzyme": "Furin/PC",
+        "context": "TLVALRKAGLNI",
+        "discontinuity": 0.133,
+        "density_before": 0.333,
+        "density_after": 0.467,
+        "cpe_trim_candidate": false
+      },
+      {
+        "position": 67,
+        "motif": "RK",
+        "motif_seq": "RK",
+        "enzyme": "Furin/PC",
+        "context": "VIDNARKSEELY",
+        "discontinuity": 0.267,
+        "density_before": 0.6,
+        "density_after": 0.333,
+        "cpe_trim_candidate": false
+      },
+      {
+        "position": 280,
+        "motif": "KK",
+        "motif_seq": "KK",
+        "enzyme": "PCSK",
+        "context": "VLAVQKKLIAKS",
+        "discontinuity": 0.0,
+        "density_before": 0.4,
+        "density_after": 0.4,
+        "cpe_trim_candidate": false
+      },
+      {
+        "position": 473,
+        "motif": "KK",
+        "motif_seq": "KK",
+        "enzyme": "PCSK",
+        "context": "EFGILKKGDTYV",
+        "discontinuity": 0.267,
+        "density_before": 0.667,
+        "density_after": 0.4,
+        "cpe_trim_candidate": false
+      }
+    ],
+    "fragments": [
+      {
+        "start": 0,
+        "end": 18,
+        "length": 18,
+        "sequence": "MSRLERLTSLNVVAGSDL",
+        "label": "mature_product_0",
+        "vector": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1
+        ],
+        "densities": {
+          "⊢": 0.056,
+          "⊣": 0.0,
+          "≻": 0.0,
+          "≺": 0.0,
+          "⋈": 0.0,
+          "⊤": 0.0,
+          "∈": 0.056,
+          "∋": 0.0,
+          "⊙": 0.0,
+          "⊥": 0.056,
+          "⊞": 0.0,
+          "◻": 0.056
+        },
+        "dominant_primitives": [
+          "⊢",
+          "∈",
+          "⊥",
+          "◻"
+        ],
+        "total_primitive_activations": 4,
+        "amidation": null
+      },
+      {
+        "start": 20,
+        "end": 40,
+        "length": 20,
+        "sequence": "TSIIGTIGPKTNNPETLVAL",
+        "label": "mature_product_1",
+        "vector": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          3,
+          2,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "densities": {
+          "⊢": 0.0,
+          "⊣": 0.0,
+          "≻": 0.0,
+          "≺": 0.0,
+          "⋈": 0.0,
+          "⊤": 0.15,
+          "∈": 0.1,
+          "∋": 0.0,
+          "⊙": 0.0,
+          "⊥": 0.0,
+          "⊞": 0.05,
+          "◻": 0.05
+        },
+        "dominant_primitives": [
+          "⊤"
+        ],
+        "total_primitive_activations": 7,
+        "amidation": null
+      },
+      {
+        "start": 42,
+        "end": 67,
+        "length": 25,
+        "sequence": "AGLNIVRMNFSHGSYEYHKSVIDNA",
+        "label": "mature_product_2",
+        "vector": [
+          1,
+          0,
+          0,
+          2,
+          1,
+          2,
+          3,
+          0,
+          2,
+          1,
+          1,
+          1
+        ],
+        "densities": {
+          "⊢": 0.04,
+          "⊣": 0.0,
+          "≻": 0.0,
+          "≺": 0.08,
+          "⋈": 0.04,
+          "⊤": 0.08,
+          "∈": 0.12,
+          "∋": 0.0,
+          "⊙": 0.08,
+          "⊥": 0.04,
+          "⊞": 0.04,
+          "◻": 0.04
+        },
+        "dominant_primitives": [
+          "∈"
+        ],
+        "total_primitive_activations": 14,
+        "amidation": null
+      },
+      {
+        "start": 69,
+        "end": 280,
+        "length": 211,
+        "sequence": "SEELYPGRPLAIALDTKGPEIRTGTTTNDVDYPIPPNHEMIFTTDDKYAKACDDKIMYVDYKNITKVISAGRIIYVDDGVLSFQVLEVVDDKTLKVKALNAGKICSHKGVNLPGTDVDLPALSEKDKEDLRFGVKNGVHMVFASFIRTANDVLTIREVLGEQGKDVKIIVKIENQQGVNNFDEILKVTDGVMVARGDLGIEIPAPEVLAVQ",
+        "label": "mature_product_3",
+        "vector": [
+          4,
+          0,
+          2,
+          6,
+          6,
+          18,
+          10,
+          5,
+          3,
+          21,
+          18,
+          13
+        ],
+        "densities": {
+          "⊢": 0.019,
+          "⊣": 0.0,
+          "≻": 0.009,
+          "≺": 0.028,
+          "⋈": 0.028,
+          "⊤": 0.085,
+          "∈": 0.047,
+          "∋": 0.024,
+          "⊙": 0.014,
+          "⊥": 0.1,
+          "⊞": 0.085,
+          "◻": 0.062
+        },
+        "dominant_primitives": [
+          "⊥"
+        ],
+        "total_primitive_activations": 106,
+        "amidation": null
+      },
+      {
+        "start": 282,
+        "end": 473,
+        "length": 191,
+        "sequence": "LIAKSNLAGKPVICATQMLESMTYNPRPTRAEVSDVGNAILDGADCVMLSGETAKGNYPINAVTTMAETAVIAEQAIAYLPNYDDMRNCTPKPTSTTETVAASAVAAVFEQKAKAIIVLSTSGTTPRLVSKYRPNCPIILVTRCPRAARFSHLYRGVFPFVFEKEPVSDWTDDVEARINFGIEKAKEFGIL",
+        "label": "mature_product_4",
+        "vector": [
+          5,
+          1,
+          5,
+          6,
+          7,
+          13,
+          9,
+          3,
+          1,
+          8,
+          10,
+          12
+        ],
+        "densities": {
+          "⊢": 0.026,
+          "⊣": 0.005,
+          "≻": 0.026,
+          "≺": 0.031,
+          "⋈": 0.037,
+          "⊤": 0.068,
+          "∈": 0.047,
+          "∋": 0.016,
+          "⊙": 0.005,
+          "⊥": 0.042,
+          "⊞": 0.052,
+          "◻": 0.063
+        },
+        "dominant_primitives": [
+          "⊤"
+        ],
+        "total_primitive_activations": 80,
+        "amidation": null
+      },
+      {
+        "start": 475,
+        "end": 500,
+        "length": 25,
+        "sequence": "GDTYVSIQGFKAGAGHSNTLQVSTV",
+        "label": "mature_product_5",
+        "vector": [
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          0
+        ],
+        "densities": {
+          "⊢": 0.0,
+          "⊣": 0.0,
+          "≻": 0.0,
+          "≺": 0.04,
+          "⋈": 0.04,
+          "⊤": 0.04,
+          "∈": 0.04,
+          "∋": 0.08,
+          "⊙": 0.04,
+          "⊥": 0.04,
+          "⊞": 0.04,
+          "◻": 0.0
+        },
+        "dominant_primitives": [
+          "∋"
+        ],
+        "total_primitive_activations": 9,
+        "amidation": null
+      }
+    ],
+    "processing": {
+      "precursor": "MSRLERLTSLNVVAGSDLRRTSIIGTIGPKTNNPETLVALRKAGLNIVRMNFSHGSYEYHKSVIDNARKSEELYPGRPLAIALDTKGPEIRTGTTTNDVDYPIPPNHEMIFTTDDKYAKACDDKIMYVDYKNITKVISAGRIIYVDDGVLSFQVLEVVDDKTLKVKALNAGKICSHKGVNLPGTDVDLPALSEKDKEDLRFGVKNGVHMVFASFIRTANDVLTIREVLGEQGKDVKIIVKIENQQGVNNFDEILKVTDGVMVARGDLGIEIPAPEVLAVQKKLIAKSNLAGKPVICATQMLESMTYNPRPTRAEVSDVGNAILDGADCVMLSGETAKGNYPINAVTTMAETAVIAEQAIAYLPNYDDMRNCTPKPTSTTETVAASAVAAVFEQKAKAIIVLSTSGTTPRLVSKYRPNCPIILVTRCPRAARFSHLYRGVFPFVFEKEPVSDWTDDVEARINFGIEKAKEFGILKKGDTYVSIQGFKAGAGHSNTLQVSTV",
+      "length": 500,
+      "steps": [
+        {
+          "step": 1,
+          "enzyme": "PC1/3",
+          "action": "Cleave at RR @ pos 18",
+          "motif_sequence": "RR",
+          "discontinuity": 0.267,
+          "position": 18
+        },
+        {
+          "step": 2,
+          "enzyme": "Furin/PC",
+          "action": "Cleave at RK @ pos 40",
+          "motif_sequence": "RK",
+          "discontinuity": 0.133,
+          "position": 40
+        },
+        {
+          "step": 3,
+          "enzyme": "Furin/PC",
+          "action": "Cleave at RK @ pos 67",
+          "motif_sequence": "RK",
+          "discontinuity": 0.267,
+          "position": 67
+        },
+        {
+          "step": 4,
+          "enzyme": "PCSK",
+          "action": "Cleave at KK @ pos 280",
+          "motif_sequence": "KK",
+          "discontinuity": 0.0,
+          "position": 280
+        },
+        {
+          "step": 5,
+          "enzyme": "PCSK",
+          "action": "Cleave at KK @ pos 473",
+          "motif_sequence": "KK",
+          "discontinuity": 0.267,
+          "position": 473
+        }
+      ]
+    },
+    "disulfide_bonds": {
+      "bonds": [
+        {
+          "cys_1": {
+            "position": 120,
+            "fragment": "mature_product_3"
+          },
+          "cys_2": {
+            "position": 173,
+            "fragment": "mature_product_3"
+          },
+          "distance": 53,
+          "motif": "long-range",
+          "bond_type": "intrachain"
+        },
+        {
+          "cys_1": {
+            "position": 295,
+            "fragment": "mature_product_4"
+          },
+          "cys_2": {
+            "position": 327,
+            "fragment": "mature_product_4"
+          },
+          "distance": 32,
+          "motif": "long-range",
+          "bond_type": "intrachain"
+        },
+        {
+          "cys_1": {
+            "position": 370,
+            "fragment": "mature_product_4"
+          },
+          "cys_2": {
+            "position": 417,
+            "fragment": "mature_product_4"
+          },
+          "distance": 47,
+          "motif": "long-range",
+          "bond_type": "intrachain"
+        }
+      ],
+      "unpaired_cys": [
+        {
+          "fragment": "mature_product_4",
+          "rel_pos": 143,
+          "abs_pos": 425,
+          "context": "TRCPR"
+        }
+      ]
+    },
+    "mature_products": [
+      {
+        "name": "mature_product_0",
+        "sequence": "MSRLERLTSLNVVAGSDL",
+        "length": 18,
+        "start": 0,
+        "end": 18,
+        "dominant_primitive": "⊢",
+        "profile": {
+          "⊢": 1,
+          "∈": 1,
+          "⊥": 1,
+          "◻": 1
+        },
+        "inferred_function": "initiation_bootstrap",
+        "amidation": null
+      },
+      {
+        "name": "mature_product_1",
+        "sequence": "TSIIGTIGPKTNNPETLVAL",
+        "length": 20,
+        "start": 20,
+        "end": 40,
+        "dominant_primitive": "⊤",
+        "profile": {
+          "⊤": 3,
+          "∈": 2,
+          "⊞": 1,
+          "◻": 1
+        },
+        "inferred_function": "kinetic_regulator",
+        "amidation": null
+      },
+      {
+        "name": "mature_product_2",
+        "sequence": "AGLNIVRMNFSHGSYEYHKSVIDNA",
+        "length": 25,
+        "start": 42,
+        "end": 67,
+        "dominant_primitive": "∈",
+        "profile": {
+          "⊢": 1,
+          "≺": 2,
+          "⋈": 1,
+          "⊤": 2,
+          "∈": 3,
+          "⊙": 2,
+          "⊥": 1,
+          "⊞": 1,
+          "◻": 1
+        },
+        "inferred_function": "catalytic_grammar",
+        "amidation": null
+      },
+      {
+        "name": "mature_product_3",
+        "sequence": "SEELYPGRPLAIALDTKGPEIRTGTTTNDVDYPIPPNHEMIFTTDDKYAKACDDKIMYVDYKNITKVISAGRIIYVDDGVLSFQVLEVVDDKTLKVKALNAGKICSHKGVNLPGTDVDLPALSEKDKEDLRFGVKNGVHMVFASFIRTANDVLTIREVLGEQGKDVKIIVKIENQQGVNNFDEILKVTDGVMVARGDLGIEIPAPEVLAVQ",
+        "length": 211,
+        "start": 69,
+        "end": 280,
+        "dominant_primitive": "⊥",
+        "profile": {
+          "⊢": 4,
+          "≻": 2,
+          "≺": 6,
+          "⋈": 6,
+          "⊤": 18,
+          "∈": 10,
+          "∋": 5,
+          "⊙": 3,
+          "⊥": 21,
+          "⊞": 18,
+          "◻": 13
+        },
+        "inferred_function": "substrate_recognition",
+        "amidation": null
+      },
+      {
+        "name": "mature_product_4",
+        "sequence": "LIAKSNLAGKPVICATQMLESMTYNPRPTRAEVSDVGNAILDGADCVMLSGETAKGNYPINAVTTMAETAVIAEQAIAYLPNYDDMRNCTPKPTSTTETVAASAVAAVFEQKAKAIIVLSTSGTTPRLVSKYRPNCPIILVTRCPRAARFSHLYRGVFPFVFEKEPVSDWTDDVEARINFGIEKAKEFGIL",
+        "length": 191,
+        "start": 282,
+        "end": 473,
+        "dominant_primitive": "⊤",
+        "profile": {
+          "⊢": 5,
+          "⊣": 1,
+          "≻": 5,
+          "≺": 6,
+          "⋈": 7,
+          "⊤": 13,
+          "∈": 9,
+          "∋": 3,
+          "⊙": 1,
+          "⊥": 8,
+          "⊞": 10,
+          "◻": 12
+        },
+        "inferred_function": "kinetic_regulator",
+        "amidation": null
+      },
+      {
+        "name": "mature_product_5",
+        "sequence": "GDTYVSIQGFKAGAGHSNTLQVSTV",
+        "length": 25,
+        "start": 475,
+        "end": 500,
+        "dominant_primitive": "∋",
+        "profile": {
+          "≺": 1,
+          "⋈": 1,
+          "⊤": 1,
+          "∈": 1,
+          "∋": 2,
+          "⊙": 1,
+          "⊥": 1,
+          "⊞": 1
+        },
+        "inferred_function": "glycosylation_target",
+        "amidation": null
+      }
+    ]
+  },
+  "narrative": "═══ P00549 — Structural Processing Analysis ═══\nSequence: 500 AA\n\n▸ Processing steps:\n  [1] PC1/3: Cleave at RR @ pos 18\n  [2] Furin/PC: Cleave at RK @ pos 40\n  [3] Furin/PC: Cleave at RK @ pos 67\n  [4] PCSK: Cleave at KK @ pos 280\n  [5] PCSK: Cleave at KK @ pos 473\n\n▸ Mature products:\n  • mature_product_0 (18 AA) — initiation_bootstrap\n    Primitive profile: ∈=1 | ⊢=1 | ⊥=1 | ◻=1\n  • mature_product_1 (20 AA) — kinetic_regulator\n    Primitive profile: ∈=2 | ⊞=1 | ⊤=3 | ◻=1\n  • mature_product_2 (25 AA) — catalytic_grammar\n    Primitive profile: ∈=3 | ≺=2 | ⊙=2 | ⊞=1 | ⊢=1 | ⊤=2 | ⊥=1 | ⋈=1 | ◻=1\n  • mature_product_3 (211 AA) — substrate_recognition\n    Primitive profile: ∈=10 | ∋=5 | ≺=6 | ≻=2 | ⊙=3 | ⊞=18 | ⊢=4 | ⊤=18 | ⊥=21 | ⋈=6 | ◻=13\n  • mature_product_4 (191 AA) — kinetic_regulator\n    Primitive profile: ∈=9 | ∋=3 | ≺=6 | ≻=5 | ⊙=1 | ⊞=10 | ⊢=5 | ⊣=1 | ⊤=13 | ⊥=8 | ⋈=7 | ◻=12\n  • mature_product_5 (25 AA) — glycosylation_target\n    Primitive profile: ∈=1 | ∋=2 | ≺=1 | ⊙=1 | ⊞=1 | ⊤=1 | ⊥=1 | ⋈=1\n\n▸ Predicted disulfide bonds (Ř-Ř):\n  Cys120—Cys173 (intrachain, long-range)\n  Cys295—Cys327 (intrachain, long-range)\n  Cys370—Cys417 (intrachain, long-range)\n  ⚠ Unpaired Cys @ pos 425 in mature_product_4\n"
+}

@@ -1,0 +1,38 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 075_P00946
+╚══════════════════════════════════════════════════════════╝
+Input: 391 AA | Promoted: 45.0% | Dominant: ◻ | ∈:19 | ∋:22 | ≺:7 | ≻:2 | ⊙:9 | ⊞:22 | ⊢:9 | ⊣:4 | ⊤:17 | ⊥:16 | ⋈:20 | ◻:29
+
+▸ CLEAVAGE (3 sites):
+  pos  77: KR   → unknown                   ○=0.50
+  pos 203: K    → PC2_monobasic             ○=0.45 [M]
+  pos 386: R    → PC2_monobasic             ○=0.40 [M]
+
+▸ PRODUCTS (4):
+
+  [1] Signal Peptide (77 AA @ 1–77)
+      ⊞-dominant (33/77 residues)
+      MQKLINSVQNYAWGSKTALTELYGMENPSSQPMAELWMGA...
+
+  [2] Ω-winding module (126 AA @ 78–203)
+      ◻-dominant (60/126 residues)
+      FGELPFLFKVLCAAQPLSIQVHPNKHNSEIGFAKENAAGI...
+
+  [3] Ω-winding module (183 AA @ 204–386)
+      ◻-dominant (80/183 residues)
+      SALDSQQGEPWQTIRLISEFYPEDSGLFSPLLLNVVKLNP...
+
+  [4] Φ-switch domain (5 AA @ 387–391)
+      ≺-dominant (3/5 residues)
+      VYNKL
+
+▸ MAP:
+  KR ↓ 77
+  [M] ↓ 203
+  [M] ↓ 386
+  Chain 1: [1–77] (77 AA) Signal Peptide
+  Chain 2: [78–203] (126 AA) Ω-winding module
+  Chain 3: [204–386] (183 AA) Ω-winding module
+  Chain 4: [387–391] (5 AA) Φ-switch domain
+
+[2;37m DNA  → 075_P00946_codons.dna  [0m[1;2;37m([0m[1;2;36m1173[0m[2;37m nt[0m[1;2;37m)[0m

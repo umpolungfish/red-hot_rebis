@@ -1,0 +1,66 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 008_A2A2Y4
+╚══════════════════════════════════════════════════════════╝
+Input: 597 AA | Promoted: 51.6% | Dominant: ◻ | ∈:14 | ∋:21 | ≺:23 | ≻:16 | ⊙:20 | ⊞:45 | ⊢:10 | ⊣:5 | ⊤:36 | ⊥:26 | ⋈:32 | ◻:60
+
+▸ CLEAVAGE (7 sites):
+  pos  13: RR   → unknown                   ○=0.50
+  pos 134: KR   → unknown                   ○=0.50
+  pos 189: RK   → unknown                   ○=0.50
+  pos 252: KR   → unknown                   ○=0.50
+  pos 281: KK   → unknown                   ○=0.50
+  pos 336: K    → PC2_monobasic             ○=0.40 [M]
+  pos 506: RR   → unknown                   ○=0.50
+
+▸ PRODUCTS (8):
+
+  [1] Signal Peptide (13 AA @ 1–13)
+      ≻-dominant (5/13 residues)
+      MFASCHCVPRGRR
+
+  [2] B-chain (121 AA @ 14–134)
+      ⊞-dominant (74/121 residues)
+      TMKMIHFRSSSVKSLSQEMRCTIRLLDDSEISCHIQRETK...
+
+  [3] Ω-winding module (55 AA @ 135–189)
+      ◻-dominant (33/55 residues)
+      DIFHGRLLCSFSDAAYLGACIVQAELGDYDPDEHPENYIS...
+
+  [4] ƒ-hydrophobic core (63 AA @ 190–252)
+      ⋈-dominant (27/63 residues)
+      IVEIHKNELRGQSPPVAEFNLLLKAHTLETYGVDPHPCKD...
+
+  [5] Σ-variable region (29 AA @ 253–281)
+      ⊞-dominant (20/29 residues)
+      IHLIKWPDVCKLKFEGKTFYVIGTQKEKK
+
+  [6] B-chain (55 AA @ 282–336)
+      ⊞-dominant (28/55 residues)
+      AMLAFHTSTPAACKHLWKCGVENQAFYKYAKSSQIKTVSS...
+
+  [7] Ω-winding module (170 AA @ 337–506)
+      ◻-dominant (82/170 residues)
+      VAKEVVEASSKIQREPPEVHRANITQSRSSHSLNKQLIIN...
+
+  [8] ƒ-hydrophobic core (91 AA @ 507–597)
+      ⋈-dominant (39/91 residues)
+      ALSWSYDILTGHIRVNPLVKSFSRLLVVGLGLLLFVFPLL...
+
+▸ MAP:
+  RR ↓ 13
+  KR ↓ 134
+  RK ↓ 189
+  KR ↓ 252
+  KK ↓ 281
+  [M] ↓ 336
+  RR ↓ 506
+  Chain 1: [1–13] (13 AA) Signal Peptide
+  Chain 2: [14–134] (121 AA) B-chain
+  Chain 3: [135–189] (55 AA) Ω-winding module
+  Chain 4: [190–252] (63 AA) ƒ-hydrophobic core
+  Chain 5: [253–281] (29 AA) Σ-variable region
+  Chain 6: [282–336] (55 AA) B-chain
+  Chain 7: [337–506] (170 AA) Ω-winding module
+  Chain 8: [507–597] (91 AA) ƒ-hydrophobic core
+
+[2;37m DNA  → 008_A2A2Y4_codons.dna  [0m[1;2;37m([0m[1;2;36m1791[0m[2;37m nt[0m[1;2;37m)[0m

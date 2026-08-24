@@ -1,0 +1,16 @@
+[Gen2:serpent_v2] Prediction: 77 AAs, 18 contacts, 0/12 primitives, energy=-3
+
+[2;37m🐍 SERPENT-ROD GEN2 🐍[0m
+[2;37mRNA: MPGWFKKAWYGLASLLSFSSFILIIVALVVPHWLSGKILCQUGVDLVNAU[0m[2;33m...[0m[2;37m [0m[1;2;37m([0m[1;2;36m232[0m[2;37m nt[0m[1;2;37m)[0m
+[2;37mAA:  [0m
+[2;37mXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX [0m
+[1;2;37m([0m[1;2;36m77[0m[2;37m AAs[0m[1;2;37m)[0m
+[2;37mWinding: [0m[1;2;36m26[0m[2;37m loops[0m
+[2;37mBackbone: [0m[1;2;36m77[0m[2;37m CA positions[0m
+[2;37mContacts: [0m[1;2;36m18[0m
+[2;37mEnergy: [0m[1;2;36m-3.3[0m[2;37m kcal/mol[0m
+[2;37mActivation: [0m[1;2;36m0[0m[2;37m/[0m[1;2;36m12[0m[2;37m unique primitives[0m
+[2;37mPair coverage: [0m[1;2;36m0[0m[2;37m/[0m[1;2;36m6[0m
+[2;37mFrobenius: NO[0m
+[2;37mSecondary elements: [0m[1;2;36m17[0m
+[2;37m  loop     [0m[1;2;37m

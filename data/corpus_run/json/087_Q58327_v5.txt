@@ -1,0 +1,75 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 087_Q58327
+╚══════════════════════════════════════════════════════════╝
+Input: 574 AA | Promoted: 55.2% | Dominant: ⊤ | ∈:33 | ∋:1 | ≺:21 | ≻:10 | ⊙:3 | ⊞:60 | ⊢:10 | ⊣:3 | ⊤:75 | ⊥:34 | ⋈:22 | ◻:45
+
+▸ CLEAVAGE (9 sites):
+  pos  20: KK   → unknown                   ○=0.50
+  pos  45: KR   → unknown                   ○=0.50
+  pos 117: KK   → unknown                   ○=0.50
+  pos 174: K    → PC2_monobasic             ○=0.40 [M]
+  pos 207: RK   → unknown                   ○=0.50
+  pos 210: RR   → unknown                   ○=0.50
+  pos 288: KK   → unknown                   ○=0.50
+  pos 415: KR   → unknown                   ○=0.50
+  pos 521: K    → PC2_monobasic             ○=0.40 [M]
+
+▸ PRODUCTS (9):
+
+  [1] Signal Peptide (20 AA @ 1–20)
+      ⊤-dominant (16/20 residues)
+      MVIMEGFKIAMKVIDEIDKK
+
+  [2] Σ-variable region (25 AA @ 21–45)
+      ⊞-dominant (12/25 residues)
+      IKPLIGWEKADEVVKIGADGTPTKR
+
+  [3] Ç-kinetic regulator (72 AA @ 46–117)
+      ⊤-dominant (42/72 residues)
+      IDVIAENMAINILEKFSGGILISEEIGLKVVGDELEYIFI...
+
+  [4] Ç-kinetic regulator (57 AA @ 118–174)
+      ⊤-dominant (37/57 residues)
+      LIRENINNIDWIKSFIANKYTINDLYVGIVKNLATGDLYY...
+
+  [5] Σ-variable region (33 AA @ 175–207)
+      ⊞-dominant (18/33 residues)
+      IETKNIKDLKEASVGLFVYGLSNDLLEFLKERK
+
+  [6] Γ-catalytic domain (78 AA @ 211–288)
+      ∈-dominant (39/78 residues)
+      VRLFGSMALEMCYVVSGALDAYINVNENSRLCDIAGAYVI...
+
+  [7] Ç-kinetic regulator (127 AA @ 289–415)
+      ⊤-dominant (75/127 residues)
+      LIALFGNRWIIKPVKFGIVVREDKEEAINLAIEICKYLKD...
+
+  [8] Ç-kinetic regulator (106 AA @ 416–521)
+      ⊤-dominant (47/106 residues)
+      SKLSCKIIKDNRVIKTPSALNEMVVITKNPAKILEFDVYV...
+
+  [9] Σ-variable region (53 AA @ 522–574)
+      ⊞-dominant (31/53 residues)
+      LKLEKPALLVIDGSVEYEINKDDELIFEKSDSYAYFVKGQ...
+
+▸ MAP:
+  KK ↓ 20
+  KR ↓ 45
+  KK ↓ 117
+  [M] ↓ 174
+  RK ↓ 207
+  RR ↓ 210
+  KK ↓ 288
+  KR ↓ 415
+  [M] ↓ 521
+  Chain 1: [1–20] (20 AA) Signal Peptide
+  Chain 2: [21–45] (25 AA) Σ-variable region
+  Chain 3: [46–117] (72 AA) Ç-kinetic regulator
+  Chain 4: [118–174] (57 AA) Ç-kinetic regulator
+  Chain 5: [175–207] (33 AA) Σ-variable region
+  Chain 6: [211–288] (78 AA) Γ-catalytic domain
+  Chain 7: [289–415] (127 AA) Ç-kinetic regulator
+  Chain 8: [416–521] (106 AA) Ç-kinetic regulator
+  Chain 9: [522–574] (53 AA) Σ-variable region
+
+[2;37m DNA  → 087_Q58327_codons.dna  [0m[1;2;37m([0m[1;2;36m1722[0m[2;37m nt[0m[1;2;37m)[0m

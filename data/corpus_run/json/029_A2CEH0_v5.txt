@@ -1,0 +1,40 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 029_A2CEH0
+╚══════════════════════════════════════════════════════════╝
+Input: 490 AA | Promoted: 43.5% | Dominant: ⊥ | ∈:23 | ∋:20 | ≺:8 | ≻:8 | ⊙:19 | ⊞:20 | ⊢:8 | ⊣:7 | ⊤:21 | ⊥:36 | ⋈:21 | ◻:22
+
+▸ CLEAVAGE (4 sites):
+  pos 134: RK   → unknown                   ○=0.50
+  pos 135: KK   → unknown                   ○=0.50
+  pos 219: K    → PC2_monobasic             ○=0.40 [M]
+  pos 316: KR   → unknown                   ○=0.50
+
+▸ PRODUCTS (4):
+
+  [1] Signal Peptide (134 AA @ 1–134)
+      ⊞-dominant (55/134 residues)
+      MASVMEDPTLERHFKGHKDVISCADFNPNNKQLATGSCDK...
+
+  [2] Ħ-chiral domain (84 AA @ 136–219)
+      ⊥-dominant (40/84 residues)
+      FLYSLNRHTNWVRCARFSPDGRLIASCGDDRTVRLWDTSS...
+
+  [3] Fragment 3 (97 AA @ 220–316)
+      ⊙-dominant (44/97 residues)
+      LIQHYKVHNAGVNCFSFHPSGNYLISGSSDSTIKILDLLE...
+
+  [4] Ω-winding module (174 AA @ 317–490)
+      ◻-dominant (73/174 residues)
+      VTPDPPPHLMDIYPRSHHRHHPQNGTVEINPVADTQSTDP...
+
+▸ MAP:
+  RK ↓ 134
+  KK ↓ 135
+  [M] ↓ 219
+  KR ↓ 316
+  Chain 1: [1–134] (134 AA) Signal Peptide
+  Chain 2: [136–219] (84 AA) Ħ-chiral domain
+  Chain 3: [220–316] (97 AA) Fragment 3
+  Chain 4: [317–490] (174 AA) Ω-winding module
+
+[2;37m DNA  → 029_A2CEH0_codons.dna  [0m[1;2;37m([0m[1;2;36m1470[0m[2;37m nt[0m[1;2;37m)[0m

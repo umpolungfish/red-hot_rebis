@@ -1,0 +1,59 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 031_A0A126GUP6
+╚══════════════════════════════════════════════════════════╝
+Input: 400 AA | Promoted: 46.5% | Dominant: ∈ | ∈:28 | ∋:19 | ≺:17 | ≻:17 | ⊙:9 | ⊞:13 | ⊢:7 | ⊣:8 | ⊤:13 | ⊥:16 | ⋈:13 | ◻:26
+
+▸ CLEAVAGE (6 sites):
+  pos  63: RR   → unknown                   ○=0.50
+  pos 118: KR   → unknown                   ○=0.50
+  pos 147: KR   → unknown                   ○=0.50
+  pos 218: RR   → unknown                   ○=0.50
+  pos 284: RK   → unknown                   ○=0.50
+  pos 324: RR   → unknown                   ○=0.50
+
+▸ PRODUCTS (7):
+
+  [1] Signal Peptide (63 AA @ 0–63)
+      ◻-dominant (33/63 residues)
+      MEPHFFFTVLWMLLMGTSSTYAQEIFGYCRTPDENSGTCI...
+
+  [2] ɢ-glycosylation target (55 AA @ 63–118)
+      ∋-dominant (31/55 residues)
+      FLQASQCGYRNGQVLEKHFCFTNVQICCANSRMRNQQPQW...
+
+  [3] Γ-catalytic domain (29 AA @ 118–147)
+      ∈-dominant (11/29 residues)
+      SGTKLLPMAPNCGENFGDRVVGGNETTKR
+
+  [4] Ω-winding module (71 AA @ 147–218)
+      ◻-dominant (31/71 residues)
+      EFPWMALIEYTKPGNVKGHHCGGSLINHRYVLTAAHCVSA...
+
+  [5] Ħ-chiral domain (66 AA @ 218–284)
+      ⊥-dominant (34/66 residues)
+      DCNEPYVDYPVEERIPHPQYPGNSRDQLNDIALLRLRDEV...
+
+  [6] Ω-winding module (40 AA @ 284–324)
+      ◻-dominant (16/40 residues)
+      VVVAGWGRTETNFTSNIKLKAELDTVPTSECNQRYATQRR
+
+  [7] Φ-switch domain (76 AA @ 324–400)
+      ≺-dominant (30/76 residues)
+      TVTTKQMCAGGVEGVDSCRGDSGGPLLLEDYSNGNSNYYI...
+
+▸ MAP:
+  RR ↓ 63
+  KR ↓ 118
+  KR ↓ 147
+  RR ↓ 218
+  RK ↓ 284
+  RR ↓ 324
+  Chain 1: [0–63] (63 AA) Signal Peptide
+  Chain 2: [63–118] (55 AA) ɢ-glycosylation target
+  Chain 3: [118–147] (29 AA) Γ-catalytic domain
+  Chain 4: [147–218] (71 AA) Ω-winding module
+  Chain 5: [218–284] (66 AA) Ħ-chiral domain
+  Chain 6: [284–324] (40 AA) Ω-winding module
+  Chain 7: [324–400] (76 AA) Φ-switch domain
+
+[2;37m DNA  → 031_A0A126GUP6_codons.dna  [0m[1;2;37m([0m[1;2;36m1200[0m[2;37m nt[0m[1;2;37m)[0m

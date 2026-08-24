@@ -1,0 +1,51 @@
+╔══ Physical Prediction: 𐑨𐑶𐑾𐑗𐑱𐑧𐑲𐑠𐑢𐑖𐑳𐑷 ═══╗
+║ IG Tuple: 𐑨𐑶𐑾𐑗𐑱𐑧𐑲𐑠𐑢𐑖𐑳𐑷
+╠══ Bond & Mechanical ═══════════════════╣
+║ Bond energy:          175.0 kJ/mol
+║ Young's modulus:      868.1 GPa
+║ Tensile strength:    4340.7 MPa
+║ Fracture toughness:     1.8 MPa·m½
+╠══ Electronic ══════════════════════════╣
+║ Band gap:             0.444 eV
+║ Dielectric const:      15.7
+║ Conductivity:      2.90e+07 S/m
+╠══ Thermal ═════════════════════════════╣
+║ Debye temp:             445 K
+║ Thermal cond:          17.7 W/m·K
+║ Melting temp:          3785 K
+╠══ Topological ═════════════════════════╣
+║ Protection gap:        0.00 meV
+║ Curie temp:               0 K
+║ Critical temp:       1892.3 K
+║ Sensitivity enh:   1.00e+00×
+╠══ Biological ══════════════════════════╣
+║ H-bond energy:         7.32 kcal/mol
+║ Folding ΔG:           -9.00 kcal/mol
+║ k_cat (enzyme):    1.51e+12 s⁻¹
+║ Binding affinity:     -0.00 kcal/mol
+╠══ Quantum ══════════════════════════════╣
+║ Confinement:          6.048 eV
+║ Coherence time:    3.67e-12 s
+║ Coupling strength: 3.65e-01
+╚══════════════════════════════════════════════╝
+
+Material Quality Scores:
+  biocompatible  : ███████████████░░░░░ 0.789
+  electronic     : ████████████████████ 1.000
+  sensing        : ░░░░░░░░░░░░░░░░░░░░ 0.000
+  structural     : ████████████████████ 1.000
+  thermal        : ░░░░░░░░░░░░░░░░░░░░ 0.035
+  topological    : ░░░░░░░░░░░░░░░░░░░░ 0.000
+
+Protein Design Scores:
+  binding_affinity  : ░░░░░░░░░░░░░░░░░░░░ 0.000
+  catalytic_activity: ████████████████████ 1.000
+  folding_stability : ████████████░░░░░░░░ 0.600
+  overall           : ██████████░░░░░░░░░░ 0.540
+
+Best Applications:
+  → High-strength structural material (868 GPa)
+  → Conductive electrode (σ=2.90e+07 S/m)
+
+Disconnection Thermochemistry (for retrosynthesis):
+  Score: 0.764  |  E_bond: 175 kJ/mol  |  E_g: 0.44 eV  |  T_m: 3785 K

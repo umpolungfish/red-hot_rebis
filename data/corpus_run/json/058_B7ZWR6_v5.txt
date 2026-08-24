@@ -1,0 +1,59 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 058_B7ZWR6
+╚══════════════════════════════════════════════════════════╝
+Input: 554 AA | Promoted: 49.1% | Dominant: ⊢ | ∈:28 | ∋:27 | ≺:8 | ≻:3 | ⊙:7 | ⊞:41 | ⊢:43 | ⊣:2 | ⊤:20 | ⊥:32 | ⋈:18 | ◻:43
+
+▸ CLEAVAGE (6 sites):
+  pos 108: KK   → unknown                   ○=0.50
+  pos 186: RR   → unknown                   ○=0.50
+  pos 226: R    → PC2_monobasic             ○=0.40 [M]
+  pos 257: KK   → unknown                   ○=0.50
+  pos 522: KK   → unknown                   ○=0.50
+  pos 525: KK   → unknown                   ○=0.50
+
+▸ PRODUCTS (7):
+
+  [1] Signal Peptide (108 AA @ 1–108)
+      ⊢-dominant (64/108 residues)
+      MFNGLMDPEMIRLAQDQMSRMTPADFARIQQQMMSNPDLM...
+
+  [2] Γ-catalytic domain (78 AA @ 109–186)
+      ∈-dominant (39/78 residues)
+      QGNELHSRGNFSDAAEKYLRAKNNLKEIPSSKGGAILLAC...
+
+  [3] Ħ-chiral domain (40 AA @ 187–226)
+      ⊥-dominant (18/40 residues)
+      GQAYRDLGLFEDAVSDLSKAHEVSPEDETIADVLRDVKER
+
+  [4] Ω-winding module (31 AA @ 227–257)
+      ◻-dominant (14/31 residues)
+      LAVEGPGKASRGVVIEDITEENNVTSGENKK
+
+  [5] Ð-initiation bootstrap (265 AA @ 258–522)
+      ⊢-dominant (123/265 residues)
+      PSKEANGHAQGVKTDVDGLQALRDNPEAIRTFQNFISKTD...
+
+  [6] IP-2 (3 AA @ 523–525)
+      ⊞-dominant (2/3 residues)
+      AKK
+
+  [7] Ç-kinetic regulator (29 AA @ 526–554)
+      ⊤-dominant (12/29 residues)
+      WLFGKGGLIFAILMLVLAMVLHRLGYIGN
+
+▸ MAP:
+  KK ↓ 108
+  RR ↓ 186
+  [M] ↓ 226
+  KK ↓ 257
+  KK ↓ 522
+  KK ↓ 525
+  Chain 1: [1–108] (108 AA) Signal Peptide
+  Chain 2: [109–186] (78 AA) Γ-catalytic domain
+  Chain 3: [187–226] (40 AA) Ħ-chiral domain
+  Chain 4: [227–257] (31 AA) Ω-winding module
+  Chain 5: [258–522] (265 AA) Ð-initiation bootstrap
+  Chain 6: [523–525] (3 AA) IP-2
+  Chain 7: [526–554] (29 AA) Ç-kinetic regulator
+
+[2;37m DNA  → 058_B7ZWR6_codons.dna  [0m[1;2;37m([0m[1;2;36m1662[0m[2;37m nt[0m[1;2;37m)[0m

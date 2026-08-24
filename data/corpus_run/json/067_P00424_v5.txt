@@ -1,0 +1,24 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 067_P00424
+╚══════════════════════════════════════════════════════════╝
+Input: 153 AA | Promoted: 43.8% | Dominant: ∋ | ∈:7 | ∋:11 | ≺:4 | ⊙:1 | ⊞:11 | ⊢:5 | ⊣:6 | ⊤:4 | ⊥:5 | ⋈:5 | ◻:8
+
+▸ CLEAVAGE (1 sites):
+  pos  84: RR   → unknown                   ○=0.50
+
+▸ PRODUCTS (2):
+
+  [1] Signal Peptide (84 AA @ 0–84)
+      ∋-dominant (36/84 residues)
+      MLRNTFTRAGGLSRITSVRFAQTHALSNAAVMDLQSRWEN...
+
+  [2] Σ-variable region (69 AA @ 84–153)
+      ⊞-dominant (31/69 residues)
+      PVLNKGDSSFIAKGVAAGLLFSVGLFAVVRMAGGQDAKTM...
+
+▸ MAP:
+  RR ↓ 84
+  Chain 1: [0–84] (84 AA) Signal Peptide
+  Chain 2: [84–153] (69 AA) Σ-variable region
+
+[2;37m DNA  → 067_P00424_codons.dna  [0m[1;2;37m([0m[1;2;36m459[0m[2;37m nt[0m[1;2;37m)[0m

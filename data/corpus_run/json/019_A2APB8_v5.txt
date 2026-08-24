@@ -1,0 +1,228 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 019_A2APB8
+╚══════════════════════════════════════════════════════════╝
+Input: 745 AA | Promoted: 52.2% | Dominant: ⊞ | ∈:25 | ∋:48 | ≺:11 | ≻:8 | ⊙:16 | ⊞:97 | ⊢:8 | ⊣:3 | ⊤:26 | ⊥:26 | ⋈:31 | ◻:90
+
+▸ CLEAVAGE (33 sites):
+  pos  63: RK   → unknown                   ○=0.50
+  pos 107: KR   → unknown                   ○=0.50
+  pos 120: RR   → unknown                   ○=0.50
+  pos 147: KR   → unknown                   ○=0.50
+  pos 160: KR   → unknown                   ○=0.50
+  pos 167: KK   → unknown                   ○=0.50
+  pos 168: KK   → unknown                   ○=0.50
+  pos 183: RK   → unknown                   ○=0.50
+  pos 220: KR   → unknown                   ○=0.50
+  pos 232: RR   → unknown                   ○=0.50
+  pos 233: RK   → unknown                   ○=0.50
+  pos 239: KK   → unknown                   ○=0.50
+  pos 251: KK   → unknown                   ○=0.50
+  pos 291: RK   → unknown                   ○=0.50
+  pos 316: KK   → unknown                   ○=0.50
+  pos 317: KR   → unknown                   ○=0.50
+  pos 339: KR   → unknown                   ○=0.50
+  pos 350: KK   → unknown                   ○=0.50
+  pos 384: K    → PC2_monobasic             ○=0.45 [M]
+  pos 421: KR   → unknown                   ○=0.50
+  pos 440: KR   → unknown                   ○=0.50
+  pos 448: KK   → unknown                   ○=0.50
+  pos 449: KK   → unknown                   ○=0.50
+  pos 477: KK   → unknown                   ○=0.50
+  pos 553: KK   → unknown                   ○=0.50
+  pos 582: KK   → unknown                   ○=0.50
+  pos 599: KR   → unknown                   ○=0.50
+  pos 641: KK   → unknown                   ○=0.50
+  pos 644: KK   → unknown                   ○=0.50
+  pos 666: RR   → unknown                   ○=0.50
+  pos 676: KK   → unknown                   ○=0.50
+  pos 708: RK   → unknown                   ○=0.50
+  pos 719: RK   → unknown                   ○=0.50
+
+▸ PRODUCTS (30):
+
+  [1] Signal Peptide (63 AA @ 1–63)
+      ⋈-dominant (36/63 residues)
+      MSQVPTTYSFDAPTDFINFSSLDAEEDTENIDSWFDEKAN...
+
+  [2] Σ-variable region (44 AA @ 64–107)
+      ⊞-dominant (24/44 residues)
+      AKLQQGFVTPLKAVDNTYHKETEKENLQKQSIPSNDCSSL...
+
+  [3] ɢ-glycosylation target (13 AA @ 108–120)
+      ∋-dominant (3/13 residues)
+      AVSGNTPVQPQRR
+
+  [4] C-peptide (27 AA @ 121–147)
+      ⊞-dominant (15/27 residues)
+      SIRLSAQKDLEQKEKNHVASVEMKAKR
+
+  [5] Ř-scaffold domain (13 AA @ 148–160)
+      ≻-dominant (5/13 residues)
+      CVAPATDCPPQKR
+
+  [6] Signal Peptide (7 AA @ 161–167)
+      ⊞-dominant (5/7 residues)
+      MKVSHKK
+
+  [7] Ω-winding module (15 AA @ 169–183)
+      ◻-dominant (6/15 residues)
+      LEEEEEGSAPATSRK
+
+  [8] Ω-winding module (37 AA @ 184–220)
+      ◻-dominant (18/37 residues)
+      NERETLEKAKGKHTVPGVPPAREKVLKSTEEQEIEKR
+
+  [9] ɢ-glycosylation target (12 AA @ 221–232)
+      ∋-dominant (5/12 residues)
+      LRMQQEVVELRR
+
+  [10] Connector (6 AA @ 234–239)
+      ◻-dominant (6/6 residues)
+      NEEFKK
+
+  [11] Σ-variable region (12 AA @ 240–251)
+      ⊞-dominant (3/12 residues)
+      LALAGPGQPVKK
+
+  [12] Σ-variable region (40 AA @ 252–291)
+      ⊞-dominant (25/40 residues)
+      STSQVTKTVDFHFLTDERIKQHPKNQEEYKEVNFMSELRK
+
+  [13] Σ-variable region (25 AA @ 292–316)
+      ⊞-dominant (10/25 residues)
+      HSSTPARGTRGCTIIKPFNLSKGKK
+
+  [14] ƒ-hydrophobic core (22 AA @ 318–339)
+      ⋈-dominant (11/22 residues)
+      TFDEAASTYVPIAQQVEAFHKR
+
+  [15] Γ-catalytic domain (11 AA @ 340–350)
+      ∈-dominant (6/11 residues)
+      TPNRYHLRNKK
+
+  [16] Σ-variable region (34 AA @ 351–384)
+      ⊞-dominant (14/34 residues)
+      DESLLPSKSVNKIARDPQTPILQTKYRTRAVTCK
+
+  [17] C-peptide (37 AA @ 385–421)
+      ◻-dominant (20/37 residues)
+      STAEQEAEELEKLQQYKFKARELDPRIFESGPILPKR
+
+  [18] Σ-variable region (19 AA @ 422–440)
+      ⊞-dominant (8/19 residues)
+      APVKPPTQPVGFDLEIEKR
+
+  [19] Connector (8 AA @ 441–448)
+      ◻-dominant (6/8 residues)
+      IHERESKK
+
+  [20] B-chain (28 AA @ 450–477)
+      ◻-dominant (16/28 residues)
+      TEDEQFEFHSRPCPTKILEDVVGVPEKK
+
+  [21] Σ-variable region (76 AA @ 478–553)
+      ⊞-dominant (39/76 residues)
+      VIPATVPKSPVFALKNRIRVPIKDEEEEKPVVIKAQPVPH...
+
+  [22] Σ-variable region (29 AA @ 554–582)
+      ⊞-dominant (18/29 residues)
+      IKEMQKGEVPKFKALPVPHFDTINLPEKK
+
+  [23] Σ-variable region (17 AA @ 583–599)
+      ⊞-dominant (8/17 residues)
+      VKNVTQAEPFSLETDKR
+
+  [24] Σ-variable region (42 AA @ 600–641)
+      ⊞-dominant (28/42 residues)
+      GAYKAEMWKHQLEEEQKQQKDAACFKARPNTVIFQEPFVP...
+
+  [25] IP-2 (3 AA @ 642–644)
+      ⊞-dominant (3/3 residues)
+      EKK
+
+  [26] Ω-winding module (22 AA @ 645–666)
+      ◻-dominant (7/22 residues)
+      SLAENPSGSLVQEPFQLATERR
+
+  [27] Σ-variable region (10 AA @ 667–676)
+      ⊞-dominant (7/10 residues)
+      AKERQELEKK
+
+  [28] Signal Peptide (32 AA @ 677–708)
+      ◻-dominant (20/32 residues)
+      MAEVEAWKLQQLEEVRQQEEEQQKEELARLRK
+
+  [29] Σ-variable region (11 AA @ 709–719)
+      ⊞-dominant (6/11 residues)
+      ELVHKANPIRK
+
+  [30] Ω-winding module (26 AA @ 720–745)
+      ◻-dominant (8/26 residues)
+      YAAVEVKSSELPLTVPVSPKFSTRFQ
+
+▸ MAP:
+  RK ↓ 63
+  KR ↓ 107
+  RR ↓ 120
+  KR ↓ 147
+  KR ↓ 160
+  KK ↓ 167
+  KK ↓ 168
+  RK ↓ 183
+  KR ↓ 220
+  RR ↓ 232
+  RK ↓ 233
+  KK ↓ 239
+  KK ↓ 251
+  RK ↓ 291
+  KK ↓ 316
+  KR ↓ 317
+  KR ↓ 339
+  KK ↓ 350
+  [M] ↓ 384
+  KR ↓ 421
+  KR ↓ 440
+  KK ↓ 448
+  KK ↓ 449
+  KK ↓ 477
+  KK ↓ 553
+  KK ↓ 582
+  KR ↓ 599
+  KK ↓ 641
+  KK ↓ 644
+  RR ↓ 666
+  KK ↓ 676
+  RK ↓ 708
+  RK ↓ 719
+  Chain 1: [1–63] (63 AA) Signal Peptide
+  Chain 2: [64–107] (44 AA) Σ-variable region
+  Chain 3: [108–120] (13 AA) ɢ-glycosylation target
+  Chain 4: [121–147] (27 AA) C-peptide
+  Chain 5: [148–160] (13 AA) Ř-scaffold domain
+  Chain 6: [161–167] (7 AA) Signal Peptide
+  Chain 7: [169–183] (15 AA) Ω-winding module
+  Chain 8: [184–220] (37 AA) Ω-winding module
+  Chain 9: [221–232] (12 AA) ɢ-glycosylation target
+  Chain 10: [234–239] (6 AA) Connector
+  Chain 11: [240–251] (12 AA) Σ-variable region
+  Chain 12: [252–291] (40 AA) Σ-variable region
+  Chain 13: [292–316] (25 AA) Σ-variable region
+  Chain 14: [318–339] (22 AA) ƒ-hydrophobic core
+  Chain 15: [340–350] (11 AA) Γ-catalytic domain
+  Chain 16: [351–384] (34 AA) Σ-variable region
+  Chain 17: [385–421] (37 AA) C-peptide
+  Chain 18: [422–440] (19 AA) Σ-variable region
+  Chain 19: [441–448] (8 AA) Connector
+  Chain 20: [450–477] (28 AA) B-chain
+  Chain 21: [478–553] (76 AA) Σ-variable region
+  Chain 22: [554–582] (29 AA) Σ-variable region
+  Chain 23: [583–599] (17 AA) Σ-variable region
+  Chain 24: [600–641] (42 AA) Σ-variable region
+  Chain 25: [642–644] (3 AA) IP-2
+  Chain 26: [645–666] (22 AA) Ω-winding module
+  Chain 27: [667–676] (10 AA) Σ-variable region
+  Chain 28: [677–708] (32 AA) Signal Peptide
+  Chain 29: [709–719] (11 AA) Σ-variable region
+  Chain 30: [720–745] (26 AA) Ω-winding module
+
+[2;37m DNA  → 019_A2APB8_codons.dna  [0m[1;2;37m([0m[1;2;36m2235[0m[2;37m nt[0m[1;2;37m)[0m

@@ -1,0 +1,59 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 061_D6VTK4
+╚══════════════════════════════════════════════════════════╝
+Input: 431 AA | Promoted: 43.4% | Dominant: ⊤ | ∈:23 | ∋:14 | ≺:19 | ≻:2 | ⊙:4 | ⊞:17 | ⊢:11 | ⊣:3 | ⊤:33 | ⊥:22 | ⋈:27 | ◻:12
+
+▸ CLEAVAGE (6 sites):
+  pos  77: RK   → unknown                   ○=0.50
+  pos 161: KR   → unknown                   ○=0.50
+  pos 234: RR   → unknown                   ○=0.50
+  pos 351: RR   → unknown                   ○=0.50
+  pos 352: RK   → unknown                   ○=0.50
+  pos 422: RK   → unknown                   ○=0.50
+
+▸ PRODUCTS (7):
+
+  [1] Signal Peptide (77 AA @ 0–77)
+      ∈-dominant (31/77 residues)
+      MSDAAPSLSNLFYDPTYNPGQSTINYTSIYGNGSTITFDE...
+
+  [2] Ç-kinetic regulator (84 AA @ 77–161)
+      ⊤-dominant (40/84 residues)
+      TPIFIINQVSLFLIILHSALYFKYLLSNYSSVTYALTGFP...
+
+  [3] Ç-kinetic regulator (73 AA @ 161–234)
+      ⊤-dominant (29/73 residues)
+      IGLMLTSISFTLGIATVTMYFVSAVKGMIVTYNDVSATQD...
+
+  [4] ƒ-hydrophobic core (117 AA @ 234–351)
+      ⋈-dominant (44/117 residues)
+      FLGLKQFDSFHILLIMSCQSLLVPSIIFILAYSLKPNQGT...
+
+  [5] IP-2 (1 AA @ 351–352)
+      ⊞-dominant (1/1 residues)
+      K
+
+  [6] Ω-winding module (70 AA @ 352–422)
+      ◻-dominant (35/70 residues)
+      ETTSDKHSERTFVSETADDIEKNQFYQLPTPTSSKNTRIG...
+
+  [7] Γ-catalytic domain (9 AA @ 422–431)
+      ∈-dominant (7/9 residues)
+      FWTEDNNNL
+
+▸ MAP:
+  RK ↓ 77
+  KR ↓ 161
+  RR ↓ 234
+  RR ↓ 351
+  RK ↓ 352
+  RK ↓ 422
+  Chain 1: [0–77] (77 AA) Signal Peptide
+  Chain 2: [77–161] (84 AA) Ç-kinetic regulator
+  Chain 3: [161–234] (73 AA) Ç-kinetic regulator
+  Chain 4: [234–351] (117 AA) ƒ-hydrophobic core
+  Chain 5: [351–352] (1 AA) IP-2
+  Chain 6: [352–422] (70 AA) Ω-winding module
+  Chain 7: [422–431] (9 AA) Γ-catalytic domain
+
+[2;37m DNA  → 061_D6VTK4_codons.dna  [0m[1;2;37m([0m[1;2;36m1293[0m[2;37m nt[0m[1;2;37m)[0m

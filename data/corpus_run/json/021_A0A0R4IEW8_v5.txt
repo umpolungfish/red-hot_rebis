@@ -1,0 +1,59 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 021_A0A0R4IEW8
+╚══════════════════════════════════════════════════════════╝
+Input: 411 AA | Promoted: 45.5% | Dominant: ∈ | ∈:30 | ∋:24 | ≺:12 | ≻:4 | ⊙:4 | ⊞:23 | ⊢:11 | ⊣:4 | ⊤:24 | ⊥:16 | ⋈:17 | ◻:18
+
+▸ CLEAVAGE (6 sites):
+  pos 123: K    → PC2_monobasic             ○=0.40 [M]
+  pos 160: K    → PC2_monobasic             ○=0.40 [M]
+  pos 228: KR   → unknown                   ○=0.50
+  pos 277: RR   → unknown                   ○=0.50
+  pos 303: KR   → unknown                   ○=0.50
+  pos 369: K    → PC2_monobasic             ○=0.45 [M]
+
+▸ PRODUCTS (7):
+
+  [1] Signal Peptide (123 AA @ 1–123)
+      ∈-dominant (57/123 residues)
+      MFEISRTLNAALLSNEGSTETQWRQADLPQLQGWAEKGLL...
+
+  [2] Ç-kinetic regulator (37 AA @ 124–160)
+      ⊤-dominant (19/37 residues)
+      ITGQSLGYGFVNYIDPKDAEKAINTLNGLRLQTKTIK
+
+  [3] Ç-kinetic regulator (68 AA @ 161–228)
+      ⊤-dominant (25/68 residues)
+      VSYARPSSASIRDANLYVSGLPKTMTQKELEQLFSQYGRI...
+
+  [4] ɢ-glycosylation target (49 AA @ 229–277)
+      ∋-dominant (22/49 residues)
+      IEAEEAIKGLNGQKPSGAAEPITVKFANNPSQKTSQALLS...
+
+  [5] Φ-switch domain (26 AA @ 278–303)
+      ≺-dominant (12/26 residues)
+      YPGPLHHQAQRFRLDNLLNMAYGVKR
+
+  [6] Γ-catalytic domain (66 AA @ 304–369)
+      ∈-dominant (33/66 residues)
+      FSPITIDSMTSLVGMNIPGHTGTGWCIFVYNLSPDSDESV...
+
+  [7] ƒ-hydrophobic core (42 AA @ 370–411)
+      ⋈-dominant (19/42 residues)
+      GFGFVTMTNYDEAAMAIASLNGYRLGDRVLQVSFKTNKTH...
+
+▸ MAP:
+  [M] ↓ 123
+  [M] ↓ 160
+  KR ↓ 228
+  RR ↓ 277
+  KR ↓ 303
+  [M] ↓ 369
+  Chain 1: [1–123] (123 AA) Signal Peptide
+  Chain 2: [124–160] (37 AA) Ç-kinetic regulator
+  Chain 3: [161–228] (68 AA) Ç-kinetic regulator
+  Chain 4: [229–277] (49 AA) ɢ-glycosylation target
+  Chain 5: [278–303] (26 AA) Φ-switch domain
+  Chain 6: [304–369] (66 AA) Γ-catalytic domain
+  Chain 7: [370–411] (42 AA) ƒ-hydrophobic core
+
+[2;37m DNA  → 021_A0A0R4IEW8_codons.dna  [0m[1;2;37m([0m[1;2;36m1233[0m[2;37m nt[0m[1;2;37m)[0m

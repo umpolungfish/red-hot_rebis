@@ -1,0 +1,89 @@
+═ Protein Prediction Pipeline ═
+  Sequence: MFHLVDFQVTIAEILLIIMRTFKVSIWNLDYIINLIIKNLSKSLTENKYS...
+  Length: 61 aa | Name: P0DTC6
+{
+  "name": "P0DTC6",
+  "sequence": "MFHLVDFQVTIAEILLIIMRTFKVSIWNLDYIINLIIKNLSKSLTENKYSQLDEEQPMEID",
+  "length": 61,
+  "pipeline_result": {
+    "name": "P0DTC6",
+    "sequence": "MFHLVDFQVTIAEILLIIMRTFKVSIWNLDYIINLIIKNLSKSLTENKYSQLDEEQPMEID",
+    "length": 61,
+    "signal_peptide": null,
+    "cleavage_sites": [],
+    "fragments": [
+      {
+        "start": 0,
+        "end": 61,
+        "length": 61,
+        "sequence": "MFHLVDFQVTIAEILLIIMRTFKVSIWNLDYIINLIIKNLSKSLTENKYSQLDEEQPMEID",
+        "label": "full_precursor",
+        "vector": [
+          3,
+          1,
+          0,
+          2,
+          3,
+          10,
+          4,
+          3,
+          1,
+          4,
+          4,
+          5
+        ],
+        "densities": {
+          "⊢": 0.049,
+          "⊣": 0.016,
+          "≻": 0.0,
+          "≺": 0.033,
+          "⋈": 0.049,
+          "⊤": 0.164,
+          "∈": 0.066,
+          "∋": 0.049,
+          "⊙": 0.016,
+          "⊥": 0.066,
+          "⊞": 0.066,
+          "◻": 0.082
+        },
+        "dominant_primitives": [
+          "⊤"
+        ],
+        "total_primitive_activations": 40,
+        "amidation": null
+      }
+    ],
+    "processing": {
+      "precursor": "MFHLVDFQVTIAEILLIIMRTFKVSIWNLDYIINLIIKNLSKSLTENKYSQLDEEQPMEID",
+      "length": 61,
+      "steps": []
+    },
+    "disulfide_bonds": [],
+    "mature_products": [
+      {
+        "name": "full_precursor",
+        "sequence": "MFHLVDFQVTIAEILLIIMRTFKVSIWNLDYIINLIIKNLSKSLTENKYSQLDEEQPMEID",
+        "length": 61,
+        "start": 0,
+        "end": 61,
+        "dominant_primitive": "⊤",
+        "profile": {
+          "⊢": 3,
+          "⊣": 1,
+          "≺": 2,
+          "⋈": 3,
+          "⊤": 10,
+          "∈": 4,
+          "∋": 3,
+          "⊙": 1,
+          "⊥": 4,
+          "⊞": 4,
+          "◻": 5
+        },
+        "inferred_function": "kinetic_regulator",
+        "amidation": null
+      }
+    ]
+  },
+  "narrative": "═══ P0DTC6 — Structural Processing Analysis ═══\nSequence: 61 AA\n\n▸ Mature products:\n  • full_precursor (61 AA) — kinetic_regulator\n    Primitive profile: ∈=4 | ∋=3 | ≺=2 | ⊙=1 | ⊞=4 | ⊢=3 | ⊣=1 | ⊤=10 | ⊥=4 | ⋈=3 | ◻=5\n"
+}

@@ -1,0 +1,54 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 017_A2AKQ0
+╚══════════════════════════════════════════════════════════╝
+Input: 355 AA | Promoted: 43.9% | Dominant: ⋈ | ∈:13 | ∋:9 | ≺:15 | ≻:4 | ⊙:3 | ⊞:22 | ⊢:12 | ⊣:4 | ⊤:21 | ⊥:11 | ⋈:28 | ◻:14
+
+▸ CLEAVAGE (6 sites):
+  pos   7: RR   → unknown                   ○=0.50
+  pos 108: RK   → unknown                   ○=0.50
+  pos 129: KK   → unknown                   ○=0.50
+  pos 140: RR   → unknown                   ○=0.50
+  pos 156: KK   → unknown                   ○=0.50
+  pos 352: K    → PC2_monobasic             ○=0.45 [M]
+
+▸ PRODUCTS (6):
+
+  [1] Signal Peptide (7 AA @ 1–7)
+      ⊢-dominant (3/7 residues)
+      MAEVHRR
+
+  [2] Σ-variable region (101 AA @ 8–108)
+      ⊞-dominant (35/101 residues)
+      QHAPVKGEAPAKSSTHRDEEELGMAPAETLTVFLKLLAAG...
+
+  [3] ƒ-hydrophobic core (21 AA @ 109–129)
+      ⋈-dominant (9/21 residues)
+      TFPLPLLYFGNQITGLFSTKK
+
+  [4] Γ-catalytic domain (11 AA @ 130–140)
+      ∈-dominant (3/11 residues)
+      LNLPMFTVLRR
+
+  [5] ƒ-hydrophobic core (16 AA @ 141–156)
+      ⋈-dominant (8/16 residues)
+      FSILFTMFAEGALLKK
+
+  [6] Ç-kinetic regulator (196 AA @ 157–352)
+      ⊤-dominant (98/196 residues)
+      TFSWGIKMTVFAMIIGAFVAASSDLAFDLEGYVFILINDV...
+
+▸ MAP:
+  RR ↓ 7
+  RK ↓ 108
+  KK ↓ 129
+  RR ↓ 140
+  KK ↓ 156
+  [M] ↓ 352
+  Chain 1: [1–7] (7 AA) Signal Peptide
+  Chain 2: [8–108] (101 AA) Σ-variable region
+  Chain 3: [109–129] (21 AA) ƒ-hydrophobic core
+  Chain 4: [130–140] (11 AA) Γ-catalytic domain
+  Chain 5: [141–156] (16 AA) ƒ-hydrophobic core
+  Chain 6: [157–352] (196 AA) Ç-kinetic regulator
+
+[2;37m DNA  → 017_A2AKQ0_codons.dna  [0m[1;2;37m([0m[1;2;36m1065[0m[2;37m nt[0m[1;2;37m)[0m

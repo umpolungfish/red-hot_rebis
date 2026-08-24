@@ -1,0 +1,22 @@
+═ SerpentRod Folding (v2 — backbone + energy) ═
+  RNA: ACAGGCAGUGUGGUUCUGUCUCUACUCUGUUUAUGGCCCUAUGGUAAUUC...
+  Length: 104 nt | Name: PZ492882.1
+[Gen2:PZ492882.1] Prediction: 34 AAs, 21 contacts, 10/12 primitives, energy=36
+
+📦 PDB written: /home/mrnob0dy666/imsgct/red-hot_rebis/data/corpus_run/pdb/057_PZ492882.1.pdb
+{
+  "name": "PZ492882.1",
+  "rna": "ACAGGCAGUGUGGUUCUGUCUCUACUCUGUUUAUGGCCCUAUGGUAAUUCACUGAUUGUGUGCUGUGACAGUGAAUUCUACCAGUGCCAUACACAGAACAGGAG",
+  "aa_sequence": "TGSVVLSLLCLWPYGNSLIVCCDSEFYQCHTQNR",
+  "n_contacts": 21,
+  "energy": {
+    "LJ": 36.2536,
+    "HB": 0.0,
+    "elec": 0.1018,
+    "total": 36.3554
+  },
+  "activation": 10,
+  "frobenius": true,
+  "winding": 17,
+  "pdb_path": "/home/mrnob0dy666/imsgct/red-hot_rebis/data/corpus_run/pdb/057_PZ492882.1.pdb"
+}

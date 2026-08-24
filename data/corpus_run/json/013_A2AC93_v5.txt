@@ -1,0 +1,136 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 013_A2AC93
+╚══════════════════════════════════════════════════════════╝
+Input: 623 AA | Promoted: 53.6% | Dominant: ◻ | ∈:26 | ∋:21 | ≺:17 | ≻:15 | ⊙:11 | ⊞:44 | ⊢:15 | ⊣:12 | ⊤:38 | ⊥:35 | ⋈:22 | ◻:78
+
+▸ CLEAVAGE (17 sites):
+  pos  10: KK   → unknown                   ○=0.50
+  pos  11: KR   → unknown                   ○=0.50
+  pos  98: RK   → unknown                   ○=0.50
+  pos  99: KK   → unknown                   ○=0.50
+  pos 163: KR   → unknown                   ○=0.50
+  pos 177: RK   → unknown                   ○=0.50
+  pos 248: RK   → unknown                   ○=0.50
+  pos 296: RK   → unknown                   ○=0.50
+  pos 311: RK   → unknown                   ○=0.50
+  pos 348: RK   → unknown                   ○=0.50
+  pos 506: RR   → unknown                   ○=0.50
+  pos 562: KR   → unknown                   ○=0.50
+  pos 563: RK   → unknown                   ○=0.50
+  pos 570: KK   → unknown                   ○=0.50
+  pos 571: KK   → unknown                   ○=0.50
+  pos 576: RK   → unknown                   ○=0.50
+  pos 577: KK   → unknown                   ○=0.50
+
+▸ PRODUCTS (18):
+
+  [1] Signal Peptide (10 AA @ 0–10)
+      ≺-dominant (7/10 residues)
+      MEIVYVYLKK
+
+  [2] IP-2 (1 AA @ 10–11)
+      unstructured
+      R
+
+  [3] Ω-winding module (87 AA @ 11–98)
+      ◻-dominant (48/87 residues)
+      SEFGKQCNFSDRQAELNIDILPNPELAALYVERNPVDTGI...
+
+  [4] IP-2 (1 AA @ 98–99)
+      ⊞-dominant (1/1 residues)
+      K
+
+  [5] Ω-winding module (64 AA @ 99–163)
+      ◻-dominant (44/64 residues)
+      VEKDENYINAVMQLGSIMEHCIKQNNAIDIYEEYFDDEEA...
+
+  [6] Fragment 6 (14 AA @ 163–177)
+      ⊙-dominant (6/14 residues)
+      TATHLSWHPDGNRK
+
+  [7] Φ-switch domain (71 AA @ 177–248)
+      ≺-dominant (35/71 residues)
+      LAVAYSCLKFQRAPMSMNYDSYIWDLENPNRPEIALKPLS...
+
+  [8] Ω-winding module (48 AA @ 248–296)
+      ◻-dominant (22/48 residues)
+      GSLVAELSTIEFSHRDPVYGTIWLQSKTGTECFSASTDGQ...
+
+  [9] Ç-kinetic regulator (15 AA @ 296–311)
+      ⊤-dominant (9/15 residues)
+      ISEPIEVVIMDISRK
+
+  [10] Ω-winding module (37 AA @ 311–348)
+      ◻-dominant (18/37 residues)
+      EQLENALGAISLEFESTLPTKFMVGTEQGIVISCNRK
+
+  [11] Ħ-chiral domain (158 AA @ 348–506)
+      ⊥-dominant (74/158 residues)
+      AKTQAEKIVCTFYGHHGPIYALQRNPFYPKNFLTVGDWTA...
+
+  [12] Ω-winding module (56 AA @ 506–562)
+      ◻-dominant (35/56 residues)
+      EKILEARHREMRLKEKGKVEGKEDDQKEEEAALDLDELVG...
+
+  [13] IP-2 (1 AA @ 562–563)
+      ⊞-dominant (1/1 residues)
+      K
+
+  [14] Connector (7 AA @ 563–570)
+      ◻-dominant (4/7 residues)
+      EAEALKK
+
+  [15] IP-2 (1 AA @ 570–571)
+      ⊞-dominant (1/1 residues)
+      K
+
+  [16] Connector (5 AA @ 571–576)
+      ⊞-dominant (2/5 residues)
+      PKPRK
+
+  [17] IP-2 (1 AA @ 576–577)
+      ⊞-dominant (1/1 residues)
+      K
+
+  [18] Ω-winding module (46 AA @ 577–623)
+      ◻-dominant (26/46 residues)
+      SSVKVEAEEEVEENVGEEEEAGGIIGIDAVEDMSEEAGEE...
+
+▸ MAP:
+  KK ↓ 10
+  KR ↓ 11
+  RK ↓ 98
+  KK ↓ 99
+  KR ↓ 163
+  RK ↓ 177
+  RK ↓ 248
+  RK ↓ 296
+  RK ↓ 311
+  RK ↓ 348
+  RR ↓ 506
+  KR ↓ 562
+  RK ↓ 563
+  KK ↓ 570
+  KK ↓ 571
+  RK ↓ 576
+  KK ↓ 577
+  Chain 1: [0–10] (10 AA) Signal Peptide
+  Chain 2: [10–11] (1 AA) IP-2
+  Chain 3: [11–98] (87 AA) Ω-winding module
+  Chain 4: [98–99] (1 AA) IP-2
+  Chain 5: [99–163] (64 AA) Ω-winding module
+  Chain 6: [163–177] (14 AA) Fragment 6
+  Chain 7: [177–248] (71 AA) Φ-switch domain
+  Chain 8: [248–296] (48 AA) Ω-winding module
+  Chain 9: [296–311] (15 AA) Ç-kinetic regulator
+  Chain 10: [311–348] (37 AA) Ω-winding module
+  Chain 11: [348–506] (158 AA) Ħ-chiral domain
+  Chain 12: [506–562] (56 AA) Ω-winding module
+  Chain 13: [562–563] (1 AA) IP-2
+  Chain 14: [563–570] (7 AA) Connector
+  Chain 15: [570–571] (1 AA) IP-2
+  Chain 16: [571–576] (5 AA) Connector
+  Chain 17: [576–577] (1 AA) IP-2
+  Chain 18: [577–623] (46 AA) Ω-winding module
+
+[2;37m DNA  → 013_A2AC93_codons.dna  [0m[1;2;37m([0m[1;2;36m1869[0m[2;37m nt[0m[1;2;37m)[0m

@@ -1,0 +1,26 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 073_P00804
+╚══════════════════════════════════════════════════════════╝
+Input: 164 AA | Promoted: 44.5% | Dominant: ⊤ | ∈:7 | ∋:5 | ≺:6 | ≻:2 | ⊙:3 | ⊞:5 | ⊢:4 | ⊣:6 | ⊤:14 | ⊥:8 | ⋈:12 | ◻:1
+
+▸ CLEAVAGE (2 sites):
+  pos  95: K    → PC2_monobasic             ○=0.40 [M]
+  pos 163: KK   → unknown                   ○=0.50
+
+▸ PRODUCTS (2):
+
+  [1] Signal Peptide (95 AA @ 1–95)
+      ⊤-dominant (40/95 residues)
+      MSQSICSTGLRWLWLVVVVLIIDLGSKYLILQNFALGDTV...
+
+  [2] Ç-kinetic regulator (68 AA @ 96–163)
+      ⊤-dominant (32/68 residues)
+      LNNIAYALIIGGALGNLFDRLWHGFVVDMIDFYVGDWHFA...
+
+▸ MAP:
+  [M] ↓ 95
+  KK ↓ 163
+  Chain 1: [1–95] (95 AA) Signal Peptide
+  Chain 2: [96–163] (68 AA) Ç-kinetic regulator
+
+[2;37m DNA  → 073_P00804_codons.dna  [0m[1;2;37m([0m[1;2;36m492[0m[2;37m nt[0m[1;2;37m)[0m

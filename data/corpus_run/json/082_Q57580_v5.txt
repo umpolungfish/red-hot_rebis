@@ -1,0 +1,38 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 082_Q57580
+╚══════════════════════════════════════════════════════════╝
+Input: 225 AA | Promoted: 57.3% | Dominant: ⊞ | ∈:14 | ∋:1 | ≺:8 | ≻:1 | ⊙:7 | ⊞:27 | ⊢:5 | ⊤:24 | ⊥:7 | ⋈:9 | ◻:26
+
+▸ CLEAVAGE (3 sites):
+  pos  95: KK   → unknown                   ○=0.50
+  pos 195: KR   → unknown                   ○=0.50
+  pos 203: KK   → unknown                   ○=0.50
+
+▸ PRODUCTS (4):
+
+  [1] Signal Peptide (95 AA @ 0–95)
+      ⊤-dominant (48/95 residues)
+      MQLRLSSGNVLNEKVHKVGIIALGSFLENHGAVLPIDTDI...
+
+  [2] Ω-winding module (100 AA @ 95–195)
+      ◻-dominant (61/100 residues)
+      IGVEKFLIVNCHGGNILVESFLKDLEYEFDIKVEMINITF...
+
+  [3] Connector (8 AA @ 195–203)
+      ⊞-dominant (5/8 residues)
+      FGVKLDKK
+
+  [4] Ω-winding module (22 AA @ 203–225)
+      ◻-dominant (15/22 residues)
+      LGEKILNNAIEKVVEKIKEMIR
+
+▸ MAP:
+  KK ↓ 95
+  KR ↓ 195
+  KK ↓ 203
+  Chain 1: [0–95] (95 AA) Signal Peptide
+  Chain 2: [95–195] (100 AA) Ω-winding module
+  Chain 3: [195–203] (8 AA) Connector
+  Chain 4: [203–225] (22 AA) Ω-winding module
+
+[2;37m DNA  → 082_Q57580_codons.dna  [0m[1;2;37m([0m[1;2;36m675[0m[2;37m nt[0m[1;2;37m)[0m

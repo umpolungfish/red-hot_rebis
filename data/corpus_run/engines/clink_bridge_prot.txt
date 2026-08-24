@@ -1,0 +1,8 @@
+═ CLINK Component Bridges ═
+  Bridging protein → CLINK...
+{
+  "components": [
+    "𐑨𐑶𐑾𐑗𐑱𐑧𐑚𐑠𐑢𐑖𐑳𐑷"
+  ],
+  "protein_bridge": "{\n  \"component\": \"serpentrod\",\n  \"component_type\": {\n    \"⊢\": \"𐑦\",\n    \"⊣\": \"𐑥\",\n    \"≻\": \"𐑾\",\n    \"≺\": \"𐑬\",\n    \"⋈\": \"𐑞\",\n    \"⊤\": \"𐑧\",\n    \"∈\": \"𐑲\",\n    \"∋\": \"𐑠\",\n    \"⊙\": \"⊙\",\n    \"⊥\": \"𐑒\",\n    \"⊞\": \"𐑳\",\n    \"◻\": \"𐑭\"\n  },\n  \"nearest_layer_idx\": 3,\n  \"nearest_layer_name\": \"Molecule (Chemical Bonds)\",\n  \"distance\": 1.9494,\n  \"promotion_path\": [\n    \"⊢: 𐑦→𐑼\",\n    \"≻: 𐑾→𐑽\",\n    \"≺: 𐑬→𐑿\",\n    \"⊥: 𐑒→𐑓\"\n  ],\n  \"frobenius_verified\": true,\n  \"notes\": \"Proteins bridge molecule→cell. Folded proteins approach cellLayer (self-organization).\"\n}"
+}

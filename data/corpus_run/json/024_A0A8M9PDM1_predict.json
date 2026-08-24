@@ -1,0 +1,98 @@
+═ Protein Prediction Pipeline ═
+  Sequence: MFVFIAKLLIFSSVITSAFTCYQCFIDENDSRRLCLGHILTEYNVRNVDS...
+  Length: 317 aa | Name: A0A8M9PDM1
+{
+  "name": "A0A8M9PDM1",
+  "sequence": "MFVFIAKLLIFSSVITSAFTCYQCFIDENDSRRLCLGHILTEYNVRNVDSCYKTLDRIFNNEEKVIEAGKVGRGYDLTLKNILMAEIMPIVEEFDQQLNYDTEYESRLQAAANNFIAAASSLPRVSGCLPPCGFQVQGAVYNCVTCQYDSCEFPLDCPGKEITVQENNRTQMWCSVPFLLPADVEIVWRYAQDRTMLRERFDDVTVGVDPLYSIPSARPEQSGTYQCEVLSQEQSLVRLYFYLTVVPVAQTYHVHLQDLCAQALRPEPQFPPSFSFWLPRPALLITCLTATMLLIFLSLGAMCRLWYQIRTNVSNPA",
+  "length": 317,
+  "pipeline_result": {
+    "name": "A0A8M9PDM1",
+    "sequence": "MFVFIAKLLIFSSVITSAFTCYQCFIDENDSRRLCLGHILTEYNVRNVDSCYKTLDRIFNNEEKVIEAGKVGRGYDLTLKNILMAEIMPIVEEFDQQLNYDTEYESRLQAAANNFIAAASSLPRVSGCLPPCGFQVQGAVYNCVTCQYDSCEFPLDCPGKEITVQENNRTQMWCSVPFLLPADVEIVWRYAQDRTMLRERFDDVTVGVDPLYSIPSARPEQSGTYQCEVLSQEQSLVRLYFYLTVVPVAQTYHVHLQDLCAQALRPEPQFPPSFSFWLPRPALLITCLTATMLLIFLSLGAMCRLWYQIRTNVSNPA",
+    "length": 317,
+    "signal_peptide": {
+      "sequence": "MFVFIAKLLIFSSVITSAFTCYQCFIDENDSRRLCLGHILTEYNVRNVDSCYKTLDRIFNNEEKVIEAGKVGRGYDLTLKNILMAEIMPIVEEFDQQLNYDTEYESRLQAAANNFIAAASSLPRVSGCLPPCGFQVQGAVYNCVTCQYDSCEFPLDCPGKEITVQENNRTQMWCSVPFLLPADVEIVWRYAQDRTMLRERFDDVTVGVDPLYSIPSARPEQSGTYQCEVLSQEQSLVRLYFYLTVVPVAQTYHVHLQDLCAQALRPEPQFPPSFSFWLPRPALLITCLTATMLLIFLSLGAMCR",
+      "length": 304,
+      "cleavage_position": 304,
+      "bootstrap_score": 2,
+      "n_charge": 0,
+      "hydrophobic_core_length": 9
+    },
+    "cleavage_sites": [],
+    "fragments": [
+      {
+        "start": 304,
+        "end": 317,
+        "length": 13,
+        "sequence": "LWYQIRTNVSNPA",
+        "label": "full_precursor",
+        "vector": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "densities": {
+          "⊢": 0.0,
+          "⊣": 0.077,
+          "≻": 0.0,
+          "≺": 0.077,
+          "⋈": 0.0,
+          "⊤": 0.077,
+          "∈": 0.154,
+          "∋": 0.077,
+          "⊙": 0.0,
+          "⊥": 0.0,
+          "⊞": 0.0,
+          "◻": 0.0
+        },
+        "dominant_primitives": [
+          "∈"
+        ],
+        "total_primitive_activations": 6,
+        "amidation": null
+      }
+    ],
+    "processing": {
+      "precursor": "MFVFIAKLLIFSSVITSAFTCYQCFIDENDSRRLCLGHILTEYNVRNVDSCYKTLDRIFNNEEKVIEAGKVGRGYDLTLKNILMAEIMPIVEEFDQQLNYDTEYESRLQAAANNFIAAASSLPRVSGCLPPCGFQVQGAVYNCVTCQYDSCEFPLDCPGKEITVQENNRTQMWCSVPFLLPADVEIVWRYAQDRTMLRERFDDVTVGVDPLYSIPSARPEQSGTYQCEVLSQEQSLVRLYFYLTVVPVAQTYHVHLQDLCAQALRPEPQFPPSFSFWLPRPALLITCLTATMLLIFLSLGAMCRLWYQIRTNVSNPA",
+      "length": 317,
+      "steps": [
+        {
+          "step": 1,
+          "enzyme": "Signal Peptidase",
+          "action": "Remove signal peptide (304 AA)",
+          "cleavage_position": 304,
+          "product_length": 13
+        }
+      ]
+    },
+    "disulfide_bonds": [],
+    "mature_products": [
+      {
+        "name": "full_precursor",
+        "sequence": "LWYQIRTNVSNPA",
+        "length": 13,
+        "start": 304,
+        "end": 317,
+        "dominant_primitive": "∈",
+        "profile": {
+          "⊣": 1,
+          "≺": 1,
+          "⊤": 1,
+          "∈": 2,
+          "∋": 1
+        },
+        "inferred_function": "catalytic_grammar",
+        "amidation": null
+      }
+    ]
+  },
+  "narrative": "═══ A0A8M9PDM1 — Structural Processing Analysis ═══\nSequence: 317 AA\n\n▸ Signal peptide (304 AA): MFVFIAKLLIFSSVITSAFTCYQCFIDENDSRRLCLGHILTEYNVRNVDSCYKTLDRIFNNEEKVIEAGKVGRGYDLTLKNILMAEIMPIVEEFDQQLNYDTEYESRLQAAANNFIAAASSLPRVSGCLPPCGFQVQGAVYNCVTCQYDSCEFPLDCPGKEITVQENNRTQMWCSVPFLLPADVEIVWRYAQDRTMLRERFDDVTVGVDPLYSIPSARPEQSGTYQCEVLSQEQSLVRLYFYLTVVPVAQTYHVHLQDLCAQALRPEPQFPPSFSFWLPRPALLITCLTATMLLIFLSLGAMCR\n  Bootstrap elements: Met(Ð)×7, Trp(Þ)×3\n  Cleavage @ position 304 ← signal peptidase\n  Dominant: ◻ — bootstrap preconditions\n\n▸ Processing steps:\n  [1] Signal Peptidase: Remove signal peptide (304 AA)\n\n▸ Mature products:\n  • full_precursor (13 AA) — catalytic_grammar\n    Primitive profile: ∈=2 | ∋=1 | ≺=1 | ⊣=1 | ⊤=1\n"
+}

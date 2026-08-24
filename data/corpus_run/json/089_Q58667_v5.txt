@@ -1,0 +1,52 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 089_Q58667
+╚══════════════════════════════════════════════════════════╝
+Input: 170 AA | Promoted: 55.9% | Dominant: ⊤ | ∈:8 | ∋:2 | ≺:5 | ≻:4 | ⊙:2 | ⊞:20 | ⊢:2 | ⊤:23 | ⊥:12 | ⋈:5 | ◻:12
+
+▸ CLEAVAGE (5 sites):
+  pos  48: KK   → unknown                   ○=0.50
+  pos 158: KK   → unknown                   ○=0.50
+  pos 159: KR   → unknown                   ○=0.50
+  pos 160: RK   → unknown                   ○=0.50
+  pos 166: KK   → unknown                   ○=0.50
+
+▸ PRODUCTS (6):
+
+  [1] Signal Peptide (48 AA @ 0–48)
+      ⊥-dominant (27/48 residues)
+      MIIKGRAHKFGDDVDTDAIIPGPYLRTTDPYELASHCMAG...
+
+  [2] Ç-kinetic regulator (110 AA @ 48–158)
+      ⊤-dominant (62/110 residues)
+      VKEGDVIVAGENFGCGSSREQAVIAIKYCGIKAVIAKSFA...
+
+  [3] IP-2 (1 AA @ 158–159)
+      unstructured
+      R
+
+  [4] IP-2 (1 AA @ 159–160)
+      ⊞-dominant (1/1 residues)
+      K
+
+  [5] Connector (6 AA @ 160–166)
+      ⊞-dominant (4/6 residues)
+      LIQSKK
+
+  [6] IP-2 (4 AA @ 166–170)
+      ⊞-dominant (1/4 residues)
+      GVKT
+
+▸ MAP:
+  KK ↓ 48
+  KK ↓ 158
+  KR ↓ 159
+  RK ↓ 160
+  KK ↓ 166
+  Chain 1: [0–48] (48 AA) Signal Peptide
+  Chain 2: [48–158] (110 AA) Ç-kinetic regulator
+  Chain 3: [158–159] (1 AA) IP-2
+  Chain 4: [159–160] (1 AA) IP-2
+  Chain 5: [160–166] (6 AA) Connector
+  Chain 6: [166–170] (4 AA) IP-2
+
+[2;37m DNA  → 089_Q58667_codons.dna  [0m[1;2;37m([0m[1;2;36m510[0m[2;37m nt[0m[1;2;37m)[0m

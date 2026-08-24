@@ -1,0 +1,33 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 080_P03023
+╚══════════════════════════════════════════════════════════╝
+Input: 360 AA | Promoted: 37.5% | Dominant: ∋ | ∈:12 | ∋:28 | ≺:8 | ≻:3 | ⊙:7 | ⊞:11 | ⊢:10 | ⊣:2 | ⊤:18 | ⊥:17 | ⋈:4 | ◻:15
+
+▸ CLEAVAGE (3 sites):
+  pos  37: K    → PC2_monobasic             ○=0.40 [M]
+  pos 326: KR   → unknown                   ○=0.50
+  pos 327: RK   → unknown                   ○=0.50
+
+▸ PRODUCTS (3):
+
+  [1] Signal Peptide (37 AA @ 1–37)
+      ⊞-dominant (14/37 residues)
+      MKPVTLYDVAEYAGVSYQTVSRVVNQASHVSAKTREK
+
+  [2] ɢ-glycosylation target (289 AA @ 38–326)
+      ∋-dominant (112/289 residues)
+      VEAAMAELNYIPNRVAQQLAGKQSLLIGVATSSLALHAPS...
+
+  [3] ɢ-glycosylation target (33 AA @ 328–360)
+      ∋-dominant (8/33 residues)
+      TTLAPNTQTASPRALADSLMQLARQVSRLESGQ
+
+▸ MAP:
+  [M] ↓ 37
+  KR ↓ 326
+  RK ↓ 327
+  Chain 1: [1–37] (37 AA) Signal Peptide
+  Chain 2: [38–326] (289 AA) ɢ-glycosylation target
+  Chain 3: [328–360] (33 AA) ɢ-glycosylation target
+
+[2;37m DNA  → 080_P03023_codons.dna  [0m[1;2;37m([0m[1;2;36m1080[0m[2;37m nt[0m[1;2;37m)[0m

@@ -1,0 +1,38 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 064_P00359
+╚══════════════════════════════════════════════════════════╝
+Input: 332 AA | Promoted: 43.1% | Dominant: ⊞ | ∈:13 | ∋:5 | ≺:11 | ≻:2 | ⊙:8 | ⊞:26 | ⊢:7 | ⊣:3 | ⊤:19 | ⊥:24 | ⋈:10 | ◻:15
+
+▸ CLEAVAGE (3 sites):
+  pos  71: KK   → unknown                   ○=0.50
+  pos 116: KK   → unknown                   ○=0.50
+  pos 258: KK   → unknown                   ○=0.50
+
+▸ PRODUCTS (4):
+
+  [1] Signal Peptide (71 AA @ 0–71)
+      ⊤-dominant (35/71 residues)
+      MVRVAINGFGRIGRLVMRIALSRPNVEVVALNDPFITNDY...
+
+  [2] Ħ-chiral domain (45 AA @ 71–116)
+      ⊥-dominant (23/45 residues)
+      IATYQERDPANLPWGSSNVDIAIDSTGVFKELDTAQKHID...
+
+  [3] Σ-variable region (142 AA @ 116–258)
+      ⊞-dominant (55/142 residues)
+      VVITAPSSTAPMFVMGVNEEKYTSDLKIVSNASCTTNCLA...
+
+  [4] Σ-variable region (74 AA @ 258–332)
+      ⊞-dominant (30/74 residues)
+      VVKAAAEGKLKGVLGYTEDAVVSSDFLGDSHSSIFDASAG...
+
+▸ MAP:
+  KK ↓ 71
+  KK ↓ 116
+  KK ↓ 258
+  Chain 1: [0–71] (71 AA) Signal Peptide
+  Chain 2: [71–116] (45 AA) Ħ-chiral domain
+  Chain 3: [116–258] (142 AA) Σ-variable region
+  Chain 4: [258–332] (74 AA) Σ-variable region
+
+[2;37m DNA  → 064_P00359_codons.dna  [0m[1;2;37m([0m[1;2;36m996[0m[2;37m nt[0m[1;2;37m)[0m

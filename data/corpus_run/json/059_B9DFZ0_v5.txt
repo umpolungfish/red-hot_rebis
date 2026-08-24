@@ -1,0 +1,115 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 059_B9DFZ0
+╚══════════════════════════════════════════════════════════╝
+Input: 386 AA | Promoted: 42.7% | Dominant: ⊞ | ∈:13 | ∋:8 | ≺:7 | ≻:10 | ⊙:8 | ⊞:36 | ⊢:6 | ⊣:5 | ⊤:24 | ⊥:13 | ⋈:7 | ◻:28
+
+▸ CLEAVAGE (14 sites):
+  pos  23: RR   → unknown                   ○=0.50
+  pos  66: RK   → unknown                   ○=0.50
+  pos  67: KK   → unknown                   ○=0.50
+  pos  68: KR   → unknown                   ○=0.50
+  pos  79: KK   → unknown                   ○=0.50
+  pos  89: RK   → unknown                   ○=0.50
+  pos 104: KK   → unknown                   ○=0.50
+  pos 115: RK   → unknown                   ○=0.50
+  pos 153: RK   → unknown                   ○=0.50
+  pos 180: RR   → unknown                   ○=0.50
+  pos 237: RK   → unknown                   ○=0.50
+  pos 243: KK   → unknown                   ○=0.50
+  pos 379: KK   → unknown                   ○=0.50
+  pos 385: KK   → unknown                   ○=0.50
+
+▸ PRODUCTS (15):
+
+  [1] Signal Peptide (23 AA @ 0–23)
+      ⊢-dominant (7/23 residues)
+      MILTGAASTFPIVARVLNAMNRR
+
+  [2] Signal Peptide (43 AA @ 23–66)
+      ◻-dominant (13/43 residues)
+      MYAATTLSSAKSISAESLNLRSDSNSEAAHGASESETRVS...
+
+  [3] IP-2 (1 AA @ 66–67)
+      ⊞-dominant (1/1 residues)
+      K
+
+  [4] IP-2 (1 AA @ 67–68)
+      unstructured
+      R
+
+  [5] Σ-variable region (11 AA @ 68–79)
+      ⊞-dominant (8/11 residues)
+      IKQDDLEPVKK
+
+  [6] Σ-variable region (10 AA @ 79–89)
+      ⊞-dominant (4/10 residues)
+      CSARETKARK
+
+  [7] Ħ-chiral domain (15 AA @ 89–104)
+      ⊥-dominant (10/15 residues)
+      DMCGLPDIEDSPYKK
+
+  [8] Γ-catalytic domain (11 AA @ 104–115)
+      ∈-dominant (2/11 residues)
+      TNGTASSRTRK
+
+  [9] Ç-kinetic regulator (38 AA @ 115–153)
+      ⊤-dominant (16/38 residues)
+      LNSYIKSTEASPSASSIKTAGLGIPPENWEKVLEGIRK
+
+  [10] Signal Peptide (27 AA @ 153–180)
+      ◻-dominant (11/27 residues)
+      MKPSEEAPVNAVECDRTGSFLPPKERR
+
+  [11] Ç-kinetic regulator (57 AA @ 180–237)
+      ⊤-dominant (26/57 residues)
+      FYVLIGTLLSSQTKEHITGAAVERLHQNGLLTPEAIDKAD...
+
+  [12] Connector (6 AA @ 237–243)
+      ⊞-dominant (3/6 residues)
+      ATNVKK
+
+  [13] Σ-variable region (136 AA @ 243–379)
+      ⊞-dominant (60/136 residues)
+      VAKICLMEYDGDIPRTLEELLSLPGVGPKIAHLVLHVAWN...
+
+  [14] Connector (6 AA @ 379–385)
+      ⊞-dominant (4/6 residues)
+      SIKSKK
+
+  [15] IP-2 (1 AA @ 385–386)
+      unstructured
+      L
+
+▸ MAP:
+  RR ↓ 23
+  RK ↓ 66
+  KK ↓ 67
+  KR ↓ 68
+  KK ↓ 79
+  RK ↓ 89
+  KK ↓ 104
+  RK ↓ 115
+  RK ↓ 153
+  RR ↓ 180
+  RK ↓ 237
+  KK ↓ 243
+  KK ↓ 379
+  KK ↓ 385
+  Chain 1: [0–23] (23 AA) Signal Peptide
+  Chain 2: [23–66] (43 AA) Signal Peptide
+  Chain 3: [66–67] (1 AA) IP-2
+  Chain 4: [67–68] (1 AA) IP-2
+  Chain 5: [68–79] (11 AA) Σ-variable region
+  Chain 6: [79–89] (10 AA) Σ-variable region
+  Chain 7: [89–104] (15 AA) Ħ-chiral domain
+  Chain 8: [104–115] (11 AA) Γ-catalytic domain
+  Chain 9: [115–153] (38 AA) Ç-kinetic regulator
+  Chain 10: [153–180] (27 AA) Signal Peptide
+  Chain 11: [180–237] (57 AA) Ç-kinetic regulator
+  Chain 12: [237–243] (6 AA) Connector
+  Chain 13: [243–379] (136 AA) Σ-variable region
+  Chain 14: [379–385] (6 AA) Connector
+  Chain 15: [385–386] (1 AA) IP-2
+
+[2;37m DNA  → 059_B9DFZ0_codons.dna  [0m[1;2;37m([0m[1;2;36m1158[0m[2;37m nt[0m[1;2;37m)[0m

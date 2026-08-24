@@ -1,0 +1,15 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 009_A2RU14
+╚══════════════════════════════════════════════════════════╝
+Input: 115 AA | Promoted: 33.0% | Dominant: ⋈ | ≺:4 | ≻:1 | ⊙:2 | ⊞:2 | ⊢:1 | ⊣:1 | ⊤:9 | ⊥:2 | ⋈:12 | ◻:4
+
+▸ PRODUCTS (1):
+
+  [1] Signal Peptide (115 AA @ 0–115)
+      ⋈-dominant (38/115 residues)
+      MAGTVLGVGAGVFILALLWVAVLLLCVLLSRASGAARFSV...
+
+▸ MAP:
+  Chain 1: [0–115] (115 AA) Signal Peptide
+
+[2;37m DNA  → 009_A2RU14_codons.dna  [0m[1;2;37m([0m[1;2;36m345[0m[2;37m nt[0m[1;2;37m)[0m

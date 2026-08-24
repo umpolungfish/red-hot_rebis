@@ -1,0 +1,87 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 028_A2BIE7
+╚══════════════════════════════════════════════════════════╝
+Input: 567 AA | Promoted: 48.7% | Dominant: ◻ | ∈:22 | ∋:17 | ≺:21 | ≻:13 | ⊙:12 | ⊞:35 | ⊢:21 | ⊣:3 | ⊤:33 | ⊥:30 | ⋈:31 | ◻:38
+
+▸ CLEAVAGE (10 sites):
+  pos  25: KR   → unknown                   ○=0.50
+  pos  32: KK   → unknown                   ○=0.50
+  pos  52: RK   → unknown                   ○=0.50
+  pos  59: RK   → unknown                   ○=0.50
+  pos  92: RR   → unknown                   ○=0.50
+  pos 229: RK   → unknown                   ○=0.50
+  pos 230: KR   → unknown                   ○=0.50
+  pos 290: KK   → unknown                   ○=0.50
+  pos 398: RR   → unknown                   ○=0.50
+  pos 551: KK   → unknown                   ○=0.50
+
+▸ PRODUCTS (11):
+
+  [1] Signal Peptide (25 AA @ 0–25)
+      ◻-dominant (14/25 residues)
+      MADSVAAGLGDENETENEDKEREKR
+
+  [2] Connector (7 AA @ 25–32)
+      ⊞-dominant (3/7 residues)
+      LFSGVKK
+
+  [3] Signal Peptide (20 AA @ 32–52)
+      ◻-dominant (10/20 residues)
+      MEKQAAASDVTETLGFYERK
+
+  [4] Connector (7 AA @ 52–59)
+      ⊞-dominant (5/7 residues)
+      AKCKDRK
+
+  [5] Ω-winding module (33 AA @ 59–92)
+      ◻-dominant (14/33 residues)
+      TNVSDLSLVRFISAELTRGYFLEHNEAKYTERR
+
+  [6] Φ-switch domain (137 AA @ 92–229)
+      ≺-dominant (66/137 residues)
+      ERVYTCLRIPKELEKLMIFGYFLCLDVFLYVFTLLPLRVL...
+
+  [7] IP-2 (1 AA @ 229–230)
+      unstructured
+      R
+
+  [8] Ç-kinetic regulator (60 AA @ 230–290)
+      ⊤-dominant (32/60 residues)
+      AHIGVIPHFFMAVLYVFLHAILIMVQATTLNVAFNSHNKS...
+
+  [9] Ħ-chiral domain (108 AA @ 290–398)
+      ⊥-dominant (58/108 residues)
+      FEKNNLFQMSNSDIKERFTNYTLLLIVCLRNMEQFSWNPD...
+
+  [10] Signal Peptide (153 AA @ 398–551)
+      ◻-dominant (64/153 residues)
+      MGFIPLPLALLLIRVVTSSVKIQGSLSIVCVLLFYLGMIT...
+
+  [11] Ħ-chiral domain (16 AA @ 551–567)
+      ⊥-dominant (10/16 residues)
+      DLLEIDRFTICGNRID
+
+▸ MAP:
+  KR ↓ 25
+  KK ↓ 32
+  RK ↓ 52
+  RK ↓ 59
+  RR ↓ 92
+  RK ↓ 229
+  KR ↓ 230
+  KK ↓ 290
+  RR ↓ 398
+  KK ↓ 551
+  Chain 1: [0–25] (25 AA) Signal Peptide
+  Chain 2: [25–32] (7 AA) Connector
+  Chain 3: [32–52] (20 AA) Signal Peptide
+  Chain 4: [52–59] (7 AA) Connector
+  Chain 5: [59–92] (33 AA) Ω-winding module
+  Chain 6: [92–229] (137 AA) Φ-switch domain
+  Chain 7: [229–230] (1 AA) IP-2
+  Chain 8: [230–290] (60 AA) Ç-kinetic regulator
+  Chain 9: [290–398] (108 AA) Ħ-chiral domain
+  Chain 10: [398–551] (153 AA) Signal Peptide
+  Chain 11: [551–567] (16 AA) Ħ-chiral domain
+
+[2;37m DNA  → 028_A2BIE7_codons.dna  [0m[1;2;37m([0m[1;2;36m1701[0m[2;37m nt[0m[1;2;37m)[0m

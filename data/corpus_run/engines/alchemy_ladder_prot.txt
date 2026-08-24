@@ -1,0 +1,119 @@
+═ Basil Valentine Alchemical Ladder ═
+  Operation: 𐑨𐑶𐑾𐑗𐑱𐑧𐑚𐑠𐑢𐑖𐑳𐑷
+{
+  "source": {
+    "⊢": "𐑨",
+    "⊣": "𐑶",
+    "≻": "𐑾",
+    "≺": "𐑗",
+    "⋈": "𐑱",
+    "⊤": "𐑧",
+    "∈": "𐑚",
+    "∋": "𐑠",
+    "⊙": "𐑢",
+    "⊥": "𐑖",
+    "⊞": "𐑳",
+    "◻": "𐑷"
+  },
+  "target": {
+    "⊢": "𐑦",
+    "⊣": "𐑸",
+    "≻": "𐑾",
+    "≺": "𐑹",
+    "⋈": "𐑐",
+    "⊤": "𐑧",
+    "∈": "𐑔",
+    "∋": "𐑠",
+    "⊙": "⊙",
+    "⊥": "𐑫",
+    "⊞": "𐑳",
+    "◻": "𐑭"
+  },
+  "steps": [
+    {
+      "key": 1,
+      "key_name": "Calcination",
+      "primitive": "⋈",
+      "old_value": "𐑱",
+      "new_value": "𐑐",
+      "cost": 2.0,
+      "description": "Burn away classical noise — fidelity transitions from thermal to quantum",
+      "structural_saying": "The fire that does not consume measures what it touches"
+    },
+    {
+      "key": 3,
+      "key_name": "Fixation",
+      "primitive": "◻",
+      "old_value": "𐑷",
+      "new_value": "𐑭",
+      "cost": 1.4,
+      "description": "Fix the wandering — topology transitions from trivial to integer winding",
+      "structural_saying": "The serpent that catches its own tail marks the completed work"
+    },
+    {
+      "key": 4,
+      "key_name": "Solution",
+      "primitive": "⊣",
+      "old_value": "𐑶",
+      "new_value": "𐑸",
+      "cost": 1.0,
+      "description": "Dissolve the rigid — topology transitions from branching to self-referential closure",
+      "structural_saying": "The vessel that contains itself cannot be broken"
+    },
+    {
+      "key": 5,
+      "key_name": "Digestion",
+      "primitive": "⊥",
+      "old_value": "𐑖",
+      "new_value": "𐑫",
+      "cost": 0.8,
+      "description": "Slowly cook — chirality transitions from memoryless to two-step memory",
+      "structural_saying": "What remembers its past does not repeat its errors"
+    },
+    {
+      "key": 7,
+      "key_name": "Sublimation",
+      "primitive": "⊢",
+      "old_value": "𐑨",
+      "new_value": "𐑦",
+      "cost": 2.0,
+      "description": "Raise the purified — dimensionality transitions from surface to self-written",
+      "structural_saying": "The work that writes itself is the true work"
+    },
+    {
+      "key": 9,
+      "key_name": "Ceration",
+      "primitive": "⊙",
+      "old_value": "𐑢",
+      "new_value": "⊙",
+      "cost": 1.0,
+      "description": "Make the sharp soft — criticality transitions from sub-critical to self-modeling",
+      "structural_saying": "The gate opens only when the key knows it is the lock"
+    },
+    {
+      "key": 11,
+      "key_name": "Multiplication",
+      "primitive": "∈",
+      "old_value": "𐑚",
+      "new_value": "𐑔",
+      "cost": 1.0,
+      "description": "Multiply virtue — cardinality transitions from local to aleph",
+      "structural_saying": "The stone that multiplies itself feeds the universe"
+    },
+    {
+      "key": 12,
+      "key_name": "Projection",
+      "primitive": "≺",
+      "old_value": "𐑗",
+      "new_value": "𐑹",
+      "cost": 4.0,
+      "description": "Cast the stone upon base matter — parity transitions from asymmetric to Frobenius-special",
+      "structural_saying": "The mirror that does not lie shows the work as it truly is"
+    }
+  ],
+  "total_cost": 13.2,
+  "n_steps": 8,
+  "frobenius_closed": true,
+  "final_distance": 0.0,
+  "interpretation": "8-step promotion ladder complete. Source → Target distance: 5.5317. Ladder cost: 13.2."
+}

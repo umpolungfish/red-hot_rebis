@@ -1,0 +1,24 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 003_A0PK11
+╚══════════════════════════════════════════════════════════╝
+Input: 232 AA | Promoted: 43.5% | Dominant: ⊤ | ∈:6 | ∋:9 | ≺:6 | ≻:5 | ⊙:5 | ⊞:10 | ⊢:4 | ⊣:5 | ⊤:19 | ⊥:5 | ⋈:15 | ◻:12
+
+▸ CLEAVAGE (1 sites):
+  pos   7: KK   → unknown                   ○=0.50
+
+▸ PRODUCTS (2):
+
+  [1] Signal Peptide (7 AA @ 0–7)
+      ⊞-dominant (5/7 residues)
+      MPGWFKK
+
+  [2] Ç-kinetic regulator (225 AA @ 7–232)
+      ⊤-dominant (96/225 residues)
+      AWYGLASLLSFSSFILIIVALVVPHWLSGKILCQTGVDLV...
+
+▸ MAP:
+  KK ↓ 7
+  Chain 1: [0–7] (7 AA) Signal Peptide
+  Chain 2: [7–232] (225 AA) Ç-kinetic regulator
+
+[2;37m DNA  → 003_A0PK11_codons.dna  [0m[1;2;37m([0m[1;2;36m696[0m[2;37m nt[0m[1;2;37m)[0m

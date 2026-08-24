@@ -1,0 +1,15 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 099_P0DTD3
+╚══════════════════════════════════════════════════════════╝
+Input: 73 AA | Promoted: 45.2% | Dominant: ∋ | ∈:1 | ∋:7 | ≺:1 | ≻:5 | ⊙:3 | ⊞:4 | ⊢:3 | ⊣:1 | ⊤:1 | ⊥:1 | ⋈:1 | ◻:5
+
+▸ PRODUCTS (1):
+
+  [1] B-chain (73 AA @ 0–73)
+      ∋-dominant (33/73 residues)
+      MLQSCYNFLKEQHCQKASTQKGAEAAVKPLLVPHHVVATV...
+
+▸ MAP:
+  Chain 1: [0–73] (73 AA) B-chain
+
+[2;37m DNA  → 099_P0DTD3_codons.dna  [0m[1;2;37m([0m[1;2;36m219[0m[2;37m nt[0m[1;2;37m)[0m

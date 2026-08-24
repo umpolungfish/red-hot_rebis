@@ -1,0 +1,40 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 074_P00861
+╚══════════════════════════════════════════════════════════╝
+Input: 420 AA | Promoted: 42.6% | Dominant: ∋ | ∈:13 | ∋:27 | ≺:12 | ≻:4 | ⊙:20 | ⊞:8 | ⊢:9 | ⊣:4 | ⊤:21 | ⊥:23 | ⋈:12 | ◻:26
+
+▸ CLEAVAGE (4 sites):
+  pos  38: RR   → unknown                   ○=0.50
+  pos  71: K    → PC2_monobasic             ○=0.40 [M]
+  pos 407: RR   → unknown                   ○=0.50
+  pos 408: RR   → unknown                   ○=0.50
+
+▸ PRODUCTS (4):
+
+  [1] Signal Peptide (38 AA @ 1–38)
+      ⊥-dominant (16/38 residues)
+      MPHSLFSTDTDLTAENLLRLPAEFGCPVWVYDAQIIRR
+
+  [2] ɢ-glycosylation target (33 AA @ 39–71)
+      ∋-dominant (18/33 residues)
+      QIAALKQFDVVRFAQKACSNIHILRLMREQGVK
+
+  [3] ɢ-glycosylation target (336 AA @ 72–407)
+      ∋-dominant (140/336 residues)
+      VDSVSLGEIERALAAGYNPQTHPDDIVFTADVIDQATLER...
+
+  [4] Ω-winding module (12 AA @ 409–420)
+      ◻-dominant (5/12 residues)
+      QTIEELLALELL
+
+▸ MAP:
+  RR ↓ 38
+  [M] ↓ 71
+  RR ↓ 407
+  RR ↓ 408
+  Chain 1: [1–38] (38 AA) Signal Peptide
+  Chain 2: [39–71] (33 AA) ɢ-glycosylation target
+  Chain 3: [72–407] (336 AA) ɢ-glycosylation target
+  Chain 4: [409–420] (12 AA) Ω-winding module
+
+[2;37m DNA  → 074_P00861_codons.dna  [0m[1;2;37m([0m[1;2;36m1260[0m[2;37m nt[0m[1;2;37m)[0m

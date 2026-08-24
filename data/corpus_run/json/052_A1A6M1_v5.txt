@@ -1,0 +1,70 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 052_A1A6M1
+╚══════════════════════════════════════════════════════════╝
+Input: 387 AA | Promoted: 47.0% | Dominant: ◻ | ∈:12 | ∋:20 | ≺:3 | ≻:10 | ⊞:21 | ⊢:8 | ⊣:7 | ⊤:20 | ⊥:20 | ⋈:12 | ◻:49
+
+▸ CLEAVAGE (9 sites):
+  pos 126: R    → PC2_monobasic             ○=0.40 [M]
+  pos 156: KR   → unknown                   ○=0.50
+  pos 172: KK   → unknown                   ○=0.50
+  pos 175: KR   → unknown                   ○=0.50
+  pos 176: RR   → unknown                   ○=0.50
+  pos 260: KK   → unknown                   ○=0.50
+  pos 279: KK   → unknown                   ○=0.50
+  pos 321: R    → PC2_monobasic             ○=0.45 [M]
+  pos 385: KK   → unknown                   ○=0.50
+
+▸ PRODUCTS (8):
+
+  [1] Signal Peptide (126 AA @ 1–126)
+      ◻-dominant (55/126 residues)
+      MASSSLPLSLPFPLRSLTSTTRSLPFQCSPLFFSIPSSIV...
+
+  [2] Ω-winding module (30 AA @ 127–156)
+      ◻-dominant (14/30 residues)
+      ISESGLSATPMVLESTREQIVEEVEEEEKR
+
+  [3] Ω-winding module (16 AA @ 157–172)
+      ◻-dominant (8/16 residues)
+      VIIAEEKVRVSEPVKK
+
+  [4] IP-2 (3 AA @ 173–175)
+      ⊤-dominant (2/3 residues)
+      IKR
+
+  [5] Ω-winding module (84 AA @ 177–260)
+      ◻-dominant (39/84 residues)
+      ILKVGSEGDDVQALQEALLKLGFYSGEEDMEFSSFSSGTA...
+
+  [6] Ω-winding module (19 AA @ 261–279)
+      ◻-dominant (8/19 residues)
+      EEAGNGAVFTSVTQVPEKK
+
+  [7] Ħ-chiral domain (42 AA @ 280–321)
+      ⊥-dominant (20/42 residues)
+      QSIVKDQSDREVDVTQNRVFLLGENRWEDPSRLIGRNKPV...
+
+  [8] Ω-winding module (64 AA @ 322–385)
+      ◻-dominant (35/64 residues)
+      SESTNTKTRCITCRGEGRLMCLECDGTGEPNIEPQFMEWV...
+
+▸ MAP:
+  [M] ↓ 126
+  KR ↓ 156
+  KK ↓ 172
+  KR ↓ 175
+  RR ↓ 176
+  KK ↓ 260
+  KK ↓ 279
+  [M] ↓ 321
+  KK ↓ 385
+  Chain 1: [1–126] (126 AA) Signal Peptide
+  Chain 2: [127–156] (30 AA) Ω-winding module
+  Chain 3: [157–172] (16 AA) Ω-winding module
+  Chain 4: [173–175] (3 AA) IP-2
+  Chain 5: [177–260] (84 AA) Ω-winding module
+  Chain 6: [261–279] (19 AA) Ω-winding module
+  Chain 7: [280–321] (42 AA) Ħ-chiral domain
+  Chain 8: [322–385] (64 AA) Ω-winding module
+
+[2;37m DNA  → 052_A1A6M1_codons.dna  [0m[1;2;37m([0m[1;2;36m1161[0m[2;37m nt[0m[1;2;37m)[0m

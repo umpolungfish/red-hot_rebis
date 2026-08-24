@@ -1,0 +1,45 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 070_P00830
+╚══════════════════════════════════════════════════════════╝
+Input: 511 AA | Promoted: 39.7% | Dominant: ◻ | ∈:11 | ∋:20 | ≺:11 | ≻:1 | ⊙:7 | ⊞:29 | ⊢:8 | ⊣:1 | ⊤:34 | ⊥:25 | ⋈:18 | ◻:38
+
+▸ CLEAVAGE (4 sites):
+  pos  31: KR   → unknown                   ○=0.50
+  pos 148: RK   → unknown                   ○=0.50
+  pos 334: KK   → unknown                   ○=0.50
+  pos 442: RK   → unknown                   ○=0.50
+
+▸ PRODUCTS (5):
+
+  [1] Signal Peptide (31 AA @ 0–31)
+      ⊞-dominant (8/31 residues)
+      MVLPRLYTATSRAAFKAAKQSAPLLSTSWKR
+
+  [2] Ç-kinetic regulator (117 AA @ 31–148)
+      ⊤-dominant (46/117 residues)
+      CMASAAQSTPITGKVTAVIGAIVDVHFEQSELPAILNALE...
+
+  [3] Ω-winding module (186 AA @ 148–334)
+      ◻-dominant (76/186 residues)
+      PIHADPPSFAEQSTSAEILETGIKVVDLLAPYARGGKIGL...
+
+  [4] Ħ-chiral domain (108 AA @ 334–442)
+      ⊥-dominant (41/108 residues)
+      GSVTSVQAVYVPADDLTDPAPATTFAHLDATTVLSRGISE...
+
+  [5] Ω-winding module (69 AA @ 442–511)
+      ◻-dominant (32/69 residues)
+      IQRFLSQPFAVAEVFTGIPGKLVRLKDTVASFKAVLEGKY...
+
+▸ MAP:
+  KR ↓ 31
+  RK ↓ 148
+  KK ↓ 334
+  RK ↓ 442
+  Chain 1: [0–31] (31 AA) Signal Peptide
+  Chain 2: [31–148] (117 AA) Ç-kinetic regulator
+  Chain 3: [148–334] (186 AA) Ω-winding module
+  Chain 4: [334–442] (108 AA) Ħ-chiral domain
+  Chain 5: [442–511] (69 AA) Ω-winding module
+
+[2;37m DNA  → 070_P00830_codons.dna  [0m[1;2;37m([0m[1;2;36m1533[0m[2;37m nt[0m[1;2;37m)[0m

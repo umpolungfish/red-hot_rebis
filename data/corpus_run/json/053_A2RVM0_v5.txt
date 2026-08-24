@@ -1,0 +1,38 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 053_A2RVM0
+╚══════════════════════════════════════════════════════════╝
+Input: 322 AA | Promoted: 41.0% | Dominant: ⊞ | ∈:16 | ∋:9 | ≺:9 | ≻:3 | ⊙:7 | ⊞:23 | ⊢:9 | ⊣:2 | ⊤:12 | ⊥:14 | ⋈:12 | ◻:16
+
+▸ CLEAVAGE (3 sites):
+  pos  97: RK   → unknown                   ○=0.50
+  pos 161: KR   → unknown                   ○=0.50
+  pos 304: KK   → unknown                   ○=0.50
+
+▸ PRODUCTS (4):
+
+  [1] Signal Peptide (97 AA @ 0–97)
+      ⊞-dominant (32/97 residues)
+      MWFFGSKGASGFSSRSTAEEVTHGVDGTGLTAIVTGASSG...
+
+  [2] Σ-variable region (64 AA @ 97–161)
+      ⊞-dominant (30/64 residues)
+      FASEYKSTGLPLNLLINNAGIMACPFMLSKDNIELQFATN...
+
+  [3] Σ-variable region (143 AA @ 161–304)
+      ⊞-dominant (63/143 residues)
+      EGRIVNLSSEAHRFSYPEGVRFDKINDKSSYSSMRAYGQS...
+
+  [4] Ħ-chiral domain (18 AA @ 304–322)
+      ⊥-dominant (7/18 residues)
+      VWDFSTKLTDSQSGESSS
+
+▸ MAP:
+  RK ↓ 97
+  KR ↓ 161
+  KK ↓ 304
+  Chain 1: [0–97] (97 AA) Signal Peptide
+  Chain 2: [97–161] (64 AA) Σ-variable region
+  Chain 3: [161–304] (143 AA) Σ-variable region
+  Chain 4: [304–322] (18 AA) Ħ-chiral domain
+
+[2;37m DNA  → 053_A2RVM0_codons.dna  [0m[1;2;37m([0m[1;2;36m966[0m[2;37m nt[0m[1;2;37m)[0m

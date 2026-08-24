@@ -1,0 +1,93 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 018_A2ALS5
+╚══════════════════════════════════════════════════════════╝
+Input: 663 AA | Promoted: 45.6% | Dominant: ◻ | ∈:22 | ∋:29 | ≺:18 | ≻:9 | ⊙:20 | ⊞:39 | ⊢:13 | ⊣:2 | ⊤:26 | ⊥:33 | ⋈:36 | ◻:55
+
+▸ CLEAVAGE (13 sites):
+  pos  92: RK   → unknown                   ○=0.50
+  pos 237: K    → PC2_monobasic             ○=0.45 [M]
+  pos 285: RK   → unknown                   ○=0.50
+  pos 286: KR   → unknown                   ○=0.50
+  pos 357: RK   → unknown                   ○=0.50
+  pos 390: R    → PC2_monobasic             ○=0.45 [M]
+  pos 433: KR   → unknown                   ○=0.50
+  pos 451: KK   → unknown                   ○=0.50
+  pos 488: RK   → unknown                   ○=0.50
+  pos 489: KK   → unknown                   ○=0.50
+  pos 497: RR   → unknown                   ○=0.50
+  pos 513: KR   → unknown                   ○=0.50
+  pos 604: KR   → unknown                   ○=0.50
+
+▸ PRODUCTS (11):
+
+  [1] Signal Peptide (92 AA @ 1–92)
+      ◻-dominant (45/92 residues)
+      MIEKMQGSRMDEQRCSFPPPLKTEEDYIPYPSVHEVLGRE...
+
+  [2] ƒ-hydrophobic core (145 AA @ 93–237)
+      ⋈-dominant (78/145 residues)
+      HFLGKEHFNYYSLDTALGHLVFSLKYDVIGDQEHLRLLLR...
+
+  [3] ɢ-glycosylation target (48 AA @ 238–285)
+      ∋-dominant (24/48 residues)
+      GFRGGLDVTHGQTGTESVYCNFRNKEIMFHVSTKLPYTEG...
+
+  [4] Ħ-chiral domain (71 AA @ 287–357)
+      ⊥-dominant (30/71 residues)
+      HIGNDIVAVVFQDENTPFVPDMIASNFLHAYVVVQAEGGG...
+
+  [5] Ω-winding module (33 AA @ 358–390)
+      ◻-dominant (19/33 residues)
+      GPEFQEFLLTKLINAEYACYKAEKFAKLEERTR
+
+  [6] Ω-winding module (43 AA @ 391–433)
+      ◻-dominant (22/43 residues)
+      AALLETLYEELHIHSQSMMGLGGDDDKMENGSGGGGFFES...
+
+  [7] Ð-initiation bootstrap (18 AA @ 434–451)
+      ⊢-dominant (8/18 residues)
+      VIRSRSQSMDAMGLSNKK
+
+  [8] Γ-catalytic domain (37 AA @ 452–488)
+      ∈-dominant (11/37 residues)
+      PNTVSTSHSGSFTPNNPDLAKAAGISLIVPGKSPTRK
+
+  [9] Ç-kinetic regulator (16 AA @ 498–513)
+      ⊤-dominant (10/16 residues)
+      SSAIGIENIQEVQEKR
+
+  [10] Ω-winding module (91 AA @ 514–604)
+      ◻-dominant (30/91 residues)
+      ESPPAGQKTPDSGHVSQEPKSENSSTQSSPEMPTTKNRVE...
+
+  [11] Ħ-chiral domain (59 AA @ 605–663)
+      ⊥-dominant (23/59 residues)
+      DSFLYSTWLDDSVSTTSGGSSPGLTRSPHPDVGKSGDPAC...
+
+▸ MAP:
+  RK ↓ 92
+  [M] ↓ 237
+  RK ↓ 285
+  KR ↓ 286
+  RK ↓ 357
+  [M] ↓ 390
+  KR ↓ 433
+  KK ↓ 451
+  RK ↓ 488
+  KK ↓ 489
+  RR ↓ 497
+  KR ↓ 513
+  KR ↓ 604
+  Chain 1: [1–92] (92 AA) Signal Peptide
+  Chain 2: [93–237] (145 AA) ƒ-hydrophobic core
+  Chain 3: [238–285] (48 AA) ɢ-glycosylation target
+  Chain 4: [287–357] (71 AA) Ħ-chiral domain
+  Chain 5: [358–390] (33 AA) Ω-winding module
+  Chain 6: [391–433] (43 AA) Ω-winding module
+  Chain 7: [434–451] (18 AA) Ð-initiation bootstrap
+  Chain 8: [452–488] (37 AA) Γ-catalytic domain
+  Chain 9: [498–513] (16 AA) Ç-kinetic regulator
+  Chain 10: [514–604] (91 AA) Ω-winding module
+  Chain 11: [605–663] (59 AA) Ħ-chiral domain
+
+[2;37m DNA  → 018_A2ALS5_codons.dna  [0m[1;2;37m([0m[1;2;36m1989[0m[2;37m nt[0m[1;2;37m)[0m

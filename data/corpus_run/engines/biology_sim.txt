@@ -1,0 +1,76 @@
+═ Ouroboric Cell Simulation (Frobenius-exact v6) ═
+  Genome: 32 bp | Genes: 50 | Adaptive loci: 20
+  Generations: 5
+  Running evolution...
+[2;37m============================================================[0m
+[2;37mOUROBORIC CELL — Self-Writing Genome [0m[1;2;37m([0m[2;37mFrobenius-Exact v6[0m[1;2;37m)[0m
+[2;37m============================================================[0m
+[2;37m  Environment: matures → locks at [0m[1;2;36m0.6[0m[2;37m [0m[1;2;37m([0m[2;37mdiscrete, gen [0m[1;2;36m150[0m[1;2;37m)[0m
+[2;37m  Snap-to-target: |error| < [0m[1;2;36m1e-4[0m[2;37m → expression = target exactly[0m
+[2;37m  Gen    [0m[1;2;36m0[0m[2;37m | Fit: [0m[1;2;36m0.991611632787144[0m[2;37m | Edits: [0m[1;2;36m20[0m[2;37m | Env: [0m[1;2;36m0.519129[0m[2;37m [0m[2;37m | Streak: [0m[1;2;36m0[0m
+[2;37m  Gen    [0m[1;2;36m4[0m[2;37m | Fit: [0m[1;2;36m0.999998610498087[0m[2;37m | Edits: [0m[1;2;36m20[0m[2;37m | Env: [0m[1;2;36m0.587161[0m[2;37m [0m[2;37m | Streak: [0m[1;2;36m0[0m
+  ✓ Evolution complete — 5 generations, 5 edits
+
+═ Topological Morphogenesis (v4) ═
+  Grid: 64×64 | Steps: 1200
+  Running morphogenesis...
+
+[2;37m--- Topological Morphogenesis [0m[1;2;37m([0m[2;37mv4 — [0m[1;2;36m100[0m[2;37m% fill proven[0m[1;2;37m)[0m[2;37m ---[0m
+[2;37m  Initial seeded cells: [0m[1;2;36m622[0m
+[2;37m  [0m[2;33mt[0m[2;37m=  [0m[1;2;36m0.0[0m[2;37m | [0m[2;33mmat[0m[2;37m=[0m[1;2;36m0[0m[1;2;36m.00[0m[2;37m | [0m[2;33mmax[0m[2;37m=[0m[1;2;36m0[0m[1;2;36m.509[0m[2;37m | [0m[2;33mmean[0m[2;37m=[0m[1;2;36m0[0m[1;2;36m.155[0m[2;37m | [0m[2;33mfill[0m[2;37m= [0m[1;2;36m30.4[0m[2;37m%[0m
+[2;37m  [0m[2;33mt[0m[2;37m= [0m[1;2;36m25.0[0m[2;37m | [0m[2;33mmat[0m[2;37m=[0m[1;2;36m0[0m[1;2;36m.30[0m[2;37m | [0m[2;33mmax[0m[2;37m=[0m[1;2;36m0[0m[1;2;36m.859[0m[2;37m | [0m[2;33mmean[0m[2;37m=[0m[1;2;36m0[0m[1;2;36m.263[0m[2;37m | [0m[2;33mfill[0m[2;37m= [0m[1;2;36m36.1[0m[2;37m%[0m
+[2;37m  [0m[2;33mt[0m[2;37m= [0m[1;2;36m50.0[0m[2;37m | [0m[2;33mmat[0m[2;37m=[0m[1;2;36m0[0m[1;2;36m.60[0m[2;37m | [0m[2;33mmax[0m[2;37m=[0m[1;2;36m0[0m[1;2;36m.953[0m[2;37m | [0m[2;33mmean[0m[2;37m=[0m[1;2;36m0[0m[1;2;36m.338[0m[2;37m | [0m[2;33mfill[0m[2;37m= [0m[1;2;36m65.6[0m[2;37m%[0m
+[2;37m  [0m[2;33mt[0m[2;37m= [0m[1;2;36m75.0[0m[2;37m | [0m[2;33mmat[0m[2;37m=[0m[1;2;36m0[0m[1;2;36m.89[0m[2;37m | [0m[2;33mmax[0m[2;37m=[0m[1;2;36m0[0m[1;2;36m.985[0m[2;37m | [0m[2;33mmean[0m[2;37m=[0m[1;2;36m0[0m[1;2;36m.407[0m[2;37m | [0m[2;33mfill[0m[2;37m=[0m[1;2;36m100[0m[1;2;36m.0[0m[2;37m%[0m
+[2;37m  [0m[2;33mt[0m[2;37m=[0m[1;2;36m100[0m[1;2;36m.0[0m[2;37m | [0m[2;33mmat[0m[2;37m=[0m[1;2;36m1[0m[1;2;36m.00[0m[2;37m | [0m[2;33mmax[0m[2;37m=[0m[1;2;36m0[0m[1;2;36m.996[0m[2;37m | [0m[2;33mmean[0m[2;37m=[0m[1;2;36m0[0m[1;2;36m.486[0m[2;37m | [0m[2;33mfill[0m[2;37m=[0m[1;2;36m100[0m[1;2;36m.0[0m[2;37m%[0m
+[2;37m  [0m[2;33mt[0m[2;37m=[0m[1;2;36m119[0m[1;2;36m.9[0m[2;37m | [0m[2;33mmat[0m[2;37m=[0m[1;2;36m1[0m[1;2;36m.00[0m[2;37m | [0m[2;33mmax[0m[2;37m=[0m[1;2;36m0[0m[1;2;36m.998[0m[2;37m | [0m[2;33mmean[0m[2;37m=[0m[1;2;36m0[0m[1;2;36m.555[0m[2;37m | [0m[2;33mfill[0m[2;37m=[0m[1;2;36m100[0m[1;2;36m.0[0m[2;37m%[0m
+
+[2;37m  Max: [0m[1;2;36m0.9984[0m[2;37m | Fill: [0m[1;2;36m100.0[0m[2;37m% | Frobenius: [0m[2;3;92mTrue[0m
+  ✓ Morphogenesis complete
+
+{
+  "ouroboric_cell_sim": {
+    "genome_size_bp": 32,
+    "n_genes": 50,
+    "n_adaptive_loci": 20,
+    "generations": 5,
+    "final_generation": 5,
+    "environment_locked": false,
+    "environment_signal": 0.587161,
+    "recombinase_efficiency": 0.85,
+    "editing_events": 5,
+    "summary": {
+      "generations": 5,
+      "initial_fitness": 0.9916116327871437,
+      "final_fitness": 0.9999986104980869,
+      "fitness_improvement_pct": 0.8457925899245208,
+      "genome_edited_final_pct": 40.0,
+      "total_edits": 100,
+      "adaptive_loci": 20,
+      "final_environment_signal": 0.5871614317476375,
+      "env_locked": false,
+      "frobenius_exact": false,
+      "max_expression_residual": 0.0009257003270075614,
+      "fitness_exact_1": false,
+      "final_edits": 20,
+      "repairs_applied": [
+        "environment_discrete_lock_at_gen150",
+        "snap_to_target_1e-4_threshold",
+        "no_editing_threshold",
+        "actual_frobenius_verification",
+        "early_exit_zero_edit_streak"
+      ]
+    }
+  },
+  "topological_morphogenesis": {
+    "grid_size": 64,
+    "steps": 1200,
+    "fill_fraction": null,
+    "result": {
+      "max_density": 0.9984389856369681,
+      "mean_density": 0.5553852035931387,
+      "filled_fraction_pct": 100.0,
+      "frobenius_exact": true,
+      "steps": 1200
+    }
+  }
+}

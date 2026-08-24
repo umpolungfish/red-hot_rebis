@@ -1,0 +1,15 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 100_P0DTG0
+╚══════════════════════════════════════════════════════════╝
+Input: 57 AA | Promoted: 49.1% | Dominant: ≻ | ∈:3 | ∋:4 | ≺:1 | ≻:9 | ⊙:1 | ⊞:1 | ⊢:2 | ⊣:2 | ⋈:3 | ◻:2
+
+▸ PRODUCTS (1):
+
+  [1] Signal Peptide (57 AA @ 0–57)
+      ≻-dominant (28/57 residues)
+      MAYCWRCTSCCFSERFQNHNPQKEMATSTLQGCSLCLQLA...
+
+▸ MAP:
+  Chain 1: [0–57] (57 AA) Signal Peptide
+
+[2;37m DNA  → 100_P0DTG0_codons.dna  [0m[1;2;37m([0m[1;2;36m171[0m[2;37m nt[0m[1;2;37m)[0m

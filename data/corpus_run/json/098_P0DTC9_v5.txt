@@ -1,0 +1,101 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 098_P0DTC9
+╚══════════════════════════════════════════════════════════╝
+Input: 419 AA | Promoted: 42.5% | Dominant: ∋ | ∈:22 | ∋:35 | ≺:11 | ⊙:4 | ⊞:31 | ⊢:7 | ⊣:5 | ⊤:14 | ⊥:24 | ⋈:13 | ◻:12
+
+▸ CLEAVAGE (12 sites):
+  pos  41: RR   → unknown                   ○=0.50
+  pos  89: RR   → unknown                   ○=0.50
+  pos  93: RR   → unknown                   ○=0.50
+  pos 249: KK   → unknown                   ○=0.50
+  pos 257: KK   → unknown                   ○=0.50
+  pos 262: KR   → unknown                   ○=0.50
+  pos 277: RR   → unknown                   ○=0.50
+  pos 370: KK   → unknown                   ○=0.50
+  pos 373: KK   → unknown                   ○=0.50
+  pos 374: KK   → unknown                   ○=0.50
+  pos 375: KK   → unknown                   ○=0.50
+  pos 388: KK   → unknown                   ○=0.50
+
+▸ PRODUCTS (13):
+
+  [1] Signal Peptide (41 AA @ 0–41)
+      ∈-dominant (16/41 residues)
+      MSDNGPQNQRNAPRITFGGPSDSTGSNQNGERSGARSKQR...
+
+  [2] ɢ-glycosylation target (48 AA @ 41–89)
+      ∋-dominant (22/48 residues)
+      PQGLPNNTASWFTALTQHGKEDLKFPRGQGVPINTNSSPD...
+
+  [3] IP-2 (4 AA @ 89–93)
+      unstructured
+      ATRR
+
+  [4] Σ-variable region (156 AA @ 93–249)
+      ⊞-dominant (55/156 residues)
+      IRGGDGKMKDLSPRWYFYYLGTGPEAGLPYGANKDGIIWV...
+
+  [5] Connector (8 AA @ 249–257)
+      ⊞-dominant (3/8 residues)
+      SAAEASKK
+
+  [6] Connector (5 AA @ 257–262)
+      ∋-dominant (2/5 residues)
+      PRQKR
+
+  [7] Σ-variable region (15 AA @ 262–277)
+      ⊞-dominant (5/15 residues)
+      TATKAYNVTQAFGRR
+
+  [8] Σ-variable region (93 AA @ 277–370)
+      ⊞-dominant (50/93 residues)
+      GPEQTQGNFGDQELIRQGTDYKHWPQIAQFAPSASAFFGM...
+
+  [9] IP-2 (3 AA @ 370–373)
+      ⊞-dominant (3/3 residues)
+      DKK
+
+  [10] IP-2 (1 AA @ 373–374)
+      ⊞-dominant (1/1 residues)
+      K
+
+  [11] IP-2 (1 AA @ 374–375)
+      ⊞-dominant (1/1 residues)
+      K
+
+  [12] ɢ-glycosylation target (13 AA @ 375–388)
+      ∋-dominant (7/13 residues)
+      ADETQALPQRQKK
+
+  [13] ɢ-glycosylation target (31 AA @ 388–419)
+      ∋-dominant (13/31 residues)
+      QQTVTLLPAADLDDFSKQLQQSMSSADSTQA
+
+▸ MAP:
+  RR ↓ 41
+  RR ↓ 89
+  RR ↓ 93
+  KK ↓ 249
+  KK ↓ 257
+  KR ↓ 262
+  RR ↓ 277
+  KK ↓ 370
+  KK ↓ 373
+  KK ↓ 374
+  KK ↓ 375
+  KK ↓ 388
+  Chain 1: [0–41] (41 AA) Signal Peptide
+  Chain 2: [41–89] (48 AA) ɢ-glycosylation target
+  Chain 3: [89–93] (4 AA) IP-2
+  Chain 4: [93–249] (156 AA) Σ-variable region
+  Chain 5: [249–257] (8 AA) Connector
+  Chain 6: [257–262] (5 AA) Connector
+  Chain 7: [262–277] (15 AA) Σ-variable region
+  Chain 8: [277–370] (93 AA) Σ-variable region
+  Chain 9: [370–373] (3 AA) IP-2
+  Chain 10: [373–374] (1 AA) IP-2
+  Chain 11: [374–375] (1 AA) IP-2
+  Chain 12: [375–388] (13 AA) ɢ-glycosylation target
+  Chain 13: [388–419] (31 AA) ɢ-glycosylation target
+
+[2;37m DNA  → 098_P0DTC9_codons.dna  [0m[1;2;37m([0m[1;2;36m1257[0m[2;37m nt[0m[1;2;37m)[0m

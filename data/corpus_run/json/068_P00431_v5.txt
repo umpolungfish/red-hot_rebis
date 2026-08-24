@@ -1,0 +1,52 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 068_P00431
+╚══════════════════════════════════════════════════════════╝
+Input: 361 AA | Promoted: 48.2% | Dominant: ⊞ | ∈:23 | ∋:11 | ≺:16 | ≻:1 | ⊙:8 | ⊞:26 | ⊢:6 | ⊣:9 | ⊤:9 | ⊥:25 | ⋈:20 | ◻:20
+
+▸ CLEAVAGE (5 sites):
+  pos  18: KR   → unknown                   ○=0.50
+  pos  43: KR   → unknown                   ○=0.50
+  pos 142: KK   → unknown                   ○=0.50
+  pos 197: R    → PC2_monobasic             ○=0.40 [M]
+  pos 331: K    → PC2_monobasic             ○=0.45 [M]
+
+▸ PRODUCTS (6):
+
+  [1] Signal Peptide (18 AA @ 1–18)
+      ⊢-dominant (3/18 residues)
+      MTTAVRLLPSLGRTAHKR
+
+  [2] Φ-switch domain (25 AA @ 19–43)
+      ≺-dominant (7/25 residues)
+      SLYLFSAAAAAAAAATFAYSQSQKR
+
+  [3] Σ-variable region (99 AA @ 44–142)
+      ⊞-dominant (43/99 residues)
+      SSSSPGGGSNHGWNNWGKAAALASTTPLVHVASVEKGRSY...
+
+  [4] ƒ-hydrophobic core (55 AA @ 143–197)
+      ⋈-dominant (28/55 residues)
+      EFNDPSNAGLQNGFKFLEPIHKEFPWISSGDLFSLGGVTA...
+
+  [5] Ħ-chiral domain (134 AA @ 198–331)
+      ⊥-dominant (77/134 residues)
+      VDTPEDTTPDNGRLPDADKDADYVRTFFQRLNMNDREVVA...
+
+  [6] ƒ-hydrophobic core (30 AA @ 332–361)
+      ⋈-dominant (16/30 residues)
+      AFEKLLENGITFPKDAPSPFIFKTLEEQGL
+
+▸ MAP:
+  KR ↓ 18
+  KR ↓ 43
+  KK ↓ 142
+  [M] ↓ 197
+  [M] ↓ 331
+  Chain 1: [1–18] (18 AA) Signal Peptide
+  Chain 2: [19–43] (25 AA) Φ-switch domain
+  Chain 3: [44–142] (99 AA) Σ-variable region
+  Chain 4: [143–197] (55 AA) ƒ-hydrophobic core
+  Chain 5: [198–331] (134 AA) Ħ-chiral domain
+  Chain 6: [332–361] (30 AA) ƒ-hydrophobic core
+
+[2;37m DNA  → 068_P00431_codons.dna  [0m[1;2;37m([0m[1;2;36m1083[0m[2;37m nt[0m[1;2;37m)[0m

@@ -1,0 +1,101 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 020_A2APC3
+╚══════════════════════════════════════════════════════════╝
+Input: 461 AA | Promoted: 52.1% | Dominant: ⊞ | ∈:21 | ∋:18 | ≺:18 | ≻:7 | ⊙:15 | ⊞:37 | ⊢:15 | ⊣:10 | ⊤:15 | ⊥:33 | ⋈:23 | ◻:28
+
+▸ CLEAVAGE (12 sites):
+  pos  92: RK   → unknown                   ○=0.50
+  pos 101: KR   → unknown                   ○=0.50
+  pos 104: RK   → unknown                   ○=0.50
+  pos 140: RK   → unknown                   ○=0.50
+  pos 164: RR   → unknown                   ○=0.50
+  pos 173: RK   → unknown                   ○=0.50
+  pos 179: KK   → unknown                   ○=0.50
+  pos 231: RK   → unknown                   ○=0.50
+  pos 291: KK   → unknown                   ○=0.50
+  pos 402: KR   → unknown                   ○=0.50
+  pos 443: RK   → unknown                   ○=0.50
+  pos 458: RK   → unknown                   ○=0.50
+
+▸ PRODUCTS (13):
+
+  [1] Signal Peptide (92 AA @ 0–92)
+      ◻-dominant (53/92 residues)
+      MSRQKNQNSKGHGVSKGKEREQRTLIRFKTTLMNTLMDVL...
+
+  [2] Γ-catalytic domain (9 AA @ 92–101)
+      ∈-dominant (6/9 residues)
+      NYMVKNLKR
+
+  [3] IP-2 (3 AA @ 101–104)
+      ⋈-dominant (2/3 residues)
+      FRK
+
+  [4] Ω-winding module (36 AA @ 104–140)
+      ◻-dominant (23/36 residues)
+      YLERESGKTEAAKCDFFPKTFEMPCEYHLFVEEFRK
+
+  [5] Ç-kinetic regulator (24 AA @ 140–164)
+      ⊤-dominant (11/24 residues)
+      NPGITWIMKPVARSQGKGIFLFRR
+
+  [6] Σ-variable region (9 AA @ 164–173)
+      ⊞-dominant (7/9 residues)
+      LKDIMDWRK
+
+  [7] Connector (6 AA @ 173–179)
+      ⊞-dominant (2/6 residues)
+      GTSGKK
+
+  [8] Ħ-chiral domain (52 AA @ 179–231)
+      ⊥-dominant (23/52 residues)
+      PTGVETQPARANMNPSGSHDTRSSDDQKDDLPVENYVAQR...
+
+  [9] Ħ-chiral domain (60 AA @ 231–291)
+      ⊥-dominant (28/60 residues)
+      FDLRVYVLVMSYIPLRAWLYRDGFARFSNTRFTLNSIDDH...
+
+  [10] B-chain (111 AA @ 291–402)
+      ⊞-dominant (60/111 residues)
+      GCKWMLQRFRQYLASKHGPKAVETLFSDMDNIFIKSLQSV...
+
+  [11] B-chain (41 AA @ 402–443)
+      ⊥-dominant (18/41 residues)
+      VGGFDLMWNDGPVSREDGPSDLSGMGNFVTNTHLGCVNDR...
+
+  [12] ɢ-glycosylation target (15 AA @ 443–458)
+      ∋-dominant (7/15 residues)
+      EQLRQLFRSLQAQRK
+
+  [13] IP-2 (3 AA @ 458–461)
+      unstructured
+      APS
+
+▸ MAP:
+  RK ↓ 92
+  KR ↓ 101
+  RK ↓ 104
+  RK ↓ 140
+  RR ↓ 164
+  RK ↓ 173
+  KK ↓ 179
+  RK ↓ 231
+  KK ↓ 291
+  KR ↓ 402
+  RK ↓ 443
+  RK ↓ 458
+  Chain 1: [0–92] (92 AA) Signal Peptide
+  Chain 2: [92–101] (9 AA) Γ-catalytic domain
+  Chain 3: [101–104] (3 AA) IP-2
+  Chain 4: [104–140] (36 AA) Ω-winding module
+  Chain 5: [140–164] (24 AA) Ç-kinetic regulator
+  Chain 6: [164–173] (9 AA) Σ-variable region
+  Chain 7: [173–179] (6 AA) Connector
+  Chain 8: [179–231] (52 AA) Ħ-chiral domain
+  Chain 9: [231–291] (60 AA) Ħ-chiral domain
+  Chain 10: [291–402] (111 AA) B-chain
+  Chain 11: [402–443] (41 AA) B-chain
+  Chain 12: [443–458] (15 AA) ɢ-glycosylation target
+  Chain 13: [458–461] (3 AA) IP-2
+
+[2;37m DNA  → 020_A2APC3_codons.dna  [0m[1;2;37m([0m[1;2;36m1383[0m[2;37m nt[0m[1;2;37m)[0m

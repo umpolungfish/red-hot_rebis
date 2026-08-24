@@ -1,0 +1,189 @@
+═ Protein Prediction Pipeline ═
+  Sequence: MQKLINSVQNYAWGSKTALTELYGMENPSSQPMAELWMGAHPKSSSRVQN...
+  Length: 391 aa | Name: P00946
+{
+  "name": "P00946",
+  "sequence": "MQKLINSVQNYAWGSKTALTELYGMENPSSQPMAELWMGAHPKSSSRVQNAAGDIVSLRDVIESDKSTLLGEAVAKRFGELPFLFKVLCAAQPLSIQVHPNKHNSEIGFAKENAAGIPMDAAERNYKDPNHKPELVFALTPFLAMNAFREFSEIVSLLQPVAGAHPAIAHFLQQPDAERLSELFASLLNMQGEEKSRALAILKSALDSQQGEPWQTIRLISEFYPEDSGLFSPLLLNVVKLNPGEAMFLFAETPHAYLQGVALEVMANSDNVLRAGLTPKYIDIPELVANVKFEAKPANQLLTQPVKQGAELDFPIPVDDFAFSLHDLSDKETTISQQSAAILFCVEGDATLWKGSQQLQLKPGESAFIAANESPVTVKGHGRLARVYNKL",
+  "length": 391,
+  "pipeline_result": {
+    "name": "P00946",
+    "sequence": "MQKLINSVQNYAWGSKTALTELYGMENPSSQPMAELWMGAHPKSSSRVQNAAGDIVSLRDVIESDKSTLLGEAVAKRFGELPFLFKVLCAAQPLSIQVHPNKHNSEIGFAKENAAGIPMDAAERNYKDPNHKPELVFALTPFLAMNAFREFSEIVSLLQPVAGAHPAIAHFLQQPDAERLSELFASLLNMQGEEKSRALAILKSALDSQQGEPWQTIRLISEFYPEDSGLFSPLLLNVVKLNPGEAMFLFAETPHAYLQGVALEVMANSDNVLRAGLTPKYIDIPELVANVKFEAKPANQLLTQPVKQGAELDFPIPVDDFAFSLHDLSDKETTISQQSAAILFCVEGDATLWKGSQQLQLKPGESAFIAANESPVTVKGHGRLARVYNKL",
+    "length": 391,
+    "signal_peptide": null,
+    "cleavage_sites": [
+      {
+        "position": 75,
+        "motif": "KR",
+        "motif_seq": "KR",
+        "enzyme": "PC2",
+        "context": "GEAVAKRFGELP",
+        "discontinuity": 0.133,
+        "density_before": 0.333,
+        "density_after": 0.467,
+        "cpe_trim_candidate": false
+      }
+    ],
+    "fragments": [
+      {
+        "start": 0,
+        "end": 75,
+        "length": 75,
+        "sequence": "MQKLINSVQNYAWGSKTALTELYGMENPSSQPMAELWMGAHPKSSSRVQNAAGDIVSLRDVIESDKSTLLGEAVA",
+        "label": "mature_product_0",
+        "vector": [
+          4,
+          2,
+          0,
+          2,
+          0,
+          3,
+          4,
+          4,
+          1,
+          3,
+          4,
+          5
+        ],
+        "densities": {
+          "⊢": 0.053,
+          "⊣": 0.027,
+          "≻": 0.0,
+          "≺": 0.027,
+          "⋈": 0.0,
+          "⊤": 0.04,
+          "∈": 0.053,
+          "∋": 0.053,
+          "⊙": 0.013,
+          "⊥": 0.04,
+          "⊞": 0.053,
+          "◻": 0.067
+        },
+        "dominant_primitives": [
+          "◻"
+        ],
+        "total_primitive_activations": 32,
+        "amidation": null
+      },
+      {
+        "start": 77,
+        "end": 391,
+        "length": 314,
+        "sequence": "FGELPFLFKVLCAAQPLSIQVHPNKHNSEIGFAKENAAGIPMDAAERNYKDPNHKPELVFALTPFLAMNAFREFSEIVSLLQPVAGAHPAIAHFLQQPDAERLSELFASLLNMQGEEKSRALAILKSALDSQQGEPWQTIRLISEFYPEDSGLFSPLLLNVVKLNPGEAMFLFAETPHAYLQGVALEVMANSDNVLRAGLTPKYIDIPELVANVKFEAKPANQLLTQPVKQGAELDFPIPVDDFAFSLHDLSDKETTISQQSAAILFCVEGDATLWKGSQQLQLKPGESAFIAANESPVTVKGHGRLARVYNKL",
+        "label": "mature_product_1",
+        "vector": [
+          5,
+          2,
+          2,
+          5,
+          20,
+          14,
+          15,
+          18,
+          8,
+          13,
+          17,
+          24
+        ],
+        "densities": {
+          "⊢": 0.016,
+          "⊣": 0.006,
+          "≻": 0.006,
+          "≺": 0.016,
+          "⋈": 0.064,
+          "⊤": 0.045,
+          "∈": 0.048,
+          "∋": 0.057,
+          "⊙": 0.025,
+          "⊥": 0.041,
+          "⊞": 0.054,
+          "◻": 0.076
+        },
+        "dominant_primitives": [
+          "◻"
+        ],
+        "total_primitive_activations": 143,
+        "amidation": null
+      }
+    ],
+    "processing": {
+      "precursor": "MQKLINSVQNYAWGSKTALTELYGMENPSSQPMAELWMGAHPKSSSRVQNAAGDIVSLRDVIESDKSTLLGEAVAKRFGELPFLFKVLCAAQPLSIQVHPNKHNSEIGFAKENAAGIPMDAAERNYKDPNHKPELVFALTPFLAMNAFREFSEIVSLLQPVAGAHPAIAHFLQQPDAERLSELFASLLNMQGEEKSRALAILKSALDSQQGEPWQTIRLISEFYPEDSGLFSPLLLNVVKLNPGEAMFLFAETPHAYLQGVALEVMANSDNVLRAGLTPKYIDIPELVANVKFEAKPANQLLTQPVKQGAELDFPIPVDDFAFSLHDLSDKETTISQQSAAILFCVEGDATLWKGSQQLQLKPGESAFIAANESPVTVKGHGRLARVYNKL",
+      "length": 391,
+      "steps": [
+        {
+          "step": 1,
+          "enzyme": "PC2",
+          "action": "Cleave at KR @ pos 75",
+          "motif_sequence": "KR",
+          "discontinuity": 0.133,
+          "position": 75
+        }
+      ]
+    },
+    "disulfide_bonds": {
+      "bonds": [],
+      "unpaired_cys": [
+        {
+          "fragment": "mature_product_1",
+          "rel_pos": 11,
+          "abs_pos": 88,
+          "context": "VLCAA"
+        },
+        {
+          "fragment": "mature_product_1",
+          "rel_pos": 267,
+          "abs_pos": 344,
+          "context": "LFCVE"
+        }
+      ]
+    },
+    "mature_products": [
+      {
+        "name": "mature_product_0",
+        "sequence": "MQKLINSVQNYAWGSKTALTELYGMENPSSQPMAELWMGAHPKSSSRVQNAAGDIVSLRDVIESDKSTLLGEAVA",
+        "length": 75,
+        "start": 0,
+        "end": 75,
+        "dominant_primitive": "◻",
+        "profile": {
+          "⊢": 4,
+          "⊣": 2,
+          "≺": 2,
+          "⊤": 3,
+          "∈": 4,
+          "∋": 4,
+          "⊙": 1,
+          "⊥": 3,
+          "⊞": 4,
+          "◻": 5
+        },
+        "inferred_function": "winding_closure_module",
+        "amidation": null
+      },
+      {
+        "name": "mature_product_1",
+        "sequence": "FGELPFLFKVLCAAQPLSIQVHPNKHNSEIGFAKENAAGIPMDAAERNYKDPNHKPELVFALTPFLAMNAFREFSEIVSLLQPVAGAHPAIAHFLQQPDAERLSELFASLLNMQGEEKSRALAILKSALDSQQGEPWQTIRLISEFYPEDSGLFSPLLLNVVKLNPGEAMFLFAETPHAYLQGVALEVMANSDNVLRAGLTPKYIDIPELVANVKFEAKPANQLLTQPVKQGAELDFPIPVDDFAFSLHDLSDKETTISQQSAAILFCVEGDATLWKGSQQLQLKPGESAFIAANESPVTVKGHGRLARVYNKL",
+        "length": 314,
+        "start": 77,
+        "end": 391,
+        "dominant_primitive": "◻",
+        "profile": {
+          "⊢": 5,
+          "⊣": 2,
+          "≻": 2,
+          "≺": 5,
+          "⋈": 20,
+          "⊤": 14,
+          "∈": 15,
+          "∋": 18,
+          "⊙": 8,
+          "⊥": 13,
+          "⊞": 17,
+          "◻": 24
+        },
+        "inferred_function": "winding_closure_module",
+        "amidation": null
+      }
+    ]
+  },
+  "narrative": "═══ P00946 — Structural Processing Analysis ═══\nSequence: 391 AA\n\n▸ Processing steps:\n  [1] PC2: Cleave at KR @ pos 75\n\n▸ Mature products:\n  • mature_product_0 (75 AA) — winding_closure_module\n    Primitive profile: ∈=4 | ∋=4 | ≺=2 | ⊙=1 | ⊞=4 | ⊢=4 | ⊣=2 | ⊤=3 | ⊥=3 | ◻=5\n  • mature_product_1 (314 AA) — winding_closure_module\n    Primitive profile: ∈=15 | ∋=18 | ≺=5 | ≻=2 | ⊙=8 | ⊞=17 | ⊢=5 | ⊣=2 | ⊤=14 | ⊥=13 | ⋈=20 | ◻=24\n"
+}

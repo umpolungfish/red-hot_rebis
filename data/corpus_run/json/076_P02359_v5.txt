@@ -1,0 +1,87 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 076_P02359
+╚══════════════════════════════════════════════════════════╝
+Input: 179 AA | Promoted: 38.5% | Dominant: ⊞ | ∈:7 | ∋:5 | ≺:4 | ⊙:3 | ⊞:14 | ⊢:5 | ⊣:2 | ⊤:5 | ⊥:5 | ⋈:5 | ◻:14
+
+▸ CLEAVAGE (10 sites):
+  pos   4: RR   → unknown                   ○=0.50
+  pos   5: RR   → unknown                   ○=0.50
+  pos  11: RK   → unknown                   ○=0.50
+  pos  36: KK   → unknown                   ○=0.50
+  pos  79: RR   → unknown                   ○=0.50
+  pos  96: RR   → unknown                   ○=0.50
+  pos 110: RK   → unknown                   ○=0.50
+  pos 111: KR   → unknown                   ○=0.50
+  pos 137: KK   → unknown                   ○=0.50
+  pos 138: KR   → unknown                   ○=0.50
+
+▸ PRODUCTS (11):
+
+  [1] IP-2 (4 AA @ 0–4)
+      ⊢-dominant (1/4 residues)
+      MPRR
+
+  [2] IP-2 (1 AA @ 4–5)
+      unstructured
+      R
+
+  [3] Connector (6 AA @ 5–11)
+      ⊤-dominant (3/6 residues)
+      VIGQRK
+
+  [4] Σ-variable region (25 AA @ 11–36)
+      ⊞-dominant (13/25 residues)
+      ILPDPKFGSELLAKFVNILMVDGKK
+
+  [5] Ω-winding module (43 AA @ 36–79)
+      ◻-dominant (14/43 residues)
+      STAESIVYSALETLAQRSGKSELEAFEVALENVRPTVEVK...
+
+  [6] Φ-switch domain (17 AA @ 79–96)
+      ≺-dominant (3/17 residues)
+      VGGSTYQVPVEVRPVRR
+
+  [7] Γ-catalytic domain (14 AA @ 96–110)
+      ∈-dominant (6/14 residues)
+      NALAMRWIVEAARK
+
+  [8] IP-2 (1 AA @ 110–111)
+      unstructured
+      R
+
+  [9] Σ-variable region (26 AA @ 111–137)
+      ⊞-dominant (11/26 residues)
+      GDKSMALRLANELSDAAENKGTAVKK
+
+  [10] IP-2 (1 AA @ 137–138)
+      unstructured
+      R
+
+  [11] Fragment 11 (41 AA @ 138–179)
+      ⊙-dominant (18/41 residues)
+      EDVHRMAEANKAFAHYRWLSLRSFSHQAGASSKQPALGYL...
+
+▸ MAP:
+  RR ↓ 4
+  RR ↓ 5
+  RK ↓ 11
+  KK ↓ 36
+  RR ↓ 79
+  RR ↓ 96
+  RK ↓ 110
+  KR ↓ 111
+  KK ↓ 137
+  KR ↓ 138
+  Chain 1: [0–4] (4 AA) IP-2
+  Chain 2: [4–5] (1 AA) IP-2
+  Chain 3: [5–11] (6 AA) Connector
+  Chain 4: [11–36] (25 AA) Σ-variable region
+  Chain 5: [36–79] (43 AA) Ω-winding module
+  Chain 6: [79–96] (17 AA) Φ-switch domain
+  Chain 7: [96–110] (14 AA) Γ-catalytic domain
+  Chain 8: [110–111] (1 AA) IP-2
+  Chain 9: [111–137] (26 AA) Σ-variable region
+  Chain 10: [137–138] (1 AA) IP-2
+  Chain 11: [138–179] (41 AA) Fragment 11
+
+[2;37m DNA  → 076_P02359_codons.dna  [0m[1;2;37m([0m[1;2;36m537[0m[2;37m nt[0m[1;2;37m)[0m

@@ -1,0 +1,45 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 096_P0DTC5
+╚══════════════════════════════════════════════════════════╝
+Input: 222 AA | Promoted: 42.8% | Dominant: ⊤ | ∈:11 | ∋:4 | ≺:9 | ≻:4 | ⊙:5 | ⊞:7 | ⊢:4 | ⊣:7 | ⊤:20 | ⊥:6 | ⋈:11 | ◻:7
+
+▸ CLEAVAGE (4 sites):
+  pos  15: KK   → unknown                   ○=0.50
+  pos  50: K    → PC2_monobasic             ○=0.40 [M]
+  pos 107: R    → PC2_monobasic             ○=0.45 [M]
+  pos 205: K    → PC2_monobasic             ○=0.40 [M]
+
+▸ PRODUCTS (5):
+
+  [1] Signal Peptide (15 AA @ 1–15)
+      ◻-dominant (8/15 residues)
+      MADSNGTITVEELKK
+
+  [2] Ç-kinetic regulator (35 AA @ 16–50)
+      ⊤-dominant (20/35 residues)
+      LLEQWNLVIGFLFLTWICLLQFAYANRNRFLYIIK
+
+  [3] Ç-kinetic regulator (57 AA @ 51–107)
+      ⊤-dominant (22/57 residues)
+      LIFLWLLWPVTLACFVLAAVYRINWITGGIAIAMACLVGL...
+
+  [4] Ç-kinetic regulator (98 AA @ 108–205)
+      ⊤-dominant (38/98 residues)
+      SMWSFNPETNILLNVPLHGTILTRPLLESELVIGAVILRG...
+
+  [5] Γ-catalytic domain (17 AA @ 206–222)
+      ∈-dominant (7/17 residues)
+      LNTDHSSSSDNIALLVQ
+
+▸ MAP:
+  KK ↓ 15
+  [M] ↓ 50
+  [M] ↓ 107
+  [M] ↓ 205
+  Chain 1: [1–15] (15 AA) Signal Peptide
+  Chain 2: [16–50] (35 AA) Ç-kinetic regulator
+  Chain 3: [51–107] (57 AA) Ç-kinetic regulator
+  Chain 4: [108–205] (98 AA) Ç-kinetic regulator
+  Chain 5: [206–222] (17 AA) Γ-catalytic domain
+
+[2;37m DNA  → 096_P0DTC5_codons.dna  [0m[1;2;37m([0m[1;2;36m666[0m[2;37m nt[0m[1;2;37m)[0m

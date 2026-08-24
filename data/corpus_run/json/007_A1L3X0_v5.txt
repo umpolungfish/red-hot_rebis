@@ -1,0 +1,54 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 007_A1L3X0
+╚══════════════════════════════════════════════════════════╝
+Input: 281 AA | Promoted: 52.7% | Dominant: ⋈ | ∈:8 | ∋:8 | ≺:20 | ≻:6 | ⊙:8 | ⊞:18 | ⊢:12 | ⊣:10 | ⊤:14 | ⊥:10 | ⋈:28 | ◻:6
+
+▸ CLEAVAGE (6 sites):
+  pos  60: RK   → unknown                   ○=0.50
+  pos  66: KK   → unknown                   ○=0.50
+  pos 138: RK   → unknown                   ○=0.50
+  pos 139: KK   → unknown                   ○=0.50
+  pos 205: KK   → unknown                   ○=0.50
+  pos 266: R    → PC2_monobasic             ○=0.40 [M]
+
+▸ PRODUCTS (6):
+
+  [1] Signal Peptide (60 AA @ 1–60)
+      ⊥-dominant (27/60 residues)
+      MAFSDLTSRTVHLYDNWIKDADPRVEDWLLMSSPLPQTIL...
+
+  [2] Connector (6 AA @ 61–66)
+      ⊞-dominant (4/6 residues)
+      PFELKK
+
+  [3] ƒ-hydrophobic core (72 AA @ 67–138)
+      ⋈-dominant (39/72 residues)
+      AMITYNFFIVLFSVYMCYEFVMSGWGIGYSFRCDIVDYSR...
+
+  [4] ƒ-hydrophobic core (66 AA @ 140–205)
+      ⋈-dominant (31/66 residues)
+      NSQVTFLHVFHHTIMPWTWWFGVKFAAGGLGTFHALLNTA...
+
+  [5] ƒ-hydrophobic core (61 AA @ 206–266)
+      ⋈-dominant (37/61 residues)
+      YLTSLQLVQFVIVAIHISQFFFMEDCKYQFPVFACIIMSY...
+
+  [6] Σ-variable region (15 AA @ 267–281)
+      ⊞-dominant (9/15 residues)
+      LPKTVKNGTCKNKDN
+
+▸ MAP:
+  RK ↓ 60
+  KK ↓ 66
+  RK ↓ 138
+  KK ↓ 139
+  KK ↓ 205
+  [M] ↓ 266
+  Chain 1: [1–60] (60 AA) Signal Peptide
+  Chain 2: [61–66] (6 AA) Connector
+  Chain 3: [67–138] (72 AA) ƒ-hydrophobic core
+  Chain 4: [140–205] (66 AA) ƒ-hydrophobic core
+  Chain 5: [206–266] (61 AA) ƒ-hydrophobic core
+  Chain 6: [267–281] (15 AA) Σ-variable region
+
+[2;37m DNA  → 007_A1L3X0_codons.dna  [0m[1;2;37m([0m[1;2;36m843[0m[2;37m nt[0m[1;2;37m)[0m

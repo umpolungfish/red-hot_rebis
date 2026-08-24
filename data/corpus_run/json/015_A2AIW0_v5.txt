@@ -1,0 +1,66 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 015_A2AIW0
+╚══════════════════════════════════════════════════════════╝
+Input: 432 AA | Promoted: 43.5% | Dominant: ◻ | ∈:18 | ∋:21 | ≺:9 | ≻:6 | ⊙:12 | ⊞:22 | ⊢:7 | ⊣:2 | ⊤:10 | ⊥:27 | ⋈:16 | ◻:38
+
+▸ CLEAVAGE (7 sites):
+  pos   7: RR   → unknown                   ○=0.50
+  pos  31: RR   → unknown                   ○=0.50
+  pos 281: RR   → unknown                   ○=0.50
+  pos 282: RK   → unknown                   ○=0.50
+  pos 303: RK   → unknown                   ○=0.50
+  pos 335: KR   → unknown                   ○=0.50
+  pos 362: RR   → unknown                   ○=0.50
+
+▸ PRODUCTS (8):
+
+  [1] Signal Peptide (7 AA @ 0–7)
+      ⊢-dominant (2/7 residues)
+      MSGYARR
+
+  [2] ɢ-glycosylation target (24 AA @ 7–31)
+      ∋-dominant (5/24 residues)
+      QGAPPLSRTRSLVVPDAPAFYERR
+
+  [3] Ω-winding module (250 AA @ 31–281)
+      ◻-dominant (107/250 residues)
+      SCLPQLDCERPHGGDLHPHLFGFRPTFMCYVPSPVLASVG...
+
+  [4] IP-2 (1 AA @ 281–282)
+      ⊞-dominant (1/1 residues)
+      K
+
+  [5] Ω-winding module (21 AA @ 282–303)
+      ◻-dominant (10/21 residues)
+      LNEVQSFSETQTEMVRTLERK
+
+  [6] Ω-winding module (32 AA @ 303–335)
+      ◻-dominant (20/32 residues)
+      LEAKMIKEESDFHDLESVVQQVEQNLELMTKR
+
+  [7] Σ-variable region (27 AA @ 335–362)
+      ⊞-dominant (13/27 residues)
+      AVKAENHVLKLKQEINLLQAQLSNLRR
+
+  [8] Ω-winding module (70 AA @ 362–432)
+      ◻-dominant (30/70 residues)
+      ENEALRSGQGASLSVVKQNTDVALQNLHLVMNSAHASIKQ...
+
+▸ MAP:
+  RR ↓ 7
+  RR ↓ 31
+  RR ↓ 281
+  RK ↓ 282
+  RK ↓ 303
+  KR ↓ 335
+  RR ↓ 362
+  Chain 1: [0–7] (7 AA) Signal Peptide
+  Chain 2: [7–31] (24 AA) ɢ-glycosylation target
+  Chain 3: [31–281] (250 AA) Ω-winding module
+  Chain 4: [281–282] (1 AA) IP-2
+  Chain 5: [282–303] (21 AA) Ω-winding module
+  Chain 6: [303–335] (32 AA) Ω-winding module
+  Chain 7: [335–362] (27 AA) Σ-variable region
+  Chain 8: [362–432] (70 AA) Ω-winding module
+
+[2;37m DNA  → 015_A2AIW0_codons.dna  [0m[1;2;37m([0m[1;2;36m1296[0m[2;37m nt[0m[1;2;37m)[0m

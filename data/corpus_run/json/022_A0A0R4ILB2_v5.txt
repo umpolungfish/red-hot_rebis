@@ -1,0 +1,45 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 022_A0A0R4ILB2
+╚══════════════════════════════════════════════════════════╝
+Input: 470 AA | Promoted: 43.4% | Dominant: ⊤ | ∈:18 | ∋:18 | ≺:16 | ≻:10 | ⊙:8 | ⊞:14 | ⊢:15 | ⊣:9 | ⊤:35 | ⊥:10 | ⋈:32 | ◻:19
+
+▸ CLEAVAGE (4 sites):
+  pos  30: RR   → unknown                   ○=0.50
+  pos  31: RR   → unknown                   ○=0.50
+  pos  95: RK   → unknown                   ○=0.50
+  pos 440: RR   → unknown                   ○=0.50
+
+▸ PRODUCTS (5):
+
+  [1] Signal Peptide (30 AA @ 0–30)
+      ⊥-dominant (14/30 residues)
+      MCDKADNHIDVQPEGNLEVSSVSSTRLYRR
+
+  [2] IP-2 (1 AA @ 30–31)
+      unstructured
+      R
+
+  [3] Ç-kinetic regulator (64 AA @ 31–95)
+      ⊤-dominant (37/64 residues)
+      WVILLLFSSYSLCNAFQWIQYGIINNIFMKFYQVSSFAVD...
+
+  [4] Ç-kinetic regulator (345 AA @ 95–440)
+      ⊤-dominant (138/345 residues)
+      GLRVVALLAASINCAGTWIKVASVQPSLFWVTMLGQFACS...
+
+  [5] ɢ-glycosylation target (30 AA @ 440–470)
+      ∋-dominant (15/30 residues)
+      QKANQETGGNADSSVHPQHGETLPVKEVKM
+
+▸ MAP:
+  RR ↓ 30
+  RR ↓ 31
+  RK ↓ 95
+  RR ↓ 440
+  Chain 1: [0–30] (30 AA) Signal Peptide
+  Chain 2: [30–31] (1 AA) IP-2
+  Chain 3: [31–95] (64 AA) Ç-kinetic regulator
+  Chain 4: [95–440] (345 AA) Ç-kinetic regulator
+  Chain 5: [440–470] (30 AA) ɢ-glycosylation target
+
+[2;37m DNA  → 022_A0A0R4ILB2_codons.dna  [0m[1;2;37m([0m[1;2;36m1410[0m[2;37m nt[0m[1;2;37m)[0m

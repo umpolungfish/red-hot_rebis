@@ -1,0 +1,6 @@
+{
+  "input": "representative_sequence_corpus",
+  "tuple": "⊙𐑧𐑫",
+  "c_score": 1.0,
+  "tier": "O_∞"
+}

@@ -1,0 +1,128 @@
+═ Protein Prediction Pipeline ═
+  Sequence: MAEVHRRQHAPVKGEAPAKSSTHRDEEELGMAPAETLTVFLKLLAAGFYG...
+  Length: 355 aa | Name: A2AKQ0
+{
+  "name": "A2AKQ0",
+  "sequence": "MAEVHRRQHAPVKGEAPAKSSTHRDEEELGMAPAETLTVFLKLLAAGFYGVSSFLIVVVNKSVLTNYRFPSSLCVGLGQMVATVAVLWVGKTLRVVKFPDFDRNVPRKTFPLPLLYFGNQITGLFSTKKLNLPMFTVLRRFSILFTMFAEGALLKKTFSWGIKMTVFAMIIGAFVAASSDLAFDLEGYVFILINDVLTAANGAYVKQKLDSKELGKYGLLYYNALFMILPTLAIAYFTGDAQKAMEFEGWADTLFLLQFTLSCVMGFILMYATVLCTQYNSALTTTIVGCIKNILITYIGMVFGGDYIFTWTNFIGLNISIAGSLVYSYITFTEEQLSKQSEASNKLDTKGKGAV",
+  "length": 355,
+  "pipeline_result": {
+    "name": "A2AKQ0",
+    "sequence": "MAEVHRRQHAPVKGEAPAKSSTHRDEEELGMAPAETLTVFLKLLAAGFYGVSSFLIVVVNKSVLTNYRFPSSLCVGLGQMVATVAVLWVGKTLRVVKFPDFDRNVPRKTFPLPLLYFGNQITGLFSTKKLNLPMFTVLRRFSILFTMFAEGALLKKTFSWGIKMTVFAMIIGAFVAASSDLAFDLEGYVFILINDVLTAANGAYVKQKLDSKELGKYGLLYYNALFMILPTLAIAYFTGDAQKAMEFEGWADTLFLLQFTLSCVMGFILMYATVLCTQYNSALTTTIVGCIKNILITYIGMVFGGDYIFTWTNFIGLNISIAGSLVYSYITFTEEQLSKQSEASNKLDTKGKGAV",
+    "length": 355,
+    "signal_peptide": {
+      "sequence": "MAEVHRRQHAPVKGEAPAKSSTHRDEEELGMAPAETLTVFLKLLAAGFYGVSSFLIVVVNKSVLTNYRFPSSLCVGLGQMVATVAVLWVGKTLRVVKFPDFDRNVPRKTFPLPLLYFGNQITGLFSTKKLNLPMFTVLRRFSILFTMFAEGALLKKTFSWGIKMTVFAMIIGAFVA",
+      "length": 176,
+      "cleavage_position": 176,
+      "bootstrap_score": 2,
+      "n_charge": 1,
+      "hydrophobic_core_length": 9
+    },
+    "cleavage_sites": [],
+    "fragments": [
+      {
+        "start": 176,
+        "end": 355,
+        "length": 179,
+        "sequence": "ASSDLAFDLEGYVFILINDVLTAANGAYVKQKLDSKELGKYGLLYYNALFMILPTLAIAYFTGDAQKAMEFEGWADTLFLLQFTLSCVMGFILMYATVLCTQYNSALTTTIVGCIKNILITYIGMVFGGDYIFTWTNFIGLNISIAGSLVYSYITFTEEQLSKQSEASNKLDTKGKGAV",
+        "label": "full_precursor",
+        "vector": [
+          5,
+          2,
+          3,
+          12,
+          12,
+          15,
+          8,
+          6,
+          0,
+          8,
+          10,
+          7
+        ],
+        "densities": {
+          "⊢": 0.028,
+          "⊣": 0.011,
+          "≻": 0.017,
+          "≺": 0.067,
+          "⋈": 0.067,
+          "⊤": 0.084,
+          "∈": 0.045,
+          "∋": 0.034,
+          "⊙": 0.0,
+          "⊥": 0.045,
+          "⊞": 0.056,
+          "◻": 0.039
+        },
+        "dominant_primitives": [
+          "⊤"
+        ],
+        "total_primitive_activations": 88,
+        "amidation": null
+      }
+    ],
+    "processing": {
+      "precursor": "MAEVHRRQHAPVKGEAPAKSSTHRDEEELGMAPAETLTVFLKLLAAGFYGVSSFLIVVVNKSVLTNYRFPSSLCVGLGQMVATVAVLWVGKTLRVVKFPDFDRNVPRKTFPLPLLYFGNQITGLFSTKKLNLPMFTVLRRFSILFTMFAEGALLKKTFSWGIKMTVFAMIIGAFVAASSDLAFDLEGYVFILINDVLTAANGAYVKQKLDSKELGKYGLLYYNALFMILPTLAIAYFTGDAQKAMEFEGWADTLFLLQFTLSCVMGFILMYATVLCTQYNSALTTTIVGCIKNILITYIGMVFGGDYIFTWTNFIGLNISIAGSLVYSYITFTEEQLSKQSEASNKLDTKGKGAV",
+      "length": 355,
+      "steps": [
+        {
+          "step": 1,
+          "enzyme": "Signal Peptidase",
+          "action": "Remove signal peptide (176 AA)",
+          "cleavage_position": 176,
+          "product_length": 179
+        }
+      ]
+    },
+    "disulfide_bonds": {
+      "bonds": [
+        {
+          "cys_1": {
+            "position": 262,
+            "fragment": "full_precursor"
+          },
+          "cys_2": {
+            "position": 275,
+            "fragment": "full_precursor"
+          },
+          "distance": 13,
+          "motif": "long-range",
+          "bond_type": "intrachain"
+        }
+      ],
+      "unpaired_cys": [
+        {
+          "fragment": "full_precursor",
+          "rel_pos": 113,
+          "abs_pos": 289,
+          "context": "VGCIK"
+        }
+      ]
+    },
+    "mature_products": [
+      {
+        "name": "full_precursor",
+        "sequence": "ASSDLAFDLEGYVFILINDVLTAANGAYVKQKLDSKELGKYGLLYYNALFMILPTLAIAYFTGDAQKAMEFEGWADTLFLLQFTLSCVMGFILMYATVLCTQYNSALTTTIVGCIKNILITYIGMVFGGDYIFTWTNFIGLNISIAGSLVYSYITFTEEQLSKQSEASNKLDTKGKGAV",
+        "length": 179,
+        "start": 176,
+        "end": 355,
+        "dominant_primitive": "⊤",
+        "profile": {
+          "⊢": 5,
+          "⊣": 2,
+          "≻": 3,
+          "≺": 12,
+          "⋈": 12,
+          "⊤": 15,
+          "∈": 8,
+          "∋": 6,
+          "⊥": 8,
+          "⊞": 10,
+          "◻": 7
+        },
+        "inferred_function": "kinetic_regulator",
+        "amidation": null
+      }
+    ]
+  },
+  "narrative": "═══ A2AKQ0 — Structural Processing Analysis ═══\nSequence: 355 AA\n\n▸ Signal peptide (176 AA): MAEVHRRQHAPVKGEAPAKSSTHRDEEELGMAPAETLTVFLKLLAAGFYGVSSFLIVVVNKSVLTNYRFPSSLCVGLGQMVATVAVLWVGKTLRVVKFPDFDRNVPRKTFPLPLLYFGNQITGLFSTKKLNLPMFTVLRRFSILFTMFAEGALLKKTFSWGIKMTVFAMIIGAFVA\n  Bootstrap elements: Met(Ð)×7, Trp(Þ)×2\n  Cleavage @ position 176 ← signal peptidase\n  Dominant: ⋈ — bootstrap preconditions\n\n▸ Processing steps:\n  [1] Signal Peptidase: Remove signal peptide (176 AA)\n\n▸ Mature products:\n  • full_precursor (179 AA) — kinetic_regulator\n    Primitive profile: ∈=8 | ∋=6 | ≺=12 | ≻=3 | ⊞=10 | ⊢=5 | ⊣=2 | ⊤=15 | ⊥=8 | ⋈=12 | ◻=7\n\n▸ Predicted disulfide bonds (Ř-Ř):\n  Cys262—Cys275 (intrachain, long-range)\n  ⚠ Unpaired Cys @ pos 289 in full_precursor\n"
+}

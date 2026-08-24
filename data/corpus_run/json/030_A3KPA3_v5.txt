@@ -1,0 +1,31 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 030_A3KPA3
+╚══════════════════════════════════════════════════════════╝
+Input: 242 AA | Promoted: 50.0% | Dominant: ⊤ | ∈:6 | ∋:7 | ≺:14 | ≻:4 | ⊙:13 | ⊞:13 | ⊢:3 | ⊣:4 | ⊤:23 | ⊥:14 | ⋈:11 | ◻:9
+
+▸ CLEAVAGE (2 sites):
+  pos  51: KK   → unknown                   ○=0.50
+  pos 109: RK   → unknown                   ○=0.50
+
+▸ PRODUCTS (3):
+
+  [1] Signal Peptide (51 AA @ 0–51)
+      ⊥-dominant (29/51 residues)
+      MTDVVPTTALSEIQLRLLCHDDIDRIKVLCGEWFPIEYPD...
+
+  [2] ƒ-hydrophobic core (58 AA @ 51–109)
+      ⋈-dominant (25/58 residues)
+      FFSLAATFRGGIVGMIVAEIKSRTKVHKEDGDILASSFPV...
+
+  [3] Ç-kinetic regulator (133 AA @ 109–242)
+      ⊤-dominant (67/133 residues)
+      HGIGSLLLDSLKEHISTTAQDHCKAIYLHVLTTNNTAIHF...
+
+▸ MAP:
+  KK ↓ 51
+  RK ↓ 109
+  Chain 1: [0–51] (51 AA) Signal Peptide
+  Chain 2: [51–109] (58 AA) ƒ-hydrophobic core
+  Chain 3: [109–242] (133 AA) Ç-kinetic regulator
+
+[2;37m DNA  → 030_A3KPA3_codons.dna  [0m[1;2;37m([0m[1;2;36m726[0m[2;37m nt[0m[1;2;37m)[0m

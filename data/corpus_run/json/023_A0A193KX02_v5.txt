@@ -1,0 +1,38 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 023_A0A193KX02
+╚══════════════════════════════════════════════════════════╝
+Input: 259 AA | Promoted: 44.4% | Dominant: ⊤ | ∈:5 | ∋:7 | ≺:12 | ≻:6 | ⊙:5 | ⊞:7 | ⊢:7 | ⊣:3 | ⊤:23 | ⊥:17 | ⋈:8 | ◻:15
+
+▸ CLEAVAGE (3 sites):
+  pos  87: KK   → unknown                   ○=0.50
+  pos 187: KR   → unknown                   ○=0.50
+  pos 227: RR   → unknown                   ○=0.50
+
+▸ PRODUCTS (4):
+
+  [1] Signal Peptide (87 AA @ 0–87)
+      ⊤-dominant (37/87 residues)
+      MVSPAIALAFLPLLLTLIIRYRYYFVLLYRAVLTRWVRDC...
+
+  [2] Ħ-chiral domain (100 AA @ 87–187)
+      ⊥-dominant (46/100 residues)
+      GKILDRLLQENCPITVLELGTHCGYSTVRMARSLPIGARI...
+
+  [3] Ç-kinetic regulator (40 AA @ 187–227)
+      ⊤-dominant (17/40 residues)
+      CYLPDLHLLEDSGLIGQGSIILADNVIFPGAPNFLRYARR
+
+  [4] Φ-switch domain (32 AA @ 227–259)
+      ≺-dominant (15/32 residues)
+      CGLYEVRVHRATLEYMRGIPDGMAELTYIGIK
+
+▸ MAP:
+  KK ↓ 87
+  KR ↓ 187
+  RR ↓ 227
+  Chain 1: [0–87] (87 AA) Signal Peptide
+  Chain 2: [87–187] (100 AA) Ħ-chiral domain
+  Chain 3: [187–227] (40 AA) Ç-kinetic regulator
+  Chain 4: [227–259] (32 AA) Φ-switch domain
+
+[2;37m DNA  → 023_A0A193KX02_codons.dna  [0m[1;2;37m([0m[1;2;36m777[0m[2;37m nt[0m[1;2;37m)[0m

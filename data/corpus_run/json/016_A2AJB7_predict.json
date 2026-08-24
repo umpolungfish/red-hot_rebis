@@ -1,0 +1,121 @@
+═ Protein Prediction Pipeline ═
+  Sequence: MCSVARHMESIMLFTLLGLCVGLAAGTEAAVVKDFDVNKFLGFWYEIALA...
+  Length: 192 aa | Name: A2AJB7
+{
+  "name": "A2AJB7",
+  "sequence": "MCSVARHMESIMLFTLLGLCVGLAAGTEAAVVKDFDVNKFLGFWYEIALASKMGAYGLAHKEEKMGAMVVELKENLLALTTTYYNEGHCVLEKVAATQVDGSAKYKVTRISGEKEVVVVATDYMTYTVIDITSLVAGAVHRAMKLYSRSLDNNGEALNNFQKIALKHGFSETDIHILKHDLTCVNALQSGQI",
+  "length": 192,
+  "pipeline_result": {
+    "name": "A2AJB7",
+    "sequence": "MCSVARHMESIMLFTLLGLCVGLAAGTEAAVVKDFDVNKFLGFWYEIALASKMGAYGLAHKEEKMGAMVVELKENLLALTTTYYNEGHCVLEKVAATQVDGSAKYKVTRISGEKEVVVVATDYMTYTVIDITSLVAGAVHRAMKLYSRSLDNNGEALNNFQKIALKHGFSETDIHILKHDLTCVNALQSGQI",
+    "length": 192,
+    "signal_peptide": {
+      "sequence": "MCSVARHMESIMLFTLLGLCVGLAAGTEA",
+      "length": 29,
+      "cleavage_position": 29,
+      "bootstrap_score": 2,
+      "n_charge": 0,
+      "hydrophobic_core_length": 10
+    },
+    "cleavage_sites": [],
+    "fragments": [
+      {
+        "start": 29,
+        "end": 192,
+        "length": 163,
+        "sequence": "AVVKDFDVNKFLGFWYEIALASKMGAYGLAHKEEKMGAMVVELKENLLALTTTYYNEGHCVLEKVAATQVDGSAKYKVTRISGEKEVVVVATDYMTYTVIDITSLVAGAVHRAMKLYSRSLDNNGEALNNFQKIALKHGFSETDIHILKHDLTCVNALQSGQI",
+        "label": "full_precursor",
+        "vector": [
+          5,
+          1,
+          2,
+          8,
+          5,
+          8,
+          8,
+          4,
+          6,
+          8,
+          14,
+          11
+        ],
+        "densities": {
+          "⊢": 0.031,
+          "⊣": 0.006,
+          "≻": 0.012,
+          "≺": 0.049,
+          "⋈": 0.031,
+          "⊤": 0.049,
+          "∈": 0.049,
+          "∋": 0.025,
+          "⊙": 0.037,
+          "⊥": 0.049,
+          "⊞": 0.086,
+          "◻": 0.067
+        },
+        "dominant_primitives": [
+          "⊞"
+        ],
+        "total_primitive_activations": 80,
+        "amidation": null
+      }
+    ],
+    "processing": {
+      "precursor": "MCSVARHMESIMLFTLLGLCVGLAAGTEAAVVKDFDVNKFLGFWYEIALASKMGAYGLAHKEEKMGAMVVELKENLLALTTTYYNEGHCVLEKVAATQVDGSAKYKVTRISGEKEVVVVATDYMTYTVIDITSLVAGAVHRAMKLYSRSLDNNGEALNNFQKIALKHGFSETDIHILKHDLTCVNALQSGQI",
+      "length": 192,
+      "steps": [
+        {
+          "step": 1,
+          "enzyme": "Signal Peptidase",
+          "action": "Remove signal peptide (29 AA)",
+          "cleavage_position": 29,
+          "product_length": 163
+        }
+      ]
+    },
+    "disulfide_bonds": {
+      "bonds": [],
+      "unpaired_cys": [
+        {
+          "fragment": "full_precursor",
+          "rel_pos": 59,
+          "abs_pos": 88,
+          "context": "GHCVL"
+        },
+        {
+          "fragment": "full_precursor",
+          "rel_pos": 153,
+          "abs_pos": 182,
+          "context": "LTCVN"
+        }
+      ]
+    },
+    "mature_products": [
+      {
+        "name": "full_precursor",
+        "sequence": "AVVKDFDVNKFLGFWYEIALASKMGAYGLAHKEEKMGAMVVELKENLLALTTTYYNEGHCVLEKVAATQVDGSAKYKVTRISGEKEVVVVATDYMTYTVIDITSLVAGAVHRAMKLYSRSLDNNGEALNNFQKIALKHGFSETDIHILKHDLTCVNALQSGQI",
+        "length": 163,
+        "start": 29,
+        "end": 192,
+        "dominant_primitive": "⊞",
+        "profile": {
+          "⊢": 5,
+          "⊣": 1,
+          "≻": 2,
+          "≺": 8,
+          "⋈": 5,
+          "⊤": 8,
+          "∈": 8,
+          "∋": 4,
+          "⊙": 6,
+          "⊥": 8,
+          "⊞": 14,
+          "◻": 11
+        },
+        "inferred_function": "variable_modification_platform",
+        "amidation": null
+      }
+    ]
+  },
+  "narrative": "═══ A2AJB7 — Structural Processing Analysis ═══\nSequence: 192 AA\n\n▸ Signal peptide (29 AA): MCSVARHMESIMLFTLLGLCVGLAAGTEA\n  Bootstrap elements: Met(Ð)×3, Trp(Þ)×0\n  Cleavage @ position 29 ← signal peptidase\n  Dominant: ⊢ — bootstrap preconditions\n\n▸ Processing steps:\n  [1] Signal Peptidase: Remove signal peptide (29 AA)\n\n▸ Mature products:\n  • full_precursor (163 AA) — variable_modification_platform\n    Primitive profile: ∈=8 | ∋=4 | ≺=8 | ≻=2 | ⊙=6 | ⊞=14 | ⊢=5 | ⊣=1 | ⊤=8 | ⊥=8 | ⋈=5 | ◻=11\n"
+}

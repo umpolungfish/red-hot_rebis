@@ -1,0 +1,38 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 037_E1JH26
+╚══════════════════════════════════════════════════════════╝
+Input: 264 AA | Promoted: 40.5% | Dominant: ⊤ | ∈:9 | ∋:11 | ≺:2 | ≻:4 | ⊙:6 | ⊞:9 | ⊢:2 | ⊣:3 | ⊤:20 | ⊥:19 | ⋈:6 | ◻:16
+
+▸ CLEAVAGE (3 sites):
+  pos  14: RR   → unknown                   ○=0.50
+  pos 104: KK   → unknown                   ○=0.50
+  pos 238: KR   → unknown                   ○=0.50
+
+▸ PRODUCTS (4):
+
+  [1] Signal Peptide (14 AA @ 0–14)
+      ⊢-dominant (8/14 residues)
+      MSSIKIEFAVQMRR
+
+  [2] Ç-kinetic regulator (90 AA @ 14–104)
+      ⊤-dominant (35/90 residues)
+      GDESYAGALRSALDGVGQVEIDTQEGRVIIQTQRPWSEIQ...
+
+  [3] Ħ-chiral domain (134 AA @ 104–238)
+      ⊥-dominant (51/134 residues)
+      PGVVVDGVVDGLSPGLHGLHIHESGDTSAGCSSVGEHYNP...
+
+  [4] Σ-variable region (26 AA @ 238–264)
+      ⊞-dominant (13/26 residues)
+      ICACDGVTLWDERNKPLAGKERSQKL
+
+▸ MAP:
+  RR ↓ 14
+  KK ↓ 104
+  KR ↓ 238
+  Chain 1: [0–14] (14 AA) Signal Peptide
+  Chain 2: [14–104] (90 AA) Ç-kinetic regulator
+  Chain 3: [104–238] (134 AA) Ħ-chiral domain
+  Chain 4: [238–264] (26 AA) Σ-variable region
+
+[2;37m DNA  → 037_E1JH26_codons.dna  [0m[1;2;37m([0m[1;2;36m792[0m[2;37m nt[0m[1;2;37m)[0m

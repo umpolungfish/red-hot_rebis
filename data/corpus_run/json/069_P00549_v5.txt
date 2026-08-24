@@ -1,0 +1,73 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 069_P00549
+╚══════════════════════════════════════════════════════════╝
+Input: 500 AA | Promoted: 45.2% | Dominant: ⊤ | ∈:26 | ∋:10 | ≺:15 | ≻:7 | ⊙:7 | ⊞:37 | ⊢:11 | ⊣:1 | ⊤:37 | ⊥:32 | ⋈:15 | ◻:28
+
+▸ CLEAVAGE (8 sites):
+  pos  20: RR   → unknown                   ○=0.50
+  pos  42: RK   → unknown                   ○=0.50
+  pos  69: RK   → unknown                   ○=0.50
+  pos 124: K    → PC2_monobasic             ○=0.40 [M]
+  pos 166: K    → PC2_monobasic             ○=0.45 [M]
+  pos 240: K    → PC2_monobasic             ○=0.40 [M]
+  pos 282: KK   → unknown                   ○=0.50
+  pos 475: KK   → unknown                   ○=0.50
+
+▸ PRODUCTS (9):
+
+  [1] Signal Peptide (20 AA @ 1–20)
+      ⊢-dominant (4/20 residues)
+      MSRLERLTSLNVVAGSDLRR
+
+  [2] Ç-kinetic regulator (22 AA @ 21–42)
+      ⊤-dominant (8/22 residues)
+      TSIIGTIGPKTNNPETLVALRK
+
+  [3] Γ-catalytic domain (27 AA @ 43–69)
+      ∈-dominant (15/27 residues)
+      AGLNIVRMNFSHGSYEYHKSVIDNARK
+
+  [4] Ħ-chiral domain (55 AA @ 70–124)
+      ⊥-dominant (28/55 residues)
+      SEELYPGRPLAIALDTKGPEIRTGTTTNDVDYPIPPNHEM...
+
+  [5] Ç-kinetic regulator (42 AA @ 125–166)
+      ⊤-dominant (23/42 residues)
+      IMYVDYKNITKVISAGRIIYVDDGVLSFQVLEVVDDKTLK...
+
+  [6] Σ-variable region (74 AA @ 167–240)
+      ⊞-dominant (35/74 residues)
+      ALNAGKICSHKGVNLPGTDVDLPALSEKDKEDLRFGVKNG...
+
+  [7] Ç-kinetic regulator (42 AA @ 241–282)
+      ⊤-dominant (22/42 residues)
+      IENQQGVNNFDEILKVTDGVMVARGDLGIEIPAPEVLAVQ...
+
+  [8] Ç-kinetic regulator (193 AA @ 283–475)
+      ⊤-dominant (82/193 residues)
+      LIAKSNLAGKPVICATQMLESMTYNPRPTRAEVSDVGNAI...
+
+  [9] ɢ-glycosylation target (25 AA @ 476–500)
+      ∋-dominant (9/25 residues)
+      GDTYVSIQGFKAGAGHSNTLQVSTV
+
+▸ MAP:
+  RR ↓ 20
+  RK ↓ 42
+  RK ↓ 69
+  [M] ↓ 124
+  [M] ↓ 166
+  [M] ↓ 240
+  KK ↓ 282
+  KK ↓ 475
+  Chain 1: [1–20] (20 AA) Signal Peptide
+  Chain 2: [21–42] (22 AA) Ç-kinetic regulator
+  Chain 3: [43–69] (27 AA) Γ-catalytic domain
+  Chain 4: [70–124] (55 AA) Ħ-chiral domain
+  Chain 5: [125–166] (42 AA) Ç-kinetic regulator
+  Chain 6: [167–240] (74 AA) Σ-variable region
+  Chain 7: [241–282] (42 AA) Ç-kinetic regulator
+  Chain 8: [283–475] (193 AA) Ç-kinetic regulator
+  Chain 9: [476–500] (25 AA) ɢ-glycosylation target
+
+[2;37m DNA  → 069_P00549_codons.dna  [0m[1;2;37m([0m[1;2;36m1500[0m[2;37m nt[0m[1;2;37m)[0m

@@ -1,0 +1,38 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 033_A1Z9J4
+╚══════════════════════════════════════════════════════════╝
+Input: 217 AA | Promoted: 42.4% | Dominant: ⊞ | ∈:6 | ∋:5 | ≺:4 | ≻:7 | ⊙:5 | ⊞:18 | ⊢:5 | ⊣:1 | ⊤:14 | ⊥:12 | ⋈:4 | ◻:11
+
+▸ CLEAVAGE (3 sites):
+  pos   7: RK   → unknown                   ○=0.50
+  pos  55: RR   → unknown                   ○=0.50
+  pos 148: K    → PC2_monobasic             ○=0.45 [M]
+
+▸ PRODUCTS (4):
+
+  [1] Signal Peptide (7 AA @ 1–7)
+      ⊢-dominant (2/7 residues)
+      MLSVLRK
+
+  [2] Ç-kinetic regulator (48 AA @ 8–55)
+      ⊤-dominant (23/48 residues)
+      SFPNGVTHAHRVIRCKSNQDKCAKNALIILAPGAEEMEFT...
+
+  [3] Σ-variable region (93 AA @ 56–148)
+      ⊞-dominant (32/93 residues)
+      GKILVTVAGLHDCEPVKCSRSVVIVPDTSLEEAVTRGDYD...
+
+  [4] Σ-variable region (69 AA @ 149–217)
+      ⊞-dominant (35/69 residues)
+      SITSHPDMKPQLKELYCYIDDKTVVQDGNIITSRGPGTTF...
+
+▸ MAP:
+  RK ↓ 7
+  RR ↓ 55
+  [M] ↓ 148
+  Chain 1: [1–7] (7 AA) Signal Peptide
+  Chain 2: [8–55] (48 AA) Ç-kinetic regulator
+  Chain 3: [56–148] (93 AA) Σ-variable region
+  Chain 4: [149–217] (69 AA) Σ-variable region
+
+[2;37m DNA  → 033_A1Z9J4_codons.dna  [0m[1;2;37m([0m[1;2;36m651[0m[2;37m nt[0m[1;2;37m)[0m

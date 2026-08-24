@@ -1,0 +1,101 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 036_B7Z0I7
+╚══════════════════════════════════════════════════════════╝
+Input: 351 AA | Promoted: 57.8% | Dominant: ◻ | ∈:8 | ∋:26 | ≺:15 | ≻:9 | ⊙:9 | ⊞:33 | ⊢:7 | ⊣:6 | ⊤:6 | ⊥:28 | ⋈:19 | ◻:37
+
+▸ CLEAVAGE (12 sites):
+  pos  11: KK   → unknown                   ○=0.50
+  pos  34: RR   → unknown                   ○=0.50
+  pos  54: RK   → unknown                   ○=0.50
+  pos  55: KK   → unknown                   ○=0.50
+  pos  59: KR   → unknown                   ○=0.50
+  pos  96: KR   → unknown                   ○=0.50
+  pos 191: KK   → unknown                   ○=0.50
+  pos 290: RR   → unknown                   ○=0.50
+  pos 297: KK   → unknown                   ○=0.50
+  pos 298: KK   → unknown                   ○=0.50
+  pos 325: KR   → unknown                   ○=0.50
+  pos 332: RR   → unknown                   ○=0.50
+
+▸ PRODUCTS (13):
+
+  [1] Signal Peptide (11 AA @ 0–11)
+      ◻-dominant (8/11 residues)
+      MESSFQELYKK
+
+  [2] ɢ-glycosylation target (23 AA @ 11–34)
+      ∋-dominant (14/23 residues)
+      GLDIGEQQKQRQKELLKQQKLRR
+
+  [3] ɢ-glycosylation target (20 AA @ 34–54)
+      ∋-dominant (13/20 residues)
+      QQEQDDYRPLQNQEKPVPRK
+
+  [4] IP-2 (1 AA @ 54–55)
+      ⊞-dominant (1/1 residues)
+      K
+
+  [5] IP-2 (4 AA @ 55–59)
+      ⊞-dominant (1/4 residues)
+      SGKR
+
+  [6] Σ-variable region (37 AA @ 59–96)
+      ⊞-dominant (17/37 residues)
+      SGHQKGIPYRPQLSEWLRHKPDDLNEWLLVPCPVGKR
+
+  [7] Ω-winding module (95 AA @ 96–191)
+      ◻-dominant (54/95 residues)
+      CLVVASKGITKAYSKGGWMFVNFRSSLPGDWQLQKGETIL...
+
+  [8] ƒ-hydrophobic core (99 AA @ 191–290)
+      ⋈-dominant (58/99 residues)
+      FKLLDHFDFEDPSAVEQALHKYPFFPENKPDLDGFLFYHK...
+
+  [9] Connector (7 AA @ 290–297)
+      ⊞-dominant (5/7 residues)
+      TLKEQKK
+
+  [10] IP-2 (1 AA @ 297–298)
+      ⊞-dominant (1/1 residues)
+      K
+
+  [11] Ω-winding module (27 AA @ 298–325)
+      ◻-dominant (18/27 residues)
+      VNEQKEDPHTMEAEEDVESDEYDSLKR
+
+  [12] Connector (7 AA @ 325–332)
+      ∋-dominant (3/7 residues)
+      VLDQQRR
+
+  [13] Ω-winding module (19 AA @ 332–351)
+      ◻-dominant (10/19 residues)
+      LELGEFDMDCAEPPSADGC
+
+▸ MAP:
+  KK ↓ 11
+  RR ↓ 34
+  RK ↓ 54
+  KK ↓ 55
+  KR ↓ 59
+  KR ↓ 96
+  KK ↓ 191
+  RR ↓ 290
+  KK ↓ 297
+  KK ↓ 298
+  KR ↓ 325
+  RR ↓ 332
+  Chain 1: [0–11] (11 AA) Signal Peptide
+  Chain 2: [11–34] (23 AA) ɢ-glycosylation target
+  Chain 3: [34–54] (20 AA) ɢ-glycosylation target
+  Chain 4: [54–55] (1 AA) IP-2
+  Chain 5: [55–59] (4 AA) IP-2
+  Chain 6: [59–96] (37 AA) Σ-variable region
+  Chain 7: [96–191] (95 AA) Ω-winding module
+  Chain 8: [191–290] (99 AA) ƒ-hydrophobic core
+  Chain 9: [290–297] (7 AA) Connector
+  Chain 10: [297–298] (1 AA) IP-2
+  Chain 11: [298–325] (27 AA) Ω-winding module
+  Chain 12: [325–332] (7 AA) Connector
+  Chain 13: [332–351] (19 AA) Ω-winding module
+
+[2;37m DNA  → 036_B7Z0I7_codons.dna  [0m[1;2;37m([0m[1;2;36m1053[0m[2;37m nt[0m[1;2;37m)[0m
