@@ -1,0 +1,45 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 079_P02929
+╚══════════════════════════════════════════════════════════╝
+Input: 239 AA | Promoted: 37.2% | Dominant: ◻ | ∈:7 | ∋:12 | ≺:3 | ≻:1 | ⊙:2 | ⊞:18 | ⊢:4 | ⊣:2 | ⊤:11 | ⊥:6 | ⋈:5 | ◻:18
+
+▸ CLEAVAGE (4 sites):
+  pos   8: RR   → unknown                   ○=0.50
+  pos 105: KK   → unknown                   ○=0.50
+  pos 112: KR   → unknown                   ○=0.50
+  pos 212: RR   → unknown                   ○=0.50
+
+▸ PRODUCTS (5):
+
+  [1] Signal Peptide (8 AA @ 0–8)
+      ⊢-dominant (2/8 residues)
+      MTLDLPRR
+
+  [2] Ω-winding module (97 AA @ 8–105)
+      ◻-dominant (36/97 residues)
+      FPWPTLLSVCIHGAVVAGLLYTSVHQVIELPAPAQPISVT...
+
+  [3] Connector (7 AA @ 105–112)
+      ∋-dominant (4/7 residues)
+      VQEQPKR
+
+  [4] Σ-variable region (100 AA @ 112–212)
+      ⊞-dominant (33/100 residues)
+      DVKPVESRPASPFENTAPARLTSSTATAATSKPVTSVASG...
+
+  [5] Ç-kinetic regulator (27 AA @ 212–239)
+      ⊤-dominant (14/27 residues)
+      WRYEPGKPGSGIVVNILFKINGTTEIQ
+
+▸ MAP:
+  RR ↓ 8
+  KK ↓ 105
+  KR ↓ 112
+  RR ↓ 212
+  Chain 1: [0–8] (8 AA) Signal Peptide
+  Chain 2: [8–105] (97 AA) Ω-winding module
+  Chain 3: [105–112] (7 AA) Connector
+  Chain 4: [112–212] (100 AA) Σ-variable region
+  Chain 5: [212–239] (27 AA) Ç-kinetic regulator
+
+[2;37m DNA  → 079_P02929_codons.dna  [0m[1;2;37m([0m[1;2;36m717[0m[2;37m nt[0m[1;2;37m)[0m

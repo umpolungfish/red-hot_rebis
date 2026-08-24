@@ -1,0 +1,59 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 034_A1ZAC4
+╚══════════════════════════════════════════════════════════╝
+Input: 746 AA | Promoted: 51.5% | Dominant: ⊤ | ∈:49 | ∋:30 | ≺:23 | ≻:15 | ⊙:20 | ⊞:43 | ⊢:15 | ⊣:4 | ⊤:56 | ⊥:46 | ⋈:28 | ◻:55
+
+▸ CLEAVAGE (6 sites):
+  pos 301: RR   → unknown                   ○=0.50
+  pos 348: KK   → unknown                   ○=0.50
+  pos 421: KR   → unknown                   ○=0.50
+  pos 515: R    → PC2_monobasic             ○=0.40 [M]
+  pos 601: KK   → unknown                   ○=0.50
+  pos 608: KR   → unknown                   ○=0.50
+
+▸ PRODUCTS (7):
+
+  [1] Signal Peptide (301 AA @ 1–301)
+      ◻-dominant (143/301 residues)
+      MNLEDISMIMKLFDSNMHKLQGNLRSYQTEMHQIHKELTE...
+
+  [2] Ħ-chiral domain (47 AA @ 302–348)
+      ⊥-dominant (26/47 residues)
+      DIYNQILKDMAAFPENTIVTAVLASVDVTDNCAYVAKWDE...
+
+  [3] Ç-kinetic regulator (73 AA @ 349–421)
+      ⊤-dominant (41/73 residues)
+      VLQRQLPLQELDQLPDYGDIFAVLDSINNIITRITINSSS...
+
+  [4] Ç-kinetic regulator (94 AA @ 422–515)
+      ⊤-dominant (49/94 residues)
+      LPAQAIRCDLINCDIANMHCFVNTYIKIRVHENNNSTLVA...
+
+  [5] Ç-kinetic regulator (86 AA @ 516–601)
+      ⊤-dominant (44/86 residues)
+      ICRHYDPKLNGCFKGNNCRFAHEPFAPNGATKDVELARAL...
+
+  [6] Connector (7 AA @ 602–608)
+      ⊥-dominant (4/7 residues)
+      DVPENKR
+
+  [7] ƒ-hydrophobic core (138 AA @ 609–746)
+      ⋈-dominant (77/138 residues)
+      TFKSKPRLLDIVLALYSDGCFYRAQIIDEFPSEYMIFYVD...
+
+▸ MAP:
+  RR ↓ 301
+  KK ↓ 348
+  KR ↓ 421
+  [M] ↓ 515
+  KK ↓ 601
+  KR ↓ 608
+  Chain 1: [1–301] (301 AA) Signal Peptide
+  Chain 2: [302–348] (47 AA) Ħ-chiral domain
+  Chain 3: [349–421] (73 AA) Ç-kinetic regulator
+  Chain 4: [422–515] (94 AA) Ç-kinetic regulator
+  Chain 5: [516–601] (86 AA) Ç-kinetic regulator
+  Chain 6: [602–608] (7 AA) Connector
+  Chain 7: [609–746] (138 AA) ƒ-hydrophobic core
+
+[2;37m DNA  → 034_A1ZAC4_codons.dna  [0m[1;2;37m([0m[1;2;36m2238[0m[2;37m nt[0m[1;2;37m)[0m

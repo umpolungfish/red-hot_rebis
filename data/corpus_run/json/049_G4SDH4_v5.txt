@@ -1,0 +1,38 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 049_G4SDH4
+╚══════════════════════════════════════════════════════════╝
+Input: 476 AA | Promoted: 41.6% | Dominant: ⋈ | ∈:18 | ∋:13 | ≺:14 | ≻:10 | ⊙:10 | ⊞:12 | ⊢:12 | ⊣:6 | ⊤:34 | ⊥:12 | ⋈:39 | ◻:18
+
+▸ CLEAVAGE (3 sites):
+  pos 220: KK   → unknown                   ○=0.50
+  pos 230: KK   → unknown                   ○=0.50
+  pos 240: RK   → unknown                   ○=0.50
+
+▸ PRODUCTS (4):
+
+  [1] Signal Peptide (220 AA @ 0–220)
+      ⋈-dominant (92/220 residues)
+      MGCSAATFILVALFGSSSWMGTNSVWMQLPLLTSELPEQW...
+
+  [2] Ω-winding module (10 AA @ 220–230)
+      ◻-dominant (5/10 residues)
+      EPNEGTPLKK
+
+  [3] Γ-catalytic domain (10 AA @ 230–240)
+      ∈-dominant (4/10 residues)
+      DLNNTSSSRK
+
+  [4] Ç-kinetic regulator (236 AA @ 240–476)
+      ⊤-dominant (97/236 residues)
+      GDDEDESPIEIHETGAPAIDAIVSELDVTFREELQKSFRD...
+
+▸ MAP:
+  KK ↓ 220
+  KK ↓ 230
+  RK ↓ 240
+  Chain 1: [0–220] (220 AA) Signal Peptide
+  Chain 2: [220–230] (10 AA) Ω-winding module
+  Chain 3: [230–240] (10 AA) Γ-catalytic domain
+  Chain 4: [240–476] (236 AA) Ç-kinetic regulator
+
+[2;37m DNA  → 049_G4SDH4_codons.dna  [0m[1;2;37m([0m[1;2;36m1428[0m[2;37m nt[0m[1;2;37m)[0m

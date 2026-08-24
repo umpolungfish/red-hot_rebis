@@ -1,0 +1,89 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 046_B2D6M2
+╚══════════════════════════════════════════════════════════╝
+Input: 612 AA | Promoted: 57.5% | Dominant: ⊥ | ∈:37 | ∋:20 | ≺:26 | ≻:12 | ⊙:14 | ⊞:43 | ⊢:14 | ⊣:11 | ⊤:35 | ⊥:48 | ⋈:46 | ◻:46
+
+▸ CLEAVAGE (11 sites):
+  pos  66: RK   → unknown                   ○=0.50
+  pos  67: KK   → unknown                   ○=0.50
+  pos 134: KK   → unknown                   ○=0.50
+  pos 138: RK   → unknown                   ○=0.50
+  pos 207: K    → PC2_monobasic             ○=0.40 [M]
+  pos 328: RR   → unknown                   ○=0.50
+  pos 336: KK   → unknown                   ○=0.50
+  pos 384: KK   → unknown                   ○=0.50
+  pos 427: RK   → unknown                   ○=0.50
+  pos 540: K    → PC2_monobasic             ○=0.40 [M]
+  pos 609: KK   → unknown                   ○=0.50
+
+▸ PRODUCTS (11):
+
+  [1] Signal Peptide (66 AA @ 1–66)
+      ⋈-dominant (36/66 residues)
+      MLKLVILCFALFYNTVSSTRFLFGVEVKCDFDEVFQLTVS...
+
+  [2] B-chain (67 AA @ 68–134)
+      ⋈-dominant (40/67 residues)
+      IFFYQDGHHGFEFGKLEPYGWFLHNCTKNGNFREYRHGLS...
+
+  [3] IP-2 (4 AA @ 135–138)
+      ⊥-dominant (2/4 residues)
+      SDRK
+
+  [4] Ω-winding module (69 AA @ 139–207)
+      ◻-dominant (43/69 residues)
+      LDKTYLWESYLHQFEKGKTSFIPVEAFNRNLTVNFNECVK...
+
+  [5] Γ-catalytic domain (121 AA @ 208–328)
+      ∈-dominant (64/121 residues)
+      VCGYRVLAQFIGADTKFWLNILSDDMFGLANAAMSDPNMD...
+
+  [6] Signal Peptide (8 AA @ 329–336)
+      ⊞-dominant (5/8 residues)
+      MNVSITKK
+
+  [7] Ħ-chiral domain (48 AA @ 337–384)
+      ⊥-dominant (26/48 residues)
+      DFPESLPDADDDRQVFSSGSQYWIDEGSFFIFPVGFAAVN...
+
+  [8] Ħ-chiral domain (43 AA @ 385–427)
+      ⊥-dominant (29/43 residues)
+      EYIEHTNKIAQAIKNGENPRYDSDDVTFDQLAKDPIDPMI...
+
+  [9] Ω-winding module (113 AA @ 428–540)
+      ◻-dominant (64/113 residues)
+      VKVGQKFELIDPLAQQFNNLHVASILKFCKTEGYLIVGMD...
+
+  [10] Ħ-chiral domain (69 AA @ 541–609)
+      ⊥-dominant (39/69 residues)
+      VGLRLEAADMCENQFICPATVKSVHGRLINVNFDGWDEEF...
+
+  [11] IP-2 (3 AA @ 610–612)
+      ≺-dominant (3/3 residues)
+      YNY
+
+▸ MAP:
+  RK ↓ 66
+  KK ↓ 67
+  KK ↓ 134
+  RK ↓ 138
+  [M] ↓ 207
+  RR ↓ 328
+  KK ↓ 336
+  KK ↓ 384
+  RK ↓ 427
+  [M] ↓ 540
+  KK ↓ 609
+  Chain 1: [1–66] (66 AA) Signal Peptide
+  Chain 2: [68–134] (67 AA) B-chain
+  Chain 3: [135–138] (4 AA) IP-2
+  Chain 4: [139–207] (69 AA) Ω-winding module
+  Chain 5: [208–328] (121 AA) Γ-catalytic domain
+  Chain 6: [329–336] (8 AA) Signal Peptide
+  Chain 7: [337–384] (48 AA) Ħ-chiral domain
+  Chain 8: [385–427] (43 AA) Ħ-chiral domain
+  Chain 9: [428–540] (113 AA) Ω-winding module
+  Chain 10: [541–609] (69 AA) Ħ-chiral domain
+  Chain 11: [610–612] (3 AA) IP-2
+
+[2;37m DNA  → 046_B2D6M2_codons.dna  [0m[1;2;37m([0m[1;2;36m1836[0m[2;37m nt[0m[1;2;37m)[0m

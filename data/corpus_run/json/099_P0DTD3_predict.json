@@ -1,0 +1,127 @@
+═ Protein Prediction Pipeline ═
+  Sequence: MLQSCYNFLKEQHCQKASTQKGAEAAVKPLLVPHHVVATVQEIQLQAAVG...
+  Length: 73 aa | Name: P0DTD3
+{
+  "name": "P0DTD3",
+  "sequence": "MLQSCYNFLKEQHCQKASTQKGAEAAVKPLLVPHHVVATVQEIQLQAAVGELLLLEWLAMAVMLLLLCCCLTD",
+  "length": 73,
+  "pipeline_result": {
+    "name": "P0DTD3",
+    "sequence": "MLQSCYNFLKEQHCQKASTQKGAEAAVKPLLVPHHVVATVQEIQLQAAVGELLLLEWLAMAVMLLLLCCCLTD",
+    "length": 73,
+    "signal_peptide": null,
+    "cleavage_sites": [],
+    "fragments": [
+      {
+        "start": 0,
+        "end": 73,
+        "length": 73,
+        "sequence": "MLQSCYNFLKEQHCQKASTQKGAEAAVKPLLVPHHVVATVQEIQLQAAVGELLLLEWLAMAVMLLLLCCCLTD",
+        "label": "full_precursor",
+        "vector": [
+          3,
+          1,
+          5,
+          1,
+          1,
+          1,
+          1,
+          7,
+          3,
+          1,
+          4,
+          5
+        ],
+        "densities": {
+          "⊢": 0.041,
+          "⊣": 0.014,
+          "≻": 0.068,
+          "≺": 0.014,
+          "⋈": 0.014,
+          "⊤": 0.014,
+          "∈": 0.014,
+          "∋": 0.096,
+          "⊙": 0.041,
+          "⊥": 0.014,
+          "⊞": 0.055,
+          "◻": 0.068
+        },
+        "dominant_primitives": [
+          "∋"
+        ],
+        "total_primitive_activations": 33,
+        "amidation": null
+      }
+    ],
+    "processing": {
+      "precursor": "MLQSCYNFLKEQHCQKASTQKGAEAAVKPLLVPHHVVATVQEIQLQAAVGELLLLEWLAMAVMLLLLCCCLTD",
+      "length": 73,
+      "steps": []
+    },
+    "disulfide_bonds": {
+      "bonds": [
+        {
+          "cys_1": {
+            "position": 4,
+            "fragment": "full_precursor"
+          },
+          "cys_2": {
+            "position": 13,
+            "fragment": "full_precursor"
+          },
+          "distance": 9,
+          "motif": "long-range",
+          "bond_type": "intrachain"
+        },
+        {
+          "cys_1": {
+            "position": 67,
+            "fragment": "full_precursor"
+          },
+          "cys_2": {
+            "position": 68,
+            "fragment": "full_precursor"
+          },
+          "distance": 1,
+          "motif": "CC",
+          "bond_type": "intrachain"
+        }
+      ],
+      "unpaired_cys": [
+        {
+          "fragment": "full_precursor",
+          "rel_pos": 69,
+          "abs_pos": 69,
+          "context": "CCCLT"
+        }
+      ]
+    },
+    "mature_products": [
+      {
+        "name": "full_precursor",
+        "sequence": "MLQSCYNFLKEQHCQKASTQKGAEAAVKPLLVPHHVVATVQEIQLQAAVGELLLLEWLAMAVMLLLLCCCLTD",
+        "length": 73,
+        "start": 0,
+        "end": 73,
+        "dominant_primitive": "∋",
+        "profile": {
+          "⊢": 3,
+          "⊣": 1,
+          "≻": 5,
+          "≺": 1,
+          "⋈": 1,
+          "⊤": 1,
+          "∈": 1,
+          "∋": 7,
+          "⊙": 3,
+          "⊥": 1,
+          "⊞": 4,
+          "◻": 5
+        },
+        "inferred_function": "glycosylation_target",
+        "amidation": null
+      }
+    ]
+  },
+  "narrative": "═══ P0DTD3 — Structural Processing Analysis ═══\nSequence: 73 AA\n\n▸ Mature products:\n  • full_precursor (73 AA) — glycosylation_target\n    Primitive profile: ∈=1 | ∋=7 | ≺=1 | ≻=5 | ⊙=3 | ⊞=4 | ⊢=3 | ⊣=1 | ⊤=1 | ⊥=1 | ⋈=1 | ◻=5\n\n▸ Predicted disulfide bonds (Ř-Ř):\n  Cys4—Cys13 (intrachain, long-range)\n  Cys67—Cys68 (intrachain, CC)\n  ⚠ Unpaired Cys @ pos 69 in full_precursor\n"
+}

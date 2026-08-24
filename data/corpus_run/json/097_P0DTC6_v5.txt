@@ -1,0 +1,15 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 097_P0DTC6
+╚══════════════════════════════════════════════════════════╝
+Input: 61 AA | Promoted: 65.6% | Dominant: ⊤ | ∈:4 | ∋:3 | ≺:2 | ⊙:1 | ⊞:4 | ⊢:3 | ⊣:1 | ⊤:10 | ⊥:4 | ⋈:3 | ◻:5
+
+▸ PRODUCTS (1):
+
+  [1] Signal Peptide (61 AA @ 0–61)
+      ⊤-dominant (40/61 residues)
+      MFHLVDFQVTIAEILLIIMRTFKVSIWNLDYIINLIIKNL...
+
+▸ MAP:
+  Chain 1: [0–61] (61 AA) Signal Peptide
+
+[2;37m DNA  → 097_P0DTC6_codons.dna  [0m[1;2;37m([0m[1;2;36m183[0m[2;37m nt[0m[1;2;37m)[0m

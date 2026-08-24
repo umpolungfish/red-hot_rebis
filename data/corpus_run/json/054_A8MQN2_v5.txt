@@ -1,0 +1,79 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 054_A8MQN2
+╚══════════════════════════════════════════════════════════╝
+Input: 616 AA | Promoted: 51.0% | Dominant: ⊥ | ∈:44 | ∋:27 | ≺:15 | ≻:6 | ⊙:19 | ⊞:32 | ⊢:16 | ⊣:3 | ⊤:22 | ⊥:62 | ⋈:24 | ◻:44
+
+▸ CLEAVAGE (11 sites):
+  pos  44: RK   → unknown                   ○=0.50
+  pos  45: KK   → unknown                   ○=0.50
+  pos  46: KR   → unknown                   ○=0.50
+  pos  47: RR   → unknown                   ○=0.50
+  pos  66: KR   → unknown                   ○=0.50
+  pos 281: KK   → unknown                   ○=0.50
+  pos 295: KK   → unknown                   ○=0.50
+  pos 404: RK   → unknown                   ○=0.50
+  pos 428: KK   → unknown                   ○=0.50
+  pos 454: RK   → unknown                   ○=0.50
+  pos 511: K    → PC2_monobasic             ○=0.45 [M]
+
+▸ PRODUCTS (9):
+
+  [1] Signal Peptide (44 AA @ 1–44)
+      ⊥-dominant (25/44 residues)
+      MSDLYIHELGDYLSDEFHGNDDGIVPDSAYEDGGQFPILV...
+
+  [2] Γ-catalytic domain (19 AA @ 48–66)
+      ∈-dominant (11/19 residues)
+      NDDMGSGTNHLKSNTFIKR
+
+  [3] Ħ-chiral domain (215 AA @ 67–281)
+      ⊥-dominant (116/215 residues)
+      EANMLGKNPWPEKDSGGSSVSRDTGTGKDVQDMTLEDTNT...
+
+  [4] Ħ-chiral domain (14 AA @ 282–295)
+      ⊥-dominant (9/14 residues)
+      DILMLDVEANLEKK
+
+  [5] B-chain (109 AA @ 296–404)
+      ∋-dominant (56/109 residues)
+      QTDHLHHLDGKSDGFSENSFTLQHSGISREIMDTNQYYPP...
+
+  [6] ƒ-hydrophobic core (24 AA @ 405–428)
+      ⋈-dominant (10/24 residues)
+      VFETRANLLPGQDMPPSFAANTKK
+
+  [7] Σ-variable region (26 AA @ 429–454)
+      ⊞-dominant (14/26 residues)
+      SSKTDSMVFPDAAPIQKIGLENDHRK
+
+  [8] ɢ-glycosylation target (57 AA @ 455–511)
+      ∋-dominant (24/57 residues)
+      AATELETSNMQGSSCVSSVVDDISLEATSFRQLQQVIEQL...
+
+  [9] Ω-winding module (105 AA @ 512–616)
+      ◻-dominant (48/105 residues)
+      SAEQRHHGGNRPEKGAGSHLVTGEADKYAGFMDIETDTNP...
+
+▸ MAP:
+  RK ↓ 44
+  KK ↓ 45
+  KR ↓ 46
+  RR ↓ 47
+  KR ↓ 66
+  KK ↓ 281
+  KK ↓ 295
+  RK ↓ 404
+  KK ↓ 428
+  RK ↓ 454
+  [M] ↓ 511
+  Chain 1: [1–44] (44 AA) Signal Peptide
+  Chain 2: [48–66] (19 AA) Γ-catalytic domain
+  Chain 3: [67–281] (215 AA) Ħ-chiral domain
+  Chain 4: [282–295] (14 AA) Ħ-chiral domain
+  Chain 5: [296–404] (109 AA) B-chain
+  Chain 6: [405–428] (24 AA) ƒ-hydrophobic core
+  Chain 7: [429–454] (26 AA) Σ-variable region
+  Chain 8: [455–511] (57 AA) ɢ-glycosylation target
+  Chain 9: [512–616] (105 AA) Ω-winding module
+
+[2;37m DNA  → 054_A8MQN2_codons.dna  [0m[1;2;37m([0m[1;2;36m1848[0m[2;37m nt[0m[1;2;37m)[0m

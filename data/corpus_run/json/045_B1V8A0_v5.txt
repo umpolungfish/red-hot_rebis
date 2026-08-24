@@ -1,0 +1,61 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 045_B1V8A0
+╚══════════════════════════════════════════════════════════╝
+Input: 381 AA | Promoted: 48.6% | Dominant: ∋ | ∈:22 | ∋:33 | ≺:11 | ≻:3 | ⊙:7 | ⊞:24 | ⊢:13 | ⊣:1 | ⊤:9 | ⊥:24 | ⋈:11 | ◻:27
+
+▸ CLEAVAGE (7 sites):
+  pos   8: RK   → unknown                   ○=0.50
+  pos 165: RR   → unknown                   ○=0.50
+  pos 172: KK   → unknown                   ○=0.50
+  pos 173: KR   → unknown                   ○=0.50
+  pos 177: RR   → unknown                   ○=0.50
+  pos 193: KR   → unknown                   ○=0.50
+  pos 271: R    → PC2_monobasic             ○=0.45 [M]
+
+▸ PRODUCTS (7):
+
+  [1] Signal Peptide (8 AA @ 1–8)
+      ⊢-dominant (2/8 residues)
+      MSLSGLRK
+
+  [2] Γ-catalytic domain (157 AA @ 9–165)
+      ∈-dominant (82/157 residues)
+      QFNKANQYLSETMGAAEPTKLDDVFNEMEKNVDTTYNLIT...
+
+  [3] Connector (7 AA @ 166–172)
+      ⊥-dominant (6/7 residues)
+      LDYDCKK
+
+  [4] IP-2 (4 AA @ 174–177)
+      ∋-dominant (2/4 residues)
+      QQRR
+
+  [5] Ω-winding module (16 AA @ 178–193)
+      ◻-dominant (12/16 residues)
+      DDEMIQAEEKLEESKR
+
+  [6] ɢ-glycosylation target (78 AA @ 194–271)
+      ∋-dominant (35/78 residues)
+      LAEMSMFNVLSNDVEQISQLRALIEAQLDFHRQTAQCLEN...
+
+  [7] ɢ-glycosylation target (110 AA @ 272–381)
+      ∋-dominant (46/110 residues)
+      SPAPSDMSHNSTAAAAFKMPPQNGGGITQAPPSYQGPPPG...
+
+▸ MAP:
+  RK ↓ 8
+  RR ↓ 165
+  KK ↓ 172
+  KR ↓ 173
+  RR ↓ 177
+  KR ↓ 193
+  [M] ↓ 271
+  Chain 1: [1–8] (8 AA) Signal Peptide
+  Chain 2: [9–165] (157 AA) Γ-catalytic domain
+  Chain 3: [166–172] (7 AA) Connector
+  Chain 4: [174–177] (4 AA) IP-2
+  Chain 5: [178–193] (16 AA) Ω-winding module
+  Chain 6: [194–271] (78 AA) ɢ-glycosylation target
+  Chain 7: [272–381] (110 AA) ɢ-glycosylation target
+
+[2;37m DNA  → 045_B1V8A0_codons.dna  [0m[1;2;37m([0m[1;2;36m1143[0m[2;37m nt[0m[1;2;37m)[0m

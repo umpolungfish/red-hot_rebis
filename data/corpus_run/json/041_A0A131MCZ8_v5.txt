@@ -1,0 +1,102 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 041_A0A131MCZ8
+╚══════════════════════════════════════════════════════════╝
+Input: 797 AA | Promoted: 47.9% | Dominant: ⊤ | ∈:39 | ∋:24 | ≺:16 | ≻:17 | ⊙:17 | ⊞:49 | ⊢:27 | ⊣:5 | ⊤:61 | ⊥:33 | ⋈:33 | ◻:61
+
+▸ CLEAVAGE (15 sites):
+  pos  91: KK   → unknown                   ○=0.50
+  pos 242: KR   → unknown                   ○=0.50
+  pos 252: RK   → unknown                   ○=0.50
+  pos 253: KK   → unknown                   ○=0.50
+  pos 355: K    → PC2_monobasic             ○=0.40 [M]
+  pos 432: RK   → unknown                   ○=0.50
+  pos 467: RR   → unknown                   ○=0.50
+  pos 483: KR   → unknown                   ○=0.50
+  pos 538: RK   → unknown                   ○=0.50
+  pos 539: KK   → unknown                   ○=0.50
+  pos 540: KR   → unknown                   ○=0.50
+  pos 543: RK   → unknown                   ○=0.50
+  pos 544: KR   → unknown                   ○=0.50
+  pos 596: RK   → unknown                   ○=0.50
+  pos 600: KK   → unknown                   ○=0.50
+
+▸ PRODUCTS (12):
+
+  [1] Signal Peptide (91 AA @ 1–91)
+      ⊞-dominant (27/91 residues)
+      MSKTPWALGLLIFLLTFTSPLSSSPVRSTDNSTSSKGLLN...
+
+  [2] ƒ-hydrophobic core (151 AA @ 92–242)
+      ⋈-dominant (73/151 residues)
+      HNVVVVPNKNVRVVLFGQNFQDIGALTFTADGSCKDLAHF...
+
+  [3] Ç-kinetic regulator (10 AA @ 243–252)
+      ⊤-dominant (4/10 residues)
+      DAGRILPIRK
+
+  [4] Ç-kinetic regulator (102 AA @ 254–355)
+      ⊤-dominant (38/102 residues)
+      GNQLLCTLLIGNVVVNVGVSLLMDQLVGSGFAVLVAATSC...
+
+  [5] Ω-winding module (77 AA @ 356–432)
+      ◻-dominant (39/77 residues)
+      LVEMLKLSEKSIIGGQSDEFKMVLGALELYDKTVAHAMTR...
+
+  [6] Γ-catalytic domain (35 AA @ 433–467)
+      ∈-dominant (19/35 residues)
+      NIVALLFVKDLALLDPDDNHNVMKIASIYNHEVRR
+
+  [7] Ð-initiation bootstrap (16 AA @ 468–483)
+      ⊢-dominant (8/16 residues)
+      VLVDMPLRNMLEEFKR
+
+  [8] Ω-winding module (55 AA @ 484–538)
+      ◻-dominant (37/55 residues)
+      GEYHMALVERLVEQEDKDPIYELCGLITLEDIIEEIIQCE...
+
+  [9] IP-2 (3 AA @ 541–543)
+      ∋-dominant (2/3 residues)
+      QRK
+
+  [10] Ç-kinetic regulator (52 AA @ 545–596)
+      ⊤-dominant (31/52 residues)
+      NHDMSQIVNTAHAKCAINIQMLAVTIQVMSTCHKIFSSNY...
+
+  [11] IP-2 (4 AA @ 597–600)
+      ⊞-dominant (4/4 residues)
+      NCKK
+
+  [12] Ω-winding module (197 AA @ 601–797)
+      ◻-dominant (98/197 residues)
+      VETTQFSCLKEVGVVQPKPAVLFTKGEFSNKFIMILSGRA...
+
+▸ MAP:
+  KK ↓ 91
+  KR ↓ 242
+  RK ↓ 252
+  KK ↓ 253
+  [M] ↓ 355
+  RK ↓ 432
+  RR ↓ 467
+  KR ↓ 483
+  RK ↓ 538
+  KK ↓ 539
+  KR ↓ 540
+  RK ↓ 543
+  KR ↓ 544
+  RK ↓ 596
+  KK ↓ 600
+  Chain 1: [1–91] (91 AA) Signal Peptide
+  Chain 2: [92–242] (151 AA) ƒ-hydrophobic core
+  Chain 3: [243–252] (10 AA) Ç-kinetic regulator
+  Chain 4: [254–355] (102 AA) Ç-kinetic regulator
+  Chain 5: [356–432] (77 AA) Ω-winding module
+  Chain 6: [433–467] (35 AA) Γ-catalytic domain
+  Chain 7: [468–483] (16 AA) Ð-initiation bootstrap
+  Chain 8: [484–538] (55 AA) Ω-winding module
+  Chain 9: [541–543] (3 AA) IP-2
+  Chain 10: [545–596] (52 AA) Ç-kinetic regulator
+  Chain 11: [597–600] (4 AA) IP-2
+  Chain 12: [601–797] (197 AA) Ω-winding module
+
+[2;37m DNA  → 041_A0A131MCZ8_codons.dna  [0m[1;2;37m([0m[1;2;36m2391[0m[2;37m nt[0m[1;2;37m)[0m

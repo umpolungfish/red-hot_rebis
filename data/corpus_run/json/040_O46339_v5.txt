@@ -1,0 +1,80 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 040_O46339
+╚══════════════════════════════════════════════════════════╝
+Input: 487 AA | Promoted: 43.5% | Dominant: ⊥ | ∈:16 | ∋:20 | ≺:19 | ≻:7 | ⊙:27 | ⊞:17 | ⊢:16 | ⊣:4 | ⊤:16 | ⊥:36 | ⋈:13 | ◻:21
+
+▸ CLEAVAGE (9 sites):
+  pos  92: KR   → unknown                   ○=0.50
+  pos 305: RR   → unknown                   ○=0.50
+  pos 321: RR   → unknown                   ○=0.50
+  pos 364: KK   → unknown                   ○=0.50
+  pos 368: KK   → unknown                   ○=0.50
+  pos 369: KR   → unknown                   ○=0.50
+  pos 399: KK   → unknown                   ○=0.50
+  pos 421: RR   → unknown                   ○=0.50
+  pos 422: RR   → unknown                   ○=0.50
+
+▸ PRODUCTS (10):
+
+  [1] Signal Peptide (92 AA @ 0–92)
+      ⊙-dominant (33/92 residues)
+      MAQPRYDDGLHGYGMDSGAAAAAMYDPHAGHRPPGLQGLP...
+
+  [2] B-chain (213 AA @ 92–305)
+      ⊥-dominant (93/213 residues)
+      DKDAIYEHPLFPLLALIFEKCELATCTPREPGVQGGDVCS...
+
+  [3] Ħ-chiral domain (16 AA @ 305–321)
+      ⊥-dominant (5/16 residues)
+      EWSSPADARNADASRR
+
+  [4] Ħ-chiral domain (43 AA @ 321–364)
+      ⊥-dominant (16/43 residues)
+      LYSSVFLGSPDNFGTSASGDASNASIGSGEGTGEEDDDAS...
+
+  [5] IP-2 (4 AA @ 364–368)
+      ⊞-dominant (4/4 residues)
+      NQKK
+
+  [6] IP-2 (1 AA @ 368–369)
+      unstructured
+      R
+
+  [7] Σ-variable region (30 AA @ 369–399)
+      ⊞-dominant (16/30 residues)
+      GIFPKVATNILRAWLFQHLTHPYPSEDQKK
+
+  [8] ɢ-glycosylation target (22 AA @ 399–421)
+      ∋-dominant (11/22 residues)
+      QLAQDTGLTILQVNNWFINARR
+
+  [9] IP-2 (1 AA @ 421–422)
+      unstructured
+      R
+
+  [10] Φ-switch domain (65 AA @ 422–487)
+      ≺-dominant (34/65 residues)
+      IVQPMIDQSNRAVYTPHPGPSGYGHDAMGYMMDSQAHMMH...
+
+▸ MAP:
+  KR ↓ 92
+  RR ↓ 305
+  RR ↓ 321
+  KK ↓ 364
+  KK ↓ 368
+  KR ↓ 369
+  KK ↓ 399
+  RR ↓ 421
+  RR ↓ 422
+  Chain 1: [0–92] (92 AA) Signal Peptide
+  Chain 2: [92–305] (213 AA) B-chain
+  Chain 3: [305–321] (16 AA) Ħ-chiral domain
+  Chain 4: [321–364] (43 AA) Ħ-chiral domain
+  Chain 5: [364–368] (4 AA) IP-2
+  Chain 6: [368–369] (1 AA) IP-2
+  Chain 7: [369–399] (30 AA) Σ-variable region
+  Chain 8: [399–421] (22 AA) ɢ-glycosylation target
+  Chain 9: [421–422] (1 AA) IP-2
+  Chain 10: [422–487] (65 AA) Φ-switch domain
+
+[2;37m DNA  → 040_O46339_codons.dna  [0m[1;2;37m([0m[1;2;36m1461[0m[2;37m nt[0m[1;2;37m)[0m

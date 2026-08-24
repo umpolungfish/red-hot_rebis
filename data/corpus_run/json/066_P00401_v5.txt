@@ -1,0 +1,31 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 066_P00401
+╚══════════════════════════════════════════════════════════╝
+Input: 534 AA | Promoted: 43.6% | Dominant: ⊤ | ∈:27 | ∋:9 | ≺:24 | ≻:1 | ⊙:16 | ⊞:10 | ⊢:21 | ⊣:10 | ⊤:49 | ⊥:13 | ⋈:44 | ◻:9
+
+▸ CLEAVAGE (2 sites):
+  pos 265: KK   → unknown                   ○=0.50
+  pos 439: RR   → unknown                   ○=0.50
+
+▸ PRODUCTS (3):
+
+  [1] Signal Peptide (265 AA @ 0–265)
+      ⊤-dominant (106/265 residues)
+      MVQRWLYSTNAKDIAVLYFMLAIFSGMAGTAMSLIIRLEL...
+
+  [2] Ç-kinetic regulator (174 AA @ 265–439)
+      ⊤-dominant (81/174 residues)
+      PVFGEISMVYAMASIGLLGFLVWSHHMYIVGLDADTRAYF...
+
+  [3] Γ-catalytic domain (95 AA @ 439–534)
+      ∈-dominant (46/95 residues)
+      IPDYPDAFAGWNYVASIGSFIATLSLFLFIYILYDQLVNG...
+
+▸ MAP:
+  KK ↓ 265
+  RR ↓ 439
+  Chain 1: [0–265] (265 AA) Signal Peptide
+  Chain 2: [265–439] (174 AA) Ç-kinetic regulator
+  Chain 3: [439–534] (95 AA) Γ-catalytic domain
+
+[2;37m DNA  → 066_P00401_codons.dna  [0m[1;2;37m([0m[1;2;36m1602[0m[2;37m nt[0m[1;2;37m)[0m

@@ -1,0 +1,100 @@
+═ Protein Prediction Pipeline ═
+  Sequence: MAGTVLGVGAGVFILALLWVAVLLLCVLLSRASGAARFSVIFLFFGAVII...
+  Length: 115 aa | Name: A2RU14
+{
+  "name": "A2RU14",
+  "sequence": "MAGTVLGVGAGVFILALLWVAVLLLCVLLSRASGAARFSVIFLFFGAVIITSVLLLFPRAGEFPAPEVEVKIVDDFFIGRYVLLAFLSAIFLGGLFLVLIHYVLEPIYAKPLHSY",
+  "length": 115,
+  "pipeline_result": {
+    "name": "A2RU14",
+    "sequence": "MAGTVLGVGAGVFILALLWVAVLLLCVLLSRASGAARFSVIFLFFGAVIITSVLLLFPRAGEFPAPEVEVKIVDDFFIGRYVLLAFLSAIFLGGLFLVLIHYVLEPIYAKPLHSY",
+    "length": 115,
+    "signal_peptide": {
+      "sequence": "MAGTVLGVGAGVFILALLWVAVLLLCVLLSRA",
+      "length": 32,
+      "cleavage_position": 32,
+      "bootstrap_score": 2,
+      "n_charge": 0,
+      "hydrophobic_core_length": 21
+    },
+    "cleavage_sites": [],
+    "fragments": [
+      {
+        "start": 32,
+        "end": 115,
+        "length": 83,
+        "sequence": "SGAARFSVIFLFFGAVIITSVLLLFPRAGEFPAPEVEVKIVDDFFIGRYVLLAFLSAIFLGGLFLVLIHYVLEPIYAKPLHSY",
+        "label": "full_precursor",
+        "vector": [
+          0,
+          0,
+          0,
+          4,
+          11,
+          8,
+          0,
+          0,
+          2,
+          2,
+          2,
+          4
+        ],
+        "densities": {
+          "⊢": 0.0,
+          "⊣": 0.0,
+          "≻": 0.0,
+          "≺": 0.048,
+          "⋈": 0.133,
+          "⊤": 0.096,
+          "∈": 0.0,
+          "∋": 0.0,
+          "⊙": 0.024,
+          "⊥": 0.024,
+          "⊞": 0.024,
+          "◻": 0.048
+        },
+        "dominant_primitives": [
+          "⋈"
+        ],
+        "total_primitive_activations": 33,
+        "amidation": null
+      }
+    ],
+    "processing": {
+      "precursor": "MAGTVLGVGAGVFILALLWVAVLLLCVLLSRASGAARFSVIFLFFGAVIITSVLLLFPRAGEFPAPEVEVKIVDDFFIGRYVLLAFLSAIFLGGLFLVLIHYVLEPIYAKPLHSY",
+      "length": 115,
+      "steps": [
+        {
+          "step": 1,
+          "enzyme": "Signal Peptidase",
+          "action": "Remove signal peptide (32 AA)",
+          "cleavage_position": 32,
+          "product_length": 83
+        }
+      ]
+    },
+    "disulfide_bonds": [],
+    "mature_products": [
+      {
+        "name": "full_precursor",
+        "sequence": "SGAARFSVIFLFFGAVIITSVLLLFPRAGEFPAPEVEVKIVDDFFIGRYVLLAFLSAIFLGGLFLVLIHYVLEPIYAKPLHSY",
+        "length": 83,
+        "start": 32,
+        "end": 115,
+        "dominant_primitive": "⋈",
+        "profile": {
+          "≺": 4,
+          "⋈": 11,
+          "⊤": 8,
+          "⊙": 2,
+          "⊥": 2,
+          "⊞": 2,
+          "◻": 4
+        },
+        "inferred_function": "hydrophobic_core",
+        "amidation": null
+      }
+    ]
+  },
+  "narrative": "═══ A2RU14 — Structural Processing Analysis ═══\nSequence: 115 AA\n\n▸ Signal peptide (32 AA): MAGTVLGVGAGVFILALLWVAVLLLCVLLSRA\n  Bootstrap elements: Met(Ð)×1, Trp(Þ)×1\n  Cleavage @ position 32 ← signal peptidase\n  Dominant: ⊢, ⊣, ≻, ⋈, ⊤ — bootstrap preconditions\n\n▸ Processing steps:\n  [1] Signal Peptidase: Remove signal peptide (32 AA)\n\n▸ Mature products:\n  • full_precursor (83 AA) — hydrophobic_core\n    Primitive profile: ≺=4 | ⊙=2 | ⊞=2 | ⊤=8 | ⊥=2 | ⋈=11 | ◻=4\n"
+}

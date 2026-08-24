@@ -1,0 +1,19 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 092_P0DTC4
+╚══════════════════════════════════════════════════════════╝
+Input: 75 AA | Promoted: 34.7% | Dominant: ⋈ | ∈:5 | ≺:4 | ≻:3 | ⊞:2 | ⊢:1 | ⊤:3 | ⊥:1 | ⋈:5 | ◻:2
+
+▸ CLEAVAGE (1 sites):
+  pos  69: R    → PC2_monobasic             ○=0.40 [M]
+
+▸ PRODUCTS (1):
+
+  [1] Signal Peptide (69 AA @ 1–69)
+      ⋈-dominant (25/69 residues)
+      MYSFVSEETGTLIVNSVLLFLAFVVFLLVTLAILTALRLC...
+
+▸ MAP:
+  [M] ↓ 69
+  Chain 1: [1–69] (69 AA) Signal Peptide
+
+[2;37m DNA  → 092_P0DTC4_codons.dna  [0m[1;2;37m([0m[1;2;36m225[0m[2;37m nt[0m[1;2;37m)[0m

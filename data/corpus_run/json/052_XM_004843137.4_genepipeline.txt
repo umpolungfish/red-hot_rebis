@@ -1,0 +1,22 @@
+[94m──────────────────────────── [0m[1;33mGENE → FOLDED PROTEIN[0m[94m ─────────────────────────────[0m
+[2;37m === Gene to Protein Pipeline: unnamed_gene ===[0m
+[2;37m Sequence: UGCACUUCCGCUCAGCGGAACUCCGGGUACGGGGUGAGGUUGCCUUCGGA[0m[2;33m...[0m[2;37m [0m[1;2;37m([0m[1;2;36m1865[0m[2;37m bp[0m[1;2;37m)[0m
+[2;37m IG Primitive Activations [0m[1;2;37m([0m[1;2;36m12[0m[1;2;37m<[0m[1;2;95m-[0m[1;2;37m>[0m[1;2;36m12[0m[2;37m bijection[0m[1;2;37m)[0m[2;37m:[0m
+[2;37m   ∈: 6x[0m
+[2;37m   ∋: 16x[0m
+[2;37m   ≺: 7x[0m
+[2;37m   ≻: 5x[0m
+[2;37m   ⊙: 8x[0m
+[2;37m   ⊞: 8x[0m
+[2;37m   ⊢: 9x[0m
+[2;37m   ⊣: 3x[0m
+[2;37m   ⊤: 4x[0m
+[2;37m   ⊥: 14x[0m
+[2;37m   ⋈: 17x[0m
+[2;37m   ◻: 25x[0m
+[2;37m Auto-detected [0m[1;2;36m2[0m[2;37m subunits [0m[1;2;37m([0m[2;33mconf[0m[2;37m=[0m[1;2;36m0[0m[1;2;36m.43[0m[1;2;37m)[0m
+[1;32mDone — [0m
+[1;32mMSAAPLVGYSSSGSEDEAEAAVTEQTSPGSGGHCRGQSPLPNERFPVPDSVLNMFPGTEEGPEDDSAKHGGRVRTFPHER[0m
+[1;32mGNWVTHVYVPYEAREEFPDLLDMLLPQAQAYVPRLVKMEAFHLSLSQSVVLRHHWILPFVQALKDRMASFERFLFTANQV[0m
+[1;32mKIYTNQEKTRTFVGLEVTSGYAQFLDLVSEVDRVMEEFDLTTFYQDPSFHISLAWCVGDACLQLEGQCLQELQEIVDEFE[0m
+[1;32mDSEMLLRVQAMQVRCKSGNKFFSMPLK [0m[1;32m([0m[1;36m267[0m[1;32m aa[0m[1;32m)[0m[1;32m — [0m[1;33mΔ[0m[1;32m=[0m[1;36m0[0m[1;36m.0[0m

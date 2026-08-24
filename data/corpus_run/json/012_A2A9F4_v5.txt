@@ -1,0 +1,66 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 012_A2A9F4
+╚══════════════════════════════════════════════════════════╝
+Input: 397 AA | Promoted: 38.3% | Dominant: ◻ | ∈:4 | ∋:14 | ≺:9 | ≻:15 | ⊙:9 | ⊞:13 | ⊢:5 | ⊣:6 | ⊤:15 | ⊥:26 | ⋈:10 | ◻:26
+
+▸ CLEAVAGE (7 sites):
+  pos  41: RR   → unknown                   ○=0.50
+  pos  44: RR   → unknown                   ○=0.50
+  pos  94: RR   → unknown                   ○=0.50
+  pos 146: RR   → unknown                   ○=0.50
+  pos 246: KK   → unknown                   ○=0.50
+  pos 308: RK   → unknown                   ○=0.50
+  pos 363: RK   → unknown                   ○=0.50
+
+▸ PRODUCTS (8):
+
+  [1] Signal Peptide (41 AA @ 0–41)
+      ◻-dominant (11/41 residues)
+      MPRPGQPRPSSGPPRLGPWERPSELCLETNDERSQPPPGR...
+
+  [2] IP-2 (3 AA @ 41–44)
+      unstructured
+      TRR
+
+  [3] Ř-scaffold domain (50 AA @ 44–94)
+      ≻-dominant (23/50 residues)
+      PDPKDPGHHGPESITFISGSAEPANEPPTCCLLWRPWGWD...
+
+  [4] Ř-scaffold domain (52 AA @ 94–146)
+      ≻-dominant (18/52 residues)
+      CRDCLQRCGACVRGCSPCLSAGDPIEGSAEAAWAKEHNGV...
+
+  [5] Ħ-chiral domain (100 AA @ 146–246)
+      ⊥-dominant (42/100 residues)
+      DGQRLKTSMGSSFSYPDVKLKGIPVYPYRHATSPVPDVDS...
+
+  [6] Ç-kinetic regulator (62 AA @ 246–308)
+      ⊤-dominant (31/62 residues)
+      LTELFSVHQIDELAKCTSDTVFLEKTSKISDLISSITQDY...
+
+  [7] ɢ-glycosylation target (55 AA @ 308–363)
+      ∋-dominant (16/55 residues)
+      SRSRPQTSEGRSARSTAPAAAPDSGHETMLGSGLSQDELT...
+
+  [8] Φ-switch domain (34 AA @ 363–397)
+      ≺-dominant (11/34 residues)
+      LRPYGAPGYPASQDSSFQGTDTDSSGAPLLQVYC
+
+▸ MAP:
+  RR ↓ 41
+  RR ↓ 44
+  RR ↓ 94
+  RR ↓ 146
+  KK ↓ 246
+  RK ↓ 308
+  RK ↓ 363
+  Chain 1: [0–41] (41 AA) Signal Peptide
+  Chain 2: [41–44] (3 AA) IP-2
+  Chain 3: [44–94] (50 AA) Ř-scaffold domain
+  Chain 4: [94–146] (52 AA) Ř-scaffold domain
+  Chain 5: [146–246] (100 AA) Ħ-chiral domain
+  Chain 6: [246–308] (62 AA) Ç-kinetic regulator
+  Chain 7: [308–363] (55 AA) ɢ-glycosylation target
+  Chain 8: [363–397] (34 AA) Φ-switch domain
+
+[2;37m DNA  → 012_A2A9F4_codons.dna  [0m[1;2;37m([0m[1;2;36m1191[0m[2;37m nt[0m[1;2;37m)[0m

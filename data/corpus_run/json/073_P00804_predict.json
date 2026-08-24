@@ -1,0 +1,179 @@
+═ Protein Prediction Pipeline ═
+  Sequence: MSQSICSTGLRWLWLVVVVLIIDLGSKYLILQNFALGDTVPLFPSLNLHY...
+  Length: 164 aa | Name: P00804
+{
+  "name": "P00804",
+  "sequence": "MSQSICSTGLRWLWLVVVVLIIDLGSKYLILQNFALGDTVPLFPSLNLHYARNYGAAFSFLADSGGWQRWFFAGIAIGISVILAVMMYRSKATQKLNNIAYALIIGGALGNLFDRLWHGFVVDMIDFYVGDWHFATFNLADTAICVGAALIVLEGFLPSRAKKQ",
+  "length": 164,
+  "pipeline_result": {
+    "name": "P00804",
+    "sequence": "MSQSICSTGLRWLWLVVVVLIIDLGSKYLILQNFALGDTVPLFPSLNLHYARNYGAAFSFLADSGGWQRWFFAGIAIGISVILAVMMYRSKATQKLNNIAYALIIGGALGNLFDRLWHGFVVDMIDFYVGDWHFATFNLADTAICVGAALIVLEGFLPSRAKKQ",
+    "length": 164,
+    "signal_peptide": {
+      "sequence": "MSQSICSTGLRWLWLVVVVLIIDLGSKYLILQNFALGDTVPLFPSLNLHYARNYGAAFSFLADSGGWQRWFFAGIAIGISVILAVMMYRS",
+      "length": 90,
+      "cleavage_position": 90,
+      "bootstrap_score": 3,
+      "n_charge": 1,
+      "hydrophobic_core_length": 12
+    },
+    "cleavage_sites": [
+      {
+        "position": 161,
+        "motif": "KK",
+        "motif_seq": "KK",
+        "enzyme": "PCSK",
+        "context": "LPSRAKKQ",
+        "discontinuity": 0.133,
+        "density_before": 0.2,
+        "density_after": 0.067,
+        "cpe_trim_candidate": false
+      }
+    ],
+    "fragments": [
+      {
+        "start": 90,
+        "end": 161,
+        "length": 71,
+        "sequence": "KATQKLNNIAYALIIGGALGNLFDRLWHGFVVDMIDFYVGDWHFATFNLADTAICVGAALIVLEGFLPSRA",
+        "label": "mature_product_0",
+        "vector": [
+          1,
+          2,
+          1,
+          2,
+          6,
+          6,
+          4,
+          1,
+          2,
+          5,
+          2,
+          1
+        ],
+        "densities": {
+          "⊢": 0.014,
+          "⊣": 0.028,
+          "≻": 0.014,
+          "≺": 0.028,
+          "⋈": 0.085,
+          "⊤": 0.085,
+          "∈": 0.056,
+          "∋": 0.014,
+          "⊙": 0.028,
+          "⊥": 0.07,
+          "⊞": 0.028,
+          "◻": 0.014
+        },
+        "dominant_primitives": [
+          "⋈",
+          "⊤"
+        ],
+        "total_primitive_activations": 33,
+        "amidation": null
+      },
+      {
+        "start": 163,
+        "end": 164,
+        "length": 1,
+        "sequence": "Q",
+        "label": "intervening_peptide_1",
+        "vector": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "densities": {
+          "⊢": 0.0,
+          "⊣": 0.0,
+          "≻": 0.0,
+          "≺": 0.0,
+          "⋈": 0.0,
+          "⊤": 0.0,
+          "∈": 0.0,
+          "∋": 1.0,
+          "⊙": 0.0,
+          "⊥": 0.0,
+          "⊞": 0.0,
+          "◻": 0.0
+        },
+        "dominant_primitives": [
+          "∋"
+        ],
+        "total_primitive_activations": 1,
+        "amidation": null
+      }
+    ],
+    "processing": {
+      "precursor": "MSQSICSTGLRWLWLVVVVLIIDLGSKYLILQNFALGDTVPLFPSLNLHYARNYGAAFSFLADSGGWQRWFFAGIAIGISVILAVMMYRSKATQKLNNIAYALIIGGALGNLFDRLWHGFVVDMIDFYVGDWHFATFNLADTAICVGAALIVLEGFLPSRAKKQ",
+      "length": 164,
+      "steps": [
+        {
+          "step": 1,
+          "enzyme": "Signal Peptidase",
+          "action": "Remove signal peptide (90 AA)",
+          "cleavage_position": 90,
+          "product_length": 74
+        },
+        {
+          "step": 2,
+          "enzyme": "PCSK",
+          "action": "Cleave at KK @ pos 161",
+          "motif_sequence": "KK",
+          "discontinuity": 0.133,
+          "position": 161
+        }
+      ]
+    },
+    "disulfide_bonds": [],
+    "mature_products": [
+      {
+        "name": "mature_product_0",
+        "sequence": "KATQKLNNIAYALIIGGALGNLFDRLWHGFVVDMIDFYVGDWHFATFNLADTAICVGAALIVLEGFLPSRA",
+        "length": 71,
+        "start": 90,
+        "end": 161,
+        "dominant_primitive": "⋈",
+        "profile": {
+          "⊢": 1,
+          "⊣": 2,
+          "≻": 1,
+          "≺": 2,
+          "⋈": 6,
+          "⊤": 6,
+          "∈": 4,
+          "∋": 1,
+          "⊙": 2,
+          "⊥": 5,
+          "⊞": 2,
+          "◻": 1
+        },
+        "inferred_function": "hydrophobic_core",
+        "amidation": null
+      },
+      {
+        "name": "intervening_peptide_1",
+        "sequence": "Q",
+        "length": 1,
+        "start": 163,
+        "end": 164,
+        "dominant_primitive": "∋",
+        "profile": {
+          "∋": 1
+        },
+        "inferred_function": "glycosylation_target",
+        "amidation": null
+      }
+    ]
+  },
+  "narrative": "═══ P00804 — Structural Processing Analysis ═══\nSequence: 164 AA\n\n▸ Signal peptide (90 AA): MSQSICSTGLRWLWLVVVVLIIDLGSKYLILQNFALGDTVPLFPSLNLHYARNYGAAFSFLADSGGWQRWFFAGIAIGISVILAVMMYRS\n  Bootstrap elements: Met(Ð)×3, Trp(Þ)×4\n  Cleavage @ position 90 ← signal peptidase\n  Dominant: ⊤ — bootstrap preconditions\n\n▸ Processing steps:\n  [1] Signal Peptidase: Remove signal peptide (90 AA)\n  [2] PCSK: Cleave at KK @ pos 161\n\n▸ Mature products:\n  • mature_product_0 (71 AA) — hydrophobic_core\n    Primitive profile: ∈=4 | ∋=1 | ≺=2 | ≻=1 | ⊙=2 | ⊞=2 | ⊢=1 | ⊣=2 | ⊤=6 | ⊥=5 | ⋈=6 | ◻=1\n  • intervening_peptide_1 (1 AA) — glycosylation_target\n    Primitive profile: ∋=1\n"
+}

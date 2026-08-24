@@ -1,0 +1,123 @@
+═ Protein Prediction Pipeline ═
+  Sequence: MPGWFKKAWYGLASLLSFSSFILIIVALVVPHWLSGKILCQTGVDLVNAT...
+  Length: 232 aa | Name: A0PK11
+{
+  "name": "A0PK11",
+  "sequence": "MPGWFKKAWYGLASLLSFSSFILIIVALVVPHWLSGKILCQTGVDLVNATDRELVKFIGDIYYGLFRGCKVRQCGLGGRQSQFTIFPHLVKELNAGLHVMILLLLFLALALALVSMGFAILNMIQVPYRAVSGPGGICLWNVLAGGVVALAIASFVAAVKFHDLTERIANFQEKLFQFVVVEEQYEESFWICVASASAHAANLVVVAISQIPLPEIKTKIEEATVTAEDILY",
+  "length": 232,
+  "pipeline_result": {
+    "name": "A0PK11",
+    "sequence": "MPGWFKKAWYGLASLLSFSSFILIIVALVVPHWLSGKILCQTGVDLVNATDRELVKFIGDIYYGLFRGCKVRQCGLGGRQSQFTIFPHLVKELNAGLHVMILLLLFLALALALVSMGFAILNMIQVPYRAVSGPGGICLWNVLAGGVVALAIASFVAAVKFHDLTERIANFQEKLFQFVVVEEQYEESFWICVASASAHAANLVVVAISQIPLPEIKTKIEEATVTAEDILY",
+    "length": 232,
+    "signal_peptide": {
+      "sequence": "MPGWFKKAWYGLASLLSFSSFILIIVALVVPHWLSGKILCQTGVDLVNATDRELVKFIGDIYYGLFRGCKVRQCGLGGRQSQFTIFPHLVKELNAGLHVMILLLLFLALALALVSMGFAILN",
+      "length": 122,
+      "cleavage_position": 122,
+      "bootstrap_score": 3,
+      "n_charge": 0,
+      "hydrophobic_core_length": 19
+    },
+    "cleavage_sites": [],
+    "fragments": [
+      {
+        "start": 122,
+        "end": 232,
+        "length": 110,
+        "sequence": "MIQVPYRAVSGPGGICLWNVLAGGVVALAIASFVAAVKFHDLTERIANFQEKLFQFVVVEEQYEESFWICVASASAHAANLVVVAISQIPLPEIKTKIEEATVTAEDILY",
+        "label": "full_precursor",
+        "vector": [
+          1,
+          2,
+          2,
+          3,
+          6,
+          10,
+          3,
+          5,
+          2,
+          2,
+          4,
+          10
+        ],
+        "densities": {
+          "⊢": 0.009,
+          "⊣": 0.018,
+          "≻": 0.018,
+          "≺": 0.027,
+          "⋈": 0.055,
+          "⊤": 0.091,
+          "∈": 0.027,
+          "∋": 0.045,
+          "⊙": 0.018,
+          "⊥": 0.018,
+          "⊞": 0.036,
+          "◻": 0.091
+        },
+        "dominant_primitives": [
+          "⊤",
+          "◻"
+        ],
+        "total_primitive_activations": 50,
+        "amidation": null
+      }
+    ],
+    "processing": {
+      "precursor": "MPGWFKKAWYGLASLLSFSSFILIIVALVVPHWLSGKILCQTGVDLVNATDRELVKFIGDIYYGLFRGCKVRQCGLGGRQSQFTIFPHLVKELNAGLHVMILLLLFLALALALVSMGFAILNMIQVPYRAVSGPGGICLWNVLAGGVVALAIASFVAAVKFHDLTERIANFQEKLFQFVVVEEQYEESFWICVASASAHAANLVVVAISQIPLPEIKTKIEEATVTAEDILY",
+      "length": 232,
+      "steps": [
+        {
+          "step": 1,
+          "enzyme": "Signal Peptidase",
+          "action": "Remove signal peptide (122 AA)",
+          "cleavage_position": 122,
+          "product_length": 110
+        }
+      ]
+    },
+    "disulfide_bonds": {
+      "bonds": [
+        {
+          "cys_1": {
+            "position": 137,
+            "fragment": "full_precursor"
+          },
+          "cys_2": {
+            "position": 191,
+            "fragment": "full_precursor"
+          },
+          "distance": 54,
+          "motif": "long-range",
+          "bond_type": "intrachain"
+        }
+      ],
+      "unpaired_cys": []
+    },
+    "mature_products": [
+      {
+        "name": "full_precursor",
+        "sequence": "MIQVPYRAVSGPGGICLWNVLAGGVVALAIASFVAAVKFHDLTERIANFQEKLFQFVVVEEQYEESFWICVASASAHAANLVVVAISQIPLPEIKTKIEEATVTAEDILY",
+        "length": 110,
+        "start": 122,
+        "end": 232,
+        "dominant_primitive": "⊤",
+        "profile": {
+          "⊢": 1,
+          "⊣": 2,
+          "≻": 2,
+          "≺": 3,
+          "⋈": 6,
+          "⊤": 10,
+          "∈": 3,
+          "∋": 5,
+          "⊙": 2,
+          "⊥": 2,
+          "⊞": 4,
+          "◻": 10
+        },
+        "inferred_function": "kinetic_regulator",
+        "amidation": null
+      }
+    ]
+  },
+  "narrative": "═══ A0PK11 — Structural Processing Analysis ═══\nSequence: 232 AA\n\n▸ Signal peptide (122 AA): MPGWFKKAWYGLASLLSFSSFILIIVALVVPHWLSGKILCQTGVDLVNATDRELVKFIGDIYYGLFRGCKVRQCGLGGRQSQFTIFPHLVKELNAGLHVMILLLLFLALALALVSMGFAILN\n  Bootstrap elements: Met(Ð)×3, Trp(Þ)×3\n  Cleavage @ position 122 ← signal peptidase\n  Dominant: ⋈, ⊤ — bootstrap preconditions\n\n▸ Processing steps:\n  [1] Signal Peptidase: Remove signal peptide (122 AA)\n\n▸ Mature products:\n  • full_precursor (110 AA) — kinetic_regulator\n    Primitive profile: ∈=3 | ∋=5 | ≺=3 | ≻=2 | ⊙=2 | ⊞=4 | ⊢=1 | ⊣=2 | ⊤=10 | ⊥=2 | ⋈=6 | ◻=10\n\n▸ Predicted disulfide bonds (Ř-Ř):\n  Cys137—Cys191 (intrachain, long-range)\n"
+}

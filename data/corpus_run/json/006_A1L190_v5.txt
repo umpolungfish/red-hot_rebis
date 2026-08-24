@@ -1,0 +1,24 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 006_A1L190
+╚══════════════════════════════════════════════════════════╝
+Input: 88 AA | Promoted: 61.4% | Dominant: ◻ | ∈:6 | ∋:3 | ≺:2 | ≻:1 | ⊙:1 | ⊞:7 | ⊢:9 | ⊣:2 | ⊤:1 | ⊥:8 | ⋈:1 | ◻:13
+
+▸ CLEAVAGE (1 sites):
+  pos  61: RR   → unknown                   ○=0.50
+
+▸ PRODUCTS (2):
+
+  [1] Signal Peptide (61 AA @ 0–61)
+      ⊢-dominant (35/61 residues)
+      MDDADPEERNYDNMLKMLSDLNKDLEKLLEEMEKISVQAT...
+
+  [2] Ω-winding module (27 AA @ 61–88)
+      ◻-dominant (19/27 residues)
+      LEDAFVNCKEEMEKNWQELLHETKQRL
+
+▸ MAP:
+  RR ↓ 61
+  Chain 1: [0–61] (61 AA) Signal Peptide
+  Chain 2: [61–88] (27 AA) Ω-winding module
+
+[2;37m DNA  → 006_A1L190_codons.dna  [0m[1;2;37m([0m[1;2;36m264[0m[2;37m nt[0m[1;2;37m)[0m

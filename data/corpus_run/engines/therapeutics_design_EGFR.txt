@@ -1,0 +1,146 @@
+═ Designing Frobenius chemotherapeutic ═
+  Target: EGFR
+  Mutation strength: 0.5
+  Drug concentration: 2.0 µM
+  Simulation time: 30.0 h
+
+Running cancer receptor simulation...
+[2;37m======================================================================[0m
+[2;37mFROBENIUS-COUPLED CHEMOTHERAPEUTIC — Equilibrium Model[0m
+[2;37m======================================================================[0m
+[2;37mDrug concentration: [0m[1;2;36m2.0[0m[2;37m [0m[1;2;37m([0m[2;37mnormalized[0m[1;2;37m)[0m
+[2;37mPrinciple: 𐑹 symmetry protects healthy cells; 𐑹-breaking exposes cancer[0m
+[2;37m──────────────────────────────────────────────────────────────────────[0m
+[2;37m  [0m[2;33mt[0m[2;37m=  [0m[1;2;36m0.0[0m[2;37m | H: [0m[1;2;36m0.000[0m[2;37m | C: [0m[1;2;37m[[0m[2;32m'0.000'[0m[2;37m, [0m[2;32m'0.000'[0m[2;37m, [0m[2;32m'0.150'[0m[2;37m, [0m[2;32m'0.150'[0m[2;37m, [0m[2;32m'0.150'[0m[1;2;37m][0m[2;37m | T: [0m
+[1;2;37m[[0m[2;32m'0.24'[0m[2;37m, [0m[2;32m'0.25'[0m[2;37m, [0m[2;32m'0.50'[0m[2;37m, [0m[2;32m'0.72'[0m[2;37m, [0m[2;32m'0.84'[0m[1;2;37m][0m
+[2;37m  [0m[2;33mt[0m[2;37m= [0m[1;2;36m10.0[0m[2;37m | H: [0m[1;2;36m0.000[0m[2;37m | C: [0m[1;2;37m[[0m[2;32m'0.000'[0m[2;37m, [0m[2;32m'0.000'[0m[2;37m, [0m[2;32m'1.000'[0m[2;37m, [0m[2;32m'1.000'[0m[2;37m, [0m[2;32m'1.000'[0m[1;2;37m][0m[2;37m | T: [0m
+[1;2;37m[[0m[2;32m'0.24'[0m[2;37m, [0m[2;32m'0.25'[0m[2;37m, [0m[2;32m'0.50'[0m[2;37m, [0m[2;32m'0.72'[0m[2;37m, [0m[2;32m'0.84'[0m[1;2;37m][0m
+[2;37m  [0m[2;33mt[0m[2;37m= [0m[1;2;36m20.0[0m[2;37m | H: [0m[1;2;36m0.000[0m[2;37m | C: [0m[1;2;37m[[0m[2;32m'0.000'[0m[2;37m, [0m[2;32m'0.000'[0m[2;37m, [0m[2;32m'1.000'[0m[2;37m, [0m[2;32m'1.000'[0m[2;37m, [0m[2;32m'1.000'[0m[1;2;37m][0m[2;37m | T: [0m
+[1;2;37m[[0m[2;32m'0.24'[0m[2;37m, [0m[2;32m'0.25'[0m[2;37m, [0m[2;32m'0.50'[0m[2;37m, [0m[2;32m'0.72'[0m[2;37m, [0m[2;32m'0.84'[0m[1;2;37m][0m
+
+[2;37m======================================================================[0m
+[1;32mSIMULATION COMPLETE — [0m[1;36m60[0m[1;32m steps over [0m[1;36m29.5[0m[1;32m time units[0m
+[2;37m======================================================================[0m
+
+[2;37mHealthy Cell [0m[1;2;37m([0m[2;37mFrobenius-protected[0m[1;2;37m)[0m[2;37m:[0m
+[2;37m  Asymmetry: [0m[1;2;36m0.0000[0m
+[2;37m  Binding: [0m[1;2;36m0.667[0m
+[2;37m  Dual binding: [0m[1;2;36m0.400[0m
+[2;37m  Tether tension: [0m[1;2;36m0.1824[0m
+[2;37m  Payload exposed: [0m[1;2;36m0.0000[0m
+[2;37m  Cytotoxicity: [0m[1;2;36m0.0000[0m
+[2;37m  𐑹 Protection: ACTIVE ✓[0m
+
+[2;37mCancer Cells:[0m
+[2;37m  cancer_m0.[0m[1;2;36m2[0m[2;37m:[0m
+[2;37m    Asymmetry: [0m[1;2;36m0.0488[0m[2;37m | Binding: [0m[1;2;36m0.921[0m
+[2;37m    Tether: [0m[1;2;36m0.2447[0m[2;37m | Payload: [0m[1;2;36m0.0000[0m
+[2;37m    Cytotoxicity: [0m[1;2;36m0.0000[0m[2;37m | Selectivity vs healthy: [0m[1;2;36m0.[0m[1;2;36m0x[0m
+[2;37m  cancer_m0.[0m[1;2;36m4[0m[2;37m:[0m
+[2;37m    Asymmetry: [0m[1;2;36m0.0482[0m[2;37m | Binding: [0m[1;2;36m0.978[0m
+[2;37m    Tether: [0m[1;2;36m0.2525[0m[2;37m | Payload: [0m[1;2;36m0.0000[0m
+[2;37m    Cytotoxicity: [0m[1;2;36m0.0000[0m[2;37m | Selectivity vs healthy: [0m[1;2;36m0.[0m[1;2;36m0x[0m
+[2;37m  cancer_m0.[0m[1;2;36m6[0m[2;37m:[0m
+[2;37m    Asymmetry: [0m[1;2;36m0.1694[0m[2;37m | Binding: [0m[1;2;36m0.993[0m
+[2;37m    Tether: [0m[1;2;36m0.5006[0m[2;37m | Payload: [0m[1;2;36m1.0000[0m
+[2;37m    Cytotoxicity: [0m[1;2;36m14.2875[0m[2;37m | Selectivity vs healthy: [0m[1;2;36m14287.[0m[2;37m5x[0m
+[2;37m  cancer_m0.[0m[1;2;36m8[0m[2;37m:[0m
+[2;37m    Asymmetry: [0m[1;2;36m0.2732[0m[2;37m | Binding: [0m[1;2;36m0.997[0m
+[2;37m    Tether: [0m[1;2;36m0.7203[0m[2;37m | Payload: [0m[1;2;36m1.0000[0m
+[2;37m    Cytotoxicity: [0m[1;2;36m14.2875[0m[2;37m | Selectivity vs healthy: [0m[1;2;36m14287.[0m[2;37m5x[0m
+[2;37m  cancer_m1.[0m[1;2;36m0[0m[2;37m:[0m
+[2;37m    Asymmetry: [0m[1;2;36m0.3506[0m[2;37m | Binding: [0m[1;2;36m0.999[0m
+[2;37m    Tether: [0m[1;2;36m0.8388[0m[2;37m | Payload: [0m[1;2;36m1.0000[0m
+[2;37m    Cytotoxicity: [0m[1;2;36m14.2875[0m[2;37m | Selectivity vs healthy: [0m[1;2;36m14287.[0m[2;37m5x[0m
+
+[2;37m──────────────────────────────────────────────────────────────────────[0m
+[2;37mThe 𐑹-Frobenius gate selectively activates therapeutics in[0m
+[2;37masymmetric [0m[1;2;37m([0m[2;37mcancer[0m[1;2;37m)[0m[2;37m microenvironments while healthy tissue[0m
+[2;37mwith μ∘[0m[2;33mδ[0m[2;37m=[0m[2;35mid[0m[2;37m symmetry experiences minimal payload exposure.[0m
+
+[2;37mResults saved to [0m
+[2;35m/home/mrnob0dy666/red-hot_rebis/therapeutics/[0m[2;95mfrobenius_chemo_results.json[0m
+Running healthy receptor simulation (control)...
+[2;37m======================================================================[0m
+[2;37mFROBENIUS-COUPLED CHEMOTHERAPEUTIC — Equilibrium Model[0m
+[2;37m======================================================================[0m
+[2;37mDrug concentration: [0m[1;2;36m2.0[0m[2;37m [0m[1;2;37m([0m[2;37mnormalized[0m[1;2;37m)[0m
+[2;37mPrinciple: 𐑹 symmetry protects healthy cells; 𐑹-breaking exposes cancer[0m
+[2;37m──────────────────────────────────────────────────────────────────────[0m
+[2;37m  [0m[2;33mt[0m[2;37m=  [0m[1;2;36m0.0[0m[2;37m | H: [0m[1;2;36m0.000[0m[2;37m | C: [0m[1;2;37m[[0m[2;32m'0.000'[0m[2;37m, [0m[2;32m'0.000'[0m[2;37m, [0m[2;32m'0.150'[0m[2;37m, [0m[2;32m'0.150'[0m[2;37m, [0m[2;32m'0.150'[0m[1;2;37m][0m[2;37m | T: [0m
+[1;2;37m[[0m[2;32m'0.24'[0m[2;37m, [0m[2;32m'0.25'[0m[2;37m, [0m[2;32m'0.50'[0m[2;37m, [0m[2;32m'0.72'[0m[2;37m, [0m[2;32m'0.84'[0m[1;2;37m][0m
+[2;37m  [0m[2;33mt[0m[2;37m= [0m[1;2;36m10.0[0m[2;37m | H: [0m[1;2;36m0.000[0m[2;37m | C: [0m[1;2;37m[[0m[2;32m'0.000'[0m[2;37m, [0m[2;32m'0.000'[0m[2;37m, [0m[2;32m'1.000'[0m[2;37m, [0m[2;32m'1.000'[0m[2;37m, [0m[2;32m'1.000'[0m[1;2;37m][0m[2;37m | T: [0m
+[1;2;37m[[0m[2;32m'0.24'[0m[2;37m, [0m[2;32m'0.25'[0m[2;37m, [0m[2;32m'0.50'[0m[2;37m, [0m[2;32m'0.72'[0m[2;37m, [0m[2;32m'0.84'[0m[1;2;37m][0m
+[2;37m  [0m[2;33mt[0m[2;37m= [0m[1;2;36m20.0[0m[2;37m | H: [0m[1;2;36m0.000[0m[2;37m | C: [0m[1;2;37m[[0m[2;32m'0.000'[0m[2;37m, [0m[2;32m'0.000'[0m[2;37m, [0m[2;32m'1.000'[0m[2;37m, [0m[2;32m'1.000'[0m[2;37m, [0m[2;32m'1.000'[0m[1;2;37m][0m[2;37m | T: [0m
+[1;2;37m[[0m[2;32m'0.24'[0m[2;37m, [0m[2;32m'0.25'[0m[2;37m, [0m[2;32m'0.50'[0m[2;37m, [0m[2;32m'0.72'[0m[2;37m, [0m[2;32m'0.84'[0m[1;2;37m][0m
+
+[2;37m======================================================================[0m
+[1;32mSIMULATION COMPLETE — [0m[1;36m60[0m[1;32m steps over [0m[1;36m29.5[0m[1;32m time units[0m
+[2;37m======================================================================[0m
+
+[2;37mHealthy Cell [0m[1;2;37m([0m[2;37mFrobenius-protected[0m[1;2;37m)[0m[2;37m:[0m
+[2;37m  Asymmetry: [0m[1;2;36m0.0000[0m
+[2;37m  Binding: [0m[1;2;36m0.667[0m
+[2;37m  Dual binding: [0m[1;2;36m0.400[0m
+[2;37m  Tether tension: [0m[1;2;36m0.1824[0m
+[2;37m  Payload exposed: [0m[1;2;36m0.0000[0m
+[2;37m  Cytotoxicity: [0m[1;2;36m0.0000[0m
+[2;37m  𐑹 Protection: ACTIVE ✓[0m
+
+[2;37mCancer Cells:[0m
+[2;37m  cancer_m0.[0m[1;2;36m2[0m[2;37m:[0m
+[2;37m    Asymmetry: [0m[1;2;36m0.0488[0m[2;37m | Binding: [0m[1;2;36m0.921[0m
+[2;37m    Tether: [0m[1;2;36m0.2447[0m[2;37m | Payload: [0m[1;2;36m0.0000[0m
+[2;37m    Cytotoxicity: [0m[1;2;36m0.0000[0m[2;37m | Selectivity vs healthy: [0m[1;2;36m0.[0m[1;2;36m0x[0m
+[2;37m  cancer_m0.[0m[1;2;36m4[0m[2;37m:[0m
+[2;37m    Asymmetry: [0m[1;2;36m0.0482[0m[2;37m | Binding: [0m[1;2;36m0.978[0m
+[2;37m    Tether: [0m[1;2;36m0.2525[0m[2;37m | Payload: [0m[1;2;36m0.0000[0m
+[2;37m    Cytotoxicity: [0m[1;2;36m0.0000[0m[2;37m | Selectivity vs healthy: [0m[1;2;36m0.[0m[1;2;36m0x[0m
+[2;37m  cancer_m0.[0m[1;2;36m6[0m[2;37m:[0m
+[2;37m    Asymmetry: [0m[1;2;36m0.1694[0m[2;37m | Binding: [0m[1;2;36m0.993[0m
+[2;37m    Tether: [0m[1;2;36m0.5006[0m[2;37m | Payload: [0m[1;2;36m1.0000[0m
+[2;37m    Cytotoxicity: [0m[1;2;36m14.2875[0m[2;37m | Selectivity vs healthy: [0m[1;2;36m14287.[0m[2;37m5x[0m
+[2;37m  cancer_m0.[0m[1;2;36m8[0m[2;37m:[0m
+[2;37m    Asymmetry: [0m[1;2;36m0.2732[0m[2;37m | Binding: [0m[1;2;36m0.997[0m
+[2;37m    Tether: [0m[1;2;36m0.7203[0m[2;37m | Payload: [0m[1;2;36m1.0000[0m
+[2;37m    Cytotoxicity: [0m[1;2;36m14.2875[0m[2;37m | Selectivity vs healthy: [0m[1;2;36m14287.[0m[2;37m5x[0m
+[2;37m  cancer_m1.[0m[1;2;36m0[0m[2;37m:[0m
+[2;37m    Asymmetry: [0m[1;2;36m0.3506[0m[2;37m | Binding: [0m[1;2;36m0.999[0m
+[2;37m    Tether: [0m[1;2;36m0.8388[0m[2;37m | Payload: [0m[1;2;36m1.0000[0m
+[2;37m    Cytotoxicity: [0m[1;2;36m14.2875[0m[2;37m | Selectivity vs healthy: [0m[1;2;36m14287.[0m[2;37m5x[0m
+
+[2;37m──────────────────────────────────────────────────────────────────────[0m
+[2;37mThe 𐑹-Frobenius gate selectively activates therapeutics in[0m
+[2;37masymmetric [0m[1;2;37m([0m[2;37mcancer[0m[1;2;37m)[0m[2;37m microenvironments while healthy tissue[0m
+[2;37mwith μ∘[0m[2;33mδ[0m[2;37m=[0m[2;35mid[0m[2;37m symmetry experiences minimal payload exposure.[0m
+
+[2;37mResults saved to [0m
+[2;35m/home/mrnob0dy666/red-hot_rebis/therapeutics/[0m[2;95mfrobenius_chemo_results.json[0m
+{
+  "target": "EGFR",
+  "parameters": {
+    "mutation_strength": 0.5,
+    "drug_conc_uM": 2.0,
+    "time_hours": 30.0
+  },
+  "cancer": {
+    "k_on": 3.5,
+    "k_off": 0.2231,
+    "frobenius_product": 0.781,
+    "frobenius_broken": "True",
+    "clustering": 1.5,
+    "simulation": "None"
+  },
+  "healthy_control": {
+    "k_on": 1.0,
+    "k_off": 1.0,
+    "frobenius_product": 1.0,
+    "frobenius_intact": true,
+    "simulation": "None"
+  },
+  "selectivity": {
+    "cancer_activated": "True",
+    "healthy_unactivated": true,
+    "frobenius_selective": true
+  }
+}

@@ -1,0 +1,52 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 090_Q58761
+╚══════════════════════════════════════════════════════════╝
+Input: 284 AA | Promoted: 50.4% | Dominant: ⊤ | ∈:13 | ∋:7 | ≺:11 | ≻:2 | ⊙:3 | ⊞:27 | ⊢:2 | ⊤:29 | ⊥:23 | ⋈:8 | ◻:18
+
+▸ CLEAVAGE (5 sites):
+  pos  31: KR   → unknown                   ○=0.50
+  pos  80: KK   → unknown                   ○=0.50
+  pos  96: KK   → unknown                   ○=0.50
+  pos 153: K    → PC2_monobasic             ○=0.40 [M]
+  pos 235: KK   → unknown                   ○=0.50
+
+▸ PRODUCTS (6):
+
+  [1] Signal Peptide (31 AA @ 1–31)
+      ⊞-dominant (13/31 residues)
+      MIVVSGSQSQNLAFKVAKLLNTKLTRVEYKR
+
+  [2] Ħ-chiral domain (49 AA @ 32–80)
+      ⊥-dominant (32/49 residues)
+      FPDNEIYVRIVDEINDDEAVIINTQKNQNDAIVETILLCD...
+
+  [3] Φ-switch domain (16 AA @ 81–96)
+      ≺-dominant (7/16 residues)
+      ITLVAPYLAYARQDKK
+
+  [4] Ç-kinetic regulator (57 AA @ 97–153)
+      ⊤-dominant (34/57 residues)
+      FNPGEAISIRALAKIYSNIVDKLITINPHETHIKDFFTIP...
+
+  [5] Σ-variable region (82 AA @ 154–235)
+      ⊞-dominant (39/82 residues)
+      LNDPIVLAPDKGALEFAKTASKILNAEYDYLEKTRLSPTE...
+
+  [6] Ç-kinetic regulator (49 AA @ 236–284)
+      ⊤-dominant (18/49 residues)
+      IIAACVHPVLIGDALNKLYSAGVEEVVGTDTYLSEVSKVS...
+
+▸ MAP:
+  KR ↓ 31
+  KK ↓ 80
+  KK ↓ 96
+  [M] ↓ 153
+  KK ↓ 235
+  Chain 1: [1–31] (31 AA) Signal Peptide
+  Chain 2: [32–80] (49 AA) Ħ-chiral domain
+  Chain 3: [81–96] (16 AA) Φ-switch domain
+  Chain 4: [97–153] (57 AA) Ç-kinetic regulator
+  Chain 5: [154–235] (82 AA) Σ-variable region
+  Chain 6: [236–284] (49 AA) Ç-kinetic regulator
+
+[2;37m DNA  → 090_Q58761_codons.dna  [0m[1;2;37m([0m[1;2;36m852[0m[2;37m nt[0m[1;2;37m)[0m

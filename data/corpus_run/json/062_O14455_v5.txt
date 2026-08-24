@@ -1,0 +1,73 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 062_O14455
+╚══════════════════════════════════════════════════════════╝
+Input: 100 AA | Promoted: 42.0% | Dominant: ⊞ | ∈:5 | ∋:1 | ≺:2 | ⊙:1 | ⊞:14 | ⊢:3 | ⊤:8 | ⊥:1 | ⋈:2 | ◻:5
+
+▸ CLEAVAGE (8 sites):
+  pos  16: KK   → unknown                   ○=0.50
+  pos  30: KK   → unknown                   ○=0.50
+  pos  56: RR   → unknown                   ○=0.50
+  pos  68: KR   → unknown                   ○=0.50
+  pos  71: RK   → unknown                   ○=0.50
+  pos  75: KK   → unknown                   ○=0.50
+  pos  76: KR   → unknown                   ○=0.50
+  pos  99: RR   → unknown                   ○=0.50
+
+▸ PRODUCTS (9):
+
+  [1] Signal Peptide (16 AA @ 0–16)
+      ⊞-dominant (8/16 residues)
+      MAVKTGIAIGLNKGKK
+
+  [2] Σ-variable region (14 AA @ 16–30)
+      ⊞-dominant (7/14 residues)
+      VTQMTPAPKISYKK
+
+  [3] Ω-winding module (26 AA @ 30–56)
+      ◻-dominant (7/26 residues)
+      GAASNRTKFVRSLVREIAGLSPYERR
+
+  [4] Ç-kinetic regulator (12 AA @ 56–68)
+      ⊤-dominant (6/12 residues)
+      LIDLIRNSGEKR
+
+  [5] IP-2 (3 AA @ 68–71)
+      ⊞-dominant (1/3 residues)
+      ARK
+
+  [6] IP-2 (4 AA @ 71–75)
+      ⊞-dominant (2/4 residues)
+      VAKK
+
+  [7] IP-2 (1 AA @ 75–76)
+      unstructured
+      R
+
+  [8] Σ-variable region (23 AA @ 76–99)
+      ⊞-dominant (10/23 residues)
+      LGSFTRAKAKVEEMNNIIAASRR
+
+  [9] IP-2 (1 AA @ 99–100)
+      ⊙-dominant (1/1 residues)
+      H
+
+▸ MAP:
+  KK ↓ 16
+  KK ↓ 30
+  RR ↓ 56
+  KR ↓ 68
+  RK ↓ 71
+  KK ↓ 75
+  KR ↓ 76
+  RR ↓ 99
+  Chain 1: [0–16] (16 AA) Signal Peptide
+  Chain 2: [16–30] (14 AA) Σ-variable region
+  Chain 3: [30–56] (26 AA) Ω-winding module
+  Chain 4: [56–68] (12 AA) Ç-kinetic regulator
+  Chain 5: [68–71] (3 AA) IP-2
+  Chain 6: [71–75] (4 AA) IP-2
+  Chain 7: [75–76] (1 AA) IP-2
+  Chain 8: [76–99] (23 AA) Σ-variable region
+  Chain 9: [99–100] (1 AA) IP-2
+
+[2;37m DNA  → 062_O14455_codons.dna  [0m[1;2;37m([0m[1;2;36m300[0m[2;37m nt[0m[1;2;37m)[0m

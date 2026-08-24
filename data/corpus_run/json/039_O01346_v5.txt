@@ -1,0 +1,47 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 039_O01346
+╚══════════════════════════════════════════════════════════╝
+Input: 457 AA | Promoted: 46.6% | Dominant: ⋈ | ∈:24 | ∋:12 | ≺:15 | ≻:10 | ⊙:9 | ⊞:24 | ⊢:8 | ⊣:7 | ⊤:28 | ⊥:20 | ⋈:36 | ◻:20
+
+▸ CLEAVAGE (5 sites):
+  pos 145: RR   → unknown                   ○=0.50
+  pos 250: K    → PC2_monobasic             ○=0.40 [M]
+  pos 324: RK   → unknown                   ○=0.50
+  pos 325: KR   → unknown                   ○=0.50
+  pos 441: KK   → unknown                   ○=0.50
+
+▸ PRODUCTS (5):
+
+  [1] B-chain (145 AA @ 1–145)
+      ⋈-dominant (61/145 residues)
+      MNSTTKHLLHCTLLITVIVTFEVFSGGIKIDENSFTLVDP...
+
+  [2] Ħ-chiral domain (105 AA @ 146–250)
+      ⊥-dominant (52/105 residues)
+      IREIVVPKEYKTRTGALFKSRALQYCLEDNVNVLNDSDWI...
+
+  [3] ƒ-hydrophobic core (74 AA @ 251–324)
+      ⋈-dominant (39/74 residues)
+      LFHKPLFSWKGSYVVTQVSAERSVSFDNGIDGSVAEDCFF...
+
+  [4] Ç-kinetic regulator (116 AA @ 326–441)
+      ⊤-dominant (53/116 residues)
+      WLQGILLVVHSKMIPFKHKLLLGISVYSWVTMPLSTSNII...
+
+  [5] Σ-variable region (16 AA @ 442–457)
+      ⊞-dominant (8/16 residues)
+      HKFYVVQKDVRVLETV
+
+▸ MAP:
+  RR ↓ 145
+  [M] ↓ 250
+  RK ↓ 324
+  KR ↓ 325
+  KK ↓ 441
+  Chain 1: [1–145] (145 AA) B-chain
+  Chain 2: [146–250] (105 AA) Ħ-chiral domain
+  Chain 3: [251–324] (74 AA) ƒ-hydrophobic core
+  Chain 4: [326–441] (116 AA) Ç-kinetic regulator
+  Chain 5: [442–457] (16 AA) Σ-variable region
+
+[2;37m DNA  → 039_O01346_codons.dna  [0m[1;2;37m([0m[1;2;36m1371[0m[2;37m nt[0m[1;2;37m)[0m

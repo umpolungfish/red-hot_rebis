@@ -1,0 +1,38 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 071_P00509
+╚══════════════════════════════════════════════════════════╝
+Input: 396 AA | Promoted: 44.4% | Dominant: ◻ | ∈:23 | ∋:16 | ≺:11 | ≻:5 | ⊙:6 | ⊞:18 | ⊢:8 | ⊣:5 | ⊤:17 | ⊥:20 | ⋈:20 | ◻:27
+
+▸ CLEAVAGE (3 sites):
+  pos  51: KK   → unknown                   ○=0.50
+  pos  94: KR   → unknown                   ○=0.50
+  pos 122: KR   → unknown                   ○=0.50
+
+▸ PRODUCTS (4):
+
+  [1] Signal Peptide (51 AA @ 0–51)
+      ⊞-dominant (22/51 residues)
+      MFENITAAPADPILGLADLFRADERPGKINLGIGVYKDET...
+
+  [2] Ω-winding module (43 AA @ 51–94)
+      ◻-dominant (23/43 residues)
+      AEQYLLENETTKNYLGIDGIPEFGRCTQELLFGKGSALIN...
+
+  [3] Σ-variable region (28 AA @ 94–122)
+      ⊞-dominant (6/28 residues)
+      ARTAQTPGGTGALRVAADFLAKNTSVKR
+
+  [4] B-chain (274 AA @ 122–396)
+      ◻-dominant (125/274 residues)
+      VWVSNPSWPNHKSVFNSAGLEVREYAYYDAENHTLDFDAL...
+
+▸ MAP:
+  KK ↓ 51
+  KR ↓ 94
+  KR ↓ 122
+  Chain 1: [0–51] (51 AA) Signal Peptide
+  Chain 2: [51–94] (43 AA) Ω-winding module
+  Chain 3: [94–122] (28 AA) Σ-variable region
+  Chain 4: [122–396] (274 AA) B-chain
+
+[2;37m DNA  → 071_P00509_codons.dna  [0m[1;2;37m([0m[1;2;36m1188[0m[2;37m nt[0m[1;2;37m)[0m

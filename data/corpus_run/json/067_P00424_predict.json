@@ -1,0 +1,108 @@
+═ Protein Prediction Pipeline ═
+  Sequence: MLRNTFTRAGGLSRITSVRFAQTHALSNAAVMDLQSRWENMPSTEQQDIV...
+  Length: 153 aa | Name: P00424
+{
+  "name": "P00424",
+  "sequence": "MLRNTFTRAGGLSRITSVRFAQTHALSNAAVMDLQSRWENMPSTEQQDIVSKLSERQKLPWAQLTEPEKQAVWYISYGEWGPRRPVLNKGDSSFIAKGVAAGLLFSVGLFAVVRMAGGQDAKTMNKEWQLKSDEYLKSKNANPWGGYSQVQSK",
+  "length": 153,
+  "pipeline_result": {
+    "name": "P00424",
+    "sequence": "MLRNTFTRAGGLSRITSVRFAQTHALSNAAVMDLQSRWENMPSTEQQDIVSKLSERQKLPWAQLTEPEKQAVWYISYGEWGPRRPVLNKGDSSFIAKGVAAGLLFSVGLFAVVRMAGGQDAKTMNKEWQLKSDEYLKSKNANPWGGYSQVQSK",
+    "length": 153,
+    "signal_peptide": {
+      "sequence": "MLRNTFTRAGGLSRITSVRFAQTHALSNAAVMDLQSRWENMPSTEQQDIVSKLSERQKLPWAQLTEPEKQAVWYISYGEWGPRRPVLNKGDSSFIAKGVAAGLLFSVGLFA",
+      "length": 111,
+      "cleavage_position": 111,
+      "bootstrap_score": 2,
+      "n_charge": 1,
+      "hydrophobic_core_length": 8
+    },
+    "cleavage_sites": [],
+    "fragments": [
+      {
+        "start": 111,
+        "end": 153,
+        "length": 41,
+        "sequence": "VVRMAGGQDAKTMNKEWQLKSDEYLKSKNANPWGGYSQVQS",
+        "label": "full_precursor",
+        "vector": [
+          2,
+          2,
+          0,
+          2,
+          0,
+          0,
+          3,
+          4,
+          0,
+          2,
+          6,
+          2
+        ],
+        "densities": {
+          "⊢": 0.048,
+          "⊣": 0.048,
+          "≻": 0.0,
+          "≺": 0.048,
+          "⋈": 0.0,
+          "⊤": 0.0,
+          "∈": 0.071,
+          "∋": 0.095,
+          "⊙": 0.0,
+          "⊥": 0.048,
+          "⊞": 0.143,
+          "◻": 0.048
+        },
+        "dominant_primitives": [
+          "⊞"
+        ],
+        "total_primitive_activations": 23,
+        "amidation": null
+      }
+    ],
+    "processing": {
+      "precursor": "MLRNTFTRAGGLSRITSVRFAQTHALSNAAVMDLQSRWENMPSTEQQDIVSKLSERQKLPWAQLTEPEKQAVWYISYGEWGPRRPVLNKGDSSFIAKGVAAGLLFSVGLFAVVRMAGGQDAKTMNKEWQLKSDEYLKSKNANPWGGYSQVQSK",
+      "length": 153,
+      "steps": [
+        {
+          "step": 1,
+          "enzyme": "Signal Peptidase",
+          "action": "Remove signal peptide (111 AA)",
+          "cleavage_position": 111,
+          "product_length": 42
+        },
+        {
+          "step": 2,
+          "enzyme": "Carboxypeptidase E/H",
+          "action": "Trim 1 C-terminal basic residue(s) from full_precursor",
+          "from": "K",
+          "product_length": 41
+        }
+      ]
+    },
+    "disulfide_bonds": [],
+    "mature_products": [
+      {
+        "name": "full_precursor",
+        "sequence": "VVRMAGGQDAKTMNKEWQLKSDEYLKSKNANPWGGYSQVQS",
+        "length": 41,
+        "start": 111,
+        "end": 153,
+        "dominant_primitive": "⊞",
+        "profile": {
+          "⊢": 2,
+          "⊣": 2,
+          "≺": 2,
+          "∈": 3,
+          "∋": 4,
+          "⊥": 2,
+          "⊞": 6,
+          "◻": 2
+        },
+        "inferred_function": "variable_modification_platform",
+        "amidation": null
+      }
+    ]
+  },
+  "narrative": "═══ P00424 — Structural Processing Analysis ═══\nSequence: 153 AA\n\n▸ Signal peptide (111 AA): MLRNTFTRAGGLSRITSVRFAQTHALSNAAVMDLQSRWENMPSTEQQDIVSKLSERQKLPWAQLTEPEKQAVWYISYGEWGPRRPVLNKGDSSFIAKGVAAGLLFSVGLFA\n  Bootstrap elements: Met(Ð)×3, Trp(Þ)×4\n  Cleavage @ position 111 ← signal peptidase\n  Dominant: ∋ — bootstrap preconditions\n\n▸ Processing steps:\n  [1] Signal Peptidase: Remove signal peptide (111 AA)\n  [2] Carboxypeptidase E/H: Trim 1 C-terminal basic residue(s) from full_precursor\n\n▸ Mature products:\n  • full_precursor (41 AA) — variable_modification_platform\n    Primitive profile: ∈=3 | ∋=4 | ≺=2 | ⊞=6 | ⊢=2 | ⊣=2 | ⊥=2 | ◻=2\n"
+}

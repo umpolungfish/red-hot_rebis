@@ -1,0 +1,82 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 084_Q58185
+╚══════════════════════════════════════════════════════════╝
+Input: 313 AA | Promoted: 58.1% | Dominant: ◻ | ∈:11 | ∋:7 | ≺:6 | ≻:6 | ⊙:9 | ⊞:31 | ⊢:10 | ⊣:1 | ⊤:36 | ⊥:16 | ⋈:11 | ◻:38
+
+▸ CLEAVAGE (10 sites):
+  pos  28: KK   → unknown                   ○=0.50
+  pos  34: KR   → unknown                   ○=0.50
+  pos  38: KR   → unknown                   ○=0.50
+  pos  93: KR   → unknown                   ○=0.50
+  pos 140: KK   → unknown                   ○=0.50
+  pos 178: K    → PC2_monobasic             ○=0.45 [M]
+  pos 226: KK   → unknown                   ○=0.50
+  pos 238: KR   → unknown                   ○=0.50
+  pos 265: KR   → unknown                   ○=0.50
+  pos 307: RR   → unknown                   ○=0.50
+
+▸ PRODUCTS (10):
+
+  [1] Signal Peptide (28 AA @ 1–28)
+      ∈-dominant (15/28 residues)
+      MNWRCDVQNFEPDVKISLTRVGVTNLKK
+
+  [2] IP-2 (4 AA @ 35–38)
+      ∈-dominant (2/4 residues)
+      TNKR
+
+  [3] Ω-winding module (55 AA @ 39–93)
+      ◻-dominant (31/55 residues)
+      PIILLSTFEVFVNLPSSQKGIHMSRNPEVIEGIIDEALEL...
+
+  [4] C-peptide (47 AA @ 94–140)
+      ⊞-dominant (30/47 residues)
+      LFEKHEYATEAEVFMVSDFMTKEKSPISGKYSQEIHKIMG...
+
+  [5] Ç-kinetic regulator (38 AA @ 141–178)
+      ⊤-dominant (24/38 residues)
+      DDEIELTKIVGAEVVGITACPCAQNLIKEICIKNLKEK
+
+  [6] Ç-kinetic regulator (48 AA @ 179–226)
+      ⊤-dominant (32/48 residues)
+      GFSDEDIDKILDSVIFATHNQRGIGRIILEVPTGYDIEIM...
+
+  [7] Ç-kinetic regulator (12 AA @ 227–238)
+      ⊤-dominant (6/12 residues)
+      SMSAEIHGILKR
+
+  [8] Ω-winding module (27 AA @ 239–265)
+      ◻-dominant (16/27 residues)
+      ADEAYVVEQSHKNPKFVEDCVREMAKR
+
+  [9] C-peptide (42 AA @ 266–307)
+      ◻-dominant (22/42 residues)
+      VVEKFKHLPDETKVLIRQINMESIHRHDAFAEKVATLGEL...
+
+  [10] Connector (6 AA @ 308–313)
+      ◻-dominant (3/6 residues)
+      ELLSYE
+
+▸ MAP:
+  KK ↓ 28
+  KR ↓ 34
+  KR ↓ 38
+  KR ↓ 93
+  KK ↓ 140
+  [M] ↓ 178
+  KK ↓ 226
+  KR ↓ 238
+  KR ↓ 265
+  RR ↓ 307
+  Chain 1: [1–28] (28 AA) Signal Peptide
+  Chain 2: [35–38] (4 AA) IP-2
+  Chain 3: [39–93] (55 AA) Ω-winding module
+  Chain 4: [94–140] (47 AA) C-peptide
+  Chain 5: [141–178] (38 AA) Ç-kinetic regulator
+  Chain 6: [179–226] (48 AA) Ç-kinetic regulator
+  Chain 7: [227–238] (12 AA) Ç-kinetic regulator
+  Chain 8: [239–265] (27 AA) Ω-winding module
+  Chain 9: [266–307] (42 AA) C-peptide
+  Chain 10: [308–313] (6 AA) Connector
+
+[2;37m DNA  → 084_Q58185_codons.dna  [0m[1;2;37m([0m[1;2;36m939[0m[2;37m nt[0m[1;2;37m)[0m

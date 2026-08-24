@@ -1,0 +1,33 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 095_P0DTC3
+╚══════════════════════════════════════════════════════════╝
+Input: 275 AA | Promoted: 46.9% | Dominant: ⊤ | ∈:8 | ∋:9 | ≺:17 | ≻:7 | ⊙:8 | ⊞:11 | ⊢:4 | ⊣:6 | ⊤:21 | ⊥:13 | ⋈:14 | ◻:11
+
+▸ CLEAVAGE (3 sites):
+  pos  67: KK   → unknown                   ○=0.50
+  pos  68: KR   → unknown                   ○=0.50
+  pos 134: R    → PC2_monobasic             ○=0.45 [M]
+
+▸ PRODUCTS (3):
+
+  [1] Signal Peptide (67 AA @ 1–67)
+      ⊤-dominant (28/67 residues)
+      MDLFMRIFTIGTVTLKQGEIKDATPSDFVRATATIPIQAS...
+
+  [2] ƒ-hydrophobic core (66 AA @ 69–134)
+      ⋈-dominant (28/66 residues)
+      WQLALSKGVHFVCNLLLLFVTVYSHLLLVAAGLEAPFLYL...
+
+  [3] Φ-switch domain (141 AA @ 135–275)
+      ≺-dominant (73/141 residues)
+      SKNPLLYDANYFLCWHTNCYDYCIPYNSVTSSIVITSGDG...
+
+▸ MAP:
+  KK ↓ 67
+  KR ↓ 68
+  [M] ↓ 134
+  Chain 1: [1–67] (67 AA) Signal Peptide
+  Chain 2: [69–134] (66 AA) ƒ-hydrophobic core
+  Chain 3: [135–275] (141 AA) Φ-switch domain
+
+[2;37m DNA  → 095_P0DTC3_codons.dna  [0m[1;2;37m([0m[1;2;36m825[0m[2;37m nt[0m[1;2;37m)[0m

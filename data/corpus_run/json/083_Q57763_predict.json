@@ -1,0 +1,204 @@
+═ Protein Prediction Pipeline ═
+  Sequence: MLKYLGKHLILELWGCDPKALDDIEGIEKMLVDSVKACGATLICVRTHKF...
+  Length: 124 aa | Name: Q57763
+{
+  "name": "Q57763",
+  "sequence": "MLKYLGKHLILELWGCDPKALDDIEGIEKMLVDSVKACGATLICVRTHKFSPQGATGVAVLAESHIAIHTYPEYGYAALDVFTCGEHTDPYKALEVIREFLKPKSIQIIDLKRGLMENGTFELK",
+  "length": 124,
+  "pipeline_result": {
+    "name": "Q57763",
+    "sequence": "MLKYLGKHLILELWGCDPKALDDIEGIEKMLVDSVKACGATLICVRTHKFSPQGATGVAVLAESHIAIHTYPEYGYAALDVFTCGEHTDPYKALEVIREFLKPKSIQIIDLKRGLMENGTFELK",
+    "length": 124,
+    "signal_peptide": null,
+    "cleavage_sites": [
+      {
+        "position": 111,
+        "motif": "KR",
+        "motif_seq": "KR",
+        "enzyme": "PC2",
+        "context": "QIIDLKRGLMEN",
+        "discontinuity": 0.267,
+        "density_before": 0.667,
+        "density_after": 0.4,
+        "cpe_trim_candidate": false
+      }
+    ],
+    "fragments": [
+      {
+        "start": 0,
+        "end": 111,
+        "length": 111,
+        "sequence": "MLKYLGKHLILELWGCDPKALDDIEGIEKMLVDSVKACGATLICVRTHKFSPQGATGVAVLAESHIAIHTYPEYGYAALDVFTCGEHTDPYKALEVIREFLKPKSIQIIDL",
+        "label": "mature_product_0",
+        "vector": [
+          2,
+          1,
+          4,
+          5,
+          3,
+          10,
+          0,
+          2,
+          5,
+          7,
+          9,
+          8
+        ],
+        "densities": {
+          "⊢": 0.018,
+          "⊣": 0.009,
+          "≻": 0.036,
+          "≺": 0.045,
+          "⋈": 0.027,
+          "⊤": 0.09,
+          "∈": 0.0,
+          "∋": 0.018,
+          "⊙": 0.045,
+          "⊥": 0.063,
+          "⊞": 0.081,
+          "◻": 0.072
+        },
+        "dominant_primitives": [
+          "⊤"
+        ],
+        "total_primitive_activations": 56,
+        "amidation": null
+      },
+      {
+        "start": 113,
+        "end": 124,
+        "length": 10,
+        "sequence": "GLMENGTFEL",
+        "label": "short_peptide_1",
+        "vector": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          2
+        ],
+        "densities": {
+          "⊢": 0.091,
+          "⊣": 0.0,
+          "≻": 0.0,
+          "≺": 0.0,
+          "⋈": 0.091,
+          "⊤": 0.0,
+          "∈": 0.091,
+          "∋": 0.0,
+          "⊙": 0.0,
+          "⊥": 0.0,
+          "⊞": 0.091,
+          "◻": 0.182
+        },
+        "dominant_primitives": [
+          "◻"
+        ],
+        "total_primitive_activations": 6,
+        "amidation": null
+      }
+    ],
+    "processing": {
+      "precursor": "MLKYLGKHLILELWGCDPKALDDIEGIEKMLVDSVKACGATLICVRTHKFSPQGATGVAVLAESHIAIHTYPEYGYAALDVFTCGEHTDPYKALEVIREFLKPKSIQIIDLKRGLMENGTFELK",
+      "length": 124,
+      "steps": [
+        {
+          "step": 1,
+          "enzyme": "PC2",
+          "action": "Cleave at KR @ pos 111",
+          "motif_sequence": "KR",
+          "discontinuity": 0.267,
+          "position": 111
+        },
+        {
+          "step": 2,
+          "enzyme": "Carboxypeptidase E/H",
+          "action": "Trim 1 C-terminal basic residue(s) from short_peptide_1",
+          "from": "K",
+          "product_length": 10
+        }
+      ]
+    },
+    "disulfide_bonds": {
+      "bonds": [
+        {
+          "cys_1": {
+            "position": 15,
+            "fragment": "mature_product_0"
+          },
+          "cys_2": {
+            "position": 37,
+            "fragment": "mature_product_0"
+          },
+          "distance": 22,
+          "motif": "long-range",
+          "bond_type": "intrachain"
+        },
+        {
+          "cys_1": {
+            "position": 43,
+            "fragment": "mature_product_0"
+          },
+          "cys_2": {
+            "position": 83,
+            "fragment": "mature_product_0"
+          },
+          "distance": 40,
+          "motif": "long-range",
+          "bond_type": "intrachain"
+        }
+      ],
+      "unpaired_cys": []
+    },
+    "mature_products": [
+      {
+        "name": "mature_product_0",
+        "sequence": "MLKYLGKHLILELWGCDPKALDDIEGIEKMLVDSVKACGATLICVRTHKFSPQGATGVAVLAESHIAIHTYPEYGYAALDVFTCGEHTDPYKALEVIREFLKPKSIQIIDL",
+        "length": 111,
+        "start": 0,
+        "end": 111,
+        "dominant_primitive": "⊤",
+        "profile": {
+          "⊢": 2,
+          "⊣": 1,
+          "≻": 4,
+          "≺": 5,
+          "⋈": 3,
+          "⊤": 10,
+          "∋": 2,
+          "⊙": 5,
+          "⊥": 7,
+          "⊞": 9,
+          "◻": 8
+        },
+        "inferred_function": "kinetic_regulator",
+        "amidation": null
+      },
+      {
+        "name": "short_peptide_1",
+        "sequence": "GLMENGTFEL",
+        "length": 10,
+        "start": 113,
+        "end": 124,
+        "dominant_primitive": "◻",
+        "profile": {
+          "⊢": 1,
+          "⋈": 1,
+          "∈": 1,
+          "⊞": 1,
+          "◻": 2
+        },
+        "inferred_function": "winding_closure_module",
+        "amidation": null
+      }
+    ]
+  },
+  "narrative": "═══ Q57763 — Structural Processing Analysis ═══\nSequence: 124 AA\n\n▸ Processing steps:\n  [1] PC2: Cleave at KR @ pos 111\n  [2] Carboxypeptidase E/H: Trim 1 C-terminal basic residue(s) from short_peptide_1\n\n▸ Mature products:\n  • mature_product_0 (111 AA) — kinetic_regulator\n    Primitive profile: ∋=2 | ≺=5 | ≻=4 | ⊙=5 | ⊞=9 | ⊢=2 | ⊣=1 | ⊤=10 | ⊥=7 | ⋈=3 | ◻=8\n  • short_peptide_1 (10 AA) — winding_closure_module\n    Primitive profile: ∈=1 | ⊞=1 | ⊢=1 | ⋈=1 | ◻=2\n\n▸ Predicted disulfide bonds (Ř-Ř):\n  Cys15—Cys37 (intrachain, long-range)\n  Cys43—Cys83 (intrachain, long-range)\n"
+}

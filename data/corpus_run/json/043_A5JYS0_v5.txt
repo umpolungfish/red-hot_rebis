@@ -1,0 +1,87 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 043_A5JYS0
+╚══════════════════════════════════════════════════════════╝
+Input: 426 AA | Promoted: 50.7% | Dominant: ⊞ | ∈:23 | ∋:18 | ≺:12 | ≻:22 | ⊙:6 | ⊞:31 | ⊢:10 | ⊣:5 | ⊤:17 | ⊥:23 | ⋈:22 | ◻:27
+
+▸ CLEAVAGE (10 sites):
+  pos   5: RR   → unknown                   ○=0.50
+  pos  19: RR   → unknown                   ○=0.50
+  pos  35: KK   → unknown                   ○=0.50
+  pos 108: RK   → unknown                   ○=0.50
+  pos 141: KK   → unknown                   ○=0.50
+  pos 231: KK   → unknown                   ○=0.50
+  pos 281: RK   → unknown                   ○=0.50
+  pos 326: RR   → unknown                   ○=0.50
+  pos 357: R    → PC2_monobasic             ○=0.40 [M]
+  pos 413: K    → PC2_monobasic             ○=0.40 [M]
+
+▸ PRODUCTS (11):
+
+  [1] Signal Peptide (5 AA @ 1–5)
+      ⊢-dominant (2/5 residues)
+      MSQRR
+
+  [2] ƒ-hydrophobic core (14 AA @ 6–19)
+      ⋈-dominant (8/14 residues)
+      HFKMSVTAKNFYRR
+
+  [3] Ω-winding module (16 AA @ 20–35)
+      ◻-dominant (8/16 residues)
+      PLPETCIEFSSELGKK
+
+  [4] Ω-winding module (73 AA @ 36–108)
+      ◻-dominant (35/73 residues)
+      LFTEALVRGSANIYFKLASQFRTQDEPAYCGLSTLVMVLN...
+
+  [5] Σ-variable region (33 AA @ 109–141)
+      ⊞-dominant (17/33 residues)
+      SGINLQQFSCLAKCNRLKSTVSYGDNSPDFLKK
+
+  [6] Ħ-chiral domain (90 AA @ 142–231)
+      ⊥-dominant (35/90 residues)
+      FRTSLVNSVRSDDQVLVASYDRSVLGQTGSGHFSPLAAYH...
+
+  [7] Ħ-chiral domain (50 AA @ 232–281)
+      ⊥-dominant (29/50 residues)
+      GTRPLIMYGLKAYVNINDSDFATSVISWNQFLLCDPLEDD...
+
+  [8] B-chain (45 AA @ 282–326)
+      ≻-dominant (30/45 residues)
+      FGQCFAPHAMCCTQKTFDADQKNSCTECSTDQNEACKMIC...
+
+  [9] ƒ-hydrophobic core (31 AA @ 327–357)
+      ⋈-dominant (11/31 residues)
+      TRFAEVFSSSAVAALLIAWPFEKGYSERSDR
+
+  [10] Γ-catalytic domain (56 AA @ 358–413)
+      ∈-dominant (34/56 residues)
+      IGNLAEKYKNEFSAETMNEMNQLTTQIRTLISCSKPPVVI...
+
+  [11] Ř-scaffold domain (13 AA @ 414–426)
+      ≻-dominant (7/13 residues)
+      IGQSCACANDVNL
+
+▸ MAP:
+  RR ↓ 5
+  RR ↓ 19
+  KK ↓ 35
+  RK ↓ 108
+  KK ↓ 141
+  KK ↓ 231
+  RK ↓ 281
+  RR ↓ 326
+  [M] ↓ 357
+  [M] ↓ 413
+  Chain 1: [1–5] (5 AA) Signal Peptide
+  Chain 2: [6–19] (14 AA) ƒ-hydrophobic core
+  Chain 3: [20–35] (16 AA) Ω-winding module
+  Chain 4: [36–108] (73 AA) Ω-winding module
+  Chain 5: [109–141] (33 AA) Σ-variable region
+  Chain 6: [142–231] (90 AA) Ħ-chiral domain
+  Chain 7: [232–281] (50 AA) Ħ-chiral domain
+  Chain 8: [282–326] (45 AA) B-chain
+  Chain 9: [327–357] (31 AA) ƒ-hydrophobic core
+  Chain 10: [358–413] (56 AA) Γ-catalytic domain
+  Chain 11: [414–426] (13 AA) Ř-scaffold domain
+
+[2;37m DNA  → 043_A5JYS0_codons.dna  [0m[1;2;37m([0m[1;2;36m1278[0m[2;37m nt[0m[1;2;37m)[0m

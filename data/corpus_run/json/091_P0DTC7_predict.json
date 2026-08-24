@@ -1,0 +1,114 @@
+═ Protein Prediction Pipeline ═
+  Sequence: MKIILFLALITLATCELYHYQECVRGTTVLLKEPCSSGTYEGNSPFHPLA...
+  Length: 121 aa | Name: P0DTC7
+{
+  "name": "P0DTC7",
+  "sequence": "MKIILFLALITLATCELYHYQECVRGTTVLLKEPCSSGTYEGNSPFHPLADNKFALTCFSTQFAFACPDGVKHVYQLRARSVSPKLFIRQEEVQELYSPIFLIVAAIVFITLCFTLKRKTE",
+  "length": 121,
+  "pipeline_result": {
+    "name": "P0DTC7",
+    "sequence": "MKIILFLALITLATCELYHYQECVRGTTVLLKEPCSSGTYEGNSPFHPLADNKFALTCFSTQFAFACPDGVKHVYQLRARSVSPKLFIRQEEVQELYSPIFLIVAAIVFITLCFTLKRKTE",
+    "length": 121,
+    "signal_peptide": {
+      "sequence": "MKIILFLALITLATCELYHYQECVRGTTVLLKEPCSSGTYEGNSPFHPLADNKFALTCFSTQFAFACPDGVKHVYQLRARSVSPKLFIRQEEVQELYSPIFLIVAAIVFITLCFTLK",
+      "length": 117,
+      "cleavage_position": 117,
+      "bootstrap_score": 2,
+      "n_charge": -2,
+      "hydrophobic_core_length": 13
+    },
+    "cleavage_sites": [
+      {
+        "position": 117,
+        "motif": "RK",
+        "motif_seq": "RK",
+        "enzyme": "Furin/PC",
+        "context": "CFTLKRKTE",
+        "discontinuity": 0.4,
+        "density_before": 0.467,
+        "density_after": 0.067,
+        "cpe_trim_candidate": false
+      }
+    ],
+    "fragments": [
+      {
+        "start": 119,
+        "end": 121,
+        "length": 2,
+        "sequence": "TE",
+        "label": "intervening_peptide_1",
+        "vector": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "densities": {
+          "⊢": 0.0,
+          "⊣": 0.0,
+          "≻": 0.0,
+          "≺": 0.0,
+          "⋈": 0.0,
+          "⊤": 0.0,
+          "∈": 0.0,
+          "∋": 0.0,
+          "⊙": 0.0,
+          "⊥": 0.0,
+          "⊞": 0.0,
+          "◻": 0.5
+        },
+        "dominant_primitives": [
+          "◻"
+        ],
+        "total_primitive_activations": 1,
+        "amidation": null
+      }
+    ],
+    "processing": {
+      "precursor": "MKIILFLALITLATCELYHYQECVRGTTVLLKEPCSSGTYEGNSPFHPLADNKFALTCFSTQFAFACPDGVKHVYQLRARSVSPKLFIRQEEVQELYSPIFLIVAAIVFITLCFTLKRKTE",
+      "length": 121,
+      "steps": [
+        {
+          "step": 1,
+          "enzyme": "Signal Peptidase",
+          "action": "Remove signal peptide (117 AA)",
+          "cleavage_position": 117,
+          "product_length": 4
+        },
+        {
+          "step": 2,
+          "enzyme": "Furin/PC",
+          "action": "Cleave at RK @ pos 117",
+          "motif_sequence": "RK",
+          "discontinuity": 0.4,
+          "position": 117
+        }
+      ]
+    },
+    "disulfide_bonds": [],
+    "mature_products": [
+      {
+        "name": "intervening_peptide_1",
+        "sequence": "TE",
+        "length": 2,
+        "start": 119,
+        "end": 121,
+        "dominant_primitive": "◻",
+        "profile": {
+          "◻": 1
+        },
+        "inferred_function": "winding_closure_module",
+        "amidation": null
+      }
+    ]
+  },
+  "narrative": "═══ P0DTC7 — Structural Processing Analysis ═══\nSequence: 121 AA\n\n▸ Signal peptide (117 AA): MKIILFLALITLATCELYHYQECVRGTTVLLKEPCSSGTYEGNSPFHPLADNKFALTCFSTQFAFACPDGVKHVYQLRARSVSPKLFIRQEEVQELYSPIFLIVAAIVFITLCFTLK\n  Bootstrap elements: Met(Ð)×1, Trp(Þ)×0\n  Cleavage @ position 117 ← signal peptidase\n  Dominant: ⋈ — bootstrap preconditions\n\n▸ Processing steps:\n  [1] Signal Peptidase: Remove signal peptide (117 AA)\n  [2] Furin/PC: Cleave at RK @ pos 117\n\n▸ Mature products:\n  • intervening_peptide_1 (2 AA) — winding_closure_module\n    Primitive profile: ◻=1\n"
+}

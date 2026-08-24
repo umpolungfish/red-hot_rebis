@@ -1,0 +1,369 @@
+═ Protein Prediction Pipeline ═
+  Sequence: MVRVAINGFGRIGRLVMRIALSRPNVEVVALNDPFITNDYAAYMFKYDST...
+  Length: 332 aa | Name: P00359
+{
+  "name": "P00359",
+  "sequence": "MVRVAINGFGRIGRLVMRIALSRPNVEVVALNDPFITNDYAAYMFKYDSTHGRYAGEVSHDDKHIIVDGKKIATYQERDPANLPWGSSNVDIAIDSTGVFKELDTAQKHIDAGAKKVVITAPSSTAPMFVMGVNEEKYTSDLKIVSNASCTTNCLAPLAKVINDAFGIEEGLMTTVHSLTATQKTVDGPSHKDWRGGRTASGNIIPSSTGAAKAVGKVLPELQGKLTGMAFRVPTVDVSVVDLTVKLNKETTYDEIKKVVKAAAEGKLKGVLGYTEDAVVSSDFLGDSHSSIFDASAGIQLSPKFVKLVSWYDNEYGYSTRVVDLVEHVAKA",
+  "length": 332,
+  "pipeline_result": {
+    "name": "P00359",
+    "sequence": "MVRVAINGFGRIGRLVMRIALSRPNVEVVALNDPFITNDYAAYMFKYDSTHGRYAGEVSHDDKHIIVDGKKIATYQERDPANLPWGSSNVDIAIDSTGVFKELDTAQKHIDAGAKKVVITAPSSTAPMFVMGVNEEKYTSDLKIVSNASCTTNCLAPLAKVINDAFGIEEGLMTTVHSLTATQKTVDGPSHKDWRGGRTASGNIIPSSTGAAKAVGKVLPELQGKLTGMAFRVPTVDVSVVDLTVKLNKETTYDEIKKVVKAAAEGKLKGVLGYTEDAVVSSDFLGDSHSSIFDASAGIQLSPKFVKLVSWYDNEYGYSTRVVDLVEHVAKA",
+    "length": 332,
+    "signal_peptide": null,
+    "cleavage_sites": [
+      {
+        "position": 69,
+        "motif": "KK",
+        "motif_seq": "KK",
+        "enzyme": "PCSK",
+        "context": "IIVDGKKIATYQ",
+        "discontinuity": 0.133,
+        "density_before": 0.6,
+        "density_after": 0.467,
+        "cpe_trim_candidate": false
+      },
+      {
+        "position": 114,
+        "motif": "KK",
+        "motif_seq": "KK",
+        "enzyme": "PCSK",
+        "context": "IDAGAKKVVITA",
+        "discontinuity": 0.333,
+        "density_before": 0.6,
+        "density_after": 0.267,
+        "cpe_trim_candidate": false
+      },
+      {
+        "position": 256,
+        "motif": "KK",
+        "motif_seq": "KK",
+        "enzyme": "PCSK",
+        "context": "TYDEIKKVVKAA",
+        "discontinuity": 0.333,
+        "density_before": 0.6,
+        "density_after": 0.267,
+        "cpe_trim_candidate": false
+      }
+    ],
+    "fragments": [
+      {
+        "start": 0,
+        "end": 69,
+        "length": 69,
+        "sequence": "MVRVAINGFGRIGRLVMRIALSRPNVEVVALNDPFITNDYAAYMFKYDSTHGRYAGEVSHDDKHIIVDG",
+        "label": "mature_product_0",
+        "vector": [
+          3,
+          0,
+          0,
+          4,
+          3,
+          6,
+          4,
+          0,
+          3,
+          6,
+          2,
+          2
+        ],
+        "densities": {
+          "⊢": 0.043,
+          "⊣": 0.0,
+          "≻": 0.0,
+          "≺": 0.058,
+          "⋈": 0.043,
+          "⊤": 0.087,
+          "∈": 0.058,
+          "∋": 0.0,
+          "⊙": 0.043,
+          "⊥": 0.087,
+          "⊞": 0.029,
+          "◻": 0.029
+        },
+        "dominant_primitives": [
+          "⊤",
+          "⊥"
+        ],
+        "total_primitive_activations": 33,
+        "amidation": {
+          "amidated_residue": "D",
+          "position": 67,
+          "mechanism": "PAM (peptidylglycine α-amidating monooxygenase)",
+          "confidence": "high"
+        }
+      },
+      {
+        "start": 71,
+        "end": 114,
+        "length": 43,
+        "sequence": "IATYQERDPANLPWGSSNVDIAIDSTGVFKELDTAQKHIDAGA",
+        "label": "mature_product_1",
+        "vector": [
+          0,
+          1,
+          0,
+          1,
+          1,
+          4,
+          2,
+          2,
+          1,
+          5,
+          2,
+          2
+        ],
+        "densities": {
+          "⊢": 0.0,
+          "⊣": 0.023,
+          "≻": 0.0,
+          "≺": 0.023,
+          "⋈": 0.023,
+          "⊤": 0.093,
+          "∈": 0.047,
+          "∋": 0.047,
+          "⊙": 0.023,
+          "⊥": 0.116,
+          "⊞": 0.047,
+          "◻": 0.047
+        },
+        "dominant_primitives": [
+          "⊥"
+        ],
+        "total_primitive_activations": 21,
+        "amidation": null
+      },
+      {
+        "start": 116,
+        "end": 256,
+        "length": 140,
+        "sequence": "VVITAPSSTAPMFVMGVNEEKYTSDLKIVSNASCTTNCLAPLAKVINDAFGIEEGLMTTVHSLTATQKTVDGPSHKDWRGGRTASGNIIPSSTGAAKAVGKVLPELQGKLTGMAFRVPTVDVSVVDLTVKLNKETTYDEI",
+        "label": "mature_product_2",
+        "vector": [
+          4,
+          1,
+          2,
+          2,
+          3,
+          7,
+          6,
+          2,
+          2,
+          7,
+          10,
+          7
+        ],
+        "densities": {
+          "⊢": 0.029,
+          "⊣": 0.007,
+          "≻": 0.014,
+          "≺": 0.014,
+          "⋈": 0.021,
+          "⊤": 0.05,
+          "∈": 0.043,
+          "∋": 0.014,
+          "⊙": 0.014,
+          "⊥": 0.05,
+          "⊞": 0.071,
+          "◻": 0.05
+        },
+        "dominant_primitives": [
+          "⊞"
+        ],
+        "total_primitive_activations": 53,
+        "amidation": null
+      },
+      {
+        "start": 258,
+        "end": 332,
+        "length": 74,
+        "sequence": "VVKAAAEGKLKGVLGYTEDAVVSSDFLGDSHSSIFDASAGIQLSPKFVKLVSWYDNEYGYSTRVVDLVEHVAKA",
+        "label": "mature_product_3",
+        "vector": [
+          0,
+          1,
+          0,
+          4,
+          3,
+          2,
+          1,
+          1,
+          2,
+          6,
+          6,
+          4
+        ],
+        "densities": {
+          "⊢": 0.0,
+          "⊣": 0.014,
+          "≻": 0.0,
+          "≺": 0.054,
+          "⋈": 0.041,
+          "⊤": 0.027,
+          "∈": 0.014,
+          "∋": 0.014,
+          "⊙": 0.027,
+          "⊥": 0.081,
+          "⊞": 0.081,
+          "◻": 0.054
+        },
+        "dominant_primitives": [
+          "⊥",
+          "⊞"
+        ],
+        "total_primitive_activations": 30,
+        "amidation": null
+      }
+    ],
+    "processing": {
+      "precursor": "MVRVAINGFGRIGRLVMRIALSRPNVEVVALNDPFITNDYAAYMFKYDSTHGRYAGEVSHDDKHIIVDGKKIATYQERDPANLPWGSSNVDIAIDSTGVFKELDTAQKHIDAGAKKVVITAPSSTAPMFVMGVNEEKYTSDLKIVSNASCTTNCLAPLAKVINDAFGIEEGLMTTVHSLTATQKTVDGPSHKDWRGGRTASGNIIPSSTGAAKAVGKVLPELQGKLTGMAFRVPTVDVSVVDLTVKLNKETTYDEIKKVVKAAAEGKLKGVLGYTEDAVVSSDFLGDSHSSIFDASAGIQLSPKFVKLVSWYDNEYGYSTRVVDLVEHVAKA",
+      "length": 332,
+      "steps": [
+        {
+          "step": 1,
+          "enzyme": "PCSK",
+          "action": "Cleave at KK @ pos 69",
+          "motif_sequence": "KK",
+          "discontinuity": 0.133,
+          "position": 69
+        },
+        {
+          "step": 2,
+          "enzyme": "PCSK",
+          "action": "Cleave at KK @ pos 114",
+          "motif_sequence": "KK",
+          "discontinuity": 0.333,
+          "position": 114
+        },
+        {
+          "step": 3,
+          "enzyme": "PCSK",
+          "action": "Cleave at KK @ pos 256",
+          "motif_sequence": "KK",
+          "discontinuity": 0.333,
+          "position": 256
+        },
+        {
+          "step": 4,
+          "enzyme": "PAM",
+          "action": "Amidate D at C-terminus of mature_product_0",
+          "mechanism": "Peptidylglycine α-amidating monooxygenase"
+        }
+      ]
+    },
+    "disulfide_bonds": {
+      "bonds": [
+        {
+          "cys_1": {
+            "position": 149,
+            "fragment": "mature_product_2"
+          },
+          "cys_2": {
+            "position": 153,
+            "fragment": "mature_product_2"
+          },
+          "distance": 4,
+          "motif": "long-range",
+          "bond_type": "intrachain"
+        }
+      ],
+      "unpaired_cys": []
+    },
+    "mature_products": [
+      {
+        "name": "mature_product_0",
+        "sequence": "MVRVAINGFGRIGRLVMRIALSRPNVEVVALNDPFITNDYAAYMFKYDSTHGRYAGEVSHDDKHIIVDG",
+        "length": 69,
+        "start": 0,
+        "end": 69,
+        "dominant_primitive": "⊤",
+        "profile": {
+          "⊢": 3,
+          "≺": 4,
+          "⋈": 3,
+          "⊤": 6,
+          "∈": 4,
+          "⊙": 3,
+          "⊥": 6,
+          "⊞": 2,
+          "◻": 2
+        },
+        "inferred_function": "kinetic_regulator",
+        "amidation": {
+          "amidated_residue": "D",
+          "position": 67,
+          "mechanism": "PAM (peptidylglycine α-amidating monooxygenase)",
+          "confidence": "high"
+        }
+      },
+      {
+        "name": "mature_product_1",
+        "sequence": "IATYQERDPANLPWGSSNVDIAIDSTGVFKELDTAQKHIDAGA",
+        "length": 43,
+        "start": 71,
+        "end": 114,
+        "dominant_primitive": "⊥",
+        "profile": {
+          "⊣": 1,
+          "≺": 1,
+          "⋈": 1,
+          "⊤": 4,
+          "∈": 2,
+          "∋": 2,
+          "⊙": 1,
+          "⊥": 5,
+          "⊞": 2,
+          "◻": 2
+        },
+        "inferred_function": "substrate_recognition",
+        "amidation": null
+      },
+      {
+        "name": "mature_product_2",
+        "sequence": "VVITAPSSTAPMFVMGVNEEKYTSDLKIVSNASCTTNCLAPLAKVINDAFGIEEGLMTTVHSLTATQKTVDGPSHKDWRGGRTASGNIIPSSTGAAKAVGKVLPELQGKLTGMAFRVPTVDVSVVDLTVKLNKETTYDEI",
+        "length": 140,
+        "start": 116,
+        "end": 256,
+        "dominant_primitive": "⊞",
+        "profile": {
+          "⊢": 4,
+          "⊣": 1,
+          "≻": 2,
+          "≺": 2,
+          "⋈": 3,
+          "⊤": 7,
+          "∈": 6,
+          "∋": 2,
+          "⊙": 2,
+          "⊥": 7,
+          "⊞": 10,
+          "◻": 7
+        },
+        "inferred_function": "variable_modification_platform",
+        "amidation": null
+      },
+      {
+        "name": "mature_product_3",
+        "sequence": "VVKAAAEGKLKGVLGYTEDAVVSSDFLGDSHSSIFDASAGIQLSPKFVKLVSWYDNEYGYSTRVVDLVEHVAKA",
+        "length": 74,
+        "start": 258,
+        "end": 332,
+        "dominant_primitive": "⊥",
+        "profile": {
+          "⊣": 1,
+          "≺": 4,
+          "⋈": 3,
+          "⊤": 2,
+          "∈": 1,
+          "∋": 1,
+          "⊙": 2,
+          "⊥": 6,
+          "⊞": 6,
+          "◻": 4
+        },
+        "inferred_function": "substrate_recognition",
+        "amidation": null
+      }
+    ]
+  },
+  "narrative": "═══ P00359 — Structural Processing Analysis ═══\nSequence: 332 AA\n\n▸ Processing steps:\n  [1] PCSK: Cleave at KK @ pos 69\n  [2] PCSK: Cleave at KK @ pos 114\n  [3] PCSK: Cleave at KK @ pos 256\n  [4] PAM: Amidate D at C-terminus of mature_product_0\n\n▸ Mature products:\n  • mature_product_0 (69 AA) — kinetic_regulator [C-term amidated]\n    Primitive profile: ∈=4 | ≺=4 | ⊙=3 | ⊞=2 | ⊢=3 | ⊤=6 | ⊥=6 | ⋈=3 | ◻=2\n  • mature_product_1 (43 AA) — substrate_recognition\n    Primitive profile: ∈=2 | ∋=2 | ≺=1 | ⊙=1 | ⊞=2 | ⊣=1 | ⊤=4 | ⊥=5 | ⋈=1 | ◻=2\n  • mature_product_2 (140 AA) — variable_modification_platform\n    Primitive profile: ∈=6 | ∋=2 | ≺=2 | ≻=2 | ⊙=2 | ⊞=10 | ⊢=4 | ⊣=1 | ⊤=7 | ⊥=7 | ⋈=3 | ◻=7\n  • mature_product_3 (74 AA) — substrate_recognition\n    Primitive profile: ∈=1 | ∋=1 | ≺=4 | ⊙=2 | ⊞=6 | ⊣=1 | ⊤=2 | ⊥=6 | ⋈=3 | ◻=4\n\n▸ Predicted disulfide bonds (Ř-Ř):\n  Cys149—Cys153 (intrachain, long-range)\n"
+}

@@ -1,0 +1,95 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 026_A1YB07
+╚══════════════════════════════════════════════════════════╝
+Input: 721 AA | Promoted: 44.9% | Dominant: ◻ | ∈:26 | ∋:65 | ≺:18 | ≻:6 | ⊙:27 | ⊞:28 | ⊢:14 | ⊣:4 | ⊤:22 | ⊥:27 | ⋈:9 | ◻:78
+
+▸ CLEAVAGE (14 sites):
+  pos 147: KR   → unknown                   ○=0.50
+  pos 292: KR   → unknown                   ○=0.50
+  pos 328: KR   → unknown                   ○=0.50
+  pos 345: KR   → unknown                   ○=0.50
+  pos 379: K    → PC2_monobasic             ○=0.40 [M]
+  pos 410: KR   → unknown                   ○=0.50
+  pos 411: RR   → unknown                   ○=0.50
+  pos 412: RR   → unknown                   ○=0.50
+  pos 435: RR   → unknown                   ○=0.50
+  pos 436: RK   → unknown                   ○=0.50
+  pos 437: KR   → unknown                   ○=0.50
+  pos 460: KR   → unknown                   ○=0.50
+  pos 607: RR   → unknown                   ○=0.50
+  pos 640: K    → PC2_monobasic             ○=0.45 [M]
+
+▸ PRODUCTS (11):
+
+  [1] Signal Peptide (147 AA @ 1–147)
+      ∋-dominant (61/147 residues)
+      MRTAEESSGTVLHRLIQEQLRYGNPTDPTLLAIQQQALRG...
+
+  [2] ɢ-glycosylation target (145 AA @ 148–292)
+      ∋-dominant (69/145 residues)
+      EHARSLSERLLQLSLERNCAHDNIPMSSSHSYPQLSNNHS...
+
+  [3] C-peptide (36 AA @ 293–328)
+      ◻-dominant (19/36 residues)
+      EVDSYSEKAARLQKLEQEIQRISEAYETLMKGSAKR
+
+  [4] Ω-winding module (17 AA @ 329–345)
+      ◻-dominant (10/17 residues)
+      EALEKTMRNKLESEIKR
+
+  [5] Ħ-chiral domain (34 AA @ 346–379)
+      ⊥-dominant (18/34 residues)
+      LHDFNRDLRDRLETANKQRAAIEVEDKSRHAFAK
+
+  [6] Ω-winding module (31 AA @ 380–410)
+      ◻-dominant (17/31 residues)
+      LVEQNEDHLRERERLEKETQHLRASGEEWKR
+
+  [7] Ω-winding module (23 AA @ 413–435)
+      ◻-dominant (10/23 residues)
+      EALEQALITAQTRNRQLEEELRR
+
+  [8] Ω-winding module (23 AA @ 438–460)
+      ◻-dominant (11/23 residues)
+      AYVEKVERMQSALAQLQAACEKR
+
+  [9] ɢ-glycosylation target (147 AA @ 461–607)
+      ∋-dominant (70/147 residues)
+      EALELRLRTRLEQELKSLRAQQWQAQTQHASPGSYLDLNV...
+
+  [10] Ω-winding module (33 AA @ 608–640)
+      ◻-dominant (8/33 residues)
+      EQGRPELQGLRPARSVPSINTVATASTTRAKGK
+
+  [11] Ω-winding module (81 AA @ 641–721)
+      ◻-dominant (30/81 residues)
+      SLSDDQTAVASLPPLPHLLAKIQCRDSSTQCDSEEPSCKA...
+
+▸ MAP:
+  KR ↓ 147
+  KR ↓ 292
+  KR ↓ 328
+  KR ↓ 345
+  [M] ↓ 379
+  KR ↓ 410
+  RR ↓ 411
+  RR ↓ 412
+  RR ↓ 435
+  RK ↓ 436
+  KR ↓ 437
+  KR ↓ 460
+  RR ↓ 607
+  [M] ↓ 640
+  Chain 1: [1–147] (147 AA) Signal Peptide
+  Chain 2: [148–292] (145 AA) ɢ-glycosylation target
+  Chain 3: [293–328] (36 AA) C-peptide
+  Chain 4: [329–345] (17 AA) Ω-winding module
+  Chain 5: [346–379] (34 AA) Ħ-chiral domain
+  Chain 6: [380–410] (31 AA) Ω-winding module
+  Chain 7: [413–435] (23 AA) Ω-winding module
+  Chain 8: [438–460] (23 AA) Ω-winding module
+  Chain 9: [461–607] (147 AA) ɢ-glycosylation target
+  Chain 10: [608–640] (33 AA) Ω-winding module
+  Chain 11: [641–721] (81 AA) Ω-winding module
+
+[2;37m DNA  → 026_A1YB07_codons.dna  [0m[1;2;37m([0m[1;2;36m2163[0m[2;37m nt[0m[1;2;37m)[0m

@@ -1,0 +1,40 @@
+═ Neurotrophic Factor Simulation ═
+  Disease model: Alzheimer
+  BNF active: True
+  Time: 5.0
+[2;37m======================================================================[0m
+[2;37mBIDIRECTIONAL NEUROTROPHIC FACTOR — ALZHEIMER[0m
+[2;37m======================================================================[0m
+[2;37mBNF system: ACTIVE 𐑾[0m
+[2;37mInitial conditions:[0m
+[2;37m  [0m[2;33mACh[0m[2;37m=[0m[1;2;36m0[0m[1;2;36m.30[0m[2;37m, [0m[2;33mGlut[0m[2;37m=[0m[1;2;36m0[0m[1;2;36m.20[0m
+[2;37m  Synaptic density: [0m[1;2;36m0.70[0m
+[2;37m  Neurodegeneration: [0m[1;2;36m0.00[0m
+[2;37m──────────────────────────────────────────────────────────────────────[0m
+[2;37m  Time   Activity    Trophic     SynDen   NeuroDeg   OxStress[0m
+[2;37m────── ────────── ────────── ────────── ────────── ──────────[0m
+   0.2      0.459      0.373      0.701      0.000      0.098
+
+[2;37m======================================================================[0m
+[1;32mSIMULATION COMPLETE — [0m[1;36m5[0m[1;32m time units[0m
+[2;37m======================================================================[0m
+
+[2;37mFinal state:[0m
+[2;37m  Synaptic density:     [0m[1;2;36m0.737[0m[2;37m [0m[1;2;37m([0m[2;37mIMPROVED[0m[1;2;37m)[0m
+[2;37m  Neurodegeneration:    [0m[1;2;36m0.000[0m[2;37m [0m[1;2;37m([0m[2;37mREDUCED[0m[1;2;37m)[0m
+[2;37m  Oxidative stress:     [0m[1;2;36m0.033[0m
+[2;37m  Inflammation:         [0m[1;2;36m0.100[0m
+
+[2;37m  BNF feedback range:  [0m[1;2;36m0.373[0m[2;37m - [0m[1;2;36m0.452[0m
+[2;37m  BNF mean output:     [0m[1;2;36m0.446[0m
+
+[2;37m  𐑾 Bidirectional feedback loop is WEAK[0m
+
+[1;32m  ✓ NEUROPROTECTION CONFIRMED[0m
+[2;37m    The BNF dynamically adjusts trophic support to neural demand.[0m
+
+[2;37m  Mechanism: 𐑾 bidirectional feedback between neurotransmitter[0m
+[2;37m  sensing and trophic signaling creates closed-loop homeostasis.[0m
+
+[2;37mSaved to [0m[2;35m/home/mrnob0dy666/red-hot_rebis/therapeutics/[0m[2;95mneurotrophic_results.json[0m
+None

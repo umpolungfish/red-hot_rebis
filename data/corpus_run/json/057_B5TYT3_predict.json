@@ -1,0 +1,296 @@
+═ Protein Prediction Pipeline ═
+  Sequence: MATLGDIGVAAAINILTAIIFLLAFAILRIQPFNDRVYFPKWYLKGIRSS...
+  Length: 771 aa | Name: B5TYT3
+{
+  "name": "B5TYT3",
+  "sequence": "MATLGDIGVAAAINILTAIIFLLAFAILRIQPFNDRVYFPKWYLKGIRSSPLHSGALVSKFVNVNLGSYLRFLNWMPAALKMPEPELIDHAGLDSAVYLRIYLIGLKIFVPIALLAWSILVPVNWTSHGLQLAKLRNVTSSDIDKLSISNIENGSDRFWTHLVMAYAFTFWTCYVLMKEYEKVAAMRLAFLQNEQRRPDQFTVLVRNVPADPDESISDSVEHFFLVNHPDHYLTHQVVYNANDLAALVEQKKSTQNWLDYYQLKYTRNQEHKPRIKTGFLGLWGKKVDAIDHYIAEIEKLNEQIMEERKKVKKDDTSVMPAAFVSFKTRWGAAVSAQTQQSSDPTEWLTEWAPEAREVFWSNLAIPYVSLTVRRLIMHIAFFFLTFFFMIPIAFVQSLASIEGIEKNAPFLKSIIENDLFKSVIQGFLPGIVLKLFLIFLPSILMVMSKFEGFVSLSSLERRAAFRYYIFNLINVFLGSVITGSAFEQLDSFLKQSAKEIPKTVGVAIPIKATFFITYIMVDGWAGIAGEILRLKPLIFFHIKNSLLVKTEKDREEAMNPGQINYHATEPRIQLYFLLGLVYAPVTPVLLPFIIIFFALAYLVFRHQIINVYNQEYESAARFWPDVHGRIISALIIAQILLMGLLSTKGAAQSTPFLLFLPIITFFFHRYCKGRYEPAFLRHPLKEAMVKDTLERAREPNFNLKPYLQKAYIHPVFKDNDYEDSRFDEISGYCIEDSDEECVTVPTKRQSRINTPAVSHASRGSSRSPPSK",
+  "length": 771,
+  "pipeline_result": {
+    "name": "B5TYT3",
+    "sequence": "MATLGDIGVAAAINILTAIIFLLAFAILRIQPFNDRVYFPKWYLKGIRSSPLHSGALVSKFVNVNLGSYLRFLNWMPAALKMPEPELIDHAGLDSAVYLRIYLIGLKIFVPIALLAWSILVPVNWTSHGLQLAKLRNVTSSDIDKLSISNIENGSDRFWTHLVMAYAFTFWTCYVLMKEYEKVAAMRLAFLQNEQRRPDQFTVLVRNVPADPDESISDSVEHFFLVNHPDHYLTHQVVYNANDLAALVEQKKSTQNWLDYYQLKYTRNQEHKPRIKTGFLGLWGKKVDAIDHYIAEIEKLNEQIMEERKKVKKDDTSVMPAAFVSFKTRWGAAVSAQTQQSSDPTEWLTEWAPEAREVFWSNLAIPYVSLTVRRLIMHIAFFFLTFFFMIPIAFVQSLASIEGIEKNAPFLKSIIENDLFKSVIQGFLPGIVLKLFLIFLPSILMVMSKFEGFVSLSSLERRAAFRYYIFNLINVFLGSVITGSAFEQLDSFLKQSAKEIPKTVGVAIPIKATFFITYIMVDGWAGIAGEILRLKPLIFFHIKNSLLVKTEKDREEAMNPGQINYHATEPRIQLYFLLGLVYAPVTPVLLPFIIIFFALAYLVFRHQIINVYNQEYESAARFWPDVHGRIISALIIAQILLMGLLSTKGAAQSTPFLLFLPIITFFFHRYCKGRYEPAFLRHPLKEAMVKDTLERAREPNFNLKPYLQKAYIHPVFKDNDYEDSRFDEISGYCIEDSDEECVTVPTKRQSRINTPAVSHASRGSSRSPPSK",
+    "length": 771,
+    "signal_peptide": {
+      "sequence": "MATLGDIGVAAAINILTAIIFLLAFAILRIQPFNDRVYFPKWYLKGIRSSPLHSGALVSKFVNVNLGSYLRFLNWMPAALKMPEPELIDHAGLDSAVYLRIYLIGLKIFVPIALLAWSILVPVNWTSHGLQLAKLRNVTSSDIDKLSISNIENGSDRFWTHLVMAYAFTFWTCYVLMKEYEKVAAMRLAFLQNEQRRPDQFTVLVRNVPADPDESISDSVEHFFLVNHPDHYLTHQVVYNANDLAALVEQKKSTQNWLDYYQLKYTRNQEHKPRIKTGFLGLWGKKVDAIDHYIAEIEKLNEQIMEERKKVKKDDTSVMPAAFVSFKTRWGAAVSAQTQQSSDPTEWLTEWAPEAREVFWSNLAIPYVSLTVRRLIMHIAFFFLTFFFMIPIAFVQS",
+      "length": 397,
+      "cleavage_position": 397,
+      "bootstrap_score": 2,
+      "n_charge": 2,
+      "hydrophobic_core_length": 14
+    },
+    "cleavage_sites": [
+      {
+        "position": 460,
+        "motif": "RR",
+        "motif_seq": "RR",
+        "enzyme": "PC1/3",
+        "context": "LSSLERRAAFRY",
+        "discontinuity": 0.2,
+        "density_before": 0.4,
+        "density_after": 0.6,
+        "cpe_trim_candidate": false
+      },
+      {
+        "position": 746,
+        "motif": "KR",
+        "motif_seq": "KR",
+        "enzyme": "PC2",
+        "context": "VTVPTKRQSRIN",
+        "discontinuity": 0.333,
+        "density_before": 0.6,
+        "density_after": 0.267,
+        "cpe_trim_candidate": false
+      }
+    ],
+    "fragments": [
+      {
+        "start": 397,
+        "end": 460,
+        "length": 63,
+        "sequence": "LASIEGIEKNAPFLKSIIENDLFKSVIQGFLPGIVLKLFLIFLPSILMVMSKFEGFVSLSSLE",
+        "label": "mature_product_0",
+        "vector": [
+          2,
+          0,
+          0,
+          0,
+          7,
+          8,
+          2,
+          1,
+          0,
+          1,
+          5,
+          5
+        ],
+        "densities": {
+          "⊢": 0.032,
+          "⊣": 0.0,
+          "≻": 0.0,
+          "≺": 0.0,
+          "⋈": 0.111,
+          "⊤": 0.127,
+          "∈": 0.032,
+          "∋": 0.016,
+          "⊙": 0.0,
+          "⊥": 0.016,
+          "⊞": 0.079,
+          "◻": 0.079
+        },
+        "dominant_primitives": [
+          "⊤"
+        ],
+        "total_primitive_activations": 31,
+        "amidation": null
+      },
+      {
+        "start": 462,
+        "end": 746,
+        "length": 284,
+        "sequence": "AAFRYYIFNLINVFLGSVITGSAFEQLDSFLKQSAKEIPKTVGVAIPIKATFFITYIMVDGWAGIAGEILRLKPLIFFHIKNSLLVKTEKDREEAMNPGQINYHATEPRIQLYFLLGLVYAPVTPVLLPFIIIFFALAYLVFRHQIINVYNQEYESAARFWPDVHGRIISALIIAQILLMGLLSTKGAAQSTPFLLFLPIITFFFHRYCKGRYEPAFLRHPLKEAMVKDTLERAREPNFNLKPYLQKAYIHPVFKDNDYEDSRFDEISGYCIEDSDEECVTVPT",
+        "label": "mature_product_1",
+        "vector": [
+          4,
+          2,
+          3,
+          15,
+          24,
+          29,
+          10,
+          9,
+          7,
+          11,
+          15,
+          18
+        ],
+        "densities": {
+          "⊢": 0.014,
+          "⊣": 0.007,
+          "≻": 0.011,
+          "≺": 0.053,
+          "⋈": 0.085,
+          "⊤": 0.102,
+          "∈": 0.035,
+          "∋": 0.032,
+          "⊙": 0.025,
+          "⊥": 0.039,
+          "⊞": 0.053,
+          "◻": 0.063
+        },
+        "dominant_primitives": [
+          "⊤"
+        ],
+        "total_primitive_activations": 147,
+        "amidation": null
+      },
+      {
+        "start": 748,
+        "end": 771,
+        "length": 22,
+        "sequence": "QSRINTPAVSHASRGSSRSPPS",
+        "label": "mature_product_2",
+        "vector": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0
+        ],
+        "densities": {
+          "⊢": 0.0,
+          "⊣": 0.0,
+          "≻": 0.0,
+          "≺": 0.0,
+          "⋈": 0.0,
+          "⊤": 0.043,
+          "∈": 0.043,
+          "∋": 0.043,
+          "⊙": 0.043,
+          "⊥": 0.0,
+          "⊞": 0.043,
+          "◻": 0.0
+        },
+        "dominant_primitives": [
+          "⊤",
+          "∈",
+          "∋",
+          "⊙",
+          "⊞"
+        ],
+        "total_primitive_activations": 5,
+        "amidation": null
+      }
+    ],
+    "processing": {
+      "precursor": "MATLGDIGVAAAINILTAIIFLLAFAILRIQPFNDRVYFPKWYLKGIRSSPLHSGALVSKFVNVNLGSYLRFLNWMPAALKMPEPELIDHAGLDSAVYLRIYLIGLKIFVPIALLAWSILVPVNWTSHGLQLAKLRNVTSSDIDKLSISNIENGSDRFWTHLVMAYAFTFWTCYVLMKEYEKVAAMRLAFLQNEQRRPDQFTVLVRNVPADPDESISDSVEHFFLVNHPDHYLTHQVVYNANDLAALVEQKKSTQNWLDYYQLKYTRNQEHKPRIKTGFLGLWGKKVDAIDHYIAEIEKLNEQIMEERKKVKKDDTSVMPAAFVSFKTRWGAAVSAQTQQSSDPTEWLTEWAPEAREVFWSNLAIPYVSLTVRRLIMHIAFFFLTFFFMIPIAFVQSLASIEGIEKNAPFLKSIIENDLFKSVIQGFLPGIVLKLFLIFLPSILMVMSKFEGFVSLSSLERRAAFRYYIFNLINVFLGSVITGSAFEQLDSFLKQSAKEIPKTVGVAIPIKATFFITYIMVDGWAGIAGEILRLKPLIFFHIKNSLLVKTEKDREEAMNPGQINYHATEPRIQLYFLLGLVYAPVTPVLLPFIIIFFALAYLVFRHQIINVYNQEYESAARFWPDVHGRIISALIIAQILLMGLLSTKGAAQSTPFLLFLPIITFFFHRYCKGRYEPAFLRHPLKEAMVKDTLERAREPNFNLKPYLQKAYIHPVFKDNDYEDSRFDEISGYCIEDSDEECVTVPTKRQSRINTPAVSHASRGSSRSPPSK",
+      "length": 771,
+      "steps": [
+        {
+          "step": 1,
+          "enzyme": "Signal Peptidase",
+          "action": "Remove signal peptide (397 AA)",
+          "cleavage_position": 397,
+          "product_length": 374
+        },
+        {
+          "step": 2,
+          "enzyme": "PC1/3",
+          "action": "Cleave at RR @ pos 460",
+          "motif_sequence": "RR",
+          "discontinuity": 0.2,
+          "position": 460
+        },
+        {
+          "step": 3,
+          "enzyme": "PC2",
+          "action": "Cleave at KR @ pos 746",
+          "motif_sequence": "KR",
+          "discontinuity": 0.333,
+          "position": 746
+        },
+        {
+          "step": 4,
+          "enzyme": "Carboxypeptidase E/H",
+          "action": "Trim 1 C-terminal basic residue(s) from mature_product_2",
+          "from": "K",
+          "product_length": 22
+        }
+      ]
+    },
+    "disulfide_bonds": {
+      "bonds": [
+        {
+          "cys_1": {
+            "position": 670,
+            "fragment": "mature_product_1"
+          },
+          "cys_2": {
+            "position": 732,
+            "fragment": "mature_product_1"
+          },
+          "distance": 62,
+          "motif": "long-range",
+          "bond_type": "intrachain"
+        }
+      ],
+      "unpaired_cys": [
+        {
+          "fragment": "mature_product_1",
+          "rel_pos": 278,
+          "abs_pos": 740,
+          "context": "EECVT"
+        }
+      ]
+    },
+    "mature_products": [
+      {
+        "name": "mature_product_0",
+        "sequence": "LASIEGIEKNAPFLKSIIENDLFKSVIQGFLPGIVLKLFLIFLPSILMVMSKFEGFVSLSSLE",
+        "length": 63,
+        "start": 397,
+        "end": 460,
+        "dominant_primitive": "⊤",
+        "profile": {
+          "⊢": 2,
+          "⋈": 7,
+          "⊤": 8,
+          "∈": 2,
+          "∋": 1,
+          "⊥": 1,
+          "⊞": 5,
+          "◻": 5
+        },
+        "inferred_function": "kinetic_regulator",
+        "amidation": null
+      },
+      {
+        "name": "mature_product_1",
+        "sequence": "AAFRYYIFNLINVFLGSVITGSAFEQLDSFLKQSAKEIPKTVGVAIPIKATFFITYIMVDGWAGIAGEILRLKPLIFFHIKNSLLVKTEKDREEAMNPGQINYHATEPRIQLYFLLGLVYAPVTPVLLPFIIIFFALAYLVFRHQIINVYNQEYESAARFWPDVHGRIISALIIAQILLMGLLSTKGAAQSTPFLLFLPIITFFFHRYCKGRYEPAFLRHPLKEAMVKDTLERAREPNFNLKPYLQKAYIHPVFKDNDYEDSRFDEISGYCIEDSDEECVTVPT",
+        "length": 284,
+        "start": 462,
+        "end": 746,
+        "dominant_primitive": "⊤",
+        "profile": {
+          "⊢": 4,
+          "⊣": 2,
+          "≻": 3,
+          "≺": 15,
+          "⋈": 24,
+          "⊤": 29,
+          "∈": 10,
+          "∋": 9,
+          "⊙": 7,
+          "⊥": 11,
+          "⊞": 15,
+          "◻": 18
+        },
+        "inferred_function": "kinetic_regulator",
+        "amidation": null
+      },
+      {
+        "name": "mature_product_2",
+        "sequence": "QSRINTPAVSHASRGSSRSPPS",
+        "length": 22,
+        "start": 748,
+        "end": 771,
+        "dominant_primitive": "⊤",
+        "profile": {
+          "⊤": 1,
+          "∈": 1,
+          "∋": 1,
+          "⊙": 1,
+          "⊞": 1
+        },
+        "inferred_function": "kinetic_regulator",
+        "amidation": null
+      }
+    ]
+  },
+  "narrative": "═══ B5TYT3 — Structural Processing Analysis ═══\nSequence: 771 AA\n\n▸ Signal peptide (397 AA): MATLGDIGVAAAINILTAIIFLLAFAILRIQPFNDRVYFPKWYLKGIRSSPLHSGALVSKFVNVNLGSYLRFLNWMPAALKMPEPELIDHAGLDSAVYLRIYLIGLKIFVPIALLAWSILVPVNWTSHGLQLAKLRNVTSSDIDKLSISNIENGSDRFWTHLVMAYAFTFWTCYVLMKEYEKVAAMRLAFLQNEQRRPDQFTVLVRNVPADPDESISDSVEHFFLVNHPDHYLTHQVVYNANDLAALVEQKKSTQNWLDYYQLKYTRNQEHKPRIKTGFLGLWGKKVDAIDHYIAEIEKLNEQIMEERKKVKKDDTSVMPAAFVSFKTRWGAAVSAQTQQSSDPTEWLTEWAPEAREVFWSNLAIPYVSLTVRRLIMHIAFFFLTFFFMIPIAFVQS\n  Bootstrap elements: Met(Ð)×10, Trp(Þ)×12\n  Cleavage @ position 397 ← signal peptidase\n  Dominant: ⊤ — bootstrap preconditions\n\n▸ Processing steps:\n  [1] Signal Peptidase: Remove signal peptide (397 AA)\n  [2] PC1/3: Cleave at RR @ pos 460\n  [3] PC2: Cleave at KR @ pos 746\n  [4] Carboxypeptidase E/H: Trim 1 C-terminal basic residue(s) from mature_product_2\n\n▸ Mature products:\n  • mature_product_0 (63 AA) — kinetic_regulator\n    Primitive profile: ∈=2 | ∋=1 | ⊞=5 | ⊢=2 | ⊤=8 | ⊥=1 | ⋈=7 | ◻=5\n  • mature_product_1 (284 AA) — kinetic_regulator\n    Primitive profile: ∈=10 | ∋=9 | ≺=15 | ≻=3 | ⊙=7 | ⊞=15 | ⊢=4 | ⊣=2 | ⊤=29 | ⊥=11 | ⋈=24 | ◻=18\n  • mature_product_2 (22 AA) — kinetic_regulator\n    Primitive profile: ∈=1 | ∋=1 | ⊙=1 | ⊞=1 | ⊤=1\n\n▸ Predicted disulfide bonds (Ř-Ř):\n  Cys670—Cys732 (intrachain, long-range)\n  ⚠ Unpaired Cys @ pos 740 in mature_product_1\n"
+}

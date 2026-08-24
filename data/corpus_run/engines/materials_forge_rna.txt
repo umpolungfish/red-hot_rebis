@@ -1,0 +1,155 @@
+═ Forging material: seq_rna ═
+  IG tuple: 𐑨𐑶𐑾𐑗𐑱𐑧𐑲𐑠𐑢𐑖𐑳𐑷
+{
+  "name": "seq_rna",
+  "ig_tuple": "⟨𐑨𐑶𐑾𐑗𐑱𐑧𐑲𐑠𐑢𐑖𐑳𐑷⟩",
+  "dimensionality": {
+    "dimensionality": "2D",
+    "structure": "thin film / membrane",
+    "size_regime": "monolayer to μm",
+    "synthesis": "CVD / ALD / Langmuir-Blodgett"
+  },
+  "topology": {
+    "connectivity": "interpenetrating",
+    "structure": "IPN / MOF@COF",
+    "mechanical": "synergistic, strain-sharing"
+  },
+  "interface": {
+    "interface": "dynamic (Diels-Alder, disulfide)",
+    "bond_energy": "100-300 kJ/mol",
+    "reversible": true,
+    "fatigue": "self-healing"
+  },
+  "symmetry": {
+    "symmetry": "amorphous / disordered",
+    "order_parameter": 0.0,
+    "properties": "isotropic, broad distributions"
+  },
+  "phase": {
+    "phase": "classical / defect-tolerant",
+    "purity": "90-99%",
+    "character": "polycrystalline, grain boundaries present"
+  },
+  "kinetics": {
+    "kinetics": "near-equilibrium",
+    "processing": "slow anneal / float zone",
+    "microstructure": "coarse, highly ordered"
+  },
+  "interaction_range": {
+    "interaction_range": "long-range / universal",
+    "coordination": "global",
+    "property": "collective modes, topological protection possible"
+  },
+  "synthesis": {
+    "synthesis": "sequential / layer-by-layer",
+    "sequence": "ordered deposition",
+    "advantage": "precise architecture",
+    "disadvantage": "slow, expensive"
+  },
+  "criticality": {
+    "criticality": "sub-critical / inert",
+    "response": "linear, no divergence",
+    "sensing": "none",
+    "application": "structural material"
+  },
+  "memory": {
+    "memory": "two-step",
+    "hysteresis": "double loop / training effect",
+    "history": "two prior states",
+    "fatigue": "shake-down to steady state"
+  },
+  "stoichiometry": {
+    "components": "3+",
+    "class": "multi-component (HEA / perovskite)",
+    "complexity": "high",
+    "example": "CrMnFeCoNi, PMN-PT, MAX phases"
+  },
+  "topological_protection": {
+    "topology": "trivial",
+    "protection": "none",
+    "edge_states": "none",
+    "robustness": "fragile"
+  },
+  "proposed_composition": "AlCoCrFeNi₂.₁ (eutectic high-entropy alloy)",
+  "proposed_processing": "1. Precursor: AlCoCrFeNi₂.₁ (eutectic high-entropy alloy)\n2. Primary: slow anneal / float zone (sequential / layer-by-layer)\n3. Interface engineering: dynamic bonding cycle (heat-cool 3×)\n5. Memory training: two prior states cycling protocol",
+  "predicted_properties": {
+    "Young_modulus_GPa": "868.1 (computed)",
+    "Tensile_strength_MPa": "4340.7",
+    "Thermal_conductivity_WmK": "17.7",
+    "Electrical_resistivity": "ohmic, ρ ~ 10⁻⁶ to 10⁻² Ω·m",
+    "Self_healing_efficiency": "85-95% (thermal trigger)",
+    "Healing_cycles": "50-200",
+    "Shape_memory_strain_pct": "4-8%",
+    "_quantitative": {
+      "name": "seq_rna",
+      "ig_tuple": [
+        "𐑨",
+        "𐑶",
+        "𐑾",
+        "𐑗",
+        "𐑱",
+        "𐑧",
+        "𐑲",
+        "𐑠",
+        "𐑢",
+        "𐑖",
+        "𐑳",
+        "𐑷"
+      ],
+      "bond_energy_kJmol": 175.0,
+      "bond_energy_min_kJmol": 122.49999999999999,
+      "bond_energy_max_kJmol": 227.5,
+      "young_modulus_GPa": 868.1371489430688,
+      "shear_modulus_GPa": 347.25485957722753,
+      "bulk_modulus_GPa": 651.1028617073016,
+      "tensile_strength_MPa": 4340.685744715344,
+      "fracture_toughness_MPam05": 1.75,
+      "band_gap_eV": 0.4444722945510959,
+      "dielectric_constant": 15.651747493035204,
+      "electrical_conductivity_Sm": 29000000.0,
+      "debye_temperature_K": 445.4493590701697,
+      "thermal_conductivity_WmK": 17.67766952966369,
+      "thermal_expansion_ppmK": 0.9476125994558633,
+      "melting_temperature_K": 3784.6863763909155,
+      "curie_temperature_K": 0.0,
+      "topological_protection_energy_meV": 0.0,
+      "critical_exponent_gamma": 0.0,
+      "critical_temperature_K": 1892.3431881954575,
+      "sensitivity_enhancement": 1.0,
+      "hbond_energy_kcal": 7.322103920514319,
+      "folding_stability_kcal": -9.000000255733088,
+      "enzymatic_turnover_s": 1512744190285.1792,
+      "binding_affinity_kcal": -0.0,
+      "quantum_confinement_eV": 6.04799800799884,
+      "zero_point_energy_eV": 0.15875856812545952,
+      "coherence_time_s": 3.673281487442719e-12,
+      "coupling_strength": 0.3648676284641901,
+      "frobenius_score": 0.0
+    },
+    "_quality_scores": {
+      "structural": 1.0,
+      "electronic": 1.0,
+      "thermal": 0.035355339059327376,
+      "topological": 0.0,
+      "sensing": 1e-06,
+      "biocompatible": 0.7888944589102191
+    },
+    "Shear_modulus_GPa": "347.3",
+    "Bulk_modulus_GPa": "651.1",
+    "Fracture_toughness_MPam05": "1.75",
+    "Band_gap_eV": "0.444",
+    "Dielectric_constant": "15.7",
+    "Electrical_conductivity_Sm": "2.900e+07",
+    "Debye_temperature_K": "445",
+    "Melting_temperature_K": "3785",
+    "Topological_gap_meV": "0.00",
+    "Sensitivity_enhancement": "1.00e+00x",
+    "Thermochemical_score": "0.764"
+  },
+  "target_applications": [
+    "Self-healing structural composite",
+    "Shape-memory actuator / deployable structure"
+  ],
+  "frobenius_score": 0.3,
+  "ouroboricity_tier": "O₁"
+}

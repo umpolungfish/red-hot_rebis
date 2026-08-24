@@ -1,0 +1,129 @@
+═ Protein Prediction Pipeline ═
+  Sequence: MADSNGTITVEELKKLLEQWNLVIGFLFLTWICLLQFAYANRNRFLYIIK...
+  Length: 222 aa | Name: P0DTC5
+{
+  "name": "P0DTC5",
+  "sequence": "MADSNGTITVEELKKLLEQWNLVIGFLFLTWICLLQFAYANRNRFLYIIKLIFLWLLWPVTLACFVLAAVYRINWITGGIAIAMACLVGLMWLSYFIASFRLFARTRSMWSFNPETNILLNVPLHGTILTRPLLESELVIGAVILRGHLRIAGHHLGRCDIKDLPKEITVATSRTLSYYKLGASQRVAGDSGFAAYSRYRIGNYKLNTDHSSSSDNIALLVQ",
+  "length": 222,
+  "pipeline_result": {
+    "name": "P0DTC5",
+    "sequence": "MADSNGTITVEELKKLLEQWNLVIGFLFLTWICLLQFAYANRNRFLYIIKLIFLWLLWPVTLACFVLAAVYRINWITGGIAIAMACLVGLMWLSYFIASFRLFARTRSMWSFNPETNILLNVPLHGTILTRPLLESELVIGAVILRGHLRIAGHHLGRCDIKDLPKEITVATSRTLSYYKLGASQRVAGDSGFAAYSRYRIGNYKLNTDHSSSSDNIALLVQ",
+    "length": 222,
+    "signal_peptide": {
+      "sequence": "MADSNGTITVEELKKLLEQWNLVIGFLFLTWICLLQFAYANRNRFLYIIKLIFLWLLWPVT",
+      "length": 61,
+      "cleavage_position": 61,
+      "bootstrap_score": 2,
+      "n_charge": 2,
+      "hydrophobic_core_length": 8
+    },
+    "cleavage_sites": [],
+    "fragments": [
+      {
+        "start": 61,
+        "end": 222,
+        "length": 161,
+        "sequence": "LACFVLAAVYRINWITGGIAIAMACLVGLMWLSYFIASFRLFARTRSMWSFNPETNILLNVPLHGTILTRPLLESELVIGAVILRGHLRIAGHHLGRCDIKDLPKEITVATSRTLSYYKLGASQRVAGDSGFAAYSRYRIGNYKLNTDHSSSSDNIALLVQ",
+        "label": "full_precursor",
+        "vector": [
+          3,
+          3,
+          3,
+          7,
+          6,
+          14,
+          7,
+          2,
+          5,
+          5,
+          4,
+          4
+        ],
+        "densities": {
+          "⊢": 0.019,
+          "⊣": 0.019,
+          "≻": 0.019,
+          "≺": 0.043,
+          "⋈": 0.037,
+          "⊤": 0.087,
+          "∈": 0.043,
+          "∋": 0.012,
+          "⊙": 0.031,
+          "⊥": 0.031,
+          "⊞": 0.025,
+          "◻": 0.025
+        },
+        "dominant_primitives": [
+          "⊤"
+        ],
+        "total_primitive_activations": 63,
+        "amidation": null
+      }
+    ],
+    "processing": {
+      "precursor": "MADSNGTITVEELKKLLEQWNLVIGFLFLTWICLLQFAYANRNRFLYIIKLIFLWLLWPVTLACFVLAAVYRINWITGGIAIAMACLVGLMWLSYFIASFRLFARTRSMWSFNPETNILLNVPLHGTILTRPLLESELVIGAVILRGHLRIAGHHLGRCDIKDLPKEITVATSRTLSYYKLGASQRVAGDSGFAAYSRYRIGNYKLNTDHSSSSDNIALLVQ",
+      "length": 222,
+      "steps": [
+        {
+          "step": 1,
+          "enzyme": "Signal Peptidase",
+          "action": "Remove signal peptide (61 AA)",
+          "cleavage_position": 61,
+          "product_length": 161
+        }
+      ]
+    },
+    "disulfide_bonds": {
+      "bonds": [
+        {
+          "cys_1": {
+            "position": 63,
+            "fragment": "full_precursor"
+          },
+          "cys_2": {
+            "position": 85,
+            "fragment": "full_precursor"
+          },
+          "distance": 22,
+          "motif": "long-range",
+          "bond_type": "intrachain"
+        }
+      ],
+      "unpaired_cys": [
+        {
+          "fragment": "full_precursor",
+          "rel_pos": 97,
+          "abs_pos": 158,
+          "context": "GRCDI"
+        }
+      ]
+    },
+    "mature_products": [
+      {
+        "name": "full_precursor",
+        "sequence": "LACFVLAAVYRINWITGGIAIAMACLVGLMWLSYFIASFRLFARTRSMWSFNPETNILLNVPLHGTILTRPLLESELVIGAVILRGHLRIAGHHLGRCDIKDLPKEITVATSRTLSYYKLGASQRVAGDSGFAAYSRYRIGNYKLNTDHSSSSDNIALLVQ",
+        "length": 161,
+        "start": 61,
+        "end": 222,
+        "dominant_primitive": "⊤",
+        "profile": {
+          "⊢": 3,
+          "⊣": 3,
+          "≻": 3,
+          "≺": 7,
+          "⋈": 6,
+          "⊤": 14,
+          "∈": 7,
+          "∋": 2,
+          "⊙": 5,
+          "⊥": 5,
+          "⊞": 4,
+          "◻": 4
+        },
+        "inferred_function": "kinetic_regulator",
+        "amidation": null
+      }
+    ]
+  },
+  "narrative": "═══ P0DTC5 — Structural Processing Analysis ═══\nSequence: 222 AA\n\n▸ Signal peptide (61 AA): MADSNGTITVEELKKLLEQWNLVIGFLFLTWICLLQFAYANRNRFLYIIKLIFLWLLWPVT\n  Bootstrap elements: Met(Ð)×1, Trp(Þ)×4\n  Cleavage @ position 61 ← signal peptidase\n  Dominant: ⊤ — bootstrap preconditions\n\n▸ Processing steps:\n  [1] Signal Peptidase: Remove signal peptide (61 AA)\n\n▸ Mature products:\n  • full_precursor (161 AA) — kinetic_regulator\n    Primitive profile: ∈=7 | ∋=2 | ≺=7 | ≻=3 | ⊙=5 | ⊞=4 | ⊢=3 | ⊣=3 | ⊤=14 | ⊥=5 | ⋈=6 | ◻=4\n\n▸ Predicted disulfide bonds (Ř-Ř):\n  Cys63—Cys85 (intrachain, long-range)\n  ⚠ Unpaired Cys @ pos 158 in full_precursor\n"
+}

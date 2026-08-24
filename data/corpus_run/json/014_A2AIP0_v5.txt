@@ -1,0 +1,31 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 014_A2AIP0
+╚══════════════════════════════════════════════════════════╝
+Input: 273 AA | Promoted: 40.7% | Dominant: ∋ | ∈:6 | ∋:17 | ≺:9 | ≻:3 | ⊙:12 | ⊞:9 | ⊢:6 | ⊣:2 | ⊤:9 | ⊥:7 | ⋈:16 | ◻:15
+
+▸ CLEAVAGE (2 sites):
+  pos  81: RR   → unknown                   ○=0.50
+  pos 123: RR   → unknown                   ○=0.50
+
+▸ PRODUCTS (3):
+
+  [1] Signal Peptide (81 AA @ 0–81)
+      ⊤-dominant (23/81 residues)
+      MAVVNTSIPGLSGENPHYIPGYTGHCPLLRFSMGQTYGQV...
+
+  [2] Ç-kinetic regulator (42 AA @ 81–123)
+      ⊤-dominant (21/42 residues)
+      GHERLSSSIIPGYTGFIPRAQFIFAKNCNQVWAEAMSEFT...
+
+  [3] Ω-winding module (150 AA @ 123–273)
+      ◻-dominant (67/150 residues)
+      HGEQESHQLPDGAKGEREVEEDQLREAEEPPLKQELAHAS...
+
+▸ MAP:
+  RR ↓ 81
+  RR ↓ 123
+  Chain 1: [0–81] (81 AA) Signal Peptide
+  Chain 2: [81–123] (42 AA) Ç-kinetic regulator
+  Chain 3: [123–273] (150 AA) Ω-winding module
+
+[2;37m DNA  → 014_A2AIP0_codons.dna  [0m[1;2;37m([0m[1;2;36m819[0m[2;37m nt[0m[1;2;37m)[0m

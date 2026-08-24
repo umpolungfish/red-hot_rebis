@@ -1,0 +1,52 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 001_A0A1B0GTW7
+╚══════════════════════════════════════════════════════════╝
+Input: 788 AA | Promoted: 35.9% | Dominant: ∋ | ∈:14 | ∋:40 | ≺:20 | ≻:29 | ⊙:30 | ⊞:26 | ⊢:13 | ⊣:13 | ⊤:17 | ⊥:27 | ⋈:19 | ◻:35
+
+▸ CLEAVAGE (5 sites):
+  pos 229: RR   → unknown                   ○=0.50
+  pos 320: KK   → unknown                   ○=0.50
+  pos 498: KK   → unknown                   ○=0.50
+  pos 703: KK   → unknown                   ○=0.50
+  pos 759: KR   → unknown                   ○=0.50
+
+▸ PRODUCTS (6):
+
+  [1] B-chain (229 AA @ 0–229)
+      ∋-dominant (76/229 residues)
+      MLLLLLLLLLLPPLVLRVAASRCLHDETQKSVSLLRPPFS...
+
+  [2] Ç-kinetic regulator (91 AA @ 229–320)
+      ⊤-dominant (33/91 residues)
+      GFVMLPRLCLKLLGSSNLPTLASQSIRITGPSVIAYAACC...
+
+  [3] Ω-winding module (178 AA @ 320–498)
+      ◻-dominant (68/178 residues)
+      WRDCPSGFSVRENCSTRQLVTRQDEWGQLLLTTPAVSLSL...
+
+  [4] Ω-winding module (205 AA @ 498–703)
+      ◻-dominant (80/205 residues)
+      ENGFPAGVDNPHGEIYHPQSRCFFANLTSQLLPGDKPRHP...
+
+  [5] Ð-initiation bootstrap (56 AA @ 703–759)
+      ⊢-dominant (20/56 residues)
+      PLEVYHGGANFTTQPSKLLVTSDHNPSMTHLRLSMGLCLM...
+
+  [6] Fragment 6 (29 AA @ 759–788)
+      ⊙-dominant (6/29 residues)
+      ATLPVRPSASYHSPELHSTRVPVRGIREV
+
+▸ MAP:
+  RR ↓ 229
+  KK ↓ 320
+  KK ↓ 498
+  KK ↓ 703
+  KR ↓ 759
+  Chain 1: [0–229] (229 AA) B-chain
+  Chain 2: [229–320] (91 AA) Ç-kinetic regulator
+  Chain 3: [320–498] (178 AA) Ω-winding module
+  Chain 4: [498–703] (205 AA) Ω-winding module
+  Chain 5: [703–759] (56 AA) Ð-initiation bootstrap
+  Chain 6: [759–788] (29 AA) Fragment 6
+
+[2;37m DNA  → 001_A0A1B0GTW7_codons.dna  [0m[1;2;37m([0m[1;2;36m2364[0m[2;37m nt[0m[1;2;37m)[0m

@@ -1,0 +1,170 @@
+═ Protein Prediction Pipeline ═
+  Sequence: MDDADPEERNYDNMLKMLSDLNKDLEKLLEEMEKISVQATWMAYDMVVMR...
+  Length: 88 aa | Name: A1L190
+{
+  "name": "A1L190",
+  "sequence": "MDDADPEERNYDNMLKMLSDLNKDLEKLLEEMEKISVQATWMAYDMVVMRTNPTLAESMRRLEDAFVNCKEEMEKNWQELLHETKQRL",
+  "length": 88,
+  "pipeline_result": {
+    "name": "A1L190",
+    "sequence": "MDDADPEERNYDNMLKMLSDLNKDLEKLLEEMEKISVQATWMAYDMVVMRTNPTLAESMRRLEDAFVNCKEEMEKNWQELLHETKQRL",
+    "length": 88,
+    "signal_peptide": null,
+    "cleavage_sites": [
+      {
+        "position": 59,
+        "motif": "RR",
+        "motif_seq": "RR",
+        "enzyme": "PC1/3",
+        "context": "LAESMRRLEDAF",
+        "discontinuity": 0.4,
+        "density_before": 0.4,
+        "density_after": 0.8,
+        "cpe_trim_candidate": false
+      }
+    ],
+    "fragments": [
+      {
+        "start": 0,
+        "end": 59,
+        "length": 59,
+        "sequence": "MDDADPEERNYDNMLKMLSDLNKDLEKLLEEMEKISVQATWMAYDMVVMRTNPTLAESM",
+        "label": "mature_product_0",
+        "vector": [
+          8,
+          1,
+          0,
+          2,
+          0,
+          1,
+          4,
+          1,
+          0,
+          7,
+          4,
+          7
+        ],
+        "densities": {
+          "⊢": 0.136,
+          "⊣": 0.017,
+          "≻": 0.0,
+          "≺": 0.034,
+          "⋈": 0.0,
+          "⊤": 0.017,
+          "∈": 0.068,
+          "∋": 0.017,
+          "⊙": 0.0,
+          "⊥": 0.119,
+          "⊞": 0.068,
+          "◻": 0.119
+        },
+        "dominant_primitives": [
+          "⊢"
+        ],
+        "total_primitive_activations": 35,
+        "amidation": null
+      },
+      {
+        "start": 61,
+        "end": 88,
+        "length": 27,
+        "sequence": "LEDAFVNCKEEMEKNWQELLHETKQRL",
+        "label": "mature_product_1",
+        "vector": [
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          2,
+          2,
+          1,
+          1,
+          3,
+          6
+        ],
+        "densities": {
+          "⊢": 0.037,
+          "⊣": 0.037,
+          "≻": 0.037,
+          "≺": 0.0,
+          "⋈": 0.037,
+          "⊤": 0.0,
+          "∈": 0.074,
+          "∋": 0.074,
+          "⊙": 0.037,
+          "⊥": 0.037,
+          "⊞": 0.111,
+          "◻": 0.222
+        },
+        "dominant_primitives": [
+          "◻"
+        ],
+        "total_primitive_activations": 19,
+        "amidation": null
+      }
+    ],
+    "processing": {
+      "precursor": "MDDADPEERNYDNMLKMLSDLNKDLEKLLEEMEKISVQATWMAYDMVVMRTNPTLAESMRRLEDAFVNCKEEMEKNWQELLHETKQRL",
+      "length": 88,
+      "steps": [
+        {
+          "step": 1,
+          "enzyme": "PC1/3",
+          "action": "Cleave at RR @ pos 59",
+          "motif_sequence": "RR",
+          "discontinuity": 0.4,
+          "position": 59
+        }
+      ]
+    },
+    "disulfide_bonds": [],
+    "mature_products": [
+      {
+        "name": "mature_product_0",
+        "sequence": "MDDADPEERNYDNMLKMLSDLNKDLEKLLEEMEKISVQATWMAYDMVVMRTNPTLAESM",
+        "length": 59,
+        "start": 0,
+        "end": 59,
+        "dominant_primitive": "⊢",
+        "profile": {
+          "⊢": 8,
+          "⊣": 1,
+          "≺": 2,
+          "⊤": 1,
+          "∈": 4,
+          "∋": 1,
+          "⊥": 7,
+          "⊞": 4,
+          "◻": 7
+        },
+        "inferred_function": "initiation_bootstrap",
+        "amidation": null
+      },
+      {
+        "name": "mature_product_1",
+        "sequence": "LEDAFVNCKEEMEKNWQELLHETKQRL",
+        "length": 27,
+        "start": 61,
+        "end": 88,
+        "dominant_primitive": "◻",
+        "profile": {
+          "⊢": 1,
+          "⊣": 1,
+          "≻": 1,
+          "⋈": 1,
+          "∈": 2,
+          "∋": 2,
+          "⊙": 1,
+          "⊥": 1,
+          "⊞": 3,
+          "◻": 6
+        },
+        "inferred_function": "winding_closure_module",
+        "amidation": null
+      }
+    ]
+  },
+  "narrative": "═══ A1L190 — Structural Processing Analysis ═══\nSequence: 88 AA\n\n▸ Processing steps:\n  [1] PC1/3: Cleave at RR @ pos 59\n\n▸ Mature products:\n  • mature_product_0 (59 AA) — initiation_bootstrap\n    Primitive profile: ∈=4 | ∋=1 | ≺=2 | ⊞=4 | ⊢=8 | ⊣=1 | ⊤=1 | ⊥=7 | ◻=7\n  • mature_product_1 (27 AA) — winding_closure_module\n    Primitive profile: ∈=2 | ∋=2 | ≻=1 | ⊙=1 | ⊞=3 | ⊢=1 | ⊣=1 | ⊥=1 | ⋈=1 | ◻=6\n"
+}

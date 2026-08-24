@@ -1,0 +1,31 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 044_A5JYX5
+╚══════════════════════════════════════════════════════════╝
+Input: 309 AA | Promoted: 46.6% | Dominant: ⊞ | ∈:12 | ∋:7 | ≺:11 | ≻:5 | ⊙:7 | ⊞:23 | ⊢:9 | ⊣:3 | ⊤:19 | ⊥:15 | ⋈:14 | ◻:19
+
+▸ CLEAVAGE (2 sites):
+  pos 133: KK   → unknown                   ○=0.50
+  pos 213: KK   → unknown                   ○=0.50
+
+▸ PRODUCTS (3):
+
+  [1] Signal Peptide (133 AA @ 0–133)
+      ◻-dominant (64/133 residues)
+      MPYVFLLSPQLEIASQWDGYYEKTFEVSDHVHKEIILKVS...
+
+  [2] Σ-variable region (80 AA @ 133–213)
+      ⊞-dominant (35/80 residues)
+      LLQCPDELMVKTVSVNTNALFFTTKNFLPGMLESNKGHIV...
+
+  [3] Ç-kinetic regulator (96 AA @ 213–309)
+      ⊤-dominant (45/96 residues)
+      DVKTTVVCPIYINTGMFDGIATKWPTLLPILSPEYVVDCI...
+
+▸ MAP:
+  KK ↓ 133
+  KK ↓ 213
+  Chain 1: [0–133] (133 AA) Signal Peptide
+  Chain 2: [133–213] (80 AA) Σ-variable region
+  Chain 3: [213–309] (96 AA) Ç-kinetic regulator
+
+[2;37m DNA  → 044_A5JYX5_codons.dna  [0m[1;2;37m([0m[1;2;36m927[0m[2;37m nt[0m[1;2;37m)[0m

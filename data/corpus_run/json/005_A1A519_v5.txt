@@ -1,0 +1,56 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 005_A1A519
+╚══════════════════════════════════════════════════════════╝
+Input: 330 AA | Promoted: 47.6% | Dominant: ◻ | ∈:9 | ∋:21 | ≺:5 | ≻:10 | ⊙:9 | ⊞:18 | ⊢:11 | ⊣:4 | ⊤:5 | ⊥:10 | ⋈:6 | ◻:49
+
+▸ CLEAVAGE (7 sites):
+  pos   3: KR   → unknown                   ○=0.50
+  pos   4: RR   → unknown                   ○=0.50
+  pos   7: KR   → unknown                   ○=0.50
+  pos   8: RK   → unknown                   ○=0.50
+  pos  66: RK   → unknown                   ○=0.50
+  pos 127: K    → PC2_monobasic             ○=0.40 [M]
+  pos 312: RR   → unknown                   ○=0.50
+
+▸ PRODUCTS (6):
+
+  [1] IP-2 (3 AA @ 1–3)
+      ⊢-dominant (2/3 residues)
+      MKR
+
+  [2] IP-2 (3 AA @ 5–7)
+      ∋-dominant (2/3 residues)
+      QKR
+
+  [3] Ω-winding module (58 AA @ 9–66)
+      ◻-dominant (24/58 residues)
+      HLENEESQETAEKGGGMSKSQEDALQPGSTRVAKGWSQGV...
+
+  [4] ɢ-glycosylation target (61 AA @ 67–127)
+      ∋-dominant (26/61 residues)
+      LIHSGIQRIHRDSPQPQSPLAQVQERGETPPRSQHVSLSS...
+
+  [5] Ω-winding module (185 AA @ 128–312)
+      ◻-dominant (93/185 residues)
+      IYYMQVQMNKGVAVSWETEETLESLEKQPRMEEVTLSEVV...
+
+  [6] Ř-scaffold domain (18 AA @ 313–330)
+      ≻-dominant (9/18 residues)
+      SWSQCPGCVFHSPKDRNS
+
+▸ MAP:
+  KR ↓ 3
+  RR ↓ 4
+  KR ↓ 7
+  RK ↓ 8
+  RK ↓ 66
+  [M] ↓ 127
+  RR ↓ 312
+  Chain 1: [1–3] (3 AA) IP-2
+  Chain 2: [5–7] (3 AA) IP-2
+  Chain 3: [9–66] (58 AA) Ω-winding module
+  Chain 4: [67–127] (61 AA) ɢ-glycosylation target
+  Chain 5: [128–312] (185 AA) Ω-winding module
+  Chain 6: [313–330] (18 AA) Ř-scaffold domain
+
+[2;37m DNA  → 005_A1A519_codons.dna  [0m[1;2;37m([0m[1;2;36m990[0m[2;37m nt[0m[1;2;37m)[0m

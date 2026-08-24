@@ -1,0 +1,758 @@
+═ Protein Prediction Pipeline ═
+  Sequence: MNDKPNKWIFIPILAILFVMIGYQYVCPAGGQACHFRTGDKLVRIAPLAT...
+  Length: 419 aa | Name: A0MGZ7
+{
+  "name": "A0MGZ7",
+  "sequence": "MNDKPNKWIFIPILAILFVMIGYQYVCPAGGQACHFRTGDKLVRIAPLATPDPTTDDLYREQDPEEDNPPKCASKFNFTERDLTRDVDFNIKGDDVIVFLHIQKTGGTTFGRHLVRNIRLEQPCDCKAGQKKCTCHRPGKQESWLFSRFSTGWSCGLHADWTELTNCVPVIMDKRQPPKRKRNFYYITMLRDPVSRYLSEWKHVQRGATWKTSLHMCDGRSPTQDELPTCYNGDDWSGVTLHDFMDCPSNLANNRQVRMLADLSLVGCYNLSTMNESERNPILLASAKSNLKNMAFYGLTEFQRKTQYLFERTFHLRFISAFTQINSTRAANVELRDDMRSRIEQLNMLDMQLYEFAKDLFLQRYQFVRQRERQEERLKRREERRWIRERRVNQSKEPIVENQTRVTTTEDYASQVVRW",
+  "length": 419,
+  "pipeline_result": {
+    "name": "A0MGZ7",
+    "sequence": "MNDKPNKWIFIPILAILFVMIGYQYVCPAGGQACHFRTGDKLVRIAPLATPDPTTDDLYREQDPEEDNPPKCASKFNFTERDLTRDVDFNIKGDDVIVFLHIQKTGGTTFGRHLVRNIRLEQPCDCKAGQKKCTCHRPGKQESWLFSRFSTGWSCGLHADWTELTNCVPVIMDKRQPPKRKRNFYYITMLRDPVSRYLSEWKHVQRGATWKTSLHMCDGRSPTQDELPTCYNGDDWSGVTLHDFMDCPSNLANNRQVRMLADLSLVGCYNLSTMNESERNPILLASAKSNLKNMAFYGLTEFQRKTQYLFERTFHLRFISAFTQINSTRAANVELRDDMRSRIEQLNMLDMQLYEFAKDLFLQRYQFVRQRERQEERLKRREERRWIRERRVNQSKEPIVENQTRVTTTEDYASQVVRW",
+    "length": 419,
+    "signal_peptide": {
+      "sequence": "MNDKPNKWIFIPILAILFVMIGYQY",
+      "length": 25,
+      "cleavage_position": 25,
+      "bootstrap_score": 3,
+      "n_charge": 2,
+      "hydrophobic_core_length": 9
+    },
+    "cleavage_sites": [
+      {
+        "position": 130,
+        "motif": "KK",
+        "motif_seq": "KK",
+        "enzyme": "PCSK",
+        "context": "CKAGQKKCTCHR",
+        "discontinuity": 0.067,
+        "density_before": 0.6,
+        "density_after": 0.533,
+        "cpe_trim_candidate": true
+      },
+      {
+        "position": 173,
+        "motif": "KR",
+        "motif_seq": "KR",
+        "enzyme": "PC2",
+        "context": "PVIMDKRQPPKR",
+        "discontinuity": 0.067,
+        "density_before": 0.533,
+        "density_after": 0.6,
+        "cpe_trim_candidate": true
+      },
+      {
+        "position": 178,
+        "motif": "KR",
+        "motif_seq": "KR",
+        "enzyme": "PC2",
+        "context": "KRQPPKRKRNFY",
+        "discontinuity": 0.067,
+        "density_before": 0.467,
+        "density_after": 0.533,
+        "cpe_trim_candidate": false
+      },
+      {
+        "position": 180,
+        "motif": "KR",
+        "motif_seq": "KR",
+        "enzyme": "PC2",
+        "context": "QPPKRKRNFYYI",
+        "discontinuity": 0.0,
+        "density_before": 0.533,
+        "density_after": 0.533,
+        "cpe_trim_candidate": false
+      },
+      {
+        "position": 303,
+        "motif": "RK",
+        "motif_seq": "RK",
+        "enzyme": "Furin/PC",
+        "context": "LTEFQRKTQYLF",
+        "discontinuity": 0.067,
+        "density_before": 0.6,
+        "density_after": 0.533,
+        "cpe_trim_candidate": false
+      },
+      {
+        "position": 378,
+        "motif": "KR",
+        "motif_seq": "KR",
+        "enzyme": "PC2",
+        "context": "QEERLKRREERR",
+        "discontinuity": 0.067,
+        "density_before": 0.533,
+        "density_after": 0.467,
+        "cpe_trim_candidate": true
+      },
+      {
+        "position": 383,
+        "motif": "RR",
+        "motif_seq": "RR",
+        "enzyme": "PC1/3",
+        "context": "KRREERRWIRER",
+        "discontinuity": 0.0,
+        "density_before": 0.533,
+        "density_after": 0.533,
+        "cpe_trim_candidate": true
+      },
+      {
+        "position": 389,
+        "motif": "RR",
+        "motif_seq": "RR",
+        "enzyme": "PC1/3",
+        "context": "RWIRERRVNQSK",
+        "discontinuity": 0.0,
+        "density_before": 0.533,
+        "density_after": 0.533,
+        "cpe_trim_candidate": true
+      }
+    ],
+    "fragments": [
+      {
+        "start": 25,
+        "end": 130,
+        "length": 105,
+        "sequence": "VCPAGGQACHFRTGDKLVRIAPLATPDPTTDDLYREQDPEEDNPPKCASKFNFTERDLTRDVDFNIKGDDVIVFLHIQKTGGTTFGRHLVRNIRLEQPCDCKAGQ",
+        "label": "mature_product_0",
+        "vector": [
+          0,
+          0,
+          5,
+          1,
+          6,
+          5,
+          4,
+          5,
+          3,
+          12,
+          6,
+          5
+        ],
+        "densities": {
+          "⊢": 0.0,
+          "⊣": 0.0,
+          "≻": 0.048,
+          "≺": 0.01,
+          "⋈": 0.057,
+          "⊤": 0.048,
+          "∈": 0.038,
+          "∋": 0.048,
+          "⊙": 0.029,
+          "⊥": 0.114,
+          "⊞": 0.057,
+          "◻": 0.048
+        },
+        "dominant_primitives": [
+          "⊥"
+        ],
+        "total_primitive_activations": 52,
+        "amidation": null
+      },
+      {
+        "start": 132,
+        "end": 173,
+        "length": 41,
+        "sequence": "CTCHRPGKQESWLFSRFSTGWSCGLHADWTELTNCVPVIMD",
+        "label": "mature_product_1",
+        "vector": [
+          1,
+          3,
+          4,
+          0,
+          2,
+          1,
+          1,
+          1,
+          2,
+          2,
+          1,
+          2
+        ],
+        "densities": {
+          "⊢": 0.024,
+          "⊣": 0.073,
+          "≻": 0.098,
+          "≺": 0.0,
+          "⋈": 0.049,
+          "⊤": 0.024,
+          "∈": 0.024,
+          "∋": 0.024,
+          "⊙": 0.049,
+          "⊥": 0.049,
+          "⊞": 0.024,
+          "◻": 0.049
+        },
+        "dominant_primitives": [
+          "≻"
+        ],
+        "total_primitive_activations": 20,
+        "amidation": null
+      },
+      {
+        "start": 175,
+        "end": 178,
+        "length": 3,
+        "sequence": "QPP",
+        "label": "intervening_peptide_2",
+        "vector": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "densities": {
+          "⊢": 0.0,
+          "⊣": 0.0,
+          "≻": 0.0,
+          "≺": 0.0,
+          "⋈": 0.0,
+          "⊤": 0.0,
+          "∈": 0.0,
+          "∋": 0.333,
+          "⊙": 0.0,
+          "⊥": 0.0,
+          "⊞": 0.0,
+          "◻": 0.0
+        },
+        "dominant_primitives": [
+          "∋"
+        ],
+        "total_primitive_activations": 1,
+        "amidation": null
+      },
+      {
+        "start": 182,
+        "end": 303,
+        "length": 121,
+        "sequence": "NFYYITMLRDPVSRYLSEWKHVQRGATWKTSLHMCDGRSPTQDELPTCYNGDDWSGVTLHDFMDCPSNLANNRQVRMLADLSLVGCYNLSTMNESERNPILLASAKSNLKNMAFYGLTEFQ",
+        "label": "mature_product_4",
+        "vector": [
+          6,
+          3,
+          4,
+          6,
+          4,
+          2,
+          10,
+          4,
+          3,
+          8,
+          4,
+          5
+        ],
+        "densities": {
+          "⊢": 0.05,
+          "⊣": 0.025,
+          "≻": 0.033,
+          "≺": 0.05,
+          "⋈": 0.033,
+          "⊤": 0.017,
+          "∈": 0.083,
+          "∋": 0.033,
+          "⊙": 0.025,
+          "⊥": 0.066,
+          "⊞": 0.033,
+          "◻": 0.041
+        },
+        "dominant_primitives": [
+          "∈"
+        ],
+        "total_primitive_activations": 59,
+        "amidation": null
+      },
+      {
+        "start": 305,
+        "end": 378,
+        "length": 73,
+        "sequence": "TQYLFERTFHLRFISAFTQINSTRAANVELRDDMRSRIEQLNMLDMQLYEFAKDLFLQRYQFVRQRERQEERL",
+        "label": "mature_product_5",
+        "vector": [
+          3,
+          0,
+          0,
+          3,
+          7,
+          3,
+          3,
+          8,
+          1,
+          4,
+          1,
+          7
+        ],
+        "densities": {
+          "⊢": 0.041,
+          "⊣": 0.0,
+          "≻": 0.0,
+          "≺": 0.041,
+          "⋈": 0.096,
+          "⊤": 0.041,
+          "∈": 0.041,
+          "∋": 0.11,
+          "⊙": 0.014,
+          "⊥": 0.055,
+          "⊞": 0.014,
+          "◻": 0.096
+        },
+        "dominant_primitives": [
+          "∋"
+        ],
+        "total_primitive_activations": 40,
+        "amidation": null
+      },
+      {
+        "start": 380,
+        "end": 383,
+        "length": 3,
+        "sequence": "REE",
+        "label": "intervening_peptide_6",
+        "vector": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2
+        ],
+        "densities": {
+          "⊢": 0.0,
+          "⊣": 0.0,
+          "≻": 0.0,
+          "≺": 0.0,
+          "⋈": 0.0,
+          "⊤": 0.0,
+          "∈": 0.0,
+          "∋": 0.0,
+          "⊙": 0.0,
+          "⊥": 0.0,
+          "⊞": 0.0,
+          "◻": 0.667
+        },
+        "dominant_primitives": [
+          "◻"
+        ],
+        "total_primitive_activations": 2,
+        "amidation": null
+      },
+      {
+        "start": 385,
+        "end": 389,
+        "length": 4,
+        "sequence": "WIRE",
+        "label": "intervening_peptide_7",
+        "vector": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "densities": {
+          "⊢": 0.0,
+          "⊣": 0.25,
+          "≻": 0.0,
+          "≺": 0.0,
+          "⋈": 0.0,
+          "⊤": 0.25,
+          "∈": 0.0,
+          "∋": 0.0,
+          "⊙": 0.0,
+          "⊥": 0.0,
+          "⊞": 0.0,
+          "◻": 0.25
+        },
+        "dominant_primitives": [
+          "⊣",
+          "⊤",
+          "◻"
+        ],
+        "total_primitive_activations": 3,
+        "amidation": null
+      },
+      {
+        "start": 391,
+        "end": 419,
+        "length": 28,
+        "sequence": "VNQSKEPIVENQTRVTTTEDYASQVVRW",
+        "label": "mature_product_8",
+        "vector": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          2,
+          3,
+          0,
+          1,
+          1,
+          3
+        ],
+        "densities": {
+          "⊢": 0.0,
+          "⊣": 0.036,
+          "≻": 0.0,
+          "≺": 0.036,
+          "⋈": 0.0,
+          "⊤": 0.036,
+          "∈": 0.071,
+          "∋": 0.107,
+          "⊙": 0.0,
+          "⊥": 0.036,
+          "⊞": 0.036,
+          "◻": 0.107
+        },
+        "dominant_primitives": [
+          "∋",
+          "◻"
+        ],
+        "total_primitive_activations": 13,
+        "amidation": null
+      }
+    ],
+    "processing": {
+      "precursor": "MNDKPNKWIFIPILAILFVMIGYQYVCPAGGQACHFRTGDKLVRIAPLATPDPTTDDLYREQDPEEDNPPKCASKFNFTERDLTRDVDFNIKGDDVIVFLHIQKTGGTTFGRHLVRNIRLEQPCDCKAGQKKCTCHRPGKQESWLFSRFSTGWSCGLHADWTELTNCVPVIMDKRQPPKRKRNFYYITMLRDPVSRYLSEWKHVQRGATWKTSLHMCDGRSPTQDELPTCYNGDDWSGVTLHDFMDCPSNLANNRQVRMLADLSLVGCYNLSTMNESERNPILLASAKSNLKNMAFYGLTEFQRKTQYLFERTFHLRFISAFTQINSTRAANVELRDDMRSRIEQLNMLDMQLYEFAKDLFLQRYQFVRQRERQEERLKRREERRWIRERRVNQSKEPIVENQTRVTTTEDYASQVVRW",
+      "length": 419,
+      "steps": [
+        {
+          "step": 1,
+          "enzyme": "Signal Peptidase",
+          "action": "Remove signal peptide (25 AA)",
+          "cleavage_position": 25,
+          "product_length": 394
+        },
+        {
+          "step": 2,
+          "enzyme": "PCSK",
+          "action": "Cleave at KK @ pos 130",
+          "motif_sequence": "KK",
+          "discontinuity": 0.067,
+          "position": 130
+        },
+        {
+          "step": 3,
+          "enzyme": "PC2",
+          "action": "Cleave at KR @ pos 173",
+          "motif_sequence": "KR",
+          "discontinuity": 0.067,
+          "position": 173
+        },
+        {
+          "step": 4,
+          "enzyme": "PC2",
+          "action": "Cleave at KR @ pos 178",
+          "motif_sequence": "KR",
+          "discontinuity": 0.067,
+          "position": 178
+        },
+        {
+          "step": 5,
+          "enzyme": "PC2",
+          "action": "Cleave at KR @ pos 180",
+          "motif_sequence": "KR",
+          "discontinuity": 0.0,
+          "position": 180
+        },
+        {
+          "step": 6,
+          "enzyme": "Furin/PC",
+          "action": "Cleave at RK @ pos 303",
+          "motif_sequence": "RK",
+          "discontinuity": 0.067,
+          "position": 303
+        },
+        {
+          "step": 7,
+          "enzyme": "PC2",
+          "action": "Cleave at KR @ pos 378",
+          "motif_sequence": "KR",
+          "discontinuity": 0.067,
+          "position": 378
+        },
+        {
+          "step": 8,
+          "enzyme": "PC1/3",
+          "action": "Cleave at RR @ pos 383",
+          "motif_sequence": "RR",
+          "discontinuity": 0.0,
+          "position": 383
+        },
+        {
+          "step": 9,
+          "enzyme": "PC1/3",
+          "action": "Cleave at RR @ pos 389",
+          "motif_sequence": "RR",
+          "discontinuity": 0.0,
+          "position": 389
+        }
+      ]
+    },
+    "disulfide_bonds": {
+      "bonds": [
+        {
+          "cys_1": {
+            "position": 26,
+            "fragment": "mature_product_0"
+          },
+          "cys_2": {
+            "position": 33,
+            "fragment": "mature_product_0"
+          },
+          "distance": 7,
+          "motif": "long-range",
+          "bond_type": "intrachain"
+        },
+        {
+          "cys_1": {
+            "position": 71,
+            "fragment": "mature_product_0"
+          },
+          "cys_2": {
+            "position": 123,
+            "fragment": "mature_product_0"
+          },
+          "distance": 52,
+          "motif": "long-range",
+          "bond_type": "intrachain"
+        },
+        {
+          "cys_1": {
+            "position": 125,
+            "fragment": "mature_product_0"
+          },
+          "cys_2": {
+            "position": 132,
+            "fragment": "mature_product_1"
+          },
+          "distance": 7,
+          "motif": "long-range",
+          "bond_type": "interchain"
+        },
+        {
+          "cys_1": {
+            "position": 134,
+            "fragment": "mature_product_1"
+          },
+          "cys_2": {
+            "position": 154,
+            "fragment": "mature_product_1"
+          },
+          "distance": 20,
+          "motif": "long-range",
+          "bond_type": "intrachain"
+        },
+        {
+          "cys_1": {
+            "position": 166,
+            "fragment": "mature_product_1"
+          },
+          "cys_2": {
+            "position": 216,
+            "fragment": "mature_product_4"
+          },
+          "distance": 50,
+          "motif": "long-range",
+          "bond_type": "interchain"
+        },
+        {
+          "cys_1": {
+            "position": 229,
+            "fragment": "mature_product_4"
+          },
+          "cys_2": {
+            "position": 246,
+            "fragment": "mature_product_4"
+          },
+          "distance": 17,
+          "motif": "long-range",
+          "bond_type": "intrachain"
+        }
+      ],
+      "unpaired_cys": [
+        {
+          "fragment": "mature_product_4",
+          "rel_pos": 85,
+          "abs_pos": 267,
+          "context": "VGCYN"
+        }
+      ]
+    },
+    "mature_products": [
+      {
+        "name": "mature_product_0",
+        "sequence": "VCPAGGQACHFRTGDKLVRIAPLATPDPTTDDLYREQDPEEDNPPKCASKFNFTERDLTRDVDFNIKGDDVIVFLHIQKTGGTTFGRHLVRNIRLEQPCDCKAGQ",
+        "length": 105,
+        "start": 25,
+        "end": 130,
+        "dominant_primitive": "⊥",
+        "profile": {
+          "≻": 5,
+          "≺": 1,
+          "⋈": 6,
+          "⊤": 5,
+          "∈": 4,
+          "∋": 5,
+          "⊙": 3,
+          "⊥": 12,
+          "⊞": 6,
+          "◻": 5
+        },
+        "inferred_function": "substrate_recognition",
+        "amidation": null
+      },
+      {
+        "name": "mature_product_1",
+        "sequence": "CTCHRPGKQESWLFSRFSTGWSCGLHADWTELTNCVPVIMD",
+        "length": 41,
+        "start": 132,
+        "end": 173,
+        "dominant_primitive": "≻",
+        "profile": {
+          "⊢": 1,
+          "⊣": 3,
+          "≻": 4,
+          "⋈": 2,
+          "⊤": 1,
+          "∈": 1,
+          "∋": 1,
+          "⊙": 2,
+          "⊥": 2,
+          "⊞": 1,
+          "◻": 2
+        },
+        "inferred_function": "structural_scaffold",
+        "amidation": null
+      },
+      {
+        "name": "intervening_peptide_2",
+        "sequence": "QPP",
+        "length": 3,
+        "start": 175,
+        "end": 178,
+        "dominant_primitive": "∋",
+        "profile": {
+          "∋": 1
+        },
+        "inferred_function": "glycosylation_target",
+        "amidation": null
+      },
+      {
+        "name": "mature_product_4",
+        "sequence": "NFYYITMLRDPVSRYLSEWKHVQRGATWKTSLHMCDGRSPTQDELPTCYNGDDWSGVTLHDFMDCPSNLANNRQVRMLADLSLVGCYNLSTMNESERNPILLASAKSNLKNMAFYGLTEFQ",
+        "length": 121,
+        "start": 182,
+        "end": 303,
+        "dominant_primitive": "∈",
+        "profile": {
+          "⊢": 6,
+          "⊣": 3,
+          "≻": 4,
+          "≺": 6,
+          "⋈": 4,
+          "⊤": 2,
+          "∈": 10,
+          "∋": 4,
+          "⊙": 3,
+          "⊥": 8,
+          "⊞": 4,
+          "◻": 5
+        },
+        "inferred_function": "catalytic_grammar",
+        "amidation": null
+      },
+      {
+        "name": "mature_product_5",
+        "sequence": "TQYLFERTFHLRFISAFTQINSTRAANVELRDDMRSRIEQLNMLDMQLYEFAKDLFLQRYQFVRQRERQEERL",
+        "length": 73,
+        "start": 305,
+        "end": 378,
+        "dominant_primitive": "∋",
+        "profile": {
+          "⊢": 3,
+          "≺": 3,
+          "⋈": 7,
+          "⊤": 3,
+          "∈": 3,
+          "∋": 8,
+          "⊙": 1,
+          "⊥": 4,
+          "⊞": 1,
+          "◻": 7
+        },
+        "inferred_function": "glycosylation_target",
+        "amidation": null
+      },
+      {
+        "name": "intervening_peptide_6",
+        "sequence": "REE",
+        "length": 3,
+        "start": 380,
+        "end": 383,
+        "dominant_primitive": "◻",
+        "profile": {
+          "◻": 2
+        },
+        "inferred_function": "winding_closure_module",
+        "amidation": null
+      },
+      {
+        "name": "intervening_peptide_7",
+        "sequence": "WIRE",
+        "length": 4,
+        "start": 385,
+        "end": 389,
+        "dominant_primitive": "⊣",
+        "profile": {
+          "⊣": 1,
+          "⊤": 1,
+          "◻": 1
+        },
+        "inferred_function": "topological_embedding",
+        "amidation": null
+      },
+      {
+        "name": "mature_product_8",
+        "sequence": "VNQSKEPIVENQTRVTTTEDYASQVVRW",
+        "length": 28,
+        "start": 391,
+        "end": 419,
+        "dominant_primitive": "∋",
+        "profile": {
+          "⊣": 1,
+          "≺": 1,
+          "⊤": 1,
+          "∈": 2,
+          "∋": 3,
+          "⊥": 1,
+          "⊞": 1,
+          "◻": 3
+        },
+        "inferred_function": "glycosylation_target",
+        "amidation": null
+      }
+    ]
+  },
+  "narrative": "═══ A0MGZ7 — Structural Processing Analysis ═══\nSequence: 419 AA\n\n▸ Signal peptide (25 AA): MNDKPNKWIFIPILAILFVMIGYQY\n  Bootstrap elements: Met(Ð)×2, Trp(Þ)×1\n  Cleavage @ position 25 ← signal peptidase\n  Dominant: ⊤ — bootstrap preconditions\n\n▸ Processing steps:\n  [1] Signal Peptidase: Remove signal peptide (25 AA)\n  [2] PCSK: Cleave at KK @ pos 130\n  [3] PC2: Cleave at KR @ pos 173\n  [4] PC2: Cleave at KR @ pos 178\n  [5] PC2: Cleave at KR @ pos 180\n  [6] Furin/PC: Cleave at RK @ pos 303\n  [7] PC2: Cleave at KR @ pos 378\n  [8] PC1/3: Cleave at RR @ pos 383\n  [9] PC1/3: Cleave at RR @ pos 389\n\n▸ Mature products:\n  • mature_product_0 (105 AA) — substrate_recognition\n    Primitive profile: ∈=4 | ∋=5 | ≺=1 | ≻=5 | ⊙=3 | ⊞=6 | ⊤=5 | ⊥=12 | ⋈=6 | ◻=5\n  • mature_product_1 (41 AA) — structural_scaffold\n    Primitive profile: ∈=1 | ∋=1 | ≻=4 | ⊙=2 | ⊞=1 | ⊢=1 | ⊣=3 | ⊤=1 | ⊥=2 | ⋈=2 | ◻=2\n  • intervening_peptide_2 (3 AA) — glycosylation_target\n    Primitive profile: ∋=1\n  • mature_product_4 (121 AA) — catalytic_grammar\n    Primitive profile: ∈=10 | ∋=4 | ≺=6 | ≻=4 | ⊙=3 | ⊞=4 | ⊢=6 | ⊣=3 | ⊤=2 | ⊥=8 | ⋈=4 | ◻=5\n  • mature_product_5 (73 AA) — glycosylation_target\n    Primitive profile: ∈=3 | ∋=8 | ≺=3 | ⊙=1 | ⊞=1 | ⊢=3 | ⊤=3 | ⊥=4 | ⋈=7 | ◻=7\n  • intervening_peptide_6 (3 AA) — winding_closure_module\n    Primitive profile: ◻=2\n  • intervening_peptide_7 (4 AA) — topological_embedding\n    Primitive profile: ⊣=1 | ⊤=1 | ◻=1\n  • mature_product_8 (28 AA) — glycosylation_target\n    Primitive profile: ∈=2 | ∋=3 | ≺=1 | ⊞=1 | ⊣=1 | ⊤=1 | ⊥=1 | ◻=3\n\n▸ Predicted disulfide bonds (Ř-Ř):\n  Cys26—Cys33 (intrachain, long-range)\n  Cys71—Cys123 (intrachain, long-range)\n  Cys125—Cys132 (interchain, long-range)\n  Cys134—Cys154 (intrachain, long-range)\n  Cys166—Cys216 (interchain, long-range)\n  Cys229—Cys246 (intrachain, long-range)\n  ⚠ Unpaired Cys @ pos 267 in mature_product_4\n"
+}

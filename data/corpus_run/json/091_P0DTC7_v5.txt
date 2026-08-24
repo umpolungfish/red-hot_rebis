@@ -1,0 +1,28 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 091_P0DTC7
+╚══════════════════════════════════════════════════════════╝
+Input: 121 AA | Promoted: 47.1% | Dominant: ⋈ | ∈:2 | ∋:5 | ≺:5 | ≻:6 | ⊙:3 | ⊞:7 | ⊢:1 | ⊤:8 | ⊥:2 | ⋈:10 | ◻:8
+
+▸ CLEAVAGE (3 sites):
+  pos  80: R    → PC2_monobasic             ○=0.45 [M]
+  pos 118: KR   → unknown                   ○=0.50
+  pos 119: RK   → unknown                   ○=0.50
+
+▸ PRODUCTS (2):
+
+  [1] Signal Peptide (80 AA @ 1–80)
+      ⋈-dominant (37/80 residues)
+      MKIILFLALITLATCELYHYQECVRGTTVLLKEPCSSGTY...
+
+  [2] Ç-kinetic regulator (38 AA @ 81–118)
+      ⊤-dominant (18/38 residues)
+      SVSPKLFIRQEEVQELYSPIFLIVAAIVFITLCFTLKR
+
+▸ MAP:
+  [M] ↓ 80
+  KR ↓ 118
+  RK ↓ 119
+  Chain 1: [1–80] (80 AA) Signal Peptide
+  Chain 2: [81–118] (38 AA) Ç-kinetic regulator
+
+[2;37m DNA  → 091_P0DTC7_codons.dna  [0m[1;2;37m([0m[1;2;36m363[0m[2;37m nt[0m[1;2;37m)[0m

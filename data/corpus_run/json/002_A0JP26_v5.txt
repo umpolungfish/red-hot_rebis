@@ -1,0 +1,114 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 002_A0JP26
+╚══════════════════════════════════════════════════════════╝
+Input: 581 AA | Promoted: 54.2% | Dominant: ◻ | ∈:35 | ∋:30 | ≺:10 | ≻:22 | ⊙:20 | ⊞:54 | ⊢:18 | ⊣:5 | ⊤:21 | ⊥:37 | ⋈:9 | ◻:54
+
+▸ CLEAVAGE (16 sites):
+  pos  16: KK   → unknown                   ○=0.50
+  pos 137: RR   → unknown                   ○=0.50
+  pos 155: RK   → unknown                   ○=0.50
+  pos 169: KR   → unknown                   ○=0.50
+  pos 174: KR   → unknown                   ○=0.50
+  pos 196: RR   → unknown                   ○=0.50
+  pos 206: KK   → unknown                   ○=0.50
+  pos 207: KR   → unknown                   ○=0.50
+  pos 294: KK   → unknown                   ○=0.50
+  pos 295: KK   → unknown                   ○=0.50
+  pos 367: K    → PC2_monobasic             ○=0.40 [M]
+  pos 421: KK   → unknown                   ○=0.50
+  pos 451: RK   → unknown                   ○=0.50
+  pos 454: RK   → unknown                   ○=0.50
+  pos 518: KK   → unknown                   ○=0.50
+  pos 567: K    → PC2_monobasic             ○=0.45 [M]
+
+▸ PRODUCTS (14):
+
+  [1] Signal Peptide (16 AA @ 1–16)
+      ⊢-dominant (6/16 residues)
+      MVAEVCSMPAASAVKK
+
+  [2] Ř-scaffold domain (121 AA @ 17–137)
+      ≻-dominant (64/121 residues)
+      PFDLRSKMGKWCHHRFPCCRGSGKSNMGTSGDHDDSFMKT...
+
+  [3] Σ-variable region (18 AA @ 138–155)
+      ⊞-dominant (9/18 residues)
+      EDLDKLHRAAWWGKVPRK
+
+  [4] Ħ-chiral domain (14 AA @ 156–169)
+      ⊥-dominant (8/14 residues)
+      DLIVMLRDTDMNKR
+
+  [5] Connector (5 AA @ 170–174)
+      ⊞-dominant (4/5 residues)
+      DKQKR
+
+  [6] Γ-catalytic domain (22 AA @ 175–196)
+      ∈-dominant (6/22 residues)
+      TALHLASANGNSEVVQLLLDRR
+
+  [7] Γ-catalytic domain (10 AA @ 197–206)
+      ∈-dominant (7/10 residues)
+      CQLNVLDNKK
+
+  [8] Σ-variable region (87 AA @ 208–294)
+      ⊞-dominant (49/87 residues)
+      TALIKAVQCQEDECVLMLLEHGADGNIQDEYGNTALHYAI...
+
+  [9] Γ-catalytic domain (72 AA @ 296–367)
+      ∈-dominant (32/72 residues)
+      ANLNALDRYGRTALILAVCCGSASIVNLLLEQNVDVSSQD...
+
+  [10] Ω-winding module (54 AA @ 368–421)
+      ◻-dominant (35/54 residues)
+      ISSENSNPEQDLKLTSEEESQRLKVSENSQPEKMSQEPEI...
+
+  [11] Γ-catalytic domain (30 AA @ 422–451)
+      ∈-dominant (11/30 residues)
+      HGSNPVGLPENLTNGASAGNGDDGLIPQRK
+
+  [12] Ω-winding module (64 AA @ 455–518)
+      ◻-dominant (45/64 residues)
+      PENQQFPDTENEEYHSDEQNDTQKQLSEEQNTGISQDEIL...
+
+  [13] Ω-winding module (49 AA @ 519–567)
+      ◻-dominant (30/49 residues)
+      EEDLLRENSMLREEIAMLRLELDETKHQNQLRENKILEEI...
+
+  [14] Ç-kinetic regulator (14 AA @ 568–581)
+      ⊤-dominant (7/14 residues)
+      AIQLNEEALTKTSI
+
+▸ MAP:
+  KK ↓ 16
+  RR ↓ 137
+  RK ↓ 155
+  KR ↓ 169
+  KR ↓ 174
+  RR ↓ 196
+  KK ↓ 206
+  KR ↓ 207
+  KK ↓ 294
+  KK ↓ 295
+  [M] ↓ 367
+  KK ↓ 421
+  RK ↓ 451
+  RK ↓ 454
+  KK ↓ 518
+  [M] ↓ 567
+  Chain 1: [1–16] (16 AA) Signal Peptide
+  Chain 2: [17–137] (121 AA) Ř-scaffold domain
+  Chain 3: [138–155] (18 AA) Σ-variable region
+  Chain 4: [156–169] (14 AA) Ħ-chiral domain
+  Chain 5: [170–174] (5 AA) Connector
+  Chain 6: [175–196] (22 AA) Γ-catalytic domain
+  Chain 7: [197–206] (10 AA) Γ-catalytic domain
+  Chain 8: [208–294] (87 AA) Σ-variable region
+  Chain 9: [296–367] (72 AA) Γ-catalytic domain
+  Chain 10: [368–421] (54 AA) Ω-winding module
+  Chain 11: [422–451] (30 AA) Γ-catalytic domain
+  Chain 12: [455–518] (64 AA) Ω-winding module
+  Chain 13: [519–567] (49 AA) Ω-winding module
+  Chain 14: [568–581] (14 AA) Ç-kinetic regulator
+
+[2;37m DNA  → 002_A0JP26_codons.dna  [0m[1;2;37m([0m[1;2;36m1743[0m[2;37m nt[0m[1;2;37m)[0m

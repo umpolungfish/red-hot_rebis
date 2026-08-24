@@ -1,0 +1,87 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 035_A8MPH9
+╚══════════════════════════════════════════════════════════╝
+Input: 722 AA | Promoted: 44.6% | Dominant: ∋ | ∈:65 | ∋:89 | ≺:10 | ≻:6 | ⊙:27 | ⊞:18 | ⊢:20 | ⊣:2 | ⊤:24 | ⊥:26 | ⋈:11 | ◻:24
+
+▸ CLEAVAGE (10 sites):
+  pos 368: RR   → unknown                   ○=0.50
+  pos 373: RR   → unknown                   ○=0.50
+  pos 388: KR   → unknown                   ○=0.50
+  pos 392: RR   → unknown                   ○=0.50
+  pos 404: RK   → unknown                   ○=0.50
+  pos 405: KR   → unknown                   ○=0.50
+  pos 406: RR   → unknown                   ○=0.50
+  pos 423: KR   → unknown                   ○=0.50
+  pos 429: RK   → unknown                   ○=0.50
+  pos 557: KR   → unknown                   ○=0.50
+
+▸ PRODUCTS (11):
+
+  [1] Signal Peptide (368 AA @ 0–368)
+      ∋-dominant (190/368 residues)
+      MIALKATEMQHNNNALQQQQQLQHQLLQQHQQQHQQQLQQ...
+
+  [2] Connector (5 AA @ 368–373)
+      unstructured
+      GGGRR
+
+  [3] Ω-winding module (15 AA @ 373–388)
+      ◻-dominant (8/15 residues)
+      PNRSTNMTPEEEQKR
+
+  [4] IP-2 (4 AA @ 388–392)
+      unstructured
+      AVRR
+
+  [5] Σ-variable region (12 AA @ 392–404)
+      ⊞-dominant (6/12 residues)
+      ERNKQAAARCRK
+
+  [6] IP-2 (1 AA @ 404–405)
+      unstructured
+      R
+
+  [7] IP-2 (1 AA @ 405–406)
+      unstructured
+      R
+
+  [8] Ω-winding module (17 AA @ 406–423)
+      ◻-dominant (10/17 residues)
+      VDQTNELTEEVEQLEKR
+
+  [9] Connector (6 AA @ 423–429)
+      ◻-dominant (3/6 residues)
+      GESMRK
+
+  [10] Γ-catalytic domain (128 AA @ 429–557)
+      ∈-dominant (50/128 residues)
+      EIEVLTNSKNQLEYLLATHRATCQKIRSDMLSVVTCNGLI...
+
+  [11] Γ-catalytic domain (165 AA @ 557–722)
+      ∈-dominant (55/165 residues)
+      ITLPPMSTMPHVHLSTILTPTGASSGSLQTPITSTAPGGF...
+
+▸ MAP:
+  RR ↓ 368
+  RR ↓ 373
+  KR ↓ 388
+  RR ↓ 392
+  RK ↓ 404
+  KR ↓ 405
+  RR ↓ 406
+  KR ↓ 423
+  RK ↓ 429
+  KR ↓ 557
+  Chain 1: [0–368] (368 AA) Signal Peptide
+  Chain 2: [368–373] (5 AA) Connector
+  Chain 3: [373–388] (15 AA) Ω-winding module
+  Chain 4: [388–392] (4 AA) IP-2
+  Chain 5: [392–404] (12 AA) Σ-variable region
+  Chain 6: [404–405] (1 AA) IP-2
+  Chain 7: [405–406] (1 AA) IP-2
+  Chain 8: [406–423] (17 AA) Ω-winding module
+  Chain 9: [423–429] (6 AA) Connector
+  Chain 10: [429–557] (128 AA) Γ-catalytic domain
+  Chain 11: [557–722] (165 AA) Γ-catalytic domain
+
+[2;37m DNA  → 035_A8MPH9_codons.dna  [0m[1;2;37m([0m[1;2;36m2166[0m[2;37m nt[0m[1;2;37m)[0m

@@ -1,0 +1,82 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 057_B5TYT3
+╚══════════════════════════════════════════════════════════╝
+Input: 771 AA | Promoted: 49.2% | Dominant: ⊤ | ∈:31 | ∋:26 | ≺:30 | ≻:4 | ⊙:19 | ⊞:44 | ⊢:16 | ⊣:14 | ⊤:66 | ⊥:31 | ⋈:56 | ◻:42
+
+▸ CLEAVAGE (10 sites):
+  pos  48: R    → PC2_monobasic             ○=0.45 [M]
+  pos 197: RR   → unknown                   ○=0.50
+  pos 252: KK   → unknown                   ○=0.50
+  pos 286: KK   → unknown                   ○=0.50
+  pos 309: RK   → unknown                   ○=0.50
+  pos 310: KK   → unknown                   ○=0.50
+  pos 313: KK   → unknown                   ○=0.50
+  pos 374: RR   → unknown                   ○=0.50
+  pos 462: RR   → unknown                   ○=0.50
+  pos 748: KR   → unknown                   ○=0.50
+
+▸ PRODUCTS (10):
+
+  [1] Signal Peptide (48 AA @ 1–48)
+      ⊤-dominant (23/48 residues)
+      MATLGDIGVAAAINILTAIIFLLAFAILRIQPFNDRVYFP...
+
+  [2] Ç-kinetic regulator (149 AA @ 49–197)
+      ⊤-dominant (66/149 residues)
+      SSPLHSGALVSKFVNVNLGSYLRFLNWMPAALKMPEPELI...
+
+  [3] Ħ-chiral domain (55 AA @ 198–252)
+      ⊥-dominant (28/55 residues)
+      PDQFTVLVRNVPADPDESISDSVEHFFLVNHPDHYLTHQV...
+
+  [4] Σ-variable region (34 AA @ 253–286)
+      ⊞-dominant (20/34 residues)
+      STQNWLDYYQLKYTRNQEHKPRIKTGFLGLWGKK
+
+  [5] Ω-winding module (23 AA @ 287–309)
+      ◻-dominant (18/23 residues)
+      VDAIDHYIAEIEKLNEQIMEERK
+
+  [6] IP-2 (3 AA @ 311–313)
+      ⊞-dominant (2/3 residues)
+      VKK
+
+  [7] Þ-topological anchor (61 AA @ 314–374)
+      ⊣-dominant (22/61 residues)
+      DDTSVMPAAFVSFKTRWGAAVSAQTQQSSDPTEWLTEWAP...
+
+  [8] ƒ-hydrophobic core (88 AA @ 375–462)
+      ⋈-dominant (46/88 residues)
+      LIMHIAFFFLTFFFMIPIAFVQSLASIEGIEKNAPFLKSI...
+
+  [9] B-chain (286 AA @ 463–748)
+      ⊤-dominant (148/286 residues)
+      AAFRYYIFNLINVFLGSVITGSAFEQLDSFLKQSAKEIPK...
+
+  [10] ɢ-glycosylation target (23 AA @ 749–771)
+      ∋-dominant (5/23 residues)
+      QSRINTPAVSHASRGSSRSPPSK
+
+▸ MAP:
+  [M] ↓ 48
+  RR ↓ 197
+  KK ↓ 252
+  KK ↓ 286
+  RK ↓ 309
+  KK ↓ 310
+  KK ↓ 313
+  RR ↓ 374
+  RR ↓ 462
+  KR ↓ 748
+  Chain 1: [1–48] (48 AA) Signal Peptide
+  Chain 2: [49–197] (149 AA) Ç-kinetic regulator
+  Chain 3: [198–252] (55 AA) Ħ-chiral domain
+  Chain 4: [253–286] (34 AA) Σ-variable region
+  Chain 5: [287–309] (23 AA) Ω-winding module
+  Chain 6: [311–313] (3 AA) IP-2
+  Chain 7: [314–374] (61 AA) Þ-topological anchor
+  Chain 8: [375–462] (88 AA) ƒ-hydrophobic core
+  Chain 9: [463–748] (286 AA) B-chain
+  Chain 10: [749–771] (23 AA) ɢ-glycosylation target
+
+[2;37m DNA  → 057_B5TYT3_codons.dna  [0m[1;2;37m([0m[1;2;36m2313[0m[2;37m nt[0m[1;2;37m)[0m

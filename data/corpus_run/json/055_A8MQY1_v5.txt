@@ -1,0 +1,86 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 055_A8MQY1
+╚══════════════════════════════════════════════════════════╝
+Input: 473 AA | Promoted: 52.0% | Dominant: ◻ | ∈:29 | ∋:15 | ≺:18 | ≻:5 | ⊙:16 | ⊞:32 | ⊢:16 | ⊣:5 | ⊤:32 | ⊥:27 | ⋈:12 | ◻:39
+
+▸ CLEAVAGE (12 sites):
+  pos  82: KR   → unknown                   ○=0.50
+  pos 102: KR   → unknown                   ○=0.50
+  pos 112: KK   → unknown                   ○=0.50
+  pos 144: KR   → unknown                   ○=0.50
+  pos 145: RK   → unknown                   ○=0.50
+  pos 235: R    → PC2_monobasic             ○=0.45 [M]
+  pos 331: RK   → unknown                   ○=0.50
+  pos 428: KK   → unknown                   ○=0.50
+  pos 442: RK   → unknown                   ○=0.50
+  pos 443: KK   → unknown                   ○=0.50
+  pos 466: KR   → unknown                   ○=0.50
+  pos 472: KK   → unknown                   ○=0.50
+
+▸ PRODUCTS (10):
+
+  [1] Signal Peptide (82 AA @ 1–82)
+      ⊞-dominant (49/82 residues)
+      MMKGLIGYRFSPTGEEVINHYLKNKLLGKYWLVDEAISEI...
+
+  [2] Σ-variable region (20 AA @ 83–102)
+      ⊞-dominant (8/20 residues)
+      TTGSGFWKPTGVDREIRDKR
+
+  [3] Ç-kinetic regulator (10 AA @ 103–112)
+      ⊤-dominant (5/10 residues)
+      GNGVVIGIKK
+
+  [4] Fragment 4 (32 AA @ 113–144)
+      ⊙-dominant (16/32 residues)
+      TLVYHEGKSPHGVRTPWVMHEYHITCLPHHKR
+
+  [5] Ω-winding module (90 AA @ 146–235)
+      ◻-dominant (45/90 residues)
+      YVVCQVKYKGEAAEISYEPSPSLVSDSHTVIAITGEPEPE...
+
+  [6] Γ-catalytic domain (96 AA @ 236–331)
+      ∈-dominant (59/96 residues)
+      GTVEYLFANEENMDGLSMNDLRIPMIVQQEDLSEWEGFNA...
+
+  [7] Ç-kinetic regulator (97 AA @ 332–428)
+      ⊤-dominant (39/97 residues)
+      PVTGTIDYSSDSGSDAGSISTTSYQGTSSPNISVGSSSRH...
+
+  [8] Ω-winding module (14 AA @ 429–442)
+      ◻-dominant (8/14 residues)
+      GLFIVEDAMERNRK
+
+  [9] Ç-kinetic regulator (23 AA @ 444–466)
+      ⊤-dominant (12/23 residues)
+      PRFIYLMKMIIGNIISVLLPVKR
+
+  [10] Connector (6 AA @ 467–472)
+      ⊞-dominant (3/6 residues)
+      LIPVKK
+
+▸ MAP:
+  KR ↓ 82
+  KR ↓ 102
+  KK ↓ 112
+  KR ↓ 144
+  RK ↓ 145
+  [M] ↓ 235
+  RK ↓ 331
+  KK ↓ 428
+  RK ↓ 442
+  KK ↓ 443
+  KR ↓ 466
+  KK ↓ 472
+  Chain 1: [1–82] (82 AA) Signal Peptide
+  Chain 2: [83–102] (20 AA) Σ-variable region
+  Chain 3: [103–112] (10 AA) Ç-kinetic regulator
+  Chain 4: [113–144] (32 AA) Fragment 4
+  Chain 5: [146–235] (90 AA) Ω-winding module
+  Chain 6: [236–331] (96 AA) Γ-catalytic domain
+  Chain 7: [332–428] (97 AA) Ç-kinetic regulator
+  Chain 8: [429–442] (14 AA) Ω-winding module
+  Chain 9: [444–466] (23 AA) Ç-kinetic regulator
+  Chain 10: [467–472] (6 AA) Connector
+
+[2;37m DNA  → 055_A8MQY1_codons.dna  [0m[1;2;37m([0m[1;2;36m1419[0m[2;37m nt[0m[1;2;37m)[0m

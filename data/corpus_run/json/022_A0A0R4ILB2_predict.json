@@ -1,0 +1,203 @@
+═ Protein Prediction Pipeline ═
+  Sequence: MCDKADNHIDVQPEGNLEVSSVSSTRLYRRRWVILLLFSSYSLCNAFQWI...
+  Length: 470 aa | Name: A0A0R4ILB2
+{
+  "name": "A0A0R4ILB2",
+  "sequence": "MCDKADNHIDVQPEGNLEVSSVSSTRLYRRRWVILLLFSSYSLCNAFQWIQYGIINNIFMKFYQVSSFAVDWLSMVYMLTYIPFIFPVTWLLERKGLRVVALLAASINCAGTWIKVASVQPSLFWVTMLGQFACSCAQVFILGMPSQVASVWFGSDEVSTACAIGVFGNQLGIAIGFLVPPVLVPNVEDMGELAEHISIMFYITAAVATLIFLLVVFVFQEKPETPPSLAQVALRNMPTGQHSYLASIARLMCNKPFILLLISYGLNVGSFYAVSTLLNRMIIEHYPGEEVNAGRIGLTLVVAGVVGSLICGVWLDKTKTYKQTTLSVYLLSFVGMLIYSFTLNLGHLWLVFLTSGVLGFFMTGYLPLGFEFAVELTYPESEGTSSGLLNCSAQVFGIAFTIIQGKIIDHFGTLAGNIFLCVFLLIGSIMTAFIKSDLRRQKANQETGGNADSSVHPQHGETLPVKEVKM",
+  "length": 470,
+  "pipeline_result": {
+    "name": "A0A0R4ILB2",
+    "sequence": "MCDKADNHIDVQPEGNLEVSSVSSTRLYRRRWVILLLFSSYSLCNAFQWIQYGIINNIFMKFYQVSSFAVDWLSMVYMLTYIPFIFPVTWLLERKGLRVVALLAASINCAGTWIKVASVQPSLFWVTMLGQFACSCAQVFILGMPSQVASVWFGSDEVSTACAIGVFGNQLGIAIGFLVPPVLVPNVEDMGELAEHISIMFYITAAVATLIFLLVVFVFQEKPETPPSLAQVALRNMPTGQHSYLASIARLMCNKPFILLLISYGLNVGSFYAVSTLLNRMIIEHYPGEEVNAGRIGLTLVVAGVVGSLICGVWLDKTKTYKQTTLSVYLLSFVGMLIYSFTLNLGHLWLVFLTSGVLGFFMTGYLPLGFEFAVELTYPESEGTSSGLLNCSAQVFGIAFTIIQGKIIDHFGTLAGNIFLCVFLLIGSIMTAFIKSDLRRQKANQETGGNADSSVHPQHGETLPVKEVKM",
+    "length": 470,
+    "signal_peptide": {
+      "sequence": "MCDKADNHIDVQPEGNLEVSSVSSTRLYRRRWVILLLFSSYSLCNAFQWIQYGIINNIFMKFYQVSSFAVDWLSMVYMLTYIPFIFPVTWLLERKGLRVVALLAASINCAGTWIKVASVQPSLFWVTMLGQFACSCAQVFILGMPSQVASVWFGSDEVSTACAIGVFGNQLGIAIGFLVPPVLVPNVEDMGELAEHISIMFYITAAVATLIFLLVVFVFQEKPETPPSLAQVALRNMPTGQHSYLASIARLMCNKPFILLLISYGLNVGSFYAVSTLLNRMIIEHYPGEEVNAGRIGLTLVVAGVVGSLICGVWLD",
+      "length": 316,
+      "cleavage_position": 316,
+      "bootstrap_score": 2,
+      "n_charge": 1,
+      "hydrophobic_core_length": 13
+    },
+    "cleavage_sites": [
+      {
+        "position": 438,
+        "motif": "RR",
+        "motif_seq": "RR",
+        "enzyme": "PC1/3",
+        "context": "IKSDLRRQKANQ",
+        "discontinuity": 0.0,
+        "density_before": 0.467,
+        "density_after": 0.467,
+        "cpe_trim_candidate": false
+      }
+    ],
+    "fragments": [
+      {
+        "start": 316,
+        "end": 438,
+        "length": 122,
+        "sequence": "KTKTYKQTTLSVYLLSFVGMLIYSFTLNLGHLWLVFLTSGVLGFFMTGYLPLGFEFAVELTYPESEGTSSGLLNCSAQVFGIAFTIIQGKIIDHFGTLAGNIFLCVFLLIGSIMTAFIKSDL",
+        "label": "mature_product_0",
+        "vector": [
+          3,
+          1,
+          2,
+          5,
+          13,
+          10,
+          3,
+          3,
+          2,
+          2,
+          5,
+          4
+        ],
+        "densities": {
+          "⊢": 0.025,
+          "⊣": 0.008,
+          "≻": 0.016,
+          "≺": 0.041,
+          "⋈": 0.107,
+          "⊤": 0.082,
+          "∈": 0.025,
+          "∋": 0.025,
+          "⊙": 0.016,
+          "⊥": 0.016,
+          "⊞": 0.041,
+          "◻": 0.033
+        },
+        "dominant_primitives": [
+          "⋈"
+        ],
+        "total_primitive_activations": 53,
+        "amidation": null
+      },
+      {
+        "start": 440,
+        "end": 470,
+        "length": 30,
+        "sequence": "QKANQETGGNADSSVHPQHGETLPVKEVKM",
+        "label": "mature_product_1",
+        "vector": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          3,
+          2,
+          1,
+          3,
+          3
+        ],
+        "densities": {
+          "⊢": 0.033,
+          "⊣": 0.0,
+          "≻": 0.0,
+          "≺": 0.0,
+          "⋈": 0.0,
+          "⊤": 0.0,
+          "∈": 0.067,
+          "∋": 0.1,
+          "⊙": 0.067,
+          "⊥": 0.033,
+          "⊞": 0.1,
+          "◻": 0.1
+        },
+        "dominant_primitives": [
+          "∋",
+          "⊞",
+          "◻"
+        ],
+        "total_primitive_activations": 15,
+        "amidation": null
+      }
+    ],
+    "processing": {
+      "precursor": "MCDKADNHIDVQPEGNLEVSSVSSTRLYRRRWVILLLFSSYSLCNAFQWIQYGIINNIFMKFYQVSSFAVDWLSMVYMLTYIPFIFPVTWLLERKGLRVVALLAASINCAGTWIKVASVQPSLFWVTMLGQFACSCAQVFILGMPSQVASVWFGSDEVSTACAIGVFGNQLGIAIGFLVPPVLVPNVEDMGELAEHISIMFYITAAVATLIFLLVVFVFQEKPETPPSLAQVALRNMPTGQHSYLASIARLMCNKPFILLLISYGLNVGSFYAVSTLLNRMIIEHYPGEEVNAGRIGLTLVVAGVVGSLICGVWLDKTKTYKQTTLSVYLLSFVGMLIYSFTLNLGHLWLVFLTSGVLGFFMTGYLPLGFEFAVELTYPESEGTSSGLLNCSAQVFGIAFTIIQGKIIDHFGTLAGNIFLCVFLLIGSIMTAFIKSDLRRQKANQETGGNADSSVHPQHGETLPVKEVKM",
+      "length": 470,
+      "steps": [
+        {
+          "step": 1,
+          "enzyme": "Signal Peptidase",
+          "action": "Remove signal peptide (316 AA)",
+          "cleavage_position": 316,
+          "product_length": 154
+        },
+        {
+          "step": 2,
+          "enzyme": "PC1/3",
+          "action": "Cleave at RR @ pos 438",
+          "motif_sequence": "RR",
+          "discontinuity": 0.0,
+          "position": 438
+        }
+      ]
+    },
+    "disulfide_bonds": {
+      "bonds": [
+        {
+          "cys_1": {
+            "position": 390,
+            "fragment": "mature_product_0"
+          },
+          "cys_2": {
+            "position": 420,
+            "fragment": "mature_product_0"
+          },
+          "distance": 30,
+          "motif": "long-range",
+          "bond_type": "intrachain"
+        }
+      ],
+      "unpaired_cys": []
+    },
+    "mature_products": [
+      {
+        "name": "mature_product_0",
+        "sequence": "KTKTYKQTTLSVYLLSFVGMLIYSFTLNLGHLWLVFLTSGVLGFFMTGYLPLGFEFAVELTYPESEGTSSGLLNCSAQVFGIAFTIIQGKIIDHFGTLAGNIFLCVFLLIGSIMTAFIKSDL",
+        "length": 122,
+        "start": 316,
+        "end": 438,
+        "dominant_primitive": "⋈",
+        "profile": {
+          "⊢": 3,
+          "⊣": 1,
+          "≻": 2,
+          "≺": 5,
+          "⋈": 13,
+          "⊤": 10,
+          "∈": 3,
+          "∋": 3,
+          "⊙": 2,
+          "⊥": 2,
+          "⊞": 5,
+          "◻": 4
+        },
+        "inferred_function": "hydrophobic_core",
+        "amidation": null
+      },
+      {
+        "name": "mature_product_1",
+        "sequence": "QKANQETGGNADSSVHPQHGETLPVKEVKM",
+        "length": 30,
+        "start": 440,
+        "end": 470,
+        "dominant_primitive": "∋",
+        "profile": {
+          "⊢": 1,
+          "∈": 2,
+          "∋": 3,
+          "⊙": 2,
+          "⊥": 1,
+          "⊞": 3,
+          "◻": 3
+        },
+        "inferred_function": "glycosylation_target",
+        "amidation": null
+      }
+    ]
+  },
+  "narrative": "═══ A0A0R4ILB2 — Structural Processing Analysis ═══\nSequence: 470 AA\n\n▸ Signal peptide (316 AA): MCDKADNHIDVQPEGNLEVSSVSSTRLYRRRWVILLLFSSYSLCNAFQWIQYGIINNIFMKFYQVSSFAVDWLSMVYMLTYIPFIFPVTWLLERKGLRVVALLAASINCAGTWIKVASVQPSLFWVTMLGQFACSCAQVFILGMPSQVASVWFGSDEVSTACAIGVFGNQLGIAIGFLVPPVLVPNVEDMGELAEHISIMFYITAAVATLIFLLVVFVFQEKPETPPSLAQVALRNMPTGQHSYLASIARLMCNKPFILLLISYGLNVGSFYAVSTLLNRMIIEHYPGEEVNAGRIGLTLVVAGVVGSLICGVWLD\n  Bootstrap elements: Met(Ð)×11, Trp(Þ)×8\n  Cleavage @ position 316 ← signal peptidase\n  Dominant: ⊤ — bootstrap preconditions\n\n▸ Processing steps:\n  [1] Signal Peptidase: Remove signal peptide (316 AA)\n  [2] PC1/3: Cleave at RR @ pos 438\n\n▸ Mature products:\n  • mature_product_0 (122 AA) — hydrophobic_core\n    Primitive profile: ∈=3 | ∋=3 | ≺=5 | ≻=2 | ⊙=2 | ⊞=5 | ⊢=3 | ⊣=1 | ⊤=10 | ⊥=2 | ⋈=13 | ◻=4\n  • mature_product_1 (30 AA) — glycosylation_target\n    Primitive profile: ∈=2 | ∋=3 | ⊙=2 | ⊞=3 | ⊢=1 | ⊥=1 | ◻=3\n\n▸ Predicted disulfide bonds (Ř-Ř):\n  Cys390—Cys420 (intrachain, long-range)\n"
+}

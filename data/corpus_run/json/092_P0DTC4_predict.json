@@ -1,0 +1,124 @@
+═ Protein Prediction Pipeline ═
+  Sequence: MYSFVSEETGTLIVNSVLLFLAFVVFLLVTLAILTALRLCAYCCNIVNVS...
+  Length: 75 aa | Name: P0DTC4
+{
+  "name": "P0DTC4",
+  "sequence": "MYSFVSEETGTLIVNSVLLFLAFVVFLLVTLAILTALRLCAYCCNIVNVSLVKPSFYVYSRVKNLNSSRVPDLLV",
+  "length": 75,
+  "pipeline_result": {
+    "name": "P0DTC4",
+    "sequence": "MYSFVSEETGTLIVNSVLLFLAFVVFLLVTLAILTALRLCAYCCNIVNVSLVKPSFYVYSRVKNLNSSRVPDLLV",
+    "length": 75,
+    "signal_peptide": {
+      "sequence": "MYSFVSEETGTLIVNSVLLFLAFVVFLLVTLAILTALR",
+      "length": 38,
+      "cleavage_position": 38,
+      "bootstrap_score": 2,
+      "n_charge": -2,
+      "hydrophobic_core_length": 19
+    },
+    "cleavage_sites": [],
+    "fragments": [
+      {
+        "start": 38,
+        "end": 75,
+        "length": 37,
+        "sequence": "LCAYCCNIVNVSLVKPSFYVYSRVKNLNSSRVPDLLV",
+        "label": "full_precursor",
+        "vector": [
+          0,
+          0,
+          3,
+          3,
+          1,
+          1,
+          4,
+          0,
+          0,
+          1,
+          2,
+          0
+        ],
+        "densities": {
+          "⊢": 0.0,
+          "⊣": 0.0,
+          "≻": 0.081,
+          "≺": 0.081,
+          "⋈": 0.027,
+          "⊤": 0.027,
+          "∈": 0.108,
+          "∋": 0.0,
+          "⊙": 0.0,
+          "⊥": 0.027,
+          "⊞": 0.054,
+          "◻": 0.0
+        },
+        "dominant_primitives": [
+          "∈"
+        ],
+        "total_primitive_activations": 15,
+        "amidation": null
+      }
+    ],
+    "processing": {
+      "precursor": "MYSFVSEETGTLIVNSVLLFLAFVVFLLVTLAILTALRLCAYCCNIVNVSLVKPSFYVYSRVKNLNSSRVPDLLV",
+      "length": 75,
+      "steps": [
+        {
+          "step": 1,
+          "enzyme": "Signal Peptidase",
+          "action": "Remove signal peptide (38 AA)",
+          "cleavage_position": 38,
+          "product_length": 37
+        }
+      ]
+    },
+    "disulfide_bonds": {
+      "bonds": [
+        {
+          "cys_1": {
+            "position": 39,
+            "fragment": "full_precursor"
+          },
+          "cys_2": {
+            "position": 42,
+            "fragment": "full_precursor"
+          },
+          "distance": 3,
+          "motif": "CC",
+          "bond_type": "intrachain"
+        }
+      ],
+      "unpaired_cys": [
+        {
+          "fragment": "full_precursor",
+          "rel_pos": 5,
+          "abs_pos": 43,
+          "context": "YCCNI"
+        }
+      ]
+    },
+    "mature_products": [
+      {
+        "name": "full_precursor",
+        "sequence": "LCAYCCNIVNVSLVKPSFYVYSRVKNLNSSRVPDLLV",
+        "length": 37,
+        "start": 38,
+        "end": 75,
+        "dominant_primitive": "∈",
+        "profile": {
+          "≻": 3,
+          "≺": 3,
+          "⋈": 1,
+          "⊤": 1,
+          "∈": 4,
+          "⊥": 1,
+          "⊞": 2
+        },
+        "inferred_function": "catalytic_grammar",
+        "amidation": null
+      }
+    ]
+  },
+  "narrative": "═══ P0DTC4 — Structural Processing Analysis ═══\nSequence: 75 AA\n\n▸ Signal peptide (38 AA): MYSFVSEETGTLIVNSVLLFLAFVVFLLVTLAILTALR\n  Bootstrap elements: Met(Ð)×1, Trp(Þ)×0\n  Cleavage @ position 38 ← signal peptidase\n  Dominant: ⋈ — bootstrap preconditions\n\n▸ Processing steps:\n  [1] Signal Peptidase: Remove signal peptide (38 AA)\n\n▸ Mature products:\n  • full_precursor (37 AA) — catalytic_grammar\n    Primitive profile: ∈=4 | ≺=3 | ≻=3 | ⊞=2 | ⊤=1 | ⊥=1 | ⋈=1\n\n▸ Predicted disulfide bonds (Ř-Ř):\n  Cys39—Cys42 (intrachain, CC)\n  ⚠ Unpaired Cys @ pos 43 in full_precursor\n"
+}

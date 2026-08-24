@@ -1,0 +1,59 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 027_A2BGM5
+╚══════════════════════════════════════════════════════════╝
+Input: 550 AA | Promoted: 44.9% | Dominant: ∋ | ∈:24 | ∋:47 | ≺:14 | ≻:10 | ⊙:16 | ⊞:29 | ⊢:19 | ⊣:7 | ⊤:17 | ⊥:27 | ⋈:17 | ◻:20
+
+▸ CLEAVAGE (6 sites):
+  pos  15: KK   → unknown                   ○=0.50
+  pos  16: KR   → unknown                   ○=0.50
+  pos 302: RK   → unknown                   ○=0.50
+  pos 325: KR   → unknown                   ○=0.50
+  pos 326: RK   → unknown                   ○=0.50
+  pos 333: RR   → unknown                   ○=0.50
+
+▸ PRODUCTS (7):
+
+  [1] Signal Peptide (15 AA @ 0–15)
+      ⊞-dominant (8/15 residues)
+      MTVQSKLQGRGKFKK
+
+  [2] IP-2 (1 AA @ 15–16)
+      unstructured
+      R
+
+  [3] ɢ-glycosylation target (286 AA @ 16–302)
+      ∋-dominant (133/286 residues)
+      FFRAGQQVPRPTLELSSVWLSKIFYNPEQHHNKQKMIESG...
+
+  [4] Σ-variable region (23 AA @ 302–325)
+      ⊞-dominant (16/23 residues)
+      GCLWALNPAKIDKMEEEMQKWKR
+
+  [5] IP-2 (1 AA @ 325–326)
+      ⊞-dominant (1/1 residues)
+      K
+
+  [6] Connector (7 AA @ 326–333)
+      ⊥-dominant (2/7 residues)
+      DLPAIRR
+
+  [7] ɢ-glycosylation target (217 AA @ 333–550)
+      ∋-dominant (87/217 residues)
+      SMANPDELDKLITDRPESCRQKSVDPGMTRLPSCPPGQTL...
+
+▸ MAP:
+  KK ↓ 15
+  KR ↓ 16
+  RK ↓ 302
+  KR ↓ 325
+  RK ↓ 326
+  RR ↓ 333
+  Chain 1: [0–15] (15 AA) Signal Peptide
+  Chain 2: [15–16] (1 AA) IP-2
+  Chain 3: [16–302] (286 AA) ɢ-glycosylation target
+  Chain 4: [302–325] (23 AA) Σ-variable region
+  Chain 5: [325–326] (1 AA) IP-2
+  Chain 6: [326–333] (7 AA) Connector
+  Chain 7: [333–550] (217 AA) ɢ-glycosylation target
+
+[2;37m DNA  → 027_A2BGM5_codons.dna  [0m[1;2;37m([0m[1;2;36m1650[0m[2;37m nt[0m[1;2;37m)[0m

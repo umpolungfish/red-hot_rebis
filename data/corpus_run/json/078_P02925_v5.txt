@@ -1,0 +1,38 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 078_P02925
+╚══════════════════════════════════════════════════════════╝
+Input: 296 AA | Promoted: 42.6% | Dominant: ⊞ | ∈:18 | ∋:17 | ≺:3 | ⊙:3 | ⊞:26 | ⊢:7 | ⊤:13 | ⊥:21 | ⋈:7 | ◻:11
+
+▸ CLEAVAGE (3 sites):
+  pos   5: KK   → unknown                   ○=0.50
+  pos 144: KK   → unknown                   ○=0.50
+  pos 281: K    → PC2_monobasic             ○=0.40 [M]
+
+▸ PRODUCTS (4):
+
+  [1] Signal Peptide (5 AA @ 1–5)
+      ⊢-dominant (5/5 residues)
+      MNMKK
+
+  [2] Γ-catalytic domain (139 AA @ 6–144)
+      ∈-dominant (56/139 residues)
+      LATLVSAVALSATVSANAMAKDTIALVVSTLNNPFFVSLK...
+
+  [3] Σ-variable region (137 AA @ 145–281)
+      ⊞-dominant (58/137 residues)
+      AGEGAKVIELQGIAGTSAARERGEGFQQAVAAHKFNVLAS...
+
+  [4] Σ-variable region (15 AA @ 282–296)
+      ⊞-dominant (7/15 residues)
+      VQAKYPVDLKLVVKQ
+
+▸ MAP:
+  KK ↓ 5
+  KK ↓ 144
+  [M] ↓ 281
+  Chain 1: [1–5] (5 AA) Signal Peptide
+  Chain 2: [6–144] (139 AA) Γ-catalytic domain
+  Chain 3: [145–281] (137 AA) Σ-variable region
+  Chain 4: [282–296] (15 AA) Σ-variable region
+
+[2;37m DNA  → 078_P02925_codons.dna  [0m[1;2;37m([0m[1;2;36m888[0m[2;37m nt[0m[1;2;37m)[0m

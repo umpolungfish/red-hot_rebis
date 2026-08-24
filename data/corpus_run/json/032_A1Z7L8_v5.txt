@@ -1,0 +1,91 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 032_A1Z7L8
+╚══════════════════════════════════════════════════════════╝
+Input: 622 AA | Promoted: 46.8% | Dominant: ⊤ | ∈:31 | ∋:17 | ≺:18 | ≻:20 | ⊙:21 | ⊞:33 | ⊢:16 | ⊣:13 | ⊤:38 | ⊥:37 | ⋈:19 | ◻:28
+
+▸ CLEAVAGE (12 sites):
+  pos 122: KK   → unknown                   ○=0.50
+  pos 220: R    → PC2_monobasic             ○=0.45 [M]
+  pos 270: RR   → unknown                   ○=0.50
+  pos 271: RK   → unknown                   ○=0.50
+  pos 272: KR   → unknown                   ○=0.50
+  pos 340: R    → PC2_monobasic             ○=0.45 [M]
+  pos 461: K    → PC2_monobasic             ○=0.45 [M]
+  pos 496: KR   → unknown                   ○=0.50
+  pos 517: KR   → unknown                   ○=0.50
+  pos 533: RR   → unknown                   ○=0.50
+  pos 562: KK   → unknown                   ○=0.50
+  pos 609: KK   → unknown                   ○=0.50
+
+▸ PRODUCTS (11):
+
+  [1] Signal Peptide (122 AA @ 1–122)
+      ⊥-dominant (36/122 residues)
+      MLSALRLIFLGALLGASVCASPIEFVMDTSLNGSRSDPAT...
+
+  [2] Ř-scaffold domain (98 AA @ 123–220)
+      ≻-dominant (57/98 residues)
+      PENKIKCHCDTCKESNNICETDGFCFTSVEKNSDGSIIFS...
+
+  [3] Ç-kinetic regulator (50 AA @ 221–270)
+      ⊤-dominant (23/50 residues)
+      SDRVEEGRQISVQDYVPHRLTSWEFVAIILGATLFICFTG...
+
+  [4] Signal Peptide (68 AA @ 273–340)
+      ⊤-dominant (28/68 residues)
+      MASGRTFAKEDSAYDPILNGNTTIHDIIEMTTSGSGSAGL...
+
+  [5] Γ-catalytic domain (121 AA @ 341–461)
+      ∈-dominant (60/121 residues)
+      GRWRGENVAVKIFSSREECSWFREAEIYQTVMLRHENILG...
+
+  [6] Ħ-chiral domain (35 AA @ 462–496)
+      ⊥-dominant (13/35 residues)
+      SNLSCAIGDLGLAVRHVEKNDSVDIPSTHRVGTKR
+
+  [7] Ħ-chiral domain (21 AA @ 497–517)
+      ⊥-dominant (14/21 residues)
+      YMAPEVLDESMNDQHFDSYKR
+
+  [8] Ç-kinetic regulator (16 AA @ 518–533)
+      ⊤-dominant (7/16 residues)
+      ADVYAFGLILWEIARR
+
+  [9] Φ-switch domain (29 AA @ 534–562)
+      ≺-dominant (21/29 residues)
+      CNMGMIYDEYQLPYYDVVQPDPSIEEMKK
+
+  [10] Σ-variable region (47 AA @ 563–609)
+      ⊞-dominant (25/47 residues)
+      VVCIEKCRPNIPNRWHASDVLHNMAKVMKECWYPNPVARL...
+
+  [11] Σ-variable region (13 AA @ 610–622)
+      ⊞-dominant (6/13 residues)
+      TLASISVEDKVKN
+
+▸ MAP:
+  KK ↓ 122
+  [M] ↓ 220
+  RR ↓ 270
+  RK ↓ 271
+  KR ↓ 272
+  [M] ↓ 340
+  [M] ↓ 461
+  KR ↓ 496
+  KR ↓ 517
+  RR ↓ 533
+  KK ↓ 562
+  KK ↓ 609
+  Chain 1: [1–122] (122 AA) Signal Peptide
+  Chain 2: [123–220] (98 AA) Ř-scaffold domain
+  Chain 3: [221–270] (50 AA) Ç-kinetic regulator
+  Chain 4: [273–340] (68 AA) Signal Peptide
+  Chain 5: [341–461] (121 AA) Γ-catalytic domain
+  Chain 6: [462–496] (35 AA) Ħ-chiral domain
+  Chain 7: [497–517] (21 AA) Ħ-chiral domain
+  Chain 8: [518–533] (16 AA) Ç-kinetic regulator
+  Chain 9: [534–562] (29 AA) Φ-switch domain
+  Chain 10: [563–609] (47 AA) Σ-variable region
+  Chain 11: [610–622] (13 AA) Σ-variable region
+
+[2;37m DNA  → 032_A1Z7L8_codons.dna  [0m[1;2;37m([0m[1;2;36m1866[0m[2;37m nt[0m[1;2;37m)[0m

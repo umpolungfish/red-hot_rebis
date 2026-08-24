@@ -1,0 +1,24 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 093_P0DTC8
+╚══════════════════════════════════════════════════════════╝
+Input: 121 AA | Promoted: 52.9% | Dominant: ⊤ | ∈:2 | ∋:6 | ≺:7 | ≻:7 | ⊙:4 | ⊞:5 | ⊢:1 | ⊣:1 | ⊤:10 | ⊥:7 | ⋈:8 | ◻:6
+
+▸ CLEAVAGE (1 sites):
+  pos  53: RK   → unknown                   ○=0.50
+
+▸ PRODUCTS (2):
+
+  [1] B-chain (53 AA @ 0–53)
+      ⋈-dominant (29/53 residues)
+      MKFLVFLGIITTVAAFHQECSLQSCTQHQPYVVDDPCPIH...
+
+  [2] Ç-kinetic regulator (68 AA @ 53–121)
+      ⊤-dominant (35/68 residues)
+      SAPLIELCVDEAGSKSPIQYIDIGNYTVSCLPFTINCQEP...
+
+▸ MAP:
+  RK ↓ 53
+  Chain 1: [0–53] (53 AA) B-chain
+  Chain 2: [53–121] (68 AA) Ç-kinetic regulator
+
+[2;37m DNA  → 093_P0DTC8_codons.dna  [0m[1;2;37m([0m[1;2;36m363[0m[2;37m nt[0m[1;2;37m)[0m

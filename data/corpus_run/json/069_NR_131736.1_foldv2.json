@@ -1,0 +1,22 @@
+═ SerpentRod Folding (v2 — backbone + energy) ═
+  RNA: CGGCCCUUACCGUUUAAUACAUGGUGCAUCGACCGGGAACAUGUAUUAAA...
+  Length: 64 nt | Name: NR_131736.1
+[Gen2:NR_131736.1] Prediction: 21 AAs, 12 contacts, 9/12 primitives, energy=14
+
+📦 PDB written: /home/mrnob0dy666/imsgct/red-hot_rebis/data/corpus_run/pdb/069_NR_131736.1.pdb
+{
+  "name": "NR_131736.1",
+  "rna": "CGGCCCUUACCGUUUAAUACAUGGUGCAUCGACCGGGAACAUGUAUUAAACGGUAAGGGCCGGC",
+  "aa_sequence": "RPLPFNTWCIDREHVLNGKGR",
+  "n_contacts": 12,
+  "energy": {
+    "LJ": 14.5922,
+    "HB": 0.0,
+    "elec": -0.2219,
+    "total": 14.3703
+  },
+  "activation": 9,
+  "frobenius": true,
+  "winding": 14,
+  "pdb_path": "/home/mrnob0dy666/imsgct/red-hot_rebis/data/corpus_run/pdb/069_NR_131736.1.pdb"
+}

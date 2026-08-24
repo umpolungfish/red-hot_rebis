@@ -1,0 +1,102 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 048_D0VWM8
+╚══════════════════════════════════════════════════════════╝
+Input: 414 AA | Promoted: 42.5% | Dominant: ⊥ | ∈:12 | ∋:18 | ≺:8 | ≻:3 | ⊙:2 | ⊞:28 | ⊢:5 | ⊣:3 | ⊤:17 | ⊥:35 | ⋈:17 | ◻:28
+
+▸ CLEAVAGE (15 sites):
+  pos  28: RK   → unknown                   ○=0.50
+  pos  41: KK   → unknown                   ○=0.50
+  pos  94: R    → PC2_monobasic             ○=0.45 [M]
+  pos 141: KR   → unknown                   ○=0.50
+  pos 142: RR   → unknown                   ○=0.50
+  pos 143: RK   → unknown                   ○=0.50
+  pos 163: RK   → unknown                   ○=0.50
+  pos 164: KR   → unknown                   ○=0.50
+  pos 206: KR   → unknown                   ○=0.50
+  pos 207: RK   → unknown                   ○=0.50
+  pos 241: RR   → unknown                   ○=0.50
+  pos 280: RK   → unknown                   ○=0.50
+  pos 363: RR   → unknown                   ○=0.50
+  pos 371: RR   → unknown                   ○=0.50
+  pos 402: RR   → unknown                   ○=0.50
+
+▸ PRODUCTS (12):
+
+  [1] Signal Peptide (28 AA @ 1–28)
+      ◻-dominant (14/28 residues)
+      MADETPKVKTEPAAEVKSPLDEVKEIRK
+
+  [2] Ω-winding module (13 AA @ 29–41)
+      ◻-dominant (7/13 residues)
+      EAELTQTGSDEKK
+
+  [3] Ħ-chiral domain (53 AA @ 42–94)
+      ⊥-dominant (21/53 residues)
+      TTDPEFITVQDPNGDEPIELPTVDGVVLMTTLQASFPGAT...
+
+  [4] Ħ-chiral domain (47 AA @ 95–141)
+      ⊥-dominant (16/47 residues)
+      AVQVDPSGLKLIAPADGWENKTFFVIVAPQSERVRALSSA...
+
+  [5] Ħ-chiral domain (20 AA @ 144–163)
+      ⊥-dominant (7/20 residues)
+      VGSSDDSDSDDGRDGRSGRK
+
+  [6] Ħ-chiral domain (42 AA @ 165–206)
+      ⊥-dominant (24/42 residues)
+      AVERDSQPVDLIVLGVDFKTTDECFQKYFEDIGTVVFCEI...
+
+  [7] Ħ-chiral domain (34 AA @ 208–241)
+      ⊥-dominant (16/34 residues)
+      SDGNSKGFGFVRMSSVGEQNKVLAIPQHMIDGRR
+
+  [8] Ħ-chiral domain (39 AA @ 242–280)
+      ⊥-dominant (18/39 residues)
+      CDVKVPDGRSLQDKQGRPSISRIFVGRLTDKVDEHQLRK
+
+  [9] Ω-winding module (83 AA @ 281–363)
+      ◻-dominant (30/83 residues)
+      VFGDEAKSYIETAVVTDVFIPKPFRGFAFVTLSSAEAAER...
+
+  [10] Connector (8 AA @ 364–371)
+      ⊥-dominant (3/8 residues)
+      ERDRPDRR
+
+  [11] ɢ-glycosylation target (31 AA @ 372–402)
+      ∋-dominant (14/31 residues)
+      PIQNEAPLPMPFVRPPQDYSYRQQNSPLERR
+
+  [12] Þ-topological anchor (12 AA @ 403–414)
+      ⊣-dominant (4/12 residues)
+      YWAPGDSRGPGW
+
+▸ MAP:
+  RK ↓ 28
+  KK ↓ 41
+  [M] ↓ 94
+  KR ↓ 141
+  RR ↓ 142
+  RK ↓ 143
+  RK ↓ 163
+  KR ↓ 164
+  KR ↓ 206
+  RK ↓ 207
+  RR ↓ 241
+  RK ↓ 280
+  RR ↓ 363
+  RR ↓ 371
+  RR ↓ 402
+  Chain 1: [1–28] (28 AA) Signal Peptide
+  Chain 2: [29–41] (13 AA) Ω-winding module
+  Chain 3: [42–94] (53 AA) Ħ-chiral domain
+  Chain 4: [95–141] (47 AA) Ħ-chiral domain
+  Chain 5: [144–163] (20 AA) Ħ-chiral domain
+  Chain 6: [165–206] (42 AA) Ħ-chiral domain
+  Chain 7: [208–241] (34 AA) Ħ-chiral domain
+  Chain 8: [242–280] (39 AA) Ħ-chiral domain
+  Chain 9: [281–363] (83 AA) Ω-winding module
+  Chain 10: [364–371] (8 AA) Connector
+  Chain 11: [372–402] (31 AA) ɢ-glycosylation target
+  Chain 12: [403–414] (12 AA) Þ-topological anchor
+
+[2;37m DNA  → 048_D0VWM8_codons.dna  [0m[1;2;37m([0m[1;2;36m1242[0m[2;37m nt[0m[1;2;37m)[0m

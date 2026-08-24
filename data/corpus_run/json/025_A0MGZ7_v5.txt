@@ -1,0 +1,86 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 025_A0MGZ7
+╚══════════════════════════════════════════════════════════╝
+Input: 419 AA | Promoted: 51.3% | Dominant: ⊥ | ∈:22 | ∋:23 | ≺:13 | ≻:13 | ⊙:9 | ⊞:22 | ⊢:12 | ⊣:9 | ⊤:18 | ⊥:28 | ⋈:21 | ◻:25
+
+▸ CLEAVAGE (12 sites):
+  pos  44: R    → PC2_monobasic             ○=0.40 [M]
+  pos 132: KK   → unknown                   ○=0.50
+  pos 175: KR   → unknown                   ○=0.50
+  pos 180: KR   → unknown                   ○=0.50
+  pos 181: RK   → unknown                   ○=0.50
+  pos 182: KR   → unknown                   ○=0.50
+  pos 305: RK   → unknown                   ○=0.50
+  pos 342: R    → PC2_monobasic             ○=0.40 [M]
+  pos 380: KR   → unknown                   ○=0.50
+  pos 381: RR   → unknown                   ○=0.50
+  pos 385: RR   → unknown                   ○=0.50
+  pos 391: RR   → unknown                   ○=0.50
+
+▸ PRODUCTS (10):
+
+  [1] Signal Peptide (44 AA @ 1–44)
+      ⊤-dominant (25/44 residues)
+      MNDKPNKWIFIPILAILFVMIGYQYVCPAGGQACHFRTGD...
+
+  [2] Ħ-chiral domain (88 AA @ 45–132)
+      ⊥-dominant (47/88 residues)
+      IAPLATPDPTTDDLYREQDPEEDNPPKCASKFNFTERDLT...
+
+  [3] Ř-scaffold domain (43 AA @ 133–175)
+      ≻-dominant (21/43 residues)
+      CTCHRPGKQESWLFSRFSTGWSCGLHADWTELTNCVPVIM...
+
+  [4] Connector (5 AA @ 176–180)
+      ∋-dominant (2/5 residues)
+      QPPKR
+
+  [5] Γ-catalytic domain (123 AA @ 183–305)
+      ∈-dominant (60/123 residues)
+      NFYYITMLRDPVSRYLSEWKHVQRGATWKTSLHMCDGRSP...
+
+  [6] ƒ-hydrophobic core (37 AA @ 306–342)
+      ⋈-dominant (17/37 residues)
+      TQYLFERTFHLRFISAFTQINSTRAANVELRDDMRSR
+
+  [7] ɢ-glycosylation target (38 AA @ 343–380)
+      ∋-dominant (24/38 residues)
+      IEQLNMLDMQLYEFAKDLFLQRYQFVRQRERQEERLKR
+
+  [8] IP-2 (4 AA @ 382–385)
+      ◻-dominant (2/4 residues)
+      EERR
+
+  [9] Connector (6 AA @ 386–391)
+      ⊣-dominant (3/6 residues)
+      WIRERR
+
+  [10] C-peptide (28 AA @ 392–419)
+      ∋-dominant (13/28 residues)
+      VNQSKEPIVENQTRVTTTEDYASQVVRW
+
+▸ MAP:
+  [M] ↓ 44
+  KK ↓ 132
+  KR ↓ 175
+  KR ↓ 180
+  RK ↓ 181
+  KR ↓ 182
+  RK ↓ 305
+  [M] ↓ 342
+  KR ↓ 380
+  RR ↓ 381
+  RR ↓ 385
+  RR ↓ 391
+  Chain 1: [1–44] (44 AA) Signal Peptide
+  Chain 2: [45–132] (88 AA) Ħ-chiral domain
+  Chain 3: [133–175] (43 AA) Ř-scaffold domain
+  Chain 4: [176–180] (5 AA) Connector
+  Chain 5: [183–305] (123 AA) Γ-catalytic domain
+  Chain 6: [306–342] (37 AA) ƒ-hydrophobic core
+  Chain 7: [343–380] (38 AA) ɢ-glycosylation target
+  Chain 8: [382–385] (4 AA) IP-2
+  Chain 9: [386–391] (6 AA) Connector
+  Chain 10: [392–419] (28 AA) C-peptide
+
+[2;37m DNA  → 025_A0MGZ7_codons.dna  [0m[1;2;37m([0m[1;2;36m1257[0m[2;37m nt[0m[1;2;37m)[0m

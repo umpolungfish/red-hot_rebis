@@ -1,0 +1,148 @@
+═ Protein Prediction Pipeline ═
+  Sequence: MDLFMRIFTIGTVTLKQGEIKDATPSDFVRATATIPIQASLPFGWLIVGV...
+  Length: 275 aa | Name: P0DTC3
+{
+  "name": "P0DTC3",
+  "sequence": "MDLFMRIFTIGTVTLKQGEIKDATPSDFVRATATIPIQASLPFGWLIVGVALLAVFQSASKIITLKKRWQLALSKGVHFVCNLLLLFVTVYSHLLLVAAGLEAPFLYLYALVYFLQSINFVRIIMRLWLCWKCRSKNPLLYDANYFLCWHTNCYDYCIPYNSVTSSIVITSGDGTTSPISEHDYQIGGYTEKWESGVKDCVVLHSYFTSDYYQLYSTQLSTDTGVEHVTFFIYNKIVDEPEEHVQIHTIDGSSGVVNPVMEPIYDEPTTTTSVPL",
+  "length": 275,
+  "pipeline_result": {
+    "name": "P0DTC3",
+    "sequence": "MDLFMRIFTIGTVTLKQGEIKDATPSDFVRATATIPIQASLPFGWLIVGVALLAVFQSASKIITLKKRWQLALSKGVHFVCNLLLLFVTVYSHLLLVAAGLEAPFLYLYALVYFLQSINFVRIIMRLWLCWKCRSKNPLLYDANYFLCWHTNCYDYCIPYNSVTSSIVITSGDGTTSPISEHDYQIGGYTEKWESGVKDCVVLHSYFTSDYYQLYSTQLSTDTGVEHVTFFIYNKIVDEPEEHVQIHTIDGSSGVVNPVMEPIYDEPTTTTSVPL",
+    "length": 275,
+    "signal_peptide": {
+      "sequence": "MDLFMRIFTIGTVTLKQGEIKDATPSDFVRATATIPIQASLPFGWLIVGVALLAVFQSASKIITLKKRWQLALSKGVHFVCNLLLLFVTVYSH",
+      "length": 93,
+      "cleavage_position": 93,
+      "bootstrap_score": 2,
+      "n_charge": 1,
+      "hydrophobic_core_length": 8
+    },
+    "cleavage_sites": [],
+    "fragments": [
+      {
+        "start": 93,
+        "end": 275,
+        "length": 182,
+        "sequence": "LLLVAAGLEAPFLYLYALVYFLQSINFVRIIMRLWLCWKCRSKNPLLYDANYFLCWHTNCYDYCIPYNSVTSSIVITSGDGTTSPISEHDYQIGGYTEKWESGVKDCVVLHSYFTSDYYQLYSTQLSTDTGVEHVTFFIYNKIVDEPEEHVQIHTIDGSSGVVNPVMEPIYDEPTTTTSVPL",
+        "label": "full_precursor",
+        "vector": [
+          2,
+          4,
+          6,
+          16,
+          7,
+          13,
+          7,
+          5,
+          6,
+          10,
+          5,
+          10
+        ],
+        "densities": {
+          "⊢": 0.011,
+          "⊣": 0.022,
+          "≻": 0.033,
+          "≺": 0.088,
+          "⋈": 0.038,
+          "⊤": 0.071,
+          "∈": 0.038,
+          "∋": 0.027,
+          "⊙": 0.033,
+          "⊥": 0.055,
+          "⊞": 0.027,
+          "◻": 0.055
+        },
+        "dominant_primitives": [
+          "≺"
+        ],
+        "total_primitive_activations": 91,
+        "amidation": null
+      }
+    ],
+    "processing": {
+      "precursor": "MDLFMRIFTIGTVTLKQGEIKDATPSDFVRATATIPIQASLPFGWLIVGVALLAVFQSASKIITLKKRWQLALSKGVHFVCNLLLLFVTVYSHLLLVAAGLEAPFLYLYALVYFLQSINFVRIIMRLWLCWKCRSKNPLLYDANYFLCWHTNCYDYCIPYNSVTSSIVITSGDGTTSPISEHDYQIGGYTEKWESGVKDCVVLHSYFTSDYYQLYSTQLSTDTGVEHVTFFIYNKIVDEPEEHVQIHTIDGSSGVVNPVMEPIYDEPTTTTSVPL",
+      "length": 275,
+      "steps": [
+        {
+          "step": 1,
+          "enzyme": "Signal Peptidase",
+          "action": "Remove signal peptide (93 AA)",
+          "cleavage_position": 93,
+          "product_length": 182
+        }
+      ]
+    },
+    "disulfide_bonds": {
+      "bonds": [
+        {
+          "cys_1": {
+            "position": 129,
+            "fragment": "full_precursor"
+          },
+          "cys_2": {
+            "position": 132,
+            "fragment": "full_precursor"
+          },
+          "distance": 3,
+          "motif": "long-range",
+          "bond_type": "intrachain"
+        },
+        {
+          "cys_1": {
+            "position": 147,
+            "fragment": "full_precursor"
+          },
+          "cys_2": {
+            "position": 152,
+            "fragment": "full_precursor"
+          },
+          "distance": 5,
+          "motif": "long-range",
+          "bond_type": "intrachain"
+        },
+        {
+          "cys_1": {
+            "position": 156,
+            "fragment": "full_precursor"
+          },
+          "cys_2": {
+            "position": 199,
+            "fragment": "full_precursor"
+          },
+          "distance": 43,
+          "motif": "long-range",
+          "bond_type": "intrachain"
+        }
+      ],
+      "unpaired_cys": []
+    },
+    "mature_products": [
+      {
+        "name": "full_precursor",
+        "sequence": "LLLVAAGLEAPFLYLYALVYFLQSINFVRIIMRLWLCWKCRSKNPLLYDANYFLCWHTNCYDYCIPYNSVTSSIVITSGDGTTSPISEHDYQIGGYTEKWESGVKDCVVLHSYFTSDYYQLYSTQLSTDTGVEHVTFFIYNKIVDEPEEHVQIHTIDGSSGVVNPVMEPIYDEPTTTTSVPL",
+        "length": 182,
+        "start": 93,
+        "end": 275,
+        "dominant_primitive": "≺",
+        "profile": {
+          "⊢": 2,
+          "⊣": 4,
+          "≻": 6,
+          "≺": 16,
+          "⋈": 7,
+          "⊤": 13,
+          "∈": 7,
+          "∋": 5,
+          "⊙": 6,
+          "⊥": 10,
+          "⊞": 5,
+          "◻": 10
+        },
+        "inferred_function": "phosphorylation_switch",
+        "amidation": null
+      }
+    ]
+  },
+  "narrative": "═══ P0DTC3 — Structural Processing Analysis ═══\nSequence: 275 AA\n\n▸ Signal peptide (93 AA): MDLFMRIFTIGTVTLKQGEIKDATPSDFVRATATIPIQASLPFGWLIVGVALLAVFQSASKIITLKKRWQLALSKGVHFVCNLLLLFVTVYSH\n  Bootstrap elements: Met(Ð)×2, Trp(Þ)×2\n  Cleavage @ position 93 ← signal peptidase\n  Dominant: ⊤ — bootstrap preconditions\n\n▸ Processing steps:\n  [1] Signal Peptidase: Remove signal peptide (93 AA)\n\n▸ Mature products:\n  • full_precursor (182 AA) — phosphorylation_switch\n    Primitive profile: ∈=7 | ∋=5 | ≺=16 | ≻=6 | ⊙=6 | ⊞=5 | ⊢=2 | ⊣=4 | ⊤=13 | ⊥=10 | ⋈=7 | ◻=10\n\n▸ Predicted disulfide bonds (Ř-Ř):\n  Cys129—Cys132 (intrachain, long-range)\n  Cys147—Cys152 (intrachain, long-range)\n  Cys156—Cys199 (intrachain, long-range)\n"
+}

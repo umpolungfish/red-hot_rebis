@@ -1,0 +1,66 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 072_P00803
+╚══════════════════════════════════════════════════════════╝
+Input: 324 AA | Promoted: 45.7% | Dominant: ⊤ | ∈:9 | ∋:15 | ≺:11 | ≻:3 | ⊙:3 | ⊞:19 | ⊢:8 | ⊣:6 | ⊤:22 | ⊥:17 | ⋈:17 | ◻:18
+
+▸ CLEAVAGE (7 sites):
+  pos  31: KR   → unknown                   ○=0.50
+  pos  32: RR   → unknown                   ○=0.50
+  pos  53: KK   → unknown                   ○=0.50
+  pos 128: KR   → unknown                   ○=0.50
+  pos 147: KR   → unknown                   ○=0.50
+  pos 200: RR   → unknown                   ○=0.50
+  pos 228: RK   → unknown                   ○=0.50
+
+▸ PRODUCTS (8):
+
+  [1] Signal Peptide (31 AA @ 0–31)
+      ⋈-dominant (15/31 residues)
+      MANMFALILVIATLVTGILWCVDKFFFAPKR
+
+  [2] IP-2 (1 AA @ 31–32)
+      unstructured
+      R
+
+  [3] Σ-variable region (21 AA @ 32–53)
+      ⊞-dominant (8/21 residues)
+      ERQAAAQAAAGDSLDKATLKK
+
+  [4] Ç-kinetic regulator (75 AA @ 53–128)
+      ⊤-dominant (34/75 residues)
+      VAPKPGWLETGASVFPVLAIVLIVRSFIYEPFQIPSGSMM...
+
+  [5] Ħ-chiral domain (19 AA @ 128–147)
+      ⊥-dominant (12/19 residues)
+      GDIVVFKYPEDPKLDYIKR
+
+  [6] Ħ-chiral domain (53 AA @ 147–200)
+      ⊥-dominant (20/53 residues)
+      AVGLPGDKVTYDPVSKELTIQPGCSSGQACENALPVTYSN...
+
+  [7] Ω-winding module (28 AA @ 200–228)
+      ◻-dominant (14/28 residues)
+      NGGEATSGFFEVPKNETKENGIRLSERK
+
+  [8] ɢ-glycosylation target (96 AA @ 228–324)
+      ∋-dominant (45/96 residues)
+      ETLGDVTHRILTVPIAQDQVGMYYQQPGQQLATWIVPPGQ...
+
+▸ MAP:
+  KR ↓ 31
+  RR ↓ 32
+  KK ↓ 53
+  KR ↓ 128
+  KR ↓ 147
+  RR ↓ 200
+  RK ↓ 228
+  Chain 1: [0–31] (31 AA) Signal Peptide
+  Chain 2: [31–32] (1 AA) IP-2
+  Chain 3: [32–53] (21 AA) Σ-variable region
+  Chain 4: [53–128] (75 AA) Ç-kinetic regulator
+  Chain 5: [128–147] (19 AA) Ħ-chiral domain
+  Chain 6: [147–200] (53 AA) Ħ-chiral domain
+  Chain 7: [200–228] (28 AA) Ω-winding module
+  Chain 8: [228–324] (96 AA) ɢ-glycosylation target
+
+[2;37m DNA  → 072_P00803_codons.dna  [0m[1;2;37m([0m[1;2;36m972[0m[2;37m nt[0m[1;2;37m)[0m

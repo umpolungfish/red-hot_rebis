@@ -1,0 +1,59 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 056_A8R7E6
+╚══════════════════════════════════════════════════════════╝
+Input: 617 AA | Promoted: 43.3% | Dominant: ⊤ | ∈:30 | ∋:17 | ≺:27 | ≻:8 | ⊙:9 | ⊞:33 | ⊢:11 | ⊣:2 | ⊤:35 | ⊥:28 | ⋈:32 | ◻:35
+
+▸ CLEAVAGE (6 sites):
+  pos  78: R    → PC2_monobasic             ○=0.40 [M]
+  pos 259: RK   → unknown                   ○=0.50
+  pos 350: KK   → unknown                   ○=0.50
+  pos 415: KR   → unknown                   ○=0.50
+  pos 456: K    → PC2_monobasic             ○=0.40 [M]
+  pos 547: RK   → unknown                   ○=0.50
+
+▸ PRODUCTS (7):
+
+  [1] Signal Peptide (78 AA @ 1–78)
+      ⊤-dominant (40/78 residues)
+      MKLKISLIAPILLLFSFFFAVESKCRTSCPLALASYYLEN...
+
+  [2] Ç-kinetic regulator (181 AA @ 79–259)
+      ⊤-dominant (74/181 residues)
+      IQMGSRVLVPFPCECQPGDFLGHNFSYSVRQEDTYERVAI...
+
+  [3] Σ-variable region (91 AA @ 260–350)
+      ⊞-dominant (36/91 residues)
+      NKSKGDSFSSSIPLSTKADHASSTSLQSGGLGGAGVSPGI...
+
+  [4] Signal Peptide (65 AA @ 351–415)
+      ◻-dominant (29/65 residues)
+      MDMEASKQFLAELKVLTRVHHVNLVRLIGYCVEGSLFLVY...
+
+  [5] Ç-kinetic regulator (41 AA @ 416–456)
+      ⊤-dominant (22/41 residues)
+      VQIALDSARGLEYIHEHTVPVYVHRDIKSANILIDQKFRA...
+
+  [6] Ω-winding module (91 AA @ 457–547)
+      ◻-dominant (35/91 residues)
+      VADFGLTKLTEVGGSATRGAMGTFGYMAPETVYGEVSAKV...
+
+  [7] Ħ-chiral domain (70 AA @ 548–617)
+      ⊥-dominant (31/70 residues)
+      IIDPRLGDSYPFDSVYKMAELGKACTQENAQLRPSMRYIV...
+
+▸ MAP:
+  [M] ↓ 78
+  RK ↓ 259
+  KK ↓ 350
+  KR ↓ 415
+  [M] ↓ 456
+  RK ↓ 547
+  Chain 1: [1–78] (78 AA) Signal Peptide
+  Chain 2: [79–259] (181 AA) Ç-kinetic regulator
+  Chain 3: [260–350] (91 AA) Σ-variable region
+  Chain 4: [351–415] (65 AA) Signal Peptide
+  Chain 5: [416–456] (41 AA) Ç-kinetic regulator
+  Chain 6: [457–547] (91 AA) Ω-winding module
+  Chain 7: [548–617] (70 AA) Ħ-chiral domain
+
+[2;37m DNA  → 056_A8R7E6_codons.dna  [0m[1;2;37m([0m[1;2;36m1851[0m[2;37m nt[0m[1;2;37m)[0m

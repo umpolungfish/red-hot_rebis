@@ -1,0 +1,22 @@
+═ SerpentRod Folding (v2 — backbone + energy) ═
+  RNA: UCUGUCAUUCGCUCCCACAUUCUGAUGAGCAACCGCUUCCCUAUUUAUUU...
+  Length: 120 nt | Name: QS368929.1
+[Gen2:QS368929.1] Prediction: 40 AAs, 39 contacts, 8/12 primitives, energy=74982
+
+📦 PDB written: /home/mrnob0dy666/imsgct/red-hot_rebis/data/corpus_run/pdb/060_QS368929.1.pdb
+{
+  "name": "QS368929.1",
+  "rna": "UCUGUCAUUCGCUCCCACAUUCUGAUGAGCAACCGCUUCCCUAUUUAUUUAUUUAUUUGUUUGUUUGUUUUAUUCAUUGGUCUAAUUUAUUCAAAGGGGGCAAGAAGUAGCAGUGUCUGU",
+  "aa_sequence": "SVIRSHILMSNRFPIYLFICLFVLFIGLIYSKGARSSSVC",
+  "n_contacts": 39,
+  "energy": {
+    "LJ": 74981.2812,
+    "HB": -0.1575,
+    "elec": 1.299,
+    "total": 74982.4226
+  },
+  "activation": 8,
+  "frobenius": true,
+  "winding": 26,
+  "pdb_path": "/home/mrnob0dy666/imsgct/red-hot_rebis/data/corpus_run/pdb/060_QS368929.1.pdb"
+}

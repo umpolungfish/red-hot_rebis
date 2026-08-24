@@ -1,0 +1,24 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 047_C6KRN1
+╚══════════════════════════════════════════════════════════╝
+Input: 245 AA | Promoted: 51.0% | Dominant: ∋ | ∈:14 | ∋:23 | ≺:5 | ≻:1 | ⊙:16 | ⊞:8 | ⊢:18 | ⊣:4 | ⊤:9 | ⊥:8 | ⋈:6 | ◻:13
+
+▸ CLEAVAGE (1 sites):
+  pos 185: RK   → unknown                   ○=0.50
+
+▸ PRODUCTS (2):
+
+  [1] Signal Peptide (185 AA @ 0–185)
+      ⊢-dominant (91/185 residues)
+      MHKNGNNGPVIDTKWHYLGPDSEKYGPYMSKDMLFWLQAG...
+
+  [2] ɢ-glycosylation target (60 AA @ 185–245)
+      ∋-dominant (34/60 residues)
+      PHHHQQILAHQHIPQMQHANVATDQVVMKSVECQTEPVEI...
+
+▸ MAP:
+  RK ↓ 185
+  Chain 1: [0–185] (185 AA) Signal Peptide
+  Chain 2: [185–245] (60 AA) ɢ-glycosylation target
+
+[2;37m DNA  → 047_C6KRN1_codons.dna  [0m[1;2;37m([0m[1;2;36m735[0m[2;37m nt[0m[1;2;37m)[0m

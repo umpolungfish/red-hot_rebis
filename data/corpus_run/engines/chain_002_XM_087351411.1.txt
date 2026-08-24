@@ -1,0 +1,72 @@
+[94m────────────────────────── [0m[1;33mREBIS v4.[0m[1;33m0[0m[1;33m — UNIFIED CHAIN[0m[94m ──────────────────────────[0m
+[2;37mDNA input:    CAUAAUUAAAGAUUAAUGUUGUUAUUCAAGAAUGACAGUUGGUGUCGGCA[0m[2;33m...[0m[2;37m  [0m[1;2;37m([0m[1;2;36m1730[0m[2;37m bp[0m[1;2;37m)[0m
+[2;37mTarget SMILES: [0m[1;2;35mCC[0m[1;2;37m([0m[2;37m=O[0m[1;2;37m)[0m[2;37mO[0m
+[2;37mDepth:         [0m[1;2;36m1[0m
+[94m────────────────────────────────────────────────────────────────────────────────[0m
+[94m────────────────────── [0m[1;33mPhase [0m[1;33m1[0m[1;33m/[0m[1;33m3[0m[1;33m — Gene → Folded Protein[0m[94m ───────────────────────[0m
+[2;37m === Gene to Protein Pipeline: unnamed_gene ===[0m
+[2;37m Sequence: CAUAAUUAAAGAUUAAUGUUGUUAUUCAAGAAUGACAGUUGGUGUCGGCA[0m[2;33m...[0m[2;37m [0m[1;2;37m([0m[1;2;36m1730[0m[2;37m bp[0m[1;2;37m)[0m
+[2;37m IG Primitive Activations [0m[1;2;37m([0m[1;2;36m12[0m[1;2;37m<[0m[1;2;95m-[0m[1;2;37m>[0m[1;2;36m12[0m[2;37m bijection[0m[1;2;37m)[0m[2;37m:[0m
+[2;37m   ∈: 19x[0m
+[2;37m   ∋: 9x[0m
+[2;37m   ≺: 8x[0m
+[2;37m   ≻: 5x[0m
+[2;37m   ⊙: 11x[0m
+[2;37m   ⊞: 17x[0m
+[2;37m   ⊢: 8x[0m
+[2;37m   ⊣: 3x[0m
+[2;37m   ⊤: 16x[0m
+[2;37m   ⊥: 13x[0m
+[2;37m   ⋈: 11x[0m
+[2;37m   ◻: 23x[0m
+[2;37m Auto-detected [0m[1;2;36m3[0m[2;37m subunits [0m[1;2;37m([0m[2;33mconf[0m[2;37m=[0m[1;2;36m0[0m[1;2;36m.51[0m[1;2;37m)[0m
+[Gen2:serpent_v2] Prediction: 2 AAs, 0 contacts, 2/12 primitives, energy=0
+[2;37m PDB written: rebis_chain_protein.pdb[0m
+[2;37mProtein: [0m
+[2;37mMLLFKNDSWCRQSTKEEFDTESRKLMTAEQIHLHNEFLLCLFNKCQGLASFTSRPPVSSKTSFSPSKSTSSALKDKTNRR[0m
+[2;37mTKVKKRSRSDKGNFEPADIADYIVPPNALPPHVHEEPLRYSAQELFLPDMPLIFGRMILSAWEVGLDGAEEHAAELLVVG[0m
+[2;37mVQHFLKNVLTAILGRRKGYKVREDHFLYAMGSAVPNPWLCNTMNIIDDVAVSLSTNINEAGRMKSPVHNLSLDEIEQKAA[0m
+[2;37mYEIACGDVASIVQYPVNAYQVLEALQVHRNVIPSHTVYSVNIERVINTLNHPANEEIEGAM [0m[1;2;37m([0m[1;2;36m301[0m[2;37m aa[0m[1;2;37m)[0m
+[2;37m  Closure Δ: [0m[1;2;36m0.0[0m
+[2;37m  📦 PDB: rebis_chain_protein.pdb[0m
+[1;32mPhase [0m[1;36m1[0m[1;32m complete ✓[0m
+[94m────────────────────────────────────────────────────────────────────────────────[0m
+[94m──────────────── [0m[1;33mPhase [0m[1;33m2[0m[1;33m/[0m[1;33m3[0m[1;33m — ch3mpiler → Catalytic Site Design[0m[94m ─────────────────[0m
+[2;37m ╔════════════════════════════════════════╗[0m
+[2;37m ║  ch3mpiler ⟲ serpentrod — Pipeline   ║[0m
+[2;37m ╚════════════════════════════════════════╝[0m
+[2;37m [0m
+[2;37m Phase [0m[1;2;36m1[0m[2;37m — ch3mpiler reaction analysis[0m
+[2;37m ────────────────────────────────────────[0m
+[2;37m Target: [0m[1;2;35mCC[0m[1;2;37m([0m[2;37m=O[0m[1;2;37m)[0m[2;37mO[0m
+[2;37m   Best disconnection: co_sigma [0m[1;2;37m([0m[2;33mδ[0m[2;37m=[0m[1;2;36m5[0m[1;2;36m.444[0m[1;2;37m)[0m
+[2;37m [0m
+[2;37m Phase [0m[1;2;36m2[0m[2;37m — Structural signature extraction[0m
+[2;37m ────────────────────────────────────────[0m
+[2;37m   Bond: co_sigma — C-O σ bond [0m[1;2;37m([0m[2;37mpolar, ether/alcohol[0m[1;2;37m)[0m
+[2;37m   FG pair: carboxylic_acid + carboxylic_acid[0m
+[2;37m   Structuring Δ: [0m[1;2;36m5.444[0m
+[2;37m [0m
+[2;37m Phase [0m[1;2;36m3[0m[2;37m — SerpentRod catalytic site design[0m
+[2;37m ────────────────────────────────────────[0m
+[2;37m   Site RNA: AUGUGGUGUUACGUUAUACCACAGGCUGGCACAGUG[0m[2;33m...[0m[2;37m [0m[1;2;37m([0m[1;2;36m36[0m[2;37m nt[0m[1;2;37m)[0m
+[2;37m   Site AA:  MWCYVIPQAGTV [0m[1;2;37m([0m[1;2;36m12[0m[2;37m AAs[0m[1;2;37m)[0m
+[2;37m   Winding:  [0m[1;2;36m3[0m
+[2;37m   Frobenius: ✓[0m
+[2;37m   Confidence: [0m[1;2;36m1.000[0m
+[2;37m   Catalytic triad: Cys_2, Tyr_3[0m
+[2;37m [0m
+[2;37m ╔════════════════════════════════════════╗[0m
+[2;37m ║  Pipeline Complete                    ║[0m
+[2;37m ╚════════════════════════════════════════╝[0m
+[1;32mPhase [0m[1;36m2[0m[1;32m complete ✓[0m
+[94m────────────────────────────────────────────────────────────────────────────────[0m
+[94m───────────── [0m[1;33mPhase [0m[1;33m3[0m[1;33m/[0m[1;33m3[0m[1;33m — Retrosynthetic Stone [0m[1;33m([0m[1;33mSolve et Coagula[0m[1;33m)[0m[94m ──────────────[0m
+[2;37mDisconnection sites found: [0m[1;2;36m2[0m
+[2;37m  [0m[1;2;37m[[0m[1;2;36m0[0m[1;2;37m][0m[2;37m strategic_disconnection — bond [0m[1;2;36m0[0m
+[2;37m  [0m[1;2;37m[[0m[1;2;36m1[0m[1;2;37m][0m[2;37m strategic_disconnection — bond [0m[1;2;36m2[0m
+[2;37mFrobenius score: [0m[1;2;36m1.0[0m
+[2;37m  Synthesis plan is Frobenius-closed — µ ∘ δ = id[0m
+[1;32mPhase [0m[1;36m3[0m[1;32m complete ✓[0m
+[94m────────────────────────────────────────────────────────────────────────────────[0m
+[1;32mUNIFIED CHAIN COMPLETE[0m

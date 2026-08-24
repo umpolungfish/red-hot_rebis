@@ -1,0 +1,61 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 038_M9PBE2
+╚══════════════════════════════════════════════════════════╝
+Input: 473 AA | Promoted: 34.9% | Dominant: ∋ | ∈:13 | ∋:26 | ≺:7 | ≻:12 | ⊙:16 | ⊞:18 | ⊢:11 | ⊣:2 | ⊤:18 | ⊥:18 | ⋈:4 | ◻:20
+
+▸ CLEAVAGE (7 sites):
+  pos   8: KR   → unknown                   ○=0.50
+  pos  32: KK   → unknown                   ○=0.50
+  pos 164: K    → PC2_monobasic             ○=0.40 [M]
+  pos 219: K    → PC2_monobasic             ○=0.40 [M]
+  pos 248: RR   → unknown                   ○=0.50
+  pos 304: RK   → unknown                   ○=0.50
+  pos 391: KK   → unknown                   ○=0.50
+
+▸ PRODUCTS (7):
+
+  [1] Signal Peptide (8 AA @ 1–8)
+      ◻-dominant (5/8 residues)
+      MDTEEVKR
+
+  [2] Ħ-chiral domain (132 AA @ 33–164)
+      ⊥-dominant (47/132 residues)
+      IDDSSIADAAALAASSCAALEDSPGRLDASEDSVMQELDK...
+
+  [3] Ř-scaffold domain (55 AA @ 165–219)
+      ≻-dominant (32/55 residues)
+      VSLIGEKVLNPMIHCCDQCDKPILVYGRMIPCKHVFCLKC...
+
+  [4] Ř-scaffold domain (29 AA @ 220–248)
+      ≻-dominant (8/29 residues)
+      VLRVEQSGLGTVFMCTHGGSRYGSSGCRR
+
+  [5] ɢ-glycosylation target (56 AA @ 249–304)
+      ∋-dominant (24/56 residues)
+      TYLSQRDLQAHINHRHVAPQPPPLQPQPQLSAMAEQPKMT...
+
+  [6] Ç-kinetic regulator (87 AA @ 305–391)
+      ⊤-dominant (27/87 residues)
+      LSESSVPISVSASIASRPVLSRLPLTGGVGNIGSIGSIPP...
+
+  [7] ɢ-glycosylation target (82 AA @ 392–473)
+      ∋-dominant (20/82 residues)
+      GTPHQSESVADASYYSSVLASFGSAAGNPGSGPPGGGATA...
+
+▸ MAP:
+  KR ↓ 8
+  KK ↓ 32
+  [M] ↓ 164
+  [M] ↓ 219
+  RR ↓ 248
+  RK ↓ 304
+  KK ↓ 391
+  Chain 1: [1–8] (8 AA) Signal Peptide
+  Chain 2: [33–164] (132 AA) Ħ-chiral domain
+  Chain 3: [165–219] (55 AA) Ř-scaffold domain
+  Chain 4: [220–248] (29 AA) Ř-scaffold domain
+  Chain 5: [249–304] (56 AA) ɢ-glycosylation target
+  Chain 6: [305–391] (87 AA) Ç-kinetic regulator
+  Chain 7: [392–473] (82 AA) ɢ-glycosylation target
+
+[2;37m DNA  → 038_M9PBE2_codons.dna  [0m[1;2;37m([0m[1;2;36m1419[0m[2;37m nt[0m[1;2;37m)[0m

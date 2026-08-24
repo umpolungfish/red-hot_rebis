@@ -1,0 +1,31 @@
+╔══════════════════════════════════════════════════════════╗
+║  v5 ENHANCED: 016_A2AJB7
+╚══════════════════════════════════════════════════════════╝
+Input: 192 AA | Promoted: 46.9% | Dominant: ⊞ | ∈:8 | ∋:4 | ≺:8 | ≻:4 | ⊙:7 | ⊞:14 | ⊢:8 | ⊣:1 | ⊤:9 | ⊥:8 | ⋈:6 | ◻:13
+
+▸ CLEAVAGE (2 sites):
+  pos 109: R    → PC2_monobasic             ○=0.40 [M]
+  pos 148: R    → PC2_monobasic             ○=0.45 [M]
+
+▸ PRODUCTS (3):
+
+  [1] Signal Peptide (109 AA @ 1–109)
+      ◻-dominant (49/109 residues)
+      MCSVARHMESIMLFTLLGLCVGLAAGTEAAVVKDFDVNKF...
+
+  [2] Ç-kinetic regulator (39 AA @ 110–148)
+      ⊤-dominant (15/39 residues)
+      ISGEKEVVVVATDYMTYTVIDITSLVAGAVHRAMKLYSR
+
+  [3] B-chain (44 AA @ 149–192)
+      ∈-dominant (26/44 residues)
+      SLDNNGEALNNFQKIALKHGFSETDIHILKHDLTCVNALQ...
+
+▸ MAP:
+  [M] ↓ 109
+  [M] ↓ 148
+  Chain 1: [1–109] (109 AA) Signal Peptide
+  Chain 2: [110–148] (39 AA) Ç-kinetic regulator
+  Chain 3: [149–192] (44 AA) B-chain
+
+[2;37m DNA  → 016_A2AJB7_codons.dna  [0m[1;2;37m([0m[1;2;36m576[0m[2;37m nt[0m[1;2;37m)[0m
