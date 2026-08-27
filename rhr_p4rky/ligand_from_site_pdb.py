@@ -73,7 +73,7 @@ PRIMITIVE_NAMES_SHORT = ["D", "T", "R", "P", "F", "K", "G", "Gm", "Ph", "H", "S"
 _FULL_TO_SHORT = {
     "⊢": "D", "⊣": "T", "≻": "R", "≺": "P", "⋈": "F",
     "⊤": "K", "∈": "G", "∋": "Gm", "⊙": "Ph",
-    "⊥": "H", "⊞": "S", "◻": "W",
+    "⊥": "H", "⊞": "S", "⊡": "W",
 }
 _SHORT_TO_FULL = {v: k for k, v in _FULL_TO_SHORT.items()}
 
