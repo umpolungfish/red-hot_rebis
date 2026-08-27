@@ -1320,7 +1320,8 @@ def generate_substrate_analogs(
     def _add(smi, method, substrate_mol=None):
         """Validate and add a candidate SMILES."""
         try:
-            m = Chem.MolFromSmiles(smi)
+            with _silence_rdkit():
+                m = Chem.MolFromSmiles(smi)
             if m is None or m.GetNumHeavyAtoms() < 3:
                 return
             canon = Chem.MolToSmiles(m)
@@ -1413,10 +1414,14 @@ def generate_substrate_analogs(
                     sub_idx = rw.AddAtom(Chem.Atom(6 if sub in ('C',) else (
                         8 if sub == 'O' else 7 if sub == 'N' else
                         9 if sub == 'F' else 17 if sub == 'Cl' else 6)))
-                    # Attach to first atom if possible
+                    # Attach to first atom if possible. Atom 0 may already be
+                    # valence-saturated for a given substituent — that's a
+                    # real rejection, not a defect, so it's silenced and
+                    # skipped like every other tried-and-discarded candidate.
                     if murcko.GetNumAtoms() > 0:
                         rw.AddBond(0, sub_idx, Chem.BondType.SINGLE)
-                        Chem.SanitizeMol(rw)
+                        with _silence_rdkit():
+                            Chem.SanitizeMol(rw)
                         _add(Chem.MolToSmiles(rw), "murcko_decorated", mol)
                 except:
                     pass
@@ -1448,7 +1453,8 @@ def generate_substrate_analogs(
                 idx = rw.AddAtom(Chem.Atom(6))
                 rw.AddBond(atom.GetIdx(), idx, Chem.BondType.SINGLE)
                 try:
-                    Chem.SanitizeMol(rw)
+                    with _silence_rdkit():
+                        Chem.SanitizeMol(rw)
                     _add(Chem.MolToSmiles(rw), "chain_extend", mol)
                 except:
                     pass
@@ -1471,7 +1477,8 @@ def generate_substrate_analogs(
                                 sub_idx = rw.AddAtom(Chem.Atom(6 if sub == "C" else (
                                     9 if sub == "F" else 17 if sub == "Cl" else 8 if sub in ("OH",) else 7)))
                                 rw.AddBond(atom_idx, sub_idx, Chem.BondType.SINGLE)
-                                Chem.SanitizeMol(rw)
+                                with _silence_rdkit():
+                                    Chem.SanitizeMol(rw)
                                 _add(Chem.MolToSmiles(rw), f"ring_sub", mol)
                             except:
                                 pass

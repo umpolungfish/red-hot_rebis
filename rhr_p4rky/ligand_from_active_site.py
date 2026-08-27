@@ -29,9 +29,16 @@ import sys, os, json, math, itertools
 from pathlib import Path
 from typing import Dict, List, Tuple, Optional, Any, Set
 from dataclasses import dataclass, field
-from rdkit import Chem
+from rdkit import Chem, RDLogger
 from rdkit.Chem import AllChem, Descriptors, rdMolDescriptors
 from rdkit.Chem.Draw import rdMolDraw2D
+
+# Combinatorial SMILES assembly (generate_ligands_from_bond_fg) tries and
+# discards many invalid molecules by design — RDKit's native C++ logger
+# writes each rejection straight to stderr regardless of the Python-level
+# try/except around it. Same silencing ligand_combinatorial.py/
+# ligand_sicpovm.py/run_all_inprocess.py already use for the same reason.
+RDLogger.DisableLog('rdApp.*')
 
 # Paths
 BASE = Path(__file__).parent.absolute()
