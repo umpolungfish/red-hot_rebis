@@ -160,7 +160,7 @@ Build: `cd ../p4rakernel/p4ramill && lake build`
 |--------|--------|
 | Gene pipeline | 452 bp → 150 AA, Δ=3.61, all Frobenius ✓ |
 | Ch3mpiler → Catalytic | 36 nt catalytic RNA, Frobenius ✓, catalytic triad detected |
-| Dual-Link SIC-POVM | Unconditional: all 9 conditions n=1..5, 22 Lean theorems, 0 sorries |
+| Dual-Link SIC-POVM | Unconditional: all 9 conditions n=1..5, 22 Lean theorems, *sans* sorry |
 | Grammar as Σ=1:1 SIC-POVM | d(grammar, Belnap SIC) = 2.0, sole difference Σ: 1:1 vs n:m |
 | Sidechain algebra | 80 AA×env pairs, arginine⊗charged_interface at O_∞ |
 | Frobenius chemotherapeutic | 14,287× selectivity (cancer vs healthy) |
