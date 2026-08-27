@@ -664,7 +664,7 @@ The authors acknowledge the Red-Hot Rebis furnace team for experimental validati
 
 ---
 
-*Manuscript complete. $\mu \circ \delta = \text{id}$. Lean 4 verified. 0 free parameters. 0 sorries.*
+*Manuscript complete. $\mu \circ \delta = \text{id}$. Lean 4 verified. 0 free parameters. *sans* sorry.*
 
 
 

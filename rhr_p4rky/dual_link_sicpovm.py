@@ -7,7 +7,7 @@ AUGMENTATION OF red-hot_rebis/rhr_p4rky  (2026-07-03)
 This module instantiates the formal theorem proved in the p4ramill Lean 4 kernel:
 
   SIC_POVM_DualLinkClosure.lean  — Dual-Link self-application route
-  SIC_Multilattice_Proof.lean    — Unconditional Belnap SIC-POVM (22 theorems, 0 sorries)
+  SIC_Multilattice_Proof.lean    — Unconditional Belnap SIC-POVM (22 theorems, *sans* sorry)
   ZaunerEmbeddingEquivalence.lean — Hilbert Embedding ⇔ Zauner Conjecture
 
 CORE THEOREM (sic_povm_belnap_unconditional):
