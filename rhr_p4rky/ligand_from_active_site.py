@@ -76,7 +76,7 @@ from shared.vox_bridge import AA_MARK as _AA_MARK
 
 _MARK_TO_SHORT = {
     "⊢": "D", "⊣": "T", "≻": "R", "≺": "P", "⋈": "F", "⊤": "K",
-    "∈": "G", "∋": "Gm", "⊙": "Ph", "⊥": "H", "⊞": "S", "◻": "W",
+    "∈": "G", "∋": "Gm", "⊙": "Ph", "⊥": "H", "⊞": "S", "⊡": "W",
 }
 AA_TO_PRIMITIVE = {aa: _MARK_TO_SHORT[mark] for aa, mark in _AA_MARK.items()}
 
