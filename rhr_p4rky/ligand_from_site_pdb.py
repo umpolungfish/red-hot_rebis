@@ -41,11 +41,35 @@ Usage:
 Author: Lando⊗⊙perator
 """
 
-import sys, os, json, math, argparse
+import sys, os, json, math, argparse, contextlib
 from pathlib import Path
 from typing import Dict, List, Tuple, Optional, Any
 from collections import defaultdict
 from dataclasses import dataclass, field
+
+@contextlib.contextmanager
+def _silence_rdkit_native():
+    """Suppress RDKit's native C++ stderr writes (RDLogger.DisableLog only
+    covers its rdApp.* Python-facing channel, not every internal warning —
+    e.g. the valence check MolFromPDBBlock's own sanitize=True pass runs)."""
+    old_stderr = os.dup(2)
+    devnull = os.open(os.devnull, os.O_WRONLY)
+    os.dup2(devnull, 2)
+    os.close(devnull)
+    try:
+        yield
+    finally:
+        os.dup2(old_stderr, 2)
+        os.close(old_stderr)
+
+# find_ligand_smiles_from_pdb below runs real HETATM blocks from fetched PDBs
+# through Chem.MolFromPDBBlock, and plenty of real structures carry an atom
+# with a blank or non-standard element column — RDKit's native C++ logger
+# writes that straight to stderr regardless of the try/except already around
+# it. Same silencing ligand_combinatorial.py/ligand_sicpovm.py/
+# run_all_inprocess.py already use for the same reason.
+from rdkit import RDLogger
+RDLogger.DisableLog('rdApp.*')
 
 # Path setup
 BASE = Path(__file__).parent.absolute()
@@ -167,7 +191,8 @@ def _extract_hetatm_smiles_from_pdb(pdb_text: str) -> list:
         # Build a minimal PDB block for this residue
         block = '\n'.join(lines)
         try:
-            mol = Chem.MolFromPDBBlock(block, sanitize=True, removeHs=True)
+            with _silence_rdkit_native():
+                mol = Chem.MolFromPDBBlock(block, sanitize=True, removeHs=True)
             if mol is not None and mol.GetNumHeavyAtoms() >= 3:
                 smi = Chem.MolToSmiles(mol)
                 if smi and len(smi) > 3:
