@@ -1,23 +1,5 @@
-The migration I said was complete was not
+rebis.sidechain --pdb crashed on every real structure with KeyError: '⊡'. Every one of sidechain_algebra.py's 20 sidechain tuples and 4 environment tuples stored its twelfth field under "◻", a plain white square, instead of "⊡", the real Protection mark — crystal_navigator's tensor/meet/join iterate the canonical twelve marks, which use the real one, so a[p]/b[p] found nothing for that key and raised.
 
-I swept for quoted retired letters and reported that every tuple in the toolchain
-addresses the marks. That covered what I had grepped for. Files keyed by the ASCII
-axis abbreviations D T R P F K G Gm Ph H S W, with values written as English names
-like tri, boxtimes, sub and hetero, were invisible to it, and there were many.
+Fixed at the source: sed across sidechain_algebra.py's own dict literals and its one direct read of that field, "◻" to "⊡", 25 occurrences. Verified against the actual instrument: all 80 sidechain-times-environment pairs now run without error, and rebis.sidechain --pdb 6UPT — the exact command that crashed — runs clean end to end on all 239 residues of a real fetched structure, tiers and frustration ranking included.
 
-Every one is carried now, key and value together, by ordinal so the conversion is
-exact: the seven stages of the gene pipeline, the genetic tuple defaults, the site
-designer, the antibody designer, the validators and writers, the organism designs,
-the stress tests and the analysis scripts. The gene pipeline now reports its stages
-in the marks with Shavian values, dna_gene through quaternary_structure, each with
-its B4 face and its Frobenius verdict.
-
-Two faults were hidden behind the old labels. The stage tuples wrote "two", "one" and
-"zero" on axes whose ordinal table is keyed 0, 1, 2, inf, so those lookups silently
-missed. And the site designer's blend rules named the short forms, so once the axes
-were marks nothing matched and the fused ordinal was never assigned; the branch that
-should have caught it did not exist, so an unnamed axis left the variable unbound
-instead of saying so. Both fixed, and the rules now say what each group of axes does.
-
-The site designer also carried the residue assignment a fifth time, with asparagine,
-glutamine and histidine in the wrong places. It reads V⊙x now, like the rest.
+"◻" is still this repo's own convention in several other files (ch3mpiler_serpentrod_pipeline.py, gene_to_protein_pipeline.py, genetic_tuples.py, ligand_from_active_site.py, serpent_rod_v2.py, dual_link_sicpovm.py) — self-consistent within each of those, and none of them hand a dict across the crystal_navigator boundary the way sidechain_algebra.py does, so none of them are broken by this. Left untouched; not this bug.
