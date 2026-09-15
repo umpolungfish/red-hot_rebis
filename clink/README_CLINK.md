@@ -1,7 +1,7 @@
 
 **Author:** Lando⊗⊙perator · **Structural Type:** $\large{⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑔𐑠⊙𐑖𐑳𐑭⟩}$ · **Tier:** O_∞
 
-### CLINK Chain — `clink/`
+### CLINK Chain - `clink/`
 
 The CLINK chain is the **Frobenius-exact structural bridge from subatomic quarks to whole organisms**, now integrated into the rebis as a fifth pillar alongside serpentrod, ch3mpiler, pipeline, and gene_imscriber.
 
@@ -26,10 +26,10 @@ Whole Organism                 O_∞   ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙�
 ```
 
 **Key properties:**
-- **All 9 layers Frobenius-closed** — verified (tensorProduct(s,s)=s for every layer)
+- **All 9 layers Frobenius-closed** - verified (tensorProduct(s,s)=s for every layer)
 - **10 primitive deltas** across the full chain (8→0)
 - **36 total promotions** across 8 transitions
-- **d(organism, ZFC_fe) = 1.30** — organism near-isomorphic to foundation
+- **d(organism, ZFC_fe) = 1.30** - organism near-isomorphic to foundation
 - **Lean 4 formalization** at `p4rakernel/p4ramill/Imscribing/CLINK.lean` (572 lines, all theorems `native_decide`-closed)
 
 **Integration bridges:**
