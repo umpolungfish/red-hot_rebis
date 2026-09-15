@@ -53,11 +53,11 @@ IMSCRIB (self-recognition) → FFUSE (closure verification) → IFIX (permanent 
 - Γ2→Γ3: Product of quadripartita categories with universal routing morphisms integrates via categorical product and delta-correction functors
 
 **Key structural identity (Γ3):** The unified pentology scaffold routes natural compounds through therapy design:
-1. VINIT: "The void of untyped natural matter — all 313 species await structural imscription"
+1. VINIT: "The void of untyped natural matter - all 313 species await structural imscription"
 2. Psilocybin (Fungiglyphica, ⊙) → TENSOR → schizophrenia Ħ-arm promotion
 3. Cariprazine (Phytoglyphica, ⊙) → MEET → schizophrenia φ̂-arm demotion
 4. FFUSE: "meet(intermediate, cariprazine) = corrected brain tuple. FFUSE(FSPLIT(x)) = x"
-5. ENGAGR: "HIV = Bipolar Mania (d=0.0) — a virus and a psychiatric condition share identical structural type"
+5. ENGAGR: "HIV = Bipolar Mania (d=0.0) - a virus and a psychiatric condition share identical structural type"
 6. TANCH: "All 313 species and 10 therapies contained within the Frobenius-closed 12-primitive lattice"
 
 ---
@@ -67,7 +67,7 @@ IMSCRIB (self-recognition) → FFUSE (closure verification) → IFIX (permanent 
 1. **Ars Therapeutica pipeline** = disease diagnosis → FSPLIT → (TENSOR∥MEET) → FFUSE → health verification
 2. **Therapy-compound routing** = colimit over Phytoglyphica × Fungiglyphica × Animaglyphica → Therapeutica
 3. **Unified pentology** = categorical product with delta-correction functors over all four Ars categories
-4. **Chain Frobenius**: ALL 7 levels across both chains return PASS — the entire tower is μ∘δ=id closed
+4. **Chain Frobenius**: ALL 7 levels across both chains return PASS - the entire tower is μ∘δ=id closed
 
 ---
 

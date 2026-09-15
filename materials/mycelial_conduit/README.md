@@ -9,7 +9,7 @@
 
 ## 1. Design Concept
 
-A living computational fabric — engineered mycelium with:
+A living computational fabric - engineered mycelium with:
 - **CNT-armored hyphae** (carbon nanotube-infused cell walls for electrical conductivity)
 - **NanoLuc bioluminescence** (reporter-free optical signaling)
 - **ChR2 optogenetic nodes** (light-gated ion channels for switching)
@@ -27,7 +27,7 @@ The system grows its own hardware. Damage triggers repair. Signaling is both ele
 |--------|------|---------|----------------|
 | mycorrhizal_network | O₀ | 0.0 | No self-loop (Ph=𐑢), trapped kinetics (K=𐑤) |
 | graphene | O₀ | 0.0 | No self-loop (Ph=𐑢), driven kinetics (K=𐑘) |
-| distributed_ganglia_system_v1 | O_∞ | 0.971 | Target type — fully self-modeling |
+| distributed_ganglia_system_v1 | O_∞ | 0.971 | Target type - fully self-modeling |
 
 ### Distance Matrix
 
