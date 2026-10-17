@@ -18,7 +18,7 @@ import json
 # otherwise shadow the package).
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-AXES = ["⊢", "⊣", "≻", "≺", "⋈", "⊤", "∈", "∋", "⊙", "⊥", "⊞", "◻"]
+AXES = ["⊢", "⊣", "≻", "≺", "⋈", "⊤", "∈", "∋", "⊙", "⊥", "⊞", "⊡"]
 
 
 def _load_catalog(path):
@@ -48,25 +48,30 @@ def main(argv):
         print(f"plasma: '{name}' has an incomplete tuple (missing {' '.join(missing)})")
         return 1
 
-    from plasma.plasma_forge import PlasmaForge
+    from plasma.plasma_forge import PlasmaForge, PLASMA_PRIMITIVE_MAP
 
-    d = PlasmaForge().forge(tup, name=name)
+    # The catalog uses the canonical axis. Transport its same value into the
+    # older forge schema only at this boundary; keep catalog keys unchanged.
+    forge_tuple = dict(tup)
+    if "⊡" not in PLASMA_PRIMITIVE_MAP and "◻" in PLASMA_PRIMITIVE_MAP:
+        forge_tuple["◻"] = forge_tuple.pop("⊡")
+    d = PlasmaForge().forge(forge_tuple, name=name)
 
     lines = [
         f"plasma reading of {name}  {d.tuple_str}  (tier {d.tier})",
         f"  regime:          {d.regime}",
         f"  dimensionality:  {d.dimensionality}",
         f"  mode structure:  {d.mode_structure}",
-        f"  coupling (Ř):    {d.coupling}",
-        f"  symmetries (Φ):  {d.symmetries}",
+        f"  coupling (≻):    {d.coupling}",
+        f"  symmetries (≺):  {d.symmetries}",
         f"  collisionality:  {d.collisionality}",
-        f"  transport (Ç):   {d.transport}",
-        f"  interaction (Γ): {d.interaction_range}",
-        f"  cascade (ɢ):     {d.cascade}",
+        f"  transport (⊤):   {d.transport}",
+        f"  interaction (∈): {d.interaction_range}",
+        f"  cascade (∋):     {d.cascade}",
         f"  criticality (⊙): {d.criticality}",
-        f"  chirality (Ħ):   {d.chirality}",
-        f"  species (Σ):     {d.species}",
-        f"  magnetic top(Ω): {d.topology}",
+        f"  chirality (⊥):   {d.chirality}",
+        f"  species (⊞):     {d.species}",
+        f"  magnetic top(⊡): {d.topology}",
     ]
     if d.instabilities:
         lines.append("  instabilities:")
