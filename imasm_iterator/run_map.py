@@ -53,7 +53,11 @@ def main():
                         help="Checkpoint interval")
     parser.add_argument("--search", action="store_true",
                         help="Search for canonical arrangements and report")
+    parser.add_argument("--output-dir", default=OUTPUT_DIR, help="Directory for map and summary files")
     args = parser.parse_args()
+    if args.length < 1 or args.sample < 0 or args.checkpoint < 1:
+        parser.error("length/checkpoint must be positive and sample must be nonnegative")
+    output_dir = os.path.abspath(args.output_dir)
 
     length = args.length
     total_space = count_arrangements(length)
@@ -71,16 +75,16 @@ def main():
 
     if args.full:
         max_total = None
-        info_line("Mode: FULL enumeration of all 430M arrangements")
-        info_line("Estimated time: 1-3 hours depending on CPU")
+        info_line(f"Mode: FULL enumeration of {total_space:,} arrangements")
     else:
         max_total = min(args.sample, total_space)
         print(f"Mode: SAMPLING {max_total:,} arrangements "
               f"({100*max_total/total_space:.1f}% of space)")
     print()
 
-    t0 = time.time()
-    checkpoint_path = os.path.join(OUTPUT_DIR, "imasm_checkpoint.json")
+    os.makedirs(output_dir, exist_ok=True)
+    t0 = time.monotonic()
+    checkpoint_path = os.path.join(output_dir, "imasm_checkpoint.json")
 
     smap = map_space(
         length=length,
@@ -91,20 +95,20 @@ def main():
         verbose=True,
     )
 
-    elapsed = time.time() - t0
+    elapsed = time.monotonic() - t0
 
     # Summary
     summary = smap.summary()
     print()
     print(summary)
 
-    summary_path = os.path.join(OUTPUT_DIR, "imasm_summary.txt")
+    summary_path = os.path.join(output_dir, "imasm_summary.txt")
     with open(summary_path, 'w') as f:
         f.write(summary)
         f.write(f"\n\nElapsed: {elapsed:.1f}s ({elapsed/3600:.2f}h)\n")
 
     # Full map JSON
-    map_path = os.path.join(OUTPUT_DIR, "imasm_space_map.json")
+    map_path = os.path.join(output_dir, "imasm_space_map.json")
     smap.to_json(map_path)
     info_line(f"\nFull map: {map_path}")
     info_line(f"Summary:  {summary_path}")
@@ -143,7 +147,8 @@ def do_search(signatures, length):
         # Filter to exact coarse match
         coarse_matches = [a for a in matches
                           if compute_fingerprint(a).coarse_key() == fp.coarse_key()]
-        info_line(f"  Coarse class size: {len(coarse_matches):,} arrangements")
+        qualifier = "capped candidate search" if len(matches) == 100000 else "completed candidate search"
+        info_line(f"  Observed coarse matches: {len(coarse_matches):,} ({qualifier})")
         print()
 
 

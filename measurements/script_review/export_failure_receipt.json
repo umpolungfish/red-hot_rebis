@@ -1,0 +1,4 @@
+{
+  "actual_pipeline_run": "ATGGCC",
+  "injected_pdb_write_error": "propagated as RuntimeError"
+}

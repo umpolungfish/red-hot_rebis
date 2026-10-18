@@ -21,7 +21,7 @@ from .tokens import (
 
 class StructuralFingerprint(NamedTuple):
     """Compact fingerprint of an arrangement's structural properties."""
-    length: int                    # 1-8
+    length: int                    # positive arrangement length
     sig_L: int                     # logical count
     sig_F: int                     # frobenius count
     sig_D: int                     # dialetheia count
@@ -110,6 +110,8 @@ class StructuralFingerprint(NamedTuple):
 def compute_fingerprint(arr: Tuple[int, ...]) -> StructuralFingerprint:
     """Compute the structural fingerprint for an arrangement."""
     n = len(arr)
+    if n == 0:
+        raise ValueError("Cannot fingerprint an empty arrangement")
     sig = signature(arr)
 
     start_tok = arr[0]

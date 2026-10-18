@@ -26,7 +26,7 @@ import sys
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
-_VOX = Path.home() / "imsgct" / "Vox"
+_VOX = Path(__file__).resolve().parents[2] / "Vox"
 if _VOX.exists() and str(_VOX) not in sys.path:
     sys.path.insert(0, str(_VOX))
 
@@ -54,7 +54,8 @@ _ONE_TO_THREE = {
 
 # The marks that transform what they act on. A region enclosing none of these
 # is not substantial, whatever its length.
-WORK_MARKS = frozenset("≻≺⋈⊤⊥⊞◻")
+WORK_MARKS = frozenset(glyph for glyph, _axis, slot in _gt.AA_GLYPH.values()
+                       if slot in (2, 3, 4, 5, 9, 10, 11))
 FORK, FUSE = "∈", "∋"
 
 

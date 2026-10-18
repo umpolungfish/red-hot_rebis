@@ -44,6 +44,8 @@ class SignatureClass:
 
 def enumerate_signatures(length: int = 8) -> List[SignatureClass]:
     """Enumerate all family signatures for arrangements of given length."""
+    if not isinstance(length, int) or isinstance(length, bool) or length < 1:
+        raise ValueError("Arrangement length must be a positive integer")
     result = []
     for l in range(length + 1):
         for f in range(length + 1 - l):
@@ -107,7 +109,7 @@ def iter_signature_arrangements(sc: SignatureClass) -> Iterator[Tuple[int, ...]]
         dial_indices = [i for i, fam in enumerate(pattern) if fam == 2]
         lin_indices = [i for i, fam in enumerate(pattern) if fam == 3]
 
-        arr = [0] * 8
+        arr = [0] * len(pattern)
         for i in lin_indices:
             arr[i] = Token.IFIX
 
@@ -151,7 +153,9 @@ def _product_assign(
 
 def count_arrangements(length: int = 8) -> int:
     """Count total arrangements (should equal 12^length)."""
-    return 12 ** length
+    if not isinstance(length, int) or isinstance(length, bool) or length < 0:
+        raise ValueError("Length must be a nonnegative integer")
+    return TOKEN_COUNT ** length
 
 
 # ─── Space Mapper (two-tier) ────────────────────────────────────
@@ -181,6 +185,8 @@ class SpaceMap:
 
     def ingest(self, arr: Tuple[int, ...]) -> None:
         """Process one arrangement."""
+        if len(arr) != self.length:
+            raise ValueError("Arrangement length differs from map length")
         fp = compute_fingerprint(arr)
         ckey = fp.coarse_key()
         fkey = fp.fine_key()
@@ -288,6 +294,16 @@ def map_space(
     signatures: Optional[List[SignatureClass]] = None,
     verbose: bool = True,
 ) -> SpaceMap:
+    if checkpoint_interval <= 0:
+        raise ValueError("Checkpoint interval must be positive")
+    if max_total is not None and max_total < 0:
+        raise ValueError("Maximum total must be nonnegative")
+    if length < 1:
+        raise ValueError("Arrangement length must be positive")
+    if max_total == 0:
+        result = SpaceMap(length=length)
+        result.finalize()
+        return result
     if signatures is None:
         if verbose:
             info_line("Enumerating signatures...")
@@ -298,7 +314,7 @@ def map_space(
 
     smap = SpaceMap(length=length)
     total_count = 0
-    t0 = time.time()
+    t0 = time.monotonic()
     last_checkpoint = 0
     last_coarse_count = 0
 
@@ -314,8 +330,9 @@ f"({sc.sig[0]},{sc.sig[1]},{sc.sig[2]},{sc.sig[3]}) "
 
             if total_count % checkpoint_interval == 0 and total_count > last_checkpoint:
                 last_checkpoint = total_count
-                elapsed = time.time() - t0
+                elapsed = time.monotonic() - t0
                 rate = total_count / elapsed if elapsed > 0 else 0
+                smap.finalize()
                 new_coarse = smap.distinct_coarse - last_coarse_count
                 last_coarse_count = smap.distinct_coarse
                 if verbose:
@@ -333,9 +350,9 @@ f"{smap.distinct_coarse} coarse (+{new_coarse}), "
             break
 
     smap.finalize()
-    elapsed = time.time() - t0
+    elapsed = time.monotonic() - t0
     if verbose:
-        success_line(f"\nDone. {total_count:,} in {elapsed:.1f}s ({total_count/elapsed:,.0f}/s)")
+        success_line(f"\nDone. {total_count:,} in {elapsed:.1f}s ({total_count/max(elapsed, 1e-12):,.0f}/s)")
     return smap
 
 
@@ -352,6 +369,10 @@ def search_arrangements(
     period: Optional[int] = None,
     max_results: int = 100,
 ) -> List[Tuple[int, ...]]:
+    if max_results < 0:
+        raise ValueError("Maximum results must be nonnegative")
+    if max_results == 0:
+        return []
     results = []
     signatures = enumerate_signatures(length)
     for sc in signatures:

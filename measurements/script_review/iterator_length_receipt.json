@@ -1,0 +1,11 @@
+{
+  "1": {
+    "complete_unique_arrangements": 12
+  },
+  "2": {
+    "complete_unique_arrangements": 144
+  },
+  "3": {
+    "complete_unique_arrangements": 1728
+  }
+}

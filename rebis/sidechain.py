@@ -45,11 +45,13 @@ with redirect_stdout(_quiet), redirect_stderr(_quiet):
         tuple_str,
     )
 
-__all__ = sorted([k for k in dir() if not k.startswith('_')
-                   and k not in ('_sys', '_io', '_Path', '_REBIS_ROOT', '_quiet',
-                                 'redirect_stdout', 'redirect_stderr')])
-
 from rhr_p4rky.pdb_integration import analyze_pdb_structure, print_pdb_analysis
+
+__all__ = [
+    "SIDECHAINS", "ENVIRONMENTS", "analyze_composition", "batch_analyze",
+    "print_analysis", "print_frustration_matrix", "print_dominance_matrix",
+    "print_tier_matrix", "tuple_str", "analyze_pdb_structure", "print_pdb_analysis",
+]
 
 SC_NAMES = sorted(SIDECHAINS.keys())
 ENV_NAMES = sorted(ENVIRONMENTS.keys())
@@ -68,7 +70,7 @@ def main():
     parser.add_argument("--info", action="store_true",
                         help="Show module info")
     parser.add_argument("--json", action="store_true",
-                        help="Output as JSON (for --batch)")
+                        help="Output analysis as JSON (single pair, --batch, or --pdb)")
     parser.add_argument("--pdb", type=str, default=None,
                         help="Analyze a real PDB structure (ID or file path)")
     parser.add_argument("--cutoff", type=float, default=8.0,
@@ -87,7 +89,7 @@ def main():
             print_pdb_analysis(result, verbose=args.verbose)
         return 0
 
-    if args.info or (not args.sidechain and not args.batch and not args.list and not args.pdb):
+    if args.info or (not args.sidechain and not args.environment and not args.batch and not args.list and not args.pdb):
         print("SIDECHAIN × ENVIRONMENT COMPOSITIONAL ALGEBRA")
         print("=" * 60)
         print(f"  {len(SC_NAMES)} sidechains × {len(ENV_NAMES)} environments = "
@@ -122,8 +124,6 @@ def main():
     if args.batch:
         data = batch_analyze(verbose=not args.json)
         if args.json:
-            # Re-run quietly for JSON
-            data = batch_analyze(verbose=False)
             out = {
                 "summary": {
                     "frustration": {
@@ -162,10 +162,13 @@ def main():
             return 1
 
         analysis = analyze_composition(sc, env)
-        print_analysis(analysis)
-        return 0
+        if args.json:
+            print(json.dumps(analysis, indent=2, default=str, ensure_ascii=False))
+        else:
+            print_analysis(analysis)
+        return int("error" in analysis)
 
-    return 0
+    parser.error("Provide both a sidechain and an environment")
 
 
 if __name__ == "__main__":

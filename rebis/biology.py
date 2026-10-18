@@ -23,32 +23,16 @@ for p in [str(_REBIS_ROOT), str(_REBIS_ROOT / "biology"),
     if p not in sys.path:
         sys.path.insert(0, p)
 
-__all__ = []
+_EXPORTS = {'OuroboricCellSim': 'biology.biology_sim_frobenius_exact', 'TopologicalMorphogenesisSim': 'biology.biology_sim_frobenius_exact', 'CellFate': 'biology.ouroboric_telomere_expanded', 'EpigeneticPhase': 'biology.ouroboric_telomere_expanded', 'TelomereState': 'biology.ouroboric_telomere_expanded', 'EpigeneticState': 'biology.ouroboric_telomere_expanded', 'ATMSignalingState': 'biology.ouroboric_telomere_expanded', 'CellState': 'biology.ouroboric_telomere_expanded', 'EndogenousParams': 'biology.ouroboric_telomere_expanded', 'ShelterinSensor': 'biology.ouroboric_telomere_expanded', 'ATMSignaling': 'biology.ouroboric_telomere_expanded', 'EpigeneticDerepressor': 'biology.ouroboric_telomere_expanded', 'hTERTExpression': 'biology.ouroboric_telomere_expanded', 'TelomeraseExtension': 'biology.ouroboric_telomere_expanded', 'GQuadruplexTerminator': 'biology.ouroboric_telomere_expanded'}
+__all__ = list(_EXPORTS)
 
-def _lazy(name, module, attr=None):
-    try:
-        m = importlib.import_module(module)
-        globals()[name] = getattr(m, attr or name)
-        __all__.append(name)
-    except Exception:
-        pass
 
-_lazy("OuroboricCellSim", "biology.biology_sim_frobenius_exact")
-_lazy("TopologicalMorphogenesisSim", "biology.biology_sim_frobenius_exact")
-_lazy("CellFate", "biology.ouroboric_telomere_expanded")
-_lazy("EpigeneticPhase", "biology.ouroboric_telomere_expanded")
-_lazy("TelomereState", "biology.ouroboric_telomere_expanded")
-_lazy("EpigeneticState", "biology.ouroboric_telomere_expanded")
-_lazy("ATMSignalingState", "biology.ouroboric_telomere_expanded")
-_lazy("CellState", "biology.ouroboric_telomere_expanded")
-_lazy("EndogenousParams", "biology.ouroboric_telomere_expanded")
-_lazy("ShelterinSensor", "biology.ouroboric_telomere_expanded")
-_lazy("ATMSignaling", "biology.ouroboric_telomere_expanded")
-_lazy("EpigeneticDerepressor", "biology.ouroboric_telomere_expanded")
-_lazy("hTERTExpression", "biology.ouroboric_telomere_expanded")
-_lazy("TelomeraseExtension", "biology.ouroboric_telomere_expanded")
-_lazy("EndogenousParams", "biology.ouroboric_telomere_expanded")
-_lazy("GQuadruplexTerminator", "biology.ouroboric_telomere_expanded")
+def __getattr__(name):
+    if name not in _EXPORTS:
+        raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+    value = getattr(importlib.import_module(_EXPORTS[name]), name)
+    globals()[name] = value
+    return value
 
 
 def _json_or_str(obj):
@@ -142,7 +126,7 @@ def _cmd_sim(args):
 
     print()
     print(_json_or_str(output))
-    return 0
+    return int(any("error" in result for result in output.values()))
 
 
 def _cmd_morphogenesis(args):
@@ -303,7 +287,7 @@ def _cmd_telomeres(args):
         print(f"Telomere analysis failed: {e}")
         traceback.print_exc()
         return 1
-    return 0
+    return int(any("error" in result for result in output.values() if isinstance(result, dict)))
 
 def _cmd_status(args):
     """Show simulation results and reports."""
@@ -320,17 +304,21 @@ def _cmd_status(args):
 
 def _cmd_list(args):
     print("rebis.biology — Exports:")
+    failed = False
     for name in sorted(__all__):
-        obj = globals().get(name)
-        status = "✓" if obj is not None else "✗"
-        print(f"  {status} {name}")
+        try:
+            getattr(sys.modules[__name__], name)
+            print(f"  ✓ {name}")
+        except Exception as exc:
+            print(f"  ✗ {name}: {exc}")
+            failed = True
     print("\nCommands:")
     print("  sim            — OuroboricCellSim + TopologicalMorphogenesisSim")
     print("  morphogenesis  — TopologicalMorphogenesisSim only")
     print("  telomeres      — Full telomere subsystem (Shelterin, ATM, hTERT, ...)")
     print("  status         — Show result files")
     print("  list           — List exports")
-    return 0
+    return int(failed)
 
 
 def main():

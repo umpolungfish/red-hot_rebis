@@ -1,0 +1,76 @@
+[
+  {
+    "section": "s2",
+    "command": "python3 -m rebis gene-pipeline --test",
+    "status": 0,
+    "seconds": 1.0896044069959316
+  },
+  {
+    "section": "s3",
+    "command": "python3 -m rhr_p4rky.antibody_designer --all",
+    "status": 0,
+    "seconds": 0.10450210000271909
+  },
+  {
+    "section": "s4",
+    "command": "python3 -m rhr_p4rky.ch3mpiler_serpentrod_pipeline --cas 79-06-1",
+    "status": 0,
+    "seconds": 0.4109118030028185
+  },
+  {
+    "section": "s5",
+    "command": "python3 -m Ars_Therapeutica.ars_therapeutica.cli therapy mrsa",
+    "status": 0,
+    "seconds": 0.08598709999932908
+  },
+  {
+    "section": "s8",
+    "command": "python3 -m imas.compound_catalog analogies --name \"aspirin\"",
+    "status": 0,
+    "seconds": 0.3183162019995507
+  },
+  {
+    "section": "s6",
+    "command": "python3 -m imas.molecular_crystal_designer --smiles \"CC(Cc1ccccc1)C(=O)O\"",
+    "status": 0,
+    "seconds": 0.2710250030067982
+  },
+  {
+    "section": "s7",
+    "command": "python3 -m rhr_p4rky.ch3mpiler_serpentrod_pipeline --cas 56-65-5",
+    "status": 0,
+    "seconds": 0.3931424049951602
+  },
+  {
+    "section": "s9",
+    "command": "python3 -m materials.ig_material_forge --all",
+    "status": 0,
+    "seconds": 0.16857140199863352
+  },
+  {
+    "section": "s10",
+    "command": "python3 -m materials.ouroboric_alloy",
+    "status": 0,
+    "seconds": 0.18172670199419372
+  },
+  {
+    "section": "s11",
+    "command": "python3 -m rebis materials metamaterial",
+    "status": 0,
+    "seconds": 0.24457550300576258
+  },
+  {
+    "section": "s8_repaired",
+    "status": 0,
+    "log": "s8_repaired.log",
+    "output": "ranked structural neighbors"
+  },
+  {
+    "unresolved_analogy_status": 1
+  },
+  {
+    "section": "s12",
+    "status": 0,
+    "instrument": "actual s12 runner, presentation delays disabled"
+  }
+]

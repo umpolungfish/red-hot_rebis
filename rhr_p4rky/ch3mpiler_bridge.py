@@ -5,7 +5,7 @@ ch3mpiler_bridge.py — ch3mpiler integrated into the p4rakernel namespace.
 Wraps the Imscribing Grammar's retrosynthetic/forward reaction compiler
 for use within the rhr_p4rky paraconsistent kernel ecosystem.
 
-The ch3mpiler lives at ~/imscribing_grammar/ch3mpiler.py and performs:
+The local ch3mpiler.compiler package performs:
   - Target molecule → structural type via FG token parsing
   - Retrosynthetic disconnection (12 RXN templates)
   - Forward reaction prediction from reagent names
@@ -37,28 +37,17 @@ import sys, os, json, math
 from pathlib import Path
 from shared.rich_output import *
 
-# ── Locate ch3mpiler in the imscribing_grammar tree ──────────────────────────
-CH3MPILER_PATH = Path.home() / "imscribing_grammar" / "ch3mpiler.py"
-if CH3MPILER_PATH.exists():
-    sys.path.insert(0, str(CH3MPILER_PATH.parent))
-
-# ── Import the ch3mpiler module directly ────────────────────────────────────
+# Load the installed compiler package without replacing its sys.modules entry.
 _ch3mpiler_mod = None
 _ch3mpiler_cls = None
 
-def _ensure_loaded():
-    """Lazy-load ch3mpiler to avoid circular imports at module init."""
-    global _ch3mpiler_mod, _ch3mpiler_cls
-    if _ch3mpiler_cls is not None:
-        return
-    # Import by executing the module
-    import importlib.util
 
-    spec = importlib.util.spec_from_file_location("ch3mpiler", CH3MPILER_PATH)
-    _ch3mpiler_mod = importlib.util.module_from_spec(spec)
-    sys.modules["ch3mpiler"] = _ch3mpiler_mod
-    spec.loader.exec_module(_ch3mpiler_mod)
-    _ch3mpiler_cls = _ch3mpiler_mod.Ch3mpiler
+def _ensure_loaded():
+    global _ch3mpiler_mod, _ch3mpiler_cls
+    if _ch3mpiler_cls is None:
+        import importlib
+        _ch3mpiler_mod = importlib.import_module('ch3mpiler.compiler')
+        _ch3mpiler_cls = _ch3mpiler_mod.Ch3mpiler
 
 # ── Public API ────────────────────────────────────────────────────────────────
 
@@ -100,7 +89,9 @@ def fg_info(name: str) -> dict:
 def rxn_info(name: str = None) -> dict:
     """Return reaction template info. If name is None, list all."""
     _ensure_loaded()
-    rxn_map = _ch3mpiler_mod.RXN
+    rxn_map = getattr(_ch3mpiler_mod, "RXN", None)
+    if rxn_map is None:
+        return {"error": "The current compiler exposes bond types rather than the historical RXN table"}
     if name is None:
         return {"reactions": list(rxn_map.keys())}
     if name in rxn_map:
@@ -110,7 +101,9 @@ def rxn_info(name: str = None) -> dict:
 def el_info(name: str = None) -> dict:
     """Return element type info. If name is None, list all."""
     _ensure_loaded()
-    el_map = _ch3mpiler_mod.EL
+    el_map = getattr(_ch3mpiler_mod, "EL", None)
+    if el_map is None:
+        return {"error": "The current compiler does not expose the historical EL table"}
     if name is None:
         return {"elements": list(el_map.keys())}
     if name in el_map:
@@ -122,6 +115,6 @@ def main():
     """CLI wrapper that delegates to the ch3mpiler."""
     _ensure_loaded()
     # Forward all args to ch3mpiler's main
-    _ch3mpiler_mod.main()
+    return _ch3mpiler_mod.main()
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

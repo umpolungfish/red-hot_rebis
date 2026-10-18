@@ -11,28 +11,25 @@ if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
     _doc = __doc__.strip() if __doc__ else "scripts/mito_pipeline.py"
     print(_doc)
     print()
-    info_line("Examples:")
+    print("Examples:")
     print(_HELP_EXAMPLES)
     print()
     _sys.exit(0)
 
 import sys, os, json
-sys.path.insert(0, "/home/mrnob0dy666/imsgct/red-hot_rebis")
+from pathlib import Path
+REBIS_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(REBIS_ROOT))
 from rhr_p4rky.gene_to_protein_pipeline import GeneToProteinPipeline
 from shared.rich_output import *
 
 
-fasta_path = "/home/mrnob0dy666/imsgct/red-hot_rebis/data/NC_012920.1.fasta"
-with open(fasta_path) as f:
-    lines = f.readlines()
-seq = "".join(l.strip() for l in lines[1:]).upper()
 compl = str.maketrans("ATCG", "TAGC")
+
 
 def revcomp(s):
     return s.translate(compl)[::-1]
 
-info_line(f"Genome length: {len(seq)} bp")
-print()
 
 MITO_GENES = {
     "MT-ND1":  (3307, 4262, "H", "NADH dehydrogenase subunit 1"),
@@ -50,96 +47,116 @@ MITO_GENES = {
     "MT-CYB":  (14747, 15887, "H", "Cytochrome b"),
 }
 
-results = {}
+def main():
+    from rebis.file_input import _load_seq_file
+    fasta_path = REBIS_ROOT / "data" / "NC_012920.1.fasta"
+    seq = _load_seq_file(str(fasta_path))['__sequence__'].upper()
+    if len(seq) < max(end for _, end, _, _ in MITO_GENES.values()):
+        raise ValueError('Genome does not cover the annotated gene coordinates')
+    info_line(f"Genome length: {len(seq)} bp")
 
-for gene_name, (start, end, strand, desc) in sorted(MITO_GENES.items()):
-    cds_raw = seq[start-1:end]
-    cds = revcomp(cds_raw) if strand == "L" else cds_raw
+    results = {}
+
+    for gene_name, (start, end, strand, desc) in sorted(MITO_GENES.items()):
+        cds_raw = seq[start-1:end]
+        cds = revcomp(cds_raw) if strand == "L" else cds_raw
     
-    try:
-        pipeline = GeneToProteinPipeline(cds, name=gene_name, is_rna=False)
-        report = pipeline.run(num_subunits=1)
+        try:
+            pipeline = GeneToProteinPipeline(cds, name=gene_name, is_rna=False,
+                                             genetic_code="mitochondrial")
+            report = pipeline.run(num_subunits=1)
         
-        frob_ok = all(s["frob"] for s in report["stages"])
-        n_prim = len(report["primitive_activations"])
+            frob_ok = all(s["frob"] for s in report["stages"])
+            n_prim = len(report["primitive_activations"])
         
-        results[gene_name] = {
-            "status": "OK",
-            "bp": len(cds),
-            "aa": report["aa_length"],
-            "strand": strand,
-            "frob": frob_ok,
-            "dist": report["closure"]["dna_to_quaternary_distance"],
-            "consc": report["closure"]["consciousness_invariant"],
-            "delta": report["total_delta"],
-            "n_prim": n_prim,
-            "prims": report["primitive_activations"],
-            "aa_seq": report["aa_sequence"][:40],
-        }
+            results[gene_name] = {
+                "status": "OK",
+                "bp": len(cds),
+                "aa": report["aa_length"],
+                "strand": strand,
+                "frob": frob_ok,
+                "dist": report["closure"]["dna_to_quaternary_distance"],
+                "consc": report["closure"]["consciousness_invariant"],
+                "delta": report["total_delta"],
+                "n_prim": n_prim,
+                "prims": report["primitive_activations"],
+                "aa_seq": report["aa_sequence"],
+            }
         
-        fm = "✓" if frob_ok else "✗"
-        info_line(f"[{gene_name:<7}] {strand} | {len(cds):>5}bp | {report['aa_length']:>3}AA | Frob={fm} | prim={n_prim}/12")
+            fm = "✓" if frob_ok else "✗"
+            info_line(f"[{gene_name:<7}] {strand} | {len(cds):>5}bp | {report['aa_length']:>3}AA | Frob={fm} | prim={n_prim}/12")
         
-        # Stage detail
-        for s in report["stages"]:
-            n = s.get("name", s.get("stage_name", "?"))
-            f = "✓" if s["frob"] else "✗"
-            info_line(f"         {n:<25} B4:{s['b4']:<4} Frob:{f}")
+            # Stage detail
+            for s in report["stages"]:
+                n = s.get("name", s.get("stage_name", "?"))
+                f = "✓" if s["frob"] else "✗"
+                info_line(f"         {n:<25} B4:{s['b4']:<4} Frob:{f}")
             
-    except Exception as e:
-        error_line(f"[{gene_name:<7}] ERROR: {e}")
-        results[gene_name] = {"status": "ERROR", "error": str(e)}
+        except Exception as e:
+            error_line(f"[{gene_name:<7}] ERROR: {e}")
+            results[gene_name] = {"status": "ERROR", "error": str(e)}
 
-# ====== SUMMARY ======
-info_line(f"\n{'='*70}")
-info_line("COMPLETE RESULTS: HOMO SAPIENS MITOCHONDRIAL GENOME NC_012920.1")
-info_line("13 Protein-Coding Genes → 7-Stage IG Structural Pipeline")
-info_line(f"{'='*70}")
-ok_results = {k:v for k,v in results.items() if v["status"] == "OK"}
-err_results = {k:v for k,v in results.items() if v["status"] == "ERROR"}
+    # ====== SUMMARY ======
+    info_line(f"\n{'='*70}")
+    info_line("COMPLETE RESULTS: HOMO SAPIENS MITOCHONDRIAL GENOME NC_012920.1")
+    info_line("13 Protein-Coding Genes → 7-Stage IG Structural Pipeline")
+    info_line(f"{'='*70}")
+    ok_results = {k:v for k,v in results.items() if v["status"] == "OK"}
+    err_results = {k:v for k,v in results.items() if v["status"] == "ERROR"}
 
-info_line(f"\n{'Gene':<10} {'Str':<4} {'bp':<6} {'AA':<5} {'Frob':<6} {'Dist':<8} {'Prim':<6} {'Top primitives'}")
-info_line(f"{'-'*70}")
-for g in sorted(ok_results.keys()):
-    r = ok_results[g]
-    f = "✓" if r["frob"] else "✗"
-    top = sorted(r["prims"].items(), key=lambda x: -x[1]["count"])[:3]
-    top_s = ", ".join(f"{k}={v['count']}x" for k,v in top)
-    info_line(f"{g:<10} {r['strand']:<4} {r['bp']:<6} {r['aa']:<5} {f:<6} {r['dist']:<8.4f} {r['n_prim']}/12  {top_s}")
+    info_line(f"\n{'Gene':<10} {'Str':<4} {'bp':<6} {'AA':<5} {'Frob':<6} {'Dist':<8} {'Prim':<6} {'Top primitives'}")
+    info_line(f"{'-'*70}")
+    for g in sorted(ok_results.keys()):
+        r = ok_results[g]
+        f = "✓" if r["frob"] else "✗"
+        top = sorted(r["prims"].items(), key=lambda x: -x[1]["count"])[:3]
+        top_s = ", ".join(f"{k}={v['count']}x" for k,v in top)
+        info_line(f"{g:<10} {r['strand']:<4} {r['bp']:<6} {r['aa']:<5} {f:<6} {r['dist']:<8.4f} {r['n_prim']}/12  {top_s}")
 
-if err_results:
-    error_line(f"\nErrors ({len(err_results)}):")
-    for g, r in err_results.items():
-        info_line(f"  {g}: {r['error']}")
+    if err_results:
+        error_line(f"\nErrors ({len(err_results)}):")
+        for g, r in err_results.items():
+            info_line(f"  {g}: {r['error']}")
 
-info_line(f"\n{'='*70}")
-info_line("AGGREGATE STATISTICS")
-info_line(f"{'='*70}")
-info_line(f"  Total genes processed:    {len(results)}")
-info_line(f"  Successful:               {len(ok_results)}")
-info_line(f"  Frobenius ✓:              {sum(1 for r in ok_results.values() if r['frob'])}")
-info_line(f"  Errors:                   {len(err_results)}")
-print()
+    info_line(f"\n{'='*70}")
+    info_line("AGGREGATE STATISTICS")
+    info_line(f"{'='*70}")
+    info_line(f"  Total genes processed:    {len(results)}")
+    info_line(f"  Successful:               {len(ok_results)}")
+    info_line(f"  Frobenius ✓:              {sum(1 for r in ok_results.values() if r['frob'])}")
+    info_line(f"  Errors:                   {len(err_results)}")
+    print()
 
-# Aggregate primitive activations
-total_prim = {}
-for r in ok_results.values():
-    for p, d in r["prims"].items():
-        total_prim[p] = total_prim.get(p, 0) + d["count"]
-info_line(f"  Total IG primitive activations across all 13 mitochondrial genes:")
-for p, c in sorted(total_prim.items(), key=lambda x: -x[1]):
-    info_line(f"    {p}: {c}x")
-info_line(f"    Total: {sum(total_prim.values())}")
+    # Aggregate primitive activations
+    total_prim = {}
+    for r in ok_results.values():
+        for p, d in r["prims"].items():
+            total_prim[p] = total_prim.get(p, 0) + d["count"]
+    info_line(f"  Total IG primitive activations across all 13 mitochondrial genes:")
+    for p, c in sorted(total_prim.items(), key=lambda x: -x[1]):
+        info_line(f"    {p}: {c}x")
+    info_line(f"    Total: {sum(total_prim.values())}")
 
-# Most-activated genes
-info_line(f"\n  Most structurally complex genes (most primitives activated):")
-for g in sorted(ok_results.keys(), key=lambda g: -ok_results[g]["n_prim"]):
-    r = ok_results[g]
-    info_line(f"    {g:<10} {r['n_prim']}/12 primitives  ({r['aa']} AA, {r['bp']} bp)")
+    # Most-activated genes
+    info_line(f"\n  Most structurally complex genes (most primitives activated):")
+    for g in sorted(ok_results.keys(), key=lambda g: -ok_results[g]["n_prim"]):
+        r = ok_results[g]
+        info_line(f"    {g:<10} {r['n_prim']}/12 primitives  ({r['aa']} AA, {r['bp']} bp)")
 
-# Invariants
-dists = set(r["dist"] for r in ok_results.values())
-conscs = set(r["consc"] for r in ok_results.values())
-info_line(f"\n  DNA→Quaternary closure distance: {dists}")
-info_line(f"  Consciousness invariant:          {conscs}")
-info_line(f"  Invariant across ALL genes:       YES ✓")
+    # Invariants
+    dists = set(r["dist"] for r in ok_results.values())
+    conscs = set(r["consc"] for r in ok_results.values())
+    info_line(f"\n  DNA→Quaternary closure distance: {dists}")
+    info_line(f"  Consciousness invariant:          {conscs}")
+    invariant = (len(ok_results) == len(MITO_GENES) and bool(ok_results)
+                 and len(dists) == 1 and len(conscs) == 1)
+    info_line(f"  Invariant across ALL genes:       {invariant}")
+    output = REBIS_ROOT / 'measurements' / 'mitochondrial_pipeline_results.json'
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(json.dumps({'genetic_code': 'mitochondrial', 'results': results,
+                                  'invariant_across_all_genes': invariant}, indent=2) + '\n')
+    return 1 if err_results else 0
+
+
+if __name__ == '__main__':
+    sys.exit(main())

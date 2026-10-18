@@ -2,12 +2,12 @@
 """
 fg_exhaustive.py — Comprehensive Functional Group SMARTS Library
 
-170+ SMARTS patterns covering all major organic functional groups,
+SMARTS patterns for organic functional groups,
 each mapped to its IMASM token role for compound imscription.
 
 Structure:
   SMARTS_PATTERNS: Dict[str, tuple] — (smarts, imasm_token, weight, role_category)
-  TOKEN_BY_FG: auto-generated inverse map
+  FG_BY_TOKEN: auto-generated inverse map
   FG_CATEGORIES: functional group taxonomy
 
 Fields per entry:
@@ -45,8 +45,10 @@ SMARTS_PATTERNS: Dict[str, FGEntry] = {
     "aromatic_ring":          ("a", IMSCRIB, 5, "core"),
     "conjugated_diene":       ("[#6]=[#6]-[#6]=[#6]", IMSCRIB, 4, "core"),
     "conjugated_ene_yn":      ("[#6]=[#6]-[#6]#[#6]", IMSCRIB, 3, "core"),
-    "porphyrin_core":         ("c1c2cc3cc4cc5cc6cc1n7c2c8c9c%10c%11c%12c%13c%14c%15c%16c%17c%18c%19c%20c%21c%22c%23c%24c%25c%26c%27c%28c%29c%30c%31c%32c%33c%34c%35c%36c%37c%38c%39c%40c%41c%42c%43c%44c%45c(=[N-]%46)c%47c%48c%49c%50c%51c%52c%53c%54c%55c%56c%57c%58c%59c%60c%61c%62", IMSCRIB, 1, "core"),
-    "fullerene_patch":        ("c12c3c4c5c1c6c7c2c8c3c9c%10c4c%11c5c%12c6c%13c7c8c%14c%15c9c%10c%16c%11c%12c%13c%14c%15", IMSCRIB, 1, "core"),
+    # Porphyrin core from CHEBI:8337 molfile; N-H is unconstrained in the query.
+    "porphyrin_core":         ("C1=Cc2cc3ccc(cc4nc(cc5ccc(cc1n2)n5)C=C4)n3", IMSCRIB, 1, "core"),
+    # C60 patch: one pentagon plus its five adjacent hexagons (CHEBI:33128).
+    "fullerene_patch":        ("[#6]1:[#6]2:[#6]:[#6]:[#6]3:[#6]4:[#6]:2:[#6]2:[#6](:[#6]:1):[#6]:[#6]:[#6]1:[#6]:2:[#6]:4:[#6](:[#6]:[#6]:3):[#6]:[#6]:1", IMSCRIB, 1, "core"),
     "annulene":               ("[c;R]1[c;R][c;R][c;R][c;R][c;R]1", IMSCRIB, 3, "core"),
 
     # ── ACIDIC GROUPS (EVALT=8) ──────────────────────────────
@@ -101,7 +103,7 @@ SMARTS_PATTERNS: Dict[str, FGEntry] = {
     "isothiocyanate":         ("[NX2]=[C]=[SX1]", AFWD, 6, "electrophile"),
     "epoxide":                ("[C;R;r3]1[OX2][C;R;r3]1", AFWD, 7, "electrophile"),
     "aziridine_electrophile": ("[C;R;r3]1[NX3;R;r3][C;R;r3]1", AFWD, 5, "electrophile"),
-    "alkylating_agent":       ("[#6][CH2][Cl,Br,I,OS(=O)(=O)O]", AFWD, 7, "electrophile"),
+    "alkylating_agent":       ("[#6][CH2][$([Cl,Br,I]),$(OS(=O)(=O)O)]", AFWD, 7, "electrophile"),
     "formyl":                 ("[CX3H1](=O)", AFWD, 6, "electrophile"),
     "carbonyl":               ("[CX3]=[OX1]", AFWD, 5, "electrophile"),
     "activated_ester":        ("[CX3](=O)[OX2][c,n;!$([nX3])]", AFWD, 6, "electrophile"),
@@ -269,11 +271,11 @@ def get_token(fg_name: str) -> Optional[int]:
 
 def list_by_token(token: int) -> List[str]:
     """List all FGs mapping to a given IMASM token."""
-    return FG_BY_TOKEN.get(token, [])
+    return list(FG_BY_TOKEN.get(token, []))
 
 def list_by_category(category: str) -> List[str]:
     """List all FGs in a given category."""
-    return FG_BY_CATEGORY.get(category, [])
+    return list(FG_BY_CATEGORY.get(category, []))
 
 def total_patterns() -> int:
     """Total number of functional group SMARTS patterns."""
@@ -291,3 +293,54 @@ def token_counts() -> Dict[str, int]:
     for _, (_, tok, _, _) in SMARTS_PATTERNS.items():
         cnt[token_names.get(tok, str(tok))] += 1
     return dict(cnt)
+
+
+def validate_patterns(compile_smarts=None):
+    """Return named metadata/SMARTS errors without changing catalog entries."""
+    if compile_smarts is None:
+        from rdkit import Chem
+        compile_smarts = Chem.MolFromSmarts
+    errors = {}
+    for name, entry in SMARTS_PATTERNS.items():
+        issues = []
+        if not isinstance(entry, tuple) or len(entry) != 4:
+            errors[name] = ['Expected SMARTS, token, weight and category']
+            continue
+        smarts, token, weight, category = entry
+        if not isinstance(smarts, str) or not smarts:
+            issues.append('SMARTS must be a nonempty string')
+        else:
+            try:
+                if compile_smarts(smarts) is None:
+                    issues.append('SMARTS did not compile')
+            except Exception as exc:
+                issues.append(f'SMARTS compiler failed: {exc}')
+        if type(token) is not int or not 0 <= token < 12:
+            issues.append('Token must be an integer from zero through eleven')
+        if type(weight) is not int or not 1 <= weight <= 10:
+            issues.append('Weight must be an integer from one through ten')
+        if not isinstance(category, str) or not category:
+            issues.append('Category must be a nonempty string')
+        if issues:
+            errors[name] = issues
+    return errors
+
+
+def main(argv=None):
+    import argparse
+    import json
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--validate', action='store_true', help='Compile all SMARTS and validate metadata')
+    args = parser.parse_args(argv)
+    output = {'patterns': total_patterns(), 'tokens': token_counts()}
+    if args.validate:
+        try:
+            output['errors'] = validate_patterns()
+        except ImportError as exc:
+            parser.exit(1, f'Pattern validation requires RDKit: {exc}\n')
+    print(json.dumps(output, indent=2))
+    return int(bool(output.get('errors')))
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

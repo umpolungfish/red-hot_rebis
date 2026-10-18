@@ -11,7 +11,7 @@ import rhr_p4rky.genetic_code
 from rhr_p4rky.serpent_rod import SerpentRod
 from shared.rich_output import *
 
-if __name__ == "__main__":
+def main(argv=None):
     import argparse
 
     parser = argparse.ArgumentParser(description="SerpentRod — Direct RNA to Folded Protein")
@@ -19,8 +19,14 @@ if __name__ == "__main__":
                         help="RNA sequence (default: test sequence)")
     parser.add_argument("--name", "-n", type=str, default="protein",
                         help="Protein name")
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     
     sr = SerpentRod(args.seq, name=args.name)
     result = sr.report()
     print(json.dumps(result, indent=2, ensure_ascii=False))
+
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

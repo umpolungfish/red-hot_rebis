@@ -33,80 +33,83 @@ _REBIS_ROOT = Path(__file__).parent.parent.absolute()
 _SCRIPT_DIR = _REBIS_ROOT / "scripts"
 
 def _run_script(name, *args):
+    """Run a utility with separate CLI tokens and preserve its exit status."""
     script = _SCRIPT_DIR / f"{name}.py"
     if not script.exists():
         raise FileNotFoundError(f"No script found: {name}")
-    cmd = [sys.executable, str(script)] + list(args)
-    result = subprocess.run(cmd, capture_output=False)
+    cmd = [sys.executable, str(script)] + [str(arg) for arg in args if arg != ""]
+    result = subprocess.run(cmd, capture_output=False, cwd=_REBIS_ROOT)
     return result.returncode
 
-def test_genetics():
+def test_genetics(*args):
     """Run the genetics test suite."""
-    _run_script("test_genetics")
+    return _run_script("test_genetics", *args)
 
-def frob_design(spec: str = ""):
+def frob_design(spec: str = "", *args):
     """Run Frobenius exact design."""
-    _run_script("frobenius_exact_design", spec) if spec else _run_script("frobenius_exact_design")
+    return _run_script("frobenius_exact_design", spec, *args)
 
-def mito_pipeline(spec: str = ""):
+def mito_pipeline(spec: str = "", *args):
     """Run the mitochondrial pipeline."""
-    _run_script("mito_pipeline", spec)
+    return _run_script("mito_pipeline", spec, *args)
 
 def msa_analysis(*args):
     """Run MSA analysis."""
-    _run_script("msa_analysis", *args)
+    return _run_script("msa_analysis", *args)
 
-def compute_promotions(source: str = ""):
+def compute_promotions(source: str = "", *args):
     """Compute structural promotion paths."""
-    _run_script("compute_promotions", source)
+    return _run_script("compute_promotions", source, *args)
 
-def analyze_validation(data: str = ""):
+def analyze_validation(data: str = "", *args):
     """Analyze validation results."""
-    _run_script("analyze_validation", data)
+    return _run_script("analyze_validation", data, *args)
 
-def run_antibody(target: str = ""):
-    """Run antibody design for a target."""
-    _run_script("run_antibody", target)
+def run_antibody(target: str = "", *args):
+    """Run a built-in target by name, or pass separate backend option tokens."""
+    if target and not target.startswith("-"):
+        return _run_script("run_antibody", "--builtin", target, *args)
+    return _run_script("run_antibody", target, *args)
 
-def run_serpent(spec: str = ""):
+def run_serpent(spec: str = "", *args):
     """Run serpent rod design."""
-    _run_script("run_serpent", spec)
+    return _run_script("run_serpent", spec, *args)
 
 def run_msa(*args):
     """Run MSA."""
-    _run_script("run_msa", *args)
+    return _run_script("run_msa", *args)
 
-def run_pdb_validation(pdb_path: str = ""):
+def run_pdb_validation(pdb_path: str = "", *args):
     """Run PDB validation."""
-    _run_script("run_pdb_validation", pdb_path)
+    return _run_script("run_pdb_validation", pdb_path, *args)
 
-def psychedelic_bridge(spec: str = ""):
+def psychedelic_bridge(spec: str = "", *args):
     """Run the psychedelic bridge."""
-    _run_script("psychedelic_bridge", spec)
+    return _run_script("psychedelic_bridge", spec, *args)
 
-def gen_univ_map():
+def gen_univ_map(*args):
     """Generate universal map."""
-    _run_script("gen_univ_map")
+    return _run_script("gen_univ_map", *args)
 
-def omonad_bridge(spec: str = ""):
+def omonad_bridge(spec: str = "", *args):
     """Run the omonad bridge."""
-    _run_script("omonad_bridge", spec)
+    return _run_script("omonad_bridge", spec, *args)
 
-def ghost_typer(spec: str = ""):
+def ghost_typer(spec: str = "", *args):
     """Ghost typing analysis."""
-    _run_script("ghost_typer", spec)
+    return _run_script("ghost_typer", spec, *args)
 
-def stress_test_proteins():
+def stress_test_proteins(*args):
     """Protein stress test suite."""
-    _run_script("stress_test_proteins")
+    return _run_script("stress_test_proteins", *args)
 
 def fix_broken_multiline(file_path: str):
     """Fix broken multiline strings in a file."""
-    _run_script("fix_broken_multiline", file_path)
+    return _run_script("fix_broken_multiline", file_path)
 
 def fix_double_parens(file_path: str):
     """Fix double parentheses in a file."""
-    _run_script("fix_double_parens", file_path)
+    return _run_script("fix_double_parens", file_path)
 
 __all__ = [
     "test_genetics", "frob_design", "mito_pipeline", "msa_analysis",

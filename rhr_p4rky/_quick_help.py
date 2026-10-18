@@ -13,7 +13,6 @@ Where EXAMPLES is a multi-line string of usage examples.
 """
 import sys
 import os
-from shared.rich_output import *
 
 def show(docstring, examples=""):
     """Print help from a module's __doc__ and an examples string."""
@@ -22,9 +21,9 @@ def show(docstring, examples=""):
             print(line.strip())
     print()
     if examples:
-        info_line("Examples:")
+        print("Examples:")
         for line in examples.strip().split('\n'):
             print(line)
     else:
-        info_line(f"Usage:  python3 {os.path.basename(sys.argv[0])} [args...]")
+        print(f"Usage:  python3 {os.path.basename(sys.argv[0])} [args...]")
     print()

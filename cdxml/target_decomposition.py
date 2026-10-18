@@ -15,6 +15,7 @@ Usage:
 
 Author: Lando⊗⊙perator
 """
+from html import escape
 from rdkit import Chem
 from rdkit.Chem import AllChem
 
@@ -104,6 +105,7 @@ def _cdxml_graphic_line(x1, y1, x2, y2, color_id=4, line_width=3):
 
 def _cdxml_annotation(text, x, y, color_id=0, font_size=10, just='Center', ann_id=0):
     """Generate a CDXML <annotation> element at position (x,y)."""
+    text = escape(str(text), quote=True)
     bbox = f"{x-60:.2f} {y-14:.2f} {x+60:.2f} {y+6:.2f}"
     return f'''<annotation id="{ann_id}" BoundingBox="{bbox}"
  CaptionAlignment="{just}" CaptionJustification="{just}"
@@ -143,11 +145,12 @@ def target_decomposition_cdxml(smiles: str, name: str, strategic_bonds: list) ->
         Complete CDXML string ready to write to .cdxml file
     """
     mol = Chem.MolFromSmiles(smiles)
-    if mol is None:
+    if mol is None or mol.GetNumAtoms() == 0:
         raise ValueError(f"Invalid SMILES: {smiles}")
 
     AllChem.Compute2DCoords(mol)
     Chem.Kekulize(mol, clearAromaticFlags=True)
+    Chem.WedgeMolBonds(mol, mol.GetConformer())
     conf = mol.GetConformer()
 
     SCALE = 10.0
@@ -170,14 +173,19 @@ def target_decomposition_cdxml(smiles: str, name: str, strategic_bonds: list) ->
         atomic_num = atom.GetAtomicNum()
         symbol = atom.GetSymbol()
         x, y = coords[i]
-        node_id = i + 2
+        node_id = i + 4
         atom_ids[i] = node_id
 
         attrs = f'id="{node_id}" p="{x:.2f} {y:.2f}" Z="{atom_z}" AS="N"'
 
+        if atom.GetFormalCharge():
+            attrs += f' Charge="{atom.GetFormalCharge()}"'
+        if atom.GetIsotope():
+            attrs += f' Isotope="{atom.GetIsotope()}"'
+
         if atomic_num != 6:
             label = ATOMIC_SYMBOLS.get(atomic_num, symbol)
-            num_h = atom.GetNumImplicitHs()
+            num_h = atom.GetTotalNumHs()
             attrs += f' Element="{atomic_num}" NumHydrogens="{num_h}" NeedsClean="yes"'
             if num_h > 0:
                 label += 'H' + (str(num_h) if num_h > 1 else '')
@@ -206,7 +214,7 @@ def target_decomposition_cdxml(smiles: str, name: str, strategic_bonds: list) ->
         end = atom_ids[bond.GetEndAtomIdx()]
         btype = bond.GetBondTypeAsDouble()
 
-        b_attrs = f'id="{i + 1000}" Z="{bond_z}" B="{begin}" E="{end}"'
+        b_attrs = f'id="{i + mol.GetNumAtoms() + 4}" Z="{bond_z}" B="{begin}" E="{end}"'
 
         if i in strategic_bond_indices:
             b_attrs += ' BS="N" Color="6"'  # Blue bond for strategic cuts
@@ -218,12 +226,16 @@ def target_decomposition_cdxml(smiles: str, name: str, strategic_bonds: list) ->
         elif btype == 3.0:
             b_attrs += ' Order="3"'
 
+        display = {Chem.BondDir.BEGINWEDGE: 'WedgeBegin',
+                   Chem.BondDir.BEGINDASH: 'WedgedHashBegin'}.get(bond.GetBondDir())
+        if display:
+            b_attrs += f' Display="{display}"'
         lines.append(f'<b {b_attrs}/>')
         bond_z += 1
 
     # Add cut markers: colored dashed overlay lines + labels
     color_palette = [2, 4, 6, 5, 7]  # red, green, blue, teal, magenta
-    ann_id = 500
+    ann_id = mol.GetNumAtoms() + mol.GetNumBonds() + 5
     for bi, sb in enumerate(strategic_bonds):
         color_id = color_palette[bi % len(color_palette)]
         a_start = sb['atom_a']
@@ -249,8 +261,8 @@ def target_decomposition_cdxml(smiles: str, name: str, strategic_bonds: list) ->
         graphics.append(_cdxml_graphic_line(gx1, gy1, gx2, gy2, color_id=color_id))
 
         # Label with fragments
-        frag_a = sb.get('fragment_smiles_a', '?')[:20]
-        frag_b = sb.get('fragment_smiles_b', '?')[:20]
+        frag_a = sb.get('fragment_smiles_a', '?')
+        frag_b = sb.get('fragment_smiles_b', '?')
         cut_label = f"{sb['fg1']}→{frag_a} | {sb['fg2']}→{frag_b}"
 
         # Position label perpendicular to bond
@@ -268,7 +280,7 @@ def target_decomposition_cdxml(smiles: str, name: str, strategic_bonds: list) ->
     # Add title annotation
     annotations.insert(0, _cdxml_annotation(
         f"Target: {name} [{smiles}]  |  {len(strategic_bonds)} disconnection(s)",
-        (min_x + max_x) / 2, min_y - 40, color_id=0, font_size=11, ann_id=99
+        (min_x + max_x) / 2, min_y - 40, color_id=0, font_size=11, ann_id=mol.GetNumAtoms() + mol.GetNumBonds() + 4
     ))
 
     # Assemble XML parts
@@ -284,14 +296,14 @@ def target_decomposition_cdxml(smiles: str, name: str, strategic_bonds: list) ->
     bbox_str = f"{min_x-margin:.2f} {min_y-60:.2f} {max_x+200:.2f} {max_y+margin:.2f}"
 
     fragment = f'''<fragment
- id="1"
+ id="2"
  BoundingBox="{bbox_str}"
  Z="1"
 >{atoms_xml}
 {bonds_xml}
 </fragment>'''
 
-    cdxml = CDXML_HEADER.format(name=name, bbox=bbox_str)
+    cdxml = CDXML_HEADER.format(name=escape(str(name), quote=True), bbox=bbox_str)
     cdxml += fragment + '\n'
     cdxml += graphics_xml + '\n' if graphics_xml else ''
     cdxml += annotations_xml

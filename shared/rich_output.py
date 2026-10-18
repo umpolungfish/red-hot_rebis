@@ -21,33 +21,41 @@ Color scheme:
   Step numbers        bold cyan
 """
 
-from shared.rich_output import *
 import os
 
-from rich.console import Console
-from rich.table import Table
-from rich.panel import Panel
-from rich.text import Text
-from rich import box
-from rich.columns import Columns
-from rich.layout import Layout
-from rich.rule import Rule
+try:
+    from rich.console import Console
+    from rich.table import Table
+    from rich.panel import Panel
+    from rich.text import Text
+    from rich import box
+    from rich.columns import Columns
+    from rich.layout import Layout
+    from rich.rule import Rule
+
+except ImportError:
+    Console = Table = Panel = Text = box = Columns = Layout = Rule = None
 
 # ── Console setup ─────────────────────────────────────────────────────
 # force_terminal=True ensures colors render even when stdout is piped
 # or running in a subprocess. NO_COLOR env var disables coloring.
 _no_color = os.environ.get("NO_COLOR", "").strip().lower() in ("1", "true", "yes")
-_console = Console(force_terminal=not _no_color, color_system="truecolor" if not _no_color else None)
-STYLED = not _no_color  # set False for plain output
+_console = (Console(force_terminal=not _no_color,
+                    color_system="truecolor" if not _no_color else None)
+            if Console is not None else None)
+STYLED = _console is not None and not _no_color
 
 
 # ── Styled Print Helpers ──────────────────────────────────────────────
 
 def cprint(*args, style=None, **kwargs):
     """Rich-conditional print: uses rich if STYLED, plain print otherwise."""
-    if STYLED:
-        kwargs.pop("end", _console)
+    if STYLED and kwargs.get("file") is None:
+        kwargs.pop("file", None)
+        flush = kwargs.pop("flush", False)
         _console.print(*args, style=style, **kwargs)
+        if flush:
+            _console.file.flush()
     else:
         print(*args, **kwargs)
 
@@ -213,7 +221,7 @@ def analog_line(name, dist, smi="", indent=0):
         _console.print(txt)
     else:
         smi_str = f"  SMILES: {smi}" if smi else ""
-        info_line(f"  {name:40s} d={dist:.3f}  {smi_str}")
+        info_line(f"{pad}{name:40s} d={dist:.3f}  {smi_str}")
 
 def path_step(step_num, label="", indent=0):
     """Print a path step header."""

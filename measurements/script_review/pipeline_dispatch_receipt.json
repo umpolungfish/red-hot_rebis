@@ -1,0 +1,86 @@
+{
+  "sources": {
+    "rebis/pipeline.py": "a62ff6ab76c20809b031bd0dce48b0a4f2f30d72f0e7cea50d32b9a3e5f285f9",
+    "pipeline/auto_imscriber.py": "e40a1436e88fbc1004c4f02d1edfa7704b0520c75f2c56832e1831e693878694"
+  },
+  "generated_ast_controls": [
+    {
+      "description": "123 system",
+      "class": "System123systemOb3ect"
+    },
+    {
+      "description": "!!!",
+      "class": "SystemOb3ect"
+    },
+    {
+      "description": "A triple quote: \"\"\"\nprint(\"injected\")\n#",
+      "class": "AtriplequoteprintinjectedOb3ect"
+    },
+    {
+      "description": "plain system",
+      "class": "plainsystemOb3ect"
+    }
+  ],
+  "runs": [
+    {
+      "args": [
+        "retro",
+        "CCO",
+        "--depth",
+        "0"
+      ],
+      "status": 0,
+      "stdout": "\u2550 Retrosynthetic Analysis \u2550\n  Target SMILES: CCO\n  Max depth: 0\n  [scaffold] Pass 1: Parsed CCO [CCO]\n  [scaffold]   3 atoms, 2 bonds, 2 FGs: alcohol, alkane\n  [scaffold]   1 strategic disconnections across 1 FG-pair types\n  [scaffold]     alcohol + alkane: 1 bond(s)\n==================================================================\n  RETROSYNTHETIC TREE: CCO\n==================================================================\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\u2514\u2500\u2500 CCO    SMILES: CCO  [C2H6O]  -- TERMINAL (max_depth=0)\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "retro",
+        "CCO",
+        "--depth",
+        "-1"
+      ],
+      "status": 1,
+      "stdout": "A target SMILES and nonnegative depth are required.\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "retro"
+      ],
+      "status": 1,
+      "stdout": "A target SMILES and nonnegative depth are required.\n",
+      "stderr": ""
+    }
+  ],
+  "therapy_injected_status_controls": [
+    {
+      "status": "success",
+      "errors": [],
+      "expected": 0
+    },
+    {
+      "status": "skipped",
+      "errors": [],
+      "expected": 0
+    },
+    {
+      "status": "failed",
+      "errors": [],
+      "expected": 1
+    },
+    {
+      "status": "pending",
+      "errors": [],
+      "expected": 1
+    },
+    {
+      "status": "success",
+      "errors": [
+        "injected error"
+      ],
+      "expected": 1
+    }
+  ],
+  "missing_aggregate_report_status": 1
+}

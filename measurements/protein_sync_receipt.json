@@ -1,0 +1,41 @@
+{
+  "entry_point": "python3 -m rebis.serpentrod foldv2",
+  "atom_count": 175,
+  "max_rounded_coordinate_distance": {
+    "gen2": 0.0,
+    "pipeline": 0.0,
+    "vox": 0.0
+  },
+  "sources": {
+    "red-hot_rebis/rhr_p4rky/peptide_bridge.rs": "9f859976cf0aec47178e6cbb33e18a2e656eac55d26c3efea4f287ce8b850120",
+    "red-hot_rebis/rhr_p4rky/peptide_geometry.py": "df51a2e5cb608ca19f75dfc1ce8037ba9dfaeeca6c52b7dd0879000b740d0f44",
+    "red-hot_rebis/rhr_p4rky/serpent_rod_v2.py": "8fb7762e2690f17ee9fd5780ca8cf37143e77443e3e85d684907a125279f1652",
+    "red-hot_rebis/rhr_p4rky/pdb_writer.py": "c8cdc741ec4b8afc5939cdb6419a1192fe3fc796c0f9c37a60a1010f54ab0ac8",
+    "red-hot_rebis/rhr_p4rky/gene_to_protein_pipeline.py": "3ca743db2d71d0c863acd4ce47c96766685a2e92d23738338c5c65b7d436b8ce",
+    "red-hot_rebis/rebis/serpentrod.py": "b8a5e8d6fe476cb928466aaf3ad113f14f3c413d2b2a932bcf47ee79d01733b0",
+    "red-hot_rebis/pyproject.toml": "618817092b66c8b1e41bade2e25429b84fca6d1371d57b6a42a9f7ba2369c7d1"
+  },
+  "artifacts": {
+    "red-hot_rebis/measurements/protein_sync_sample.pdb": "33d0c161167856dcff9b0d71d6d421a559e29004633c0b8dfd1a2fa645d6ed9b",
+    "red-hot_rebis/measurements/protein_sync_pipeline.pdb": "3eaa67ea3feb75ea8d4dfa4891a67e18e03c4448e7fe98e1630add2b5eb41b15",
+    "Vox/measurements/dialetheic_coordinate_closure.pdb": "3121b77f89157e51d1c7587aaa76074a083afec99a0b1ada9997b471ec80f2a8",
+    "red-hot_rebis/measurements/protein_sync_installed_cli.pdb": "de45bdc551a63a2cab29a3d1684471b0e3ab2e24de5e0f1ec86d0182127465dd"
+  },
+  "observed_controls": [
+    "valid B retained with satisfied local geometry",
+    "unobserved labels remain N",
+    "oxygen edit detected at PDB export"
+  ],
+  "geometry_binding": {
+    "sources": {
+      "red-hot_rebis/rhr_p4rky/peptide_bridge.rs": "9f859976cf0aec47178e6cbb33e18a2e656eac55d26c3efea4f287ce8b850120",
+      "Vox/src/fold3d.rs": "dbad2b2773bc15c9dd1c3d6e1cc0edf620486a9623021e5a53bbd86cff9a157e",
+      "Vox/src/peptide_geometry.rs": "bb14df6de3735b6a4773b1ec0aecb811df6fa18f3cfe38f947e776d1df593a04",
+      "Vox/src/peptide_closure.rs": "8b8787439cd3f2ad880ed22dc786b915b2ee89a9b0d2c8698b651755992f883a"
+    },
+    "source_fingerprint": "42bd8b13e6022a0b7df22af788c787c01c62f03d39b36f9a37a99e02c7d02d2a",
+    "binary_sha256": "4b13e060f6653eec92593043cb1923c5e992781efaf62d3f9e4402d9ef5c3c3f"
+  },
+  "installed_entry_point": "/home/mrnob0dy666/.local/bin/rebis.serpentrod",
+  "installed_entry_point_source": "red-hot_rebis/rebis/serpentrod.py"
+}

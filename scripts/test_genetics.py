@@ -19,7 +19,12 @@ Returns exit code 0 if all selected tests pass, 1 otherwise.
 import sys, os, traceback
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, SCRIPT_DIR)
+REBIS_ROOT = os.path.dirname(SCRIPT_DIR)
+sys.path.insert(0, REBIS_ROOT)
+
+if __name__ == "__main__" and any(a in ("--help", "-h") for a in sys.argv[1:]):
+    print(__doc__)
+    raise SystemExit(0)
 
 import rhr_p4rky.genetics_b4 as gb4
 import rhr_p4rky.genetic_code as gc
@@ -196,13 +201,15 @@ def section_pipeline():
 
     def t2():
         import subprocess, json
-        runner = os.path.join(SCRIPT_DIR, 'rhr_p4rky', 'run_gene_pipeline.py')
+        runner = os.path.join(REBIS_ROOT, 'rhr_p4rky', 'run_gene_pipeline.py')
+        output = os.path.join(REBIS_ROOT, 'measurements', 'script_review', 'genetics_pipeline_control.json')
+        os.makedirs(os.path.dirname(output), exist_ok=True)
         r = subprocess.run(
-            [sys.executable, runner, "--test", "-o", "/tmp/pipeline_test.json"],
+            [sys.executable, runner, "--test", "-o", output],
             capture_output=True, text=True
         )
         assert r.returncode == 0, f"CLI failed: {r.stderr[:200]}"
-        with open("/tmp/pipeline_test.json") as f:
+        with open(output) as f:
             data = json.load(f)
         stages = data.get('stages', data.get('pathway', []))
         assert len(stages) >= 7
@@ -327,6 +334,7 @@ def section_consistency():
 def main():
     global PASS, FAIL, ERRORS
 
+    PASS, FAIL, ERRORS = 0, 0, []
     sections = []
     valid_sections = ['b4', 'codons', 'tuples', 'pipeline', 'phi', 'kernel', 'consistency']
     fn_map = {
@@ -335,7 +343,12 @@ def main():
         'consistency': section_consistency
     }
 
-    args = [a.lstrip('-').lower() for a in sys.argv[1:]]
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    for section in valid_sections + ['all', 'quick']:
+        parser.add_argument('--' + section, action='store_true')
+    options = parser.parse_args()
+    args = [name for name, selected in vars(options).items() if selected]
 
     if not args or 'all' in args:
         sections = valid_sections[:]

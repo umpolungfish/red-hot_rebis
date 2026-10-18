@@ -142,9 +142,8 @@ def _format_ter(serial: int, res_name: str, chain_id: str, res_seq: int) -> str:
 
 # ── Main PDB Writer ──────────────────────────────────────────────────────
 
-def write_pdb_from_gen2(
+def render_pdb_from_gen2(
     result,
-    output_path: str,
     chain_id: str = "A",
     title: str = "FOLDED PROTEIN FROM SERPENT-ROD V2",
     include_secondary: bool = True,
@@ -166,7 +165,7 @@ def write_pdb_from_gen2(
 
     The PDB file contains:
       - HEADER, TITLE records
-      - ATOM records for N, CA, C, O per residue
+      - ATOM records for backbone and complete sidechain heavy atoms per residue
       - HELIX/SHEET records (from secondary_elements)
       - TER record between chains
       - END record
@@ -257,7 +256,40 @@ def write_pdb_from_gen2(
                     sense=sense
                 ))
 
-    # ATOM records
+    # Construct legacy caller results through the same canonical path as Gen2.
+    expected_sequence = "".join(aa if len(aa) == 1 else next((one for one, three in ONE_TO_THREE.items() if len(one)==1 and three==_res_name(aa)), "X") for aa in aa_list)
+    if (len(getattr(backbone, "sidechains", [])) != len(residues)
+            or backbone.sequence != expected_sequence):
+        from rhr_p4rky.peptide_geometry import construct
+        labels = getattr(backbone, "secondary_structure", ["other"] * len(residues))
+        payload = construct([_res_name(aa).title() for aa in aa_list], backbone.phi_psi,
+                            backbone_labels=labels)
+        backbone.sidechains = [row["sidechain"] for row in payload["residues"]]
+        backbone.coordinate_evidence = payload["geometry"]
+        backbone.secondary_evidence = payload["secondary"]
+        backbone.secondary_evidence_report = payload["secondary_report"]
+        backbone.source_binding = payload["source_binding"]
+        # The evidence and exported coordinates must refer to the same object.
+        for residue, row in zip(residues, payload["residues"]):
+            for key in ("n", "ca", "c", "o"):
+                setattr(residue, key, tuple(row[key]))
+    from rhr_p4rky.peptide_geometry import construct
+    observations = getattr(backbone, "secondary_evidence", [])
+    sequence_labels = [row["sequence"] or "-" for row in observations] if len(observations)==len(residues) else ["-"]*len(residues)
+    coordinates = [{**{key: getattr(bb, key) for key in ("n", "ca", "c", "o")}, "sidechain": sc}
+                   for bb, sc in zip(residues, backbone.sidechains)]
+    payload = construct([_res_name(aa).title() for aa in aa_list], backbone.phi_psi,
+                        sequence_labels, backbone.secondary_structure, coordinates=coordinates)
+    backbone.coordinate_evidence = payload["geometry"]
+    backbone.secondary_evidence = payload["secondary"]
+    backbone.secondary_evidence_report = payload["secondary_report"]
+    backbone.source_binding = payload["source_binding"]
+    backbone.sequence = expected_sequence
+    if hasattr(result, "geometry_evidence"):
+        result.geometry_evidence = payload["geometry"]
+        result.secondary_evidence = payload["secondary"]
+        result.source_binding = payload["source_binding"]
+    # ATOM records, including every sidechain heavy atom.
     atom_serial = 0
     for i, res in enumerate(residues):
         res_seq = i + 1
@@ -286,6 +318,19 @@ def write_pdb_from_gen2(
                                    res_seq, res.o[0], res.o[1], res.o[2],
                                    temp_factor=tf, element=" O"))
 
+        for atom in backbone.sidechains[i]:
+            atom_serial += 1
+            xyz = atom["xyz"]
+            element = " " + atom["name"].strip()[0]
+            lines.append(_format_atom(atom_serial, atom["name"], res_3, chain_id,
+                                      res_seq, *xyz, temp_factor=tf, element=element))
+
+    evidence = getattr(backbone, "coordinate_evidence", {})
+    for text in (evidence.get("report", ""), getattr(backbone, "secondary_evidence_report", "")):
+        lines.extend("REMARK 900 " + line for line in text.splitlines())
+    binding = getattr(backbone, "source_binding", {})
+    lines.append("REMARK 900 GEOMETRY SOURCE " + binding.get("source_fingerprint", "unbound"))
+
     # TER
     atom_serial += 1
     last_res = aa_list[-1] if aa_list else "ALA"
@@ -296,11 +341,17 @@ def write_pdb_from_gen2(
 
     pdb_text = "\n".join(lines) + "\n"
 
-    # Write to file
-    os.makedirs(os.path.dirname(output_path) or ".", exist_ok=True)
-    with open(output_path, 'w') as f:
-        f.write(pdb_text)
+    return pdb_text
 
+
+def write_pdb_from_gen2(result, output_path: str, chain_id: str = "A",
+                        title: str = "FOLDED PROTEIN FROM SERPENT-ROD V2",
+                        include_secondary: bool = True, temp_factors=None) -> str:
+    """Render the actual model with evidence, then write it to the requested path."""
+    pdb_text = render_pdb_from_gen2(result, chain_id, title, include_secondary, temp_factors)
+    os.makedirs(os.path.dirname(output_path) or ".", exist_ok=True)
+    with open(output_path, 'w') as stream:
+        stream.write(pdb_text)
     return output_path
 
 
@@ -331,6 +382,35 @@ def write_pdb_from_pipeline(
 
     if not aa_seq:
         return None
+
+    model_data = pipeline_result.get("coordinate_model")
+    if model_data is not None:
+        from types import SimpleNamespace
+        from itertools import groupby
+        from rhr_p4rky.serpent_rod_v2 import BackboneAtom, BackboneModel, B4_RAMACHANDRAN
+        model = BackboneModel(**{**model_data,
+            "residues": [BackboneAtom(**row) for row in model_data["residues"]],
+            "coordinate_evidence": pipeline_result["geometry_evidence"],
+            "secondary_evidence": pipeline_result["secondary_evidence"],
+            "secondary_evidence_report": pipeline_result["secondary_evidence_report"],
+            "source_binding": pipeline_result["geometry_source"]})
+        aa_list = [_res_name(aa).title() for aa in aa_seq]
+        elements = []
+        for kind, group in groupby(enumerate(model.secondary_structure), key=lambda row: row[1]):
+            positions = [row[0] for row in group]
+            elements.append({"type": kind, "start": positions[0], "end": positions[-1],
+                             "length": len(positions),
+                             "confidence": max(v["conf"] for v in B4_RAMACHANDRAN.values() if v["ss"] == kind),
+                             "sequence": aa_seq[positions[0]:positions[-1]+1]})
+        from rhr_p4rky.serpent_rod import SerpentRod
+        translated_rna = "".join(codon["codon"] for codon in pipeline_result.get("codon_details", [])[:len(aa_seq)])
+        winding = SerpentRod(translated_rna).compute_winding_number()
+        result = SimpleNamespace(backbone=model, aa_list=aa_list,
+                                 activation_count=len(pipeline_result.get("primitive_activations", {})),
+                                 winding_number=winding, subunit_count=pipeline_result.get("subunits", 0),
+                                 secondary_elements=elements,
+                                 frobenius_verified=pipeline_result.get("closure", {}).get("frobenius_across_pathway", False))
+        return write_pdb_from_gen2(result, output_path, chain_id, title)
 
     # If we have contacts but no coordinates, attempt to reconstruct backbone
     # via serpent_rod_v2

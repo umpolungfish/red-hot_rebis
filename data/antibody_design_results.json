@@ -1,4 +1,900 @@
 {
+  "SARS-CoV-2_RBD": {
+    "epitope": "KVGGNYNYLYRLFRKSNLKPFERDISTEIY",
+    "analysis": {
+      "name": "SARS-CoV-2_RBD",
+      "sequence": "KVGGNYNYLYRLFRKSNLKPFERDISTEIY",
+      "aa_length": 30,
+      "activations": {
+        "0": {
+          "aa": "K",
+          "aa_3l": "Lys",
+          "primitive": "Stoichiometry"
+        },
+        "1": {
+          "aa": "V",
+          "aa_3l": "Val",
+          "primitive": "Granularity"
+        },
+        "2": {
+          "aa": "G",
+          "aa_3l": "Gly",
+          "primitive": "Parity"
+        },
+        "3": {
+          "aa": "G",
+          "aa_3l": "Gly",
+          "primitive": "Granularity"
+        },
+        "4": {
+          "aa": "N",
+          "aa_3l": "Asn",
+          "primitive": "Parity"
+        },
+        "5": {
+          "aa": "Y",
+          "aa_3l": "Tyr",
+          "primitive": "Parity"
+        },
+        "6": {
+          "aa": "N",
+          "aa_3l": "Asn",
+          "primitive": "Fidelity"
+        },
+        "7": {
+          "aa": "Y",
+          "aa_3l": "Tyr",
+          "primitive": "Stoichiometry"
+        },
+        "8": {
+          "aa": "L",
+          "aa_3l": "Leu",
+          "primitive": "Granularity"
+        },
+        "9": {
+          "aa": "Y",
+          "aa_3l": "Tyr",
+          "primitive": "Stoichiometry"
+        },
+        "10": {
+          "aa": "R",
+          "aa_3l": "Arg",
+          "primitive": "Fidelity"
+        },
+        "11": {
+          "aa": "L",
+          "aa_3l": "Leu",
+          "primitive": "Protection"
+        },
+        "12": {
+          "aa": "F",
+          "aa_3l": "Phe",
+          "primitive": "Chirality"
+        },
+        "13": {
+          "aa": "R",
+          "aa_3l": "Arg",
+          "primitive": "Kinetics"
+        },
+        "14": {
+          "aa": "K",
+          "aa_3l": "Lys",
+          "primitive": "Protection"
+        },
+        "15": {
+          "aa": "S",
+          "aa_3l": "Ser",
+          "primitive": "Kinetics"
+        },
+        "16": {
+          "aa": "N",
+          "aa_3l": "Asn",
+          "primitive": "Parity"
+        }
+      },
+      "activated_primitives": [
+        "Chirality",
+        "Fidelity",
+        "Granularity",
+        "Kinetics",
+        "Parity",
+        "Protection",
+        "Stoichiometry"
+      ],
+      "sr_result": {
+        "name": "epitope_SARS-CoV-2_R",
+        "rna_sequence": "AAAGUUGGUGGUAAUUAUAAUUAUUUGUAUCGUUUGUUUCGUAAAUCUAAUUUGAAACCUUUUGAACGUGAUAUUUCUACUGAAAUUUAU",
+        "rna_length": 90,
+        "aa_sequence": "KVGGNYNYLYRLFRKSNLKPFERDISTEIY",
+        "aa_length": 30,
+        "winding_number": 22,
+        "secondary_elements": [
+          {
+            "type": "helix",
+            "start": 0,
+            "end": 1,
+            "length": 1,
+            "confidence": 0.58,
+            "sequence": "K"
+          },
+          {
+            "type": "sheet",
+            "start": 1,
+            "end": 2,
+            "length": 1,
+            "confidence": 0.85,
+            "sequence": "V"
+          },
+          {
+            "type": "loop",
+            "start": 2,
+            "end": 3,
+            "length": 1,
+            "confidence": 0.66,
+            "sequence": "G"
+          },
+          {
+            "type": "loop",
+            "start": 3,
+            "end": 4,
+            "length": 1,
+            "confidence": 0.66,
+            "sequence": "G"
+          },
+          {
+            "type": "loop",
+            "start": 4,
+            "end": 5,
+            "length": 1,
+            "confidence": 0.78,
+            "sequence": "N"
+          },
+          {
+            "type": "sheet",
+            "start": 5,
+            "end": 6,
+            "length": 1,
+            "confidence": 0.735,
+            "sequence": "Y"
+          },
+          {
+            "type": "loop",
+            "start": 6,
+            "end": 7,
+            "length": 1,
+            "confidence": 0.78,
+            "sequence": "N"
+          },
+          {
+            "type": "sheet",
+            "start": 7,
+            "end": 8,
+            "length": 1,
+            "confidence": 0.735,
+            "sequence": "Y"
+          },
+          {
+            "type": "sheet",
+            "start": 8,
+            "end": 9,
+            "length": 1,
+            "confidence": 0.65,
+            "sequence": "L"
+          },
+          {
+            "type": "sheet",
+            "start": 9,
+            "end": 10,
+            "length": 1,
+            "confidence": 0.735,
+            "sequence": "Y"
+          },
+          {
+            "type": "loop",
+            "start": 10,
+            "end": 11,
+            "length": 1,
+            "confidence": 0.955,
+            "sequence": "R"
+          },
+          {
+            "type": "sheet",
+            "start": 11,
+            "end": 12,
+            "length": 1,
+            "confidence": 0.65,
+            "sequence": "L"
+          },
+          {
+            "type": "sheet",
+            "start": 12,
+            "end": 13,
+            "length": 1,
+            "confidence": 0.69,
+            "sequence": "F"
+          },
+          {
+            "type": "loop",
+            "start": 13,
+            "end": 14,
+            "length": 1,
+            "confidence": 0.955,
+            "sequence": "R"
+          },
+          {
+            "type": "helix",
+            "start": 14,
+            "end": 15,
+            "length": 1,
+            "confidence": 0.58,
+            "sequence": "K"
+          },
+          {
+            "type": "loop",
+            "start": 15,
+            "end": 16,
+            "length": 1,
+            "confidence": 0.76,
+            "sequence": "S"
+          },
+          {
+            "type": "loop",
+            "start": 16,
+            "end": 17,
+            "length": 1,
+            "confidence": 0.78,
+            "sequence": "N"
+          },
+          {
+            "type": "sheet",
+            "start": 17,
+            "end": 18,
+            "length": 1,
+            "confidence": 0.65,
+            "sequence": "L"
+          },
+          {
+            "type": "helix",
+            "start": 18,
+            "end": 19,
+            "length": 1,
+            "confidence": 0.58,
+            "sequence": "K"
+          },
+          {
+            "type": "loop",
+            "start": 19,
+            "end": 20,
+            "length": 1,
+            "confidence": 0.56,
+            "sequence": "P"
+          },
+          {
+            "type": "sheet",
+            "start": 20,
+            "end": 21,
+            "length": 1,
+            "confidence": 0.69,
+            "sequence": "F"
+          },
+          {
+            "type": "helix",
+            "start": 21,
+            "end": 22,
+            "length": 1,
+            "confidence": 0.755,
+            "sequence": "E"
+          }
+        ],
+        "contacts": [
+          {
+            "i": 8,
+            "j": 15,
+            "type": "\u2208 (Granularity)\u2194\u22a4 (Kinetics)",
+            "distance": 5.7,
+            "confidence": 0.767
+          },
+          {
+            "i": 2,
+            "j": 10,
+            "type": "\u227a (Parity)\u2194\u22c8 (Fidelity)",
+            "distance": 5.8,
+            "confidence": 0.733
+          },
+          {
+            "i": 3,
+            "j": 13,
+            "type": "\u2208 (Granularity)\u2194\u22a4 (Kinetics)",
+            "distance": 6.0,
+            "confidence": 0.667
+          },
+          {
+            "i": 6,
+            "j": 16,
+            "type": "\u22c8 (Fidelity)\u2194\u227a (Parity)",
+            "distance": 6.0,
+            "confidence": 0.667
+          },
+          {
+            "i": 1,
+            "j": 13,
+            "type": "\u2208 (Granularity)\u2194\u22a4 (Kinetics)",
+            "distance": 6.2,
+            "confidence": 0.6
+          },
+          {
+            "i": 3,
+            "j": 15,
+            "type": "\u2208 (Granularity)\u2194\u22a4 (Kinetics)",
+            "distance": 6.2,
+            "confidence": 0.6
+          },
+          {
+            "i": 1,
+            "j": 15,
+            "type": "\u2208 (Granularity)\u2194\u22a4 (Kinetics)",
+            "distance": 6.4,
+            "confidence": 0.533
+          },
+          {
+            "i": 11,
+            "j": 20,
+            "type": "hydrophobic",
+            "distance": 4.0,
+            "confidence": 0.5
+          },
+          {
+            "i": 12,
+            "j": 28,
+            "type": "hydrophobic",
+            "distance": 4.0,
+            "confidence": 0.5
+          }
+        ],
+        "subunit_count": 2,
+        "activation_pattern": [
+          {
+            "aa": "Lys",
+            "primitive": "\u229e (Stoichiometry)"
+          },
+          {
+            "aa": "Asn",
+            "primitive": "\u2208 (Granularity)"
+          },
+          {
+            "aa": "Tyr",
+            "primitive": "\u227a (Parity)"
+          },
+          {
+            "aa": "Asn",
+            "primitive": "\u2208 (Granularity)"
+          },
+          {
+            "aa": "Tyr",
+            "primitive": "\u227a (Parity)"
+          },
+          {
+            "aa": "Tyr",
+            "primitive": "\u227a (Parity)"
+          },
+          {
+            "aa": "Phe",
+            "primitive": "\u22c8 (Fidelity)"
+          },
+          {
+            "aa": "Lys",
+            "primitive": "\u229e (Stoichiometry)"
+          },
+          {
+            "aa": "Asn",
+            "primitive": "\u2208 (Granularity)"
+          },
+          {
+            "aa": "Lys",
+            "primitive": "\u229e (Stoichiometry)"
+          },
+          {
+            "aa": "Phe",
+            "primitive": "\u22c8 (Fidelity)"
+          },
+          {
+            "aa": "Glu",
+            "primitive": "\u22a1 (Protection)"
+          },
+          {
+            "aa": "Asp",
+            "primitive": "\u22a5 (Chirality)"
+          },
+          {
+            "aa": "Ile",
+            "primitive": "\u22a4 (Kinetics)"
+          },
+          {
+            "aa": "Glu",
+            "primitive": "\u22a1 (Protection)"
+          },
+          {
+            "aa": "Ile",
+            "primitive": "\u22a4 (Kinetics)"
+          },
+          {
+            "aa": "Tyr",
+            "primitive": "\u227a (Parity)"
+          }
+        ],
+        "activation_coverage": "17/12",
+        "confidence": 1.0,
+        "frobenius_verified": true,
+        "closure_theorem": "RNA \u2192 {Sequence + Structure} is \u03bc\u2218\u03b4=id"
+      }
+    },
+    "antibody": {
+      "chain_type": "VH",
+      "full_sequence": "QVQLVQSGAEVKKPGASVKVSCKASGYTFTWGYSITHPFACVWGQGTLVTVSS",
+      "aa_length": 53,
+      "framework1": "QVQLVQSGAEVKKPGASVKVSCKASGYTFT",
+      "cdr3": {
+        "cdr_name": "VH_CDR3",
+        "cdr_sequence": "WGYSITHPFACV",
+        "cdr_rna": "UGGGGUUAUUCUAUUACUCAUCCUUUUGCUUGUGUU",
+        "cdr_composition": [
+          {
+            "aa_1l": "W",
+            "aa_3l": "Trp",
+            "role": "Topology"
+          },
+          {
+            "aa_1l": "G",
+            "aa_3l": "Gly",
+            "role": "bridge"
+          },
+          {
+            "aa_1l": "Y",
+            "aa_3l": "Tyr",
+            "role": "Parity"
+          },
+          {
+            "aa_1l": "S",
+            "aa_3l": "Ser",
+            "role": "bridge"
+          },
+          {
+            "aa_1l": "I",
+            "aa_3l": "Ile",
+            "role": "Kinetics"
+          },
+          {
+            "aa_1l": "T",
+            "aa_3l": "Thr",
+            "role": "bridge"
+          },
+          {
+            "aa_1l": "H",
+            "aa_3l": "His",
+            "role": "Granularity"
+          },
+          {
+            "aa_1l": "P",
+            "aa_3l": "Pro",
+            "role": "bridge"
+          },
+          {
+            "aa_1l": "F",
+            "aa_3l": "Phe",
+            "role": "Fidelity"
+          },
+          {
+            "aa_1l": "A",
+            "aa_3l": "Ala",
+            "role": "bridge"
+          },
+          {
+            "aa_1l": "C",
+            "aa_3l": "Cys",
+            "role": "Recognition"
+          },
+          {
+            "aa_1l": "V",
+            "aa_3l": "Val",
+            "role": "bridge"
+          }
+        ],
+        "complementary_primitives": [
+          "Topology",
+          "Parity",
+          "Kinetics",
+          "Granularity",
+          "Fidelity",
+          "Recognition"
+        ],
+        "structure": {
+          "name": "cdr_VH_CDR3",
+          "rna_sequence": "UGGGGUUAUUCUAUUACUCAUCCUUUUGCUUGUGUU",
+          "rna_length": 36,
+          "aa_sequence": "WGYSITHPFACV",
+          "aa_length": 12,
+          "winding_number": 6,
+          "secondary_elements": [
+            {
+              "type": "sheet",
+              "start": 0,
+              "end": 2,
+              "length": 2,
+              "confidence": 0.53,
+              "sequence": "WG"
+            },
+            {
+              "type": "sheet",
+              "start": 2,
+              "end": 4,
+              "length": 2,
+              "confidence": 0.555,
+              "sequence": "YS"
+            },
+            {
+              "type": "sheet",
+              "start": 4,
+              "end": 6,
+              "length": 2,
+              "confidence": 0.698,
+              "sequence": "IT"
+            },
+            {
+              "type": "loop",
+              "start": 6,
+              "end": 8,
+              "length": 2,
+              "confidence": 0.747,
+              "sequence": "HP"
+            },
+            {
+              "type": "helix",
+              "start": 8,
+              "end": 10,
+              "length": 2,
+              "confidence": 0.637,
+              "sequence": "FA"
+            },
+            {
+              "type": "sheet",
+              "start": 10,
+              "end": 12,
+              "length": 2,
+              "confidence": 0.722,
+              "sequence": "CV"
+            }
+          ],
+          "contacts": [
+            {
+              "i": 1,
+              "j": 4,
+              "type": "\u227a (Parity)\u2194\u22c8 (Fidelity)",
+              "distance": 5.75,
+              "confidence": 0.75
+            },
+            {
+              "i": 4,
+              "j": 8,
+              "type": "hydrophobic",
+              "distance": 4.0,
+              "confidence": 0.5
+            }
+          ],
+          "subunit_count": 1,
+          "activation_pattern": [
+            {
+              "aa": "Trp",
+              "primitive": "\u22a3 (Topology)"
+            },
+            {
+              "aa": "Tyr",
+              "primitive": "\u227a (Parity)"
+            },
+            {
+              "aa": "Ile",
+              "primitive": "\u22a4 (Kinetics)"
+            },
+            {
+              "aa": "His",
+              "primitive": "\u2299 (Criticality)"
+            },
+            {
+              "aa": "Phe",
+              "primitive": "\u22c8 (Fidelity)"
+            },
+            {
+              "aa": "Cys",
+              "primitive": "\u227b (Recognition)"
+            }
+          ],
+          "activation_coverage": "6/12",
+          "confidence": 1.0,
+          "frobenius_verified": true,
+          "closure_theorem": "RNA \u2192 {Sequence + Structure} is \u03bc\u2218\u03b4=id"
+        },
+        "frobenius_verified": true,
+        "confidence": 1.0
+      },
+      "framework4": "WGQGTLVTVSS",
+      "antibody_structure": {
+        "name": "antibody_VH",
+        "rna_sequence": "CAAGUUCAAUUGGUUCAAUCUGGUGCUGAAGUUAAAAAACCUGGUGCUUCUGUUAAAGUUUCUUGUAAAGCUUCUGGUUAUACUUUUACUUGGGGUUAUUCUAUUACUCAUCCUUUUGCUUGUGUUUGGGGUCAAGGUACUUUGGUUACUGUUUCUUCU",
+        "rna_length": 159,
+        "aa_sequence": "QVQLVQSGAEVKKPGASVKVSCKASGYTFTWGYSITHPFACVWGQGTLVTVSS",
+        "aa_length": 53,
+        "winding_number": 19,
+        "secondary_elements": [
+          {
+            "type": "sheet",
+            "start": 0,
+            "end": 2,
+            "length": 2,
+            "confidence": 0.7,
+            "sequence": "QV"
+          },
+          {
+            "type": "sheet",
+            "start": 2,
+            "end": 4,
+            "length": 2,
+            "confidence": 0.6,
+            "sequence": "QL"
+          },
+          {
+            "type": "sheet",
+            "start": 4,
+            "end": 6,
+            "length": 2,
+            "confidence": 0.7,
+            "sequence": "VQ"
+          },
+          {
+            "type": "loop",
+            "start": 6,
+            "end": 8,
+            "length": 2,
+            "confidence": 0.71,
+            "sequence": "SG"
+          },
+          {
+            "type": "helix",
+            "start": 8,
+            "end": 10,
+            "length": 2,
+            "confidence": 0.732,
+            "sequence": "AE"
+          },
+          {
+            "type": "sheet",
+            "start": 10,
+            "end": 12,
+            "length": 2,
+            "confidence": 0.61,
+            "sequence": "VK"
+          },
+          {
+            "type": "loop",
+            "start": 12,
+            "end": 14,
+            "length": 2,
+            "confidence": 0.755,
+            "sequence": "KP"
+          },
+          {
+            "type": "loop",
+            "start": 14,
+            "end": 16,
+            "length": 2,
+            "confidence": 0.892,
+            "sequence": "GA"
+          },
+          {
+            "type": "sheet",
+            "start": 16,
+            "end": 18,
+            "length": 2,
+            "confidence": 0.613,
+            "sequence": "SV"
+          },
+          {
+            "type": "sheet",
+            "start": 18,
+            "end": 20,
+            "length": 2,
+            "confidence": 0.61,
+            "sequence": "KV"
+          },
+          {
+            "type": "loop",
+            "start": 20,
+            "end": 22,
+            "length": 2,
+            "confidence": 0.853,
+            "sequence": "SC"
+          },
+          {
+            "type": "helix",
+            "start": 22,
+            "end": 24,
+            "length": 2,
+            "confidence": 0.645,
+            "sequence": "KA"
+          },
+          {
+            "type": "loop",
+            "start": 24,
+            "end": 26,
+            "length": 2,
+            "confidence": 0.71,
+            "sequence": "SG"
+          },
+          {
+            "type": "sheet",
+            "start": 26,
+            "end": 28,
+            "length": 2,
+            "confidence": 0.665,
+            "sequence": "YT"
+          },
+          {
+            "type": "sheet",
+            "start": 28,
+            "end": 30,
+            "length": 2,
+            "confidence": 0.642,
+            "sequence": "FT"
+          },
+          {
+            "type": "sheet",
+            "start": 30,
+            "end": 32,
+            "length": 2,
+            "confidence": 0.53,
+            "sequence": "WG"
+          },
+          {
+            "type": "sheet",
+            "start": 32,
+            "end": 34,
+            "length": 2,
+            "confidence": 0.555,
+            "sequence": "YS"
+          },
+          {
+            "type": "sheet",
+            "start": 34,
+            "end": 36,
+            "length": 2,
+            "confidence": 0.698,
+            "sequence": "IT"
+          },
+          {
+            "type": "loop",
+            "start": 36,
+            "end": 38,
+            "length": 2,
+            "confidence": 0.747,
+            "sequence": "HP"
+          }
+        ],
+        "contacts": [
+          {
+            "i": 15,
+            "j": 34,
+            "type": "hydrophobic",
+            "distance": 4.0,
+            "confidence": 0.5
+          },
+          {
+            "i": 17,
+            "j": 39,
+            "type": "hydrophobic",
+            "distance": 4.0,
+            "confidence": 0.5
+          },
+          {
+            "i": 19,
+            "j": 41,
+            "type": "hydrophobic",
+            "distance": 4.0,
+            "confidence": 0.5
+          },
+          {
+            "i": 21,
+            "j": 48,
+            "type": "hydrophobic",
+            "distance": 4.0,
+            "confidence": 0.5
+          }
+        ],
+        "subunit_count": 2,
+        "activation_pattern": [
+          {
+            "aa": "Gln",
+            "primitive": "\u220b (Grammar)"
+          },
+          {
+            "aa": "Gln",
+            "primitive": "\u220b (Grammar)"
+          },
+          {
+            "aa": "Gln",
+            "primitive": "\u220b (Grammar)"
+          },
+          {
+            "aa": "Glu",
+            "primitive": "\u22a1 (Protection)"
+          },
+          {
+            "aa": "Lys",
+            "primitive": "\u229e (Stoichiometry)"
+          },
+          {
+            "aa": "Lys",
+            "primitive": "\u229e (Stoichiometry)"
+          },
+          {
+            "aa": "Lys",
+            "primitive": "\u229e (Stoichiometry)"
+          },
+          {
+            "aa": "Cys",
+            "primitive": "\u227b (Recognition)"
+          },
+          {
+            "aa": "Lys",
+            "primitive": "\u229e (Stoichiometry)"
+          },
+          {
+            "aa": "Tyr",
+            "primitive": "\u227a (Parity)"
+          },
+          {
+            "aa": "Phe",
+            "primitive": "\u22c8 (Fidelity)"
+          },
+          {
+            "aa": "Trp",
+            "primitive": "\u22a3 (Topology)"
+          },
+          {
+            "aa": "Tyr",
+            "primitive": "\u227a (Parity)"
+          },
+          {
+            "aa": "Ile",
+            "primitive": "\u22a4 (Kinetics)"
+          },
+          {
+            "aa": "His",
+            "primitive": "\u2299 (Criticality)"
+          },
+          {
+            "aa": "Phe",
+            "primitive": "\u22c8 (Fidelity)"
+          },
+          {
+            "aa": "Cys",
+            "primitive": "\u227b (Recognition)"
+          },
+          {
+            "aa": "Trp",
+            "primitive": "\u22a3 (Topology)"
+          },
+          {
+            "aa": "Gln",
+            "primitive": "\u220b (Grammar)"
+          }
+        ],
+        "activation_coverage": "19/12",
+        "confidence": 1.0,
+        "frobenius_verified": true,
+        "closure_theorem": "RNA \u2192 {Sequence + Structure} is \u03bc\u2218\u03b4=id"
+      },
+      "frobenius_verified": true,
+      "confidence": 1.0
+    }
+  },
   "HIV_gp120_C4": {
     "epitope": "TGPCTNVSTVQCTHGIRPVVSTQLLLNGSL",
     "analysis": {
@@ -679,6 +1575,1461 @@
           {
             "aa": "Lys",
             "primitive": "\u229e (Stoichiometry)"
+          },
+          {
+            "aa": "Trp",
+            "primitive": "\u22a3 (Topology)"
+          },
+          {
+            "aa": "Gln",
+            "primitive": "\u220b (Grammar)"
+          }
+        ],
+        "activation_coverage": "17/12",
+        "confidence": 0.962,
+        "frobenius_verified": true,
+        "closure_theorem": "RNA \u2192 {Sequence + Structure} is \u03bc\u2218\u03b4=id"
+      },
+      "frobenius_verified": true,
+      "confidence": 0.962
+    }
+  },
+  "Influenza_HA_stem": {
+    "epitope": "FISFAISCFLLCVVLLGFIMWACQK",
+    "analysis": {
+      "name": "Influenza_HA_stem",
+      "sequence": "FISFAISCFLLCVVLLGFIMWACQK",
+      "aa_length": 25,
+      "activations": {
+        "0": {
+          "aa": "F",
+          "aa_3l": "Phe",
+          "primitive": "Fidelity"
+        },
+        "1": {
+          "aa": "I",
+          "aa_3l": "Ile",
+          "primitive": "Kinetics"
+        },
+        "2": {
+          "aa": "S",
+          "aa_3l": "Ser",
+          "primitive": "Fidelity"
+        },
+        "3": {
+          "aa": "F",
+          "aa_3l": "Phe",
+          "primitive": "Kinetics"
+        },
+        "4": {
+          "aa": "A",
+          "aa_3l": "Ala",
+          "primitive": "Recognition"
+        },
+        "5": {
+          "aa": "I",
+          "aa_3l": "Ile",
+          "primitive": "Fidelity"
+        },
+        "6": {
+          "aa": "S",
+          "aa_3l": "Ser",
+          "primitive": "Recognition"
+        },
+        "7": {
+          "aa": "C",
+          "aa_3l": "Cys",
+          "primitive": "Fidelity"
+        },
+        "8": {
+          "aa": "F",
+          "aa_3l": "Phe",
+          "primitive": "Kinetics"
+        },
+        "9": {
+          "aa": "L",
+          "aa_3l": "Leu",
+          "primitive": "Dimensionality"
+        },
+        "10": {
+          "aa": "L",
+          "aa_3l": "Leu",
+          "primitive": "Topology"
+        },
+        "11": {
+          "aa": "C",
+          "aa_3l": "Cys",
+          "primitive": "Recognition"
+        },
+        "12": {
+          "aa": "V",
+          "aa_3l": "Val",
+          "primitive": "Grammar"
+        },
+        "13": {
+          "aa": "V",
+          "aa_3l": "Val",
+          "primitive": "Stoichiometry"
+        }
+      },
+      "activated_primitives": [
+        "Dimensionality",
+        "Fidelity",
+        "Grammar",
+        "Kinetics",
+        "Recognition",
+        "Stoichiometry",
+        "Topology"
+      ],
+      "sr_result": {
+        "name": "epitope_Influenza_HA",
+        "rna_sequence": "UUUAUUUCUUUUGCUAUUUCUUGUUUUUUGUUGUGUGUUGUUUUGUUGGGUUUUAUUAUGUGGGCUUGUCAAAAA",
+        "rna_length": 75,
+        "aa_sequence": "FISFAISCFLLCVVLLGFIMWACQK",
+        "aa_length": 25,
+        "winding_number": 7,
+        "secondary_elements": [
+          {
+            "type": "sheet",
+            "start": 0,
+            "end": 3,
+            "length": 3,
+            "confidence": 0.622,
+            "sequence": "FIS"
+          },
+          {
+            "type": "sheet",
+            "start": 3,
+            "end": 6,
+            "length": 3,
+            "confidence": 0.635,
+            "sequence": "FAI"
+          },
+          {
+            "type": "sheet",
+            "start": 6,
+            "end": 9,
+            "length": 3,
+            "confidence": 0.553,
+            "sequence": "SCF"
+          },
+          {
+            "type": "sheet",
+            "start": 9,
+            "end": 12,
+            "length": 3,
+            "confidence": 0.632,
+            "sequence": "LLC"
+          },
+          {
+            "type": "sheet",
+            "start": 12,
+            "end": 15,
+            "length": 3,
+            "confidence": 0.783,
+            "sequence": "VVL"
+          },
+          {
+            "type": "sheet",
+            "start": 15,
+            "end": 18,
+            "length": 3,
+            "confidence": 0.572,
+            "sequence": "LGF"
+          },
+          {
+            "type": "sheet",
+            "start": 18,
+            "end": 21,
+            "length": 3,
+            "confidence": 0.67,
+            "sequence": "IMW"
+          }
+        ],
+        "contacts": [
+          {
+            "i": 6,
+            "j": 13,
+            "type": "\u227b (Recognition)\u2194\u229e (Stoichiometry)",
+            "distance": 5.84,
+            "confidence": 0.72
+          },
+          {
+            "i": 4,
+            "j": 13,
+            "type": "\u227b (Recognition)\u2194\u229e (Stoichiometry)",
+            "distance": 6.08,
+            "confidence": 0.64
+          }
+        ],
+        "subunit_count": 1,
+        "activation_pattern": [
+          {
+            "aa": "Phe",
+            "primitive": "\u22c8 (Fidelity)"
+          },
+          {
+            "aa": "Ile",
+            "primitive": "\u22a4 (Kinetics)"
+          },
+          {
+            "aa": "Phe",
+            "primitive": "\u22c8 (Fidelity)"
+          },
+          {
+            "aa": "Ile",
+            "primitive": "\u22a4 (Kinetics)"
+          },
+          {
+            "aa": "Cys",
+            "primitive": "\u227b (Recognition)"
+          },
+          {
+            "aa": "Phe",
+            "primitive": "\u22c8 (Fidelity)"
+          },
+          {
+            "aa": "Cys",
+            "primitive": "\u227b (Recognition)"
+          },
+          {
+            "aa": "Phe",
+            "primitive": "\u22c8 (Fidelity)"
+          },
+          {
+            "aa": "Ile",
+            "primitive": "\u22a4 (Kinetics)"
+          },
+          {
+            "aa": "Met",
+            "primitive": "\u22a2 (Dimensionality)"
+          },
+          {
+            "aa": "Trp",
+            "primitive": "\u22a3 (Topology)"
+          },
+          {
+            "aa": "Cys",
+            "primitive": "\u227b (Recognition)"
+          },
+          {
+            "aa": "Gln",
+            "primitive": "\u220b (Grammar)"
+          },
+          {
+            "aa": "Lys",
+            "primitive": "\u229e (Stoichiometry)"
+          }
+        ],
+        "activation_coverage": "14/12",
+        "confidence": 1.0,
+        "frobenius_verified": true,
+        "closure_theorem": "RNA \u2192 {Sequence + Structure} is \u03bc\u2218\u03b4=id"
+      }
+    },
+    "antibody": {
+      "chain_type": "VH",
+      "full_sequence": "QVQLVQSGAEVKKPGASVKVSCKASGYTFTEGYSHTKPCADVWGQGTLVTVSS",
+      "aa_length": 53,
+      "framework1": "QVQLVQSGAEVKKPGASVKVSCKASGYTFT",
+      "cdr3": {
+        "cdr_name": "VH_CDR3",
+        "cdr_sequence": "EGYSHTKPCADV",
+        "cdr_rna": "GAAGGUUAUUCUCAUACUAAACCUUGUGCUGAUGUU",
+        "cdr_composition": [
+          {
+            "aa_1l": "E",
+            "aa_3l": "Glu",
+            "role": "Winding"
+          },
+          {
+            "aa_1l": "G",
+            "aa_3l": "Gly",
+            "role": "bridge"
+          },
+          {
+            "aa_1l": "Y",
+            "aa_3l": "Tyr",
+            "role": "Parity"
+          },
+          {
+            "aa_1l": "S",
+            "aa_3l": "Ser",
+            "role": "bridge"
+          },
+          {
+            "aa_1l": "H",
+            "aa_3l": "His",
+            "role": "Granularity"
+          },
+          {
+            "aa_1l": "T",
+            "aa_3l": "Thr",
+            "role": "bridge"
+          },
+          {
+            "aa_1l": "K",
+            "aa_3l": "Lys",
+            "role": "Stoichiometry"
+          },
+          {
+            "aa_1l": "P",
+            "aa_3l": "Pro",
+            "role": "bridge"
+          },
+          {
+            "aa_1l": "C",
+            "aa_3l": "Cys",
+            "role": "Recognition"
+          },
+          {
+            "aa_1l": "A",
+            "aa_3l": "Ala",
+            "role": "bridge"
+          },
+          {
+            "aa_1l": "D",
+            "aa_3l": "Asp",
+            "role": "Chirality"
+          },
+          {
+            "aa_1l": "V",
+            "aa_3l": "Val",
+            "role": "bridge"
+          }
+        ],
+        "complementary_primitives": [
+          "Winding",
+          "Parity",
+          "Granularity",
+          "Stoichiometry",
+          "Recognition",
+          "Chirality"
+        ],
+        "structure": {
+          "name": "cdr_VH_CDR3",
+          "rna_sequence": "GAAGGUUAUUCUCAUACUAAACCUUGUGCUGAUGUU",
+          "rna_length": 36,
+          "aa_sequence": "EGYSHTKPCADV",
+          "aa_length": 12,
+          "winding_number": 7,
+          "secondary_elements": [
+            {
+              "type": "helix",
+              "start": 0,
+              "end": 1,
+              "length": 1,
+              "confidence": 0.755,
+              "sequence": "E"
+            },
+            {
+              "type": "loop",
+              "start": 1,
+              "end": 2,
+              "length": 1,
+              "confidence": 0.66,
+              "sequence": "G"
+            },
+            {
+              "type": "sheet",
+              "start": 2,
+              "end": 3,
+              "length": 1,
+              "confidence": 0.735,
+              "sequence": "Y"
+            },
+            {
+              "type": "loop",
+              "start": 3,
+              "end": 4,
+              "length": 1,
+              "confidence": 0.76,
+              "sequence": "S"
+            },
+            {
+              "type": "loop",
+              "start": 4,
+              "end": 5,
+              "length": 1,
+              "confidence": 0.935,
+              "sequence": "H"
+            },
+            {
+              "type": "sheet",
+              "start": 5,
+              "end": 6,
+              "length": 1,
+              "confidence": 0.595,
+              "sequence": "T"
+            },
+            {
+              "type": "helix",
+              "start": 6,
+              "end": 7,
+              "length": 1,
+              "confidence": 0.58,
+              "sequence": "K"
+            }
+          ],
+          "contacts": [],
+          "subunit_count": 1,
+          "activation_pattern": [
+            {
+              "aa": "Glu",
+              "primitive": "\u22a1 (Protection)"
+            },
+            {
+              "aa": "Tyr",
+              "primitive": "\u227a (Parity)"
+            },
+            {
+              "aa": "His",
+              "primitive": "\u2299 (Criticality)"
+            },
+            {
+              "aa": "Lys",
+              "primitive": "\u229e (Stoichiometry)"
+            },
+            {
+              "aa": "Cys",
+              "primitive": "\u227b (Recognition)"
+            },
+            {
+              "aa": "Asp",
+              "primitive": "\u22a5 (Chirality)"
+            }
+          ],
+          "activation_coverage": "6/12",
+          "confidence": 1.0,
+          "frobenius_verified": true,
+          "closure_theorem": "RNA \u2192 {Sequence + Structure} is \u03bc\u2218\u03b4=id"
+        },
+        "frobenius_verified": true,
+        "confidence": 1.0
+      },
+      "framework4": "WGQGTLVTVSS",
+      "antibody_structure": {
+        "name": "antibody_VH",
+        "rna_sequence": "CAAGUUCAAUUGGUUCAAUCUGGUGCUGAAGUUAAAAAACCUGGUGCUUCUGUUAAAGUUUCUUGUAAAGCUUCUGGUUAUACUUUUACUGAAGGUUAUUCUCAUACUAAACCUUGUGCUGAUGUUUGGGGUCAAGGUACUUUGGUUACUGUUUCUUCU",
+        "rna_length": 159,
+        "aa_sequence": "QVQLVQSGAEVKKPGASVKVSCKASGYTFTEGYSHTKPCADVWGQGTLVTVSS",
+        "aa_length": 53,
+        "winding_number": 20,
+        "secondary_elements": [
+          {
+            "type": "sheet",
+            "start": 0,
+            "end": 2,
+            "length": 2,
+            "confidence": 0.7,
+            "sequence": "QV"
+          },
+          {
+            "type": "sheet",
+            "start": 2,
+            "end": 4,
+            "length": 2,
+            "confidence": 0.6,
+            "sequence": "QL"
+          },
+          {
+            "type": "sheet",
+            "start": 4,
+            "end": 6,
+            "length": 2,
+            "confidence": 0.7,
+            "sequence": "VQ"
+          },
+          {
+            "type": "loop",
+            "start": 6,
+            "end": 8,
+            "length": 2,
+            "confidence": 0.71,
+            "sequence": "SG"
+          },
+          {
+            "type": "helix",
+            "start": 8,
+            "end": 10,
+            "length": 2,
+            "confidence": 0.732,
+            "sequence": "AE"
+          },
+          {
+            "type": "sheet",
+            "start": 10,
+            "end": 12,
+            "length": 2,
+            "confidence": 0.61,
+            "sequence": "VK"
+          },
+          {
+            "type": "loop",
+            "start": 12,
+            "end": 14,
+            "length": 2,
+            "confidence": 0.755,
+            "sequence": "KP"
+          },
+          {
+            "type": "loop",
+            "start": 14,
+            "end": 16,
+            "length": 2,
+            "confidence": 0.892,
+            "sequence": "GA"
+          },
+          {
+            "type": "sheet",
+            "start": 16,
+            "end": 18,
+            "length": 2,
+            "confidence": 0.613,
+            "sequence": "SV"
+          },
+          {
+            "type": "sheet",
+            "start": 18,
+            "end": 20,
+            "length": 2,
+            "confidence": 0.61,
+            "sequence": "KV"
+          },
+          {
+            "type": "loop",
+            "start": 20,
+            "end": 22,
+            "length": 2,
+            "confidence": 0.853,
+            "sequence": "SC"
+          },
+          {
+            "type": "helix",
+            "start": 22,
+            "end": 24,
+            "length": 2,
+            "confidence": 0.645,
+            "sequence": "KA"
+          },
+          {
+            "type": "loop",
+            "start": 24,
+            "end": 26,
+            "length": 2,
+            "confidence": 0.71,
+            "sequence": "SG"
+          },
+          {
+            "type": "sheet",
+            "start": 26,
+            "end": 28,
+            "length": 2,
+            "confidence": 0.665,
+            "sequence": "YT"
+          },
+          {
+            "type": "sheet",
+            "start": 28,
+            "end": 30,
+            "length": 2,
+            "confidence": 0.642,
+            "sequence": "FT"
+          },
+          {
+            "type": "helix",
+            "start": 30,
+            "end": 32,
+            "length": 2,
+            "confidence": 0.52,
+            "sequence": "EG"
+          },
+          {
+            "type": "sheet",
+            "start": 32,
+            "end": 34,
+            "length": 2,
+            "confidence": 0.555,
+            "sequence": "YS"
+          },
+          {
+            "type": "sheet",
+            "start": 34,
+            "end": 36,
+            "length": 2,
+            "confidence": 0.515,
+            "sequence": "HT"
+          },
+          {
+            "type": "loop",
+            "start": 36,
+            "end": 38,
+            "length": 2,
+            "confidence": 0.755,
+            "sequence": "KP"
+          },
+          {
+            "type": "helix",
+            "start": 38,
+            "end": 40,
+            "length": 2,
+            "confidence": 0.53,
+            "sequence": "CA"
+          }
+        ],
+        "contacts": [
+          {
+            "i": 15,
+            "j": 38,
+            "type": "hydrophobic",
+            "distance": 4.0,
+            "confidence": 0.5
+          },
+          {
+            "i": 17,
+            "j": 41,
+            "type": "hydrophobic",
+            "distance": 4.0,
+            "confidence": 0.5
+          },
+          {
+            "i": 19,
+            "j": 48,
+            "type": "hydrophobic",
+            "distance": 4.0,
+            "confidence": 0.5
+          }
+        ],
+        "subunit_count": 1,
+        "activation_pattern": [
+          {
+            "aa": "Gln",
+            "primitive": "\u220b (Grammar)"
+          },
+          {
+            "aa": "Gln",
+            "primitive": "\u220b (Grammar)"
+          },
+          {
+            "aa": "Gln",
+            "primitive": "\u220b (Grammar)"
+          },
+          {
+            "aa": "Glu",
+            "primitive": "\u22a1 (Protection)"
+          },
+          {
+            "aa": "Lys",
+            "primitive": "\u229e (Stoichiometry)"
+          },
+          {
+            "aa": "Lys",
+            "primitive": "\u229e (Stoichiometry)"
+          },
+          {
+            "aa": "Lys",
+            "primitive": "\u229e (Stoichiometry)"
+          },
+          {
+            "aa": "Cys",
+            "primitive": "\u227b (Recognition)"
+          },
+          {
+            "aa": "Lys",
+            "primitive": "\u229e (Stoichiometry)"
+          },
+          {
+            "aa": "Tyr",
+            "primitive": "\u227a (Parity)"
+          },
+          {
+            "aa": "Phe",
+            "primitive": "\u22c8 (Fidelity)"
+          },
+          {
+            "aa": "Glu",
+            "primitive": "\u22a1 (Protection)"
+          },
+          {
+            "aa": "Tyr",
+            "primitive": "\u227a (Parity)"
+          },
+          {
+            "aa": "His",
+            "primitive": "\u2299 (Criticality)"
+          },
+          {
+            "aa": "Lys",
+            "primitive": "\u229e (Stoichiometry)"
+          },
+          {
+            "aa": "Cys",
+            "primitive": "\u227b (Recognition)"
+          },
+          {
+            "aa": "Asp",
+            "primitive": "\u22a5 (Chirality)"
+          },
+          {
+            "aa": "Trp",
+            "primitive": "\u22a3 (Topology)"
+          },
+          {
+            "aa": "Gln",
+            "primitive": "\u220b (Grammar)"
+          }
+        ],
+        "activation_coverage": "19/12",
+        "confidence": 1.0,
+        "frobenius_verified": true,
+        "closure_theorem": "RNA \u2192 {Sequence + Structure} is \u03bc\u2218\u03b4=id"
+      },
+      "frobenius_verified": true,
+      "confidence": 1.0
+    }
+  },
+  "HPV_L1_capsid": {
+    "epitope": "TSGDAVAPGEDDTPDNKEYPDEYSD",
+    "analysis": {
+      "name": "HPV_L1_capsid",
+      "sequence": "TSGDAVAPGEDDTPDNKEYPDEYSD",
+      "aa_length": 25,
+      "activations": {
+        "0": {
+          "aa": "T",
+          "aa_3l": "Thr",
+          "primitive": "Chirality"
+        },
+        "1": {
+          "aa": "S",
+          "aa_3l": "Ser",
+          "primitive": "Protection"
+        },
+        "2": {
+          "aa": "G",
+          "aa_3l": "Gly",
+          "primitive": "Chirality"
+        },
+        "3": {
+          "aa": "D",
+          "aa_3l": "Asp",
+          "primitive": "Chirality"
+        },
+        "4": {
+          "aa": "A",
+          "aa_3l": "Ala",
+          "primitive": "Chirality"
+        },
+        "5": {
+          "aa": "V",
+          "aa_3l": "Val",
+          "primitive": "Granularity"
+        },
+        "6": {
+          "aa": "A",
+          "aa_3l": "Ala",
+          "primitive": "Stoichiometry"
+        },
+        "7": {
+          "aa": "P",
+          "aa_3l": "Pro",
+          "primitive": "Protection"
+        },
+        "8": {
+          "aa": "G",
+          "aa_3l": "Gly",
+          "primitive": "Parity"
+        },
+        "9": {
+          "aa": "E",
+          "aa_3l": "Glu",
+          "primitive": "Chirality"
+        },
+        "10": {
+          "aa": "D",
+          "aa_3l": "Asp",
+          "primitive": "Protection"
+        },
+        "11": {
+          "aa": "D",
+          "aa_3l": "Asp",
+          "primitive": "Parity"
+        },
+        "12": {
+          "aa": "T",
+          "aa_3l": "Thr",
+          "primitive": "Chirality"
+        }
+      },
+      "activated_primitives": [
+        "Chirality",
+        "Granularity",
+        "Parity",
+        "Protection",
+        "Stoichiometry"
+      ],
+      "sr_result": {
+        "name": "epitope_HPV_L1_capsi",
+        "rna_sequence": "ACUUCUGGUGAUGCUGUUGCUCCUGGUGAAGAUGAUACUCCUGAUAAUAAAGAAUAUCCUGAUGAAUAUUCUGAU",
+        "rna_length": 75,
+        "aa_sequence": "TSGDAVAPGEDDTPDNKEYPDEYSD",
+        "aa_length": 25,
+        "winding_number": 25,
+        "secondary_elements": [
+          {
+            "type": "sheet",
+            "start": 0,
+            "end": 1,
+            "length": 1,
+            "confidence": 0.595,
+            "sequence": "T"
+          },
+          {
+            "type": "loop",
+            "start": 1,
+            "end": 2,
+            "length": 1,
+            "confidence": 0.76,
+            "sequence": "S"
+          },
+          {
+            "type": "loop",
+            "start": 2,
+            "end": 3,
+            "length": 1,
+            "confidence": 0.66,
+            "sequence": "G"
+          },
+          {
+            "type": "helix",
+            "start": 3,
+            "end": 4,
+            "length": 1,
+            "confidence": 0.505,
+            "sequence": "D"
+          },
+          {
+            "type": "helix",
+            "start": 4,
+            "end": 5,
+            "length": 1,
+            "confidence": 0.71,
+            "sequence": "A"
+          },
+          {
+            "type": "sheet",
+            "start": 5,
+            "end": 6,
+            "length": 1,
+            "confidence": 0.85,
+            "sequence": "V"
+          },
+          {
+            "type": "helix",
+            "start": 6,
+            "end": 7,
+            "length": 1,
+            "confidence": 0.71,
+            "sequence": "A"
+          },
+          {
+            "type": "loop",
+            "start": 7,
+            "end": 8,
+            "length": 1,
+            "confidence": 0.56,
+            "sequence": "P"
+          },
+          {
+            "type": "loop",
+            "start": 8,
+            "end": 9,
+            "length": 1,
+            "confidence": 0.66,
+            "sequence": "G"
+          },
+          {
+            "type": "helix",
+            "start": 9,
+            "end": 10,
+            "length": 1,
+            "confidence": 0.755,
+            "sequence": "E"
+          },
+          {
+            "type": "helix",
+            "start": 10,
+            "end": 11,
+            "length": 1,
+            "confidence": 0.505,
+            "sequence": "D"
+          },
+          {
+            "type": "helix",
+            "start": 11,
+            "end": 12,
+            "length": 1,
+            "confidence": 0.505,
+            "sequence": "D"
+          },
+          {
+            "type": "sheet",
+            "start": 12,
+            "end": 13,
+            "length": 1,
+            "confidence": 0.595,
+            "sequence": "T"
+          },
+          {
+            "type": "loop",
+            "start": 13,
+            "end": 14,
+            "length": 1,
+            "confidence": 0.56,
+            "sequence": "P"
+          },
+          {
+            "type": "helix",
+            "start": 14,
+            "end": 15,
+            "length": 1,
+            "confidence": 0.505,
+            "sequence": "D"
+          },
+          {
+            "type": "loop",
+            "start": 15,
+            "end": 16,
+            "length": 1,
+            "confidence": 0.78,
+            "sequence": "N"
+          },
+          {
+            "type": "helix",
+            "start": 16,
+            "end": 17,
+            "length": 1,
+            "confidence": 0.58,
+            "sequence": "K"
+          },
+          {
+            "type": "helix",
+            "start": 17,
+            "end": 18,
+            "length": 1,
+            "confidence": 0.755,
+            "sequence": "E"
+          },
+          {
+            "type": "sheet",
+            "start": 18,
+            "end": 19,
+            "length": 1,
+            "confidence": 0.735,
+            "sequence": "Y"
+          },
+          {
+            "type": "loop",
+            "start": 19,
+            "end": 20,
+            "length": 1,
+            "confidence": 0.56,
+            "sequence": "P"
+          },
+          {
+            "type": "helix",
+            "start": 20,
+            "end": 21,
+            "length": 1,
+            "confidence": 0.505,
+            "sequence": "D"
+          },
+          {
+            "type": "helix",
+            "start": 21,
+            "end": 22,
+            "length": 1,
+            "confidence": 0.755,
+            "sequence": "E"
+          },
+          {
+            "type": "sheet",
+            "start": 22,
+            "end": 23,
+            "length": 1,
+            "confidence": 0.735,
+            "sequence": "Y"
+          },
+          {
+            "type": "loop",
+            "start": 23,
+            "end": 24,
+            "length": 1,
+            "confidence": 0.76,
+            "sequence": "S"
+          },
+          {
+            "type": "helix",
+            "start": 24,
+            "end": 25,
+            "length": 1,
+            "confidence": 0.505,
+            "sequence": "D"
+          }
+        ],
+        "contacts": [],
+        "subunit_count": 1,
+        "activation_pattern": [
+          {
+            "aa": "Asp",
+            "primitive": "\u22a5 (Chirality)"
+          },
+          {
+            "aa": "Glu",
+            "primitive": "\u22a1 (Protection)"
+          },
+          {
+            "aa": "Asp",
+            "primitive": "\u22a5 (Chirality)"
+          },
+          {
+            "aa": "Asp",
+            "primitive": "\u22a5 (Chirality)"
+          },
+          {
+            "aa": "Asp",
+            "primitive": "\u22a5 (Chirality)"
+          },
+          {
+            "aa": "Asn",
+            "primitive": "\u2208 (Granularity)"
+          },
+          {
+            "aa": "Lys",
+            "primitive": "\u229e (Stoichiometry)"
+          },
+          {
+            "aa": "Glu",
+            "primitive": "\u22a1 (Protection)"
+          },
+          {
+            "aa": "Tyr",
+            "primitive": "\u227a (Parity)"
+          },
+          {
+            "aa": "Asp",
+            "primitive": "\u22a5 (Chirality)"
+          },
+          {
+            "aa": "Glu",
+            "primitive": "\u22a1 (Protection)"
+          },
+          {
+            "aa": "Tyr",
+            "primitive": "\u227a (Parity)"
+          },
+          {
+            "aa": "Asp",
+            "primitive": "\u22a5 (Chirality)"
+          }
+        ],
+        "activation_coverage": "13/12",
+        "confidence": 1.0,
+        "frobenius_verified": true,
+        "closure_theorem": "RNA \u2192 {Sequence + Structure} is \u03bc\u2218\u03b4=id"
+      }
+    },
+    "antibody": {
+      "chain_type": "VH",
+      "full_sequence": "QVQLVQSGAEVKKPGASVKVSCKASGYTFTWGISFTCPAVGSWGQGTLVTVSS",
+      "aa_length": 53,
+      "framework1": "QVQLVQSGAEVKKPGASVKVSCKASGYTFT",
+      "cdr3": {
+        "cdr_name": "VH_CDR3",
+        "cdr_sequence": "WGISFTCPAVGS",
+        "cdr_rna": "UGGGGUAUUUCUUUUACUUGUCCUGCUGUUGGUUCU",
+        "cdr_composition": [
+          {
+            "aa_1l": "W",
+            "aa_3l": "Trp",
+            "role": "Topology"
+          },
+          {
+            "aa_1l": "G",
+            "aa_3l": "Gly",
+            "role": "bridge"
+          },
+          {
+            "aa_1l": "I",
+            "aa_3l": "Ile",
+            "role": "Kinetics"
+          },
+          {
+            "aa_1l": "S",
+            "aa_3l": "Ser",
+            "role": "bridge"
+          },
+          {
+            "aa_1l": "F",
+            "aa_3l": "Phe",
+            "role": "Fidelity"
+          },
+          {
+            "aa_1l": "T",
+            "aa_3l": "Thr",
+            "role": "bridge"
+          },
+          {
+            "aa_1l": "C",
+            "aa_3l": "Cys",
+            "role": "Recognition"
+          },
+          {
+            "aa_1l": "P",
+            "aa_3l": "Pro",
+            "role": "bridge"
+          },
+          {
+            "aa_1l": "A",
+            "aa_3l": "Ala",
+            "role": "bridge"
+          },
+          {
+            "aa_1l": "V",
+            "aa_3l": "Val",
+            "role": "bridge"
+          },
+          {
+            "aa_1l": "G",
+            "aa_3l": "Gly",
+            "role": "bridge"
+          },
+          {
+            "aa_1l": "S",
+            "aa_3l": "Ser",
+            "role": "bridge"
+          }
+        ],
+        "complementary_primitives": [
+          "Topology",
+          "Kinetics",
+          "Fidelity",
+          "Recognition"
+        ],
+        "structure": {
+          "name": "cdr_VH_CDR3",
+          "rna_sequence": "UGGGGUAUUUCUUUUACUUGUCCUGCUGUUGGUUCU",
+          "rna_length": 36,
+          "aa_sequence": "WGISFTCPAVGS",
+          "aa_length": 12,
+          "winding_number": 4,
+          "secondary_elements": [
+            {
+              "type": "sheet",
+              "start": 0,
+              "end": 3,
+              "length": 3,
+              "confidence": 0.62,
+              "sequence": "WGI"
+            },
+            {
+              "type": "sheet",
+              "start": 3,
+              "end": 6,
+              "length": 3,
+              "confidence": 0.553,
+              "sequence": "SFT"
+            },
+            {
+              "type": "loop",
+              "start": 6,
+              "end": 9,
+              "length": 3,
+              "confidence": 0.877,
+              "sequence": "CPA"
+            },
+            {
+              "type": "sheet",
+              "start": 9,
+              "end": 12,
+              "length": 3,
+              "confidence": 0.533,
+              "sequence": "VGS"
+            }
+          ],
+          "contacts": [
+            {
+              "i": 4,
+              "j": 8,
+              "type": "hydrophobic",
+              "distance": 4.0,
+              "confidence": 0.5
+            }
+          ],
+          "subunit_count": 1,
+          "activation_pattern": [
+            {
+              "aa": "Trp",
+              "primitive": "\u22a3 (Topology)"
+            },
+            {
+              "aa": "Ile",
+              "primitive": "\u22a4 (Kinetics)"
+            },
+            {
+              "aa": "Phe",
+              "primitive": "\u22c8 (Fidelity)"
+            },
+            {
+              "aa": "Cys",
+              "primitive": "\u227b (Recognition)"
+            }
+          ],
+          "activation_coverage": "4/12",
+          "confidence": 1.0,
+          "frobenius_verified": true,
+          "closure_theorem": "RNA \u2192 {Sequence + Structure} is \u03bc\u2218\u03b4=id"
+        },
+        "frobenius_verified": true,
+        "confidence": 1.0
+      },
+      "framework4": "WGQGTLVTVSS",
+      "antibody_structure": {
+        "name": "antibody_VH",
+        "rna_sequence": "CAAGUUCAAUUGGUUCAAUCUGGUGCUGAAGUUAAAAAACCUGGUGCUUCUGUUAAAGUUUCUUGUAAAGCUUCUGGUUAUACUUUUACUUGGGGUAUUUCUUUUACUUGUCCUGCUGUUGGUUCUUGGGGUCAAGGUACUUUGGUUACUGUUUCUUCU",
+        "rna_length": 159,
+        "aa_sequence": "QVQLVQSGAEVKKPGASVKVSCKASGYTFTWGISFTCPAVGSWGQGTLVTVSS",
+        "aa_length": 53,
+        "winding_number": 17,
+        "secondary_elements": [
+          {
+            "type": "sheet",
+            "start": 0,
+            "end": 3,
+            "length": 3,
+            "confidence": 0.65,
+            "sequence": "QVQ"
+          },
+          {
+            "type": "sheet",
+            "start": 3,
+            "end": 6,
+            "length": 3,
+            "confidence": 0.683,
+            "sequence": "LVQ"
+          },
+          {
+            "type": "loop",
+            "start": 6,
+            "end": 9,
+            "length": 3,
+            "confidence": 0.848,
+            "sequence": "SGA"
+          },
+          {
+            "type": "helix",
+            "start": 9,
+            "end": 12,
+            "length": 3,
+            "confidence": 0.622,
+            "sequence": "EVK"
+          },
+          {
+            "type": "loop",
+            "start": 12,
+            "end": 15,
+            "length": 3,
+            "confidence": 0.723,
+            "sequence": "KPG"
+          },
+          {
+            "type": "sheet",
+            "start": 15,
+            "end": 18,
+            "length": 3,
+            "confidence": 0.547,
+            "sequence": "ASV"
+          },
+          {
+            "type": "sheet",
+            "start": 18,
+            "end": 21,
+            "length": 3,
+            "confidence": 0.532,
+            "sequence": "KVS"
+          },
+          {
+            "type": "helix",
+            "start": 21,
+            "end": 24,
+            "length": 3,
+            "confidence": 0.547,
+            "sequence": "CKA"
+          },
+          {
+            "type": "loop",
+            "start": 24,
+            "end": 27,
+            "length": 3,
+            "confidence": 0.833,
+            "sequence": "SGY"
+          },
+          {
+            "type": "sheet",
+            "start": 27,
+            "end": 30,
+            "length": 3,
+            "confidence": 0.627,
+            "sequence": "TFT"
+          },
+          {
+            "type": "sheet",
+            "start": 30,
+            "end": 33,
+            "length": 3,
+            "confidence": 0.62,
+            "sequence": "WGI"
+          },
+          {
+            "type": "sheet",
+            "start": 33,
+            "end": 36,
+            "length": 3,
+            "confidence": 0.553,
+            "sequence": "SFT"
+          },
+          {
+            "type": "loop",
+            "start": 36,
+            "end": 39,
+            "length": 3,
+            "confidence": 0.877,
+            "sequence": "CPA"
+          },
+          {
+            "type": "sheet",
+            "start": 39,
+            "end": 42,
+            "length": 3,
+            "confidence": 0.533,
+            "sequence": "VGS"
+          },
+          {
+            "type": "sheet",
+            "start": 42,
+            "end": 45,
+            "length": 3,
+            "confidence": 0.537,
+            "sequence": "WGQ"
+          },
+          {
+            "type": "sheet",
+            "start": 45,
+            "end": 48,
+            "length": 3,
+            "confidence": 0.54,
+            "sequence": "GTL"
+          },
+          {
+            "type": "sheet",
+            "start": 48,
+            "end": 51,
+            "length": 3,
+            "confidence": 0.765,
+            "sequence": "VTV"
+          }
+        ],
+        "contacts": [
+          {
+            "i": 15,
+            "j": 32,
+            "type": "hydrophobic",
+            "distance": 4.0,
+            "confidence": 0.5
+          },
+          {
+            "i": 17,
+            "j": 36,
+            "type": "hydrophobic",
+            "distance": 4.0,
+            "confidence": 0.5
+          },
+          {
+            "i": 19,
+            "j": 39,
+            "type": "hydrophobic",
+            "distance": 4.0,
+            "confidence": 0.5
+          },
+          {
+            "i": 21,
+            "j": 48,
+            "type": "hydrophobic",
+            "distance": 4.0,
+            "confidence": 0.5
+          }
+        ],
+        "subunit_count": 2,
+        "activation_pattern": [
+          {
+            "aa": "Gln",
+            "primitive": "\u220b (Grammar)"
+          },
+          {
+            "aa": "Gln",
+            "primitive": "\u220b (Grammar)"
+          },
+          {
+            "aa": "Gln",
+            "primitive": "\u220b (Grammar)"
+          },
+          {
+            "aa": "Glu",
+            "primitive": "\u22a1 (Protection)"
+          },
+          {
+            "aa": "Lys",
+            "primitive": "\u229e (Stoichiometry)"
+          },
+          {
+            "aa": "Lys",
+            "primitive": "\u229e (Stoichiometry)"
+          },
+          {
+            "aa": "Lys",
+            "primitive": "\u229e (Stoichiometry)"
+          },
+          {
+            "aa": "Cys",
+            "primitive": "\u227b (Recognition)"
+          },
+          {
+            "aa": "Lys",
+            "primitive": "\u229e (Stoichiometry)"
+          },
+          {
+            "aa": "Tyr",
+            "primitive": "\u227a (Parity)"
+          },
+          {
+            "aa": "Phe",
+            "primitive": "\u22c8 (Fidelity)"
+          },
+          {
+            "aa": "Trp",
+            "primitive": "\u22a3 (Topology)"
+          },
+          {
+            "aa": "Ile",
+            "primitive": "\u22a4 (Kinetics)"
+          },
+          {
+            "aa": "Phe",
+            "primitive": "\u22c8 (Fidelity)"
+          },
+          {
+            "aa": "Cys",
+            "primitive": "\u227b (Recognition)"
           },
           {
             "aa": "Trp",

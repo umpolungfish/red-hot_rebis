@@ -31,62 +31,53 @@ for p in [str(_REBIS_ROOT), str(_REBIS_ROOT / "materials"),
     if p not in sys.path:
         sys.path.insert(0, p)
 
-__all__ = []
+_EXPORTS = {'SelfHealingComposite': 'materials.materials_sim',
+ 'TwoSegmentDiode': 'materials.thermal_rectifier',
+ 'CriticalMetamaterial': 'materials.critical_metamaterial',
+ 'ClosureStatus': 'materials.frobenius_closure_complete',
+ 'ClosureDesign': 'materials.frobenius_closure_complete',
+ 'StructuralOpenDiagnosis': 'materials.frobenius_closure_complete',
+ 'complete_closure_table': 'materials.frobenius_closure_complete',
+ 'closure_mechanism_comparison': 'materials.frobenius_closure_complete',
+ 'FrobeniusClosureType': 'materials.frobenius_exactor',
+ 'ClosureObstruction': 'materials.frobenius_exactor',
+ 'ExactFrobeniusState': 'materials.frobenius_exactor',
+ 'ExactorMaterial': 'materials.frobenius_exactor',
+ 'design_exactor_omega': 'materials.frobenius_exactor',
+ 'FrobeniusMetamaterial': 'materials.frobenius_metamaterial',
+ 'FrobeniusMaterialParams': 'materials.frobenius_metamaterial',
+ 'MaterialDesign': 'materials.ig_material_forge',
+ 'MaterialForge': 'materials.ig_material_forge',
+ 'predefined_novel_materials': 'materials.ig_material_forge',
+ 'run_eagle_simulation': 'materials.sophick_forge',
+ 'EagleMaterialDesigner': 'materials.sophick_forge',
+ 'EagleCycleProtocol': 'materials.sophick_forge',
+ 'OuroboricAlloy': 'materials.ouroboric_alloy',
+ 'TripleJunction': 'materials.ouroboric_alloy',
+ 'GrainBoundary': 'materials.ouroboric_alloy',
+ 'TopologicalGrainBoundaryNetwork': 'materials.ouroboric_alloy',
+ 'NonQubitQCParadigm': 'materials.non_qubit_qc',
+ 'compute_all_deltas': 'materials.non_qubit_qc',
+ 'universal_deltas': 'materials.non_qubit_qc',
+ 'OperculumAnalysis': 'materials.non_qubit_qc',
+ 'full_operculum_report': 'materials.non_qubit_qc',
+ 'export_forge_designs': 'materials.non_qubit_qc',
+ 'paradigm_summary_table': 'materials.non_qubit_qc',
+ 'EternalMemorySim': 'materials.materials_sim',
+ 'resolve_molecule': 'materials.molecule_material_bridge',
+ 'molecule_to_material_tuple': 'materials.molecule_material_bridge',
+ 'CasimirCavity': 'materials.zpe_design.casimir_cavity_design',
+ 'CasimirCavityParams': 'materials.zpe_design.casimir_cavity_design',
+ 'ExtractionEngine': 'materials.zpe_design.casimir_cavity_design'}
+__all__ = list(_EXPORTS)
 
-def _lazy(name, module, attr=None):
-    try:
-        m = importlib.import_module(module)
-        globals()[name] = getattr(m, attr or name)
-        __all__.append(name)
-    except Exception:
-        pass
 
-_lazy("CriticalMetamaterial", "materials.critical_metamaterial")
-_lazy("ClosureStatus", "materials.frobenius_closure_complete")
-_lazy("ClosureDesign", "materials.frobenius_closure_complete")
-_lazy("StructuralOpenDiagnosis", "materials.frobenius_closure_complete")
-_lazy("complete_closure_table", "materials.frobenius_closure_complete")
-_lazy("closure_mechanism_comparison", "materials.frobenius_closure_complete")
-_lazy("FrobeniusClosureType", "materials.frobenius_exactor")
-_lazy("ClosureObstruction", "materials.frobenius_exactor")
-_lazy("ExactFrobeniusState", "materials.frobenius_exactor")
-_lazy("ExactorMaterial", "materials.frobenius_exactor")
-_lazy("design_exactor_omega", "materials.frobenius_exactor")
-_lazy("FrobeniusMetamaterial", "materials.frobenius_metamaterial")
-_lazy("FrobeniusMaterialParams", "materials.frobenius_metamaterial")
-_lazy("MaterialDesign", "materials.ig_material_forge")
-_lazy("MaterialForge", "materials.ig_material_forge")
-_lazy("predefined_novel_materials", "materials.ig_material_forge")
-_lazy("run_eagle_simulation", "materials.sophick_forge")
-_lazy("EagleMaterialDesigner", "materials.sophick_forge")
-_lazy("EagleCycleProtocol", "materials.sophick_forge")
-_lazy("design_sophick_material", "materials.sophick_forge")
-_lazy("OuroboricAlloy", "materials.ouroboric_alloy")
-_lazy("TripleJunction", "materials.ouroboric_alloy")
-_lazy("GrainBoundary", "materials.ouroboric_alloy")
-_lazy("TopologicalGrainBoundaryNetwork", "materials.ouroboric_alloy")
-_lazy("NonQubitQCParadigm", "materials.non_qubit_qc")
-_lazy("compute_all_deltas", "materials.non_qubit_qc")
-_lazy("universal_deltas", "materials.non_qubit_qc")
-_lazy("OperculumAnalysis", "materials.non_qubit_qc")
-_lazy("full_operculum_report", "materials.non_qubit_qc")
-_lazy("export_forge_designs", "materials.non_qubit_qc")
-_lazy("paradigm_summary_table", "materials.non_qubit_qc")
-_lazy("SelfHealingComposite", "materials.gap_closure_module")
-_lazy("EternalMemorySim", "materials.gap_closure_module")
-_lazy("resolve_molecule", "materials.molecule_material_bridge")
-_lazy("molecule_to_material_tuple", "materials.molecule_material_bridge")
-_lazy("OrganoidAugmentation", "materials.organoid.organoid_augmentations")
-_lazy("design_organoid_augmentation", "materials.organoid.organoid_augmentations")
-_lazy("MBNCDesigner", "materials.mycelial_conduit.mbnc_designer")
-_lazy("design_mycelial_conduit", "materials.mycelial_conduit.mbnc_designer")
-_lazy("CasimirCavity", "materials.zpe_design.casimir_cavity_design")
-_lazy("CasimirCavityParams", "materials.zpe_design.casimir_cavity_design")
-_lazy("ExtractionEngine", "materials.zpe_design.casimir_cavity_design")
-_lazy("design_casimir_cavity", "materials.zpe_design.casimir_cavity_design")
-_lazy("SophickForgeIntegration", "materials.zpe_design.sophick_forge_integration")
-_lazy("ThermalRectifier", "materials.thermal_rectifier")
-_lazy("EternalMemorySim", "materials.materials_sim")
+def __getattr__(name):
+    if name not in _EXPORTS:
+        raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+    value = getattr(importlib.import_module(_EXPORTS[name]), name)
+    globals()[name] = value
+    return value
 
 
 def _json_or_str(obj):
@@ -167,8 +158,6 @@ def _cmd_metamaterial(args):
     try:
         from materials.frobenius_metamaterial import FrobeniusMetamaterial
         mat = FrobeniusMetamaterial(size=size)
-        print("  Calibrating sensors...")
-        mat._calibrate_sensors()
         print(f"  Running {cycles} load-heal cycles...")
         results = mat.run_simulation(
             load_cycles=cycles,
@@ -238,15 +227,17 @@ def _cmd_alloy(args):
         output = {
             "n_grains": n_grains,
             "total_winding": int(total_winding) if isinstance(total_winding, (int, float)) else str(total_winding),
-            "n_triple_junctions": len(network.triple_junctions) if hasattr(network, 'triple_junctions') else None,
+            "n_triple_junctions": len(network.junctions),
             "n_grain_boundaries": len(network.boundaries) if hasattr(network, 'boundaries') else None,
         }
         # Compute crack driving force at a junction
         try:
             cdf = network.compute_crack_driving_force(0)
             output["crack_driving_force_junction_0"] = float(cdf) if isinstance(cdf, (int, float)) else str(cdf)
-        except Exception:
-            pass
+        except Exception as exc:
+            output["crack_driving_force_error"] = str(exc)
+            print(_json_or_str(output))
+            return 1
         print(_json_or_str(output))
     except Exception as e:
         import traceback
@@ -394,25 +385,8 @@ def _cmd_status(args):
 
 def _cmd_list(args):
     print("rebis.materials — Available Design Tools:")
-    tools = [
-        ("MaterialForge",         "Forge material designs from IG tuples"),
-        ("FrobeniusMetamaterial", "Frobenius-closed metamaterial simulation"),
-        ("CriticalMetamaterial",  "⊙-sensing critical metamaterial"),
-        ("OuroboricAlloy",        "Topological grain boundary network"),
-        ("NonQubitQCParadigm",    "Non-qubit quantum computing paradigms"),
-        ("SophickForge",          "Sophick mercury forge"),
-        ("CasimirCavityDesigner", "Casimir cavity ZPE designer"),
-        ("MBNCDesigner",          "Mycelial bio-nano conduit designer"),
-        ("ThermalRectifier",      "Thermal rectifier material"),
-        ("resolve_molecule",      "Resolve molecule name → SMILES"),
-        ("molecule_to_material_tuple", "Map molecule to IG tuple"),
-        ("SelfHealingComposite",  "Self-healing composite simulation"),
-        ("EternalMemorySim",      "Eternal polymer memory simulation"),
-    ]
-    for name, desc in tools:
-        obj = globals().get(name)
-        status = "✓" if obj is not None else "✗"
-        print(f"  {status} {name:30s} — {desc}")
+    for name in sorted(__all__):
+        print(f"  {name} ({_EXPORTS[name]}; resolved on access)")
     print("\nCommands:")
     print("  forge [name]          — Forge material from IG tuple or catalog")
     print("  metamaterial          — Frobenius μ∘δ=id metamaterial sim")
@@ -425,6 +399,23 @@ def _cmd_list(args):
     print("  status                — Show result files")
     print("  list                  — List tools")
     return 0
+
+
+def _minimum_int(minimum):
+    def parse(value):
+        number = int(value)
+        if number < minimum:
+            raise argparse.ArgumentTypeError(f'Must be at least {minimum}')
+        return number
+    return parse
+
+
+def _positive_float(value):
+    import math
+    number = float(value)
+    if not math.isfinite(number) or number <= 0:
+        raise argparse.ArgumentTypeError('Must be finite and positive')
+    return number
 
 
 def main():
@@ -462,11 +453,11 @@ def main():
                     "Frobenius norm → 0 means the material closes the loop.",
         epilog="Example:  rebis.materials metamaterial --size 32 --cycles 30",
         formatter_class=argparse.RawDescriptionHelpFormatter)
-    p_meta.add_argument("--size", type=int, default=20,
+    p_meta.add_argument("--size", type=_minimum_int(5), default=20,
                         help="Grid size NxN (default: 20)")
-    p_meta.add_argument("--cycles", type=int, default=20,
+    p_meta.add_argument("--cycles", type=_minimum_int(0), default=20,
                         help="Load cycles (default: 20)")
-    p_meta.add_argument("--heal-steps", type=int, default=10,
+    p_meta.add_argument("--heal-steps", type=_minimum_int(0), default=10,
                         help="Heal steps per cycle (default: 10)")
     p_meta.set_defaults(func=_cmd_metamaterial)
 
@@ -478,13 +469,13 @@ def main():
                     "Computes susceptibility and runs time evolution.",
         epilog="Example:  rebis.materials critical --size 32 --kappa 0.3",
         formatter_class=argparse.RawDescriptionHelpFormatter)
-    p_crit.add_argument("--size", type=int, default=16,
+    p_crit.add_argument("--size", type=_minimum_int(1), default=16,
                         help="Grid size (default: 16)")
     p_crit.add_argument("--kappa", type=float, default=0.2,
                         help="Initial kappa (default: 0.2)")
     p_crit.add_argument("--nonlinear", type=float, default=0.1,
                         help="Nonlinearity (default: 0.1)")
-    p_crit.add_argument("--time", type=int, default=60,
+    p_crit.add_argument("--time", type=_minimum_int(0), default=60,
                         help="Simulation time steps (default: 60)")
     p_crit.set_defaults(func=_cmd_critical)
 
@@ -496,7 +487,7 @@ def main():
                     "Computes total winding and crack driving force.",
         epilog="Example:  rebis.materials alloy --n-grains 128",
         formatter_class=argparse.RawDescriptionHelpFormatter)
-    p_alloy.add_argument("--n-grains", type=int, default=64,
+    p_alloy.add_argument("--n-grains", type=_minimum_int(3), default=64,
                          help="Number of grains (default: 64)")
     p_alloy.set_defaults(func=_cmd_alloy)
 
@@ -522,7 +513,7 @@ def main():
         description="CasimirCavityDesigner — designs zero-point energy\n"
                     "harvesting Casimir cavity structures.",
         formatter_class=argparse.RawDescriptionHelpFormatter)
-    p_cas.add_argument("--target-gap", type=float, default=0.1,
+    p_cas.add_argument("--target-gap", type=_positive_float, default=0.1,
                        help="Target cavity gap in µm (default: 0.1)")
     p_cas.set_defaults(func=_cmd_casimir)
 

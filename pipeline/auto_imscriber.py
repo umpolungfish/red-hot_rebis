@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-import hashlib, os, pathlib, re, sys
+import ast, hashlib, os, pathlib, re, sys
 from datetime import datetime
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from frob import identity_phase
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
+from pipeline.frob import identity_phase
 
 
 class AutoImscriber:
@@ -14,6 +14,8 @@ class AutoImscriber:
     def _make_name(self) -> str:
         base  = self.description.split("—")[0].strip()
         clean = re.sub(r"[^a-zA-Z0-9]", "", base)
+        if not clean or clean[0].isdigit():
+            clean = "System" + clean
         return clean + "Ob3ect"
 
     def _extract_keywords(self):
@@ -30,14 +32,10 @@ class AutoImscriber:
 
     def generate(self) -> str:
         return f'''#!/usr/bin/env python3
-"""
-{self.description}
-
-Auto-imscribed on {datetime.now().strftime("%Y-%m-%d")}
-"""
+{(self.description + "\n\nAuto-imscribed on " + datetime.now().strftime("%Y-%m-%d"))!r}
 import os, pathlib, sys
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from frob import identity_phase
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[2]))
+from pipeline.frob import identity_phase
 from shared.rich_output import *
 
 class {self.name}:
@@ -55,12 +53,15 @@ if __name__ == "__main__":
 '''
 
     def save(self):
-        folder     = self.name.lower().replace("ob3ect", "")
+        folder     = self.name.lower().removesuffix("ob3ect")
         target_dir = pathlib.Path(__file__).parent / folder
+        source = self.generate()
+        ast.parse(source)
         target_dir.mkdir(parents=True, exist_ok=True)
         target_file = target_dir / f"{folder}_ob3ect.py"
-        target_file.write_text(self.generate())
+        target_file.write_text(source, encoding="utf-8")
         info_line(f"New ob3ect imscribed → {target_file}")
+        return target_file
 
 
 import sys as _sys, os as _os

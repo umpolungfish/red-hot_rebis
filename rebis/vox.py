@@ -48,10 +48,8 @@ def _cmd_rna(args) -> int:
     if not word:
         error_line("  no promoted codon in that sequence")
         return 1
-    for codon, aa, glyph, family in reading[:24]:
+    for codon, aa, glyph, family in reading:
         info_line(f"    {codon:<6} {aa:<5} {family:<16} {glyph}")
-    if len(reading) > 24:
-        info_line(f"    … {len(reading) - 24} more")
     if stopped:
         info_line(f"  stop      {stopped}")
     return _report(word)
@@ -98,21 +96,24 @@ def _cmd_self(args) -> int:
     if args.limit:
         targets = targets[: args.limit]
     total = {}
+    audited = 0
+    failed = []
     for p in targets:
         try:
             rows = audit_module(str(p))
-        except ImportError:
-            # generator and patch scripts refuse import by design
+        except (Exception, SystemExit) as exc:
+            failed.append((str(p.relative_to(root)), str(exc)))
             continue
-        except Exception:
-            continue
+        audited += 1
         for _name, v, *_rest in rows:
             total[v] = total.get(v, 0) + 1
-    info_line(f"  modules audited: {len(targets)}")
+    info_line(f"  modules audited: {audited} of {len(targets)} selected")
+    for path, reason in failed:
+        error_line(f"  audit failed: {path}: {reason}")
     for v in "TBNF":
         if v in total:
             info_line(f"  {v} {total[v]:>5}   {_OUTCOME[v]}")
-    return 0
+    return 1 if failed else 0
 
 
 def main(argv=None) -> int:
@@ -142,6 +143,8 @@ def main(argv=None) -> int:
     p.set_defaults(func=_cmd_self)
 
     args = ap.parse_args(argv)
+    if getattr(args, "limit", 0) < 0:
+        ap.error("--limit must be nonnegative")
     return args.func(args)
 
 

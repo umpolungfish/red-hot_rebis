@@ -94,9 +94,9 @@ def run_full():
         print(f"      {', '.join(p['active_site_residues'])}")
     
     step("Running IMPROVED engine on all 10 enzymes...")
-    start = time.time()
+    start = time.perf_counter()
     results = analyze_bevy_improved(max_candidates=10)
-    elapsed = time.time() - start
+    elapsed = time.perf_counter() - start
     
     total_candidates = sum(r['n_candidates'] for r in results)
     
@@ -150,22 +150,25 @@ def run_full():
     
     header("FULL DEMO COMPLETE")
 
-def main():
-    args = sys.argv[1:]
-    
-    if '--quick' in args:
+def main(argv=None):
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument('--quick', action='store_true', help='Run the three-enzyme demonstration')
+    mode.add_argument('--enzyme', metavar='NAME', help='Run one enzyme by lookup name')
+    args = parser.parse_args(argv)
+
+    if args.quick:
         run_quick()
-    elif any(a.startswith('--enzyme') for a in args):
-        for a in args:
-            if a.startswith('--enzyme='):
-                pname = a.split('=', 1)[1]
-            elif a.startswith('--enzyme') and args.index(a) + 1 < len(args):
-                pname = args[args.index(a) + 1]
-        
+    elif args.enzyme is not None:
+        pname = args.enzyme
         if pname in PROTEIN_LOOKUP:
             from rhr_p4rky.ligand_from_active_site import analyze_bevy_improved
             header(f"Single Enzyme: {pname}")
             results = analyze_bevy_improved([pname], max_candidates=10)
+            if not results:
+                print("No enzyme analysis result was returned.")
+                return 1
             r = results[0]
             print(f"  Enzyme:    {r['protein_name']}")
             print(f"  Organism:  {r['organism']}")
@@ -182,7 +185,7 @@ def main():
                       f"{c['logP']:5.2f} {c['MW']:6.1f} {c['HBD']:3d}  {c['HBA']:3d}  "
                       f"{c['method']:20s}")
             
-            lipinski = all([
+            lipinski = bool(r.get("ligand_candidates")) and all([
                 c['MW'] <= 500 and c['logP'] <= 5 
                 and c['HBD'] <= 5 and c['HBA'] <= 10
                 for c in r.get("ligand_candidates", [])
@@ -191,9 +194,10 @@ def main():
         else:
             print(f"Unknown enzyme: {pname}")
             print(f"Available: {list(PROTEIN_LOOKUP.keys())}")
-            sys.exit(1)
+            return 1
     else:
         run_full()
+    return 0
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

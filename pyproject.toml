@@ -72,5 +72,6 @@ include = [
 ]
 
 [tool.setuptools.package-data]
+rhr_p4rky = ["*.rs"]
 shared = ["*.json"]
 "*" = ["*.json", "*.txt", "*.csv", "*.fasta", "*.pdb"]

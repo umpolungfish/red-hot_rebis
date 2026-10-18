@@ -37,70 +37,72 @@ def _run_demo(name):
         script = _DEMO_DIR / f"{name}.py"
     if not script.exists():
         raise FileNotFoundError(f"No demo script found: {name}")
-    result = subprocess.run([sys.executable, str(script)], capture_output=False)
+    result = subprocess.run([sys.executable, str(script)], capture_output=False, cwd=_REBIS_ROOT)
     return result.returncode
 
 def b4_lattice():
     """Demonstrate the B4 lattice."""
-    _run_demo("b4_lattice")
+    return _run_demo("b4_lattice")
 
 def belnap():
     """Demonstrate Belnap FOUR logic."""
-    _run_demo("belnap")
+    return _run_demo("belnap")
 
 def ch3mpiler():
     """Demonstrate the ch3mpiler molecular compiler."""
-    _run_demo("ch3mpiler")
+    return _run_demo("ch3mpiler")
 
 def clink_chain():
     """Demonstrate the CLINK chain."""
-    _run_demo("clink_chain")
+    return _run_demo("clink_chain")
 
 def decay_chain():
     """Demonstrate decay chain analysis."""
-    _run_demo("decay_chain")
+    return _run_demo("decay_chain")
 
 def materials():
     """Demonstrate materials design."""
-    _run_demo("materials")
+    return _run_demo("materials")
 
 def materials_sim():
     """Demonstrate materials simulation."""
-    _run_demo("materials_sim")
+    return _run_demo("materials_sim")
 
 def catalytic_site():
     """Demonstrate novel catalytic site design."""
-    _run_demo("novel_catalytic_site")
+    return _run_demo("novel_catalytic_site")
 
 def pipeline():
     """Demonstrate the imscription pipeline."""
-    _run_demo("pipeline")
+    return _run_demo("pipeline")
 
 def reverse_ligand():
     """Demonstrate the reverse ligand pipeline."""
-    _run_demo("reverse_ligand")
+    return _run_demo("reverse_ligand")
 
 def serpentrod():
     """Demonstrate serpent rod protein design."""
-    _run_demo("serpentrod")
+    return _run_demo("serpentrod")
 
 def therapeutics():
     """Demonstrate therapeutic design."""
-    _run_demo("therapeutics")
+    return _run_demo("therapeutics")
 
 def real_demo():
     """Run the full real demo."""
-    _run_demo("real_demo")
+    return _run_demo("real_demo")
 
 def all():
     """Run every demo sequentially, except real_demo, which is the full run."""
     # Derived from __all__ rather than hardcoded: the old list silently skipped
     # catalytic_site and reverse_ligand, so "all" was not all.
+    failed = False
     for name in [n for n in __all__ if n not in ("all", "real_demo")]:
         print(f"\n{'='*60}")
         print(f"  Running demo: {name}")
         print(f"{'='*60}")
-        globals()[name]()
+        failed = bool(globals()[name]()) or failed
+    return 1 if failed else 0
 
 __all__ = [
     "b4_lattice", "belnap", "ch3mpiler", "clink_chain",

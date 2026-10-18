@@ -1,3 +1,58 @@
-I accept canonical winding marks in the MoDoT plasma bridge
-
-I read the catalog protection axis as ⊡, transport its value into the existing forge schema at the bridge boundary, and label the returned properties with the canonical marks.
+I connect protein construction and export to the shared Vox geometry and dialetheic evidence modules.
+I retain complete sidechain atoms, correct codon-level B4 sampling, and export valid B states with the coordinate observations.
+I reassess mutable coordinates at PDB export and bind the local adapter to its canonical source hashes.
+I repair central CLI forwarding, subtitle headers, and failure exit statuses for imports, chain phases, and module execution.
+I reject invalid file input, restore parser defaults after each invocation, and read GenBank, TOML, and YAML with their format parsers.
+I merge file values into the selected command, validate argument types and choices, and preserve required arguments and parser reuse.
+I integrate shared input parsing into the central and infrastructure entry points, retain prefix options for delegates, and propagate PDB export failures.
+I repair pre-import utility help, localize stale utility paths, guard the MSA runner on import, and compute variable primitives across all species.
+I bind PDB contact and secondary-structure comparisons to selected observed residues, preserve their identifiers, guard analysis on import, and propagate validation failures.
+I implement prediction JSON and full-catalog options, preserve canonical and historical catalog keys, reject unresolved targets, and require exactly twelve raw tuple entries.
+I preserve demo output, run subprocesses from the project root without changing import-time cwd, and stop on failed commands or invalid demo options.
+I migrate demonstration commands to executable module entry points and report completion only for the requested successful commands.
+I resolve named compound analogies through the existing database, support catalog axis aliases, and return failure for unresolved searches.
+I select mitochondrial translation in the genome runner, retain full amino acid sequences, compute the aggregate invariant, and save its complete local report.
+I repair compound registration argument order, preserve duplicate tuples, implement catalog queries, serialize preview data, and validate catalog structure.
+I expose the actual iterator and CDXML APIs with lazy resolution, and propagate demo and utility subprocess statuses through the CLI.
+I derive Vox work marks from the generated genetic table and resolve the sibling Vox source relative to the installation.
+I preserve styled line endings and explicit streams, enable the plain-output fallback without Rich, and retain analog indentation.
+I report completed Vox audits and import errors separately, preserve full RNA rows and valid B outcomes, and connect the Vox command to central CLI dispatch.
+I align ligand wrapper options and defaults with its backend, resolve exports lazily, and propagate module exit status.
+I bind ch3mpiler to its local package, pass reagent lists, propagate returned errors, and escape CDXML names.
+I replace stale compiler export mappings with live lazy APIs and report unavailable historical tables explicitly.
+I make the CAS repair import-safe, validate both source transformations before writing, preserve backups, scope pipeline changes to CAS, and add a check-only mode.
+I retain all molecules in CDXML exports, assign unique object IDs, preserve charge/isotopes, and propagate validation failures.
+I preserve CDXML wedge stereochemistry and validate molecular identity with isomeric structure comparison on export.
+I support positional files after subcommands and validate configured boolean, required and list argument values.
+I honor iterator arrangement lengths and zero limits, reject invalid bounds, and refresh checkpoint statistics before reporting them.
+I validate classifier input and iterator CLI bounds, support selected output directories, and label capped search observations accurately.
+I restore the CDXML pipeline hook, preserve annotated molecular identity and full labels, and prevent long-name output collisions.
+I repair IMAS export resolution and use reproducible local random state with bounded Frobenius library searches that retain partial results.
+I replace the fusion grid with shared protein geometry, guard generation behind main, preserve single-record FASTA headers, and isolate dataset imports.
+I repair closure-check imports and layer output directories, and recover the historical dataset source for restoring missing layer APIs.
+I restore missing dataset layers and orchestration from retained history, preserve current base generators, and honor no-write manifest behavior.
+I render protein datasets through shared geometry and make genome FASTA/GenBank contain the same complete requested sequence.
+I distinguish available and producing dataset bridges, retain optional bridge errors, support per-layer package inputs, and verify no-write assembly.
+I forward separate utility option tokens, map antibody target names to the backend option, and retain live listing and error-status receipts.
+I defer biology exports until access and propagate combined simulation and telomere subsystem failures.
+I preserve single-pair sidechain JSON, run each batch once, declare API exports and reject incomplete pairs.
+I search both ORF strands with original coordinates, propagate gene pipeline failure, and repair genetics runner paths, counters and argument validation.
+I resolve gene exports lazily, dispatch the existing codon verifier and propagate failed verification readings.
+I pass translated amino-acid records and source GC content to tuple extraction and propagate generator failures.
+I repair pipeline verification reports and source options, preserve input files, return bootstrap clone status, and analyze the requested prose document.
+I execute the actual retrosynthesis dispatch, preserve generated source syntax for quoted descriptions, and propagate failed or missing therapy stage reports.
+I bind generated modules to package-qualified imports, validate generated source before writing, return saved paths and remove absent pipeline exports.
+I make short demo displays import quietly, resolve their repository paths and execute through explicit entry points.
+I validate reverse demo modes and missing results, guard the remaining catalytic displays on import, and resolve their installation paths.
+I make fragment scaffold patches import-safe and scoped, validate transformed Python, preserve backups and provide no-write checks.
+I repair scaffold setup and dispatch by source structure, preserve existing pieces and validate historical/current paths through the shared patch CLI.
+I guard small enrichment and header runners, validate search depth, propagate failed searches and make quick help independent of output dependencies.
+I resolve materials, CLINK, designer and IMAS package exports lazily, preserve dependency errors and expose orchestration in the designer API.
+I render the historical dataset base through an import-safe explicit-output CLI, validate before writing and preserve backups and unchanged files.
+I assemble retained dataset parts through validated explicit-output writes, require earlier layers, reject duplicate definitions and compose all nine layers.
+I isolate functional-group lookup results from shared indexes and expose named metadata/SMARTS validation with failure status.
+I repair three noncompiling SMARTS, bind macrocycle controls to ChEBI structures and retain positive/negative matches and complete catalog compilation.
+I isolate molecule pattern imports, reject empty inputs and preserve demo JSON and failure exit statuses.
+I preserve reaction JSON output without Rich, validate paired inputs and render actual display line breaks with propagated failure statuses.
+I resolve SerpentRod exports lazily, retain structured processing fields and use one fold report call with verified PDB/error dispatch.
+I repair materials export bindings, report resident junction counts, propagate crack-force errors and validate simulation and cavity parameters.

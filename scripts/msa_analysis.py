@@ -13,7 +13,7 @@ if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
     _doc = __doc__.strip() if __doc__ else "scripts/msa_analysis.py"
     print(_doc)
     print()
-    info_line("Examples:")
+    print("Examples:")
     print(_HELP_EXAMPLES)
     print()
     _sys.exit(0)
@@ -314,7 +314,7 @@ def main():
             "aa_to_primitive": r["aa_to_primitive"],
         }
     
-    with open("/home/mrnob0dy666/p4rakernel/msa_analysis.json", "w") as f:
+    with open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "msa_analysis.json"), "w") as f:
         json.dump(output, f, indent=2)
     
     info_line(f"\n{'='*70}")

@@ -1,0 +1,24 @@
+{
+  "forced_domain_import_failure": {
+    "status": 1,
+    "false_success_absent": true
+  },
+  "serpentrod --help": {
+    "status": 0
+  },
+  "serpentrod foldv2 --help": {
+    "status": 0
+  },
+  "demo missing-review-demo": {
+    "status": 1
+  },
+  "status --unknown-review-option": {
+    "status": 2
+  },
+  "forced_chain_phase_failures": {
+    "status": 1,
+    "false_success_absent": true,
+    "explicit_zero_depth_preserved": true,
+    "subtitle_header_executed": true
+  }
+}

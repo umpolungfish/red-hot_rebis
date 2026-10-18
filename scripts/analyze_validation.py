@@ -12,7 +12,7 @@ if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
     _doc = __doc__.strip() if __doc__ else "scripts/analyze_validation.py"
     print(_doc)
     print()
-    info_line("Examples:")
+    print("Examples:")
     print(_HELP_EXAMPLES)
     print()
     _sys.exit(0)
@@ -37,30 +37,10 @@ def fetch_pdb(pdb_id):
         return resp.read().decode()
 
 def extract_single_model_ca(pdb_text: str) -> Tuple[List[Tuple[float,float,float]], str]:
-    """Extract CA from first MODEL only (NMR ensembles have multiple models)."""
-    atoms = []
-    seq = ""
-    in_model = True
-    model_count = 0
-    for line in pdb_text.split('\n'):
-        if line.startswith("MODEL"):
-            model_count += 1
-            if model_count > 1:
-                in_model = False
-            else:
-                in_model = True
-        if line.startswith("ENDMDL"):
-            in_model = False
-        if line.startswith("ATOM") and in_model and line[12:16].strip() == "CA":
-            try:
-                three = line[17:20].strip().upper()
-                if three not in THREE_TO_ONE: continue
-                one = THREE_TO_ONE[three]
-                x, y, z = float(line[30:38]), float(line[38:46]), float(line[46:54])
-                atoms.append((x,y,z))
-                seq += one
-            except: continue
-    return atoms, seq
+    """Use the same model, chain and conformer selection as validation."""
+    from scripts.run_pdb_validation import parse_ca_coords
+    atoms, seq = parse_ca_coords(pdb_text)
+    return [(a['x'], a['y'], a['z']) for a in atoms], seq
 
 def get_contacts(atoms, cutoff=8.0, min_dist=6):
     """Get contacts with stricter criteria."""
@@ -92,7 +72,7 @@ def analyze(pdb_id: str):
             c = get_contacts(atoms, cutoff, min_dist)
             info_line(f"  cutoff={cutoff}Å, min_dist≥{min_dist}: {len(c)} contacts")
     
-    # Get standard CASP-style long-range contacts (Cβ-Cβ < 8.0Å, seq sep ≥ 24)
+    # Stratify observed CA contacts by sequence-index separation.
     contacts_long = get_contacts(atoms, 8.0, 24)
     contacts_medium = get_contacts(atoms, 8.0, 12)
     contacts_short = get_contacts(atoms, 8.0, 6)
@@ -109,6 +89,9 @@ def analyze(pdb_id: str):
     sr = SerpentRod(rna, name=pdb_id)
     result = sr.report()
     
+    if result["aa_sequence"] != seq:
+        raise ValueError("Translated sequence differs from observed CA sequence")
+
     # Get predicted contacts
     pred_contacts = set((c["i"], c["j"]) for c in result["contacts"])
     
@@ -148,70 +131,41 @@ f"actual_d={d:.2f}Å  {classifications[0]:12s}  "
     info_line(f"  Predicted helices: {len(helices_predicted)}")
     info_line(f"  Predicted sheets: {len(sheets_predicted)}")
     
-    # Compare with PDB HELIX/SHEET records
-    pdb_helices = []
-    pdb_sheets = []
-    for line in pdb_text.split('\n'):
-        if line.startswith("HELIX"):
-            try:
-                start = int(line[21:25].strip())
-                end = int(line[33:37].strip())
-                pdb_helices.append((start, end))
-            except: pass
-        if line.startswith("SHEET"):
-            try:
-                start = int(line[33:37].strip())
-                end = int(line[38:42].strip())
-                pdb_sheets.append((start, end))
-            except: pass
-    
-    # Map PDB residue numbers to sequence indices
-    seq_idx_map = {}
-    idx = 0
-    for line in pdb_text.split('\n'):
-        if line.startswith("ATOM") and line[12:16].strip() == "CA":
-            try:
-                res_num = int(line[22:26].strip())
-                seq_idx_map[res_num] = idx
-                idx += 1
-            except: pass
-            break  # Just get first CA's resnum
-    
-    # Build index map
-    seq_idx_map = {}
-    idx = 0
-    first_res = None
-    for line in pdb_text.split('\n'):
-        if line.startswith("ATOM") and line[12:16].strip() == "CA":
-            try:
-                res_num = int(line[22:26].strip())
-                if first_res is None:
-                    first_res = res_num
-                seq_idx_map[res_num] = idx
-                idx += 1
-            except: pass
-    
-    info_line(f"\nPDB secondary structure (from PDB records):")
-    info_line(f"  Helices: {pdb_helices}")
-    info_line(f"  Sheets: {pdb_sheets}")
-    
-    # Accuracy of secondary structure
-    correct_helix = 0
-    predicted_helix_regions = set()
-    for e in helices_predicted:
-        for i in range(e["start"], e["end"]):
-            predicted_helix_regions.add(i)
-    
-    for start, end in pdb_helices:
-        for res_num in range(start, end+1):
-            if res_num in seq_idx_map:
-                idx = seq_idx_map[res_num]
-                if idx in predicted_helix_regions:
-                    correct_helix += 1
-    
-    total_pdb_helix = sum(end-start+1 for start,end in pdb_helices)
-    info_line(f"\n  Helix accuracy: {correct_helix}/{total_pdb_helix} residues matched")
+    # Compare only annotations on the selected observed chain. PDB residue
+    # numbering and insertion codes remain attached through this comparison.
+    from scripts.run_pdb_validation import parse_ca_coords
+    observed, _ = parse_ca_coords(pdb_text)
+    chain = observed[0]['chain'] if observed else None
+    regions = {'HELIX': [], 'SHEET': []}
+    for line in pdb_text.splitlines():
+        kind = line[:6].strip()
+        if kind not in regions:
+            continue
+        if kind == 'HELIX':
+            start_chain, end_chain = line[19:20], line[31:32]
+            start, end = (line[21:25], line[25:26]), (line[33:37], line[37:38])
+        else:
+            start_chain, end_chain = line[21:22], line[32:33]
+            start, end = (line[22:26], line[26:27]), (line[33:37], line[37:38])
+        if start_chain != chain or end_chain != chain:
+            continue
+        try:
+            regions[kind].append(((int(start[0]), start[1]), (int(end[0]), end[1])))
+        except ValueError as exc:
+            raise ValueError(f'Invalid {kind} annotation: {line}') from exc
+    observed_helix = set()
+    for idx, atom in enumerate(observed):
+        residue = (int(atom['residue_id']), atom['insertion_code'])
+        if any(start <= residue <= end for start, end in regions['HELIX']):
+            observed_helix.add(idx)
+    predicted_helix = {i for e in helices_predicted for i in range(e['start'], e['end'])}
+    matched = observed_helix & predicted_helix
+    info_line(f"\nPDB secondary structure on selected chain {chain!r}:")
+    info_line(f"  Helices: {regions['HELIX']}")
+    info_line(f"  Sheets: {regions['SHEET']}")
+    info_line(f"  Helix agreement: {len(matched)}/{len(observed_helix)} observed residues matched")
 
-# Run on best candidates
-for pdb_id in ["1VII", "1UBQ"]:
-    analyze(pdb_id)
+
+if __name__ == '__main__':
+    for pdb_id in ['1VII', '1UBQ']:
+        analyze(pdb_id)

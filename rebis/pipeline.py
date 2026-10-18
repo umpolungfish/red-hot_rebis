@@ -10,7 +10,7 @@ Full implementations of:
   - LiftPipeline (prose lift)
 
 Callable as a command:
-  rebis.pipeline verify [--file PATH]
+  rebis.pipeline verify [--source PATH]
   rebis.pipeline imscribe <name> [--description DESC]
   rebis.pipeline retro <smiles> [--depth 6]
   rebis.pipeline therapy <key> [--skip-ch3mpile] [--skip-serpentrod]
@@ -28,49 +28,16 @@ for p in [str(_REBIS_ROOT), str(_REBIS_ROOT / "pipeline"),
     if p not in sys.path:
         sys.path.insert(0, p)
 
-__all__ = []
+_EXPORTS = {'AutoImscriber': 'pipeline.auto_imscriber', 'identity_phase': 'pipeline.frob', 'bootstrap_compiler': 'pipeline.frob', 'VINIT': 'pipeline.frob', 'TANCH': 'pipeline.frob', 'AREV': 'pipeline.frob', 'AFWD': 'pipeline.frob', 'FFUSE': 'pipeline.frob', 'CLINK': 'pipeline.frob', 'IFIX': 'pipeline.frob', 'ISCRIB': 'pipeline.frob', 'EVALT': 'pipeline.frob', 'EVALF': 'pipeline.frob', 'ImscriptionDesignAgent': 'pipeline.imscribe_agent', 'IGTool': 'pipeline.imscribe_tool', 'ToolResponse': 'pipeline.imscribe_tool', 'ReactionPipeline': 'pipeline.reaction_pipeline', 'RetrosyntheticNode': 'pipeline.reaction_pipeline', 'PipelineReport': 'pipeline.therapy_to_pdb', 'run_pipeline': 'pipeline.therapy_to_pdb', 'run_all_therapies': 'pipeline.therapy_to_pdb', 'generate_summary_report': 'pipeline.therapy_to_pdb', 'stage_load': 'pipeline.therapy_to_pdb', 'stage_analyze': 'pipeline.therapy_to_pdb', 'stage_ch3mpile': 'pipeline.therapy_to_pdb', 'stage_serpentrod': 'pipeline.therapy_to_pdb', 'stage_pdb_validate': 'pipeline.therapy_to_pdb', 'stage_frobenius': 'pipeline.therapy_to_pdb', 'LiftPipelineOb3ect': 'pipeline.lift_pipeline.lift_pipeline_ob3ect'}
+__all__ = list(_EXPORTS)
 
-def _lazy(name, module, attr=None):
-    try:
-        m = importlib.import_module(module)
-        globals()[name] = getattr(m, attr or name)
-        __all__.append(name)
-    except Exception:
-        pass
 
-_lazy("AutoImscriber", "pipeline.auto_imscriber")
-_lazy("FrobeniusVerifier", "pipeline.frob")
-_lazy("verify_frobenius", "pipeline.frob")
-_lazy("identity_phase", "pipeline.frob")
-_lazy("bootstrap_compiler", "pipeline.frob")
-_lazy("VINIT", "pipeline.frob")
-_lazy("TANCH", "pipeline.frob")
-_lazy("AREV", "pipeline.frob")
-_lazy("AFWD", "pipeline.frob")
-_lazy("FFUSE", "pipeline.frob")
-_lazy("CLINK", "pipeline.frob")
-_lazy("IFIX", "pipeline.frob")
-_lazy("ISCRIB", "pipeline.frob")
-_lazy("EVALT", "pipeline.frob")
-_lazy("EVALF", "pipeline.frob")
-_lazy("ImscribeAgent", "pipeline.imscribe_agent")
-_lazy("ImscriptionDesignAgent", "pipeline.imscribe_agent")
-_lazy("IGTool", "pipeline.imscribe_tool")
-_lazy("ToolResponse", "pipeline.imscribe_tool")
-_lazy("Ob3ectImscriber", "pipeline.ob3ect_imscriber")
-_lazy("ReactionPipeline", "pipeline.reaction_pipeline")
-_lazy("RetrosyntheticNode", "pipeline.reaction_pipeline")
-_lazy("PipelineReport", "pipeline.therapy_to_pdb")
-_lazy("run_pipeline", "pipeline.therapy_to_pdb")
-_lazy("run_all_therapies", "pipeline.therapy_to_pdb")
-_lazy("generate_summary_report", "pipeline.therapy_to_pdb")
-_lazy("stage_load", "pipeline.therapy_to_pdb")
-_lazy("stage_analyze", "pipeline.therapy_to_pdb")
-_lazy("stage_ch3mpile", "pipeline.therapy_to_pdb")
-_lazy("stage_serpentrod", "pipeline.therapy_to_pdb")
-_lazy("stage_pdb_validate", "pipeline.therapy_to_pdb")
-_lazy("stage_frobenius", "pipeline.therapy_to_pdb")
-_lazy("LiftPipelineOb3ect", "pipeline.lift_pipeline.lift_pipeline_ob3ect")
+def __getattr__(name):
+    if name not in _EXPORTS:
+        raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+    value = getattr(importlib.import_module(_EXPORTS[name]), name)
+    globals()[name] = value
+    return value
 
 
 def _json_or_str(obj):
@@ -87,7 +54,8 @@ def _json_or_str(obj):
 def _cmd_verify(args):
     """Run Frobenius verification — identity_phase + bootstrap_compiler."""
     print("═ Frobenius Verification (μ∘δ=id) ═")
-    filepath = args.file if args.file else __file__
+    from pipeline import frob
+    filepath = args.source or frob.__file__
     try:
         from pipeline.frob import identity_phase, bootstrap_compiler, VINIT, TANCH, AREV, AFWD, FFUSE, CLINK, IFIX, EVALT, EVALF
         print(f"  Source: {filepath}")
@@ -111,28 +79,18 @@ def _cmd_verify(args):
         print(f"      AFWD: {'✓' if afwd_result else '✗'}")
         ffuse_result = FFUSE(tanch_result, source) if tanch_result else None
         print(f"      FFUSE: {'✓' if ffuse_result else '✗'}")
-        # CLINK writes what it is given to the path it is given, so verification
-        # runs it against a temporary file. Verifying a source must never rewrite
-        # that source, and calling the operator failed because it returns nothing
-        # is a second error: it is judged by what it wrote.
-        clink_ok = False
-        if arev_result:
-            import tempfile, os as _os
-            fd, tmp = tempfile.mkstemp(suffix=".py")
-            _os.close(fd)
-            try:
-                CLINK(arev_result, tmp)
-                with open(tmp, encoding="utf-8") as fh:
-                    written = fh.read()
-                clink_ok = arev_result.strip() in written
-            finally:
-                _os.unlink(tmp)
-        print(f"      CLINK: {'✓' if clink_ok else '✗'}")
-        IFIX(filepath)
+        # Exercise file emission on a local copy, preserving the input source.
+        import tempfile
+        work_root = _REBIS_ROOT / "measurements" / "script_review"
+        work_root.mkdir(parents=True, exist_ok=True)
+        with tempfile.TemporaryDirectory(prefix="verify-", dir=work_root) as work:
+            emitted = Path(work) / "emitted.py"
+            CLINK(source, str(emitted))
+            written = emitted.read_text(encoding="utf-8")
+            clink_ok = ast.dump(ast.parse(written)) == ast.dump(ast.parse(source))
+            print(f"      CLINK: {'✓' if clink_ok else '✗'}")
+            IFIX(str(emitted))
         print("      IFIX: ✓")
-        iscrib_result = ISCRIB(filepath) if 'ISCRIB' in globals() else None
-        evalt_result = EVALT()
-        print(f"      EVALT: {evalt_result}")
 
         # Phase 3: Bootstrap compiler
         print("  [3] Bootstrap compiler...")
@@ -149,11 +107,10 @@ def _cmd_verify(args):
                 "AREV": str(arev_result)[:200],
                 "AFWD": bool(afwd_result),
                 "FFUSE": bool(ffuse_result),
-                "CLINK": bool(clink_result),
-                "IFIX": str(ifix_result)[:200],
-                "EVALT": str(evalt_result)[:200],
+                "CLINK": clink_ok,
+                "IFIX": True,
             },
-            "frobenius_closed": identity_ok and bootstrap_result,
+            "frobenius_closed": bool(identity_ok and ffuse_result and clink_ok and bootstrap_result),
         }
         print()
         print(_json_or_str(output))
@@ -162,7 +119,7 @@ def _cmd_verify(args):
         print(f"Verification failed: {e}")
         traceback.print_exc()
         return 1
-    return 0
+    return int(not output["frobenius_closed"])
 
 
 def _cmd_imscribe(args):
@@ -189,21 +146,32 @@ def _cmd_retro(args):
     """Run retrosynthetic analysis via ReactionPipeline."""
     smiles = args.smiles
     depth = args.depth
+    if not smiles or depth < 0:
+        print("A target SMILES and nonnegative depth are required.")
+        return 1
     print(f"═ Retrosynthetic Analysis ═")
     print(f"  Target SMILES: {smiles}")
     print(f"  Max depth: {depth}")
     try:
         from pipeline.reaction_pipeline import ReactionPipeline
         pipeline = ReactionPipeline(max_depth=depth)
-        result = pipeline.analyze(smiles) if hasattr(pipeline, 'analyze') else \
-                 pipeline.run(smiles) if hasattr(pipeline, 'run') else str(pipeline)
-        print(_json_or_str(result))
+        pipeline._target_smiles = smiles
+        result = pipeline.deep_retrosynthesis(smiles)
+        pipeline.print_tree(result)
     except Exception as e:
         import traceback
         print(f"Retrosynthesis failed: {e}")
         traceback.print_exc()
         return 1
     return 0
+
+
+def _report_failed(report):
+    """Inspect stage execution status without collapsing scientific readings."""
+    stages = report.stages
+    return not stages or any(
+        getattr(stage.status, "value", stage.status) in ("failed", "pending", "running")
+        or bool(stage.errors) for stage in stages)
 
 
 def _cmd_therapy(args):
@@ -230,14 +198,14 @@ def _cmd_therapy(args):
         print(f"Therapy pipeline failed: {e}")
         traceback.print_exc()
         return 1
-    return 0
+    return int(_report_failed(report))
 
 
 def _cmd_therapy_all(args):
     """Run therapy→PDB pipeline for ALL therapies."""
     print(f"═ All Therapies → PDB Pipeline ═")
     try:
-        from pipeline.therapy_to_pdb import run_all_therapies, generate_summary_report
+        from pipeline.therapy_to_pdb import run_all_therapies, generate_summary_report, THERAPIES
         print("  Running all therapies (this may take a while)...")
         reports = run_all_therapies(
             skip_ch3mpile=args.skip_ch3mpile,
@@ -250,7 +218,9 @@ def _cmd_therapy_all(args):
         print(f"Therapy pipeline failed: {e}")
         traceback.print_exc()
         return 1
-    return 0
+    return int(not reports or len(reports) != len(THERAPIES)
+               or {r.therapy_key for r in reports} != set(THERAPIES)
+               or any(_report_failed(report) for report in reports))
 
 
 def _cmd_lift(args):
@@ -264,7 +234,7 @@ def _cmd_lift(args):
     try:
         from pipeline.lift_pipeline.lift_pipeline_ob3ect import LiftPipelineOb3ect
         lifter = LiftPipelineOb3ect()
-        result = lifter.verify() if hasattr(lifter, 'verify') else str(lifter)
+        result = lifter.analyze_document(Path(args.filepath).read_text(encoding="utf-8"))
         output = {
             "file": args.filepath,
             "result": result if isinstance(result, (dict, list)) else str(result)[:2000],
@@ -280,11 +250,9 @@ def _cmd_lift(args):
 def _cmd_list(args):
     print("rebis.pipeline — Exports:")
     for name in sorted(__all__):
-        obj = globals().get(name)
-        status = "✓" if obj is not None else "✗"
-        print(f"  {status} {name}")
+        print(f"  {name} ({_EXPORTS[name]}; resolved on access)")
     print("\nCommands:")
-    print("  verify [--file PATH]    — Frobenius μ∘δ=id verification")
+    print("  verify [--source PATH]    — Frobenius μ∘δ=id verification")
     print("  imscribe <name>         — Auto-imscription generation")
     print("  retro <smiles>          — Retrosynthetic analysis")
     print("  therapy <key>           — Therapy→PDB pipeline")
@@ -311,10 +279,10 @@ def main():
                     "  2. IMASM bootstrap sequence (VINIT→TANCH→AREV→AFWD→FFUSE→CLINK→IFIX→EVALT)\n"
                     "  3. Bootstrap compiler (self-verifying compilation)",
         epilog="Examples:  rebis.pipeline verify\n"
-               "           rebis.pipeline verify --file /path/to/module.py",
+               "           rebis.pipeline verify --source /path/to/module.py",
         formatter_class=argparse.RawDescriptionHelpFormatter)
-    p_ver.add_argument("--file", default="",
-                       help="File to verify (default: this module)")
+    p_ver.add_argument("--source", default="",
+                       help="Python source to verify (default: pipeline/frob.py); --file loads command configuration")
     p_ver.set_defaults(func=_cmd_verify)
 
     p_ims = sub.add_parser("imscribe",

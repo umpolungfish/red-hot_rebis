@@ -27,56 +27,62 @@ for p in [str(_REBIS_ROOT), str(_REBIS_ROOT / "serpentrod"),
     if p not in sys.path:
         sys.path.insert(0, p)
 
-__all__ = []
+_EXPORTS = {'RollingProfile': 'serpentrod.protein_v5',
+ 'CleavageSite': 'serpentrod.protein_v5',
+ 'MatureProduct': 'serpentrod.protein_v5',
+ 'ProcessingPrediction': 'serpentrod.protein_v5',
+ 'EnhancedPredictorV5': 'serpentrod.protein_v5',
+ 'improved_signal_peptide_detection': 'serpentrod.protein_v5',
+ 'classify_module_rich': 'serpentrod.protein_v5',
+ 'match_fingerprint': 'serpentrod.protein_v5',
+ 'identify_fragment': 'serpentrod.protein_v5',
+ 'FINGERPRINTS': 'serpentrod.protein_v5',
+ 'detect_monobasic_sites': 'serpentrod.protein_v5',
+ 'should_merge_fragments': 'serpentrod.protein_v5',
+ 'translate_dna': 'serpentrod.protein_v5',
+ 'reverse_translate': 'serpentrod.protein_v5',
+ 'ProteinStratifiedPredictor': 'serpentrod.stratified_predictor',
+ 'classify_module': 'serpentrod.stratified_predictor',
+ 'predict_processing': 'serpentrod.stratified_predictor',
+ 'analyze_spectrum': 'serpentrod.stratified_predictor',
+ 'compare_spectra': 'serpentrod.stratified_predictor',
+ 'PRIMITIVE_MAP': 'serpentrod.stratified_predictor',
+ 'PRIMITIVE_ORDERS': 'serpentrod.stratified_predictor',
+ 'HYDROPATHY': 'serpentrod.stratified_predictor',
+ 'SerpentRod': 'rhr_p4rky.serpent_rod',
+ 'FoldedProtein': 'rhr_p4rky.serpent_rod',
+ 'SerpentRodV2': 'rhr_p4rky.serpent_rod_v2',
+ 'Gen2Result': 'rhr_p4rky.serpent_rod_v2',
+ 'frobenius_verified_v2': 'rhr_p4rky.serpent_rod_v2'}
+__all__ = list(_EXPORTS)
 
-def _lazy(name, module, attr=None):
-    try:
-        m = importlib.import_module(module)
-        globals()[name] = getattr(m, attr or name)
-        __all__.append(name)
-    except Exception:
-        pass
 
-# protein_v5 — enhanced predictor
-_lazy("RollingProfile", "serpentrod.protein_v5")
-_lazy("CleavageSite", "serpentrod.protein_v5")
-_lazy("MatureProduct", "serpentrod.protein_v5")
-_lazy("ProcessingPrediction", "serpentrod.protein_v5")
-_lazy("EnhancedPredictorV5", "serpentrod.protein_v5")
-_lazy("improved_signal_peptide_detection", "serpentrod.protein_v5")
-_lazy("classify_module_rich", "serpentrod.protein_v5")
-_lazy("match_fingerprint", "serpentrod.protein_v5")
-_lazy("identify_fragment", "serpentrod.protein_v5")
-_lazy("FINGERPRINTS", "serpentrod.protein_v5")
-_lazy("detect_monobasic_sites", "serpentrod.protein_v5")
-_lazy("should_merge_fragments", "serpentrod.protein_v5")
-_lazy("translate_dna", "serpentrod.protein_v5")
-_lazy("reverse_translate", "serpentrod.protein_v5")
+def __getattr__(name):
+    if name not in _EXPORTS:
+        raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+    value = getattr(importlib.import_module(_EXPORTS[name]), name)
+    globals()[name] = value
+    return value
 
-# stratified_predictor
-_lazy("ProteinStratifiedPredictor", "serpentrod.stratified_predictor")
-_lazy("classify_module", "serpentrod.stratified_predictor")
-_lazy("predict_processing", "serpentrod.stratified_predictor")
-_lazy("analyze_spectrum", "serpentrod.stratified_predictor")
-_lazy("compare_spectra", "serpentrod.stratified_predictor")
-_lazy("PRIMITIVE_MAP", "serpentrod.stratified_predictor")
-_lazy("PRIMITIVE_ORDERS", "serpentrod.stratified_predictor")
-_lazy("HYDROPATHY", "serpentrod.stratified_predictor")
 
-# serpent_rod (v1 + v2)
-_lazy("SerpentRod", "rhr_p4rky.serpent_rod")
-_lazy("FoldedProtein", "rhr_p4rky.serpent_rod")
-_lazy("SerpentRodV2", "rhr_p4rky.serpent_rod_v2")
-_lazy("Gen2Result", "rhr_p4rky.serpent_rod_v2")
-_lazy("frobenius_verified_v2", "rhr_p4rky.serpent_rod_v2")
+def _json_default(obj):
+    from dataclasses import asdict, is_dataclass
+    from enum import Enum
+    if is_dataclass(obj) and not isinstance(obj, type):
+        return asdict(obj)
+    if isinstance(obj, Enum):
+        return obj.value
+    if hasattr(obj, '__dict__'):
+        return vars(obj)
+    return str(obj)
 
 
 def _json_or_str(obj):
     if isinstance(obj, (dict, list)):
-        return json.dumps(obj, indent=2, default=str, ensure_ascii=False)
+        return json.dumps(obj, indent=2, default=_json_default, ensure_ascii=False)
     if hasattr(obj, '__dict__'):
         try:
-            return json.dumps(vars(obj), indent=2, default=str, ensure_ascii=False)
+            return json.dumps(vars(obj), indent=2, default=_json_default, ensure_ascii=False)
         except Exception:
             return str(obj)
     return str(obj)
@@ -100,10 +106,6 @@ def _cmd_predict(args):
             narrative = predictor.generate_narrative(result)
         except Exception:
             narrative = None
-        try:
-            json_report = predictor.generate_json_report(result)
-        except Exception:
-            json_report = None
 
         output = {
             "name": name,
@@ -194,7 +196,7 @@ def _cmd_process(args):
         output = {
             "name": name,
             "length": len(args.sequence),
-            "processing_result": result if isinstance(result, (dict, list)) else str(result),
+            "processing_result": result,
             "narrative": narrative,
         }
         print(_json_or_str(output))
@@ -218,12 +220,11 @@ def _cmd_fold(args):
     try:
         from rhr_p4rky.serpent_rod import SerpentRod
         sr = SerpentRod(rna_sequence=args.rna, name=name)
-        result = sr.predict()
         report = sr.report()
         output = {
             "name": name,
             "rna": args.rna,
-            "winding_number": result.winding_number if hasattr(result, 'winding_number') else None,
+            "winding_number": report.get("winding_number"),
             "folded_report": report if isinstance(report, (dict, list)) else str(report),
         }
         print(_json_or_str(output))
@@ -267,6 +268,9 @@ def _cmd_foldv2(args):
             "activation": result.activation_count,
             "frobenius": result.frobenius_verified,
             "winding": result.winding_number,
+            "geometry_evidence": result.geometry_evidence,
+            "secondary_evidence": result.secondary_evidence,
+            "geometry_source": result.source_binding,
         }
         if pdb_path:
             output["pdb_path"] = pdb_path

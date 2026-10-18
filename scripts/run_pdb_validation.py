@@ -12,7 +12,7 @@ if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
     _doc = __doc__.strip() if __doc__ else "scripts/run_pdb_validation.py"
     print(_doc)
     print()
-    info_line("Examples:")
+    print("Examples:")
     print(_HELP_EXAMPLES)
     print()
     _sys.exit(0)
@@ -21,24 +21,8 @@ import sys, os, json, math, urllib.request, tempfile
 from typing import List, Tuple, Dict, Set
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
-# Patch imports
-import rhr_p4rky.belnap
-import rhr_p4rky.genetics_b4
-import rhr_p4rky.genetic_code
-import importlib.util, importlib.machinery, types
+from rhr_p4rky.serpent_rod import SerpentRod
 from shared.rich_output import *
-
-
-pkg_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "rhr_p4rky")
-loader = importlib.machinery.SourceFileLoader("rhr_p4rky.serpent_rod",
-    os.path.join(pkg_dir, "serpent_rod.py"))
-spec = importlib.util.spec_from_loader("rhr_p4rky.serpent_rod", loader)
-mod = importlib.util.module_from_spec(spec)
-sys.modules["rhr_p4rky.serpent_rod"] = mod
-mod.__package__ = "rhr_p4rky"
-loader.exec_module(mod)
-SerpentRod = mod.SerpentRod
-STANDARD_CODE = rhr_p4rky.genetic_code.STANDARD_CODE
 
 THREE_TO_ONE = {
     "ALA":"A","ARG":"R","ASN":"N","ASP":"D","CYS":"C",
@@ -71,21 +55,47 @@ def extract_sequence(pdb_text: str) -> str:
     return seq
 
 def parse_ca_coords(pdb_text: str) -> Tuple[List[Dict], str]:
-    atoms = []
-    atom_seq = ""
-    for line in pdb_text.split('\n'):
-        if line.startswith("ATOM") and line[12:16].strip() == "CA":
-            try:
-                three = line[17:20].strip().upper()
-                if three not in THREE_TO_ONE: continue
-                one = THREE_TO_ONE[three]
-                x = float(line[30:38].strip())
-                y = float(line[38:46].strip())
-                z = float(line[46:54].strip())
-                atoms.append({"one": one, "x": x, "y": y, "z": z})
-                atom_seq += one
-            except: continue
-    return atoms, atom_seq
+    """Read one chain from the first model, choosing one conformer per residue.
+
+    Blank and A alternate locations are preferred, then highest occupancy.
+    Residue identifiers are retained beside the coordinate-derived sequence.
+    """
+    residues = {}
+    selected_chain = None
+    for line in pdb_text.splitlines():
+        if line.startswith('ENDMDL'):
+            break
+        if not line.startswith('ATOM') or line[12:16].strip() != 'CA':
+            continue
+        three = line[17:20].strip().upper()
+        if three not in THREE_TO_ONE:
+            continue
+        chain = line[21:22]
+        try:
+            xyz = tuple(float(line[start:start+8]) for start in (30, 38, 46))
+            if not all(math.isfinite(v) for v in xyz):
+                raise ValueError('nonfinite coordinate')
+            occupancy = float(line[54:60].strip() or 0)
+        except ValueError as exc:
+            raise ValueError(f'Invalid CA coordinate: {line}') from exc
+        if selected_chain is None:
+            selected_chain = chain
+        if chain != selected_chain:
+            continue
+        alt = line[16:17]
+        key = (chain, line[22:26].strip(), line[26:27])
+        preference = (2 if alt == ' ' else 1 if alt == 'A' else 0, occupancy)
+        old = residues.get(key)
+        if old is not None and old['_preference'] >= preference:
+            continue
+        residues[key] = dict(one=THREE_TO_ONE[three], x=xyz[0], y=xyz[1],
+                             z=xyz[2], chain=chain, residue_id=key[1],
+                             insertion_code=key[2], alternate_location=alt,
+                             _preference=preference)
+    atoms = list(residues.values())
+    for atom in atoms:
+        atom.pop('_preference')
+    return atoms, ''.join(atom['one'] for atom in atoms)
 
 def extract_contacts(atoms: List[Dict], cutoff=8.0, min_dist=4) -> Set[Tuple[int,int]]:
     contacts = set()
@@ -108,11 +118,12 @@ def validate(pdb_id: str, pdb_text: str) -> Dict:
     info_line(f"{'='*60}")
     
     # Extract sequence
-    seq = extract_sequence(pdb_text)
-    info_line(f"SEQRES sequence ({len(seq)} AA): {seq}")
+    declared_seq = extract_sequence(pdb_text)
+    info_line(f"SEQRES sequence ({len(declared_seq)} AA): {declared_seq}")
     
     # Parse CA coordinates
     atoms, atom_seq = parse_ca_coords(pdb_text)
+    seq = atom_seq
     info_line(f"CA atoms parsed: {len(atoms)} (seq: {atom_seq})")
     
     if len(atoms) < 5:
@@ -148,8 +159,10 @@ def validate(pdb_id: str, pdb_text: str) -> Dict:
         aa_j = pred_seq[c["j"]] if c["j"] < len(pred_seq) else "?"
         info_line(f"  {aa_i}{c['i']} ⟷ {aa_j}{c['j']}  {c['type']}  conf={c['confidence']}")
     
-    # If predicted and experimental sequences differ in length, adjust
-    # Map predicted indices to experimental indices using sequence alignment
+    # Both contact sets use the same observed-residue sequence and index space.
+    # A changed translation cannot be compared by raw indices.
+    if pred_seq != atom_seq:
+        raise ValueError('Translated sequence differs from observed CA sequence')
     tp = len(pred_contacts & exp_contacts)
     fp = len(pred_contacts - exp_contacts)
     fn = len(exp_contacts - pred_contacts)
@@ -169,6 +182,11 @@ def validate(pdb_id: str, pdb_text: str) -> Dict:
     return {
         "pdb_id": pdb_id,
         "sequence": seq,
+        "declared_seqres_sequence": declared_seq,
+        "comparison_scope": "first model, first observed chain, observed CA residues",
+        "residue_identifiers": [{k: atom[k] for k in
+                                 ('chain', 'residue_id', 'insertion_code', 'alternate_location')}
+                                for atom in atoms],
         "seq_len": len(seq),
         "atom_seq": atom_seq,
         "atom_count": len(atoms),
@@ -209,6 +227,9 @@ if __name__ == "__main__":
                   f"pred_contacts={r['predicted_contacts']}, "
                   f"P={r['precision']:.3f} R={r['recall']:.3f} F1={r['f1_score']:.3f}")
     
-    with open("/home/mrnob0dy666/p4rakernel/pdb_validation_results.json", "w") as f:
+    with open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "pdb_validation_results.json"), "w") as f:
         json.dump(results, f, indent=2)
     info_line(f"\nResults saved to pdb_validation_results.json")
+
+    if any("error" in result for result in results):
+        sys.exit(1)

@@ -5,7 +5,7 @@ if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
     _doc = __doc__.strip() if __doc__ else "scripts/frob_design.py"
     print(_doc)
     print()
-    info_line("Examples:")
+    print("Examples:")
     print(_HELP_EXAMPLES)
     print()
     _sys.exit(0)
@@ -14,7 +14,7 @@ import sys, os, json, math
 from pathlib import Path
 _REBIS_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, _REBIS_ROOT)
-sys.path.insert(0, '/home/mrnob0dy666/imscribing_grammar')
+sys.path.insert(0, str(Path(_REBIS_ROOT).parent / 'imscribing_grammar'))
 sys.path.insert(0, os.path.join(_REBIS_ROOT, 'rhr_p4rky'))
 from ch3mpiler_serpentrod_pipeline import *
 sys.path.insert(0, os.path.join(_REBIS_ROOT, 'designs/gr33ngroblin'))

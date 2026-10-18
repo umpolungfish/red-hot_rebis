@@ -7,23 +7,6 @@ import hashlib
 from typing import Dict, Optional
 from shared.rich_output import *
 
-# This is a patch script: running it rewrites another file. Importing it must
-# not, so an import stops here rather than reapplying an edit that has already
-# been applied.
-if __name__ != "__main__":
-    raise ImportError(
-        "pipeline_hook.py rewrites another module; run it directly, do not import it")
-
-# ALREADY APPLIED CHECK — a patch that finds its own result in place has worked,
-# and applying it again duplicates what it inserted.
-import pathlib as _pl
-for _t in _pl.Path(__file__).parent.parent.rglob("reaction_pipeline.py"):
-    if 'fragment_smiles' in _t.read_text(encoding="utf-8"):
-        print("[already applied] the fragment hook is already present")
-        raise SystemExit(0)
-
-
-
 MAX_FILENAME_LEN = 100  # safe well under 255-char filesystem limit
 
 
@@ -34,7 +17,7 @@ def _safe_name(raw: str, max_len: int = 60) -> str:
     """
     if not raw:
         return ""
-    safe = "".join(c if c.isalnum() or c in "-_." else "_" for c in raw)
+    safe = "".join(c if c.isascii() and c.isalnum() or c in "-_." else "_" for c in raw)
     while "__" in safe:
         safe = safe.replace("__", "_")
     safe = safe[:max_len].rstrip("_-.")
@@ -119,6 +102,9 @@ def export_tree_to_cdxml(
         short_hash = hashlib.md5(stem.encode()).hexdigest()[:8]
         stem = stem[: MAX_FILENAME_LEN - 9].rstrip("_-.") + f"_{short_hash}"
 
+    if len(prefix_stripped) > 35 or len(name_stripped) > 55:
+        digest = hashlib.sha256((prefix + "\0" + target_name).encode()).hexdigest()[:12]
+        stem = stem[:MAX_FILENAME_LEN - 13] + "_" + digest
     filename = f"{stem}.cdxml"
     out_path = os.path.join(output_dir, filename)
 
@@ -130,6 +116,12 @@ def export_tree_to_cdxml(
             strategic_bonds=strategic_bonds,
             fg_pair_bonds=fg_pair_bonds,
         )
+        from rdkit import Chem
+        from ch3mpiler.smiles_to_cdxml import validate_cdxml
+        source = Chem.MolFromSmiles(smiles)
+        ok, reason = validate_cdxml(cdxml_str, source.GetNumAtoms(), [smiles])
+        if not ok:
+            raise ValueError(reason)
         with open(out_path, "w") as f:
             f.write(cdxml_str)
 

@@ -21,48 +21,17 @@ for p in [str(_REBIS_ROOT), str(_REBIS_ROOT / "ch3mpiler"),
           str(_REBIS_ROOT / "rhr_p4rky")]:
     if p not in sys.path: sys.path.insert(0, p)
 
-__all__ = []
+_EXPORTS = {'Ch3mpiler': ('rhr_p4rky.ch3mpiler_bridge', 'Ch3mpiler'), 'analyze': ('rhr_p4rky.ch3mpiler_bridge', 'analyze'), 'retrosynthesis': ('rhr_p4rky.ch3mpiler_bridge', 'retrosynthesis'), 'forward': ('rhr_p4rky.ch3mpiler_bridge', 'forward'), 'fg_info': ('rhr_p4rky.ch3mpiler_bridge', 'fg_info'), 'rxn_info': ('rhr_p4rky.ch3mpiler_bridge', 'rxn_info'), 'Ch3mpilerCore': ('ch3mpiler.compiler', 'Ch3mpiler'), 'CASResolver': ('ch3mpiler.compiler', 'CASResolver'), 'tensor_type': ('ch3mpiler.compiler', 'tensor_type'), 'join_type': ('ch3mpiler.compiler', 'join_type'), 'meet_type': ('ch3mpiler.compiler', 'meet_type'), 'bond_product_type': ('ch3mpiler.compiler', 'bond_product_type'), 'compose_molecule_type': ('ch3mpiler.compiler', 'compose_molecule_type'), 'get_molecule_type': ('ch3mpiler.compiler', 'get_molecule_type'), 'find_fgs': ('ch3mpiler.compiler', 'find_fgs'), 'find_fgs_from_smiles': ('ch3mpiler.compiler', 'find_fgs_from_smiles'), 'find_disconnections': ('ch3mpiler.compiler', 'find_disconnections'), 'fmt_tup': ('ch3mpiler.compiler', 'fmt_tup'), 'tup_dist': ('ch3mpiler.compiler', 'tup_dist'), 'tup_to_ords': ('ch3mpiler.compiler', 'tup_to_ords'), 'is_bond_compatible': ('ch3mpiler.compiler', 'is_bond_compatible'), 'print_retrosynthesis': ('ch3mpiler.compiler', 'print_retrosynthesis'), 'detect_functional_groups': ('ch3mpiler.fg_exhaustive', 'detect_functional_groups'), 'ScaffoldParser': ('ch3mpiler.scaffold_parser', 'ScaffoldParser'), 'resolve_name_to_smiles': ('ch3mpiler.scaffold_parser', 'resolve_name_to_smiles'), 'mol_to_cdxml': ('ch3mpiler.smiles_to_cdxml', 'mol_to_cdxml'), 'validate_cdxml': ('ch3mpiler.smiles_to_cdxml', 'validate_cdxml')}
+__all__ = list(_EXPORTS)
 
-def _lazy(name, module, attr=None):
-    try:
-        m = importlib.import_module(module)
-        globals()[name] = getattr(m, attr or name)
-        __all__.append(name)
-    except Exception:
-        pass
 
-# p4ra bridge
-_lazy("Ch3mpiler", "rhr_p4rky.ch3mpiler_bridge")
-_lazy("analyze", "rhr_p4rky.ch3mpiler_bridge")
-_lazy("retrosynthesis", "rhr_p4rky.ch3mpiler_bridge")
-_lazy("forward", "rhr_p4rky.ch3mpiler_bridge")
-_lazy("fg_info", "rhr_p4rky.ch3mpiler_bridge")
-_lazy("rxn_info", "rhr_p4rky.ch3mpiler_bridge")
-
-# Direct ch3mpiler
-_lazy("Ch3mpilerCore", "ch3mpiler.compiler", "Ch3mpiler")
-_lazy("CASResolver", "ch3mpiler.compiler")
-_lazy("tensor_type", "ch3mpiler.compiler")
-_lazy("join_type", "ch3mpiler.compiler")
-_lazy("meet_type", "ch3mpiler.compiler")
-_lazy("bond_product_type", "ch3mpiler.compiler")
-_lazy("compose_molecule_type", "ch3mpiler.compiler")
-_lazy("get_molecule_type", "ch3mpiler.compiler")
-_lazy("find_fgs", "ch3mpiler.compiler")
-_lazy("find_fgs_from_smiles", "ch3mpiler.compiler")
-_lazy("find_disconnections", "ch3mpiler.compiler")
-_lazy("fmt_tup", "ch3mpiler.compiler")
-_lazy("tup_dist", "ch3mpiler.compiler")
-_lazy("tup_to_ords", "ch3mpiler.compiler")
-_lazy("is_bond_compatible", "ch3mpiler.compiler")
-_lazy("print_retrosynthesis", "ch3mpiler.compiler")
-_lazy("detect_functional_groups", "ch3mpiler.fg_exhaustive")
-_lazy("parse_scaffold", "ch3mpiler.scaffold_parser")
-_lazy("scaffold_library", "ch3mpiler.scaffold_parser")
-_lazy("smiles_to_cdxml", "ch3mpiler.smiles_to_cdxml")
-_lazy("smiles_to_cdxml_file", "ch3mpiler.smiles_to_cdxml")
-_lazy("fix_cas_smiles", "ch3mpiler.cas_smiles_fix")
-_lazy("validate_smiles", "ch3mpiler.cas_smiles_fix")
+def __getattr__(name):
+    if name not in _EXPORTS:
+        raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+    module, attribute = _EXPORTS[name]
+    value = getattr(importlib.import_module(module), attribute)
+    globals()[name] = value
+    return value
 
 
 def _cmd_forward(args):
@@ -71,8 +40,10 @@ def _cmd_forward(args):
         print("Example:  rebis.ch3mpiler forward CC(=O)O")
         return 1
     try:
-        result = forward(args.smiles)
+        result = __getattr__("forward")([args.smiles])
         print(json.dumps(result, indent=2, ensure_ascii=False) if isinstance(result, (dict, list)) else result)
+        if isinstance(result, dict) and result.get("error"):
+            return 1
     except Exception as e:
         print(f"Forward synthesis failed: {e}")
         return 1
@@ -85,8 +56,10 @@ def _cmd_retrosynth(args):
         print("Example:  rebis.ch3mpiler retrosynth c1ccccc1")
         return 1
     try:
-        result = retrosynthesis(args.smiles)
+        result = __getattr__("retrosynthesis")(args.smiles)
         print(json.dumps(result, indent=2, ensure_ascii=False) if isinstance(result, (dict, list)) else result)
+        if isinstance(result, dict) and result.get("error"):
+            return 1
     except Exception as e:
         print(f"Retrosynthesis failed: {e}")
         return 1
@@ -119,19 +92,13 @@ def _cmd_cdxml(args):
         print("Example:  rebis.ch3mpiler cdxml CC(=O)O")
         return 1
     try:
-        import importlib, pathlib
-        _cdx_path = pathlib.Path(__file__).parent.parent / 'ch3mpiler' / 'smiles_to_cdxml.py'
-        _cdx_spec = importlib.util.spec_from_file_location('smiles_to_cdxml', str(_cdx_path))
-        _cdx_mod = importlib.util.module_from_spec(_cdx_spec)
-        _cdx_spec.loader.exec_module(_cdx_mod)
+        from ch3mpiler.smiles_to_cdxml import mol_to_cdxml
         from rdkit import Chem
         mol = Chem.MolFromSmiles(args.smiles)
         if mol is None:
             print(f'Invalid SMILES: {args.smiles}')
             return 1
-        cdx = _cdx_mod.mol_to_cdxml(mol)
-        if args.smiles:
-            cdx = cdx.replace('<s name="molecule"', f'<s name="{args.smiles}"')
+        cdx = mol_to_cdxml(mol, name=args.smiles)
         print(cdx)
     except Exception as e:
         print(f"CDXML conversion failed: {e}")
@@ -145,7 +112,7 @@ def _cmd_analyze(args):
         print("Example:  rebis.ch3mpiler analyze CC(=O)O")
         return 1
     try:
-        result = analyze(args.smiles)
+        result = __getattr__("analyze")(args.smiles)
         print(result)
     except Exception as e:
         print(f"Analysis failed: {e}")

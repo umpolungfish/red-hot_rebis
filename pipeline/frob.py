@@ -15,7 +15,7 @@ def semantic_identity(tree1: ast.AST, tree2: ast.AST) -> bool:
     """True structural + semantic equivalence"""
     # Primary: Python's built-in AST comparison (3.9+)
     try:
-        return ast.compare(tree1, tree2) is None  # None means equal
+        return ast.compare(tree1, tree2)
     except (AttributeError, TypeError):
         pass
     
@@ -113,26 +113,28 @@ def bootstrap_compiler(self_path: str = __file__):
     tree = TANCH(source)
     intermediate = AFWD(tree)
     
-    with tempfile.NamedTemporaryFile(mode='w', suffix='.py', delete=False) as tmp:
-        new_binary = tmp.name
+    from pathlib import Path
+    work_root = Path(__file__).resolve().parent.parent / "measurements" / "script_review"
+    work_root.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(prefix="bootstrap-", dir=work_root) as work:
+        new_binary = str(Path(work) / "clone.py")
         CLINK(intermediate, new_binary)
         IFIX(new_binary)
-    
-    info_line("\nTesting imscribed clone for closure...")
-    try:
-        result = subprocess.run(
-            [sys.executable, new_binary, "--self-test"],
-            capture_output=True, text=True, timeout=10
-        )
-        info_line("Clone output:", result.stdout.strip() or "<no output>")
-        if result.returncode == 0:
-            info_line("Closure: True — imscription loop closed successfully")
-        else:
-            info_line("Closure: Partial")
-    except Exception as e:
-        error_line(f"Closure test error: {e}")
-    
-    EVALT()
+        info_line("\nTesting imscribed clone for closure...")
+        try:
+            result = subprocess.run(
+                [sys.executable, new_binary, "--self-test"],
+                capture_output=True, text=True, timeout=10
+            )
+            info_line("Clone output:", result.stdout.strip() or "<no output>")
+            if result.returncode == 0:
+                info_line("Closure: True — imscription loop closed successfully")
+                return True
+            error_line(f"Clone failed (status {result.returncode}): {result.stderr.strip()}")
+            return False
+        except Exception as e:
+            error_line(f"Closure test error: {e}")
+            return False
 
 # =====================================================================
 # Entry
@@ -143,4 +145,4 @@ if __name__ == "__main__":
         info_line("mu o delta = id")
         sys.exit(0)
     
-    bootstrap_compiler()
+    sys.exit(0 if bootstrap_compiler() else 1)

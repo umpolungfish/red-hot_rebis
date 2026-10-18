@@ -1,0 +1,9 @@
+{
+  "file_option_spellings": "pass",
+  "cli_precedence_and_parser_reuse": "pass",
+  "missing_and_conflicting_inputs": "rejected",
+  "malformed_json": "rejected",
+  "genbank_origin": "pass",
+  "subcommand_and_required_inputs": "pass",
+  "explicit_subcommand_cli_precedence": "pass"
+}

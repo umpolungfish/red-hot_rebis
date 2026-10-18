@@ -1,0 +1,159 @@
+{
+  "source_sha256": "9a074333a18e1499166b3c6e7f0cae7c251b1cb83c94c20e8415518b7586ec2b",
+  "lazy_import": true,
+  "exports": {
+    "CriticalMetamaterial": "materials.critical_metamaterial",
+    "ClosureStatus": "materials.frobenius_closure_complete",
+    "ClosureDesign": "materials.frobenius_closure_complete",
+    "StructuralOpenDiagnosis": "materials.frobenius_closure_complete",
+    "complete_closure_table": "materials.frobenius_closure_complete",
+    "closure_mechanism_comparison": "materials.frobenius_closure_complete",
+    "FrobeniusClosureType": "materials.frobenius_exactor",
+    "ClosureObstruction": "materials.frobenius_exactor",
+    "ExactFrobeniusState": "materials.frobenius_exactor",
+    "ExactorMaterial": "materials.frobenius_exactor",
+    "design_exactor_omega": "materials.frobenius_exactor",
+    "FrobeniusMetamaterial": "materials.frobenius_metamaterial",
+    "FrobeniusMaterialParams": "materials.frobenius_metamaterial",
+    "MaterialDesign": "materials.ig_material_forge",
+    "MaterialForge": "materials.ig_material_forge",
+    "predefined_novel_materials": "materials.ig_material_forge",
+    "run_eagle_simulation": "materials.sophick_forge",
+    "EagleMaterialDesigner": "materials.sophick_forge",
+    "EagleCycleProtocol": "materials.sophick_forge",
+    "OuroboricAlloy": "materials.ouroboric_alloy",
+    "TripleJunction": "materials.ouroboric_alloy",
+    "GrainBoundary": "materials.ouroboric_alloy",
+    "TopologicalGrainBoundaryNetwork": "materials.ouroboric_alloy",
+    "NonQubitQCParadigm": "materials.non_qubit_qc",
+    "compute_all_deltas": "materials.non_qubit_qc",
+    "universal_deltas": "materials.non_qubit_qc",
+    "OperculumAnalysis": "materials.non_qubit_qc",
+    "full_operculum_report": "materials.non_qubit_qc",
+    "export_forge_designs": "materials.non_qubit_qc",
+    "paradigm_summary_table": "materials.non_qubit_qc",
+    "EternalMemorySim": "materials.materials_sim",
+    "resolve_molecule": "materials.molecule_material_bridge",
+    "molecule_to_material_tuple": "materials.molecule_material_bridge",
+    "CasimirCavity": "materials.zpe_design.casimir_cavity_design",
+    "CasimirCavityParams": "materials.zpe_design.casimir_cavity_design",
+    "ExtractionEngine": "materials.zpe_design.casimir_cavity_design"
+  },
+  "export_errors": {},
+  "runs": [
+    {
+      "args": [
+        "metamaterial",
+        "--size",
+        "6",
+        "--cycles",
+        "1",
+        "--heal-steps",
+        "1"
+      ],
+      "status": 0,
+      "stdout": "\u2550 Frobenius Metamaterial Simulation (\u03bc\u2218\u03b4=id) \u2550\n  Grid: 6\u00d76 | Load cycles: 1 | Heal steps/cycle: 1\n  Running 1 load-heal cycles...\n========================================================================\n  FROBENIUS METAMATERIAL \u2014 mu circ delta = id SELF-VERIFICATION\n========================================================================\n  Grid: 6x6 (36 cells)\n  Matrix modulus: 3.0 GPa\n  DA bond activation: 90.0 C\n  Capsule volume fraction: 0.08\n  CNT gauge factor: 5.0\n  NiTi volume fraction: 0.02\n  Target Frobenius error: < 0.01\n------------------------------------------------------------------------\n  Cycle         Load    ||mu\u00b7d-id||  Healed%   Agent%\n  ----- ------------ -------------- -------- --------\n  \u26a0   1      1.92%        0.0797   100.0%   100.0%\n\n========================================================================\n  RESULTS\n========================================================================\n  Final ||mu\u00b7delta - id||: 0.079659\n  Frobenius closure: INCOMPLETE\n  Total healing events: 0\n  Healing agent remaining: 100.0%\n  Cells fully healed: 36/36\n\n  TIER: O\u2081 \u2014 near-closure, requires occasional external intervention\n  \u2713 Frobenius norm: 0.079659 (OPEN)\n{\n  \"grid_size\": 6,\n  \"load_cycles\": 1,\n  \"heal_steps_per_cycle\": 1,\n  \"frobenius_norm\": 0.079659,\n  \"frobenius_closed\": false,\n  \"simulation_results\": [\n    {\n      \"cycle\": 1,\n      \"load_pct\": 1.92,\n      \"frob_before\": 0.0797,\n      \"frob_after\": 0.0797,\n      \"healed_pct\": 100.0,\n      \"agent_remaining_pct\": 100.0\n    }\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "critical",
+        "--size",
+        "4",
+        "--time",
+        "1"
+      ],
+      "status": 0,
+      "stdout": "\u2550 Critical Metamaterial (\u2299-sensing) \u2550\n  Grid: 4\u00d74 | \u03ba\u2080: 0.2 | Nonlinearity: 0.1 | Time: 1\n  Computing susceptibility...\n  Susceptibility: (495.0405047450562, 0.04950405047450562)\n  Running simulation for 1 steps...\n======================================================================\nSELF-CRITICAL METAMATERIAL SENSOR \u2014 \u2299 Criticality\n======================================================================\nArray: 4\u00d74 (16 resonators)\nCritical coupling \u03ba_c = 0.02\nTarget \u03c7 = 2e+04\nBidirectional feedback (\ud801\udc7e) maintains critical point\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n   t          \u03ba            \u03c7          Status\n\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n   0     0.1940     4.95e+02          TUNING\n\n======================================================================\nRESULTS\n======================================================================\n  Mean \u03c7: 4.95e+02\n  Peak \u03c7: 4.95e+02\n  Final \u03ba: 0.1940\n  Deviation |\u03ba-\u03ba_c|: 0.1740\n\n  \u26a0 Near-critical (|\u03ba-\u03ba_c| = 0.1740)\n\n  Small-signal test:\n    Signal 1e-06: \u03c7 = 5.21e+02 (gain = 521)\n    Signal 1e-08: \u03c7 = 5.21e+02 (gain = 521)\n    Signal 1e-10: \u03c7 = 5.21e+02 (gain = 521)\n\nSaved to results file\n{\n  \"grid_size\": 4,\n  \"initial_kappa\": 0.2,\n  \"nonlinearity\": 0.1,\n  \"susceptibility\": \"(495.0405047450562, 0.04950405047450562)\",\n  \"simulation_result\": \"None\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "alloy",
+        "--n-grains",
+        "4"
+      ],
+      "status": 0,
+      "stdout": "\u2550 Ouroboric Alloy \u2014 Topological Grain Boundary Network \u2550\n  Grains: 4\n{\n  \"n_grains\": 4,\n  \"total_winding\": 0,\n  \"n_triple_junctions\": 8,\n  \"n_grain_boundaries\": 12,\n  \"crack_driving_force_junction_0\": 3.333333333333333\n}\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "casimir",
+        "--target-gap",
+        "0.1"
+      ],
+      "status": 0,
+      "stdout": "\u2550 Casimir Cavity Designer (ZPE) \u2550\n  Target gap: 0.1 \u00b5m\n{\n  \"plate_separation_nm\": 100.0,\n  \"casimir_pressure_Pa\": -13.00125772447753,\n  \"casimir_force_N\": -0.0003250314431119382,\n  \"vacuum_energy_density_Jm3\": -4.333752574825843,\n  \"cavity_fundamental_Hz\": 1500000000000.0\n}\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "list"
+      ],
+      "status": 0,
+      "stdout": "rebis.materials \u2014 Available Design Tools:\n  CasimirCavity (materials.zpe_design.casimir_cavity_design; resolved on access)\n  CasimirCavityParams (materials.zpe_design.casimir_cavity_design; resolved on access)\n  ClosureDesign (materials.frobenius_closure_complete; resolved on access)\n  ClosureObstruction (materials.frobenius_exactor; resolved on access)\n  ClosureStatus (materials.frobenius_closure_complete; resolved on access)\n  CriticalMetamaterial (materials.critical_metamaterial; resolved on access)\n  EagleCycleProtocol (materials.sophick_forge; resolved on access)\n  EagleMaterialDesigner (materials.sophick_forge; resolved on access)\n  EternalMemorySim (materials.materials_sim; resolved on access)\n  ExactFrobeniusState (materials.frobenius_exactor; resolved on access)\n  ExactorMaterial (materials.frobenius_exactor; resolved on access)\n  ExtractionEngine (materials.zpe_design.casimir_cavity_design; resolved on access)\n  FrobeniusClosureType (materials.frobenius_exactor; resolved on access)\n  FrobeniusMaterialParams (materials.frobenius_metamaterial; resolved on access)\n  FrobeniusMetamaterial (materials.frobenius_metamaterial; resolved on access)\n  GrainBoundary (materials.ouroboric_alloy; resolved on access)\n  MaterialDesign (materials.ig_material_forge; resolved on access)\n  MaterialForge (materials.ig_material_forge; resolved on access)\n  NonQubitQCParadigm (materials.non_qubit_qc; resolved on access)\n  OperculumAnalysis (materials.non_qubit_qc; resolved on access)\n  OuroboricAlloy (materials.ouroboric_alloy; resolved on access)\n  StructuralOpenDiagnosis (materials.frobenius_closure_complete; resolved on access)\n  TopologicalGrainBoundaryNetwork (materials.ouroboric_alloy; resolved on access)\n  TripleJunction (materials.ouroboric_alloy; resolved on access)\n  closure_mechanism_comparison (materials.frobenius_closure_complete; resolved on access)\n  complete_closure_table (materials.frobenius_closure_complete; resolved on access)\n  compute_all_deltas (materials.non_qubit_qc; resolved on access)\n  design_exactor_omega (materials.frobenius_exactor; resolved on access)\n  export_forge_designs (materials.non_qubit_qc; resolved on access)\n  full_operculum_report (materials.non_qubit_qc; resolved on access)\n  molecule_to_material_tuple (materials.molecule_material_bridge; resolved on access)\n  paradigm_summary_table (materials.non_qubit_qc; resolved on access)\n  predefined_novel_materials (materials.ig_material_forge; resolved on access)\n  resolve_molecule (materials.molecule_material_bridge; resolved on access)\n  run_eagle_simulation (materials.sophick_forge; resolved on access)\n  universal_deltas (materials.non_qubit_qc; resolved on access)\n\nCommands:\n  forge [name]          \u2014 Forge material from IG tuple or catalog\n  metamaterial          \u2014 Frobenius \u03bc\u2218\u03b4=id metamaterial sim\n  critical              \u2014 \u2299-sensing critical metamaterial sim\n  alloy                 \u2014 Topological grain boundary network\n  nonqubit              \u2014 Non-qubit QC paradigm analysis\n  sophick               \u2014 Sophick forge\n  casimir               \u2014 Casimir cavity ZPE design\n  molecule <smiles>     \u2014 Molecule \u2192 IG tuple bridge\n  status                \u2014 Show result files\n  list                  \u2014 List tools\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "status"
+      ],
+      "status": 0,
+      "stdout": "rebis.materials \u2014 Results & Reports:\n  \u2713 forged_materials.json                          (76,351 bytes)\n  \u2713 frobenius_metamaterial_results.json            (6,631 bytes)\n  \u2713 frobenius_metamaterial_enhanced_results.json   (7,568 bytes)\n  \u2713 critical_metamaterial_results.json             (261 bytes)\n  \u2713 ouroboric_alloy_results.json                   (7,004 bytes)\n  \u2713 thermal_rectifier_results.json                 (620 bytes)\n  \u2713 sophick_forge_results.json                     (10,790 bytes)\n  \u2713 materials_simulation_results.json              (788 bytes)\n\nReports:\n  CHIRAL_EP_QDOT_REPORT.md\n  GAP_CLOSURE_REPORT.md\n  NOVEL_MATERIALS_REPORT.md\n  SELF_ORGANOID_REPORT.md\n  SOPHICK_FORGE_REPORT.md\n  STUFF.md\n\n8/8 result files present\n",
+      "stderr": ""
+    }
+  ],
+  "additional_exports": {
+    "SelfHealingComposite": "materials.materials_sim",
+    "TwoSegmentDiode": "materials.thermal_rectifier"
+  },
+  "crack_failure_status": 1,
+  "invalid_bounds": [
+    {
+      "args": [
+        "metamaterial",
+        "--size",
+        "4"
+      ],
+      "status": 2,
+      "stderr": "usage: rebis.materials metamaterial [-h] [--size SIZE] [--cycles CYCLES]\n                                    [--heal-steps HEAL_STEPS]\nrebis.materials metamaterial: error: argument --size: Must be at least 5\n"
+    },
+    {
+      "args": [
+        "metamaterial",
+        "--cycles",
+        "-1"
+      ],
+      "status": 2,
+      "stderr": "usage: rebis.materials metamaterial [-h] [--size SIZE] [--cycles CYCLES]\n                                    [--heal-steps HEAL_STEPS]\nrebis.materials metamaterial: error: argument --cycles: Must be at least 0\n"
+    },
+    {
+      "args": [
+        "alloy",
+        "--n-grains",
+        "2"
+      ],
+      "status": 2,
+      "stderr": "usage: rebis.materials alloy [-h] [--n-grains N_GRAINS]\nrebis.materials alloy: error: argument --n-grains: Must be at least 3\n"
+    },
+    {
+      "args": [
+        "casimir",
+        "--target-gap",
+        "nan"
+      ],
+      "status": 2,
+      "stderr": "usage: rebis.materials casimir [-h] [--target-gap TARGET_GAP]\nrebis.materials casimir: error: argument --target-gap: Must be finite and positive\n"
+    },
+    {
+      "args": [
+        "casimir",
+        "--target-gap",
+        "0"
+      ],
+      "status": 2,
+      "stderr": "usage: rebis.materials casimir [-h] [--target-gap TARGET_GAP]\nrebis.materials casimir: error: argument --target-gap: Must be finite and positive\n"
+    }
+  ]
+}

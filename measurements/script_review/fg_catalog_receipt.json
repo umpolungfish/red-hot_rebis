@@ -1,0 +1,19 @@
+{
+  "source_sha256": "13cdb9af003b398cf32ff7d6ef63e88364e1bf046651538834209cf4873c0b56",
+  "lookup_mutation_isolated": true,
+  "count_sum_matches": true,
+  "metadata_error_controls": true,
+  "compile_errors": {
+    "porphyrin_core": [
+      "SMARTS did not compile"
+    ],
+    "fullerene_patch": [
+      "SMARTS did not compile"
+    ],
+    "alkylating_agent": [
+      "SMARTS did not compile"
+    ]
+  },
+  "cli_status": 1,
+  "cli_stdout": "{\n  \"patterns\": 190,\n  \"tokens\": {\n    \"VINIT\": 7,\n    \"IMSCRIB\": 6,\n    \"EVALT\": 17,\n    \"EVALF\": 21,\n    \"AFWD\": 26,\n    \"AREV\": 31,\n    \"FSPLIT\": 11,\n    \"ENGAGR\": 12,\n    \"CLINK\": 19,\n    \"TANCH\": 18,\n    \"FFUSE\": 13,\n    \"IFIX\": 9\n  },\n  \"errors\": {\n    \"porphyrin_core\": [\n      \"SMARTS did not compile\"\n    ],\n    \"fullerene_patch\": [\n      \"SMARTS did not compile\"\n    ],\n    \"alkylating_agent\": [\n      \"SMARTS did not compile\"\n    ]\n  }\n}\n"
+}

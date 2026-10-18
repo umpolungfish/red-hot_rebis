@@ -1,0 +1,11 @@
+{
+  "--file measurements/script_review/central_demo_control.json": 1,
+  "demo list --file measurements/script_review/central_demo_control.json": 0,
+  "--file measurements/script_review/absent.json": 2,
+  "serpentrod foldv2 --help": 0,
+  "gene-pipeline --help": 0,
+  "status_entry missing input": 2,
+  "verify_entry missing input": 2,
+  "delegate_preserves_prefix_file_option": 2,
+  "root_wrapper_failure_exit": 1
+}

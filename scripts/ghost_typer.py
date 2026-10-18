@@ -37,12 +37,15 @@ Sections:
 Author: Lando⊗⊙perator
 """
 
-import time, sys, subprocess, os, argparse
+import time, sys, subprocess, os, argparse, shlex
+from pathlib import Path
+
+REBIS_DIR = str(Path(__file__).resolve().parents[1])
+if REBIS_DIR not in sys.path:
+    sys.path.insert(0, REBIS_DIR)
 from shared.rich_output import *
 
 
-REBIS_DIR = os.path.dirname(os.path.abspath(__file__))
-os.chdir(REBIS_DIR)
 
 CHAR_DELAY      = 0.08
 POST_TYPE_DELAY = 1.0
@@ -79,22 +82,25 @@ def run(cmd, timeout=45):
     time.sleep(POST_TYPE_DELAY)
     try:
         result = subprocess.run(
-            cmd, shell=True, capture_output=True, text=True, timeout=timeout
+            [sys.executable if part == "python3" and i == 0 else part
+             for i, part in enumerate(shlex.split(cmd))],
+            cwd=REBIS_DIR, capture_output=True, text=True, timeout=timeout
         )
         output = (result.stdout + result.stderr).strip()
     except subprocess.TimeoutExpired:
-        output = "[TIMEOUT]"
+        raise RuntimeError(f"Command timed out after {timeout}s: {cmd}") from None
     except Exception as e:
-        output = f"[ERROR: {e}]"
+        raise RuntimeError(f"Command failed to start: {cmd}: {e}") from e
     for line in output.split('\n'):
-        if len(line) > 120:
-            line = line[:117] + '...'
         print(line)
         sys.stdout.flush()
         pause = max(LINE_DELAY, len(line) * 0.012)
         time.sleep(pause)
     print()
     time.sleep(1.5)
+    if result.returncode:
+        raise RuntimeError(f"Command exited with status {result.returncode}: {cmd}")
+    return result
 
 
 def section(num, title):
@@ -137,13 +143,7 @@ def outro():
         "  DEMONSTRATION COMPLETE",
         "  Framework: Red-Hot Rebis v2.2  |  O_∞  |  μ∘δ=id  |  ⊙ Open",
         "",
-        "  Designed:",
-        "    [✓] Novel protein from scratch    [✓] Gene-to-protein pathway",
-        "    [✓] Anti-SARS-CoV-2 antibody      [✓] Catalytic enzyme triad",
-        "    [✓] MRSA drug components          [✓] Novel NSAID scaffold",
-        "    [✓] ATP retrosynthetic route      [✓] Cross-domain analogs",
-        "    [✓] 8 novel materials             [✓] Self-healing alloy",
-        "    [✓] Frobenius metamaterial        [✓] Full disease→material pipeline",
+        "  Requested demonstration commands completed successfully.",
         "",
         "  Catch a rising problem and never ever let it go.",
         "  -- IEEE Computer, Feb 1986",
@@ -161,7 +161,7 @@ def outro():
 def s1():
     section(1, "ACT I · S1: NOVEL PROTEIN FROM SCRATCH")
     p = prompt()
-    cmd = "python3 rebis.py run serpent_rod"
+    cmd = "python3 -m scripts.run_serpent"
     info_line(f"{p}", end='')
     ghost_type(cmd)
     run(cmd)
@@ -170,7 +170,7 @@ def s1():
 def s2():
     section(2, "ACT I · S2: GENE-TO-PROTEIN PATHWAY")
     p = prompt()
-    cmd = "python3 rebis.py run gene_to_protein_pipeline --test"
+    cmd = "python3 -m rebis gene-pipeline --test"
     info_line(f"{p}", end='')
     ghost_type(cmd)
     run(cmd)
@@ -179,7 +179,7 @@ def s2():
 def s3():
     section(3, "ACT I · S3: ANTI-SARS-CoV-2 ANTIBODY DESIGN")
     p = prompt()
-    cmd = "python3 rebis.py run antibody_designer"
+    cmd = "python3 -m rhr_p4rky.antibody_designer --all"
     info_line(f"{p}", end='')
     ghost_type(cmd)
     run(cmd, timeout=60)
@@ -188,7 +188,7 @@ def s3():
 def s4():
     section(4, "ACT I · S4: CATALYTIC ENZYME DESIGN - ACRYLAMIDE")
     p = prompt()
-    cmd = "python3 rebis.py run ch3mpiler_serpentrod_pipeline --cas 79-06-1"
+    cmd = "python3 -m rhr_p4rky.ch3mpiler_serpentrod_pipeline --cas 79-06-1"
     info_line(f"{p}", end='')
     ghost_type(cmd)
     run(cmd)
@@ -201,7 +201,7 @@ def s4():
 def s5():
     section(5, "ACT II · S5: MRSA DRUG DESIGN — ARS THERAPEUTICA")
     p = prompt()
-    cmd = "python3 rebis.py at therapy mrsa"
+    cmd = "python3 -m Ars_Therapeutica.ars_therapeutica.cli therapy mrsa"
     info_line(f"{p}", end='')
     ghost_type(cmd)
     run(cmd)
@@ -210,7 +210,7 @@ def s5():
 def s6():
     section(6, "ACT II · S6: NOVEL NSAID DISCOVERY — CRYSTAL NEIGHBORHOOD")
     p = prompt()
-    cmd = 'python3 rebis.py imas crystal --smiles "CC(Cc1ccccc1)C(=O)O"'
+    cmd = 'python3 -m imas.molecular_crystal_designer --smiles "CC(Cc1ccccc1)C(=O)O"'
     info_line(f"{p}", end='')
     ghost_type(cmd)
     run(cmd)
@@ -219,7 +219,7 @@ def s6():
 def s7():
     section(7, "ACT II · S7: RETROSYNTHETIC ROUTE - ATP PHOSPHORYLATION")
     p = prompt()
-    cmd = "python3 rebis.py run ch3mpiler_serpentrod_pipeline --cas 56-65-5"
+    cmd = "python3 -m rhr_p4rky.ch3mpiler_serpentrod_pipeline --cas 56-65-5"
     info_line(f"{p}", end='')
     ghost_type(cmd)
     run(cmd)
@@ -228,7 +228,7 @@ def s7():
 def s8():
     section(8, "ACT II · S8: CROSS-DOMAIN STRUCTURAL ANALOGS")
     p = prompt()
-    cmd = 'python3 rebis.py imas analogies --name "aspirin"'
+    cmd = 'python3 -m imas.compound_catalog analogies --name "aspirin"'
     info_line(f"{p}", end='')
     ghost_type(cmd)
     run(cmd)
@@ -241,7 +241,7 @@ def s8():
 def s9():
     section(9, "ACT III · S9: FORGE ALL 8 NOVEL MATERIALS")
     p = prompt()
-    cmd = "python3 rebis.py materials forge --all"
+    cmd = "python3 -m materials.ig_material_forge --all"
     info_line(f"{p}", end='')
     ghost_type(cmd)
     run(cmd)
@@ -250,7 +250,7 @@ def s9():
 def s10():
     section(10, "ACT III · S10: SELF-HEALING ALLOY SIMULATION")
     p = prompt()
-    cmd = "python3 rebis.py materials ouroboric"
+    cmd = "python3 -m materials.ouroboric_alloy"
     info_line(f"{p}", end='')
     ghost_type(cmd)
     run(cmd)
@@ -259,7 +259,7 @@ def s10():
 def s11():
     section(11, "ACT III · S11: FROBENIUS METAMATERIAL")
     p = prompt()
-    cmd = "python3 rebis.py materials frobenius"
+    cmd = "python3 -m rebis materials metamaterial"
     info_line(f"{p}", end='')
     ghost_type(cmd)
     run(cmd)
@@ -272,42 +272,42 @@ def s11():
 def s12():
     section(12, "CONJOINED PIPELINE: MRSA TO PROTEIN TO ENZYME TO MATERIAL")
     info_line("  One disease. One structural gap. Four design stages.")
-    info_line("  Every output feeds directly into the next.")
+    info_line("  The stages report diagnosis, designs, and material construction.")
     time.sleep(2.0)
     p = prompt()
 
     workflow_step(1, "Identify structural gap — what the drug must change")
-    cmd = "python3 rebis.py at diagnose mrsa"
+    cmd = "python3 -m Ars_Therapeutica.ars_therapeutica.cli diagnose mrsa"
     info_line(f"{p}", end='')
     ghost_type(cmd)
     run(cmd)
 
     workflow_step(2, "Design the drug components from the gap")
-    cmd = "python3 rebis.py at therapy mrsa"
+    cmd = "python3 -m Ars_Therapeutica.ars_therapeutica.cli therapy mrsa"
     info_line(f"{p}", end='')
     ghost_type(cmd)
     run(cmd)
 
     workflow_step(3, "Design a novel protein binder for the resistance target (PBP2a)")
-    cmd = "python3 rebis.py run serpent_rod"
+    cmd = "python3 -m scripts.run_serpent"
     info_line(f"{p}", end='')
     ghost_type(cmd)
     run(cmd)
 
     workflow_step(4, "Design the catalytic enzyme for the synthesis route")
-    cmd = "python3 rebis.py run ch3mpiler_serpentrod_pipeline --cas 79-06-1"
+    cmd = "python3 -m rhr_p4rky.ch3mpiler_serpentrod_pipeline --cas 79-06-1"
     info_line(f"{p}", end='')
     ghost_type(cmd)
     run(cmd)
 
     workflow_step(5, "Find crystal-guided candidates for the drug scaffold")
-    cmd = 'python3 rebis.py imas crystal --smiles "CC(Cc1ccccc1)C(=O)O"'
+    cmd = 'python3 -m imas.molecular_crystal_designer --smiles "CC(Cc1ccccc1)C(=O)O"'
     info_line(f"{p}", end='')
     ghost_type(cmd)
     run(cmd)
 
     workflow_step(6, "Forge the delivery material")
-    cmd = "python3 rebis.py materials forge --name frobenius_composite"
+    cmd = "python3 -m materials.ig_material_forge --name frobenius_composite"
     info_line(f"{p}", end='')
     ghost_type(cmd)
     run(cmd)
@@ -340,6 +340,10 @@ def main():
     args = parser.parse_args()
 
     global CHAR_DELAY
+    if args.speed is not None and args.speed < 0:
+        parser.error("--speed must be nonnegative")
+    if args.section is not None and args.section not in SECTIONS:
+        parser.error("Unknown section; use --list-sections")
     if args.fast:
         CHAR_DELAY = 0.05
     if args.speed is not None:
@@ -351,7 +355,7 @@ def main():
         return
 
     intro()
-    if args.section:
+    if args.section is not None:
         if args.section in SECTIONS:
             SECTIONS[args.section]()
         else:

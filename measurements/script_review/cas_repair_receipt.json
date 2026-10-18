@@ -1,0 +1,7 @@
+{
+  "historical_replacement": "pass",
+  "CAS_scope_only": "pass",
+  "repeat_is_idempotent": true,
+  "missing_dispatch_rejected": true,
+  "current_sources_check": 0
+}

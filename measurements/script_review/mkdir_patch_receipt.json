@@ -1,0 +1,7 @@
+{
+  "import_safe": true,
+  "historical_repair": "pass",
+  "backup_retained": true,
+  "repeat_preserves_mtime": true,
+  "current_generator_check": 0
+}

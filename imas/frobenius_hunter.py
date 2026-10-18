@@ -96,8 +96,9 @@ def estimate_frobenius_density(sample_size: int = 100000,
     Returns:
         dict with density estimates for various Frobenius and structural conditions.
     """
-    if seed is not None:
-        random.seed(seed)
+    if sample_size <= 0 or length <= 0:
+        raise ValueError("Sample size and length must be positive")
+    rng = random.Random(seed)
 
     counts = {
         'total': 0,
@@ -115,7 +116,7 @@ def estimate_frobenius_density(sample_size: int = 100000,
     total_space = TOKEN_COUNT ** length
 
     for _ in range(sample_size):
-        arr = tuple(random.randrange(TOKEN_COUNT) for _ in range(length))
+        arr = tuple(rng.randrange(TOKEN_COUNT) for _ in range(length))
         counts['total'] += 1
 
         has_fsplit = Token.FSPLIT in arr
@@ -182,15 +183,16 @@ def generate_frobenius_arrangements(
     (e.g., require_dialetheia + require_self_ref at length=8), this will need
     many iterations.
     """
-    if seed is not None:
-        random.seed(seed)
+    if length <= 0 or max_results < 0 or min_fsplits < 0 or min_ffuses < 0:
+        raise ValueError("Length must be positive and counts nonnegative")
+    rng = random.Random(seed)
 
     results = []
     attempts = 0
     max_attempts = max_results * 100000  # safety limit
 
     while len(results) < max_results and attempts < max_attempts:
-        arr = tuple(random.randrange(TOKEN_COUNT) for _ in range(length))
+        arr = tuple(rng.randrange(TOKEN_COUNT) for _ in range(length))
         attempts += 1
 
         # Quick pre-filter
@@ -218,13 +220,16 @@ def generate_frobenius_library(
     length: int = 8,
     count_per_type: int = 10,
     seed: int = 42,
+    max_attempts: int = 1_000_000,
 ) -> Dict[str, List[Tuple[int, ...]]]:
     """Generate a library of Frobenius arrangements by structural type.
 
     Returns dict with keys: 'proper', 'inverted', 'bidirectional',
     'with_dialetheia', 'with_self_ref', 'o_critical'
     """
-    random.seed(seed)
+    if length <= 0 or count_per_type < 0 or max_attempts < 0:
+        raise ValueError("Length must be positive and counts/bound nonnegative")
+    rng = random.Random(seed)
     library = {
         'proper': [],
         'inverted': [],
@@ -234,8 +239,14 @@ def generate_frobenius_library(
         'o_critical': [],
     }
 
+    attempts = 0
     while any(len(v) < count_per_type for v in library.values()):
-        arr = tuple(random.randrange(TOKEN_COUNT) for _ in range(length))
+        if attempts >= max_attempts:
+            error = RuntimeError(f"Library search reached {max_attempts} attempts")
+            error.partial_library = library
+            raise error
+        attempts += 1
+        arr = tuple(rng.randrange(TOKEN_COUNT) for _ in range(length))
         pattern = detect_frobenius_pattern(arr)
         fp = compute_fingerprint(arr)
 

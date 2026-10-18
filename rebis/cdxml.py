@@ -3,16 +3,17 @@ rebis.cdxml — CDXML Generation & Target Decomposition
 ══════════════════════════════════════════════════════
 Lazy-import bridge to cdxml/.
 """
-import sys, importlib
-from pathlib import Path
-_REBIS_ROOT = Path(__file__).parent.parent.absolute()
-for p in [str(_REBIS_ROOT), str(_REBIS_ROOT / "cdxml")]:
-    if p not in sys.path: sys.path.insert(0, p)
-__all__ = []
-def _lazy(name, module, attr=None):
-    try: m = importlib.import_module(module); globals()[name] = getattr(m, attr or name); __all__.append(name)
-    except Exception: pass
+import importlib
 
-_lazy("export_tree_to_cdxml", "cdxml.target_decomposition")
-_lazy("molecule_to_cdxml", "cdxml.target_decomposition")
-_lazy("target_decomposition_cdxml", "cdxml.target_decomposition")
+_EXPORTS = {'molecule_to_cdxml': 'cdxml.target_decomposition', 'target_decomposition_cdxml': 'cdxml.target_decomposition'}
+__all__ = list(_EXPORTS)
+
+def __getattr__(name):
+    if name not in _EXPORTS:
+        raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+    value = getattr(importlib.import_module(_EXPORTS[name]), name)
+    globals()[name] = value
+    return value
+
+def __dir__():
+    return sorted(set(globals()) | set(__all__))

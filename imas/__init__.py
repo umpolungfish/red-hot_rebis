@@ -8,48 +8,71 @@ IMASM token arrangement space provides structural fingerprinting for:
 
 All modules connect through the shared StructuralFingerprint → IG type bridge.
 """
-
-# Every engine in this package is reachable from the package itself, as the other
-# domains are. Nothing here was exposed, so a census of the toolchain reported the
-# arrangement engine as empty while all nine modules imported cleanly.
 import importlib as _importlib
 
-__all__ = []
+_EXPORTS = {'Token': 'imas.arranger',
+ 'Family': 'imas.arranger',
+ 'StructuralFingerprint': 'imas.arranger',
+ 'compute_fingerprint': 'imas.arranger',
+ 'arrangement_distance': 'imas.arranger',
+ 'count_arrangements': 'imas.arranger',
+ 'analyze_molecule': 'imas.compound_imasm',
+ 'molecule_to_arrangement': 'imas.compound_imasm',
+ 'detect_functional_groups': 'imas.compound_imasm',
+ 'arrangement_to_tokens': 'imas.compound_imasm',
+ 'format_arrangement': 'imas.compound_imasm',
+ 'ReactionFingerprint': 'imas.reactivity_imasm',
+ 'identify_reaction': 'imas.reactivity_imasm',
+ 'reaction_to_fingerprint': 'imas.reactivity_imasm',
+ 'format_transition': 'imas.reactivity_imasm',
+ 'FrobeniusPattern': 'imas.frobenius_hunter',
+ 'detect_frobenius_pattern': 'imas.frobenius_hunter',
+ 'generate_frobenius_library': 'imas.frobenius_hunter',
+ 'analyze_frobenius_library': 'imas.frobenius_hunter',
+ 'estimate_frobenius_density': 'imas.frobenius_hunter',
+ 'generate_frobenius_arrangements': 'imas.frobenius_hunter',
+ 'analyze_compound_design_space': 'imas.molecular_crystal_designer',
+ 'analyze_crystal_neighborhood': 'imas.molecular_crystal_designer',
+ 'analyze_molecule_properties': 'imas.molecular_crystal_designer',
+ 'arrangement_to_fingerprint': 'imas.molecular_crystal_designer',
+ 'derive_position_constraints': 'imas.molecular_crystal_designer',
+ 'check_consistency': 'imas.molecular_crystal_designer',
+ 'fingerprint_to_ig': 'imas.ig_bridge',
+ 'describe_ig': 'imas.ig_bridge',
+ 'describe_full': 'imas.ig_bridge',
+ 'canonical_ig_types': 'imas.ig_bridge',
+ 'distinct_canonical_ig_types': 'imas.ig_bridge',
+ 'find_structural_clusters': 'imas.ig_bridge',
+ 'IMASM_CLINK_Link': 'imas.clink_bridge',
+ 'imasm_to_clink': 'imas.clink_bridge',
+ 'canonical_clink_map': 'imas.clink_bridge',
+ 'build_bridge_table': 'imas.clink_bridge',
+ 'frobenius_pathway_to_layer': 'imas.clink_bridge',
+ 'structural_activation_energy': 'imas.clink_bridge',
+ 'PortType': 'imas.wiring',
+ 'PortSpec': 'imas.wiring',
+ 'WiredNode': 'imas.wiring',
+ 'WiredGraph': 'imas.wiring',
+ 'all_branch_assignments': 'imas.wiring',
+ 'all_frob_pairings': 'imas.wiring',
+ 'get_smarts': 'imas.fg_exhaustive',
+ 'get_token': 'imas.fg_exhaustive',
+ 'list_by_token': 'imas.fg_exhaustive',
+ 'list_by_category': 'imas.fg_exhaustive',
+ 'token_counts': 'imas.fg_exhaustive',
+ 'total_patterns': 'imas.fg_exhaustive',
+ 'validate_patterns': 'imas.fg_exhaustive'}
 
-_EXPORTS = {
-    "imas.arranger": ["Token", "Family", "StructuralFingerprint", "compute_fingerprint",
-                       "arrangement_distance", "count_arrangements"],
-    "imas.compound_imasm": ["analyze_molecule", "molecule_to_arrangement",
-                             "detect_functional_groups", "arrangement_to_tokens",
-                             "format_arrangement"],
-    "imas.reactivity_imasm": ["ReactionFingerprint", "identify_reaction",
-                               "reaction_to_fingerprint", "format_transition"],
-    "imas.frobenius_hunter": ["FrobeniusPattern", "detect_frobenius_pattern",
-                               "generate_frobenius_library", "analyze_frobenius_library",
-                               "estimate_frobenius_density", "generate_frobenius_arrangements"],
-    "imas.molecular_crystal_designer": ["analyze_compound_design_space",
-                                         "analyze_crystal_neighborhood",
-                                         "analyze_molecule_properties",
-                                         "arrangement_to_fingerprint",
-                                         "derive_position_constraints", "check_consistency"],
-    "imas.ig_bridge": ["fingerprint_to_ig", "describe_ig", "describe_full",
-                        "canonical_ig_types", "distinct_canonical_ig_types",
-                        "find_structural_clusters"],
-    "imas.clink_bridge": ["IMASM_CLINK_Link", "imasm_to_clink", "canonical_clink_map",
-                           "build_bridge_table", "frobenius_pathway_to_layer",
-                           "structural_activation_energy"],
-    "imas.wiring": ["PortType", "PortSpec", "WiredNode", "WiredGraph",
-                     "all_branch_assignments", "all_frob_pairings"],
-    "imas.fg_exhaustive": ["get_smarts", "get_token", "list_by_token", "list_by_category",
-                            "token_counts", "total_patterns"],
-}
+__all__ = list(_EXPORTS)
 
-for _mod, _names in _EXPORTS.items():
-    try:
-        _m = _importlib.import_module(_mod)
-    except Exception:
-        continue
-    for _n in _names:
-        if hasattr(_m, _n):
-            globals()[_n] = getattr(_m, _n)
-            __all__.append(_n)
+
+def __getattr__(name):
+    if name not in _EXPORTS:
+        raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+    value = getattr(_importlib.import_module(_EXPORTS[name]), name)
+    globals()[name] = value
+    return value
+
+
+def __dir__():
+    return sorted(set(globals()) | set(__all__))

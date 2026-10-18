@@ -19,28 +19,17 @@ import sys
 import importlib as _importlib
 from rebis.file_input import parse_with_file
 
-__all__ = []
+_EXPORTS = {'design_ligand_from_pdb': 'rhr_p4rky.ligand_from_site_pdb', 'design_ligand_from_pdb_improved': 'rhr_p4rky.ligand_from_site_pdb', 'encode_site_from_pdb': 'rhr_p4rky.ligand_from_site_pdb', 'auto_detect_active_site': 'rhr_p4rky.ligand_from_site_pdb', 'complement_with_bottleneck_bias': 'rhr_p4rky.ligand_from_site_pdb', 'print_ligand_result': 'rhr_p4rky.ligand_from_site_pdb', 'result_to_json': 'rhr_p4rky.ligand_from_site_pdb', 'CatalyticResidueAnalysis': 'rhr_p4rky.ligand_from_site_pdb', 'LigandDesignResult': 'rhr_p4rky.ligand_from_site_pdb', 'fingerprint_to_ig_biochemical': 'rhr_p4rky.ligand_imasm_v2'}
+__all__ = list(_EXPORTS)
 
-def _lazy(name, module, attr=None):
-    """Expose a backend callable on the facade, as every other domain does."""
-    try:
-        _m = _importlib.import_module(module)
-        globals()[name] = getattr(_m, attr or name)
-        __all__.append(name)
-    except Exception:
-        pass
 
-# ligand design from a deposited structure
-_lazy("design_ligand_from_pdb", "rhr_p4rky.ligand_from_site_pdb")
-_lazy("design_ligand_from_pdb_improved", "rhr_p4rky.ligand_from_site_pdb")
-_lazy("encode_site_from_pdb", "rhr_p4rky.ligand_from_site_pdb")
-_lazy("auto_detect_active_site", "rhr_p4rky.ligand_from_site_pdb")
-_lazy("complement_with_bottleneck_bias", "rhr_p4rky.ligand_from_site_pdb")
-_lazy("print_ligand_result", "rhr_p4rky.ligand_from_site_pdb")
-_lazy("result_to_json", "rhr_p4rky.ligand_from_site_pdb")
-_lazy("CatalyticResidueAnalysis", "rhr_p4rky.ligand_from_site_pdb")
-_lazy("LigandDesignResult", "rhr_p4rky.ligand_from_site_pdb")
-_lazy("fingerprint_to_ig_biochemical", "rhr_p4rky.ligand_imasm_v2")
+def __getattr__(name):
+    if name not in _EXPORTS:
+        raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+    value = getattr(_importlib.import_module(_EXPORTS[name]), name)
+    globals()[name] = value
+    return value
+
 import os
 from pathlib import Path
 
@@ -53,7 +42,6 @@ def main():
     """Entry point — delegates to ligand_from_site_pdb.main() with file support."""
     import argparse
     from rhr_p4rky.ligand_from_site_pdb import main as _main
-    import rhr_p4rky.ligand_from_site_pdb as _mod
 
     # Use the module's own parser building + our file support
     # Build a wrapper that captures the underlying parser
@@ -72,8 +60,10 @@ def main():
                         help="Auto-detect active site residues by proximity")
     parser.add_argument("--top-n", type=int, default=10,
                         help="Number of top residues for auto-detection")
-    parser.add_argument("--cutoff", type=float, default=6.0,
+    parser.add_argument("--cutoff", type=float, default=8.0,
                         help="Distance cutoff for auto-active detection (Å)")
+    parser.add_argument("--proximity", type=float, default=12.0)
+    parser.add_argument("--bottleneck-bias", type=float, default=0.5)
     parser.add_argument("--improved", action="store_true", default=False,
                         help="Use improved PDB parsing method")
     parser.add_argument("--json", action="store_true", default=False,
@@ -103,8 +93,9 @@ def main():
         new_argv.append('--auto-active')
     if args.top_n != 10:
         new_argv.extend(['--top-n', str(args.top_n)])
-    if args.cutoff != 6.0:
-        new_argv.extend(['--cutoff', str(args.cutoff)])
+    new_argv.extend(['--cutoff', str(args.cutoff)])
+    new_argv.extend(['--proximity', str(args.proximity)])
+    new_argv.extend(['--bottleneck-bias', str(args.bottleneck_bias)])
     if args.improved:
         new_argv.append('--improved')
     if args.json:
@@ -119,4 +110,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

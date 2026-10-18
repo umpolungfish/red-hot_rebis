@@ -258,6 +258,8 @@ def build_catalog_entry(name: str, description: str, ig: Tuple[str, ...]) -> Dic
     
     Catalog format: {name, description, Ð, Þ, Ř, Φ, ƒ, Ç, Γ, ɢ, ⊙, Ħ, Σ, Ω}
     """
+    if len(ig) != 12:
+        raise ValueError("Catalog entries require exactly twelve primitives")
     return {
         "name": name,
         "description": description,
@@ -272,7 +274,7 @@ def build_catalog_entry(name: str, description: str, ig: Tuple[str, ...]) -> Dic
         "⊙": ig[8],
         "⊥": ig[9],
         "⊞": ig[10],
-        "◻": ig[11],
+        "⊡": ig[11],
     }
 
 
@@ -303,18 +305,21 @@ def register_compound(name: str, smiles: str, description: str = "",
         }
     
     # Load existing catalog
+    catalog_path = Path(catalog_path)
     if catalog_path.exists():
         with open(catalog_path) as f:
             catalog = json.load(f)
     else:
         catalog = []
-    
+    if not isinstance(catalog, list):
+        raise ValueError("Catalog must contain a list of entries")
+
     # Check for duplicate
     existing = [e for e in catalog if e.get("name") == name]
     if existing:
         return {
             "name": name,
-            "ig_tuple_str": ig_tuple_str(existing[0].get_tuple() if hasattr(existing[0], 'get_tuple') else (ig[0],)),
+            "ig_tuple_str": ig_tuple_str(entry_to_ig(existing[0]) or ig),
             "status": "already_exists",
             "message": f"Compound '{name}' already in catalog — skipping",
         }
@@ -363,22 +368,20 @@ def ig_distance(ig_a: Tuple[str, ...], ig_b: Tuple[str, ...]) -> int:
 
 def load_catalog(catalog_path: Path = CATALOG_PATH) -> List[Dict]:
     """Load the IG catalog."""
-    if catalog_path.exists():
-        with open(catalog_path) as f:
-            return json.load(f)
-    return []
+    catalog_path = Path(catalog_path)
+    with catalog_path.open(encoding="utf-8") as f:
+        catalog = json.load(f)
+    if not isinstance(catalog, list):
+        raise ValueError("Catalog must contain a list of entries")
+    return catalog
 
 
 def entry_to_ig(entry: Dict) -> Optional[Tuple[str, ...]]:
-    """Extract IG tuple from a catalog entry."""
-    try:
-        return (
-            entry["⊢"], entry["⊣"], entry["≻"], entry["≺"],
-            entry["⋈"], entry["⊤"], entry["∈"], entry["∋"],
-            entry["⊙"], entry["⊥"], entry["⊞"], entry["◻"],
-        )
-    except KeyError:
-        return None
+    """Extract a complete tuple, resolving historical catalog axis aliases."""
+    order = ('⊢', '⊣', '≻', '≺', '⋈', '⊤', '∈', '∋', '⊙', '⊥', '⊞', '⊡')
+    aliases = {'≻': '>', '≺': '<', '⊡': '◻'}
+    values = tuple(entry.get(p, entry.get(aliases.get(p))) for p in order)
+    return values if all(isinstance(v, str) and v for v in values) else None
 
 
 def find_analogies(name_or_smiles: str, limit: int = 10,
@@ -394,8 +397,13 @@ def find_analogies(name_or_smiles: str, limit: int = 10,
     query_ig = None
     query_name = name_or_smiles
     
-    # Try SMILES first (if it looks like one)
-    if any(c in name_or_smiles for c in "CcNOSPFBrI=#()[]"):
+    # Named database compounds can be analyzed without registering them first.
+    compound = COMPOUND_DATABASE.get(name_or_smiles.casefold())
+    if compound is not None:
+        _, _, query_ig, _ = smiles_to_ig(compound['smiles'])
+
+    # Try SMILES when a database name did not resolve the query.
+    if query_ig is None and any(c in name_or_smiles for c in "CcNOSPFBrI=#()[]"):
         try:
             _, _, query_ig, _ = smiles_to_ig(name_or_smiles)
         except Exception:
@@ -498,7 +506,8 @@ def main():
             results = register_all_compounds(dry_run=args.dry_run)
             n_ok = sum(1 for r in results if r.get("status") in ("registered", "already_exists"))
             n_err = sum(1 for r in results if r.get("status") == "error")
-            error_line(f"Registered {n_ok}/{len(results)} compounds ({n_err} errors)")
+            n_preview = sum(r.get("status") == "dry_run" for r in results)
+            info_line(f"Registered/existing: {n_ok}; previews: {n_preview}; errors: {n_err}")
             for r in results:
                 status = r.get("status", "?")
                 if status == "error":
@@ -509,10 +518,13 @@ def main():
                     info_line(f"  🔍 {r['name']}: {r['ig_tuple_str']} (dry run)")
                 else:
                     info_line(f"  ✅ {r['name']}: {r['ig_tuple_str']}")
+            return 1 if n_err else 0
         elif args.smiles:
-            result = register_compound(args.smiles, args.name or "unknown",
+            result = register_compound(name=args.name or "unknown", smiles=args.smiles,
                                        dry_run=args.dry_run)
-            print(json.dumps(result, indent=2, ensure_ascii=False))
+            from dataclasses import asdict, is_dataclass
+            print(json.dumps(result, indent=2, ensure_ascii=False,
+                             default=lambda value: asdict(value) if is_dataclass(value) else vars(value)))
         else:
             parser.print_help()
     
@@ -520,18 +532,19 @@ def main():
         query = args.query or args.name
         if not query:
             parser.print_help()
-            return
+            return 2
         try:
             results = find_analogies(query, limit=args.limit)
             print(describe_analogies(results, query_name=query))
         except ValueError as e:
             error_line(f"Error: {e}")
+            return 1
     
     elif args.command == "show":
         query = args.query
         if not query:
             parser.print_help()
-            return
+            return 2
         # Try SMILES first
         try:
             _, _, ig, arr_str = smiles_to_ig(query)
@@ -552,9 +565,21 @@ def main():
                         print(describe_full(ig))
                         break
             else:
-                info_line(f"Could not resolve '{query}' as SMILES or catalog name")
+                error_line(f"Could not resolve '{query}' as SMILES or catalog name")
+                return 1
 
-    # End of show command
+    elif args.command == 'query':
+        expected = None
+        if args.ig:
+            clean = args.ig.strip().removeprefix('⟨').removesuffix('⟩')
+            expected = tuple(v.strip() for v in clean.replace(';', ',').split(',')) if ',' in clean or ';' in clean else tuple(clean)
+            if len(expected) != 12:
+                parser.error('--ig requires exactly twelve primitives')
+        matches = [entry for entry in load_catalog()
+                   if (not args.name or args.name.casefold() in entry.get('name', '').casefold())
+                   and (expected is None or entry_to_ig(entry) == expected)]
+        print(json.dumps(matches, indent=2, ensure_ascii=False))
+        return 0
 
     else:
         parser.print_help()
@@ -578,5 +603,5 @@ COMPOUND_CATALOG_DICT = {
 
 
 if __name__ == '__main__':
-    main()
+    sys.exit(main())
 

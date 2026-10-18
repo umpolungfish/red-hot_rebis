@@ -1,0 +1,8 @@
+{
+  "single_registration": "pass",
+  "duplicate_preserves_stored_tuple": "pass",
+  "preview_preserves_file": "pass",
+  "preview_cli_json": "pass",
+  "query_cli_json": "pass",
+  "incomplete_entry_rejected": true
+}
