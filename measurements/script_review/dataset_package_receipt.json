@@ -1,0 +1,63 @@
+{
+  "organism_type": "mammal",
+  "layers": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "total_files": 35,
+  "total_bytes": 42679,
+  "tool_bridges": [
+    "serpentrod",
+    "shared_protein_geometry"
+  ],
+  "available_tool_bridges": [
+    "ch3mpiler",
+    "gene_imscriber",
+    "materials_sim",
+    "serpentrod"
+  ],
+  "layer_notes": {
+    "0": [],
+    "1": [],
+    "2": [
+      "Recovered historical dataset template; closure checks its structural tuple"
+    ],
+    "3": [
+      "ch3mpiler bridged: retrosynthesis available",
+      "Recovered historical dataset template; closure checks its structural tuple"
+    ],
+    "4": [
+      "Protein MACGKPVASLWQ (mammal_design_protein)",
+      "Recovered historical dataset template; closure checks its structural tuple"
+    ],
+    "5": [
+      "Optional bridge unavailable: ImportError: cannot import name 'genetic_code' from 'gene_imscriber.engine' (/home/mrnob0dy666/imsgct/red-hot_rebis/gene_imscriber/engine.py)",
+      "Optional bridge unavailable: ModuleNotFoundError: No module named 'biology.biology_sim'",
+      "Recovered historical dataset template; closure checks its structural tuple"
+    ],
+    "6": [
+      "Optional bridge unavailable: ModuleNotFoundError: No module named 'biology.ouroboric_telomere'",
+      "Recovered historical dataset template; closure checks its structural tuple"
+    ],
+    "7": [
+      "Optional bridge unavailable: ImportError: cannot import name 'MaterialsSimulation' from 'materials.materials_sim' (/home/mrnob0dy666/imsgct/red-hot_rebis/materials/materials_sim.py)",
+      "Recovered historical dataset template; closure checks its structural tuple"
+    ],
+    "8": [
+      "Optional bridge unavailable: ModuleNotFoundError: No module named 'biology.biology_sim'",
+      "Optional bridge unavailable: ModuleNotFoundError: No module named 'biology.ouroboric_telomere'",
+      "Recovered historical dataset template; closure checks its structural tuple"
+    ]
+  },
+  "frobenius_verified": true,
+  "output_directory": "measurements/script_review/package_no_write_control",
+  "generation_time_seconds": 0.17,
+  "generated_at": "2026-10-17T20:09:31.362355"
+}

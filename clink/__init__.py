@@ -7,58 +7,63 @@ to whole organisms (O_∞), integrated with the four rebis pillars.
 
 Author: Lando ⊗ ⊙perator
 """
+import importlib as _importlib
 
-from .chain import (
-    CLINK_LAYERS, CLINK_NAMES, CLINK_TIERS,
-    clink_layer_tuple, clink_distance, clink_chain_distance,
-    clink_layer_index, clink_frobenius_closed,
-    verify_all_frobenius_closed, primitive_deltas, primitive_mismatch_count,
-    format_tuple_glyphs, PORDER,
-)
+_EXPORTS = {'CLINK_LAYERS': 'clink.chain',
+ 'CLINK_NAMES': 'clink.chain',
+ 'CLINK_TIERS': 'clink.chain',
+ 'clink_layer_tuple': 'clink.chain',
+ 'clink_distance': 'clink.chain',
+ 'clink_chain_distance': 'clink.chain',
+ 'clink_layer_index': 'clink.chain',
+ 'clink_frobenius_closed': 'clink.chain',
+ 'verify_all_frobenius_closed': 'clink.chain',
+ 'primitive_deltas': 'clink.chain',
+ 'primitive_mismatch_count': 'clink.chain',
+ 'format_tuple_glyphs': 'clink.chain',
+ 'PORDER': 'clink.chain',
+ 'BridgeResult': 'clink.bridges',
+ 'protein_to_clink': 'clink.bridges',
+ 'molecule_to_clink': 'clink.bridges',
+ 'gene_to_clink': 'clink.bridges',
+ 'bridge_all_components': 'clink.bridges',
+ 'PLATONIC_PROTEIN': 'clink.bridges',
+ 'UNFOLDED_PROTEIN': 'clink.bridges',
+ 'CODON_BELNAP4_TYPE': 'clink.bridges',
+ 'IntegratedCLINKResult': 'clink.integration',
+ 'verify_clink_integration': 'clink.integration',
+ 'integrated_promotion_path': 'clink.integration',
+ 'clink_to_serpentrod': 'clink.integration',
+ 'clink_to_ch3mpiler': 'clink.integration',
+ 'clink_to_gene': 'clink.integration',
+ 'full_report': 'clink.integration',
+ 'PipelineEngine': 'clink.designers.pipeline_orchestrator',
+ 'PipelineResult': 'clink.designers.pipeline_orchestrator',
+ 'Layer0Designer': 'clink.designers.layer_designers',
+ 'Layer1Designer': 'clink.designers.layer_designers',
+ 'Layer2Designer': 'clink.designers.layer_designers',
+ 'Layer3Designer': 'clink.designers.layer_designers',
+ 'Layer4Designer': 'clink.designers.layer_designers',
+ 'Layer5Designer': 'clink.designers.layer_designers',
+ 'Layer6Designer': 'clink.designers.layer_designers',
+ 'Layer7Designer': 'clink.designers.layer_designers',
+ 'Layer8Designer': 'clink.designers.layer_designers',
+ 'DESIGNER_REGISTRY': 'clink.designers.layer_designers',
+ 'get_designer': 'clink.designers.layer_designers',
+ 'list_available_bridges': 'clink.designers.layer_designers',
+ 'DesignSpec': 'clink.designers.designer_base',
+ 'TransitionResult': 'clink.designers.designer_base'}
 
-from .bridges import (
-    BridgeResult,
-    protein_to_clink, molecule_to_clink, gene_to_clink,
-    bridge_all_components, PLATONIC_PROTEIN, UNFOLDED_PROTEIN, CODON_BELNAP4_TYPE
-)
-
-from .integration import (
-    IntegratedCLINKResult,
-    verify_clink_integration, integrated_promotion_path,
-    clink_to_serpentrod, clink_to_ch3mpiler, clink_to_gene,
-    full_report
-)
-
-__all__ = [
-    "CLINK_LAYERS", "CLINK_NAMES", "CLINK_TIERS",
-    "clink_layer_tuple", "clink_distance", "clink_chain_distance",
-    "clink_layer_index", "clink_frobenius_closed",
-    "verify_all_frobenius_closed", "primitive_deltas", "primitive_mismatch_count",
-    "format_tuple_glyphs", "PORDER",
-    "BridgeResult",
-    "protein_to_clink", "molecule_to_clink", "gene_to_clink",
-    "bridge_all_components", "PLATONIC_PROTEIN", "UNFOLDED_PROTEIN", "CODON_BELNAP4_TYPE",
-    "verify_clink_integration", "integrated_promotion_path",
-    "clink_to_serpentrod", "clink_to_ch3mpiler", "clink_to_gene",
-    "full_report", "IntegratedCLINKResult",
-]
+__all__ = list(_EXPORTS)
 
 
-# Pipeline integration (v2.0)
-from .designers.pipeline_orchestrator import PipelineEngine, PipelineResult
-from .designers.layer_designers import (
-    Layer0Designer, Layer1Designer, Layer2Designer,
-    Layer3Designer, Layer4Designer, Layer5Designer,
-    Layer6Designer, Layer7Designer, Layer8Designer,
-    DESIGNER_REGISTRY, get_designer, list_available_bridges,
-)
-from .designers.designer_base import DesignSpec, TransitionResult
+def __getattr__(name):
+    if name not in _EXPORTS:
+        raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+    value = getattr(_importlib.import_module(_EXPORTS[name]), name)
+    globals()[name] = value
+    return value
 
-__all__.extend([
-    "PipelineEngine", "PipelineResult",
-    "Layer0Designer", "Layer1Designer", "Layer2Designer",
-    "Layer3Designer", "Layer4Designer", "Layer5Designer",
-    "Layer6Designer", "Layer7Designer", "Layer8Designer",
-    "DESIGNER_REGISTRY", "get_designer", "list_available_bridges",
-    "DesignSpec", "TransitionResult",
-])
+
+def __dir__():
+    return sorted(set(globals()) | set(__all__))

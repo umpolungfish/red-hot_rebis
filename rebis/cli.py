@@ -158,7 +158,7 @@ def cmd_menu(args=None):
         for cmd, desc in [
             ("rebis",                        "Dynamic-first menu (this screen)"),
             ("rebis --version",              f"Version {VERSION}"),
-            ("rebis verify",                 "Frobenius closure verification"),
+            ("rebis verify",                 "Package import verification"),
             ("rebis status",                 "Package status across all domains"),
             ("rebis demo list",              "List available demos"),
             ("rebis demo <name>",            "Run a specific demo"),
@@ -192,7 +192,7 @@ def cmd_menu(args=None):
         section_header("⚡ QUICK COMMANDS")
         info_line("  {:<36s}  {}".format("rebis",                   "Dynamic-first menu"))
         info_line("  {:<36s}  {}".format("rebis --version",         f"Version {VERSION}"))
-        info_line("  {:<36s}  {}".format("rebis verify",            "Frobenius closure"))
+        info_line("  {:<36s}  {}".format("rebis verify",            "Package import verification"))
         info_line("  {:<36s}  {}".format("rebis status",            "Package status"))
         info_line("  {:<36s}  {}".format("rebis demo list",         "List demos"))
         info_line("  {:<36s}  {}".format("rebis demo <name>",       "Run demo"))
@@ -217,7 +217,8 @@ def cmd_chain(args):
 
     dna = args.dna or args.seq or "ATGGCCGACTGGAACTGCAAGAAGATCGTGCCCAAGTACTACGGCCGCTG"
     target = args.target or "CC(=O)O"
-    depth = args.depth or 2
+    depth = args.depth if args.depth is not None else 2
+    failed_phases = []
 
     info_line(f"DNA input:    {dna[:50]}{'...' if len(dna) > 50 else ''}  ({len(dna)} bp)")
     info_line(f"Target SMILES: {target}")
@@ -237,6 +238,7 @@ def cmd_chain(args):
         info_line(f"  📦 PDB: {pdb_path}")
         success_line("Phase 1 complete ✓")
     except Exception as e:
+        failed_phases.append(1)
         error_line(f"Phase 1 FAILED: {e}")
 
     # ── Phase 2: ch3mpiler ⟲ serpentrod ──
@@ -247,6 +249,7 @@ def cmd_chain(args):
         cs_result = run_pipeline(target_molecule=target, depth=depth, verbose=True)
         success_line("Phase 2 complete ✓")
     except Exception as e:
+        failed_phases.append(2)
         error_line(f"Phase 2 FAILED: {e}")
         import traceback; traceback.print_exc()
 
@@ -269,10 +272,14 @@ def cmd_chain(args):
         info_line(f"  {stone_result.get('synthesis_validity', '')}")
         success_line("Phase 3 complete ✓")
     except Exception as e:
+        failed_phases.append(3)
         error_line(f"Phase 3 FAILED: {e}")
         import traceback; traceback.print_exc()
 
     separator()
+    if failed_phases:
+        error_line(f"UNIFIED CHAIN INCOMPLETE: failed phases {failed_phases}")
+        return 1
     success_line("UNIFIED CHAIN COMPLETE")
     return 0
 
@@ -306,6 +313,12 @@ def cmd_ch3mpiler(args):
     """Molecular compiler — delegates to ch3mpiler.py main()."""
     from rebis.ch3mpiler import main as ch3_main
     return ch3_main()
+
+
+def cmd_vox(args):
+    """Run the Vox closure audit CLI."""
+    from rebis.vox import main as vox_main
+    return vox_main()
 
 
 def cmd_serpentrod(args):
@@ -503,13 +516,13 @@ def cmd_status(args):
 
 
 def cmd_verify(args):
-    """Verify Frobenius closure across the shared layer."""
+    """Check imports across the shared layer and domain wrappers."""
     try:
         from shared.primitives import WEIGHTS, ORDINALS
         success_line("shared/primitives.py — %d weights, %d ordinal families" %
                      (len(WEIGHTS), len(ORDINALS)))
         separator()
-        success_line("rebis package: ALL domains import successfully")
+        failed_domains = []
         for domain_name in ['p4ra', 'ch3mpiler', 'sidechain', 'clink', 'materials',
                             'therapeutics', 'biology', 'serpentrod',
                             'imas', 'pipeline', 'gene',
@@ -519,12 +532,16 @@ def cmd_verify(args):
                 n_exported = len(getattr(mod, '__all__', []))
                 success_line(f"  rebis.{domain_name} — {n_exported} symbols exported")
             except Exception as e:
+                failed_domains.append(domain_name)
                 error_line(f"  rebis.{domain_name} — IMPORT FAILED: {e}")
         separator()
-        success_line("Frobenius closure: ALL imports verified")
+        if failed_domains:
+            error_line(f"Package import verification failed: {', '.join(failed_domains)}")
+            return 1
+        success_line("Package imports verified")
         return 0
     except ImportError as e:
-        error_line(f"Frobenius verification failed: {e}")
+        error_line(f"Package import verification failed: {e}")
         return 1
 
 
@@ -545,8 +562,8 @@ def cmd_demo(args):
     demo_fn = getattr(demo_mod, args.demo, None)
     if demo_fn:
         info_line(f"Running rebis.demo.{args.demo}()...")
-        demo_fn()
-        return 0
+        result = demo_fn()
+        return result if isinstance(result, int) else 0
     error_line(f"Unknown demo: {args.demo}. Use 'rebis demo list'.")
     return 1
 
@@ -575,33 +592,29 @@ def cmd_predict(args):
     """
     from rhr_p4rky.physical_predictor import (
         predict_from_tuple, predict_from_name, format_prediction,
-        get_material_quality_score, get_protein_design_score,
+        get_material_quality_score, get_protein_design_score, catalog_predictions,
     )
     from rhr_p4rky.pipeline_integrator import (
         get_disconnection_thermochemistry, find_best_applications
     )
     
-    targets = args.target
-    if not targets:
-        targets = ['diamond']
-    
+    all_predictions = list(catalog_predictions()) if args.all else None
+    targets = ([pred.name for pred in all_predictions] if args.all
+               else args.target or ['diamond'])
+    by_name = {pred.name: pred for pred in all_predictions or []}
+    records = []
+    failures = []
     for target in targets:
-        # Try as catalog name first
-        pred = predict_from_name(target)
+        pred = by_name.get(target) if args.all else predict_from_name(target)
         if pred is None:
-            # Try as raw tuple string
-            import re
-            clean = re.sub(r'[⟨⟩]', '', target)
-            if len(clean) >= 12:
-                pred = predict_from_tuple(target, tuple(clean))
-        
-        if pred is None:
-            from shared.primitives import ORDINALS
-            # Try as a raw tuple with standard separator
-            parts = target.replace(';', ',').split(',')
-            if len(parts) >= 12:
-                pred = predict_from_tuple(target, tuple(p.strip() for p in parts[:12]))
-        
+            clean = target.strip().removeprefix('⟨').removesuffix('⟩')
+            parts = ([part.strip() for part in clean.replace(';', ',').split(',')]
+                     if ',' in clean or ';' in clean else list(clean))
+            if len(parts) == 12:
+                pred = predict_from_tuple(target, tuple(parts))
+        if pred is not None and args.json:
+            records.append(pred.to_dict())
+            continue
         if pred:
             print(format_prediction(pred))
             print()
@@ -640,9 +653,12 @@ def cmd_predict(args):
             if target != targets[-1]:
                 print()
         else:
-            print(f'Could not find or parse: {target}')
-    
-    return 0
+            failures.append(target)
+            print(f'Could not find or parse: {target}', file=sys.stderr)
+    if args.json:
+        print(json.dumps({'predictions': records, 'errors': failures}, ensure_ascii=False))
+    return 1 if failures else 0
+
 def cmd_constants(args):
     """Display the MoDoT Constant Registry with biology bridge connections."""
     from rhr_p4rky.fundamental_constants import (
@@ -707,6 +723,7 @@ def main():
     p_gp.add_argument("--test", action="store_true", help="Run demo/self-test")
     p_gp.add_argument("--dna", type=str, help="DNA sequence")
     p_gp.add_argument("--seq", type=str, help="RNA sequence (alias for --dna)")
+    p_gp.add_argument("--pdb", help="Output PDB structure file")
     p_gp.set_defaults(func=cmd_gene_pipeline)
 
     p_ch = sub.add_parser("chain", help="UNIFIED: DNA→Protein→Catalyst→Synthesis")
@@ -714,12 +731,13 @@ def main():
     p_ch.add_argument("--seq", type=str, help="RNA sequence (alias)")
     p_ch.add_argument("--target", type=str, help="Target SMILES")
     p_ch.add_argument("--depth", type=int, default=2, help="Retrosynthesis depth")
+    p_ch.add_argument("--pdb", help="Output PDB structure file")
     p_ch.set_defaults(func=cmd_chain)
 
     # ── TIER 1+2: Domain delegates ──
     for cmd_name in ['ch3mpiler', 'serpentrod', 'ligand', 'sidechain',
                      'therapeutics', 'materials', 'biology', 'pipeline',
-                     'gene', 'alchemy', 'clink']:
+                     'gene', 'alchemy', 'clink', 'vox']:
         p = sub.add_parser(cmd_name, help=f"{cmd_name} computation engine",
                           add_help=False)
         p.set_defaults(func=globals()[f"cmd_{cmd_name}"])
@@ -743,36 +761,29 @@ def main():
     p_stat = sub.add_parser("status", help="Package status")
     p_stat.set_defaults(func=cmd_status)
 
-    p_ver = sub.add_parser("verify", help="Frobenius closure verification")
+    p_ver = sub.add_parser("verify", help="Package import verification")
     p_ver.set_defaults(func=cmd_verify)
 
     p_demo = sub.add_parser("demo", help="Run a demo")
     p_demo.add_argument("demo", nargs="?", default="list")
     p_demo.set_defaults(func=cmd_demo)
 
-    args = parser.parse_args()
-
-    # ── FILE/STDIN MERGE ──
-    if args.file or args.stdin:
-        import json
-        file_data = {}
+    args, forwarded = parser.parse_known_args()
+    delegates = {'ch3mpiler', 'serpentrod', 'ligand', 'sidechain',
+                 'therapeutics', 'materials', 'biology', 'pipeline',
+                 'gene', 'alchemy', 'clink', 'vox'}
+    if args.command in delegates:
+        # Delegate parsers own all tokens following their command, including help.
+        original_argv = sys.argv
+        command_index = original_argv.index(args.command, 1)
+        sys.argv = ([f"{original_argv[0]} {args.command}"]
+                    + original_argv[1:command_index]
+                    + original_argv[command_index + 1:])
         try:
-            if args.file and __import__('os').path.isfile(args.file):
-                with open(args.file) as fh:
-                    file_data = json.load(fh)
-            elif args.stdin:
-                file_data = json.loads(sys.stdin.read().strip())
-            # Merge: file data as defaults, CLI args override
-            if file_data:
-                for k, v in file_data.items():
-                    if v is not None and getattr(args, k, None) is None:
-                        setattr(args, k, v)
-                # If no command specified but file has it
-                if not args.command and 'command' in file_data:
-                    args.command = file_data['command']
-        except Exception as e:
-            error_line(f"Failed to load file/stdin: {e}")
-            return 1
+            return args.func(args)
+        finally:
+            sys.argv = original_argv
+    args = parse_with_file(parser)
 
     # No command = menu
     if args.help or not args.command:

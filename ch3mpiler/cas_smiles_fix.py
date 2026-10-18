@@ -1,137 +1,81 @@
 #!/usr/bin/env python3
-"""Patch: add SMILES resolution to CASResolver and propagate through pipeline.
+"""Repair historical CAS SMILES propagation; validate both sources before writing.
 
-Problem: CASResolver.resolve() fetches PubChem /compound/name/{cas}/JSON but
-only extracts name and formula — never requests CanonicalSMILES. So even when
-a CAS number resolves, the pipeline has no SMILES for scaffold-aware CDXML output.
-
-Fix 1: CASResolver.resolve() — add a second PubChem call to fetch SMILES
-        using the same /property/CanonicalSMILES/JSON endpoint that
-        resolve_name_to_smiles() already uses for name→SMILES.
-
-Fix 2: Pipeline main() — when --cas is provided, propagate the resolved SMILES
-        to resolve_and_parse_scaffold() so Pass 1 scaffold decomposition works.
+Importing this module performs no edits. --check reports required changes.
+The current compiler and pipeline should report no changes.
 """
-import re
-from shared.rich_output import *
+import argparse
+import ast
+from pathlib import Path
 
-# This is a patch script: running it rewrites another file. Importing it must
-# not, so an import stops here rather than reapplying an edit that has already
-# been applied.
-if __name__ != "__main__":
-    raise ImportError(
-        "cas_smiles_fix.py rewrites another module; run it directly, do not import it")
+old_parse = '        try:\n            url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/{cas}/JSON"\n            req = urllib.request.Request(url, headers={"User-Agent": "ch3mpiler/1.0"})\n            resp = urllib.request.urlopen(req, timeout=10)\n            data = json.loads(resp.read())\n            props = {}\n            if "PC_Compounds" in data and data["PC_Compounds"]:\n                for prop in data["PC_Compounds"][0].get("props", []):\n                    urn = prop.get("urn", {}).get("label", "")\n                    val = prop.get("value", {}).get("sval", "")\n                    props[urn] = val\n            name = props.get("IUPAC Name", props.get("Molecular Formula", cas))\n            formula = props.get("Molecular Formula", "")\n            entry = {"cas": cas, "name": name, "formula": formula, "source": "pubchem", "type_hint": ""}\n            self._cache[cas] = entry\n            self._save_cache()\n            return entry'
+
+new_parse = '        try:\n            url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/{cas}/property/CanonicalSMILES,MolecularFormula,IUPACName/JSON"\n            req = urllib.request.Request(url, headers={"User-Agent": "ch3mpiler/1.0"})\n            resp = urllib.request.urlopen(req, timeout=10)\n            data = json.loads(resp.read())\n            props = data.get("PropertyTable", {}).get("Properties", [{}])[0]\n            name = props.get("IUPACName", props.get("MolecularFormula", cas))\n            formula = props.get("MolecularFormula", "")\n            smiles = props.get("CanonicalSMILES", "")\n            entry = {"cas": cas, "name": name, "formula": formula,\n                     "smiles": smiles, "source": "pubchem", "type_hint": ""}\n            self._cache[cas] = entry\n            self._save_cache()\n            return entry'
+
+def patched_sources(compiler, pipeline):
+    if compiler.count(old_parse) == 1:
+        compiler = compiler.replace(old_parse, new_parse)
+    else:
+        tree = ast.parse(compiler)
+        resolver = next(node for node in tree.body
+                        if isinstance(node, ast.ClassDef) and node.name == 'CASResolver')
+        method = next(node for node in resolver.body
+                      if isinstance(node, ast.FunctionDef) and node.name == 'resolve')
+        segment = ast.get_source_segment(compiler, method)
+        if not all(token in segment for token in ('PropertyTable', 'smiles', 'CanonicalSMILES')):
+            raise ValueError('Unrecognized CASResolver.resolve implementation')
+    tree = ast.parse(pipeline)
+    blocks = [node for node in ast.walk(tree)
+              if isinstance(node, ast.If) and ast.unparse(node.test) == 'args.cas']
+    changes = []
+    assignments = 0
+    for block in blocks:
+        for node in ast.walk(ast.Module(body=block.body, type_ignores=[])):
+            if not isinstance(node, ast.Assign):
+                continue
+            if not any(ast.unparse(target) == 'pipeline._target_smiles' for target in node.targets):
+                continue
+            assignments += 1
+            expression = ast.unparse(node.value)
+            if expression == "args.smiles or ''":
+                changes.append(node)
+            elif 'smiles' not in expression or 'cas_info' not in expression:
+                raise ValueError('Unrecognized CAS target SMILES assignment')
+    if not blocks or not assignments:
+        raise ValueError('No CAS target SMILES assignment found')
+    lines = pipeline.splitlines(keepends=True)
+    for node in sorted(changes, key=lambda n: n.lineno, reverse=True):
+        indent = ' ' * node.col_offset
+        lines[node.lineno - 1:node.end_lineno] = [
+            indent + 'pipeline._target_smiles = info.get("cas_info", {}).get("smiles", "") or args.smiles or ""\n']
+    pipeline = ''.join(lines)
+    ast.parse(compiler)
+    ast.parse(pipeline)
+    return compiler, pipeline
 
 
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--check', action='store_true')
+    args = parser.parse_args(argv)
+    root = Path(__file__).resolve().parents[1]
+    paths = [root / 'ch3mpiler/compiler.py', root / 'pipeline/reaction_pipeline.py']
+    original = tuple(path.read_text() for path in paths)
+    revised = patched_sources(*original)
+    pending = [path for path, old, new in zip(paths, original, revised) if old != new]
+    for path in pending:
+        print(f"Repair required: {path}")
+    if args.check:
+        return 1 if pending else 0
+    for path, old, new in zip(paths, original, revised):
+        if old != new:
+            backup = path.with_suffix(path.suffix + '.before-cas-repair')
+            if not backup.exists():
+                backup.write_text(old)
+            path.write_text(new)
+    print('CAS compiler and pipeline repair verified.')
+    return 0
 
-# ── Fix path: compiler.py ──
-COMPILER_PATH = "/home/mrnob0dy666/imsgct/red-hot_rebis/ch3mpiler/compiler.py"
-PIPELINE_PATH = "/home/mrnob0dy666/imsgct/red-hot_rebis/pipeline/reaction_pipeline.py"
 
-with open(COMPILER_PATH) as f:
-    src = f.read()
-
-# ── Fix 1: Add SMILES fetch to CASResolver.resolve() ──
-# Replace the PubChem URL from /name/{cas}/JSON to /name/{cas}/property/.../JSON
-old_url = 'url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/{cas}/JSON"'
-new_url = 'url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/{cas}/property/CanonicalSMILES,MolecularFormula,IUPACName/JSON"'
-
-# Replace the PC_Compounds parsing with PropertyTable parsing (simpler, gets SMILES)
-old_parse = '''        try:
-            url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/{cas}/JSON"
-            req = urllib.request.Request(url, headers={"User-Agent": "ch3mpiler/1.0"})
-            resp = urllib.request.urlopen(req, timeout=10)
-            data = json.loads(resp.read())
-            props = {}
-            if "PC_Compounds" in data and data["PC_Compounds"]:
-                for prop in data["PC_Compounds"][0].get("props", []):
-                    urn = prop.get("urn", {}).get("label", "")
-                    val = prop.get("value", {}).get("sval", "")
-                    props[urn] = val
-            name = props.get("IUPAC Name", props.get("Molecular Formula", cas))
-            formula = props.get("Molecular Formula", "")
-            entry = {"cas": cas, "name": name, "formula": formula, "source": "pubchem", "type_hint": ""}
-            self._cache[cas] = entry
-            self._save_cache()
-            return entry'''
-
-new_parse = '''        try:
-            url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/{cas}/property/CanonicalSMILES,MolecularFormula,IUPACName/JSON"
-            req = urllib.request.Request(url, headers={"User-Agent": "ch3mpiler/1.0"})
-            resp = urllib.request.urlopen(req, timeout=10)
-            data = json.loads(resp.read())
-            props = data.get("PropertyTable", {}).get("Properties", [{}])[0]
-            name = props.get("IUPACName", props.get("MolecularFormula", cas))
-            formula = props.get("MolecularFormula", "")
-            smiles = props.get("CanonicalSMILES", "")
-            entry = {"cas": cas, "name": name, "formula": formula,
-                     "smiles": smiles, "source": "pubchem", "type_hint": ""}
-            self._cache[cas] = entry
-            self._save_cache()
-            return entry'''
-
-# This patch has been applied. Running it again finds its own result in place
-# rather than the text it was written to replace, which is success and not
-# failure, so it says so and stops.
-if src.count(old_url) == 0 and src.count(old_parse) == 0:
-    if "CanonicalSMILES" in src:
-        info_line("[already applied] compiler.py fetches CanonicalSMILES; nothing to do.")
-        raise SystemExit(0)
-    raise SystemExit("compiler.py matches neither the original nor the patched form.")
-
-assert src.count(old_url) == 1 and src.count(old_parse) == 1, \
-    f"Expected exactly 1 occurrence each in compiler.py. Found: url={src.count(old_url)}, parse={src.count(old_parse)}"
-
-src = src.replace(old_url, new_url)
-src = src.replace(old_parse, new_parse)
-
-with open(COMPILER_PATH, "w") as f:
-    f.write(src)
-
-success_line(f"[OK] Patched {COMPILER_PATH}")
-info_line("  - CASResolver.resolve() now fetches /property/CanonicalSMILES,.../JSON")
-info_line("  - Returns 'smiles' field in addition to name, formula")
-
-# ── Fix 2: Pipeline --cas path: propagate SMILES to scaffold parser ──
-with open(PIPELINE_PATH) as f:
-    psrc = f.read()
-
-# The problem block in main():
-#   if args.cas:
-#       info = pipeline.compiler.resolve_and_analyze(args.cas)
-#       name = info.get("cas_info", {}).get("name", args.cas)
-#       ...
-#       pipeline._target_smiles = args.smiles or ""    ← never gets SMILES from CAS
-#       ...
-#       tree = pipeline.deep_retrosynthesis(name)        ← uses NAME, never calls resolve_and_parse_scaffold
-
-# We need to add SMILES propagation right after the name resolution.
-# Find: pipeline._target_smiles = args.smiles or ""
-# Replace with SMILES propagation from CAS resolver
-
-old_smiles_assign = '            pipeline._target_smiles = args.smiles or ""'
-new_smiles_assign = '''            pipeline._target_smiles = info.get("smiles", "") or args.smiles or ""'''
-
-assert psrc.count(old_smiles_assign) == 2, \
-    f"Expected 2 occurrences of the target_smiles assignment. Found: {psrc.count(old_smiles_assign)}"
-
-psrc = psrc.replace(old_smiles_assign, new_smiles_assign)
-
-with open(PIPELINE_PATH, "w") as f:
-    f.write(psrc)
-
-success_line(f"[OK] Patched {PIPELINE_PATH}")
-info_line("  - --cas path now passes SMILES to resolve_and_parse_scaffold()")
-info_line("  - Pipeline._target_smiles = info['smiles'] from CAS resolver")
-print()
-info_line("=== Usage ===")
-info_line("  p3 pipeline/reaction_pipeline.py --cas \"<CAS_NUMBER>\" --cdxml")
-print()
-info_line("The CAS resolver will now:")
-info_line("  1. Query PubChem by CAS number → get IUPAC Name + Formula + SMILES")
-info_line("  2. Pass SMILES to ScaffoldParser → real fragment CDXML files")
-info_line("  3. Cache all fields (including SMILES) in CAS_cache.json")
-print()
-info_line("If the CAS isn't in PubChem, it falls back gracefully:")
-info_line("  - SMILES is empty → FG-only decomposition (legacy behavior)")
-info_line("  - No hard failure, no crash")
+if __name__ == '__main__':
+    raise SystemExit(main())

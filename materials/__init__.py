@@ -18,13 +18,25 @@ CLI (via rebis.py):
   rebis.py materials frobenius            # Run Frobenius metamaterial simulation
   rebis.py materials ouroboric            # Run Ouroboric alloy simulation
 """
+import importlib as _importlib
 
-from materials.ig_material_forge import MaterialForge, MaterialDesign, predefined_novel_materials
-from materials.frobenius_metamaterial import FrobeniusMetamaterial, FrobeniusMaterialParams
-from materials.ouroboric_alloy import OuroboricAlloy
+_EXPORTS = {'MaterialForge': 'materials.ig_material_forge',
+ 'MaterialDesign': 'materials.ig_material_forge',
+ 'predefined_novel_materials': 'materials.ig_material_forge',
+ 'FrobeniusMetamaterial': 'materials.frobenius_metamaterial',
+ 'FrobeniusMaterialParams': 'materials.frobenius_metamaterial',
+ 'OuroboricAlloy': 'materials.ouroboric_alloy'}
 
-__all__ = [
-    'MaterialForge', 'MaterialDesign', 'predefined_novel_materials',
-    'FrobeniusMetamaterial', 'FrobeniusMaterialParams',
-    'OuroboricAlloy',
-]
+__all__ = list(_EXPORTS)
+
+
+def __getattr__(name):
+    if name not in _EXPORTS:
+        raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+    value = getattr(_importlib.import_module(_EXPORTS[name]), name)
+    globals()[name] = value
+    return value
+
+
+def __dir__():
+    return sorted(set(globals()) | set(__all__))

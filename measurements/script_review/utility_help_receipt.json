@@ -1,0 +1,32 @@
+{
+  "scripts/msa_analysis.py": {
+    "help_exit": 0
+  },
+  "scripts/gen_univ_map.py": {
+    "help_exit": 0
+  },
+  "scripts/analyze_validation.py": {
+    "help_exit": 0
+  },
+  "scripts/run_msa.py": {
+    "help_exit": 0
+  },
+  "scripts/frob_design.py": {
+    "help_exit": 0
+  },
+  "scripts/frobenius_exact_design.py": {
+    "help_exit": 0
+  },
+  "scripts/compute_promotions.py": {
+    "help_exit": 0
+  },
+  "scripts/run_pdb_validation.py": {
+    "help_exit": 0
+  },
+  "scripts/run_serpent.py": {
+    "help_exit": 0
+  },
+  "scripts/mito_pipeline.py": {
+    "help_exit": 0
+  }
+}

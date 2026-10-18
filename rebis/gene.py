@@ -24,42 +24,23 @@ for p in [str(_REBIS_ROOT), str(_REBIS_ROOT / "gene_imscriber"),
     if p not in sys.path:
         sys.path.insert(0, p)
 
-__all__ = []
+_EXPORTS = {'verify_all': 'gene_imscriber.engine', 'demo_b4_lattice': 'gene_imscriber.engine', 'extract_features_from_sequence': 'gene_imscriber.tuples', 'generate_all_tuples': 'gene_imscriber.tuples', 'GeneToProteinPipeline': 'rhr_p4rky.gene_to_protein_pipeline', 'verify_all_codons_frobenius': 'rhr_p4rky.genetic_code', 'BelnapCodon': 'rhr_p4rky.genetics_b4'}
+__all__ = list(_EXPORTS) + ["verify_genetic_code"]
 
-def _silent_lazy(name, module, attr=None):
-    try:
-        old_out, old_err = sys.stdout, sys.stderr
-        sys.stdout = sys.stderr = io.StringIO()
-        m = importlib.import_module(module)
-        sys.stdout, sys.stderr = old_out, old_err
-        globals()[name] = getattr(m, attr or name)
-        __all__.append(name)
-    except Exception:
-        sys.stdout, sys.stderr = old_out, old_err
 
-_lazy = _silent_lazy
+def __getattr__(name):
+    if name not in _EXPORTS:
+        raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+    value = getattr(importlib.import_module(_EXPORTS[name]), name)
+    globals()[name] = value
+    return value
 
-_lazy("GeneticEngine", "gene_imscriber.engine")
-_lazy("analyze_sequence", "gene_imscriber.engine")
-_lazy("verify_all", "gene_imscriber.engine")
-_lazy("demo_b4_lattice", "gene_imscriber.engine")
-_lazy("GeneticIGPrelim", "gene_imscriber.genetics_ig_prelim")
-_lazy("GeneticIGPromotions", "gene_imscriber.genetics_ig_promotions")
-_lazy("compute_genetic_promotions", "gene_imscriber.genetics_ig_promotions")
-_lazy("GeneticQualityScore", "gene_imscriber.genetics_qs")
-_lazy("compute_quality_score", "gene_imscriber.genetics_qs")
-_lazy("IGGeneticsAnswer", "gene_imscriber.ig_genetics_answer")
-_lazy("GeneticTuples", "gene_imscriber.tuples")
-_lazy("compute_genetic_tuples", "gene_imscriber.tuples")
-_lazy("extract_features_from_sequence", "gene_imscriber.tuples")
-_lazy("generate_all_tuples", "gene_imscriber.tuples")
 
-# rhr_p4rky advanced genetics
-_lazy("GeneticCode", "rhr_p4rky.genetic_code")
-_lazy("B4Lattice", "rhr_p4rky.genetics_b4")
-_lazy("verify_genetic_code", "rhr_p4rky.genetics_b4")
-_lazy("GeneToProteinPipeline", "rhr_p4rky.gene_to_protein_pipeline")
-_lazy("run_gene_to_protein", "rhr_p4rky.gene_to_protein_pipeline")
+def verify_genetic_code():
+    """Return the existing codon verification's complete-coverage result."""
+    from rhr_p4rky.genetic_code import verify_all_codons_frobenius
+    result = verify_all_codons_frobenius()
+    return result["total_codons"] == 64 and result["frobenius_violations"] == 0
 
 
 # ── Standard genetic code table ──
@@ -89,29 +70,38 @@ def _translate_dna(dna):
 
 
 def _find_orfs(dna, min_len=30):
-    """Find all ORFs in all 6 reading frames."""
+    """Find complete start-to-stop ORFs on both strands.
+
+    Coordinates are zero-based half-open intervals on the supplied sequence.
+    Frame is the offset (0, 1, 2) on the indicated strand. The minimum length
+    counts coding bases before the stop codon; length_bp includes that codon.
+    """
+    if min_len < 0:
+        raise ValueError("Minimum ORF length must be nonnegative")
     dna = dna.upper().replace('U', 'T')
+    reverse = dna.translate(str.maketrans('ACGT', 'TGCA'))[::-1]
     orfs = []
-    for frame in range(3):
-        for i in range(frame, len(dna) - 2, 3):
-            codon = dna[i:i+3]
-            if codon == 'ATG':
-                protein = []
-                j = i
-                while j < len(dna) - 2:
-                    c = dna[j:j+3]
-                    aa = CODON_TABLE.get(c, '?')
-                    if aa == '*':
-                        if len(protein) * 3 >= min_len:
-                            orfs.append({
-                                "start": i, "end": j + 3, "frame": frame,
-                                "length_bp": j + 3 - i,
-                                "protein": ''.join(protein),
-                                "protein_length": len(protein),
-                            })
-                        break
-                    protein.append(aa)
-                    j += 3
+    for strand, sequence in (('+', dna), ('-', reverse)):
+        for frame in range(3):
+            starts = []
+            for i in range(frame, len(sequence) - 2, 3):
+                codon = sequence[i:i+3]
+                if codon == 'ATG':
+                    starts.append(i)
+                elif CODON_TABLE.get(codon) == '*':
+                    for start in starts:
+                        if i - start < min_len:
+                            continue
+                        end = i + 3
+                        protein = _translate_dna(sequence[start:i])
+                        left, right = ((start, end) if strand == '+' else
+                                       (len(dna) - end, len(dna) - start))
+                        orfs.append({
+                            "start": left, "end": right, "frame": frame,
+                            "strand": strand, "length_bp": end - start,
+                            "protein": protein, "protein_length": len(protein),
+                        })
+                    starts = []
     return orfs
 
 
@@ -166,16 +156,14 @@ def _cmd_analyze(args):
 
     # B4 lattice via rhr_p4rky
     try:
-        from rhr_p4rky.genetics_b4 import verify_genetic_code
         print("  Verifying B4 lattice (64-codon Frobenius)...")
         b4_result = verify_genetic_code()
-        if b4_result:
-            output["b4_lattice"] = "verified" if b4_result else "failed"
-    except Exception:
-        pass
+        output["b4_lattice"] = "verified" if b4_result else "failed"
+    except Exception as exc:
+        output["b4_lattice"] = {"error": str(exc)}
 
     print(_json_or_str(output))
-    return 0
+    return int(output["b4_lattice"] != "verified")
 
 
 def _cmd_quality(args):
@@ -231,8 +219,16 @@ def _cmd_tuples(args):
     print(f"═ Genetic IG Tuples ═")
     try:
         from gene_imscriber.tuples import extract_features_from_sequence, generate_all_tuples
-        aas = [{"aa": c, "primitive": None} for c in _translate_dna(seq)]
-        features = extract_features_from_sequence(aas)
+        from rhr_p4rky.genetic_code import SYMBOL_TO_AA
+        aas = []
+        for i in range(0, len(seq) - 2, 3):
+            codon = seq[i:i+3].replace('T', 'U')
+            aa = SYMBOL_TO_AA[codon]
+            if aa == "Stop":
+                break
+            aas.append({"aa_code": aa})
+        features = extract_features_from_sequence(
+            aas, gc_content=(seq.count('G') + seq.count('C')) / len(seq))
         result = generate_all_tuples(features)
         print(_json_or_str(result))
     except Exception as e:
@@ -245,7 +241,9 @@ def _cmd_tuples(args):
             "protein_length": len(protein),
             "aa_composition": {aa: protein.count(aa) for aa in set(protein)},
         }
+        output["error"] = str(e)
         print(_json_or_str(output))
+        return 1
     return 0
 
 
@@ -275,7 +273,6 @@ def _cmd_b4(args):
     """Run B4 lattice verification (64-codon Frobenius)."""
     print("═ B4 Lattice — 64-Codon Frobenius Verification ═")
     try:
-        from rhr_p4rky.genetics_b4 import verify_genetic_code
         print("  Verifying all 64 codons...")
         result = verify_genetic_code()
         output = {
@@ -289,7 +286,7 @@ def _cmd_b4(args):
         print(f"B4 lattice verification failed: {e}")
         traceback.print_exc()
         return 1
-    return 0
+    return int(not result)
 
 def _cmd_pipeline(args):
     """Run full gene-to-protein pipeline."""
@@ -316,6 +313,8 @@ def _cmd_pipeline(args):
         protein = _translate_dna(dna)
         orfs = _find_orfs(dna)
         output = {
+            "error": str(e),
+            "completed_pipeline": False,
             "dna": args.dna,
             "stages": {
                 "transcription": {"mrna": dna.replace('T', 'U'), "length": len(dna)},
@@ -325,15 +324,20 @@ def _cmd_pipeline(args):
             },
         }
         print(_json_or_str(output))
+        return 1
     return 0
 
 
 def _cmd_list(args):
     print("rebis.gene — Exports:")
+    failed = False
     for name in sorted(__all__):
-        obj = globals().get(name)
-        status = "✓" if obj is not None else "✗"
-        print(f"  {status} {name}")
+        try:
+            getattr(sys.modules[__name__], name)
+            print(f"  ✓ {name}")
+        except Exception as exc:
+            print(f"  ✗ {name}: {exc}")
+            failed = True
     print("\nCommands:")
     print("  analyze <seq>      — Full sequence analysis (codons, ORFs, B4)")
     print("  quality <seq>      — Genetic quality score")
@@ -342,7 +346,7 @@ def _cmd_list(args):
     print("  b4                 — B4 lattice 64-codon verification")
     print("  pipeline <dna>     — Full gene→protein pipeline")
     print("  list               — List exports")
-    return 0
+    return int(failed)
 
 
 def main():

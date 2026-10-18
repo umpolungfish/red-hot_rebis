@@ -1,0 +1,12 @@
+{
+  "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC": {
+    "atom_count": 110,
+    "unique_ids": true,
+    "charge_and_isotope": "preserved"
+  },
+  "[13CH3][NH3+]": {
+    "atom_count": 2,
+    "unique_ids": true,
+    "charge_and_isotope": "preserved"
+  }
+}

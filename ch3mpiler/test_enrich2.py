@@ -1,48 +1,62 @@
 #!/usr/bin/env python3
-"""Test the enriched precursor lattice — comprehensive."""
+"""Exercise the enriched precursor lattice and return failed search status."""
 import sys
-sys.path.insert(0, '/home/mrnob0dy666/imsgct/red-hot_rebis')
-sys.path.insert(0, '.')
-import ch3mpiler.compiler as compiler
-from ch3mpiler.compiler import Ch3mpiler, FG
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from shared.rich_output import *
 
-# Check FG extensions more carefully
-info_line("=== FG TABLE CHECK ===")
-for fg_name in sorted(FG.keys()):
-    if fg_name in ['nitro', 'cyclic', 'diazonium', 'phosphate', 'sulfonate']:
-        info_line(f'  {fg_name}: {FG[fg_name]}')
 
-# Also check MOLECULE_FG_DB
-print()
-info_line("=== MOLECULE DB EXTENSIONS ===")
-from ch3mpiler.compiler import MOLECULE_FG_DB
+def main(argv=None):
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--depth', type=int, default=5, help='Maximum path search depth')
+    args = parser.parse_args(argv)
+    if args.depth < 0:
+        parser.error('Depth must be nonnegative')
+    from ch3mpiler.compiler import Ch3mpiler, FG, MOLECULE_FG_DB
+    info_line("=== FG TABLE CHECK ===")
+    for fg_name in sorted(FG.keys()):
+        if fg_name in ['nitro', 'cyclic', 'diazonium', 'phosphate', 'sulfonate']:
+            info_line(f'  {fg_name}: {FG[fg_name]}')
 
-for name in ['4_aminophenol', '4_nitrophenol', 'acetic_anhydride', 'isobutylbenzene']:
-    if name in MOLECULE_FG_DB:
-        info_line(f'  {name}: {MOLECULE_FG_DB[name]}')
+    # Also check MOLECULE_FG_DB
+    print()
+    info_line("=== MOLECULE DB EXTENSIONS ===")
 
-print()
-info_line("=== PATHFINDING TESTS ===")
-ch = Ch3mpiler()
+    for name in ['4_aminophenol', '4_nitrophenol', 'acetic_anhydride', 'isobutylbenzene']:
+        if name in MOLECULE_FG_DB:
+            info_line(f'  {name}: {MOLECULE_FG_DB[name]}')
 
-tests = [
-    ('benzene', 'paracetamol', 'Benzene -> Paracetamol'),
-    ('benzene', 'aspirin', 'Benzene -> Aspirin'),
-    ('toluene', 'benzaldehyde', 'Toluene -> Benzaldehyde'),
-    ('benzene', 'ibuprofen', 'Benzene -> Ibuprofen'),
-    ('benzene', 'aniline', 'Benzene -> Aniline'),
-    ('nitrobenzene', 'paracetamol', 'Nitrobenzene -> Paracetamol'),
-]
+    print()
+    info_line("=== PATHFINDING TESTS ===")
+    ch = Ch3mpiler()
 
-for start, target, label in tests:
-    info_line(f'\n--- {label} ---')
-    r = ch.path_to_target(start, target, depth=5)
-    if r.get('found'):
-        info_line(f'  ✓ FOUND ({r["path_length"]} steps)')
-        for step in r['path']:
-            info_line(f'    {step["step"]}. {step["fg1"]} + {step["fg2"]} → {step["product"]}')
-            info_line(f'       [{step["bond"]}] {step["reaction"]}')
-    else:
-        info_line(f'  ✗ NOT FOUND (source: {r.get("source", "?")})')
-        info_line(f'  Direct distance: {r.get("direct_structural_distance", "?")}')
+    tests = [
+        ('benzene', 'paracetamol', 'Benzene -> Paracetamol'),
+        ('benzene', 'aspirin', 'Benzene -> Aspirin'),
+        ('toluene', 'benzaldehyde', 'Toluene -> Benzaldehyde'),
+        ('benzene', 'ibuprofen', 'Benzene -> Ibuprofen'),
+        ('benzene', 'aniline', 'Benzene -> Aniline'),
+        ('nitrobenzene', 'paracetamol', 'Nitrobenzene -> Paracetamol'),
+    ]
+
+    failed = False
+    for start, target, label in tests:
+        info_line(f'\n--- {label} ---')
+        r = ch.path_to_target(start, target, depth=args.depth)
+        if r.get('found'):
+            info_line(f'  ✓ FOUND ({r["path_length"]} steps)')
+            for step in r['path']:
+                info_line(f'    {step["step"]}. {step["fg1"]} + {step["fg2"]} → {step["product"]}')
+                info_line(f'       [{step["bond"]}] {step["reaction"]}')
+        else:
+            failed = True
+            info_line(f'  ✗ NOT FOUND (source: {r.get("source", "?")})')
+            info_line(f'  Direct distance: {r.get("direct_structural_distance", "?")}')
+
+    return int(failed)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -12,7 +12,7 @@ if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
     _doc = __doc__.strip() if __doc__ else "scripts/run_msa.py"
     print(_doc)
     print()
-    info_line("Examples:")
+    print("Examples:")
     print(_HELP_EXAMPLES)
     print()
     _sys.exit(0)
@@ -73,7 +73,7 @@ def analyze_family(name, orthologs):
             "subunits": result["subunit_count"],
             "frobenius": result["frobenius_verified"],
             "confidence": result["confidence"],
-            "primitives_activated": list(activated),
+            "primitives_activated": sorted(activated),
             "num_activated": len(activated),
         }
         all_primitives[species] = activated
@@ -89,47 +89,50 @@ def analyze_family(name, orthologs):
     # Cross-species conservation
     if len(orthologs) >= 2:
         species_list = list(results.keys())
-        conserved = set(all_primitives[species_list[0]])
-        variable = set()
-        for sp in species_list[1:]:
-            conserved &= all_primitives[sp]
-            variable |= all_primitives[sp] - conserved
-        
+        sets = list(all_primitives.values())
+        conserved = set.intersection(*sets)
+        variable = set.union(*sets) - conserved
+
         info_line(f"\n  CONSERVED primitives ({len(conserved)}/12): {sorted(conserved)}")
         info_line(f"  VARIABLE primitives: {sorted(variable)}")
         
-        results["conserved_primitives"] = list(conserved)
-        results["variable_primitives"] = list(variable)
+        results["conserved_primitives"] = sorted(conserved)
+        results["variable_primitives"] = sorted(variable)
         results["conservation_rate"] = len(conserved) / 12
     
     return results
 
-all_results = {}
+def main():
+    all_results = {}
 
-info_line("="*70)
-info_line("🐍 SERPENTROD — EVOLUTIONARY CONSERVATION ANALYSIS 🐍")
-info_line("="*70)
+    info_line("="*70)
+    info_line("🐍 SERPENTROD — EVOLUTIONARY CONSERVATION ANALYSIS 🐍")
+    info_line("="*70)
 
-# Ubiquitin
-all_results["ubiquitin"] = analyze_family("ubiquitin", UBIQUITIN_ORTHOLOGS)
+    # Ubiquitin
+    all_results["ubiquitin"] = analyze_family("ubiquitin", UBIQUITIN_ORTHOLOGS)
 
-# Cytochrome C
-all_results["cytochrome_c"] = analyze_family("cytochrome_c", CYTC_ORTHOLOGS)
+    # Cytochrome C
+    all_results["cytochrome_c"] = analyze_family("cytochrome_c", CYTC_ORTHOLOGS)
 
-info_line(f"\n\n{'='*70}")
-info_line("SUMMARY: EVOLUTIONARY CONSERVATION OF ACTIVATION PATTERNS")
-info_line(f"{'='*70}")
-for fam_name, fam_results in all_results.items():
-    seqs = [k for k in fam_results.keys() if k not in ["conserved_primitives", "variable_primitives", "conservation_rate"]]
-    info_line(f"\n{fam_name.upper()}: {len(seqs)} orthologs")
-    for sp in seqs:
-        r = fam_results[sp]
-        info_line(f"  {sp:20s} len={r['seq_len']:3d} wind={r['winding']:3d} frob={'✓' if r['frobenius'] else '✗'} prim={r['num_activated']:2d}/12")
-    if "conserved_primitives" in fam_results:
-        info_line(f"  Conserved: {fam_results['conserved_primitives']}")
-        info_line(f"  Variable:  {fam_results['variable_primitives']}")
-        info_line(f"  Rate: {fam_results['conservation_rate']:.0%}")
+    info_line(f"\n\n{'='*70}")
+    info_line("SUMMARY: EVOLUTIONARY CONSERVATION OF ACTIVATION PATTERNS")
+    info_line(f"{'='*70}")
+    for fam_name, fam_results in all_results.items():
+        seqs = [k for k in fam_results.keys() if k not in ["conserved_primitives", "variable_primitives", "conservation_rate"]]
+        info_line(f"\n{fam_name.upper()}: {len(seqs)} orthologs")
+        for sp in seqs:
+            r = fam_results[sp]
+            info_line(f"  {sp:20s} len={r['seq_len']:3d} wind={r['winding']:3d} frob={'✓' if r['frobenius'] else '✗'} prim={r['num_activated']:2d}/12")
+        if "conserved_primitives" in fam_results:
+            info_line(f"  Conserved: {fam_results['conserved_primitives']}")
+            info_line(f"  Variable:  {fam_results['variable_primitives']}")
+            info_line(f"  Rate: {fam_results['conservation_rate']:.0%}")
 
-with open("/home/mrnob0dy666/p4rakernel/msa_analysis.json", "w") as f:
-    json.dump(all_results, f, indent=2, default=str)
-info_line(f"\nResults saved to msa_analysis.json")
+    with open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "msa_ortholog_analysis.json"), "w") as f:
+        json.dump(all_results, f, indent=2, default=str)
+    info_line(f"\nResults saved to msa_analysis.json")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,7 @@
+{
+  "import": "no outputs",
+  "sequence": "MACGKPVASLWQ",
+  "shared_geometry": "complete sidechain atoms and evidence exported",
+  "pdb": "measurements/script_review/fusion_model_control.pdb",
+  "datasets_import": "missing generator entry no longer blocks independent modules"
+}

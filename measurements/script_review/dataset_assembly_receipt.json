@@ -1,0 +1,67 @@
+{
+  "sources": {
+    "clink/datasets/gen_part2.py": "550e83ab7e74b45e9e469ee8ccd164114c08cbba95012cd317eadca78dae0091",
+    "clink/datasets/gen_part3.py": "59d6ac8b2fcf0ada7419f1d00651aac89fbf53c603e20732e3913a6a24ca47d8",
+    "clink/datasets/gen_part4.py": "9c82f4e75b911ec6cb03dbd6fde9648377edaab5d66995b91986ccc7c97774d3",
+    "clink/datasets/gen_gen.py": "9b8e401004b56af9ac92f0bd477a677487f30ce5c79796bcdaaf13f77a26a4ae",
+    "clink/datasets/_generator_assembly.py": "945a2a5d3dd48a41b313bf27227f1cd91c053122f92399814b76b37c4c64ed74"
+  },
+  "classes": [
+    "DatasetFile",
+    "DatasetGenerator",
+    "DatasetOutput",
+    "Layer0DatasetGenerator",
+    "Layer1DatasetGenerator",
+    "Layer2DatasetGenerator",
+    "Layer3DatasetGenerator",
+    "Layer4DatasetGenerator",
+    "Layer5DatasetGenerator",
+    "Layer6DatasetGenerator",
+    "Layer7DatasetGenerator",
+    "Layer8DatasetGenerator"
+  ],
+  "all_nine_layers": true,
+  "append_idempotent": true,
+  "missing_base_rejected": true,
+  "duplicates_rejected": true,
+  "backup_preserved": true,
+  "runs": [
+    {
+      "args": [
+        "--output",
+        "/home/mrnob0dy666/imsgct/red-hot_rebis/measurements/script_review/assembled_historical_generators.py",
+        "--check"
+      ],
+      "status": 1,
+      "stdout": "Assembly differs: /home/mrnob0dy666/imsgct/red-hot_rebis/measurements/script_review/assembled_historical_generators.py\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "--output",
+        "/home/mrnob0dy666/imsgct/red-hot_rebis/measurements/script_review/assembled_historical_generators.py"
+      ],
+      "status": 0,
+      "stdout": "Wrote assembly: /home/mrnob0dy666/imsgct/red-hot_rebis/measurements/script_review/assembled_historical_generators.py\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "--output",
+        "/home/mrnob0dy666/imsgct/red-hot_rebis/measurements/script_review/assembled_historical_generators.py",
+        "--check"
+      ],
+      "status": 0,
+      "stdout": "Assembly already matches.\n",
+      "stderr": ""
+    }
+  ],
+  "scope": "Source assembly and CLI write controls; no biological generation executed.",
+  "quiet_imports": [
+    "gen_part2",
+    "gen_part3",
+    "gen_part4",
+    "gen_gen"
+  ],
+  "earlier_layers_required": true
+}

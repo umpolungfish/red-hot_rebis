@@ -1,0 +1,13 @@
+{
+  "repeat_seed": "reproducible",
+  "global_random_state": "preserved",
+  "bounded_partial_library": "retained",
+  "complete_library_categories": [
+    "proper",
+    "inverted",
+    "bidirectional",
+    "with_dialetheia",
+    "with_self_ref",
+    "o_critical"
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "pdb_id": "LOCAL_CONTROL",
+  "sequence": "AAAAAA",
+  "declared_seqres_sequence": "AAAAAAAA",
+  "comparison_scope": "first model, first observed chain, observed CA residues",
+  "residue_identifiers": [
+    {
+      "chain": "A",
+      "residue_id": "1",
+      "insertion_code": " ",
+      "alternate_location": " "
+    },
+    {
+      "chain": "A",
+      "residue_id": "2",
+      "insertion_code": " ",
+      "alternate_location": " "
+    },
+    {
+      "chain": "A",
+      "residue_id": "3",
+      "insertion_code": " ",
+      "alternate_location": " "
+    },
+    {
+      "chain": "A",
+      "residue_id": "4",
+      "insertion_code": " ",
+      "alternate_location": " "
+    },
+    {
+      "chain": "A",
+      "residue_id": "5",
+      "insertion_code": " ",
+      "alternate_location": " "
+    },
+    {
+      "chain": "A",
+      "residue_id": "6",
+      "insertion_code": " ",
+      "alternate_location": " "
+    }
+  ],
+  "seq_len": 6,
+  "atom_seq": "AAAAAA",
+  "atom_count": 6,
+  "experimental_contacts": 0,
+  "predicted_contacts": 0,
+  "true_positives": 0,
+  "false_positives": 0,
+  "false_negatives": 0,
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1_score": 0.0,
+  "frobenius_verified": false,
+  "winding_number": 0,
+  "activation_coverage": "0/12"
+}

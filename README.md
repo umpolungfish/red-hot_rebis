@@ -18,6 +18,8 @@ rebis.serpentrod foldv2 AUGGCC... --pdb folded.pdb
 rebis.ch3mpiler retrosynth "CC(=O)O" | rebis.p4ra belnap
 ```
 
+Protein coordinates and closure evidence use the shared Vox geometry modules in the sibling `Vox` checkout. Gen2 and the gene pipeline retain complete sidechain heavy atoms, codon-aligned B4 steps and valid per-residue T/F/B/N observations. PDB export reassesses the coordinates being written and preserves all findings in REMARK 900. The local adapter requires `rustc`; its source-bound cache lives in `measurements/native_peptide_bridge/` and refreshes when the canonical geometry changes. Coordinate overlaps and dialetheic B states remain separate observations.
+
 Every command is a standalone binary (18 entry points) - no `rebis <sub>` prefix needed. Full grimoire: `COMMANDS.md`.
 
 ## The loop and engines

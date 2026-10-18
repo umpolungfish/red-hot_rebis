@@ -1,0 +1,84 @@
+{
+  "runs": [
+    {
+      "path": "demo_scripts/_demo_decay_chain.py",
+      "sha256": "f476ef9159635807daf38d0503f831be85455a6ff333cfab3bcf8cd457c7e6a5",
+      "import_status": 0,
+      "status": 0,
+      "stdout": "=================================================================\nNUCLEAR DECAY CHAIN \u2014 Each decay is one IMASM winding\n=================================================================\n\nU238:\n  {'name': 'Uranium-238 series (4n+2)', 'chain': [('U', 'U-238...\n\nU235:\n  {'name': 'Uranium-235 series (4n+3)', 'chain': [('U', 'U-235...\n\nTh232:\n  {'name': 'Thorium-232 series (4n)', 'chain': [('Th', 'Th-232...\n\nTheorem: Each decay chain winds toward a Frobenius fixed point\n(lead or bismuth \u2014 the alchemical endpoint).\n",
+      "stderr": ""
+    },
+    {
+      "path": "demo_scripts/_demo_pipeline.py",
+      "sha256": "a0eb9457ca1772e101f8b83e7b6882d5a17f0cc7279b939b03c4a9d3b5188cca",
+      "import_status": 0,
+      "status": 0,
+      "stdout": "=================================================================\nPIPELINE MODULES \u2014 Verification, Scaffolding, Reaction Design\n=================================================================\n  __init__.py                         0 lines\n  _ob3ect.py                         23 lines\n  auto_imscriber.py                  97 lines\n  demo_formulas.py                   72 lines\n  frob.py                           148 lines\n  imscribe_agent.py                 760 lines\n  imscribe_tool.py                  411 lines\n  ob3ect_imscriber.py                50 lines\n  patch_scaffold.py                 169 lines\n  patch_scaffold2.py                120 lines\n  patch_scaffold3.py                 62 lines\n  patch_scaffold4.py                 47 lines\n  patch_scaffold5.py                 47 lines\n  reaction_pipeline.py             1095 lines\n  therapy_to_pdb.py                 678 lines\n\nKey tools:\n  pipeline/frob.py           \u2014 Frobenius verification\n  pipeline/auto_imscriber.py \u2014 Auto-imscription pipeline\n  pipeline/reaction_pipeline.py \u2014 Chemical reaction design\n  pipeline/imscribe_agent.py \u2014 IG imscription agent\n  pipeline/patch_scaffold*   \u2014 Scaffold patching tools\n",
+      "stderr": ""
+    },
+    {
+      "path": "demo_scripts/_demo_b4_lattice.py",
+      "sha256": "53461851f928fda19fded54d33cd26c72c636be4b4ca7a7b42b31dd8de2a959f",
+      "import_status": 0,
+      "status": 0,
+      "stdout": "=================================================================\nB4 NUCLEOTIDE LATTICE \u2014 64 codons on a Frobenius algebra\n=================================================================\nEach base carries a Belnap value by how it pairs:\n  G \u2192 B\n  C \u2192 T\n  A \u2192 F\n  U \u2192 N\n\nCodons on the lattice: 64\n\nFirst sixteen codons and their B4 vectors:\n  GGG          \u2192 B4(BelnapCodon(GGG \u2192 [exact] BBB))\n  GGC          \u2192 B4(BelnapCodon(GGC \u2192 [exact] BBT))\n  GGA          \u2192 B4(BelnapCodon(GGA \u2192 [exact] BBF))\n  GGU          \u2192 B4(BelnapCodon(GGU \u2192 [exact] BBN))\n  GCG          \u2192 B4(BelnapCodon(GCG \u2192 [exact] BTB))\n  GCC          \u2192 B4(BelnapCodon(GCC \u2192 [exact] BTT))\n  GCA          \u2192 B4(BelnapCodon(GCA \u2192 [exact] BTF))\n  GCU          \u2192 B4(BelnapCodon(GCU \u2192 [exact] BTN))\n  GAG          \u2192 B4(BelnapCodon(GAG \u2192 [split] BFB))\n  GAC          \u2192 B4(BelnapCodon(GAC \u2192 [split] BFT))\n  GAA          \u2192 B4(BelnapCodon(GAA \u2192 [split] BFF))\n  GAU          \u2192 B4(BelnapCodon(GAU \u2192 [split] BFN))\n  GUG          \u2192 B4(BelnapCodon(GUG \u2192 [exact] BNB))\n  GUC          \u2192 B4(BelnapCodon(GUC \u2192 [exact] BNT))\n  GUA          \u2192 B4(BelnapCodon(GUA \u2192 [exact] BNF))\n  GUU          \u2192 B4(BelnapCodon(GUU \u2192 [exact] BNN))\n...\n\nWobble is what makes guanine the both-value: it pairs two ways.\n  G with C \u2192 False\n  G with U \u2192 True\n\nThe genetic code partitions the Crystal of Types exactly.\n",
+      "stderr": ""
+    },
+    {
+      "path": "demo_scripts/_demo_belnap.py",
+      "sha256": "010c15292e8fe61d4c1e0e55615d597013a607dc08e1e19d7712f184d978133a",
+      "import_status": 0,
+      "status": 0,
+      "stdout": "=================================================================\nPARACONSISTENT KERNEL \u2014 Belnap FOUR\n=================================================================\n\nFour values, and what negation does to each:\n  T  \u2192 negation F    designated: True   dialetheic: False\n  B  \u2192 negation B    designated: True   dialetheic: True\n  N  \u2192 negation N    designated: False   dialetheic: False\n  F  \u2192 negation T    designated: False   dialetheic: False\n\nmeet\n         T   B   N   F\n      T  T   T   N   N\n      B  T   B   N   F\n      N  N   N   N   N\n      F  N   F   N   F\n\njoin\n         T   B   N   F\n      T  T   B   T   B\n      B  B   B   B   B\n      N  T   B   N   F\n      F  B   B   F   F\n\nB is the fixed point of negation, and it is where a contradiction is held\nrather than exploded. N is the other fixed point, and holds nothing.\n",
+      "stderr": ""
+    },
+    {
+      "path": "demo_scripts/_demo_serpentrod.py",
+      "sha256": "22c0c44c1873560deb14b24a11efadfe30fbc8411d8c790ebe36f313117171cb",
+      "import_status": 0,
+      "status": 0,
+      "stdout": "=================================================================\nSERPENTROD v5 \u2014 Protein Classification by Primitive Spectrum\n=================================================================\n  Kinase-like          (KAL     ) \u2192 \u229e-dominant (1/3 residues)\n  Membrane helix       (ALMV    ) \u2192 \u22a2-dominant (1/4 residues)\n  Test peptide         (MALMVL  ) \u2192 \u22a2-dominant (2/6 residues)\n\nEach residue maps to 1 of 12 IG primitives.\nClassification = majority primitive vote across the sequence.\n\n12-AA primitive map (each amino acid \u2192 one of 12 IG primitives):\n  N   \u2192 \u2208\n  Q   \u2192 \u220b\n  Y   \u2192 \u227a\n  C   \u2192 \u227b\n  H   \u2192 \u2299\n  K   \u2192 \u229e\n  E   \u2192 \u22a1\n  M   \u2192 \u22a2\n  W   \u2192 \u22a3\n  I   \u2192 \u22a4\n  D   \u2192 \u22a5\n  F   \u2192 \u22c8\n",
+      "stderr": ""
+    },
+    {
+      "path": "demo_scripts/_demo_clink_chain.py",
+      "sha256": "37478d1e139e2daaab567744ec7e78e97229b48a5837d8b254f22c80297a96f3",
+      "import_status": 0,
+      "status": 0,
+      "stdout": "=================================================================\nCLINK CHAIN \u2014 The 9-Layer Ascent from Quarks to Organism\n=================================================================\n  L0: Frustrated Belnap5 (Quarks)    O\u2080          \u27e8\ud801\udc5b\ud801\udc76\ud801\udc69\ud801\udc6f\ud801\udc50\ud801\udc58\ud801\udc5a\ud801\udc5d\ud801\udc62\ud801\udc53\ud801\udc73\ud801\udc77>\n  L1: Electron Orbital (Belnap4)     O\u2080          \u27e8\ud801\udc5b\ud801\udc76\ud801\udc69\ud801\udc57\ud801\udc50\ud801\udc64\ud801\udc5a\ud801\udc5c\ud801\udc62\ud801\udc53\ud801\udc73\ud801\udc77>\n  L2: Atom (Nuclear + Electron)      O\u2081          \u27e8\ud801\udc7c\ud801\udc65\ud801\udc7d\ud801\udc7f\ud801\udc50\ud801\udc64\ud801\udc54\ud801\udc5d\ud801\udc6e\ud801\udc52\ud801\udc73\ud801\udc77>\n  L3: Molecule (Chemical Bonds)      O\u2082          \u27e8\ud801\udc7c\ud801\udc65\ud801\udc7d\ud801\udc7f\ud801\udc5e\ud801\udc67\ud801\udc72\ud801\udc60\u2299\ud801\udc53\ud801\udc73\ud801\udc6d>\n  L4: Cell (Living)                  O\u2082          \u27e8\ud801\udc66\ud801\udc78\ud801\udc7e\ud801\udc6c\ud801\udc5e\ud801\udc67\ud801\udc72\ud801\udc60\u2299\ud801\udc52\ud801\udc73\ud801\udc6d>\n  L5: Mitosis (Division)             O\u2082          \u27e8\ud801\udc66\ud801\udc78\ud801\udc7e\ud801\udc79\ud801\udc71\ud801\udc67\ud801\udc72\ud801\udc60\u2299\ud801\udc56\ud801\udc73\ud801\udc6d>\n  L6: Meiosis (Gametes)              O\u2082          \u27e8\ud801\udc66\ud801\udc78\ud801\udc7d\ud801\udc7f\ud801\udc71\ud801\udc67\ud801\udc72\ud801\udc60\u2299\ud801\udc56\ud801\udc73\ud801\udc6d>\n  L7: Tissue/Organ                   O\u2082          \u27e8\ud801\udc66\ud801\udc78\ud801\udc7e\ud801\udc6c\ud801\udc5e\ud801\udc67\ud801\udc72\ud801\udc75\u2299\ud801\udc56\ud801\udc73\ud801\udc6d>\n  L8: Whole Organism                 O_\u221e         \u27e8\ud801\udc66\ud801\udc78\ud801\udc7e\ud801\udc79\ud801\udc50\ud801\udc67\ud801\udc72\ud801\udc75\u2299\ud801\udc6b\ud801\udc73\ud801\udc5f>\n\n9 layers \u2014 Each promotion flips primitives toward O_inf\n",
+      "stderr": ""
+    },
+    {
+      "path": "demo_scripts/_demo_materials_sim.py",
+      "sha256": "98d7de2d7b3e8e90fce4a3b6e71fdf95f3e0984efbfa6fabd9b0ebe0ccdf1ea6",
+      "import_status": 0,
+      "status": 0,
+      "stdout": "=================================================================\nMATERIALS SIMULATION \u2014 Engine Types\n=================================================================\n  materials_sim.py                     Multi-physics materials simulation\n  thermal_rectifier.py                 Asymmetric thermal diode \u2014 phonon ratchet\n  ouroboric_alloy.py                   Self-healing alloy \u2014 cyclic regeneration\n  critical_metamaterial.py             Near-zero-index metamaterial at \u2299 criticality\n  frobenius_metamaterial.py            Frobenius-closed meta-atom array\n  non_qubit_qc.py                      Non-qubit quantum computing \u2014 12-state\n\nCommon pattern: each simulation is typed by 12-IG primitive tuple,\nverified by Frobenius closure, and designed for O_\u221e convergence.\n",
+      "stderr": ""
+    },
+    {
+      "path": "demo_scripts/_demo_materials.py",
+      "sha256": "a883b7fa36937f007e3a75b5f3806787261e6e390b1cffb875500bc1b8d8a026",
+      "import_status": 0,
+      "status": 0,
+      "stdout": "=================================================================\nIG MATERIAL FORGE \u2014 8 predefined novel materials\n=================================================================\n  critical_sensor_metamaterial         \u27e8\ud801\udc7c\ud801\udc65\ud801\udc7e\ud801\udc6c\ud801\udc5e\ud801\udc67\ud801\udc72\ud801\udc60\u2299\ud801\udc56\ud801\udc73\ud801\udc6d\u27e9\n  ep_detector                          \u27e8\ud801\udc68\ud801\udc61\ud801\udc7d\ud801\udc6c\ud801\udc50\ud801\udc58\ud801\udc54\ud801\udc5c\ud801\udc7b\ud801\udc52\ud801\udc55\ud801\udc74\u27e9\n  eternal_memory_alloy                 \u27e8\ud801\udc7c\ud801\udc70\ud801\udc51\ud801\udc6c\ud801\udc5e\ud801\udc64\ud801\udc72\ud801\udc5d\ud801\udc62\ud801\udc6b\ud801\udc73\ud801\udc77\u27e9\n  frobenius_composite                  \u27e8\ud801\udc7c\ud801\udc78\ud801\udc7e\ud801\udc79\ud801\udc5e\ud801\udc67\ud801\udc72\ud801\udc60\ud801\udc6e\ud801\udc6b\ud801\udc73\ud801\udc6d\u27e9\n  hierarchical_impact_absorber         \u27e8\ud801\udc66\ud801\udc78\ud801\udc51\ud801\udc6f\ud801\udc71\ud801\udc6a\ud801\udc72\ud801\udc60\ud801\udc62\ud801\udc56\ud801\udc73\ud801\udc74\u27e9\n  non_abelian_braiding_material        \u27e8\ud801\udc66\ud801\udc78\ud801\udc7e\ud801\udc79\ud801\udc50\ud801\udc67\ud801\udc72\ud801\udc60\u2299\ud801\udc6b\ud801\udc73\ud801\udc5f\u27e9\n  quantum_topological_substrate        \u27e8\ud801\udc68\ud801\udc61\ud801\udc7d\ud801\udc6f\ud801\udc50\ud801\udc6a\ud801\udc72\ud801\udc60\ud801\udc6e\ud801\udc6b\ud801\udc59\ud801\udc6d\u27e9\n  topological_thermal_rectifier        \u27e8\ud801\udc7c\ud801\udc78\ud801\udc7e\ud801\udc6c\ud801\udc5e\ud801\udc67\ud801\udc54\ud801\udc5d\u2299\ud801\udc56\ud801\udc73\ud801\udc6d\u27e9\n\nAvailable subcommands:\n  rebis.materials forge        # forge every material\n  rebis.materials frobenius    # metamaterial simulation\n  rebis.materials ouroboric    # ouroboric alloy\n  rebis.materials sophick      # sophick mercury analysis\n  rebis.materials exactor      # Frobenius gap closure\n",
+      "stderr": ""
+    },
+    {
+      "path": "demo_scripts/_demo_ch3mpiler.py",
+      "sha256": "e02c3ccfd33d003c1e6363577a5c1efb715a4f0a29967f2e95b8cea80c09ba80",
+      "import_status": 0,
+      "status": 0,
+      "stdout": "=================================================================\nCH3MPILER \u2014 IG-Grounded Retrosynthetic Compiler\n=================================================================\n\nCore operation: bond = join(tensor(FG1, FG2), bond)\n\nAvailable functional groups:\n  \u2022 OH (hydroxyl)\n  \u2022 NH2 (amine)\n  \u2022 COOH (carboxyl)\n  \u2022 C=O (carbonyl)\n  \u2022 SH (thiol)\n  \u2022 PO4 (phosphate)\n\nCh3mpiler ob3ect bridge:\n  ch3mpiler_ob3ect_bridge.py \u2014 maps between CH3MPILER and ob3ect types\n\nCh3mpiler-SerpentRod pipeline:\n  ch3mpiler_serpentrod_pipeline.py \u2014 design proteins with CH3MPILER\n\nAdditional modules:\n  ch3mpiler/scaffold_parser.py \u2014 Parse molecular scaffolds\n  ch3mpiler/reaction_deriver.py \u2014 Derive reactions from patterns\n  ch3mpiler/iupac_resolver.py \u2014 IUPAC name resolution\n",
+      "stderr": ""
+    },
+    {
+      "path": "demo_scripts/_demo_therapeutics.py",
+      "sha256": "ead48a9758abde67ab46c0d9b86b847a6930aa9355ee9e484766488073df76e9",
+      "import_status": 0,
+      "status": 0,
+      "stdout": "=================================================================\nTHERAPEUTICS \u2014 5 Frobenius-verified Drug Design Pipelines\n=================================================================\n  frobenius_chemotherapeutic.py             \u2192 Cancer therapeutic \u2014 Frobenius exact\n  neurotrophic_factor.py                    \u2192 Neurotrophic factor design\n  ouroboric_pill_sim.py                     \u2192 Ouroboric pill \u2014 circadian release\n  quantum_biologic_prototype.py             \u2192 Quantum biologic \u2014 coherence-gated\n  universal_antidote_library.py             \u2192 Universal antidote \u2014 broad-spectrum\n\nIntegration: each therapeutic is typed by 12-IG primitive tuple\nand verified via Frobenius closure (mu \u2218 delta = id).\n",
+      "stderr": ""
+    }
+  ]
+}

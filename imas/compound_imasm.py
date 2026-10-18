@@ -299,6 +299,8 @@ def detect_functional_groups(smiles: str) -> Dict[str, List[int]]:
     Returns {fg_name: [atom_indices]} for all matching functional groups.
     Uses fg_exhaustive.SMARTS_PATTERNS if available, otherwise basic patterns.
     """
+    if not isinstance(smiles, str) or not smiles.strip():
+        return {}
     if not HAS_RDKIT:
         return _basic_pattern_match(smiles)
 
@@ -312,8 +314,7 @@ def detect_functional_groups(smiles: str) -> Dict[str, List[int]]:
 
     # Try importing the exhaustive database first
     try:
-        sys.path.insert(0, str(Path(__file__).parent.parent / "ch3mpiler"))
-        from fg_exhaustive import SMARTS_PATTERNS as EXHAUSTIVE_PATTERNS
+        from ch3mpiler.fg_exhaustive import SMARTS_PATTERNS as EXHAUSTIVE_PATTERNS
         patterns = EXHAUSTIVE_PATTERNS
     except ImportError:
         patterns = _basic_smarts_patterns()
@@ -404,8 +405,7 @@ def tokenize_molecule(mol) -> List[int]:
 
     # Step 2: Detect functional groups using exhaustive database
     try:
-        sys.path.insert(0, str(Path(__file__).parent.parent / "ch3mpiler"))
-        from fg_exhaustive import SMARTS_PATTERNS as EXHAUSTIVE_PATTERNS
+        from ch3mpiler.fg_exhaustive import SMARTS_PATTERNS as EXHAUSTIVE_PATTERNS
         patterns = EXHAUSTIVE_PATTERNS
     except ImportError:
         patterns = _basic_smarts_patterns()
@@ -490,7 +490,7 @@ def molecule_to_arrangement(smiles: str) -> Optional[Tuple[int, ...]]:
 
     Returns (8-tuple) or None if SMILES is invalid.
     """
-    if not HAS_RDKIT:
+    if not HAS_RDKIT or not isinstance(smiles, str) or not smiles.strip():
         return None
 
     mol = Chem.MolFromSmiles(smiles)
@@ -596,7 +596,7 @@ def analyze_molecule(smiles: str) -> Dict:
         "aromatic_rings": 0,
     }
 
-    if not HAS_RDKIT or not smiles:
+    if not HAS_RDKIT or not isinstance(smiles, str) or not smiles.strip():
         return result
 
     mol = Chem.MolFromSmiles(smiles)
@@ -634,7 +634,7 @@ def analyze_molecule(smiles: str) -> Dict:
 
 # ── CLI entry point ──
 
-def main():
+def main(argv=None):
     import argparse
 
     parser = argparse.ArgumentParser(description="IMASM compound encoder")
@@ -642,7 +642,7 @@ def main():
     parser.add_argument("--json", "-j", action="store_true", help="JSON output")
     parser.add_argument("--arrangement-only", "-a", action="store_true",
                         help="Output only the arrangement tuple")
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
 
     if not args.smiles:
         # Demo mode
@@ -657,16 +657,29 @@ def main():
             ("styrene", "C=CC1=CC=CC=C1"),
             ("resveratrol", "C1=CC(=CC=C1C=CC2=CC(=CC(=C2)O)O)O"),
         ]
+        output = []
+        failed = False
         for name, smi in demos:
-            arr = molecule_to_arrangement(smi)
-            if arr:
-                info_line(f"{name:20s} → {format_arrangement(arr)}")
-        return
+            result = analyze_molecule(smi)
+            output.append({"name": name, **result})
+            if not result["valid"]:
+                failed = True
+                if not args.json:
+                    error_line(f"Invalid demo structure: {name}", file=sys.stderr)
+            elif not args.json:
+                arr = result["arrangement"]
+                if args.arrangement_only:
+                    print(format_arrangement(arr))
+                else:
+                    info_line(f"{name:20s} → {format_arrangement(arr)}")
+        if args.json:
+            print(json.dumps(output, indent=2, ensure_ascii=False))
+        return int(failed)
 
     arr = molecule_to_arrangement(args.smiles)
     if arr is None:
         error_line(f"Error: invalid SMILES: {args.smiles}", file=sys.stderr)
-        sys.exit(1)
+        return 1
 
     if args.arrangement_only:
         print(format_arrangement(arr))
@@ -678,6 +691,8 @@ def main():
         names = arrangement_to_tokens(arr)
         success_line(f"Tokens: {', '.join(names)}")
 
+    return 0
+
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

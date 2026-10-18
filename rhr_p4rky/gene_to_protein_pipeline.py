@@ -23,7 +23,7 @@ import sys
 import json
 import math
 from typing import Dict, List, Tuple, Optional, Any
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, asdict
 
 # --help handler (standalone invocation — relative imports would fail otherwise)
 
@@ -258,6 +258,7 @@ class GeneToProteinPipeline:
         self.tertiary_contacts: List[TertiaryContact] = []
         self.quaternary_subunits: List[QuaternarySubunit] = []
         self.b4_trace: List[Tuple[str, "Belnap"]] = []
+        self._coordinate_model = None
 
     def log(self, msg: str):
         if self.verbose:
@@ -949,6 +950,7 @@ class GeneToProteinPipeline:
             self.log(f"SEQUENCE TOO SHORT ({len(self.dna_sequence)} nt) — minimum 3 nt required. Pipeline aborted gracefully.")
             return self._empty_result("too_short")
 
+        self._coordinate_model = None
         self.stage_dna()
         self.stage_transcription()
         self.stage_splicing()
@@ -967,6 +969,7 @@ class GeneToProteinPipeline:
                     self.log(f"PDB written: {actual_pdb}")
             except Exception as e:
                 self.log(f"PDB generation failed: {e}")
+                raise RuntimeError(f"PDB generation failed: {e}") from e
         return self._build_report(actual_units)
 
     def _compute_closure_distance(self) -> float:
@@ -1007,6 +1010,25 @@ class GeneToProteinPipeline:
                 squared_sum += diff * diff
         
         return round(squared_sum ** 0.5, 2)
+
+    def _build_coordinate_model(self):
+        """Use the actual translated/spliced codons and retain both fold readings."""
+        if self._coordinate_model is not None:
+            return self._coordinate_model
+        from rhr_p4rky.serpent_rod_v2 import build_backbone, B4_RAMACHANDRAN, NUCLEOTIDE_B4
+        aa_list = [site.aa_code for site in self.aa_chain]
+        path = [NUCLEOTIDE_B4.get(site.symbol[0], "N")
+                for site in self.codon_sites[:len(aa_list)]]
+        steps = [B4_RAMACHANDRAN[("N" if i == 0 else path[i-1], value)]
+                 for i, value in enumerate(path)]
+        sequence_labels = ["-"] * len(aa_list)
+        for element in self.secondary_elements or []:
+            for i in range(element.start, min(element.end + 1, len(aa_list))):
+                sequence_labels[i] = element.element_type
+        self._coordinate_model = build_backbone(
+            [(step["phi"], step["psi"]) for step in steps],
+            [step["ss"] for step in steps], aa_list, sequence_labels)
+        return self._coordinate_model
 
     def _build_report(self, num_subunits: int):
         """Build comprehensive pipeline report with auto-detection evidence."""
@@ -1059,7 +1081,16 @@ class GeneToProteinPipeline:
                 "changes": changes[:6]
             })
         
+        model = self._build_coordinate_model()
+        coordinate_model = asdict(model)
+        for key in ("coordinate_evidence", "secondary_evidence", "secondary_evidence_report", "source_binding"):
+            coordinate_model.pop(key)
         return {
+            "coordinate_model": coordinate_model,
+            "geometry_evidence": model.coordinate_evidence,
+            "secondary_evidence": model.secondary_evidence,
+            "secondary_evidence_report": model.secondary_evidence_report,
+            "geometry_source": model.source_binding,
             "pipeline": f"Gene->Protein: {self.name}",
             "dna_sequence": dna_seq,
             "dna_length": len(dna_seq),

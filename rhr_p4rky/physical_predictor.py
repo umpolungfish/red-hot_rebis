@@ -497,55 +497,36 @@ def predict_from_tuple(name: str, t: Tuple[str, ...]) -> PhysicalPrediction:
     return pred
 
 
-def predict_from_name(catalog_name: str) -> Optional[PhysicalPrediction]:
-    """Lookup a catalog entry and predict its physical properties.
-    
-    Reads from IG_catalog.json (list of dicts with '⊢', '⊣', etc. fields).
-    """
-    import json, os
+def catalog_predictions():
+    """Read predictions from this installation's shared catalog."""
+    import json
     from pathlib import Path
-    
-    # Map Shavian primitive names to tuple positions
-    PRIM_ORDER = ['⊢', '⊣', '≻', '≺', '⋈', '⊤', '∈', '∋', '⊙', '⊥', '⊞', '◻']
-    
-    # Try multiple catalog locations
-    catalog_paths = [
-        Path.home() / "imscribing_grammar" / "IG_catalog.json",
-        Path.home() / "imsgct" / "imscribing_grammar" / "IG_catalog.json",
-        Path("/home/mrnob0dy666/imsgct/imscribing_grammar/IG_catalog.json"),
-        Path("/home/mrnob0dy666/imsgct/ig-docs-public/data/IG_catalog.json"),
-        Path("/home/mrnob0dy666/imsgct/mOMonadOS/IG_catalog.json"),
-    ]
-    
-    for cat_path in catalog_paths:
-        if cat_path.exists():
-            try:
-                with open(cat_path) as f:
-                    catalog = json.load(f)
-                if isinstance(catalog, list):
-                    for entry in catalog:
-                        if entry.get('name', '').lower() == catalog_name.lower():
-                            t = tuple(entry.get(p, '𐑷') for p in PRIM_ORDER)
-                            return predict_from_tuple(catalog_name, t)
-                    # Fuzzy match
-                    for entry in catalog:
-                        if catalog_name.lower() in entry.get('name', '').lower():
-                            t = tuple(entry.get(p, '𐑷') for p in PRIM_ORDER)
-                            return predict_from_tuple(entry['name'], t)
-                elif isinstance(catalog, dict):
-                    if catalog_name in catalog:
-                        entry = catalog[catalog_name]
-                        if 'tuple' in entry:
-                            t = tuple(entry['tuple'])
-                            return predict_from_tuple(catalog_name, t)
-                    for key, entry in catalog.items():
-                        if catalog_name.lower() in key.lower() and 'tuple' in entry:
-                            t = tuple(entry['tuple'])
-                            return predict_from_tuple(key, t)
-            except Exception as e:
-                continue
-    
-    return None
+    path = Path(__file__).resolve().parents[1] / 'shared' / 'IG_catalog.json'
+    with path.open(encoding='utf-8') as stream:
+        catalog = json.load(stream)
+    order = ('⊢', '⊣', '≻', '≺', '⋈', '⊤', '∈', '∋', '⊙', '⊥', '⊞', '⊡')
+    entries = ((entry['name'], entry) for entry in catalog) if isinstance(catalog, list) else catalog.items()
+    for name, entry in entries:
+        if 'tuple' in entry:
+            values = tuple(entry['tuple'])
+        else:
+            aliases = {'≻': '>', '≺': '<', '⊡': '◻'}
+            values = tuple(entry[p] if p in entry else entry[aliases[p]] for p in order)
+        if len(values) != 12:
+            raise ValueError(f'Catalog entry {name!r} requires exactly 12 primitives')
+        yield predict_from_tuple(name, values)
+
+
+def predict_from_name(catalog_name: str) -> Optional[PhysicalPrediction]:
+    """Resolve an exact name first, then a catalog substring."""
+    query = catalog_name.casefold()
+    partial = None
+    for prediction in catalog_predictions():
+        if prediction.name.casefold() == query:
+            return prediction
+        if partial is None and query in prediction.name.casefold():
+            partial = prediction
+    return partial
 
 
 def format_prediction(pred: PhysicalPrediction, detailed: bool = False) -> str:

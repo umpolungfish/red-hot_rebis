@@ -1,0 +1,23 @@
+{
+  "name": "review-control",
+  "ig_tuple_str": "⟨𐑛𐑰𐑩𐑗𐑞𐑘𐑚𐑵𐑣𐑫𐑙𐑷⟩",
+  "arrangement": "VINIT → VINIT → VINIT → VINIT → VINIT → VINIT → VINIT → IMSCRIB",
+  "fingerprint": [
+    8,
+    8,
+    0,
+    0,
+    0,
+    0,
+    5,
+    false,
+    0,
+    false,
+    8,
+    33,
+    1,
+    "LL:7"
+  ],
+  "description": "Compound: review-control",
+  "status": "dry_run"
+}

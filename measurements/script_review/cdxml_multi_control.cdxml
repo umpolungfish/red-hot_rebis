@@ -1,0 +1,24 @@
+<CDXML CreationProgram="smiles_to_cdxml v1" Name="ethane" BoundingBox="443 750 557 850" Magnification="666" LabelFont="3" LabelSize="10" LabelFace="96" BondLength="14.40" ChainAngle="120" LineWidth="0.60" BoldWidth="2" HashSpacing="2.50">
+<colortable><color r="0" g="0" b="0" /><color r="1" g="0" b="0" /><color r="1" g="1" b="0" /><color r="0" g="0" b="1" /><color r="0" g="1" b="0" /></colortable>
+<fonttable><font id="3" charset="iso-8859-1" name="Arial" /></fonttable>
+<page id="1" BoundingBox="0 0 -32768 200" bgcolor="1">
+<t id="2" p="443 900" BoundingBox="443 890 643 910" Justification="Left" Font="3" Size="14" Bold="1">ethane</t>
+<fragment id="3" BoundingBox="443 750 557 850" Z="2">
+<n id="4" p="492.8 800.0" Z="3" AS="N" />
+<n id="5" p="507.2 800.0" Z="4" AS="N" />
+<b id="6" Z="101" B="4" E="5" BS="N" />
+</fragment>
+</page>
+<page id="7" BoundingBox="0 0 -32768 200" bgcolor="1">
+<t id="8" p="443 900" BoundingBox="443 890 643 910" Justification="Left" Font="3" Size="14" Bold="1">methanol</t>
+<fragment id="9" BoundingBox="443 750 557 850" Z="2">
+<n id="10" p="492.8 800.0" Z="3" AS="N" />
+<n id="11" p="507.2 800.0" Z="4" AS="N" Element="8" NumHydrogens="1">
+<t p="503.2 804.0" BoundingBox="489 792 525 808" LabelJustification="Left">
+<s font="3" size="10" color="0" face="96">OH</s>
+</t>
+</n>
+<b id="12" Z="101" B="10" E="11" BS="N" />
+</fragment>
+</page>
+</CDXML>

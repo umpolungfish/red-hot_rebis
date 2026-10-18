@@ -1,0 +1,85 @@
+{
+  "source_sha256": {
+    "rhr_p4rky/_quick_help.py": "3f1750de070a2c993201728d6d6351672666877be882f8d3be212154c1c20152",
+    "rhr_p4rky/run_serpent.py": "bcfea76ed05008a16cf8ee0717e099384fe85ef1f7d0696cddc8e52a12aea41a",
+    "ch3mpiler/gen_v2.py": "52799a87832b1bc567a02d4284bf26874f9a8e60d9f85e6a682375dd3eccc716",
+    "ch3mpiler/test_enrich.py": "407454e1300a0dd76f7b0336701253b51b6ae87ba454091a9e826f1eaceb0cdb",
+    "ch3mpiler/test_enrich2.py": "904df1aa9ffa53063b834523b8d596970bb2983d5b3f471463563f50248d5119"
+  },
+  "quiet_imports": [
+    "rhr_p4rky/_quick_help.py",
+    "rhr_p4rky/run_serpent.py",
+    "ch3mpiler/gen_v2.py",
+    "ch3mpiler/test_enrich.py",
+    "ch3mpiler/test_enrich2.py"
+  ],
+  "runs": [
+    {
+      "file": "rhr_p4rky/run_serpent.py",
+      "args": [
+        "--help"
+      ],
+      "status": 0,
+      "stdout": "usage: run_serpent.py [-h] [--seq SEQ] [--name NAME]\n\nSerpentRod \u2014 Direct RNA to Folded Protein\n\noptions:\n  -h, --help            show this help message and exit\n  --seq SEQ, -s SEQ     RNA sequence (default: test sequence)\n  --name NAME, -n NAME  Protein name\n",
+      "stderr": ""
+    },
+    {
+      "file": "ch3mpiler/gen_v2.py",
+      "args": [],
+      "status": 0,
+      "stdout": "0 #!/usr/bin/env python3\n1 # ch3mpiler v1.0 - Reaction Compiler\n2 \n",
+      "stderr": ""
+    },
+    {
+      "file": "ch3mpiler/test_enrich.py",
+      "args": [
+        "--help"
+      ],
+      "status": 0,
+      "stdout": "usage: test_enrich.py [-h] [--depth DEPTH]\n\nExercise the enriched precursor lattice and return failed search status.\n\noptions:\n  -h, --help     show this help message and exit\n  --depth DEPTH  Maximum path search depth\n",
+      "stderr": ""
+    },
+    {
+      "file": "ch3mpiler/test_enrich2.py",
+      "args": [
+        "--help"
+      ],
+      "status": 0,
+      "stdout": "usage: test_enrich2.py [-h] [--depth DEPTH]\n\nExercise the enriched precursor lattice and return failed search status.\n\noptions:\n  -h, --help     show this help message and exit\n  --depth DEPTH  Maximum path search depth\n",
+      "stderr": ""
+    }
+  ],
+  "search_status_controls": [
+    {
+      "file": "test_enrich.py",
+      "failed_search_status": 1,
+      "successful_search_status": 0
+    },
+    {
+      "file": "test_enrich2.py",
+      "failed_search_status": 1,
+      "successful_search_status": 0
+    }
+  ],
+  "live_runs": [
+    {
+      "file": "ch3mpiler/test_enrich.py",
+      "status": 0,
+      "stdout": "=== FG EXTENSIONS ===\n  nitro: True\n  cyclic: True\n  diazonium: True\n\n=== BENZENE -> PARACETAMOL ===\nPath found: True\nMatch type: lattice_path\n  Step 1: phenol + aromatic_ring -> phenol\n    Bond: co_sigma  (Oxidation of benzene to phenol (H2O2/Fe or cumene process))\n  Step 2: nitro + phenol -> 4_nitrophenol\n    Bond: sigma_single  (Nitration of phenol (para-selective))\n  Step 3: amine + phenol -> 4_aminophenol\n    Bond: co_sigma  (Reduction of 4-nitrophenol to 4-aminophenol)\n  Step 4: amine + carbonyl -> paracetamol\n    Bond: amide_link  (Acylation of 4-aminophenol with acetic anhydride)\nPath length: 4\n",
+      "stderr": ""
+    },
+    {
+      "file": "ch3mpiler/test_enrich2.py",
+      "status": 0,
+      "stdout": "=== FG TABLE CHECK ===\n  cyclic: {'D': '\ud801\udc68', 'T': '\ud801\udc70', 'R': '\ud801\udc69', 'P': '\ud801\udc57', 'F': '\ud801\udc5e', 'K': '\ud801\udc67', 'G': '\ud801\udc5a', 'Gm': '\ud801\udc5d', 'Ph': '\ud801\udc62', 'H': '\ud801\udc52', 'S': '\ud801\udc59', 'W': '\ud801\udc77'}\n  diazonium: {'D': '\ud801\udc5b', 'T': '\ud801\udc61', 'R': '\ud801\udc7d', 'P': '\ud801\udc6f', 'F': '\ud801\udc5e', 'K': '\ud801\udc58', 'G': '\ud801\udc5a', 'Gm': '\ud801\udc5d', 'Ph': '\ud801\udc62', 'H': '\ud801\udc52', 'S': '\ud801\udc59', 'W': '\ud801\udc74'}\n  nitro: {'D': '\ud801\udc68', 'T': '\ud801\udc65', 'R': '\ud801\udc7d', 'P': '\ud801\udc6f', 'F': '\ud801\udc5e', 'K': '\ud801\udc67', 'G': '\ud801\udc5a', 'Gm': '\ud801\udc5d', 'Ph': '\ud801\udc62', 'H': '\ud801\udc52', 'S': '\ud801\udc59', 'W': '\ud801\udc74'}\n  phosphate: {'D': '\ud801\udc5b', 'T': '\ud801\udc61', 'R': '\ud801\udc7d', 'P': '\ud801\udc57', 'F': '\ud801\udc5e', 'K': '\ud801\udc64', 'G': '\ud801\udc5a', 'Gm': '\ud801\udc5d', 'Ph': '\ud801\udc62', 'H': '\ud801\udc52', 'S': '\ud801\udc59', 'W': '\ud801\udc77'}\n  sulfonate: {'D': '\ud801\udc68', 'T': '\ud801\udc65', 'R': '\ud801\udc7d', 'P': '\ud801\udc6f', 'F': '\ud801\udc50', 'K': '\ud801\udc67', 'G': '\ud801\udc5a', 'Gm': '\ud801\udc5d', 'Ph': '\ud801\udc62', 'H': '\ud801\udc52', 'S': '\ud801\udc59', 'W': '\ud801\udc74'}\n\n=== MOLECULE DB EXTENSIONS ===\n  4_aminophenol: ['amine', 'phenol']\n  4_nitrophenol: ['nitro', 'phenol']\n  acetic_anhydride: ['carbonyl', 'ester']\n  isobutylbenzene: ['alkane', 'aromatic_ring']\n\n=== PATHFINDING TESTS ===\n\n--- Benzene -> Paracetamol ---\n  \u2713 FOUND (4 steps)\n    1. phenol + aromatic_ring \u2192 phenol\n       [co_sigma] Oxidation of benzene to phenol (H2O2/Fe or cumene process)\n    2. nitro + phenol \u2192 4_nitrophenol\n       [sigma_single] Nitration of phenol (para-selective)\n    3. amine + phenol \u2192 4_aminophenol\n       [co_sigma] Reduction of 4-nitrophenol to 4-aminophenol\n    4. amine + carbonyl \u2192 paracetamol\n       [amide_link] Acylation of 4-aminophenol with acetic anhydride\n\n--- Benzene -> Aspirin ---\n  \u2713 FOUND (3 steps)\n    1. phenol + aromatic_ring \u2192 phenol\n       [co_sigma] Oxidation of benzene to phenol (H2O2/Fe or cumene process)\n    2. carboxylic_acid + phenol \u2192 salicylic_acid\n       [carbonyl] Kolbe-Schmitt carboxylation of phenol (CO2/NaOH, 125C)\n    3. carboxylic_acid + carbonyl \u2192 aspirin\n       [ester_link] Acetylation of salicylic acid (Ac2O/H3PO4)\n\n--- Toluene -> Benzaldehyde ---\n  \u2713 FOUND (1 steps)\n    1. aldehyde + aromatic_ring \u2192 benzaldehyde\n       [carbonyl] Oxidation of toluene to benzaldehyde (CrO3/aceite or MnO2)\n\n--- Benzene -> Ibuprofen ---\n  \u2713 FOUND (2 steps)\n    1. alkane + aromatic_ring \u2192 isobutylbenzene\n       [sigma_single] Friedel-Crafts alkylation of benzene\n    2. carboxylic_acid + aromatic_ring \u2192 ibuprofen\n       [carbonyl] Carbonylation of isobutylbenzene (CO, Pd-cat)\n\n--- Benzene -> Aniline ---\n  \u2713 FOUND (2 steps)\n    1. nitro + aromatic_ring \u2192 nitrobenzene\n       [sigma_single] Electrophilic nitration of benzene (HNO3/H2SO4)\n    2. amine + aromatic_ring \u2192 aniline\n       [co_sigma] Reduction of nitrobenzene to aniline (Fe/HCl or H2/Pd)\n\n--- Nitrobenzene -> Paracetamol ---\n  \u2713 FOUND (3 steps)\n    1. amine + aromatic_ring \u2192 aniline\n       [co_sigma] Reduction of nitrobenzene to aniline (Fe/HCl or H2/Pd)\n    2. amine + phenol \u2192 4_aminophenol\n       [co_sigma] Hydroxylation of aniline to 4-aminophenol (H2O2/cat)\n    3. amine + carbonyl \u2192 paracetamol\n       [amide_link] Acylation of 4-aminophenol with acetic anhydride\n",
+      "stderr": ""
+    },
+    {
+      "file": "rhr_p4rky/run_serpent.py",
+      "status": 0,
+      "stdout": "[protein] Direct RNA\u2192FoldedProtein: protein\n[protein]   RNA: AUGGCCGACUGGAACUGCAAGAAGAUCGUGCCCAAGUACU... (50 nt)\n[protein]   AA: MADWNCKKIVPKYYGR (16 AAs)\n[protein]   Winding: 11 B4 loops\n[protein]   Activations: 11/12 primitives\n[protein]   Contacts: 3 long-range\n[protein]   Subunits: 1\n[protein]   Frobenius: \u2713\n[protein]   Confidence: 1.00\n[protein]   Folding \u0394G: -1.0 kcal/mol\n[protein]   Enzymatic turnover: 0.00e+00 s\u207b\u00b9\n{\n  \"name\": \"protein\",\n  \"rna_sequence\": \"AUGGCCGACUGGAACUGCAAGAAGAUCGUGCCCAAGUACUACGGCCGCUG\",\n  \"rna_length\": 50,\n  \"aa_sequence\": \"MADWNCKKIVPKYYGR\",\n  \"aa_length\": 16,\n  \"winding_number\": 11,\n  \"secondary_elements\": [\n    {\n      \"type\": \"helix\",\n      \"start\": 0,\n      \"end\": 1,\n      \"length\": 1,\n      \"confidence\": 0.725,\n      \"sequence\": \"M\"\n    },\n    {\n      \"type\": \"helix\",\n      \"start\": 1,\n      \"end\": 2,\n      \"length\": 1,\n      \"confidence\": 0.71,\n      \"sequence\": \"A\"\n    },\n    {\n      \"type\": \"helix\",\n      \"start\": 2,\n      \"end\": 3,\n      \"length\": 1,\n      \"confidence\": 0.505,\n      \"sequence\": \"D\"\n    },\n    {\n      \"type\": \"sheet\",\n      \"start\": 3,\n      \"end\": 4,\n      \"length\": 1,\n      \"confidence\": 0.685,\n      \"sequence\": \"W\"\n    },\n    {\n      \"type\": \"loop\",\n      \"start\": 4,\n      \"end\": 5,\n      \"length\": 1,\n      \"confidence\": 0.78,\n      \"sequence\": \"N\"\n    },\n    {\n      \"type\": \"sheet\",\n      \"start\": 5,\n      \"end\": 6,\n      \"length\": 1,\n      \"confidence\": 0.595,\n      \"sequence\": \"C\"\n    },\n    {\n      \"type\": \"helix\",\n      \"start\": 6,\n      \"end\": 7,\n      \"length\": 1,\n      \"confidence\": 0.58,\n      \"sequence\": \"K\"\n    },\n    {\n      \"type\": \"helix\",\n      \"start\": 7,\n      \"end\": 8,\n      \"length\": 1,\n      \"confidence\": 0.58,\n      \"sequence\": \"K\"\n    },\n    {\n      \"type\": \"sheet\",\n      \"start\": 8,\n      \"end\": 9,\n      \"length\": 1,\n      \"confidence\": 0.8,\n      \"sequence\": \"I\"\n    },\n    {\n      \"type\": \"sheet\",\n      \"start\": 9,\n      \"end\": 10,\n      \"length\": 1,\n      \"confidence\": 0.85,\n      \"sequence\": \"V\"\n    },\n    {\n      \"type\": \"loop\",\n      \"start\": 10,\n      \"end\": 11,\n      \"length\": 1,\n      \"confidence\": 0.56,\n      \"sequence\": \"P\"\n    }\n  ],\n  \"contacts\": [\n    {\n      \"i\": 3,\n      \"j\": 7,\n      \"type\": \"\u2208 (Granularity)\u2194\u22a4 (Kinetics)\",\n      \"distance\": 5.75,\n      \"confidence\": 0.75\n    },\n    {\n      \"i\": 4,\n      \"j\": 8,\n      \"type\": \"\u227b (Recognition)\u2194\u229e (Stoichiometry)\",\n      \"distance\": 5.75,\n      \"confidence\": 0.75\n    },\n    {\n      \"i\": 1,\n      \"j\": 8,\n      \"type\": \"hydrophobic\",\n      \"distance\": 4.0,\n      \"confidence\": 0.5\n    }\n  ],\n  \"subunit_count\": 1,\n  \"activation_pattern\": [\n    {\n      \"aa\": \"Met\",\n      \"primitive\": \"\u22a2 (Dimensionality)\"\n    },\n    {\n      \"aa\": \"Asp\",\n      \"primitive\": \"\u22a5 (Chirality)\"\n    },\n    {\n      \"aa\": \"Trp\",\n      \"primitive\": \"\u22a3 (Topology)\"\n    },\n    {\n      \"aa\": \"Asn\",\n      \"primitive\": \"\u2208 (Granularity)\"\n    },\n    {\n      \"aa\": \"Cys\",\n      \"primitive\": \"\u227b (Recognition)\"\n    },\n    {\n      \"aa\": \"Lys\",\n      \"primitive\": \"\u229e (Stoichiometry)\"\n    },\n    {\n      \"aa\": \"Lys\",\n      \"primitive\": \"\u229e (Stoichiometry)\"\n    },\n    {\n      \"aa\": \"Ile\",\n      \"primitive\": \"\u22a4 (Kinetics)\"\n    },\n    {\n      \"aa\": \"Lys\",\n      \"primitive\": \"\u229e (Stoichiometry)\"\n    },\n    {\n      \"aa\": \"Tyr\",\n      \"primitive\": \"\u227a (Parity)\"\n    },\n    {\n      \"aa\": \"Tyr\",\n      \"primitive\": \"\u227a (Parity)\"\n    }\n  ],\n  \"activation_coverage\": \"11/12\",\n  \"confidence\": 1.0,\n  \"frobenius_verified\": true,\n  \"closure_theorem\": \"RNA \u2192 {Sequence + Structure} is \u03bc\u2218\u03b4=id\"\n}\n",
+      "stderr": ""
+    }
+  ],
+  "help_text_control": "Local utility\n\nExamples:\nrun utility\n  run utility --help\n\n"
+}

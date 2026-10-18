@@ -140,30 +140,24 @@ class BackboneAtom:
 class BackboneModel:
     residues: List[BackboneAtom]; phi_psi: List[Tuple[float,float]]
     sequence: str; secondary_structure: List[str]
+    sidechains: List[List[Dict]] = field(default_factory=list)
+    coordinate_evidence: Dict = field(default_factory=dict)
+    secondary_evidence: List[Dict] = field(default_factory=list)
+    secondary_evidence_report: str = ""
+    source_binding: Dict = field(default_factory=dict)
 
-def build_backbone(phi_psi: List[Tuple[float,float]], ss_types: List[str]) -> BackboneModel:
-    """Build 3D backbone from φ/ψ using corrected internal→Cartesian."""
-    n_res = len(phi_psi)
-    if n_res == 0: return BackboneModel([], [], "", [])
-    residues = []
-    # First residue
-    n0, ca0 = (0.0,0.0,0.0), (BOND_N_CA,0.0,0.0)
-    c0 = place_atom(ca0, n0, BOND_CA_C, ANGLE_N_CA_C, 0.0)
-    o_dir = (ca0[0]-c0[0], ca0[1]-c0[1], ca0[2]-c0[2])
-    o_len = math.sqrt(o_dir[0]**2+o_dir[1]**2+o_dir[2]**2)
-    o0 = (c0[0]+o_dir[0]*BOND_C_O/o_len, c0[1]+o_dir[1]*BOND_C_O/o_len, c0[2]+o_dir[2]*BOND_C_O/o_len) if o_len>0.01 else (c0[0],c0[1]+BOND_C_O,c0[2])
-    residues.append(BackboneAtom(n=n0, ca=ca0, c=c0, o=o0))
-    for i in range(1, n_res):
-        pr = residues[-1]
-        phi_i, psi_i = math.radians(phi_psi[i][0]), math.radians(phi_psi[i][1])
-        ni = place_atom(pr.c, pr.ca, BOND_C_N, ANGLE_CA_C_N, math.pi)
-        cai = place_atom(ni, pr.c, BOND_N_CA, ANGLE_C_N_CA, phi_i)
-        ci = place_atom(cai, ni, BOND_CA_C, ANGLE_N_CA_C, psi_i)
-        od = (cai[0]-ci[0], cai[1]-ci[1], cai[2]-ci[2])
-        ol = math.sqrt(od[0]**2+od[1]**2+od[2]**2)
-        oi = (ci[0]+od[0]*BOND_C_O/ol, ci[1]+od[1]*BOND_C_O/ol, ci[2]+od[2]*BOND_C_O/ol) if ol>0.01 else (ci[0],ci[1]+BOND_C_O,ci[2])
-        residues.append(BackboneAtom(n=ni, ca=cai, c=ci, o=oi))
-    return BackboneModel(residues, phi_psi, "", ss_types)
+def build_backbone(phi_psi: List[Tuple[float,float]], ss_types: List[str],
+                   aa_list=None, sequence_labels=None) -> BackboneModel:
+    """Construct through the same source-bound geometry used by Vox."""
+    from rhr_p4rky.peptide_geometry import construct
+    aa_list = ["Gly"] * len(phi_psi) if aa_list is None else aa_list
+    payload = construct(aa_list, phi_psi, sequence_labels, ss_types)
+    residues = [BackboneAtom(**{key: tuple(row[key]) for key in ("n", "ca", "c", "o")})
+                for row in payload["residues"]]
+    return BackboneModel(residues, phi_psi, "".join(ONE_LETTER.get(aa, "X") for aa in aa_list),
+                         ss_types, [row["sidechain"] for row in payload["residues"]],
+                         payload["geometry"], payload["secondary"],
+                         payload["secondary_report"], payload["source_binding"])
 
 # ── Vector utilities ──
 
@@ -266,7 +260,7 @@ def compute_energy(model, aa_list, contacts):
 PRIMITIVE_SHORT_NAMES = {
     "⊢":"Dimensionality","⊣":"Topology","≻":"Recognition","≺":"Parity",
     "⋈":"Fidelity","⊤":"Kinetics","∈":"Granularity","∋":"Coupling",
-    "⊙":"Criticality","⊥":"Chirality","⊞":"Stoichiometry","◻":"Winding"}
+    "⊙":"Criticality","⊥":"Chirality","⊞":"Stoichiometry","⊡":"Winding"}
 ALL_12_PRIMITIVES = set(PRIMITIVE_SHORT_NAMES.values())
 
 def compute_activation_set(aas):
@@ -302,6 +296,9 @@ class Gen2Result:
     rmsd_to_native: Optional[float] = None
     precision: float = 0.0; recall: float = 0.0; f1: float = 0.0
     n_true_pos: int = 0; n_false_pos: int = 0; n_false_neg: int = 0
+    geometry_evidence: Dict = field(default_factory=dict)
+    secondary_evidence: List[Dict] = field(default_factory=list)
+    source_binding: Dict = field(default_factory=dict)
 
 class SerpentRodV2:
     """Serpent-Rod Gen2 — 3D backbone from RNA via B₄→Ramachandran."""
@@ -319,7 +316,8 @@ class SerpentRodV2:
     
     def predict(self) -> Gen2Result:
         aas = self.v1.translate_to_aa()
-        b4_path = self.v1.compute_serpent_path()
+        nucleotide_path = self.v1.compute_serpent_path()
+        b4_path = [nucleotide_path[3*i] for i in range(len(aas))]
         winding = self.v1.compute_winding_number()
         
         # Map B₄ transitions → φ/ψ angles
@@ -331,7 +329,12 @@ class SerpentRodV2:
             phi_psi.append((float(rama["phi"]), float(rama["psi"])))
             ss_types.append(rama["ss"])
         
-        backbone = build_backbone(phi_psi, ss_types)
+        sequence_labels = ["-"] * len(aas)
+        sequence_elements = self.v1.predict_secondary_structure(aas, self.v1.compute_activation_pattern(aas))
+        for element in sequence_elements:
+            for position in range(element["start"], min(element["end"], len(aas))):
+                sequence_labels[position] = element["type"]
+        backbone = build_backbone(phi_psi, ss_types, aas, sequence_labels)
         ca_dm = compute_ca_distances(backbone)
         contacts = predict_contacts_from_geometry(backbone, ca_dm)
         energy = compute_energy(backbone, aas, contacts)
@@ -356,6 +359,8 @@ class SerpentRodV2:
                 "length":len(ss_types)-start,"confidence":round(conf,3),
                 "sequence":"".join(ONE_LETTER.get(aas[j],"X") for j in range(start,len(ss_types)))})
         
+        self.log(backbone.coordinate_evidence["report"].splitlines()[0])
+        self.log(backbone.secondary_evidence_report)
         self.log(f"Prediction: {len(aas)} AAs, {len(contacts)} contacts, "
                  f"{act_count}/12 primitives, energy={energy['total']:.0f}")
         
@@ -366,7 +371,10 @@ class SerpentRodV2:
             secondary_elements=ss_elements, activation_set=activated,
             activation_count=act_count, pair_coverage=pairs_cov,
             frobenius_verified=frob, winding_number=winding,
-            subunit_count=subunits, energy=energy)
+            subunit_count=subunits, energy=energy,
+            geometry_evidence=backbone.coordinate_evidence,
+            secondary_evidence=backbone.secondary_evidence,
+            source_binding=backbone.source_binding)
 
 # ═══════════════════════════════════════════════════════════════════
 
@@ -378,7 +386,7 @@ class SerpentRodV2:
         Must call predict() first.
         """
         result = self.predict()
-        from .pdb_writer import write_pdb_from_gen2
+        from rhr_p4rky.pdb_writer import write_pdb_from_gen2
         return write_pdb_from_gen2(
             result, output_path, chain_id=chain_id,
             title=f"FOLDED PROTEIN: {self.name}",
@@ -392,7 +400,7 @@ class SerpentRodV2:
         Returns the Gen2Result so you can still inspect predictions.
         """
         result = self.predict()
-        from .pdb_writer import write_pdb_from_gen2
+        from rhr_p4rky.pdb_writer import write_pdb_from_gen2
         write_pdb_from_gen2(
             result, output_path, chain_id=chain_id,
             title=f"FOLDED PROTEIN: {self.name}",
@@ -515,7 +523,7 @@ def main():
     # ── Auto-generate PDB ──
     pdb_path = None
     if args.pdb:
-        from .pdb_writer import write_pdb_from_gen2
+        from rhr_p4rky.pdb_writer import write_pdb_from_gen2
         pdb_path = write_pdb_from_gen2(
             result, args.pdb, chain_id=args.pdb_chain,
             title=f"FOLDED PROTEIN: {args.name}"
@@ -524,7 +532,7 @@ def main():
         # Auto-generate PDB when output JSON is requested
         pdb_path = args.output.replace('.json', '.pdb') if args.output else None
         if pdb_path:
-            from .pdb_writer import write_pdb_from_gen2
+            from rhr_p4rky.pdb_writer import write_pdb_from_gen2
             write_pdb_from_gen2(
                 result, pdb_path, chain_id=args.pdb_chain,
                 title=f"FOLDED PROTEIN: {args.name}"
@@ -549,7 +557,10 @@ def main():
     if args.output:
         out = {"name":args.name,"aa":result.aa_sequence,
                "n_contacts":len(result.contacts),"energy":result.energy,
-               "activation":result.activation_count,"frobenius":result.frobenius_verified}
+               "activation":result.activation_count,"frobenius":result.frobenius_verified,
+               "geometry_evidence":result.geometry_evidence,
+               "secondary_evidence":result.secondary_evidence,
+               "geometry_source":result.source_binding}
         if pdb_path:
             out["pdb_path"] = pdb_path
         with open(args.output,"w") as f: json.dump(out,f,indent=2)

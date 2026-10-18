@@ -1,0 +1,71 @@
+{
+  "source_sha256": "e66b20acf8857b0b659a46632f88ec1020fee36f2bea7558df969b46c08039ec",
+  "six_frame_coordinates": [
+    {
+      "start": 0,
+      "end": 36,
+      "frame": 0,
+      "strand": "+",
+      "length_bp": 36,
+      "protein": "MAAAAAAAAAA",
+      "protein_length": 11
+    },
+    {
+      "start": 1,
+      "end": 37,
+      "frame": 1,
+      "strand": "+",
+      "length_bp": 36,
+      "protein": "MAAAAAAAAAA",
+      "protein_length": 11
+    },
+    {
+      "start": 2,
+      "end": 38,
+      "frame": 2,
+      "strand": "+",
+      "length_bp": 36,
+      "protein": "MAAAAAAAAAA",
+      "protein_length": 11
+    },
+    {
+      "start": 0,
+      "end": 36,
+      "frame": 2,
+      "strand": "-",
+      "length_bp": 36,
+      "protein": "MAAAAAAAAAA",
+      "protein_length": 11
+    },
+    {
+      "start": 1,
+      "end": 37,
+      "frame": 2,
+      "strand": "-",
+      "length_bp": 36,
+      "protein": "MAAAAAAAAAA",
+      "protein_length": 11
+    },
+    {
+      "start": 2,
+      "end": 38,
+      "frame": 2,
+      "strand": "-",
+      "length_bp": 36,
+      "protein": "MAAAAAAAAAA",
+      "protein_length": 11
+    }
+  ],
+  "nested_starts": true,
+  "incomplete_excluded": true,
+  "rna_normalized": true,
+  "live_reverse_orf": {
+    "status": 0,
+    "stdout": "\u2550 Genetic Sequence Analysis \u2550\n  Length: 36 bp\n  Scanning ORFs (6 frames)...\n  Found 1 ORFs \u2014 longest: 11 aa\n{\n  \"sequence\": \"TTAAGCAGCAGCAGCAGCAGCAGCAGCAGCAGCCAT\",\n  \"length\": 36,\n  \"base_composition\": {\n    \"A\": 12,\n    \"T\": 3,\n    \"G\": 10,\n    \"C\": 11\n  },\n  \"gc_content\": 0.5833,\n  \"orfs\": [\n    {\n      \"start\": 0,\n      \"end\": 36,\n      \"frame\": 0,\n      \"strand\": \"-\",\n      \"length_bp\": 36,\n      \"protein\": \"MAAAAAAAAAA\",\n      \"protein_length\": 11\n    }\n  ],\n  \"n_orfs\": 1,\n  \"longest_orf\": {\n    \"start\": 0,\n    \"end\": 36,\n    \"frame\": 0,\n    \"strand\": \"-\",\n    \"length_bp\": 36,\n    \"protein\": \"MAAAAAAAAAA\",\n    \"protein_length\": 11\n  }\n}\n",
+    "stderr": ""
+  },
+  "pipeline_failure": {
+    "status": 1,
+    "output": "\u2550 Gene \u2192 Protein Pipeline \u2550\n  DNA: ATGGCTTAA\n  Length: 9 bp\n  Advanced pipeline unavailable (controlled pipeline failure), using built-in translation...\n{\n  \"error\": \"controlled pipeline failure\",\n  \"completed_pipeline\": false,\n  \"dna\": \"ATGGCTTAA\",\n  \"stages\": {\n    \"transcription\": {\n      \"mrna\": \"AUGGCUUAA\",\n      \"length\": 9\n    },\n    \"translation\": {\n      \"protein\": \"MA\",\n      \"length\": 2\n    },\n    \"orfs\": [],\n    \"molecular_weight_kda\": 0.22\n  }\n}\n"
+  }
+}

@@ -21,12 +21,12 @@ Author: Lando⊗⊙perator
 import sys, json
 from pathlib import Path
 from typing import Tuple, List, Dict, Optional, NamedTuple
-# ── Rich text formatting ──
-from rich import print  # override print to render rich markup
-
+# Rich is optional; JSON always uses the standard print function.
 try:
+    from rich import print as display_print
     STYLED = True
 except ImportError:
+    display_print = print
     STYLED = False
 
 from collections import Counter
@@ -306,7 +306,7 @@ def format_transition(fp: ReactionFingerprint, reactant_smi: str = "", product_s
         result.append(f"[dim]Lost:[/dim]      {lost}")
         result.append(f"[dim]Gained:[/dim]    {gained}")
         result.append(f"[dim]Irrev:[/dim]     {fp.irreversible}")
-        return "\\n".join(result)
+        return "\n".join(result)
     else:
         return (
             f"Reactant:  {r_names}  {r_smi_str}\n"
@@ -319,7 +319,7 @@ def format_transition(fp: ReactionFingerprint, reactant_smi: str = "", product_s
         )
 
 
-def main():
+def main(argv=None):
     import argparse
     parser = argparse.ArgumentParser(description="IMASM reaction encoder")
     parser.add_argument("reactant", nargs="?", help="Reactant SMILES")
@@ -327,9 +327,14 @@ def main():
     parser.add_argument("--json", "-j", action="store_true", help="JSON output")
     parser.add_argument("--list-reactions", "-l", action="store_true",
                         help="List known reaction patterns")
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
 
     if args.list_reactions:
+        if args.json:
+            print(json.dumps({name: {'reactant_tokens': sorted(r), 'product_tokens': sorted(p),
+                                    'frobenius_order': order, 'description': desc}
+                              for name, (r, p, order, desc) in REACTION_PATTERNS.items()}, indent=2))
+            return 0
         if STYLED:
             from rich.table import Table
             from rich import box
@@ -340,21 +345,23 @@ def main():
             t.add_column("Description")
             t.add_column("Transition")
             for name, (r, p, frob, desc) in sorted(REACTION_PATTERNS.items()):
-                r_toks = "+".join(TOKEN_NAMES[t] for t in r)
-                p_toks = "+".join(TOKEN_NAMES[t] for t in p)
+                r_toks = "+".join(TOKEN_NAMES[t] for t in sorted(r))
+                p_toks = "+".join(TOKEN_NAMES[t] for t in sorted(p))
                 t.add_row(name, str(frob), desc, f"{r_toks} → {p_toks}")
             Console().print(t)
         else:
             info_line(f"{'Reaction':30s} {'Frob':5s} {'Description'}")
             info_line("-" * 80)
             for name, (r, p, frob, desc) in sorted(REACTION_PATTERNS.items()):
-                r_toks = "+".join(TOKEN_NAMES[t] for t in r)
-                p_toks = "+".join(TOKEN_NAMES[t] for t in p)
+                r_toks = "+".join(TOKEN_NAMES[t] for t in sorted(r))
+                p_toks = "+".join(TOKEN_NAMES[t] for t in sorted(p))
                 info_line(f"{name:30s} {frob:5d} {desc}")
                 success_line(f"{'':30s} {r_toks:20s} → {p_toks}")
-        return
+        return 0
 
-    if not args.reactant or not args.product:
+    if bool(args.reactant) != bool(args.product):
+        parser.error('Provide both reactant and product SMILES')
+    if args.reactant is None and args.product is None:
         # Demo mode
         demos = [
             ("Aspirin hydrolysis",
@@ -370,7 +377,18 @@ def main():
              "c1ccccc1",  # benzene
              "C1=CC=C(C=C1)[N+](=O)[O-]"),  # nitrobenzene
         ]
+        output = []
+        failed = False
         for name, r_smi, p_smi in demos:
+            if args.json:
+                fp = reaction_to_fingerprint(r_smi, p_smi)
+                if fp is None:
+                    output.append({'name': name, 'error': 'Invalid SMILES'})
+                    failed = True
+                else:
+                    output.append({'name': name, 'reactant_smiles': r_smi,
+                                   'product_smiles': p_smi, 'identification': identify_reaction(fp)})
+                continue
             if STYLED:
                 reaction_header(f"REACTION: {name}")
                 info_line(f"  {r_smi} → {p_smi}")
@@ -380,17 +398,22 @@ def main():
                 info_line(f"  {r_smi} → {p_smi}")
             fp = reaction_to_fingerprint(r_smi, p_smi)
             if fp:
-                print(format_transition(fp, reactant_smi=r_smi, product_smi=p_smi))
+                display_print(format_transition(fp, reactant_smi=r_smi, product_smi=p_smi))
                 ident = identify_reaction(fp)
                 if ident.get("identified_reaction"):
                     success_line(f"Identified: {ident['identified_reaction']} "
                           f"(confidence: {ident['confidence']:.2f})")
-        return
+            else:
+                error_line(f'Invalid demo reaction: {name}', file=sys.stderr)
+                failed = True
+        if args.json:
+            print(json.dumps(output, indent=2, ensure_ascii=False))
+        return int(failed)
 
     fp = reaction_to_fingerprint(args.reactant, args.product)
     if fp is None:
         info_line("Error: invalid SMILES", file=sys.stderr)
-        sys.exit(1)
+        return 1
 
     if args.json:
         ident = identify_reaction(fp)
@@ -406,12 +429,14 @@ def main():
             "identification": ident,
         }, indent=2, ensure_ascii=False))
     else:
-        print(format_transition(fp, reactant_smi=args.reactant, product_smi=args.product))
+        display_print(format_transition(fp, reactant_smi=args.reactant, product_smi=args.product))
         ident = identify_reaction(fp)
         if ident.get("identified_reaction"):
             print(f"  Identified: {ident['identified_reaction']} "
                   f"(confidence: {ident['confidence']:.2f})")
 
+    return 0
+
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

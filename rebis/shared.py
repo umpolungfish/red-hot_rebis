@@ -89,8 +89,8 @@ def catalog_path():
     return str(candidates[0])
 
 # ── Rich output (names differ from shared/rich_output.py) ──
-def reaction_header(title, width=66):
-    return _rich.header(title, width)
+def reaction_header(title, subtitle=""):
+    return _rich.reaction_header(title, subtitle)
 
 def section_header(title, width=66):
     return _rich.header(title, width)

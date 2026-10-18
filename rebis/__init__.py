@@ -46,7 +46,7 @@ __author__ = "Lando⊗⊙perator"
 _SUBMODULES = {
     "p4ra", "ch3mpiler", "sidechain", "clink", "materials", "therapeutics",
     "biology", "serpentrod", "imas", "pipeline", "cdxml",
-    "gene", "alchemy", "ligand", "shared", "demo", "scripts", "imasm", "cli",
+    "gene", "alchemy", "ligand", "shared", "demo", "scripts", "imasm", "cli", "vox",
 }
 
 _module_cache = {}

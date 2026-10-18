@@ -10,7 +10,7 @@ if '--help' in _HELP_ARGS or '-h' in _HELP_ARGS:
     _doc = __doc__.strip() if __doc__ else "scripts/compute_promotions.py"
     print(_doc)
     print()
-    info_line("Examples:")
+    print("Examples:")
     print(_HELP_EXAMPLES)
     print()
     _sys.exit(0)

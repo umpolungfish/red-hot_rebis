@@ -2,7 +2,7 @@
 """
 --help
 
-Auto-imscribed on 2026-08-28
+Auto-imscribed on 2026-10-17
 """
 import os, pathlib, sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))

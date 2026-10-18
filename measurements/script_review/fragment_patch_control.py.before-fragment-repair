@@ -1,0 +1,17 @@
+class RetrosyntheticNode:
+    def __init__(self):
+        self.reagent_match = None
+
+class ReactionPipeline:
+    def deep_retrosynthesis(self, target):
+        route = {}
+        route["child_a"] = self.deep_retrosynthesis("a", fg_hint=cut["fg1"])
+        route['child_b'] = self.deep_retrosynthesis(
+            "b", fg_hint=cut['fg2'])
+        return route
+
+    def _tree_to_dict(self, node):
+        result = {}
+        if node.reagent_match:
+            result['reagent'] = node.reagent_match
+        return result

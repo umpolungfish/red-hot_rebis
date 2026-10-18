@@ -46,6 +46,10 @@ def get_hetero_label(mol, atom_idx):
 
 def mol_to_cdxml(mol, name="molecule"):
     """Convert RDKit Mol to valid CDXML string with 2D coordinates."""
+    from html import escape
+    name = escape(str(name), quote=True)
+    if mol is None or mol.GetNumAtoms() == 0:
+        raise ValueError("A nonempty molecule is required")
     # Compute 2D coordinates
     rdDepictor.Compute2DCoords(mol)
     conf = mol.GetConformer()
@@ -73,6 +77,7 @@ def mol_to_cdxml(mol, name="molecule"):
     # Kekulize for bond orders
     mol_k = Chem.Mol(mol)
     Chem.Kekulize(mol_k)
+    Chem.WedgeMolBonds(mol_k, mol_k.GetConformer())
     
     lines = []
     # ── Header ──
@@ -88,29 +93,32 @@ def mol_to_cdxml(mol, name="molecule"):
     
     # Title
     title_y = max_y + pad
-    lines.append(f'<t id="100001" p="{min_x:.0f} {title_y:.0f}" BoundingBox="{min_x:.0f} {title_y-10:.0f} {min_x+200:.0f} {title_y+10:.0f}" Justification="Left" Font="3" Size="14" Bold="1">{name}</t>')
+    lines.append(f'<t id="{4 + num_atoms + num_bonds}" p="{min_x:.0f} {title_y:.0f}" BoundingBox="{min_x:.0f} {title_y-10:.0f} {min_x+200:.0f} {title_y+10:.0f}" Justification="Left" Font="3" Size="14" Bold="1">{name}</t>')
     
     # ── Fragment ──
-    lines.append(f'<fragment id="1" BoundingBox="{bbox}" Z="2">')
+    lines.append(f'<fragment id="2" BoundingBox="{bbox}" Z="2">')
     
     # Atoms
     aid_map = {}
     for i in range(num_atoms):
-        aid = 1001 + i
+        aid = 4 + i
         aid_map[i] = aid
         x, y = atoms_xy[i]
         atom = mol.GetAtomWithIdx(i)
         elem = atom.GetAtomicNum()
         label, nh = get_hetero_label(mol, i)
+        atom_attrs = (f' Charge="{atom.GetFormalCharge()}"' if atom.GetFormalCharge() else '')
+        if atom.GetIsotope():
+            atom_attrs += f' Isotope="{atom.GetIsotope()}"'
         
         if elem == 6:
-            lines.append(f'<n id="{aid}" p="{x:.1f} {y:.1f}" Z="{3+i}" AS="N"/>')
+            lines.append(f'<n id="{aid}" p="{x:.1f} {y:.1f}" Z="{3+i}" AS="N"{atom_attrs}/>')
         else:
             nh_attr = f' NumHydrogens="{nh}"' if nh > 0 else ''
             lbl_x, lbl_y = x - 4, y + 4
             lbl_pad = 12 + len(label) * 3
             lbl_bbox = f"{x-lbl_pad:.0f} {y-8:.0f} {x+lbl_pad:.0f} {y+8:.0f}"
-            lines.append(f'<n id="{aid}" p="{x:.1f} {y:.1f}" Z="{3+i}" AS="N" Element="{elem}"{nh_attr}>')
+            lines.append(f'<n id="{aid}" p="{x:.1f} {y:.1f}" Z="{3+i}" AS="N" Element="{elem}"{nh_attr}{atom_attrs}>')
             lines.append(f'<t p="{lbl_x:.1f} {lbl_y:.1f}" BoundingBox="{lbl_bbox}" LabelJustification="Left">')
             lines.append(f'<s font="3" size="10" color="0" face="96">{label}</s>')
             lines.append('</t>')
@@ -118,12 +126,15 @@ def mol_to_cdxml(mol, name="molecule"):
     
     # Bonds (from Kekulized mol)
     for j, bond in enumerate(mol_k.GetBonds()):
-        bid = 1101 + j
+        bid = 4 + num_atoms + j
         b = aid_map.get(bond.GetBeginAtomIdx())
         e = aid_map.get(bond.GetEndAtomIdx())
         bo = bond.GetBondTypeAsDouble()
         order_attr = {2.0: ' Order="2"', 3.0: ' Order="3"'}.get(bo, '')
-        lines.append(f'<b id="{bid}" Z="{101+j}" B="{b}" E="{e}" BS="N"{order_attr}/>')
+        display = {Chem.BondDir.BEGINWEDGE: 'WedgeBegin',
+                   Chem.BondDir.BEGINDASH: 'WedgedHashBegin'}.get(bond.GetBondDir())
+        display_attr = f' Display="{display}"' if display else ''
+        lines.append(f'<b id="{bid}" Z="{101+j}" B="{b}" E="{e}" BS="N"{order_attr}{display_attr}/>')
     
     lines.append('</fragment>')
     lines.append('</page>')
@@ -132,13 +143,18 @@ def mol_to_cdxml(mol, name="molecule"):
     return '\n'.join(lines)
 
 
-def validate_cdxml(cdxml_str, expected_atoms):
+def validate_cdxml(cdxml_str, expected_atoms, expected_smiles=None):
     """Validate CDXML by round-trip parsing with RDKit."""
     try:
         mols = Chem.MolsFromCDXML(cdxml_str)
         if mols and len(mols) > 0:
-            mol = mols[0]
-            actual = mol.GetNumAtoms()
+            actual = sum(mol.GetNumAtoms() for mol in mols)
+            if expected_smiles is not None:
+                expected = sorted(Chem.MolToSmiles(Chem.MolFromSmiles(smiles), isomericSmiles=True)
+                                  for smiles in expected_smiles)
+                observed = sorted(Chem.MolToSmiles(mol, isomericSmiles=True) for mol in mols)
+                if expected != observed:
+                    return False, "MISMATCH: molecular structure or stereochemistry changed"
             if actual == expected_atoms:
                 return True, f"OK: {actual} atoms (expected {expected_atoms})"
             else:
@@ -170,19 +186,46 @@ def main():
                 info_line(f"SKIP {nm}: bad SMILES")
                 continue
             cdx = mol_to_cdxml(m, nm)
-            ok, msg = validate_cdxml(cdx, m.GetNumAtoms())
+            ok, msg = validate_cdxml(cdx, m.GetNumAtoms(), [s])
             success_line(f"{nm}: {'✅' if ok else '❌'} {msg}")
             if ok:
                 results.append(cdx)
         if results:
+            import xml.etree.ElementTree as ET
+            combined = ET.fromstring(results[0])
+            for page in list(combined.findall('page')):
+                combined.remove(page)
+            next_id = 1
+            for document in results:
+                page = ET.fromstring(document).find('page')
+                ids = {}
+                for node in page.iter():
+                    if 'id' in node.attrib:
+                        old = node.attrib['id']
+                        ids[old] = str(next_id)
+                        node.set('id', str(next_id))
+                        next_id += 1
+                for node in page.iter():
+                    for attribute in ('B', 'E'):
+                        if attribute in node.attrib:
+                            node.set(attribute, ids[node.attrib[attribute]])
+                combined.append(page)
+            content = ET.tostring(combined, encoding='unicode')
+            expected = sum(Chem.MolFromSmiles(item['smiles']).GetNumAtoms()
+                           for item in molecules if Chem.MolFromSmiles(item['smiles']) is not None)
+            ok, message = validate_cdxml(content, expected, [item["smiles"] for item in molecules
+                                                           if Chem.MolFromSmiles(item["smiles"]) is not None])
+            if not ok:
+                error_line(message)
+                return 1
             with open(args.output, 'w') as f:
-                f.write(results[0])
+                f.write(content)
             info_line(f"Wrote {args.output} ({len(results)} molecules)")
-        return
-    
+        return 0 if len(results) == len(molecules) and results else 1
+
     if not args.smiles:
         parser.print_help()
-        return
+        return 2
     
     mol = Chem.MolFromSmiles(args.smiles)
     if mol is None:
@@ -190,7 +233,7 @@ def main():
         sys.exit(1)
     
     cdxml = mol_to_cdxml(mol, args.name)
-    ok, msg = validate_cdxml(cdxml, mol.GetNumAtoms())
+    ok, msg = validate_cdxml(cdxml, mol.GetNumAtoms(), [args.smiles])
     success_line(f"{args.name}: {'✅' if ok else '❌'} {msg}")
     
     if ok:
@@ -201,7 +244,9 @@ def main():
         with open(args.output + ".debug", 'w') as f:
             f.write(cdxml)
         info_line(f"Wrote debug file: {args.output}.debug")
+        return 1
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

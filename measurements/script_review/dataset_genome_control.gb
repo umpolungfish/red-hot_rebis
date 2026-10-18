@@ -1,0 +1,115 @@
+LOCUS       CLK_1 4 bp DNA linear
+DEFINITION  Synthetic placeholder sequence for eukaryote.
+ORIGIN
+        1 ttcc
+//
+LOCUS       CLK_2 4 bp DNA linear
+DEFINITION  Synthetic placeholder sequence for eukaryote.
+ORIGIN
+        1 gctc
+//
+LOCUS       CLK_3 4 bp DNA linear
+DEFINITION  Synthetic placeholder sequence for eukaryote.
+ORIGIN
+        1 cgtg
+//
+LOCUS       CLK_4 4 bp DNA linear
+DEFINITION  Synthetic placeholder sequence for eukaryote.
+ORIGIN
+        1 ctgc
+//
+LOCUS       CLK_5 3 bp DNA linear
+DEFINITION  Synthetic placeholder sequence for eukaryote.
+ORIGIN
+        1 ttt
+//
+LOCUS       CLK_6 3 bp DNA linear
+DEFINITION  Synthetic placeholder sequence for eukaryote.
+ORIGIN
+        1 tcg
+//
+LOCUS       CLK_7 3 bp DNA linear
+DEFINITION  Synthetic placeholder sequence for eukaryote.
+ORIGIN
+        1 tgc
+//
+LOCUS       CLK_8 3 bp DNA linear
+DEFINITION  Synthetic placeholder sequence for eukaryote.
+ORIGIN
+        1 acg
+//
+LOCUS       CLK_9 3 bp DNA linear
+DEFINITION  Synthetic placeholder sequence for eukaryote.
+ORIGIN
+        1 ttc
+//
+LOCUS       CLK_10 3 bp DNA linear
+DEFINITION  Synthetic placeholder sequence for eukaryote.
+ORIGIN
+        1 tct
+//
+LOCUS       CLK_11 3 bp DNA linear
+DEFINITION  Synthetic placeholder sequence for eukaryote.
+ORIGIN
+        1 gag
+//
+LOCUS       CLK_12 3 bp DNA linear
+DEFINITION  Synthetic placeholder sequence for eukaryote.
+ORIGIN
+        1 ctg
+//
+LOCUS       CLK_13 3 bp DNA linear
+DEFINITION  Synthetic placeholder sequence for eukaryote.
+ORIGIN
+        1 act
+//
+LOCUS       CLK_14 3 bp DNA linear
+DEFINITION  Synthetic placeholder sequence for eukaryote.
+ORIGIN
+        1 act
+//
+LOCUS       CLK_15 3 bp DNA linear
+DEFINITION  Synthetic placeholder sequence for eukaryote.
+ORIGIN
+        1 aga
+//
+LOCUS       CLK_16 3 bp DNA linear
+DEFINITION  Synthetic placeholder sequence for eukaryote.
+ORIGIN
+        1 ttc
+//
+LOCUS       CLK_17 3 bp DNA linear
+DEFINITION  Synthetic placeholder sequence for eukaryote.
+ORIGIN
+        1 acg
+//
+LOCUS       CLK_18 3 bp DNA linear
+DEFINITION  Synthetic placeholder sequence for eukaryote.
+ORIGIN
+        1 tag
+//
+LOCUS       CLK_19 3 bp DNA linear
+DEFINITION  Synthetic placeholder sequence for eukaryote.
+ORIGIN
+        1 ggt
+//
+LOCUS       CLK_20 3 bp DNA linear
+DEFINITION  Synthetic placeholder sequence for eukaryote.
+ORIGIN
+        1 gtg
+//
+LOCUS       CLK_21 3 bp DNA linear
+DEFINITION  Synthetic placeholder sequence for eukaryote.
+ORIGIN
+        1 gcg
+//
+LOCUS       CLK_22 3 bp DNA linear
+DEFINITION  Synthetic placeholder sequence for eukaryote.
+ORIGIN
+        1 cgc
+//
+LOCUS       CLK_23 3 bp DNA linear
+DEFINITION  Synthetic placeholder sequence for eukaryote.
+ORIGIN
+        1 aag
+//
