@@ -58,7 +58,7 @@ PRIMITIVE_MAP = {
 }
 
 # Remaining 8 AAs have zero primitive activation
-ZERO_PRIMITIVE_AAS = {'A', 'G', 'P', 'S', 'T', 'V', 'L', 'R'}
+ZERO_PRIMITIVE_AAS = set()  # Every residue has a full self-mark.
 
 # ─── All 20 AAs with their full data ─────────────────────────────────────
 
@@ -66,7 +66,7 @@ AA_DATA = {
     'A': ('Ala', 'Alanine', None, 'methyl — minimal hydrophobic'),
     'C': ('Cys', 'Cysteine', ('≻', 'Recognition', 'Disulfide bond — reversible crosslink'), 'thiol — redox-sensitive'),
     'D': ('Asp', 'Aspartate', ('⊥', 'Chirality', 'Substrate selectivity'), 'carboxyl — negative charge'),
-    'E': ('Glu', 'Glutamate', ('◻', 'Protection', 'Closure / C-terminal marker'), 'carboxyl — longer arm'),
+    'E': ('Glu', 'Glutamate', ('⊡', 'Protection', 'Closure / C-terminal marker'), 'carboxyl — longer arm'),
     'F': ('Phe', 'Phenylalanine', ('⋈', 'Fidelity', 'Hydrophobic ceiling'), 'benzyl — strong hydrophobic'),
     'G': ('Gly', 'Glycine', None, 'minimal — backbone flexibility'),
     'H': ('His', 'Histidine', ('⊙', 'Criticality', 'pH-gated catalysis'), 'imidazole — pH sensor'),
@@ -85,7 +85,7 @@ AA_DATA = {
     'Y': ('Tyr', 'Tyrosine', ('≺', 'Parity', 'Phosphorylation switch'), 'phenol — phosphorylation'),
 }
 
-PRIMITIVE_NAMES = ['⊢', '⊣', '≻', '≺', '⋈', '⊤', '∈', '∋', '⊙', '⊥', '⊞', '◻']
+PRIMITIVE_NAMES = ['⊢', '⊣', '≻', '≺', '⋈', '⊤', '∈', '∋', '⊙', '⊥', '⊞', '⊡']
 # AA_DATA carried a second copy of the same assignment. It reads from the map now,
 # so the residue-to-mark correspondence is stated once.
 for _aa, _entry in list(AA_DATA.items()):
@@ -119,6 +119,8 @@ class ProteinStratifiedPredictor:
         self._clear_results()
 
     def _clear_results(self):
+        from rhr_p4rky.protein_glut import prepare_sequence
+        self.protein_glut = prepare_sequence(self.sequence)
         self.signal_peptide = None
         self.signal_peptide_end = None
         self.cleavage_sites = []
@@ -138,11 +140,12 @@ class ProteinStratifiedPredictor:
         """Return a 12-element vector of primitive activation counts."""
         if end is None:
             end = self.length
+        from rhr_p4rky.protein_glut import mark_counts
         vec = [0] * 12
-        for i in range(start, min(end, self.length)):
-            aa = self.sequence[i]
-            if aa in AA_TO_PRIMITIVE_INDEX:
-                vec[AA_TO_PRIMITIVE_INDEX[aa]] += 1
+        for residue in self.protein_glut.residues[start:min(end, self.length)]:
+            counts = mark_counts(residue)
+            for i, mark in enumerate(PRIMITIVE_NAMES):
+                vec[i] += counts[mark]
         return vec
 
     def rolling_primitive_density(self, window=9):
@@ -365,10 +368,7 @@ class ProteinStratifiedPredictor:
 
     def _classify_fragment(self, seq, start, end, label='unknown'):
         """Classify a single fragment by its dominant primitive signature."""
-        vec = [0] * 12
-        for aa in seq:
-            if aa in AA_TO_PRIMITIVE_INDEX:
-                vec[AA_TO_PRIMITIVE_INDEX[aa]] += 1
+        vec = self.primitive_activation_vector(start, end)
 
         total = sum(vec)
         densities = {}
@@ -607,7 +607,7 @@ class ProteinStratifiedPredictor:
             return 'structural_scaffold' if vec[2] >= 4 else 'redox_sensor'
         elif dom == '⊙':
             return 'metabolic_signaling'
-        elif dom == '◻':
+        elif dom == '⊡':
             return 'winding_closure_module'
         elif dom == '≺':
             return 'phosphorylation_switch'
@@ -654,6 +654,8 @@ class ProteinStratifiedPredictor:
         if self.fragments:
             result['disulfide_bonds'] = self.predict_disulfide_bonds()
 
+        self.protein_glut.observe('processing', {k: v for k, v in result.items() if k != 'protein_glut'})
+        result['protein_glut'] = self.protein_glut.as_dict()
         return result
 
     # ─── Report Generation ──────────────────────────────────────────────
@@ -871,7 +873,7 @@ f"cleavage @ {sp['cleavage_position'] if sp else '?'}")
         info_line(f"    Ω (Glu) total: {omega_total}")
         c_peptide = [p for p in products if 'peptide' in p['name'] and 'short' not in p['name'] and 'intervening' not in p['name']]
         for p in products:
-            omega = p['profile'].get('◻', 0)
+            omega = p['profile'].get('⊡', 0)
             info_line(f"    • {p['name']}: Ω={omega}, {p['inferred_function']}")
 
     # ─── Proglucagon Detailed ─────────────────────────────────────────
@@ -946,15 +948,16 @@ class RollingProfile:
         """Compute primitive activation summary for narrative output."""
         from collections import Counter
 
+        from rhr_p4rky.protein_glut import prepare_sequence, mark_counts
+        carrier = prepare_sequence(self.sequence)
         prim_counts = Counter()
-        for aa in self.sequence.upper():
-            if aa in PRIMITIVE_MAP:
-                prim = PRIMITIVE_MAP[aa][0].split('_')[0]
-                prim_counts[prim] += 1
+        for residue in carrier.residues:
+            prim_counts.update(mark_counts(residue))
         total_promoted = sum(prim_counts.values())
         dominant = max(prim_counts, key=prim_counts.get) if prim_counts else '—'
         return {
             'length': self.length,
+            'protein_glut': carrier.as_dict(),
             'primitive_counts': dict(prim_counts),
             'promoted_density': total_promoted / max(self.length, 1),
             'dominant_primitive': dominant,
@@ -1023,11 +1026,12 @@ def classify_module(seq: str) -> str:
     mapped through the PRIMITIVE_MAP."""
     if not seq:
         return "unknown"
-    prim_scores = {}
-    for aa in seq.upper():
-        if aa in PRIMITIVE_MAP:
-            prim = PRIMITIVE_MAP[aa][0].split('_')[0]
-            prim_scores[prim] = prim_scores.get(prim, 0) + 1
+    from rhr_p4rky.protein_glut import prepare_sequence, mark_counts
+    from collections import Counter
+    counts = Counter()
+    for residue in prepare_sequence(seq).residues:
+        counts.update(mark_counts(residue))
+    prim_scores = dict(counts)
     if not prim_scores:
         return "unstructured"
     dominant = max(prim_scores, key=prim_scores.get)
@@ -1041,6 +1045,8 @@ def predict_processing(seq: str, name: str = "protein") -> ProcessingPrediction:
     Uses the ProteinStratifiedPredictor if available; otherwise
     returns a minimal Prediction. """
     result = ProcessingPrediction(name=name, sequence=seq)
+    from rhr_p4rky.protein_glut import prepare_sequence
+    result.protein_glut = prepare_sequence(seq).as_dict()
 
     # Detect basic cleavage sites (KR, RR, RK, KK)
     for i in range(len(seq) - 1):
@@ -1078,18 +1084,10 @@ def predict_processing(seq: str, name: str = "protein") -> ProcessingPrediction:
 def analyze_spectrum(seq: str) -> Dict[str, float]:
     """Compute the primitive activation spectrum of a sequence.
 
-    Returns a dict mapping primitive name → normalized activation score."""
-    spectrum: Dict[str, float] = {p: 0.0 for p in PRIMITIVE_NAMES}
-    for aa in seq.upper():
-        if aa in PRIMITIVE_MAP:
-            prim = PRIMITIVE_MAP[aa][0].split('_')[0]
-            if prim in spectrum:
-                spectrum[prim] += 1.0
-    total = sum(spectrum.values())
-    if total > 0:
-        for k in spectrum:
-            spectrum[k] /= total
-    return spectrum
+    Returns unweighted full-word occurrence counts; chemical forms stay resident."""
+    predictor = ProteinStratifiedPredictor(seq)
+    return dict(zip(PRIMITIVE_NAMES, predictor.primitive_activation_vector()))
+
 
 # ── compare_spectra ───────────────────────────────────────────────────
 

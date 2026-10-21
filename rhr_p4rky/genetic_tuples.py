@@ -33,74 +33,74 @@ from typing import Dict, List, Optional, Tuple, Any
 # The Unicode values are the canonical enum values from the grammar.
 
 IG_CHARS: Dict[str, Dict[str, str]] = {
-    "D": {  # Ð — Dimensionality
+    "⊢": {  # ⊢ — Dimensionality
         "wedge": "\U0001045b",   # 𐑛 — 0d point
         "tri":   "\U00010468",   # 𐑨 — triangle (2d surface)
         "infty": "\U0001047c",   # 𐑼 — infinite-dimensional
         "odot":  "\U00010466",   # 𐑦 — imscriptive (self-written)
     },
-    "T": {  # Þ — Topology
+    "⊣": {  # ⊣ — Topology
         "network":   "\U00010461",  # 𐑡 — branching connectivity
         "in":        "\U00010470",  # 𐑰 — containment
         "bowtie":    "\U00010465",  # 𐑥 — crossing point
         "boxtimes":  "\U00010476",  # 𐑶 — irreducible product
         "odot":      "\U00010478",  # 𐑸 — self-referential closure
     },
-    "R": {  # Ř — Relational mode
+    "≻": {  # ≻ — Relational mode
         "super":   "\U00010469",  # 𐑩 — supervenience
         "cat":     "\U00010451",  # 𐑑 — functorial
         "dagger":  "\U0001047d",  # 𐑽 — adjoint one-way
         "lr":      "\U0001047e",  # 𐑾 — bidirectional feedback
     },
-    "P": {  # Φ — Parity / Symmetry
+    "≺": {  # ≺ — Parity / Symmetry
         "asym":    "\U00010457",  # 𐑗 — no symmetry
         "psi":     "\U0001047f",  # 𐑿 — quantum superposition
         "pm":      "\U0001046c",  # 𐑬 — ℤ₂ partial symmetry
         "sym":     "\U0001046f",  # 𐑯 — all symmetries unbroken
         "pm_sym":  "\U00010479",  # 𐑹 — Frobenius-special ±ˢ
     },
-    "F": {  # ƒ — Fidelity / Physical regime
+    "⋈": {  # ⋈ — Fidelity / Physical regime
         "ell":  "\U00010471",  # 𐑱 — classical (no coherence)
         "eth":  "\U0001045e",  # 𐑞 — thermal/noisy
         "hbar": "\U00010450",  # 𐑐 — quantum coherence
     },
-    "K": {  # Ç — Kinetics / Relaxation
+    "⊤": {  # ⊤ — Kinetics / Relaxation
         "fast": "\U0001047a",  # 𐑺 — τ≪T (driven)
         "mod":  "\U0001046a",  # 𐑪 — τ∼T (moderate)
         "slow": "\U00010467",  # 𐑧 — τ≫T (near-equilibrium)
         "trap": "\U00010464",  # 𐑤 — frozen (ordered)
         "MBL":  "\U00010458",  # 𐑘 — frozen (disordered)
     },
-    "G": {  # Γ — Scope / Interaction range
+    "∈": {  # ∈ — Scope / Interaction range
         "beth":   "\U00010472",  # 𐑲 — nearest-neighbor (local)
         "gimel":  "\U0001045a",  # 𐑚 — intermediate (mesoscale)
         "aleph":  "\U00010454",  # 𐑔 — long-range/universal
     },
-    "Gm": {  # ɢ — Interaction grammar
+    "∋": {  # ∋ — Interaction grammar
         "and":   "\U0001045d",  # 𐑝 — all-simultaneous (∧)
         "or":    "\U0001045c",  # 𐑜 — alternate paths (∨)
         "seq":   "\U00010460",  # 𐑠 — ordered steps (→)
         "broad": "\U00010475",  # 𐑵 — one-to-all broadcast (≫)
     },
-    "Phi": {  # φ̂ — Criticality
+    "⊙": {  # ⊙ — Criticality
         "sub":       "\U00010462",  # 𐑢 — sub-critical (no scaling)
         "c":         "\u2299",      # ⊙ — critical (self-modeling gate)
         "c_complex": "\U0001046e",  # 𐑮 — complex-plane critical
         "EP":        "\U0001047b",  # 𐑻 — exceptional point
         "super":     "\U00010463",  # 𐑣 — supercritical (runaway)
     },
-    "H": {  # Ħ — Chirality / Markov order
+    "⊥": {  # ⊥ — Chirality / Markov order
         "0":   "\U00010453",  # 𐑓 — memoryless (n=0)
         "1":   "\U00010452",  # 𐑒 — one-step (n=1)
         "2":   "\U00010456",  # 𐑖 — two-step (n=2)
         "inf": "\U0001046b",  # 𐑫 — no finite n
     },
-    "S": {  # Σ — Stoichiometry
+    "⊞": {  # ⊞ — Stoichiometry
         "one":    "\U00010459",  # 𐑙 — 1:1 (one type, one instance)
         "many":   "\U00010455",  # 𐑕 — n:n (many identical)
         "hetero": "\U00010473",  # 𐑳 — n:m (multiple distinct types)
     },
-    "O": {  # Ω — Topological invariant
+    "⊡": {  # ⊡ — Topological invariant
         "0":     "\U00010477",  # 𐑷 — trivial (no winding)
         "Z2":    "\U00010474",  # 𐑴 — ℤ₂ parity-protected
         "Z":     "\U0001046d",  # 𐑭 — integer winding
@@ -137,11 +137,11 @@ def extract_kinetics_features(aa_chain: List[Dict]) -> Dict[str, float]:
     """
     Extract kinetics-relevant features from the amino acid chain.
     
-    Ç (Kinetics) is driven by β-branched amino acids:
-      - Ile (Ç), Val (ground), Thr (ground) — all β-branched
-      - High β-branch content → slow kinetics (Ç_slow)
-      - Low β-branch content → fast kinetics (Ç_fast)
-      - Moderate → Ç_mod
+    ⊤ (Kinetics) is driven by β-branched amino acids:
+      - Ile (⊤), Val (ground), Thr (ground) — all β-branched
+      - High β-branch content → slow kinetics (⊤_slow)
+      - Low β-branch content → fast kinetics (⊤_fast)
+      - Moderate → ⊤_mod
     
     Returns dict with fractions and counts.
     """
@@ -168,13 +168,13 @@ def extract_criticality_features(aa_chain: List[Dict],
     """
     Extract criticality-relevant features.
     
-    φ̂ (Criticality) responds to:
-      - His (⊙) at predicted turn/active-site positions → potential φ̂_ÿ
-      - Gln (φ̂) in helical regions → complex-plane criticality
-      - Cys (Ř) disulfide patterns → exceptional point behavior
+    ⊙ (Criticality) responds to:
+      - His (⊙) at predicted turn/active-site positions → potential ⊙_ÿ
+      - Gln (⊙) in helical regions → complex-plane criticality
+      - Cys (≻) disulfide patterns → exceptional point behavior
     
-    For the pipeline, most sequences remain sub-critical (φ̂_sub).
-    A sequence ≥3 His at loop positions can push to φ̂_c for
+    For the pipeline, most sequences remain sub-critical (⊙_sub).
+    A sequence ≥3 His at loop positions can push to ⊙_c for
     the tertiary stage — indicating self-structuring criticality.
     """
     n = len(aa_chain)
@@ -208,14 +208,14 @@ def extract_parity_features(aa_chain: List[Dict],
     """
     Extract parity/symmetry-breaking features.
     
-    Φ (Parity) responds to:
-      - Tyr (Φ) — activated parity residue → can break or preserve symmetry
-      - His (⊙) at active sites → symmetry broken (Φ_asym)
-      - Regular repeat patterns → symmetry preserved (Φ_pm)
+    ≺ (Parity) responds to:
+      - Tyr (≺) — activated parity residue → can break or preserve symmetry
+      - His (⊙) at active sites → symmetry broken (≺_asym)
+      - Regular repeat patterns → symmetry preserved (≺_pm)
     
     In protein folding:
-      - All-helical or all-sheet → Φ_pm (partial symmetry preserved)
-      - Mixed helix+sheet → Φ_asym (symmetry broken by structural diversity)
+      - All-helical or all-sheet → ≺_pm (partial symmetry preserved)
+      - Mixed helix+sheet → ≺_asym (symmetry broken by structural diversity)
     """
     if not secondary_elements:
         return {"has_helices": False, "has_sheets": False, 
@@ -239,7 +239,7 @@ def extract_grammar_features(tertiary_contacts: List[Dict]) -> Dict[str, Any]:
     """
     Extract interaction grammar features.
     
-    ɢ (Interaction grammar) responds to:
+    ∋ (Interaction grammar) responds to:
       - Number of distinct interaction types → and (∧), seq (→), broad (≫)
       - Contact density → broadcast vs sequential
     """
@@ -263,37 +263,37 @@ DEFAULT_TUPLES: Dict[str, Dict[str, str]] = {
     "dna_gene": {
         "⊢": "𐑨", "⊣": "𐑶", "≻": "𐑾", "≺": "𐑬", "⋈": "𐑱",
         "⊤": "𐑧", "∈": "𐑚", "∋": "𐑠", "⊙": "𐑢",
-        "⊥": "𐑖", "⊞": "𐑙", "◻": "𐑭",
+        "⊥": "𐑖", "⊞": "𐑙", "⊡": "𐑭",
     },
     "pre_mrna": {
         "⊢": "𐑨", "⊣": "𐑰", "≻": "𐑑", "≺": "𐑗", "⋈": "𐑱",
         "⊤": "𐑤", "∈": "𐑚", "∋": "𐑠", "⊙": "𐑢",
-        "⊥": "𐑒", "⊞": "𐑙", "◻": "𐑷",
+        "⊥": "𐑒", "⊞": "𐑙", "⊡": "𐑷",
     },
     "mature_mrna": {
         "⊢": "𐑨", "⊣": "𐑰", "≻": "𐑽", "≺": "𐑗", "⋈": "𐑱",
         "⊤": "𐑧", "∈": "𐑚", "∋": "𐑠", "⊙": "𐑢",
-        "⊥": "𐑒", "⊞": "𐑙", "◻": "𐑷",
+        "⊥": "𐑒", "⊞": "𐑙", "⊡": "𐑷",
     },
     "nascent_polypeptide": {
         "⊢": "𐑨", "⊣": "𐑡", "≻": "𐑑", "≺": "𐑗", "⋈": "𐑱",
         "⊤": "𐑘", "∈": "𐑚", "∋": "𐑠", "⊙": "𐑢",
-        "⊥": "𐑖", "⊞": "𐑳", "◻": "𐑷",
+        "⊥": "𐑖", "⊞": "𐑳", "⊡": "𐑷",
     },
     "secondary_structure": {
         "⊢": "𐑦", "⊣": "𐑸", "≻": "𐑽", "≺": "𐑬", "⋈": "𐑱",
         "⊤": "𐑤", "∈": "𐑚", "∋": "𐑠", "⊙": "𐑢",
-        "⊥": "𐑖", "⊞": "𐑕", "◻": "𐑷",
+        "⊥": "𐑖", "⊞": "𐑕", "⊡": "𐑷",
     },
     "tertiary_structure": {
         "⊢": "𐑦", "⊣": "𐑸", "≻": "𐑾", "≺": "𐑗", "⋈": "𐑱",
         "⊤": "𐑧", "∈": "𐑲", "∋": "𐑝", "⊙": "𐑢",
-        "⊥": "𐑖", "⊞": "𐑙", "◻": "𐑷",
+        "⊥": "𐑖", "⊞": "𐑙", "⊡": "𐑷",
     },
     "quaternary_structure": {
         "⊢": "𐑦", "⊣": "𐑸", "≻": "𐑾", "≺": "𐑬", "⋈": "𐑱",
         "⊤": "𐑧", "∈": "𐑚", "∋": "𐑝", "⊙": "𐑢",
-        "⊥": "𐑒", "⊞": "𐑳", "◻": "𐑭",
+        "⊥": "𐑒", "⊞": "𐑳", "⊡": "𐑭",
     },
 }
 
@@ -330,19 +330,19 @@ def generate_dna_gene_tuple(features: Dict[str, Any]) -> Dict[str, str]:
     Generate the DNA gene structural tuple.
     
     SEQUENCE-DRIVEN:
-      - Ó (Ω winding): depends on sequence topology
-        If the sequence contains inverted repeats or palindromes → Ω_Z2
-        If direct repeats → Ω_0
-        Default → Ω_Z (from catalog)
+      - Ó (⊡ winding): depends on sequence topology
+        If the sequence contains inverted repeats or palindromes → ⊡_Z2
+        If direct repeats → ⊡_0
+        Default → ⊡_Z (from catalog)
     
     TYPE-INVARIANT (biological process):
-      - Ð=tri, Þ=boxtimes, Ř=lr, Φ=pm, ƒ=ell, Ç=slow
-      - Γ=beth, ɢ=seq, φ̂=sub, Ħ=two, Σ=one
+      - ⊢=tri, ⊣=boxtimes, ≻=lr, ≺=pm, ⋈=ell, ⊤=slow
+      - ∈=beth, ∋=seq, ⊙=sub, ⊥=two, ⊞=one
     """
     seq = features.get("dna_sequence", "")
     tup = dict(DEFAULT_TUPLES["dna_gene"])
     
-    # Ω: detect inverted repeats → Z2, direct repeats → Z, else 0
+    # ⊡: detect inverted repeats → Z2, direct repeats → Z, else 0
     # Simple heuristic: check for palindromic subsequences
     seq_len = len(seq)
     if seq_len >= 10:
@@ -357,7 +357,7 @@ def generate_dna_gene_tuple(features: Dict[str, Any]) -> Dict[str, str]:
                 has_palindrome = True
                 break
         if has_palindrome:
-            tup["O"] = "Z2"
+            tup['⊡'] = "Z2"
         # Direct repeat detection is a no-op for default
     
     return _pipeline_to_ig(tup)
@@ -368,12 +368,12 @@ def generate_pre_mrna_tuple(features: Dict[str, Any]) -> Dict[str, str]:
     Pre-mRNA transcript tuple.
     
     SEQUENCE-DRIVEN:
-      - Ç (kinetics): driven by GC content of transcript
-        High GC (>60%) → Ç_slow (stable secondary structure impedes processing)
-        Low GC (<40%) → Ç_fast (unstructured, rapid)
-        Default → Ç_mod
+      - ⊤ (kinetics): driven by GC content of transcript
+        High GC (>60%) → ⊤_slow (stable secondary structure impedes processing)
+        Low GC (<40%) → ⊤_fast (unstructured, rapid)
+        Default → ⊤_mod
     
-    TYPE-INVARIANT: Þ=in (containment — introns contain exons)
+    TYPE-INVARIANT: ⊣=in (containment — introns contain exons)
     """
     tup = dict(DEFAULT_TUPLES["pre_mrna"])
     seq = features.get("dna_sequence", "")
@@ -381,9 +381,9 @@ def generate_pre_mrna_tuple(features: Dict[str, Any]) -> Dict[str, str]:
     if seq:
         gc = (seq.upper().count("G") + seq.upper().count("C")) / len(seq)
         if gc > 0.60:
-            tup["K"] = "slow"   # Stable GC-rich, slow kinetics
+            tup['⊤'] = "slow"   # Stable GC-rich, slow kinetics
         elif gc < 0.40:
-            tup["K"] = "fast"   # AT-rich, fast kinetics
+            tup['⊤'] = "fast"   # AT-rich, fast kinetics
     
     return _pipeline_to_ig(tup)
 
@@ -391,7 +391,7 @@ def generate_pre_mrna_tuple(features: Dict[str, Any]) -> Dict[str, str]:
 def generate_mature_mrna_tuple(features: Dict[str, Any]) -> Dict[str, str]:
     """
     Mature mRNA tuple.
-    Similar to pre-mRNA but Ř=dagger (adjoint — codon→AA is not bidirectional)
+    Similar to pre-mRNA but ≻=dagger (adjoint — codon→AA is not bidirectional)
     """
     tup = dict(DEFAULT_TUPLES["mature_mrna"])
     seq = features.get("dna_sequence", "")
@@ -399,7 +399,7 @@ def generate_mature_mrna_tuple(features: Dict[str, Any]) -> Dict[str, str]:
     # Copy kinetics from pre-mRNA if available
     pre_kinetics = features.get("pre_mrna_kinetics", None)
     if pre_kinetics:
-        tup["K"] = pre_kinetics
+        tup['⊤'] = pre_kinetics
     
     return _pipeline_to_ig(tup)
 
@@ -408,35 +408,35 @@ def generate_nascent_tuple(features: Dict[str, Any]) -> Dict[str, str]:
     Nascent polypeptide tuple.
     
     SEQUENCE-DRIVEN:
-      - Ç (kinetics): driven by β-branched AA content
-        ≥30% Ile+Val+Thr → Ç_slow (β-sheet bottlenecks)
-        ≥15% → Ç_mod
-        <15% → Ç_fast
-      - Σ (stoichiometry): driven by AA diversity
-        All 20 AAs present → Σ_hetero (max diversity)
-        <8 distinct AAs → Σ_one (homogenous)
-        Default → Σ_hetero (nascent chain always has diverse AAs)
-      - Ħ (chirality): driven by start codon context
-        If Met at position 0 → Ħ_two (initiation memory)
+      - ⊤ (kinetics): driven by β-branched AA content
+        ≥30% Ile+Val+Thr → ⊤_slow (β-sheet bottlenecks)
+        ≥15% → ⊤_mod
+        <15% → ⊤_fast
+      - ⊞ (stoichiometry): driven by AA diversity
+        All 20 AAs present → ⊞_hetero (max diversity)
+        <8 distinct AAs → ⊞_one (homogenous)
+        Default → ⊞_hetero (nascent chain always has diverse AAs)
+      - ⊥ (chirality): driven by start codon context
+        If Met at position 0 → ⊥_two (initiation memory)
     
     TYPE-INVARIANT:
-      - Þ=network (branching — residues branch off backbone)
-      - Ř=cat (functorial — translation is a functor mRNA→protein)
+      - ⊣=network (branching — residues branch off backbone)
+      - ≻=cat (functorial — translation is a functor mRNA→protein)
     """
     tup = dict(DEFAULT_TUPLES["nascent_polypeptide"])
     aa_chain = features.get("aa_chain", [])
     kinetics = extract_kinetics_features(aa_chain)
     
-    # Ç: kinetics from β-branched AA content
+    # ⊤: kinetics from β-branched AA content
     bb_frac = kinetics["beta_branched_frac"]
     if bb_frac >= 0.30:
-        tup["K"] = "slow"
+        tup['⊤'] = "slow"
     elif bb_frac >= 0.15:
-        tup["K"] = "mod"
+        tup['⊤'] = "mod"
     else:
-        tup["K"] = "fast"
+        tup['⊤'] = "fast"
     
-    # Σ: AA diversity drives stoichiometry
+    # ⊞: AA diversity drives stoichiometry
     unique_aas = set()
     for aa in aa_chain:
         code = aa.get("aa_code")
@@ -444,21 +444,21 @@ def generate_nascent_tuple(features: Dict[str, Any]) -> Dict[str, str]:
             unique_aas.add(code)
     n_unique = len(unique_aas)
     if n_unique >= 16:
-        tup["S"] = "hetero"    # Near-full code diversity
+        tup['⊞'] = "hetero"    # Near-full code diversity
     elif n_unique >= 8:
-        tup["S"] = "many"      # Moderate diversity
+        tup['⊞'] = "many"      # Moderate diversity
     else:
-        tup["S"] = "one"       # Low diversity (e.g., poly-Q)
+        tup['⊞'] = "one"       # Low diversity (e.g., poly-Q)
     
-    # Ħ: chirality from chain length
+    # ⊥: chirality from chain length
     # Longer chains retain more positional memory
     chain_len = len(aa_chain)
     if chain_len >= 50:
-        tup["H"] = "2"
+        tup['⊥'] = "2"
     elif chain_len >= 10:
-        tup["H"] = "1"
+        tup['⊥'] = "1"
     else:
-        tup["H"] = "0"
+        tup['⊥'] = "0"
     
     return _pipeline_to_ig(tup)
 
@@ -468,26 +468,26 @@ def generate_secondary_tuple(features: Dict[str, Any]) -> Dict[str, str]:
     Secondary structure tuple.
     
     SEQUENCE-DRIVEN:
-      - Φ (parity): mixed helix+sheet → Φ_asym (broken)
-        All-helix or all-sheet → Φ_pm (partial symmetry)
-        No secondary structure → Φ_asym
-      - Ç (kinetics): reflects predicted folding rate
-        Many helix elements → Ç_mod
-        Many sheet elements → Ç_slow (sheets form slower)
-        Mixed → Ç_slow
-      - Σ (stoichiometry): driven by element count
-        ≥5 elements → Σ_many
-        ≥10 → Σ_hetero
-      - Ħ (chirality): element-type memory
-        Both helices and sheets → Ħ_two
-        Single type → Ħ_one
-        None → Ħ_0
+      - ≺ (parity): mixed helix+sheet → ≺_asym (broken)
+        All-helix or all-sheet → ≺_pm (partial symmetry)
+        No secondary structure → ≺_asym
+      - ⊤ (kinetics): reflects predicted folding rate
+        Many helix elements → ⊤_mod
+        Many sheet elements → ⊤_slow (sheets form slower)
+        Mixed → ⊤_slow
+      - ⊞ (stoichiometry): driven by element count
+        ≥5 elements → ⊞_many
+        ≥10 → ⊞_hetero
+      - ⊥ (chirality): element-type memory
+        Both helices and sheets → ⊥_two
+        Single type → ⊥_one
+        None → ⊥_0
     
     TYPE-INVARIANT:
-      - Þ=odot (secondary structures are self-referential — H-bonds loop back)
-      - Ř=dagger (adjoint — local sequence → local structure)
-      - G=beth (nearest-neighbor — secondary structure is local)
-      - Gm=seq (sequential folding along chain)
+      - ⊣=odot (secondary structures are self-referential — H-bonds loop back)
+      - ≻=dagger (adjoint — local sequence → local structure)
+      - ∈=beth (nearest-neighbor — secondary structure is local)
+      - ∋=seq (sequential folding along chain)
     """
     tup = dict(DEFAULT_TUPLES["secondary_structure"])
     aa_chain = features.get("aa_chain", [])
@@ -496,42 +496,42 @@ def generate_secondary_tuple(features: Dict[str, Any]) -> Dict[str, str]:
     parity = extract_parity_features(aa_chain, secondary_elements)
     kinetics = extract_kinetics_features(aa_chain)
     
-    # Φ: parity from secondary structure diversity
+    # ≺: parity from secondary structure diversity
     if parity["mixed_secondary"]:
-        tup["P"] = "asym"     # Mixed → symmetry broken
+        tup['≺'] = "asym"     # Mixed → symmetry broken
     elif secondary_elements:
-        tup["P"] = "pm"       # Single type → partial symmetry
+        tup['≺'] = "pm"       # Single type → partial symmetry
     else:
-        tup["P"] = "asym"     # No structure → no symmetry
+        tup['≺'] = "asym"     # No structure → no symmetry
     
-    # Ç: kinetics from sheet/helix content
+    # ⊤: kinetics from sheet/helix content
     n_helices = sum(1 for e in secondary_elements if e.get("type") == "helix")
     n_sheets = sum(1 for e in secondary_elements if e.get("type") == "sheet")
     if n_sheets >= n_helices and n_sheets >= 2:
-        tup["K"] = "slow"     # Sheet-dominant → slow folding
+        tup['⊤'] = "slow"     # Sheet-dominant → slow folding
     elif n_helices >= 3:
-        tup["K"] = "mod"      # Helix-dominant → moderate
+        tup['⊤'] = "mod"      # Helix-dominant → moderate
     elif not secondary_elements:
-        tup["K"] = "fast"     # No structure → fast
+        tup['⊤'] = "fast"     # No structure → fast
     else:
-        tup["K"] = "mod"      # Default
+        tup['⊤'] = "mod"      # Default
     
-    # Σ: element count
+    # ⊞: element count
     n_elems = len(secondary_elements)
     if n_elems >= 10:
-        tup["S"] = "hetero"
+        tup['⊞'] = "hetero"
     elif n_elems >= 3:
-        tup["S"] = "many"
+        tup['⊞'] = "many"
     else:
-        tup["S"] = "one"
+        tup['⊞'] = "one"
     
-    # Ħ: chirality from element diversity
+    # ⊥: chirality from element diversity
     if parity["mixed_secondary"]:
-        tup["H"] = "2"      # Both types → two-step memory
+        tup['⊥'] = "2"      # Both types → two-step memory
     elif n_helices > 0 or n_sheets > 0:
-        tup["H"] = "1"      # Single type → one-step
+        tup['⊥'] = "1"      # Single type → one-step
     else:
-        tup["H"] = "0"        # No structure → memoryless
+        tup['⊥'] = "0"        # No structure → memoryless
     
     return _pipeline_to_ig(tup)
 
@@ -543,32 +543,32 @@ def generate_tertiary_tuple(features: Dict[str, Any]) -> Dict[str, str]:
     is where the input's specific chemical identity emerges.
     
     SEQUENCE-DRIVEN:
-      - Φ (parity): symmetry-breaking detection
-        If His (⊙) at predicted loop positions ≥3 → Φ_asym (broken)
-        If all contacts are hydrophobic only → Φ_pm (partial)
-        If mixed contact types (hydrophobic+disulfide+ionic) → Φ_asym
-      - φ̂ (criticality): His/loop detection
-        If ≥3 His at loop positions → φ̂_c (self-structuring criticality)
-        Otherwise → φ̂_sub (sub-critical)
-      - Γ (scope): driven by chain length and contact range
-        Chain ≥200 or contacts span >100 residues → Γ_aleph
-        Chain ≥100 → Γ_gimel
-        Else → Γ_beth
-      - ɢ (grammar): driven by interaction type diversity
-        ≥3 interaction types → ɢ_and (conjunctive — multiple mechanisms)
-        =2 interaction types → ɢ_broad (broadcast — folding across scales)
-        =1 interaction type → ɢ_seq (sequential — single mechanism)
-      - Ç (kinetics): driven by folding complexity
-        Many long-range contacts → Ç_slow (topological frustration)
-        Few contacts → Ç_mod or Ç_fast
-      - Ħ (chirality): contact directionality
-        Contacts span both N→C directions → Ħ_two
-        Only one direction → Ħ_one
+      - ≺ (parity): symmetry-breaking detection
+        If His (⊙) at predicted loop positions ≥3 → ≺_asym (broken)
+        If all contacts are hydrophobic only → ≺_pm (partial)
+        If mixed contact types (hydrophobic+disulfide+ionic) → ≺_asym
+      - ⊙ (criticality): His/loop detection
+        If ≥3 His at loop positions → ⊙_c (self-structuring criticality)
+        Otherwise → ⊙_sub (sub-critical)
+      - ∈ (scope): driven by chain length and contact range
+        Chain ≥200 or contacts span >100 residues → ∈_aleph
+        Chain ≥100 → ∈_gimel
+        Else → ∈_beth
+      - ∋ (grammar): driven by interaction type diversity
+        ≥3 interaction types → ∋_and (conjunctive — multiple mechanisms)
+        =2 interaction types → ∋_broad (broadcast — folding across scales)
+        =1 interaction type → ∋_seq (sequential — single mechanism)
+      - ⊤ (kinetics): driven by folding complexity
+        Many long-range contacts → ⊤_slow (topological frustration)
+        Few contacts → ⊤_mod or ⊤_fast
+      - ⊥ (chirality): contact directionality
+        Contacts span both N→C directions → ⊥_two
+        Only one direction → ⊥_one
     
     TYPE-INVARIANT:
-      - Ð=tri, ƒ=ell (classical folding), Þ=odot
-      - Ř=lr (bidirectional — N and C termini interact)
-      - Σ=one (single chain), Ω=0
+      - ⊢=tri, ⋈=ell (classical folding), ⊣=odot
+      - ≻=lr (bidirectional — N and C termini interact)
+      - ⊞=one (single chain), ⊡=0
     """
     tup = dict(DEFAULT_TUPLES["tertiary_structure"])
     aa_chain = features.get("aa_chain", [])
@@ -579,70 +579,70 @@ def generate_tertiary_tuple(features: Dict[str, Any]) -> Dict[str, str]:
     parity = extract_parity_features(aa_chain, secondary_elements)
     grammar = extract_grammar_features(tertiary_contacts)
     
-    # φ̂: His at loops → self-modeling criticality
+    # ⊙: His at loops → self-modeling criticality
     if crit["critical_flag"]:
-        tup["Phi"] = "c"        # ⊙ — self-structuring criticality
-        # φ̂=c requires K≥mod to stabilize self-modeling criticality
-        if tup.get("K") == "fast":
-            tup["K"] = "mod"     # Upgrade kinetics to sustain criticality
+        tup['⊙'] = "c"        # ⊙ — self-structuring criticality
+        # ⊙=c requires ⊤≥mod to stabilize self-modeling criticality
+        if tup.get("⊤") == "fast":
+            tup['⊤'] = "mod"     # Upgrade kinetics to sustain criticality
     elif crit["cys_pairs"] >= 2:
-        tup["Phi"] = "c_complex"  # Complex-plane critical (disulfide network)
+        tup['⊙'] = "c_complex"  # Complex-plane critical (disulfide network)
     else:
-        tup["Phi"] = "sub"      # Default sub-critical
+        tup['⊙'] = "sub"      # Default sub-critical
     
-    # Φ: parity from structural diversity
+    # ≺: parity from structural diversity
     if crit["critical_flag"] or parity["mixed_secondary"]:
-        tup["P"] = "asym"       # Symmetry broken
+        tup['≺'] = "asym"       # Symmetry broken
     elif grammar["contact_count"] >= 10:
-        tup["P"] = "pm"         # Partial symmetry from many contacts
+        tup['≺'] = "pm"         # Partial symmetry from many contacts
     else:
-        tup["P"] = "asym"       # Default broken symmetry for folded state
+        tup['≺'] = "asym"       # Default broken symmetry for folded state
     
-    # Γ: scope from chain length
+    # ∈: scope from chain length
     n = len(aa_chain)
     if grammar["contact_count"] > 0:
         max_range = max(c.get("j", 0) - c.get("i", 0) for c in tertiary_contacts)
     else:
         max_range = 0
     if n >= 200 or max_range >= 100:
-        tup["G"] = "aleph"      # Universal — long-range contacts
+        tup['∈'] = "aleph"      # Universal — long-range contacts
     elif n >= 100 or max_range >= 50:
-        tup["G"] = "gimel"      # Mesoscale
+        tup['∈'] = "gimel"      # Mesoscale
     else:
-        tup["G"] = "beth"       # Local
+        tup['∈'] = "beth"       # Local
     
-    # ɢ: grammar from interaction diversity
+    # ∋: grammar from interaction diversity
     n_types = len(grammar.get("interaction_types", set()))
     if n_types >= 3:
-        tup["Gm"] = "and"       # Multiple mechanisms concurrently
+        tup['∋'] = "and"       # Multiple mechanisms concurrently
     elif n_types == 2:
-        tup["Gm"] = "broad"     # Two mechanisms broadcast across chain
+        tup['∋'] = "broad"     # Two mechanisms broadcast across chain
     elif n_types == 1:
-        tup["Gm"] = "seq"       # Single sequential mechanism
+        tup['∋'] = "seq"       # Single sequential mechanism
     else:
-        tup["Gm"] = "and"       # Default — folding is inherently conjunctive
+        tup['∋'] = "and"       # Default — folding is inherently conjunctive
     
-    # Ç: kinetics from contact complexity
+    # ⊤: kinetics from contact complexity
     n_contacts = grammar["contact_count"]
     if n_contacts >= 20:
-        tup["K"] = "slow"       # Many constraints → slow folding
+        tup['⊤'] = "slow"       # Many constraints → slow folding
     elif n_contacts >= 8:
-        tup["K"] = "mod"        # Moderate
+        tup['⊤'] = "mod"        # Moderate
     elif n_contacts >= 3:
-        tup["K"] = "fast"       # Few contacts → fast folding
+        tup['⊤'] = "fast"       # Few contacts → fast folding
     else:
-        tup["K"] = "fast"       # Very few or no contacts
+        tup['⊤'] = "fast"       # Very few or no contacts
     
-    # Ħ: chirality from contact directionality
+    # ⊥: chirality from contact directionality
     if tertiary_contacts:
         has_n_terminal = any(c.get("i", 999) < n // 3 for c in tertiary_contacts)
         has_c_terminal = any(c.get("j", 0) > 2 * n // 3 for c in tertiary_contacts)
         if has_n_terminal and has_c_terminal:
-            tup["H"] = "2"    # N↔C contacts → two-step memory
+            tup['⊥'] = "2"    # N↔C contacts → two-step memory
         else:
-            tup["H"] = "1"    # Local contacts → one-step
+            tup['⊥'] = "1"    # Local contacts → one-step
     else:
-        tup["H"] = "1"        # Default
+        tup['⊥'] = "1"        # Default
     
     return _pipeline_to_ig(tup)
 
@@ -652,99 +652,99 @@ def generate_quaternary_tuple(features: Dict[str, Any]) -> Dict[str, str]:
     Quaternary structure tuple.
     
     SEQUENCE-DRIVEN:
-      - Σ (stoichiometry): driven by subunit count and diversity
-        monomer → Σ_one
-        homomultimer (2-4 identical) → Σ_many
-        heteromultimer (different chains) → Σ_hetero
-      - Ω (winding): driven by quaternary symmetry
-        monomer → Ω_0
-        homodimer → Ω_Z2 (ℤ₂ symmetry — flip)
-        tetramer → Ω_Z (cyclic symmetry)
-        higher-order → Ω_NA
-      - ɢ (grammar): driven by interface type
-        One interface → ɢ_seq
-        Multiple interfaces → ɢ_and
-        Allosteric → ɢ_broad
-      - Ħ (chirality): subunit arrangement
-        Symmetric dimer → Ħ_one
-        Asymmetric → Ħ_two
-      - Φ (parity): symmetry of the complex
-        Symmetric → Φ_pm
-        Asymmetric → Φ_asym
+      - ⊞ (stoichiometry): driven by subunit count and diversity
+        monomer → ⊞_one
+        homomultimer (2-4 identical) → ⊞_many
+        heteromultimer (different chains) → ⊞_hetero
+      - ⊡ (winding): driven by quaternary symmetry
+        monomer → ⊡_0
+        homodimer → ⊡_Z2 (ℤ₂ symmetry — flip)
+        tetramer → ⊡_Z (cyclic symmetry)
+        higher-order → ⊡_NA
+      - ∋ (grammar): driven by interface type
+        One interface → ∋_seq
+        Multiple interfaces → ∋_and
+        Allosteric → ∋_broad
+      - ⊥ (chirality): subunit arrangement
+        Symmetric dimer → ⊥_one
+        Asymmetric → ⊥_two
+      - ≺ (parity): symmetry of the complex
+        Symmetric → ≺_pm
+        Asymmetric → ≺_asym
       - K (kinetics): assembly rate
-        Fast assembly → K_mod
-        Slow (chaperone-mediated) → K_slow
+        Fast assembly → kinetics_mod
+        Slow (chaperone-mediated) → kinetics_slow
     
     TYPE-INVARIANT:
-      - Ð=tri, ƒ=ell, Þ=odot (closed assembly)
-      - Ř=lr (bidirectional subunit communication)
+      - ⊢=tri, ⋈=ell, ⊣=odot (closed assembly)
+      - ≻=lr (bidirectional subunit communication)
     """
     tup = dict(DEFAULT_TUPLES["quaternary_structure"])
     aa_chain = features.get("aa_chain", [])
     num_subunits = features.get("num_subunits", 1)
     tertiary_contacts = features.get("tertiary_contacts", [])
     
-    # Σ: stoichiometry from subunit count
+    # ⊞: stoichiometry from subunit count
     if num_subunits == 1:
-        tup["S"] = "one"
+        tup['⊞'] = "one"
     elif num_subunits <= 4:
         # Check if all subunits are identical (homomultimer)
         # For now, assume homomultimer unless Cys pairs suggest hetero
         cys_count = sum(1 for aa in aa_chain if aa.get("aa_code") == "Cys")
         if cys_count >= 6 and num_subunits >= 2:
-            tup["S"] = "hetero"  # Disulfide crosslinks → hetero
+            tup['⊞'] = "hetero"  # Disulfide crosslinks → hetero
         else:
-            tup["S"] = "many"    # Homomultimer
+            tup['⊞'] = "many"    # Homomultimer
     else:
-        tup["S"] = "hetero"      # Complex → hetero
+        tup['⊞'] = "hetero"      # Complex → hetero
     
-    # Ω: winding from symmetry
+    # ⊡: winding from symmetry
     if num_subunits == 1:
-        tup["O"] = "0"
+        tup['⊡'] = "0"
     elif num_subunits == 2:
-        tup["O"] = "Z2"          # ℤ₂ — dimer flip symmetry
+        tup['⊡'] = "Z2"          # ℤ₂ — dimer flip symmetry
     elif num_subunits in (3, 4, 6):
-        tup["O"] = "Z"           # Cyclic symmetry
+        tup['⊡'] = "Z"           # Cyclic symmetry
     else:
-        tup["O"] = "NA"          # Non-Abelian if complex enough
+        tup['⊡'] = "NA"          # Non-Abelian if complex enough
         # Only if ≥8 subunits with diverse interfaces
         if num_subunits < 8:
-            tup["O"] = "Z"       # Fallback to cyclic
+            tup['⊡'] = "Z"       # Fallback to cyclic
     
-    # ɢ: grammar from interface count
+    # ∋: grammar from interface count
     all_interface_residues = set()
     for subunit in features.get("quaternary_subunits", []):
         for r in subunit.get("interface_residues", []):
             all_interface_residues.add(r)
     n_interfaces = len(all_interface_residues) // max(1, num_subunits)
     if n_interfaces >= 5:
-        tup["Gm"] = "broad"      # Extensive interfaces
+        tup['∋'] = "broad"      # Extensive interfaces
     elif n_interfaces >= 2:
-        tup["Gm"] = "and"        # Multiple interfaces
+        tup['∋'] = "and"        # Multiple interfaces
     else:
-        tup["Gm"] = "seq"        # Single interface
+        tup['∋'] = "seq"        # Single interface
     
-    # Φ: parity from symmetry
+    # ≺: parity from symmetry
     if num_subunits == 1:
-        tup["P"] = "pm"          # Monomer preserves partial symmetry
+        tup['≺'] = "pm"          # Monomer preserves partial symmetry
     elif num_subunits == 2:
-        tup["P"] = "pm"          # Dimer has ℤ₂ symmetry
+        tup['≺'] = "pm"          # Dimer has ℤ₂ symmetry
     elif num_subunits in (3, 4, 6):
-        tup["P"] = "pm"          # Higher symmetry
+        tup['≺'] = "pm"          # Higher symmetry
     else:
-        tup["P"] = "asym"        # Asymmetric complex
+        tup['≺'] = "asym"        # Asymmetric complex
     
-    # Ħ: chirality from dimer symmetry
+    # ⊥: chirality from dimer symmetry
     if num_subunits >= 2:
-        tup["H"] = "1"         # One-step — interface memory
+        tup['⊥'] = "1"         # One-step — interface memory
     else:
-        tup["H"] = "1"         # Default
+        tup['⊥'] = "1"         # Default
     
-    # Ç: kinetics from contact count
+    # ⊤: kinetics from contact count
     if len(tertiary_contacts) >= 20 and num_subunits >= 2:
-        tup["K"] = "slow"        # Complex assembly
+        tup['⊤'] = "slow"        # Complex assembly
     else:
-        tup["K"] = "mod"         # Moderate assembly
+        tup['⊤'] = "mod"         # Moderate assembly
     
     return _pipeline_to_ig(tup)
 
@@ -786,8 +786,8 @@ def generate_all_tuples(features: Dict[str, Any]) -> Dict[str, Dict[str, str]]:
     pre_feats = dict(features)
     pre_tup = generate_pre_mrna_tuple(pre_feats)
     pre_kinetics = None
-    for key, val in IG_CHARS["K"].items():
-        if val == pre_tup.get("K"):
+    for key, val in IG_CHARS['⊤'].items():
+        if val == pre_tup.get("⊤"):
             pre_kinetics = key
             break
     features["pre_mrna_kinetics"] = pre_kinetics
@@ -806,24 +806,24 @@ def generate_all_tuples(features: Dict[str, Any]) -> Dict[str, Dict[str, str]]:
 # ── Distance computation ─────────────────────────────────────────
 
 PRIMITIVE_WEIGHTS = {
-    "D": 1.0, "T": 1.0, "R": 1.0, "P": 1.0, "F": 1.0, "K": 1.0,
-    "G": 1.0, "Gm": 1.0, "Phi": 1.0, "H": 1.0, "S": 1.0, "O": 1.0,
+    "⊢": 1.0, "⊣": 1.0, "≻": 1.0, "≺": 1.0, "⋈": 1.0, "⊤": 1.0,
+    "∈": 1.0, "∋": 1.0, "⊙": 1.0, "⊥": 1.0, "⊞": 1.0, "⊡": 1.0,
 }
 
 # Ordinal positions for distance computation
 PRIMITIVE_ORDINALS = {
-    "D": {"wedge": 0, "tri": 1, "infty": 2, "odot": 3},
-    "T": {"network": 0, "in": 1, "bowtie": 2, "boxtimes": 3, "odot": 4},
-    "R": {"super": 0, "cat": 1, "dagger": 2, "lr": 3},
-    "P": {"asym": 0, "psi": 1, "pm": 2, "sym": 3, "pm_sym": 4},
-    "F": {"ell": 0, "eth": 1, "hbar": 2},
-    "K": {"fast": 0, "mod": 1, "slow": 2, "trap": 3, "MBL": 4},
-    "G": {"beth": 0, "gimel": 1, "aleph": 2},
-    "Gm": {"and": 0, "or": 1, "seq": 2, "broad": 3},
-    "Phi": {"sub": 0, "c": 1, "c_complex": 2, "EP": 3, "super": 4},
-    "H": {"0": 0, "1": 1, "2": 2, "inf": 3},
-    "S": {"one": 0, "many": 1, "hetero": 2},
-    "O": {"0": 0, "Z2": 1, "Z": 2, "NA": 3},
+    "⊢": {"wedge": 0, "tri": 1, "infty": 2, "odot": 3},
+    "⊣": {"network": 0, "in": 1, "bowtie": 2, "boxtimes": 3, "odot": 4},
+    "≻": {"super": 0, "cat": 1, "dagger": 2, "lr": 3},
+    "≺": {"asym": 0, "psi": 1, "pm": 2, "sym": 3, "pm_sym": 4},
+    "⋈": {"ell": 0, "eth": 1, "hbar": 2},
+    "⊤": {"fast": 0, "mod": 1, "slow": 2, "trap": 3, "MBL": 4},
+    "∈": {"beth": 0, "gimel": 1, "aleph": 2},
+    "∋": {"and": 0, "or": 1, "seq": 2, "broad": 3},
+    "⊙": {"sub": 0, "c": 1, "c_complex": 2, "EP": 3, "super": 4},
+    "⊥": {"0": 0, "1": 1, "2": 2, "inf": 3},
+    "⊞": {"one": 0, "many": 1, "hetero": 2},
+    "⊡": {"0": 0, "Z2": 1, "Z": 2, "NA": 3},
 }
 
 
@@ -992,10 +992,10 @@ def verify_tier_consistency(ig_tuple: Dict[str, str]) -> dict:
     Verify that a generated tuple satisfies ouroboricity tier constraints.
     
     Checks:
-    1. D-Ω consistency: ℤ₂ requires D≥△, ℤ requires D≥∞
-    2. K-Φ consistency: φ̂_ÿ + ↺ = deep critical structure
-    3. D-T co-origination (Axiom C): D_odot ↔ T_odot
-    4. H-Ω: ℤ₂ requires H≥2
+    1. D-⊡ consistency: ℤ₂ requires ⊢≥△, ℤ requires ⊢≥∞
+    2. K-≺ consistency: ⊙_ÿ + ↺ = deep critical structure
+    3. D-T co-origination (Axiom C): dimensionality_odot ↔ topology_odot
+    4. H-⊡: ℤ₂ requires ⊥≥2
     
     Returns dict with pass/fail and diagnostic messages.
     """
@@ -1008,30 +1008,30 @@ def verify_tier_consistency(ig_tuple: Dict[str, str]) -> dict:
     except ValueError as e:
         return {"pass": False, "diagnostics": [f"Invalid tuple: {e}"]}
     
-    # 1. D-Ω: Ω_Z2 or Ω_Z or Ω_NA require sufficient dimensionality
-    if p["O"] in ("Z2", "Z", "NA"):
-        if p["D"] == "wedge":
-            diagnostics.append(f"FAIL: Ω={p['O']} requires D≥triangle, got D=wedge")
+    # 1. D-⊡: ⊡_Z2 or ⊡_Z or ⊡_NA require sufficient dimensionality
+    if p['⊡'] in ("Z2", "Z", "NA"):
+        if p['⊢'] == "wedge":
+            diagnostics.append(f"FAIL: ⊡={p['⊡']} requires ⊢≥triangle, got ⊢=wedge")
             all_pass = False
-        elif p["O"] == "Z" and p["D"] in ("tri", "wedge"):
-            diagnostics.append(f"WARN: Ω=Z with D={p['D']} — Z typically requires D=infty")
+        elif p['⊡'] == "Z" and p['⊢'] in ("tri", "wedge"):
+            diagnostics.append(f"WARN: ⊡=Z with ⊢={p['⊢']} — Z typically requires ⊢=infty")
         else:
-            diagnostics.append(f"OK: Ω={p['O']} with D={p['D']}")
+            diagnostics.append(f"OK: ⊡={p['⊡']} with ⊢={p['⊢']}")
     
-    # 2. K-Φ: φ̂_ÿ (⊙) with K=slow creates deep critical structure
-    if p["Phi"] == "c" and p["K"] == "slow":
-        diagnostics.append("DEEP CRITICAL: φ̂=c + K=slow → self-structuring criticality")
-    elif p["Phi"] == "c" and p["K"] == "fast":
-        diagnostics.append("WARN: φ̂=c + K=fast — criticality requires slow kinetics to stabilize")
+    # 2. K-≺: ⊙_ÿ (⊙) with ⊤=slow creates deep critical structure
+    if p['⊙'] == "c" and p['⊤'] == "slow":
+        diagnostics.append("DEEP CRITICAL: ⊙=c + ⊤=slow → self-structuring criticality")
+    elif p['⊙'] == "c" and p['⊤'] == "fast":
+        diagnostics.append("WARN: ⊙=c + ⊤=fast — criticality requires slow kinetics to stabilize")
     
-    # 3. Axiom C: D_odot ↔ T_odot
-    if (p["D"] == "odot") != (p["T"] == "odot"):
-        diagnostics.append(f"AXIOM C: D={p['D']} but T={p['T']} — must both be odot or neither")
+    # 3. Axiom C: dimensionality_odot ↔ topology_odot
+    if (p['⊢'] == "odot") != (p['⊣'] == "odot"):
+        diagnostics.append(f"AXIOM C: ⊢={p['⊢']} but ⊣={p['⊣']} — must both be odot or neither")
         all_pass = False
     
-    # 4. H-Ω: ℤ₂ or NA requires H≥2 (Axiom B)
-    if p["O"] in ("Z2", "NA") and p["H"] in ("0", "1"):
-        diagnostics.append(f"AXIOM B: Ω={p['O']} requires H≥2, got H={p['H']}")
+    # 4. H-⊡: ℤ₂ or NA requires ⊥≥2 (Axiom B)
+    if p['⊡'] in ("Z2", "NA") and p['⊥'] in ("0", "1"):
+        diagnostics.append(f"AXIOM B: ⊡={p['⊡']} requires ⊥≥2, got ⊥={p['⊥']}")
         all_pass = False
     
     return {"pass": all_pass, "diagnostics": diagnostics}
@@ -1087,7 +1087,7 @@ def verify_pathway(tuples: Dict[str, Dict[str, str]]) -> dict:
             v2 = o2.get(prim, 0)
             if v2 < v1:
                 # Allow regressions for specific primitives
-                if prim not in ("F", "Phi"):  # These can regress
+                if prim not in ("⋈", "⊙"):  # These can regress
                     regressions.append(f"  {stage_order[i]}->{stage_order[i+1]}: "
                                        f"{prim} regresses {v1}->{v2}")
                     monotonic = False

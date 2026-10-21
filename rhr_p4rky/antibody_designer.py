@@ -50,20 +50,9 @@ CODON_TABLE = {
 }
 # ── 12-Primitive <-> Amino Acid Bijection ─────────────────────────
 
-PRIMITIVE_TO_AA_1L = {
-    "Dimensionality": "M",  # Met
-    "Topology": "W",        # Trp
-    "Recognition": "C",     # Cys
-    "Parity": "Y",          # Tyr
-    "Fidelity": "F",        # Phe
-    "Kinetics": "I",        # Ile
-    "Granularity": "H",     # His
-    "Coupling": "N",        # Asn
-    "Criticality": "Q",     # Gln
-    "Chirality": "D",       # Asp
-    "Stoichiometry": "K",   # Lys
-    "Winding": "E",         # Glu
-}
+from shared.vox_bridge import AA_AXIS
+PRIMITIVE_TO_AA_1L = {axis: AA_THREE_TO_ONE[aa] for aa, axis in AA_AXIS.items()}
+
 
 PRIMITIVE_TO_AA_3L = {k: AA_ONE_TO_THREE[v] for k,v in PRIMITIVE_TO_AA_1L.items()}
 
@@ -133,19 +122,16 @@ def analyze_epitope(epitope_seq: str, epitope_name: str = "target") -> dict:
     sr = SerpentRod(rna, name=f"epitope_{epitope_name[:12]}")
     result = sr.report()
 
-    # Extract activations (promoted AAs and their primitives)
+    from rhr_p4rky.protein_glut import mark_counts
+    from shared.vox_bridge import _AXIS
     activations = {}
-    for i, aa_full in enumerate(result.get("activation_pattern", [])):
-        prim_full = aa_full.get("primitive", "")
-        prim_short = prim_full.split(" (")[1].rstrip(")") if "(" in prim_full else prim_full
-        if i < len(epitope_seq):
-            activations[i] = {
-                "aa": epitope_seq[i],
-                "aa_3l": AA_ONE_TO_THREE.get(epitope_seq[i], "???"),
-                "primitive": prim_short,
-            }
-
-    activated_primitives = set(a["primitive"] for a in activations.values())
+    for residue in result['protein_glut']['residues']:
+        index = residue['index']
+        names = [_AXIS[mark] for mark, count in mark_counts(residue).items() if count]
+        activations[index] = {'aa': epitope_seq[index], 'aa_3l': residue['aa'],
+            'primitive': ','.join(names), 'primitives': names,
+            'self_marks': residue['self_marks']}
+    activated_primitives = {name for a in activations.values() for name in a['primitives']}
 
     info_line(f"\n{'─'*50}")
     info_line(f"EPITOPE: {epitope_name}")
@@ -162,6 +148,7 @@ def analyze_epitope(epitope_seq: str, epitope_name: str = "target") -> dict:
         "activations": activations,
         "activated_primitives": sorted(activated_primitives),
         "sr_result": result,
+        "protein_glut": result["protein_glut"],
     }
 # ── CDR Design ─────────────────────────────────────────────────────
 
@@ -267,6 +254,8 @@ def design_cdr(epitope_analysis: dict,
         ],
         "complementary_primitives": comp_prims,
         "structure": result,
+        "protein_glut": result["protein_glut"],
+        "target_glut": epitope_analysis["protein_glut"],
         "frobenius_verified": frob_ok,
         "confidence": conf,
     }
@@ -321,6 +310,8 @@ def design_full_antibody(epitope_analysis: dict,
         "cdr3": cdr,
         "framework4": fw["FR4"],
         "antibody_structure": antibody_pred,
+        "protein_glut": antibody_pred["protein_glut"],
+        "target_glut": epitope_analysis["protein_glut"],
         "frobenius_verified": frob_ok,
         "confidence": conf,
     }

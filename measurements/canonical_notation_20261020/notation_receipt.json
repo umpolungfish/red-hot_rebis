@@ -1,0 +1,36 @@
+{
+  "status": "passed",
+  "canonical_axis_order": "⊢⊣≻≺⋈⊤∈∋⊙⊥⊞⊡",
+  "audited_emitted_tuples": 557,
+  "integrated_receipt_sha256": "a768fe3f149b669975d6c06bcdee080ad7fc7b8d201fd76cec21f094a0116431",
+  "binaries": {
+    "/home/mrnob0dy666/imsgct/Vox/target/protein_integration_20261020/x86_64-unknown-linux-musl/release/vox": "e9da0825028f7c9c1ac77c64af4e0a8bb6c96d1463a0ca1d470b27e8141c0125",
+    "/home/mrnob0dy666/imsgct/Vox/target/release/vox": "e9da0825028f7c9c1ac77c64af4e0a8bb6c96d1463a0ca1d470b27e8141c0125",
+    "/home/mrnob0dy666/imsgct/Vox/target/x86_64-unknown-linux-musl/release/vox": "e9da0825028f7c9c1ac77c64af4e0a8bb6c96d1463a0ca1d470b27e8141c0125",
+    "/home/mrnob0dy666/.cargo/bin/vox": "e9da0825028f7c9c1ac77c64af4e0a8bb6c96d1463a0ca1d470b27e8141c0125"
+  },
+  "sources": {
+    "red-hot_rebis/rhr_p4rky/protein_glut.py": "49185e84a86bd8e41dc66b1b630d99ae09a2b966a1873059d48bc8cac7371d71",
+    "red-hot_rebis/rhr_p4rky/ligand_from_active_site.py": "72ce6f63f2c280c00fdc84aeab608fa3680db868f41c9f7a81f2007be306d174",
+    "red-hot_rebis/rhr_p4rky/ligand_from_site_pdb.py": "c4c1516c01da718d24b75e6bb39a39ddadaf44329ddd0a0bfe10c07fd077e8cf",
+    "red-hot_rebis/rhr_p4rky/ligand_improvements.py": "5a0a24ea7b4d0c72ca9a3f7f465c0b083b0c989921864187ca3fa06533b15a27",
+    "red-hot_rebis/rhr_p4rky/ligand_sicpovm.py": "0a9fb7ec26cfcbf5d84a35a7b3ea9c3321900b27434e9a4d8286eea5a220e4fc",
+    "red-hot_rebis/rhr_p4rky/ligand_heterocycles.py": "e8f7aa441bf4f15d9a1cfa5a868b7d548e47ce1807f6a91945072dfdfcf94ae6",
+    "red-hot_rebis/rhr_p4rky/genetic_tuples.py": "d4c7fa6943d4cec64de65d71513a95b211f001056de1a06f2af3cc5326ead239",
+    "red-hot_rebis/rhr_p4rky/gene_to_protein_pipeline.py": "323759c8ea83ce60bdd03eb55e4de4f02dc6f14d764e81c0b31d34bcf608b910",
+    "red-hot_rebis/rhr_p4rky/ch3mpiler_serpentrod_pipeline.py": "074130d8d9daf7899556a16bbd052fd50cd902bb2aef99a692e3c0741059d5e7"
+  },
+  "scope": "Active protein compiler, gene and ligand tuple schemas; README and user guide. Historical receipts retain their original source bindings.",
+  "native_vox_to_rebis_ligand": "passed",
+  "guide_pdf": {
+    "sha256": "92efb5666822e0bfa025ff7a671a877032423878c8dfbc91856db7f0cc364b9f",
+    "all_canonical_axis_glyphs_present": true,
+    "old_axis_glyphs_present": false,
+    "visual_review": [
+      "guide_canonical_first.png",
+      "guide_canonical_grammar.png"
+    ],
+    "renderer": "render_guide.py -> canonical TeX -> ltx"
+  },
+  "all20_pdb_matches_before_notation": true
+}

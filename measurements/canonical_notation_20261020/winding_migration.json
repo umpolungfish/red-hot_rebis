@@ -1,0 +1,18 @@
+[
+  "red-hot_rebis/shared/primitives.py",
+  "red-hot_rebis/shared/nuclide_imscriber.py",
+  "red-hot_rebis/rebis/alchemy.py",
+  "red-hot_rebis/serpentrod/stratified_predictor.py",
+  "red-hot_rebis/serpentrod/protein_v5.py",
+  "red-hot_rebis/clink/chain.py",
+  "red-hot_rebis/clink/bridges.py",
+  "red-hot_rebis/clink/integration.py",
+  "red-hot_rebis/clink/datasets/synthetic_detox_gland.py",
+  "red-hot_rebis/clink/designers/layer_designers.py",
+  "red-hot_rebis/clink/designers/dft_bridge.py",
+  "red-hot_rebis/clink/datasets/psychedelic_designs/realize_novel_psychedelics.py",
+  "red-hot_rebis/ch3mpiler/reaction_deriver.py",
+  "red-hot_rebis/ch3mpiler/precursor_lattice.py",
+  "red-hot_rebis/ch3mpiler/ob3ect/ch3mpiler_ob3ect.py",
+  "red-hot_rebis/shared/IG_catalog.json"
+]

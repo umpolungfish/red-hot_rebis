@@ -1,35 +1,71 @@
-# red-h⊙t rebis v4.0 - Dynamic-First Toolchain
+# Red-Hot Rebis
 
-![language](https://img.shields.io/badge/language-Python-3776AB?style=for-the-badge&logo=python&logoColor=white) ![furnace](https://img.shields.io/badge/furnace-chem%20%C2%B7%20bio%20%C2%B7%20plasma-C1440E?style=for-the-badge) ![tier](https://img.shields.io/badge/tier-O%E2%88%9E-8A2BE2?style=for-the-badge) ![μ∘δ](https://img.shields.io/badge/%CE%BC%E2%88%98%CE%B4-id-00A86B?style=for-the-badge) ![licence](https://img.shields.io/badge/licence-LUNLICENSE-1A1A1A?style=for-the-badge) ![type](https://img.shields.io/badge/type-%E2%9F%A8%F0%90%91%BC%F0%90%91%B8%F0%90%91%A9%F0%90%91%B9%F0%90%91%9E%F0%90%91%BA%F0%90%91%94%F0%90%91%B5%E2%8A%99%F0%90%91%AB%F0%90%91%B3%F0%90%91%AD%E2%9F%A9-5A659C?style=for-the-badge)
+Primitive labels and tuple keys use `⊢ ⊣ ≻ ≺ ⋈ ⊤ ∈ ∋ ⊙ ⊥ ⊞ ⊡`, in that order, with the Shavian values defined in [`SNS_PRIME.md`](../SNS_PRIME.md).
 
-**Author:** Lando⊗⊙perator
-> *"The serpent winds, the rod stands, the vessel contains: μ ∘ δ = id."*
+Red-Hot Rebis connects the Imscribing Grammar's protein, molecular, materials and lattice tools through Python APIs and command-line programs. Its protein workflow carries the amino-acid self-marks and native protein glut from translation through folding, catalytic coupling and ligand generation. The live Lean definitions supply its tuple operations and promoted-residue correspondence.
 
-Unified engine for deterministic, algebraic, exact biological, organic, materials, and plasma engineering - 13 engines, 3 chainable pipelines, one loop. Type ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩, O_∞ Frobenius-closed over CLINK L8.
+## Setup
 
-## Quick start
+Run from the `red-hot_rebis` checkout:
 
 ```bash
-cd red-hot_rebis
-rebis | rebis.verify | rebis.status   # menu, closure check (14 domains), inventory
-rebis.chain --dna ATGGCC... --target "CC(=O)O" --depth 2   # unified loop
-rebis.gene-pipeline --test | rebis.gene-pipeline --dna ATGGCC... --pdb folded.pdb
-rebis.serpentrod foldv2 AUGGCC... --pdb folded.pdb
-rebis.ch3mpiler retrosynth "CC(=O)O" | rebis.p4ra belnap
+uv pip install -e .
+rebis --help
+rebis.status
 ```
 
-Protein coordinates and closure evidence use the shared Vox geometry modules in the sibling `Vox` checkout. Gen2 and the gene pipeline retain complete sidechain heavy atoms, codon-aligned B4 steps and valid per-residue T/F/B/N observations. PDB export reassesses the coordinates being written and preserves all findings in REMARK 900. The local adapter requires `rustc`; its source-bound cache lives in `measurements/native_peptide_bridge/` and refreshes when the canonical geometry changes. Coordinate overlaps and dialetheic B states remain separate observations.
+The protein paths require the sibling `Vox`, `p4rakernel/p4ramill` and `ob3ect` checkouts. Full amino-acid records are read from `../ob3ect/digital/*_as_peptide_component/`. Install `rustc` for the source-bound Vox adapter and make `lake` and the project's Lean environment available for operation-table export. Ligand and molecular generation also require RDKit in the active Python environment.
 
-Every command is a standalone binary (18 entry points) - no `rebis <sub>` prefix needed. Full grimoire: `COMMANDS.md`.
+## RNA to protein and ligand
 
-## The loop and engines
+These examples use the RNA from the integrated execution receipt. It translates to `MARNDCEGHILKYPQSTVWF`, covering all twenty amino acids.
 
-DNA → mRNA → polypeptide → fold → catalytic site → ligand → retrosynthesis → (μ∘δ=id) → DNA.
+```bash
+rna=AUGGCUCGUAAUGAUUGUGAAGGUCACAUUCUUAAAUAUCCUCAAUCUACUGUUUGGUUUUAA
+rebis.serpentrod fold "$rna"
+rebis.serpentrod foldv2 "$rna" --pdb folded.pdb
+rebis.gene-pipeline --seq "$rna" --pdb protein.pdb
+rebis.ligand --pdb-file protein.pdb --active Asp5,Glu7 --improved --json
+rebis.chain --seq "$rna" --target 'CC(=O)O' --depth 1 --pdb chain.pdb
+```
 
-Tier 1: `chain` (unified) · `gene-pipeline` (DNA→7-stage folded protein+PDB, B₄→Ramachandran; demo 452bp→150AA Δ=3.61) · `ch3mpiler` (forward/retro, FG, CDXML) · `serpentrod` (predict/classify/fingerprint/fold→PDB) · `ligand` (PDB-aware from catalytic sites) · `sidechain` (80 AA×env pairs). Tier 2: `p4ra` (tuples+Belnap) · `therapeutics` · `materials` (forge/alloys/non-qubit QC) · `biology` (cell sim/telomeres/epigenetics) · `gene` · `alchemy` (Valentine ladders, Zosimos) · `clink` (L0→L8, C-score) · `pipeline` (auto-imscription). Infra: `rebis reference`, `rebis.status`, `rebis.verify`, `rebis.demo`.
+The unified chain passes the gene's existing protein carrier into catalytic coupling. The target supplies context to that carrier. Source sequence, chemical forms, word executions, contact relations and earlier observations remain attached to the return.
 
-Proven pipelines: gene→protein (1,147 lines) · ch3mpiler→catalytic RNA (815 lines; ethanol→36nt) · retrosynthetic stone (436 lines; Solve/Coagula). Python API via `import rebis`. Lean proofs in `../p4rakernel/p4ramill/`.
+| Output | Contents |
+|---|---|
+| `protein.pdb` | Coordinate readout with backbone and sidechain atoms; REMARK 900 carries geometry observations and REMARK 901 identifies the native carrier and sources. |
+| `protein.pdb.glut.json` | Complete resident carrier bound to the PDB's SHA-256. Keep it beside the PDB when passing the structure to ligand generation. |
+| `chain.pdb.chain.json` | Protein, catalytic coupling, retained ligand family/candidates and synthesis results. The chain's PDB sidecar is refreshed with the same final carrier. |
 
-Full 276-line version: `README_backups/red-hot_rebis_README.md`.
+Ligand JSON returns `protein_glut`, `site_family`, `ligand_family` and candidates with `source_forms`. Each residue/form branch retains its ancestry. The scalar site tuple is an explicitly named first-source-form readout.
 
-μ∘δ = id
+## Full amino-acid words through Vox
+
+```bash
+rebis.vox peptide MARNDCEGHILKYPQSTVWF --json
+rebis.vox rna "$rna" --json
+rebis.vox peptide AGPSTVLR --json
+```
+
+All twenty residues execute their full IMASM self-marks on grounded tuple payloads. Asp and Glu retain acid and ion forms, giving twenty-two source records. Each form keeps its own word execution and irreversible-fix boundary. The twelve promoted-primitive annotations remain a separate view supplied by Lean.
+
+Protein B is the native carrier condition. Observational N/T/F/B evidence stays separately attached. Chemical forms, configured torsion alternatives and competing assembly proposals remain co-held without probability weights. Exported coordinates are a named boundary readout.
+
+## Verification and current testing scope
+
+```bash
+python3 measurements/resident_glut_integration_20261020/run.py
+```
+
+The integrated runner covers legacy folding, processing, Gen2 geometry, the gene pipeline, PDB export, sidechain/environment composition, both PDB ligand APIs, shared catalytic coupling and installed commands. It checks source-form retention, candidate ancestry, coding-source mismatch rejection and equality of the final chain and sidecar carrier. Its source-bound receipt and command logs are saved beside the runner.
+
+The representative coverage campaign additionally ran 30 complete UniProt chains across seven organisms, from 97 to 1,464 residues, through Vox protein/RNA input, legacy folding, Gen2 and the gene pipeline. Sequence/form retention and exported coordinate agreement passed across the tested routes. RNA inputs were canonical reverse translations of the downloaded proteins. All 30 cases retain coordinate clashes; 20 also report angle conflicts. This measures compiler behavior and geometry predicates; reference-structure folding accuracy remains unmeasured. See the [coverage matrix and receipts](../ig-docs/protein_global_coverage_20261020.md). Import checks (`rebis.verify`) report package availability.
+
+## Documentation
+
+- [User guide](../ig-docs/red-hot-rebis-user-guide.md)
+- [Command reference](COMMANDS.md)
+- [Resident carrier implementation and execution](../ig-docs/rebis_native_protein_glut_20261020.md)
+- [Executable inventory and original assessment](../ig-docs/rebis_executable_assessment_20261020.md)
+
+Use `rebis` for the command menu, or `python3 -m rebis` from the checkout. Installed `rebis.<name>` commands are also available directly. Lean ground truth lives in `../p4rakernel/p4ramill/Imscribing`.

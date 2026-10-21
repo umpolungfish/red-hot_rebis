@@ -1,0 +1,1046 @@
+{
+  "residues": [
+    {
+      "index": 0,
+      "aa": "Ala",
+      "codon": null,
+      "native_state": "B",
+      "self_marks": [
+        {
+          "name": "alanine as peptide component",
+          "artifact_id": "118a85c41d2d416f8e8a0e2fc40096e1",
+          "word": "⊢≻⋈∈⊤⊥∋⊙⊞⊡⊣",
+          "tuple": "⟨𐑨𐑰𐑑𐑬𐑞𐑧𐑲𐑜𐑢𐑖𐑳𐑷⟩",
+          "source": "ob3ect/digital/alanine_as_peptide_component/alanine_as_peptide_component_ob3ect.json",
+          "sha256": "ce0bac3643bf54d807203ba71ee007d08489b46ecbacf6e4328256d4b990446c",
+          "grounding": "⊣=𐑰: Alanine residues in a peptide chain form a linear, branched hierarchical structure where side chains are contained within the backbone framework.\n⊢=𐑨: Alanine as a peptide component exists within an extended three-dimensional spatial arrangement where steric constraints and side-chain interactions propagate through the local structure.\n⊞=𐑳: Alanine is a single amino acid residue, representing an asymmetric participation where one specific unit is involved rather than a symmetric pair or higher-order oligomer.\n⊡=𐑷: Alanine is a small, achiral (in the context of its side chain) amino acid with no topological constraints or non-trivial winding numbers, allowing its peptide role to be continuously deformed to a trivial state without crossing any topological boundaries.\n⊙=𐑢: Alanine as a standard peptide component operates within a stable, subcritical biochemical regime without exhibiting the scale-free correlations or maximal sensitivity characteristic of critical points.\n⊥=𐑖: Alanine is a persistent chiral amino acid where the stereocenter is structurally enforced by the peptide bond and backbone constraints, preventing thermal racemization and maintaining a fixed configuration (memory depth n) within the peptide chain.\n≻=𐑑: Alanine acts as a structural monomer that forms covalent peptide bonds, resulting in a permanent structural transformation into a polypeptide chain.\n≺=𐑬: Alanine is a non-polar, achiral amino acid that lacks distinct donor or acceptor poles, resulting in a self-complementary interface without preferred directionality.\n⋈=𐑞: Alanine's small, non-polar side chain allows for flexible, context-dependent interactions that are reliable under specific structural conditions but lack the rigid geometric constraints of high-fidelity signaling.\n⊤=𐑧: As a standard amino acid in a peptide chain, alanine is kinetically stable in its backbone conformation and side-chain orientation, requiring significant energy input (such as enzymatic catalysis or extreme conditions) to undergo rearrangement or bond breaking.\n∈=𐑲: As a single amino acid residue, alanine's chemical properties and interactions are confined to its immediate local environment within the peptide chain, without propagating effects across the entire system.\n∋=𐑜: Alanine is one of many interchangeable amino acids that can occupy a specific position in a peptide sequence, meaning any suitable partner from the set of amino acids suffices for that slot.",
+          "actions": [
+            {
+              "step_num": 1,
+              "opcode": "⊢",
+              "domain_action": "Initialize the free alanine amino acid in a void state, prior to any peptide linkage."
+            },
+            {
+              "step_num": 2,
+              "opcode": "≻",
+              "domain_action": "Apply the forward morphism of condensation, forming the peptide bond and linking the residue to the chain."
+            },
+            {
+              "step_num": 3,
+              "opcode": "⋈",
+              "domain_action": "Propagate the backbone conformation, chaining the alanine residue with its neighbors to establish local steric constraints."
+            },
+            {
+              "step_num": 4,
+              "opcode": "∈",
+              "domain_action": "Branch the conformational space of the alanine residue into allowed and forbidden phi/psi angle regions."
+            },
+            {
+              "step_num": 5,
+              "opcode": "⊤",
+              "domain_action": "Affirm the allowed conformational states, where steric interactions are minimized and energy is low."
+            },
+            {
+              "step_num": 6,
+              "opcode": "⊥",
+              "domain_action": "Refute the forbidden conformational states, where steric clashes occur and energy is high."
+            },
+            {
+              "step_num": 7,
+              "opcode": "∋",
+              "domain_action": "Rejoin the conformational arms into a single effective structural average, defining the local geometry."
+            },
+            {
+              "step_num": 8,
+              "opcode": "⊙",
+              "domain_action": "Assert the identity of the alanine side chain, which is achiral and non-polar, maintaining self-reference without topological change."
+            },
+            {
+              "step_num": 9,
+              "opcode": "⊞",
+              "domain_action": "Hold the dynamic equilibrium, where the residue simultaneously occupies multiple conformational states in rapid flux."
+            },
+            {
+              "step_num": 10,
+              "opcode": "⊡",
+              "domain_action": "Fix the conformational state in a crystallographic record, an irreversible measurement of the local geometry."
+            },
+            {
+              "step_num": 11,
+              "opcode": "⊣",
+              "domain_action": "Anchor the complete polypeptide chain, closing the system and containing the local conformational space of the alanine residue."
+            }
+          ],
+          "execution": {
+            "register": 15,
+            "surviving": [
+              {
+                "id": 0,
+                "lane": 1,
+                "tuple": "⟨𐑨𐑰𐑑𐑬𐑞𐑧𐑲𐑜𐑢𐑖𐑳𐑷⟩"
+              },
+              {
+                "id": 1,
+                "lane": 2,
+                "tuple": "⟨𐑨𐑰𐑑𐑬𐑞𐑧𐑲𐑜𐑢𐑖𐑳𐑷⟩"
+              },
+              {
+                "id": 2,
+                "lane": 4,
+                "tuple": "⟨𐑨𐑰𐑑𐑬𐑞𐑧𐑲𐑜𐑢𐑖𐑳𐑷⟩"
+              },
+              {
+                "id": 3,
+                "lane": 8,
+                "tuple": "⟨𐑨𐑰𐑑𐑬𐑞𐑧𐑲𐑜𐑢𐑖𐑳𐑷⟩"
+              }
+            ],
+            "cleared": 0,
+            "restored": 0,
+            "exposed": 0,
+            "deposits": 3,
+            "inert": 1,
+            "native_transition_table": [
+              15,
+              15,
+              15,
+              15,
+              15,
+              15,
+              15,
+              15,
+              15,
+              15,
+              15,
+              15,
+              15,
+              15,
+              15,
+              15
+            ],
+            "source_binding": {
+              "sources": {
+                "red-hot_rebis/rhr_p4rky/peptide_bridge.rs": "bc22ad6c3cc45ed19c97de6569e08a4399c54226697c8b86d5c13f0ba00a7cd6",
+                "Vox/src/fold3d.rs": "dbad2b2773bc15c9dd1c3d6e1cc0edf620486a9623021e5a53bbd86cff9a157e",
+                "Vox/src/peptide_geometry.rs": "bb14df6de3735b6a4773b1ec0aecb811df6fa18f3cfe38f947e776d1df593a04",
+                "Vox/src/peptide_closure.rs": "8b8787439cd3f2ad880ed22dc786b915b2ee89a9b0d2c8698b651755992f883a",
+                "Vox/src/phase_word.rs": "57cd9ea758206f0a82bb6a17676a71845e8751e73ed4183a699b91f67ac67323"
+              },
+              "source_fingerprint": "0493fb160930de3594a21c3522f5d60133559c92144bf49426d91ce571babbcc",
+              "binary_sha256": "5130c19c88ea13c2c91c19fd55125022885a298c225059e69dc39d4bb4c8ee97"
+            }
+          },
+          "structural_audit": {
+            "word": "⊢≻⋈∈⊤⊥∋⊙⊞⊡⊣",
+            "verdict": "T",
+            "why": "Tri-ancestral reconnection over a transformed object — closes",
+            "forks": 1,
+            "fuses": 1,
+            "difference": 0,
+            "work_marks": 6
+          }
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "aa": "Gly",
+      "codon": null,
+      "native_state": "B",
+      "self_marks": [
+        {
+          "name": "glycine as peptide component",
+          "artifact_id": "d1b3986c41bf478e862ea1d35f9b022d",
+          "word": "⊢≻⋈∈⊤⊥∋⊞⊙≺⊣⊡",
+          "tuple": "⟨𐑨𐑰𐑑𐑬𐑞𐑘𐑲𐑜𐑢𐑖𐑳𐑴⟩",
+          "source": "ob3ect/digital/glycine_as_peptide_component/glycine_as_peptide_component_ob3ect.json",
+          "sha256": "68ee82616cb0650a245f0cf3984147ee0cc179ed0e006dec46fd2447ef5fe1da",
+          "grounding": "⊣=𐑰: Glycine residues in a peptide chain form a linear, branched hierarchical structure where each amino acid is contained within the sequential backbone and side-chain environment of the polymer.\n⊢=𐑨: Glycine as a peptide component participates in the extended 3D spatial arrangement of the polypeptide chain, where conformational constraints propagate through the backbone and side-chain interactions.\n⊞=𐑳: Glycine is a single amino acid residue, representing a distinct, asymmetric count (one) relative to the peptide backbone or other components in the stoichiometric assignment.\n⊡=𐑴: The peptide bond's planar geometry and restricted rotation create a discrete topological barrier (Z2 symmetry) that prevents continuous deformation to a trivial state without breaking the bond.\n⊙=𐑢: Glycine as a standard peptide component operates within a stable, subcritical biochemical regime without exhibiting the scale-free correlations or maximal sensitivity characteristic of critical points.\n⊥=𐑖: Glycine is achiral in isolation, but within a peptide chain, the restricted rotation of the backbone and the chiral environment of neighboring residues enforce a persistent, structurally determined secondary structure (like alpha-helices) that maintains orientational order over multiple residues.\n≻=𐑑: Glycine acts as a peptide component by forming covalent peptide bonds, which is a structural transformation that links amino acids into a polypeptide chain.\n≺=𐑬: Glycine's peptide bond interface is self-complementary, possessing both a hydrogen bond donor (N-H) and acceptor (C=O) within the same structural unit, allowing for simultaneous dual roles.\n⋈=𐑞: Glycine's small size and lack of a side chain allow it to fit into sterically constrained sites, providing moderate, context-dependent reliability for peptide bond formation and structural roles.\n⊤=𐑘: Glycine, lacking a side chain, possesses the highest conformational flexibility among amino acids, resulting in a low kinetic barrier that allows it to explore configuration space freely and reversibly.\n∈=𐑲: As a single amino acid residue, glycine's specific chemical properties and steric constraints are confined to its local backbone and side-chain environment without propagating structural changes across the entire peptide chain.\n∋=𐑜: Glycine is a versatile amino acid that can occupy multiple positions in a peptide chain, meaning any instance of it from the available pool suffices to fulfill the role of a peptide component.",
+          "actions": [
+            {
+              "step_num": 1,
+              "opcode": "⊢",
+              "domain_action": "Initialize with free glycine monomer in solution."
+            },
+            {
+              "step_num": 2,
+              "opcode": "≻",
+              "domain_action": "Form first peptide bond with adjacent amino acid."
+            },
+            {
+              "step_num": 3,
+              "opcode": "⋈",
+              "domain_action": "Extend chain by adding subsequent residues."
+            },
+            {
+              "step_num": 4,
+              "opcode": "∈",
+              "domain_action": "Branch into possible secondary structure conformations."
+            },
+            {
+              "step_num": 5,
+              "opcode": "⊤",
+              "domain_action": "Evaluate alpha-helical conformation for stability."
+            },
+            {
+              "step_num": 6,
+              "opcode": "⊥",
+              "domain_action": "Evaluate beta-sheet conformation for steric clashes."
+            },
+            {
+              "step_num": 7,
+              "opcode": "∋",
+              "domain_action": "Fuse local conformational choices into tertiary structure."
+            },
+            {
+              "step_num": 8,
+              "opcode": "⊞",
+              "domain_action": "Hold dynamic disorder in flexible glycine-rich loops."
+            },
+            {
+              "step_num": 9,
+              "opcode": "⊙",
+              "domain_action": "Recognize glycine identity within the folded chain."
+            },
+            {
+              "step_num": 10,
+              "opcode": "≺",
+              "domain_action": "Model hydrolytic cleavage of peptide bonds."
+            },
+            {
+              "step_num": 11,
+              "opcode": "⊣",
+              "domain_action": "Anchor the complete, stable protein structure."
+            },
+            {
+              "step_num": 12,
+              "opcode": "⊡",
+              "domain_action": "Record the final structure in a crystallographic snapshot."
+            }
+          ],
+          "execution": {
+            "register": 0,
+            "surviving": [],
+            "cleared": 4,
+            "restored": 0,
+            "exposed": 4,
+            "deposits": 3,
+            "inert": 0,
+            "native_transition_table": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "source_binding": {
+              "sources": {
+                "red-hot_rebis/rhr_p4rky/peptide_bridge.rs": "bc22ad6c3cc45ed19c97de6569e08a4399c54226697c8b86d5c13f0ba00a7cd6",
+                "Vox/src/fold3d.rs": "dbad2b2773bc15c9dd1c3d6e1cc0edf620486a9623021e5a53bbd86cff9a157e",
+                "Vox/src/peptide_geometry.rs": "bb14df6de3735b6a4773b1ec0aecb811df6fa18f3cfe38f947e776d1df593a04",
+                "Vox/src/peptide_closure.rs": "8b8787439cd3f2ad880ed22dc786b915b2ee89a9b0d2c8698b651755992f883a",
+                "Vox/src/phase_word.rs": "57cd9ea758206f0a82bb6a17676a71845e8751e73ed4183a699b91f67ac67323"
+              },
+              "source_fingerprint": "0493fb160930de3594a21c3522f5d60133559c92144bf49426d91ce571babbcc",
+              "binary_sha256": "5130c19c88ea13c2c91c19fd55125022885a298c225059e69dc39d4bb4c8ee97"
+            }
+          },
+          "structural_audit": {
+            "word": "⊢≻⋈∈⊤⊥∋⊞⊙≺⊣⊡",
+            "verdict": "T",
+            "why": "Tri-ancestral reconnection over a transformed object — closes",
+            "forks": 1,
+            "fuses": 1,
+            "difference": 0,
+            "work_marks": 7
+          }
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "aa": "Pro",
+      "codon": null,
+      "native_state": "B",
+      "self_marks": [
+        {
+          "name": "proline as peptide component",
+          "artifact_id": "81e17380eaba43c2b8290a7b60c9f931",
+          "word": "⊢≻∈⊤⊥∋⊞⋈⊙≺⊣⊡",
+          "tuple": "⟨𐑨𐑥𐑑𐑬𐑞𐑧𐑲𐑜𐑢𐑖𐑳𐑴⟩",
+          "source": "ob3ect/digital/proline_as_peptide_component/proline_as_peptide_component_ob3ect.json",
+          "sha256": "a26a6529828219b71e5077ce18235cc552c363fec9a7dbbb5609212aa7ce6b35",
+          "grounding": "⊣=𐑥: Proline's unique cyclic side chain creates a rigid, closed-loop structure that constrains the peptide backbone into specific cyclic conformations or turns.\n⊢=𐑨: Proline imposes a rigid cyclic constraint on the peptide backbone that propagates through the extended three-dimensional spatial arrangement of the protein structure.\n⊞=𐑳: Proline is a single amino acid residue, so its participation in a peptide bond involves one molecule on each side, representing an equal 1:1 stoichiometric ratio.\n⊡=𐑴: Proline's rigid cyclic structure imposes a discrete conformational constraint (cis/trans isomerization) that acts as a Z2 topological barrier, preventing continuous deformation to the trivial state without breaking the peptide bond.\n⊙=𐑢: Proline acts as a rigid structural constraint that stabilizes the peptide backbone in a specific conformation, preventing the system from reaching a critical threshold of conformational instability or phase transition.\n⊥=𐑖: Proline's rigid pyrrolidine ring structurally enforces a fixed chirality and conformational constraint that persists through peptide bond formation, preventing thermal interconversion and providing a deep memory of its orientational state.\n≻=𐑑: Proline's unique cyclic structure imposes a rigid conformational constraint that fundamentally alters the peptide backbone geometry, representing a structural transformation distinct from standard amino acids.\n≺=𐑬: Proline's rigid cyclic structure creates a unique steric and electronic environment that enforces a specific, self-complementary geometric constraint on the peptide backbone, distinguishing it from the linear flexibility of other residues.\n⋈=𐑞: Proline's rigid cyclic structure imposes specific geometric constraints that make its participation in peptide bonds context-dependent, leading to reliable but not absolute signaling of structural turns or helix breaks.\n⊤=𐑧: Proline's rigid pyrrolidine ring imposes a high kinetic barrier to backbone rotation and conformational rearrangement, effectively freezing the local peptide structure.\n∈=𐑲: Proline's structural influence is strictly local, primarily restricting the backbone dihedral angles of the immediate peptide bond and its immediate neighbors without propagating long-range conformational changes.\n∋=𐑜: Proline is one of twenty standard amino acids, so its selection as a peptide component is disjunctive, meaning any single amino acid from the set suffices to occupy a position in the sequence.",
+          "actions": [
+            {
+              "step_num": 1,
+              "opcode": "⊢",
+              "domain_action": "Initialize the system with an unformed peptide bond, where the backbone is unconstrained."
+            },
+            {
+              "step_num": 2,
+              "opcode": "≻",
+              "domain_action": "Propagate the structural constraint from the proline residue to the adjacent peptide bonds."
+            },
+            {
+              "step_num": 3,
+              "opcode": "∈",
+              "domain_action": "Split the peptide bond into the cis and trans isomeric states."
+            },
+            {
+              "step_num": 4,
+              "opcode": "⊤",
+              "domain_action": "Affirm the trans isomer as the thermodynamically favored state."
+            },
+            {
+              "step_num": 5,
+              "opcode": "⊥",
+              "domain_action": "Negate the cis isomer as the less common but structurally significant state."
+            },
+            {
+              "step_num": 6,
+              "opcode": "∋",
+              "domain_action": "Rejoin the cis and trans states into a conformational ensemble."
+            },
+            {
+              "step_num": 7,
+              "opcode": "⊞",
+              "domain_action": "Hold both cis and trans states simultaneously in dynamic equilibrium."
+            },
+            {
+              "step_num": 8,
+              "opcode": "⋈",
+              "domain_action": "Compose the proline residue with its neighboring residues in the sequence."
+            },
+            {
+              "step_num": 9,
+              "opcode": "⊙",
+              "domain_action": "Establish the self-referential rigidity of the proline residue."
+            },
+            {
+              "step_num": 10,
+              "opcode": "≺",
+              "domain_action": "Model the attempt to relax the backbone into a more flexible state."
+            },
+            {
+              "step_num": 11,
+              "opcode": "⊣",
+              "domain_action": "Anchor the system with the closed proline ring, containing the local conformational space."
+            },
+            {
+              "step_num": 12,
+              "opcode": "⊡",
+              "domain_action": "Fix the conformation in a crystallographic record, making it irreversible."
+            }
+          ],
+          "execution": {
+            "register": 0,
+            "surviving": [],
+            "cleared": 4,
+            "restored": 0,
+            "exposed": 4,
+            "deposits": 3,
+            "inert": 0,
+            "native_transition_table": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "source_binding": {
+              "sources": {
+                "red-hot_rebis/rhr_p4rky/peptide_bridge.rs": "bc22ad6c3cc45ed19c97de6569e08a4399c54226697c8b86d5c13f0ba00a7cd6",
+                "Vox/src/fold3d.rs": "dbad2b2773bc15c9dd1c3d6e1cc0edf620486a9623021e5a53bbd86cff9a157e",
+                "Vox/src/peptide_geometry.rs": "bb14df6de3735b6a4773b1ec0aecb811df6fa18f3cfe38f947e776d1df593a04",
+                "Vox/src/peptide_closure.rs": "8b8787439cd3f2ad880ed22dc786b915b2ee89a9b0d2c8698b651755992f883a",
+                "Vox/src/phase_word.rs": "57cd9ea758206f0a82bb6a17676a71845e8751e73ed4183a699b91f67ac67323"
+              },
+              "source_fingerprint": "0493fb160930de3594a21c3522f5d60133559c92144bf49426d91ce571babbcc",
+              "binary_sha256": "5130c19c88ea13c2c91c19fd55125022885a298c225059e69dc39d4bb4c8ee97"
+            }
+          },
+          "structural_audit": {
+            "word": "⊢≻∈⊤⊥∋⊞⋈⊙≺⊣⊡",
+            "verdict": "T",
+            "why": "Tri-ancestral reconnection over a transformed object — closes",
+            "forks": 1,
+            "fuses": 1,
+            "difference": 0,
+            "work_marks": 7
+          }
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "aa": "Ser",
+      "codon": null,
+      "native_state": "B",
+      "self_marks": [
+        {
+          "name": "serine as peptide component",
+          "artifact_id": "22d0ad97f4b840258e72597c44543a37",
+          "word": "⊢≻⋈⊡⊙∈⊤⊥⊞∋≺⊣",
+          "tuple": "⟨𐑨𐑰𐑑𐑬𐑞𐑧𐑲𐑜𐑢𐑖𐑳𐑷⟩",
+          "source": "ob3ect/digital/serine_as_peptide_component/serine_as_peptide_component_ob3ect.json",
+          "sha256": "29ef48f0abaafe2a46e8d072e1b9fc4d2af6cfdff4b4779275bd87f134991c0b",
+          "grounding": "⊣=𐑰: Serine residues are covalently linked in a linear, branched hierarchical structure where side chains extend from the peptide backbone, fitting the containment or nested hierarchy topology.\n⊢=𐑨: Serine's side chain extends into the solvent or active site, allowing its hydroxyl group to participate in spatially distributed hydrogen bonding networks and steric interactions that define the local 3D architecture of the peptide.\n⊞=𐑳: Serine is a single amino acid residue, so its participation ratio is 1, which is not equal to the counts of the other components in a peptide bond, making the pairing asymmetric.\n⊡=𐑷: Serine is a standard, achiral amino acid with no topological invariants or symmetry constraints that prevent its continuous deformation into a trivial state within the peptide chain.\n⊙=𐑢: Serine is a standard, stable amino acid component in peptides that functions within a normal, subcritical biochemical regime without exhibiting scale-free critical behavior or non-Hermitian degeneracy.\n⊥=𐑖: Serine's chirality is structurally enforced by its tetrahedral carbon center and stable covalent bonds, creating a persistent chiral state that does not spontaneously racemize under physiological conditions.\n≻=𐑑: Serine acts as a nucleophile in peptide bond formation, undergoing a covalent structural transformation that is effectively irreversible under physiological conditions.\n≺=𐑬: Serine's hydroxyl group acts as both a hydrogen bond donor and acceptor, creating a self-complementary interface with simultaneous dual roles.\n⋈=𐑞: Serine's side chain is flexible and its reactivity is highly context-dependent on local pH and neighboring residues, resulting in moderate rather than near-certain fidelity.\n⊤=𐑧: Serine's side chain is small and flexible, allowing it to adopt multiple rotamers with low energy barriers, making it kinetically accessible and reversible rather than frozen or localized.\n∈=𐑲: Serine acts as a local residue within a peptide chain, where its specific chemical interactions (such as hydrogen bonding or steric effects) are primarily confined to its immediate neighbors and local secondary structure rather than propagating globally across the entire system.\n∋=𐑜: Serine is one of many interchangeable amino acids that can occupy a specific position in a peptide sequence, meaning any suitable partner from the set of amino acids suffices for that slot.",
+          "actions": [
+            {
+              "step_num": 1,
+              "opcode": "⊢",
+              "domain_action": "Initialize the system with free serine and adjacent amino acid precursors."
+            },
+            {
+              "step_num": 2,
+              "opcode": "≻",
+              "domain_action": "Serine hydroxyl oxygen attacks the carbonyl carbon of the adjacent residue."
+            },
+            {
+              "step_num": 3,
+              "opcode": "⋈",
+              "domain_action": "Form the peptide bond, linking serine into the linear chain."
+            },
+            {
+              "step_num": 4,
+              "opcode": "⊡",
+              "domain_action": "Fix the covalent linkage, making the bond irreversible under physiological conditions."
+            },
+            {
+              "step_num": 5,
+              "opcode": "⊙",
+              "domain_action": "Establish the chiral identity of the L-serine residue, locking the stereochemistry."
+            },
+            {
+              "step_num": 6,
+              "opcode": "∈",
+              "domain_action": "The side chain begins to explore conformational space, splitting into rotameric states."
+            },
+            {
+              "step_num": 7,
+              "opcode": "⊤",
+              "domain_action": "One rotamer aligns the hydroxyl for optimal hydrogen bonding (affirmative state)."
+            },
+            {
+              "step_num": 8,
+              "opcode": "⊥",
+              "domain_action": "Another rotamer leads to steric clash with neighboring residues (negative state)."
+            },
+            {
+              "step_num": 9,
+              "opcode": "⊞",
+              "domain_action": "The hydroxyl group holds both donor and acceptor roles simultaneously in the optimal rotamer."
+            },
+            {
+              "step_num": 10,
+              "opcode": "∋",
+              "domain_action": "The rotameric states rejoin into a conformational ensemble, defining the dynamic behavior."
+            },
+            {
+              "step_num": 11,
+              "opcode": "≺",
+              "domain_action": "The side chain undergoes conformational relaxation, reversing transient interactions."
+            },
+            {
+              "step_num": 12,
+              "opcode": "⊣",
+              "domain_action": "The peptide chain termini bound the system, containing the serine residue within the structural hierarchy."
+            }
+          ],
+          "execution": {
+            "register": 1,
+            "surviving": [],
+            "cleared": 0,
+            "restored": 0,
+            "exposed": 0,
+            "deposits": 0,
+            "inert": 7,
+            "native_transition_table": [
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8
+            ],
+            "source_binding": {
+              "sources": {
+                "red-hot_rebis/rhr_p4rky/peptide_bridge.rs": "bc22ad6c3cc45ed19c97de6569e08a4399c54226697c8b86d5c13f0ba00a7cd6",
+                "Vox/src/fold3d.rs": "dbad2b2773bc15c9dd1c3d6e1cc0edf620486a9623021e5a53bbd86cff9a157e",
+                "Vox/src/peptide_geometry.rs": "bb14df6de3735b6a4773b1ec0aecb811df6fa18f3cfe38f947e776d1df593a04",
+                "Vox/src/peptide_closure.rs": "8b8787439cd3f2ad880ed22dc786b915b2ee89a9b0d2c8698b651755992f883a",
+                "Vox/src/phase_word.rs": "57cd9ea758206f0a82bb6a17676a71845e8751e73ed4183a699b91f67ac67323"
+              },
+              "source_fingerprint": "0493fb160930de3594a21c3522f5d60133559c92144bf49426d91ce571babbcc",
+              "binary_sha256": "5130c19c88ea13c2c91c19fd55125022885a298c225059e69dc39d4bb4c8ee97"
+            }
+          },
+          "structural_audit": {
+            "word": "⊢≻⋈⊡⊙∈⊤⊥⊞∋≺⊣",
+            "verdict": "T",
+            "why": "Tri-ancestral reconnection over a transformed object — closes",
+            "forks": 1,
+            "fuses": 1,
+            "difference": 0,
+            "work_marks": 7
+          }
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "aa": "Thr",
+      "codon": null,
+      "native_state": "B",
+      "self_marks": [
+        {
+          "name": "threonine as peptide component",
+          "artifact_id": "2d9e0b3658c84c479626562c25f2a631",
+          "word": "⊢≻⊡⋈∈⊤⊥∋⊞⊙⊣",
+          "tuple": "⟨𐑨𐑰𐑑𐑬𐑞𐑧𐑲𐑜𐑢𐑖𐑳𐑴⟩",
+          "source": "ob3ect/digital/threonine_as_peptide_component/threonine_as_peptide_component_ob3ect.json",
+          "sha256": "c5fd4c39c620e055d1e44a62070b6e06ba7a8ff1bcadc647abb13bb625b2d18b",
+          "grounding": "⊣=𐑰: Threonine is a standard amino acid that covalently bonds to form a linear peptide chain, representing a hierarchical assembly where individual residues are contained within the larger macromolecular structure.\n⊢=𐑨: Threonine as a peptide component participates in the extended three-dimensional spatial arrangement of the protein backbone and side-chain interactions.\n⊞=𐑳: Threonine is a single amino acid residue, representing an asymmetric participation where one specific component is involved rather than a symmetric pairing or higher-order oligomer.\n⊡=𐑴: Threonine's side chain contains a single chiral center, creating a binary (Z2) topological distinction between enantiomers that cannot be continuously deformed into the trivial state without breaking the bond or crossing a topological boundary.\n⊙=𐑢: Threonine is a standard, stable amino acid residue in peptides that does not exhibit the scale-free correlations or maximal sensitivity characteristic of a critical phase transition.\n⊥=𐑖: Threonine possesses two stereocenters (at the α-carbon and β-carbon), creating a persistent chiral configuration that is structurally enforced and not thermally interconvertible.\n≻=𐑑: Threonine acts as a structural component in a peptide, participating in covalent bond formation (peptide bonds) that results in a stable, semi-irreversible structural transformation.\n≺=𐑬: Threonine possesses both a hydroxyl group (capable of hydrogen bonding as a donor or acceptor) and an amide backbone, allowing it to form self-complementary hydrogen-bonding networks where it simultaneously plays donor and acceptor roles.\n⋈=𐑞: Threonine's side chain provides a specific hydrogen-bonding donor/acceptor pair and steric bulk that creates a context-dependent, medium-fidelity interaction, reliable only when the local geometry and pH permit optimal hydrogen bonding without excessive steric clash.\n⊤=𐑧: Threonine's side chain is sterically hindered by its methyl group, creating a high kinetic barrier that restricts conformational flexibility and makes it kinetically frozen compared to smaller amino acids.\n∈=𐑲: Threonine acts as a discrete local residue within a peptide chain, where its specific chemical interactions are confined to its immediate local environment without propagating globally across the entire system.\n∋=𐑜: Threonine is one of many interchangeable amino acids that can occupy a specific position in a peptide sequence, meaning any single compatible partner from the set of amino acids suffices for that slot.",
+          "actions": [
+            {
+              "step_num": 1,
+              "opcode": "⊢",
+              "domain_action": "Initialize the free threonine monomer in solution, establishing the void state before peptide assembly."
+            },
+            {
+              "step_num": 2,
+              "opcode": "≻",
+              "domain_action": "Form the N-to-C peptide bond, mapping the free amine and carboxyl groups into a stable amide linkage."
+            },
+            {
+              "step_num": 3,
+              "opcode": "⊡",
+              "domain_action": "Fix the covalent peptide bond, creating an irreversible record of the assembly."
+            },
+            {
+              "step_num": 4,
+              "opcode": "⋈",
+              "domain_action": "Chain the threonine residue to the next amino acid, composing the linear polypeptide."
+            },
+            {
+              "step_num": 5,
+              "opcode": "∈",
+              "domain_action": "Split the side-chain conformational state into hydrogen-bonding and steric-shielding rotamers."
+            },
+            {
+              "step_num": 6,
+              "opcode": "⊤",
+              "domain_action": "Evaluate the hydrogen-bonding rotamer, affirming the stable hydrogen bond formation."
+            },
+            {
+              "step_num": 7,
+              "opcode": "⊥",
+              "domain_action": "Evaluate the steric-shielding rotamer, negating the conformation due to steric clash."
+            },
+            {
+              "step_num": 8,
+              "opcode": "∋",
+              "domain_action": "Rejoin the rotameric arms into a single local structural equilibrium."
+            },
+            {
+              "step_num": 9,
+              "opcode": "⊞",
+              "domain_action": "Hold the dual donor-acceptor role of the hydroxyl group, maintaining the paradice of simultaneous roles."
+            },
+            {
+              "step_num": 10,
+              "opcode": "⊙",
+              "domain_action": "Assert the chiral identity of the alpha-carbon, ensuring the L-threonine configuration remains invariant."
+            },
+            {
+              "step_num": 11,
+              "opcode": "⊣",
+              "domain_action": "Anchor the residue within the folded protein domain, closing the system within the tertiary structure."
+            }
+          ],
+          "execution": {
+            "register": 1,
+            "surviving": [],
+            "cleared": 0,
+            "restored": 0,
+            "exposed": 0,
+            "deposits": 0,
+            "inert": 7,
+            "native_transition_table": [
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8
+            ],
+            "source_binding": {
+              "sources": {
+                "red-hot_rebis/rhr_p4rky/peptide_bridge.rs": "bc22ad6c3cc45ed19c97de6569e08a4399c54226697c8b86d5c13f0ba00a7cd6",
+                "Vox/src/fold3d.rs": "dbad2b2773bc15c9dd1c3d6e1cc0edf620486a9623021e5a53bbd86cff9a157e",
+                "Vox/src/peptide_geometry.rs": "bb14df6de3735b6a4773b1ec0aecb811df6fa18f3cfe38f947e776d1df593a04",
+                "Vox/src/peptide_closure.rs": "8b8787439cd3f2ad880ed22dc786b915b2ee89a9b0d2c8698b651755992f883a",
+                "Vox/src/phase_word.rs": "57cd9ea758206f0a82bb6a17676a71845e8751e73ed4183a699b91f67ac67323"
+              },
+              "source_fingerprint": "0493fb160930de3594a21c3522f5d60133559c92144bf49426d91ce571babbcc",
+              "binary_sha256": "5130c19c88ea13c2c91c19fd55125022885a298c225059e69dc39d4bb4c8ee97"
+            }
+          },
+          "structural_audit": {
+            "word": "⊢≻⊡⋈∈⊤⊥∋⊞⊙⊣",
+            "verdict": "T",
+            "why": "Tri-ancestral reconnection over a transformed object — closes",
+            "forks": 1,
+            "fuses": 1,
+            "difference": 0,
+            "work_marks": 6
+          }
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "aa": "Val",
+      "codon": null,
+      "native_state": "B",
+      "self_marks": [
+        {
+          "name": "valine as peptide component",
+          "artifact_id": "8de38cd955a040e3ac75622a8b9a3c66",
+          "word": "⊢≻⋈⊙∈⊤⊥∋⊞⊡⊣",
+          "tuple": "⟨𐑨𐑰𐑑𐑬𐑞𐑧𐑲𐑜𐑢𐑖𐑳𐑷⟩",
+          "source": "ob3ect/digital/valine_as_peptide_component/valine_as_peptide_component_ob3ect.json",
+          "sha256": "67fbfb63ca4ebe6baeb79a4c8d84c603363e3a737e05be2a727837191da616ea",
+          "grounding": "⊣=𐑰: Valine acts as a side chain extending from the linear peptide backbone, forming a branched tree structure where the hydrophobic group is contained within the steric volume defined by the backbone and neighboring residues.\n⊢=𐑨: Valine as a peptide component participates in the extended three-dimensional spatial arrangement of the protein backbone and side-chain interactions.\n⊞=𐑳: Valine is a single amino acid residue, representing an asymmetric participation where one specific unit is involved rather than a symmetric pairing or higher-order oligomer.\n⊡=𐑷: Valine is a standard, achiral amino acid with no topological invariants or symmetry constraints that would prevent its peptide bond from being hydrolyzed or its role from being trivialized via continuous deformation.\n⊙=𐑢: Valine is a standard, stable amino acid component in peptides that operates within a normal, subcritical biochemical regime without exhibiting scale-free critical behavior.\n⊥=𐑖: Valine is a stable, non-racemizing amino acid whose chirality is structurally enforced by its tetrahedral carbon center, providing persistent memory in peptide sequences.\n≻=𐑑: Valine acts as a structural component in peptides, participating in the formation of covalent peptide bonds and defining the stable, semi-irreversible secondary and tertiary structure of the protein.\n≺=𐑬: Valine is a non-polar, hydrophobic amino acid that lacks the hydrogen-bonding donor or acceptor groups necessary to establish a signed directional interface, resulting in a self-complementary, non-directional interaction profile.\n⋈=𐑞: Valine's hydrophobic side chain provides moderate, context-dependent stability to peptide bonds and secondary structures, but its interaction fidelity is not as rigid or geometry-enforcing as that of cysteine disulfide bridges or specific metal-coordinating residues.\n⊤=𐑧: Valine's branched side chain creates significant steric hindrance that kinetically restricts backbone rotation, making conformational rearrangements slow and requiring external driving forces to overcome the high energy barrier.\n∈=𐑲: Valine acts as a specific local residue within a peptide chain, where its steric and chemical properties primarily influence the immediate local conformation and hydrogen bonding of adjacent residues rather than propagating globally across the entire system.\n∋=𐑜: Valine is one of several hydrophobic amino acids that can occupy specific binding pockets, implying a disjunctive selection where any compatible partner from a set suffices.",
+          "actions": [
+            {
+              "step_num": 1,
+              "opcode": "⊢",
+              "domain_action": "The free valine amino acid exists in solution, unbound and without defined spatial orientation."
+            },
+            {
+              "step_num": 2,
+              "opcode": "≻",
+              "domain_action": "The carboxyl group of the preceding residue reacts with the amino group of valine, forming a peptide bond."
+            },
+            {
+              "step_num": 3,
+              "opcode": "⋈",
+              "domain_action": "The valine is appended to the growing peptide chain, extending the linear backbone."
+            },
+            {
+              "step_num": 4,
+              "opcode": "⊙",
+              "domain_action": "The valine residue maintains its specific chemical identity and chiral configuration."
+            },
+            {
+              "step_num": 5,
+              "opcode": "∈",
+              "domain_action": "The backbone dihedral angles split into distinct conformational basins, separating allowed from forbidden regions."
+            },
+            {
+              "step_num": 6,
+              "opcode": "⊤",
+              "domain_action": "The valine side chain fits into the hydrophobic core of an alpha-helix, minimizing energy."
+            },
+            {
+              "step_num": 7,
+              "opcode": "⊥",
+              "domain_action": "The bulky isopropyl group causes a steric collision with neighboring residues, destabilizing the local conformation."
+            },
+            {
+              "step_num": 8,
+              "opcode": "∋",
+              "domain_action": "The conformational arms rejoin into a single thermodynamic ensemble, unifying the probability distribution."
+            },
+            {
+              "step_num": 9,
+              "opcode": "⊞",
+              "domain_action": "The residue holds both the potential for helical stability and the reality of steric hindrance simultaneously."
+            },
+            {
+              "step_num": 10,
+              "opcode": "⊡",
+              "domain_action": "The valine position is permanently fixed in the primary sequence, an irreversible record of the genetic code."
+            },
+            {
+              "step_num": 11,
+              "opcode": "⊣",
+              "domain_action": "The protein fold closes, acting as the terminal anchor that contains the entire system and defines the steric volume."
+            }
+          ],
+          "execution": {
+            "register": 15,
+            "surviving": [
+              {
+                "id": 0,
+                "lane": 1,
+                "tuple": "⟨𐑨𐑰𐑑𐑬𐑞𐑧𐑲𐑜𐑢𐑖𐑳𐑷⟩"
+              },
+              {
+                "id": 1,
+                "lane": 2,
+                "tuple": "⟨𐑨𐑰𐑑𐑬𐑞𐑧𐑲𐑜𐑢𐑖𐑳𐑷⟩"
+              },
+              {
+                "id": 2,
+                "lane": 4,
+                "tuple": "⟨𐑨𐑰𐑑𐑬𐑞𐑧𐑲𐑜𐑢𐑖𐑳𐑷⟩"
+              },
+              {
+                "id": 3,
+                "lane": 8,
+                "tuple": "⟨𐑨𐑰𐑑𐑬𐑞𐑧𐑲𐑜𐑢𐑖𐑳𐑷⟩"
+              }
+            ],
+            "cleared": 0,
+            "restored": 0,
+            "exposed": 0,
+            "deposits": 3,
+            "inert": 1,
+            "native_transition_table": [
+              15,
+              15,
+              15,
+              15,
+              15,
+              15,
+              15,
+              15,
+              15,
+              15,
+              15,
+              15,
+              15,
+              15,
+              15,
+              15
+            ],
+            "source_binding": {
+              "sources": {
+                "red-hot_rebis/rhr_p4rky/peptide_bridge.rs": "bc22ad6c3cc45ed19c97de6569e08a4399c54226697c8b86d5c13f0ba00a7cd6",
+                "Vox/src/fold3d.rs": "dbad2b2773bc15c9dd1c3d6e1cc0edf620486a9623021e5a53bbd86cff9a157e",
+                "Vox/src/peptide_geometry.rs": "bb14df6de3735b6a4773b1ec0aecb811df6fa18f3cfe38f947e776d1df593a04",
+                "Vox/src/peptide_closure.rs": "8b8787439cd3f2ad880ed22dc786b915b2ee89a9b0d2c8698b651755992f883a",
+                "Vox/src/phase_word.rs": "57cd9ea758206f0a82bb6a17676a71845e8751e73ed4183a699b91f67ac67323"
+              },
+              "source_fingerprint": "0493fb160930de3594a21c3522f5d60133559c92144bf49426d91ce571babbcc",
+              "binary_sha256": "5130c19c88ea13c2c91c19fd55125022885a298c225059e69dc39d4bb4c8ee97"
+            }
+          },
+          "structural_audit": {
+            "word": "⊢≻⋈⊙∈⊤⊥∋⊞⊡⊣",
+            "verdict": "T",
+            "why": "Tri-ancestral reconnection over a transformed object — closes",
+            "forks": 1,
+            "fuses": 1,
+            "difference": 0,
+            "work_marks": 6
+          }
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "aa": "Leu",
+      "codon": null,
+      "native_state": "B",
+      "self_marks": [
+        {
+          "name": "leucine as peptide component",
+          "artifact_id": "a47e94c999fd4804a0fddc00d55bc0cb",
+          "word": "⊢≻⋈⊙∈⊤⊥⊞∋≺⊣⊡",
+          "tuple": "⟨𐑨𐑰𐑑𐑬𐑞𐑧𐑚𐑜𐑢𐑖𐑳𐑷⟩",
+          "source": "ob3ect/digital/leucine_as_peptide_component/leucine_as_peptide_component_ob3ect.json",
+          "sha256": "b3f607ea16b92863c9d2fcfdd555591ed137ee7ba7cce36e2d47bec1f75bf8a6",
+          "grounding": "⊣=𐑰: Leucine acts as a side chain extending from the peptide backbone, forming a branched tree structure where the hydrophobic group is contained within the steric volume of the protein fold.\n⊢=𐑨: Leucine's hydrophobic side chain drives the spatial folding of the peptide backbone into a specific three-dimensional tertiary structure, where constraints propagate through the extended 3D arrangement of the chain.\n⊞=𐑳: Leucine is a single amino acid residue, so its participation as a component in a peptide bond involves an asymmetric stoichiometry where one molecule contributes to the chain rather than forming a symmetric pair or oligomer.\n⊡=𐑷: Leucine is a standard, non-topological amino acid whose role as a peptide component is chemically and structurally trivial, allowing it to be continuously deformed or substituted without crossing any topological boundary.\n⊙=𐑢: Leucine is a standard, stable amino acid component in peptides that operates within a normal, subcritical biochemical regime without exhibiting scale-free critical behavior or non-Hermitian degeneracy.\n⊥=𐑖: Leucine is a stable, structurally enforced chiral amino acid with a fixed stereocenter that maintains its configuration in peptides, representing persistent chirality with significant memory depth.\n≻=𐑑: Leucine acts as a structural component in a peptide, participating in the formation of covalent peptide bonds that define the primary structure of the protein.\n≺=𐑬: Leucine's peptide bond interface is self-complementary, featuring a hydrogen bond donor (N-H) and acceptor (C=O) on the same residue that can simultaneously engage in complementary interactions.\n⋈=𐑞: Leucine's hydrophobic side chain drives peptide folding and binding through context-dependent hydrophobic effects rather than rigid geometric locking, resulting in reliable but conditional interactions.\n⊤=𐑧: Leucine's bulky hydrophobic side chain creates significant steric hindrance and hydrophobic stabilization, resulting in a high kinetic barrier to conformational rearrangement within a peptide backbone.\n∈=𐑚: Leucine's hydrophobic side chain drives local clustering and secondary structure formation (mesoscale motifs) rather than acting as a single isolated bond or a global system-wide propagator.\n∋=𐑜: Leucine is one of many interchangeable amino acids that can occupy a specific position in a peptide sequence, meaning any single partner from the set of 20 standard amino acids suffices for that slot.",
+          "actions": [
+            {
+              "step_num": 1,
+              "opcode": "⊢",
+              "domain_action": "Initialize the system with a free leucine residue in solution, representing the void state before any peptide bond is formed."
+            },
+            {
+              "step_num": 2,
+              "opcode": "≻",
+              "domain_action": "Form the first peptide bond, extending the backbone from the N-terminus, establishing the forward morphism of primary structure formation."
+            },
+            {
+              "step_num": 3,
+              "opcode": "⋈",
+              "domain_action": "Compose the next amino acid residue via a peptide bond, chaining the linear sequence and building the primary structure."
+            },
+            {
+              "step_num": 4,
+              "opcode": "⊙",
+              "domain_action": "Assert the chiral identity of the leucine residue, recognizing its fixed stereocenter and self-reference within the chain."
+            },
+            {
+              "step_num": 5,
+              "opcode": "∈",
+              "domain_action": "Split the conformational state of the leucine side chain into two arms: exposed to the aqueous environment and buried in the hydrophobic core."
+            },
+            {
+              "step_num": 6,
+              "opcode": "⊤",
+              "domain_action": "Evaluate the T-arm where the side chain is buried in the hydrophobic core, affirming the stability contribution of the hydrophobic effect."
+            },
+            {
+              "step_num": 7,
+              "opcode": "⊥",
+              "domain_action": "Evaluate the F-arm where the side chain is exposed or involved in a steric clash, representing the negative state of conformational defect."
+            },
+            {
+              "step_num": 8,
+              "opcode": "⊞",
+              "domain_action": "Hold both the exposed and buried states simultaneously in a dynamic equilibrium, reflecting the flexibility of the protein fold without resolving into a single static conformation."
+            },
+            {
+              "step_num": 9,
+              "opcode": "∋",
+              "domain_action": "Rejoin the conformational states into a stable folded structure, fusing the exposed and buried arms into a single stable conformation driven by the hydrophobic effect."
+            },
+            {
+              "step_num": 10,
+              "opcode": "≺",
+              "domain_action": "Reverse the transformation as the backbone descends from an extended state into a folded conformation, minimizing free energy and burying hydrophobic residues."
+            },
+            {
+              "step_num": 11,
+              "opcode": "⊣",
+              "domain_action": "Anchor the system at the tertiary fold boundary, sealing the hydrophobic core and defining the steric volume of the protein fold."
+            },
+            {
+              "step_num": 12,
+              "opcode": "⊡",
+              "domain_action": "Fix the leucine residue's position in a crystal structure, recording the specific conformation and interactions as an irreversible data point."
+            }
+          ],
+          "execution": {
+            "register": 0,
+            "surviving": [],
+            "cleared": 4,
+            "restored": 0,
+            "exposed": 4,
+            "deposits": 3,
+            "inert": 0,
+            "native_transition_table": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "source_binding": {
+              "sources": {
+                "red-hot_rebis/rhr_p4rky/peptide_bridge.rs": "bc22ad6c3cc45ed19c97de6569e08a4399c54226697c8b86d5c13f0ba00a7cd6",
+                "Vox/src/fold3d.rs": "dbad2b2773bc15c9dd1c3d6e1cc0edf620486a9623021e5a53bbd86cff9a157e",
+                "Vox/src/peptide_geometry.rs": "bb14df6de3735b6a4773b1ec0aecb811df6fa18f3cfe38f947e776d1df593a04",
+                "Vox/src/peptide_closure.rs": "8b8787439cd3f2ad880ed22dc786b915b2ee89a9b0d2c8698b651755992f883a",
+                "Vox/src/phase_word.rs": "57cd9ea758206f0a82bb6a17676a71845e8751e73ed4183a699b91f67ac67323"
+              },
+              "source_fingerprint": "0493fb160930de3594a21c3522f5d60133559c92144bf49426d91ce571babbcc",
+              "binary_sha256": "5130c19c88ea13c2c91c19fd55125022885a298c225059e69dc39d4bb4c8ee97"
+            }
+          },
+          "structural_audit": {
+            "word": "⊢≻⋈⊙∈⊤⊥⊞∋≺⊣⊡",
+            "verdict": "T",
+            "why": "Tri-ancestral reconnection over a transformed object — closes",
+            "forks": 1,
+            "fuses": 1,
+            "difference": 0,
+            "work_marks": 7
+          }
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "aa": "Arg",
+      "codon": null,
+      "native_state": "B",
+      "self_marks": [
+        {
+          "name": "arginine as peptide component",
+          "artifact_id": "c1518f3484a04a12a5b44bcb4af2add1",
+          "word": "⊢≻⋈⊙⊡∈⊤⊥⊞∋⋈⊣",
+          "tuple": "⟨𐑨𐑰𐑑𐑬𐑞𐑧𐑲𐑜𐑢𐑖𐑳𐑷⟩",
+          "source": "ob3ect/digital/arginine_as_peptide_component/arginine_as_peptide_component_ob3ect.json",
+          "sha256": "b8dfe62b4bdaebc49a14004470b7b16da6f1376d09d5985bf9fea7f05fcc29ea",
+          "grounding": "⊣=𐑰: Arginine residues in a peptide chain are covalently linked in a linear, branched hierarchical structure where side chains extend from the backbone container.\n⊢=𐑨: As a peptide component, arginine participates in an extended 3D arrangement where side-chain interactions and backbone geometry propagate constraints through the spatial structure of the polypeptide chain.\n⊞=𐑳: As a single amino acid residue, arginine participates as a distinct unit within a larger peptide chain, creating an asymmetric relationship between the specific component and the collective structure.\n⊡=𐑷: Arginine is a standard amino acid with no topological constraints or non-trivial winding numbers in its peptide role, allowing its functional state to be continuously deformed to a trivial state without crossing any topological boundaries.\n⊙=𐑢: Arginine functions as a standard, stable amino acid residue within peptide chains, operating in a normal biochemical regime without exhibiting the scale-free correlations or maximal sensitivity characteristic of a critical phase transition.\n⊥=𐑖: Arginine is a persistent chiral amino acid with a fixed stereocenter and a rigid side chain that maintains its configuration under physiological conditions, representing a stable structural memory.\n≻=𐑑: Arginine acts as a structural component within a peptide, participating in covalent peptide bond formation and stable non-covalent interactions that define the molecule's irreversible or semi-reversible structural transformation.\n≺=𐑬: Arginine possesses both a positively charged guanidinium group (donor) and a neutral amide backbone (acceptor), creating a self-complementary interface with simultaneous donor and acceptor roles.\n⋈=𐑞: Arginine's guanidinium group forms multiple hydrogen bonds that are highly context-dependent on pH and local geometry, providing reliable but not absolute signaling.\n⊤=𐑧: Arginine's side chain forms strong, directional hydrogen bonds and salt bridges that create a high kinetic barrier to rearrangement, effectively freezing its conformational dynamics within the peptide structure.\n∈=𐑲: As a single amino acid residue within a peptide chain, arginine's specific chemical interactions (such as salt bridges or hydrogen bonds) are primarily local to its immediate neighbors and do not inherently propagate across the entire system or through large mesoscale clusters without specific structural context.\n∋=𐑜: As a single amino acid residue within a peptide chain, arginine participates in interactions where any one of its potential binding partners (such as specific residues or ligands) can satisfy the interaction requirement, fitting the disjunctive logic of partner selection.",
+          "actions": [
+            {
+              "step_num": 1,
+              "opcode": "⊢",
+              "domain_action": "Initialize the system with a free arginine molecule in solution."
+            },
+            {
+              "step_num": 2,
+              "opcode": "≻",
+              "domain_action": "Form the first peptide bond, linking arginine to the N-terminal residue."
+            },
+            {
+              "step_num": 3,
+              "opcode": "⋈",
+              "domain_action": "Propagate the backbone structure, adding subsequent residues in sequence."
+            },
+            {
+              "step_num": 4,
+              "opcode": "⊙",
+              "domain_action": "Assert the identity of the arginine residue, preserving its L-chiral configuration."
+            },
+            {
+              "step_num": 5,
+              "opcode": "⊡",
+              "domain_action": "Fix the chiral center, making the stereochemical configuration permanent."
+            },
+            {
+              "step_num": 6,
+              "opcode": "∈",
+              "domain_action": "Branch the arginine side chain from the backbone, opening interaction arms."
+            },
+            {
+              "step_num": 7,
+              "opcode": "⊤",
+              "domain_action": "Evaluate the hydrogen bonding arm, affirming stable H-bond formation with a partner."
+            },
+            {
+              "step_num": 8,
+              "opcode": "⊥",
+              "domain_action": "Evaluate the electrostatic arm, checking for steric clashes or repulsion."
+            },
+            {
+              "step_num": 9,
+              "opcode": "⊞",
+              "domain_action": "Hold the dual role of the guanidinium group as both donor and electrostatic participant."
+            },
+            {
+              "step_num": 10,
+              "opcode": "∋",
+              "domain_action": "Rejoin the interaction arms to establish the local conformational stability of the residue."
+            },
+            {
+              "step_num": 11,
+              "opcode": "⋈",
+              "domain_action": "Continue backbone propagation to the C-terminus."
+            },
+            {
+              "step_num": 12,
+              "opcode": "⊣",
+              "domain_action": "Anchor the complete polypeptide chain, closing the structural boundary."
+            }
+          ],
+          "execution": {
+            "register": 1,
+            "surviving": [],
+            "cleared": 0,
+            "restored": 0,
+            "exposed": 0,
+            "deposits": 0,
+            "inert": 7,
+            "native_transition_table": [
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8
+            ],
+            "source_binding": {
+              "sources": {
+                "red-hot_rebis/rhr_p4rky/peptide_bridge.rs": "bc22ad6c3cc45ed19c97de6569e08a4399c54226697c8b86d5c13f0ba00a7cd6",
+                "Vox/src/fold3d.rs": "dbad2b2773bc15c9dd1c3d6e1cc0edf620486a9623021e5a53bbd86cff9a157e",
+                "Vox/src/peptide_geometry.rs": "bb14df6de3735b6a4773b1ec0aecb811df6fa18f3cfe38f947e776d1df593a04",
+                "Vox/src/peptide_closure.rs": "8b8787439cd3f2ad880ed22dc786b915b2ee89a9b0d2c8698b651755992f883a",
+                "Vox/src/phase_word.rs": "57cd9ea758206f0a82bb6a17676a71845e8751e73ed4183a699b91f67ac67323"
+              },
+              "source_fingerprint": "0493fb160930de3594a21c3522f5d60133559c92144bf49426d91ce571babbcc",
+              "binary_sha256": "5130c19c88ea13c2c91c19fd55125022885a298c225059e69dc39d4bb4c8ee97"
+            }
+          },
+          "structural_audit": {
+            "word": "⊢≻⋈⊙⊡∈⊤⊥⊞∋⋈⊣",
+            "verdict": "T",
+            "why": "Tri-ancestral reconnection over a transformed object — closes",
+            "forks": 1,
+            "fuses": 1,
+            "difference": 0,
+            "work_marks": 7
+          }
+        }
+      ]
+    }
+  ],
+  "observations": [],
+  "readouts": [],
+  "native_state": "B",
+  "semantics": "native-glut",
+  "weights": "none",
+  "coordinate_role": "boundary-readout",
+  "word_register_basis": "SIXTEEN_3 T,F,t,f; separate from Belnap evidence"
+}

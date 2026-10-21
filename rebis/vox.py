@@ -19,7 +19,7 @@ from pathlib import Path
 
 from shared.rich_output import *
 from shared.vox_bridge import (
-    audit_module, audit_word, lift_rna, word_of_peptide,
+    audit_module, audit_word,
 )
 
 _OUTCOME = {
@@ -42,26 +42,38 @@ def _report(word: str, source: str = "") -> int:
     return 0
 
 
+def _show_carrier(glut, args):
+    import json
+    # Each self-mark retains its own source/IFIX boundary. Flattening would
+    # cause an earlier residue's irreversible fix to silence later residues.
+    for residue in glut.residues:
+        for form in residue['self_marks']:
+            form['structural_audit'] = audit_word(form['word'])
+    output = glut.as_dict()
+    if args.json:
+        print(json.dumps(output, indent=2, ensure_ascii=False))
+    else:
+        header("V⊙x: resident amino-acid self-marks")
+        info_line(f"  native B; {len(glut.residues)} residues; forms co-held")
+        for residue in glut.residues:
+            for form in residue['self_marks']:
+                info_line(f"  {residue['index']} {residue['aa']} {form['name']} {form['word']}")
+                info_line(f"    register {form['execution']['register']}; structural {form['structural_audit']['verdict']}")
+    return 0
+
+
 def _cmd_rna(args) -> int:
-    header("V⊙x — a coding sequence")
-    word, reading, stopped = lift_rna(args.sequence)
-    if not word:
-        error_line("  no promoted codon in that sequence")
-        return 1
-    for codon, aa, glyph, family in reading:
-        info_line(f"    {codon:<6} {aa:<5} {family:<16} {glyph}")
-    if stopped:
-        info_line(f"  stop      {stopped}")
-    return _report(word)
+    from rhr_p4rky.serpent_rod import SerpentRod
+    from rhr_p4rky.protein_glut import ProteinGlut
+    source = SerpentRod(args.sequence)
+    aas = source.translate_to_aa()
+    glut = ProteinGlut.prepare(aas, [source.rna[3*i:3*i+3] for i in range(len(aas))])
+    return _show_carrier(glut, args)
 
 
 def _cmd_peptide(args) -> int:
-    header("V⊙x — a residue sequence")
-    word = word_of_peptide(args.sequence)
-    if not word:
-        error_line("  no promoted residue in that sequence")
-        return 1
-    return _report(word, f"{len(args.sequence)} residues, {len(word)} promoted")
+    from rhr_p4rky.protein_glut import prepare_sequence
+    return _show_carrier(prepare_sequence(args.sequence), args)
 
 
 def _cmd_word(args) -> int:
@@ -122,12 +134,14 @@ def main(argv=None) -> int:
         description="Closure audit through V⊙x: four outcomes over the twelve marks.")
     sub = ap.add_subparsers(dest="COMMAND", required=True)
 
-    p = sub.add_parser("rna", help="lift and verdict a coding sequence")
+    p = sub.add_parser("rna", help="execute full AA self-marks from coding RNA; retain chemical forms")
     p.add_argument("sequence")
+    p.add_argument("--json", action="store_true", help="Return complete carrier, source forms and native word executions")
     p.set_defaults(func=_cmd_rna)
 
-    p = sub.add_parser("peptide", help="lift and verdict a residue sequence")
+    p = sub.add_parser("peptide", help="execute full self-marks for every residue, retaining native glut")
     p.add_argument("sequence")
+    p.add_argument("--json", action="store_true", help="Return complete carrier without flattening residue/form boundaries")
     p.set_defaults(func=_cmd_peptide)
 
     p = sub.add_parser("word", help="verdict a word in the twelve")

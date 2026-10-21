@@ -272,12 +272,8 @@ def stage_serpentrod(therapy, skip=False):
         result.duration_ms = (time.time() - t0) * 1000
         return result
 
-    try:
-        from rhr_p4rky.serpent_rod import design_catalytic_site
-
-        serpent_available = True
-    except ImportError:
-        serpent_available = False
+    from rhr_p4rky.protein_glut import ProteinGlut
+    from rhr_p4rky.pdb_integration import parse_pdb_residues
 
     designs = []
     for pdb_file in therapy.pdb_files:
@@ -290,15 +286,24 @@ def stage_serpentrod(therapy, skip=False):
                 content = f.read()
             design["atom_count"] = content.count("ATOM")
             design["sha256"] = hashlib.sha256(content.encode()).hexdigest()[:16]
-            design["status"] = "PDB exists"
+            residues = parse_pdb_residues(content)
+            aas = [r.res_name.title() for r in residues]
+            glut = ProteinGlut.prepare(aas)
+            for residue, retained in zip(residues, glut.residues):
+                retained['pdb_identity'] = {'chain': residue.chain, 'number': residue.res_num,
+                                            'insertion': residue.ins_code}
+            glut.observe('therapy-coordinate-input', {'path': str(pdb_path),
+                'sha256': hashlib.sha256(content.encode()).hexdigest()})
+            design['protein_glut'] = glut.as_dict()
+            design["status"] = "Source-bound protein prepared"
         else:
             design["status"] = "PDB not found"
-        design["serpentrod_available"] = serpent_available
+            result.errors.append(f"Missing protein input: {pdb_path}")
         designs.append(design)
 
     result.data = {"num_targets": len(therapy.pdb_files), "designs": designs,
-                   "serpentrod_available": serpent_available}
-    result.status = StageStatus.SUCCESS
+                   "construction": "native-full-self-marks"}
+    result.status = StageStatus.FAILED if result.errors else StageStatus.SUCCESS
     result.duration_ms = (time.time() - t0) * 1000
     return result
 

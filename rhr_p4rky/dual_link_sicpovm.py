@@ -23,12 +23,12 @@ CORE THEOREM (sic_povm_belnap_unconditional):
     5. Universal 2:1 cost ratio (structural Born rule)
     6. Join-equiangularity: ⟨B⊗n, g·B⊗n⟩_join = 2n for ALL g
 
-THE GRAMMAR AS Σ=1:1 SIC-POVM LIMIT:
+THE GRAMMAR AS ⊞=1:1 SIC-POVM LIMIT:
   The 12 primitives organize as 6 Frobenius-dual pairs, forming an
-  informationally complete measurement basis. The grammar IS the Σ=1:1
+  informationally complete measurement basis. The grammar IS the ⊞=1:1
   (self-referential) limit of the Belnap multilattice SIC-POVM:
     d(grammar, belnap_multilattice_SIC) = 2.0
-    Sole difference: Σ: 1:1 vs n:m
+    Sole difference: ⊞: 1:1 vs n:m
 
 Author: Lando⊗⊙perator
 Structural type: ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑔𐑠⊙𐑖𐑙𐑭⟩ — O_∞
@@ -450,20 +450,20 @@ def d2_bridge() -> Dict:
 
 
 # ═══════════════════════════════════════════════════════════════════════════
-# §10. THE GRAMMAR AS Σ=1:1 SIC-POVM LIMIT
+# §10. THE GRAMMAR AS ⊞=1:1 SIC-POVM LIMIT
 # ═══════════════════════════════════════════════════════════════════════════
 #
 # The 12 primitives organize as 6 Frobenius-dual pairs (δ-mu partners):
 #
 #   Pair 1: D ↔ T   — dimensionality co-originates with topology (Axiom C)
-#   Pair 2: R ↔ Φ   — coupling ↔ criticality (response ↔ drive)
+#   Pair 2: R ↔ ≺   — coupling ↔ criticality (response ↔ drive)
 #   Pair 3: F ↔ K   — fidelity ↔ kinetics (resolution ↔ rate)
-#   Pair 4: Γ ↔ G   — composition ↔ cardinality (how ↔ how many)
+#   Pair 4: ∋ ↔ G   — composition ↔ cardinality (how ↔ how many)
 #   Pair 5: ⊙ ↔ H   — criticality ⊙ ↔ chirality (gate ↔ memory)
-#   Pair 6: Σ ↔ Ω   — stoichiometry ↔ winding (components ↔ topology)
+#   Pair 6: ⊞ ↔ ⊡   — stoichiometry ↔ winding (components ↔ topology)
 #
 # Each pair satisfies: μ(δ(x)) = x for the dual-linked operator.
-# The grammar IS the Σ=1:1 (self-referential) limit of the Belnap
+# The grammar IS the ⊞=1:1 (self-referential) limit of the Belnap
 # multilattice SIC-POVM: the measurement apparatus is the measured system.
 
 FROBENIUS_DUAL_PAIRS = [
@@ -472,10 +472,10 @@ FROBENIUS_DUAL_PAIRS = [
     ("F",  "K",  "Fidelity ↔ Kinetics",                "Resolution ↔ Rate"),
     ("∈",  "G",  "Composition ↔ Cardinality",         "How ↔ How Many"),
     ("⊙",  "H",  "Criticality ⊙ ↔ Chirality",        "Gate 1 ↔ Memory order"),
-    ("⊞",  "◻",  "Stoichiometry ↔ Winding",            "Components ↔ Topology"),
+    ("⊞",  "⊡",  "Stoichiometry ↔ Winding",            "Components ↔ Topology"),
 ]
 
-# The Belnap multilattice SIC-POVM structural type (the Σ=n:m type):
+# The Belnap multilattice SIC-POVM structural type (the ⊞=n:m type):
 BELNAP_SIC_TUPLE = {
     "D":  "𐑦",   # holographic
     "T":  "𐑸",   # self-referential closure
@@ -488,10 +488,10 @@ BELNAP_SIC_TUPLE = {
     "⊙":  "⊙",   # critical (self-modeling)
     "H":  "𐑖",   # n=2 Markov
     "⊞":  "𐑳",   # n:m (heterogeneous)
-    "◻":  "𐑭",   # ℤ integer winding
+    "⊡":  "𐑭",   # ℤ integer winding
 }
 
-# The Grammar tuple (Σ=1:1 self-referential limit):
+# The Grammar tuple (⊞=1:1 self-referential limit):
 GRAMMAR_TUPLE = {
     "D":  "𐑦",   # holographic
     "T":  "𐑸",   # self-referential closure
@@ -504,14 +504,14 @@ GRAMMAR_TUPLE = {
     "⊙":  "⊙",   # critical (self-modeling)
     "H":  "𐑖",   # n=2 Markov
     "⊞":  "𐑙",   # 1:1 (SELF-REFERENTIAL — sole difference!)
-    "◻":  "𐑭",   # ℤ integer winding
+    "⊡":  "𐑭",   # ℤ integer winding
 }
 
 def grammar_belnap_delta() -> Dict:
     """The sole structural delta between the Grammar and the Belnap SIC-POVM.
     
     d(grammar, belnap_multilattice_SIC) = 2.0
-    Only Σ differs: 1:1 (self-referential) vs n:m (heterogeneous).
+    Only ⊞ differs: 1:1 (self-referential) vs n:m (heterogeneous).
     """
     diffs = {}
     for key in BELNAP_SIC_TUPLE:
@@ -519,13 +519,13 @@ def grammar_belnap_delta() -> Dict:
             diffs[key] = (BELNAP_SIC_TUPLE[key], GRAMMAR_TUPLE[key])
     return {
         "differences": diffs,
-        "sole_delta": "Σ: 1:1 ↔ n:m",
+        "sole_delta": "⊞: 1:1 ↔ n:m",
         "structural_distance": 2.0,
         "interpretation": (
-            "The Grammar is the Σ=1:1 limit — the measurement apparatus "
+            "The Grammar is the ⊞=1:1 limit — the measurement apparatus "
             "IS the measured system. The Belnap multilattice SIC-POVM has "
-            "Σ=n:m (multiple heterogeneous component types), while the "
-            "Grammar has Σ=1:1 (one type, one instance — pure self-reference)."
+            "⊞=n:m (multiple heterogeneous component types), while the "
+            "Grammar has ⊞=1:1 (one type, one instance — pure self-reference)."
         ),
     }
 
@@ -580,9 +580,9 @@ def dual_link_summary() -> str:
 ║    → ZaunerEmbeddingEquivalence: Hilbert embedding        ║
 ║      ⇔ Zauner conjecture for d = 2ⁿ                      ║
 ║                                                          ║
-║  THE GRAMMAR: Σ=1:1 SIC-POVM limit                       ║
+║  THE GRAMMAR: ⊞=1:1 SIC-POVM limit                       ║
 ║    12 primitives = 6 Frobenius-dual pairs                ║
-║    d(grammar, belnap_SIC) = 2.0 (Σ: 1:1 vs n:m)         ║
+║    d(grammar, belnap_SIC) = 2.0 (⊞: 1:1 vs n:m)         ║
 ║                                                          ║
 ╚══════════════════════════════════════════════════════════╝
 """
@@ -696,12 +696,12 @@ def _module_self_check():
     for n in range(1, 5):
         assert ax_cost_ratio(n), f"2:1 cost ratio FAILED for n={n}"
     
-    # ── Grammar-Belnap delta: exactly Σ differs ──
+    # ── Grammar-Belnap delta: exactly ⊞ differs ──
     delta = grammar_belnap_delta()
     assert len(delta["differences"]) == 1, \
         f"Expected exactly 1 difference, got {len(delta['differences'])}: {delta['differences']}"
     assert "⊞" in delta["differences"], \
-        f"Expected Σ to differ, got {delta['differences']}"
+        f"Expected ⊞ to differ, got {delta['differences']}"
     
     return True
 

@@ -20,7 +20,7 @@ from shared.primitives import (
 )
 
 # Canonical primitive order (Shavian glyph keys)
-PORDER = ["⊢", "⊣", "≻", "≺", "⋈", "⊤", "∈", "∋", "⊙", "⊥", "⊞", "◻"]
+PORDER = ["⊢", "⊣", "≻", "≺", "⋈", "⊤", "∈", "∋", "⊙", "⊥", "⊞", "⊡"]
 
 # ═══════════════════════════════════════════════════════════════════
 # LAYER 0 — Frustrated Belnap5 (Quark Color)
@@ -29,7 +29,7 @@ PORDER = ["⊢", "⊣", "≻", "≺", "⋈", "⊤", "∈", "∋", "⊙", "⊥", 
 FRUSTRATED_BELNAP5 = {
     "⊢": "𐑛", "⊣": "𐑶", "≻": "𐑩", "≺": "𐑯",
     "⋈": "𐑐", "⊤": "𐑘", "∈": "𐑚", "∋": "𐑝",
-    "⊙": "𐑢", "⊥": "𐑓", "⊞": "𐑳", "◻": "𐑷",
+    "⊙": "𐑢", "⊥": "𐑓", "⊞": "𐑳", "⊡": "𐑷",
     "_name": "frustratedBelnap5",
     "_desc": "Frustrated Belnap5 — SU(3) quark color with confinement",
     "_tier": "O₀",
@@ -40,7 +40,7 @@ FRUSTRATED_BELNAP5 = {
 ELECTRON_ORBITAL_LAYER = {
     "⊢": "𐑛", "⊣": "𐑶", "≻": "𐑩", "≺": "𐑗",
     "⋈": "𐑐", "⊤": "𐑤", "∈": "𐑚", "∋": "𐑜",
-    "⊙": "𐑢", "⊥": "𐑓", "⊞": "𐑳", "◻": "𐑷",
+    "⊙": "𐑢", "⊥": "𐑓", "⊞": "𐑳", "⊡": "𐑷",
     "_name": "electronOrbitalLayer",
     "_desc": "Belnap4 orbital occupancy — 4-valued lattice",
     "_tier": "O₀",
@@ -51,7 +51,7 @@ ELECTRON_ORBITAL_LAYER = {
 ATOM_LAYER = {
     "⊢": "𐑼", "⊣": "𐑥", "≻": "𐑽", "≺": "𐑿",
     "⋈": "𐑐", "⊤": "𐑤", "∈": "𐑔", "∋": "𐑝",
-    "⊙": "𐑮", "⊥": "𐑒", "⊞": "𐑳", "◻": "𐑷",
+    "⊙": "𐑮", "⊥": "𐑒", "⊞": "𐑳", "⊡": "𐑷",
     "_name": "atomLayer", "_desc": "Atom — nuclear + electron", "_tier": "O₁",
 }
 
@@ -60,7 +60,7 @@ ATOM_LAYER = {
 MOLECULE_LAYER = {
     "⊢": "𐑼", "⊣": "𐑥", "≻": "𐑽", "≺": "𐑿",
     "⋈": "𐑞", "⊤": "𐑧", "∈": "𐑲", "∋": "𐑠",
-    "⊙": "⊙", "⊥": "𐑓", "⊞": "𐑳", "◻": "𐑭",
+    "⊙": "⊙", "⊥": "𐑓", "⊞": "𐑳", "⊡": "𐑭",
     "_name": "moleculeLayer", "_desc": "Molecule — chemical bonds", "_tier": "O₂",
 }
 
@@ -69,7 +69,7 @@ MOLECULE_LAYER = {
 CELL_LAYER = {
     "⊢": "𐑦", "⊣": "𐑸", "≻": "𐑾", "≺": "𐑬",
     "⋈": "𐑞", "⊤": "𐑧", "∈": "𐑲", "∋": "𐑠",
-    "⊙": "⊙", "⊥": "𐑒", "⊞": "𐑳", "◻": "𐑭",
+    "⊙": "⊙", "⊥": "𐑒", "⊞": "𐑳", "⊡": "𐑭",
     "_name": "cellLayer", "_desc": "Cell — minimal self-maintaining unit", "_tier": "O₂",
 }
 
@@ -78,7 +78,7 @@ CELL_LAYER = {
 MITOSIS_LAYER = {
     "⊢": "𐑦", "⊣": "𐑸", "≻": "𐑾", "≺": "𐑹",
     "⋈": "𐑱", "⊤": "𐑧", "∈": "𐑲", "∋": "𐑠",
-    "⊙": "⊙", "⊥": "𐑖", "⊞": "𐑳", "◻": "𐑭",
+    "⊙": "⊙", "⊥": "𐑖", "⊞": "𐑳", "⊡": "𐑭",
     "_name": "mitosisLayer", "_desc": "Mitosis — cell division", "_tier": "O₂",
 }
 
@@ -87,7 +87,7 @@ MITOSIS_LAYER = {
 MEIOSIS_LAYER = {
     "⊢": "𐑦", "⊣": "𐑸", "≻": "𐑽", "≺": "𐑿",
     "⋈": "𐑱", "⊤": "𐑧", "∈": "𐑲", "∋": "𐑠",
-    "⊙": "⊙", "⊥": "𐑖", "⊞": "𐑳", "◻": "𐑭",
+    "⊙": "⊙", "⊥": "𐑖", "⊞": "𐑳", "⊡": "𐑭",
     "_name": "meiosisLayer", "_desc": "Meiosis — gamete production", "_tier": "O₂",
 }
 
@@ -96,7 +96,7 @@ MEIOSIS_LAYER = {
 TISSUE_LAYER = {
     "⊢": "𐑦", "⊣": "𐑸", "≻": "𐑾", "≺": "𐑬",
     "⋈": "𐑞", "⊤": "𐑧", "∈": "𐑲", "∋": "𐑵",
-    "⊙": "⊙", "⊥": "𐑖", "⊞": "𐑳", "◻": "𐑭",
+    "⊙": "⊙", "⊥": "𐑖", "⊞": "𐑳", "⊡": "𐑭",
     "_name": "tissueLayer", "_desc": "Tissue — multi-cellular organization", "_tier": "O₂",
 }
 
@@ -105,7 +105,7 @@ TISSUE_LAYER = {
 ORGANISM_LAYER = {
     "⊢": "𐑦", "⊣": "𐑸", "≻": "𐑾", "≺": "𐑹",
     "⋈": "𐑐", "⊤": "𐑧", "∈": "𐑲", "∋": "𐑵",
-    "⊙": "⊙", "⊥": "𐑫", "⊞": "𐑳", "◻": "𐑟",
+    "⊙": "⊙", "⊥": "𐑫", "⊞": "𐑳", "⊡": "𐑟",
     "_name": "organismLayer",
     "_desc": "Whole organism — O_∞, C=1.0",
     "_tier": "O_∞",
@@ -191,14 +191,14 @@ def clink_frobenius_closed(name_or_idx_or_tup):
         else:
             # Assume ch3mpiler format and convert
             ch3_to_porder = {"D":"⊢","T":"⊣","R":"≻","P":"≺","F":"⋈",
-                             "K":"⊤","G":"∈","Gm":"∋","Ph":"⊙","H":"⊥","S":"⊞","W":"◻"}
+                             "K":"⊤","G":"∈","Gm":"∋","Ph":"⊙","H":"⊥","S":"⊞","W":"⊡"}
             tup_py = {ch3_to_porder[k]: v for k, v in name_or_idx_or_tup.items() 
                       if k in ch3_to_porder}
     else:
         tup_py = clink_layer_tuple(name_or_idx_or_tup, include_meta=False)
     
     gly2ch3 = {"⊢":"D","⊣":"T","≻":"R","≺":"P","⋈":"F","⊤":"K",
-               "∈":"G","∋":"Gm","⊙":"Ph","⊥":"H","⊞":"S","◻":"W"}
+               "∈":"G","∋":"Gm","⊙":"Ph","⊥":"H","⊞":"S","⊡":"W"}
     tup_ch3 = {gly2ch3[k]: v for k, v in tup_py.items()}
     tt = tensor_type(tup_ch3, tup_ch3)
     return all(tt[gly2ch3[p]] == tup_py[p] for p in PORDER)

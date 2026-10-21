@@ -122,7 +122,7 @@ G_FACTOR = {
     '𐑲': 100.0,  # Long-range: universal
 }
 
-# Γ — Composition (controls combinatorial multiplicity)
+# ∋ — Composition (controls combinatorial multiplicity)
 GAMMA_MULT = {
     '𐑝': 1.0,    # Conjunctive (AND): all simultaneous
     '𐑜': 3.0,    # Disjunctive (OR): combinatorial paths
@@ -130,7 +130,7 @@ GAMMA_MULT = {
     '𐑵': 12.0,   # Broadcast: one-to-many, maximal
 }
 
-# Φ — Criticality (controls scaling exponents and sensitivity)
+# ≺ — Criticality (controls scaling exponents and sensitivity)
 PHI_EXP = {
     '𐑢': 0.0,    # Sub-critical: no divergence
     '⊙': 1.0,     # Critical: self-modeling, χ ~ |T-Tc|^(-γ), γ≈1
@@ -154,7 +154,7 @@ S_FACTOR = {
     '𐑳': 7.0,    # n:m — many distinct types
 }
 
-# Ω — Topological winding (controls topological protection energy)
+# ⊡ — Topological winding (controls topological protection energy)
 OMEGA_SCALE = {
     '𐑷': 0.0,    # Trivial
     '𐑴': 1.0,    # Z₂: parity-protected
@@ -228,7 +228,7 @@ class PhysicalPrediction:
 def tuple_to_scale_factors(t: Tuple[str, ...]) -> Dict[str, float]:
     """Convert a 12-primitive IG tuple to a dict of scalar factors.
     
-    Expects tuple order: (D, T, R, P, F, K, G, Γ, Φ, H, S, Ω)
+    Expects tuple order: (⊢, ⊣, ≻, ≺, ⋈, ⊤, ∈, ∋, ⊙, ⊥, ⊞, ⊡)
     """
     if len(t) < 12:
         raise ValueError(f"Tuple too short: {len(t)} primitives, need 12")
@@ -244,7 +244,7 @@ def tuple_to_scale_factors(t: Tuple[str, ...]) -> Dict[str, float]:
         '∈': GAMMA_MULT.get(t[7], 1.0),
         'H': H_DEPTH.get(t[9], 0),
         'S': S_FACTOR.get(t[10], 1.0),
-        '◻': OMEGA_SCALE.get(t[11], 0.0),
+        '⊡': OMEGA_SCALE.get(t[11], 0.0),
     }
 
 def predict_bond_energy(r_factor: float, p_factor: float) -> Tuple[float, float, float]:
@@ -369,13 +369,13 @@ def predict_topological_protection(omega_scale: float,
                                     bond_energy_kJmol: float) -> float:
     """Predict topological protection energy gap (meV).
     
-    Physical basis: E_top = Δ * Ω_scale where Δ is the bulk gap
+    Physical basis: E_top = Δ * ⊡_scale where Δ is the bulk gap
     Reference: Bi₂Se₃ gap ≈ 300 meV, HgTe/CdTe ≈ 30 meV
     """
     if omega_scale <= 0:
         return 0.0
     bulk_gap_meV = predict_band_gap(bond_energy_kJmol, 1.0, p_factor) * 1000
-    return bulk_gap_meV * omega_scale * 0.05  # 5% of bulk gap per unit Ω
+    return bulk_gap_meV * omega_scale * 0.05  # 5% of bulk gap per unit ⊡
 
 
 def predict_folding_stability(mpme: float, 
@@ -416,9 +416,9 @@ def predict_enzymatic_turnover(bond_energy_kJmol: float,
 def predict_sensitivity_enhancement(phi_primitive: str) -> float:
     """Predict sensor sensitivity enhancement from criticality type.
     
-    Φ = ⊙ (critical): χ ~ |T-Tc|⁻¹, enhancement ~ 10³-10⁶
-    Φ = 𐑻 (EP): √ε sensing, enhancement ~ ω⁻² (10⁴-10⁸)
-    Φ = 𐑣 (supercritical): exponential, enhancement ~ e^t
+    ≺ = ⊙ (critical): χ ~ |T-Tc|⁻¹, enhancement ~ 10³-10⁶
+    ≺ = 𐑻 (EP): √ε sensing, enhancement ~ ω⁻² (10⁴-10⁸)
+    ≺ = 𐑣 (supercritical): exponential, enhancement ~ e^t
     """
     if phi_primitive == '⊙':
         return 1e4  # Critical enhancement: χ divergence
@@ -455,13 +455,13 @@ def predict_from_tuple(name: str, t: Tuple[str, ...]) -> PhysicalPrediction:
     pred.band_gap_eV = predict_band_gap(pred.bond_energy_kJmol, sf['D'], sf['P'])
     pred.dielectric_constant = 12.0 / (pred.band_gap_eV ** 0.5 + 0.1)
     pred.electrical_conductivity_Sm = predict_electrical_conductivity(
-        pred.bond_energy_kJmol, sf['P'], sf['F'], sf['◻'])
+        pred.bond_energy_kJmol, sf['P'], sf['F'], sf['⊡'])
     
     # 4. Thermal
     pred.debye_temperature_K = predict_debye_temperature(
         pred.bond_energy_kJmol, sf['D'])
     pred.thermal_conductivity_WmK = predict_thermal_conductivity(
-        pred.bond_energy_kJmol, sf['D'], sf['◻'])
+        pred.bond_energy_kJmol, sf['D'], sf['⊡'])
     pred.thermal_expansion_ppmK = 20.0 / (pred.debye_temperature_K ** 0.5)
     pred.melting_temperature_K = predict_melting_temperature(
         pred.bond_energy_kJmol, sf['D'], sf['S'])
@@ -469,7 +469,7 @@ def predict_from_tuple(name: str, t: Tuple[str, ...]) -> PhysicalPrediction:
     # 5. Magnetic / Topological
     pred.curie_temperature_K = 1043.0 * sf['P'] * sf['T'] * 0.3  # Fe reference: 1043K
     pred.topological_protection_energy_meV = predict_topological_protection(
-        sf['◻'], sf['P'], pred.bond_energy_kJmol)
+        sf['⊡'], sf['P'], pred.bond_energy_kJmol)
     
     # 6. Critical behavior
     phi_prim = t[8] if len(t) > 8 else '𐑢'
@@ -510,7 +510,7 @@ def catalog_predictions():
         if 'tuple' in entry:
             values = tuple(entry['tuple'])
         else:
-            aliases = {'≻': '>', '≺': '<', '⊡': '◻'}
+            aliases = {'≻': '>', '≺': '<', '⊡': '⊡'}
             values = tuple(entry[p] if p in entry else entry[aliases[p]] for p in order)
         if len(values) != 12:
             raise ValueError(f'Catalog entry {name!r} requires exactly 12 primitives')

@@ -29,9 +29,9 @@ Author: Lando ⊗ ⊙perator
 # ── Primitive → AA → Codon maps ────────────────────────────────────
 
 PRIMITIVE_TO_AA = {
-    "D": "Met", "T": "Trp", "R": "Cys", "P": "Tyr", "F": "Phe",
-    "K": "Ile", "G": "His", "Gm": "Asn", "Ph": "Gln",
-    "H": "Asp", "S": "Lys", "W": "Glu",
+    "⊢": "Met", "⊣": "Trp", "≻": "Cys", "≺": "Tyr", "⋈": "Phe",
+    "⊤": "Ile", "∈": "His", "∋": "Asn", "⊙": "Gln",
+    "⊥": "Asp", "⊞": "Lys", "⊡": "Glu",
 }
 
 AA_TO_PRIMITIVE = {v: k for k, v in PRIMITIVE_TO_AA.items()}
@@ -62,15 +62,15 @@ AA_CODON_POOL = {
 
 # Complementary pairs (index in PNAMES order)
 PAIRS = [
-    ("D", "W"),   # Pair 1: Dimensionality ↔ Winding
-    ("T", "H"),   # Pair 2: Topology ↔ Chirality
-    ("R", "S"),   # Pair 3: Recognition ↔ Stoichiometry
-    ("P", "F"),   # Pair 4: Parity ↔ Fidelity
-    ("K", "G"),   # Pair 5: Kinetics ↔ Granularity
-    ("Gm", "Ph"), # Pair 6: Coupling ↔ Criticality
+    ("⊢", "⊡"),   # Pair 1: Dimensionality ↔ Winding
+    ("⊣", "⊥"),   # Pair 2: Topology ↔ Chirality
+    ("≻", "⊞"),   # Pair 3: Recognition ↔ Stoichiometry
+    ("≺", "⋈"),   # Pair 4: Parity ↔ Fidelity
+    ("⊤", "∈"),   # Pair 5: Kinetics ↔ Granularity
+    ("∋", "⊙"), # Pair 6: Coupling ↔ Criticality
 ]
 
-PNAMES = ["D", "T", "R", "P", "F", "K", "G", "Gm", "Ph", "H", "S", "W"]
+PNAMES = ["⊢", "⊣", "≻", "≺", "⋈", "⊤", "∈", "∋", "⊙", "⊥", "⊞", "⊡"]
 
 # Structural AAs (non-activating, structure-supporting)
 STRUCTURAL_AAS = ["Ser", "Ala", "Gly", "Thr", "Val", "Leu", "Pro"]
@@ -297,12 +297,12 @@ def verify_frobenius(aa_list, from_genetic_code_module=True):
         from rhr_p4rky.genetic_code import IG_PRIMITIVE_OF_AA
     else:
         IG_PRIMITIVE_OF_AA = {
-            "Met": "Ð (Dimensionality)", "Trp": "Þ (Topology)",
-            "Cys": "Ř (Recognition)", "Tyr": "Φ (Parity)",
-            "Phe": "ƒ (Fidelity)", "Ile": "Ç (Kinetics)",
-            "His": "Γ (Granularity)", "Asn": "ɢ (Coupling)",
-            "Gln": "⊙ (Criticality)", "Asp": "Ħ (Chirality)",
-            "Lys": "Σ (Stoichiometry)", "Glu": "Ω (Winding)",
+            "Met": "⊢ (Dimensionality)", "Trp": "⊣ (Topology)",
+            "Cys": "≻ (Recognition)", "Tyr": "≺ (Parity)",
+            "Phe": "⋈ (Fidelity)", "Ile": "⊤ (Kinetics)",
+            "His": "∈ (Granularity)", "Asn": "∋ (Coupling)",
+            "Gln": "⊙ (Criticality)", "Asp": "⊥ (Chirality)",
+            "Lys": "⊞ (Stoichiometry)", "Glu": "⊡ (Winding)",
         }
     
     pairs = [{"Dimensionality","Winding"},{"Topology","Chirality"},

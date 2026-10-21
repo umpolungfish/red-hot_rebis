@@ -55,7 +55,7 @@ class BridgeResult:
 PLATONIC_PROTEIN = {
     "⊢": "𐑦", "⊣": "𐑥", "≻": "𐑾", "≺": "𐑬",
     "⋈": "𐑞", "⊤": "𐑧", "∈": "𐑲", "∋": "𐑠",
-    "⊙": "⊙", "⊥": "𐑒", "⊞": "𐑳", "◻": "𐑭",
+    "⊙": "⊙", "⊥": "𐑒", "⊞": "𐑳", "⊡": "𐑭",
     "_name": "platonicProtein",
     "_desc": "Folded protein — between molecule and cell",
     "_tier": "O₂",
@@ -65,7 +65,7 @@ PLATONIC_PROTEIN = {
 UNFOLDED_PROTEIN = {
     "⊢": "𐑼", "⊣": "𐑡", "≻": "𐑑", "≺": "𐑿",
     "⋈": "𐑱", "⊤": "𐑤", "∈": "𐑔", "∋": "𐑜",
-    "⊙": "𐑢", "⊥": "𐑓", "⊞": "𐑕", "◻": "𐑷",
+    "⊙": "𐑢", "⊥": "𐑓", "⊞": "𐑕", "⊡": "𐑷",
     "_name": "unfoldedProtein",
     "_desc": "Unfolded/random coil protein chain",
     "_tier": "O₀",
@@ -86,7 +86,7 @@ def protein_to_clink(protein_tuple=None):
     else:
         # Normalize to PORDER keys if needed
         ch3_to_porder = {"D":"⊢","T":"⊣","R":"≻","P":"≺","F":"⋈",
-                         "K":"⊤","G":"∈","Gm":"∋","Ph":"⊙","H":"⊥","S":"⊞","W":"◻"}
+                         "K":"⊤","G":"∈","Gm":"∋","Ph":"⊙","H":"⊥","S":"⊞","W":"⊡"}
         if all(k in ch3_to_porder for k in protein_tuple):
             tup = {ch3_to_porder[k]: v for k, v in protein_tuple.items()}
         else:
@@ -134,7 +134,7 @@ def molecule_to_clink(molecule_tuple=None):
         tup = {k: CLINK_LAYERS[3][k] for k in PORDER}
     else:
         ch3_to_porder = {"D":"⊢","T":"⊣","R":"≻","P":"≺","F":"⋈",
-                         "K":"⊤","G":"∈","Gm":"∋","Ph":"⊙","H":"⊥","S":"⊞","W":"◻"}
+                         "K":"⊤","G":"∈","Gm":"∋","Ph":"⊙","H":"⊥","S":"⊞","W":"⊡"}
         if all(k in ch3_to_porder for k in molecule_tuple):
             tup = {ch3_to_porder[k]: v for k, v in molecule_tuple.items()}
         else:
@@ -171,7 +171,7 @@ def molecule_to_clink(molecule_tuple=None):
 CODON_BELNAP4_TYPE = {
     "⊢": "𐑛", "⊣": "𐑶", "≻": "𐑩", "≺": "𐑗",
     "⋈": "𐑐", "⊤": "𐑤", "∈": "𐑚", "∋": "𐑜",
-    "⊙": "𐑢", "⊥": "𐑓", "⊞": "𐑙", "◻": "𐑷",
+    "⊙": "𐑢", "⊥": "𐑓", "⊞": "𐑙", "⊡": "𐑷",
     "_name": "codonBelnap4",
     "_desc": "Codon in Belnap4 lattice — 4-valued paraconsistent",
     "_tier": "O₀",
@@ -190,7 +190,7 @@ def gene_to_clink(gene_tuple=None):
         tup = {k: CODON_BELNAP4_TYPE[k] for k in PORDER}
     else:
         ch3_to_porder = {"D":"⊢","T":"⊣","R":"≻","P":"≺","F":"⋈",
-                         "K":"⊤","G":"∈","Gm":"∋","Ph":"⊙","H":"⊥","S":"⊞","W":"◻"}
+                         "K":"⊤","G":"∈","Gm":"∋","Ph":"⊙","H":"⊥","S":"⊞","W":"⊡"}
         if all(k in ch3_to_porder for k in gene_tuple):
             tup = {ch3_to_porder[k]: v for k, v in gene_tuple.items()}
         else:

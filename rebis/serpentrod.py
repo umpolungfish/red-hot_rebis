@@ -5,7 +5,7 @@ Full implementations of:
   - ProteinStratifiedPredictor: Full pipeline (signal peptide, cleavage, fragments)
   - EnhancedPredictorV5: POMC processing, monobasic cleavage, fragment classification
   - SerpentRod: RNA→protein folding with winding number + Frobenius closure
-  - SerpentRodV2: Backbone model with energy minimization + contact prediction
+  - SerpentRodV2: Native protein glut with coordinate readout + contact relations
 
 Callable as a command:
   rebis.serpentrod predict <sequence> [--name NAME]
@@ -194,6 +194,7 @@ def _cmd_process(args):
         except Exception:
             narrative = None
         output = {
+            "protein_glut": result.protein_glut,
             "name": name,
             "length": len(args.sequence),
             "processing_result": result,
@@ -271,6 +272,7 @@ def _cmd_foldv2(args):
             "geometry_evidence": result.geometry_evidence,
             "secondary_evidence": result.secondary_evidence,
             "geometry_source": result.source_binding,
+            "protein_glut": result.protein_glut,
         }
         if pdb_path:
             output["pdb_path"] = pdb_path
@@ -312,7 +314,7 @@ def _cmd_list(args):
         "finger": "Fingerprint matching against known protein patterns",
         "process": "EnhancedPredictorV5 — POMC processing, monobasic cleavage, fragment classification",
         "fold": "SerpentRod v1 — RNA→protein folding with winding number",
-        "foldv2": "SerpentRod v2 — backbone model with energy minimization",
+        "foldv2": "SerpentRod v2: native protein glut and coordinate readout",
         "spectrum": "Primitive activation spectrum analysis",
     }
     print("═ Serpent Rod Tools ═")
@@ -358,7 +360,7 @@ def build_parser():
     p.set_defaults(func=_cmd_fold)
 
     # foldv2
-    p = sub.add_parser("foldv2", help="SerpentRod v2 backbone + energy + PDB output")
+    p = sub.add_parser("foldv2", help="Native protein glut, full AA self-marks and PDB readout", description="Execute the full re-imscribed amino-acid words through Vox. JSON retains co-held chemical forms, torsion articulations and observations without probability weights. PDB exports the codon-aligned coordinate readout with source identifiers.")
     p.add_argument("rna", nargs="?", help="RNA sequence")
     p.add_argument("--name", default=None, help="Protein name")
     p.add_argument("--pdb", help="Output PDB structure file path")

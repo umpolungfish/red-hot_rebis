@@ -4,6 +4,9 @@ extern crate alloc;
 #[path = "../../Vox/src/fold3d.rs"] mod fold3d;
 #[path = "../../Vox/src/peptide_geometry.rs"] mod peptide_geometry;
 #[path = "../../Vox/src/peptide_closure.rs"] mod peptide_closure;
+#[path = "../../Vox/src/phase_word.rs"] mod phase_word;
+#[path = "../../Vox/src/protein_relax.rs"] mod protein_relax;
+#[path = "../../Vox/src/fold.rs"] mod fold;
 use std::io::{self,Read};
 fn quote(value:&str)->String {
  let mut out=String::from("\"");
@@ -14,8 +17,19 @@ fn number(x:f64)->String {if x.is_finite(){format!("{:.17}",x)}else{String::from
 fn point(p:peptide_geometry::Point)->String {format!("[{},{},{}]",number(p.0),number(p.1),number(p.2))}
 fn main()->Result<(),Box<dyn std::error::Error>> {
  let mut input=String::new();io::stdin().read_to_string(&mut input)?;
+ if std::env::args().nth(1).as_deref()==Some("--words") {
+  let mut rows=Vec::new();
+  for line in input.lines().filter(|s|!s.is_empty()) {
+   let (word,tuple)=line.split_once('\t').ok_or("missing self-mark payload")?;
+   let read=phase_word::execute(word,&tuple.to_string())?;
+   let payloads=read.surviving.iter().map(|d|format!("{{\"id\":{},\"lane\":{},\"tuple\":{}}}",d.id,d.lane,quote(&d.observation))).collect::<Vec<_>>().join(",");
+   rows.push(format!("{{\"register\":{},\"surviving\":[{}],\"cleared\":{},\"restored\":{},\"exposed\":{},\"deposits\":{},\"inert\":{},\"native_transition_table\":{:?}}}",read.register,payloads,read.cleared,read.restored,read.exposed,read.deposits,read.inert,phase_word::native_transition_table(word)?));
+  }
+  println!("[{}]",rows.join(","));return Ok(());
+ }
  let assessing=std::env::args().nth(1).as_deref()==Some("--assess");
- let (header,coordinate_text)=if assessing {input.split_once("\nCOORDINATES\n").ok_or("missing coordinate boundary")?}else{(input.as_str(),"")};
+ let (geometry_input,word_text)=input.split_once("\nFOLD_WORDS\n").unwrap_or((input.as_str(),""));
+ let (header,coordinate_text)=if assessing {geometry_input.split_once("\nCOORDINATES\n").ok_or("missing coordinate boundary")?}else{(geometry_input,"")};
  let rows:Vec<_>=header.lines().filter(|s|!s.trim().is_empty()).map(|s|s.split_whitespace().collect::<Vec<_>>()).collect();
  let mut steps=Vec::new();let mut chain=Vec::new();let mut source=Vec::new();let mut retained=Vec::new();
  for row in &rows {
@@ -27,6 +41,23 @@ fn main()->Result<(),Box<dyn std::error::Error>> {
  }
  if chain.iter().any(|aa|! ["Ala","Arg","Asn","Asp","Cys","Gln","Glu","Gly","His","Ile","Leu","Lys","Met","Phe","Pro","Ser","Thr","Trp","Tyr","Val"].contains(aa)){return Err("unknown standard residue".into());}
  let mut bb=fold3d::build_backbone(&steps);
+ let mut folding=String::from("null");
+ if !word_text.is_empty() && !assessing {
+  let names=["Ala","Arg","Asn","Asp","Cys","Gln","Glu","Gly","His","Ile","Leu","Lys","Met","Phe","Pro","Ser","Thr","Trp","Tyr","Val"];
+  let static_chain:Vec<_>=chain.iter().map(|aa|*names.iter().find(|name|*name==aa).unwrap()).collect();
+  let mut words=vec![Vec::new();chain.len()];
+  for line in word_text.lines() {
+   let (index,word)=line.split_once(' ').ok_or("invalid fold form row")?;
+   let index=index.parse::<usize>()?;
+   if index>=words.len(){return Err("fold form outside residue boundary".into());}
+   words[index].push(word);
+  }
+  let relations=fold::fold_sequence(&static_chain);
+  let contacts:Vec<_>=relations.contacts.iter().map(|c|protein_relax::Contact{i:c.i,j:c.j}).collect();
+  let result=protein_relax::run(&chain,&steps,&contacts,&words,160)?;
+  folding=format!("{{\"initial_score\":{},\"final_score\":{},\"accepted\":{},\"word_calls\":{},\"payload_moves\":{}}}",result.initial,result.final_score,result.accepted,result.word_calls,result.payload_moves);
+  steps=result.steps;bb=result.backbone;
+ }
  let mut sidechains:Vec<Vec<(&str,_)>>=chain.iter().zip(&bb).zip(&steps).map(|((aa,b),s)|fold3d::build_sidechain(aa,b,s)).collect();
  if assessing {
   let mut frames=vec![[None;4];chain.len()];sidechains.iter_mut().for_each(|sc|sc.clear());
@@ -56,6 +87,7 @@ fn main()->Result<(),Box<dyn std::error::Error>> {
  let residues:Vec<_>=bb.iter().zip(&sidechains).map(|(b,sc)|format!("{{\"n\":{},\"ca\":{},\"c\":{},\"o\":{},\"sidechain\":[{}]}}",point(b.n),point(b.ca),point(b.c),point(b.o),sc.iter().map(|(name,xyz)|format!("{{\"name\":{},\"xyz\":{}}}",quote(name),point(*xyz))).collect::<Vec<_>>().join(","))).collect();
  let issues=evidence.issues.iter().map(|x|format!("{{\"kind\":{},\"detail\":{}}}",quote(x.kind),quote(&x.detail))).collect::<Vec<_>>().join(",");
  let secondary_rows=secondary.iter().map(|x|format!("{{\"residue\":{},\"sequence\":{},\"backbone\":{},\"helix\":{},\"sheet\":{},\"other\":{}}}",x.residue,quote(x.sequence.unwrap_or("")),quote(x.backbone.unwrap_or("")),quote(&x.helix.mark().to_string()),quote(&x.sheet.mark().to_string()),quote(&x.other.mark().to_string()))).collect::<Vec<_>>().join(",");
- println!("{{\"residues\":[{}],\"geometry\":{{\"constraints_satisfied\":{},\"atoms\":{},\"bonds\":{},\"angles\":{},\"rings\":{},\"stereocenters\":{},\"backbone_torsions\":{},\"nonbonded_pairs\":{},\"max_bond_error\":{},\"max_overlap\":{},\"issues\":[{}],\"report\":{}}},\"secondary\":[{}],\"secondary_report\":{}}}",residues.join(","),evidence.closed(),evidence.atoms,evidence.bonds,evidence.angles,evidence.rings,evidence.stereocenters,evidence.torsions,evidence.nonbonded_pairs,evidence.max_bond_error,evidence.max_overlap,issues,quote(&evidence.report(true)),secondary_rows,quote(&peptide_closure::secondary_report(&secondary,true)));
+ print!("{{\"folding\":{},\"torsions\":[{}],",folding,steps.iter().map(|s|format!("[{},{}]",s.phi,s.psi)).collect::<Vec<_>>().join(","));
+ println!("\"residues\":[{}],\"geometry\":{{\"constraints_satisfied\":{},\"atoms\":{},\"bonds\":{},\"angles\":{},\"rings\":{},\"stereocenters\":{},\"backbone_torsions\":{},\"nonbonded_pairs\":{},\"max_bond_error\":{},\"max_overlap\":{},\"issues\":[{}],\"report\":{}}},\"secondary\":[{}],\"secondary_report\":{}}}",residues.join(","),evidence.closed(),evidence.atoms,evidence.bonds,evidence.angles,evidence.rings,evidence.stereocenters,evidence.torsions,evidence.nonbonded_pairs,evidence.max_bond_error,evidence.max_overlap,issues,quote(&evidence.report(true)),secondary_rows,quote(&peptide_closure::secondary_report(&secondary,true)));
  Ok(())
 }

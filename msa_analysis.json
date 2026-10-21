@@ -1,0 +1,2374 @@
+{
+  "task": "Multiple Sequence Alignment \u2014 SerpentRod Conservation Analysis",
+  "protein": "Ubiquitin (monomer, 76 AA)",
+  "domain": "Eukaryotic proteasome targeting",
+  "species_analyzed": {
+    "human": "Homo sapiens",
+    "mouse": "Mus musculus",
+    "yeast": "Saccharomyces cerevisiae",
+    "zebrafish": "Danio rerio",
+    "arabidopsis": "Arabidopsis thaliana"
+  },
+  "results": {
+    "human": {
+      "species": "Homo sapiens",
+      "sequence": "MQIFVKTLTGKTITLEVESSDTIDNVKAKIQDKEGIPPDQQRLIFAGKQLEDGRTLADYNIQKESTLHLVLRLRGG",
+      "length": 76,
+      "winding_number": 45,
+      "activated_primitives": [
+        "\u2208",
+        "\u220b",
+        "\u227a",
+        "\u2299",
+        "\u229e",
+        "\u22a1",
+        "\u22a2",
+        "\u22a4",
+        "\u22a5",
+        "\u22c8"
+      ],
+      "num_activated": 10,
+      "frobenius_verified": true,
+      "confidence": 1.0,
+      "secondary_structure": [
+        {
+          "type": "helix",
+          "start": 0,
+          "end": 1,
+          "length": 1,
+          "confidence": 0.725,
+          "sequence": "M"
+        },
+        {
+          "type": "helix",
+          "start": 1,
+          "end": 2,
+          "length": 1,
+          "confidence": 0.555,
+          "sequence": "Q"
+        },
+        {
+          "type": "sheet",
+          "start": 2,
+          "end": 3,
+          "length": 1,
+          "confidence": 0.8,
+          "sequence": "I"
+        },
+        {
+          "type": "sheet",
+          "start": 3,
+          "end": 4,
+          "length": 1,
+          "confidence": 0.69,
+          "sequence": "F"
+        },
+        {
+          "type": "sheet",
+          "start": 4,
+          "end": 5,
+          "length": 1,
+          "confidence": 0.85,
+          "sequence": "V"
+        },
+        {
+          "type": "helix",
+          "start": 5,
+          "end": 6,
+          "length": 1,
+          "confidence": 0.58,
+          "sequence": "K"
+        },
+        {
+          "type": "sheet",
+          "start": 6,
+          "end": 7,
+          "length": 1,
+          "confidence": 0.595,
+          "sequence": "T"
+        },
+        {
+          "type": "sheet",
+          "start": 7,
+          "end": 8,
+          "length": 1,
+          "confidence": 0.65,
+          "sequence": "L"
+        },
+        {
+          "type": "sheet",
+          "start": 8,
+          "end": 9,
+          "length": 1,
+          "confidence": 0.595,
+          "sequence": "T"
+        },
+        {
+          "type": "loop",
+          "start": 9,
+          "end": 10,
+          "length": 1,
+          "confidence": 0.66,
+          "sequence": "G"
+        },
+        {
+          "type": "helix",
+          "start": 10,
+          "end": 11,
+          "length": 1,
+          "confidence": 0.58,
+          "sequence": "K"
+        },
+        {
+          "type": "sheet",
+          "start": 11,
+          "end": 12,
+          "length": 1,
+          "confidence": 0.595,
+          "sequence": "T"
+        },
+        {
+          "type": "sheet",
+          "start": 12,
+          "end": 13,
+          "length": 1,
+          "confidence": 0.8,
+          "sequence": "I"
+        },
+        {
+          "type": "sheet",
+          "start": 13,
+          "end": 14,
+          "length": 1,
+          "confidence": 0.595,
+          "sequence": "T"
+        },
+        {
+          "type": "sheet",
+          "start": 14,
+          "end": 15,
+          "length": 1,
+          "confidence": 0.65,
+          "sequence": "L"
+        },
+        {
+          "type": "helix",
+          "start": 15,
+          "end": 16,
+          "length": 1,
+          "confidence": 0.755,
+          "sequence": "E"
+        },
+        {
+          "type": "sheet",
+          "start": 16,
+          "end": 17,
+          "length": 1,
+          "confidence": 0.85,
+          "sequence": "V"
+        },
+        {
+          "type": "helix",
+          "start": 17,
+          "end": 18,
+          "length": 1,
+          "confidence": 0.755,
+          "sequence": "E"
+        },
+        {
+          "type": "loop",
+          "start": 18,
+          "end": 19,
+          "length": 1,
+          "confidence": 0.76,
+          "sequence": "S"
+        },
+        {
+          "type": "loop",
+          "start": 19,
+          "end": 20,
+          "length": 1,
+          "confidence": 0.76,
+          "sequence": "S"
+        },
+        {
+          "type": "helix",
+          "start": 20,
+          "end": 21,
+          "length": 1,
+          "confidence": 0.505,
+          "sequence": "D"
+        },
+        {
+          "type": "sheet",
+          "start": 21,
+          "end": 22,
+          "length": 1,
+          "confidence": 0.595,
+          "sequence": "T"
+        },
+        {
+          "type": "sheet",
+          "start": 22,
+          "end": 23,
+          "length": 1,
+          "confidence": 0.8,
+          "sequence": "I"
+        },
+        {
+          "type": "helix",
+          "start": 23,
+          "end": 24,
+          "length": 1,
+          "confidence": 0.505,
+          "sequence": "D"
+        },
+        {
+          "type": "loop",
+          "start": 24,
+          "end": 25,
+          "length": 1,
+          "confidence": 0.78,
+          "sequence": "N"
+        },
+        {
+          "type": "sheet",
+          "start": 25,
+          "end": 26,
+          "length": 1,
+          "confidence": 0.85,
+          "sequence": "V"
+        },
+        {
+          "type": "helix",
+          "start": 26,
+          "end": 27,
+          "length": 1,
+          "confidence": 0.58,
+          "sequence": "K"
+        },
+        {
+          "type": "helix",
+          "start": 27,
+          "end": 28,
+          "length": 1,
+          "confidence": 0.71,
+          "sequence": "A"
+        },
+        {
+          "type": "helix",
+          "start": 28,
+          "end": 29,
+          "length": 1,
+          "confidence": 0.58,
+          "sequence": "K"
+        },
+        {
+          "type": "sheet",
+          "start": 29,
+          "end": 30,
+          "length": 1,
+          "confidence": 0.8,
+          "sequence": "I"
+        },
+        {
+          "type": "helix",
+          "start": 30,
+          "end": 31,
+          "length": 1,
+          "confidence": 0.555,
+          "sequence": "Q"
+        },
+        {
+          "type": "helix",
+          "start": 31,
+          "end": 32,
+          "length": 1,
+          "confidence": 0.505,
+          "sequence": "D"
+        },
+        {
+          "type": "helix",
+          "start": 32,
+          "end": 33,
+          "length": 1,
+          "confidence": 0.58,
+          "sequence": "K"
+        },
+        {
+          "type": "helix",
+          "start": 33,
+          "end": 34,
+          "length": 1,
+          "confidence": 0.755,
+          "sequence": "E"
+        },
+        {
+          "type": "loop",
+          "start": 34,
+          "end": 35,
+          "length": 1,
+          "confidence": 0.66,
+          "sequence": "G"
+        },
+        {
+          "type": "sheet",
+          "start": 35,
+          "end": 36,
+          "length": 1,
+          "confidence": 0.8,
+          "sequence": "I"
+        },
+        {
+          "type": "loop",
+          "start": 36,
+          "end": 37,
+          "length": 1,
+          "confidence": 0.56,
+          "sequence": "P"
+        },
+        {
+          "type": "loop",
+          "start": 37,
+          "end": 38,
+          "length": 1,
+          "confidence": 0.56,
+          "sequence": "P"
+        },
+        {
+          "type": "helix",
+          "start": 38,
+          "end": 39,
+          "length": 1,
+          "confidence": 0.505,
+          "sequence": "D"
+        },
+        {
+          "type": "helix",
+          "start": 39,
+          "end": 40,
+          "length": 1,
+          "confidence": 0.555,
+          "sequence": "Q"
+        },
+        {
+          "type": "helix",
+          "start": 40,
+          "end": 41,
+          "length": 1,
+          "confidence": 0.555,
+          "sequence": "Q"
+        },
+        {
+          "type": "loop",
+          "start": 41,
+          "end": 42,
+          "length": 1,
+          "confidence": 0.955,
+          "sequence": "R"
+        },
+        {
+          "type": "sheet",
+          "start": 42,
+          "end": 43,
+          "length": 1,
+          "confidence": 0.65,
+          "sequence": "L"
+        },
+        {
+          "type": "sheet",
+          "start": 43,
+          "end": 44,
+          "length": 1,
+          "confidence": 0.8,
+          "sequence": "I"
+        },
+        {
+          "type": "sheet",
+          "start": 44,
+          "end": 45,
+          "length": 1,
+          "confidence": 0.69,
+          "sequence": "F"
+        }
+      ],
+      "num_contacts": 12,
+      "aa_to_primitive": {
+        "pos_1_M": "\u22a2",
+        "pos_2_Q": "\u220b",
+        "pos_3_I": "\u22a4",
+        "pos_4_F": "\u22c8",
+        "pos_5_V": null,
+        "pos_6_K": "\u229e",
+        "pos_7_T": null,
+        "pos_8_L": null,
+        "pos_9_T": null,
+        "pos_10_G": null,
+        "pos_11_K": "\u229e",
+        "pos_12_T": null,
+        "pos_13_I": "\u22a4",
+        "pos_14_T": null,
+        "pos_15_L": null,
+        "pos_16_E": "\u22a1",
+        "pos_17_V": null,
+        "pos_18_E": "\u22a1",
+        "pos_19_S": null,
+        "pos_20_S": null,
+        "pos_21_D": "\u22a5",
+        "pos_22_T": null,
+        "pos_23_I": "\u22a4",
+        "pos_24_D": "\u22a5",
+        "pos_25_N": "\u2208",
+        "pos_26_V": null,
+        "pos_27_K": "\u229e",
+        "pos_28_A": null,
+        "pos_29_K": "\u229e",
+        "pos_30_I": "\u22a4",
+        "pos_31_Q": "\u220b",
+        "pos_32_D": "\u22a5",
+        "pos_33_K": "\u229e",
+        "pos_34_E": "\u22a1",
+        "pos_35_G": null,
+        "pos_36_I": "\u22a4",
+        "pos_37_P": null,
+        "pos_38_P": null,
+        "pos_39_D": "\u22a5",
+        "pos_40_Q": "\u220b",
+        "pos_41_Q": "\u220b",
+        "pos_42_R": null,
+        "pos_43_L": null,
+        "pos_44_I": "\u22a4",
+        "pos_45_F": "\u22c8",
+        "pos_46_A": null,
+        "pos_47_G": null,
+        "pos_48_K": "\u229e",
+        "pos_49_Q": "\u220b",
+        "pos_50_L": null,
+        "pos_51_E": "\u22a1",
+        "pos_52_D": "\u22a5",
+        "pos_53_G": null,
+        "pos_54_R": null,
+        "pos_55_T": null,
+        "pos_56_L": null,
+        "pos_57_A": null,
+        "pos_58_D": "\u22a5",
+        "pos_59_Y": "\u227a",
+        "pos_60_N": "\u2208",
+        "pos_61_I": "\u22a4",
+        "pos_62_Q": "\u220b",
+        "pos_63_K": "\u229e",
+        "pos_64_E": "\u22a1",
+        "pos_65_S": null,
+        "pos_66_T": null,
+        "pos_67_L": null,
+        "pos_68_H": "\u2299",
+        "pos_69_L": null,
+        "pos_70_V": null,
+        "pos_71_L": null,
+        "pos_72_R": null,
+        "pos_73_L": null,
+        "pos_74_R": null,
+        "pos_75_G": null,
+        "pos_76_G": null
+      }
+    },
+    "mouse": {
+      "species": "Mus musculus",
+      "sequence": "MQIFVKTLTGKTITLEVESSDTIDNVKAKIQDKEGIPPDQQRLIFAGKQLEDGRTLADYNIQKESTLHLVLRLRGG",
+      "length": 76,
+      "winding_number": 45,
+      "activated_primitives": [
+        "\u2208",
+        "\u220b",
+        "\u227a",
+        "\u2299",
+        "\u229e",
+        "\u22a1",
+        "\u22a2",
+        "\u22a4",
+        "\u22a5",
+        "\u22c8"
+      ],
+      "num_activated": 10,
+      "frobenius_verified": true,
+      "confidence": 1.0,
+      "secondary_structure": [
+        {
+          "type": "helix",
+          "start": 0,
+          "end": 1,
+          "length": 1,
+          "confidence": 0.725,
+          "sequence": "M"
+        },
+        {
+          "type": "helix",
+          "start": 1,
+          "end": 2,
+          "length": 1,
+          "confidence": 0.555,
+          "sequence": "Q"
+        },
+        {
+          "type": "sheet",
+          "start": 2,
+          "end": 3,
+          "length": 1,
+          "confidence": 0.8,
+          "sequence": "I"
+        },
+        {
+          "type": "sheet",
+          "start": 3,
+          "end": 4,
+          "length": 1,
+          "confidence": 0.69,
+          "sequence": "F"
+        },
+        {
+          "type": "sheet",
+          "start": 4,
+          "end": 5,
+          "length": 1,
+          "confidence": 0.85,
+          "sequence": "V"
+        },
+        {
+          "type": "helix",
+          "start": 5,
+          "end": 6,
+          "length": 1,
+          "confidence": 0.58,
+          "sequence": "K"
+        },
+        {
+          "type": "sheet",
+          "start": 6,
+          "end": 7,
+          "length": 1,
+          "confidence": 0.595,
+          "sequence": "T"
+        },
+        {
+          "type": "sheet",
+          "start": 7,
+          "end": 8,
+          "length": 1,
+          "confidence": 0.65,
+          "sequence": "L"
+        },
+        {
+          "type": "sheet",
+          "start": 8,
+          "end": 9,
+          "length": 1,
+          "confidence": 0.595,
+          "sequence": "T"
+        },
+        {
+          "type": "loop",
+          "start": 9,
+          "end": 10,
+          "length": 1,
+          "confidence": 0.66,
+          "sequence": "G"
+        },
+        {
+          "type": "helix",
+          "start": 10,
+          "end": 11,
+          "length": 1,
+          "confidence": 0.58,
+          "sequence": "K"
+        },
+        {
+          "type": "sheet",
+          "start": 11,
+          "end": 12,
+          "length": 1,
+          "confidence": 0.595,
+          "sequence": "T"
+        },
+        {
+          "type": "sheet",
+          "start": 12,
+          "end": 13,
+          "length": 1,
+          "confidence": 0.8,
+          "sequence": "I"
+        },
+        {
+          "type": "sheet",
+          "start": 13,
+          "end": 14,
+          "length": 1,
+          "confidence": 0.595,
+          "sequence": "T"
+        },
+        {
+          "type": "sheet",
+          "start": 14,
+          "end": 15,
+          "length": 1,
+          "confidence": 0.65,
+          "sequence": "L"
+        },
+        {
+          "type": "helix",
+          "start": 15,
+          "end": 16,
+          "length": 1,
+          "confidence": 0.755,
+          "sequence": "E"
+        },
+        {
+          "type": "sheet",
+          "start": 16,
+          "end": 17,
+          "length": 1,
+          "confidence": 0.85,
+          "sequence": "V"
+        },
+        {
+          "type": "helix",
+          "start": 17,
+          "end": 18,
+          "length": 1,
+          "confidence": 0.755,
+          "sequence": "E"
+        },
+        {
+          "type": "loop",
+          "start": 18,
+          "end": 19,
+          "length": 1,
+          "confidence": 0.76,
+          "sequence": "S"
+        },
+        {
+          "type": "loop",
+          "start": 19,
+          "end": 20,
+          "length": 1,
+          "confidence": 0.76,
+          "sequence": "S"
+        },
+        {
+          "type": "helix",
+          "start": 20,
+          "end": 21,
+          "length": 1,
+          "confidence": 0.505,
+          "sequence": "D"
+        },
+        {
+          "type": "sheet",
+          "start": 21,
+          "end": 22,
+          "length": 1,
+          "confidence": 0.595,
+          "sequence": "T"
+        },
+        {
+          "type": "sheet",
+          "start": 22,
+          "end": 23,
+          "length": 1,
+          "confidence": 0.8,
+          "sequence": "I"
+        },
+        {
+          "type": "helix",
+          "start": 23,
+          "end": 24,
+          "length": 1,
+          "confidence": 0.505,
+          "sequence": "D"
+        },
+        {
+          "type": "loop",
+          "start": 24,
+          "end": 25,
+          "length": 1,
+          "confidence": 0.78,
+          "sequence": "N"
+        },
+        {
+          "type": "sheet",
+          "start": 25,
+          "end": 26,
+          "length": 1,
+          "confidence": 0.85,
+          "sequence": "V"
+        },
+        {
+          "type": "helix",
+          "start": 26,
+          "end": 27,
+          "length": 1,
+          "confidence": 0.58,
+          "sequence": "K"
+        },
+        {
+          "type": "helix",
+          "start": 27,
+          "end": 28,
+          "length": 1,
+          "confidence": 0.71,
+          "sequence": "A"
+        },
+        {
+          "type": "helix",
+          "start": 28,
+          "end": 29,
+          "length": 1,
+          "confidence": 0.58,
+          "sequence": "K"
+        },
+        {
+          "type": "sheet",
+          "start": 29,
+          "end": 30,
+          "length": 1,
+          "confidence": 0.8,
+          "sequence": "I"
+        },
+        {
+          "type": "helix",
+          "start": 30,
+          "end": 31,
+          "length": 1,
+          "confidence": 0.555,
+          "sequence": "Q"
+        },
+        {
+          "type": "helix",
+          "start": 31,
+          "end": 32,
+          "length": 1,
+          "confidence": 0.505,
+          "sequence": "D"
+        },
+        {
+          "type": "helix",
+          "start": 32,
+          "end": 33,
+          "length": 1,
+          "confidence": 0.58,
+          "sequence": "K"
+        },
+        {
+          "type": "helix",
+          "start": 33,
+          "end": 34,
+          "length": 1,
+          "confidence": 0.755,
+          "sequence": "E"
+        },
+        {
+          "type": "loop",
+          "start": 34,
+          "end": 35,
+          "length": 1,
+          "confidence": 0.66,
+          "sequence": "G"
+        },
+        {
+          "type": "sheet",
+          "start": 35,
+          "end": 36,
+          "length": 1,
+          "confidence": 0.8,
+          "sequence": "I"
+        },
+        {
+          "type": "loop",
+          "start": 36,
+          "end": 37,
+          "length": 1,
+          "confidence": 0.56,
+          "sequence": "P"
+        },
+        {
+          "type": "loop",
+          "start": 37,
+          "end": 38,
+          "length": 1,
+          "confidence": 0.56,
+          "sequence": "P"
+        },
+        {
+          "type": "helix",
+          "start": 38,
+          "end": 39,
+          "length": 1,
+          "confidence": 0.505,
+          "sequence": "D"
+        },
+        {
+          "type": "helix",
+          "start": 39,
+          "end": 40,
+          "length": 1,
+          "confidence": 0.555,
+          "sequence": "Q"
+        },
+        {
+          "type": "helix",
+          "start": 40,
+          "end": 41,
+          "length": 1,
+          "confidence": 0.555,
+          "sequence": "Q"
+        },
+        {
+          "type": "loop",
+          "start": 41,
+          "end": 42,
+          "length": 1,
+          "confidence": 0.955,
+          "sequence": "R"
+        },
+        {
+          "type": "sheet",
+          "start": 42,
+          "end": 43,
+          "length": 1,
+          "confidence": 0.65,
+          "sequence": "L"
+        },
+        {
+          "type": "sheet",
+          "start": 43,
+          "end": 44,
+          "length": 1,
+          "confidence": 0.8,
+          "sequence": "I"
+        },
+        {
+          "type": "sheet",
+          "start": 44,
+          "end": 45,
+          "length": 1,
+          "confidence": 0.69,
+          "sequence": "F"
+        }
+      ],
+      "num_contacts": 12,
+      "aa_to_primitive": {
+        "pos_1_M": "\u22a2",
+        "pos_2_Q": "\u220b",
+        "pos_3_I": "\u22a4",
+        "pos_4_F": "\u22c8",
+        "pos_5_V": null,
+        "pos_6_K": "\u229e",
+        "pos_7_T": null,
+        "pos_8_L": null,
+        "pos_9_T": null,
+        "pos_10_G": null,
+        "pos_11_K": "\u229e",
+        "pos_12_T": null,
+        "pos_13_I": "\u22a4",
+        "pos_14_T": null,
+        "pos_15_L": null,
+        "pos_16_E": "\u22a1",
+        "pos_17_V": null,
+        "pos_18_E": "\u22a1",
+        "pos_19_S": null,
+        "pos_20_S": null,
+        "pos_21_D": "\u22a5",
+        "pos_22_T": null,
+        "pos_23_I": "\u22a4",
+        "pos_24_D": "\u22a5",
+        "pos_25_N": "\u2208",
+        "pos_26_V": null,
+        "pos_27_K": "\u229e",
+        "pos_28_A": null,
+        "pos_29_K": "\u229e",
+        "pos_30_I": "\u22a4",
+        "pos_31_Q": "\u220b",
+        "pos_32_D": "\u22a5",
+        "pos_33_K": "\u229e",
+        "pos_34_E": "\u22a1",
+        "pos_35_G": null,
+        "pos_36_I": "\u22a4",
+        "pos_37_P": null,
+        "pos_38_P": null,
+        "pos_39_D": "\u22a5",
+        "pos_40_Q": "\u220b",
+        "pos_41_Q": "\u220b",
+        "pos_42_R": null,
+        "pos_43_L": null,
+        "pos_44_I": "\u22a4",
+        "pos_45_F": "\u22c8",
+        "pos_46_A": null,
+        "pos_47_G": null,
+        "pos_48_K": "\u229e",
+        "pos_49_Q": "\u220b",
+        "pos_50_L": null,
+        "pos_51_E": "\u22a1",
+        "pos_52_D": "\u22a5",
+        "pos_53_G": null,
+        "pos_54_R": null,
+        "pos_55_T": null,
+        "pos_56_L": null,
+        "pos_57_A": null,
+        "pos_58_D": "\u22a5",
+        "pos_59_Y": "\u227a",
+        "pos_60_N": "\u2208",
+        "pos_61_I": "\u22a4",
+        "pos_62_Q": "\u220b",
+        "pos_63_K": "\u229e",
+        "pos_64_E": "\u22a1",
+        "pos_65_S": null,
+        "pos_66_T": null,
+        "pos_67_L": null,
+        "pos_68_H": "\u2299",
+        "pos_69_L": null,
+        "pos_70_V": null,
+        "pos_71_L": null,
+        "pos_72_R": null,
+        "pos_73_L": null,
+        "pos_74_R": null,
+        "pos_75_G": null,
+        "pos_76_G": null
+      }
+    },
+    "yeast": {
+      "species": "Saccharomyces cerevisiae",
+      "sequence": "MQIFVKTLTGKTITLEVESSDTIDNVKSKIQDKEGIPPDQQRLIFAGKQLEDGRTLSDYNIQKESTLHLVLRLRGG",
+      "length": 76,
+      "winding_number": 49,
+      "activated_primitives": [
+        "\u2208",
+        "\u220b",
+        "\u227a",
+        "\u2299",
+        "\u229e",
+        "\u22a1",
+        "\u22a2",
+        "\u22a4",
+        "\u22a5",
+        "\u22c8"
+      ],
+      "num_activated": 10,
+      "frobenius_verified": true,
+      "confidence": 1.0,
+      "secondary_structure": [
+        {
+          "type": "helix",
+          "start": 0,
+          "end": 1,
+          "length": 1,
+          "confidence": 0.725,
+          "sequence": "M"
+        },
+        {
+          "type": "helix",
+          "start": 1,
+          "end": 2,
+          "length": 1,
+          "confidence": 0.555,
+          "sequence": "Q"
+        },
+        {
+          "type": "sheet",
+          "start": 2,
+          "end": 3,
+          "length": 1,
+          "confidence": 0.8,
+          "sequence": "I"
+        },
+        {
+          "type": "sheet",
+          "start": 3,
+          "end": 4,
+          "length": 1,
+          "confidence": 0.69,
+          "sequence": "F"
+        },
+        {
+          "type": "sheet",
+          "start": 4,
+          "end": 5,
+          "length": 1,
+          "confidence": 0.85,
+          "sequence": "V"
+        },
+        {
+          "type": "helix",
+          "start": 5,
+          "end": 6,
+          "length": 1,
+          "confidence": 0.58,
+          "sequence": "K"
+        },
+        {
+          "type": "sheet",
+          "start": 6,
+          "end": 7,
+          "length": 1,
+          "confidence": 0.595,
+          "sequence": "T"
+        },
+        {
+          "type": "sheet",
+          "start": 7,
+          "end": 8,
+          "length": 1,
+          "confidence": 0.65,
+          "sequence": "L"
+        },
+        {
+          "type": "sheet",
+          "start": 8,
+          "end": 9,
+          "length": 1,
+          "confidence": 0.595,
+          "sequence": "T"
+        },
+        {
+          "type": "loop",
+          "start": 9,
+          "end": 10,
+          "length": 1,
+          "confidence": 0.66,
+          "sequence": "G"
+        },
+        {
+          "type": "helix",
+          "start": 10,
+          "end": 11,
+          "length": 1,
+          "confidence": 0.58,
+          "sequence": "K"
+        },
+        {
+          "type": "sheet",
+          "start": 11,
+          "end": 12,
+          "length": 1,
+          "confidence": 0.595,
+          "sequence": "T"
+        },
+        {
+          "type": "sheet",
+          "start": 12,
+          "end": 13,
+          "length": 1,
+          "confidence": 0.8,
+          "sequence": "I"
+        },
+        {
+          "type": "sheet",
+          "start": 13,
+          "end": 14,
+          "length": 1,
+          "confidence": 0.595,
+          "sequence": "T"
+        },
+        {
+          "type": "sheet",
+          "start": 14,
+          "end": 15,
+          "length": 1,
+          "confidence": 0.65,
+          "sequence": "L"
+        },
+        {
+          "type": "helix",
+          "start": 15,
+          "end": 16,
+          "length": 1,
+          "confidence": 0.755,
+          "sequence": "E"
+        },
+        {
+          "type": "sheet",
+          "start": 16,
+          "end": 17,
+          "length": 1,
+          "confidence": 0.85,
+          "sequence": "V"
+        },
+        {
+          "type": "helix",
+          "start": 17,
+          "end": 18,
+          "length": 1,
+          "confidence": 0.755,
+          "sequence": "E"
+        },
+        {
+          "type": "loop",
+          "start": 18,
+          "end": 19,
+          "length": 1,
+          "confidence": 0.76,
+          "sequence": "S"
+        },
+        {
+          "type": "loop",
+          "start": 19,
+          "end": 20,
+          "length": 1,
+          "confidence": 0.76,
+          "sequence": "S"
+        },
+        {
+          "type": "helix",
+          "start": 20,
+          "end": 21,
+          "length": 1,
+          "confidence": 0.505,
+          "sequence": "D"
+        },
+        {
+          "type": "sheet",
+          "start": 21,
+          "end": 22,
+          "length": 1,
+          "confidence": 0.595,
+          "sequence": "T"
+        },
+        {
+          "type": "sheet",
+          "start": 22,
+          "end": 23,
+          "length": 1,
+          "confidence": 0.8,
+          "sequence": "I"
+        },
+        {
+          "type": "helix",
+          "start": 23,
+          "end": 24,
+          "length": 1,
+          "confidence": 0.505,
+          "sequence": "D"
+        },
+        {
+          "type": "loop",
+          "start": 24,
+          "end": 25,
+          "length": 1,
+          "confidence": 0.78,
+          "sequence": "N"
+        },
+        {
+          "type": "sheet",
+          "start": 25,
+          "end": 26,
+          "length": 1,
+          "confidence": 0.85,
+          "sequence": "V"
+        },
+        {
+          "type": "helix",
+          "start": 26,
+          "end": 27,
+          "length": 1,
+          "confidence": 0.58,
+          "sequence": "K"
+        },
+        {
+          "type": "loop",
+          "start": 27,
+          "end": 28,
+          "length": 1,
+          "confidence": 0.76,
+          "sequence": "S"
+        },
+        {
+          "type": "helix",
+          "start": 28,
+          "end": 29,
+          "length": 1,
+          "confidence": 0.58,
+          "sequence": "K"
+        },
+        {
+          "type": "sheet",
+          "start": 29,
+          "end": 30,
+          "length": 1,
+          "confidence": 0.8,
+          "sequence": "I"
+        },
+        {
+          "type": "helix",
+          "start": 30,
+          "end": 31,
+          "length": 1,
+          "confidence": 0.555,
+          "sequence": "Q"
+        },
+        {
+          "type": "helix",
+          "start": 31,
+          "end": 32,
+          "length": 1,
+          "confidence": 0.505,
+          "sequence": "D"
+        },
+        {
+          "type": "helix",
+          "start": 32,
+          "end": 33,
+          "length": 1,
+          "confidence": 0.58,
+          "sequence": "K"
+        },
+        {
+          "type": "helix",
+          "start": 33,
+          "end": 34,
+          "length": 1,
+          "confidence": 0.755,
+          "sequence": "E"
+        },
+        {
+          "type": "loop",
+          "start": 34,
+          "end": 35,
+          "length": 1,
+          "confidence": 0.66,
+          "sequence": "G"
+        },
+        {
+          "type": "sheet",
+          "start": 35,
+          "end": 36,
+          "length": 1,
+          "confidence": 0.8,
+          "sequence": "I"
+        },
+        {
+          "type": "loop",
+          "start": 36,
+          "end": 37,
+          "length": 1,
+          "confidence": 0.56,
+          "sequence": "P"
+        },
+        {
+          "type": "loop",
+          "start": 37,
+          "end": 38,
+          "length": 1,
+          "confidence": 0.56,
+          "sequence": "P"
+        },
+        {
+          "type": "helix",
+          "start": 38,
+          "end": 39,
+          "length": 1,
+          "confidence": 0.505,
+          "sequence": "D"
+        },
+        {
+          "type": "helix",
+          "start": 39,
+          "end": 40,
+          "length": 1,
+          "confidence": 0.555,
+          "sequence": "Q"
+        },
+        {
+          "type": "helix",
+          "start": 40,
+          "end": 41,
+          "length": 1,
+          "confidence": 0.555,
+          "sequence": "Q"
+        },
+        {
+          "type": "loop",
+          "start": 41,
+          "end": 42,
+          "length": 1,
+          "confidence": 0.955,
+          "sequence": "R"
+        },
+        {
+          "type": "sheet",
+          "start": 42,
+          "end": 43,
+          "length": 1,
+          "confidence": 0.65,
+          "sequence": "L"
+        },
+        {
+          "type": "sheet",
+          "start": 43,
+          "end": 44,
+          "length": 1,
+          "confidence": 0.8,
+          "sequence": "I"
+        },
+        {
+          "type": "sheet",
+          "start": 44,
+          "end": 45,
+          "length": 1,
+          "confidence": 0.69,
+          "sequence": "F"
+        },
+        {
+          "type": "helix",
+          "start": 45,
+          "end": 46,
+          "length": 1,
+          "confidence": 0.71,
+          "sequence": "A"
+        },
+        {
+          "type": "loop",
+          "start": 46,
+          "end": 47,
+          "length": 1,
+          "confidence": 0.66,
+          "sequence": "G"
+        },
+        {
+          "type": "helix",
+          "start": 47,
+          "end": 48,
+          "length": 1,
+          "confidence": 0.58,
+          "sequence": "K"
+        },
+        {
+          "type": "helix",
+          "start": 48,
+          "end": 49,
+          "length": 1,
+          "confidence": 0.555,
+          "sequence": "Q"
+        }
+      ],
+      "num_contacts": 12,
+      "aa_to_primitive": {
+        "pos_1_M": "\u22a2",
+        "pos_2_Q": "\u220b",
+        "pos_3_I": "\u22a4",
+        "pos_4_F": "\u22c8",
+        "pos_5_V": null,
+        "pos_6_K": "\u229e",
+        "pos_7_T": null,
+        "pos_8_L": null,
+        "pos_9_T": null,
+        "pos_10_G": null,
+        "pos_11_K": "\u229e",
+        "pos_12_T": null,
+        "pos_13_I": "\u22a4",
+        "pos_14_T": null,
+        "pos_15_L": null,
+        "pos_16_E": "\u22a1",
+        "pos_17_V": null,
+        "pos_18_E": "\u22a1",
+        "pos_19_S": null,
+        "pos_20_S": null,
+        "pos_21_D": "\u22a5",
+        "pos_22_T": null,
+        "pos_23_I": "\u22a4",
+        "pos_24_D": "\u22a5",
+        "pos_25_N": "\u2208",
+        "pos_26_V": null,
+        "pos_27_K": "\u229e",
+        "pos_28_S": null,
+        "pos_29_K": "\u229e",
+        "pos_30_I": "\u22a4",
+        "pos_31_Q": "\u220b",
+        "pos_32_D": "\u22a5",
+        "pos_33_K": "\u229e",
+        "pos_34_E": "\u22a1",
+        "pos_35_G": null,
+        "pos_36_I": "\u22a4",
+        "pos_37_P": null,
+        "pos_38_P": null,
+        "pos_39_D": "\u22a5",
+        "pos_40_Q": "\u220b",
+        "pos_41_Q": "\u220b",
+        "pos_42_R": null,
+        "pos_43_L": null,
+        "pos_44_I": "\u22a4",
+        "pos_45_F": "\u22c8",
+        "pos_46_A": null,
+        "pos_47_G": null,
+        "pos_48_K": "\u229e",
+        "pos_49_Q": "\u220b",
+        "pos_50_L": null,
+        "pos_51_E": "\u22a1",
+        "pos_52_D": "\u22a5",
+        "pos_53_G": null,
+        "pos_54_R": null,
+        "pos_55_T": null,
+        "pos_56_L": null,
+        "pos_57_S": null,
+        "pos_58_D": "\u22a5",
+        "pos_59_Y": "\u227a",
+        "pos_60_N": "\u2208",
+        "pos_61_I": "\u22a4",
+        "pos_62_Q": "\u220b",
+        "pos_63_K": "\u229e",
+        "pos_64_E": "\u22a1",
+        "pos_65_S": null,
+        "pos_66_T": null,
+        "pos_67_L": null,
+        "pos_68_H": "\u2299",
+        "pos_69_L": null,
+        "pos_70_V": null,
+        "pos_71_L": null,
+        "pos_72_R": null,
+        "pos_73_L": null,
+        "pos_74_R": null,
+        "pos_75_G": null,
+        "pos_76_G": null
+      }
+    },
+    "zebrafish": {
+      "species": "Danio rerio",
+      "sequence": "MQIFVKTLTGKTITLEVESSDTIDNVKAKIQDKEGIPPDQQRLIFAGKQLEDGRTLADYNIQKESTLHLVLRLRGG",
+      "length": 76,
+      "winding_number": 45,
+      "activated_primitives": [
+        "\u2208",
+        "\u220b",
+        "\u227a",
+        "\u2299",
+        "\u229e",
+        "\u22a1",
+        "\u22a2",
+        "\u22a4",
+        "\u22a5",
+        "\u22c8"
+      ],
+      "num_activated": 10,
+      "frobenius_verified": true,
+      "confidence": 1.0,
+      "secondary_structure": [
+        {
+          "type": "helix",
+          "start": 0,
+          "end": 1,
+          "length": 1,
+          "confidence": 0.725,
+          "sequence": "M"
+        },
+        {
+          "type": "helix",
+          "start": 1,
+          "end": 2,
+          "length": 1,
+          "confidence": 0.555,
+          "sequence": "Q"
+        },
+        {
+          "type": "sheet",
+          "start": 2,
+          "end": 3,
+          "length": 1,
+          "confidence": 0.8,
+          "sequence": "I"
+        },
+        {
+          "type": "sheet",
+          "start": 3,
+          "end": 4,
+          "length": 1,
+          "confidence": 0.69,
+          "sequence": "F"
+        },
+        {
+          "type": "sheet",
+          "start": 4,
+          "end": 5,
+          "length": 1,
+          "confidence": 0.85,
+          "sequence": "V"
+        },
+        {
+          "type": "helix",
+          "start": 5,
+          "end": 6,
+          "length": 1,
+          "confidence": 0.58,
+          "sequence": "K"
+        },
+        {
+          "type": "sheet",
+          "start": 6,
+          "end": 7,
+          "length": 1,
+          "confidence": 0.595,
+          "sequence": "T"
+        },
+        {
+          "type": "sheet",
+          "start": 7,
+          "end": 8,
+          "length": 1,
+          "confidence": 0.65,
+          "sequence": "L"
+        },
+        {
+          "type": "sheet",
+          "start": 8,
+          "end": 9,
+          "length": 1,
+          "confidence": 0.595,
+          "sequence": "T"
+        },
+        {
+          "type": "loop",
+          "start": 9,
+          "end": 10,
+          "length": 1,
+          "confidence": 0.66,
+          "sequence": "G"
+        },
+        {
+          "type": "helix",
+          "start": 10,
+          "end": 11,
+          "length": 1,
+          "confidence": 0.58,
+          "sequence": "K"
+        },
+        {
+          "type": "sheet",
+          "start": 11,
+          "end": 12,
+          "length": 1,
+          "confidence": 0.595,
+          "sequence": "T"
+        },
+        {
+          "type": "sheet",
+          "start": 12,
+          "end": 13,
+          "length": 1,
+          "confidence": 0.8,
+          "sequence": "I"
+        },
+        {
+          "type": "sheet",
+          "start": 13,
+          "end": 14,
+          "length": 1,
+          "confidence": 0.595,
+          "sequence": "T"
+        },
+        {
+          "type": "sheet",
+          "start": 14,
+          "end": 15,
+          "length": 1,
+          "confidence": 0.65,
+          "sequence": "L"
+        },
+        {
+          "type": "helix",
+          "start": 15,
+          "end": 16,
+          "length": 1,
+          "confidence": 0.755,
+          "sequence": "E"
+        },
+        {
+          "type": "sheet",
+          "start": 16,
+          "end": 17,
+          "length": 1,
+          "confidence": 0.85,
+          "sequence": "V"
+        },
+        {
+          "type": "helix",
+          "start": 17,
+          "end": 18,
+          "length": 1,
+          "confidence": 0.755,
+          "sequence": "E"
+        },
+        {
+          "type": "loop",
+          "start": 18,
+          "end": 19,
+          "length": 1,
+          "confidence": 0.76,
+          "sequence": "S"
+        },
+        {
+          "type": "loop",
+          "start": 19,
+          "end": 20,
+          "length": 1,
+          "confidence": 0.76,
+          "sequence": "S"
+        },
+        {
+          "type": "helix",
+          "start": 20,
+          "end": 21,
+          "length": 1,
+          "confidence": 0.505,
+          "sequence": "D"
+        },
+        {
+          "type": "sheet",
+          "start": 21,
+          "end": 22,
+          "length": 1,
+          "confidence": 0.595,
+          "sequence": "T"
+        },
+        {
+          "type": "sheet",
+          "start": 22,
+          "end": 23,
+          "length": 1,
+          "confidence": 0.8,
+          "sequence": "I"
+        },
+        {
+          "type": "helix",
+          "start": 23,
+          "end": 24,
+          "length": 1,
+          "confidence": 0.505,
+          "sequence": "D"
+        },
+        {
+          "type": "loop",
+          "start": 24,
+          "end": 25,
+          "length": 1,
+          "confidence": 0.78,
+          "sequence": "N"
+        },
+        {
+          "type": "sheet",
+          "start": 25,
+          "end": 26,
+          "length": 1,
+          "confidence": 0.85,
+          "sequence": "V"
+        },
+        {
+          "type": "helix",
+          "start": 26,
+          "end": 27,
+          "length": 1,
+          "confidence": 0.58,
+          "sequence": "K"
+        },
+        {
+          "type": "helix",
+          "start": 27,
+          "end": 28,
+          "length": 1,
+          "confidence": 0.71,
+          "sequence": "A"
+        },
+        {
+          "type": "helix",
+          "start": 28,
+          "end": 29,
+          "length": 1,
+          "confidence": 0.58,
+          "sequence": "K"
+        },
+        {
+          "type": "sheet",
+          "start": 29,
+          "end": 30,
+          "length": 1,
+          "confidence": 0.8,
+          "sequence": "I"
+        },
+        {
+          "type": "helix",
+          "start": 30,
+          "end": 31,
+          "length": 1,
+          "confidence": 0.555,
+          "sequence": "Q"
+        },
+        {
+          "type": "helix",
+          "start": 31,
+          "end": 32,
+          "length": 1,
+          "confidence": 0.505,
+          "sequence": "D"
+        },
+        {
+          "type": "helix",
+          "start": 32,
+          "end": 33,
+          "length": 1,
+          "confidence": 0.58,
+          "sequence": "K"
+        },
+        {
+          "type": "helix",
+          "start": 33,
+          "end": 34,
+          "length": 1,
+          "confidence": 0.755,
+          "sequence": "E"
+        },
+        {
+          "type": "loop",
+          "start": 34,
+          "end": 35,
+          "length": 1,
+          "confidence": 0.66,
+          "sequence": "G"
+        },
+        {
+          "type": "sheet",
+          "start": 35,
+          "end": 36,
+          "length": 1,
+          "confidence": 0.8,
+          "sequence": "I"
+        },
+        {
+          "type": "loop",
+          "start": 36,
+          "end": 37,
+          "length": 1,
+          "confidence": 0.56,
+          "sequence": "P"
+        },
+        {
+          "type": "loop",
+          "start": 37,
+          "end": 38,
+          "length": 1,
+          "confidence": 0.56,
+          "sequence": "P"
+        },
+        {
+          "type": "helix",
+          "start": 38,
+          "end": 39,
+          "length": 1,
+          "confidence": 0.505,
+          "sequence": "D"
+        },
+        {
+          "type": "helix",
+          "start": 39,
+          "end": 40,
+          "length": 1,
+          "confidence": 0.555,
+          "sequence": "Q"
+        },
+        {
+          "type": "helix",
+          "start": 40,
+          "end": 41,
+          "length": 1,
+          "confidence": 0.555,
+          "sequence": "Q"
+        },
+        {
+          "type": "loop",
+          "start": 41,
+          "end": 42,
+          "length": 1,
+          "confidence": 0.955,
+          "sequence": "R"
+        },
+        {
+          "type": "sheet",
+          "start": 42,
+          "end": 43,
+          "length": 1,
+          "confidence": 0.65,
+          "sequence": "L"
+        },
+        {
+          "type": "sheet",
+          "start": 43,
+          "end": 44,
+          "length": 1,
+          "confidence": 0.8,
+          "sequence": "I"
+        },
+        {
+          "type": "sheet",
+          "start": 44,
+          "end": 45,
+          "length": 1,
+          "confidence": 0.69,
+          "sequence": "F"
+        }
+      ],
+      "num_contacts": 12,
+      "aa_to_primitive": {
+        "pos_1_M": "\u22a2",
+        "pos_2_Q": "\u220b",
+        "pos_3_I": "\u22a4",
+        "pos_4_F": "\u22c8",
+        "pos_5_V": null,
+        "pos_6_K": "\u229e",
+        "pos_7_T": null,
+        "pos_8_L": null,
+        "pos_9_T": null,
+        "pos_10_G": null,
+        "pos_11_K": "\u229e",
+        "pos_12_T": null,
+        "pos_13_I": "\u22a4",
+        "pos_14_T": null,
+        "pos_15_L": null,
+        "pos_16_E": "\u22a1",
+        "pos_17_V": null,
+        "pos_18_E": "\u22a1",
+        "pos_19_S": null,
+        "pos_20_S": null,
+        "pos_21_D": "\u22a5",
+        "pos_22_T": null,
+        "pos_23_I": "\u22a4",
+        "pos_24_D": "\u22a5",
+        "pos_25_N": "\u2208",
+        "pos_26_V": null,
+        "pos_27_K": "\u229e",
+        "pos_28_A": null,
+        "pos_29_K": "\u229e",
+        "pos_30_I": "\u22a4",
+        "pos_31_Q": "\u220b",
+        "pos_32_D": "\u22a5",
+        "pos_33_K": "\u229e",
+        "pos_34_E": "\u22a1",
+        "pos_35_G": null,
+        "pos_36_I": "\u22a4",
+        "pos_37_P": null,
+        "pos_38_P": null,
+        "pos_39_D": "\u22a5",
+        "pos_40_Q": "\u220b",
+        "pos_41_Q": "\u220b",
+        "pos_42_R": null,
+        "pos_43_L": null,
+        "pos_44_I": "\u22a4",
+        "pos_45_F": "\u22c8",
+        "pos_46_A": null,
+        "pos_47_G": null,
+        "pos_48_K": "\u229e",
+        "pos_49_Q": "\u220b",
+        "pos_50_L": null,
+        "pos_51_E": "\u22a1",
+        "pos_52_D": "\u22a5",
+        "pos_53_G": null,
+        "pos_54_R": null,
+        "pos_55_T": null,
+        "pos_56_L": null,
+        "pos_57_A": null,
+        "pos_58_D": "\u22a5",
+        "pos_59_Y": "\u227a",
+        "pos_60_N": "\u2208",
+        "pos_61_I": "\u22a4",
+        "pos_62_Q": "\u220b",
+        "pos_63_K": "\u229e",
+        "pos_64_E": "\u22a1",
+        "pos_65_S": null,
+        "pos_66_T": null,
+        "pos_67_L": null,
+        "pos_68_H": "\u2299",
+        "pos_69_L": null,
+        "pos_70_V": null,
+        "pos_71_L": null,
+        "pos_72_R": null,
+        "pos_73_L": null,
+        "pos_74_R": null,
+        "pos_75_G": null,
+        "pos_76_G": null
+      }
+    },
+    "arabidopsis": {
+      "species": "Arabidopsis thaliana",
+      "sequence": "MQIFVKTLTGKTITLEVESSDTIDNVKAKIQDKEGIPPDQQRLIFAGKQLEDGRTLADYNIQKESTLHLVLRLRGG",
+      "length": 76,
+      "winding_number": 45,
+      "activated_primitives": [
+        "\u2208",
+        "\u220b",
+        "\u227a",
+        "\u2299",
+        "\u229e",
+        "\u22a1",
+        "\u22a2",
+        "\u22a4",
+        "\u22a5",
+        "\u22c8"
+      ],
+      "num_activated": 10,
+      "frobenius_verified": true,
+      "confidence": 1.0,
+      "secondary_structure": [
+        {
+          "type": "helix",
+          "start": 0,
+          "end": 1,
+          "length": 1,
+          "confidence": 0.725,
+          "sequence": "M"
+        },
+        {
+          "type": "helix",
+          "start": 1,
+          "end": 2,
+          "length": 1,
+          "confidence": 0.555,
+          "sequence": "Q"
+        },
+        {
+          "type": "sheet",
+          "start": 2,
+          "end": 3,
+          "length": 1,
+          "confidence": 0.8,
+          "sequence": "I"
+        },
+        {
+          "type": "sheet",
+          "start": 3,
+          "end": 4,
+          "length": 1,
+          "confidence": 0.69,
+          "sequence": "F"
+        },
+        {
+          "type": "sheet",
+          "start": 4,
+          "end": 5,
+          "length": 1,
+          "confidence": 0.85,
+          "sequence": "V"
+        },
+        {
+          "type": "helix",
+          "start": 5,
+          "end": 6,
+          "length": 1,
+          "confidence": 0.58,
+          "sequence": "K"
+        },
+        {
+          "type": "sheet",
+          "start": 6,
+          "end": 7,
+          "length": 1,
+          "confidence": 0.595,
+          "sequence": "T"
+        },
+        {
+          "type": "sheet",
+          "start": 7,
+          "end": 8,
+          "length": 1,
+          "confidence": 0.65,
+          "sequence": "L"
+        },
+        {
+          "type": "sheet",
+          "start": 8,
+          "end": 9,
+          "length": 1,
+          "confidence": 0.595,
+          "sequence": "T"
+        },
+        {
+          "type": "loop",
+          "start": 9,
+          "end": 10,
+          "length": 1,
+          "confidence": 0.66,
+          "sequence": "G"
+        },
+        {
+          "type": "helix",
+          "start": 10,
+          "end": 11,
+          "length": 1,
+          "confidence": 0.58,
+          "sequence": "K"
+        },
+        {
+          "type": "sheet",
+          "start": 11,
+          "end": 12,
+          "length": 1,
+          "confidence": 0.595,
+          "sequence": "T"
+        },
+        {
+          "type": "sheet",
+          "start": 12,
+          "end": 13,
+          "length": 1,
+          "confidence": 0.8,
+          "sequence": "I"
+        },
+        {
+          "type": "sheet",
+          "start": 13,
+          "end": 14,
+          "length": 1,
+          "confidence": 0.595,
+          "sequence": "T"
+        },
+        {
+          "type": "sheet",
+          "start": 14,
+          "end": 15,
+          "length": 1,
+          "confidence": 0.65,
+          "sequence": "L"
+        },
+        {
+          "type": "helix",
+          "start": 15,
+          "end": 16,
+          "length": 1,
+          "confidence": 0.755,
+          "sequence": "E"
+        },
+        {
+          "type": "sheet",
+          "start": 16,
+          "end": 17,
+          "length": 1,
+          "confidence": 0.85,
+          "sequence": "V"
+        },
+        {
+          "type": "helix",
+          "start": 17,
+          "end": 18,
+          "length": 1,
+          "confidence": 0.755,
+          "sequence": "E"
+        },
+        {
+          "type": "loop",
+          "start": 18,
+          "end": 19,
+          "length": 1,
+          "confidence": 0.76,
+          "sequence": "S"
+        },
+        {
+          "type": "loop",
+          "start": 19,
+          "end": 20,
+          "length": 1,
+          "confidence": 0.76,
+          "sequence": "S"
+        },
+        {
+          "type": "helix",
+          "start": 20,
+          "end": 21,
+          "length": 1,
+          "confidence": 0.505,
+          "sequence": "D"
+        },
+        {
+          "type": "sheet",
+          "start": 21,
+          "end": 22,
+          "length": 1,
+          "confidence": 0.595,
+          "sequence": "T"
+        },
+        {
+          "type": "sheet",
+          "start": 22,
+          "end": 23,
+          "length": 1,
+          "confidence": 0.8,
+          "sequence": "I"
+        },
+        {
+          "type": "helix",
+          "start": 23,
+          "end": 24,
+          "length": 1,
+          "confidence": 0.505,
+          "sequence": "D"
+        },
+        {
+          "type": "loop",
+          "start": 24,
+          "end": 25,
+          "length": 1,
+          "confidence": 0.78,
+          "sequence": "N"
+        },
+        {
+          "type": "sheet",
+          "start": 25,
+          "end": 26,
+          "length": 1,
+          "confidence": 0.85,
+          "sequence": "V"
+        },
+        {
+          "type": "helix",
+          "start": 26,
+          "end": 27,
+          "length": 1,
+          "confidence": 0.58,
+          "sequence": "K"
+        },
+        {
+          "type": "helix",
+          "start": 27,
+          "end": 28,
+          "length": 1,
+          "confidence": 0.71,
+          "sequence": "A"
+        },
+        {
+          "type": "helix",
+          "start": 28,
+          "end": 29,
+          "length": 1,
+          "confidence": 0.58,
+          "sequence": "K"
+        },
+        {
+          "type": "sheet",
+          "start": 29,
+          "end": 30,
+          "length": 1,
+          "confidence": 0.8,
+          "sequence": "I"
+        },
+        {
+          "type": "helix",
+          "start": 30,
+          "end": 31,
+          "length": 1,
+          "confidence": 0.555,
+          "sequence": "Q"
+        },
+        {
+          "type": "helix",
+          "start": 31,
+          "end": 32,
+          "length": 1,
+          "confidence": 0.505,
+          "sequence": "D"
+        },
+        {
+          "type": "helix",
+          "start": 32,
+          "end": 33,
+          "length": 1,
+          "confidence": 0.58,
+          "sequence": "K"
+        },
+        {
+          "type": "helix",
+          "start": 33,
+          "end": 34,
+          "length": 1,
+          "confidence": 0.755,
+          "sequence": "E"
+        },
+        {
+          "type": "loop",
+          "start": 34,
+          "end": 35,
+          "length": 1,
+          "confidence": 0.66,
+          "sequence": "G"
+        },
+        {
+          "type": "sheet",
+          "start": 35,
+          "end": 36,
+          "length": 1,
+          "confidence": 0.8,
+          "sequence": "I"
+        },
+        {
+          "type": "loop",
+          "start": 36,
+          "end": 37,
+          "length": 1,
+          "confidence": 0.56,
+          "sequence": "P"
+        },
+        {
+          "type": "loop",
+          "start": 37,
+          "end": 38,
+          "length": 1,
+          "confidence": 0.56,
+          "sequence": "P"
+        },
+        {
+          "type": "helix",
+          "start": 38,
+          "end": 39,
+          "length": 1,
+          "confidence": 0.505,
+          "sequence": "D"
+        },
+        {
+          "type": "helix",
+          "start": 39,
+          "end": 40,
+          "length": 1,
+          "confidence": 0.555,
+          "sequence": "Q"
+        },
+        {
+          "type": "helix",
+          "start": 40,
+          "end": 41,
+          "length": 1,
+          "confidence": 0.555,
+          "sequence": "Q"
+        },
+        {
+          "type": "loop",
+          "start": 41,
+          "end": 42,
+          "length": 1,
+          "confidence": 0.955,
+          "sequence": "R"
+        },
+        {
+          "type": "sheet",
+          "start": 42,
+          "end": 43,
+          "length": 1,
+          "confidence": 0.65,
+          "sequence": "L"
+        },
+        {
+          "type": "sheet",
+          "start": 43,
+          "end": 44,
+          "length": 1,
+          "confidence": 0.8,
+          "sequence": "I"
+        },
+        {
+          "type": "sheet",
+          "start": 44,
+          "end": 45,
+          "length": 1,
+          "confidence": 0.69,
+          "sequence": "F"
+        }
+      ],
+      "num_contacts": 12,
+      "aa_to_primitive": {
+        "pos_1_M": "\u22a2",
+        "pos_2_Q": "\u220b",
+        "pos_3_I": "\u22a4",
+        "pos_4_F": "\u22c8",
+        "pos_5_V": null,
+        "pos_6_K": "\u229e",
+        "pos_7_T": null,
+        "pos_8_L": null,
+        "pos_9_T": null,
+        "pos_10_G": null,
+        "pos_11_K": "\u229e",
+        "pos_12_T": null,
+        "pos_13_I": "\u22a4",
+        "pos_14_T": null,
+        "pos_15_L": null,
+        "pos_16_E": "\u22a1",
+        "pos_17_V": null,
+        "pos_18_E": "\u22a1",
+        "pos_19_S": null,
+        "pos_20_S": null,
+        "pos_21_D": "\u22a5",
+        "pos_22_T": null,
+        "pos_23_I": "\u22a4",
+        "pos_24_D": "\u22a5",
+        "pos_25_N": "\u2208",
+        "pos_26_V": null,
+        "pos_27_K": "\u229e",
+        "pos_28_A": null,
+        "pos_29_K": "\u229e",
+        "pos_30_I": "\u22a4",
+        "pos_31_Q": "\u220b",
+        "pos_32_D": "\u22a5",
+        "pos_33_K": "\u229e",
+        "pos_34_E": "\u22a1",
+        "pos_35_G": null,
+        "pos_36_I": "\u22a4",
+        "pos_37_P": null,
+        "pos_38_P": null,
+        "pos_39_D": "\u22a5",
+        "pos_40_Q": "\u220b",
+        "pos_41_Q": "\u220b",
+        "pos_42_R": null,
+        "pos_43_L": null,
+        "pos_44_I": "\u22a4",
+        "pos_45_F": "\u22c8",
+        "pos_46_A": null,
+        "pos_47_G": null,
+        "pos_48_K": "\u229e",
+        "pos_49_Q": "\u220b",
+        "pos_50_L": null,
+        "pos_51_E": "\u22a1",
+        "pos_52_D": "\u22a5",
+        "pos_53_G": null,
+        "pos_54_R": null,
+        "pos_55_T": null,
+        "pos_56_L": null,
+        "pos_57_A": null,
+        "pos_58_D": "\u22a5",
+        "pos_59_Y": "\u227a",
+        "pos_60_N": "\u2208",
+        "pos_61_I": "\u22a4",
+        "pos_62_Q": "\u220b",
+        "pos_63_K": "\u229e",
+        "pos_64_E": "\u22a1",
+        "pos_65_S": null,
+        "pos_66_T": null,
+        "pos_67_L": null,
+        "pos_68_H": "\u2299",
+        "pos_69_L": null,
+        "pos_70_V": null,
+        "pos_71_L": null,
+        "pos_72_R": null,
+        "pos_73_L": null,
+        "pos_74_R": null,
+        "pos_75_G": null,
+        "pos_76_G": null
+      }
+    }
+  },
+  "conservation_summary": {
+    "universal_primitives": [
+      "\u2208",
+      "\u220b",
+      "\u227a",
+      "\u2299",
+      "\u229e",
+      "\u22a1",
+      "\u22a2",
+      "\u22a4",
+      "\u22a5",
+      "\u22c8"
+    ],
+    "num_universal": 10,
+    "variable_primitives": [],
+    "num_variable": 0,
+    "frobenius_universal": true
+  }
+}

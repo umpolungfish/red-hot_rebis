@@ -301,100 +301,100 @@ def _compute_structural_type_from_smiles(smiles: str) -> Optional[Dict[str, str]
     # ── Encode properties to primitives ──
     ptype = {}
     
-    # D: wedge (0) for <5 heavy, triangle (1) for cyclic up to 30, infty (2) for >30
+    # ⊢: wedge (0) for <5 heavy, triangle (1) for cyclic up to 30, infty (2) for >30
     if n_heavy < 5:
-        ptype["D"] = "\U0001045B"  # wedge
+        ptype["⊢"] = "\U0001045B"  # wedge
     elif n_heavy <= 30:
         if n_rings >= 1:
-            ptype["D"] = "\U00010468"  # triangle
+            ptype["⊢"] = "\U00010468"  # triangle
         else:
-            ptype["D"] = "\U0001045B"  # wedge
+            ptype["⊢"] = "\U0001045B"  # wedge
     else:
-        ptype["D"] = "\U0001047C"  # infty
+        ptype["⊢"] = "\U0001047C"  # infty
     
-    # T: network (0) for chains, in (1) for rings, bowtie (2) for fused/multi-ring
+    # ⊣: network (0) for chains, in (1) for rings, bowtie (2) for fused/multi-ring
     if n_rings == 0:
-        ptype["T"] = "\U00010461"  # net
+        ptype["⊣"] = "\U00010461"  # net
     elif n_rings <= 2:
-        ptype["T"] = "\U00010470"  # in
+        ptype["⊣"] = "\U00010470"  # in
     else:
-        ptype["T"] = "\U00010465"  # bowtie
+        ptype["⊣"] = "\U00010465"  # bowtie
     
-    # R: super (0) for simple, cat (1) for moderate, dagger (2) for complex
+    # ≻: super (0) for simple, cat (1) for moderate, dagger (2) for complex
     if n_unique_fgs <= 1 and n_heavy <= 10:
-        ptype["R"] = "\U00010469"  # super
+        ptype["≻"] = "\U00010469"  # super
     elif n_unique_fgs <= 2 and n_heavy <= 20:
-        ptype["R"] = "\U00010451"  # cat
+        ptype["≻"] = "\U00010451"  # cat
     else:
-        ptype["R"] = "\U0001047D"  # dagger
+        ptype["≻"] = "\U0001047D"  # dagger
     
-    # P: asym (0) for chiral/no symmetry, psi (1) for some, pm (2) for balanced
+    # ≺: asym (0) for chiral/no symmetry, psi (1) for some, pm (2) for balanced
     try:
         n_chiral = Chem.rdMolDescriptors.CalcNumAtomStereoCenters(mol)
     except:
         n_chiral = 0
     if n_chiral >= 2:
-        ptype["P"] = "\U00010457"  # asym
+        ptype["≺"] = "\U00010457"  # asym
     elif n_chiral == 1:
-        ptype["P"] = "\U0001047F"  # psi
+        ptype["≺"] = "\U0001047F"  # psi
     elif n_rings >= 1:
-        ptype["P"] = "\U0001046C"  # pm
+        ptype["≺"] = "\U0001046C"  # pm
     else:
-        ptype["P"] = "\U00010457"  # asym
+        ptype["≺"] = "\U00010457"  # asym
     
-    # F: ell (0) for classical, hbar (2) for quantum — molecules are always classical
-    ptype["F"] = "\U00010471"  # ell
+    # ⋈: ell (0) for classical, hbar (2) for quantum — molecules are always classical
+    ptype["⋈"] = "\U00010471"  # ell
     
-    # K: mod (1) for flexible, slow (2) for ordered/rigid
+    # ⊤: mod (1) for flexible, slow (2) for ordered/rigid
     if n_rot <= 2:
-        ptype["K"] = "\U00010467"  # slow
+        ptype["⊤"] = "\U00010467"  # slow
     elif n_rot <= 5:
-        ptype["K"] = "\U00010464"  # mod
+        ptype["⊤"] = "\U00010464"  # mod
     else:
-        ptype["K"] = "\U00010458"  # fast
+        ptype["⊤"] = "\U00010458"  # fast
     
-    # G: beth (0) for small <8, gimel (1) for medium <20, aleph (2) for large
+    # ∈: beth (0) for small <8, gimel (1) for medium <20, aleph (2) for large
     if n_heavy < 8:
-        ptype["G"] = "\U0001045A"  # beth
+        ptype["∈"] = "\U0001045A"  # beth
     elif n_heavy < 20:
-        ptype["G"] = "\U00010454"  # gimel
+        ptype["∈"] = "\U00010454"  # gimel
     else:
-        ptype["G"] = "\U00010472"  # aleph
+        ptype["∈"] = "\U00010472"  # aleph
     
-    # Gm: and (0) for single FG, or (1) for 2 FGs, seq (2) for 3+, broad (3)
+    # ∋: and (0) for single FG, or (1) for 2 FGs, seq (2) for 3+, broad (3)
     if fg_count <= 1:
-        ptype["Gm"] = "\U0001045D"  # and
+        ptype["∋"] = "\U0001045D"  # and
     elif fg_count == 2:
-        ptype["Gm"] = "\U0001045C"  # or
+        ptype["∋"] = "\U0001045C"  # or
     elif fg_count <= 4:
-        ptype["Gm"] = "\U00010460"  # seq
+        ptype["∋"] = "\U00010460"  # seq
     else:
-        ptype["Gm"] = "\U00010475"  # broad
+        ptype["∋"] = "\U00010475"  # broad
     
-    # Ph: sub (0) for unreactive, critical (1) for aromatic/bioactive
+    # ⊙: sub (0) for unreactive, critical (1) for aromatic/bioactive
     if n_aromatic >= 1 or n_rings >= 2:
-        ptype["Ph"] = "\u2299"  # critical / odot
+        ptype["⊙"] = "\u2299"  # critical / odot
     else:
-        ptype["Ph"] = "\U00010462"  # sub
+        ptype["⊙"] = "\U00010462"  # sub
     
-    # H: memless (0) for very simple, one (1) for moderate, two (2) for complex
+    # ⊥: memless (0) for very simple, one (1) for moderate, two (2) for complex
     if n_rot <= 1:
-        ptype["H"] = "\U00010453"  # memless
+        ptype["⊥"] = "\U00010453"  # memless
     elif n_rot <= 4:
-        ptype["H"] = "\U00010452"  # one
+        ptype["⊥"] = "\U00010452"  # one
     else:
-        ptype["H"] = "\U00010456"  # two
+        ptype["⊥"] = "\U00010456"  # two
     
-    # S: 1:1 (0) for single molecule, nn (1) for identical repeats
-    ptype["S"] = "\U00010459"  # 1:1
+    # ⊞: 1:1 (0) for single molecule, nn (1) for identical repeats
+    ptype["⊞"] = "\U00010459"  # 1:1
     
-    # W: 0 (0) for simple, Z2 (1) for cyclic, Z (2) for aromatic/conjugated
+    # ⊡: 0 (0) for simple, Z2 (1) for cyclic, Z (2) for aromatic/conjugated
     if n_aromatic >= 2:
-        ptype["W"] = "\U0001046D"  # Z
+        ptype["⊡"] = "\U0001046D"  # Z
     elif n_aromatic >= 1:
-        ptype["W"] = "\U00010474"  # Z2
+        ptype["⊡"] = "\U00010474"  # Z2
     else:
-        ptype["W"] = "\U00010477"  # 0
+        ptype["⊡"] = "\U00010477"  # 0
     
     return ptype
 
@@ -403,7 +403,7 @@ def _tuple_distance_lig(ta: Dict[str, str], tb: Dict[str, str]) -> float:
     """Weighted Euclidean distance between two 12-primitive dicts."""
     from shared.primitives import PRIMITIVE_ORDER as PO
     sq = 0.0
-    for p in ["D","T","R","P","F","K","G","Gm","Ph","H","S","W"]:
+    for p in ["⊢","⊣","≻","≺","⋈","⊤","∈","∋","⊙","⊥","⊞","⊡"]:
         if p not in ta or p not in tb:
             continue
         oa = PO.get(p, {}).get(ta[p], 0)
@@ -676,10 +676,10 @@ def generate_from_structural_type(
 def _estimate_bond_type(ligand_type: Dict[str, str]) -> str:
     """Find the bond type whose scaffold structural signature is closest."""
     # Simplified: derive bond type from the ligand's T (topology) and K (kinetics)
-    t_glyph = ligand_type.get("T", "\U00010461")  # default net
-    k_glyph = ligand_type.get("K", "\U00010458")  # default fast
-    ph_glyph = ligand_type.get("Ph", "\U00010462")  # default sub
-    w_glyph = ligand_type.get("W", "\U00010477")  # default 0
+    t_glyph = ligand_type.get("⊣", "\U00010461")  # default net
+    k_glyph = ligand_type.get("⊤", "\U00010458")  # default fast
+    ph_glyph = ligand_type.get("⊙", "\U00010462")  # default sub
+    w_glyph = ligand_type.get("⊡", "\U00010477")  # default 0
     
     # Map the combination of primitives to bond type
     bond_map = {
@@ -721,14 +721,14 @@ def _estimate_bond_type(ligand_type: Dict[str, str]) -> str:
 def _estimate_fgs(ligand_type: Dict[str, str], bond_name: str) -> List[str]:
     """Estimate FG types from the ligand's structural type.
 
-    Full 16-entry (R, Gm) grid — every coupling×composition combination
+    Full 16-entry (≻, ∋) grid — every coupling×composition combination
     is mapped.  Entries are statically assigned as CHNO-only, sulfur-containing,
     phosphorus-containing, or mixed P+S.  No gating on S (stoichiometry) because
     the complement swaps R↔S, making the ligand S uninformative about site
     heteroatom diversity.
     """
-    r_glyph = ligand_type.get("R", "𐑩")
-    gm_glyph = ligand_type.get("Gm", "𐑝")
+    r_glyph = ligand_type.get("≻", "𐑩")
+    gm_glyph = ligand_type.get("∋", "𐑝")
 
     _R_SUPER   = "𐑩"; _R_CAT     = "𐑑"
     _R_DAGGER  = "𐑽"; _R_LR      = "𐑾"
@@ -841,7 +841,7 @@ def _complement_type(site_type: Dict[str, str]) -> Dict[str, str]:
     """
     from shared.primitives import PRIMITIVE_ORDER as PO
     
-    COMPLEMENTARY_PAIRS = [("D","W"), ("T","H"), ("R","S"), ("P","F"), ("K","G"), ("Gm","Ph")]
+    COMPLEMENTARY_PAIRS = [("⊢","⊡"), ("⊣","⊥"), ("≻","⊞"), ("≺","⋈"), ("⊤","∈"), ("∋","⊙")]
     
     ligand = {}
     for prim_a, prim_b in COMPLEMENTARY_PAIRS:
@@ -877,7 +877,7 @@ def _complement_type(site_type: Dict[str, str]) -> Dict[str, str]:
     """
     from rhr_p4rky.ligand_from_active_site import GLYPH_ORDINALS, ORD_TO_GLYPH
     
-    COMPLEMENTARY_PAIRS = [("D","W"), ("T","H"), ("R","S"), ("P","F"), ("K","G"), ("Gm","Ph")]
+    COMPLEMENTARY_PAIRS = [("⊢","⊡"), ("⊣","⊥"), ("≻","⊞"), ("≺","⋈"), ("⊤","∈"), ("∋","⊙")]
     
     ligand = {}
     for prim_a, prim_b in COMPLEMENTARY_PAIRS:
@@ -916,7 +916,7 @@ def _estimate_bond_from_site_type(site_type: Dict[str, str]) -> str:
     def o(glyph, pn):
         return GLYPH_ORDINALS.get(pn, {}).get(glyph, -1)
 
-    PN = ["D","T","R","P","F","K","G","Gm","Ph","H","S","W"]
+    PN = ["⊢","⊣","≻","≺","⋈","⊤","∈","∋","⊙","⊥","⊞","⊡"]
     fp = tuple(o(site_type.get(pn,"?"), pn) for pn in PN)
 
     # Enzyme fingerprint -> bond type map (from known catalytic mechanisms)
@@ -939,14 +939,14 @@ def _estimate_bond_from_site_type(site_type: Dict[str, str]) -> str:
     # P/F primitives: ordinal < max_ord means residues present (inverted min semantics).
 
     # Max ordinals per primitive
-    MAX_ORD = {"D": 3, "T": 4, "R": 3, "P": 4, "F": 2, "K": 4,
-               "G": 2, "Gm": 3, "Ph": 4, "H": 3, "S": 2, "W": 3}
+    MAX_ORD = {"⊢": 3, "⊣": 4, "≻": 3, "≺": 4, "⋈": 2, "⊤": 4,
+               "∈": 2, "∋": 3, "⊙": 4, "⊥": 3, "⊞": 2, "⊡": 3}
 
     def is_elevated(idx, val):
         """True if primitive has residues contributing to it."""
         pn = PN[idx]
         max_o = MAX_ORD.get(pn, 1)
-        if pn in ("P", "F"):
+        if pn in ("≺", "⋈"):
             return val < max_o  # inverted: low ordinal = many residues
         return val > 0
 
@@ -956,22 +956,22 @@ def _estimate_bond_from_site_type(site_type: Dict[str, str]) -> str:
         max_o = MAX_ORD.get(pn, 1)
         if max_o == 0:
             return 0.0
-        if pn in ("P", "F"):
+        if pn in ("≺", "⋈"):
             return (max_o - val) / max_o  # inverted
         return val / max_o
 
     # Score each bond type based on which primitives are elevated
     # Bond type -> (primitive_index, weight) pairs for what drives that bond
     BOND_RULES = {
-        "hydrogen_bond": [(10, 2.0), (9, 1.0), (8, 0.5)],  # S, H, Ph
-        "amide_link":    [(10, 1.5), (9, 1.5), (7, 1.5), (2, 0.5)],  # S, H, Gm, R
-        "ester_link":    [(9, 2.0), (2, 1.0)],  # H, R
-        "carbonyl":      [(2, 2.0), (9, 0.5)],  # R, H
-        "sigma_single":  [(5, 1.5), (6, 1.5), (0, 0.5)],  # K, G, D
-        "ether_link":    [(6, 2.0), (2, 0.5)],  # G, R
-        "aromatic":      [(3, 1.5), (11, 1.5), (4, 1.0)],  # P, W, F
-        "pi_bond":       [(11, 2.0), (3, 0.5), (4, 0.5)],  # W, P, F
-        "strain_release":[(1, 2.0), (5, 0.5)],  # T, K
+        "hydrogen_bond": [(10, 2.0), (9, 1.0), (8, 0.5)],  # ⊞, ⊥, ⊙
+        "amide_link":    [(10, 1.5), (9, 1.5), (7, 1.5), (2, 0.5)],  # ⊞, ⊥, ∋, ≻
+        "ester_link":    [(9, 2.0), (2, 1.0)],  # ⊥, ≻
+        "carbonyl":      [(2, 2.0), (9, 0.5)],  # ≻, ⊥
+        "sigma_single":  [(5, 1.5), (6, 1.5), (0, 0.5)],  # ⊤, ∈, ⊢
+        "ether_link":    [(6, 2.0), (2, 0.5)],  # ∈, ≻
+        "aromatic":      [(3, 1.5), (11, 1.5), (4, 1.0)],  # ≺, ⊡, ⋈
+        "pi_bond":       [(11, 2.0), (3, 0.5), (4, 0.5)],  # ⊡, ≺, ⋈
+        "strain_release":[(1, 2.0), (5, 0.5)],  # ⊣, ⊤
     }
 
     scores = {}
@@ -1009,7 +1009,7 @@ def _estimate_bonds_top_n(site_type: Dict[str, str], n: int = 3) -> List[str]:
     def o(glyph, pn):
         return GLYPH_ORDINALS.get(pn, {}).get(glyph, -1)
     
-    PN = ["D","T","R","P","F","K","G","Gm","Ph","H","S","W"]
+    PN = ["⊢","⊣","≻","≺","⋈","⊤","∈","∋","⊙","⊥","⊞","⊡"]
     fp = tuple(o(site_type.get(pn,"?"), pn) for pn in PN)
     
     ENZYME_BOND_MAP = {
@@ -1028,15 +1028,15 @@ def _estimate_bonds_top_n(site_type: Dict[str, str], n: int = 3) -> List[str]:
         others = [b for b in ["hydrogen_bond", "carbonyl", "ester_link", "ether_link", "aromatic", "pi_bond"] if b != exact]
         return [exact] + others[:n-1]
     
-    MAX_ORD = {"D": 3, "T": 4, "R": 3, "P": 4, "F": 2, "K": 4,
-               "G": 2, "Gm": 3, "Ph": 4, "H": 3, "S": 2, "W": 3}
+    MAX_ORD = {"⊢": 3, "⊣": 4, "≻": 3, "≺": 4, "⋈": 2, "⊤": 4,
+               "∈": 2, "∋": 3, "⊙": 4, "⊥": 3, "⊞": 2, "⊡": 3}
     
     def elevation(idx, val):
         pn = PN[idx]
         max_o = MAX_ORD.get(pn, 1)
         if max_o == 0:
             return 0.0
-        if pn in ("P", "F"):
+        if pn in ("≺", "⋈"):
             return (max_o - val) / max_o
         return val / max_o
     
@@ -1074,7 +1074,7 @@ def _estimate_fgs_top_n(site_type: Dict[str, str], bond_name: str, n: int = 3) -
     def o(glyph, pn):
         return GLYPH_ORDINALS.get(pn, {}).get(glyph, -1)
     
-    PN = ["D","T","R","P","F","K","G","Gm","Ph","H","S","W"]
+    PN = ["⊢","⊣","≻","≺","⋈","⊤","∈","∋","⊙","⊥","⊞","⊡"]
     fp = tuple(o(site_type.get(pn,"?"), pn) for pn in PN)
     
     FG_ESTIMATION_MAP = {
@@ -1104,15 +1104,15 @@ def _estimate_fgs_top_n(site_type: Dict[str, str], bond_name: str, n: int = 3) -
         defaults = bond_fg_defaults.get(bond_name, [["amine", "alcohol"], ["alcohol", "thiol"], ["amine", "carbonyl"]])
         return [exact] + [d for d in defaults if d != exact][:n-1]
     
-    MAX_ORD = {"D": 3, "T": 4, "R": 3, "P": 4, "F": 2, "K": 4,
-               "G": 2, "Gm": 3, "Ph": 4, "H": 3, "S": 2, "W": 3}
+    MAX_ORD = {"⊢": 3, "⊣": 4, "≻": 3, "≺": 4, "⋈": 2, "⊤": 4,
+               "∈": 2, "∋": 3, "⊙": 4, "⊥": 3, "⊞": 2, "⊡": 3}
     
     def elevation(idx, val):
         pn = PN[idx]
         max_o = MAX_ORD.get(pn, 1)
         if max_o == 0:
             return 0.0
-        if pn in ("P", "F"):
+        if pn in ("≺", "⋈"):
             return (max_o - val) / max_o
         return val / max_o
     
@@ -1188,7 +1188,7 @@ def _estimate_fgs_from_site_type(site_type: Dict[str, str], bond_name: str) -> L
     def o(glyph, pn):
         return GLYPH_ORDINALS.get(pn, {}).get(glyph, -1)
 
-    PN = ["D","T","R","P","F","K","G","Gm","Ph","H","S","W"]
+    PN = ["⊢","⊣","≻","≺","⋈","⊤","∈","∋","⊙","⊥","⊞","⊡"]
     fp = tuple(o(site_type.get(pn,"?"), pn) for pn in PN)
 
     # FG estimation map: exact matches for known catalytic types
@@ -1206,42 +1206,42 @@ def _estimate_fgs_from_site_type(site_type: Dict[str, str], bond_name: str) -> L
         return FG_ESTIMATION_MAP[fp]
 
     # ── Rule-based fallback for novel fingerprints ──
-    MAX_ORD = {"D": 3, "T": 4, "R": 3, "P": 4, "F": 2, "K": 4,
-               "G": 2, "Gm": 3, "Ph": 4, "H": 3, "S": 2, "W": 3}
+    MAX_ORD = {"⊢": 3, "⊣": 4, "≻": 3, "≺": 4, "⋈": 2, "⊤": 4,
+               "∈": 2, "∋": 3, "⊙": 4, "⊥": 3, "⊞": 2, "⊡": 3}
 
     def elevation(idx, val):
         pn = PN[idx]
         max_o = MAX_ORD.get(pn, 1)
         if max_o == 0:
             return 0.0
-        if pn in ("P", "F"):
+        if pn in ("≺", "⋈"):
             return (max_o - val) / max_o
         return val / max_o
 
     # FG scoring: each primitive elevation -> FG preferences
     FG_RULES = {
         # ── CHNO FGs ──
-        "amine":    [(10, 2.0), (7, 1.5), (8, 1.0)],  # S, Gm, Ph
-        "carbonyl": [(2, 2.0), (9, 1.0), (7, 0.5)],   # R, H, Gm
-        "alcohol":  [(2, 1.5), (9, 1.5), (6, 0.5)],   # R, H, G
-        "ether":    [(6, 2.0), (0, 1.0), (2, 0.5)],   # G, D, R
-        "aromatic_ring": [(3, 2.0), (4, 2.0), (11, 1.5)],  # P, F, W
-        "epoxide":  [(1, 2.0), (5, 0.5)],              # T, K
-        "lactam":   [(9, 1.5), (1, 1.0), (7, 1.0)],   # H, T, Gm
+        "amine":    [(10, 2.0), (7, 1.5), (8, 1.0)],  # ⊞, ∋, ⊙
+        "carbonyl": [(2, 2.0), (9, 1.0), (7, 0.5)],   # ≻, ⊥, ∋
+        "alcohol":  [(2, 1.5), (9, 1.5), (6, 0.5)],   # ≻, ⊥, ∈
+        "ether":    [(6, 2.0), (0, 1.0), (2, 0.5)],   # ∈, ⊢, ≻
+        "aromatic_ring": [(3, 2.0), (4, 2.0), (11, 1.5)],  # ≺, ⋈, ⊡
+        "epoxide":  [(1, 2.0), (5, 0.5)],              # ⊣, ⊤
+        "lactam":   [(9, 1.5), (1, 1.0), (7, 1.0)],   # ⊥, ⊣, ∋
         # ── Sulfur-containing FGs ──
-        "thiol":    [(2, 2.0), (10, 1.5), (5, 0.5)],  # R, S, K
-        "sulfide":  [(6, 1.5), (10, 1.5), (7, 1.0)],  # G, S, Gm
-        "sulfoxide":[(2, 1.5), (5, 1.5), (11, 1.0)],  # R, K, W
-        "sulfone":  [(3, 1.5), (5, 1.5), (11, 1.5)],  # P, K, W
-        "sulfate":  [(2, 2.0), (9, 1.5), (10, 1.0)],  # R, H, S
-        "sulfonate":[(2, 1.5), (10, 1.5), (7, 1.0)],  # R, S, Gm
-        "sulfonamide":[(7, 2.0), (10, 1.5), (8, 1.0)],# Gm, S, Ph
+        "thiol":    [(2, 2.0), (10, 1.5), (5, 0.5)],  # ≻, ⊞, ⊤
+        "sulfide":  [(6, 1.5), (10, 1.5), (7, 1.0)],  # ∈, ⊞, ∋
+        "sulfoxide":[(2, 1.5), (5, 1.5), (11, 1.0)],  # ≻, ⊤, ⊡
+        "sulfone":  [(3, 1.5), (5, 1.5), (11, 1.5)],  # ≺, ⊤, ⊡
+        "sulfate":  [(2, 2.0), (9, 1.5), (10, 1.0)],  # ≻, ⊥, ⊞
+        "sulfonate":[(2, 1.5), (10, 1.5), (7, 1.0)],  # ≻, ⊞, ∋
+        "sulfonamide":[(7, 2.0), (10, 1.5), (8, 1.0)],# ∋, ⊞, ⊙
         # ── Phosphorus-containing FGs ──
-        "phosphate":[(2, 2.0), (10, 1.5), (9, 1.0)],  # R, S, H
-        "phosphonate":[(10, 2.0), (7, 1.5), (2, 1.0)],# S, Gm, R
+        "phosphate":[(2, 2.0), (10, 1.5), (9, 1.0)],  # ≻, ⊞, ⊥
+        "phosphonate":[(10, 2.0), (7, 1.5), (2, 1.0)],# ⊞, ∋, ≻
         # ── Other heteroatom FGs ──
-        "nitro":    [(4, 2.0), (5, 1.5), (8, 1.0)],   # F, K, Ph
-        "nitrile":  [(7, 2.0), (10, 1.0), (4, 0.5)],  # Gm, S, F
+        "nitro":    [(4, 2.0), (5, 1.5), (8, 1.0)],   # ⋈, ⊤, ⊙
+        "nitrile":  [(7, 2.0), (10, 1.0), (4, 0.5)],  # ∋, ⊞, ⋈
     }
 
     scores = {}

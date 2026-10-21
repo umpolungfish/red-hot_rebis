@@ -1,0 +1,13 @@
+{
+  "sources": {
+    "red-hot_rebis/rhr_p4rky/peptide_bridge.rs": "cc3dbf64981240fccb760c342e182c9dee5e17a6659d5a0752dd123068dabe95",
+    "Vox/src/fold3d.rs": "dbad2b2773bc15c9dd1c3d6e1cc0edf620486a9623021e5a53bbd86cff9a157e",
+    "Vox/src/peptide_geometry.rs": "bb14df6de3735b6a4773b1ec0aecb811df6fa18f3cfe38f947e776d1df593a04",
+    "Vox/src/peptide_closure.rs": "921b4b1e5fab9c51adcb6f0862ed5ea7e92661a829f6603fd8185fb281f3da38",
+    "Vox/src/phase_word.rs": "57cd9ea758206f0a82bb6a17676a71845e8751e73ed4183a699b91f67ac67323",
+    "Vox/src/fold.rs": "096d8360bf4b9717a7201ac478d5426b066139cd6e7f48245226240ec2c21a4d",
+    "Vox/src/protein_relax.rs": "234847a6d53eb9f289c39df02c120ef2e292466faddc673600a40de05a3635d7"
+  },
+  "source_fingerprint": "5ea3b141a6b4a110ec1713acfb72d2f63360844d49288c100e5af31129a75ad2",
+  "binary_sha256": "57cce655c5238d8b8bdc83f8745861c53b32be42ed82a88ebf67ceeeee790e0d"
+}

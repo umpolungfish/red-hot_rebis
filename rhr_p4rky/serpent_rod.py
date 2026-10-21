@@ -41,14 +41,14 @@ import sys
 import json
 import math
 from typing import Dict, List, Tuple, Optional, Any
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 # ── MoDoT-grounded physical prediction ──
 try:
     from rhr_p4rky.physical_predictor import predict_from_tuple, get_protein_design_score
     HAS_PHYSICAL_PREDICTOR_SERPENT = True
 except Exception:
-    HAS_PHYSICAL_PREDICTOR_SERPENT = False, field
+    HAS_PHYSICAL_PREDICTOR_SERPENT = False
 
 from .belnap import Belnap, meet, join, bnot
 from .genetics_b4 import (
@@ -127,6 +127,7 @@ class FoldedProtein:
     binding_affinity_kcalmol: float = 0.0
     coherence_time_s: float = 0.0
     physical_quality_score: float = 0.0
+    protein_glut: Dict = field(default_factory=dict)
 
 class SerpentRod:
     """
@@ -137,12 +138,13 @@ class SerpentRod:
     """
     
     def __init__(self, rna_sequence: str, name: str = "serpent",
-                 genetic_code: str = "standard"):
+                 genetic_code: str = "standard", protein_glut=None):
         """Initialize with RNA sequence (A, C, G, U only)."""
         self.rna = rna_sequence.upper().replace("T", "U")
         self.name = name
         self.code_table = get_code_table(genetic_code)
         self.verbose = True
+        self.protein_glut = protein_glut
         
     def _compute_physical_properties(self, pattern, contacts):
         # Compute MoDoT-grounded physical properties from activation pattern
@@ -227,9 +229,8 @@ class SerpentRod:
         its corresponding IG primitive to build the fold."""
         pattern = []
         for aa in aas:
-            prim = IG_PRIMITIVE_OF_AA.get(aa)
-            if prim:
-                pattern.append((aa, prim))
+            prim = IG_PRIMITIVE_OF_AA.get(aa, "")
+            pattern.append((aa, prim))
         return pattern
     
     @staticmethod
@@ -240,7 +241,7 @@ class SerpentRod:
     
     def is_complementary_pair(self, p1: str, p2: str) -> bool:
         """Check if two IG primitives form a complementary pair.
-        Six pairs: Ð↔Ω, Þ↔Ħ, Ř↔Σ, Φ↔ƒ, Ç↔Γ, ɢ↔⊙"""
+        Six pairs: ⊢↔⊡, ⊣↔⊥, ≻↔⊞, ≺↔⋈, ⊤↔∋, ∋↔⊙"""
         s1 = self._short_name(p1)
         s2 = self._short_name(p2)
         return (s1, s2) in COMPLEMENTARY_PRIMITIVE_PAIRS
@@ -287,7 +288,7 @@ class SerpentRod:
                             confidence=0.5
                         ))
         
-        contacts.sort(key=lambda c: -c.confidence)
+        contacts.sort(key=lambda c: (c.residue_i, c.residue_j, c.interaction_type))
         return contacts
 
     # ── Step 5: Secondary Structure Prediction ──────────────────
@@ -360,11 +361,11 @@ class SerpentRod:
         determines the fold uniquely if at least one primitive from each
         complementary pair appears in the pattern.
         
-        Six pairs: (Ð,Ω), (Þ,Ħ), (Ř,Σ), (Φ,ƒ), (Ç,Γ), (ɢ,⊙)
+        Six pairs: (⊢,⊡), (⊣,⊥), (≻,⊞), (≺,⋈), (⊤,∋), (∋,⊙)
         Frobenius holds when at least 4 of 6 pairs are represented."""
         prims = set(p for _, p in pattern)
         
-        # Extract short names from full format like 'Ð (Dimensionality)'
+        # Extract short names from full format like '⊢ (Dimensionality)'
         def short_name(p: str) -> str:
             if '(' in p:
                 return p.split('(')[1].rstrip(')')  
@@ -407,7 +408,16 @@ class SerpentRod:
         # 2. Translation (belt)
         aas = self.translate_to_aa()
         
-        # 3. Activation pattern (12↔12 bijection)
+        from .protein_glut import ProteinGlut, retain_carrier
+        glut = retain_carrier(self.protein_glut) if self.protein_glut is not None else ProteinGlut.prepare(
+            aas, [self.rna[3*i:3*i+3] for i in range(len(aas))])
+        if [r["aa"] for r in glut.residues] != aas:
+            raise ValueError("Resident carrier does not match translated residues")
+        if any(r.get('codon') is not None and r['codon'] != self.rna[3*i:3*i+3]
+               for i, r in enumerate(glut.residues)):
+            raise ValueError('Resident carrier belongs to a different coding source')
+
+        # 3. Coarse annotations remain separate from full self-marks.
         pattern = self.compute_activation_pattern(aas)
         
         # 4. Contact prediction (rod)
@@ -416,6 +426,9 @@ class SerpentRod:
         # 5. Secondary structure
         secondary = self.predict_secondary_structure(aas, pattern)
         
+        glut.contacts(contacts)
+        glut.observe("sequence-secondary-structure", secondary)
+
         # 6. Quaternary assembly
         subunits = self.compute_subunit_count(aas, contacts)
         
@@ -423,7 +436,7 @@ class SerpentRod:
         frob = self.compute_frobenius_closure(aas, pattern)
         
         # Confidence: directly proportional to activation coverage
-        coverage = len(pattern) / max(1, len(aas))
+        coverage = sum(bool(prim) for _, prim in pattern) / max(1, len(aas))
         conf = min(1.0, coverage * 3.0)
         
         self.log(f"Direct RNA→FoldedProtein: {self.name}")
@@ -455,7 +468,8 @@ class SerpentRod:
             enzymatic_turnover_s=phys_props['enzymatic_turnover'],
             binding_affinity_kcalmol=phys_props['binding_affinity'],
             coherence_time_s=phys_props['coherence_time'],
-            physical_quality_score=phys_props['quality_score']
+            physical_quality_score=phys_props['quality_score'],
+            protein_glut=glut.as_dict()
         )
     
     def report(self) -> Dict:
@@ -464,6 +478,7 @@ class SerpentRod:
         return {
             "name": self.name,
             "rna_sequence": self.rna,
+            "protein_glut": result.protein_glut,
             "rna_length": len(self.rna),
             "aa_sequence": result.aa_sequence,
             "aa_length": len(result.aa_list),

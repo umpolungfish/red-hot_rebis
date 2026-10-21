@@ -31,77 +31,77 @@ from rdkit.Chem import AllChem, Descriptors, rdMolDescriptors
 
 # ── 12-Primitive definitions ──
 PRIMITIVE_ORDER = {
-    "D":  ["𐑛", "𐑨", "𐑼", "𐑦"],   # Dimensionality (4)
-    "T":  ["𐑡", "𐑰", "𐑥", "𐑶", "𐑸"],  # Topology (5)
-    "R":  ["𐑩", "𐑑", "𐑽", "𐑾"],   # Coupling (4)
-    "P":  ["𐑗", "𐑿", "𐑬", "𐑯", "𐑹"],  # Parity (5)
-    "F":  ["𐑱", "𐑞", "𐑐"],         # Fidelity (3)
-    "K":  ["𐑺", "𐑪", "𐑧", "𐑤", "𐑘"],  # Kinetics (5)
-    "G":  ["𐑲", "𐑚", "𐑔"],         # Cardinality (3)
-    "Gm": ["𐑝", "𐑜", "𐑠", "𐑵"],  # Composition (4)
-    "Phi": ["𐑢", "⊙", "𐑮", "𐑻", "𐑣"],  # Criticality (5)
-    "H":  ["𐑓", "𐑒", "𐑖", "𐑫"],   # Chirality (4)
-    "S":  ["𐑙", "𐑕", "𐑳"],         # Stoichiometry (3)
-    "W":  ["𐑷", "𐑴", "𐑭", "𐑟"],   # Winding (4)
+    "⊢":  ["𐑛", "𐑨", "𐑼", "𐑦"],   # Dimensionality (4)
+    "⊣":  ["𐑡", "𐑰", "𐑥", "𐑶", "𐑸"],  # Topology (5)
+    "≻":  ["𐑩", "𐑑", "𐑽", "𐑾"],   # Coupling (4)
+    "≺":  ["𐑗", "𐑿", "𐑬", "𐑯", "𐑹"],  # Parity (5)
+    "⋈":  ["𐑱", "𐑞", "𐑐"],         # Fidelity (3)
+    "⊤":  ["𐑺", "𐑪", "𐑧", "𐑤", "𐑘"],  # Kinetics (5)
+    "∈":  ["𐑲", "𐑚", "𐑔"],         # Cardinality (3)
+    "∋": ["𐑝", "𐑜", "𐑠", "𐑵"],  # Composition (4)
+    "⊙": ["𐑢", "⊙", "𐑮", "𐑻", "𐑣"],  # Criticality (5)
+    "⊥":  ["𐑓", "𐑒", "𐑖", "𐑫"],   # Chirality (4)
+    "⊞":  ["𐑙", "𐑕", "𐑳"],         # Stoichiometry (3)
+    "⊡":  ["𐑷", "𐑴", "𐑭", "𐑟"],   # Winding (4)
 }
 
 # AA → primitive mapping for active site residues
 AA_TO_PRIMITIVE = {
     # Catalytic residues → specific primitives
-    "Ser": "R",  "Thr": "R",   # Nucleophiles → coupling
-    "Asp": "F",  "Glu": "F",   # Acid/base → fidelity
-    "His": "Phi",              # Proton shuttle → criticality
-    "Cys": "P",                # Thiol nucleophile → parity
-    "Lys": "S",                # Schiff base / charge → stoichiometry
-    "Arg": "S",                # Charge stabilization → stoichiometry
-    "Tyr": "H",                # H-bond network → chirality
-    "Asn": "T",  "Gln": "T",   # H-bond donors → topology
-    "Met": "K",                # Sulfur chemistry → kinetics
-    "Trp": "G",                # π-stacking → cardinality
-    "Phe": "G",                # π-stacking → cardinality
-    "Ile": "W", "Val": "W", "Leu": "W",  # Hydrophobic packing → winding
-    "Gly": "D",                # Flexibility → dimensionality
-    "Pro": "K",                # Conformational constraint → kinetics
-    "Ala": "D",                # Minimal side chain → dimensionality
+    "Ser": "≻",  "Thr": "≻",   # Nucleophiles → coupling
+    "Asp": "⋈",  "Glu": "⋈",   # Acid/base → fidelity
+    "His": "⊙",              # Proton shuttle → criticality
+    "Cys": "≺",                # Thiol nucleophile → parity
+    "Lys": "⊞",                # Schiff base / charge → stoichiometry
+    "Arg": "⊞",                # Charge stabilization → stoichiometry
+    "Tyr": "⊥",                # H-bond network → chirality
+    "Asn": "⊣",  "Gln": "⊣",   # H-bond donors → topology
+    "Met": "⊤",                # Sulfur chemistry → kinetics
+    "Trp": "∈",                # π-stacking → cardinality
+    "Phe": "∈",                # π-stacking → cardinality
+    "Ile": "⊡", "Val": "⊡", "Leu": "⊡",  # Hydrophobic packing → winding
+    "Gly": "⊢",                # Flexibility → dimensionality
+    "Pro": "⊤",                # Conformational constraint → kinetics
+    "Ala": "⊢",                # Minimal side chain → dimensionality
 }
 
 # Reaction type → primitive perturbation weights
 REACTION_PRIMITIVE_WEIGHTS = {
-    "hydrolysis":       {"R": 1.2, "F": 1.1, "Phi": 0.9},
-    "phosphorylation":  {"P": 1.3, "F": 1.1, "K": 0.8},
-    "dephosphorylation": {"P": 1.2, "F": 1.0, "K": 0.9},
-    "oxidation":        {"F": 1.3, "Phi": 1.2, "K": 0.7},
-    "reduction":        {"F": 1.2, "Phi": 1.0, "R": 0.9},
-    "decarboxylation":  {"D": 1.2, "K": 1.1, "G": 0.9},
-    "isomerization":    {"T": 1.3, "H": 1.2, "W": 0.9},
-    "ligation":         {"Gm": 1.3, "S": 1.2, "P": 0.8},
-    "polymerization":   {"Gm": 1.2, "S": 1.3, "W": 0.8},
-    "methylation":      {"S": 1.1, "H": 1.2, "D": 0.9},
-    "acetylation":      {"S": 1.1, "F": 1.1, "P": 0.9},
-    "proteolysis":      {"R": 1.3, "F": 1.0, "T": 0.9},
-    "glycosylation":    {"T": 1.2, "S": 1.1, "R": 0.9},
+    "hydrolysis":       {"≻": 1.2, "⋈": 1.1, "⊙": 0.9},
+    "phosphorylation":  {"≺": 1.3, "⋈": 1.1, "⊤": 0.8},
+    "dephosphorylation": {"≺": 1.2, "⋈": 1.0, "⊤": 0.9},
+    "oxidation":        {"⋈": 1.3, "⊙": 1.2, "⊤": 0.7},
+    "reduction":        {"⋈": 1.2, "⊙": 1.0, "≻": 0.9},
+    "decarboxylation":  {"⊢": 1.2, "⊤": 1.1, "∈": 0.9},
+    "isomerization":    {"⊣": 1.3, "⊥": 1.2, "⊡": 0.9},
+    "ligation":         {"∋": 1.3, "⊞": 1.2, "≺": 0.8},
+    "polymerization":   {"∋": 1.2, "⊞": 1.3, "⊡": 0.8},
+    "methylation":      {"⊞": 1.1, "⊥": 1.2, "⊢": 0.9},
+    "acetylation":      {"⊞": 1.1, "⋈": 1.1, "≺": 0.9},
+    "proteolysis":      {"≻": 1.3, "⋈": 1.0, "⊣": 0.9},
+    "glycosylation":    {"⊣": 1.2, "⊞": 1.1, "≻": 0.9},
 }
 
 # Organism kingdom → primitive perturbations
 ORGANISM_WEIGHTS = {
-    "homo":      {"H": 1.1, "S": 1.0, "Phi": 1.0},   # human → balanced
-    "bos":       {"G": 0.9, "D": 1.0, "W": 1.1},      # bovine
-    "mus":       {"G": 0.8, "D": 1.1, "W": 0.9},      # mouse
-    "rattus":    {"G": 0.8, "D": 1.1, "W": 0.9},      # rat
-    "saccharomyces": {"T": 1.2, "G": 0.7, "K": 1.1},  # yeast
-    "escherichia":   {"T": 1.1, "G": 0.6, "F": 1.1},  # E. coli
-    "bacillus":  {"T": 1.1, "W": 1.2, "K": 1.0},      # Bacillus
-    "pseudomonas": {"F": 1.2, "K": 1.1, "D": 1.0},    # Pseudomonas
-    "arabidopsis":  {"H": 1.1, "S": 0.9, "D": 1.1},   # plant
-    "drosophila":   {"T": 1.1, "H": 1.0, "W": 0.9},   # fly
-    "plasmodium":   {"P": 1.3, "G": 0.8, "F": 0.9},   # malaria
-    "trypanosoma":  {"P": 1.2, "T": 1.1, "G": 0.7},   # trypanosome
-    "mycobacterium": {"F": 1.3, "W": 1.1, "G": 0.7},  # TB
-    "staphylococcus": {"P": 1.1, "W": 1.0, "K": 1.1}, # Staph
-    "ideonella":     {"F": 1.2, "R": 1.1, "K": 0.8},  # PETase
-    "sars":      {"P": 1.4, "W": 0.8, "R": 1.1},      # viral
-    "hiv":       {"P": 1.4, "W": 0.8, "R": 1.1},      # viral
-    "influenza": {"P": 1.3, "T": 1.2, "G": 0.7},       # viral
+    "homo":      {"⊥": 1.1, "⊞": 1.0, "⊙": 1.0},   # human → balanced
+    "bos":       {"∈": 0.9, "⊢": 1.0, "⊡": 1.1},      # bovine
+    "mus":       {"∈": 0.8, "⊢": 1.1, "⊡": 0.9},      # mouse
+    "rattus":    {"∈": 0.8, "⊢": 1.1, "⊡": 0.9},      # rat
+    "saccharomyces": {"⊣": 1.2, "∈": 0.7, "⊤": 1.1},  # yeast
+    "escherichia":   {"⊣": 1.1, "∈": 0.6, "⋈": 1.1},  # E. coli
+    "bacillus":  {"⊣": 1.1, "⊡": 1.2, "⊤": 1.0},      # Bacillus
+    "pseudomonas": {"⋈": 1.2, "⊤": 1.1, "⊢": 1.0},    # Pseudomonas
+    "arabidopsis":  {"⊥": 1.1, "⊞": 0.9, "⊢": 1.1},   # plant
+    "drosophila":   {"⊣": 1.1, "⊥": 1.0, "⊡": 0.9},   # fly
+    "plasmodium":   {"≺": 1.3, "∈": 0.8, "⋈": 0.9},   # malaria
+    "trypanosoma":  {"≺": 1.2, "⊣": 1.1, "∈": 0.7},   # trypanosome
+    "mycobacterium": {"⋈": 1.3, "⊡": 1.1, "∈": 0.7},  # TB
+    "staphylococcus": {"≺": 1.1, "⊡": 1.0, "⊤": 1.1}, # Staph
+    "ideonella":     {"⋈": 1.2, "≻": 1.1, "⊤": 0.8},  # PETase
+    "sars":      {"≺": 1.4, "⊡": 0.8, "≻": 1.1},      # viral
+    "hiv":       {"≺": 1.4, "⊡": 0.8, "≻": 1.1},      # viral
+    "influenza": {"≺": 1.3, "⊣": 1.2, "∈": 0.7},       # viral
 }
 
 
@@ -164,7 +164,7 @@ def _organism_perturbation(organism: str) -> Dict[str, float]:
     for key, weights in ORGANISM_WEIGHTS.items():
         if key in org_lower:
             return dict(weights)
-    return {"Phi": 1.0, "W": 1.0}  # neutral
+    return {"⊙": 1.0, "⊡": 1.0}  # neutral
 
 
 def _substrate_perturbation(substrate_smiles: str) -> Dict[str, float]:
@@ -185,46 +185,46 @@ def _substrate_perturbation(substrate_smiles: str) -> Dict[str, float]:
 
     # Large substrate → higher dimensionality
     if heavy > 40:
-        pert["D"] = 0.9
+        pert["⊢"] = 0.9
     elif heavy < 10:
-        pert["D"] = 1.2
+        pert["⊢"] = 1.2
 
     # Many rings → more complex topology
     if rings > 4:
-        pert["T"] = 0.8
+        pert["⊣"] = 0.8
     elif rings < 2:
-        pert["T"] = 1.2
+        pert["⊣"] = 1.2
 
     # Polar substrate → coupling perturbation
     if hbd + hba > 8:
-        pert["R"] = 1.2
+        pert["≻"] = 1.2
     elif hbd + hba < 2:
-        pert["R"] = 0.8
+        pert["≻"] = 0.8
 
     # Rotatable bonds → kinetics perturbation
     if rot_bonds > 10:
-        pert["K"] = 0.8
+        pert["⊤"] = 0.8
     elif rot_bonds < 3:
-        pert["K"] = 1.2
+        pert["⊤"] = 1.2
 
     # Aromatic → cardinality perturbation
     if arom_rings > 2:
-        pert["G"] = 1.2
+        pert["∈"] = 1.2
     elif arom_rings == 0:
-        pert["G"] = 0.8
+        pert["∈"] = 0.8
 
     # logP → fidelity perturbation
     if logp > 5:
-        pert["F"] = 0.8
+        pert["⋈"] = 0.8
     elif logp < -2:
-        pert["F"] = 1.2
+        pert["⋈"] = 1.2
 
     return pert
 
 
 def _reaction_perturbation(reaction_type: str) -> Dict[str, float]:
     """Get primitive perturbation weights for a reaction type."""
-    return REACTION_PRIMITIVE_WEIGHTS.get(reaction_type, {"Phi": 1.0})
+    return REACTION_PRIMITIVE_WEIGHTS.get(reaction_type, {"⊙": 1.0})
 
 
 def _push_primitive(primitives_list: List[str], current: str, weight: float) -> str:
@@ -270,7 +270,7 @@ def encode_site_with_context(
         seed_diversity: Integer seed for deterministic perturbation (default: hash of protein name)
     
     Returns:
-        12-primitive dict like {"D": "𐑼", "T": "𐑶", ...}
+        12-primitive dict like {"⊢": "𐑼", "⊣": "𐑶", ...}
     """
     if not residues:
         return _default_site_type()
@@ -309,7 +309,7 @@ def encode_site_with_context(
     
     # Diversity seed: use bits 0-3 for one primitive, 4-7 for another
     seed_bits = [(seed_diversity >> i) & 3 for i in range(0, 8, 2)]
-    seed_primitives = ["D", "T", "R", "K"]
+    seed_primitives = ["⊢", "⊣", "≻", "⊤"]
     for i, prim in enumerate(seed_primitives):
         if i < len(seed_bits):
             # seed 0→0.8, 1→0.95, 2→1.05, 3→1.2
@@ -338,11 +338,7 @@ def _encode_residues_base(residues: List[str]) -> Dict[str, str]:
     # Extended AA→Primitive mapping
     _ALL_AA_PRIMITIVE = dict(AA_TO_PRIMITIVE)
     
-    _AA_MAP_1L = {"S": "Ser", "D": "Asp", "H": "His", "E": "Glu",
-                   "K": "Lys", "C": "Cys", "Y": "Tyr", "F": "Phe",
-                   "I": "Ile", "N": "Asn", "Q": "Gln", "W": "Trp",
-                   "M": "Met", "G": "Gly", "A": "Ala", "V": "Val",
-                   "L": "Leu", "P": "Pro", "T": "Thr", "R": "Arg"}
+    _AA_MAP_1L = {'A': 'Ala', 'R': 'Arg', 'N': 'Asn', 'D': 'Asp', 'C': 'Cys', 'Q': 'Gln', 'E': 'Glu', 'G': 'Gly', 'H': 'His', 'I': 'Ile', 'L': 'Leu', 'K': 'Lys', 'M': 'Met', 'F': 'Phe', 'P': 'Pro', 'S': 'Ser', 'T': 'Thr', 'W': 'Trp', 'Y': 'Tyr', 'V': 'Val'}
     
     clean_aas = []
     for r in residues:
@@ -386,16 +382,16 @@ def _encode_residues_base(residues: List[str]) -> Dict[str, str]:
             # Unmapped primitives: set to lowest ordinal (not contributing)
             result[prim_key] = values[0]
     
-    # Tensor correction: P and F use min (more residues = more constrained)
-    if "P" in prim_counts:
-        frac_p = prim_counts["P"] / n_total
-        idx_p = max(int((1 - frac_p) * len(PRIMITIVE_ORDER["P"])), 0)
-        result["P"] = PRIMITIVE_ORDER["P"][min(idx_p, len(PRIMITIVE_ORDER["P"]) - 1)]
+    # Tensor correction: ≺ and ⋈ use min (more residues = more constrained)
+    if "≺" in prim_counts:
+        frac_p = prim_counts["≺"] / n_total
+        idx_p = max(int((1 - frac_p) * len(PRIMITIVE_ORDER["≺"])), 0)
+        result["≺"] = PRIMITIVE_ORDER["≺"][min(idx_p, len(PRIMITIVE_ORDER["≺"]) - 1)]
     
-    if "F" in prim_counts:
-        frac_f = prim_counts["F"] / n_total
-        idx_f = max(int((1 - frac_f) * len(PRIMITIVE_ORDER["F"])), 0)
-        result["F"] = PRIMITIVE_ORDER["F"][min(idx_f, len(PRIMITIVE_ORDER["F"]) - 1)]
+    if "⋈" in prim_counts:
+        frac_f = prim_counts["⋈"] / n_total
+        idx_f = max(int((1 - frac_f) * len(PRIMITIVE_ORDER["⋈"])), 0)
+        result["⋈"] = PRIMITIVE_ORDER["⋈"][min(idx_f, len(PRIMITIVE_ORDER["⋈"]) - 1)]
     
     return result
 
@@ -403,14 +399,14 @@ def _encode_residues_base(residues: List[str]) -> Dict[str, str]:
 def _default_site_type() -> Dict[str, str]:
     """Default site_type when encoding fails."""
     return {
-        "D": "𐑨", "T": "𐑡", "R": "𐑩", "P": "𐑗", "F": "𐑱", "K": "𐑪",
-        "G": "𐑲", "Gm": "𐑝", "Phi": "𐑢", "H": "𐑓", "S": "𐑙", "W": "𐑷"
+        "⊢": "𐑨", "⊣": "𐑡", "≻": "𐑩", "≺": "𐑗", "⋈": "𐑱", "⊤": "𐑪",
+        "∈": "𐑲", "∋": "𐑝", "⊙": "𐑢", "⊥": "𐑓", "⊞": "𐑙", "⊡": "𐑷"
     }
 
 
 def _site_type_to_tuple(site_type: Dict[str, str]) -> str:
     """Convert site_type dict to tuple string for display."""
-    order = ["D", "T", "R", "P", "F", "K", "G", "Gm", "Phi", "H", "S", "W"]
+    order = ["⊢", "⊣", "≻", "≺", "⋈", "⊤", "∈", "∋", "⊙", "⊥", "⊞", "⊡"]
     return "⟨" + "".join(site_type.get(p, "?") for p in order) + "⟩"
 
 
@@ -464,8 +460,8 @@ def _select_bonds_for_site(site_type: Dict[str, str], n: int = 5) -> List[str]:
     # Use primitives to weight bond selection
     all_bonds = list(BOND_CATALOG.keys())
     
-    # R (coupling) → prefer polar bonds at high ordinal
-    r_idx = PRIMITIVE_ORDER["R"].index(site_type.get("R", "𐑩"))
+    # ≻ (coupling) → prefer polar bonds at high ordinal
+    r_idx = PRIMITIVE_ORDER["≻"].index(site_type.get("≻", "𐑩"))
     if r_idx >= 2:
         polar_bonds = ["amide", "ester", "urea", "carbamate", "sulfonamide"]
         scored = [(b, 2.0 if b in polar_bonds else 1.0) for b in all_bonds]
@@ -473,14 +469,14 @@ def _select_bonds_for_site(site_type: Dict[str, str], n: int = 5) -> List[str]:
         nonpolar_bonds = ["ether", "thioether", "carbonyl", "imine"]
         scored = [(b, 2.0 if b in nonpolar_bonds else 1.0) for b in all_bonds]
     
-    # F (fidelity) → at high ordinal, prefer stable bonds
-    f_idx = PRIMITIVE_ORDER["F"].index(site_type.get("F", "𐑱"))
+    # ⋈ (fidelity) → at high ordinal, prefer stable bonds
+    f_idx = PRIMITIVE_ORDER["⋈"].index(site_type.get("⋈", "𐑱"))
     if f_idx >= 2:
         stable = ["amide", "sulfone", "triazole", "oxadiazole", "ether"]
         scored = [(b, s * (1.5 if b in stable else 1.0)) for b, s in scored]
     
-    # Phi (criticality) → at high ordinal, prefer reactive bonds
-    phi_idx = PRIMITIVE_ORDER["Phi"].index(site_type.get("Phi", "𐑢"))
+    # ⊙ (criticality) → at high ordinal, prefer reactive bonds
+    phi_idx = PRIMITIVE_ORDER["⊙"].index(site_type.get("⊙", "𐑢"))
     if phi_idx >= 3:
         reactive = ["hydrazone", "imine", "sulfoxide", "isocyanate"]
         scored = [(b, s * (1.5 if b in reactive else 1.0)) for b, s in scored]
@@ -493,8 +489,8 @@ def _select_fgs_for_site(site_type: Dict[str, str], bond_name: str, n: int = 4) 
     """Select FG combinations based on site_type primitives."""
     all_fgs = list(FG_CATALOG.keys())
     
-    # K (kinetics) → high ordinal prefers faster-reacting FGs
-    k_idx = PRIMITIVE_ORDER["K"].index(site_type.get("K", "𐑪"))
+    # ⊤ (kinetics) → high ordinal prefers faster-reacting FGs
+    k_idx = PRIMITIVE_ORDER["⊤"].index(site_type.get("⊤", "𐑪"))
     if k_idx >= 3:
         fast = ["epoxide", "azide", "isocyanate", "aldehyde"]
         scored = [(f, 2.0 if f in fast else 1.0) for f in all_fgs]
@@ -502,8 +498,8 @@ def _select_fgs_for_site(site_type: Dict[str, str], bond_name: str, n: int = 4) 
         slow = ["alcohol", "amine", "carboxyl", "sulfate"]
         scored = [(f, 2.0 if f in slow else 1.0) for f in all_fgs]
     
-    # S (stoichiometry) → high ordinal prefers diverse FG types
-    s_idx = PRIMITIVE_ORDER["S"].index(site_type.get("S", "𐑙"))
+    # ⊞ (stoichiometry) → high ordinal prefers diverse FG types
+    s_idx = PRIMITIVE_ORDER["⊞"].index(site_type.get("⊞", "𐑙"))
     if s_idx >= 2:
         diverse = ["alcohol", "amine", "thiol", "halogen", "nitrile"]
         scored = [(f, s * (1.5 if f in diverse else 1.0)) for f, s in scored]
@@ -584,14 +580,14 @@ def generate_ligands_sicpovm(
                 pass  # first config
     
             try:
-                # Modify site_type's G and Gm based on bond/FG to create diversity
+                # Modify site_type's ∈ and ∋ based on bond/FG to create diversity
                 config_site = dict(site_type)
-                # Bond type affects G (cardinality)
+                # Bond type affects ∈ (cardinality)
                 g_shift = hash(bond_name) % 3
-                config_site["G"] = PRIMITIVE_ORDER["G"][g_shift]
-                # FG pair affects Gm (composition)
+                config_site["∈"] = PRIMITIVE_ORDER["∈"][g_shift]
+                # FG pair affects ∋ (composition)
                 gm_shift = hash("+".join(fg_pair)) % 4
-                config_site["Gm"] = PRIMITIVE_ORDER["Gm"][gm_shift]
+                config_site["∋"] = PRIMITIVE_ORDER["∋"][gm_shift]
                 
                 batch = generate_hybrid_ligands(
                     site_type=config_site,

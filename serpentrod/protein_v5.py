@@ -270,7 +270,7 @@ def identify_fragment(seq: str, prev_motif: str = None,
            classify_module(seq).get('dominant')
     
     desc_map = {
-        '◻': 'Ω-winding module',
+        '⊡': 'Ω-winding module',
         'φ̂': '⊙-criticality signal',
         '≻': 'Ř-scaffold domain',
         '≺': 'Φ-switch domain',
@@ -489,7 +489,7 @@ def should_merge_fragments(products: list, cleavage_sites: list,
                         break
                     # Also stop if the fragment is large (>40 AA) and has hormone-like profile
                     nxt_cls = nxt.classification if hasattr(nxt, 'classification') else {}
-                    if len(nxt.sequence) > 40 and '◻' not in str(nxt_cls.get('dominant', '')):
+                    if len(nxt.sequence) > 40 and '⊡' not in str(nxt_cls.get('dominant', '')):
                         break
                     merged_seq += nxt.sequence
                     merge_end = nxt.end
@@ -705,6 +705,8 @@ class EnhancedPredictorV5:
             result.mature_products, result.cleavage_sites, seq, name
         )
         
+        from rhr_p4rky.protein_glut import prepare_sequence
+        result.protein_glut = prepare_sequence(seq).as_dict()
         return result
 
     def narrative(self, result: ProcessingPrediction) -> str:
