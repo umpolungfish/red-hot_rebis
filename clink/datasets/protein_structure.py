@@ -115,6 +115,7 @@ class Residue:
     chain: str = "A"
     secondary_structure: str = "C"  # H=helix, E=strand, C=coil
     atoms: List[Atom] = field(default_factory=list)
+    self_marks: List[Dict] = field(default_factory=list)
     phi: float = -65.0
     psi: float = -40.0
     omega: float = 180.0
@@ -132,6 +133,7 @@ class ProteinStructure:
     ramachandran_favored: float = 0.0
     clash_score: float = 0.0
     notes: List[str] = field(default_factory=list)
+    protein_glut: Dict = field(default_factory=dict)
 # ─── Secondary Structure Predictor ──────────────────────────────────
 
 class SecondaryStructurePredictor:
@@ -520,6 +522,13 @@ class BackboneBuilder:
             "REMARK   4",
         ]
 
+        if residues and residues[0].self_marks:
+            lines.append('REMARK 901 NATIVE PROTEIN STATE B; COORDINATES ARE A BOUNDARY READOUT')
+            for residue in residues:
+                for form in residue.self_marks:
+                    lines.append(f"REMARK 901 RESIDUE {residue.seq_num} {residue.aa_code} SELF-MARK {form['artifact_id']}")
+                    lines.append(f"REMARK 901 SOURCE SHA256 {form['sha256']}")
+
         # Count secondary structure
         ss_types = {"H": 0, "E": 0, "C": 0}
         for res in residues:
@@ -637,11 +646,20 @@ def generate_protein_structure(sequence, name="CLINK_design", chain="A"):
 
     builder = BackboneBuilder(sequence, ss)
     residues = builder.build()
+    from rhr_p4rky.protein_glut import prepare_sequence
+    glut = prepare_sequence(sequence)
+    for residue, native in zip(residues, glut.residues):
+        residue.self_marks = native['self_marks']
+    glut.observe('secondary-structure-readout', ss)
+    glut.observe('coordinate-readout', [
+        {'index': i, 'atoms': [{'name': a.name, 'xyz': [a.x, a.y, a.z]} for a in r.atoms]}
+        for i, r in enumerate(residues)])
 
     struct = ProteinStructure(
         sequence=sequence,
         name=name,
         residues=residues,
+        protein_glut=glut.as_dict(),
         secondary_structure=ss,
         n_helix=ss.count("H"),
         n_strand=ss.count("E"),

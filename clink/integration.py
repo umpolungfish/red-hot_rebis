@@ -59,7 +59,7 @@ def verify_clink_integration():
     zfc_fe_tup = {
         "⊢": "𐑦", "⊣": "𐑸", "≻": "𐑾", "≺": "𐑹",
         "⋈": "𐑐", "⊤": "𐑧", "∈": "𐑲", "∋": "𐑠",
-        "⊙": "⊙", "⊥": "𐑫", "⊞": "𐑳", "◻": "𐑭"
+        "⊙": "⊙", "⊥": "𐑫", "⊞": "𐑳", "⊡": "𐑭"
     }
     org_tup = clink_layer_tuple(8)
     zfc_dist = clink_distance(zfc_fe_tup, org_tup)

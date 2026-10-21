@@ -1,4 +1,0 @@
-def build():
-    if True:
-        if True:
-            layer_dir.mkdir(parents=True, exist_ok=True)

@@ -182,7 +182,7 @@ def encode_site_imasm(
     ig = fingerprint_to_ig_biochemical(fp)
 
     # 5. Build site_type for downstream
-    PNAMES = ["D", "T", "R", "P", "F", "K", "G", "Gm", "Ph", "H", "S", "W"]
+    PNAMES = ["⊢", "⊣", "≻", "≺", "⋈", "⊤", "∈", "∋", "⊙", "⊥", "⊞", "⊡"]
     site_type = {p: ig[i] for i, p in enumerate(PNAMES)}
 
     # 6. Diagnostic: per-residue chemical assignments
@@ -272,136 +272,136 @@ def fingerprint_to_ig_biochemical(fp) -> Tuple[str, ...]:
     n_aromatic = (1 if has_aromatic else 0) + (1 if has_arom_h else 0)
     n_hydrophobic = (1 if has_branched else 0) + (1 if has_small_h else 0)
 
-    # D: Dimensionality — chemical complexity
+    # ⊢: Dimensionality — chemical complexity
     if d >= 5:
-        D = '𐑦'
+        dimensionality = '𐑦'
     elif d >= 3:
-        D = '𐑼'
+        dimensionality = '𐑼'
     elif d == 2:
-        D = '𐑨'
+        dimensionality = '𐑨'
     else:
-        D = '𐑛'
+        dimensionality = '𐑛'
 
-    # T: Topology — spatial residue connectivity
+    # ⊣: Topology — spatial residue connectivity
     if fp.self_ref:
-        T = '𐑸' if n_aromatic >= 2 else '𐑥'
+        topology = '𐑸' if n_aromatic >= 2 else '𐑥'
     elif n_charged >= 2:
-        T = '𐑶'
+        topology = '𐑶'
     elif n_charged == 1:
-        T = '𐑥'
+        topology = '𐑥'
     elif n_aromatic >= 1:
-        T = '𐑰'
+        topology = '𐑰'
     elif n_hydrophobic >= 2:
-        T = '𐑡'
+        topology = '𐑡'
     else:
-        T = '𐑡'
+        topology = '𐑡'
 
-    # R: Coupling — charge/H-bond interactions
+    # ≻: Coupling — charge/H-bond interactions
     if has_acidic and has_basic:
-        R = '𐑾'
+        coupling = '𐑾'
     elif has_acidic and has_guanid:
-        R = '𐑾'
+        coupling = '𐑾'
     elif has_polar and (has_acidic or has_basic):
-        R = '𐑽'
+        coupling = '𐑽'
     elif has_polar:
-        R = '𐑽'
+        coupling = '𐑽'
     elif has_guanid:
-        R = '𐑹'   # Strong directional H-bond (guanidinium)
+        coupling = '𐑹'   # Strong directional H-bond (guanidinium)
     elif has_basic:
-        R = '𐑑'   # Positive charge center
+        coupling = '𐑑'   # Positive charge center
     elif has_acidic:
-        R = '𐑽'   # Negative charge (conjugate base)
+        coupling = '𐑽'   # Negative charge (conjugate base)
     else:
-        R = '𐑩'
+        coupling = '𐑩'
 
-    # P: Parity — charge balance
+    # ≺: Parity — charge balance
     if has_acidic and has_basic:
-        P = '𐑬'
+        parity = '𐑬'
     elif has_acidic and has_guanid:
-        P = '𐑹'
+        parity = '𐑹'
     elif has_acidic:
-        P = '𐑿'   # Negative-biased
+        parity = '𐑿'   # Negative-biased
     elif has_guanid:
-        P = '𐑹'   # Guanidinium — strong directional (Frobenius-special)
+        parity = '𐑹'   # Guanidinium — strong directional (Frobenius-special)
     elif has_basic:
-        P = '𐑿'   # Positive-biased
+        parity = '𐑿'   # Positive-biased
     elif has_polar:
-        P = '𐑗'
+        parity = '𐑗'
     else:
-        P = '𐑗'
+        parity = '𐑗'
 
-    # F: Fidelity — quantum vs classical
+    # ⋈: Fidelity — quantum vs classical
     if has_nucleo and (has_acidic or has_basic):
-        F = '𐑐'
+        fidelity = '𐑐'
     elif has_nucleo:
-        F = '𐑞'
+        fidelity = '𐑞'
     elif n_charged >= 2:
-        F = '𐑞'
+        fidelity = '𐑞'
     elif has_aromatic:
-        F = '𐑞'
+        fidelity = '𐑞'
     else:
-        F = '𐑱'
+        fidelity = '𐑱'
 
-    # K: Kinetics — chemical diversity
+    # ⊤: Kinetics — chemical diversity
     if d >= 5:
-        K = '𐑧'
+        kinetics = '𐑧'
     elif d >= 3:
-        K = '𐑪'
+        kinetics = '𐑪'
     elif d == 2:
-        K = '𐑘'
+        kinetics = '𐑘'
     else:
-        K = '𐑤'
+        kinetics = '𐑤'
 
-    # G: Cardinality — spatial extent
+    # ∈: Cardinality — spatial extent
     if n_charged >= 3:
-        G = '𐑲'
+        cardinality = '𐑲'
     elif n_charged >= 2 or n_aromatic >= 2:
-        G = '𐑔'
+        cardinality = '𐑔'
     else:
-        G = '𐑚'
+        cardinality = '𐑚'
 
-    # Gm: Composition — primary token + order sensitivity (fam_disc)
+    # ∋: Composition — primary token + order sensitivity (fam_disc)
     prim_tok = _primary_token(token_mask)
     gm_idx = (prim_tok + (fam_disc >> 4)) % 4
-    Gm = ('𐑠', '𐑵', '𐑜', '𐑝')[gm_idx]
+    composition = ('𐑠', '𐑵', '𐑜', '𐑝')[gm_idx]
 
-    # Ph: Criticality — catalytic critical point
+    # ⊙: Criticality — catalytic critical point
     if fp.self_ref and has_nucleo:
-        Ph = '⊙'
+        criticality = '⊙'
     elif has_nucleo and (has_acidic or has_basic):
-        Ph = '𐑻'
+        criticality = '𐑻'
     elif fp.self_ref:
-        Ph = '𐑮'
+        criticality = '𐑮'
     elif has_aromatic and has_polar:
-        Ph = '𐑣'
+        criticality = '𐑣'
     elif d <= 2:
-        Ph = '𐑢'
+        criticality = '𐑢'
     else:
-        Ph = '𐑣' if fam_disc <= 1 else '𐑻'
+        criticality = '𐑣' if fam_disc <= 1 else '𐑻'
 
-    # H: Chirality — uses primary token for identity awareness
+    # ⊥: Chirality — uses primary token for identity awareness
     h_idx = (prim_tok // 4) % 4
-    H = ('𐑓', '𐑒', '𐑖', '𐑫')[h_idx]
+    chirality = ('𐑓', '𐑒', '𐑖', '𐑫')[h_idx]
 
-    # S: Stoichiometry — chemical class count
+    # ⊞: Stoichiometry — chemical class count
     if d == 1:
-        S = '𐑙'
+        stoichiometry = '𐑙'
     elif d <= 3:
-        S = '𐑕'
+        stoichiometry = '𐑕'
     else:
-        S = '𐑳'
+        stoichiometry = '𐑳'
 
-    # W: Winding — topological protection
+    # ⊡: Winding — topological protection
     if has_nucleo and has_acidic and has_basic:
-        W = '𐑭'
+        winding = '𐑭'
     elif has_nucleo or (has_acidic and has_basic):
-        W = '𐑴'
+        winding = '𐑴'
     elif fp.self_ref:
-        W = '𐑴'
+        winding = '𐑴'
     else:
-        W = '𐑷'
+        winding = '𐑷'
 
-    return (D, T, R, P, F, K, G, Gm, Ph, H, S, W)
+    return (dimensionality, topology, coupling, parity, fidelity, kinetics, cardinality, composition, criticality, chirality, stoichiometry, winding)
 
 
 # Override

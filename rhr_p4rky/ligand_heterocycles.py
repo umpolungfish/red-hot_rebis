@@ -387,7 +387,7 @@ HETERO_CORE = {
     },
     "coumarin_34": {
         "smiles": "[*:1]c1cc(=O)oc2cc([*:2])ccc12",
-        "rings": (2, (6,6)), "het_atoms": ["O", "O"], "hbd": 0, "hba": 2,
+        "rings": (2, (6,6)), "het_atoms": ["⊡", "⊡"], "hbd": 0, "hba": 2,
         "aromatic": False, "saturated": False, "family": "fused_66_2O",
         "priority": [1, 2],
     },
@@ -431,7 +431,7 @@ HETERO_CORE = {
     },
     "xanthone": {
         "smiles": "[*:1]c1ccc2c(c1)C(=O)c1cc([*:2])ccc1O2",
-        "rings": (3, (6,6,6)), "het_atoms": ["O", "O"], "hbd": 0, "hba": 2,
+        "rings": (3, (6,6,6)), "het_atoms": ["⊡", "⊡"], "hbd": 0, "hba": 2,
         "aromatic": False, "saturated": False, "family": "fused_666_2O_carb",
         "priority": [1, 2],
     },
@@ -803,7 +803,7 @@ def _get_site_ordinals(site_type: Dict[str, str]) -> Dict[str, int]:
     """Convert glyph site type to ordinal dict."""
     from rhr_p4rky.ligand_from_active_site import GLYPH_ORDINALS
     ords = {}
-    for pn in ["D","T","R","P","F","K","G","Gm","Ph","H","S","W"]:
+    for pn in ["⊢","⊣","≻","≺","⋈","⊤","∈","∋","⊙","⊥","⊞","⊡"]:
         g = site_type.get(pn, "?")
         ords[pn] = GLYPH_ORDINALS.get(pn, {}).get(g, -1)
     return ords
@@ -820,8 +820,8 @@ def match_scaffolds_to_site(site_type: Dict[str, str], n_top: int = 25) -> List[
     o = _get_site_ordinals(site_type)
 
     # ── Determine preferred scaffold properties from site type ──
-    # T (topology): ring count preference
-    t_val = o["T"]
+    # ⊣ (topology): ring count preference
+    t_val = o["⊣"]
     if t_val >= 4:   # odot closure
         target_rings = (3, 4)       # polycyclic
         target_saturation = False    # aromatic preferred
@@ -838,8 +838,8 @@ def match_scaffolds_to_site(site_type: Dict[str, str], n_top: int = 25) -> List[
         target_rings = (1, 1)
         target_saturation = True     # saturated preferred
 
-    # R (coupling): heteroatom complexity
-    r_val = o["R"]
+    # ≻ (coupling): heteroatom complexity
+    r_val = o["≻"]
     if r_val >= 3:   # lr bidirectional
         target_het_count = (3, 6)
     elif r_val >= 2:  # dagger adjoint
@@ -849,16 +849,16 @@ def match_scaffolds_to_site(site_type: Dict[str, str], n_top: int = 25) -> List[
     else:              # super
         target_het_count = (1, 2)
 
-    # K (kinetics): saturated vs aromatic
-    k_val = o["K"]
+    # ⊤ (kinetics): saturated vs aromatic
+    k_val = o["⊤"]
     if k_val <= 1:  # MBL or trap
         target_saturation = True
     elif k_val >= 3:  # fast
         target_saturation = False
     # else: keep from T determination
 
-    # Ph (criticality): electron richness
-    ph_val = o["Ph"]
+    # ⊙ (criticality): electron richness
+    ph_val = o["⊙"]
     if ph_val >= 4:  # supercritical
         prefer_e_rich = True
     elif ph_val >= 2:  # c_complex
@@ -866,8 +866,8 @@ def match_scaffolds_to_site(site_type: Dict[str, str], n_top: int = 25) -> List[
     else:
         prefer_e_rich = None
 
-    # H (chirality): stereochemical complexity
-    h_val = o["H"]
+    # ⊥ (chirality): stereochemical complexity
+    h_val = o["⊥"]
     if h_val >= 3:  # eternal
         target_chiral = True
     elif h_val >= 2:  # two
@@ -920,7 +920,7 @@ def match_scaffolds_to_site(site_type: Dict[str, str], n_top: int = 25) -> List[
             score += 1.5
 
         # H-bond complement: match site HBD/HBA profile
-        site_hbd = o["K"]  # K proxies for H-bond donor capacity
+        site_hbd = o["⊤"]  # K proxies for H-bond donor capacity
         if site_hbd <= 1 and sc.get("hba", 0) >= 2:
             score += 0.5
         if site_hbd >= 3 and sc.get("hbd", 0) >= 1:
@@ -969,12 +969,12 @@ def match_scaffolds_to_site(site_type: Dict[str, str], n_top: int = 25) -> List[
 
 
 # Sulfur complement: W (winding) high → S-containing scaffolds
-        if o["W"] >= 2 and "S" in sc["het_atoms"]:
+        if o["⊡"] >= 2 and "S" in sc["het_atoms"]:
             score += 1.0
 
         # P/F complement — high P + high F = demand complex aromatic polycyclics
-        p_val = o["P"]
-        f_val = o["F"]
+        p_val = o["≺"]
+        f_val = o["⋈"]
         if p_val >= 3 and f_val >= 2:
             # Frobenius-special parity + quantum fidelity → polycyclic aromatics
             if n_rings >= 3:
@@ -998,8 +998,8 @@ def match_scaffolds_to_site(site_type: Dict[str, str], n_top: int = 25) -> List[
             if n_rings >= 2:
                 score += 0.5
 
-        # S (stoichiometry) complement
-        s_val = o["S"]
+        # ⊞ (stoichiometry) complement
+        s_val = o["⊞"]
         if s_val >= 2:  # heterogeneous → diverse heteroatoms
             if len(set(sc["het_atoms"])) >= 3:
                 score += 1.0
@@ -1585,7 +1585,7 @@ def _score_structural_complement(
         return 0.3
 
     # ── Ring complexity matching (weight: 0.25) ──
-    t_val = o["T"]
+    t_val = o["⊣"]
     ring_target = {0: 0.0, 1: 1.0, 2: 2.0, 3: 2.5, 4: 3.0}.get(t_val, 0.0)
     ring_score = 1.0 - min(1.0, abs(n_rings - ring_target) / 3.0)
     score += 0.25 * ring_score
@@ -1593,7 +1593,7 @@ def _score_structural_complement(
 
     # ── Hydrogen bond complement (weight: 0.25) ──
     # K proxies for site H-bond character
-    k_val = o["K"]
+    k_val = o["⊤"]
     if k_val <= 1:  # frozen/disordered — want many H-bond points
         hb_target_hba = 6
         hb_target_hbd = 3
@@ -1610,7 +1610,7 @@ def _score_structural_complement(
     total_weight += 0.25
 
     # ── Size complement (weight: 0.20) ──
-    g_val = o["G"]
+    g_val = o["∈"]
     size_targets = {0: 120, 1: 250, 2: 400}
     target_mw = size_targets.get(g_val, 250)
     size_score = 1.0 - min(1.0, abs(mw - target_mw) / 350.0)
@@ -1618,7 +1618,7 @@ def _score_structural_complement(
     total_weight += 0.20
 
     # ── Aromatic character complement (weight: 0.15) ──
-    ph_val = o["Ph"]
+    ph_val = o["⊙"]
     if ph_val >= 2:  # critical or above — want aromatic
         arom_score = min(1.0, n_arom / 3.0)
     elif ph_val >= 1:
@@ -1629,7 +1629,7 @@ def _score_structural_complement(
     total_weight += 0.15
 
     # ── Flexibility complement (weight: 0.15) ──
-    h_val = o["H"]
+    h_val = o["⊥"]
     if h_val >= 3:  # eternal — want rigid
         flex_target = 2
     elif h_val >= 1:

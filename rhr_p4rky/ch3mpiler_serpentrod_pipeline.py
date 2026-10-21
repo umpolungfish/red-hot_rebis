@@ -29,7 +29,7 @@ sys.path.insert(0, str(BASE))
 
 # ── Complementary primitive pairs ───────────────────────────────────
 COMPLEMENTARY_SHORT = {
-    "⊢": "◻", "◻": "⊢",
+    "⊢": "⊡", "⊡": "⊢",
     "⊣": "⊥", "⊥": "⊣",
     "≻": "⊞", "⊞": "≻",
     "≺": "⋈", "⋈": "≺",
@@ -41,7 +41,7 @@ FIELD_TO_PRIMITIVE_NAME = {
     "⊢": "Dimensionality", "⊣": "Topology", "≻": "Recognition",
     "≺": "Parity", "⋈": "Fidelity", "⊤": "Kinetics",
     "∈": "Granularity", "∋": "Grammar", "⊙": "Criticality",
-    "⊥": "Chirality", "⊞": "Stoichiometry", "◻": "Protection",
+    "⊥": "Chirality", "⊞": "Stoichiometry", "⊡": "Protection",
 }
 
 # Ordinal values for Shavian glyphs (matching primitives.py)
@@ -57,7 +57,7 @@ GLYPH_ORDINALS = {
     "⊙": {"𐑢": 0, "⊙": 1, "𐑮": 2, "𐑻": 3, "𐑣": 4},
     "⊥": {"𐑓": 0, "𐑒": 1, "𐑖": 2, "𐑫": 3},
     "⊞": {"𐑙": 0, "𐑕": 1, "𐑳": 2},
-    "◻": {"𐑷": 0, "𐑴": 1, "𐑭": 2, "𐑟": 3},
+    "⊡": {"𐑷": 0, "𐑴": 1, "𐑭": 2, "𐑟": 3},
 }
 
 ORD_TO_GLYPH = {}
@@ -66,7 +66,7 @@ for prim, mapping in GLYPH_ORDINALS.items():
 
 # The axes are named by their marks, which is what everything downstream
 # addresses and what the values belong to.
-PNAMES = ["⊢", "⊣", "≻", "≺", "⋈", "⊤", "∈", "∋", "⊙", "⊥", "⊞", "◻"]
+PNAMES = ["⊢", "⊣", "≻", "≺", "⋈", "⊤", "∈", "∋", "⊙", "⊥", "⊞", "⊡"]
 
 # ── Frobenius-aware catalytic site RNA design (v2) ─────────────────
 # Fix: FG-aware fusion + direct AA selection + Frobenius enforcement
@@ -96,7 +96,7 @@ AA_CODON_POOL_V2 = {
 }
 
 COMPLEMENTARY_PAIRS_V2 = [
-    ("⊢", "◻"), ("⊣", "⊥"), ("≻", "⊞"),
+    ("⊢", "⊡"), ("⊣", "⊥"), ("≻", "⊞"),
     ("≺", "⋈"), ("⊤", "∈"), ("∋", "⊙"),
 ]
 
@@ -109,12 +109,12 @@ def fuse_reaction_types(bond_type, fg1_type, fg2_type):
     Per-primitive strategy:
       Topological (D,T,H,W): bond 75%, FGs 12.5% each — bond IS the reaction path
       Reactive (P,Ph): bond floor, FGs average pulls up if higher
-      Coupling (R,K,G,Gm): bond 55%, FGs 22.5% each — bond-dominant blend
+      Coupling (≻,⊤,∈,∋): bond 55%, FGs 22.5% each — bond-dominant blend
       Fidelity (F): bond floor, FG average can enhance
       Stoichiometry (S): max — captures all chemical species
     
     This replaces the old MAX strategy which allowed high-ordinal FGs (like
-    alkene: P=𐑯, Ph=⊙) to MASK bond type differences entirely.
+    alkene: ≺=𐑯, ⊙=⊙) to MASK bond type differences entirely.
     """
     fused = {}
     for p in PNAMES:
@@ -123,7 +123,7 @@ def fuse_reaction_types(bond_type, fg1_type, fg2_type):
         f2 = glyph_ord(p, fg2_type.get(p, '?'))
         
         # Structural axes: the bond dominates and the groups nudge.
-        if p in ('⊢', '⊣', '⊥', '◻'):
+        if p in ('⊢', '⊣', '⊥', '⊡'):
             fused_ord = round(0.75 * b + 0.125 * f1 + 0.125 * f2)
         # Reactive axes: the bond is a floor the groups can raise.
         elif p in ('≺', '⊙'):
@@ -335,9 +335,15 @@ class CatalyticSiteDesign:
     confidence: float
     binding_pocket_residues: List[str]
     catalytic_triad: List[str]
+    protein_glut: Dict = field(default_factory=dict)
+    ligand_family: List[Dict] = field(default_factory=list)
+    ligand_candidates: List[Dict] = field(default_factory=list)
 
     def to_dict(self) -> dict:
         return {
+            "protein_glut": self.protein_glut,
+            "ligand_family": self.ligand_family,
+            "ligand_candidates": self.ligand_candidates,
             "reaction": {
                 "type": self.reaction.reaction_type,
                 "bond": self.reaction.bond_name,
@@ -452,7 +458,7 @@ def extract_reaction_signature(ch3_result: dict, ch3_mod) -> ReactionSignature:
 
 # ── Catalytic Site Design ───────────────────────────────────────────
 
-def design_catalytic_site(reaction_sig: ReactionSignature) -> CatalyticSiteDesign:
+def design_catalytic_site(reaction_sig: ReactionSignature, protein_result=None) -> CatalyticSiteDesign:
     """Design an optimal catalytic site for the given reaction.
     
     1. Fuse reaction types (bond + FG1 + FG2) and compute complement
@@ -466,6 +472,39 @@ def design_catalytic_site(reaction_sig: ReactionSignature) -> CatalyticSiteDesig
                                  reaction_sig.fg2_type)
     site_type = complement_type_v2(fused)  # v3 inverse mapping
     
+    if protein_result is not None:
+        from rhr_p4rky.protein_glut import retain_carrier, site_alternatives, produce_ligand_family
+        glut = retain_carrier(protein_result['protein_glut'])
+        from rhr_p4rky.serpent_rod import ONE_LETTER
+        if ''.join(ONE_LETTER[r['aa']] for r in glut.residues) != protein_result['aa_sequence']:
+            raise ValueError('Catalytic source sequence and resident protein differ')
+        # Act on the already executing source-bound object. The target supplies
+        # the context, while sequence, forms, banks and observations survive.
+        context = dict(site_type)
+        sites = site_alternatives(glut, contexts={i: context for i in range(len(glut.residues))})
+        glut.observe('catalytic-target', {'reaction': reaction_sig.reaction_type,
+            'bond': reaction_sig.bond_name, 'site_family': sites})
+        family, candidates = produce_ligand_family(glut, sites)
+        pocket = [f"{r['aa']}_{r['index']}" for r in glut.residues]
+        rna = ''.join(r['codon'] or '' for r in glut.residues)
+        from rhr_p4rky.serpent_rod import SerpentRod
+        contacts = [dict(edge) for observation in glut.observations
+                    if observation['name'] == 'contact-relations'
+                    for edge in observation['values']]
+        return CatalyticSiteDesign(
+            reaction=reaction_sig, site_rna=rna,
+            site_aa_sequence=protein_result['aa_sequence'],
+            site_structural_type=site_type,
+            secondary_elements=protein_result.get('secondary', []),
+            contacts=[{**edge, 'i': edge['left'], 'j': edge['right'],
+                       'type': edge['kind'], 'distance': edge['distance_readout']}
+                      for edge in contacts],
+            winding_number=SerpentRod(rna).compute_winding_number(),
+            frobenius_verified=protein_result.get('closure', {}).get('frobenius_across_pathway', False),
+            confidence=0.0, binding_pocket_residues=pocket,
+            catalytic_triad=[], protein_glut=glut.as_dict(),
+            ligand_family=family, ligand_candidates=candidates)
+
     # Step 2: Design Frobenius-verified RNA (target-specific, >=4/6 pairs)
     site_rna, aas_design, _, pairs_covered, _ = design_rna_v2(reaction_sig)
     
@@ -515,14 +554,8 @@ def design_catalytic_site(reaction_sig: ReactionSignature) -> CatalyticSiteDesig
         binding_pocket = binding_pocket[:12]
         
     except Exception as e:
-        info_line(f"[pipeline] SerpentRod unavailable: {e}", file=sys.stderr)
-        aa_seq = "<serpentrod_unavailable>"
-        sec_elements, contacts = [], []
-        winding = len(site_rna) // 9
-        frobenius, confidence = False, 0.3
-        binding_pocket = ["His_0", "Ser_1", "Asp_2"]
-        catalytic_triad = ["His_0", "Ser_1", "Asp_2"]
-    
+        raise RuntimeError('Catalytic protein construction failed') from e
+
     return CatalyticSiteDesign(
         reaction=reaction_sig,
         site_rna=site_rna,
@@ -535,6 +568,7 @@ def design_catalytic_site(reaction_sig: ReactionSignature) -> CatalyticSiteDesig
         confidence=confidence,
         binding_pocket_residues=binding_pocket,
         catalytic_triad=catalytic_triad,
+        protein_glut=result.protein_glut,
     )
 
 def run_pipeline(
@@ -543,6 +577,7 @@ def run_pipeline(
     cas_number: Optional[str] = None,
     depth: int = 2,
     verbose: bool = True,
+    protein_result=None,
 ) -> CatalyticSiteDesign:
     """Run the full ch3mpiler ⟲ serpentrod pipeline."""
     ch3_instance, ch3_mod = get_ch3mpiler()
@@ -616,7 +651,7 @@ def run_pipeline(
     log("Phase 3 — SerpentRod catalytic site design")
     log("─" * 40)
     
-    design = design_catalytic_site(reaction_sig)
+    design = design_catalytic_site(reaction_sig, protein_result=protein_result)
     
     log(f"  Site RNA: {design.site_rna[:40]}... ({len(design.site_rna)} nt)")
     log(f"  Site AA:  {design.site_aa_sequence[:40]} ({len(design.site_aa_sequence)} AAs)")
@@ -690,7 +725,7 @@ def format_report(design: CatalyticSiteDesign) -> str:
     if s.get("contacts"):
         lines.append(f"  Long-range contacts: {len(s['contacts'])}")
         for c in s["contacts"][:6]:
-            lines.append(f"    {c['i']:3d}↔{c['j']:3d}  {c['distance']:5.2f}Å  {c['type']:20s}  c={c['confidence']:.2f}")
+            lines.append(f"    {c['i']:3d}↔{c['j']:3d}  {c['distance']:5.2f}Å  {c['type']:20s}")
         lines.append("")
     
     lines.append("═" * 66)

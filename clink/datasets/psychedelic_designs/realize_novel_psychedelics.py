@@ -38,7 +38,7 @@ from shared.rich_output import *
 
 # ─── KEY MAPPING: compound dict keys → PORDER Shavian keys ──────
 KEY_MAP = {"D": "⊢", "T": "⊣", "R": "≻", "P": "≺", "F": "⋈", "K": "⊤",
-           "G": "∈", "Gm": "∋", "Ph": "⊙", "H": "⊥", "S": "⊞", "W": "◻"}
+           "G": "∈", "Gm": "∋", "Ph": "⊙", "H": "⊥", "S": "⊞", "W": "⊡"}
 COMPOUND_KEYS = ["D", "T", "R", "P", "F", "K", "G", "Gm", "Ph", "H", "S", "W"]
 
 

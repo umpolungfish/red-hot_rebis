@@ -219,6 +219,8 @@ def cmd_chain(args):
     target = args.target or "CC(=O)O"
     depth = args.depth if args.depth is not None else 2
     failed_phases = []
+    protein_result = None
+    cs_result = None
 
     info_line(f"DNA input:    {dna[:50]}{'...' if len(dna) > 50 else ''}  ({len(dna)} bp)")
     info_line(f"Target SMILES: {target}")
@@ -246,7 +248,11 @@ def cmd_chain(args):
     section_header("Phase 2/3 — ch3mpiler → Catalytic Site Design")
     try:
         from rhr_p4rky.ch3mpiler_serpentrod_pipeline import run_pipeline
-        cs_result = run_pipeline(target_molecule=target, depth=depth, verbose=True)
+        if protein_result is None:
+            raise RuntimeError('Gene carrier unavailable for catalytic coupling')
+        cs_result = run_pipeline(target_molecule=target, depth=depth, verbose=True,
+                                 protein_result=protein_result)
+        protein_result['protein_glut'] = cs_result.protein_glut
         success_line("Phase 2 complete ✓")
     except Exception as e:
         failed_phases.append(2)
@@ -280,6 +286,15 @@ def cmd_chain(args):
     if failed_phases:
         error_line(f"UNIFIED CHAIN INCOMPLETE: failed phases {failed_phases}")
         return 1
+    import json
+    from pathlib import Path
+    from rhr_p4rky.pdb_writer import write_glut_sidecar
+    write_glut_sidecar(pdb_path, protein_result['protein_glut'])
+    carrier_path = Path(str(pdb_path) + '.chain.json')
+    carrier_path.write_text(json.dumps({'protein': protein_result,
+        'catalytic': cs_result.to_dict(), 'synthesis': stone_result},
+        indent=2, ensure_ascii=False, default=str) + '\n')
+    info_line(f"Resident chain returned: {carrier_path}")
     success_line("UNIFIED CHAIN COMPLETE")
     return 0
 

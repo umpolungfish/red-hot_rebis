@@ -9,10 +9,9 @@ sidechain_algebra.py) with the reverse ligand pipeline
 KEY INNOVATION over ligand_from_active_site.py:
   1. Per-residue structural types come from the ACTUAL 3D environment
      (sidechain⊗environment tensor), not from a fixed AA→primitive table.
-  2. Frustration-weighted aggregation: residues with higher frustration
-     (more structural mismatch with their environment) contribute MORE
-     weight to the aggregate site tuple — these are the pressure points
-     a ligand must resolve.
+  2. Retained source-form family: every selected residue and chemical form
+     carries its full self-mark and contextual tensor into ligand generation.
+     Frustration remains an observation alongside those alternatives.
   3. Bottleneck-targeted ligand generation: the ligand tuple is not just
      the structural complement — it's biased toward resolving the specific
      primitive bottlenecks found in the real active-site structure.
@@ -21,7 +20,7 @@ KEY INNOVATION over ligand_from_active_site.py:
 
 Pipeline:
   PDB ID → fetch structure → parse residues → classify environments →
-  per-residue sidechain⊗env analysis → frustration-weighted site tuple →
+  per-residue sidechain⊗env analysis → retained source-form family →
   complement → bottleneck-biased ligand tuple → bond+FG decomposition →
   SMILES generation
 
@@ -78,28 +77,21 @@ sys.path.insert(0, str(REBIS_ROOT))
 sys.path.insert(0, str(BASE))
 
 # ── Shavian glyph constants ───────────────────────────────────────
-D_wedge = "\U0001045B"; D_tri = "\U00010468"; D_infty = "\U0001047C"; D_odot = "\U00010466"
-T_net = "\U00010461"; T_in = "\U00010470"; T_bowtie = "\U00010465"; T_otimes = "\U00010476"; T_odot = "\U00010478"
-R_super = "\U00010469"; R_cat = "\U00010451"; R_dagger = "\U0001047D"; R_lr = "\U0001047E"
-P_asym = "\U00010457"; P_psi = "\U0001047F"; P_pm = "\U0001046C"; P_sym = "\U0001046F"; P_pm_sym = "\U00010479"
-F_ell = "\U00010471"; F_eth = "\U0001045E"; F_hbar = "\U00010450"
-K_MBL = "\U0001047A"; K_trap = "\U0001046A"; K_fast = "\U00010458"; K_mod = "\U00010464"; K_slow = "\U00010467"
-G_beth = "\U0001045A"; G_gimel = "\U00010454"; G_aleph = "\U00010472"
-Gm_and = "\U0001045D"; Gm_or = "\U0001045C"; Gm_seq = "\U00010460"; Gm_broad = "\U00010475"
-Ph_sub = "\U00010462"; Ph_c = "\u2299"; Ph_c_complex = "\U0001046E"; Ph_EP = "\U0001047B"; Ph_super = "\U00010463"
-H_memless = "\U00010453"; H_one = "\U00010452"; H_two = "\U00010456"; H_inf = "\U0001046B"
-S_11 = "\U00010459"; S_nn = "\U00010455"; S_nm = "\U00010473"
-W_0 = "\U00010477"; W_Z2 = "\U00010474"; W_Z = "\U0001046D"; W_NA = "\U0001045F"
+dimensionality_wedge = "\U0001045B"; dimensionality_tri = "\U00010468"; dimensionality_infty = "\U0001047C"; dimensionality_odot = "\U00010466"
+topology_net = "\U00010461"; topology_in = "\U00010470"; topology_bowtie = "\U00010465"; topology_otimes = "\U00010476"; topology_odot = "\U00010478"
+coupling_super = "\U00010469"; coupling_cat = "\U00010451"; coupling_dagger = "\U0001047D"; coupling_lr = "\U0001047E"
+parity_asym = "\U00010457"; parity_psi = "\U0001047F"; parity_pm = "\U0001046C"; parity_sym = "\U0001046F"; parity_pm_sym = "\U00010479"
+fidelity_ell = "\U00010471"; fidelity_eth = "\U0001045E"; fidelity_hbar = "\U00010450"
+kinetics_MBL = "\U0001047A"; kinetics_trap = "\U0001046A"; kinetics_fast = "\U00010458"; kinetics_mod = "\U00010464"; kinetics_slow = "\U00010467"
+cardinality_beth = "\U0001045A"; cardinality_gimel = "\U00010454"; cardinality_aleph = "\U00010472"
+composition_and = "\U0001045D"; composition_or = "\U0001045C"; composition_seq = "\U00010460"; composition_broad = "\U00010475"
+criticality_sub = "\U00010462"; criticality_c = "\u2299"; criticality_c_complex = "\U0001046E"; criticality_EP = "\U0001047B"; criticality_super = "\U00010463"
+chirality_memless = "\U00010453"; chirality_one = "\U00010452"; chirality_two = "\U00010456"; chirality_inf = "\U0001046B"
+stoichiometry_11 = "\U00010459"; stoichiometry_nn = "\U00010455"; stoichiometry_nm = "\U00010473"
+winding_0 = "\U00010477"; winding_Z2 = "\U00010474"; winding_Z = "\U0001046D"; winding_NA = "\U0001045F"
 
-PRIMITIVE_NAMES_SHORT = ["D", "T", "R", "P", "F", "K", "G", "Gm", "Ph", "H", "S", "W"]
+PRIMITIVE_SYMBOLS = ["⊢", "⊣", "≻", "≺", "⋈", "⊤", "∈", "∋", "⊙", "⊥", "⊞", "⊡"]
 
-# Map between full Unicode primitive keys (from sidechain_algebra) and short keys
-_FULL_TO_SHORT = {
-    "⊢": "D", "⊣": "T", "≻": "R", "≺": "P", "⋈": "F",
-    "⊤": "K", "∈": "G", "∋": "Gm", "⊙": "Ph",
-    "⊥": "H", "⊞": "S", "⊡": "W",
-}
-_SHORT_TO_FULL = {v: k for k, v in _FULL_TO_SHORT.items()}
 
 # ── Import sidechain×environment algebra ──────────────────────────
 from rhr_p4rky.pdb_integration import (
@@ -209,6 +201,7 @@ def encode_site_from_pdb(
     active_residues: List[str],
     cutoff: float = 8.0,
     verbose: bool = False,
+    protein_glut=None,
 ) -> Tuple[Optional[dict], List[CatalyticResidueAnalysis], Dict]:
     """Encode a catalytic site from a PDB structure using sidechain×environment algebra.
 
@@ -250,6 +243,29 @@ def encode_site_from_pdb(
     if verbose:
         print(f"  Parsed {len(residues)} residues")
 
+    from rhr_p4rky.protein_glut import ProteinGlut, retain_carrier, _NAMES
+    from pathlib import Path
+    import hashlib
+    if protein_glut is None and os.path.exists(pdb_id_or_path):
+        sidecar = Path(str(pdb_id_or_path) + '.glut.json')
+        if sidecar.exists():
+            saved = json.loads(sidecar.read_text())
+            if saved['pdb_sha256'] != hashlib.sha256(Path(pdb_id_or_path).read_bytes()).hexdigest():
+                raise ValueError('PDB and resident glut sidecar differ')
+            protein_glut = saved['protein_glut']
+    native_residues = [r for r in residues if r.sidechain_name in SIDECHAINS]
+    aas = [next(aa for aa, names in _NAMES.items() if r.sidechain_name in names) for r in native_residues]
+    glut = retain_carrier(protein_glut) if protein_glut is not None else ProteinGlut.prepare(aas)
+    if [r['aa'] for r in glut.residues] != aas:
+        raise ValueError('PDB sequence and resident protein differ')
+    native_index = {(r.chain, r.res_num, r.ins_code): i for i, r in enumerate(native_residues)}
+    for r, retained in zip(native_residues, glut.residues):
+        identity = {'chain': r.chain, 'number': r.res_num, 'insertion': r.ins_code}
+        if 'pdb_identity' in retained and retained['pdb_identity'] != identity:
+            raise ValueError('PDB residue identity changed across the carrier boundary')
+        retained['pdb_identity'] = identity
+    site_family = []
+
     # ── Classify environments ──
     env_map = classify_all_environments(residues, cutoff)
 
@@ -259,11 +275,7 @@ def encode_site_from_pdb(
     for r in residues:
         # 3-letter label
         label_3l = f"{r.res_name}{r.res_num}"
-        aa_3to1 = {"ALA":"A","ARG":"R","ASN":"N","ASP":"D","CYS":"C",
-                   "GLN":"Q","GLU":"E","GLY":"G","HIS":"H","ILE":"I",
-                   "LEU":"L","LYS":"K","MET":"M","PHE":"F","PRO":"P",
-                   "SER":"S","THR":"T","TRP":"W","TYR":"Y","VAL":"V",
-                   "MSE":"M","HYP":"P"}
+        aa_3to1 = {'ALA': 'A', 'ARG': 'R', 'ASN': 'N', 'ASP': 'D', 'CYS': 'C', 'GLN': 'Q', 'GLU': 'E', 'GLY': 'G', 'HIS': 'H', 'ILE': 'I', 'LEU': 'L', 'LYS': 'K', 'MET': 'M', 'PHE': 'F', 'PRO': 'P', 'SER': 'S', 'THR': 'T', 'TRP': 'W', 'TYR': 'Y', 'VAL': 'V', 'MSE': 'M', 'HYP': 'P'}
         code1 = aa_3to1.get(r.res_name, "X")
         label_1l = f"{code1}{r.res_num}"
         chain_label_3l = f"{r.chain}:{r.res_name}{r.res_num}"
@@ -291,10 +303,7 @@ def encode_site_from_pdb(
         if match:
             code1 = match.group(1).upper()
             num = int(match.group(2))
-            aa_1to3 = {"A":"ALA","R":"ARG","N":"ASN","D":"ASP","C":"CYS",
-                       "Q":"GLN","E":"GLU","G":"GLY","H":"HIS","I":"ILE",
-                       "L":"LEU","K":"LYS","M":"MET","F":"PHE","P":"PRO",
-                       "S":"SER","T":"THR","W":"TRP","Y":"TYR","V":"VAL"}
+            aa_1to3 = {'A': 'ALA', 'R': 'ARG', 'N': 'ASN', 'D': 'ASP', 'C': 'CYS', 'Q': 'GLN', 'E': 'GLU', 'G': 'GLY', 'H': 'HIS', 'I': 'ILE', 'L': 'LEU', 'K': 'LYS', 'M': 'MET', 'F': 'PHE', 'P': 'PRO', 'S': 'SER', 'T': 'THR', 'W': 'TRP', 'Y': 'TYR', 'V': 'VAL'}
             code3 = aa_1to3.get(code1)
             if code3:
                 for res in residues:
@@ -330,7 +339,13 @@ def encode_site_from_pdb(
         key = (r.chain, r.res_num, r.ins_code)
         n_nbrs = neighbor_counts.get(key, 0)
 
-        analysis = analyze_composition(sc_name, env_name)
+        index = native_index[key]
+        analysis = analyze_composition(sc_name, env_name, glut.residues[index]['self_marks'])
+        for alternative in analysis.get('self_mark_alternatives', []):
+            site_family.append({**alternative, 'residue_index': index,
+                'residue_identity': glut.residues[index]['pdb_identity'],
+                'environment': env_name,
+                'tuple': dict(alternative['tensor'])})
         if "error" in analysis:
             if verbose:
                 print(f"  ⚠ {res_label}: analysis error — {analysis['error']}")
@@ -368,8 +383,10 @@ def encode_site_from_pdb(
         return None, [], {"error": "No active-site residues could be analyzed",
                           "not_found": not_found}
 
-    # ── Frustration-weighted aggregation ──
-    site_tuple = _aggregate_residue_tuples(per_residue, verbose=verbose)
+    # The scalar is a named boundary. Production below executes every family
+    # branch and returns their correlated provenance on this same carrier.
+    site_tuple = dict(site_family[0]['tuple'])
+    glut.observe('active-site', site_family)
 
     # ── Build summary ──
     total_frustration = sum(c.frustration for c in per_residue)
@@ -388,7 +405,11 @@ def encode_site_from_pdb(
         "n_catalytic": len(per_residue),
         "not_found": not_found,
         "site_tuple": site_tuple,
-        "site_tuple_str": tuple_str(site_tuple),
+        "site_family": site_family,
+        "protein_glut": glut.as_dict(),
+        "readout": {"method": "first-source-form", "residue_index": site_family[0]['residue_index'],
+                    "artifact_id": site_family[0]['artifact_id']},
+        "site_tuple_str": lfas.fmt_tuple(site_tuple),
         "avg_frustration": round(avg_frustration, 3),
         "total_frustration": round(total_frustration, 3),
         "bottleneck_consensus": top_bottlenecks[:5],
@@ -403,67 +424,14 @@ def _aggregate_residue_tuples(
     per_residue: List[CatalyticResidueAnalysis],
     verbose: bool = False,
 ) -> dict:
-    """Aggregate per-residue tensor tuples into a single site tuple.
+    """Compatibility boundary; retain the family in encode_site_from_pdb.
 
-    Frustration-weighted: residues with higher frustration contribute MORE.
-    Rationale: frustrated residues are structurally strained — they represent
-    the pressure points a ligand must resolve. Their structural character
-    should dominate the site encoding.
-
-    Aggregation: max on most primitives, min on P and F (tensor semantics).
-    Frustration weighting shifts ordinal contributions proportionally.
+    No weighted ordinal averaging. Actual ligand production visits every
+    source-form branch and returns the family alongside the scalar readout.
     """
     if not per_residue:
         return {}
-
-    frustrations = [c.frustration for c in per_residue]
-    max_frust = max(frustrations) if frustrations else 1.0
-    if max_frust == 0:
-        max_frust = 1.0
-
-    # Normalize frustration to [0.3, 1.0] range (floor 0.3 so no residue is fully ignored)
-    weights = [0.3 + 0.7 * (f / max_frust) for f in frustrations]
-
-    if verbose:
-        for c, w in zip(per_residue, weights):
-            print(f"    weight: {c.res_label:8s} frust={c.frustration:.2f} → w={w:.3f}")
-
-    # For each primitive, compute weighted-contribution ordinal
-    # Each residue contributes: its ordinal × its weight
-    # Final ordinal: round(weighted_sum / sum_of_weights) for non-P/F (max semantics)
-    # For P/F: lower ordinal = more constrained; higher frustration → more constrained → lower
-    result = {}
-    for p_short in PRIMITIVE_NAMES_SHORT:
-        p_full = _SHORT_TO_FULL.get(p_short, p_short)
-        max_ord = len(lfas.GLYPH_ORDINALS[p_short]) - 1
-        ordinals = []
-        wts = []
-        for c, w in zip(per_residue, weights):
-            # Try full key first, then short key
-            glyph = c.tensor_tuple.get(p_full) or c.tensor_tuple.get(p_short)
-            if glyph:
-                ord_val = lfas.glyph_ord(p_short, glyph)
-                ordinals.append(ord_val)
-                wts.append(w)
-
-        if not ordinals:
-            result[p_short] = lfas.ord_to_glyph(p_short, 0)
-            continue
-
-        if p_short in ("P", "F"):
-            # Min semantics: weighted toward lower ordinals
-            weighted_ord = sum(o * w for o, w in zip(ordinals, wts)) / sum(wts)
-            min_ord = min(ordinals)
-            blended = 0.6 * weighted_ord + 0.4 * min_ord
-            result[p_short] = lfas.ord_to_glyph(p_short, min(max_ord, max(0, round(blended))))
-        else:
-            # Max semantics: weighted toward higher ordinals
-            weighted_ord = sum(o * w for o, w in zip(ordinals, wts)) / sum(wts)
-            max_ord_val = max(ordinals)
-            blended = 0.6 * weighted_ord + 0.4 * max_ord_val
-            result[p_short] = lfas.ord_to_glyph(p_short, min(max_ord, max(0, round(blended))))
-
-    return result
+    return dict(per_residue[0].tensor_tuple)
 
 
 # ═══════════════════════════════════════════════════════════════════
@@ -478,7 +446,7 @@ def complement_with_bottleneck_bias(
     """Generate a ligand tuple biased toward resolving specific bottlenecks.
 
     Standard complement (complement_type) maps the site tuple to a ligand tuple
-    via the complementary pairs: D↔W, T↔H, R↔S, P↔F, K↔G, Gm↔Ph.
+    via the complementary pairs: ⊢↔⊡, ⊣↔⊥, ≻↔⊞, ≺↔⋈, ⊤↔∈, ∋↔⊙.
 
     Bottleneck bias: for primitives that are bottlenecks, the ligand tuple is
     pushed further from the site's value — making the ligand more "aggressive"
@@ -567,6 +535,7 @@ def design_ligand_from_pdb(
     max_candidates: int = 10,
     bottleneck_bias: float = 0.5,
     verbose: bool = False,
+    protein_glut=None,
 ) -> LigandDesignResult:
     """Run the complete PDB-aware ligand design pipeline.
 
@@ -587,7 +556,7 @@ def design_ligand_from_pdb(
 
     # ── Step 1: Encode site from PDB ──
     site_tuple, per_residue, summary = encode_site_from_pdb(
-        pdb_id_or_path, active_residues, cutoff=cutoff, verbose=verbose)
+        pdb_id_or_path, active_residues, cutoff=cutoff, verbose=verbose, protein_glut=protein_glut)
 
     if site_tuple is None:
         raise RuntimeError(f"Could not encode active site: {summary.get('error', 'unknown')}")
@@ -603,7 +572,7 @@ def design_ligand_from_pdb(
     # ── Step 3: Generate ligand tuple (bottleneck-biased complement) ──
     ligand_tuple = complement_with_bottleneck_bias(
         site_tuple, bottleneck_primitives, bias_strength=bottleneck_bias)
-    ligand_str = tuple_str(ligand_tuple)
+    ligand_str = lfas.fmt_tuple(ligand_tuple)
 
     if verbose:
         print(f"  Ligand tuple: {lfas.fmt_tuple(ligand_tuple)}")
@@ -681,8 +650,8 @@ def design_ligand_from_pdb(
     comparison = _compare_encodings(standard_site, site_tuple, active_residues, per_residue)
 
     if verbose and standard_site:
-        std_str = tuple_str(standard_site)
-        site_str = tuple_str(site_tuple)
+        std_str = lfas.fmt_tuple(standard_site)
+        site_str = lfas.fmt_tuple(site_tuple)
         dist = comparison["distance"]
         print(f"\n  Comparison with standard encoding:")
         print(f"    Standard (AA→primitive): {std_str}")
@@ -694,7 +663,7 @@ def design_ligand_from_pdb(
                 print(f"      {diff['primitive']}: standard={diff['standard_glyph']} "
                       f"pdb_aware={diff['pdb_glyph']} (Δord={diff['delta_ord']})")
 
-    return LigandDesignResult(
+    result = LigandDesignResult(
         pdb_id=summary["pdb_id"],
         active_residues=active_residues,
         site_tuple=site_tuple,
@@ -711,6 +680,33 @@ def design_ligand_from_pdb(
         ligand_candidates=candidates,
         comparison=comparison,
     )
+    return _retain_ligand_family(result, max_candidates, improved=improved,
+                                 substrate_hint=substrate_hint)
+
+
+def _retain_ligand_family(result, max_candidates, improved=None, substrate_hint=''):
+    from rhr_p4rky.protein_glut import retain_carrier, produce_ligand_family
+    glut = retain_carrier(result.site_summary['protein_glut'])
+    def generate(site_type):
+        produced = lfas.decompose_and_generate(site_type, substrate_hint=substrate_hint)
+        if improved is not None:
+            generated = improved.generate_from_enzyme_type(
+                site_type=site_type, substrate_hint=substrate_hint,
+                max_candidates=max_candidates)
+            if generated:
+                produced['ligand_candidates'] = generated
+                produced['generator'] = 'fragment-engine'
+        return produced
+    family, candidates = produce_ligand_family(
+        glut, result.site_summary['site_family'], max_candidates, generator=generate)
+    result.ligand_tuple = family[0]['ligand_tuple']
+    result.ligand_tuple_str = lfas.fmt_tuple(result.ligand_tuple)
+    result.closest_bond, _, result.bond_distance = lfas.closest_bond_type(result.ligand_tuple)
+    result.closest_fgs, _, result.fg_distance = lfas.closest_fg_pair(result.ligand_tuple)
+    result.ligand_candidates = candidates
+    result.site_summary['ligand_family'] = family
+    result.site_summary['protein_glut'] = glut.as_dict()
+    return result
 
 
 def _compare_encodings(
@@ -726,7 +722,7 @@ def _compare_encodings(
     dist = lfas.tuple_distance_dict(standard_site, pdb_site)
 
     key_diffs = []
-    for p in PRIMITIVE_NAMES_SHORT:
+    for p in PRIMITIVE_SYMBOLS:
         std_ord = lfas.glyph_ord(p, standard_site.get(p, "?"))
         pdb_ord = lfas.glyph_ord(p, pdb_site.get(p, "?"))
         delta = pdb_ord - std_ord
@@ -1002,6 +998,10 @@ def result_to_json(result: LigandDesignResult) -> dict:
     """Serialize a LigandDesignResult to JSON-serializable dict."""
     return {
         "pdb_id": result.pdb_id,
+        "protein_glut": result.site_summary['protein_glut'],
+        "site_family": result.site_summary['site_family'],
+        "ligand_family": result.site_summary['ligand_family'],
+        "readout": result.site_summary['readout'],
         "active_residues": result.active_residues,
         "site_tuple_str": result.site_tuple_str,
         "site_summary": {
@@ -1017,7 +1017,7 @@ def result_to_json(result: LigandDesignResult) -> dict:
         "bond_distance": result.bond_distance,
         "closest_fgs": result.closest_fgs,
         "fg_distance": result.fg_distance,
-        "ligand_candidates": result.ligand_candidates[:20],
+        "ligand_candidates": result.ligand_candidates,
         "n_candidates": len(result.ligand_candidates),
         "comparison": {
             "distance": result.comparison.get("distance"),
@@ -1157,6 +1157,7 @@ def design_ligand_from_pdb_improved(
     max_candidates: int = 10,
     bottleneck_bias: float = 0.5,
     verbose: bool = False,
+    protein_glut=None,
 ) -> LigandDesignResult:
     """Run the PDB-aware pipeline with the IMPROVED fragment-based ligand engine.
 
@@ -1172,7 +1173,7 @@ def design_ligand_from_pdb_improved(
 
     # ── Step 1: Encode site from PDB ──
     site_tuple, per_residue, summary = encode_site_from_pdb(
-        pdb_id_or_path, active_residues, cutoff=cutoff, verbose=verbose)
+        pdb_id_or_path, active_residues, cutoff=cutoff, verbose=verbose, protein_glut=protein_glut)
 
     if site_tuple is None:
         raise RuntimeError(f"Could not encode active site: {summary.get('error', 'unknown')}")
@@ -1239,7 +1240,7 @@ def design_ligand_from_pdb_improved(
     standard_site = lfas.encode_site_from_residues(active_residues)
     comparison = _compare_encodings(standard_site, site_tuple, active_residues, per_residue)
 
-    return LigandDesignResult(
+    result = LigandDesignResult(
         pdb_id=summary["pdb_id"],
         active_residues=active_residues,
         site_tuple=site_tuple,
@@ -1256,6 +1257,7 @@ def design_ligand_from_pdb_improved(
         ligand_candidates=candidates,
         comparison=comparison,
     )
+    return _retain_ligand_family(result, max_candidates, improved=improved)
 
 if __name__ == "__main__":
     main()

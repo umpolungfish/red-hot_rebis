@@ -1,6 +1,0 @@
-{
-  "subcommand_positional_file": "pass",
-  "boolean_optional_false": "pass",
-  "string_boolean": "rejected",
-  "fixed_arity": "validated"
-}

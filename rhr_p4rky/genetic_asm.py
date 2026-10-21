@@ -139,7 +139,7 @@ PROGRAM_FROBENIUS_VERIFY = """
 ; Runs the Frobenius cycle and checks that the output matches input.
 ; If %r8 == IFIX (T): Frobenius holds exactly (exact stratum)
 ; If %r8 == N: Frobenius holds modulo ℤ₂ (split stratum)
-; If %r8 == B: Ω boundary detected (stop codon)
+; If %r8 == B: ⊡ boundary detected (stop codon)
 
 ; Save original
 MOVE    %r0  %r3
@@ -161,7 +161,7 @@ FFUSE   %r6  %r7  %r8
 ; %r8 = result of Frobenius check
 ; If %r8 == T: exact match
 ; If %r8 == B: ℤ₂ wobble (split stratum)
-; If %r8 == N: Ω boundary
+; If %r8 == N: ⊡ boundary
 
 EMIT    %r8
 
@@ -174,7 +174,7 @@ PROGRAM_CHIMERA_DETECT = """
 ;
 ; When editing across multiple primitive classes, the composite risk
 ; is tensorial. This program checks if two edits create a frozen
-; trap state (Ç_⊛).
+; trap state (⊤_⊛).
 ;
 ; Input:  %r0 = first edit primitive (as Belnap code)
 ;         %r1 = second edit primitive (as Belnap code)

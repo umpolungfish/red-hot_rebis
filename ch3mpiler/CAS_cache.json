@@ -134,5 +134,29 @@
     "smiles": "CCC1(CC2CC(C3=C(CCN(C2)C1)C4=CC=CC=C4N3)(C5=C(C=C6C(=C5)C78CCN9C7C(C=CC9)(C(C(C8N6C=O)(C(=O)OC)O)OC(=O)C)CC)OC)C(=O)OC)O",
     "source": "pubchem",
     "type_hint": ""
+  },
+  "72-48-0": {
+    "cas": "72-48-0",
+    "name": "1,2-dihydroxyanthracene-9,10-dione",
+    "formula": "C14H8O4",
+    "smiles": "C1=CC=C2C(=C1)C(=O)C3=C(C2=O)C(=C(C=C3)O)O",
+    "source": "pubchem",
+    "type_hint": ""
+  },
+  "303-98-0": {
+    "cas": "303-98-0",
+    "name": "2-[(2E,6E,10E,14E,18E,22E,26E,30E,34E)-3,7,11,15,19,23,27,31,35,39-decamethyltetraconta-2,6,10,14,18,22,26,30,34,38-decaenyl]-5,6-dimethoxy-3-methylcyclohexa-2,5-diene-1,4-dione",
+    "formula": "C59H90O4",
+    "smiles": "CC1=C(C(=O)C(=C(C1=O)OC)OC)CC=C(C)CCC=C(C)CCC=C(C)CCC=C(C)CCC=C(C)CCC=C(C)CCC=C(C)CCC=C(C)CCC=C(C)CCC=C(C)C",
+    "source": "pubchem",
+    "type_hint": ""
+  },
+  "106-51-4": {
+    "cas": "106-51-4",
+    "name": "cyclohexa-2,5-diene-1,4-dione",
+    "formula": "C6H4O2",
+    "smiles": "C1=CC(=O)C=CC1=O",
+    "source": "pubchem",
+    "type_hint": ""
   }
 }

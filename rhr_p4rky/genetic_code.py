@@ -13,7 +13,7 @@ Key theorems (all verified against the kernel):
   2. 8 exact boxes (32 codons): ffuse∘fsplit = id holds exactly (no info at pos3)
   3. 8 split boxes (29 codons + 3 stops): ffuse∘fsplit = id up to ℤ₂ wobble
   4. 12 promoted AAs = bijection with the 12 IG primitives
-  5. 3 stop codons = Ω winding boundary (kernel's paradox detection)
+  5. 3 stop codons = ⊡ winding boundary (kernel's paradox detection)
 """
 
 from __future__ import annotations
@@ -122,7 +122,7 @@ def verify_frobenius_on_codon(codon: BelnapCodon) -> dict:
 
     For exact-stratum codons: holds exactly for all 4 third-base values.
     For split-stratum codons: holds modulo ℤ₂ (pyrimidine/purine class).
-    For stop codons: kernel hits the Ω boundary (paradox detected).
+    For stop codons: kernel hits the ⊡ boundary (paradox detected).
     """
     # Apply kernel operations directly
     (r0_b, _) = engager(codon.p1)  # ENGAGR on position 1
@@ -219,7 +219,7 @@ PRIMITIVE_RISK: Dict[str, str] = {
     "⊙": "high",       # Criticality — metabolic critical point
     "⊥": "critical",   # Chirality — chiral specificity lost
     "⊞": "low",        # Stoichiometry — Lys↔Arg conserved
-    "◻": "critical",   # Winding — C-terminal boundary removed
+    "⊡": "critical",   # Winding — C-terminal boundary removed
     None: "low",       # Ground layer — no primitive activation
 }
 
@@ -369,12 +369,12 @@ def box_stratification() -> dict:
         "boxes": boxes,
     }
 
-# ── Stop Codon Analysis (Ω Winding Boundary) ───────────────────────
+# ── Stop Codon Analysis (⊡ Winding Boundary) ───────────────────────
 
 STOP_CODON_ANALYSIS: Dict[str, str] = {
-    "UAA": "Ω₀ — Ochre. Simple termination. Minimal Ω value.",
-    "UAG": "Ω_Z₂ — Amber. Conditional termination. Selenocysteine readthrough.",
-    "UGA": "Ω_Z — Opal. Open/topological termination. Sec recoding in some organisms.",
+    "UAA": "⊡₀ — Ochre. Simple termination. Minimal ⊡ value.",
+    "UAG": "⊡_Z₂ — Amber. Conditional termination. Selenocysteine readthrough.",
+    "UGA": "⊡_Z — Opal. Open/topological termination. Sec recoding in some organisms.",
 }
 
 STOP_BELNAP_TRIPLES: Dict[str, Tuple[Belnap, Belnap, Belnap]] = {
@@ -384,7 +384,7 @@ STOP_BELNAP_TRIPLES: Dict[str, Tuple[Belnap, Belnap, Belnap]] = {
 }
 
 def analyze_stop_codons() -> dict:
-    """Show stop codons as Ω winding boundary of the Frobenius algebra."""
+    """Show stop codons as ⊡ winding boundary of the Frobenius algebra."""
     results = {}
     for sym, analysis in STOP_CODON_ANALYSIS.items():
         codon = CODON_CATALOG.get(sym)
@@ -497,7 +497,7 @@ def run_genetic_verification() -> dict:
       1. All 64 codons: ffuse∘fsplit applied to position 1
       2. 8 exact boxes: μ∘δ=id holds exactly
       3. 8 split boxes: μ∘δ=id modulo ℤ₂
-      4. 3 stop codons: Ω boundary (paradox detection)
+      4. 3 stop codons: ⊡ boundary (paradox detection)
       5. Crystal divisibility: 17,280,000 / 64 = 270,000
       6. Kernel invariant: frobenius_invariant for all Belnap values
     """
@@ -531,7 +531,7 @@ def run_genetic_verification() -> dict:
     results["primitive_bijection"] = len(IG_PRIMITIVE_OF_AA) == 12
     results["all_primitives_covered"] = (
         set(v.split(" (")[0] for v in IG_PRIMITIVE_OF_AA.values())
-        == {"⊢", "⊣", "≻", "≺", "⋈", "⊤", "∈", "∋", "⊙", "⊥", "⊞", "◻"}
+        == {"⊢", "⊣", "≻", "≺", "⋈", "⊤", "∈", "∋", "⊙", "⊥", "⊞", "⊡"}
     )
     
     # Overall pass/fail
@@ -594,7 +594,7 @@ f"(remainder {crystal['remainder']})")
     info_line(f"    Factorization: {crystal['factorization_formula']}")
     
     # Test stop codons
-    info_line("\n[6] Stop codons (Ω winding boundary):")
+    info_line("\n[6] Stop codons (⊡ winding boundary):")
     for sym, analysis in STOP_CODON_ANALYSIS.items():
         info_line(f"    {sym}: {analysis}")
     

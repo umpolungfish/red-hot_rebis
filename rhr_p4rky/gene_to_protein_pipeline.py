@@ -58,36 +58,36 @@ from .genetic_asm import (
 
 # ------- Structural Type System -------
 
-PRIMITIVE_NAMES = ["D", "T", "R", "P", "F", "K", "G", "Gm", "Phi", "H", "S", "O"]
+PRIMITIVE_NAMES = ["⊢", "⊣", "≻", "≺", "⋈", "⊤", "∈", "∋", "⊙", "⊥", "⊞", "⊡"]
 
 STAGE_TUPLES = {
     "dna_gene": {
         "⊢": "𐑨", "⊣": "𐑶", "≻": "𐑾", "≺": "𐑬", "⋈": "𐑱", "⊤": "𐑧",
-        "∈": "𐑚", "∋": "𐑠", "⊙": "𐑢", "⊥": "𐑖", "⊞": "𐑙", "◻": "𐑭"
+        "∈": "𐑚", "∋": "𐑠", "⊙": "𐑢", "⊥": "𐑖", "⊞": "𐑙", "⊡": "𐑭"
     },
     "pre_mrna": {
         "⊢": "𐑨", "⊣": "𐑰", "≻": "𐑑", "≺": "𐑗", "⋈": "𐑱", "⊤": "𐑤",
-        "∈": "𐑚", "∋": "𐑠", "⊙": "𐑢", "⊥": "𐑒", "⊞": "𐑙", "◻": "𐑷"
+        "∈": "𐑚", "∋": "𐑠", "⊙": "𐑢", "⊥": "𐑒", "⊞": "𐑙", "⊡": "𐑷"
     },
     "mature_mrna": {
         "⊢": "𐑨", "⊣": "𐑰", "≻": "𐑽", "≺": "𐑗", "⋈": "𐑱", "⊤": "𐑧",
-        "∈": "𐑚", "∋": "𐑠", "⊙": "𐑢", "⊥": "𐑒", "⊞": "𐑙", "◻": "𐑷"
+        "∈": "𐑚", "∋": "𐑠", "⊙": "𐑢", "⊥": "𐑒", "⊞": "𐑙", "⊡": "𐑷"
     },
     "nascent_polypeptide": {
         "⊢": "𐑨", "⊣": "𐑡", "≻": "𐑑", "≺": "𐑗", "⋈": "𐑱", "⊤": "𐑘",
-        "∈": "𐑚", "∋": "𐑠", "⊙": "𐑢", "⊥": "𐑖", "⊞": "𐑳", "◻": "𐑷"
+        "∈": "𐑚", "∋": "𐑠", "⊙": "𐑢", "⊥": "𐑖", "⊞": "𐑳", "⊡": "𐑷"
     },
     "secondary_structure": {
         "⊢": "𐑦", "⊣": "𐑸", "≻": "𐑽", "≺": "𐑬", "⋈": "𐑱", "⊤": "𐑤",
-        "∈": "𐑚", "∋": "𐑠", "⊙": "𐑢", "⊥": "𐑖", "⊞": "𐑕", "◻": "𐑷"
+        "∈": "𐑚", "∋": "𐑠", "⊙": "𐑢", "⊥": "𐑖", "⊞": "𐑕", "⊡": "𐑷"
     },
     "tertiary_structure": {
         "⊢": "𐑦", "⊣": "𐑸", "≻": "𐑾", "≺": "𐑗", "⋈": "𐑱", "⊤": "𐑧",
-        "∈": "𐑲", "∋": "𐑝", "⊙": "𐑢", "⊥": "𐑖", "⊞": "𐑙", "◻": "𐑷"
+        "∈": "𐑲", "∋": "𐑝", "⊙": "𐑢", "⊥": "𐑖", "⊞": "𐑙", "⊡": "𐑷"
     },
     "quaternary_structure": {
         "⊢": "𐑦", "⊣": "𐑸", "≻": "𐑾", "≺": "𐑬", "⋈": "𐑱", "⊤": "𐑧",
-        "∈": "𐑚", "∋": "𐑝", "⊙": "𐑢", "⊥": "𐑒", "⊞": "𐑳", "◻": "𐑭"
+        "∈": "𐑚", "∋": "𐑝", "⊙": "𐑢", "⊥": "𐑒", "⊞": "𐑳", "⊡": "𐑭"
     },
 }
 
@@ -130,12 +130,7 @@ CHARGE = {
     "Ser": 0, "Thr": 0, "Trp": 0, "Tyr": 0, "Val": 0,
 }
 
-ONE_LETTER = {
-    "Ala": "A", "Arg": "R", "Asn": "N", "Asp": "D", "Cys": "C",
-    "Gln": "Q", "Glu": "E", "Gly": "G", "His": "H", "Ile": "I",
-    "Leu": "L", "Lys": "K", "Met": "M", "Phe": "F", "Pro": "P",
-    "Ser": "S", "Thr": "T", "Trp": "W", "Tyr": "Y", "Val": "V",
-}
+ONE_LETTER = {'Ala': 'A', 'Arg': 'R', 'Asn': 'N', 'Asp': 'D', 'Cys': 'C', 'Gln': 'Q', 'Glu': 'E', 'Gly': 'G', 'His': 'H', 'Ile': 'I', 'Leu': 'L', 'Lys': 'K', 'Met': 'M', 'Phe': 'F', 'Pro': 'P', 'Ser': 'S', 'Thr': 'T', 'Trp': 'W', 'Tyr': 'Y', 'Val': 'V'}
 
 # ------- Data Classes -------
 
@@ -440,6 +435,10 @@ class GeneToProteinPipeline:
             )
             aa_chain.append(site)
         self.aa_chain = aa_chain
+        from .protein_glut import ProteinGlut
+        self.protein_glut = ProteinGlut.prepare(
+            [site.aa_code for site in aa_chain],
+            [site.symbol for site in self.codon_sites[:len(aa_chain)]])
         agg_b4 = self._aggregate_b4([a.b4_belief for a in aa_chain])
         prim_activations = {}
         for aa in aa_chain:
@@ -571,11 +570,12 @@ class GeneToProteinPipeline:
         # Deduplicate
         ck = {}
         for c in contacts:
-            key = (min(c.residue_i, c.residue_j), max(c.residue_i, c.residue_j))
-            if key not in ck or c.confidence > ck[key].confidence:
+            key = (min(c.residue_i, c.residue_j), max(c.residue_i, c.residue_j), c.interaction_type)
+            if key not in ck:
                 ck[key] = c
         self.tertiary_contacts = list(ck.values())
-        self.tertiary_contacts.sort(key=lambda c: -c.confidence)
+        self.tertiary_contacts.sort(key=lambda c: (c.residue_i, c.residue_j, c.interaction_type))
+        self.protein_glut.contacts(self.tertiary_contacts)
         struct_tuple = dict(STAGE_TUPLES["tertiary_structure"])
         folded_b4 = self._aggregate_b4([a.b4_belief for a in chain])
         r0, _ = engager(folded_b4)
@@ -604,8 +604,9 @@ class GeneToProteinPipeline:
         if num_subunits == 0:
             pred = self.predict_subunit_count()
             num_subunits = pred["count"]
-            self.log(f"Auto-detected {num_subunits} subunits (conf={pred['confidence']:.2f})")
+            self.log(f"Assembly readout: {num_subunits} subunits; alternatives retained")
             self._subunit_prediction = pred
+            self.protein_glut.observe("assembly", pred.get("alternatives", []))
         else:
             self._subunit_prediction = {"count": num_subunits, "confidence": 1.0,
                                          "method": "explicit"}
@@ -882,34 +883,21 @@ class GeneToProteinPipeline:
         evidence["cysteine_count"] = {"prediction": cys_pred, "confidence": cys_conf,
                                        "reason": f"{n_cys} Cys residues"}
         
-        # 7) Short-sequence monomer override (n < 15 AAs, OR n < 25 with no dimer evidence)
-        strong_multimer = False
-        if n < 25:
-            # Check if there's strong evidence for multimerization
-            dimer_signals = 0
-            for ek in ['heptad_repeats', 'motif_scan']:
-                v = evidence.get(ek, {})
-                if isinstance(v, dict) and v.get("prediction", 1) >= 2 and v.get("confidence", 0) >= 0.5:
-                    dimer_signals += 1
-            if dimer_signals == 0 or n < 15:
-                return {"count": 1, "confidence": 0.85, "evidence": evidence,
-                        "chain_length": n, "prediction_method": "monomer_override"}
-        
-        # Weighted ensemble
-        weights = {"length": 0.15, "heptad_repeats": 0.25, "hydrophobic_patches": 0.20,
-                   "primitive_density": 0.10, "motif_scan": 0.20, "cysteine_count": 0.10}
-        weighted_sum = 0.0
-        total_weight = 0.0
-        for key, w in weights.items():
-            pred = evidence[key]["prediction"]
-            conf = evidence[key]["confidence"]
-            weighted_sum += pred * w * (0.5 + 0.5 * conf)
-            total_weight += w * (0.5 + 0.5 * conf)
-        final_pred = max(1, round(weighted_sum / max(total_weight, 0.01)))
-        final_conf = min(1.0, sum(evidence[k]["confidence"] * weights[k] for k in weights) / sum(weights.values()))
-        
-        return {"count": final_pred, "confidence": final_conf, "evidence": evidence,
-                "chain_length": n, "prediction_method": "weighted_ensemble"}
+        # Keep each feature's assertion as evidence, without weighted voting.
+        # When counts disagree the boundary readout is one chain; the carrier
+        # retains every proposed assembly instead of inventing an averaged count.
+        candidates = sorted({v['prediction'] for v in evidence.values()})
+        held = []
+        for count in candidates:
+            affirm = [key for key, value in evidence.items() if value['prediction'] == count]
+            deny = [key for key, value in evidence.items() if value['prediction'] != count]
+            held.append({'count': count, 'state': 'B' if deny else 'T',
+                         'affirmed_by': affirm, 'denied_by': deny})
+        return {'count': candidates[0] if len(candidates) == 1 else 1,
+                'confidence': 0.0,  # deprecated compatibility field, unused in selection
+                'alternatives': held, 'evidence': evidence, 'chain_length': n,
+                'method': 'glut', 'prediction_method': 'glut',
+                'readout': 'unanimous' if len(candidates) == 1 else 'single-chain-boundary'}
 
     # ------- Full Pipeline Run -------
     
@@ -987,18 +975,18 @@ class GeneToProteinPipeline:
         
         # Ordinal mapping (pipeline string names -> ordinals)
         ordinals = {
-            "D": {"wedge": 0, "tri": 1, "infty": 2, "odot": 3},
-            "T": {"network": 0, "in": 1, "bowtie": 2, "boxtimes": 3, "odot": 4},
-            "R": {"super": 0, "cat": 1, "dagger": 2, "lr": 3},
-            "P": {"asym": 0, "psi": 1, "pm": 2, "sym": 3, "pm_sym": 4},
-            "F": {"ell": 0, "eth": 1, "hbar": 2},
-            "K": {"fast": 0, "mod": 1, "slow": 2, "trap": 3, "MBL": 4},
-            "G": {"beth": 0, "gimel": 1, "aleph": 2},
-            "Gm": {"and": 0, "or": 1, "seq": 2, "broad": 3},
-            "Phi": {"sub": 0, "c": 1, "c_complex": 2, "EP": 3, "super": 4},
-            "H": {"0": 0, "1": 1, "2": 2, "inf": 3},
-            "S": {"one": 0, "many": 1, "hetero": 2},
-            "O": {"0": 0, "Z2": 1, "Z": 2, "NA": 3},
+            "⊢": {"wedge": 0, "tri": 1, "infty": 2, "odot": 3},
+            "⊣": {"network": 0, "in": 1, "bowtie": 2, "boxtimes": 3, "odot": 4},
+            "≻": {"super": 0, "cat": 1, "dagger": 2, "lr": 3},
+            "≺": {"asym": 0, "psi": 1, "pm": 2, "sym": 3, "pm_sym": 4},
+            "⋈": {"ell": 0, "eth": 1, "hbar": 2},
+            "⊤": {"fast": 0, "mod": 1, "slow": 2, "trap": 3, "MBL": 4},
+            "∈": {"beth": 0, "gimel": 1, "aleph": 2},
+            "∋": {"and": 0, "or": 1, "seq": 2, "broad": 3},
+            "⊙": {"sub": 0, "c": 1, "c_complex": 2, "EP": 3, "super": 4},
+            "⊥": {"0": 0, "1": 1, "2": 2, "inf": 3},
+            "⊞": {"one": 0, "many": 1, "hetero": 2},
+            "⊡": {"0": 0, "Z2": 1, "Z": 2, "NA": 3},
         }
         
         squared_sum = 0.0
@@ -1025,9 +1013,15 @@ class GeneToProteinPipeline:
         for element in self.secondary_elements or []:
             for i in range(element.start, min(element.end + 1, len(aa_list))):
                 sequence_labels[i] = element.element_type
+        transitions = [("N" if i == 0 else path[i-1], value)
+                       for i, value in enumerate(path)]
+        self.protein_glut.torsion_readout(B4_RAMACHANDRAN, transitions)
         self._coordinate_model = build_backbone(
             [(step["phi"], step["psi"]) for step in steps],
-            [step["ss"] for step in steps], aa_list, sequence_labels)
+            [step["ss"] for step in steps], aa_list, sequence_labels, self.protein_glut)
+        self.protein_glut.observe('secondary-structure', self._coordinate_model.secondary_evidence)
+        self.protein_glut.observe('coordinate-geometry', self._coordinate_model.coordinate_evidence)
+        self._coordinate_model.protein_glut = self.protein_glut.as_dict()
         return self._coordinate_model
 
     def _build_report(self, num_subunits: int):
@@ -1045,14 +1039,14 @@ class GeneToProteinPipeline:
         b4_summary = [{"stage": s, "b4": b.value} for s, b in self.b4_trace]
         secondary_summary = [{
             "type": e.element_type, "start": e.start, "end": e.end,
-            "length": e.end - e.start + 1, "confidence": round(e.confidence, 3),
+            "length": e.end - e.start + 1,
             "sequence": e.sequence
         } for e in (self.secondary_elements or [])]
         tertiary_summary = {"total": len(self.tertiary_contacts), "by_type": {}}
         for c in self.tertiary_contacts:
             t = c.interaction_type
             tertiary_summary["by_type"][t] = tertiary_summary["by_type"].get(t, 0) + 1
-        tertiary_summary["top"] = [{"i": c.residue_i, "j": c.residue_j, "type": c.interaction_type, "conf": round(c.confidence, 3)} for c in self.tertiary_contacts[:10]]
+        tertiary_summary["top"] = [{"i": c.residue_i, "j": c.residue_j, "type": c.interaction_type} for c in self.tertiary_contacts[:10]]
         
         sub_pred = getattr(self, '_subunit_prediction', {"count": num_subunits, "method": "unknown"})
         quat_sym = getattr(self, '_quaternary_symmetry', "unknown")
@@ -1064,8 +1058,10 @@ class GeneToProteinPipeline:
             "auto_detected": sub_pred.get("method", "unknown") != "explicit",
             "prediction": {
                 "method": sub_pred.get("method", "unknown"),
-                "confidence": sub_pred.get("confidence", 0),
-                "evidence": {k: v for k, v in sub_pred.get("evidence", {}).items()}
+                "alternatives": sub_pred.get("alternatives", []),
+                "readout": sub_pred.get("readout", "explicit"),
+                "evidence": {k: {a: b for a, b in v.items() if a != "confidence"}
+                             for k, v in sub_pred.get("evidence", {}).items()}
             }
         }
         
@@ -1083,9 +1079,10 @@ class GeneToProteinPipeline:
         
         model = self._build_coordinate_model()
         coordinate_model = asdict(model)
-        for key in ("coordinate_evidence", "secondary_evidence", "secondary_evidence_report", "source_binding"):
+        for key in ("coordinate_evidence", "secondary_evidence", "secondary_evidence_report", "source_binding", "protein_glut"):
             coordinate_model.pop(key)
         return {
+            "protein_glut": self.protein_glut.as_dict(),
             "coordinate_model": coordinate_model,
             "geometry_evidence": model.coordinate_evidence,
             "secondary_evidence": model.secondary_evidence,
@@ -1120,12 +1117,12 @@ def main():
     """CLI entry point for the gene to protein pipeline."""
     import argparse
 
-    parser = argparse.ArgumentParser(description="Gene to Protein Pipeline (Imscribing Grammar)")
+    parser = argparse.ArgumentParser(description="Gene to Protein Pipeline: native protein glut with full amino-acid self-marks; JSON retains co-held forms and observations, PDB exports a coordinate readout.")
     parser.add_argument("sequence", nargs="?", help="DNA sequence (or --file)")
     parser.add_argument("--file", "-f", help="FASTA file with sequence")
     parser.add_argument("--name", "-n", default="gene", help="Name for the gene/protein")
     parser.add_argument("--subunits", "-s", type=int, default=0,
-                        help="Number of quaternary subunits (0=auto-detect, default)")
+                        help="Number of exported subunits (0=retain assembly alternatives and use the named boundary readout)")
     parser.add_argument("--rna", action="store_true",
                         help="Input is RNA (A,U,G,C) not DNA")
     parser.add_argument("--output", "-o", help="Output JSON file")
@@ -1166,9 +1163,9 @@ def main():
         info_line(f"AA:  {report['aa_sequence']}")
         info_line(f"Length: {report['aa_length']} AAs, Subunits: {report['subunits']}")
         if report['quaternary']['auto_detected']:
-            info_line(f"Subunit detection: AUTO (conf={report['quaternary']['prediction']['confidence']:.2f})")
+            info_line(f"Assembly alternatives: {report['quaternary']['prediction']['alternatives']}")
             for ek, evd in report['quaternary']['prediction']['evidence'].items():
-                info_line(f"  {ek}: pred={evd['prediction']} conf={evd['confidence']:.2f} -- {evd['reason']}")
+                info_line(f"  {ek}: pred={evd['prediction']} -- {evd['reason']}")
         else:
             info_line(f"Subunit count: manual ({report['subunits']})")
         info_line(f"Symmetry: {report['subunit_symmetry']}")

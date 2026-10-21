@@ -13,7 +13,7 @@ Structural inversion of the ch3mpiler_serpentrod_pipeline:
 
 Key insight: complement_type_v2() IS ITS OWN INVERSE. The same complementary
 bijection that maps reaction → catalytic site also maps catalytic site → ligand.
-The structural complement pairs (D↔W, T↔H, R↔S, P↔F, K↔G, Gm↔Ph) are symmetric.
+The structural complement pairs (⊢↔⊡, ⊣↔⊥, ≻↔⊞, ≺↔⋈, ⊤↔∈, ∋↔⊙) are symmetric.
 
 Given a "bevy" of catalyzing proteins, this module:
   1. Loads their active sites (specified by PDB/crystal structure or known residues)
@@ -68,7 +68,7 @@ def _get_forward():
 
 # ── AA-to-Primitive bijection (mirrors the forward pipeline) ────────
 
-PRIMITIVE_NAMES_SHORT = ["D", "T", "R", "P", "F", "K", "G", "Gm", "Ph", "H", "S", "W"]
+PRIMITIVE_SYMBOLS = ["⊢", "⊣", "≻", "≺", "⋈", "⊤", "∈", "∋", "⊙", "⊥", "⊞", "⊡"]
 PRIMITIVE_FULL_NAMES = [
     "Dimensionality", "Topology", "Recognition", "Parity", "Fidelity",
     "Kinetics", "Granularity", "Coupling", "Criticality", "Chirality",
@@ -76,35 +76,31 @@ PRIMITIVE_FULL_NAMES = [
 ]
 
 # Each AA has a dominant primitive (from the serpentrod bijection)
-# The correspondence is V⊙x's; this module holds only the short axis keys it
+# The correspondence is V⊙x's; this module holds only the canonical axis symbols it
 # indexes by, and derives them from the marks rather than restating which
 # residue is which.
 from shared.vox_bridge import AA_MARK as _AA_MARK
 
-_MARK_TO_SHORT = {
-    "⊢": "D", "⊣": "T", "≻": "R", "≺": "P", "⋈": "F", "⊤": "K",
-    "∈": "G", "∋": "Gm", "⊙": "Ph", "⊥": "H", "⊞": "S", "⊡": "W",
-}
-AA_TO_PRIMITIVE = {aa: _MARK_TO_SHORT[mark] for aa, mark in _AA_MARK.items()}
+AA_TO_PRIMITIVE = dict(_AA_MARK)
 
 # Primitive → complementary primitive pairs
-COMPLEMENTARY_PAIRS = [("D","W"), ("T","H"), ("R","S"), ("P","F"), ("K","G"), ("Gm","Ph")]
+COMPLEMENTARY_PAIRS = [("⊢","⊡"), ("⊣","⊥"), ("≻","⊞"), ("≺","⋈"), ("⊤","∈"), ("∋","⊙")]
 
 # Ordinal mappings (glyph → ordinal 0-based)
 # These match GLYPH_ORDINALS from the forward pipeline
 GLYPH_ORDINALS = {
-    "D": {"\U0001045B": 0, "\U00010468": 1, "\U0001047C": 2, "\U00010466": 3},
-    "T": {"\U00010461": 0, "\U00010470": 1, "\U00010465": 2, "\U00010476": 3, "\U00010478": 4},
-    "R": {"\U00010469": 0, "\U00010451": 1, "\U0001047D": 2, "\U0001047E": 3},
-    "P": {"\U00010457": 0, "\U0001047F": 1, "\U0001046C": 2, "\U0001046F": 3, "\U00010479": 4},
-    "F": {"\U00010471": 0, "\U0001045E": 1, "\U00010450": 2},
-    "K": {"\U00010458": 0, "\U00010464": 1, "\U00010467": 2, "\U0001047A": 3, "\U0001046A": 4},
-    "G": {"\U0001045A": 0, "\U00010454": 1, "\U00010472": 2},
-    "Gm": {"\U0001045D": 0, "\U0001045C": 1, "\U00010460": 2, "\U00010475": 3},
-    "Ph": {"\U00010462": 0, "\u2299": 1, "\U0001046E": 2, "\U0001047B": 3, "\U00010463": 4},
-    "H": {"\U00010453": 0, "\U00010452": 1, "\U00010456": 2, "\U0001046B": 3},
-    "S": {"\U00010459": 0, "\U00010455": 1, "\U00010473": 2},
-    "W": {"\U00010477": 0, "\U00010474": 1, "\U0001046D": 2, "\U0001045F": 3}
+    "⊢": {"\U0001045B": 0, "\U00010468": 1, "\U0001047C": 2, "\U00010466": 3},
+    "⊣": {"\U00010461": 0, "\U00010470": 1, "\U00010465": 2, "\U00010476": 3, "\U00010478": 4},
+    "≻": {"\U00010469": 0, "\U00010451": 1, "\U0001047D": 2, "\U0001047E": 3},
+    "≺": {"\U00010457": 0, "\U0001047F": 1, "\U0001046C": 2, "\U0001046F": 3, "\U00010479": 4},
+    "⋈": {"\U00010471": 0, "\U0001045E": 1, "\U00010450": 2},
+    "⊤": {"\U00010458": 0, "\U00010464": 1, "\U00010467": 2, "\U0001047A": 3, "\U0001046A": 4},
+    "∈": {"\U0001045A": 0, "\U00010454": 1, "\U00010472": 2},
+    "∋": {"\U0001045D": 0, "\U0001045C": 1, "\U00010460": 2, "\U00010475": 3},
+    "⊙": {"\U00010462": 0, "\u2299": 1, "\U0001046E": 2, "\U0001047B": 3, "\U00010463": 4},
+    "⊥": {"\U00010453": 0, "\U00010452": 1, "\U00010456": 2, "\U0001046B": 3},
+    "⊞": {"\U00010459": 0, "\U00010455": 1, "\U00010473": 2},
+    "⊡": {"\U00010477": 0, "\U00010474": 1, "\U0001046D": 2, "\U0001045F": 3}
 }
 
 ORD_TO_GLYPH = {}
@@ -123,13 +119,13 @@ def ord_to_glyph(prim: str, ordinal: int) -> str:
 
 def fmt_tuple(t: dict) -> str:
     """Format a 12-primitive dict as angle-bracket string."""
-    return "<" + "".join(t.get(p, "?") for p in PRIMITIVE_NAMES_SHORT) + ">"
+    return "<" + "".join(t.get(p, "?") for p in PRIMITIVE_SYMBOLS) + ">"
 
 
 def tuple_distance_dict(t1: dict, t2: dict) -> float:
     """Weighted Euclidean distance between two 12-primitive dicts."""
     sq = 0.0
-    for p in PRIMITIVE_NAMES_SHORT:
+    for p in PRIMITIVE_SYMBOLS:
         o1 = glyph_ord(p, t1.get(p, "?"))
         o2 = glyph_ord(p, t2.get(p, "?"))
         sq += (o1 - o2) ** 2
@@ -175,20 +171,10 @@ _CATALOG_FG_NAMES = [
     # Additional FGs can be added as they are imscribed
 ]
 
-# Map catalog primitive keys to short names
-_CATALOG_KEY_MAP = {
-    "⊢": "D", "⊣": "T", "≻": "R", "≺": "P", "⋈": "F",
-    "⊤": "K", "∈": "G", "∋": "Gm", "⊙": "Ph",
-    "⊥": "H", "⊞": "S", "◻": "W",
-}
-
+# Catalog tuples use the canonical primitive symbols.
 def _catalog_entry_to_tuple(entry: dict) -> dict:
-    """Convert a catalog entry dict to a 12-primitive dict with short keys."""
-    result = {}
-    for cat_key, short_key in _CATALOG_KEY_MAP.items():
-        if cat_key in entry:
-            result[short_key] = entry[cat_key]
-    return result
+    """Extract canonical primitive fields from a catalog entry."""
+    return {p: entry[p] for p in PRIMITIVE_SYMBOLS if p in entry}
 
 def _get_catalog_tuples_by_name(names: list) -> dict:
     """Return {name: 12-primitive-dict} for names found in the catalog."""
@@ -391,66 +377,66 @@ for prim, mapping in GLYPH_ORDINALS.items():
 # ── BEVY OF CATALYZING PROTEINS ────────────────────────────────────
 
 # Shavian glyph constants for readability
-D_wedge = "\U0001045B"   # 0
-D_tri = "\U00010468"     # 1
-D_infty = "\U0001047C"   # 2
-D_odot = "\U00010466"    # 3
+dimensionality_wedge = "\U0001045B"   # 0
+dimensionality_tri = "\U00010468"     # 1
+dimensionality_infty = "\U0001047C"   # 2
+dimensionality_odot = "\U00010466"    # 3
 
-T_net = "\U00010461"      # 0
-T_in = "\U00010470"       # 1
-T_bowtie = "\U00010465"   # 2
-T_otimes = "\U00010476"   # 3
-T_odot = "\U00010478"     # 4
+topology_net = "\U00010461"      # 0
+topology_in = "\U00010470"       # 1
+topology_bowtie = "\U00010465"   # 2
+topology_otimes = "\U00010476"   # 3
+topology_odot = "\U00010478"     # 4
 
-R_super = "\U00010469"    # 0
-R_cat = "\U00010451"      # 1
-R_dagger = "\U0001047D"   # 2
-R_lr = "\U0001047E"       # 3
+coupling_super = "\U00010469"    # 0
+coupling_cat = "\U00010451"      # 1
+coupling_dagger = "\U0001047D"   # 2
+coupling_lr = "\U0001047E"       # 3
 
-P_asym = "\U00010457"     # 0
-P_psi = "\U0001047F"      # 1
-P_pm = "\U0001046C"       # 2
-P_sym = "\U0001046F"      # 3
-P_pm_sym = "\U00010479"   # 4
+parity_asym = "\U00010457"     # 0
+parity_psi = "\U0001047F"      # 1
+parity_pm = "\U0001046C"       # 2
+parity_sym = "\U0001046F"      # 3
+parity_pm_sym = "\U00010479"   # 4
 
-F_ell = "\U00010471"      # 0
-F_eth = "\U0001045E"      # 1
-F_hbar = "\U00010450"     # 2
+fidelity_ell = "\U00010471"      # 0
+fidelity_eth = "\U0001045E"      # 1
+fidelity_hbar = "\U00010450"     # 2
 
-K_fast = "\U00010458"     # 0
-K_mod = "\U00010464"      # 1
-K_slow = "\U00010467"     # 2
-K_MBL = "\U0001047A"      # 3
-K_trap = "\U0001046A"     # 4
+kinetics_fast = "\U00010458"     # 0
+kinetics_mod = "\U00010464"      # 1
+kinetics_slow = "\U00010467"     # 2
+kinetics_MBL = "\U0001047A"      # 3
+kinetics_trap = "\U0001046A"     # 4
 
-G_beth = "\U0001045A"     # 0
-G_gimel = "\U00010454"    # 1
-G_aleph = "\U00010472"    # 2
+cardinality_beth = "\U0001045A"     # 0
+cardinality_gimel = "\U00010454"    # 1
+cardinality_aleph = "\U00010472"    # 2
 
-Gm_and = "\U0001045D"     # 0
-Gm_or = "\U0001045C"      # 1
-Gm_seq = "\U00010460"     # 2
-Gm_broad = "\U00010475"   # 3
+composition_and = "\U0001045D"     # 0
+composition_or = "\U0001045C"      # 1
+composition_seq = "\U00010460"     # 2
+composition_broad = "\U00010475"   # 3
 
-Ph_sub = "\U00010462"     # 0
-Ph_c = "\u2299"           # 1 (odot)
-Ph_c_complex = "\U0001046E"  # 2
-Ph_EP = "\U0001047B"      # 3
-Ph_super = "\U00010463"   # 4
+criticality_sub = "\U00010462"     # 0
+criticality_c = "\u2299"           # 1 (odot)
+criticality_c_complex = "\U0001046E"  # 2
+criticality_EP = "\U0001047B"      # 3
+criticality_super = "\U00010463"   # 4
 
-H_memless = "\U00010453"  # 0
-H_one = "\U00010452"      # 1
-H_two = "\U00010456"      # 2
-H_inf = "\U0001046B"      # 3
+chirality_memless = "\U00010453"  # 0
+chirality_one = "\U00010452"      # 1
+chirality_two = "\U00010456"      # 2
+chirality_inf = "\U0001046B"      # 3
 
-S_11 = "\U00010459"       # 0
-S_nn = "\U00010455"       # 1
-S_nm = "\U00010473"       # 2
+stoichiometry_11 = "\U00010459"       # 0
+stoichiometry_nn = "\U00010455"       # 1
+stoichiometry_nm = "\U00010473"       # 2
 
-W_0 = "\U00010477"        # 0
-W_Z2 = "\U00010474"       # 1
-W_Z = "\U0001046D"        # 2
-W_NA = "\U0001045F"       # 3
+winding_0 = "\U00010477"        # 0
+winding_Z2 = "\U00010474"       # 1
+winding_Z = "\U0001046D"        # 2
+winding_NA = "\U0001045F"       # 3
 
 
 # Build lookup by name
@@ -518,7 +504,7 @@ def encode_site_from_residues(residues: list) -> dict:
     each primitive's ordinal proportionally to how many residues map to it.
 
     Tensor semantics: max on most primitives (more residues → higher ordinal),
-    min on P and F (more residues → more constrained → lower fidelity/parity).
+    min on ≺ and ⋈ (more residues → more constrained → lower fidelity/parity).
 
     Args:
         residues: List of residue strings, e.g. ["ARG105", "Glu", "Asp"]
@@ -534,17 +520,13 @@ def encode_site_from_residues(residues: list) -> dict:
     # Extended AA_TO_PRIMITIVE with all 20 standard AAs
     _ALL_AA_PRIMITIVE = dict(AA_TO_PRIMITIVE)
     _ALL_AA_PRIMITIVE.update({
-        "Ala": "G", "Gly": "G", "Val": "K", "Leu": "K", "Ile": "K",
-        "Pro": "T", "Ser": "R", "Thr": "R", "Arg": "S", "Lys": "S"
+        "Ala": "∈", "Gly": "∈", "Val": "⊤", "Leu": "⊤", "Ile": "⊤",
+        "Pro": "⊣", "Ser": "≻", "Thr": "≻", "Arg": "⊞", "Lys": "⊞"
     })
 
     # Parse residues to clean 3-letter codes
     clean_aas = []
-    aa_map_1l = {"S": "Ser", "D": "Asp", "H": "His", "E": "Glu",
-                "K": "Lys", "C": "Cys", "Y": "Tyr", "F": "Phe",
-                "I": "Ile", "N": "Asn", "Q": "Gln", "W": "Trp",
-                "M": "Met", "G": "Gly", "A": "Ala", "V": "Val",
-                "L": "Leu", "P": "Pro", "T": "Thr", "R": "Arg"}
+    aa_map_1l = {'A': 'Ala', 'R': 'Arg', 'N': 'Asn', 'D': 'Asp', 'C': 'Cys', 'Q': 'Gln', 'E': 'Glu', 'G': 'Gly', 'H': 'His', 'I': 'Ile', 'L': 'Leu', 'K': 'Lys', 'M': 'Met', 'F': 'Phe', 'P': 'Pro', 'S': 'Ser', 'T': 'Thr', 'W': 'Trp', 'Y': 'Tyr', 'V': 'Val'}
 
     for r in residues:
         match3 = _re.match(r'([A-Za-z]{3})\d*', r)
@@ -565,7 +547,7 @@ def encode_site_from_residues(residues: list) -> dict:
         return None
 
     # Count residues per primitive
-    prim_counts = {p: 0 for p in PRIMITIVE_NAMES_SHORT}
+    prim_counts = {p: 0 for p in PRIMITIVE_SYMBOLS}
     for aa in clean_aas:
         prim = _ALL_AA_PRIMITIVE.get(aa)
         if prim:
@@ -575,15 +557,15 @@ def encode_site_from_residues(residues: list) -> dict:
     # Non-P/F primitives (max semantics):
     #   0 residues → ordinal 0 (minimum, no contribution)
     #   N residues → min(N, max_ordinal)
-    # P and F primitives (tensor-min semantics):
+    # ≺ and ⋈ primitives (tensor-min semantics):
     #   0 residues → ordinal max_ord (no constraint → highest fidelity/parity)
     #   N residues → max(0, max_ord - N) (more residues → more constrained)
     result = {}
-    for p in PRIMITIVE_NAMES_SHORT:
+    for p in PRIMITIVE_SYMBOLS:
         max_ord = len(GLYPH_ORDINALS[p]) - 1
         count = prim_counts.get(p, 0)
 
-        if p in ("P", "F"):
+        if p in ("≺", "⋈"):
             # Tensor-min: more residues → lower ordinal
             # 0 residues = unconstrained = max ordinal
             if count == 0:
@@ -616,9 +598,9 @@ def closest_bond_type(ligand_type: dict) -> Tuple[str, dict, float]:
         if not bond_types:
             # Absolute last resort: minimal fallback (only sigma_single_bond)
             bond_types = {
-                "sigma_single": {"D": D_wedge, "T": T_net, "R": R_cat, "P": P_asym,
-                               "F": F_eth, "K": K_mod, "G": G_beth, "Gm": Gm_and,
-                               "Ph": Ph_sub, "H": H_memless, "S": S_11, "W": W_0},
+                "sigma_single": {"⊢": dimensionality_wedge, "⊣": topology_net, "≻": coupling_cat, "≺": parity_asym,
+                               "⋈": fidelity_eth, "⊤": kinetics_mod, "∈": cardinality_beth, "∋": composition_and,
+                               "⊙": criticality_sub, "⊥": chirality_memless, "⊞": stoichiometry_11, "⊡": winding_0},
             }
 
     best_name = None
@@ -630,16 +612,9 @@ def closest_bond_type(ligand_type: dict) -> Tuple[str, dict, float]:
             continue
         # Extract 12-primitive fields if present
         bt_tuple = {}
-        for p in PRIMITIVE_NAMES_SHORT:
+        for p in PRIMITIVE_SYMBOLS:
             if p in bt:
                 bt_tuple[p] = bt[p]
-            elif {"D": "⊢", "T": "⊣", "R": "≻", "P": "≺", "F": "⋈", 
-                  "K": "⊤", "G": "∈", "Gm": "∋", "Ph": "⊙", 
-                  "H": "⊥", "S": "⊞", "W": "◻"}.get(p, "") in bt:
-                key = {"D": "⊢", "T": "⊣", "R": "≻", "P": "≺", "F": "⋈", 
-                       "K": "⊤", "G": "∈", "Gm": "∋", "Ph": "⊙", 
-                       "H": "⊥", "S": "⊞", "W": "◻"}[p]
-                bt_tuple[p] = bt[key]
             else:
                 continue
         
@@ -675,9 +650,9 @@ def closest_fg_pair(ligand_type: dict, bond_type: dict = None) -> Tuple[list, di
         if not fg_table:
             # Absolute last resort: minimal fallback
             fg_table = {
-                "amine": {"D": D_wedge, "T": T_net, "R": R_cat, "P": P_asym,
-                         "F": F_hbar, "K": K_fast, "G": G_beth, "Gm": Gm_and,
-                         "Ph": Ph_sub, "H": H_memless, "S": S_11, "W": W_0},
+                "amine": {"⊢": dimensionality_wedge, "⊣": topology_net, "≻": coupling_cat, "≺": parity_asym,
+                         "⋈": fidelity_hbar, "⊤": kinetics_fast, "∈": cardinality_beth, "∋": composition_and,
+                         "⊙": criticality_sub, "⊥": chirality_memless, "⊞": stoichiometry_11, "⊡": winding_0},
             }
 
     # Try all FG pairs (including single FGs and pairs)
@@ -693,7 +668,7 @@ def closest_fg_pair(ligand_type: dict, bond_type: dict = None) -> Tuple[list, di
         if not isinstance(fg1_t, dict):
             continue
         fg1_tup = {}
-        for p in PRIMITIVE_NAMES_SHORT:
+        for p in PRIMITIVE_SYMBOLS:
             if p in fg1_t:
                 fg1_tup[p] = fg1_t[p]
             else:
@@ -717,14 +692,14 @@ def closest_fg_pair(ligand_type: dict, bond_type: dict = None) -> Tuple[list, di
             if not isinstance(fg1_t, dict) or not isinstance(fg2_t, dict):
                 continue
             
-            # Tensor product: max on most, min on P and F
+            # Tensor product: max on most, min on ≺ and ⋈
             fused = {}
-            for p in PRIMITIVE_NAMES_SHORT:
-                v1 = fg1_t.get(p) if p in fg1_t else fg1_t.get({"D":"⊢","T":"⊣","R":"≻","P":"≺","F":"⋈","K":"⊤","G":"∈","Gm":"∋","Ph":"⊙","H":"⊥","S":"⊞","W":"◻"}[p], "")
-                v2 = fg2_t.get(p) if p in fg2_t else fg2_t.get({"D":"⊢","T":"⊣","R":"≻","P":"≺","F":"⋈","K":"⊤","G":"∈","Gm":"∋","Ph":"⊙","H":"⊥","S":"⊞","W":"◻"}[p], "")
+            for p in PRIMITIVE_SYMBOLS:
+                v1 = fg1_t.get(p) if p in fg1_t else fg1_t.get({"⊢":"⊢","⊣":"⊣","≻":"≻","≺":"≺","⋈":"⋈","⊤":"⊤","∈":"∈","∋":"∋","⊙":"⊙","⊥":"⊥","⊞":"⊞","⊡":"⊡"}[p], "")
+                v2 = fg2_t.get(p) if p in fg2_t else fg2_t.get({"⊢":"⊢","⊣":"⊣","≻":"≻","≺":"≺","⋈":"⋈","⊤":"⊤","∈":"∈","∋":"∋","⊙":"⊙","⊥":"⊥","⊞":"⊞","⊡":"⊡"}[p], "")
                 o1 = glyph_ord(p, v1) if v1 else 0
                 o2 = glyph_ord(p, v2) if v2 else 0
-                fused[p] = ord_to_glyph(p, min(o1, o2) if p in ("P", "F") else max(o1, o2))
+                fused[p] = ord_to_glyph(p, min(o1, o2) if p in ("≺", "⋈") else max(o1, o2))
             
             dist = tuple_distance_dict(ligand_type, fused)
             if dist < best_dist:

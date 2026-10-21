@@ -35,8 +35,12 @@ import vox as _vox               # noqa: E402
 
 # ── the correspondence, read from V⊙x rather than restated ──────────────────
 
-AA_MARK: Dict[str, str] = {aa: entry[0] for aa, entry in _gt.AA_GLYPH.items()}
-AA_AXIS: Dict[str, str] = {aa: entry[1] for aa, entry in _gt.AA_GLYPH.items()}
+from rhr_p4rky.lean_protein import tables as _lean_tables
+AA_MARK: Dict[str, str] = dict(_lean_tables()["promoted"])
+_AXIS = dict(zip('⊢⊣≻≺⋈⊤∈∋⊙⊥⊞⊡',
+    ('Dimensionality','Topology','Recognition','Parity','Fidelity','Kinetics',
+     'Granularity','Coupling','Criticality','Chirality','Stoichiometry','Winding')))
+AA_AXIS: Dict[str, str] = {aa: _AXIS[mark] for aa, mark in AA_MARK.items()}
 MARK_AA: Dict[str, str] = {mark: aa for aa, mark in AA_MARK.items()}
 
 CODON_MARK: Dict[str, str] = {

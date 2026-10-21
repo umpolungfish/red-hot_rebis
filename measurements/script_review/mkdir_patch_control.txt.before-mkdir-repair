@@ -1,4 +1,0 @@
-def build():
-    if True:
-        if True:
-            layer_dir.mkdir(exist_ok=True)

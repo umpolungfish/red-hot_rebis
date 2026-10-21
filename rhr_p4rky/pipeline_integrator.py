@@ -162,7 +162,7 @@ def _compute_protein_from_tuple(prim_counts, seq_len):
         '𐐧' if '𐐧' in prim_counts else '𐐺',  # K
         '𐐲' if '𐐲' in prim_counts else '𐐚',  # G
         '𐐠' if '𐐠' in prim_counts else '𐐝',  # Gamma
-        '⊙' if '⊙' in prim_counts else '𐐢',          # Phi
+        '⊙' if '⊙' in prim_counts else '𐐢',          # ⊙
         '𐐖' if '𐐖' in prim_counts else '𐐓',  # H
         '𐐙' if '𐐙' in prim_counts else '𐐕',  # S
         '𐐭' if '𐐭' in prim_counts else '𐐷',  # Omega

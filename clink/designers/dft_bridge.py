@@ -196,7 +196,7 @@ PRIMITIVE_PROMOTION_ENERGY = {
     "⊙": 12.0,    # Criticality promotion — approach to critical point
     "⊥": 7.0,     # Chirality increase — higher-order memory
     "⊞": 3.0,     # Stoichiometry — more component types
-    "◻": 20.0,    # Winding topology — topological protection cost
+    "⊡": 20.0,    # Winding topology — topological protection cost
 }
 
 
@@ -272,7 +272,7 @@ def compute_layer_energy_profile(layer_idx: int) -> Dict:
     energy_sum = 0.0
     primitive_contribs = {}
     
-    PNAMES = ["⊢", "⊣", "≻", "≺", "⋈", "⊤", "∈", "∋", "⊙", "⊥", "⊞", "◻"]
+    PNAMES = ["⊢", "⊣", "≻", "≺", "⋈", "⊤", "∈", "∋", "⊙", "⊥", "⊞", "⊡"]
     for p in PNAMES:
         if p in tup and p in baseline_tup and p in ORDINALS:
             try:

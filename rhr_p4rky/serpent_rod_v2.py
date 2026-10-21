@@ -145,13 +145,18 @@ class BackboneModel:
     secondary_evidence: List[Dict] = field(default_factory=list)
     secondary_evidence_report: str = ""
     source_binding: Dict = field(default_factory=dict)
+    protein_glut: Dict = field(default_factory=dict)
 
 def build_backbone(phi_psi: List[Tuple[float,float]], ss_types: List[str],
-                   aa_list=None, sequence_labels=None) -> BackboneModel:
+                   aa_list=None, sequence_labels=None, protein_glut=None) -> BackboneModel:
     """Construct through the same source-bound geometry used by Vox."""
     from rhr_p4rky.peptide_geometry import construct
     aa_list = ["Gly"] * len(phi_psi) if aa_list is None else aa_list
-    payload = construct(aa_list, phi_psi, sequence_labels, ss_types)
+    payload = construct(aa_list, phi_psi, sequence_labels, ss_types, protein_glut=protein_glut)
+    if protein_glut is not None:
+        protein_glut.observe('contact-driven-torsion-work', payload['folding'])
+        protein_glut.readout('relaxed-torsions', payload['torsions'])
+    phi_psi = [tuple(pair) for pair in payload['torsions']]
     residues = [BackboneAtom(**{key: tuple(row[key]) for key in ("n", "ca", "c", "o")})
                 for row in payload["residues"]]
     return BackboneModel(residues, phi_psi, "".join(ONE_LETTER.get(aa, "X") for aa in aa_list),
@@ -195,7 +200,7 @@ def predict_contacts_from_geometry(model: BackboneModel, ca_dm: List[List[float]
                 itype = "strong" if d < 5.0 else ("medium" if d < 6.5 else "weak")
                 conf = max(0.1, min(0.95, {True: 0.9-0.1*d/5.0, False: 0.7-0.1*(d-5.0)/1.5}.get(d<5.0, 0.5-0.2*(d-6.5)/1.5)))
                 contacts.append(PredictedContact(i, j, round(d,2), itype, round(conf,3)))
-    contacts.sort(key=lambda c: -c.confidence)
+    contacts.sort(key=lambda c: (c.residue_i, c.residue_j, c.distance))
     return contacts
 
 # ═══════════════════════════════════════════════════════════════════
@@ -299,6 +304,7 @@ class Gen2Result:
     geometry_evidence: Dict = field(default_factory=dict)
     secondary_evidence: List[Dict] = field(default_factory=list)
     source_binding: Dict = field(default_factory=dict)
+    protein_glut: Dict = field(default_factory=dict)
 
 class SerpentRodV2:
     """Serpent-Rod Gen2 — 3D backbone from RNA via B₄→Ramachandran."""
@@ -316,27 +322,37 @@ class SerpentRodV2:
     
     def predict(self) -> Gen2Result:
         aas = self.v1.translate_to_aa()
+        from .protein_glut import ProteinGlut
+        codons = [self.rna[3*i:3*i+3] for i in range(len(aas))]
+        glut = ProteinGlut.prepare(aas, codons)
         nucleotide_path = self.v1.compute_serpent_path()
         b4_path = [nucleotide_path[3*i] for i in range(len(aas))]
         winding = self.v1.compute_winding_number()
         
         # Map B₄ transitions → φ/ψ angles
-        phi_psi, ss_types = [], []
+        phi_psi, ss_types, transitions = [], [], []
         for i in range(len(aas)):
             key = ("N", b4_path[0]) if i == 0 and b4_path else \
                   (b4_path[min(i-1,len(b4_path)-1)], b4_path[min(i,len(b4_path)-1)]) if i < len(b4_path) else ("N","N")
             rama = B4_RAMACHANDRAN.get(key, {"phi":-60,"psi":-40,"ss":"loop","conf":0.3})
+            transitions.append(key)
             phi_psi.append((float(rama["phi"]), float(rama["psi"])))
             ss_types.append(rama["ss"])
+        glut.torsion_readout(B4_RAMACHANDRAN, transitions)
         
         sequence_labels = ["-"] * len(aas)
         sequence_elements = self.v1.predict_secondary_structure(aas, self.v1.compute_activation_pattern(aas))
         for element in sequence_elements:
             for position in range(element["start"], min(element["end"], len(aas))):
                 sequence_labels[position] = element["type"]
-        backbone = build_backbone(phi_psi, ss_types, aas, sequence_labels)
+        backbone = build_backbone(phi_psi, ss_types, aas, sequence_labels, glut)
+        glut.observe('secondary-structure', backbone.secondary_evidence)
+        glut.observe('coordinate-geometry', backbone.coordinate_evidence)
+        backbone.protein_glut = glut.as_dict()
         ca_dm = compute_ca_distances(backbone)
         contacts = predict_contacts_from_geometry(backbone, ca_dm)
+        glut.contacts(contacts)
+        backbone.protein_glut = glut.as_dict()
         energy = compute_energy(backbone, aas, contacts)
         activated, act_count = compute_activation_set(aas)
         pairs_cov = frobenius_pair_coverage(activated)
@@ -374,7 +390,8 @@ class SerpentRodV2:
             subunit_count=subunits, energy=energy,
             geometry_evidence=backbone.coordinate_evidence,
             secondary_evidence=backbone.secondary_evidence,
-            source_binding=backbone.source_binding)
+            source_binding=backbone.source_binding,
+            protein_glut=backbone.protein_glut)
 
 # ═══════════════════════════════════════════════════════════════════
 

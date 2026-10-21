@@ -16,7 +16,8 @@ _REPO = Path(__file__).resolve().parents[1]
 _ADAPTER = Path(__file__).with_name('peptide_bridge.rs')
 _VOX = _REPO.parent / 'Vox' / 'src'
 _SOURCES = [_ADAPTER, *(_VOX / name for name in
-                       ('fold3d.rs', 'peptide_geometry.rs', 'peptide_closure.rs'))]
+                       ('fold3d.rs', 'peptide_geometry.rs', 'peptide_closure.rs', 'phase_word.rs',
+                        'fold.rs', 'protein_relax.rs'))]
 _CACHE = _REPO / 'measurements' / 'native_peptide_bridge'
 
 
@@ -52,7 +53,22 @@ def _helper():
     return binary, current
 
 
-def construct(aa_list, phi_psi, sequence_labels=None, backbone_labels=None, *, coordinates=None):
+def execute_self_marks(marks):
+    """Execute full residue words with their grounded tuples as carried payloads."""
+    if not marks:
+        return []
+    binary, binding = _helper()
+    wire = '\n'.join(mark['word'] + '\t' + mark['tuple'] for mark in marks)
+    result = subprocess.run([str(binary), '--words'], input=wire, capture_output=True, text=True)
+    if result.returncode:
+        raise ValueError('Self-mark execution failed: ' + result.stderr.strip())
+    rows = json.loads(result.stdout)
+    if len(rows) != len(marks):
+        raise ValueError('Self-mark return lost residue boundaries')
+    return [{**row, 'source_binding': binding} for row in rows]
+
+
+def construct(aa_list, phi_psi, sequence_labels=None, backbone_labels=None, *, coordinates=None, protein_glut=None):
     """Return the complete coordinates, coordinate evidence and valid B states."""
     size = len(aa_list)
     if len(phi_psi) != size:
@@ -84,6 +100,13 @@ def construct(aa_list, phi_psi, sequence_labels=None, backbone_labels=None, *, c
                     raise ValueError('Atom names must be single tokens')
                 atoms.append(f'{i} {name} ' + ' '.join(format(float(v), '.17g') for v in atom['xyz']))
         wire += '\nCOORDINATES\n' + '\n'.join(atoms)
+    if protein_glut is not None and coordinates is None:
+        residues = protein_glut.residues
+        if [r['aa'] for r in residues] != list(aa_list):
+            raise ValueError('Folding carrier differs from coordinate sequence')
+        wire += '\nFOLD_WORDS\n' + '\n'.join(
+            f"{i} {form['word']}" for i, residue in enumerate(residues)
+            for form in residue['self_marks'])
     result = subprocess.run(command, input=wire, capture_output=True, text=True)
     if result.returncode:
         raise ValueError('Shared peptide construction rejected input: ' + result.stderr.strip())

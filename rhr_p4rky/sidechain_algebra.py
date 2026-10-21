@@ -33,28 +33,6 @@ from crystal_navigator import (
 
 
 # ═══════════════════════════════════════════════════════════════════
-# Σ NORMALIZATION — crystal_navigator's tensor() returns special
-# values (𐑳, 𐑙, 𐑕) not in ORD. Map → canonical glyphs.
-# ═══════════════════════════════════════════════════════════════════
-
-_SIGMA_KEY = "\u229e"  # ⊞, Stoichiometry
-
-_SIGMA_NORMALIZE = {
-    "\u03a3_\u00ef":  "𐑳",  # 𐑳 → n:m  (index 2)
-    "\u03a3_S":       "𐑙",  # 𐑙  → 1:1  (index 0)
-    "\u03a3_\u0151": "𐑕",  # 𐑕  → n:n  (index 1)
-}
-
-def _normalize(t: Dict[str, str]) -> Dict[str, str]:
-    """Normalize special Σ values to canonical glyphs for distance/display."""
-    result = dict(t)
-    for key in list(result.keys()):
-        if key == _SIGMA_KEY and result[key] in _SIGMA_NORMALIZE:
-            result[key] = _SIGMA_NORMALIZE[result[key]]
-    return result
-
-
-# ═══════════════════════════════════════════════════════════════════
 # 1. AMINO ACID SIDECHAIN TUPLES  (20 standard)
 # ═══════════════════════════════════════════════════════════════════
 
@@ -64,110 +42,110 @@ SIDECHAINS: Dict[str, Dict[str, str]] = {
     "glycine": {
         "⊢": "𐑛", "⊣": "𐑡", "≻": "𐑩", "≺": "𐑗",
         "⋈": "𐑱", "⊤": "𐑺", "∈": "𐑚", "∋": "𐑝",
-        "⊙": "𐑢", "⊥": "𐑓", _SIGMA_KEY: "𐑙", "⊡": "𐑷",
+        "⊙": "𐑢", "⊥": "𐑓", "⊞": "𐑙", "⊡": "𐑷",
     },
     "alanine": {
         "⊢": "𐑛", "⊣": "𐑡", "≻": "𐑩", "≺": "𐑗",
         "⋈": "𐑱", "⊤": "𐑺", "∈": "𐑲", "∋": "𐑝",
-        "⊙": "𐑢", "⊥": "𐑓", _SIGMA_KEY: "𐑙", "⊡": "𐑷",
+        "⊙": "𐑢", "⊥": "𐑓", "⊞": "𐑙", "⊡": "𐑷",
     },
     "valine": {
         "⊢": "𐑨", "⊣": "𐑡", "≻": "𐑩", "≺": "𐑗",
         "⋈": "𐑱", "⊤": "𐑤", "∈": "𐑲", "∋": "𐑝",
-        "⊙": "𐑢", "⊥": "𐑒", _SIGMA_KEY: "𐑙", "⊡": "𐑷",
+        "⊙": "𐑢", "⊥": "𐑒", "⊞": "𐑙", "⊡": "𐑷",
     },
     "leucine": {
         "⊢": "𐑨", "⊣": "𐑡", "≻": "𐑩", "≺": "𐑗",
         "⋈": "𐑱", "⊤": "𐑪", "∈": "𐑚", "∋": "𐑜",
-        "⊙": "𐑢", "⊥": "𐑒", _SIGMA_KEY: "𐑙", "⊡": "𐑷",
+        "⊙": "𐑢", "⊥": "𐑒", "⊞": "𐑙", "⊡": "𐑷",
     },
     "isoleucine": {
         "⊢": "𐑨", "⊣": "𐑡", "≻": "𐑩", "≺": "𐑬",
         "⋈": "𐑱", "⊤": "𐑤", "∈": "𐑲", "∋": "𐑜",
-        "⊙": "𐑢", "⊥": "𐑒", _SIGMA_KEY: "𐑙", "⊡": "𐑴",
+        "⊙": "𐑢", "⊥": "𐑒", "⊞": "𐑙", "⊡": "𐑴",
     },
     "proline": {
         "⊢": "𐑨", "⊣": "𐑰", "≻": "𐑩", "≺": "𐑬",
         "⋈": "𐑱", "⊤": "𐑤", "∈": "𐑲", "∋": "𐑝",
-        "⊙": "𐑢", "⊥": "𐑖", _SIGMA_KEY: "𐑙", "⊡": "𐑴",
+        "⊙": "𐑢", "⊥": "𐑖", "⊞": "𐑙", "⊡": "𐑴",
     },
 
     # ── AROMATIC ──
     "phenylalanine": {
         "⊢": "𐑨", "⊣": "𐑰", "≻": "𐑽", "≺": "𐑬",
         "⋈": "𐑞", "⊤": "𐑪", "∈": "𐑔", "∋": "𐑠",
-        "⊙": "𐑢", "⊥": "𐑒", _SIGMA_KEY: "𐑙", "⊡": "𐑴",
+        "⊙": "𐑢", "⊥": "𐑒", "⊞": "𐑙", "⊡": "𐑴",
     },
     "tyrosine": {
         "⊢": "𐑨", "⊣": "𐑥", "≻": "𐑾", "≺": "𐑬",
         "⋈": "𐑞", "⊤": "𐑧", "∈": "𐑔", "∋": "𐑠",
-        "⊙": "𐑢", "⊥": "𐑖", _SIGMA_KEY: "𐑙", "⊡": "𐑴",
+        "⊙": "𐑢", "⊥": "𐑖", "⊞": "𐑙", "⊡": "𐑴",
     },
     "tryptophan": {
         "⊢": "𐑨", "⊣": "𐑥", "≻": "𐑾", "≺": "𐑬",
         "⋈": "𐑐", "⊤": "𐑧", "∈": "𐑔", "∋": "𐑠",
-        "⊙": "𐑢", "⊥": "𐑖", _SIGMA_KEY: "𐑙", "⊡": "𐑴",
+        "⊙": "𐑢", "⊥": "𐑖", "⊞": "𐑙", "⊡": "𐑴",
     },
 
     # ── POLAR, UNCHARGED ──
     "serine": {
         "⊢": "𐑛", "⊣": "𐑡", "≻": "𐑾", "≺": "𐑿",
         "⋈": "𐑐", "⊤": "𐑪", "∈": "𐑲", "∋": "𐑜",
-        "⊙": "𐑢", "⊥": "𐑒", _SIGMA_KEY: "𐑙", "⊡": "𐑴",
+        "⊙": "𐑢", "⊥": "𐑒", "⊞": "𐑙", "⊡": "𐑴",
     },
     "threonine": {
         "⊢": "𐑨", "⊣": "𐑡", "≻": "𐑾", "≺": "𐑬",
         "⋈": "𐑐", "⊤": "𐑪", "∈": "𐑲", "∋": "𐑜",
-        "⊙": "𐑢", "⊥": "𐑒", _SIGMA_KEY: "𐑙", "⊡": "𐑴",
+        "⊙": "𐑢", "⊥": "𐑒", "⊞": "𐑙", "⊡": "𐑴",
     },
     "cysteine": {
         "⊢": "𐑛", "⊣": "𐑡", "≻": "𐑾", "≺": "𐑿",
         "⋈": "𐑐", "⊤": "𐑪", "∈": "𐑲", "∋": "𐑜",
-        "⊙": "𐑢", "⊥": "𐑒", _SIGMA_KEY: "𐑙", "⊡": "𐑴",
+        "⊙": "𐑢", "⊥": "𐑒", "⊞": "𐑙", "⊡": "𐑴",
     },
     "asparagine": {
         "⊢": "𐑨", "⊣": "𐑥", "≻": "𐑽", "≺": "𐑿",
         "⋈": "𐑞", "⊤": "𐑧", "∈": "𐑲", "∋": "𐑜",
-        "⊙": "𐑢", "⊥": "𐑒", _SIGMA_KEY: "𐑙", "⊡": "𐑴",
+        "⊙": "𐑢", "⊥": "𐑒", "⊞": "𐑙", "⊡": "𐑴",
     },
     "glutamine": {
         "⊢": "𐑨", "⊣": "𐑡", "≻": "𐑽", "≺": "𐑿",
         "⋈": "𐑞", "⊤": "𐑧", "∈": "𐑔", "∋": "𐑜",
-        "⊙": "𐑢", "⊥": "𐑒", _SIGMA_KEY: "𐑙", "⊡": "𐑴",
+        "⊙": "𐑢", "⊥": "𐑒", "⊞": "𐑙", "⊡": "𐑴",
     },
     "methionine": {
         "⊢": "𐑨", "⊣": "𐑡", "≻": "𐑑", "≺": "𐑗",
         "⋈": "𐑞", "⊤": "𐑪", "∈": "𐑔", "∋": "𐑠",
-        "⊙": "𐑢", "⊥": "𐑒", _SIGMA_KEY: "𐑙", "⊡": "𐑷",
+        "⊙": "𐑢", "⊥": "𐑒", "⊞": "𐑙", "⊡": "𐑷",
     },
 
     # ── POSITIVELY CHARGED ──
     "lysine": {
         "⊢": "𐑼", "⊣": "𐑡", "≻": "𐑑", "≺": "𐑿",
         "⋈": "𐑞", "⊤": "𐑧", "∈": "𐑔", "∋": "𐑠",
-        "⊙": "𐑢", "⊥": "𐑒", _SIGMA_KEY: "𐑙", "⊡": "𐑴",
+        "⊙": "𐑢", "⊥": "𐑒", "⊞": "𐑙", "⊡": "𐑴",
     },
     "arginine": {
         "⊢": "𐑨", "⊣": "𐑥", "≻": "𐑾", "≺": "𐑹",
         "⋈": "𐑐", "⊤": "𐑧", "∈": "𐑔", "∋": "𐑠",
-        "⊙": "𐑢", "⊥": "𐑒", _SIGMA_KEY: "𐑙", "⊡": "𐑴",
+        "⊙": "𐑢", "⊥": "𐑒", "⊞": "𐑙", "⊡": "𐑴",
     },
     "histidine": {
         "⊢": "𐑨", "⊣": "𐑥", "≻": "𐑾", "≺": "𐑬",
         "⋈": "𐑞", "⊤": "𐑧", "∈": "𐑲", "∋": "𐑠",
-        "⊙": "𐑻", "⊥": "𐑖", _SIGMA_KEY: "𐑙", "⊡": "𐑴",
+        "⊙": "𐑻", "⊥": "𐑖", "⊞": "𐑙", "⊡": "𐑴",
     },
 
     # ── NEGATIVELY CHARGED ──
     "aspartate": {
         "⊢": "𐑛", "⊣": "𐑡", "≻": "𐑽", "≺": "𐑿",
         "⋈": "𐑞", "⊤": "𐑪", "∈": "𐑲", "∋": "𐑝",
-        "⊙": "𐑢", "⊥": "𐑒", _SIGMA_KEY: "𐑙", "⊡": "𐑴",
+        "⊙": "𐑢", "⊥": "𐑒", "⊞": "𐑙", "⊡": "𐑴",
     },
     "glutamate": {
         "⊢": "𐑨", "⊣": "𐑡", "≻": "𐑽", "≺": "𐑿",
         "⋈": "𐑞", "⊤": "𐑧", "∈": "𐑔", "∋": "𐑜",
-        "⊙": "𐑢", "⊥": "𐑒", _SIGMA_KEY: "𐑙", "⊡": "𐑴",
+        "⊙": "𐑢", "⊥": "𐑒", "⊞": "𐑙", "⊡": "𐑴",
     },
 }
 
@@ -181,25 +159,25 @@ ENVIRONMENTS: Dict[str, Dict[str, str]] = {
     "hydrophobic_core": {
         "⊢": "𐑛", "⊣": "𐑰", "≻": "𐑩", "≺": "𐑗",
         "⋈": "𐑱", "⊤": "𐑤", "∈": "𐑲", "∋": "𐑝",
-        "⊙": "𐑢", "⊥": "𐑓", _SIGMA_KEY: "𐑕", "⊡": "𐑷",
+        "⊙": "𐑢", "⊥": "𐑓", "⊞": "𐑕", "⊡": "𐑷",
     },
 
     "polar_surface": {
         "⊢": "𐑼", "⊣": "𐑥", "≻": "𐑾", "≺": "𐑿",
         "⋈": "𐑐", "⊤": "𐑧", "∈": "𐑔", "∋": "𐑠",
-        "⊙": "𐑢", "⊥": "𐑖", _SIGMA_KEY: "𐑳", "⊡": "𐑴",
+        "⊙": "𐑢", "⊥": "𐑖", "⊞": "𐑳", "⊡": "𐑴",
     },
 
     "charged_interface": {
         "⊢": "𐑨", "⊣": "𐑥", "≻": "𐑾", "≺": "𐑹",
         "⋈": "𐑐", "⊤": "𐑧", "∈": "𐑔", "∋": "𐑠",
-        "⊙": "𐑮", "⊥": "𐑖", _SIGMA_KEY: "𐑕", "⊡": "𐑭",
+        "⊙": "𐑮", "⊥": "𐑖", "⊞": "𐑕", "⊡": "𐑭",
     },
 
     "interfacial": {
         "⊢": "𐑼", "⊣": "𐑶", "≻": "𐑽", "≺": "𐑬",
         "⋈": "𐑞", "⊤": "𐑤", "∈": "𐑔", "∋": "𐑜",
-        "⊙": "𐑢", "⊥": "𐑒", _SIGMA_KEY: "𐑳", "⊡": "𐑴",
+        "⊙": "𐑢", "⊥": "𐑒", "⊞": "𐑳", "⊡": "𐑴",
     },
 }
 
@@ -214,17 +192,20 @@ def tuple_str(t: Dict[str, str]) -> str:
     return f"⟨{''.join(glyphs)}⟩"
 
 def safe_distance(a: Dict[str, str], b: Dict[str, str]) -> float:
-    """Distance with Σ normalization."""
-    return _distance(_normalize(a), _normalize(b))
+    """Distance on canonical primitive symbols and Shavian values."""
+    return _distance(a, b)
 
 def safe_meet(a: Dict[str, str], b: Dict[str, str]) -> Dict[str, str]:
-    return _normalize(_meet(a, b))
+    from rhr_p4rky.lean_protein import operation
+    return operation('meet', a, b)
 
 def safe_join(a: Dict[str, str], b: Dict[str, str]) -> Dict[str, str]:
-    return _normalize(_join(a, b))
+    from rhr_p4rky.lean_protein import operation
+    return operation('join', a, b)
 
 def safe_tensor(a: Dict[str, str], b: Dict[str, str]) -> Dict[str, str]:
-    return _normalize(_tensor(a, b))
+    from rhr_p4rky.lean_protein import operation
+    return operation('tensor', a, b)
 
 
 # ═══════════════════════════════════════════════════════════════════
@@ -261,6 +242,7 @@ def _bottleneck_meaning(p: str, sc_val: str, env_val: str, tensor_val: str) -> s
 def analyze_composition(
     sidechain: str,
     environment: str,
+    self_mark_forms=None,
 ) -> Dict:
     """Full compositional analysis of sidechain ⊗/∧/∨ environment."""
     sc = SIDECHAINS.get(sidechain)
@@ -272,7 +254,26 @@ def analyze_composition(
         return {"error": f"Unknown environment: {environment}",
                 "valid_env": list(ENVIRONMENTS.keys())}
 
-    # Core operations (with Σ normalization)
+    from rhr_p4rky.protein_glut import ProteinGlut, _NAMES, MARKS
+    from rhr_p4rky.lean_protein import operation
+    if self_mark_forms is None:
+        aa = next((aa for aa, names in _NAMES.items() if sidechain in names), None)
+        if aa is None:
+            return {"error": f"No peptide-component context for {sidechain}"}
+        self_mark_forms = ProteinGlut.prepare([aa]).residues[0]['self_marks']
+    alternatives = []
+    for form in self_mark_forms:
+        native = dict(zip(MARKS, form['tuple'].strip('⟨⟩')))
+        contextual = operation('tensor', sc, native)
+        alternatives.append({'artifact_id': form['artifact_id'], 'sha256': form['sha256'],
+            'word': form['word'], 'execution': form['execution'], 'peptide_tuple': native,
+            'sidechain_tuple': dict(sc), 'contextual_tuple': contextual,
+            'tensor': operation('tensor', contextual, env),
+            'meet': operation('meet', contextual, env),
+            'join': operation('join', contextual, env)})
+    sc = alternatives[0]['contextual_tuple']
+
+    # Core operations on canonical tuples
     t_tensor = safe_tensor(sc, env)
     t_meet   = safe_meet(sc, env)
     t_join   = safe_join(sc, env)
@@ -330,6 +331,9 @@ def analyze_composition(
     tier = compute_tier(t_tensor["⊙"], t_tensor["≺"], t_tensor["⊡"], t_tensor["⊢"])
 
     return {
+        "native_state": "B", "weights": "none",
+        "self_mark_alternatives": alternatives,
+        "readout": {"method": "first-source-form", "artifact_id": alternatives[0]['artifact_id']},
         "sidechain": sidechain,
         "environment": environment,
         "tuple_sc": tuple_str(sc),

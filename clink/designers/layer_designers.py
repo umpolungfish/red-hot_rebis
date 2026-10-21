@@ -220,7 +220,7 @@ class Layer3Designer(LayerDesigner):
             atup = lower_spec.tuple_glyphs if lower_spec else self.clink_tuple
             gly2ch3 = {"⊢": "D", "⊣": "T", "≻": "R", "≺": "P",
                        "⋈": "F", "⊤": "K", "∈": "G", "∋": "Gm",
-                       "⊙": "Ph", "⊥": "H", "⊞": "S", "◻": "W"}
+                       "⊙": "Ph", "⊥": "H", "⊞": "S", "⊡": "W"}
             tup_ch3 = {gly2ch3[k]: v for k, v in atup.items()}
             tt = tensor_type(tup_ch3, tup_ch3)
             ch3mpiler_result = {"available": True, "tensor": tt}
@@ -605,7 +605,7 @@ class Layer8Designer(LayerDesigner):
             "gate1_phi_c": gate1_phi_c,       # Self-modeling via ⊙
             "gate2_k_slow": gate2_k_slow,     # Slow kinetics via 𐑧
             "eternal_chirality": tup.get("⊥","") == "𐑫",
-            "non_abelian": tup.get("◻","") == "𐑟",
+            "non_abelian": tup.get("⊡","") == "𐑟",
             "self_written_state": tup.get("⊢","") == "𐑦",
             "frobenius_special": tup.get("≺","") == "𐑹",
             "score": compute_c_score_from_tuple(tup),

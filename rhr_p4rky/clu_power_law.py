@@ -13,12 +13,12 @@ The Frobenius kernel avalanche size distribution follows a -3/2 power law
 at the O₂/O_∞ boundary. Proof structure:
 
 P1. CLU(b) = ln(b) nats per K-tier crossing [CLU.md §I]
-P2. At O₂/O_∞, axes K(5), H(4), Ω(4) form a 3D lattice of 80 sites
-P3. Each kernel cycle = one symmetric step in (K, H, Ω) space
+P2. At O₂/O_∞, axes K(5), H(4), ⊡(4) form a 3D lattice of 80 sites
+P3. Each kernel cycle = one symmetric step in (K, H, ⊡) space
 P4. Return probability in d dimensions: P_n(0) ∝ n^(-d/2)
 P5. With d_eff = 3: P(S) ∝ S^(-3/2)
 
-Verification: 3D random walk on (K×H×Ω) lattice, MLE exponent = 1.5 ± 0.15
+Verification: 3D random walk on (K×H×⊡) lattice, MLE exponent = 1.5 ± 0.15
 """
 
 from __future__ import annotations
@@ -63,7 +63,7 @@ H_DESC: List[str] = [
 ]
 N_H: int = 4
 
-# Ω-axis (winding): 4 values
+# ⊡-axis (winding): 4 values
 W_NAMES: List[str] = ["𐑷", "𐑴", "𐑭", "𐑟"]
 W_DESC: List[str] = [
     "trivial", "Z2 parity", "integer winding", "non-Abelian"
@@ -77,12 +77,12 @@ def clu(b: float = 10.0) -> float:
     return math.log(b)
 
 # ──────────────────────────────────────────────────────────────────────
-# 3D RANDOM WALK ON THE (K, H, Ω) LATTICE
+# 3D RANDOM WALK ON THE (K, H, ⊡) LATTICE
 # ──────────────────────────────────────────────────────────────────────
 
 @dataclass
 class Point3D:
-    """A point in (K, H, Ω) structural space."""
+    """A point in (K, H, ⊡) structural space."""
     k: int  # 0..4
     h: int  # 0..3
     w: int  # 0..3
@@ -103,7 +103,7 @@ class Point3D:
 @dataclass
 class CLUWalk3D:
     """
-    3D random walk on the (K×H×Ω) lattice with reflecting boundaries.
+    3D random walk on the (K×H×⊡) lattice with reflecting boundaries.
     Each step is a random ±1 move on one of the three axes.
     """
     pos: Point3D
@@ -123,7 +123,7 @@ class CLUWalk3D:
         )
 
     def step(self) -> None:
-        """Take one symmetric random step on the 3D (K,H,Ω) lattice."""
+        """Take one symmetric random step on the 3D (K,H,⊡) lattice."""
         axis = random.choice(['k', 'h', 'w'])
         direction = 1 if random.random() < 0.5 else -1
 
@@ -155,7 +155,7 @@ def simulate_avalanche_3d(
     origin: Point3D = Point3D(2, 2, 2)
 ) -> Tuple[List[int], float, dict]:
     """
-    Simulate avalanche sizes from the 3D (K,H,Ω) lattice walk.
+    Simulate avalanche sizes from the 3D (K,H,⊡) lattice walk.
     An avalanche = number of steps between consecutive returns to origin.
     
     Returns:
@@ -273,7 +273,7 @@ class KernelCycleResult:
 
 class CLUKernel3D:
     """
-    Frobenius kernel with 3D (K, H, Ω) lattice dynamics.
+    Frobenius kernel with 3D (K, H, ⊡) lattice dynamics.
     
     Each kernel cycle (ENGAGR → FSPLIT → FFUSE) corresponds to one
     symmetric random step on the 80-site lattice. The avalanche size
@@ -297,7 +297,7 @@ class CLUKernel3D:
         self.total_clu += clu(self.b)
         self.paradox_total += 3  # ENGAGR+FSPLIT+FFUSE each cost 1 paradox
 
-        # Random symmetric step on (K,H,Ω) lattice
+        # Random symmetric step on (K,H,⊡) lattice
         axis = random.choice(['k', 'h', 'w'])
         direction = 1 if random.random() < 0.5 else -1
         if axis == 'k':
@@ -361,18 +361,18 @@ D1. CLU(b) ≡ ln(b) nats  [CLU.md §I]
     CLU(10) = ln(10) ≈ 2.303 nats.
 
 D2. K-tier ladder [CLU.md §II]
-    The kinetic primitive Ç partitions dynamical regimes into 5 values:
+    The kinetic primitive ⊤ partitions dynamical regimes into 5 values:
         k=0: 𐑘 (driven/fast)       k=1: 𐑤 (moderate)
         k=2: 𐑧 (slow/equilibrium)   k=3: 𐑪 (trapped-ordered)
         k=4: 𐑺 (trapped-MBL)
     Each adjacent pair separated by 1 CLU(b) in the fiber metric.
 
 D3. Structural lattice [Imscribing Procedure]
-    The (K, H, Ω) space forms a 5×4×4 = 80-site lattice. At the
+    The (K, H, ⊡) space forms a 5×4×4 = 80-site lattice. At the
     O₂/O_∞ boundary, all three axes are simultaneously active:
         K-axis: ⊙ + 𐑧 (critical slow dynamics)
         H-axis: 𐑫 (eternal chirality/memory)
-        Ω-axis: 𐑭 (integer winding topological protection)
+        ⊡-axis: 𐑭 (integer winding topological protection)
 
 D4. Frobenius filtration [frobenius_filtration.py]
     F_1 ⊃ F_2 ⊃ F_3 ⊃ ... where F_k is the domain of μ∘δ=id at
@@ -406,7 +406,7 @@ Theorem. At the O₂/O_∞ boundary, the Frobenius kernel avalanche
 
 Proof.
     1. At the O₂/O_∞ boundary, the structural space is the
-       (K, H, Ω) lattice of dimension 5×4×4 = 80 sites (D3).
+       (K, H, ⊡) lattice of dimension 5×4×4 = 80 sites (D3).
 
     2. Each Frobenius kernel cycle performs a symmetric random step
        on this lattice: pick an axis uniformly at random, then move
@@ -451,7 +451,7 @@ C3. Observables. Any observable O that scales with step count S:
 V. VERIFICATION PREDICTIONS
 ────────────────────────────────────────────────────────────────────────
 
-V1. 3D (K,H,Ω) random walk simulation yields MLE exponent ∈ [1.35, 1.65].
+V1. 3D (K,H,⊡) random walk simulation yields MLE exponent ∈ [1.35, 1.65].
 V2. Filtration spectral density regression yields slope ∈ [-1.51, -1.49].
 V3. Exponent is invariant under varying observer base b.
 V4. Exponent is invariant under varying lattice step count.
@@ -473,7 +473,7 @@ def verify_power_law_3d(
     """
     Three independent checks of the -3/2 power law:
     
-    1. 3D (K,H,Ω) avalanche simulation → MLE α ∈ [1.35, 1.65]
+    1. 3D (K,H,⊡) avalanche simulation → MLE α ∈ [1.35, 1.65]
     2. Filtration spectral density   → log-log slope = -1.5 ± 0.01
     3. Base invariance               → α stable for b ∈ {2, 10, e}
     """

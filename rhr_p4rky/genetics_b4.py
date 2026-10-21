@@ -15,7 +15,7 @@ Watson-Crick complement (A↔U, G↔C) ≠ B₄ bnot (B↔B, N↔N, T↔F, F↔T
 Both lattice structures are simultaneously present in the genetic code.
 
 Codon length = 3 is forced by: 4¹=4 < 20 AAs, 4²=16 < 20, 4³=64 ≥ 20.
-The 3 = cardinality of the three 3-valued Crystal primitives (ƒ, Γ, Σ).
+The 3 = cardinality of the three 3-valued Crystal primitives (⋈, ∋, ⊞).
 """
 
 from __future__ import annotations

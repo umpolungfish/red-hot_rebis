@@ -195,6 +195,14 @@ def render_pdb_from_gen2(
     lines.append(f"REMARK   1   WINDING NUMBER: {result.winding_number}")
     lines.append(f"REMARK   1   FROBENIUS VERIFIED: {'YES' if frob else 'NO'}")
     lines.append(f"REMARK   1   SUBUNIT COUNT: {result.subunit_count}")
+    glut = getattr(result, 'protein_glut', {}) or getattr(backbone, 'protein_glut', {})
+    if glut:
+        lines.append("REMARK 901 NATIVE PROTEIN STATE B; COORDINATES ARE A BOUNDARY READOUT")
+        lines.append("REMARK 901 ALTERNATIVES ARE CO-HELD; NO PROBABILITY WEIGHTS")
+        for residue in glut['residues']:
+            for mark in residue['self_marks']:
+                lines.append(f"REMARK 901 RESIDUE {residue['index']+1} {residue['aa']} SELF-MARK {mark['artifact_id']}")
+                lines.append(f"REMARK 901 SOURCE SHA256 {mark['sha256']}")
     if hasattr(result, 'rmsd_to_native') and result.rmsd_to_native is not None:
         lines.append(f"REMARK   1   RMSD TO NATIVE: {result.rmsd_to_native:.3f}")
 
@@ -204,7 +212,7 @@ def render_pdb_from_gen2(
         for i, el in enumerate(ss_elements):
             seq = el.get('sequence', '')
             lines.append(f"REMARK   2     {el['type']:8s} [{el['start']+1:3d}-{el['end']+1:3d}] "
-                         f"len={el['length']} conf={el['confidence']:.3f} seq={seq}")
+                         f"len={el['length']} seq={seq}")
 
     # HELIX records
     if include_secondary:
@@ -352,7 +360,20 @@ def write_pdb_from_gen2(result, output_path: str, chain_id: str = "A",
     os.makedirs(os.path.dirname(output_path) or ".", exist_ok=True)
     with open(output_path, 'w') as stream:
         stream.write(pdb_text)
+    glut = getattr(result, 'protein_glut', {}) or getattr(getattr(result, 'backbone', None), 'protein_glut', {})
+    if glut:
+        write_glut_sidecar(output_path, glut)
     return output_path
+
+
+def write_glut_sidecar(output_path, glut):
+    """Bind the returned resident state to its existing coordinate readout."""
+    import hashlib, json
+    from pathlib import Path
+    raw = Path(output_path).read_bytes()
+    Path(str(output_path) + '.glut.json').write_text(json.dumps({
+        'pdb_sha256': hashlib.sha256(raw).hexdigest(), 'protein_glut': glut
+    }, indent=2, ensure_ascii=False) + '\n')
 
 
 def write_pdb_from_pipeline(
@@ -393,6 +414,7 @@ def write_pdb_from_pipeline(
             "coordinate_evidence": pipeline_result["geometry_evidence"],
             "secondary_evidence": pipeline_result["secondary_evidence"],
             "secondary_evidence_report": pipeline_result["secondary_evidence_report"],
+            "protein_glut": pipeline_result.get("protein_glut", {}),
             "source_binding": pipeline_result["geometry_source"]})
         aa_list = [_res_name(aa).title() for aa in aa_seq]
         elements = []

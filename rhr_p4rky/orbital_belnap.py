@@ -7,9 +7,9 @@ from and matches the Lean kernel exactly.
 
 The four orbital occupancy states map to Belnap FOUR:
     empty   → N (neither)    — no electrons
-    spinUp  → T (true)       — one electron, spin ↑ (positive Ħ-chirality)
-    spinDown→ F (false)      — one electron, spin ↓ (negative Ħ-chirality)
-    paired  → B (both)       — two electrons ↑↓ (Φ-sealed at lattice top)
+    spinUp  → T (true)       — one electron, spin ↑ (positive ⊥-chirality)
+    spinDown→ F (false)      — one electron, spin ↓ (negative ⊥-chirality)
+    paired  → B (both)       — two electrons ↑↓ (≺-sealed at lattice top)
 
 Two orderings (bilattice):
     Information order (occupancy): empty < spinUp, spinDown < paired
@@ -147,12 +147,12 @@ def pauli_exclusion(s: OrbitalState) -> bool:
 
 
 # ═══════════════════════════════════════════════════════════════════════════
-# §5  TRUTH ORDER (chirality / Ħ-axis)
+# §5  TRUTH ORDER (chirality / ⊥-axis)
 #     spinDown <_t {empty, paired} <_t spinUp — mirrors F <_t N, B <_t T
 # ═══════════════════════════════════════════════════════════════════════════
 
 def chirality_le(a: OrbitalState, b: OrbitalState) -> bool:
-    """Truth order: how much positive Ħ-chirality is asserted."""
+    """Truth order: how much positive ⊥-chirality is asserted."""
     if a is OrbitalState.spinDown:
         return True  # sd_bot: spinDown ≤ everything
     if a is b:

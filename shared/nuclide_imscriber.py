@@ -17,26 +17,26 @@ from pathlib import Path
 _ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(_ROOT / "shared"))
 from elem2imasm import ELEMENTS, SH, CRIT, derive_tuple
-ELEM_PRIMS = ["≻","⊥","◻","⊢","⊞","≺","⊤","⋈","∋","∈","⊣","⊙"]
+ELEM_PRIMS = ["≻","⊥","⊡","⊢","⊞","≺","⊤","⋈","∋","∈","⊣","⊙"]
 
-PRIMS = ['D','T','R','P','F','K','G','Gm','Ph','H','S','W']
+PRIMS = ["⊢","⊣","≻","≺","⋈","⊤","∈","∋","⊙","⊥","⊞","⊡"]
 # Magic numbers
 MAGIC_Z = {2,8,20,28,50,82,114,120,126}  # 114,120,126 predicted
 MAGIC_N = {2,8,20,28,50,82,126,184}       # 184 predicted
 
 # IG primitive glyphs (not Shavian indices — actual IG values)
-D_VALS = {'wedge': '𐑛', 'triangle': '𐑨', 'infty': '𐑼', 'odot': '𐑦'}
-T_VALS = {'network': '𐑡', 'inclusion': '𐑰', 'bowtie': '𐑥', 'boxtimes': '𐑶', 'odot': '𐑸'}
-R_VALS = {'super': '𐑩', 'cat': '𐑑', 'dagger': '𐑽', 'lr': '𐑾'}
-P_VALS = {'asym': '𐑗', 'psi': '𐑿', 'pm': '𐑬', 'sym': '𐑯', 'pm_sym': '𐑹'}
-F_VALS = {'ell': '𐑱', 'eth': '𐑞', 'hbar': '𐑐'}
-K_VALS = {'fast': '𐑺', 'mod': '𐑪', 'slow': '𐑧', 'trap_ord': '𐑤', 'trap_dis': '𐑘'}
-G_VALS = {'beth': '𐑲', 'gimel': '𐑔', 'aleph': '𐑚'}
-Gm_VALS = {'and': '𐑝', 'or': '𐑜', 'seq': '𐑠', 'broad': '𐑵'}
-Ph_VALS = {'sub': '𐑢', 'c': '⊙', 'c_complex': '𐑮', 'EP': '𐑻', 'super': '𐑣'}
-H_VALS = {'h0': '𐑓', 'h1': '𐑒', 'h2': '𐑖', 'hinf': '𐑫'}
-S_VALS = {'1:1': '𐑙', 'n:n': '𐑕', 'n:m': '𐑳'}
-W_VALS = {'Z0': '𐑷', 'Z2': '𐑴', 'Z': '𐑭', 'NA': '𐑟'}
+dimensionality_values = {'wedge': '𐑛', 'triangle': '𐑨', 'infty': '𐑼', 'odot': '𐑦'}
+topology_values = {'network': '𐑡', 'inclusion': '𐑰', 'bowtie': '𐑥', 'boxtimes': '𐑶', 'odot': '𐑸'}
+coupling_values = {'super': '𐑩', 'cat': '𐑑', 'dagger': '𐑽', 'lr': '𐑾'}
+parity_values = {'asym': '𐑗', 'psi': '𐑿', 'pm': '𐑬', 'sym': '𐑯', 'pm_sym': '𐑹'}
+fidelity_values = {'ell': '𐑱', 'eth': '𐑞', 'hbar': '𐑐'}
+kinetics_values = {'fast': '𐑺', 'mod': '𐑪', 'slow': '𐑧', 'trap_ord': '𐑤', 'trap_dis': '𐑘'}
+cardinality_values = {'beth': '𐑲', 'gimel': '𐑔', 'aleph': '𐑚'}
+composition_values = {'and': '𐑝', 'or': '𐑜', 'seq': '𐑠', 'broad': '𐑵'}
+criticality_values = {'sub': '𐑢', 'c': '⊙', 'c_complex': '𐑮', 'EP': '𐑻', 'super': '𐑣'}
+chirality_values = {'h0': '𐑓', 'h1': '𐑒', 'h2': '𐑖', 'hinf': '𐑫'}
+stoichiometry_values = {'1:1': '𐑙', 'n:n': '𐑕', 'n:m': '𐑳'}
+winding_values = {'Z0': '𐑷', 'Z2': '𐑴', 'Z': '𐑭', 'NA': '𐑟'}
 
 
 def nuclide_tuple(Z, N):
@@ -49,124 +49,124 @@ def nuclide_tuple(Z, N):
 
     # [1] D — Dimensionality: shell closure freezes degrees of freedom
     if is_doubly_magic:
-        D = D_VALS['triangle']  # 𐑨 — few effective d.o.f. (shell gap)
+        dimensionality = dimensionality_values['triangle']  # 𐑨 — few effective d.o.f. (shell gap)
     elif is_magic_Z or is_magic_N:
-        D = D_VALS['triangle']  # 𐑨 — partially frozen
+        dimensionality = dimensionality_values['triangle']  # 𐑨 — partially frozen
     elif A >= 100:
-        D = D_VALS['infty']     # 𐑼 — many collective d.o.f.
+        dimensionality = dimensionality_values['infty']     # 𐑼 — many collective d.o.f.
     else:
-        D = D_VALS['triangle']  # 𐑨 — light nuclei
+        dimensionality = dimensionality_values['triangle']  # 𐑨 — light nuclei
 
     # [2] T — Topology
     if is_doubly_magic:
-        T = T_VALS['bowtie']    # 𐑥 — shell gap creates crossing point
+        topology = topology_values['bowtie']    # 𐑥 — shell gap creates crossing point
     elif is_magic_Z or is_magic_N:
-        T = T_VALS['network']   # 𐑡 — one closed shell, one open
+        topology = topology_values['network']   # 𐑡 — one closed shell, one open
     elif A >= 100:
-        T = T_VALS['boxtimes']  # 𐑶 — product of proton×neutron configurations
+        topology = topology_values['boxtimes']  # 𐑶 — product of proton×neutron configurations
     else:
-        T = T_VALS['network']   # 𐑡
+        topology = topology_values['network']   # 𐑡
 
     # [3] R — Coupling between proton and neutron fluids
     if nz_ratio > 1.55:
-        R = R_VALS['dagger']    # 𐑽 — neutron-dominant (neutron→proton potential)
+        coupling = coupling_values['dagger']    # 𐑽 — neutron-dominant (neutron→proton potential)
     elif nz_ratio < 1.0:
-        R = R_VALS['super']     # 𐑩 — proton-dominant
+        coupling = coupling_values['super']     # 𐑩 — proton-dominant
     elif 1.45 <= nz_ratio <= 1.55:
-        R = R_VALS['lr']        # 𐑾 — balanced N/Z, bidirectional
+        coupling = coupling_values['lr']        # 𐑾 — balanced N/Z, bidirectional
     else:
-        R = R_VALS['cat']       # 𐑑 — categorical functorial
+        coupling = coupling_values['cat']       # 𐑑 — categorical functorial
 
     # [4] P — Symmetry/Parity
     if is_doubly_magic:
-        P = P_VALS['sym']       # 𐑯 — spherical, J=0⁺
+        parity = parity_values['sym']       # 𐑯 — spherical, J=0⁺
     elif is_magic_Z or is_magic_N:
-        P = P_VALS['pm']        # 𐑬 — partial (one closed shell)
+        parity = parity_values['pm']        # 𐑬 — partial (one closed shell)
     elif A >= 100:
-        P = P_VALS['psi']       # 𐑿 — collective superpositions
+        parity = parity_values['psi']       # 𐑿 — collective superpositions
     else:
-        P = P_VALS['pm']        # 𐑬
+        parity = parity_values['pm']        # 𐑬
 
     # [5] F — Physical regime: always quantum for nuclei
-    F = F_VALS['hbar']          # 𐑐
+    fidelity = fidelity_values['hbar']          # 𐑐
 
     # [6] K — Kinetics (decay rate)
     if is_doubly_magic:
-        K = K_VALS['trap_ord']  # 𐑤 — shell gap traps kinetics
+        kinetics = kinetics_values['trap_ord']  # 𐑤 — shell gap traps kinetics
     elif is_magic_Z or is_magic_N:
-        K = K_VALS['slow']      # 𐑧 — slowed by one shell closure
+        kinetics = kinetics_values['slow']      # 𐑧 — slowed by one shell closure
     elif Z >= 84:  # Polonium and above
-        K = K_VALS['fast']      # 𐑺 — radioactive, short-lived
+        kinetics = kinetics_values['fast']      # 𐑺 — radioactive, short-lived
     elif Z >= 83:
-        K = K_VALS['mod']       # 𐑪 — Bi is borderline
+        kinetics = kinetics_values['mod']       # 𐑪 — Bi is borderline
     else:
-        K = K_VALS['slow']      # 𐑧
+        kinetics = kinetics_values['slow']      # 𐑧
 
     # [7] G — Interaction range (nuclear force)
     if is_doubly_magic:
-        G = G_VALS['gimel']     # 𐑔 — mesoscale (valence only)
+        cardinality = cardinality_values['gimel']     # 𐑔 — mesoscale (valence only)
     elif A >= 100:
-        G = G_VALS['aleph']     # 𐑚 — maximal (all nucleons via strong force)
+        cardinality = cardinality_values['aleph']     # 𐑚 — maximal (all nucleons via strong force)
     else:
-        G = G_VALS['gimel']     # 𐑔 — mesoscale for lighter nuclei
+        cardinality = cardinality_values['gimel']     # 𐑔 — mesoscale for lighter nuclei
 
-    # [8] Γ — Composition
+    # [8] ∋ — Composition
     if is_doubly_magic:
-        Gm = Gm_VALS['and']     # 𐑝 — conjunctive (all shells closed simultaneously)
+        composition = composition_values['and']     # 𐑝 — conjunctive (all shells closed simultaneously)
     elif A >= 240:
-        Gm = Gm_VALS['seq']     # 𐑠 — sequential (α/β decay chain)
+        composition = composition_values['seq']     # 𐑠 — sequential (α/β decay chain)
     elif A >= 100:
-        Gm = Gm_VALS['or']      # 𐑜 — disjunctive (multiple decay paths)
+        composition = composition_values['or']      # 𐑜 — disjunctive (multiple decay paths)
     else:
-        Gm = Gm_VALS['and']     # 𐑝
+        composition = composition_values['and']     # 𐑝
 
     # [9] ⊙ — Criticality
     if is_doubly_magic:
-        Ph = Ph_VALS['c']       # ⊙ — self-referential (Frobenius fires)
+        criticality = criticality_values['c']       # ⊙ — self-referential (Frobenius fires)
     elif is_magic_Z or is_magic_N:
-        Ph = Ph_VALS['c_complex']  # 𐑮 — complex-plane critical
+        criticality = criticality_values['c_complex']  # 𐑮 — complex-plane critical
     elif Z >= 104:  # transactinides
-        Ph = Ph_VALS['sub']     # 𐑢 — indeterminate (ultra-short)
+        criticality = criticality_values['sub']     # 𐑢 — indeterminate (ultra-short)
     elif Z >= 84:   # Po through Lr
-        Ph = Ph_VALS['super']   # 𐑣 — supercritical (radioactive)
+        criticality = criticality_values['super']   # 𐑣 — supercritical (radioactive)
     elif Z in {43, 61}:  # Tc, Pm
-        Ph = Ph_VALS['super']   # 𐑣
+        criticality = criticality_values['super']   # 𐑣
     else:
-        Ph = Ph_VALS['c']       # ⊙ — stable, self-referential
+        criticality = criticality_values['c']       # ⊙ — stable, self-referential
 
     # [10] H — Chirality (Markov order)
     if is_doubly_magic:
-        H = H_VALS['hinf']      # 𐑫 — eternal memory (stable)
-    elif K == K_VALS['slow']:
-        H = H_VALS['h2']        # 𐑖 — two-step memory
-    elif K == K_VALS['mod']:
-        H = H_VALS['h1']        # 𐑒 — one-step memory
+        chirality = chirality_values['hinf']      # 𐑫 — eternal memory (stable)
+    elif kinetics == kinetics_values['slow']:
+        chirality = chirality_values['h2']        # 𐑖 — two-step memory
+    elif kinetics == kinetics_values['mod']:
+        chirality = chirality_values['h1']        # 𐑒 — one-step memory
     else:
-        H = H_VALS['h0']        # 𐑓 — memoryless (fast decay)
+        chirality = chirality_values['h0']        # 𐑓 — memoryless (fast decay)
 
-    # [11] Σ — Stoichiometry
+    # [11] ⊞ — Stoichiometry
     if nz_ratio < 0.1:
-        S = S_VALS['1:1']       # 𐑙 — pure neutron (hypothetical)
+        stoichiometry = stoichiometry_values['1:1']       # 𐑙 — pure neutron (hypothetical)
     elif is_doubly_magic:
-        S = S_VALS['1:1']       # 𐑙 — both shells closed, unique identity
+        stoichiometry = stoichiometry_values['1:1']       # 𐑙 — both shells closed, unique identity
     elif abs(nz_ratio - 1.0) < 0.05:
-        S = S_VALS['1:1']       # 𐑙 — symmetric N≈Z
+        stoichiometry = stoichiometry_values['1:1']       # 𐑙 — symmetric N≈Z
     elif abs(nz_ratio - 1.5) < 0.1:
-        S = S_VALS['n:n']       # 𐑕 — many identical (valley of stability)
+        stoichiometry = stoichiometry_values['n:n']       # 𐑕 — many identical (valley of stability)
     else:
-        S = S_VALS['n:m']       # 𐑳 — heterogeneous
+        stoichiometry = stoichiometry_values['n:m']       # 𐑳 — heterogeneous
 
-    # [12] Ω — Topological invariant
+    # [12] ⊡ — Topological invariant
     if is_doubly_magic:
-        W = W_VALS['Z']         # 𐑭 — integer winding (magic numbers)
+        winding = winding_values['Z']         # 𐑭 — integer winding (magic numbers)
     elif is_magic_Z or is_magic_N:
-        W = W_VALS['Z2']        # 𐑴 — binary (one shell closure)
+        winding = winding_values['Z2']        # 𐑴 — binary (one shell closure)
     elif A >= 100:
-        W = W_VALS['Z2']        # 𐑴 — collective
+        winding = winding_values['Z2']        # 𐑴 — collective
     else:
-        W = W_VALS['Z0']        # 𐑷 — trivial
+        winding = winding_values['Z0']        # 𐑷 — trivial
 
-    return {'D':D,'T':T,'R':R,'P':P,'F':F,'K':K,'G':G,'Gm':Gm,'Ph':Ph,'H':H,'S':S,'W':W}
+    return {"⊢":dimensionality,"⊣":topology,"≻":coupling,"≺":parity,"⋈":fidelity,"⊤":kinetics,"∈":cardinality,"∋":composition,"⊙":criticality,"⊥":chirality,"⊞":stoichiometry,"⊡":winding}
 
 
 def tuple_to_word(tup):
@@ -177,7 +177,7 @@ def compute_l1_distance(tA, tB):
     """L1 distance between two IG tuples using ordinal positions."""
     # Build ordinal map from IG value glyphs
     all_vals = set()
-    for vdict in [D_VALS,T_VALS,R_VALS,P_VALS,F_VALS,K_VALS,G_VALS,Gm_VALS,Ph_VALS,H_VALS,S_VALS,W_VALS]:
+    for vdict in [dimensionality_values,topology_values,coupling_values,parity_values,fidelity_values,kinetics_values,cardinality_values,composition_values,criticality_values,chirality_values,stoichiometry_values,winding_values]:
         all_vals.update(vdict.values())
     val_list = sorted(all_vals, key=ord)
     val_ord = {v: i for i, v in enumerate(val_list)}
@@ -225,7 +225,7 @@ def compare_to_pb():
 
     # Also compute element-level Pb tuple for reference
     pb_elem = derive_tuple('Pb')
-    PRIMS_ELEM = ['≻','⊥','◻','⊢','⊞','≺','⊤','⋈','∋','∈','⊣','⊙']
+    PRIMS_ELEM = ['≻','⊥','⊡','⊢','⊞','≺','⊤','⋈','∋','∈','⊣','⊙']
     pb_elem_word = ''.join(pb_elem[p] for p in PRIMS_ELEM)
     print(f"  Pb (element-level, elem2imasm): {pb_elem_word}")
     print()
@@ -240,7 +240,7 @@ def compare_to_pb():
         print(f"  {c['label']:<12} {c['Z']:>3} {c['N']:>3} {c['nz_ratio']:>6.2f} {dm:>4} {dist:>10}  {c['word']}")
 
     print()
-    print("  Primitive key: D T R P F K G Gm Ph H S W")
+    print("  Primitive key: ⊢ ⊣ ≻ ≺ ⋈ ⊤ ∈ ∋ ⊙ ⊥ ⊞ ⊡")
     print("  DM = Doubly-Magic")
     print()
 
@@ -271,8 +271,8 @@ def excited_state_tuple(state_type, orbital_label=None):
     orbital_label: e.g. 'S1', 'T1', 'S0', 'T0'
 
     Key structural differences between singlet and triplet:
-    - Singlet: total spin S=0, antisymmetric spin fn, symmetric spatial fn
-    - Triplet: total spin S=1, symmetric spin fn, antisymmetric spatial fn
+    - Singlet: total spin ⊞=0, antisymmetric spin fn, symmetric spatial fn
+    - Triplet: total spin ⊞=1, symmetric spin fn, antisymmetric spatial fn
 
     The Pauli principle forces spatial part to be antisymmetric for triplet,
     which keeps electrons apart → lower Coulomb repulsion → lower energy (Hund).
@@ -284,93 +284,93 @@ def excited_state_tuple(state_type, orbital_label=None):
     # Excited state accesses more orbital space → higher dimensionality
     # Triplet always has 3 spin substates; singlet has 1
     if 'triplet' in state_type:
-        D = D_VALS['infty']     # 𐑼 — 3 degenerate substates (m=-1,0,1)
+        dimensionality = dimensionality_values['infty']     # 𐑼 — 3 degenerate substates (m=-1,0,1)
     else:
-        D = D_VALS['triangle']  # 𐑨 — single state (m=0)
+        dimensionality = dimensionality_values['triangle']  # 𐑨 — single state (m=0)
 
     # [2] T — Topology
     # Triplet: spin and spatial degrees of freedom cross (exchange interaction)
     # Singlet: spin paired, topology collapses
     if 'triplet' in state_type:
-        T = T_VALS['bowtie']    # 𐑥 — crossing point: spin ⇌ spatial via exchange
+        topology = topology_values['bowtie']    # 𐑥 — crossing point: spin ⇌ spatial via exchange
     else:
-        T = T_VALS['network']   # 𐑡 — no crossing, spin is paired off
+        topology = topology_values['network']   # 𐑡 — no crossing, spin is paired off
 
     # [3] R — Coupling between spin and spatial parts
     if 'triplet' in state_type:
-        R = R_VALS['lr']        # 𐑾 — bidirectional: spin determines spatial (Pauli), spatial modifies spin (exchange)
+        coupling = coupling_values['lr']        # 𐑾 — bidirectional: spin determines spatial (Pauli), spatial modifies spin (exchange)
     else:
-        R = R_VALS['super']     # 𐑩 — spin supervenes on spatial (spin is paired, doesn't drive)
+        coupling = coupling_values['super']     # 𐑩 — spin supervenes on spatial (spin is paired, doesn't drive)
 
     # [4] P — Parity/Symmetry
     if 'triplet' in state_type:
-        P = P_VALS['psi']       # 𐑿 — 3 degenerate spin substates (quantum superposition)
+        parity = parity_values['psi']       # 𐑿 — 3 degenerate spin substates (quantum superposition)
     else:
-        P = P_VALS['sym']       # 𐑯 — full: S=0 is a unique singlet state
+        parity = parity_values['sym']       # 𐑯 — full: ⊞=0 is a unique singlet state
 
     # [5] F — Physical regime
     # Excited states: fluorescence/phosphorescence involve quantum coherence
     # Ground triplet (e.g. O₂): quantum coherence (unpaired spins, magnetic)
     if is_ground:
-        F = F_VALS['hbar']      # 𐑐 — ground states are quantum-coherent
+        fidelity = fidelity_values['hbar']      # 𐑐 — ground states are quantum-coherent
     elif 'triplet' in state_type:
-        F = F_VALS['eth']       # 𐑞 — thermal/noisy: triplet has longer lifetime, interacts with environment
+        fidelity = fidelity_values['eth']       # 𐑞 — thermal/noisy: triplet has longer lifetime, interacts with environment
     else:
-        F = F_VALS['hbar']      # 𐑐 — quantum coherence (fluorescence is fast, coherent)
+        fidelity = fidelity_values['hbar']      # 𐑐 — quantum coherence (fluorescence is fast, coherent)
 
     # [6] K — Kinetics (excited state lifetime)
     if is_ground:
-        K = K_VALS['trap_ord']  # 𐑤 — ground state, permanently trapped
+        kinetics = kinetics_values['trap_ord']  # 𐑤 — ground state, permanently trapped
     elif state_type == 'triplet':
-        K = K_VALS['slow']      # 𐑧 — phosphorescence: spin-forbidden, slow (μs to s)
+        kinetics = kinetics_values['slow']      # 𐑧 — phosphorescence: spin-forbidden, slow (μs to s)
     elif is_excited:
-        K = K_VALS['fast']      # 𐑺 — fluorescence: spin-allowed, fast (ns)
+        kinetics = kinetics_values['fast']      # 𐑺 — fluorescence: spin-allowed, fast (ns)
     else:
-        K = K_VALS['slow']      # 𐑧
+        kinetics = kinetics_values['slow']      # 𐑧
 
     # [7] G — Interaction range
     if state_type == 'triplet':
-        G = G_VALS['gimel']     # 𐑔 — mesoscale: exchange interaction is short-range
+        cardinality = cardinality_values['gimel']     # 𐑔 — mesoscale: exchange interaction is short-range
     else:
-        G = G_VALS['beth']      # 𐑲 — local: paired electrons are local
+        cardinality = cardinality_values['beth']      # 𐑲 — local: paired electrons are local
 
-    # [8] Γ — Composition
+    # [8] ∋ — Composition
     if 'triplet' in state_type:
-        Gm = Gm_VALS['or']      # 𐑜 — disjunctive: 3 degenerate substates (choose one upon measurement)
+        composition = composition_values['or']      # 𐑜 — disjunctive: 3 degenerate substates (choose one upon measurement)
     else:
-        Gm = Gm_VALS['and']     # 𐑝 — conjunctive: single state
+        composition = composition_values['and']     # 𐑝 — conjunctive: single state
 
     # [9] ⊙ — Criticality
     if is_ground:
-        Ph = Ph_VALS['c']       # ⊙ — self-referential (ground state is the reference)
+        criticality = criticality_values['c']       # ⊙ — self-referential (ground state is the reference)
     elif state_type == 'triplet':
-        Ph = Ph_VALS['EP']      # 𐑻 — exceptional point: singlet→triplet crossing (ISC)
+        criticality = criticality_values['EP']      # 𐑻 — exceptional point: singlet→triplet crossing (ISC)
     else:
-        Ph = Ph_VALS['super']   # 𐑣 — supercritical: decays radiatively
+        criticality = criticality_values['super']   # 𐑣 — supercritical: decays radiatively
 
     # [10] H — Chirality (memory of excitation pathway)
     if is_ground:
-        H = H_VALS['hinf']      # 𐑫 — ground state, eternal memory
+        chirality = chirality_values['hinf']      # 𐑫 — ground state, eternal memory
     elif 'triplet' in state_type:
-        H = H_VALS['hinf']      # 𐑫 — long memory: phosphorescence remembers excitation
+        chirality = chirality_values['hinf']      # 𐑫 — long memory: phosphorescence remembers excitation
     elif is_excited:
-        H = H_VALS['h1']        # 𐑒 — one-step: fluorescence
+        chirality = chirality_values['h1']        # 𐑒 — one-step: fluorescence
     else:
-        H = H_VALS['hinf']      # 𐑫
+        chirality = chirality_values['hinf']      # 𐑫
 
-    # [11] Σ — Stoichiometry
+    # [11] ⊞ — Stoichiometry
     if 'triplet' in state_type:
-        S = S_VALS['n:m']       # 𐑳 — 3 spin substates + spatial = heterogeneous
+        stoichiometry = stoichiometry_values['n:m']       # 𐑳 — 3 spin substates + spatial = heterogeneous
     else:
-        S = S_VALS['1:1']       # 𐑙 — one spin configuration, one spatial
+        stoichiometry = stoichiometry_values['1:1']       # 𐑙 — one spin configuration, one spatial
 
-    # [12] Ω — Topological invariant
+    # [12] ⊡ — Topological invariant
     if 'triplet' in state_type:
-        W = W_VALS['Z2']        # 𐑴 — spin parity protection (triplet has odd parity under exchange)
+        winding = winding_values['Z2']        # 𐑴 — spin parity protection (triplet has odd parity under exchange)
     else:
-        W = W_VALS['Z0']        # 𐑷 — no topological protection (singlet is exchange-even)
+        winding = winding_values['Z0']        # 𐑷 — no topological protection (singlet is exchange-even)
 
-    return {'D':D,'T':T,'R':R,'P':P,'F':F,'K':K,'G':G,'Gm':Gm,'Ph':Ph,'H':H,'S':S,'W':W}
+    return {"⊢":dimensionality,"⊣":topology,"≻":coupling,"≺":parity,"⋈":fidelity,"⊤":kinetics,"∈":cardinality,"∋":composition,"⊙":criticality,"⊥":chirality,"⊞":stoichiometry,"⊡":winding}
 
 
 def compare_excited_states():
@@ -389,8 +389,8 @@ def compare_excited_states():
                         ('T0 (ground triplet)', T0), ('T1 (excited triplet)', T1)]:
         word = tuple_to_word(tup)
         print(f"  {label:<24s}  {word}")
-        print(f"    D={tup['D']} T={tup['T']} R={tup['R']} P={tup['P']} F={tup['F']} K={tup['K']}")
-        print(f"    G={tup['G']} Gm={tup['Gm']} ⊙={tup['Ph']} H={tup['H']} S={tup['S']} Ω={tup['W']}")
+        print(f"    ⊢={tup['⊢']} ⊣={tup['⊣']} ≻={tup['≻']} ≺={tup['≺']} ⋈={tup['⋈']} ⊤={tup['⊤']}")
+        print(f"    ∈={tup['∈']} ∋={tup['∋']} ⊙={tup['⊙']} ⊥={tup['⊥']} ⊞={tup['⊞']} ⊡={tup['⊡']}")
         print()
 
     print("-"*80)
@@ -441,7 +441,7 @@ def main():
         dm = (Z in MAGIC_Z) and (N in MAGIC_N)
         print(f"Nuclide Z={Z} N={N} A={A} N/Z={N/Z:.3f}  Doubly-Magic: {dm}")
         print(f"Tuple: {word}")
-        print(f"Per-primitive: D={tup['D']} T={tup['T']} R={tup['R']} P={tup['P']} F={tup['F']} K={tup['K']} G={tup['G']} Gm={tup['Gm']} ⊙={tup['Ph']} H={tup['H']} S={tup['S']} Ω={tup['W']}")
+        print(f"Per-primitive: ⊢={tup['⊢']} ⊣={tup['⊣']} ≻={tup['≻']} ≺={tup['≺']} ⋈={tup['⋈']} ⊤={tup['⊤']} ∈={tup['∈']} ∋={tup['∋']} ⊙={tup['⊙']} ⊥={tup['⊥']} ⊞={tup['⊞']} ⊡={tup['⊡']}")
         # Distance to Pb-208
         pb208 = nuclide_tuple(82, 126)
         dist = compute_l1_distance(tup, pb208)

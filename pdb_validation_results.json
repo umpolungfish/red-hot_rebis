@@ -1,0 +1,1678 @@
+[
+  {
+    "pdb_id": "1VII",
+    "sequence": "MLSDEDFKAVFGMTRSAFANLPLWKQQNLKKEKGLF",
+    "declared_seqres_sequence": "MLSDEDFKAVFGMTRSAFANLPLWKQQNLKKEKGLF",
+    "comparison_scope": "first model, first observed chain, observed CA residues",
+    "residue_identifiers": [
+      {
+        "chain": "A",
+        "residue_id": "41",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "42",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "43",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "44",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "45",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "46",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "47",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "48",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "49",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "50",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "51",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "52",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "53",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "54",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "55",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "56",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "57",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "58",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "59",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "60",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "61",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "62",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "63",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "64",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "65",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "66",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "67",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "68",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "69",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "70",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "71",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "72",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "73",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "74",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "75",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "76",
+        "insertion_code": " ",
+        "alternate_location": " "
+      }
+    ],
+    "seq_len": 36,
+    "atom_seq": "MLSDEDFKAVFGMTRSAFANLPLWKQQNLKKEKGLF",
+    "atom_count": 36,
+    "experimental_contacts": 47,
+    "predicted_contacts": 3,
+    "true_positives": 0,
+    "false_positives": 3,
+    "false_negatives": 47,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1_score": 0.0,
+    "frobenius_verified": true,
+    "winding_number": 17,
+    "activation_coverage": "20/12"
+  },
+  {
+    "pdb_id": "1UBQ",
+    "sequence": "MQIFVKTLTGKTITLEVEPSDTIENVKAKIQDKEGIPPDQQRLIFAGKQLEDGRTLSDYNIQKESTLHLVLRLRGG",
+    "declared_seqres_sequence": "MQIFVKTLTGKTITLEVEPSDTIENVKAKIQDKEGIPPDQQRLIFAGKQLEDGRTLSDYNIQKESTLHLVLRLRGG",
+    "comparison_scope": "first model, first observed chain, observed CA residues",
+    "residue_identifiers": [
+      {
+        "chain": "A",
+        "residue_id": "1",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "3",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "4",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "5",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "6",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "7",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "8",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "9",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "10",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "11",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "12",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "13",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "14",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "15",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "16",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "17",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "18",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "19",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "20",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "21",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "22",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "23",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "24",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "25",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "26",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "27",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "28",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "29",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "30",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "31",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "32",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "33",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "34",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "35",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "36",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "37",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "38",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "39",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "40",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "41",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "42",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "43",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "44",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "45",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "46",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "47",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "48",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "49",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "50",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "51",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "52",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "53",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "54",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "55",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "56",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "57",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "58",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "59",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "60",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "61",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "62",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "63",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "64",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "65",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "66",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "67",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "68",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "69",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "70",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "71",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "72",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "73",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "74",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "75",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "76",
+        "insertion_code": " ",
+        "alternate_location": " "
+      }
+    ],
+    "seq_len": 76,
+    "atom_seq": "MQIFVKTLTGKTITLEVEPSDTIENVKAKIQDKEGIPPDQQRLIFAGKQLEDGRTLSDYNIQKESTLHLVLRLRGG",
+    "atom_count": 76,
+    "experimental_contacts": 151,
+    "predicted_contacts": 11,
+    "true_positives": 1,
+    "false_positives": 10,
+    "false_negatives": 150,
+    "precision": 0.0909,
+    "recall": 0.0066,
+    "f1_score": 0.0123,
+    "frobenius_verified": true,
+    "winding_number": 45,
+    "activation_coverage": "38/12"
+  },
+  {
+    "pdb_id": "1ZDD",
+    "sequence": "FNMQCQRRFYEALHDPNLNEEQRNAKIKSIRDDC",
+    "declared_seqres_sequence": "FNMQCQRRFYEALHDPNLNEEQRNAKIKSIRDDC",
+    "comparison_scope": "first model, first observed chain, observed CA residues",
+    "residue_identifiers": [
+      {
+        "chain": "A",
+        "residue_id": "6",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "7",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "8",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "9",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "10",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "11",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "12",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "13",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "14",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "15",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "16",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "17",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "18",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "19",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "20",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "21",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "22",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "23",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "24",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "25",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "26",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "27",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "28",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "29",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "30",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "31",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "32",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "33",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "34",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "35",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "36",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "37",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "38",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "39",
+        "insertion_code": " ",
+        "alternate_location": " "
+      }
+    ],
+    "seq_len": 34,
+    "atom_seq": "FNMQCQRRFYEALHDPNLNEEQRNAKIKSIRDDC",
+    "atom_count": 34,
+    "experimental_contacts": 39,
+    "predicted_contacts": 8,
+    "true_positives": 0,
+    "false_positives": 8,
+    "false_negatives": 39,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1_score": 0.0,
+    "frobenius_verified": true,
+    "winding_number": 30,
+    "activation_coverage": "24/12"
+  },
+  {
+    "pdb_id": "2MTP",
+    "sequence": "GGAHKVRAGGPGLERAEAGVPAEFSIWTREAGAGGLAIAVEGPSKAEISFEDRKDGSCGVAYVVQEPGDYEVSVKFNEEHIPDSPFVVPVASPSG",
+    "declared_seqres_sequence": "GGAHKVRAGGPGLERAEAGVPAEFSIWTREAGAGGLAIAVEGPSKAEISFEDRKDGSCGVAYVVQEPGDYEVSVKFNEEHIPDSPFVVPVASPSGWKVGFFKRNRPPLEEDDEEGEKKKITIHDRKEFAKFEEERARAKWDTANNPLYKEATSTFTNITYRGT",
+    "comparison_scope": "first model, first observed chain, observed CA residues",
+    "residue_identifiers": [
+      {
+        "chain": "A",
+        "residue_id": "2236",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2237",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2238",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2239",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2240",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2241",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2242",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2243",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2244",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2245",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2246",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2247",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2248",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2249",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2250",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2251",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2252",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2253",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2254",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2255",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2256",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2257",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2258",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2259",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2260",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2261",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2262",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2263",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2264",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2265",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2266",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2267",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2268",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2269",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2270",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2271",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2272",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2273",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2274",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2275",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2276",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2277",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2278",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2279",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2280",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2281",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2282",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2283",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2284",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2285",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2286",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2287",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2288",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2289",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2290",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2291",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2292",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2293",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2294",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2295",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2296",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2297",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2298",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2299",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2300",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2301",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2302",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2303",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2304",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2305",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2306",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2307",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2308",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2309",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2310",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2311",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2312",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2313",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2314",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2315",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2316",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2317",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2318",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2319",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2320",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2321",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2322",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2323",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2324",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2325",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2326",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2327",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2328",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2329",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2330",
+        "insertion_code": " ",
+        "alternate_location": " "
+      }
+    ],
+    "seq_len": 95,
+    "atom_seq": "GGAHKVRAGGPGLERAEAGVPAEFSIWTREAGAGGLAIAVEGPSKAEISFEDRKDGSCGVAYVVQEPGDYEVSVKFNEEHIPDSPFVVPVASPSG",
+    "atom_count": 95,
+    "experimental_contacts": 238,
+    "predicted_contacts": 9,
+    "true_positives": 1,
+    "false_positives": 8,
+    "false_negatives": 237,
+    "precision": 0.1111,
+    "recall": 0.0042,
+    "f1_score": 0.0081,
+    "frobenius_verified": true,
+    "winding_number": 55,
+    "activation_coverage": "35/12"
+  },
+  {
+    "pdb_id": "1L2Y",
+    "sequence": "NLYIQWLKDGGPSSGRPPPS",
+    "declared_seqres_sequence": "NLYIQWLKDGGPSSGRPPPS",
+    "comparison_scope": "first model, first observed chain, observed CA residues",
+    "residue_identifiers": [
+      {
+        "chain": "A",
+        "residue_id": "1",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "2",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "3",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "4",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "5",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "6",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "7",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "8",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "9",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "10",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "11",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "12",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "13",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "14",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "15",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "16",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "17",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "18",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "19",
+        "insertion_code": " ",
+        "alternate_location": " "
+      },
+      {
+        "chain": "A",
+        "residue_id": "20",
+        "insertion_code": " ",
+        "alternate_location": " "
+      }
+    ],
+    "seq_len": 20,
+    "atom_seq": "NLYIQWLKDGGPSSGRPPPS",
+    "atom_count": 20,
+    "experimental_contacts": 21,
+    "predicted_contacts": 0,
+    "true_positives": 0,
+    "false_positives": 0,
+    "false_negatives": 21,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1_score": 0.0,
+    "frobenius_verified": true,
+    "winding_number": 17,
+    "activation_coverage": "7/12"
+  }
+]

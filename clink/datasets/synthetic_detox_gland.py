@@ -667,7 +667,7 @@ def generate_gland_specification() -> str:
     gland_tuple = {
         "⊢": "𐑼", "⊣": "𐑸", "≻": "𐑾", "≺": "𐑬",
         "⋈": "𐑞", "⊤": "𐑤", "∈": "𐑲", "∋": "𐑠",
-        "⊙": "⊙", "⊥": "𐑖", "⊞": "𐑳", "◻": "𐑴",
+        "⊙": "⊙", "⊥": "𐑖", "⊞": "𐑳", "⊡": "𐑴",
     }
     gland_tier = compute_tier_from_tuple(gland_tuple)
     gland_cscore = compute_c_score_from_tuple(gland_tuple)
