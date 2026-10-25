@@ -1,6 +1,0 @@
-{
-  "source_sha256": "f1c2eda85830f14dfe9562ff281a05a4741c400c9ee2cc3d95812d70c7d8f46c",
-  "pipeline_status": 0,
-  "stdout": "p4rakernel Genetics Test Suite \u2014 running: pipeline\n\n=== Section 4: Gene->Protein Pipeline Smoke Test ===\n[unnamed_gene] === Gene to Protein Pipeline: unnamed_gene ===\n[unnamed_gene] Sequence: AUGGCCGACUGGAACUGCAAGAAGAUCGUGCCCAAGUACUACGGCCGCUG (50 bp)\n[unnamed_gene] IG Primitive Activations (12<->12 bijection):\n[unnamed_gene]   \u2208: 1x\n[unnamed_gene]   \u227a: 2x\n[unnamed_gene]   \u227b: 1x\n[unnamed_gene]   \u229e: 3x\n[unnamed_gene]   \u22a2: 1x\n[unnamed_gene]   \u22a3: 1x\n[unnamed_gene]   \u22a4: 1x\n[unnamed_gene]   \u22a5: 1x\n[unnamed_gene] Auto-detected 1 subunits (conf=0.85)\n  \u2713 Pipeline runs with Frobenius closure\n  \u2713 CLI runner with JSON output (7+ stages)\n\n==================================================\n  2 passed  |  0 failed  |  2 total\n==================================================\n",
-  "stderr": ""
-}

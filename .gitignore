@@ -45,3 +45,6 @@ _write_test.txt
 
 # External reference PDFs kept on disk, not in git (patents, etc.)
 _archive/*.pdf
+
+# Local measurements and execution receipts
+measurements/

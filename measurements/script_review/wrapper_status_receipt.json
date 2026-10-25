@@ -1,8 +1,0 @@
-{
-  "utility_child_failure": 7,
-  "demo_child_failure": 9,
-  "cli_demo_failure": 9,
-  "all_demo_failure": 1,
-  "explicit_repo_cwd": true,
-  "empty_optional_arg_omitted": true
-}

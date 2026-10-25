@@ -1,7 +1,3 @@
-I broaden protein compiler coverage and document the shared carrier
+I keep measurements local and remove their files from Git tracking.
 
-I retain thirty complete UniProt records, coverage labels and source hashes, with explicit canonical reverse-translated RNA inputs.
-I run the chains through Vox protein/RNA, legacy folding, Gen2 and gene-pipeline paths, preserving full carriers and measured geometry conflicts.
-I record native execution and coordinate agreement, final compiler controls and Vox-to-Rebis ligand coupling.
-I update the README with runnable commands, returned files and the actual testing scope.
-I carry canonical SNS Prime symbols through the protein, gene and ligand tuple schemas, remove old key conversions, and verify the complete chain and emitted tuples.
+I ignore measurement directories at every depth while preserving their local contents.

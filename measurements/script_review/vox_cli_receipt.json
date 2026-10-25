@@ -1,8 +1,0 @@
-{
-  "selected_modules": 2,
-  "successful_audits": 1,
-  "audit_failure_exit": 1,
-  "B_outcome_exit": 0,
-  "complete_rna_reading": 30,
-  "execution": "audit import failure injected; no project-wide module imports executed"
-}

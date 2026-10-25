@@ -1,9 +1,0 @@
-{
-  "N[C@@H](C)C(=O)O": "OK: 6 atoms (expected 6)",
-  "N[C@H](C)C(=O)O": "OK: 6 atoms (expected 6)",
-  "F/C=C/F": "OK: 4 atoms (expected 4)",
-  "F/C=C\\F": "OK: 4 atoms (expected 4)",
-  "C[C@H](O)[C@@H](N)C(=O)O": "OK: 8 atoms (expected 8)",
-  "[13CH3][NH3+]": "OK: 2 atoms (expected 2)",
-  "opposite_enantiomer_control": "rejected"
-}
