@@ -1,0 +1,29 @@
+usage: rebis.alchemy [-h] [--file FILE] [--stdin] COMMAND ...
+
+Alchemical Treatise Bridge & Operations (advanced v2)
+
+positional arguments:
+  COMMAND
+    ladder              Basil Valentine alchemical ladder
+    opus                Full 12-operation opus report
+    stilling            Zosimos stilling analysis
+    structure           Alchemical structural analysis
+    retrosynth          Retrosynthetic stone synthesis
+    grand-seq           Grand alchemical sequence
+    catalyst            Green fire catalyst analysis
+    wavelength          Optimal photocatalytic wavelength
+    screen              Screen catalyst library
+    binding             Third engine binding computation
+    host                Suggest host for guest
+    decode              Artephius cryptic text decode
+    decode-mol          Artephius molecule decode
+    treatise            Treatise taxonomy / design
+    operations          List 12 alchemical operations
+    portico             Zosimos portico consistency check
+    list                List available tools
+    info                Show available tools (alias for list)
+
+options:
+  -h, --help            show this help message and exit
+  --file FILE, -f FILE  Input file (JSON or FASTA/sequence)
+  --stdin, -i           Read JSON arguments from stdin

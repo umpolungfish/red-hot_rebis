@@ -1,0 +1,21 @@
+usage: rebis.therapeutics [-h] [--file FILE] [--stdin] COMMAND ...
+
+rebis.therapeutics — Full Therapeutic Design Pipeline
+
+positional arguments:
+  COMMAND               Sub-command (run with COMMAND --help for details)
+    design              Design a Frobenius-verified chemotherapeutic (cancer
+                        vs healthy)
+    sim                 Run ouroboric pill dynamics simulation
+    neurotrophic        Design and simulate a neurotrophic factor
+    antidote            Query universal antidote library
+    quantum             Run quantum biologic prototype (NV-diamond epigenetic
+                        therapy)
+    list                List all exported symbols
+    info                Show available tools (alias for list)
+    help                Show this help message
+
+options:
+  -h, --help            show this help message and exit
+  --file FILE, -f FILE  Input file (JSON or FASTA/sequence)
+  --stdin, -i           Read JSON arguments from stdin

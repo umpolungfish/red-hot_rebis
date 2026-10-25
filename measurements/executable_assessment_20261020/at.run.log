@@ -1,0 +1,14 @@
+──────────────────────────────────────────────────────────────────
+  The φ̂ axis spans all three major psychiatric conditions:
+
+  φ̂=𐑢  depression            C=0.0000  O₀
+  φ̂=⊙  healthy_brain         C=0.7000  O₂
+  φ̂=𐑣  schizophrenia         C=0.0000  O₀
+  φ̂=𐑣  bipolar_mania         C=0.0000  O₀
+
+[1m[35mKey insight:[0m
+  Depression (φ̂=𐑢) → Healthy (φ̂=⊙) → Schizophrenia/Mania (φ̂=𐑣)
+  Distance from depression to health: 0.4993
+  Distance from schizophrenia to health: 0.9997
+  Schizophrenia vs Mania: K differs only (𐑧 vs 𐑪), d=1.0
+  HIV = Bipolar Mania structurally (d=0.0)

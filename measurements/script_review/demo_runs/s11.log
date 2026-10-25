@@ -1,0 +1,218 @@
+═ Frobenius Metamaterial Simulation (μ∘δ=id) ═
+  Grid: 20×20 | Load cycles: 20 | Heal steps/cycle: 10
+  Calibrating sensors...
+  Running 20 load-heal cycles...
+========================================================================
+  FROBENIUS METAMATERIAL — mu circ delta = id SELF-VERIFICATION
+========================================================================
+  Grid: 20x20 (400 cells)
+  Matrix modulus: 3.0 GPa
+  DA bond activation: 90.0 C
+  Capsule volume fraction: 0.08
+  CNT gauge factor: 5.0
+  NiTi volume fraction: 0.02
+  Target Frobenius error: < 0.01
+------------------------------------------------------------------------
+  Cycle         Load    ||mu·d-id||  Healed%   Agent%
+  ----- ------------ -------------- -------- --------
+  ✓   1      1.92%        0.0240   100.0%   100.0%
+  ✓   2      0.92%        0.0124   100.0%   100.0%
+  ✓   3      1.77%        0.0250   100.0%    99.9%
+  ⚠   4      1.17%        0.0169   100.0%    99.9%
+  ⚠   5      1.37%        0.0226   100.0%    99.9%
+  ⚠   6      0.80%        0.0161   100.0%    99.9%
+  ⚠   7      1.19%        0.0221   100.0%    99.9%
+  ⚠   8      1.14%        0.0229   100.0%    99.8%
+  ⚠   9      1.68%        0.0302   100.0%    99.8%
+  ⚠  10      1.07%        0.0215   100.0%    99.8%
+  ⚠  11      0.63%        0.0202   100.0%    99.8%
+  ⚠  12      1.12%        0.0235   100.0%    99.7%
+  ⚠  13      1.66%        0.0291   100.0%    99.7%
+  ⚠  14      0.78%        0.0223   100.0%    99.7%
+  ⚠  15      1.88%        0.0334   100.0%    99.6%
+  ⚠  16      0.64%        0.0212   100.0%    99.6%
+  ⚠  17      1.56%        0.0301   100.0%    99.6%
+  ⚠  18      1.77%        0.0312   100.0%    99.6%
+  ⚠  19      1.18%        0.0256   100.0%    99.5%
+  ⚠  20      1.76%        0.0323   100.0%    99.5%
+
+========================================================================
+  RESULTS
+========================================================================
+  Final ||mu·delta - id||: 0.018702
+  Frobenius closure: INCOMPLETE
+  Total healing events: 29
+  Healing agent remaining: 99.5%
+  Cells fully healed: 400/400
+
+  TIER: O₁ — near-closure, requires occasional external intervention
+  ✓ Frobenius norm: 0.018702 (OPEN)
+{
+  "grid_size": 20,
+  "load_cycles": 20,
+  "heal_steps_per_cycle": 10,
+  "frobenius_norm": 0.018702,
+  "frobenius_closed": false,
+  "simulation_results": [
+    {
+      "cycle": 1,
+      "load_pct": 1.92,
+      "frob_before": 0.024,
+      "frob_after": 0.0043,
+      "healed_pct": 100.0,
+      "agent_remaining_pct": 100.0
+    },
+    {
+      "cycle": 2,
+      "load_pct": 0.92,
+      "frob_before": 0.0124,
+      "frob_after": 0.007,
+      "healed_pct": 100.0,
+      "agent_remaining_pct": 100.0
+    },
+    {
+      "cycle": 3,
+      "load_pct": 1.77,
+      "frob_before": 0.025,
+      "frob_after": 0.0082,
+      "healed_pct": 100.0,
+      "agent_remaining_pct": 99.9
+    },
+    {
+      "cycle": 4,
+      "load_pct": 1.17,
+      "frob_before": 0.0169,
+      "frob_after": 0.0108,
+      "healed_pct": 100.0,
+      "agent_remaining_pct": 99.9
+    },
+    {
+      "cycle": 5,
+      "load_pct": 1.37,
+      "frob_before": 0.0226,
+      "frob_after": 0.012,
+      "healed_pct": 100.0,
+      "agent_remaining_pct": 99.9
+    },
+    {
+      "cycle": 6,
+      "load_pct": 0.8,
+      "frob_before": 0.0161,
+      "frob_after": 0.014,
+      "healed_pct": 100.0,
+      "agent_remaining_pct": 99.9
+    },
+    {
+      "cycle": 7,
+      "load_pct": 1.19,
+      "frob_before": 0.0221,
+      "frob_after": 0.0154,
+      "healed_pct": 100.0,
+      "agent_remaining_pct": 99.9
+    },
+    {
+      "cycle": 8,
+      "load_pct": 1.14,
+      "frob_before": 0.0229,
+      "frob_after": 0.0166,
+      "healed_pct": 100.0,
+      "agent_remaining_pct": 99.8
+    },
+    {
+      "cycle": 9,
+      "load_pct": 1.68,
+      "frob_before": 0.0302,
+      "frob_after": 0.0156,
+      "healed_pct": 100.0,
+      "agent_remaining_pct": 99.8
+    },
+    {
+      "cycle": 10,
+      "load_pct": 1.07,
+      "frob_before": 0.0215,
+      "frob_after": 0.0163,
+      "healed_pct": 100.0,
+      "agent_remaining_pct": 99.8
+    },
+    {
+      "cycle": 11,
+      "load_pct": 0.63,
+      "frob_before": 0.0202,
+      "frob_after": 0.0168,
+      "healed_pct": 100.0,
+      "agent_remaining_pct": 99.8
+    },
+    {
+      "cycle": 12,
+      "load_pct": 1.12,
+      "frob_before": 0.0235,
+      "frob_after": 0.0177,
+      "healed_pct": 100.0,
+      "agent_remaining_pct": 99.7
+    },
+    {
+      "cycle": 13,
+      "load_pct": 1.66,
+      "frob_before": 0.0291,
+      "frob_after": 0.0184,
+      "healed_pct": 100.0,
+      "agent_remaining_pct": 99.7
+    },
+    {
+      "cycle": 14,
+      "load_pct": 0.78,
+      "frob_before": 0.0223,
+      "frob_after": 0.0183,
+      "healed_pct": 100.0,
+      "agent_remaining_pct": 99.7
+    },
+    {
+      "cycle": 15,
+      "load_pct": 1.88,
+      "frob_before": 0.0334,
+      "frob_after": 0.0181,
+      "healed_pct": 100.0,
+      "agent_remaining_pct": 99.6
+    },
+    {
+      "cycle": 16,
+      "load_pct": 0.64,
+      "frob_before": 0.0212,
+      "frob_after": 0.0185,
+      "healed_pct": 100.0,
+      "agent_remaining_pct": 99.6
+    },
+    {
+      "cycle": 17,
+      "load_pct": 1.56,
+      "frob_before": 0.0301,
+      "frob_after": 0.0184,
+      "healed_pct": 100.0,
+      "agent_remaining_pct": 99.6
+    },
+    {
+      "cycle": 18,
+      "load_pct": 1.77,
+      "frob_before": 0.0312,
+      "frob_after": 0.0183,
+      "healed_pct": 100.0,
+      "agent_remaining_pct": 99.6
+    },
+    {
+      "cycle": 19,
+      "load_pct": 1.18,
+      "frob_before": 0.0256,
+      "frob_after": 0.0186,
+      "healed_pct": 100.0,
+      "agent_remaining_pct": 99.5
+    },
+    {
+      "cycle": 20,
+      "load_pct": 1.76,
+      "frob_before": 0.0323,
+      "frob_after": 0.0187,
+      "healed_pct": 100.0,
+      "agent_remaining_pct": 99.5
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+usage: rebis.p4ra [-h] COMMAND ...
+
+rebis.p4ra — Paraconsistent Kernel & Genetics
+Structural type: ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩  O_∞ tier · ⊙ criticality
+
+positional arguments:
+  COMMAND        Sub-command (run with COMMAND --help for details)
+    belnap       Test Belnap FOUR operations (T, B, F, N)
+    genetics     Show genetic code B4 lattice (64 codons)
+    verify       Run B3 Frobenius verification suite
+    hadrons      Test hadron Belnap operations (mesons, baryons, tetraquarks,
+                 glueballs)
+    ligands      Generate ligands from enzyme active site
+    sidechain    Analyze sidechain × environment composition
+    gene-pipeline
+                 Run gene-to-protein translation pipeline
+    serpent      Run SerpentRod protein design
+    sicpovm      Run SIC-POVM probe on active site
+    combinatorial
+                 Generate combinatorial ligand library
+    heterocycles
+                 Generate heterocycle-focused ligand library
+    list         List all exported symbols
+    info         Show available tools (alias for list)
+    help         Show this help message
+
+options:
+  -h, --help     show this help message and exit

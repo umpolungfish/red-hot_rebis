@@ -1,0 +1,10 @@
+{
+  "sources": {
+    "red-hot_rebis/rhr_p4rky/peptide_bridge.rs": "47c5d52a43fd298d143c9ae6a12e579509ff6fac23e28ae6450a441e81de5225",
+    "Vox/src/fold3d.rs": "dbad2b2773bc15c9dd1c3d6e1cc0edf620486a9623021e5a53bbd86cff9a157e",
+    "Vox/src/peptide_geometry.rs": "bb14df6de3735b6a4773b1ec0aecb811df6fa18f3cfe38f947e776d1df593a04",
+    "Vox/src/peptide_closure.rs": "8b8787439cd3f2ad880ed22dc786b915b2ee89a9b0d2c8698b651755992f883a"
+  },
+  "source_fingerprint": "c6dbe51ca7a15e13ec89781c5c755e58d5831182e16a61eeb5a7ba24862cc2ba",
+  "binary_sha256": "7d329269af2e5776e1e832b5ab2512be91fdf7f2c3fa1176cb6831dabf601155"
+}

@@ -1,0 +1,23 @@
+==================================================================
+  GENE → FOLDED PROTEIN
+  7-stage Frobenius-verified translation
+==================================================================
+[unnamed_gene] === Gene to Protein Pipeline: unnamed_gene ===
+[unnamed_gene] Sequence: AUGGCUCGUAAUGAUUGUGAAGGUCACAUUCUUAAAUAUCCUCAAUCUAC... (63 bp)
+[unnamed_gene] IG Primitive Activations (12<->12 bijection):
+[unnamed_gene]   ∈: 1x
+[unnamed_gene]   ∋: 1x
+[unnamed_gene]   ≺: 1x
+[unnamed_gene]   ≻: 1x
+[unnamed_gene]   ⊙: 1x
+[unnamed_gene]   ⊞: 1x
+[unnamed_gene]   ⊡: 1x
+[unnamed_gene]   ⊢: 1x
+[unnamed_gene]   ⊣: 1x
+[unnamed_gene]   ⊤: 1x
+[unnamed_gene]   ⊥: 1x
+[unnamed_gene]   ⋈: 1x
+[unnamed_gene] Assembly readout: 1 subunits; alternatives retained
+[unnamed_gene] PDB written: /home/mrnob0dy666/imsgct/red-hot_rebis/measurements/executable_assessment_20261020/gene.pdb
+Done — MARNDCEGHILKYPQSTVWF (20 aa) — Δ=0.0
+📦 PDB written: /home/mrnob0dy666/imsgct/red-hot_rebis/measurements/executable_assessment_20261020/gene.pdb

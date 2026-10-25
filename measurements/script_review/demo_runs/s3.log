@@ -1,0 +1,445 @@
+======================================================================
+SERPENT ON THE ROD — ANTIBODY DESIGN PIPELINE
+======================================================================
+Designing antibodies for 4 viral targets...
+
+
+######################################################################
+TARGET: SARS-CoV-2_RBD
+  SARS-CoV-2 RBD (ACE2 binding, N-term 30 AA)
+######################################################################
+[epitope_SARS-CoV-2_R] Direct RNA→FoldedProtein: epitope_SARS-CoV-2_R
+[epitope_SARS-CoV-2_R]   RNA: AAAGUUGGUGGUAAUUAUAAUUAUUUGUAUCGUUUGUUUC... (90 nt)
+[epitope_SARS-CoV-2_R]   AA: KVGGNYNYLYRLFRKSNLKPFERDISTEIY (30 AAs)
+[epitope_SARS-CoV-2_R]   Winding: 22 B4 loops
+[epitope_SARS-CoV-2_R]   Activations: 17/12 primitives
+[epitope_SARS-CoV-2_R]   Contacts: 9 long-range
+[epitope_SARS-CoV-2_R]   Subunits: 2
+[epitope_SARS-CoV-2_R]   Frobenius: ✓
+[epitope_SARS-CoV-2_R]   Confidence: 1.00
+[epitope_SARS-CoV-2_R]   Folding ΔG: -2.6 kcal/mol
+[epitope_SARS-CoV-2_R]   Enzymatic turnover: 0.00e+00 s⁻¹
+
+──────────────────────────────────────────────────
+EPITOPE: SARS-CoV-2_RBD
+Sequence: KVGGNYNYLYRLFRKSNLKPFERDISTEIY (30 AA)
+Activated IG primitives: 7/12
+  Position 0: K (Lys) -> Stoichiometry
+  Position 1: V (Val) -> Granularity
+  Position 2: G (Gly) -> Parity
+  Position 3: G (Gly) -> Granularity
+  Position 4: N (Asn) -> Parity
+  Position 5: Y (Tyr) -> Parity
+  Position 6: N (Asn) -> Fidelity
+  Position 7: Y (Tyr) -> Stoichiometry
+  Position 8: L (Leu) -> Granularity
+  Position 9: Y (Tyr) -> Stoichiometry
+  Position 10: R (Arg) -> Fidelity
+  Position 11: L (Leu) -> Protection
+  Position 12: F (Phe) -> Chirality
+  Position 13: R (Arg) -> Kinetics
+  Position 14: K (Lys) -> Protection
+  Position 15: S (Ser) -> Kinetics
+  Position 16: N (Asn) -> Parity
+
+  [CDR Design] Target length: 12
+  Epitope activates: ['Chirality', 'Fidelity', 'Granularity', 'Kinetics', 'Parity', 'Protection', 'Stoichiometry']
+  Complementary primitives: ['Topology', 'Parity', 'Kinetics', 'Granularity', 'Fidelity', 'Recognition']
+  Complementary AAs: WYIHFC (6)
+  CDR sequence: WGYSITHPFACV
+  CDR RNA: UGGGGUUAUUCUAUUACUCAUCCUUUUGCUUGUGUU
+  CDR composition:
+    Position 0: Trp (W) -> Topology
+    Position 1: Gly (G) -> bridge
+    Position 2: Tyr (Y) -> Parity
+    Position 3: Ser (S) -> bridge
+    Position 4: Ile (I) -> Kinetics
+    Position 5: Thr (T) -> bridge
+    Position 6: His (H) -> Granularity
+    Position 7: Pro (P) -> bridge
+    Position 8: Phe (F) -> Fidelity
+    Position 9: Ala (A) -> bridge
+    Position 10: Cys (C) -> Recognition
+    Position 11: Val (V) -> bridge
+[cdr_VH_CDR3] Direct RNA→FoldedProtein: cdr_VH_CDR3
+[cdr_VH_CDR3]   RNA: UGGGGUUAUUCUAUUACUCAUCCUUUUGCUUGUGUU... (36 nt)
+[cdr_VH_CDR3]   AA: WGYSITHPFACV (12 AAs)
+[cdr_VH_CDR3]   Winding: 6 B4 loops
+[cdr_VH_CDR3]   Activations: 6/12 primitives
+[cdr_VH_CDR3]   Contacts: 2 long-range
+[cdr_VH_CDR3]   Subunits: 1
+[cdr_VH_CDR3]   Frobenius: ✓
+[cdr_VH_CDR3]   Confidence: 1.00
+[cdr_VH_CDR3]   Folding ΔG: -1.0 kcal/mol
+[cdr_VH_CDR3]   Enzymatic turnover: 0.00e+00 s⁻¹
+
+  CDR STRUCTURE PREDICTION:
+    Length: 12 AA
+    Winding: 6 B4 loops
+    Contacts: 2
+    Secondary elements: 6
+      sheet  [ 0- 2] WG
+      sheet  [ 2- 4] YS
+      sheet  [ 4- 6] IT
+      loop   [ 6- 8] HP
+      helix  [ 8-10] FA
+      sheet  [10-12] CV
+    Frobenius: OK
+    Confidence: 1.00
+[antibody_VH] Direct RNA→FoldedProtein: antibody_VH
+[antibody_VH]   RNA: CAAGUUCAAUUGGUUCAAUCUGGUGCUGAAGUUAAAAAAC... (159 nt)
+[antibody_VH]   AA: QVQLVQSGAEVKKPGASVKVSCKASGYTFTWGYSITHPFACVWGQGTLVTVSS (53 AAs)
+[antibody_VH]   Winding: 19 B4 loops
+[antibody_VH]   Activations: 19/12 primitives
+[antibody_VH]   Contacts: 4 long-range
+[antibody_VH]   Subunits: 2
+[antibody_VH]   Frobenius: ✓
+[antibody_VH]   Confidence: 1.00
+[antibody_VH]   Folding ΔG: -1.5 kcal/mol
+[antibody_VH]   Enzymatic turnover: 0.00e+00 s⁻¹
+
+============================================================
+FULL VH ANTIBODY DOMAIN
+============================================================
+Framework 1: QVQLVQSGAEVKKPGASVKVSCKASGYTFT
+CDR3:        WGYSITHPFACV  (designed)
+Framework 4: WGQGTLVTVSS
+Full VVH: QVQLVQSGAEVKKPGASVKVSCKASGYTFTWGYSITHPFACVWGQGTLVTVSS
+
+ANTIBODY STRUCTURE:
+  Length: 53 AA
+  Winding: 19 B4 loops
+  Contacts: 4
+  Subunits: ?
+  Frobenius: OK
+  Confidence: 1.00
+
+
+######################################################################
+TARGET: HIV_gp120_C4
+  HIV gp120 C4 region (CD4 binding site)
+######################################################################
+[epitope_HIV_gp120_C4] Direct RNA→FoldedProtein: epitope_HIV_gp120_C4
+[epitope_HIV_gp120_C4]   RNA: ACUGGUCCUUGUACUAAUGUUUCUACUGUUCAAUGUACUC... (90 nt)
+[epitope_HIV_gp120_C4]   AA: TGPCTNVSTVQCTHGIRPVVSTQLLLNGSL (30 AAs)
+[epitope_HIV_gp120_C4]   Winding: 17 B4 loops
+[epitope_HIV_gp120_C4]   Activations: 8/12 primitives
+[epitope_HIV_gp120_C4]   Contacts: 3 long-range
+[epitope_HIV_gp120_C4]   Subunits: 1
+[epitope_HIV_gp120_C4]   Frobenius: ✗
+[epitope_HIV_gp120_C4]   Confidence: 0.80
+[epitope_HIV_gp120_C4]   Folding ΔG: -1.0 kcal/mol
+[epitope_HIV_gp120_C4]   Enzymatic turnover: 0.00e+00 s⁻¹
+
+──────────────────────────────────────────────────
+EPITOPE: HIV_gp120_C4
+Sequence: TGPCTNVSTVQCTHGIRPVVSTQLLLNGSL (30 AA)
+Activated IG primitives: 5/12
+  Position 0: T (Thr) -> Recognition
+  Position 1: G (Gly) -> Granularity
+  Position 2: P (Pro) -> Grammar
+  Position 3: C (Cys) -> Recognition
+  Position 4: T (Thr) -> Criticality
+  Position 5: N (Asn) -> Kinetics
+  Position 6: V (Val) -> Grammar
+  Position 7: S (Ser) -> Granularity
+
+  [CDR Design] Target length: 12
+  Epitope activates: ['Criticality', 'Grammar', 'Granularity', 'Kinetics', 'Recognition']
+  Complementary primitives: ['Coupling', 'Kinetics', 'Granularity', 'Stoichiometry']
+  Complementary AAs: NIHK (4)
+  CDR sequence: NGISHTKPAVGS
+  CDR RNA: AAUGGUAUUUCUCAUACUAAACCUGCUGUUGGUUCU
+  CDR composition:
+    Position 0: Asn (N) -> Coupling
+    Position 1: Gly (G) -> bridge
+    Position 2: Ile (I) -> Kinetics
+    Position 3: Ser (S) -> bridge
+    Position 4: His (H) -> Granularity
+    Position 5: Thr (T) -> bridge
+    Position 6: Lys (K) -> Stoichiometry
+    Position 7: Pro (P) -> bridge
+    Position 8: Ala (A) -> bridge
+    Position 9: Val (V) -> bridge
+    Position 10: Gly (G) -> bridge
+    Position 11: Ser (S) -> bridge
+[cdr_VH_CDR3] Direct RNA→FoldedProtein: cdr_VH_CDR3
+[cdr_VH_CDR3]   RNA: AAUGGUAUUUCUCAUACUAAACCUGCUGUUGGUUCU... (36 nt)
+[cdr_VH_CDR3]   AA: NGISHTKPAVGS (12 AAs)
+[cdr_VH_CDR3]   Winding: 6 B4 loops
+[cdr_VH_CDR3]   Activations: 4/12 primitives
+[cdr_VH_CDR3]   Contacts: 1 long-range
+[cdr_VH_CDR3]   Subunits: 1
+[cdr_VH_CDR3]   Frobenius: ✗
+[cdr_VH_CDR3]   Confidence: 1.00
+[cdr_VH_CDR3]   Folding ΔG: -1.0 kcal/mol
+[cdr_VH_CDR3]   Enzymatic turnover: 0.00e+00 s⁻¹
+
+  CDR STRUCTURE PREDICTION:
+    Length: 12 AA
+    Winding: 6 B4 loops
+    Contacts: 1
+    Secondary elements: 6
+      loop   [ 0- 2] NG
+      sheet  [ 2- 4] IS
+      sheet  [ 4- 6] HT
+      loop   [ 6- 8] KP
+      sheet  [ 8-10] AV
+      loop   [10-12] GS
+    Frobenius: FAIL
+    Confidence: 1.00
+[antibody_VH] Direct RNA→FoldedProtein: antibody_VH
+[antibody_VH]   RNA: CAAGUUCAAUUGGUUCAAUCUGGUGCUGAAGUUAAAAAAC... (159 nt)
+[antibody_VH]   AA: QVQLVQSGAEVKKPGASVKVSCKASGYTFTNGISHTKPAVGSWGQGTLVTVSS (53 AAs)
+[antibody_VH]   Winding: 19 B4 loops
+[antibody_VH]   Activations: 17/12 primitives
+[antibody_VH]   Contacts: 3 long-range
+[antibody_VH]   Subunits: 1
+[antibody_VH]   Frobenius: ✓
+[antibody_VH]   Confidence: 0.96
+[antibody_VH]   Folding ΔG: -1.2 kcal/mol
+[antibody_VH]   Enzymatic turnover: 0.00e+00 s⁻¹
+
+============================================================
+FULL VH ANTIBODY DOMAIN
+============================================================
+Framework 1: QVQLVQSGAEVKKPGASVKVSCKASGYTFT
+CDR3:        NGISHTKPAVGS  (designed)
+Framework 4: WGQGTLVTVSS
+Full VVH: QVQLVQSGAEVKKPGASVKVSCKASGYTFTNGISHTKPAVGSWGQGTLVTVSS
+
+ANTIBODY STRUCTURE:
+  Length: 53 AA
+  Winding: 19 B4 loops
+  Contacts: 3
+  Subunits: ?
+  Frobenius: OK
+  Confidence: 0.96
+
+
+######################################################################
+TARGET: Influenza_HA_stem
+  Influenza HA stem (broadly neutralizing)
+######################################################################
+[epitope_Influenza_HA] Direct RNA→FoldedProtein: epitope_Influenza_HA
+[epitope_Influenza_HA]   RNA: UUUAUUUCUUUUGCUAUUUCUUGUUUUUUGUUGUGUGUUG... (75 nt)
+[epitope_Influenza_HA]   AA: FISFAISCFLLCVVLLGFIMWACQK (25 AAs)
+[epitope_Influenza_HA]   Winding: 7 B4 loops
+[epitope_Influenza_HA]   Activations: 14/12 primitives
+[epitope_Influenza_HA]   Contacts: 2 long-range
+[epitope_Influenza_HA]   Subunits: 1
+[epitope_Influenza_HA]   Frobenius: ✓
+[epitope_Influenza_HA]   Confidence: 1.00
+[epitope_Influenza_HA]   Folding ΔG: -1.0 kcal/mol
+[epitope_Influenza_HA]   Enzymatic turnover: 0.00e+00 s⁻¹
+
+──────────────────────────────────────────────────
+EPITOPE: Influenza_HA_stem
+Sequence: FISFAISCFLLCVVLLGFIMWACQK (25 AA)
+Activated IG primitives: 7/12
+  Position 0: F (Phe) -> Fidelity
+  Position 1: I (Ile) -> Kinetics
+  Position 2: S (Ser) -> Fidelity
+  Position 3: F (Phe) -> Kinetics
+  Position 4: A (Ala) -> Recognition
+  Position 5: I (Ile) -> Fidelity
+  Position 6: S (Ser) -> Recognition
+  Position 7: C (Cys) -> Fidelity
+  Position 8: F (Phe) -> Kinetics
+  Position 9: L (Leu) -> Dimensionality
+  Position 10: L (Leu) -> Topology
+  Position 11: C (Cys) -> Recognition
+  Position 12: V (Val) -> Grammar
+  Position 13: V (Val) -> Stoichiometry
+
+  [CDR Design] Target length: 12
+  Epitope activates: ['Dimensionality', 'Fidelity', 'Grammar', 'Kinetics', 'Recognition', 'Stoichiometry', 'Topology']
+  Complementary primitives: ['Winding', 'Parity', 'Granularity', 'Stoichiometry', 'Recognition', 'Chirality']
+  Complementary AAs: EYHKCD (6)
+  CDR sequence: EGYSHTKPCADV
+  CDR RNA: GAAGGUUAUUCUCAUACUAAACCUUGUGCUGAUGUU
+  CDR composition:
+    Position 0: Glu (E) -> Winding
+    Position 1: Gly (G) -> bridge
+    Position 2: Tyr (Y) -> Parity
+    Position 3: Ser (S) -> bridge
+    Position 4: His (H) -> Granularity
+    Position 5: Thr (T) -> bridge
+    Position 6: Lys (K) -> Stoichiometry
+    Position 7: Pro (P) -> bridge
+    Position 8: Cys (C) -> Recognition
+    Position 9: Ala (A) -> bridge
+    Position 10: Asp (D) -> Chirality
+    Position 11: Val (V) -> bridge
+[cdr_VH_CDR3] Direct RNA→FoldedProtein: cdr_VH_CDR3
+[cdr_VH_CDR3]   RNA: GAAGGUUAUUCUCAUACUAAACCUUGUGCUGAUGUU... (36 nt)
+[cdr_VH_CDR3]   AA: EGYSHTKPCADV (12 AAs)
+[cdr_VH_CDR3]   Winding: 7 B4 loops
+[cdr_VH_CDR3]   Activations: 6/12 primitives
+[cdr_VH_CDR3]   Contacts: 0 long-range
+[cdr_VH_CDR3]   Subunits: 1
+[cdr_VH_CDR3]   Frobenius: ✓
+[cdr_VH_CDR3]   Confidence: 1.00
+[cdr_VH_CDR3]   Folding ΔG: -1.0 kcal/mol
+[cdr_VH_CDR3]   Enzymatic turnover: 0.00e+00 s⁻¹
+
+  CDR STRUCTURE PREDICTION:
+    Length: 12 AA
+    Winding: 7 B4 loops
+    Contacts: 0
+    Secondary elements: 7
+      helix  [ 0- 1] E
+      loop   [ 1- 2] G
+      sheet  [ 2- 3] Y
+      loop   [ 3- 4] S
+      loop   [ 4- 5] H
+      sheet  [ 5- 6] T
+    Frobenius: OK
+    Confidence: 1.00
+[antibody_VH] Direct RNA→FoldedProtein: antibody_VH
+[antibody_VH]   RNA: CAAGUUCAAUUGGUUCAAUCUGGUGCUGAAGUUAAAAAAC... (159 nt)
+[antibody_VH]   AA: QVQLVQSGAEVKKPGASVKVSCKASGYTFTEGYSHTKPCADVWGQGTLVTVSS (53 AAs)
+[antibody_VH]   Winding: 20 B4 loops
+[antibody_VH]   Activations: 19/12 primitives
+[antibody_VH]   Contacts: 3 long-range
+[antibody_VH]   Subunits: 1
+[antibody_VH]   Frobenius: ✓
+[antibody_VH]   Confidence: 1.00
+[antibody_VH]   Folding ΔG: -1.1 kcal/mol
+[antibody_VH]   Enzymatic turnover: 0.00e+00 s⁻¹
+
+============================================================
+FULL VH ANTIBODY DOMAIN
+============================================================
+Framework 1: QVQLVQSGAEVKKPGASVKVSCKASGYTFT
+CDR3:        EGYSHTKPCADV  (designed)
+Framework 4: WGQGTLVTVSS
+Full VVH: QVQLVQSGAEVKKPGASVKVSCKASGYTFTEGYSHTKPCADVWGQGTLVTVSS
+
+ANTIBODY STRUCTURE:
+  Length: 53 AA
+  Winding: 20 B4 loops
+  Contacts: 3
+  Subunits: ?
+  Frobenius: OK
+  Confidence: 1.00
+
+
+######################################################################
+TARGET: HPV_L1_capsid
+  HPV L1 capsid surface loop (vaccine target)
+######################################################################
+[epitope_HPV_L1_capsi] Direct RNA→FoldedProtein: epitope_HPV_L1_capsi
+[epitope_HPV_L1_capsi]   RNA: ACUUCUGGUGAUGCUGUUGCUCCUGGUGAAGAUGAUACUC... (75 nt)
+[epitope_HPV_L1_capsi]   AA: TSGDAVAPGEDDTPDNKEYPDEYSD (25 AAs)
+[epitope_HPV_L1_capsi]   Winding: 25 B4 loops
+[epitope_HPV_L1_capsi]   Activations: 13/12 primitives
+[epitope_HPV_L1_capsi]   Contacts: 0 long-range
+[epitope_HPV_L1_capsi]   Subunits: 1
+[epitope_HPV_L1_capsi]   Frobenius: ✓
+[epitope_HPV_L1_capsi]   Confidence: 1.00
+[epitope_HPV_L1_capsi]   Folding ΔG: -1.0 kcal/mol
+[epitope_HPV_L1_capsi]   Enzymatic turnover: 0.00e+00 s⁻¹
+
+──────────────────────────────────────────────────
+EPITOPE: HPV_L1_capsid
+Sequence: TSGDAVAPGEDDTPDNKEYPDEYSD (25 AA)
+Activated IG primitives: 5/12
+  Position 0: T (Thr) -> Chirality
+  Position 1: S (Ser) -> Protection
+  Position 2: G (Gly) -> Chirality
+  Position 3: D (Asp) -> Chirality
+  Position 4: A (Ala) -> Chirality
+  Position 5: V (Val) -> Granularity
+  Position 6: A (Ala) -> Stoichiometry
+  Position 7: P (Pro) -> Protection
+  Position 8: G (Gly) -> Parity
+  Position 9: E (Glu) -> Chirality
+  Position 10: D (Asp) -> Protection
+  Position 11: D (Asp) -> Parity
+  Position 12: T (Thr) -> Chirality
+
+  [CDR Design] Target length: 12
+  Epitope activates: ['Chirality', 'Granularity', 'Parity', 'Protection', 'Stoichiometry']
+  Complementary primitives: ['Topology', 'Kinetics', 'Fidelity', 'Recognition']
+  Complementary AAs: WIFC (4)
+  CDR sequence: WGISFTCPAVGS
+  CDR RNA: UGGGGUAUUUCUUUUACUUGUCCUGCUGUUGGUUCU
+  CDR composition:
+    Position 0: Trp (W) -> Topology
+    Position 1: Gly (G) -> bridge
+    Position 2: Ile (I) -> Kinetics
+    Position 3: Ser (S) -> bridge
+    Position 4: Phe (F) -> Fidelity
+    Position 5: Thr (T) -> bridge
+    Position 6: Cys (C) -> Recognition
+    Position 7: Pro (P) -> bridge
+    Position 8: Ala (A) -> bridge
+    Position 9: Val (V) -> bridge
+    Position 10: Gly (G) -> bridge
+    Position 11: Ser (S) -> bridge
+[cdr_VH_CDR3] Direct RNA→FoldedProtein: cdr_VH_CDR3
+[cdr_VH_CDR3]   RNA: UGGGGUAUUUCUUUUACUUGUCCUGCUGUUGGUUCU... (36 nt)
+[cdr_VH_CDR3]   AA: WGISFTCPAVGS (12 AAs)
+[cdr_VH_CDR3]   Winding: 4 B4 loops
+[cdr_VH_CDR3]   Activations: 4/12 primitives
+[cdr_VH_CDR3]   Contacts: 1 long-range
+[cdr_VH_CDR3]   Subunits: 1
+[cdr_VH_CDR3]   Frobenius: ✓
+[cdr_VH_CDR3]   Confidence: 1.00
+[cdr_VH_CDR3]   Folding ΔG: -1.0 kcal/mol
+[cdr_VH_CDR3]   Enzymatic turnover: 0.00e+00 s⁻¹
+
+  CDR STRUCTURE PREDICTION:
+    Length: 12 AA
+    Winding: 4 B4 loops
+    Contacts: 1
+    Secondary elements: 4
+      sheet  [ 0- 3] WGI
+      sheet  [ 3- 6] SFT
+      loop   [ 6- 9] CPA
+      sheet  [ 9-12] VGS
+    Frobenius: OK
+    Confidence: 1.00
+[antibody_VH] Direct RNA→FoldedProtein: antibody_VH
+[antibody_VH]   RNA: CAAGUUCAAUUGGUUCAAUCUGGUGCUGAAGUUAAAAAAC... (159 nt)
+[antibody_VH]   AA: QVQLVQSGAEVKKPGASVKVSCKASGYTFTWGISFTCPAVGSWGQGTLVTVSS (53 AAs)
+[antibody_VH]   Winding: 17 B4 loops
+[antibody_VH]   Activations: 17/12 primitives
+[antibody_VH]   Contacts: 4 long-range
+[antibody_VH]   Subunits: 2
+[antibody_VH]   Frobenius: ✓
+[antibody_VH]   Confidence: 0.96
+[antibody_VH]   Folding ΔG: -1.3 kcal/mol
+[antibody_VH]   Enzymatic turnover: 0.00e+00 s⁻¹
+
+============================================================
+FULL VH ANTIBODY DOMAIN
+============================================================
+Framework 1: QVQLVQSGAEVKKPGASVKVSCKASGYTFT
+CDR3:        WGISFTCPAVGS  (designed)
+Framework 4: WGQGTLVTVSS
+Full VVH: QVQLVQSGAEVKKPGASVKVSCKASGYTFTWGISFTCPAVGSWGQGTLVTVSS
+
+ANTIBODY STRUCTURE:
+  Length: 53 AA
+  Winding: 17 B4 loops
+  Contacts: 4
+  Subunits: ?
+  Frobenius: OK
+  Confidence: 0.96
+
+
+======================================================================
+DESIGN SUMMARY
+======================================================================
+Target                    Epitope                   CDR3            Frob   Conf  
+----------------------------------------------------------------------
+SARS-CoV-2_RBD            KVGGNYNYLYRLFRKSNLKPFER   WGYSITHPFACV    OK     1.00
+HIV_gp120_C4              TGPCTNVSTVQCTHGIRPVVSTQ   NGISHTKPAVGS    FAIL   1.00
+Influenza_HA_stem         FISFAISCFLLCVVLLGFIMWAC   EGYSHTKPCADV    OK     1.00
+HPV_L1_capsid             TSGDAVAPGEDDTPDNKEYPDEY   WGISFTCPAVGS    OK     1.00
+
+Results saved to /home/mrnob0dy666/imsgct/red-hot_rebis/data/antibody_design_results.json
+
+Overall Frobenius: ALL OK

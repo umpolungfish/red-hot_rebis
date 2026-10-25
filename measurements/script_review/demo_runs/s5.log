@@ -1,0 +1,28 @@
+──────────────────────────────────────────────────────────────────
+MRSA is super-critical (φ̂=𐑣) with fast kinetics (K=𐑺) — runaway replication plus antibiotic resistance. DARPin against PBP2a demotes φ̂; biofilm disruptor restores normal disjunctive composition.
+
+[1m[35mStructural Strategy:[0m
+  Dual MEET: DARPin_PBP2a targets resistance mechanism (φ̂); Biofilm Disruptor breaks quorum-sensing architecture (ɢ)
+
+[1m[35mComponents (2):[0m
+
+  [1m1. DARPin_PBP2a[0m
+     Target: φ̂
+     Operation: [36mMEET[0m
+     Mechanism: PBP2a is the resistance protein — DARPin binding forces φ̂ demotion from 𐑣→⊙
+
+  [1m2. Biofilm Disruptor[0m
+     Target: ∋
+     Operation: [36mMEET[0m
+     Mechanism: Biofilm EPS matrix disruption converts ɢ from SEQ(𐑠) to OR(𐑜) — individual cells become vulnerable
+
+[1m[35mPDB Structures:[0m
+  • DARPin_PBP2a.pdb
+  • Biofilm_Disruptor.pdb
+
+[1m[35mLean Verification:[0m
+  • Core.lean
+  • IGMorphism.lean
+  • AgentSelf.lean
+
+[1m[35mDocumentation:[0m  MRSA_THERAPY.md

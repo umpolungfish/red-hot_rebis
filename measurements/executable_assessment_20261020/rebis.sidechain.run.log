@@ -1,0 +1,370 @@
+{
+  "summary": {
+    "frustration": {
+      "alanine": {
+        "charged_interface": 4.879,
+        "hydrophobic_core": 0.0,
+        "interfacial": 2.588,
+        "polar_surface": 2.408
+      },
+      "arginine": {
+        "charged_interface": 0.0,
+        "hydrophobic_core": 4.062,
+        "interfacial": 1.414,
+        "polar_surface": 0.0
+      },
+      "asparagine": {
+        "charged_interface": 2.983,
+        "hydrophobic_core": 2.025,
+        "interfacial": 1.483,
+        "polar_surface": 1.378
+      },
+      "aspartate": {
+        "charged_interface": 3.564,
+        "hydrophobic_core": 2.345,
+        "interfacial": 1.483,
+        "polar_surface": 1.378
+      },
+      "cysteine": {
+        "charged_interface": 3.435,
+        "hydrophobic_core": 3.286,
+        "interfacial": 1.789,
+        "polar_surface": 1.0
+      },
+      "glutamate": {
+        "charged_interface": 3.421,
+        "hydrophobic_core": 2.47,
+        "interfacial": 1.095,
+        "polar_surface": 0.949
+      },
+      "glutamine": {
+        "charged_interface": 3.421,
+        "hydrophobic_core": 2.47,
+        "interfacial": 1.095,
+        "polar_surface": 0.949
+      },
+      "glycine": {
+        "charged_interface": 4.775,
+        "hydrophobic_core": 0.0,
+        "interfacial": 2.387,
+        "polar_surface": 2.191
+      },
+      "histidine": {
+        "charged_interface": 1.304,
+        "hydrophobic_core": 2.775,
+        "interfacial": 2.646,
+        "polar_surface": 2.49
+      },
+      "isoleucine": {
+        "charged_interface": 3.225,
+        "hydrophobic_core": 1.871,
+        "interfacial": 1.378,
+        "polar_surface": 2.366
+      },
+      "leucine": {
+        "charged_interface": 4.775,
+        "hydrophobic_core": 1.673,
+        "interfacial": 2.387,
+        "polar_surface": 2.191
+      },
+      "lysine": {
+        "charged_interface": 3.564,
+        "hydrophobic_core": 2.47,
+        "interfacial": 1.483,
+        "polar_surface": 0.949
+      },
+      "methionine": {
+        "charged_interface": 4.243,
+        "hydrophobic_core": 2.608,
+        "interfacial": 2.408,
+        "polar_surface": 1.449
+      },
+      "phenylalanine": {
+        "charged_interface": 2.387,
+        "hydrophobic_core": 3.24,
+        "interfacial": 1.0,
+        "polar_surface": 0.949
+      },
+      "proline": {
+        "charged_interface": 3.225,
+        "hydrophobic_core": 2.214,
+        "interfacial": 1.643,
+        "polar_surface": 2.366
+      },
+      "serine": {
+        "charged_interface": 3.435,
+        "hydrophobic_core": 3.286,
+        "interfacial": 1.789,
+        "polar_surface": 1.0
+      },
+      "threonine": {
+        "charged_interface": 2.408,
+        "hydrophobic_core": 3.536,
+        "interfacial": 1.414,
+        "polar_surface": 1.0
+      },
+      "tryptophan": {
+        "charged_interface": 2.191,
+        "hydrophobic_core": 3.376,
+        "interfacial": 1.673,
+        "polar_surface": 0.0
+      },
+      "tyrosine": {
+        "charged_interface": 2.387,
+        "hydrophobic_core": 2.95,
+        "interfacial": 1.673,
+        "polar_surface": 0.949
+      },
+      "valine": {
+        "charged_interface": 4.98,
+        "hydrophobic_core": 1.342,
+        "interfacial": 2.588,
+        "polar_surface": 2.608
+      }
+    },
+    "dominance": {
+      "alanine": {
+        "charged_interface": "=",
+        "hydrophobic_core": "env",
+        "interfacial": "env",
+        "polar_surface": "env"
+      },
+      "arginine": {
+        "charged_interface": "env",
+        "hydrophobic_core": "env",
+        "interfacial": "env",
+        "polar_surface": "env"
+      },
+      "asparagine": {
+        "charged_interface": "=",
+        "hydrophobic_core": "sc",
+        "interfacial": "env",
+        "polar_surface": "env"
+      },
+      "aspartate": {
+        "charged_interface": "=",
+        "hydrophobic_core": "env",
+        "interfacial": "env",
+        "polar_surface": "env"
+      },
+      "cysteine": {
+        "charged_interface": "=",
+        "hydrophobic_core": "=",
+        "interfacial": "env",
+        "polar_surface": "env"
+      },
+      "glutamate": {
+        "charged_interface": "=",
+        "hydrophobic_core": "=",
+        "interfacial": "env",
+        "polar_surface": "env"
+      },
+      "glutamine": {
+        "charged_interface": "=",
+        "hydrophobic_core": "=",
+        "interfacial": "env",
+        "polar_surface": "env"
+      },
+      "glycine": {
+        "charged_interface": "env",
+        "hydrophobic_core": "env",
+        "interfacial": "env",
+        "polar_surface": "env"
+      },
+      "histidine": {
+        "charged_interface": "sc",
+        "hydrophobic_core": "sc",
+        "interfacial": "sc",
+        "polar_surface": "sc"
+      },
+      "isoleucine": {
+        "charged_interface": "env",
+        "hydrophobic_core": "env",
+        "interfacial": "env",
+        "polar_surface": "env"
+      },
+      "leucine": {
+        "charged_interface": "=",
+        "hydrophobic_core": "env",
+        "interfacial": "env",
+        "polar_surface": "env"
+      },
+      "lysine": {
+        "charged_interface": "=",
+        "hydrophobic_core": "sc",
+        "interfacial": "env",
+        "polar_surface": "env"
+      },
+      "methionine": {
+        "charged_interface": "=",
+        "hydrophobic_core": "=",
+        "interfacial": "env",
+        "polar_surface": "env"
+      },
+      "phenylalanine": {
+        "charged_interface": "env",
+        "hydrophobic_core": "=",
+        "interfacial": "env",
+        "polar_surface": "env"
+      },
+      "proline": {
+        "charged_interface": "env",
+        "hydrophobic_core": "=",
+        "interfacial": "env",
+        "polar_surface": "env"
+      },
+      "serine": {
+        "charged_interface": "=",
+        "hydrophobic_core": "=",
+        "interfacial": "env",
+        "polar_surface": "env"
+      },
+      "threonine": {
+        "charged_interface": "env",
+        "hydrophobic_core": "=",
+        "interfacial": "env",
+        "polar_surface": "env"
+      },
+      "tryptophan": {
+        "charged_interface": "=",
+        "hydrophobic_core": "sc",
+        "interfacial": "env",
+        "polar_surface": "env"
+      },
+      "tyrosine": {
+        "charged_interface": "=",
+        "hydrophobic_core": "sc",
+        "interfacial": "env",
+        "polar_surface": "env"
+      },
+      "valine": {
+        "charged_interface": "=",
+        "hydrophobic_core": "=",
+        "interfacial": "env",
+        "polar_surface": "env"
+      }
+    },
+    "tiers": {
+      "alanine": {
+        "charged_interface": "O₂",
+        "hydrophobic_core": "O₀",
+        "interfacial": "O₀",
+        "polar_surface": "O₀"
+      },
+      "arginine": {
+        "charged_interface": "O_∞",
+        "hydrophobic_core": "O₀",
+        "interfacial": "O₀",
+        "polar_surface": "O₀"
+      },
+      "asparagine": {
+        "charged_interface": "O₂",
+        "hydrophobic_core": "O₀",
+        "interfacial": "O₀",
+        "polar_surface": "O₀"
+      },
+      "aspartate": {
+        "charged_interface": "O₂",
+        "hydrophobic_core": "O₀",
+        "interfacial": "O₀",
+        "polar_surface": "O₀"
+      },
+      "cysteine": {
+        "charged_interface": "O₂",
+        "hydrophobic_core": "O₀",
+        "interfacial": "O₀",
+        "polar_surface": "O₀"
+      },
+      "glutamate": {
+        "charged_interface": "O₂",
+        "hydrophobic_core": "O₀",
+        "interfacial": "O₀",
+        "polar_surface": "O₀"
+      },
+      "glutamine": {
+        "charged_interface": "O₂",
+        "hydrophobic_core": "O₀",
+        "interfacial": "O₀",
+        "polar_surface": "O₀"
+      },
+      "glycine": {
+        "charged_interface": "O₂",
+        "hydrophobic_core": "O₀",
+        "interfacial": "O₀",
+        "polar_surface": "O₀"
+      },
+      "histidine": {
+        "charged_interface": "O₀",
+        "hydrophobic_core": "O₀",
+        "interfacial": "O₀",
+        "polar_surface": "O₀"
+      },
+      "isoleucine": {
+        "charged_interface": "O₂",
+        "hydrophobic_core": "O₀",
+        "interfacial": "O₀",
+        "polar_surface": "O₀"
+      },
+      "leucine": {
+        "charged_interface": "O₂",
+        "hydrophobic_core": "O₀",
+        "interfacial": "O₀",
+        "polar_surface": "O₀"
+      },
+      "lysine": {
+        "charged_interface": "O₂†",
+        "hydrophobic_core": "O₀",
+        "interfacial": "O₀",
+        "polar_surface": "O₀"
+      },
+      "methionine": {
+        "charged_interface": "O₂",
+        "hydrophobic_core": "O₀",
+        "interfacial": "O₀",
+        "polar_surface": "O₀"
+      },
+      "phenylalanine": {
+        "charged_interface": "O₂",
+        "hydrophobic_core": "O₀",
+        "interfacial": "O₀",
+        "polar_surface": "O₀"
+      },
+      "proline": {
+        "charged_interface": "O₂",
+        "hydrophobic_core": "O₀",
+        "interfacial": "O₀",
+        "polar_surface": "O₀"
+      },
+      "serine": {
+        "charged_interface": "O₂",
+        "hydrophobic_core": "O₀",
+        "interfacial": "O₀",
+        "polar_surface": "O₀"
+      },
+      "threonine": {
+        "charged_interface": "O₂",
+        "hydrophobic_core": "O₀",
+        "interfacial": "O₀",
+        "polar_surface": "O₀"
+      },
+      "tryptophan": {
+        "charged_interface": "O₂",
+        "hydrophobic_core": "O₀",
+        "interfacial": "O₀",
+        "polar_surface": "O₀"
+      },
+      "tyrosine": {
+        "charged_interface": "O₂",
+        "hydrophobic_core": "O₀",
+        "interfacial": "O₀",
+        "polar_surface": "O₀"
+      },
+      "valine": {
+        "charged_interface": "O₂",
+        "hydrophobic_core": "O₀",
+        "interfacial": "O₀",
+        "polar_surface": "O₀"
+      }
+    }
+  }
+}

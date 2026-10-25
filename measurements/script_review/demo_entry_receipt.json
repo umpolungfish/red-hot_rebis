@@ -1,0 +1,30 @@
+{
+  "rhr_p4rky.serpent_rod": {
+    "help_status": 0
+  },
+  "rebis": {
+    "help_status": 0
+  },
+  "rhr_p4rky.antibody_designer": {
+    "help_status": 0
+  },
+  "rhr_p4rky.ch3mpiler_serpentrod_pipeline": {
+    "help_status": 0
+  },
+  "Ars_Therapeutica.ars_therapeutica.cli": {
+    "help_status": 0
+  },
+  "imas.molecular_crystal_designer": {
+    "help_status": 0
+  },
+  "imas.compound_catalog": {
+    "help_status": 0
+  },
+  "materials.ig_material_forge": {
+    "help_status": 0
+  },
+  "materials.ouroboric_alloy": {
+    "help_status": 0
+  },
+  "s1_actual_execution": "pass"
+}

@@ -1,0 +1,108 @@
+{
+  "modules": 316,
+  "executable_surfaces": 242,
+  "console_entries": 20,
+  "parse_errors": [],
+  "help_results": [
+    {
+      "command": "at",
+      "returncode": 0,
+      "log": "at.help.log"
+    },
+    {
+      "command": "rebis",
+      "returncode": 0,
+      "log": "rebis.help.log"
+    },
+    {
+      "command": "rebis.chain",
+      "returncode": 0,
+      "log": "rebis.chain.help.log"
+    },
+    {
+      "command": "rebis.gene-pipeline",
+      "returncode": 0,
+      "log": "rebis.gene-pipeline.help.log"
+    },
+    {
+      "command": "rebis.ch3mpiler",
+      "returncode": 0,
+      "log": "rebis.ch3mpiler.help.log"
+    },
+    {
+      "command": "rebis.serpentrod",
+      "returncode": 0,
+      "log": "rebis.serpentrod.help.log"
+    },
+    {
+      "command": "rebis.ligand",
+      "returncode": 0,
+      "log": "rebis.ligand.help.log"
+    },
+    {
+      "command": "rebis.sidechain",
+      "returncode": 0,
+      "log": "rebis.sidechain.help.log"
+    },
+    {
+      "command": "rebis.therapeutics",
+      "returncode": 0,
+      "log": "rebis.therapeutics.help.log"
+    },
+    {
+      "command": "rebis.materials",
+      "returncode": 0,
+      "log": "rebis.materials.help.log"
+    },
+    {
+      "command": "rebis.biology",
+      "returncode": 0,
+      "log": "rebis.biology.help.log"
+    },
+    {
+      "command": "rebis.pipeline",
+      "returncode": 0,
+      "log": "rebis.pipeline.help.log"
+    },
+    {
+      "command": "rebis.gene",
+      "returncode": 0,
+      "log": "rebis.gene.help.log"
+    },
+    {
+      "command": "rebis.alchemy",
+      "returncode": 0,
+      "log": "rebis.alchemy.help.log"
+    },
+    {
+      "command": "rebis.clink",
+      "returncode": 0,
+      "log": "rebis.clink.help.log"
+    },
+    {
+      "command": "rebis.p4ra",
+      "returncode": 0,
+      "log": "rebis.p4ra.help.log"
+    },
+    {
+      "command": "rebis.demo",
+      "returncode": 0,
+      "log": "rebis.demo.help.log"
+    },
+    {
+      "command": "rebis.status",
+      "returncode": 0,
+      "log": "rebis.status.help.log"
+    },
+    {
+      "command": "rebis.verify",
+      "returncode": 0,
+      "log": "rebis.verify.help.log"
+    },
+    {
+      "command": "rebis.vox",
+      "returncode": 0,
+      "log": "rebis.vox.help.log"
+    }
+  ]
+}

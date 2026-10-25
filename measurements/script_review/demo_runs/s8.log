@@ -1,0 +1,6 @@
+Error: Could not resolve 'aspirin' as SMILES or catalog name
+[19:14:35] SMILES Parse Error: syntax error while parsing: aspirin
+[19:14:35] SMILES Parse Error: check for mistakes around position 1:
+[19:14:35] aspirin
+[19:14:35] ^
+[19:14:35] SMILES Parse Error: Failed parsing SMILES 'aspirin' for input: 'aspirin'

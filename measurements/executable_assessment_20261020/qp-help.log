@@ -1,0 +1,21 @@
+usage: qp [-h] [--list] [--compare] [--json] [--batch BATCH] [--all]
+          [targets ...]
+
+qp — Quantum Physical Predictor (MoDoT-grounded)
+
+positional arguments:
+  targets        Catalog names or IG tuples
+
+options:
+  -h, --help     show this help message and exit
+  --list         List catalog entries with predictions
+  --compare      Compare multiple targets side by side
+  --json         JSON output
+  --batch BATCH  Batch file with one target per line
+  --all          Predict for ALL catalog entries
+
+Examples:
+  qp magnetar                    # Predict from catalog
+  qp '<𐑛𐑡𐑽𐑗𐑐𐑧𐑚𐑝𐑢𐑒𐑙𐑷>'         # Predict from inline tuple
+  qp --compare magnetar bec      # Compare two systems
+  qp --json magnetar > out.json  # JSON output

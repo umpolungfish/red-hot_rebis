@@ -1,0 +1,76 @@
+  [catalog] Expanded from 10 to 119 proteins (+109 from expanded catalog)
+  [catalog] Expanded from 10 to 119 proteins (+109 from expanded catalog)
+{
+  "residues": 20,
+  "forms": 22,
+  "sidechain_compositions": 80,
+  "ligand_candidates": 6,
+  "chain_candidates": 10,
+  "commands": {
+    "vox_peptide": {
+      "command": [
+        "rebis.vox",
+        "peptide",
+        "MARNDCEGHILKYPQSTVWF",
+        "--json"
+      ],
+      "exit_code": 0
+    },
+    "vox_rna": {
+      "command": [
+        "rebis.vox",
+        "rna",
+        "AUGGCUCGUAAUGAUUGUGAAGGUCACAUUCUUAAAUAUCCUCAAUCUACUGUUUGGUUUUAA",
+        "--json"
+      ],
+      "exit_code": 0
+    },
+    "vox_former_ground": {
+      "command": [
+        "rebis.vox",
+        "peptide",
+        "AGPSTVLR",
+        "--json"
+      ],
+      "exit_code": 0
+    },
+    "legacy_fold": {
+      "command": [
+        "rebis.serpentrod",
+        "fold",
+        "AUGGCUCGUAAUGAUUGUGAAGGUCACAUUCUUAAAUAUCCUCAAUCUACUGUUUGGUUUUAA"
+      ],
+      "exit_code": 0
+    },
+    "ligand_cli": {
+      "command": [
+        "rebis.ligand",
+        "--pdb-file",
+        "/home/mrnob0dy666/imsgct/red-hot_rebis/measurements/canonical_notation_20261020/protein.pdb",
+        "--active",
+        "Met1,Ala2,Arg3,Asn4,Asp5,Cys6,Glu7,Gly8,His9,Ile10,Leu11,Lys12,Tyr13,Pro14,Gln15,Ser16,Thr17,Val18,Trp19,Phe20",
+        "--top-n",
+        "2",
+        "--improved",
+        "--json"
+      ],
+      "exit_code": 0
+    },
+    "chain_cli": {
+      "command": [
+        "rebis",
+        "chain",
+        "--seq",
+        "AUGGCUCGUAAUGAUUGUGAAGGUCACAUUCUUAAAUAUCCUCAAUCUACUGUUUGGUUUUAA",
+        "--target",
+        "CC(=O)O",
+        "--depth",
+        "1",
+        "--pdb",
+        "/home/mrnob0dy666/imsgct/red-hot_rebis/measurements/canonical_notation_20261020/chain_cli.pdb"
+      ],
+      "exit_code": 0
+    }
+  },
+  "status": "passed"
+}

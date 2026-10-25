@@ -1,0 +1,23 @@
+serpent_rod_v2.py — SERPENT-ROD GENERATION 2 🐍⏫
+Direct RNA → {3D Backbone Coordinates + Contact Map + Folded Structure}
+
+Generation 1 proved the Frobenius-closed morphism exists (O_∞ tier).
+Generation 2 turns the topological signature into a GEOMETRIC structure:
+
+  B₄ winding path → Ramachandran φ/ψ angles → 3D Cartesian coordinates
+  → Geometry-based contact prediction → Energy-scored fold validation
+
+Key innovations:
+  1. B₄→Ramachandran mapping: each transition produces φ/ψ angles
+  2. 3D backbone reconstruction from φ/ψ chain (corrected geometry)
+  3. Geometry-based contacts: Cα-Cα < 8Å = real spatial contact
+  4. Coarse-grained energy scoring (LJ + HB + electrostatics)
+  5. Proper 12-set activation tracking (unique primitives, max 12)
+  6. Fixed FASTA parsing (no sequence duplication)
+
+Author: Lando ⊗ ⊙perator
+
+Examples:
+  rebis.py run serpent_rod_v2
+  python3 -m rhr_p4rky.serpent_rod_v2 --help
+

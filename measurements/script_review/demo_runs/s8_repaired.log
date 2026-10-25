@@ -1,0 +1,41 @@
+Nearest structural neighbors to 'aspirin':
+
+  d= 0  ████████████  cbd
+        Cannabidiol — cannabinoid, non-psychoactive, modulates endocannabinoid system
+
+  d= 0  ████████████  capsaicin
+        TRPV1 agonist — vanilloid, pungent principle of chili peppers, analgesic
+
+  d= 0  ████████████  reserpine
+        Rauwolfia alkaloid — VMAT2 inhibitor, antihypertensive and antipsychotic
+
+  d= 0  ████████████  taxol
+        Paclitaxel — microtubule stabilizer, chemotherapeutic, taxane diterpenoid
+
+  d= 1  ███████████░  paracetamol
+        Acetaminophen — analgesic and antipyretic, COX inhibitor in CNS
+        Δ S: 𐑳 → 𐑕
+
+  d= 1  ███████████░  ibuprofen
+        NSAID, COX-1/COX-2 inhibitor, analgesic and anti-inflammatory
+        Δ D: 𐑼 → 𐑨
+
+  d= 1  ███████████░  sildenafil
+        PDE5 inhibitor — vasodilator, erectile dysfunction treatment
+        Δ S: 𐑳 → 𐑕
+
+  d= 2  ██████████░░  caffeine
+        Xanthine alkaloid — adenosine receptor antagonist, CNS stimulant
+        Δ D: 𐑼 → 𐑨
+        Δ S: 𐑳 → 𐑕
+
+  d= 2  ██████████░░  dopamine
+        Catecholamine neurotransmitter — D1-D5 receptor agonist, reward/motor control
+        Δ D: 𐑼 → 𐑨
+        Δ S: 𐑳 → 𐑕
+
+  d= 2  ██████████░░  serotonin
+        5-Hydroxytryptamine — neurotransmitter, mood/appetite/sleep regulation
+        Δ D: 𐑼 → 𐑨
+        Δ S: 𐑳 → 𐑕
+

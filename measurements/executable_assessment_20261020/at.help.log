@@ -1,0 +1,15 @@
+
+Ars Therapeutica — CLI
+======================
+Grammar-derived optimal therapies, operationalized as a type-lattice navigator.
+
+Usage:
+  at diagnose <disease>      — structural diagnosis (tuple, deltas, distance)
+  at therapy <disease>        — full therapy protocol
+  at tensor <a> <b>          — compute tensor product of two types
+  at meet <a> <b>             — compute meet (greatest lower bound)
+  at spectrum                 — show psychiatric φ̂-spectrum
+  at list                     — list all available therapies
+  at compare <a> <b>          — side-by-side structural comparison
+  at operate <disease> <op>   — show structural operation result (tensor|meet|join)
+

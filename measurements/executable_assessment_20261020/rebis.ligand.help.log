@@ -1,0 +1,25 @@
+usage: rebis.ligand [--pdb PDB] [--pdb-file PDB_FILE] [--active ACTIVE]
+                    [--auto-active] [--top-n TOP_N] [--cutoff CUTOFF]
+                    [--proximity PROXIMITY]
+                    [--bottleneck-bias BOTTLENECK_BIAS] [--improved] [--json]
+                    [--verbose] [--help] [--file FILE] [--stdin]
+
+PDB-aware ligand design from catalytic sites
+
+options:
+  --pdb PDB             PDB ID to fetch and analyze
+  --pdb-file PDB_FILE   Local PDB file path
+  --active ACTIVE       Comma-separated active site residues (e.g.
+                        Glu35,Asp52)
+  --auto-active         Auto-detect active site residues by proximity
+  --top-n TOP_N         Number of top residues for auto-detection
+  --cutoff CUTOFF       Distance cutoff for auto-active detection (Å)
+  --proximity PROXIMITY
+  --bottleneck-bias BOTTLENECK_BIAS
+  --improved            Use improved PDB parsing method
+  --json                Output as JSON
+  --verbose             Verbose output
+  --help, -h            Show help
+  --file FILE, -f FILE  Input file (JSON or FASTA/sequence)
+  --stdin, -i           Read JSON arguments from stdin
+  [catalog] Expanded from 10 to 119 proteins (+109 from expanded catalog)

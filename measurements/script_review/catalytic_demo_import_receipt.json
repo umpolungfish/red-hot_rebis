@@ -1,0 +1,15 @@
+{
+  "runs": [
+    {
+      "path": "demo_scripts/_real_demo.py",
+      "sha256": "83558c3f1de7b721aeb133195ccb6b28dab90ae6936722157b16031544ba9ad7",
+      "quiet_import": true
+    },
+    {
+      "path": "demo_scripts/_demo_novel_catalytic_site.py",
+      "sha256": "da4278e7a77b764080b3b2f4fa8ec282b5f9595fa1e4c1b292ce8930922a037e",
+      "quiet_import": true
+    }
+  ],
+  "scope": "Imports only; scientific statements and main execution remain pending."
+}

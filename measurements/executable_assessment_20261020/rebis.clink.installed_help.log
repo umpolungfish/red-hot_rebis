@@ -1,0 +1,21 @@
+usage: rebis.clink [-h] [--file FILE] [--stdin] COMMAND ...
+
+rebis.clink — CLINK Chain & Organism Pipeline
+
+positional arguments:
+  COMMAND               Sub-command (run with COMMAND --help for details)
+    layers              List CLINK layers L0–L8 with tier and C-score
+    chain               Compute CLINK chain from tuple or name
+    cscore              Compute consciousness score from tuple or name
+    bridge              Compute bridges between components
+    algebra             Run structural algebra (meet/join/tensor/distance)
+    integrate           Compute integrated promotion path
+    energy              Compute DFT energy ladder
+    list                List all exported symbols
+    info                Show available tools (alias for list)
+    help                Show this help message
+
+options:
+  -h, --help            show this help message and exit
+  --file FILE, -f FILE  Input file (JSON or FASTA/sequence)
+  --stdin, -i           Read JSON arguments from stdin

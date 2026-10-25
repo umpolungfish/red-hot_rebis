@@ -1,0 +1,201 @@
+[test_protein] Direct RNA→FoldedProtein: test_protein
+[test_protein]   RNA: AUGGCCGACUGGAACUGCAAGAAGAUCGUGCCCAAGUACU... (50 nt)
+[test_protein]   AA: MADWNCKKIVPKYYGR (16 AAs)
+[test_protein]   Winding: 11 B4 loops
+[test_protein]   Activations: 11/12 primitives
+[test_protein]   Contacts: 3 long-range
+[test_protein]   Subunits: 1
+[test_protein]   Frobenius: ✓
+[test_protein]   Confidence: 1.00
+[test_protein]   Folding ΔG: -1.0 kcal/mol
+[test_protein]   Enzymatic turnover: 0.00e+00 s⁻¹
+{
+  "name": "test_protein",
+  "rna_sequence": "AUGGCCGACUGGAACUGCAAGAAGAUCGUGCCCAAGUACUACGGCCGCUG",
+  "rna_length": 50,
+  "aa_sequence": "MADWNCKKIVPKYYGR",
+  "aa_length": 16,
+  "winding_number": 11,
+  "secondary_elements": [
+    {
+      "type": "helix",
+      "start": 0,
+      "end": 1,
+      "length": 1,
+      "confidence": 0.725,
+      "sequence": "M"
+    },
+    {
+      "type": "helix",
+      "start": 1,
+      "end": 2,
+      "length": 1,
+      "confidence": 0.71,
+      "sequence": "A"
+    },
+    {
+      "type": "helix",
+      "start": 2,
+      "end": 3,
+      "length": 1,
+      "confidence": 0.505,
+      "sequence": "D"
+    },
+    {
+      "type": "sheet",
+      "start": 3,
+      "end": 4,
+      "length": 1,
+      "confidence": 0.685,
+      "sequence": "W"
+    },
+    {
+      "type": "loop",
+      "start": 4,
+      "end": 5,
+      "length": 1,
+      "confidence": 0.78,
+      "sequence": "N"
+    },
+    {
+      "type": "sheet",
+      "start": 5,
+      "end": 6,
+      "length": 1,
+      "confidence": 0.595,
+      "sequence": "C"
+    },
+    {
+      "type": "helix",
+      "start": 6,
+      "end": 7,
+      "length": 1,
+      "confidence": 0.58,
+      "sequence": "K"
+    },
+    {
+      "type": "helix",
+      "start": 7,
+      "end": 8,
+      "length": 1,
+      "confidence": 0.58,
+      "sequence": "K"
+    },
+    {
+      "type": "sheet",
+      "start": 8,
+      "end": 9,
+      "length": 1,
+      "confidence": 0.8,
+      "sequence": "I"
+    },
+    {
+      "type": "sheet",
+      "start": 9,
+      "end": 10,
+      "length": 1,
+      "confidence": 0.85,
+      "sequence": "V"
+    },
+    {
+      "type": "loop",
+      "start": 10,
+      "end": 11,
+      "length": 1,
+      "confidence": 0.56,
+      "sequence": "P"
+    }
+  ],
+  "contacts": [
+    {
+      "i": 3,
+      "j": 7,
+      "type": "∈ (Granularity)↔⊤ (Kinetics)",
+      "distance": 5.75,
+      "confidence": 0.75
+    },
+    {
+      "i": 4,
+      "j": 8,
+      "type": "≻ (Recognition)↔⊞ (Stoichiometry)",
+      "distance": 5.75,
+      "confidence": 0.75
+    },
+    {
+      "i": 1,
+      "j": 8,
+      "type": "hydrophobic",
+      "distance": 4.0,
+      "confidence": 0.5
+    }
+  ],
+  "subunit_count": 1,
+  "activation_pattern": [
+    {
+      "aa": "Met",
+      "primitive": "⊢ (Dimensionality)"
+    },
+    {
+      "aa": "Asp",
+      "primitive": "⊥ (Chirality)"
+    },
+    {
+      "aa": "Trp",
+      "primitive": "⊣ (Topology)"
+    },
+    {
+      "aa": "Asn",
+      "primitive": "∈ (Granularity)"
+    },
+    {
+      "aa": "Cys",
+      "primitive": "≻ (Recognition)"
+    },
+    {
+      "aa": "Lys",
+      "primitive": "⊞ (Stoichiometry)"
+    },
+    {
+      "aa": "Lys",
+      "primitive": "⊞ (Stoichiometry)"
+    },
+    {
+      "aa": "Ile",
+      "primitive": "⊤ (Kinetics)"
+    },
+    {
+      "aa": "Lys",
+      "primitive": "⊞ (Stoichiometry)"
+    },
+    {
+      "aa": "Tyr",
+      "primitive": "≺ (Parity)"
+    },
+    {
+      "aa": "Tyr",
+      "primitive": "≺ (Parity)"
+    }
+  ],
+  "activation_coverage": "11/12",
+  "confidence": 1.0,
+  "frobenius_verified": true,
+  "closure_theorem": "RNA → {Sequence + Structure} is μ∘δ=id"
+}
+
+
+=== SECOND TEST: 108 nt ===
+[extended] Direct RNA→FoldedProtein: extended
+[extended]   RNA: AUGGCCGACUGGAACUGCAAGAAGAUCGUGCCCAAGUACU... (84 nt)
+[extended]   AA: MADWNCKKIVPKYYGRWNCKKIVPKYYG (28 AAs)
+[extended]   Winding: 18 B4 loops
+[extended]   Activations: 20/12 primitives
+[extended]   Contacts: 9 long-range
+[extended]   Subunits: 2
+[extended]   Frobenius: ✓
+[extended]   Confidence: 1.00
+[extended]   Folding ΔG: -3.0 kcal/mol
+[extended]   Enzymatic turnover: 0.00e+00 s⁻¹
+AA: MADWNCKKIVPKYYGRWNCKKIVPKYYG (28 AAs)
+Winding: 18
+Contacts: 9
+Frobenius: ✓

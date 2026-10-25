@@ -1,0 +1,668 @@
+/home/mrnob0dy666/imsgct/red-hot_rebis/rhr_p4rky/ProteinTables.lean:21:50: error(lean.invalidField): Invalid field notation: Type of
+  x
+is not known; cannot resolve field `shavian`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `Chirality.shavian`
+  • `Criticality.shavian`
+  • `Dimensionality.shavian`
+  • `Fidelity.shavian`
+  • `Grammar.shavian`
+  • `Granularity.shavian`
+  • `Imscription.shavian`
+  • `KineticChar.shavian`
+  • `Polarity.shavian`
+  • `Protection.shavian`
+  • `Relational.shavian`
+  • `Stoichiometry.shavian`
+  • `Topology.shavian`
+/home/mrnob0dy666/imsgct/red-hot_rebis/rhr_p4rky/ProteinTables.lean:23:73: error(lean.invalidField): Invalid field notation: Type of
+  meetPrimitive a b
+is not known; cannot resolve field `shavian`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `Chirality.shavian`
+  • `Criticality.shavian`
+  • `Dimensionality.shavian`
+  • `Fidelity.shavian`
+  • `Grammar.shavian`
+  • `Granularity.shavian`
+  • `Imscription.shavian`
+  • `KineticChar.shavian`
+  • `Polarity.shavian`
+  • `Protection.shavian`
+  • `Relational.shavian`
+  • `Stoichiometry.shavian`
+  • `Topology.shavian`
+/home/mrnob0dy666/imsgct/red-hot_rebis/rhr_p4rky/ProteinTables.lean:24:73: error(lean.invalidField): Invalid field notation: Type of
+  joinPrimitive a b
+is not known; cannot resolve field `shavian`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `Chirality.shavian`
+  • `Criticality.shavian`
+  • `Dimensionality.shavian`
+  • `Fidelity.shavian`
+  • `Grammar.shavian`
+  • `Granularity.shavian`
+  • `Imscription.shavian`
+  • `KineticChar.shavian`
+  • `Polarity.shavian`
+  • `Protection.shavian`
+  • `Relational.shavian`
+  • `Stoichiometry.shavian`
+  • `Topology.shavian`
+/home/mrnob0dy666/imsgct/red-hot_rebis/rhr_p4rky/ProteinTables.lean:30:50: error(lean.invalidField): Invalid field notation: Type of
+  x
+is not known; cannot resolve field `shavian`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `Chirality.shavian`
+  • `Criticality.shavian`
+  • `Dimensionality.shavian`
+  • `Fidelity.shavian`
+  • `Grammar.shavian`
+  • `Granularity.shavian`
+  • `Imscription.shavian`
+  • `KineticChar.shavian`
+  • `Polarity.shavian`
+  • `Protection.shavian`
+  • `Relational.shavian`
+  • `Stoichiometry.shavian`
+  • `Topology.shavian`
+/home/mrnob0dy666/imsgct/red-hot_rebis/rhr_p4rky/ProteinTables.lean:32:73: error(lean.invalidField): Invalid field notation: Type of
+  meetPrimitive a b
+is not known; cannot resolve field `shavian`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `Chirality.shavian`
+  • `Criticality.shavian`
+  • `Dimensionality.shavian`
+  • `Fidelity.shavian`
+  • `Grammar.shavian`
+  • `Granularity.shavian`
+  • `Imscription.shavian`
+  • `KineticChar.shavian`
+  • `Polarity.shavian`
+  • `Protection.shavian`
+  • `Relational.shavian`
+  • `Stoichiometry.shavian`
+  • `Topology.shavian`
+/home/mrnob0dy666/imsgct/red-hot_rebis/rhr_p4rky/ProteinTables.lean:33:73: error(lean.invalidField): Invalid field notation: Type of
+  joinPrimitive a b
+is not known; cannot resolve field `shavian`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `Chirality.shavian`
+  • `Criticality.shavian`
+  • `Dimensionality.shavian`
+  • `Fidelity.shavian`
+  • `Grammar.shavian`
+  • `Granularity.shavian`
+  • `Imscription.shavian`
+  • `KineticChar.shavian`
+  • `Polarity.shavian`
+  • `Protection.shavian`
+  • `Relational.shavian`
+  • `Stoichiometry.shavian`
+  • `Topology.shavian`
+/home/mrnob0dy666/imsgct/red-hot_rebis/rhr_p4rky/ProteinTables.lean:39:50: error(lean.invalidField): Invalid field notation: Type of
+  x
+is not known; cannot resolve field `shavian`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `Chirality.shavian`
+  • `Criticality.shavian`
+  • `Dimensionality.shavian`
+  • `Fidelity.shavian`
+  • `Grammar.shavian`
+  • `Granularity.shavian`
+  • `Imscription.shavian`
+  • `KineticChar.shavian`
+  • `Polarity.shavian`
+  • `Protection.shavian`
+  • `Relational.shavian`
+  • `Stoichiometry.shavian`
+  • `Topology.shavian`
+/home/mrnob0dy666/imsgct/red-hot_rebis/rhr_p4rky/ProteinTables.lean:41:73: error(lean.invalidField): Invalid field notation: Type of
+  meetPrimitive a b
+is not known; cannot resolve field `shavian`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `Chirality.shavian`
+  • `Criticality.shavian`
+  • `Dimensionality.shavian`
+  • `Fidelity.shavian`
+  • `Grammar.shavian`
+  • `Granularity.shavian`
+  • `Imscription.shavian`
+  • `KineticChar.shavian`
+  • `Polarity.shavian`
+  • `Protection.shavian`
+  • `Relational.shavian`
+  • `Stoichiometry.shavian`
+  • `Topology.shavian`
+/home/mrnob0dy666/imsgct/red-hot_rebis/rhr_p4rky/ProteinTables.lean:42:73: error(lean.invalidField): Invalid field notation: Type of
+  joinPrimitive a b
+is not known; cannot resolve field `shavian`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `Chirality.shavian`
+  • `Criticality.shavian`
+  • `Dimensionality.shavian`
+  • `Fidelity.shavian`
+  • `Grammar.shavian`
+  • `Granularity.shavian`
+  • `Imscription.shavian`
+  • `KineticChar.shavian`
+  • `Polarity.shavian`
+  • `Protection.shavian`
+  • `Relational.shavian`
+  • `Stoichiometry.shavian`
+  • `Topology.shavian`
+/home/mrnob0dy666/imsgct/red-hot_rebis/rhr_p4rky/ProteinTables.lean:48:50: error(lean.invalidField): Invalid field notation: Type of
+  x
+is not known; cannot resolve field `shavian`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `Chirality.shavian`
+  • `Criticality.shavian`
+  • `Dimensionality.shavian`
+  • `Fidelity.shavian`
+  • `Grammar.shavian`
+  • `Granularity.shavian`
+  • `Imscription.shavian`
+  • `KineticChar.shavian`
+  • `Polarity.shavian`
+  • `Protection.shavian`
+  • `Relational.shavian`
+  • `Stoichiometry.shavian`
+  • `Topology.shavian`
+/home/mrnob0dy666/imsgct/red-hot_rebis/rhr_p4rky/ProteinTables.lean:50:73: error(lean.invalidField): Invalid field notation: Type of
+  meetPrimitive a b
+is not known; cannot resolve field `shavian`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `Chirality.shavian`
+  • `Criticality.shavian`
+  • `Dimensionality.shavian`
+  • `Fidelity.shavian`
+  • `Grammar.shavian`
+  • `Granularity.shavian`
+  • `Imscription.shavian`
+  • `KineticChar.shavian`
+  • `Polarity.shavian`
+  • `Protection.shavian`
+  • `Relational.shavian`
+  • `Stoichiometry.shavian`
+  • `Topology.shavian`
+/home/mrnob0dy666/imsgct/red-hot_rebis/rhr_p4rky/ProteinTables.lean:51:73: error(lean.invalidField): Invalid field notation: Type of
+  joinPrimitive a b
+is not known; cannot resolve field `shavian`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `Chirality.shavian`
+  • `Criticality.shavian`
+  • `Dimensionality.shavian`
+  • `Fidelity.shavian`
+  • `Grammar.shavian`
+  • `Granularity.shavian`
+  • `Imscription.shavian`
+  • `KineticChar.shavian`
+  • `Polarity.shavian`
+  • `Protection.shavian`
+  • `Relational.shavian`
+  • `Stoichiometry.shavian`
+  • `Topology.shavian`
+/home/mrnob0dy666/imsgct/red-hot_rebis/rhr_p4rky/ProteinTables.lean:57:50: error(lean.invalidField): Invalid field notation: Type of
+  x
+is not known; cannot resolve field `shavian`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `Chirality.shavian`
+  • `Criticality.shavian`
+  • `Dimensionality.shavian`
+  • `Fidelity.shavian`
+  • `Grammar.shavian`
+  • `Granularity.shavian`
+  • `Imscription.shavian`
+  • `KineticChar.shavian`
+  • `Polarity.shavian`
+  • `Protection.shavian`
+  • `Relational.shavian`
+  • `Stoichiometry.shavian`
+  • `Topology.shavian`
+/home/mrnob0dy666/imsgct/red-hot_rebis/rhr_p4rky/ProteinTables.lean:59:73: error(lean.invalidField): Invalid field notation: Type of
+  meetPrimitive a b
+is not known; cannot resolve field `shavian`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `Chirality.shavian`
+  • `Criticality.shavian`
+  • `Dimensionality.shavian`
+  • `Fidelity.shavian`
+  • `Grammar.shavian`
+  • `Granularity.shavian`
+  • `Imscription.shavian`
+  • `KineticChar.shavian`
+  • `Polarity.shavian`
+  • `Protection.shavian`
+  • `Relational.shavian`
+  • `Stoichiometry.shavian`
+  • `Topology.shavian`
+/home/mrnob0dy666/imsgct/red-hot_rebis/rhr_p4rky/ProteinTables.lean:60:73: error(lean.invalidField): Invalid field notation: Type of
+  joinPrimitive a b
+is not known; cannot resolve field `shavian`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `Chirality.shavian`
+  • `Criticality.shavian`
+  • `Dimensionality.shavian`
+  • `Fidelity.shavian`
+  • `Grammar.shavian`
+  • `Granularity.shavian`
+  • `Imscription.shavian`
+  • `KineticChar.shavian`
+  • `Polarity.shavian`
+  • `Protection.shavian`
+  • `Relational.shavian`
+  • `Stoichiometry.shavian`
+  • `Topology.shavian`
+/home/mrnob0dy666/imsgct/red-hot_rebis/rhr_p4rky/ProteinTables.lean:66:50: error(lean.invalidField): Invalid field notation: Type of
+  x
+is not known; cannot resolve field `shavian`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `Chirality.shavian`
+  • `Criticality.shavian`
+  • `Dimensionality.shavian`
+  • `Fidelity.shavian`
+  • `Grammar.shavian`
+  • `Granularity.shavian`
+  • `Imscription.shavian`
+  • `KineticChar.shavian`
+  • `Polarity.shavian`
+  • `Protection.shavian`
+  • `Relational.shavian`
+  • `Stoichiometry.shavian`
+  • `Topology.shavian`
+/home/mrnob0dy666/imsgct/red-hot_rebis/rhr_p4rky/ProteinTables.lean:68:73: error(lean.invalidField): Invalid field notation: Type of
+  meetPrimitive a b
+is not known; cannot resolve field `shavian`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `Chirality.shavian`
+  • `Criticality.shavian`
+  • `Dimensionality.shavian`
+  • `Fidelity.shavian`
+  • `Grammar.shavian`
+  • `Granularity.shavian`
+  • `Imscription.shavian`
+  • `KineticChar.shavian`
+  • `Polarity.shavian`
+  • `Protection.shavian`
+  • `Relational.shavian`
+  • `Stoichiometry.shavian`
+  • `Topology.shavian`
+/home/mrnob0dy666/imsgct/red-hot_rebis/rhr_p4rky/ProteinTables.lean:69:73: error(lean.invalidField): Invalid field notation: Type of
+  joinPrimitive a b
+is not known; cannot resolve field `shavian`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `Chirality.shavian`
+  • `Criticality.shavian`
+  • `Dimensionality.shavian`
+  • `Fidelity.shavian`
+  • `Grammar.shavian`
+  • `Granularity.shavian`
+  • `Imscription.shavian`
+  • `KineticChar.shavian`
+  • `Polarity.shavian`
+  • `Protection.shavian`
+  • `Relational.shavian`
+  • `Stoichiometry.shavian`
+  • `Topology.shavian`
+/home/mrnob0dy666/imsgct/red-hot_rebis/rhr_p4rky/ProteinTables.lean:75:50: error(lean.invalidField): Invalid field notation: Type of
+  x
+is not known; cannot resolve field `shavian`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `Chirality.shavian`
+  • `Criticality.shavian`
+  • `Dimensionality.shavian`
+  • `Fidelity.shavian`
+  • `Grammar.shavian`
+  • `Granularity.shavian`
+  • `Imscription.shavian`
+  • `KineticChar.shavian`
+  • `Polarity.shavian`
+  • `Protection.shavian`
+  • `Relational.shavian`
+  • `Stoichiometry.shavian`
+  • `Topology.shavian`
+/home/mrnob0dy666/imsgct/red-hot_rebis/rhr_p4rky/ProteinTables.lean:77:73: error(lean.invalidField): Invalid field notation: Type of
+  meetPrimitive a b
+is not known; cannot resolve field `shavian`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `Chirality.shavian`
+  • `Criticality.shavian`
+  • `Dimensionality.shavian`
+  • `Fidelity.shavian`
+  • `Grammar.shavian`
+  • `Granularity.shavian`
+  • `Imscription.shavian`
+  • `KineticChar.shavian`
+  • `Polarity.shavian`
+  • `Protection.shavian`
+  • `Relational.shavian`
+  • `Stoichiometry.shavian`
+  • `Topology.shavian`
+/home/mrnob0dy666/imsgct/red-hot_rebis/rhr_p4rky/ProteinTables.lean:78:73: error(lean.invalidField): Invalid field notation: Type of
+  joinPrimitive a b
+is not known; cannot resolve field `shavian`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `Chirality.shavian`
+  • `Criticality.shavian`
+  • `Dimensionality.shavian`
+  • `Fidelity.shavian`
+  • `Grammar.shavian`
+  • `Granularity.shavian`
+  • `Imscription.shavian`
+  • `KineticChar.shavian`
+  • `Polarity.shavian`
+  • `Protection.shavian`
+  • `Relational.shavian`
+  • `Stoichiometry.shavian`
+  • `Topology.shavian`
+/home/mrnob0dy666/imsgct/red-hot_rebis/rhr_p4rky/ProteinTables.lean:84:50: error(lean.invalidField): Invalid field notation: Type of
+  x
+is not known; cannot resolve field `shavian`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `Chirality.shavian`
+  • `Criticality.shavian`
+  • `Dimensionality.shavian`
+  • `Fidelity.shavian`
+  • `Grammar.shavian`
+  • `Granularity.shavian`
+  • `Imscription.shavian`
+  • `KineticChar.shavian`
+  • `Polarity.shavian`
+  • `Protection.shavian`
+  • `Relational.shavian`
+  • `Stoichiometry.shavian`
+  • `Topology.shavian`
+/home/mrnob0dy666/imsgct/red-hot_rebis/rhr_p4rky/ProteinTables.lean:86:73: error(lean.invalidField): Invalid field notation: Type of
+  meetPrimitive a b
+is not known; cannot resolve field `shavian`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `Chirality.shavian`
+  • `Criticality.shavian`
+  • `Dimensionality.shavian`
+  • `Fidelity.shavian`
+  • `Grammar.shavian`
+  • `Granularity.shavian`
+  • `Imscription.shavian`
+  • `KineticChar.shavian`
+  • `Polarity.shavian`
+  • `Protection.shavian`
+  • `Relational.shavian`
+  • `Stoichiometry.shavian`
+  • `Topology.shavian`
+/home/mrnob0dy666/imsgct/red-hot_rebis/rhr_p4rky/ProteinTables.lean:87:73: error(lean.invalidField): Invalid field notation: Type of
+  joinPrimitive a b
+is not known; cannot resolve field `shavian`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `Chirality.shavian`
+  • `Criticality.shavian`
+  • `Dimensionality.shavian`
+  • `Fidelity.shavian`
+  • `Grammar.shavian`
+  • `Granularity.shavian`
+  • `Imscription.shavian`
+  • `KineticChar.shavian`
+  • `Polarity.shavian`
+  • `Protection.shavian`
+  • `Relational.shavian`
+  • `Stoichiometry.shavian`
+  • `Topology.shavian`
+/home/mrnob0dy666/imsgct/red-hot_rebis/rhr_p4rky/ProteinTables.lean:93:50: error(lean.invalidField): Invalid field notation: Type of
+  x
+is not known; cannot resolve field `shavian`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `Chirality.shavian`
+  • `Criticality.shavian`
+  • `Dimensionality.shavian`
+  • `Fidelity.shavian`
+  • `Grammar.shavian`
+  • `Granularity.shavian`
+  • `Imscription.shavian`
+  • `KineticChar.shavian`
+  • `Polarity.shavian`
+  • `Protection.shavian`
+  • `Relational.shavian`
+  • `Stoichiometry.shavian`
+  • `Topology.shavian`
+/home/mrnob0dy666/imsgct/red-hot_rebis/rhr_p4rky/ProteinTables.lean:95:73: error(lean.invalidField): Invalid field notation: Type of
+  meetPrimitive a b
+is not known; cannot resolve field `shavian`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `Chirality.shavian`
+  • `Criticality.shavian`
+  • `Dimensionality.shavian`
+  • `Fidelity.shavian`
+  • `Grammar.shavian`
+  • `Granularity.shavian`
+  • `Imscription.shavian`
+  • `KineticChar.shavian`
+  • `Polarity.shavian`
+  • `Protection.shavian`
+  • `Relational.shavian`
+  • `Stoichiometry.shavian`
+  • `Topology.shavian`
+/home/mrnob0dy666/imsgct/red-hot_rebis/rhr_p4rky/ProteinTables.lean:96:73: error(lean.invalidField): Invalid field notation: Type of
+  joinPrimitive a b
+is not known; cannot resolve field `shavian`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `Chirality.shavian`
+  • `Criticality.shavian`
+  • `Dimensionality.shavian`
+  • `Fidelity.shavian`
+  • `Grammar.shavian`
+  • `Granularity.shavian`
+  • `Imscription.shavian`
+  • `KineticChar.shavian`
+  • `Polarity.shavian`
+  • `Protection.shavian`
+  • `Relational.shavian`
+  • `Stoichiometry.shavian`
+  • `Topology.shavian`
+/home/mrnob0dy666/imsgct/red-hot_rebis/rhr_p4rky/ProteinTables.lean:102:50: error(lean.invalidField): Invalid field notation: Type of
+  x
+is not known; cannot resolve field `shavian`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `Chirality.shavian`
+  • `Criticality.shavian`
+  • `Dimensionality.shavian`
+  • `Fidelity.shavian`
+  • `Grammar.shavian`
+  • `Granularity.shavian`
+  • `Imscription.shavian`
+  • `KineticChar.shavian`
+  • `Polarity.shavian`
+  • `Protection.shavian`
+  • `Relational.shavian`
+  • `Stoichiometry.shavian`
+  • `Topology.shavian`
+/home/mrnob0dy666/imsgct/red-hot_rebis/rhr_p4rky/ProteinTables.lean:104:73: error(lean.invalidField): Invalid field notation: Type of
+  meetPrimitive a b
+is not known; cannot resolve field `shavian`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `Chirality.shavian`
+  • `Criticality.shavian`
+  • `Dimensionality.shavian`
+  • `Fidelity.shavian`
+  • `Grammar.shavian`
+  • `Granularity.shavian`
+  • `Imscription.shavian`
+  • `KineticChar.shavian`
+  • `Polarity.shavian`
+  • `Protection.shavian`
+  • `Relational.shavian`
+  • `Stoichiometry.shavian`
+  • `Topology.shavian`
+/home/mrnob0dy666/imsgct/red-hot_rebis/rhr_p4rky/ProteinTables.lean:105:73: error(lean.invalidField): Invalid field notation: Type of
+  joinPrimitive a b
+is not known; cannot resolve field `shavian`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `Chirality.shavian`
+  • `Criticality.shavian`
+  • `Dimensionality.shavian`
+  • `Fidelity.shavian`
+  • `Grammar.shavian`
+  • `Granularity.shavian`
+  • `Imscription.shavian`
+  • `KineticChar.shavian`
+  • `Polarity.shavian`
+  • `Protection.shavian`
+  • `Relational.shavian`
+  • `Stoichiometry.shavian`
+  • `Topology.shavian`
+/home/mrnob0dy666/imsgct/red-hot_rebis/rhr_p4rky/ProteinTables.lean:111:50: error(lean.invalidField): Invalid field notation: Type of
+  x
+is not known; cannot resolve field `shavian`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `Chirality.shavian`
+  • `Criticality.shavian`
+  • `Dimensionality.shavian`
+  • `Fidelity.shavian`
+  • `Grammar.shavian`
+  • `Granularity.shavian`
+  • `Imscription.shavian`
+  • `KineticChar.shavian`
+  • `Polarity.shavian`
+  • `Protection.shavian`
+  • `Relational.shavian`
+  • `Stoichiometry.shavian`
+  • `Topology.shavian`
+/home/mrnob0dy666/imsgct/red-hot_rebis/rhr_p4rky/ProteinTables.lean:113:73: error(lean.invalidField): Invalid field notation: Type of
+  meetPrimitive a b
+is not known; cannot resolve field `shavian`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `Chirality.shavian`
+  • `Criticality.shavian`
+  • `Dimensionality.shavian`
+  • `Fidelity.shavian`
+  • `Grammar.shavian`
+  • `Granularity.shavian`
+  • `Imscription.shavian`
+  • `KineticChar.shavian`
+  • `Polarity.shavian`
+  • `Protection.shavian`
+  • `Relational.shavian`
+  • `Stoichiometry.shavian`
+  • `Topology.shavian`
+/home/mrnob0dy666/imsgct/red-hot_rebis/rhr_p4rky/ProteinTables.lean:114:73: error(lean.invalidField): Invalid field notation: Type of
+  joinPrimitive a b
+is not known; cannot resolve field `shavian`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `Chirality.shavian`
+  • `Criticality.shavian`
+  • `Dimensionality.shavian`
+  • `Fidelity.shavian`
+  • `Grammar.shavian`
+  • `Granularity.shavian`
+  • `Imscription.shavian`
+  • `KineticChar.shavian`
+  • `Polarity.shavian`
+  • `Protection.shavian`
+  • `Relational.shavian`
+  • `Stoichiometry.shavian`
+  • `Topology.shavian`
+/home/mrnob0dy666/imsgct/red-hot_rebis/rhr_p4rky/ProteinTables.lean:120:50: error(lean.invalidField): Invalid field notation: Type of
+  x
+is not known; cannot resolve field `shavian`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `Chirality.shavian`
+  • `Criticality.shavian`
+  • `Dimensionality.shavian`
+  • `Fidelity.shavian`
+  • `Grammar.shavian`
+  • `Granularity.shavian`
+  • `Imscription.shavian`
+  • `KineticChar.shavian`
+  • `Polarity.shavian`
+  • `Protection.shavian`
+  • `Relational.shavian`
+  • `Stoichiometry.shavian`
+  • `Topology.shavian`
+/home/mrnob0dy666/imsgct/red-hot_rebis/rhr_p4rky/ProteinTables.lean:122:73: error(lean.invalidField): Invalid field notation: Type of
+  meetPrimitive a b
+is not known; cannot resolve field `shavian`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `Chirality.shavian`
+  • `Criticality.shavian`
+  • `Dimensionality.shavian`
+  • `Fidelity.shavian`
+  • `Grammar.shavian`
+  • `Granularity.shavian`
+  • `Imscription.shavian`
+  • `KineticChar.shavian`
+  • `Polarity.shavian`
+  • `Protection.shavian`
+  • `Relational.shavian`
+  • `Stoichiometry.shavian`
+  • `Topology.shavian`
+/home/mrnob0dy666/imsgct/red-hot_rebis/rhr_p4rky/ProteinTables.lean:123:73: error(lean.invalidField): Invalid field notation: Type of
+  joinPrimitive a b
+is not known; cannot resolve field `shavian`
+
+Hint: Consider replacing the field projection with a call to one of the following:
+  • `Chirality.shavian`
+  • `Criticality.shavian`
+  • `Dimensionality.shavian`
+  • `Fidelity.shavian`
+  • `Grammar.shavian`
+  • `Granularity.shavian`
+  • `Imscription.shavian`
+  • `KineticChar.shavian`
+  • `Polarity.shavian`
+  • `Protection.shavian`
+  • `Relational.shavian`
+  • `Stoichiometry.shavian`
+  • `Topology.shavian`
+AA	Ala	-
+AA	Arg	-
+AA	Asn	∋
+AA	Asp	⊥
+AA	Cys	≻
+AA	Gln	⊙
+AA	Glu	⊡
+AA	Gly	-
+AA	His	∈
+AA	Ile	⊤
+AA	Leu	-
+AA	Lys	⊞
+AA	Met	⊢
+AA	Phe	⋈
+AA	Pro	-
+AA	Ser	-
+AA	Thr	-
+AA	Trp	⊣
+AA	Tyr	≺
+AA	Val	-

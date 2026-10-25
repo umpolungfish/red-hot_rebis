@@ -1,0 +1,39 @@
+rebis.pipeline — Exports:
+  AFWD (pipeline.frob; resolved on access)
+  AREV (pipeline.frob; resolved on access)
+  AutoImscriber (pipeline.auto_imscriber; resolved on access)
+  CLINK (pipeline.frob; resolved on access)
+  EVALF (pipeline.frob; resolved on access)
+  EVALT (pipeline.frob; resolved on access)
+  FFUSE (pipeline.frob; resolved on access)
+  IFIX (pipeline.frob; resolved on access)
+  IGTool (pipeline.imscribe_tool; resolved on access)
+  ISCRIB (pipeline.frob; resolved on access)
+  ImscriptionDesignAgent (pipeline.imscribe_agent; resolved on access)
+  LiftPipelineOb3ect (pipeline.lift_pipeline.lift_pipeline_ob3ect; resolved on access)
+  PipelineReport (pipeline.therapy_to_pdb; resolved on access)
+  ReactionPipeline (pipeline.reaction_pipeline; resolved on access)
+  RetrosyntheticNode (pipeline.reaction_pipeline; resolved on access)
+  TANCH (pipeline.frob; resolved on access)
+  ToolResponse (pipeline.imscribe_tool; resolved on access)
+  VINIT (pipeline.frob; resolved on access)
+  bootstrap_compiler (pipeline.frob; resolved on access)
+  generate_summary_report (pipeline.therapy_to_pdb; resolved on access)
+  identity_phase (pipeline.frob; resolved on access)
+  run_all_therapies (pipeline.therapy_to_pdb; resolved on access)
+  run_pipeline (pipeline.therapy_to_pdb; resolved on access)
+  stage_analyze (pipeline.therapy_to_pdb; resolved on access)
+  stage_ch3mpile (pipeline.therapy_to_pdb; resolved on access)
+  stage_frobenius (pipeline.therapy_to_pdb; resolved on access)
+  stage_load (pipeline.therapy_to_pdb; resolved on access)
+  stage_pdb_validate (pipeline.therapy_to_pdb; resolved on access)
+  stage_serpentrod (pipeline.therapy_to_pdb; resolved on access)
+
+Commands:
+  verify [--source PATH]    — Frobenius μ∘δ=id verification
+  imscribe <name>         — Auto-imscription generation
+  retro <smiles>          — Retrosynthetic analysis
+  therapy <key>           — Therapy→PDB pipeline
+  therapy-all             — All therapies→PDB
+  lift <file>             — Prose lift pipeline
+  list                    — List exports

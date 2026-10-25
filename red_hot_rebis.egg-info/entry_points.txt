@@ -1,0 +1,20 @@
+[console_scripts]
+rebis = rebis.cli:main
+rebis.alchemy = rebis.alchemy:main
+rebis.biology = rebis.biology:main
+rebis.ch3mpiler = rebis.ch3mpiler:main
+rebis.chain = rebis.chain_entry:main
+rebis.clink = rebis.clink:main
+rebis.demo = rebis.demo_entry:main
+rebis.gene = rebis.gene:main
+rebis.gene-pipeline = rebis.gene_pipeline_entry:main
+rebis.ligand = rebis.ligand:main
+rebis.materials = rebis.materials:main
+rebis.p4ra = rebis.p4ra:main
+rebis.pipeline = rebis.pipeline:main
+rebis.serpentrod = rebis.serpentrod:main
+rebis.sidechain = rebis.sidechain:main
+rebis.status = rebis.status_entry:main
+rebis.therapeutics = rebis.therapeutics:main
+rebis.verify = rebis.verify_entry:main
+rebis.vox = rebis.vox:main

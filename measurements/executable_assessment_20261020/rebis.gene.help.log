@@ -1,0 +1,21 @@
+usage: rebis.gene [-h] [--file FILE] [--stdin] COMMAND ...
+
+rebis.gene — Gene Imscriber & Genetic Engineering
+
+positional arguments:
+  COMMAND               Sub-command (run with COMMAND --help for details)
+    analyze             Analyze genetic sequence (codons, ORFs, base
+                        composition, B4)
+    quality             Compute genetic quality score
+    tuples              Compute IG genetic tuples from sequence
+    translate           Translate DNA to protein
+    b4                  Run B4 lattice 64-codon Frobenius verification
+    pipeline            Run full gene-to-protein pipeline
+    list                List all exported symbols
+    info                Show available tools (alias for list)
+    help                Show this help message
+
+options:
+  -h, --help            show this help message and exit
+  --file FILE, -f FILE  Input file (JSON or FASTA/sequence)
+  --stdin, -i           Read JSON arguments from stdin

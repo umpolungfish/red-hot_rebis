@@ -1,0 +1,18 @@
+shared/primitives.py — 12 weights, 12 ordinal families
+──────────────────────────────────────────────────────────────────
+  rebis.p4ra — 179 symbols exported
+  rebis.ch3mpiler — 27 symbols exported
+  rebis.sidechain — 11 symbols exported
+  rebis.clink — 45 symbols exported
+  rebis.materials — 38 symbols exported
+  rebis.therapeutics — 11 symbols exported
+  rebis.biology — 15 symbols exported
+  rebis.serpentrod — 27 symbols exported
+  rebis.imas — 19 symbols exported
+  rebis.pipeline — 29 symbols exported
+  rebis.gene — 8 symbols exported
+  rebis.alchemy — 13 symbols exported
+  rebis.ligand — 10 symbols exported
+  rebis.shared — 28 symbols exported
+──────────────────────────────────────────────────────────────────
+Package imports verified

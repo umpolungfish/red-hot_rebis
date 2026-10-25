@@ -1,0 +1,18 @@
+usage: rebis.biology [-h] [--file FILE] [--stdin] COMMAND ...
+
+rebis.biology — Biological Simulations & Telomere Design
+
+positional arguments:
+  COMMAND               Sub-command (run with COMMAND --help for details)
+    sim                 Run OuroboricCellSim + TopologicalMorphogenesisSim
+    morphogenesis       Run TopologicalMorphogenesisSim only
+    telomeres           Show full telomere subsystem state
+    status              Show simulation results and reports
+    list                List all exported symbols
+    info                Show available tools (alias for list)
+    help                Show this help message
+
+options:
+  -h, --help            show this help message and exit
+  --file FILE, -f FILE  Input file (JSON or FASTA/sequence)
+  --stdin, -i           Read JSON arguments from stdin

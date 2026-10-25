@@ -1,0 +1,46 @@
+═ Frobenius Metamaterial Simulation (μ∘δ=id) ═
+  Grid: 5×5 | Load cycles: 1 | Heal steps/cycle: 1
+  Running 1 load-heal cycles...
+========================================================================
+  FROBENIUS METAMATERIAL — mu circ delta = id SELF-VERIFICATION
+========================================================================
+  Grid: 5x5 (25 cells)
+  Matrix modulus: 3.0 GPa
+  DA bond activation: 90.0 C
+  Capsule volume fraction: 0.08
+  CNT gauge factor: 5.0
+  NiTi volume fraction: 0.02
+  Target Frobenius error: < 0.01
+------------------------------------------------------------------------
+  Cycle         Load    ||mu·d-id||  Healed%   Agent%
+  ----- ------------ -------------- -------- --------
+  ⚠   1      1.92%        0.0952   100.0%   100.0%
+
+========================================================================
+  RESULTS
+========================================================================
+  Final ||mu·delta - id||: 0.095165
+  Frobenius closure: INCOMPLETE
+  Total healing events: 0
+  Healing agent remaining: 100.0%
+  Cells fully healed: 25/25
+
+  TIER: O₁ — near-closure, requires occasional external intervention
+  ✓ Frobenius norm: 0.095165 (OPEN)
+{
+  "grid_size": 5,
+  "load_cycles": 1,
+  "heal_steps_per_cycle": 1,
+  "frobenius_norm": 0.095165,
+  "frobenius_closed": false,
+  "simulation_results": [
+    {
+      "cycle": 1,
+      "load_pct": 1.92,
+      "frob_before": 0.0952,
+      "frob_after": 0.0952,
+      "healed_pct": 100.0,
+      "agent_remaining_pct": 100.0
+    }
+  ]
+}

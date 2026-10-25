@@ -1,0 +1,22 @@
+═ Topological Morphogenesis (v4) ═
+  Grid: 8×8 | Cell types: 2 | Steps: 1
+  Running...
+
+--- Topological Morphogenesis (v4 — 100% fill proven) ---
+  Initial seeded cells: 32
+  t=  0.0 | mat=0.00 | max=0.511 | mean=0.508 | fill=100.0%
+
+  Max: 0.5109 | Fill: 100.0% | Frobenius: False
+{
+  "grid_size": 8,
+  "n_cell_types": 2,
+  "steps": 1,
+  "fill_fraction": null,
+  "result": {
+    "max_density": 0.5108510315911623,
+    "mean_density": 0.5081122042763353,
+    "filled_fraction_pct": 100.0,
+    "frobenius_exact": false,
+    "steps": 1
+  }
+}

@@ -1,0 +1,206 @@
+{
+  "pdb_id": "GEN2",
+  "active_residues": [
+    "Met1",
+    "Ala2"
+  ],
+  "site_tuple_str": "⟨????????????⟩",
+  "site_summary": {
+    "pdb_id": "GEN2",
+    "n_catalytic": 2,
+    "avg_frustration": 4.561,
+    "bottleneck_consensus": [
+      [
+        "⊤",
+        2
+      ],
+      [
+        "≺",
+        2
+      ],
+      [
+        "⋈",
+        2
+      ]
+    ],
+    "tiers": [
+      "O₂"
+    ]
+  },
+  "ligand_tuple_str": "⟨????????????⟩",
+  "bottleneck_primitives": [
+    "⊤",
+    "≺",
+    "⋈"
+  ],
+  "closest_bond": "double_bond",
+  "bond_distance": 3.3166247903554,
+  "closest_fgs": [
+    "nitro"
+  ],
+  "fg_distance": 3.872983346207417,
+  "ligand_candidates": [
+    {
+      "smiles": "c1ccc(-c2ccccc2)cc1",
+      "method": "aromatic_c1ccccc1",
+      "fp_score": 0.5,
+      "drug_score": 1.0,
+      "struct_score": 0.0,
+      "logP": 3.35,
+      "MW": 154.2,
+      "heavy_atoms": 12,
+      "HBD": 0,
+      "HBA": 0,
+      "rings": 2,
+      "rotatable": 1,
+      "TPSA": 0.0,
+      "valid": true,
+      "composite_score": 0.45
+    },
+    {
+      "smiles": "c1ccc(-c2ccccc2-c2ccncc2)cc1",
+      "method": "sym_aromatic",
+      "fp_score": 0.5,
+      "drug_score": 1.0,
+      "struct_score": 0.0,
+      "logP": 4.42,
+      "MW": 231.3,
+      "heavy_atoms": 18,
+      "HBD": 0,
+      "HBA": 1,
+      "rings": 3,
+      "rotatable": 2,
+      "TPSA": 12.9,
+      "valid": true,
+      "composite_score": 0.45
+    },
+    {
+      "smiles": "Oc1ccccc1-c1ccccc1",
+      "method": "sym_aromatic",
+      "fp_score": 0.5,
+      "drug_score": 1.0,
+      "struct_score": 0.0,
+      "logP": 3.06,
+      "MW": 170.2,
+      "heavy_atoms": 13,
+      "HBD": 1,
+      "HBA": 1,
+      "rings": 2,
+      "rotatable": 1,
+      "TPSA": 20.2,
+      "valid": true,
+      "composite_score": 0.45
+    },
+    {
+      "smiles": "COCc1ccccc1-c1ccccc1",
+      "method": "sym_aromatic",
+      "fp_score": 0.5,
+      "drug_score": 1.0,
+      "struct_score": 0.0,
+      "logP": 3.5,
+      "MW": 198.3,
+      "heavy_atoms": 15,
+      "HBD": 0,
+      "HBA": 1,
+      "rings": 2,
+      "rotatable": 3,
+      "TPSA": 9.2,
+      "valid": true,
+      "composite_score": 0.45
+    },
+    {
+      "smiles": "CCOCCc1ccccc1-c1ccccc1",
+      "method": "sym_aromatic",
+      "fp_score": 0.5,
+      "drug_score": 1.0,
+      "struct_score": 0.0,
+      "logP": 3.93,
+      "MW": 226.3,
+      "heavy_atoms": 17,
+      "HBD": 0,
+      "HBA": 1,
+      "rings": 2,
+      "rotatable": 5,
+      "TPSA": 9.2,
+      "valid": true,
+      "composite_score": 0.45
+    }
+  ],
+  "n_candidates": 5,
+  "comparison": {
+    "distance": 7.416,
+    "n_differences": 11,
+    "key_differences": [
+      {
+        "primitive": "T",
+        "standard_ord": 0,
+        "pdb_ord": 2,
+        "delta_ord": 2,
+        "standard_glyph": "𐑡",
+        "pdb_glyph": "𐑥"
+      },
+      {
+        "primitive": "R",
+        "standard_ord": 0,
+        "pdb_ord": 3,
+        "delta_ord": 3,
+        "standard_glyph": "𐑩",
+        "pdb_glyph": "𐑾"
+      },
+      {
+        "primitive": "P",
+        "standard_ord": 4,
+        "pdb_ord": 0,
+        "delta_ord": -4,
+        "standard_glyph": "𐑹",
+        "pdb_glyph": "𐑗"
+      },
+      {
+        "primitive": "F",
+        "standard_ord": 2,
+        "pdb_ord": 0,
+        "delta_ord": -2,
+        "standard_glyph": "𐑐",
+        "pdb_glyph": "𐑱"
+      },
+      {
+        "primitive": "K",
+        "standard_ord": 0,
+        "pdb_ord": 2,
+        "delta_ord": 2,
+        "standard_glyph": "𐑘",
+        "pdb_glyph": "𐑧"
+      }
+    ]
+  },
+  "per_residue": [
+    {
+      "residue": "MET1",
+      "sidechain": "methionine",
+      "environment": "charged_interface",
+      "frustration": 4.243,
+      "tier": "O₂",
+      "n_neighbors": 2,
+      "bottlenecks": [
+        "⊤",
+        "≺",
+        "⋈"
+      ]
+    },
+    {
+      "residue": "ALA2",
+      "sidechain": "alanine",
+      "environment": "charged_interface",
+      "frustration": 4.879,
+      "tier": "O₂",
+      "n_neighbors": 3,
+      "bottlenecks": [
+        "⊤",
+        "≺",
+        "⋈"
+      ]
+    }
+  ]
+}
+  [catalog] Expanded from 10 to 119 proteins (+109 from expanded catalog)
+  [catalog] Expanded from 10 to 119 proteins (+109 from expanded catalog)

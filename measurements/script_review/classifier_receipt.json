@@ -1,0 +1,7 @@
+{
+  "arrangements_checked": 2401,
+  "adjacency_and_period": "independent direct counts",
+  "fine_keys": "equal key implies equal complete fingerprint in control set",
+  "canonical_exact_matches": 12,
+  "invalid_and_empty_inputs": "rejected"
+}

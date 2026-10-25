@@ -1,0 +1,23 @@
+gene_to_protein_pipeline.py — Complete Gene → Folded Protein Pipeline
+
+DERIVATION: Starting from GeneticCode.lean (12↔12 bijection, B4 nucleotides,
+Frobenius stratum), this pipeline implements the full 7-stage structural
+derivation from raw DNA sequence to quaternary polypeptide complex.
+
+Each stage is a GENUINE structural transformation in the Imscribing Grammar:
+  - Input and output have distinct 12-tuple structural types
+  - B4 belief state tracks paraconsistent information flow
+  - Frobenius condition mu circ delta = id verified at every stage
+  - The 12 promoted AAs activate their corresponding IG primitives
+
+CLOSURE THEOREM: The distance from DNA to Quaternary Protein is 4.0 —
+the irreducible gap between nucleic acid and amino acid info storage.
+The gene IS the protein structurally; the pipeline merely unfolds the
+isomorphism across time and chemical space.
+
+Examples:
+  rebis.py run gene_to_protein_pipeline --test
+  rebis.py run gene_to_protein_pipeline AAAAATGGCT...
+  rebis.py run gene_to_protein_pipeline --file my.fasta
+  python3 -m rhr_p4rky.gene_to_protein_pipeline --test
+

@@ -1,0 +1,19 @@
+usage: rebis.ch3mpiler [-h] [--file FILE] [--stdin] COMMAND ...
+
+rebis.ch3mpiler — Molecular Compiler & Retrosynthesis
+
+positional arguments:
+  COMMAND               Sub-command (run with COMMAND --help for details)
+    forward             Forward synthesis from SMILES
+    retrosynth          Retrosynthetic analysis from SMILES
+    fg                  Detect functional groups in SMILES
+    cdxml               Convert SMILES to CDXML format
+    analyze             Full molecular analysis (forward + retrosynth + FG)
+    list                List all exported symbols
+    info                Show available tools (alias for list)
+    help                Show this help message
+
+options:
+  -h, --help            show this help message and exit
+  --file FILE, -f FILE  Input file (JSON or FASTA/sequence)
+  --stdin, -i           Read JSON arguments from stdin

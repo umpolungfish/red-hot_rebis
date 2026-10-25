@@ -1,0 +1,40 @@
+IMASM Arrangement Space Mapper
+  Length: 2
+  Total space: 144 arrangements
+  Signatures: 10
+
+Mode: SAMPLING 7 arrangements (4.9% of space)
+
+  Sig 1/10: (1,0,1,0) → 36 arrangements
+    ... 2 (25,126/s), 2 coarse (+2), 2 fine classes
+    ... 4 (12,376/s), 4 coarse (+2), 4 fine classes
+    ... 6 (11,446/s), 6 coarse (+2), 6 fine classes
+
+Done. 7 in 0.0s (6,352/s)
+
+=== IMASM ARRANGEMENT SPACE MAP (length=2) ===
+Total enumerated:                 7
+Coarse classes:                   7
+Fine classes:                     7
+Coarse compression: 1x
+
+
+TOP 25 COARSE CLASSES:
+  #1:            1 | sig=(1,0,1,0) | start=VINIT | end=EVALT | diversity=2/12
+         eg: VINIT → EVALT
+  #2:            1 | sig=(1,0,1,0) | start=VINIT | end=EVALF | diversity=2/12
+         eg: VINIT → EVALF
+  #3:            1 | sig=(1,0,1,0) | start=VINIT | end=ENGAGR | diversity=2/12
+         eg: VINIT → ENGAGR
+  #4:            1 | sig=(1,0,1,0) | start=TANCH | end=EVALT | diversity=2/12
+         eg: TANCH → EVALT
+  #5:            1 | sig=(1,0,1,0) | start=TANCH | end=EVALF | diversity=2/12
+         eg: TANCH → EVALF
+  #6:            1 | sig=(1,0,1,0) | start=TANCH | end=ENGAGR | diversity=2/12
+         eg: TANCH → ENGAGR
+  #7:            1 | sig=(1,0,1,0) | start=AFWD | end=EVALT | diversity=2/12
+         eg: AFWD → EVALT
+
+Full map: /home/mrnob0dy666/imsgct/red-hot_rebis/measurements/script_review/iterator_cli/imasm_space_map.json
+Summary:  /home/mrnob0dy666/imsgct/red-hot_rebis/measurements/script_review/iterator_cli/imasm_summary.txt
+Total time: 0.0s (0.00h)

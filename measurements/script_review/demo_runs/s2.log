@@ -1,0 +1,651 @@
+==================================================================
+  GENE → FOLDED PROTEIN
+  7-stage Frobenius-verified translation
+==================================================================
+
+╔══════════════════════════════════════════════════════════════════╗
+║   RNA ──→ PROTEIN PIPELINE    (Imscribing Grammar v0.5.69)     ║
+║   7-stage structural derivation from nucleic acid to folded     ║
+║   quaternary complex. Frobenius-verified at every stage.       ║
+╚══════════════════════════════════════════════════════════════════╝
+
+
+──────────────────────────────────────────────────────────────────────
+  SEQUENCE: test_protein
+  Short test sequence (16 AA) — quick validation of 7-stage pipeline
+  Input: ATGGCCGACTGGAACTGCAAGAAGATCGTGCCCAAGTACTACGGCCGCTG... (50 nt)
+──────────────────────────────────────────────────────────────────────
+[test_protein] === Gene to Protein Pipeline: test_protein ===
+[test_protein] Sequence: AUGGCCGACUGGAACUGCAAGAAGAUCGUGCCCAAGUACUACGGCCGCUG (50 bp)
+[test_protein] IG Primitive Activations (12<->12 bijection):
+[test_protein]   ∈: 1x
+[test_protein]   ≺: 2x
+[test_protein]   ≻: 1x
+[test_protein]   ⊞: 3x
+[test_protein]   ⊢: 1x
+[test_protein]   ⊣: 1x
+[test_protein]   ⊤: 1x
+[test_protein]   ⊥: 1x
+[test_protein] Auto-detected 1 subunits (conf=0.85)
+
+  ► Translated Protein: MADWNCKKIVPKYYGR
+    Length: 16 AAs
+    Subunits: 1 (monomer)
+
+Stage                     B4     Frob   Description
+──────────────────────────────────────────────────────────
+dna_gene                  B      ✓      Double-stranded DNA gene (50 bp)
+pre_mrna                  B      ✓      Pre-mRNA transcript (50 nt)
+mature_mrna               B      ✓      Mature mRNA: 16 codons | Frame 0 | Start@0
+nascent_polypeptide       B      ✓      Nascent polypeptide: 16 AAs | Promoted: 11
+secondary_structure       B      ✓      Secondary structure: 3 elements
+tertiary_structure        B      ✓      Tertiary: 8 contacts
+quaternary_structure      B      ✓      Quaternary: 1 subunits (monomer)
+
+Pathway (delta = primitive changes per transition):
+  dna_gene                  → pre_mrna                   Δ=6    (⊣: 𐑶→𐑰; ≻: 𐑾→𐑑; ≺: 𐑬→𐑗; ⊤: 𐑧→𐑤 ... +2 more)
+  pre_mrna                  → mature_mrna                Δ=2    (≻: 𐑑→𐑽; ⊤: 𐑤→𐑧)
+  mature_mrna               → nascent_polypeptide        Δ=5    (⊣: 𐑰→𐑡; ≻: 𐑽→𐑑; ⊤: 𐑧→𐑘; ⊥: 𐑒→𐑖 ... +1 more)
+  nascent_polypeptide       → secondary_structure        Δ=6    (⊢: 𐑨→𐑦; ⊣: 𐑡→𐑸; ≻: 𐑑→𐑽; ≺: 𐑗→𐑬 ... +2 more)
+  secondary_structure       → tertiary_structure         Δ=6    (≻: 𐑽→𐑾; ≺: 𐑬→𐑗; ⊤: 𐑤→𐑧; ∈: 𐑚→𐑲 ... +2 more)
+  tertiary_structure        → quaternary_structure       Δ=5    (≺: 𐑗→𐑬; ∈: 𐑲→𐑚; ⊥: 𐑖→𐑒; ⊞: 𐑙→𐑳 ... +1 more)
+  TOTAL Δ                                              Δ=30
+
+Secondary Structure:
+  3 elements:
+    α-helix     [  0–  3]  len=4    conf=0.620  seq=MADW
+    α-helix     [  6–  9]  len=4    conf=0.557  seq=KKIV
+    β-sheet     [ 11– 13]  len=3    conf=0.613  seq=KYY
+
+Tertiary Contacts:
+  Total contacts: 8
+    ionic: 3
+    hydrophobic: 5
+  Top contacts:
+      6 ↔ 2    ionic        conf=0.700
+      0 ↔ 5    hydrophobic  conf=0.688
+      7 ↔ 2    ionic        conf=0.688
+      1 ↔ 8    hydrophobic  conf=0.562
+      0 ↔ 8    hydrophobic  conf=0.500
+
+Quaternary Assembly:
+  Subunits: 1 (monomer)
+  Subunit IDs: test_protein_sub0
+  Interface residues: 0
+  Auto-detected (method=unknown, conf=0.85)
+
+IG Primitive Activations (12↔12 bijection):
+  ∈  : 1x  (Asn)
+  ≺  : 2x  (Tyr)
+  ≻  : 1x  (Cys)
+  ⊞  : 3x  (Lys)
+  ⊢  : 1x  (Met)
+  ⊣  : 1x  (Trp)
+  ⊤  : 1x  (Ile)
+  ⊥  : 1x  (Asp)
+
+Frobenius Closure: ✓ ALL STAGES
+DNA↔Quaternary distance: 0.0
+Consciousness invariant: 0.5
+
+
+──────────────────────────────────────────────────────────────────────
+  SEQUENCE: human_insulin
+  Human preproinsulin (110 AA) — classic dimeric hormone
+  Input: ATGGCCCTGTGGATGCGCCTCCTGCCCCTGCTGGCGCTGCTGGCCCTCTGGGGAC... (333 nt)
+──────────────────────────────────────────────────────────────────────
+[human_insulin] === Gene to Protein Pipeline: human_insulin ===
+[human_insulin] Sequence: AUGGCCCUGUGGAUGCGCCUCCUGCCCCUGCUGGCGCUGCUGGCCCUCUG... (333 bp)
+[human_insulin] IG Primitive Activations (12<->12 bijection):
+[human_insulin]   ∈: 3x
+[human_insulin]   ∋: 7x
+[human_insulin]   ≺: 4x
+[human_insulin]   ≻: 6x
+[human_insulin]   ⊙: 2x
+[human_insulin]   ⊞: 2x
+[human_insulin]   ⊡: 8x
+[human_insulin]   ⊢: 2x
+[human_insulin]   ⊣: 2x
+[human_insulin]   ⊤: 2x
+[human_insulin]   ⊥: 2x
+[human_insulin]   ⋈: 3x
+[human_insulin] Auto-detected 2 subunits (conf=0.39)
+
+  ► Translated Protein: MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLENYCN
+    Length: 110 AAs
+    Subunits: 2 (homodimer)
+
+Stage                     B4     Frob   Description
+──────────────────────────────────────────────────────────
+dna_gene                  B      ✓      Double-stranded DNA gene (333 bp)
+pre_mrna                  B      ✓      Pre-mRNA transcript (333 nt)
+mature_mrna               B      ✓      Mature mRNA: 110 codons | Frame 0 | Start@0
+nascent_polypeptide       B      ✓      Nascent polypeptide: 110 AAs | Promoted: 43
+secondary_structure       B      ✓      Secondary structure: 15 elements
+tertiary_structure        B      ✓      Tertiary: 1176 contacts
+quaternary_structure      B      ✓      Quaternary: 2 subunits (homodimer)
+
+Pathway (delta = primitive changes per transition):
+  dna_gene                  → pre_mrna                   Δ=6    (⊣: 𐑶→𐑰; ≻: 𐑾→𐑑; ≺: 𐑬→𐑗; ⊤: 𐑧→𐑤 ... +2 more)
+  pre_mrna                  → mature_mrna                Δ=2    (≻: 𐑑→𐑽; ⊤: 𐑤→𐑧)
+  mature_mrna               → nascent_polypeptide        Δ=5    (⊣: 𐑰→𐑡; ≻: 𐑽→𐑑; ⊤: 𐑧→𐑘; ⊥: 𐑒→𐑖 ... +1 more)
+  nascent_polypeptide       → secondary_structure        Δ=6    (⊢: 𐑨→𐑦; ⊣: 𐑡→𐑸; ≻: 𐑑→𐑽; ≺: 𐑗→𐑬 ... +2 more)
+  secondary_structure       → tertiary_structure         Δ=6    (≻: 𐑽→𐑾; ≺: 𐑬→𐑗; ⊤: 𐑤→𐑧; ∈: 𐑚→𐑲 ... +2 more)
+  tertiary_structure        → quaternary_structure       Δ=5    (≺: 𐑗→𐑬; ∈: 𐑲→𐑚; ⊥: 𐑖→𐑒; ⊞: 𐑙→𐑳 ... +1 more)
+  TOTAL Δ                                              Δ=30
+
+Secondary Structure:
+  15 elements:
+    α-helix     [  0–  4]  len=5    conf=0.661  seq=MALWM
+    α-helix     [  6– 16]  len=11   conf=0.589  seq=LLPLLALLALW
+    α-helix     [ 19– 25]  len=7    conf=0.574  seq=DPAAAFV
+    β-sheet     [ 27– 30]  len=4    conf=0.557  seq=QHLC
+    α-helix     [ 33– 38]  len=6    conf=0.618  seq=HLVEAL
+    β-sheet     [ 39– 42]  len=4    conf=0.708  seq=YLVC
+    α-helix     [ 44– 48]  len=5    conf=0.532  seq=ERGFF
+    β-sheet     [ 49– 51]  len=3    conf=0.535  seq=YTP
+    α-helix     [ 53– 67]  len=15   conf=0.569  seq=TRREAEDLQVGQVEL
+    α-helix     [ 77– 82]  len=6    conf=0.586  seq=QPLALE
+    α-helix     [ 84– 87]  len=4    conf=0.531  seq=SLQK
+    α-helix     [ 89– 93]  len=5    conf=0.533  seq=GIVEQ
+    β-sheet     [ 94– 99]  len=6    conf=0.592  seq=CCTSIC
+    α-helix     [101–105]  len=5    conf=0.573  seq=LYQLE
+    β-sheet     [106–108]  len=3    conf=0.592  seq=NYC
+
+Tertiary Contacts:
+  Total contacts: 1176
+    hydrophobic: 1083
+    disulfide: 9
+    ionic: 84
+  Top contacts:
+      0 ↔ 6    hydrophobic  conf=0.900
+      0 ↔ 7    hydrophobic  conf=0.900
+      0 ↔ 9    hydrophobic  conf=0.900
+      0 ↔ 10   hydrophobic  conf=0.900
+      0 ↔ 11   hydrophobic  conf=0.900
+
+Quaternary Assembly:
+  Subunits: 2 (homodimer)
+  Subunit IDs: human_insulin_sub0, human_insulin_sub1
+  Interface residues: 0
+  Auto-detected (method=unknown, conf=0.39)
+
+IG Primitive Activations (12↔12 bijection):
+  ∈  : 3x  (Asn)
+  ∋  : 7x  (Gln)
+  ≺  : 4x  (Tyr)
+  ≻  : 6x  (Cys)
+  ⊙  : 2x  (His)
+  ⊞  : 2x  (Lys)
+  ⊡  : 8x  (Glu)
+  ⊢  : 2x  (Met)
+  ⊣  : 2x  (Trp)
+  ⊤  : 2x  (Ile)
+  ⊥  : 2x  (Asp)
+  ⋈  : 3x  (Phe)
+
+Frobenius Closure: ✓ ALL STAGES
+DNA↔Quaternary distance: 0.0
+Consciousness invariant: 0.5
+
+
+──────────────────────────────────────────────────────────────────────
+  SEQUENCE: human_hemoglobin_alpha
+  Human hemoglobin alpha chain (142 AA) — tetrameric O2 carrier
+  Input: ATGGTGCTGTCTCCTGCCGACAAGACCAACGTCAAGGCCGCCTGGGGTAAGGTCG... (539 nt)
+──────────────────────────────────────────────────────────────────────
+[human_hemoglobin_alpha] === Gene to Protein Pipeline: human_hemoglobin_alpha ===
+[human_hemoglobin_alpha] Sequence: AUGGUGCUGUCUCCUGCCGACAAGACCAACGUCAAGGCCGCCUGGGGUAA... (539 bp)
+[human_hemoglobin_alpha] IG Primitive Activations (12<->12 bijection):
+[human_hemoglobin_alpha]   ∈: 4x
+[human_hemoglobin_alpha]   ∋: 1x
+[human_hemoglobin_alpha]   ≺: 3x
+[human_hemoglobin_alpha]   ≻: 1x
+[human_hemoglobin_alpha]   ⊙: 10x
+[human_hemoglobin_alpha]   ⊞: 11x
+[human_hemoglobin_alpha]   ⊡: 4x
+[human_hemoglobin_alpha]   ⊢: 3x
+[human_hemoglobin_alpha]   ⊣: 1x
+[human_hemoglobin_alpha]   ⊥: 8x
+[human_hemoglobin_alpha]   ⋈: 7x
+[human_hemoglobin_alpha] Auto-detected 2 subunits (conf=0.36)
+
+  ► Translated Protein: MVLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLAFPTTKTYFPHFDLSHGSAQVKGHGKKVADALTNAVAHVDDMPNALSALSDLHAHKLRVDPVNFKLLSHCLLVTLAAHLPAEFTPAVHASLDKFLASVSTVLTSKYR
+    Length: 142 AAs
+    Subunits: 2 (homodimer)
+
+Stage                     B4     Frob   Description
+──────────────────────────────────────────────────────────
+dna_gene                  B      ✓      Double-stranded DNA gene (539 bp)
+pre_mrna                  B      ✓      Pre-mRNA transcript (539 nt)
+mature_mrna               B      ✓      Mature mRNA: 142 codons | Frame 0 | Start@0
+nascent_polypeptide       B      ✓      Nascent polypeptide: 142 AAs | Promoted: 53
+secondary_structure       B      ✓      Secondary structure: 15 elements
+tertiary_structure        B      ✓      Tertiary: 2175 contacts
+quaternary_structure      B      ✓      Quaternary: 2 subunits (homodimer)
+
+Pathway (delta = primitive changes per transition):
+  dna_gene                  → pre_mrna                   Δ=6    (⊣: 𐑶→𐑰; ≻: 𐑾→𐑑; ≺: 𐑬→𐑗; ⊤: 𐑧→𐑤 ... +2 more)
+  pre_mrna                  → mature_mrna                Δ=2    (≻: 𐑑→𐑽; ⊤: 𐑤→𐑧)
+  mature_mrna               → nascent_polypeptide        Δ=5    (⊣: 𐑰→𐑡; ≻: 𐑽→𐑑; ⊤: 𐑧→𐑘; ⊥: 𐑒→𐑖 ... +1 more)
+  nascent_polypeptide       → secondary_structure        Δ=6    (⊢: 𐑨→𐑦; ⊣: 𐑡→𐑸; ≻: 𐑑→𐑽; ≺: 𐑗→𐑬 ... +2 more)
+  secondary_structure       → tertiary_structure         Δ=6    (≻: 𐑽→𐑾; ≺: 𐑬→𐑗; ⊤: 𐑤→𐑧; ∈: 𐑚→𐑲 ... +2 more)
+  tertiary_structure        → quaternary_structure       Δ=5    (≺: 𐑗→𐑬; ∈: 𐑲→𐑚; ⊥: 𐑖→𐑒; ⊞: 𐑙→𐑳 ... +1 more)
+  TOTAL Δ                                              Δ=30
+
+Secondary Structure:
+  15 elements:
+    α-helix     [  0–  7]  len=8    conf=0.541  seq=MVLSPADK
+    α-helix     [  9– 14]  len=6    conf=0.568  seq=NVKAAW
+    α-helix     [ 16– 36]  len=21   conf=0.580  seq=KVGAHAGEYGAEALERMFLAF
+    β-sheet     [ 40– 43]  len=4    conf=0.597  seq=KTYF
+    α-helix     [ 45– 48]  len=4    conf=0.544  seq=HFDL
+    α-helix     [ 52– 56]  len=5    conf=0.552  seq=SAQVK
+    α-helix     [ 60– 66]  len=7    conf=0.603  seq=KKVADAL
+    α-helix     [ 68– 71]  len=4    conf=0.571  seq=NAVA
+    α-helix     [ 73– 76]  len=4    conf=0.566  seq=VDDM
+    α-helix     [ 79– 83]  len=5    conf=0.603  seq=ALSAL
+    α-helix     [ 85– 94]  len=10   conf=0.553  seq=DLHAHKLRVD
+    α-helix     [ 97–101]  len=5    conf=0.538  seq=NFKLL
+    α-helix     [104–117]  len=14   conf=0.568  seq=CLLVTLAAHLPAEF
+    α-helix     [120–130]  len=11   conf=0.582  seq=AVHASLDKFLA
+    β-sheet     [131–137]  len=7    conf=0.613  seq=SVSTVLT
+
+Tertiary Contacts:
+  Total contacts: 2175
+    hydrophobic: 1907
+    ionic: 268
+  Top contacts:
+      0 ↔ 5    hydrophobic  conf=0.900
+      0 ↔ 10   hydrophobic  conf=0.900
+      0 ↔ 12   hydrophobic  conf=0.900
+      0 ↔ 13   hydrophobic  conf=0.900
+      1 ↔ 10   hydrophobic  conf=0.900
+
+Quaternary Assembly:
+  Subunits: 2 (homodimer)
+  Subunit IDs: human_hemoglobin_alpha_sub0, human_hemoglobin_alpha_sub1
+  Interface residues: 0
+  Auto-detected (method=unknown, conf=0.36)
+
+IG Primitive Activations (12↔12 bijection):
+  ∈  : 4x  (Asn)
+  ∋  : 1x  (Gln)
+  ≺  : 3x  (Tyr)
+  ≻  : 1x  (Cys)
+  ⊙  : 10x  (His)
+  ⊞  : 11x  (Lys)
+  ⊡  : 4x  (Glu)
+  ⊢  : 3x  (Met)
+  ⊣  : 1x  (Trp)
+  ⊥  : 8x  (Asp)
+  ⋈  : 7x  (Phe)
+
+Frobenius Closure: ✓ ALL STAGES
+DNA↔Quaternary distance: 0.0
+Consciousness invariant: 0.5
+
+
+──────────────────────────────────────────────────────────────────────
+  SEQUENCE: egf_domain
+  EGF domain (50 AA) — disulfide-rich signaling motif
+  Input: ATGAAGACGCGCAGCGGTGGCGTGGCCCTGCTGCTGCTGTTGGCGGGCTGCGTGC... (210 nt)
+──────────────────────────────────────────────────────────────────────
+[egf_domain] === Gene to Protein Pipeline: egf_domain ===
+[egf_domain] Sequence: AUGAAGACGCGCAGCGGUGGCGUGGCCCUGCUGCUGCUGUUGGCGGGCUG... (210 bp)
+[egf_domain] IG Primitive Activations (12<->12 bijection):
+[egf_domain]   ∈: 5x
+[egf_domain]   ∋: 3x
+[egf_domain]   ≺: 2x
+[egf_domain]   ≻: 6x
+[egf_domain]   ⊞: 5x
+[egf_domain]   ⊡: 2x
+[egf_domain]   ⊢: 1x
+[egf_domain]   ⊤: 4x
+[egf_domain]   ⊥: 3x
+[egf_domain]   ⋈: 1x
+[egf_domain] Auto-detected 2 subunits (conf=0.52)
+
+  ► Translated Protein: MKTRSGGVALLLLLAGCVLPGGSGYKPGENCVFIPNPLYNIGKTCKSCVAGDNGQVDIDECKTSQINCGQ
+    Length: 70 AAs
+    Subunits: 2 (homodimer)
+
+Stage                     B4     Frob   Description
+──────────────────────────────────────────────────────────
+dna_gene                  B      ✓      Double-stranded DNA gene (210 bp)
+pre_mrna                  B      ✓      Pre-mRNA transcript (210 nt)
+mature_mrna               B      ✓      Mature mRNA: 70 codons | Frame 0 | Start@0
+nascent_polypeptide       B      ✓      Nascent polypeptide: 70 AAs | Promoted: 32
+secondary_structure       B      ✓      Secondary structure: 8 elements
+tertiary_structure        B      ✓      Tertiary: 327 contacts
+quaternary_structure      B      ✓      Quaternary: 2 subunits (homodimer)
+
+Pathway (delta = primitive changes per transition):
+  dna_gene                  → pre_mrna                   Δ=6    (⊣: 𐑶→𐑰; ≻: 𐑾→𐑑; ≺: 𐑬→𐑗; ⊤: 𐑧→𐑤 ... +2 more)
+  pre_mrna                  → mature_mrna                Δ=2    (≻: 𐑑→𐑽; ⊤: 𐑤→𐑧)
+  mature_mrna               → nascent_polypeptide        Δ=5    (⊣: 𐑰→𐑡; ≻: 𐑽→𐑑; ⊤: 𐑧→𐑘; ⊥: 𐑒→𐑖 ... +1 more)
+  nascent_polypeptide       → secondary_structure        Δ=6    (⊢: 𐑨→𐑦; ⊣: 𐑡→𐑸; ≻: 𐑑→𐑽; ≺: 𐑗→𐑬 ... +2 more)
+  secondary_structure       → tertiary_structure         Δ=6    (≻: 𐑽→𐑾; ≺: 𐑬→𐑗; ⊤: 𐑤→𐑧; ∈: 𐑚→𐑲 ... +2 more)
+  tertiary_structure        → quaternary_structure       Δ=5    (≺: 𐑗→𐑬; ∈: 𐑲→𐑚; ⊥: 𐑖→𐑒; ⊞: 𐑙→𐑳 ... +1 more)
+  TOTAL Δ                                              Δ=30
+
+Secondary Structure:
+  8 elements:
+    α-helix     [  0–  3]  len=4    conf=0.552  seq=MKTR
+    α-helix     [  6– 14]  len=9    conf=0.584  seq=GVALLLLLA
+    β-sheet     [ 15– 18]  len=4    conf=0.617  seq=GCVL
+    β-sheet     [ 29– 33]  len=5    conf=0.676  seq=NCVFI
+    β-sheet     [ 36– 41]  len=6    conf=0.547  seq=PLYNIG
+    β-sheet     [ 46– 48]  len=3    conf=0.607  seq=SCV
+    α-helix     [ 54– 59]  len=6    conf=0.565  seq=QVDIDE
+    β-sheet     [ 63– 65]  len=3    conf=0.575  seq=SQI
+
+Tertiary Contacts:
+  Total contacts: 327
+    hydrophobic: 293
+    disulfide: 10
+    ionic: 24
+  Top contacts:
+      0 ↔ 7    hydrophobic  conf=0.900
+      7 ↔ 12   hydrophobic  conf=0.900
+      7 ↔ 13   hydrophobic  conf=0.900
+      7 ↔ 14   hydrophobic  conf=0.900
+      8 ↔ 13   hydrophobic  conf=0.900
+
+Quaternary Assembly:
+  Subunits: 2 (homodimer)
+  Subunit IDs: egf_domain_sub0, egf_domain_sub1
+  Interface residues: 0
+  Auto-detected (method=unknown, conf=0.52)
+
+IG Primitive Activations (12↔12 bijection):
+  ∈  : 5x  (Asn)
+  ∋  : 3x  (Gln)
+  ≺  : 2x  (Tyr)
+  ≻  : 6x  (Cys)
+  ⊞  : 5x  (Lys)
+  ⊡  : 2x  (Glu)
+  ⊢  : 1x  (Met)
+  ⊤  : 4x  (Ile)
+  ⊥  : 3x  (Asp)
+  ⋈  : 1x  (Phe)
+
+Frobenius Closure: ✓ ALL STAGES
+DNA↔Quaternary distance: 0.0
+Consciousness invariant: 0.5
+
+
+──────────────────────────────────────────────────────────────────────
+  SEQUENCE: human_serum_albumin
+  Human serum albumin N-terminus (110 AA) — multidomain carrier
+  Input: ATGAAGTGGGTAACCTTTATTTCCCTTCTTTTTCTCTTTAGCTCGGCTTATTCCA... (452 nt)
+──────────────────────────────────────────────────────────────────────
+[human_serum_albumin] === Gene to Protein Pipeline: human_serum_albumin ===
+[human_serum_albumin] Sequence: AUGAAGUGGGUAACCUUUAUUUCCCUUCUUUUUCUCUUUAGCUCGGCUUA... (452 bp)
+[human_serum_albumin] IG Primitive Activations (12<->12 bijection):
+[human_serum_albumin]   ∈: 6x
+[human_serum_albumin]   ∋: 5x
+[human_serum_albumin]   ≺: 3x
+[human_serum_albumin]   ≻: 8x
+[human_serum_albumin]   ⊙: 5x
+[human_serum_albumin]   ⊞: 10x
+[human_serum_albumin]   ⊡: 14x
+[human_serum_albumin]   ⊢: 3x
+[human_serum_albumin]   ⊣: 1x
+[human_serum_albumin]   ⊤: 2x
+[human_serum_albumin]   ⊥: 10x
+[human_serum_albumin]   ⋈: 11x
+[human_serum_albumin] Auto-detected 2 subunits (conf=0.37)
+
+  ► Translated Protein: MKWVTFISLLFLFSSAYSRGVFRRDAHKSEVAHRFKDLGEENFKALVLIAFAQYLQQCPFEDHVKLVNEVTEFAKTCVADESAENCDKSLHTLFGDKLCTVATLRETYGEMADCCAKQEPERNECFLQHKDDNPNLPRLVRPEVDVMCTA
+    Length: 150 AAs
+    Subunits: 2 (homodimer)
+
+Stage                     B4     Frob   Description
+──────────────────────────────────────────────────────────
+dna_gene                  B      ✓      Double-stranded DNA gene (452 bp)
+pre_mrna                  B      ✓      Pre-mRNA transcript (452 nt)
+mature_mrna               B      ✓      Mature mRNA: 150 codons | Frame 0 | Start@0
+nascent_polypeptide       B      ✓      Nascent polypeptide: 150 AAs | Promoted: 78
+secondary_structure       B      ✓      Secondary structure: 14 elements
+tertiary_structure        B      ✓      Tertiary: 2421 contacts
+quaternary_structure      B      ✓      Quaternary: 2 subunits (homodimer)
+
+Pathway (delta = primitive changes per transition):
+  dna_gene                  → pre_mrna                   Δ=6    (⊣: 𐑶→𐑰; ≻: 𐑾→𐑑; ≺: 𐑬→𐑗; ⊤: 𐑧→𐑤 ... +2 more)
+  pre_mrna                  → mature_mrna                Δ=2    (≻: 𐑑→𐑽; ⊤: 𐑤→𐑧)
+  mature_mrna               → nascent_polypeptide        Δ=5    (⊣: 𐑰→𐑡; ≻: 𐑽→𐑑; ⊤: 𐑧→𐑘; ⊥: 𐑒→𐑖 ... +1 more)
+  nascent_polypeptide       → secondary_structure        Δ=6    (⊢: 𐑨→𐑦; ⊣: 𐑡→𐑸; ≻: 𐑑→𐑽; ≺: 𐑗→𐑬 ... +2 more)
+  secondary_structure       → tertiary_structure         Δ=6    (≻: 𐑽→𐑾; ≺: 𐑬→𐑗; ⊤: 𐑤→𐑧; ∈: 𐑚→𐑲 ... +2 more)
+  tertiary_structure        → quaternary_structure       Δ=5    (≺: 𐑗→𐑬; ∈: 𐑲→𐑚; ⊥: 𐑖→𐑒; ⊞: 𐑙→𐑳 ... +1 more)
+  TOTAL Δ                                              Δ=30
+
+Secondary Structure:
+  14 elements:
+    α-helix     [  0–  3]  len=4    conf=0.594  seq=MKWV
+    α-helix     [  5– 12]  len=8    conf=0.554  seq=FISLLFLF
+    α-helix     [ 20– 52]  len=33   conf=0.570  seq=VFRRDAHKSEVAHRFKDLGEENFKALVLIA
+    α-helix     [ 54– 66]  len=13   conf=0.532  seq=LQQCPFEDHVKLV
+    α-helix     [ 68– 74]  len=7    conf=0.616  seq=EVTEFAK
+    α-helix     [ 76– 84]  len=9    conf=0.559  seq=CVADESAEN
+    α-helix     [ 86– 93]  len=8    conf=0.520  seq=DKSLHTLF
+    β-sheet     [ 96–100]  len=5    conf=0.612  seq=KLCTV
+    α-helix     [101–103]  len=3    conf=0.577  seq=ATL
+    α-helix     [107–112]  len=6    conf=0.554  seq=YGEMAD
+    α-helix     [114–118]  len=5    conf=0.590  seq=CAKQE
+    α-helix     [120–131]  len=12   conf=0.542  seq=ERNECFLQHKDD
+    α-helix     [137–146]  len=10   conf=0.544  seq=RLVRPEVDVM
+    β-sheet     [147–149]  len=3    conf=0.535  seq=CTA
+
+Tertiary Contacts:
+  Total contacts: 2421
+    hydrophobic: 1891
+    disulfide: 14
+    ionic: 516
+  Top contacts:
+      0 ↔ 5    hydrophobic  conf=0.900
+      0 ↔ 6    hydrophobic  conf=0.900
+      0 ↔ 8    hydrophobic  conf=0.900
+      0 ↔ 9    hydrophobic  conf=0.900
+      0 ↔ 10   hydrophobic  conf=0.900
+
+Quaternary Assembly:
+  Subunits: 2 (homodimer)
+  Subunit IDs: human_serum_albumin_sub0, human_serum_albumin_sub1
+  Interface residues: 0
+  Auto-detected (method=unknown, conf=0.37)
+
+IG Primitive Activations (12↔12 bijection):
+  ∈  : 6x  (Asn)
+  ∋  : 5x  (Gln)
+  ≺  : 3x  (Tyr)
+  ≻  : 8x  (Cys)
+  ⊙  : 5x  (His)
+  ⊞  : 10x  (Lys)
+  ⊡  : 14x  (Glu)
+  ⊢  : 3x  (Met)
+  ⊣  : 1x  (Trp)
+  ⊤  : 2x  (Ile)
+  ⊥  : 10x  (Asp)
+  ⋈  : 11x  (Phe)
+
+Frobenius Closure: ✓ ALL STAGES
+DNA↔Quaternary distance: 0.0
+Consciousness invariant: 0.5
+
+
+──────────────────────────────────────────────────────────────────────
+  BONUS: Mitochondrial Code Demo (MT-ND3, NC_012920.1)
+──────────────────────────────────────────────────────────────────────
+  MT-ND3 demo: NC_012920.1.fasta not found — skipping
+
+──────────────────────────────────────────────────────────────────────
+  BONUS: Direct RNA input (no T→U conversion needed)
+──────────────────────────────────────────────────────────────────────
+
+──────────────────────────────────────────────────────────────────────
+  SEQUENCE: rna_direct_test
+  RNA input via --rna flag
+  Input: AUGGCCGACUGGAACUGCAAGAAGAUCGUGCCCAAGUACUACGGCCGCUG... (50 nt)
+──────────────────────────────────────────────────────────────────────
+[rna_direct_test] === Gene to Protein Pipeline: rna_direct_test ===
+[rna_direct_test] Sequence: AUGGCCGACUGGAACUGCAAGAAGAUCGUGCCCAAGUACUACGGCCGCUG (50 bp)
+[rna_direct_test] IG Primitive Activations (12<->12 bijection):
+[rna_direct_test]   ∈: 1x
+[rna_direct_test]   ≺: 2x
+[rna_direct_test]   ≻: 1x
+[rna_direct_test]   ⊞: 3x
+[rna_direct_test]   ⊢: 1x
+[rna_direct_test]   ⊣: 1x
+[rna_direct_test]   ⊤: 1x
+[rna_direct_test]   ⊥: 1x
+[rna_direct_test] Auto-detected 1 subunits (conf=0.85)
+
+  ► Translated Protein: MADWNCKKIVPKYYGR
+    Length: 16 AAs
+    Subunits: 1 (monomer)
+
+Stage                     B4     Frob   Description
+──────────────────────────────────────────────────────────
+dna_gene                  B      ✓      Double-stranded DNA gene (50 bp)
+pre_mrna                  B      ✓      Pre-mRNA transcript (50 nt)
+mature_mrna               B      ✓      Mature mRNA: 16 codons | Frame 0 | Start@0
+nascent_polypeptide       B      ✓      Nascent polypeptide: 16 AAs | Promoted: 11
+secondary_structure       B      ✓      Secondary structure: 3 elements
+tertiary_structure        B      ✓      Tertiary: 8 contacts
+quaternary_structure      B      ✓      Quaternary: 1 subunits (monomer)
+
+Pathway (delta = primitive changes per transition):
+  dna_gene                  → pre_mrna                   Δ=6    (⊣: 𐑶→𐑰; ≻: 𐑾→𐑑; ≺: 𐑬→𐑗; ⊤: 𐑧→𐑤 ... +2 more)
+  pre_mrna                  → mature_mrna                Δ=2    (≻: 𐑑→𐑽; ⊤: 𐑤→𐑧)
+  mature_mrna               → nascent_polypeptide        Δ=5    (⊣: 𐑰→𐑡; ≻: 𐑽→𐑑; ⊤: 𐑧→𐑘; ⊥: 𐑒→𐑖 ... +1 more)
+  nascent_polypeptide       → secondary_structure        Δ=6    (⊢: 𐑨→𐑦; ⊣: 𐑡→𐑸; ≻: 𐑑→𐑽; ≺: 𐑗→𐑬 ... +2 more)
+  secondary_structure       → tertiary_structure         Δ=6    (≻: 𐑽→𐑾; ≺: 𐑬→𐑗; ⊤: 𐑤→𐑧; ∈: 𐑚→𐑲 ... +2 more)
+  tertiary_structure        → quaternary_structure       Δ=5    (≺: 𐑗→𐑬; ∈: 𐑲→𐑚; ⊥: 𐑖→𐑒; ⊞: 𐑙→𐑳 ... +1 more)
+  TOTAL Δ                                              Δ=30
+
+Secondary Structure:
+  3 elements:
+    α-helix     [  0–  3]  len=4    conf=0.620  seq=MADW
+    α-helix     [  6–  9]  len=4    conf=0.557  seq=KKIV
+    β-sheet     [ 11– 13]  len=3    conf=0.613  seq=KYY
+
+Tertiary Contacts:
+  Total contacts: 8
+    ionic: 3
+    hydrophobic: 5
+  Top contacts:
+      6 ↔ 2    ionic        conf=0.700
+      0 ↔ 5    hydrophobic  conf=0.688
+      7 ↔ 2    ionic        conf=0.688
+      1 ↔ 8    hydrophobic  conf=0.562
+      0 ↔ 8    hydrophobic  conf=0.500
+
+Quaternary Assembly:
+  Subunits: 1 (monomer)
+  Subunit IDs: rna_direct_test_sub0
+  Interface residues: 0
+  Auto-detected (method=unknown, conf=0.85)
+
+IG Primitive Activations (12↔12 bijection):
+  ∈  : 1x  (Asn)
+  ≺  : 2x  (Tyr)
+  ≻  : 1x  (Cys)
+  ⊞  : 3x  (Lys)
+  ⊢  : 1x  (Met)
+  ⊣  : 1x  (Trp)
+  ⊤  : 1x  (Ile)
+  ⊥  : 1x  (Asp)
+
+Frobenius Closure: ✓ ALL STAGES
+DNA↔Quaternary distance: 0.0
+Consciousness invariant: 0.5
+
+
+──────────────────────────────────────────────────────────────────────
+  CROSS-SEQUENCE COMPARISON
+──────────────────────────────────────────────────────────────────────
+Name                      Length   AAs    Sub  Sym          Δtotal   Frob   Dist  
+---------------------------------------------------------------------------
+[test_protein] === Gene to Protein Pipeline: test_protein ===
+[test_protein] Sequence: AUGGCCGACUGGAACUGCAAGAAGAUCGUGCCCAAGUACUACGGCCGCUG (50 bp)
+[test_protein] IG Primitive Activations (12<->12 bijection):
+[test_protein]   ∈: 1x
+[test_protein]   ≺: 2x
+[test_protein]   ≻: 1x
+[test_protein]   ⊞: 3x
+[test_protein]   ⊢: 1x
+[test_protein]   ⊣: 1x
+[test_protein]   ⊤: 1x
+[test_protein]   ⊥: 1x
+[test_protein] Auto-detected 1 subunits (conf=0.85)
+test_protein              50       16     1    monomer      30       ✓      0.0   
+[human_insulin] === Gene to Protein Pipeline: human_insulin ===
+[human_insulin] Sequence: AUGGCCCUGUGGAUGCGCCUCCUGCCCCUGCUGGCGCUGCUGGCCCUCUG... (333 bp)
+[human_insulin] IG Primitive Activations (12<->12 bijection):
+[human_insulin]   ∈: 3x
+[human_insulin]   ∋: 7x
+[human_insulin]   ≺: 4x
+[human_insulin]   ≻: 6x
+[human_insulin]   ⊙: 2x
+[human_insulin]   ⊞: 2x
+[human_insulin]   ⊡: 8x
+[human_insulin]   ⊢: 2x
+[human_insulin]   ⊣: 2x
+[human_insulin]   ⊤: 2x
+[human_insulin]   ⊥: 2x
+[human_insulin]   ⋈: 3x
+[human_insulin] Auto-detected 2 subunits (conf=0.39)
+human_insulin             333      110    2    homodimer    30       ✓      0.0   
+[human_hemoglobin_alpha] === Gene to Protein Pipeline: human_hemoglobin_alpha ===
+[human_hemoglobin_alpha] Sequence: AUGGUGCUGUCUCCUGCCGACAAGACCAACGUCAAGGCCGCCUGGGGUAA... (539 bp)
+[human_hemoglobin_alpha] IG Primitive Activations (12<->12 bijection):
+[human_hemoglobin_alpha]   ∈: 4x
+[human_hemoglobin_alpha]   ∋: 1x
+[human_hemoglobin_alpha]   ≺: 3x
+[human_hemoglobin_alpha]   ≻: 1x
+[human_hemoglobin_alpha]   ⊙: 10x
+[human_hemoglobin_alpha]   ⊞: 11x
+[human_hemoglobin_alpha]   ⊡: 4x
+[human_hemoglobin_alpha]   ⊢: 3x
+[human_hemoglobin_alpha]   ⊣: 1x
+[human_hemoglobin_alpha]   ⊥: 8x
+[human_hemoglobin_alpha]   ⋈: 7x
+[human_hemoglobin_alpha] Auto-detected 2 subunits (conf=0.36)
+human_hemoglobin_alpha    539      142    2    homodimer    30       ✓      0.0   
+[egf_domain] === Gene to Protein Pipeline: egf_domain ===
+[egf_domain] Sequence: AUGAAGACGCGCAGCGGUGGCGUGGCCCUGCUGCUGCUGUUGGCGGGCUG... (210 bp)
+[egf_domain] IG Primitive Activations (12<->12 bijection):
+[egf_domain]   ∈: 5x
+[egf_domain]   ∋: 3x
+[egf_domain]   ≺: 2x
+[egf_domain]   ≻: 6x
+[egf_domain]   ⊞: 5x
+[egf_domain]   ⊡: 2x
+[egf_domain]   ⊢: 1x
+[egf_domain]   ⊤: 4x
+[egf_domain]   ⊥: 3x
+[egf_domain]   ⋈: 1x
+[egf_domain] Auto-detected 2 subunits (conf=0.52)
+egf_domain                210      70     2    homodimer    30       ✓      0.0   
+[human_serum_albumin] === Gene to Protein Pipeline: human_serum_albumin ===
+[human_serum_albumin] Sequence: AUGAAGUGGGUAACCUUUAUUUCCCUUCUUUUUCUCUUUAGCUCGGCUUA... (452 bp)
+[human_serum_albumin] IG Primitive Activations (12<->12 bijection):
+[human_serum_albumin]   ∈: 6x
+[human_serum_albumin]   ∋: 5x
+[human_serum_albumin]   ≺: 3x
+[human_serum_albumin]   ≻: 8x
+[human_serum_albumin]   ⊙: 5x
+[human_serum_albumin]   ⊞: 10x
+[human_serum_albumin]   ⊡: 14x
+[human_serum_albumin]   ⊢: 3x
+[human_serum_albumin]   ⊣: 1x
+[human_serum_albumin]   ⊤: 2x
+[human_serum_albumin]   ⊥: 10x
+[human_serum_albumin]   ⋈: 11x
+[human_serum_albumin] Auto-detected 2 subunits (conf=0.37)
+human_serum_albumin       452      150    2    homodimer    30       ✓      0.0   
+
+──────────────────────────────────────────────────────────────────────
+  DEMO COMPLETE — All Frobenius-closed ✓
+──────────────────────────────────────────────────────────────────────

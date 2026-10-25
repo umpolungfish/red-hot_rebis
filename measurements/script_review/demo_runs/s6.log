@@ -1,0 +1,120 @@
+=== Caffeine IG Type Analysis ===
+⟨𐑨𐑸𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑕𐑭⟩
+Consistent: True
+
+Design Hints:
+  - Moderate complexity (3-5 distinct functional groups)
+  - Self-referential: aromatic or conjugated ring system (IMSCRIB closure)
+  - Supervenient: passive mixture, simple solvent
+  - Asymmetric: chiral center, no symmetry elements
+  - Thermal: room-temperature stable, conformational flexibility
+  - MBL: atropisomeric, hindered rotation
+  - Integer winding: single ring system, non-alternating
+  - Complex critical: π-stacking, charge-transfer complex
+
+=== Crystal Neighborhood (d=1) ===
+  d=1 ✓ ⟨𐑛𐑸𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑕𐑭⟩
+  d=1 ✓ ⟨𐑨𐑸𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑕𐑭⟩
+  d=1 ✓ ⟨𐑼𐑸𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑕𐑭⟩
+  d=1 ✓ ⟨𐑦𐑸𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑕𐑭⟩
+  d=1 ✓ ⟨𐑨𐑡𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑕𐑭⟩
+  d=1 ✓ ⟨𐑨𐑥𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑕𐑭⟩
+  d=1 ✓ ⟨𐑨𐑥𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑕𐑭⟩
+  d=1 ✓ ⟨𐑨𐑶𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑕𐑭⟩
+  d=1 ✓ ⟨𐑨𐑸𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑕𐑭⟩
+  d=1 ✓ ⟨𐑨𐑸𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑕𐑭⟩
+
+============================================================
+Analyzing: CC(Cc1ccccc1)C(=O)O
+============================================================
+
+IG Type: ⟨𐑨𐑸𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑳𐑭⟩
+
+--- Design Analysis ---
+Consistent: True
+Criticality: complex_critical
+
+Structural Features:
+  - Moderate complexity (3-5 distinct functional groups)
+  - Self-referential: aromatic or conjugated ring system (IMSCRIB closure)
+  - Supervenient: passive mixture, simple solvent
+  - Asymmetric: chiral center, no symmetry elements
+  - Thermal: room-temperature stable, conformational flexibility
+  - MBL: atropisomeric, hindered rotation
+  - Integer winding: single ring system, non-alternating
+  - Complex critical: π-stacking, charge-transfer complex
+
+--- Crystal Neighborhood (d<=1) ---
+
+  [1] Target: ⟨𐑛𐑸𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑳𐑭⟩
+      Criticality: complex_critical
+      - Very simple molecule (≤5 heavy atoms)
+      - Self-referential: aromatic or conjugated ring system (IMSCRIB closure)
+      - Supervenient: passive mixture, simple solvent
+      Candidates: c1ccccc1, c1cnccc1
+
+  [1] Target: ⟨𐑨𐑸𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑳𐑭⟩
+      Criticality: complex_critical
+      - Moderate complexity (3-5 distinct functional groups)
+      - Self-referential: aromatic or conjugated ring system (IMSCRIB closure)
+      - Supervenient: passive mixture, simple solvent
+      Candidates: c1ccccc1, c1cnccc1
+
+  [1] Target: ⟨𐑼𐑸𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑳𐑭⟩
+      Criticality: complex_critical
+      - Complex molecule (6-9 distinct functional groups)
+      - Self-referential: aromatic or conjugated ring system (IMSCRIB closure)
+      - Supervenient: passive mixture, simple solvent
+      Candidates: c1ccccc1, c1cnccc1
+
+  [1] Target: ⟨𐑦𐑸𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑳𐑭⟩
+      Criticality: complex_critical
+      - Highly complex (10+ distinct functional groups)
+      - Self-referential: aromatic or conjugated ring system (IMSCRIB closure)
+      - Supervenient: passive mixture, simple solvent
+      Candidates: c1ccccc1, c1cnccc1
+
+  [1] Target: ⟨𐑨𐑡𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑳𐑭⟩
+      Criticality: complex_critical
+      - Moderate complexity (3-5 distinct functional groups)
+      - Chain topology: no rings
+      - Supervenient: passive mixture, simple solvent
+      Candidates: C1CCCCC1, C1CCCC1
+
+  [1] Target: ⟨𐑨𐑥𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑳𐑭⟩
+      Criticality: complex_critical
+      - Moderate complexity (3-5 distinct functional groups)
+      - Bipartite: two distinct structural regions
+      - Supervenient: passive mixture, simple solvent
+      Candidates: C1CCCCC1, C1CCCC1
+
+  [1] Target: ⟨𐑨𐑶𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑳𐑭⟩
+      Criticality: complex_critical
+      - Moderate complexity (3-5 distinct functional groups)
+      - Crossing topology: fused rings or bridged system
+      - Supervenient: passive mixture, simple solvent
+      Candidates: C1CCCCC1, C1CCCC1
+
+  [1] Target: ⟨𐑨𐑸𐑑𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑳𐑭⟩
+      Criticality: complex_critical
+      - Moderate complexity (3-5 distinct functional groups)
+      - Self-referential: aromatic or conjugated ring system (IMSCRIB closure)
+      - Adjoint: reversible reaction pair
+      Candidates: c1ccccc1, c1cnccc1
+
+  [1] Target: ⟨𐑨𐑸𐑽𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑳𐑭⟩
+      Criticality: complex_critical
+      - Moderate complexity (3-5 distinct functional groups)
+      - Self-referential: aromatic or conjugated ring system (IMSCRIB closure)
+      - Functorial coupling: bioconjugate or pro-drug
+      Candidates: c1ccccc1, c1cnccc1
+
+  [1] Target: ⟨𐑨𐑸𐑾𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑳𐑭⟩
+      Criticality: complex_critical
+      - Moderate complexity (3-5 distinct functional groups)
+      - Self-referential: aromatic or conjugated ring system (IMSCRIB closure)
+      - Bidirectional coupling: tautomerism or resonance
+      Candidates: c1ccccc1, c1cnccc1
+
+============================================================
+<frozen runpy>:128: RuntimeWarning: 'imas.molecular_crystal_designer' found in sys.modules after import of package 'imas', but prior to execution of 'imas.molecular_crystal_designer'; this may result in unpredictable behaviour

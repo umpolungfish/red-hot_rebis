@@ -1,0 +1,69 @@
+[gene] === Gene to Protein Pipeline: gene ===
+[gene] Sequence: AUGGCUCGUAAUGAUUGUGAAGGUCACAUUCUUAAAUAUCCUCAAUCUAC... (63 bp)
+[gene] IG Primitive Activations (12<->12 bijection):
+[gene]   ∈: 1x
+[gene]   ∋: 1x
+[gene]   ≺: 1x
+[gene]   ≻: 1x
+[gene]   ⊙: 1x
+[gene]   ⊞: 1x
+[gene]   ⊡: 1x
+[gene]   ⊢: 1x
+[gene]   ⊣: 1x
+[gene]   ⊤: 1x
+[gene]   ⊥: 1x
+[gene]   ⋈: 1x
+[gene] Assembly readout: 1 subunits; alternatives retained
+
+============================================================
+GENE -> PROTEIN: Gene->Protein: gene
+============================================================
+DNA: AUGGCUCGUAAUGAUUGUGAAGGUCACAUUCUUAAAUAUCCUCAAUCUACUGUUUGGUUU... (63 bp)
+AA:  MARNDCEGHILKYPQSTVWF
+Length: 20 AAs, Subunits: 1
+Assembly alternatives: [{'count': 1, 'state': 'B', 'affirmed_by': ['length', 'heptad_repeats', 'hydrophobic_patches', 'motif_scan', 'cysteine_count'], 'denied_by': ['primitive_density']}, {'count': 4, 'state': 'B', 'affirmed_by': ['primitive_density'], 'denied_by': ['length', 'heptad_repeats', 'hydrophobic_patches', 'motif_scan', 'cysteine_count']}]
+  length: pred=1 -- Chain length: 20 AAs
+  heptad_repeats: pred=1 -- Coiled-coil: 0.0% of chain
+  hydrophobic_patches: pred=1 -- 0 hydrophobic patches
+  primitive_density: pred=4 -- 12/12 IG primitives activated
+  motif_scan: pred=1 -- No oligomerization motifs
+  cysteine_count: pred=1 -- 1 Cys residues
+Symmetry: monomer
+
+Stage                     B4     Frob   Description
+------------------------------------------------------------
+dna_gene                  B      ✓      Double-stranded DNA gene (63 bp)
+pre_mrna                  B      ✓      Pre-mRNA transcript (63 nt)
+mature_mrna               B      ✓      Mature mRNA: 20 codons | Frame 0 | Start@0
+nascent_polypeptide       B      ✓      Nascent polypeptide: 20 AAs | Promoted: 12
+secondary_structure       B      ✓      Secondary structure: 3 elements
+tertiary_structure        B      ✓      Tertiary: 20 contacts
+quaternary_structure      B      ✓      Quaternary: 1 subunits (monomer)
+
+Pathway Distances:
+  dna_gene -> pre_mrna: delta=6
+  pre_mrna -> mature_mrna: delta=2
+  mature_mrna -> nascent_polypeptide: delta=5
+  nascent_polypeptide -> secondary_structure: delta=6
+  secondary_structure -> tertiary_structure: delta=6
+  tertiary_structure -> quaternary_structure: delta=5
+  TOTAL: delta=30
+
+Primitive Activations:
+  ∈: 1x
+  ∋: 1x
+  ≺: 1x
+  ≻: 1x
+  ⊙: 1x
+  ⊞: 1x
+  ⊡: 1x
+  ⊢: 1x
+  ⊣: 1x
+  ⊤: 1x
+  ⊥: 1x
+  ⋈: 1x
+
+Closure: DNA<->Quaternary distance=0.0
+Frobenius across all stages: OK
+Consciousness invariant: 0.5
+============================================================

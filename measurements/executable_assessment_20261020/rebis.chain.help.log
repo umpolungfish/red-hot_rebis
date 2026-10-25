@@ -1,0 +1,14 @@
+usage: rebis.chain [-h] [--dna DNA] [--seq SEQ] [--target TARGET]
+                   [--depth DEPTH] [--pdb PDB] [--file FILE] [--stdin]
+
+UNIFIED PIPELINE: DNA→Protein→CatalyticSite→RetrosyntheticPlan
+
+options:
+  -h, --help            show this help message and exit
+  --dna DNA             DNA/RNA sequence
+  --seq SEQ             RNA sequence (alias for --dna)
+  --target TARGET       Target SMILES (default: acetic acid)
+  --depth DEPTH         Retrosynthesis depth (default: 2)
+  --pdb PDB             Output PDB structure file for folded protein
+  --file FILE, -f FILE  Input file (JSON or FASTA/sequence)
+  --stdin, -i           Read JSON arguments from stdin

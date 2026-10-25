@@ -1,0 +1,81 @@
+╭─────────────────────────────── 🔥 rebis v4.0 ────────────────────────────────╮
+│ RED-HOT REBIS v4.0 — DYNAMIC-FIRST TOOLCHAIN                                 │
+│ Commands that COMPUTE are featured. Static data → rebis reference            │
+│ 13 computation engines | 1 unified chain | 1 reference submenu               │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+                    ⚡ TIER 1 — PRIMARY COMPUTATION ENGINES                     
+╭┬──┬────────────────────────────────────────┬─────────────────────────────────╮
+││  │ Description                            │ Actions                         │
+├┼──┼────────────────────────────────────────┼─────────────────────────────────┤
+││  │ DNA → mRNA → polypeptide → folded      │ --test  --dna <DNA_seq>  --seq  │
+││  │ protein. 7-stage Frobenius-verified    │ <RNA_seq>                       │
+││  │ translation.                           │                                 │
+││  │ Molecular compiler — forward/retro     │ forward <SMILES>  retrosynth    │
+││  │ synthesis, FG detection, CDXML output  │ <SMILES>  fg <SMILES>  cdxml    │
+││  │                                        │ <SMILES>                        │
+││  │ Protein design & stratified prediction │ predict <seq>  classify <seq>   │
+││  │ — rolling profiles, classification     │ finger <seq>                    │
+││  │ Quantitative property prediction from  │ <catalog_name>  <tuple>  --all  │
+││  │ IG tuples — bond energies, modulus,    │ --json                          │
+││  │ band gaps, folding ΔG, topological     │                                 │
+││  │ gaps, catalytic rates — grounded in    │                                 │
+││  │ MoDoT constants                        │                                 │
+││  │ UNIFIED PIPELINE:                      │ --dna <seq>  --target <SMILES>  │
+││  │ DNA→Protein→CatalyticSite→Retrosynthe… │ --depth <N>                     │
+││  │ PDB-aware ligand design from catalytic │ --pdb <ID>  --active <residues> │
+││  │ sites — fetches structures, designs    │ --auto-active  --json           │
+││  │ ligands                                │                                 │
+││  │ Sidechain×environment algebra — 80     │ <aa> <env>  --pdb <ID>  --batch │
+││  │ AA×env pairs, bottleneck/tier analysis │ --json                          │
+╰┴──┴────────────────────────────────────────┴─────────────────────────────────╯
+
+                        🔧 TIER 2 — SPECIALIZED ENGINES                         
+                                                                                
+  …   Description                              Actions                          
+ ────────────────────────────────────────────────────────────────────────────── 
+  …   Chemotherapeutics, neurotrophic          design <target>  sim             
+      factors, universal antidote library      neurotrophic <target>  antidote  
+                                               <poison>                         
+  …   IG-tuple→material forge,                 forge   sim   status             
+      metamaterials, ouroboric alloys,                                          
+      non-qubit QC                                                              
+  …   Ouroboric cell simulations, telomere     sim  status                      
+      design, epigenetic states                                                 
+  …   Auto-imscription, prose lift,            imscribe <name>  lift <file>     
+      Frobenius verification                   verify                           
+  …   Gene analysis, tuple encoding, IG        analyze <seq>  tuples <seq>      
+      primitive mapping                                                         
+  …   Basil Valentine ladders, Zosimos         ladder <tuple|all>  portico      
+      portico, alchemical bridge operations                                     
+  …   CLINK chain L0-L8, consciousness         layers  bridge <a> <b>  chain    
+      scoring, layer bridges                   <name>  cscore <name>            
+                                                                                
+
+                       📚 REFERENCE — Static data & enums                       
+                                                                                
+  Command               Description                                             
+ ────────────────────────────────────────────────────────────────────────────── 
+  rebis reference       Belnap FOUR ops, genetic B4 lattice, hadrons,           
+                        verification, IMASM                                     
+  rebis reference       Full reference data dump                                
+  --all                                                                         
+  rebis constants       MoDoT fundamental constants + SIC-POVM biology bridge   
+                                                                                
+
+                               ⚡ QUICK COMMANDS                                
+                                                                                
+  Command                    Description                                        
+ ────────────────────────────────────────────────────────────────────────────── 
+  rebis                      Dynamic-first menu (this screen)                   
+  rebis --version            Version 4.0.0                                      
+  rebis verify               Package import verification                        
+  rebis status               Package status across all domains                  
+  rebis demo list            List available demos                               
+  rebis demo <name>          Run a specific demo                                
+  python3 -m rebis           Module execution                                   
+  python3 -c 'import         Python API access                                  
+  rebis'                                                                        
+                                                                                
+
+  ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩  —  O_∞ · ⊙ · Frobenius-closed

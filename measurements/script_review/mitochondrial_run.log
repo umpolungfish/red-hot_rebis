@@ -1,0 +1,353 @@
+Genome length: 16569 bp
+[MT-ATP6] === Gene to Protein Pipeline: MT-ATP6 ===
+[MT-ATP6] Sequence: AUGAACGAAAAUCUGUUCGCUUCAUUCAUUGCCCCCACAAUCCUAGGCCU... (681 bp)
+[MT-ATP6] IG Primitive Activations (12<->12 bijection):
+[MT-ATP6]   ∈: 11x
+[MT-ATP6]   ∋: 7x
+[MT-ATP6]   ≺: 3x
+[MT-ATP6]   ⊙: 6x
+[MT-ATP6]   ⊞: 6x
+[MT-ATP6]   ⊡: 3x
+[MT-ATP6]   ⊢: 12x
+[MT-ATP6]   ⊣: 3x
+[MT-ATP6]   ⊤: 29x
+[MT-ATP6]   ⊥: 1x
+[MT-ATP6]   ⋈: 9x
+[MT-ATP6] H |   681bp | 226AA | Frob=✓ | prim=11/12
+         dna_gene                  B4:B    Frob:✓
+         pre_mrna                  B4:B    Frob:✓
+         mature_mrna               B4:B    Frob:✓
+         nascent_polypeptide       B4:B    Frob:✓
+         secondary_structure       B4:B    Frob:✓
+         tertiary_structure        B4:B    Frob:✓
+         quaternary_structure      B4:B    Frob:✓
+[MT-ATP8] === Gene to Protein Pipeline: MT-ATP8 ===
+[MT-ATP8] Sequence: AUGCCCCAACUAAAUACUACCGUAUGGCCCACCAUAAUUACCCCCAUACU... (207 bp)
+[MT-ATP8] IG Primitive Activations (12<->12 bijection):
+[MT-ATP8]   ∈: 5x
+[MT-ATP8]   ∋: 3x
+[MT-ATP8]   ≺: 2x
+[MT-ATP8]   ≻: 1x
+[MT-ATP8]   ⊙: 2x
+[MT-ATP8]   ⊞: 7x
+[MT-ATP8]   ⊡: 1x
+[MT-ATP8]   ⊢: 6x
+[MT-ATP8]   ⊣: 3x
+[MT-ATP8]   ⊤: 3x
+[MT-ATP8]   ⋈: 1x
+[MT-ATP8] H |   207bp |  68AA | Frob=✓ | prim=11/12
+         dna_gene                  B4:B    Frob:✓
+         pre_mrna                  B4:B    Frob:✓
+         mature_mrna               B4:B    Frob:✓
+         nascent_polypeptide       B4:B    Frob:✓
+         secondary_structure       B4:B    Frob:✓
+         tertiary_structure        B4:B    Frob:✓
+         quaternary_structure      B4:B    Frob:✓
+[MT-CO1] === Gene to Protein Pipeline: MT-CO1 ===
+[MT-CO1] Sequence: AUGUUCGCCGACCGUUGACUAUUCUCUACAAACCACAAAGACAUUGGAAC... (1542 bp)
+[MT-CO1] IG Primitive Activations (12<->12 bijection):
+[MT-CO1]   ∈: 17x
+[MT-CO1]   ∋: 6x
+[MT-CO1]   ≺: 22x
+[MT-CO1]   ≻: 1x
+[MT-CO1]   ⊙: 18x
+[MT-CO1]   ⊞: 10x
+[MT-CO1]   ⊡: 10x
+[MT-CO1]   ⊢: 32x
+[MT-CO1]   ⊣: 16x
+[MT-CO1]   ⊤: 38x
+[MT-CO1]   ⊥: 15x
+[MT-CO1]   ⋈: 41x
+[MT-CO1 ] H |  1542bp | 513AA | Frob=✓ | prim=12/12
+         dna_gene                  B4:B    Frob:✓
+         pre_mrna                  B4:B    Frob:✓
+         mature_mrna               B4:B    Frob:✓
+         nascent_polypeptide       B4:B    Frob:✓
+         secondary_structure       B4:B    Frob:✓
+         tertiary_structure        B4:B    Frob:✓
+         quaternary_structure      B4:B    Frob:✓
+[MT-CO2] === Gene to Protein Pipeline: MT-CO2 ===
+[MT-CO2] Sequence: AUGGCACAUGCAGCGCAAGUAGGUCUACAAGACGCUACUUCCCCUAUCAU... (684 bp)
+[MT-CO2] IG Primitive Activations (12<->12 bijection):
+[MT-CO2]   ∈: 7x
+[MT-CO2]   ∋: 7x
+[MT-CO2]   ≺: 9x
+[MT-CO2]   ≻: 3x
+[MT-CO2]   ⊙: 6x
+[MT-CO2]   ⊞: 4x
+[MT-CO2]   ⊡: 11x
+[MT-CO2]   ⊢: 10x
+[MT-CO2]   ⊣: 4x
+[MT-CO2]   ⊤: 22x
+[MT-CO2]   ⊥: 11x
+[MT-CO2]   ⋈: 10x
+[MT-CO2 ] H |   684bp | 227AA | Frob=✓ | prim=12/12
+         dna_gene                  B4:B    Frob:✓
+         pre_mrna                  B4:B    Frob:✓
+         mature_mrna               B4:B    Frob:✓
+         nascent_polypeptide       B4:B    Frob:✓
+         secondary_structure       B4:B    Frob:✓
+         tertiary_structure        B4:B    Frob:✓
+         quaternary_structure      B4:B    Frob:✓
+[MT-CO3] === Gene to Protein Pipeline: MT-CO3 ===
+[MT-CO3] Sequence: AUGACCCACCAAUCACAUGCCUAUCAUAUAGUAAAACCCAGCCCAUGACC... (784 bp)
+[MT-CO3] IG Primitive Activations (12<->12 bijection):
+[MT-CO3]   ∈: 6x
+[MT-CO3]   ∋: 9x
+[MT-CO3]   ≺: 11x
+[MT-CO3]   ≻: 1x
+[MT-CO3]   ⊙: 17x
+[MT-CO3]   ⊞: 3x
+[MT-CO3]   ⊡: 7x
+[MT-CO3]   ⊢: 11x
+[MT-CO3]   ⊣: 12x
+[MT-CO3]   ⊤: 14x
+[MT-CO3]   ⊥: 3x
+[MT-CO3]   ⋈: 23x
+[MT-CO3 ] H |   784bp | 261AA | Frob=✓ | prim=12/12
+         dna_gene                  B4:B    Frob:✓
+         pre_mrna                  B4:B    Frob:✓
+         mature_mrna               B4:B    Frob:✓
+         nascent_polypeptide       B4:B    Frob:✓
+         secondary_structure       B4:B    Frob:✓
+         tertiary_structure        B4:B    Frob:✓
+         quaternary_structure      B4:B    Frob:✓
+[MT-CYB] === Gene to Protein Pipeline: MT-CYB ===
+[MT-CYB] Sequence: AUGACCCCAAUACGCAAAACUAACCCCCUAAUAAAAUUAAUUAACCACUC... (1141 bp)
+[MT-CYB] IG Primitive Activations (12<->12 bijection):
+[MT-CYB]   ∈: 15x
+[MT-CYB]   ∋: 8x
+[MT-CYB]   ≺: 17x
+[MT-CYB]   ≻: 2x
+[MT-CYB]   ⊙: 12x
+[MT-CYB]   ⊞: 9x
+[MT-CYB]   ⊡: 4x
+[MT-CYB]   ⊢: 15x
+[MT-CYB]   ⊣: 12x
+[MT-CYB]   ⊤: 38x
+[MT-CYB]   ⊥: 11x
+[MT-CYB]   ⋈: 24x
+[MT-CYB ] H |  1141bp | 380AA | Frob=✓ | prim=12/12
+         dna_gene                  B4:B    Frob:✓
+         pre_mrna                  B4:B    Frob:✓
+         mature_mrna               B4:B    Frob:✓
+         nascent_polypeptide       B4:B    Frob:✓
+         secondary_structure       B4:B    Frob:✓
+         tertiary_structure        B4:B    Frob:✓
+         quaternary_structure      B4:B    Frob:✓
+[MT-ND1] === Gene to Protein Pipeline: MT-ND1 ===
+[MT-ND1] Sequence: AUACCCAUGGCCAACCUCCUACUCCUCAUUGUACCCAUUCUAAUCGCAAU... (956 bp)
+[MT-ND1] IG Primitive Activations (12<->12 bijection):
+[MT-ND1]   ∈: 13x
+[MT-ND1]   ∋: 6x
+[MT-ND1]   ≺: 14x
+[MT-ND1]   ⊙: 2x
+[MT-ND1]   ⊞: 7x
+[MT-ND1]   ⊡: 11x
+[MT-ND1]   ⊢: 16x
+[MT-ND1]   ⊣: 9x
+[MT-ND1]   ⊤: 23x
+[MT-ND1]   ⊥: 4x
+[MT-ND1]   ⋈: 16x
+[MT-ND1 ] H |   956bp | 318AA | Frob=✓ | prim=11/12
+         dna_gene                  B4:B    Frob:✓
+         pre_mrna                  B4:B    Frob:✓
+         mature_mrna               B4:B    Frob:✓
+         nascent_polypeptide       B4:B    Frob:✓
+         secondary_structure       B4:B    Frob:✓
+         tertiary_structure        B4:B    Frob:✓
+         quaternary_structure      B4:B    Frob:✓
+[MT-ND2] === Gene to Protein Pipeline: MT-ND2 ===
+[MT-ND2] Sequence: AUUAAUCCCCUGGCCCAACCCGUCAUCUACUCUACCAUCUUUGCAGGCAC... (1042 bp)
+[MT-ND2] IG Primitive Activations (12<->12 bijection):
+[MT-ND2]   ∈: 19x
+[MT-ND2]   ∋: 9x
+[MT-ND2]   ≺: 9x
+[MT-ND2]   ⊙: 3x
+[MT-ND2]   ⊞: 12x
+[MT-ND2]   ⊡: 5x
+[MT-ND2]   ⊢: 24x
+[MT-ND2]   ⊣: 9x
+[MT-ND2]   ⊤: 28x
+[MT-ND2]   ⋈: 12x
+[MT-ND2 ] H |  1042bp | 313AA | Frob=✓ | prim=10/12
+         dna_gene                  B4:B    Frob:✓
+         pre_mrna                  B4:B    Frob:✓
+         mature_mrna               B4:B    Frob:✓
+         nascent_polypeptide       B4:B    Frob:✓
+         secondary_structure       B4:B    Frob:✓
+         tertiary_structure        B4:B    Frob:✓
+         quaternary_structure      B4:B    Frob:✓
+[MT-ND3] === Gene to Protein Pipeline: MT-ND3 ===
+[MT-ND3] Sequence: AUAAACUUCGCCUUAAUUUUAAUAAUCAACACCCUCCUAGCCUUACUACU... (346 bp)
+[MT-ND3] IG Primitive Activations (12<->12 bijection):
+[MT-ND3]   ∈: 4x
+[MT-ND3]   ∋: 3x
+[MT-ND3]   ≺: 3x
+[MT-ND3]   ≻: 1x
+[MT-ND3]   ⊞: 3x
+[MT-ND3]   ⊡: 5x
+[MT-ND3]   ⊢: 8x
+[MT-ND3]   ⊣: 4x
+[MT-ND3]   ⊤: 9x
+[MT-ND3]   ⊥: 3x
+[MT-ND3]   ⋈: 8x
+[MT-ND3 ] H |   346bp | 115AA | Frob=✓ | prim=11/12
+         dna_gene                  B4:B    Frob:✓
+         pre_mrna                  B4:B    Frob:✓
+         mature_mrna               B4:B    Frob:✓
+         nascent_polypeptide       B4:B    Frob:✓
+         secondary_structure       B4:B    Frob:✓
+         tertiary_structure        B4:B    Frob:✓
+         quaternary_structure      B4:B    Frob:✓
+[MT-ND4] === Gene to Protein Pipeline: MT-ND4 ===
+[MT-ND4] Sequence: AUGCUAAAACUAAUCGUCCCAACAAUUAUAUUACUACCACUGACAUGACU... (1378 bp)
+[MT-ND4] IG Primitive Activations (12<->12 bijection):
+[MT-ND4]   ∈: 23x
+[MT-ND4]   ∋: 10x
+[MT-ND4]   ≺: 13x
+[MT-ND4]   ≻: 3x
+[MT-ND4]   ⊙: 13x
+[MT-ND4]   ⊞: 11x
+[MT-ND4]   ⊡: 9x
+[MT-ND4]   ⊢: 27x
+[MT-ND4]   ⊣: 13x
+[MT-ND4]   ⊤: 39x
+[MT-ND4]   ⊥: 3x
+[MT-ND4]   ⋈: 20x
+[MT-ND4 ] H |  1378bp | 459AA | Frob=✓ | prim=12/12
+         dna_gene                  B4:B    Frob:✓
+         pre_mrna                  B4:B    Frob:✓
+         mature_mrna               B4:B    Frob:✓
+         nascent_polypeptide       B4:B    Frob:✓
+         secondary_structure       B4:B    Frob:✓
+         tertiary_structure        B4:B    Frob:✓
+         quaternary_structure      B4:B    Frob:✓
+[MT-ND4L] === Gene to Protein Pipeline: MT-ND4L ===
+[MT-ND4L] Sequence: AUGCCCCUCAUUUACAUAAAUAUUAUACUAGCAUUUACCAUCUCACUUCU... (297 bp)
+[MT-ND4L] IG Primitive Activations (12<->12 bijection):
+[MT-ND4L]   ∈: 6x
+[MT-ND4L]   ∋: 1x
+[MT-ND4L]   ≺: 4x
+[MT-ND4L]   ≻: 3x
+[MT-ND4L]   ⊙: 3x
+[MT-ND4L]   ⊡: 2x
+[MT-ND4L]   ⊢: 10x
+[MT-ND4L]   ⊤: 7x
+[MT-ND4L]   ⊥: 1x
+[MT-ND4L]   ⋈: 3x
+[MT-ND4L] H |   297bp |  98AA | Frob=✓ | prim=10/12
+         dna_gene                  B4:B    Frob:✓
+         pre_mrna                  B4:B    Frob:✓
+         mature_mrna               B4:B    Frob:✓
+         nascent_polypeptide       B4:B    Frob:✓
+         secondary_structure       B4:B    Frob:✓
+         tertiary_structure        B4:B    Frob:✓
+         quaternary_structure      B4:B    Frob:✓
+[MT-ND5] === Gene to Protein Pipeline: MT-ND5 ===
+[MT-ND5] Sequence: AUAACCAUGCACACUACUAUAACCACCCUAACCCUGACUUCCCUAAUUCC... (1812 bp)
+[MT-ND5] IG Primitive Activations (12<->12 bijection):
+[MT-ND5]   ∈: 33x
+[MT-ND5]   ∋: 20x
+[MT-ND5]   ≺: 16x
+[MT-ND5]   ≻: 6x
+[MT-ND5]   ⊙: 14x
+[MT-ND5]   ⊞: 21x
+[MT-ND5]   ⊡: 9x
+[MT-ND5]   ⊢: 26x
+[MT-ND5]   ⊣: 12x
+[MT-ND5]   ⊤: 54x
+[MT-ND5]   ⊥: 11x
+[MT-ND5]   ⋈: 38x
+[MT-ND5 ] H |  1812bp | 603AA | Frob=✓ | prim=12/12
+         dna_gene                  B4:B    Frob:✓
+         pre_mrna                  B4:B    Frob:✓
+         mature_mrna               B4:B    Frob:✓
+         nascent_polypeptide       B4:B    Frob:✓
+         secondary_structure       B4:B    Frob:✓
+         tertiary_structure        B4:B    Frob:✓
+         quaternary_structure      B4:B    Frob:✓
+[MT-ND6] === Gene to Protein Pipeline: MT-ND6 ===
+[MT-ND6] Sequence: AUGAUGUAUGCUUUGUUUCUGUUGAGUGUGGGUUUAGUAAUGGGGUUUGU... (525 bp)
+[MT-ND6] IG Primitive Activations (12<->12 bijection):
+[MT-ND6]   ∈: 4x
+[MT-ND6]   ≺: 11x
+[MT-ND6]   ≻: 1x
+[MT-ND6]   ⊞: 2x
+[MT-ND6]   ⊡: 10x
+[MT-ND6]   ⊢: 10x
+[MT-ND6]   ⊣: 5x
+[MT-ND6]   ⊤: 12x
+[MT-ND6]   ⊥: 3x
+[MT-ND6]   ⋈: 8x
+[MT-ND6 ] L |   525bp | 174AA | Frob=✓ | prim=10/12
+         dna_gene                  B4:B    Frob:✓
+         pre_mrna                  B4:B    Frob:✓
+         mature_mrna               B4:B    Frob:✓
+         nascent_polypeptide       B4:B    Frob:✓
+         secondary_structure       B4:B    Frob:✓
+         tertiary_structure        B4:B    Frob:✓
+         quaternary_structure      B4:B    Frob:✓
+
+======================================================================
+COMPLETE RESULTS: HOMO SAPIENS MITOCHONDRIAL GENOME NC_012920.1
+13 Protein-Coding Genes → 7-Stage IG Structural Pipeline
+======================================================================
+
+Gene       Str  bp     AA    Frob   Dist     Prim   Top primitives
+----------------------------------------------------------------------
+MT-ATP6    H    681    226   ✓      0.0000   11/12  ⊤=29x, ⊢=12x, ∈=11x
+MT-ATP8    H    207    68    ✓      0.0000   11/12  ⊞=7x, ⊢=6x, ∈=5x
+MT-CO1     H    1542   513   ✓      0.0000   12/12  ⋈=41x, ⊤=38x, ⊢=32x
+MT-CO2     H    684    227   ✓      0.0000   12/12  ⊤=22x, ⊥=11x, ⊡=11x
+MT-CO3     H    784    261   ✓      0.0000   12/12  ⋈=23x, ⊙=17x, ⊤=14x
+MT-CYB     H    1141   380   ✓      0.0000   12/12  ⊤=38x, ⋈=24x, ≺=17x
+MT-ND1     H    956    318   ✓      0.0000   11/12  ⊤=23x, ⊢=16x, ⋈=16x
+MT-ND2     H    1042   313   ✓      0.0000   10/12  ⊤=28x, ⊢=24x, ∈=19x
+MT-ND3     H    346    115   ✓      0.0000   11/12  ⊤=9x, ⊢=8x, ⋈=8x
+MT-ND4     H    1378   459   ✓      0.0000   12/12  ⊤=39x, ⊢=27x, ∈=23x
+MT-ND4L    H    297    98    ✓      0.0000   10/12  ⊢=10x, ⊤=7x, ∈=6x
+MT-ND5     H    1812   603   ✓      0.0000   12/12  ⊤=54x, ⋈=38x, ∈=33x
+MT-ND6     L    525    174   ✓      0.0000   10/12  ⊤=12x, ≺=11x, ⊢=10x
+
+======================================================================
+AGGREGATE STATISTICS
+======================================================================
+  Total genes processed:    13
+  Successful:               13
+  Frobenius ✓:              13
+  Errors:                   0
+
+  Total IG primitive activations across all 13 mitochondrial genes:
+    ⊤: 316x
+    ⋈: 213x
+    ⊢: 207x
+    ∈: 163x
+    ≺: 134x
+    ⊣: 102x
+    ⊙: 96x
+    ⊞: 95x
+    ∋: 89x
+    ⊡: 87x
+    ⊥: 66x
+    ≻: 22x
+    Total: 1590
+
+  Most structurally complex genes (most primitives activated):
+    MT-CO1     12/12 primitives  (513 AA, 1542 bp)
+    MT-CO2     12/12 primitives  (227 AA, 684 bp)
+    MT-CO3     12/12 primitives  (261 AA, 784 bp)
+    MT-CYB     12/12 primitives  (380 AA, 1141 bp)
+    MT-ND4     12/12 primitives  (459 AA, 1378 bp)
+    MT-ND5     12/12 primitives  (603 AA, 1812 bp)
+    MT-ATP6    11/12 primitives  (226 AA, 681 bp)
+    MT-ATP8    11/12 primitives  (68 AA, 207 bp)
+    MT-ND1     11/12 primitives  (318 AA, 956 bp)
+    MT-ND3     11/12 primitives  (115 AA, 346 bp)
+    MT-ND2     10/12 primitives  (313 AA, 1042 bp)
+    MT-ND4L    10/12 primitives  (98 AA, 297 bp)
+    MT-ND6     10/12 primitives  (174 AA, 525 bp)
+
+  DNA→Quaternary closure distance: {0.0}
+  Consciousness invariant:          {0.5}
+  Invariant across ALL genes:       True

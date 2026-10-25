@@ -1,0 +1,88 @@
+[pipeline] ╔════════════════════════════════════════╗
+[pipeline] ║  ch3mpiler ⟲ serpentrod — Pipeline   ║
+[pipeline] ╚════════════════════════════════════════╝
+[pipeline] 
+[pipeline] Phase 1 — ch3mpiler reaction analysis
+[pipeline] ────────────────────────────────────────
+[pipeline] CAS: 79-06-1
+[pipeline] Resolved: acrylamide
+[pipeline] 
+[pipeline] Phase 2 — Structural signature extraction
+[pipeline] ────────────────────────────────────────
+[pipeline]   Bond: co_sigma — C-O σ bond (polar, ether/alcohol)
+[pipeline]   FG pair: amide + amide
+[pipeline]   Structuring Δ: 5.104
+[pipeline] 
+[pipeline] Phase 3 — SerpentRod catalytic site design
+[pipeline] ────────────────────────────────────────
+[pipeline]   Site RNA: AUGUGGUGUUACGUUAUACCACAGGCUGGCACAGUG... (36 nt)
+[pipeline]   Site AA:  MWCYVIPQAGTV (12 AAs)
+[pipeline]   Winding:  3
+[pipeline]   Frobenius: ✓
+[pipeline]   Confidence: 1.000
+[pipeline]   Catalytic triad: Cys_2, Tyr_3
+[pipeline] 
+[pipeline] ╔════════════════════════════════════════╗
+[pipeline] ║  Pipeline Complete                    ║
+[pipeline] ╚════════════════════════════════════════╝
+==================================================================
+  ch3mpiler ⟲ serpentrod — Catalytic Site Design
+==================================================================
+
+REACTION ANALYSIS
+----------------------------------------
+  Type:     retrosynthetic
+  Bond:     co_sigma
+  Desc:     C-O σ bond (polar, ether/alcohol)
+  FG pair:  amide + amide
+  Structuring Δ: 5.104
+  TS ordinal:    0
+
+  Product structural type:
+    ⊢: 𐑛
+    ⊣: 𐑥
+    ≻: 𐑽
+    ≺: 𐑬
+    ⋈: 𐑐
+    ⊤: 𐑧
+    ∈: 𐑲
+    ∋: 𐑠
+    ⊙: ⊙
+    ⊥: 𐑖
+    ⊞: 𐑳
+    ◻: 𐑴
+
+CATALYTIC SITE DESIGN
+----------------------------------------
+  RNA:      AUGUGGUGUUACGUUAUACCACAGGCUGGCACAGUG
+  AA seq:   MWCYVIPQAGTV
+  Winding:  3
+  Frobenius: ✓
+  Confidence: 1.000
+
+  Site structural type:
+    ◻: 𐑟
+    ⊢: 𐑦
+    ⊥: 𐑫
+    ⊣: 𐑸
+    ⊞: 𐑳
+    ≻: 𐑾
+    ⋈: 𐑐
+    ≺: 𐑹
+    ∈: 𐑲
+    ⊤: 𐑪
+    ⊙: 𐑣
+    ∋: 𐑵
+
+  Catalytic triad: Cys_2, Tyr_3
+  Binding pocket: Met_0, Trp_1, Cys_2, Tyr_3, Val_4, Ile_5, Val_11
+
+  Predicted secondary structure:
+    sheet     [  0-  4]  (4 AAs)
+    sheet     [  4-  8]  (4 AAs)
+    sheet     [  8- 12]  (4 AAs)
+
+  Long-range contacts: 1
+      4↔ 11   4.00Å  hydrophobic           c=0.50
+
+══════════════════════════════════════════════════════════════════

@@ -1,0 +1,6 @@
+usage: rebis.status [-h] [--file FILE] [--stdin]
+
+options:
+  -h, --help            show this help message and exit
+  --file FILE, -f FILE  Input file (JSON or FASTA/sequence)
+  --stdin, -i           Read JSON arguments from stdin

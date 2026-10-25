@@ -1,0 +1,41 @@
+═ Genetic Sequence Analysis ═
+  Length: 63 bp
+  Scanning ORFs (6 frames)...
+  Found 1 ORFs — longest: 20 aa
+  Translation: MARNDCEGHILKYPQSTVWF
+  Verifying B4 lattice (64-codon Frobenius)...
+{
+  "sequence": "AUGGCUCGUAAUGAUUGUGAAGGUCACAUUCUUAAAUAUCCUCAAUCUACUGUUUGGUUUUAA",
+  "length": 63,
+  "base_composition": {
+    "A": 17,
+    "T": 25,
+    "G": 11,
+    "C": 10
+  },
+  "gc_content": 0.3333,
+  "orfs": [
+    {
+      "start": 0,
+      "end": 63,
+      "frame": 0,
+      "strand": "+",
+      "length_bp": 63,
+      "protein": "MARNDCEGHILKYPQSTVWF",
+      "protein_length": 20
+    }
+  ],
+  "n_orfs": 1,
+  "longest_orf": {
+    "start": 0,
+    "end": 63,
+    "frame": 0,
+    "strand": "+",
+    "length_bp": 63,
+    "protein": "MARNDCEGHILKYPQSTVWF",
+    "protein_length": 20
+  },
+  "translation": "MARNDCEGHILKYPQSTVWF",
+  "protein_length": 20,
+  "b4_lattice": "verified"
+}

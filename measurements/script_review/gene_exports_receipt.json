@@ -1,0 +1,55 @@
+{
+  "source_sha256": "07229a32ecdaf4d71a5b91c3d06fe8e3be8eb95d5709ee339f781ef488fc0e1f",
+  "exports": {
+    "verify_all": "verify_all",
+    "demo_b4_lattice": "demo_b4_lattice",
+    "extract_features_from_sequence": "extract_features_from_sequence",
+    "generate_all_tuples": "generate_all_tuples",
+    "GeneToProteinPipeline": "GeneToProteinPipeline",
+    "verify_all_codons_frobenius": "verify_all_codons_frobenius",
+    "BelnapCodon": "BelnapCodon",
+    "verify_genetic_code": "verify_genetic_code"
+  },
+  "false_verification_status": 1,
+  "runs": [
+    {
+      "args": [
+        "list"
+      ],
+      "status": 0,
+      "stdout": "rebis.gene \u2014 Exports:\n  \u2713 BelnapCodon\n  \u2713 GeneToProteinPipeline\n  \u2713 demo_b4_lattice\n  \u2713 extract_features_from_sequence\n  \u2713 generate_all_tuples\n  \u2713 verify_all\n  \u2713 verify_all_codons_frobenius\n  \u2713 verify_genetic_code\n\nCommands:\n  analyze <seq>      \u2014 Full sequence analysis (codons, ORFs, B4)\n  quality <seq>      \u2014 Genetic quality score\n  tuples <seq>       \u2014 IG genetic tuples\n  translate <dna>    \u2014 DNA \u2192 protein translation\n  b4                 \u2014 B4 lattice 64-codon verification\n  pipeline <dna>     \u2014 Full gene\u2192protein pipeline\n  list               \u2014 List exports\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "b4"
+      ],
+      "status": 0,
+      "stdout": "\u2550 B4 Lattice \u2014 64-Codon Frobenius Verification \u2550\n  Verifying all 64 codons...\n{\n  \"b4_verified\": true,\n  \"n_codons\": 64,\n  \"message\": \"All 64 codons satisfy Frobenius closure\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "analyze",
+        "ATGGCTTAA",
+        "--translate"
+      ],
+      "status": 0,
+      "stdout": "\u2550 Genetic Sequence Analysis \u2550\n  Length: 9 bp\n  Scanning ORFs (6 frames)...\n  Translation: MA\n  Verifying B4 lattice (64-codon Frobenius)...\n{\n  \"sequence\": \"ATGGCTTAA\",\n  \"length\": 9,\n  \"base_composition\": {\n    \"A\": 3,\n    \"T\": 3,\n    \"G\": 2,\n    \"C\": 1\n  },\n  \"gc_content\": 0.3333,\n  \"orfs\": [],\n  \"n_orfs\": 0,\n  \"translation\": \"MA\",\n  \"protein_length\": 2,\n  \"b4_lattice\": \"verified\"\n}\n",
+      "stderr": ""
+    }
+  ],
+  "tuple_payload": [
+    {
+      "aa_code": "Met"
+    },
+    {
+      "aa_code": "His"
+    },
+    {
+      "aa_code": "Cys"
+    }
+  ],
+  "tuple_gc": 0.3333333333333333,
+  "tuple_failure_status": 1
+}

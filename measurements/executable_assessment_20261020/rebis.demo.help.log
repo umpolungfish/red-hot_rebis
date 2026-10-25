@@ -1,0 +1,11 @@
+usage: rebis.demo [-h] [--file FILE] [--stdin] [demo]
+
+Run a named demo from rebis.demo module
+
+positional arguments:
+  demo                  Demo name (or 'list' to see options)
+
+options:
+  -h, --help            show this help message and exit
+  --file FILE, -f FILE  Input file (JSON or FASTA/sequence)
+  --stdin, -i           Read JSON arguments from stdin

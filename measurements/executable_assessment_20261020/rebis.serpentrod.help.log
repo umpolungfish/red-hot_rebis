@@ -1,0 +1,22 @@
+usage: rebis.serpentrod [-h] [--file FILE] [--stdin]
+                        {predict,classify,finger,process,fold,foldv2,spectrum,list}
+                        ...
+
+Protein design & stratified prediction (advanced v2)
+
+positional arguments:
+  {predict,classify,finger,process,fold,foldv2,spectrum,list}
+    predict             Full stratified prediction pipeline
+    classify            Classify module type
+    finger              Match protein fingerprint
+    process             Enhanced processing prediction (v5)
+    fold                SerpentRod v1 RNA→protein folding
+    foldv2              Native protein glut, full AA self-marks and PDB
+                        readout
+    spectrum            Primitive activation spectrum
+    list                List available tools
+
+options:
+  -h, --help            show this help message and exit
+  --file FILE, -f FILE  Input file (JSON or FASTA/sequence)
+  --stdin, -i           Read JSON arguments from stdin

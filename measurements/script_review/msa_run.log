@@ -1,0 +1,214 @@
+======================================================================
+🐍 SERPENTROD — EVOLUTIONARY CONSERVATION ANALYSIS 🐍
+======================================================================
+
+============================================================
+FAMILY: ubiquitin
+============================================================
+[ubiquitin_human] Direct RNA→FoldedProtein: ubiquitin_human
+[ubiquitin_human]   RNA: AUGCAAAUUUUUGUUAAAACUUUGACUGGUAAAACUAUUA... (228 nt)
+[ubiquitin_human]   AA: MQIFVKTLTGKTITLEVEPSDTIENVKAKIQDKEGIPPDQQRLIFAGKQLEDGRTLSDYNIQKESTLHLVLRLRGG (76 AAs)
+[ubiquitin_human]   Winding: 45 B4 loops
+[ubiquitin_human]   Activations: 38/12 primitives
+[ubiquitin_human]   Contacts: 11 long-range
+[ubiquitin_human]   Subunits: 2
+[ubiquitin_human]   Frobenius: ✓
+[ubiquitin_human]   Confidence: 1.00
+[ubiquitin_human]   Folding ΔG: -4.6 kcal/mol
+[ubiquitin_human]   Enzymatic turnover: 0.00e+00 s⁻¹
+
+  HUMAN:
+    Length: 76 AA
+    Winding: 45 B4 loops
+    Contacts: 11
+    Subunits: 2
+    Frobenius: ✓
+    Primitives: 10/12 — ['Chirality', 'Criticality', 'Dimensionality', 'Fidelity', 'Grammar', 'Granularity', 'Kinetics', 'Parity', 'Protection', 'Stoichiometry']
+[ubiquitin_mouse] Direct RNA→FoldedProtein: ubiquitin_mouse
+[ubiquitin_mouse]   RNA: AUGCAAAUUUUUGUUAAAACUUUGACUGGUAAAACUAUUA... (228 nt)
+[ubiquitin_mouse]   AA: MQIFVKTLTGKTITLEVEPSDTIENVKAKIQDKEGIPPDQQRLIFAGKQLEDGRTLSDYNIQKESTLHLVLRLRGG (76 AAs)
+[ubiquitin_mouse]   Winding: 45 B4 loops
+[ubiquitin_mouse]   Activations: 38/12 primitives
+[ubiquitin_mouse]   Contacts: 11 long-range
+[ubiquitin_mouse]   Subunits: 2
+[ubiquitin_mouse]   Frobenius: ✓
+[ubiquitin_mouse]   Confidence: 1.00
+[ubiquitin_mouse]   Folding ΔG: -4.6 kcal/mol
+[ubiquitin_mouse]   Enzymatic turnover: 0.00e+00 s⁻¹
+
+  MOUSE:
+    Length: 76 AA
+    Winding: 45 B4 loops
+    Contacts: 11
+    Subunits: 2
+    Frobenius: ✓
+    Primitives: 10/12 — ['Chirality', 'Criticality', 'Dimensionality', 'Fidelity', 'Grammar', 'Granularity', 'Kinetics', 'Parity', 'Protection', 'Stoichiometry']
+[ubiquitin_yeast] Direct RNA→FoldedProtein: ubiquitin_yeast
+[ubiquitin_yeast]   RNA: AUGCAAAUUUUUGUUAAAACUUUGACUGGUAAAACUAUUA... (228 nt)
+[ubiquitin_yeast]   AA: MQIFVKTLTGKTITLEVESSDTIDNVKSKIQDKEGIPPDQQRLIFAGKQLEDGRTLSDYNIQKESTLHLVLRLRGG (76 AAs)
+[ubiquitin_yeast]   Winding: 50 B4 loops
+[ubiquitin_yeast]   Activations: 38/12 primitives
+[ubiquitin_yeast]   Contacts: 12 long-range
+[ubiquitin_yeast]   Subunits: 2
+[ubiquitin_yeast]   Frobenius: ✓
+[ubiquitin_yeast]   Confidence: 1.00
+[ubiquitin_yeast]   Folding ΔG: -5.0 kcal/mol
+[ubiquitin_yeast]   Enzymatic turnover: 0.00e+00 s⁻¹
+
+  YEAST:
+    Length: 76 AA
+    Winding: 50 B4 loops
+    Contacts: 12
+    Subunits: 2
+    Frobenius: ✓
+    Primitives: 10/12 — ['Chirality', 'Criticality', 'Dimensionality', 'Fidelity', 'Grammar', 'Granularity', 'Kinetics', 'Parity', 'Protection', 'Stoichiometry']
+[ubiquitin_plant_arabidopsis] Direct RNA→FoldedProtein: ubiquitin_plant_arabidopsis
+[ubiquitin_plant_arabidopsis]   RNA: AUGCAAAUUUUUGUUAAAACUUUGACUGGUAAAAAAAUUA... (228 nt)
+[ubiquitin_plant_arabidopsis]   AA: MQIFVKTLTGKKITLEVEPSDTIENVKAKIQDKEGIPPDQQRLIFAGKQLEDGRTLSDYNIQKESTLHLVLRLRGG (76 AAs)
+[ubiquitin_plant_arabidopsis]   Winding: 45 B4 loops
+[ubiquitin_plant_arabidopsis]   Activations: 39/12 primitives
+[ubiquitin_plant_arabidopsis]   Contacts: 11 long-range
+[ubiquitin_plant_arabidopsis]   Subunits: 2
+[ubiquitin_plant_arabidopsis]   Frobenius: ✓
+[ubiquitin_plant_arabidopsis]   Confidence: 1.00
+[ubiquitin_plant_arabidopsis]   Folding ΔG: -4.6 kcal/mol
+[ubiquitin_plant_arabidopsis]   Enzymatic turnover: 0.00e+00 s⁻¹
+
+  PLANT_ARABIDOPSIS:
+    Length: 76 AA
+    Winding: 45 B4 loops
+    Contacts: 11
+    Subunits: 2
+    Frobenius: ✓
+    Primitives: 10/12 — ['Chirality', 'Criticality', 'Dimensionality', 'Fidelity', 'Grammar', 'Granularity', 'Kinetics', 'Parity', 'Protection', 'Stoichiometry']
+[ubiquitin_drosophila] Direct RNA→FoldedProtein: ubiquitin_drosophila
+[ubiquitin_drosophila]   RNA: AUGCAAAUUUUUGUUAAAACUUUGACUGGUAAAACUAUUA... (228 nt)
+[ubiquitin_drosophila]   AA: MQIFVKTLTGKTITLEVEPSDTIENVKAKIQDKEGIPPDQQRLIFAGKQLEDGRTLSDYNIQKESTLHLVLRLRGG (76 AAs)
+[ubiquitin_drosophila]   Winding: 45 B4 loops
+[ubiquitin_drosophila]   Activations: 38/12 primitives
+[ubiquitin_drosophila]   Contacts: 11 long-range
+[ubiquitin_drosophila]   Subunits: 2
+[ubiquitin_drosophila]   Frobenius: ✓
+[ubiquitin_drosophila]   Confidence: 1.00
+[ubiquitin_drosophila]   Folding ΔG: -4.6 kcal/mol
+[ubiquitin_drosophila]   Enzymatic turnover: 0.00e+00 s⁻¹
+
+  DROSOPHILA:
+    Length: 76 AA
+    Winding: 45 B4 loops
+    Contacts: 11
+    Subunits: 2
+    Frobenius: ✓
+    Primitives: 10/12 — ['Chirality', 'Criticality', 'Dimensionality', 'Fidelity', 'Grammar', 'Granularity', 'Kinetics', 'Parity', 'Protection', 'Stoichiometry']
+
+  CONSERVED primitives (10/12): ['Chirality', 'Criticality', 'Dimensionality', 'Fidelity', 'Grammar', 'Granularity', 'Kinetics', 'Parity', 'Protection', 'Stoichiometry']
+  VARIABLE primitives: []
+
+============================================================
+FAMILY: cytochrome_c
+============================================================
+[cytochrome_c_human] Direct RNA→FoldedProtein: cytochrome_c_human
+[cytochrome_c_human]   RNA: AUGGGUGAUGUUGAAAAAGGUAAAAAAAUUUUUAUUAUGA... (315 nt)
+[cytochrome_c_human]   AA: MGDVEKGKKIFIMKCSQCHTVEKGGKHKTGPNLHGLFGRKTGQAPGYSYTAANKNKGIIWGEDTLMEYLENPKKYIPGTKMIFAGIKKKGEREDLIAYLKKATNE (105 AAs)
+[cytochrome_c_human]   Winding: 60 B4 loops
+[cytochrome_c_human]   Activations: 62/12 primitives
+[cytochrome_c_human]   Contacts: 41 long-range
+[cytochrome_c_human]   Subunits: 2
+[cytochrome_c_human]   Frobenius: ✓
+[cytochrome_c_human]   Confidence: 1.00
+[cytochrome_c_human]   Folding ΔG: -20.5 kcal/mol
+[cytochrome_c_human]   Enzymatic turnover: 0.00e+00 s⁻¹
+
+  HUMAN:
+    Length: 105 AA
+    Winding: 60 B4 loops
+    Contacts: 41
+    Subunits: 2
+    Frobenius: ✓
+    Primitives: 12/12 — ['Chirality', 'Criticality', 'Dimensionality', 'Fidelity', 'Grammar', 'Granularity', 'Kinetics', 'Parity', 'Protection', 'Recognition', 'Stoichiometry', 'Topology']
+[cytochrome_c_horse] Direct RNA→FoldedProtein: cytochrome_c_horse
+[cytochrome_c_horse]   RNA: AUGGGUGAUGUUGAAAAAGGUAAAAAAAUUUUUGUUCAAA... (315 nt)
+[cytochrome_c_horse]   AA: MGDVEKGKKIFVQKCAQCHTVEKGGKHKTGPNLHGLFGRKTGQAPGFTYTDANKNKGITWKEETLMEYLENPKKYIPGTKMIFAGIKKKTEREDLIAYLKKATNE (105 AAs)
+[cytochrome_c_horse]   Winding: 56 B4 loops
+[cytochrome_c_horse]   Activations: 62/12 primitives
+[cytochrome_c_horse]   Contacts: 39 long-range
+[cytochrome_c_horse]   Subunits: 2
+[cytochrome_c_horse]   Frobenius: ✓
+[cytochrome_c_horse]   Confidence: 1.00
+[cytochrome_c_horse]   Folding ΔG: -19.5 kcal/mol
+[cytochrome_c_horse]   Enzymatic turnover: 0.00e+00 s⁻¹
+
+  HORSE:
+    Length: 105 AA
+    Winding: 56 B4 loops
+    Contacts: 39
+    Subunits: 2
+    Frobenius: ✓
+    Primitives: 12/12 — ['Chirality', 'Criticality', 'Dimensionality', 'Fidelity', 'Grammar', 'Granularity', 'Kinetics', 'Parity', 'Protection', 'Recognition', 'Stoichiometry', 'Topology']
+[cytochrome_c_yeast] Direct RNA→FoldedProtein: cytochrome_c_yeast
+[cytochrome_c_yeast]   RNA: AUGACUGAAUUUAAAGCUGGUUCUGCUAAAAAAGGUGCUA... (327 nt)
+[cytochrome_c_yeast]   AA: MTEFKAGSAKKGATLFKTRCLQCHTVEKGGPHKVGPNLHGLFGRHSGQAEGYSYTDANIKKNVLWDENNMSEYLTNPKKYIPGTKMAFGGLKKEKDRNDLITYLKKACE (109 AAs)
+[cytochrome_c_yeast]   Winding: 64 B4 loops
+[cytochrome_c_yeast]   Activations: 59/12 primitives
+[cytochrome_c_yeast]   Contacts: 42 long-range
+[cytochrome_c_yeast]   Subunits: 2
+[cytochrome_c_yeast]   Frobenius: ✓
+[cytochrome_c_yeast]   Confidence: 1.00
+[cytochrome_c_yeast]   Folding ΔG: -21.0 kcal/mol
+[cytochrome_c_yeast]   Enzymatic turnover: 0.00e+00 s⁻¹
+
+  YEAST:
+    Length: 109 AA
+    Winding: 64 B4 loops
+    Contacts: 42
+    Subunits: 2
+    Frobenius: ✓
+    Primitives: 12/12 — ['Chirality', 'Criticality', 'Dimensionality', 'Fidelity', 'Grammar', 'Granularity', 'Kinetics', 'Parity', 'Protection', 'Recognition', 'Stoichiometry', 'Topology']
+[cytochrome_c_wheat] Direct RNA→FoldedProtein: cytochrome_c_wheat
+[cytochrome_c_wheat]   RNA: AUGGCUGCUUUUUUUGGUGCUAAAGCUGGUUCUACUGAAA... (342 nt)
+[cytochrome_c_wheat]   AA: MAAFFGAKAGSTEKPGKKLFKTKCAQCHTVEKGGKHKTGPNLHGLFGRKTGQAAGFSYTDANKGKVEWEEDTLMEYLENPKKYIPGTKMIFAGIKKPAGERDDLTIAYLKQATG (114 AAs)
+[cytochrome_c_wheat]   Winding: 54 B4 loops
+[cytochrome_c_wheat]   Activations: 59/12 primitives
+[cytochrome_c_wheat]   Contacts: 36 long-range
+[cytochrome_c_wheat]   Subunits: 2
+[cytochrome_c_wheat]   Frobenius: ✓
+[cytochrome_c_wheat]   Confidence: 1.00
+[cytochrome_c_wheat]   Folding ΔG: -18.0 kcal/mol
+[cytochrome_c_wheat]   Enzymatic turnover: 0.00e+00 s⁻¹
+
+  WHEAT:
+    Length: 114 AA
+    Winding: 54 B4 loops
+    Contacts: 36
+    Subunits: 2
+    Frobenius: ✓
+    Primitives: 12/12 — ['Chirality', 'Criticality', 'Dimensionality', 'Fidelity', 'Grammar', 'Granularity', 'Kinetics', 'Parity', 'Protection', 'Recognition', 'Stoichiometry', 'Topology']
+
+  CONSERVED primitives (12/12): ['Chirality', 'Criticality', 'Dimensionality', 'Fidelity', 'Grammar', 'Granularity', 'Kinetics', 'Parity', 'Protection', 'Recognition', 'Stoichiometry', 'Topology']
+  VARIABLE primitives: []
+
+
+======================================================================
+SUMMARY: EVOLUTIONARY CONSERVATION OF ACTIVATION PATTERNS
+======================================================================
+
+UBIQUITIN: 5 orthologs
+  human                len= 76 wind= 45 frob=✓ prim=10/12
+  mouse                len= 76 wind= 45 frob=✓ prim=10/12
+  yeast                len= 76 wind= 50 frob=✓ prim=10/12
+  plant_arabidopsis    len= 76 wind= 45 frob=✓ prim=10/12
+  drosophila           len= 76 wind= 45 frob=✓ prim=10/12
+  Conserved: ['Chirality', 'Criticality', 'Dimensionality', 'Fidelity', 'Grammar', 'Granularity', 'Kinetics', 'Parity', 'Protection', 'Stoichiometry']
+  Variable:  []
+  Rate: 83%
+
+CYTOCHROME_C: 4 orthologs
+  human                len=105 wind= 60 frob=✓ prim=12/12
+  horse                len=105 wind= 56 frob=✓ prim=12/12
+  yeast                len=109 wind= 64 frob=✓ prim=12/12
+  wheat                len=114 wind= 54 frob=✓ prim=12/12
+  Conserved: ['Chirality', 'Criticality', 'Dimensionality', 'Fidelity', 'Grammar', 'Granularity', 'Kinetics', 'Parity', 'Protection', 'Recognition', 'Stoichiometry', 'Topology']
+  Variable:  []
+  Rate: 100%
+
+Results saved to msa_analysis.json

@@ -1,0 +1,14 @@
+usage: rebis.vox [-h] {rna,peptide,word,module,self} ...
+
+Closure audit through V⊙x: four outcomes over the twelve marks.
+
+positional arguments:
+  {rna,peptide,word,module,self}
+    rna                 lift and verdict a coding sequence
+    peptide             lift and verdict a residue sequence
+    word                verdict a word in the twelve
+    module              verdict every function of a Python module
+    self                audit this repository's own engines
+
+options:
+  -h, --help            show this help message and exit

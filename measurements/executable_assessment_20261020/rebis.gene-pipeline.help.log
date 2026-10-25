@@ -1,0 +1,13 @@
+usage: rebis.gene-pipeline [-h] [--test] [--dna DNA] [--seq SEQ] [--pdb PDB]
+                           [--file FILE] [--stdin]
+
+DNA → Folded Protein — 7-stage Frobenius-verified translation
+
+options:
+  -h, --help            show this help message and exit
+  --test                Run demo/self-test
+  --dna DNA             DNA sequence
+  --seq SEQ             RNA sequence (alias for --dna)
+  --pdb PDB             Output PDB structure file path
+  --file FILE, -f FILE  Input file (JSON or FASTA/sequence)
+  --stdin, -i           Read JSON arguments from stdin

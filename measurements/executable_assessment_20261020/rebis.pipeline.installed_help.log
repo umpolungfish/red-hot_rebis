@@ -1,0 +1,20 @@
+usage: rebis.pipeline [-h] [--file FILE] [--stdin] COMMAND ...
+
+rebis.pipeline — Imscription Pipeline & Frobenius Verification
+
+positional arguments:
+  COMMAND               Sub-command (run with COMMAND --help for details)
+    verify              Run Frobenius verification across all pipeline modules
+    imscribe            Run auto-imscription on a named system
+    retro               Run retrosynthetic analysis
+    therapy             Run therapy→PDB pipeline for a single therapy
+    therapy-all         Run therapy→PDB pipeline for ALL therapies
+    lift                Lift prose — apply the human-lift protocol to a file
+    list                List all exported symbols
+    info                Show available tools (alias for list)
+    help                Show this help message
+
+options:
+  -h, --help            show this help message and exit
+  --file FILE, -f FILE  Input file (JSON or FASTA/sequence)
+  --stdin, -i           Read JSON arguments from stdin

@@ -1,0 +1,13 @@
+Metadata-Version: 2.4
+Name: red-hot-rebis
+Version: 4.0.0
+Summary: Red-Hot Rebis — Imscribing Grammar integrated toolchain
+Author: Lando ⊗ ⊙perator
+License: MIT
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Requires-Python: >=3.10
+Requires-Dist: numpy>=1.24

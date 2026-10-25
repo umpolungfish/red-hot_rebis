@@ -1,0 +1,63 @@
+{
+  "0": {
+    "files": 4,
+    "closure": true,
+    "notes": []
+  },
+  "1": {
+    "files": 3,
+    "closure": true,
+    "notes": []
+  },
+  "2": {
+    "files": 2,
+    "closure": true,
+    "notes": [
+      "Recovered historical dataset template; closure checks its structural tuple"
+    ]
+  },
+  "3": {
+    "files": 4,
+    "closure": true,
+    "notes": [
+      "ch3mpiler bridged: retrosynthesis available",
+      "Recovered historical dataset template; closure checks its structural tuple"
+    ]
+  },
+  "4": {
+    "files": 4,
+    "closure": true,
+    "notes": [
+      "Protein MACGKPVASLWQ (structural)",
+      "Recovered historical dataset template; closure checks its structural tuple"
+    ]
+  },
+  "5": {
+    "files": 6,
+    "closure": true,
+    "notes": [
+      "Recovered historical dataset template; closure checks its structural tuple"
+    ]
+  },
+  "6": {
+    "files": 2,
+    "closure": true,
+    "notes": [
+      "Recovered historical dataset template; closure checks its structural tuple"
+    ]
+  },
+  "7": {
+    "files": 5,
+    "closure": true,
+    "notes": [
+      "Recovered historical dataset template; closure checks its structural tuple"
+    ]
+  },
+  "8": {
+    "files": 5,
+    "closure": true,
+    "notes": [
+      "Recovered historical dataset template; closure checks its structural tuple"
+    ]
+  }
+}

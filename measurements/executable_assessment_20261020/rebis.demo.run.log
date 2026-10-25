@@ -1,0 +1,15 @@
+Available demos:
+  rebis demo all
+  rebis demo b4_lattice
+  rebis demo belnap
+  rebis demo catalytic_site
+  rebis demo ch3mpiler
+  rebis demo clink_chain
+  rebis demo decay_chain
+  rebis demo materials
+  rebis demo materials_sim
+  rebis demo pipeline
+  rebis demo real_demo
+  rebis demo reverse_ligand
+  rebis demo serpentrod
+  rebis demo therapeutics

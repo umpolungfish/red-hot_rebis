@@ -1,0 +1,11 @@
+  frobenius_composite                      O₂     Frob=0.90  CrMnFeCoNi (Cantor HEA) + self-healing microcapsules
+  critical_sensor_metamaterial             O₂     Frob=0.40  (Bi,Sb)₂(Te,Se)₃ ternary topological insulator
+  ep_detector                              O₁     Frob=0.05  BaTiO₃ (ferroelectric perovskite)
+  eternal_memory_alloy                     O₁     Frob=0.20  NiTiHfPd (high-temperature shape-memory HEA)
+  topological_thermal_rectifier            O₂     Frob=0.35  (Bi,Sb)₂(Te,Se)₃ ternary topological insulator
+  hierarchical_impact_absorber             O₁     Frob=0.05  AlCoCrFeNi₂.₁ (eutectic high-entropy alloy)
+  quantum_topological_substrate            O₂     Frob=0.40  Bi₂Se₃ or Sb₂Te₃ (3D topological insulator)
+  non_abelian_braiding_material            O₂     Frob=0.85  CrMnFeCoNi (Cantor HEA) + self-healing microcapsules
+
+  Total: 8 materials forged
+<frozen runpy>:128: RuntimeWarning: 'materials.ig_material_forge' found in sys.modules after import of package 'materials', but prior to execution of 'materials.ig_material_forge'; this may result in unpredictable behaviour

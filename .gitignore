@@ -62,3 +62,5 @@ target/
 *.rlib
 *.rmeta
 .DS_Store
+
+measurements/global_protein_coverage_20261020/

@@ -1,0 +1,7 @@
+{
+  "import": "safe",
+  "stereo_roundtrip": true,
+  "escaped_name": true,
+  "long_names_distinct": true,
+  "missing_smiles": "reported failure"
+}

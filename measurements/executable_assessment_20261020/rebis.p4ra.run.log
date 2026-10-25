@@ -1,0 +1,20 @@
+Belnap FOUR
+
+  meet
+         T   B   F   N
+      T  T   T   N   N
+      B  T   B   F   N
+      F  N   F   F   N
+      N  N   N   N   N
+
+  join
+         T   B   F   N
+      T  T   B   B   T
+      B  B   B   B   B
+      F  B   B   F   F
+      N  T   B   F   N
+
+  negation
+     T→F  B→B  F→T  N→N
+
+  designated: T, B

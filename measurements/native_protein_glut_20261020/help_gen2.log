@@ -1,0 +1,18 @@
+usage: rebis.serpentrod foldv2 [-h] [--name NAME] [--pdb PDB]
+                               [--pdb-chain PDB_CHAIN]
+                               [rna]
+
+Execute the full re-imscribed amino-acid words through Vox. JSON retains co-
+held chemical forms, torsion articulations and observations without
+probability weights. PDB exports the codon-aligned coordinate readout with
+source identifiers.
+
+positional arguments:
+  rna                   RNA sequence
+
+options:
+  -h, --help            show this help message and exit
+  --name NAME           Protein name
+  --pdb PDB             Output PDB structure file path
+  --pdb-chain PDB_CHAIN
+                        Chain ID for PDB (default: A)

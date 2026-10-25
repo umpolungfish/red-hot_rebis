@@ -1,0 +1,23 @@
+usage: rebis.materials [-h] [--file FILE] [--stdin] COMMAND ...
+
+rebis.materials — Materials Science & Metamaterial Design
+
+positional arguments:
+  COMMAND               Sub-command (run with COMMAND --help for details)
+    forge               Forge material from IG tuple or catalog entry
+    metamaterial        Run Frobenius metamaterial simulation
+    critical            Run critical metamaterial simulation
+    alloy               Run ouroboric alloy grain boundary analysis
+    nonqubit            Run non-qubit quantum computing paradigm analysis
+    sophick             Run Sophick forge
+    casimir             Run Casimir cavity ZPE design
+    molecule            Resolve molecule to SMILES and compute IG tuple
+    status              Show results and reports
+    list                List all design tools
+    info                Show available tools (alias for list)
+    help                Show this help message
+
+options:
+  -h, --help            show this help message and exit
+  --file FILE, -f FILE  Input file (JSON or FASTA/sequence)
+  --stdin, -i           Read JSON arguments from stdin

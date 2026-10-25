@@ -1,0 +1,76 @@
+═ CLINK Layers (L0–L8) ═
+  L0: ⟨𐑛𐑶𐑩𐑯𐑐𐑘𐑚𐑝𐑢𐑓𐑳𐑷⟩  tier=O₀  C=0.0000  d(L8)=6.9642
+  L1: ⟨𐑛𐑶𐑩𐑗𐑐𐑤𐑚𐑜𐑢𐑓𐑳𐑷⟩  tier=O₀  C=0.0000  d(L8)=7.4498
+  L2: ⟨𐑼𐑥𐑽𐑿𐑐𐑤𐑔𐑝𐑮𐑒𐑳𐑷⟩  tier=O₁  C=0.2500  d(L8)=6.2136
+  L3: ⟨𐑼𐑥𐑽𐑿𐑞𐑧𐑲𐑠⊙𐑓𐑳𐑭⟩  tier=O₂  C=1.0000  d(L8)=4.9900
+  L4: ⟨𐑦𐑸𐑾𐑬𐑞𐑧𐑲𐑠⊙𐑒𐑳𐑭⟩  tier=O₂  C=1.0000  d(L8)=3.1464
+  L5: ⟨𐑦𐑸𐑾𐑹𐑱𐑧𐑲𐑠⊙𐑖𐑳𐑭⟩  tier=O₂  C=1.0000  d(L8)=2.5495
+  L6: ⟨𐑦𐑸𐑽𐑿𐑱𐑧𐑲𐑠⊙𐑖𐑳𐑭⟩  tier=O₂  C=1.0000  d(L8)=4.0620
+  L7: ⟨𐑦𐑸𐑾𐑬𐑞𐑧𐑲𐑵⊙𐑖𐑳𐑭⟩  tier=O₂  C=1.0000  d(L8)=2.5495
+  L8: ⟨𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟⟩  tier=O_∞  C=1.0000  d(L8)=0.0000
+
+[
+  {
+    "layer": 0,
+    "tuple": "𐑛𐑶𐑩𐑯𐑐𐑘𐑚𐑝𐑢𐑓𐑳𐑷",
+    "tier": "O₀",
+    "c_score": 0.0,
+    "distance_to_L8": 6.9642
+  },
+  {
+    "layer": 1,
+    "tuple": "𐑛𐑶𐑩𐑗𐑐𐑤𐑚𐑜𐑢𐑓𐑳𐑷",
+    "tier": "O₀",
+    "c_score": 0.0,
+    "distance_to_L8": 7.4498
+  },
+  {
+    "layer": 2,
+    "tuple": "𐑼𐑥𐑽𐑿𐑐𐑤𐑔𐑝𐑮𐑒𐑳𐑷",
+    "tier": "O₁",
+    "c_score": 0.25,
+    "distance_to_L8": 6.2136
+  },
+  {
+    "layer": 3,
+    "tuple": "𐑼𐑥𐑽𐑿𐑞𐑧𐑲𐑠⊙𐑓𐑳𐑭",
+    "tier": "O₂",
+    "c_score": 1.0,
+    "distance_to_L8": 4.99
+  },
+  {
+    "layer": 4,
+    "tuple": "𐑦𐑸𐑾𐑬𐑞𐑧𐑲𐑠⊙𐑒𐑳𐑭",
+    "tier": "O₂",
+    "c_score": 1.0,
+    "distance_to_L8": 3.1464
+  },
+  {
+    "layer": 5,
+    "tuple": "𐑦𐑸𐑾𐑹𐑱𐑧𐑲𐑠⊙𐑖𐑳𐑭",
+    "tier": "O₂",
+    "c_score": 1.0,
+    "distance_to_L8": 2.5495
+  },
+  {
+    "layer": 6,
+    "tuple": "𐑦𐑸𐑽𐑿𐑱𐑧𐑲𐑠⊙𐑖𐑳𐑭",
+    "tier": "O₂",
+    "c_score": 1.0,
+    "distance_to_L8": 4.062
+  },
+  {
+    "layer": 7,
+    "tuple": "𐑦𐑸𐑾𐑬𐑞𐑧𐑲𐑵⊙𐑖𐑳𐑭",
+    "tier": "O₂",
+    "c_score": 1.0,
+    "distance_to_L8": 2.5495
+  },
+  {
+    "layer": 8,
+    "tuple": "𐑦𐑸𐑾𐑹𐑐𐑧𐑲𐑵⊙𐑫𐑳𐑟",
+    "tier": "O_∞",
+    "c_score": 1.0,
+    "distance_to_L8": 0.0
+  }
+]

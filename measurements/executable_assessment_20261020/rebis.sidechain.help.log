@@ -1,0 +1,23 @@
+usage: rebis.sidechain [-h] [--batch] [--list] [--info] [--json] [--pdb PDB]
+                       [--cutoff CUTOFF] [--verbose] [--file FILE] [--stdin]
+                       [sidechain] [environment]
+
+Sidechain × Environment Compositional Algebra
+
+positional arguments:
+  sidechain             Sidechain name
+  environment           Environment name
+
+options:
+  -h, --help            show this help message and exit
+  --batch               Analyze all 80 pairs
+  --list                List all sidechains and environments
+  --info                Show module info
+  --json                Output analysis as JSON (single pair, --batch, or
+                        --pdb)
+  --pdb PDB             Analyze a real PDB structure (ID or file path)
+  --cutoff CUTOFF       Neighbor cutoff in Å for environment classification
+                        (default: 8.0)
+  --verbose             Per-residue output for PDB analysis
+  --file FILE, -f FILE  Input file (JSON or FASTA/sequence)
+  --stdin, -i           Read JSON arguments from stdin

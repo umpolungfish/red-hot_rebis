@@ -1,0 +1,572 @@
+
+──────────────────────────────────────────────────────────────────
+  CONJOINED PIPELINE: MRSA TO PROTEIN TO ENZYME TO MATERIAL
+──────────────────────────────────────────────────────────────────
+  One disease. One structural gap. Four design stages.
+  The stages report diagnosis, designs, and material construction.
+
+  ── Step 1: Identify structural gap — what the drug must change
+red-hot_rebis$ python3 -m Ars_Therapeutica.ars_therapeutica.cli diagnose mrsa
+──────────────────────────────────────────────────────────────────
+[1m[35mDisease Type:[0m
+  ⟨𐑨𐑥𐑾𐑬𐑞𐑺𐑔𐑠𐑣𐑒𐑳𐑷⟩
+  Tier: O₀  C-score: 0.0
+
+[1m[35mHealth Type:[0m
+  ⟨𐑨𐑶𐑾𐑬𐑞𐑧𐑔𐑜⊙𐑖𐑳𐑴⟩
+  Tier: O₂  C-score: 0.6
+
+[1m[35mStructural Gap:[0m
+  Distance: [33m1.2886[0m
+  Differing primitives (6): [36m['⊣', '⊤', '∋', 'φ̂', '⊥', '◻'][0m
+
+[1m[35mPer-Primitive Delta:[0m
+  ⊣      𐑥 → 𐑶
+  ⊤      𐑺 → 𐑧
+  ∋      𐑠 → 𐑜
+  φ̂     𐑣 → ⊙
+  ⊥      𐑒 → 𐑖
+  ◻      𐑷 → 𐑴
+
+
+  ── Step 2: Design the drug components from the gap
+red-hot_rebis$ python3 -m Ars_Therapeutica.ars_therapeutica.cli therapy mrsa
+──────────────────────────────────────────────────────────────────
+MRSA is super-critical (φ̂=𐑣) with fast kinetics (K=𐑺) — runaway replication plus antibiotic resistance. DARPin against PBP2a demotes φ̂; biofilm disruptor restores normal disjunctive composition.
+
+[1m[35mStructural Strategy:[0m
+  Dual MEET: DARPin_PBP2a targets resistance mechanism (φ̂); Biofilm Disruptor breaks quorum-sensing architecture (ɢ)
+
+[1m[35mComponents (2):[0m
+
+  [1m1. DARPin_PBP2a[0m
+     Target: φ̂
+     Operation: [36mMEET[0m
+     Mechanism: PBP2a is the resistance protein — DARPin binding forces φ̂ demotion from 𐑣→⊙
+
+  [1m2. Biofilm Disruptor[0m
+     Target: ∋
+     Operation: [36mMEET[0m
+     Mechanism: Biofilm EPS matrix disruption converts ɢ from SEQ(𐑠) to OR(𐑜) — individual cells become vulnerable
+
+[1m[35mPDB Structures:[0m
+  • DARPin_PBP2a.pdb
+  • Biofilm_Disruptor.pdb
+
+[1m[35mLean Verification:[0m
+  • Core.lean
+  • IGMorphism.lean
+  • AgentSelf.lean
+
+[1m[35mDocumentation:[0m  MRSA_THERAPY.md
+
+
+  ── Step 3: Design a novel protein binder for the resistance target (PBP2a)
+red-hot_rebis$ python3 -m scripts.run_serpent
+[test_protein] Direct RNA→FoldedProtein: test_protein
+[test_protein]   RNA: AUGGCCGACUGGAACUGCAAGAAGAUCGUGCCCAAGUACU... (50 nt)
+[test_protein]   AA: MADWNCKKIVPKYYGR (16 AAs)
+[test_protein]   Winding: 11 B4 loops
+[test_protein]   Activations: 11/12 primitives
+[test_protein]   Contacts: 3 long-range
+[test_protein]   Subunits: 1
+[test_protein]   Frobenius: ✓
+[test_protein]   Confidence: 1.00
+[test_protein]   Folding ΔG: -1.0 kcal/mol
+[test_protein]   Enzymatic turnover: 0.00e+00 s⁻¹
+{
+  "name": "test_protein",
+  "rna_sequence": "AUGGCCGACUGGAACUGCAAGAAGAUCGUGCCCAAGUACUACGGCCGCUG",
+  "rna_length": 50,
+  "aa_sequence": "MADWNCKKIVPKYYGR",
+  "aa_length": 16,
+  "winding_number": 11,
+  "secondary_elements": [
+    {
+      "type": "helix",
+      "start": 0,
+      "end": 1,
+      "length": 1,
+      "confidence": 0.725,
+      "sequence": "M"
+    },
+    {
+      "type": "helix",
+      "start": 1,
+      "end": 2,
+      "length": 1,
+      "confidence": 0.71,
+      "sequence": "A"
+    },
+    {
+      "type": "helix",
+      "start": 2,
+      "end": 3,
+      "length": 1,
+      "confidence": 0.505,
+      "sequence": "D"
+    },
+    {
+      "type": "sheet",
+      "start": 3,
+      "end": 4,
+      "length": 1,
+      "confidence": 0.685,
+      "sequence": "W"
+    },
+    {
+      "type": "loop",
+      "start": 4,
+      "end": 5,
+      "length": 1,
+      "confidence": 0.78,
+      "sequence": "N"
+    },
+    {
+      "type": "sheet",
+      "start": 5,
+      "end": 6,
+      "length": 1,
+      "confidence": 0.595,
+      "sequence": "C"
+    },
+    {
+      "type": "helix",
+      "start": 6,
+      "end": 7,
+      "length": 1,
+      "confidence": 0.58,
+      "sequence": "K"
+    },
+    {
+      "type": "helix",
+      "start": 7,
+      "end": 8,
+      "length": 1,
+      "confidence": 0.58,
+      "sequence": "K"
+    },
+    {
+      "type": "sheet",
+      "start": 8,
+      "end": 9,
+      "length": 1,
+      "confidence": 0.8,
+      "sequence": "I"
+    },
+    {
+      "type": "sheet",
+      "start": 9,
+      "end": 10,
+      "length": 1,
+      "confidence": 0.85,
+      "sequence": "V"
+    },
+    {
+      "type": "loop",
+      "start": 10,
+      "end": 11,
+      "length": 1,
+      "confidence": 0.56,
+      "sequence": "P"
+    }
+  ],
+  "contacts": [
+    {
+      "i": 3,
+      "j": 7,
+      "type": "∈ (Granularity)↔⊤ (Kinetics)",
+      "distance": 5.75,
+      "confidence": 0.75
+    },
+    {
+      "i": 4,
+      "j": 8,
+      "type": "≻ (Recognition)↔⊞ (Stoichiometry)",
+      "distance": 5.75,
+      "confidence": 0.75
+    },
+    {
+      "i": 1,
+      "j": 8,
+      "type": "hydrophobic",
+      "distance": 4.0,
+      "confidence": 0.5
+    }
+  ],
+  "subunit_count": 1,
+  "activation_pattern": [
+    {
+      "aa": "Met",
+      "primitive": "⊢ (Dimensionality)"
+    },
+    {
+      "aa": "Asp",
+      "primitive": "⊥ (Chirality)"
+    },
+    {
+      "aa": "Trp",
+      "primitive": "⊣ (Topology)"
+    },
+    {
+      "aa": "Asn",
+      "primitive": "∈ (Granularity)"
+    },
+    {
+      "aa": "Cys",
+      "primitive": "≻ (Recognition)"
+    },
+    {
+      "aa": "Lys",
+      "primitive": "⊞ (Stoichiometry)"
+    },
+    {
+      "aa": "Lys",
+      "primitive": "⊞ (Stoichiometry)"
+    },
+    {
+      "aa": "Ile",
+      "primitive": "⊤ (Kinetics)"
+    },
+    {
+      "aa": "Lys",
+      "primitive": "⊞ (Stoichiometry)"
+    },
+    {
+      "aa": "Tyr",
+      "primitive": "≺ (Parity)"
+    },
+    {
+      "aa": "Tyr",
+      "primitive": "≺ (Parity)"
+    }
+  ],
+  "activation_coverage": "11/12",
+  "confidence": 1.0,
+  "frobenius_verified": true,
+  "closure_theorem": "RNA → {Sequence + Structure} is μ∘δ=id"
+}
+
+
+=== SECOND TEST: 108 nt ===
+[extended] Direct RNA→FoldedProtein: extended
+[extended]   RNA: AUGGCCGACUGGAACUGCAAGAAGAUCGUGCCCAAGUACU... (84 nt)
+[extended]   AA: MADWNCKKIVPKYYGRWNCKKIVPKYYG (28 AAs)
+[extended]   Winding: 18 B4 loops
+[extended]   Activations: 20/12 primitives
+[extended]   Contacts: 9 long-range
+[extended]   Subunits: 2
+[extended]   Frobenius: ✓
+[extended]   Confidence: 1.00
+[extended]   Folding ΔG: -3.0 kcal/mol
+[extended]   Enzymatic turnover: 0.00e+00 s⁻¹
+AA: MADWNCKKIVPKYYGRWNCKKIVPKYYG (28 AAs)
+Winding: 18
+Contacts: 9
+Frobenius: ✓
+
+
+  ── Step 4: Design the catalytic enzyme for the synthesis route
+red-hot_rebis$ python3 -m rhr_p4rky.ch3mpiler_serpentrod_pipeline --cas 79-06-1
+[pipeline] ╔════════════════════════════════════════╗
+[pipeline] ║  ch3mpiler ⟲ serpentrod — Pipeline   ║
+[pipeline] ╚════════════════════════════════════════╝
+[pipeline] 
+[pipeline] Phase 1 — ch3mpiler reaction analysis
+[pipeline] ────────────────────────────────────────
+[pipeline] CAS: 79-06-1
+[pipeline] Resolved: acrylamide
+[pipeline] 
+[pipeline] Phase 2 — Structural signature extraction
+[pipeline] ────────────────────────────────────────
+[pipeline]   Bond: co_sigma — C-O σ bond (polar, ether/alcohol)
+[pipeline]   FG pair: amide + amide
+[pipeline]   Structuring Δ: 5.104
+[pipeline] 
+[pipeline] Phase 3 — SerpentRod catalytic site design
+[pipeline] ────────────────────────────────────────
+[pipeline]   Site RNA: AUGUGGUGUUACGUUAUACCACAGGCUGGCACAGUG... (36 nt)
+[pipeline]   Site AA:  MWCYVIPQAGTV (12 AAs)
+[pipeline]   Winding:  3
+[pipeline]   Frobenius: ✓
+[pipeline]   Confidence: 1.000
+[pipeline]   Catalytic triad: Cys_2, Tyr_3
+[pipeline] 
+[pipeline] ╔════════════════════════════════════════╗
+[pipeline] ║  Pipeline Complete                    ║
+[pipeline] ╚════════════════════════════════════════╝
+==================================================================
+  ch3mpiler ⟲ serpentrod — Catalytic Site Design
+==================================================================
+
+REACTION ANALYSIS
+----------------------------------------
+  Type:     retrosynthetic
+  Bond:     co_sigma
+  Desc:     C-O σ bond (polar, ether/alcohol)
+  FG pair:  amide + amide
+  Structuring Δ: 5.104
+  TS ordinal:    0
+
+  Product structural type:
+    ⊢: 𐑛
+    ⊣: 𐑥
+    ≻: 𐑽
+    ≺: 𐑬
+    ⋈: 𐑐
+    ⊤: 𐑧
+    ∈: 𐑲
+    ∋: 𐑠
+    ⊙: ⊙
+    ⊥: 𐑖
+    ⊞: 𐑳
+    ◻: 𐑴
+
+CATALYTIC SITE DESIGN
+----------------------------------------
+  RNA:      AUGUGGUGUUACGUUAUACCACAGGCUGGCACAGUG
+  AA seq:   MWCYVIPQAGTV
+  Winding:  3
+  Frobenius: ✓
+  Confidence: 1.000
+
+  Site structural type:
+    ◻: 𐑟
+    ⊢: 𐑦
+    ⊥: 𐑫
+    ⊣: 𐑸
+    ⊞: 𐑳
+    ≻: 𐑾
+    ⋈: 𐑐
+    ≺: 𐑹
+    ∈: 𐑲
+    ⊤: 𐑪
+    ⊙: 𐑣
+    ∋: 𐑵
+
+  Catalytic triad: Cys_2, Tyr_3
+  Binding pocket: Met_0, Trp_1, Cys_2, Tyr_3, Val_4, Ile_5, Val_11
+
+  Predicted secondary structure:
+    sheet     [  0-  4]  (4 AAs)
+    sheet     [  4-  8]  (4 AAs)
+    sheet     [  8- 12]  (4 AAs)
+
+  Long-range contacts: 1
+      4↔ 11   4.00Å  hydrophobic           c=0.50
+
+══════════════════════════════════════════════════════════════════
+
+
+  ── Step 5: Find crystal-guided candidates for the drug scaffold
+red-hot_rebis$ python3 -m imas.molecular_crystal_designer --smiles "CC(Cc1ccccc1)C(=O)O"
+=== Caffeine IG Type Analysis ===
+⟨𐑨𐑸𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑕𐑭⟩
+Consistent: True
+
+Design Hints:
+  - Moderate complexity (3-5 distinct functional groups)
+  - Self-referential: aromatic or conjugated ring system (IMSCRIB closure)
+  - Supervenient: passive mixture, simple solvent
+  - Asymmetric: chiral center, no symmetry elements
+  - Thermal: room-temperature stable, conformational flexibility
+  - MBL: atropisomeric, hindered rotation
+  - Integer winding: single ring system, non-alternating
+  - Complex critical: π-stacking, charge-transfer complex
+
+=== Crystal Neighborhood (d=1) ===
+  d=1 ✓ ⟨𐑛𐑸𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑕𐑭⟩
+  d=1 ✓ ⟨𐑨𐑸𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑕𐑭⟩
+  d=1 ✓ ⟨𐑼𐑸𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑕𐑭⟩
+  d=1 ✓ ⟨𐑦𐑸𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑕𐑭⟩
+  d=1 ✓ ⟨𐑨𐑡𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑕𐑭⟩
+  d=1 ✓ ⟨𐑨𐑥𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑕𐑭⟩
+  d=1 ✓ ⟨𐑨𐑥𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑕𐑭⟩
+  d=1 ✓ ⟨𐑨𐑶𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑕𐑭⟩
+  d=1 ✓ ⟨𐑨𐑸𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑕𐑭⟩
+  d=1 ✓ ⟨𐑨𐑸𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑕𐑭⟩
+
+============================================================
+Analyzing: CC(Cc1ccccc1)C(=O)O
+============================================================
+
+IG Type: ⟨𐑨𐑸𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑳𐑭⟩
+
+--- Design Analysis ---
+Consistent: True
+Criticality: complex_critical
+
+Structural Features:
+  - Moderate complexity (3-5 distinct functional groups)
+  - Self-referential: aromatic or conjugated ring system (IMSCRIB closure)
+  - Supervenient: passive mixture, simple solvent
+  - Asymmetric: chiral center, no symmetry elements
+  - Thermal: room-temperature stable, conformational flexibility
+  - MBL: atropisomeric, hindered rotation
+  - Integer winding: single ring system, non-alternating
+  - Complex critical: π-stacking, charge-transfer complex
+
+--- Crystal Neighborhood (d<=1) ---
+
+  [1] Target: ⟨𐑛𐑸𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑳𐑭⟩
+      Criticality: complex_critical
+      - Very simple molecule (≤5 heavy atoms)
+      - Self-referential: aromatic or conjugated ring system (IMSCRIB closure)
+      - Supervenient: passive mixture, simple solvent
+      Candidates: c1ccccc1, c1cnccc1
+
+  [1] Target: ⟨𐑨𐑸𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑳𐑭⟩
+      Criticality: complex_critical
+      - Moderate complexity (3-5 distinct functional groups)
+      - Self-referential: aromatic or conjugated ring system (IMSCRIB closure)
+      - Supervenient: passive mixture, simple solvent
+      Candidates: c1ccccc1, c1cnccc1
+
+  [1] Target: ⟨𐑼𐑸𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑳𐑭⟩
+      Criticality: complex_critical
+      - Complex molecule (6-9 distinct functional groups)
+      - Self-referential: aromatic or conjugated ring system (IMSCRIB closure)
+      - Supervenient: passive mixture, simple solvent
+      Candidates: c1ccccc1, c1cnccc1
+
+  [1] Target: ⟨𐑦𐑸𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑳𐑭⟩
+      Criticality: complex_critical
+      - Highly complex (10+ distinct functional groups)
+      - Self-referential: aromatic or conjugated ring system (IMSCRIB closure)
+      - Supervenient: passive mixture, simple solvent
+      Candidates: c1ccccc1, c1cnccc1
+
+  [1] Target: ⟨𐑨𐑡𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑳𐑭⟩
+      Criticality: complex_critical
+      - Moderate complexity (3-5 distinct functional groups)
+      - Chain topology: no rings
+      - Supervenient: passive mixture, simple solvent
+      Candidates: C1CCCCC1, C1CCCC1
+
+  [1] Target: ⟨𐑨𐑥𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑳𐑭⟩
+      Criticality: complex_critical
+      - Moderate complexity (3-5 distinct functional groups)
+      - Bipartite: two distinct structural regions
+      - Supervenient: passive mixture, simple solvent
+      Candidates: C1CCCCC1, C1CCCC1
+
+  [1] Target: ⟨𐑨𐑶𐑩𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑳𐑭⟩
+      Criticality: complex_critical
+      - Moderate complexity (3-5 distinct functional groups)
+      - Crossing topology: fused rings or bridged system
+      - Supervenient: passive mixture, simple solvent
+      Candidates: C1CCCCC1, C1CCCC1
+
+  [1] Target: ⟨𐑨𐑸𐑑𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑳𐑭⟩
+      Criticality: complex_critical
+      - Moderate complexity (3-5 distinct functional groups)
+      - Self-referential: aromatic or conjugated ring system (IMSCRIB closure)
+      - Adjoint: reversible reaction pair
+      Candidates: c1ccccc1, c1cnccc1
+
+  [1] Target: ⟨𐑨𐑸𐑽𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑳𐑭⟩
+      Criticality: complex_critical
+      - Moderate complexity (3-5 distinct functional groups)
+      - Self-referential: aromatic or conjugated ring system (IMSCRIB closure)
+      - Functorial coupling: bioconjugate or pro-drug
+      Candidates: c1ccccc1, c1cnccc1
+
+  [1] Target: ⟨𐑨𐑸𐑾𐑗𐑞𐑘𐑔𐑵𐑮𐑫𐑳𐑭⟩
+      Criticality: complex_critical
+      - Moderate complexity (3-5 distinct functional groups)
+      - Self-referential: aromatic or conjugated ring system (IMSCRIB closure)
+      - Bidirectional coupling: tautomerism or resonance
+      Candidates: c1ccccc1, c1cnccc1
+
+============================================================
+<frozen runpy>:128: RuntimeWarning: 'imas.molecular_crystal_designer' found in sys.modules after import of package 'imas', but prior to execution of 'imas.molecular_crystal_designer'; this may result in unpredictable behaviour
+
+
+  ── Step 6: Forge the delivery material
+red-hot_rebis$ python3 -m materials.ig_material_forge --name frobenius_composite
+========================================================================
+  MATERIAL DESIGN: frobenius_composite
+  IG Type: ⟨𐑼𐑸𐑾𐑹𐑞𐑧𐑲𐑠𐑮𐑫𐑳𐑭⟩
+  Ouroboricity: O₂  |  Frobenius Score: 0.90
+========================================================================
+
+── STRUCTURE ──
+  Dimensionality:   bulk solid / composite (macro)
+  Topology:         self-referential — self-similar fractal
+  Symmetry:         Frobenius-closed
+  Phase:            annealed, reduced defects
+
+── COMPOSITION ──
+  CrMnFeCoNi (Cantor HEA) + self-healing microcapsules
+  Components:       multi-component (HEA / perovskite)
+
+── PROCESSING ──
+1. Precursor: CrMnFeCoNi (Cantor HEA) + self-healing microcapsules
+2. Primary: slow anneal / float zone (sequential / layer-by-layer)
+3. Interface engineering: dynamic bonding cycle (heat-cool 3×)
+4. Topology: ultrahigh vacuum (10⁻¹⁰ torr), epitaxial growth
+5. Memory training: full path encoding cycling protocol
+
+── INTERFACES ──
+  Coupling:         dynamic (Diels-Alder, disulfide) (100-300 kJ/mol)
+  Reversible:       True
+
+── PROPERTIES ──
+  Young modulus GPa              4823.4 (computed)
+  Tensile strength MPa           24117.2
+  Thermal conductivity WmK       1637.0
+  Electrical resistivity         surface: metallic (~h/e²), bulk: insulating
+  Self healing efficiency        85-95% (thermal trigger)
+  Healing cycles                 50-200
+  Shape memory strain pct        6-10% (full recovery)
+  Transformation temperature C   -50 to +200
+  Topological invariant          topological (Chern)
+  Edge state type                chiral, quantized
+  Robustness                     disorder-immune
+   quantitative                  {'name': 'frobenius_composite', 'ig_tuple': ('𐑼', '𐑸', '𐑾', '𐑹', '𐑞', '𐑧', '𐑲', '𐑠', '𐑮', '𐑫', '𐑳', '𐑭'), 'bond_energy_kJmol': 306.25, 'bond_energy_min_kJmol': 214.375, 'bond_energy_max_kJmol': 398.125, 'young_modulus_GPa': 4823.4375, 'shear_modulus_GPa': 1929.375, 'bulk_modulus_GPa': 3617.578125, 'tensile_strength_MPa': 24117.1875, 'fracture_toughness_MPam05': 3.0625, 'band_gap_eV': 1.2433750000000001, 'dielectric_constant': 9.875996473531693, 'electrical_conductivity_Sm': 7.74e-05, 'debye_temperature_K': 467.70717334674265, 'thermal_conductivity_WmK': 1636.9751067135994, 'thermal_expansion_ppmK': 0.9247896918325582, 'melting_temperature_K': 8154.117104973508, 'curie_temperature_K': 1408.05, 'topological_protection_energy_meV': 186.50625000000005, 'critical_exponent_gamma': 0.0, 'critical_temperature_K': 4077.058552486754, 'sensitivity_enhancement': 1.0, 'hbond_energy_kcal': 7.322103920514319, 'folding_stability_kcal': -30.00000085244363, 'enzymatic_turnover_s': 792462075009.7594, 'binding_affinity_kcal': -4.59375, 'quantum_confinement_eV': 4.2296953125, 'zero_point_energy_eV': 0.15875856812545952, 'coherence_time_s': 9.925250457492012e-13, 'coupling_strength': 0.3648676284641901, 'frobenius_score': 1.0}
+   quality scores                {'structural': 1.0, 'electronic': 7.74e-12, 'thermal': 1.0, 'topological': 1.0, 'sensing': 1e-06, 'biocompatible': 0.948675}
+  Shear modulus GPa              1929.4
+  Bulk modulus GPa               3617.6
+  Fracture toughness MPam05      3.06
+  Band gap eV                    1.243
+  Dielectric constant            9.9
+  Electrical conductivity Sm     7.740e-05
+  Debye temperature K            468
+  Melting temperature K          8154
+  Topological gap meV            186.51
+  Sensitivity enhancement        1.00e+00x
+  Thermochemical score           0.750
+
+── TOPOLOGICAL PROTECTION ──
+  Invariant:        ℤ (integer winding)
+  Protection:       topological (Chern)
+  Edge states:      chiral, quantized
+  Robustness:       disorder-immune
+
+── CRITICALITY ──
+  Regime:           complex-plane critical
+  Response:         damped oscillations
+  Application:      tunable filter / resonator
+
+── MEMORY ──
+  Type:             eternal / shape-memory
+  Hysteresis:       persistent
+  History:          full path encoding
+
+── TARGET APPLICATIONS ──
+  1. Topological quantum computing substrate
+  2. Dissipationless interconnects (edge channels)
+  3. Self-healing structural composite
+  4. Autonomous damage-repair coating
+  5. Self-verifying critical infrastructure material
+  6. Shape-memory actuator / deployable structure
+  7. Morphing aerospace structure (full path memory)
+
+========================================================================
+<frozen runpy>:128: RuntimeWarning: 'materials.ig_material_forge' found in sys.modules after import of package 'materials', but prior to execution of 'materials.ig_material_forge'; this may result in unpredictable behaviour
+
+
+  ── Pipeline complete.
+  ── Disease structural gap / drug components / novel protein /
+  ── catalytic enzyme / crystal candidates / delivery material.
+

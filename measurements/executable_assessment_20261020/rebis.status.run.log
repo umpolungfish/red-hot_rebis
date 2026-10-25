@@ -1,0 +1,32 @@
+==================================================================
+  RED-HOT REBIS v4.0
+  DYNAMIC-FIRST EDITION
+==================================================================
+          rebis — 18 packages          
+╭───────────────────┬───────┬─────────╮
+│ Package           │ Files │    Size │
+├───────────────────┼───────┼─────────┤
+│ Ars_Therapeutica  │     6 │  70,242 │
+│ alchemical_bridge │    11 │ 151,918 │
+│ biology           │     4 │ 128,804 │
+│ cdxml             │     3 │  15,614 │
+│ ch3mpiler         │    19 │ 361,426 │
+│ clink             │    34 │ 632,211 │
+│ gene_imscriber    │     8 │ 190,565 │
+│ imas              │    11 │ 220,904 │
+│ imasm_iterator    │     5 │  33,970 │
+│ materials         │    21 │ 554,163 │
+│ pipeline          │    22 │ 166,958 │
+│ plasma            │     7 │  86,108 │
+│ rebis             │    28 │ 298,914 │
+│ rhr_p4rky         │    53 │ 985,067 │
+│ scripts           │    19 │ 249,617 │
+│ serpentrod        │     3 │ 103,693 │
+│ shared            │     7 │  92,514 │
+│ therapeutics      │     6 │  51,433 │
+╰───────────────────┴───────┴─────────╯
+
+  rebis CLI modules: 28 files
+  18 packages accessible via rebis.<x>
+  Usage: rebis <command>  |  python3 -m rebis  |  python3 -c 'import rebis'
+  Installed location: /home/mrnob0dy666/imsgct/red-hot_rebis
